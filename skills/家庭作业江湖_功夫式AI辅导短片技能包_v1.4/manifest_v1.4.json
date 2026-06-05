@@ -1,0 +1,21 @@
+{
+  "project": "家庭作业江湖：功夫式 AI 辅导短片",
+  "version": "v1.4",
+  "created_at": "2026-05-19T18:20:54.804672Z",
+  "status": "30 keyframe output table saved; v1.4-A lock images planned but not executed",
+  "main_files": [
+    "SKILL.md",
+    "keyframes/30张关键帧出图执行表_v1.4.md",
+    "keyframes/v1.4-A_角色与场景锁定图组计划.md",
+    "assets/素材与道具标准_v1.4.md",
+    "codex/给Codex执行边界_v1.4_暂不执行.md"
+  ],
+  "keyframe_distribution": {
+    "0-3": 6,
+    "3-11": 17,
+    "11-14": 5,
+    "14-15": 2,
+    "total": 30
+  },
+  "next_step": "v1.4-A：先锁 6～8 张角色与场景标准图"
+}

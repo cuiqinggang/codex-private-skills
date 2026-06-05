@@ -1,0 +1,4 @@
+﻿=== forbidden processes ===
+
+=== docker ps ===
+open-webui-clean

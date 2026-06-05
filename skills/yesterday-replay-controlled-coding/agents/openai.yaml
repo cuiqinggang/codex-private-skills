@@ -1,0 +1,4 @@
+interface:
+  display_name: "全局约束：昨日重现 + GPT规划 + 受控编程"
+  short_description: "用于全局规划、执行、编程和验证闭环的强制约束技能。"
+  default_prompt: "加载全局约束，按昨日重现、GPT规划、受控编程和验证闭环执行当前任务。"

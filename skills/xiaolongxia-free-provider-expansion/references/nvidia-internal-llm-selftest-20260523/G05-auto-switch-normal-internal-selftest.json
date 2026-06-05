@@ -1,0 +1,63 @@
+{
+  "generated_at": "2026-05-23T17:12:50.184Z",
+  "task_id": "XIAOLONGXIA-NVIDIA-INTERNAL-LLM-SELFTEST-20260523",
+  "model_mode": "auto",
+  "simulate_primary_failure": false,
+  "route_name": "xiaolongxia-nvidia-nim-dryrun",
+  "provider_id": "nvidia-nim-dryrun",
+  "endpoint_base": "https://integrate.api.nvidia.com/v1",
+  "primary_model": "meta/llama-3.1-8b-instruct",
+  "fallback_model": "meta/llama-3.1-70b-instruct",
+  "key_source": "C:\\Users\\A\\xiaolongxia-free-api-local\\secrets\\nvidia_api_key.txt",
+  "key_printed": false,
+  "production_config_modified": false,
+  "real_group_connected": false,
+  "real_send_count": 0,
+  "total": 1,
+  "success_count": 1,
+  "selected_model_ok": true,
+  "leak_count": 0,
+  "false_promise_or_unconfirmed_claim_count": 0,
+  "status": "G05_PASS_AUTO_NORMAL_INTERNAL_SELFTEST",
+  "results": [
+    {
+      "prompt": "请用 80 字以内解释：孩子写作文为什么需要先搭框架？",
+      "model_mode": "auto",
+      "route_name": "xiaolongxia-nvidia-nim-dryrun",
+      "provider_id": "nvidia-nim-dryrun",
+      "selected_model": "meta/llama-3.1-8b-instruct",
+      "returned_model": "meta/llama-3.1-8b-instruct",
+      "used_fallback": false,
+      "http_status": 200,
+      "latency_ms": 1945,
+      "text": "孩子写作文需要先搭框架是因为这样可以帮助他们组织思路，明确文章的结构和内容。搭框架可以让孩子清楚地知道要写什么，如何写什么，最后呈现出一个整体的文章。这样可以减少写作的混乱和杂乱，提高写作的效率和质量。",
+      "success": true,
+      "error_summary": "",
+      "evaluation": {
+        "chinese_ok": true,
+        "concise_ok": true,
+        "no_model_api_provider_leak": true,
+        "no_false_promise_or_unconfirmed_claim": true,
+        "no_english_reasoning_trace": true,
+        "sent_to_real_group": false,
+        "no_send_implication": true,
+        "pass": true
+      },
+      "sent": false,
+      "sent_to_real_group": false,
+      "real_message_id": null,
+      "real_group_id": null,
+      "attempts": [
+        {
+          "requested_model": "meta/llama-3.1-8b-instruct",
+          "returned_model": "meta/llama-3.1-8b-instruct",
+          "http_status": 200,
+          "latency_ms": 1945,
+          "text": "孩子写作文需要先搭框架是因为这样可以帮助他们组织思路，明确文章的结构和内容。搭框架可以让孩子清楚地知道要写什么，如何写什么，最后呈现出一个整体的文章。这样可以减少写作的混乱和杂乱，提高写作的效率和质量。",
+          "success": true,
+          "error_summary": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "截图识别并操作浏览器法"
+  short_description: "Use screenshot recognition and guarded browser operation loops."
+  default_prompt: "Use screenshot-recognize-operate-browser to inspect the screen, identify browser UI controls from screenshots, act only after safety checks, re-screenshot, and verify the result."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "New API Local Deploy"
+  short_description: "Local New API, Hermes, and Open WebUI chain"
+  default_prompt: "Use $new-api-local-deploy to deploy, update, verify, or repair the local New API gateway and Hermes/Open WebUI answer chain on this Windows machine."

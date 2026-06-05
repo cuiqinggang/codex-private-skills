@@ -1,0 +1,6 @@
+interface:
+  display_name: "Windows GitHub CLI Auth Repair"
+  short_description: "Repair missing gh, stalled installs, and Windows proxy auth issues."
+  default_prompt: "Use $windows-github-cli-auth-repair to diagnose and repair GitHub CLI availability or login on Windows."
+policy:
+  allow_implicit_invocation: true

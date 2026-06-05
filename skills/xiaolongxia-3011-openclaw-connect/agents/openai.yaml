@@ -1,0 +1,3 @@
+display_name: Xiaolongxia 3011 OpenClaw Connect
+short_description: Connect and verify Windows OpenClaw against the isolated 3011 Xiaolongxia free model pool.
+default_prompt: Verify or repair the Windows OpenClaw connection to the isolated 3011 Xiaolongxia free model pool without touching Hermes, Open WebUI, old 3001 New API, or real group chat entrances.

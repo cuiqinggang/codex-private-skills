@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xiaolongxia OpenClaw Safety Recovery"
+  short_description: "Recover wrong Xiaolongxia browser launches safely"
+  default_prompt: "Use this skill when Xiaolongxia or OpenClaw browser startup opens Hermes, mistakes 3011 for UI, or needs safe 18789 gateway recovery."

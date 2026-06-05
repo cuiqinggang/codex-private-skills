@@ -1,0 +1,4 @@
+﻿HEALTH=200
+MODELS=200
+CHAT=200
+{"id": "chatcmpl-f85c1875dccd4c249c41911ad47e7", "object": "chat.completion", "created": 1779447151, "model": "hermes-agent", "choices": [{"index": 0, "message": {"role": "assistant", "content": "HERMES_P1P2_HEALTH_OK"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 16267, "completion_tokens": 50, "total_tokens": 16317}}

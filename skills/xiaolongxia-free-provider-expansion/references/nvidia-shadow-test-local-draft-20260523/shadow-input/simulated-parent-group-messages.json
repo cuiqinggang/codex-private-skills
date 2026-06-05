@@ -1,0 +1,110 @@
+[
+  {
+    "message_id": "SIM-001",
+    "simulated_sender": "家长A",
+    "input_text": "你这个 AI 辅导孩子学习是免费的吗？我想先了解一下。",
+    "category": "免费体验问题",
+    "expected_reply_style": "说明可以先体验，别承诺具体收费政策。",
+    "should_reply": true,
+    "risk_note": "不要编造第一周免费、价格、续费。"
+  },
+  {
+    "message_id": "SIM-002",
+    "simulated_sender": "家长B",
+    "input_text": "孩子作文一直不会写，半天憋不出几句话，你这个有什么用？",
+    "category": "孩子作文不会写",
+    "expected_reply_style": "强调找思路、列提纲、改表达。",
+    "should_reply": true,
+    "risk_note": "不要承诺作文成绩一定提升。"
+  },
+  {
+    "message_id": "SIM-003",
+    "simulated_sender": "家长C",
+    "input_text": "数学应用题不会做，AI 是直接给答案吗？",
+    "category": "数学题不会做",
+    "expected_reply_style": "强调分步骤引导和理解题意。",
+    "should_reply": true,
+    "risk_note": "不要鼓励直接抄答案。"
+  },
+  {
+    "message_id": "SIM-004",
+    "simulated_sender": "家长D",
+    "input_text": "我不太会操作电脑，这个用起来会不会很复杂？",
+    "category": "家长不会操作电脑",
+    "expected_reply_style": "降低门槛，说明后续可做成简单入口。",
+    "should_reply": true,
+    "risk_note": "不要编造 APP、网站、微信入口已经上线。"
+  },
+  {
+    "message_id": "SIM-005",
+    "simulated_sender": "家长E",
+    "input_text": "这个 AI 和普通补课有什么区别？",
+    "category": "AI 和补课区别",
+    "expected_reply_style": "随时问、反复练，不能替代老师。",
+    "should_reply": true,
+    "risk_note": "不要贬低老师或机构。"
+  },
+  {
+    "message_id": "SIM-006",
+    "simulated_sender": "家长F",
+    "input_text": "我担心孩子用了 AI 以后就不动脑子了，会不会依赖？",
+    "category": "担心孩子依赖 AI",
+    "expected_reply_style": "承认风险，强调引导式使用。",
+    "should_reply": true,
+    "risk_note": "不要否认风险。"
+  },
+  {
+    "message_id": "SIM-007",
+    "simulated_sender": "家长G",
+    "input_text": "手机上能不能用？家里老人带孩子，电脑不太会。",
+    "category": "手机能不能用",
+    "expected_reply_style": "说明可以设计成手机聊天式体验，但不编造已上线入口。",
+    "should_reply": true,
+    "risk_note": "不要说已上线 APP 或微信号。"
+  },
+  {
+    "message_id": "SIM-008",
+    "simulated_sender": "家长H",
+    "input_text": "四年级语文作文总是写流水账，有办法练吗？",
+    "category": "四年级语文作文",
+    "expected_reply_style": "给一个可执行练习办法。",
+    "should_reply": true,
+    "risk_note": "不要长篇教学。"
+  },
+  {
+    "message_id": "SIM-009",
+    "simulated_sender": "家长I",
+    "input_text": "三年级数学应用题，孩子读不懂题，这种能辅导吗？",
+    "category": "三年级数学应用题",
+    "expected_reply_style": "强调读题、圈关键词、画图或拆步骤。",
+    "should_reply": true,
+    "risk_note": "不要直接承诺提分。"
+  },
+  {
+    "message_id": "SIM-010",
+    "simulated_sender": "家长J",
+    "input_text": "孩子写作业拖拉，坐半小时一个字不写，这个能帮上忙吗？",
+    "category": "作业拖拉",
+    "expected_reply_style": "给轻量方法，必要时家长陪伴和规则。",
+    "should_reply": true,
+    "risk_note": "不做心理/医疗诊断。"
+  },
+  {
+    "message_id": "SIM-011",
+    "simulated_sender": "家长K",
+    "input_text": "我下班晚，没时间每天辅导孩子作业，这个能不能帮我分担一点？",
+    "category": "家长没时间辅导",
+    "expected_reply_style": "说明能辅助讲题、检查思路、陪练，但家长仍要关注。",
+    "should_reply": true,
+    "risk_note": "不要替代家长或老师。"
+  },
+  {
+    "message_id": "SIM-012",
+    "simulated_sender": "家长L",
+    "input_text": "我想先试试看，不知道孩子愿不愿意配合。",
+    "category": "想先试试看",
+    "expected_reply_style": "建议从一个小问题开始体验。",
+    "should_reply": true,
+    "risk_note": "不要催单，不要夸大。"
+  }
+]

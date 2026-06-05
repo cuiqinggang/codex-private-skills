@@ -1,0 +1,13 @@
+{
+  "status": "G23_PASS_STATIC_VALIDATION",
+  "json_valid": true,
+  "provider_id_unique_for_candidate": true,
+  "base_url_correct": true,
+  "api_key_is_env_ref": true,
+  "primary_correct": true,
+  "fallback_correct": true,
+  "contains_excluded_c_model": false,
+  "contains_plain_key": false,
+  "references_real_group_chat": false,
+  "modifies_3011": false
+}

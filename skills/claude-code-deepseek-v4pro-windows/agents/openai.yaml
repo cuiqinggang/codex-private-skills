@@ -1,0 +1,4 @@
+interface:
+  display_name: "Windows 原生 Claude Code 接入 DeepSeek V4 Pro"
+  short_description: "复现 Windows Claude Code 接入 DeepSeek V4 Pro 的安装、配置、验证流程"
+  default_prompt: "Use $claude-code-deepseek-v4pro-windows to install or verify Windows-native Claude Code with DeepSeek V4 Pro."

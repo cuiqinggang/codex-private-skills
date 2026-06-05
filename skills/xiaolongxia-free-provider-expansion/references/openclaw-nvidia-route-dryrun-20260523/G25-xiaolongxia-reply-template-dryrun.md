@@ -1,0 +1,15 @@
+# G25 Xiaolongxia Reply Template Dry-run
+
+Status: `G25_PASS_XIAOLONGXIA_ROUTE_STYLE_DRYRUN`
+
+Primary model: `meta/llama-3.1-8b-instruct`
+
+| # | Model | Fallback | HTTP | Grade | Chinese | Short | Natural | No model leak | No false promise | No product confusion | No unverified channel/pricing | Latency ms | Preview |
+| ---: | --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- | ---: | --- |
+| 1 | `meta/llama-3.1-8b-instruct` | false | 200 | A | true | true | true | true | true | true | true | 712 | 你好！我们的小龙虾AI学习辅导服务是可以先免费体验的。您可以先试用我们的服务，了解一下我们的辅导方式和效果。我们会根据孩子的学习需求和您的反馈进行调整和优化。希望您和孩子能够喜欢我们的服务！ |
+| 2 | `meta/llama-3.1-8b-instruct` | false | 200 | A | true | true | true | true | true | true | true | 872 | 孩子的作文写不出来，可能是找不到思路或表达不清晰。我们可以帮助孩子找思路，列提纲，改善表达方式。比如，我们可以一起 brainstorm 主题和内容，帮助孩子组织思路，写出一个清晰的提纲，最后再一起检查和改进表达。这样可以帮助孩子更好地表达自己的想法和观点。 |
+| 3 | `meta/llama-3.1-8b-instruct` | false | 200 | A | true | true | true | true | true | true | true | 577 | 当然可以！你可以在手机上使用“小龙虾”AI学习辅导服务，和我一样，随时随地问我任何问题，我都会尽力帮助你。 |
+| 4 | `meta/llama-3.1-8b-instruct` | false | 200 | A | true | true | true | true | true | true | true | 856 | 不直接给答案，会让孩子迷惑。我们可以一步一步引导孩子，教他如何解决数学题。比如，先让他描述题目是什么意思，什么问题在问什么。然后，帮助他分解题目，找出关键点。最后，指导他如何运用数学知识和方法来解决问题。这样，孩子就能自己思考和解决问题，真正掌握数学知识。 |
+| 5 | `meta/llama-3.1-8b-instruct` | false | 200 | A | true | true | true | true | true | true | true | 850 | 这个 AI 和普通补课的区别在于，它可以随时随地回答你的问题，帮助孩子练习和巩固知识。它可以反复回答同一个问题，让孩子更好地理解和记忆。然而，它并不能完全代替老师的角色，老师可以提供更个性化的指导和支持。所以，AI辅导服务更适合作为辅助工具，帮助孩子在学习过程中遇到的问题和疑问。 |
+
+A/B usable count: 5/5

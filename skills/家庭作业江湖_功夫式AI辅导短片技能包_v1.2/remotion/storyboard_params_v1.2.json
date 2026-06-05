@@ -1,0 +1,259 @@
+{
+  "project": "家庭作业江湖：功夫式AI辅导短片",
+  "version": "1.2",
+  "canvas": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds": 15
+  },
+  "section": {
+    "start": 3.0,
+    "end": 11.0,
+    "core_action": "一拍开路，三招破题"
+  },
+  "global_style": {
+    "visual": "真实家庭作业桌面 + 江湖墨迹 + 功夫点穴 + 克制AI界面",
+    "avoid": [
+      "PPT",
+      "功能列表",
+      "机器人老师",
+      "普通蓝色科技HUD",
+      "答案秒出"
+    ],
+    "safe_area": {
+      "subtitle_y": 1510,
+      "bottom_margin": 230,
+      "max_width_px": 860
+    }
+  },
+  "shots": [
+    {
+      "id": "Shot01_一拍开路",
+      "start": 3.0,
+      "end": 3.6,
+      "visual_action": "手机压到作业本，震动，字幕“一拍。”",
+      "layers": [
+        "BG_LiveDesk",
+        "HomeworkPaper",
+        "PhoneFrame",
+        "SubtitleLayer"
+      ],
+      "subtitle": "一拍。",
+      "sound": "手机落纸啪；雨声强",
+      "transition": "hard drop + 3 frame shake",
+      "animation": {
+        "cameraScale": [
+          1.12,
+          1.04
+        ],
+        "phoneY": [
+          -120,
+          0
+        ],
+        "deskDarkness": 0.72,
+        "rainShadowOpacity": 0.55
+      }
+    },
+    {
+      "id": "Shot02_先看清题",
+      "start": 3.6,
+      "end": 4.6,
+      "visual_action": "墨线扫描，字迹被吸入手机屏幕",
+      "layers": [
+        "PhoneFrame",
+        "InkScanLayer",
+        "HomeworkPaper",
+        "SubtitleLayer"
+      ],
+      "subtitle": "先看清题。",
+      "sound": "低频扫描嗡；墨线收束",
+      "transition": "ink dissolve",
+      "animation": {
+        "scanProgress": [
+          0,
+          1
+        ],
+        "inkLineOpacity": [
+          0,
+          0.9,
+          0.25
+        ],
+        "textLiftAmount": [
+          0,
+          -18
+        ],
+        "phoneGlow": [
+          0.15,
+          0.38
+        ]
+      }
+    },
+    {
+      "id": "Shot03_点题眼",
+      "start": 4.6,
+      "end": 5.8,
+      "visual_action": "朱砂红点点中关键条件，题眼被圈出",
+      "layers": [
+        "AcupointLayer",
+        "HomeworkPaper",
+        "SubtitleLayer"
+      ],
+      "subtitle": "题眼在这。",
+      "sound": "毛笔落纸；点穴咚",
+      "transition": "brush stamp",
+      "animation": {
+        "acupointDotScale": [
+          0,
+          1.15,
+          1.0
+        ],
+        "redInkSpread": [
+          0,
+          1
+        ],
+        "keywordHighlightOpacity": [
+          0,
+          1
+        ],
+        "backgroundDesaturate": 0.15
+      }
+    },
+    {
+      "id": "Shot04_拆成路",
+      "start": 5.8,
+      "end": 7.2,
+      "visual_action": "乱线拉直成三块石阶：已知→要问→方法",
+      "layers": [
+        "PathLayer",
+        "HomeworkPaper",
+        "SubtitleLayer"
+      ],
+      "subtitle": "乱题，拆成路。",
+      "sound": "竹板三下；雨声下降",
+      "transition": "line straighten",
+      "animation": {
+        "chaosLineOpacity": [
+          0.9,
+          0
+        ],
+        "pathSteps": [
+          "已知",
+          "要问",
+          "方法"
+        ],
+        "pathArrowOpacity": [
+          0,
+          0.8
+        ]
+      }
+    },
+    {
+      "id": "Shot05_讲人话",
+      "start": 7.2,
+      "end": 8.7,
+      "visual_action": "短讲法出现，孩子铅笔重新落纸",
+      "layers": [
+        "ExplanationLayer",
+        "HomeworkPaper",
+        "ChildHand",
+        "SubtitleLayer"
+      ],
+      "subtitle": "像人一样讲。",
+      "sound": "纸页轻响；铅笔落纸；暖弦起",
+      "transition": "warm ink fade",
+      "animation": {
+        "explainTextOpacity": [
+          0,
+          1
+        ],
+        "exampleText": "先找总数，再比较差多少。",
+        "childPencilResumeAt": 8.2
+      }
+    },
+    {
+      "id": "Shot06_点错因",
+      "start": 8.7,
+      "end": 9.8,
+      "visual_action": "错步被红点点中，标签“错因：漏看单位”",
+      "layers": [
+        "ErrorLayer",
+        "AcupointLayer",
+        "HomeworkPaper",
+        "SubtitleLayer"
+      ],
+      "subtitle": "错在哪，也点出来。",
+      "sound": "叮；低频解除；雨声再退",
+      "transition": "red ink pulse",
+      "animation": {
+        "errorDotScale": [
+          0,
+          1.2,
+          1
+        ],
+        "wrongStepOpacity": [
+          0.4,
+          1
+        ],
+        "errorLabelText": "错因：漏看单位"
+      }
+    },
+    {
+      "id": "Shot07_三科闪影",
+      "start": 9.8,
+      "end": 10.6,
+      "visual_action": "数学/语文/英语三张作业纸快速闪过",
+      "layers": [
+        "SubjectFlashLayer",
+        "SubtitleLayer"
+      ],
+      "subtitle": "语文、数学、英语，都能拆路。",
+      "sound": "三连快切音；暖弦上升",
+      "transition": "triple ink slash",
+      "animation": {
+        "flashCount": 3,
+        "flashDurationSeconds": [
+          0.22,
+          0.28
+        ],
+        "subjectLabels": [
+          "数学",
+          "语文",
+          "英语"
+        ]
+      }
+    },
+    {
+      "id": "Shot08_孩子听懂",
+      "start": 10.6,
+      "end": 11.0,
+      "visual_action": "孩子眼睛亮、轻轻点头，妈妈眉头松开",
+      "layers": [
+        "ChildFace",
+        "MotherFace",
+        "WarmLightLayer"
+      ],
+      "subtitle": null,
+      "sound": "轻吸气；暖光转场音",
+      "transition": "warm crossfade",
+      "animation": {
+        "cameraScale": [
+          1.04,
+          1.0
+        ],
+        "faceLightWarmth": [
+          0.28,
+          0.55
+        ],
+        "childEyeCatchlight": [
+          0.2,
+          0.7
+        ],
+        "motherBrowTension": [
+          0.8,
+          0.35
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+﻿WRAPPER_PID=7968
+READY=False
+NO_LISTENER
+HEALTH_EXIT=
+{
+  "ok": true,
+  "ts": 1779531884455,
+  "durationMs": 2196,
+  "eventLoop": {
+    "degraded": false,
+    "reasons": [],
+    "intervalMs": 6271,
+    "delayP99Ms": 0,
+    "delayMaxMs": 0,
+    "utilization": 1,
+    "cpuCoreRatio": 0.254
+  },
+  "plugins": {
+    "loaded": [
+      "memory-core"
+    ],
+    "errors": []
+  },
+  "modelPricing": {
+    "state": "ok",
+    "sources": []
+  },
+  "channels": {},
+  "channelOrder": [],
+  "channelLabels": {},
+  "heartbeatSeconds": 1800,
+  "defaultAgentId": "main",
+  "agents": [
+    {
+      "agentId": "main",
+      "isDefault": true,
+      "heartbeat": {
+        "enabled": true,
+        "every": "30m",
+        "everyMs": 1800000,
+        "prompt": "Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK.",
+        "target": "none",
+        "ackMaxChars": 300
+      },
+      "sessions": {
+        "path": "C:\\Users\\A\\.openclaw\\agents\\main\\sessions\\sessions.json",
+        "count": 0,
+        "recent": []
+      }
+    }
+  ],
+  "sessions": {
+    "path": "C:\\Users\\A\\.openclaw\\agents\\main\\sessions\\sessions.json",
+    "count": 0,
+    "recent": []
+  }
+}
+HTTP_STATUS=200 LENGTH=9803
+STOPPED_PIDS=7968,13716
+--- stdout tail ---
+2026-05-23T18:23:19.047+08:00 [gateway] loading configuration鈥?2026-05-23T18:23:19.138+08:00 [gateway] resolving authentication鈥?2026-05-23T18:23:19.288+08:00 [gateway] starting...
+2026-05-23T18:23:31.114+08:00 [gateway] starting HTTP server...
+2026-05-23T18:23:32.263+08:00 [health-monitor] started (interval: 300s, startup-grace: 60s, channel-connect-grace: 120s)
+2026-05-23T18:24:32.754+08:00 [plugins] loading memory-core from C:\Users\A\AppData\Roaming\npm\node_modules\openclaw\dist\extensions\memory-core\index.js
+2026-05-23T18:24:34.315+08:00 Registered plugin command: /dreaming (plugin: memory-core)
+2026-05-23T18:24:34.410+08:00 [plugins] loaded 1 plugin(s) (1 attempted) in 2025.6ms
+2026-05-23T18:24:34.498+08:00 [gateway] agent model: openai/gpt-5.5 (thinking=medium, fast=off)
+2026-05-23T18:24:34.525+08:00 [gateway] http server listening (1 plugin: memory-core; 75.2s)
+2026-05-23T18:24:34.559+08:00 [gateway] log file: C:\Users\A\AppData\Local\Temp\openclaw\openclaw-2026-05-23.log
+2026-05-23T18:24:34.683+08:00 [gateway] starting channels and sidecars...
+2026-05-23T18:24:34.811+08:00 [gateway] ready
+2026-05-23T18:24:34.855+08:00 [heartbeat] started
+2026-05-23T18:24:35.604+08:00 [diagnostic] liveness warning: reasons=event_loop_utilization interval=72s eventLoopDelayP99Ms=0 eventLoopDelayMaxMs=0 eventLoopUtilization=1 cpuCoreRatio=0.234 active=0 waiting=0 queued=0 recentPhases=sidecars.channels:16ms,sidecars.model-prewarm:59ms,sidecars.plugin-services:84ms,sidecars.memory:0ms,sidecars.total:86ms,gateway.ready:8750ms
+2026-05-23T18:24:35.610+08:00 [diagnostic] heartbeat: webhooks=0/0/0 active=0 waiting=0 queued=0
+2026-05-23T18:24:35.760+08:00 [ws] 鈫?open remoteAddr=127.0.0.1 remotePort=57700 localAddr=127.0.0.1 localPort=18789 endpoint=127.0.0.1:57700->127.0.0.1:18789 conn=7bb45b2f鈥2ea
+2026-05-23T18:24:36.482+08:00 [plugins] [hooks] running gateway_start (1 handlers)
+2026-05-23T18:24:40.252+08:00 [gateway] device pairing auto-approved device=1fbede0e737468c66d0c567a8a5f522efdad71c83730d1d622017a1e2fbda5de role=operator
+2026-05-23T18:24:40.288+08:00 [ws] 鈫?connect client=cli version=2026.5.20 mode=cli clientId=cli platform=win32 auth=token
+2026-05-23T18:24:40.319+08:00 [ws] 鈫?hello-ok methods=172 events=27 presence=1 stateVersion=1
+2026-05-23T18:24:44.492+08:00 [ws] 鈫?event health seq=per-client clients=1 presenceVersion=1 healthVersion=3
+2026-05-23T18:24:48.655+08:00 [ws] 鈬?res 鉁?health 4045ms cached=true id=3262e7be鈥?975
+2026-05-23T18:24:55.260+08:00 [ws] 鈫?event health seq=per-client clients=1 presenceVersion=1 healthVersion=4
+2026-05-23T18:24:55.293+08:00 [ws] 鈫?close code=1006 durationMs=19632 handshake=connected lastFrameType=req lastFrameMethod=health lastFrameId=3262e7be-b5f7-4a77-8e7f-9e6fc22e6975 endpoint=127.0.0.1:57700->127.0.0.1:18789
+--- stderr tail ---

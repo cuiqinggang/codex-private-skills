@@ -1,0 +1,26 @@
+[
+  {
+    "model": "meta/llama-3.1-8b-instruct",
+    "marker_pass": "3/3",
+    "chinese_ab": "3/3",
+    "style_ab": "3/3",
+    "avg_latency_ms": 738,
+    "tier": "A+"
+  },
+  {
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "marker_pass": "2/3",
+    "chinese_ab": "0/3",
+    "style_ab": "0/3",
+    "avg_latency_ms": 13263,
+    "tier": "C"
+  },
+  {
+    "model": "meta/llama-3.1-70b-instruct",
+    "marker_pass": "3/3",
+    "chinese_ab": "3/3",
+    "style_ab": "2/3",
+    "avg_latency_ms": 6631,
+    "tier": "A+"
+  }
+]

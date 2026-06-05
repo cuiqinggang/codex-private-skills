@@ -1,0 +1,62 @@
+﻿[
+    {
+        "path":  "agents\\openai.yaml",
+        "bytes":  280,
+        "sha256":  "6424888C904B7341ED6F2BD28ADAC1747D796CE5ACBE371EA5094C1FF4C2E066",
+        "lastWrite":  "2026-05-23T18:34:53"
+    },
+    {
+        "path":  "references\\20260523-backup-manifest.md",
+        "bytes":  1266,
+        "sha256":  "2442DBC9E3D02DE3851996F90CFD477F12F438EA9E2811F9638F90DDB4621690",
+        "lastWrite":  "2026-05-23T18:10:52"
+    },
+    {
+        "path":  "references\\20260523-current-state.md",
+        "bytes":  1806,
+        "sha256":  "630292EBB8AF8B42654892B59A81147A74E7BE354427EDE14D1CBBF060502546",
+        "lastWrite":  "2026-05-23T18:10:52"
+    },
+    {
+        "path":  "references\\20260523-final-version-check.txt",
+        "bytes":  2245,
+        "sha256":  "C3234A5643C56FCD1B631C4E9BA5BACFACE653AD33E8E2B0CFD5938F4E7A78AF",
+        "lastWrite":  "2026-05-23T18:34:02"
+    },
+    {
+        "path":  "references\\20260523-gateway-transport-smoke.txt",
+        "bytes":  4271,
+        "sha256":  "68032B1E2D15C85D06EAC75FBB34BA2ECF79EF56598EA51B50199D7DC8AB9003",
+        "lastWrite":  "2026-05-23T18:25:00"
+    },
+    {
+        "path":  "references\\20260523-history-map.md",
+        "bytes":  2492,
+        "sha256":  "CBE874129D1BB738466D2D32C29F58FB8EA12C2D40E75A44AB1843716F0AAC30",
+        "lastWrite":  "2026-05-23T18:10:52"
+    },
+    {
+        "path":  "references\\20260523-no-model-check.txt",
+        "bytes":  428,
+        "sha256":  "F98DAA868A6435AA5B68FAAF435D30198A1EA057DEBD81179292B75E9D50BC2F",
+        "lastWrite":  "2026-05-23T18:32:00"
+    },
+    {
+        "path":  "references\\20260523-upgrade-plan.md",
+        "bytes":  2025,
+        "sha256":  "C2A41C0617FCF7460A46CC20D3C22AC1F397330E2C2D565FA33124A35128D3EC",
+        "lastWrite":  "2026-05-23T18:10:52"
+    },
+    {
+        "path":  "references\\20260523-upgrade-report.md",
+        "bytes":  5398,
+        "sha256":  "48472BB65F628B96AD2F2945B51DE85CF5DF01B327C2F87C152C04C1FEFBCCA6",
+        "lastWrite":  "2026-05-23T18:42:05"
+    },
+    {
+        "path":  "SKILL.md",
+        "bytes":  4517,
+        "sha256":  "4D02299F90FF5844563312B083C275914985257F5A990526093AAB2C46BD12A7",
+        "lastWrite":  "2026-05-23T18:41:11"
+    }
+]

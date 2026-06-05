@@ -1,0 +1,41 @@
+﻿time_start,time_end,shot,visual_action,layers,subtitle,subtitle_position,sound,transition
+3.0,3.2,Shot01_一拍开路,手机压到作业本，震动，字幕“一拍。”,"BG_LiveDesk, HomeworkPaper, PhoneFrame, SubtitleLayer",一拍。,bottom-center y=1510,手机落纸啪；雨声强,hard drop + 3 frame shake
+3.2,3.4,Shot01_一拍开路,手机压到作业本，震动，字幕“一拍。”,"BG_LiveDesk, HomeworkPaper, PhoneFrame, SubtitleLayer",一拍。,bottom-center y=1510,手机落纸啪；雨声强,hard drop + 3 frame shake
+3.4,3.6,Shot01_一拍开路,手机压到作业本，震动，字幕“一拍。”,"BG_LiveDesk, HomeworkPaper, PhoneFrame, SubtitleLayer",一拍。,bottom-center y=1510,手机落纸啪；雨声强,hard drop + 3 frame shake
+3.6,3.8,Shot02_先看清题,墨线扫描，字迹被吸入手机屏幕,"PhoneFrame, InkScanLayer, HomeworkPaper, SubtitleLayer",先看清题。,bottom-center y=1510,低频扫描嗡；墨线收束,ink dissolve
+3.8,4.0,Shot02_先看清题,墨线扫描，字迹被吸入手机屏幕,"PhoneFrame, InkScanLayer, HomeworkPaper, SubtitleLayer",先看清题。,bottom-center y=1510,低频扫描嗡；墨线收束,ink dissolve
+4.0,4.2,Shot02_先看清题,墨线扫描，字迹被吸入手机屏幕,"PhoneFrame, InkScanLayer, HomeworkPaper, SubtitleLayer",先看清题。,bottom-center y=1510,低频扫描嗡；墨线收束,ink dissolve
+4.2,4.4,Shot02_先看清题,墨线扫描，字迹被吸入手机屏幕,"PhoneFrame, InkScanLayer, HomeworkPaper, SubtitleLayer",先看清题。,bottom-center y=1510,低频扫描嗡；墨线收束,ink dissolve
+4.4,4.6,Shot02_先看清题,墨线扫描，字迹被吸入手机屏幕,"PhoneFrame, InkScanLayer, HomeworkPaper, SubtitleLayer",先看清题。,bottom-center y=1510,低频扫描嗡；墨线收束,ink dissolve
+4.6,4.8,Shot03_点题眼,朱砂红点点中关键条件，题眼被圈出,"AcupointLayer, HomeworkPaper, SubtitleLayer",题眼在这。,bottom-center y=1510,毛笔落纸；点穴咚,brush stamp
+4.8,5.0,Shot03_点题眼,朱砂红点点中关键条件，题眼被圈出,"AcupointLayer, HomeworkPaper, SubtitleLayer",题眼在这。,bottom-center y=1510,毛笔落纸；点穴咚,brush stamp
+5.0,5.2,Shot03_点题眼,朱砂红点点中关键条件，题眼被圈出,"AcupointLayer, HomeworkPaper, SubtitleLayer",题眼在这。,bottom-center y=1510,毛笔落纸；点穴咚,brush stamp
+5.2,5.4,Shot03_点题眼,朱砂红点点中关键条件，题眼被圈出,"AcupointLayer, HomeworkPaper, SubtitleLayer",题眼在这。,bottom-center y=1510,毛笔落纸；点穴咚,brush stamp
+5.4,5.6,Shot03_点题眼,朱砂红点点中关键条件，题眼被圈出,"AcupointLayer, HomeworkPaper, SubtitleLayer",题眼在这。,bottom-center y=1510,毛笔落纸；点穴咚,brush stamp
+5.6,5.8,Shot03_点题眼,朱砂红点点中关键条件，题眼被圈出,"AcupointLayer, HomeworkPaper, SubtitleLayer",题眼在这。,bottom-center y=1510,毛笔落纸；点穴咚,brush stamp
+5.8,6.0,Shot04_拆成路,乱线拉直成三块石阶：已知→要问→方法,"PathLayer, HomeworkPaper, SubtitleLayer",乱题，拆成路。,bottom-center y=1510,竹板三下；雨声下降,line straighten
+6.0,6.2,Shot04_拆成路,乱线拉直成三块石阶：已知→要问→方法,"PathLayer, HomeworkPaper, SubtitleLayer",乱题，拆成路。,bottom-center y=1510,竹板三下；雨声下降,line straighten
+6.2,6.4,Shot04_拆成路,乱线拉直成三块石阶：已知→要问→方法,"PathLayer, HomeworkPaper, SubtitleLayer",乱题，拆成路。,bottom-center y=1510,竹板三下；雨声下降,line straighten
+6.4,6.6,Shot04_拆成路,乱线拉直成三块石阶：已知→要问→方法,"PathLayer, HomeworkPaper, SubtitleLayer",乱题，拆成路。,bottom-center y=1510,竹板三下；雨声下降,line straighten
+6.6,6.8,Shot04_拆成路,乱线拉直成三块石阶：已知→要问→方法,"PathLayer, HomeworkPaper, SubtitleLayer",乱题，拆成路。,bottom-center y=1510,竹板三下；雨声下降,line straighten
+6.8,7.0,Shot04_拆成路,乱线拉直成三块石阶：已知→要问→方法,"PathLayer, HomeworkPaper, SubtitleLayer",乱题，拆成路。,bottom-center y=1510,竹板三下；雨声下降,line straighten
+7.0,7.2,Shot04_拆成路,乱线拉直成三块石阶：已知→要问→方法,"PathLayer, HomeworkPaper, SubtitleLayer",乱题，拆成路。,bottom-center y=1510,竹板三下；雨声下降,line straighten
+7.2,7.4,Shot05_讲人话,短讲法出现，孩子铅笔重新落纸,"ExplanationLayer, HomeworkPaper, ChildHand, SubtitleLayer",像人一样讲。,bottom-center y=1510,纸页轻响；铅笔落纸；暖弦起,warm ink fade
+7.4,7.6,Shot05_讲人话,短讲法出现，孩子铅笔重新落纸,"ExplanationLayer, HomeworkPaper, ChildHand, SubtitleLayer",像人一样讲。,bottom-center y=1510,纸页轻响；铅笔落纸；暖弦起,warm ink fade
+7.6,7.8,Shot05_讲人话,短讲法出现，孩子铅笔重新落纸,"ExplanationLayer, HomeworkPaper, ChildHand, SubtitleLayer",像人一样讲。,bottom-center y=1510,纸页轻响；铅笔落纸；暖弦起,warm ink fade
+7.8,8.0,Shot05_讲人话,短讲法出现，孩子铅笔重新落纸,"ExplanationLayer, HomeworkPaper, ChildHand, SubtitleLayer",像人一样讲。,bottom-center y=1510,纸页轻响；铅笔落纸；暖弦起,warm ink fade
+8.0,8.2,Shot05_讲人话,短讲法出现，孩子铅笔重新落纸,"ExplanationLayer, HomeworkPaper, ChildHand, SubtitleLayer",像人一样讲。,bottom-center y=1510,纸页轻响；铅笔落纸；暖弦起,warm ink fade
+8.2,8.4,Shot05_讲人话,短讲法出现，孩子铅笔重新落纸,"ExplanationLayer, HomeworkPaper, ChildHand, SubtitleLayer",像人一样讲。,bottom-center y=1510,纸页轻响；铅笔落纸；暖弦起,warm ink fade
+8.4,8.6,Shot05_讲人话,短讲法出现，孩子铅笔重新落纸,"ExplanationLayer, HomeworkPaper, ChildHand, SubtitleLayer",像人一样讲。,bottom-center y=1510,纸页轻响；铅笔落纸；暖弦起,warm ink fade
+8.6,8.8,Shot05_讲人话,短讲法出现，孩子铅笔重新落纸,"ExplanationLayer, HomeworkPaper, ChildHand, SubtitleLayer",像人一样讲。,bottom-center y=1510,纸页轻响；铅笔落纸；暖弦起,warm ink fade
+8.8,9.0,Shot06_点错因,错步被红点点中，标签“错因：漏看单位”,"ErrorLayer, AcupointLayer, HomeworkPaper, SubtitleLayer",错在哪，也点出来。,bottom-center y=1510,叮；低频解除；雨声再退,red ink pulse
+9.0,9.2,Shot06_点错因,错步被红点点中，标签“错因：漏看单位”,"ErrorLayer, AcupointLayer, HomeworkPaper, SubtitleLayer",错在哪，也点出来。,bottom-center y=1510,叮；低频解除；雨声再退,red ink pulse
+9.2,9.4,Shot06_点错因,错步被红点点中，标签“错因：漏看单位”,"ErrorLayer, AcupointLayer, HomeworkPaper, SubtitleLayer",错在哪，也点出来。,bottom-center y=1510,叮；低频解除；雨声再退,red ink pulse
+9.4,9.6,Shot06_点错因,错步被红点点中，标签“错因：漏看单位”,"ErrorLayer, AcupointLayer, HomeworkPaper, SubtitleLayer",错在哪，也点出来。,bottom-center y=1510,叮；低频解除；雨声再退,red ink pulse
+9.6,9.8,Shot06_点错因,错步被红点点中，标签“错因：漏看单位”,"ErrorLayer, AcupointLayer, HomeworkPaper, SubtitleLayer",错在哪，也点出来。,bottom-center y=1510,叮；低频解除；雨声再退,red ink pulse
+9.8,10.0,Shot07_三科闪影,数学/语文/英语三张作业纸快速闪过,"SubjectFlashLayer, SubtitleLayer",语文、数学、英语，都能拆路。,bottom-center y=1510,三连快切音；暖弦上升,triple ink slash
+10.0,10.2,Shot07_三科闪影,数学/语文/英语三张作业纸快速闪过,"SubjectFlashLayer, SubtitleLayer",语文、数学、英语，都能拆路。,bottom-center y=1510,三连快切音；暖弦上升,triple ink slash
+10.2,10.4,Shot07_三科闪影,数学/语文/英语三张作业纸快速闪过,"SubjectFlashLayer, SubtitleLayer",语文、数学、英语，都能拆路。,bottom-center y=1510,三连快切音；暖弦上升,triple ink slash
+10.4,10.6,Shot07_三科闪影,数学/语文/英语三张作业纸快速闪过,"SubjectFlashLayer, SubtitleLayer",语文、数学、英语，都能拆路。,bottom-center y=1510,三连快切音；暖弦上升,triple ink slash
+10.6,10.8,Shot08_孩子听懂,孩子眼睛亮、轻轻点头，妈妈眉头松开,"ChildFace, MotherFace, WarmLightLayer",,none,轻吸气；暖光转场音,warm crossfade
+10.8,11.0,Shot08_孩子听懂,孩子眼睛亮、轻轻点头，妈妈眉头松开,"ChildFace, MotherFace, WarmLightLayer",,none,轻吸气；暖光转场音,warm crossfade

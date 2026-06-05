@@ -1,0 +1,45 @@
+﻿exit=0
+# Claude Code DeepSeek V4 Pro Verification
+Started: 2026-05-18 23:38:46 +08:00
+## G02 Environment
+Command: claude --version
+ExitCode: 0
+Output:
+  2.1.143 (Claude Code)
+Command: node --version
+ExitCode: 0
+Output:
+  v24.14.0
+Command: npm.cmd --version
+ExitCode: 0
+Output:
+  11.9.0
+Command: git --version
+ExitCode: 0
+Output:
+  git version 2.53.0.windows.1
+## G04 Key Check
+Evidence: user_env_present=True; key_length=35; full_key_printed=False
+Result: G04_PASS
+## G05 Env Verify
+ANTHROPIC_MODEL=deepseek-v4-pro[1m]
+ANTHROPIC_DEFAULT_SONNET_MODEL=deepseek-v4-pro[1m]
+CLAUDE_CODE_EFFORT_LEVEL=max
+CLAUDE_CODE_SUBAGENT_MODEL=deepseek-v4-flash
+ANTHROPIC_DEFAULT_HAIKU_MODEL=deepseek-v4-flash
+ANTHROPIC_DEFAULT_OPUS_MODEL=deepseek-v4-pro[1m]
+ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
+ANTHROPIC_AUTH_TOKEN_present=True; full_token_printed=False; token_length=35
+Result: G05_PASS
+## G06 Minimal API
+ExitCode: 0
+Output:
+  DS_CLAUDE_CODE_OK
+Result: G06_PASS
+## G07 Read-only Project
+ExitCode: 0
+Output:
+  当前目录是一个几乎为空的项目目录，仅包含一个 README.md 文件。
+NoModificationEvidence: before_after_snapshot_equal=True
+Result: G07_PASS
+FINAL_PASS_CLAUDE_CODE_DEEPSEEK_V4PRO_READY

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Windows Hermes Operations"
+  short_description: "Open and recover Windows native Hermes safely"
+  default_prompt: "Use $windows-hermes-operations to open Windows native Hermes and verify it without touching the new install."

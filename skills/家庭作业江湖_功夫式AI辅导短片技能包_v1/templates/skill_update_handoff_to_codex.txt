@@ -1,0 +1,35 @@
+TASK_ID: TASK-CODEX-SAVE-HOMEWORK-JIANGHU-SKILL
+
+请把当前“家庭作业江湖：功夫式 AI 辅导短片技能包 v1”保存到 H 盘技能目录。
+
+## 本轮目标
+
+将技能包保存到：
+
+H:\Hermes_Skills\家庭作业江湖_功夫式AI辅导短片技能包\
+
+并确保至少包含：
+
+1. SKILL.md
+2. references\
+3. templates\
+4. checklists\
+
+## 重要要求
+
+1. 这是可复用 skill，不是临时文案。
+2. 必须保留剧本优先、导演优先、Codex 执行器这些规则。
+3. 必须保留所有逐秒分镜、尾卡号码规则、人物审美规则。
+4. 不要把它简化成普通广告提示词。
+5. 不要丢失“号码像电影片名落版，只出现数字，不写电话：”这条规则。
+
+## 成功判定
+
+1. H 盘目录存在。
+2. SKILL.md 存在。
+3. templates\codex_task_vfinal.txt 存在。
+4. references\03-15秒导演分镜-v1.md 存在。
+5. checklists\review_checklist.md 存在。
+6. 回报最终路径。
+
+END_TASK_ID: TASK-CODEX-SAVE-HOMEWORK-JIANGHU-SKILL

@@ -1,0 +1,17 @@
+{
+  "name": "家庭作业江湖_功夫式AI辅导短片技能包_v1",
+  "created": "2026-05-19T15:39:14.997016",
+  "files": [
+    "README.md",
+    "SKILL.md",
+    "checklists/review_checklist.md",
+    "references/01-创作总纲-剧本优先.md",
+    "references/02-家庭作业江湖-v1-故事圣经.md",
+    "references/03-15秒导演分镜-v1.md",
+    "references/04-人物画面审美规则.md",
+    "references/05-声音字幕尾卡规则.md",
+    "templates/codex_task_vfinal.txt",
+    "templates/skill_update_handoff_to_codex.txt"
+  ],
+  "recommended_path": "H:\\Hermes_Skills\\家庭作业江湖_功夫式AI辅导短片技能包"
+}

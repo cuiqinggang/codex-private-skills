@@ -1,0 +1,64 @@
+﻿
+> openclaw --version
+EXIT 
+OpenClaw 2026.5.20 (e510042)
+
+> npm list -g openclaw --depth=0
+EXIT 
+C:\Users\A\AppData\Roaming\npm
+`-- openclaw@2026.5.20
+
+
+> npm view openclaw version dist-tags engines --json
+EXIT 
+{
+  "version": "2026.5.20",
+  "dist-tags": {
+    "alpha": "2026.5.19-alpha.1",
+    "beta": "2026.5.22-beta.1",
+    "latest": "2026.5.20"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  }
+}
+
+> openclaw update status --json
+EXIT 
+{
+  "update": {
+    "root": "C:\\Users\\A\\AppData\\Roaming\\npm\\node_modules\\openclaw",
+    "installKind": "package",
+    "packageManager": "pnpm",
+    "deps": {
+      "manager": "pnpm",
+      "status": "unknown",
+      "lockfilePath": "C:\\Users\\A\\AppData\\Roaming\\npm\\node_modules\\openclaw\\pnpm-lock.yaml",
+      "markerPath": "C:\\Users\\A\\AppData\\Roaming\\npm\\node_modules\\openclaw\\node_modules\\.modules.yaml",
+      "reason": "lockfile missing"
+    },
+    "registry": {
+      "latestVersion": "2026.5.20",
+      "tag": "latest"
+    }
+  },
+  "channel": {
+    "value": "stable",
+    "source": "default",
+    "label": "stable (default)",
+    "config": null
+  },
+  "availability": {
+    "available": false,
+    "hasGitUpdate": false,
+    "hasRegistryUpdate": false,
+    "latestVersion": null,
+    "gitBehind": null
+  }
+}
+
+> powershell -NoProfile -Command "$paths=@('C:\Users\A\.openclaw\openclaw.json','C:\Users\A\.openclaw\agents\main\agent\auth-profiles.json','C:\Users\A\.openclaw\agents\main\agent\models.json'); foreach($p in $paths){ if(Test-Path -LiteralPath $p){ $raw=Get-Content -LiteralPath $p -Raw; Write-Output ('PATH=' + $p + ' EXISTS contains_openrouter=' + [bool]($raw -match 'openrouter') + ' contains_kimi=' + [bool]($raw -match 'kimi-k2.5') + ' contains_pangu=' + [bool]($raw -match 'pangu|pan-gu|盘古') + ' contains_secret=' + [bool]($raw -match '(?i)sk-[A-Za-z0-9._-]{6,}')) } else { Write-Output ('PATH=' + $p + ' MISSING') } }"
+EXIT 
+PATH=C:\Users\A\.openclaw\openclaw.json MISSING
+PATH=C:\Users\A\.openclaw\agents\main\agent\auth-profiles.json MISSING
+PATH=C:\Users\A\.openclaw\agents\main\agent\models.json EXISTS contains_openrouter=False contains_kimi=False contains_pangu=False contains_secret=False
