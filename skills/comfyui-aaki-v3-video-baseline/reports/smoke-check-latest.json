@@ -1,0 +1,75 @@
+﻿{
+    "created_at":  "2026-05-24 00:28:34 +08:00",
+    "ok":  true,
+    "failed":  [
+
+               ],
+    "checks":  {
+                   "InstallRoot":  {
+                                       "path":  "H:\\AI\\ComfyUI_Aaki_v3",
+                                       "exists":  true,
+                                       "length":  null
+                                   },
+                   "ComfyRoot":  {
+                                     "path":  "H:\\AI\\ComfyUI_Aaki_v3\\ComfyUI",
+                                     "exists":  true,
+                                     "length":  null
+                                 },
+                   "DiffusionModel":  {
+                                          "path":  "H:\\AI\\ComfyUI_Aaki_v3\\ComfyUI\\models\\diffusion_models\\wan2.2_ti2v_5B_fp16.safetensors",
+                                          "exists":  true,
+                                          "length":  9999658848
+                                      },
+                   "TextEncoder":  {
+                                       "path":  "H:\\AI\\ComfyUI_Aaki_v3\\ComfyUI\\models\\text_encoders\\umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+                                       "exists":  true,
+                                       "length":  6735906897
+                                   },
+                   "Vae":  {
+                               "path":  "H:\\AI\\ComfyUI_Aaki_v3\\ComfyUI\\models\\vae\\wan2.2_vae.safetensors",
+                               "exists":  true,
+                               "length":  1409400960
+                           },
+                   "RawVideoOutput":  {
+                                          "path":  "H:\\AI\\ComfyUI_Aaki_v3\\ComfyUI\\output\\video",
+                                          "exists":  true,
+                                          "length":  null
+                                      },
+                   "VideoSelected":  {
+                                         "path":  "H:\\AI\\ComfyUI_Aaki_v3\\ComfyUI\\output\\video_selected",
+                                         "exists":  true,
+                                         "length":  null
+                                     },
+                   "RemotionInbox":  {
+                                         "path":  "H:\\AI\\ComfyUI_Aaki_v3\\ComfyUI\\output\\remotion_inbox",
+                                         "exists":  true,
+                                         "length":  null
+                                     },
+                   "Workflow":  {
+                                    "path":  "H:\\AI\\skills\\comfyui-aaki-v3-video-baseline\\workflows\\wan22_5b_lowrisk_ui_workflow.json",
+                                    "exists":  true,
+                                    "length":  15146
+                                },
+                   "ApiPrompt":  {
+                                     "path":  "H:\\AI\\skills\\comfyui-aaki-v3-video-baseline\\prompts\\wan22_5b_lowrisk_api_prompt.json",
+                                     "exists":  true,
+                                     "length":  2564
+                                 },
+                   "HttpRoot":  {
+                                    "url":  "http://127.0.0.1:8188/",
+                                    "status":  200
+                                },
+                   "SystemStats":  {
+                                       "url":  "http://127.0.0.1:8188/system_stats",
+                                       "status":  200
+                                   },
+                   "Queue":  {
+                                 "url":  "http://127.0.0.1:8188/queue",
+                                 "status":  200
+                             },
+                   "Gpu":  {
+                               "nvidia_smi":  "NVIDIA GeForce RTX 2080 Ti, 591.74, 22528, 13042, 9189, 7.5"
+                           }
+               },
+    "note":  "No prompt was queued and no video was generated."
+}

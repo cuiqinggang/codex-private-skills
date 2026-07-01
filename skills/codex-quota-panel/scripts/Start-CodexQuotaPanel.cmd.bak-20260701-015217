@@ -1,0 +1,2 @@
+@echo off
+start "Codex Quota Panel" powershell.exe -STA -NoProfile -ExecutionPolicy Bypass -File "%~dp0CodexQuotaPanel.ps1"

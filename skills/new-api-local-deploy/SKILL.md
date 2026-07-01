@@ -1,4 +1,4 @@
----
+﻿---
 name: new-api-local-deploy
 description: Use when deploying, repairing, updating, documenting, or verifying the user's local self-use New API gateway on this Windows machine with Docker Compose, PostgreSQL, Redis, localhost-only access, token setup guidance, port separation from Hermes/Open WebUI, or Hermes/Open WebUI no-answer chain failures.
 ---
@@ -134,3 +134,4 @@ After deployment, tell the user:
 - Add upstream channels such as OpenAI, Claude, Gemini, DeepSeek, or Qwen.
 - Create a New API token.
 - Configure clients with `API Base: http://localhost:3001/v1` and the New API token.
+

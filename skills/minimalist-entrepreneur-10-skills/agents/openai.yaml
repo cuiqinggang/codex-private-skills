@@ -1,0 +1,4 @@
+interface:
+  display_name: "Minimalist Entrepreneur 10 Skills"
+  short_description: "Minimalist entrepreneur 10-skill workflow"
+  default_prompt: "按 The Minimalist Entrepreneur 的 10 个技能，帮我从社区、验证、MVP、流程化、首批客户、定价、营销、增长、价值观和决策复盘梳理我的一人公司。"

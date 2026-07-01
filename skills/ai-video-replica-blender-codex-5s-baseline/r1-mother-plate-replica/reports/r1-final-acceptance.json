@@ -1,0 +1,42 @@
+{
+  "task_id": "AI_VIDEO_REPLICA_R1_MOTHER_PLATE_REPLICA_12_LAYER_20260529",
+  "status": "PASS",
+  "final_status_code": "AI_VIDEO_REPLICA_R1_PASS",
+  "gates": {
+    "L01": "L01_PASS_TASK_CONTRACT_LOCKED",
+    "L02": "L02_PASS_MASTER_LOCKED",
+    "L03": "L03_PASS_TARGET_SEGMENT_LOCKED",
+    "L04": "L04_PASS_MULTIMODAL_BREAKDOWN_READY",
+    "L05": "L05_PASS_REPLICA_SPEC_EXTRACTED",
+    "L06": "L06_PASS_REBUILD_PLAN_READY",
+    "L07": "L07_PASS_VISUAL_REBUILD_READY",
+    "L08": "L08_PASS_MOTION_AUDIO_REBUILT",
+    "L09": "L09_PASS_FIRST_COMPOSITE_COMPARABLE",
+    "L10": "L10_PASS_VERIFICATION_PLANE_PASS",
+    "L11": "L11_PASS_REPAIR_LOOP_CLOSED",
+    "L12": "L12_PASS_FINAL_ACCEPTANCE_AND_SKILL_EXTENSION_READY"
+  },
+  "scores": {
+    "keyframe_average": 94.0,
+    "lowest_keyframe": 89.0,
+    "motion_rule_replica": 88,
+    "sound_event_and_mood": 84,
+    "modern_desktop_magic_juxtaposition": 92,
+    "clearly_unlike_keyframes": 0
+  },
+  "anti_copy_evidence": {
+    "target_clip_sha256": "a3d8debea622ec29f425a87361a685107d80bbaede9553b71df70e3f7caea225",
+    "first_composite_sha256": "c591594d2d455d41256483528c8b6e3ba2c46b470bab1fc68ccd345c7b900b83",
+    "guide_plate_count": 8,
+    "generated_frame_count": 174,
+    "full_source_frame_sequence_used": false
+  },
+  "outputs": {
+    "target_segment": "H:\\AI\\workspaces\\AI-VIDEO-REPLICA-R1-MOTHER-PLATE-20260529\\02_segment_lock\\target-clip.mp4",
+    "first_composite": "H:\\AI\\workspaces\\AI-VIDEO-REPLICA-R1-MOTHER-PLATE-20260529\\08_composite_draft\\r1-first-composite.mp4",
+    "comparison_board": "H:\\AI\\workspaces\\AI-VIDEO-REPLICA-R1-MOTHER-PLATE-20260529\\09_comparison\\contact-sheet.jpg",
+    "verification_report": "H:\\AI\\workspaces\\AI-VIDEO-REPLICA-R1-MOTHER-PLATE-20260529\\10_reports\\verification-result.md",
+    "repair_log": "H:\\AI\\workspaces\\AI-VIDEO-REPLICA-R1-MOTHER-PLATE-20260529\\11_repair_loop\\repair-loop-log.md",
+    "skill_extension": "H:\\AI\\skills\\ai-video-replica-blender-codex-5s-baseline\\r1-mother-plate-replica"
+  }
+}

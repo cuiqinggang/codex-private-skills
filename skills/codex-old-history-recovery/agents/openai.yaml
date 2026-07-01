@@ -1,0 +1,3 @@
+display_name: Codex Old History Recovery
+short_description: Recover, parse, preserve, and search old Codex Desktop chats and task history after relogin or missing UI history.
+default_prompt: Search or recover old Codex Desktop history safely. Use the fixed old-history pointer when available, search read-only, and never modify auth, config, caches, or original .codex files.

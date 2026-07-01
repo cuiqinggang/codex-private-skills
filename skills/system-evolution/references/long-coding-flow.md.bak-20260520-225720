@@ -1,0 +1,40 @@
+# 长编程流程自动化
+
+## 目标
+
+强化 Cursor + Claude Code + DeepSeek V4Pro 的长时间综合编程能力，让低成本模型能在几个小时任务中保持可控、可恢复、可测试、可交接，而不是依赖一次性长聊天。
+
+## 默认路线
+
+1. Codex 先生成长编程任务包。
+2. Cursor + Claude Code + DeepSeek V4Pro 按任务包执行局部编辑。
+3. 每 30-90 分钟形成一个可验证阶段。
+4. 阶段结束必须更新 execution-log、verification、handoff、next-actions。
+5. Codex 或 Hermes 接手时只读取 handoff 和当前阶段，不靠聊天记忆。
+6. 验证成功后沉淀为 skill、脚本、规则或昨日重现案例。
+
+## 任务包必须包含
+
+- `00-goal.md`：目标、范围、禁止修改项、预算、预期输出。
+- `01-context.md`：相关文件、现有规则、已知风险、成熟方案链接。
+- `02-plan.md`：阶段计划、验证命令、成功标准、失败停止条件。
+- `03-execution-log.md`：命令、结果、错误、证据路径。
+- `04-verification.md`：测试结果、失败原因、下一假设。
+- `05-handoff.md`：已完成、未完成、阻塞、下一轮第一步。
+- `06-next-actions.md`：低风险下一步、需批准项、暂不做项。
+
+## DeepSeek V4Pro 加固规则
+
+- 只给当前阶段所需上下文，避免一次性塞入全历史。
+- 先读项目规则和测试，再改代码。
+- 先写/确认验证命令，再执行实现。
+- 失败时必须输出 root cause、证据和最小修复，不允许连续猜修。
+- 长任务中固定产出 handoff，使下一轮可恢复。
+
+## 必须停止并请求批准
+
+- 需要 API key、Cookie、账号登录或付费调用。
+- 需要修改 Hermes、Codex 全局规则、Open WebUI 主配置。
+- 需要启用 Cursor Background Agents API、GitHub App、Codex cloud 或长期后台服务。
+- 需要删除文件、批量改生产代码或运行未知安装脚本。
+

@@ -1,6 +1,6 @@
----
+﻿---
 name: codex-deepseek-v4pro-ccx-ccswitch-replay
-description: Use this skill to restore, repair, migrate, or verify the 2026-05-14 successful Windows Codex backup route: DeepSeek V4 Pro via CCX/API Proxy on localhost:13000/v1, CC Switch Codex provider, and Codex API-key provider. Trigger when the user says "恢复 Codex DeepSeek V4 Pro 备用路线", "重新配置 Codex DeepSeek", "Codex 额度不够，切 DeepSeek V4 Pro", "复现 CCX + CC Switch 接 DeepSeek", "Codex DeepSeek V4 Pro 备用模型修复", or "按 2026-05-14 成功案例恢复".
+description: Use this skill to restore, repair, migrate, or verify the 2026-05-14 successful Windows Codex backup route: DeepSeek V4 Pro via CCX/API Proxy on localhost:13000/v1, CC Switch Codex provider, and Codex API-key provider. Trigger when the user says "鎭㈠ Codex DeepSeek V4 Pro 澶囩敤璺嚎", "閲嶆柊閰嶇疆 Codex DeepSeek", "Codex 棰濆害涓嶅锛屽垏 DeepSeek V4 Pro", "澶嶇幇 CCX + CC Switch 鎺?DeepSeek", "Codex DeepSeek V4 Pro 澶囩敤妯″瀷淇", or "鎸?2026-05-14 鎴愬姛妗堜緥鎭㈠".
 ---
 
 # Codex DeepSeek V4 Pro Backup via CCX and CC Switch
@@ -13,12 +13,12 @@ DeepSeek official API -> CCX/API Proxy -> `http://localhost:13000/v1` -> CC Swit
 
 Load this skill when the user asks:
 
-- "恢复 Codex DeepSeek V4 Pro 备用路线"
-- "重新配置 Codex DeepSeek"
-- "Codex 额度不够，切 DeepSeek V4 Pro"
-- "复现 CCX + CC Switch 接 DeepSeek"
-- "Codex DeepSeek V4 Pro 备用模型修复"
-- "按 2026-05-14 成功案例恢复"
+- "鎭㈠ Codex DeepSeek V4 Pro 澶囩敤璺嚎"
+- "閲嶆柊閰嶇疆 Codex DeepSeek"
+- "Codex 棰濆害涓嶅锛屽垏 DeepSeek V4 Pro"
+- "澶嶇幇 CCX + CC Switch 鎺?DeepSeek"
+- "Codex DeepSeek V4 Pro 澶囩敤妯″瀷淇"
+- "鎸?2026-05-14 鎴愬姛妗堜緥鎭㈠"
 
 ## When To Use
 
@@ -65,3 +65,51 @@ First confirm the GPT default path is untouched, then start or repair CCX on `13
 
 - `scripts/check-current-state.ps1`: read-only status check.
 - `scripts/verify-deepseek-v4pro-backup.ps1`: CCX and optional Codex backup route verification.
+
+## 2026-05-18 最終成功路線補充
+
+### 1. Codex 桌面圖形版不可用
+
+- Codex 桌面圖形版仍受官方額度限制，不能作為 DeepSeek V4 Pro 的可靠入口。
+- 不要再使用桌面版舊會話進行驗證。
+
+### 2. 最終跑通的成熟路線
+
+- 路線：**Codex CLI + 獨立 CODEX_HOME + CCX localhost:13000/v1 + DeepSeek V4 Pro**。
+- 不要修改 Hermes/愛馬仕。
+- 不要修改 Open WebUI。
+- 不要混入 DeepSeek Flash。
+- 不要在 C:\Windows\system32 做項目。
+- 真實任務前先 cd 到項目目錄。
+
+### 3. 成功證據
+
+- `npx -y @openai/codex@latest --version` 返回 `codex-cli 0.130.0`
+- model: `deepseek-v4-pro`
+- provider: `ccx-deepseek-v4pro-backup`
+- 回覆 `CODEX_DEEPSEEK_CLI_OK`
+- Sandbox ready
+- 回覆 `DEEPSEEK_SANDBOX_OK`
+- 能讀取 `C:\Users\A\Desktop\1` 當前目錄
+
+### 4. 關鍵步驟
+
+1. 從舊成功案例 `.env` 導入 `CCX_PROXY_ACCESS_KEY`。
+2. 創建 `C:\Users\A\.codex-deepseek-v4pro\config.toml`。
+3. 配置 `wire_api = "responses"`。
+4. 用 `CODEX_HOME` 指向獨立配置啟動 Codex CLI：
+
+```powershell
+$env:CODEX_HOME = "C:\Users\A\.codex-deepseek-v4pro"
+npx -y @openai/codex@latest
+```
+
+### 5. 注意事項
+
+- 不要再使用桌面版舊會話驗證。
+- 不要修改 Hermes/愛馬仕。
+- 不要修改 Open WebUI。
+- 不要混入 DeepSeek Flash。
+- 不要在 C:\Windows\system32 做項目。
+- 真實任務前先 cd 到項目目錄。
+

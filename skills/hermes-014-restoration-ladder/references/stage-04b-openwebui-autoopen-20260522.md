@@ -6,6 +6,13 @@ made 8642 durable.
 
 ## Scope
 
+For Hermes 0.15.2 and newer, also read
+`references/incident-2026-06-02-stage04b-0152-autoopen-repair.md`. The Stage
+04b scripts must send `Authorization: Bearer <API_SERVER_KEY>` for local 8642
+`/v1/models` and chat checks, and the gateway Startup fallback should be hidden
+with `Hermes_Gateway_Hidden.vbs` rather than a visible `Hermes_Gateway.cmd`
+console.
+
 This stage only provides:
 
 ```text

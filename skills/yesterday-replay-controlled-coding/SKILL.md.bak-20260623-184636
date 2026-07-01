@@ -1,0 +1,263 @@
+---
+name: yesterday-replay-controlled-coding
+description: "Use first when starting any Codex task in this workspace. Codex接任务 → 简单直接做 → 复杂先昨日重现找成熟方案 → 本地适配 → GPT/多模型审核打分 ≥90分才执行 → 证据验收 → ZIP交付。"
+version: 2.0.1
+---
+
+# Yesterday Replay Controlled Coding
+
+## Purpose
+
+This skill is the first, lightweight routing gate for the user's workflow. It
+must classify the task before any other skill, browser path, shell workflow, GPT
+planning route, or implementation process is selected.
+
+Keep this file cheap to load. Do not read the detailed workflow reference unless
+the classification below says it is needed.
+
+## Initial Task Read Gate (初始任务必读门禁)
+
+This skill must be read at the start of a new user task when the task is
+substantial enough to need routing, planning, code changes, installation,
+automation, repair, multi-step verification, browser operation, document
+production, packaging, or long-running execution.
+
+Do not repeatedly reload this skill for every message inside the same active
+task. Mid-task user additions, corrections, clarifications, or problem reports
+should be absorbed into the current route unless they clearly start a separate
+new complex task.
+
+Load discipline:
+
+- New complex task from the user: read this skill first, then classify.
+- Simple one-off request: answer directly or run the smallest useful check.
+- Mid-task supplement or correction: continue the active route; do not restart
+  the skill loading ceremony.
+- New task after the prior task is complete: read this skill again if the new
+  task is complex.
+- Heavy references such as `references/controlled-workflow.md` are loaded only
+  after G00 classification says the task is Complex.
+
+## 完整工作流总览
+
+```
+Codex接到任务
+  │
+  ├─ G00 轻量分类
+  │   ├─ Simple → 直接做 → 完成
+  │   ├─ Complex → 进入昨日重现流程 ↓
+  │   └─ Stop Gate → 停下来问用户
+  │
+  ├─ 昨日重现（搜索成熟方案）
+  │   ├─ 找到成熟方案 → 本地适配（规划+测试+修正）
+  │   └─ 基本都会找到：普通人遇到的问题都是已有成熟组件的组合搭配
+  │
+  ├─ GPT/多模型审核打分闭环
+  │   ├─ 方案提交GPT审核 → 打分
+  │   ├─ ≥90分 → 正式执行
+  │   └─ <90分 → Loop回修改 → 再提交审核 → 直到≥90分
+  │
+  ├─ 执行 + 证据验收
+  │   └─ 产出PASS/FAIL证据
+  │
+  └─ ZIP交付
+      └─ 三位数字ZIP打包到桌面
+```
+
+## G00 Lightweight Classification
+
+Classify the request into exactly one route:
+
+| Route | Use when | Action |
+| --- | --- | --- |
+| Simple | The task is deterministic, low-risk, one-step, or answerable from current context with no meaningful route judgment. | Do it directly. Do not load the detailed workflow reference. Use the narrowest meaningful check if a check is useful. |
+| Complex | The task involves coding, debugging, configuration, installation, automation, repair, multi-step analysis, route judgment, external/current facts, browser work, documents, or non-trivial verification. | Load `references/controlled-workflow.md`, then choose the mature local skill, official source, GPT bridge route, tests, or browser workflow that fits. |
+| Stop Gate | The task may delete data, batch-modify broad areas, change system/account/payment/security state, expose secrets, run unknown high-impact commands, or has an explicit safety blocker. | Stop before execution and ask the user for the narrowest missing decision or permission. |
+
+## Simple Route
+
+For simple requests:
+
+- Answer or run the minimal read-only/local command directly.
+- Do not invoke GPT web planning.
+- Do not load heavy reference files or extra process skills unless the request
+  itself names them.
+- Preserve normal safety boundaries.
+- If claiming a local fact, use a narrow check when cheap.
+
+Examples: explain a concept, answer a short question from already-loaded
+context, list a directory, check whether a file exists, run an explicit harmless
+command, or inspect one small file.
+
+## Complex Route
+
+Before complex execution, read:
+
+```text
+C:\Users\A\.codex\skills\yesterday-replay-controlled-coding\references\controlled-workflow.md
+```
+
+Then follow the detailed rules there for:
+
+- risk levels and Level 0-3 execution
+- backup, diff, logs, and verification discipline
+- Superpowers-style planning, debugging, TDD, and completion checks
+- yesterday-replay mature-path reuse and local adaptation
+- GPT/多模型审核打分闭环 (score gate ≥90)
+- ChatGPT screenshot bridge boundaries
+- evidence verification and ZIP delivery
+
+GPT web planning is optional, not mandatory. Use it only when it materially helps
+and the allowed screenshot bridge route is available. If a local skill,
+official doc, browser/accessibility path, or test path is sufficient, use that
+instead.
+
+## Score Gate (≥90分门槛)
+
+复杂任务方案在执行前必须通过审核打分：
+
+| 分数段 | 结论 | 动作 |
+|--------|------|------|
+| ≥90 | 通过 | 正式执行 |
+| 80-89 | 接近但不足 | Loop回修改，重点补缺项 |
+| 70-79 | 明显不足 | Loop回大改 |
+| <70 | 方案不可用 | 推翻重来或回到昨日重现重新找方案 |
+
+打分维度（每项0-100，总分=加权平均）：
+
+| 维度 | 权重 | 评估内容 |
+|------|------|---------|
+| 方案完整性 | 25% | 目标/范围/步骤/验证/停止条件/完成标准是否齐全 |
+| 成熟度 | 20% | 是否复用了已验证的成熟方案，而非从零开始 |
+| 本地适配性 | 20% | 方案是否已适配本地环境（路径/依赖/权限/编码） |
+| 风险控制 | 20% | 备份/回滚/日志/验证是否到位 |
+| 证据可验收 | 15% | 产出是否有明确的PASS/FAIL判据 |
+
+**GPT只有思考能力没有执行能力** → GPT负责审核打分，Codex负责执行。
+审核不通过 → Loop循环修改 → 再提交 → 直到≥90分才执行。
+
+## ZIP Delivery (三位数字ZIP交付)
+
+复杂任务完成后，必须打包交付：
+
+```text
+1. 扫描桌面已有 NNN.zip（001-999）
+2. 选择未使用的最小三位数字
+3. 打包内容：更新后的技能/代码 + 报告 + 备份说明 + 变更清单
+4. ZIP命名：NNN.zip（如 003.zip）
+5. 不得覆盖已有ZIP
+```
+
+ZIP内至少包含：
+
+```text
+updated_skill/ 或 updated_code/
+TASK_REPORT.md
+backup_path.txt
+changed_files_manifest.txt
+```
+
+## On-Demand Skill References (按需调用技能包)
+
+以下技能包**不合并进本文件**，仅在需要时按流程调用。保持本技能包轻量。
+
+### 1. 连接GPT/DeepSeek智能体时 → 调用「AI自执行坐标知识系统」
+
+当需要通过浏览器连接GPT网页版或DeepSeek网页版（发送提示词、获取回答、复制结果）时，
+调用此技能包进行坐标法操作。
+
+```text
+技能包路径: C:\Users\A\.hermes\skills\productivity\one-step-one-screenshot
+技能包名称: AI自执行坐标知识系统 (one-step-one-screenshot v3.0)
+```
+
+调用流程：
+
+```text
+1. 从 coordinate_knowledge/coordinate_registry.jsonl 加载目标网站的已验证坐标
+2. 从 coordinate_knowledge/screen_profiles.json 加载对应的 screen_profile
+3. 验证 State Contract（分辨率/缩放/窗口状态/页面状态是否匹配）
+4. 匹配 → 直接按坐标执行（click input → paste → click send → wait → click copy）
+5. 不匹配 → 进入截图标定流程（一步一截图法 fallback）
+6. 执行后运行 coordinate_update_finalizer（成功/失败都沉淀到知识库）
+```
+
+**何时调用**：GPT审核打分需要发送方案给GPT网页、需要从GPT/DeepSeek获取回答时。
+**何时不调用**：本地能解决的任务（文件操作、脚本执行、终端命令）不需要连接网页智能体。
+
+### 2. 评估GPT回答质量时 → 调用「UltraFusion A层双模型极限临时融合」
+
+当需要对GPT或DeepSeek的回答进行质量评比、交叉验证时，调用UltraFusion的A层方案
+（不是整个UltraFusion技能包，仅A层双模型极限临时融合）。
+
+```text
+技能包路径: C:\Users\A\.codex\skills\ultrafusion-low-cost-multi-model-extreme-fusion
+A层模板:    30-TEMPLATES/10_A_Layer_Extreme_Draft_Template_v1.0.md
+V15规范:    10-SPEC/V15_FULL_WITH_GUARD_v1.0.md
+模型阵容:   35-MODEL-ROSTER/Model_Roster_v5.0.md (Core-2 Bootstrap: GPT + DeepSeek)
+```
+
+调用流程：
+
+```text
+1. 读取问题/方案内容
+2. 注入V15规范到A层模板
+3. 分别发送给GPT和DeepSeek（通过坐标知识系统连接）
+4. 收集两份A层极限草稿（A_GPT_Extreme + A_DeepSeek_Extreme）
+5. 交叉比对：事实三角验证、幻觉检测、多视角互补
+6. 产出质量评分（V15四维打分 + 扣分规则）
+7. 评分结果反馈到 Score Gate 的打分维度中
+```
+
+**何时调用**：Score Gate审核需要多模型交叉验证、高风险任务需要事实三角验证时。
+**何时不调用**：简单任务、低风险任务、单一模型回答已足够时。
+
+**注意**：只调用A层双模型极限临时融合，不启动完整A→B→C→D四层流程。
+完整UltraFusion流程仅在用户明确要求时才启动。
+
+### 调用关系图
+
+```
+yesterday-replay-controlled-coding (本技能包，路由+执行框架)
+  │
+  ├─ 需要连接GPT/DeepSeek网页？
+  │   └─ 调用 → AI自执行坐标知识系统 (坐标法操作浏览器)
+  │
+  ├─ 需要评估回答质量？
+  │   └─ 调用 → UltraFusion A层双模型极限临时融合 (交叉验证+打分)
+  │
+  └─ 两者关系：
+      坐标知识系统负责"怎么连"（传输层）
+      UltraFusion A层负责"连了干什么"（质量层）
+      本技能包负责"什么时候连、连了怎么用"（编排层）
+```
+
+## Browser And Screenshot Routing
+
+- For ChatGPT web send/copy planning, use `chatgpt-screenshot-bridge` only when
+  the detailed workflow permits it and the visible page is safe. The current
+  accepted implementation is
+  `C:\Users\A\.codex\skills\chatgpt-screenshot-bridge`, with full-window
+  screenshot state classification, browser visual fallback, stop-button
+  disappearance wait, small-crop copy-button targeting, and sentinel clipboard
+  verification.
+- For ordinary browser work that depends on visible pixels, use
+  `screenshot-recognize-operate-browser` after this router classifies the task.
+- Do not use real Windows mouse or keyboard input outside the narrow
+  pre-authorized ChatGPT text-only bridge unless the user explicitly allows it
+  for that task.
+
+## Reporting
+
+For complex work, report:
+
+- route classification
+- score gate result (score + dimensions)
+- files changed
+- commands/checks run
+- PASS/FAIL evidence
+- ZIP delivery path
+- skipped checks and residual risk
+
+For simple work, keep the response short and do not include process ceremony
+unless the user asks for it.

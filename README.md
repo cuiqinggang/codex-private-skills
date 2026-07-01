@@ -1,6 +1,11 @@
 ﻿# Codex Private Skills Backup
 
-Private backup of personal Codex/Hermes/OpenClaw skill packages collected from H: on 2026-06-05.
+Private backup of personal Codex/Hermes/OpenClaw skill packages.
+
+Latest update: 2026-07-01 from the active Codex runtime skill root at
+`C:\Users\A\.codex\skills`.
+
+Original baseline: collected from H: on 2026-06-05.
 
 ## Layout
 
@@ -9,6 +14,7 @@ Private backup of personal Codex/Hermes/OpenClaw skill packages collected from H
 - docs/all-detected-skill-dirs.csv: every H: directory found with a SKILL.md.
 - docs/omitted-duplicates.csv: directories skipped because another skill had the same directory name.
 - docs/excluded-files.csv: files skipped because they were archives, binaries, generated caches, logs, or larger than 50 MB.
+- docs/update-2026-07-01.md: current update note and verification summary.
 
 ## Backup Policy
 
@@ -18,4 +24,7 @@ Private backup of personal Codex/Hermes/OpenClaw skill packages collected from H
 - Prefer active/custom roots before older backup roots when names duplicate.
 - Exclude models, installers, archives, caches, virtual environments, build output, logs, and files over 50 MB.
 - No original H: files were deleted during this backup.
+- The 2026-07-01 update treats `C:\Users\A\.codex\skills` as the active runtime source.
+- K: and H: skill roots are historical/reference material unless a later update note says otherwise.
+- Local `.git` directories, caches, logs, archives, installers, model binaries, and known sensitive transcript lock files are excluded from sync.
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "SkillOpt Sample Optimizer"
+  short_description: "Run safe shadow-copy skill optimization samples."
+  default_prompt: "Run a SkillOpt sample optimization: copy selected skills to a shadow workspace, generate candidate patches, reject risky edits, score before/after, and produce a clickable acceptance page."

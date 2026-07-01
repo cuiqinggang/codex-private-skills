@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIOS Skill Self-Purification Fixed Maintenance Policy</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #111314;
+      --panel: #1b2023;
+      --panel-2: #232a2e;
+      --text: #eef3f1;
+      --muted: #aeb9b5;
+      --line: #3a4448;
+      --good: #7bd88f;
+      --warn: #ffd166;
+      --accent: #74c7ec;
+      --bad: #ff7b8a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    header, main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 32px 0 18px; }
+    h1 { margin: 0 0 8px; font-size: clamp(26px, 4vw, 42px); letter-spacing: 0; }
+    h2 { margin: 0 0 14px; font-size: 20px; }
+    p { color: var(--muted); margin: 0; }
+    .grid { display: grid; gap: 14px; }
+    .cycles { grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .card strong { color: var(--text); display: block; font-size: 17px; margin-bottom: 8px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 9px;
+      margin: 8px 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    section { margin: 18px 0; }
+    table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 8px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 11px 10px; text-align: left; vertical-align: top; }
+    th { color: var(--accent); background: var(--panel-2); }
+    td { color: var(--muted); }
+    .ok { color: var(--good); font-weight: 700; }
+    .no { color: var(--bad); font-weight: 700; }
+    .warn { color: var(--warn); font-weight: 700; }
+    ul { margin: 0; padding-left: 20px; color: var(--muted); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .commands { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    footer { width: min(1120px, calc(100% - 32px)); margin: 22px auto 36px; color: var(--muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AIOS 技能自净化固定维护制度</h1>
+    <p>本页是政策安装验收页：固定周期、运行门槛、红线和命令入口已经写入；没有启动任何实际维护运行。</p>
+  </header>
+  <main>
+    <section class="grid cycles">
+      <div class="card">
+        <strong>Weekly 30min</strong>
+        <p>每周日晚上轻量检查：新近修改、高频使用、重复触发、冲突、缺验收页、高风险自动化。</p>
+        <span class="tag">runtime >= 30</span><span class="tag">3 checkpoints</span>
+      </div>
+      <div class="card">
+        <strong>Monthly 2h</strong>
+        <p>每月第一个周日晚上样本优化：10-15 个高价值或高风险技能，前后评分，候选补丁。</p>
+        <span class="tag">runtime >= 120</span><span class="tag">8+ checkpoints</span>
+      </div>
+      <div class="card">
+        <strong>Quarterly 4h</strong>
+        <p>每季度首月第一个周日晚上图谱治理：重复、冲突、陈旧、孤立、总控触发风险。</p>
+        <span class="tag">runtime >= 240</span><span class="tag">16+ checkpoints</span>
+      </div>
+      <div class="card">
+        <strong>Post-project 30min</strong>
+        <p>重大项目 PASS/ACCEPTED 后复盘：沉淀成功做法、失败修复和技能更新候选。</p>
+        <span class="tag">runtime >= 30</span><span class="tag">3 checkpoints</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Runtime Gate</h2>
+      <table>
+        <thead><tr><th>任务</th><th>最低时长</th><th>最低检查点</th><th>PASS 条件</th></tr></thead>
+        <tbody>
+          <tr><td>Weekly light check</td><td>30 分钟</td><td>3</td><td>不修改正式技能，证据齐全</td></tr>
+          <tr><td>Monthly sample optimization</td><td>120 分钟</td><td>8</td><td>候选补丁分离，formal_skills_modified = NO</td></tr>
+          <tr><td>Quarterly graph governance</td><td>240 分钟</td><td>16</td><td>只给建议，不自动合并</td></tr>
+          <tr><td>Post-project retrospective</td><td>30 分钟</td><td>3</td><td>只沉淀候选，不直接写正式技能</td></tr>
+        </tbody>
+      </table>
+      <p class="warn">elapsed_minutes 不足时禁止 PASS。</p>
+    </section>
+
+    <section class="card">
+      <h2>Red Lines</h2>
+      <ul>
+        <li>Never unattended auto-merge formal skills.</li>
+        <li>Never auto-delete user hard rules.</li>
+        <li>Never auto-delete failure reviews.</li>
+        <li>Never auto-modify high-risk system operation rules.</li>
+        <li>Never auto-expand total-control trigger scope.</li>
+        <li>Never generalize project-local rules into global rules.</li>
+        <li>Never overwrite formal files just because a score improved.</li>
+        <li>Formal merges require user or GPT Gate Review.</li>
+        <li>All long maintenance tasks must pass runtime gate.</li>
+        <li>Insufficient elapsed_minutes forbids PASS.</li>
+      </ul>
+    </section>
+
+    <section class="grid commands">
+      <div class="card"><strong>Weekly Command</strong><a href="../COMMAND-WEEKLY-30MIN.md">COMMAND-WEEKLY-30MIN.md</a></div>
+      <div class="card"><strong>Monthly Command</strong><a href="../COMMAND-MONTHLY-2H.md">COMMAND-MONTHLY-2H.md</a></div>
+      <div class="card"><strong>Quarterly Command</strong><a href="../COMMAND-QUARTERLY-4H.md">COMMAND-QUARTERLY-4H.md</a></div>
+      <div class="card"><strong>Post-project Command</strong><a href="../COMMAND-POST-PROJECT-30MIN.md">COMMAND-POST-PROJECT-30MIN.md</a></div>
+    </section>
+
+    <section class="card">
+      <h2>Install Verdict</h2>
+      <p><span class="ok">POLICY_INSTALLED: YES</span></p>
+      <p><span class="ok">RUNTIME_GATE_REQUIRED: YES</span></p>
+      <p><span class="no">AUTO_MERGE_ALLOWED: NO</span></p>
+      <p><span class="ok">FORMAL_BUSINESS_SKILLS_MODIFIED: NO</span></p>
+      <p>Next recommended run: Weekly 30min light check.</p>
+    </section>
+  </main>
+  <footer>
+    Task ID: AIOS_SKILL_SELF_PURIFICATION_FIXED_MAINTENANCE_POLICY_INSTALL_V1
+  </footer>
+</body>
+</html>

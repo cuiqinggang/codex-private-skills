@@ -1,0 +1,31 @@
+{
+  "name": "ai-company-design-system",
+  "objective": "",
+  "tokens": {
+    "color_roles": [],
+    "density_rules": [],
+    "typography_rules": []
+  },
+  "components": [],
+  "data_objects": [],
+  "views": [],
+  "governance": {
+    "human_approval_required": [
+      "payment",
+      "ads",
+      "cold_outreach",
+      "publishing",
+      "account_or_security_changes",
+      "legal_tax_financial_commitments",
+      "irreversible_deletion",
+      "external_customer_promises"
+    ],
+    "evidence_required": true,
+    "rollback_required": true
+  },
+  "references": [],
+  "validation": {
+    "status": "draft",
+    "evidence_paths": []
+  }
+}

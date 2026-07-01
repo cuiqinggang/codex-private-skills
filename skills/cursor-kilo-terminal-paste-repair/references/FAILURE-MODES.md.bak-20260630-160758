@@ -1,0 +1,21 @@
+# Failure Modes
+
+## False Clipboard Diagnosis
+
+If paste works elsewhere and clipboard formats show `UnicodeText`, the clipboard is probably healthy. Continue to Cursor terminal focus/keybinding checks.
+
+## Long Text Converter Confusion
+
+The Codex long-text fallback can turn very long clipboard text into a file-drop attachment for Codex. It should ignore short text below its threshold. If `ContainsFileDropList` is false and text length is small, the converter is not the paste blocker.
+
+## Kilo Service Confusion
+
+Kilo can be running and listening while terminal paste still fails. Do not reinstall or restart Kilo until keyboard routing has been checked.
+
+## Webview Focus Theft
+
+Kilo's chat/input Webview and Cursor's integrated terminal share the same window. A click in the wrong area can route paste to the Kilo input or nowhere visible. Terminal-scoped keybindings plus clicking the bottom terminal prompt resolve the common case.
+
+## Probe Cleanup Trouble
+
+PowerShell integrated terminals may not respond to `Ctrl+U` like Unix shells. Prefer not to execute probes. Use backspace, `Esc`, or `Ctrl+C` to cancel the current input line after verification.

@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "image_path": "H:\\AI\\skills\\hermes-windows-native-screen-capture\\captures\\wgc-latest.png",
+  "exists": true,
+  "width": 3840,
+  "height": 2160,
+  "file_size": 3827644,
+  "mean_brightness": 75.8198055314429,
+  "white_pixel_ratio": 0.03664822048611111,
+  "non_white_pixel_ratio": 0.9633517795138888,
+  "suspected_white_screen": false,
+  "suspected_failure": false,
+  "failure_reasons": []
+}

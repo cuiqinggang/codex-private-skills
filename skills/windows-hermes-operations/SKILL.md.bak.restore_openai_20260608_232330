@@ -1,0 +1,214 @@
+---
+name: windows-hermes-operations
+description: Use when the user asks to open, restart, verify, troubleshoot, recover, or clean up the Windows native Hermes / 爱马仕 0.14 system, especially requests mentioning Windows版爱马仕, Hermes 0.14, Open WebUI on 3000, Hermes gateway on 8642, stale WSL Hermes, old OpenClaw gateway, or historical cleanup/deletion records.
+---
+
+# Windows Hermes Operations
+
+## 2026-06-07 Accepted Mainline And Autostart
+
+For the current accepted Windows native Hermes + Open WebUI + Docker autostart
+state, read
+`references/incident-2026-06-07-g39-g44-openwebui-autostart.md` before changing
+Hermes, Docker, Open WebUI, Telegram, or login autostart. It records the
+G39-G44 pass state, the mistakes made during repair, and the correct gated
+flow. On 2026-06-07 evening, the accepted autostart path was extended to recover
+Docker Desktop when it is stuck in `starting` with lingering
+`com.docker.backend.exe` processes or Docker API HTTP 500. The fix belongs in
+`H:\Hermes_Windows_Native_014\launcher\auto-start-hermes-openwebui.ps1`: first
+try normal Docker startup, then clear Docker Desktop residue, terminate only the
+`docker-desktop` WSL distro, start Docker Desktop again, start
+`open-webui-clean`, and open `http://127.0.0.1:3000`.
+
+Do not treat Docker account/login UI as the success criterion. The success
+criterion is the background chain: `docker ps` stable, `open-webui-clean` up,
+Open WebUI `3000` reachable, existing logged-in Google Chrome can use
+`hermes-agent`, and Telegram remains connected to Hermes `8642`.
+
+For browser verification, use the user's already logged-in Google Chrome window.
+Do not open a separate temporary Chromium/Playwright browser to claim success,
+because it will not share the user's Open WebUI login/session state. HTTP 200 is
+not sufficient by itself; verify the logged-in web UI or an authenticated
+Open WebUI chat call, and prefer the user's own visible test as final acceptance
+when they have just confirmed it works.
+
+## 2026-06-08 Autostart Conflict Hardening
+
+If the user says reboot/login autostart did not connect Hermes to the browser,
+or that startup scripts may conflict with other programs, read
+`references/incident-2026-06-08-autostart-conflict-hardening.md`. The accepted
+fix adds a single-instance mutex, unique log names with PID, explicit opening
+of the user's existing Google Chrome profile to `http://127.0.0.1:3000`, and a
+Startup-folder VBS fallback:
+
+```text
+C:\Users\A\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Hermes_OpenWebUI_AutoStart_Hidden.vbs
+```
+
+The Task Scheduler task `Hermes_OpenWebUI_AutoStart` can remain installed, but
+it may have power settings that cannot be changed without higher privileges.
+The script-level mutex prevents the scheduled task and Startup VBS from
+conflicting when both launch.
+
+## 2026-06-08 Hermes 0.16.0 Upgrade Repair
+
+If upgrading Hermes to 0.16.0, or if 8642 `/health` and `/v1/models` pass but
+chat returns `No models provided`, HTTP 502, or logs stop writing under
+`C:\Users\A\.hermes\logs`, read
+`references/incident-2026-06-08-hermes-0160-upgrade.md`. The accepted fix is:
+backup `.env`, `config.yaml`, `state.db`, launchers, and pip freeze; upgrade
+the venv with `python -m pip install --upgrade hermes-agent==0.16.0`; move old
+`site-packages\~...` invalid distribution leftovers to the backup directory;
+and ensure both launchers force `HERMES_HOME=C:\Users\A\.hermes` before
+starting the gateway. Also check
+`H:\Hermes_Windows_Native_014\launcher\hermes-014-runtime.ps1`: if that older
+runtime entry owns 8642, it must also force `HERMES_HOME=C:\Users\A\.hermes`
+and run `gateway run --replace --accept-hooks`. Otherwise Open WebUI can show
+an empty response because the gateway reads the wrong default profile under
+`C:\Users\A\AppData\Local\hermes`.
+
+Do not trust bare `hermes config show` or `hermes config set` unless
+`HERMES_HOME` is set in that shell. Without it, Hermes 0.16 may read/write the
+default profile at `C:\Users\A\AppData\Local\hermes`, producing a healthy but
+wrong-profile gateway. Success requires direct chat through 8642, Open WebUI
+3000 opened in the existing Google Chrome profile, and Telegram state
+connected.
+
+## 0.15.2 Upgrade Repair
+
+If Hermes upgrade gets stuck, `hermes.exe` exists but fails with
+`ModuleNotFoundError: No module named 'hermes_cli.main'`, 8642 is down after an
+upgrade, or `/v1/models` returns 401 after setting up Hermes 0.15.x, read
+`references/incident-2026-06-01-hermes-0152-upgrade-repair.md` before changing
+the venv or launcher. Hermes 0.15.2 requires `API_SERVER_KEY`; local launchers
+and health checks must send `Authorization: Bearer <API_SERVER_KEY>` for
+`/v1/models` and chat checks.
+
+## Open WebUI 3000 Shows No Model Selected
+
+If Telegram/mobile Hermes can answer through DeepSeek, but the web page
+`http://127.0.0.1:3000` or
+`http://127.0.0.1:3000/admin/settings/connections` says no large model is
+connected or selected, read
+`references/openwebui-direct-deepseek-20260605.md` before changing Open WebUI.
+This is the direct chain:
+
+```text
+Open WebUI 3000 -> Hermes 8642 -> DeepSeek deepseek-v4-pro
+```
+
+Do not route this repair through old New API `3001`. The likely fixes are:
+sync Open WebUI's saved key to Hermes `API_SERVER_KEY`, set the connection
+`model_ids` to `hermes-agent`, set Open WebUI default models to `hermes-agent`,
+and verify Hermes still defaults to `deepseek-v4-pro`.
+
+## Safety Boundary
+
+Protect the Windows native Hermes 0.14 system:
+
+- Do not delete or modify `H:\Hermes_Windows_Native_014` unless the user explicitly asks for a targeted edit there.
+- Do not delete or modify `C:\Users\A\.hermes` unless the user explicitly asks for a targeted edit there.
+- Do not delete Docker/Open WebUI containers unless the user explicitly asks.
+- Treat old WSL Hermes/OpenClaw cleanup as historical unless verification shows a new live conflict.
+- For the Windows Native Hermes 8642 mainline, do not treat BIOS firmware virtualization, WSL2, Docker Desktop, `open-webui-clean`, or Open WebUI `3000` as hard prerequisites.
+- Open WebUI `3000` is still a needed next-stage web panel route; preserve it and diagnose it separately instead of using it to fail the 8642 mainline.
+
+## Fast Open Path
+
+If the user is rebuilding the system from a minimal clean state, or asks to
+restore the original Hermes stack one layer at a time, use
+`hermes-014-restoration-ladder` first. That skill separates the DeepSeek-only
+base, Open WebUI panel, New API, Telegram, and reboot-persistence stages.
+
+For a normal "open Windows Hermes" request, do not rediscover paths. Use:
+
+```powershell
+cmd.exe /c "H:\Hermes_Windows_Native_014\START-HERMES-WEBUI.cmd"
+```
+
+Then verify:
+
+```powershell
+Invoke-WebRequest -Uri "http://127.0.0.1:8642/health" -UseBasicParsing -TimeoutSec 10
+$key = (Get-Content -LiteralPath "C:\Users\A\.hermes\.env" | Where-Object { $_ -match "^API_SERVER_KEY=" } | Select-Object -First 1) -replace "^API_SERVER_KEY=", ""
+Invoke-WebRequest -Uri "http://127.0.0.1:8642/v1/models" -UseBasicParsing -TimeoutSec 10 -Headers @{ Authorization = "Bearer $key" }
+Invoke-WebRequest -Uri "http://127.0.0.1:3000" -UseBasicParsing -TimeoutSec 20
+```
+
+Expected evidence:
+
+- Windows Native Hermes 8642 mainline PASS means 8642 listens, `/health` returns 200, and `/v1/models` returns 200 with `hermes-agent`.
+- `127.0.0.1:8642` is owned by a command under `H:\Hermes_Windows_Native_014`.
+- `/health` returns `platform=hermes-agent`.
+- `/v1/models` returns `hermes-agent`.
+- `http://127.0.0.1:3000` returns HTTP 200 only for the Open WebUI next-stage/panel route. If 3000 is unavailable, record it as web panel not started; do not fail the Windows Native Hermes 8642 mainline.
+
+For exact gated commands and timing, read `references/open-and-verify.md`.
+
+For a read-only health snapshot that does not start or stop services, run:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Users\A\.codex\skills\windows-hermes-operations\scripts\check_windows_hermes_health.ps1"
+```
+
+Read `references\quick-healthcheck-20260528.md` when you need the historical
+acceptance rule. Current 8642 mainline acceptance is: `/health` alone is not
+enough; `/v1/models` must include `hermes-agent`, and the 8642 owner should be
+checked when possible. BIOS, WSL2, Docker, and Open WebUI `3000` are optional
+or next-stage checks and must not block the 8642 mainline result.
+
+## Digital Assistant Does Not Answer After Restart
+
+If New API on `3001` and Open WebUI on `3000` are healthy but Hermes `8642` is
+`NOT_LISTENING`, use `new-api-local-deploy` and read
+`references/hermes-openwebui-chain.md`. Its fast recovery pattern records the
+2026-05-22 repair: start `START-HERMES-WEBUI.cmd`, verify the latest
+`daily-start-*.log` has `FINAL_PASS`, then prove direct Hermes chat,
+streaming chat, Open WebUI API chat, New API relay logs, and Telegram bridge
+state before claiming recovery.
+
+If Hermes `8642` is healthy but Docker API is unavailable and New API `3001`
+or Open WebUI `3000` are `NOT_LISTENING`, this is a different failure layer.
+Use `new-api-local-deploy` and read `references/hermes-openwebui-chain.md` for
+the Docker/New API down recovery pattern: start Docker Desktop, run
+`docker compose up -d` from `C:\Users\A\new-api-local`, start
+`open-webui-clean`, then verify Hermes chat, Open WebUI API chat, New API relay
+logs, and Telegram bridge state.
+
+For automatic reboot/login recovery, preserve the installed task
+`HermesNewApiAutoRecover_Logon` and script
+`C:\Users\A\.hermes\gateway-service\Hermes_NewAPI_AutoRecover.ps1`.
+In the current direct DeepSeek web setup, it handles Docker/Open WebUI, Hermes,
+and Telegram health checks without requiring New API `3001`.
+
+## If There Is a Problem
+
+First identify the failing layer:
+
+1. Check whether 8642 is owned by Windows native Hermes.
+2. Check `/health` and `/v1/models`; `/health` alone is not sufficient.
+3. Check whether Open WebUI on 3000 is available.
+4. Check the latest `daily-start-*.log`.
+5. Only if WSL appears in a current port owner or process check, read `references/cleanup-20260520.md` before taking cleanup action.
+
+Do not repeat the old broad filesystem search for `hermes.exe`; it was slow and unnecessary. The mature entrypoint is the launcher above.
+
+## Historical Cleanup Record
+
+The old WSL Hermes and old OpenClaw gateway were removed on 2026-05-20 after user confirmation. Keep this as the rollback/troubleshooting record:
+
+- `references/cleanup-20260520.md`
+
+Important current state from that cleanup:
+
+- `C:\Users\A\Hermes_AutoStart` was deleted during old WSL/OpenClaw cleanup.
+  On 2026-05-22 a minimal compatibility shim was recreated there only because
+  the existing `HermesGatewayWatchdog_Logon` scheduled task still pointed to
+  that path and could not be edited without elevated permissions. The shim
+  delegates to `C:\Users\A\.hermes\gateway-service\Hermes_NewAPI_AutoRecover.ps1`;
+  it does not revive the old WSL/OpenClaw gateway.
+- Old WSL paths such as `/home/u123456/.hermes`, `/home/u123456/.local/bin/hermes`, and `/home/u123456/.openclaw` were deleted.
+- Old WSL systemd services for `hermes-worker-01..04.service` and `openclaw-gateway.service` were removed.
+- Windows Task Scheduler entries `HermesTelegramGateway_Autostart` and `HermesTelegramGateway_Watchdog` could not be unregistered without administrator permission, but are inert because their wrapper path no longer exists.
+
+If the user asks to fully remove those two visible scheduled task entries, run the removal only from an elevated/admin PowerShell session or ask the user to provide admin execution.

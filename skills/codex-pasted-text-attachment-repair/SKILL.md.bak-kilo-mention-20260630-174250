@@ -1,0 +1,118 @@
+---
+name: codex-pasted-text-attachment-repair
+description: Diagnose, repair, and maintain Codex Desktop long pasted text attachment handling on Windows. Use when short paste works but long paste fails, Codex shows "pasted long text cannot be added as an attachment", the fallback converter stops, or the user asks to fix/restart/verify the automatic long-text-to-.txt attachment workflow.
+---
+
+# Codex Pasted Text Attachment Repair
+
+## Goal
+
+Keep long pasted text usable in Codex Desktop. Prefer the native repair first; if the current Codex build still rejects long text, use the automatic Codex-only fallback that converts long clipboard text into a `.txt` file attachment.
+
+## Fast Path
+
+1. Check native attachment storage:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-pasted-text-attachment-repair\scripts\repair-pasted-text-attachments.ps1"
+```
+
+2. Repair missing local state if needed:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-pasted-text-attachment-repair\scripts\repair-pasted-text-attachments.ps1" -Repair
+```
+
+3. If native long paste still fails, install and start the fallback:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-pasted-text-attachment-repair\scripts\install-auto-longtext-fileclip.ps1" -Start
+```
+
+4. Verify with a controlled long text:
+
+```powershell
+Add-Type -AssemblyName System.Windows.Forms
+$sample = ('CODEX_LONG_TEXT_ATTACHMENT_TEST_0123456789 ' * 150)
+[System.Windows.Forms.Clipboard]::SetText($sample)
+Start-Sleep -Milliseconds 800
+(New-Object -ComObject WScript.Shell).AppActivate('Codex') | Out-Null
+Start-Sleep -Seconds 3
+[System.Windows.Forms.Clipboard]::ContainsFileDropList()
+```
+
+Success means the result is `True`, the log has fresh `PENDING` and `ACTIVATED` lines, and the file path is under:
+
+```text
+%USERPROFILE%\.codex\manual-paste-attachments
+```
+
+## What To Check
+
+- Native attachment root: `%USERPROFILE%\.codex\attachments`
+- Fallback log: `%USERPROFILE%\.codex\manual-paste-attachments\auto-longtext-fileclip.log`
+- Fallback process: match `\auto-longtext-fileclip.ps1`
+- Watchdog task: `CodexAutoLongTextWatchdog`
+- Startup shortcut: `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\Codex Auto LongText ON.lnk`
+
+Use a strict process match. Do not match plain `auto-longtext-fileclip.ps1`, because `watch-auto-longtext-fileclip.ps1` contains the same suffix and can create a false positive.
+
+```powershell
+$needle='\auto-longtext-fileclip.ps1'
+Get-CimInstance Win32_Process |
+  Where-Object { $_.Name -match '^powershell(\.exe)?$' -and $_.CommandLine -like ('*' + $needle + '*') } |
+  Select-Object ProcessId,CreationDate,CommandLine
+```
+
+## Fallback Behavior
+
+- Ignores short text below `MinChars` so normal paste still works.
+- Saves long text as `codex-pasted-text-<timestamp>-<hash>.txt`.
+- Changes the clipboard into a file-drop attachment only when Codex is foreground.
+- Retries clipboard reads/writes because Windows clipboard can be briefly locked.
+- Keeps the generated file on the clipboard for a few seconds after Codex becomes foreground.
+- Does not cancel a prepared attachment merely because another app briefly changes the clipboard; it expires after a timeout.
+- Installs `CodexAutoLongTextWatchdog`, which checks once per minute and restarts the converter if it has exited.
+
+## Cursor/Kilo Long Text Mode
+
+Observed on 2026-06-30: short paste worked in Kilo/Cursor, but long paste did not become a file-style message. The existing converter was healthy for Codex Desktop, but its foreground check only activated for Codex windows. Kilo/Cursor needs an explicit target mode.
+
+Use this only when the user wants long text pasted into Kilo/Claude Code/Cursor agent panels to become a `.txt` file-drop clipboard:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-pasted-text-attachment-repair\scripts\install-auto-longtext-fileclip.ps1" -Start -TargetMode "Codex,CursorKilo"
+```
+
+Default mode remains `Codex` to avoid surprising normal Cursor editor paste. In `CursorKilo` mode, short text below `MinChars` is ignored, and long text activates when the foreground process is Cursor.
+
+## Common Fixes
+
+- No fresh log lines after a failed paste: start or reinstall the fallback with `install-auto-longtext-fileclip.ps1 -Start`.
+- Process missing after previously working: confirm the watchdog task exists, then reinstall/start.
+- Log shows clipboard busy errors: restart fallback; the current scripts retry clipboard operations.
+- Repeated same long text is skipped or cancelled: ensure the deployed script is the latest copy from this skill.
+- Codex still shows the original toast while fallback is running: wait a moment after switching to Codex, then paste again; confirm clipboard contains a file-drop list.
+
+## Scripts
+
+- `repair-pasted-text-attachments.ps1`: check and repair native `%USERPROFILE%\.codex\attachments`.
+- `fix-codex-longtext-attachment.ps1`: command-pack style diagnosis; patches only safe writable non-WindowsApps `app.asar`; otherwise reports fallback.
+- `install-auto-longtext-fileclip.ps1`: copy scripts to runtime folder, create shortcuts, register watchdog, optionally start/stop.
+- `auto-longtext-fileclip.ps1`: background converter.
+- `watch-auto-longtext-fileclip.ps1`: scheduled watchdog that restarts the converter if missing.
+- `clipboard-to-txt.ps1`: manual emergency fallback that writes clipboard text to a `.txt` file.
+- `START/STOP/STATUS_Auto_LongText_FileClip.cmd`: desktop shortcuts for non-technical use.
+
+`-Stop` must disable the watchdog and remove the Startup shortcut; otherwise the watchdog will restart the converter after the user turns it off. `-Start` reinstalls the runtime scripts, Startup shortcut, watchdog task, and converter process.
+
+## Safety
+
+Do not modify `C:\Program Files\WindowsApps` or an MSIX package in place. If only a Windows Store/MSIX Codex install exists, use the fallback rather than patching the app package.
+
+When editing this skill, validate it:
+
+```powershell
+$env:PYTHONUTF8='1'
+python "$env:USERPROFILE\.codex\skills\.system\skill-creator\scripts\quick_validate.py" "$env:USERPROFILE\.codex\skills\codex-pasted-text-attachment-repair"
+```

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Proxy Diagnose Repair"
+  short_description: "Freeze, compare, and repair flaky proxy/network states safely."
+  default_prompt: "Diagnose the current proxy/network state, save a baseline, compare good and bad states, and recommend the smallest safe repair."

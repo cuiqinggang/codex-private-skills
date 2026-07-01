@@ -1,6 +1,6 @@
 ---
 name: screenshot-browser-100-percent-route
-description: 截图识别控制浏览器门禁流程 — 九轮实测 100% 最终成功率。多点点击 + 焦点测试 + "逐字抄出"视觉验证 + 一步一确认铁律。适用于已登录 Chrome（ChatGPT/OpenClaw 等页面）。
+description: 截图识别控制浏览器门禁流程 — 九轮实测 100% 最终成功率。多点点击 + 焦点测试 + "逐字抄出"视觉验证 + 一步一确认铁律。
 version: 2.0.0
 updated: 2026-05-29
 source_status: XIAOLONGXIA_BOOT_REPLAY_3X_VERIFY_PASS
@@ -59,12 +59,6 @@ verified_status: 9_ROUND_100_PERCENT_GATED_SUCCESS_20260529
 ## 铁律
 
 > **不确定 → 截图。变化了 → 截图。操作完 → 截图。一条截图解万难。**
-
-## 原版参考
-
-- 原始路线：`references/boot-replay-3x-verify-20260524.md`
-- 反证文件：`references/strict-method-retest-not-100-20260524.md`
-- 源技能：`references/source-xiaolongxia-boot-replay-autostart-SKILL.md`
 
 ## 状态码
 

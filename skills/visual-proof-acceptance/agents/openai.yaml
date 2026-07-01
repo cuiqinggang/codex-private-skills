@@ -1,0 +1,3 @@
+display_name: Visual Proof Acceptance
+short_description: Evidence-first acceptance for visual, media, browser, UI, and staged deliverables.
+default_prompt: Verify this work with real artifacts, technical probes, visible evidence, and an honest status report.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "AIOS Skill Self Purification Governance"
+  short_description: "Runtime-gated SkillOpt governance without auto-merge."
+  default_prompt: "Install or run AIOS skill self-purification governance with patch buffers, runtime gates, do-not-auto-optimize rules, and clickable acceptance evidence."

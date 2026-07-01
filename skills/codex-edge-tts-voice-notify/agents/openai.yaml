@@ -1,0 +1,7 @@
+interface:
+  display_name: "Codex Voice Notify"
+  short_description: "Restore Codex task-complete voice reminders"
+  default_prompt: "Use $codex-edge-tts-voice-notify to repair my Codex task-complete voice reminder."
+
+policy:
+  allow_implicit_invocation: true

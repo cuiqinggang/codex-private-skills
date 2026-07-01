@@ -1,0 +1,12 @@
+{
+  "name": "fugu_style_eval_pack",
+  "profile": "codex-supertool",
+  "task_count": 6,
+  "verdicts": [
+    "PASS",
+    "ACCEPTED_WITH_LIMITS",
+    "PARTIAL",
+    "FAIL",
+    "BLOCKED"
+  ]
+}

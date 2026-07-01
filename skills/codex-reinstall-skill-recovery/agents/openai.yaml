@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Reinstall Skill Recovery"
+  short_description: "Recover Codex skills after desktop reinstall."
+  default_prompt: "Check a Codex reinstall skill backup, restore missing non-conflicting skills, and generate verification reports."

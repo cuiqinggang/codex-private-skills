@@ -1,4 +1,4 @@
-# Success Case 2026-05-14
+﻿# Success Case 2026-05-14
 
 ## Date
 
@@ -85,3 +85,4 @@ Then run:
 - Codex `Enter API key` uses CCX proxy access key.
 - Use CCX because Codex needs Responses-compatible behavior while DeepSeek is mainly OpenAI-compatible upstream.
 - Even if DeepSeek `/v1/models` lists more than one model, the backup route must configure and test only `deepseek-v4-pro`.
+

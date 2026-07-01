@@ -1,0 +1,27 @@
+﻿{
+    "status":  "PASS",
+    "skill_root":  "H:\\AI\\skills\\ai-poster-video-publish-pipeline",
+    "required_file_count":  21,
+    "hard_rule_count":  12,
+    "checked_rule_files":  [
+                               "SKILL.md",
+                               "RUNBOOK.md",
+                               "PLATFORM-RULES.md",
+                               "CONTENT-REVIEW-GATE.md",
+                               "AUTO-PUBLISH-GATE.md"
+                           ],
+    "checked_scripts":  [
+                            "scripts\\build-slideshow.ps1",
+                            "scripts\\validate-video.ps1",
+                            "scripts\\check-platform-package.ps1",
+                            "scripts\\prepare-publish-package.ps1",
+                            "scripts\\verify-skill-package.ps1"
+                        ],
+    "errors":  [
+
+               ],
+    "warnings":  [
+
+                 ],
+    "no_real_publish_performed":  true
+}

@@ -1,0 +1,22 @@
+{
+  "script": "verify-stage-gate-rules",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "hard rule secondary verification exists",
+      "pass": true
+    },
+    {
+      "name": "gate PASS verification exists",
+      "pass": true
+    },
+    {
+      "name": "deterministic checklist fallback exists",
+      "pass": true
+    },
+    {
+      "name": "stage verification summary exists",
+      "pass": true
+    }
+  ]
+}

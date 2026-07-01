@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Permission Policy"
+  short_description: "Safe Codex permission policy setup"
+  default_prompt: "Configure or repair my Codex permission policy with safe backups, prompt rules, verification, and an acceptance report."

@@ -1,4 +1,4 @@
-# Codex DeepSeek V4 Pro Backup Skill
+﻿# Codex DeepSeek V4 Pro Backup Skill
 
 This skill packages the 2026-05-14 successful replay path for using DeepSeek V4 Pro as a manual backup model route for Windows Codex Desktop.
 
@@ -32,3 +32,4 @@ DeepSeek official API -> CCX/API Proxy -> `http://localhost:13000/v1` -> CC Swit
 - Do not occupy port `3000`.
 - Do not print or store DeepSeek API keys in reports or docs.
 - Do not claim success without `DEEPSEEK_V4PRO_CODEX_BACKUP_OK`.
+

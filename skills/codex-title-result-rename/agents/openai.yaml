@@ -1,0 +1,4 @@
+interface:
+  display_name: "技能包：Codex历史会话标题按成果改成长中文名"
+  short_description: "把Codex历史会话标题改成中文长成果名并保存备份清单"
+  default_prompt: "使用 $codex-title-result-rename，把Codex历史会话或项目保存项按最终成果改成中文长标题，生成备份、改名前后清单和校验报告。"

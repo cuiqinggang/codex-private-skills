@@ -1,4 +1,4 @@
-# Verification
+﻿# Verification
 
 Do not report success until the exact marker is observed:
 
@@ -74,3 +74,4 @@ Remove-Item Env:\OPENAI_API_KEY -ErrorAction SilentlyContinue
 ```
 
 Expected: exit code `0` and exact marker.
+

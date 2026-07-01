@@ -1,0 +1,164 @@
+﻿# Candidate Patches
+
+Shadow-only patch candidates. Do not apply without user/GPT Gate Review.
+
+Quality note: regenerated from scan-inventory.json with format operator; scan data unchanged.
+
+## Acceptance page candidates
+
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `H:\AI\skills\_complete_merged_skill_pack_20260607\07_screenshot_recognize_operate_browser` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\acpx` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\agent-browser` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `H:\AI\skills\ai-company-design-systems` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `H:\AI\skills\ai-company-evolving-revenue-portfolio` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\ai-company-long-task-orchestrator` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\ai-learning-material-pack` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `H:\AI\skills\_backups\ai-poster-video-publish-pipeline-before-audio-case-20260531-2308` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\ai-token-business` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\bioinformatics` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\chatgpt-cdp-browser` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\chatgpt-clipboard-bridge` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\chatgpt-screenshot-bridge` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `H:\AI\skills\chatgpt-screenshot-bridge` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `H:\AI\skills\chatgpt-visible-send-bridge` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\chatgpt-visible-send-bridge` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\claude-code-cursor-super-tool-predeploy` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-chaos-normalizer` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-computer-use` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `H:\AI\skills\codex-deepseek-model-integration` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-deepseek-v4pro-ccx-ccswitch-replay` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-edge-tts-voice-notify` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-git-safety-checkpoint` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-old-history-recovery` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-pasted-text-attachment-repair` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-permission-policy` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-quota-panel` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-reinstall-skill-recovery` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `H:\AI\skills\codex-thread-visibility-repair\codex-thread-visibility-repair` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `H:\AI\skills\codex-thread-visibility-repair` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-thread-visibility-repair` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-title-result-rename` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `H:\AI\skills\codex-video-to-usable-skill-loop` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\codex-video-to-usable-skill-loop` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\company-values` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\complete-claude-style-replica-flow` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\cursor-kilo-supertool-mature-stack` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `H:\AI\skills\cursor-kilo-supertool-mature-stack` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\doc` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\docker-management` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\ecc-endurance-ladder-unified` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\find-community` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\find-skills` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `H:\AI\skills\firecrawl-web-api` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\first-customers` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\frontend-visual-taste-gate` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\gh-address-comments` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\gh-fix-ci` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\grow-sustainably` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+- Candidate: add `ACCEPTANCE-GATE.md` or `EVIDENCE.md` to `C:\Users\A\.codex\skills\hermes-014-restoration-ladder` with explicit status, runtime, rollback, and user-visible proof checklist; no `SKILL.md` rewrite.
+
+## Trigger de-dup candidates
+
+- Candidate: compare `gh-fix-ci` and `obsidian-ai-company-os.OLD-20260615-191220`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gh-fix-ci` and `loop-stage-acceptance`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gh-fix-ci` and `openai-docs`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gh-fix-ci` and `codex-desktop-clean-reinstall-skill-recovery`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gh-fix-ci` and `self-improvement`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `first-customers` and `minimalist-entrepreneur-10-skills`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `first-customers` and `validate-idea`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `frontend-visual-taste-gate` and `obsidian-ai-company-os.OLD-20260615-191220`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `frontend-visual-taste-gate` and `one-person-ai-company-success-routes`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `frontend-visual-taste-gate` and `visual-proof-acceptance`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gpt-silver-to-premium-gold-video` and `obsidian-ai-company-os.OLD-20260615-191220`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gpt-silver-to-premium-gold-video` and `loop-stage-acceptance`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gpt-silver-to-premium-gold-video` and `playwright-cli`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gpt-silver-to-premium-gold-video` and `self-improvement`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gpt-silver-to-premium-gold-video` and `screenshot-recognize-operate-browser`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gh-fix-ci` and `one-person-ai-company-success-routes`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gh-fix-ci` and `codex-video-to-usable-skill-loop`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gpt-silver-to-premium-gold-video` and `hermes-feishu-bot-bridge`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gpt-silver-to-premium-gold-video` and `lambda-labs-gpu-cloud`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `gpt-silver-to-premium-gold-video` and `hermes-skill-migration-roi`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `ecc-endurance-ladder-unified` and `video-production-and-editing-adaptive-skill`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `ecc-endurance-ladder-unified` and `skillopt-sample-optimizer`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `find-community` and `first-customers`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `find-community` and `minimalist-review`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `find-community` and `grow-sustainably`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `ecc-endurance-ladder-unified` and `ecc-staged-long-task-orchestration`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `ecc-endurance-ladder-unified` and `ecc-skill-package-governance-evolution`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `ecc-endurance-ladder-unified` and `ecc-staged-long-task-orchestration.backup-20260528-134221`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `ecc-endurance-ladder-unified` and `skillopt-sample-optimizer`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `ecc-endurance-ladder-unified` and `one-person-ai-company-success-routes`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `first-customers` and `marketing-plan`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `find-skills` and `ai-company-evolving-revenue-portfolio`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `first-customers` and `minimalist-review`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `first-customers` and `pricing`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `first-customers` and `mvp`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `find-community` and `pricing`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `find-community` and `mvp`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `find-community` and `validate-idea`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `find-skills` and `skills-finder`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `find-community` and `minimalist-entrepreneur-10-skills`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `hermes-014-restoration-ladder` and `obsidian-ai-company-os.OLD-20260615-191220`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `hermes-014-restoration-ladder` and `obsidian-ai-company-os`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `hermes-014-restoration-ladder` and `playwright-cli`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `hermes-014-restoration-ladder` and `self-improvement`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `hermes-014-restoration-ladder` and `proxy-diagnose-repair`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `hermes-014-restoration-ladder` and `hermes-telegram-persistent-bridge`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `hermes-014-restoration-ladder` and `hermes-skill-migration-roi`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `hermes-014-restoration-ladder` and `inference-sh-cli`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `hermes-014-restoration-ladder` and `new-api-local-deploy`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+- Candidate: compare `hermes-014-restoration-ladder` and `lambda-labs-gpu-cloud`; narrow trigger ownership by domain/precondition instead of broad `use when` overlap.
+
+## High-risk wording candidates
+
+- Candidate: in `imagegen`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `skillopt-sample-optimizer`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `skillopt-sample-optimizer`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `skillopt-sample-optimizer`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `windows-sticky-software-removal`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `codex-desktop-clean-reinstall-skill-recovery`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `codex-desktop-clean-reinstall-skill-recovery`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `windows-hermes-operations`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `codex-chaos-normalizer`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `ppt-showcase-video`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `video-production-and-editing-adaptive-skill`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `video-production-and-editing-adaptive-skill`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `playwright`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `plugin-creator`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `skill-creator`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `super-tool-orchestrator`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `chatgpt-clipboard-bridge`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `windows-background-task-noise-control`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `aios-skill-self-purification-governance`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `codex-old-history-recovery`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `comfyui-aaki-v3-video-baseline`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `openai-docs`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `spreadsheet`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `acpx`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `ai-company-design-systems`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `codex-reinstall-skill-recovery`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `codex-thread-visibility-repair`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `codex-thread-visibility-repair`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `codex-thread-visibility-repair`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `obsidian-ai-company-os.OLD-20260615-191220`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `security-best-practices`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `07_screenshot_recognize_operate_browser`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `chatgpt-visible-send-bridge`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `chatgpt-visible-send-bridge`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `codex-lite-power-upgrade`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `codex-pasted-text-attachment-repair`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `codex-video-to-usable-skill-loop`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `codex-video-to-usable-skill-loop`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `complete-claude-style-replica-flow`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `docker-management`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `find-skills`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `hermes-telegram-persistent-bridge`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `hermes-telegram-persistent-bridge`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `long-coding-flow`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `new-api-local-deploy`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `openai-docs`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `pdf`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `pricing`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `screenshot-recognize-operate-browser`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.
+- Candidate: in `universal-playwright-cli-browser-automation`, downgrade merge/delete/overwrite/global/unattended wording to shadow-first or needs-human-review language.

@@ -1,0 +1,49 @@
+{
+  "script": "verify-governance-skill",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "all child scripts pass",
+      "pass": true
+    },
+    {
+      "name": "all root files exist",
+      "pass": true
+    },
+    {
+      "name": "all templates exist",
+      "pass": true
+    },
+    {
+      "name": "scripts directory exists",
+      "pass": true
+    },
+    {
+      "name": "reports creation directory exists",
+      "pass": true
+    }
+  ],
+  "runs": [
+    {
+      "script": "scripts/verify-required-files.mjs",
+      "exitCode": 0,
+      "stdout": "{\n  \"script\": \"verify-required-files\",\n  \"status\": \"PASS\",\n  \"checks\": [\n    {\n      \"file\": \"SKILL.md\",\n      \"exists\": true\n    },\n    {\n      \"file\": \"README.md\",\n      \"exists\": true\n    },\n    {\n      \"file\": \"RUNBOOK.md\",\n      \"exists\": true\n    },\n    {\n      \"file\": \"SOURCE-OF-TRUTH-MAP.md\",\n      \"exists\": true\n    },\n    {\n      \"file\": \"CONTEXT-BUDGET-RULES.md\",\n      \"exists\": true\n    },\n    {\n      \"file\": \"SCRIPT-VERIFICATION-RULES.md\",\n      \"exists\": true\n    },\n    {\n      \"file\": \"GOVERNANCE-EVOLUTION-METHOD.md\",\n      \"exists\": true\n    },\n    {\n      \"file\": \"MATURE-REPLAY-METHOD.md\",\n      \"exists\": true\n    },\n    {\n      \"file\": \"FAILURE-PATTERN-CATALOG.md\",\n      \"exists\": true\n    },\n    {\n      \"file\": \"GLOSSARY-ZH.md\",\n      \"exists\": true\n    },\n    {\n      \"file\": \"MANIFEST.md\",\n      \"exists\": true\n    }\n  ]\n}\n",
+      "stderr": "",
+      "pass": true
+    },
+    {
+      "script": "scripts/verify-context-budget-rules.mjs",
+      "exitCode": 0,
+      "stdout": "{\n  \"script\": \"verify-context-budget-rules\",\n  \"status\": \"PASS\",\n  \"checks\": [\n    {\n      \"name\": \"no default reports full-read rule exists\",\n      \"pass\": true\n    },\n    {\n      \"name\": \"progressive disclosure rule exists\",\n      \"pass\": true\n    },\n    {\n      \"name\": \"reports archive rule exists\",\n      \"pass\": true\n    },\n    {\n      \"name\": \"short entry rule exists\",\n      \"pass\": true\n    }\n  ]\n}\n",
+      "stderr": "",
+      "pass": true
+    },
+    {
+      "script": "scripts/verify-stage-gate-rules.mjs",
+      "exitCode": 0,
+      "stdout": "{\n  \"script\": \"verify-stage-gate-rules\",\n  \"status\": \"PASS\",\n  \"checks\": [\n    {\n      \"name\": \"hard rule secondary verification exists\",\n      \"pass\": true\n    },\n    {\n      \"name\": \"gate PASS verification exists\",\n      \"pass\": true\n    },\n    {\n      \"name\": \"deterministic checklist fallback exists\",\n      \"pass\": true\n    },\n    {\n      \"name\": \"stage verification summary exists\",\n      \"pass\": true\n    }\n  ]\n}\n",
+      "stderr": "",
+      "pass": true
+    }
+  ]
+}

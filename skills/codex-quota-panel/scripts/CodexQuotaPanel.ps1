@@ -1,0 +1,303 @@
+﻿Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+
+$ErrorActionPreference = "SilentlyContinue"
+$Root = Split-Path -Parent $MyInvocation.MyCommand.Path
+$Python = "C:\Users\A\AppData\Local\Programs\Python\Python313\python.exe"
+$Checker = Join-Path $Root "cclimits.py"
+$Log = Join-Path $Root "quota-panel.log"
+$LastGoodFile = Join-Path $Root "quota-panel-last-good.txt"
+$LastGoodMaxAgeMinutes = 10
+$CclimitsTimeoutSeconds = 20
+
+function Write-PanelLog($Message) {
+    $stamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    Add-Content -Path $Log -Value "$stamp $Message" -Encoding UTF8
+}
+
+Write-PanelLog "starting quota panel"
+
+function Get-LastGoodQuotaText {
+    param([switch]$AllowExpired)
+    if (Test-Path $LastGoodFile) {
+        $ageMinutes = ((Get-Date) - (Get-Item $LastGoodFile).LastWriteTime).TotalMinutes
+        if ($ageMinutes -gt $LastGoodMaxAgeMinutes -and -not $AllowExpired) {
+            Write-PanelLog "last good expired: $([int]$ageMinutes)m old"
+            return $null
+        }
+        $text = Get-Content -Raw $LastGoodFile
+        if ($text) { return $text.Trim() }
+    }
+    return $null
+}
+
+function Set-LastGoodQuotaText($Text) {
+    if ($Text) {
+        Set-Content -Path $LastGoodFile -Value $Text -Encoding UTF8
+    }
+}
+
+function Get-QuotaFallbackText($Reason) {
+    $cached = Get-LastGoodQuotaText
+    if ($cached) {
+        Write-PanelLog "$Reason; keeping last good: $cached"
+        return $cached
+    }
+    $stale = Get-LastGoodQuotaText -AllowExpired
+    if ($stale) {
+        Write-PanelLog "$Reason; showing stale last good without visible prefix: $stale"
+        return $stale
+    }
+    Write-PanelLog "$Reason; no cached value"
+    $qu = [string][char]0x53D6
+    $shu = [string][char]0x6570
+    $zhong = [string][char]0x4E2D
+    return "$qu$shu$zhong"
+}
+
+function Invoke-CclimitsJson {
+    $psi = New-Object System.Diagnostics.ProcessStartInfo
+    $psi.FileName = $Python
+    $psi.Arguments = '"' + $Checker + '" --codex --json'
+    $psi.UseShellExecute = $false
+    $psi.RedirectStandardOutput = $true
+    $psi.RedirectStandardError = $true
+    $psi.CreateNoWindow = $true
+    $psi.StandardOutputEncoding = [System.Text.Encoding]::UTF8
+    $psi.StandardErrorEncoding = [System.Text.Encoding]::UTF8
+
+    $proc = New-Object System.Diagnostics.Process
+    $proc.StartInfo = $psi
+    [void]$proc.Start()
+    if (-not $proc.WaitForExit($CclimitsTimeoutSeconds * 1000)) {
+        try { $proc.Kill() } catch {}
+        return [pscustomobject]@{
+            Output = $null
+            Error = "timeout after ${CclimitsTimeoutSeconds}s"
+            TimedOut = $true
+            ExitCode = $null
+        }
+    }
+
+    return [pscustomobject]@{
+        Output = $proc.StandardOutput.ReadToEnd()
+        Error = $proc.StandardError.ReadToEnd()
+        TimedOut = $false
+        ExitCode = $proc.ExitCode
+    }
+}
+
+function Get-CodexQuotaText {
+    try {
+        $env:PYTHONIOENCODING = "utf-8"
+        $codex = $null
+        $lastReason = "unknown"
+        for ($attempt = 1; $attempt -le 3; $attempt++) {
+            if ($attempt -gt 1) {
+                Start-Sleep -Seconds 4
+            }
+            $result = Invoke-CclimitsJson
+            if (-not $result.Output) {
+                $lastReason = if ($result.Error) { $result.Error.Trim() } else { "no output" }
+                Write-PanelLog "cclimits failed attempt ${attempt}: $lastReason"
+                continue
+            }
+
+            $data = $result.Output | ConvertFrom-Json
+            $codex = $data.codex
+            if ($codex -and $codex.status -eq "ok") {
+                break
+            }
+
+            $lastReason = "status not ok"
+            if ($codex -and $codex.error) { $lastReason = $codex.error }
+            Write-PanelLog "codex quota unavailable attempt ${attempt}: $lastReason"
+        }
+
+        if (-not $codex -or $codex.status -ne "ok") {
+            return Get-QuotaFallbackText "codex quota unavailable: $lastReason"
+        }
+
+        $p = $codex.primary_window
+        $s = $codex.secondary_window
+        $plan = if ($codex.plan) { $codex.plan } else { "plan" }
+        $pReset = Convert-ResetClock $p.resets_in
+        $sReset = Convert-ResetText $s.resets_in
+        $tian = [string][char]0x5929
+        $text = "$($p.remaining) $pReset | 7$tian$($s.remaining) $sReset"
+        Set-LastGoodQuotaText $text
+        return $text
+    } catch {
+        return Get-QuotaFallbackText "refresh failed: $($_.Exception.Message)"
+    }
+}
+
+function Convert-ResetText($Text) {
+    $wei = [string][char]0x672A
+    $zhi = [string][char]0x77E5
+    if (-not $Text) { return "$wei$zhi" }
+    $tian = [string][char]0x5929
+    $shi = [string][char]0x65F6
+    $fen = [string][char]0x5206
+    return ($Text -replace "\s+", "" -replace "d", $tian -replace "h", $shi -replace "m", $fen)
+}
+
+function Convert-ResetClock($Text) {
+    if (-not $Text) { return "--:--" }
+    $totalMinutes = 0
+    if ($Text -match "(\d+)\s*d") { $totalMinutes += [int]$Matches[1] * 24 * 60 }
+    if ($Text -match "(\d+)\s*h") { $totalMinutes += [int]$Matches[1] * 60 }
+    if ($Text -match "(\d+)\s*m") { $totalMinutes += [int]$Matches[1] }
+    if ($totalMinutes -le 0) { return "--:--" }
+    return (Get-Date).AddMinutes($totalMinutes).ToString("HH:mm")
+}
+
+function New-RoundedRectanglePath($Rectangle, [int]$Radius) {
+    $path = New-Object System.Drawing.Drawing2D.GraphicsPath
+    $diameter = $Radius * 2
+    $arc = New-Object System.Drawing.Rectangle($Rectangle.X, $Rectangle.Y, $diameter, $diameter)
+    $path.AddArc($arc, 180, 90)
+    $arc.X = $Rectangle.Right - $diameter
+    $path.AddArc($arc, 270, 90)
+    $arc.Y = $Rectangle.Bottom - $diameter
+    $path.AddArc($arc, 0, 90)
+    $arc.X = $Rectangle.Left
+    $path.AddArc($arc, 90, 90)
+    $path.CloseFigure()
+    return $path
+}
+
+function Apply-PanelShape {
+    if ($form.Width -le 0 -or $form.Height -le 0) { return }
+    $rect = New-Object System.Drawing.Rectangle(0, 0, $form.Width, $form.Height)
+    $path = New-RoundedRectanglePath $rect 13
+    $oldRegion = $form.Region
+    $form.Region = New-Object System.Drawing.Region($path)
+    if ($oldRegion) { $oldRegion.Dispose() }
+    $path.Dispose()
+}
+
+$form = New-Object System.Windows.Forms.Form
+$form.Text = "Codex Quota"
+$form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::None
+$form.StartPosition = [System.Windows.Forms.FormStartPosition]::Manual
+$form.TopMost = $true
+$form.ShowInTaskbar = $false
+$form.BackColor = [System.Drawing.Color]::FromArgb(206, 235, 242)
+$form.ForeColor = [System.Drawing.Color]::White
+$form.Width = 220
+$form.Height = 36
+$form.Opacity = 0.94
+$form.DoubleBuffered = $true
+
+$label = New-Object System.Windows.Forms.Label
+$label.AutoSize = $true
+$label.Dock = [System.Windows.Forms.DockStyle]::None
+$label.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
+$label.Font = New-Object System.Drawing.Font("Segoe UI Semibold", 10.5, [System.Drawing.FontStyle]::Regular)
+$label.ForeColor = [System.Drawing.Color]::FromArgb(8, 58, 78)
+$label.BackColor = $form.BackColor
+$label.Location = New-Object System.Drawing.Point(12, 7)
+$form.Controls.Add($label)
+
+$menu = New-Object System.Windows.Forms.ContextMenuStrip
+$refreshItem = $menu.Items.Add("Refresh now")
+$exitItem = $menu.Items.Add("Exit")
+$form.ContextMenuStrip = $menu
+
+function Move-BottomRight {
+    $area = [System.Windows.Forms.Screen]::PrimaryScreen.WorkingArea
+    $form.Left = $area.Right - $form.Width - 8
+    $form.Top = $area.Bottom - $form.Height - 5
+    $form.TopMost = $false
+    $form.TopMost = $true
+    $form.Show()
+    $form.BringToFront()
+}
+
+function Move-Center {
+    $area = [System.Windows.Forms.Screen]::PrimaryScreen.WorkingArea
+    $form.Left = [int]($area.Left + (($area.Width - $form.Width) / 2))
+    $form.Top = [int]($area.Top + (($area.Height - $form.Height) / 2))
+}
+
+function Refresh-Quota {
+    $label.Text = Get-CodexQuotaText
+    $size = [System.Windows.Forms.TextRenderer]::MeasureText($label.Text, $label.Font)
+    $form.Width = [Math]::Max(182, $size.Width + 28)
+    $form.Height = 36
+    $label.Location = New-Object System.Drawing.Point(12, 7)
+    Apply-PanelShape
+    Move-BottomRight
+    $form.Invalidate()
+    Write-PanelLog "refreshed: $($label.Text)"
+}
+
+function Show-StartupFallback {
+    $initial = Get-LastGoodQuotaText -AllowExpired
+    if (-not $initial) {
+        $qu = [string][char]0x53D6
+        $shu = [string][char]0x6570
+        $zhong = [string][char]0x4E2D
+        $initial = "$qu$shu$zhong"
+    }
+    $label.Text = $initial
+    $size = [System.Windows.Forms.TextRenderer]::MeasureText($label.Text, $label.Font)
+    $form.Width = [Math]::Max(182, $size.Width + 28)
+    $form.Height = 36
+    $label.Location = New-Object System.Drawing.Point(12, 7)
+    Apply-PanelShape
+    Move-BottomRight
+    $form.Invalidate()
+    Write-PanelLog "startup fallback visible: $($label.Text)"
+}
+
+$refreshItem.Add_Click({ Refresh-Quota })
+$exitItem.Add_Click({ $form.Close() })
+
+$timer = New-Object System.Windows.Forms.Timer
+$timer.Interval = 180000
+$timer.Add_Tick({ Refresh-Quota })
+$timer.Start()
+
+$moveTimer = New-Object System.Windows.Forms.Timer
+$moveTimer.Interval = 1000
+$moveTimer.Add_Tick({
+    $moveTimer.Stop()
+    Move-BottomRight
+    Write-PanelLog "moved bottom-right"
+})
+
+$form.Add_Paint({
+    param($sender, $e)
+    $g = $e.Graphics
+    $g.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::AntiAlias
+    $rect = New-Object System.Drawing.Rectangle(0, 0, ($form.Width - 1), ($form.Height - 1))
+    $path = New-RoundedRectanglePath $rect 13
+    $brush = New-Object System.Drawing.Drawing2D.LinearGradientBrush(
+        $rect,
+        [System.Drawing.Color]::FromArgb(219, 245, 247),
+        [System.Drawing.Color]::FromArgb(176, 220, 231),
+        [System.Drawing.Drawing2D.LinearGradientMode]::Vertical
+    )
+    $pen = New-Object System.Drawing.Pen([System.Drawing.Color]::FromArgb(46, 139, 161), 1)
+    $g.FillPath($brush, $path)
+    $g.DrawPath($pen, $path)
+    $pen.Dispose()
+    $brush.Dispose()
+    $path.Dispose()
+})
+
+$form.Add_Shown({
+    Apply-PanelShape
+    Move-Center
+    Show-StartupFallback
+    Refresh-Quota
+    $form.Activate()
+    $moveTimer.Start()
+})
+$form.Add_DoubleClick({ Refresh-Quota })
+$label.Add_DoubleClick({ Refresh-Quota })
+
+[void]$form.ShowDialog()
+Write-PanelLog "panel closed"

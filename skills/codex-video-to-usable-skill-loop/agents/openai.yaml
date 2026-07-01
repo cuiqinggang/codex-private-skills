@@ -1,0 +1,4 @@
+interface:
+  display_name: "Video to Skill Loop"
+  short_description: "Turn learning material into reusable Codex skills."
+  default_prompt: "Convert this valuable video, tutorial, article, screenshot, or experience into reusable Codex rules, SOPs, templates, scripts, and acceptance evidence."

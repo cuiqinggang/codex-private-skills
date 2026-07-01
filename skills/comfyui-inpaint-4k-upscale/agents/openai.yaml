@@ -1,0 +1,3 @@
+display_name: ComfyUI Inpaint 4K Upscale
+short_description: ComfyUI local repair and upscale
+default_prompt: Use this skill to process or maintain local portrait image inpainting, Ultimate SD Upscale 2x/4K output, and Topaz finishing guidance.

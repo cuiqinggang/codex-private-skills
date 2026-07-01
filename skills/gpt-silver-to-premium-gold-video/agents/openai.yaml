@@ -1,0 +1,4 @@
+interface:
+  display_name: "GPT Gold Video"
+  short_description: "GPT keyframe silver-to-gold video workflow"
+  default_prompt: "Use the GPT silver-to-premium-gold video workflow: package keyframes for GPT, archive accepted outputs, normalize dimensions, generate preview videos, and report gate status."

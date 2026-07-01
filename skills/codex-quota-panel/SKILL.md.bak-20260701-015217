@@ -1,0 +1,89 @@
+---
+name: codex-quota-panel
+description: Install, repair, or tune the compact Windows bottom-right Codex quota panel using cclimits. Use when the user asks about Codex usage quota, remaining 5-hour or 7-day capacity, cclimits, AI CLI Usage Monitor, right-bottom quota display, startup auto-run, or a quota panel that is missing, too large, unreadable, hidden, flickering between data and errors, or failed after reboot.
+---
+
+# Codex Quota Panel
+
+## Goal
+
+Keep a tiny always-visible Windows panel for Codex quota:
+
+```text
+95% 18:55 | 7-day 96% 6d18h
+```
+
+The actual GUI uses short Chinese labels for the 7-day window. The leading percentage is the 5-hour window; omit the `5-hour` label because the user already knows it.
+
+## Stable Runtime
+
+- Runtime folder: `C:\Users\A\.codex\quota-panel`
+- Startup shortcut: current user's Windows Startup folder, `Codex Quota Panel.lnk`
+- Manual desktop shortcut: `C:\Users\A\Desktop\打开Codex额度显示.lnk`
+- Log: `C:\Users\A\.codex\quota-panel\quota-panel.log`
+- Last good cache: `C:\Users\A\.codex\quota-panel\quota-panel-last-good.txt`
+
+## Install Or Repair
+
+Run:
+
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File C:\Users\A\.codex\skills\codex-quota-panel\scripts\install_or_repair_quota_panel.ps1
+```
+
+This copies the panel files into the stable runtime folder, recreates startup and desktop shortcuts, closes old panel instances, starts the current visible panel, and starts the watchdog.
+
+Every repair must also run:
+
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File C:\Users\A\.codex\quota-panel\assert_quota_panel_hardened.ps1
+```
+
+Do not claim success unless the hardening check passes.
+
+## Display Rules
+
+- Prefer one compact line.
+- Omit the 5-hour label.
+- Keep the 7-day label on the weekly portion.
+- Use a readable small label, not a large title-bar window.
+- Reposition and re-topmost the panel on each refresh, not only at startup.
+- Refresh automatically every 5 minutes.
+- On transient quota/auth/API failures, keep showing the last successful quota text only while it is fresh.
+- Do not let the last-success cache become a fake fixed display; after 10 minutes, mark stale data with a short `旧` prefix instead of showing non-quota text.
+- Retry cclimits up to 3 times before falling back, because individual calls can fail while the next call succeeds.
+- Bound every cclimits subprocess call with a 20-second timeout; a hung query must never prevent the panel from appearing or staying alive.
+- On startup, show the last-good quota-shaped text immediately before doing the live refresh, so a slow first query cannot look like a missing panel.
+- Do not start the panel itself with `-WindowStyle Hidden`, `/min`, or a hidden launcher. Only the watchdog may be hidden.
+- If a repair script starts the panel, verify the repair script also avoids hidden panel launch.
+- Use a stable runtime path, not dated output folders.
+- Keep PowerShell source ASCII-safe where possible; PowerShell 5 can misread Chinese source encoding.
+
+## Validation
+
+Check quota data:
+
+```powershell
+python C:\Users\A\.codex\quota-panel\cclimits.py --codex --json
+```
+
+Check panel behavior:
+
+```powershell
+Get-Content -Tail 20 C:\Users\A\.codex\quota-panel\quota-panel.log
+```
+
+PASS requires:
+
+- `cclimits.py --codex --json` returns `status: ok`, or the panel keeps showing quota-shaped stale data during a transient failure.
+- Hardening check returns `PASS: quota panel hardened`.
+- The log shows `refreshed:` with the compact format.
+- The script uses a 300000 ms timer and a 10-minute last-good cache limit.
+- The log shows `moved bottom-right`.
+- The log shows `watchdog: started` after repair.
+- The log shows `startup fallback visible` after repair, then either `refreshed:` with live quota or a bounded stale fallback.
+- Startup shortcut points at `C:\Users\A\.codex\quota-panel\Start-CodexQuotaPanel.cmd`.
+
+## Failure Review
+
+Read `references/failure-review.md` before changing launcher visibility, startup behavior, encoding, caching, or display layout.

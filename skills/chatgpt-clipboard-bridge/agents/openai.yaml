@@ -1,0 +1,4 @@
+interface:
+  display_name: "ChatGPT Clipboard Bridge"
+  short_description: "Bridge logged-in ChatGPT website planning to Codex execution via Windows clipboard."
+  default_prompt: "Use the ChatGPT clipboard bridge skill to send a planning prompt to the logged-in ChatGPT website, copy the answer through 复制回复 / Copy response, save answer_raw.md, structurally extract codex_plan.md without rewriting GPT, and execute automatically unless a Level 3 stop condition appears."

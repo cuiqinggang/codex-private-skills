@@ -1,0 +1,55 @@
+{
+  "task_name": "CODEX_APP_PLUGIN_WORKFLOW_SKILL_DEPLOYMENT_V1",
+  "status": "DEPLOYED",
+  "source_video_theme": "Codex App 十大开发插件与流程闭环",
+  "skill_path": "H:\\AI\\skills\\codex-app-plugin-workflow-orchestrator",
+  "created_files": [
+    "SKILL.md",
+    "README.md",
+    "PLUGIN-WORKFLOW-MATRIX.md",
+    "PROJECT-ROUTING-RULES.md",
+    "SAFE-INSTALL-AND-CAPABILITY-CHECK.md",
+    "AI-COMPANY-KNOWLEDGE-OS-INTEGRATION.md",
+    "VISUAL-PROOF-WORKFLOW.md",
+    "EXAMPLES/example-ai-company-dashboard.md",
+    "EXAMPLES/example-figma-to-webapp.md",
+    "EXAMPLES/example-browser-validation.md",
+    "EXAMPLES/example-github-pr-review.md",
+    "REPORTS/deployment-report.md",
+    "ACCEPTANCE/codex-app-plugin-workflow-acceptance.html",
+    "ACCEPTANCE/acceptance-data.json"
+  ],
+  "core_capabilities": [
+    "Product Design routing",
+    "Design-to-code routing",
+    "Web app build routing",
+    "Browser validation routing",
+    "GitHub workflow safety",
+    "Supabase/backend planning safety",
+    "Deployment authorization boundary",
+    "Visual proof acceptance"
+  ],
+  "recommended_for_ai_company_os": [
+    "Product Design -> Build Web Apps -> Browser validation -> Visual Proof Acceptance",
+    "Screenshot or design input -> local implementation -> visual comparison",
+    "Local dashboard or clickable index -> browser proof -> deployment report"
+  ],
+  "requires_user_authorization": [
+    "Install new plugins",
+    "Connect Figma",
+    "Use GitHub write actions",
+    "Connect Supabase or change databases",
+    "Deploy to Vercel or Netlify",
+    "Use secrets or account tokens"
+  ],
+  "risk_notes": [
+    "Video plugin list may not match current Codex App plugin availability.",
+    "External accounts must not be connected without explicit user approval.",
+    "No cloud write, database mutation, deployment, or plugin installation was performed."
+  ],
+  "next_steps": [
+    "Use this skill before future web app, dashboard, design-to-code, browser validation, GitHub, backend, or deployment tasks.",
+    "Run capability checks only when a concrete task requires them.",
+    "Keep visual proof as the default acceptance shape for important deliverables."
+  ]
+}

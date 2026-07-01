@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Windows 牛皮糖软件删除技能沉淀验收</title>
+  <style>
+    body { margin: 0; font-family: "Microsoft YaHei", Arial, sans-serif; color: #202124; background: #f6f7f8; }
+    main { max-width: 980px; margin: 0 auto; padding: 32px 20px; }
+    h1 { margin: 0 0 12px; font-size: 28px; }
+    h2 { margin-top: 28px; border-bottom: 1px solid #d7dbe0; padding-bottom: 8px; }
+    .status { display: inline-block; background: #176b3a; color: white; padding: 6px 10px; border-radius: 6px; font-weight: 700; }
+    li { margin: 8px 0; }
+    code { background: #eceff3; padding: 2px 5px; border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; background: white; }
+    th, td { border: 1px solid #d7dbe0; padding: 10px; text-align: left; vertical-align: top; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Windows 牛皮糖软件删除技能沉淀验收</h1>
+  <p class="status">PASS</p>
+
+  <h2>材料来源</h2>
+  <p>2026-06-14 讯飞输入法卸载与残留清理全过程：普通卸载假成功、输入法框架复活、重启清理失败、PendingFileRenameOperations 升级。</p>
+
+  <h2>生成资产</h2>
+  <table>
+    <tr><th>文件</th><th>用途</th></tr>
+    <tr><td><code>SKILL.md</code></td><td>触发规则、总原则、验收标准。</td></tr>
+    <tr><td><code>sop/STICKY-WINDOWS-UNINSTALL-SOP.md</code></td><td>阶段化删除流程，包括两次重启逻辑。</td></tr>
+    <tr><td><code>reviews/2026-06-14-xunfei-ime-removal-review.md</code></td><td>失败复盘与证据。</td></tr>
+    <tr><td><code>scripts/schedule_pending_delete_template.ps1</code></td><td>启动前删除队列模板。</td></tr>
+    <tr><td><code>patches/AGENTS-PATCH-DRAFT.md</code></td><td>可加入 AGENTS.md 的复用规则草案。</td></tr>
+    <tr><td><code>logs/usage-log.md</code></td><td>最近使用记录。</td></tr>
+  </table>
+
+  <h2>未来触发</h2>
+  <ul>
+    <li>难卸载、删除不掉、卸载失败、牛皮糖软件、360 一样难删。</li>
+    <li>输入法删不掉、讯飞输入法残留、iFlyIME、文件被占用。</li>
+    <li>重启后删除、PendingFileRenameOperations。</li>
+  </ul>
+
+  <h2>验收标准</h2>
+  <ul>
+    <li>包含普通卸载、用户集成、持久化、文件锁、重启任务、启动前删除队列完整逻辑。</li>
+    <li>明确禁止无批准关闭代理/网络工具。</li>
+    <li>明确解释为什么可能需要两次重启。</li>
+    <li>提供可复用脚本模板和失败复盘入口。</li>
+    <li>补充 360 / 安全软件作为更高难度等级参考。</li>
+    <li>新增“从最终结果倒推”的 Backward Proof 验收矩阵，避免缺少关键步骤。</li>
+    <li>新增 360 全家桶/生态型软件拆除模型，强调按依赖图拆除互保组件。</li>
+  </ul>
+</main>
+</body>
+</html>

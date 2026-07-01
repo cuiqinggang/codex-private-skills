@@ -1,0 +1,4 @@
+interface:
+  display_name: "Weekly Project Health Check"
+  short_description: "Repeatable workspace health checks for mixed local projects."
+  default_prompt: "Use $weekly-project-health-check to inspect this workspace, run safe checks, and report PASS/FAIL evidence."

@@ -1,0 +1,14 @@
+{
+  "task_id": "",
+  "user_goal": "",
+  "interpreted_intent": "",
+  "suggested_level": "",
+  "local_skills": [],
+  "local_files": [],
+  "external_sources": [],
+  "constraints": [],
+  "risks": [],
+  "suggested_gates": [],
+  "questions_for_gpt": [],
+  "created_at": ""
+}

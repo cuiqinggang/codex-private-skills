@@ -1,0 +1,18 @@
+这个视频要复刻的正确对象：可以上架数字产品、线上收美金/外币、付款后自动发货的海外独立站。
+
+核心不是公司注册站，也不是 AI 工具站。
+
+成熟参考：Lemon Squeezy、Payhip、Gumroad。
+
+同类网站：
+1. https://djectstudio.lemonsqueezy.com/
+2. https://phoneframes.lemonsqueezy.com/
+3. https://techniqueworks.lemonsqueezy.com/
+4. https://payhip.com/TypismBooks
+5. https://qaaya.gumroad.com/l/60-million-digital-products-bundle
+
+必须复刻：产品上架、产品页、美元价格、Checkout 收款、付款成功页、自动下载链接、邮件自动发货、后台订单记录。
+
+第一版建议：用 Lemon Squeezy / Payhip 做真实交易闭环；独立站只做首页、产品页、转化页面和 Buy Now 按钮。
+
+验收硬标准：付款后系统自动发货，不靠人工一单一单发送文件。

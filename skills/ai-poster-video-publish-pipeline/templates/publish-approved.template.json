@@ -1,0 +1,35 @@
+{
+  "task_id": "AI_POSTER_VIDEO_TASK_YYYYMMDD",
+  "approved_by_user": true,
+  "approved_at": "YYYY-MM-DDTHH:mm:ss+08:00",
+  "approved_scope": ["douyin", "wechat_moments"],
+  "allow_auto_click_publish": true,
+  "approved_assets": {
+    "douyin_video": "publish_package/douyin/video.mp4",
+    "douyin_caption": "publish_package/douyin/caption.txt",
+    "wechat_moments_video": "publish_package/wechat_moments/video.mp4",
+    "wechat_moments_caption": "publish_package/wechat_moments/caption.txt"
+  },
+  "review_checks": {
+    "douyin_no_phone": true,
+    "douyin_no_wechat": true,
+    "douyin_no_qr_code": true,
+    "wechat_contact_allowed": false,
+    "video_stable_static": true,
+    "promo_first": true,
+    "promo_closing_for_full": true
+  },
+  "forbidden_actions": [
+    "paid_promotion",
+    "delete_files",
+    "delete_old_posts",
+    "bulk_private_message",
+    "bulk_unknown_groups",
+    "change_account_settings",
+    "auto_add_friends",
+    "auto_comment_spam",
+    "handle_captcha",
+    "handle_face_verification",
+    "handle_sms_verification"
+  ]
+}

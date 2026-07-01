@@ -1,0 +1,7 @@
+interface:
+  display_name: "Loop Stage Acceptance"
+  short_description: "Stage-by-stage self-check and repair loop."
+  default_prompt: "Use $loop-stage-acceptance to execute a staged task with self-check, repair rounds, and an honest final acceptance report."
+
+policy:
+  allow_implicit_invocation: true

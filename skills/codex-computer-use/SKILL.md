@@ -1,0 +1,269 @@
+---
+name: codex-computer-use
+description: Diagnose and repair Codex Desktop Computer Use, Any App, bundled plugin mirror/cache, in-app browser, and Google Chrome external browser control failures on Windows. Use when Computer Use is missing, Any App is unavailable, Chrome says extension not connected, browser/native-host install fails, WindowsApps copy hangs, or Codex Desktop Store updates break local plugin paths.
+---
+
+# Codex Windows Control Repair
+
+Use this skill on Windows when Codex Desktop cannot use Computer Use, Any App, the in-app browser, or Google Chrome. Prefer local diagnosis and repair first. Treat MSIX/ASAR repatching as a last resort because it can stop, uninstall, reinstall, and relaunch Codex Desktop.
+
+If the issue is specifically visible-button operation, screenshot-guided
+coordinates, human-like UI control rhythm, or restoring that visual operation
+capability after drift, first read
+`C:\Users\A\.codex\skills\computer-use-visual-recovery\SKILL.md`, then return
+here only if the underlying Computer Use plugin/cache/native-host plumbing needs
+repair.
+
+## Operating Rules
+
+- Do not modify `C:\Program Files\WindowsApps` in place.
+- Do not run full MSIX/ASAR repatch during an active Codex Desktop session unless the user explicitly accepts that Codex may be stopped and reinstalled.
+- Do not assume `robocopy` works for Store package files. WindowsApps resources can be `Encrypted` / `Application Protected`; use scripts in this skill because they stream-copy bytes instead of preserving protected file attributes.
+- Before changing `$env:USERPROFILE\.codex\config.toml`, create a timestamped backup. Bundled scripts do this automatically.
+- If a script or dry run is interrupted, check for leftover `powershell`, `robocopy`, `asar`, `makeappx`, or `signtool` processes whose command lines match this repair before continuing. Stop only confirmed repair processes.
+- Keep evidence explicit: package status, config values, plugin/cache paths, native-host manifest, registry key, selected Chrome profile, helper screenshot verification, and Codex Desktop UI status.
+
+## Quick Triage
+
+Run these first:
+
+```powershell
+Get-AppxPackage -Name OpenAI.Codex | Select-Object Name,PackageFullName,Version,SignatureKind,InstallLocation
+[Environment]::GetEnvironmentVariable('CODEX_ELECTRON_ENABLE_WINDOWS_COMPUTER_USE','User')
+Select-String -LiteralPath "$env:USERPROFILE\.codex\config.toml" -Pattern 'computer_use|openai-bundled|computer-use|\[windows\]|sandbox' -Context 0,2
+```
+
+Interpretation:
+
+- `SignatureKind = Store` is fine. Local Computer Use repair does not require Developer-signed MSIX.
+- Missing `[marketplaces.openai-bundled]`, missing `[plugins."computer-use@openai-bundled"]`, missing `CODEX_ELECTRON_ENABLE_WINDOWS_COMPUTER_USE=1`, or missing `features.computer_use = true` means run the Computer Use local repair.
+- If the UI already shows `Any App` enabled but `Google Chrome` says install failed or extension not connected, skip MSIX work and repair Chrome control.
+
+## Computer Use Local Repair
+
+Back up state first:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\manage-codex-backups.ps1" -Action Backup
+```
+
+Verify without changing files:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\install-computer-use-local.ps1" -StrictVerifyOnly
+```
+
+If strict verify fails, repair and verify:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\install-computer-use-local.ps1" -VerifyOnly
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\install-computer-use-local.ps1" -StrictVerifyOnly
+```
+
+What the repair script handles:
+
+- Syncs the installed `openai-bundled` marketplace to `%USERPROFILE%\.codex\.tmp\bundled-marketplaces\openai-bundled`.
+- Uses byte-stream copying so `ERROR 6000 The specified file could not be encrypted` and WindowsApps `Application Protected` files do not break the copy.
+- Skips invalid reparse points or unreadable package dependency remnants instead of hanging.
+- Rebuilds stable cache copies for `browser`, `chrome`, and `computer-use`.
+- Writes `[marketplaces.openai-bundled]`, `[plugins."computer-use@openai-bundled"]`, `[features] computer_use = true`, and `[windows] sandbox = "unelevated"`.
+- Sets `CODEX_ELECTRON_ENABLE_WINDOWS_COMPUTER_USE=1`.
+- Verifies the Computer Use helper can return screen info and a screenshot.
+- Installs a local direct Computer Use client when the native pipe path is stale
+  or unavailable. The direct client keeps the official
+  `WindowsComputerUseClientBase`, loads the local `helper_transport.js`, copies
+  the official client scripts/internal dependencies from the stable bundled
+  cache, and supports `list_apps`, `list_windows`, `get_window`,
+  `activate_window`, `get_window_state`, `launch_app`, `type_text`, and
+  `press_key`.
+
+Success means:
+
+- `-StrictVerifyOnly` prints `verification ok`.
+- The helper test prints valid width/height and screenshot bytes.
+- A direct-client Notepad smoke can launch Notepad, enumerate the new window,
+  activate it, type a short marker, press Enter, and return one screenshot from
+  `get_window_state({ include_screenshot: true, include_text: true })`.
+- These files exist:
+  - `%USERPROFILE%\.codex\.tmp\bundled-marketplaces\openai-bundled\.agents\plugins\marketplace.json`
+  - `%USERPROFILE%\.codex\.tmp\bundled-marketplaces\openai-bundled\plugins\browser\.codex-plugin\plugin.json`
+  - `%USERPROFILE%\.codex\.tmp\bundled-marketplaces\openai-bundled\plugins\chrome\.codex-plugin\plugin.json`
+  - `%USERPROFILE%\.codex\.tmp\bundled-marketplaces\openai-bundled\plugins\computer-use\.codex-plugin\plugin.json`
+  - `%USERPROFILE%\.codex\plugins\cache\openai-bundled\browser\latest\.codex-plugin\plugin.json`
+  - `%USERPROFILE%\.codex\plugins\cache\openai-bundled\chrome\latest\.codex-plugin\plugin.json`
+  - `%USERPROFILE%\.codex\plugins\cache\openai-bundled\computer-use\latest\.codex-plugin\plugin.json`
+
+After success, fully quit and reopen Codex Desktop.
+
+## Chrome Control Repair
+
+Use this when the in-app browser works but `Computer Use > Google Chrome` says installation failed, extension not connected, or browser extension not connected.
+
+Repair native messaging, registry, protected runtime files, and selected-profile detection:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\repair-chrome-control.ps1"
+```
+
+If the script says manual Chrome extension install is required, open the selected profile's install page:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\repair-chrome-control.ps1" -OpenExtensionPage
+```
+
+What the Chrome repair script handles:
+
+- Creates `%LOCALAPPDATA%\OpenAI\extension\com.openai.codexextension.json`.
+- Writes `HKCU\Software\Google\Chrome\NativeMessagingHosts\com.openai.codexextension`.
+- Copies `codex.exe`, `node.exe`, and `node_repl.exe` from the Store package to `%USERPROFILE%\.codex\.tmp\codex-desktop-runtime\<version>\` using byte-stream copy, because Store package executables may be `Access is denied` when launched directly from WindowsApps.
+- Points `extension-host-config.json` at the copied runtime executables.
+- Runs the bundled `check-native-host-manifest.js --json` and requires `correct = true`.
+- Runs `check-extension-installed.js --json` and detects when the extension is installed in one Chrome profile but Codex selected another.
+
+If profile mismatch is reported:
+
+- Example: extension installed in `Profile 7`, selected profile is `Profile 9`.
+- Install the extension in the selected profile shown by the script.
+- Do not force Chrome enterprise policy unless the user explicitly wants managed-policy behavior.
+
+Success means:
+
+- `check-native-host-manifest.js --json` reports `correct: true`.
+- `check-extension-installed.js --json` exits `0`.
+- Codex Desktop shows `Google Chrome` as connected.
+
+## Symptom Matrix
+
+- `Computer Use plugin unavailable`: run Computer Use local repair, then strict verify.
+- `Any App` visible and toggled on, but Chrome row says extension not connected: run Chrome control repair.
+- Browser settings page works, but Chrome install fails: repair native messaging and selected Chrome profile; do not repatch MSIX first.
+- `robocopy` hangs or logs `The specified file could not be encrypted`: use the stream-copy scripts here; do not retry raw `robocopy`.
+- Store package `resources\codex.exe`, `node.exe`, or `node_repl.exe` says `Access is denied`: copy runtime to `.codex\.tmp\codex-desktop-runtime\<version>` and point Chrome native host config there.
+- `windows sandbox failed: spawn setup refresh` or OS error `740`: set `[windows] sandbox = "unelevated"` and rerun Computer Use repair.
+- `codex plugin list` fails because a local marketplace has only root `marketplace.json`: copy it to `.agents\plugins\marketplace.json` or restore the marketplace from backup.
+- Official `computer-use-client.mjs` reports `Computer Use native pipe path is unavailable`, but `Get-ChildItem \\.\pipe\` shows a `codex-computer-use-*` pipe: apply the native pipe fallback, then verify with the official `sky.list_apps()` path.
+
+## Native Pipe Fallback
+
+Use this only after local repair and Chrome repair are complete, and only when the Windows named pipe exists but the Node REPL object does not expose `nativePipe` or `SKY_CUA_NATIVE_PIPE_DIRECTORY`.
+
+Verify current patch status:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\apply-native-pipe-fallback.ps1" -VerifyOnly
+```
+
+Apply the fallback:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\apply-native-pipe-fallback.ps1"
+```
+
+Success means the official Computer Use client can run `sky.list_apps()` and `sky.list_windows()` without `Computer Use native pipe path is unavailable`.
+
+## Windows Screenshot Fallback
+
+If official `sky.get_window_state({ include_screenshot: true })` fails with
+`SetIsBorderRequired failed: unsupported interface (0x80004002)` on Windows 10 build 19045,
+use the separate `screenshot` skill for visual inspection:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\screenshot\scripts\take_screenshot.ps1" -Mode temp -ActiveWindow
+```
+
+This verifies that OS-level screenshots work, but it does not populate the
+official Computer Use screenshot cache. Do not mark official coordinate
+`click`, `scroll`, or `drag` as fixed solely because the OS-level screenshot
+fallback works.
+
+## Visual Click Fallback
+
+Use this when `sky.get_window_state({ include_text: true })` returns only a
+window title or a partial accessibility tree, but the button/control is visible
+in screenshots.
+
+Do not treat missing accessibility elements as "button not clickable." Treat it
+as a semantic-tree limitation and switch to visual operation:
+
+1. Activate or maximize the target window.
+2. Capture a fresh screenshot.
+3. Locate the target visually from the screenshot.
+4. Compute coordinates relative to the visible window or screenshot.
+5. Click with `sky.click({ x, y, screenshotId })` when the official screenshot
+   path works, or use the separate screenshot/control fallback when it does not.
+6. Capture a second screenshot or read a reliable state signal.
+7. Accept only if the visible state changed as expected.
+8. If verification fails, re-focus, maximize/fullscreen when useful,
+   re-screenshot, correct coordinates, and retry.
+
+Good evidence for this path is a before/after visual or state change, such as a
+Chrome test page title changing from `CU_CLICK_WAIT` to `CU_CLICK_PASS` after a
+coordinate click.
+
+Decision hierarchy:
+
+1. Prefer `sky.click({ element_index })` when the accessibility tree exposes
+   the control.
+2. If accessibility does not expose the control but the target window is listed
+   by `sky.list_windows()`, use screenshot-guided `sky.click({ x, y,
+   screenshotId })` and verify with a second screenshot or state signal.
+3. If the target window is visible to Win32 but not listed by
+   `sky.list_windows()`, try a forged window object only for screenshot/state
+   probing. Do not mark click capability as passed unless a real state change
+   is observed.
+4. If official `sky.click` cannot affect that window, use an application
+   specific bridge or a stronger native input helper. Do not silently downgrade
+   to unverified coordinate clicks.
+
+Known verified visual-click evidence on 2026-07-01:
+
+- Chrome local test page changed from `CU_CLICK_WAIT` to `CU_CLICK_PASS` after
+  screenshot-guided official `sky.click`.
+
+Known non-pass evidence on 2026-07-01:
+
+- HTA/MSHTA was visible to Win32 and screenshot capture, but not listed by
+  `sky.list_windows()`. Forged-window screenshot probing worked; click did not
+  trigger the HTA button result file. Treat HTA/MSHTA as requiring a dedicated
+  bridge before calling it restored.
+
+## MSIX/ASAR Repatch Last Resort
+
+Only use this when local repair succeeds but the Desktop UI gate remains hidden or disabled, such as:
+
+- `Any App` is still blocked by organization or region after restart.
+- Desktop logs show feature availability still `statsig-disabled`.
+- Fast Mode, locale, plugin UI, or browser availability gates must be patched inside the shipped Electron bundle.
+
+Dry-run target matching:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\repatch-codex-windows.ps1" -DryRun -SkipFastVerify
+```
+
+Full repatch:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\repatch-codex-windows.ps1"
+```
+
+Before full repatch, tell the user it can stop Codex Desktop, remove the Store package, install a locally signed package, and change `SignatureKind` to `Developer`.
+
+## Advanced Cases
+
+If the main workflow does not explain the failure, read `references/mature-windows-repair-findings.md` first, then `references/restriction-debug-cases.md`. The mature findings file records searched community/upstream cases, known working repair routes, Windows 10 `SetIsBorderRequired` screenshot limits, ASAR unpacked dry-run handling, and which Computer Use APIs should pass or fail on Windows 10 build 19045. The restriction debug cases file covers Fast Mode wire validation, UI gate target drift, browser availability logs, sandbox error 740, Codex mobile auth-loop behavior, and ASAR cleanup edge cases.
+
+## Backup Management
+
+Create snapshot:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\manage-codex-backups.ps1" -Action Backup
+```
+
+List or restore snapshots:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\manage-codex-backups.ps1" -Action List
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.codex\skills\codex-computer-use\scripts\manage-codex-backups.ps1" -Action Restore -BackupPath "<backup path>"
+```

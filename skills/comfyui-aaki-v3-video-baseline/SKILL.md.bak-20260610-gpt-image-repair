@@ -1,0 +1,77 @@
+---
+name: comfyui-aaki-v3-video-baseline
+description: Use when installing, verifying, preserving, or extending the local 秋葉aaaki ComfyUI-aki-v3 video-generation baseline on Windows, especially Wan2.2-TI2V-5B first-run tests. Enforces official-source-only downloads, no v2/V9.5/Desktop fallback, no multi-model expansion, and gated PowerShell execution.
+metadata:
+  short-description: 秋葉aaaki ComfyUI-aki-v3 video baseline gates
+---
+
+# ComfyUI-aki-v3 Video Baseline
+
+Use this skill for the user's fixed local ComfyUI video engine:
+
+`GPT script/storyboard/key image -> 秋葉aaaki ComfyUI-aki-v3 -> Wan2.2-TI2V-5B short clips -> Remotion composition`
+
+## Hard Boundaries
+
+- Use the existing install at `H:\AI\ComfyUI_Aaki_v3` unless the user explicitly changes it.
+- Do not use `ComfyUI-aki-v2.7z`, V9.5, third-party repacks, fan packs, Quark parsers, or ComfyUI Desktop.
+- Do not install multiple video models.
+- Do not install Wan2.2 14B, S2V, Fun InP, LTX-2.3, FramePack, or model bundles.
+- Do not modify Hermes, New API, 小龙虾, Open WebUI, or Remotion.
+- Do not delete old ComfyUI installs, models, workflows, or outputs.
+
+## Required Gate Order
+
+1. Read `references/phase1-install-gates.md` before reinstalling or repairing the base.
+2. Run `scripts/freeze-baseline.ps1` before model installation or workflow changes.
+3. Read `references/wan22-5b-test-gates.md` before any Wan2.2-TI2V-5B test.
+4. Verify official/allowed model sources before download.
+5. Download or place only these files:
+   - `ComfyUI\models\diffusion_models\wan2.2_ti2v_5B_fp16.safetensors`
+   - `ComfyUI\models\text_encoders\umt5_xxl_fp8_e4m3fn_scaled.safetensors`
+   - `ComfyUI\models\vae\wan2.2_vae.safetensors`
+6. Use the official ComfyUI Wan2.2 5B workflow/template when available.
+7. Run one low-risk test first: 512-ish resolution, 36-48 frames, 12-16 fps, low/offload options.
+8. Save report, workflow JSON, output video, model paths, timing, and VRAM observation.
+
+## Daily Stabilized Use
+
+- Read `DAILY-RUN.md` for normal launch and health checks.
+- Read `WAN22-5B-SHOT-SOP.md` before producing daily video clips.
+- Read `RECOVERY.md` when the service, model visibility, queue, or output path is wrong.
+- Run `scripts/smoke-check.ps1` for a no-generation baseline check.
+- Use the pinned workflow in `workflows/` and the pinned API prompt in `prompts/` as the known-good Wan2.2-TI2V-5B baseline.
+
+## Output Layout
+
+- Raw ComfyUI video outputs: `H:\AI\ComfyUI_Aaki_v3\ComfyUI\output\video`
+- Human-selected keepers: `H:\AI\ComfyUI_Aaki_v3\ComfyUI\output\video_selected`
+- Clips ready for Remotion import: `H:\AI\ComfyUI_Aaki_v3\ComfyUI\output\remotion_inbox`
+
+## Stop Conditions
+
+Stop and report instead of branching if:
+
+- an official source cannot be confirmed
+- a required model file is missing or download-restricted
+- CUDA/torch cannot see RTX 2080 Ti
+- workflow nodes are missing and the minimal missing dependency is unclear
+- the first test OOMs and one lower-resolution retry also fails
+- fixing the problem would require broad upgrades or installing unrelated nodes/models
+
+## Known Baseline
+
+First-stage verified install:
+
+- Install root: `H:\AI\ComfyUI_Aaki_v3`
+- URL: `http://127.0.0.1:8188/`
+- Launcher: `H:\AI\ComfyUI_Aaki_v3\绘世启动器.exe`
+- Direct start command:
+
+```powershell
+H:\AI\ComfyUI_Aaki_v3\python\python.exe -s ComfyUI\main.py --windows-standalone-build --port 8188
+```
+
+- Verified GPU: RTX 2080 Ti 22GB, compute capability 7.5
+- Verified torch: `2.9.1+cu130`
+- Verified ComfyUI: `0.9.2`

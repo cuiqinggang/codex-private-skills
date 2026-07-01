@@ -1,0 +1,429 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
+
+const scriptPath = fileURLToPath(import.meta.url);
+const scriptRoot = path.resolve(path.dirname(scriptPath), '..');
+const args = process.argv.slice(2);
+const writeReport = args.includes('--write-report');
+const explicitRoot = args.find((arg) => !arg.startsWith('--'));
+const root = path.resolve(explicitRoot || process.cwd() || scriptRoot);
+const patchReportDir = path.join(root, 'reports', '12-layer-compact-core-flow-patch-20260529');
+
+const layers = [
+  ['Control Plane / Orchestrator', '主控调度层'],
+  ['Short Entry / Memory', '短入口 / 项目记忆层'],
+  ['Skills / Progressive Disclosure', '技能按需加载 / 渐进加载层'],
+  ['Planning / Work Decomposition', '任务拆解层'],
+  ['Subagents / Context Isolation', '子智能体 / 上下文隔离层'],
+  ['Execution Plane', '执行平面'],
+  ['Hooks / Lifecycle Triggers', '生命周期钩子层'],
+  ['Scripts / Deterministic Checks', '脚本确定性检查层'],
+  ['Verification Plane', '独立验证平面'],
+  ['Repair Loop', '返修循环层'],
+  ['Compact / Handoff', '压缩交接层'],
+  ['Final Acceptance', '最终验收层']
+];
+
+const requiredFiles = [
+  'SKILL.md',
+  'README.md',
+  'RUNBOOK.md',
+  'SOURCE-OF-TRUTH-MAP.md',
+  'FOUR-STAGE-WORKFLOW.md',
+  'CLAUDE-STYLE-12-LAYER-COMPACT-CORE.md',
+  'GPT-CODEX-12-LAYER-CLOSED-LOOP-RUNBOOK.md',
+  'TASK-PACKAGE-MUST-CLONE-12-LAYER.md',
+  'CODEX-EVIDENCE-RETURN-PACKET-RULE.md',
+  'DO-NOT-REWRITE-12-LAYER-RULE.md',
+  'CLAUDE-CODE-12-LAYER-DETAILED-CHINESE-EXECUTION-STANDARD.md',
+  'RUNTIME-GATE-HARD-STANDARD.md',
+  'RUNTIME-EVIDENCE-SCHEMA.json',
+  'CLAUDE-STYLE-12-LAYER-REPLICA-RULE.md',
+  'GPT-STAGE-1-CONTROL-SPECIFICATION.md',
+  'CODEX-STAGE-2-PREPARATION.md',
+  'GPT-STAGE-3-FINAL-INTEGRATION.md',
+  'CODEX-STAGE-4-EXECUTION.md',
+  'MATURE-COMPONENT-FIRST-GATE.md',
+  'SUBAGENT-EVIDENCE-GATE.md',
+  'TIME-GATE-POLICY.md',
+  'SKILL-SEARCH-AND-PREPARATION.md',
+  'FAILURE-HISTORY-20260528.md',
+  'STATUS-CODES.md',
+  'MANIFEST.md',
+  'templates/GPT-P1-CONTROL-SPEC-PROMPT-TEMPLATE.md',
+  'templates/CODEX-P2-PREPARATION-PROMPT-TEMPLATE.md',
+  'templates/GPT-P3-FINAL-EXECUTABLE-PACKAGE-TEMPLATE.md',
+  'templates/CODEX-P4-EXECUTION-REPORT-TEMPLATE.md',
+  'templates/SUBAGENT-EVIDENCE-MATRIX-TEMPLATE.md',
+  'templates/TIME-GATE-MATRIX-TEMPLATE.md',
+  'templates/SKILL-INTEGRATION-SUPPLEMENT-TEMPLATE.md',
+  'templates/FINAL-ACCEPTANCE-TEMPLATE.md',
+  'templates/GPT-REQUEST-12-LAYER-COMMAND-PACK-TEMPLATE.md',
+  'templates/CODEX-12-LAYER-EXECUTION-EVIDENCE-RETURN-TEMPLATE.md',
+  'templates/GPT-FINAL-ACCEPTANCE-REVIEW-TEMPLATE.md',
+  'scripts/verify-staged-long-task-skill.mjs',
+  'scripts/verify-runtime-gate.mjs',
+  'reports/12-layer-compact-core-flow-patch-20260529/final-report.md',
+  'reports/12-layer-compact-core-flow-patch-20260529/final-acceptance.md',
+  'reports/12-layer-compact-core-flow-patch-20260529/final-acceptance.json'
+];
+
+const checks = [];
+
+function relPath(file) {
+  return file.split('/').join(path.sep);
+}
+
+function filePath(file) {
+  return path.join(root, relPath(file));
+}
+
+function exists(file) {
+  return fs.existsSync(filePath(file));
+}
+
+function read(file) {
+  return fs.readFileSync(filePath(file), 'utf8');
+}
+
+function addCheck(name, passed, detail = '') {
+  checks.push({ name, passed, detail });
+}
+
+function contains(file, terms) {
+  if (!exists(file)) {
+    addCheck(`${file} exists before content checks`, false);
+    return;
+  }
+  const content = read(file);
+  for (const term of terms) {
+    addCheck(`${file} contains ${term}`, content.includes(term));
+  }
+}
+
+for (const file of requiredFiles) {
+  addCheck(`required file exists: ${file}`, exists(file));
+}
+
+for (const [englishName, chineseName] of layers) {
+  contains('CLAUDE-STYLE-12-LAYER-COMPACT-CORE.md', [englishName, chineseName]);
+  contains('DO-NOT-REWRITE-12-LAYER-RULE.md', [englishName, chineseName]);
+}
+
+contains('CLAUDE-STYLE-12-LAYER-COMPACT-CORE.md', [
+  'Claude-style 12 Layer 不是普通 12 步',
+  '不能改成普通 12 步',
+  '不能改名、不能压缩、不能重解释',
+  'Execution Plane 只能 claim，不能 self-accept',
+  'Verification Plane 负责 acceptance / rejection',
+  'Repair Loop 处理 rejected claims',
+  '没有 final acceptance，没有 final PASS',
+  '只给文件夹路径'
+]);
+
+contains('GPT-CODEX-12-LAYER-CLOSED-LOOP-RUNBOOK.md', [
+  'GPT-Codex',
+  'Codex 把这些内容发送给 GPT',
+  'GPT 按 Claude-style 12 Layer 原顺序生成完整可执行命令包',
+  'Codex 把执行回传包交给 GPT',
+  'GPT 根据 Layer 9 Verification Plane 和 Layer 12 Final Acceptance 做最终验收',
+  '只返回文件夹路径 = FAIL'
+]);
+
+contains('TASK-PACKAGE-MUST-CLONE-12-LAYER.md', [
+  'Layer X — 原始英文名',
+  '本层目的',
+  '本层输入',
+  '本层动作',
+  '本层产物',
+  '本层验证',
+  '失败返回',
+  '证据路径',
+  '本任务中的具体应用',
+  '是否被 Verification Plane 接受',
+  'YES / NO'
+]);
+
+contains('CODEX-EVIDENCE-RETURN-PACKET-RULE.md', [
+  '任务名称',
+  '工作区路径',
+  '使用的技能包',
+  'Claude-style 12 Layer 执行摘要',
+  'Execution Plane claims',
+  'Scripts / Deterministic Checks 输出',
+  'Verification Plane acceptance / rejection',
+  'Repair Loop 记录',
+  'final-acceptance.md 核心内容',
+  'final-acceptance.json 核心内容',
+  '只返回文件夹路径 = FAIL'
+]);
+
+contains('DO-NOT-REWRITE-12-LAYER-RULE.md', [
+  '不能改成普通 12 步',
+  '不能改名、不能压缩、不能重解释',
+  '目标确认 / 现状读取 / 风险识别',
+  '不能只返回文件夹路径'
+]);
+
+contains('SKILL.md', [
+  'CLAUDE-STYLE-12-LAYER-COMPACT-CORE.md',
+  'CLAUDE-CODE-12-LAYER-DETAILED-CHINESE-EXECUTION-STANDARD.md',
+  'GPT-CODEX-12-LAYER-CLOSED-LOOP-RUNBOOK.md',
+  'TASK-PACKAGE-MUST-CLONE-12-LAYER.md',
+  'CODEX-EVIDENCE-RETURN-PACKET-RULE.md',
+  'DO-NOT-REWRITE-12-LAYER-RULE.md'
+]);
+
+contains('CLAUDE-CODE-12-LAYER-DETAILED-CHINESE-EXECUTION-STANDARD.md', [
+  'CLAUDE_12_LAYER_DETAIL_STANDARD_INSTALLED',
+  'Control Plane / Orchestrator',
+  'Short Entry / Memory',
+  'Skills / Progressive Disclosure',
+  'Planning / Work Decomposition',
+  'Subagents / Context Isolation',
+  'Execution Plane',
+  'Hooks / Lifecycle Triggers',
+  'Scripts / Deterministic Checks',
+  'Verification Plane',
+  'Repair Loop',
+  'Compact / Handoff',
+  'Final Acceptance',
+  '中文名',
+  '本层文件要求',
+  '本层内容要求',
+  '本层禁止事项',
+  '本层时间门槛关联',
+  '本层多智能体 / 上下文隔离要求',
+  'CONTINUOUS_RUNTIME_UNTIL_TARGET_OR_BLOCKED',
+  'PARTIAL_STARTED_IS_NOT_VALID_STOP_STATE',
+  'REAL_SUBAGENT_EXECUTION',
+  'LOGICAL_CONTEXT_ISOLATION_ONLY',
+  'Checkpoint 必须绑定 12 Layer',
+  'final-report',
+  'final-acceptance'
+]);
+
+contains('RUNBOOK.md', [
+  'CLAUDE-CODE-12-LAYER-DETAILED-CHINESE-EXECUTION-STANDARD.md'
+]);
+
+contains('SOURCE-OF-TRUTH-MAP.md', [
+  'CLAUDE-CODE-12-LAYER-DETAILED-CHINESE-EXECUTION-STANDARD.md'
+]);
+
+contains('TASK-PACKAGE-MUST-CLONE-12-LAYER.md', [
+  'CLAUDE-CODE-12-LAYER-DETAILED-CHINESE-EXECUTION-STANDARD.md'
+]);
+
+contains('DO-NOT-REWRITE-12-LAYER-RULE.md', [
+  'CLAUDE-CODE-12-LAYER-DETAILED-CHINESE-EXECUTION-STANDARD.md'
+]);
+
+contains('RUNTIME-GATE-HARD-STANDARD.md', [
+  'RUNTIME_GATE',
+  'minimum_runtime_minutes = 120',
+  'RUNTIME_GATE_FAIL_ELAPSED_TOO_SHORT',
+  'RUNTIME_GATE_FAIL_CHECKPOINTS_TOO_FEW',
+  'PATCH_INSTALL_PASS',
+  '2H_RUNTIME_PASS_FORBIDDEN',
+  'outputs/runtime-evidence.json',
+  'checkpoint-timeline.html'
+]);
+
+contains('RUNTIME-EVIDENCE-SCHEMA.json', [
+  'task_id',
+  'declared_runtime_minutes',
+  'minimum_runtime_minutes',
+  'started_at',
+  'ended_at',
+  'elapsed_minutes',
+  'checkpoint_count',
+  'runtime_gate_passed',
+  'final_status_allowed'
+]);
+
+contains('scripts/verify-runtime-gate.mjs', [
+  '2h_6min_should_fail',
+  '2h_121min_should_pass',
+  'patch_6min_allowed',
+  '4h_120min_should_fail',
+  'RUNTIME_GATE_FAIL_ELAPSED_TOO_SHORT',
+  'RUNTIME_GATE_FAIL_CHECKPOINTS_TOO_FEW'
+]);
+
+contains('SKILL.md', [
+  'RUNTIME-GATE-HARD-STANDARD.md',
+  'RUNTIME-EVIDENCE-SCHEMA.json',
+  'scripts/verify-runtime-gate.mjs'
+]);
+
+contains('RUNBOOK.md', [
+  'RUNTIME-GATE-HARD-STANDARD.md',
+  'RUNTIME-EVIDENCE-SCHEMA.json',
+  'scripts/verify-runtime-gate.mjs'
+]);
+
+contains('SOURCE-OF-TRUTH-MAP.md', [
+  'RUNTIME-GATE-HARD-STANDARD.md',
+  'RUNTIME-EVIDENCE-SCHEMA.json',
+  'scripts/verify-runtime-gate.mjs'
+]);
+
+const runtimeVerifier = spawnSync(process.execPath, [filePath('scripts/verify-runtime-gate.mjs'), '--self-test', '--json'], {
+  cwd: root,
+  encoding: 'utf8'
+});
+addCheck('runtime gate verifier exits 0', runtimeVerifier.status === 0, runtimeVerifier.stderr || runtimeVerifier.stdout);
+if (runtimeVerifier.stdout) {
+  try {
+    const runtimeResult = JSON.parse(runtimeVerifier.stdout);
+    addCheck('runtime gate self-test pass', runtimeResult.pass === true, runtimeVerifier.stdout);
+    for (const key of [
+      '2h_6min_should_fail',
+      '2h_121min_should_pass',
+      'patch_6min_allowed',
+      '4h_120min_should_fail'
+    ]) {
+      addCheck(`runtime_gate_cases ${key}=PASS`, runtimeResult.runtime_gate_cases?.[key] === 'PASS', runtimeVerifier.stdout);
+    }
+  } catch (error) {
+    addCheck('runtime gate self-test JSON parses', false, error.message);
+  }
+}
+
+contains('FOUR-STAGE-WORKFLOW.md', [
+  '四阶段必须使用 Claude-style 12 Layer 原始结构',
+  'Codex 回传证据包',
+  'GPT 根据 Layer 9 Verification Plane 和 Layer 12 Final Acceptance 做最终验收'
+]);
+
+contains('GPT-STAGE-1-CONTROL-SPECIFICATION.md', [
+  'must_not_rewrite_as_ordinary_12_steps = true',
+  'codex_evidence_return_packet_required = true',
+  'Layer X — 原始英文名'
+]);
+
+contains('GPT-STAGE-3-FINAL-INTEGRATION.md', [
+  'CLAUDE-STYLE-12-LAYER-COMPACT-CORE.md',
+  'TASK-PACKAGE-MUST-CLONE-12-LAYER.md',
+  'DO-NOT-REWRITE-12-LAYER-RULE.md',
+  'FINAL-EXECUTABLE-TASK-PACKAGE'
+]);
+
+contains('CODEX-STAGE-4-EXECUTION.md', [
+  'Execution Plane 只能 claim，不能 self-accept',
+  'Verification Plane 负责 acceptance / rejection',
+  'CODEX-EVIDENCE-RETURN-PACKET-RULE.md',
+  '只返回文件夹路径 = FAIL',
+  'Final Acceptance 才是最终 PASS 权威'
+]);
+
+contains('STATUS-CODES.md', [
+  'ECC_STAGED_LONG_TASK_12_LAYER_COMPACT_CORE_FLOW_PATCH_PASS',
+  'ECC_12_LAYER_REWRITTEN_AS_ORDINARY_STEPS_REJECTED',
+  'ECC_CODEX_PATH_ONLY_RETURN_REJECTED'
+]);
+
+contains('templates/GPT-REQUEST-12-LAYER-COMMAND-PACK-TEMPLATE.md', [
+  '不能改成普通 12 步',
+  'Layer X — 原始英文名',
+  'Execution Plane 只能 claim，不能 self-accept'
+]);
+
+contains('templates/CODEX-12-LAYER-EXECUTION-EVIDENCE-RETURN-TEMPLATE.md', [
+  'Layer 1 — Control Plane / Orchestrator',
+  'Layer 12 — Final Acceptance',
+  '只返回文件夹路径 = FAIL'
+]);
+
+contains('templates/GPT-FINAL-ACCEPTANCE-REVIEW-TEMPLATE.md', [
+  '是否完整保留 12 层英文名',
+  'Execution Plane 是否只能 claim',
+  'ECC_STAGED_LONG_TASK_12_LAYER_COMPACT_CORE_FLOW_PATCH_PASS'
+]);
+
+if (exists('MANIFEST.md')) {
+  const manifest = read('MANIFEST.md');
+  for (const file of requiredFiles) {
+    addCheck(`MANIFEST registers ${file}`, manifest.includes(file));
+  }
+}
+
+let acceptance = null;
+if (exists('reports/12-layer-compact-core-flow-patch-20260529/final-acceptance.json')) {
+  try {
+    acceptance = JSON.parse(read('reports/12-layer-compact-core-flow-patch-20260529/final-acceptance.json'));
+    addCheck('patch final-acceptance.json parses', true);
+  } catch (error) {
+    addCheck('patch final-acceptance.json parses', false, error.message);
+  }
+}
+
+if (acceptance?.final_pass === true) {
+  for (const key of [
+    'compact_core_written',
+    'english_layer_names_preserved',
+    'chinese_layer_names_preserved',
+    'ordinary_12_step_replacement_blocked',
+    'rename_compress_reinterpret_blocked',
+    'layer5_context_role_permission_output_contract_present',
+    'execution_plane_claim_only',
+    'verification_plane_acceptance_rejection',
+    'repair_loop_rejected_claims',
+    'final_acceptance_authoritative',
+    'gpt_codex_closed_loop_written',
+    'codex_path_only_return_rejected',
+    'templates_added',
+    'verification_script_updated'
+  ]) {
+    addCheck(`final acceptance ${key}=true`, acceptance[key] === true, JSON.stringify(acceptance[key]));
+  }
+}
+
+const failures = checks.filter((check) => !check.passed);
+const result = {
+  root,
+  checked_at: new Date().toISOString(),
+  pass: failures.length === 0,
+  pass_count: checks.length - failures.length,
+  failure_count: failures.length,
+  status_code: failures.length === 0 ? 'ECC_STAGED_LONG_TASK_12_LAYER_COMPACT_CORE_FLOW_PATCH_PASS' : 'VERIFICATION_FAIL',
+  failures,
+  checks
+};
+
+const markdown = [
+  '# verification-result',
+  '',
+  `Status: ${result.pass ? 'VERIFICATION_PASS' : 'VERIFICATION_FAIL'}`,
+  '',
+  `Status code: ${result.status_code}`,
+  '',
+  `Checked at: ${result.checked_at}`,
+  '',
+  `Pass count: ${result.pass_count}`,
+  '',
+  `Failure count: ${result.failure_count}`,
+  '',
+  '## Failures',
+  '',
+  ...(failures.length ? failures.map((check) => `- ${check.name}${check.detail ? ` (${check.detail})` : ''}`) : ['None'])
+].join('\n');
+
+if (writeReport) {
+  fs.mkdirSync(patchReportDir, { recursive: true });
+  fs.writeFileSync(path.join(patchReportDir, 'verification-result.json'), JSON.stringify(result, null, 2), 'utf8');
+  fs.writeFileSync(path.join(patchReportDir, 'verification-result.md'), `${markdown}\n`, 'utf8');
+}
+
+if (result.pass) {
+  console.log('VERIFICATION_PASS');
+  console.log('ECC_STAGED_LONG_TASK_12_LAYER_COMPACT_CORE_FLOW_PATCH_PASS');
+} else {
+  console.log('VERIFICATION_FAIL');
+}
+console.log(JSON.stringify({ pass: result.pass, pass_count: result.pass_count, failure_count: result.failure_count }, null, 2));
+
+if (!result.pass) process.exit(1);

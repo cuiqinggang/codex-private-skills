@@ -1,0 +1,4 @@
+interface:
+  display_name: "完整 Claude-style 复刻流程"
+  short_description: "完整保留 Claude-style 12 Layer 控制系统，用于长任务命令包、验证、返修和最终验收。"
+  default_prompt: "Use $complete-claude-style-replica-flow to generate or audit a Claude-style 12 Layer long-task command package without rewriting the layer model."

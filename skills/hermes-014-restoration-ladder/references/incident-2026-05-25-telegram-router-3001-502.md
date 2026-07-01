@@ -1,0 +1,219 @@
+﻿# 2026-05-25 Telegram Router 3001 502 Incident
+
+Use this reference when Windows native Hermes 0.14 is supposed to use direct
+DeepSeek official routing, but Telegram complex/Pro turns intermittently fail
+with `HTTP 502` and logs show:
+
+```text
+provider=deepseek
+base_url=http://127.0.0.1:3001/v1
+model=deepseek-v4-pro
+```
+
+## Correct Baseline
+
+For the current direct-DeepSeek Hermes stack:
+
+```text
+Open WebUI page: http://127.0.0.1:3000
+Hermes API server: http://127.0.0.1:8642
+Upstream model base: https://api.deepseek.com
+Default model: deepseek-v4-pro
+Abandoned Hermes New API port: http://127.0.0.1:3001
+```
+
+Do not confuse this with Xiaolongxia's separate local New API on `3011`.
+`3011` is not part of Hermes direct-DeepSeek routing.
+
+## Root Cause Pattern
+
+The live `.env` and `config.yaml` may already point to
+`https://api.deepseek.com`, while only Telegram complex turns fail. In the
+2026-05-25 incident the cause was:
+
+```text
+C:\Users\A\.hermes\plugins\telegram_model_router\__init__.py
+```
+
+The plugin's session override for Pro/Flash routes set:
+
+```python
+"base_url": "http://127.0.0.1:3001/v1"
+```
+
+Normal Telegram turns did not trigger the override and therefore used the
+configured direct DeepSeek base. That made the problem look intermittent.
+
+## G01 Prove The Misroute
+
+Purpose: verify the failure is only the Telegram model-router override.
+
+Execution location: `C:\Users\A\Desktop\1`
+
+Command:
+
+```powershell
+$ErrorActionPreference='Stop'
+$p='C:\Users\A\.hermes\plugins\telegram_model_router\__init__.py'
+Select-String -Path $p -Pattern '3001|base_url|DIRECT_DEEPSEEK|NEW_API'
+
+Get-Content -LiteralPath 'C:\Users\A\.hermes\logs\agent.log' -Tail 400 |
+  Select-String -Pattern 'telegram_model_router|base_url=http://127\.0\.0\.1:3001|base_url=https://api\.deepseek\.com|HTTP 502|Error code: 502' |
+  Select-Object -Last 120
+```
+
+Success criteria:
+
+- Pro-route log lines appear before `base_url=http://127.0.0.1:3001/v1`.
+- Normal/direct calls still show `base_url=https://api.deepseek.com`.
+- `http://127.0.0.1:3001` is not required for the intended direct-DeepSeek stack.
+
+## G02 Back Up And Patch Only The Router
+
+Purpose: make the smallest change, without changing `.env`, `config.yaml`,
+Open WebUI, 8642 lifeline, Telegram token, or startup entries.
+
+Command:
+
+```powershell
+$ErrorActionPreference='Stop'
+$root='C:\Users\A\Desktop\1\output\HERMES-3001-502-REPAIR-20260525'
+New-Item -ItemType Directory -Force -Path $root | Out-Null
+$stamp=Get-Date -Format 'yyyyMMdd-HHmmss'
+$src='C:\Users\A\.hermes\plugins\telegram_model_router\__init__.py'
+$bak=Join-Path $root ("telegram_model_router.__init__.py.bak-$stamp")
+Copy-Item -LiteralPath $src -Destination $bak -Force
+"BACKUP=$bak"
+```
+
+Patch the plugin so the route override uses:
+
+```python
+DIRECT_DEEPSEEK_BASE_URL = "https://api.deepseek.com"
+```
+
+and:
+
+```python
+"base_url": DIRECT_DEEPSEEK_BASE_URL
+```
+
+Do not start New API to mask this bug.
+
+## G03 Unit-Test The Router Locally
+
+Purpose: test Pro and Flash override generation without sending Telegram
+messages or printing secrets.
+
+Command:
+
+```powershell
+$ErrorActionPreference='Stop'
+python -m py_compile 'C:\Users\A\.hermes\plugins\telegram_model_router\__init__.py'
+@'
+import importlib.util
+from pathlib import Path
+p=Path(r'C:\Users\A\.hermes\plugins\telegram_model_router\__init__.py')
+spec=importlib.util.spec_from_file_location('telegram_model_router_check', p)
+mod=importlib.util.module_from_spec(spec)
+spec.loader.exec_module(mod)
+class Platform:
+    value='telegram'
+class Source:
+    platform=Platform()
+class Event:
+    source=Source()
+    def __init__(self,text): self.text=text
+class Gateway:
+    def __init__(self):
+        self._session_model_overrides={}
+        self._pending_model_notes={}
+    def _session_key_for_source(self, source):
+        return 'agent:main:telegram:test'
+    def _evict_cached_agent(self, session_key):
+        pass
+def run(text):
+    g=Gateway()
+    mod._route_telegram_model(event=Event(text), gateway=g)
+    return g._session_model_overrides.get('agent:main:telegram:test')
+for text, model in [
+    ('please repair this complex task with deepseek-v4-pro', 'deepseek-v4-pro'),
+    ('use flash casually deepseek-v4-flash', 'deepseek-v4-flash'),
+]:
+    override=run(text)
+    print('MODEL=', override.get('model'))
+    print('BASE_URL=', override.get('base_url'))
+    assert override.get('model') == model
+    assert override.get('base_url') == 'https://api.deepseek.com'
+    assert '3001' not in override.get('base_url')
+print('ROUTER_DIRECT_DEEPSEEK_TEST_PASS')
+'@ | python -
+```
+
+## G04 Restart Only Hermes 8642
+
+Purpose: load the patched plugin without restoring New API.
+
+Command:
+
+```powershell
+$ErrorActionPreference='Stop'
+$launcher='H:\Hermes_Windows_Native_014\launcher\hermes-014-runtime.ps1'
+$owner = Get-NetTCPConnection -LocalPort 8642 -State Listen -ErrorAction Stop | Select-Object -First 1
+$proc = Get-CimInstance Win32_Process -Filter "ProcessId=$($owner.OwningProcess)"
+if ($proc.CommandLine -notmatch [regex]::Escape('H:\Hermes_Windows_Native_014')) {
+  throw "REFUSE_STOP_8642_OWNER_OUTSIDE_WINDOWS_HERMES=$($proc.CommandLine)"
+}
+Stop-Process -Id $owner.OwningProcess -Force
+Start-Sleep -Seconds 3
+Start-Process powershell.exe -ArgumentList @('-NoProfile','-ExecutionPolicy','Bypass','-File',$launcher) -WindowStyle Minimized
+```
+
+Success criteria:
+
+- New 8642 owner is under `H:\Hermes_Windows_Native_014`.
+- `PORT_3001_LISTEN_COUNT=0`.
+
+## G05 Verify Direct DeepSeek
+
+Command:
+
+```powershell
+$marker='HERMES_DIRECT_DEEPSEEK_REPAIR_OK'
+$body=@{
+  model='hermes-agent'
+  messages=@(@{role='user';content="Reply exactly: $marker"})
+  stream=$false
+} | ConvertTo-Json -Depth 8
+$r=Invoke-WebRequest -Uri 'http://127.0.0.1:8642/v1/chat/completions' `
+  -Method Post -ContentType 'application/json' -Body $body `
+  -UseBasicParsing -TimeoutSec 180
+$r.Content
+if($r.Content -notmatch $marker){ throw 'CHAT_MARKER_NOT_FOUND' }
+
+$fresh = Get-Content -LiteralPath 'C:\Users\A\.hermes\logs\agent.log' -Tail 160 |
+  Where-Object { $_ -like '2026-05-25 03:*' } |
+  Where-Object { $_ -match 'base_url=|HTTP 502|Error code: 502|API call #' }
+$fresh
+$text = $fresh -join "`n"
+if($text -match 'base_url=http://127\.0\.0\.1:3001'){ throw 'POST_RESTART_LOG_HAS_3001_ROUTE' }
+if($text -match 'HTTP 502|Error code: 502'){ throw 'POST_RESTART_LOG_HAS_502' }
+if($text -notmatch 'base_url=https://api\.deepseek\.com'){ throw 'POST_RESTART_LOG_MISSING_DIRECT_DEEPSEEK' }
+```
+
+Passing evidence from 2026-05-25:
+
+- `/health=200`, `/v1/models=200`, and `/v1/chat/completions=200`.
+- Chat returned `HERMES_DIRECT_DEEPSEEK_REPAIR_OK`.
+- Fresh logs showed `base_url=https://api.deepseek.com`.
+- Fresh logs had no `base_url=http://127.0.0.1:3001/v1`.
+- `PORT_3001_LISTEN_COUNT=0`.
+
+## Boundaries
+
+- Do not reconnect New API for this incident.
+- Do not use `localhost:3001` as a workaround.
+- Do not modify Telegram token, Open WebUI config, 8642 lifeline, or Stage 04b
+  auto-open unless separate evidence shows those layers are broken.
+- Keep `3000` as the browser/Open WebUI page and `8642` as the Hermes API.
+

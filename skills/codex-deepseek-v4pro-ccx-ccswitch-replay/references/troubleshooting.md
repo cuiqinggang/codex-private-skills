@@ -1,4 +1,4 @@
-# Troubleshooting
+﻿# Troubleshooting
 
 ## 3000 Is Occupied
 
@@ -57,3 +57,4 @@ Diagnose by layer:
 5. Network: DNS, proxy, firewall, GitHub or DeepSeek reachability.
 
 Fix only the failing layer and rerun verification.
+

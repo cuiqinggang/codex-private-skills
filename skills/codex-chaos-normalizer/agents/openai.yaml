@@ -1,0 +1,3 @@
+﻿display_name: Codex Chaos Normalizer
+short_description: Diagnose and reduce useless Codex/Desktop CPU, disk, Git, plugin, and runner load without deleting work.
+default_prompt: Diagnose this Codex/Desktop workspace for idle CPU or disk chaos, then normalize only reversible local causes and verify the result.

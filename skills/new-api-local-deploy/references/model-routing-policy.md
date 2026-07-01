@@ -1,4 +1,4 @@
-# Hermes Model Routing Policy
+﻿# Hermes Model Routing Policy
 
 Use this reference when Hermes, Telegram, Open WebUI, or New API appears to route complex work to a cheap model, especially `deepseek-v4-flash`.
 
@@ -28,10 +28,17 @@ Allow `deepseek-v4-flash` only for:
 ## Current Local Targets
 
 - Hermes default model should be `deepseek-v4-pro`.
-- Hermes base URL should be `http://127.0.0.1:3001/v1`.
+- Current direct web chain is Open WebUI `3000` -> Hermes `8642` -> DeepSeek.
+- Hermes exposes `hermes-agent` to Open WebUI; Open WebUI should connect to
+  `http://host.docker.internal:8642/v1` and select `hermes-agent`.
+- Hermes itself should route the real upstream model to `deepseek-v4-pro`.
+- The older Hermes base URL `http://127.0.0.1:3001/v1` applies only to the old
+  New API relay setup. Do not use it when the user says New API/3001 is no
+  longer involved.
 - Telegram router plugin path: `C:\Users\A\.hermes\plugins\telegram_model_router`.
 - Plugin behavior: complex trigger words force `deepseek-v4-pro`; Flash requires explicit low-cost/fast/simple trigger words.
-- New API logs are the source of truth for actual upstream model use.
+- In direct DeepSeek mode, Hermes direct chat and Hermes logs are the source of
+  truth for model connectivity. New API logs apply only to the old relay setup.
 
 ## G01 Inspect Current Routing
 
@@ -60,7 +67,10 @@ python -m py_compile 'C:\Users\A\.hermes\plugins\telegram_model_router\__init__.
 Success criteria:
 
 - `model.default` is `deepseek-v4-pro`.
-- `model.base_url` is `http://127.0.0.1:3001/v1`.
+- In direct DeepSeek mode, do not require `model.base_url` to be
+  `http://127.0.0.1:3001/v1`; that belongs to the old New API relay setup.
+- For the Open WebUI web path, the visible model should be `hermes-agent`, and
+  Open WebUI should connect to `http://host.docker.internal:8642/v1`.
 - `telegram_model_router` is enabled in `plugins.enabled`.
 - Plugin compiles.
 
@@ -166,7 +176,9 @@ Failure recovery:
 
 ## G04 Verify Actual Model Use
 
-Purpose: prove the actual upstream model from New API logs, not from assistant self-report.
+Purpose: prove the actual upstream model from current runtime evidence, not
+from assistant self-report. In direct DeepSeek mode, use Hermes direct chat and
+Hermes logs. In old New API relay mode, New API logs are also useful.
 
 Execution location: `C:\Users\A\Desktop\1`
 
@@ -194,7 +206,10 @@ docker compose logs --tail 80 new-api 2>&1 |
 Success criteria:
 
 - Hermes chat returns HTTP `200`.
-- New API logs for the chat completion include `model_name":"deepseek-v4-pro"`.
+- In direct DeepSeek mode, Hermes direct chat returns a valid response and
+  `config.yaml` still has `model.default: deepseek-v4-pro`.
+- In old New API relay mode, New API logs for the chat completion include
+  `model_name":"deepseek-v4-pro"`.
 
 Failure criteria:
 
@@ -206,3 +221,4 @@ Failure recovery:
 - Re-check `C:\Users\A\.hermes\config.yaml` default model.
 - Re-check `telegram_model_router` plugin and restart Hermes.
 - Do not rely on the assistant's self-reported model without New API log evidence.
+

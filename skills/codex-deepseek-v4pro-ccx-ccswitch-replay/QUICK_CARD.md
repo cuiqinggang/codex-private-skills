@@ -1,4 +1,4 @@
-# Quick Card
+﻿# Quick Card
 
 ## Normal Use
 
@@ -31,3 +31,4 @@ Check:
 - Do not occupy or stop anything on port `3000`.
 - Do not configure DeepSeek Flash.
 - Do not put the DeepSeek key in reports, logs, docs, or skill files.
+

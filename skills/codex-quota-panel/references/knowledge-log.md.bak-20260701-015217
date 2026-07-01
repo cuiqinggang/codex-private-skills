@@ -1,0 +1,76 @@
+﻿# Knowledge Log
+
+## 2026-06-28 Cache Freeze Fix
+
+Problem: The panel kept showing the last good quota value for hours while cclimits returned repeated Authentication failed errors. This made the display look fixed even though the quota had changed.
+
+Fix:
+- Automatic refresh interval changed from 1 minute to 5 minutes.
+- Last-good fallback now expires after 10 minutes.
+- After cache expiry, show a short refresh warning instead of pretending the stale value is current.
+- Runtime and skill script both use `$timer.Interval = 300000` and `$LastGoodMaxAgeMinutes = 10`.
+
+Acceptance evidence:
+- Runtime refreshed to `78% 18:26 | 7天88% 5天21时` after repair.
+- `quota-panel-last-good.txt` contains the same new value.
+- Skill validation passed.
+
+## 2026-06-29 Hidden Launcher Regression
+
+Problem: The runtime panel was fixed, but the skill's launcher and installer still contained hidden panel launch commands. Running repair copied the old launcher back and started the panel with `-WindowStyle Hidden`, so the process existed while the visible quota label disappeared or became unreliable.
+
+Fix:
+- Remove `-WindowStyle Hidden` and `/min` from both runtime and skill `Start-CodexQuotaPanel.cmd`.
+- Remove `-WindowStyle Hidden` from the installer when starting `CodexQuotaPanel.ps1`.
+- Keep hidden mode only for `QuotaPanelWatchdog.ps1`.
+
+Acceptance:
+- Runtime log refreshed to current quota data after repair.
+- Future repairs copy the corrected launcher from the skill package.
+
+## 2026-06-29 Watchdog Hidden Restart Regression
+
+Problem: The launcher and installer were fixed, but `QuotaPanelWatchdog.ps1` still restarted `CodexQuotaPanel.ps1` with `-WindowStyle Hidden`. If the visible panel exited, the watchdog could bring back a hidden panel.
+
+Fix:
+- Remove `-WindowStyle Hidden` from the watchdog's panel restart command.
+- Keep hidden launch only for the watchdog process itself.
+- On this family of bugs, inspect all restart paths: startup cmd, installer, watchdog.
+
+## 2026-06-29 Stale Data Display Policy
+
+Problem: After the 10-minute cache expiry, the panel showed `quota refresh...`, which was technically honest but not useful because the user wants quota-shaped data at a glance.
+
+Fix:
+- Retry cclimits up to 3 times before fallback.
+- If retries still fail and cached data is stale, display it with a `旧` prefix instead of non-quota text.
+- Keep writing the failure reason to the log.
+
+## 2026-06-29 Hardening Gate
+
+Problem: The same family of bugs kept returning because old copies existed in multiple places: runtime folder, skill scripts, launcher, installer, and watchdog.
+
+Fix:
+- Add `scripts/assert_quota_panel_hardened.ps1`.
+- The installer copies itself and the hardening checker into the runtime folder.
+- The installer runs the hardening checker after deployment.
+- The checker fails on hidden/minimized panel launch, missing 5-minute timer, missing 10-minute cache age, missing 3-attempt retry, non-quota visible refresh text, or startup shortcut mismatch.
+
+Rule: No future quota-panel repair should be considered complete until the hardening gate says `PASS: quota panel hardened`.
+
+## 2026-06-30 Hung First Refresh / Missing Display Fix
+
+Problem: The standalone quota query could return `status: ok`, but the panel had previously logged repeated `Authentication failed` attempts and then stopped showing a current visible quota label. The likely failure mode was an unbounded or very slow cclimits subprocess during the first refresh; because startup refreshed synchronously, the user experienced this as the bottom-right display not appearing.
+
+Fix:
+- Add `$CclimitsTimeoutSeconds = 20`.
+- Replace direct `& python cclimits.py --codex --json` calls with `Invoke-CclimitsJson`, which uses `WaitForExit` and kills a hung subprocess after the timeout.
+- Keep the 3-attempt retry policy, but log each failed/no-output/timeout/status failure with its attempt number.
+- Add `Show-StartupFallback` so the panel paints the last-good quota-shaped value before the first live refresh.
+- Extend `assert_quota_panel_hardened.ps1` so future repairs fail if bounded timeout or visible startup fallback disappears from either runtime or skill copy.
+
+Acceptance evidence:
+- `python C:\Users\A\.codex\quota-panel\cclimits.py --codex --json` returned `status: ok`, `remaining: 94%` for the 5-hour window, and `remaining: 99%` for the 7-day window.
+- `powershell.exe -ExecutionPolicy Bypass -File C:\Users\A\.codex\quota-panel\assert_quota_panel_hardened.ps1` returned `PASS: quota panel hardened`.
+- Process list showed both `CodexQuotaPanel.ps1` and `QuotaPanelWatchdog.ps1` running.
+- Log showed `startup fallback visible: 55% 06:16 | 7天88% 6天10时`, then `refreshed: 94% 20:27 | 7天99% 6天23时`, then `moved bottom-right`.

@@ -1,0 +1,127 @@
+# Wan2.2 5B Shot SOP
+
+This SOP turns GPT key images and shot notes into short local video clips for Remotion. It uses only the existing Wan2.2-TI2V-5B baseline.
+
+## Inputs
+
+For each shot, prepare:
+
+- scene id
+- shot id
+- one key image, preferably square or close to final crop
+- positive prompt
+- negative prompt
+- intended duration
+- filename prefix
+
+Put key images in:
+
+```text
+H:\AI\ComfyUI_Aaki_v3\ComfyUI\input
+```
+
+Suggested image name:
+
+```text
+scene##_shot##_key.png
+```
+
+## Load Baseline Workflow
+
+Open:
+
+```text
+H:\AI\skills\comfyui-aaki-v3-video-baseline\workflows\wan22_5b_lowrisk_ui_workflow.json
+```
+
+Do not change model loader nodes:
+
+- `wan2.2_ti2v_5B_fp16.safetensors`
+- `umt5_xxl_fp8_e4m3fn_scaled.safetensors`
+- `wan2.2_vae.safetensors`
+
+## Stable First-Pass Settings
+
+Use these when producing a new shot family:
+
+- width: `512`
+- height: `512`
+- frames: `37`
+- fps: `12`
+- duration: `3.083333` seconds
+- steps: `12`
+- cfg: `5.0`
+- sampler: `uni_pc`
+- scheduler: `simple`
+- CLIP device: `cpu`
+
+Change only:
+
+- input image
+- positive prompt
+- negative prompt
+- seed
+- filename prefix
+
+## Generation Rule
+
+Run one shot at a time. Do not queue a batch until one shot has completed and the output has been reviewed.
+
+Record for each accepted clip:
+
+- source image
+- workflow file
+- prompt text
+- seed
+- output path
+- duration
+- generation time when available
+
+## Output Triage
+
+Raw output:
+
+```text
+H:\AI\ComfyUI_Aaki_v3\ComfyUI\output\video
+```
+
+Copy keepers to:
+
+```text
+H:\AI\ComfyUI_Aaki_v3\ComfyUI\output\video_selected
+```
+
+Copy clips ready for Remotion to:
+
+```text
+H:\AI\ComfyUI_Aaki_v3\ComfyUI\output\remotion_inbox
+```
+
+Use this final clip name:
+
+```text
+scene##_shot##_take##_wan22_5b_512x512_12fps.mp4
+```
+
+## Accept/Reject Checklist
+
+Accept only if:
+
+- clip opens and plays
+- motion is visible
+- subject remains usable for the edit
+- no severe flicker or broken anatomy
+- no text/watermark artifacts
+- clip is copied to `remotion_inbox` with a stable name
+
+Reject or rerun only within the same model if:
+
+- motion is too weak
+- subject drifts too far
+- face/body breaks
+- composition does not match the intended shot
+
+## Escalation Boundary
+
+For this baseline, improvements may tune prompt, seed, frames, resolution, and input image only. Do not install or switch to other video models without a new gated task.
+

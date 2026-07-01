@@ -1,0 +1,22 @@
+# Glossary ZH
+
+- Context Budget：上下文预算，控制一次读多少东西。
+- Progressive Disclosure：渐进加载，用到什么读什么。
+- Source of Truth：权威来源，某条规则以哪个文件为准。
+- Skill：技能包，可复用能力包。
+- Reports Archive：报告归档，历史证据库，不默认全读。
+- Script Verification：脚本验证，用程序检查规则是否真的完成。
+- Deterministic Checklist：确定性检查清单，脚本缺失时的硬检查。
+- Stage Gate：阶段门，一个阶段的通过关口。
+- Gate PASS：某一关通过，不等于整个任务完成。
+- Final PASS：最终通过，必须所有硬门都过。
+- Completion Ledger：完成台账，列出每个任务项是否完成。
+- Declared Requirement：声明要求，任务里写过的必须项。
+- Logical 100%：逻辑 100%，证据闭环，不是绝对未来无 bug。
+- Artifact Checkpoint：产物检查点，文件、hash、git 状态闭合。
+- Validator：独立复验角色。
+- Orchestrator：总控集成角色。
+- Subagent：子智能体，分担上下文和任务。
+- Smoke Trap：烟雾陷阱测试，故意构造错误看能不能拦住。
+- Proof Chain：证明链，状态码背后的证据链。
+- Negative Check：反向检查，证明禁止事项没有发生。

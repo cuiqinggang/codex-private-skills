@@ -1,0 +1,4 @@
+interface:
+  display_name: "PPT Showcase Video"
+  short_description: "Create vertical big-image PPT-style social videos with music."
+  default_prompt: "制作一个适合抖音和微信朋友圈的竖屏大图 PPT 展示视频，保留稳定画面和合适背景音乐。"

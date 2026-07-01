@@ -1,0 +1,2 @@
+@echo off
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "$needle='\auto-longtext-fileclip.ps1'; $rows=Get-CimInstance Win32_Process | Where-Object { $_.Name -match '^powershell(\\.exe)?$' -and $_.CommandLine -like ('*' + $needle + '*') }; Add-Type -AssemblyName PresentationFramework; if($rows){[System.Windows.MessageBox]::Show('Auto long-text converter is RUNNING.','Codex Long Text Fallback') | Out-Null}else{[System.Windows.MessageBox]::Show('Auto long-text converter is NOT running. Double-click start shortcut.','Codex Long Text Fallback') | Out-Null}"

@@ -1,4 +1,4 @@
-# Replay Checklist
+﻿# Replay Checklist
 
 ## G01 Check Default GPT Route
 
@@ -134,3 +134,4 @@ Invoke-RestMethod -Uri "http://localhost:13000/health"
 - Success: all verification passed and default GPT route is unchanged.
 - Safe stop: missing key, missing component, unsupported CCX/CC Switch, or verification failure without config damage.
 - Failure: default GPT changed, Flash added, key leaked, or success claimed without evidence.
+

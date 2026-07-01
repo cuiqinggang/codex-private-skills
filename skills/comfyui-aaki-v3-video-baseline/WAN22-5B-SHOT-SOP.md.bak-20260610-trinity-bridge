@@ -1,0 +1,214 @@
+# Wan2.2 5B Shot SOP
+
+This SOP turns GPT key images and shot notes into short local video clips for Remotion. It uses only the existing Wan2.2-TI2V-5B baseline.
+
+## Mandatory ChatGPT Web Image Repair Route
+
+This video workflow uses ChatGPT web image generation/editing as the required
+production repair route when still-image quality is the reason a video clip
+fails. The Codex Desktop built-in image tool is not allowed for formal video
+source images, clean plates, texture references, or final repaired keyframes.
+It is forbidden for this video-making workflow, including previews, fallback,
+drafts, temporary candidates, and final sources.
+
+Formal image source rule:
+
+```text
+All images created or repaired for this video pipeline must use the logged-in
+ChatGPT web official image tool. Do not call the Codex built-in image tool.
+```
+
+Use it before giving up on a shot when the failure is visible in one or more
+frames:
+
+- bad key image before generation
+- object removal leaves dark patches, silhouettes, or fake texture
+- plant/person/product removal fails at frame level
+- background, desk mat, wall, cloth, skin, or product texture looks unnatural
+- a video model take is close, but a reference frame or input image is wrong
+
+Process:
+
+1. Extract the failed keyframes or pick the bad key image.
+2. Open/inspect the image evidence before editing.
+3. Use ChatGPT web image generation/editing to repair the still image.
+4. Preserve required invariants: camera angle, subject pose, foreground object,
+   lighting, shadows, device/keyboard/phone geometry, and intended composition.
+5. Save the repaired image into the shot folder or ComfyUI input folder.
+6. Use the repaired image as a keyframe replacement, clean plate, texture
+   reference, or direct frame source for the next controlled video attempt.
+7. Render a new clip or repaired segment.
+8. Verify with ffprobe plus contact sheet/video review.
+
+Do not treat a single repaired still as a passed video. The video only passes
+after the repaired still has been used in the video pipeline and the resulting
+clip passes motion, texture, frame consistency, and artifact checks.
+
+When using ChatGPT web image editing:
+
+1. Upload/paste the exact failed frame into the logged-in ChatGPT web page.
+2. Ask for a repaired image with explicit preserve/remove constraints.
+3. Screenshot-confirm the image thumbnail is attached before sending.
+4. Save the upload/send/result screenshots into the shot evidence folder.
+5. Save, crop, or download the returned image into the shot evidence folder.
+6. Treat the returned image as the required high-quality source if it is
+   visually better than the old frame.
+7. If the video assembly creates artifacts, fix the assembly method: direct
+   keyframe replacement, tighter masks, alignment, or more repaired keyframes.
+8. Do not reject the web-repaired still merely because one rough transfer pass
+   failed.
+9. If one web-repaired frame is not enough for motion, request more repaired
+   keyframes; ChatGPT web can produce several needed images quickly.
+
+Batching:
+
+- Default to at most 10 images per ChatGPT web image batch.
+- If more than 10 failed frames are needed, split into `batch_01`, `batch_02`,
+  etc.
+- If the ChatGPT web page shows a lower upload/generation limit, follow the
+  lower visible limit.
+- Save one prompt file and one evidence folder per batch.
+
+## Inputs
+
+For each shot, prepare:
+
+- scene id
+- shot id
+- one key image, preferably square or close to final crop
+- positive prompt
+- negative prompt
+- intended duration
+- filename prefix
+
+Put key images in:
+
+```text
+H:\AI\ComfyUI_Aaki_v3\ComfyUI\input
+```
+
+Suggested image name:
+
+```text
+scene##_shot##_key.png
+```
+
+If a ChatGPT web repaired image is created, save it with an explicit name such as:
+
+```text
+scene##_shot##_gpt_repaired_key.png
+scene##_shot##_gpt_repaired_clean_plate.png
+scene##_shot##_gpt_texture_reference.png
+```
+
+Record the source frame, ChatGPT web prompt, upload screenshot, generated-result
+screenshot, local saved image path, and reason for repair in the shot report.
+
+## Load Baseline Workflow
+
+Open:
+
+```text
+H:\AI\skills\comfyui-aaki-v3-video-baseline\workflows\wan22_5b_lowrisk_ui_workflow.json
+```
+
+Do not change model loader nodes:
+
+- `wan2.2_ti2v_5B_fp16.safetensors`
+- `umt5_xxl_fp8_e4m3fn_scaled.safetensors`
+- `wan2.2_vae.safetensors`
+
+## Stable First-Pass Settings
+
+Use these when producing a new shot family:
+
+- width: `512`
+- height: `512`
+- frames: `37`
+- fps: `12`
+- duration: `3.083333` seconds
+- steps: `12`
+- cfg: `5.0`
+- sampler: `uni_pc`
+- scheduler: `simple`
+- CLIP device: `cpu`
+
+Change only:
+
+- input image
+- positive prompt
+- negative prompt
+- seed
+- filename prefix
+
+## Generation Rule
+
+Run one shot at a time. Do not queue a batch until one shot has completed and the output has been reviewed.
+
+Record for each accepted clip:
+
+- source image
+- workflow file
+- prompt text
+- seed
+- output path
+- duration
+- generation time when available
+
+## Output Triage
+
+Raw output:
+
+```text
+H:\AI\ComfyUI_Aaki_v3\ComfyUI\output\video
+```
+
+Copy keepers to:
+
+```text
+H:\AI\ComfyUI_Aaki_v3\ComfyUI\output\video_selected
+```
+
+Copy clips ready for Remotion to:
+
+```text
+H:\AI\ComfyUI_Aaki_v3\ComfyUI\output\remotion_inbox
+```
+
+Use this final clip name:
+
+```text
+scene##_shot##_take##_wan22_5b_512x512_12fps.mp4
+```
+
+## Accept/Reject Checklist
+
+Accept only if:
+
+- clip opens and plays
+- motion is visible
+- subject remains usable for the edit
+- no severe flicker or broken anatomy
+- no text/watermark artifacts
+- clip is copied to `remotion_inbox` with a stable name
+
+If the rejection reason is a still-image defect, run the GPT image repair route
+above before final rejection. Examples: visible fake patch, plant silhouette,
+broken clean plate, bad texture, warped foreground, or wrong key image.
+
+If the repaired still looks good by itself but the rerendered video shows new
+dark spots, flicker, phone/hand corruption, or texture pasted from the wrong
+area, treat the video assembly as failed. Keep the good web-repaired still and
+continue with more repaired keyframes or a better replacement/interpolation
+method.
+
+Reject or rerun only within the same model if:
+
+- motion is too weak
+- subject drifts too far
+- face/body breaks
+- composition does not match the intended shot
+
+## Escalation Boundary
+
+For this baseline, improvements may tune prompt, seed, frames, resolution, and input image only. Do not install or switch to other video models without a new gated task.

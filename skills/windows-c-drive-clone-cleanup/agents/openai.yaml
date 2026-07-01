@@ -1,0 +1,7 @@
+interface:
+  display_name: "C Drive Clone Cleanup"
+  short_description: "Safely scan and slim Windows C drive before SSD migration."
+  default_prompt: "Use $windows-c-drive-clone-cleanup to scan and safely clean Windows C drive before cloning it to an SSD."
+
+policy:
+  allow_implicit_invocation: true

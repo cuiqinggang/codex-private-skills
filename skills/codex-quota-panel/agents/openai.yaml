@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Quota Panel"
+  short_description: "Install and maintain the compact Codex quota panel."
+  default_prompt: "Set up or repair the compact Codex quota panel."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Paste Attachment Repair"
+  short_description: "Repair long pasted text attachments"
+  default_prompt: "Use $codex-pasted-text-attachment-repair to diagnose and repair Codex long pasted text attachment failures."

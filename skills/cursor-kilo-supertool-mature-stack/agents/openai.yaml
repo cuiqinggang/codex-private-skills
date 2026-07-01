@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cursor Kilo SuperTool Stack"
+  short_description: "复现 Cursor + Kilo + OpenRouter 的成熟超级工具路线。"
+  default_prompt: "基于现有报告和配置，安全复现或延续 Cursor/Kilo 超级工具部署。"

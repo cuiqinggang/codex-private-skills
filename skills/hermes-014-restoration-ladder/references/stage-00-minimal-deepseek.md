@@ -1,4 +1,4 @@
-# Stage 00 Minimal DeepSeek
+﻿# Stage 00 Minimal DeepSeek
 
 Use this reference to recover the clean base layer:
 
@@ -219,3 +219,4 @@ Success:
   `CHAT_STATUS=200`, and `HERMES_MINIMAL_DEEPSEEK_OK`.
 - `G06-final-process-state-retry.txt` showed one 8642 listener and no NewAPI /
   Watchdog / AutoRecover process.
+

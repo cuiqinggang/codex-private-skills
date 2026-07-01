@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hermes Telegram Bridge"
+  short_description: "Persist Hermes Telegram bridge"
+  default_prompt: "Reconnect, verify, or improve the persistent Telegram bridge for Windows native Hermes 0.14 using the saved runbook and diagnostics."

@@ -1,0 +1,129 @@
+---
+name: system-evolution
+description: Use when the user says 系统进化, 情报支持系统进化方案, 执行系统进化, 跑系统进化, or asks to turn AI/IT intelligence, current projects, staged goals, feedback, and Codex/Hermes validation into a recurring personal system improvement loop.
+---
+
+# 系统进化
+
+## 定位
+
+“系统进化”是情报支持系统进化方案的短触发名。它不是新闻日报，而是把用户当前工作、未来阶段目标、公开成熟方案、优秀工具、优秀 skill、低成本路线、用户反馈和 Codex/Hermes 验证结果连成闭环。
+
+## 固定边界
+
+- 默认根目录：`C:\Users\A\Desktop\1\output\TASK-20260520-AI-SYSTEM-EVOLUTION-LOOP`
+- H 盘镜像：`H:\AI_System_Evolution\skills\system-evolution`
+- 默认模式：`Approval`
+- 自动模式：`Auto`，只允许执行低风险文件生成、报告、同步和验证任务包，不改生产配置。
+- 禁止默认修改 Hermes、Codex 全局 AGENTS.md、Open WebUI 主配置、正式 H 盘 skill、账号、Cookie、Token、付费 API、长期后台服务。
+
+## 触发说法
+
+用户说这些话时使用本 skill：
+
+- “系统进化”
+- “执行系统进化”
+- “跑一下系统进化”
+- “情报支持系统进化方案”
+- “把今天的情报变成系统升级方案”
+- “根据我当前项目和未来目标改进系统”
+- “长编程进化”
+- “长编程流程”
+- “Cursor 深度写代码”
+- “DeepSeek V4Pro 长代码”
+- “Claude Code 长时间编程”
+- “抖音情报”
+- “视频情报源”
+- “从我关注的视频里找方案”
+
+## 运行方式
+
+首选运行脚本：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Users\A\.codex\skills\system-evolution\scripts\run-system-evolution.ps1" -Mode Approval
+```
+
+测试时禁用声音：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Users\A\.codex\skills\system-evolution\scripts\run-system-evolution.ps1" -Mode Approval -NoSound
+```
+
+## 输出
+
+- `reports\system-evolution-report.md`：完整中文进化报告。
+- `reports\report.md`：最终 PASS/PARTIAL/FAIL 汇报。
+- `reports\latest-system-evolution-notice.md`：最新提醒摘要。
+- `plans\evolution-plan.md`：三类计划：低风险自动动作、Codex/Hermes 验证动作、必须批准的生产升级。
+- `actions\pending-approval.md`：当前需要用户批准的具体执行方案。
+- `actions\codex-validation-tasks.md`：可交给 Codex/Hermes 的验证任务。
+- `reports\cursor-claude-deepseek-long-coding-research.md`：Cursor + Claude Code + DeepSeek V4Pro 长编程成熟方案研究。
+- `reports\video-source-strategy.md`：抖音、YouTube、TikTok、Bilibili 等视频情报源策略。
+- `plans\cursor-claude-deepseek-long-coding-workflow.md`：长编程阶段门、测试门、交接门和恢复流程。
+- `actions\long-coding-task-package-template.md`：可交给 Cursor/Claude Code/Codex 的长任务包模板。
+- `actions\video-intelligence-card-template.md`：视频情报提取、评分和二次核实模板。
+- `evidence\run-summary.json`：数量、安全和执行证据。
+
+## 每两小时任务
+
+计划任务名称：`Codex_SystemEvolution_2h`
+
+注册脚本：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Users\A\.codex\skills\system-evolution\scripts\register-system-evolution-task.ps1"
+```
+
+任务使用隐藏窗口运行，默认每 2 小时执行一次 `Approval` 模式。声音提示由 runner 负责，不创建弹窗，不移动鼠标，不操作真实键盘。
+
+## 执行策略
+
+1. 读取 inventory、roadmap、sources、scoring、feedback。
+2. 运行最小 PoC，生成日报、系统进化报告、升级计划、验证任务和 skill 草案。
+3. 写入 `pending-approval.md`，把今天可执行方案分为：
+   - 可以自动做的低风险动作。
+   - 需要 Codex/Hermes 验证的动作。
+   - 必须用户批准的生产升级。
+4. 播放声音提示并写入 latest notice。
+5. 同步 skill 和最新报告到 H 盘镜像。
+6. 在用户明确批准后，才执行生产系统升级。
+
+## 长编程重点项目
+
+当用户要强化 Cursor + Claude Code + DeepSeek V4Pro 的长时间写代码能力时，本 skill 必须把它作为长期重点项目处理：
+
+1. 不直接相信模型一次性完成大任务，先生成任务包、阶段计划、测试命令、停止条件和回滚说明。
+2. 每个子任务控制在 30-90 分钟，要求写 `execution-log`、`verification`、`handoff`、`next-actions`。
+3. Cursor + Claude Code + DeepSeek V4Pro 负责主要编辑；Codex 负责任务包、验证、报告和沉淀；Hermes 后续只接收已验证流程。
+4. 任何账号授权、API key、Cursor Background Agents、GitHub App、Codex cloud 或长期后台任务都必须用户批准。
+5. 每次系统进化运行都继续搜索成熟公开方案，并把有效改进写回 roadmap/source/state。
+
+细则见 `references\long-coding-flow.md`。
+
+## 视频情报源重点
+
+当用户要求从抖音、YouTube、TikTok、Bilibili 或其他视频平台获取 AI/科技/工具分享时，本 skill 必须把视频作为一等信息源处理：
+
+1. 抖音关注流是高价值个性化来源；用户已明确把视频情报纳入任务后，可直接只读浏览、截图、转写和记录，不逐条等待批准。
+2. 默认不得执行账号写操作，不得点赞、关注、评论、私信、收藏、发布或修改账号；出现验证码、账号安全提示、付费墙或隐私内容时停止。
+3. 视频候选必须记录平台、作者、链接、标题、发布时间、公开热度、截图/字幕/转写和采集时间。
+4. 高赞视频不能直接当结论，必须用官方文档、GitHub、release、公开案例或评论区实测做二次核实。
+5. 只有能对应用户系统模块并生成验证任务、skill、脚本或流程的内容才进入升级计划。
+
+细则见 `references\video-source-intelligence.md`。
+
+## 模式
+
+| 模式 | 行为 |
+|---|---|
+| `Approval` | 只生成报告、待批准清单、声音提示和 H 盘同步；不执行生产升级。 |
+| `Auto` | 自动执行低风险文件类动作和验证任务包生成；生产升级仍需批准。 |
+| `ReportOnly` | 只生成报告，不同步 H 盘，不播放声音。 |
+
+## 失败处理
+
+- 如果 PoC 未达标，写入 `reports\latest-system-evolution-notice.md` 并播放失败提示。
+- 如果 H 盘不存在，只跳过 H 盘同步，不判定主任务失败。
+- 如果声音组件不可用，只记录 warning，不阻止报告生成。
+- 如果计划任务注册失败，不修改其他系统配置，报告失败原因。

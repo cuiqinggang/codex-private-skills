@@ -1,0 +1,31 @@
+﻿{
+    "task_id":  "AIOS_SKILL_SELF_PURIFICATION_WEEKLY_60MIN_LIGHT_CHECK",
+    "automation_id":  "aios-30min",
+    "started_at":  "2026-06-21T21:09:49.5757638+08:00",
+    "ended_at":  null,
+    "elapsed_minutes":  0,
+    "minimum_elapsed_minutes":  60,
+    "checkpoints":  [
+                        {
+                            "name":  "start",
+                            "at":  "2026-06-21T21:09:49.5927639+08:00",
+                            "elapsed_minutes":  0,
+                            "note":  "60min formal run started; prior recursive draft run marked aborted; shadow-only mode active."
+                        }
+                    ],
+    "checkpoint_count":  1,
+    "reviewed_roots":  [
+                           "C:\\Users\\A\\.codex\\skills",
+                           "H:\\AI\\skills"
+                       ],
+    "reviewed_scope":  null,
+    "final_status":  "RUNNING",
+    "formal_skills_modified":  "NO",
+    "auto_merge_allowed":  "NO",
+    "pass_conditions":  {
+                            "elapsed_minutes_gte_60":  false,
+                            "required_checkpoints_present":  false,
+                            "formal_skills_modified_no":  true,
+                            "auto_merge_allowed_no":  true
+                        }
+}

@@ -1,0 +1,423 @@
+# 2026-06-07 G39-G44 Hermes / Open WebUI / Docker Autostart Runbook
+
+Use this when Windows native Hermes 0.14, Open WebUI 3000, Docker Desktop,
+Telegram bridge, or login autostart need to be checked or repaired on this
+machine.
+
+## Final Accepted State
+
+G39 Windows Native Hermes 8642 mainline: PASS.
+
+G42 Docker / WSL2 base: PASS after BIOS firmware virtualization was enabled and
+Windows features were corrected.
+
+G43 Open WebUI 3000: PASS.
+
+G44 login autostart: PASS.
+
+2026-06-07 evening follow-up: PASS after adding Docker Desktop residue recovery
+to the login autostart script. The user then manually tested the already logged
+in Google Chrome Open WebUI page and confirmed it could use Hermes.
+
+Current intended chain:
+
+```text
+Windows login
+  -> Hermes 8642
+  -> Docker Desktop Linux Engine
+  -> open-webui-clean
+  -> Open WebUI 3000
+  -> browser opens http://127.0.0.1:3000
+```
+
+## Layer Contract
+
+Do not collapse all layers into one failure.
+
+Stage 00 / G39 Windows Native Hermes 8642 mainline only requires:
+
+- `H:\Hermes_Windows_Native_014` exists.
+- `H:\Hermes_Windows_Native_014\launcher\hermes-014-runtime.ps1` exists.
+- Hermes CLI exists.
+- `C:\Users\A\.hermes` exists.
+- port `8642` listens.
+- `/health` returns HTTP 200.
+- `/v1/models` returns HTTP 200 and contains `hermes-agent`.
+- `gateway_state.json` shows `api_server` and, when checking Telegram,
+  `telegram` as `connected`.
+
+Do not fail G39 because of BIOS, WSL2, Docker Desktop, `open-webui-clean`, or
+Open WebUI `3000`.
+
+Open WebUI `3000` is Stage 01 / G40-G43. It is needed for the web shell, but it
+is not a prerequisite for Hermes 8642 or Telegram.
+
+Docker Desktop can be running without the visible Docker Desktop window being
+in front. The real proof is:
+
+- `docker-desktop` is `Running` in `wsl -l -v`.
+- `docker ps` returns stably.
+- `open-webui-clean` is `Up ... (healthy)`.
+- `http://127.0.0.1:3000` returns HTTP 200.
+
+Docker Desktop account login is not a requirement for this route. Do not spend
+time trying to sign in to Docker Desktop unless the user explicitly asks. The
+Open WebUI browser session is the important login state.
+
+## Correct Recovery Order
+
+### G39: Windows Native Hermes 8642
+
+Verify first:
+
+```powershell
+curl.exe -s -m 5 http://127.0.0.1:8642/health
+$k=(Select-String -LiteralPath 'C:\Users\A\.hermes\.env' -Pattern '^API_SERVER_KEY=' | Select-Object -First 1).Line -replace '^API_SERVER_KEY=',''
+curl.exe -s -m 5 -H "Authorization: Bearer $k" http://127.0.0.1:8642/v1/models
+Get-Content C:\Users\A\.hermes\gateway_state.json
+```
+
+Never print the key. Do not stop Hermes if these checks pass.
+
+Accepted owner pattern:
+
+```text
+python.exe ... hermes_cli.main gateway run --replace
+```
+
+### G40: Open WebUI 3000 First Pass
+
+Only after G39 passes, check Docker/Open WebUI:
+
+```powershell
+sc.exe query com.docker.service
+docker version
+docker context ls
+docker ps -a --filter "name=open-webui-clean"
+curl.exe -s -L -m 15 -w "`nHTTP_CODE=%{http_code}`n" http://127.0.0.1:3000
+```
+
+If Docker API cannot respond because `docker-desktop` cannot start, stop at:
+
+```text
+G40_OPEN_WEBUI_DOCKER_LAYER_FAIL
+```
+
+Do not delete containers, volumes, sessions, or Open WebUI data.
+
+### G40b: Docker Desktop Lingering Backend / API 500 Recovery
+
+Use this when the visible Docker Desktop dialog says:
+
+```text
+Docker Desktop - Lingering processes detected
+com.docker.backend.exe
+Failed to connect to Docker Desktop backend
+```
+
+or when the command line shows:
+
+```text
+docker desktop status -> Status starting
+wsl -l -v -> docker-desktop Running
+docker ps / docker info -> HTTP 500 on dockerDesktopLinuxEngine
+```
+
+This is not a Docker account-login problem. It is a Docker Desktop backend /
+WSL handshake problem. The effective non-destructive recovery is:
+
+```powershell
+Get-Process | Where-Object {
+  $_.ProcessName -like "com.docker.*" -or
+  $_.ProcessName -like "Docker*" -or
+  $_.ProcessName -in @(
+    "docker",
+    "docker-compose",
+    "docker-credential-desktop",
+    "docker-sandbox"
+  )
+} | ForEach-Object {
+  taskkill.exe /PID $_.Id /F /T
+}
+
+wsl.exe --terminate docker-desktop
+Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
+```
+
+Then wait for:
+
+```powershell
+docker ps
+docker ps -a --filter "name=^/open-webui-clean$"
+docker start open-webui-clean   # only if it exists but is stopped
+curl.exe -s -L -m 15 -w "`nHTTP_CODE=%{http_code}`n" http://127.0.0.1:3000
+```
+
+Do not use:
+
+```text
+wsl --unregister docker-desktop
+docker system prune
+container/volume deletion
+Open WebUI recreation
+```
+
+The 2026-06-07 accepted script implementation is in:
+
+```text
+H:\Hermes_Windows_Native_014\launcher\auto-start-hermes-openwebui.ps1
+```
+
+It defines `Start-DockerDesktop` and `Clear-DockerDesktopResidue`, then uses
+this flow:
+
+```text
+normal Docker start
+-> wait docker ps stable first pass, 240s
+-> if it fails, clear Docker Desktop residue
+-> terminate only docker-desktop WSL distro
+-> start Docker Desktop again
+-> wait docker ps stable after residue recovery, 420s
+-> start open-webui-clean if stopped
+-> wait Open WebUI 3000 HTTP 200
+-> open browser to 127.0.0.1:3000
+```
+
+Successful evidence from the live repair:
+
+```text
+PASS docker ps stable
+container status: open-webui-clean|Up ... (health: starting)
+PASS Open WebUI 3000 HTTP 200
+FINAL_PASS Docker backend and OpenWebUI restored
+```
+
+### G41: Docker WSL2 Base Repair
+
+If Docker Desktop Linux Engine fails with `HCS_E_HYPERV_NOT_INSTALLED`, check in
+this order:
+
+```powershell
+wsl -l -v
+docker version
+docker context ls
+systeminfo | Select-String -Pattern 'Hyper-V Requirements|Virtualization Enabled In Firmware'
+dism.exe /online /Get-FeatureInfo /FeatureName:Microsoft-Windows-Subsystem-Linux
+dism.exe /online /Get-FeatureInfo /FeatureName:VirtualMachinePlatform
+dism.exe /online /Get-FeatureInfo /FeatureName:HypervisorPlatform
+dism.exe /online /Get-FeatureInfo /FeatureName:Microsoft-Hyper-V-All
+```
+
+Required features for this route:
+
+- `Microsoft-Windows-Subsystem-Linux`: Enabled
+- `VirtualMachinePlatform`: Enabled
+- `HypervisorPlatform`: Enabled
+
+`Microsoft-Hyper-V-All` can remain Disabled on the non-full-Hyper-V route.
+
+Only enable missing required features. Do not reinstall Docker. Do not run
+`wsl --unregister docker-desktop`. Do not run `docker system prune`.
+
+On 2026-06-07, `HypervisorPlatform` was missing and was enabled successfully
+with no restart required, but Docker still failed until firmware virtualization
+was enabled in BIOS. After BIOS was enabled and Windows rebooted, Docker Desktop
+Linux Engine recovered.
+
+### G42: Docker Base Verification After BIOS
+
+Pass evidence:
+
+- `systeminfo` may say `A hypervisor has been detected. Features required for
+  Hyper-V will not be displayed.` This is normal after the hypervisor is active.
+- `wsl -l -v` shows `docker-desktop Running`.
+- `docker version` shows Docker Desktop server and Linux engine.
+- `docker info` returns normally.
+- `docker ps` returns stably.
+
+Do not require the exact old `Virtualization Enabled In Firmware: Yes` line
+after the hypervisor is already running; `systeminfo` changes its output.
+
+### G43: Open WebUI 3000
+
+If `open-webui-clean` exists, do not delete or recreate it. If stopped, start it:
+
+```powershell
+docker start open-webui-clean
+```
+
+Pass evidence:
+
+- `open-webui-clean` is `Up ... (healthy)`.
+- `0.0.0.0:3000->8080/tcp`.
+- `http://127.0.0.1:3000` returns HTTP 200.
+- page title contains `Open WebUI`.
+- Open WebUI config points to `http://host.docker.internal:8642/v1`.
+- default model and model IDs include `hermes-agent`.
+
+The Open WebUI API may return `401 Not authenticated` for unauthenticated local
+API calls. That is not a failure by itself. Use the local database/config and a
+container-to-Hermes model request with a redacted key instead.
+
+When reading Open WebUI config, never print `api_keys`, tokens, passwords, or
+secrets. Redact nested JSON strings too.
+
+### G43b: Browser Login And Real Web Use Verification
+
+Do not claim browser success from HTTP 200 alone. HTTP 200 only proves the
+server is reachable.
+
+For this user's actual web acceptance, use the already logged-in Google Chrome
+window. Do not launch a separate temporary Chromium/Playwright browser and do
+not rely on its login state. Temporary browsers will show the Open WebUI login
+screen and do not share the user's saved Chrome session.
+
+Accepted web evidence:
+
+- Existing Google Chrome, not a new temporary browser.
+- Page title or visible page shows `Open WebUI`.
+- The visible model selector/default shows `hermes-agent`.
+- The page is not the Open WebUI login form.
+- The user can send a message and get a reply, or the user directly confirms
+  they just tested the page successfully.
+
+Authenticated backend verification is useful as supporting evidence. Generate a
+short-lived local token inside the container without printing it, then call:
+
+```powershell
+POST http://127.0.0.1:3000/api/chat/completions
+model=hermes-agent
+```
+
+This supporting check passed on 2026-06-07 with:
+
+```text
+OPENWEBUI_AUTH_CHAT_STATUS=200
+MODEL_HERMES=True
+HAS_MARKER=True
+assistant content: OPENWEBUI_LOGIN_OK
+```
+
+But final browser acceptance still belongs to the already logged-in Chrome
+session, not the temporary test browser.
+
+### G44: Login Autostart
+
+Task Scheduler task:
+
+```text
+Hermes_OpenWebUI_AutoStart
+```
+
+Action:
+
+```text
+H:\Hermes_Windows_Native_014\AUTO-START-HERMES-OPENWEBUI.cmd
+```
+
+Implementation:
+
+```text
+H:\Hermes_Windows_Native_014\launcher\auto-start-hermes-openwebui.ps1
+```
+
+Required behavior:
+
+1. Confirm/start Hermes 8642.
+2. Wait for `/health` HTTP 200.
+3. Wait for `/v1/models` to include `hermes-agent`.
+4. Confirm/start Docker Desktop.
+5. Wait for `docker ps` stable.
+6. Confirm/start `open-webui-clean`.
+7. Wait for `http://127.0.0.1:3000` HTTP 200.
+8. Open browser to `http://127.0.0.1:3000`.
+
+After the 2026-06-07 evening repair, if step 5 times out, the script must run
+the Docker Desktop residue recovery described in G40b and then retry Docker
+startup once before failing.
+
+Each run writes:
+
+```text
+H:\Hermes_Windows_Native_014\reports\autostart-YYYYMMDD-HHMMSS.log
+```
+
+Success line:
+
+```text
+FINAL_PASS Windows native Hermes Open WebUI autostart ready
+```
+
+Do not make the task use highest privileges unless there is a proven need.
+Use "only when user is logged on" / `InteractiveToken`, because Docker Desktop
+and browser opening are user-session behavior.
+
+## Mistakes Made During This Incident
+
+1. Docker/WSL/Open WebUI were initially treated as hard prerequisites for
+   Windows Native Hermes 8642. That was wrong. G39 8642 mainline can pass
+   without Docker or 3000.
+2. Long waits such as 10-20 minutes were proposed for a simple startup path.
+   That was wrong. The right method is one gate at a time: service, process,
+   pipe, WSL distro, Docker API, container, HTTP endpoint.
+3. BIOS/virtualization was mentioned too early as a Hermes prerequisite. That
+   was wrong for G39. It matters only for Docker Desktop WSL2 Linux Engine.
+4. The visible Docker Desktop window was confused with Docker Engine state.
+   That was wrong. Engine can run in the background even if the UI is not
+   visible.
+5. `systeminfo` was initially interpreted too literally. After hypervisor is
+   running, it may stop showing `Virtualization Enabled In Firmware: Yes/No` and
+   instead show that a hypervisor is detected.
+6. A PowerShell heredoc intended for container Python was parsed by PowerShell
+   and failed before entering Docker. Use a temporary script file or safe
+   quoting for container-side scripts.
+7. A config log briefly exposed an Open WebUI API key inside a nested JSON
+   string. The log was immediately redacted. Future config readers must redact
+   nested JSON strings before writing logs.
+8. `schtasks` path quoting failed twice. Use the simplest path when it has no
+   spaces, or create a `.cmd` wrapper with a stable path.
+9. A temporary Playwright/Chromium browser was opened for web verification.
+   That was the wrong browser state for this user. Future verification must use
+   the existing logged-in Google Chrome window unless the user explicitly asks
+   for an isolated browser.
+10. Open WebUI HTTP 200 and an unauthenticated page load were treated as nearly
+    sufficient. That is not enough. Browser success requires logged-in UI state
+    and a real message/reply test, or the user's immediate confirmation that
+    the already logged-in Chrome page works.
+11. Docker Desktop visible login/status UI was over-emphasized. Docker account
+    login is not required for this route; the required state is background
+    Docker Engine availability plus `open-webui-clean` serving Open WebUI.
+
+## Stop Conditions
+
+Stop and report the exact stage instead of crossing layers:
+
+- `G39_HERMES_8642_FAIL`: `/health` or `/v1/models` fail.
+- `G40_OPEN_WEBUI_DOCKER_LAYER_FAIL`: Docker API cannot inspect containers.
+- `G41_DOCKER_WSL2_ENGINE_BASE_REPAIR_BLOCKED_FIRMWARE_VIRTUALIZATION_OFF`:
+  WSL2 Docker backend fails with `HCS_E_HYPERV_NOT_INSTALLED`.
+- `OPEN_WEBUI_CONTAINER_NOT_FOUND_NEED_USER_CONFIRM`: `open-webui-clean` is not
+  present.
+- `NEED_REBOOT`: Windows feature repair requires reboot.
+
+Never delete `open-webui-clean`, Docker volumes, Open WebUI sessions/memory, or
+Hermes config as part of these checks.
+
+If the existing Google Chrome window is open but no CDP/debugging port is
+available, do not start a separate browser to prove login. Use the screenshot
+browser workflow on the existing Chrome window, or use the user's immediate
+visible send-test confirmation as acceptance.
+
+## Evidence Files From 2026-06-07
+
+```text
+C:\Users\A\Desktop\1\output\c-drive-cleanup\WINDOWS_NATIVE_HERMES_8642_ACCEPTANCE_20260607.md
+C:\Users\A\Desktop\1\output\c-drive-cleanup\G40_OPEN_WEBUI_3000_RECOVERY_20260607.md
+C:\Users\A\Desktop\1\output\c-drive-cleanup\G41_DOCKER_WSL2_ENGINE_BASE_REPAIR_20260607.md
+H:\Hermes_Windows_Native_014\reports\G42_G43_G44_HERMES_OPENWEBUI_AUTOSTART_20260607.md
+H:\Hermes_Windows_Native_014\reports\G42_G43_G44_视觉验收.html
+H:\Hermes_Windows_Native_014\reports\autostart-20260607-145116.log
+C:\Users\A\Desktop\1\output\docker-force-clean-start-20260607-194722.log
+H:\Hermes_Windows_Native_014\reports\autostart-20260607-195513.log
+C:\Users\A\Desktop\1\output\existing-chrome-openwebui-verify-20260607\01-existing-chrome-3000.png
+```

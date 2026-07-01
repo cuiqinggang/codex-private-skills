@@ -1,0 +1,77 @@
+param(
+    [string]$RuntimeDir = "$env:USERPROFILE\.codex\quota-panel"
+)
+
+$ErrorActionPreference = "Stop"
+$Here = Split-Path -Parent $MyInvocation.MyCommand.Path
+$Parent = Split-Path -Parent $Here
+$SkillDir = if (Test-Path (Join-Path $Parent "scripts\CodexQuotaPanel.ps1")) { $Parent } else { "C:\Users\A\.codex\skills\codex-quota-panel" }
+$Problems = New-Object System.Collections.Generic.List[string]
+
+function Add-Problem($Message) {
+    $Problems.Add($Message) | Out-Null
+}
+
+function Test-FileContains($Path, $Pattern) {
+    if (-not (Test-Path $Path)) {
+        Add-Problem "Missing file: $Path"
+        return $false
+    }
+    return [bool](Select-String -Path $Path -Pattern $Pattern -Quiet)
+}
+
+$runtimePanel = Join-Path $RuntimeDir "CodexQuotaPanel.ps1"
+$runtimeLauncher = Join-Path $RuntimeDir "Start-CodexQuotaPanel.cmd"
+$runtimeWatchdog = Join-Path $RuntimeDir "QuotaPanelWatchdog.ps1"
+$runtimeInstaller = Join-Path $RuntimeDir "install_or_repair_quota_panel.ps1"
+$skillPanel = Join-Path $SkillDir "scripts\CodexQuotaPanel.ps1"
+$skillLauncher = Join-Path $SkillDir "scripts\Start-CodexQuotaPanel.cmd"
+$skillWatchdog = Join-Path $SkillDir "scripts\QuotaPanelWatchdog.ps1"
+$skillInstaller = Join-Path $SkillDir "scripts\install_or_repair_quota_panel.ps1"
+
+foreach ($path in @($runtimeLauncher, $skillLauncher, $runtimeWatchdog, $skillWatchdog, $runtimeInstaller, $skillInstaller)) {
+    if (Test-Path $path) {
+        $content = Get-Content -Raw $path
+        if ($path -notlike "*QuotaPanelWatchdog.ps1" -and ($content -match "CodexQuotaPanel\.ps1.*WindowStyle\s+Hidden|WindowStyle\s+Hidden.*CodexQuotaPanel\.ps1|/min.*CodexQuotaPanel\.ps1|CodexQuotaPanel\.ps1.*/min")) {
+            Add-Problem "Panel launch hidden/minimized in: $path"
+        }
+        if ($path -like "*QuotaPanelWatchdog.ps1" -and $content -match "CodexQuotaPanel\.ps1.*WindowStyle\s+Hidden|WindowStyle\s+Hidden.*CodexQuotaPanel\.ps1") {
+            Add-Problem "Watchdog restarts panel hidden in: $path"
+        }
+    } else {
+        Add-Problem "Missing file: $path"
+    }
+}
+
+foreach ($path in @($runtimePanel, $skillPanel)) {
+    if (Test-Path $path) {
+        $content = Get-Content -Raw $path
+        if ($content -notmatch "LastGoodMaxAgeMinutes\s*=\s*10") { Add-Problem "Missing 10-minute cache limit in: $path" }
+        if ($content -notmatch "Interval\s*=\s*300000") { Add-Problem "Missing 5-minute refresh interval in: $path" }
+        if ($content -notmatch 'for\s*\(\$attempt\s*=\s*1;\s*\$attempt\s*-le\s*3') { Add-Problem "Missing 3-attempt cclimits retry in: $path" }
+        if ($content -notmatch "AllowExpired") { Add-Problem "Missing stale cache fallback policy in: $path" }
+        if ($content -match "quota refresh\.\.\.") { Add-Problem "Non-quota visible refresh text still present in: $path" }
+    } else {
+        Add-Problem "Missing file: $path"
+    }
+}
+
+$startup = [Environment]::GetFolderPath("Startup")
+$shortcut = Join-Path $startup "Codex Quota Panel.lnk"
+if (Test-Path $shortcut) {
+    $shell = New-Object -ComObject WScript.Shell
+    $s = $shell.CreateShortcut($shortcut)
+    $expected = Join-Path $RuntimeDir "Start-CodexQuotaPanel.cmd"
+    if ($s.TargetPath -ne $expected) {
+        Add-Problem "Startup shortcut target mismatch: $($s.TargetPath)"
+    }
+} else {
+    Add-Problem "Missing startup shortcut: $shortcut"
+}
+
+if ($Problems.Count -gt 0) {
+    $Problems | ForEach-Object { Write-Output "FAIL: $_" }
+    exit 1
+}
+
+Write-Output "PASS: quota panel hardened"

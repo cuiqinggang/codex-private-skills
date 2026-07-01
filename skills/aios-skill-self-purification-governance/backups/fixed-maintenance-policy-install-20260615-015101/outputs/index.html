@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>AIOS Skill Self Purification Governance</title>
+<style>
+body{font-family:Segoe UI,Microsoft YaHei,Arial,sans-serif;background:#0b1020;color:#e5e7eb;margin:0;padding:32px}
+main{max-width:1180px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{background:#151c31;border:1px solid #334155;border-radius:8px;padding:16px}
+a{color:#7dd3fc} table{width:100%;border-collapse:collapse;margin-top:16px} td,th{border:1px solid #334155;padding:8px;text-align:left} th{background:#1e293b}
+.pass{color:#86efac}.stop{color:#fca5a5}
+</style>
+<main>
+<h1>AIOS Skill 自我净化长期治理机制</h1>
+<div class="grid">
+  <div class="card">V3 Runtime<br><b class="pass">120.02 min</b></div>
+  <div class="card">Checkpoints<br><b class="pass">9</b></div>
+  <div class="card">Runtime Gate<br><b class="pass">PASS</b></div>
+  <div class="card">Auto Merge<br><b class="stop">NO</b></div>
+</div>
+<h2>长期运行策略</h2>
+<ul>
+<li>重大项目结束后：30min 轻量巡检</li>
+<li>每周：30min 轻量巡检</li>
+<li>每月：2H 样本优化</li>
+<li>每季度：可选 4H 图治理</li>
+<li>不建议每日全量，不建议频繁 8H 全量</li>
+<li>永不无人值守自动合并</li>
+</ul>
+<h2>不自动优化清单</h2>
+<p>用户硬规则、安全边界、失败复盘、审美偏好、高风险系统操作、真实 PASS 的长任务验收流程、权限与删除规则、入口触发条件、版本依赖、用户亲自确认判断。</p>
+<h2>Patch Buffer</h2>
+<table><tr><th>类别</th><th>含义</th></tr><tr><td>ACCEPTED_CANDIDATE</td><td>候选通过，但不代表已合并</td></tr><tr><td>REJECTED_EDIT</td><td>保留到 rejected buffer，防止下次重复提出坏修改</td></tr><tr><td>NEEDS_HUMAN_REVIEW</td><td>必须由用户或 GPT Gate Review 确认</td></tr></table>
+<h2>Runtime Gate</h2>
+<p>30min=30，2H=120，4H=240，8H=480。低于时间自动 FAIL。必须有 runtime-evidence.json、checkpoint timeline，并调用 ecc-staged-long-task-orchestration 的 runtime verifier。</p>
+<h2>命令包</h2>
+<ul>
+<li><a href="../COMMAND-30MIN-LIGHT-CHECK.md">30min 轻量巡检</a></li>
+<li><a href="../COMMAND-MONTHLY-2H-SAMPLE-OPTIMIZATION.md">每月 2H 样本优化</a></li>
+<li><a href="../COMMAND-QUARTERLY-4H-GRAPH-GOVERNANCE.md">季度 4H 图治理</a></li>
+</ul>
+<h2>文件链接</h2>
+<ul>
+<li><a href="../SKILL.md">SKILL.md</a></li>
+<li><a href="../RUNBOOK.md">RUNBOOK.md</a></li>
+<li><a href="../LONG-TERM-RUN-POLICY.md">LONG-TERM-RUN-POLICY.md</a></li>
+<li><a href="../DO-NOT-AUTO-OPTIMIZE.md">DO-NOT-AUTO-OPTIMIZE.md</a></li>
+<li><a href="../PATCH-BUFFER-STANDARD.md">PATCH-BUFFER-STANDARD.md</a></li>
+<li><a href="../RUNTIME-GATE-USAGE.md">RUNTIME-GATE-USAGE.md</a></li>
+<li><a href="../ACCEPTANCE-GATE.md">ACCEPTANCE-GATE.md</a></li>
+<li><a href="../MANIFEST.md">MANIFEST.md</a></li>
+</ul>
+</main>
+</html>

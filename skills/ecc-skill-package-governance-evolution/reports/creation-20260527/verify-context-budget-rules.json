@@ -1,0 +1,22 @@
+{
+  "script": "verify-context-budget-rules",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "no default reports full-read rule exists",
+      "pass": true
+    },
+    {
+      "name": "progressive disclosure rule exists",
+      "pass": true
+    },
+    {
+      "name": "reports archive rule exists",
+      "pass": true
+    },
+    {
+      "name": "short entry rule exists",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+display_name: GreatWall SSD Win10 Recovery
+short_description: Preserve old SSD Win10 recovery source.
+default_prompt: Build or verify a future-recovery backup package for an old Great Wall GT6 SSD Windows 10 install before formatting or merging partitions.

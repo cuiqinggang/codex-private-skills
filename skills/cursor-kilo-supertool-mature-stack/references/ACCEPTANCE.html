@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>Cursor Kilo SuperTool Skill Acceptance</title>
+  <style>
+    body { font-family: system-ui, "Microsoft YaHei", sans-serif; line-height: 1.55; margin: 32px; max-width: 920px; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 18px; margin-top: 24px; }
+    code { background: #f3f4f6; padding: 2px 5px; border-radius: 4px; }
+    li { margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <h1>Cursor/Kilo SuperTool 成熟复现技能包验收页</h1>
+  <h2>状态</h2>
+  <p><strong>PASS</strong>：技能包已包含触发规则、SOP、检查表、模型矩阵、失败复盘、报告模板、同步脚本和近期使用日志。</p>
+  <h2>技能路径</h2>
+  <p><code>C:\Users\A\.codex\skills\cursor-kilo-supertool-mature-stack</code></p>
+  <h2>核心矩阵</h2>
+  <ul>
+    <li>DeepSeek V4 Pro：主执行模型。</li>
+    <li>GLM-5.2：强指令与复杂流程控制层。</li>
+    <li>Qwen3-VL-235B-A22B-Instruct：视觉主模型。</li>
+    <li>Qwen3-VL-235B-A22B-Thinking：高难视觉推理备用。</li>
+  </ul>
+  <h2>复用方式</h2>
+  <p>后续任务提到 Cursor/Kilo 超级工具、Kilo First、模型矩阵、Stage4/Stage5、OpenRouter、DeepSeek/GLM/Qwen3-VL 时，先读本技能包。</p>
+  <h2>同步规则</h2>
+  <p>每完成一阶段，运行 <code>scripts\sync_stage.py</code>，把状态和成果路径写入 <code>references\recent-use-log.md</code>。</p>
+</body>
+</html>

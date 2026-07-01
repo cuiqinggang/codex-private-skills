@@ -1,0 +1,383 @@
+﻿# Weekly 60min Light Check Issue List
+
+Generated: 2026-06-21T21:16:45.0284445+08:00
+
+Mode: shadow-only. Formal skill files modified: NO. Auto-merge allowed: NO.
+
+Quality note: regenerated from scan-inventory.json with format operator; scan data unchanged.
+
+## Scope Summary
+
+- Skill roots scanned: C:\Users\A\.codex\skills; H:\AI\skills
+- Skill packages with SKILL.md: 129
+- Recent skills, 14d: 68
+- Modified skills, 45d: 115
+- Trigger-similarity pairs retained: 120
+- High-risk wording candidates: 82
+- Missing acceptance/evidence page candidates: 106
+
+## P1 Duplicate or overlapping triggers
+
+- score=0.079: `gh-fix-ci` <-> `obsidian-ai-company-os.OLD-20260615-191220`; shared: description, when, user, asks, inspect, after
+- score=0.086: `gh-fix-ci` <-> `loop-stage-acceptance`; shared: description, when, user, asks, draft, report
+- score=0.121: `gh-fix-ci` <-> `openai-docs`; shared: description, when, user, asks, context, only, explicit
+- score=0.081: `gh-fix-ci` <-> `codex-desktop-clean-reinstall-skill-recovery`; shared: description, when, checks, that, only, after
+- score=0.083: `gh-fix-ci` <-> `self-improvement`; shared: description, when, user, asks, failure, only
+- score=0.109: `first-customers` <-> `minimalist-entrepreneur-10-skills`; shared: description, first, customers, minimalist, entrepreneur, when
+- score=0.194: `first-customers` <-> `validate-idea`; shared: description, using, minimalist, entrepreneur, when, someone
+- score=0.104: `frontend-visual-taste-gate` <-> `obsidian-ai-company-os.OLD-20260615-191220`; shared: description, this, skill, dashboard, html, obsidian, review
+- score=0.091: `frontend-visual-taste-gate` <-> `one-person-ai-company-success-routes`; shared: description, this, skill, dashboard, visual, only
+- score=0.079: `frontend-visual-taste-gate` <-> `visual-proof-acceptance`; shared: description, this, skill, visual, target, review
+- score=0.065: `gpt-silver-to-premium-gold-video` <-> `obsidian-ai-company-os.OLD-20260615-191220`; shared: description, when, original, package, user, asks
+- score=0.07: `gpt-silver-to-premium-gold-video` <-> `loop-stage-acceptance`; shared: description, when, codex, trigger, user, asks
+- score=0.082: `gpt-silver-to-premium-gold-video` <-> `playwright-cli`; shared: description, when, codex, needs, generated, local
+- score=0.106: `gpt-silver-to-premium-gold-video` <-> `self-improvement`; shared: description, when, codex, needs, into, trigger, user, asks, local
+- score=0.078: `gpt-silver-to-premium-gold-video` <-> `screenshot-recognize-operate-browser`; shared: description, when, codex, needs, trigger, user, asks
+- score=0.081: `gh-fix-ci` <-> `one-person-ai-company-success-routes`; shared: description, when, failure, only, approval, external
+- score=0.063: `gh-fix-ci` <-> `codex-video-to-usable-skill-loop`; shared: description, when, user, asks, checks, failure
+- score=0.065: `gpt-silver-to-premium-gold-video` <-> `hermes-feishu-bot-bridge`; shared: description, when, using, trigger, test, local
+- score=0.089: `gpt-silver-to-premium-gold-video` <-> `lambda-labs-gpu-cloud`; shared: description, when, codex, needs, user, asks, local
+- score=0.074: `gpt-silver-to-premium-gold-video` <-> `hermes-skill-migration-roi`; shared: description, when, codex, needs, convert, into, trigger
+- score=0.149: `ecc-endurance-ladder-unified` <-> `video-production-and-editing-adaptive-skill`; shared: description, when, user, asks, workflow, mature, acceptance, packaging, this, skill
+- score=0.132: `ecc-endurance-ladder-unified` <-> `skillopt-sample-optimizer`; shared: description, when, user, asks, acceptance, governance, this, skill, drive
+- score=0.171: `find-community` <-> `first-customers`; shared: description, minimalist, when, someone, find, entrepreneur
+- score=0.2: `find-community` <-> `minimalist-review`; shared: description, minimalist, business, when, someone, their, entrepreneur
+- score=0.171: `find-community` <-> `grow-sustainably`; shared: description, evaluate, business, when, someone, their
+- score=0.13: `ecc-endurance-ladder-unified` <-> `ecc-staged-long-task-orchestration`; shared: description, when, endurance, mature, replay, verification, skill
+- score=0.161: `ecc-endurance-ladder-unified` <-> `ecc-skill-package-governance-evolution`; shared: description, when, mature, replay, closure, verification, governance, skill, source, truth
+- score=0.183: `ecc-endurance-ladder-unified` <-> `ecc-staged-long-task-orchestration.backup-20260528-134221`; shared: description, when, endurance, workflow, mature, replay, verification, final, acceptance, this, skill
+- score=0.132: `ecc-endurance-ladder-unified` <-> `skillopt-sample-optimizer`; shared: description, when, user, asks, acceptance, governance, this, skill, drive
+- score=0.076: `ecc-endurance-ladder-unified` <-> `one-person-ai-company-success-routes`; shared: description, when, workflow, replay, this, skill
+- score=0.333: `first-customers` <-> `marketing-plan`; shared: description, create, strategy, customers, minimalist, when, someone, product, needs, with
+- score=0.066: `find-skills` <-> `ai-company-evolving-revenue-portfolio`; shared: when, this, skill, user, search, keywords
+- score=0.206: `first-customers` <-> `minimalist-review`; shared: description, strategy, minimalist, entrepreneur, when, someone, needs
+- score=0.281: `first-customers` <-> `pricing`; shared: description, using, minimalist, entrepreneur, when, someone, product, struggling, with
+- score=0.281: `first-customers` <-> `mvp`; shared: description, first, minimalist, entrepreneur, when, someone, product, struggling, with
+- score=0.167: `find-community` <-> `pricing`; shared: description, help, minimalist, when, someone, entrepreneur
+- score=0.2: `find-community` <-> `mvp`; shared: description, build, minimalist, when, someone, their, entrepreneur
+- score=0.226: `find-community` <-> `validate-idea`; shared: description, minimalist, business, when, someone, idea, entrepreneur
+- score=0.182: `find-skills` <-> `skills-finder`; shared: when, user, skills, find
+- score=0.127: `find-community` <-> `minimalist-entrepreneur-10-skills`; shared: description, minimalist, business, when, idea, community, entrepreneur
+- score=0.1: `hermes-014-restoration-ladder` <-> `obsidian-ai-company-os.OLD-20260615-191220`; shared: description, when, restoring, after, repair, work, this, skill, rebuild
+- score=0.129: `hermes-014-restoration-ladder` <-> `obsidian-ai-company-os`; shared: description, when, native, from, especially, this, skill, system
+- score=0.081: `hermes-014-restoration-ladder` <-> `playwright-cli`; shared: description, when, windows, this, skill, local
+- score=0.067: `hermes-014-restoration-ladder` <-> `self-improvement`; shared: description, when, windows, this, skill, local
+- score=0.087: `hermes-014-restoration-ladder` <-> `proxy-diagnose-repair`; shared: description, when, windows, state, proxy, repair, this, skill, local
+- score=0.158: `hermes-014-restoration-ladder` <-> `hermes-telegram-persistent-bridge`; shared: description, when, windows, native, hermes, telegram, reboot, persistence, after
+- score=0.062: `hermes-014-restoration-ladder` <-> `hermes-skill-migration-roi`; shared: description, when, windows, hermes, this, skill
+- score=0.081: `hermes-014-restoration-ladder` <-> `inference-sh-cli`; shared: description, when, windows, from, this, skill
+- score=0.136: `hermes-014-restoration-ladder` <-> `new-api-local-deploy`; shared: description, when, windows, hermes, from, open, webui, failures, this, skill, local
+- score=0.088: `hermes-014-restoration-ladder` <-> `lambda-labs-gpu-cloud`; shared: description, when, windows, from, this, skill, local
+- score=0.097: `hermes-014-restoration-ladder` <-> `windows-sticky-software-removal`; shared: description, when, windows, especially, startup, tasks, proxy, this, skill
+- score=0.152: `hermes-014-restoration-ladder` <-> `windows-hermes-operations`; shared: description, when, windows, native, hermes, clean, open, webui, especially, system
+- score=0.086: `hermes-014-restoration-ladder` <-> `ai-company-design-systems`; shared: description, when, native, this, skill, local, system
+- score=0.075: `hermes-014-restoration-ladder` <-> `ai-video-replica-blender-codex-5s-baseline`; shared: description, when, from, model, this, skill
+- score=0.058: `hermes-014-restoration-ladder` <-> `ai-company-evolving-revenue-portfolio`; shared: description, when, native, multi, this, skill, system
+- score=0.08: `hermes-014-restoration-ladder` <-> `trusted-browser-download-install`; shared: description, when, from, especially, after, this, skill
+- score=0.095: `hermes-014-restoration-ladder` <-> `stable-diffusion-image-generation`; shared: description, when, windows, model, this, skill, local
+- score=0.08: `hermes-014-restoration-ladder` <-> `ui-setting-actual-open-self-verify-loop`; shared: description, open, model, failures, this, skill, restoration
+- score=0.087: `hermes-014-restoration-ladder` <-> `windows-background-task-noise-control`; shared: description, when, windows, hermes, startup, tasks, work, time
+- score=0.07: `hermes-014-restoration-ladder` <-> `visual-proof-acceptance`; shared: description, when, from, multi, work, this, skill
+- score=0.082: `gpt-silver-to-premium-gold-video` <-> `visual-proof-acceptance`; shared: description, when, codex, video, generated, image, original, package
+- score=0.08: `gpt-silver-to-premium-gold-video` <-> `virtual-mouse-keyboard-demo`; shared: description, when, codex, needs, user, local
+- score=0.088: `gpt-silver-to-premium-gold-video` <-> `windows-background-task-noise-control`; shared: description, when, codex, while, preserving, trigger, user, asks
+- score=0.083: `gpt-silver-to-premium-gold-video` <-> `codex-app-plugin-workflow-orchestrator`; shared: description, when, codex, needs, into, trigger
+- score=0.076: `gpt-silver-to-premium-gold-video` <-> `ai-video-replica-blender-codex-5s-baseline`; shared: description, when, codex, video, scene, package
+- score=0.081: `gpt-silver-to-premium-gold-video` <-> `stable-diffusion-image-generation`; shared: description, when, codex, needs, image, local
+- score=0.073: `gpt-silver-to-premium-gold-video` <-> `skillopt-sample-optimizer`; shared: description, when, codex, package, user, asks
+- score=0.078: `gpt-silver-to-premium-gold-video` <-> `system-evolution`; shared: description, when, codex, into, user, asks
+- score=0.086: `gpt-silver-to-premium-gold-video` <-> `video-production-and-editing-adaptive-skill`; shared: description, when, video, into, generated, user, asks
+- score=0.068: `gpt-silver-to-premium-gold-video` <-> `trusted-browser-download-install`; shared: description, when, codex, like, package, instead
+- score=0.078: `gpt-silver-to-premium-gold-video` <-> `07_screenshot_recognize_operate_browser`; shared: description, when, codex, needs, trigger, user, asks
+- score=0.086: `gpt-silver-to-premium-gold-video` <-> `video-production-and-editing-adaptive-skill`; shared: description, when, video, into, generated, user, asks
+- score=0.206: `grow-sustainably` <-> `minimalist-review`; shared: description, business, through, lens, when, someone, their
+- score=0.124: `hermes-014-restoration-ladder` <-> `hermes-feishu-bot-bridge`; shared: description, when, windows, native, hermes, from, especially, tasks, this, skill, local
+- score=0.109: `grow-sustainably` <-> `minimalist-entrepreneur-10-skills`; shared: description, business, through, sustainable, growth, when
+- score=0.078: `gpt-silver-to-premium-gold-video` <-> `comfyui-aaki-v3-video-baseline`; shared: description, when, video, preserving, user, local
+- score=0.073: `gpt-silver-to-premium-gold-video` <-> `codex-video-to-usable-skill-loop`; shared: description, when, codex, video, into, trigger, user, asks
+- score=0.067: `gpt-silver-to-premium-gold-video` <-> `cursor-kilo-supertool-mature-stack`; shared: description, when, codex, needs, package, user
+- score=0.073: `gpt-silver-to-premium-gold-video` <-> `skillopt-sample-optimizer`; shared: description, when, codex, package, user, asks
+- score=0.073: `gpt-silver-to-premium-gold-video` <-> `skillopt-sample-optimizer`; shared: description, when, codex, package, user, asks
+- score=0.162: `ecc-endurance-ladder-unified` <-> `ecc-endurance-ladder-unified`; shared: when, endurance, ladder, this, skill, unified
+- score=0.072: `docker-management` <-> `obsidian-ai-company-os.OLD-20260615-191220`; shared: description, when, this, project, with, skill
+- score=0.188: `docker-management` <-> `new-api-local-deploy`; shared: description, when, this, windows, docker, compose, guidance, local, hermes, with, first, skill, machine
+- score=0.167: `docker-management` <-> `playwright-cli`; shared: description, when, this, windows, codex, studio, needs, local, verification, skill
+- score=0.149: `docker-management` <-> `self-improvement`; shared: description, when, this, windows, codex, studio, needs, guidance, local, verification, skill
+- score=0.074: `docker-management` <-> `proxy-diagnose-repair`; shared: description, when, this, windows, local, safe, skill
+- score=0.12: `docker-management` <-> `hermes-skill-migration-roi`; shared: description, when, this, windows, codex, studio, needs, hermes, safe, skill
+- score=0.098: `docker-management` <-> `hermes-feishu-bot-bridge`; shared: description, when, this, windows, local, hermes, with, skill
+- score=0.207: `docker-management` <-> `inference-sh-cli`; shared: description, when, this, windows, codex, studio, needs, safe, planning, stop, actions, skill
+- score=0.183: `docker-management` <-> `modal-serverless-gpu`; shared: description, when, this, windows, codex, studio, needs, safe, planning, stop, skill
+- score=0.222: `docker-management` <-> `lambda-labs-gpu-cloud`; shared: description, when, this, windows, codex, studio, needs, local, verification, safe, planning, stop, skill, operations
+- score=0.086: `docker-management` <-> `ai-video-replica-blender-codex-5s-baseline`; shared: description, when, this, codex, verification, skill
+- score=0.114: `docker-management` <-> `ai-company-design-systems`; shared: description, when, this, local, verification, first, actions, skill
+- score=0.075: `docker-management` <-> `aios-skill-self-purification-governance`; shared: description, when, this, needs, cleanup, skill
+- score=0.125: `docker-management` <-> `chatgpt-visible-send-bridge`; shared: description, when, this, codex, needs, images, safe, with
+- score=0.137: `docker-management` <-> `chatgpt-screenshot-bridge`; shared: description, when, this, codex, needs, images, verification, planning, first, skill
+- score=0.164: `docker-management` <-> `stable-diffusion-image-generation`; shared: description, when, this, windows, codex, studio, needs, local, planning, skill
+- score=0.082: `docker-management` <-> `skillopt-sample-optimizer`; shared: description, when, this, codex, safe, skill
+- score=0.125: `docker-management` <-> `virtual-mouse-keyboard-demo`; shared: description, when, windows, codex, needs, desktop, local, with
+- score=0.1: `docker-management` <-> `windows-hermes-operations`; shared: description, when, windows, cleanup, hermes, operations
+- score=0.066: `docker-management` <-> `visual-proof-acceptance`; shared: description, when, this, codex, first, skill
+- score=0.08: `cursor-kilo-supertool-mature-stack` <-> `chatgpt-screenshot-bridge`; shared: description, when, codex, needs, first, verification, workflow
+- score=0.086: `cursor-kilo-supertool-mature-stack` <-> `ai-video-replica-blender-codex-5s-baseline`; shared: description, when, codex, package, model, verification, reports
+- score=0.095: `cursor-kilo-supertool-mature-stack` <-> `codex-app-plugin-workflow-orchestrator`; shared: description, when, codex, needs, route, deployment, workflow
+- score=1: `cursor-kilo-supertool-mature-stack` <-> `cursor-kilo-supertool-mature-stack`; shared: description, when, codex, needs, reproduce, continue, audit, package, hand, user, mature, cursor, kilo, code, openrouter, coding, super, tool
+- score=0.075: `cursor-kilo-supertool-mature-stack` <-> `comfyui-aaki-v3-video-baseline`; shared: description, when, user, official, first, model
+- score=0.091: `cursor-kilo-supertool-mature-stack` <-> `virtual-mouse-keyboard-demo`; shared: description, when, codex, needs, user, control, workflow
+- score=0.071: `cursor-kilo-supertool-mature-stack` <-> `video-production-and-editing-adaptive-skill`; shared: description, when, user, mature, packaging, workflow
+- score=0.058: `cursor-kilo-supertool-mature-stack` <-> `visual-proof-acceptance`; shared: description, when, codex, package, triggers, first
+- score=0.057: `cursor-kilo-supertool-mature-stack` <-> `ai-company-evolving-revenue-portfolio`; shared: description, when, user, login, localization, person, workflow
+- score=0.074: `cursor-kilo-supertool-mature-stack` <-> `windows-background-task-noise-control`; shared: description, when, codex, user, noise, control, reports
+- score=0.237: `doc` <-> `pdf`; shared: description, when, reading, creating, layout, prefer, python, visual, checks
+- score=0.071: `cursor-kilo-supertool-mature-stack` <-> `video-production-and-editing-adaptive-skill`; shared: description, when, user, mature, packaging, workflow
+- score=0.171: `doc` <-> `spreadsheet`; shared: description, when, creating, editing, formatting, visual
+- score=0.091: `docker-management` <-> `hermes-014-restoration-ladder`; shared: description, when, this, windows, local, hermes, skill
+- score=0.091: `docker-management` <-> `ecc-endurance-ladder-unified`; shared: description, when, this, local, verification, skill
+- score=0.076: `cursor-kilo-supertool-mature-stack` <-> `ecc-staged-long-task-orchestration.backup-20260528-134221`; shared: description, when, codex, mature, verification, workflow
+- score=0.075: `cursor-kilo-supertool-mature-stack` <-> `ecc-skill-package-governance-evolution`; shared: description, when, package, mature, verification, reports
+- score=0.076: `cursor-kilo-supertool-mature-stack` <-> `one-person-ai-company-success-routes`; shared: description, when, codex, route, reports, person, workflow
+- score=0.071: `cursor-kilo-supertool-mature-stack` <-> `skillopt-sample-optimizer`; shared: description, when, codex, package, user, without
+
+## P1 High-risk automation or scope wording
+
+- `imagegen` | C:\Users\A\.codex\skills\.system\imagegen | risk lines: description: "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas." / - If the user explicitly asks for a transparent image/background, stay on built-in `image_gen` first: prompt for a flat removable chroma-key background, then remove it locally with the installed helper at `$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py`. / - If a transparent request appears too complex for clean chroma-key removal, asks for true/native transparency, or local removal fails validation, explain that true transparency requires CLI `gpt-image-1.5 --background transparent --output-format png` because `gpt-image-2` does not support `background=transparent`, then ask whether to proceed. Run the CLI fallback only after the user confirms.
+- `skillopt-sample-optimizer` | H:\AI\skills\skillopt-sample-optimizer | risk lines: description: Use when the user asks to run SkillOpt, skill self-cleaning, skill package optimization, 2h sample optimization, skill governance sample tests, candidate patches, before/after scoring, rejected edits, or safe optimization of Codex/H-drive skills without modifying formal skill packages. / Use this skill to run safe, evidence-backed optimization on a small set of skill packages. The goal is to improve future skill quality by producing candidate patches, rejected edits, before/after scores, and a clickable acceptance dashboard. / 1. Treat formal skill directories as read-only unless the user separately approves a specific patch.
+- `skillopt-sample-optimizer` | H:\AI\skills\skillopt-sample-optimizer\skillopt-sample-optimizer | risk lines: description: Use when the user asks to run SkillOpt, skill self-cleaning, skill package optimization, 2h sample optimization, skill governance sample tests, candidate patches, before/after scoring, rejected edits, or safe optimization of Codex/H-drive skills without modifying formal skill packages. / Use this skill to run safe, evidence-backed optimization on a small set of skill packages. The goal is to improve future skill quality by producing candidate patches, rejected edits, before/after scores, and a clickable acceptance dashboard. / 1. Treat formal skill directories as read-only unless the user separately approves a specific patch.
+- `skillopt-sample-optimizer` | C:\Users\A\.codex\skills\skillopt-sample-optimizer | risk lines: description: Use when the user asks to run SkillOpt, skill self-cleaning, skill package optimization, 2h sample optimization, skill governance sample tests, candidate patches, before/after scoring, rejected edits, or safe optimization of Codex/H-drive skills without modifying formal skill packages. / Use this skill to run safe, evidence-backed optimization on a small set of skill packages. The goal is to improve future skill quality by producing candidate patches, rejected edits, before/after scores, and a clickable acceptance dashboard. / 1. Treat formal skill directories as read-only unless the user separately approves a specific patch.
+- `windows-sticky-software-removal` | C:\Users\A\.codex\skills\windows-sticky-software-removal | risk lines: 6. Early boot cleanup: scheduled task at startup or Session Manager pending delete. / - Level 1: ordinary app residue. Package removed, leftover folders/registry can be deleted after closing app. / - Level 2: shell/startup app. Explorer, tray app, browser, or updater revives it; remove startup/task/service and retry.
+- `codex-desktop-clean-reinstall-skill-recovery` | H:\AI\skills\codex-desktop-clean-reinstall-skill-recovery | risk lines: Use this skill for the controlled Windows workflow that preserves Codex skills, removes broken Codex/Codex++ state, reinstalls official Codex, checks the new environment, and restores only non-conflicting skills. / 1. **Protect before delete.** Before repair, check and report existence of `skills`, `.agents\skills`, `config.toml`, `auth.json`, `sessions`, and `session_index.jsonl`. Do not copy sensitive auth files to long-term backup unless the user explicitly asks. / 2. **Never overwrite the new official `.codex`.** Do not replace `auth.json`, `config.toml`, `installation_id`, `state_*.sqlite`, `logs_*.sqlite`, `goals_*.sqlite`, `memories_*.sqlite`, `plugins`, `sessions`, or `.system`.
+- `codex-desktop-clean-reinstall-skill-recovery` | C:\Users\A\.codex\skills\codex-desktop-clean-reinstall-skill-recovery | risk lines: Use this skill for the controlled Windows workflow that preserves Codex skills, removes broken Codex/Codex++ state, reinstalls official Codex, checks the new environment, and restores only non-conflicting skills. / 1. **Protect before delete.** Before repair, check and report existence of `skills`, `.agents\skills`, `config.toml`, `auth.json`, `sessions`, and `session_index.jsonl`. Do not copy sensitive auth files to long-term backup unless the user explicitly asks. / 2. **Never overwrite the new official `.codex`.** Do not replace `auth.json`, `config.toml`, `installation_id`, `state_*.sqlite`, `logs_*.sqlite`, `goals_*.sqlite`, `memories_*.sqlite`, `plugins`, `sessions`, or `.system`.
+- `windows-hermes-operations` | C:\Users\A\.codex\skills\windows-hermes-operations | risk lines: criterion is the background chain: `docker ps` stable, `open-webui-clean` up, / - Do not delete or modify `H:\Hermes_Windows_Native_014` unless the user explicitly asks for a targeted edit there. / - Do not delete or modify `C:\Users\A\.hermes` unless the user explicitly asks for a targeted edit there.
+- `codex-chaos-normalizer` | C:\Users\A\.codex\skills\codex-chaos-normalizer | risk lines: description: Use when Codex Desktop or a Windows coding workspace feels chaotic, idle CPU/disk stays high, tasks open blank or hang, Git scans thousands of files, plugins/runners pile up, or the user asks to make the system orderly and reduce useless background load without deleting work. / - Make reversible local changes only. Back up config before edits. Do not delete user files. / - Separate current-use work from idle background load. Stop or disable only unused, repeated, or stale components.
+- `ppt-showcase-video` | C:\Users\A\.codex\skills\ppt-showcase-video | risk lines: description: "Use when creating or updating PPT-style image showcase videos for Douyin, WeChat Moments, short-video posting, AI drawing promotion, learning-material ads, or image collection displays. Covers vertical 9:16 big-image layouts, stable no-shake slide transitions, background music selection/reuse, ffmpeg verification, and saving reusable source materials." / - Image treatment: fit most portrait images up to `1060x1888`; use a blurred cover background only as edge fill. /    `assets/calm-piano-background-music-free-orange-free-sounds.mp3`.
+- `video-production-and-editing-adaptive-skill` | C:\Users\A\.codex\skills\video-production-and-editing-adaptive-skill | risk lines: description: Use when the user asks for video production, video editing, trimming, packaging, subtitles, music replacement, phone/WeChat video delivery, reference-video analysis, AI-generated video post-processing, or turning a repeated video workflow into a reusable skill. Prefer mature existing routes, minimal tools, visible acceptance evidence, and do not overwrite older video skills. / Always route in this order: / Do not delete, overwrite, or replace older video skills. Reuse them as modules:
+- `video-production-and-editing-adaptive-skill` | H:\AI\skills\video-production-and-editing-adaptive-skill | risk lines: description: Use when the user asks for video production, video editing, trimming, packaging, subtitles, music replacement, phone/WeChat video delivery, reference-video analysis, AI-generated video post-processing, or turning a repeated video workflow into a reusable skill. Prefer mature existing routes, minimal tools, visible acceptance evidence, and do not overwrite older video skills. / Always route in this order: / Do not delete, overwrite, or replace older video skills. Reuse them as modules:
+- `playwright` | C:\Users\A\.codex\skills\playwright | risk lines: Drive a real browser from the terminal using `playwright-cli`. Prefer the bundled wrapper script so the CLI works even when it is not globally installed. / Once `npx` is present, proceed with the wrapper script. A global install of `playwright-cli` is optional. / If the user prefers a global install, this is also valid:
+- `plugin-creator` | C:\Users\A\.codex\skills\.system\plugin-creator | risk lines: # The generated folder and plugin.json name are always the same. / - Always creates `/<parent-plugin-directory>/<plugin-name>/.codex-plugin/plugin.json`. / - Outer folder name and `plugin.json` `"name"` are always the same normalized plugin name.
+- `skill-creator` | C:\Users\A\.codex\skills\.system\skill-creator | risk lines: 1. **Metadata (name + description)** - Always in context (~100 words) / - "I can imagine users asking for things like 'Remove the red-eye from this image' or 'Rotate this image'. Are there other ways you imagine this skill being used?" / When creating a new skill from scratch, always run the `init_skill.py` script. The script conveniently generates a new template skill directory that automatically includes everything a skill requires, making the skill creation process much more efficient and reliable.
+- `super-tool-orchestrator` | C:\Users\A\.codex\skills\super-tool-orchestrator | risk lines: - direct installation, copying, adaptation, merge, or overwrite of external skills without audit and user approval. / 6. Repair Loop is mandatory for rejected claims. / 8. External skills such as `anthropic-agent-skills` are sources. Do not bulk-install or overwrite local skills without conflict audit and user approval.
+- `chatgpt-clipboard-bridge` | C:\Users\A\.codex\skills\chatgpt-clipboard-bridge | risk lines: - 榛樿鑷姩鎵ц锛屽彧鏈夐珮椋庨櫓鎵嶅仠銆?- Codex 涓嶆敼鍐?GPT: do not rewrite, translate, summarize, optimize, add steps, or delete steps. / - If extracted steps add, remove, or change GPT actions, STOP. / - Level 0: only writes under `output/`, no deletes, no existing-code changes, no unknown commands. Execute automatically.
+- `windows-background-task-noise-control` | C:\Users\A\.codex\skills\windows-background-task-noise-control | risk lines: name: windows-background-task-noise-control / description: Diagnose and quiet Windows startup/background interruptions. Use when the user reports blue PowerShell/cmd windows, blank console windows, beeps, windows that pop up then disappear, boot-time blue screens/windows, scheduled tasks interrupting work, or asks to make Codex/AI/Hermes/Knowledge Brain/CodeGraph maintenance jobs run silently while preserving useful visible widgets such as the Codex quota panel. / # Windows Background Task Noise Control
+- `aios-skill-self-purification-governance` | H:\AI\skills\aios-skill-self-purification-governance | risk lines: description: Use when running or installing AI Company OS / AIOS skill self-purification governance, SkillOpt reviews, weekly 30min skill checks, monthly 2H sample optimization, quarterly 4H governance, runtime-gated skill audits, accepted/rejected/needs-human patch buffers, do-not-auto-optimize policies, or any semi-automatic skill cleanup that must not auto-merge formal skills. / 4. Preserve `ACCEPTED_CANDIDATE`, `REJECTED_EDIT`, and `NEEDS_HUMAN_REVIEW`. / 7. Never allow unattended auto-merge into formal skills.
+- `codex-old-history-recovery` | C:\Users\A\.codex\skills\codex-old-history-recovery | risk lines: - Never delete, move, overwrite, clean caches, reinstall, restore UI, or modify account/config files unless the user explicitly requests a separate high-risk task. / Always load workspace `AGENTS.md` and `yesterday-replay-controlled-coding` first if the workspace requires it. / - explicit safety statement: no delete, no overwrite, no reinstall, no cache cleanup, no `auth.json` change, no config change.
+- `comfyui-aaki-v3-video-baseline` | H:\AI\skills\comfyui-aaki-v3-video-baseline | risk lines: - unnatural desk, wall, skin, fabric, product, or background texture / 4. Paste an explicit edit/generation prompt with remove/preserve constraints. / - Cloudflare blocks CDP; always use screenshot route (pyautogui + mss + vision)
+- `openai-docs` | C:\Users\A\.codex\skills\openai-docs | risk lines: Provide authoritative, current guidance from OpenAI developer docs using the developers.openai.com MCP server. Always prioritize the developer docs MCP tools over web.run for OpenAI-related questions. This skill may also load targeted files from `references/` for model-selection and GPT-5.4-specific requests, but current OpenAI docs remain authoritative. Only if the MCP server is installed and returns no meaningful results should you fall back to web search. / 7. For GPT-5.4 upgrade reviews, always make the per-usage-site output explicit: target model, starting reasoning recommendation, `phase` assessment when relevant, prompt blocks, and compatibility status. / - Reference files are convenience guides only; for volatile guidance such as recommended models, upgrade instructions, or prompting advice, current OpenAI docs always win.
+- `spreadsheet` | C:\Users\A\.codex\skills\spreadsheet | risk lines: IMPORTANT: System and user instructions always take precedence. / - Use `tmp/spreadsheets/` for intermediate files; delete them when done. / - Never overwrite established formatting unless the user explicitly asks for a redesign.
+- `acpx` | C:\Users\A\.codex\skills\acpx | risk lines: - Stop before installs, global PATH changes, account login, secrets, payment setup, background services, or production routing changes. / 6. After any trial, record PASS/FAIL evidence and whether ACP/acpx should remain a candidate, be adapted, or be rejected. / - FAIL: the route requires unreviewed install scripts, old OpenClaw paths, broad background services, or unclear credential handling.
+- `ai-company-design-systems` | H:\AI\skills\ai-company-design-systems | risk lines: - app background, / - subtle background, / - Do not publish, send, pay, delete, or modify accounts without explicit task scope and approval.
+- `codex-reinstall-skill-recovery` | C:\Users\A\.codex\skills\codex-reinstall-skill-recovery | risk lines: Use this skill to safely reattach saved Codex skills after reinstalling Codex Desktop. The default posture is conservative: inspect first, preserve official new files, back up current state before copying, and never overwrite same-name skill directories unless the user explicitly asks after seeing a diff. /    - Do not delete, move, or modify the backup. / Always report:
+- `codex-thread-visibility-repair` | H:\AI\skills\codex-thread-visibility-repair\codex-thread-visibility-repair | risk lines: Use this skill before direct database edits. The common failure is not always / - Always back up `state_5.sqlite`, `state_5.sqlite-wal`, / - Never delete archived rollout files. Copy back to active sessions instead.
+- `codex-thread-visibility-repair` | C:\Users\A\.codex\skills\codex-thread-visibility-repair | risk lines: Use this skill before direct database edits. The common failure is not always / - Always back up `state_5.sqlite`, `state_5.sqlite-wal`, / - Never delete archived rollout files. Copy back to active sessions instead.
+- `codex-thread-visibility-repair` | H:\AI\skills\codex-thread-visibility-repair | risk lines: Use this skill before direct database edits. The common failure is not always / - Always back up `state_5.sqlite`, `state_5.sqlite-wal`, / - Never delete archived rollout files. Copy back to active sessions instead.
+- `obsidian-ai-company-os.OLD-20260615-191220` | C:\Users\A\.codex\skills\obsidian-ai-company-os.OLD-20260615-191220 | risk lines: - Never overwrite official target images or prior evidence files. Add new evidence with new filenames. / - Destroy or overwrite V3. / - Delete or overwrite prior evidence.
+- `security-best-practices` | C:\Users\A\.codex\skills\security-best-practices | risk lines: Always consider if the changes you want to make will impact the functionality of the user's code. Consider if the changes may cause regressions with how the project works currently. It is often the case that insecure code is relied on for other reasons (and this is why insecure code lives on for so long). Avoid breaking the user's project as this may make them not want to apply security fixes in the future. It is better to write a well thought out, well informed by the rest of the project, fix, then a quick slapdash change. / Always follow any normal change or commit flow the user has configured. If making git commits, provide clear commit messages explaining this is to align with security best practices. Try to avoid bunching a number of unrelated findings into a single commit. / Always follow any normal testing flows the user has configured (if any) to confirm that your changes are not introducing regressions. Consider the second order impacts the changes may have and inform the user before making them if there are any.
+- `07_screenshot_recognize_operate_browser` | H:\AI\skills\_complete_merged_skill_pack_20260607\07_screenshot_recognize_operate_browser | risk lines: description: "鎴浘璇嗗埆骞舵搷浣滄祻瑙堝櫒娉? Use when Codex needs to operate a browser or web page by taking screenshots, recognizing visible UI controls, performing one guarded browser action at a time, re-screenshoting, and verifying the result. Trigger for visual browser workflows, ChatGPT web send/copy loops, pages where DOM automation is unreliable, UI controls that must be identified from pixels, or any task that asks for screenshot-based browser operation. Do not use real desktop mouse or keyboard input unless the user explicitly allows it for that task." / - Never click voice, microphone, sound-wave, stop, end, close-account, delete,
+- `chatgpt-visible-send-bridge` | H:\AI\skills\chatgpt-visible-send-bridge | risk lines: 6. After release, always click the visible ChatGPT page, drop zone, or / Do not remove a checkpoint until prior runs prove that the skipped actions are
+- `chatgpt-visible-send-bridge` | C:\Users\A\.codex\skills\chatgpt-visible-send-bridge | risk lines: 6. After release, always click the visible ChatGPT page, drop zone, or / Do not remove a checkpoint until prior runs prove that the skipped actions are
+- `codex-lite-power-upgrade` | C:\Users\A\.codex\skills\codex-lite-power-upgrade | risk lines: 4. Preserve GPT-5.5 default model, Superpowers, global/project `AGENTS.md`, DeepSeek fallback routes, Hermes/OpenWebUI, and Xiaolongxia unless the user explicitly asks to change them. / | G05 | Keep global `AGENTS.md` short, strong, and rollback-safe | default model or safety rules are broken |
+- `codex-pasted-text-attachment-repair` | C:\Users\A\.codex\skills\codex-pasted-text-attachment-repair | risk lines: - `auto-longtext-fileclip.ps1`: background converter. / `-Stop` must disable the watchdog and remove the Startup shortcut; otherwise the watchdog will restart the converter after the user turns it off. `-Start` reinstalls the runtime scripts, Startup shortcut, watchdog task, and converter process.
+- `codex-video-to-usable-skill-loop` | C:\Users\A\.codex\skills\codex-video-to-usable-skill-loop | risk lines: 4. Write the reusable assets into the most relevant skill or project workspace. Do not overwrite existing `SKILL.md`, `AGENTS.md`, or `README.md` without a timestamped backup. / - AGENTS.md patch draft, not direct unsafe overwrite
+- `codex-video-to-usable-skill-loop` | H:\AI\skills\codex-video-to-usable-skill-loop | risk lines: 4. Write the reusable assets into the most relevant skill or project workspace. Do not overwrite existing `SKILL.md`, `AGENTS.md`, or `README.md` without a timestamped backup. / - AGENTS.md patch draft, not direct unsafe overwrite
+- `complete-claude-style-replica-flow` | C:\Users\A\.codex\skills\complete-claude-style-replica-flow | risk lines: - 淇濈暀 12 灞傚師濮嬭嫳鏂囧悕銆佷腑鏂囧悕銆侀『搴忋€佹牳蹇冧綔鐢ㄣ€佽竟鐣屾潯浠躲€佽緭鍏ヨ緭鍑恒€佸墠鍚庡眰鍏崇郴鍜屽け璐ユ潯浠躲€?- 涓嶈鎶?12 Layer 鏀瑰啓鎴愭櫘閫?12 姝ャ€?- 涓嶈鎶?`Control Plane / Orchestrator`銆乣Execution Plane`銆乣Verification Plane`銆乣Repair Loop`銆乣Compact / Handoff`銆乣Final Acceptance` 鏀瑰悕銆佸悎骞躲€佸帇缂╂垨閲嶈В閲娿€?- Execution Plane 鍙兘鎻愪氦 execution claims锛屼笉鑳?self-accept锛屼笉鑳藉甯?final PASS銆?- Verification Plane 鍙 claims銆佷骇鐗╁拰纭畾鎬ф鏌ョ粨鏋滐紝璐熻矗 accepted / rejected銆?- Repair Loop 蹇呴』澶勭悊 rejected claims锛屼笉鑳芥妸澶辫触鍖呰鎴?residual risk 鍚庣户缁?PASS銆?- Final Acceptance 蹇呴』鐢熸垚 `final-acceptance.md` 鍜?`final-acceptance.json`锛涙病鏈夎繖涓や釜浜х墿灏辨病鏈?final PASS銆? / 1. Load the detailed guide before drafting or auditing any task package.
+- `docker-management` | C:\Users\A\.codex\skills\docker-management | risk lines: - Never delete containers, images, volumes, networks, bind-mounted data, databases, or caches without a reviewed manifest and explicit approval. / For cleanup, first produce a manifest listing exact objects and why they are safe to remove. Stop before deletion.
+- `find-skills` | C:\Users\A\.codex\skills\find-skills | risk lines: **Do not recommend a skill based solely on search results.** Always verify: / The `-g` flag installs globally (user-level) and `-y` skips confirmation prompts.
+- `hermes-telegram-persistent-bridge` | C:\Users\A\.codex\skills\hermes-telegram-persistent-bridge | risk lines: - Do not delete Telegram Desktop state unless the Desktop app itself is stuck / Always start here:
+- `hermes-telegram-persistent-bridge` | H:\AI\skills\hermes-telegram-persistent-bridge | risk lines: - Do not delete Telegram Desktop state unless the Desktop app itself is stuck / Always start here:
+- `long-coding-flow` | C:\Users\A\.codex\skills\long-coding-flow | risk lines: - Production config changes: Hermes, Codex global rules, Open WebUI, Cursor global settings. / - Long-lived background service or Windows scheduled task changes.
+- `new-api-local-deploy` | C:\Users\A\.codex\skills\new-api-local-deploy | risk lines: Always read `references/local-layout.md` before changing the deployment or answering from this skill. / - When the user asks to view the New API server, open it in real Google Chrome, not the Codex in-app browser. The in-app browser is acceptable only for background verification.
+- `openai-docs` | C:\Users\A\.codex\skills\.system\openai-docs | risk lines: - Global config or global guidance -> personal defaults across repos. / Split mixed-scope requests instead of forcing one answer. Example: "always do X, but only for this PR" defaults to prompt/thread context for the current run; use `AGENTS.md` or project config only if it should persist, hooks only for mechanical enforcement, and automations only for scheduled or follow-up work.
+- `pdf` | C:\Users\A\.codex\skills\pdf | risk lines: - Use `tmp/pdfs/` for intermediate files; delete when done. / - Keep intermediate files organized or remove them after final approval.
+- `pricing` | C:\Users\A\.codex\skills\pricing | risk lines: **Charge something. Always.** There is a massive difference between free and $1. Behavioral economist Dan Ariely calls it the "zero price effect" 鈥?people will line up for free brownies but the line disappears when you charge even 1 cent. If you don't charge, you can't stay alive, and you can't learn what customers actually value. / 5. **Free trials are table stakes.** Laura Roeder (MeetEdgar, Paperbell) notes that customers now expect free trials 鈥?they open six tabs and compare immediately. Offer trials, but always with a clear path to paid.
+- `screenshot-recognize-operate-browser` | C:\Users\A\.codex\skills\screenshot-recognize-operate-browser | risk lines: description: "鎴浘璇嗗埆骞舵搷浣滄祻瑙堝櫒娉? Use when Codex needs to operate a browser or web page by taking screenshots, recognizing visible UI controls, performing one guarded browser action at a time, re-screenshoting, and verifying the result. Trigger for visual browser workflows, ChatGPT web send/copy loops, pages where DOM automation is unreliable, UI controls that must be identified from pixels, or any task that asks for screenshot-based browser operation. Do not use real desktop mouse or keyboard input unless the user explicitly allows it for that task." / - Never click voice, microphone, sound-wave, stop, end, close-account, delete,
+- `universal-playwright-cli-browser-automation` | H:\AI\skills\universal-playwright-cli-browser-automation | risk lines: description: 通用 Playwright CLI 网页自动化技能包。适用于 Codex、Hermes 爱马仕、OpenClaw、小龙虾、Claude Code、Cursor、GitHub Copilot，以及其他能执行命令行的 AI Agent。用于浏览器网页打开、元素级定位、snapshot、ref 点击、表单填写、截图证据、网页测试、数据抓取。禁止用于验证码绕过、反检测、群发、私域骚扰、未授权发布、付款、购买、删除、Windows 原生桌面软件控制。 / - 付款、购买、退款、删除等高风险动作
+- `visual-proof-acceptance` | C:\Users\A\.codex\skills\visual-proof-acceptance | risk lines: GPT_REJECTED_NEEDS_REWORK / background, device, keyboard, UI, or stable environment is obviously deformed
+- `ai-learning-material-pack` | C:\Users\A\.codex\skills\ai-learning-material-pack | risk lines: - Keep the update path simple: replace failed links, add better videos, remove low-quality resources.
+- `ai-poster-video-publish-pipeline` | H:\AI\skills\ai-poster-video-publish-pipeline | risk lines: Read `AUDIO-GUIDE.md` before adding background music. The 2026-05-31 example in `examples/ai-promo-ppt-style-video-20260531` records the failure and correction:
+- `ai-video-replica-blender-codex-5s-baseline` | H:\AI\skills\ai-video-replica-blender-codex-5s-baseline | risk lines: 5. Build the `.blend` in background mode.
+- `chatgpt-screenshot-bridge` | C:\Users\A\.codex\skills\chatgpt-screenshot-bridge | risk lines: Real desktop mouse/keyboard input can affect the user's active session. In this workspace, the live bridge is globally pre-authorized for the narrow text-only GPT planning send/copy loop, so do not pause to ask again before using it. The bundled script defaults to allowing this bridge route; use `--disallow-real-input` only for dry safety checks that must not perform live desktop actions.
+- `chatgpt-screenshot-bridge` | H:\AI\skills\chatgpt-screenshot-bridge | risk lines: Real desktop mouse/keyboard input can affect the user's active session. In this workspace, the live bridge is globally pre-authorized for the narrow text-only GPT planning send/copy loop, so do not pause to ask again before using it. The bundled script defaults to allowing this bridge route; use `--disallow-real-input` only for dry safety checks that must not perform live desktop actions.
+- `claude-code-cursor-super-tool-predeploy` | C:\Users\A\.codex\skills\claude-code-cursor-super-tool-predeploy | risk lines: - Do not overwrite `.claude`, `.claude-code-router`, PowerShell profile, shortcuts, or provider environment variables without backups.
+- `codex-computer-use` | C:\Users\A\.codex\skills\codex-computer-use | risk lines: Before full repatch, tell the user it can stop Codex Desktop, remove the Store package, install a locally signed package, and change `SignatureKind` to `Developer`.
+- `codex-git-safety-checkpoint` | C:\Users\A\.codex\skills\codex-git-safety-checkpoint | risk lines: - Never delete Git history.
+- `codex-permission-policy` | C:\Users\A\.codex\skills\codex-permission-policy | risk lines: - delete or print `auth.json`, login state, tokens, cookies, sessions, passwords, or secrets;
+- `codex-quota-panel` | C:\Users\A\.codex\skills\codex-quota-panel | risk lines: Keep a tiny always-visible Windows panel for Codex quota:
+- `doc` | C:\Users\A\.codex\skills\doc | risk lines: - Use `tmp/docs/` for intermediate files; delete when done.
+- `ecc-staged-long-task-orchestration` | H:\AI\skills\ecc-staged-long-task-orchestration | risk lines: - Claude-style 12 Layer 涓嶆槸鏅€?12 姝ャ€?- 涓嶈兘鏀规垚鏅€?12 姝ャ€?- 涓嶈兘鏀瑰悕銆佷笉鑳藉帇缂┿€佷笉鑳介噸瑙ｉ噴銆?- 涓嶈兘鐢ㄢ€滅洰鏍囩‘璁?/ 鐜扮姸璇诲彇 / 椋庨櫓璇嗗埆 / 灏忔瀹炵幇 / 鍥炲綊楠岃瘉鈥濇浛浠ｅ師濮?12 灞傘€?- 姣忎釜闀夸换鍔″懡浠ゅ寘蹇呴』鏄惧紡鍐欏嚭 12 涓師濮嬭嫳鏂囧眰鍚嶃€佷腑鏂囧悕銆佺洰鐨勩€佽緭鍏ャ€佸姩浣溿€佷骇鐗┿€侀獙璇併€佸け璐ヨ繑鍥炪€佽瘉鎹矾寰勫拰鏈换鍔′腑鐨勫叿浣撳簲鐢ㄣ€?- Execution Plane 鍙兘 claim锛屼笉鑳?self-accept銆?- Verification Plane 璐熻矗 acceptance / rejection銆?- Repair Loop 澶勭悊 rejected claims銆?- Final Acceptance 鎵嶆槸鏈€缁?PASS 鏉冨▉锛涙病鏈?final acceptance锛屾病鏈?final PASS銆?- Codex 涓嶈兘鍙繑鍥炴枃浠跺す璺緞銆?
+- `first-customers` | C:\Users\A\.codex\skills\first-customers | risk lines: - Kickstarter says: "Support always begins with people you know"
+- `gh-fix-ci` | C:\Users\A\.codex\skills\gh-fix-ci | risk lines:        - If a field is rejected, rerun with the available fields reported by `gh`.
+- `grow-sustainably` | C:\Users\A\.codex\skills\grow-sustainably | risk lines: - The #1 fixed cost is always people
+- `hermes-014-restoration-ladder` | C:\Users\A\.codex\skills\hermes-014-restoration-ladder | risk lines:   engine can be running in the background; verify with `wsl -l -v`, `docker ps`,
+- `hermes-skill-migration-roi` | C:\Users\A\.codex\skills\hermes-skill-migration-roi | risk lines: 6. Stop before deletes, broad overwrites, installs, account actions, secrets, or cloud spend.
+- `inference-sh-cli` | C:\Users\A\.codex\skills\inference-sh-cli | risk lines: - Do not run `curl | shell`, unknown installers, global package installs, login commands, or deployment commands without explicit review.
+- `lambda-labs-gpu-cloud` | C:\Users\A\.codex\skills\lambda-labs-gpu-cloud | risk lines: - instance create/start/stop/delete
+- `loop-stage-acceptance` | C:\Users\A\.codex\skills\loop-stage-acceptance | risk lines: - every stage passed or was explicitly removed from scope by the user
+- `mvp` | C:\Users\A\.codex\skills\mvp | risk lines: Most apps on the internet are just **forms and lists** (CRUD: Create, Read, Update, Delete). Your MVP should be no more complex than that.
+- `one-person-ai-company-success-routes` | H:\AI\skills\one-person-ai-company-success-routes | risk lines: - Stop for Level 3 actions: destructive deletes, account/payment/security changes, secret exposure, unknown installers, or real external sends.
+- `playwright-interactive` | C:\Users\A\.codex\skills\playwright-interactive | risk lines: For local web debugging, keep the app running in a persistent TTY session. Do not rely on one-shot background commands from a short-lived shell.
+- `product-pm-planning-pack` | C:\Users\A\.codex\skills\product-pm-planning-pack | risk lines: For AI Company OS / Obsidian Knowledge OS projects, always consider:
+- `screenshot` | C:\Users\A\.codex\skills\screenshot | risk lines: - Always report the saved file path in the response.
+- `skill-evolution-loop` | C:\Users\A\.codex\skills\skill-evolution-loop | risk lines: Any task can be handled in two ways:
+- `skill-installer` | C:\Users\A\.codex\skills\.system\skill-installer | risk lines: - The skills at https://github.com/openai/skills/tree/main/skills/.system are preinstalled, so no need to help users install those. If they ask, just explain this. If they insist, you can download and overwrite.
+- `system-evolution` | C:\Users\A\.codex\skills\system-evolution | risk lines: 1. 涓嶇洿鎺ョ浉淇℃ā鍨嬩竴娆℃€у畬鎴愬ぇ浠诲姟锛屽厛鐢熸垚浠诲姟鍖呫€侀樁娈佃鍒掋€佹祴璇曞懡浠ゃ€佸仠姝㈡潯浠跺拰鍥炴粴璇存槑銆?2. 姣忎釜瀛愪换鍔℃帶鍒跺湪 30-90 鍒嗛挓锛岃姹傚啓 `execution-log`銆乣verification`銆乣handoff`銆乣next-actions`銆?3. Cursor + Claude Code + DeepSeek V4Pro 璐熻矗涓昏缂栬緫锛汣odex 璐熻矗浠诲姟鍖呫€侀獙璇併€佹姤鍛婂拰娌夋穩锛汬ermes 鍚庣画鍙帴鏀跺凡楠岃瘉娴佺▼銆?4. 浠讳綍璐﹀彿鎺堟潈銆丄PI key銆丆ursor Background Agents銆丟itHub App銆丆odex cloud 鎴栭暱鏈熷悗鍙颁换鍔￠兘蹇呴』鐢ㄦ埛鎵瑰噯銆?5. 姣忔绯荤粺杩涘寲杩愯閮界户缁悳绱㈡垚鐔熷叕寮€鏂规锛屽苟鎶婃湁鏁堟敼杩涘啓鍥?roadmap/source/state銆?
+- `ui-setting-actual-open-self-verify-loop` | C:\Users\A\.codex\skills\ui-setting-actual-open-self-verify-loop | risk lines: Use this skill for any task involving:
+
+## P1 Local rules that may be elevated globally
+
+- `chatgpt-screenshot-bridge` | H:\AI\skills\chatgpt-screenshot-bridge | inspect global/local boundary wording.
+- `chatgpt-screenshot-bridge` | C:\Users\A\.codex\skills\chatgpt-screenshot-bridge | inspect global/local boundary wording.
+- `codex-lite-power-upgrade` | C:\Users\A\.codex\skills\codex-lite-power-upgrade | inspect global/local boundary wording.
+- `imagegen` | C:\Users\A\.codex\skills\.system\imagegen | inspect global/local boundary wording.
+- `openai-docs` | C:\Users\A\.codex\skills\.system\openai-docs | inspect global/local boundary wording.
+- `super-tool-orchestrator` | C:\Users\A\.codex\skills\super-tool-orchestrator | inspect global/local boundary wording.
+
+## P1 Total-control trigger expansion candidates
+
+- `07_screenshot_recognize_operate_browser` | H:\AI\skills\_complete_merged_skill_pack_20260607\07_screenshot_recognize_operate_browser | inspect total-control or always-use wording.
+- `comfyui-aaki-v3-video-baseline` | H:\AI\skills\comfyui-aaki-v3-video-baseline | inspect total-control or always-use wording.
+- `complete-claude-style-replica-flow` | C:\Users\A\.codex\skills\complete-claude-style-replica-flow | inspect total-control or always-use wording.
+- `imagegen` | C:\Users\A\.codex\skills\.system\imagegen | inspect total-control or always-use wording.
+- `openai-docs` | C:\Users\A\.codex\skills\openai-docs | inspect total-control or always-use wording.
+- `screenshot-recognize-operate-browser` | C:\Users\A\.codex\skills\screenshot-recognize-operate-browser | inspect total-control or always-use wording.
+- `skill-creator` | C:\Users\A\.codex\skills\.system\skill-creator | inspect total-control or always-use wording.
+- `skill-evolution-loop` | C:\Users\A\.codex\skills\skill-evolution-loop | inspect total-control or always-use wording.
+- `ui-setting-actual-open-self-verify-loop` | C:\Users\A\.codex\skills\ui-setting-actual-open-self-verify-loop | inspect total-control or always-use wording.
+
+## P2 Missing acceptance or evidence page candidates
+
+- `07_screenshot_recognize_operate_browser` | H:\AI\skills\_complete_merged_skill_pack_20260607\07_screenshot_recognize_operate_browser | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `acpx` | C:\Users\A\.codex\skills\acpx | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `agent-browser` | C:\Users\A\.codex\skills\agent-browser | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `ai-company-design-systems` | H:\AI\skills\ai-company-design-systems | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `ai-company-evolving-revenue-portfolio` | H:\AI\skills\ai-company-evolving-revenue-portfolio | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `ai-company-long-task-orchestrator` | C:\Users\A\.codex\skills\ai-company-long-task-orchestrator | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `ai-learning-material-pack` | C:\Users\A\.codex\skills\ai-learning-material-pack | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `ai-poster-video-publish-pipeline-before-audio-case-20260531-2308` | H:\AI\skills\_backups\ai-poster-video-publish-pipeline-before-audio-case-20260531-2308 | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `ai-token-business` | C:\Users\A\.codex\skills\ai-token-business | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `bioinformatics` | C:\Users\A\.codex\skills\bioinformatics | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `chatgpt-cdp-browser` | C:\Users\A\.codex\skills\chatgpt-cdp-browser | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `chatgpt-clipboard-bridge` | C:\Users\A\.codex\skills\chatgpt-clipboard-bridge | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `chatgpt-screenshot-bridge` | C:\Users\A\.codex\skills\chatgpt-screenshot-bridge | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `chatgpt-screenshot-bridge` | H:\AI\skills\chatgpt-screenshot-bridge | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `chatgpt-visible-send-bridge` | H:\AI\skills\chatgpt-visible-send-bridge | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `chatgpt-visible-send-bridge` | C:\Users\A\.codex\skills\chatgpt-visible-send-bridge | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `claude-code-cursor-super-tool-predeploy` | C:\Users\A\.codex\skills\claude-code-cursor-super-tool-predeploy | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-chaos-normalizer` | C:\Users\A\.codex\skills\codex-chaos-normalizer | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-computer-use` | C:\Users\A\.codex\skills\codex-computer-use | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-deepseek-model-integration` | H:\AI\skills\codex-deepseek-model-integration | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-deepseek-v4pro-ccx-ccswitch-replay` | C:\Users\A\.codex\skills\codex-deepseek-v4pro-ccx-ccswitch-replay | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-edge-tts-voice-notify` | C:\Users\A\.codex\skills\codex-edge-tts-voice-notify | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-git-safety-checkpoint` | C:\Users\A\.codex\skills\codex-git-safety-checkpoint | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-old-history-recovery` | C:\Users\A\.codex\skills\codex-old-history-recovery | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-pasted-text-attachment-repair` | C:\Users\A\.codex\skills\codex-pasted-text-attachment-repair | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-permission-policy` | C:\Users\A\.codex\skills\codex-permission-policy | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-quota-panel` | C:\Users\A\.codex\skills\codex-quota-panel | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-reinstall-skill-recovery` | C:\Users\A\.codex\skills\codex-reinstall-skill-recovery | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-thread-visibility-repair` | H:\AI\skills\codex-thread-visibility-repair\codex-thread-visibility-repair | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-thread-visibility-repair` | H:\AI\skills\codex-thread-visibility-repair | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-thread-visibility-repair` | C:\Users\A\.codex\skills\codex-thread-visibility-repair | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-title-result-rename` | C:\Users\A\.codex\skills\codex-title-result-rename | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-video-to-usable-skill-loop` | H:\AI\skills\codex-video-to-usable-skill-loop | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `codex-video-to-usable-skill-loop` | C:\Users\A\.codex\skills\codex-video-to-usable-skill-loop | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `company-values` | C:\Users\A\.codex\skills\company-values | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `complete-claude-style-replica-flow` | C:\Users\A\.codex\skills\complete-claude-style-replica-flow | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `cursor-kilo-supertool-mature-stack` | C:\Users\A\.codex\skills\cursor-kilo-supertool-mature-stack | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `cursor-kilo-supertool-mature-stack` | H:\AI\skills\cursor-kilo-supertool-mature-stack | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `doc` | C:\Users\A\.codex\skills\doc | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `docker-management` | C:\Users\A\.codex\skills\docker-management | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `ecc-endurance-ladder-unified` | C:\Users\A\.codex\skills\ecc-endurance-ladder-unified | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `find-community` | C:\Users\A\.codex\skills\find-community | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `find-skills` | C:\Users\A\.codex\skills\find-skills | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `firecrawl-web-api` | H:\AI\skills\firecrawl-web-api | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `first-customers` | C:\Users\A\.codex\skills\first-customers | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `frontend-visual-taste-gate` | C:\Users\A\.codex\skills\frontend-visual-taste-gate | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `gh-address-comments` | C:\Users\A\.codex\skills\gh-address-comments | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `gh-fix-ci` | C:\Users\A\.codex\skills\gh-fix-ci | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `grow-sustainably` | C:\Users\A\.codex\skills\grow-sustainably | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `hermes-014-restoration-ladder` | C:\Users\A\.codex\skills\hermes-014-restoration-ladder | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `hermes-feishu-bot-bridge` | C:\Users\A\.codex\skills\hermes-feishu-bot-bridge | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `hermes-skill-migration-roi` | C:\Users\A\.codex\skills\hermes-skill-migration-roi | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `hermes-telegram-persistent-bridge` | H:\AI\skills\hermes-telegram-persistent-bridge | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `hermes-telegram-persistent-bridge` | C:\Users\A\.codex\skills\hermes-telegram-persistent-bridge | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `imagegen` | C:\Users\A\.codex\skills\.system\imagegen | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `inference-sh-cli` | C:\Users\A\.codex\skills\inference-sh-cli | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `lambda-labs-gpu-cloud` | C:\Users\A\.codex\skills\lambda-labs-gpu-cloud | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `long-coding-flow` | C:\Users\A\.codex\skills\long-coding-flow | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `loop-stage-acceptance` | C:\Users\A\.codex\skills\loop-stage-acceptance | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `marketing-plan` | C:\Users\A\.codex\skills\marketing-plan | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `minimalist-entrepreneur-10-skills` | H:\AI\skills\minimalist-entrepreneur-10-skills | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `minimalist-review` | C:\Users\A\.codex\skills\minimalist-review | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `modal-serverless-gpu` | C:\Users\A\.codex\skills\modal-serverless-gpu | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `mvp` | C:\Users\A\.codex\skills\mvp | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `new-api-local-deploy` | C:\Users\A\.codex\skills\new-api-local-deploy | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `obsidian-ai-company-os.OLD-20260615-191220` | C:\Users\A\.codex\skills\obsidian-ai-company-os.OLD-20260615-191220 | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `one-person-ai-company-success-routes` | H:\AI\skills\one-person-ai-company-success-routes | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `openai-docs` | C:\Users\A\.codex\skills\.system\openai-docs | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `openai-docs` | C:\Users\A\.codex\skills\openai-docs | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `pdf` | C:\Users\A\.codex\skills\pdf | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `playwright` | C:\Users\A\.codex\skills\playwright | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `playwright-cli` | C:\Users\A\.codex\skills\playwright-cli | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `playwright-interactive` | C:\Users\A\.codex\skills\playwright-interactive | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `plugin-creator` | C:\Users\A\.codex\skills\.system\plugin-creator | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `ppt-showcase-video` | C:\Users\A\.codex\skills\ppt-showcase-video | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `pricing` | C:\Users\A\.codex\skills\pricing | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `processize` | C:\Users\A\.codex\skills\processize | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `product-pm-planning-pack` | C:\Users\A\.codex\skills\product-pm-planning-pack | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `proxy-diagnose-repair` | C:\Users\A\.codex\skills\proxy-diagnose-repair | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `screenshot` | C:\Users\A\.codex\skills\screenshot | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `screenshot-browser-100-percent-route` | C:\Users\A\.codex\skills\screenshot-browser-100-percent-route | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `screenshot-recognize-operate-browser` | C:\Users\A\.codex\skills\screenshot-recognize-operate-browser | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `security-best-practices` | C:\Users\A\.codex\skills\security-best-practices | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `self-improvement` | C:\Users\A\.codex\skills\self-improvement | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `skill-creator` | C:\Users\A\.codex\skills\.system\skill-creator | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `skill-evolution-loop` | C:\Users\A\.codex\skills\skill-evolution-loop | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `skill-installer` | C:\Users\A\.codex\skills\.system\skill-installer | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `skillopt-sample-optimizer` | H:\AI\skills\skillopt-sample-optimizer | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `skillopt-sample-optimizer` | C:\Users\A\.codex\skills\skillopt-sample-optimizer | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `skillopt-sample-optimizer` | H:\AI\skills\skillopt-sample-optimizer\skillopt-sample-optimizer | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `skills-finder` | C:\Users\A\.codex\skills\skills-finder | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `spreadsheet` | C:\Users\A\.codex\skills\spreadsheet | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `stable-diffusion-image-generation` | C:\Users\A\.codex\skills\stable-diffusion-image-generation | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `system-evolution` | C:\Users\A\.codex\skills\system-evolution | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `trusted-browser-download-install` | C:\Users\A\.codex\skills\trusted-browser-download-install | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `ui-setting-actual-open-self-verify-loop` | C:\Users\A\.codex\skills\ui-setting-actual-open-self-verify-loop | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `universal-playwright-cli-browser-automation` | H:\AI\skills\universal-playwright-cli-browser-automation | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `validate-idea` | C:\Users\A\.codex\skills\validate-idea | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `virtual-mouse-keyboard-demo` | C:\Users\A\.codex\skills\virtual-mouse-keyboard-demo | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `visual-proof-acceptance` | C:\Users\A\.codex\skills\visual-proof-acceptance | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `wechat-screenshot-capture` | H:\AI\skills\wechat-screenshot-capture | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `weekly-project-health-check` | C:\Users\A\.codex\skills\weekly-project-health-check | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `windows-background-task-noise-control` | C:\Users\A\.codex\skills\windows-background-task-noise-control | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `windows-hermes-operations` | C:\Users\A\.codex\skills\windows-hermes-operations | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `windows-sticky-software-removal` | C:\Users\A\.codex\skills\windows-sticky-software-removal | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+- `yesterday-replay-controlled-coding` | C:\Users\A\.codex\skills\yesterday-replay-controlled-coding | no acceptance/gate/evidence-like md file found in sampled root/subdirs.
+
+## P2 Rejected-edit buffer stale/missing candidates
+
+- `acpx` | C:\Users\A\.codex\skills\acpx | mentions rejected/buffer/failure review but no matching buffer file found.
+- `complete-claude-style-replica-flow` | C:\Users\A\.codex\skills\complete-claude-style-replica-flow | mentions rejected/buffer/failure review but no matching buffer file found.
+- `gh-fix-ci` | C:\Users\A\.codex\skills\gh-fix-ci | mentions rejected/buffer/failure review but no matching buffer file found.
+- `skillopt-sample-optimizer` | H:\AI\skills\skillopt-sample-optimizer | mentions rejected/buffer/failure review but no matching buffer file found.
+- `skillopt-sample-optimizer` | H:\AI\skills\skillopt-sample-optimizer\skillopt-sample-optimizer | mentions rejected/buffer/failure review but no matching buffer file found.
+- `skillopt-sample-optimizer` | C:\Users\A\.codex\skills\skillopt-sample-optimizer | mentions rejected/buffer/failure review but no matching buffer file found.
+- `super-tool-orchestrator` | C:\Users\A\.codex\skills\super-tool-orchestrator | mentions rejected/buffer/failure review but no matching buffer file found.
+- `visual-proof-acceptance` | C:\Users\A\.codex\skills\visual-proof-acceptance | mentions rejected/buffer/failure review but no matching buffer file found.
+
+## P3 Failure review buffers found and should be preserved
+
+- `_backup_ultrafusion-v5-before-repair_20260617-003219` | C:\Users\A\.codex\skills\_backup_ultrafusion-v5-before-repair_20260617-003219 | preserve: C:\Users\A\.codex\skills\_backup_ultrafusion-v5-before-repair_20260617-003219\35-MODEL-ROSTER\Model_Failure_And_Skip_Rules_v1.0.md
+- `_backup_ultrafusion-v5-before-repair_20260617-003219` | H:\AI\skills\_backup_ultrafusion-v5-before-repair_20260617-003219 | preserve: H:\AI\skills\_backup_ultrafusion-v5-before-repair_20260617-003219\35-MODEL-ROSTER\Model_Failure_And_Skip_Rules_v1.0.md
+- `ai-company-evolving-revenue-portfolio` | H:\AI\skills\ai-company-evolving-revenue-portfolio | preserve: H:\AI\skills\ai-company-evolving-revenue-portfolio\POLSIA_USER_FEEDBACK_AND_FAILURES.md
+- `aios-skill-self-purification-governance` | H:\AI\skills\aios-skill-self-purification-governance | preserve: H:\AI\skills\aios-skill-self-purification-governance\PATCH-BUFFER-STANDARD.md; H:\AI\skills\aios-skill-self-purification-governance\POST-PROJECT-30MIN-RETROSPECTIVE.md
+- `ai-video-replica-blender-codex-5s-baseline` | H:\AI\skills\ai-video-replica-blender-codex-5s-baseline | preserve: H:\AI\skills\ai-video-replica-blender-codex-5s-baseline\r1-mother-plate-replica\FAILURE-PATTERN-CATALOG.md
+- `codex-quota-panel` | C:\Users\A\.codex\skills\codex-quota-panel | preserve: C:\Users\A\.codex\skills\codex-quota-panel\references\failure-review.md
+- `codex-video-to-usable-skill-loop` | H:\AI\skills\codex-video-to-usable-skill-loop | preserve: H:\AI\skills\codex-video-to-usable-skill-loop\templates\FAILURE-REVIEW-TEMPLATE.md
+- `codex-video-to-usable-skill-loop` | C:\Users\A\.codex\skills\codex-video-to-usable-skill-loop | preserve: C:\Users\A\.codex\skills\codex-video-to-usable-skill-loop\templates\FAILURE-REVIEW-TEMPLATE.md
+- `cursor-kilo-supertool-mature-stack` | H:\AI\skills\cursor-kilo-supertool-mature-stack | preserve: H:\AI\skills\cursor-kilo-supertool-mature-stack\references\FAILURE-MODES.md
+- `cursor-kilo-supertool-mature-stack` | C:\Users\A\.codex\skills\cursor-kilo-supertool-mature-stack | preserve: C:\Users\A\.codex\skills\cursor-kilo-supertool-mature-stack\references\FAILURE-MODES.md
+- `ecc-endurance-ladder-unified` | H:\AI\skills\ecc-endurance-ladder-unified | preserve: H:\AI\skills\ecc-endurance-ladder-unified\FAILURE-PATTERN-CATALOG.md
+- `ecc-skill-package-governance-evolution` | H:\AI\skills\ecc-skill-package-governance-evolution | preserve: H:\AI\skills\ecc-skill-package-governance-evolution\FAILURE-PATTERN-CATALOG.md
+- `ecc-staged-long-task-orchestration` | H:\AI\skills\ecc-staged-long-task-orchestration | preserve: H:\AI\skills\ecc-staged-long-task-orchestration\FAILURE-HISTORY-20260528.md; H:\AI\skills\ecc-staged-long-task-orchestration\FAILURE-HISTORY-20260613-T8H-RECOVERY-MODE.md
+- `ecc-staged-long-task-orchestration.backup-20260528-134221` | H:\AI\skills\ecc-staged-long-task-orchestration.backup-20260528-134221 | preserve: H:\AI\skills\ecc-staged-long-task-orchestration.backup-20260528-134221\FAILURE-HISTORY-20260528.md
+- `ultrafusion-low-cost-multi-model-extreme-fusion` | C:\Users\A\.codex\skills\ultrafusion-low-cost-multi-model-extreme-fusion | preserve: C:\Users\A\.codex\skills\ultrafusion-low-cost-multi-model-extreme-fusion\35-MODEL-ROSTER\Model_Failure_And_Skip_Rules_v1.0.md
+- `ultrafusion-low-cost-multi-model-extreme-fusion` | H:\AI\skills\ultrafusion-low-cost-multi-model-extreme-fusion | preserve: H:\AI\skills\ultrafusion-low-cost-multi-model-extreme-fusion\35-MODEL-ROSTER\Model_Failure_And_Skip_Rules_v1.0.md

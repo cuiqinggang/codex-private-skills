@@ -1,0 +1,260 @@
+# ChatGPT Web Trinity Bridge
+
+This reference defines the reusable ChatGPT web bridge for the local video
+workflow.
+
+It has three branches:
+
+```text
+text  -> send prompt, copy answer
+image -> upload/paste images, request generation or repair, save returned files
+video -> upload video, request analysis or generation test, save answer/results
+```
+
+## Status
+
+- Text bridge: mature. Use the existing `chatgpt-screenshot-bridge` text
+  transport when a visible logged-in ChatGPT page is safe.
+- Image bridge: proven manually. Package it as the formal production image
+  generation and repair route for this video workflow.
+- Video bridge: not yet accepted. Test it in a narrow evidence-only gate before
+  using any output as production video evidence.
+
+## Hard Boundary
+
+For this video workflow, do not call Codex built-in image generation. Do not use
+it for preview, fallback, draft, candidate frame, clean plate, keyframe, source
+frame, or final repair.
+
+Formal image generation and repair must use ChatGPT web official image tools
+through a visible browser route with saved evidence.
+
+## Common Evidence Layout
+
+Create one run folder per bridge call:
+
+```text
+<shot_or_gate_folder>/chatgpt_web_bridge/<YYYYMMDD-HHMMSS>_<branch>_<purpose>/
+```
+
+Recommended files:
+
+```text
+input_manifest.json
+prompt.md
+state_before.png
+state_attached.png
+state_sent.png
+state_result.png
+result_raw.md
+result_manifest.json
+local_outputs/
+self_check.md
+```
+
+For image or video uploads, also save source copies or stable references in:
+
+```text
+inputs/
+```
+
+Never treat a web result as accepted without a local saved output and a
+`self_check.md` PASS/FAIL note.
+
+## Text Branch
+
+Use for planning, prompt drafting, troubleshooting, shot notes, and analysis
+that returns text.
+
+Route:
+
+```text
+visible logged-in ChatGPT page
+-> paste prompt through screenshot bridge
+-> require safe send control
+-> wait for completion
+-> copy latest answer
+-> verify copied text is not the sentinel or submitted prompt
+-> save result_raw.md and result_manifest.json
+```
+
+Required failure states:
+
+```text
+TEXT_BLOCKED_LOGIN_OR_CAPTCHA
+TEXT_BLOCKED_ACCOUNT_OR_PAYMENT
+TEXT_FAIL_NO_SAFE_SEND_BUTTON
+TEXT_FAIL_COPY_SENTINEL_UNCHANGED
+TEXT_FAIL_EMPTY_OR_WRONG_ANSWER
+TEXT_PASS
+```
+
+## Image Branch
+
+Use for production image generation, image repair, failed-frame repair, clean
+plates, texture references, keyframe replacement, and source frames.
+
+Batch rule:
+
+```text
+Maximum formal batch size: 10 images.
+```
+
+If the web UI shows a lower current upload or generation limit, obey the lower
+visible limit. Split larger sets into:
+
+```text
+batch_01
+batch_02
+batch_03
+```
+
+Route:
+
+```text
+1. Put exact source images in inputs/.
+2. Write prompt.md with preserve/remove constraints and output naming intent.
+3. Focus the logged-in ChatGPT web page.
+4. Upload or paste all images for the current batch.
+5. Screenshot-confirm every required thumbnail is attached.
+6. Send only after the attachment screenshot is saved.
+7. Wait for generated or edited image results.
+8. Save result screenshots.
+9. Download, crop, or screenshot-save returned images into local_outputs/.
+10. Write result_manifest.json with source image -> returned file mapping.
+11. Write self_check.md with still-image PASS/FAIL and next video use.
+```
+
+Image prompt must preserve required invariants unless the user explicitly asks
+to change them:
+
+```text
+camera angle
+subject identity
+subject pose
+foreground object geometry
+phone/keyboard/device geometry
+lighting and shadows
+scene composition
+```
+
+Required failure states:
+
+```text
+IMAGE_BLOCKED_LOGIN_OR_CAPTCHA
+IMAGE_BLOCKED_ACCOUNT_OR_PAYMENT
+IMAGE_FAIL_TOO_MANY_FILES
+IMAGE_FAIL_ATTACHMENT_NOT_VISIBLE
+IMAGE_FAIL_NO_SAFE_SEND_BUTTON
+IMAGE_FAIL_NO_GENERATED_IMAGE
+IMAGE_FAIL_SAVE_OUTPUT
+IMAGE_FAIL_OUTPUT_WORSE_THAN_SOURCE
+IMAGE_PASS_READY_FOR_VIDEO_USE
+```
+
+Acceptance rule:
+
+```text
+An image branch pass means the still image is good enough to enter the video
+pipeline. It does not mean the video passed.
+```
+
+If video assembly creates dark spots, flicker, pasted texture, or geometry
+corruption from a visually strong ChatGPT web image, keep the good image and
+repair the video assembly method: more keyframes, direct replacement, tighter
+masks, alignment, or interpolation.
+
+## Video Branch
+
+Use only as a controlled test branch until accepted. The initial goal is to
+learn what the current ChatGPT web UI can reliably do with video inputs.
+
+Allowed first tests:
+
+```text
+video upload and text analysis
+video artifact diagnosis
+shot repair suggestions
+prompt generation from a local video
+small generated-output experiment only if the UI explicitly supports it
+```
+
+Do not replace the local Wan2.2/Remotion video pipeline with ChatGPT web video
+output until a separate acceptance report proves repeatability and quality.
+
+Route:
+
+```text
+1. Put the exact test video in inputs/.
+2. Write prompt.md with one narrow request.
+3. Focus the logged-in ChatGPT web page.
+4. Upload the video.
+5. Screenshot-confirm video attachment is visible.
+6. Send only after attachment evidence is saved.
+7. Wait for text advice, analysis, or any generated result.
+8. Save result screenshots and copied text if available.
+9. Download or screen-save any web output only when the UI exposes it safely.
+10. Write result_manifest.json and self_check.md.
+```
+
+Required failure states:
+
+```text
+VIDEO_BLOCKED_LOGIN_OR_CAPTCHA
+VIDEO_BLOCKED_ACCOUNT_OR_PAYMENT
+VIDEO_FAIL_UPLOAD_REJECTED
+VIDEO_FAIL_ATTACHMENT_NOT_VISIBLE
+VIDEO_FAIL_NO_SAFE_SEND_BUTTON
+VIDEO_FAIL_NO_USABLE_ANALYSIS
+VIDEO_FAIL_OUTPUT_NOT_DOWNLOADABLE
+VIDEO_PASS_ANALYSIS_ONLY
+VIDEO_PASS_OUTPUT_TEST_ONLY
+```
+
+Video branch acceptance requires at least:
+
+```text
+upload evidence
+sent prompt evidence
+result evidence
+local saved text or output
+self_check.md
+one repeat run with the same file class
+```
+
+## Stop Conditions
+
+Stop before acting if ChatGPT web shows:
+
+```text
+login
+captcha
+payment
+account or security prompt
+privacy-sensitive form
+unknown destructive action
+```
+
+Stop instead of guessing if:
+
+```text
+the safe send button is not visible
+the attachment is not visible
+the UI shows a lower limit than the requested batch
+the returned output cannot be saved locally
+the task would require using Codex built-in image generation
+```
+
+## Completion Checklist
+
+A bridge run is complete only when these are true:
+
+```text
+inputs are recorded
+prompt is saved
+screenshots prove the browser state
+outputs are saved locally or the failure is recorded
+result_manifest.json exists
+self_check.md states PASS or FAIL
+the next pipeline action is named
+```

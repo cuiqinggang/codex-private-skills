@@ -1,0 +1,140 @@
+# ChatGPT Web Image Repair Video Branch
+
+This reference is part of the local Aaki ComfyUI video baseline.
+
+## Purpose
+
+Video generation often fails because a still image, keyframe, clean plate, mask,
+or texture reference is bad. In that case, the correct repair is not only to
+rerun the video model. First repair the still image with the ChatGPT web
+official image tool, then feed the repaired image back into the video pipeline.
+
+Production preference:
+
+```text
+ChatGPT web official image tool is required for production images
+Codex Desktop built-in image tool is forbidden for this video workflow
+```
+
+Any keyframe, clean plate, texture reference, source frame, or repaired still
+that will enter the formal video pipeline must come from ChatGPT web official
+image generation/editing or another explicitly approved production image
+workflow. Codex Desktop built-in image generation must not be called for
+preview, fallback, drafts, temporary candidates, or formal assets.
+
+Foundation rule:
+
+```text
+Good images are the video foundation. Once a ChatGPT web repaired/generated
+image is visually better and passes still-image review, build the next video
+from that image. If the video fails, repair or restart the video construction
+method instead of downgrading the image source.
+```
+
+## Required Loop
+
+```text
+failed video/contact sheet
+-> locate bad frame or bad input image
+-> ChatGPT web image repair
+-> still-image self-check
+-> use repaired image as keyframe replacement / clean plate / source frame
+-> render new video candidate
+-> ffprobe + contact sheet + visual self-check
+```
+
+## What ChatGPT Web Image Repair May Produce
+
+- repaired key image
+- repaired clean plate
+- repaired texture reference
+- repaired mask target
+- repaired frame used as a video inpainting guide
+- before/after evidence for the next render attempt
+
+## ChatGPT Web Image Tool Route
+
+Use the logged-in ChatGPT web image tool when a frame/key image needs serious
+visual repair and the user has provided the exact local file and destination
+intent.
+
+For reusable text/image/video bridge rules, evidence layout, batch handling,
+and failure-state names, also read:
+
+```text
+chatgpt-web-trinity-bridge.md
+```
+
+```text
+focus logged-in ChatGPT web
+-> upload/paste exact failed frame
+-> screenshot-confirm thumbnail attached
+-> send precise edit prompt
+-> wait for generated image
+-> download/crop/save returned image locally
+-> rerender video with direct frame replacement, tight masks, or multiple
+   repaired keyframes
+```
+
+This route must be screenshot-verified:
+
+- screenshot before upload
+- screenshot after file thumbnail appears
+- screenshot after send
+- screenshot of generated image
+- saved local returned image
+- contact sheet after video rerender
+
+Required saved files:
+
+```text
+chatgpt_web_upload.png
+chatgpt_web_prompt.md
+chatgpt_web_generated_result.png
+chatgpt_web_saved_reference.png
+candidate_video.mp4
+candidate_contact_sheet.jpg
+self_check.md
+```
+
+## Batch Size Rule
+
+Use at most 10 images in one ChatGPT web image generation/editing batch.
+
+```text
+batch_01: frames 01-10
+batch_02: frames 11-20
+batch_03: frames 21-30
+```
+
+If the ChatGPT web UI shows a lower current limit, obey that lower visible
+limit. Do not silently exceed 10 images in one formal request.
+
+## Hard Rules
+
+- Do not accept a repaired still image as a passed video.
+- Do not use GPT image repair to change the required camera angle, subject pose,
+  object identity, or stable scene geometry unless the task explicitly asks.
+- Do not hide a video failure by inserting one pretty frame that causes flicker.
+- Always validate the resulting video after the repaired image is used.
+- If a ChatGPT web repaired still is visually strong, preserve it as the better
+  source and foundation. If the video pass creates artifacts, repair or restart
+  the video construction method
+  instead of reverting to old damaged frames.
+- For motion sequences, generate the small set of needed keyframes with ChatGPT
+  web and interpolate/assemble them, instead of trying to stretch one still over
+  the whole video.
+
+## Recommended Evidence
+
+Save these when practical:
+
+```text
+gpt_repair/source_frame.png
+gpt_repair/repaired_frame.png
+gpt_repair/prompt.md
+gpt_repair/before_after_compare.jpg
+candidate_video.mp4
+candidate_contact_sheet.jpg
+self_check.md
+```

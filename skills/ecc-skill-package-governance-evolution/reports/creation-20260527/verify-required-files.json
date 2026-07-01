@@ -1,0 +1,50 @@
+{
+  "script": "verify-required-files",
+  "status": "PASS",
+  "checks": [
+    {
+      "file": "SKILL.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "exists": true
+    },
+    {
+      "file": "RUNBOOK.md",
+      "exists": true
+    },
+    {
+      "file": "SOURCE-OF-TRUTH-MAP.md",
+      "exists": true
+    },
+    {
+      "file": "CONTEXT-BUDGET-RULES.md",
+      "exists": true
+    },
+    {
+      "file": "SCRIPT-VERIFICATION-RULES.md",
+      "exists": true
+    },
+    {
+      "file": "GOVERNANCE-EVOLUTION-METHOD.md",
+      "exists": true
+    },
+    {
+      "file": "MATURE-REPLAY-METHOD.md",
+      "exists": true
+    },
+    {
+      "file": "FAILURE-PATTERN-CATALOG.md",
+      "exists": true
+    },
+    {
+      "file": "GLOSSARY-ZH.md",
+      "exists": true
+    },
+    {
+      "file": "MANIFEST.md",
+      "exists": true
+    }
+  ]
+}

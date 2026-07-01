@@ -1,0 +1,72 @@
+﻿{
+    "task_id":  "AIOS_SKILL_SELF_PURIFICATION_WEEKLY_60MIN_LIGHT_CHECK",
+    "automation_id":  "aios-30min",
+    "started_at":  "2026-06-21T21:12:56.8047555+08:00",
+    "ended_at":  "2026-06-21T22:12:59.2765149+08:00",
+    "elapsed_minutes":  60.04,
+    "minimum_elapsed_minutes":  60,
+    "checkpoints":  [
+                        {
+                            "name":  "start",
+                            "at":  "2026-06-21T21:12:56.8207553+08:00",
+                            "elapsed_minutes":  0,
+                            "note":  "Clean 60min run started after two aborted draft scanner runs; shadow-only mode active."
+                        },
+                        {
+                            "name":  "scan-complete",
+                            "at":  "2026-06-21T21:14:31.9423293+08:00",
+                            "elapsed_minutes":  1.59,
+                            "note":  "Comparative scan complete: 129 skills, 120 trigger pairs, 82 risk candidates."
+                        },
+                        {
+                            "name":  "15min",
+                            "at":  "2026-06-21T21:28:13.8525658+08:00",
+                            "elapsed_minutes":  15.28,
+                            "note":  "15min checkpoint: issue/candidate/rejected/human-review drafts present."
+                        },
+                        {
+                            "name":  "30min",
+                            "at":  "2026-06-21T21:43:14.2778292+08:00",
+                            "elapsed_minutes":  30.29,
+                            "note":  "30min checkpoint: formal files still untouched; review window continuing."
+                        },
+                        {
+                            "name":  "45min",
+                            "at":  "2026-06-21T21:58:15.0741904+08:00",
+                            "elapsed_minutes":  45.3,
+                            "note":  "45min checkpoint: evidence complete so far; PASS remains gated until 60min."
+                        },
+                        {
+                            "name":  "final",
+                            "at":  "2026-06-21T22:12:59.1368831+08:00",
+                            "elapsed_minutes":  60.04,
+                            "note":  "Final checkpoint: runtime threshold reached; final review page generated."
+                        }
+                    ],
+    "checkpoint_count":  6,
+    "reviewed_roots":  [
+                           "C:\\Users\\A\\.codex\\skills",
+                           "H:\\AI\\skills"
+                       ],
+    "reviewed_scope":  {
+                           "skill_count":  129,
+                           "recent_14d_count":  68,
+                           "modified_45d_count":  115,
+                           "trigger_similarity_pairs":  120,
+                           "high_risk_phrase_count":  82,
+                           "missing_acceptance_count":  106,
+                           "local_global_candidates":  6,
+                           "total_control_candidates":  9,
+                           "failure_review_buffers_seen":  16,
+                           "stale_rejected_buffer_candidates":  8
+                       },
+    "final_status":  "PASS",
+    "formal_skills_modified":  "NO",
+    "auto_merge_allowed":  "NO",
+    "pass_conditions":  {
+                            "elapsed_minutes_gte_60":  true,
+                            "required_checkpoints_present":  true,
+                            "formal_skills_modified_no":  true,
+                            "auto_merge_allowed_no":  true
+                        }
+}

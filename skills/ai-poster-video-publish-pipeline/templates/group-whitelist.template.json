@@ -1,0 +1,17 @@
+{
+  "task_id": "AI_POSTER_VIDEO_TASK_YYYYMMDD",
+  "allowed_groups": [
+    {
+      "group_name": "示例白名单群",
+      "allowed": false,
+      "notes": "发布前把 allowed 改为 true，并确认群名完全匹配。"
+    }
+  ],
+  "forbidden": [
+    "send_to_all_groups",
+    "send_to_all_contacts",
+    "private_message_strangers",
+    "auto_add_friends",
+    "auto_comment_spam"
+  ]
+}
