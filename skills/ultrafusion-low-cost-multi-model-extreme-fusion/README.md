@@ -1,6 +1,32 @@
-# UltraFusion 低成本多模型极限融合 v5.0
+# UltraFusion 低成本多模型极限融合 vNext-2026-07-01-night
 
 > **自动化多模型极限融合系统** — 不是手工流程，不是提示词合集，不是答案拼接器。
+
+## vNext 模型路线
+
+本版本的正式核心路线调整为：
+
+```text
+GPT 官网版 + Kimi 官网会员版 + GLM-5.2 / GLM Coding Plan
+```
+
+核心原则：
+
+- 追求极限高质量与低成本，不追求模型数量越多越好。
+- 优先使用官方网站、官方客户端、官方 Coding Plan、官方 Agent 产品。
+- API 只作为自动化、批处理、备用路线，不作为极限答案主路线。
+
+正式核心三智能体：
+
+- **GPT 官网版**：总控、最终融合、最高质量判断、最终表达、最终验收。
+- **Kimi 官网会员版**：Agent Swarm、Deep Research、多智能体分群、多角色并行审查、大规模资料探索、复杂方案分支推演、极限答案增益测试。
+- **GLM-5.2 / GLM Coding Plan**：Coding Agent、技能包制作、PPT、文档结构化生成、长程任务执行、工程化落地、自动化任务。
+
+备用模型：
+
+- **Qwen / 通义千问**：低成本综合联网备用；如果 Kimi 测试增益不足，则可替代 Kimi 进入核心。
+- **DeepSeek**：免费测试、纯推理、低成本反向审稿备用；不再作为正式核心。
+- **MiniMax**：音视频、创意、多模态备用；不进入核心回答链。
 
 ## Quick Start
 
@@ -42,9 +68,9 @@ D_Final 既包含最终答案，也包含：
 | 事实池共享 | Search_Fact_Pool 供 A/B/C/D 共用 |
 
 
-## Core-2 Bootstrap Mode
+## v5.0 Core-2 Bootstrap Mode（历史基线）
 
-**当前可用模型：GPT + DeepSeek-V4-Pro。可以立即启动 Core-2 双模型融合。**
+**历史可用模型：GPT + DeepSeek-V4-Pro。vNext 中 DeepSeek 已降级为备用，不再作为正式核心。**
 
 - ✅ 是否允许启动 Core-2：**是**
 - ❌ 是否需要立刻接入 MiniMax/Qwen：否
@@ -61,14 +87,14 @@ D_Final 既包含最终答案，也包含：
 | ⚡ C_Fusion 极限 | C 层不是普通合并，是 V15 驱动的极限融合 |
 | ⚡ D_Final 极限 | D 层不是审核，是 V15 驱动的最终稳定极限稿 |
 
-## 模型阵容
+## vNext 模型阵容
 
-**默认 Core-3（生产模式）：**
-- **M0 GPT** — 质量锚点，官方套餐自动化，A→D 全程参与
-- **M1 DeepSeek-V4-Pro** — 主力推理引擎
-- **M2 MiniMax-M2.7** — 多样性与交叉验证
+**默认 Core-3（正式路线）：**
+- **M0 GPT 官网版** — 总控、最终融合、最高质量判断、最终表达、最终验收
+- **M1 Kimi 官网会员版** — 复杂任务位、Agent Swarm、Deep Research、多角色审查、大规模资料探索
+- **M2 GLM-5.2 / GLM Coding Plan** — Coding Agent、技能包制作、文档结构化、长程任务执行、工程化落地
 
-**观察位 Qwen3.5-Flash：** 不自动进入主融合，需通过消融测试证明独立贡献后才可升级。
+**备用位：** Qwen、DeepSeek、MiniMax。Qwen 可在 Kimi 增益不足时替代 Kimi；DeepSeek 仅作为测试/纯推理/反向审稿备用。
 
 ## 四层链路
 

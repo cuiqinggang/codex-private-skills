@@ -1,7 +1,7 @@
 ---
 name: ultrafusion-low-cost-multi-model-extreme-fusion
 description: Use when the answer quality of a single model is not enough — ultra-reliable, low-cost multi-model extreme fusion for high-risk / complex / ambiguous questions. Fully automated A-B-C-D pipeline with mandatory V15 injection. No manual copy-paste.
-version: 5.0.0
+version: vNext-2026-07-01-night
 author: UltraFusion System (Hermes Agent packaging)
 license: MIT
 metadata:
@@ -10,7 +10,7 @@ metadata:
     related_skills: [hermes-agent-skill-authoring]
 ---
 
-# UltraFusion 低成本多模型极限融合技能包 v5.0
+# UltraFusion 低成本多模型极限融合技能包 vNext-2026-07-01-night
 
 ## Overview
 
@@ -54,13 +54,14 @@ The legacy manual RUNBOOK is archived for reference only (`90-ARCHIVE/`).
 
 
 
-### Core-2 Bootstrap Mode
+### vNext Official Core Route
 
 UltraFusion 不要求一开始必须四模型满配。
 
-**当前推荐先用 GPT + DeepSeek-V4-Pro 跑 Core-2 Bootstrap Mode**，先验证 A/B/C/D 自动化链路。
+**当前正式推荐路线是 GPT 官网版 + Kimi 官网会员版 + GLM-5.2 / GLM Coding Plan。**
 
-等链路稳定后，再加入 MiniMax / Kimi / Qwen 做消融测试。
+旧版 `GPT + DeepSeek-V4-Pro` 的 Core-2 Bootstrap Mode 只作为历史基线和临时测试路线保留。
+DeepSeek 不再作为正式核心；Qwen、DeepSeek、MiniMax 进入备用位。
 
 ### Only A/B/C/D — No E Layer
 UltraFusion has exactly four layers:
@@ -87,7 +88,7 @@ B 层是对所有有效的 A 稿做**极限融合**（把多个 A 稿的信息�
 |-------------|------|------|
 | `D-Lite`（D轻量版） | 跳过 B 层 | A 层输出直接送 C 融合，节省一次模型调用 |
 | `restricted`（受限融合） | 模型数不足 | 可用模型不够 Core-3 时使用 |
-| `bootstrap`（自举模式） | Core-2 两模型 | 先用 GPT + DeepSeek 验证链路，后续再扩展 |
+| `bootstrap`（自举模式） | 临时测试路线 | 仅用于历史 Core-2 或受限条件下验证链路；vNext 正式路线以 GPT + Kimi + GLM-5.2 为准 |
 | `simplified`（简化版） | 省成本 | 按 Auto_Simplification_Workflow 规则简化 |
 | `A_ONLY_CORE2_FUSION_TEST` | 只跑 A 层两模型测试 | 临时测试路线，仅用于验证截图/坐标/API 链路 |
 
@@ -132,7 +133,44 @@ UF_PROMPT_ASSEMBLY_FAIL: V15_FULL_MISSING
 ```
 That layer's output is invalid and must not enter the next layer.
 
-## Default Model Roster (Core-3)
+## vNext Official Model Route
+
+The official core route is now:
+
+```text
+GPT official site + Kimi official membership + GLM-5.2 / GLM Coding Plan
+```
+
+The route is official-site / official-client first. APIs are automation,
+batch-processing, or fallback paths, not the primary extreme-answer route.
+
+Core roles:
+
+| Slot | Model / Route | Role |
+|------|---------------|------|
+| M0 | GPT official site | control, final fusion, highest-quality judgment, final expression, acceptance |
+| M1 | Kimi official membership | complex-task intelligence, Agent Swarm, Deep Research, multi-role review, large-scale exploration |
+| M2 | GLM-5.2 / GLM Coding Plan | coding agent, skill package creation, PPT/document structure, long-running execution, engineering delivery |
+
+Fallback roles:
+
+| Model | Role |
+|-------|------|
+| Qwen / Tongyi | low-cost networked synthesis backup; may replace Kimi if Kimi lift is insufficient |
+| DeepSeek | free test backup, pure-reasoning backup, low-cost reverse-review backup; no longer official core |
+| MiniMax | audio/video, creative, multimodal backup; not in the core answer chain |
+
+DeepSeek was downgraded because fast mode can search but lacks depth, while
+expert/deep-thinking mode reasons well but cannot search. Official long-term use
+would require a split manual flow: search first, copy materials, deep-think
+second, then send to GPT. That is too much process overhead for this skill.
+
+GLM-5.2 should not be explored by Codex direct connection by default. Unless a
+public mature success case and reproducible configuration are found, use the
+Kilo / Claude Code -> GLM Coding Plan -> GLM-5.2 route and have Codex retrieve
+results through files, clipboard, copy/paste, or coordinate-based transfer.
+
+## Legacy Default Model Roster (v5.0 baseline)
 
 | Slot | Model | Role |
 |------|-------|------|
