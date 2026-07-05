@@ -33,6 +33,7 @@
 - Replaced report-first D framing with `FINAL_ANSWER FIRST` after the external model produced only meta-evaluation without the actual final answer. Added failure review `70-NOTES/FAILURE-REVIEW-20260706-d-meta-evaluation-without-final-answer.md`.
 - Patched final-answer-first D packaging after a wrapper-only package omitted full V15. D packages must now include the execution wrapper, full canonical V15, official D prompt, original Q, A_Initial/Score_0, and C_Fusion in one copy block.
 - Added D output completeness gate after an external model produced a valid-order but overly short final answer. D results now fail as `UF_D_OUTPUT_FAIL: FINAL_ANSWER_TOO_THIN` unless they include copyable prompts, run schema, privacy SOP, structure-break/error fields, and concrete 30-day decision thresholds.
+- Added clean final-gate handoff notes for the long benchmark thread. Current status is `FINAL_GATE_OPEN`: A/B/C and D package assembly gates are handled, but the final external D answer still needs one production-depth rerun and acceptance check.
 
 ## 6.0 Alias / 大模型变动 - 2026-07-02
 

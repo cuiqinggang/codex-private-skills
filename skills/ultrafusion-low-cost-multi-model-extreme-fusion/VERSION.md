@@ -38,6 +38,7 @@ snapshot and keep tests, decisions, and acceptance evidence with that snapshot.
 - D layer package rule: first visible instruction must be `FINAL_ANSWER FIRST`; `Ultra_Answer_Final` must answer the original question Q before any scoring/Gain/risk appendix.
 - D layer V15 rule: `FINAL_ANSWER FIRST` is only the wrapper; every valid D package must still include full canonical V15 and the official D prompt in the same copy block.
 - D layer completeness rule: a valid-order D result still fails if `Ultra_Answer_Final` is a thin summary. Required artifacts include copyable prompt templates, run schema, privacy SOP, failure attribution, and decision thresholds.
+- Current benchmark status note: `70-NOTES/BENCHMARK-STATUS-20260706-v7-full-pipeline-final-gate-open.md`; final gate remains open until an external D answer passes the production-depth checklist.
 - Main files:
   - `10-SPEC/V15_CANONICAL_SOURCE.md`
   - `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`
