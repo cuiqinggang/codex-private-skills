@@ -33,6 +33,7 @@
 | 10_A_Layer_Extreme_Draft_Template_v1.0.md | A 层极限稿模板 |
 | 20_B_Layer_Cross_Enhancement_Template_v1.0.md | B 层交叉增强模板 |
 | 30_C_Layer_Dense_Fusion_Extreme_Template_v4.0.md | C 层融合极限模板 |
+| C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md | V7.0 C 层官方复检陌生稿 + 稠密融合提示词 |
 | 40_D_Layer_Final_Extreme_Report_Template_v3.0.md | D 层终审极限模板 |
 
 ### 35-MODEL-ROSTER（模型阵容）
@@ -76,3 +77,5 @@
 | B_Prompt_Assembly_Spec_v1.0.md | B 层拼装规范 |
 | C_Prompt_Assembly_Spec_v1.0.md | C 层拼装规范 |
 | D_Prompt_Assembly_Spec_v1.0.md | D 层拼装规范 |
+| RULE-PATCH-20260706-c-layer-official-prompt.md | V7.0 C 层官方提示词强制规则 |
+| FAILURE-REVIEW-20260706-c-layer-simplified-prompt.md | C 层误用简化提示词失败复盘 |

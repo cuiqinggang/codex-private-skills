@@ -31,8 +31,12 @@ snapshot and keep tests, decisions, and acceptance evidence with that snapshot.
 - V15 canonical source: `10-SPEC/V15_FULL_WITH_GUARD_v1.0.md`
 - V15 canonical SHA256: `BB836AC959885190A1BEC81ECA77454F0CD183D08BB3814070A977C39147514E`
 - V15 package rule: full canonical text must be injected; summaries/placeholders/wrong V15 versions invalidate the layer.
+- C layer official prompt source: `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`
+- C layer official prompt SHA256: `8095B50C31E8FB31B506BC53278BC053C439743E17ACA40F37FACDBC99085BA2`
+- C layer package rule: simplified C prompts are invalid; required signals include `复检陌生稿规则`, `四维稠密融合`, and `【最终答案：C_Fusion】`.
 - Main files:
   - `10-SPEC/V15_CANONICAL_SOURCE.md`
+  - `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`
   - `40-WORKFLOWS/Semi_Automatic_ABCD_CopyPaste_Workflow_v7.0.md`
   - `30-TEMPLATES/V7_Semi_Auto_Question_Package_Template.md`
   - `37-SCORING/V7_Baseline_Gain_Scoring_Rule.md`

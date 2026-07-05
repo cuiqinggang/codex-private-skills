@@ -214,6 +214,22 @@ If the wrong or compressed V15 source is used:
 UF_PROMPT_ASSEMBLY_FAIL: V15_CANONICAL_SOURCE_NOT_USED
 ```
 
+### V7.0 Official C Layer Prompt Rule
+
+For full `UF_V7_SEMI_AUTO_ABCD` runs, C layer must load the official C prompt source:
+
+```text
+30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md
+```
+
+Do not replace it with a short "strategy integration" prompt. A valid C package must contain `复检陌生稿规则`, `四维稠密融合`, evidence/data hard rules, reverse consistency checks, and the output sections `【最终答案：C_Fusion】`, `【评审报告】`, and `【版本说明】`.
+
+If the official C prompt is missing or simplified:
+```
+UF_PROMPT_ASSEMBLY_FAIL: C_LAYER_OFFICIAL_PROMPT_MISSING
+UF_PROMPT_ASSEMBLY_FAIL: C_LAYER_SIMPLIFIED_PROMPT_USED
+```
+
 ## UltraFusion 6.1B Official Model Route
 
 The official core route is now:
@@ -362,3 +378,4 @@ codex exec --skill ultrafusion-low-cost-multi-model-extreme-fusion
 8. **Labeling reduced routes as full ABCD.** A_ONLY_CORE2_FUSION_TEST / D-Lite / bootstrap / restricted / simplified must be labeled honestly. Never call them "full UltraFusion" or "full ABCD".
 9. **Cutting layers for speed while claiming full fusion.** If you need speed, use layer-internal parallelism, better routing, or bootstrap mode. Do not remove B/C/D and still claim full ABCD.
 10. **Using stale frontier-model claims.** Fable 5 / Mythos 5 and similar claims about model availability, capability, or export-control status must be re-checked against primary sources before reuse. See `65-RULE-PATCHES/`.
+11. **Using a simplified C prompt in V7.0.** The C layer official prompt is `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`. If a C package lacks `复检陌生稿规则`, `四维稠密融合`, or `【最终答案：C_Fusion】`, invalidate and regenerate it.

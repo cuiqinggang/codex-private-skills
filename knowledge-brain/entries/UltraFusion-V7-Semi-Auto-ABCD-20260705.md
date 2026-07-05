@@ -41,6 +41,9 @@ If `Gain < 2.0`, the run is `INVALID_CHAIN`.
 - `45-RUNTIME/V7_Semi_Auto_Run_State_Schema.md`
 - `65-RULE-PATCHES/RULE-PATCH-20260705-ultrafusion-v7-semi-auto-abcd.md`
 - `70-NOTES/FAILURE-REVIEW-ENTRY-v7-semi-auto-abcd.md`
+- `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`
+- `65-RULE-PATCHES/RULE-PATCH-20260706-c-layer-official-prompt.md`
+- `70-NOTES/FAILURE-REVIEW-20260706-c-layer-simplified-prompt.md`
 
 ## Next-Run Rule
 
@@ -53,3 +56,23 @@ For V7.0 full ABCD runs, every A/B/C/D package must inject the full canonical V1
 Canonical SHA256: `BB836AC959885190A1BEC81ECA77454F0CD183D08BB3814070A977C39147514E`
 
 The user-supplied attachment from 2026-07-05 was checked and trim-matches the canonical 332-line V15+G source. If a package uses a short V15 summary, placeholder, or wrong version, invalidate the layer before copy/paste.
+
+## C Layer Official Prompt Rule
+
+For V7.0 full ABCD runs, C layer must use:
+
+`30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`
+
+SHA256: `8095B50C31E8FB31B506BC53278BC053C439743E17ACA40F37FACDBC99085BA2`
+
+Required signals:
+
+- `复检陌生稿规则`
+- `四维稠密融合`
+- evidence/data hard rules
+- reverse consistency checks
+- `【最终答案：C_Fusion】`
+- `【评审报告】`
+- `【版本说明】`
+
+If a C package uses a simplified strategy-integration prompt or lacks these signals, invalidate it before copy/paste. This rule was added after the 2026-07-06 benchmark incident where a simplified C prompt was generated first and had to be replaced.

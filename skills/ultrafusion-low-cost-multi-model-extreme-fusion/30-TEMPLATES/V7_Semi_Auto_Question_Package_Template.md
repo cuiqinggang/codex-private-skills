@@ -107,6 +107,14 @@ A层答案：
 
 ## C Layer Package Body
 
+Official C prompt source:
+
+```text
+30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md
+```
+
+For V7.0 full ABCD benchmark runs, paste that official C prompt verbatim after the canonical V15 text. Do not use the compact skeleton below as the live C prompt. The assembled C package must contain `复检陌生稿规则`, `四维稠密融合`, evidence/data hard rules, and output sections `【最终答案：C_Fusion】`, `【评审报告】`, and `【版本说明】`.
+
 ```text
 你正在执行 UltraFusion V7.0 的 C 层：策略整合层。
 

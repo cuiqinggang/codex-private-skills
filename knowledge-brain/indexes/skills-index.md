@@ -1,4 +1,4 @@
-﻿# Skills Index
+# Skills Index
 
 Generated: 2026-06-17 00:55:12
 
@@ -17,6 +17,7 @@ K drive: K:\AI\skills
   - Knowledge note: `C:\Users\A\.codex\obsidian-vaults\AI-COMPANY-KNOWLEDGE-OS\03_SKILL_ASSETS\UltraFusion-V7-Semi-Auto-ABCD-20260705.md`.
   - GitHub target: `cuiqinggang/codex-private-skills`, single package under `skills/ultrafusion-low-cost-multi-model-extreme-fusion`.
   - V15 canonical source correction: V7.0 ABCD packages must inject full `10-SPEC\V15_FULL_WITH_GUARD_v1.0.md`; SHA256 `BB836AC959885190A1BEC81ECA77454F0CD183D08BB3814070A977C39147514E`. User attachment from 2026-07-05 trim-matches the canonical 332-line V15+G source. Short summaries/placeholders/wrong V15 versions invalidate the layer.
+  - C layer official prompt lock: C packages must use `30-TEMPLATES\C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`; SHA256 `8095B50C31E8FB31B506BC53278BC053C439743E17ACA40F37FACDBC99085BA2`. Required signals: `复检陌生稿规则`, `四维稠密融合`, evidence/data hard rules, reverse consistency checks, `【最终答案：C_Fusion】`, `【评审报告】`, `【版本说明】`. Simplified C prompts invalidate the layer.
 
 - 2026-07-05: `C:\Users\A\.codex\skills\one-person-saas-os`
   - Purpose: deployable low-stable one-person SaaS OS generator for Next.js App Router + TypeScript + Tailwind with Clerk, Supabase, PostHog, Vercel, and Git/GitHub-ready structure.
@@ -169,4 +170,3 @@ K drive: K:\AI\skills
   - Knowledge note: `K:\AI\obsidian-vaults\AI-COMPANY-KNOWLEDGE-OS\01_META\Computer-Use-Visual-Recovery-Skill-20260701.md`.
   - Validation: `quick_validate.py` PASS; `check-visual-recovery.ps1` returned `VISUAL_RECOVERY_CHECK: PASS`.
   - Codex trigger entry: `C:\Users\A\.codex\skills\computer-use-visual-recovery`.
-

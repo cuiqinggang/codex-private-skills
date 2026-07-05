@@ -97,7 +97,30 @@ Additional failure codes:
 ```text
 UF_PROMPT_ASSEMBLY_FAIL: V15_CANONICAL_SOURCE_NOT_USED
 UF_PROMPT_ASSEMBLY_FAIL: V15_PLACEHOLDER_NOT_REPLACED
+UF_PROMPT_ASSEMBLY_FAIL: C_LAYER_OFFICIAL_PROMPT_MISSING
+UF_PROMPT_ASSEMBLY_FAIL: C_LAYER_SIMPLIFIED_PROMPT_USED
+UF_PROMPT_ASSEMBLY_FAIL: C_FUSION_OUTPUT_SCHEMA_MISSING
 ```
 
 Do not pass an A/B/C/D package if V15 is summarized, abbreviated, rewritten, or left as `<<<V15_FULL>>>`.
 V15_FULL 来源: 从 V15_FULL_WITH_GUARD_v1.0.md (332行) 提取第39行起完整原文，未改写。
+
+## V7.0 C Layer Official Prompt Gate
+
+C-layer packages must load the official prompt source:
+
+```text
+30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md
+```
+
+Required signals:
+
+- `复检陌生稿规则`
+- `四维稠密融合`
+- evidence / data hard rules
+- reverse consistency checking
+- `【最终答案：C_Fusion】`
+- `【评审报告】`
+- `【版本说明】`
+
+If any signal is missing, the C layer package is invalid and must not enter D layer.

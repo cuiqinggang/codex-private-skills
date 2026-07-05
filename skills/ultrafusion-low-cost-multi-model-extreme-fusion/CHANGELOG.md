@@ -15,6 +15,14 @@
 - Confirmed the user-supplied recovery attachment trim-matches the canonical 332-line V15+G source.
 - Added failure handling for summarized, placeholder, or wrong-version V15 injection.
 
+### C Layer Official Prompt Lock - 2026-07-06
+
+- Added official C layer prompt source: `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`.
+- Added hard gate: C packages missing `复检陌生稿规则`, `四维稠密融合`, evidence/data hard rules, or `【最终答案：C_Fusion】` are invalid.
+- Added rule patch: `65-RULE-PATCHES/RULE-PATCH-20260706-c-layer-official-prompt.md`.
+- Added failure review: `70-NOTES/FAILURE-REVIEW-20260706-c-layer-simplified-prompt.md`.
+- Recorded official C prompt SHA256: `8095B50C31E8FB31B506BC53278BC053C439743E17ACA40F37FACDBC99085BA2`.
+
 ## 6.0 Alias / 大模型变动 - 2026-07-02
 
 - Added memorable alias skill: `ultrafusion-6-0-kimi-no-deepseek`
