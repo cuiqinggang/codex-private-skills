@@ -3,6 +3,24 @@
 Status: active template
 Route label: `UF_V7_SEMI_AUTO_ABCD`
 
+## Canonical V15 Source Rule
+
+Before generating any A/B/C/D copy block, load and paste the full canonical V15 text from:
+
+```text
+10-SPEC/V15_FULL_WITH_GUARD_v1.0.md
+```
+
+Do not use a short summary, simplified rewrite, or placeholder. A package that still contains `<<<V15_FULL>>>`, or only says "follow V15" without the full text, is invalid.
+
+Required manifest fields for every layer package:
+
+```text
+V15_SOURCE=10-SPEC/V15_FULL_WITH_GUARD_v1.0.md
+V15_SHA256=BB836AC959885190A1BEC81ECA77454F0CD183D08BB3814070A977C39147514E
+V15_STATUS=CANONICAL_FULL_TEXT_INJECTED
+```
+
 ## Copy Block Wrapper
 
 Use this wrapper for every package sent to an external model:
@@ -144,4 +162,3 @@ C_FINAL：
 3. 风险分析
 4. 仍需人工确认的点
 ```
-

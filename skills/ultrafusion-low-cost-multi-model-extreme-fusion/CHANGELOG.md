@@ -8,6 +8,13 @@
 - Added V7 question package template, run state schema, failure-review entry, and deployment report.
 - Bound trigger phrases: `UltraFusion V7.0`, `半自动ABCD`, `ABCD问题包`, `复制粘贴多层推理`, `外部模型回答`, `Score_0 vs Score_FINAL`, `Gain < 2`.
 
+### V15 Canonical Source Correction - 2026-07-05
+
+- Locked V7.0 ABCD prompt packages to the full canonical V15 source: `10-SPEC/V15_FULL_WITH_GUARD_v1.0.md`.
+- Added `10-SPEC/V15_CANONICAL_SOURCE.md` with hash and user recovery attachment evidence.
+- Confirmed the user-supplied recovery attachment trim-matches the canonical 332-line V15+G source.
+- Added failure handling for summarized, placeholder, or wrong-version V15 injection.
+
 ## 6.0 Alias / 大模型变动 - 2026-07-02
 
 - Added memorable alias skill: `ultrafusion-6-0-kimi-no-deepseek`

@@ -28,7 +28,11 @@ snapshot and keep tests, decisions, and acceptance evidence with that snapshot.
 - Required layers: `0 baseline -> A extreme generation -> B fusion enhancement -> C strategy integration -> D final convergence`.
 - Required comparison: `Score_0`, `SCORE_FINAL`, `Gain = SCORE_FINAL - Score_0`.
 - Invalid-link rule: `Gain < 2.0` means `INVALID_CHAIN`.
+- V15 canonical source: `10-SPEC/V15_FULL_WITH_GUARD_v1.0.md`
+- V15 canonical SHA256: `BB836AC959885190A1BEC81ECA77454F0CD183D08BB3814070A977C39147514E`
+- V15 package rule: full canonical text must be injected; summaries/placeholders/wrong V15 versions invalidate the layer.
 - Main files:
+  - `10-SPEC/V15_CANONICAL_SOURCE.md`
   - `40-WORKFLOWS/Semi_Automatic_ABCD_CopyPaste_Workflow_v7.0.md`
   - `30-TEMPLATES/V7_Semi_Auto_Question_Package_Template.md`
   - `37-SCORING/V7_Baseline_Gain_Scoring_Rule.md`

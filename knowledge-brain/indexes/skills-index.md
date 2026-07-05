@@ -16,6 +16,7 @@ K drive: K:\AI\skills
   - Trigger phrases: `UltraFusion V7.0`, `半自动ABCD`, `ABCD问题包`, `复制粘贴多层推理`, `外部模型回答`, `Score_0 vs Score_FINAL`, `Gain < 2`.
   - Knowledge note: `C:\Users\A\.codex\obsidian-vaults\AI-COMPANY-KNOWLEDGE-OS\03_SKILL_ASSETS\UltraFusion-V7-Semi-Auto-ABCD-20260705.md`.
   - GitHub target: `cuiqinggang/codex-private-skills`, single package under `skills/ultrafusion-low-cost-multi-model-extreme-fusion`.
+  - V15 canonical source correction: V7.0 ABCD packages must inject full `10-SPEC\V15_FULL_WITH_GUARD_v1.0.md`; SHA256 `BB836AC959885190A1BEC81ECA77454F0CD183D08BB3814070A977C39147514E`. User attachment from 2026-07-05 trim-matches the canonical 332-line V15+G source. Short summaries/placeholders/wrong V15 versions invalidate the layer.
 
 - 2026-07-05: `C:\Users\A\.codex\skills\one-person-saas-os`
   - Purpose: deployable low-stable one-person SaaS OS generator for Next.js App Router + TypeScript + Tailwind with Clerk, Supabase, PostHog, Vercel, and Git/GitHub-ready structure.

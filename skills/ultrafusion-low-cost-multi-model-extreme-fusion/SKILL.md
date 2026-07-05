@@ -195,11 +195,24 @@ This is UltraFusion's core rule. Every layer's assembled prompt must contain:
 4. Input materials for that layer
 5. User's original question
 
+For UltraFusion V7.0 full ABCD runs, the canonical V15 source is:
+
+```text
+10-SPEC/V15_FULL_WITH_GUARD_v1.0.md
+```
+
+Do not replace it with a short summary, compact explanation, placeholder, or rewritten version. If the assembled package contains `<<<V15_FULL>>>` or only describes V15 instead of pasting the full canonical text, the layer is invalid.
+
 If any layer's assembled prompt is missing V15_FULL:
 ```
 UF_PROMPT_ASSEMBLY_FAIL: V15_FULL_MISSING
 ```
 That layer's output is invalid and must not enter the next layer.
+
+If the wrong or compressed V15 source is used:
+```
+UF_PROMPT_ASSEMBLY_FAIL: V15_CANONICAL_SOURCE_NOT_USED
+```
 
 ## UltraFusion 6.1B Official Model Route
 

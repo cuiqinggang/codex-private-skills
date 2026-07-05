@@ -33,6 +33,8 @@ If `Gain < 2.0`, the run is `INVALID_CHAIN`.
 
 ## Main Files
 
+- `10-SPEC/V15_CANONICAL_SOURCE.md`
+- `10-SPEC/V15_FULL_WITH_GUARD_v1.0.md`
 - `40-WORKFLOWS/Semi_Automatic_ABCD_CopyPaste_Workflow_v7.0.md`
 - `30-TEMPLATES/V7_Semi_Auto_Question_Package_Template.md`
 - `37-SCORING/V7_Baseline_Gain_Scoring_Rule.md`
@@ -44,3 +46,10 @@ If `Gain < 2.0`, the run is `INVALID_CHAIN`.
 
 When a future task mentions UltraFusion V7.0 or 半自动ABCD, first load the skill package above, then use the V7 question package template. Do not ask the user to design prompts or make fusion decisions; their role is copy/paste only.
 
+## V15 Canonical Source Rule
+
+For V7.0 full ABCD runs, every A/B/C/D package must inject the full canonical V15 text from `10-SPEC/V15_FULL_WITH_GUARD_v1.0.md`.
+
+Canonical SHA256: `BB836AC959885190A1BEC81ECA77454F0CD183D08BB3814070A977C39147514E`
+
+The user-supplied attachment from 2026-07-05 was checked and trim-matches the canonical 332-line V15+G source. If a package uses a short V15 summary, placeholder, or wrong version, invalidate the layer before copy/paste.
