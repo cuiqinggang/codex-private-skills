@@ -1,0 +1,37 @@
+# UltraFusion Version
+
+## 6.0 Alias / 大模型变动
+
+- Short memory name: `6.0 大模型变动`
+- Alias skill: `C:\Users\A\.codex\skills\ultrafusion-6-0-kimi-no-deepseek`
+- Meaning: preserve the v5.0 lineage, remove DeepSeek from the official core route, and promote Kimi into the official complex-task route.
+
+## vNext-2026-07-01-night
+
+- 主题：核心模型路线重大调整
+- 核心变化：DeepSeek 降级，Kimi 升级，GLM-5.2 走 Kilo/Claude Code 成熟路线
+- 正式核心：GPT + Kimi + GLM-5.2
+- 备用：Qwen、DeepSeek、MiniMax
+- 基线版本：v5.0.0
+- 基线 Git tag：`ultrafusion-v5.0.0-baseline`
+
+## Version Rule
+
+This version supersedes the v5.0.0 model route while preserving the v5.0.0
+baseline as a frozen snapshot. Future updates should create a new named version
+snapshot and keep tests, decisions, and acceptance evidence with that snapshot.
+
+## UltraFusion V7.0 Semi-Automatic ABCD - 2026-07-05
+
+- Route label: `UF_V7_SEMI_AUTO_ABCD`
+- Purpose: Codex generates A/B/C/D question packages; the human only copies and pastes; external models answer; Codex fuses, converges, scores, and records gain.
+- Required layers: `0 baseline -> A extreme generation -> B fusion enhancement -> C strategy integration -> D final convergence`.
+- Required comparison: `Score_0`, `SCORE_FINAL`, `Gain = SCORE_FINAL - Score_0`.
+- Invalid-link rule: `Gain < 2.0` means `INVALID_CHAIN`.
+- Main files:
+  - `40-WORKFLOWS/Semi_Automatic_ABCD_CopyPaste_Workflow_v7.0.md`
+  - `30-TEMPLATES/V7_Semi_Auto_Question_Package_Template.md`
+  - `37-SCORING/V7_Baseline_Gain_Scoring_Rule.md`
+  - `45-RUNTIME/V7_Semi_Auto_Run_State_Schema.md`
+  - `65-RULE-PATCHES/RULE-PATCH-20260705-ultrafusion-v7-semi-auto-abcd.md`
+  - `70-NOTES/FAILURE-REVIEW-ENTRY-v7-semi-auto-abcd.md`
