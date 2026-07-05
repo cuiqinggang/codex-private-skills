@@ -100,6 +100,7 @@ UF_PROMPT_ASSEMBLY_FAIL: V15_PLACEHOLDER_NOT_REPLACED
 UF_PROMPT_ASSEMBLY_FAIL: C_LAYER_OFFICIAL_PROMPT_MISSING
 UF_PROMPT_ASSEMBLY_FAIL: C_LAYER_SIMPLIFIED_PROMPT_USED
 UF_PROMPT_ASSEMBLY_FAIL: C_FUSION_OUTPUT_SCHEMA_MISSING
+UF_PROMPT_ASSEMBLY_FAIL: D_LAYER_EXECUTION_COMMAND_MISSING
 ```
 
 Do not pass an A/B/C/D package if V15 is summarized, abbreviated, rewritten, or left as `<<<V15_FULL>>>`.
@@ -124,3 +125,19 @@ Required signals:
 - `【版本说明】`
 
 If any signal is missing, the C layer package is invalid and must not enter D layer.
+
+## V7.0 D Layer Execution Command Gate
+
+D-layer packages must place the execution wrapper immediately after `[COPY_START]`:
+
+```text
+30-TEMPLATES/D_LAYER_EXECUTION_COMMAND_WRAPPER_v20260706.md
+```
+
+Required first-message signal:
+
+```text
+【执行命令：立即执行 UltraFusion V7.0 D 层，不要总结文件】
+```
+
+If a D package begins with broad protocol text and does not foreground the execution command, the package is invalid because external models may summarize it instead of executing it.

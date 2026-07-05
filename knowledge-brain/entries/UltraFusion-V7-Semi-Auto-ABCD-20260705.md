@@ -42,7 +42,9 @@ If `Gain < 2.0`, the run is `INVALID_CHAIN`.
 - `65-RULE-PATCHES/RULE-PATCH-20260705-ultrafusion-v7-semi-auto-abcd.md`
 - `70-NOTES/FAILURE-REVIEW-ENTRY-v7-semi-auto-abcd.md`
 - `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`
+- `30-TEMPLATES/D_LAYER_EXECUTION_COMMAND_WRAPPER_v20260706.md`
 - `65-RULE-PATCHES/RULE-PATCH-20260706-c-layer-official-prompt.md`
+- `65-RULE-PATCHES/RULE-PATCH-20260706-d-layer-execution-command-first.md`
 - `70-NOTES/FAILURE-REVIEW-20260706-c-layer-simplified-prompt.md`
 
 ## Next-Run Rule
@@ -76,3 +78,15 @@ Required signals:
 - `【版本说明】`
 
 If a C package uses a simplified strategy-integration prompt or lacks these signals, invalidate it before copy/paste. This rule was added after the 2026-07-06 benchmark incident where a simplified C prompt was generated first and had to be replaced.
+
+## D Layer Execution Command Rule
+
+For V7.0 D-layer packages, the first visible instruction after `[COPY_START]` must be an execution command:
+
+`30-TEMPLATES/D_LAYER_EXECUTION_COMMAND_WRAPPER_v20260706.md`
+
+Required first signal:
+
+`【执行命令：立即执行 UltraFusion V7.0 D 层，不要总结文件】`
+
+If an external model summarizes the D package as a prompt framework, research object, or prompt-injection risk instead of executing it, that output is invalid. Send the correction command and regenerate future D packages with the execution wrapper first.

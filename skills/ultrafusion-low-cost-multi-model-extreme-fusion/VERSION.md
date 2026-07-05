@@ -34,9 +34,12 @@ snapshot and keep tests, decisions, and acceptance evidence with that snapshot.
 - C layer official prompt source: `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`
 - C layer official prompt SHA256: `8095B50C31E8FB31B506BC53278BC053C439743E17ACA40F37FACDBC99085BA2`
 - C layer package rule: simplified C prompts are invalid; required signals include `复检陌生稿规则`, `四维稠密融合`, and `【最终答案：C_Fusion】`.
+- D layer execution wrapper source: `30-TEMPLATES/D_LAYER_EXECUTION_COMMAND_WRAPPER_v20260706.md`
+- D layer package rule: first visible instruction must be an execution command; packages that look like research material are invalid.
 - Main files:
   - `10-SPEC/V15_CANONICAL_SOURCE.md`
   - `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`
+  - `30-TEMPLATES/D_LAYER_EXECUTION_COMMAND_WRAPPER_v20260706.md`
   - `40-WORKFLOWS/Semi_Automatic_ABCD_CopyPaste_Workflow_v7.0.md`
   - `30-TEMPLATES/V7_Semi_Auto_Question_Package_Template.md`
   - `37-SCORING/V7_Baseline_Gain_Scoring_Rule.md`

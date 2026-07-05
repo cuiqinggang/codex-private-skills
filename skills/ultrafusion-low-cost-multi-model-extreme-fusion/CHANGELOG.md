@@ -23,6 +23,13 @@
 - Added failure review: `70-NOTES/FAILURE-REVIEW-20260706-c-layer-simplified-prompt.md`.
 - Recorded official C prompt SHA256: `8095B50C31E8FB31B506BC53278BC053C439743E17ACA40F37FACDBC99085BA2`.
 
+### D Layer Execution Command First - 2026-07-06
+
+- Added D-layer execution wrapper: `30-TEMPLATES/D_LAYER_EXECUTION_COMMAND_WRAPPER_v20260706.md`.
+- Added rule patch: `65-RULE-PATCHES/RULE-PATCH-20260706-d-layer-execution-command-first.md`.
+- New gate: every D-layer package must begin with an explicit execution command so external models execute D layer instead of summarizing the prompt framework.
+- Added correction command artifact for the benchmark run: `outputs/ufv7-d-layer-execution-correction-command-20260706.md`.
+
 ## 6.0 Alias / 大模型变动 - 2026-07-02
 
 - Added memorable alias skill: `ultrafusion-6-0-kimi-no-deepseek`

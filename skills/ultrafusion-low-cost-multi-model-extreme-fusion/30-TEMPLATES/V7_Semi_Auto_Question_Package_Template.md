@@ -143,6 +143,14 @@ B层答案：
 
 ## D Layer Package Body
 
+Execution command source:
+
+```text
+30-TEMPLATES/D_LAYER_EXECUTION_COMMAND_WRAPPER_v20260706.md
+```
+
+For V7.0 D-layer packages, paste this execution command immediately after `[COPY_START]` and before the long V15 / D_PROMPT content. The first visible instruction must tell the external model to execute D layer, not summarize or classify the package.
+
 ```text
 你正在执行 UltraFusion V7.0 的 D 层：最终收敛层。
 
