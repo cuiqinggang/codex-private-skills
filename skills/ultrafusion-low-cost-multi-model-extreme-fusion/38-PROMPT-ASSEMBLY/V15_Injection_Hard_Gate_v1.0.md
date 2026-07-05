@@ -101,6 +101,8 @@ UF_PROMPT_ASSEMBLY_FAIL: C_LAYER_OFFICIAL_PROMPT_MISSING
 UF_PROMPT_ASSEMBLY_FAIL: C_LAYER_SIMPLIFIED_PROMPT_USED
 UF_PROMPT_ASSEMBLY_FAIL: C_FUSION_OUTPUT_SCHEMA_MISSING
 UF_PROMPT_ASSEMBLY_FAIL: D_LAYER_EXECUTION_COMMAND_MISSING
+UF_PROMPT_ASSEMBLY_FAIL: D_LAYER_V15_FULL_MISSING
+UF_PROMPT_ASSEMBLY_FAIL: D_LAYER_OFFICIAL_PROMPT_MISSING
 ```
 
 Do not pass an A/B/C/D package if V15 is summarized, abbreviated, rewritten, or left as `<<<V15_FULL>>>`.
@@ -150,3 +152,24 @@ The wrapper must require output order:
 ```
 
 Scoring and Gain must appear after, not before, the final answer.
+
+The execution wrapper is necessary but not sufficient. A valid D-layer package must also include the full canonical V15 body and the official D prompt source:
+
+```text
+10-SPEC/V15_FULL_WITH_GUARD_v1.0.md
+30-TEMPLATES/40_D_Layer_Final_Extreme_Report_Template_v3.0.md
+```
+
+Required D package signals:
+
+- `【D层执行命令：FINAL_ANSWER FIRST】`
+- `V15+G 前置约束层`
+- `Auto-V15`
+- `V15 瀑布式`
+- `本阶段（D 层）核心定位与约束`
+- `Ultra_Answer_Final`
+- original question Q
+- `A_Initial / Score_0`
+- `C_Fusion`
+
+If the D package includes the wrapper but omits V15 or the official D prompt, invalidate and regenerate the entire D package. Do not send a wrapper-only D package to an external model.

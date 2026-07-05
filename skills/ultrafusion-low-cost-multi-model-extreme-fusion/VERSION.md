@@ -36,6 +36,7 @@ snapshot and keep tests, decisions, and acceptance evidence with that snapshot.
 - C layer package rule: simplified C prompts are invalid; required signals include `复检陌生稿规则`, `四维稠密融合`, and `【最终答案：C_Fusion】`.
 - D layer execution wrapper source: `30-TEMPLATES/D_LAYER_EXECUTION_COMMAND_WRAPPER_v20260706.md`
 - D layer package rule: first visible instruction must be `FINAL_ANSWER FIRST`; `Ultra_Answer_Final` must answer the original question Q before any scoring/Gain/risk appendix.
+- D layer V15 rule: `FINAL_ANSWER FIRST` is only the wrapper; every valid D package must still include full canonical V15 and the official D prompt in the same copy block.
 - Main files:
   - `10-SPEC/V15_CANONICAL_SOURCE.md`
   - `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`

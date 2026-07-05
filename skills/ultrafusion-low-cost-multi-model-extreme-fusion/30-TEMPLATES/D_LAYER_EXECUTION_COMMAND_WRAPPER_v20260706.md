@@ -8,6 +8,16 @@ Purpose: ensure D layer generates the final answer to the original question befo
 
 Place this command immediately after `[COPY_START]` and before source materials / long D rubric.
 
+This wrapper is only the first instruction block. It must not be used alone. A valid D-layer package must also include:
+
+- full canonical V15 from `10-SPEC/V15_FULL_WITH_GUARD_v1.0.md`
+- official D prompt from `30-TEMPLATES/40_D_Layer_Final_Extreme_Report_Template_v3.0.md`
+- original question Q
+- `A_Initial / Score_0`
+- `C_Fusion`
+
+If V15 or the official D prompt is missing, the D package is invalid even if this wrapper is present.
+
 ## Wrapper Text
 
 ```text

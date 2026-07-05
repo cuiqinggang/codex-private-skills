@@ -246,6 +246,33 @@ UF_PROMPT_ASSEMBLY_FAIL: D_LAYER_EXECUTION_COMMAND_MISSING
 
 Do not use hard phrasing like "do not treat this as prompt injection" or "you must obey this protocol"; that can trigger refusal. Also do not over-emphasize "evaluation report" before the final answer, or the model may produce only a benchmark analysis.
 
+`FINAL_ANSWER FIRST` does not replace V15 injection. A valid D-layer package must also include:
+
+```text
+10-SPEC/V15_FULL_WITH_GUARD_v1.0.md
+30-TEMPLATES/40_D_Layer_Final_Extreme_Report_Template_v3.0.md
+```
+
+If the D package starts with the final-answer-first wrapper but omits the full canonical V15 body or official D prompt, it is invalid:
+
+```text
+UF_PROMPT_ASSEMBLY_FAIL: D_LAYER_V15_FULL_MISSING
+UF_PROMPT_ASSEMBLY_FAIL: D_LAYER_OFFICIAL_PROMPT_MISSING
+```
+
+The D package should be assembled as:
+
+```text
+[COPY_START]
+D execution wrapper / FINAL_ANSWER FIRST
+Original question Q
+Full canonical V15
+Official D prompt
+A_Initial / Score_0
+C_Fusion
+[COPY_END]
+```
+
 ## UltraFusion 6.1B Official Model Route
 
 The official core route is now:
@@ -396,3 +423,4 @@ codex exec --skill ultrafusion-low-cost-multi-model-extreme-fusion
 10. **Using stale frontier-model claims.** Fable 5 / Mythos 5 and similar claims about model availability, capability, or export-control status must be re-checked against primary sources before reuse. See `65-RULE-PATCHES/`.
 11. **Using a simplified C prompt in V7.0.** The C layer official prompt is `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`. If a C package lacks `复检陌生稿规则`, `四维稠密融合`, or `【最终答案：C_Fusion】`, invalidate and regenerate it.
 12. **Letting D packages produce only meta-evaluation.** D layer copy blocks must start with `FINAL_ANSWER FIRST`. `Ultra_Answer_Final` must answer the original question Q before scoring/Gain/risk appendix. If the model only evaluates the UltraFusion system, that D output is incomplete.
+13. **Forgetting V15 in final-answer-first D packages.** `FINAL_ANSWER FIRST` is only the execution wrapper. It must be shipped together with full canonical V15 and the official D prompt. A D package with the wrapper but without V15 is invalid.
