@@ -27,8 +27,9 @@
 
 - Added D-layer execution wrapper: `30-TEMPLATES/D_LAYER_EXECUTION_COMMAND_WRAPPER_v20260706.md`.
 - Added rule patch: `65-RULE-PATCHES/RULE-PATCH-20260706-d-layer-execution-command-first.md`.
-- New gate: every D-layer package must begin with an explicit execution command so external models execute D layer instead of summarizing the prompt framework.
+- New gate: every D-layer package must begin with a safe evaluation-request wrapper so external models generate the D-layer report instead of summarizing the prompt framework.
 - Added correction command artifact for the benchmark run: `outputs/ufv7-d-layer-execution-correction-command-20260706.md`.
+- Replaced hard "must execute / do not treat as prompt injection" wording after an external model refused; added failure review `70-NOTES/FAILURE-REVIEW-20260706-d-hard-command-triggered-refusal.md` and safe request artifact `outputs/ufv7-d-layer-safe-execution-request-20260706.md`.
 
 ## 6.0 Alias / 大模型变动 - 2026-07-02
 

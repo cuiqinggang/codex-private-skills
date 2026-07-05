@@ -87,6 +87,8 @@ For V7.0 D-layer packages, the first visible instruction after `[COPY_START]` mu
 
 Required first signal:
 
-`【执行命令：立即执行 UltraFusion V7.0 D 层，不要总结文件】`
+`【任务请求：请基于我提供的材料生成 UltraFusion V7.0 D 层评估报告】`
 
-If an external model summarizes the D package as a prompt framework, research object, or prompt-injection risk instead of executing it, that output is invalid. Send the correction command and regenerate future D packages with the execution wrapper first.
+If an external model summarizes the D package as a prompt framework, research object, or prompt-injection risk instead of producing the report, send the safe execution request and regenerate future D packages with the wrapper first.
+
+Avoid hard phrasing such as "do not treat this as prompt injection" or "you must obey this protocol"; it can trigger refusal. The wrapper should frame the D protocol as a user-provided rubric that does not override the external model's own rules.
