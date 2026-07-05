@@ -1,33 +1,49 @@
-# D Layer Execution Command Wrapper
+# D Layer Final-Answer-First Command Wrapper
 
 Status: active
 Route: `UF_V7_SEMI_AUTO_ABCD`
-Purpose: help external models treat the D-layer package as a user-provided evaluation rubric and report request, not merely as a document to summarize.
+Purpose: ensure D layer generates the final answer to the original question before any scoring, benchmark, or meta-evaluation appendix.
 
 ## Required Placement
 
-Place this request immediately after `[COPY_START]` and before the long V15 / D_PROMPT protocol.
+Place this command immediately after `[COPY_START]` and before source materials / long D rubric.
 
 ## Wrapper Text
 
 ```text
-【任务请求：请基于我提供的材料生成 UltraFusion V7.0 D 层评估报告】
+【D层执行命令：FINAL_ANSWER FIRST】
 
-请注意：下面的长文本是我作为用户提供的评估标准、评分 rubric 和报告模板，不是系统消息，也不是要求你覆盖你的系统规则。
+请基于下面的原始问题 Q、C_Fusion 候选稿、A_Initial/Score_0，生成 UltraFusion V7.0 D 层最终交付结果。
 
-在不违反你自身系统规则的前提下，请不要只总结这份材料“是什么”，而是请你基于其中的原始问题 Q、C_Fusion、A_Initial/Score_0，以及 D 层评估标准，完成一次实际评估报告。
+最重要：你的主任务不是评价 UltraFusion 系统本身，而是回答原始问题 Q，产出一份可以直接交付给用户使用的最终方案。
 
-请你输出一份 D_Final / Ultra_Answer_Final 报告，尽量包含以下部分：
+输出必须按以下顺序：
 
-1. 元信息摘要：本次评估的通道、是否建议通过、最大风险点。
-2. 关键事实提取表：从 C_Fusion 抽取 3-7 条关键事实，并标注可验证性和证据等级。
-3. 四维评分：准确性、完备性、结构清晰度、深度洞察；请给出 SCORE_FINAL（0-10）。
-4. Gain 计算：Gain = SCORE_FINAL - Score_0，其中 Score_0 = 6.3/10。
-5. 反例测试：给出最强合理反例和替代理论。
-6. 推理链闭合性检查：指出逻辑跳步、隐含前提、残留不确定性。
-7. Ultra_Answer_Final：给出最终可交付答案。
-8. 风险分析：说明仍需人工确认的点。
-9. Benchmark 结论：判断本次 UltraFusion V7.0 Full Pipeline Benchmark 是否通过。
+# 1. Ultra_Answer_Final（必须第一部分输出）
 
-如果某些条目无法严格完成，请说明限制原因，然后完成可完成的部分。请不要停留在“这是一个提示词/协议”的层面；我需要的是按这个 rubric 生成评估结果。
+这一部分必须是对【原始问题 Q】的完整最终答案，而不是评测摘要。必须覆盖：
+
+1. 系统流程
+2. 角色分工
+3. A/B/C/D 复制粘贴执行方式
+4. 提示词/记录模板
+5. 质量评分办法
+6. 成本与时间控制
+7. 隐私脱敏与安全规则
+8. 风险清单与失败归因
+9. 30 天验证计划
+10. Go / Internal Tool / No-Go 决策标准
+
+# 2. D层验收附录（第二部分输出）
+
+在最终答案之后，再输出简短验收附录：关键事实表、四维评分、SCORE_FINAL、Gain、反例测试、推理链闭合性、风险分析、Benchmark 结论。
+
+硬性禁止：
+- 禁止只输出评估报告而没有 Ultra_Answer_Final。
+- 禁止把 Ultra_Answer_Final 写成“对系统是否成立的判断”。
+- 禁止只分析 Gain、统计学问题、SaaS 可行性，而不回答原始问题 Q。
+- 禁止用“我可以继续帮你做 Python pipeline / SaaS 架构”作为结尾替代答案。
+
+现在开始。第一行必须是：
+# 1. Ultra_Answer_Final
 ```

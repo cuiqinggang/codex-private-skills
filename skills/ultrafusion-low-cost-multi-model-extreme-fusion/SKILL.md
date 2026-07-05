@@ -238,13 +238,13 @@ For full `UF_V7_SEMI_AUTO_ABCD` D-layer packages, the first visible instruction 
 30-TEMPLATES/D_LAYER_EXECUTION_COMMAND_WRAPPER_v20260706.md
 ```
 
-This wrapper must frame the long D protocol as a user-provided evaluation rubric and report template, not as a hierarchy-overriding command. If the wrapper is missing:
+This wrapper must force `FINAL_ANSWER FIRST`: the external model must answer the original question before any scoring, benchmark verdict, or meta-evaluation. If the wrapper is missing:
 
 ```text
 UF_PROMPT_ASSEMBLY_FAIL: D_LAYER_EXECUTION_COMMAND_MISSING
 ```
 
-Do not use hard phrasing like "do not treat this as prompt injection" or "you must obey this protocol"; that can trigger refusal. Use the safe rubric framing in the wrapper.
+Do not use hard phrasing like "do not treat this as prompt injection" or "you must obey this protocol"; that can trigger refusal. Also do not over-emphasize "evaluation report" before the final answer, or the model may produce only a benchmark analysis.
 
 ## UltraFusion 6.1B Official Model Route
 
@@ -395,4 +395,4 @@ codex exec --skill ultrafusion-low-cost-multi-model-extreme-fusion
 9. **Cutting layers for speed while claiming full fusion.** If you need speed, use layer-internal parallelism, better routing, or bootstrap mode. Do not remove B/C/D and still claim full ABCD.
 10. **Using stale frontier-model claims.** Fable 5 / Mythos 5 and similar claims about model availability, capability, or export-control status must be re-checked against primary sources before reuse. See `65-RULE-PATCHES/`.
 11. **Using a simplified C prompt in V7.0.** The C layer official prompt is `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`. If a C package lacks `复检陌生稿规则`, `四维稠密融合`, or `【最终答案：C_Fusion】`, invalidate and regenerate it.
-12. **Letting D packages look like research material.** D layer copy blocks must start with the safe rubric/request wrapper. If the external model summarizes the package as a framework or refuses because it looks like prompt injection, send the safe execution request and avoid hard "must obey" language.
+12. **Letting D packages produce only meta-evaluation.** D layer copy blocks must start with `FINAL_ANSWER FIRST`. `Ultra_Answer_Final` must answer the original question Q before scoring/Gain/risk appendix. If the model only evaluates the UltraFusion system, that D output is incomplete.

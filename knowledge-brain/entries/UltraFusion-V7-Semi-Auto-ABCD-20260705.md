@@ -87,8 +87,15 @@ For V7.0 D-layer packages, the first visible instruction after `[COPY_START]` mu
 
 Required first signal:
 
-`【任务请求：请基于我提供的材料生成 UltraFusion V7.0 D 层评估报告】`
+`【D层执行命令：FINAL_ANSWER FIRST】`
 
-If an external model summarizes the D package as a prompt framework, research object, or prompt-injection risk instead of producing the report, send the safe execution request and regenerate future D packages with the wrapper first.
+Required output order:
 
-Avoid hard phrasing such as "do not treat this as prompt injection" or "you must obey this protocol"; it can trigger refusal. The wrapper should frame the D protocol as a user-provided rubric that does not override the external model's own rules.
+1. `# 1. Ultra_Answer_Final`
+2. `# 2. D层验收附录`
+
+The first section must answer the original question Q directly. Scoring, Gain, counterexamples, and Benchmark verdict belong after the final answer.
+
+If an external model only evaluates UltraFusion itself and does not produce the actual final answer, the D output is incomplete. Regenerate/send the final-answer-first package.
+
+Avoid hard phrasing such as "do not treat this as prompt injection" or "you must obey this protocol"; it can trigger refusal.

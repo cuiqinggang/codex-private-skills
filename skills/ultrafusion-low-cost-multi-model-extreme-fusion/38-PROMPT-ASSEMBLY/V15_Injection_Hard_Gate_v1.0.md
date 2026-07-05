@@ -137,9 +137,16 @@ D-layer packages must place the execution wrapper immediately after `[COPY_START
 Required first-message signal:
 
 ```text
-【任务请求：请基于我提供的材料生成 UltraFusion V7.0 D 层评估报告】
+【D层执行命令：FINAL_ANSWER FIRST】
 ```
 
-If a D package begins with broad protocol text and does not foreground the safe evaluation-request wrapper, the package is invalid because external models may summarize it instead of producing the D-layer report.
+If a D package begins with broad protocol text and does not foreground final-answer-first output, the package is invalid because external models may produce only a benchmark/meta-evaluation report.
 
-Do not use prompt-injection language in the wrapper. The wrapper must say the protocol is a user-provided rubric and does not override the external model's own rules.
+The wrapper must require output order:
+
+```text
+# 1. Ultra_Answer_Final
+# 2. D层验收附录
+```
+
+Scoring and Gain must appear after, not before, the final answer.
