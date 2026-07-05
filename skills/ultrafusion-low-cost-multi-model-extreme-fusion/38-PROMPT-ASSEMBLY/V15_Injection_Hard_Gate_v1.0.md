@@ -103,6 +103,7 @@ UF_PROMPT_ASSEMBLY_FAIL: C_FUSION_OUTPUT_SCHEMA_MISSING
 UF_PROMPT_ASSEMBLY_FAIL: D_LAYER_EXECUTION_COMMAND_MISSING
 UF_PROMPT_ASSEMBLY_FAIL: D_LAYER_V15_FULL_MISSING
 UF_PROMPT_ASSEMBLY_FAIL: D_LAYER_OFFICIAL_PROMPT_MISSING
+UF_D_OUTPUT_FAIL: FINAL_ANSWER_TOO_THIN
 ```
 
 Do not pass an A/B/C/D package if V15 is summarized, abbreviated, rewritten, or left as `<<<V15_FULL>>>`.
@@ -173,3 +174,22 @@ Required D package signals:
 - `C_Fusion`
 
 If the D package includes the wrapper but omits V15 or the official D prompt, invalidate and regenerate the entire D package. Do not send a wrapper-only D package to an external model.
+
+## V7.0 D Output Completeness Gate
+
+A D output is not accepted merely because it starts with `# 1. Ultra_Answer_Final`. The first section must be deep enough to satisfy the original task. For the 30-day product validation benchmark, require:
+
+- copyable 0/A/B/C/D prompt templates
+- complete run record schema with Score, Gain, layer timing, structure break, human error, and privacy fields
+- scoring rubric with calibration method
+- privacy redaction SOP
+- cost/time budget
+- `Gain < 2` attribution tree
+- 30-day experiment plan
+- Go / Internal Tool / No-Go thresholds
+
+If these artifacts are missing, score the D result independently and mark:
+
+```text
+UF_D_OUTPUT_FAIL: FINAL_ANSWER_TOO_THIN
+```

@@ -273,6 +273,31 @@ C_Fusion
 [COPY_END]
 ```
 
+The D wrapper must also enforce a production-depth final answer. If `Ultra_Answer_Final` is only a short summary, high-level principle list, or simplified plan that omits copyable prompts, run schema, privacy SOP, structure-break fields, or failure attribution, the D output is incomplete even if it appears before the appendix.
+
+Required `Ultra_Answer_Final` content floor:
+
+```text
+system goal and boundaries
+0/A/B/C/D flow table
+human copy-paste SOP
+1-person and 3-person role split
+copyable 0/A/B/C/D prompt templates
+Markdown/Excel run record schema
+four-dimension scoring rubric and calibration
+privacy redaction SOP
+time and cost control
+Gain < 2 failure attribution tree
+30-day validation plan
+Go / Internal Tool / No-Go decision thresholds
+```
+
+If the D answer is compressed below this floor:
+
+```text
+UF_D_OUTPUT_FAIL: FINAL_ANSWER_TOO_THIN
+```
+
 ## UltraFusion 6.1B Official Model Route
 
 The official core route is now:
@@ -424,3 +449,4 @@ codex exec --skill ultrafusion-low-cost-multi-model-extreme-fusion
 11. **Using a simplified C prompt in V7.0.** The C layer official prompt is `30-TEMPLATES/C_LAYER_OFFICIAL_FUSION_PROMPT_v20260706.md`. If a C package lacks `复检陌生稿规则`, `四维稠密融合`, or `【最终答案：C_Fusion】`, invalidate and regenerate it.
 12. **Letting D packages produce only meta-evaluation.** D layer copy blocks must start with `FINAL_ANSWER FIRST`. `Ultra_Answer_Final` must answer the original question Q before scoring/Gain/risk appendix. If the model only evaluates the UltraFusion system, that D output is incomplete.
 13. **Forgetting V15 in final-answer-first D packages.** `FINAL_ANSWER FIRST` is only the execution wrapper. It must be shipped together with full canonical V15 and the official D prompt. A D package with the wrapper but without V15 is invalid.
+14. **Accepting a thin D final answer.** A D output can be in the right order and still fail if `Ultra_Answer_Final` is a simplified summary. It must include copyable prompts, run schema, privacy SOP, structure-break/error fields, and a concrete 30-day decision framework.

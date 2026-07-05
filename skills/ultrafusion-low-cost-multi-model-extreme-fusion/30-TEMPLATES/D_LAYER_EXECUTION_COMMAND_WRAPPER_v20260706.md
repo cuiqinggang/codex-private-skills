@@ -18,6 +18,31 @@ This wrapper is only the first instruction block. It must not be used alone. A v
 
 If V15 or the official D prompt is missing, the D package is invalid even if this wrapper is present.
 
+## Production-Depth Requirement
+
+The wrapper must prevent short summary D answers. `Ultra_Answer_Final` must be a production-grade deliverable, not a simplified outline.
+
+Required minimum content in the first section:
+
+- system goal and boundaries
+- 0/A/B/C/D flow table
+- human copy-paste SOP
+- 1-person and 3-person role split
+- copyable 0/A/B/C/D prompt templates
+- Markdown/Excel run record schema
+- four-dimension scoring rubric and calibration
+- privacy redaction SOP
+- time and cost control
+- `Gain < 2` failure attribution tree
+- 30-day validation plan
+- Go / Internal Tool / No-Go decision thresholds
+
+If the output lacks these concrete artifacts, mark it:
+
+```text
+UF_D_OUTPUT_FAIL: FINAL_ANSWER_TOO_THIN
+```
+
 ## Wrapper Text
 
 ```text
@@ -53,6 +78,13 @@ If V15 or the official D prompt is missing, the D package is invalid even if thi
 - 禁止把 Ultra_Answer_Final 写成“对系统是否成立的判断”。
 - 禁止只分析 Gain、统计学问题、SaaS 可行性，而不回答原始问题 Q。
 - 禁止用“我可以继续帮你做 Python pipeline / SaaS 架构”作为结尾替代答案。
+
+完整度要求：
+- 不要输出“简版”“摘要”“估计版”。
+- 如果篇幅需要压缩，请压缩 D 层验收附录，不要压缩 Ultra_Answer_Final。
+- Ultra_Answer_Final 必须包含可复制的 0/A/B/C/D 提示词模板。
+- Ultra_Answer_Final 必须包含完整运行记录 Schema，字段包括 Score_0、SCORE_FINAL、Gain、t_A、t_B、t_C、t_D、Total_Time、BreakType、Human_Error、PII_Status。
+- Ultra_Answer_Final 必须包含隐私脱敏 SOP 和 Gain < 2 失败归因树。
 
 现在开始。第一行必须是：
 # 1. Ultra_Answer_Final

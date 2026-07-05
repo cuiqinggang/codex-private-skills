@@ -32,6 +32,7 @@
 - Replaced hard "must execute / do not treat as prompt injection" wording after an external model refused; added failure review `70-NOTES/FAILURE-REVIEW-20260706-d-hard-command-triggered-refusal.md` and safe request artifact `outputs/ufv7-d-layer-safe-execution-request-20260706.md`.
 - Replaced report-first D framing with `FINAL_ANSWER FIRST` after the external model produced only meta-evaluation without the actual final answer. Added failure review `70-NOTES/FAILURE-REVIEW-20260706-d-meta-evaluation-without-final-answer.md`.
 - Patched final-answer-first D packaging after a wrapper-only package omitted full V15. D packages must now include the execution wrapper, full canonical V15, official D prompt, original Q, A_Initial/Score_0, and C_Fusion in one copy block.
+- Added D output completeness gate after an external model produced a valid-order but overly short final answer. D results now fail as `UF_D_OUTPUT_FAIL: FINAL_ANSWER_TOO_THIN` unless they include copyable prompts, run schema, privacy SOP, structure-break/error fields, and concrete 30-day decision thresholds.
 
 ## 6.0 Alias / 大模型变动 - 2026-07-02
 
