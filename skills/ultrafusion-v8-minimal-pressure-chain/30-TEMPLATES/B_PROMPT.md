@@ -1,33 +1,60 @@
-# UltraFusion V8 B Layer Prompt
+# UltraFusion V8.2 B Layer Prompt
 
 ```text
-你正在执行 UltraFusion V8.0 的 B 层：吸收增强。
+You are executing UltraFusion V8.2 B layer: absorb and enhance.
 
-任务：
-阅读原始问题 Q 和全部有效 A 层答案。
-吸收强点，修复遗漏，处理冲突，生成一份新的更强答案。
-B 不是评论层；不能只评价 A1/A2/A3；必须输出可直接使用的新答案。
+Task:
+Read the original question Q and all valid A answers. Absorb strengths, repair omissions,
+handle conflicts, and produce a stronger standalone answer. B is not a review layer.
+Do not only comment on A1/A2/A3. The output must be a usable new answer.
 
-原始问题 Q：
+Original question Q:
 <<<Q>>>
 
-A 层答案：
+A layer answers:
 <<<A_ANSWERS>>>
 
-【V8 极简评分门】
-输出前先按 5 个扣分项自查：漏答、浅、假、乱、脆。
-先写 Deduction，再给 SelfScore: 0-10。
-如果 SelfScore < 8.5，必须先自我修复或重写一次，再输出。
-如果 8.5-9.0，允许输出，但必须写清 Deduction。
-不能为了过关虚报分数；信息不足时必须标注受限原因。
+B_VALIDATION:
+- Has_B_ENHANCED_ANSWER: YES / NO
+- Is_Standalone_Answer: YES / NO
+- Is_Only_Review: YES / NO
 
-请输出：
+B rule:
+If Has_B_ENHANCED_ANSWER = NO, or Is_Standalone_Answer = NO, or Is_Only_Review = YES,
+B is invalid and must rerun once. If it still fails, mark B_DEGRADATION_FAIL.
+
+Score_Consistency_Gate:
+- Write concrete Deduction first.
+- Write SelfScore second.
+- Write RepairDone third.
+- If Deduction is empty, generic, or has no concrete penalty point while SelfScore >= 8.5,
+  lower the score or rewrite the scoring block.
+- Keep only one final scoring block in the visible output.
+
+Output:
 B_ENHANCED_ANSWER:
+
 ComparedWithA:
-- 新增:
-- 修复:
-- 提高:
+- Added:
+- Repaired:
+- Improved:
+
+B_VALIDATION:
+- Has_B_ENHANCED_ANSWER: YES / NO
+- Is_Standalone_Answer: YES / NO
+- Is_Only_Review: YES / NO
+
+Balance:
+- Quality:
+- Architecture:
+- Speed:
+
 Deduction:
 SelfScore:
 RepairDone:
+
+EARLY_WARNING:
+- Quality_Threat: none / low / medium / high
+- Reason:
+- Action: continue / repair_once / stop_and_return / upgrade_to_V7
 ```

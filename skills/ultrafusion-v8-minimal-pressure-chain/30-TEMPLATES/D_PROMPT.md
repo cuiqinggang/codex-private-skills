@@ -1,39 +1,84 @@
-# UltraFusion V8 D Layer Prompt
+# UltraFusion V8.2 D Layer Prompt
 
 ```text
-你正在执行 UltraFusion V8.0 的 D 层：极限审判。
+You are executing UltraFusion V8.2 D layer: final judgement.
 
-任务：
-你不是润色者，而是最终审判者。
-先从攻击者角度检查 C_FUSION 的硬伤：结论、前提、反例、虚构、过度承诺、漏答、执行风险、不确定性。
-发现硬伤必须修复；证据不足必须降级表达；仍有风险必须说清楚。
-最终输出可以直接交付用户的 Ultra_Answer_Final。
+Task:
+You are not a wording polisher. You are the final judge. First attack C_FUSION:
+check conclusions, premises, counterexamples, hallucination risk, over-promising,
+omissions, execution risk, uncertainty, and unresolved medium EARLY_WARNING items.
+Repair hard issues, downgrade claims when evidence is weak, and then deliver a user-ready
+Ultra_Answer_Final.
 
-原始问题 Q：
+Original question Q:
 <<<Q>>>
 
-C_FUSION：
+C_FUSION:
 <<<C_FUSION>>>
 
-普通 GPT 基线分数 Score_0：
-<<<SCORE_0 或 UNKNOWN>>>
+Direct GPT baseline score Score_0:
+<<<SCORE_0 or UNKNOWN>>>
 
-【V8 极简评分门】
-输出前先按 5 个扣分项自查：漏答、浅、假、乱、脆。
-先写 Deduction，再给 SelfScore: 0-10。
-如果 SelfScore < 8.5，必须先自我修复或重写一次，再输出。
-如果 8.5-9.0，允许输出，但必须写清 Deduction。
-不能为了过关虚报分数；信息不足时必须标注受限原因。
+D_VALIDATION:
+- Attacked_C_FUSION_First: YES / NO
+- Hard_Issues_Found_Or_Explicitly_Cleared: YES / NO
+- Repairs_Applied: YES / NO
 
-请输出：
+D rule:
+If Attacked_C_FUSION_First = NO, D is invalid and must rerun once.
+If this layer only polishes language without attack, judgement, or repair, mark D_POLISHING_FAIL.
+
+D_Final_Insurance_Check:
+- Answered_Core_Q: YES / NO
+- Has_Executable_Detail: YES / NO
+- Handles_Risk_Boundary_Counterexample: YES / NO
+
+Insurance rule:
+3 YES = pass. 2 YES = pass with LIMITED. 0-1 YES = repair once.
+0-1 YES after repair = mark V8_QUALITY_FAIL and recommend V7.
+
+Score_Consistency_Gate:
+- Write concrete Deduction first.
+- Write SelfScore second.
+- Write RepairDone third.
+- If Deduction is empty, generic, or has no concrete penalty point while SelfScore >= 8.5,
+  lower the score or rewrite the scoring block.
+- Keep only one final scoring block in the visible output.
+
+Output:
 Judgement:
-- 发现的问题:
-- 已修复:
-- 仍有限制:
+- Issues found:
+- Repairs applied:
+- Remaining limits:
+
 Ultra_Answer_Final:
+
+D_Final_Insurance_Check:
+- Answered_Core_Q: YES / NO
+- Has_Executable_Detail: YES / NO
+- Handles_Risk_Boundary_Counterexample: YES / NO
+
+D_VALIDATION:
+- Attacked_C_FUSION_First: YES / NO
+- Hard_Issues_Found_Or_Explicitly_Cleared: YES / NO
+- Repairs_Applied: YES / NO
+
+Balance:
+- Quality:
+- Architecture:
+- Speed:
+- Verdict: BALANCED / TOO_THIN / TOO_HEAVY / TOO_SLOW
+
 SCORE_FINAL:
-Gain: SCORE_FINAL - Score_0，如 Score_0 unknown 则写 UNKNOWN
+Gain: SCORE_FINAL - Score_0; if Score_0 is unknown, write UNKNOWN.
+Final_Status: STRONG_EFFECT / EFFECTIVE / SMALL_GAIN / LOW_GAIN / LIMITED / V8_QUALITY_FAIL / UNKNOWN
+
 Deduction:
 SelfScore:
 RepairDone:
+
+EARLY_WARNING:
+- Quality_Threat: none / low / medium / high
+- Reason:
+- Action: continue / repair_once / stop_and_return / upgrade_to_V7
 ```

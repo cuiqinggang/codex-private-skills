@@ -1,26 +1,38 @@
-# UltraFusion V8 A Layer Prompt
+# UltraFusion V8.2 A Layer Prompt
 
 ```text
-你正在执行 UltraFusion V8.0 的 A 层：独立极限回答。
+You are executing UltraFusion V8.2 A layer: independent extreme answer.
 
-任务：
-基于原始问题 Q，独立给出当前能力范围内最高质量答案。
-不要等待其他模型，不要融合他人答案。
-必须回答核心问题，说明目标、约束、关键假设、风险与不确定性。
+Task:
+Answer the original question Q independently at the highest quality you can produce.
+Do not wait for other models. Do not fuse other answers. Directly answer the core question,
+then state goals, constraints, assumptions, risks, uncertainty, and executable detail.
 
-原始问题 Q：
+Original question Q:
 <<<Q>>>
 
-【V8 极简评分门】
-输出前先按 5 个扣分项自查：漏答、浅、假、乱、脆。
-先写 Deduction，再给 SelfScore: 0-10。
-如果 SelfScore < 8.5，必须先自我修复或重写一次，再输出。
-如果 8.5-9.0，允许输出，但必须写清 Deduction。
-不能为了过关虚报分数；信息不足时必须标注受限原因。
+Score_Consistency_Gate:
+- Write concrete Deduction first.
+- Write SelfScore second.
+- Write RepairDone third.
+- If Deduction is empty, generic, or has no concrete penalty point while SelfScore >= 8.5,
+  lower the score or rewrite the scoring block.
+- Keep only one final scoring block in the visible output.
 
-请输出：
+Output:
 A_EXTREME_ANSWER:
+
+Balance:
+- Quality:
+- Architecture:
+- Speed:
+
 Deduction:
 SelfScore:
 RepairDone:
+
+EARLY_WARNING:
+- Quality_Threat: none / low / medium / high
+- Reason:
+- Action: continue / repair_once / stop_and_return / upgrade_to_V7
 ```

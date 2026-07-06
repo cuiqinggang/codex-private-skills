@@ -1,35 +1,63 @@
-# UltraFusion V8 C Layer Prompt
+# UltraFusion V8.2 C Layer Prompt
 
 ```text
-你正在执行 UltraFusion V8.0 的 C 层：压力融合。
+You are executing UltraFusion V8.2 C layer: pressure fusion.
 
-任务：
-阅读原始问题 Q 和全部有效 B 层答案。
-把多个强方案融合成一个统一、清晰、密度更高、冲突更少的候选最终答案。
-不能机械拼接，不能低配总结。
-必须处理冲突，标记弱证据，区分事实/推断/建议，并给 D 层留下重点审判点。
+Task:
+Read the original question Q and all valid B answers. Fuse them into one unified, clear,
+dense, conflict-aware candidate final answer. Do not mechanically stitch. Do not produce
+a low-matching summary. You must handle conflicts, mark weak evidence, compress duplication,
+separate fact/inference/recommendation where needed, and leave judgement points for D.
 
-原始问题 Q：
+Original question Q:
 <<<Q>>>
 
-B 层答案：
+B layer answers:
 <<<B_ANSWERS>>>
 
-【V8 极简评分门】
-输出前先按 5 个扣分项自查：漏答、浅、假、乱、脆。
-先写 Deduction，再给 SelfScore: 0-10。
-如果 SelfScore < 8.5，必须先自我修复或重写一次，再输出。
-如果 8.5-9.0，允许输出，但必须写清 Deduction。
-不能为了过关虚报分数；信息不足时必须标注受限原因。
+C_VALIDATION:
+- Conflict_Handled: YES / NO
+- Weak_Evidence_Marked: YES / NO
+- Duplication_Compressed: YES / NO
+- D_Judgement_Points_Listed: YES / NO
 
-请输出：
+C rule:
+If any field is NO, C is invalid and must rerun once. If it still fails, mark C_STITCHING_FAIL.
+
+Score_Consistency_Gate:
+- Write concrete Deduction first.
+- Write SelfScore second.
+- Write RepairDone third.
+- If Deduction is empty, generic, or has no concrete penalty point while SelfScore >= 8.5,
+  lower the score or rewrite the scoring block.
+- Keep only one final scoring block in the visible output.
+
+Output:
 C_FUSION:
+
 FusionNotes:
-- 冲突处理:
-- 弱证据标记:
-- 重复压缩:
-- D层重点审判点:
+- Conflict handling:
+- Weak evidence marked:
+- Duplication compressed:
+- D judgement points:
+
+C_VALIDATION:
+- Conflict_Handled: YES / NO
+- Weak_Evidence_Marked: YES / NO
+- Duplication_Compressed: YES / NO
+- D_Judgement_Points_Listed: YES / NO
+
+Balance:
+- Quality:
+- Architecture:
+- Speed:
+
 Deduction:
 SelfScore:
 RepairDone:
+
+EARLY_WARNING:
+- Quality_Threat: none / low / medium / high
+- Reason:
+- Action: continue / repair_once / stop_and_return / upgrade_to_V7
 ```

@@ -1,4 +1,4 @@
-# UltraFusion V8 Run Summary
+# UltraFusion V8.2 Run Summary
 
 Question_ID:
 Route: GPT_DIRECT / UF_V8_ABCD_MIN
@@ -6,23 +6,98 @@ Date:
 Models_Used:
 Limited_Model_Diversity: true / false
 
+## V8.2 Gate Trace
+
+Before_A_Route_Gate:
+- Multi_Objective_Tradeoff: YES / NO
+- More_Than_3_Constraints: YES / NO
+- Direct_Answer_Likely_Shallow: YES / NO
+- Wrong_Answer_Cost_High: YES / NO
+- User_Asked_High_Quality_Judgement: YES / NO
+- Matched_Count:
+- Route_Decision:
+
 ## Baseline
+
 Score_0:
 
 ## Layer Scores
+
 A:
 B:
 C:
 D:
 
+## Layer Early Warnings
+
+A_EARLY_WARNING:
+- Quality_Threat:
+- Action:
+B_EARLY_WARNING:
+- Quality_Threat:
+- Action:
+C_EARLY_WARNING:
+- Quality_Threat:
+- Action:
+D_EARLY_WARNING:
+- Quality_Threat:
+- Action:
+
+## Anti-Degradation Validation
+
+B_VALIDATION:
+- Has_B_ENHANCED_ANSWER:
+- Is_Standalone_Answer:
+- Is_Only_Review:
+- Status: PASS / B_DEGRADATION_FAIL / NOT_RUN
+
+C_VALIDATION:
+- Conflict_Handled:
+- Weak_Evidence_Marked:
+- Duplication_Compressed:
+- D_Judgement_Points_Listed:
+- Status: PASS / C_STITCHING_FAIL / NOT_RUN
+
+D_VALIDATION:
+- Attacked_C_FUSION_First:
+- Hard_Issues_Found_Or_Explicitly_Cleared:
+- Repairs_Applied:
+- Status: PASS / D_POLISHING_FAIL / NOT_RUN
+
+D_Final_Insurance_Check:
+- Answered_Core_Q:
+- Has_Executable_Detail:
+- Handles_Risk_Boundary_Counterexample:
+- Status: PASS / LIMITED / V8_QUALITY_FAIL / NOT_RUN
+
+## Score Consistency
+
+Final_Scoring_Block_Count:
+Deduction_Concrete: YES / NO
+SelfScore_Adjusted_When_Deduction_Weak: YES / NO / NOT_NEEDED
+RepairDone_Clear: YES / NO
+
 ## Final
+
 SCORE_FINAL:
 Gain:
-Final_Status: STRONG_EFFECT / EFFECTIVE / SMALL_GAIN / LOW_GAIN / LIMITED / FAILED / UNKNOWN
+Final_Status: STRONG_EFFECT / EFFECTIVE / SMALL_GAIN / LOW_GAIN / LIMITED / V8_QUALITY_FAIL / FAILED / UNKNOWN
+Balance_Status: BALANCED / TOO_THIN / TOO_HEAVY / TOO_SLOW
+
+## Balance
+
+- Quality:
+- Architecture:
+- Speed:
+- Verdict:
+- Quality_Warning_If_TOO_THIN:
+- Rollback_Needed_If_TOO_HEAVY:
+- Speed_Action_If_TOO_SLOW:
 
 ## Notes
-- 缺失模型:
-- 事实不确定:
-- 主要增益:
-- 主要残留风险:
-- 是否需要升级 V7.0 benchmark:
+
+- Missing model:
+- Fact uncertainty:
+- Main gain:
+- Main residual risk:
+- Need V7.0 benchmark:
