@@ -10,6 +10,9 @@
 - Run summary updated: added `V8_2_RC2_Checks`.
 - Failure review updated: added C placeholder/generic-field failures, final-only Balance failure, missing layer EARLY_WARNING, and generic Deduction with high SelfScore.
 - Boundary preserved: no extra layer, no full heavy injection restoration, no long C/D benchmark template restoration.
+- Network upload: GitHub `cuiqinggang/codex-private-skills`, path `skills/ultrafusion-v8-minimal-pressure-chain`.
+- Network commit verified: `2a2c405f071331a73b21378604358b95f0ae464a`.
+- Remote check: `SKILL.md` contains `UltraFusion V8.2-RC2 Minimal Gate Patch`, `C_Content_Density_Gate`, and `SelfScore MUST be <= 7.0`.
 
 ## 2026-07-06 - V8.2 Minimal Gate Patch
 
