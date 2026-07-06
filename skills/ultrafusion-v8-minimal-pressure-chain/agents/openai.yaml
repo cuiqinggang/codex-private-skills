@@ -1,0 +1,4 @@
+interface:
+  display_name: "UltraFusion V8 Minimal Pressure Chain"
+  short_description: "Daily high-value ABCD pressure chain with concise scoring gates."
+  default_prompt: "Use $ultrafusion-v8-minimal-pressure-chain to answer this high-value question with the minimal ABCD pressure chain."
