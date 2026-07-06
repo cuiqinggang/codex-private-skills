@@ -1,9 +1,9 @@
 ---
 name: ultrafusion-v8-minimal-pressure-chain
-description: "Use when a task needs UltraFusion V8.2 Minimal Gate Patch, V8 minimal ABCD pressure chain, Before-A route gate, per-layer EARLY_WARNING, B/C/D anti-degradation validation, SelfScore/Deduction/RepairDone, Gain scoring, or a daily lightweight alternative to the heavier UltraFusion V7 benchmark flow. Trigger for complex/high-value/high-risk/multi-constraint questions where GPT_DIRECT may be too shallow, but full heavy benchmark overhead is not justified."
+description: "Use when a task needs UltraFusion V8.2-RC2 Minimal Gate Patch, V8 minimal ABCD pressure chain, Before-A route gate, per-layer Balance/EARLY_WARNING, C content density gate, B/D anti-degradation negative examples, SelfScore/Deduction/RepairDone, Gain scoring, or a daily lightweight alternative to the heavier UltraFusion V7 benchmark flow. Trigger for complex/high-value/high-risk/multi-constraint questions where GPT_DIRECT may be too shallow, but full heavy benchmark overhead is not justified."
 ---
 
-# UltraFusion V8.2 Minimal Gate Patch
+# UltraFusion V8.2-RC2 Minimal Gate Patch
 
 ## Core Positioning
 
@@ -11,10 +11,10 @@ UltraFusion V8.2 is the daily high-cost-performance production route:
 
 ```text
 V7.0 = heavy benchmark / full audit route
-V8.2 = V8.1 + Before-A route gate + per-layer EARLY_WARNING + B/C/D anti-degradation validation + D final insurance check.
+V8.2-RC2 = V8.2-RC1 + per-layer Balance/EARLY_WARNING repair + C content density gate + B/D rerun negative examples + numeric score consistency limits.
 ```
 
-V8.2 is not a new heavy version. It does not add a layer, does not restore the full heavy injection package, and does not restore long C/D benchmark templates.
+V8.2-RC2 is not a new heavy version. It does not add a layer, does not restore the full heavy injection package, and does not restore long C/D benchmark templates.
 
 Route first:
 
@@ -68,21 +68,32 @@ Apply this in SKILL usage and in A/B/C/D templates:
 
 ```text
 Score_Consistency_Gate:
-1. Write Deduction first.
-2. Write SelfScore second.
-3. Write RepairDone third.
-4. If Deduction is empty, generic, or has no concrete penalty point while SelfScore >= 8.5, lower the score or rewrite the scoring block.
-5. Final visible output may keep only one scoring block.
-6. Remove draft scoring blocks from final output.
+Must write Deduction before SelfScore and RepairDone.
+
+If Deduction is empty (0 concrete items):
+SelfScore MUST be <= 7.0.
+
+If Deduction has only 1 concrete penalty item:
+SelfScore MUST be <= 8.0.
+
+If Deduction has 2+ concrete penalty items:
+SelfScore MAY be 8.5+.
+
+If Deduction is generic, such as "needs improvement" or "could be better"
+without concrete issue, affected section, or repair action, treat it as 0 concrete items.
+
+Final output must contain exactly one scoring block:
+Deduction / SelfScore / RepairDone.
 ```
 
-## Per-Layer Early Warning
+## Per-Layer Balance And Early Warning
 
-Every A/B/C/D layer must end with:
+Every A/B/C/D layer must output its own `Balance` block and end with:
 
 ```text
 EARLY_WARNING:
 - Quality_Threat: none / low / medium / high
+- Balance: OK / WARN
 - Reason:
 - Action: continue / repair_once / stop_and_return / upgrade_to_V7
 ```
@@ -90,9 +101,17 @@ EARLY_WARNING:
 Rules:
 
 ```text
-Quality_Threat = high:
-Repair the current layer at most once. If it remains high, stop the remaining layers,
-return the current best result, and state whether V7 is recommended.
+Quality_Threat = high when:
+- Deduction contains 2+ concrete items in shallow / fake / fragile categories, OR
+- SelfScore <= 7.0, OR
+- the core question is not answered, OR
+- the layer fails its required validation block.
+
+If Quality_Threat = high:
+repair the current layer at most once.
+If it remains high after repair:
+stop the V8 chain and output the best current result with an explicit recommendation:
+continue GPT_DIRECT / retry V8 / upgrade_to_V7.
 
 Quality_Threat = medium:
 Continue to the next layer. D must judge this risk explicitly.
@@ -123,6 +142,18 @@ C_VALIDATION:
 
 C rule:
 If any field is NO, C is invalid and must rerun once. If it still fails, mark C_STITCHING_FAIL.
+
+C_Content_Density_Gate:
+FusionNotes must not be placeholder text.
+- Conflict handling must include at least 1 concrete conflict point, or explicitly state
+  "未发现具体冲突" with reason.
+- Weak evidence marked must include at least 1 weak / uncertain evidence point, or explicitly state
+  "未发现弱证据" with reason.
+- Duplication compressed must identify what repeated content was compressed, using source label,
+  paragraph topic, or keywords.
+- D judgement points must list at least 2 concrete judgement points for D.
+If any field is generic, empty, or only says "已处理 / 已标记 / 已压缩" without concrete content,
+mark C_STITCHING_FAIL and rerun C once.
 ```
 
 ```text

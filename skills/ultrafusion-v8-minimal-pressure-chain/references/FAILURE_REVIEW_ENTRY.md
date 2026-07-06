@@ -17,9 +17,16 @@ Before_A_Route_Gate:
 Observed failure:
 - B became comments:
 - C became stitching:
+- C placeholder pass:
+- C conflict field empty/generic:
+- C weak evidence field empty/generic:
+- C duplicate compression unclear:
 - D became polishing:
 - SelfScore inflated:
 - Deduction empty/generic:
+- Balance only appeared at final D:
+- EARLY_WARNING missing in layer:
+- Deduction generic but SelfScore high:
 - Missing model fabricated:
 - Facts not checked:
 - Gain low or unknown:
@@ -45,6 +52,8 @@ Should this task have used V7.0 instead:
 - If B does not produce `B_ENHANCED_ANSWER`, invalidate B and rerun once.
 - If B is not standalone or is only a review, mark `B_DEGRADATION_FAIL` after one failed rerun.
 - If C lacks conflict handling, weak-evidence marking, duplicate compression, or D judgement points, invalidate C and rerun once.
+- If C fields are generic, empty, or only say "已处理 / 已标记 / 已压缩", mark `C_STITCHING_FAIL` and rerun once.
+- If C duplicate compression does not name source label, paragraph topic, or keywords, mark the density gate failed.
 - If C still fails, mark `C_STITCHING_FAIL`.
 - If D does not attack C before finalizing, invalidate D and rerun once.
 - If D only polishes language without attack, judgement, and repair, mark `D_POLISHING_FAIL`.

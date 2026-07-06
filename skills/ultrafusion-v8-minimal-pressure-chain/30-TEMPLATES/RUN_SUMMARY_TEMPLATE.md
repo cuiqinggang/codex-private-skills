@@ -6,6 +6,19 @@ Date:
 Models_Used:
 Limited_Model_Diversity: true / false
 
+## V8_2_RC2_Checks
+
+- Before_A_Route_Gate:
+- A_EARLY_WARNING:
+- B_VALIDATION:
+- C_VALIDATION:
+- C_Content_Density_Gate:
+- D_VALIDATION:
+- D_Final_Insurance_Check:
+- Score_Consistency_Gate:
+- Final_Balance:
+- Need_Upgrade_To_V7:
+
 ## V8.2 Gate Trace
 
 Before_A_Route_Gate:
@@ -32,15 +45,19 @@ D:
 
 A_EARLY_WARNING:
 - Quality_Threat:
+- Balance:
 - Action:
 B_EARLY_WARNING:
 - Quality_Threat:
+- Balance:
 - Action:
 C_EARLY_WARNING:
 - Quality_Threat:
+- Balance:
 - Action:
 D_EARLY_WARNING:
 - Quality_Threat:
+- Balance:
 - Action:
 
 ## Anti-Degradation Validation
@@ -56,6 +73,13 @@ C_VALIDATION:
 - Weak_Evidence_Marked:
 - Duplication_Compressed:
 - D_Judgement_Points_Listed:
+- Status: PASS / C_STITCHING_FAIL / NOT_RUN
+
+C_Content_Density_Gate:
+- Conflict_Field_Dense:
+- Weak_Evidence_Field_Dense:
+- Duplication_Compression_Clear:
+- D_Judgement_Points_Concrete_2Plus:
 - Status: PASS / C_STITCHING_FAIL / NOT_RUN
 
 D_VALIDATION:

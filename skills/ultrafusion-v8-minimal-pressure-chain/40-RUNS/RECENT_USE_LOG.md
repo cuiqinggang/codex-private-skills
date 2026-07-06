@@ -1,5 +1,16 @@
 # UltraFusion V8 Recent Use Log
 
+## 2026-07-06 - V8.2-RC2 Minimal Repair Patch
+
+- Event: upgraded V8.2-RC1 to V8.2-RC2 with the smallest remaining gate repairs.
+- P0 landed: A/B/C/D output now requires per-layer `EARLY_WARNING` with `Balance: OK / WARN`.
+- P1 landed: C now has `C_Content_Density_Gate` to prevent placeholder FusionNotes from passing.
+- P2 landed: B and D rerun instructions now include negative examples for commentary-only and polishing-only failures.
+- Score gate landed: SKILL.md and A/B/C/D templates now include numeric caps: 0 concrete deductions => SelfScore <= 7.0; 1 concrete deduction => SelfScore <= 8.0; 2+ concrete deductions may be 8.5+.
+- Run summary updated: added `V8_2_RC2_Checks`.
+- Failure review updated: added C placeholder/generic-field failures, final-only Balance failure, missing layer EARLY_WARNING, and generic Deduction with high SelfScore.
+- Boundary preserved: no extra layer, no full heavy injection restoration, no long C/D benchmark template restoration.
+
 ## 2026-07-06 - V8.2 Minimal Gate Patch
 
 - Event: upgraded `ultrafusion-v8-minimal-pressure-chain` from V8.1-style minimal pressure chain to UltraFusion V8.2 Minimal Gate Patch.
@@ -12,6 +23,16 @@
 - Strengthened: Balance verdict rules for `TOO_THIN`, `TOO_HEAVY`, and `TOO_SLOW`.
 - Boundary preserved: no extra layer, no full heavy injection restoration, no long C/D benchmark template restoration.
 - Validation target: run `quick_validate.py` if present; otherwise use manual file/gate checks.
+
+## 2026-07-06 - Desktop 451 dual upload package
+
+- Event: created a platform-specific upload package for the already accepted V8.1 -> V8.2 material.
+- Desktop path: `C:\Users\A\Desktop\451`.
+- DeepSeek route: use `01_DeepSeek_TXT版_上传这个\451_先上传这个到DeepSeek.txt`; do not upload ZIP or the whole folder.
+- Qwen route: use `02_阿里千问_Qwen_DOCX版_上传这个\451_先上传这个到阿里千问.docx`; upload the DOCX file itself, not the folder.
+- Qwen fallback: use `451_阿里千问_DOCX失败时再用这个TXT.txt` only if DOCX upload fails.
+- Local reference: `03_本地完整参考_不用上传`.
+- Validation: DeepSeek package has 3 files; Qwen package has 1 primary DOCX; no ZIP files in `451`; DOCX contains standard `word/document.xml`.
 
 ## 2026-07-06
 
