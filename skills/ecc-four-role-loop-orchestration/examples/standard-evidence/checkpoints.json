@@ -1,0 +1,4 @@
+[
+  {"checkpoint_id":"CP-001","timestamp":"2026-07-19T09:00:00-07:00","layer_number":1,"work_package_ids":["WP-001"],"meaningful_progress":"冻结目标、角色和标准证据模式。","evidence_ids":["EV-START-CONTROL"],"is_final":false},
+  {"checkpoint_id":"CP-002","timestamp":"2026-07-19T09:20:00-07:00","layer_number":12,"work_package_ids":["WP-001"],"meaningful_progress":"十二层、检查、独立审计和中文交付全部关闭。","evidence_ids":["EV-RETURN-CONTROL"],"is_final":true}
+]

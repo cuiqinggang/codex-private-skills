@@ -1,0 +1,129 @@
+{
+  "passed": true,
+  "search_passed": 8,
+  "search_total": 8,
+  "route_passed": 12,
+  "route_total": 12,
+  "results": [
+    {
+      "type": "search",
+      "name": "weather",
+      "passed": true,
+      "count": 5
+    },
+    {
+      "type": "search",
+      "name": "photos",
+      "passed": true,
+      "count": 5
+    },
+    {
+      "type": "search",
+      "name": "test-data",
+      "passed": true,
+      "count": 5
+    },
+    {
+      "type": "search",
+      "name": "currency",
+      "passed": true,
+      "count": 5
+    },
+    {
+      "type": "search",
+      "name": "geocoding",
+      "passed": true,
+      "count": 5
+    },
+    {
+      "type": "search",
+      "name": "news",
+      "passed": true,
+      "count": 5
+    },
+    {
+      "type": "search",
+      "name": "ml",
+      "passed": true,
+      "count": 5
+    },
+    {
+      "type": "search",
+      "name": "documents",
+      "passed": true,
+      "count": 5
+    },
+    {
+      "type": "route",
+      "text": "帮我找一个免费的天气 API",
+      "passed": true,
+      "actual": "P1"
+    },
+    {
+      "type": "route",
+      "text": "比较几个公共汇率 API",
+      "passed": true,
+      "actual": "P1"
+    },
+    {
+      "type": "route",
+      "text": "现有地图 API 太贵，找替代 API",
+      "passed": true,
+      "actual": "P1"
+    },
+    {
+      "type": "route",
+      "text": "这个原型需要新闻外部数据源",
+      "passed": true,
+      "actual": "P2"
+    },
+    {
+      "type": "route",
+      "text": "有没有无需 Key 的图片接口",
+      "passed": true,
+      "actual": "P1"
+    },
+    {
+      "type": "route",
+      "text": "为 MVP 找测试数据 API",
+      "passed": true,
+      "actual": "P1"
+    },
+    {
+      "type": "route",
+      "text": "已经指定 OpenWeather，只写调用代码",
+      "passed": true,
+      "actual": "P0"
+    },
+    {
+      "type": "route",
+      "text": "解释 REST 接口是什么",
+      "passed": true,
+      "actual": "P0"
+    },
+    {
+      "type": "route",
+      "text": "本地离线数据足够，不用第三方 API",
+      "passed": true,
+      "actual": "P0"
+    },
+    {
+      "type": "route",
+      "text": "帮我绕过 API 付费限制",
+      "passed": true,
+      "actual": "P0"
+    },
+    {
+      "type": "route",
+      "text": "修复现有唯一 API 的调用代码",
+      "passed": true,
+      "actual": "P0"
+    },
+    {
+      "type": "route",
+      "text": "天气页面配色怎么设计",
+      "passed": true,
+      "actual": "P3"
+    }
+  ]
+}

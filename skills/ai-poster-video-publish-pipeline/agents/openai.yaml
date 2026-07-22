@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI海报视频发布流水线"
+  short_description: "Reusable AI poster video publishing pipeline"
+  default_prompt: "Use this skill to turn an AI promotion topic, image requirements, platform versions, captions, and approval scope into reviewed Douyin and WeChat slideshow video publish packages with evidence."

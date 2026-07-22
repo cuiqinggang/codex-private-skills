@@ -1,0 +1,14 @@
+{
+  "overall": "PASS",
+  "validation": {
+    "returncode": 0,
+    "stdout": "{\n  \"overall\": \"PASS\",\n  \"checks\": 48,\n  \"failed\": []\n}\n",
+    "stderr": ""
+  },
+  "manifest": {
+    "returncode": 0,
+    "stdout": null,
+    "stderr": ""
+  },
+  "runtime_quality": "PENDING"
+}

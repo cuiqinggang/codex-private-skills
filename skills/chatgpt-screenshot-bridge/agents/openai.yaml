@@ -1,0 +1,4 @@
+interface:
+  display_name: "ChatGPT Screenshot Bridge"
+  short_description: "Use screenshot-first ChatGPT web send/copy bridge"
+  default_prompt: "Use the screenshot bridge to send a prompt to the visible ChatGPT web page and copy the latest answer back."

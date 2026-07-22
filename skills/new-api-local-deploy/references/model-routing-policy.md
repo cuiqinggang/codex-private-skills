@@ -28,21 +28,28 @@ Allow `deepseek-v4-flash` only for:
 ## Current Local Targets
 
 - Hermes default model should be `deepseek-v4-pro`.
-- Hermes base URL should be `http://127.0.0.1:3001/v1`.
-- Telegram router plugin path: `C:\Users\A\.hermes\plugins\telegram_model_router`.
+- Current direct web chain is Open WebUI `3000` -> Hermes `8642` -> DeepSeek.
+- Hermes exposes `hermes-agent` to Open WebUI; Open WebUI should connect to
+  `http://host.docker.internal:8642/v1` and select `hermes-agent`.
+- Hermes itself should route the real upstream model to `deepseek-v4-pro`.
+- The older Hermes base URL `http://127.0.0.1:3001/v1` applies only to the old
+  New API relay setup. Do not use it when the user says New API/3001 is no
+  longer involved.
+${REDACTED_SECRET}
 - Plugin behavior: complex trigger words force `deepseek-v4-pro`; Flash requires explicit low-cost/fast/simple trigger words.
-- New API logs are the source of truth for actual upstream model use.
+- In direct DeepSeek mode, Hermes direct chat and Hermes logs are the source of
+  truth for model connectivity. New API logs apply only to the old relay setup.
 
 ## G01 Inspect Current Routing
 
 Purpose: prove the configured model and router plugin before changing anything.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
 ```powershell
-$cfg = 'C:\Users\A\.hermes\config.yaml'
+${REDACTED_SECRET}
 $i = 0
 Get-Content -LiteralPath $cfg | ForEach-Object {
   $i++
@@ -53,14 +60,17 @@ Get-Content -LiteralPath $cfg | ForEach-Object {
   }
 }
 
-Get-Content -LiteralPath 'C:\Users\A\.hermes\plugins\telegram_model_router\plugin.yaml'
-python -m py_compile 'C:\Users\A\.hermes\plugins\telegram_model_router\__init__.py'
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 ```
 
 Success criteria:
 
 - `model.default` is `deepseek-v4-pro`.
-- `model.base_url` is `http://127.0.0.1:3001/v1`.
+- In direct DeepSeek mode, do not require `model.base_url` to be
+  `http://127.0.0.1:3001/v1`; that belongs to the old New API relay setup.
+- For the Open WebUI web path, the visible model should be `hermes-agent`, and
+  Open WebUI should connect to `http://host.docker.internal:8642/v1`.
 - `telegram_model_router` is enabled in `plugins.enabled`.
 - Plugin compiles.
 
@@ -73,7 +83,7 @@ Failure recovery:
 
 Purpose: prove policy behavior without sending a real Telegram message.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -82,7 +92,7 @@ Command:
 import importlib.util
 from pathlib import Path
 
-p=Path(r'C:\Users\A\.hermes\plugins\telegram_model_router\__init__.py')
+${REDACTED_SECRET}
 spec=importlib.util.spec_from_file_location('telegram_model_router_test', p)
 mod=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
@@ -137,7 +147,7 @@ Success criteria:
 
 Purpose: load changed router code in the running gateway.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -166,9 +176,11 @@ Failure recovery:
 
 ## G04 Verify Actual Model Use
 
-Purpose: prove the actual upstream model from New API logs, not from assistant self-report.
+Purpose: prove the actual upstream model from current runtime evidence, not
+from assistant self-report. In direct DeepSeek mode, use Hermes direct chat and
+Hermes logs. In old New API relay mode, New API logs are also useful.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -185,7 +197,7 @@ $r = Invoke-WebRequest -Uri 'http://127.0.0.1:8642/v1/chat/completions' `
 $r.Content
 
 Start-Sleep -Seconds 2
-Set-Location -LiteralPath 'C:\Users\A\new-api-local'
+${REDACTED_SECRET}
 docker compose logs --tail 80 new-api 2>&1 |
   Select-String -Pattern 'model_name|chat/completions|deepseek-v4' -CaseSensitive:$false |
   Select-Object -Last 30
@@ -194,7 +206,10 @@ docker compose logs --tail 80 new-api 2>&1 |
 Success criteria:
 
 - Hermes chat returns HTTP `200`.
-- New API logs for the chat completion include `model_name":"deepseek-v4-pro"`.
+- In direct DeepSeek mode, Hermes direct chat returns a valid response and
+  `config.yaml` still has `model.default: deepseek-v4-pro`.
+- In old New API relay mode, New API logs for the chat completion include
+  `model_name":"deepseek-v4-pro"`.
 
 Failure criteria:
 
@@ -203,6 +218,7 @@ Failure criteria:
 
 Failure recovery:
 
-- Re-check `C:\Users\A\.hermes\config.yaml` default model.
+${REDACTED_SECRET}
 - Re-check `telegram_model_router` plugin and restart Hermes.
 - Do not rely on the assistant's self-reported model without New API log evidence.
+

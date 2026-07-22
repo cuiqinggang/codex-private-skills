@@ -1,351 +1,314 @@
 ---
 name: ultrafusion-v8-minimal-pressure-chain
-description: "Use when a task needs UltraFusion V8.2-RC2 Minimal Gate Patch, V8 minimal ABCD pressure chain, Before-A route gate, per-layer Balance/EARLY_WARNING, C content density gate, B/D anti-degradation negative examples, SelfScore/Deduction/RepairDone, Gain scoring, or a daily lightweight alternative to the heavier UltraFusion V7 benchmark flow. Trigger for complex/high-value/high-risk/multi-constraint questions where GPT_DIRECT may be too shallow, but full heavy benchmark overhead is not justified."
+description: "当任务需要 UltraFusion V8.2-RC2、V8 极简 ABCD 压力链、GPT + DeepSeek + 千问三模型分工、A/B 三模型、C/D 仅 GPT、Before-A 路由门、逐层提前预警、C 层内容密度门、B/D 防退化、扣分/自评分/修复记录、提升值（Gain） 质量提升评分时使用。适合复杂、高价值、高风险、多约束问题；简单问题走 GPT 直答。"
 ---
 
-# UltraFusion V8.2-RC2 Minimal Gate Patch
+# UltraFusion V8.2-RC2 极简压力链
 
-## Core Positioning
+## 1. 核心定位
 
-UltraFusion V8.2 is the daily high-cost-performance production route:
+UltraFusion V8.2 是日常高性价比答案质量路线。
 
-```text
-V7.0 = heavy benchmark / full audit route
-V8.2-RC2 = V8.2-RC1 + per-layer Balance/EARLY_WARNING repair + C content density gate + B/D rerun negative examples + numeric score consistency limits.
-```
-
-V8.2-RC2 is not a new heavy version. It does not add a layer, does not restore the full heavy injection package, and does not restore long C/D benchmark templates.
-
-Route first:
+它不是 V7.0 重型 基准评测，也不是完整多模型审计包。
 
 ```text
-GPT_DIRECT:
-Simple, low-risk, stable, low-value, or user asks for a short direct answer.
-
-UF_V8_ABCD_MIN:
-Complex, high-value, high-risk, multi-objective, multi-constraint, needs risks,
-counterexamples, acceptance criteria, or a single model is likely to answer shallowly.
+V7.0 = 重型 基准评测 / 完整审计 / 长模板 / 外部模型完整对打
+V8.2-RC2 = 轻量日常生产路线 / ABCD 极简压力链 / 有门禁但不重型化
 ```
 
-If the user explicitly asks for full V7.0, benchmark, complete heavy injection, official C/D packages, or external-model copy-paste benchmarking, use `ultrafusion-low-cost-multi-model-extreme-fusion` instead.
+V8.2-RC2 的目标：
 
-## Before-A Route Gate
+- 比普通 GPT 直答更稳。
+- 比 V7.0 更轻。
+- 保留 A/B/C/D 压力。
+- 不加 E 层。
+- 不恢复 V15 长注入包。
+- 不恢复长 C/D 基准评测 模板。
 
-This is not a new layer. It is a lightweight route decision before A.
+## 2. 路由选择
+
+先判断问题走哪条路。
 
 ```text
-Before_A_Route_Gate:
-Enter UF_V8_ABCD_MIN if the question satisfies any 2 or more:
-1. Needs multi-objective tradeoff.
-2. Has more than 3 constraints.
-3. A single direct model answer is likely to be shallow.
-4. Wrong answer cost is high.
-5. User explicitly asks for high quality, evaluation, architecture, plan, repair, or judgement.
+GPT_DIRECT = GPT 直答
+适合：简单、低风险、稳定事实、低价值、用户要短答案。
 
-Otherwise use GPT_DIRECT.
+UF_V8_ABCD_MIN = V8.2 极简 ABCD 压力链
+适合：复杂、高价值、高风险、多目标、多约束、需要取舍、需要风险和反例、普通直答容易浅的问题。
 ```
 
-## Mandatory V8.2 Rule Card
-
-For `UF_V8_ABCD_MIN`, preserve pressure and cut packaging:
-
-1. A = independent extreme answer.
-2. B = absorb and enhance; not a review of A.
-3. C = pressure fusion; not a stitched summary.
-4. D = final judgement; not polishing.
-5. Every layer must output one final scoring block only.
-6. Deduct against five defects: missing answer, shallow answer, fabricated claim, disorder, and bloated nonsense.
-7. `SelfScore < 8.5` must self-repair or rewrite once before output.
-8. `8.5 <= SelfScore < 9.0` may pass but must explain concrete deductions.
-9. Do not fabricate missing model answers, data, citations, or current model state.
-10. Browse/check primary sources when facts may have changed.
-11. Finish with `Score_0`, `SCORE_FINAL`, and `Gain = SCORE_FINAL - Score_0`.
-12. Admit low or unknown gain; do not inflate the chain verdict.
-
-## Score Consistency Gate
-
-Apply this in SKILL usage and in A/B/C/D templates:
+如果用户明确要 V7.0、完整 基准评测、完整外部多模型审计、完整 V15、官方长 C/D 包，则不要用 V8.2，改用：
 
 ```text
-Score_Consistency_Gate:
-Must write Deduction before SelfScore and RepairDone.
-
-If Deduction is empty (0 concrete items):
-SelfScore MUST be <= 7.0.
-
-If Deduction has only 1 concrete penalty item:
-SelfScore MUST be <= 8.0.
-
-If Deduction has 2+ concrete penalty items:
-SelfScore MAY be 8.5+.
-
-If Deduction is generic, such as "needs improvement" or "could be better"
-without concrete issue, affected section, or repair action, treat it as 0 concrete items.
-
-Final output must contain exactly one scoring block:
-Deduction / SelfScore / RepairDone.
+ultrafusion-low-cost-multi-model-extreme-fusion
 ```
 
-## Per-Layer Balance And Early Warning
+## 3. 官方模型分工
 
-Every A/B/C/D layer must output its own `Balance` block and end with:
+当前 V8.2 默认只使用三个模型：
 
 ```text
-EARLY_WARNING:
-- Quality_Threat: none / low / medium / high
-- Balance: OK / WARN
-- Reason:
-- Action: continue / repair_once / stop_and_return / upgrade_to_V7
+GPT
+DeepSeek
+Qwen / 千问
 ```
 
-Rules:
+Kimi 不在当前默认 V8.2 路线里。
+
+除非用户明确点名要 Kimi，否则不要生成 Kimi 包、Kimi 测试步骤、Kimi 评分位。
+
+### 3.1 分层职责表
+
+| 层级 | GPT | DeepSeek | Qwen / 千问 | 说明 |
+|---|---:|---:|---:|---|
+| 0 普通直答基线 | 是 | 否 | 否 | GPT 普通直答，作为 基线分（Score_0） |
+| A 独立答案 | 是 | 是 | 是 | 三个模型分别写第一版高质量答案 |
+| B 吸收增强 | 是 | 是 | 是 | 三个模型分别阅读有效 A 稿，写更强 B 稿 |
+| C 压力融合 | 是 | 否 | 否 | 只由 GPT 融合有效 B 稿 |
+| D 最终判断 | 是 | 否 | 否 | 只由 GPT 攻击 C、修复、评分、交付 |
+
+### 3.2 Codex 的角色
+
+Codex 不是面向客户的默认回答模型。
+
+Codex 的角色是：
+
+- 编排流程。
+- 生成复制包。
+- 记录文件。
+- 检查门禁。
+- 整理外部回答。
+- 准备下一层提示词。
+- 做验收报告。
+
+面向公共产品时，表述应为：
 
 ```text
-Quality_Threat = high when:
-- Deduction contains 2+ concrete items in shallow / fake / fragile categories, OR
-- SelfScore <= 7.0, OR
-- the core question is not answered, OR
-- the layer fails its required validation block.
-
-If Quality_Threat = high:
-repair the current layer at most once.
-If it remains high after repair:
-stop the V8 chain and output the best current result with an explicit recommendation:
-continue GPT_DIRECT / retry V8 / upgrade_to_V7.
-
-Quality_Threat = medium:
-Continue to the next layer. D must judge this risk explicitly.
-
-Quality_Threat = low/none:
-Continue normally.
+简单问题 -> GPT 直答
+复杂问题 -> V8.2 按模型分工执行
 ```
 
-## B/C/D Anti-Degradation Gates
+不要写成：
 
 ```text
-B_VALIDATION:
-- Has_B_ENHANCED_ANSWER: YES / NO
-- Is_Standalone_Answer: YES / NO
-- Is_Only_Review: YES / NO
-
-B rule:
-If Has_B_ENHANCED_ANSWER = NO, or Is_Standalone_Answer = NO, or Is_Only_Review = YES,
-B is invalid and must rerun once. If it still fails, mark B_DEGRADATION_FAIL.
+简单问题 -> Codex 直答
 ```
+
+## 4. Before-A 路由门
+
+Before-A 是 A 层之前的轻量判断，不是新层。
+
+满足下面任意 2 条或更多，进入 V8.2：
+
+1. 需要多目标取舍。
+2. 约束超过 3 个。
+3. 普通 GPT 直答大概率会浅。
+4. 答错成本高。
+5. 用户明确要求高质量、评估、架构、计划、修复或判断。
+
+否则走 GPT 直答。
+
+## 5. V8.2 必守规则
+
+进入 V8.2 后必须遵守：
+
+1. A 层 = 独立答案。
+2. B 层 = 吸收增强，不是评论 A。
+3. C 层 = 压力融合，不是拼接摘要。
+4. D 层 = 最终判断，不是润色。
+5. 每层只允许一个本层执行自评块；D 层额外允许一个最终答案质量评分块。
+6. 必须针对 5 类问题扣分：漏答、浅、假、乱、废话膨胀。
+7. 自评分低于 8.5，必须修复或重写一次。
+8. 自评分 8.5 到 9.0，可以通过，但必须说明具体扣分。
+9. 不得编造缺失模型回答、数据、引用或当前模型状态。
+10. 事实可能变化时，必须查证或明确标注需要查证。
+11. 最终必须有 基线分（Score_0）、最终答案质量分（SCORE_FINAL）、提升值（Gain）。
+12. 提升值（Gain） 低或未知就诚实承认，不得硬吹。
+
+## 6. 评分一致性门
+
+每层都必须先写具体扣分点，再写自评分，再写已修复内容。
+
+新版评分上限规则：
 
 ```text
-C_VALIDATION:
-- Conflict_Handled: YES / NO
-- Weak_Evidence_Marked: YES / NO
-- Duplication_Compressed: YES / NO
-- D_Judgement_Points_Listed: YES / NO
+1. 没有具体扣分点，且没有说明“为什么扣分很少”的依据：
+   自评分最高 7.0。
 
-C rule:
-If any field is NO, C is invalid and must rerun once. If it still fails, mark C_STITCHING_FAIL.
+2. 只有空泛扣分点，例如“还有提升空间”“可以更好”“需要优化”：
+   自评分最高 8.0。
 
-C_Content_Density_Gate:
-FusionNotes must not be placeholder text.
-- Conflict handling must include at least 1 concrete conflict point, or explicitly state
-  "未发现具体冲突" with reason.
-- Weak evidence marked must include at least 1 weak / uncertain evidence point, or explicitly state
-  "未发现弱证据" with reason.
-- Duplication compressed must identify what repeated content was compressed, using source label,
-  paragraph topic, or keywords.
-- D judgement points must list at least 2 concrete judgement points for D.
-If any field is generic, empty, or only says "已处理 / 已标记 / 已压缩" without concrete content,
-mark C_STITCHING_FAIL and rerun C once.
+3. 有 1 个具体扣分点，并且已经说明影响范围、剩余风险和是否已修复：
+   可以给 8.0 到 8.8。
+
+4. 有 2 个或更多具体扣分点，并且已经说明修复情况：
+   可以给 8.5 以上。
+
+5. 如果确实没有发现明显扣分点，允许 8.5 以上，但必须写清：
+   覆盖了哪些关键要求；
+   为什么扣分很少；
+   仍有哪些边界条件；
+   是否存在事实核查限制。
+
+6. 任何 8.5 以上评分，都必须有以下两类信息之一：
+   至少 1 个具体扣分点；或
+   “未发现明显扣分点”的明确依据和边界说明。
+
+7. 高分但扣分空泛，判为评分虚高，必须降分或重写。
 ```
+
+下面这些不算具体扣分点：
+
+- 还有提升空间。
+- 可以更好。
+- 需要优化。
+- 质量不错但仍可改进。
+
+每层本层执行自评块固定为：
 
 ```text
-D_VALIDATION:
-- Attacked_C_FUSION_First: YES / NO
-- Hard_Issues_Found_Or_Explicitly_Cleared: YES / NO
-- Repairs_Applied: YES / NO
-
-D rule:
-If Attacked_C_FUSION_First = NO, D is invalid and must rerun once.
-If D only polishes language without attack, judgement, or repair, mark D_POLISHING_FAIL.
+具体扣分点：
+自评分：
+已经修复的地方：
 ```
 
-## D Final Insurance Check
+## 7. 8.5 分修复门
 
-After `Ultra_Answer_Final`, D must run:
+A/B/C/D 每层都适用。
 
 ```text
-D_Final_Insurance_Check:
-- Answered_Core_Q: YES / NO
-- Has_Executable_Detail: YES / NO
-- Handles_Risk_Boundary_Counterexample: YES / NO
+自评分 < 8.5：
+必须修复或重写一次，不能直接进入下一层。
+
+8.5 <= 自评分 < 9.0：
+允许进入下一层，但必须写清楚具体扣分点和剩余风险。
+
+自评分 >= 9.0：
+允许进入下一层，但仍然必须有具体扣分点或明确说明为什么扣分很少。
 ```
 
-Rules:
+如果没有具体扣分点却给高分，判为评分虚高，必须降分或重写。
+
+真实修复对照门：
+
+当任一层自评分低于 8.5 时，不能只写“已经修复”。
+必须输出修复对照块：
 
 ```text
-3 YES: pass.
-2 YES: pass with LIMITED.
-0-1 YES: repair once.
-0-1 YES after repair: mark V8_QUALITY_FAIL and recommend V7.
+修复触发：是 / 否
+修复前问题：
+修复方式：
+修复后版本摘要：
+修复后自评分：
+是否仍低于 8.5：是 / 否
+下一步动作：继续 / 再次失败停止 / 升级 V7
 ```
 
-## Quality-Architecture-Speed Balance Gate
+判定规则：
 
-V8.2 optimizes three linked targets, not quality alone:
+- 如果没有“修复前问题”，不算真实修复。
+- 如果没有“修复后版本摘要”，不算真实修复。
+- 如果修复后仍低于 8.5，本层最多允许一次修复；仍失败则停止 V8 链路，输出当前最佳结果，并建议继续 GPT 直答 / 重试 V8 / 升级 V7。
+- 不允许用“已优化表达”“已增强结构”这类空话代替真实修复。
+
+Sections 8-15 contain the detailed pre-review, B/C/D review, benchmarks, fallback, and external-flow procedures. Read [verification-and-external-flow.md](references/verification-and-external-flow.md) whenever those branches apply.
+
+## 16. 硬边界
+
+V8.2 禁止：
+
+- 加 E 层。
+- 恢复 V15 长注入包。
+- 恢复 V7 长 C/D 模板。
+- 生成 Kimi 默认包。
+- 编造缺失模型回答。
+- 多次追加修复导致流程变重。
+- 把低提升值硬说成高质量提升。
+
+如果需要更重、更完整、更可审计的外部 基准评测，应升级 V7。
+
+## 17. 模板文件
+
+当前模板：
 
 ```text
-Quality: the answer must not become shallow, brittle, or under-specified.
-Architecture: the process must stay smaller than V7.0 and avoid route sprawl.
-Speed: the answer may be slower than GPT_DIRECT, but must not feel like a heavy benchmark run.
+30-TEMPLATES/A_PROMPT.md
+30-TEMPLATES/B_PROMPT.md
+30-TEMPLATES/C_PROMPT.md
+30-TEMPLATES/D_PROMPT.md
+30-TEMPLATES/RUN_SUMMARY_TEMPLATE.md
 ```
 
-Before adding any extra step, apply this test:
+普通聊天不要把模板全贴给用户，除非用户要审核或复制包。
+
+## 18. 用户输出规则
+
+普通用户最终只需要看到：
 
 ```text
-Add only if it prevents a likely quality failure or raises expected answer quality.
-Reject if it mainly adds ceremony, labels, audit text, or waiting time.
-Prefer one sharper gate over one more layer.
+最终答案
+简短判断
+质量、架构、速度平衡
+基线分（Score_0）
+最终答案质量分（SCORE_FINAL）
+提升值（Gain）
+路线
 ```
 
-V8.2 must report its own balance:
+如果用户要审计，则提供完整过程文件。
 
-```text
-Balance:
-- Quality:
-- Architecture:
-- Speed:
-- Verdict: BALANCED / TOO_THIN / TOO_HEAVY / TOO_SLOW
-```
+## 19. 失败复盘入口
 
-Balance rules:
-
-```text
-If Verdict = TOO_THIN, mark a quality warning even when Gain passes.
-If Verdict = TOO_HEAVY, the patch is overbuilt and extra structure must be rolled back.
-If Verdict = TOO_SLOW, reduce ceremonial fields first; do not remove B/C/D quality duties.
-```
-
-## Workflow
-
-1. Run `Before_A_Route_Gate`: decide `GPT_DIRECT` or `UF_V8_ABCD_MIN`.
-2. For GPT direct answers, answer normally and keep the response concise.
-3. For V8 chain work, estimate or record `Score_0` for a direct GPT baseline.
-4. Run A layer with one to three independent drafts. Prefer two drafts for cost/performance; one draft is allowed when tools/models are limited.
-5. Run B layer to produce a stronger new answer from valid A drafts, then apply `B_VALIDATION`.
-6. Run C layer to fuse valid B drafts into one candidate final answer, then apply `C_VALIDATION`.
-7. Run D layer to attack, repair, deliver the final answer, then apply `D_VALIDATION` and `D_Final_Insurance_Check`.
-8. Apply `Score_Consistency_Gate` and `Balance` before final delivery.
-9. Record a run summary when the task is important enough to preserve.
-
-Default low-cost model pattern:
-
-```text
-A: 1-3 independent drafts, ideally GPT + one other available model.
-B: one stronger synthesis draft.
-C: one fusion pass.
-D: one final judgement pass.
-```
-
-When only one model is available, still keep layer pressure and mark:
-
-```text
-Limited_Model_Diversity: true
-```
-
-## Hard Boundaries
-
-Do not add extra layers, side routes, long rubric tables, full heavy injection blocks, long benchmark C/D templates, or repeated scoring blocks to V8.2.
-
-If a repair would add more than one extra pass, either accept a limited result with clear warning or upgrade to V7.0.
-
-## Layer Templates
-
-Use these copy blocks when the user needs manual execution, external models, or preserved run artifacts:
-
-- `30-TEMPLATES/A_PROMPT.md`
-- `30-TEMPLATES/B_PROMPT.md`
-- `30-TEMPLATES/C_PROMPT.md`
-- `30-TEMPLATES/D_PROMPT.md`
-- `30-TEMPLATES/RUN_SUMMARY_TEMPLATE.md`
-
-Do not paste all templates into normal chat unless the user asks for copy blocks. For ordinary Codex work, apply the protocol internally and return the final answer plus a compact audit.
-
-## Output Policy
-
-For most user-facing answers, keep the visible output practical:
-
-```text
-Final answer
-Compact judgement
-Balance:
-Score_0:
-SCORE_FINAL:
-Gain:
-Route:
-```
-
-For layer copy blocks, final output must contain exactly one final scoring block:
-
-```text
-Deduction:
-SelfScore:
-RepairDone:
-```
-
-Internal repair notes may be used while thinking, but do not repeat multiple scoring blocks in the final layer output.
-
-For preserved runs, save:
-
-```text
-Q.md
-A_results.md
-B_results.md
-C_fusion.md
-D_final.md
-RUN_SUMMARY.md
-```
-
-Suggested run log location:
-
-```text
-40-RUNS/RECENT_USE_LOG.md
-```
-
-## Failure Review Entry
-
-If a V8.2 run feels weak, log the failure in:
+如果 V8.2 运行变弱、变乱、变假、提升值（Gain） 低，记录到：
 
 ```text
 references/FAILURE_REVIEW_ENTRY.md
 ```
 
-Use the failure review when:
+重点记录：
 
-- B becomes comments instead of a new answer.
-- C becomes paste-together summary.
-- D only polishes language.
-- SelfScore is high but deduction is empty.
-- Gain is below `0.5` on a task that should have benefited.
-- A model answer is missing and the chain accidentally invents it.
-- Early warning remains high after one repair.
-- Final insurance fails and V7 may be required.
+- B 层是否变成评论。
+- C 层是否变成拼接。
+- D 层是否只是在润色。
+- 是否高分但无具体扣分。
+- 是否缺少普通 GPT 基线。
+- 是否把 Kimi 错加进默认路线。
+- 是否把 C/D 错分给 DeepSeek 或千问。
+- 是否编造缺失模型答案。
+- 是否需要升级 V7。
 
-## Gain Verdict
+## 20. 提升值（Gain） 判断
 
 ```text
-Gain < 0.5: LOW_GAIN; chain likely not worth it.
-0.5 <= Gain < 1.0: SMALL_GAIN; use for medium-value tasks only.
-1.0 <= Gain < 2.0: EFFECTIVE; clear daily value.
-Gain >= 2.0: STRONG_EFFECT; UltraFusion clearly helped.
-UNKNOWN: insufficient baseline or scoring evidence.
+提升值（Gain） < 0.5：低收益，不值得走链路。
+0.5 <= 提升值（Gain） < 1.0：小收益，只适合中等价值任务。
+1.0 <= 提升值（Gain） < 2.0：有效，有明显日常价值。
+提升值（Gain） >= 2.0：强效果，UltraFusion 明显有帮助。
+无法判断：缺少基线或评分证据。
 ```
 
-V8.2 is allowed to produce smaller gains than V7.0 because its purpose is lower cost and lower friction. If the task needs maximum auditability, upgrade to V7.0 rather than stretching V8.2.
+V8.2 允许提升值小于 V7，因为它追求轻量高性价比。
 
-## Knowledge Reuse Hook
+如果任务需要最大审计强度，不要硬拉长 V8.2，应升级 V7。
 
-Before complex related work, run or mentally apply the reuse check:
+## 21. 开工前复用检查
+
+复杂相关任务前，检查：
 
 ```powershell
-python C:\Users\A\.codex\skills\codex-video-to-usable-skill-loop\scripts\preflight_reuse_check.py "UltraFusion V8.2 minimal gate patch"
+${REDACTED_SECRET}
 ```
 
-Next-run instruction: when a user asks for `UltraFusion V8`, `UltraFusion V8.2`, `minimal pressure chain`, `ABCD minimal`, `high-cost-performance production`, `SelfScore Deduction RepairDone`, `Gain acceptance`, `Before-A route gate`, or `EARLY_WARNING`, load this skill first and use V8.2 unless the user explicitly asks for V7.0 heavy benchmark.
+触发关键词：
+
+- UltraFusion V8
+- UltraFusion V8.2
+- V8.2-RC2
+- 极简压力链
+- ABCD 极简
+- GPT + DeepSeek + 千问
+- A/B 三模型
+- C/D GPT
+- 提升值（Gain） 验收
+- 8.5 分修复门
+

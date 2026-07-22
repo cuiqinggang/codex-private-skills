@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "missing_files": [],
+  "simulation_10_of_10": true,
+  "weighted_pressure_0_to_100": true,
+  "readonly_prompt_sha256_verified": true,
+  "readonly_prompt_sha256": "1E85CF5234527B7F491823EF8755C6940D4FD96C608B0D0866A0CFE8D0BF4EDE",
+  "site_system_test_10_of_10": true,
+  "private_site_deployed_owner_only": true,
+  "site_url": "https://ultrafusion-test-lab.bcdfd9vhfz.chatgpt.site",
+  "maturity_level_locked_at_L3": true,
+  "evidence_template_count": 12
+}

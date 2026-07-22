@@ -1,0 +1,8 @@
+claim,threshold,actual,status,evidence_path,evidence_level,notes
+正确内容覆盖率,100%,,,EVIDENCE_REQUIRED.json,E3,
+错误内容残留,0,,,EVIDENCE_FORBIDDEN.json,E3,
+锁定文件哈希,unchanged,,,MANIFEST_SHA256.txt,E3,
+镜像字节一致,100%,,,TREE_COMPARE.json,E3,
+最终ZIP冷启动,PASS,,,cold_zip/report.json,E3,
+最终7z冷启动,PASS/PENDING,,,cold_7z/report.json,E3,
+真实运行质量,PASS/PENDING,,,runtime_report.md,E4,

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feishu Codex Bridge Maintenance"
+  short_description: "Diagnose, restart, and monitor the local Feishu to Codex bridge."
+  default_prompt: "Use $feishu-codex-bridge-maintenance to check my Feishu Codex bridge health and recover it safely."

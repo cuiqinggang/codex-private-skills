@@ -57,7 +57,7 @@ Command:
 ```powershell
 $ErrorActionPreference='Stop'
 $Task='HERMES-014-MINIMAL-CLEAN-STATE-20260522'
-$Root="C:\Users\A\Desktop\1\output\$Task"
+${REDACTED_SECRET}
 $Disabled="$Root\disabled-startup"
 New-Item -ItemType Directory -Force $Disabled | Out-Null
 $Startup=[Environment]::GetFolderPath('Startup')
@@ -80,8 +80,8 @@ NewAPI / proxy routing in `.env`.
 Required location:
 
 ```text
-C:\Users\A\.hermes\.env
-C:\Users\A\.hermes\config.yaml
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 ```
 
 Rules:
@@ -99,7 +99,7 @@ After editing, parse `config.yaml`:
 ```powershell
 @'
 import pathlib, yaml
-p = pathlib.Path(r'C:\Users\A\.hermes\config.yaml')
+${REDACTED_SECRET}
 with p.open('r', encoding='utf-8-sig') as f:
     yaml.safe_load(f)
 print('YAML_PARSE_PASS')
@@ -132,7 +132,7 @@ Move the key into Hermes without printing it:
 
 ```powershell
 $ErrorActionPreference='Stop'
-$envPath='C:\Users\A\.hermes\.env'
+${REDACTED_SECRET}
 $Stamp=Get-Date -Format 'yyyyMMdd_HHmmss'
 $key = docker exec new-api-postgres psql -U newapi -d newapi -Atc "select key from channels where id=2 and status=1 and name='DeepSeek-V4-Pro-CN' and test_model='deepseek-v4-pro' limit 1;"
 $key = ($key | Select-Object -First 1).Trim()
@@ -148,7 +148,7 @@ $out=foreach($l in $lines){
     $l
   }
 }
-if(-not $found){ $out = @('DEEPSEEK_API_KEY='+$key) + $out }
+${REDACTED_SECRET}
 Set-Content -Encoding UTF8 -LiteralPath $envPath -Value $out
 'G00_4_PASS_DEEPSEEK_V4_PRO_KEY_MOVED_TO_HERMES_ENV'
 'KEY_LENGTH='+$key.Length
@@ -189,7 +189,7 @@ if($r.StatusCode -eq 200){'G00_5_PASS_MINIMAL_HERMES_STARTED'}else{'G00_5_FAIL_H
 Command:
 
 ```powershell
-$Root='C:\Users\A\Desktop\1\output\HERMES-014-MINIMAL-CLEAN-STATE-20260522'
+${REDACTED_SECRET}
 $Art="$Root\artifacts"
 New-Item -ItemType Directory -Force $Art | Out-Null
 $Out="$Art\G05-api-check-after-key-migration.txt"
@@ -214,8 +214,9 @@ Success:
 ## 2026-05-22 Evidence
 
 - DeepSeek 401 was fixed by moving the active New API V4 Pro key into
-  `C:\Users\A\.hermes\.env`.
+${REDACTED_SECRET}
 - `G05-api-check-after-key-migration.txt` showed `MODELS_STATUS=200`,
   `CHAT_STATUS=200`, and `HERMES_MINIMAL_DEEPSEEK_OK`.
 - `G06-final-process-state-retry.txt` showed one 8642 listener and no NewAPI /
   Watchdog / AutoRecover process.
+

@@ -6,15 +6,15 @@ This is the user's phase-one local AI API gateway deployment. It is meant for on
 
 ## Canonical Locations
 
-- Skill source: `C:\Users\A\.codex\skills\new-api-local-deploy`
+${REDACTED_SECRET}
 - H drive mirror: `H:\CodexSkills\new-api-local-deploy`
-- Live deployment: `C:\Users\A\new-api-local`
+${REDACTED_SECRET}
 - Live files:
-  - `C:\Users\A\new-api-local\docker-compose.yml`
-  - `C:\Users\A\new-api-local\.env`
-  - `C:\Users\A\new-api-local\README_LOCAL.md`
-  - `C:\Users\A\new-api-local\data`
-  - `C:\Users\A\new-api-local\logs`
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 
 ## Port Layout
 
@@ -84,7 +84,7 @@ Volumes:
 Core environment:
 
 ```text
-SQL_DSN=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+${REDACTED_SECRET}
 REDIS_CONN_STRING=redis://:${REDIS_PASSWORD}@redis:6379
 SESSION_SECRET=${SESSION_SECRET}
 CRYPTO_SECRET=${CRYPTO_SECRET}
@@ -223,14 +223,14 @@ after reboot/login without manual Codex repair.
 
 Files:
 
-- Script: `C:\Users\A\.hermes\gateway-service\Hermes_NewAPI_AutoRecover.ps1`
-- Wrapper: `C:\Users\A\.hermes\gateway-service\Hermes_NewAPI_AutoRecover.cmd`
-- Startup fallback: `C:\Users\A\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Hermes_NewAPI_AutoRecover.cmd`
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 - Scheduled task: `HermesNewApiAutoRecover_Logon`
-- Logs: `C:\Users\A\.hermes\logs\newapi-autorecover-YYYYMMDD.log`
+${REDACTED_SECRET}
 - Compatibility shims for older startup/task references:
-  - `C:\Users\A\Hermes_AutoStart\Run-HermesGatewayWatchdog.cmd`
-  - `C:\Users\A\Hermes_AutoStart\HermesGatewayWatchdog.ps1`
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 
 The compatibility shims do not restore the old WSL/OpenClaw path. They only
 delegate stale Windows startup references to
@@ -241,7 +241,7 @@ Default automatic behavior:
 1. Acquire a global mutex so duplicate logon/startup launches do not overlap.
 2. Start Docker Desktop if the daemon is unavailable, then wait up to 300 seconds.
 3. Run `docker compose config --quiet` and `docker compose up -d` from
-   `C:\Users\A\new-api-local`.
+${REDACTED_SECRET}
 4. Wait for `new-api-postgres`, `new-api-redis`, and `new-api` to be running
    and healthy.
 5. Start `open-webui-clean` and wait for healthy/running.
@@ -262,13 +262,13 @@ not run model chat completions, to avoid boot-time message spam or token/quota
 consumption. For a manual full relay probe, run:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Users\A\.hermes\gateway-service\Hermes_NewAPI_AutoRecover.ps1" -FullProbe
+${REDACTED_SECRET}
 ```
 
 For a manual Telegram outbound smoke test, run:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Users\A\.hermes\gateway-service\Hermes_NewAPI_AutoRecover.ps1" -TelegramSmoke
+${REDACTED_SECRET}
 ```
 
 Verify automation installation:
@@ -276,7 +276,7 @@ Verify automation installation:
 ```powershell
 Get-ScheduledTask -TaskName "HermesNewApiAutoRecover_Logon"
 Test-Path "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\Hermes_NewAPI_AutoRecover.cmd"
-Get-Content "C:\Users\A\.hermes\logs\newapi-autorecover-$(Get-Date -Format yyyyMMdd).log" -Tail 40
+${REDACTED_SECRET}
 ```
 
 For the full post-reboot and current-state verification sequence, including
@@ -332,7 +332,7 @@ curl.exe http://localhost:3001/v1/chat/completions -H "Content-Type: application
 After any update to this skill:
 
 ```powershell
-$src = 'C:\Users\A\.codex\skills\new-api-local-deploy'
+${REDACTED_SECRET}
 $dst = 'H:\CodexSkills\new-api-local-deploy'
 New-Item -ItemType Directory -Path (Split-Path $dst) -Force | Out-Null
 robocopy $src $dst /MIR
@@ -341,7 +341,7 @@ robocopy $src $dst /MIR
 Then verify both copies:
 
 ```powershell
-$src = 'C:\Users\A\.codex\skills\new-api-local-deploy'
+${REDACTED_SECRET}
 $dst = 'H:\CodexSkills\new-api-local-deploy'
 $srcFiles = Get-ChildItem -LiteralPath $src -Recurse -File | ForEach-Object {
   $rel = $_.FullName.Substring($src.Length).TrimStart('\')

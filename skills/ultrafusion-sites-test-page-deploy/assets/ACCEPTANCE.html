@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UltraFusion Sites 测试页面技能包验收</title>
+<style>
+body{margin:0;background:#f4f6fb;color:#172033;font-family:"Segoe UI","Microsoft YaHei",sans-serif}main{max-width:920px;margin:40px auto;padding:0 18px}.card{background:#fff;border:1px solid #dfe5ef;border-radius:16px;padding:24px;box-shadow:0 12px 35px #1d2a4412}h1{margin-top:0}.pass{display:inline-block;padding:7px 12px;border-radius:999px;background:#dcfce7;color:#166534;font-weight:800}li{margin:10px 0}code{background:#eef2ff;padding:2px 6px;border-radius:6px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}.grid div{padding:15px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0}.grid strong{display:block;font-size:1.25rem;margin-top:5px}@media(max-width:650px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main><section class="card">
+<span class="pass">SKILL PACKAGE PASS</span>
+<h1>UltraFusion Sites 测试页面集成发布</h1>
+<p>把已验证的真实站点定位、Worktree 隔离、最小首屏集成、五套虚拟测试、现有 Sites 版本发布和原网址复验固化为可重复流程。</p>
+<div class="grid">
+<div>本地虚拟测试<strong>5/5</strong></div>
+<div>原业务回归<strong>10/10</strong></div>
+<div>关键截图<strong>15</strong></div>
+<div>生产控制台错误<strong>0</strong></div>
+</div>
+<h2>防误报门禁</h2>
+<ul>
+<li>没有真实源码/Git/Sites 对应关系就停止。</li>
+<li>没有 deployment succeeded 和原网址复验就不能称为已发布。</li>
+<li>虚拟测试通过后仍是：真实样本 0 / L3 / REVISE。</li>
+<li>最终发布状态：DEPLOYED_MINIMAL_PATCH_5_OF_5_PASS_WAITING_L4。</li>
+</ul>
+<p>技能入口：$ultrafusion-sites-test-page-deploy</p>
+</section></main></body>
+</html>

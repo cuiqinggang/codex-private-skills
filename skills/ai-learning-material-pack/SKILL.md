@@ -58,7 +58,7 @@ Use three levels:
 3. Load [update-and-verification.md](references/update-and-verification.md) before checking links or publishing a refreshed version.
 4. Search the web when links may be stale. Prefer official docs, stable open-source tutorials, mature public videos, and Chinese-friendly resources.
 5. Update the WeChat document first, then mirror changes into this skill's references.
-6. Save a copy under `H:\Hermes_Skills\AI学习资料包` when the user asks for H-drive backup.
+6. Never write a copy to H. A C-to-K backup may be performed only after the C package validates and the user explicitly approves that exact backup operation.
 7. Verify with the skill validator and a basic link extraction/check where feasible.
 
 ## Output Files
@@ -70,22 +70,21 @@ For a normal refresh, produce or update:
 - `链接验证记录.md`
 - `codex_plan.md` when an execution plan is needed
 - Skill references under `references/`
-- H-drive backup under `H:\Hermes_Skills\AI学习资料包`
+- Optional approved K-drive backup, gated by C validation plus explicit per-operation user approval
 
 ## Verification
 
 Validate the skill:
 
 ```powershell
-python "C:\Users\A\.codex\skills\.system\skill-creator\scripts\quick_validate.py" "C:\Users\A\.codex\skills\ai-learning-material-pack"
+${REDACTED_SECRET}
 ```
 
 Check generated files exist:
 
 ```powershell
-Test-Path "C:\Users\A\.codex\skills\ai-learning-material-pack\SKILL.md"
-Test-Path "C:\Users\A\.codex\skills\ai-learning-material-pack\references\wechat-pack.md"
-Test-Path "H:\Hermes_Skills\AI学习资料包"
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 ```
 
 If link checks fail because a platform blocks automated requests, record the failure in `链接验证记录.md` and use manual browser verification or user feedback before deleting the link.

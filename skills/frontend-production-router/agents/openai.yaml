@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Production Router"
+  short_description: "网站克隆、原创设计系统与视觉验收的统一生产编排路由"
+  default_prompt: "Use $frontend-production-router to classify this frontend task and run the correct clone, design-system, and acceptance flow."

@@ -1,0 +1,20 @@
+{
+  "final_status":"PASS",
+  "status_code_chinese":"通过：全部目标和关键关口已接受。",
+  "elapsed_minutes":20,
+  "final_signer_agent_id":"root",
+  "twelve_layers_complete":true,
+  "real_multi_agent_accepted":true,
+  "skill_gates_accepted":true,
+  "deterministic_checks_accepted":true,
+  "independent_audit_accepted":true,
+  "delivery_safety_accepted":true,
+  "handoff_accepted":true,
+  "open_blockers":[],
+  "open_rejections":[],
+  "early_completion_assessment":{"auditor_agent_id":"audit-1","reliable_history_available":false,"history_basis_evidence_ids":[],"expected_duration_lower_minutes":0,"is_anomalously_early":true,"goal_count":1,"work_package_count":1,"artifact_count":1,"check_count":2,"basis_chinese":"本示例没有可靠同类历史范围，因此按首次运行规则进行完整保守复核，不使用固定比例。"},
+  "early_completion_review":{"auditor_agent_id":"audit-1","accepted":true,"goal_coverage_complete":true,"all_work_packages_handled":true,"required_skills_used":true,"multi_agent_receipts_complete":true,"real_outputs_present":true,"deterministic_checks_run":true,"negative_cases_run":true,"no_skipped_items":true,"independent_audit":true,"evidence_ids":["AUDIT-001"],"reason_chinese":"目标、工作包、真实角色、产物、成功和错误案例均已逐项复核，没有靠等待补时间。"},
+  "platform_receipts_recheck":{"auditor_agent_id":"audit-1","accepted":true,"method_chinese":"通过受信平台事件界面核对全部回执编号、运行编号、父子关系和起止时间。","evidence_ids":["EV-START-CONTROL","EV-START-MATERIALS","EV-START-EXECUTION","EV-START-AUDIT","EV-RETURN-MATERIALS","EV-ARTIFACT-001","EV-CHECK-SUCCESS","EV-CHECK-NEGATIVE","EV-RETURN-EXECUTION","EV-RETURN-AUDIT","EV-RETURN-CONTROL"]},
+  "final_acceptance_evidence_id":"FINAL-001",
+  "handoff":{"handoff_evidence_id":"HANDOFF-001","recovery_entry":"从run-config.json和run-ledger.json恢复，先复核十二层标准校验值。","remaining_risks":["结构验证不能单独证明平台事件确由平台签发，仍需第9层核对。"]}
+}

@@ -1,4 +1,0 @@
-interface:
-  display_name: "OpenClaw Upgrade No Model"
-  short_description: "Upgrade and verify OpenClaw without connecting models."
-  default_prompt: "Upgrade OpenClaw to the latest stable version, verify transport health, and explicitly avoid model/provider/API-key setup."

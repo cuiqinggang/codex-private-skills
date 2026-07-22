@@ -1,0 +1,3 @@
+[
+  {"tool_name":"Python验证器","source":"本技能脚本","stateful":false,"auth_required":false,"context_cost":"低","secret_exposure_risk":"低且不得保存密钥","enabled_for_stage":[8,12],"reason":"检查结构和硬门"}
+]

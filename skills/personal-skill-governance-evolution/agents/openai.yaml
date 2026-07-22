@@ -1,0 +1,7 @@
+interface:
+  display_name: "个人技能包治理与进化"
+  short_description: "治理个人技能库，并用联网同任务对标决定吸收、保留或回滚"
+  default_prompt: "Use $personal-skill-governance-evolution to cluster relevant local skills, benchmark traceable external candidates on the same normal, boundary, and recovery tasks, then safely absorb only proven improvements."
+
+policy:
+  allow_implicit_invocation: false

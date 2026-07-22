@@ -1,4 +1,4 @@
 interface:
-  display_name: "UltraFusion V8 Minimal Pressure Chain"
-  short_description: "Daily high-value ABCD pressure chain with concise scoring gates."
-  default_prompt: "Use $ultrafusion-v8-minimal-pressure-chain to answer this high-value question with the minimal ABCD pressure chain."
+  display_name: "UltraFusion V8.2 极简压力链"
+  short_description: "日常复杂问题使用的轻量 ABCD 答案质量提升流程。"
+  default_prompt: "请使用 UltraFusion V8.2 极简压力链回答这个高价值问题。"

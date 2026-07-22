@@ -9,7 +9,7 @@ DEEPSEEK_V4PRO_CODEX_BACKUP_OK
 ## 1. Default Model
 
 ```powershell
-$c = Get-Content -LiteralPath "C:\Users\A\.codex\config.toml" -Raw
+${REDACTED_SECRET}
 [regex]::Match($c, '(?m)^\s*model\s*=\s*"([^"]+)"').Groups[1].Value
 ```
 
@@ -18,7 +18,7 @@ Expected: `gpt-5.5`.
 ## 2. Superpowers
 
 ```powershell
-Select-String -LiteralPath "C:\Users\A\.codex\config.toml" -Pattern 'superpowers'
+${REDACTED_SECRET}
 ```
 
 Expected: match exists.
@@ -26,7 +26,7 @@ Expected: match exists.
 ## 3. No Flash In Default Config
 
 ```powershell
-Select-String -LiteralPath "C:\Users\A\.codex\config.toml" -Pattern 'deepseek-v4-flash' # forbidden model check only
+${REDACTED_SECRET}
 ```
 
 Expected: no match.
@@ -44,7 +44,7 @@ Expected: status is healthy.
 Run:
 
 ```powershell
-& "C:\Users\A\.codex\skills\codex-deepseek-v4pro-ccx-ccswitch-replay\scripts\verify-deepseek-v4pro-backup.ps1"
+${REDACTED_SECRET}
 ```
 
 Expected: `DEEPSEEK_V4PRO_CODEX_BACKUP_OK`.
@@ -68,9 +68,10 @@ codex exec `
   --ephemeral `
   --ignore-rules `
   -s read-only `
-  -C "C:\Users\A\Desktop\1" `
+${REDACTED_SECRET}
   "Reply exactly: DEEPSEEK_V4PRO_CODEX_BACKUP_OK"
 Remove-Item Env:\OPENAI_API_KEY -ErrorAction SilentlyContinue
 ```
 
 Expected: exit code `0` and exact marker.
+

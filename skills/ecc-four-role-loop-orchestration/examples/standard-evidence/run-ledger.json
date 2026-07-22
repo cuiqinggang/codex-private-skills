@@ -1,0 +1,28 @@
+{
+  "requirements": [
+    {"requirement_id":"REQ-001","description_chinese":"生成一个可验证的中文标准证据示例。","acceptance_criteria":"七个文件齐全并通过标准验证器。"}
+  ],
+  "layers": [
+    {"layer_number":1,"english_name":"Control Plane / Orchestrator","chinese_name":"主控调度层","status":"PASS","skippable":false,"actual_inputs":["REQ-001"],"actual_actions":["冻结目标、权限、角色和标准证据模式"],"new_artifacts":["运行配置"],"evidence_ids":["REQ-001"],"next_gate_or_failure_return":"目标冻结后进入第2层"},
+    {"layer_number":2,"english_name":"Short Entry / Memory","chinese_name":"短入口 / 项目记忆层","status":"PASS","skippable":false,"actual_inputs":["当前技能目录"],"actual_actions":["隔离历史资料并确认当前标准"],"new_artifacts":["可信短入口"],"evidence_ids":["EV-RETURN-MATERIALS"],"next_gate_or_failure_return":"当前资料可信后进入第3层"},
+    {"layer_number":3,"english_name":"Skills / Progressive Disclosure","chinese_name":"技能按需加载 / 渐进加载层","status":"PASS","skippable":false,"actual_inputs":["技能清单"],"actual_actions":["确认本例没有必需外部领域技能"],"new_artifacts":["无外部技能理由"],"evidence_ids":["EV-RETURN-MATERIALS"],"next_gate_or_failure_return":"技能关口明确后进入第4层"},
+    {"layer_number":4,"english_name":"Planning / Work Decomposition","chinese_name":"任务拆解层","status":"PASS","skippable":false,"actual_inputs":["REQ-001"],"actual_actions":["建立WP-001及验收、回滚和停止条件"],"new_artifacts":["WP-001"],"evidence_ids":["WP-001"],"next_gate_or_failure_return":"工作包可执行后进入第5层"},
+    {"layer_number":5,"english_name":"Subagents / Context Isolation","chinese_name":"子智能体 / 上下文隔离层","status":"PASS","skippable":false,"actual_inputs":["四类角色计划"],"actual_actions":["核对四个独立上下文、空间和系统事件"],"new_artifacts":["四类角色运行记录"],"evidence_ids":["EV-START-CONTROL","EV-START-MATERIALS","EV-START-EXECUTION","EV-START-AUDIT"],"next_gate_or_failure_return":"真实角色成立后进入第6层"},
+    {"layer_number":6,"english_name":"Execution Plane","chinese_name":"执行平面","status":"PASS","skippable":false,"actual_inputs":["WP-001"],"actual_actions":["工程执行者生成第0轮示例产物和声明"],"new_artifacts":["ART-001","CLAIM-001"],"evidence_ids":["ART-001","CLAIM-001"],"next_gate_or_failure_return":"第一版完整后进入第7层"},
+    {"layer_number":7,"english_name":"Hooks / Lifecycle Triggers","chinese_name":"生命周期钩子层","status":"PASS","skippable":false,"actual_inputs":["角色返回和产物事件"],"actual_actions":["记录开始、返回和最终检查点"],"new_artifacts":["CP-001","CP-002"],"evidence_ids":["CP-001","CP-002"],"next_gate_or_failure_return":"没有未处理触发项后进入第8层"},
+    {"layer_number":8,"english_name":"Scripts / Deterministic Checks","chinese_name":"脚本确定性检查层","status":"PASS","skippable":false,"actual_inputs":["ART-001","WP-001验收标准"],"actual_actions":["运行成功案例和错误案例"],"new_artifacts":["CHECK-SUCCESS","CHECK-NEGATIVE"],"evidence_ids":["CHECK-SUCCESS","CHECK-NEGATIVE"],"next_gate_or_failure_return":"检查通过后进入第9层"},
+    {"layer_number":9,"english_name":"Verification Plane","chinese_name":"独立验证平面","status":"PASS","skippable":false,"actual_inputs":["CLAIM-001和检查结果"],"actual_actions":["独立审计者接受声明并完成交付安全复核"],"new_artifacts":["AUDIT-001"],"evidence_ids":["AUDIT-001"],"next_gate_or_failure_return":"审计接受后进入第10层"},
+    {"layer_number":10,"english_name":"Repair Loop","chinese_name":"返修循环层","status":"PASS","skippable":false,"actual_inputs":["第0轮审计接受"],"actual_actions":["确认没有被拒绝项，无需制造返修"],"new_artifacts":["ROUND-0"],"evidence_ids":["ROUND-0"],"next_gate_or_failure_return":"无开放拒绝后进入第11层"},
+    {"layer_number":11,"english_name":"Compact / Handoff","chinese_name":"压缩交接层","status":"PASS","skippable":false,"actual_inputs":["已验证产物和证据"],"actual_actions":["记录恢复入口和剩余风险"],"new_artifacts":["交接摘要"],"evidence_ids":["HANDOFF-001"],"next_gate_or_failure_return":"交接完整后进入第12层"},
+    {"layer_number":12,"english_name":"Final Acceptance","chinese_name":"最终验收层","status":"PASS","skippable":false,"actual_inputs":["十二层状态和全部关口"],"actual_actions":["汇总并签署中文最终验收"],"new_artifacts":["final-acceptance.json","final-report.md"],"evidence_ids":["FINAL-001","EV-RETURN-CONTROL"],"next_gate_or_failure_return":"所有关口通过，任务关闭"}
+  ],
+  "agents": [
+    {"agent_id":"root","parent_agent_id":"","role":"control","context_id":"ctx-control-001","workspace":"C:\\AI\\example\\control","platform_run_id":"run-control-001","started_at":"2026-07-19T09:00:00-07:00","returned_at":"2026-07-19T09:20:00-07:00","responsibility":"冻结目标、调度、接收回执和最终汇总。","evidence_ids":["EV-START-CONTROL","EV-RETURN-CONTROL"]},
+    {"agent_id":"materials-1","parent_agent_id":"root","role":"materials","context_id":"ctx-materials-001","workspace":"C:\\AI\\example\\materials","platform_run_id":"run-materials-001","started_at":"2026-07-19T09:01:00-07:00","returned_at":"2026-07-19T09:07:00-07:00","responsibility":"只读确认当前标准和资料边界。","evidence_ids":["EV-START-MATERIALS","EV-RETURN-MATERIALS"]},
+    {"agent_id":"execution-1","parent_agent_id":"root","role":"execution","context_id":"ctx-execution-001","workspace":"C:\\AI\\example\\execution","platform_run_id":"run-execution-001","started_at":"2026-07-19T09:04:00-07:00","returned_at":"2026-07-19T09:17:30-07:00","responsibility":"生成标准示例产物和执行声明。","evidence_ids":["EV-START-EXECUTION","EV-RETURN-EXECUTION"]},
+    {"agent_id":"audit-1","parent_agent_id":"root","role":"audit","context_id":"ctx-audit-001","workspace":"C:\\AI\\example\\audit","platform_run_id":"run-audit-001","started_at":"2026-07-19T09:02:00-07:00","returned_at":"2026-07-19T09:19:00-07:00","responsibility":"只读复核运行证据和交付安全。","evidence_ids":["EV-START-AUDIT","EV-RETURN-AUDIT"]}
+  ],
+  "work_packages": [
+    {"work_package_id":"WP-001","goal":"生成可通过标准验证器的中文示例。","requirement_ids":["REQ-001"],"executor_agent_id":"execution-1","auditor_agent_id":"audit-1","required_skills":[],"acceptance_criteria":["七个文件齐全","成功和错误案例通过","独立审计接受"],"rollback":"删除独立示例目录即可回滚。","stop_condition":"验证器通过且独立审计接受。","status":"PASS"}
+  ]
+}

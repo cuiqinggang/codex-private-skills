@@ -1,0 +1,13 @@
+{
+  "saas":{"primary":"03","secondary":"02"},
+  "ai-saas":{"primary":"05","secondary":"03"},
+  "dashboard":{"primary":"06","secondary":"02"},
+  "admin":{"primary":"02","secondary":"06"},
+  "developer-tool":{"primary":"04","secondary":"01"},
+  "landing-page":{"primary":"03","secondary":"01"},
+  "mobile-web":{"primary":"10","secondary":"09"},
+  "fintech":{"primary":"12","secondary":"02"},
+  "commerce":{"primary":"11","secondary":"03"},
+  "portfolio":{"primary":"14","secondary":"15"}
+}
+

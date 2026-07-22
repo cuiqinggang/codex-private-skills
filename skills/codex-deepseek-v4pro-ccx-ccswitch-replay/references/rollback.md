@@ -5,13 +5,13 @@
 If default Codex config was changed, restore from backup:
 
 ```powershell
-Copy-Item -LiteralPath "<backup>\config.toml" -Destination "C:\Users\A\.codex\config.toml" -Force
+${REDACTED_SECRET}
 ```
 
 Known success-run backup:
 
 ```text
-C:\Users\A\Desktop\1\output\TASK-20260514-CODEX-DEEPSEEK-V4PRO-VIDEO-REPLAY\backups\20260514-172915\config.toml
+${REDACTED_SECRET}
 ```
 
 If no backup exists, stop with `SAFE_STOP_PASS` and do not invent a replacement config.
@@ -35,7 +35,7 @@ DeepSeek-V4Pro-Backup-via-CCX
 If the database must be restored, use the `.cc-switch` backup:
 
 ```text
-C:\Users\A\Desktop\1\output\TASK-20260514-CODEX-DEEPSEEK-V4PRO-VIDEO-REPLAY\backups\20260514-175310\.cc-switch
+${REDACTED_SECRET}
 ```
 
 Stop CC Switch before replacing the directory.
@@ -43,7 +43,7 @@ Stop CC Switch before replacing the directory.
 ## Confirm Default GPT Route
 
 ```powershell
-$c = Get-Content -LiteralPath "C:\Users\A\.codex\config.toml" -Raw
+${REDACTED_SECRET}
 $c -match 'model\s*=\s*"gpt-5\.5"'
 $c -match 'deepseek'
 ```

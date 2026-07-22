@@ -1,0 +1,12 @@
+{
+  "name": "V15.1-A 正式提示词只读镜像",
+${REDACTED_SECRET}
+  "asset_path": "assets/V15.1-A_正式只读提示词.txt",
+  "character_count": 1260,
+  "byte_count": 2890,
+  "line_count": 70,
+  "sha256": "1E85CF5234527B7F491823EF8755C6940D4FD96C608B0D0866A0CFE8D0BF4EDE",
+  "mode": "read_only_static_asset",
+  "source_mutation_allowed": false,
+  "published_scope": "private_codex_site"
+}

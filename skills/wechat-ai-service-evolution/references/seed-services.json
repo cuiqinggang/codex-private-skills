@@ -1,0 +1,1388 @@
+[
+  {
+    "id": "old-photo-repair",
+    "name": "老照片清晰修复",
+    "category": "照片与家庭回忆",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "photo-scratch-repair",
+    "name": "照片划痕破损修补",
+    "category": "照片与家庭回忆",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "blurry-photo-upscale",
+    "name": "模糊照片高清放大",
+    "category": "照片与家庭回忆",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "black-white-photo-colorize",
+    "name": "黑白照片自然上色",
+    "category": "照片与家庭回忆",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "portrait-object-removal",
+    "name": "人像去杂物",
+    "category": "照片与家庭回忆",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "photo-background-replace",
+    "name": "照片背景更换",
+    "category": "照片与家庭回忆",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "family-photo-collage",
+    "name": "家庭照片拼图",
+    "category": "照片与家庭回忆",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "family-photo-video",
+    "name": "家庭照片短视频",
+    "category": "照片与家庭回忆",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "id-photo-sizing",
+    "name": "证件照片尺寸整理",
+    "category": "照片与家庭回忆",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "event-photo-classify",
+    "name": "活动照片自动分类",
+    "category": "照片与家庭回忆",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "wechat-voice-clean-text",
+    "name": "微信语音转通顺文字",
+    "category": "微信信息整理",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "long-wechat-summary",
+    "name": "长微信消息提炼重点",
+    "category": "微信信息整理",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "screenshot-ocr",
+    "name": "截图提取文字",
+    "category": "微信信息整理",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "group-notice-organize",
+    "name": "群通知整理",
+    "category": "微信信息整理",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "gathering-invitation",
+    "name": "聚会邀请文字",
+    "category": "微信信息整理",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "wedding-birthday-invitation",
+    "name": "婚礼生日邀请",
+    "category": "微信信息整理",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "lost-found-notice",
+    "name": "寻物启事",
+    "category": "微信信息整理",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "secondhand-sale-post",
+    "name": "二手物品出售图文",
+    "category": "微信信息整理",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "chat-batch-summary",
+    "name": "多段聊天内容总结",
+    "category": "微信信息整理",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "voice-todo-list",
+    "name": "语音待办清单",
+    "category": "微信信息整理",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "school-notice-parent-todo",
+    "name": "学校通知变成家长待办",
+    "category": "孩子与家长",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "stepwise-homework-explain",
+    "name": "不会题目的分步讲解",
+    "category": "孩子与家长",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "wrong-question-organize",
+    "name": "错题照片整理",
+    "category": "孩子与家长",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "exam-photo-cleanup",
+    "name": "试卷照片清晰整理",
+    "category": "孩子与家长",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "essay-feedback",
+    "name": "作文修改建议",
+    "category": "孩子与家长",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "english-speaking-material",
+    "name": "英语口语练习材料",
+    "category": "孩子与家长",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "dictation-material",
+    "name": "生字和单词听写材料",
+    "category": "孩子与家长",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "weekly-study-plan",
+    "name": "一周学习计划",
+    "category": "孩子与家长",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "reading-comprehension-explain",
+    "name": "阅读理解思路讲解",
+    "category": "孩子与家长",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "parent-meeting-transcript",
+    "name": "家长会录音整理",
+    "category": "孩子与家长",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "medical-record-timeline",
+    "name": "家人就诊资料时间线",
+    "category": "父母与家庭",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 3
+    },
+    "total_score": 78,
+    "class": "C",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "doctor-visit-question-list",
+    "name": "看病前问题清单",
+    "category": "父母与家庭",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 3
+    },
+    "total_score": 78,
+    "class": "C",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "prescription-medication-table",
+    "name": "按医生处方整理服药表",
+    "category": "父母与家庭",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 3
+    },
+    "total_score": 78,
+    "class": "C",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "phone-guide-for-parents",
+    "name": "给父母制作手机操作步骤图",
+    "category": "父母与家庭",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "elder-voice-family-memory",
+    "name": "长辈语音整理成家庭回忆",
+    "category": "父母与家庭",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "memorial-photo-text",
+    "name": "纪念照片和追思文字",
+    "category": "父母与家庭",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "complex-message-explain",
+    "name": "复杂短信和通知解释",
+    "category": "父母与家庭",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "fraud-risk-points",
+    "name": "防诈骗信息风险点整理",
+    "category": "父母与家庭",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 3
+    },
+    "total_score": 78,
+    "class": "C",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "resume-organize",
+    "name": "简历整理",
+    "category": "个人工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "interview-practice",
+    "name": "面试模拟",
+    "category": "个人工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "document-photo-to-text",
+    "name": "文件照片转文字",
+    "category": "个人工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "recording-meeting-minutes",
+    "name": "录音转会议纪要",
+    "category": "个人工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "scattered-data-table",
+    "name": "零散数据整理成表格",
+    "category": "个人工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "report-to-ppt-outline",
+    "name": "汇报材料转PPT提纲",
+    "category": "个人工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "contract-plain-explain",
+    "name": "合同条款通俗解释",
+    "category": "个人工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 3
+    },
+    "total_score": 78,
+    "class": "C",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "complex-form-guidance",
+    "name": "复杂表格填写指导",
+    "category": "个人工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "complaint-statement-draft",
+    "name": "投诉和情况说明初稿",
+    "category": "个人工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "policy-notice-summary",
+    "name": "政策通知摘要",
+    "category": "个人工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 3
+    },
+    "total_score": 78,
+    "class": "C",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "manual-simplify",
+    "name": "产品说明书简化",
+    "category": "个人工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "procedure-material-checklist",
+    "name": "办事材料清单",
+    "category": "个人工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "product-photo-cleanup",
+    "name": "商品照片去背景和美化",
+    "category": "小店与普通工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "simple-promo-poster",
+    "name": "简单促销海报",
+    "category": "小店与普通工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "price-list-organize",
+    "name": "价目表整理",
+    "category": "小店与普通工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "menu-organize",
+    "name": "菜单整理",
+    "category": "小店与普通工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "recruitment-poster",
+    "name": "招聘海报",
+    "category": "小店与普通工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "shop-short-video-script",
+    "name": "店铺短视频脚本",
+    "category": "小店与普通工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "moments-promo-copy",
+    "name": "朋友圈宣传文字",
+    "category": "小店与普通工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "review-reply-template",
+    "name": "顾客评价回复模板",
+    "category": "小店与普通工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "product-intro-organize",
+    "name": "商品介绍整理",
+    "category": "小店与普通工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "customer-faq-table",
+    "name": "常见顾客问题答复表",
+    "category": "小店与普通工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "simple-inventory-table",
+    "name": "简单库存登记表",
+    "category": "小店与普通工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "shop-event-plan",
+    "name": "小店活动方案",
+    "category": "小店与普通工作",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "used-ebike-sale-post",
+    "name": "二手电动车出售图文",
+    "category": "电动车老客户",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "battery-care-card",
+    "name": "电池保养说明卡",
+    "category": "电动车老客户",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "vehicle-maintenance-record",
+    "name": "车辆维修记录整理",
+    "category": "电动车老客户",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "vehicle-manual-simplify",
+    "name": "车型说明书简化",
+    "category": "电动车老客户",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "warranty-material-organize",
+    "name": "保修资料整理",
+    "category": "电动车老客户",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "product-parameter-comparison",
+    "name": "商品参数比较表",
+    "category": "家庭与社区",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "warranty-receipt-organize",
+    "name": "保修单和票据整理",
+    "category": "家庭与社区",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "family-travel-plan",
+    "name": "家庭出行计划",
+    "category": "家庭与社区",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "family-budget-table",
+    "name": "家庭收支表",
+    "category": "家庭与社区",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "community-event-notice",
+    "name": "社区活动通知",
+    "category": "家庭与社区",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "event-photo-album",
+    "name": "活动照片相册",
+    "category": "家庭与社区",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "group-event-minutes",
+    "name": "群体活动录音纪要",
+    "category": "家庭与社区",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "可用能力需按具体材料确认"
+  },
+  {
+    "id": "holiday-blessing-image-text",
+    "name": "节日祝福图片和文字",
+    "category": "家庭与社区",
+    "scores": {
+      "user_value": 5,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 1
+    },
+    "total_score": 86,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐"
+  },
+  {
+    "id": "photo-memory-fun-remix",
+    "name": "趣味照片与家庭回忆再创作",
+    "category": "照片与家庭回忆",
+    "scores": {
+      "user_value": 4,
+      "ai_advantage": 5,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 4,
+      "free_feasibility": 3,
+      "risk": 2
+    },
+    "total_score": 77,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐：需以3个获授权的独立真实案例验证身份保持、版权和微信交付"
+  },
+  {
+    "id": "teachable-chinese-signature-design",
+    "name": "可教学中文姓名艺术签名",
+    "category": "个人姓名与日常表达",
+    "scores": {
+      "user_value": 4,
+      "ai_advantage": 4,
+      "repeatability": 4,
+      "remote_fit": 5,
+      "wechat_fit": 5,
+      "free_feasibility": 4,
+      "risk": 2
+    },
+    "total_score": 77,
+    "class": "A",
+    "state": "candidate",
+    "capability": "能力待补齐：需以3个独立真实案例验证逐字验形、真人三写、教学材料和微信交付"
+  }
+]

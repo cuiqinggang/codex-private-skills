@@ -1,0 +1,3 @@
+display_name: C Drive Clone Handoff
+short_description: Continue the SSD clone project safely.
+default_prompt: Continue the C-drive cleanup and clone-to-SSD project from the prepared 837 handoff file.

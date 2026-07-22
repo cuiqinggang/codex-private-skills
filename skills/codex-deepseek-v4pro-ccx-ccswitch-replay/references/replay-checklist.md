@@ -7,7 +7,7 @@
 - Command:
 
 ```powershell
-$c = Get-Content -LiteralPath "C:\Users\A\.codex\config.toml" -Raw
+${REDACTED_SECRET}
 $c -match 'model\s*=\s*"gpt-5\.5"'
 $c -match 'superpowers'
 ```
@@ -72,7 +72,7 @@ Start-Process -FilePath ".\ccx-windows-amd64.exe" -WorkingDirectory "." -WindowS
 Start-Process -FilePath ".\cc-switch.exe" -WorkingDirectory "."
 ```
 
-- Success: CC Switch opens and `C:\Users\A\.cc-switch\cc-switch.db` exists.
+${REDACTED_SECRET}
 - Failure: portable zip cannot run.
 - Recovery: use official v3.14.1 MSI administrative extraction.
 - Continue: only when CC Switch database exists.
@@ -90,7 +90,7 @@ Start-Process -FilePath ".\cc-switch.exe" -WorkingDirectory "."
   - Current/default: no
 - Success: provider exists and is backup-only.
 - Failure: provider cannot be saved or writes over default provider.
-- Recovery: restore `C:\Users\A\.cc-switch` backup and retry.
+${REDACTED_SECRET}
 - Continue: only when default provider remains GPT.
 
 ## G07 Verify Health
@@ -134,3 +134,4 @@ Invoke-RestMethod -Uri "http://localhost:13000/health"
 - Success: all verification passed and default GPT route is unchanged.
 - Safe stop: missing key, missing component, unsupported CCX/CC Switch, or verification failure without config damage.
 - Failure: default GPT changed, Flash added, key leaked, or success claimed without evidence.
+

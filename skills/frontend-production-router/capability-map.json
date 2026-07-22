@@ -1,0 +1,7 @@
+{
+  "contract_version":"1.0",
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+  "router":{"name":"frontend-production-router","capabilities":["classification","sequencing","handoff-validation","cycle-prevention","final-acceptance"]}
+}
+

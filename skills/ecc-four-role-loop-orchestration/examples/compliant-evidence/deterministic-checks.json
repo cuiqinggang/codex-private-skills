@@ -1,0 +1,4 @@
+[
+  {"check_id":"CHECK-001","work_package_id":"WP-001","check_type":"SUCCESS","command_or_method":"运行完整证据验证器","expected":"结构检查通过","observed":"结构检查通过","exit_code":0,"result":"PASS","evidence_id":"E-CHECK-SUCCESS"},
+  {"check_id":"CHECK-002","work_package_id":"WP-001","check_type":"NEGATIVE","command_or_method":"在隔离副本删除真实多智能体回执后运行验证器","expected":"结构检查失败","observed":"正确拒绝违规副本","exit_code":1,"result":"PASS","evidence_id":"E-CHECK-NEGATIVE"}
+]

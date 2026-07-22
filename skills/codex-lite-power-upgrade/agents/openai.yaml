@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Lite Power Upgrade"
+  short_description: "Lightweight Codex upgrade workflow."
+  default_prompt: "Use this skill to diagnose, back up, safely upgrade, lightly curate, and smoke-test this Codex desktop setup."

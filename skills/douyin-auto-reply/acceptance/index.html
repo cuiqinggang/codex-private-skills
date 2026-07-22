@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>抖音坐标截图回复技能验收</title>
+  <style>
+    body{font-family:"Microsoft YaHei",sans-serif;margin:0;background:#0f1320;color:#eef3ff}
+    main{max-width:1100px;margin:auto;padding:32px} h1{margin-top:0}
+    .status{display:inline-block;padding:8px 14px;border-radius:999px;background:#123d2d;color:#63f0ad;font-weight:700}
+    section{margin:22px 0;padding:22px;border:1px solid #303a53;border-radius:16px;background:#171d2d}
+    img{width:100%;height:auto;border-radius:12px;border:1px solid #44506e}
+    code{color:#ffe477} li{margin:8px 0}.warn{color:#ffcf66}
+  </style>
+</head>
+<body><main>
+  <h1>抖音坐标截图回复技能验收</h1>
+  <p class="status">PASS_WITH_VISUAL_EVIDENCE</p>
+  <section><h2>材料与结论</h2><ul>
+    <li>来源：用户演示视频、三屏截图、Hermes 初版技能包、实际抖音页面最终状态。</li>
+    <li>最终页面显示评论数 7→8，且回复位于目标作者评论之下。</li>
+    <li class="warn">初版脚本默认自动发送、50px 网格偏粗、截图未强制发到对话，均已修复。</li>
+  </ul></section>
+  <section><h2>25px 细网格</h2><img src="evidence/fine-grid-25px.png" alt="25px细网格与黄色目标圆圈"></section>
+  <section><h2>嵌套回复证据</h2><img src="evidence/nested-reply-proof.png" alt="目标评论下的嵌套回复"></section>
+  <section><h2>强制门禁</h2><ol>
+    <li>每个动作后截图。</li><li>每张截图必须直接发到对话正文。</li>
+    <li>20–25px 细网格定位小按钮。</li><li>粘贴前验证 <code>回复@目标用户</code>。</li>
+    <li>发送前重复检查和当下确认。</li><li>发送后验证嵌套回复，独立评论不算通过。</li>
+  </ol></section>
+</main></body></html>

@@ -1,0 +1,8 @@
+[
+  {"id":"R01","prompt":"未知根因的计算错误，需要回归测试","expected":["06_bug_diagnosis","05_tdd_execution","07_dual_axis_review"]},
+  {"id":"R02","prompt":"中型功能需求仍有边界不清","expected":["01_requirements_grill","03_to_spec","04_vertical_tickets"]},
+  {"id":"R03","prompt":"生成新会话接续包","expected":["08_handoff"]},
+  {"id":"N01","prompt":"只改一个错别字","expected":[]},
+  {"id":"N02","prompt":"校验文件 SHA-256","expected":[]},
+  {"id":"N03","prompt":"处理 UltraFusion A/B/C/D 核心提示词","expected":[]}
+]

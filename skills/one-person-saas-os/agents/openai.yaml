@@ -1,0 +1,6 @@
+interface:
+  display_name: "One Person SaaS OS"
+  short_description: "生成可部署的一人公司 SaaS 基座"
+  default_prompt: "Use $one-person-saas-os to generate a low-stable Next.js SaaS starter with Clerk, Supabase, PostHog, Vercel, and GitHub-ready files."
+policy:
+  allow_implicit_invocation: true

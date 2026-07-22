@@ -1,0 +1,7 @@
+interface:
+  display_name: "Digital Product Indie Site"
+  short_description: "复刻数字产品独立站收款自动交付闭环"
+  default_prompt: "Use $digital-product-indie-site to build or audit a digital product storefront with checkout and automatic delivery."
+
+policy:
+  allow_implicit_invocation: true

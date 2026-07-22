@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "task_id": "UF91-QWEN-REPAIR-CASE",
+  "description": "案例合同：将所有业务位置的Grok/xAI改为Qwen（阿里千问）",
+  "root": ".",
+  "exclude_globs": [
+    "evidence/**",
+    ".git/**"
+  ],
+  "text_encodings": [
+    "utf-8-sig",
+    "utf-8",
+    "utf-16",
+    "gb18030"
+  ],
+  "required": [
+    {
+      "id": "qwen-required",
+      "pattern": "Qwen（阿里千问）",
+      "mode": "literal",
+      "case_sensitive": true,
+      "scope_globs": [
+        "**/*.txt",
+        "**/*.md",
+        "**/*.py",
+        "**/*.html"
+      ],
+      "min_count": 1,
+      "max_count": null,
+      "check_filenames": true
+    }
+  ],
+  "forbidden": [
+    {
+      "id": "grok-zero",
+      "pattern": "Grok",
+      "mode": "literal",
+      "case_sensitive": false,
+      "scope_globs": [
+        "**/*"
+      ],
+      "max_count": 0,
+      "check_filenames": true
+    },
+    {
+      "id": "xai-zero",
+      "pattern": "xAI",
+      "mode": "literal",
+      "case_sensitive": false,
+      "scope_globs": [
+        "**/*"
+      ],
+      "max_count": 0,
+      "check_filenames": true
+    },
+    {
+      "id": "cn-grok-zero",
+      "pattern": "格洛克",
+      "mode": "literal",
+      "case_sensitive": false,
+      "scope_globs": [
+        "**/*"
+      ],
+      "max_count": 0,
+      "check_filenames": true
+    }
+  ],
+  "locked_files": [],
+  "mirrors": [],
+  "derived_relations": [],
+  "deliverables": [],
+  "semantic_checks": [
+    {
+      "id": "d-final-standalone",
+      "description": "D层必须落实修复并生成可独立使用的D_Final",
+      "status": "PENDING_MANUAL_REVIEW"
+    }
+  ],
+  "pending_checks": [
+    "真实模型答案质量增益",
+    "真实人工时间节省"
+  ]
+}

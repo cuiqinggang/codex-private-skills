@@ -1,4 +1,4 @@
-﻿G02_BEGIN
+G02_BEGIN
 quick_validate_exit=0
 Skill is valid!
 syntax_PASS H:\Codex技能包\【技能包】Windows原生ClaudeCode接入DeepSeekV4Pro\claude-code-deepseek-v4pro-windows\scripts\set-claude-deepseek-env.ps1

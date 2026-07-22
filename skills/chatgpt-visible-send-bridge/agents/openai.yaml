@@ -1,0 +1,4 @@
+interface:
+  display_name: "ChatGPT Visible Send Bridge"
+  short_description: "Visible GPT send with screenshots"
+  default_prompt: "Send text, images, or videos to the visible ChatGPT page using the strict screenshot-gated state machine, then copy or save the completed answer with evidence."

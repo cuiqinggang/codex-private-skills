@@ -1,0 +1,17 @@
+# Acceptance Report
+
+最终技术候选状态：`UF9_RELEASE_CANDIDATE_PASS`。
+
+- Gate A：`UF9_REPOSITORY_SAFETY_PASS`
+- Gate B：`UF9_CORE_ASSET_INVENTORY_PASS`
+- Gate C：`UF9_CORE_ASSETS_READONLY_PASS`
+- Gate D：`UF9_FRAMEWORK_STATIC_PASS`
+- Gate E：`UF9_MANUAL_M1_PASS`
+- Gate F：`UF9_WORKTREE_ROLLBACK_PASS`
+- Gate G：`UF9_WEB_W1_SPEC_PASS`
+- Gate H：`UF9_THREE_ROUND_TEST_PASS`
+- Gate I：`UF9_RELEASE_CANDIDATE_PASS`（integration-candidate 已完成独立三轮重验）。
+
+本报告只证明只读部署技术候选；第二轮是 `FLOW_SIMULATION_ONLY`，未证明真实答案质量提升。
+
+

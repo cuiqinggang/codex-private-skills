@@ -1,0 +1,3 @@
+display_name: Video Editor Distillation
+short_description: Distill editor features to free workflows
+default_prompt: 把视频剪辑软件里的常用能力评测、映射到免费/开源工具链，并沉淀成可复用流程。

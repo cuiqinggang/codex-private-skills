@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "project_path": "",
+  "task_description": "",
+  "default_level": "UNKNOWN",
+  "risk": "medium",
+  "file_count": 0,
+  "stable_version": false,
+  "multiple_solutions": false,
+  "parallel": false,
+  "rollback_required": true,
+  "formal_delivery": false,
+  "selected_mode": "MODE-A|MODE-B|MODE-C"
+}
+

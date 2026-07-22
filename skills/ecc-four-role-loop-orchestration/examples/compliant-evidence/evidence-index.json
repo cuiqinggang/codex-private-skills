@@ -1,0 +1,27 @@
+{
+  "aliases": {
+    "execution-claims":"execution-claims.json",
+    "artifact-manifest":"artifact-manifest.json",
+    "script-verification-result":"deterministic-checks.json",
+    "claim-acceptance-matrix":"claim-acceptance-matrix.json",
+    "repair-loop-log":"rounds.json",
+    "compact-handoff":"handoff.json",
+    "evidence-index":"evidence-index.json",
+    "final-acceptance-structured":"final-acceptance.json",
+    "final-acceptance-readable":"final-acceptance.md",
+    "final-report":"final-report.md"
+  },
+  "items": [
+    {"evidence_id":"E-FINAL","kind":"最终验收","path":"final-acceptance.md","sha256":"53fd1f96fb85ab9ed255eef51fd7397951fc58a35e3ffe7e661b3dac00d83818"},
+    {"evidence_id":"E-CHECK-SUCCESS","kind":"成功检查","path":"deterministic-checks.json","sha256":"5de4a8ad5d729600d41ae5c251b51796da1e08a3c0a0d6a28147cc713e5989e4"},
+    {"evidence_id":"E-CHECK-NEGATIVE","kind":"错误案例","path":"deterministic-checks.json","sha256":"5de4a8ad5d729600d41ae5c251b51796da1e08a3c0a0d6a28147cc713e5989e4"},
+    {"evidence_id":"E-AUDIT","kind":"独立审计","path":"claim-acceptance-matrix.json","sha256":"a33077add6e5408b7675d574fed03d6d13be73317aaf4ad02ec88702106a7bba"},
+    {"evidence_id":"E-CP","kind":"检查点","path":"checkpoints.json","sha256":"204228394bdca4e13448855b59b1965f17f91db2e9e3a96cba427179a32efbd2"},
+    {"evidence_id":"E-SKILL","kind":"技能使用","path":"skill-events/wp-001.json","sha256":"65699a3bb125fade67d8e9294ff60e1ced2395f38b3cd27b3f22f661a280c91d"},
+    {"evidence_id":"E-SOURCE","kind":"来源核实","path":"source-evidence/src-001.md","sha256":"6be2155c4fec531977b85b96d0f58e088e81a9e6e6d60c1b7243505d5750bc3b"},
+    {"evidence_id":"E-AGENT-ROOT","kind":"平台运行回执","path":"platform-events/root.json","sha256":"c26d3dd727597adfa4fb44a3422f9137607a7471910e0d86947a0e381d86b88a"},
+    {"evidence_id":"E-AGENT-MATERIALS","kind":"平台运行回执","path":"platform-events/materials.json","sha256":"ff5c73ada34c6cc8e6b6149338518cf7d1e036f2f84c0b88f71dd6f180d3c38b"},
+    {"evidence_id":"E-AGENT-EXECUTION","kind":"平台运行回执","path":"platform-events/execution.json","sha256":"70c91fb065a0f482c503fb105085a179a60bb87dcb49dc4a9585f6bde257b98d"},
+    {"evidence_id":"E-AGENT-AUDIT","kind":"平台运行回执","path":"platform-events/audit.json","sha256":"db798f351c7e21effa3a852f588ed305dd4fdeb4fad0a6e4e3488313524a8271"}
+  ]
+}

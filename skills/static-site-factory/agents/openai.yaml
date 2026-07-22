@@ -1,0 +1,7 @@
+interface:
+  display_name: "静态网站工厂"
+  short_description: "静态站设计、复刻、批量生成、部署与三轮验收总路由"
+  default_prompt: "使用 $static-site-factory 判断并完成这个静态网站任务，选择合适路线并给出三轮验收证据。"
+
+policy:
+  allow_implicit_invocation: true

@@ -6,6 +6,13 @@ made 8642 durable.
 
 ## Scope
 
+For Hermes 0.15.2 and newer, also read
+`references/incident-2026-06-02-stage04b-0152-autoopen-repair.md`. The Stage
+04b scripts must send `Authorization: Bearer <API_SERVER_KEY>` for local 8642
+`/v1/models` and chat checks, and the gateway Startup fallback should be hidden
+with `Hermes_Gateway_Hidden.vbs` rather than a visible `Hermes_Gateway.cmd`
+console.
+
 This stage only provides:
 
 ```text
@@ -25,19 +32,19 @@ not control it.
 ## Installed Files
 
 ```text
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Open-HermesOpenWebUI.ps1
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Run-HermesOpenWebUIAutoOpen.vbs
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Install-HermesOpenWebUIAutoOpen.ps1
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Rollback-HermesOpenWebUIAutoOpen.ps1
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Verify-HermesOpenWebUIAutoOpen.ps1
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\PostReboot-Verify-HermesOpenWebUIAutoOpen.ps1
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Run-PostReboot-Verify-HermesOpenWebUIAutoOpen.vbs
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 ```
 
 Startup entry:
 
 ```text
-C:\Users\A\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\HermesOpenWebUIAutoOpen.vbs
+${REDACTED_SECRET}
 ```
 
 The VBS wrapper uses `WScript.Shell.Run command, 0, False`, so PowerShell runs
@@ -47,8 +54,8 @@ hidden. The intended visible side effect is the browser opening
 ## Logs
 
 ```text
-C:\Users\A\.hermes\logs\hermes-openwebui-autoopen.log
-C:\Users\A\.hermes\logs\hermes-openwebui-autoopen-status.json
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 H:\Hermes_Windows_Native_014\reports\daily-start-*.log
 ```
 
@@ -121,7 +128,7 @@ Telegram observation after the same reboot:
 To remove only the Stage 04b auto-open startup entry:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Rollback-HermesOpenWebUIAutoOpen.ps1'
+${REDACTED_SECRET}
 ```
 
 This does not delete scripts, logs, Hermes, Open WebUI, Telegram, New API, or

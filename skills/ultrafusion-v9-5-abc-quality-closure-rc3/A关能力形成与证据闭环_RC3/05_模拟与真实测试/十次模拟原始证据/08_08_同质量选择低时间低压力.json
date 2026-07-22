@@ -1,0 +1,88 @@
+{
+  "input": {
+    "name": "08_同质量选择低时间低压力",
+    "scores": {
+      "q0": {
+        "F": 78,
+        "L": 78,
+        "C": 78,
+        "D": 78,
+        "U": 78
+      },
+      "qr": {
+        "F": 80,
+        "L": 80,
+        "C": 80,
+        "D": 80,
+        "U": 80
+      },
+      "q1": {
+        "F": 88,
+        "L": 88,
+        "C": 88,
+        "D": 88,
+        "U": 88
+      },
+      "q2": {
+        "F": 88,
+        "L": 88,
+        "C": 88,
+        "D": 88,
+        "U": 88
+      },
+      "qf": {
+        "F": 88,
+        "L": 88,
+        "C": 88,
+        "D": 88,
+        "U": 88
+      }
+    },
+    "times": {
+      "q0": 2,
+      "qr": 2.5,
+      "q1": 4,
+      "q2": 6,
+      "qf": 8
+    },
+    "hard": {
+      "fact": 0,
+      "logic": 0,
+      "omission": 0,
+      "hallucination": 0
+    },
+    "actions": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "budget": 6,
+    "noise": 1.0,
+    "format_ok": true,
+    "echo": false,
+    "export_ok": true,
+    "cold_ok": true,
+    "expected": "PASS"
+  },
+  "result": {
+    "scores": {
+      "q0": 78.0,
+      "qr": 80.0,
+      "q1": 88.0,
+      "q2": 88.0,
+      "qf": 88.0
+    },
+    "pressure": 100,
+    "hard": true,
+    "best": "q1",
+    "effective": "q1",
+    "external_gain": 10.0,
+    "internal_gain": 8.0,
+    "observed": "PASS",
+    "expected": "PASS",
+    "match": true
+  }
+}

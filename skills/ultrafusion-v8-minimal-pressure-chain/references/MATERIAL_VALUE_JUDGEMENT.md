@@ -1,19 +1,48 @@
-# Material Value Judgement
+# 材料价值判断
 
-Status: HIGH_VALUE
+状态：高价值
 
-Reason:
+## 判断理由
 
-- It reduces repeated UltraFusion failure modes: overlong prompts, over-auditing, route sprawl, and artificial complexity.
-- It preserves the real value of V7.0: layer-by-layer scoring pressure.
-- It forms a reusable SOP, trigger set, copy templates, scoring gate, and run summary.
-- The user explicitly asked to turn V8.0 into a skill package and save it to the knowledge base.
+这份材料值得沉淀为技能包，因为它解决了 UltraFusion 反复出现的几个问题：
 
-Extracted reusable rule:
+- 提示词过长。
+- 审计流程过重。
+- 路线越来越多，容易混乱。
+- 为了追求质量而把 V8 又做回 V7。
+- 缺少轻量但有效的质量门禁。
+
+它保留了 V7 的核心价值：
+
+- 分层压力。
+- 逐层评分。
+- 最终 Gain 验收。
+
+但它删掉了 V7 的重型部分：
+
+- 不恢复 V15 长注入。
+- 不恢复长 C/D 模板。
+- 不默认完整基准评测。
+
+## 可复用规则
 
 ```text
-Simple questions use GPT_DIRECT.
-Complex/high-value questions use UF_V8_ABCD_MIN.
-Every layer must pressure itself through Deduction, SelfScore, and RepairDone.
-Gain decides whether the chain was worth running.
+简单问题走 GPT 直答。
+复杂、高价值问题走 V8.2 极简压力链。
+A/B/C/D 每层都要有具体扣分点、自评分、已修复内容。
+低于 8.5 必须修复一次。
+最终用 Gain 判断链路是否值得。
 ```
+
+## 2026-07-07 用户审计后的补充
+
+用户指出：
+
+- 当前 V8.2 默认模型只有 GPT、DeepSeek、千问。
+- Kimi 不在当前默认路线内。
+- GPT 也负责 A 层。
+- A 层和 B 层都是 GPT + DeepSeek + 千问。
+- C 层和 D 层只由 GPT 执行。
+- 技能包必须中文可审计，不能让用户看不懂。
+
+因此，技能包已改为中文审核版。

@@ -1,0 +1,18 @@
+{
+  "task_id": "ECC-STANDARD-EXAMPLE-001",
+  "task_type": "production",
+  "evidence_profile": "standard",
+  "twelve_layer_standard_version": "V2.0.0",
+  "twelve_layer_standard_sha256": "bbb7bdeff68d5ee039b6d42fc91793b91b4036caea5353dc9d5e4a774ac7cb81",
+  "formal_modification_authorized": true,
+  "time_budget_minutes": 60,
+  "expected_duration_lower_minutes": 0,
+  "minimum_runtime_minutes": 0,
+  "max_repair_rounds": 3,
+  "required_roles": ["control", "materials", "execution", "audit"],
+  "required_skills": [],
+  "no_external_skill_reason": "本例只验证ECC标准证据合同本身，没有额外领域技能。",
+  "authority_drive": "C",
+  "h_drive_mode": "history_only",
+  "k_drive_mode": "disabled"
+}

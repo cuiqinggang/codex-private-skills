@@ -27,7 +27,7 @@ JWTs, or upstream provider secrets.
 Purpose: prove whether this is a fresh reboot/login test and whether the
 auto-recovery wrapper completed.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -37,12 +37,12 @@ $os = Get-CimInstance Win32_OperatingSystem
 "LAST_BOOT=$($os.LastBootUpTime.ToString('yyyy-MM-dd HH:mm:ss zzz'))"
 "UPTIME_MINUTES=$([math]::Round(((Get-Date)-$os.LastBootUpTime).TotalMinutes,1))"
 
-$scriptPath='C:\Users\A\.hermes\gateway-service\Hermes_NewAPI_AutoRecover.ps1'
+${REDACTED_SECRET}
 $alive = Get-CimInstance Win32_Process -Filter "Name='powershell.exe' OR Name='pwsh.exe'" |
   Where-Object { $_.CommandLine -like "*$scriptPath*" -and $_.ProcessId -ne $PID }
 if ($alive) { $alive | Select-Object ProcessId,CreationDate,CommandLine | Format-List } else { 'NO_AUTORECOVER_PROCESS' }
 
-$log='C:\Users\A\.hermes\logs\newapi-autorecover-' + (Get-Date -Format yyyyMMdd) + '.log'
+${REDACTED_SECRET}
 "LOG=$log"
 if (Test-Path -LiteralPath $log) {
   Get-Item -LiteralPath $log | Select-Object LastWriteTime,Length,FullName | Format-List
@@ -89,7 +89,7 @@ Known 2026-05-22 evidence:
 
 Purpose: prove New API, Hermes, Open WebUI, and proxy listeners are up.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -146,14 +146,14 @@ Success criteria:
 Purpose: prove Telegram is configured, polling, and reachable through the local
 proxy without exposing the bot token.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File 'C:\Users\A\.codex\skills\hermes-telegram-persistent-bridge\scripts\check-hermes-telegram.ps1'
+${REDACTED_SECRET}
 
-$envPath='C:\Users\A\.hermes\.env'
+${REDACTED_SECRET}
 $tokenLine = Select-String -LiteralPath $envPath -Pattern '^TELEGRAM_BOT_TOKEN=' -ErrorAction Stop | Select-Object -First 1
 $token = $tokenLine.Line -replace '^TELEGRAM_BOT_TOKEN=', ''
 $proxy = 'http://127.0.0.1:7890'
@@ -177,12 +177,12 @@ Success criteria:
 Purpose: prove the recovery script can complete its own gates in the current
 state and optionally send a single Telegram outbound smoke message.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File 'C:\Users\A\.hermes\gateway-service\Hermes_NewAPI_AutoRecover.ps1' -TelegramSmoke
+${REDACTED_SECRET}
 ```
 
 Success criteria:
@@ -201,7 +201,7 @@ not send Telegram messages.
 Purpose: prove the chain is not merely listening; Hermes can call New API and
 receive a model response.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -231,7 +231,7 @@ Success criteria:
 
 - HTTP status is `200`.
 - Response content contains the marker.
-- `C:\Users\A\.hermes\logs\agent.log` shows `Turn ended` for the API session.
+${REDACTED_SECRET}
 - `docker logs new-api` shows a recent `/v1/chat/completions` `200` relay and
   `record consume log`.
 

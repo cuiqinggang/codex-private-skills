@@ -1,28 +1,100 @@
-# Rule Patch 2026-07-06: UltraFusion V8 Minimal Pressure Chain
+# 规则补丁：UltraFusion V8.2 极简压力链
 
-## Trigger Phrases
+日期：2026-07-06，2026-07-07 修订
 
-- UltraFusion V8.0
+## 触发词
+
+- UltraFusion V8
+- UltraFusion V8.2
+- V8.2-RC2
 - 极简压力链
 - 高性价比生产版
 - ABCD 极简
-- UF_V8_ABCD_MIN
-- SelfScore / Deduction / RepairDone
-- Gain 验收
+- GPT + DeepSeek + 千问
+- A/B 三模型
+- C/D GPT
+- 提升值（Gain） 验收
+- 8.5 分修复门
 
-## Rule
+## 规则
 
-For daily complex/high-value answer work, prefer `ultrafusion-v8-minimal-pressure-chain` over the heavier V7.0 benchmark skill unless the user explicitly asks for full V15, official C/D prompt packages, external model copy-paste benchmarking, or complete audit trace.
+日常复杂、高价值问题优先使用：
 
-## Boundary
+```text
+ultrafusion-v8-minimal-pressure-chain
+```
 
-Keep `ultrafusion-low-cost-multi-model-extreme-fusion` as the V7.0 heavy benchmark route.
+除非用户明确要求完整 V7、完整 V15、官方长 C/D 包、外部完整 基准评测 或完整审计轨迹，否则不要启用 V7 重型路线。
 
-## Acceptance Criteria
+## 2026-07-07 五项 P0 逻辑修复
 
-- Skill has valid `SKILL.md` frontmatter.
-- A/B/C/D templates exist.
-- Recent-use log exists.
-- Failure-review entry exists.
-- Knowledge note exists in the Obsidian AI Company OS vault.
-- Knowledge Brain health check and hot sync are run after deployment.
+本补丁在不新增 E 层、不恢复 V7 重流程、不恢复 V15 长注入、不改变默认模型分工的前提下，新增五项 P0 门禁：
+
+1. 评分一致性门改为新版上限规则：
+   - 没有具体扣分点且没有扣分很少依据，最高 7.0。
+   - 只有空泛扣分点，最高 8.0。
+   - 有 1 个具体扣分点并说明影响、风险和修复，可以给 8.0 到 8.8。
+   - 高分必须有具体扣分点，或有“未发现明显扣分点”的明确依据和边界说明。
+
+2. 真实修复对照门：
+   - 低于 8.5 后必须记录修复触发、修复前问题、修复方式、修复后版本摘要、修复后自评分、是否仍低于 8.5 和下一步动作。
+
+3. 真实模型参与状态：
+   - FULL_V8_2：GPT、DeepSeek、千问都真实返回 A/B，C/D 由 GPT 执行。
+   - LIMITED_V8_2：部分外部模型或层级缺失，必须标明缺失模型和层级。
+   - GPT_ONLY_V8_2：只有 GPT 参与，不得声称完成多模型验证。
+
+4. 最终答案质量分（SCORE_FINAL）与 D 层执行自评分区分：
+   - 最终答案质量分（SCORE_FINAL）只评价最终答案。
+   - D 层执行自评分只评价 D 层流程。
+   - Gain = SCORE_FINAL - Score_0，不能使用 D 层执行自评分。
+
+5. Score_0 基线污染风险：
+   - Score_0 必须在 A 层之前产生。
+   - 不能被 A/B/C/D 或外部模型内容反向修正。
+   - 基线污染风险为中或高时，Gain 只能作为参考值或未知。
+
+## 官方模型分工
+
+```text
+普通直答基线：GPT
+A 层：GPT + DeepSeek + 千问
+B 层：GPT + DeepSeek + 千问
+C 层：GPT
+D 层：GPT
+Kimi：不在默认路线内
+```
+
+## 三重平衡
+
+V8.2 必须同时优化：
+
+- 质量。
+- 架构。
+- 速度。
+
+不能为了提升质量，把 V8.2 悄悄做回 V7。
+
+只允许增加真正防止退化的门：
+
+- B 层必须是新答案，不能只是评论。
+- C 层必须处理冲突、弱证据、重复压缩和 D 层判断点。
+- D 层必须先攻击 C，再修复。
+- 最终必须给出质量、架构、速度平衡判断。
+
+## 验收标准
+
+- `SKILL.md` 存在且可读。
+- A/B/C/D 模板存在。
+- 运行总结模板存在。
+- 失败复盘入口存在。
+- 用户可审计内容默认中文。
+- A 层提示词包含 8.5 分修复门。
+- 模型分工符合 GPT + DeepSeek + 千问规则。
+- B 层模板为 GPT / DeepSeek / 千问 三个 A 层答案分别留位。
+- C 层模板为 GPT / DeepSeek / 千问 三个 B 层答案分别留位。
+- 运行总结模板包含真实模型参与状态。
+- D 层模板区分最终答案质量分（SCORE_FINAL）和 D 层执行自评分。
+- D 层模板包含 Score_0 基线污染风险和 Gain 可信度。
+- Knowledge Brain 健康检查和 Hot Sync 通过。
+

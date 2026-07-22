@@ -1,0 +1,4 @@
+interface:
+  display_name: "Local LLM GPU MTP Benchmark"
+  short_description: "Benchmark local GGUF GPU models"
+  default_prompt: "Test a Windows local GGUF model with CUDA, MTP/speculative decoding, web comparison, Kilo routing advice, and cleanup."

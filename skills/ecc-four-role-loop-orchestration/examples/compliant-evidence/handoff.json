@@ -1,0 +1,17 @@
+{
+  "verified_facts":["十二层逐层通过","真实四角色回执完整"],
+  "completed_items":["WP-001"],
+  "skipped_items":[],
+  "open_rejections":[],
+  "open_blockers":[],
+  "recovery_entry":"重新运行validate_run_evidence.py验证本目录",
+  "next_resume_path":"第12层最终验收",
+  "remaining_risks":["示例不替代真实业务对比"],
+  "agent_receipts_summary":"四个角色均有唯一启动和回传回执",
+  "skill_status":"必需技能已读取并实际使用",
+  "round_status":"第0轮接受，无开放返修",
+  "session_snapshot_summary":"十二层和工作包状态已冻结",
+  "tool_inventory_summary":"仅使用Codex和Python验证器",
+  "workspace_lifecycle_summary":"正式、影子、审计空间相互隔离",
+  "file_alias_map":"见evidence-index.json的aliases"
+}

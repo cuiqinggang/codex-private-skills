@@ -23,7 +23,7 @@ if ($existing -eq $Name) {
     if ($running -eq $Name) {
         Write-Output "Container already running: $Name"
         Write-Output "WebDriver: http://127.0.0.1:$WebDriverPort"
-        Write-Output "noVNC: http://127.0.0.1:$NoVncPort/?autoconnect=1&resize=scale&password=secret"
+${REDACTED_SECRET}
         exit 0
     }
 
@@ -53,7 +53,7 @@ do {
         $status = Invoke-RestMethod -Uri "http://127.0.0.1:$WebDriverPort/status" -Method Get -TimeoutSec 3
         if ($status.value.ready -eq $true) {
             Write-Output "WebDriver is ready: http://127.0.0.1:$WebDriverPort"
-            Write-Output "noVNC: http://127.0.0.1:$NoVncPort/?autoconnect=1&resize=scale&password=secret"
+${REDACTED_SECRET}
             exit 0
         }
     } catch {

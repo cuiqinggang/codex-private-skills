@@ -25,13 +25,13 @@ H:\Hermes_Backups\HERMES-014-P1P2-HEALTH-BACKUP-20260522\stable-p1p2-20260522_18
 Primary report:
 
 ```text
-C:\Users\A\Desktop\1\output\HERMES-014-P1P2-HEALTH-BACKUP-20260522\FINAL_P1P2_HEALTH_BACKUP_REPORT.md
+${REDACTED_SECRET}
 ```
 
 Artifacts:
 
 ```text
-C:\Users\A\Desktop\1\output\HERMES-014-P1P2-HEALTH-BACKUP-20260522\artifacts
+${REDACTED_SECRET}
 ```
 
 ## Passing Evidence

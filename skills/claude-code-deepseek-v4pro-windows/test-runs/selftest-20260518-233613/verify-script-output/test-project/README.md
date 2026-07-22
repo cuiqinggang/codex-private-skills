@@ -1,2 +1,2 @@
-﻿# Test Project
+# Test Project
 

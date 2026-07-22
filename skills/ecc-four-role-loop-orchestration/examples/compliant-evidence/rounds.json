@@ -1,0 +1,3 @@
+[
+  {"work_package_id":"WP-001","round":0,"executor_agent_id":"agent-execution","auditor_agent_id":"agent-audit","hypothesis":"完整第一版可通过独立验收","strategy_changed":false,"meaningful_delta":"生成十二层实例、声明、产物和证据","checks_rerun":["CHECK-001","CHECK-002"],"audit_rerun":"E-AUDIT","decision":"ACCEPT"}
+]

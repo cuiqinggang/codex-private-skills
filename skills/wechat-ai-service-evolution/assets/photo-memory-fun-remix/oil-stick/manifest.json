@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-20",
+  "case_id": "oil-stick-food-person-remix",
+  "asset_root": "assets/photo-memory-fun-remix/oil-stick",
+  "privacy": "No private portraits or third-party artwork are bundled without explicit owner consent.",
+  "assets": [],
+  "source_chain": [],
+  "notes": [
+    "本次仅安装方法、提示词和元数据索引。",
+    "新增素材时必须记录来源、所有者同意、SHA256、像素尺寸、角色和选择状态。"
+  ]
+}

@@ -1,3 +1,0 @@
-display_name: Xiaolongxia Provider Expansion
-short_description: Safely test new provider candidates such as NVIDIA NIM for Xiaolongxia without changing production.
-default_prompt: Test a new Xiaolongxia provider candidate with marker evidence, rank A/B/C models, generate candidate-only config, and avoid touching production routes or secrets.

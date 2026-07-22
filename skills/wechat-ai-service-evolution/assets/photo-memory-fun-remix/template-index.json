@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-20",
+  "privacy_rule": "只登记模板元数据和授权状态；不得保存未获明确许可的私人肖像或第三方作品。",
+  "templates": [
+    {
+      "id": "oil-stick-food-person-remix",
+      "name": "食物与人物融合（老油条方法）",
+      "category": "食物与人物",
+      "status": "candidate",
+      "asset_status": "documentation_only",
+      "required_inputs": ["一张获授权的正面人物照", "一种自有或有权使用的食物载体"],
+      "output_type": "微信可分享图片",
+      "free_delivery": "待逐次核验",
+      "rights": "只复用效果原理；不得复制第三方原作、去水印或公开私人肖像",
+      "references": [
+        "references/photo-memory-fun-remix.md",
+        "references/oil-stick-case-study.md",
+        "references/oil-stick-prompt-pack.md",
+        "references/photo-template-resource-radar.md",
+        "references/photo-inspiration-gallery.md"
+      ],
+      "successful_real_cases": 0
+    }
+  ]
+}

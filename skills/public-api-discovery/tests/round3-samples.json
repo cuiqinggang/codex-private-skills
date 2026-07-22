@@ -1,0 +1,23 @@
+{
+  "seed": 20260714,
+  "checked_at": "2026-07-14T17:55:00+08:00",
+  "sample_count": 10,
+  "invalid_count": 2,
+  "serious_inconsistency_count": 1,
+  "unverifiable_count": 1,
+  "invalid_or_serious_ratio": 0.30,
+  "threshold_passed": false,
+  "external_api_calls": 0,
+  "samples": [
+    {"name":"Pirate Weather","url":"https://pirateweather.net/en/latest/","link":"valid","free_tier":"yes","registration":"yes","rate_limit":"mentioned but exact policy not verified","commercial":"unknown","https":"yes","cors":"not independently verified","finding":"serious auth mismatch: catalog No, official page says get an API key"},
+    {"name":"Imsea","url":"https://imsea.herokuapp.com/","link":"404","free_tier":"unknown","registration":"unknown","rate_limit":"unknown","commercial":"unknown","https":"yes","cors":"unknown","finding":"invalid link"},
+    {"name":"Random Data","url":"https://random-data-api.com","link":"connection failed","free_tier":"unknown","registration":"unknown","rate_limit":"unknown","commercial":"unknown","https":"unknown","cors":"unknown","finding":"invalid/unreachable in current verification"},
+    {"name":"Frankfurter","url":"https://www.frankfurter.app/docs","link":"valid","free_tier":"yes","registration":"no API key","rate_limit":"abuse rate limit, no daily/monthly quota","commercial":"yes, subject to underlying provider terms","https":"yes","cors":"not independently verified","finding":"catalog auth/HTTPS consistent"},
+    {"name":"Longdo Map","url":"https://map.longdo.com/docs/","link":"valid","free_tier":"unknown","registration":"unknown","rate_limit":"unknown","commercial":"unknown","https":"yes","cors":"not independently verified","finding":"dynamic page; details not verifiable from returned text"},
+    {"name":"Associated Press","url":"https://developer.ap.org/","link":"valid","free_tier":"unknown","registration":"unknown","rate_limit":"unknown","commercial":"unknown","https":"yes","cors":"not independently verified","finding":"dynamic page; details not verifiable from returned text"},
+    {"name":"Jina AI","url":"https://jina.ai","link":"network timeout","free_tier":"unknown","registration":"unknown","rate_limit":"unknown","commercial":"unknown","https":"unknown","cors":"unknown","finding":"unverifiable; not counted as confirmed invalid"},
+    {"name":"Podio","url":"https://developers.podio.com","link":"valid","free_tier":"unknown","registration":"API key required","rate_limit":"yes","commercial":"unknown","https":"yes","cors":"not independently verified","finding":"official page confirms key and rate limits"},
+    {"name":"PlaceBear","url":"https://placebear.com/","link":"valid","free_tier":"unknown","registration":"unknown","rate_limit":"unknown","commercial":"unknown","https":"yes","cors":"not independently verified","finding":"service page reachable; policy details absent"},
+    {"name":"SavePage.io","url":"https://www.savepage.io","link":"valid","free_tier":"yes, no credit card stated","registration":"API key required","rate_limit":"unknown","commercial":"unknown","https":"yes","cors":"not independently verified","finding":"catalog auth/HTTPS consistent"}
+  ]
+}

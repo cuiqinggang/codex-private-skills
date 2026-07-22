@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "file": "Guizang-Style-Apple-AI-Analysis-Premium-Chinese.pptx",
+      "role": "editable editorial/Swiss analysis reference",
+      "sha256": "81E1F2D78DE8C91334320AF7A5EEA7FD59E4FFE5FF2B27DA01EE1D733A603407",
+      "slides": 10,
+      "aspect_ratio": "16:9",
+      "content_reuse": "visual-and-structural-only-unless-facts-are-reverified"
+    }
+  ]
+}
+

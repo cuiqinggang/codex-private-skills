@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-21",
+  "scope": "老河口及相似普通小城市的微信远程服务小试",
+  "architecture": "4个前台入口组合77项后台细分能力；不为每个生成器创建技能包",
+  "review_gate": {
+    "case_target": 7,
+    "deadline": "2026-08-31",
+    "coverage": {"family_image": 3, "local_shop": 3, "agri_ecommerce": 1},
+    "metrics": ["actual_use", "referral_willingness", "repeat_request_30d", "minutes", "satisfaction", "fact_error"]
+  },
+  "entrances": [
+    {
+      "id": "local-family-image-memory",
+      "name": "家庭影像修复与纪念",
+      "role": "formal-pilot-entry",
+      "priority": 1,
+      "state": "candidate",
+      "member_service_ids": ["old-photo-repair", "photo-scratch-repair", "blurry-photo-upscale", "black-white-photo-colorize", "portrait-object-removal", "family-photo-collage", "family-photo-video", "elder-voice-family-memory", "memorial-photo-text", "photo-memory-fun-remix"],
+      "success_requires": ["completed_artifact", "identity_checked", "privacy_consent", "actual_use_confirmed"]
+    },
+    {
+      "id": "local-shop-wechat-materials",
+      "name": "小店微信宣传素材",
+      "role": "formal-pilot-entry",
+      "priority": 2,
+      "state": "candidate",
+      "member_service_ids": ["product-photo-cleanup", "simple-promo-poster", "price-list-organize", "menu-organize", "recruitment-poster", "shop-short-video-script", "moments-promo-copy", "product-intro-organize", "customer-faq-table", "shop-event-plan", "photo-background-replace"],
+      "success_requires": ["completed_material_set", "facts_confirmed", "qr_tested_if_present", "actual_publish_confirmed"]
+    },
+    {
+      "id": "local-agri-ecommerce-visual-copy",
+      "name": "农特产品电商视觉与文案",
+      "role": "formal-pilot-entry",
+      "priority": 3,
+      "state": "candidate",
+      "member_service_ids": ["product-photo-cleanup", "photo-background-replace", "simple-promo-poster", "moments-promo-copy", "shop-short-video-script", "product-intro-organize", "price-list-organize", "product-parameter-comparison"],
+      "success_requires": ["completed_product_set", "product_truth_checked", "claims_evidence_checked", "actual_use_confirmed"]
+    },
+    {
+      "id": "local-fun-photo-avatar-funnel",
+      "name": "趣味照片与微信头像",
+      "role": "free-funnel-entry",
+      "priority": 4,
+      "state": "candidate",
+      "member_service_ids": ["photo-memory-fun-remix", "photo-background-replace", "portrait-object-removal", "id-photo-sizing"],
+      "success_requires": ["completed_artifact", "portrait_authorized", "safe_style", "user_received"]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 name: codex-deepseek-v4pro-ccx-ccswitch-replay
-description: Use this skill to restore, repair, migrate, or verify the 2026-05-14 successful Windows Codex backup route: DeepSeek V4 Pro via CCX/API Proxy on localhost:13000/v1, CC Switch Codex provider, and Codex API-key provider. Trigger when the user says "恢复 Codex DeepSeek V4 Pro 备用路线", "重新配置 Codex DeepSeek", "Codex 额度不够，切 DeepSeek V4 Pro", "复现 CCX + CC Switch 接 DeepSeek", "Codex DeepSeek V4 Pro 备用模型修复", or "按 2026-05-14 成功案例恢复".
+description: "Restore, repair, migrate, or verify the 2026-05-14 Windows Codex DeepSeek V4 Pro backup route via CCX/API Proxy and CC Switch."
 ---
 
 # Codex DeepSeek V4 Pro Backup via CCX and CC Switch
@@ -13,12 +13,12 @@ DeepSeek official API -> CCX/API Proxy -> `http://localhost:13000/v1` -> CC Swit
 
 Load this skill when the user asks:
 
-- "恢复 Codex DeepSeek V4 Pro 备用路线"
-- "重新配置 Codex DeepSeek"
-- "Codex 额度不够，切 DeepSeek V4 Pro"
-- "复现 CCX + CC Switch 接 DeepSeek"
-- "Codex DeepSeek V4 Pro 备用模型修复"
-- "按 2026-05-14 成功案例恢复"
+- "閹垹顦?Codex DeepSeek V4 Pro 婢跺洨鏁ょ捄顖滃殠"
+- "闁插秵鏌婇柊宥囩枂 Codex DeepSeek"
+- "Codex 妫版繂瀹虫稉宥咁檮閿涘苯鍨?DeepSeek V4 Pro"
+- "婢跺秶骞?CCX + CC Switch 閹?DeepSeek"
+- "Codex DeepSeek V4 Pro 婢跺洨鏁ゅΟ鈥崇€锋穱顔碱槻"
+- "閹?2026-05-14 閹存劕濮涘鍫滅伐閹垹顦?
 
 ## When To Use
 
@@ -65,3 +65,51 @@ First confirm the GPT default path is untouched, then start or repair CCX on `13
 
 - `scripts/check-current-state.ps1`: read-only status check.
 - `scripts/verify-deepseek-v4pro-backup.ps1`: CCX and optional Codex backup route verification.
+
+## 2026-05-18 鏈€绲傛垚鍔熻矾绶氳鍏?
+
+### 1. Codex 妗岄潰鍦栧舰鐗堜笉鍙敤
+
+- Codex 妗岄潰鍦栧舰鐗堜粛鍙楀畼鏂归搴﹂檺鍒讹紝涓嶈兘浣滅偤 DeepSeek V4 Pro 鐨勫彲闈犲叆鍙ｃ€?
+- 涓嶈鍐嶄娇鐢ㄦ闈㈢増鑸婃渻瑭遍€茶椹楄瓑銆?
+
+### 2. 鏈€绲傝窇閫氱殑鎴愮啛璺窔
+
+- 璺窔锛?*Codex CLI + 鐛ㄧ珛 CODEX_HOME + CCX localhost:13000/v1 + DeepSeek V4 Pro**銆?
+- 涓嶈淇敼 Hermes/鎰涢Μ浠曘€?
+- 涓嶈淇敼 Open WebUI銆?
+- 涓嶈娣峰叆 DeepSeek Flash銆?
+- 涓嶈鍦?C:\Windows\system32 鍋氶爡鐩€?
+- 鐪熷浠诲嫏鍓嶅厛 cd 鍒伴爡鐩洰閷勩€?
+
+### 3. 鎴愬姛璀夋摎
+
+- `npx -y @openai/codex@latest --version` 杩斿洖 `codex-cli 0.130.0`
+- model: `deepseek-v4-pro`
+- provider: `ccx-deepseek-v4pro-backup`
+- 鍥炶 `CODEX_DEEPSEEK_CLI_OK`
+- Sandbox ready
+- 鍥炶 `DEEPSEEK_SANDBOX_OK`
+${REDACTED_SECRET}
+
+### 4. 闂滈嵉姝ラ
+
+1. 寰炶垔鎴愬姛妗堜緥 `.env` 灏庡叆 `CCX_PROXY_ACCESS_KEY`銆?
+${REDACTED_SECRET}
+3. 閰嶇疆 `wire_api = "responses"`銆?
+4. 鐢?`CODEX_HOME` 鎸囧悜鐛ㄧ珛閰嶇疆鍟熷嫊 Codex CLI锛?
+
+```powershell
+${REDACTED_SECRET}
+npx -y @openai/codex@latest
+```
+
+### 5. 娉ㄦ剰浜嬮爡
+
+- 涓嶈鍐嶄娇鐢ㄦ闈㈢増鑸婃渻瑭遍璀夈€?
+- 涓嶈淇敼 Hermes/鎰涢Μ浠曘€?
+- 涓嶈淇敼 Open WebUI銆?
+- 涓嶈娣峰叆 DeepSeek Flash銆?
+- 涓嶈鍦?C:\Windows\system32 鍋氶爡鐩€?
+- 鐪熷浠诲嫏鍓嶅厛 cd 鍒伴爡鐩洰閷勩€?
+

@@ -1,0 +1,52 @@
+{
+  "final_status":"PASS",
+  "status_code":"ECC_COMPLETE_PASS",
+  "status_code_chinese":"ECC中文十二层闭环完整通过",
+  "status_code_evidence_ids":["E-FINAL"],
+  "elapsed_minutes":20,
+  "final_signer_agent_id":"root",
+  "twelve_layers_complete":true,
+  "declared_requirements_complete":true,
+  "real_multi_agent_accepted":true,
+  "skill_use_gates_accepted":true,
+  "independent_audit_accepted":true,
+  "delivery_safety_accepted":true,
+  "handoff_accepted":true,
+  "early_completion_assessment": {
+    "auditor_agent_id":"agent-audit",
+    "reliable_history_available":false,
+    "history_basis_evidence_ids":[],
+    "expected_duration_lower_minutes":0,
+    "is_anomalously_early":true,
+    "goal_count":1,
+    "work_package_count":1,
+    "artifact_count":1,
+    "check_count":2,
+    "basis_chinese":"本结构示例没有可靠同类历史范围，因此按首次运行规则执行完整保守复核。"
+  },
+  "early_completion_review_accepted":true,
+  "early_completion_review": {
+    "auditor_agent_id":"agent-audit",
+    "goal_coverage_complete":true,
+    "all_work_packages_handled":true,
+    "required_skills_used":true,
+    "multi_agent_receipts_complete":true,
+    "real_outputs_present":true,
+    "deterministic_checks_run":true,
+    "negative_cases_run":true,
+    "no_skipped_items":true,
+    "independent_audit":true,
+    "decision":"ACCEPT",
+    "chinese_reason":"没有可靠同类历史范围，独立审计按首次运行规则确认未跳过目标和关口"
+  },
+  "open_rejections":0,
+  "open_blockers":[],
+  "platform_receipts_recheck": {
+    "auditor_agent_id":"agent-audit",
+    "accepted":true,
+    "method_chinese":"通过受信平台事件界面核对四类角色的回执编号、运行编号、父子关系和起止时间。",
+    "evidence_ids":["E-AGENT-ROOT","E-AGENT-MATERIALS","E-AGENT-EXECUTION","E-AGENT-AUDIT"]
+  },
+  "final_document_path":"final-acceptance.md",
+  "final_report_path":"final-report.md"
+}

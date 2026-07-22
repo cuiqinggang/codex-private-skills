@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+<style>.t{font-family:Arial,'Microsoft YaHei',sans-serif;fill:#111}.h{font-size:32px;font-weight:bold}.b{font-size:22px;font-weight:bold}.s{font-size:17px}.box{fill:#fff;stroke:#222;stroke-width:2}</style>
+<text x="45" y="55" class="t h">证据等级与允许声明</text>
+<rect x="80" y="560" width="1040" height="90" class="box"/><text x="110" y="603" class="t b">E0 无证据</text><text x="370" y="603" class="t s">只有“我改了”——禁止发布</text>
+<rect x="150" y="450" width="900" height="90" class="box"/><text x="180" y="493" class="t b">E1 局部证据</text><text x="460" y="493" class="t s">一个文件/截图——只能证明局部</text>
+<rect x="220" y="340" width="760" height="90" class="box"/><text x="250" y="383" class="t b">E2 工作目录</text><text x="520" y="383" class="t s">WORKTREE_PASS_PACKAGE_PENDING</text>
+<rect x="290" y="230" width="620" height="90" class="box"/><text x="320" y="273" class="t b">E3 最终交付物</text><text x="570" y="273" class="t s">FINAL_ARTIFACT_EVIDENCE_PASS</text>
+<rect x="360" y="120" width="480" height="90" class="box"/><text x="390" y="163" class="t b">E4 真实运行</text><text x="610" y="163" class="t s">质量/时间/收益得到证明</text>
+</svg>

@@ -98,7 +98,7 @@ try {
         result = $result.value
         screenshot = (Resolve-Path -LiteralPath $screenshotPath).Path
         webdriver = $WebDriverUrl
-        noVnc = "http://127.0.0.1:7900/?autoconnect=1&resize=scale&password=secret"
+${REDACTED_SECRET}
     } | ConvertTo-Json -Depth 4
 } finally {
     Invoke-WebDriver -Method Delete -Path "/session/$sessionId" | Out-Null

@@ -40,18 +40,18 @@ The hard G00 rule still applies: confirm New API 3011 is reachable and logged in
 
 1. New API replay:
    - Check `127.0.0.1:3011` listener.
-   - If needed, start `docker compose up -d` in `C:\Users\A\xiaolongxia-free-api-local`.
+${REDACTED_SECRET}
    - Confirm `http://127.0.0.1:3011/api/status`.
-   - Confirm admin login with `xya6338`; password is stored only in `C:\Users\A\xiaolongxia-free-api-local\secrets\newapi_admin_xya6338_login.txt`.
+${REDACTED_SECRET}
    - Do not print the password.
 
 2. Model-pool replay:
-   - Read token only from `C:\Users\A\xiaolongxia-free-api-local\secrets\xiaolongxia_newapi_token.txt`.
+${REDACTED_SECRET}
    - Call `GET http://127.0.0.1:3011/v1/models`.
    - Optional minimal chat marker uses the current primary production model.
 
 3. Xiaolongxia internal LLM replay:
-   - Use `C:\Users\A\xiaolongxia-free-api-local\scripts\xiaolongxia-nvidia-llm-selftest.ps1`.
+${REDACTED_SECRET}
    - Run normal `-ModelMode auto`.
    - For fallback proof, run `-ModelMode auto -SimulatePrimaryFailure`.
    - Do not send messages or require the Xiaolongxia UI.
@@ -67,20 +67,20 @@ The hard G00 rule still applies: confirm New API 3011 is reachable and logged in
    - After the page shows the chat UI, send a visible marker prompt and require a visible marker reply before claiming success.
 
 5. Autostart replay:
-   - Use independent directory `C:\Users\A\Xiaolongxia_BootReplay_AutoStart`.
+${REDACTED_SECRET}
    - Use independent task `Xiaolongxia_BootReplay_Logon`.
-   - Do not reuse failed directory `C:\Users\A\Xiaolongxia_AutoStart`.
+${REDACTED_SECRET}
    - Keep old failed task `Xiaolongxia_Autostart_Logon` disabled.
 
 ## Current Verified Savepoint
 
 Output root:
 
-`C:\Users\A\Desktop\1\output\XIAOLONGXIA-BOOT-REPLAY-TO-AUTOSTART-20260524`
+${REDACTED_SECRET}
 
 Additional three-repeat visible verification:
 
-- Output root: `C:\Users\A\Desktop\1\output\XIAOLONGXIA-BOOT-REPLAY-3X-VERIFY-20260524`
+${REDACTED_SECRET}
 - Final status: `XIAOLONGXIA_BOOT_REPLAY_3X_VERIFY_PASS`
 - The user-requested normal Google Chrome path was verified three times.
 - Round 1 OpenClaw evidence: `round-1\R1-normal-chrome-openclaw-after-send.png`
@@ -98,7 +98,7 @@ Important correction from the three-repeat run:
 
 Later strict-method retest result:
 
-- Output root: `C:\Users\A\Desktop\1\output\XIAOLONGXIA-BOOT-REPLAY-3X-STRICT-METHOD-20260524`
+${REDACTED_SECRET}
 - Final status: `XIAOLONGXIA_BOOT_REPLAY_3X_STRICT_METHOD_NOT_100_STOP`
 - Read `references/strict-method-retest-not-100-20260524.md` before claiming this browser method is 100% reliable.
 - New lessons:
@@ -129,7 +129,7 @@ Verified task:
 
 - `Xiaolongxia_BootReplay_Logon`
 - Trigger: Windows logon
-- Action: `C:\Users\A\Xiaolongxia_BootReplay_AutoStart\Run-Xiaolongxia-BootReplay.cmd`
+${REDACTED_SECRET}
 - Manual task run result: `0`
 - Latest manual run status: `BOOT_REPLAY_AUTOSTART_RUN_PASS`
 
@@ -143,14 +143,14 @@ Copies of the current scripts are bundled under `scripts\`:
 
 Operational source path:
 
-`C:\Users\A\Xiaolongxia_BootReplay_AutoStart`
+${REDACTED_SECRET}
 
 ## Rollback
 
 Disable the new task:
 
 ```powershell
-C:\Users\A\Xiaolongxia_BootReplay_AutoStart\Disable-Xiaolongxia-BootReplay-Task.ps1
+${REDACTED_SECRET}
 ```
 
 Or:
@@ -193,7 +193,7 @@ Repaired route:
 
 Evidence root:
 
-`C:\Users\A\Desktop\1\output\XIAOLONGXIA-OPENCLAW-INPROGRESS-STOP-REPAIR-20260524`
+${REDACTED_SECRET}
 
 Visible proof:
 
@@ -208,6 +208,6 @@ Before saving a boot replay as successful, verify both:
 
 Latest model switch evidence:
 
-- Output root: `C:\Users\A\Desktop\1\output\XIAOLONGXIA-SWITCH-TO-70B-20260524`
+${REDACTED_SECRET}
 - Status: `XIAOLONGXIA_DEFAULT_MODEL_SWITCHED_TO_NVIDIA_70B_PASS`
 - Visible crop: `G07-visible-70b-session-crop.png`

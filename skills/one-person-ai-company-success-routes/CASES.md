@@ -1,0 +1,19 @@
+# Cases
+
+| ID | 案例 | 类型 | 状态 | 核心吸收机制 | 详细文件 |
+|---|---|---|---|---|---|
+| CASE-001 | HiveWard | 公司组织型 Agent OS | REPLAY | Company/CEO/Leader/Blueprint/Inbox/Run/History | `references/CASE-001-HiveWard.md` |
+| CASE-002 | MetaGPT | 软件公司模拟型 | ABSORB | SOP、PM/Architect/Engineer/QA、中间产物验证 | `references/CASE-002-MetaGPT.md` |
+| CASE-003 | ChatDev | 软件公司模拟型 | ABSORB | 虚拟软件公司、Phase/Role、log/replay、human reviewer | `references/CASE-003-ChatDev.md` |
+| CASE-004 | CrewAI | 多 Agent 编排框架型 | ABSORB | Agent/Task/Crew/Process/Flow、manager、logs | `references/CASE-004-CrewAI.md` |
+| CASE-005 | AutoGen | 多 Agent 编排框架型 | ABSORB/WATCH | AgentChat、Teams、Studio、Bench；关注 successor | `references/CASE-005-AutoGen.md` |
+| CASE-006 | LangGraph | 多 Agent 编排框架型 | ABSORB | durable execution、persistence、HITL、memory、streaming | `references/CASE-006-LangGraph.md` |
+| CASE-007 | Visual AI Workflow | 可视化工作流型 | ABSORB/REPLAY | 节点画布、AI node、credential status、history、import/export | `references/CASE-007-Visual-AI-Workflow.md` |
+| CASE-008 | Polsia / POSA 零员工 AI 公司模式 | 闭源产品化一人公司 OS 案例 | REPLAY | Company object、AI employee、task/run/report、public live dashboard、80/20 人类品味边界 | `references/CASE-008-Polsia-Zero-Employee-Company.md` |
+| CASE-009 | Sahil Lavingia / The Minimalist Entrepreneur 10 Skills | 一人公司商业方法 skill 案例 | ABSORB | 社区优先、销售验证、手工->流程化->产品化、首批客户、定价、内容营销、可持续增长、价值观、极简复盘 | `references/CASE-009-Sahil-Lavingia-Minimalist-Entrepreneur-10-Skills.md` |
+| CASE-010 | 刘小排 AI 公司运营方法 | 一人 AI 公司产品运营方法 | ABSORB | 需求->文档->原型->MVP->验证->收费->商业逻辑->市场发布；AI 做执行，人保留产品判断 | `references/CASE-010-Liu-Xiaopai-AI-Company-Operations.md` |
+| CASE-011 | Chatbase / Yasser Elsaid AI Agent Harness | 一人 AI 公司产品化 / 客户体验 Agent 平台案例 | ABSORB | 极简 chatbot MVP、早期付费、actions/API、contacts/identity、HITL、多渠道、billing/ops、企业化 | `references/CASE-011-Chatbase-Yasser-Elsaid-Agent-Harness.md` |
+| CASE-012 | Codex 热点海外小产品首单案例 | 一人 AI 公司海外微产品路线 | ABSORB | 热点功能->评论区需求->Codex 快速建站->海外收款->X 评论区获客->首单验证 | `references/CASE-012-Codex-Hotspot-Overseas-Microproduct.md` |
+| CASE-013 | Lab 305 / Google Map 本地服务商网站改造路线 | 一人 AI 公司 B2B 本地服务数字化路线 | ABSORB + EXECUTABLE | Google Map/公开目录合规找客、100 分线索评分、商家研究卡、概念演示、人工审核外联、提案、固定范围网站交付、三轮验收与复购 | `references/CASE-013-Lab305-Google-Map-Local-Service-Website-Turnaround.md` → `one-person-local-business-website-system` |
+
+HiveWard 是 CASE-001，不是唯一路线。后续新增路线必须追加 CASE-008+ 或 periodic update 报告，不得覆盖旧案例。

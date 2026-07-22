@@ -1,6 +1,6 @@
 param(
     [string]$BaseUrl = "http://localhost:13000",
-    [string]$CcxEnvPath = "C:\Users\A\Desktop\1\output\TASK-20260514-CODEX-DEEPSEEK-V4PRO-VIDEO-REPLAY\tools\ccx\.env",
+${REDACTED_SECRET}
     [switch]$RunCodexExec
 )
 
@@ -76,7 +76,7 @@ if ($RunCodexExec) {
             --ephemeral `
             --ignore-rules `
             -s read-only `
-            -C "C:\Users\A\Desktop\1" `
+${REDACTED_SECRET}
             "Reply exactly: $marker" 2>&1
         if ($LASTEXITCODE -ne 0 -or (($out -join "`n") -notmatch [regex]::Escape($marker))) {
             Fail-Layer -Layer "CODEX_EXEC" -Message "codex exec did not return the exact marker."

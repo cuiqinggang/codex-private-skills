@@ -33,7 +33,7 @@ Do not turn this local deployment into a public or commercial service unless the
 - Keep Hermes/Open WebUI on `localhost:3000`.
 - Keep New API on `http://localhost:3001` and API Base `http://localhost:3001/v1` unless the user explicitly changes the port plan.
 - When the user asks to view the New API server, open it in real Google Chrome, not the Codex in-app browser. The in-app browser is acceptable only for background verification.
-- Store the live deployment in `C:\Users\A\new-api-local`.
+${REDACTED_SECRET}
 - Bind New API only to `127.0.0.1:3001:3000`.
 - Do not expose PostgreSQL or Redis host ports.
 - Hermes reads New API through `http://127.0.0.1:3001/v1`; Open WebUI reads Hermes through `http://host.docker.internal:8642/v1`.
@@ -66,7 +66,7 @@ Important local baseline to preserve:
 
 Login auto recovery is installed for reboot/login repair. Read
 `references/local-layout.md` before changing
-`C:\Users\A\.hermes\gateway-service\Hermes_NewAPI_AutoRecover.ps1`,
+${REDACTED_SECRET}
 the startup fallback, or scheduled task `HermesNewApiAutoRecover_Logon`.
 Use `references/reboot-chain-verification.md` for the current reboot/login
 verification gates and 2026-05-22 evidence.
@@ -74,9 +74,9 @@ verification gates and 2026-05-22 evidence.
 ## Workflow
 
 1. Check Windows, Docker daemon, `docker compose`, and the chosen host port.
-2. Create or update `C:\Users\A\new-api-local\docker-compose.yml`, `.env`, and `README_LOCAL.md`.
+${REDACTED_SECRET}
 3. Generate 32-byte or stronger random local secrets for PostgreSQL, Redis, session, and crypto keys.
-4. Run from `C:\Users\A\new-api-local`:
+${REDACTED_SECRET}
 
 ```powershell
 docker compose config --quiet
@@ -115,13 +115,7 @@ Treat this as internal gateway accounting for local limits, token consumption, a
 
 ## Update And Sync Rule
 
-When this skill is edited, treat `C:\Users\A\.codex\skills\new-api-local-deploy` as the source and mirror it to:
-
-```text
-H:\CodexSkills\new-api-local-deploy
-```
-
-After syncing, compare file hashes for all files in both locations. Report any mismatch and fix before claiming the skill is updated.
+${REDACTED_SECRET}
 
 ## User Handoff
 
@@ -134,3 +128,4 @@ After deployment, tell the user:
 - Add upstream channels such as OpenAI, Claude, Gemini, DeepSeek, or Qwen.
 - Create a New API token.
 - Configure clients with `API Base: http://localhost:3001/v1` and the New API token.
+

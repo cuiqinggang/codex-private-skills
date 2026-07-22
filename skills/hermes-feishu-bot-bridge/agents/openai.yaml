@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hermes Feishu Bot Bridge"
+  short_description: "Connect Feishu group bot events to local Hermes via WebSocket."
+  default_prompt: "Use $hermes-feishu-bot-bridge to connect or repair the Feishu group bot bridge to local Hermes."

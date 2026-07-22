@@ -21,7 +21,7 @@ function Test-PortOccupied {
     return $false
 }
 
-$configPath = "C:\Users\A\.codex\config.toml"
+${REDACTED_SECRET}
 $configExists = Test-Path -LiteralPath $configPath
 $configText = if ($configExists) { Get-Content -LiteralPath $configPath -Raw } else { "" }
 $model = ""
@@ -29,7 +29,7 @@ if ($configText -match '(?m)^\s*model\s*=\s*"([^"]+)"') { $model = $Matches[1] }
 $forbiddenFlashPattern = '(?i)deepseek-v4-flash'
 
 $ccxProc = Get-Process -Name "ccx-windows-amd64" -ErrorAction SilentlyContinue
-$ccSwitchDb = "C:\Users\A\.cc-switch\cc-switch.db"
+${REDACTED_SECRET}
 $providerExists = $false
 if (Test-Path -LiteralPath $ccSwitchDb) {
     try {

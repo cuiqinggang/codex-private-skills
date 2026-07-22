@@ -1,0 +1,6 @@
+interface:
+  display_name: "ChatGPT CDP Browser Bridge"
+  short_description: "Bridge Codex to ChatGPT website"
+  default_prompt: "Use $chatgpt-cdp-browser to ask ChatGPT for planning, then execute the result locally with Codex."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "高收益低成本执行门禁"
+  short_description: "量化判断命令包、技能、项目和自动化是否值得投入"
+  default_prompt: "Use $high-roi-low-cost-execution-gate to evaluate this proposal before implementation and define post-launch measurement."
+policy:
+  allow_implicit_invocation: true
+

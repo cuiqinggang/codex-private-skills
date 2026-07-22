@@ -8,7 +8,7 @@ This savepoint records the user's requested three-repeat visible verification af
 
 ## Output Root
 
-`C:\Users\A\Desktop\1\output\XIAOLONGXIA-BOOT-REPLAY-3X-VERIFY-20260524`
+${REDACTED_SECRET}
 
 ## Confirmed Rule
 
@@ -77,4 +77,4 @@ These files are failure/diagnostic evidence only and must not be used as pass ev
 
 ## Final Report
 
-`C:\Users\A\Desktop\1\output\XIAOLONGXIA-BOOT-REPLAY-3X-VERIFY-20260524\final-report.md`
+${REDACTED_SECRET}

@@ -1,0 +1,3 @@
+[
+  {"requirement_id":"REQ-001","description_chinese":"生成完整中文十二层闭环证据示例","critical":true,"acceptance_criteria":["十二层逐层存在","真实四角色","正负检查","双份最终验收"],"source":"示例任务"}
+]

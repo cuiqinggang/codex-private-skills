@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+  <style>.t{font-family:Arial,'Microsoft YaHei',sans-serif;fill:#111}.h{font-size:30px;font-weight:bold}.b{font-size:22px}.s{font-size:18px}.box{fill:#fff;stroke:#222;stroke-width:2;rx:16}.bad{fill:#ffe5e5}.arrow{stroke:#222;stroke-width:3;marker-end:url(#a)}</style>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#222"/></marker></defs>
+  <text x="40" y="55" class="t h">假 PASS 的错误循环</text>
+  <rect x="60" y="120" width="260" height="125" class="box bad"/><text x="95" y="175" class="t b">错误生成器</text><text x="90" y="210" class="t s">把Qwen重新写成Grok</text>
+  <rect x="470" y="120" width="260" height="125" class="box bad"/><text x="505" y="175" class="t b">错误产物</text><text x="515" y="210" class="t s">文件与压缩包仍是Grok</text>
+  <rect x="880" y="120" width="260" height="125" class="box bad"/><text x="915" y="175" class="t b">错误验证器</text><text x="905" y="210" class="t s">也把Grok当作正确值</text>
+  <line x1="320" y1="182" x2="465" y2="182" class="arrow"/><line x1="730" y1="182" x2="875" y2="182" class="arrow"/>
+  <path d="M1010 250 C1010 430,190 430,190 250" fill="none" class="arrow"/>
+  <text x="390" y="410" class="t b">三者彼此一致，但共同背离用户要求</text>
+  <rect x="270" y="470" width="660" height="100" class="box"/><text x="320" y="520" class="t b">修复：独立 CHANGE_CONTRACT 作为唯一真值</text><text x="355" y="550" class="t s">生成器和验证器都不能定义“正确答案”</text>
+</svg>

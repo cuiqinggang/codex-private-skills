@@ -11,7 +11,20 @@ Prefer the lightest control layer that satisfies the task:
 
 1. Use Playwright virtual browser for normal web tasks. It gives virtual mouse/keyboard control without moving the user's real pointer.
 2. Use the Selenium isolated Chrome container when a visible isolated browser desktop or demo proof is needed.
-3. Use real Windows mouse/keyboard simulation only when the user explicitly allows it for the current task.
+3. For Windows desktop apps, prefer passive screenshots, window enumeration, or UI Automation patterns when available. Treat Computer Use input actions as focus-changing and verify before use.
+4. Use real Windows mouse/keyboard simulation only when the user explicitly allows it for the current task.
+
+## No-Real-Input Boundary
+
+`SendInput`, `mouse_event`, PowerShell `SendKeys`, foreground clicks, and similar helpers affect the active Windows desktop input stream. They are not considered virtual input for a user who is actively using the machine.
+
+For desktop app work where the user says not to take over the mouse/keyboard:
+
+- allowed by default: screenshots, window enumeration, config edits, state-file edits, and passive app/window snapshots;
+- conditionally allowed: UI Automation `InvokePattern` / `ValuePattern` on a uniquely identified control, with before/after screenshots;
+- disabled by default: physical pointer movement, Win32 input injection, Computer Use `click`, `type_text`, `press_key`, `scroll`, or `activate_window`.
+
+If an input action may bring the window to the foreground or consume keyboard focus, stop and ask first.
 
 For the original project recap, known pitfalls, and demo sequence, read `references/project-recap.md`.
 
@@ -45,7 +58,7 @@ Default endpoints:
 
 ```text
 WebDriver: http://127.0.0.1:4444
-noVNC: http://127.0.0.1:7900/?autoconnect=1&resize=scale&password=secret
+${REDACTED_SECRET}
 ```
 
 The proof test types `virtual mouse and keyboard`, clicks Apply, and writes a screenshot to `output/isolated-browser/isolated-browser-proof.png` relative to the current working directory.
@@ -80,7 +93,7 @@ Expected behavior: a temporary topmost test window opens, receives a click, past
 
 When updating this project:
 
-1. Locate the active workspace copy first, commonly `C:\Users\A\Desktop\1`.
+${REDACTED_SECRET}
 2. Read `AGENTS.md`, `docs/desktop-visibility.md`, and the relevant script before changing behavior.
 3. Keep real desktop control gated behind explicit user permission.
 4. Run the narrowest proof command after edits.

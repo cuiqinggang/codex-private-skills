@@ -1,0 +1,10 @@
+{
+  "version": "1.1.0",
+  "script_compile": "PASS",
+  "self_test": "PASS",
+  "good_fixture": "PASS",
+  "bad_fixture_rejected": "PASS",
+  "cold_zip_fixture": "PASS",
+  "seven_zip_environment": "PENDING_UNVERIFIED_7Z (7z CLI unavailable in build environment)",
+  "note": "Self-test defaults to read-only output and does not modify the installed skill unless --output is explicitly supplied."
+}

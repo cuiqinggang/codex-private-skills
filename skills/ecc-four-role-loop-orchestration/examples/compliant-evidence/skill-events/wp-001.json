@@ -1,0 +1,11 @@
+{
+  "说明": "这是合规结构示例使用的工具追踪导出样本，不是当前会话的真实技能调用回执。真实任务必须替换为运行环境实际导出的记录。",
+  "source": "tool_trace",
+  "skill": "ecc-four-role-loop-orchestration",
+  "work_package_id": "WP-001",
+  "agent_id": "agent-execution",
+  "read_event_id": "skill-read-wp001-001",
+  "use_event_id": "skill-use-wp001-001",
+  "occurred_at": "2026-07-19T09:06:00-07:00",
+  "exported_by_runtime": true
+}

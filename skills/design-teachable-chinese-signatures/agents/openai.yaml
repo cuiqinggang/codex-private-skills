@@ -1,0 +1,7 @@
+interface:
+  display_name: "可教学中文姓名艺术签名"
+  short_description: "设计字形正确、可重复手写并带完整教学材料的中文姓名艺术签名"
+  brand_color: "#173A67"
+  default_prompt: "请使用 $design-teachable-chinese-signatures 为这个中文姓名设计可重复手写的艺术签名，并完成验字、三写测试与教学交付。"
+policy:
+  allow_implicit_invocation: true

@@ -21,10 +21,10 @@ The script checks `/health` once and exits. It is not a long-running watchdog.
 ## Installed Files
 
 ```text
-C:\Users\A\Hermes_AutoStart\healthcheck-8642\Check-Hermes8642.ps1
-C:\Users\A\Hermes_AutoStart\healthcheck-8642\Run-Hermes8642HealthCheck.vbs
-C:\Users\A\Hermes_AutoStart\healthcheck-8642\Register-Hermes8642SilentHealthCheck.ps1
-C:\Users\A\Hermes_AutoStart\healthcheck-8642\Unregister-Hermes8642SilentHealthCheck.ps1
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 ```
 
 Runtime Hermes config was aligned so the requested launcher restores 8642:
@@ -56,7 +56,7 @@ Hidden=True
 MultipleInstances=IgnoreNew
 ExecutionTimeLimit=PT10M
 Execute=wscript.exe
-Arguments=C:\Users\A\Hermes_AutoStart\healthcheck-8642\Run-Hermes8642HealthCheck.vbs
+${REDACTED_SECRET}
 Schedule=every 1 minute
 ```
 
@@ -66,8 +66,8 @@ and does not flash a console window.
 ## Logs
 
 ```text
-C:\Users\A\.hermes\logs\hermes-8642-healthcheck.log
-C:\Users\A\.hermes\logs\hermes-8642-healthcheck-status.json
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 ```
 
 Backup:
@@ -79,7 +79,7 @@ H:\Hermes_Backups\HERMES-014-8642-SILENT-HEALTHCHECK-20260522
 Final report:
 
 ```text
-C:\Users\A\Desktop\1\output\HERMES-014-8642-SILENT-HEALTHCHECK-FLEX-20260522\FINAL_8642_SILENT_HEALTHCHECK_REPORT.md
+${REDACTED_SECRET}
 ```
 
 ## Passing Evidence
@@ -125,7 +125,7 @@ C:\Users\A\Desktop\1\output\HERMES-014-8642-SILENT-HEALTHCHECK-FLEX-20260522\FIN
 To remove only this new 8642 healthcheck task:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\Users\A\Hermes_AutoStart\healthcheck-8642\Unregister-Hermes8642SilentHealthCheck.ps1'
+${REDACTED_SECRET}
 ```
 
 This does not delete scripts, logs, Hermes, Open WebUI, New API, Telegram, or old

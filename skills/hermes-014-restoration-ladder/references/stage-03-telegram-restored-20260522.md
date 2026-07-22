@@ -10,14 +10,14 @@ baseline.
 - Not included: New API, Postgres, Redis, Watchdog, AutoRecover, login autostart
 - Persistence level: live manual gateway process only
 - Related Telegram skill note:
-  `C:\Users\A\.codex\skills\hermes-telegram-persistent-bridge\references\p3-telegram-restored-20260522.md`
+${REDACTED_SECRET}
 
 Do not infer New API or reboot persistence from this stage.
 
 ## Root Cause
 
 The P1/P2 minimal baseline intentionally disabled Telegram persistence in
-`C:\Users\A\.hermes\.env` by leaving these values as comments:
+${REDACTED_SECRET}
 
 ```text
 #DISABLED_MINIMAL# TELEGRAM_BOT_TOKEN=<redacted>
@@ -52,15 +52,15 @@ bot token must never be printed into chat, reports, or skill files.
 Run directory:
 
 ```text
-C:\Users\A\Desktop\1\output\HERMES-014-P3-TELEGRAM-RESTORE-20260522\telegram-restore-20260522-191314
+${REDACTED_SECRET}
 ```
 
 Files:
 
 ```text
-C:\Users\A\Desktop\1\output\HERMES-014-P3-TELEGRAM-RESTORE-20260522\telegram-restore-20260522-191314\backup-before-telegram
-C:\Users\A\Desktop\1\output\HERMES-014-P3-TELEGRAM-RESTORE-20260522\telegram-restore-20260522-191314\final-verification.json
-C:\Users\A\Desktop\1\output\HERMES-014-P3-TELEGRAM-RESTORE-20260522\telegram-restore-20260522-191314\FINAL_P3_TELEGRAM_RESTORE_REPORT.md
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 ```
 
 Final verification at `2026-05-22 19:19:36 +08:00`:
@@ -85,12 +85,12 @@ Final verification at `2026-05-22 19:19:36 +08:00`:
 
 Purpose: prove P1/P2 is healthy before adding Telegram.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
 ```powershell
-$State = Get-Content -LiteralPath "C:\Users\A\.hermes\gateway_state.json" -Raw | ConvertFrom-Json
+${REDACTED_SECRET}
 $State | Select-Object pid, active_agents, platforms
 Invoke-WebRequest -Uri "http://127.0.0.1:8642/health" -UseBasicParsing -TimeoutSec 10
 Invoke-WebRequest -Uri "http://127.0.0.1:8642/v1/models" -UseBasicParsing -TimeoutSec 10
@@ -119,18 +119,18 @@ Continue or stop: continue only if P1/P2 is healthy.
 
 Purpose: preserve the live Hermes profile before changing Telegram state.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
 ```powershell
 $Stamp = Get-Date -Format "yyyyMMdd-HHmmss"
-$Backup = "C:\Users\A\Desktop\1\output\HERMES-014-P3-TELEGRAM-RESTORE-20260522\telegram-restore-$Stamp\backup-before-telegram"
+${REDACTED_SECRET}
 New-Item -ItemType Directory -Force -Path $Backup | Out-Null
-Copy-Item -LiteralPath "C:\Users\A\.hermes\.env" -Destination $Backup -ErrorAction SilentlyContinue
-Copy-Item -LiteralPath "C:\Users\A\.hermes\config.yaml" -Destination $Backup -ErrorAction SilentlyContinue
-Copy-Item -LiteralPath "C:\Users\A\.hermes\gateway_state.json" -Destination $Backup -ErrorAction SilentlyContinue
-Copy-Item -LiteralPath "C:\Users\A\.hermes\channel_directory.json" -Destination $Backup -ErrorAction SilentlyContinue
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 Get-ChildItem -LiteralPath $Backup | Select-Object Name, Length, LastWriteTime
 ```
 
@@ -152,7 +152,7 @@ Execution location: PowerShell
 Command:
 
 ```powershell
-$EnvPath = "C:\Users\A\.hermes\.env"
+${REDACTED_SECRET}
 $Lines = Get-Content -LiteralPath $EnvPath
 $Keys = @("TELEGRAM_BOT_TOKEN","TELEGRAM_ALLOWED_USERS","TELEGRAM_HOME_CHANNEL","TELEGRAM_PROXY")
 $Map = @{}
@@ -207,7 +207,7 @@ Execution location: PowerShell
 Command:
 
 ```powershell
-$Token = (Select-String -LiteralPath "C:\Users\A\.hermes\.env" -Pattern "^TELEGRAM_BOT_TOKEN=" | Select-Object -First 1).Line -replace "^TELEGRAM_BOT_TOKEN=",""
+${REDACTED_SECRET}
 $Proxy = "http://127.0.0.1:7890"
 $Me = Invoke-RestMethod -Uri "https://api.telegram.org/bot$Token/getMe" -Proxy $Proxy -TimeoutSec 30
 $Webhook = Invoke-RestMethod -Uri "https://api.telegram.org/bot$Token/getWebhookInfo" -Proxy $Proxy -TimeoutSec 30
@@ -256,9 +256,9 @@ Start-Sleep -Seconds 3
 Start-Process -FilePath $Hermes -ArgumentList @("gateway","run","--replace") -WindowStyle Hidden -WorkingDirectory "H:\Hermes_Windows_Native_014"
 Start-Sleep -Seconds 15
 & $Hermes gateway status --deep
-Get-Content -LiteralPath "C:\Users\A\.hermes\gateway_state.json" -Raw | ConvertFrom-Json |
+${REDACTED_SECRET}
   Select-Object pid, active_agents, platforms
-Get-Content -LiteralPath "C:\Users\A\.hermes\logs\gateway.log" -Tail 120 |
+${REDACTED_SECRET}
   Select-String -Pattern "Proxy detected|Connected to Telegram|Gateway running with 2 platform"
 ```
 
@@ -295,11 +295,11 @@ $Models = Invoke-WebRequest -Uri "http://127.0.0.1:8642/v1/models" -UseBasicPars
 $Body = @{ model="hermes-agent"; messages=@(@{role="user";content="Return exactly HERMES_P3_TELEGRAM_FINAL_OK"}); stream=$false } | ConvertTo-Json -Depth 8
 $Chat = Invoke-RestMethod -Uri "http://127.0.0.1:8642/v1/chat/completions" -Method Post -ContentType "application/json" -Body $Body -TimeoutSec 120
 $Web = Invoke-WebRequest -Uri "http://127.0.0.1:3000" -UseBasicParsing -TimeoutSec 20
-$Token = (Select-String -LiteralPath "C:\Users\A\.hermes\.env" -Pattern "^TELEGRAM_BOT_TOKEN=" | Select-Object -First 1).Line -replace "^TELEGRAM_BOT_TOKEN=",""
+${REDACTED_SECRET}
 $Marker = "HERMES_P3_TG_OUTBOUND_$(Get-Date -Format yyyyMMdd_HHmmss)"
 Invoke-RestMethod -Uri "https://api.telegram.org/bot$Token/sendMessage" -Method Post -Proxy "http://127.0.0.1:7890" -TimeoutSec 30 -Body @{ chat_id="6164003953"; text=$Marker } |
   Select-Object ok, result
-Get-Content -LiteralPath "C:\Users\A\.hermes\logs\gateway.log" -Tail 300 |
+${REDACTED_SECRET}
   Select-String -Pattern "inbound message|response ready|Sending response|Connected to Telegram" |
   Select-Object -Last 40
 ```
@@ -340,11 +340,11 @@ When continuing from this stage:
 Restore files from:
 
 ```text
-C:\Users\A\Desktop\1\output\HERMES-014-P3-TELEGRAM-RESTORE-20260522\telegram-restore-20260522-191314\backup-before-telegram
+${REDACTED_SECRET}
 ```
 
 Then restart Hermes gateway and rerun:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File "C:\Users\A\.codex\skills\hermes-telegram-persistent-bridge\scripts\check-hermes-telegram.ps1"
+${REDACTED_SECRET}
 ```

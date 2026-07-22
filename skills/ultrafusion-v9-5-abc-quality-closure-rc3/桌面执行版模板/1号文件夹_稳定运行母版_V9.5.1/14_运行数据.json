@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "test_id": "",
+  "question_title": "",
+  "models": {
+    "baseline": "GPT",
+    "a_gpt": "GPT",
+    "a_qwen": "Qwen（阿里千问）",
+    "a_deepseek": "DeepSeek",
+    "b": "GPT",
+    "c": "GPT",
+    "evaluator": "GPT"
+  },
+  "timing_minutes": {
+    "baseline": null,
+    "a_gpt": null,
+    "a_qwen": null,
+    "a_deepseek": null,
+    "b": null,
+    "c": null,
+    "evaluation": null,
+    "total": null,
+    "active_manual": null
+  },
+  "operations": {
+    "model_calls": 0,
+    "page_copy": 0,
+    "model_paste": 0,
+    "result_copy": 0,
+    "page_paste": 0,
+    "rework_count": 0
+  },
+  "cost": {
+    "currency": "CNY",
+    "estimated": null
+  },
+  "states": {
+    "a_initial_locked": false,
+    "b_fallback": null,
+    "c_reverted": null,
+    "command_echo_count": 0,
+    "wrong_slot_count": 0,
+    "missing_input_count": 0
+  },
+  "notes": ""
+}

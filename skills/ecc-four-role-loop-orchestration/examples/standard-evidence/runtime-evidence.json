@@ -1,0 +1,18 @@
+{
+  "events": [
+    {"event_id":"EV-START-CONTROL","receipt_id":"receipt-start-control-001","kind":"agent_start","source":"platform_event_log","agent_id":"root","timestamp":"2026-07-19T09:00:00-07:00","platform_run_id":"run-control-001","exported_by_runtime":true},
+    {"event_id":"EV-START-MATERIALS","receipt_id":"receipt-start-materials-001","kind":"agent_start","source":"platform_event_log","agent_id":"materials-1","timestamp":"2026-07-19T09:01:00-07:00","platform_run_id":"run-materials-001","exported_by_runtime":true},
+    {"event_id":"EV-START-AUDIT","receipt_id":"receipt-start-audit-001","kind":"agent_start","source":"platform_event_log","agent_id":"audit-1","timestamp":"2026-07-19T09:02:00-07:00","platform_run_id":"run-audit-001","exported_by_runtime":true},
+    {"event_id":"EV-START-EXECUTION","receipt_id":"receipt-start-execution-001","kind":"agent_start","source":"platform_event_log","agent_id":"execution-1","timestamp":"2026-07-19T09:04:00-07:00","platform_run_id":"run-execution-001","exported_by_runtime":true},
+    {"event_id":"EV-RETURN-MATERIALS","receipt_id":"receipt-return-materials-001","kind":"agent_return","source":"platform_event_log","agent_id":"materials-1","timestamp":"2026-07-19T09:07:00-07:00","platform_run_id":"run-materials-001","exported_by_runtime":true},
+    {"event_id":"EV-ARTIFACT-001","receipt_id":"receipt-artifact-001","kind":"artifact_created","source":"platform_event_log","agent_id":"execution-1","work_package_id":"WP-001","artifact_id":"ART-001","artifact_sha256":"aca68ba718c42cd7c2490210251f2965334e1ffa3063d077fecd1aaf3389fe62","timestamp":"2026-07-19T09:15:00-07:00","platform_run_id":"run-execution-001","exported_by_runtime":true},
+    {"event_id":"EV-CHECK-SUCCESS","receipt_id":"receipt-check-success-001","kind":"check_completed","source":"platform_event_log","agent_id":"execution-1","work_package_id":"WP-001","check_id":"CHECK-SUCCESS","raw_output_sha256":"b881618fd0e495147338b8cb3ca880b74e5c303d46199bd42bb0ec58f6c8df73","timestamp":"2026-07-19T09:16:30-07:00","platform_run_id":"run-execution-001","exported_by_runtime":true},
+    {"event_id":"EV-CHECK-NEGATIVE","receipt_id":"receipt-check-negative-001","kind":"check_completed","source":"platform_event_log","agent_id":"execution-1","work_package_id":"WP-001","check_id":"CHECK-NEGATIVE","raw_output_sha256":"b881618fd0e495147338b8cb3ca880b74e5c303d46199bd42bb0ec58f6c8df73","timestamp":"2026-07-19T09:17:00-07:00","platform_run_id":"run-execution-001","exported_by_runtime":true},
+    {"event_id":"EV-RETURN-EXECUTION","receipt_id":"receipt-return-execution-001","kind":"agent_return","source":"platform_event_log","agent_id":"execution-1","timestamp":"2026-07-19T09:17:30-07:00","platform_run_id":"run-execution-001","exported_by_runtime":true},
+    {"event_id":"EV-RETURN-AUDIT","receipt_id":"receipt-return-audit-001","kind":"agent_return","source":"platform_event_log","agent_id":"audit-1","timestamp":"2026-07-19T09:19:00-07:00","platform_run_id":"run-audit-001","exported_by_runtime":true},
+    {"event_id":"EV-RETURN-CONTROL","receipt_id":"receipt-return-control-001","kind":"agent_return","source":"platform_event_log","agent_id":"root","timestamp":"2026-07-19T09:20:00-07:00","platform_run_id":"run-control-001","exported_by_runtime":true}
+  ],
+  "artifacts": [
+    {"artifact_id":"ART-001","work_package_id":"WP-001","path":"正式交付中的中文报告","evidence_copy_path":"final-report.md","sha256":"aca68ba718c42cd7c2490210251f2965334e1ffa3063d077fecd1aaf3389fe62","produced_by_agent_id":"execution-1","artifact_kind":"task_output","purpose_chinese":"本任务的目标就是生成可审计的中文标准证据示例报告。","status":"已验证"}
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "一人公司·海外本地商家网站系统"
+  short_description: "海外本地商家网站的合规获客、成交、交付、验收与复购闭环"
+  default_prompt: "Use $one-person-local-business-website-system to build a compliant local-business website acquisition and delivery plan."

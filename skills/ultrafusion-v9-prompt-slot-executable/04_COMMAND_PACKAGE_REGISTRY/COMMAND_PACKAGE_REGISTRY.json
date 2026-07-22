@@ -1,0 +1,2 @@
+{"schema_version":"1.0","packages":[{"package_id":"CP_A","asset_id":"CP_A","stage":"A","state":"LOADED_READONLY"},{"package_id":"CP_B","asset_id":"CP_B","stage":"B","state":"LOADED_READONLY"},{"package_id":"CP_C","asset_id":"CP_C","stage":"C","state":"LOADED_READONLY"},{"package_id":"CP_D","asset_id":"CP_D","stage":"D","state":"LOADED_READONLY"}]}
+

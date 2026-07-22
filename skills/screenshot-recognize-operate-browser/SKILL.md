@@ -20,6 +20,7 @@ small action, observe again, and verify before continuing.
 
 Borrow the proven computer-use pattern instead of improvising coordinates:
 
+- For official AI website testing, read `references/official-site-human-coordinate-rule-20260703.md` first. Use visible public UI, fresh screenshots, coordinate/region actions, and one-step verification. Do not default to DOM/CDP/Playwright/browser-control/debugging routes for official sites.
 - Limit recognition to the target window or page region; avoid full-screen blind
   searches when a smaller region is enough.
 - Match small stable controls, icons, text labels, and nearby context. Never

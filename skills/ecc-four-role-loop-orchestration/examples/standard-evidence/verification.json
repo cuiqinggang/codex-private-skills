@@ -1,0 +1,16 @@
+{
+  "claims": [
+    {"claim_id":"CLAIM-001","work_package_id":"WP-001","executor_agent_id":"execution-1","requirement_ids":["REQ-001"],"artifact_ids":["ART-001"],"statement_chinese":"已经生成七文件标准证据示例。"}
+  ],
+  "checks": [
+    {"check_id":"CHECK-SUCCESS","work_package_id":"WP-001","check_type":"SUCCESS","method":"运行标准验证器检查完整样本","expected":"退出码为零并返回中文结构检查通过","observed":"完整样本按预期通过结构检查","raw_result":"STRUCTURE_PASS，结构检查通过","raw_result_path":"raw-checks.log","raw_result_sha256":"b881618fd0e495147338b8cb3ca880b74e5c303d46199bd42bb0ec58f6c8df73","runtime_event_id":"EV-CHECK-SUCCESS","exit_code":0,"executed":true,"completed_at":"2026-07-19T09:16:30-07:00","result":"PASS","evidence_ids":["CHECK-SUCCESS"]},
+    {"check_id":"CHECK-NEGATIVE","work_package_id":"WP-001","check_type":"NEGATIVE","method":"在隔离副本删除独立审计角色后运行验证器","expected":"验证器拒绝缺少真实审计角色的样本","observed":"隔离副本按预期失败","raw_result":"FAIL，不通过；缺少独立审计角色","raw_result_path":"raw-checks.log","raw_result_sha256":"b881618fd0e495147338b8cb3ca880b74e5c303d46199bd42bb0ec58f6c8df73","runtime_event_id":"EV-CHECK-NEGATIVE","exit_code":1,"executed":true,"completed_at":"2026-07-19T09:17:00-07:00","result":"PASS","evidence_ids":["CHECK-NEGATIVE"]}
+  ],
+  "audits": [
+    {"audit_id":"AUDIT-001","claim_id":"CLAIM-001","auditor_agent_id":"audit-1","decided_at":"2026-07-19T09:18:00-07:00","decision":"ACCEPT","reason_chinese":"十二层、四类真实角色、成功和错误案例及交付安全均满足标准合同。","evidence_ids":["AUDIT-001"]}
+  ],
+  "rounds": [
+    {"round_id":"ROUND-0","work_package_id":"WP-001","round":0,"executor_agent_id":"execution-1","auditor_agent_id":"audit-1","meaningful_delta":"生成七文件第一版并完成验证。","strategy_changed":false,"checks_rerun":["CHECK-SUCCESS","CHECK-NEGATIVE"],"audit_rerun":"AUDIT-001","decision":"ACCEPT"}
+  ],
+  "delivery_safety": {"auditor_agent_id":"audit-1","metadata_checked":true,"secrets_checked":true,"internal_paths_checked":true,"temporary_materials_checked":true,"attachments_checked":true,"references_checked":true,"accepted":true,"chinese_conclusion":"未发现密钥、临时材料或失效引用。"}
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-07-15",
+  "scope": "site_system_acceptance",
+  "maturity": "L3_SIMULATION_VALIDATED",
+  "tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "skipped": 0,
+  "prompt": {
+    "character_count": 1260,
+    "byte_count": 2890,
+    "line_count": 70,
+    "sha256": "1E85CF5234527B7F491823EF8755C6940D4FD96C608B0D0866A0CFE8D0BF4EDE",
+    "read_only": true
+  },
+  "pressure_contract": {
+    "weights": [15, 25, 15, 20, 15, 10],
+    "maximum": 100,
+    "verified": true
+  },
+  "fixed_budget_probe": {
+    "budget_minutes": 10,
+    "best_version": "Q1",
+    "best_cost_effective_pressure": 55
+  },
+  "release_gate": {
+    "real_valid_samples": 0,
+    "decision": "REVISE",
+    "next_gate": "L4_GPT_THREE_TASK_REAL_SMOKE_TEST",
+    "a_gate_frozen": false
+  },
+  "boundary": "This result validates the site system only; it does not validate real model quality."
+}

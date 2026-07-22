@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><title>桌面任务产物清理验收 - 2026-07-10</title>
+<style>body{font-family:Segoe UI,Microsoft YaHei,sans-serif;max-width:920px;margin:40px auto;line-height:1.65;color:#18212f}h1{color:#075985}.pass{padding:12px 16px;background:#dcfce7;border-left:5px solid #16a34a;font-weight:700}code{background:#f1f5f9;padding:2px 5px}table{border-collapse:collapse;width:100%}td,th{border:1px solid #cbd5e1;padding:8px;text-align:left}</style></head>
+<body><h1>桌面任务产物清理验收</h1><p class="pass">PASS_CLEANED</p>
+<table><tr><th>项目</th><th>结果</th></tr><tr><td>桌面顶层</td><td>180 → 53</td></tr><tr><td>计划/移动</td><td>127 / 127</td></tr><tr><td>归档体积</td><td>94,989,004 bytes（约 90.6 MiB）</td></tr><tr><td>错误/验证失败</td><td>0 / 0</td></tr><tr><td>保护项</td><td>JPG 原始素材、目录、快捷方式、安装包、压缩包、视频和文档均未移动</td></tr></table>
+<h2>防落灰机制</h2><ul><li>触发词：整理桌面、桌面清理、截图太多、step/check/检查编号、中间过程文件、任务结束清场。</li><li>计划优先：先生成 CSV manifest，再执行冻结清单。</li><li>证据优先：确认通用脚本与最终验收证据已进入相关技能包后，才归档桌面副本。</li><li>可回滚：manifest 每行保留 rollback_command。</li></ul>
+${REDACTED_SECRET}
+<p>冷归档：<code>K:\AI\_COLD_ARCHIVE\desktop-cleanup-20260710-douyin\task-artifacts</code></p>
+</body></html>

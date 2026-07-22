@@ -1,0 +1,479 @@
+# Controlled Workflow Reference
+
+This reference preserves the detailed workflow that used to live directly in
+`SKILL.md`. Load it only after the lightweight router classifies a task as
+complex or stop-gated.
+
+---
+name: yesterday-replay-controlled-coding
+description: "Detailed reference for CODEX_FIRST_YESTERDAY_REPLAY_MULTI_MODEL_90_GATE_V2.2. Load only after the lightweight router classifies a new substantial task as complex or stop-gated."
+---
+
+# Yesterday Replay Controlled Coding
+
+## Autonomous Routing Rule
+
+Do not ask the user for authorization merely because a task is complex,
+multi-step, or needs route judgment. Codex must classify the task by risk, choose
+the established path that fits the task, and execute Level 0, Level 1, and Level
+2 work automatically with backup, diff/log, and verification discipline. Stop
+only for Level 3 work or explicit safety blockers.
+
+GPT web planning is optional, not mandatory. Use it when it materially improves
+the task and the allowed screenshot bridge route is available. If GPT web is not
+essential, continue with local skills, official docs, browser/accessibility
+tools, tests, and direct execution instead of asking for permission.
+
+This skill is mandatory for the user's controlled workflow. It defines the
+classification, execution, safety, and verification boundary.
+
+## First-Step Rule
+
+This detailed reference is not for every message. It is loaded only after the
+lightweight `SKILL.md` router classifies a new substantial task as Complex or
+Stop Gate.
+
+For a new substantial complex task, Codex must use the lightweight startup
+router first, then load this reference before choosing any other skill, plugin,
+browser path, shell workflow, planning route, or implementation process.
+
+For simple one-off requests and mid-task supplements, corrections, or problem
+reports inside the same active task, do not reload this reference unless the
+message clearly starts a separate new complex task.
+
+One-sentence rule:
+
+> 简单任务直接做；复杂任务先昨日重现，查本地和网络成熟方案，生成本地适配方案，再进入多模型低成本极限回答技能包审核，≥90分才执行。
+
+GPT 网页连接规则：
+
+> `chatgpt-screenshot-bridge` 是已实测 10/10 成功的 ChatGPT 网页 send/copy 方案：截图、按钮图像匹配、剪贴板粘贴、等待上箭头、点击发送、等待完成、点击复制、sentinel 校验。本工作区对这个窄范围的文本规划桥接已经全局预授权，Codex 不需要再向用户索要逐任务真实桌面输入授权。GPT 网页是可用时的成熟路径之一，不是复杂任务的强制前置条件。
+
+## Role Boundary Hard Rules
+
+### Codex Owns Routing And Execution Control
+
+Codex is responsible for:
+
+- loading `AGENTS.md` and this skill as the first work step before any other skill or tool path
+- deciding whether the task is simple, complex, or high-risk
+- finding mature local and network paths before inventing a new route
+- choosing the mature local skill, old command package, old report, official source, GitHub/open-source project, mature tutorial, community-verified solution, reusable component detail, test path, browser path, or GPT web path that fits the task
+- adapting the chosen mature sources to local paths, dependencies, permissions, tests, rollback, and acceptance
+- executing Level 0, Level 1, and Level 2 work directly without a separate authorization pause
+- backing up and logging Level 2 changes before execution
+- submitting local execution plans to the multi-model low-cost extreme answer skill package for review when the Score Gate applies
+- producing execution reports and verification evidence
+- stopping only for Level 3 work or explicit safety blockers
+
+### Codex Must Not
+
+Codex is forbidden from:
+
+- asking for permission solely because the task is complex, multi-step, or modifies files at Level 0-2
+- treating GPT web as mandatory when a local-only mature route is sufficient
+- treating yesterday replay as local-only
+- copying a mature solution without local path, dependency, permission, test, rollback, and acceptance adaptation
+- describing the audit as "GLM-5.2 review"; GLM-5.2 is only one high-value model inside the multi-model audit system
+- using real Windows mouse/keyboard input outside the pre-authorized ChatGPT text-only bridge unless the task explicitly requires it
+- executing Level 3 actions without asking the user
+- skipping required verification before claiming completion
+
+## Task Routing
+
+### A. Simple Tasks
+
+Codex directly executes a task when it is low risk, deterministic, or can be
+completed with a narrow local check.
+
+Examples:
+
+- read a file
+- list a directory
+- run an explicitly provided test command
+- save a specified text block
+- check whether a file exists
+
+Simple tasks still require the narrowest meaningful verification.
+
+### B. Complex Tasks
+
+Complex tasks do not require a fresh authorization pause. Codex should classify
+risk, identify the mature path, and execute the established route directly.
+Complex triggers include:
+
+- multi-step execution
+- code changes
+- system configuration
+- installation or repair
+- automation workflow design
+- route judgment
+- yesterday replay
+- mature-practice search
+- unclear goals that can be resolved from local context
+- a failed execution that requires changing paths
+
+Required complex-task flow:
+
+1. User task
+2. Codex loads `AGENTS.md` and this skill
+3. Codex classifies risk level and execution scope
+4. Codex runs yesterday replay across local and network mature sources
+5. Codex checks local history, local skills, old command packages, old reports, official docs, GitHub/open-source projects, mature tutorials, community-verified solutions, best practices for similar tools, reusable component details, and tests
+6. Codex combines the mature sources into a local-adapted execution plan: paths, dependencies, permissions, tests, rollback, and acceptance
+7. Codex sends the local execution plan into the multi-model low-cost extreme answer skill package for review when the Score Gate applies
+8. The audit returns score, risk, failure probability, and improvement suggestions
+9. Score ≥90: execute Level 0-2 work directly with the required backup/log/diff discipline
+10. Score <90: loop back, revise the local execution plan, and resubmit
+11. Stop and ask only for Level 3 work or explicit safety blockers
+12. Verify with the narrowest meaningful command or observation
+13. Report changed files, commands, PASS/FAIL evidence, and residual risk
+
+### Only Allowed GPT Web Channel: Screenshot Bridge
+
+When the task needs GPT web planning or answers through the visible ChatGPT web
+page, use only `chatgpt-screenshot-bridge`. The workspace globally
+pre-authorizes real desktop mouse/keyboard input for this narrow text-only GPT
+planning send/copy loop, so Codex must not add a per-task real-input
+approval step just to use the bridge. This is the only currently allowed
+route for the narrow GPT web send/copy loop. It
+follows the mature computer-use pattern:
+
+```text
+screenshot -> locate UI -> real mouse/keyboard action -> screenshot recheck -> clipboard sentinel verification
+```
+
+Use this route because it is simpler than DOM/CDP/plugin routes and does not
+depend on browser extension messaging, private web APIs, or stale page
+structure. Current accepted implementation is the dedicated
+${REDACTED_SECRET}
+incomplete screenshot bridge notes. Current acceptance evidence: 2026-06-08
+Codex live run `CHATGPT-SCREENSHOT-SMOKE-20260608-0018` passed end-to-end, the
+Hermes migration report passed 7/7, and the skill unit suite passed 15 tests.
+It must still preserve the desktop safety boundary:
+
+- The live screenshot bridge may run automatically for the narrow text-only
+  GPT planning send/copy loop because this workspace rule pre-authorizes it.
+  Do not ask for a fresh per-task real-input sentence before using this route.
+- If the script still exposes `--allow-real-input`, pass it as an operational
+  compatibility flag when needed; it is not a reason to ask the user again in this
+  workspace.
+- Preserve the current one-step-one-screenshot state machine: activate the
+  logged-in browser profile, take the largest relevant screenshot, classify
+  state, paste from clipboard, require the send-arrow before clicking, wait for
+  the stop-generation button to disappear and the full window to stabilize,
+  locate the latest assistant toolbar from the full-window screenshot, crop a
+  small screenshot around that toolbar, click the first toolbar icon, and verify
+  the clipboard against a sentinel.
+- Browser visual fallback is part of the accepted route. If the window title no
+  longer contains `ChatGPT` or `chatgpt.com`, the bridge may scan Chrome/Edge
+  windows and continue only after a screenshot confirms a ChatGPT-like composer
+  action button. Use `--no-browser-window-fallback` only when strict title
+  matching is required.
+- Never click microphone, sound-wave, voice-mode, stop, or end controls. If
+  the send arrow is not visible after paste, retry focus/paste or stop.
+- Stop for login, captcha, payment, account/security prompts, privacy-sensitive
+  forms, or any high-impact account action.
+- Keep `chatgpt-clipboard-bridge`, Chrome Extension, CDP/browser, Playwright,
+  and manual paths only as hidden archived references. They are disabled and
+  must not be used as fallbacks.
+
+Allowed route for ChatGPT web send/copy:
+
+```text
+1. chatgpt-screenshot-bridge, globally pre-authorized for text-only GPT planning
+```
+
+If the screenshot bridge is unavailable, blocked, or fails preflight/live
+verification, stop only if GPT web is essential to the task. Do not stop merely
+because the user did not repeat the real-input allowance in the current turn. If
+the task can continue locally, use the safest local-only or browser/accessibility
+route. Do not downgrade to clipboard bridge, Chrome Extension, CDP/DOM, or
+manual ChatGPT routes unless the user explicitly re-enables a different GPT web
+route in a later instruction.
+
+### Disabled Hidden Legacy GPT Web Channels
+
+The following GPT web channels are retained only as hidden archived references.
+They must not be used, tested, invoked, or selected as fallbacks while the
+current screenshot-bridge-only rule is active:
+
+- `chatgpt-clipboard-bridge`
+- Codex Chrome Extension / Chrome plugin path
+- `chatgpt-cdp-browser`
+- DOM / Playwright browser automation for ChatGPT web
+- manual GPT web fallback
+
+#### Codex Chrome Extension
+
+Archived reference only. Do not use this path unless the user explicitly
+re-enables it in a later instruction. Historical path when the `chrome` plugin
+and Codex Chrome Extension are installed and enabled:
+
+1. Load/use the `chrome` skill or Chrome plugin backend.
+2. Run a lightweight connection check first, such as listing open Chrome tabs
+   through the extension backend.
+3. If the connection succeeds, call `browser.user.openTabs()`, select the
+   existing ChatGPT tab by visible title and `chatgpt.com` URL, then claim that
+   exact tab with `browser.user.claimTab(tab)`.
+4. Send planning prompts through the claimed tab using DOM or Playwright
+   controls. Prefer the actual ChatGPT input and send controls; do not move the
+   real Windows mouse pointer.
+5. Wait for the assistant response and copy/read the final answer from the
+   page. Save `answer_raw.md`, validate the plan format, and continue the normal
+   GPT -> Codex -> GPT loop.
+6. Finalize Chrome tabs at the end of Chrome-backed work.
+
+If the extension backend cannot communicate with Chrome, retry the lightweight
+check once after 2 seconds. If it still fails, run only the Chrome plugin's
+read-only diagnostics:
+
+- `scripts/chrome-is-running.js --json`
+- `scripts/installed-browsers.js --json`
+- `scripts/check-extension-installed.js --json`
+- `scripts/check-native-host-manifest.js --json`
+
+Do not install or repair the native host manually. If the Codex Chrome Extension
+is missing or disabled, tell the user to install/enable the Codex Chrome
+Extension in Chrome and stop until they confirm.
+
+Do not use the Chrome Extension path while the screenshot-bridge-only rule is
+active.
+
+### Disabled Hidden Legacy GPT Web Channel Preflight
+
+Archived reference only. Do not verify, preflight, test, or use the local
+ChatGPT clipboard bridge path while the screenshot-bridge-only rule is active.
+If screenshot bridge cannot run, stop and report the blocking condition instead
+of using this legacy path. Historical failure mode to avoid if this route is
+explicitly re-enabled later: using only the default `-WindowTitlePattern
+'ChatGPT'` and missing a logged-in Chrome window whose title is the current
+conversation.
+
+Current desktop rule: use the already opened fresh GPT page when the user has
+provided one; do not open another GPT page unless asked. Use the original simple
+Windows bridge flow: copy prompt to clipboard, UI Automation focus the GPT
+input, paste/send with virtual keystrokes, wait for a newly added assistant
+answer copy button, and invoke that button with UI Automation. Do not move the
+real mouse pointer. Coordinate mouse clicks or real pointer movement require
+explicit `-AllowRealInput` for that run.
+
+Historical note only: the `chatgpt-clipboard-bridge` skill used to enumerate
+visible Chrome/Edge window titles when needed, then pass the matched
+conversation title into `WindowTitlePattern`. On 2026-05-09 this desktop was
+verified with:
+
+```powershell
+-WindowTitlePattern '任务回显确认|ChatGPT'
+```
+
+${REDACTED_SECRET}
+`docs/chatgpt-clipboard-bridge-current-flow.md` before re-testing this path.
+
+Minimum readiness check before relying on the channel:
+
+1. Run the bridge static encoding and discipline tests if the bridge behavior is in doubt.
+2. Run the official bridge script with `-NoSend` to verify it activates the logged-in GPT window and finds the input box.
+3. Run a short echo prompt with a unique `TASK_ID` and require GPT to copy back that same `TASK_ID`.
+4. Treat the channel as ready only after `answer_raw.md` contains the matching `TASK_ID`.
+
+When the user asks not to disturb their active GPT page, the preflight command
+must not use `-OpenFreshWindow`. The readiness echo may run only after the
+NoSend preflight proves the existing fresh GPT page and semantic input box are
+available.
+
+If a real task later hangs at GPT access, do not repeat this preflight and do
+not switch to Playwright, a virtual browser, Chrome Extension, CDP/DOM, manual
+fallback, or a fresh GPT page. Stop and report the screenshot-bridge blocking
+condition unless the user explicitly re-enables a different route.
+
+### Score Gate (≥90分审核打分闭环)
+
+复杂任务方案在正式执行前，必须进入「多模型低成本极限回答」技能包审核。
+审核不是“GLM-5.2审核”，也不是单一 GPT 审核。GLM-5.2 只是这个审核系统中的
+高价值判断模型之一。
+
+角色定位：
+
+| 角色 | 定位 |
+| --- | --- |
+| Codex | 总入口、本地执行、本地适配、证据验收 |
+| 昨日重现 | 查找本地和网络成熟方案，不重新造轮子 |
+| GPT | 复杂规划/修订/外援思考，不是入口 |
+| 多模型低成本极限回答技能包 | 统一审核系统 |
+| GLM-5.2 | 审核系统中的高价值模型之一 |
+| DeepSeek/GPT/其他模型 | 审核系统中的其他对照模型 |
+| 90分 Gate | 是否允许执行的最终门槛 |
+
+#### 打分流程
+
+```text
+1. Codex完成昨日重现（本地 + 网络成熟方案）+ 本地适配 → 产出本地执行方案
+2. 本地执行方案进入「多模型低成本极限回答」技能包
+3. 多个模型分层审核
+4. 低成本模型先筛
+5. 强模型补充判断
+6. GLM-5.2 作为其中一个高价值判断模型参与
+7. 汇总评分、风险、失败概率、改进建议
+8. 总分 ≥90 → 通过，Codex正式执行
+9. 总分 <90 → Loop回修订 → 重新提交 → 直到≥90
+```
+
+#### 打分维度（每项0-100，总分=加权平均）
+
+| 维度 | 权重 | 评估内容 |
+|------|------|---------|
+| 方案完整性 | 25% | 目标/范围/步骤/验证/停止条件/完成标准是否齐全 |
+| 成熟度 | 20% | 是否复用了已验证的成熟方案，而非从零开始 |
+| 本地适配性 | 20% | 方案是否已适配本地环境（路径/依赖/权限/编码） |
+| 风险控制 | 20% | 备份/回滚/日志/验证是否到位 |
+| 证据可验收 | 15% | 产出是否有明确的PASS/FAIL判据 |
+
+#### 分数段处理
+
+| 分数段 | 结论 | 动作 |
+|--------|------|------|
+| ≥90 | 通过 | 正式执行 |
+| 80-89 | 接近但不足 | Loop回修改，重点补多模型审核指出的缺项 |
+| 70-79 | 明显不足 | Loop回大改，可能需要重新适配 |
+| <70 | 方案不可用 | 推翻重来或回到昨日重现重新找方案 |
+
+#### Loop循环规则
+
+- 每次修改后必须重新提交多模型低成本极限回答技能包审核，不得自行宣布"已修复"
+- Loop没有次数上限，但每次修改必须有实质进展（不能原地打转）
+- 连续3次<70分 → 停下来问用户，可能任务定义本身有问题
+- 审核输出必须包含：总分 + 各维度分 + 风险 + 失败概率 + 改进建议 + 具体缺项列表
+
+#### GPT Planning Request Requirements
+
+When GPT web planning is used, Codex must ask GPT web to include:
+
+- task objective
+- yesterday-replay findings or mature path
+- risk level
+- execution scope
+- ordered steps
+- validation method
+- stop conditions
+- completion criteria
+- score for each dimension and total score
+
+Codex must not add, remove, translate, optimize, or reinterpret a provided GPT
+plan before execution. Structure extraction is allowed only when it preserves
+one-to-one meaning.
+
+#### Format Gate
+
+Before executing a GPT plan, Codex must confirm the plan includes:
+
+- objective
+- scope
+- steps
+- validation
+- stop conditions
+- completion criteria
+- total score ≥90 with per-dimension scores
+
+If any required field is missing from a GPT plan, Codex must not execute that
+plan as-is. Codex may continue with a local-only route when the task does not
+actually require GPT web planning.
+
+## Risk Rules
+
+- Level 0: only writes under `output/`, no deletes, no existing-code changes, no unknown commands. Execute automatically.
+- Level 1: creates new files, writes logs, modifies temp/test output. Execute automatically and log.
+- Level 2: modifies existing code, runs build/test, overwrites files. Execute automatically after backup, diff, and execution log.
+- Level 3: deletes files, batch-modifies the project, runs unknown commands such as `curl | bash`, changes system config, operates accounts, secrets, payment, or network permissions. Stop and ask the user.
+
+## Coding Constraints
+
+For coding work, Codex must follow Superpowers process discipline and Karpathy-style minimal coding:
+
+- define the problem before implementation
+- make the smallest necessary change
+- avoid unrelated refactors
+- verify each meaningful step
+- report the exact changes and verification evidence
+
+## Replacement Rule
+
+Replace any old interpretation like:
+
+> Complex tasks enter planning. If the task involves multiple steps, path selection, design judgment, code changes, or tool installation, Codex first performs yesterday replay.
+
+With:
+
+> 复杂任务不等于停下来要授权。Codex 先做风险分级和范围锁定，优先复用本地技能、官方文档、既有成功路径和最小验证；Level 0-2 自动执行，Level 2 做备份、diff、日志和验证。只有 Level 3、高影响账号/支付/权限/删除/秘密/系统配置动作，或真实安全拦截，才停下来问用户。GPT 网页规划是可用时的成熟路径之一，不是所有复杂任务的强制入口。
+
+## Evidence Verification (证据验收)
+
+执行完成后，必须产出可验证的PASS/FAIL证据：
+
+### 验收清单
+
+```text
+1. 方案打分 ≥90？（Score Gate通过记录）
+2. 执行与方案一致？（步骤对照）
+3. 备份完整？（备份路径可访问）
+4. 改动有diff/log？（文件变更清单）
+5. 测试通过？（PASS/FAIL + 输出）
+6. 成功证据具体？（不是"已完成"，而是具体的PASS输出/截图/文件）
+7. 残余风险已标注？
+```
+
+### 证据等级
+
+| 等级 | 说明 | 示例 |
+|------|------|------|
+| A级 | 可复现的自动化证据 | 测试输出PASS + 截图 + 文件hash |
+| B级 | 人工可验证的产物 | 生成的文件/代码 + 变更清单 |
+| C级 | 仅日志记录 | 命令输出日志 |
+
+复杂任务至少要达到B级证据。
+
+## ZIP Delivery (三位数字ZIP交付)
+
+复杂任务完成并验收后，必须打包交付到Windows桌面。
+
+### 打包规则
+
+```text
+1. 扫描桌面已有 NNN.zip（001.zip 到 999.zip）
+2. 选择未使用的最小三位数字编号
+3. 打包内容见下方清单
+4. ZIP命名：NNN.zip（如 003.zip）
+5. 不得覆盖已有ZIP
+6. 打包工具：7z.exe（路径见下方）
+```
+
+### ZIP内容清单
+
+```text
+updated_skill/ 或 updated_code/    ← 更新后的完整技能包/代码
+TASK_REPORT.md                      ← 任务报告（含打分、执行、验收）
+backup_path.txt                     ← 备份路径
+changed_files_manifest.txt          ← 变更文件清单
+```
+
+### 7z.exe路径
+
+```text
+C:\Program Files\NVIDIA Corporation\NVIDIA App\7z.exe
+```
+
+### 打包命令示例
+
+```bash
+${REDACTED_SECRET}
+```
+
+### 完成确认
+
+打包后必须验证：
+
+```text
+1. ZIP文件存在且大小>0
+2. ZIP内文件数与预期一致
+3. 报告中写入 ZIP_PATH
+```

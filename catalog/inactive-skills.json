@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "skills": [
+    {
+      "classification": "METADATA_ONLY_INACTIVE",
+      "name": "retired-codex-old-history-recovery",
+      "skill_id": "inactive:retired-codex-old-history-recovery",
+      "source_relative_path": "codex-old-history-recovery",
+      "source_root_alias": "C_SKILLS_ROOT",
+      "source_sha256": "7A4CA4E97A815B4A197A13F8BD90B69CBCE1C03FF23A9157092B62EBEE6D92BC",
+      "status": "INACTIVE"
+    },
+    {
+      "classification": "METADATA_ONLY_INACTIVE",
+      "name": "retired-gpt-silver-to-premium-gold-video",
+      "skill_id": "inactive:retired-gpt-silver-to-premium-gold-video",
+      "source_relative_path": "gpt-silver-to-premium-gold-video",
+      "source_root_alias": "C_SKILLS_ROOT",
+      "source_sha256": "BD34B953A0A46F4F13FBD18C3C3349986165094AB2B5BF116658EF954965450F",
+      "status": "INACTIVE"
+    },
+    {
+      "classification": "METADATA_ONLY_INACTIVE",
+      "name": "retired-greatwall-ssd-win10-recovery-backup",
+      "skill_id": "inactive:retired-greatwall-ssd-win10-recovery-backup",
+      "source_relative_path": "greatwall-ssd-win10-recovery-backup",
+      "source_root_alias": "C_SKILLS_ROOT",
+      "source_sha256": "992D851C486DA846E0E62191696D39964F1906E2B549EC4611F7651B68B0E609",
+      "status": "INACTIVE"
+    },
+    {
+      "classification": "METADATA_ONLY_INACTIVE",
+      "name": "retired-ultrafusion-low-cost-multi-model-extreme-fusion",
+      "skill_id": "inactive:retired-ultrafusion-low-cost-multi-model-extreme-fusion",
+      "source_relative_path": "ultrafusion-low-cost-multi-model-extreme-fusion",
+      "source_root_alias": "C_SKILLS_ROOT",
+      "source_sha256": "C451B82535EBD918E5EAEEA8B3CC62EEEB834ABBEEEB324627ACB10A06BEB6F9",
+      "status": "INACTIVE"
+    }
+  ]
+}

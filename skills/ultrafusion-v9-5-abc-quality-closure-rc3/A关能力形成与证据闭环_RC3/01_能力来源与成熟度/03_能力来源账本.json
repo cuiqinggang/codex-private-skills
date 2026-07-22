@@ -1,0 +1,45 @@
+{
+  "capability_id": "UF951-A-V15.1A-PRESSURE",
+  "chinese_name": "V15.1-A极限有效压力能力",
+  "parent_skill": "UltraFusion V9.5.1｜ABC 极限质量闭环",
+  "candidate_release": "RC3",
+  "current_maturity": "L3_SIMULATION_VALIDATED",
+  "source_prompt_status": "READ_ONLY_INCLUDED_SHA256_VERIFIED",
+  "source_prompt": {
+    "relative_asset": "03_A关测试网站/assets/V15.1-A_正式只读提示词.txt",
+    "character_count": 1260,
+    "byte_count": 2890,
+    "line_count": 70,
+    "sha256": "1E85CF5234527B7F491823EF8755C6940D4FD96C608B0D0866A0CFE8D0BF4EDE"
+  },
+  "contracts": [
+    "A关正式量化测试合同_RC1_冻结版"
+  ],
+  "evidence": {
+    "simulation_runs": 10,
+    "simulation_expected_matches": 10,
+    "site_system_test_rounds": 10,
+    "site_system_test_passed": 10,
+    "real_gpt_runs": 0,
+    "cross_model_runs": 0,
+    "formal_valid_combinations": 0,
+    "image_evidence_complete": false,
+    "weighted_pressure_contract_verified": true
+  },
+  "site_status": "PRIVATE_CODEX_SITE_DEPLOYED_SUCCEEDED",
+  "site_deployment": {
+    "url": "https://ultrafusion-test-lab.bcdfd9vhfz.chatgpt.site",
+    "version_number": 1,
+    "deployment_status": "succeeded",
+    "access_mode": "custom_owner_only",
+    "allowed_users": 1,
+    "allowed_groups": 0,
+    "deployed_at": "2026-07-15"
+  },
+  "next_gate": "L4_GPT_REAL_SMOKE_TEST",
+  "prohibited_claims": [
+    "V15.1-A真实质量已验证",
+    "最佳压力已经确定",
+    "A关正式能力已经冻结"
+  ]
+}

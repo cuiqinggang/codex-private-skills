@@ -1,0 +1,12 @@
+{
+  "task_id": "",
+  "failed_gate": "",
+  "failure_summary": "",
+  "non_negotiable_fixes": [],
+  "allowed_scope": [],
+  "forbidden_scope": [],
+  "required_evidence": [],
+  "required_verification": [],
+  "stop_conditions": [],
+  "created_at": ""
+}

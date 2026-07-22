@@ -1,92 +1,99 @@
-# UltraFusion V8.2 C Layer Prompt
+# UltraFusion V8.2 C 层提示词
 
 ```text
-You are executing UltraFusion V8.2 C layer: pressure fusion.
+请执行 V8.2 的 C 层：压力融合。
 
-Task:
-Read the original question Q and all valid B answers. Fuse them into one unified, clear,
-dense, conflict-aware candidate final answer. Do not mechanically stitch. Do not produce
-a low-matching summary. You must handle conflicts, mark weak evidence, compress duplication,
-separate fact/inference/recommendation where needed, and leave judgement points for D.
+C 层只由 GPT 执行。
 
-Original question Q:
+你的任务：
+1. 阅读原始问题。
+2. 阅读所有有效 B 层答案。
+3. 融合成一份统一、清晰、密度高、能交付的候选最终答案。
+4. 不能机械拼接。
+5. 不能只做低质量摘要。
+6. 必须处理冲突、标记弱证据、压缩重复，并给 D 层留下判断点。
+
+原始问题：
 <<<Q>>>
 
-B layer answers:
-<<<B_ANSWERS>>>
+B 层答案：
 
-C_VALIDATION:
-- Conflict_Handled: YES / NO
-- Weak_Evidence_Marked: YES / NO
-- Duplication_Compressed: YES / NO
-- D_Judgement_Points_Listed: YES / NO
+GPT 的 B 层答案：
+<<<GPT_B_ANSWER>>>
 
-C rule:
-If any field is NO, C is invalid and must rerun once. If it still fails, mark C_STITCHING_FAIL.
+DeepSeek 的 B 层答案：
+<<<DEEPSEEK_B_ANSWER>>>
 
-C_Content_Density_Gate:
-FusionNotes must not be placeholder text.
+千问的 B 层答案：
+<<<QWEN_B_ANSWER>>>
 
-- 冲突处理:
-  Must include at least 1 concrete conflict point, or explicitly state "未发现具体冲突" with reason.
+C 层验证：
+- 是否处理冲突：是 / 否
+- 是否标记弱证据：是 / 否
+- 是否压缩重复：是 / 否
+- 是否列出 D 层判断点：是 / 否
 
-- 弱证据标记:
-  Must include at least 1 weak / uncertain evidence point, or explicitly state "未发现弱证据" with reason.
+内容密度要求：
+1. 冲突处理必须写出至少 1 个具体冲突点；如果没有冲突，写“未发现具体冲突”并说明原因。
+2. 弱证据标记必须写出至少 1 个不确定点；如果没有弱证据，写“未发现弱证据”并说明原因。
+3. 重复压缩必须说明压缩了哪些重复内容。
+4. D 层判断点至少 2 个。
+5. 只写“已处理 / 已标记 / 已压缩”算失败。
 
-- 重复压缩:
-  Must identify what repeated content was compressed, using source label, paragraph topic, or keywords.
+评分和修复规则：
+1. 必须先写具体扣分点，再写自评分，再写已经修复的地方。
+2. 自评分低于 8.5，必须修复或重写一次，不能进入 D 层。
+3. 8.5 <= 自评分 < 9.0，可以通过，但必须写清具体扣分点和剩余风险。
+4. 没有具体扣分点，且没有说明“为什么扣分很少”的依据，自评分最高 7.0。
+5. 只有空泛扣分点，自评分最高 8.0。
+6. 有 1 个具体扣分点，并说明影响范围、剩余风险和是否已修复，可以给 8.0 到 8.8。
+7. 有 2 个或更多具体扣分点，并说明修复情况，可以给 8.5 以上。
+8. 如果确实没有发现明显扣分点，允许 8.5 以上，但必须写清依据和边界。
 
-- D 层重点审判点:
-  Must list at least 2 concrete judgement points for D.
+请按下面格式输出：
 
-If any field is generic, empty, or only says "已处理 / 已标记 / 已压缩" without concrete content:
-mark C_STITCHING_FAIL and rerun C once.
+一、C 层压力融合答案
 
-Score_Consistency_Gate:
-- Must write Deduction before SelfScore and RepairDone.
-- If Deduction is empty (0 concrete items):
-  SelfScore MUST be <= 7.0.
-- If Deduction has only 1 concrete penalty item:
-  SelfScore MUST be <= 8.0.
-- If Deduction has 2+ concrete penalty items:
-  SelfScore MAY be 8.5+.
-- If Deduction is generic, such as "needs improvement" or "could be better"
-  without concrete issue, affected section, or repair action, treat it as 0 concrete items.
-- Final output must contain exactly one scoring block: Deduction / SelfScore / RepairDone.
+二、融合说明
+- 冲突处理：
+- 弱证据标记：
+- 重复压缩：
+- 留给 D 层的判断点：
 
-Output:
-C_FUSION:
+三、C 层验证
+- 是否处理冲突：
+- 是否标记弱证据：
+- 是否压缩重复：
+- 是否列出 D 层判断点：
 
-FusionNotes:
-- Conflict handling:
-- Weak evidence marked:
-- Duplication compressed:
-- D judgement points:
+四、内容密度检查
+- 冲突字段是否具体：
+- 弱证据字段是否具体：
+- 重复压缩是否清楚：
+- D 层判断点是否至少 2 个：
 
-C_VALIDATION:
-- Conflict_Handled: YES / NO
-- Weak_Evidence_Marked: YES / NO
-- Duplication_Compressed: YES / NO
-- D_Judgement_Points_Listed: YES / NO
+五、质量平衡
+- 答案质量：
+- 结构复杂度：
+- 执行速度：
 
-C_Content_Density_Gate:
-- Conflict_Field_Dense: YES / NO
-- Weak_Evidence_Field_Dense: YES / NO
-- Duplication_Compression_Clear: YES / NO
-- D_Judgement_Points_Concrete_2Plus: YES / NO
+六、自我评分
+- 具体扣分点：
+- 自评分：
+- 已经修复的地方：
 
-Balance:
-- Quality:
-- Architecture:
-- Speed:
+七、真实修复对照
+- 修复触发：是 / 否
+- 修复前问题：
+- 修复方式：
+- 修复后版本摘要：
+- 修复后自评分：
+- 是否仍低于 8.5：是 / 否
+- 下一步动作：继续 / 再次失败停止 / 升级 V7
 
-Deduction:
-SelfScore:
-RepairDone:
-
-EARLY_WARNING:
-- Quality_Threat: none / low / medium / high
-- Balance: OK / WARN
-- Reason:
-- Action: continue / repair_once / stop_and_return / upgrade_to_V7
+八、提前预警
+- 质量风险：无 / 低 / 中 / 高
+- 平衡状态：通过 / 警告
+- 原因：
+- 下一步动作：继续 / 修复一次 / 停止并返回 / 升级到 V7
 ```

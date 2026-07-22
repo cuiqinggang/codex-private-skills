@@ -1,0 +1,2 @@
+{"schema_version":"1.0","slots":[{"slot_id":"P_CORE","asset_id":"P_CORE","state":"LOADED_READONLY"},{"slot_id":"P_A","asset_id":"P_A","state":"LOADED_READONLY"},{"slot_id":"P_B","asset_id":"P_B","state":"LOADED_READONLY"},{"slot_id":"P_C","asset_id":"P_C","state":"LOADED_READONLY"},{"slot_id":"P_D","asset_id":"P_D","state":"LOADED_READONLY"},{"slot_id":"P_VALUE","asset_id":null,"state":"FRAMEWORK_RULE_ONLY","notes":"未提供独立价值比较提示词正文；使用 VALUE_COMPARISON_CONTRACT。"}]}
+

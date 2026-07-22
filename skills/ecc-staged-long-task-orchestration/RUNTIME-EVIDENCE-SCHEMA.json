@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Runtime Evidence",
+  "type": "object",
+  "required": [
+    "task_id",
+    "declared_runtime_minutes",
+    "minimum_runtime_minutes",
+    "started_at",
+    "ended_at",
+    "elapsed_minutes",
+    "checkpoint_count",
+    "checkpoint_interval_minutes",
+    "runtime_gate_passed",
+    "formal_files_modified",
+    "final_status_allowed"
+  ],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 1 },
+    "declared_runtime_minutes": { "type": "number", "minimum": 0 },
+    "minimum_runtime_minutes": { "type": "number", "minimum": 0 },
+    "started_at": { "type": "string", "minLength": 1 },
+    "ended_at": { "type": "string", "minLength": 1 },
+    "elapsed_minutes": { "type": "number", "minimum": 0 },
+    "checkpoint_count": { "type": "integer", "minimum": 0 },
+    "checkpoint_interval_minutes": { "type": "number", "minimum": 0 },
+    "runtime_gate_passed": { "type": "boolean" },
+    "formal_files_modified": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "final_status_allowed": { "type": "boolean" },
+    "checkpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "timestamp",
+          "elapsed_minutes",
+          "phase_name",
+          "files_read",
+          "files_written",
+          "samples_processed",
+          "accepted_count",
+          "rejected_count",
+          "needs_human_count",
+          "current_risks",
+          "next_action"
+        ],
+        "properties": {
+          "timestamp": { "type": "string" },
+          "elapsed_minutes": { "type": "number" },
+          "phase_name": { "type": "string" },
+          "files_read": { "type": "array" },
+          "files_written": { "type": "array" },
+          "samples_processed": { "type": "integer" },
+          "accepted_count": { "type": "integer" },
+          "rejected_count": { "type": "integer" },
+          "needs_human_count": { "type": "integer" },
+          "current_risks": { "type": "array" },
+          "next_action": { "type": "string" }
+        }
+      }
+    }
+  }
+}
+

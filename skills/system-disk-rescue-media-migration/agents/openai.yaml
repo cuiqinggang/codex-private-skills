@@ -1,0 +1,4 @@
+interface:
+  display_name: "System Disk Rescue Media Migration"
+  short_description: "Safely manage rescue USBs, system disk cloning, boot verification, and old-disk cleanup gates."
+  default_prompt: "Use this skill to safely inspect, back up, verify, clone, boot-test, and stage cleanup for rescue USB media and Windows system disk replacement work."

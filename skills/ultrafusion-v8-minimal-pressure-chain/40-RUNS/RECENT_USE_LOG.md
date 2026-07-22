@@ -1,84 +1,109 @@
-# UltraFusion V8 Recent Use Log
+# UltraFusion V8 最近使用记录
 
-## 2026-07-06 - V8.2-RC2 Minimal Repair Patch
+## 2026-07-07 - V8.2 评分块命名一致性修正
 
-- Event: upgraded V8.2-RC1 to V8.2-RC2 with the smallest remaining gate repairs.
-- P0 landed: A/B/C/D output now requires per-layer `EARLY_WARNING` with `Balance: OK / WARN`.
-- P1 landed: C now has `C_Content_Density_Gate` to prevent placeholder FusionNotes from passing.
-- P2 landed: B and D rerun instructions now include negative examples for commentary-only and polishing-only failures.
-- Score gate landed: SKILL.md and A/B/C/D templates now include numeric caps: 0 concrete deductions => SelfScore <= 7.0; 1 concrete deduction => SelfScore <= 8.0; 2+ concrete deductions may be 8.5+.
-- Run summary updated: added `V8_2_RC2_Checks`.
-- Failure review updated: added C placeholder/generic-field failures, final-only Balance failure, missing layer EARLY_WARNING, and generic Deduction with high SelfScore.
-- Boundary preserved: no extra layer, no full heavy injection restoration, no long C/D benchmark template restoration.
-- Network upload: GitHub `cuiqinggang/codex-private-skills`, path `skills/ultrafusion-v8-minimal-pressure-chain`.
-- Network commit verified: `2a2c405f071331a73b21378604358b95f0ae464a`.
-- Remote check: `SKILL.md` contains `UltraFusion V8.2-RC2 Minimal Gate Patch`, `C_Content_Density_Gate`, and `SelfScore MUST be <= 7.0`.
+- 事件：按用户审核意见修正 P0 后的评分块命名口径。
+- 修正：旧评分块限制改为 `每层只允许一个本层执行自评块；D 层额外允许一个最终答案质量评分块`。
+- 修正：SCORE_FINAL 的中文名称统一为 `最终答案质量分（SCORE_FINAL）`。
+- 保留：运行总结继续保留 `D 层执行自评分`、`Gain 可信度`、`基线污染风险`。
 
-## 2026-07-06 - V8.2 Minimal Gate Patch
+## 2026-07-07 - V8.2 五项 P0 逻辑修复补丁
 
-- Event: upgraded `ultrafusion-v8-minimal-pressure-chain` from V8.1-style minimal pressure chain to UltraFusion V8.2 Minimal Gate Patch.
-- Version marker: `UltraFusion V8.2 Minimal Gate Patch`.
-- Core rule: V8.2 = V8.1 + Before-A route gate + per-layer EARLY_WARNING + B/C/D anti-degradation validation + D final insurance check.
-- Added: `Before_A_Route_Gate` with 2-of-5 route criteria before A; this is not a new layer.
-- Added: per-layer `EARLY_WARNING` in A/B/C/D with high/medium/low/none process rules.
-- Added: `B_VALIDATION`, `C_VALIDATION`, `D_VALIDATION`, and `D_Final_Insurance_Check`.
-- Strengthened: `Score_Consistency_Gate` so concrete Deduction must precede SelfScore and RepairDone; high score with empty/generic deduction must be lowered or rewritten.
-- Strengthened: Balance verdict rules for `TOO_THIN`, `TOO_HEAVY`, and `TOO_SLOW`.
-- Boundary preserved: no extra layer, no full heavy injection restoration, no long C/D benchmark template restoration.
-- Validation target: run `quick_validate.py` if present; otherwise use manual file/gate checks.
+- 事件：对 V8.2-RC2 中文审核版执行五项 P0 逻辑修复。
+- 修复 1：评分一致性门不再强迫必须两个扣分点才允许 8.5+，允许“低扣分依据 + 边界说明”通过。
+- 修复 2：低于 8.5 的修复必须有“修复前 / 修复后”对照，防止口头修复。
+- 修复 3：新增 FULL_V8_2 / LIMITED_V8_2 / GPT_ONLY_V8_2 三种运行状态，防止伪三模型。
+- 修复 4：区分最终答案质量分（SCORE_FINAL）和 D 层执行自评分，Gain 只用 SCORE_FINAL 计算。
+- 修复 5：新增 Score_0 基线污染风险字段，防止 Gain 失真。
+- 模板修复：B 层为 GPT / DeepSeek / 千问 三个 A 层答案分别留位。
+- 模板修复：C 层为 GPT / DeepSeek / 千问 三个 B 层答案分别留位。
+- 边界：未新增 E 层，未恢复 V7 重流程，未恢复 V15，未加入 Kimi 默认路线。
 
-## 2026-07-06 - Desktop 451 dual upload package
+## 2026-07-07 - V8.2 中文审核版与模型分工修正
 
-- Event: created a platform-specific upload package for the already accepted V8.1 -> V8.2 material.
-- Desktop path: `C:\Users\A\Desktop\451`.
-- DeepSeek route: use `01_DeepSeek_TXT版_上传这个\451_先上传这个到DeepSeek.txt`; do not upload ZIP or the whole folder.
-- Qwen route: use `02_阿里千问_Qwen_DOCX版_上传这个\451_先上传这个到阿里千问.docx`; upload the DOCX file itself, not the folder.
-- Qwen fallback: use `451_阿里千问_DOCX失败时再用这个TXT.txt` only if DOCX upload fails.
-- Local reference: `03_本地完整参考_不用上传`.
-- Validation: DeepSeek package has 3 files; Qwen package has 1 primary DOCX; no ZIP files in `451`; DOCX contains standard `word/document.xml`.
+- 事件：用户审核指出 V8.2 模型分工和提示词语言不准确。
+- 修正：技能包改为中文审核版。
+- 修正：A 层提示词加入 8.5 分修复门。
+- 修正：官方模型分工明确为：
+  - 普通直答基线：GPT
+  - A 层：GPT + DeepSeek + 千问
+  - B 层：GPT + DeepSeek + 千问
+  - C 层：GPT
+  - D 层：GPT
+  - Kimi：不在默认 V8.2 路线内
+- 修正：Codex 角色改为编排、记录、门禁检查、提示词准备和文件执行，不再写成面向客户的默认回答模型。
+- 修正：用户可审计材料默认中文。
+- 修正：Knowledge Brain 和 Obsidian 记录同步更新。
 
-## 2026-07-06
+## 2026-07-07 - V8.2 外部辅助用户审计修复
 
-- Event: initial skill deployment.
-- Source material: `C:\Users\A\Desktop\UltraFusion_V8.0_极简压力链_高性价比版 (1).md`.
-- Route bound: `UF_V8_ABCD_MIN`.
-- Default role: daily high-cost-performance UltraFusion production chain.
-- V7 boundary: keep `ultrafusion-low-cost-multi-model-extreme-fusion` for heavy benchmark / full V15 / official external copy-paste packages.
+- 事件：用户指出半自动测试包混入 V7 思路、Kimi、英文标签和无意义复制边界。
+- 修正：V8.2 外部辅助不是 V7。
+- 修正：没有真实外部回答前，不得声称 DeepSeek 或千问已参与。
+- 修正：测试必须先有普通 GPT 直答基线，否则不能计算 提升值（Gain）。
+- 修正：用户需要审核的提示词必须中文可读。
 
-## 2026-07-06 Network Upload
+## 2026-07-06 - V8.2-RC2 最小修复补丁
 
-- Event: uploaded skill package to GitHub.
-- Repository: `cuiqinggang/codex-private-skills`.
-- Remote path: `skills/ultrafusion-v8-minimal-pressure-chain`.
-- Commit: `e678e705d2528f121cb27a30c55e0de76e921b39`.
-- Verified URL: `https://github.com/cuiqinggang/codex-private-skills/blob/main/skills/ultrafusion-v8-minimal-pressure-chain/SKILL.md`.
+- 事件：从 V8.2-RC1 升级到 V8.2-RC2。
+- P0：A/B/C/D 每层都加入提前预警和平衡状态。
+- P1：C 层加入内容密度门，防止只写“已处理 / 已标记 / 已压缩”。
+- P2：B 和 D 加入反面示例，防止 B 变评论、D 变润色。
+- 评分门：0 个具体扣分点最高 7.0；1 个具体扣分点最高 8.0；2 个以上具体扣分点才允许 8.5 以上。
+- 边界：没有加 E 层，没有恢复 V15 长注入，没有恢复长 C/D 基准评测 模板。
+- GitHub 路径：`skills/ultrafusion-v8-minimal-pressure-chain`
+- 远程提交：`2a2c405f071331a73b21378604358b95f0ae464a`
 
-## 2026-07-06 Official Web Critique Test
+## 2026-07-06 - V8.2 最小门禁补丁
 
-- Test route: ordinary coordinate screenshot method on official DeepSeek and Qwen pages.
-- DeepSeek official page: PASS for prompt paste/send/answer generation after UI repair.
-- Qwen official page: PARTIAL; current `?bizPassParams=...externalH5` page did not accept input focus through existing mature coordinates and needs a new coordinate branch or standard-entry normalization.
-- V8 content finding: the first V8 template can cause mixed or repeated scoring blocks; templates now require exactly one final `Deduction / SelfScore / RepairDone` block.
-- Product finding: V8 must optimize `quality / architecture / speed`, not quality alone.
-- Skill update: added `Quality-Architecture-Speed Balance Gate`, anti-degradation gates for B/C/D, and `Balance` output fields.
+- 事件：从 V8.1 风格极简压力链升级到 V8.2。
+- 新增：Before-A 路由门。
+- 新增：逐层提前预警。
+- 新增：B/C/D 防退化验证。
+- 新增：D 层最终保险检查。
+- 加强：具体扣分点必须在自评分之前。
+- 加强：质量、架构、速度三重平衡。
+- 边界：不加 E 层，不恢复重型 V7。
 
-## 2026-07-06 - DeepSeek upload-safe 140 package
+## 2026-07-06 - 桌面 451 双上传包
 
-- Issue: Desktop 139 package triggered DeepSeek upload warnings: unsupported format and max 50 files.
-- Cause: 139 had 189 files and 139.zip was not accepted by DeepSeek web upload.
-- Fix: created Desktop\140 as TXT-only flattened upload package.
-- Reusable rule: see references\DEEPSEEK_UPLOAD_SAFE_PACKAGE_RULE_20260706.md.
+- 事件：为 V8.1 到 V8.2 材料创建平台专用上传包。
+- DeepSeek：使用 TXT 版，不上传 ZIP，不上传整个文件夹。
+- 千问：优先上传单个 DOCX 文件，TXT 只作为备用。
+- 本地完整参考保留。
 
-## 2026-07-06 - Qwen single-document 141 package
+## 2026-07-06 - 初始技能部署
 
-- Issue: Qwen upload UI showed document upload constraints after 140.
-- Cause: 140 is upload-safe for DeepSeek, but Qwen is more reliable with one Word document than a folder/multi-file pack.
-- Fix: created Desktop\141 and Desktop\141_先上传这个到千问.docx.
-- Reusable rule: see references\QWEN_SINGLE_DOC_UPLOAD_RULE_20260706.md.
+- 事件：部署 UltraFusion V8 极简压力链技能包。
+${REDACTED_SECRET}
+- 路线：`UF_V8_ABCD_MIN`
+- 定位：日常高性价比 UltraFusion 生产链。
+- V7 边界：完整 基准评测、完整 V15、官方长 C/D 包继续使用 V7 技能。
 
-## 2026-07-06 - Qwen single-document 141 package
+## 2026-07-06 - GitHub 上传
 
-- Issue: Qwen upload UI showed document upload constraints after 140.
-- Cause: 140 is upload-safe for DeepSeek, but Qwen is more reliable with one Word document than a folder/multi-file pack.
-- Fix: created Desktop\141 and Desktop\141_先上传这个到千问.docx.
-- Reusable rule: see references\QWEN_SINGLE_DOC_UPLOAD_RULE_20260706.md.
+- 事件：技能包上传到 GitHub。
+- 仓库：`cuiqinggang/codex-private-skills`
+- 远程路径：`skills/ultrafusion-v8-minimal-pressure-chain`
+- 提交：`e678e705d2528f121cb27a30c55e0de76e921b39`
+
+## 2026-07-06 - 官方网页测试
+
+- 事件：测试 DeepSeek 和千问官方网页复制粘贴路线。
+- DeepSeek：提示词粘贴、发送、生成回答通过。
+- 千问：部分页面输入焦点不稳定，需要单独坐标分支或标准入口。
+- 发现：V8 必须同时优化质量、架构、速度。
+- 修复：加入质量、架构、速度平衡门。
+
+## 2026-07-06 - DeepSeek 上传安全包
+
+- 问题：旧包文件太多，ZIP 不适合 DeepSeek 网页上传。
+- 修复：创建 TXT 平铺版上传包。
+- 规则：见 `references\DEEPSEEK_UPLOAD_SAFE_PACKAGE_RULE_20260706.md`。
+
+## 2026-07-06 - 千问单文档上传包
+
+- 问题：千问不适合上传整个文件夹或多文件包。
+- 修复：创建单个 DOCX 上传包。
+- 规则：见 `references\QWEN_SINGLE_DOC_UPLOAD_RULE_20260706.md`。
+

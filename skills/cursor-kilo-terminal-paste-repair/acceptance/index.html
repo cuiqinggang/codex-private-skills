@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>Cursor/Kilo Terminal Paste Repair Acceptance</title>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; margin: 32px; line-height: 1.55; color: #202124; }
+    h1 { font-size: 24px; margin-bottom: 8px; }
+    h2 { font-size: 18px; margin-top: 24px; }
+    code, pre { background: #f5f6f7; border-radius: 4px; padding: 2px 5px; }
+    pre { padding: 12px; overflow: auto; }
+    .pass { color: #137333; font-weight: 700; }
+    .box { border: 1px solid #dadce0; border-radius: 8px; padding: 16px; margin: 14px 0; }
+  </style>
+</head>
+<body>
+  <h1>Cursor/Kilo Terminal Paste Repair</h1>
+  <p class="pass">Deployment status: PASS</p>
+
+  <div class="box">
+    <h2>Root Cause</h2>
+    <p>Clipboard and Kilo were healthy. The failure was Cursor terminal keybinding/focus routing: <code>Ctrl+V</code> was not explicitly routed to <code>workbench.action.terminal.paste</code> while the integrated terminal had focus.</p>
+  </div>
+
+  <div class="box">
+    <h2>Created Assets</h2>
+    <ul>
+${REDACTED_SECRET}
+      <li><code>references\SOP.md</code></li>
+      <li><code>references\FAILURE-MODES.md</code></li>
+      <li><code>scripts\repair-cursor-terminal-paste.ps1</code></li>
+      <li><code>logs\recent-use-log.md</code></li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2>Trigger Keywords</h2>
+    <p>Cursor paste broken, Kilo paste not working, Claude Code terminal paste, Ctrl+V terminal, terminal cannot paste, clipboard works elsewhere.</p>
+  </div>
+
+  <div class="box">
+    <h2>Verification Evidence</h2>
+    <p>On 2026-06-28, a harmless probe <code>CODEX_PASTE_PROBE_OK</code> pasted into the real Cursor/Kilo bottom PowerShell terminal. It was not executed and was cleaned afterward.</p>
+  </div>
+</body>
+</html>

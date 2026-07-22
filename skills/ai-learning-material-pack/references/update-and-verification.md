@@ -30,13 +30,13 @@
 验证 skill：
 
 ```powershell
-python "C:\Users\A\.codex\skills\.system\skill-creator\scripts\quick_validate.py" "C:\Users\A\.codex\skills\ai-learning-material-pack"
+${REDACTED_SECRET}
 ```
 
 提取文档里的链接：
 
 ```powershell
-Select-String -Path "C:\Users\A\Desktop\1\output\ai-learning-material-pack\AI学习资料包.md" -Pattern 'https?://\S+' -AllMatches |
+${REDACTED_SECRET}
   ForEach-Object { $_.Matches.Value }
 ```
 

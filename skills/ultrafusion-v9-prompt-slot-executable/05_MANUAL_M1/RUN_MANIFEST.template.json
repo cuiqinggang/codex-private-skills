@@ -1,0 +1,1 @@
+{"run_id":"UF9-YYYYMMDD-HHMMSS","mode":"MANUAL_M1","question":"","success_criteria":[],"budget":{"model_calls":null,"human_minutes":null,"cost":null},"models":[],"states":["RUN_CREATED"],"baseline_sealed":false,"d_final_locked":false,"quality_claim":"UNVERIFIED"}

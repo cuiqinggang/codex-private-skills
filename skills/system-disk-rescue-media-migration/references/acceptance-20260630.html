@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>System Disk Rescue Media Migration Skill Acceptance</title>
+  <style>
+    body { font-family: Segoe UI, Arial, sans-serif; margin: 32px; line-height: 1.45; color: #202124; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 18px; margin-top: 24px; }
+    code { background: #f4f6f8; padding: 2px 4px; border-radius: 4px; }
+    .pass { color: #0f6b2f; font-weight: 700; }
+    li { margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <h1>System Disk Rescue Media Migration Skill Acceptance</h1>
+  <p class="pass">Status: REVIEW_READY / deployed locally</p>
+
+  <h2>Created Skill</h2>
+${REDACTED_SECRET}
+
+  <h2>Reusable Lessons Captured</h2>
+  <ul>
+    <li>Exact disk identity gates before rescue USB inspection or backup.</li>
+    <li>Read-only inspection for EFI, bootmgr, BCD, boot.wim, and vendor markers.</li>
+    <li>VEEAMRE/Kingston case evidence and classification as likely Veeam Recovery Media.</li>
+    <li>File-copy backup with manifests and SHA256 verification before any Macrium reuse.</li>
+    <li>Explicit stop boundary before formatting, repartitioning, or Macrium creation.</li>
+    <li>839 Macrium Reflect clone workflow from ST4000NM0033 to Great Wall GT6 SSD.</li>
+    <li>UEFI boot rule: choose Windows Boot Manager + SSD, not the bare SSD entry.</li>
+    <li>Post-clone success rule: C: about 931GB means SSD boot; C: about 3.63TB means old disk boot.</li>
+    <li>Old disk retention rule: do not clean or merge the old 4TB system disk until a later explicit cleanup stage.</li>
+  </ul>
+
+  <h2>Evidence From 2026-06-30</h2>
+  <ul>
+    <li><code>G:\USB_Backups\VEEAMRE_Kingston_838B\backup_20260630-194103\reports\BACKUP_REPORT.txt</code></li>
+    <li><code>G:\USB_Backups\VEEAMRE_Kingston_838B\backup_20260630-194103\reports\ELEVATED_BCD_WIM_EXPORT_20260630-194320.txt</code></li>
+    <li><code>G:\USB_Backups\VEEAMRE_Kingston_838B\backup_20260630-194103\reports\HASH_VERIFY.csv</code></li>
+  </ul>
+
+  <h2>Next-Run Trigger</h2>
+  <p>Use this skill for Macrium Reflect Rescue Media, Veeam Recovery Media, VEEAMRE, Kingston DataTraveler rescue USB, WinPE boot USB, Great Wall GT6 SSD preservation, ST4000NM0033 to Great Wall GT6 cloning, system disk replacement, hard drive replacement, BCD, boot.wim, BIOS boot order, or old system disk cleanup/merge tasks.</p>
+</body>
+</html>

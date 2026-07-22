@@ -1,0 +1,100 @@
+# Cursor/Kilo Terminal Paste Repair SOP
+
+## Trigger
+
+Use this SOP when the user says paste no longer works in the Claude Code, Kilo Code, Cursor, or VS Code integrated terminal, while paste works elsewhere.
+
+## Diagnosis Order
+
+1. Do not assume the clipboard is broken.
+2. Read clipboard formats first: text, text length, file-drop list.
+3. Check whether any long-text-to-file converter is active only if long paste or attachment behavior is involved.
+4. Check Cursor main window and Kilo process.
+5. Check `Cursor\User\settings.json` and `Cursor\User\keybindings.json`.
+6. If no keybinding routes terminal `Ctrl+V`, add explicit terminal paste bindings.
+7. If keybindings already exist, separate terminal paste from Kilo/Claude Code Webview input paste before repairing anything else.
+8. Verify in the real UI with screenshots or window capture.
+
+## Proven 2026-06-28 Case
+
+Symptoms:
+
+- User could paste normally in other places.
+- Cursor/Kilo integrated terminal stopped accepting paste.
+- Clipboard held normal `UnicodeText` text, not a file-drop attachment.
+- Kilo process was running.
+- Cursor terminal was visible and active.
+- No `keybindings.json` existed.
+
+Fix:
+
+- Created `%APPDATA%\Cursor\User\keybindings.json`.
+- Added `ctrl+v` and `shift+insert` bindings for `workbench.action.terminal.paste` under `terminalFocus && terminalProcessSupported`.
+
+Verification:
+
+- Pasted harmless probe text `CODEX_PASTE_PROBE_OK` into the bottom PowerShell terminal.
+- Did not press Enter.
+- Removed the probe text.
+- Captured screenshots before and after.
+
+## Root Cause Explanation
+
+This was not a system clipboard outage and not a Kilo service outage. The failure was at Cursor's keyboard command routing layer: when focus is inside the integrated terminal, `Ctrl+V` was not guaranteed to be dispatched to the terminal paste command. Adding an explicit terminal-scoped keybinding made the routing deterministic again.
+
+## Minimal Fix
+
+Add or merge:
+
+```json
+{
+  "key": "ctrl+v",
+  "command": "workbench.action.terminal.paste",
+  "when": "terminalFocus && terminalProcessSupported"
+}
+```
+
+and:
+
+```json
+{
+  "key": "shift+insert",
+  "command": "workbench.action.terminal.paste",
+  "when": "terminalFocus && terminalProcessSupported"
+}
+```
+
+## Already-Fixed Recurrence Check
+
+If `keybindings.json` already contains both required entries, re-run the repair script once to normalize the file and create a fresh backup, then stop treating the shortcut as missing. Next checks:
+
+1. Clipboard contains normal text and not a file-drop list.
+2. Cursor window is alive and Kilo process is alive.
+3. The user is pasting into the bottom integrated terminal or into the Kilo chat Webview.
+4. For the bottom terminal, focus the prompt and test `Ctrl+V`, then `Shift+Insert`.
+5. For the Kilo chat Webview, diagnose webview focus/long-text behavior separately; terminal keybindings cannot force paste into a webview text box.
+
+Record result names separately:
+
+- `TERMINAL_PASTE_KEYBINDINGS_PRESENT`
+- `TERMINAL_PASTE_REPAIR_PASS`
+- `WEBVIEW_PASTE_NEEDS_SEPARATE_DIAGNOSIS`
+- `PARTIAL_PASS_NEEDS_MANUAL_PASTE_TEST`
+
+## Manual Fallback
+
+If `Ctrl+V` still fails after the repair:
+
+- click the terminal prompt, then try `Shift+Insert`
+- use terminal context menu paste
+- reload Cursor window
+- restart Cursor only after saving current work
+- inspect whether the terminal process is in a selection/copy mode
+
+## Do Not
+
+- Do not reset Cursor settings wholesale.
+- Do not reinstall Kilo for a paste-only issue.
+- Do not delete user keybindings.
+- Do not kill Cursor before checking whether unsaved work or active terminal jobs exist.
+- Do not claim success from file edits alone.

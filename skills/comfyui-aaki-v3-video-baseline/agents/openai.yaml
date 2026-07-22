@@ -1,0 +1,3 @@
+display_name: "ComfyUI Aaki v3 Production"
+short_description: "Run the C-drive ComfyUI Aaki video and image pipeline with Wan2.2, Flux Kontext, ControlNet, and D-drive outputs."
+default_prompt: "Use the ComfyUI Aaki v3 production skill. Verify the C-drive install with smoke-check, use D-drive input/output folders, then run or troubleshoot the requested AI video, PPT video, image generation, or image repair workflow."

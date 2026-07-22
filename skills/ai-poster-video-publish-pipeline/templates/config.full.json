@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "mode": "full",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "codec": "h264",
+  "transition_seconds": 0.5,
+  "output": "output/ai-poster-slideshow-full.mp4",
+  "notes": "Full version: promo opening, all capability images, promo closing. Stable static display with fade only.",
+  "slides": [
+    { "role": "promo_opening", "file": "00-promo-main.png", "label": "宣传图开场", "seconds": 5.0 },
+    { "role": "student_learning", "file": "01-student-learning.png", "label": "学生学习能力图", "seconds": 4.5 },
+    { "role": "family_tutoring", "file": "02-family-tutoring.png", "label": "家庭辅导能力图", "seconds": 4.5 },
+    { "role": "office_productivity", "file": "03-office-productivity.png", "label": "职场办公能力图", "seconds": 4.5 },
+    { "role": "content_creation", "file": "04-content-creation.png", "label": "内容创作能力图", "seconds": 4.5 },
+    { "role": "local_business", "file": "05-local-business.png", "label": "本地商家能力图", "seconds": 4.5 },
+    { "role": "teacher_knowledge", "file": "06-teacher-knowledge.png", "label": "教师知识整理能力图", "seconds": 4.5 },
+    { "role": "design_creativity", "file": "07-design-creativity.png", "label": "设计创意能力图", "seconds": 4.5 },
+    { "role": "life_assistant", "file": "08-life-assistant.png", "label": "生活助理能力图", "seconds": 4.5 },
+    { "role": "complex_task", "file": "09-complex-task.png", "label": "综合复杂任务能力图", "seconds": 4.5 },
+    { "role": "promo_closing", "file": "00-promo-main.png", "label": "宣传图收尾", "seconds": 5.0 }
+  ]
+}

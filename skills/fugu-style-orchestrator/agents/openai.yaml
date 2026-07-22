@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fugu式多智能体调度"
+  short_description: "复刻 Fugu 式任务路由、专家分工、验证合成与评测闭环。"
+  default_prompt: "使用 Fugu 式多智能体调度方法，为这个复杂任务设计低成本多模型执行、验证和复现方案。"

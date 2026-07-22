@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-07-21T00:00:00+08:00",
+  "ownership_note": "用户在当前任务中明确要求把这些资料加入技能包；默认仅作私有参考，公开展示仍需权利人单独许可。",
+  "evidence_level": "visual-reference-only",
+  "items": [
+    {"asset":"source-01.png","original_name":"03d0cb0dc0a77923d0b12d85ccf1de91.png","width":1672,"height":941,"bytes":1681838,"sha256":"48c4747aaa89251c4dc8b539559c4597da86d04da6ac5ece24148c746262088e","role":"signature-visual-reference","independent_case":false},
+    {"asset":"source-02.png","original_name":"b3b2d52a710552c7c9843c9e26ab9e8e.png","width":1672,"height":941,"bytes":1606244,"sha256":"5b0f6fb6b82c22c500fb516c1d9cb9c6ddf6a01d11c75e8c21d9440dd449b067","role":"signature-visual-reference","independent_case":false},
+    {"asset":"source-03.png","original_name":"bb119708bb357a41638bbac8df849a8b.png","width":1086,"height":1448,"bytes":2357512,"sha256":"04b4be7669235feb4c186976bf3681019b230cd93066d557282b82d7614fbe0f","role":"wechat-poster-layout-reference-only","claims_not_validated":["3000元超值资料包","免费教学","现在免费领"],"independent_case":false},
+    {"asset":"source-04.png","original_name":"39c054983bdb03481b366e781e447e7d.png","width":1643,"height":957,"bytes":1511990,"sha256":"1d86e7de9e4310c458332a1e28605ab83f71497317afca642d254b642d85e2b9","role":"signature-visual-reference","independent_case":false},
+    {"asset":"source-05.png","original_name":"afcdfccf99836698529a389b186ef4b2.png","width":1644,"height":957,"bytes":1559755,"sha256":"d8567c506c46fbfba2e0a2855d9edf680fd718b631ad18a3d3a96c1907e18275","role":"signature-visual-reference","independent_case":false},
+    {"asset":"source-06.png","original_name":"f157c6f4423bb7fe87eaeb1239566257.png","width":1644,"height":957,"bytes":1559755,"sha256":"d8567c506c46fbfba2e0a2855d9edf680fd718b631ad18a3d3a96c1907e18275","role":"duplicate-source-preserved","duplicate_of":"source-05.png","independent_case":false}
+  ]
+}

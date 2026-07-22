@@ -1,0 +1,247 @@
+[
+  {
+    "path": "00_先看这里/README_能力形成来源层.md",
+    "sha256": "17497E7C7C55B859EF80501DFD50DA2AE7775DC8CB12209F532DCF5447CE0047",
+    "size": 2762
+  },
+  {
+    "path": "00_先看这里/SELF_TEST_RESULT.json",
+    "sha256": "6A8D0A942E0ABEAE85143DD86092DA4EF55D51ADD64387BEC7FD4782BC61AC13",
+    "size": 477
+  },
+  {
+    "path": "00_先看这里/STATIC_ACCEPTANCE.md",
+    "sha256": "C717EEE2F3B4ADE6EA28760699DD054E7835F3EC64AED702BDEFF8618C6015B4",
+    "size": 713
+  },
+  {
+    "path": "01_能力来源与成熟度/01_A关能力来源链.md",
+    "sha256": "1A1198FA7EBD2E4F5DD876F96A5CB932403AD826C8FE9661A51C4F69BCAA7C3F",
+    "size": 2326
+  },
+  {
+    "path": "01_能力来源与成熟度/02_A关能力成熟度等级.md",
+    "sha256": "A80304DAEF83C35D2E68B92D8BB43FEDE37B437FF82B56D68B46C99802FE1118",
+    "size": 1377
+  },
+  {
+    "path": "01_能力来源与成熟度/03_能力来源账本.json",
+    "sha256": "6361A1A7B2D85FB25AA5DBBC6A9A3161B27D9367EDCEFA3BDAF91FCD49B892F0",
+    "size": 1490
+  },
+  {
+    "path": "02_A关正式量化合同/A关正式量化测试合同_RC1_冻结版.md",
+    "sha256": "351FDF084266CD0476733F35CCE4E03235F84D06D2A0B4C6613B9E19C8E5604D",
+    "size": 7220
+  },
+  {
+    "path": "03_A关测试网站/README_先看这里.md",
+    "sha256": "54D5F6342A9B275099F183352400459BCBFC52BE5CD29849657499FB8BC32046",
+    "size": 1092
+  },
+  {
+    "path": "03_A关测试网站/SHA256_文件校验清单.txt",
+    "sha256": "3DE166FAB96E99B05533BF018DE8E06A2636E36D5176E68B3FD79235733A3F06",
+    "size": 834
+  },
+  {
+    "path": "03_A关测试网站/app.js",
+    "sha256": "16931D785E19B11C6CE28C00DD3F2F2543EF91F2AE305AA28BCB47BFAD4C9EDE",
+    "size": 18161
+  },
+  {
+    "path": "03_A关测试网站/assets/V15.1-A_正式只读提示词.txt",
+    "sha256": "1E85CF5234527B7F491823EF8755C6940D4FD96C608B0D0866A0CFE8D0BF4EDE",
+    "size": 2890
+  },
+  {
+    "path": "03_A关测试网站/docs/10轮站点系统测试报告_RC3.md",
+    "sha256": "B3EE36C1D2F2006C0F6988A9E90151CBAAC3018D027675A5B60A03434D8C51AD",
+    "size": 1940
+  },
+  {
+    "path": "03_A关测试网站/docs/10轮站点系统测试结果_RC3.json",
+    "sha256": "2E8573D8326D07E6A550DACDE19B8CCAF0BBFC935BAEAA154A0F2FB1C7273F33",
+    "size": 889
+  },
+  {
+    "path": "03_A关测试网站/docs/A关正式量化测试合同_RC1.md",
+    "sha256": "351FDF084266CD0476733F35CCE4E03235F84D06D2A0B4C6613B9E19C8E5604D",
+    "size": 7220
+  },
+  {
+    "path": "03_A关测试网站/index.html",
+    "sha256": "A9AE68B1C9C02D05227A38D95732E59363F3E4AB9D4F46EC31A62C9CE6C1090D",
+    "size": 8215
+  },
+  {
+    "path": "03_A关测试网站/prompt-manifest.json",
+    "sha256": "8EDF1F8DF1ABC865634D3056FEC5E0FB1CF71B27A2D1ABACB0F0D90BDFCB1140",
+    "size": 533
+  },
+  {
+    "path": "03_A关测试网站/style.css",
+    "sha256": "64A8F4C0C7FB8C3C0856152112EF9B51133E67C33D09D7DBF032BFB3C1F7FB8B",
+    "size": 3727
+  },
+  {
+    "path": "04_十二道关口与证据矩阵/01_十二道核心关口详细规范.md",
+    "sha256": "CFFA694FCF161105772C9B21C398DC9BA7D75A7A321D0844B60F90BFB680E8EB",
+    "size": 4420
+  },
+  {
+    "path": "04_十二道关口与证据矩阵/02_十二项图片证据矩阵模板.md",
+    "sha256": "92CF05564C84C1F27F9EF5CA5288C4738FBF0FFB5653044EE1548F97B2C05672",
+    "size": 1453
+  },
+  {
+    "path": "05_模拟与真实测试/02_A关真实测试接续计划.md",
+    "sha256": "17DAFF29FA443F5B8FEE81B661FA562B65ECCA3BCC454A6C54F2528778B3BF3D",
+    "size": 1757
+  },
+  {
+    "path": "05_模拟与真实测试/十次模拟原始证据/01_01_正常完整流程.json",
+    "sha256": "BC5DDBA81BC26B3D4E43E7AFF0705F268AA9CA99761B001D88F2BAF81139DA7F",
+    "size": 1366
+  },
+  {
+    "path": "05_模拟与真实测试/十次模拟原始证据/02_02_缺失A_Raw.json",
+    "sha256": "E7A104E3D1043B5A4102968E35572173FBC0E496124D175672BE7997DD76C6B3",
+    "size": 1360
+  },
+  {
+    "path": "05_模拟与真实测试/十次模拟原始证据/03_03_命令回显.json",
+    "sha256": "B603852AFE760D63CCA6C7BE740A6B0706C0767F28BEE437BDE7DE65B76C0090",
+    "size": 1359
+  },
+  {
+    "path": "05_模拟与真实测试/十次模拟原始证据/04_04_硬闸门失败.json",
+    "sha256": "05931C264F703DE087EAC8BAB7635AF2E240605162FBC2DD0FBB913ED36C09F4",
+    "size": 1364
+  },
+  {
+    "path": "05_模拟与真实测试/十次模拟原始证据/05_05_第二轮退步后回退.json",
+    "sha256": "E8BF24DB10AC14F6A92286524E5F882A9EBE6D187535AE3AEE78B5E68E4E2C96",
+    "size": 1372
+  },
+  {
+    "path": "05_模拟与真实测试/十次模拟原始证据/06_06_最大压力非最佳性价比.json",
+    "sha256": "A85B07FAAD2FE6AB0A8E6D43E2C492F7FF83AC3BE1712FC090CE730AEA823F56",
+    "size": 1389
+  },
+  {
+    "path": "05_模拟与真实测试/十次模拟原始证据/07_07_固定时间预算截断.json",
+    "sha256": "220CC10AA3D355B808C0209FA0B92D3C83E5E37713EAA6B620D35A6694E8B164",
+    "size": 1374
+  },
+  {
+    "path": "05_模拟与真实测试/十次模拟原始证据/08_08_同质量选择低时间低压力.json",
+    "sha256": "E414127E50607CA787A70814388289AABFB34E01A0D27276BFAEC110B0D473C3",
+    "size": 1381
+  },
+  {
+    "path": "05_模拟与真实测试/十次模拟原始证据/09_09_冷启动恢复.json",
+    "sha256": "F7EAD98E68A302BD0E53FB741C09E153262C60536CFAAF4563394DAE8C556222",
+    "size": 1363
+  },
+  {
+    "path": "05_模拟与真实测试/十次模拟原始证据/10_10_导出校验一致.json",
+    "sha256": "63007B2BBB7C650A198430753D7F98C71C04AE31164EE3CE580D53FE6780FA2C",
+    "size": 1366
+  },
+  {
+    "path": "05_模拟与真实测试/十次模拟检测原始结果.json",
+    "sha256": "66CF7A2716C9CF0AF2D79D7A97622BFECE1EEC29E5FBEBEE387F312C80BEEDA7",
+    "size": 3594
+  },
+  {
+    "path": "05_模拟与真实测试/十次模拟检测报告_10_OF_10_PASS.md",
+    "sha256": "BCE6351E75AA65873E00DABCD2C249D4ABCEEF769710278908B65F6F1EA488CB",
+    "size": 1582
+  },
+  {
+    "path": "06_发布闸门与版本治理/01_版本治理与发布闸门.md",
+    "sha256": "3C2DDBC9F0A8C9CCFA418CFE17F586974795CCAFC325486B8B8AA2061D81370C",
+    "size": 1741
+  },
+  {
+    "path": "06_发布闸门与版本治理/02_Codex只读集成说明.md",
+    "sha256": "701C0398AAE90BF2EE658C07791D19A4E61B54862A3A351711726474FB0DDE88",
+    "size": 1720
+  },
+  {
+    "path": "07_技能触发与运行规则/01_SKILL增量运行规则.md",
+    "sha256": "698E768D1831158F4A61459B67493A328B08484B61BBE03833E6495BB09E205F",
+    "size": 1623
+  },
+  {
+    "path": "evidence_templates/01_原始问题_待真实截图.txt",
+    "sha256": "8BFF4BDB29DB394AA49A2EDBD29A2C1678785CF06CEFDEB27055D27D377E2486",
+    "size": 188
+  },
+  {
+    "path": "evidence_templates/02_零流程直接回答_待真实截图.txt",
+    "sha256": "7C9BD913DE02EEE49055F7935672A05E5E2EBAB3641138B717A75148FA6490C5",
+    "size": 197
+  },
+  {
+    "path": "evidence_templates/03_V15.1-A发送内容_待真实截图.txt",
+    "sha256": "9F70A176DA6F665E565A54383C1AD045E3CE3E1B1883808B3B67A5480CD54829",
+    "size": 195
+  },
+  {
+    "path": "evidence_templates/04_模型完整原始回复_待真实截图.txt",
+    "sha256": "6187163BFB23685792FA7EADBDB97EA309FF76839F6232A2BC34E83F12C4D1FF",
+    "size": 200
+  },
+  {
+    "path": "evidence_templates/05_自动拆分结果_待真实截图.txt",
+    "sha256": "CC50402EAB14D262051F21732BF12EB3A258383530B99BCEBECCC659F8B87161",
+    "size": 194
+  },
+  {
+    "path": "evidence_templates/06_各阶段质量评分_待真实截图.txt",
+    "sha256": "72F2A94424CB0D79E61CB1342BA52F01B609DE50E73509D7E59AFDA12BCF5C41",
+    "size": 197
+  },
+  {
+    "path": "evidence_templates/07_压力值计算_待真实截图.txt",
+    "sha256": "C0038BBE1EAEEAD755F22E51969D57D8A23175846C45C98337C760B1E7116789",
+    "size": 191
+  },
+  {
+    "path": "evidence_templates/08_时间与操作记录_待真实截图.txt",
+    "sha256": "45AC0474DB5F0BC250E45531C2D6785306F341F236EC3E05331C3290D80899B2",
+    "size": 197
+  },
+  {
+    "path": "evidence_templates/09_匿名交换顺序评审_待真实截图.txt",
+    "sha256": "CE3A59E358B066AD00768E1BA2B102C0BBE0880989D741D47F82D26E284F28AE",
+    "size": 200
+  },
+  {
+    "path": "evidence_templates/10_压力质量曲线_待真实截图.txt",
+    "sha256": "8369B96797B2940D2D3E79444C901FFADAFC82F89499C2A985577D8E5F15395C",
+    "size": 194
+  },
+  {
+    "path": "evidence_templates/11_性价比计算_待真实截图.txt",
+    "sha256": "68B8CF9EB2675314142E0465462DD4C443516C0861D94BF01E1BDC795D34CABF",
+    "size": 191
+  },
+  {
+    "path": "evidence_templates/12_最终验收结论_待真实截图.txt",
+    "sha256": "5AE967A5F2606A0A0540FCF06D760F8A7FDEDD8B89C81FB9021B5801C306D4B7",
+    "size": 194
+  },
+  {
+    "path": "scripts/generate_manifest.py",
+    "sha256": "C3BE97595C6A50F6EC21F6F958AAE9D76A89356B80D23A74D218D2FC67C706DE",
+    "size": 1190
+  },
+  {
+    "path": "scripts/self_test.py",
+    "sha256": "464BBB901EEF47D8EE9BE149649D230A22EF1DB99F1B6278D58276D33F2076C3",
+    "size": 4340
+  }
+]

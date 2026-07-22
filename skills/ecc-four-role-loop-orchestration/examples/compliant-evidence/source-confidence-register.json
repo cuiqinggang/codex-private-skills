@@ -1,0 +1,3 @@
+[
+  {"source_id":"SRC-001","project_affiliation":"ECC中文闭环示例","claim":"本示例必须运行固定十二层","confidence":"VERIFIED","evidence":"固定十二层标准和逐层实例已经核对","evidence_ids":["E-SOURCE"],"used_in_final":true,"explicitly_labeled":true,"downstream_use_approved":true,"uncertainty":"无"}
+]

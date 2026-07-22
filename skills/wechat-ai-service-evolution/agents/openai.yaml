@@ -1,0 +1,4 @@
+interface:
+  display_name: "微信 AI 免费服务发现与进化"
+  short_description: "用受控模板完成家庭影像、小店宣传和微信真实需求"
+  default_prompt: "使用 $wechat-ai-service-evolution 把这条微信需求匹配到现有服务与候选模板，先做完整小样，核对身份、商品、中文文字和隐私后再交付。"

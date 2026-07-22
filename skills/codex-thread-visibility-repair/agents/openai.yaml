@@ -1,0 +1,3 @@
+display_name: Codex Thread Visibility Repair
+short_description: Recover hidden Codex threads safely
+default_prompt: Diagnose and repair a Codex Desktop thread that disappeared, was archived, or changed title.

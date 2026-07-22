@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matt Engineering Flow Adapter Acceptance</title>
+<style>
+body{font-family:Segoe UI,Arial;background:#eef3f7;color:#183247;margin:0;padding:40px}
+main{max-width:980px;margin:auto;background:white;border-radius:18px;padding:32px;box-shadow:0 12px 36px #17324d22}
+h1{color:#0d4778}li{margin:10px 0}.pass{color:#087f23;font-weight:700}
+code{background:#edf2f7;padding:2px 6px;border-radius:5px}
+</style>
+</head>
+<body><main>
+<h1>Matt 工程流轻量适配层验收页</h1>
+<p class="pass">候选包三轮测试已通过，正式状态以 FINAL_ACCEPTANCE_REPORT.md 为准。</p>
+<h2>材料来源</h2>
+<p>mattpocock/skills v1.1.0，commit d574778f94cf620fcc8ce741584093bc650a61d3，MIT。</p>
+<h2>价值判断</h2>
+<p>HIGH_VALUE：形成规则、SOP、模板、脚本、触发与负触发、失败复盘和长期复用入口。</p>
+<h2>正式适配</h2>
+<p>需求澄清、领域上下文、规格、纵向 tickets、TDD、Bug 诊断、五轴审查、handoff。</p>
+<h2>自动调用机制</h2>
+<p>复杂编程任务先复用预检，再由 SKILL.md 按需加载最多三个 workflow。简单任务与 UltraFusion 不触发。</p>
+<h2>防落灰</h2>
+<ul>
+<li>触发词和负触发：router 目录</li>
+<li>开工前检查：gates/PRE_WRITE_GATE.md</li>
+<li>失败复盘：FAILURE_REVIEW.md</li>
+<li>最近使用：RECENT_USE_LOG.md</li>
+<li>下次复用：SOP_CHECKLIST.md</li>
+</ul>
+</main></body></html>

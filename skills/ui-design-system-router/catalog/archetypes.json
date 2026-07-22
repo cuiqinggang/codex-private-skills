@@ -1,0 +1,18 @@
+[
+  {"id":"01","slug":"minimal-monochrome","name":"极简黑白型","density":"low","motion":"low","cost":"low","mobile_difficulty":"low","imitation_risk":"medium"},
+  {"id":"02","slug":"enterprise-trust","name":"企业可信型","density":"medium","motion":"low","cost":"medium","mobile_difficulty":"medium","imitation_risk":"low"},
+  {"id":"03","slug":"saas-conversion","name":"SaaS转化型","density":"medium","motion":"medium","cost":"medium","mobile_difficulty":"medium","imitation_risk":"medium"},
+  {"id":"04","slug":"developer-tool","name":"开发者工具型","density":"high","motion":"low","cost":"medium","mobile_difficulty":"high","imitation_risk":"medium"},
+  {"id":"05","slug":"ai-native","name":"AI原生型","density":"medium","motion":"medium","cost":"medium","mobile_difficulty":"medium","imitation_risk":"high"},
+  {"id":"06","slug":"data-dashboard","name":"数据仪表盘型","density":"high","motion":"low","cost":"high","mobile_difficulty":"high","imitation_risk":"low"},
+  {"id":"07","slug":"content-media","name":"内容媒体型","density":"medium","motion":"low","cost":"medium","mobile_difficulty":"medium","imitation_risk":"low"},
+  {"id":"08","slug":"premium-consumer","name":"高端消费型","density":"low","motion":"medium","cost":"high","mobile_difficulty":"medium","imitation_risk":"high"},
+  {"id":"09","slug":"playful-consumer","name":"活泼消费者型","density":"medium","motion":"high","cost":"high","mobile_difficulty":"medium","imitation_risk":"medium"},
+  {"id":"10","slug":"mobile-app","name":"移动应用型","density":"medium","motion":"medium","cost":"medium","mobile_difficulty":"low","imitation_risk":"low"},
+  {"id":"11","slug":"commerce","name":"电商型","density":"high","motion":"medium","cost":"high","mobile_difficulty":"high","imitation_risk":"high"},
+  {"id":"12","slug":"fintech","name":"金融科技型","density":"high","motion":"low","cost":"high","mobile_difficulty":"high","imitation_risk":"medium"},
+  {"id":"13","slug":"industrial-tech","name":"工业技术型","density":"medium","motion":"low","cost":"medium","mobile_difficulty":"medium","imitation_risk":"low"},
+  {"id":"14","slug":"creative-portfolio","name":"创意作品集型","density":"low","motion":"high","cost":"high","mobile_difficulty":"high","imitation_risk":"high"},
+  {"id":"15","slug":"dark-immersive","name":"暗色沉浸型","density":"medium","motion":"high","cost":"high","mobile_difficulty":"high","imitation_risk":"high"}
+]
+

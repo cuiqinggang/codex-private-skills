@@ -1,0 +1,2 @@
+{"package_id":"CP_D","asset_id":"CP_D","depends_on":["P_CORE","P_D","QUESTION","C_FUSION"],"forbidden_input":["A_INITIAL_SEALED"],"output":"D_FINAL_LOCKED","readonly":true}
+

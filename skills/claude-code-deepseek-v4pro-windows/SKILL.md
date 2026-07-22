@@ -3,6 +3,28 @@ name: claude-code-deepseek-v4pro-windows
 description: Use when installing, repairing, verifying, or yesterday-replaying Windows-native Claude Code CLI integration with DeepSeek Anthropic-compatible API, especially deepseek-v4-pro[1m], User-level environment variables, gated PowerShell evidence, or future Claude Code GUI exploration.
 ---
 
+# 2026-07-02 安全边界
+
+本技能只作为“Claude Code 工具外壳转接 DeepSeek”的历史证明与恢复记忆，
+不得理解为部署 Claude 模型、Anthropic API、Claude Sonnet、Claude Opus、
+Claude Haiku，或恢复“Claude-style CLI 能力”。
+
+当前允许目标：
+
+- 只允许研究或恢复 Claude Code 工具外壳的 DeepSeek 转接能力。
+- 最终模型证据必须指向 `deepseek/deepseek-v4-pro`，或用户明确认可的矩阵模型：
+  `deepseek/deepseek-v4-flash`、`z-ai/glm-5.2`、
+  `qwen/qwen3-vl-235b-a22b-instruct`。
+- `ANTHROPIC_*` 只能作为 Claude Code 外壳兼容变量名出现；这不是接入
+  Anthropic、Claude 官方模型或 Claude API Key 的许可。
+- 默认不要运行 `scripts/set-claude-deepseek-env.ps1` 或
+  `scripts/verify-claude-deepseek.ps1`。除非先阅读
+  `references/BOUNDARY-20260702.md`，并确认本次只是 DeepSeek-only 兼容层复现。
+- 如果旧证据不能证明 DeepSeek-only 转接路线，必须输出：
+  `CLAUDE_CODE_DEEPSEEK_ROUTE_NOT_PROVEN`，并停止部署。
+- 最终验收只能写：
+  `Claude Code 工具外壳 DeepSeek V4 Pro 转接路线: PASS / PARTIAL / FAIL / NOT_PROVEN`。
+
 # Windows 原生 Claude Code 接入 DeepSeek V4 Pro
 
 ## 用途

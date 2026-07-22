@@ -1,7 +1,0 @@
-﻿{
-    "ExitCode":  0,
-    "WallLatencyMs":  4238,
-    "StdoutPreview":  "{   \"success\": true,   \"total\": 2,   \"passed\": 2,   \"failed\": 0,   \"average_latency_ms\": 914,   \"key_printed\": false }",
-    "ErrorSummary":  "",
-    "TokenPrinted":  false
-}

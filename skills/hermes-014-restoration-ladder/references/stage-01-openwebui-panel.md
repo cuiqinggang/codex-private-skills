@@ -19,7 +19,7 @@ or scheduled-task reboot persistence.
 Purpose: start the Open WebUI panel using the existing Windows native Hermes
 daily launcher.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -51,7 +51,7 @@ Failure recovery:
 
 Purpose: prove the panel layer works and nothing above Stage 01 was started.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "抖音坐标截图回复"
+  short_description: "三屏DPI细网格定位与单条评论受控回复"
+  default_prompt: "Use $douyin-auto-reply to locate one Douyin comment with a fine grid and show every screenshot in chat before acting."

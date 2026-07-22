@@ -6,7 +6,7 @@ Use these gates when the user asks to open Windows native Hermes / Windows版爱
 
 Purpose: Start the existing Windows native Hermes 0.14 launcher and Open WebUI.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -41,7 +41,7 @@ Continue or stop:
 
 Purpose: Prove the new Windows native Hermes backend and Open WebUI are usable.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 

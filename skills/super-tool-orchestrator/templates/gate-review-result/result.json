@@ -1,0 +1,11 @@
+{
+  "task_id": "",
+  "gate_id": "",
+  "decision": "",
+  "accepted_claims": [],
+  "rejected_claims": [],
+  "missing_evidence": [],
+  "required_repair": [],
+  "next_gate_allowed": false,
+  "created_at": ""
+}

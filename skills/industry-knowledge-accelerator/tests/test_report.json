@@ -1,0 +1,44 @@
+{
+  "total": 3,
+  "passed": 3,
+  "failed": 0,
+  "results": [
+    {
+      "test": "Round 1 - package contract",
+      "status": "PASS",
+      "detail": {
+        "missing": [],
+        "extra_frontmatter": []
+      }
+    },
+    {
+      "test": "Round 2 - scaffold and idempotency",
+      "status": "PASS",
+      "detail": {
+        "first_returncode": 0,
+        "second_returncode": 0,
+        "created_first": 7,
+        "created_second": 0
+      }
+    },
+    {
+      "test": "Round 3 - incremental, dedupe, validation and negative gate",
+      "status": "PASS",
+      "detail": {
+        "manifest1_duplicates": 1,
+        "statuses": {
+          "b.md": "updated",
+          "c.md": "new",
+          "copy-a.md": "unchanged"
+        },
+        "deleted": [
+          "a.md"
+        ],
+        "register_returncode": 0,
+        "duplicate_returncode": 2,
+        "valid_returncode": 0,
+        "invalid_returncode": 1
+      }
+    }
+  ]
+}

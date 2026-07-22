@@ -1,4 +1,4 @@
-﻿# Claude Code DeepSeek V4 Pro Verification
+# Claude Code DeepSeek V4 Pro Verification
 Started: 2026-05-18 23:38:46 +08:00
 ## G02 Environment
 Command: claude --version

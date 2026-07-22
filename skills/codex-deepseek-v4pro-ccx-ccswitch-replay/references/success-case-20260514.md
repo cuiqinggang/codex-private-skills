@@ -22,12 +22,12 @@ DeepSeek official API -> CCX/API Proxy -> `http://localhost:13000/v1` -> CC Swit
 
 ## Local Paths From Success Run
 
-- Success output root: `C:\Users\A\Desktop\1\output\TASK-20260514-CODEX-DEEPSEEK-V4PRO-VIDEO-REPLAY`
+${REDACTED_SECRET}
 - CCX executable: `...\tools\ccx\ccx-windows-amd64.exe`
 - CCX config directory: `...\tools\ccx\.config`
 - CCX env file: `...\tools\ccx\.env`
 - CC Switch extracted executable: `...\tools\cc-switch-msi-extracted\Programs\CC Switch\cc-switch.exe`
-- CC Switch provider database: `C:\Users\A\.cc-switch\cc-switch.db`
+${REDACTED_SECRET}
 
 ## Ports
 
@@ -51,7 +51,7 @@ DeepSeek official API -> CCX/API Proxy -> `http://localhost:13000/v1` -> CC Swit
 
 ## Default GPT Route
 
-`C:\Users\A\.codex\config.toml` kept:
+${REDACTED_SECRET}
 
 ```toml
 model = "gpt-5.5"
@@ -75,8 +75,8 @@ Then run:
 
 ## Rollback Paths From Success Run
 
-- Codex config backup: `C:\Users\A\Desktop\1\output\TASK-20260514-CODEX-DEEPSEEK-V4PRO-VIDEO-REPLAY\backups\20260514-172915\config.toml`
-- CC Switch backup: `C:\Users\A\Desktop\1\output\TASK-20260514-CODEX-DEEPSEEK-V4PRO-VIDEO-REPLAY\backups\20260514-175310\.cc-switch`
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 
 ## Lessons
 
@@ -85,3 +85,4 @@ Then run:
 - Codex `Enter API key` uses CCX proxy access key.
 - Use CCX because Codex needs Responses-compatible behavior while DeepSeek is mainly OpenAI-compatible upstream.
 - Even if DeepSeek `/v1/models` lists more than one model, the backup route must configure and test only `deepseek-v4-pro`.
+

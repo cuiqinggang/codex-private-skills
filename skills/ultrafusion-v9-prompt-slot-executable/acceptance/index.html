@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>UltraFusion V9.0 只读部署验收</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b1020;--card:#151d33;--line:#263454;--text:#eef4ff;--muted:#9fb0cf;--ok:#58d68d;--warn:#f7c873;--accent:#7aa2ff}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0,#18244a 0,transparent 34%),var(--bg);color:var(--text);font:15px/1.65 system-ui,"Microsoft YaHei",sans-serif}
+    main{max-width:1100px;margin:auto;padding:48px 24px 80px}.eyebrow{color:var(--accent);letter-spacing:.16em;text-transform:uppercase}.hero{display:grid;grid-template-columns:1.5fr .8fr;gap:24px;align-items:end}.status{background:linear-gradient(135deg,#153927,#12283a);border:1px solid #2e6b51;border-radius:20px;padding:24px}.status strong{display:block;color:var(--ok);font-size:28px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}.card{background:color-mix(in srgb,var(--card) 92%,transparent);border:1px solid var(--line);border-radius:16px;padding:20px}.card h2{font-size:16px;margin:0 0 12px}.card p,.card li{color:var(--muted)}code{color:#cfe0ff}.gates{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.gate{border:1px solid var(--line);border-radius:12px;padding:12px}.gate b{color:var(--ok)}.warn{color:var(--warn)}@media(max-width:800px){.hero,.grid,.gates{grid-template-columns:1fr}}
+  </style>
+</head>
+<body><main>
+  <div class="hero"><div><div class="eyebrow">UF-9.0.0-beta.1 · Manual-M1</div><h1>提示词外置插槽式<br>可执行技能包</h1><p>核心资产只读装载，A_Initial 先封存，D_Final 后锁定，再做同口径价值比较。</p></div><div class="status"><span>最终技术候选</span><strong>RELEASE PASS</strong><small>READ_ONLY_DEPLOYMENT_MODE</small></div></div>
+  <div class="grid"><section class="card"><h2>材料价值</h2><p><b>HIGH_VALUE</b>：已转化为技能入口、SOP、规则、脚本、失败复盘、最近使用和验收证据。</p></section><section class="card"><h2>只读保护</h2><p>V15.1、A/B/C/D、四个命令包与 A_Initial 源文件前后 SHA-256 全部一致。</p></section><section class="card"><h2>诚实边界</h2><p class="warn">第二轮仅为 FLOW_SIMULATION_ONLY；真实质量提升与价值仍需外部模型端到端测试。</p></section></div>
+  <h2>Gate A—I</h2><div class="gates"><div class="gate"><b>A PASS</b><br>仓库安全</div><div class="gate"><b>B PASS</b><br>资产识别</div><div class="gate"><b>C PASS</b><br>核心只读</div><div class="gate"><b>D PASS</b><br>框架静态</div><div class="gate"><b>E PASS</b><br>Manual-M1</div><div class="gate"><b>F PASS</b><br>回退隔离</div><div class="gate"><b>G PASS</b><br>Web-W1 规范</div><div class="gate"><b>H PASS</b><br>三轮测试</div><div class="gate"><b>I PASS</b><br>候选整合重验</div></div>
+  <div class="grid"><section class="card"><h2>下次触发</h2><ul><li>UltraFusion 9.0</li><li>提示词外置插槽</li><li>Manual-M1</li><li>A_Initial vs D_Final</li></ul></section><section class="card"><h2>开工前</h2><p><code>python 09_AUTOMATION/scripts/run_static_acceptance.py</code></p><p>哈希异常立即停止，问题只写独立报告。</p></section><section class="card"><h2>失败入口</h2><p><code>references/FAILURE_REVIEW_ENTRY.md</code></p><p>违规测试只在临时沙箱副本进行。</p></section></div>
+</main></body></html>

@@ -1,0 +1,9 @@
+{
+  "name": "obsidian-ai-company-os",
+  "candidate_type": "clean_skill_candidate",
+${REDACTED_SECRET}
+  "generated_by": "OBSIDIAN_AI_COMPANY_OS_LEGACY_PACKAGE_4H_PURIFICATION_AND_C_REPLACEMENT_PLAN_V1",
+  "generated_at": "2026-06-15T15:09:20+08:00",
+  "excludes_full_project_snapshot": true,
+  "requires_user_review_before_c_drive_replacement": true
+}

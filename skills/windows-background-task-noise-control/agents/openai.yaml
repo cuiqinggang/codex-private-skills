@@ -1,0 +1,4 @@
+interface:
+  display_name: "Windows Background Task Noise Control"
+  short_description: "Quiet blue PowerShell/cmd popups while preserving useful background jobs."
+  default_prompt: "Use $windows-background-task-noise-control to find boot-time blue PowerShell/cmd windows, back up launchers, and make them run silently without disabling useful widgets."

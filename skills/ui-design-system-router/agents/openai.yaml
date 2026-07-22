@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Design System Router"
+  short_description: "离线设计方向选择与项目级 DESIGN.md 生成验证路由"
+  default_prompt: "Use $ui-design-system-router to choose an original UI direction and generate a validated project DESIGN.md."

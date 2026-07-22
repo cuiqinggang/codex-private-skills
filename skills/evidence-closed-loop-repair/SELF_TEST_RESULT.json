@@ -1,0 +1,23 @@
+{
+  "overall": "PASS",
+  "tests": {
+    "good_fixture": {
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"files\": 5,\n  \"out\": \"/tmp/eclr-selftest-x93l6bs6/good_evidence\"\n}\n",
+      "stderr": "",
+      "status": "PASS"
+    },
+    "bad_fixture": {
+      "returncode": 2,
+      "stdout": "{\n  \"status\": \"FAIL\",\n  \"files\": 5,\n  \"out\": \"/tmp/eclr-selftest-x93l6bs6/bad_evidence\"\n}\n",
+      "stderr": "",
+      "status": "PASS"
+    },
+    "cold_zip": {
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"archive\": \"/tmp/eclr-selftest-x93l6bs6/good.zip\",\n  \"out\": \"/tmp/eclr-selftest-x93l6bs6/cold\"\n}\n",
+      "stderr": "",
+      "status": "PASS"
+    }
+  }
+}

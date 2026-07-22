@@ -65,26 +65,26 @@ after login, after Stage 04a has brought 8642 up.
 Primary Stage 04b files:
 
 ```text
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Open-HermesOpenWebUI.ps1
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Run-HermesOpenWebUIAutoOpen.vbs
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Install-HermesOpenWebUIAutoOpen.ps1
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Rollback-HermesOpenWebUIAutoOpen.ps1
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Verify-HermesOpenWebUIAutoOpen.ps1
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\PostReboot-Verify-HermesOpenWebUIAutoOpen.ps1
-C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Run-PostReboot-Verify-HermesOpenWebUIAutoOpen.vbs
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 ```
 
 Startup entry:
 
 ```text
-C:\Users\A\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\HermesOpenWebUIAutoOpen.vbs
+${REDACTED_SECRET}
 ```
 
 Log and status files:
 
 ```text
-C:\Users\A\.hermes\logs\hermes-openwebui-autoopen.log
-C:\Users\A\.hermes\logs\hermes-openwebui-autoopen-status.json
+${REDACTED_SECRET}
+${REDACTED_SECRET}
 H:\Hermes_Windows_Native_014\reports\daily-start-*.log
 ```
 
@@ -103,7 +103,7 @@ Purpose: Stage 04b depends on Stage 04a; do not build browser auto-open until
 Execution location:
 
 ```text
-C:\Users\A\Desktop\1
+${REDACTED_SECRET}
 ```
 
 Command:
@@ -152,7 +152,7 @@ Purpose: Add only the Open WebUI auto-open trigger.
 Command:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Install-HermesOpenWebUIAutoOpen.ps1'
+${REDACTED_SECRET}
 ```
 
 Success criteria:
@@ -172,12 +172,12 @@ Purpose: Prove the wrapper works before reboot.
 Command:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Open-HermesOpenWebUI.ps1'
+${REDACTED_SECRET}
 ```
 
 Success criteria:
 
-- `C:\Users\A\.hermes\logs\hermes-openwebui-autoopen-status.json` has
+${REDACTED_SECRET}
   `result=FINAL_PASS`.
 - Latest `daily-start-*.log` has
   `FINAL_PASS Windows native Hermes page is ready`.
@@ -196,7 +196,7 @@ Purpose: Verify full local state after the manual run.
 Command:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Verify-HermesOpenWebUIAutoOpen.ps1' -Marker 'HERMES_STAGE04B_LOCAL_OK'
+${REDACTED_SECRET}
 ```
 
 Success criteria:
@@ -216,7 +216,7 @@ Purpose: Preserve scripts, logs, reports, and skill reference on H drive.
 Command:
 
 ```powershell
-$ErrorActionPreference='Stop'; $Task='HERMES-014-STAGE04B-OPENWEBUI-AUTOOPEN-20260522'; $Backup="H:\Hermes_Backups\$Task"; New-Item -ItemType Directory -Force "$Backup\scripts","$Backup\logs","$Backup\artifacts","$Backup\startup","$Backup\docker-openwebui","$Backup\skill-reference" | Out-Null; Copy-Item 'C:\Users\A\Hermes_AutoStart\openwebui-autoopen\*' "$Backup\scripts" -Force; Copy-Item 'C:\Users\A\.codex\skills\hermes-014-restoration-ladder\references\stage-04b-openwebui-autoopen-20260522.md' "$Backup\skill-reference" -Force; robocopy 'C:\Users\A\.codex\skills\hermes-014-restoration-ladder' 'H:\CodexSkills\hermes-014-restoration-ladder' /E /R:1 /W:1 | Out-Null; 'G_STAGE04B_BACKUP_AND_SKILL_SYNC_PASS'
+${REDACTED_SECRET}
 ```
 
 Success criteria:
@@ -231,7 +231,7 @@ Purpose: Create a one-shot post-reboot verifier before reboot.
 Command:
 
 ```powershell
-$ErrorActionPreference='Stop'; $Startup=[Environment]::GetFolderPath('Startup'); Copy-Item 'C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Run-PostReboot-Verify-HermesOpenWebUIAutoOpen.vbs' (Join-Path $Startup 'HermesStage04bPostRebootVerify.vbs') -Force; 'G_STAGE04B_POST_REBOOT_VERIFIER_READY'
+${REDACTED_SECRET}
 ```
 
 Success criteria:
@@ -255,7 +255,7 @@ shutdown.exe /r /t 5 /c "Stage04b Open WebUI auto-open reboot validation"
 Post-reboot evidence file:
 
 ```text
-C:\Users\A\Desktop\1\output\HERMES-014-STAGE04B-OPENWEBUI-AUTOOPEN-20260522\artifacts\stage04b-post-reboot-verify.txt
+${REDACTED_SECRET}
 ```
 
 Success criteria:
@@ -285,7 +285,7 @@ Telegram availability.
 Command:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File 'C:\Users\A\.codex\skills\hermes-telegram-persistent-bridge\scripts\check-hermes-telegram.ps1'
+${REDACTED_SECRET}
 ```
 
 Expected interpretation:
@@ -293,14 +293,14 @@ Expected interpretation:
 - `state api_server connected` should pass.
 - `state telegram connected` should pass.
 - A failure for the old
-  `C:\Users\A\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Hermes_Gateway.cmd`
+${REDACTED_SECRET}
   is expected in the Stage 04a/04b architecture, because Hermes is now restored
   by the scheduled 8642 lifeline instead of the old gateway Startup entry.
 
 Optional outbound test without printing the token:
 
 ```powershell
-$ErrorActionPreference='Stop'; $envPath='C:\Users\A\.hermes\.env'; $kv=@{}; Get-Content $envPath | ForEach-Object { if($_ -match '^\s*#'){return}; if($_ -match '^\s*([^=]+)=(.*)$'){ $kv[$matches[1].Trim()]=$matches[2].Trim().Trim('"').Trim("'") } }; $token=$kv['TELEGRAM_BOT_TOKEN']; $chat=$kv['TELEGRAM_HOME_CHANNEL']; $proxy=$kv['TELEGRAM_PROXY']; $marker='HERMES_REBOOT_TELEGRAM_OUTBOUND_OK_'+(Get-Date -Format 'HHmmss'); $params=@{chat_id=$chat;text=$marker}|ConvertTo-Json; $p=@{Uri=('https://api.telegram.org/bot'+$token+'/sendMessage');Method='POST';Body=$params;ContentType='application/json';UseBasicParsing=$true;TimeoutSec=30}; if($proxy){$p.Proxy=$proxy}; $r=Invoke-WebRequest @p; $j=$r.Content|ConvertFrom-Json; 'TELEGRAM_SEND_OK='+$j.ok; 'TELEGRAM_MARKER='+$marker
+${REDACTED_SECRET}
 ```
 
 Observed 2026-05-22 result:
@@ -323,7 +323,7 @@ Conclusion:
 Remove only Stage 04b auto-open:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\Users\A\Hermes_AutoStart\openwebui-autoopen\Rollback-HermesOpenWebUIAutoOpen.ps1'
+${REDACTED_SECRET}
 ```
 
 This removes the Startup VBS entry only. It does not delete scripts, logs,

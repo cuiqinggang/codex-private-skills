@@ -1,4 +1,0 @@
-interface:
-  display_name: "Telegram Hermes Codex Vision Action"
-  short_description: "Route Telegram media through Hermes to Codex CLI."
-  default_prompt: "Use $telegram-hermes-codex-vision-action to handle a Telegram /codeximg or /codexvideo workflow safely."

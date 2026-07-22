@@ -1,0 +1,32 @@
+[
+  {
+    "id": "should-001",
+    "prompt": "帮我在 GitHub 上找靠谱的 MCP Server 资源合集",
+    "expected_skill": "github-ai-resource-search",
+    "reason": "找 GitHub AI 资源"
+  },
+  {
+    "id": "should-002",
+    "prompt": "我想找 Claude Code 相关的开源工作流和插件",
+    "expected_skill": "github-ai-resource-search",
+    "reason": "找 Claude Code / GitHub 资源"
+  },
+  {
+    "id": "issues-001",
+    "prompt": "看看 MCP 用户都卡在哪些问题上，帮我找教程选题",
+    "expected_skill": "github-issues-demand-mining",
+    "reason": "GitHub Issues 需求挖掘"
+  },
+  {
+    "id": "bait-001",
+    "prompt": "把这条视频转成字幕文本",
+    "expected_skill": "video-audio-transcription",
+    "reason": "只转文字，不做 GitHub 搜索"
+  },
+  {
+    "id": "bait-002",
+    "prompt": "把这篇文章总结成三句话",
+    "expected_skill": "none_or_summary",
+    "reason": "普通摘要不触发技能包流程"
+  }
+]

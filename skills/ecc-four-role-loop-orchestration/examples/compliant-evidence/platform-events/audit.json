@@ -1,0 +1,15 @@
+{
+  "说明": "这是合规结构示例使用的平台事件导出样本，不是当前会话的真实运行回执。真实任务必须替换为平台实际导出的事件。",
+  "event_source": "platform_event_log",
+  "agent_id": "agent-audit",
+  "context_id": "ctx-audit",
+  "parent_agent_id": "root",
+  "start_event_id": "start-audit-001",
+  "return_event_id": "return-audit-001",
+  "platform_run_id": "run-audit-001",
+  "parent_platform_run_id": "run-root-001",
+  "exported_by_platform": true,
+  "event_status": "RETURNED",
+  "started_at": "2026-07-19T09:02:00-07:00",
+  "returned_at": "2026-07-19T09:19:00-07:00"
+}

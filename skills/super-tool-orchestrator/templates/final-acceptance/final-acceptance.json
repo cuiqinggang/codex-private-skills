@@ -1,0 +1,22 @@
+{
+  "task_id": "",
+  "final_decision": "",
+  "original_goal": "",
+  "completed_scope": [],
+  "not_completed_scope": [],
+  "evidence": [],
+  "verification": [],
+  "safety_boundary_check": {
+    "secrets_touched": false,
+    "account_actions": false,
+    "production_config": false,
+    "long_lived_services": false,
+    "approval_required": false
+  },
+  "files_created_or_modified": [],
+  "scripts_run": [],
+  "known_limitations": [],
+  "handoff": "",
+  "evolution_candidates": [],
+  "final_verdict": ""
+}

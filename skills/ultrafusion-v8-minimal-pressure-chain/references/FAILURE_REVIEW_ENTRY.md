@@ -1,86 +1,183 @@
-# UltraFusion V8.2 Failure Review Entry
+# UltraFusion V8.2 失败复盘入口
 
-Use this file when a V8.2 run fails, feels shallow, produces unclear gain, or trips a gate.
+当 V8.2 运行变弱、变浅、变乱、模型分工错误、Gain 不清楚，或用户指出流程不对时，记录到这里。
 
-## Failure Template
+## 一、失败复盘模板
 
 ```text
-Date:
-Question_ID:
-Route:
+日期：
+问题编号：
+路线：
 
-Before_A_Route_Gate:
-- Matched_Count:
-- Route_Decision:
-- Should route have been different:
+Before-A 路由门：
+- 命中数量：
+- 路由决定：
+- 是否应该走另一条路线：
 
-Observed failure:
-- B became comments:
-- C became stitching:
-- C placeholder pass:
-- C conflict field empty/generic:
-- C weak evidence field empty/generic:
-- C duplicate compression unclear:
-- D became polishing:
-- SelfScore inflated:
-- Deduction empty/generic:
-- Balance only appeared at final D:
-- EARLY_WARNING missing in layer:
-- Deduction generic but SelfScore high:
-- Missing model fabricated:
-- Facts not checked:
-- Gain low or unknown:
-- EARLY_WARNING high after repair:
-- D_Final_Insurance_Check failed:
+模型分工检查：
+- 普通 GPT 直答基线是否存在：
+- A 层是否包含 GPT：
+- A 层是否包含 DeepSeek：
+- A 层是否包含千问：
+- B 层是否包含 GPT：
+- B 层是否包含 DeepSeek：
+- B 层是否包含千问：
+- C 层是否仅 GPT：
+- D 层是否仅 GPT：
+- 是否错误加入 Kimi：
+- 是否编造缺失模型答案：
 
-Gate code:
-- B_DEGRADATION_FAIL:
-- C_STITCHING_FAIL:
-- D_POLISHING_FAIL:
-- V8_QUALITY_FAIL:
+真实模型参与状态：
+- 运行状态是否标记：
+- 是否把 LIMITED_V8_2 误写成 FULL_V8_2：
+- 是否把 GPT_ONLY_V8_2 误写成完整三模型路线：
+- Codex 是否代替外部模型生成署名答案：
+- 是否缺少真实外部返回文本：
 
-Root cause:
+观察到的问题：
+- B 层变成评论：
+- C 层变成拼接：
+- C 层冲突字段空泛：
+- C 层弱证据字段空泛：
+- C 层重复压缩不清楚：
+- D 层变成润色：
+- 自评分虚高：
+- 具体扣分点为空或空泛：
+- 某层低于 8.5 但没有修复：
+- 低于 8.5 后只有口头修复，没有修复前 / 修复后对照：
+- 修复后版本摘要为空：
+- 修复后仍低于 8.5 但继续进入下一层：
+- 只有最终 D 层有平衡检查：
+- 某层缺少提前预警：
+- 事实没有查证：
+- Gain 低或未知：
+- 最终答案质量分（SCORE_FINAL）与 D 层执行自评分是否混用：
+- Gain 是否错误使用 D 层执行自评分：
+- 最终状态依据是否正确：
+- Score_0 是否在 A 层之前产生：
+- Score_0 是否被 A/B/C/D 污染：
+- Score_0 是否被外部模型内容污染：
+- 基线污染风险：
+- Gain 是否仍被当成精确值：
+- 提前预警高风险修复后仍未解决：
+- D 层最终保险检查失败：
 
-Repair rule for next run:
+门禁代码：
+- B 层退化失败：
+- C 层拼接失败：
+- D 层润色失败：
+- V8 质量失败：
 
-Should this task have used V7.0 instead:
+根因：
+下次修复规则：
+是否应该升级 V7：
 ```
 
-## Standing Repairs
+## 二、常驻修复规则
 
-- If Before-A matches fewer than 2 criteria, prefer `GPT_DIRECT`.
-- If B does not produce `B_ENHANCED_ANSWER`, invalidate B and rerun once.
-- If B is not standalone or is only a review, mark `B_DEGRADATION_FAIL` after one failed rerun.
-- If C lacks conflict handling, weak-evidence marking, duplicate compression, or D judgement points, invalidate C and rerun once.
-- If C fields are generic, empty, or only say "已处理 / 已标记 / 已压缩", mark `C_STITCHING_FAIL` and rerun once.
-- If C duplicate compression does not name source label, paragraph topic, or keywords, mark the density gate failed.
-- If C still fails, mark `C_STITCHING_FAIL`.
-- If D does not attack C before finalizing, invalidate D and rerun once.
-- If D only polishes language without attack, judgement, and repair, mark `D_POLISHING_FAIL`.
-- If `D_Final_Insurance_Check` has 0-1 YES after repair, mark `V8_QUALITY_FAIL` and recommend V7.
-- If a current fact, price, model status, law, policy, or product detail matters, browse/check primary sources before scoring.
-- If Deduction is empty or generic while SelfScore is high, lower the score or rewrite the scoring block.
-- If `Gain < 0.5`, admit low gain and prefer GPT direct for similar future tasks.
+### 1. 路由修复
 
-## Balance Failure Template
+- Before-A 命中少于 2 条时，优先 GPT 直答。
+- 如果任务需要完整外部基准评测、长审计、V15 或官方长 C/D 包，升级 V7。
+- 不要为了证明 V8 有用而硬拉长流程。
+
+### 2. 模型分工修复
+
+- 官方 V8.2 默认模型只有 GPT、DeepSeek、千问。
+- Kimi 不在默认 V8.2 路线里，除非用户明确点名。
+- 普通直答基线必须是 GPT。
+- A 层必须包含 GPT、DeepSeek、千问；缺失模型必须明确标记。
+- B 层必须包含 GPT、DeepSeek、千问；缺失模型必须明确标记。
+- C 层默认只由 GPT 执行。
+- D 层默认只由 GPT 执行。
+- 不得编造 DeepSeek 或千问的回答。
+
+### 3. 真实模型参与状态修复
+
+- 每次运行必须标记 FULL_V8_2 / LIMITED_V8_2 / GPT_ONLY_V8_2 / 未运行。
+- 没有真实外部回答文本，不得写 DeepSeek 或千问已参与。
+- LIMITED_V8_2 不能称为完整三模型 V8.2。
+- GPT_ONLY_V8_2 只能称为受限 V8.2 或 GPT 内部压力链。
+- Codex 只能编排、记录、检查和准备提示词，不得代替外部模型生成署名答案。
+
+### 4. B 层修复
+
+- 如果 B 层没有产生新的增强答案，判失败。
+- 如果 B 层不能独立交付，判失败。
+- 如果 B 层只是评论 A，判失败。
+- B 层失败后最多重跑一次。
+
+### 5. C 层修复
+
+- C 层必须处理冲突、弱证据、重复压缩和 D 层判断点。
+- 冲突字段不能只写“已处理”。
+- 弱证据字段不能只写“已标记”。
+- 重复压缩字段必须说明压缩了什么。
+- D 层判断点至少 2 个。
+- C 层失败后最多重跑一次。
+
+### 6. D 层修复
+
+- D 层必须先攻击 C，再修复，再交付最终答案。
+- 如果只是润色语言，判失败。
+- D 层必须做最终保险检查：
+  - 是否回答核心问题。
+  - 是否有可执行细节。
+  - 是否处理风险、边界和反例。
+- D 层必须区分最终答案质量分（SCORE_FINAL）和 D 层执行自评分。
+- Gain 只能使用 SCORE_FINAL 计算。
+
+### 7. 评分与真实修复修复
+
+- 每层必须先写具体扣分点，再写自评分，再写已经修复的地方。
+- 自评分低于 8.5，必须修复或重写一次。
+- 8.5 到 9.0 必须解释具体扣分和剩余风险。
+- 没有具体扣分点且没有扣分很少依据，自评分最高 7.0。
+- 只有空泛扣分点，自评分最高 8.0。
+- 有 1 个具体扣分点并说明影响、风险和修复，可以给 8.0 到 8.8。
+- 高分但扣分空泛，必须降分或重写。
+- 低于 8.5 后必须有修复前问题、修复方式、修复后版本摘要和修复后自评分。
+
+### 8. Score_0 与 Gain 修复
+
+- 做 V8.2 测试前必须有普通 GPT 直答基线。
+- Score_0 必须在 A 层之前产生。
+- Score_0 不能被 A/B/C/D 或外部模型内容反向修正。
+- 没有 Score_0，不得声称精确 Gain。
+- 基线污染风险为中或高时，Gain 只能作为参考值或未知。
+- 没有真实外部回答，不得声称外部模型参与。
+- Gain 低于 0.5，要承认低收益。
+- 如果任务本身不值得走链路，下次应回到 GPT 直答。
+
+### 9. 用户可审计修复
+
+- 用户要审核的提示词必须默认中文。
+- 不要使用只有英文的字段。
+- 必要模型名可以保留英文，例如 GPT、DeepSeek、Qwen。
+- 路线代号可以保留，但必须解释中文含义。
+- 不要加入多余复制边界。
+- 用户看不懂的内容，不应放入审核包。
+
+## 三、平衡失败复盘模板
 
 ```text
-Quality:
-- Did the answer become shallow or brittle:
-- Did B/C/D actually improve the answer:
-- Did Verdict = TOO_THIN require a warning:
+质量：
+- 答案是否变浅：
+- B/C/D 是否真的提升答案：
+- 是否有漏答、假、乱、废话：
 
-Architecture:
-- Which added gate was necessary:
-- Which added field was ceremony:
-- Did anything drift toward V7/V15:
+架构：
+- 哪个门禁是必要的：
+- 哪个字段只是仪式感：
+- 是否漂移到 V7 重流程：
 
-Speed:
-- Did the chain feel too slow for the task:
-- Could ceremony be reduced while keeping B/C/D duties:
+速度：
+- 这次是否太慢：
+- 哪些仪式字段可以删：
+- 是否还能保留 B/C/D 的质量职责：
 
-Decision:
-- Keep V8.2:
-- Simplify V8.2:
-- Upgrade to V7:
+决定：
+- 保留 V8.2：
+- 简化 V8.2：
+- 升级 V7：
 ```

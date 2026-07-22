@@ -1,0 +1,4 @@
+interface:
+  display_name: "智演PPT"
+  short_description: "一站式创建可编辑中文PPT、高级视觉展示、演讲稿与风格横评"
+  default_prompt: "Use $zhiyan-ppt to turn my materials into a complete, polished Chinese presentation."

@@ -1,0 +1,22 @@
+{
+  "counts": {
+    "active": 190,
+    "inactive": 4,
+    "ordinary": 181,
+    "unique_routed": 194
+  },
+  "required_directories": [
+    "skills",
+    "catalog",
+    "governance",
+    "tests",
+    "scripts",
+    "benchmarks",
+    ".github"
+  ],
+  "schema_version": "1.0",
+  "source_hash_algorithm": "sorted(relative_path + NUL + sha256(file_bytes)) aggregated with SHA-256",
+  "source_root_aliases": {
+    "C_SKILLS_ROOT": ".codex/skills"
+  }
+}

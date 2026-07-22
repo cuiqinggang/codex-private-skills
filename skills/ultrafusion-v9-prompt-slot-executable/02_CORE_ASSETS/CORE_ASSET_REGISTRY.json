@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "package_version": "UF-9.0.0-beta.1",
+  "mode": "READ_ONLY_DEPLOYMENT_MODE",
+  "assets": [
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+  ],
+  "source_materials": [
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+${REDACTED_SECRET}
+  ]
+}
+

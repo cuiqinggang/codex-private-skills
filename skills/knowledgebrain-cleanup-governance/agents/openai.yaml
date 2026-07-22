@@ -1,0 +1,4 @@
+interface:
+  display_name: "Knowledge Brain Cleanup"
+  short_description: "Safe manifest-backed cleanup."
+  default_prompt: "Use this skill to audit, archive, quarantine, and verify Knowledge Brain or skill-directory cleanup without permanent deletion."

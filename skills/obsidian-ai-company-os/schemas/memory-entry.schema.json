@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-company-os:memory-entry:v1",
+  "title": "AI Company OS lightweight durable memory entry",
+  "type": "object",
+  "required": ["stable_id", "source", "created_at", "updated_at", "status", "scope"],
+  "properties": {
+    "stable_id": {"type": "string", "pattern": "^mem-[a-z0-9][a-z0-9._-]{2,127}$"},
+    "source": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["candidate", "confirmed", "deprecated", "archived"]},
+    "scope": {"type": "string", "pattern": "^(global|project:[^\\s]+|workflow:[^\\s]+)$"},
+    "confidence": {"enum": ["confirmed", "observed", "inferred"]},
+    "supersedes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}

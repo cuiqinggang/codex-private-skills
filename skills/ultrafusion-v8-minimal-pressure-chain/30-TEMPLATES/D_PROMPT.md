@@ -1,101 +1,131 @@
-# UltraFusion V8.2 D Layer Prompt
+# UltraFusion V8.2 D 层提示词
 
 ```text
-You are executing UltraFusion V8.2 D layer: final judgement.
+请执行 V8.2 的 D 层：最终判断。
 
-Task:
-You are not a wording polisher. You are the final judge. First attack C_FUSION:
-check conclusions, premises, counterexamples, hallucination risk, over-promising,
-omissions, execution risk, uncertainty, and unresolved medium EARLY_WARNING items.
-Repair hard issues, downgrade claims when evidence is weak, and then deliver a user-ready
-Ultra_Answer_Final.
+D 层只由 GPT 执行。
+你不是润色员，而是最终审判者。
+必须先攻击 C 层候选答案，再修复，再输出最终答案。
 
-Original question Q:
+攻击重点：
+- 结论是否过度。
+- 前提是否站得住。
+- 是否遗漏反例。
+- 是否有幻觉风险。
+- 是否承诺过高。
+- 是否缺少执行细节。
+- 是否有未处理的不确定性。
+- 是否有上一层留下的中/高风险预警。
+
+原始问题：
 <<<Q>>>
 
-C_FUSION:
+C 层压力融合答案：
 <<<C_FUSION>>>
 
-Direct GPT baseline score Score_0:
-<<<SCORE_0 or UNKNOWN>>>
+普通 GPT 直答基线：
+- 普通 GPT 直答摘要：
+<<<GPT_DIRECT_BASELINE_SUMMARY 或 未提供>>>
 
-D_VALIDATION:
-- Attacked_C_FUSION_First: YES / NO
-- Hard_Issues_Found_Or_Explicitly_Cleared: YES / NO
-- Repairs_Applied: YES / NO
+- Score_0：
+<<<SCORE_0 或 未知>>>
 
-D rule:
-If Attacked_C_FUSION_First = NO, D is invalid and must rerun once.
-If this layer only polishes language without attack, judgement, or repair, mark D_POLISHING_FAIL.
+- Score_0 是否在 A 层之前产生：
+<<<是 / 否 / 未知>>>
 
-D_Rerun_Negative_Example:
-Wrong:
-- "下面是润色后的最终答案。"
-- "整体表达已优化，逻辑更清晰。"
-These are polishing, not D judgement.
+- Score_0 是否使用 A/B/C/D 内容：
+<<<是 / 否 / 未知>>>
 
-Correct:
-First attack C_FUSION, identify hard issues or explicitly clear them, repair them,
-then output Ultra_Answer_Final.
+- Score_0 是否使用外部模型内容：
+<<<是 / 否 / 未知>>>
 
-If D only polishes language, mark D_POLISHING_FAIL.
+- 基线污染风险：
+<<<无 / 低 / 中 / 高 / 未知>>>
 
-D_Final_Insurance_Check:
-- Answered_Core_Q: YES / NO
-- Has_Executable_Detail: YES / NO
-- Handles_Risk_Boundary_Counterexample: YES / NO
+D 层验证：
+- 是否先攻击 C：是 / 否
+- 是否发现或明确排除硬问题：是 / 否
+- 是否完成修复：是 / 否
 
-Insurance rule:
-3 YES = pass. 2 YES = pass with LIMITED. 0-1 YES = repair once.
-0-1 YES after repair = mark V8_QUALITY_FAIL and recommend V7.
+如果没有先攻击 C，本层失败，必须重跑一次。
+如果只是写“下面是润色后的最终答案”“整体表达已优化，逻辑更清晰”，这属于润色，不是 D 层判断，必须判为失败。
 
-Score_Consistency_Gate:
-- Must write Deduction before SelfScore and RepairDone.
-- If Deduction is empty (0 concrete items):
-  SelfScore MUST be <= 7.0.
-- If Deduction has only 1 concrete penalty item:
-  SelfScore MUST be <= 8.0.
-- If Deduction has 2+ concrete penalty items:
-  SelfScore MAY be 8.5+.
-- If Deduction is generic, such as "needs improvement" or "could be better"
-  without concrete issue, affected section, or repair action, treat it as 0 concrete items.
-- Final output must contain exactly one scoring block: Deduction / SelfScore / RepairDone.
+最终保险检查：
+- 是否回答核心问题：是 / 否
+- 是否有可执行细节：是 / 否
+- 是否处理风险、边界和反例：是 / 否
 
-Output:
-Judgement:
-- Issues found:
-- Repairs applied:
-- Remaining limits:
+保险规则：
+- 3 个“是”：通过。
+- 2 个“是”：有限通过。
+- 0-1 个“是”：修复一次。
+- 修复后仍只有 0-1 个“是”：V8 质量失败，建议升级 V7。
 
-Ultra_Answer_Final:
+评分和修复规则：
+1. 必须先写具体扣分点，再写自评分，再写已经修复的地方。
+2. 自评分低于 8.5，必须修复或重写一次，不能直接交付。
+3. 8.5 <= 自评分 < 9.0，可以通过，但必须写清具体扣分点和剩余风险。
+4. 没有具体扣分点，且没有说明“为什么扣分很少”的依据，自评分最高 7.0。
+5. 只有空泛扣分点，自评分最高 8.0。
+6. 有 1 个具体扣分点，并说明影响范围、剩余风险和是否已修复，可以给 8.0 到 8.8。
+7. 有 2 个或更多具体扣分点，并说明修复情况，可以给 8.5 以上。
+8. 如果确实没有发现明显扣分点，允许 8.5 以上，但必须写清依据和边界。
 
-D_Final_Insurance_Check:
-- Answered_Core_Q: YES / NO
-- Has_Executable_Detail: YES / NO
-- Handles_Risk_Boundary_Counterexample: YES / NO
+请按下面格式输出：
 
-D_VALIDATION:
-- Attacked_C_FUSION_First: YES / NO
-- Hard_Issues_Found_Or_Explicitly_Cleared: YES / NO
-- Repairs_Applied: YES / NO
+一、D 层攻击判断
+- 发现的问题：
+- 已经修复的地方：
+- 剩余限制：
 
-Balance:
-- Quality:
-- Architecture:
-- Speed:
-- Verdict: BALANCED / TOO_THIN / TOO_HEAVY / TOO_SLOW
+二、最终答案
 
-SCORE_FINAL:
-Gain: SCORE_FINAL - Score_0; if Score_0 is unknown, write UNKNOWN.
-Final_Status: STRONG_EFFECT / EFFECTIVE / SMALL_GAIN / LOW_GAIN / LIMITED / V8_QUALITY_FAIL / UNKNOWN
+三、最终保险检查
+- 是否回答核心问题：
+- 是否有可执行细节：
+- 是否处理风险、边界和反例：
 
-Deduction:
-SelfScore:
-RepairDone:
+四、D 层验证
+- 是否先攻击 C：
+- 是否发现或明确排除硬问题：
+- 是否完成修复：
 
-EARLY_WARNING:
-- Quality_Threat: none / low / medium / high
-- Balance: OK / WARN
-- Reason:
-- Action: continue / repair_once / stop_and_return / upgrade_to_V7
+五、质量、架构、速度平衡
+- 答案质量：
+- 架构复杂度：
+- 执行速度：
+- 结论：平衡 / 太薄 / 太重 / 太慢
+
+六、最终答案质量评分
+- 最终答案质量分（SCORE_FINAL）：
+- Score_0：
+- Gain = SCORE_FINAL - Score_0：
+- Gain 可信度：高 / 中 / 低 / 未知
+- 最终状态：强效果 / 有效 / 小收益 / 低收益 / 有限通过 / V8 质量失败 / 未知
+- 判断依据：
+- 如果基线污染风险为中或高：Gain 只作为参考值，不作为强验收依据。
+
+七、D 层执行自评分
+- 具体扣分点：
+- D 层执行自评分：
+- 已经修复的地方：
+- D 层流程是否合格：是 / 否
+
+注意：
+最终状态只依据最终答案质量分（SCORE_FINAL）和 Gain 判断，不依据 D 层执行自评分。
+
+八、真实修复对照
+- 修复触发：是 / 否
+- 修复前问题：
+- 修复方式：
+- 修复后版本摘要：
+- 修复后自评分：
+- 是否仍低于 8.5：是 / 否
+- 下一步动作：继续 / 再次失败停止 / 升级 V7
+
+九、提前预警
+- 质量风险：无 / 低 / 中 / 高
+- 平衡状态：通过 / 警告
+- 原因：
+- 下一步动作：继续 / 修复一次 / 停止并返回 / 升级到 V7
 ```

@@ -1,0 +1,1 @@
+{"package_id":"CP_B","asset_id":"CP_B","depends_on":["P_CORE","P_B","QUESTION","A_DRAFTS"],"output":"B_DRAFT","readonly":true}

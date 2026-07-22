@@ -1,0 +1,3 @@
+[
+  {"work_package_id":"WP-001","goal":"生成完整中文证据示例","declared_requirement_ids":["REQ-001"],"inputs":["十二层标准"],"dependencies":[],"required_skills":["ecc-four-role-loop-orchestration"],"skill_use_evidence":[{"skill":"ecc-four-role-loop-orchestration","used":true,"evidence_id":"E-SKILL","evidence":"读取SKILL.md和必读十二层标准并按合同生成产物"}],"executor_agent_id":"agent-execution","auditor_agent_id":"agent-audit","write_owner_scope":["ART-001"],"acceptance_criteria":["中文主文","十二层完整","证据可追踪"],"verification_evidence":["CHECK-001","CHECK-002"],"negative_cases":["删除一层时验证失败"],"rollback":"删除影子示例并恢复基线","stop_condition":"三轮返修仍不完整则阻塞","audit_accepted":true,"status":"PASS"}
+]

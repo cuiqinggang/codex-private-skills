@@ -1,0 +1,3 @@
+[
+  {"checkpoint_id":"CP-001","timestamp":"2026-07-19T09:18:00-07:00","layer_number":9,"work_package_ids":["WP-001"],"meaningful_progress":"完成正负检查和独立审计","artifact_delta":"新增ART-001及验收矩阵","command_or_test":"CHECK-001与CHECK-002","audit_decision":"CLAIM-001接受","evidence_ids":["E-CP"],"is_final":false}
+]

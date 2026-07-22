@@ -1,127 +1,194 @@
-# UltraFusion V8.2 Run Summary
+# UltraFusion V8.2 运行总结模板
 
-Question_ID:
-Route: GPT_DIRECT / UF_V8_ABCD_MIN
-Date:
-Models_Used:
-Limited_Model_Diversity: true / false
+问题编号：
+路线：GPT 直答 / V8.2 极简 ABCD 压力链
+日期：
+使用模型：
+模型多样性是否受限：是 / 否
 
-## V8_2_RC2_Checks
+## 一、模型分工
 
-- Before_A_Route_Gate:
-- A_EARLY_WARNING:
-- B_VALIDATION:
-- C_VALIDATION:
-- C_Content_Density_Gate:
-- D_VALIDATION:
-- D_Final_Insurance_Check:
-- Score_Consistency_Gate:
-- Final_Balance:
-- Need_Upgrade_To_V7:
+- 普通直答基线：GPT
+- A 层：GPT + DeepSeek + 千问
+- B 层：GPT + DeepSeek + 千问
+- C 层：GPT
+- D 层：GPT
+- Kimi 是否参与：否，除非用户明确点名
 
-## V8.2 Gate Trace
+## 二、真实模型参与状态
 
-Before_A_Route_Gate:
-- Multi_Objective_Tradeoff: YES / NO
-- More_Than_3_Constraints: YES / NO
-- Direct_Answer_Likely_Shallow: YES / NO
-- Wrong_Answer_Cost_High: YES / NO
-- User_Asked_High_Quality_Judgement: YES / NO
-- Matched_Count:
-- Route_Decision:
+- 运行状态：FULL_V8_2 / LIMITED_V8_2 / GPT_ONLY_V8_2 / 未运行
+- DeepSeek A 是否有真实返回文本：是 / 否
+- 千问 A 是否有真实返回文本：是 / 否
+- DeepSeek B 是否有真实返回文本：是 / 否
+- 千问 B 是否有真实返回文本：是 / 否
+- 缺失模型：
+- 缺失层级：
+- 是否允许称为完整三模型 V8.2：是 / 否
+- 是否存在伪多模型风险：是 / 否
 
-## Baseline
+## 三、V8.2-RC2 检查项
 
-Score_0:
+- Before-A 路由门：
+- A 层提前预警：
+- B 层验证：
+- C 层验证：
+- C 层内容密度门：
+- D 层验证：
+- D 层最终保险检查：
+- 评分一致性门：
+- 真实修复对照门：
+- 最终平衡：
+- 是否需要升级 V7：
 
-## Layer Scores
+## 四、Before-A 路由门
 
-A:
-B:
-C:
-D:
+- 是否需要多目标取舍：是 / 否
+- 是否超过 3 个约束：是 / 否
+- 普通直答是否容易浅：是 / 否
+- 答错成本是否高：是 / 否
+- 用户是否要求高质量判断：是 / 否
+- 命中数量：
+- 路由决定：
 
-## Layer Early Warnings
+## 五、普通 GPT 直答基线
 
-A_EARLY_WARNING:
-- Quality_Threat:
-- Balance:
-- Action:
-B_EARLY_WARNING:
-- Quality_Threat:
-- Balance:
-- Action:
-C_EARLY_WARNING:
-- Quality_Threat:
-- Balance:
-- Action:
-D_EARLY_WARNING:
-- Quality_Threat:
-- Balance:
-- Action:
+- 普通 GPT 答案摘要：
+- 基线分（Score_0）：
+- Score_0 是否在 A 层之前产生：是 / 否 / 未知
+- Score_0 是否使用 A/B/C/D 内容：是 / 否 / 未知
+- Score_0 是否使用外部模型内容：是 / 否 / 未知
+- 基线污染风险：无 / 低 / 中 / 高 / 未知
+- Gain 可信度：高 / 中 / 低 / 未知
+- 主要缺陷：
 
-## Anti-Degradation Validation
+## 六、各层得分
 
-B_VALIDATION:
-- Has_B_ENHANCED_ANSWER:
-- Is_Standalone_Answer:
-- Is_Only_Review:
-- Status: PASS / B_DEGRADATION_FAIL / NOT_RUN
+- A 层：
+- B 层：
+- C 层：
+- D 层执行自评分：
+- 最终答案质量分（SCORE_FINAL）：
+- 是否误把 D 层执行自评分当成 SCORE_FINAL：是 / 否
 
-C_VALIDATION:
-- Conflict_Handled:
-- Weak_Evidence_Marked:
-- Duplication_Compressed:
-- D_Judgement_Points_Listed:
-- Status: PASS / C_STITCHING_FAIL / NOT_RUN
+## 七、真实修复对照记录
 
-C_Content_Density_Gate:
-- Conflict_Field_Dense:
-- Weak_Evidence_Field_Dense:
-- Duplication_Compression_Clear:
-- D_Judgement_Points_Concrete_2Plus:
-- Status: PASS / C_STITCHING_FAIL / NOT_RUN
+A 层：
+- 是否触发修复：
+- 修复前问题：
+- 修复方式：
+- 修复后自评分：
+- 状态：
 
-D_VALIDATION:
-- Attacked_C_FUSION_First:
-- Hard_Issues_Found_Or_Explicitly_Cleared:
-- Repairs_Applied:
-- Status: PASS / D_POLISHING_FAIL / NOT_RUN
+B 层：
+- 是否触发修复：
+- 修复前问题：
+- 修复方式：
+- 修复后自评分：
+- 状态：
 
-D_Final_Insurance_Check:
-- Answered_Core_Q:
-- Has_Executable_Detail:
-- Handles_Risk_Boundary_Counterexample:
-- Status: PASS / LIMITED / V8_QUALITY_FAIL / NOT_RUN
+C 层：
+- 是否触发修复：
+- 修复前问题：
+- 修复方式：
+- 修复后自评分：
+- 状态：
 
-## Score Consistency
+D 层：
+- 是否触发修复：
+- 修复前问题：
+- 修复方式：
+- 修复后自评分：
+- 状态：
 
-Final_Scoring_Block_Count:
-Deduction_Concrete: YES / NO
-SelfScore_Adjusted_When_Deduction_Weak: YES / NO / NOT_NEEDED
-RepairDone_Clear: YES / NO
+## 八、逐层提前预警
 
-## Final
+A 层：
+- 质量风险：
+- 平衡状态：
+- 下一步动作：
 
-SCORE_FINAL:
-Gain:
-Final_Status: STRONG_EFFECT / EFFECTIVE / SMALL_GAIN / LOW_GAIN / LIMITED / V8_QUALITY_FAIL / FAILED / UNKNOWN
-Balance_Status: BALANCED / TOO_THIN / TOO_HEAVY / TOO_SLOW
+B 层：
+- 质量风险：
+- 平衡状态：
+- 下一步动作：
 
-## Balance
+C 层：
+- 质量风险：
+- 平衡状态：
+- 下一步动作：
 
-- Quality:
-- Architecture:
-- Speed:
-- Verdict:
-- Quality_Warning_If_TOO_THIN:
-- Rollback_Needed_If_TOO_HEAVY:
-- Speed_Action_If_TOO_SLOW:
+D 层：
+- 质量风险：
+- 平衡状态：
+- 下一步动作：
 
-## Notes
+## 九、防退化验证
 
-- Missing model:
-- Fact uncertainty:
-- Main gain:
-- Main residual risk:
-- Need V7.0 benchmark:
+B 层验证：
+- 是否产生增强答案：
+- 是否可独立交付：
+- 是否只是评论 A：
+- 状态：通过 / B 层退化失败 / 未运行
+
+C 层验证：
+- 是否处理冲突：
+- 是否标记弱证据：
+- 是否压缩重复：
+- 是否列出 D 层判断点：
+- 状态：通过 / C 层拼接失败 / 未运行
+
+C 层内容密度门：
+- 冲突字段是否具体：
+- 弱证据字段是否具体：
+- 重复压缩是否清楚：
+- D 层判断点是否至少 2 个：
+- 状态：通过 / C 层拼接失败 / 未运行
+
+D 层验证：
+- 是否先攻击 C：
+- 是否发现或明确排除硬问题：
+- 是否完成修复：
+- 状态：通过 / D 层润色失败 / 未运行
+
+D 层最终保险检查：
+- 是否回答核心问题：
+- 是否有可执行细节：
+- 是否处理风险、边界和反例：
+- 状态：通过 / 有限通过 / V8 质量失败 / 未运行
+
+## 十、评分一致性
+
+- 本层执行自评块数量：
+- D 层是否额外存在最终答案质量评分块：是 / 否 / 不适用
+- 具体扣分点是否明确：是 / 否
+- 扣分弱时是否下调自评分：是 / 否 / 不需要
+- 已修复内容是否清楚：是 / 否
+- 是否低于 8.5 后已修复一次：是 / 否 / 不需要
+
+## 十一、最终结果
+
+- 最终答案质量分（SCORE_FINAL）：
+- D 层执行自评分：
+- 提升值（Gain = SCORE_FINAL - Score_0）：
+- Gain 可信度：高 / 中 / 低 / 未知
+- 最终状态：强效果 / 有效 / 小收益 / 低收益 / 有限通过 / V8 质量失败 / 失败 / 未知
+- 平衡状态：平衡 / 太薄 / 太重 / 太慢
+
+## 十二、质量、架构、速度平衡
+
+- 质量：
+- 架构：
+- 速度：
+- 结论：
+- 如果太薄，质量警告是什么：
+- 如果太重，是否需要回滚：
+- 如果太慢，如何减负：
+
+## 十三、备注
+
+- 缺失模型：
+- 事实不确定性：
+- 主要收益：
+- 主要剩余风险：
+- 是否需要 V7.0 基准评测：

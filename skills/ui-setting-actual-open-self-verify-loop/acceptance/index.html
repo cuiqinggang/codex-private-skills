@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UI 实际打开自检闭环规则验收</title>
+  <style>
+    body { margin: 0; font-family: "Microsoft YaHei", Arial, sans-serif; background: #f7f7f4; color: #202124; }
+    main { max-width: 1080px; margin: 0 auto; padding: 32px 20px; }
+    h1 { font-size: 30px; margin: 0 0 10px; }
+    h2 { margin-top: 28px; border-bottom: 1px solid #d8d8d2; padding-bottom: 8px; }
+    .status { display: inline-block; padding: 6px 10px; border-radius: 6px; background: #176b3a; color: white; font-weight: 700; }
+    table { width: 100%; border-collapse: collapse; background: white; }
+    td, th { border: 1px solid #ddd; padding: 10px; vertical-align: top; }
+    code { background: #ecebe6; padding: 2px 5px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>UI 实际打开自检闭环规则验收</h1>
+    <p class="status">PASS</p>
+    <h2>材料来源</h2>
+    <p>用户在 2026-06-19 提供规则：<code>UI_SETTING_ACTUAL_OPEN_SELF_VERIFY_LOOP_RULE_V1</code>。</p>
+    <h2>已生成文件</h2>
+    <table>
+      <tr><th>文件</th><th>用途</th></tr>
+      <tr><td><code>SKILL.md</code></td><td>长期触发入口</td></tr>
+      <tr><td><code>sop/UI_SETTING_ACTUAL_OPEN_SELF_VERIFY_LOOP_SOP.md</code></td><td>执行流程</td></tr>
+      <tr><td><code>checklists/UI_SETTING_ACTUAL_OPEN_SELF_VERIFY_CHECKLIST.md</code></td><td>开工与验收清单</td></tr>
+      <tr><td><code>templates/UI_SETTING_ACTUAL_OPEN_VERIFY_REPORT_TEMPLATE.md</code></td><td>报告模板</td></tr>
+      <tr><td><code>reports/LESSON_EXTRACTION_20260619.md</code></td><td>经验提取</td></tr>
+      <tr><td><code>reports/AGENTS_PATCH_DRAFT.md</code></td><td>AGENTS 补丁草案</td></tr>
+      <tr><td><code>logs/RECENT_USE.md</code></td><td>最近使用记录</td></tr>
+    </table>
+    <h2>自动触发机制</h2>
+    <p>以后遇到软件界面设置、插件设置、中文化、模型选择、Provider 选择、工作区恢复、UI 面板打开等任务，必须先使用本技能，并同时使用截图证据。</p>
+    <h2>验收结论</h2>
+    <p>该规则已沉淀为本地 Codex 技能包。后续任务不能仅凭配置文件判断 PASS，必须实际打开软件、进入目标页面、截图、检查截图，并至少执行两轮验证。</p>
+  </main>
+</body>
+</html>

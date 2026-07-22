@@ -8,7 +8,7 @@ The user requested a new three-round test to verify whether the summarized metho
 
 ## Evidence Root
 
-`C:\Users\A\Desktop\1\output\XIAOLONGXIA-BOOT-REPLAY-3X-STRICT-METHOD-20260524`
+${REDACTED_SECRET}
 
 ## Confirmed Failures
 

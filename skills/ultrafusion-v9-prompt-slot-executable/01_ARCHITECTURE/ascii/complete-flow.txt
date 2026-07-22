@@ -1,0 +1,3 @@
+QUESTION -> A_INITIAL -> SEAL ----------------------\
+QUESTION -> A -> B -> C_FUSION -> D_FINAL -> LOCK -> VALUE_COMPARE
+

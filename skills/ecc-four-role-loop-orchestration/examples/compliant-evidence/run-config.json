@@ -1,0 +1,38 @@
+{
+  "task_id": "EXAMPLE-001",
+  "project_affiliation": "ECC中文闭环示例",
+  "task_type": "production",
+  "operation_type": "治理改进",
+  "size_tier": "standard标准任务",
+  "active_harnesses": ["Codex智能体运行环境"],
+  "formal_workspace": "C:\\AI\\example\\formal",
+  "shadow_workspace": "C:\\AI\\example\\shadow",
+  "evidence_workspace": "C:\\AI\\example\\evidence",
+  "formal_modification_authorized": true,
+  "production_goal_requires_writes": true,
+  "real_multi_agent_required": true,
+  "real_multi_agent_available": true,
+  "logical_isolation_can_satisfy_gate": false,
+  "required_roles": ["control", "materials", "execution", "audit"],
+  "time_budget_minutes": 120,
+  "minimum_runtime_minutes": 0,
+  "checkpoint_interval_minutes": 0,
+  "expected_duration_lower_minutes": 0,
+  "max_repair_rounds": 3,
+  "negative_case_required": true,
+  "authority_drive": "C",
+  "h_drive_mode": "history_only",
+  "k_drive_mode": "disabled",
+  "mature_component_review_required": true,
+  "mature_component_review": {
+    "routes_compared": ["ADOPT_DIRECTLY直接采用", "ADAPT_LIGHTLY小幅适配", "BUILD_FROM_SCRATCH从零自研"],
+    "selected_route": "ADAPT_LIGHTLY",
+    "reason": "保留原十二层并吸收阶段闭环，不从零改写"
+  },
+  "model_tool_route": {
+    "planned": ["Codex", "Python验证器"],
+    "actual": ["Codex", "Python验证器"],
+    "fallback_allowed": false,
+    "fallback_used": false
+  }
+}

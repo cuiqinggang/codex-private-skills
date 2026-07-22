@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UltraFusion V9.5.1｜A关量化验证站</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>UltraFusion V9.5.1｜A关压力—质量—成本全量证据验证站</h1>
+  <p>RC3 A关能力形成来源层｜能力验证执行器｜仅测试A关，不进入B关和C关</p>
+</header>
+<main>
+<section class="card capability-card" aria-labelledby="capabilityHeading">
+<div class="section-heading">
+  <div>
+    <p class="eyebrow">UF951_A_CAPABILITY_L3_SIMULATION_VALIDATED</p>
+    <h2 id="capabilityHeading">A关能力来源与当前成熟度</h2>
+  </div>
+  <span class="status-badge pass">L3｜模拟验证通过</span>
+</div>
+<p>本网站、十二道关口、压力与质量计算、十次模拟和证据矩阵共同构成 UltraFusion V9.5.1 A关能力来源层。当前只证明工具逻辑有效，不证明真实模型质量有效。</p>
+<div class="metric-strip">
+  <div><span>模拟检测</span><strong>10/10</strong></div>
+  <div><span>真实有效样本</span><strong id="validSampleMetric">0</strong></div>
+  <div><span>图片证据完整率</span><strong id="evidenceMetric">0%</strong></div>
+  <div><span>下一关口</span><strong>L4｜GPT三题真实烟雾测试</strong></div>
+</div>
+<div class="actions evidence-links" aria-label="验证证据">
+  <a class="button-link" href="README_先看这里.md">运行说明</a>
+  <a class="button-link" href="docs/A关正式量化测试合同_RC1.md">冻结量化合同</a>
+  <a class="button-link" href="docs/10轮站点系统测试报告_RC3.md">10轮系统测试报告</a>
+  <a class="button-link" href="docs/10轮站点系统测试结果_RC3.json">10轮结构化结果</a>
+  <a class="button-link" href="SHA256_文件校验清单.txt">文件校验清单</a>
+</div>
+<div class="grid capability-inputs">
+  <label>真实有效样本数<input id="validSamples" type="number" min="0" step="1" value="0"></label>
+  <label>决定性回退数<input id="decisiveRegressions" type="number" min="0" step="1" value="0"></label>
+  <label>冷启动成功次数<input id="coldStartPasses" type="number" min="0" step="1" value="0"></label>
+  <label class="check-label"><input id="independentReview" type="checkbox"> 独立匿名评审已完成</label>
+  <label class="check-label"><input id="humanReview" type="checkbox"> 人工复核已完成</label>
+</div>
+</section>
+
+<section class="card">
+<h2>一、测试合同与基本信息</h2>
+<div class="grid">
+<label>测试编号<input id="caseId" value="A-TEST-001"></label>
+<label>题目类型<input id="taskType" value="复杂决策题"></label>
+<label>模型<input id="model" value="GPT"></label>
+<label>模型工作强度<input id="strength" value="中等"></label>
+<label>联网状态<input id="networkStatus" value="按任务记录"></label>
+<label>独立评审器<input id="reviewer" value="新会话匿名评审"></label>
+<label>顺序策略<input id="orderPolicy" value="隐藏身份并交换顺序"></label>
+<label>提示词版本<input id="promptVersion" value="V15.1-A｜RC3只读镜像"></label>
+<label>固定时间预算（分钟）<input id="budget" type="number" step="0.1" value="6"></label>
+<label>最小可识别分差<input id="noise" type="number" step="0.1" value="1"></label>
+</div>
+<label>原始问题<textarea id="question"></textarea></label>
+<div class="actions">
+<button onclick="saveState()">保存当前测试</button>
+<button onclick="resetState()">清空并新建</button>
+<button onclick="exportJSON()">导出完整数据（JSON：结构化数据文件）</button>
+<button onclick="exportMarkdown()">导出中文报告</button>
+</div>
+</section>
+
+<section class="card prompt-card" aria-labelledby="promptHeading">
+<div class="section-heading">
+  <div>
+    <p class="eyebrow">正式源｜逐字节只读镜像</p>
+    <h2 id="promptHeading">二、V15.1-A 正式提示词</h2>
+  </div>
+  <span id="promptStatus" class="status-badge pending">正在核验</span>
+</div>
+<div class="source-grid">
+  <div><span>桌面只读源</span><code id="promptSourcePath">读取中</code></div>
+  <div><span>字符数</span><strong id="promptCharacters">—</strong></div>
+  <div><span>字节数</span><strong id="promptBytes">—</strong></div>
+  <div><span>SHA-256</span><code id="promptHash">—</code></div>
+</div>
+<label>正式提示词正文（只读）
+  <textarea id="officialPrompt" class="prompt-source" readonly aria-readonly="true" spellcheck="false"></textarea>
+</label>
+<div class="actions">
+  <button type="button" onclick="copyOfficialPrompt()">复制正式原文</button>
+  <button type="button" onclick="copyAssembledPrompt()">装配当前问题并复制</button>
+  <a class="button-link" href="assets/V15.1-A_正式只读提示词.txt" download>下载哈希锁定原文</a>
+</div>
+<p id="copyStatus" class="inline-note" role="status">源文件不会写入浏览器存储，也不能在本页编辑。</p>
+</section>
+
+<section class="card">
+<h2>三、模型原始回复与自动拆分</h2>
+<label>粘贴模型完整回复<textarea id="fullReply" placeholder="必须包含【A_RAW_BEGIN/END】、【A_PRESSURE_RECORD_BEGIN/END】、【A_FINAL_BEGIN/END】三个正式区块"></textarea></label>
+<button onclick="parseReply()">解析并拆分回复</button>
+<div id="parseStatus" class="status"></div>
+<div class="grid3">
+<label>A_Raw｜压力前原始答案<textarea id="raw"></textarea></label>
+<label>A_Final｜压力后最终强化答案<textarea id="final"></textarea></label>
+<label>A层极限压力记录<textarea id="pressureLog"></textarea></label>
+</div>
+</section>
+
+<section class="card">
+<h2>四、压力动作（实际完成才勾选）</h2>
+<div id="pressureActions"></div>
+<p>实际压力值：<strong id="pressureScore">0</strong> / 100</p>
+</section>
+
+<section class="card">
+<h2>五、质量评分</h2>
+<p>每个阶段分别填写五维分数。页面自动计算总质量分。</p>
+<div id="scoreTable"></div>
+</section>
+
+<section class="card">
+<h2>六、时间记录与固定时间最优点</h2>
+<div class="grid">
+<label>Q0累计时间（分钟）<input id="t0" type="number" step="0.1" value="2"></label>
+<label>QR累计时间（分钟）<input id="tr" type="number" step="0.1" value="2.5"></label>
+<label>Q1累计时间（分钟）<input id="t1" type="number" step="0.1" value="4"></label>
+<label>Q2累计时间（分钟）<input id="t2" type="number" step="0.1" value="6"></label>
+<label>QF累计时间（分钟）<input id="tf" type="number" step="0.1" value="7"></label>
+<label>人工主动操作时间（分钟）<input id="activeTime" type="number" step="0.1" value="3"></label>
+</div>
+<button onclick="calculateAndSave()">计算压力、质量和最佳性价比</button>
+<div id="calculation" class="result"></div>
+</section>
+
+<section class="card">
+<h2>七、硬性质量闸门</h2>
+<div class="grid">
+<label>关键事实错误数量<input id="factErrors" type="number" min="0" value="0"></label>
+<label>核心逻辑断裂数量<input id="logicBreaks" type="number" min="0" value="0"></label>
+<label>决定性要求遗漏数量<input id="criticalOmissions" type="number" min="0" value="0"></label>
+<label>重大虚构/风险/矛盾数量<input id="hallucinations" type="number" min="0" value="0"></label>
+</div>
+</section>
+
+<section class="card">
+<h2>八、十二道核心关口</h2>
+<div id="gates"></div>
+<button onclick="evaluateGates()">重新验收十二道关口</button>
+<div id="gateSummary" class="result"></div>
+</section>
+
+<section class="card">
+<h2>九、图片证据矩阵</h2>
+<p>真实测试时，每一项必须保存对应截图。当前页面生成证据槽位和完成状态。</p>
+<div id="evidenceMatrix"></div>
+</section>
+
+<section class="card">
+<h2>十、最终状态</h2>
+<div id="finalStatus" class="final-status">REVISE｜继续修订：等待完成十二道关口与真实证据</div>
+<div id="requiredOutput" class="result required-output">尚未生成完整量化输出。</div>
+<p class="note">十次模拟检测只能证明网站计算和异常检测有效，不能代替真实模型质量实验。</p>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

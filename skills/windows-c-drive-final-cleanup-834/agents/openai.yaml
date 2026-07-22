@@ -1,0 +1,7 @@
+interface:
+  display_name: "C Drive Final Cleanup 834"
+  short_description: "Safely slim Windows C drive before cloning while preserving AI tools."
+  default_prompt: "Use $windows-c-drive-final-cleanup-834 to run a protected final C drive cleanup before system disk cloning."
+
+policy:
+  allow_implicit_invocation: true

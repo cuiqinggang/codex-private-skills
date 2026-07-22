@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codex App 插件工作流技能包验收</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101114;
+      --panel: #17191f;
+      --line: #2d3340;
+      --text: #f2f4f8;
+      --muted: #aab2c0;
+      --accent: #79c0ff;
+      --ok: #8fd694;
+      --warn: #ffd166;
+      --risk: #ff8a8a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 36px 20px 56px;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 22px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+    p { margin: 0 0 12px; }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(143, 214, 148, .6);
+      color: var(--ok);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    section {
+      border-top: 1px solid var(--line);
+      padding: 22px 0;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 100%;
+    }
+    code {
+      color: var(--accent);
+      overflow-wrap: anywhere;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    th { color: var(--accent); }
+    tr:last-child td { border-bottom: 0; }
+    ul { margin: 0; padding-left: 20px; }
+    .warn { color: var(--warn); }
+    .risk { color: var(--risk); }
+    .ok { color: var(--ok); }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      th, td { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="status">PASS · 技能包已部署</div>
+      <h1>Codex App 插件工作流技能包验收</h1>
+      <p>来源视频主题：Codex App 十大开发插件与流程闭环。</p>
+      <p>部署位置：<code>H:\AI\skills\codex-app-plugin-workflow-orchestrator</code></p>
+    </header>
+
+    <section>
+      <h2>核心方法</h2>
+      <div class="card">
+        <p>不是照搬插件名单，而是沉淀一条可复用开发闭环：</p>
+        <p><code>需求/想法 -> Product Design -> Figma/截图/原型 -> Web/App 构建 -> 浏览器验证 -> 数据/后端规划 -> 部署 -> GitHub 协作 -> 可点击验收</code></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>能力矩阵</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>能力层</th>
+            <th>适合任务</th>
+            <th>当前优先级</th>
+            <th>安全调用方式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Product Design</td><td>产品路径、页面结构、仪表盘规划</td><td class="ok">高</td><td>先做设计拆解，再进入构建</td></tr>
+          <tr><td>Figma / Design-to-Code</td><td>有真实设计稿时还原页面</td><td>条件高</td><td>先能力检查，只读查看后再实现</td></tr>
+          <tr><td>Build Web Apps</td><td>HTML、React、可点击验收页</td><td class="ok">高</td><td>本地构建，本地浏览器验证</td></tr>
+          <tr><td>Chrome / Browser</td><td>截图、控制台、移动端视口验证</td><td class="ok">高</td><td>优先验证本地页面</td></tr>
+          <tr><td>GitHub</td><td>Issue、PR、代码审查、协作</td><td>中高</td><td>先只读，写入前单独授权</td></tr>
+          <tr><td>Supabase / Backend</td><td>表结构、API、Auth/RLS 方案</td><td>中</td><td>先写本地方案，不真实连接数据库</td></tr>
+          <tr><td>Deployment</td><td>Vercel/Netlify 发布</td><td>中</td><td>本地验收通过后再请求授权</td></tr>
+          <tr><td>Agentic Workflow</td><td>计划、TDD、Debug、交付闭环</td><td class="ok">高</td><td>复杂任务默认启用</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>AI Company Knowledge OS 推荐路线</h2>
+      <div class="grid">
+        <div class="card">
+          <h2>仪表盘 / 可点击入口</h2>
+          <p><code>Product Design -> Build Web Apps -> Browser -> Visual Proof</code></p>
+        </div>
+        <div class="card">
+          <h2>截图或设计稿还原</h2>
+          <p><code>Design Input -> Web Build -> Screenshot Compare -> Acceptance Page</code></p>
+        </div>
+        <div class="card">
+          <h2>GitHub 协作</h2>
+          <p><code>Read-only Check -> Findings -> Local Patch -> Ask Before Remote Write</code></p>
+        </div>
+        <div class="card">
+          <h2>数据库 / 后端</h2>
+          <p><code>Planning Only -> Schema Draft -> User Authorization -> Real Connection</code></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>需要后续授权</h2>
+      <ul>
+        <li>安装任何新插件。</li>
+        <li>连接 Figma、GitHub、Supabase、Vercel、Netlify 等账号。</li>
+        <li>使用 Token、云端写入、部署、PR/Issue 写入、数据库变更。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>防落灰检查</h2>
+      <div class="card">
+        <p class="ok">已绑定触发场景：Web App、页面还原、仪表盘、浏览器验证、GitHub、后端规划、部署闭环。</p>
+        <p class="ok">已写入安全边界：不盲装插件，不盲连账号，不做未授权云端写入。</p>
+        <p class="ok">已生成验收数据：<code>ACCEPTANCE\acceptance-data.json</code></p>
+        <p class="warn">预检脚本曾遇到 Windows 编码输出问题，但主要扫描已完成；该问题已在最终报告中记录。</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

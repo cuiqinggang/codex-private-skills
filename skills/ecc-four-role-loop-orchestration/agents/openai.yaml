@@ -1,0 +1,15 @@
+interface:
+  display_name: "ECC\u56DB\u89D2\u8272\u5341\u4E8C\u5C42\u95ED\u73AF"
+  short_description: "\u7528\u56DB\u4E2A\u72EC\u7ACB\u89D2\u8272\u6267\u884C\u5341\
+    \u4E8C\u5C42\u957F\u4EFB\u52A1\u95ED\u73AF\u3001\u6280\u80FD\u5173\u53E3\u4E0E\
+    \u9010\u9636\u6BB5\u9A8C\u6536"
+  default_prompt: "\u4F7F\u7528 $ecc-four-role-loop-orchestration \u6309\u5341\u4E8C\
+    \u5C42\u3001\u56DB\u89D2\u8272\u548C\u9636\u6BB5\u8FD4\u4FEE\u95ED\u73AF\u6267\
+    \u884C\u8FD9\u4E2A\u957F\u4EFB\u52A1\u3002"
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

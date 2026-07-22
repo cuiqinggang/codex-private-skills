@@ -117,7 +117,7 @@ while ((Get-Date) -lt $deadline) {
 }
 if (-not $ready) { throw 'DOCKER_DAEMON_NOT_READY_AFTER_240S' }
 
-Set-Location 'C:\Users\A\new-api-local'
+${REDACTED_SECRET}
 docker compose config --quiet
 docker compose up -d
 docker compose ps
@@ -161,7 +161,7 @@ Telegram state automatically at Windows login.
 
 Purpose: prove Docker, New API, Hermes, and Open WebUI are alive before changing anything.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -218,7 +218,7 @@ Failure recovery:
 
 Purpose: determine whether Hermes can generate an answer without Open WebUI.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -251,7 +251,7 @@ Failure recovery:
 
 Purpose: verify the streaming format that Open WebUI normally consumes.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -284,7 +284,7 @@ Failure recovery:
 
 Purpose: detect stale Open WebUI API bases and empty saved assistant messages.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -333,7 +333,7 @@ Recovery:
 
 Purpose: remove stale worker bases from Open WebUI while preserving the working Hermes base.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -408,7 +408,7 @@ Replace `YYYYMMDD-HHMMSS` with the printed backup suffix.
 
 Purpose: prove the repaired chain works and stale bases are no longer queried.
 
-Execution location: `C:\Users\A\Desktop\1`
+${REDACTED_SECRET}
 
 Command:
 
@@ -451,7 +451,7 @@ from pathlib import Path
 warnings.filterwarnings('ignore')
 con=sqlite3.connect('/app/backend/data/webui.db')
 uid=con.execute("select id from user where role='admin' limit 1").fetchone()[0]
-secret=Path('/app/backend/.webui_secret_key').read_text().strip()
+${REDACTED_SECRET}
 payload={'id': uid, 'exp': int(time.time()) + 1800, 'jti': str(uuid.uuid4())}
 print(jwt.encode(payload, secret, algorithm='HS256'))
 '@

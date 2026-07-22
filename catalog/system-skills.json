@@ -1,0 +1,54 @@
+{
+  "content_uploaded": 0,
+  "schema_version": "1.0",
+  "skills": [
+    {
+      "classification": "METADATA_ONLY_PROTECTED_SYSTEM",
+      "mtime_utc": "2026-07-19T03:41:48.716915+00:00",
+      "name": "imagegen",
+      "relative_identifier": ".system/imagegen",
+      "sha256": "613F892BA9259CBFCB44EE74E81587CC7CE288DE86AE2F1EAB5EACB190E34F58",
+      "version": "UNSPECIFIED"
+    },
+    {
+      "classification": "METADATA_ONLY_PROTECTED_SYSTEM",
+      "mtime_utc": "2026-07-19T03:41:48.756384+00:00",
+      "name": "openai-docs",
+      "relative_identifier": ".system/openai-docs",
+      "sha256": "F9BC031E9BD54A4659379B3FB0C09F0D8F81135D0770982FEBBE91836EF9EF03",
+      "version": "UNSPECIFIED"
+    },
+    {
+      "classification": "METADATA_ONLY_PROTECTED_SYSTEM",
+      "mtime_utc": "2026-07-19T03:41:48.774639+00:00",
+      "name": "plugin-creator",
+      "relative_identifier": ".system/plugin-creator",
+      "sha256": "40354D99CA66F16A8BD92B0E6B315B4CD773EBCB8A6348A70398A4B787B86213",
+      "version": "UNSPECIFIED"
+    },
+    {
+      "classification": "METADATA_ONLY_PROTECTED_SYSTEM",
+      "mtime_utc": "2026-07-19T03:41:48.798638+00:00",
+      "name": "review-agent",
+      "relative_identifier": ".system/review-agent",
+      "sha256": "BB46315F6BC4B7051C05F807D19B1689B20418AC6C42590406D805C10FA2FD1A",
+      "version": "UNSPECIFIED"
+    },
+    {
+      "classification": "METADATA_ONLY_PROTECTED_SYSTEM",
+      "mtime_utc": "2026-07-19T03:41:48.800638+00:00",
+      "name": "skill-creator",
+      "relative_identifier": ".system/skill-creator",
+      "sha256": "2940E08D49E5197453E58A4387D14CB07101B97911C992EF75C8289E0A1734C0",
+      "version": "UNSPECIFIED"
+    },
+    {
+      "classification": "METADATA_ONLY_PROTECTED_SYSTEM",
+      "mtime_utc": "2026-07-19T03:41:48.808637+00:00",
+      "name": "skill-installer",
+      "relative_identifier": ".system/skill-installer",
+      "sha256": "2892D8B2FB11631132118F340AED80AE17E59D5A571FC2C4F4A4A7E73F139D52",
+      "version": "UNSPECIFIED"
+    }
+  ]
+}

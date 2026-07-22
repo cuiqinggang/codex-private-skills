@@ -1,6 +1,0 @@
-interface:
-  display_name: "Virtual Mouse Keyboard Demo"
-  short_description: "Virtual input demo workflow"
-  default_prompt: "Use $virtual-mouse-keyboard-demo to inspect, update, troubleshoot, or demonstrate safe browser and desktop control."
-policy:
-  allow_implicit_invocation: true

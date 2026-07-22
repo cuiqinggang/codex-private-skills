@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "package": "UltraFusion_V9.5.1_ABC极限压力_选择性收敛_非回退审核技能包_RC2",
+  "required_files": [
+    "SKILL.md",
+    "README_先看这里.md",
+    "01_V9.5逻辑与量化合同.md",
+    "运行提示词/00_A_Initial零流程基线提示词.md",
+    "运行提示词/01_A层统一极限提示词.md",
+    "运行提示词/02_B层选择性强点收敛提示词.md",
+    "运行提示词/03_C层非回退强审核提示词.md",
+    "运行提示词/04_最终匿名质量与成本评测提示词.md"
+  ],
+  "required_runtime_strings": [
+    "A_FINAL_BEGIN",
+    "B_FINAL_BEGIN",
+    "C_FINAL_BEGIN",
+    "A_INITIAL_BEGIN",
+    "GPT",
+    "Qwen",
+    "DeepSeek",
+    "F25",
+    "U20",
+    "这是立即执行命令"
+  ],
+  "forbidden_runtime_strings": [
+    "Grok",
+    "xAI",
+    "Gemini",
+    "F30、L25、C20、D15、E10",
+    "A_GPT发散极限命令包",
+    "A_Qwen发散极限命令包",
+    "A_DeepSeek发散极限命令包"
+  ],
+  "prompt_char_limits": {
+    "运行提示词/00_A_Initial零流程基线提示词.md": 1200,
+    "运行提示词/01_A层统一极限提示词.md": 5200,
+    "运行提示词/02_B层选择性强点收敛提示词.md": 4300,
+    "运行提示词/03_C层非回退强审核提示词.md": 3800,
+    "运行提示词/04_最终匿名质量与成本评测提示词.md": 6500
+  },
+  "mirrors": [],
+  "pending": [
+    "真实端到端答案质量",
+    "真实总耗时与人工主动操作时间",
+    "评分器可靠增益线",
+    "多题A/B/C增益统计",
+    "HTML最小运行页"
+  ]
+}

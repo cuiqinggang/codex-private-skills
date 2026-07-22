@@ -1,0 +1,4 @@
+interface:
+  display_name: "独立开发者成功研究"
+  short_description: "用于研究人物、产品、赛道和失败模式，并输出证据分级与可复用结论"
+  default_prompt: "Use $solo-founder-success-research to research a solo founder with source grading and reusable lessons."

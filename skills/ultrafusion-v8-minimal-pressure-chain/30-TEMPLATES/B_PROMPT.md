@@ -1,76 +1,90 @@
-# UltraFusion V8.2 B Layer Prompt
+# UltraFusion V8.2 B 层提示词
 
 ```text
-You are executing UltraFusion V8.2 B layer: absorb and enhance.
+请执行 V8.2 的 B 层：吸收增强。
 
-Task:
-Read the original question Q and all valid A answers. Absorb strengths, repair omissions,
-handle conflicts, and produce a stronger standalone answer. B is not a review layer.
-Do not only comment on A1/A2/A3. The output must be a usable new answer.
+本层不是审稿意见。
+你的任务：
+1. 阅读原始问题。
+2. 阅读所有有效 A 层答案。
+3. 吸收优点。
+4. 修复遗漏。
+5. 处理冲突。
+6. 直接写出一份更强的、可独立交付的新答案。
 
-Original question Q:
+不要只写：
+- “A 稿整体不错，但还可以加强风险分析。”
+- “A 的结构清楚，但细节不足。”
+
+这种只是评论，不是 B 层增强答案。
+
+原始问题：
 <<<Q>>>
 
-A layer answers:
-<<<A_ANSWERS>>>
+A 层答案：
 
-B_VALIDATION:
-- Has_B_ENHANCED_ANSWER: YES / NO
-- Is_Standalone_Answer: YES / NO
-- Is_Only_Review: YES / NO
+GPT 的 A 层答案：
+<<<GPT_A_ANSWER>>>
 
-B rule:
-If Has_B_ENHANCED_ANSWER = NO, or Is_Standalone_Answer = NO, or Is_Only_Review = YES,
-B is invalid and must rerun once. If it still fails, mark B_DEGRADATION_FAIL.
+DeepSeek 的 A 层答案：
+<<<DEEPSEEK_A_ANSWER>>>
 
-B_Rerun_Negative_Example:
-Wrong:
-- "A 稿整体不错，但还可以加强风险分析。"
-- "A 的结构清楚，但细节不足。"
-These are comments, not B_ENHANCED_ANSWER.
+千问的 A 层答案：
+<<<QWEN_A_ANSWER>>>
 
-Correct:
-Directly write a stronger standalone answer that can be delivered to the user.
+B 层验证：
+- 是否产生增强答案：是 / 否
+- 是否可独立交付：是 / 否
+- 是否只是评论 A：是 / 否
 
-If B output is mainly comments about A, mark B_DEGRADATION_FAIL.
+如果没有产生增强答案，或不能独立交付，或只是评论 A，本层失败，必须重跑一次。
 
-Score_Consistency_Gate:
-- Must write Deduction before SelfScore and RepairDone.
-- If Deduction is empty (0 concrete items):
-  SelfScore MUST be <= 7.0.
-- If Deduction has only 1 concrete penalty item:
-  SelfScore MUST be <= 8.0.
-- If Deduction has 2+ concrete penalty items:
-  SelfScore MAY be 8.5+.
-- If Deduction is generic, such as "needs improvement" or "could be better"
-  without concrete issue, affected section, or repair action, treat it as 0 concrete items.
-- Final output must contain exactly one scoring block: Deduction / SelfScore / RepairDone.
+评分和修复规则：
+1. 必须先写具体扣分点，再写自评分，再写已经修复的地方。
+2. 自评分低于 8.5，必须修复或重写一次，不能进入下一层。
+3. 8.5 <= 自评分 < 9.0，可以通过，但必须写清具体扣分点和剩余风险。
+4. 没有具体扣分点，且没有说明“为什么扣分很少”的依据，自评分最高 7.0。
+5. 只有空泛扣分点，自评分最高 8.0。
+6. 有 1 个具体扣分点，并说明影响范围、剩余风险和是否已修复，可以给 8.0 到 8.8。
+7. 有 2 个或更多具体扣分点，并说明修复情况，可以给 8.5 以上。
+8. 如果确实没有发现明显扣分点，允许 8.5 以上，但必须写清依据和边界。
 
-Output:
-B_ENHANCED_ANSWER:
+请按下面格式输出：
 
-ComparedWithA:
-- Added:
-- Repaired:
-- Improved:
+一、B 层吸收增强答案
 
-B_VALIDATION:
-- Has_B_ENHANCED_ANSWER: YES / NO
-- Is_Standalone_Answer: YES / NO
-- Is_Only_Review: YES / NO
+二、相比 A 层的增强
+- 新增了什么：
+- 修复了什么：
+- 提升了什么：
 
-Balance:
-- Quality:
-- Architecture:
-- Speed:
+三、B 层验证
+- 是否产生增强答案：
+- 是否可独立交付：
+- 是否只是评论 A：
 
-Deduction:
-SelfScore:
-RepairDone:
+四、质量平衡
+- 答案质量：
+- 结构复杂度：
+- 执行速度：
 
-EARLY_WARNING:
-- Quality_Threat: none / low / medium / high
-- Balance: OK / WARN
-- Reason:
-- Action: continue / repair_once / stop_and_return / upgrade_to_V7
+五、自我评分
+- 具体扣分点：
+- 自评分：
+- 已经修复的地方：
+
+六、真实修复对照
+- 修复触发：是 / 否
+- 修复前问题：
+- 修复方式：
+- 修复后版本摘要：
+- 修复后自评分：
+- 是否仍低于 8.5：是 / 否
+- 下一步动作：继续 / 再次失败停止 / 升级 V7
+
+七、提前预警
+- 质量风险：无 / 低 / 中 / 高
+- 平衡状态：通过 / 警告
+- 原因：
+- 下一步动作：继续 / 修复一次 / 停止并返回 / 升级到 V7
 ```

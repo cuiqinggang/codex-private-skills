@@ -1,0 +1,1 @@
+{"schema_version":"1.0","mode":"READ_ONLY_DEPLOYMENT_MODE","loaded_asset_ids":["A_INITIAL","P_CORE","P_A","P_B","P_C","P_D","CP_A","CP_B","CP_C","CP_D"],"load_method":"exact-byte readonly copy plus source path registry","source_mutation_allowed":false,"status":"VERIFIED_READONLY","verification":"UF9_CORE_ASSETS_READONLY_PASS"}

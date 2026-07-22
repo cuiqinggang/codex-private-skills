@@ -2,7 +2,7 @@
 
 ## Source Project
 
-Original workspace found at `C:\Users\A\Desktop\1`.
+${REDACTED_SECRET}
 
 Important files:
 
@@ -43,7 +43,7 @@ Expected JSON includes:
   "ok": true,
   "result": "container browser OK: virtual mouse and keyboard",
   "webdriver": "http://127.0.0.1:4444",
-  "noVnc": "http://127.0.0.1:7900/?autoconnect=1&resize=scale&password=secret"
+${REDACTED_SECRET}
 }
 ```
 

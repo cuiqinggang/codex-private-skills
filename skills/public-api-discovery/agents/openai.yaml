@@ -1,0 +1,4 @@
+interface:
+  display_name: "公共 API 发现"
+  short_description: "从本地只读目录检索、筛选、比较并复核公共 API 候选"
+  default_prompt: "Use $public-api-discovery to find and compare suitable public APIs for my project."

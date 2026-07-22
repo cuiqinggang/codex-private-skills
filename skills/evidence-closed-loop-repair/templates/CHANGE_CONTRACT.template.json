@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "task_id": "REPLACE_WITH_TASK_ID",
+  "description": "用户确认的独立变更合同；不要从生成器导入真值",
+  "root": ".",
+  "exclude_globs": [
+    ".git/**",
+    "evidence/**",
+    "**/__pycache__/**"
+  ],
+  "text_encodings": [
+    "utf-8-sig",
+    "utf-8",
+    "utf-16",
+    "gb18030"
+  ],
+  "required": [
+    {
+      "id": "required-example",
+      "pattern": "Qwen（阿里千问）",
+      "mode": "literal",
+      "case_sensitive": true,
+      "scope_globs": [
+        "**/*.txt",
+        "**/*.md",
+        "**/*.py",
+        "**/*.html"
+      ],
+      "min_count": 1,
+      "max_count": null,
+      "check_filenames": true
+    }
+  ],
+  "forbidden": [
+    {
+      "id": "forbidden-grok",
+      "pattern": "Grok",
+      "mode": "literal",
+      "case_sensitive": false,
+      "scope_globs": [
+        "**/*"
+      ],
+      "max_count": 0,
+      "check_filenames": true
+    },
+    {
+      "id": "forbidden-xai",
+      "pattern": "xAI",
+      "mode": "literal",
+      "case_sensitive": false,
+      "scope_globs": [
+        "**/*"
+      ],
+      "max_count": 0,
+      "check_filenames": true
+    }
+  ],
+  "locked_files": [
+    {
+      "path": "path/to/locked/file.txt",
+      "sha256": "REPLACE_WITH_SHA256"
+    }
+  ],
+  "mirrors": [
+    {
+      "left": "0/template.txt",
+      "right": "1/template.txt",
+      "mode": "bytes"
+    }
+  ],
+  "derived_relations": [
+    {
+      "target": "07_B_command.txt",
+      "sources": [
+        "01_core.txt",
+        "03_B_prompt.txt"
+      ],
+      "mode": "concatenate",
+      "separator": ""
+    }
+  ],
+  "deliverables": [
+    {
+      "path": "final.zip",
+      "format": "zip",
+      "recursive": true,
+      "required": true
+    },
+    {
+      "path": "final.7z",
+      "format": "7z",
+      "recursive": true,
+      "required": false
+    }
+  ],
+  "semantic_checks": [
+    {
+      "id": "semantic-example",
+      "description": "最终审核层必须落实修复并输出可独立使用的最终答案",
+      "status": "PENDING_MANUAL_REVIEW"
+    }
+  ],
+  "pending_checks": [
+    "真实端到端质量增益",
+    "真实人工时间节省"
+  ]
+}

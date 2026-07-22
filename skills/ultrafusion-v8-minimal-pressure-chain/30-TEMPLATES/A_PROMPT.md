@@ -1,43 +1,61 @@
-# UltraFusion V8.2 A Layer Prompt
+# UltraFusion V8.2 A 层提示词
 
 ```text
-You are executing UltraFusion V8.2 A layer: independent extreme answer.
+请执行 V8.2 的 A 层：独立答案。
 
-Task:
-Answer the original question Q independently at the highest quality you can produce.
-Do not wait for other models. Do not fuse other answers. Directly answer the core question,
-then state goals, constraints, assumptions, risks, uncertainty, and executable detail.
+请直接回答下面的问题，给出一份独立、高质量、可执行的第一版答案。
 
-Original question Q:
+本层目标：
+- 先回答核心问题。
+- 给出完整方案，不写空泛原则。
+- 写清目标、约束、假设、风险、不确定性和执行步骤。
+- 如果涉及金融、法律、医疗、政策、价格、模型状态等会变化的信息，必须标注需要核查的地方。
+
+原始问题：
 <<<Q>>>
 
-Score_Consistency_Gate:
-- Must write Deduction before SelfScore and RepairDone.
-- If Deduction is empty (0 concrete items):
-  SelfScore MUST be <= 7.0.
-- If Deduction has only 1 concrete penalty item:
-  SelfScore MUST be <= 8.0.
-- If Deduction has 2+ concrete penalty items:
-  SelfScore MAY be 8.5+.
-- If Deduction is generic, such as "needs improvement" or "could be better"
-  without concrete issue, affected section, or repair action, treat it as 0 concrete items.
-- Final output must contain exactly one scoring block: Deduction / SelfScore / RepairDone.
+评分和修复规则：
+1. 必须先写具体扣分点，再写自评分，再写已经修复的地方。
+2. 自评分低于 8.5，必须修复或重写一次，不能直接交付。
+3. 8.5 <= 自评分 < 9.0，可以通过，但必须写清具体扣分点和剩余风险。
+4. 没有具体扣分点，且没有说明“为什么扣分很少”的依据，自评分最高 7.0。
+5. 只有空泛扣分点，例如“还有提升空间”“可以更好”“需要优化”，自评分最高 8.0。
+6. 有 1 个具体扣分点，并说明影响范围、剩余风险和是否已修复，可以给 8.0 到 8.8。
+7. 有 2 个或更多具体扣分点，并说明修复情况，可以给 8.5 以上。
+8. 如果确实没有发现明显扣分点，允许 8.5 以上，但必须写清覆盖了哪些关键要求、为什么扣分很少、仍有哪些边界条件、是否存在事实核查限制。
 
-Output:
-A_EXTREME_ANSWER:
+请按下面格式输出：
 
-Balance:
-- Quality:
-- Architecture:
-- Speed:
+一、第一版高质量答案
 
-Deduction:
-SelfScore:
-RepairDone:
+二、目标、约束和关键假设
 
-EARLY_WARNING:
-- Quality_Threat: none / low / medium / high
-- Balance: OK / WARN
-- Reason:
-- Action: continue / repair_once / stop_and_return / upgrade_to_V7
+三、风险、不确定性和需要核查的地方
+
+四、可执行步骤
+
+五、质量平衡
+- 答案质量：
+- 结构复杂度：
+- 执行速度：
+
+六、自我评分
+- 具体扣分点：
+- 自评分：
+- 已经修复的地方：
+
+七、真实修复对照
+- 修复触发：是 / 否
+- 修复前问题：
+- 修复方式：
+- 修复后版本摘要：
+- 修复后自评分：
+- 是否仍低于 8.5：是 / 否
+- 下一步动作：继续 / 再次失败停止 / 升级 V7
+
+八、提前预警
+- 质量风险：无 / 低 / 中 / 高
+- 平衡状态：通过 / 警告
+- 原因：
+- 下一步动作：继续 / 修复一次 / 停止并返回 / 升级到 V7
 ```

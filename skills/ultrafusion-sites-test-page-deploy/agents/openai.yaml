@@ -1,0 +1,4 @@
+interface:
+  display_name: "UltraFusion Sites 测试页发布"
+  short_description: "真实站点最小集成、五次虚拟测试与原网址版本发布复验"
+  default_prompt: "Use $ultrafusion-sites-test-page-deploy to safely integrate, test, and publish the next UltraFusion validation-page revision."

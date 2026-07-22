@@ -1,5 +1,15 @@
 # 截图识别并操作浏览器法
 
+## User-Calibrated Human Visible Rule
+
+For tasks involving visible buttons, labels, markers, screenshots, or coordinates,
+also apply `human-visible-coordinate-rule-20260701.md`.
+
+Default interpretation: if a human can see and operate the control, treat it
+first as a visual human-operation task. Use the latest screenshot to locate the
+target, convert it to a temporary coordinate or region only after recognition,
+perform one small action, and verify from the screen before continuing.
+
 ## Purpose
 
 This method lets an agent operate a browser from visible screen evidence instead

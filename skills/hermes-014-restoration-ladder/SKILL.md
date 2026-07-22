@@ -1,6 +1,6 @@
 ---
 name: hermes-014-restoration-ladder
-description: Use when restoring Windows native Hermes 0.14 from a minimal clean state toward Open WebUI, New API, Telegram, watchdog, or reboot persistence, especially after startup conflicts, disabled tasks, invalid DeepSeek keys, or multi-entry repair work.
+description: Use when restoring Windows native Hermes 0.14 from a minimal clean state toward Open WebUI, New API, Telegram, watchdog, reboot persistence, or auxiliary Google Gemini vision, especially after startup conflicts, disabled tasks, invalid DeepSeek keys, Gemini proxy/key/model failures, or multi-entry repair work.
 ---
 
 # Hermes 0.14 Restoration Ladder
@@ -12,23 +12,29 @@ Do not restore every integration at once.
 
 Work as a ladder:
 
-1. Stage 00: Hermes 8642 only, direct DeepSeek V4 Pro.
-2. Stage 01: Open the Hermes desktop panel through Open WebUI 3000.
+1. Stage 00 / G39: Hermes 8642 only, direct DeepSeek V4 Pro.
+2. Stage 01 / G40-G43: Open the Hermes desktop panel through Open WebUI 3000.
 3. Stage 02: Reconnect New API only when explicitly requested after Stage 01 passes.
 4. Stage 03: Reconnect Telegram only when explicitly requested after a known-good baseline. Record whether New API is included; the 2026-05-22 P3 baseline is Telegram-only from P1/P2 and does not include New API.
 5. Stage 04a: Add the silent 8642 healthcheck lifeline only.
-6. Stage 04b: Add desktop/Open WebUI auto-open after 8642 lifeline is mature.
+6. Stage 04b / G44: Add desktop/Open WebUI auto-open after 8642 and Open WebUI are mature.
+7. Stage 05: Google Gemini vision is frozen as backup only; daily image understanding defaults to GPT/ChatGPT, and this stage must not reconnect New API, Telegram, Docker, or watchdog layers.
 
 Each stage must have:
 
 - a known previous state
 - exact PowerShell gates
-- artifact logs under `C:\Users\A\Desktop\1\output`
+${REDACTED_SECRET}
 - pass/fail evidence
 - no printed secrets
 - no deletion of old files unless the user explicitly asks
 
 ## Required References
+
+- Read
+${REDACTED_SECRET}
+  when restoring or checking the accepted 2026-06-07 Hermes 8642, Docker,
+  Open WebUI 3000, Telegram, and login autostart chain.
 
 - Read `references/stage-00-minimal-deepseek.md` when the goal is to return
   Hermes to the minimal DeepSeek-only state or recover from DeepSeek 401.
@@ -40,6 +46,10 @@ Each stage must have:
 - Read `references/stage-03-telegram-restored-20260522.md` when continuing from
   the P1/P2 baseline after Telegram has been manually restored without New API,
   Watchdog, AutoRecover, or reboot persistence.
+- Read `references/incident-2026-05-25-telegram-router-3001-502.md` when
+  Telegram complex/Pro turns intermittently fail with HTTP 502 and logs show
+  `base_url=http://127.0.0.1:3001/v1` even though the intended stack is direct
+  DeepSeek official routing.
 - Read `references/stage-04-8642-silent-healthcheck-20260522.md` when the user
   asks to keep Hermes 8642 alive silently every 1-2 minutes without restoring
   New API, old Watchdog, AutoRecover, or desktop browser autostart.
@@ -49,10 +59,21 @@ Each stage must have:
 - Read `references/stage-04b-openwebui-autoopen-build-runbook-20260522.md` when
   the user asks how Stage 04b was built, how to reproduce it, where the scripts
   are stored, or how to verify/rollback the auto-open flow after a reboot.
+- Read `references/incident-2026-06-02-stage04b-0152-autoopen-repair.md` when
+  Stage 04b is stuck after Hermes 0.15.2, `/v1/models` logs invalid API key,
+  or a visible `Hermes_Gateway.cmd` console appears after login.
+- Read `references/stage-05-google-gemini-vision-restore-20260522.md` when the
+  user asks to restore Hermes image reading, Gemini vision, `vision_analyze`,
+  or Google AI Studio vision routing.
 
 Stages not named in the selected reference remain unrestored, even if another
 stage has passed. Do not infer New API or reboot persistence from the
 Telegram-only P3 reference.
+
+Stage 00 is the Windows Native Hermes 8642 mainline. Do not require BIOS
+firmware virtualization, WSL2, Docker Desktop, `open-webui-clean`, or Open WebUI
+`3000` to pass Stage 00. Open WebUI `3000` remains Stage 01 and should be
+preserved for the next-stage web panel route.
 
 ## Stop Conditions
 
@@ -68,13 +89,26 @@ Stop and report the narrow failing layer if:
 
 ## Common Mistakes
 
+- Do not collapse G39 Hermes 8642, G40/G43 Open WebUI 3000, G41/G42
+  Docker/WSL2, and G44 autostart into one pass/fail condition. Report the
+  narrow failing layer.
+- Do not treat the visible Docker Desktop window as the Docker Engine. The
+  engine can be running in the background; verify with `wsl -l -v`, `docker ps`,
+  container health, and HTTP 3000.
 - Do not treat current service health as reboot persistence proof.
 - Do not re-enable Startup entries or scheduled tasks during Stage 00 or Stage 01.
 - Do not run New API or Telegram checks while restoring only the panel layer.
 - Do not treat the 2026-05-22 Telegram-only P3 restore as proof that New API,
   Watchdog, AutoRecover, or login autostart are active.
+- Do not reconnect abandoned New API `3001` to fix Telegram Pro-route 502s in
+  the direct-DeepSeek stack; first inspect `telegram_model_router` session
+  overrides.
 - Do not mix the 8642 silent healthcheck with desktop/Open WebUI autostart; that
   is a later stage.
 - Do not use broad process killing without excluding the current PowerShell
   process and verifying 8642 afterward.
 - Do not preserve an invalid DeepSeek key just because `/v1/models` still works.
+- Do not treat Gemini 429 as a region/proxy failure; first classify it as quota
+  or model allocation.
+- Do not debug Gemini timeouts before confirming the Gateway process inherited
+  `HTTPS_PROXY` / `HTTP_PROXY` / `ALL_PROXY`.

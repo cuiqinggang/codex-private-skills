@@ -1,0 +1,88 @@
+{
+  "input": {
+    "name": "09_冷启动恢复",
+    "scores": {
+      "q0": {
+        "F": 78,
+        "L": 78,
+        "C": 78,
+        "D": 78,
+        "U": 78
+      },
+      "qr": {
+        "F": 80,
+        "L": 80,
+        "C": 80,
+        "D": 80,
+        "U": 80
+      },
+      "q1": {
+        "F": 86,
+        "L": 86,
+        "C": 86,
+        "D": 86,
+        "U": 86
+      },
+      "q2": {
+        "F": 89,
+        "L": 89,
+        "C": 89,
+        "D": 89,
+        "U": 89
+      },
+      "qf": {
+        "F": 89,
+        "L": 89,
+        "C": 89,
+        "D": 89,
+        "U": 89
+      }
+    },
+    "times": {
+      "q0": 2,
+      "qr": 2.5,
+      "q1": 4,
+      "q2": 6,
+      "qf": 7
+    },
+    "hard": {
+      "fact": 0,
+      "logic": 0,
+      "omission": 0,
+      "hallucination": 0
+    },
+    "actions": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "budget": 6,
+    "noise": 1.0,
+    "format_ok": true,
+    "echo": false,
+    "export_ok": true,
+    "cold_ok": true,
+    "expected": "PASS"
+  },
+  "result": {
+    "scores": {
+      "q0": 78.0,
+      "qr": 80.0,
+      "q1": 86.0,
+      "q2": 89.0,
+      "qf": 89.0
+    },
+    "pressure": 100,
+    "hard": true,
+    "best": "q2",
+    "effective": "q2",
+    "external_gain": 11.0,
+    "internal_gain": 9.0,
+    "observed": "PASS",
+    "expected": "PASS",
+    "match": true
+  }
+}

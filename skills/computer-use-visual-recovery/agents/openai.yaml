@@ -1,0 +1,4 @@
+interface:
+  display_name: "Computer Use Visual Recovery"
+  short_description: "Restore screenshot-guided human-like UI control."
+  default_prompt: "Use $computer-use-visual-recovery to restore and verify screenshot-guided Computer Use UI operation."
