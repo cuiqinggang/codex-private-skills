@@ -1,0 +1,89 @@
+name: Windows candidate native validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'candidate-skills/**'
+      - '.github/workflows/windows-candidate-native.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-native-static:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+
+      - name: Run cross-platform fixtures on Windows
+        shell: pwsh
+        run: |
+          python candidate-skills/resume-windows-task-after-reboot/scripts/test_reboot_resume_adapter.py
+          python candidate-skills/remove-stubborn-windows-software/scripts/test_stubborn_software_removal.py
+          python candidate-skills/test-windows-software-safely/scripts/test_windows_software_lab.py
+
+      - name: Parse every PowerShell script with the native parser
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $files = Get-ChildItem candidate-skills -Recurse -Filter *.ps1
+          if (-not $files) { throw 'No PowerShell files found.' }
+          foreach ($file in $files) {
+            $tokens = $null
+            $errors = $null
+            [void][System.Management.Automation.Language.Parser]::ParseFile($file.FullName, [ref]$tokens, [ref]$errors)
+            if ($errors.Count) {
+              $errors | Format-List | Out-String | Write-Error
+              throw "PowerShell parse failed: $($file.FullName)"
+            }
+            Write-Host "PARSE_PASS $($file.FullName)"
+          }
+
+      - name: Run native read-only and preview behavior tests
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $root = Join-Path $env:RUNNER_TEMP 'windows-candidate-native'
+          New-Item -ItemType Directory -Path $root -Force | Out-Null
+
+          $inventoryScript = 'candidate-skills/remove-stubborn-windows-software/scripts/Get-StubbornSoftwareInventory.ps1'
+          $planScript = 'candidate-skills/remove-stubborn-windows-software/scripts/New-StubbornSoftwareRemovalPlan.ps1'
+          $invokeRemoval = 'candidate-skills/remove-stubborn-windows-software/scripts/Invoke-StubbornSoftwareRemoval.ps1'
+          $inventory = Join-Path $root 'inventory.json'
+          $plan = Join-Path $root 'plan.json'
+          $approval = Join-Path $root 'approved-publishers.json'
+          '{"schemaVersion":1,"publishers":[]}' | Set-Content -LiteralPath $approval -Encoding UTF8
+          & $inventoryScript -DisplayName 'OpenAI-Definitely-Absent-Fixture' -Publisher 'OpenAI-Fixture' -OutputPath $inventory | Out-Null
+          $planHash = & $planScript -InventoryPath $inventory -OutputPath $plan -ApprovedPublisherThumbprintsPath $approval
+          $preview = & $invokeRemoval -PlanPath $plan -ApprovePlanHash $planHash
+          if ($preview.mode -ne 'Preview' -or $preview.completion -ne 'NOT_VERIFIED_REINVENTORY_REQUIRED') {
+            throw 'Removal preview contract failed.'
+          }
+
+          $adapter = (Resolve-Path 'candidate-skills/resume-windows-task-after-reboot/scripts/Invoke-RebootResumeAdapter.ps1').Path
+          $entry = Join-Path $root 'fixture-entry.ps1'
+          'param([string]$ResumeStatePath); exit 0' | Set-Content -LiteralPath $entry -Encoding UTF8
+          $entryHash = (Get-FileHash -LiteralPath $entry -Algorithm SHA256).Hash.ToLowerInvariant()
+          $manifest = Join-Path $root 'entrypoints.json'
+          @{entryPoints=@(@{id='fixture';scriptPath='fixture-entry.ps1';sha256=$entryHash})} | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $manifest -Encoding UTF8
+          $adapterHash = (Get-FileHash -LiteralPath $adapter -Algorithm SHA256).Hash.ToLowerInvariant()
+          $installPreview = & $adapter -Action Install -ConfigPath "$env:ProgramData\RebootResumeAdapter\config.json" -StatePath "$env:ProgramData\RebootResumeAdapter\state.json" -EntryPointManifestPath $manifest -CodeCommit 'github-actions-candidate' -PackageSha256 $adapterHash -WhatIf
+          if ($installPreview.status -ne 'INSTALLED') { throw 'Adapter install preview contract failed.' }
+
+          & 'candidate-skills/resume-windows-task-after-reboot/scripts/Test-RebootResumeAdapter.ps1' | Tee-Object -Variable fixtureOutput
+          if ($fixtureOutput -notcontains 'FIXTURE_ARMED_FOR_REBOOT_1') { throw 'Native reboot fixture phase 0 failed.' }
+
+          Write-Host 'WINDOWS_NATIVE_PREVIEW_PASS'
+
+      - name: Upload native validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-candidate-native-evidence
+          path: ${{ runner.temp }}/windows-candidate-native
+          if-no-files-found: warn
+          retention-days: 7
