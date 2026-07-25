@@ -1,6 +1,12 @@
 name: Windows candidate native validation
 
 on:
+  push:
+    branches:
+      - agent/windows-reboot-uninstall-vm-candidate
+    paths:
+      - 'candidate-skills/**'
+      - '.github/workflows/windows-candidate-native.yml'
   pull_request:
     branches: [main]
     paths:
