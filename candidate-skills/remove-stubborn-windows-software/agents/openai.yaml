@@ -1,0 +1,4 @@
+interface:
+  display_name: "顽固软件安全卸载"
+  short_description: "证据驱动地卸载顽固 Windows 软件并复验残留"
+  default_prompt: "Use $remove-stubborn-windows-software to audit and safely plan removal of this stubborn Windows application."
