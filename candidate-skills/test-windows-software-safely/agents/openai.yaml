@@ -1,0 +1,4 @@
+interface:
+  display_name: "Windows 软件安全虚拟测试"
+  short_description: "在隔离 Hyper-V 虚拟机中测试软件、重启与回滚"
+  default_prompt: "Use $test-windows-software-safely to design and run this Windows software test in an isolated Hyper-V VM."
