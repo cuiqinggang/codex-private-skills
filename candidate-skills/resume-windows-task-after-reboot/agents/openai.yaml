@@ -1,0 +1,4 @@
+interface:
+  display_name: "跨重启任务续接"
+  short_description: "安全保存状态并在 Windows 重启后准确续接任务"
+  default_prompt: "Use $resume-windows-task-after-reboot to make this Windows task resume safely after reboot."
