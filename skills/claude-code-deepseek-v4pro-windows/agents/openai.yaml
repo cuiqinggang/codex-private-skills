@@ -1,4 +1,7 @@
 interface:
-  display_name: "Windows Ô­Éú Claude Code ½ÓÈë DeepSeek V4 Pro"
-  short_description: "¸´ÏÖ Windows Claude Code ½ÓÈë DeepSeek V4 Pro µÄ°²×°¡¢ÅäÖÃ¡¢ÑéÖ¤Á÷³Ì"
-  default_prompt: "Use $claude-code-deepseek-v4pro-windows to install or verify Windows-native Claude Code with DeepSeek V4 Pro."
+  display_name: "Windows Claude Code â†’ DeepSeek V4 Pro"
+  short_description: "æ¢å¤å¹¶éªŒè¯ Cursor å†… Claude Code çš„ DeepSeek V4 Pro è·¯çº¿"
+  default_prompt: "Use $claude-code-deepseek-v4pro-windows to restore and visibly verify Cursor Claude Code through DeepSeek V4 Pro without enabling Claude official models."
+
+policy:
+  allow_implicit_invocation: true
