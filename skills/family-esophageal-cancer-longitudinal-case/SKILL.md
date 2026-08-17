@@ -1,7 +1,7 @@
 ---
 name: family-esophageal-cancer-longitudinal-case
 description: 持续维护柴爱菊食管癌、吞咽困难、营养通道与后续护理的完整真实病例。用于新增检查、对比病情、整理医生沟通、评估鼻胃管与胃造瘘方案、费用医保及本地维护。不得匿名化患者姓名和既有医疗编号；不得把推测写成已确诊事实。
-version: 1.1.1
+version: 1.2.0
 status: candidate
 updated: 2026-08-16
 ---
@@ -36,6 +36,7 @@ updated: 2026-08-16
 - 营养通道方案与风险：`references/nutrition-access-plan.md`
 - 决策与待办：`references/decision-log.md`
 - 更新规范：`references/update-protocol.md`
+- 武汉住院约一周准备清单：`references/one-week-wuhan-hospital-plan.md`
 
 ## 5. 每次更新的标准输出
 
