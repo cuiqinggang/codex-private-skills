@@ -26,3 +26,10 @@
 其默认“没有技能就自行实现”的建议在本流程不采用；改查解决同一核心问题的成熟原项目或官方办法。
 
 mature-capability-growth-radar（成熟能力增长雷达）是另一已存在技能，面向组合能力升级及收益验证；它不是本流程每个任务的搜索前置条件，当前使用轻量的 find-skills 即可。
+
+## Reasonix 模型与资源控制（0.3.0新增）
+
+用户截图已确认工具为Reasonix：模型菜单可见deepseek-v4-flash、deepseek-v4-pro等，力度菜单可见auto、disabled、low、high、max。它们是界面快照，不是本轮实际服务能力或调用成功证据。
+绑定时新增记录：当前Reasonix版本、当前可用模型ID/供应商、每模型允许的力度、选定模型/力度的会话或请求入口、工具/技能作用域、智能体分派与回执入口。
+当前界面的“询问／自动／Yolo”属于权限/操作模式，不与推理力度混用，不为本次资源测试切换该模式。
+读取 [reasonix-resource-control.md](reasonix-resource-control.md) 落实具体能力，复用已有Reasonix适配器，不重建UI或模型路由服务。
