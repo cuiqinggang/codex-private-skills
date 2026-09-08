@@ -1,4 +1,4 @@
 interface:
   display_name: "成熟成功态逆向自动化"
-  short_description: "复用成熟方案，按任务路由智能体，以可见成果对照驱动自动执行和最小适配"
-  default_prompt: "使用 $mature-outcome-automation 处理我的问题：先定义成功结果，复用成熟技能，按难度路由，并展示成果对照后自动执行。"
+  short_description: "组合现成资源调度、专用浏览器和技能搜索，自动检查命令并执行，按需查看进度"
+  default_prompt: "使用 $mature-outcome-automation 自动处理我的问题：复用现有资源总调度、专用浏览器与 find-skills，编写命令时使用质量门禁，无需等待我查看方案。"
