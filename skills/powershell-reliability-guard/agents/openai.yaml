@@ -1,0 +1,14 @@
+interface:
+  display_name: PowerShell 本机防错守卫
+  short_description: Fail-closed PowerShell execution and verified error learning
+  default_prompt: Use $powershell-reliability-guard to run this PowerShell task through
+    the fail-closed gate and archive any verified repair.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
