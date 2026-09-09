@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI Resource Orchestrator 2.0 Core"
+  short_description: "按质量、成本和风险选择最低充分的AI执行路径"
+  default_prompt: "Use $ai-resource-orchestrator to route and complete this task with the lowest sufficient cost and reasoning effort."
+policy:
+  allow_implicit_invocation: true
+
