@@ -1,0 +1,14 @@
+{
+  "name": "reasonix-empty-session-race-repair",
+  "version": "1.0.0",
+  "reasonix_target": "v1.38.7",
+  "reasonix_commit": "036c7c50c5c154f747419aee6b75667f9044c8fa",
+  "patch_scope": "frontend-only",
+  "primary_source": "desktop/frontend/src/lib/useController.ts",
+  "regression_test": "desktop/frontend/src/__tests__/new-session-load-race.test.tsx",
+  "browser_skill": "playwright-native-ai-browser",
+  "final_status": "PASS",
+  "original_bundle_sha256": "7E86A114D23662F691A1BB95F78E7EC4924441705ACE46CC221D9EB843BD8DBD",
+  "hotfix_bundle_sha256": "5C5C6C26DA638680F63533CFC9A234A38F327697C8D1967ED3BEB4681A131447",
+  "source_patch_sha256": "AA892F1D19059941BB17BFFE373537B049C58FB67C08BE535DD747A774B8A7D4"
+}
