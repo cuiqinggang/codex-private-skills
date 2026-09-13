@@ -1,0 +1,35 @@
+{
+  "name": "reasonix-fault-repair",
+  "version": "1.0.0",
+  "chinese_name": "Reasonix 故障诊断与成熟修复",
+  "entrypoint": "SKILL.md",
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "DECISION-TREE.md",
+    "RECURRENCE-RUNBOOK.md",
+    "ACCEPTANCE.md",
+    "VERSION",
+    "cases/empty-session-race.md",
+    "cases/startup-readiness-timeout.md"
+  ],
+  "compatibility": {
+    "legacy_skill": "skills/reasonix-empty-session-race-repair",
+    "legacy_skill_preserved": true
+  },
+  "validated_cases": [
+    {
+      "id": "empty-session-race",
+      "status": "PASS",
+      "patch_required": true,
+      "runtime_acceptance": "PASS"
+    },
+    {
+      "id": "startup-readiness-timeout",
+      "status": "PASS",
+      "classification": "TRANSIENT_COLD_START_ANOMALY",
+      "patch_required": false,
+      "regression": "2/2_PASS"
+    }
+  ]
+}
