@@ -1,16 +1,52 @@
-# Visual Art Engine Performance Ladder — Shared Workspace
+# 通用高性能视觉作品生成引擎 — 共同办公区
 
-This directory is the shared evidence/report workspace for `visual-art-engine-performance-ladder`.
+英文标识：`Visual Art Engine Performance Ladder — Shared Workspace`
 
-## Purpose
+本目录用于 `visual-art-engine-performance-ladder`（通用高性能视觉作品生成引擎性能阶梯）在 P0→P8 快速迭代期间，作为 ChatGPT 与 Codex 的共同证据、报告和审核工作区。
 
-Use this workspace for cross-session handoff between ChatGPT and Codex during the rapid P0→P8 performance-optimization cycle.
+## 固定协作方式
 
-- ChatGPT: reads the latest evidence, runs the `mature-replication-four-column` V4.0 review, decides the next step, and writes the next Codex command.
-- Codex: performs local execution/measurement, preserves raw evidence, and pushes the resulting report bundle here.
-- Do not treat a local-only path such as `C:\...` as sufficient handoff evidence.
+- ChatGPT：读取最新证据，调用 `mature-replication-four-column` V4.0（第一性原理四列法 V4.0）完成阶段审核，决定下一步并生成 Codex 执行命令。
+- Codex：负责本机真实执行、测量、保存原始证据，并把需要 ChatGPT 审核的报告包同步到本目录。
+- 仅提供 `C:\...` 本地路径不算完整交接；需要审核的文本、JSON、日志、脚本和摘要应同步到这里。
 
-## Required layout
+## 中文优先表达规则
+
+从本目录开始，所有报告、审核和状态说明统一采用：
+
+**中文名称在前，英文技术标识放在括号中。**
+
+例如：
+
+- 当前实测时间（`CURRENT`）
+- 外部成熟前沿（`EXTERNAL FRONTIER`）
+- 第一性原理物理时间（`FIRST-PRINCIPLES PHYSICAL TIME / T_PHY`）
+- 迭代收敛（`ITERATIVE CONVERGENCE`）
+- 阶段冻结（`FREEZE`）
+- 重新打开冻结阶段（`REOPEN`）
+- 路径/架构错误（`PATH_ARCHITECTURE_ERROR`）
+
+英文保留用于程序、技能、变量和仓库统一识别，但不得让主要说明只剩英文。
+
+## 四列法固定展示规则
+
+四列法审核必须按下面的**纵向顺序**展示，不使用横向四列总表：
+
+1. 当前实测时间（`CURRENT`）
+2. 外部成熟前沿（`EXTERNAL FRONTIER`）
+3. 第一性原理物理时间（`FIRST-PRINCIPLES PHYSICAL TIME / T_PHY`）
+4. 迭代收敛（`ITERATIVE CONVERGENCE`）
+
+每一项必须至少包含：
+
+- 当前状态；
+- 当前数字/区间；
+- 证据来源；
+- 审核判断；
+- 本项与下一项之间的关系；
+- 是否允许继续下一步。
+
+## 目录结构
 
 ```text
 workspaces/visual-art-engine-performance-ladder/
@@ -26,50 +62,45 @@ workspaces/visual-art-engine-performance-ladder/
         benchmark-contract-snapshot.md
         environment-before.json
         environment-after.json
-        ...other compact evidence needed to reproduce/review the run
+        ...其他用于复现和审核的小型关键证据
     P1/
     ...
     P8/
+  reviews/
+    ...ChatGPT 四列法审核文件
 ```
 
-## LATEST.md contract
+## LATEST.md 规则
 
-After every completed stage run, Codex updates `LATEST.md` with:
+每次需要 ChatGPT 审核的正式运行完成后，Codex 更新 `LATEST.md`，至少包含：
 
-- stage / run id
-- working skill version
-- method version
-- final status
-- Git commit containing the report bundle
-- relative path to the report bundle
-- four-column state (`CURRENT`, `EXTERNAL FRONTIER`, `FIRST-PRINCIPLES PHYSICAL TIME`, `ITERATIVE CONVERGENCE`)
-- next requested action
+- 阶段和运行 ID；
+- 当前工作技能版本；
+- 方法版本；
+- 最终状态；
+- 包含证据的 Git commit；
+- 报告相对路径；
+- 四项纵向状态：当前实测、外部成熟前沿、第一性原理物理时间、迭代收敛；
+- 下一步请求。
 
-## Rapid-iteration rule
+## 快速迭代规则
 
-During fast iteration, not every local skill patch needs to become a formal released skill version. However, every run that ChatGPT must review should publish its report/evidence bundle here so both sides operate from the same evidence.
+快速迭代期间，不要求每一个本地小补丁都立刻变成正式技能发布版本；但是每一次需要 ChatGPT 深度审核的真实运行，都应该把关键报告/证据同步到本共同办公区。
 
-Formal stable skill releases remain under:
+正式稳定技能仍位于：
 
 `skills/visual-art-engine-performance-ladder`
 
-and are synchronized at stable milestones / freeze points.
+到稳定里程碑、99 分冻结点或重大关口时，再统一正式部署和 GitHub 发布。
 
-## Evidence policy
+## 证据策略
 
-Push text/JSON/CSV/log evidence needed for review. Avoid unnecessary large media, model files, caches, generated binaries, or duplicate artifacts. For large outputs, keep hashes, metadata, and a precise external/local artifact reference unless the artifact itself is essential for review.
+优先同步用于审核的文本、JSON、CSV、日志和脚本。避免无必要上传大型模型、缓存、重复生成媒体或整套运行环境。大型输出原则上保留 SHA-256、元数据和准确本地/外部引用，只有审核确实需要时才上传本体。
 
-## Methodology
+## 方法论
 
-All stage reviews use the installed skill:
+所有阶段统一调用：
 
-`mature-replication-four-column` — V4.0
+`mature-replication-four-column` — V4.0（第一性原理四列法 V4.0）
 
-with the fixed columns:
-
-1. CURRENT
-2. EXTERNAL FRONTIER
-3. FIRST-PRINCIPLES PHYSICAL TIME
-4. ITERATIVE CONVERGENCE
-
-Do not create a parallel methodology in this workspace.
+不得在本工作区另建平行方法论。
