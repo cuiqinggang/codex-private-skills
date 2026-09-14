@@ -1,0 +1,11 @@
+{
+  "fixed_sleep_found": false,
+  "polling_interval_found": false,
+  "ws_receive_timeout_seconds": 10,
+  "ws_receive_timeout_is_polling_interval": false,
+  "history_request_count_in_run_once": 1,
+  "websocket_rebuilt_each_run": true,
+  "http_client_session_reused": true,
+  "result_ready_definition_unchanged": true,
+  "queue_idle_check_inside_t_end_to_end": false
+}

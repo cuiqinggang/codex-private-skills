@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RESULT_PATH_DECOMPOSITION",
+  "baseline_current_ms": 32.55975,
+  "replace_baseline": false,
+  "warmup_valid": "3/3",
+  "measured_valid": "20/20",
+  "failures": 0,
+  "t_end_to_end": {
+    "count": 20,
+    "min_ms": 28.7726,
+    "median_ms": 36.74075,
+    "p95_ms": 49.9382,
+    "max_ms": 69.7039
+  },
+  "request": {
+    "count": 20,
+    "min_ms": 4.7956,
+    "median_ms": 5.25955,
+    "p95_ms": 6.6996,
+    "max_ms": 7.5765
+  },
+  "queue": {
+    "count": 20,
+    "min_ms": 3.589,
+    "median_ms": 6.4961,
+    "p95_ms": 10.8181,
+    "max_ms": 27.0355
+  },
+  "execute": {
+    "count": 20,
+    "min_ms": 2.897,
+    "median_ms": 4.0695,
+    "p95_ms": 7.4689,
+    "max_ms": 9.9199
+  },
+  "result": {
+    "count": 20,
+    "min_ms": 13.8479,
+    "median_ms": 19.6454,
+    "p95_ms": 29.4343,
+    "max_ms": 29.4791
+  }
+}

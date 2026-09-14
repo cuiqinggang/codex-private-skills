@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RESULT_PATH_DECOMPOSITION",
+  "task_done_exact": {
+    "value": "UNKNOWN",
+    "reason": "ComfyUI exposes no direct task_done monotonic event; history visibility is the first reliable client observation"
+  },
+  "execution_success_to_history_visible": {
+    "count": 20,
+    "min_ms": 2.431,
+    "median_ms": 3.43885,
+    "p95_ms": 9.6807,
+    "max_ms": 12.1207
+  },
+  "history_visible_to_output_visible": {
+    "count": 20,
+    "min_ms": 0.1477,
+    "median_ms": 0.1955,
+    "p95_ms": 0.3001,
+    "max_ms": 0.522
+  },
+  "output_visible_to_client_detected": {
+    "count": 20,
+    "min_ms": 8.8737,
+    "median_ms": 13.25845,
+    "p95_ms": 20.493,
+    "max_ms": 21.6285
+  },
+  "save_done_to_execution_success": {
+    "count": 20,
+    "min_ms": 0.2243,
+    "median_ms": 0.67355,
+    "p95_ms": 1.5863,
+    "max_ms": 2.1656
+  },
+  "execution_success_to_executing_none": {
+    "count": 20,
+    "min_ms": 0.9448,
+    "median_ms": 1.3741,
+    "p95_ms": 7.5893,
+    "max_ms": 9.8685
+  },
+  "executing_none_to_history_request": {
+    "count": 20,
+    "min_ms": 0.3391,
+    "median_ms": 0.42865,
+    "p95_ms": 1.628,
+    "max_ms": 1.8835
+  },
+  "history_request_to_response_body": {
+    "count": 20,
+    "min_ms": 0.8041,
+    "median_ms": 0.94425,
+    "p95_ms": 1.5366,
+    "max_ms": 1.6337
+  },
+  "history_response_parse_to_visible": {
+    "count": 20,
+    "min_ms": 0.1648,
+    "median_ms": 0.2049,
+    "p95_ms": 0.3032,
+    "max_ms": 0.7392
+  },
+  "history_visible_to_api_bytes_visible": {
+    "count": 20,
+    "min_ms": 8.9602,
+    "median_ms": 13.38455,
+    "p95_ms": 20.5723,
+    "max_ms": 21.7338
+  },
+  "client_detected_to_result_ready": {
+    "count": 20,
+    "min_ms": 1.1312,
+    "median_ms": 1.3153,
+    "p95_ms": 2.3928,
+    "max_ms": 2.759
+  },
+  "png_validation": {
+    "count": 20,
+    "min_ms": 0.514,
+    "median_ms": 0.5302,
+    "p95_ms": 0.6356,
+    "max_ms": 0.9917
+  },
+  "evidence_write": {
+    "count": 20,
+    "min_ms": 0.5861,
+    "median_ms": 0.7366,
+    "p95_ms": 1.858,
+    "max_ms": 2.2106
+  },
+  "queue_idle_check_after_result": {
+    "count": 20,
+    "min_ms": 0.7546,
+    "median_ms": 0.96,
+    "p95_ms": 1.6283,
+    "max_ms": 1.7937
+  },
+  "fixed_sleep_found": false,
+  "polling_interval_found": false,
+  "history_requests_per_run": 1,
+  "websocket_rebuilt_each_run": true,
+  "http_session_reused": true,
+  "timing_boundary_classification": {
+    "inside_t_end_to_end": [
+      "WebSocket completion propagation",
+      "WebSocket close",
+      "single history request and parse",
+      "single output file visibility check",
+      "single /view request and read",
+      "HTTP_VIEW_RESPONSE SHA-256 logging",
+      "PNG signature/chunks/dimensions/zlib validation and SHA-256",
+      "evidence PNG write"
+    ],
+    "after_t_end_to_end": [
+      "queue idle GET/check"
+    ],
+    "not_present": [
+      "fixed sleep",
+      "history polling loop",
+      "repeated history requests"
+    ]
+  }
+}

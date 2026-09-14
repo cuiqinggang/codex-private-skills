@@ -1,0 +1,202 @@
+diff --git "a/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\scripts\\p0\\baseline-run-p0-control.py" "b/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\scripts\\p0\\run-p0-e1-result-decomposition.py"
+index d7b2388..c1ea1fd 100644
+--- "a/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\scripts\\p0\\baseline-run-p0-control.py"
++++ "b/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\scripts\\p0\\run-p0-e1-result-decomposition.py"
+@@ -140,6 +140,7 @@ async def run_once(
+     client_id: str,
+     label: str,
+     evidence_dir: Path,
++    output_root: Path,
+ ) -> dict[str, Any]:
+     run_prefix = f"p0-control/{label}-{uuid.uuid4().hex[:10]}"
+     workflow = load_workflow(run_prefix)
+@@ -148,6 +149,14 @@ async def run_once(
+     prompt_id = None
+     marks: dict[str, int] = {}
+     output_record: dict[str, Any] | None = None
++    observations: dict[str, Any] = {
++        "fixed_sleep_found": False,
++        "polling_interval_seconds": None,
++        "history_requests": 1,
++        "websocket_rebuilt_this_run": True,
++        "task_done_exact_timestamp": None,
++        "task_done_exact_timestamp_reason": "ComfyUI exposes no direct task_done monotonic event",
++    }
+     try:
+         ws_url = endpoint.replace("http://", "ws://").replace("https://", "wss://")
+         ws = await session.ws_connect(f"{ws_url}/ws?clientId={client_id}", timeout=10)
+@@ -170,16 +179,20 @@ async def run_once(
+             message = await ws.receive(timeout=10)
+             if message.type.name == "TEXT":
+                 event = json.loads(message.data)
++                event_received_ns = time.perf_counter_ns()
+                 log.write("WS_TEXT", event)
+                 data = event.get("data", {})
+                 event_prompt = data.get("prompt_id")
+                 if event_prompt != prompt_id:
+                     continue
++                if event.get("type") == "execution_success":
++                    marks.setdefault("EXECUTION_SUCCESS_EVENT", event_received_ns)
+                 if event.get("type") == "executing":
+                     node = data.get("node")
+                     if node is not None and "EXECUTION_START" not in marks:
+                         marks["EXECUTION_START"] = time.perf_counter_ns()
+                     if node is None:
++                        marks.setdefault("EXECUTING_NONE_EVENT", event_received_ns)
+                         marks.setdefault("SAVE_DONE", time.perf_counter_ns())
+                         break
+                 if event.get("type") == "executed" and str(data.get("node")) == "2":
+@@ -198,10 +211,14 @@ async def run_once(
+                 raise RuntimeError(f"WebSocket ended before completion: {message.type.name}")
+         else:
+             raise TimeoutError("P0 execution timed out")
++        marks["WS_CLOSE_START"] = time.perf_counter_ns()
+         await ws.close()
++        marks["WS_CLOSE_DONE"] = time.perf_counter_ns()
+
++        marks["HISTORY_REQUEST_START"] = time.perf_counter_ns()
+         async with session.get(f"{endpoint}/history/{prompt_id}") as response:
+             history_text = await response.text()
++            marks["HISTORY_RESPONSE_BODY_DONE"] = time.perf_counter_ns()
+             log.write("HTTP_HISTORY_RESPONSE", {"status": response.status, "body": history_text})
+             response.raise_for_status()
+             history = json.loads(history_text)
+@@ -215,14 +232,25 @@ async def run_once(
+         if len(images) != 1:
+             raise ValueError(f"expected exactly one new image, got {len(images)}")
+         image = images[0]
++        marks["HISTORY_VISIBLE"] = time.perf_counter_ns()
++        output_file_path = output_root / image.get("subfolder", "") / image["filename"]
++        marks["OUTPUT_FILE_CHECK_START"] = time.perf_counter_ns()
++        output_file_visible = output_file_path.is_file()
++        marks["OUTPUT_FILE_CHECK_DONE"] = time.perf_counter_ns()
++        if output_file_visible:
++            marks["OUTPUT_VISIBLE"] = marks["OUTPUT_FILE_CHECK_DONE"]
++        observations["output_file_path"] = str(output_file_path)
++        observations["output_file_visible_single_check"] = output_file_visible
+         params = {
+             "filename": image["filename"],
+             "subfolder": image.get("subfolder", ""),
+             "type": image.get("type", "output"),
+         }
++        marks["OUTPUT_VIEW_REQUEST_START"] = time.perf_counter_ns()
+         log.write("HTTP_VIEW_REQUEST", params)
+         async with session.get(f"{endpoint}/view", params=params) as response:
+             png_bytes = await response.read()
++            marks["OUTPUT_API_BYTES_VISIBLE"] = time.perf_counter_ns()
+             log.write(
+                 "HTTP_VIEW_RESPONSE",
+                 {
+@@ -232,11 +260,28 @@ async def run_once(
+                 },
+             )
+             response.raise_for_status()
++        marks["CLIENT_DETECTED_READY"] = time.perf_counter_ns()
++        marks["PNG_VALIDATION_START"] = time.perf_counter_ns()
+         png_validation = validate_png(png_bytes)
++        marks["PNG_VALIDATION_DONE"] = time.perf_counter_ns()
+         output_path = evidence_dir / f"{label}-result.png"
++        marks["EVIDENCE_WRITE_START"] = time.perf_counter_ns()
+         output_path.write_bytes(png_bytes)
++        marks["EVIDENCE_WRITE_DONE"] = time.perf_counter_ns()
+         marks.setdefault("SAVE_DONE", time.perf_counter_ns())
+         marks["RESULT_READY"] = time.perf_counter_ns()
++        marks["QUEUE_IDLE_CHECK_START"] = time.perf_counter_ns()
++        async with session.get(f"{endpoint}/queue") as response:
++            queue_text = await response.text()
++            log.write("HTTP_QUEUE_RESPONSE", {"status": response.status, "body": queue_text})
++            response.raise_for_status()
++            queue_state = json.loads(queue_text)
++        marks["QUEUE_IDLE_CHECK_DONE"] = time.perf_counter_ns()
++        queue_running = queue_state.get("queue_running", [])
++        queue_pending = queue_state.get("queue_pending", [])
++        if queue_running or queue_pending:
++            raise RuntimeError(f"queue not idle after {label}: {queue_state}")
++        observations["queue_idle_after_result"] = True
+         output_record = {
+             "history": image,
+             "evidence_copy": str(output_path),
+@@ -250,6 +295,10 @@ async def run_once(
+         "QUEUE_ACK",
+         "EXECUTION_START",
+         "SAVE_DONE",
++        "EXECUTION_SUCCESS_EVENT",
++        "HISTORY_VISIBLE",
++        "OUTPUT_API_BYTES_VISIBLE",
++        "CLIENT_DETECTED_READY",
+         "RESULT_READY",
+     ]
+     missing = [name for name in required_marks if name not in marks]
+@@ -257,6 +306,9 @@ async def run_once(
+         raise ValueError(f"missing required timing marks: {missing}")
+
+     seconds = lambda start, end: (marks[end] - marks[start]) / 1_000_000_000
++    optional_seconds = lambda start, end: (
++        seconds(start, end) if start in marks and end in marks else None
++    )
+     return {
+         "label": label,
+         "prompt_id": prompt_id,
+@@ -269,6 +321,22 @@ async def run_once(
+             "T_RESULT": seconds("SAVE_DONE", "RESULT_READY"),
+             "T_END_TO_END": seconds("REQUEST_START", "RESULT_READY"),
+         },
++        "result_decomposition_seconds": {
++            "SAVE_DONE_TO_EXECUTION_SUCCESS_EVENT": optional_seconds("SAVE_DONE", "EXECUTION_SUCCESS_EVENT"),
++            "EXECUTION_SUCCESS_TO_EXECUTING_NONE": optional_seconds("EXECUTION_SUCCESS_EVENT", "EXECUTING_NONE_EVENT"),
++            "EXECUTING_NONE_TO_HISTORY_REQUEST_START": optional_seconds("EXECUTING_NONE_EVENT", "HISTORY_REQUEST_START"),
++            "HISTORY_REQUEST_TO_RESPONSE_BODY_DONE": optional_seconds("HISTORY_REQUEST_START", "HISTORY_RESPONSE_BODY_DONE"),
++            "HISTORY_RESPONSE_BODY_DONE_TO_HISTORY_VISIBLE": optional_seconds("HISTORY_RESPONSE_BODY_DONE", "HISTORY_VISIBLE"),
++            "EXECUTION_SUCCESS_TO_HISTORY_VISIBLE": optional_seconds("EXECUTION_SUCCESS_EVENT", "HISTORY_VISIBLE"),
++            "HISTORY_VISIBLE_TO_OUTPUT_VISIBLE": optional_seconds("HISTORY_VISIBLE", "OUTPUT_VISIBLE"),
++            "OUTPUT_VISIBLE_TO_CLIENT_DETECTED_READY": optional_seconds("OUTPUT_VISIBLE", "CLIENT_DETECTED_READY"),
++            "HISTORY_VISIBLE_TO_OUTPUT_API_BYTES_VISIBLE": optional_seconds("HISTORY_VISIBLE", "OUTPUT_API_BYTES_VISIBLE"),
++            "CLIENT_DETECTED_READY_TO_RESULT_READY": optional_seconds("CLIENT_DETECTED_READY", "RESULT_READY"),
++            "PNG_VALIDATION": optional_seconds("PNG_VALIDATION_START", "PNG_VALIDATION_DONE"),
++            "EVIDENCE_WRITE": optional_seconds("EVIDENCE_WRITE_START", "EVIDENCE_WRITE_DONE"),
++            "QUEUE_IDLE_CHECK_AFTER_RESULT": optional_seconds("QUEUE_IDLE_CHECK_START", "QUEUE_IDLE_CHECK_DONE"),
++        },
++        "observations": observations,
+         "output": output_record,
+         "raw_events": str(raw_path),
+         "result_validity_gate": "PASS",
+@@ -289,6 +357,9 @@ async def execute(args: argparse.Namespace) -> int:
+         raise ValueError("only a C-drive ComfyUI root is allowed")
+     if not (root / "main.py").is_file():
+         raise FileNotFoundError("invalid ComfyUI root")
++    output_root = Path(args.output_root).resolve()
++    if output_root.drive.upper() != "C:" or not output_root.is_dir():
++        raise ValueError("invalid C-drive output root")
+     fixture = package_root() / "assets" / "p0" / "black-256.png"
+     fixture_bytes = fixture.read_bytes()
+     fixture_validation = validate_png(fixture_bytes)
+@@ -339,11 +410,11 @@ async def execute(args: argparse.Namespace) -> int:
+         client_id = str(uuid.uuid4())
+         for index in range(WARMUP_RUNS):
+             results.append(
+-                await run_once(session, endpoint, client_id, f"warmup-{index + 1:02d}", evidence_dir)
++                await run_once(session, endpoint, client_id, f"warmup-{index + 1:02d}", evidence_dir, output_root)
+             )
+         for index in range(MEASURED_RUNS):
+             results.append(
+-                await run_once(session, endpoint, client_id, f"measured-{index + 1:02d}", evidence_dir)
++                await run_once(session, endpoint, client_id, f"measured-{index + 1:02d}", evidence_dir, output_root)
+             )
+
+     measured = [
+@@ -353,6 +424,7 @@ async def execute(args: argparse.Namespace) -> int:
+     ]
+     summary = {
+         "schema_version": 1,
++        "experiment_id": "RESULT_PATH_DECOMPOSITION",
+         "contract_id": CONTRACT_ID,
+         "generated_at": utc_now(),
+         "warmup_runs": WARMUP_RUNS,
+@@ -403,6 +475,7 @@ def parse_args() -> argparse.Namespace:
+     parser.add_argument("--acknowledge-contract")
+     parser.add_argument("--comfyui-root")
+     parser.add_argument("--endpoint", default="http://127.0.0.1:8188")
++    parser.add_argument("--output-root", default=r"C:\AI\ComfyUI_Aaki_v3\data\output")
+     parser.add_argument("--evidence-dir")
+     args = parser.parse_args()
+     if not args.execute:

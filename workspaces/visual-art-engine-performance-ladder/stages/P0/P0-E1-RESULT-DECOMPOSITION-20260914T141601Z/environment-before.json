@@ -1,0 +1,22 @@
+{
+  "captured_at": "2026-09-14T14:24:42.8955159+00:00",
+  "run_id": "P0-E1-RESULT-DECOMPOSITION-20260914T141601Z",
+  "contract_id": "P0-CONTROL-V1",
+  "experiment_id": "RESULT_PATH_DECOMPOSITION",
+  "comfyui_running_before": false,
+  "port_8188_listening_before": false,
+  "comfyui_root": "C:\\AI\\ComfyUI_Aaki_v3\\ComfyUI",
+  "python": "C:\\AI\\ComfyUI_Aaki_v3\\python\\python.exe",
+  "input_root": "C:\\AI\\ComfyUI_Aaki_v3\\data\\input",
+  "output_root": "C:\\AI\\ComfyUI_Aaki_v3\\data\\output",
+  "api_endpoint": "http://127.0.0.1:8188",
+  "contract_sha256": "A878413ACF935E4F3DC4D3B1A4A3121A166AF79774957671D6F03A92A346A0CE",
+  "workflow_sha256": "495D8A6A78EFEFB20CBF6976F545FDA4A52BC2F05308258030E63B184B8B0C48",
+  "fixture_sha256": "54E11226D37944F410956E9A2918AD4BB090485F1C9F5D2150172E06B291FF5C",
+  "baseline_runner_sha256": "4DAA2C1F5EBA5FBD4F87C3FD1F2AB3046846797D6DE64A8C7B43AFCF3151E723",
+  "e1_runner_sha256": "53FF4BDF4C779380B139AABDB947ABD305CA54244750A33079E0E82AD0B649A8",
+  "method_sha256": "3813A15C3493A4446E9362E6E61238412EB8F395BD65727C540AF4F19F263D32",
+  "skill_version": "1.0.1",
+  "powershell_version": "7.6.6",
+  "powershell_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+}
