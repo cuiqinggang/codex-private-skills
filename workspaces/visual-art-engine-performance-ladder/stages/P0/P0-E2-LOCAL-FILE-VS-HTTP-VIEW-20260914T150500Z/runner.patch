@@ -1,0 +1,70 @@
+diff --git "a/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\scripts\\p0\\run-p0-e1-result-decomposition.py" "b/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E2-LOCAL-FILE-VS-HTTP-VIEW-20260914T150500Z\\scripts\\p0\\run-p0-e2-local-file.py"
+index c1ea1fd..5a32c4a 100644
+--- "a/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\scripts\\p0\\run-p0-e1-result-decomposition.py"
++++ "b/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E2-LOCAL-FILE-VS-HTTP-VIEW-20260914T150500Z\\scripts\\p0\\run-p0-e2-local-file.py"
+@@ -241,25 +241,17 @@ async def run_once(
+             marks["OUTPUT_VISIBLE"] = marks["OUTPUT_FILE_CHECK_DONE"]
+         observations["output_file_path"] = str(output_file_path)
+         observations["output_file_visible_single_check"] = output_file_visible
+-        params = {
+-            "filename": image["filename"],
+-            "subfolder": image.get("subfolder", ""),
+-            "type": image.get("type", "output"),
+-        }
+-        marks["OUTPUT_VIEW_REQUEST_START"] = time.perf_counter_ns()
+-        log.write("HTTP_VIEW_REQUEST", params)
+-        async with session.get(f"{endpoint}/view", params=params) as response:
+-            png_bytes = await response.read()
+-            marks["OUTPUT_API_BYTES_VISIBLE"] = time.perf_counter_ns()
+-            log.write(
+-                "HTTP_VIEW_RESPONSE",
+-                {
+-                    "status": response.status,
+-                    "length": len(png_bytes),
+-                    "sha256": hashlib.sha256(png_bytes).hexdigest(),
+-                },
+-            )
+-            response.raise_for_status()
++        marks["LOCAL_FILE_READ_START"] = time.perf_counter_ns()
++        png_bytes = output_file_path.read_bytes()
++        marks["LOCAL_FILE_BYTES_VISIBLE"] = time.perf_counter_ns()
++        log.write(
++            "LOCAL_FILE_READ",
++            {
++                "path": str(output_file_path),
++                "length": len(png_bytes),
++                "sha256": hashlib.sha256(png_bytes).hexdigest(),
++            },
++        )
+         marks["CLIENT_DETECTED_READY"] = time.perf_counter_ns()
+         marks["PNG_VALIDATION_START"] = time.perf_counter_ns()
+         png_validation = validate_png(png_bytes)
+@@ -297,7 +289,7 @@ async def run_once(
+         "SAVE_DONE",
+         "EXECUTION_SUCCESS_EVENT",
+         "HISTORY_VISIBLE",
+-        "OUTPUT_API_BYTES_VISIBLE",
++        "LOCAL_FILE_BYTES_VISIBLE",
+         "CLIENT_DETECTED_READY",
+         "RESULT_READY",
+     ]
+@@ -330,7 +322,7 @@ async def run_once(
+             "EXECUTION_SUCCESS_TO_HISTORY_VISIBLE": optional_seconds("EXECUTION_SUCCESS_EVENT", "HISTORY_VISIBLE"),
+             "HISTORY_VISIBLE_TO_OUTPUT_VISIBLE": optional_seconds("HISTORY_VISIBLE", "OUTPUT_VISIBLE"),
+             "OUTPUT_VISIBLE_TO_CLIENT_DETECTED_READY": optional_seconds("OUTPUT_VISIBLE", "CLIENT_DETECTED_READY"),
+-            "HISTORY_VISIBLE_TO_OUTPUT_API_BYTES_VISIBLE": optional_seconds("HISTORY_VISIBLE", "OUTPUT_API_BYTES_VISIBLE"),
++            "HISTORY_VISIBLE_TO_LOCAL_FILE_BYTES_VISIBLE": optional_seconds("HISTORY_VISIBLE", "LOCAL_FILE_BYTES_VISIBLE"),
+             "CLIENT_DETECTED_READY_TO_RESULT_READY": optional_seconds("CLIENT_DETECTED_READY", "RESULT_READY"),
+             "PNG_VALIDATION": optional_seconds("PNG_VALIDATION_START", "PNG_VALIDATION_DONE"),
+             "EVIDENCE_WRITE": optional_seconds("EVIDENCE_WRITE_START", "EVIDENCE_WRITE_DONE"),
+@@ -424,7 +416,9 @@ async def execute(args: argparse.Namespace) -> int:
+     ]
+     summary = {
+         "schema_version": 1,
+-        "experiment_id": "RESULT_PATH_DECOMPOSITION",
++        "experiment_id": "LOCAL_OUTPUT_FILE_READ_VS_HTTP_VIEW",
++        "contract_classification": "DIAGNOSTIC_ONLY",
++        "contract_compatible": False,
+         "contract_id": CONTRACT_ID,
+         "generated_at": utc_now(),
+         "warmup_runs": WARMUP_RUNS,

@@ -1,0 +1,9 @@
+{
+  "contract_classification": "DIAGNOSTIC_ONLY",
+  "contract_compatible": false,
+  "reason": "Frozen contract requires PNG fetched through existing ComfyUI HTTP API; local file read changes result acquisition semantics.",
+  "e1_http_view_output_visible_to_client_detected_median_ms": 13.25845,
+  "e2_history_visible_to_local_bytes_median_ms": 8.79895,
+  "architecture_frontier_evidence": true,
+  "baseline_replaced": false
+}

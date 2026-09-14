@@ -1,0 +1,23 @@
+# P0 E2 LOCAL_OUTPUT_FILE_READ_VS_HTTP_VIEW
+
+- RUN_ID: P0-E2-LOCAL-FILE-VS-HTTP-VIEW-20260914T150500Z
+- Method: mature-replication-four-column V4.0
+- CURRENT baseline: 32.55975 ms; P95 58.1779 ms
+- Hypothesis: E1 的约 13.25845 ms 主要来自 HTTP /view 结果取得路径。
+- Target segment: OUTPUT_VISIBLE_TO_CLIENT_DETECTED
+- Gain ceiling: 13.25845 ms
+- Single variable: 用已确认的 data/output 本地文件读取替代 HTTP /view，仅作诊断。
+- CONTRACT_COMPATIBLE: NO
+- Classification: DIAGNOSTIC_ONLY / ARCHITECTURE_FRONTIER_EVIDENCE
+- Warmup: 3/3 valid
+- Measured: 20/20 valid
+- Candidate median: 35.6235 ms
+- Candidate P95: 41.3845 ms
+- RESULT median: 15.1508 ms
+- History visible to local bytes median: 8.79895 ms
+- Validity: 23/23 history success, unique output, valid 256x256 PNG, full zlib decode, SHA-256.
+- Decision: DIAGNOSTIC_ONLY; baseline 不替换。
+- Lesson: 本地文件字节取得远小于 E1 的 HTTP /view 路径，但冻结合同要求现有 ComfyUI HTTP API，因此它只构成 architecture frontier evidence。
+- Next: 在合同内测试将 WebSocket close 延后到 RESULT_READY 后。
+- External frontier: 无新增。
+- T_PHY: 10-20 ms 暂保持，E2 只证明路径差异，不能作为正式 CURRENT。

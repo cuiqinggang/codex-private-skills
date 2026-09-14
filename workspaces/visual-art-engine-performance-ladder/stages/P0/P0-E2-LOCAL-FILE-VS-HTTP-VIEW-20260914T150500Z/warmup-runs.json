@@ -1,0 +1,251 @@
+[
+  {
+    "label": "warmup-01",
+    "prompt_id": "6af5fcb1-1b49-483b-9f6b-fc22a3ed5fc3",
+    "run_prefix": "p0-control/warmup-01-3452665885",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282023639196500,
+      "QUEUE_ACK": 282023647716900,
+      "EXECUTION_START": 282023660911100,
+      "SAVE_DONE": 282023681637500,
+      "EXECUTION_SUCCESS_EVENT": 282023681925100,
+      "EXECUTING_NONE_EVENT": 282023683268400,
+      "WS_CLOSE_START": 282023683330000,
+      "WS_CLOSE_DONE": 282023683859800,
+      "HISTORY_REQUEST_START": 282023683861400,
+      "HISTORY_RESPONSE_BODY_DONE": 282023685602500,
+      "HISTORY_VISIBLE": 282023685770100,
+      "OUTPUT_FILE_CHECK_START": 282023685787500,
+      "OUTPUT_FILE_CHECK_DONE": 282023686040900,
+      "OUTPUT_VISIBLE": 282023686040900,
+      "LOCAL_FILE_READ_START": 282023686045000,
+      "LOCAL_FILE_BYTES_VISIBLE": 282023697824900,
+      "CLIENT_DETECTED_READY": 282023697948700,
+      "PNG_VALIDATION_START": 282023697949600,
+      "PNG_VALIDATION_DONE": 282023698677200,
+      "EVIDENCE_WRITE_START": 282023698703600,
+      "EVIDENCE_WRITE_DONE": 282023699638000,
+      "RESULT_READY": 282023699641700,
+      "QUEUE_IDLE_CHECK_START": 282023699644200,
+      "QUEUE_IDLE_CHECK_DONE": 282024105707200
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0085204,
+      "T_QUEUE": 0.0131942,
+      "T_EXECUTE": 0.0207264,
+      "T_RESULT": 0.0180042,
+      "T_END_TO_END": 0.0604452
+    },
+    "result_decomposition_seconds": {
+      "SAVE_DONE_TO_EXECUTION_SUCCESS_EVENT": 0.0002876,
+      "EXECUTION_SUCCESS_TO_EXECUTING_NONE": 0.0013433,
+      "EXECUTING_NONE_TO_HISTORY_REQUEST_START": 0.000593,
+      "HISTORY_REQUEST_TO_RESPONSE_BODY_DONE": 0.0017411,
+      "HISTORY_RESPONSE_BODY_DONE_TO_HISTORY_VISIBLE": 0.0001676,
+      "EXECUTION_SUCCESS_TO_HISTORY_VISIBLE": 0.003845,
+      "HISTORY_VISIBLE_TO_OUTPUT_VISIBLE": 0.0002708,
+      "OUTPUT_VISIBLE_TO_CLIENT_DETECTED_READY": 0.0119078,
+      "HISTORY_VISIBLE_TO_LOCAL_FILE_BYTES_VISIBLE": 0.0120548,
+      "CLIENT_DETECTED_READY_TO_RESULT_READY": 0.001693,
+      "PNG_VALIDATION": 0.0007276,
+      "EVIDENCE_WRITE": 0.0009344,
+      "QUEUE_IDLE_CHECK_AFTER_RESULT": 0.406063
+    },
+    "observations": {
+      "fixed_sleep_found": false,
+      "polling_interval_seconds": null,
+      "history_requests": 1,
+      "websocket_rebuilt_this_run": true,
+      "task_done_exact_timestamp": null,
+      "task_done_exact_timestamp_reason": "ComfyUI exposes no direct task_done monotonic event",
+      "output_file_path": "C:\\AI\\ComfyUI_Aaki_v3\\data\\output\\p0-control\\warmup-01-3452665885_00001_.png",
+      "output_file_visible_single_check": true,
+      "queue_idle_after_result": true
+    },
+    "output": {
+      "history": {
+        "filename": "warmup-01-3452665885_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E2-LOCAL-FILE-VS-HTTP-VIEW-20260914T150500Z\\runtime-evidence\\warmup-01-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "e534635f8415ea1f9836e9ef3a03857cdb92f6c73c01e5805c5d7044c3905a8a"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E2-LOCAL-FILE-VS-HTTP-VIEW-20260914T150500Z\\runtime-evidence\\warmup-01-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "warmup-02",
+    "prompt_id": "6c08f784-7bc3-472d-a534-14c4cdfd7ec7",
+    "run_prefix": "p0-control/warmup-02-3accf3fd49",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282024108870000,
+      "QUEUE_ACK": 282024114588700,
+      "EXECUTION_START": 282024118589400,
+      "SAVE_DONE": 282024122260700,
+      "EXECUTION_SUCCESS_EVENT": 282024122486200,
+      "EXECUTING_NONE_EVENT": 282024124770000,
+      "WS_CLOSE_START": 282024124828100,
+      "WS_CLOSE_DONE": 282024125173500,
+      "HISTORY_REQUEST_START": 282024125174300,
+      "HISTORY_RESPONSE_BODY_DONE": 282024125994500,
+      "HISTORY_VISIBLE": 282024126176100,
+      "OUTPUT_FILE_CHECK_START": 282024126191800,
+      "OUTPUT_FILE_CHECK_DONE": 282024126384300,
+      "OUTPUT_VISIBLE": 282024126384300,
+      "LOCAL_FILE_READ_START": 282024126387000,
+      "LOCAL_FILE_BYTES_VISIBLE": 282024135442900,
+      "CLIENT_DETECTED_READY": 282024135577400,
+      "PNG_VALIDATION_START": 282024135578300,
+      "PNG_VALIDATION_DONE": 282024136127100,
+      "EVIDENCE_WRITE_START": 282024136148600,
+      "EVIDENCE_WRITE_DONE": 282024136969600,
+      "RESULT_READY": 282024136972800,
+      "QUEUE_IDLE_CHECK_START": 282024136975500,
+      "QUEUE_IDLE_CHECK_DONE": 282024138268200
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0057187,
+      "T_QUEUE": 0.0040007,
+      "T_EXECUTE": 0.0036713,
+      "T_RESULT": 0.0147121,
+      "T_END_TO_END": 0.0281028
+    },
+    "result_decomposition_seconds": {
+      "SAVE_DONE_TO_EXECUTION_SUCCESS_EVENT": 0.0002255,
+      "EXECUTION_SUCCESS_TO_EXECUTING_NONE": 0.0022838,
+      "EXECUTING_NONE_TO_HISTORY_REQUEST_START": 0.0004043,
+      "HISTORY_REQUEST_TO_RESPONSE_BODY_DONE": 0.0008202,
+      "HISTORY_RESPONSE_BODY_DONE_TO_HISTORY_VISIBLE": 0.0001816,
+      "EXECUTION_SUCCESS_TO_HISTORY_VISIBLE": 0.0036899,
+      "HISTORY_VISIBLE_TO_OUTPUT_VISIBLE": 0.0002082,
+      "OUTPUT_VISIBLE_TO_CLIENT_DETECTED_READY": 0.0091931,
+      "HISTORY_VISIBLE_TO_LOCAL_FILE_BYTES_VISIBLE": 0.0092668,
+      "CLIENT_DETECTED_READY_TO_RESULT_READY": 0.0013954,
+      "PNG_VALIDATION": 0.0005488,
+      "EVIDENCE_WRITE": 0.000821,
+      "QUEUE_IDLE_CHECK_AFTER_RESULT": 0.0012927
+    },
+    "observations": {
+      "fixed_sleep_found": false,
+      "polling_interval_seconds": null,
+      "history_requests": 1,
+      "websocket_rebuilt_this_run": true,
+      "task_done_exact_timestamp": null,
+      "task_done_exact_timestamp_reason": "ComfyUI exposes no direct task_done monotonic event",
+      "output_file_path": "C:\\AI\\ComfyUI_Aaki_v3\\data\\output\\p0-control\\warmup-02-3accf3fd49_00001_.png",
+      "output_file_visible_single_check": true,
+      "queue_idle_after_result": true
+    },
+    "output": {
+      "history": {
+        "filename": "warmup-02-3accf3fd49_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E2-LOCAL-FILE-VS-HTTP-VIEW-20260914T150500Z\\runtime-evidence\\warmup-02-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "eeaa8f21a534e6c718f61b20fc46d014af417d88077e5436b3f009475c4af397"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E2-LOCAL-FILE-VS-HTTP-VIEW-20260914T150500Z\\runtime-evidence\\warmup-02-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "warmup-03",
+    "prompt_id": "03c01d4f-9dc4-4a64-8e96-ae72417cb845",
+    "run_prefix": "p0-control/warmup-03-6b6baff98a",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282024141223400,
+      "QUEUE_ACK": 282024148101300,
+      "EXECUTION_START": 282024152768100,
+      "SAVE_DONE": 282024157634700,
+      "EXECUTION_SUCCESS_EVENT": 282024159863300,
+      "EXECUTING_NONE_EVENT": 282024161697000,
+      "WS_CLOSE_START": 282024161741200,
+      "WS_CLOSE_DONE": 282024163942900,
+      "HISTORY_REQUEST_START": 282024163944300,
+      "HISTORY_RESPONSE_BODY_DONE": 282024165500800,
+      "HISTORY_VISIBLE": 282024165698800,
+      "OUTPUT_FILE_CHECK_START": 282024165714000,
+      "OUTPUT_FILE_CHECK_DONE": 282024165877800,
+      "OUTPUT_VISIBLE": 282024165877800,
+      "LOCAL_FILE_READ_START": 282024165880000,
+      "LOCAL_FILE_BYTES_VISIBLE": 282024175979300,
+      "CLIENT_DETECTED_READY": 282024176138600,
+      "PNG_VALIDATION_START": 282024176140100,
+      "PNG_VALIDATION_DONE": 282024176727600,
+      "EVIDENCE_WRITE_START": 282024176750200,
+      "EVIDENCE_WRITE_DONE": 282024177477700,
+      "RESULT_READY": 282024177480300,
+      "QUEUE_IDLE_CHECK_START": 282024177483200,
+      "QUEUE_IDLE_CHECK_DONE": 282024178440900
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0068779,
+      "T_QUEUE": 0.0046668,
+      "T_EXECUTE": 0.0048666,
+      "T_RESULT": 0.0198456,
+      "T_END_TO_END": 0.0362569
+    },
+    "result_decomposition_seconds": {
+      "SAVE_DONE_TO_EXECUTION_SUCCESS_EVENT": 0.0022286,
+      "EXECUTION_SUCCESS_TO_EXECUTING_NONE": 0.0018337,
+      "EXECUTING_NONE_TO_HISTORY_REQUEST_START": 0.0022473,
+      "HISTORY_REQUEST_TO_RESPONSE_BODY_DONE": 0.0015565,
+      "HISTORY_RESPONSE_BODY_DONE_TO_HISTORY_VISIBLE": 0.000198,
+      "EXECUTION_SUCCESS_TO_HISTORY_VISIBLE": 0.0058355,
+      "HISTORY_VISIBLE_TO_OUTPUT_VISIBLE": 0.000179,
+      "OUTPUT_VISIBLE_TO_CLIENT_DETECTED_READY": 0.0102608,
+      "HISTORY_VISIBLE_TO_LOCAL_FILE_BYTES_VISIBLE": 0.0102805,
+      "CLIENT_DETECTED_READY_TO_RESULT_READY": 0.0013417,
+      "PNG_VALIDATION": 0.0005875,
+      "EVIDENCE_WRITE": 0.0007275,
+      "QUEUE_IDLE_CHECK_AFTER_RESULT": 0.0009577
+    },
+    "observations": {
+      "fixed_sleep_found": false,
+      "polling_interval_seconds": null,
+      "history_requests": 1,
+      "websocket_rebuilt_this_run": true,
+      "task_done_exact_timestamp": null,
+      "task_done_exact_timestamp_reason": "ComfyUI exposes no direct task_done monotonic event",
+      "output_file_path": "C:\\AI\\ComfyUI_Aaki_v3\\data\\output\\p0-control\\warmup-03-6b6baff98a_00001_.png",
+      "output_file_visible_single_check": true,
+      "queue_idle_after_result": true
+    },
+    "output": {
+      "history": {
+        "filename": "warmup-03-6b6baff98a_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E2-LOCAL-FILE-VS-HTTP-VIEW-20260914T150500Z\\runtime-evidence\\warmup-03-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "780e30995f2cfd4406ca3a07420ac154647fc6be8800009300bc4039a443665b"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E2-LOCAL-FILE-VS-HTTP-VIEW-20260914T150500Z\\runtime-evidence\\warmup-03-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  }
+]
