@@ -2,7 +2,33 @@
 
 英文标识：`Visual Art Engine Performance Ladder — Shared Workspace`
 
-本目录用于 `visual-art-engine-performance-ladder`（通用高性能视觉作品生成引擎性能阶梯）在 P0→P8 快速迭代期间，作为 ChatGPT 与 Codex 的共同证据、报告和审核工作区。
+## 固定 GitHub 地址
+
+私有仓库：
+
+`https://github.com/cuiqinggang/codex-private-skills`
+
+共同办公区：
+
+`https://github.com/cuiqinggang/codex-private-skills/tree/main/workspaces/visual-art-engine-performance-ladder`
+
+这是 ChatGPT 与 Codex 在 P0→P8 快速迭代期间统一使用的共享资料存放点。
+
+任何需要 ChatGPT 审核的真实测试，Codex 都必须把关键报告和证据同步到这里；只提供 `C:\...` 本地路径不算完整交接。
+
+P0 结果统一写入：
+
+`workspaces/visual-art-engine-performance-ladder/stages/P0/<RUN_ID>/`
+
+P1-P8 按同样规则进入各自阶段目录。
+
+ChatGPT 审核文件写入：
+
+`workspaces/visual-art-engine-performance-ladder/reviews/`
+
+ChatGPT 规划文件写入：
+
+`workspaces/visual-art-engine-performance-ladder/plans/`
 
 ## 固定协作方式
 
@@ -68,6 +94,8 @@ workspaces/visual-art-engine-performance-ladder/
     P8/
   reviews/
     ...ChatGPT 四列法审核文件
+  plans/
+    ...ChatGPT 99分推进计划和阶段执行计划
 ```
 
 ## LATEST.md 规则
