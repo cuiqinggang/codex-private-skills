@@ -11,3 +11,4 @@
 | E5 PERSISTENT_WEBSOCKET | 跨 run 复用 WS 可降低连接生命周期 | 1.0 ms | 3/3、20/20；Median 35.57205，P95 38.2483 | ROLLBACK | Median 退化超2% | E6 execution_success 触发 history |
 | E6 HISTORY_ON_EXECUTION_SUCCESS | success 可提前 history | 7.5893 ms P95 | warmup-01 history missing；measured 未执行 | ROLLBACK / INVALID | success 早于 history 可见 | E7 缓冲 raw event 写盘 |
 | E7 BUFFER_RAW_EVENT_WRITES | 同步 flush 属测量开销 | 6.0 ms | 3/3、20/20；Median 42.34235，P95 54.0572 | ROLLBACK | 无稳定改善 | E8 精确 baseline 重现控制 |
+| E8 BASELINE_REPRO_CONTROL_A | 检查正式基线可复现性 | N/A | 3/3、20/20；Median 39.15，P95 49.4881 | CONTROL_FAIL_REPRO | 未复现32.55975 | 控制批次B |

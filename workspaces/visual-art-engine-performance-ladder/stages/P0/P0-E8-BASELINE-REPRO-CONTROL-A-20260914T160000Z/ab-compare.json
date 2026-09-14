@@ -1,0 +1,9 @@
+{
+  "official_median_ms": 32.55975,
+  "control_median_ms": 39.15,
+  "delta_percent": 20.2405,
+  "official_p95_ms": 58.1779,
+  "control_p95_ms": 49.4881,
+  "decision": "NO_BASELINE_CHANGE",
+  "reproduced": false
+}

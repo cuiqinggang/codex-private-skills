@@ -1,0 +1,13 @@
+{
+  "captured_at": "2026-09-14T15:21:53.3963414Z",
+  "contract": "P0-CONTROL-V1",
+  "experiment": "EXACT_BASELINE_REPRODUCTION_CONTROL_A",
+  "contract_compatible": true,
+  "runner_sha256": "8c792c1040a93a4fe3230e610af8f0dc164904291772e1046052ee18407cf25d",
+  "source_baseline_sha256": "8c792c1040a93a4fe3230e610af8f0dc164904291772e1046052ee18407cf25d",
+  "current_baseline_ms": 32.55975,
+  "queue_running": 0,
+  "queue_pending": 0,
+  "comfyui_started_by_convergence": true,
+  "process_id": 15408
+}

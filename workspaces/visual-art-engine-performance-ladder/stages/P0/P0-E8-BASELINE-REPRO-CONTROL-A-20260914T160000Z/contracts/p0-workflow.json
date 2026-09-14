@@ -1,0 +1,24 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "p0-control-black-256.png"
+    },
+    "_meta": {
+      "title": "P0 Deterministic Input"
+    }
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "__P0_RUN_PREFIX__",
+      "images": [
+        "1",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "P0 Save Result"
+    }
+  }
+}
