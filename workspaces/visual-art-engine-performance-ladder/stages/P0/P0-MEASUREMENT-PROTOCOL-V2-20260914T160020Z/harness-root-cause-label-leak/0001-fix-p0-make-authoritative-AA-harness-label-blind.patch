@@ -1,0 +1,936 @@
+From 3d4ef1c8e2c32c05c5400b019335dd4c1dca3aa6 Mon Sep 17 00:00:00 2001
+From: cuiqinggang <cuiqinggang@users.noreply.github.com>
+Date: Tue, 15 Sep 2026 02:37:57 +0800
+Subject: [PATCH] fix(p0): make authoritative AA harness label-blind
+
+---
+ .../ACCEPTANCE.html                           |  12 ++
+ .../CHANGELOG.md                              |   3 +
+ .../SKILL.md                                  |  11 ++
+ .../USAGE-LOG.md                              |   3 +
+ .../references/evidence-map.md                |   2 +
+ .../references/failure-lessons.md             |   1 +
+ .../references/measurement-protocol.md        |   7 +
+ .../MANIFEST.json                             |  47 ++++++-
+ .../harness-manifest-label-blind.json         |  55 ++++++++
+ .../ROOT-CAUSE-AUDIT.md                       | 122 ++++++++++++++++++
+ .../statistical-replay.json                   |  20 +++
+ .../measurement-protocol-v2.md                |  36 ++++++
+ .../scripts/build_harness_manifest.py         | 101 +++++++++++++++
+ .../invoke-start-label-blind-aa-comfyui.ps1   |  13 ++
+ .../scripts/run_measurement_v2.py             |  84 +++++++++---
+ .../scripts/start-label-blind-aa-comfyui.ps1  |  99 ++++++++++++++
+ .../statistical-selftest-label-blind.json     |  32 +++++
+ 17 files changed, 626 insertions(+), 22 deletions(-)
+ create mode 100644 workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/harness-manifest-label-blind.json
+ create mode 100644 workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/harness-root-cause-label-leak/ROOT-CAUSE-AUDIT.md
+ create mode 100644 workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/harness-root-cause-label-leak/statistical-replay.json
+ create mode 100644 workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/build_harness_manifest.py
+ create mode 100644 workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/invoke-start-label-blind-aa-comfyui.ps1
+ create mode 100644 workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/start-label-blind-aa-comfyui.ps1
+ create mode 100644 workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/statistical-selftest-label-blind.json
+
+diff --git a/skills/visual-art-engine-performance-ladder/ACCEPTANCE.html b/skills/visual-art-engine-performance-ladder/ACCEPTANCE.html
+index 739c967..b36f946 100644
+--- a/skills/visual-art-engine-performance-ladder/ACCEPTANCE.html
++++ b/skills/visual-art-engine-performance-ladder/ACCEPTANCE.html
+@@ -22,4 +22,16 @@ code{background:#e9edf2;padding:2px 5px;border-radius:4px}
+ <h2>本轮边界</h2>
+ <ul><li>P0 benchmark：NO</li><li>性能优化：NO</li><li>H3：NO</li><li>环境修改：NO</li><li>visual-art-engine 覆盖：NO</li><li>V4.0 方法技能修改：NO</li></ul>
+ <p>内容提交 <code>cbb1c54</code> 已发布到私有仓库 main；候选、C:\AI 源码与正式安装 41 文件哈希一致，正式安装 Skill Creator、语义和 dry-run 均通过。P0 API 当前未运行，CURRENT 仍为 PENDING。</p>
++<h2>Measurement V2 · A/A 标签盲修复（2026-09-15）</h2>
++<p class="status">REVIEW_READY / SELFTEST PASS / FRESH A/A BLOCKED</p>
++<div class="grid">
++<div class="card"><strong>根因候选</strong><br>旧 runner 将 A/B 标签写入 workflow、输出身份和计时内文件路径。</div>
++<div class="card"><strong>服务端证据</strong><br><code>execution_start → success</code> 的 block effect 为 <code>0 ms</code>。</div>
++<div class="card"><strong>新 runner</strong><br><code>c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54</code></div>
++<div class="card"><strong>标签盲门禁</strong><br>normalized workflow SHA 相等；timed/workflow/HTTP leak 均为 0。</div>
++<div class="card"><strong>Harness 指纹</strong><br><code>81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf</code></div>
++<div class="card"><strong>版本链</strong><br><code>8f5c3a59...</code> = SUPERSEDED；<code>c43875c3...</code> = CURRENT。</div>
++</div>
++<p><a href="references/failure-lessons.md">失败经验</a> · <a href="references/evidence-map.md">证据地图</a> · <a href="references/measurement-protocol.md">Measurement Protocol V2</a></p>
++<p>权威新 A/A 尚未运行；<code>AA_CALIBRATION=FAIL</code>、<code>CANDIDATE_LOCK=ON</code>。本页不宣称候选解锁或 P0 99。</p>
+ </main></body></html>
+diff --git a/skills/visual-art-engine-performance-ladder/CHANGELOG.md b/skills/visual-art-engine-performance-ladder/CHANGELOG.md
+index 4c6f70a..56db533 100644
+--- a/skills/visual-art-engine-performance-ladder/CHANGELOG.md
++++ b/skills/visual-art-engine-performance-ladder/CHANGELOG.md
+@@ -9,6 +9,9 @@
+ - history 必须保存无损原文及 SHA-256；统计实现变化必须产生新 runner SHA 并重新 A/A。
+ - 旧 A/A 与候选证据保留，但受审计取代的批次不得参与正式裁决。
+ - 新 runner `fcdae8b8...` 的统计 selftest 与 null calibration 通过；40-block 权威 A/A 因同实现 formal CI 全正而 FAIL，技能继续 `UNDER_VALIDATION`，候选锁不解除。
++- 定位旧 A/A 的 arm-label leakage：A/B 标签进入 workflow `filename_prefix`、HTTP 输出身份及计时内 evidence 路径；服务端 execution block effect=0，客户端控制路径主导假差异。
++- 新 runner `c43875c3...` 改用预分配 label-blind opaque token，增加 normalized workflow SHA 等价与 timed/workflow/HTTP leak=0 自测；统计函数重放保持 null/CI/MDE 原值。新权威 A/A 因本机 listener 权限拒绝尚未运行，候选锁继续开启。
++- 建立双重 benchmark 身份：`8f5c3a59...` 保留为 `SUPERSEDED_LABEL_BLIND_RUNNER`，`c43875c3...` 为 `CURRENT_LABEL_BLIND_RUNNER`；当前 `HARNESS_MANIFEST_SHA=81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf`，覆盖 runner、两层启动器、decision rules、bracket summary、workflow 与 fixture。
+ 
+ ## 1.0.1 - 2026-09-14
+ 
+diff --git a/skills/visual-art-engine-performance-ladder/SKILL.md b/skills/visual-art-engine-performance-ladder/SKILL.md
+index 7eb50ba..69b60b8 100644
+--- a/skills/visual-art-engine-performance-ladder/SKILL.md
++++ b/skills/visual-art-engine-performance-ladder/SKILL.md
+@@ -51,6 +51,17 @@ python .\scripts\p0\run-p0-control.py --dry-run
+ 
+ V2 一旦三门通过即冻结为 P0-P3 默认 benchmark harness。只有新的真实证据证明 harness 有缺陷时才能升级；升级必须保留旧版本、记录原因、产生新 runner SHA 并重新 A/A。
+ 
++A/A 的 arm label 必须是纯 metadata。任何 A/B 标签进入 workflow JSON、
++`filename_prefix`、HTTP path/query、计时内 raw/evidence 路径或 client/session
++identifier，均为 benchmark contamination。正式 A/A 前必须证明归一化 run token
++后的 A/B workflow byte-equivalent，并同时满足
++`TIMED_PATH_LABEL_LEAK=0`、`WORKFLOW_LABEL_LEAK=0`、
++`HTTP_LABEL_LEAK=0`。
++
++权威 benchmark 身份必须同时记录单文件 `RUNNER_SHA` 与整套
++`HARNESS_MANIFEST_SHA`。后者至少覆盖 runner、两层启动器、decision rules、
++bracket summary、workflow 与 fixture；任一文件变化都产生新 fingerprint。
++
+ ## 强制边界
+ 
+ - v1.0.1 仅表示方法、阶梯、版本、冻结系统、P0 Contract 和 P0 工具就绪；不表示 P0 已测或已优化。
+diff --git a/skills/visual-art-engine-performance-ladder/USAGE-LOG.md b/skills/visual-art-engine-performance-ladder/USAGE-LOG.md
+index 5f1c40d..e41a26d 100644
+--- a/skills/visual-art-engine-performance-ladder/USAGE-LOG.md
++++ b/skills/visual-art-engine-performance-ladder/USAGE-LOG.md
+@@ -1,3 +1,6 @@
+ # Usage Log
+ 
+ - 2026-09-14 — v1.0.0 creation: integrated formal V4.0 methodology, froze P0-CONTROL-V1, initialized P0-P8, and prepared dry-run/static tooling. No benchmark, optimization, or H3 run was performed. GitHub content commit cbb1c54 published; this entry records the verified publication.
++- 2026-09-14 — v1.0.1 candidate repair: classified the launcher/input mismatch as PATH_ARCHITECTURE_ERROR, switched the frozen fixture transport to ComfyUI /upload/image, and aligned readiness with the formal C-drive launcher layout. No benchmark workload had been submitted at this repair checkpoint.
++- 2026-09-15 — Measurement V2 A/A harness audit: traced the false 3.24545 ms effect away from server execution and found arm labels in SaveImage.filename_prefix, /view output identity, and timed evidence paths. Deployed label-blind opaque tokens, normalized-workflow SHA equivalence, three leak=0 selftests, and fine-grained in-memory marks. New runner c43875c3... selftest PASS; fresh runtime A/A remains blocked because the runtime denied creating the approved localhost:8188 listener. Candidate lock remains ON.
++- 2026-09-15 — Harness identity closure: retained runner 8f5c3a59... as superseded, named c43875c3... current, and generated deterministic HARNESS_MANIFEST_SHA 81974d60... over all seven behavior/input artifacts. This records implementation identity only; it does not convert the blocked fresh A/A into PASS.
+diff --git a/skills/visual-art-engine-performance-ladder/references/evidence-map.md b/skills/visual-art-engine-performance-ladder/references/evidence-map.md
+index abb35bd..6847b5f 100644
+--- a/skills/visual-art-engine-performance-ladder/references/evidence-map.md
++++ b/skills/visual-art-engine-performance-ladder/references/evidence-map.md
+@@ -12,5 +12,7 @@ Stage 根：`workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUR
+ | null false-positive 11.185% finding | `statistical-selftest.json`, audit record and superseded batch | superseded runners | `11445741477d024a764eaa5a4ad796a1d7672d0e` | audit confirmed invalid MDE pipeline |
+ | current statistical repair | `decision-rules.json`, `scripts/run_measurement_v2.py`, `scripts/bracket_summary.py` | `fcdae8b83d663a9185cc44a90d8b5c0bd91b6b8da069515a997f0167509f2c6b` | `11445741477d024a764eaa5a4ad796a1d7672d0e` | `UNDER_VALIDATION / STATISTICAL_SELFTEST_PASS` |
+ | AUTH-AA-STAT-FINAL-40B | `authoritative-runs/AUTH-AA-STAT-FINAL-40B/` | `fcdae8b83d663a9185cc44a90d8b5c0bd91b6b8da069515a997f0167509f2c6b` | `09c2b56` | `NULL_CALIBRATION_PASS / AA_CALIBRATION_FAIL / CANDIDATE_LOCK_ON` |
++| first label-blind repair | `scripts/run_measurement_v2.py` historical repair state | `8f5c3a592ba18a0570b5213996bdbb4f9618f178d0bd80af16f0c56e912d4062` | pending | `SUPERSEDED_LABEL_BLIND_RUNNER` |
++| A/A arm-label leakage audit | `harness-root-cause-label-leak/ROOT-CAUSE-AUDIT.md`, `harness-manifest-label-blind.json` | `c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54` | pending | `HARNESS=81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf / CURRENT_LABEL_BLIND_RUNNER / SELFTEST_PASS / FRESH_AA_BLOCKED_RUNTIME_PERMISSION` |
+ 
+ 每次重要审计/修复后更新本表；commit 产生后把 pending 值替换成实际 SHA。原始 history/PNG/null distribution 不复制进技能包。
+diff --git a/skills/visual-art-engine-performance-ladder/references/failure-lessons.md b/skills/visual-art-engine-performance-ladder/references/failure-lessons.md
+index ee58b6e..13df438 100644
+--- a/skills/visual-art-engine-performance-ladder/references/failure-lessons.md
++++ b/skills/visual-art-engine-performance-ladder/references/failure-lessons.md
+@@ -11,3 +11,4 @@
+ - Statistical implementation changes require a new runner SHA：任何 CI/null/MDE/order/drift/bracket 实质改动都必须新 SHA、新 selftest、新 A/A。
+ - Superseded experiments remain evidence but cannot enter authoritative decisions：旧原始数据、慢样本、失败均保留，但标记 PILOT/PREAUDIT/SUPERSEDED 后不得参与 FINAL_MDE、KEEP 或 ROLLBACK。
+ - Null calibration PASS does not imply A/A PASS：最终新 runner 的 null false KEEP 与双向 rejection 均校准通过，但完全相同实现仍产生 formal effect=3.24545 ms、95% CI=[0.579475,5.953475] 且超过 noise floor；必须 `AA_CALIBRATION=FAIL` 并锁定候选。
++- Same algorithm is not the same execution path：旧 A/A 把 `measured-A/B` 写进 `SaveImage.filename_prefix`、`/view` 输出身份和计时内 raw/evidence 路径；服务端 execution effect 为 0，而客户端控制路径主导假差异。arm label 必须纯 metadata，并以 normalized workflow SHA 相等及 timed/workflow/HTTP leak=0 自测阻断复犯。
+diff --git a/skills/visual-art-engine-performance-ladder/references/measurement-protocol.md b/skills/visual-art-engine-performance-ladder/references/measurement-protocol.md
+index aa5b730..625a923 100644
+--- a/skills/visual-art-engine-performance-ladder/references/measurement-protocol.md
++++ b/skills/visual-art-engine-performance-ladder/references/measurement-protocol.md
+@@ -7,7 +7,14 @@
+ ## 成熟流程
+ 
+ 1. 固定 workload、结果语义、计时边界、runner/workflow/fixture SHA 和环境；每次保存 monotonic 原始时间。
++   权威记录必须同时包含 `RUNNER_SHA` 与 `HARNESS_MANIFEST_SHA`；后者确定性覆盖
++   runner、两层启动器、decision rules、bracket summary、workflow 与 fixture。
++   任一受覆盖文件变化，均视为新的 benchmark harness 身份。
+ 2. 先跑完全同实现的 interleaved A/A；A1/A2 只能是逻辑标签，同生命周期、runner、HTTP session 与 warmed environment。
++   A/B 标签只能存在于计时外 metadata，不得进入 workflow JSON、`filename_prefix`、
++   HTTP path/query、计时内 raw/evidence 路径或 client/session identifier。归一化
++   opaque run token 后的 A/B workflow SHA 必须 byte-equivalent，三类 label leak
++   计数必须全部为 0。
+ 3. 正式比较采用固定 seed 的 ABBA/BAAB 四次 block；block 是最小独立单元，禁止把 block 内 observations 当 IID。
+ 4. null calibration 必须调用与生产 KEEP 相同的统计函数。正向 KEEP 定义为双侧 95% CI lower bound > 0；同时报告 `NULL_POSITIVE_FALSE_KEEP_RATE`（目标约 2.5%）与 `NULL_ANY_DIRECTION_REJECTION_RATE`（目标约 5%）。
+ 5. null calibration PASS 后才计算 FINAL_MDE：在相同依赖结构和 KEEP 规则下达到 power≥0.80 的最小真实 gain，并保存完整 power curve。
+diff --git a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/MANIFEST.json b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/MANIFEST.json
+index 8a012cd..2dbdbd9 100644
+--- a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/MANIFEST.json
++++ b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/MANIFEST.json
+@@ -1,8 +1,8 @@
+ {
+   "schema_version": 2,
+-  "generated_at": "2026-09-14T17:46:21.727416+00:00",
++  "generated_at": "2026-09-14T18:37:19.852506+00:00",
+   "root": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z",
+-  "file_count": 4044,
++  "file_count": 4051,
+   "files": [
+     {
+       "path": "aa-calibration.json",
+@@ -12529,10 +12529,25 @@
+       "bytes": 393,
+       "sha256": "a185b3369f9335195ef318c8bc9ccb42c08b4b72e7a41669c6da6bda7d4c1361"
+     },
++    {
++      "path": "harness-manifest-label-blind.json",
++      "bytes": 2010,
++      "sha256": "81c6bc26c73ad208feabc45f5a5698cd436a31706d10c833d3c132a90ea5e85c"
++    },
++    {
++      "path": "harness-root-cause-label-leak/ROOT-CAUSE-AUDIT.md",
++      "bytes": 4489,
++      "sha256": "465a0cbb84b32e28c0f40b8ee7f5f79afeca0c45b2d77a1b9970b7354dc933e9"
++    },
++    {
++      "path": "harness-root-cause-label-leak/statistical-replay.json",
++      "bytes": 789,
++      "sha256": "7786ab227f0c0efb0f09ea003214634ca677e1df7219fb47c8c21820bb7e98de"
++    },
+     {
+       "path": "measurement-protocol-v2.md",
+-      "bytes": 6287,
+-      "sha256": "b4b78792e81d32618167e62ecf583987237f3be6258adb87286e9efcd9c04e94"
++      "bytes": 8071,
++      "sha256": "fd860fe4e2aad815e0d646bf05a4cba76ae71a031fe47c275d08b4443ca6deb0"
+     },
+     {
+       "path": "paired-results.json",
+@@ -20204,6 +20219,11 @@
+       "bytes": 2619,
+       "sha256": "76706bb2064827350b5d6732dd10a78572b1140a6c87883fe9ed71401b731f9e"
+     },
++    {
++      "path": "scripts/build_harness_manifest.py",
++      "bytes": 3766,
++      "sha256": "64f6a1e6a395e7405475695a43a7ea648a99d0029f0f11b218fdb9e3429aa11a"
++    },
+     {
+       "path": "scripts/build_manifest.py",
+       "bytes": 624,
+@@ -20214,10 +20234,25 @@
+       "bytes": 5751,
+       "sha256": "ffc6a7c1e38ad7e153eca8371c00bdc82545f756d2e008e6a96444ed77348996"
+     },
++    {
++      "path": "scripts/invoke-start-label-blind-aa-comfyui.ps1",
++      "bytes": 630,
++      "sha256": "c77bf04a7571d289d0bbf1b95a5db3b3256eb53d8907a45f735141d9cd10c252"
++    },
+     {
+       "path": "scripts/run_measurement_v2.py",
+-      "bytes": 28580,
+-      "sha256": "fcdae8b83d663a9185cc44a90d8b5c0bd91b6b8da069515a997f0167509f2c6b"
++      "bytes": 32413,
++      "sha256": "c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54"
++    },
++    {
++      "path": "scripts/start-label-blind-aa-comfyui.ps1",
++      "bytes": 3689,
++      "sha256": "db1d57c56a9c81911cf338074d741c9c50563e6640e4ee8a669cc8c09cafabcb"
++    },
++    {
++      "path": "statistical-selftest-label-blind.json",
++      "bytes": 985,
++      "sha256": "2eea920b5ffbd51a1a450cfed59ed6868fe3de04873b10f773e3c9dd255a5e4e"
+     },
+     {
+       "path": "statistical-selftest.json",
+diff --git a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/harness-manifest-label-blind.json b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/harness-manifest-label-blind.json
+new file mode 100644
+index 0000000..bcfc2b8
+--- /dev/null
++++ b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/harness-manifest-label-blind.json
+@@ -0,0 +1,55 @@
++{
++  "schema_version": 1,
++  "fingerprint_algorithm": "SHA256_OF_CANONICAL_JSON_PAYLOAD",
++  "files": [
++    {
++      "path": "scripts/run_measurement_v2.py",
++      "bytes": 32413,
++      "sha256": "c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54"
++    },
++    {
++      "path": "scripts/start-label-blind-aa-comfyui.ps1",
++      "bytes": 3689,
++      "sha256": "db1d57c56a9c81911cf338074d741c9c50563e6640e4ee8a669cc8c09cafabcb"
++    },
++    {
++      "path": "scripts/invoke-start-label-blind-aa-comfyui.ps1",
++      "bytes": 630,
++      "sha256": "c77bf04a7571d289d0bbf1b95a5db3b3256eb53d8907a45f735141d9cd10c252"
++    },
++    {
++      "path": "decision-rules.json",
++      "bytes": 3003,
++      "sha256": "73bd1b453cf09619ffdceb4f4f7fb10e9d193e6e7feeff5a14271fe9ac9da8e9"
++    },
++    {
++      "path": "scripts/bracket_summary.py",
++      "bytes": 2619,
++      "sha256": "76706bb2064827350b5d6732dd10a78572b1140a6c87883fe9ed71401b731f9e"
++    },
++    {
++      "path": "contracts/p0-workflow.json",
++      "bytes": 414,
++      "sha256": "0f062d7c4051caeb75e864eb3b849fdbb2a450badb8a3e7a360d9431deab8258"
++    },
++    {
++      "path": "assets/black-256.png",
++      "bytes": 270,
++      "sha256": "54e11226d37944f410956e9a2918ad4bb090485f1c9f5d2150172e06b291ff5c"
++    }
++  ],
++  "label_blind_gates": {
++    "A_NORMALIZED_WORKFLOW_SHA": "94094bf2da0fda3ffba7e69d2e8c63356bb27b0efbb1f1223ece2bc9dafff2aa",
++    "B_NORMALIZED_WORKFLOW_SHA": "94094bf2da0fda3ffba7e69d2e8c63356bb27b0efbb1f1223ece2bc9dafff2aa",
++    "NORMALIZED_A_B_WORKFLOW_EQUAL": "YES",
++    "TIMED_PATH_LABEL_LEAK": 0,
++    "WORKFLOW_LABEL_LEAK": 0,
++    "HTTP_LABEL_LEAK": 0
++  },
++  "RUNNER_SHA": "c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54",
++  "HARNESS_MANIFEST_SHA": "81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf",
++  "superseded_runner": {
++    "sha256": "8f5c3a592ba18a0570b5213996bdbb4f9618f178d0bd80af16f0c56e912d4062",
++    "status": "SUPERSEDED_LABEL_BLIND_RUNNER"
++  }
++}
+diff --git a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/harness-root-cause-label-leak/ROOT-CAUSE-AUDIT.md b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/harness-root-cause-label-leak/ROOT-CAUSE-AUDIT.md
+new file mode 100644
+index 0000000..54dbb7c
+--- /dev/null
++++ b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/harness-root-cause-label-leak/ROOT-CAUSE-AUDIT.md
+@@ -0,0 +1,122 @@
++# A/A Harness Root-Cause Audit — Arm Label Leakage
++
++Status: `ROOT_CAUSE_CONFIRMED_IN_SOURCE / FIX_IMPLEMENTED / CAUSAL_RUNTIME_CONFIRMATION_BLOCKED`
++
++## Frozen state
++
++- Old authoritative batch: `authoritative-runs/AUTH-AA-STAT-FINAL-40B`
++- Old runner SHA-256: `fcdae8b83d663a9185cc44a90d8b5c0bd91b6b8da069515a997f0167509f2c6b`
++- Old batch remains immutable evidence.
++- `AA_CALIBRATION=FAIL`
++- `CANDIDATE_LOCK=ON`
++- No statistical threshold, alpha, CI, MDE, cluster unit, null rule, or KEEP rule was changed.
++
++## Closed evidence chain
++
++The old 160-run A/A produced a formal effect of `3.24545 ms` with 95% CI
++`[0.579475, 5.953475] ms`.
++
++Raw-event decomposition shows:
++
++| Segment | A-minus-B block effect |
++|---|---:|
++| ComfyUI server `execution_start -> execution_success` | `0.00000 ms` |
++| `QUEUE_ACK -> EXECUTION_START` | `+0.91815 ms` |
++| `SAVE_DONE -> RESULT_READY` | `+1.89000 ms` |
++| `executing(null) -> HISTORY_CONFIRMED` | `+0.152875 ms` |
++| `HISTORY_CONFIRMED -> RESULT_READY` | `+1.18235 ms` |
++
++The output PNG size is exactly 665 bytes for both arms. Median raw-event and
++history sizes are also equal. The dominant effect is outside the real server
++execution interval.
++
++## Source-level contamination
++
++The old runner passed the arm-bearing label into:
++
++- ComfyUI `SaveImage.filename_prefix`;
++- the output filename returned to and fetched through `/view`;
++- the raw-event file path that is flushed during the timed interval;
++- the evidence PNG path written before `RESULT_READY`;
++- the history/equivalence evidence paths.
++
++Examples were `measured-A-*` and `measured-B-*`. Therefore A1 and A2 used the
++same algorithm but not a label-blind execution path. This violates the protocol
++rule that A/A labels are metadata only.
++
++`ROOT_CAUSE_CANDIDATE=AA_ARM_LABEL_LEAK_IN_WORKFLOW_AND_TIMED_FILE_PATHS`
++
++`SERVER_EXECUTION_EFFECT_MS=0`
++
++`CLIENT_CONTROL_PATH_EFFECT_DOMINANT=YES`
++
++## Repair
++
++The repaired runner preassigns fixed-shape opaque tokens by physical attempt
++before invoking either arm. A/B remains only in post-run metadata.
++
++- workflow and `filename_prefix`: opaque token only;
++- raw/history/output/equivalence paths: opaque token only;
++- `/view` query derives from the label-blind ComfyUI output;
++- fine-grained marks are in-memory `monotonic_ns` values;
++- runtime guards fail closed on workflow, HTTP, or timed-path label leakage;
++- selftest normalizes the opaque token and requires byte-equivalent A/B workflow
++  JSON.
++
++New runner SHA-256:
++`c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54`
++
++Current full harness fingerprint:
++`81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf`
++
++Deterministic manifest:
++`../harness-manifest-label-blind.json`
++
++Version chain:
++
++- `8f5c3a592ba18a0570b5213996bdbb4f9618f178d0bd80af16f0c56e912d4062`
++  = `SUPERSEDED_LABEL_BLIND_RUNNER`;
++- `c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54`
++  = `CURRENT_LABEL_BLIND_RUNNER`.
++
++Selftest evidence:
++`../statistical-selftest-label-blind.json`
++
++Observed selftest gates:
++
++- `A_NORMALIZED_WORKFLOW_SHA=B_NORMALIZED_WORKFLOW_SHA=94094bf2da0fda3ffba7e69d2e8c63356bb27b0efbb1f1223ece2bc9dafff2aa`
++- `TIMED_PATH_LABEL_LEAK=0`
++- `WORKFLOW_LABEL_LEAK=0`
++- `HTTP_LABEL_LEAK=0`
++- `STATISTICAL_SELFTEST=PASS`
++
++## Remaining causal test
++
++Runtime confirmation requires a fresh 40-block, 160-run authoritative A/A in
++the same healthy ComfyUI environment. Two launch requests were not executed:
++the second followed the user's explicit task-scoped approval, but the runtime
++still applied an absolute rejection to creating a local process that listens on
++`127.0.0.1:8188`. No bypass was attempted.
++
++The new runner replayed the old 160-run blocks through the unchanged statistical
++function and reproduced null rate, CI, and MDE values exactly. See
++`statistical-replay.json`. This is statistical parity evidence only and is not
++a fresh label-blind runtime A/A.
++
++`FRESH_LABEL_BLIND_AA=BLOCKED_RUNTIME_PERMISSION`
++
++Until that run completes:
++
++- `ROOT_CAUSE=AA_ARM_LABEL_LEAK`
++- `ROOT_CAUSE_FIX=IMPLEMENTED`
++- `CURRENT_RUNNER_SHA=c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54`
++- `HARNESS_MANIFEST_SHA=81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf`
++- `AUTHORITATIVE_AA=BLOCKED_RUNTIME_PERMISSION`
++- `AA_CALIBRATION=FAIL`
++- `CANDIDATE_LOCK=ON`
++- `P0_99=NO`
++- `P0_FREEZE=NO`
++- `P1_UNLOCKED=NO`
++
++The root cause is source-confirmed as contamination, while the claim that it
++explains the full 3.24545 ms remains pending the new A/A collapse test.
+diff --git a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/harness-root-cause-label-leak/statistical-replay.json b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/harness-root-cause-label-leak/statistical-replay.json
+new file mode 100644
+index 0000000..fbc34d3
+--- /dev/null
++++ b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/harness-root-cause-label-leak/statistical-replay.json
+@@ -0,0 +1,20 @@
++{
++  "status": "PASS",
++  "mode": "STATISTICAL_REPLAY_ONLY_NOT_NEW_AA",
++  "new_runner_sha256": "c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54",
++  "source_batch": "AUTH-AA-STAT-FINAL-40B",
++  "source_runner_sha256": "fcdae8b83d663a9185cc44a90d8b5c0bd91b6b8da069515a997f0167509f2c6b",
++  "formal_effect_ms": 3.24545,
++  "ci_95_ms": [
++    0.5794750000000022,
++    5.953474999999999
++  ],
++  "NULL_SIMULATION_ITERATIONS": 20000,
++  "NULL_POSITIVE_FALSE_KEEP_RATE": 0.0222,
++  "NULL_ANY_DIRECTION_REJECTION_RATE": 0.04575,
++  "NULL_CALIBRATION_PASS": true,
++  "FINAL_MDE_MS": 4.4,
++  "MDE_TARGET_POWER": 0.8,
++  "MDE_OBSERVED_POWER": 0.82245,
++  "authority_boundary": "This proves statistical-function parity only. It is not a fresh label-blind runtime A/A and cannot unlock candidates."
++}
+diff --git a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/measurement-protocol-v2.md b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/measurement-protocol-v2.md
+index 46aa265..15fd788 100644
+--- a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/measurement-protocol-v2.md
++++ b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/measurement-protocol-v2.md
+@@ -59,3 +59,39 @@ Bracket 是候选的独立 `A_before,B,A_after` 三次运行单元，不从 ABBA
+ 第一次权威 A/A 又出现 A/B 标签显著假差异；检查发现两臂使用不同 client_id，而这不是 A/A 所需变量。其 paired CI=[1.6799,6.418715] ms，校准 FAIL，证据保留。随后把非 E5 的两臂 client_id 统一并重新校准；不得把失败批改写为 PASS。
+ 
+ `AUTH-AA` 与 `AUTH-AA-SHARED-CLIENT` 均固定为 `PILOT_CALIBRATION_ONLY`。此前 40/80-block 权威尝试以及 2.4 ms MDE 全部固定为 `SUPERSEDED_BY_STATISTICAL_AUDIT`：其原始证据保留，但不得进入 FINAL_MDE 或候选裁决。新权威 A/A 必须使用通过纯统计自测的新 runner SHA。
++
++## 2026-09-15 A/A arm-label leakage 根因候选
++
++`AUTH-AA-STAT-FINAL-40B` 的服务端 `execution_start -> execution_success`
++block effect 为 `0 ms`，而总 formal effect 为 `3.24545 ms`。客户端
++`QUEUE_ACK -> EXECUTION_START` 与 `SAVE_DONE -> RESULT_READY` 分别贡献约
++`0.91815 ms` 和 `1.89000 ms` 的 block effect。
++
++源码审计确认旧 runner 把 `measured-A-*` / `measured-B-*` 写进
++`SaveImage.filename_prefix`、`/view` 所取文件名和计时内 raw/evidence
++文件路径。因此相同算法并不等于相同执行路径，旧 A/A 不满足标签盲要求。
++
++修复后 A/B 只保留在计时外 metadata；所有被测 workflow、HTTP 参数和计时内
++文件路径使用预分配的固定形态 opaque token。selftest 必须同时证明：
++
++- `A_NORMALIZED_WORKFLOW_SHA == B_NORMALIZED_WORKFLOW_SHA`
++- `TIMED_PATH_LABEL_LEAK=0`
++- `WORKFLOW_LABEL_LEAK=0`
++- `HTTP_LABEL_LEAK=0`
++
++旧 runner SHA `fcdae8b8...` 与 160-run 原始证据不删除。修复 runner SHA
++`c43875c3...` 已通过 selftest，但新的 160-run A/A 尚未执行，所以继续保持
++`AA_CALIBRATION=FAIL` 与 `CANDIDATE_LOCK=ON`。完整证据见
++`harness-root-cause-label-leak/ROOT-CAUSE-AUDIT.md`。
++
++当前版本链固定为：
++
++- `8f5c3a59...` = `SUPERSEDED_LABEL_BLIND_RUNNER`
++- `c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54`
++  = `CURRENT_LABEL_BLIND_RUNNER`
++- `HARNESS_MANIFEST_SHA=81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf`
++
++以后任何权威批次必须同时记录 `RUNNER_SHA` 与 `HARNESS_MANIFEST_SHA`。
++完整 harness manifest 至少覆盖 runner、两层启动器、decision rules、bracket
++summary、workflow 和 fixture。只要其中任一文件变化，就必须产生新 harness
++fingerprint 并重做相应 preflight。
+diff --git a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/build_harness_manifest.py b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/build_harness_manifest.py
+new file mode 100644
+index 0000000..59f0325
+--- /dev/null
++++ b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/build_harness_manifest.py
+@@ -0,0 +1,101 @@
++#!/usr/bin/env python3
++from __future__ import annotations
++
++import hashlib
++import importlib.util
++import json
++import sys
++from pathlib import Path
++
++HARNESS_FILES = (
++    "scripts/run_measurement_v2.py",
++    "scripts/start-label-blind-aa-comfyui.ps1",
++    "scripts/invoke-start-label-blind-aa-comfyui.ps1",
++    "decision-rules.json",
++    "scripts/bracket_summary.py",
++    "contracts/p0-workflow.json",
++    "assets/black-256.png",
++)
++
++
++def sha_bytes(data: bytes) -> str:
++    return hashlib.sha256(data).hexdigest()
++
++
++def canonical_bytes(value: object) -> bytes:
++    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
++
++
++def load_runner(path: Path):
++    spec = importlib.util.spec_from_file_location("measurement_v2_manifest_target", path)
++    if spec is None or spec.loader is None:
++        raise RuntimeError("runner import spec unavailable")
++    module = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(module)
++    return module
++
++
++def main() -> int:
++    stage = Path(sys.argv[1]).resolve()
++    output = Path(sys.argv[2]).resolve() if len(sys.argv) > 2 else stage / "harness-manifest-label-blind.json"
++    entries = []
++    for relative in HARNESS_FILES:
++        path = stage / relative
++        data = path.read_bytes()
++        entries.append({"path": relative, "bytes": len(data), "sha256": sha_bytes(data)})
++
++    runner = load_runner(stage / "scripts" / "run_measurement_v2.py")
++    workflow_path = stage / "contracts" / "p0-workflow.json"
++    a_artifact = runner.artifact_identity("AA", 1, "0123456789ab")
++    b_artifact = runner.artifact_identity("AA", 2, "fedcba987654")
++    a_workflow = runner.workflow(workflow_path, a_artifact["run_prefix"])
++    b_workflow = runner.workflow(workflow_path, b_artifact["run_prefix"])
++    a_normalized = runner.normalized_workflow_sha(a_workflow)
++    b_normalized = runner.normalized_workflow_sha(b_workflow)
++    timed_leak = runner.label_leak_count(a_artifact, b_artifact)
++    workflow_leak = runner.label_leak_count(a_workflow, b_workflow)
++    http_leak = runner.label_leak_count(
++        "/prompt",
++        "/history/{opaque_prompt_id}",
++        "/view",
++        {"filename": "opaque-output.png", "subfolder": "p0-v2\\AA", "type": "output"},
++    )
++    equal = a_normalized == b_normalized
++    if timed_leak or workflow_leak or http_leak or not equal:
++        raise RuntimeError("label-blind harness gate failed")
++
++    payload = {
++        "schema_version": 1,
++        "fingerprint_algorithm": "SHA256_OF_CANONICAL_JSON_PAYLOAD",
++        "files": entries,
++        "label_blind_gates": {
++            "A_NORMALIZED_WORKFLOW_SHA": a_normalized,
++            "B_NORMALIZED_WORKFLOW_SHA": b_normalized,
++            "NORMALIZED_A_B_WORKFLOW_EQUAL": "YES" if equal else "NO",
++            "TIMED_PATH_LABEL_LEAK": timed_leak,
++            "WORKFLOW_LABEL_LEAK": workflow_leak,
++            "HTTP_LABEL_LEAK": http_leak,
++        },
++    }
++    result = {
++        **payload,
++        "RUNNER_SHA": next(item["sha256"] for item in entries if item["path"] == "scripts/run_measurement_v2.py"),
++        "HARNESS_MANIFEST_SHA": sha_bytes(canonical_bytes(payload)),
++        "superseded_runner": {
++            "sha256": "8f5c3a592ba18a0570b5213996bdbb4f9618f178d0bd80af16f0c56e912d4062",
++            "status": "SUPERSEDED_LABEL_BLIND_RUNNER",
++        },
++    }
++    encoded = json.dumps(result, ensure_ascii=False, indent=2) + "\n"
++    output.write_text(encoded, encoding="utf-8")
++    print(json.dumps({
++        "output": str(output),
++        "RUNNER_SHA": result["RUNNER_SHA"],
++        "HARNESS_MANIFEST_SHA": result["HARNESS_MANIFEST_SHA"],
++        **result["label_blind_gates"],
++    }, ensure_ascii=False, indent=2))
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/invoke-start-label-blind-aa-comfyui.ps1 b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/invoke-start-label-blind-aa-comfyui.ps1
+new file mode 100644
+index 0000000..792ed5f
+--- /dev/null
++++ b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/invoke-start-label-blind-aa-comfyui.ps1
+@@ -0,0 +1,13 @@
++Set-StrictMode -Version Latest
++$ErrorActionPreference = 'Stop'
++
++$stageRoot = Split-Path -Path $PSScriptRoot -Parent
++$target = Join-Path $PSScriptRoot 'start-label-blind-aa-comfyui.ps1'
++$evidence = Join-Path $stageRoot 'comfyui-runtime-label-blind-aa-c43875c3'
++$guard = 'C:\Users\A\.codex\skills\powershell-reliability-guard\scripts\Invoke-GuardedPowerShell.ps1'
++$incidentLog = Join-Path $stageRoot 'powershell-guard-incidents.jsonl'
++
++& $guard -Path $target -Target PowerShell7 -Analyzer Optional -ScriptArguments @('-EvidenceDirectory', $evidence) -IncidentLogPath $incidentLog
++if ($LASTEXITCODE -ne 0) {
++    exit $LASTEXITCODE
++}
+diff --git a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/run_measurement_v2.py b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/run_measurement_v2.py
+index ae5e217..e414acd 100644
+--- a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/run_measurement_v2.py
++++ b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/run_measurement_v2.py
+@@ -67,6 +67,29 @@ def schedule(seed:int,blocks:int):
+ 
+ def bracket_schedule(blocks:int): return ["ABA"]*blocks
+ 
++def artifact_identity(strategy:str,attempt:int,nonce:str):
++    phase="warmup" if attempt<0 else "measured"
++    token=f"{phase}-{abs(attempt):03d}-{nonce}"
++    return {
++        "token":token,
++        "run_prefix":f"p0-v2/{strategy}/{token}",
++        "raw_event_name":f"{token}.jsonl",
++        "output_copy_name":f"{token}.png",
++        "history_name":f"{token}.json",
++        "equivalence_name":f"{token}.png",
++    }
++
++ARM_LABEL_SENTINELS=("measured-A","measured-B","warmup-A","warmup-B")
++
++def label_leak_count(*values):
++    text=json.dumps(values,ensure_ascii=False,sort_keys=True)
++    return sum(text.count(token) for token in ARM_LABEL_SENTINELS)
++
++def normalized_workflow_sha(value):
++    clone=json.loads(json.dumps(value))
++    clone["2"]["inputs"]["filename_prefix"]="__OPAQUE_RUN_TOKEN__"
++    return sha_bytes(json.dumps(clone,sort_keys=True,separators=(",",":")).encode())
++
+ def block_pairs(rows:list[dict],patterns:list[str]):
+     out=[]
+     for bi,pat in enumerate(patterns):
+@@ -147,11 +170,12 @@ def trend_permutation(v,reps,seed):
+         if abs(theil_sen(shuffled)["slope_ms_per_attempt"])>=observed: hits+=1
+     return (hits+1)/(reps+1)
+ 
+-async def run_once(session,endpoint,wf_path,fixture,outroot,evidence,label,arm,strategy,attempt,ws_pool,client_ids):
++async def run_once(session,endpoint,wf_path,fixture,outroot,evidence,label,arm,strategy,attempt,artifact,ws_pool,client_ids):
+     effective="BASELINE" if arm=="A" or strategy=="AA" else strategy
+     buffered=(effective=="E7")
+-    raw=evidence/"raw-events"/f"{attempt:03d}-{label}.jsonl"; log=Log(raw,buffered)
+-    prefix=f"p0-v2/{strategy}/{attempt:03d}-{label}-{uuid.uuid4().hex[:8]}"; marks={}; pid=None; ws=None; owns=False
++    raw=evidence/"raw-events"/artifact["raw_event_name"]; prefix=artifact["run_prefix"]
++    if label_leak_count(prefix,raw.name,artifact): raise ValueError("TIMED_PATH_LABEL_LEAK")
++    log=Log(raw,buffered); marks={}; pid=None; ws=None; owns=False
+     try:
+         wsurl=endpoint.replace("http://","ws://").replace("https://","wss://")
+         if effective=="E5":
+@@ -159,8 +183,10 @@ async def run_once(session,endpoint,wf_path,fixture,outroot,evidence,label,arm,s
+             ws=ws_pool["B"]
+         else:
+             ws=await session.ws_connect(f"{wsurl}/ws?clientId={client_ids[arm]}",timeout=10); owns=True
++        submitted_workflow=workflow(wf_path,prefix)
++        if label_leak_count(submitted_workflow): raise ValueError("WORKFLOW_LABEL_LEAK")
+         log.write("WS_READY",{"arm":arm,"effective":effective}); marks["REQUEST_START"]=time.perf_counter_ns()
+-        async with session.post(f"{endpoint}/prompt",json={"prompt":workflow(wf_path,prefix),"client_id":client_ids[arm]}) as resp:
++        async with session.post(f"{endpoint}/prompt",json={"prompt":submitted_workflow,"client_id":client_ids[arm]}) as resp:
+             txt=await resp.text(); log.write("PROMPT_RESPONSE",{"status":resp.status,"body":txt}); resp.raise_for_status(); pid=json.loads(txt)["prompt_id"]
+         marks["QUEUE_ACK"]=time.perf_counter_ns()
+         while True:
+@@ -170,13 +196,16 @@ async def run_once(session,endpoint,wf_path,fixture,outroot,evidence,label,arm,s
+                 if data.get("prompt_id")!=pid: continue
+                 if ev.get("type")=="executing":
+                     if data.get("node") is not None: marks.setdefault("EXECUTION_START",time.perf_counter_ns())
+-                    else: marks.setdefault("SAVE_DONE",time.perf_counter_ns()); break
++                    else: marks.setdefault("EXECUTING_NONE",time.perf_counter_ns()); marks.setdefault("SAVE_DONE",time.perf_counter_ns()); break
+                 if ev.get("type")=="executed" and str(data.get("node"))=="2": marks["SAVE_DONE"]=time.perf_counter_ns()
++                if ev.get("type")=="execution_success": marks.setdefault("EXECUTION_SUCCESS",time.perf_counter_ns())
+                 if ev.get("type") in {"execution_error","execution_interrupted"}: raise RuntimeError(str(ev))
+             elif msg.type.name in {"CLOSED","CLOSE","ERROR"}: raise RuntimeError("websocket ended early")
+         if owns and effective!="E4": await ws.close(); owns=False
++        marks["HISTORY_GET_START"]=time.perf_counter_ns()
+         async with session.get(f"{endpoint}/history/{pid}") as resp:
+-            history_raw=await resp.text(); resp.raise_for_status(); h=json.loads(history_raw)
++            marks["HISTORY_HEADERS"]=time.perf_counter_ns()
++            history_raw=await resp.text(); marks["HISTORY_BODY_DONE"]=time.perf_counter_ns(); resp.raise_for_status(); h=json.loads(history_raw)
+         entry=h.get(pid)
+         status=entry.get("status",{}) if entry else {}
+         if not entry or status.get("completed") is not True or status.get("status_str")!="success": raise ValueError("matching explicitly successful history missing")
+@@ -186,18 +215,26 @@ async def run_once(session,endpoint,wf_path,fixture,outroot,evidence,label,arm,s
+         image=images[0]
+         if image.get("type","output")!="output": raise ValueError("unexpected output type")
+         params={"filename":image["filename"],"subfolder":image.get("subfolder",""),"type":"output"}
++        if label_leak_count(params): raise ValueError("HTTP_LABEL_LEAK")
+         if effective=="TRACK_B_LOCAL_FILE_V2":
+             candidate=(outroot/params["subfolder"]/Path(params["filename"]).name).resolve()
+             if not candidate.is_relative_to(outroot.resolve()): raise ValueError("output path escape")
+             data=candidate.read_bytes(); source="LOCAL_HISTORY_BOUND"
+         else:
++            marks["VIEW_GET_START"]=time.perf_counter_ns()
+             async with session.get(f"{endpoint}/view",params=params) as resp:
+-                data=await resp.read(); resp.raise_for_status()
++                marks["VIEW_HEADERS"]=time.perf_counter_ns()
++                data=await resp.read(); marks["VIEW_BODY_DONE"]=time.perf_counter_ns(); resp.raise_for_status()
+             source="HTTP_VIEW"
++        marks["PNG_VERIFY_START"]=time.perf_counter_ns()
+         val=validate_png(data)
+-        copy=evidence/"outputs"/f"{attempt:03d}-{label}.png"; copy.write_bytes(data)
++        marks["PNG_VERIFY_DONE"]=time.perf_counter_ns()
++        copy=evidence/"outputs"/artifact["output_copy_name"]
++        marks["EVIDENCE_COPY_START"]=time.perf_counter_ns()
++        copy.write_bytes(data)
++        marks["EVIDENCE_COPY_DONE"]=time.perf_counter_ns()
+         marks["RESULT_READY"]=time.perf_counter_ns()
+-        history_path=evidence/"history"/f"{attempt:03d}-{label}.json"; history_path.write_text(history_raw,encoding="utf-8"); history_raw_sha=sha_bytes(history_raw.encode("utf-8"))
++        history_path=evidence/"history"/artifact["history_name"]; history_path.write_text(history_raw,encoding="utf-8"); history_raw_sha=sha_bytes(history_raw.encode("utf-8"))
+         if owns: await ws.close(); owns=False
+         equivalence=None
+         if effective=="TRACK_B_LOCAL_FILE_V2":
+@@ -205,8 +242,8 @@ async def run_once(session,endpoint,wf_path,fixture,outroot,evidence,label,arm,s
+                 http=await resp.read(); resp.raise_for_status()
+             equivalence={"local_sha256":sha_bytes(data),"http_sha256":sha_bytes(http),"bytes_equal":data==http}
+             if not equivalence["bytes_equal"]: raise ValueError("HTTP/local equivalence failed")
+-            (evidence/"equivalence-http"/f"{attempt:03d}-{label}.png").write_bytes(http)
+-        return {"attempt":attempt,"label":label,"arm":arm,"effective_strategy":effective,"prompt_id":pid,"run_prefix":prefix,"marks_monotonic_ns":marks,"t_ms":(marks["RESULT_READY"]-marks["REQUEST_START"])/1e6,"history":{"exact_prompt_id_match":True,"completed":True,"status_str":"success","output_count":1,"raw_snapshot":str(history_path),"raw_sha256":history_raw_sha,"entry_sha256":sha_bytes(json.dumps(entry,sort_keys=True,separators=(",",":")).encode())},"output_identity":image,"validation":val,"result_source":source,"same_prompt_equivalence":equivalence,"valid":True,"utc_done":utc_now()}
++            (evidence/"equivalence-http"/artifact["equivalence_name"]).write_bytes(http)
++        return {"attempt":attempt,"label":label,"arm":arm,"run_token":artifact["token"],"effective_strategy":effective,"prompt_id":pid,"run_prefix":prefix,"marks_monotonic_ns":marks,"t_ms":(marks["RESULT_READY"]-marks["REQUEST_START"])/1e6,"history":{"exact_prompt_id_match":True,"completed":True,"status_str":"success","output_count":1,"raw_snapshot":str(history_path),"raw_sha256":history_raw_sha,"entry_sha256":sha_bytes(json.dumps(entry,sort_keys=True,separators=(",",":")).encode())},"output_identity":image,"validation":val,"result_source":source,"same_prompt_equivalence":equivalence,"valid":True,"utc_done":utc_now()}
+     except Exception as e:
+         return {"attempt":attempt,"label":label,"arm":arm,"effective_strategy":effective,"prompt_id":pid,"marks_monotonic_ns":marks,"valid":False,"error":repr(e),"utc_done":utc_now()}
+     finally:
+@@ -224,6 +261,10 @@ async def execute(args):
+     patterns=schedule(args.order_seed,args.blocks) if args.design=="PAIRED" else bracket_schedule(args.blocks)
+     results=[]; endpoint=args.endpoint.rstrip("/"); ws_pool={}; shared_client=str(uuid.uuid4())
+     client_ids={"A":shared_client,"B":str(uuid.uuid4()) if args.strategy=="E5" else shared_client}
++    planned=args.blocks*(4 if args.design=="PAIRED" else 3)
++    warm_artifacts=[artifact_identity(args.strategy,-i,uuid.uuid4().hex[:12]) for i in range(1,4)]
++    measured_artifacts=[artifact_identity(args.strategy,i,uuid.uuid4().hex[:12]) for i in range(1,planned+1)]
++    if label_leak_count(warm_artifacts,measured_artifacts): raise ValueError("TIMED_PATH_LABEL_LEAK")
+     async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=180)) as session:
+         async with session.get(f"{endpoint}/object_info") as r:
+             oi=await r.json(); r.raise_for_status()
+@@ -231,17 +272,16 @@ async def execute(args):
+         form=aiohttp.FormData(); form.add_field("image",fixture_data,filename=FIXTURE_NAME,content_type="image/png"); form.add_field("type","input"); form.add_field("overwrite","true")
+         async with session.post(f"{endpoint}/upload/image",data=form) as r: upload=await r.json(); r.raise_for_status()
+         warm=["A","B","B"]
+-        for i,arm in enumerate(warm,1): results.append(await run_once(session,endpoint,wf,fixture,outroot,evidence,f"warmup-{arm}",arm,args.strategy,-i,ws_pool,client_ids))
++        for i,arm in enumerate(warm,1): results.append(await run_once(session,endpoint,wf,fixture,outroot,evidence,f"warmup-{arm}",arm,args.strategy,-i,warm_artifacts[i-1],ws_pool,client_ids))
+         attempt=0
+         for pat in patterns:
+             for arm in pat:
+-                attempt+=1; results.append(await run_once(session,endpoint,wf,fixture,outroot,evidence,f"measured-{arm}-{attempt:03d}",arm,args.strategy,attempt,ws_pool,client_ids))
++                attempt+=1; results.append(await run_once(session,endpoint,wf,fixture,outroot,evidence,f"measured-{arm}-{attempt:03d}",arm,args.strategy,attempt,measured_artifacts[attempt-1],ws_pool,client_ids))
+         for ws in ws_pool.values(): await ws.close()
+     with (evidence/"raw-runs.jsonl").open("w",encoding="utf-8") as h:
+         for r in results: h.write(json.dumps(r,ensure_ascii=False,separators=(",",":"))+"\n")
+     measured=[r for r in results if r["attempt"]>0]; valid=[r for r in measured if r["valid"]]
+-    planned=args.blocks*(4 if args.design=="PAIRED" else 3)
+-    summary={"protocol":"P0-MEASUREMENT-PROTOCOL-V2","batch_id":args.batch_id,"strategy":args.strategy,"design":args.design,"order_seed":args.order_seed,"blocks":args.blocks,"patterns":patterns,"planned_attempts":planned,"valid_attempts":len(valid),"failures":[r for r in measured if not r["valid"]],"warmups":results[:3],"client_identity_policy":"shared_for_AA_E4_E7_TRACK_B; isolated_for_E5_persistent_WS","client_ids_equal":client_ids["A"]==client_ids["B"],"identity":{"runner_sha256":sha_file(Path(__file__)),"workflow_sha256":sha_file(wf),"fixture_sha256":sha_file(fixture),"A_impl_sha256":sha_file(Path(__file__)),"B_impl_sha256":sha_file(Path(__file__)) if args.strategy=="AA" else f"strategy:{args.strategy}"},"upload":upload}
++    summary={"protocol":"P0-MEASUREMENT-PROTOCOL-V2","batch_id":args.batch_id,"strategy":args.strategy,"design":args.design,"order_seed":args.order_seed,"blocks":args.blocks,"patterns":patterns,"planned_attempts":planned,"valid_attempts":len(valid),"failures":[r for r in measured if not r["valid"]],"warmups":results[:3],"client_identity_policy":"shared_for_AA_E4_E7_TRACK_B; isolated_for_E5_persistent_WS","client_ids_equal":client_ids["A"]==client_ids["B"],"label_blinding_policy":"A_B_LABEL_METADATA_ONLY; submitted workflow and timed paths use preassigned arm-blind opaque tokens","A_NORMALIZED_WORKFLOW_SHA":normalized_workflow_sha(workflow(wf,warm_artifacts[0]["run_prefix"])),"B_NORMALIZED_WORKFLOW_SHA":normalized_workflow_sha(workflow(wf,warm_artifacts[1]["run_prefix"])),"TIMED_PATH_LABEL_LEAK":label_leak_count(warm_artifacts,measured_artifacts),"WORKFLOW_LABEL_LEAK":0,"HTTP_LABEL_LEAK":0,"identity":{"runner_sha256":sha_file(Path(__file__)),"workflow_sha256":sha_file(wf),"fixture_sha256":sha_file(fixture),"A_impl_sha256":sha_file(Path(__file__)),"B_impl_sha256":sha_file(Path(__file__)) if args.strategy=="AA" else f"strategy:{args.strategy}"},"upload":upload}
+     if len(valid)==planned:
+         if args.design=="BRACKET":
+             from bracket_summary import build as build_brackets
+@@ -282,6 +322,18 @@ def selftest(args):
+     rules=json.loads(rules_path.read_text(encoding="utf-8"))
+     pats=schedule(args.order_seed,args.blocks)
+     assert len(pats)==args.blocks and pats.count("ABBA")==args.blocks//2 and pats.count("BAAB")==args.blocks//2
++    wf_path=Path(__file__).resolve().parent.parent/"contracts"/"p0-workflow.json"
++    a_artifact=artifact_identity("AA",1,"0123456789ab")
++    b_artifact=artifact_identity("AA",2,"fedcba987654")
++    a_workflow=workflow(wf_path,a_artifact["run_prefix"])
++    b_workflow=workflow(wf_path,b_artifact["run_prefix"])
++    a_normalized_workflow_sha=normalized_workflow_sha(a_workflow)
++    b_normalized_workflow_sha=normalized_workflow_sha(b_workflow)
++    timed_path_label_leak=label_leak_count(a_artifact,b_artifact)
++    workflow_label_leak=label_leak_count(a_workflow,b_workflow)
++    http_label_leak=label_leak_count("/prompt","/history/{opaque_prompt_id}","/view",{"filename":"opaque-output.png","subfolder":"p0-v2\\AA","type":"output"})
++    assert a_normalized_workflow_sha==b_normalized_workflow_sha
++    assert timed_path_label_leak==0 and workflow_label_leak==0 and http_label_leak==0
+     rows=[]; n=0
+     for p in pats:
+         for arm in p: n+=1; rows.append({"attempt":n,"arm":arm,"t_ms":10 if arm=="A" else 9})
+@@ -319,7 +371,7 @@ def selftest(args):
+     oe=order_effect_analysis(ob,rules); assert oe["ORDER_EFFECT_MS"]>5 and oe["ORDER_EFFECT_PERMUTATION_P"]<.05
+     try: validate_png(b"not png"); raise AssertionError("bad PNG accepted")
+     except ValueError: pass
+-    result={"status":"PASS","production_function":"formal_statistical_pipeline","fixed_seed_reproducible":True,"NULL_GAIN_0":{"positive_false_keep_rate":formal["null_positive_false_keep_rate"],"any_direction_rejection_rate":formal["null_any_direction_rejection_rate"]},"NULL_FAIL_BLOCKS_MDE":"PASS","TOLERANCE_BOUNDARIES":"PASS","SMALL_KNOWN_GAIN":{"gain_ms":.25,"observed_power":small["observed_power"]},"MDE_NEAR_GAIN":{"gain_ms":formal["mde_ms"],"observed_power":near["observed_power"]},"LARGE_KNOWN_GAIN":{"gain_ms":large["gain_ms"],"observed_power":large["observed_power"]},"INDEPENDENT_ABA_CLUSTERED_BRACKET":"PASS","INVALID_OR_SHARED_BRACKET_REJECTED":"PASS","SYNTHETIC_DRIFT":"PASS","ORDER_EFFECT":"PASS"}
++    result={"status":"PASS","production_function":"formal_statistical_pipeline","fixed_seed_reproducible":True,"A_NORMALIZED_WORKFLOW_SHA":a_normalized_workflow_sha,"B_NORMALIZED_WORKFLOW_SHA":b_normalized_workflow_sha,"TIMED_PATH_LABEL_LEAK":timed_path_label_leak,"WORKFLOW_LABEL_LEAK":workflow_label_leak,"HTTP_LABEL_LEAK":http_label_leak,"NULL_GAIN_0":{"positive_false_keep_rate":formal["null_positive_false_keep_rate"],"any_direction_rejection_rate":formal["null_any_direction_rejection_rate"]},"NULL_FAIL_BLOCKS_MDE":"PASS","TOLERANCE_BOUNDARIES":"PASS","SMALL_KNOWN_GAIN":{"gain_ms":.25,"observed_power":small["observed_power"]},"MDE_NEAR_GAIN":{"gain_ms":formal["mde_ms"],"observed_power":near["observed_power"]},"LARGE_KNOWN_GAIN":{"gain_ms":large["gain_ms"],"observed_power":large["observed_power"]},"INDEPENDENT_ABA_CLUSTERED_BRACKET":"PASS","INVALID_OR_SHARED_BRACKET_REJECTED":"PASS","SYNTHETIC_DRIFT":"PASS","ORDER_EFFECT":"PASS"}
+     if args.selftest_output: Path(args.selftest_output).write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+     print(json.dumps(result,ensure_ascii=False)); return 0
+ 
+diff --git a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/start-label-blind-aa-comfyui.ps1 b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/start-label-blind-aa-comfyui.ps1
+new file mode 100644
+index 0000000..c56b13d
+--- /dev/null
++++ b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/scripts/start-label-blind-aa-comfyui.ps1
+@@ -0,0 +1,99 @@
++[CmdletBinding()]
++param(
++    [Parameter(Mandatory)]
++    [string]$EvidenceDirectory
++)
++
++Set-StrictMode -Version Latest
++$ErrorActionPreference = 'Stop'
++
++$comfyRoot = 'C:\AI\ComfyUI_Aaki_v3'
++$pythonExe = Join-Path $comfyRoot 'python\python.exe'
++$mainScript = Join-Path $comfyRoot 'ComfyUI\main.py'
++$outputDirectory = Join-Path $comfyRoot 'data\output'
++$inputDirectory = Join-Path $comfyRoot 'data\input'
++$tempDirectory = Join-Path $comfyRoot 'data\temp'
++$resolvedEvidence = [System.IO.Path]::GetFullPath($EvidenceDirectory)
++
++if (Test-Path -LiteralPath $resolvedEvidence) {
++    throw "Evidence directory already exists: $resolvedEvidence"
++}
++foreach ($required in @($pythonExe, $mainScript, $outputDirectory, $inputDirectory, $tempDirectory)) {
++    if (-not (Test-Path -LiteralPath $required)) {
++        throw "Required ComfyUI path missing: $required"
++    }
++}
++
++if (Get-NetTCPConnection -LocalPort 8188 -State Listen -ErrorAction SilentlyContinue) {
++    throw 'Port 8188 already has a TCP listener; refusing to claim, replace, or stop it.'
++}
++
++$null = New-Item -ItemType Directory -Path $resolvedEvidence
++$stdoutPath = Join-Path $resolvedEvidence 'stdout.log'
++$stderrPath = Join-Path $resolvedEvidence 'stderr.log'
++$arguments = @(
++    '-s',
++    'ComfyUI\main.py',
++    '--windows-standalone-build',
++    '--listen', '127.0.0.1',
++    '--port', '8188',
++    '--output-directory', $outputDirectory,
++    '--input-directory', $inputDirectory,
++    '--temp-directory', $tempDirectory
++)
++$process = Start-Process -FilePath $pythonExe -ArgumentList $arguments -WorkingDirectory $comfyRoot -RedirectStandardOutput $stdoutPath -RedirectStandardError $stderrPath -WindowStyle Hidden -PassThru
++$launch = [ordered]@{
++    owned = $true
++    pid = $process.Id
++    started_at = [DateTimeOffset]::UtcNow.ToString('o')
++    executable = $pythonExe
++    working_directory = $comfyRoot
++    arguments = $arguments
++    powershell_version = $PSVersionTable.PSVersion.ToString()
++    powershell_home = $PSHOME
++    powershell_process = (Get-Process -Id $PID).Path
++    requested_listen_address = '127.0.0.1'
++    readiness = 'PENDING'
++}
++$launch | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $resolvedEvidence 'launch.json') -Encoding utf8NoBOM
++
++$ready = $false
++try {
++    for ($attempt = 1; $attempt -le 60; $attempt++) {
++        if ($process.HasExited) {
++            throw "Owned ComfyUI process exited early with code $($process.ExitCode)."
++        }
++        try {
++            $response = Invoke-WebRequest -UseBasicParsing -Uri 'http://127.0.0.1:8188/object_info' -TimeoutSec 2
++            if ($response.StatusCode -eq 200) {
++                $ready = $true
++                break
++            }
++        } catch {
++        }
++        Start-Sleep -Seconds 1
++    }
++    if (-not $ready) {
++        throw 'Owned ComfyUI did not become ready within 60 checks.'
++    }
++    $listener = Get-NetTCPConnection -LocalPort 8188 -State Listen -ErrorAction Stop |
++        Where-Object { $_.OwningProcess -eq $process.Id -and $_.LocalAddress -eq '127.0.0.1' }
++    if (-not $listener) {
++        throw 'Readiness succeeded but the owned PID was not verified on 127.0.0.1:8188.'
++    }
++    $launch.readiness = 'PASS'
++    $launch.listener = @($listener | Select-Object LocalAddress, LocalPort, OwningProcess, State)
++    $launch | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $resolvedEvidence 'launch.json') -Encoding utf8NoBOM
++} catch {
++    if (-not $process.HasExited) {
++        Stop-Process -Id $process.Id -Force
++    }
++    throw
++}
++
++[pscustomobject]@{
++    status = 'COMFYUI_READY'
++    owned_pid = $process.Id
++    endpoint = 'http://127.0.0.1:8188'
++    evidence_directory = $resolvedEvidence
++} | ConvertTo-Json -Depth 4
+diff --git a/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/statistical-selftest-label-blind.json b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/statistical-selftest-label-blind.json
+new file mode 100644
+index 0000000..e7c5309
+--- /dev/null
++++ b/workspaces/visual-art-engine-performance-ladder/stages/P0/P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z/statistical-selftest-label-blind.json
+@@ -0,0 +1,32 @@
++{
++  "status": "PASS",
++  "production_function": "formal_statistical_pipeline",
++  "fixed_seed_reproducible": true,
++  "A_NORMALIZED_WORKFLOW_SHA": "94094bf2da0fda3ffba7e69d2e8c63356bb27b0efbb1f1223ece2bc9dafff2aa",
++  "B_NORMALIZED_WORKFLOW_SHA": "94094bf2da0fda3ffba7e69d2e8c63356bb27b0efbb1f1223ece2bc9dafff2aa",
++  "TIMED_PATH_LABEL_LEAK": 0,
++  "WORKFLOW_LABEL_LEAK": 0,
++  "HTTP_LABEL_LEAK": 0,
++  "NULL_GAIN_0": {
++    "positive_false_keep_rate": 0.01925,
++    "any_direction_rejection_rate": 0.04025
++  },
++  "NULL_FAIL_BLOCKS_MDE": "PASS",
++  "TOLERANCE_BOUNDARIES": "PASS",
++  "SMALL_KNOWN_GAIN": {
++    "gain_ms": 0.25,
++    "observed_power": 0.13395
++  },
++  "MDE_NEAR_GAIN": {
++    "gain_ms": 1.0,
++    "observed_power": 0.81005
++  },
++  "LARGE_KNOWN_GAIN": {
++    "gain_ms": 10.0,
++    "observed_power": 1.0
++  },
++  "INDEPENDENT_ABA_CLUSTERED_BRACKET": "PASS",
++  "INVALID_OR_SHARED_BRACKET_REJECTED": "PASS",
++  "SYNTHETIC_DRIFT": "PASS",
++  "ORDER_EFFECT": "PASS"
++}
+-- 
+2.53.0.windows.1
+

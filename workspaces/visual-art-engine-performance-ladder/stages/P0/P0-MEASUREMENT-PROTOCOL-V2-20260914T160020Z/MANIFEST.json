@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-14T18:37:19.852506+00:00",
+  "generated_at": "2026-09-14T18:39:57.586905+00:00",
   "root": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z",
   "file_count": 4051,
   "files": [
@@ -12536,8 +12536,8 @@
     },
     {
       "path": "harness-root-cause-label-leak/ROOT-CAUSE-AUDIT.md",
-      "bytes": 4489,
-      "sha256": "465a0cbb84b32e28c0f40b8ee7f5f79afeca0c45b2d77a1b9970b7354dc933e9"
+      "bytes": 4631,
+      "sha256": "37d41b891cffed26711ed6dbb8970abab453a2bef335fe4881fd690506025f82"
     },
     {
       "path": "harness-root-cause-label-leak/statistical-replay.json",

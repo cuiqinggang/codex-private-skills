@@ -2,6 +2,9 @@
 
 Status: `ROOT_CAUSE_CONFIRMED_IN_SOURCE / FIX_IMPLEMENTED / CAUSAL_RUNTIME_CONFIRMATION_BLOCKED`
 
+- Repair commit: `3d4ef1c8e2c32c05c5400b019335dd4c1dca3aa6`
+- Preserved patch: `0001-fix-p0-make-authoritative-AA-harness-label-blind.patch`
+
 ## Frozen state
 
 - Old authoritative batch: `authoritative-runs/AUTH-AA-STAT-FINAL-40B`
