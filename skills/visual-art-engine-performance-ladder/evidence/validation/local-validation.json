@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-14T12:10:38.2651976+00:00",
+  "generated_at": "2026-09-14T20:10:38.2651976+08:00",
   "skill_id": "visual-art-engine-performance-ladder",
   "version": "1.0.0",
   "status": "PASS",
@@ -43,5 +43,7 @@
   "protected_visual_art_engine_sha256": "F8B8DFC11AE72B7A3CC7F3FF2E204F1A54136C0A4C98FC0C227B80EAE35BBBEE",
   "p0_benchmark_executed": false,
   "performance_optimization_run": false,
-  "h3_run": false
+  "h3_run": false,
+  "github_published": true,
+  "github_content_commit": "cbb1c54"
 }
