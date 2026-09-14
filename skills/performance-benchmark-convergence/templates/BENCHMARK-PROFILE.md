@@ -1,0 +1,137 @@
+# Benchmark Profile Template
+
+Copy this file for each new benchmark target. Replace placeholders; do not silently remove fields.
+
+## Identity
+
+- `PROJECT=`
+- `STAGE=`
+- `TASK_ID=`
+- `CONTRACT_ID=`
+- `PROFILE_VERSION=`
+- `DATE=`
+
+## Runtime
+
+- `RUNTIME_ROOT=`
+- `START_COMMAND=`
+- `ENDPOINT=`
+- `READINESS_PROBE=`
+- `EXPECTED_LISTEN_ADDRESS=`
+- `EXPECTED_PORT=`
+- `OS=`
+- `PYTHON_RUNTIME=`
+- `KEY_LIBRARY_VERSIONS=`
+- `HARDWARE_IDENTITY=`
+
+## Fixed task/workload
+
+- `WORKFLOW_OR_FIXTURE=`
+- `WORKFLOW_SHA=`
+- `INPUT_ASSETS=`
+- `INPUT_ASSET_SHAS=`
+- `EXPECTED_OUTPUT_COUNT=`
+- `EXPECTED_OUTPUT_TYPE=`
+- `EXPECTED_OUTPUT_DIMENSIONS=`
+- `EXPECTED_OUTPUT_SHA_OR_SEMANTIC_VALIDATOR=`
+
+## Timing contract
+
+- `T_START_EVENT=`
+- `T_END_EVENT=`
+- `T_END_TO_END_DEFINITION=`
+- `MONOTONIC_CLOCK=`
+- `TIMED_WRITES_ALLOWED=`
+
+## Harness identity
+
+- `RUNNER_PATH=`
+- `RUNNER_SHA=`
+- `HARNESS_MANIFEST_PATH=`
+- `HARNESS_MANIFEST_SHA=`
+- `DECISION_RULES_PATH=`
+- `DECISION_RULES_SHA=`
+- `LAUNCHER_PATHS=`
+- `WORKFLOW_PATH=`
+- `VALIDATOR_PATH=`
+
+## Evidence
+
+- `EVIDENCE_ROOT=`
+- `DEEPEST_EXPECTED_PATH_PREFLIGHT=PASS/FAIL`
+- `RAW_EVENTS_PATH=`
+- `RAW_RESPONSE_PATH=`
+- `PAIRED_RESULTS_PATH=`
+- `ENVIRONMENT_PATH=`
+
+## Label-blind gates
+
+- `WORKFLOW_LABEL_LEAK=`
+- `TIMED_PATH_LABEL_LEAK=`
+- `HTTP_LABEL_LEAK=`
+- `NORMALIZED_A_B_WORKFLOW_EQUAL=`
+- `A_NORMALIZED_WORKFLOW_SHA=`
+- `B_NORMALIZED_WORKFLOW_SHA=`
+
+## Statistical configuration
+
+- `ALPHA=`
+- `CI_LEVEL=`
+- `NULL_SIMULATION_ITERATIONS=`
+- `MDE_TARGET_POWER=`
+- `FINAL_MDE=`
+- `ORDER_EQUIVALENCE_BOUND=`
+- `BLOCK_PATTERN=`
+- `ORDER_SEED=`
+- `INDEPENDENT_UNIT=`
+- `BOOTSTRAP_OR_ESTIMATOR=`
+
+## A/A calibration
+
+- `AA_PLANNED_RUNS=`
+- `AA_VALID_RUNS=`
+- `AA_FORMAL_EFFECT=`
+- `AA_FORMAL_95CI=`
+- `AA_NOISE_FLOOR=`
+- `ORDER_EFFECT=`
+- `ORDER_EFFECT_95CI=`
+- `ENVIRONMENT_DRIFT=`
+- `AA_CALIBRATION=PASS/FAIL/INCONCLUSIVE`
+
+## Candidate lock
+
+- `CANDIDATE_LOCK=ON/OFF`
+
+Candidate work may begin only when the project's frozen rules permit `CANDIDATE_LOCK=OFF`.
+
+## Candidate A/B
+
+- `BASELINE_IMPLEMENTATION_A=`
+- `CANDIDATE_IMPLEMENTATION_B=`
+- `A_SHA=`
+- `B_SHA=`
+- `PAIRED_EFFECT=`
+- `PAIRED_95CI=`
+- `OUTPUT_VALIDITY=`
+- `DRIFT_STATUS=`
+- `DECISION=KEEP/ROLLBACK/INCONCLUSIVE/INVALID_ENVIRONMENT_DRIFT`
+
+## Confirmation
+
+- `CONFIRMATION_BATCH_1=`
+- `CONFIRMATION_BATCH_2=`
+- `CONFIRMATION_STATUS=`
+
+## Project convergence / 99
+
+- `T_CURRENT=`
+- `EXTERNAL_FRONTIER=`
+- `T_PHY_OR_RANGE=`
+- `REMAINING_HIGH_VALUE_CANDIDATES=`
+- `STABILITY_STATUS=`
+- `PROJECT_SCORE_99=YES/NO`
+- `FREEZE=YES/NO`
+
+## Notes / exceptions
+
+Record any blocked runtime permission, path-length issue, launcher anomaly, environment change, or deviation here. Deviations must never be hidden in a PASS result.
