@@ -36,4 +36,13 @@ code{background:#e9edf2;padding:2px 5px;border-radius:4px}
 </div>
 <p><a href="references/failure-lessons.md">失败经验</a> · <a href="references/evidence-map.md">证据地图</a> · <a href="references/measurement-protocol.md">Measurement Protocol V2</a></p>
 <p>旧 label-contaminated A/A 的 CI 全正假效应已经消失，<code>LABEL_BLIND_FIX_CAUSALLY_CONFIRMED=YES</code>。但 order-effect equivalence 证据不足，故 <code>AA_CALIBRATION=INCONCLUSIVE</code>、<code>CANDIDATE_LOCK=ON</code>。本页不宣称候选解锁或 P0 99。</p>
+<h2>P0 极限搜索收口（2026-09-15）</h2>
+<p class="status">RELATIVE WIN CONFIRMED / ABSOLUTE 99 NOT CERTIFIED / LOCK ON</p>
+<div class="grid">
+<div class="card"><strong>最新 A/A</strong><br>160/160；effect -1.469375 ms；CI [-3.10655,0.1678]；environment drift FAIL。</div>
+<div class="card"><strong>最佳候选</strong><br>R6_SUCCESS_LOCAL_HISTORY_V2；P0-CONTROL-V2-CANDIDATE。</div>
+<div class="card"><strong>两批确认</strong><br>effect 11.451175 / 8.465825 ms；两条 CI 均全正。</div>
+<div class="card"><strong>绝对分布</strong><br>pooled P50 41.5258 ms；P95 58.000845 ms；min/max 29.7895/71.9496 ms。</div>
+</div>
+<p><code>P0_99=NO</code> · <code>P0_FREEZE=NO</code> · <code>CANDIDATE_LOCK=ON</code>。相对收益真实，但没有把 smoke、min 或最好单批冒充当前 99。</p>
 </main></body></html>

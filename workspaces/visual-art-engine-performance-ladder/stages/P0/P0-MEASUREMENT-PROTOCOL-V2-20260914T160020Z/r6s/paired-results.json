@@ -1,0 +1,303 @@
+{
+  "protocol": "P0-MEASUREMENT-PROTOCOL-V2",
+  "batch_id": "R6-SMOKE-2B-20260915",
+  "strategy": "R6_SUCCESS_LOCAL_HISTORY_V2",
+  "design": "PAIRED",
+  "order_seed": 2026091524,
+  "blocks": 2,
+  "patterns": [
+    "ABBA",
+    "BAAB"
+  ],
+  "planned_attempts": 8,
+  "valid_attempts": 8,
+  "failures": [],
+  "warmups": [
+    {
+      "attempt": -1,
+      "label": "warmup-A",
+      "arm": "A",
+      "run_token": "warmup-001-35a6f145c25c",
+      "effective_strategy": "BASELINE",
+      "prompt_id": "24c82e1b-fd31-4b94-97e0-0fda17ccbd14",
+      "run_prefix": "p0-v2/R6_SUCCESS_LOCAL_HISTORY_V2/warmup-001-35a6f145c25c",
+      "marks_monotonic_ns": {
+        "REQUEST_START": 300466700143400,
+        "QUEUE_ACK": 300466706618300,
+        "EXECUTION_START": 300466715854700,
+        "SAVE_DONE": 300466721147000,
+        "EXECUTION_SUCCESS": 300466721903000,
+        "EXECUTING_NONE": 300466723293100,
+        "HISTORY_GET_START": 300466723893300,
+        "HISTORY_HEADERS": 300467619927100,
+        "HISTORY_BODY_DONE": 300467619967200,
+        "VIEW_GET_START": 300467620326900,
+        "VIEW_HEADERS": 300467633439800,
+        "VIEW_BODY_DONE": 300467633560000,
+        "PNG_VERIFY_START": 300467633572800,
+        "PNG_VERIFY_DONE": 300467634293300,
+        "EVIDENCE_COPY_START": 300467634317100,
+        "EVIDENCE_COPY_DONE": 300467634959600,
+        "RESULT_READY": 300467634960900
+      },
+      "t_ms": 934.8175,
+      "history": {
+        "exact_prompt_id_match": true,
+        "completed": true,
+        "status_str": "success",
+        "output_count": 1,
+        "raw_snapshot": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z\\r6s\\history\\warmup-001-35a6f145c25c.json",
+        "raw_sha256": "65cab5105e7dd798aa6f6dbabef87cf4278a410d303803f2c88b3ef8be8dd26f",
+        "entry_sha256": "6582758a14fdb73455de60b4d0da35e4a6de7c2db05c32b8525d65c5a3d7c09e"
+      },
+      "output_identity": {
+        "filename": "warmup-001-35a6f145c25c_00001_.png",
+        "subfolder": "p0-v2\\R6_SUCCESS_LOCAL_HISTORY_V2",
+        "type": "output"
+      },
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "decoded_bytes": 196864,
+        "sha256": "2bc0b0a7ea2ad5b3702ba49b9fc4da613e9fa24a828a952ced1cd885efb39195"
+      },
+      "result_source": "HTTP_VIEW",
+      "same_prompt_equivalence": null,
+      "valid": true,
+      "utc_done": "2026-09-14T20:14:46.698045+00:00"
+    },
+    {
+      "attempt": -2,
+      "label": "warmup-B",
+      "arm": "B",
+      "run_token": "warmup-002-107ea3139aa7",
+      "effective_strategy": "R2_EXECUTED_LOCAL_PARALLEL_V2",
+      "prompt_id": "a3bc642c-856b-40a9-88f2-8d6053f8e29d",
+      "run_prefix": "p0-v2/R6_SUCCESS_LOCAL_HISTORY_V2/warmup-002-107ea3139aa7",
+      "marks_monotonic_ns": {
+        "REQUEST_START": 300467639915100,
+        "QUEUE_ACK": 300467647605500,
+        "EXECUTION_START": 300467686399500,
+        "SAVE_DONE": 300467689115000,
+        "EXECUTION_SUCCESS": 300467689605900,
+        "LOCAL_READ_START": 300467691199500,
+        "LOCAL_READ_DONE": 300467700357600,
+        "PNG_VERIFY_START": 300467700359200,
+        "PNG_VERIFY_DONE": 300467700920800,
+        "HISTORY_GET_START": 300467701085600,
+        "EXECUTING_NONE": 300467701528600,
+        "HISTORY_HEADERS": 300467702986100,
+        "HISTORY_BODY_DONE": 300467703024000,
+        "RESULT_READY": 300467703227500,
+        "EVIDENCE_COPY_START": 300467703969900,
+        "EVIDENCE_COPY_DONE": 300467704442300,
+        "EQUIVALENCE_VIEW_START": 300467705156300,
+        "EQUIVALENCE_VIEW_DONE": 300467707811900
+      },
+      "t_ms": 63.3124,
+      "history": {
+        "exact_prompt_id_match": true,
+        "completed": true,
+        "status_str": "success",
+        "output_count": 1,
+        "raw_snapshot": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z\\r6s\\history\\warmup-002-107ea3139aa7.json",
+        "raw_sha256": "469e11276a1cfcfd52e079a04ca1f63e6c1f64e6df5c3947a469ba5ec1f412bc",
+        "entry_sha256": "96615a1ea011220567f60b2040915c421556da6688d776906660f8a1ae4ab081"
+      },
+      "output_identity": {
+        "filename": "warmup-002-107ea3139aa7_00001_.png",
+        "subfolder": "p0-v2\\R6_SUCCESS_LOCAL_HISTORY_V2",
+        "type": "output"
+      },
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "decoded_bytes": 196864,
+        "sha256": "1ba5fc220fbe46b23975881c253d85a25fff9b97708a0b0bd56b26a4d2c874bc"
+      },
+      "result_source": "LOCAL_EXECUTED_AND_HISTORY_BOUND",
+      "same_prompt_equivalence": {
+        "local_sha256": "1ba5fc220fbe46b23975881c253d85a25fff9b97708a0b0bd56b26a4d2c874bc",
+        "http_sha256": "1ba5fc220fbe46b23975881c253d85a25fff9b97708a0b0bd56b26a4d2c874bc",
+        "bytes_equal": true
+      },
+      "valid": true,
+      "utc_done": "2026-09-14T20:14:46.769854+00:00"
+    },
+    {
+      "attempt": -3,
+      "label": "warmup-B",
+      "arm": "B",
+      "run_token": "warmup-003-69553602ac5f",
+      "effective_strategy": "R2_EXECUTED_LOCAL_PARALLEL_V2",
+      "prompt_id": "e2b2fe27-c025-4fb2-b8bb-28972f563c68",
+      "run_prefix": "p0-v2/R6_SUCCESS_LOCAL_HISTORY_V2/warmup-003-69553602ac5f",
+      "marks_monotonic_ns": {
+        "REQUEST_START": 300467711270400,
+        "QUEUE_ACK": 300467716767600,
+        "EXECUTION_START": 300467721381000,
+        "SAVE_DONE": 300467726198000,
+        "EXECUTION_SUCCESS": 300467727158600,
+        "LOCAL_READ_START": 300467728054000,
+        "LOCAL_READ_DONE": 300467737392700,
+        "PNG_VERIFY_START": 300467737394600,
+        "PNG_VERIFY_DONE": 300467738055900,
+        "HISTORY_GET_START": 300467738315200,
+        "EXECUTING_NONE": 300467739000500,
+        "HISTORY_HEADERS": 300467739471300,
+        "HISTORY_BODY_DONE": 300467739507300,
+        "RESULT_READY": 300467739716600,
+        "EVIDENCE_COPY_START": 300467741188600,
+        "EVIDENCE_COPY_DONE": 300467742833300,
+        "EQUIVALENCE_VIEW_START": 300467743497200,
+        "EQUIVALENCE_VIEW_DONE": 300467745537000
+      },
+      "t_ms": 28.4462,
+      "history": {
+        "exact_prompt_id_match": true,
+        "completed": true,
+        "status_str": "success",
+        "output_count": 1,
+        "raw_snapshot": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z\\r6s\\history\\warmup-003-69553602ac5f.json",
+        "raw_sha256": "dec8f4eb489238125d44f99e00e28055903fc0464ff268236939a499355e45b2",
+        "entry_sha256": "9813b4e55b99606684506be5160c6bbe7534f49044de4c60bb6659354eb01e46"
+      },
+      "output_identity": {
+        "filename": "warmup-003-69553602ac5f_00001_.png",
+        "subfolder": "p0-v2\\R6_SUCCESS_LOCAL_HISTORY_V2",
+        "type": "output"
+      },
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "decoded_bytes": 196864,
+        "sha256": "b5e5490b25ccb7b5bf9a901507c24991d4853510e1c5bea3329aad59ea478728"
+      },
+      "result_source": "LOCAL_EXECUTED_AND_HISTORY_BOUND",
+      "same_prompt_equivalence": {
+        "local_sha256": "b5e5490b25ccb7b5bf9a901507c24991d4853510e1c5bea3329aad59ea478728",
+        "http_sha256": "b5e5490b25ccb7b5bf9a901507c24991d4853510e1c5bea3329aad59ea478728",
+        "bytes_equal": true
+      },
+      "valid": true,
+      "utc_done": "2026-09-14T20:14:46.808006+00:00"
+    }
+  ],
+  "client_identity_policy": "shared_for_AA_E4_E7_TRACK_B; isolated_for_E5_persistent_WS",
+  "client_ids_equal": true,
+  "label_blinding_policy": "A_B_LABEL_METADATA_ONLY; submitted workflow and timed paths use preassigned arm-blind opaque tokens",
+  "A_NORMALIZED_WORKFLOW_SHA": "94094bf2da0fda3ffba7e69d2e8c63356bb27b0efbb1f1223ece2bc9dafff2aa",
+  "B_NORMALIZED_WORKFLOW_SHA": "94094bf2da0fda3ffba7e69d2e8c63356bb27b0efbb1f1223ece2bc9dafff2aa",
+  "TIMED_PATH_LABEL_LEAK": 0,
+  "WORKFLOW_LABEL_LEAK": 0,
+  "HTTP_LABEL_LEAK": 0,
+  "identity": {
+    "runner_sha256": "c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54",
+    "workflow_sha256": "0f062d7c4051caeb75e864eb3b849fdbb2a450badb8a3e7a360d9431deab8258",
+    "fixture_sha256": "54e11226d37944f410956e9a2918ad4bb090485f1c9f5d2150172e06b291ff5c",
+    "A_impl_sha256": "c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54",
+    "B_impl_sha256": "strategy:R6_SUCCESS_LOCAL_HISTORY_V2"
+  },
+  "upload": {
+    "name": "p0-control-black-256.png",
+    "subfolder": "",
+    "type": "input"
+  },
+  "arm_A": {
+    "n": 4,
+    "min_ms": 39.3431,
+    "median_ms": 40.3151,
+    "p95_ms": 42.499235,
+    "max_ms": 42.7172,
+    "mad_ms": 0.9604999999999997,
+    "mad_scaled_ms": 1.4240372999999995
+  },
+  "arm_B": {
+    "n": 4,
+    "min_ms": 30.077,
+    "median_ms": 32.9893,
+    "p95_ms": 35.078545,
+    "max_ms": 35.3779,
+    "mad_ms": 1.390749999999997,
+    "mad_scaled_ms": 2.0619259499999956
+  },
+  "current_local_baseline_ms": 40.3151,
+  "candidate_median_ms": 32.9893,
+  "paired": {
+    "n": 4,
+    "min_ms": 3.965200000000003,
+    "median_ms": 8.585500000000001,
+    "p95_ms": 9.996044999999997,
+    "max_ms": 10.120799999999996,
+    "mad_ms": 1.119449999999997,
+    "mad_scaled_ms": 1.6596965699999955,
+    "formal_effect_ms": 7.81425,
+    "cluster_randomization_95ci_ms": [
+      6.627150000000002,
+      9.001349999999999
+    ],
+    "bootstrap_95ci_ms": [
+      6.627150000000002,
+      9.001349999999999
+    ],
+    "formal_method": "BLOCK_SIGN_RANDOMIZATION_LOCATION_CI",
+    "p95_arm_delta_ms": 7.4206900000000005,
+    "pairs": [
+      {
+        "block": 1,
+        "pair": 1,
+        "pattern": "ABBA",
+        "a_attempt": 1,
+        "b_attempt": 2,
+        "a_ms": 39.3431,
+        "b_ms": 35.3779,
+        "delta_ms": 3.965200000000003
+      },
+      {
+        "block": 1,
+        "pair": 2,
+        "pattern": "ABBA",
+        "a_attempt": 4,
+        "b_attempt": 3,
+        "a_ms": 39.3661,
+        "b_ms": 30.077,
+        "delta_ms": 9.289100000000001
+      },
+      {
+        "block": 2,
+        "pair": 1,
+        "pattern": "BAAB",
+        "a_attempt": 6,
+        "b_attempt": 5,
+        "a_ms": 41.2641,
+        "b_ms": 33.3822,
+        "delta_ms": 7.881900000000002
+      },
+      {
+        "block": 2,
+        "pair": 2,
+        "pattern": "BAAB",
+        "a_attempt": 7,
+        "b_attempt": 8,
+        "a_ms": 42.7172,
+        "b_ms": 32.5964,
+        "delta_ms": 10.120799999999996
+      }
+    ]
+  },
+  "drift_A": {
+    "slope_ms_per_attempt": 1.2888999999999995,
+    "projected_span_ms": 3.8666999999999985,
+    "early_minus_late_ms": -3.3740999999999985,
+    "permutation_p_two_sided": 0.08139186081391861
+  },
+  "pattern_effect_ms": -2.3741999999999965,
+  "contract_id": "P0-CONTROL-V2-CANDIDATE",
+  "adjudication_mode": "SEARCH_ONLY",
+  "candidate_lock": "ON",
+  "candidate_runner_sha256": "33521ffba52d676fdb3dc1245e554aa44e31f3ae4602d31b20d2ba1f0cd319c7",
+  "frozen_measurement_runner_sha256": "c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54"
+}

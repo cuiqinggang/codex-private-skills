@@ -48,3 +48,16 @@ Stage root、批次目录、最深子目录和最长文件名。若失败，正�
 `LABEL_BLIND_FIX_CAUSALLY_CONFIRMED=YES`。order effect=`6.619075 ms`，95% CI=
 `[-3.081325,22.327025]`，未整体进入冻结等价区间，因此
 `AA_CALIBRATION=INCONCLUSIVE / CANDIDATE_LOCK=ON`；不得启动候选。
+
+## 2026-09-15 SEARCH_ONLY 与最终认证边界
+
+新的独立 40-block A/A `a4` 虽然 formal CI 跨 0，但 frozen environment
+drift gate 触发，最终为 `AA_CALIBRATION=FAIL`。按预声明停止继续扩张
+calibration，候选仅作 SEARCH_ONLY。R6 的两个独立 confirmation 均有全正
+paired CI，但这只能证明相对收益；在 A/A FAIL、candidate lock ON 且 pooled
+absolute P50 慢于历史参考时，禁止写 KEEP、99 或 FREEZE。
+
+成功态调度经验：SaveImage `executed` 后立即并发 history 与 `/view`
+会争用发布路径；等待 matching `execution_success` 后先读取本地 bytes、
+再确认 history，可保留完整语义并明显缩短控制链。HTTP/local byte equality
+必须在计时后逐 run 验证，不能因移出计时而删除。

@@ -51,3 +51,18 @@ Do not delete failed, slow, superseded or invalid batches. Store their role expl
 ## Do not optimize the test forever
 
 Once a measurement gate is mature, freeze it. Only reopen the harness when new empirical evidence shows a real defect. The purpose of this skill is to shorten future setup by front-loading known failure checks, not to turn benchmark engineering into an endless project.
+
+## A real relative win is not an absolute 99
+
+Two independent paired confirmations can both have positive CIs while their
+absolute candidate distribution remains slower than a historical reference or
+unstable across batches. Report both conclusions. Never select an unusually fast
+smoke, minimum, or single best batch as the final time; pool the predeclared
+confirmation distributions.
+
+## Parallelize only after checking publication contention
+
+Starting history and output fetches immediately at an early output event can
+contend with the server's completion/publication path and make both requests
+slower. Compare segment marks for early-parallel, success-triggered, and
+sequential variants. Preserve the same result-validity gates in every variant.

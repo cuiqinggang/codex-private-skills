@@ -14,3 +14,6 @@
 - Same algorithm is not the same execution path：旧 A/A 把 `measured-A/B` 写进 `SaveImage.filename_prefix`、`/view` 输出身份和计时内 raw/evidence 路径；服务端 execution effect 为 0，而客户端控制路径主导假差异。arm label 必须纯 metadata，并以 normalized workflow SHA 相等及 timed/workflow/HTTP leak=0 自测阻断复犯。
 - Root-cause repair and overall A/A are separate：label-blind 后 formal CI 从全正变为跨 0、effect 落入 noise floor，足以确认标签污染修复；但 order-effect equivalence CI 仍过宽，所以总体只能 `INCONCLUSIVE`，候选锁不能解除。
 - Windows deepest evidence path must be preflighted：长 Stage root 加逐 run 子目录可在目录已创建后仍于深层文件 open 报 `FileNotFoundError`。权威测试前必须真实创建最深路径；必要时使用短、中性、label-blind evidence root。
+- Earlier parallelism can be slower：在 SaveImage `executed` 后立即并发 history 与 `/view`/本地 read，会争用尚未完成发布的服务端和文件路径；本轮 history 拉长到 12–30 ms、`/view` 拉长到 20–27 ms。并行化必须由 segment evidence 证明，不能凭结构直觉。
+- Relative confirmation is not absolute 99：R6 两批 paired effect 的 CI 都全正，但 candidate pooled P50=`41.5258 ms`，慢于历史 `32.55975 ms`，且 A/A drift gate FAIL。因此“候选相对更快”不能改写成“当前绝对极限”。
+- Pick neither a smoke nor the best batch：8-run smoke 曾得到 `32.9893 ms`，两个 confirmation 却为 `44.33395/39.18285 ms`。最终报告必须合并独立 confirmation 分布，禁止挑最快 smoke、min 或单批 median。

@@ -1,0 +1,24 @@
+{
+  "method": "BLOCK_SIGN_RANDOMIZATION_LOCATION_CI",
+  "cluster_statistic": "median_of_two_paired_deltas_per_four_run_block_then_median_across_blocks",
+  "effect_ms": -1.469375000000003,
+  "ci_95_ms": [
+    -3.1065500000000075,
+    0.1678000000000015
+  ],
+  "calibration_error_quantiles_ms": [
+    -1.6371750000000045,
+    1.6371750000000045
+  ],
+  "null_calibration_pass": true,
+  "null_positive_false_keep_rate": 0.02395,
+  "null_negative_false_reject_rate": 0.02235,
+  "null_any_direction_rejection_rate": 0.0463,
+  "null_simulation_iterations": 20000,
+  "null_calibration_seed": 2026091511,
+  "null_validation_seed": 2026091512,
+  "noise_floor_ms": 1.6371750000000045,
+  "mde_ms": 2.0,
+  "mde_target_power": 0.8,
+  "mde_observed_power": 0.8056
+}

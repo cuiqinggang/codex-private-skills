@@ -1,0 +1,34 @@
+[
+  {
+    "attempt": 1,
+    "sha256": "13fcedf73ce5cdf7dfb2ee4f8ae61548a576fbb231ad11fd48d6f3e50f18ab0d"
+  },
+  {
+    "attempt": 2,
+    "sha256": "2ffccb5cf1243b159be48c1640fae3be605698e9888e44b62e1452111a46d8b3"
+  },
+  {
+    "attempt": 3,
+    "sha256": "38c0eb4eda35d3c45ee7aa4352bd3668566fc89a8e0768fad6c5f4d4c1bfe5da"
+  },
+  {
+    "attempt": 4,
+    "sha256": "f6662101535784fb65c96e06cd189d6667e8667dc5566cc9a6d6fddcb08242df"
+  },
+  {
+    "attempt": 5,
+    "sha256": "deee9291fe2052d46e8f90807293ed02d2ad4bb3a648bb02d4ee4e6e78a412f8"
+  },
+  {
+    "attempt": 6,
+    "sha256": "1e91739e2446e051c5f25c040655ab1ac9b57ee7afa31c8850a8b71bf9344b4a"
+  },
+  {
+    "attempt": 7,
+    "sha256": "475ae95353e90eb55994f1e5d3ce2fe123447c26b31df564660c85f65c0c876e"
+  },
+  {
+    "attempt": 8,
+    "sha256": "08fa431a7e431948d7c398c8a7a9b89fa2d77fc0276bde05f23ef52b7f1307a0"
+  }
+]

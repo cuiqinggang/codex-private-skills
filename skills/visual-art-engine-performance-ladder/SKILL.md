@@ -73,6 +73,15 @@ Windows 正式运行前必须实际创建 deepest expected evidence path。失�
 短、中性、label-blind evidence root；不得用 arm-specific 路径，也不得因路径失败
 修改统计或 workload。
 
+2026-09-15 最终搜索收口：新的独立冻结-harness A/A `a4` 为 160/160
+有效，但 environment drift gate 触发，故
+`AA_CALIBRATION=FAIL / CANDIDATE_LOCK=ON`。SEARCH_ONLY 找到
+`R6_SUCCESS_LOCAL_HISTORY_V2`：两个独立 confirmation 的 paired effect
+分别为 `11.451175 ms`（CI `[9.370775,13.531575]`）和
+`8.465825 ms`（CI `[6.691,10.24065]`），但 pooled candidate P50/P95
+为 `41.5258/58.000845 ms`，未优于历史参考。因此
+`P0_99=NO / P0_FREEZE=NO`，不得把真实相对收益误报成绝对 99。
+
 ## 强制边界
 
 - v1.0.1 仅表示方法、阶梯、版本、冻结系统、P0 Contract 和 P0 工具就绪；不表示 P0 已测或已优化。

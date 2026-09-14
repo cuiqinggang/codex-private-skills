@@ -5,6 +5,9 @@
 - Added anti-dust usage log and clickable acceptance entrypoints.
 - Bound Windows deepest evidence-path creation to benchmark preflight acceptance.
 - Linked the first 160/160 runtime-confirmed label-blind A/A while preserving its overall INCONCLUSIVE order-equivalence result.
+- Added source-case lessons that paired relative wins do not imply absolute 99,
+  confirmation batches must be pooled rather than cherry-picked, and early
+  parallel output/history requests can lose to publication contention.
 
 ## 0.1.0 — 2026-09-15
 

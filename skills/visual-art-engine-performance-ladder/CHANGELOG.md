@@ -14,6 +14,9 @@
 - 建立双重 benchmark 身份：`8f5c3a59...` 保留为 `SUPERSEDED_LABEL_BLIND_RUNNER`，`c43875c3...` 为 `CURRENT_LABEL_BLIND_RUNNER`；当前 `HARNESS_MANIFEST_SHA=81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf`，覆盖 runner、两层启动器、decision rules、bracket summary、workflow 与 fixture。
 - 完成 160/160 label-blind 权威 A/A：formal effect `2.8688 ms`、CI `[-0.847625,6.585225]`、noise floor `3.7609 ms`；旧 CI 全正假效应消失，标签修复得到 runtime 因果确认。order-effect CI `[-3.081325,22.327025]` 仍不足以证明等价，故 `AA_CALIBRATION=INCONCLUSIVE / CANDIDATE_LOCK=ON`。
 - 将 Windows deepest evidence path 实际创建加入 preflight；首次长路径失败未提交 workload，随后使用短、中性 `aa-lb-v3` 证据根完成相同冻结批次。
+- 完成新的独立 `a4` 160/160 A/A；formal CI 跨 0，但 environment drift gate FAIL，故候选锁保持 ON。
+- SEARCH_ONLY 依次实测 R1、local-file V2、R4 与 R6；R6 在两个独立 confirmation 中 paired CI 均全正，但 pooled P50/P95=`41.5258/58.000845 ms`，未优于历史参考，故 `P0_99=NO / P0_FREEZE=NO`。
+- 固化“过早并发会争用 output/history 发布”“不可挑 smoke/单批最好值”“相对收益不等于绝对 99”三条失败经验。
 
 ## 1.0.1 - 2026-09-14
 
