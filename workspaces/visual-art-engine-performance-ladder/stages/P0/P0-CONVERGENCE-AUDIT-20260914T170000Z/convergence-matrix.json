@@ -1,0 +1,66 @@
+{
+  "R1_RESULT": {
+    "tested": [
+      "local file diagnostic",
+      "defer WebSocket close",
+      "persistent WebSocket",
+      "history on execution_success",
+      "buffered event writes"
+    ],
+    "contract_frontier": "local file read conflicts with HTTP fetch contract",
+    "evidence": "E1-E7",
+    "excluded": [
+      "evidence PNG write: 0.7366 ms median ceiling below 5% threshold",
+      "duplicate SHA: no significant measured ceiling"
+    ],
+    "converged": true
+  },
+  "R2_REQUEST": {
+    "history_requests_per_run": 1,
+    "fixed_sleep": false,
+    "untested_high_value": [],
+    "workflow_prepared_before_timer": true,
+    "http_session_reused": true,
+    "converged": true,
+    "polling": false
+  },
+  "R3_QUEUE": {
+    "core_queue_modification": "excluded: risk/contract architecture change without evidence",
+    "queue_empty_every_run": true,
+    "polling": false,
+    "converged": true,
+    "direct_websocket_events": true
+  },
+  "R4_EXECUTE_SAVE": {
+    "save_node_median_ms": 5.3684,
+    "load_cached_runs": "20/20",
+    "workload_changed": false,
+    "converged": true
+  },
+  "R5_JITTER": {
+    "pooled_p95_ms": 42.9221,
+    "slow_samples_removed": false,
+    "measured_valid": "60/60",
+    "final_batches": 3,
+    "converged": true
+  },
+  "R6_INSTRUMENTATION": {
+    "validity_checks_preserved": true,
+    "timing_boundary_audited": true,
+    "buffering_test": "ROLLBACK",
+    "converged": true
+  },
+  "R7_EXTERNAL_FRONTIER": {
+    "rechecked": true,
+    "exact_comparable_public_benchmark": "NONE_FOUND",
+    "official_path_matches": true
+  },
+  "R8_T_PHY": {
+    "observed_fastest_ms": 25.9625,
+    "reviewed": true,
+    "recommendation": "KEEP_EVIDENCE_INSUFFICIENT_TO_NARROW",
+    "range": "10-20 ms"
+  },
+  "untested_high_value_candidates": [],
+  "p0_99_candidate": true
+}

@@ -1,0 +1,37 @@
+{
+  "contract": "P0-CONTROL-V1",
+  "implementation": "unchanged official baseline runner",
+  "batches": [
+    {
+      "median_ms": 30.0504,
+      "p95_ms": 36.6619,
+      "run_id": "P0-E9-BASELINE-REPRO-CONTROL-B-20260914T161000Z",
+      "valid": "20/20"
+    },
+    {
+      "median_ms": 33.20215,
+      "p95_ms": 40.2249,
+      "run_id": "P0-E10-BASELINE-REPRO-CONTROL-C-20260914T162000Z",
+      "valid": "20/20"
+    },
+    {
+      "median_ms": 35.60995,
+      "p95_ms": 42.9792,
+      "run_id": "P0-E11-BASELINE-REPRO-CONTROL-D-20260914T163500Z",
+      "valid": "20/20"
+    }
+  ],
+  "pooled": {
+    "count": 60,
+    "median_ms": 33.55865,
+    "min_ms": 25.9625,
+    "p95_ms": 42.9221,
+    "failures": 0,
+    "max_ms": 83.0659,
+    "valid": 60,
+    "median_vs_official_percent": 3.0679
+  },
+  "official_baseline_ms": 32.55975,
+  "official_baseline_p95_ms": 58.1779,
+  "official_baseline_changed": false
+}

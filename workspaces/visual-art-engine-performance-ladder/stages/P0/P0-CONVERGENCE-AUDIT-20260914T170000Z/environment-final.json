@@ -1,0 +1,12 @@
+{
+  "captured_at": "2026-09-14T15:34:07.0960413Z",
+  "queue_running_before_cleanup": 0,
+  "queue_pending_before_cleanup": 0,
+  "comfyui_started_by_convergence": true,
+  "own_process_id": 15408,
+  "process_alive_after_cleanup": false,
+  "system_stack_changed": false,
+  "contract_changed": false,
+  "skill_version_changed": false,
+  "github_release_created": false
+}

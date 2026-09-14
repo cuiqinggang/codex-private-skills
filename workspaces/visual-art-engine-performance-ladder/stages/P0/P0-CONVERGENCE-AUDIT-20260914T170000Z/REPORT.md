@@ -1,0 +1,23 @@
+# P0 Continuous Convergence Final Audit
+
+- Method: mature-replication-four-column V4.0; METHOD_CHANGED=NO.
+- Contract: P0-CONTROL-V1, LoadImage -> SaveImage, 256x256 valid PNG; unchanged.
+- Official CURRENT remains 32.55975 ms; no candidate passed KEEP, so improvement 0.0%.
+- Experiments executed after E1: 10 (E2-E11). Kept: 0. Rolled back: 5. Diagnostic/control: 5.
+- E2 local read: diagnostic only, contract incompatible.
+- E3/E4 WebSocket close: rollback.
+- E5 persistent WebSocket: rollback.
+- E6 execution_success history trigger: warmup structural failure, measured not run, rollback/invalid.
+- E7 buffered event writes: rollback.
+- E8-E11: unchanged baseline controls; A retained as slower control; B/C/D are three final confirmation batches.
+- Final confirmation B/C/D: 60/60 valid, MIN 25.9625, Median 33.55865, P95 42.9221, MAX 83.0659 ms. No slow sample removed.
+- R1 RESULT: converged. HTTP /view remains the largest necessary contract path; local shortcut is architecture-frontier-only.
+- R2 REQUEST: converged. HTTP session already reused; workflow prepared before timer; one POST; no high-value low-risk candidate remains.
+- R3 QUEUE: converged. Empty queue and direct WebSocket events; no polling/sleep; core queue changes excluded as unjustified risk.
+- R4 EXECUTE/SAVE: converged. LoadImage cached 20/20 under frozen API_READY semantics; SaveImage median 5.3684 ms.
+- R5 JITTER: converged for candidate audit. Three independent final batches, 60/60 valid; pooled P95 42.9221 ms. One 83.0659 ms MAX retained.
+- R6 INSTRUMENTATION: converged. Buffered-write candidate failed; all result-validity work preserved.
+- R7 EXTERNAL FRONTIER: rechecked; official path matches, no exact comparable public latency found.
+- R8 T_PHY: reviewed; keep 10-20 ms because evidence is insufficient to narrow honestly.
+- UNTESTED_HIGH_VALUE_CANDIDATES: NONE.
+- P0_99_CANDIDATE=YES. This is not P0=99, not FREEZE, and does not unlock P1.

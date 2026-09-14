@@ -1,0 +1,10 @@
+{
+  "source_run": "P0-E10-BASELINE-REPRO-CONTROL-C-20260914T162000Z",
+  "measured_runs": 20,
+  "load_cached_runs": 20,
+  "execution_start_to_cache_median_ms": 2.12985,
+  "cache_to_save_start_median_ms": 0.39025,
+  "save_node_median_ms": 5.3684,
+  "save_done_to_success_median_ms": 0.4996,
+  "success_to_done_median_ms": 1.31695
+}

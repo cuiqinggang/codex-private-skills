@@ -15,3 +15,12 @@
 | E9 BASELINE_REPRO_CONTROL_B | 第二独立控制批次 | N/A | 3/3、20/20；Median 30.0504，P95 36.6619 | CONTROL_PASS | 成功复现但批间抖动大 | 控制批次C |
 | E10 BASELINE_REPRO_CONTROL_C | 第三独立控制批次 | N/A | 3/3、20/20；Median 33.20215，P95 40.2249 | CONTROL_PASS | 基线可复现但批间抖动显著 | R4 Load/Save 分解 |
 | E11 BASELINE_REPRO_CONTROL_D | 第四控制/最终确认第三批 | N/A | 3/3、20/20；Median 35.60995，P95 42.9792 | CONTROL_PASS | B/C/D 三批均有效 | R1-R8 最终审核 |
+
+## Final convergence audit
+
+- Total experiments after E1: 10; KEEP 0; ROLLBACK 5; diagnostic/control 5.
+- Official baseline: 32.55975 ms; no replacement.
+- Final confirmation B/C/D pooled: 60/60 valid; Median 33.55865 ms; P95 42.9221 ms; MIN 25.9625 ms; MAX 83.0659 ms.
+- R1-R6 converged; R7 external frontier rechecked; R8 T_PHY reviewed and kept at 10-20 ms.
+- Untested high-value low-risk candidates: none.
+- P0_99_CANDIDATE=YES; final 99/FREEZE remains ChatGPT authority.

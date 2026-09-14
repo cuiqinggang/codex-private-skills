@@ -1,0 +1,40 @@
+{
+  "run_id": "P0-CONVERGENCE-AUDIT-20260914T170000Z",
+  "files": [
+    {
+      "path": "convergence-matrix.json",
+      "size": 1874,
+      "sha256": "f7bafddce6759b3823ee127b46331c08285c55964b0deebdabe8b65931d6ac90"
+    },
+    {
+      "path": "environment-final.json",
+      "size": 378,
+      "sha256": "3d3b292d4dc94ede185f9332e8fd67cc128facfa534469d7c9fae1d5fa67284f"
+    },
+    {
+      "path": "external-frontier.md",
+      "size": 1000,
+      "sha256": "3009364cd8d6ad68ba71a53c8776dbd6f050b0d24d3f6be3f1c4ffb53bcd5739"
+    },
+    {
+      "path": "final-confirmation.json",
+      "size": 942,
+      "sha256": "affa7c75b57c4294c13d5e4dbbdefaa32d926889c627dfdeb3876fe3b4b198e7"
+    },
+    {
+      "path": "r4-load-save-decomposition.json",
+      "size": 340,
+      "sha256": "f6bc47432962cc12dd45e8310d696d1cf642d7270078ebfb4972c6fe5ef57401"
+    },
+    {
+      "path": "REPORT.md",
+      "size": 1938,
+      "sha256": "568301525a97774d1feaea0ffdf4a9b887be9909f124e3a9d28bff47588ea7db"
+    },
+    {
+      "path": "t-phy-refinement.md",
+      "size": 589,
+      "sha256": "65b014575a1f035d36d1279c9eb7e1d582ef6049f73a0717c3a0186298774245"
+    }
+  ]
+}
