@@ -1,0 +1,9 @@
+{
+  "baseline_median_ms": 32.55975,
+  "candidate_median_ms": 42.34235,
+  "median_improvement_percent": -30.0451,
+  "baseline_p95_ms": 58.1779,
+  "candidate_p95_ms": 54.0572,
+  "p95_improvement_percent": 7.0829,
+  "decision": "ROLLBACK"
+}

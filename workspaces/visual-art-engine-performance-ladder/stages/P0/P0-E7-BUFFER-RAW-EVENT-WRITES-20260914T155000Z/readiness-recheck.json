@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-09-14T15:20:07.0619320Z",
+  "contract": "P0-CONTROL-V1",
+  "experiment": "BUFFER_RAW_EVENT_WRITES_AFTER_TIMING",
+  "contract_compatible": true,
+  "current_baseline_ms": 32.55975,
+  "current_p95_ms": 58.1779,
+  "target_segment": "INSTRUMENTATION_SYNC_DISK_FLUSH",
+  "gain_ceiling_ms": 6.0,
+  "queue_running": 0,
+  "queue_pending": 0,
+  "comfyui_started_by_convergence": true,
+  "process_id": 15408
+}

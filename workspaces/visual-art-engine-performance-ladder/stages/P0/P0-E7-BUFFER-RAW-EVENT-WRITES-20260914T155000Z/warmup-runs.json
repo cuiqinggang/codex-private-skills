@@ -1,0 +1,116 @@
+[
+  {
+    "label": "warmup-01",
+    "prompt_id": "471eef8a-2978-4144-aaa3-afc4782a33b0",
+    "run_prefix": "p0-control/warmup-01-687880a93e",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282805163204200,
+      "QUEUE_ACK": 282805167692400,
+      "EXECUTION_START": 282805176789200,
+      "SAVE_DONE": 282805186834200,
+      "RESULT_READY": 282805615767000
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0044882,
+      "T_QUEUE": 0.0090968,
+      "T_EXECUTE": 0.010045,
+      "T_RESULT": 0.4289328,
+      "T_END_TO_END": 0.4525628
+    },
+    "output": {
+      "history": {
+        "filename": "warmup-01-687880a93e_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\warmup-01-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "6c7ff1756b96a585389f2bd90ead97ade153cb6177e0e2a57cc398a2b9e41fc9"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\warmup-01-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "warmup-02",
+    "prompt_id": "2b479bfa-4f31-419e-b8eb-78e0399e0c6b",
+    "run_prefix": "p0-control/warmup-02-c2e94308d7",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282805626156900,
+      "QUEUE_ACK": 282805631980200,
+      "EXECUTION_START": 282805636415100,
+      "SAVE_DONE": 282805647827300,
+      "RESULT_READY": 282805664037600
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0058233,
+      "T_QUEUE": 0.0044349,
+      "T_EXECUTE": 0.0114122,
+      "T_RESULT": 0.0162103,
+      "T_END_TO_END": 0.0378807
+    },
+    "output": {
+      "history": {
+        "filename": "warmup-02-c2e94308d7_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\warmup-02-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "9d2443b2ded00546472c3328ece7c8e1a74afc626471366ecde60735e894d7a5"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\warmup-02-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "warmup-03",
+    "prompt_id": "f6f48fd9-e433-4f20-9e98-a1949df776f2",
+    "run_prefix": "p0-control/warmup-03-34551fc5ca",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282805666488100,
+      "QUEUE_ACK": 282805672203200,
+      "EXECUTION_START": 282805676719500,
+      "SAVE_DONE": 282805687168200,
+      "RESULT_READY": 282805702046900
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0057151,
+      "T_QUEUE": 0.0045163,
+      "T_EXECUTE": 0.0104487,
+      "T_RESULT": 0.0148787,
+      "T_END_TO_END": 0.0355588
+    },
+    "output": {
+      "history": {
+        "filename": "warmup-03-34551fc5ca_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\warmup-03-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "140a7cba40677d6913bea2766922d72c29ba5c9ddd3768dfbd3aec366957679b"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\warmup-03-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  }
+]

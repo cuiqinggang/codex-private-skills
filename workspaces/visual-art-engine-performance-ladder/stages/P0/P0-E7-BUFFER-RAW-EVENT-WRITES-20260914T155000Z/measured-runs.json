@@ -1,0 +1,762 @@
+[
+  {
+    "label": "measured-01",
+    "prompt_id": "13684b15-233a-45d7-9317-7d8844c51918",
+    "run_prefix": "p0-control/measured-01-70fb50d7b5",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282805704581100,
+      "QUEUE_ACK": 282805710185300,
+      "EXECUTION_START": 282805716045700,
+      "SAVE_DONE": 282805726313800,
+      "RESULT_READY": 282805743654800
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0056042,
+      "T_QUEUE": 0.0058604,
+      "T_EXECUTE": 0.0102681,
+      "T_RESULT": 0.017341,
+      "T_END_TO_END": 0.0390737
+    },
+    "output": {
+      "history": {
+        "filename": "measured-01-70fb50d7b5_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-01-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "ad6b60bd71953f223ed92cbe489e6e50a5a78bad89ffebd7ae843a5e1c957f97"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-01-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-02",
+    "prompt_id": "1796afcc-7082-4999-aee8-e7a92740f6b7",
+    "run_prefix": "p0-control/measured-02-19c35ba1c8",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282805746554900,
+      "QUEUE_ACK": 282805752354500,
+      "EXECUTION_START": 282805756636000,
+      "SAVE_DONE": 282805764437600,
+      "RESULT_READY": 282805781869100
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0057996,
+      "T_QUEUE": 0.0042815,
+      "T_EXECUTE": 0.0078016,
+      "T_RESULT": 0.0174315,
+      "T_END_TO_END": 0.0353142
+    },
+    "output": {
+      "history": {
+        "filename": "measured-02-19c35ba1c8_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-02-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "e2e89cb61dae32562e1b67184b5cf866b3297d280f4f95ec59cba2630ec5cc6e"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-02-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-03",
+    "prompt_id": "1d2583f6-b913-4425-9dd3-a29beb1746c5",
+    "run_prefix": "p0-control/measured-03-d3935c1e82",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282805784597500,
+      "QUEUE_ACK": 282805795870000,
+      "EXECUTION_START": 282805805314700,
+      "SAVE_DONE": 282805820463400,
+      "RESULT_READY": 282805835931000
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0112725,
+      "T_QUEUE": 0.0094447,
+      "T_EXECUTE": 0.0151487,
+      "T_RESULT": 0.0154676,
+      "T_END_TO_END": 0.0513335
+    },
+    "output": {
+      "history": {
+        "filename": "measured-03-d3935c1e82_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-03-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "7677bc0aea1d8e7ab6e272db957b109b60022e58a25f980e629dc11ffbba1cb0"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-03-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-04",
+    "prompt_id": "bd22c5c5-67c8-4491-81cb-5e33e894a6c4",
+    "run_prefix": "p0-control/measured-04-7488795995",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282805838843700,
+      "QUEUE_ACK": 282805854894900,
+      "EXECUTION_START": 282805860375200,
+      "SAVE_DONE": 282805869054900,
+      "RESULT_READY": 282805888174600
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0160512,
+      "T_QUEUE": 0.0054803,
+      "T_EXECUTE": 0.0086797,
+      "T_RESULT": 0.0191197,
+      "T_END_TO_END": 0.0493309
+    },
+    "output": {
+      "history": {
+        "filename": "measured-04-7488795995_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-04-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "f244fee95aceb30886ea634ebbfa071e5f0007e1858ed7f654366a3222404c4b"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-04-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-05",
+    "prompt_id": "6e9fa49b-e551-4bd7-8738-159f47864656",
+    "run_prefix": "p0-control/measured-05-7bd3c5c686",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282805891045600,
+      "QUEUE_ACK": 282805901655700,
+      "EXECUTION_START": 282805911076300,
+      "SAVE_DONE": 282805920288800,
+      "RESULT_READY": 282805934934100
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0106101,
+      "T_QUEUE": 0.0094206,
+      "T_EXECUTE": 0.0092125,
+      "T_RESULT": 0.0146453,
+      "T_END_TO_END": 0.0438885
+    },
+    "output": {
+      "history": {
+        "filename": "measured-05-7bd3c5c686_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-05-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "1454d6a2ad37068bc7361fd1a1a31b1cb2fb4dde9b526a6c7a87d10cc2c2e3de"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-05-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-06",
+    "prompt_id": "f8efe35a-7b87-4a10-80f1-c39de2793724",
+    "run_prefix": "p0-control/measured-06-967eb0a426",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282805938208600,
+      "QUEUE_ACK": 282805946495000,
+      "EXECUTION_START": 282805952723800,
+      "SAVE_DONE": 282805963975500,
+      "RESULT_READY": 282805984889800
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0082864,
+      "T_QUEUE": 0.0062288,
+      "T_EXECUTE": 0.0112517,
+      "T_RESULT": 0.0209143,
+      "T_END_TO_END": 0.0466812
+    },
+    "output": {
+      "history": {
+        "filename": "measured-06-967eb0a426_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-06-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "02bb703167d6e39081437f40b10c023893eeb918cb68980292247893bed92519"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-06-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-07",
+    "prompt_id": "796bdd7e-9340-4f0f-a5ef-13c6a9da5dd3",
+    "run_prefix": "p0-control/measured-07-9685f5da4a",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282805987528700,
+      "QUEUE_ACK": 282805993655100,
+      "EXECUTION_START": 282805998726400,
+      "SAVE_DONE": 282806011021000,
+      "RESULT_READY": 282806029039200
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0061264,
+      "T_QUEUE": 0.0050713,
+      "T_EXECUTE": 0.0122946,
+      "T_RESULT": 0.0180182,
+      "T_END_TO_END": 0.0415105
+    },
+    "output": {
+      "history": {
+        "filename": "measured-07-9685f5da4a_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-07-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "d45e6cf40bb296b3fcb5155ff5fe3fd37e512ceaff9e8f29354ada1e3cfd2b72"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-07-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-08",
+    "prompt_id": "bfbc4758-71b8-407e-aac6-85ff92a7533a",
+    "run_prefix": "p0-control/measured-08-cd5ab8549d",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806031598500,
+      "QUEUE_ACK": 282806035945800,
+      "EXECUTION_START": 282806039724400,
+      "SAVE_DONE": 282806048690000,
+      "RESULT_READY": 282806065702200
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0043473,
+      "T_QUEUE": 0.0037786,
+      "T_EXECUTE": 0.0089656,
+      "T_RESULT": 0.0170122,
+      "T_END_TO_END": 0.0341037
+    },
+    "output": {
+      "history": {
+        "filename": "measured-08-cd5ab8549d_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-08-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "99e08bf92589a10da50a8ccd7fb0c5c5651fdb73eb471bfcbf65752c1b19a3e7"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-08-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-09",
+    "prompt_id": "748ad0ee-9bc7-482e-bc15-f31a3a89cf3e",
+    "run_prefix": "p0-control/measured-09-5ebd3b4fbf",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806068612000,
+      "QUEUE_ACK": 282806074645800,
+      "EXECUTION_START": 282806078606000,
+      "SAVE_DONE": 282806087820300,
+      "RESULT_READY": 282806119171200
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0060338,
+      "T_QUEUE": 0.0039602,
+      "T_EXECUTE": 0.0092143,
+      "T_RESULT": 0.0313509,
+      "T_END_TO_END": 0.0505592
+    },
+    "output": {
+      "history": {
+        "filename": "measured-09-5ebd3b4fbf_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-09-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "50fe91543223ff46d1a408c6f633c8667b916f68c782d88ab76c0f969d80324a"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-09-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-10",
+    "prompt_id": "7b9cd2d6-3ff2-4d97-8a28-e006eb5137fe",
+    "run_prefix": "p0-control/measured-10-adb0f15420",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806121813800,
+      "QUEUE_ACK": 282806135041300,
+      "EXECUTION_START": 282806139327600,
+      "SAVE_DONE": 282806149542600,
+      "RESULT_READY": 282806164670700
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0132275,
+      "T_QUEUE": 0.0042863,
+      "T_EXECUTE": 0.010215,
+      "T_RESULT": 0.0151281,
+      "T_END_TO_END": 0.0428569
+    },
+    "output": {
+      "history": {
+        "filename": "measured-10-adb0f15420_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-10-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "c3385f88b140f894bd634f4c247424f4d5eb39bb4e1c5eaf55d36a23e05377be"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-10-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-11",
+    "prompt_id": "b7231347-eaef-4272-a5e5-2c0bbf9b49a0",
+    "run_prefix": "p0-control/measured-11-7ad505cdeb",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806167655600,
+      "QUEUE_ACK": 282806174844600,
+      "EXECUTION_START": 282806179329900,
+      "SAVE_DONE": 282806188404400,
+      "RESULT_READY": 282806206918900
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.007189,
+      "T_QUEUE": 0.0044853,
+      "T_EXECUTE": 0.0090745,
+      "T_RESULT": 0.0185145,
+      "T_END_TO_END": 0.0392633
+    },
+    "output": {
+      "history": {
+        "filename": "measured-11-7ad505cdeb_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-11-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "069dd3dbe7a06a80af085ec1ac1bcf9be868550ac0fb1828446c2556a23d7334"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-11-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-12",
+    "prompt_id": "93c24d7b-2946-41c2-ad2f-033628e49547",
+    "run_prefix": "p0-control/measured-12-7332e72171",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806209529000,
+      "QUEUE_ACK": 282806217907600,
+      "EXECUTION_START": 282806229782200,
+      "SAVE_DONE": 282806248010300,
+      "RESULT_READY": 282806263586200
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0083786,
+      "T_QUEUE": 0.0118746,
+      "T_EXECUTE": 0.0182281,
+      "T_RESULT": 0.0155759,
+      "T_END_TO_END": 0.0540572
+    },
+    "output": {
+      "history": {
+        "filename": "measured-12-7332e72171_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-12-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "727c8cd35b12932c5f50bb4b130e9d932abebee6eaf667fb22f9a95182772630"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-12-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-13",
+    "prompt_id": "cb34514f-5ef1-47a4-bd71-0826f00be178",
+    "run_prefix": "p0-control/measured-13-242f3dae90",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806266306100,
+      "QUEUE_ACK": 282806275356900,
+      "EXECUTION_START": 282806283903900,
+      "SAVE_DONE": 282806292664000,
+      "RESULT_READY": 282806307165600
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0090508,
+      "T_QUEUE": 0.008547,
+      "T_EXECUTE": 0.0087601,
+      "T_RESULT": 0.0145016,
+      "T_END_TO_END": 0.0408595
+    },
+    "output": {
+      "history": {
+        "filename": "measured-13-242f3dae90_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-13-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "24096a18582197f98054b934ddee4e43972ed2c5394b54a7703ae6c0ef47a65a"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-13-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-14",
+    "prompt_id": "69cc377a-a9f8-433c-9b49-a4bc449ad3ac",
+    "run_prefix": "p0-control/measured-14-cab90f9807",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806310696600,
+      "QUEUE_ACK": 282806320404400,
+      "EXECUTION_START": 282806324746300,
+      "SAVE_DONE": 282806335120600,
+      "RESULT_READY": 282806352524400
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0097078,
+      "T_QUEUE": 0.0043419,
+      "T_EXECUTE": 0.0103743,
+      "T_RESULT": 0.0174038,
+      "T_END_TO_END": 0.0418278
+    },
+    "output": {
+      "history": {
+        "filename": "measured-14-cab90f9807_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-14-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "33a17b601f20bf3a166ba609f7269ca28092620c2b529162a5816b4ea07fd04e"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-14-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-15",
+    "prompt_id": "e16c3d6d-53fc-4360-8642-c652ad698823",
+    "run_prefix": "p0-control/measured-15-e12d3ce7e0",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806356701800,
+      "QUEUE_ACK": 282806362525600,
+      "EXECUTION_START": 282806366037200,
+      "SAVE_DONE": 282806377478400,
+      "RESULT_READY": 282806396591500
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0058238,
+      "T_QUEUE": 0.0035116,
+      "T_EXECUTE": 0.0114412,
+      "T_RESULT": 0.0191131,
+      "T_END_TO_END": 0.0398897
+    },
+    "output": {
+      "history": {
+        "filename": "measured-15-e12d3ce7e0_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-15-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "1e14925e2120e9d2042644777dd6edad10d5e6b29a0e6ecc2cb7e109795ebfc4"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-15-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-16",
+    "prompt_id": "02d29cbe-e839-4393-9e6b-7241753b50ea",
+    "run_prefix": "p0-control/measured-16-8435f58b28",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806398971200,
+      "QUEUE_ACK": 282806404151200,
+      "EXECUTION_START": 282806412448200,
+      "SAVE_DONE": 282806449410900,
+      "RESULT_READY": 282806464997300
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.00518,
+      "T_QUEUE": 0.008297,
+      "T_EXECUTE": 0.0369627,
+      "T_RESULT": 0.0155864,
+      "T_END_TO_END": 0.0660261
+    },
+    "output": {
+      "history": {
+        "filename": "measured-16-8435f58b28_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-16-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "37fb04b6a654f9db8ccd4fa3d564c69b00d41bd1b6a63cdc5cab6407b3eee895"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-16-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-17",
+    "prompt_id": "f45ced06-7540-4c39-b4b1-684764c17be2",
+    "run_prefix": "p0-control/measured-17-4def0904a1",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806467868200,
+      "QUEUE_ACK": 282806472972600,
+      "EXECUTION_START": 282806480586700,
+      "SAVE_DONE": 282806489515900,
+      "RESULT_READY": 282806512440400
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0051044,
+      "T_QUEUE": 0.0076141,
+      "T_EXECUTE": 0.0089292,
+      "T_RESULT": 0.0229245,
+      "T_END_TO_END": 0.0445722
+    },
+    "output": {
+      "history": {
+        "filename": "measured-17-4def0904a1_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-17-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "b5950b201ce9ed0641e4830b7f517f9465d79491255a42b237cc817604b9b448"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-17-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-18",
+    "prompt_id": "7d77ede8-0ef0-4b08-b474-43a80e567c36",
+    "run_prefix": "p0-control/measured-18-6497f156f0",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806514821400,
+      "QUEUE_ACK": 282806522083200,
+      "EXECUTION_START": 282806526867300,
+      "SAVE_DONE": 282806536476000,
+      "RESULT_READY": 282806555114800
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0072618,
+      "T_QUEUE": 0.0047841,
+      "T_EXECUTE": 0.0096087,
+      "T_RESULT": 0.0186388,
+      "T_END_TO_END": 0.0402934
+    },
+    "output": {
+      "history": {
+        "filename": "measured-18-6497f156f0_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-18-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "dea9bb1c451d46732132f27bd66873b766d6f3ad5654c1ac3acd1386ffc53487"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-18-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-19",
+    "prompt_id": "c7233381-d8ce-4401-ad39-030777c26b15",
+    "run_prefix": "p0-control/measured-19-a64b8eb092",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806558670800,
+      "QUEUE_ACK": 282806563063200,
+      "EXECUTION_START": 282806574299500,
+      "SAVE_DONE": 282806585116000,
+      "RESULT_READY": 282806603818300
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0043924,
+      "T_QUEUE": 0.0112363,
+      "T_EXECUTE": 0.0108165,
+      "T_RESULT": 0.0187023,
+      "T_END_TO_END": 0.0451475
+    },
+    "output": {
+      "history": {
+        "filename": "measured-19-a64b8eb092_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-19-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "def440990221abd1f2df496e24f3805885ad8c81d7536066fa313225e570a53d"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-19-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "measured-20",
+    "prompt_id": "d1eaa994-f05c-45af-a1d2-dea6f490c2f9",
+    "run_prefix": "p0-control/measured-20-c8ac758a12",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 282806609412000,
+      "QUEUE_ACK": 282806616008100,
+      "EXECUTION_START": 282806620564000,
+      "SAVE_DONE": 282806630699800,
+      "RESULT_READY": 282806647242900
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0065961,
+      "T_QUEUE": 0.0045559,
+      "T_EXECUTE": 0.0101358,
+      "T_RESULT": 0.0165431,
+      "T_END_TO_END": 0.0378309
+    },
+    "output": {
+      "history": {
+        "filename": "measured-20-c8ac758a12_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-20-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "e4a63c0ef3c43a638172746e10b6ce58667e79423b6adc3ec29898add4c82d22"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E7-BUFFER-RAW-EVENT-WRITES-20260914T155000Z\\runtime-evidence\\measured-20-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  }
+]
