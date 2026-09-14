@@ -1,0 +1,44 @@
+{
+  "run_id": "P0-E5-PERSISTENT-WEBSOCKET-20260914T153000Z",
+  "experiment": "PERSISTENT_WEBSOCKET_ACROSS_RUNS",
+  "baseline_median_ms": 32.55975,
+  "baseline_p95_ms": 58.1779,
+  "warmup_valid": "3/3",
+  "measured_valid": "20/20",
+  "t_end_to_end": {
+    "count": 20,
+    "min_ms": 30.4735,
+    "median_ms": 35.57205,
+    "p95_ms": 38.2483,
+    "max_ms": 39.6795
+  },
+  "request": {
+    "count": 20,
+    "min_ms": 3.7514,
+    "median_ms": 4.3776,
+    "p95_ms": 5.3056,
+    "max_ms": 5.3274
+  },
+  "queue": {
+    "count": 20,
+    "min_ms": 3.7044,
+    "median_ms": 5.05975,
+    "p95_ms": 7.585,
+    "max_ms": 9.5105
+  },
+  "execute": {
+    "count": 20,
+    "min_ms": 6.7838,
+    "median_ms": 9.53275,
+    "p95_ms": 11.5455,
+    "max_ms": 12.2285
+  },
+  "result": {
+    "count": 20,
+    "min_ms": 12.9956,
+    "median_ms": 15.77215,
+    "p95_ms": 17.8784,
+    "max_ms": 18.854
+  },
+  "decision": "ROLLBACK"
+}

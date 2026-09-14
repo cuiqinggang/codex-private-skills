@@ -1,0 +1,60 @@
+diff --git "a/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\scripts\\p0\\baseline-run-p0-control.py" "b/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E5-PERSISTENT-WEBSOCKET-20260914T153000Z\\scripts\\p0\\run-p0-e5-persistent-websocket.py"
+index d7b2388..daa4091 100644
+--- "a/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\scripts\\p0\\baseline-run-p0-control.py"
++++ "b/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E5-PERSISTENT-WEBSOCKET-20260914T153000Z\\scripts\\p0\\run-p0-e5-persistent-websocket.py"
+@@ -136,6 +136,7 @@ class EventLog:
+
+ async def run_once(
+     session: Any,
++    ws: Any,
+     endpoint: str,
+     client_id: str,
+     label: str,
+@@ -149,9 +150,7 @@ async def run_once(
+     marks: dict[str, int] = {}
+     output_record: dict[str, Any] | None = None
+     try:
+-        ws_url = endpoint.replace("http://", "ws://").replace("https://", "wss://")
+-        ws = await session.ws_connect(f"{ws_url}/ws?clientId={client_id}", timeout=10)
+-        log.write("WS_CONNECTED", {"client_id": client_id})
++        log.write("WS_REUSED", {"client_id": client_id})
+         marks["REQUEST_START"] = time.perf_counter_ns()
+         body = {"prompt": workflow, "client_id": client_id}
+         log.write("HTTP_POST_PROMPT", body)
+@@ -198,8 +197,6 @@ async def run_once(
+                 raise RuntimeError(f"WebSocket ended before completion: {message.type.name}")
+         else:
+             raise TimeoutError("P0 execution timed out")
+-        await ws.close()
+-
+         async with session.get(f"{endpoint}/history/{prompt_id}") as response:
+             history_text = await response.text()
+             log.write("HTTP_HISTORY_RESPONSE", {"status": response.status, "body": history_text})
+@@ -337,14 +334,17 @@ async def execute(args: argparse.Namespace) -> int:
+             encoding="utf-8",
+         )
+         client_id = str(uuid.uuid4())
++        ws_url = endpoint.replace("http://", "ws://").replace("https://", "wss://")
++        ws = await session.ws_connect(f"{ws_url}/ws?clientId={client_id}", timeout=10)
+         for index in range(WARMUP_RUNS):
+             results.append(
+-                await run_once(session, endpoint, client_id, f"warmup-{index + 1:02d}", evidence_dir)
++                await run_once(session, ws, endpoint, client_id, f"warmup-{index + 1:02d}", evidence_dir)
+             )
+         for index in range(MEASURED_RUNS):
+             results.append(
+-                await run_once(session, endpoint, client_id, f"measured-{index + 1:02d}", evidence_dir)
++                await run_once(session, ws, endpoint, client_id, f"measured-{index + 1:02d}", evidence_dir)
+             )
++        await ws.close()
+
+     measured = [
+         item["timing_seconds"]["T_END_TO_END"]
+@@ -353,6 +353,7 @@ async def execute(args: argparse.Namespace) -> int:
+     ]
+     summary = {
+         "schema_version": 1,
++        "experiment_id": "PERSISTENT_WEBSOCKET_ACROSS_RUNS",
+         "contract_id": CONTRACT_ID,
+         "generated_at": utc_now(),
+         "warmup_runs": WARMUP_RUNS,
