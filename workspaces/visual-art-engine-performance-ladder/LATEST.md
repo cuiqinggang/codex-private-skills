@@ -1,17 +1,35 @@
 # Latest Visual Performance Run
 
-STATUS=AWAITING_FIRST_SHARED_EVIDENCE_UPLOAD
-
+STATUS=P0_E1_RESULT_DECOMPOSITION_SHARED
 STAGE=P0
-RUN_ID=P0-CONTROL-V1-20260914T125200Z
+RUN_ID=P0-E1-RESULT-DECOMPOSITION-20260914T141601Z
+EXPERIMENT=RESULT_PATH_DECOMPOSITION
 WORKING_SKILL_VERSION=1.0.1_LOCAL_PATCH
 METHOD=mature-replication-four-column
 METHOD_VERSION=V4.0
-LOCAL_RESULT=P0_CURRENT_MEASURED
-SHARED_EVIDENCE=NOT_YET_UPLOADED
+METHOD_CHANGED=NO
+P0_CONTRACT=P0-CONTROL-V1
+P0_GRAPH=LoadImage -> SaveImage
+EVIDENCE_COMMIT=57acf258dc422edb0f05e68f016c9ce27a3a6210
+REPORT_PATH=workspaces/visual-art-engine-performance-ladder/stages/P0/P0-E1-RESULT-DECOMPOSITION-20260914T141601Z/REPORT.md
 
-Expected destination:
+## 当前实测时间（CURRENT）
 
-`workspaces/visual-art-engine-performance-ladder/stages/P0/P0-CONTROL-V1-20260914T125200Z/`
+正式基线保持 32.55975 ms。E1 仅作观测：RESULT 中位 19.6454 ms；execution_success 到 history visible 中位 3.43885 ms；history visible 到 output visible 0.1955 ms；output visible 到 client detected 13.25845 ms。
 
-After upload, replace this file with the real shared-evidence status, commit SHA, report path, four-column state, and next action.
+## 外部成熟前沿（EXTERNAL FRONTIER）
+
+无新增。
+
+## 第一性原理物理时间（FIRST-PRINCIPLES PHYSICAL TIME / T_PHY）
+
+建议保持 T_PHY_WORKING_RANGE_V0.1=10–20 ms；证据不足以收窄。
+
+## 迭代收敛（ITERATIVE CONVERGENCE）
+
+E2 候选：LOCAL_OUTPUT_FILE_READ_VS_HTTP_VIEW。保持全部结果有效性标准，只比较结果取得路径；本轮未执行。
+
+SKILL_VERSION_CHANGED=NO
+PERFORMANCE_OPTIMIZATION_RUN=NO
+E2_EXECUTED=NO
+NEXT=CHATGPT_AUDIT_E1_AND_AUTHORIZE_OR_REJECT_E2
