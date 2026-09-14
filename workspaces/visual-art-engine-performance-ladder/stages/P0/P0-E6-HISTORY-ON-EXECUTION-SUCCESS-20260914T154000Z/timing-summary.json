@@ -1,0 +1,9 @@
+{
+  "run_id": "P0-E6-HISTORY-ON-EXECUTION-SUCCESS-20260914T154000Z",
+  "warmup_valid": "0/3",
+  "measured_valid": "0/20",
+  "status": "STRUCTURAL_WARMUP_FAILURE",
+  "error": "matching history entry is missing",
+  "decision": "ROLLBACK",
+  "baseline_ms": 32.55975
+}

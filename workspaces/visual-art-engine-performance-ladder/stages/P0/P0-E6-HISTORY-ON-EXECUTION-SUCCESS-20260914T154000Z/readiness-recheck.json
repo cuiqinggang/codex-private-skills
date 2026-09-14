@@ -1,0 +1,16 @@
+{
+  "captured_at": "2026-09-14T15:17:54.0394393Z",
+  "contract": "P0-CONTROL-V1",
+  "experiment": "HISTORY_ON_EXECUTION_SUCCESS",
+  "contract_compatible": true,
+  "current_baseline_ms": 32.55975,
+  "current_p95_ms": 58.1779,
+  "target_segment": "EXECUTION_SUCCESS_TO_EXECUTING_NONE",
+  "target_median_ms": 1.3741,
+  "target_p95_ms": 7.5893,
+  "gain_ceiling_ms": 7.5893,
+  "queue_running": 0,
+  "queue_pending": 0,
+  "comfyui_started_by_convergence": true,
+  "process_id": 15408
+}

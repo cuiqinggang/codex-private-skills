@@ -9,3 +9,4 @@
 | E3 DEFER_WEBSOCKET_CLOSE | WS close 约 1ms 可移出 RESULT | 1.0 ms | 3/3、20/20；中位 39.73105 ms；P95 47.4519 ms | ROLLBACK | 未改善且携带 E1 观测负担 | E4 用 baseline runner 重测最小变量 |
 | E4 MINIMAL_DEFER_WS_CLOSE | close 可移出正式边界 | 1.0 ms | 3/3、20/20；Median 34.0632，P95 39.9397 | ROLLBACK | Median 退化超2% | E5 跨 run 持久 WebSocket |
 | E5 PERSISTENT_WEBSOCKET | 跨 run 复用 WS 可降低连接生命周期 | 1.0 ms | 3/3、20/20；Median 35.57205，P95 38.2483 | ROLLBACK | Median 退化超2% | E6 execution_success 触发 history |
+| E6 HISTORY_ON_EXECUTION_SUCCESS | success 可提前 history | 7.5893 ms P95 | warmup-01 history missing；measured 未执行 | ROLLBACK / INVALID | success 早于 history 可见 | E7 缓冲 raw event 写盘 |

@@ -1,0 +1,5 @@
+{
+  "decision": "ROLLBACK",
+  "time": "INVALID_RESULT",
+  "reason": "execution_success is earlier than reliable history visibility"
+}

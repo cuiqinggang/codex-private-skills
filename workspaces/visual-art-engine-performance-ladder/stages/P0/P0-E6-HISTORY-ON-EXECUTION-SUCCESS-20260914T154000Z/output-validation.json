@@ -1,0 +1,5 @@
+{
+  "output_validation": "FAIL_NOT_REACHED",
+  "reason": "warmup stopped before matching history/output validation",
+  "measured_outputs": 0
+}

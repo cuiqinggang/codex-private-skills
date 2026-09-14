@@ -1,0 +1,80 @@
+{
+  "run_id": "P0-E6-HISTORY-ON-EXECUTION-SUCCESS-20260914T154000Z",
+  "files": [
+    {
+      "path": "ab-compare.json",
+      "size": 139,
+      "sha256": "be49c39cc00de1a4dc407e81b9010ba7f280ad094dcd39bcc9d8acb11a787f67"
+    },
+    {
+      "path": "benchmark-contract-snapshot.md",
+      "size": 2658,
+      "sha256": "f15d5b0c04311183cb2e53891ae55f56f1926a3090fa60a86a61160afbadf5cd"
+    },
+    {
+      "path": "environment-after.json",
+      "size": 165,
+      "sha256": "b4a3a0144eca7e1ee8765b4fca3dc82b245475df2a920adfea7c11a563bed186"
+    },
+    {
+      "path": "environment-before.json",
+      "size": 496,
+      "sha256": "fbcc166a3140581edd838f990bb7b1d5811a2b03466c6161f3f24352099616a9"
+    },
+    {
+      "path": "output-validation.json",
+      "size": 148,
+      "sha256": "a29c00225b93ac51a20ba496fb31900d5b339475a445b44fdfb197feab7667c1"
+    },
+    {
+      "path": "raw-events.jsonl",
+      "size": 3487,
+      "sha256": "f9cb4d600096e90b0a84999d8746071dd727a7d22d1141843904568072d20db0"
+    },
+    {
+      "path": "readiness-recheck.json",
+      "size": 496,
+      "sha256": "fbcc166a3140581edd838f990bb7b1d5811a2b03466c6161f3f24352099616a9"
+    },
+    {
+      "path": "REPORT.md",
+      "size": 575,
+      "sha256": "bbe349a4c6f2ee931a3053f737785c1fdd547dfaccc55aa62f94919185841e83"
+    },
+    {
+      "path": "runner.patch",
+      "size": 1840,
+      "sha256": "330b70f85e8c54c81ac47a20afd16c590f5949a3eed9be751e708d3ee7f57bd0"
+    },
+    {
+      "path": "timing-summary.json",
+      "size": 274,
+      "sha256": "1b8664fa66be6398b5f9d8c0603fd966057eea53676d544135030fb60f549b98"
+    },
+    {
+      "path": "assets/p0/black-256.png",
+      "size": 270,
+      "sha256": "54e11226d37944f410956e9a2918ad4bb090485f1c9f5d2150172e06b291ff5c"
+    },
+    {
+      "path": "contracts/p0-workflow.json",
+      "size": 414,
+      "sha256": "0f062d7c4051caeb75e864eb3b849fdbb2a450badb8a3e7a360d9431deab8258"
+    },
+    {
+      "path": "runtime-evidence/fixture-upload-response.json",
+      "size": 363,
+      "sha256": "cac643b28418e928571feb9a2a94475f16e402ee0760312aa0d1627a56acf835"
+    },
+    {
+      "path": "runtime-evidence/warmup-01-raw-events.jsonl",
+      "size": 3473,
+      "sha256": "0c7641cc6ccf09394dad230bf36865ff4702fa700a680082aaa67e48c3082c32"
+    },
+    {
+      "path": "scripts/p0/run-p0-e6-history-on-success.py",
+      "size": 17299,
+      "sha256": "bbefaa6a7d9dd608e5a07abf02108f826d1e6958cd106f2ddfa20a73b50a15f5"
+    }
+  ]
+}
