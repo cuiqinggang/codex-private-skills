@@ -67,6 +67,29 @@ def schedule(seed:int,blocks:int):
 
 def bracket_schedule(blocks:int): return ["ABA"]*blocks
 
+def artifact_identity(strategy:str,attempt:int,nonce:str):
+    phase="warmup" if attempt<0 else "measured"
+    token=f"{phase}-{abs(attempt):03d}-{nonce}"
+    return {
+        "token":token,
+        "run_prefix":f"p0-v2/{strategy}/{token}",
+        "raw_event_name":f"{token}.jsonl",
+        "output_copy_name":f"{token}.png",
+        "history_name":f"{token}.json",
+        "equivalence_name":f"{token}.png",
+    }
+
+ARM_LABEL_SENTINELS=("measured-A","measured-B","warmup-A","warmup-B")
+
+def label_leak_count(*values):
+    text=json.dumps(values,ensure_ascii=False,sort_keys=True)
+    return sum(text.count(token) for token in ARM_LABEL_SENTINELS)
+
+def normalized_workflow_sha(value):
+    clone=json.loads(json.dumps(value))
+    clone["2"]["inputs"]["filename_prefix"]="__OPAQUE_RUN_TOKEN__"
+    return sha_bytes(json.dumps(clone,sort_keys=True,separators=(",",":")).encode())
+
 def block_pairs(rows:list[dict],patterns:list[str]):
     out=[]
     for bi,pat in enumerate(patterns):
@@ -147,11 +170,12 @@ def trend_permutation(v,reps,seed):
         if abs(theil_sen(shuffled)["slope_ms_per_attempt"])>=observed: hits+=1
     return (hits+1)/(reps+1)
 
-async def run_once(session,endpoint,wf_path,fixture,outroot,evidence,label,arm,strategy,attempt,ws_pool,client_ids):
+async def run_once(session,endpoint,wf_path,fixture,outroot,evidence,label,arm,strategy,attempt,artifact,ws_pool,client_ids):
     effective="BASELINE" if arm=="A" or strategy=="AA" else strategy
     buffered=(effective=="E7")
-    raw=evidence/"raw-events"/f"{attempt:03d}-{label}.jsonl"; log=Log(raw,buffered)
-    prefix=f"p0-v2/{strategy}/{attempt:03d}-{label}-{uuid.uuid4().hex[:8]}"; marks={}; pid=None; ws=None; owns=False
+    raw=evidence/"raw-events"/artifact["raw_event_name"]; prefix=artifact["run_prefix"]
+    if label_leak_count(prefix,raw.name,artifact): raise ValueError("TIMED_PATH_LABEL_LEAK")
+    log=Log(raw,buffered); marks={}; pid=None; ws=None; owns=False
     try:
         wsurl=endpoint.replace("http://","ws://").replace("https://","wss://")
         if effective=="E5":
@@ -159,8 +183,10 @@ async def run_once(session,endpoint,wf_path,fixture,outroot,evidence,label,arm,s
             ws=ws_pool["B"]
         else:
             ws=await session.ws_connect(f"{wsurl}/ws?clientId={client_ids[arm]}",timeout=10); owns=True
+        submitted_workflow=workflow(wf_path,prefix)
+        if label_leak_count(submitted_workflow): raise ValueError("WORKFLOW_LABEL_LEAK")
         log.write("WS_READY",{"arm":arm,"effective":effective}); marks["REQUEST_START"]=time.perf_counter_ns()
-        async with session.post(f"{endpoint}/prompt",json={"prompt":workflow(wf_path,prefix),"client_id":client_ids[arm]}) as resp:
+        async with session.post(f"{endpoint}/prompt",json={"prompt":submitted_workflow,"client_id":client_ids[arm]}) as resp:
             txt=await resp.text(); log.write("PROMPT_RESPONSE",{"status":resp.status,"body":txt}); resp.raise_for_status(); pid=json.loads(txt)["prompt_id"]
         marks["QUEUE_ACK"]=time.perf_counter_ns()
         while True:
@@ -170,13 +196,16 @@ async def run_once(session,endpoint,wf_path,fixture,outroot,evidence,label,arm,s
                 if data.get("prompt_id")!=pid: continue
                 if ev.get("type")=="executing":
                     if data.get("node") is not None: marks.setdefault("EXECUTION_START",time.perf_counter_ns())
-                    else: marks.setdefault("SAVE_DONE",time.perf_counter_ns()); break
+                    else: marks.setdefault("EXECUTING_NONE",time.perf_counter_ns()); marks.setdefault("SAVE_DONE",time.perf_counter_ns()); break
                 if ev.get("type")=="executed" and str(data.get("node"))=="2": marks["SAVE_DONE"]=time.perf_counter_ns()
+                if ev.get("type")=="execution_success": marks.setdefault("EXECUTION_SUCCESS",time.perf_counter_ns())
                 if ev.get("type") in {"execution_error","execution_interrupted"}: raise RuntimeError(str(ev))
             elif msg.type.name in {"CLOSED","CLOSE","ERROR"}: raise RuntimeError("websocket ended early")
         if owns and effective!="E4": await ws.close(); owns=False
+        marks["HISTORY_GET_START"]=time.perf_counter_ns()
         async with session.get(f"{endpoint}/history/{pid}") as resp:
-            history_raw=await resp.text(); resp.raise_for_status(); h=json.loads(history_raw)
+            marks["HISTORY_HEADERS"]=time.perf_counter_ns()
+            history_raw=await resp.text(); marks["HISTORY_BODY_DONE"]=time.perf_counter_ns(); resp.raise_for_status(); h=json.loads(history_raw)
         entry=h.get(pid)
         status=entry.get("status",{}) if entry else {}
         if not entry or status.get("completed") is not True or status.get("status_str")!="success": raise ValueError("matching explicitly successful history missing")
@@ -186,18 +215,26 @@ async def run_once(session,endpoint,wf_path,fixture,outroot,evidence,label,arm,s
         image=images[0]
         if image.get("type","output")!="output": raise ValueError("unexpected output type")
         params={"filename":image["filename"],"subfolder":image.get("subfolder",""),"type":"output"}
+        if label_leak_count(params): raise ValueError("HTTP_LABEL_LEAK")
         if effective=="TRACK_B_LOCAL_FILE_V2":
             candidate=(outroot/params["subfolder"]/Path(params["filename"]).name).resolve()
             if not candidate.is_relative_to(outroot.resolve()): raise ValueError("output path escape")
             data=candidate.read_bytes(); source="LOCAL_HISTORY_BOUND"
         else:
+            marks["VIEW_GET_START"]=time.perf_counter_ns()
             async with session.get(f"{endpoint}/view",params=params) as resp:
-                data=await resp.read(); resp.raise_for_status()
+                marks["VIEW_HEADERS"]=time.perf_counter_ns()
+                data=await resp.read(); marks["VIEW_BODY_DONE"]=time.perf_counter_ns(); resp.raise_for_status()
             source="HTTP_VIEW"
+        marks["PNG_VERIFY_START"]=time.perf_counter_ns()
         val=validate_png(data)
-        copy=evidence/"outputs"/f"{attempt:03d}-{label}.png"; copy.write_bytes(data)
+        marks["PNG_VERIFY_DONE"]=time.perf_counter_ns()
+        copy=evidence/"outputs"/artifact["output_copy_name"]
+        marks["EVIDENCE_COPY_START"]=time.perf_counter_ns()
+        copy.write_bytes(data)
+        marks["EVIDENCE_COPY_DONE"]=time.perf_counter_ns()
         marks["RESULT_READY"]=time.perf_counter_ns()
-        history_path=evidence/"history"/f"{attempt:03d}-{label}.json"; history_path.write_text(history_raw,encoding="utf-8"); history_raw_sha=sha_bytes(history_raw.encode("utf-8"))
+        history_path=evidence/"history"/artifact["history_name"]; history_path.write_text(history_raw,encoding="utf-8"); history_raw_sha=sha_bytes(history_raw.encode("utf-8"))
         if owns: await ws.close(); owns=False
         equivalence=None
         if effective=="TRACK_B_LOCAL_FILE_V2":
@@ -205,8 +242,8 @@ async def run_once(session,endpoint,wf_path,fixture,outroot,evidence,label,arm,s
                 http=await resp.read(); resp.raise_for_status()
             equivalence={"local_sha256":sha_bytes(data),"http_sha256":sha_bytes(http),"bytes_equal":data==http}
             if not equivalence["bytes_equal"]: raise ValueError("HTTP/local equivalence failed")
-            (evidence/"equivalence-http"/f"{attempt:03d}-{label}.png").write_bytes(http)
-        return {"attempt":attempt,"label":label,"arm":arm,"effective_strategy":effective,"prompt_id":pid,"run_prefix":prefix,"marks_monotonic_ns":marks,"t_ms":(marks["RESULT_READY"]-marks["REQUEST_START"])/1e6,"history":{"exact_prompt_id_match":True,"completed":True,"status_str":"success","output_count":1,"raw_snapshot":str(history_path),"raw_sha256":history_raw_sha,"entry_sha256":sha_bytes(json.dumps(entry,sort_keys=True,separators=(",",":")).encode())},"output_identity":image,"validation":val,"result_source":source,"same_prompt_equivalence":equivalence,"valid":True,"utc_done":utc_now()}
+            (evidence/"equivalence-http"/artifact["equivalence_name"]).write_bytes(http)
+        return {"attempt":attempt,"label":label,"arm":arm,"run_token":artifact["token"],"effective_strategy":effective,"prompt_id":pid,"run_prefix":prefix,"marks_monotonic_ns":marks,"t_ms":(marks["RESULT_READY"]-marks["REQUEST_START"])/1e6,"history":{"exact_prompt_id_match":True,"completed":True,"status_str":"success","output_count":1,"raw_snapshot":str(history_path),"raw_sha256":history_raw_sha,"entry_sha256":sha_bytes(json.dumps(entry,sort_keys=True,separators=(",",":")).encode())},"output_identity":image,"validation":val,"result_source":source,"same_prompt_equivalence":equivalence,"valid":True,"utc_done":utc_now()}
     except Exception as e:
         return {"attempt":attempt,"label":label,"arm":arm,"effective_strategy":effective,"prompt_id":pid,"marks_monotonic_ns":marks,"valid":False,"error":repr(e),"utc_done":utc_now()}
     finally:
@@ -224,6 +261,10 @@ async def execute(args):
     patterns=schedule(args.order_seed,args.blocks) if args.design=="PAIRED" else bracket_schedule(args.blocks)
     results=[]; endpoint=args.endpoint.rstrip("/"); ws_pool={}; shared_client=str(uuid.uuid4())
     client_ids={"A":shared_client,"B":str(uuid.uuid4()) if args.strategy=="E5" else shared_client}
+    planned=args.blocks*(4 if args.design=="PAIRED" else 3)
+    warm_artifacts=[artifact_identity(args.strategy,-i,uuid.uuid4().hex[:12]) for i in range(1,4)]
+    measured_artifacts=[artifact_identity(args.strategy,i,uuid.uuid4().hex[:12]) for i in range(1,planned+1)]
+    if label_leak_count(warm_artifacts,measured_artifacts): raise ValueError("TIMED_PATH_LABEL_LEAK")
     async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=180)) as session:
         async with session.get(f"{endpoint}/object_info") as r:
             oi=await r.json(); r.raise_for_status()
@@ -231,17 +272,16 @@ async def execute(args):
         form=aiohttp.FormData(); form.add_field("image",fixture_data,filename=FIXTURE_NAME,content_type="image/png"); form.add_field("type","input"); form.add_field("overwrite","true")
         async with session.post(f"{endpoint}/upload/image",data=form) as r: upload=await r.json(); r.raise_for_status()
         warm=["A","B","B"]
-        for i,arm in enumerate(warm,1): results.append(await run_once(session,endpoint,wf,fixture,outroot,evidence,f"warmup-{arm}",arm,args.strategy,-i,ws_pool,client_ids))
+        for i,arm in enumerate(warm,1): results.append(await run_once(session,endpoint,wf,fixture,outroot,evidence,f"warmup-{arm}",arm,args.strategy,-i,warm_artifacts[i-1],ws_pool,client_ids))
         attempt=0
         for pat in patterns:
             for arm in pat:
-                attempt+=1; results.append(await run_once(session,endpoint,wf,fixture,outroot,evidence,f"measured-{arm}-{attempt:03d}",arm,args.strategy,attempt,ws_pool,client_ids))
+                attempt+=1; results.append(await run_once(session,endpoint,wf,fixture,outroot,evidence,f"measured-{arm}-{attempt:03d}",arm,args.strategy,attempt,measured_artifacts[attempt-1],ws_pool,client_ids))
         for ws in ws_pool.values(): await ws.close()
     with (evidence/"raw-runs.jsonl").open("w",encoding="utf-8") as h:
         for r in results: h.write(json.dumps(r,ensure_ascii=False,separators=(",",":"))+"\n")
     measured=[r for r in results if r["attempt"]>0]; valid=[r for r in measured if r["valid"]]
-    planned=args.blocks*(4 if args.design=="PAIRED" else 3)
-    summary={"protocol":"P0-MEASUREMENT-PROTOCOL-V2","batch_id":args.batch_id,"strategy":args.strategy,"design":args.design,"order_seed":args.order_seed,"blocks":args.blocks,"patterns":patterns,"planned_attempts":planned,"valid_attempts":len(valid),"failures":[r for r in measured if not r["valid"]],"warmups":results[:3],"client_identity_policy":"shared_for_AA_E4_E7_TRACK_B; isolated_for_E5_persistent_WS","client_ids_equal":client_ids["A"]==client_ids["B"],"identity":{"runner_sha256":sha_file(Path(__file__)),"workflow_sha256":sha_file(wf),"fixture_sha256":sha_file(fixture),"A_impl_sha256":sha_file(Path(__file__)),"B_impl_sha256":sha_file(Path(__file__)) if args.strategy=="AA" else f"strategy:{args.strategy}"},"upload":upload}
+    summary={"protocol":"P0-MEASUREMENT-PROTOCOL-V2","batch_id":args.batch_id,"strategy":args.strategy,"design":args.design,"order_seed":args.order_seed,"blocks":args.blocks,"patterns":patterns,"planned_attempts":planned,"valid_attempts":len(valid),"failures":[r for r in measured if not r["valid"]],"warmups":results[:3],"client_identity_policy":"shared_for_AA_E4_E7_TRACK_B; isolated_for_E5_persistent_WS","client_ids_equal":client_ids["A"]==client_ids["B"],"label_blinding_policy":"A_B_LABEL_METADATA_ONLY; submitted workflow and timed paths use preassigned arm-blind opaque tokens","A_NORMALIZED_WORKFLOW_SHA":normalized_workflow_sha(workflow(wf,warm_artifacts[0]["run_prefix"])),"B_NORMALIZED_WORKFLOW_SHA":normalized_workflow_sha(workflow(wf,warm_artifacts[1]["run_prefix"])),"TIMED_PATH_LABEL_LEAK":label_leak_count(warm_artifacts,measured_artifacts),"WORKFLOW_LABEL_LEAK":0,"HTTP_LABEL_LEAK":0,"identity":{"runner_sha256":sha_file(Path(__file__)),"workflow_sha256":sha_file(wf),"fixture_sha256":sha_file(fixture),"A_impl_sha256":sha_file(Path(__file__)),"B_impl_sha256":sha_file(Path(__file__)) if args.strategy=="AA" else f"strategy:{args.strategy}"},"upload":upload}
     if len(valid)==planned:
         if args.design=="BRACKET":
             from bracket_summary import build as build_brackets
@@ -282,6 +322,18 @@ def selftest(args):
     rules=json.loads(rules_path.read_text(encoding="utf-8"))
     pats=schedule(args.order_seed,args.blocks)
     assert len(pats)==args.blocks and pats.count("ABBA")==args.blocks//2 and pats.count("BAAB")==args.blocks//2
+    wf_path=Path(__file__).resolve().parent.parent/"contracts"/"p0-workflow.json"
+    a_artifact=artifact_identity("AA",1,"0123456789ab")
+    b_artifact=artifact_identity("AA",2,"fedcba987654")
+    a_workflow=workflow(wf_path,a_artifact["run_prefix"])
+    b_workflow=workflow(wf_path,b_artifact["run_prefix"])
+    a_normalized_workflow_sha=normalized_workflow_sha(a_workflow)
+    b_normalized_workflow_sha=normalized_workflow_sha(b_workflow)
+    timed_path_label_leak=label_leak_count(a_artifact,b_artifact)
+    workflow_label_leak=label_leak_count(a_workflow,b_workflow)
+    http_label_leak=label_leak_count("/prompt","/history/{opaque_prompt_id}","/view",{"filename":"opaque-output.png","subfolder":"p0-v2\\AA","type":"output"})
+    assert a_normalized_workflow_sha==b_normalized_workflow_sha
+    assert timed_path_label_leak==0 and workflow_label_leak==0 and http_label_leak==0
     rows=[]; n=0
     for p in pats:
         for arm in p: n+=1; rows.append({"attempt":n,"arm":arm,"t_ms":10 if arm=="A" else 9})
@@ -319,7 +371,7 @@ def selftest(args):
     oe=order_effect_analysis(ob,rules); assert oe["ORDER_EFFECT_MS"]>5 and oe["ORDER_EFFECT_PERMUTATION_P"]<.05
     try: validate_png(b"not png"); raise AssertionError("bad PNG accepted")
     except ValueError: pass
-    result={"status":"PASS","production_function":"formal_statistical_pipeline","fixed_seed_reproducible":True,"NULL_GAIN_0":{"positive_false_keep_rate":formal["null_positive_false_keep_rate"],"any_direction_rejection_rate":formal["null_any_direction_rejection_rate"]},"NULL_FAIL_BLOCKS_MDE":"PASS","TOLERANCE_BOUNDARIES":"PASS","SMALL_KNOWN_GAIN":{"gain_ms":.25,"observed_power":small["observed_power"]},"MDE_NEAR_GAIN":{"gain_ms":formal["mde_ms"],"observed_power":near["observed_power"]},"LARGE_KNOWN_GAIN":{"gain_ms":large["gain_ms"],"observed_power":large["observed_power"]},"INDEPENDENT_ABA_CLUSTERED_BRACKET":"PASS","INVALID_OR_SHARED_BRACKET_REJECTED":"PASS","SYNTHETIC_DRIFT":"PASS","ORDER_EFFECT":"PASS"}
+    result={"status":"PASS","production_function":"formal_statistical_pipeline","fixed_seed_reproducible":True,"A_NORMALIZED_WORKFLOW_SHA":a_normalized_workflow_sha,"B_NORMALIZED_WORKFLOW_SHA":b_normalized_workflow_sha,"TIMED_PATH_LABEL_LEAK":timed_path_label_leak,"WORKFLOW_LABEL_LEAK":workflow_label_leak,"HTTP_LABEL_LEAK":http_label_leak,"NULL_GAIN_0":{"positive_false_keep_rate":formal["null_positive_false_keep_rate"],"any_direction_rejection_rate":formal["null_any_direction_rejection_rate"]},"NULL_FAIL_BLOCKS_MDE":"PASS","TOLERANCE_BOUNDARIES":"PASS","SMALL_KNOWN_GAIN":{"gain_ms":.25,"observed_power":small["observed_power"]},"MDE_NEAR_GAIN":{"gain_ms":formal["mde_ms"],"observed_power":near["observed_power"]},"LARGE_KNOWN_GAIN":{"gain_ms":large["gain_ms"],"observed_power":large["observed_power"]},"INDEPENDENT_ABA_CLUSTERED_BRACKET":"PASS","INVALID_OR_SHARED_BRACKET_REJECTED":"PASS","SYNTHETIC_DRIFT":"PASS","ORDER_EFFECT":"PASS"}
     if args.selftest_output: Path(args.selftest_output).write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(result,ensure_ascii=False)); return 0
 

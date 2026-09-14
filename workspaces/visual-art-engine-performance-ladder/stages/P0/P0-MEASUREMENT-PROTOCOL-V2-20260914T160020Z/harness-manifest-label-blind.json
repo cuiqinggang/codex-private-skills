@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "fingerprint_algorithm": "SHA256_OF_CANONICAL_JSON_PAYLOAD",
+  "files": [
+    {
+      "path": "scripts/run_measurement_v2.py",
+      "bytes": 32413,
+      "sha256": "c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54"
+    },
+    {
+      "path": "scripts/start-label-blind-aa-comfyui.ps1",
+      "bytes": 3689,
+      "sha256": "db1d57c56a9c81911cf338074d741c9c50563e6640e4ee8a669cc8c09cafabcb"
+    },
+    {
+      "path": "scripts/invoke-start-label-blind-aa-comfyui.ps1",
+      "bytes": 630,
+      "sha256": "c77bf04a7571d289d0bbf1b95a5db3b3256eb53d8907a45f735141d9cd10c252"
+    },
+    {
+      "path": "decision-rules.json",
+      "bytes": 3003,
+      "sha256": "73bd1b453cf09619ffdceb4f4f7fb10e9d193e6e7feeff5a14271fe9ac9da8e9"
+    },
+    {
+      "path": "scripts/bracket_summary.py",
+      "bytes": 2619,
+      "sha256": "76706bb2064827350b5d6732dd10a78572b1140a6c87883fe9ed71401b731f9e"
+    },
+    {
+      "path": "contracts/p0-workflow.json",
+      "bytes": 414,
+      "sha256": "0f062d7c4051caeb75e864eb3b849fdbb2a450badb8a3e7a360d9431deab8258"
+    },
+    {
+      "path": "assets/black-256.png",
+      "bytes": 270,
+      "sha256": "54e11226d37944f410956e9a2918ad4bb090485f1c9f5d2150172e06b291ff5c"
+    }
+  ],
+  "label_blind_gates": {
+    "A_NORMALIZED_WORKFLOW_SHA": "94094bf2da0fda3ffba7e69d2e8c63356bb27b0efbb1f1223ece2bc9dafff2aa",
+    "B_NORMALIZED_WORKFLOW_SHA": "94094bf2da0fda3ffba7e69d2e8c63356bb27b0efbb1f1223ece2bc9dafff2aa",
+    "NORMALIZED_A_B_WORKFLOW_EQUAL": "YES",
+    "TIMED_PATH_LABEL_LEAK": 0,
+    "WORKFLOW_LABEL_LEAK": 0,
+    "HTTP_LABEL_LEAK": 0
+  },
+  "RUNNER_SHA": "c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54",
+  "HARNESS_MANIFEST_SHA": "81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf",
+  "superseded_runner": {
+    "sha256": "8f5c3a592ba18a0570b5213996bdbb4f9618f178d0bd80af16f0c56e912d4062",
+    "status": "SUPERSEDED_LABEL_BLIND_RUNNER"
+  }
+}

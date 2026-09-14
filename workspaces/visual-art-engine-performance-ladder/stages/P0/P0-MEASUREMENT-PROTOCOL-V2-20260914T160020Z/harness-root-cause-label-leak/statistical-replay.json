@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "mode": "STATISTICAL_REPLAY_ONLY_NOT_NEW_AA",
+  "new_runner_sha256": "c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54",
+  "source_batch": "AUTH-AA-STAT-FINAL-40B",
+  "source_runner_sha256": "fcdae8b83d663a9185cc44a90d8b5c0bd91b6b8da069515a997f0167509f2c6b",
+  "formal_effect_ms": 3.24545,
+  "ci_95_ms": [
+    0.5794750000000022,
+    5.953474999999999
+  ],
+  "NULL_SIMULATION_ITERATIONS": 20000,
+  "NULL_POSITIVE_FALSE_KEEP_RATE": 0.0222,
+  "NULL_ANY_DIRECTION_REJECTION_RATE": 0.04575,
+  "NULL_CALIBRATION_PASS": true,
+  "FINAL_MDE_MS": 4.4,
+  "MDE_TARGET_POWER": 0.8,
+  "MDE_OBSERVED_POWER": 0.82245,
+  "authority_boundary": "This proves statistical-function parity only. It is not a fresh label-blind runtime A/A and cannot unlock candidates."
+}

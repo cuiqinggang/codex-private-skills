@@ -59,3 +59,39 @@ Bracket 是候选的独立 `A_before,B,A_after` 三次运行单元，不从 ABBA
 第一次权威 A/A 又出现 A/B 标签显著假差异；检查发现两臂使用不同 client_id，而这不是 A/A 所需变量。其 paired CI=[1.6799,6.418715] ms，校准 FAIL，证据保留。随后把非 E5 的两臂 client_id 统一并重新校准；不得把失败批改写为 PASS。
 
 `AUTH-AA` 与 `AUTH-AA-SHARED-CLIENT` 均固定为 `PILOT_CALIBRATION_ONLY`。此前 40/80-block 权威尝试以及 2.4 ms MDE 全部固定为 `SUPERSEDED_BY_STATISTICAL_AUDIT`：其原始证据保留，但不得进入 FINAL_MDE 或候选裁决。新权威 A/A 必须使用通过纯统计自测的新 runner SHA。
+
+## 2026-09-15 A/A arm-label leakage 根因候选
+
+`AUTH-AA-STAT-FINAL-40B` 的服务端 `execution_start -> execution_success`
+block effect 为 `0 ms`，而总 formal effect 为 `3.24545 ms`。客户端
+`QUEUE_ACK -> EXECUTION_START` 与 `SAVE_DONE -> RESULT_READY` 分别贡献约
+`0.91815 ms` 和 `1.89000 ms` 的 block effect。
+
+源码审计确认旧 runner 把 `measured-A-*` / `measured-B-*` 写进
+`SaveImage.filename_prefix`、`/view` 所取文件名和计时内 raw/evidence
+文件路径。因此相同算法并不等于相同执行路径，旧 A/A 不满足标签盲要求。
+
+修复后 A/B 只保留在计时外 metadata；所有被测 workflow、HTTP 参数和计时内
+文件路径使用预分配的固定形态 opaque token。selftest 必须同时证明：
+
+- `A_NORMALIZED_WORKFLOW_SHA == B_NORMALIZED_WORKFLOW_SHA`
+- `TIMED_PATH_LABEL_LEAK=0`
+- `WORKFLOW_LABEL_LEAK=0`
+- `HTTP_LABEL_LEAK=0`
+
+旧 runner SHA `fcdae8b8...` 与 160-run 原始证据不删除。修复 runner SHA
+`c43875c3...` 已通过 selftest，但新的 160-run A/A 尚未执行，所以继续保持
+`AA_CALIBRATION=FAIL` 与 `CANDIDATE_LOCK=ON`。完整证据见
+`harness-root-cause-label-leak/ROOT-CAUSE-AUDIT.md`。
+
+当前版本链固定为：
+
+- `8f5c3a59...` = `SUPERSEDED_LABEL_BLIND_RUNNER`
+- `c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54`
+  = `CURRENT_LABEL_BLIND_RUNNER`
+- `HARNESS_MANIFEST_SHA=81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf`
+
+以后任何权威批次必须同时记录 `RUNNER_SHA` 与 `HARNESS_MANIFEST_SHA`。
+完整 harness manifest 至少覆盖 runner、两层启动器、decision rules、bracket
+summary、workflow 和 fixture。只要其中任一文件变化，就必须产生新 harness
+fingerprint 并重做相应 preflight。

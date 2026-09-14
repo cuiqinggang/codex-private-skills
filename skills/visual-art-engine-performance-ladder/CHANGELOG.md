@@ -9,6 +9,9 @@
 - history 必须保存无损原文及 SHA-256；统计实现变化必须产生新 runner SHA 并重新 A/A。
 - 旧 A/A 与候选证据保留，但受审计取代的批次不得参与正式裁决。
 - 新 runner `fcdae8b8...` 的统计 selftest 与 null calibration 通过；40-block 权威 A/A 因同实现 formal CI 全正而 FAIL，技能继续 `UNDER_VALIDATION`，候选锁不解除。
+- 定位旧 A/A 的 arm-label leakage：A/B 标签进入 workflow `filename_prefix`、HTTP 输出身份及计时内 evidence 路径；服务端 execution block effect=0，客户端控制路径主导假差异。
+- 新 runner `c43875c3...` 改用预分配 label-blind opaque token，增加 normalized workflow SHA 等价与 timed/workflow/HTTP leak=0 自测；统计函数重放保持 null/CI/MDE 原值。新权威 A/A 因本机 listener 权限拒绝尚未运行，候选锁继续开启。
+- 建立双重 benchmark 身份：`8f5c3a59...` 保留为 `SUPERSEDED_LABEL_BLIND_RUNNER`，`c43875c3...` 为 `CURRENT_LABEL_BLIND_RUNNER`；当前 `HARNESS_MANIFEST_SHA=81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf`，覆盖 runner、两层启动器、decision rules、bracket summary、workflow 与 fixture。
 
 ## 1.0.1 - 2026-09-14
 

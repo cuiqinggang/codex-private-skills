@@ -51,6 +51,17 @@ python .\scripts\p0\run-p0-control.py --dry-run
 
 V2 一旦三门通过即冻结为 P0-P3 默认 benchmark harness。只有新的真实证据证明 harness 有缺陷时才能升级；升级必须保留旧版本、记录原因、产生新 runner SHA 并重新 A/A。
 
+A/A 的 arm label 必须是纯 metadata。任何 A/B 标签进入 workflow JSON、
+`filename_prefix`、HTTP path/query、计时内 raw/evidence 路径或 client/session
+identifier，均为 benchmark contamination。正式 A/A 前必须证明归一化 run token
+后的 A/B workflow byte-equivalent，并同时满足
+`TIMED_PATH_LABEL_LEAK=0`、`WORKFLOW_LABEL_LEAK=0`、
+`HTTP_LABEL_LEAK=0`。
+
+权威 benchmark 身份必须同时记录单文件 `RUNNER_SHA` 与整套
+`HARNESS_MANIFEST_SHA`。后者至少覆盖 runner、两层启动器、decision rules、
+bracket summary、workflow 与 fixture；任一文件变化都产生新 fingerprint。
+
 ## 强制边界
 
 - v1.0.1 仅表示方法、阶梯、版本、冻结系统、P0 Contract 和 P0 工具就绪；不表示 P0 已测或已优化。

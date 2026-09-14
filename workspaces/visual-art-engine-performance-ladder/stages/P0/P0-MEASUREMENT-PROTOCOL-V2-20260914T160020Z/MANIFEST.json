@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-14T17:46:21.727416+00:00",
+  "generated_at": "2026-09-14T18:37:19.852506+00:00",
   "root": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z",
-  "file_count": 4044,
+  "file_count": 4051,
   "files": [
     {
       "path": "aa-calibration.json",
@@ -12530,9 +12530,24 @@
       "sha256": "a185b3369f9335195ef318c8bc9ccb42c08b4b72e7a41669c6da6bda7d4c1361"
     },
     {
+      "path": "harness-manifest-label-blind.json",
+      "bytes": 2010,
+      "sha256": "81c6bc26c73ad208feabc45f5a5698cd436a31706d10c833d3c132a90ea5e85c"
+    },
+    {
+      "path": "harness-root-cause-label-leak/ROOT-CAUSE-AUDIT.md",
+      "bytes": 4489,
+      "sha256": "465a0cbb84b32e28c0f40b8ee7f5f79afeca0c45b2d77a1b9970b7354dc933e9"
+    },
+    {
+      "path": "harness-root-cause-label-leak/statistical-replay.json",
+      "bytes": 789,
+      "sha256": "7786ab227f0c0efb0f09ea003214634ca677e1df7219fb47c8c21820bb7e98de"
+    },
+    {
       "path": "measurement-protocol-v2.md",
-      "bytes": 6287,
-      "sha256": "b4b78792e81d32618167e62ecf583987237f3be6258adb87286e9efcd9c04e94"
+      "bytes": 8071,
+      "sha256": "fd860fe4e2aad815e0d646bf05a4cba76ae71a031fe47c275d08b4443ca6deb0"
     },
     {
       "path": "paired-results.json",
@@ -20205,6 +20220,11 @@
       "sha256": "76706bb2064827350b5d6732dd10a78572b1140a6c87883fe9ed71401b731f9e"
     },
     {
+      "path": "scripts/build_harness_manifest.py",
+      "bytes": 3766,
+      "sha256": "64f6a1e6a395e7405475695a43a7ea648a99d0029f0f11b218fdb9e3429aa11a"
+    },
+    {
       "path": "scripts/build_manifest.py",
       "bytes": 624,
       "sha256": "d7ae611143fbac478a17892fd9de3b8e00fd359e3175ae92ceb5bde2e11c0190"
@@ -20215,9 +20235,24 @@
       "sha256": "ffc6a7c1e38ad7e153eca8371c00bdc82545f756d2e008e6a96444ed77348996"
     },
     {
+      "path": "scripts/invoke-start-label-blind-aa-comfyui.ps1",
+      "bytes": 630,
+      "sha256": "c77bf04a7571d289d0bbf1b95a5db3b3256eb53d8907a45f735141d9cd10c252"
+    },
+    {
       "path": "scripts/run_measurement_v2.py",
-      "bytes": 28580,
-      "sha256": "fcdae8b83d663a9185cc44a90d8b5c0bd91b6b8da069515a997f0167509f2c6b"
+      "bytes": 32413,
+      "sha256": "c43875c3db879a589156b249756c240dd025452942461128a9093a90392d0d54"
+    },
+    {
+      "path": "scripts/start-label-blind-aa-comfyui.ps1",
+      "bytes": 3689,
+      "sha256": "db1d57c56a9c81911cf338074d741c9c50563e6640e4ee8a669cc8c09cafabcb"
+    },
+    {
+      "path": "statistical-selftest-label-blind.json",
+      "bytes": 985,
+      "sha256": "2eea920b5ffbd51a1a450cfed59ed6868fe3de04873b10f773e3c9dd255a5e4e"
     },
     {
       "path": "statistical-selftest.json",

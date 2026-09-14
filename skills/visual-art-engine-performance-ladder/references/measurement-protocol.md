@@ -7,7 +7,14 @@
 ## 成熟流程
 
 1. 固定 workload、结果语义、计时边界、runner/workflow/fixture SHA 和环境；每次保存 monotonic 原始时间。
+   权威记录必须同时包含 `RUNNER_SHA` 与 `HARNESS_MANIFEST_SHA`；后者确定性覆盖
+   runner、两层启动器、decision rules、bracket summary、workflow 与 fixture。
+   任一受覆盖文件变化，均视为新的 benchmark harness 身份。
 2. 先跑完全同实现的 interleaved A/A；A1/A2 只能是逻辑标签，同生命周期、runner、HTTP session 与 warmed environment。
+   A/B 标签只能存在于计时外 metadata，不得进入 workflow JSON、`filename_prefix`、
+   HTTP path/query、计时内 raw/evidence 路径或 client/session identifier。归一化
+   opaque run token 后的 A/B workflow SHA 必须 byte-equivalent，三类 label leak
+   计数必须全部为 0。
 3. 正式比较采用固定 seed 的 ABBA/BAAB 四次 block；block 是最小独立单元，禁止把 block 内 observations 当 IID。
 4. null calibration 必须调用与生产 KEEP 相同的统计函数。正向 KEEP 定义为双侧 95% CI lower bound > 0；同时报告 `NULL_POSITIVE_FALSE_KEEP_RATE`（目标约 2.5%）与 `NULL_ANY_DIRECTION_REJECTION_RATE`（目标约 5%）。
 5. null calibration PASS 后才计算 FINAL_MDE：在相同依赖结构和 KEEP 规则下达到 power≥0.80 的最小真实 gain，并保存完整 power curve。
