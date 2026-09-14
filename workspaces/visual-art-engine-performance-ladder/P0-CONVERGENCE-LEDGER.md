@@ -14,3 +14,4 @@
 | E8 BASELINE_REPRO_CONTROL_A | 检查正式基线可复现性 | N/A | 3/3、20/20；Median 39.15，P95 49.4881 | CONTROL_FAIL_REPRO | 未复现32.55975 | 控制批次B |
 | E9 BASELINE_REPRO_CONTROL_B | 第二独立控制批次 | N/A | 3/3、20/20；Median 30.0504，P95 36.6619 | CONTROL_PASS | 成功复现但批间抖动大 | 控制批次C |
 | E10 BASELINE_REPRO_CONTROL_C | 第三独立控制批次 | N/A | 3/3、20/20；Median 33.20215，P95 40.2249 | CONTROL_PASS | 基线可复现但批间抖动显著 | R4 Load/Save 分解 |
+| E11 BASELINE_REPRO_CONTROL_D | 第四控制/最终确认第三批 | N/A | 3/3、20/20；Median 35.60995，P95 42.9792 | CONTROL_PASS | B/C/D 三批均有效 | R1-R8 最终审核 |

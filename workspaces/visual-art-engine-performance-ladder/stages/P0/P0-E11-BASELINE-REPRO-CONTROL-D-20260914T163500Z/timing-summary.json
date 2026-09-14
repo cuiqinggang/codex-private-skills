@@ -1,0 +1,43 @@
+{
+  "run_id": "P0-E11-BASELINE-REPRO-CONTROL-D-20260914T163500Z",
+  "experiment": "EXACT_BASELINE_REPRODUCTION_CONTROL_D",
+  "official_baseline_median_ms": 32.55975,
+  "warmup_valid": "3/3",
+  "measured_valid": "20/20",
+  "t_end_to_end": {
+    "count": 20,
+    "min_ms": 27.7901,
+    "median_ms": 35.60995,
+    "p95_ms": 42.9792,
+    "max_ms": 43.4154
+  },
+  "request": {
+    "count": 20,
+    "min_ms": 4.5505,
+    "median_ms": 5.07295,
+    "p95_ms": 8.9246,
+    "max_ms": 10.5667
+  },
+  "queue": {
+    "count": 20,
+    "min_ms": 3.2653,
+    "median_ms": 6.07455,
+    "p95_ms": 10.0426,
+    "max_ms": 11.4945
+  },
+  "execute": {
+    "count": 20,
+    "min_ms": 5.0528,
+    "median_ms": 6.8073,
+    "p95_ms": 13.5816,
+    "max_ms": 13.6066
+  },
+  "result": {
+    "count": 20,
+    "min_ms": 13.9885,
+    "median_ms": 16.23895,
+    "p95_ms": 22.3495,
+    "max_ms": 23.0605
+  },
+  "baseline_reproduced": true
+}

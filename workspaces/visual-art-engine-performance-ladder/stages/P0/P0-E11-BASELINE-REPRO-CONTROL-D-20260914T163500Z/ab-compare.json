@@ -1,0 +1,11 @@
+{
+  "official_median_ms": 32.55975,
+  "control_median_ms": 35.60995,
+  "delta_percent": 9.368,
+  "decision": "CONTROL_REPRODUCED_NO_BASELINE_CHANGE",
+  "final_confirmation_batch_medians_ms": [
+    30.0504,
+    33.20215,
+    35.60995
+  ]
+}
