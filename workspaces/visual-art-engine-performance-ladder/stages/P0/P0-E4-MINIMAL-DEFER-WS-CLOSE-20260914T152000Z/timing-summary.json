@@ -1,0 +1,44 @@
+{
+  "run_id": "P0-E4-MINIMAL-DEFER-WS-CLOSE-20260914T152000Z",
+  "experiment": "MINIMAL_DEFER_WEBSOCKET_CLOSE",
+  "baseline_median_ms": 32.55975,
+  "baseline_p95_ms": 58.1779,
+  "warmup_valid": "3/3",
+  "measured_valid": "20/20",
+  "t_end_to_end": {
+    "count": 20,
+    "min_ms": 28.3515,
+    "median_ms": 34.0632,
+    "p95_ms": 39.9397,
+    "max_ms": 40.0319
+  },
+  "request": {
+    "count": 20,
+    "min_ms": 4.4094,
+    "median_ms": 5.0383,
+    "p95_ms": 6.1823,
+    "max_ms": 6.7503
+  },
+  "queue": {
+    "count": 20,
+    "min_ms": 3.207,
+    "median_ms": 4.66725,
+    "p95_ms": 7.5654,
+    "max_ms": 10.1521
+  },
+  "execute": {
+    "count": 20,
+    "min_ms": 5.883,
+    "median_ms": 8.2267,
+    "p95_ms": 9.7968,
+    "max_ms": 13.2217
+  },
+  "result": {
+    "count": 20,
+    "min_ms": 14.5233,
+    "median_ms": 16.1278,
+    "p95_ms": 18.5221,
+    "max_ms": 18.8288
+  },
+  "decision": "ROLLBACK"
+}

@@ -1,0 +1,16 @@
+{
+  "response": {
+    "name": "p0-control-black-256.png",
+    "subfolder": "",
+    "type": "input"
+  },
+  "fixture_validation": {
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "bit_depth": 8,
+    "color_type": 2,
+    "decoded_bytes": 196864,
+    "sha256": "54e11226d37944f410956e9a2918ad4bb090485f1c9f5d2150172e06b291ff5c"
+  }
+}

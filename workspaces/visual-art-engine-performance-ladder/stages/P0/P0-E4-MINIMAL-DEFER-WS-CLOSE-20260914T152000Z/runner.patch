@@ -1,0 +1,29 @@
+diff --git "a/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\scripts\\p0\\baseline-run-p0-control.py" "b/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E4-MINIMAL-DEFER-WS-CLOSE-20260914T152000Z\\scripts\\p0\\run-p0-e4-minimal-defer-ws-close.py"
+index d7b2388..2b56c25 100644
+--- "a/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E1-RESULT-DECOMPOSITION-20260914T141601Z\\scripts\\p0\\baseline-run-p0-control.py"
++++ "b/C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E4-MINIMAL-DEFER-WS-CLOSE-20260914T152000Z\\scripts\\p0\\run-p0-e4-minimal-defer-ws-close.py"
+@@ -198,8 +198,6 @@ async def run_once(
+                 raise RuntimeError(f"WebSocket ended before completion: {message.type.name}")
+         else:
+             raise TimeoutError("P0 execution timed out")
+-        await ws.close()
+-
+         async with session.get(f"{endpoint}/history/{prompt_id}") as response:
+             history_text = await response.text()
+             log.write("HTTP_HISTORY_RESPONSE", {"status": response.status, "body": history_text})
+@@ -237,6 +235,7 @@ async def run_once(
+         output_path.write_bytes(png_bytes)
+         marks.setdefault("SAVE_DONE", time.perf_counter_ns())
+         marks["RESULT_READY"] = time.perf_counter_ns()
++        await ws.close()
+         output_record = {
+             "history": image,
+             "evidence_copy": str(output_path),
+@@ -353,6 +352,7 @@ async def execute(args: argparse.Namespace) -> int:
+     ]
+     summary = {
+         "schema_version": 1,
++        "experiment_id": "MINIMAL_DEFER_WEBSOCKET_CLOSE",
+         "contract_id": CONTRACT_ID,
+         "generated_at": utc_now(),
+         "warmup_runs": WARMUP_RUNS,

@@ -1,0 +1,10 @@
+{
+  "baseline_median_ms": 32.55975,
+  "candidate_median_ms": 34.0632,
+  "median_improvement_percent": -4.6175,
+  "baseline_p95_ms": 58.1779,
+  "candidate_p95_ms": 39.9397,
+  "p95_improvement_percent": 31.349,
+  "decision": "ROLLBACK",
+  "reason": "P95 improved >=20%, but median regression exceeded 2%."
+}

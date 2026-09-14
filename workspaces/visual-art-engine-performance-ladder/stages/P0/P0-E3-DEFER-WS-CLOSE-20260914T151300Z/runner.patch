@@ -130,7 +130,7 @@ index d7b2388..d4389c0 100644
      missing = [name for name in required_marks if name not in marks]
 @@ -257,6 +305,9 @@ async def run_once(
          raise ValueError(f"missing required timing marks: {missing}")
- 
+
      seconds = lambda start, end: (marks[end] - marks[start]) / 1_000_000_000
 +    optional_seconds = lambda start, end: (
 +        seconds(start, end) if start in marks and end in marks else None
@@ -183,7 +183,7 @@ index d7b2388..d4389c0 100644
 -                await run_once(session, endpoint, client_id, f"measured-{index + 1:02d}", evidence_dir)
 +                await run_once(session, endpoint, client_id, f"measured-{index + 1:02d}", evidence_dir, output_root)
              )
- 
+
      measured = [
 @@ -353,6 +423,7 @@ async def execute(args: argparse.Namespace) -> int:
      ]
