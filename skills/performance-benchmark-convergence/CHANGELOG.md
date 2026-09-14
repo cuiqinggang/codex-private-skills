@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 — 2026-09-15
+
+- Added anti-dust usage log and clickable acceptance entrypoints.
+- Bound Windows deepest evidence-path creation to benchmark preflight acceptance.
+- Linked the first 160/160 runtime-confirmed label-blind A/A while preserving its overall INCONCLUSIVE order-equivalence result.
+
 ## 0.1.0 — 2026-09-15
 
 Initial reusable performance benchmark convergence skill extracted from the `visual-art-engine-performance-ladder` P0 Measurement Protocol V2 case.

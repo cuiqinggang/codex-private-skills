@@ -33,3 +33,18 @@
 ## 冻结与升级
 
 `STATISTICAL_SELFTEST=PASS` + `NULL_CALIBRATION=PASS` + `AA_CALIBRATION=PASS` 后冻结 V2，P1/P2/P3 默认复用。发现新缺陷时保留旧版本和全部证据，记录 repair reason/diff，产生新 runner SHA，重新完成三门。
+
+## Windows evidence-path preflight
+
+权威测试启动前必须实际创建并删除一个 deepest expected evidence path 探针，覆盖
+Stage root、批次目录、最深子目录和最长文件名。若失败，正式批次不得启动；应改用
+短、中性、label-blind evidence root。路径缩短不得改变 arm、workflow、order seed、
+统计规则、workload 或计时语义。
+
+## 当前权威 A/A（2026-09-15）
+
+`AA_VALID_RUNS=160`，formal effect=`2.8688 ms`，95% CI=
+`[-0.847625,6.585225]`，noise floor=`3.7609 ms`。旧 CI 全正假效应已消失，
+`LABEL_BLIND_FIX_CAUSALLY_CONFIRMED=YES`。order effect=`6.619075 ms`，95% CI=
+`[-3.081325,22.327025]`，未整体进入冻结等价区间，因此
+`AA_CALIBRATION=INCONCLUSIVE / CANDIDATE_LOCK=ON`；不得启动候选。

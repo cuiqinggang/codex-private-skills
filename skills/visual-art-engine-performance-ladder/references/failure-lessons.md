@@ -12,3 +12,5 @@
 - Superseded experiments remain evidence but cannot enter authoritative decisions：旧原始数据、慢样本、失败均保留，但标记 PILOT/PREAUDIT/SUPERSEDED 后不得参与 FINAL_MDE、KEEP 或 ROLLBACK。
 - Null calibration PASS does not imply A/A PASS：最终新 runner 的 null false KEEP 与双向 rejection 均校准通过，但完全相同实现仍产生 formal effect=3.24545 ms、95% CI=[0.579475,5.953475] 且超过 noise floor；必须 `AA_CALIBRATION=FAIL` 并锁定候选。
 - Same algorithm is not the same execution path：旧 A/A 把 `measured-A/B` 写进 `SaveImage.filename_prefix`、`/view` 输出身份和计时内 raw/evidence 路径；服务端 execution effect 为 0，而客户端控制路径主导假差异。arm label 必须纯 metadata，并以 normalized workflow SHA 相等及 timed/workflow/HTTP leak=0 自测阻断复犯。
+- Root-cause repair and overall A/A are separate：label-blind 后 formal CI 从全正变为跨 0、effect 落入 noise floor，足以确认标签污染修复；但 order-effect equivalence CI 仍过宽，所以总体只能 `INCONCLUSIVE`，候选锁不能解除。
+- Windows deepest evidence path must be preflighted：长 Stage root 加逐 run 子目录可在目录已创建后仍于深层文件 open 报 `FileNotFoundError`。权威测试前必须真实创建最深路径；必要时使用短、中性、label-blind evidence root。

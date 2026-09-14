@@ -2,7 +2,7 @@
 name: performance-benchmark-convergence
 description: 将毫秒级性能优化的测量、A/A 校准、paired A/B、MDE、顺序效应、环境漂移、确认批次与 99 分收敛固化成可复用流程。适用于替换 workload/runner/output validator 后快速建立可信 benchmark；不保证性能达到 99，也不允许为 PASS 事后修改统计规则。
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   short-description: 性能测试与99分收敛经验库
 ---
 
@@ -77,3 +77,7 @@ metadata:
 首个成熟案例来自 `visual-art-engine-performance-ladder` P0 Measurement Protocol V2。该案例暴露并固化了：historical baseline drift、null false-positive、shared-A cluster、order equivalence、label leakage、harness fingerprint、Windows 长路径以及 runtime permission 等关键经验。
 
 详细失败经验见 [FAILURE-LESSONS.md](references/FAILURE-LESSONS.md)。
+
+最近使用记录见 [USAGE-LOG.md](USAGE-LOG.md)，可点击验收见
+[ACCEPTANCE.html](ACCEPTANCE.html)。新 benchmark 开工时先执行 playbook 的
+deepest evidence path preflight，再核对 failure lessons。

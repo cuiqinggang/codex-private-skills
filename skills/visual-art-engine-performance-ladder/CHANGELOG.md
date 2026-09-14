@@ -12,6 +12,8 @@
 - 定位旧 A/A 的 arm-label leakage：A/B 标签进入 workflow `filename_prefix`、HTTP 输出身份及计时内 evidence 路径；服务端 execution block effect=0，客户端控制路径主导假差异。
 - 新 runner `c43875c3...` 改用预分配 label-blind opaque token，增加 normalized workflow SHA 等价与 timed/workflow/HTTP leak=0 自测；统计函数重放保持 null/CI/MDE 原值。新权威 A/A 因本机 listener 权限拒绝尚未运行，候选锁继续开启。
 - 建立双重 benchmark 身份：`8f5c3a59...` 保留为 `SUPERSEDED_LABEL_BLIND_RUNNER`，`c43875c3...` 为 `CURRENT_LABEL_BLIND_RUNNER`；当前 `HARNESS_MANIFEST_SHA=81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf`，覆盖 runner、两层启动器、decision rules、bracket summary、workflow 与 fixture。
+- 完成 160/160 label-blind 权威 A/A：formal effect `2.8688 ms`、CI `[-0.847625,6.585225]`、noise floor `3.7609 ms`；旧 CI 全正假效应消失，标签修复得到 runtime 因果确认。order-effect CI `[-3.081325,22.327025]` 仍不足以证明等价，故 `AA_CALIBRATION=INCONCLUSIVE / CANDIDATE_LOCK=ON`。
+- 将 Windows deepest evidence path 实际创建加入 preflight；首次长路径失败未提交 workload，随后使用短、中性 `aa-lb-v3` 证据根完成相同冻结批次。
 
 ## 1.0.1 - 2026-09-14
 

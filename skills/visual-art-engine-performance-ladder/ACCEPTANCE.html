@@ -23,7 +23,7 @@ code{background:#e9edf2;padding:2px 5px;border-radius:4px}
 <ul><li>P0 benchmark：NO</li><li>性能优化：NO</li><li>H3：NO</li><li>环境修改：NO</li><li>visual-art-engine 覆盖：NO</li><li>V4.0 方法技能修改：NO</li></ul>
 <p>内容提交 <code>cbb1c54</code> 已发布到私有仓库 main；候选、C:\AI 源码与正式安装 41 文件哈希一致，正式安装 Skill Creator、语义和 dry-run 均通过。P0 API 当前未运行，CURRENT 仍为 PENDING。</p>
 <h2>Measurement V2 · A/A 标签盲修复（2026-09-15）</h2>
-<p class="status">REVIEW_READY / SELFTEST PASS / FRESH A/A BLOCKED</p>
+<p class="status">LABEL FIX CONFIRMED / A/A INCONCLUSIVE / CANDIDATE LOCK ON</p>
 <div class="grid">
 <div class="card"><strong>根因候选</strong><br>旧 runner 将 A/B 标签写入 workflow、输出身份和计时内文件路径。</div>
 <div class="card"><strong>服务端证据</strong><br><code>execution_start → success</code> 的 block effect 为 <code>0 ms</code>。</div>
@@ -31,7 +31,9 @@ code{background:#e9edf2;padding:2px 5px;border-radius:4px}
 <div class="card"><strong>标签盲门禁</strong><br>normalized workflow SHA 相等；timed/workflow/HTTP leak 均为 0。</div>
 <div class="card"><strong>Harness 指纹</strong><br><code>81974d60e1aa54bac03e0d5c27556d87b4ff4e52e742d9e36156998de4b807bf</code></div>
 <div class="card"><strong>版本链</strong><br><code>8f5c3a59...</code> = SUPERSEDED；<code>c43875c3...</code> = CURRENT。</div>
+<div class="card"><strong>权威 A/A</strong><br>160/160；effect <code>2.8688 ms</code>；CI <code>[-0.847625,6.585225]</code>。</div>
+<div class="card"><strong>剩余门禁</strong><br>order effect <code>6.619075 ms</code>；CI <code>[-3.081325,22.327025]</code>；INCONCLUSIVE。</div>
 </div>
 <p><a href="references/failure-lessons.md">失败经验</a> · <a href="references/evidence-map.md">证据地图</a> · <a href="references/measurement-protocol.md">Measurement Protocol V2</a></p>
-<p>权威新 A/A 尚未运行；<code>AA_CALIBRATION=FAIL</code>、<code>CANDIDATE_LOCK=ON</code>。本页不宣称候选解锁或 P0 99。</p>
+<p>旧 label-contaminated A/A 的 CI 全正假效应已经消失，<code>LABEL_BLIND_FIX_CAUSALLY_CONFIRMED=YES</code>。但 order-effect equivalence 证据不足，故 <code>AA_CALIBRATION=INCONCLUSIVE</code>、<code>CANDIDATE_LOCK=ON</code>。本页不宣称候选解锁或 P0 99。</p>
 </main></body></html>

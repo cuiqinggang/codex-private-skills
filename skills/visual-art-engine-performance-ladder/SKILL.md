@@ -62,6 +62,17 @@ identifier，均为 benchmark contamination。正式 A/A 前必须证明归一�
 `HARNESS_MANIFEST_SHA`。后者至少覆盖 runner、两层启动器、decision rules、
 bracket summary、workflow 与 fixture；任一文件变化都产生新 fingerprint。
 
+2026-09-15 权威 label-blind A/A 已完成 160/160：formal effect
+`2.8688 ms`、95% CI `[-0.847625,6.585225]`、noise floor `3.7609 ms`。
+旧 label-contaminated A/A 的 CI 全正假效应已消失，故
+`LABEL_BLIND_FIX_CAUSALLY_CONFIRMED=YES`；但 order-effect CI
+`[-3.081325,22.327025] ms` 未进入冻结等价区间，当前仍为
+`AA_CALIBRATION=INCONCLUSIVE / CANDIDATE_LOCK=ON`。
+
+Windows 正式运行前必须实际创建 deepest expected evidence path。失败时改用
+短、中性、label-blind evidence root；不得用 arm-specific 路径，也不得因路径失败
+修改统计或 workload。
+
 ## 强制边界
 
 - v1.0.1 仅表示方法、阶梯、版本、冻结系统、P0 Contract 和 P0 工具就绪；不表示 P0 已测或已优化。
