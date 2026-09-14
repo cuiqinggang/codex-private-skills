@@ -8,6 +8,7 @@
 - Bracket 固定以完整 cluster/block 为重采样单位；共享 A 不得拆成 IID observations。
 - history 必须保存无损原文及 SHA-256；统计实现变化必须产生新 runner SHA 并重新 A/A。
 - 旧 A/A 与候选证据保留，但受审计取代的批次不得参与正式裁决。
+- 新 runner `fcdae8b8...` 的统计 selftest 与 null calibration 通过；40-block 权威 A/A 因同实现 formal CI 全正而 FAIL，技能继续 `UNDER_VALIDATION`，候选锁不解除。
 
 ## 1.0.1 - 2026-09-14
 

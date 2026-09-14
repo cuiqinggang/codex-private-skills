@@ -17,6 +17,8 @@
 9. KEEP 要求 100% 输出有效、正向 effect、正式 CI 不跨 0、超过 A/A noise 与 MDE，并有两个独立 confirmation batches 同向。
 10. 低于 MDE 写 `INCONCLUSIVE_BELOW_MEASUREMENT_RESOLUTION`；只有稳健负向且超过 resolution 才 ROLLBACK。
 
+三门是相互独立的串行门禁：统计 selftest 证明实现逻辑，null calibration 证明 Type-I error，A/A 证明真实执行环境与标签/顺序没有可裁决假差异。前两门 PASS 不能覆盖第三门 FAIL。
+
 ## 结果门禁
 
 每 run 必须 exact prompt_id match、`completed=true`、`status_str=success`、唯一 expected output、完整 PNG zlib decode、固定尺寸与 SHA-256。保存原始 history response 正文或无损 JSON及其 SHA；失败不补跑、慢样本不删除。

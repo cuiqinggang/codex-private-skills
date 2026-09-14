@@ -1,23 +1,24 @@
-# P0 Measurement Protocol V2 — Statistical Repair Checkpoint
+# P0 Measurement Protocol V2 — Authoritative A/A Stop Report
 
-`MEASUREMENT_PROTOCOL_V2=STATISTICAL_REPAIR_IN_PROGRESS`
+生产同路径统计 selftest 与 null Type-I calibration 均 PASS；Measurement Protocol V2 实现验收 PASS，但权威 A/A FAIL，因此候选锁保持 ON。
 
-`FINAL_MDE_MS=UNKNOWN`
+- `RUNNER_SHA=fcdae8b83d663a9185cc44a90d8b5c0bd91b6b8da069515a997f0167509f2c6b`
+- `AA_VALID_RUNS=160`（80 A1 + 80 A2）
+- `NULL_SIMULATION_ITERATIONS=20000`
+- `NULL_POSITIVE_FALSE_KEEP_RATE=0.0222`
+- `NULL_ANY_DIRECTION_REJECTION_RATE=0.04575`
+- `FINAL_MDE_MS=4.4`
+- `MDE_TARGET_POWER=0.80`，observed power=0.82245
+- `ORDER_EFFECT_MS=-3.71155`
+- `ORDER_EFFECT_95CI=[-8.0174,3.6105]`
+- order state=`INCONCLUSIVE`，没有以 p>0.05 冒充等价。
 
-`AA_CALIBRATION=NOT_AUTHORITATIVE`
+同一实现的 formal block effect=3.24545 ms，95% CI=[0.579475,5.953475]，且超过 A/A noise floor 2.665975 ms，因此 `AA_CALIBRATION=FAIL`。环境 drift 门禁未触发；FAIL 来自测量标签/顺序体系仍产生可裁决假差异。
+
+160/160 measured run 的原始 history 正文/SHA、exact prompt、completed/success、唯一输出、完整 PNG decode、256×256 与输出 SHA 全量复核通过。未运行任何候选。
+
+`MEASUREMENT_PROTOCOL_V2=PASS`
 
 `CANDIDATE_LOCK=ON`
 
-旧 AUTH-AA、shared-client、40B 和 80B 批全部保留为 `SUPERSEDED_BY_STATISTICAL_AUDIT`；原始证据不删除，但不得进入 FINAL_MDE 或候选裁决。
-
-当前 runner SHA-256：`fcdae8b83d663a9185cc44a90d8b5c0bd91b6b8da069515a997f0167509f2c6b`。
-
-纯统计生产同路径 selftest 已 PASS：20,000 次 null validation 的 positive false KEEP=0.01925、any-direction rejection=0.04025；null FAIL→MDE null、small/MDE/large gain、order、synthetic drift、固定 seed、独立 ABA cluster 与错误/共享 bracket 拒绝均通过。
-
-下一步只允许在该 runner SHA 下运行新权威 A/A；不运行 E4/E5/E7/Track B。
-
-`P0_99=NO`
-
-`P0_FREEZE=NO`
-
-`P1_UNLOCKED=NO`
+`P0_99=NO / P0_FREEZE=NO / P1_UNLOCKED=NO`

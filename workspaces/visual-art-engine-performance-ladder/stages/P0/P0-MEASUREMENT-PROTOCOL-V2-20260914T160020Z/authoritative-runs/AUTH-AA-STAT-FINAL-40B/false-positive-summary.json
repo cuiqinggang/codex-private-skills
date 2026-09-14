@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "NULL_POSITIVE_FALSE_KEEP_RATE": 0.0222,
+  "NULL_ANY_DIRECTION_REJECTION_RATE": 0.04575,
+  "positive_tolerance": [
+    0.015,
+    0.035
+  ],
+  "any_direction_tolerance": [
+    0.04,
+    0.06
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "captured_at": "2026-09-14T17:41:51.394567+00:00",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "C:\\AI\\ComfyUI_Aaki_v3\\python\\python.exe",
+  "python_version": "3.13.11 (tags/v3.13.11:6278944, Dec  5 2025, 16:26:58) [MSC v.1944 64 bit (AMD64)]",
+  "aiohttp": "3.14.1",
+  "endpoint": "http://127.0.0.1:8188",
+  "output_root": "C:\\AI\\ComfyUI_Aaki_v3\\data\\output"
+}
