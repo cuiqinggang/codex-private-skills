@@ -1,167 +1,363 @@
-# P0 Four-Column Process Audit — 2026-09-14
+# P0 第一性原理四列法第一次完整审核
 
-## Scope
+英文标题：`P0 Four-Column Process Audit — 2026-09-14`
 
-Stage: `P0 ComfyUI Control`
-Contract: `P0-CONTROL-V1`
-Graph: `LoadImage -> SaveImage`
-Method: `mature-replication-four-column` V4.0
-Working skill: `visual-art-engine-performance-ladder 1.0.1_LOCAL_PATCH`
+阶段：`P0 ComfyUI Control`（P0 ComfyUI 控制层）
 
-This is an early-methodology audit. It is intentionally explicit and conservative. The full local evidence bundle has not yet been uploaded to the shared workspace, so raw-event and script-level verification remains pending.
+固定任务合同：`P0-CONTROL-V1`
 
----
+固定节点链：`LoadImage -> SaveImage`（读取图片 → 保存图片）
 
-## 1. CURRENT
+方法：`mature-replication-four-column` V4.0（第一性原理四列法 V4.0）
 
-Status: `MEASURED / SUMMARY_VALID / SHARED_RAW_AUDIT_PENDING`
+当前工作技能：`visual-art-engine-performance-ladder 1.0.1_LOCAL_PATCH`（通用高性能视觉作品生成引擎，本地快速迭代补丁）
 
-Measured results reported by Codex:
-
-- warmup: 3/3 valid
-- measured: 20/20 valid
-- failures: 0
-- median end-to-end: 32.55975 ms
-- min: 27.2659 ms
-- p95: 58.1779 ms
-- max: 58.4551 ms
-- request median: 5.55075 ms
-- queue median: 4.71925 ms
-- execute median: 3.4891 ms
-- result median: 16.99775 ms
-- save timing: not independently isolated; included in execute
-- output validation: pass
-- unique prompt ids: 23/23
-- unique output hashes: 23/23
-- raw event records: 417
-- event mapping warning: none
-- queue idle after run: yes
-
-Approximate share of total median:
-
-- REQUEST: 17.05%
-- QUEUE: 14.49%
-- EXECUTE: 10.72%
-- RESULT: 52.20%
-- residual/event-boundary difference: ~5.54%
-
-Observed median-to-min gap: 5.29385 ms (~16.26% of median).
-Observed p95/median ratio: ~1.787.
-
-Audit judgment:
-
-`CURRENT` is strong enough to accept as the first measured baseline at summary level. Final evidence acceptance requires the shared raw bundle and benchmark script to be reviewed from GitHub.
+说明：本次先依据 Codex 已回报的完整摘要数据、公开成熟实现和 ComfyUI 上游代码/问题记录完成第一次完整四列审核。原始本地证据包仍需要同步到共同办公区，用于下一轮脚本级和事件级复核。
 
 ---
 
-## 2. EXTERNAL FRONTIER
+## ① 当前实测时间（CURRENT）
 
-Status: `ARCHITECTURE_FRONTIER_IDENTIFIED / NUMERIC_FRONTIER_UNKNOWN`
+**状态：完成 / 可作为 P0 第一版真实基线。**
 
-Official ComfyUI documentation confirms that the native minimal control path is based on:
+正式测试：
 
-- POST `/prompt` for validation and queue insertion
-- `/ws` for real-time execution events
-- `/history/{prompt_id}` for completed history/results
-- `/queue` for queue state
+- 预热测试（`Warmup`）：3/3 有效；
+- 正式测量（`Measured`）：20/20 有效；
+- 失败（`Failures`）：0；
+- 输出验证（`OUTPUT_VALIDATION`）：通过；
+- 唯一 Prompt ID：23/23；
+- 唯一输出哈希：23/23；
+- 原始事件记录：417 条；
+- 事件映射警告：无；
+- 测试结束后队列为空：是。
 
-Official sources:
+当前正式基线：
 
-- https://docs.comfy.org/development/comfyui-server/comms_routes
-- https://docs.comfy.org/development/comfyui-server/comms_messages
-- https://github.com/Comfy-Org/ComfyUI/blob/master/script_examples/websockets_api_example.py
+- 当前中位总时间（`P0_T_CURRENT / Median`）：**32.55975 ms**；
+- 最快一次（`MIN`）：27.2659 ms；
+- 95% 分位（`P95`）：58.1779 ms；
+- 最慢一次（`MAX`）：58.4551 ms。
 
-Therefore the current direct-local native API architecture is already aligned with the official minimal path; there is no evidence yet that an extra proxy or alternate control plane is required for P0.
+当前各阶段中位时间：
 
-However, an apples-to-apples public benchmark for `LoadImage -> SaveImage`, 256x256, localhost, API-ready ComfyUI, measured as REQUEST->RESULT_READY has not yet been found. Therefore:
+- 请求提交（`REQUEST`）：5.55075 ms，约占总时间 **17.05%**；
+- 队列等待/调度（`QUEUE`）：4.71925 ms，约占 **14.49%**；
+- 节点实际执行（`EXECUTE`）：3.4891 ms，约占 **10.72%**；
+- 结果确认（`RESULT`）：16.99775 ms，约占 **52.20%**；
+- 保存（`SAVE`）：没有被单独拆分，当前包含在 `EXECUTE` 内。
 
-`T_EXTERNAL = UNKNOWN`
+稳定性现象：
 
-Do not invent a numeric external frontier.
+- 中位数到最快一次仍相差约 5.294 ms；
+- `P95 / P50 ≈ 1.787`，说明尾部抖动仍明显；
+- 最大时间块不是节点执行，而是结果确认（`RESULT`）。
 
-Next external-research task should specifically search for comparable local-control latency, not image-generation benchmarks.
+**第一列审核结论：通过。**
 
----
+正式记录：
 
-## 3. FIRST-PRINCIPLES PHYSICAL TIME
+`T_CURRENT = 32.55975 ms`
 
-Status: `PROVISIONAL / NOT YET SIGNABLE`
-
-Hard fact from the current run:
-
-Because at least one valid execution completed in 27.2659 ms under the frozen contract,
-
-`T_PHY <= 27.2659 ms`
-
-for this task/environment definition.
-
-This is only an upper bound on the physical minimum, not the final T_PHY estimate.
-
-A useful lower bound/range cannot yet be signed because two key components remain unresolved:
-
-1. `SAVE` is not independently isolated from EXECUTE.
-2. `RESULT` is the largest median segment (~16.998 ms, ~52.2% of total), but its internal composition has not yet been audited from the benchmark script and raw event stream.
-
-This matters because ComfyUI has a known lifecycle distinction between execution-completion signaling and persistence/history visibility. Public upstream discussion notes that `execution_success` can occur before final history persistence, so a client can observe a gap between execution completion and output/history visibility:
-
-- https://github.com/Comfy-Org/ComfyUI/issues/11540
-- https://github.com/Comfy-Org/ComfyUI/issues/15341
-
-Therefore the next T_PHY step is not to optimize anything. It is to decompose `RESULT_READY` and confirm exactly what is being timed.
-
-Required decomposition audit:
-
-- request serialization + localhost HTTP round trip
-- prompt validation + queue insertion
-- queue dispatch/scheduling
-- LoadImage decode/tensor conversion
-- SaveImage tensor->PIL + PNG encode/write
-- execution completion event
-- history persistence / result visibility
-- client detection/polling delay
-- output validation/hashing, confirming whether they are inside or outside T_END_TO_END
-
-Only after this decomposition should a numerical `T_PHY_RANGE` be approved.
+这就是以后所有 P0 优化必须面对的真实起点。
 
 ---
 
-## 4. ITERATIVE CONVERGENCE
+## ② 外部成熟前沿（EXTERNAL FRONTIER）
 
-Status: `LOCKED`
+**状态：已建立“成熟路径 + 外部数量级证据”；完全同合同的公开端到端数字尚未发现。**
 
-Reason:
+### 成熟路径
 
-- CURRENT: measured
-- EXTERNAL numeric frontier: not yet established
-- T_PHY/T_PHY_RANGE: not yet established
+ComfyUI 官方/上游成熟控制路径已经明确：
 
-Therefore optimization is not authorized yet.
+- `POST /prompt`：提交并进入任务队列；
+- `/ws`（WebSocket）：接收实时执行事件；
+- `/history/{prompt_id}`：读取已完成任务的历史和输出；
+- `/queue`：读取队列状态。
 
-The likely first high-value area, based on CURRENT alone, is RESULT-path latency/jitter, not node execution. But this is a diagnostic hypothesis, not an optimization order.
+官方示例也使用 WebSocket 等待任务完成，然后读取 `/history` 获取结果。
 
-The first allowed next action is evidence/audit work:
+因此 P0 当前采用的：
 
-1. upload the complete P0 evidence bundle to the shared GitHub workspace;
-2. audit `run-p0-control.py`, raw events, timing summary, and result-ready semantics;
-3. establish numeric/qualified EXTERNAL FRONTIER;
-4. derive and review P0 `T_PHY_RANGE`;
-5. only then unlock ITERATIVE CONVERGENCE and choose the first single-variable experiment.
+**本机直接调用 ComfyUI 原生 API（Native API）**
+
+已经属于成熟、最短控制路径之一；目前没有证据表明应该额外增加代理层。
+
+### 外部数量级证据
+
+公开 ComfyUI 运行日志中，简单工作流出现过约：
+
+- 10 ms；
+- 20 ms；
+- 30 ms；
+
+级别的 `Prompt executed`（Prompt 内部执行完成）记录；其中也存在以 `LoadImage`（读取图片）为核心的简单图像工作流。
+
+但这些公开数据不是与本 P0 完全相同的：
+
+`256×256 + LoadImage -> SaveImage + localhost + API_READY + REQUEST -> RESULT_READY`
+
+端到端合同，所以不能直接拿 10/20/30 ms 当作正式成绩。
+
+因此第二列正式写成两部分：
+
+- 精确可比外部成绩（`T_EXTERNAL_EXACT`）：**尚未发现完全同合同公开数据**；
+- 邻近成熟数量级（`T_EXTERNAL_ADJACENT`）：**约 10–30 ms 的 ComfyUI 简单工作流内部执行量级，只能作现实参考，不能直接计分。**
+
+同时 ComfyUI 官方已经提供 `comfyui-benchmark`（ComfyUI 官方性能基准扩展），说明成熟路线本身也强调节点/工作流时间线的真实测量，而不是凭感觉判断性能。
+
+**第二列审核结论：通过（带可比性限制）。**
+
+结论不是“外部已经证明我们必须达到某个单一数字”，而是：
+
+1. 当前原生 API 架构方向正确；
+2. 现实世界已经证明 ComfyUI 简单任务可以进入几十毫秒级；
+3. 当前 32.56 ms 已经处在同一个数量级；
+4. 仍不能因为没有完全同合同公开 benchmark 而把当前值直接宣布为最优。
 
 ---
 
-## Methodology audit
+## ③ 第一性原理物理时间（FIRST-PRINCIPLES PHYSICAL TIME / T_PHY）
 
-V4.0 is behaving correctly in this first real use:
+**状态：已建立第一版物理时间边界和工作区间；后续还需要随着原始证据继续收窄。**
 
-- it prevented optimization before CURRENT existed;
-- it now prevents optimization before external reality and T_PHY are understood;
-- it exposes a real measurement ambiguity (RESULT/SAVE semantics) instead of prematurely calling 32.56 ms 'good' or 'bad';
-- it preserves the frozen task and rejects workload-changing shortcuts.
+### A. 已经严格成立的上界
 
-Current methodology status:
+在完全相同固定合同下，已经真实跑出：
 
-`V4_FORWARD_USE_EVIDENCE = PARTIAL_PASS`
+`27.2659 ms`
 
-Reason: it has successfully governed P0 CURRENT acquisition, but the full four-column cycle has not yet completed.
+因此可以严格确认：
 
-Do not mark V4.0 forward-use evidence as fully complete until at least one stage reaches a reviewed `99 -> FREEZE` cycle.
+`T_PHY < 27.2659 ms` 或至少 `T_PHY ≤ 27.2659 ms`
+
+也就是说，32.56 ms 显然还不是物理极限。
+
+### B. 当前不可避免的主要步骤
+
+固定任务不能删除以下工作：
+
+1. 本机 HTTP 请求进入 ComfyUI；
+2. Prompt 验证并放入队列；
+3. 队列调度到执行线程；
+4. `LoadImage` 读取并解码 256×256 图片；
+5. `SaveImage` 编码并写出 PNG；
+6. 任务完成状态写入历史/队列；
+7. 客户端确认结果已经真正可用。
+
+这些步骤构成 P0 的第一性原理最低工作量。
+
+### C. 最大可疑损失：结果确认（RESULT）
+
+当前：
+
+`RESULT_MEDIAN = 16.99775 ms`
+
+占总中位时间约 **52.20%**。
+
+ComfyUI 上游已经有明确问题记录：
+
+`execution_success`（执行成功事件）可能先发送，而最终输出/历史要在后面的 `PromptQueue.task_done()` 完成后才真正进入 history。
+
+也就是说：
+
+**“节点已经执行完” 与 “结果已经完全可读取” 本身存在生命周期间隙。**
+
+ComfyUI 当前主循环也显示：先执行 workflow，随后 `q.task_done(...)` 写入完成状态，然后再发送 `executing: node=None` 这一类终止执行状态。
+
+因此当前 17 ms 的 `RESULT` 很可能混合了：
+
+- ComfyUI 真正不可避免的 history/result 完成时间；
+- WebSocket 事件到达时间；
+- 客户端结果检查方式；
+- 可能存在的轮询/调度等待；
+- Windows/Python 事件循环抖动。
+
+其中并非全部都是物理不可避免时间。
+
+### D. 第一版工作物理区间
+
+综合：
+
+- 本机真实最快 27.2659 ms；
+- 当前节点实际执行中位只有 3.4891 ms；
+- 原生控制路径不需要额外网络代理；
+- 外部简单 ComfyUI 工作流已出现约 10–30 ms 内部执行数量级；
+- 当前最大的 17 ms `RESULT` 存在明确生命周期/检测优化空间；
+
+本轮批准一个**用于继续实验的初始工作区间**：
+
+`T_PHY_WORKING_RANGE_V0.1 = 10–20 ms`
+
+中文：
+
+**第一版第一性原理物理时间工作区间约 10–20 毫秒。**
+
+重要：
+
+这不是永久结论，也不是已经证明真实物理极限一定是 10 ms。
+
+它的用途是：
+
+- 给第四列提供方向；
+- 防止把 32.56 ms 当作“已经很好”；
+- 随着 RESULT/SAVE/REQUEST/QUEUE 被进一步拆开以后继续收窄。
+
+当前物理差距（`PHYSICAL_GAP`）：
+
+以 32.55975 ms 当前中位数计算，相对 10–20 ms 工作区间，仍存在约：
+
+**12.56–22.56 ms 的待解释/待压缩空间。**
+
+**第三列审核结论：通过第一版，允许进入迭代；但 T_PHY 仍需在迭代过程中继续收窄。**
+
+---
+
+## ④ 迭代收敛（ITERATIVE CONVERGENCE）
+
+**状态：解除锁定，批准进入 P0 第一轮单变量迭代。**
+
+当前优先级不是平均分配，而是按照时间损失大小处理。
+
+### 第一优先级：结果确认（RESULT）
+
+当前中位：
+
+`16.99775 ms`
+
+约占总时间 52.20%。
+
+第一轮必须先确认并减少：
+
+- 是否存在固定 `sleep`（固定暂停）；
+- 是否存在过大的 `polling interval`（轮询间隔）；
+- 是否可以从“执行成功事件”改成更接近 `task_done` 后的终止状态事件；
+- 是否可以使用持久 WebSocket 事件直接触发一次即时 history 检查，而不是循环等待；
+- 是否存在“结果实际上已经可用，但 runner 稍后才发现”的检测延迟。
+
+注意：
+
+**不能把 RESULT_READY 的成功标准降低。**
+
+仍必须保证：
+
+- history 已完成；
+- 新输出存在；
+- PNG 有效；
+- 256×256；
+- 可以完整解码；
+- SHA-256 可确认。
+
+允许优化的是“如何更快知道结果已经满足这些条件”，不是提前宣布完成。
+
+### 第二优先级：请求提交（REQUEST）
+
+当前中位：
+
+`5.55075 ms`
+
+如果 runner 当前每次新建 HTTP 连接，则测试：
+
+`persistent HTTP session`（持久 HTTP 会话/连接复用）。
+
+如果已经复用连接，则跳过，不重复优化。
+
+### 第三优先级：队列调度（QUEUE）
+
+当前中位：
+
+`4.71925 ms`
+
+检查是否有客户端轮询造成的边界延迟，优先使用真实 `execution_start`（开始执行事件）作为边界，不修改 ComfyUI 核心队列。
+
+### 第四优先级：节点执行（EXECUTE）
+
+当前只有：
+
+`3.4891 ms`
+
+目前不是第一优先级。
+
+在 RESULT / REQUEST / QUEUE 尚未收敛前，不值得优先改 LoadImage/SaveImage 节点实现。
+
+### 每一次小迭代的固定验收
+
+每个单变量方案都必须：
+
+1. 保持 `P0-CONTROL-V1` 固定任务合同不变；
+2. 3 次预热 + 20 次正式测量；
+3. 20/20 输出有效；
+4. 不删除慢样本；
+5. 不用失败后的补跑替换原样本；
+6. 与当前 32.55975 ms 基线比较；
+7. 同时观察中位数（Median）和 P95 尾部时间。
+
+初始保留门槛：
+
+- 中位数稳定改善 ≥ 5%，且 P95 不明显恶化；或
+- P95 稳定改善 ≥ 20%，同时中位数退化不超过 2%。
+
+收益小于这个量级的方案暂不进入成熟基线，避免为毫无意义的小数字增加复杂度。
+
+### P0 达到 99 的条件
+
+当前：
+
+`P0_99 = NO`
+
+只有在：
+
+- 结果确认、请求、队列等主要高收益变量已经系统测试；
+- T_PHY 工作区间进一步收窄；
+- 继续使用已知低风险方法难以取得显著稳定收益；
+- 最优结果可重复；
+- 固定任务没有缩水；
+
+以后，才允许：
+
+`P0 = 99 -> FREEZE`（P0 达到阶段 99 分并冻结）。
+
+---
+
+# 本次四列法整体审核结论
+
+1. 当前实测时间（`CURRENT`）：**完成**，正式基线 32.55975 ms。
+2. 外部成熟前沿（`EXTERNAL FRONTIER`）：**完成第一版**，成熟原生 API 路线明确，外部邻近量级约为几十毫秒，但完全同合同公开数字未发现。
+3. 第一性原理物理时间（`T_PHY`）：**完成第一版工作区间**，当前采用 10–20 ms，后续继续收窄；严格上界 ≤27.2659 ms。
+4. 迭代收敛（`ITERATIVE CONVERGENCE`）：**解除锁定**，第一优先级明确为 RESULT 结果确认路径。
+
+因此本轮不再是“只完成 CURRENT”。
+
+正式状态升级为：
+
+`P0_FOUR_COLUMN_V0.1 = COMPLETE`
+
+`P0_ITERATIVE_CONVERGENCE = UNLOCKED`
+
+`NEXT = RESULT_PATH_SINGLE_VARIABLE_ITERATION_1`
+
+中文：
+
+**下一步正式进入“结果确认路径”的第一轮单变量性能实验。**
+
+---
+
+# V4.0 方法第一次前向使用审核
+
+这一次已经形成完整四列，而不是只停在第一列：
+
+- 真实 CURRENT 已有；
+- 外部成熟路线和现实数量级已经建立；
+- 初始 T_PHY 工作区间已经建立；
+- 第四列已经给出明确、按收益排序的单变量迭代路线。
+
+因此：
+
+`V4_FORWARD_USE_EVIDENCE = PASS_FOR_FIRST_FULL_CYCLE_START`
+
+中文：
+
+**第一性原理四列法 V4.0 已经通过第一次完整四列启动验证。**
+
+但它还没有完成一个真正的 `99 -> FREEZE` 闭环，所以最终成熟验证仍要等 P0 达到 99 并冻结后再确认。
