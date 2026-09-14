@@ -44,13 +44,13 @@ def main() -> int:
     missing = [item for item in REQUIRED if not (ROOT / item).is_file()]
     if missing:
         fail(f"missing required files: {missing}")
-    if (ROOT / "VERSION").read_text(encoding="utf-8").strip() != "1.0.0":
-        fail("VERSION must be 1.0.0")
+    if (ROOT / "VERSION").read_text(encoding="utf-8").strip() != "1.0.1":
+        fail("VERSION must be 1.0.1")
 
     skill = (ROOT / "SKILL.md").read_text(encoding="utf-8")
     for token in [
         "name: visual-art-engine-performance-ladder",
-        'version: "1.0.0"',
+        'version: "1.0.1"',
         "mature-replication-four-column",
         "P0_CURRENT=PENDING",
         "P0_BENCHMARK_EXECUTED=NO",
@@ -92,7 +92,7 @@ def main() -> int:
             if stage[key] is not None:
                 fail(f"{stage['stage']} contains unverified performance data in {key}")
         if stage["score_99"] or stage["frozen"]:
-            fail(f"{stage['stage']} must not be 99/frozen in v1.0.0")
+            fail(f"{stage['stage']} must not be 99/frozen in v1.0.1")
     if stages[0]["status"] != "READY_TO_MEASURE":
         fail("P0 must be READY_TO_MEASURE")
     if any(stage["status"] != "LOCKED_BY_PREVIOUS_STAGE" for stage in stages[1:]):
@@ -142,7 +142,7 @@ def main() -> int:
     result = {
         "status": "PASS",
         "skill_id": "visual-art-engine-performance-ladder",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "required_files": len(REQUIRED),
         "stages": 9,
         "method_version": "4.0.0",

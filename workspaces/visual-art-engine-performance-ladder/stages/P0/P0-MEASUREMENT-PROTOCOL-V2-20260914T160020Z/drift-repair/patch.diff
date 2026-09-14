@@ -1,0 +1,8 @@
+--- original_analyzer.py
++++ patched_analyzer.py
+@@
+-drift=max(abs(projected_span),abs(early_minus_late),abs(pattern_effect))
+-fail=drift>mde
++environment_fail=abs(projected_span)>mde and permutation_p_two_sided<0.05
++order_state=TOST_style_bootstrap_CI_within_plus_minus_half_MDE
++early_minus_late=reported_only

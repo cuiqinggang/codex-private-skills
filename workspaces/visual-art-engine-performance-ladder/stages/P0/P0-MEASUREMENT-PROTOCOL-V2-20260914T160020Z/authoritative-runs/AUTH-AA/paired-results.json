@@ -1,0 +1,614 @@
+{
+  "protocol": "P0-MEASUREMENT-PROTOCOL-V2",
+  "batch_id": "AUTH-AA",
+  "strategy": "AA",
+  "order_seed": 2026091531,
+  "patterns": [
+    "ABBA",
+    "ABBA",
+    "BAAB",
+    "ABBA",
+    "ABBA",
+    "ABBA",
+    "ABBA",
+    "BAAB",
+    "BAAB",
+    "BAAB",
+    "ABBA",
+    "BAAB",
+    "ABBA",
+    "BAAB",
+    "BAAB",
+    "BAAB",
+    "BAAB",
+    "ABBA",
+    "BAAB",
+    "ABBA"
+  ],
+  "planned_attempts": 80,
+  "valid_attempts": 80,
+  "failures": [],
+  "warmups": [
+    {
+      "attempt": -1,
+      "label": "warmup-A",
+      "arm": "A",
+      "effective_strategy": "BASELINE",
+      "prompt_id": "06f7b8dc-2c9a-4efe-9e9c-052ad26a52e7",
+      "run_prefix": "p0-v2/AA/-01-warmup-A-03711bd1",
+      "marks_monotonic_ns": {
+        "REQUEST_START": 288120371469500,
+        "QUEUE_ACK": 288120377920600,
+        "EXECUTION_START": 288120393108000,
+        "SAVE_DONE": 288120434208200,
+        "RESULT_READY": 288120918124900
+      },
+      "t_ms": 546.6554,
+      "history": {
+        "completed": true,
+        "status_str": "success",
+        "output_count": 1,
+        "snapshot": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z\\authoritative-runs\\AUTH-AA\\history\\-01-warmup-A.json",
+        "entry_sha256": "0be91208267576e97526f27bd3960a73d9ca6a6779df56c2f45d938e7e36d2f5"
+      },
+      "output_identity": {
+        "filename": "-01-warmup-A-03711bd1_00001_.png",
+        "subfolder": "p0-v2\\AA",
+        "type": "output"
+      },
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "decoded_bytes": 196864,
+        "sha256": "438ee15fc3920f3f9d644e049cd0d270a017ac79b34cbe31f825037efdeb5aae"
+      },
+      "result_source": "HTTP_VIEW",
+      "same_prompt_equivalence": null,
+      "valid": true,
+      "utc_done": "2026-09-14T16:49:00.755500+00:00"
+    },
+    {
+      "attempt": -2,
+      "label": "warmup-B",
+      "arm": "B",
+      "effective_strategy": "BASELINE",
+      "prompt_id": "cfd03fb1-3a74-4c61-a3f5-59243f3c107e",
+      "run_prefix": "p0-v2/AA/-02-warmup-B-a3ce269d",
+      "marks_monotonic_ns": {
+        "REQUEST_START": 288120921307500,
+        "QUEUE_ACK": 288120928414600,
+        "EXECUTION_START": 288120932894300,
+        "SAVE_DONE": 288120939650000,
+        "RESULT_READY": 288120961580900
+      },
+      "t_ms": 40.2734,
+      "history": {
+        "completed": true,
+        "status_str": "success",
+        "output_count": 1,
+        "snapshot": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z\\authoritative-runs\\AUTH-AA\\history\\-02-warmup-B.json",
+        "entry_sha256": "5d01faff7af8ae5f0fb262010a27f3aa01b15de969d90ec780c1b78aa9d39084"
+      },
+      "output_identity": {
+        "filename": "-02-warmup-B-a3ce269d_00001_.png",
+        "subfolder": "p0-v2\\AA",
+        "type": "output"
+      },
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "decoded_bytes": 196864,
+        "sha256": "6803168d7bdc1bc0c738d7f94fd3f688760c7b18b18b582b727abe80a51a4f6c"
+      },
+      "result_source": "HTTP_VIEW",
+      "same_prompt_equivalence": null,
+      "valid": true,
+      "utc_done": "2026-09-14T16:49:00.798495+00:00"
+    },
+    {
+      "attempt": -3,
+      "label": "warmup-B",
+      "arm": "B",
+      "effective_strategy": "BASELINE",
+      "prompt_id": "2239de77-fec7-4c5d-ae04-8e491f7c2590",
+      "run_prefix": "p0-v2/AA/-03-warmup-B-2834e8a9",
+      "marks_monotonic_ns": {
+        "REQUEST_START": 288120965355000,
+        "QUEUE_ACK": 288120970724000,
+        "EXECUTION_START": 288120978101300,
+        "SAVE_DONE": 288120984011600,
+        "RESULT_READY": 288121008638700
+      },
+      "t_ms": 43.2837,
+      "history": {
+        "completed": true,
+        "status_str": "success",
+        "output_count": 1,
+        "snapshot": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-MEASUREMENT-PROTOCOL-V2-20260914T160020Z\\authoritative-runs\\AUTH-AA\\history\\-03-warmup-B.json",
+        "entry_sha256": "c814cd33bf52e43534dad339f116ebaeed9a53078048531ff8746151390bff91"
+      },
+      "output_identity": {
+        "filename": "-03-warmup-B-2834e8a9_00001_.png",
+        "subfolder": "p0-v2\\AA",
+        "type": "output"
+      },
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "decoded_bytes": 196864,
+        "sha256": "dc5f9bd2ced69a533d6e882114da8cbc708665a1342f56a8ec17dd2b1a9e5ea3"
+      },
+      "result_source": "HTTP_VIEW",
+      "same_prompt_equivalence": null,
+      "valid": true,
+      "utc_done": "2026-09-14T16:49:00.845761+00:00"
+    }
+  ],
+  "identity": {
+    "runner_sha256": "f0bed17be204658497c86dc88be2d61ae763673c791204fb9244699980454c1f",
+    "workflow_sha256": "0f062d7c4051caeb75e864eb3b849fdbb2a450badb8a3e7a360d9431deab8258",
+    "fixture_sha256": "54e11226d37944f410956e9a2918ad4bb090485f1c9f5d2150172e06b291ff5c",
+    "A_impl_sha256": "f0bed17be204658497c86dc88be2d61ae763673c791204fb9244699980454c1f",
+    "B_impl_sha256": "f0bed17be204658497c86dc88be2d61ae763673c791204fb9244699980454c1f"
+  },
+  "upload": {
+    "name": "p0-control-black-256.png",
+    "subfolder": "",
+    "type": "input"
+  },
+  "arm_A": {
+    "n": 40,
+    "min_ms": 32.1511,
+    "median_ms": 42.78205,
+    "p95_ms": 57.48795,
+    "max_ms": 66.1354,
+    "mad_ms": 5.71555,
+    "mad_scaled_ms": 8.47387443
+  },
+  "arm_B": {
+    "n": 40,
+    "min_ms": 32.2167,
+    "median_ms": 38.32695,
+    "p95_ms": 46.32656499999999,
+    "max_ms": 50.4435,
+    "mad_ms": 3.4586999999999968,
+    "mad_scaled_ms": 5.127868619999995
+  },
+  "current_local_baseline_ms": 42.78205,
+  "candidate_median_ms": 38.32695,
+  "paired": {
+    "n": 40,
+    "min_ms": -10.641199999999998,
+    "median_ms": 3.9146999999999963,
+    "p95_ms": 17.733659999999997,
+    "max_ms": 31.533400000000007,
+    "mad_ms": 4.2483,
+    "mad_scaled_ms": 6.29852958,
+    "bootstrap_95ci_ms": [
+      1.6799,
+      6.418714999999957
+    ],
+    "p95_arm_delta_ms": 11.16138500000001,
+    "pairs": [
+      {
+        "block": 1,
+        "pair": 1,
+        "pattern": "ABBA",
+        "a_attempt": 1,
+        "b_attempt": 2,
+        "a_ms": 48.708,
+        "b_ms": 33.47,
+        "delta_ms": 15.238
+      },
+      {
+        "block": 1,
+        "pair": 2,
+        "pattern": "ABBA",
+        "a_attempt": 4,
+        "b_attempt": 3,
+        "a_ms": 44.5989,
+        "b_ms": 39.8228,
+        "delta_ms": 4.7761
+      },
+      {
+        "block": 2,
+        "pair": 1,
+        "pattern": "ABBA",
+        "a_attempt": 5,
+        "b_attempt": 6,
+        "a_ms": 40.343,
+        "b_ms": 33.9042,
+        "delta_ms": 6.4388000000000005
+      },
+      {
+        "block": 2,
+        "pair": 2,
+        "pattern": "ABBA",
+        "a_attempt": 8,
+        "b_attempt": 7,
+        "a_ms": 50.7322,
+        "b_ms": 40.5641,
+        "delta_ms": 10.168099999999995
+      },
+      {
+        "block": 3,
+        "pair": 1,
+        "pattern": "BAAB",
+        "a_attempt": 10,
+        "b_attempt": 9,
+        "a_ms": 37.9041,
+        "b_ms": 35.7302,
+        "delta_ms": 2.173899999999996
+      },
+      {
+        "block": 3,
+        "pair": 2,
+        "pattern": "BAAB",
+        "a_attempt": 11,
+        "b_attempt": 12,
+        "a_ms": 36.3334,
+        "b_ms": 36.9256,
+        "delta_ms": -0.5922000000000054
+      },
+      {
+        "block": 4,
+        "pair": 1,
+        "pattern": "ABBA",
+        "a_attempt": 13,
+        "b_attempt": 14,
+        "a_ms": 40.2551,
+        "b_ms": 39.0126,
+        "delta_ms": 1.2424999999999997
+      },
+      {
+        "block": 4,
+        "pair": 2,
+        "pattern": "ABBA",
+        "a_attempt": 16,
+        "b_attempt": 15,
+        "a_ms": 37.2769,
+        "b_ms": 38.8936,
+        "delta_ms": -1.6167000000000016
+      },
+      {
+        "block": 5,
+        "pair": 1,
+        "pattern": "ABBA",
+        "a_attempt": 17,
+        "b_attempt": 18,
+        "a_ms": 43.7229,
+        "b_ms": 37.7603,
+        "delta_ms": 5.962600000000002
+      },
+      {
+        "block": 5,
+        "pair": 2,
+        "pattern": "ABBA",
+        "a_attempt": 20,
+        "b_attempt": 19,
+        "a_ms": 54.1813,
+        "b_ms": 36.459,
+        "delta_ms": 17.722299999999997
+      },
+      {
+        "block": 6,
+        "pair": 1,
+        "pattern": "ABBA",
+        "a_attempt": 21,
+        "b_attempt": 22,
+        "a_ms": 32.1511,
+        "b_ms": 33.0848,
+        "delta_ms": -0.9337000000000018
+      },
+      {
+        "block": 6,
+        "pair": 2,
+        "pattern": "ABBA",
+        "a_attempt": 24,
+        "b_attempt": 23,
+        "a_ms": 40.7887,
+        "b_ms": 50.4435,
+        "delta_ms": -9.654800000000002
+      },
+      {
+        "block": 7,
+        "pair": 1,
+        "pattern": "ABBA",
+        "a_attempt": 25,
+        "b_attempt": 26,
+        "a_ms": 44.7675,
+        "b_ms": 36.8631,
+        "delta_ms": 7.904399999999995
+      },
+      {
+        "block": 7,
+        "pair": 2,
+        "pattern": "ABBA",
+        "a_attempt": 28,
+        "b_attempt": 27,
+        "a_ms": 36.7412,
+        "b_ms": 34.687,
+        "delta_ms": 2.0542000000000016
+      },
+      {
+        "block": 8,
+        "pair": 1,
+        "pattern": "BAAB",
+        "a_attempt": 30,
+        "b_attempt": 29,
+        "a_ms": 38.6448,
+        "b_ms": 34.8688,
+        "delta_ms": 3.7759999999999962
+      },
+      {
+        "block": 8,
+        "pair": 2,
+        "pattern": "BAAB",
+        "a_attempt": 31,
+        "b_attempt": 32,
+        "a_ms": 44.8892,
+        "b_ms": 39.1894,
+        "delta_ms": 5.699800000000003
+      },
+      {
+        "block": 9,
+        "pair": 1,
+        "pattern": "BAAB",
+        "a_attempt": 34,
+        "b_attempt": 33,
+        "a_ms": 43.7041,
+        "b_ms": 41.3465,
+        "delta_ms": 2.357599999999998
+      },
+      {
+        "block": 9,
+        "pair": 2,
+        "pattern": "BAAB",
+        "a_attempt": 35,
+        "b_attempt": 36,
+        "a_ms": 35.7441,
+        "b_ms": 41.141,
+        "delta_ms": -5.396899999999995
+      },
+      {
+        "block": 10,
+        "pair": 1,
+        "pattern": "BAAB",
+        "a_attempt": 38,
+        "b_attempt": 37,
+        "a_ms": 38.3805,
+        "b_ms": 36.4608,
+        "delta_ms": 1.9196999999999989
+      },
+      {
+        "block": 10,
+        "pair": 2,
+        "pattern": "BAAB",
+        "a_attempt": 39,
+        "b_attempt": 40,
+        "a_ms": 41.2477,
+        "b_ms": 35.7662,
+        "delta_ms": 5.481500000000004
+      },
+      {
+        "block": 11,
+        "pair": 1,
+        "pattern": "ABBA",
+        "a_attempt": 41,
+        "b_attempt": 42,
+        "a_ms": 32.9554,
+        "b_ms": 32.8833,
+        "delta_ms": 0.07209999999999894
+      },
+      {
+        "block": 11,
+        "pair": 2,
+        "pattern": "ABBA",
+        "a_attempt": 44,
+        "b_attempt": 43,
+        "a_ms": 66.1354,
+        "b_ms": 34.602,
+        "delta_ms": 31.533400000000007
+      },
+      {
+        "block": 12,
+        "pair": 1,
+        "pattern": "BAAB",
+        "a_attempt": 46,
+        "b_attempt": 45,
+        "a_ms": 35.8125,
+        "b_ms": 33.0383,
+        "delta_ms": 2.7742000000000004
+      },
+      {
+        "block": 12,
+        "pair": 2,
+        "pattern": "BAAB",
+        "a_attempt": 47,
+        "b_attempt": 48,
+        "a_ms": 51.6663,
+        "b_ms": 35.3464,
+        "delta_ms": 16.319899999999997
+      },
+      {
+        "block": 13,
+        "pair": 1,
+        "pattern": "ABBA",
+        "a_attempt": 49,
+        "b_attempt": 50,
+        "a_ms": 38.8729,
+        "b_ms": 36.7574,
+        "delta_ms": 2.1155000000000044
+      },
+      {
+        "block": 13,
+        "pair": 2,
+        "pattern": "ABBA",
+        "a_attempt": 52,
+        "b_attempt": 51,
+        "a_ms": 52.8172,
+        "b_ms": 34.8677,
+        "delta_ms": 17.9495
+      },
+      {
+        "block": 14,
+        "pair": 1,
+        "pattern": "BAAB",
+        "a_attempt": 54,
+        "b_attempt": 53,
+        "a_ms": 41.6577,
+        "b_ms": 37.6043,
+        "delta_ms": 4.053399999999996
+      },
+      {
+        "block": 14,
+        "pair": 2,
+        "pattern": "BAAB",
+        "a_attempt": 55,
+        "b_attempt": 56,
+        "a_ms": 50.2218,
+        "b_ms": 45.116,
+        "delta_ms": 5.105800000000002
+      },
+      {
+        "block": 15,
+        "pair": 1,
+        "pattern": "BAAB",
+        "a_attempt": 58,
+        "b_attempt": 57,
+        "a_ms": 47.6265,
+        "b_ms": 46.1864,
+        "delta_ms": 1.440100000000001
+      },
+      {
+        "block": 15,
+        "pair": 2,
+        "pattern": "BAAB",
+        "a_attempt": 59,
+        "b_attempt": 60,
+        "a_ms": 33.0369,
+        "b_ms": 43.6781,
+        "delta_ms": -10.641199999999998
+      },
+      {
+        "block": 16,
+        "pair": 1,
+        "pattern": "BAAB",
+        "a_attempt": 62,
+        "b_attempt": 61,
+        "a_ms": 53.2198,
+        "b_ms": 46.0832,
+        "delta_ms": 7.136600000000001
+      },
+      {
+        "block": 16,
+        "pair": 2,
+        "pattern": "BAAB",
+        "a_attempt": 63,
+        "b_attempt": 64,
+        "a_ms": 36.3105,
+        "b_ms": 42.5982,
+        "delta_ms": -6.287700000000001
+      },
+      {
+        "block": 17,
+        "pair": 1,
+        "pattern": "BAAB",
+        "a_attempt": 66,
+        "b_attempt": 65,
+        "a_ms": 45.1944,
+        "b_ms": 48.9897,
+        "delta_ms": -3.7952999999999975
+      },
+      {
+        "block": 17,
+        "pair": 2,
+        "pattern": "BAAB",
+        "a_attempt": 67,
+        "b_attempt": 68,
+        "a_ms": 39.5406,
+        "b_ms": 41.9235,
+        "delta_ms": -2.3828999999999994
+      },
+      {
+        "block": 18,
+        "pair": 1,
+        "pattern": "ABBA",
+        "a_attempt": 69,
+        "b_attempt": 70,
+        "a_ms": 53.485,
+        "b_ms": 45.6312,
+        "delta_ms": 7.8538
+      },
+      {
+        "block": 18,
+        "pair": 2,
+        "pattern": "ABBA",
+        "a_attempt": 72,
+        "b_attempt": 71,
+        "a_ms": 56.4806,
+        "b_ms": 41.0755,
+        "delta_ms": 15.405100000000004
+      },
+      {
+        "block": 19,
+        "pair": 1,
+        "pattern": "BAAB",
+        "a_attempt": 74,
+        "b_attempt": 73,
+        "a_ms": 44.321,
+        "b_ms": 32.2167,
+        "delta_ms": 12.104299999999995
+      },
+      {
+        "block": 19,
+        "pair": 2,
+        "pattern": "BAAB",
+        "a_attempt": 75,
+        "b_attempt": 76,
+        "a_ms": 57.4678,
+        "b_ms": 40.7872,
+        "delta_ms": 16.6806
+      },
+      {
+        "block": 20,
+        "pair": 1,
+        "pattern": "ABBA",
+        "a_attempt": 77,
+        "b_attempt": 78,
+        "a_ms": 41.86,
+        "b_ms": 43.6121,
+        "delta_ms": -1.7520999999999987
+      },
+      {
+        "block": 20,
+        "pair": 2,
+        "pattern": "ABBA",
+        "a_attempt": 80,
+        "b_attempt": 79,
+        "a_ms": 57.8708,
+        "b_ms": 42.0548,
+        "delta_ms": 15.816000000000003
+      }
+    ]
+  },
+  "drift_A": {
+    "slope_ms_per_attempt": 0.19188199300699316,
+    "projected_span_ms": 7.483397727272733,
+    "early_minus_late_ms": -7.174149999999997,
+    "permutation_p_two_sided": 0.0827917208279172
+  },
+  "pattern_effect_ms": 3.634800000000002,
+  "aa_calibration": {
+    "status": "FAIL",
+    "noise_floor_ms": 2.565899999999999,
+    "minimum_detectable_effect_ms": 3.15,
+    "mde_simulated_power": 0.818,
+    "environment_drift_fail": false,
+    "order_effect_fail": true,
+    "stop_candidate_adjudication": true
+  }
+}

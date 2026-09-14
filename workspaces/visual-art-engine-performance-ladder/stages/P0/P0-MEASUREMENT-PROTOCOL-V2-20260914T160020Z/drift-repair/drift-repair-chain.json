@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "original_analyzer": "original_analyzer.py",
+  "original_sha256": "1e7194bd47d48fb00a81014a993b8934d62e0e372b40473c0bb88638f1ec4bab",
+  "patched_analyzer": "patched_analyzer.py",
+  "patched_sha256": "8d070a4f558e9e8846f3d8cf11a69a4cdeeef560fe44f1e5467c798767138053",
+  "patch": "patch.diff",
+  "reason": "repair-reason.md",
+  "original_preserved": true
+}

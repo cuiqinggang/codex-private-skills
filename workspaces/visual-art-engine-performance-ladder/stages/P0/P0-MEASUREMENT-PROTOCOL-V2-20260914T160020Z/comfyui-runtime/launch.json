@@ -1,0 +1,20 @@
+{
+  "pid": 1768,
+  "started_at": "2026-09-14T16:13:40.4158128Z",
+  "working_directory": "C:\\AI\\ComfyUI_Aaki_v3",
+  "owned_by_v2": true,
+  "executable": "C:\\AI\\ComfyUI_Aaki_v3\\python\\python.exe",
+  "arguments": [
+    "-s",
+    "ComfyUI\\main.py",
+    "--windows-standalone-build",
+    "--port",
+    "8188",
+    "--output-directory",
+    "C:\\AI\\ComfyUI_Aaki_v3\\data\\output",
+    "--input-directory",
+    "C:\\AI\\ComfyUI_Aaki_v3\\data\\input",
+    "--temp-directory",
+    "C:\\AI\\ComfyUI_Aaki_v3\\data\\temp"
+  ]
+}

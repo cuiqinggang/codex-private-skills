@@ -1,0 +1,12 @@
+{
+  "schema_version": 2,
+  "status": "NOT_AUTHORITATIVE",
+  "FINAL_MDE_MS": null,
+  "candidate_lock": true,
+  "reason": "STATISTICAL_REPAIR_IN_PROGRESS",
+  "superseded_batches": ["AUTH-AA", "AUTH-AA-SHARED-CLIENT", "AUTH-AA-40B-V2", "AUTH-AA-80B-V2"],
+  "superseded_role": "SUPERSEDED_BY_STATISTICAL_AUDIT",
+  "current_runner_sha256": "fcdae8b83d663a9185cc44a90d8b5c0bd91b6b8da069515a997f0167509f2c6b",
+  "statistical_selftest": "PASS",
+  "next": "RUN_NEW_AUTHORITATIVE_AA_ONLY"
+}

@@ -1,0 +1,88 @@
+{
+  "e6d7cd83-2385-425d-949d-a7a0415ea6ef": {
+    "prompt": [
+      71,
+      "e6d7cd83-2385-425d-949d-a7a0415ea6ef",
+      {
+        "1": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "p0-control-black-256.png"
+          },
+          "_meta": {
+            "title": "P0 Deterministic Input"
+          }
+        },
+        "2": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "filename_prefix": "p0-v2/AA/069-measured-A-069-d08f7f89",
+            "images": [
+              "1",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "P0 Save Result"
+          }
+        }
+      },
+      {
+        "client_id": "c42aa1eb-607a-4de5-944f-e6242890f295",
+        "create_time": 1789404543876
+      },
+      [
+        "2"
+      ]
+    ],
+    "outputs": {
+      "2": {
+        "images": [
+          {
+            "filename": "069-measured-A-069-d08f7f89_00001_.png",
+            "subfolder": "p0-v2\\AA",
+            "type": "output"
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "e6d7cd83-2385-425d-949d-a7a0415ea6ef",
+            "timestamp": 1789404543884
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [
+              "1"
+            ],
+            "prompt_id": "e6d7cd83-2385-425d-949d-a7a0415ea6ef",
+            "timestamp": 1789404543886
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "e6d7cd83-2385-425d-949d-a7a0415ea6ef",
+            "timestamp": 1789404543900
+          }
+        ]
+      ]
+    },
+    "meta": {
+      "2": {
+        "node_id": "2",
+        "display_node": "2",
+        "parent_node": null,
+        "real_node_id": "2"
+      }
+    }
+  }
+}

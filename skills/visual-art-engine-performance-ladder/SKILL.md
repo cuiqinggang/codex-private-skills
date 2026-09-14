@@ -2,7 +2,7 @@
 name: visual-art-engine-performance-ladder
 description: 管理 Visual Art Engine 从 ComfyUI 控制路径到生产 H3 的 P0-P8 性能进化；用于固定 Benchmark Contract、调用第一性原理四列法 V4.0、记录真实端到端时间、阶段 99、FREEZE/REOPEN、ΔT_STAGE 和 PATH_ARCHITECTURE_ERROR。它不替代 visual-art-engine，也不在缺少证据时宣称性能通过。
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   short-description: 通用高性能视觉作品生成引擎
 ---
 
@@ -43,15 +43,24 @@ python .\scripts\p0\run-p0-control.py --dry-run
 
 正式运行必须显式提供 `--execute --acknowledge-contract P0-CONTROL-V1`。默认协议为 3 次 warmup、20 次 measured。没有明确执行意图时只做 readiness，不提交 workload。
 
+## Measurement Protocol V2（验证中）
+
+`MEASUREMENT_PROTOCOL_V2_STATUS=UNDER_VALIDATION`。在 `STATISTICAL_SELFTEST=PASS`、`NULL_CALIBRATION=PASS`、`AA_CALIBRATION=PASS` 三门同时成立前，候选裁决保持锁定，不得把 V2 写成成熟 PASS，也不得启动 E4/E5/E7 或 Track B 权威裁决。
+
+开展任何性能比较前读取 [measurement-protocol.md](references/measurement-protocol.md)；遇到校准、漂移、MDE、顺序效应、bracket 或旧批复用问题时同时读取 [failure-lessons.md](references/failure-lessons.md) 与 [evidence-map.md](references/evidence-map.md)。原始 runs/history/PNG/统计分布只留在 Stage，技能包只保存可复用规则与证据指针。
+
+V2 一旦三门通过即冻结为 P0-P3 默认 benchmark harness。只有新的真实证据证明 harness 有缺陷时才能升级；升级必须保留旧版本、记录原因、产生新 runner SHA 并重新 A/A。
+
 ## 强制边界
 
-- v1.0.0 仅表示方法、阶梯、版本、冻结系统、P0 Contract 和 P0 工具就绪；不表示 P0 已测或已优化。
+- v1.0.1 仅表示方法、阶梯、版本、冻结系统、P0 Contract 和 P0 工具就绪；不表示 P0 已测或已优化。
 - 本版本固定声明：`P0_BENCHMARK_EXECUTED=NO`、`PERFORMANCE_OPTIMIZATION_RUN=NO`、`H3_RUN=NO`。
 - 初始状态固定为：`P0_CURRENT=PENDING`、`P0_EXTERNAL=PENDING`、`P0_T_PHY=PENDING`、`P0_ITERATIVE_CONVERGENCE=LOCKED`、`P0_99=NO`。
 - 历史 Wan/FAST/COLD 数据只进入 `HISTORICAL_EVIDENCE`，不得作为 P0 CURRENT。
 - 普通生产任务走 `RUNTIME_FAST_PATH`。只有规定触发条件才走 `CERTIFICATION_PATH`，详见 [运行与认证分离](docs/RUNTIME-VS-CERTIFICATION.md)。
 - 不修改代理、网络、WSL、系统 CUDA/Torch、健康 ComfyUI、显存/offload/allocator/attention 设置；不安装 custom node 或新依赖。
 - 不修改 `visual-art-engine`、`mature-replication-four-column`、莲花或烟花成熟技能。
+- 禁止用历史固定 baseline 或分时单批 median 裁决毫秒级候选；禁止把 `p>0.05` 当作等价；禁止在 null Type-I error 校准前生成 FINAL_MDE。
 
 ## 失败复盘与证据
 

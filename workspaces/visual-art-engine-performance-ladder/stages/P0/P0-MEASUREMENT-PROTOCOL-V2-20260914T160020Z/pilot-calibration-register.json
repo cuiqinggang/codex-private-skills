@@ -1,0 +1,7 @@
+{
+  "status": "PRESERVED_EXCLUDED_FROM_FINAL_ADJUDICATION",
+  "batches": [
+    {"batch_id":"AUTH-AA","AUTH_AA_ROLE":"PILOT_CALIBRATION_ONLY","AA_CALIBRATION":"INCONCLUSIVE_ORDER_EFFECT","reported_order_effect_ms":3.6348,"block_median_effect_ms":6.909525,"permutation_p":0.0830458,"current_mde_ms":3.15},
+    {"batch_id":"AUTH-AA-SHARED-CLIENT","AUTH_AA_ROLE":"PILOT_CALIBRATION_ONLY","reason":"20_BLOCK_EXPLORATORY_REPAIR_BATCH_NOT_AUTHORITY"}
+  ]
+}

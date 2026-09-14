@@ -1,0 +1,18 @@
+{
+  "owned": true,
+  "started_at": "2026-09-14T16:48:04.2339222Z",
+  "arguments": [
+    "-s",
+    "ComfyUI\\main.py",
+    "--windows-standalone-build",
+    "--port",
+    "8188",
+    "--output-directory",
+    "C:\\AI\\ComfyUI_Aaki_v3\\data\\output",
+    "--input-directory",
+    "C:\\AI\\ComfyUI_Aaki_v3\\data\\input",
+    "--temp-directory",
+    "C:\\AI\\ComfyUI_Aaki_v3\\data\\temp"
+  ],
+  "pid": 16668
+}

@@ -1,0 +1,86 @@
+{
+  "06f7b8dc-2c9a-4efe-9e9c-052ad26a52e7": {
+    "prompt": [
+      0,
+      "06f7b8dc-2c9a-4efe-9e9c-052ad26a52e7",
+      {
+        "1": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "p0-control-black-256.png"
+          },
+          "_meta": {
+            "title": "P0 Deterministic Input"
+          }
+        },
+        "2": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "filename_prefix": "p0-v2/AA/-01-warmup-A-03711bd1",
+            "images": [
+              "1",
+              0
+            ]
+          },
+          "_meta": {
+            "title": "P0 Save Result"
+          }
+        }
+      },
+      {
+        "client_id": "c42aa1eb-607a-4de5-944f-e6242890f295",
+        "create_time": 1789404540213
+      },
+      [
+        "2"
+      ]
+    ],
+    "outputs": {
+      "2": {
+        "images": [
+          {
+            "filename": "-01-warmup-A-03711bd1_00001_.png",
+            "subfolder": "p0-v2\\AA",
+            "type": "output"
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "06f7b8dc-2c9a-4efe-9e9c-052ad26a52e7",
+            "timestamp": 1789404540217
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [],
+            "prompt_id": "06f7b8dc-2c9a-4efe-9e9c-052ad26a52e7",
+            "timestamp": 1789404540225
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "06f7b8dc-2c9a-4efe-9e9c-052ad26a52e7",
+            "timestamp": 1789404540269
+          }
+        ]
+      ]
+    },
+    "meta": {
+      "2": {
+        "node_id": "2",
+        "display_node": "2",
+        "parent_node": null,
+        "real_node_id": "2"
+      }
+    }
+  }
+}

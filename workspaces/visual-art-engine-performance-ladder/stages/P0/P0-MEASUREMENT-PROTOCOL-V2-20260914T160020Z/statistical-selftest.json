@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "production_function": "formal_statistical_pipeline",
+  "fixed_seed_reproducible": true,
+  "NULL_GAIN_0": {
+    "positive_false_keep_rate": 0.01925,
+    "any_direction_rejection_rate": 0.04025
+  },
+  "NULL_FAIL_BLOCKS_MDE": "PASS",
+  "TOLERANCE_BOUNDARIES": "PASS",
+  "SMALL_KNOWN_GAIN": {
+    "gain_ms": 0.25,
+    "observed_power": 0.13395
+  },
+  "MDE_NEAR_GAIN": {
+    "gain_ms": 1.0,
+    "observed_power": 0.81005
+  },
+  "LARGE_KNOWN_GAIN": {
+    "gain_ms": 10.0,
+    "observed_power": 1.0
+  },
+  "INDEPENDENT_ABA_CLUSTERED_BRACKET": "PASS",
+  "INVALID_OR_SHARED_BRACKET_REJECTED": "PASS",
+  "SYNTHETIC_DRIFT": "PASS",
+  "ORDER_EFFECT": "PASS"
+}

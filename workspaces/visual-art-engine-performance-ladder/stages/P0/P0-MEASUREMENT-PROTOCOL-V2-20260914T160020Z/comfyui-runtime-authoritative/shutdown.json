@@ -1,0 +1,9 @@
+{
+  "owned_pid": 16668,
+  "queue_running_before_stop": 0,
+  "queue_pending_before_stop": 0,
+  "stopped_at": "2026-09-15T01:12:50.8100592+08:00",
+  "stop_result": "OWNED_PROCESS_STOPPED",
+  "port_8188_after_stop": "NOT_RESPONDING",
+  "user_existing_process_touched": false
+}
