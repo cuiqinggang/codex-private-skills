@@ -1,0 +1,232 @@
+[
+  {
+    "label": "warmup-01",
+    "prompt_id": "52a1f378-7375-4ffd-bcc1-60ddff493f91",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "4af5a05f24f2167e6a54e29b7e83cb2ddc19b15e0a39959058e23670011a81ef"
+  },
+  {
+    "label": "warmup-02",
+    "prompt_id": "6128b6ab-7064-47f2-9c7e-d7cddc4d87cf",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "cb6ebdbedb4b7ae6c3107b0b394d81e42ae5c75d2c6abf0f76fffd0017917363"
+  },
+  {
+    "label": "warmup-03",
+    "prompt_id": "8afe663d-8f29-41ea-8669-fbc0d51f9250",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "2f89018c699d949bc703fa1c3a8943ca28a954f22406e8a19e08431f6aaa69fc"
+  },
+  {
+    "label": "measured-01",
+    "prompt_id": "ab05890b-27c4-461a-9017-c0b670ad5dc5",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "d4d05618e048c9a09d200568a95f9da0fbd2aca79a8a661a11bd1b4b97d6b6e2"
+  },
+  {
+    "label": "measured-02",
+    "prompt_id": "3b6af432-8a98-4333-a06a-c735f537f7c7",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "d4f5df802755d36d7fafafcdb3507954623875189197229537d326a5add0a8b6"
+  },
+  {
+    "label": "measured-03",
+    "prompt_id": "b0b046e9-19ea-4537-af46-153775e77a84",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "611486498636ba5afb04fc1333f28e2c4a796e9787cd5873e1c5db920f5537e7"
+  },
+  {
+    "label": "measured-04",
+    "prompt_id": "731beae9-6ed8-456e-9051-fe38c83ad348",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "716478b5a46a1f52f10afe4f7242f76a8b06b5db90ae52ef8eeab35fa84b41fc"
+  },
+  {
+    "label": "measured-05",
+    "prompt_id": "34f2086c-b209-4be7-9f4f-c6ba1c7e6236",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "17135b1f3c790ae603592f4e4f43d0eab63d5b3aaa937e2d82cef6d9a8f8d36b"
+  },
+  {
+    "label": "measured-06",
+    "prompt_id": "037c3af0-6559-4e70-8634-e8caf0266668",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "cbb13c86ffff96ad7f339ad2285ddc0b9caba97b0648347aa798ad28112a9994"
+  },
+  {
+    "label": "measured-07",
+    "prompt_id": "494b1700-087e-4886-959b-be0fbc6dd04d",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "745a93b446835416a76ad07acf4019d4b4181bee270b511492b820dc8fb5bff5"
+  },
+  {
+    "label": "measured-08",
+    "prompt_id": "9515411f-5d2f-4791-9df0-d0d952272a8d",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "19e72f5ccc4fcaca2682d0cfa5e166c574745bd3eb4a20e718b0a0259310e3ed"
+  },
+  {
+    "label": "measured-09",
+    "prompt_id": "dced87ff-fea1-44f8-9b4c-90ee56d1f694",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "f153a3b221cf4dcc218c2b2105b0433d90fb472a6822c113a4a7a5adfdbc8ffd"
+  },
+  {
+    "label": "measured-10",
+    "prompt_id": "196bfb6b-6747-4094-a0dd-5fdedd5df745",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "bfbcc83cff75ec9bb023ce155c038a0c5e7823f9dd262ba5997abda40328b4a2"
+  },
+  {
+    "label": "measured-11",
+    "prompt_id": "0378b9b6-dc2b-4ca9-b0d4-011e12400a57",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "593ad2b80edc562767404a1513d41dd3f6598ce59717a237c685c0747e41f887"
+  },
+  {
+    "label": "measured-12",
+    "prompt_id": "f8e9dbf1-3328-4506-b947-562f336e0d21",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "5a1ec7417fd694a2a3e7d91015bfc26747183a9dc92ac6ef131d5b61ebc5ddd0"
+  },
+  {
+    "label": "measured-13",
+    "prompt_id": "ef7be6d0-0c40-4eff-b405-1e6fde03beb7",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "ad9516952a6ea866e44e2c3361f2154e5a5b70da18b8c817531acf93653d15c9"
+  },
+  {
+    "label": "measured-14",
+    "prompt_id": "aa7d4c97-6a37-4e89-a458-0dc062bed8a6",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "6be5a5ae144ee697117fe2d95fea0e01c7c650913683e2ae13e352308344fa9e"
+  },
+  {
+    "label": "measured-15",
+    "prompt_id": "ef1d6743-6fc8-4e55-94b6-b7b19c330aba",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "27cfc08b03c9712383ba7ee82b99673e08a8a0f146b269a8aa63d30c5bb01c30"
+  },
+  {
+    "label": "measured-16",
+    "prompt_id": "8c710f7b-4d96-4cc7-8be3-9228129d1cc0",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "c3206fa94d63f98f3728935fc48a67d61d468ec6188a9c087cfa0fe5a484953b"
+  },
+  {
+    "label": "measured-17",
+    "prompt_id": "9264d051-e6dc-4a57-8f18-da02b8d99f0e",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "64cd22470b3c4dbfb889ddc896254020363c09aee56bd9494686a0f00ad5f526"
+  },
+  {
+    "label": "measured-18",
+    "prompt_id": "7f2a313c-2267-4c97-ae49-c03a8f2d437c",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "a32078796b44762e887c9720dffc12d76a52070d4ba81e4cbe7c323f801bfa19"
+  },
+  {
+    "label": "measured-19",
+    "prompt_id": "7642526a-1f69-48a1-97b4-60458260978f",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "f45eb0a523335079c65c90562362043a6cc6ec19403d1dd0219fc110a14e1f4e"
+  },
+  {
+    "label": "measured-20",
+    "prompt_id": "647789b1-2dc3-4f51-88f1-a6b87066b055",
+    "gate": "PASS",
+    "valid_png": true,
+    "width": 256,
+    "height": 256,
+    "decoded_bytes": 196864,
+    "sha256": "c4cdf212b95db2e4246435e907cb979e8134c75b14a3e6964b8903d36ecac59f"
+  }
+]

@@ -1,0 +1,116 @@
+[
+  {
+    "label": "warmup-01",
+    "prompt_id": "52a1f378-7375-4ffd-bcc1-60ddff493f91",
+    "run_prefix": "p0-control/warmup-01-ab240d33ae",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 283013172839800,
+      "QUEUE_ACK": 283013178260400,
+      "EXECUTION_START": 283013184082800,
+      "SAVE_DONE": 283013188698600,
+      "RESULT_READY": 283013612668900
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0054206,
+      "T_QUEUE": 0.0058224,
+      "T_EXECUTE": 0.0046158,
+      "T_RESULT": 0.4239703,
+      "T_END_TO_END": 0.4398291
+    },
+    "output": {
+      "history": {
+        "filename": "warmup-01-ab240d33ae_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E9-BASELINE-REPRO-CONTROL-B-20260914T161000Z\\runtime-evidence\\warmup-01-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "4af5a05f24f2167e6a54e29b7e83cb2ddc19b15e0a39959058e23670011a81ef"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E9-BASELINE-REPRO-CONTROL-B-20260914T161000Z\\runtime-evidence\\warmup-01-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "warmup-02",
+    "prompt_id": "6128b6ab-7064-47f2-9c7e-d7cddc4d87cf",
+    "run_prefix": "p0-control/warmup-02-5098b10e58",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 283013615167000,
+      "QUEUE_ACK": 283013621302200,
+      "EXECUTION_START": 283013625650700,
+      "SAVE_DONE": 283013630978300,
+      "RESULT_READY": 283013645845100
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0061352,
+      "T_QUEUE": 0.0043485,
+      "T_EXECUTE": 0.0053276,
+      "T_RESULT": 0.0148668,
+      "T_END_TO_END": 0.0306781
+    },
+    "output": {
+      "history": {
+        "filename": "warmup-02-5098b10e58_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E9-BASELINE-REPRO-CONTROL-B-20260914T161000Z\\runtime-evidence\\warmup-02-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "cb6ebdbedb4b7ae6c3107b0b394d81e42ae5c75d2c6abf0f76fffd0017917363"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E9-BASELINE-REPRO-CONTROL-B-20260914T161000Z\\runtime-evidence\\warmup-02-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  },
+  {
+    "label": "warmup-03",
+    "prompt_id": "8afe663d-8f29-41ea-8669-fbc0d51f9250",
+    "run_prefix": "p0-control/warmup-03-5acf3aa674",
+    "marks_monotonic_ns": {
+      "REQUEST_START": 283013648123100,
+      "QUEUE_ACK": 283013652816400,
+      "EXECUTION_START": 283013657255200,
+      "SAVE_DONE": 283013664202000,
+      "RESULT_READY": 283013679634700
+    },
+    "timing_seconds": {
+      "T_REQUEST": 0.0046933,
+      "T_QUEUE": 0.0044388,
+      "T_EXECUTE": 0.0069468,
+      "T_RESULT": 0.0154327,
+      "T_END_TO_END": 0.0315116
+    },
+    "output": {
+      "history": {
+        "filename": "warmup-03-5acf3aa674_00001_.png",
+        "subfolder": "p0-control",
+        "type": "output"
+      },
+      "evidence_copy": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E9-BASELINE-REPRO-CONTROL-B-20260914T161000Z\\runtime-evidence\\warmup-03-result.png",
+      "validation": {
+        "valid_png": true,
+        "width": 256,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": 2,
+        "decoded_bytes": 196864,
+        "sha256": "2f89018c699d949bc703fa1c3a8943ca28a954f22406e8a19e08431f6aaa69fc"
+      }
+    },
+    "raw_events": "C:\\Users\\A\\Documents\\Codex\\2026-09-14\\P0-CONTINUOUS-CONVERGENCE-20260914\\workspaces\\visual-art-engine-performance-ladder\\stages\\P0\\P0-E9-BASELINE-REPRO-CONTROL-B-20260914T161000Z\\runtime-evidence\\warmup-03-raw-events.jsonl",
+    "result_validity_gate": "PASS"
+  }
+]

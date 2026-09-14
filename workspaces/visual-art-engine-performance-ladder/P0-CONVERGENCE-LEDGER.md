@@ -12,3 +12,4 @@
 | E6 HISTORY_ON_EXECUTION_SUCCESS | success 可提前 history | 7.5893 ms P95 | warmup-01 history missing；measured 未执行 | ROLLBACK / INVALID | success 早于 history 可见 | E7 缓冲 raw event 写盘 |
 | E7 BUFFER_RAW_EVENT_WRITES | 同步 flush 属测量开销 | 6.0 ms | 3/3、20/20；Median 42.34235，P95 54.0572 | ROLLBACK | 无稳定改善 | E8 精确 baseline 重现控制 |
 | E8 BASELINE_REPRO_CONTROL_A | 检查正式基线可复现性 | N/A | 3/3、20/20；Median 39.15，P95 49.4881 | CONTROL_FAIL_REPRO | 未复现32.55975 | 控制批次B |
+| E9 BASELINE_REPRO_CONTROL_B | 第二独立控制批次 | N/A | 3/3、20/20；Median 30.0504，P95 36.6619 | CONTROL_PASS | 成功复现但批间抖动大 | 控制批次C |

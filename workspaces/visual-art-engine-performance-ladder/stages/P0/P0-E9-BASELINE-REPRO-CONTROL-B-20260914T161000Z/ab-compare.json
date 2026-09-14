@@ -1,0 +1,6 @@
+{
+  "official_median_ms": 32.55975,
+  "control_median_ms": 30.0504,
+  "improvement_percent": 7.7069,
+  "decision": "CONTROL_REPRODUCED_NO_BASELINE_CHANGE"
+}
