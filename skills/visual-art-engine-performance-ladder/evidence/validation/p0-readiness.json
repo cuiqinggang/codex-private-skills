@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-14T12:09:17.3911946+00:00",
+  "mode": "READ_ONLY_READINESS",
+  "c_drive_only": true,
+  "comfyui_root": "C:\\AI\\ComfyUI_Aaki_v3\\ComfyUI",
+  "python": "C:\\AI\\ComfyUI_Aaki_v3\\python\\python.exe",
+  "api_endpoint": "http://127.0.0.1:8188",
+  "api_ready": false,
+  "input_path": "C:\\AI\\ComfyUI_Aaki_v3\\ComfyUI\\input",
+  "input_exists": true,
+  "output_path": "C:\\AI\\ComfyUI_Aaki_v3\\ComfyUI\\output",
+  "output_exists": true,
+  "queue_readable": false,
+  "object_info_readable": false,
+  "node_discovery_status": "UNKNOWN_API_NOT_READY",
+  "required_node_classes": [
+    "LoadImage",
+    "SaveImage"
+  ],
+  "missing_node_classes": null,
+  "frozen_workflow_ready": false,
+  "benchmark_submitted": false,
+  "p0_current": "PENDING",
+  "status": "ENVIRONMENT_DISCOVERED_API_NOT_READY"
+}

@@ -1,0 +1,23 @@
+# Stage Evidence — <STAGE>/<RUN_ID>
+
+- TASK contract/hash:
+- Environment:
+- Version/commit:
+- Condition: HOT / COLD
+- Evidence status: VERIFIED / INFERRED / UNVERIFIED
+- Raw event path:
+- Output path/SHA-256:
+- Result validity gate:
+- REQUEST_START:
+- QUEUE_ACK:
+- EXECUTION_START:
+- SAVE_DONE:
+- RESULT_READY:
+- T_REQUEST:
+- T_QUEUE:
+- T_EXECUTE:
+- T_RESULT:
+- T_END_TO_END:
+- Delta from frozen previous stage:
+- PATH_ARCHITECTURE_ERROR:
+- Decision: KEEP / ROLLBACK / INVALID_RESULT / BLOCKED
