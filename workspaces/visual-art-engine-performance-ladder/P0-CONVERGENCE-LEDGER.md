@@ -6,3 +6,4 @@
 |---|---|---:|---|---|---|---|
 | E1 RESULT_PATH_DECOMPOSITION | RESULT 含可分解客户端延迟 | 16.99775 ms | 观测中位 36.74075 ms；OUTPUT_VISIBLE→CLIENT 13.25845 ms | OBSERVATION_ONLY | 增加观测点，不竞争基线 | E2 对比本地读取与 /view |
 | E2 LOCAL_OUTPUT_FILE_READ_VS_HTTP_VIEW | /view 是 13.25845 ms 主因 | 13.25845 ms | 3/3、20/20；总中位 35.6235 ms；本地取得 8.79895 ms | DIAGNOSTIC_ONLY | 本地读违反冻结合同的 HTTP 取得语义 | E3 延后 WebSocket close，保持 /view |
+| E3 DEFER_WEBSOCKET_CLOSE | WS close 约 1ms 可移出 RESULT | 1.0 ms | 3/3、20/20；中位 39.73105 ms；P95 47.4519 ms | ROLLBACK | 未改善且携带 E1 观测负担 | E4 用 baseline runner 重测最小变量 |

@@ -1,0 +1,10 @@
+{
+  "baseline_median_ms": 32.55975,
+  "candidate_median_ms": 39.73105,
+  "median_improvement_percent": -22.025,
+  "baseline_p95_ms": 58.1779,
+  "candidate_p95_ms": 47.4519,
+  "p95_improvement_percent": 18.4366,
+  "decision": "ROLLBACK",
+  "reason": "Median did not improve; experiment inherited E1 observation overhead."
+}

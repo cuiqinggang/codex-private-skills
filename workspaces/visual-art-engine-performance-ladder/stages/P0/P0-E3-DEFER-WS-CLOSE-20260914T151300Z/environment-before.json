@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-09-14T15:11:22.7854534Z",
+  "contract": "P0-CONTROL-V1",
+  "experiment": "DEFER_WEBSOCKET_CLOSE_AFTER_RESULT_READY",
+  "contract_compatible": true,
+  "current_baseline_ms": 32.55975,
+  "target_segment": "WS_CLOSE_INSIDE_RESULT",
+  "gain_ceiling_ms": 1.0,
+  "queue_running": 0,
+  "queue_pending": 0,
+  "required_nodes_visible": true,
+  "comfyui_started_by_convergence": true,
+  "process_id": 15408
+}
