@@ -1,0 +1,10 @@
+{
+  "captured_at": "2026-09-14T15:25:08.3912640Z",
+  "experiment": "EXACT_BASELINE_REPRODUCTION_CONTROL_C",
+  "contract": "P0-CONTROL-V1",
+  "current_baseline_ms": 32.55975,
+  "queue_running": 0,
+  "queue_pending": 0,
+  "runner_unchanged": true,
+  "process_id": 15408
+}
