@@ -1,0 +1,205 @@
+{
+  "schema": "h3-p0-local-facts/v1",
+  "collected_at": "2026-09-16T03:03:24+08:00",
+  "status": {
+    "original_task_recovery": "PASS",
+    "h3_p0_local_preflight": "PASS",
+    "run_h3_generation": false,
+    "run_h3_benchmark": false,
+    "run_video_generation": false
+  },
+  "counts": {
+    "reused_existing_facts": 31,
+    "new_facts_collected": 29,
+    "unresolved_facts": 7
+  },
+  "primary_knowledge_source": {
+    "skill": "h3-high-fidelity-local-video-recreation",
+    "path": "C:\\Users\\A\\.codex\\skills\\h3-high-fidelity-local-video-recreation",
+    "version": "UNDECLARED_IN_SKILL_METADATA",
+    "coverage": "HIGH",
+    "coverage_percent": 74,
+    "broad_local_search_avoided": true
+  },
+  "runtime": {
+    "h3_active_root": "C:\\AI\\MiniMax-H3",
+    "comfyui_root": "C:\\AI\\MiniMax-H3\\ComfyUI",
+    "execution_entry": "ComfyUI API workflow JSON -> POST /prompt -> server execution graph",
+    "launcher": "C:\\Users\\A\\Desktop\\Start-MiniMax-H3-8194-Manual.cmd",
+    "python_exe": "C:\\AI\\MiniMax-H3\\.venv\\Scripts\\python.exe",
+    "comfyui_version": "v0.34.0-16-g8a33128f",
+    "comfyui_git_head": "8a33128f2f8c5585c57486c07de481241e70a39c",
+    "python_version": "3.11.15",
+    "torch_version": "2.9.1+cu130",
+    "cuda_runtime": "13.0",
+    "nvidia_driver": "591.74",
+    "service_listening_during_preflight": false
+  },
+  "assets": {
+    "workflow": {
+      "path": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\06-WORKFLOWS\\STATIC-PROBE\\k3-fl2va-5f-20step-api.json",
+      "sha256": "89B6A40B13485A6633191F1350DB472556359CDB6407E5272C9ED109698FD0F5",
+      "reuse": true
+    },
+    "h3_model": {
+      "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\diffusion_models\\minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "size_bytes": 20970379616
+    },
+    "text_encoder": {
+      "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\text_encoders\\qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "size_bytes": 15687142551
+    },
+    "vae": {
+      "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\vae\\minimax_h3_video_vae_fp16.safetensors",
+      "name": "minimax_h3_video_vae_fp16.safetensors",
+      "size_bytes": 5207808496
+    },
+    "model_identity_needs_reverify": true,
+    "huge_model_rehash_performed": false
+  },
+  "minimum_legal_task": {
+    "width": 32,
+    "height": 32,
+    "frame_count": 5,
+    "steps": 1,
+    "width_height_evidence_scope": "schema minimum; successful 32x32 run not proven",
+    "steps_evidence_scope": "BasicScheduler schema minimum; successful H3 1-step run not proven",
+    "input_type": "text prompt + optional first/last image",
+    "prompt_required": true,
+    "empty_prompt_legality": "UNRESOLVED",
+    "image_required_by_node": false,
+    "image_required_for_proven_k3_template": true,
+    "audio_required": false,
+    "minimum_required_models": [
+      "FL2VA diffusion model",
+      "MiniMax CLIP/text encoder",
+      "H3 video VAE"
+    ],
+    "sampler": "res_multistep",
+    "scheduler": "beta",
+    "hard_constraints": [
+      "width and height step 32",
+      "length minimum 5",
+      "length step 17",
+      "internal frame grid 17k+5"
+    ],
+    "five_frame_assumption": "CONFIRMED",
+    "source": "C:\\AI\\MiniMax-H3\\ComfyUI\\comfy_extras\\nodes_minimax_h3.py"
+  },
+  "gpu_core": {
+    "node": "12 / SamplerCustomAdvanced",
+    "module": "comfy.k_diffusion.sampling",
+    "function": "sample_res_multistep -> res_multistep",
+    "source_file": "C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\k_diffusion\\sampling.py",
+    "deep_model_function": "comfy.ldm.minimax.model.MiniMaxH3Model.forward",
+    "start": {
+      "file": "C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\samplers.py",
+      "function": "KSAMPLER.sample",
+      "region": "immediately before samples = self.sampler_function(...)",
+      "observed_line": 1005
+    },
+    "end": {
+      "file": "C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\samplers.py",
+      "function": "KSAMPLER.sample",
+      "region": "immediately after sampler_function returns, before inverse_noise_scaling",
+      "observed_line": 1006
+    },
+    "boundary_confidence": "HIGH",
+    "async_risk": true,
+    "existing_sync_method": "no H3 sampler-boundary synchronization",
+    "existing_timer_method": "WebSocket node-transition wall clock via time.perf_counter",
+    "best_available_timer": "torch.cuda.Event around sampler_function followed by end_event.synchronize; retain wall-clock cross-check"
+  },
+  "path_boundary": {
+    "before_gpu": [
+      "request construction and POST acknowledgement",
+      "queue and validation",
+      "graph/cache evaluation",
+      "model, CLIP and VAE loaders",
+      "image load and resize",
+      "tokenize and CLIP conditioning",
+      "keyframe VAE encode and AV latent",
+      "optional TE-Speed patch",
+      "scheduler, sampler, guider and noise",
+      "prepare_sampling, model loading/offload setup and transfers"
+    ],
+    "after_gpu": [
+      "inverse noise scaling and output transfer",
+      "VAEDecode",
+      "CreateVideo",
+      "SaveVideo MP4 encode/write/metadata",
+      "result/history and polling/fetch/copy",
+      "ffprobe, PyAV and black-frame QC",
+      "logging, evidence and UI"
+    ],
+    "decode_boundary_decision_required": true
+  },
+  "model_and_cache": {
+    "model_load_per_run": false,
+    "model_persistent_in_vram": "CONDITIONAL",
+    "cache_status": "RAM_PRESSURE node-output cache enabled; stock H3 cache OFF; optional TE-Speed cache on compat 8195",
+    "text_encoder_cache": "conditional node cache + CPU offload",
+    "vae_cache": "conditional node cache + CPU offload",
+    "first_run_special_cost": true,
+    "warm_run_behavior": "may reuse node results and loaded models; affected by memory pressure and input changes",
+    "cold_run_behavior": "includes model load, device transfers and first initialization",
+    "model_load_location": "CFGGuider.outer_sample -> prepare_sampling -> model_management.load_models_gpu",
+    "model_unload_location": "memory-pressure free_memory / soft_empty_cache; no forced unload every prompt"
+  },
+  "performance_features": {
+    "launcher_flags": [
+      "--fast-disk",
+      "--reserve-vram 3.5",
+      "--disable-pinned-memory"
+    ],
+    "attention_backend": "PyTorch attention",
+    "quantization": "H3 INT8/convrot; text encoder NVFP4 AWQ emulated on Turing",
+    "precision": "model BF16/manual cast FP32; VAE FP16; CLIP FP16",
+    "offload": "async weight offloading with 2 streams observed; VAE/CLIP CPU offload capable",
+    "vram_mode": "last same-code 8195 evidence NORMAL_VRAM; live state UNRESOLVED",
+    "cache_mode": "RAM_PRESSURE; stock H3 cache OFF; TE-Speed optional on 8195",
+    "xformers": "not observed",
+    "flash_attention": "not observed",
+    "torch_compile": "not observed",
+    "dynamic_prefetch": "not observed"
+  },
+  "gpu_idle_snapshot": {
+    "name": "NVIDIA GeForce RTX 2080 Ti",
+    "vram_total_mib": 22528,
+    "vram_used_mib": 2060,
+    "vram_free_mib": 20171,
+    "temperature_c": 51,
+    "power_w": 53.97,
+    "graphics_clock_mhz": 1050,
+    "memory_clock_mhz": 7000,
+    "power_limit_w": 250,
+    "pstate": "P0",
+    "compute_mode": "Default",
+    "clean_idle": false
+  },
+  "best_existing_minimal_task_candidate": {
+    "path": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\06-WORKFLOWS\\STATIC-PROBE\\k3-fl2va-5f-20step-api.json",
+    "width": 1344,
+    "height": 768,
+    "frames": 5,
+    "steps": 20,
+    "reason": "minimum proven frame count, mature contract and locked workflow SHA"
+  },
+  "unknown_gaps": [
+    "Current model files lack trusted historical SHA binding",
+    "TASK_COMPLETED ownership of GPU VAE decode is undecided",
+    "Stock 8194 versus adopted TE-Speed 8195 baseline contract is not frozen",
+    "Clean idle precondition is not defined",
+    "Live VRAM mode is unresolved because service is stopped",
+    "No authoritative submitter script is bound one-to-one to canonical K3 workflow",
+    "Empty prompt runtime legality is unresolved"
+  ],
+  "readiness": {
+    "define_h3_p0_task_contract": true,
+    "instrument_t_path": true,
+    "instrument_t_gpu_core": true,
+    "first_baseline_run": false
+  }
+}
