@@ -1,0 +1,89 @@
+Setting output directory to: C:\AI\ComfyUI_Aaki_v3\data\output
+Setting input directory to: C:\AI\ComfyUI_Aaki_v3\data\input
+
+Prestartup times for custom nodes:
+   0.0 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\rgthree-comfy
+  14.2 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI-Manager
+
+Checkpoint files will always be loaded safely.
+Total VRAM 22528 MB, total RAM 32713 MB
+pytorch version: 2.9.1+cu130
+Set vram state to: NORMAL_VRAM
+Device: cuda:0 NVIDIA GeForce RTX 2080 Ti : cudaMallocAsync
+Using async weight offloading with 2 streams
+Enabled pinned memory 14721.0
+working around nvidia conv3d memory bug.
+Found comfy_kitchen backend cuda: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_nvfp4']}
+Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_nvfp4']}
+Using pytorch attention
+Python version: 3.13.11 (tags/v3.13.11:6278944, Dec  5 2025, 16:26:58) [MSC v.1944 64 bit (AMD64)]
+ComfyUI version: 0.9.2
+Setting temp directory to: C:\AI\ComfyUI_Aaki_v3\data\temp\temp
+ComfyUI frontend version: 1.36.14
+[Prompt Server] web root: C:\AI\ComfyUI_Aaki_v3\python\Lib\site-packages\comfyui_frontend_package\static
+ComfyUI-GGUF: Allowing full torch compile
+### Loading: ComfyUI-Impact-Pack (V8.28.2)
+[Impact Pack] Wildcard total size (0.00 MB) is within cache limit (50.00 MB). Using full cache mode.
+[Impact Pack] Wildcards loading done.
+### Loading: ComfyUI-Manager (V3.39.2)
+[ComfyUI-Manager] network_mode: public
+[ComfyUI-Manager] ComfyUI per-queue preview override detected (PR #11261). Manager's preview method feature is disabled. Use ComfyUI's --preview-method CLI option or 'Settings > Execution > Live preview method'.
+### ComfyUI Version: v0.9.2 | Released on '2026-01-15'
+[ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/alter-list.json
+[ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/model-list.json
+[ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/github-stats.json
+[ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/custom-node-list.json
+[ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/extension-node-map.json
+C:\AI\ComfyUI_Aaki_v3\python\Lib\site-packages\timm\models\layers\__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+Warning: Could not load sageattention: No module named 'sageattention'
+sageattention package is not installed, sageattention will not be available
+[36;20m[C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\comfyui_controlnet_aux] | INFO -> Using ckpts path: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\comfyui_controlnet_aux\ckpts[0m
+[36;20m[C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\comfyui_controlnet_aux] | INFO -> Using symlinks: False[0m
+[36;20m[C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\comfyui_controlnet_aux] | INFO -> Using ort providers: ['CUDAExecutionProvider', 'DirectMLExecutionProvider', 'OpenVINOExecutionProvider', 'ROCMExecutionProvider', 'MIGraphXExecutionProvider', 'CPUExecutionProvider', 'CoreMLExecutionProvider'][0m
+('Looking for cached Spacy xx_sent_ud_sm.',)
+
+Import times for custom nodes:
+   0.0 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\websocket_image_save.py
+   0.0 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI_IPAdapter_plus
+   0.0 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI_UltimateSDUpscale
+   0.1 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI-GGUF
+   0.1 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\rgthree-comfy
+   0.2 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\comfyui_controlnet_aux
+   1.2 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI-Impact-Pack
+   1.2 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI-Manager
+   1.6 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI-LTXVideo
+   2.0 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI-WanVideoWrapper
+   2.1 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI-VideoHelperSuite
+   7.9 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI_Custom_Nodes_AlekPet
+   8.5 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI-RMBG
+
+Context impl SQLiteImpl.
+Will assume non-transactional DDL.
+Assets scan(roots=['models']) completed in 0.058s (created=0, skipped_existing=33, total_seen=33)
+Starting server
+
+To see the GUI go to: http://127.0.0.1:8188
+[DEPRECATION WARNING] Detected import of deprecated legacy API: /scripts/ui.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+[DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/clipspace.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+[DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/groupNode.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+[DEPRECATION WARNING] Detected import of deprecated legacy API: /extensions/core/widgetInputs.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+[DEPRECATION WARNING] Detected import of deprecated legacy API: /scripts/ui/components/buttonGroup.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+[DEPRECATION WARNING] Detected import of deprecated legacy API: /scripts/ui/components/button.js. This is likely caused by a custom node extension using outdated APIs. Please update your extensions or contact the extension author for an updated version.
+got prompt
+Prompt executed in 0.04 seconds
+got prompt
+Prompt executed in 0.03 seconds
+got prompt
+Prompt executed in 0.01 seconds
+got prompt
+Prompt executed in 0.01 seconds
+got prompt
+Prompt executed in 0.01 seconds
+got prompt
+Prompt executed in 0.01 seconds
+got prompt
+Prompt executed in 0.01 seconds
+got prompt
+Prompt executed in 0.01 seconds

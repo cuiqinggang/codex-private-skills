@@ -1,6 +1,8 @@
-# FAILURE INDEX
+# FAILURE INDEX（失败经验索引）
 
-正常任务不要通读本文件；只在对应 TRIGGER 命中时查。
+正常任务不要通读本文件；只在对应 TRIGGER（触发条件）命中时查。
+
+固定字段：`PROBLEM（问题）`、`ROOT_CAUSE（根因）`、`TIME_COST（时间成本）`、`WRONG_PATH（错误路线）`、`FAST_PATH（以后直接路线）`、`TRIGGER（触发条件）`、`EVIDENCE（证据）`。下文保留短英文键，含义以本行双语定义为准。
 
 ## FI-01 本机服务未运行
 
@@ -150,3 +152,19 @@ FAST_PATH：初始化时用 ASCII，占位后使用 UTF-8 apply_patch 写中文�
 quick_validate.py 时显式使用 python -X utf8，不用嵌套 PowerShell 环境变量赋值。
 
 TRIGGER：生成文件出现 replacement/乱码字符，或 validator 报 GBK UnicodeDecodeError。
+
+## FI-11 异步 Git 克隆被误判为空仓库
+
+PROBLEM：`git clone` 外层调用先返回 session id，本地 checkout 尚未完成；此时 HEAD 与 origin/main 暂时不存在，看起来像空仓库。
+
+ROOT_CAUSE：没有继续轮询底层 Git session，就基于中间工作树状态下结论。
+
+TIME_COST：一次错误状态判断与一次额外 GitHub API 核对。
+
+WRONG_PATH：看到 `HEAD unknown revision` 就认定远端为空并开始写入。
+
+FAST_PATH：只要 exec 返回 session id，必须持续 `write_stdin` 到 exit code；随后 fetch，并同时核对 `git rev-parse origin/main` 与 GitHub API。
+
+TRIGGER：clone 只输出 `Cloning into...`；exec 返回 session id；工作树只有 `.git`。
+
+EVIDENCE：共同仓库基点 `5d6012dfcd959d64579aa15e8e71f4227c33454e`；完整 checkout 为 8286 files。

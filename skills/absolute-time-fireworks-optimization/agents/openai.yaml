@@ -1,4 +1,4 @@
 interface:
-  display_name: "极限时间烟花优化法"
-  short_description: "物理时间账驱动的极简 fast path 与单点收敛"
-  default_prompt: "冻结固定任务，建立物理时间账，只攻击最大可消除块，用真实绝对时间 KEEP 或 ROLLBACK，最终再认证。"
+  display_name: "第一性原理四列法极限时间宏观迭代"
+  short_description: "四列物理时间账驱动的极简宏观收敛流程"
+  default_prompt: "使用 $absolute-time-fireworks-optimization 固定任务，以第一性原理四列法只攻击最大现实时间块，绝对更快才保留，最后再认证冻结。"

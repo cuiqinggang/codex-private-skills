@@ -1,29 +1,23 @@
 # 材料价值与可执行经验
 
-## 材料来源
+## 材料与价值
 
-- 来源：用户 2026-09-15 提供的 P0 极限时间接续说明与基础总则。
-- 活跃项目：C:\Users\A\Documents\Codex\P0-EXTREME-MINIMAL-FASTPATH。
+- 来源：用户 2026-09-15 提供的 P0 极限时间接续说明、长期经验复用总则与最终收口任务。
+- 价值判断：`HIGH_VALUE（高价值）`。
+- 原因：形成可执行规则、SOP、checklist、失败入口、复现工程、共同进度账和审核门。
 
-## 价值判断
+## 固化结果
 
-结论：HIGH_VALUE。
-
-满足：减少重复犯错、提升复杂任务质量、形成规则/SOP/checklist/template、改善长期工作流、转为自动开工检查，且用户明确要求长期部署和不落灰。
-
-## 可执行内容
-
-- 规则：Measurement engineering 不得替代 performance engineering。
-- SOP：物理时间账、最大 gap、单变量、2+5、KEEP/ROLLBACK、重新分解、最终认证。
-- Checklist：FAST-PATH.md。
-- Template：候选时间账与第一屏裁决字段。
-- AGENTS patch：AGENTS-PATCH-DRAFT.md。
-- 失败入口：FAILURE-INDEX.md。
-- 验收：ACCEPTANCE.html 与 P0 certification JSON。
+- 正式方法：第一性原理四列法 V4.0；不创造“撕裂法”。
+- 工程执行层：冻结 CURRENT → 去重甲 → 宏观时间账 → 最大 gap → 单变量 → 短测试 → KEEP/ROLLBACK → 收敛 → 最终认证 → 99。
+- 默认入口：CURRENT STATE + FAST PATH。
+- 异常入口：FAILURE INDEX。
+- 证据入口：FOUR-COLUMN-P0-99 与共同仓库完整工作区。
+- 共同事实源：`cuiqinggang/codex-private-skills`。
 
 ## 防落灰绑定
 
-- 触发：极限时间、T_END_TO_END、物理时间账、最大 gap、P0 99、烟花法。
-- 开工动作：只读 SKILL.md 与 FAST-PATH.md；异常才读 Failure Index。
-- 最近使用：USAGE-LOG.md。
-- 下一次：先调用本技能；最终候选出现后才调用 performance-benchmark-convergence。
+- 触发：极限时间、T_END_TO_END、第一性原理物理时间、最大 gap、P0 99、烟花项目验证成功路径。
+- 开工：读最新共同仓库、SKILL、CURRENT STATE、FAST PATH。
+- 最近使用：`USAGE-LOG.md`。
+- 下一次：先调用本技能；最终候选形成后才调用 `performance-benchmark-convergence`。

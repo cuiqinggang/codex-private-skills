@@ -2,6 +2,17 @@
 
 Private backup of personal Codex/Hermes/OpenClaw skill packages collected from H: on 2026-06-05.
 
+## Active shared fact source
+
+This private repository is the shared long-term fact source and working area for the P0 absolute-time project:
+
+- Skill: [absolute-time-fireworks-optimization](skills/absolute-time-fireworks-optimization/SKILL.md)
+- Current state: [CURRENT STATE（当前状态）](skills/absolute-time-fireworks-optimization/references/CURRENT-STATE.md)
+- Fast path: [FAST PATH（成熟最短路径）](skills/absolute-time-fireworks-optimization/references/FAST-PATH.md)
+- Frozen engineering workspace: [P0-EXTREME-MINIMAL-FASTPATH](workspaces/absolute-time-fireworks-optimization/P0-EXTREME-MINIMAL-FASTPATH/README.md)
+
+`SHARED_WORKSPACE_REPOSITORY=cuiqinggang/codex-private-skills`
+
 ## Layout
 
 - skills/: curated skill packages, one skill per directory.

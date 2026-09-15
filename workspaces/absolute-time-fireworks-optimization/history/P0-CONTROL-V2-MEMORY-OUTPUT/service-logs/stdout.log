@@ -1,0 +1,37 @@
+[START] Security scan
+[DONE] Security scan
+## ComfyUI-Manager: installing dependencies done.
+** ComfyUI startup time: 2026-09-15 18:41:53.313
+** Platform: Windows
+** Python version: 3.13.11 (tags/v3.13.11:6278944, Dec  5 2025, 16:26:58) [MSC v.1944 64 bit (AMD64)]
+** Python executable: C:\AI\ComfyUI_Aaki_v3\python\python.exe
+** ComfyUI Path: C:\AI\ComfyUI_Aaki_v3\ComfyUI
+** ComfyUI Base Folder Path: C:\AI\ComfyUI_Aaki_v3\ComfyUI
+** User directory: C:\AI\ComfyUI_Aaki_v3\ComfyUI\user
+** ComfyUI-Manager config path: C:\AI\ComfyUI_Aaki_v3\ComfyUI\user\__manager\config.ini
+** Log path: C:\AI\ComfyUI_Aaki_v3\ComfyUI\user\comfyui.log
+Error loading C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI-RMBG\py\AILab_SAM3Segment.py: No module named 'triton'
+Error loading C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\ComfyUI-RMBG\py\AILab_SAM3Segment.py: No module named 'triton'
+[34m[ComfyUI-RMBG][0m v[93m3.0.0[0m | [93m42 nodes[0m [92mLoaded[0m
+FETCH ComfyRegistry Data: 5/187
+DWPose: Onnxruntime with acceleration providers detected
+[1;35m
+### [START] ComfyUI AlekPet Nodes [1;34mv1.0.92[0m[1;35m ###[0m
+[92mNode -> ArgosTranslateNode: [93mArgosTranslateCLIPTextEncodeNode, ArgosTranslateTextNode[0m [92m[92m[Loading][0m[0m
+[92mNode -> ChatGLMNode[92m[92m[Loading][0m[0m
+[92mNode -> DeepTranslatorNode: [93mDeepTranslatorCLIPTextEncodeNode, DeepTranslatorTextNode[0m [92m[92m[Loading][0m[0m
+[92mNode -> ExtrasNode: [93mPreviewTextNode, HexToHueNode, ColorsCorrectNode[0m [92m[92m[Loading][0m[0m
+[92mNode -> GoogleTranslateNode: [93mGoogleTranslateCLIPTextEncodeNode, GoogleTranslateTextNode[0m [92m[92m[Loading][0m[0m
+[92mNode -> IDENode: [93mIDENode[0m [92m[92m[Loading][0m[0m
+[92mNode -> PainterNode: [93mPainterNode[0m [92m[92m[Loading][0m[0m
+[92mNode -> PoseNode: [93mPoseNode[0m [92m[92m[Loading][0m[0m
+[1;35m### [END] ComfyUI AlekPet Nodes ###[0m
+
+[92m[rgthree-comfy] Loaded 48 exciting nodes. 🎉[0m
+
+[33m[rgthree-comfy] ComfyUI's new Node 2.0 rendering may be incompatible with some rgthree-comfy nodes and features, breaking some rendering as well as losing the ability to access a node's properties (a vital part of many nodes). It also appears to run MUCH more slowly spiking CPU usage and causing jankiness and unresponsiveness, especially with large workflows. Personally I am not planning to use the new Nodes 2.0 and, unfortunately, am not able to invest the time to investigate and overhaul rgthree-comfy where needed. If you have issues when Nodes 2.0 is enabled, I'd urge you to switch it off as well and join me in hoping ComfyUI is not planning to deprecate the existing, stable canvas rendering all together.
+[0m
+FETCH ComfyRegistry Data: 10/187
+FETCH ComfyRegistry Data: 15/187
+FETCH ComfyRegistry Data: 20/187
+FETCH ComfyRegistry Data: 25/187

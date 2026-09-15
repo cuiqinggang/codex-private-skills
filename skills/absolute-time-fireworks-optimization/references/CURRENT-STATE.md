@@ -1,0 +1,30 @@
+# CURRENT STATE（当前状态）
+
+更新时间：2026-09-15
+
+```text
+INITIAL_BEST_MS=32.55975
+POST_MACRO_R1_MS=21.9215
+FINAL_P0_99_TIME_MS=12.6782
+TOTAL_GAIN_MS=19.88155
+TOTAL_IMPROVEMENT_PERCENT=61.0617403%
+P95_MS=16.724915
+VALID=40/40
+AA_95CI=[-0.247058,1.408138] ms
+AA_EQUIVALENCE_BOUND=2 ms
+REALITY_FLOOR_MS=10.4729
+PHYSICAL_GAP_MS=2.2053
+LARGEST_REMAINING_REMOVABLE_BLOCK_MS=<0.5
+MACRO_SCORE=99
+P0_99=YES
+P0_FREEZE=YES
+```
+
+99 表示在当前实际硬件、软件、固定任务和已知现实可行方法下达到稳定现实最优，不表示宇宙意义上的零开销。
+
+固定工程：
+`workspaces/absolute-time-fireworks-optimization/P0-EXTREME-MINIMAL-FASTPATH`
+
+正式案例：[FOUR-COLUMN-P0-99.md](FOUR-COLUMN-P0-99.md)
+
+重新打开条件：出现保留安全验证、可证明至少节省 1 ms 的成熟方案，或硬件、ComfyUI、runtime、固定任务合同发生实质变化。

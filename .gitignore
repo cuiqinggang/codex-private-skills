@@ -23,5 +23,5 @@ logs/
 *.bin
 *.onnx
 *.log
-!workspaces/absolute-time-fireworks-optimization/P0-EXTREME-MINIMAL-FASTPATH/service-logs/
-!workspaces/absolute-time-fireworks-optimization/P0-EXTREME-MINIMAL-FASTPATH/service-logs/*.log
+!workspaces/absolute-time-fireworks-optimization/**/service-logs/
+!workspaces/absolute-time-fireworks-optimization/**/service-logs/*.log

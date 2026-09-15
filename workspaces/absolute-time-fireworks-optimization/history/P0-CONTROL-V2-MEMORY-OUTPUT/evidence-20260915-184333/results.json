@@ -1,0 +1,358 @@
+{
+  "CURRENT_BEST_MS": 32.55975,
+  "MACRO_R1_P50_MS": 21.9215,
+  "MACRO_R1_P95_MS": 25.89514,
+  "ABSOLUTE_GAIN_MS": 10.63825,
+  "IMPROVEMENT_PERCENT": 32.67300885295495,
+  "VALID": "5/5",
+  "DISK_WRITE_IN_CRITICAL_PATH": "NO",
+  "KEEP_OR_ROLLBACK": "STRONG_KEEP",
+  "saveimage_reference": {
+    "signature": true,
+    "chunks": [
+      "IHDR",
+      "tEXt",
+      "IDAT",
+      "IEND"
+    ],
+    "crc": true,
+    "zlib_full_decode": true,
+    "width": 256,
+    "height": 256,
+    "sha256": "7649559e82f38b3cc818f7db137519a5bd97735bd6a1170e0c15fec9148c8f4a",
+    "decoded_pixel_sha256": "b7997c60612a8f60f104b19583162aaac7dde1f1ab2e8ef7c9b935550e2b0aa8"
+  },
+  "runs": [
+    {
+      "label": "warmup-01",
+      "prompt_id": "cc3691f0-f921-4877-9daa-64aecca8d175",
+      "t_ms": 638.3808,
+      "marks": {
+        "REQUEST_START": 352601425296900,
+        "QUEUE_ACK": 352601431951900,
+        "EXECUTION_START": 352601441165300,
+        "BYTES_READY": 352601467753200,
+        "VERIFY_START": 352601467799300,
+        "HISTORY_START": 352601495164800,
+        "VERIFY_DONE": 352601506907900,
+        "HISTORY_DONE": 352602063620100,
+        "RESULT_READY": 352602063677700
+      },
+      "validation": {
+        "signature": true,
+        "chunks": [
+          "IHDR",
+          "IDAT",
+          "IEND"
+        ],
+        "crc": true,
+        "zlib_full_decode": true,
+        "width": 256,
+        "height": 256,
+        "sha256": "0fa92f371e3eade02487b8a202b8222ab1d0958779e1d35b6730b1eb304b8690",
+        "decoded_pixel_sha256": "b7997c60612a8f60f104b19583162aaac7dde1f1ab2e8ef7c9b935550e2b0aa8"
+      },
+      "events": [
+        "execution_start",
+        "execution_cached",
+        "progress_state",
+        "executing",
+        "progress_state",
+        "progress_state",
+        "executing",
+        "progress_state",
+        "progress",
+        "progress_state",
+        "execution_success",
+        "executing"
+      ]
+    },
+    {
+      "label": "warmup-02",
+      "prompt_id": "46286e66-8875-4375-99b1-6da6dcf88b6e",
+      "t_ms": 51.6087,
+      "marks": {
+        "REQUEST_START": 352602065967400,
+        "QUEUE_ACK": 352602080218900,
+        "EXECUTION_START": 352602101073500,
+        "BYTES_READY": 352602102645700,
+        "VERIFY_START": 352602103051600,
+        "HISTORY_START": 352602103569600,
+        "HISTORY_DONE": 352602111933400,
+        "VERIFY_DONE": 352602117521300,
+        "RESULT_READY": 352602117576100
+      },
+      "validation": {
+        "signature": true,
+        "chunks": [
+          "IHDR",
+          "IDAT",
+          "IEND"
+        ],
+        "crc": true,
+        "zlib_full_decode": true,
+        "width": 256,
+        "height": 256,
+        "sha256": "0fa92f371e3eade02487b8a202b8222ab1d0958779e1d35b6730b1eb304b8690",
+        "decoded_pixel_sha256": "b7997c60612a8f60f104b19583162aaac7dde1f1ab2e8ef7c9b935550e2b0aa8"
+      },
+      "events": [
+        "execution_start",
+        "execution_cached",
+        "progress_state",
+        "executing",
+        "progress_state",
+        "progress",
+        "progress_state",
+        "execution_success",
+        "executing"
+      ]
+    },
+    {
+      "label": "warmup-03",
+      "prompt_id": "34384247-59aa-42f8-bee7-36ccbc7c4113",
+      "t_ms": 43.0642,
+      "marks": {
+        "REQUEST_START": 352602119774200,
+        "QUEUE_ACK": 352602144439200,
+        "EXECUTION_START": 352602151245500,
+        "BYTES_READY": 352602151300800,
+        "VERIFY_START": 352602151410600,
+        "HISTORY_START": 352602151464400,
+        "HISTORY_DONE": 352602152644100,
+        "VERIFY_DONE": 352602162806400,
+        "RESULT_READY": 352602162838400
+      },
+      "validation": {
+        "signature": true,
+        "chunks": [
+          "IHDR",
+          "IDAT",
+          "IEND"
+        ],
+        "crc": true,
+        "zlib_full_decode": true,
+        "width": 256,
+        "height": 256,
+        "sha256": "0fa92f371e3eade02487b8a202b8222ab1d0958779e1d35b6730b1eb304b8690",
+        "decoded_pixel_sha256": "b7997c60612a8f60f104b19583162aaac7dde1f1ab2e8ef7c9b935550e2b0aa8"
+      },
+      "events": [
+        "execution_start",
+        "execution_cached",
+        "progress_state",
+        "executing",
+        "progress_state",
+        "progress",
+        "progress_state",
+        "execution_success",
+        "executing"
+      ]
+    },
+    {
+      "label": "measured-01",
+      "prompt_id": "dec72eed-4f03-422c-a983-6972c9bf9bc5",
+      "t_ms": 23.6909,
+      "marks": {
+        "REQUEST_START": 352602165302200,
+        "QUEUE_ACK": 352602171131100,
+        "EXECUTION_START": 352602182427400,
+        "BYTES_READY": 352602183864600,
+        "VERIFY_START": 352602183908200,
+        "HISTORY_START": 352602183966300,
+        "HISTORY_DONE": 352602185591600,
+        "VERIFY_DONE": 352602188963300,
+        "RESULT_READY": 352602188993100
+      },
+      "validation": {
+        "signature": true,
+        "chunks": [
+          "IHDR",
+          "IDAT",
+          "IEND"
+        ],
+        "crc": true,
+        "zlib_full_decode": true,
+        "width": 256,
+        "height": 256,
+        "sha256": "0fa92f371e3eade02487b8a202b8222ab1d0958779e1d35b6730b1eb304b8690",
+        "decoded_pixel_sha256": "b7997c60612a8f60f104b19583162aaac7dde1f1ab2e8ef7c9b935550e2b0aa8"
+      },
+      "events": [
+        "execution_start",
+        "execution_cached",
+        "progress_state",
+        "executing",
+        "progress_state",
+        "progress",
+        "progress_state",
+        "execution_success",
+        "executing"
+      ]
+    },
+    {
+      "label": "measured-02",
+      "prompt_id": "87c9a688-0f8b-4c46-a8fa-f8fe37fc85b6",
+      "t_ms": 21.9215,
+      "marks": {
+        "REQUEST_START": 352602190355900,
+        "QUEUE_ACK": 352602196396900,
+        "EXECUTION_START": 352602205160400,
+        "BYTES_READY": 352602206529300,
+        "VERIFY_START": 352602206615100,
+        "HISTORY_START": 352602206666700,
+        "HISTORY_DONE": 352602210167700,
+        "VERIFY_DONE": 352602212249000,
+        "RESULT_READY": 352602212277400
+      },
+      "validation": {
+        "signature": true,
+        "chunks": [
+          "IHDR",
+          "IDAT",
+          "IEND"
+        ],
+        "crc": true,
+        "zlib_full_decode": true,
+        "width": 256,
+        "height": 256,
+        "sha256": "0fa92f371e3eade02487b8a202b8222ab1d0958779e1d35b6730b1eb304b8690",
+        "decoded_pixel_sha256": "b7997c60612a8f60f104b19583162aaac7dde1f1ab2e8ef7c9b935550e2b0aa8"
+      },
+      "events": [
+        "execution_start",
+        "execution_cached",
+        "progress_state",
+        "executing",
+        "progress_state",
+        "progress",
+        "progress_state",
+        "execution_success",
+        "executing"
+      ]
+    },
+    {
+      "label": "measured-03",
+      "prompt_id": "ef7d7360-9105-4a8a-9578-89ba2741ef33",
+      "t_ms": 19.4336,
+      "marks": {
+        "REQUEST_START": 352602215903400,
+        "QUEUE_ACK": 352602221496900,
+        "EXECUTION_START": 352602228107600,
+        "BYTES_READY": 352602229899500,
+        "VERIFY_START": 352602230275900,
+        "HISTORY_START": 352602230330700,
+        "HISTORY_DONE": 352602232769500,
+        "VERIFY_DONE": 352602235306700,
+        "RESULT_READY": 352602235337000
+      },
+      "validation": {
+        "signature": true,
+        "chunks": [
+          "IHDR",
+          "IDAT",
+          "IEND"
+        ],
+        "crc": true,
+        "zlib_full_decode": true,
+        "width": 256,
+        "height": 256,
+        "sha256": "0fa92f371e3eade02487b8a202b8222ab1d0958779e1d35b6730b1eb304b8690",
+        "decoded_pixel_sha256": "b7997c60612a8f60f104b19583162aaac7dde1f1ab2e8ef7c9b935550e2b0aa8"
+      },
+      "events": [
+        "execution_start",
+        "execution_cached",
+        "progress_state",
+        "executing",
+        "progress_state",
+        "progress",
+        "progress_state",
+        "execution_success",
+        "executing"
+      ]
+    },
+    {
+      "label": "measured-04",
+      "prompt_id": "355bd68a-c6b0-4ad1-a8ad-bc15e8b976cf",
+      "t_ms": 26.4462,
+      "marks": {
+        "REQUEST_START": 352602238458700,
+        "QUEUE_ACK": 352602244023200,
+        "EXECUTION_START": 352602251124400,
+        "BYTES_READY": 352602254103900,
+        "VERIFY_START": 352602254203700,
+        "HISTORY_START": 352602254258600,
+        "HISTORY_DONE": 352602258156700,
+        "VERIFY_DONE": 352602264875500,
+        "RESULT_READY": 352602264904900
+      },
+      "validation": {
+        "signature": true,
+        "chunks": [
+          "IHDR",
+          "IDAT",
+          "IEND"
+        ],
+        "crc": true,
+        "zlib_full_decode": true,
+        "width": 256,
+        "height": 256,
+        "sha256": "0fa92f371e3eade02487b8a202b8222ab1d0958779e1d35b6730b1eb304b8690",
+        "decoded_pixel_sha256": "b7997c60612a8f60f104b19583162aaac7dde1f1ab2e8ef7c9b935550e2b0aa8"
+      },
+      "events": [
+        "execution_start",
+        "execution_cached",
+        "progress_state",
+        "executing",
+        "progress_state",
+        "progress",
+        "progress_state",
+        "execution_success",
+        "executing"
+      ]
+    },
+    {
+      "label": "measured-05",
+      "prompt_id": "02b622cf-d915-4d8e-8cca-1505d3eda862",
+      "t_ms": 20.3692,
+      "marks": {
+        "REQUEST_START": 352602266323400,
+        "QUEUE_ACK": 352602272135000,
+        "EXECUTION_START": 352602277896300,
+        "BYTES_READY": 352602279371100,
+        "VERIFY_START": 352602279440300,
+        "HISTORY_START": 352602279496900,
+        "HISTORY_DONE": 352602283259400,
+        "VERIFY_DONE": 352602286126400,
+        "RESULT_READY": 352602286692600
+      },
+      "validation": {
+        "signature": true,
+        "chunks": [
+          "IHDR",
+          "IDAT",
+          "IEND"
+        ],
+        "crc": true,
+        "zlib_full_decode": true,
+        "width": 256,
+        "height": 256,
+        "sha256": "0fa92f371e3eade02487b8a202b8222ab1d0958779e1d35b6730b1eb304b8690",
+        "decoded_pixel_sha256": "b7997c60612a8f60f104b19583162aaac7dde1f1ab2e8ef7c9b935550e2b0aa8"
+      },
+      "events": [
+        "execution_start",
+        "execution_cached",
+        "progress_state",
+        "executing",
+        "progress_state",
+        "progress",
+        "progress_state",
+        "execution_success",
+        "executing"
+      ]
+    }
+  ]
+}
