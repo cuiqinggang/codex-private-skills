@@ -19,6 +19,9 @@ PROGRESS_LEDGER_SYNC=PASS
 SHARED_REPOSITORY_RULE_SYNC=PASS
 SKILL_VALIDATION=PASS
 HTML_VALIDATION=PASS
+KNOWLEDGE_BRAIN_HOT_SYNC=PASS
+KNOWLEDGE_BRAIN_HOT_SYNC_MISSING=0
+KNOWLEDGE_BRAIN_HEALTH=PASS
 ```
 
 关键文件 SHA-256：
@@ -29,4 +32,4 @@ FINAL_ADAPTER_SHA256=1221bd40ffc8c5f87fab72d6550b5e8a3ea08ff2bd0a14cf76f6b1603c5
 FINAL_RESULTS_SHA256=662ffb81d4160b392e8f1b1f0dd1efa16c023c50fb3a3c914d4e422c4d765bc8
 ```
 
-本文件只记录已经完成的远端内容校验；最终记账提交 push 后仍须再次 fetch，确认最终 `HEAD == origin/main` 且 worktree clean。
+后续收口工具经验以 `8b14d5d2a4f892cee314e722e1ab5f712dcb96d9` 同步。最终记账提交 push 后仍须再次 fetch，确认最终 `HEAD == origin/main` 且 worktree clean。
