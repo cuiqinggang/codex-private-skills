@@ -15,11 +15,25 @@
 ```text
 QUICK_NEW_SESSION_TEST >= 10/10 PASS
 ZERO_SESSION_FIRST_OPEN >= 30/30 PASS
+RAPID_NAVIGATION_TEST >= 20/20 PASS
 RAPID_NAVIGATION_ERROR_COUNT=0
 FIRST_MESSAGE_TRANSITION=PASS
 ZERO_SESSION_RESTART >= 10/10 PASS
 OLD_SESSION_REGRESSION >= 5/5 PASS
 ```
+
+## 空会话 Skill 接入验收
+
+```text
+CODEX_SOURCE=EXISTS
+AGENTS_ENTRY=JUNCTION_TO_CODEX_SOURCE
+REASONIX_DOCTOR_CAPABILITIES=PASS
+CATALOG_WINNER=~/.agents/skills/reasonix-empty-session-race-repair/SKILL.md
+INSTALLED_VERSION=1.0.0
+CATALOG_VISIBLE=YES
+```
+
+不得为 catalog 可见性复制第二份正文；不得把只扫描项目 `<workspace>/.reasonix/skills` 的静态脚本冒充全局 external-skill resolver。
 
 ## 启动 readiness 故障验收
 

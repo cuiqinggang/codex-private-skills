@@ -83,7 +83,41 @@ loadSessionDataForTab
 
 不得把 zero-message session 本身当成数据损坏。
 
-## 3. 固定证据目录建议
+## 3. React #185
+
+再次出现 `Minified React error #185` / `Maximum update depth exceeded` 时，不要先重启。冻结操作并第一时间保存：
+
+- 截图与完整 React stack；
+- active version、active bundle 与 SHA256；
+- shell、renderer、crash、desktop-shell logs；
+- 当前会话类型；
+- width/height/x/y/maximised、显示器与 DPI 信息；
+- 最近 60 秒的 resize、scroll、sidebar、maximize/restore、会话打开和流式更新。
+
+优先核查：
+
+```text
+ResizeObserver
+-> TranscriptProjectionView
+-> onGeometryWillChange / onGeometryChange
+-> beginAnchorRestore / settleGeometry
+-> revision / forceRender
+-> render/layout
+-> same projection geometry change
+```
+
+记录 `REVISION_BURST`、`BEGIN_ANCHOR_RESTORE_REENTRANT`、`FORCE_RENDER_REENTRANT`、`GEOMETRY_OSCILLATION` 为 YES/NO/UNKNOWN。只做一轮有界复现；不能复现则保持成功态，不打补丁。
+
+同一 M build 若真实复现且 stack 与运行时证据闭合上述反馈链：
+
+```text
+REOPEN_CASE=YES
+PATCH_REVIEW_REQUIRED=YES
+```
+
+否则保持 `ROOT_CAUSE_CONFIRMED=NO`。
+
+## 4. 固定证据目录建议
 
 ```text
 C:\AI\Reasonix-<Issue>-<Date>\
@@ -106,7 +140,7 @@ C:\AI\Reasonix-<Issue>-<Date>\
 - 冷启动时间线；
 - 验收结果。
 
-## 4. 永久禁止默认绕过
+## 5. 永久禁止默认绕过
 
 没有直接证据时不要：
 

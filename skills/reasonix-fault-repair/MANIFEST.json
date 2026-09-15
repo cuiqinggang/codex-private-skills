@@ -1,6 +1,6 @@
 {
   "name": "reasonix-fault-repair",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "chinese_name": "Reasonix 故障诊断与成熟修复",
   "entrypoint": "SKILL.md",
   "files": [
@@ -9,13 +9,29 @@
     "DECISION-TREE.md",
     "RECURRENCE-RUNBOOK.md",
     "ACCEPTANCE.md",
+    "ACCEPTANCE.html",
+    "CHANGELOG.md",
+    "USAGE-LOG.md",
+    "AGENTS-PATCH-DRAFT.md",
     "VERSION",
+    "materials/2026-09-16-empty-session-race-closure.md",
     "cases/empty-session-race.md",
-    "cases/startup-readiness-timeout.md"
+    "cases/startup-readiness-timeout.md",
+    "cases/react185-transcript-geometry-loop.md"
   ],
   "compatibility": {
     "legacy_skill": "skills/reasonix-empty-session-race-repair",
-    "legacy_skill_preserved": true
+    "legacy_skill_version": "1.0.0",
+    "legacy_skill_preserved": true,
+    "git_history_tag": "reasonix-fault-repair-v1.0.0"
+  },
+  "catalog_integration": {
+    "source": "C:/Users/A/.codex/skills/reasonix-empty-session-race-repair",
+    "entry": "C:/Users/A/.agents/skills/reasonix-empty-session-race-repair",
+    "link_type": "Junction",
+    "resolver": "reasonix-cli.exe doctor capabilities",
+    "winner": "~/.agents/skills/reasonix-empty-session-race-repair/SKILL.md",
+    "visible": true
   },
   "validated_cases": [
     {
@@ -30,6 +46,13 @@
       "classification": "TRANSIENT_COLD_START_ANOMALY",
       "patch_required": false,
       "regression": "2/2_PASS"
+    },
+    {
+      "id": "react185-transcript-geometry-loop",
+      "status": "HISTORICAL_INTERMITTENT_CURRENT_HEALTHY",
+      "root_cause_confirmed": false,
+      "patch_required": false,
+      "regression": "A-I_9_OF_9_PASS"
     }
   ]
 }

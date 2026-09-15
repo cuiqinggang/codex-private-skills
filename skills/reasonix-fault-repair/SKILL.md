@@ -1,20 +1,25 @@
 ---
 name: reasonix-fault-repair
-version: 1.0.0
-chinese_name: Reasonix 故障诊断与成熟修复
-summary: 统一收录 Reasonix 已验证故障案例、诊断路径、最小修复策略、验收门与复发处置。当前包含空会话 hydration/ready 竞态与启动 startup_timeout/readiness 竞态两类成熟案例。
-tags:
-  - reasonix
-  - troubleshooting
-  - startup-timeout
-  - readiness-race
-  - empty-session
-  - hydration-race
-  - electron
-  - renderer
-  - codex
-  - gpt-review
-  - protective-repair
+description: 统一诊断和处置 Reasonix 空会话竞态、startup_timeout/readiness 异常及历史间歇 React #185 transcript geometry 候选。出现加载会话历史失败、启动 30 秒超时、Maximum update depth、dispatchSetState 或 ResizeObserver stack 时使用；先确认构建身份、保存证据并有界复现，禁止对健康且未确认根因的构建打补丁。
+metadata:
+  version: 1.1.0
+  chinese_name: Reasonix 故障诊断与成熟修复
+  summary: 收录已验证案例、历史候选、诊断路径、最小修复策略、验收门与复发处置。
+  tags:
+    - reasonix
+    - troubleshooting
+    - startup-timeout
+    - readiness-race
+    - empty-session
+    - hydration-race
+    - electron
+    - renderer
+    - react-185
+    - resize-observer
+    - transcript-geometry
+    - playwright-native-ai-browser
+    - protective-deployment
+    - skill-catalog
 ---
 
 # Reasonix 故障诊断与成熟修复
@@ -31,8 +36,10 @@ tags:
 4. 只修真正根因，避免清缓存、重装、删库等扩大修改面操作。
 5. GPT 负责根因判断和补丁范围；Codex 负责本机检索、修改、测试、备份和部署。
 6. 所有写入动作前备份并回读；成功态恢复后，不为“理论完美”扰动当前可用系统。
+7. 浏览器协作固定复用 `playwright-native-ai-browser` existing owner；不得启动第二 owner、另建 profile、切 isolated mode 或绕过正式入口。
+8. 同版本安装包重装不能替换已经确认缺陷的同版本 bundle；根因已确认且补丁已审核时，使用可回滚、单文件、哈希校验的 hotfix。
 
-## 2. 当前已验证成熟案例
+## 2. 当前成熟案例与历史观察
 
 ### Case A：新建空会话偶发“加载会话历史失败”
 
@@ -54,6 +61,10 @@ UI 映射为“历史加载失败”
 
 最终修复：前端 hydration 在 controller ready 前禁止读取会话数据；等待 `waitForTabReady` 后再加载。
 
+完整执行链：GPT 负责证据复核、根因与补丁范围决策；Codex 负责检索、实现、测试、备份、部署与回传。浏览器桥复用既有 `playwright-native-ai-browser` owner。主机安全策略阻止 Codex 写 AppData 后，不绕过策略，由用户在普通 PowerShell 7 中执行已审核的单文件保护性替换并回读哈希。
+
+为什么选择 hotfix：目标 Reasonix v1.38.7 安装器与当前缺陷 bundle 同版本，同版本重装只会恢复原始缺陷文件；已确认根因位于前端 hydration 顺序，故采用最小前端 hotfix，而不是清缓存、删库或同版本重装。
+
 已验证热修复 SHA-256：
 
 ```text
@@ -61,6 +72,18 @@ UI 映射为“历史加载失败”
 ```
 
 状态：`PASS / RUNTIME_ACCEPTANCE_PASS`
+
+运行验收：`10/10` 快速新建、`30/30` 零消息首次打开、`20/20` 快速导航且错误数为 0、`10/10` 重启后零消息会话、`5/5` 旧会话回归；首条消息转换 PASS。
+
+技能接入：
+
+```text
+C:\Users\A\.codex\skills\reasonix-empty-session-race-repair
+  -> C:\Users\A\.agents\skills\reasonix-empty-session-race-repair (Junction)
+  -> reasonix-cli.exe doctor capabilities
+  -> winner=~/.agents/skills/reasonix-empty-session-race-repair/SKILL.md
+  -> catalog visible / VERSION=1.0.0
+```
 
 ### Case B：Reasonix 启动时报 startup_timeout / startup_failed
 
@@ -119,6 +142,23 @@ LATE_RESPONSE_VALID=YES
 
 状态：`PASS / HEALTHY / NO_PATCH_REQUIRED`
 
+### Case C：React #185 / transcript geometry feedback 候选
+
+入口：`cases/react185-transcript-geometry-loop.md`
+
+适用于 `Minified React error #185` / `Maximum update depth exceeded`，特别是 stack 含 `dispatchSetState` 与 `ResizeObserver.<anonymous>`。
+
+固定处理：
+
+1. 先确认 active version 与 exact renderer bundle。
+2. 重启前保存完整 stack、renderer/shell logs、会话与窗口状态。
+3. 不因大量 `IsMainWindowMaximised` breadcrumbs 直接判定 maximize loop；记录案例中的 setter 有同值保护。
+4. 将 `TranscriptProjectionView`、`onGeometryWillChange`、`beginAnchorRestore`、`settleGeometry`、`forceRender`、`revision` 作为静态候选链核查。
+5. 只执行一轮有界复现；不能复现时保持成功态，不打补丁。
+6. 只有 active build 真实复现且 ResizeObserver → revision → render/layout → same target resize 闭环成立，才允许补丁评审。
+
+已记录状态：`HISTORICAL_INTERMITTENT / CURRENT_HEALTHY / REACT185_NOT_REPRODUCED / ROOT_CAUSE_NOT_CONFIRMED / NO_CODE_CHANGE`
+
 ## 3. 快速路由
 
 出现以下现象时：
@@ -137,6 +177,10 @@ Reasonix did not become ready within 30 seconds
 ```
 
 优先匹配 Case B。
+
+### 出现 React #185 / Maximum update depth，stack 指向 ResizeObserver
+
+优先匹配 Case C。先确认 active bundle 并保存原始 stack；若一轮受控复现未出现故障，保留健康构建，不为静态候选打补丁。
 
 第一步不是重装，而是确认：
 
@@ -245,3 +289,14 @@ backend alive + backend ready + renderer handshake 有进展
 - `RECURRENCE-RUNBOOK.md`
 - `cases/empty-session-race.md`
 - `cases/startup-readiness-timeout.md`
+- `cases/react185-transcript-geometry-loop.md`
+- `CHANGELOG.md`
+- `USAGE-LOG.md`
+- `ACCEPTANCE.html`
+
+## 8. 版本与兼容
+
+- 统一入口版本：`reasonix-fault-repair v1.1.0`。
+- 原独立案例 `reasonix-empty-session-race-repair v1.0.0` 保留，不删除、不覆盖，继续作为历史兼容入口。
+- GitHub 私库用 `reasonix-fault-repair-v1.0.0` 标签保留升级前快照；v1.1.0 只发布本技能包及其验收资产。
+- 下次出现空会话竞态，先读 `cases/empty-session-race.md`，不得重新从“0-byte JSONL 损坏”开始。
