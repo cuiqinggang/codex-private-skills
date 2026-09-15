@@ -168,3 +168,19 @@ FAST_PATH：只要 exec 返回 session id，必须持续 `write_stdin` 到 exit 
 TRIGGER：clone 只输出 `Cloning into...`；exec 返回 session id；工作树只有 `.git`。
 
 EVIDENCE：共同仓库基点 `5d6012dfcd959d64579aa15e8e71f4227c33454e`；完整 checkout 为 8286 files。
+
+## FI-12 PowerShell -File 的 string[] 参数被合并
+
+PROBLEM：向 `kb_hot_sync.ps1 -ExplicitFiles` 一次传两个引号路径，脚本收到一个带逗号和引号的长字符串，产生 `MISSING=1`。
+
+ROOT_CAUSE：外层 Windows PowerShell 到 `pwsh.exe -File` 的原生参数边界没有按预期绑定为 PowerShell `string[]`。
+
+TIME_COST：一次部分有效但显式路径不完整的 hot sync 和一次核对。
+
+WRONG_PATH：把 `-ExplicitFiles 'a','b'` 直接作为原生 `-File` 参数，并因总结果 PASS 忽略 `MISSING`。
+
+FAST_PATH：在 `-File` 模式下每次只传一个明确文件，分别运行；同时要求 `RESULT=PASS` 且 `MISSING=0`。
+
+TRIGGER：日志出现把两个绝对路径拼成一个 `MISSING=` 路径；`indexed>0` 但 `missing>0`。
+
+EVIDENCE：Knowledge Brain hot sync 日志 `knowledge-brain-hot-sync-20260915-204851-469-23828.log` 与 `knowledge-brain-hot-sync-20260915-204853-240-23612.log`。
