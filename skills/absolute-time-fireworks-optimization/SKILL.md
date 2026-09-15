@@ -2,7 +2,7 @@
 name: absolute-time-fireworks-optimization
 description: Minimize real end-to-end time after defining what task completion means, using the First-Principles Four-Column Method, structure-emergent planning, de-armoring, and keep-or-rollback convergence. Use for engineering, workflow, learning, research, design, decision, or personal tasks where time is the primary metric after an acceptable completion condition is fixed.
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
   short-description: 第一性原理四列法通用99收敛引擎
 ---
 
@@ -53,6 +53,72 @@ watchdog、monitor、polling、重复执行、重复转换、等待链、检查�
 - `DEDICATED BROWSER BRIDGE（专用浏览器桥梁）= playwright-native-ai-browser`：需要网页通信时恢复推理会话并传递任务与裁决。
 
 高价值决策点必须返回推理大脑；禁止一次生成几十步后让执行器长时间盲跑。桥梁只引用成熟能力，不复制第二套 Skill；具体入口与故障路由见 [EXECUTION BRIDGE（执行桥梁）](references/EXECUTION-BRIDGE.md)。
+
+## SHARED FACT SOURCE CLOSURE GATE
+
+```text
+SHARED_FACT_SOURCE=cuiqinggang/codex-private-skills
+SHARED_REPO_LOCAL=C:\Users\A\Documents\Codex\codex-private-skills
+SHARED_REPO_SYNC_REQUIRED=YES
+```
+
+共同仓库不是可选 backup，而是 GPT、Codex 与其他执行智能体之间持久的 `SHARED_FACT_SOURCE（共同事实源）`。如果新的关键工程事实只存在于某台本机、终端输出或聊天中，分布式执行闭环尚未完成。
+
+凡使用本 Skill 且产生后续需要复用的新工程事实，包括 CURRENT、PRE-FLIGHT、测试或 benchmark、阶段报告、关键 JSON/参数/版本/环境状态、KEEP / ROLLBACK、失败与修复结论、成熟路径、99 / FREEZE、新 CASE / FAILURE、关键 SHA 或下一阶段输入，必须完成：
+
+```text
+LOCAL RESULT
+-> FORMAL REPORT / STRUCTURED FACT
+-> SHARED REPOSITORY
+-> COMMIT
+-> PUSH
+-> REMOTE VERIFY
+```
+
+默认完成门禁：
+
+```text
+LOCAL_TASK_RESULT=PASS
+AND
+SHARED_REPO_SYNC=PASS
+=> STAGE_COMPLETE=YES
+```
+
+在此门禁通过前，不得声明 `99=YES`、`FREEZE=YES` 或 `FINAL=PASS`。若本机工作成功，但因 Git 冲突、陌生 dirty worktree、权限、认证、网络、remote push、安全策略或仓库异常而无法安全同步，必须报告：
+
+```text
+LOCAL_RESULT=PASS
+SHARED_REPO_SYNC=BLOCKED
+FINAL=PARTIAL
+```
+
+或按任务影响报告 `FINAL=BLOCKED`；禁止把“本机 PASS、共同仓库无正式成果”报告为 FINAL PASS。
+
+共同仓库保存正式阶段报告、关键结构化 JSON、关键参数与版本/CURRENT、测试摘要、KEEP / ROLLBACK、失败结论、关键证据摘要、SHA、最终状态与下一阶段输入。完整原始证据和大型资产留在本机；禁止提交大模型、大型视频、缓存、整个 Python 环境、整个 ComfyUI、大型临时日志或重复二进制文件。
+
+远端验证不能止于 `git commit` / `git push`。必须记录并确认：
+
+```text
+LOCAL_HEAD == ORIGIN_HEAD
+WORKTREE_CLEAN=YES
+SHARED_REPO_SYNC=PASS
+COMMIT_SHA=<sha>
+REMOTE_VERIFY=PASS
+```
+
+自动生成命令的强制规则：
+
+```text
+IF TASK_USES_THIS_SKILL
+AND TASK_PRODUCES_REUSABLE_FACTS == YES
+THEN COMMAND_MUST_INCLUDE_SHARED_REPO_CLOSURE = YES
+```
+
+因此，只要依据本 Skill 为 Codex / Reasonix 生成的任务预计会产生新工程事实或阶段成果，命令包必须自动包含正式成果写入共同仓库、精确 stage、commit、push 和 remote verify，无需用户再次提醒。
+
+例外仅限只读回答、纯解释、未产生新事实的讨论、尚未执行的方案草拟、读取已有仓库信息，或没有改变 CURRENT 的查询；这些任务可以 `SHARED_REPO_SYNC_REQUIRED=NO`，不得制造无意义 commit。一旦产生新的本机事实、运行结果、测试证据、阶段决定、版本状态或优化结果，门禁立即恢复为 YES。
+
+本规则是 2.0.1 PATCH：方法论不变，只加强执行闭环合同。不得借此修改 CASE-001 冻结资产、P0 benchmark/runner/adapter/certification、第一性原理四列、De-Armoring 或既有 H3-P0 双 99 定义。
 
 ## 最小读取
 

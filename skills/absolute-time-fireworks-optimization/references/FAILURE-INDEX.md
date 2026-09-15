@@ -29,6 +29,24 @@ TRIGGER：业务入口 `Test-Path=False`，但权威项目与 Skill 均存在。
 
 EVIDENCE：2026-09-15 对权威项目执行定向 `rg --files` 的只读结果。
 
+## FI-14 Shared Fact Source Closure Omitted
+
+PROBLEM：使用 `absolute-time-fireworks-optimization` 完成本机阶段工作，但最终命令或执行结果没有要求把正式成果写入 `cuiqinggang/codex-private-skills`。
+
+ROOT_CAUSE：GitHub 已定义为 `SHARED_FACT_SOURCE`，但 Skill 没有把 repository publication 设为 FINAL / PASS / 99 / FREEZE 的硬门禁。
+
+TIME_COST：共同事实缺失使 ChatGPT、Codex 或其他执行智能体下一轮无法从统一事实层继续，必须依赖聊天或本机临时状态补查。
+
+WRONG_PATH：把 commit / push 当可选备份；本机成功后直接宣布 FINAL PASS；只要求 push 而不验证远端。
+
+FAST_PATH：启用 `SHARED_REPO_SYNC_REQUIRED`；写正式报告或结构化事实，精确 stage、commit、push，并验证 `LOCAL_HEAD == ORIGIN_HEAD` 与干净 worktree。
+
+TRIGGER：任务使用本 Skill 并产生可复用新事实，但命令包或结果中缺少 shared repository、commit、push 或 remote verify 任一项。
+
+EVIDENCE：真实 H3-P0 执行命令生成曾遗漏 GitHub 阶段报告同步要求；2.0.1 增加 completion gate。
+
+PREVENTION：任何产生可复用新事实的任务，生成 Codex / Reasonix 执行命令时必须自动包含共同仓库收口；只读且不改变 CURRENT 的请求除外。
+
 ## FI-01 本机服务未运行
 
 PROBLEM：首个 WebSocket 连接被 127.0.0.1:8188 拒绝。

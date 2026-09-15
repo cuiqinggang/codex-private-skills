@@ -11,12 +11,17 @@
 9. 把结果设为 `NEW CURRENT（新的当前状态）`。
 10. 重新做四列分析。
 11. 需要节点才自然产生节点。
-12. 没有明显现实大块时，`99=YES / FREEZE=YES`。
+12. 没有明显现实大块时，准备 `99 / FREEZE`。
+13. 写入正式阶段报告与必要结构化事实。
+14. 将正式事实同步到 `cuiqinggang/codex-private-skills`，精确提交、推送，并验证远端。
+15. 只有 `SHARED_REPO_SYNC=PASS`、`LOCAL_HEAD == ORIGIN_HEAD` 且 `WORKTREE_CLEAN=YES` 时，`99=YES / FREEZE=YES` 才正式生效。
 
 结构由四列分析自然产生：能整体完成就不建节点；只有真实因果依赖才产生节点。不要预设 PLAN、STAGE、NODE 或 SYSTEM 层级。
 
-自动化模式只附加一个短循环：
+产生可复用新事实时，自动化模式附加闭环：
 
-`GPT 分析 → Codex 执行 → GitHub 记录真实状态 → GPT 重新读取 → 下一轮`
+`GPT 分析 → Codex 执行 → 本机证据 → 正式结果包 → GitHub 共同事实源 → 远端验证 → GPT 重新读取 → 下一轮`
+
+只读回答、纯解释、未执行方案草拟、读取已有事实或不改变 CURRENT 的查询不强制创建 Git commit。
 
 需要网页通信时，按 [EXECUTION BRIDGE（执行桥梁）](EXECUTION-BRIDGE.md) 调用 `playwright-native-ai-browser`。每轮只交付一个明确高价值动作。
