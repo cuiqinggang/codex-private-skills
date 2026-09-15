@@ -7,6 +7,7 @@
 | 2026-09-15 | — | 32.55975 ms | 冻结初始完整任务基线 | 为后续四列分析固定 CURRENT | — | `skills/absolute-time-fireworks-optimization/references/FOUR-COLUMN-P0-99.md` | `282a347818aa331d657c25ed00e6881dfffbbbc9` | pre-skill |
 | 2026-09-15 | 32.55975 ms | 21.9215 ms | 删除 file-backed output / publish / reopen，改 memory/WebSocket | 磁盘结果链不是最终任务物理必需 | 10.63825 ms / 32.6730% | `skills/absolute-time-fireworks-optimization/references/FOUR-COLUMN-P0-99.md` | `282a347818aa331d657c25ed00e6881dfffbbbc9` | 1.0.0 |
 | 2026-09-15 | 21.9215 ms | 12.6782 ms | 脱 history/double decode；固定 tensor 缓存 PNG；最终 40-run 认证 | 删除非必要同步与重复编码后再认证 | 9.2433 ms / 42.165454% | `workspaces/absolute-time-fireworks-optimization/P0-EXTREME-MINIMAL-FASTPATH/certification-20260915-193531/results.json` | `282a347818aa331d657c25ed00e6881dfffbbbc9` | 1.0.0 |
+| 2026-09-15 | 12.6782 ms | 12.6782 ms | NEW_99_FREEZE：正式四列案例、完整工程、原始认证、失败索引和共享制度同步共同仓库 | 让 GPT、Codex 与其他智能体只靠共同仓库即可复刻和续作 | 0 ms；纯冻结收口 | `skills/absolute-time-fireworks-optimization/references/REMOTE-VALIDATION.md` | `c2adab036195dc011449dcf32c64769cde74d470` | 1.1.0 |
 
 ## 追加规则
 

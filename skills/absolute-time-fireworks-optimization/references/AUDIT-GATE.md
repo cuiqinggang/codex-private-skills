@@ -20,6 +20,6 @@
 | 真实提高最终指标 | YES | 32.55975 → 12.6782 ms；原始认证 JSON |
 | 未重引旧坑 | YES | 关键路径代码未修改；Measurement 只用于最终认证 |
 | 流程更短 | YES | 默认只读 CURRENT STATE + FAST PATH |
-| 完整同步共同仓库 | 待最终远端校验 | MANIFEST 与远端 `main` |
+| 完整同步共同仓库 | YES | `origin/main=c2adab036195dc011449dcf32c64769cde74d470`；十项远端对象校验 PASS |
 | 下一次可直接复刻 | YES | 完整 runner、节点、配置、fixture、workflow 与复现说明 |
 | 中文可完整理解 | YES | 关键英文首次出现均附中文 |
