@@ -39,7 +39,7 @@
 | 分布式闭环是否保持方法极简 | YES | ChatGPT_Web、Codex、GitHub 与浏览器桥梁被定义为执行基础设施，不增加方法层级 |
 | 浏览器桥梁是否复用成熟能力 | YES | 只引用 `playwright-native-ai-browser` 与真实入口，不复制 Skill |
 | P0 是否完整保留 | YES | CASE-001 与冻结工程、认证、MANIFEST、SHA 均保留；未运行 benchmark |
-| 是否完整同步共同仓库 | PENDING | 提交并推送后由最终远端校验关闭 |
+| 是否完整同步共同仓库 | YES | v2.0.0 内容提交 `c4df94b` 已推送；最终收口提交后再次 fetch 核验 |
 | 用户是否可用中文理解 | YES | 首次关键英文均附中文 |
 
-远端同步完成前，v2.0.0 不宣称完成；最终报告以 `HEAD == origin/main` 和干净工作树关闭 PENDING。
+最终报告仍以 `HEAD == origin/main` 为远端闭环门禁；未获授权的冻结文件草稿不得进入提交。
