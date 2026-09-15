@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>第一性原理四列法极限时间宏观迭代验收</title>
+  <style>
+    body{margin:0;background:#07111f;color:#eef5ff;font:16px/1.6 system-ui,"Microsoft YaHei",sans-serif}
+    main{max-width:1040px;margin:auto;padding:40px 22px}h1{font-size:40px;margin:8px 0}.tag{display:inline-block;background:#176b3a;padding:6px 12px;border-radius:999px;font-weight:800}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:25px 0}.card,section{background:#101d31;border:1px solid #2a4164;border-radius:14px;padding:18px}
+    .big{display:block;color:#55e6a5;font-size:24px;font-weight:900}section{margin:14px 0}a{color:#72b7ff}code{color:#b9ddff}
+  </style>
+</head>
+<body><main>
+  <span class="tag">PASS · P0_99 · FROZEN · v1.1.0</span>
+  <h1>第一性原理四列法极限时间宏观迭代</h1>
+  <p>烟花项目验证成功路径。正式方法依赖第一性原理四列法 V4.0；没有创造“撕裂法”或另一套四列法。</p>
+  <div class="grid">
+    <div class="card">最初冻结基线<span class="big">32.55975 ms</span></div>
+    <div class="card">第一轮宏观迭代<span class="big">21.9215 ms</span></div>
+    <div class="card">P0 当前现实 99<span class="big">12.6782 ms</span></div>
+    <div class="card">总提升<span class="big">61.0617403%</span></div>
+  </div>
+  <section><h2>最终认证</h2><p>40/40 valid；P95 16.724915 ms；A/A 95% CI [-0.247058, 1.408138] ms，位于 ±2 ms 等价界限；计时内写盘 NO；REALITY FLOOR（当前现实下界）10.4729 ms。</p></section>
+  <section><h2>三层入口</h2><p><a href="references/CURRENT-STATE.md">CURRENT STATE（当前状态）</a> · <a href="references/FAST-PATH.md">FAST PATH（成熟最短路径）</a> · <a href="references/FAILURE-INDEX.md">FAILURE INDEX（失败经验索引）</a> · <a href="references/FOUR-COLUMN-P0-99.md">四列完整案例</a> · <a href="references/PROGRESS-LEDGER.md">共同进度账</a></p></section>
+  <section><h2>共同事实源</h2><p><code>SHARED_WORKSPACE_REPOSITORY=cuiqinggang/codex-private-skills</code></p><p>完整冻结工程位于 <code>workspaces/absolute-time-fireworks-optimization/P0-EXTREME-MINIMAL-FASTPATH</code>。</p></section>
+  <section><h2>防落灰</h2><p>正常只读 SKILL、CURRENT STATE、FAST PATH；异常才读 FAILURE INDEX；明显更快候选形成后才调用 performance-benchmark-convergence 做 CERTIFICATION（最终认证）。</p></section>
+</main></body>
+</html>

@@ -4,6 +4,31 @@
 
 固定字段：`PROBLEM（问题）`、`ROOT_CAUSE（根因）`、`TIME_COST（时间成本）`、`WRONG_PATH（错误路线）`、`FAST_PATH（以后直接路线）`、`TRIGGER（触发条件）`、`EVIDENCE（证据）`。下文保留短英文键，含义以本行双语定义为准。
 
+## v2 通用异常入口
+
+- TRIGGER：方案预先规定必须有固定阶段、固定节点、PLAN/STAGE/SYSTEM 三级结构或独立 SYSTEM-99。FAST_PATH：退回四列，让结构从任务因果依赖中产生。
+- TRIGGER：有人以“原来就有”“通常都需要”为理由保留检查、日志、监控、wrapper 或管理动作。FAST_PATH：要求 `WHY_REQUIRED`；无法证明会破坏 `TASK_COMPLETED` 时进入重甲候选。
+- TRIGGER：watchdog、monitor、polling 或同步 evidence 进入完成时间。FAST_PATH：移到关键路径外或 RESULT_READY 后；只有任务完成定义确实需要时才保留。
+- TRIGGER：正常使用要求先读全部案例、全部失败索引或运行复杂认证。FAST_PATH：只读 SKILL + FAST PATH；案例、失败、审计均按需进入。
+
+以下 FI-01 至 FI-12 是 v1.x P0 实际踩坑，原样保留。
+
+## FI-13 浏览器业务入口少了一层 skill 路径
+
+PROBLEM：预期的 `C:\AI\Playwright-Native-AI-Browser\scripts\chatgpt-business-entry.js` 不存在。
+
+ROOT_CAUSE：真实业务入口位于权威 Skill 自带的 `scripts` 目录，不在项目根 `scripts`。
+
+TIME_COST：一次失败路径核验和一次定向文件查找。
+
+WRONG_PATH：按记忆或旧命令直接调用项目根下的同名脚本；复制第二份入口来掩盖路径错误。
+
+FAST_PATH：直接使用 `C:\AI\Playwright-Native-AI-Browser\skills\playwright-native-ai-browser\scripts\chatgpt-business-entry.js`；出现浏览器故障时读取权威 `SKILL.md`。
+
+TRIGGER：业务入口 `Test-Path=False`，但权威项目与 Skill 均存在。
+
+EVIDENCE：2026-09-15 对权威项目执行定向 `rg --files` 的只读结果。
+
 ## FI-01 本机服务未运行
 
 PROBLEM：首个 WebSocket 连接被 127.0.0.1:8188 拒绝。

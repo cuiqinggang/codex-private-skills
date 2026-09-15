@@ -1,4 +1,4 @@
 interface:
-  display_name: "第一性原理四列法极限时间宏观迭代"
-  short_description: "四列物理时间账驱动的极简宏观收敛流程"
-  default_prompt: "使用 $absolute-time-fireworks-optimization 固定任务，以第一性原理四列法只攻击最大现实时间块，绝对更快才保留，最后再认证冻结。"
+  display_name: "第一性原理四列法通用99收敛引擎"
+  short_description: "固定任务完成边界后，以时间为唯一指标持续去重甲收敛"
+  default_prompt: "使用 $absolute-time-fireworks-optimization 先定义任务完成，再让结构从四列分析自然产生，通过去重甲和真实 KEEP/ROLLBACK 收敛端到端时间。"

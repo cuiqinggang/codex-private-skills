@@ -6,7 +6,9 @@
 
 `SHARED_WORKSPACE_REPOSITORY=cuiqinggang/codex-private-skills`
 
-同类任务先读 `skills/absolute-time-fireworks-optimization/SKILL.md`、`references/CURRENT-STATE.md` 与 `references/FAST-PATH.md`；异常时才读 FAILURE INDEX（失败经验索引），审计时才读完整历史。NEW_BEST（新的最好成绩）、NEW_FAILURE（新的失败经验）、NEW_FAST_PATH（新的成熟最短路径）、METHOD_CHANGE（方法变化）、ROOT_CAUSE_FOUND（找到根因）、99_REOPEN（99 重新开启）与 NEW_99_FREEZE（新的 99 冻结）必须在 RESULT_READY（结果就绪）后同步本仓库。
+同类任务默认只读 `skills/absolute-time-fireworks-optimization/SKILL.md` 与 `references/FAST-PATH.md`。先固定 `TASK_COMPLETED == TRUE`，再最小化真实 `T_END_TO_END`；执行结构必须由四列分析产生，不预设阶段、节点或独立 SYSTEM-99（系统 99）层。需要案例时读取 CASE INDEX（案例索引），出现异常时才读 FAILURE INDEX（失败经验索引），审计时才读完整历史。NEW_BEST（新的最好成绩）、NEW_FAILURE（新的失败经验）、NEW_FAST_PATH（新的成熟最短路径）、METHOD_CHANGE（方法变化）、ROOT_CAUSE_FOUND（找到根因）、99_REOPEN（99 重新开启）与 NEW_99_FREEZE（新的 99 冻结）必须在 RESULT_READY（结果就绪）后同步本仓库。
+
+自动化模式中，ChatGPT 网页端是 REASONING BRAIN（推理大脑），Codex 是 EXECUTOR（执行器），本仓库是 SHARED FACT SOURCE（共同事实源），成熟 `playwright-native-ai-browser` 是 DEDICATED BROWSER BRIDGE（专用浏览器桥梁）。它们是执行基础设施，不是新的方法层级；每轮只传递一个明确高价值动作。
 
 ## 执行规则
 
@@ -24,6 +26,6 @@
 | 技能 | 入口 | 用途 |
 |---|---|---|
 | powershell-reliability-guard | [SKILL.md](skills/powershell-reliability-guard/SKILL.md) | Windows命令包事前防错、PowerShell 5.1/7兼容、编码/路径/退出码检查 |
-| absolute-time-fireworks-optimization | [SKILL.md](skills/absolute-time-fireworks-optimization/SKILL.md) | 第一性原理四列法极限时间宏观迭代；烟花项目验证成功路径 |
+| absolute-time-fireworks-optimization | [SKILL.md](skills/absolute-time-fireworks-optimization/SKILL.md) | 第一性原理四列法通用99收敛引擎 v2.0.0；以任务完成为单一边界、以端到端时间为唯一主指标 |
 
 2026-09-08新增的验收案例根据用户回传报告整理，未冒充编写端Windows实测或原始本机技能全文。其他既有技能以仓库实际目录为准。

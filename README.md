@@ -4,12 +4,17 @@ Private backup of personal Codex/Hermes/OpenClaw skill packages collected from H
 
 ## Active shared fact source
 
-This private repository is the shared long-term fact source and working area for the P0 absolute-time project:
+This private repository is the shared long-term fact source and working area for 第一性原理四列法通用99收敛引擎 v2.0.0:
 
-- Skill: [absolute-time-fireworks-optimization](skills/absolute-time-fireworks-optimization/SKILL.md)
-- Current state: [CURRENT STATE（当前状态）](skills/absolute-time-fireworks-optimization/references/CURRENT-STATE.md)
-- Fast path: [FAST PATH（成熟最短路径）](skills/absolute-time-fireworks-optimization/references/FAST-PATH.md)
-- Frozen engineering workspace: [P0-EXTREME-MINIMAL-FASTPATH](workspaces/absolute-time-fireworks-optimization/P0-EXTREME-MINIMAL-FASTPATH/README.md)
+- Default entry 1: [SKILL.md](skills/absolute-time-fireworks-optimization/SKILL.md)
+- Default entry 2: [FAST PATH（成熟最短路径）](skills/absolute-time-fireworks-optimization/references/FAST-PATH.md)
+- Cases on demand: [CASE INDEX（案例索引）](skills/absolute-time-fireworks-optimization/references/CASE-INDEX.md)
+- Automated execution bridge: [EXECUTION BRIDGE（执行桥梁）](skills/absolute-time-fireworks-optimization/references/EXECUTION-BRIDGE.md)
+- P0 CASE-001 frozen engineering workspace: [P0-EXTREME-MINIMAL-FASTPATH](workspaces/absolute-time-fireworks-optimization/P0-EXTREME-MINIMAL-FASTPATH/README.md)
+
+The engine first defines `TASK_COMPLETED == TRUE`, then minimizes real `T_END_TO_END`. Its structure emerges from analysis; stages, nodes, and a separate SYSTEM-99 layer are not mandatory.
+
+Automated mode uses ChatGPT Web for reasoning, Codex for local execution, this repository as shared fact state, and the existing `playwright-native-ai-browser` as the communication bridge. These are execution infrastructure, not additional method layers.
 
 `SHARED_WORKSPACE_REPOSITORY=cuiqinggang/codex-private-skills`
 

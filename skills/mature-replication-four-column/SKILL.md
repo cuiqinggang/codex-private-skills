@@ -12,6 +12,8 @@ metadata:
 
 兼容入口仍为 `mature-replication-four-column`。旧版“成熟能力/缺口/原因/成熟解法”不是 V4.0 的四列主结构；其五类归因仅在第四列诊断局部损失时按需使用。参见 [旧版兼容映射](references/legacy-method-mapping.md)。
 
+当前通用工程执行入口已经升级为 `absolute-time-fireworks-optimization v2.0.0`。两者不是上下位理论，也不是两套竞争方法；v2.0 是同一四列思想经过完整工程实践后的通用执行版本。
+
 ## 先固定 TASK
 
 优化前冻结任务合同：目标、成功条件、输入输出、必须保留的能力、不可删除步骤、安全要求、稳定性要求和质量底线。任务一旦固定，唯一优化指标是：

@@ -8,11 +8,15 @@
 
 1. fetch / pull 共同仓库最新 `main`。
 2. 读取 `skills/absolute-time-fireworks-optimization/SKILL.md`。
-3. 读取 `references/CURRENT-STATE.md`。
-4. 读取 `references/FAST-PATH.md`。
-5. 异常时才读取 `references/FAILURE-INDEX.md`。
+3. 读取 `references/FAST-PATH.md`。
+4. 需要已验证案例时，读取 `references/CASE-INDEX.md` 并只进入匹配案例。
+5. 异常时才读取 `references/FAILURE-INDEX.md` 的匹配项。
 6. 审计、复盘或升级时才读取完整 EVIDENCE / HISTORY（证据与历史）。
 7. 阶段成果同步共同仓库。
+
+默认入口只有 `SKILL.md + FAST-PATH.md`。`CURRENT-STATE.md` 属于 P0 历史状态，不是通用 v2 的必读入口。
+
+自动化模式把本仓库作为 ChatGPT_Web 推理大脑与 Codex 执行器之间的 SHARED FACT SOURCE（共同事实源）。浏览器桥梁负责通信，本仓库负责可追溯真实状态；二者不能互相替代。闭环见 [EXECUTION BRIDGE（执行桥梁）](EXECUTION-BRIDGE.md)。
 
 ## 必须同步的事件
 
