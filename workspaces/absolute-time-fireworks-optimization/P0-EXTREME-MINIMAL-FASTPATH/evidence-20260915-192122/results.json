@@ -1,0 +1,80 @@
+{
+  "PREVIOUS_BEST_MS": 21.9215,
+  "MINIMAL_FASTPATH_P50_MS": 17.4995,
+  "MINIMAL_FASTPATH_P95_MS": 19.96364,
+  "MIN_MS": 13.1033,
+  "ARMOR_REMOVAL_GAIN_MS": 4.422000000000001,
+  "ARMOR_REMOVAL_GAIN_PERCENT": 20.171977282576467,
+  "VALID": "5/5",
+  "KEEP_OR_ROLLBACK": "KEEP",
+  "REQUEST_MS": 4.9198,
+  "QUEUE_MS": 6.007,
+  "EXECUTE_MS": 3.6856,
+  "RESULT_MS": 1.873,
+  "DISK_WRITE_IN_CRITICAL_PATH": "NO",
+  "runs": [
+    {
+      "label": "warmup-01",
+      "prompt_id": "98464e8e-5385-4590-ada9-98d35a9ceee2",
+      "t_ms": 62.8848,
+      "request_ms": 7.0147,
+      "queue_ms": 11.3598,
+      "execute_ms": 41.2746,
+      "result_ms": 3.1978
+    },
+    {
+      "label": "warmup-02",
+      "prompt_id": "20015812-4702-4f15-ae46-e9ea2978d596",
+      "t_ms": 389.7928,
+      "request_ms": 380.3005,
+      "queue_ms": 4.6455,
+      "execute_ms": 2.9188,
+      "result_ms": 1.8949
+    },
+    {
+      "label": "measured-01",
+      "prompt_id": "2cdf293c-059b-480d-860d-6815540d9e72",
+      "t_ms": 16.1709,
+      "request_ms": 4.0666,
+      "queue_ms": 5.7199,
+      "execute_ms": 4.0854,
+      "result_ms": 2.2667
+    },
+    {
+      "label": "measured-02",
+      "prompt_id": "451704da-b3c2-4f51-8478-7f0ad368bf64",
+      "t_ms": 13.1033,
+      "request_ms": 4.4554,
+      "queue_ms": 4.0669,
+      "execute_ms": 2.6748,
+      "result_ms": 1.873
+    },
+    {
+      "label": "measured-03",
+      "prompt_id": "83a5f58b-d3e1-46a6-bf02-3f8ad15bd06d",
+      "t_ms": 17.9062,
+      "request_ms": 4.9198,
+      "queue_ms": 6.007,
+      "execute_ms": 4.8341,
+      "result_ms": 2.1119
+    },
+    {
+      "label": "measured-04",
+      "prompt_id": "7db23b46-a6b3-43fc-87f7-a73965c50bc8",
+      "t_ms": 17.4995,
+      "request_ms": 5.1659,
+      "queue_ms": 6.8141,
+      "execute_ms": 3.6856,
+      "result_ms": 1.8014
+    },
+    {
+      "label": "measured-05",
+      "prompt_id": "6c75ad40-d7aa-46a1-aab3-ffcb265512b2",
+      "t_ms": 20.478,
+      "request_ms": 5.6424,
+      "queue_ms": 11.3573,
+      "execute_ms": 1.7275,
+      "result_ms": 1.7213
+    }
+  ]
+}

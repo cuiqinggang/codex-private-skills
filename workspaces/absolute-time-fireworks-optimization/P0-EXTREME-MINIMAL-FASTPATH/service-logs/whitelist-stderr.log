@@ -1,0 +1,58 @@
+Setting output directory to: C:\AI\ComfyUI_Aaki_v3\data\output
+Setting input directory to: C:\AI\ComfyUI_Aaki_v3\data\input
+Prestartup Skipping ComfyUI-Manager due to disable_all_custom_nodes and whitelist_custom_nodes
+Prestartup Skipping rgthree-comfy due to disable_all_custom_nodes and whitelist_custom_nodes
+Checkpoint files will always be loaded safely.
+Total VRAM 22528 MB, total RAM 32713 MB
+pytorch version: 2.9.1+cu130
+Set vram state to: NORMAL_VRAM
+Device: cuda:0 NVIDIA GeForce RTX 2080 Ti : cudaMallocAsync
+Using async weight offloading with 2 streams
+Enabled pinned memory 14721.0
+working around nvidia conv3d memory bug.
+Found comfy_kitchen backend cuda: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_nvfp4']}
+Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': "ImportError: No module named 'triton'", 'capabilities': []}
+Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['apply_rope', 'apply_rope1', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'scaled_mm_nvfp4']}
+Using pytorch attention
+Python version: 3.13.11 (tags/v3.13.11:6278944, Dec  5 2025, 16:26:58) [MSC v.1944 64 bit (AMD64)]
+ComfyUI version: 0.9.2
+Setting temp directory to: C:\AI\ComfyUI_Aaki_v3\data\temp\temp
+ComfyUI frontend version: 1.36.14
+[Prompt Server] web root: C:\AI\ComfyUI_Aaki_v3\python\Lib\site-packages\comfyui_frontend_package\static
+Skipping ComfyUI-GGUF due to disable_all_custom_nodes and whitelist_custom_nodes
+Skipping ComfyUI-Impact-Pack due to disable_all_custom_nodes and whitelist_custom_nodes
+Skipping ComfyUI-LTXVideo due to disable_all_custom_nodes and whitelist_custom_nodes
+Skipping ComfyUI-Manager due to disable_all_custom_nodes and whitelist_custom_nodes
+Skipping ComfyUI-RMBG due to disable_all_custom_nodes and whitelist_custom_nodes
+Skipping ComfyUI-VideoHelperSuite due to disable_all_custom_nodes and whitelist_custom_nodes
+Skipping ComfyUI-WanVideoWrapper due to disable_all_custom_nodes and whitelist_custom_nodes
+Skipping comfyui_controlnet_aux due to disable_all_custom_nodes and whitelist_custom_nodes
+Skipping ComfyUI_Custom_Nodes_AlekPet due to disable_all_custom_nodes and whitelist_custom_nodes
+Skipping ComfyUI_IPAdapter_plus due to disable_all_custom_nodes and whitelist_custom_nodes
+Skipping ComfyUI_UltimateSDUpscale due to disable_all_custom_nodes and whitelist_custom_nodes
+Skipping rgthree-comfy due to disable_all_custom_nodes and whitelist_custom_nodes
+Skipping websocket_image_save.py due to disable_all_custom_nodes and whitelist_custom_nodes
+
+Import times for custom nodes:
+   0.0 seconds: C:\AI\ComfyUI_Aaki_v3\ComfyUI\custom_nodes\p0_cached_png_websocket.py
+
+Context impl SQLiteImpl.
+Will assume non-transactional DDL.
+Assets scan(roots=['models']) completed in 0.052s (created=0, skipped_existing=33, total_seen=33)
+Starting server
+
+To see the GUI go to: http://127.0.0.1:8188
+got prompt
+Prompt executed in 0.04 seconds
+got prompt
+got prompt
+Prompt executed in 0.03 seconds
+got prompt
+Prompt executed in 0.01 seconds
+Prompt executed in 0.01 seconds
+got prompt
+Prompt executed in 0.01 seconds
+got prompt
+Prompt executed in 0.01 seconds
+got prompt
+Prompt executed in 0.01 seconds
