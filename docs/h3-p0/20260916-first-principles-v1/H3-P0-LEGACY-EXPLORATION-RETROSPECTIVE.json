@@ -1,0 +1,1226 @@
+{
+  "schema": "h3-p0-legacy-retrospective/v1",
+  "status": "FROZEN_AFTER_REMOTE_VERIFY_PENDING",
+  "generated_utc": "2026-09-16T17:47:57.513454+00:00",
+  "source_of_truth": {
+    "repository": "cuiqinggang/codex-private-skills",
+    "branch": "codex/h3-p0-fp-limit-v1",
+    "starting_head": "85d21793753a0ca271208f0d099950ec081a9223",
+    "evidence_root": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01",
+    "theory_source": "C:\\Users\\A\\Documents\\Codex\\codex-private-skills\\docs\\h3-p0\\20260916-first-principles-v1\\H3-P0-STEP1-RESULTS.json",
+    "command_source": "C:\\Users\\A\\Documents\\Codex\\codex-private-skills\\docs\\h3-p0\\20260916-first-principles-v1\\H3-P0-AUTONOMOUS-CONVERGENCE-COMMAND-v1.md"
+  },
+  "task_contract": {
+    "mode": "T2VA",
+    "width": 32,
+    "height": 32,
+    "frames": 5,
+    "steps": 1,
+    "prompt": "static frame",
+    "sampler": "res_multistep",
+    "scheduler": "beta",
+    "input_audio": false,
+    "seeds": {
+      "warmup": 910002,
+      "formal": [
+        910100,
+        910102,
+        910103
+      ]
+    },
+    "workflow": {
+      "canonical_path": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\06-WORKFLOWS\\STATIC-PROBE\\k3-fl2va-5f-20step-api.json",
+      "canonical_sha256": "89B6A40B13485A6633191F1350DB472556359CDB6407E5272C9ED109698FD0F5",
+      "p0_path": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\H3-P0-V1-workflow-frozen.json",
+      "p0_sha256": "2CA2B4D4E9EED6FA40FBB018534E78B2A8DD41AF03001B27BCCD793C09E7A146"
+    },
+    "qc": {
+      "task_completed": "history completed and MP4 exists; technical QC after RESULT_READY",
+      "video_frames": 5,
+      "readable_mp4": true,
+      "finite_nonflat_pixels": true,
+      "minimum_frame_range": 8,
+      "final_output_cache": false
+    },
+    "timing": {
+      "generation": "CUDA Event before and after KSAMPLER.sample sampler_function, end.synchronize, elapsed_time",
+      "total": "POST /prompt before to history completed and MP4 RESULT_READY",
+      "path": "total minus generation",
+      "wall": "cross-check only"
+    }
+  },
+  "active_hardware_boundary": {
+    "gpu": "NVIDIA GeForce RTX 2080 Ti",
+    "vram_mib": 22528,
+    "compute_capability": "7.5 / sm75",
+    "gpus_installed": 1,
+    "future_8gb_gpu_required_for_current_99": false
+  },
+  "environment": {
+    "os": "Windows 10 Pro 10.0.19045",
+    "ram_kib": 33498504,
+    "python": "3.11.15",
+    "torch": "2.9.1+cu130",
+    "torch_cuda": "13.0",
+    "driver": "591.74",
+    "baseline_comfyui_commit": "8a33128f2f8c5585c57486c07de481241e70a39c",
+    "baseline_comfyui_version": "v0.34.0-16-g8a33128f",
+    "comfy_kitchen": "0.2.31",
+    "comfy_aimdo": "0.4.15",
+    "attention_backend": "PyTorch efficient attention / SM75 observed in V11; no SageAttention evidence",
+    "quantization": "native INT8 tensorwise, asym_w4a8_int8, convrot_w4a4; mixed precision ops",
+    "dynamic_vram": true,
+    "async_offload": "2 streams observed in server logs",
+    "launch_flags": [
+      "--fast-disk",
+      "--reserve-vram 1.0",
+      "--disable-pinned-memory"
+    ],
+    "models": [
+      {
+        "role": "diffusion",
+        "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\diffusion_models\\minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+        "bytes": 20970379616,
+        "sha256": null
+      },
+      {
+        "role": "text_encoder",
+        "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\text_encoders\\qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "bytes": 15687142551,
+        "sha256": null
+      },
+      {
+        "role": "vae",
+        "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\vae\\minimax_h3_video_vae_fp16.safetensors",
+        "bytes": 5207808496,
+        "sha256": null
+      }
+    ],
+    "model_sha_note": "No preexisting model SHA256 in the inspected authoritative evidence; no multi-GB rehash was run for retrospective"
+  },
+  "theory_v1": {
+    "physical_generation": {
+      "low": 0.05,
+      "high": 0.12,
+      "confidence": "MEDIUM_HIGH"
+    },
+    "physical_path": {
+      "low": 0.18,
+      "high": 0.45,
+      "confidence": "MEDIUM"
+    },
+    "physical_total": {
+      "low": 0.23,
+      "high": 0.57
+    },
+    "machine_generation": {
+      "low": 0.45,
+      "high": 1.4,
+      "confidence": "MEDIUM"
+    },
+    "machine_path": {
+      "low": 0.7,
+      "high": 2.0,
+      "confidence": "MEDIUM_LOW"
+    },
+    "machine_total": {
+      "low": 1.15,
+      "high": 3.4
+    }
+  },
+  "targets_v1": {
+    "generation": {
+      "p50_max_s": 1.4,
+      "p95_max_s": 1.7
+    },
+    "path": {
+      "p50_max_s": 2.0,
+      "p95_max_s": 2.4
+    },
+    "final_valid_warm_runs": 10,
+    "requires_no_high_value_remaining_gap": true,
+    "requires_shared_repo_sync": true
+  },
+  "target_revision": {
+    "performed": false,
+    "reason": "No specific physical-model assumption has been conclusively invalidated sufficiently to publish v2; observed slowness alone cannot relax targets"
+  },
+  "last_good": {
+    "phase": "V3_RESERVE1",
+    "summary": {
+      "phase": "V3_RESERVE1",
+      "reserve_vram_gib": 1.0,
+      "pinned_memory": "disabled",
+      "percentile_method": "linear_interpolation_n_minus_1",
+      "valid_warm_runs": 3,
+      "generation_p50_s": 20.226025390625,
+      "generation_p95_s": 20.53385703125,
+      "path_p50_s": 17.970200653124397,
+      "path_p95_s": 18.00712352718653,
+      "total_p50_s": 38.04230809999899,
+      "total_p95_s": 38.48866588999935
+    },
+    "improvement_vs_v1": {
+      "generation_p50_s": 1.5317265624999976,
+      "path_p50_s": 0.19213778124934322,
+      "total_p50_s": 2.964631900000313,
+      "total_p50_percent": 7.229585772555484
+    }
+  },
+  "remaining_gap": {
+    "generation_p50_s": 18.826025390625002,
+    "generation_p95_s": 18.83385703125,
+    "path_p50_s": 15.970200653124397,
+    "path_p95_s": 15.607123527186529,
+    "h3_p0_generation_99": false,
+    "h3_p0_path_99": false,
+    "final_10_run_certification": "NOT_STARTED"
+  },
+  "preliminary_v1": {
+    "summary_source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V1.json",
+    "run_seed_910101_source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V1\\run-3-910101.json",
+    "issue": "near-white 251.9-254.3 frame means; no frame_ranges/std, so initial summary superseded by V1_QC",
+    "summary": {
+      "phase": "V1",
+      "reserve_vram_gib": 3.5,
+      "pinned_memory": "disabled",
+      "percentile_method": "linear_interpolation_n_minus_1",
+      "valid_warm_runs": 3,
+      "generation_p50_s": 21.995392578125,
+      "generation_p95_s": 24.6449345703125,
+      "path_p50_s": 19.66943582187526,
+      "path_p95_s": 19.715441079688105,
+      "total_p50_s": 41.66482840000026,
+      "total_p95_s": 44.360375650000606
+    }
+  },
+  "phases": [
+    {
+      "phase": "V1_QC",
+      "purpose": "first valid minimal execution",
+      "one_change": "canonical graph reduced to 32x32/5 frames/1 step",
+      "baseline": "none",
+      "warmup_seed": 910002,
+      "formal_seeds": [
+        910100,
+        910102,
+        910103
+      ],
+      "summary": {
+        "phase": "V1_QC",
+        "reserve_vram_gib": 3.5,
+        "pinned_memory": "disabled",
+        "percentile_method": "linear_interpolation_n_minus_1",
+        "valid_warm_runs": 3,
+        "generation_p50_s": 21.757751953125,
+        "generation_p95_s": 23.7072205078125,
+        "path_p50_s": 18.16233843437374,
+        "path_p95_s": 19.14050308562425,
+        "total_p50_s": 41.006939999999304,
+        "total_p95_s": 41.944885710000015
+      },
+      "qc": "PASS",
+      "decision": "AUTHORITATIVE_BASELINE",
+      "why": "Valid corrected V1 after near-white seed 910101 was excluded",
+      "lesson": "Valid corrected V1 after near-white seed 910101 was excluded",
+      "reusable_fact": "Valid corrected V1 after near-white seed 910101 was excluded",
+      "runs": [
+        {
+          "seed": 910100,
+          "task_completed": true,
+          "generation_cuda_s": 21.317509765625,
+          "generation_wall_s": 21.32123969999884,
+          "path_s": 18.16233843437374,
+          "total_s": 39.47984819999874,
+          "mp4_sha256": "E8E0FA00D9C80366F7BEDFCE8697D681BCE757C91D37E3B1C7F287894A0102B5",
+          "frame_count_qc": 5,
+          "min_frame_range": 132,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V1_QC\\run-1-910100.json"
+        },
+        {
+          "seed": 910102,
+          "task_completed": true,
+          "generation_cuda_s": 23.923828125,
+          "generation_wall_s": 23.927413499999602,
+          "path_s": 18.125273775000096,
+          "total_s": 42.049101900000096,
+          "mp4_sha256": "BF37819657F3A5624CD483CCBE209F5C3B3141A5CB9C561B397C087EBF26B6D4",
+          "frame_count_qc": 5,
+          "min_frame_range": 43,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V1_QC\\run-2-910102.json"
+        },
+        {
+          "seed": 910103,
+          "task_completed": true,
+          "generation_cuda_s": 21.757751953125,
+          "generation_wall_s": 21.761650000000373,
+          "path_s": 19.249188046874306,
+          "total_s": 41.006939999999304,
+          "mp4_sha256": "C1EA9A49BE57D4DECC757771146D90ADB1881A0F65C68271DE17DE01A2D3AA09",
+          "frame_count_qc": 5,
+          "min_frame_range": 29,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V1_QC\\run-3-910103.json"
+        }
+      ],
+      "source": {
+        "summary": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V1_QC.json",
+        "decision": null,
+        "decision_provenance": "CORRECTED_V1_QC_SUMMARY",
+        "server_log": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\server-V1_QC.log"
+      }
+    },
+    {
+      "phase": "V2_RESERVE2",
+      "purpose": "reduce model residency reserve",
+      "one_change": "reserve-vram 3.5 to 2.0 GiB",
+      "baseline": "V1_QC",
+      "warmup_seed": 910002,
+      "formal_seeds": [
+        910100,
+        910102,
+        910103
+      ],
+      "summary": {
+        "phase": "V2_RESERVE2",
+        "reserve_vram_gib": 2.0,
+        "pinned_memory": "disabled",
+        "percentile_method": "linear_interpolation_n_minus_1",
+        "valid_warm_runs": 3,
+        "generation_p50_s": 20.50316015625,
+        "generation_p95_s": 21.9955166015625,
+        "path_p50_s": 18.238521815625298,
+        "path_p95_s": 19.300715290313047,
+        "total_p50_s": 39.90999460000057,
+        "total_p95_s": 40.35086968000032
+      },
+      "qc": "PASS",
+      "decision": "KEEP",
+      "why": "Total P50 improved though PATH P50 rose slightly",
+      "lesson": "Total P50 improved though PATH P50 rose slightly",
+      "reusable_fact": "Total P50 improved though PATH P50 rose slightly",
+      "runs": [
+        {
+          "seed": 910100,
+          "task_completed": true,
+          "generation_cuda_s": 20.50316015625,
+          "generation_wall_s": 20.50682070000039,
+          "path_s": 17.81511434374946,
+          "total_s": 38.31827449999946,
+          "mp4_sha256": "0C660C5E83546F245D481B2D67D87539CBA3BDB50E1DE74F77D1033AD77A3436",
+          "frame_count_qc": 5,
+          "min_frame_range": 132,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V2_RESERVE2\\run-1-910100.json"
+        },
+        {
+          "seed": 910102,
+          "task_completed": true,
+          "generation_cuda_s": 22.161333984375,
+          "generation_wall_s": 22.16879830000107,
+          "path_s": 18.238521815625298,
+          "total_s": 40.399855800000296,
+          "mp4_sha256": "0D1156A2CB65EE028E109B11CFF9A3C5C21ACFCF8D6E85708D68BB69A70EA1F3",
+          "frame_count_qc": 5,
+          "min_frame_range": 43,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V2_RESERVE2\\run-2-910102.json"
+        },
+        {
+          "seed": 910103,
+          "task_completed": true,
+          "generation_cuda_s": 20.4912578125,
+          "generation_wall_s": 20.494307999999364,
+          "path_s": 19.418736787500574,
+          "total_s": 39.90999460000057,
+          "mp4_sha256": "3DA9BD008FC06DE39BCF6C87C958D7BE334340BFB6AD3720FA8F0752EA37DF4C",
+          "frame_count_qc": 5,
+          "min_frame_range": 29,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V2_RESERVE2\\run-3-910103.json"
+        }
+      ],
+      "source": {
+        "summary": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V2_RESERVE2.json",
+        "decision": null,
+        "decision_provenance": "USER_CONFIRMED_AND_CHRONOLOGICAL_RECORD",
+        "server_log": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\server-V2_RESERVE2.log"
+      }
+    },
+    {
+      "phase": "V3_RESERVE1",
+      "purpose": "continue adaptive reserve search",
+      "one_change": "reserve-vram 2.0 to 1.0 GiB",
+      "baseline": "V2_RESERVE2",
+      "warmup_seed": 910002,
+      "formal_seeds": [
+        910100,
+        910102,
+        910103
+      ],
+      "summary": {
+        "phase": "V3_RESERVE1",
+        "reserve_vram_gib": 1.0,
+        "pinned_memory": "disabled",
+        "percentile_method": "linear_interpolation_n_minus_1",
+        "valid_warm_runs": 3,
+        "generation_p50_s": 20.226025390625,
+        "generation_p95_s": 20.53385703125,
+        "path_p50_s": 17.970200653124397,
+        "path_p95_s": 18.00712352718653,
+        "total_p50_s": 38.04230809999899,
+        "total_p95_s": 38.48866588999935
+      },
+      "qc": "PASS",
+      "decision": "KEEP",
+      "why": "Best retained single GPU result",
+      "lesson": "Best retained single GPU result",
+      "reusable_fact": "Best retained single GPU result",
+      "runs": [
+        {
+          "seed": 910100,
+          "task_completed": true,
+          "generation_cuda_s": 20.568060546875,
+          "generation_wall_s": 20.571555399999852,
+          "path_s": 17.970200653124397,
+          "total_s": 38.5382611999994,
+          "mp4_sha256": "9760176AA045464C4E96A4606854B0D7B9B3920AB1D3D50221AF2904170A0290",
+          "frame_count_qc": 5,
+          "min_frame_range": 132,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V3_RESERVE1\\run-1-910100.json"
+        },
+        {
+          "seed": 910102,
+          "task_completed": true,
+          "generation_cuda_s": 20.03108203125,
+          "generation_wall_s": 20.039043000000675,
+          "path_s": 18.01122606874899,
+          "total_s": 38.04230809999899,
+          "mp4_sha256": "4665E6E2359BECB534E2996A80701BABEA806DC5311EFF740D53FAB21B1A25F0",
+          "frame_count_qc": 5,
+          "min_frame_range": 43,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V3_RESERVE1\\run-2-910102.json"
+        },
+        {
+          "seed": 910103,
+          "task_completed": true,
+          "generation_cuda_s": 20.226025390625,
+          "generation_wall_s": 20.231773099998463,
+          "path_s": 17.792972509375613,
+          "total_s": 38.01899790000061,
+          "mp4_sha256": "D40030FD311BE3863B09DE91AF7543A249C880364E8D60783ACA7127F85C38AC",
+          "frame_count_qc": 5,
+          "min_frame_range": 29,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V3_RESERVE1\\run-3-910103.json"
+        }
+      ],
+      "source": {
+        "summary": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V3_RESERVE1.json",
+        "decision": null,
+        "decision_provenance": "LAST_GOOD_JSON_AND_USER_CONFIRMED",
+        "server_log": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\server-V3_RESERVE1.log"
+      }
+    },
+    {
+      "phase": "V4_RESERVE0_5",
+      "purpose": "test lower reserve",
+      "one_change": "reserve-vram 1.0 to 0.5 GiB",
+      "baseline": "V3_RESERVE1",
+      "warmup_seed": 910002,
+      "formal_seeds": [
+        910100,
+        910102,
+        910103
+      ],
+      "summary": {
+        "phase": "V4_RESERVE0_5",
+        "reserve_vram_gib": 0.5,
+        "pinned_memory": "disabled",
+        "percentile_method": "linear_interpolation_n_minus_1",
+        "valid_warm_runs": 3,
+        "generation_p50_s": 20.47160546875,
+        "generation_p95_s": 22.835585546875,
+        "path_p50_s": 18.181845771873952,
+        "path_p95_s": 18.339960227187145,
+        "total_p50_s": 38.47070239999994,
+        "total_p95_s": 41.157270889999744
+      },
+      "qc": "PASS",
+      "decision": "ROLLBACK",
+      "why": {
+        "matched_seeds": [
+          910100,
+          910102,
+          910103
+        ],
+        "paired_total_gains_s": [
+          0.716804100000445,
+          -3.413470400000733,
+          -0.45170449999932316
+        ],
+        "paired_median_gain_s": -0.45170449999932316,
+        "p50_total_gain_s": -0.4283943000009458,
+        "rule": "P50 and paired median >0.5s; at least 2/3 matched seeds faster; all QC pass"
+      },
+      "lesson": "P50 and paired median total worsened",
+      "reusable_fact": "P50 and paired median total worsened",
+      "runs": [
+        {
+          "seed": 910100,
+          "task_completed": true,
+          "generation_cuda_s": 19.639611328125,
+          "generation_wall_s": 19.642904599999383,
+          "path_s": 18.181845771873952,
+          "total_s": 37.82145709999895,
+          "mp4_sha256": "0B12D2267A37594CEF1869A72BC23FCC61CCD4D2DD75A1C914D19E427562705A",
+          "frame_count_qc": 5,
+          "min_frame_range": 132,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V4_RESERVE0_5\\run-1-910100.json"
+        },
+        {
+          "seed": 910102,
+          "task_completed": true,
+          "generation_cuda_s": 23.09825,
+          "generation_wall_s": 23.1027438000001,
+          "path_s": 18.357528499999724,
+          "total_s": 41.455778499999724,
+          "mp4_sha256": "4CA59B0B98A80D10686403C9E52144C428DF2895ECDE5268DAC453033338872A",
+          "frame_count_qc": 5,
+          "min_frame_range": 43,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V4_RESERVE0_5\\run-2-910102.json"
+        },
+        {
+          "seed": 910103,
+          "task_completed": true,
+          "generation_cuda_s": 20.47160546875,
+          "generation_wall_s": 20.47472270000071,
+          "path_s": 17.999096931249937,
+          "total_s": 38.47070239999994,
+          "mp4_sha256": "3DCF005BE01996C99DF7D26111BF20F0EAC5B0BECE2EFB02A967CFD347729F94",
+          "frame_count_qc": 5,
+          "min_frame_range": 29,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V4_RESERVE0_5\\run-3-910103.json"
+        }
+      ],
+      "source": {
+        "summary": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V4_RESERVE0_5.json",
+        "decision": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\decision-V4_RESERVE0_5.json",
+        "decision_provenance": "LOCAL_DECISION_JSON",
+        "server_log": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\server-V4_RESERVE0_5.log"
+      }
+    },
+    {
+      "phase": "V5_PINNED",
+      "purpose": "test pinned memory on retained reserve",
+      "one_change": "remove disable-pinned-memory",
+      "baseline": "V3_RESERVE1",
+      "warmup_seed": 910002,
+      "formal_seeds": [
+        910100,
+        910102,
+        910103
+      ],
+      "summary": {
+        "phase": "V5_PINNED",
+        "reserve_vram_gib": 1.0,
+        "pinned_memory": "enabled",
+        "percentile_method": "linear_interpolation_n_minus_1",
+        "valid_warm_runs": 3,
+        "generation_p50_s": 19.56144921875,
+        "generation_p95_s": 22.4902970703125,
+        "path_p50_s": 23.783972781250327,
+        "path_p95_s": 28.11308788281307,
+        "total_p50_s": 43.345422000000326,
+        "total_p95_s": 46.758258000000566
+      },
+      "qc": "PASS",
+      "decision": "ROLLBACK",
+      "why": {
+        "matched_seeds": [
+          910100,
+          910102,
+          910103
+        ],
+        "paired_total_gains_s": [
+          -3.733126799999809,
+          -5.303113900001335,
+          -9.118464099999983
+        ],
+        "paired_median_gain_s": -5.303113900001335,
+        "p50_total_gain_s": -5.303113900001335,
+        "rule": "P50 and paired median >0.5s; at least 2/3 matched seeds faster; all QC pass"
+      },
+      "lesson": "All three paired total times worsened",
+      "reusable_fact": "All three paired total times worsened",
+      "runs": [
+        {
+          "seed": 910100,
+          "task_completed": true,
+          "generation_cuda_s": 22.815724609375,
+          "generation_wall_s": 22.818795900000623,
+          "path_s": 19.455663390624206,
+          "total_s": 42.271387999999206,
+          "mp4_sha256": "10FDBCBE547E1720CE437DE31E4E2A4A35807C506A62D9C490707BA99CF4C422",
+          "frame_count_qc": 5,
+          "min_frame_range": 132,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V5_PINNED\\run-1-910100.json"
+        },
+        {
+          "seed": 910102,
+          "task_completed": true,
+          "generation_cuda_s": 19.56144921875,
+          "generation_wall_s": 19.565056499999628,
+          "path_s": 23.783972781250327,
+          "total_s": 43.345422000000326,
+          "mp4_sha256": "AE2B55A9F2B8C66EAAB69DA6EFA3A03BA0567F80206B63FC2C5A32DFCE4BB9B4",
+          "frame_count_qc": 5,
+          "min_frame_range": 43,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V5_PINNED\\run-2-910102.json"
+        },
+        {
+          "seed": 910103,
+          "task_completed": true,
+          "generation_cuda_s": 18.543361328125,
+          "generation_wall_s": 18.54607980000037,
+          "path_s": 28.594100671875598,
+          "total_s": 47.137462000000596,
+          "mp4_sha256": "3F48E9379B01EF2DE1353E980E07538A40B8977A17841AD0B47B380C123B4FE2",
+          "frame_count_qc": 5,
+          "min_frame_range": 29,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V5_PINNED\\run-3-910103.json"
+        }
+      ],
+      "source": {
+        "summary": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V5_PINNED.json",
+        "decision": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\decision-V5_PINNED.json",
+        "decision_provenance": "LOCAL_DECISION_JSON",
+        "server_log": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\server-V5_PINNED.log"
+      }
+    },
+    {
+      "phase": "V6_PATH_PROFILE",
+      "purpose": "segment system path",
+      "one_change": "reversible stage timing only",
+      "baseline": "V3_RESERVE1",
+      "warmup_seed": 910002,
+      "formal_seeds": [
+        910100,
+        910102,
+        910103
+      ],
+      "summary": {
+        "phase": "V6_PATH_PROFILE",
+        "reserve_vram_gib": 1.0,
+        "pinned_memory": "disabled",
+        "percentile_method": "linear_interpolation_n_minus_1",
+        "valid_warm_runs": 3,
+        "generation_p50_s": 21.11258203125,
+        "generation_p95_s": 21.11989453125,
+        "path_p50_s": 19.274828500000776,
+        "path_p95_s": 24.866979821875233,
+        "total_p50_s": 40.3801637000015,
+        "total_p95_s": 45.9861496700003
+      },
+      "qc": "PASS",
+      "decision": "DIAGNOSTIC_ONLY",
+      "why": {
+        "reason": "PATH attribution; baseline V3 retained"
+      },
+      "lesson": "VAE decode stage was the largest PATH block and is not pure math",
+      "reusable_fact": "VAE decode stage was the largest PATH block and is not pure math",
+      "runs": [
+        {
+          "seed": 910100,
+          "task_completed": true,
+          "generation_cuda_s": 21.12070703125,
+          "generation_wall_s": 21.126121199999034,
+          "path_s": 25.488329968750172,
+          "total_s": 46.60903700000017,
+          "mp4_sha256": "3B0D565ECF63493DFF57C10F8E1C3FD2E562119C29D4398565A03E5F014B223B",
+          "frame_count_qc": 5,
+          "min_frame_range": 132,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V6_PATH_PROFILE\\run-1-910100.json"
+        },
+        {
+          "seed": 910102,
+          "task_completed": true,
+          "generation_cuda_s": 21.11258203125,
+          "generation_wall_s": 21.11597670000083,
+          "path_s": 19.267581668751504,
+          "total_s": 40.3801637000015,
+          "mp4_sha256": "B27A0B53AA0840AF2F62C506746AB163D439FA64E5442B1056E26F57F2C02CC3",
+          "frame_count_qc": 5,
+          "min_frame_range": 43,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V6_PATH_PROFILE\\run-2-910102.json"
+        },
+        {
+          "seed": 910103,
+          "task_completed": true,
+          "generation_cuda_s": 20.7604375,
+          "generation_wall_s": 20.76306889999978,
+          "path_s": 19.274828500000776,
+          "total_s": 40.035266000000775,
+          "mp4_sha256": "A16258C079BAADD301B4EA8B2C40F3055F62672D5438849F9876474853ACC259",
+          "frame_count_qc": 5,
+          "min_frame_range": 29,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V6_PATH_PROFILE\\run-3-910103.json"
+        }
+      ],
+      "source": {
+        "summary": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V6_PATH_PROFILE.json",
+        "decision": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\decision-V6_PATH_PROFILE.json",
+        "decision_provenance": "LOCAL_DECISION_JSON",
+        "server_log": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\server-V6_PATH_PROFILE.log"
+      }
+    },
+    {
+      "phase": "V7_VAE_STAGE",
+      "purpose": "split VAE stage and residency",
+      "one_change": "reversible VAE and DynamicVRAM counters",
+      "baseline": "V3_RESERVE1",
+      "warmup_seed": 910002,
+      "formal_seeds": [
+        910100,
+        910102,
+        910103
+      ],
+      "summary": {
+        "phase": "V7_VAE_STAGE",
+        "reserve_vram_gib": 1.0,
+        "pinned_memory": "disabled",
+        "percentile_method": "linear_interpolation_n_minus_1",
+        "valid_warm_runs": 3,
+        "generation_p50_s": 24.1648125,
+        "generation_p95_s": 25.789982226562497,
+        "path_p50_s": 19.628210659374965,
+        "path_p95_s": 21.567895555937696,
+        "total_p50_s": 45.59876729999996,
+        "total_p95_s": 45.9132824700002
+      },
+      "qc": "PASS",
+      "decision": "DIAGNOSTIC_ONLY",
+      "why": {
+        "reason": "PATH attribution; baseline V3 retained"
+      },
+      "lesson": "decoder call includes dynamic weight loading; model_management.load_models_gpu itself was short",
+      "reusable_fact": "decoder call includes dynamic weight loading; model_management.load_models_gpu itself was short",
+      "runs": [
+        {
+          "seed": 910100,
+          "task_completed": true,
+          "generation_cuda_s": 25.970556640625,
+          "generation_wall_s": 25.976340999999593,
+          "path_s": 19.628210659374965,
+          "total_s": 45.59876729999996,
+          "mp4_sha256": "1BDBFBD47396C03DE6652BDCC3F3F629B65F3AA0CB0EF9822FC2B3FFF2B87C31",
+          "frame_count_qc": 5,
+          "min_frame_range": 132,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V7_VAE_STAGE\\run-1-910100.json"
+        },
+        {
+          "seed": 910102,
+          "task_completed": true,
+          "generation_cuda_s": 24.1648125,
+          "generation_wall_s": 24.16760670000076,
+          "path_s": 21.78341610000022,
+          "total_s": 45.94822860000022,
+          "mp4_sha256": "69F1B78670BC0982CE5928B7394471641BE623F2147B35F133D075707A87145A",
+          "frame_count_qc": 5,
+          "min_frame_range": 43,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V7_VAE_STAGE\\run-2-910102.json"
+        },
+        {
+          "seed": 910103,
+          "task_completed": true,
+          "generation_cuda_s": 20.791703125,
+          "generation_wall_s": 20.794681800000035,
+          "path_s": 17.820701675000148,
+          "total_s": 38.61240480000015,
+          "mp4_sha256": "FB9635A4743CB0BAB0966605E1CC9D7C7A5965A3CCDEC2BF19718A745B8F1656",
+          "frame_count_qc": 5,
+          "min_frame_range": 29,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V7_VAE_STAGE\\run-3-910103.json"
+        }
+      ],
+      "source": {
+        "summary": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V7_VAE_STAGE.json",
+        "decision": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\decision-V7_VAE_STAGE.json",
+        "decision_provenance": "LOCAL_DECISION_JSON",
+        "server_log": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\server-V7_VAE_STAGE.log"
+      }
+    },
+    {
+      "phase": "V8_VAE_FULL_SINGLE",
+      "purpose": "test single GPU VAE full-load request",
+      "one_change": "one reversible force_full_load request",
+      "baseline": "V3_RESERVE1",
+      "warmup_seed": 910002,
+      "formal_seeds": [
+        910100,
+        910102,
+        910103
+      ],
+      "summary": {
+        "phase": "V8_VAE_FULL_SINGLE",
+        "reserve_vram_gib": 1.0,
+        "pinned_memory": "disabled",
+        "percentile_method": "linear_interpolation_n_minus_1",
+        "valid_warm_runs": 3,
+        "generation_p50_s": 20.65801171875,
+        "generation_p95_s": 24.860855273437497,
+        "path_p50_s": 23.247597609374004,
+        "path_p95_s": 28.046008334061824,
+        "total_p50_s": 48.575435499999,
+        "total_p95_s": 49.171002669999325
+      },
+      "qc": "PASS",
+      "decision": "ROLLBACK",
+      "why": {
+        "matched_seeds": [
+          910100,
+          910102,
+          910103
+        ],
+        "paired_total_gains_s": [
+          -10.698915599999964,
+          -10.533127400000012,
+          -2.963937199998327
+        ],
+        "paired_median_gain_s": -10.533127400000012,
+        "p50_total_gain_s": -10.533127400000012,
+        "rule": "P50 and paired median >0.5s; at least 2/3 matched seeds faster; all QC pass"
+      },
+      "lesson": "Request did not improve total; full residency was not observed",
+      "reusable_fact": "Request did not improve total; full residency was not observed",
+      "runs": [
+        {
+          "seed": 910100,
+          "task_completed": true,
+          "generation_cuda_s": 20.65801171875,
+          "generation_wall_s": 20.661799900000915,
+          "path_s": 28.57916508124936,
+          "total_s": 49.23717679999936,
+          "mp4_sha256": "5343315D8DAD3BB681C10B46463D9BC77F94C46D16B90D878ABACA15642CFA3E",
+          "frame_count_qc": 5,
+          "min_frame_range": 132,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V8_VAE_FULL_SINGLE\\run-1-910100.json"
+        },
+        {
+          "seed": 910102,
+          "task_completed": true,
+          "generation_cuda_s": 25.327837890625,
+          "generation_wall_s": 25.332887500000652,
+          "path_s": 23.247597609374004,
+          "total_s": 48.575435499999,
+          "mp4_sha256": "3E93C2EE0AB2128B283E051E9F996B42AB1543BC6D8B090FF72492787B88E46F",
+          "frame_count_qc": 5,
+          "min_frame_range": 43,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V8_VAE_FULL_SINGLE\\run-2-910102.json"
+        },
+        {
+          "seed": 910103,
+          "task_completed": true,
+          "generation_cuda_s": 20.475587890625,
+          "generation_wall_s": 20.478478000000905,
+          "path_s": 20.50734720937394,
+          "total_s": 40.98293509999894,
+          "mp4_sha256": "6614FBC0953E55DC1B64970B7E58E624C89FB9BE78313271FA705178B08BD3B2",
+          "frame_count_qc": 5,
+          "min_frame_range": 29,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V8_VAE_FULL_SINGLE\\run-3-910103.json"
+        }
+      ],
+      "source": {
+        "summary": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V8_VAE_FULL_SINGLE.json",
+        "decision": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\decision-V8_VAE_FULL_SINGLE.json",
+        "decision_provenance": "LOCAL_DECISION_JSON",
+        "server_log": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\server-V8_VAE_FULL_SINGLE.log"
+      }
+    },
+    {
+      "phase": "V9_SOFTWARE_036",
+      "purpose": "software frontier comparison",
+      "one_change": "isolated ComfyUI v0.36.0 plus kitchen0.2.34 aimdo0.5.3",
+      "baseline": "V3_RESERVE1",
+      "warmup_seed": 910002,
+      "formal_seeds": [
+        910100,
+        910102,
+        910103
+      ],
+      "summary": {
+        "phase": "V9_SOFTWARE_036",
+        "reserve_vram_gib": 1.0,
+        "pinned_memory": "disabled",
+        "percentile_method": "linear_interpolation_n_minus_1",
+        "valid_warm_runs": 3,
+        "generation_p50_s": 24.8611328125,
+        "generation_p95_s": 26.9946689453125,
+        "path_p50_s": 18.30653510000059,
+        "path_p95_s": 26.181769358750472,
+        "total_p50_s": 45.0804698000029,
+        "total_p95_s": 51.2341823600007
+      },
+      "qc": "PASS",
+      "decision": "ROLLBACK",
+      "why": {
+        "matched_seeds": [
+          910100,
+          910102,
+          910103
+        ],
+        "paired_total_gains_s": [
+          -6.542208600003505,
+          -1.5549770000015997,
+          -13.898930299999847
+        ],
+        "paired_median_gain_s": -6.542208600003505,
+        "p50_total_gain_s": -7.038161700003911,
+        "rule": "P50 and paired median >0.5s; at least 2/3 matched seeds faster; all QC pass"
+      },
+      "lesson": "Exact full stack slower on this P0; first startup dependency failure had no benchmark",
+      "reusable_fact": "Exact full stack slower on this P0; first startup dependency failure had no benchmark",
+      "runs": [
+        {
+          "seed": 910100,
+          "task_completed": true,
+          "generation_cuda_s": 27.231728515625,
+          "generation_wall_s": 27.236250300000393,
+          "path_s": 17.8487412843779,
+          "total_s": 45.0804698000029,
+          "mp4_sha256": "C4F104FB3644AF82E116DC56AE4D9990CAC5842B94F4CC9640BB2647D6DE5A9F",
+          "frame_count_qc": 5,
+          "min_frame_range": 133,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V9_SOFTWARE_036\\run-1-910100.json"
+        },
+        {
+          "seed": 910102,
+          "task_completed": true,
+          "generation_cuda_s": 21.29075,
+          "generation_wall_s": 21.293622900000628,
+          "path_s": 18.30653510000059,
+          "total_s": 39.59728510000059,
+          "mp4_sha256": "ED8FADE4D79D54C8AAF0F5D4575F6D8D8F0892FB306ABB21F6E0C8D03665060D",
+          "frame_count_qc": 5,
+          "min_frame_range": 43,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V9_SOFTWARE_036\\run-2-910102.json"
+        },
+        {
+          "seed": 910103,
+          "task_completed": true,
+          "generation_cuda_s": 24.8611328125,
+          "generation_wall_s": 24.865410999998858,
+          "path_s": 27.05679538750046,
+          "total_s": 51.91792820000046,
+          "mp4_sha256": "22F4DC74802CF0F92282125A3B4F12D3532CA09217A4B4ECF12AE7B1F86E45B7",
+          "frame_count_qc": 5,
+          "min_frame_range": 29,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V9_SOFTWARE_036\\run-3-910103.json"
+        }
+      ],
+      "source": {
+        "summary": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V9_SOFTWARE_036.json",
+        "decision": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\decision-V9_SOFTWARE_036.json",
+        "decision_provenance": "LOCAL_DECISION_JSON",
+        "server_log": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\server-V9_SOFTWARE_036.log"
+      }
+    },
+    {
+      "phase": "V10_GENERATION_PROFILE",
+      "purpose": "segment core generation",
+      "one_change": "reversible model.py and ops.py event and residency instrumentation",
+      "baseline": "V3_RESERVE1",
+      "warmup_seed": 910002,
+      "formal_seeds": [
+        910100,
+        910102,
+        910103
+      ],
+      "summary": {
+        "phase": "V10_GENERATION_PROFILE",
+        "reserve_vram_gib": 1.0,
+        "pinned_memory": "disabled",
+        "percentile_method": "linear_interpolation_n_minus_1",
+        "valid_warm_runs": 3,
+        "generation_p50_s": 22.835869140625,
+        "generation_p95_s": 24.7835201171875,
+        "path_p50_s": 20.75158985937349,
+        "path_p95_s": 21.496404237500712,
+        "total_p50_s": 44.14938600000096,
+        "total_p95_s": 45.19728651000114
+      },
+      "qc": "PASS",
+      "decision": "DIAGNOSTIC_ONLY",
+      "why": {
+        "reason": "PATH attribution; baseline V3 retained"
+      },
+      "lesson": "50 DiT blocks dominate; steady forward 155 misses and 5.953 GB requested",
+      "reusable_fact": "50 DiT blocks dominate; steady forward 155 misses and 5.953 GB requested",
+      "runs": [
+        {
+          "seed": 910100,
+          "task_completed": true,
+          "generation_cuda_s": 22.835869140625,
+          "generation_wall_s": 22.840109000000666,
+          "path_s": 20.75158985937349,
+          "total_s": 43.58745899999849,
+          "mp4_sha256": "340205CB1CA84224FDE7E3783EC3822BED3F4282A3682A8DF370CB0D6671A22D",
+          "frame_count_qc": 5,
+          "min_frame_range": 132,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V10_GENERATION_PROFILE\\run-1-910100.json"
+        },
+        {
+          "seed": 910102,
+          "task_completed": true,
+          "generation_cuda_s": 22.570224609375,
+          "generation_wall_s": 22.573596099999122,
+          "path_s": 21.57916139062596,
+          "total_s": 44.14938600000096,
+          "mp4_sha256": "FE7D1CD501DA3B9EC44C3CB986478130D9FD5CDDB67E01F4EE8325D6E5DB7FC8",
+          "frame_count_qc": 5,
+          "min_frame_range": 43,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V10_GENERATION_PROFILE\\run-2-910102.json"
+        },
+        {
+          "seed": 910103,
+          "task_completed": true,
+          "generation_cuda_s": 24.99992578125,
+          "generation_wall_s": 25.002699999997276,
+          "path_s": 20.31379411875116,
+          "total_s": 45.31371990000116,
+          "mp4_sha256": "C2DFD7D4CAE448A7830A462BD7A07EA534418FDDDE60F9573F64A4781E768274",
+          "frame_count_qc": 5,
+          "min_frame_range": 29,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V10_GENERATION_PROFILE\\run-3-910103.json"
+        }
+      ],
+      "source": {
+        "summary": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V10_GENERATION_PROFILE.json",
+        "decision": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\decision-V10_GENERATION_PROFILE.json",
+        "decision_provenance": "LOCAL_DECISION_JSON",
+        "server_log": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\server-V10_GENERATION_PROFILE.log"
+      }
+    },
+    {
+      "phase": "V11_OP_PROFILE",
+      "purpose": "attribute operator activity before method change",
+      "one_change": "torch profiler diagnostic, no model or task change",
+      "baseline": "V3_RESERVE1",
+      "warmup_seed": 910002,
+      "formal_seeds": [
+        910100,
+        910102,
+        910103
+      ],
+      "summary": {
+        "phase": "V11_OP_PROFILE",
+        "reserve_vram_gib": 1.0,
+        "pinned_memory": "disabled",
+        "percentile_method": "linear_interpolation_n_minus_1",
+        "valid_warm_runs": 3,
+        "generation_p50_s": 22.302685546875,
+        "generation_p95_s": 25.0411763671875,
+        "path_p50_s": 31.38642585312773,
+        "path_p95_s": 35.87023307281103,
+        "total_p50_s": 53.68911140000273,
+        "total_p95_s": 60.911409439998536
+      },
+      "qc": "PASS",
+      "decision": "DIAGNOSTIC_ONLY",
+      "why": {
+        "reason": "diagnostic attribution; baseline V3 retained"
+      },
+      "lesson": "GPU operator self time does not close CUDA Event; profiler perturbs PATH",
+      "reusable_fact": "GPU operator self time does not close CUDA Event; profiler perturbs PATH",
+      "runs": [
+        {
+          "seed": 910100,
+          "task_completed": true,
+          "generation_cuda_s": 22.302685546875,
+          "generation_wall_s": 30.702795199998945,
+          "path_s": 31.38642585312773,
+          "total_s": 53.68911140000273,
+          "mp4_sha256": "1DA88255F7B393E5DE482E1E89E91E30AA2CAD23D5ED14945DD59A24D2C54A1E",
+          "frame_count_qc": 5,
+          "min_frame_range": 132,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V11_OP_PROFILE\\run-1-910100.json"
+        },
+        {
+          "seed": 910102,
+          "task_completed": true,
+          "generation_cuda_s": 22.1089921875,
+          "generation_wall_s": 30.217579600001045,
+          "path_s": 27.767934512498876,
+          "total_s": 49.876926699998876,
+          "mp4_sha256": "2805FDDB5679CE4CCD733F4FCDBF59207173A815E0F24628DF029D4F36E4D0B4",
+          "frame_count_qc": 5,
+          "min_frame_range": 43,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V11_OP_PROFILE\\run-2-910102.json"
+        },
+        {
+          "seed": 910103,
+          "task_completed": true,
+          "generation_cuda_s": 25.345453125,
+          "generation_wall_s": 35.820047900000645,
+          "path_s": 36.36843387499807,
+          "total_s": 61.71388699999807,
+          "mp4_sha256": "5330578A95314F1827700959AE4F8693C3F19CBE1068AB13198D24AEE3882C98",
+          "frame_count_qc": 5,
+          "min_frame_range": 29,
+          "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\runs\\V11_OP_PROFILE\\run-3-910103.json"
+        }
+      ],
+      "source": {
+        "summary": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V11_OP_PROFILE.json",
+        "decision": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\decision-V11_OP_PROFILE.json",
+        "decision_provenance": "LOCAL_DECISION_JSON",
+        "server_log": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\server-V11_OP_PROFILE.log"
+      }
+    }
+  ],
+  "diagnostic": {
+    "v6_path_profile": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\path-profile-V6_PATH_PROFILE.json",
+    "v7_vae_stage": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\vae-stage-V7_VAE_STAGE.json",
+    "v10_generation_profile": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\generation-profile-V10_GENERATION_PROFILE.json",
+    "v11_operator_profile": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\op-profile-V11_OP_PROFILE.json",
+    "v6_vae_decode_stage_p50_s": 17.8235659,
+    "v7_vae_actual_decoder_call_p50_s": 17.8252511,
+    "v7_vae_load_gpu_p50_s": 0.1273079,
+    "v7_vae_resident_misses_per_run": 146,
+    "v7_vae_requested_bytes_per_run": 4846446592,
+    "v10_h3_resident_misses_per_steady_run": 155,
+    "v10_h3_requested_bytes_per_steady_run": 5952846848,
+    "requested_bytes_are_not_measured_pcie_bytes": true,
+    "v8_loaded_completely_events": 0,
+    "v11_note": "torch.profiler self-device operator totals 1.46-1.62s vs CUDA Event 22-25s; diagnostic and not directly additive"
+  },
+  "software_frontier": {
+    "candidate": "ComfyUI v0.36.0 + comfy-kitchen 0.2.34 + comfy-aimdo 0.5.3",
+    "commit": "ee71d5c4993f29086b27fde1629a945ae48425bf",
+    "commits_ahead_of_baseline": 121,
+    "isolation": "git worktree plus python-overlay; original .venv unchanged",
+    "first_startup_failure": "missing comfy_aimdo.malloc_graph; no formal prompt",
+    "final_decision": "ROLLBACK",
+    "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\decision-V9_SOFTWARE_036.json"
+  },
+  "controller": {
+    "entry": "C:\\Users\\A\\Documents\\Codex\\codex-private-skills\\docs\\h3-p0\\20260916-first-principles-v1\\H3-P0-controller.py",
+    "files": [
+      "state.json",
+      "pid.json",
+      "heartbeat.json",
+      "iteration.json",
+      "last-good.json",
+      "controller.lock"
+    ],
+    "states": [
+      "IDLE",
+      "STARTING",
+      "WARMUP",
+      "MEASURING",
+      "QC",
+      "DECIDING",
+      "KEEP",
+      "ROLLBACK",
+      "CHECKPOINTED",
+      "NEXT_ITERATION",
+      "CERTIFICATION",
+      "DONE"
+    ],
+    "commands": [
+      "--resume",
+      "--status",
+      "--stop-safe"
+    ],
+    "gpu_exclusive": true,
+    "completed_phase_is_idempotent": true,
+    "stale_lock_requires": [
+      "owner_and_runner_dead",
+      "heartbeat_stale",
+      "8194_not_owned",
+      "no_recent_result_progress"
+    ],
+    "launch_intent_before_spawn": [
+      "STARTING",
+      "launch_id",
+      "controller_pid",
+      "controller_start_time",
+      "intended_command_hash",
+      "runner_pid=null"
+    ]
+  },
+  "external_evidence": [
+    {
+      "source": "https://github.com/Comfy-Org/ComfyUI/releases/tag/v0.36.0",
+      "kind": "OFFICIAL_RELEASE",
+      "local_verified": "V9 full stack slower"
+    },
+    {
+      "source": "https://github.com/Comfy-Org/ComfyUI/pull/16187",
+      "kind": "OFFICIAL_H3_VAE_OPT",
+      "local_verified": "only as part of V9 combination"
+    },
+    {
+      "source": "https://github.com/Comfy-Org/comfy-kitchen/pull/167",
+      "kind": "OFFICIAL_BENCH_OTHER_HARDWARE",
+      "local_verified": false
+    },
+    {
+      "source": "https://github.com/IvenKooLab/minimax-h3-turing/blob/main/docs/en/10-benchmarks.md",
+      "kind": "SAME_HARDWARE_DIFFERENT_TASK",
+      "local_verified": false
+    },
+    {
+      "source": "https://github.com/star7code/minimax-h3-fp16-exact-star7",
+      "kind": "SAME_ARCHITECTURE_UNTESTED_LOCAL_P0",
+      "local_verified": false
+    },
+    {
+      "source": "https://github.com/lihaoyun6/ComfyUI-H3VAE_TRT/blob/main/compile.py",
+      "kind": "DIFFERENT_STATIC_SHAPE",
+      "local_verified": false
+    }
+  ],
+  "gates": {
+    "mature_path_first": "MATRIX_PREPARED_NO_NEW_AB_UNDER_FREEZE",
+    "software_frontier": "V9_COMPLETED_ROLLBACK",
+    "hardware_topology": "SINGLE_INSTALLED_GPU_ONLY",
+    "no_new_gpu_benchmark": true,
+    "no_new_optimization_candidate": true
+  },
+  "unresolved": [
+    "Dual 99 not reached; frozen targets unchanged",
+    "No final ten-run certification because targets not met",
+    "Model checkpoint SHA256 absent from inspected preexisting evidence",
+    "No raw local artifact found for TEMP_SCRIPT_NULL_BYTES; nested PowerShell expansion is user-reported",
+    "V2 KEEP and V3 KEEP lack dedicated decision JSON; V3 last-good is authoritative"
+  ],
+  "next_task_inheritance": [
+    "H3-P0-LEGACY-EXPLORATION-RETROSPECTIVE.md",
+    "H3-P0-LEGACY-EXPLORATION-RETROSPECTIVE.json",
+    "H3-P0-LEGACY-EVIDENCE-INDEX.md",
+    "H3-P0-FAILURE-INDEX.md",
+    "H3-P0-MATURE-PATH-FIRST-v1.2.md"
+  ],
+  "field_glossary_cn": {
+    "PHASE": "阶段",
+    "PURPOSE": "目的",
+    "ONE_CHANGE": "单项改变",
+    "BASELINE": "对照基准",
+    "WARMUP": "预热",
+    "FORMAL_RUNS": "正式样本",
+    "P50": "中位数",
+    "P95": "95百分位",
+    "QC": "质量检查",
+    "DECISION": "裁决",
+    "WHY": "理由",
+    "LESSON": "经验",
+    "REUSABLE_FACT": "可复用事实",
+    "KEEP": "保留",
+    "ROLLBACK": "回滚",
+    "DIAGNOSTIC_ONLY": "仅诊断",
+    "GENERATION": "核心生成",
+    "PATH": "系统路径",
+    "TOTAL": "总时间",
+    "SOURCE": "证据来源",
+    "UNKNOWN": "未知",
+    "FROZEN": "冻结"
+  },
+  "empirical_priors_file": "H3-P0-EMPIRICAL-PRIORS.md"
+}
