@@ -2,12 +2,39 @@
 
 本规则属于 `first-principles-physical-limit-convergence v1.1.0`。
 
-## 目标
+## 核心边界：只用当前真实可用硬件定义本轮 99
 
-`T_MACHINE_STAR（本机稳定理论极限）` 不只取决于单个 GPU 型号，也取决于整台机器的资源拓扑：
+`T_MACHINE_STAR（本机稳定理论极限）` 与 `99（当前稳定最优）` 的硬件边界，必须冻结为：
 
 ```text
-GPU 数量与容量
+ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）
+= 此刻已经真实安装 + 可正常使用 + 本任务允许使用的硬件
+```
+
+未来计划购买、尚未安装、当前不可用或尚未接入的硬件，不进入本轮 `T_MACHINE_STAR`，也不得成为本轮 `99=YES` 的阻断条件。
+
+例如当前只有一张 22GB 主 GPU 可用于任务，而未来可能增加一张 8GB 辅 GPU：
+
+```text
+CURRENT ROUND（本轮）:
+ACTIVE_HARDWARE_BOUNDARY = 单 22GB GPU
+=> 先把当前单卡系统真实收敛到自己的 99
+
+FUTURE ROUND（未来硬件改变后）:
+ACTIVE_HARDWARE_BOUNDARY = 22GB + 8GB 双 GPU
+=> 重新扫描硬件拓扑
+=> 重新计算 T_MACHINE_STAR
+=> 重新开启新的 Gap 收敛
+```
+
+这不是“旧 99 作废”，而是任务资源边界改变后产生新的版本化极限。
+
+## 目标
+
+在 `ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）` 内，`T_MACHINE_STAR（本机稳定理论极限）` 不只取决于单个 GPU 型号，也取决于整台机器实际存在的资源拓扑：
+
+```text
+实际安装的 GPU 数量与容量
 PCIe 代际/通道宽度
 显示器连接位置
 主卡/辅卡职责
@@ -17,9 +44,21 @@ CPU / RAM / PCIe 共享路径
 软件是否真正支持多 GPU
 ```
 
-因此 99 前必须检查：是否存在比“单主卡承担所有工作”更快、更稳定的硬件分工。
+因此 99 前必须检查：在**当前真实存在的硬件**中，是否存在比当前分工更快、更稳定的硬件拓扑。
+
+如果当前只有一张 GPU，则：
+
+```text
+HARDWARE_TOPOLOGY_GATE（硬件拓扑门禁）
+= 单卡拓扑已冻结并验证
+= PASS
+```
+
+不得为了不存在的第二张 GPU 延迟本轮 99。
 
 ## 双 GPU 三种正式候选
+
+以下候选**只在第二张 GPU 已真实安装并可用时触发**。
 
 ### MODE A — DISPLAY OFFLOAD（显示卸载）
 
@@ -30,7 +69,7 @@ CPU / RAM / PCIe 共享路径
 - Windows 桌面/多屏占用可观；
 - 固定任务本身只需要一张 GPU 完成核心计算。
 
-必须真实记录主 GPU idle VRAM（空闲显存）、context（上下文）和正式 benchmark 的变化。
+必须真实记录主 GPU idle VRAM（空闲显存）、context（上下文）和正式 benchmark（基准测试）的变化。
 
 ### MODE B — FUNCTION SPLIT（功能拆分）
 
@@ -58,7 +97,7 @@ SECONDARY GPU（辅卡） = VAE / CLIP / preview / encode / auxiliary models（V
 
 ## PCIe Gate（PCIe 门禁）
 
-安装第二张 GPU 后，必须比较安装前后主 GPU：
+只有安装第二张 GPU 后才触发双卡 PCIe 对比。必须比较安装前后主 GPU：
 
 ```text
 PCIE_GEN（PCIe代际）
@@ -90,7 +129,7 @@ PCIE_LINK_WIDTH（PCIe链路宽度）
 
 ## Benchmark Matrix（基准测试矩阵）
 
-至少比较：
+当双 GPU 已真实存在时，至少比较：
 
 ```text
 A0 = 单主卡 / 当前连接
@@ -106,19 +145,44 @@ A4 = 双卡联合计算（仅当成熟支持）
 
 ```text
 BEST_HARDWARE_TOPOLOGY（最佳硬件拓扑）
-= 在所有硬约束通过时，T_EXEC 最小的配置
+= 在当前有效硬件边界内，所有硬约束通过时 T_EXEC 最小的配置
 ```
+
+## 经验回灌：下一次重新计算必须使用本次真实数据
+
+每次 99/FREEZE（99/冻结）后，应把真实分块数据、已证实有效/无效机制、Failure Index（失败索引）、稳定驻留点、模型切换成本、VAE/编码/传输成本等写入 `EMPIRICAL_PRIORS（经验先验）`。
+
+当未来发生以下变化时：
+
+```text
+硬件增加/更换
+关键软件栈重大升级
+模型格式或推理后端改变
+任务合同改变
+```
+
+重新计算 `T_MACHINE_STAR` 时，不得从零猜测；必须先继承最近一次兼容的真实经验：
+
+```text
+OLD VERIFIED 99（旧的已验证99）
++ EMPIRICAL_PRIORS（经验先验）
++ NEW HARDWARE/SOFTWARE FACTS（新的硬件/软件事实）
+=> NEW T_MACHINE_STAR（新的本机稳定理论极限）
+=> NEW ATTACK_ORDER（新的攻击顺序）
+```
+
+如果旧经验与新条件不兼容，则明确降级其置信度，而不是静默沿用。
 
 ## 99 Gate（99 门禁）
 
-如果机器存在第二 GPU，而第二 GPU 对当前任务有合理高收益候选，则在 99 前必须至少完成只读拓扑核验和高价值配置的真实测试。
-
-只有：
+本轮门禁只针对 `ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）`。
 
 ```text
-HARDWARE_TOPOLOGY_GATE=PASS（硬件拓扑门禁通过）
+CURRENT_AVAILABLE_HARDWARE_AUDITED=YES（当前可用硬件已审计）
+NO_UNTESTED_HIGH_VALUE_TOPOLOGY_WITHIN_ACTIVE_BOUNDARY=YES（当前边界内无未测试高价值拓扑）
+=> HARDWARE_TOPOLOGY_GATE=PASS（硬件拓扑门禁通过）
 ```
 
-才允许最终 `99=YES / FREEZE=YES`。
+未来硬件不参与本轮门禁。
 
-门禁 PASS 不等于必须使用双 GPU；如果真实结果证明单 GPU 更快，单 GPU 可以成为正式 winner（胜出方案）。
+门禁 PASS 不等于必须使用多 GPU；如果当前只有单 GPU，或者真实结果证明单 GPU 更快，单 GPU 可以成为正式 winner（胜出方案）。
