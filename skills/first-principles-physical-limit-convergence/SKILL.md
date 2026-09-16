@@ -1,9 +1,9 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 在固定任务和硬约束下，以时间为唯一优化目标；先计算 T_PHY（物理极限）和 T_MACHINE_STAR（本机最佳软件栈下的稳定理论极限），再从去重甲 V1 开始按最大绝对 Gap（差距）迭代，并在 99 前强制通过 Software Frontier Gate（软件前沿门禁），验证当前可获得、成熟、兼容、真实更快的软件栈。
+description: 在固定任务和硬约束下，以时间为唯一优化目标；先冻结 ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界），计算 T_PHY（物理极限）和 T_MACHINE_STAR（当前有效硬件 + 最佳成熟软件栈下的稳定理论极限），再从去重甲 V1 开始按最大绝对 Gap（差距）迭代，并在 99 前强制通过 Software Frontier Gate（软件前沿门禁）与当前硬件边界内的 Hardware Topology Gate（硬件拓扑门禁）。
 metadata:
   version: "1.1.0"
-  short-description: 第一性原理物理极限收敛引擎·软件前沿版
+  short-description: 第一性原理物理极限收敛引擎·软件/硬件边界版
   lineage: first-principles-physical-limit-convergence@1.0.0 <- absolute-time-fireworks-optimization@2.0.1
 ---
 
@@ -21,9 +21,11 @@ SAFETY == PASS（安全通过）
 TASK_CONTRACT == IDENTICAL（任务合同保持一致）
 ```
 
-本版继承 v1.0.0 的两步法、去重甲、KEEP/ROLLBACK（保留/回滚）、多智能体资源约束、Shared Fact Source（共同事实源）和 99/FREEZE（99/冻结），新增一条重要硬规则：
+本版继承 v1.0.0 的两步法、去重甲、KEEP/ROLLBACK（保留/回滚）、多智能体资源约束、Shared Fact Source（共同事实源）和 99/FREEZE（99/冻结），新增两条硬规则：
 
-> **本机极限不再由“当前已安装软件”定义，而由“这台硬件在当前可获得、成熟、兼容、可验证的最佳软件栈”定义。**
+> **软件规则：本机极限不由“当前已安装软件”定义，而由当前可获得、成熟、兼容、可验证的最佳软件栈定义。**
+
+> **硬件规则：本轮 99 只由 ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）定义；未来计划增加但当前不存在的硬件，不得阻断当前 99。**
 
 “最新版”只是候选；“最优化版”必须通过同任务真实 benchmark（基准测试）证明更快后才获得正式地位。
 
@@ -31,14 +33,33 @@ TASK_CONTRACT == IDENTICAL（任务合同保持一致）
 
 ## STEP 1 — CALCULATE（第一步：计算）
 
-先冻结 `TASK_CONTRACT（任务合同）`，然后计算：
+先冻结：
+
+```text
+TASK_CONTRACT（任务合同）
+ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）
+```
+
+其中：
+
+```text
+ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）
+= 此刻已经真实安装 + 可正常使用 + 本任务允许使用的硬件
+```
+
+尚未安装、未来计划购买或当前不可用的硬件不进入本轮目标。
+
+然后计算：
 
 ```text
 T_PHY（物理极限）
-= 同一固定任务在物理规律、硬件资源和不可避免工作约束下的绝对下界区间
+= 同一固定任务在已冻结硬件边界、物理规律和不可避免工作约束下的绝对下界区间
 
 T_MACHINE_STAR（本机稳定理论极限）
-= 同一固定任务在当前硬件 + 当前可获得最佳成熟兼容软件栈下，
+= 同一固定任务在 ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）
+  + 当前边界内最佳硬件拓扑
+  + 当前可获得最佳成熟兼容软件栈
+  + 已验证 EMPIRICAL_PRIORS（经验先验）下，
   正确、稳定、可持续运行的理论极限区间
 ```
 
@@ -47,6 +68,29 @@ T_MACHINE_STAR（本机稳定理论极限）
 ```text
 T_MACHINE_STAR >= T_PHY
 ```
+
+### STEP 1 必须继承 Empirical Priors（经验先验）
+
+如果存在以前兼容的真实 99、阶段测试或失败复盘，禁止从零猜测。必须优先继承：
+
+- VERIFIED_99（已验证99）；
+- 分块 P50/P95；
+- 已证实有效的 KEEP（保留）机制；
+- 已证伪的 ROLLBACK（回滚）机制；
+- Failure Index（失败索引）；
+- 模型加载、卸载、VAE、编码、传输等真实成本；
+- 稳定 VRAM（显存）边界与资源竞争事实。
+
+当硬件/软件条件改变时，以：
+
+```text
+OLD VERIFIED FACTS（旧验证事实）
++ EMPIRICAL_PRIORS（经验先验）
++ NEW HARDWARE/SOFTWARE FACTS（新硬件/软件事实）
+=> NEW T_MACHINE_STAR（新的本机稳定理论极限）
+```
+
+不兼容的旧经验降低置信度，而不是静默沿用。
 
 ### STEP 1 必须包含 Software Frontier Scan（软件前沿扫描）
 
@@ -98,10 +142,22 @@ LATEST != AUTOMATIC_WINNER
 （最新版不自动等于最优版）
 ```
 
+### Hardware Topology Scan（硬件拓扑扫描）
+
+只扫描 `ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）` 内真实存在的硬件。
+
+如果当前只有一张 GPU，则单卡就是本轮硬件边界；未来第二张 GPU 不进入本轮 `T_MACHINE_STAR` 和 99 门禁。
+
+如果未来第二张 GPU 实际安装，资源边界发生变化，则重新计算新的 `T_MACHINE_STAR`，旧 99 作为经验先验继续继承。
+
+详细规则见 `references/HARDWARE-TOPOLOGY-GATE.md`。
+
 ### 第一步必须产出
 
+- `ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）`；
 - `T_PHY=[LOW,HIGH]（物理极限区间）`；
-- `T_MACHINE_STAR=[LOW,HIGH]（本机最佳软件栈理论区间）`；
+- `T_MACHINE_STAR=[LOW,HIGH]（本机稳定理论极限区间）`；
+- `EMPIRICAL_PRIORS（经验先验）`；
 - `CURRENT_STACK（当前软件栈）`；
 - `SOFTWARE_FRONTIER_CANDIDATES（软件前沿候选）`；
 - `BEST_KNOWN_STACK_ASSUMPTION（当前最佳栈假设）`；
@@ -149,7 +205,7 @@ ELSE => ROLLBACK（回滚）
 V1 -> V2 -> V3 -> ...
 ```
 
-但**在任何 99 / FREEZE 之前，必须额外通过 Software Frontier Gate（软件前沿门禁）**。
+但**在任何 99 / FREEZE 之前，必须通过 Software Frontier Gate（软件前沿门禁），以及当前有效硬件边界内的 Hardware Topology Gate（硬件拓扑门禁）**。
 
 ---
 
@@ -204,7 +260,7 @@ QUALITY_GATE（质量门禁）
 SOFTWARE_CANDIDATE_WINS=YES（软件候选胜出）
 => KEEP（保留）
 => 更新 BEST_SOFTWARE_STACK（最佳软件栈）
-=> 必要时重新计算 T_MACHINE_STAR（本机理论极限）
+=> 必要时重新计算 T_MACHINE_STAR（本机稳定理论极限）
 ```
 
 否则：
@@ -215,24 +271,26 @@ ROLLBACK（回滚）
 
 ## 软件前沿与物理极限的关系
 
-软件升级不能改变正确的 `T_PHY（物理极限）`，但可以显著降低软件造成的效率损失，使现实结果更接近 `T_PHY`。
+软件升级不能改变已冻结硬件边界下正确的 `T_PHY（物理极限）`，但可以显著降低软件造成的效率损失，使现实结果更接近 `T_PHY`。
 
 因此：
 
 ```text
 T_PHY（物理极限）
-= 硬件与物理规律参照
+= 当前有效硬件边界 + 物理规律参照
 
 T_MACHINE_STAR（本机稳定理论极限）
-= 硬件 + 当前最佳成熟软件栈参照
+= 当前有效硬件边界 + 当前边界内最佳硬件拓扑 + 当前最佳成熟软件栈 + 经验先验参照
 
 T_CURRENT（当前实测）
 = 当前实际实现
 ```
 
-软件进步时，`T_MACHINE_STAR` 可以因为新证据而下修；但必须记录：
+软件进步时，`T_MACHINE_STAR` 可以因为新证据而下修；硬件边界改变时，应建立新的版本化 `T_MACHINE_STAR`。必须记录：
 
 ```text
+OLD_BOUNDARY（旧硬件边界）
+NEW_BOUNDARY（新硬件边界，如有）
 OLD_STACK（旧软件栈）
 NEW_STACK（新软件栈）
 OLD_TARGET（旧目标）
@@ -293,9 +351,10 @@ LOCAL RESULT（本机结果）
 只有：
 
 ```text
-LOCAL_TASK_RESULT=PASS
-AND SHARED_REPO_SYNC=PASS
-AND SOFTWARE_FRONTIER_GATE=PASS
+LOCAL_TASK_RESULT=PASS（本机任务通过）
+AND SHARED_REPO_SYNC=PASS（共同仓库同步通过）
+AND SOFTWARE_FRONTIER_GATE=PASS（软件前沿门禁通过）
+AND HARDWARE_TOPOLOGY_GATE=PASS（当前硬件拓扑门禁通过）
 ```
 
 才允许最终：
@@ -323,11 +382,30 @@ FINAL=PASS
 7. `SOFTWARE_FRONTIER_GATE=PASS（软件前沿门禁通过）`；
 8. 已比较当前版本、最新稳定版和主要成熟优化候选；
 9. 最终采用栈已真实 benchmark 证明是当前最佳已知可复现方案；
-10. Shared Fact Source closure（共同事实源收口）PASS。
+10. `HARDWARE_TOPOLOGY_GATE=PASS（当前硬件拓扑门禁通过）`；
+11. `ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）` 已明确冻结，未来不存在的硬件不参与本轮门禁；
+12. Shared Fact Source closure（共同事实源收口）PASS。
 
 因此：
 
-> **99 = 当前硬件 + 当前最佳成熟兼容软件栈 + 当前已知可验证方法下的稳定最优。**
+> **99 = 当前真实可用硬件边界 + 当前边界内最佳硬件拓扑 + 当前最佳成熟兼容软件栈 + 当前已知可验证方法下的稳定最优。**
+
+当未来增加硬件或关键软件发生重大变化时：
+
+```text
+旧 99 不直接冒充新 99
+旧 99 也不作废
+```
+
+而是：
+
+```text
+OLD 99（旧99）
++ EMPIRICAL_PRIORS（经验先验）
++ NEW FACTS（新事实）
+=> NEW T_MACHINE_STAR（新本机稳定理论极限）
+=> 新一轮收敛
+```
 
 ---
 
@@ -342,6 +420,7 @@ FINAL=PASS
 
 - `references/FIRST-PRINCIPLES-LIMIT-MODEL.md`
 - `references/SOFTWARE-FRONTIER-GATE.md`
+- `references/HARDWARE-TOPOLOGY-GATE.md`
 - `references/MULTI-AGENT-PARALLELISM.md`
 - `references/EXECUTION-BRIDGE.md`
 - `references/EXECUTION-CLOSURE-CONTRACT.md`
@@ -352,8 +431,12 @@ FINAL=PASS
 ```text
 SKILL_VERSION=1.1.0
 TWO_STEP_METHOD=PASS（两步法通过）
+ACTIVE_HARDWARE_BOUNDARY_DEFINED=PASS（当前有效硬件边界已定义）
+EMPIRICAL_PRIOR_REUSE_DEFINED=PASS（经验先验复用已定义）
 SOFTWARE_FRONTIER_GATE_DEFINED=PASS（软件前沿门禁已定义）
+HARDWARE_TOPOLOGY_GATE_DEFINED=PASS（硬件拓扑门禁已定义）
 BEST_SOFTWARE_STACK_REQUIRED_FOR_99=YES（99必须验证最佳软件栈）
+FUTURE_UNAVAILABLE_HARDWARE_BLOCKS_CURRENT_99=NO（未来不可用硬件不阻断当前99）
 LEGACY_INHERITANCE_REVIEW=PASS（继承审查通过）
 MULTI_AGENT_POLICY_DEFINED=PASS（多智能体策略已定义）
 ```
