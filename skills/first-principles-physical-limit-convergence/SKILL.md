@@ -1,43 +1,45 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 在固定任务完成条件和硬约束下，以时间为唯一优化目标；先用第一性原理计算绝对物理极限区间 T_PHY 与本机稳定可实现极限区间 T_MACHINE_STAR，再从去重甲后的最小 V1 开始，按最大绝对可消灭时间 Gap 真实迭代，直到 99 / FREEZE。适用于工程、AI 推理、软件、工作流、生产与其他可以明确任务合同、资源约束和时间测量边界的问题。
+description: 在固定任务和硬约束下，以时间为唯一优化目标；先计算 T_PHY（物理极限）和 T_MACHINE_STAR（本机最佳软件栈下的稳定理论极限），再从去重甲 V1 开始按最大绝对 Gap（差距）迭代，并在 99 前强制通过 Software Frontier Gate（软件前沿门禁），验证当前可获得、成熟、兼容、真实更快的软件栈。
 metadata:
-  version: "1.0.0"
-  short-description: 第一性原理物理极限收敛引擎
-  lineage: absolute-time-fireworks-optimization@2.0.1
+  version: "1.1.0"
+  short-description: 第一性原理物理极限收敛引擎·软件前沿版
+  lineage: first-principles-physical-limit-convergence@1.0.0 <- absolute-time-fireworks-optimization@2.0.1
 ---
 
-# 第一性原理物理极限收敛引擎 v1.0.0
+# 第一性原理物理极限收敛引擎 v1.1.0
 
 ```text
-PRIMARY_OBJECTIVE = MINIMIZE T_END_TO_END
+PRIMARY_OBJECTIVE = MINIMIZE T_END_TO_END（最小化真实端到端时间）
 
-SUBJECT TO:
-TASK_COMPLETED == TRUE
-CORRECTNESS == PASS
-QUALITY >= FIXED_THRESHOLD
-STABILITY >= FIXED_THRESHOLD
-SAFETY == PASS
-TASK_CONTRACT == IDENTICAL
+SUBJECT TO（硬约束）:
+TASK_COMPLETED == TRUE（任务真实完成）
+CORRECTNESS == PASS（正确性通过）
+QUALITY >= FIXED_THRESHOLD（质量达到固定阈值）
+STABILITY >= FIXED_THRESHOLD（稳定性达到固定阈值）
+SAFETY == PASS（安全通过）
+TASK_CONTRACT == IDENTICAL（任务合同保持一致）
 ```
 
-本技能由 `absolute-time-fireworks-optimization v2.0.1` 演化而来。旧技能已经证明了“固定任务完成条件 + 去重甲 + 真实计时 + KEEP/ROLLBACK + 99/FREEZE”的有效性；本版不抛弃这些成熟执行纪律，只替换旧版的固定四列主流程。
+本版继承 v1.0.0 的两步法、去重甲、KEEP/ROLLBACK（保留/回滚）、多智能体资源约束、Shared Fact Source（共同事实源）和 99/FREEZE（99/冻结），新增一条重要硬规则：
 
-## 唯一核心：两步法
+> **本机极限不再由“当前已安装软件”定义，而由“这台硬件在当前可获得、成熟、兼容、可验证的最佳软件栈”定义。**
 
-### STEP 1 — CALCULATE：先算终点与最短攻击路线
+“最新版”只是候选；“最优化版”必须通过同任务真实 benchmark（基准测试）证明更快后才获得正式地位。
 
-不要求先制造一个低性能 CURRENT，也不要求先找到外部成熟方案。
+---
 
-固定 `TASK_CONTRACT` 后，利用已有真实硬件、软件、模型、执行图、数据流、依赖关系和资源约束，计算：
+## STEP 1 — CALCULATE（第一步：计算）
+
+先冻结 `TASK_CONTRACT（任务合同）`，然后计算：
 
 ```text
-T_PHY
-= 同一固定任务在物理规律与不可避免操作约束下的绝对物理下界区间
+T_PHY（物理极限）
+= 同一固定任务在物理规律、硬件资源和不可避免工作约束下的绝对下界区间
 
-T_MACHINE_STAR
-= 同一固定任务在当前真实机器/运行环境上，
-  在正确、稳定、可持续条件下理论可实现的极限区间
+T_MACHINE_STAR（本机稳定理论极限）
+= 同一固定任务在当前硬件 + 当前可获得最佳成熟兼容软件栈下，
+  正确、稳定、可持续运行的理论极限区间
 ```
 
 硬不变量：
@@ -46,118 +48,229 @@ T_MACHINE_STAR
 T_MACHINE_STAR >= T_PHY
 ```
 
-任何未知现实效率、kernel 利用率、带宽利用率、并行重叠比例、调度损失等，优先表达为区间和 `ASSUMPTION_LEDGER`，而不是以“尚未实测”为理由取消第一性原理计算。
+### STEP 1 必须包含 Software Frontier Scan（软件前沿扫描）
 
-第一步必须产出：
+在计算 `T_MACHINE_STAR` 时，不得只读取当前已安装版本。必须检查与关键路径相关的软件层：
 
-- 固定任务合同与完成边界；
-- 物理因果 DAG / critical path；
-- 不可避免的操作、数据移动、同步与资源占用；
-- `T_PHY=[LOW,HIGH]`；
-- `T_MACHINE_STAR=[LOW,HIGH]`；
-- 分块极限（若任务自然存在分块）；
-- 每个假设、置信度和误差来源；
-- 可删除 / 合并 / 旁路 / 后移 / 并行 / 常驻 / 缓存 / 预计算的候选；
-- 第一版 `ATTACK_ORDER`；
-- 是否使用多智能体，以及最优并行模式。
+- GPU driver（显卡驱动）；
+- CUDA / PyTorch（CUDA / PyTorch运行时）；
+- ComfyUI / inference runtime（ComfyUI / 推理运行时）；
+- model kernels / quant ops（模型内核 / 量化算子）；
+- attention backend（注意力后端）；
+- compiler / graph capture（编译器 / 图捕获）；
+- memory allocator / prefetch / offload（内存分配 / 预取 / 卸载）；
+- model format / quantization（模型格式 / 量化实现）；
+- VAE / codec / output path（VAE / 编码器 / 输出路径）；
+- 与固定任务关键路径直接相关的成熟第三方优化。
 
-`EXTERNAL FRONTIER` 降级为 `OPTIONAL EVIDENCE`：它可以用来校验模型、借成熟实现、防漏机制，但不是终点，也不是必经步骤。
-
-### STEP 2 — CONVERGE：V1 → 最大 Gap → 攻击 → 99
-
-优先继承所有与本任务兼容的既有冻结 99。禁止为了展示提升百分比而故意退回 stock / raw baseline。
-
-在第一次真实运行前，先移除第一步已经明确证明不属于任务完成关键路径的重甲，得到：
+每个候选分类：
 
 ```text
-V1 = FIRST MINIMUM VIABLE EXECUTION
+CURRENT（当前已安装）
+LATEST_STABLE（官方最新稳定版）
+MATURE_OPTIMIZED（成熟优化版）
+EXPERIMENTAL（实验版）
 ```
 
-V1 不是最终优化版；它是“攻击迭代开始前的第一个最小、正确、可测版本”。V1 命令包必须先经过审计，再真实运行。
+只有前 3 类可进入正式 99 候选；`EXPERIMENTAL（实验版）` 默认只做研究，不直接进入最终冻结。
 
-测得 `T_CURRENT_BLOCK_i` 后，与第一步的本机目标比较：
+### 最佳软件栈定义
 
 ```text
-DELTA_T_REDUCIBLE_i
-=
-T_CURRENT_BLOCK_i
--
-T_MACHINE_TARGET_BLOCK_i
-
-NEXT_ATTACK
-=
-argmax_i(DELTA_T_REDUCIBLE_i)
+BEST_SOFTWARE_STACK（最佳软件栈）
+= argmin_stack T_EXEC（任务实际执行时间）
 ```
 
-重点是最大绝对可消灭时间，不是最大百分比，也不一定是当前耗时最大的块。
-
-每轮只改变一个可解释的机制或一组不可拆分的同一机制，真实运行后：
+但必须同时满足：
 
 ```text
-FASTER + HARD_CONSTRAINTS_PASS => KEEP
-ELSE => ROLLBACK
+TASK_CONTRACT_IDENTICAL=YES（任务一致）
+HARD_CONSTRAINTS_PASS=YES（硬约束通过）
+STABILITY_PASS=YES（稳定通过）
+COMPATIBILITY_PASS=YES（兼容通过）
+REPRODUCIBLE=YES（可复现）
 ```
 
-然后重新测量 Gap，持续：
+因此：
 
 ```text
-V1 -> V2 -> V3 -> ... -> 99 -> FREEZE
+LATEST != AUTOMATIC_WINNER
+（最新版不自动等于最优版）
 ```
 
-## T_PHY 与 T_MACHINE_STAR 的关系
+### 第一步必须产出
 
-`T_PHY` 是终极物理参照，不允许由成熟方案定义。
+- `T_PHY=[LOW,HIGH]（物理极限区间）`；
+- `T_MACHINE_STAR=[LOW,HIGH]（本机最佳软件栈理论区间）`；
+- `CURRENT_STACK（当前软件栈）`；
+- `SOFTWARE_FRONTIER_CANDIDATES（软件前沿候选）`；
+- `BEST_KNOWN_STACK_ASSUMPTION（当前最佳栈假设）`；
+- `PHYSICAL_DAG（物理因果图）`；
+- `ASSUMPTION_LEDGER（假设账本）`；
+- `ATTACK_ORDER（攻击顺序）`；
+- 多智能体模式。
 
-`T_MACHINE_STAR` 是当前机器的现实理论目标。它可以随着新证据证明原假设错误或不完整而版本化修订，但禁止为了让 99 更容易通过而移动目标。
+未知效率优先写成区间，不因缺少一次新实测而取消第一性原理计算。
 
-如果同一任务合同、同一计时边界下出现 `MEASURED < T_PHY`，优先检查任务合同、计时边界、缓存/结果身份、物理模型和测量。现实不能真正突破同一任务定义下正确计算的物理下界；冲突意味着模型、合同或测量至少有一项需要修正。
+---
 
-## 多智能体不是“越多越快”
+## STEP 2 — CONVERGE（第二步：收敛）
 
-先区分：
+先继承兼容的冻结 99，不为展示提升百分比故意退回慢版本。
+
+建立：
 
 ```text
-T_EXEC = 被优化任务本身的真实完成时间
-T_CONVERGENCE = 研究、计算、审计、编码、测试、证据分析与决策收敛所需墙钟时间
+V1 = FIRST MINIMUM VIABLE EXECUTION（第一最小正确执行版本）
 ```
 
-多智能体通常优化 `T_CONVERGENCE`；只有智能体编排本身属于固定任务运行时关键路径时，才进入 `T_EXEC`。
+V1 是去重甲后的第一个可测版本，不要求已经使用最终最佳软件栈。
 
-选择智能体数量：
+每轮：
 
 ```text
-N_STAR = argmin_N(
-    T_RESOURCE_CRITICAL_PATH(N)
-  + T_COORDINATION(N)
-  + T_MERGE(N)
-  + T_CONTENTION(N)
-)
+DELTA_T_REDUCIBLE_i（可消灭时间差）
+= T_CURRENT_BLOCK_i - T_MACHINE_TARGET_BLOCK_i
+
+NEXT_ATTACK（下一攻击）
+= argmax_i(DELTA_T_REDUCIBLE_i)
 ```
 
-只有同时满足以下条件才并行：至少两个独立子任务；子任务时间明显大于协调开销；不争用排他资源；输出可独立验证并安全合并；预计墙钟收益 > 0。
+真实修改后：
 
-默认模式：
+```text
+FASTER + HARD_CONSTRAINTS_PASS => KEEP（保留）
+ELSE => ROLLBACK（回滚）
+```
+
+持续：
+
+```text
+V1 -> V2 -> V3 -> ...
+```
+
+但**在任何 99 / FREEZE 之前，必须额外通过 Software Frontier Gate（软件前沿门禁）**。
+
+---
+
+# SOFTWARE FRONTIER GATE（软件前沿门禁）
+
+## 触发时机
+
+以下任一发生时必须执行：
+
+1. STEP 1 初次计算 `T_MACHINE_STAR`；
+2. 当前候选已经接近旧目标区间；
+3. 准备声明 `99=YES`；
+4. 距上次前沿扫描期间出现相关软件重大新版本；
+5. 新 release / commit 明确修改了当前任务关键路径相关代码。
+
+## 候选优先级
+
+优先测试预计高收益、低风险候选：
+
+```text
+Tier A（A档）= 运行时/框架/内核/内存管理/编译器更新
+Tier B（B档）= 模型格式、量化、注意力、VAE、codec 等成熟替代实现
+Tier C（C档）= driver / CUDA / 系统级更新
+```
+
+Tier C 系统级候选只有在有明确收益证据和安全回滚路径时才进入；不得为了追“最新”随意破坏稳定环境。
+
+## 测试方式
+
+软件前沿候选必须在隔离 branch/worktree/compat-lab（分支/工作树/兼容实验区）中测试：
+
+```text
+CURRENT_BEST（当前最佳）
+vs
+SOFTWARE_CANDIDATE（软件候选）
+```
+
+固定：
+
+```text
+TASK_CONTRACT（任务合同）
+INPUT（输入）
+SEEDS（随机种子集合）
+TIMING_BOUNDARY（计时边界）
+RESOURCE_STATE（资源状态）
+QUALITY_GATE（质量门禁）
+```
+
+只有真实更快且稳定：
+
+```text
+SOFTWARE_CANDIDATE_WINS=YES（软件候选胜出）
+=> KEEP（保留）
+=> 更新 BEST_SOFTWARE_STACK（最佳软件栈）
+=> 必要时重新计算 T_MACHINE_STAR（本机理论极限）
+```
+
+否则：
+
+```text
+ROLLBACK（回滚）
+```
+
+## 软件前沿与物理极限的关系
+
+软件升级不能改变正确的 `T_PHY（物理极限）`，但可以显著降低软件造成的效率损失，使现实结果更接近 `T_PHY`。
+
+因此：
+
+```text
+T_PHY（物理极限）
+= 硬件与物理规律参照
+
+T_MACHINE_STAR（本机稳定理论极限）
+= 硬件 + 当前最佳成熟软件栈参照
+
+T_CURRENT（当前实测）
+= 当前实际实现
+```
+
+软件进步时，`T_MACHINE_STAR` 可以因为新证据而下修；但必须记录：
+
+```text
+OLD_STACK（旧软件栈）
+NEW_STACK（新软件栈）
+OLD_TARGET（旧目标）
+NEW_TARGET（新目标）
+BENCHMARK_EVIDENCE（基准证据）
+REASON（修订原因）
+```
+
+禁止因为当前结果慢而把目标往上放宽。
+
+---
+
+## 多智能体
+
+多智能体优化 `T_CONVERGENCE（收敛工程时间）`，不自动优化单次 `T_EXEC（任务执行时间）`。
 
 ```text
 AGENT_MODE = OFF | SUPPORT_PARALLEL | RESOURCE_PARTITIONED
 ```
 
-对单 GPU 的权威 GPU benchmark，默认：
+对单 GPU 正式 benchmark：
 
 ```text
-GPU_BENCHMARK_SERIAL=YES
-GPU_EXCLUSIVE=YES
+GPU_BENCHMARK_SERIAL=YES（GPU正式基准串行）
+GPU_EXCLUSIVE=YES（GPU独占）
 ```
 
-详细规则见 `references/MULTI-AGENT-PARALLELISM.md`。
+软件前沿扫描适合并行拆分：官方最新版、成熟第三方优化、兼容性/风险、benchmark 审计可由不同只读智能体并行完成。
 
-## 继承旧技能的成熟纪律
+---
 
-继续继承：TASK_COMPLETED / hard constraints；De-Armoring；真实端到端时间与权威分块计时；GPU 异步同步/CUDA Event；KEEP/ROLLBACK；99/FREEZE；可逆 instrumentation；已有事实优先与 gap-only verification；dirty worktree 保护；Failure Index；高价值决策回到推理大脑；共同事实源强制收口；正式报告 + 机器可读结果；精确 stage；禁止 `git add .`、force push、`reset --hard`、覆盖陌生修改；remote verify；只读任务不制造无意义 commit。
+## 继承的成熟纪律
 
-完整继承表见 `references/LEGACY-INHERITANCE-MAP.md`。
+继续继承：TASK_COMPLETED（任务完成边界）、De-Armoring（去重甲）、真实端到端计时、CUDA Event（CUDA事件）、KEEP/ROLLBACK（保留/回滚）、99/FREEZE（99/冻结）、可逆 instrumentation（插桩）、已有事实优先、Failure Index（失败索引）、dirty worktree（工作树保护）、Shared Fact Source（共同事实源）、精确 stage（精确暂存）、禁止 `git add .` / force push / `reset --hard`、remote verify（远端验证）。
 
-## SHARED FACT SOURCE CLOSURE GATE
+---
+
+## SHARED FACT SOURCE CLOSURE GATE（共同事实源收口门禁）
 
 ```text
 SHARED_FACT_SOURCE=cuiqinggang/codex-private-skills
@@ -165,47 +278,82 @@ SHARED_REPO_LOCAL=C:\Users\A\Documents\Codex\codex-private-skills
 SHARED_REPO_SYNC_REQUIRED=YES
 ```
 
-凡产生后续需要复用的新工程事实：
+产生新工程事实时：
 
 ```text
-LOCAL RESULT
--> FORMAL REPORT / STRUCTURED FACT
--> SHARED REPOSITORY
--> EXACT STAGE
--> COMMIT
--> PUSH
--> REMOTE VERIFY
+LOCAL RESULT（本机结果）
+-> FORMAL REPORT（正式报告）
+-> SHARED REPOSITORY（共同仓库）
+-> EXACT STAGE（精确暂存）
+-> COMMIT（提交）
+-> PUSH（推送）
+-> REMOTE VERIFY（远端验证）
 ```
 
-只有 `LOCAL_TASK_RESULT=PASS AND SHARED_REPO_SYNC=PASS` 才允许 `STAGE_COMPLETE=YES / FINAL=PASS / 99=YES / FREEZE=YES`。
+只有：
 
-只读回答、纯解释、未执行草案、读取已有事实且不产生新工程事实时允许 `SHARED_REPO_SYNC_REQUIRED=NO`。
+```text
+LOCAL_TASK_RESULT=PASS
+AND SHARED_REPO_SYNC=PASS
+AND SOFTWARE_FRONTIER_GATE=PASS
+```
 
-## 99 / FREEZE
+才允许最终：
 
-99 不是 `T_CURRENT/T_PHY=99%`，也不是任意固定 1% 阈值。只有固定任务真实完成、hard constraints 通过、权威计时稳定、当前结果已进入或贴近高置信 `T_MACHINE_STAR` 区间、剩余高置信机制的绝对收益不再显著高于测量噪声 + 工程/切换成本、没有明显大块重甲、目标没有为了过 99 被移动、shared-repo closure PASS，才允许 `99=YES / FREEZE=YES`。
+```text
+99=YES
+FREEZE=YES
+FINAL=PASS
+```
+
+---
+
+## 99 / FREEZE（99 / 冻结）
+
+99 不是数学绝对极限，也不是固定 1% 阈值。
+
+必须同时满足：
+
+1. 固定任务真实完成；
+2. hard constraints（硬约束）全部通过；
+3. 权威计时稳定；
+4. 当前结果进入或贴近高置信 `T_MACHINE_STAR`；
+5. 没有明显大块重甲；
+6. 没有高置信高收益剩余 Gap；
+7. `SOFTWARE_FRONTIER_GATE=PASS（软件前沿门禁通过）`；
+8. 已比较当前版本、最新稳定版和主要成熟优化候选；
+9. 最终采用栈已真实 benchmark 证明是当前最佳已知可复现方案；
+10. Shared Fact Source closure（共同事实源收口）PASS。
+
+因此：
+
+> **99 = 当前硬件 + 当前最佳成熟兼容软件栈 + 当前已知可验证方法下的稳定最优。**
+
+---
 
 ## 默认最短读取路径
 
-正常任务只读 `SKILL.md` 和 `references/FAST-PATH.md`。
+正常任务读取：
+
+1. `SKILL.md`
+2. `references/FAST-PATH.md`
 
 按需读取：
+
 - `references/FIRST-PRINCIPLES-LIMIT-MODEL.md`
+- `references/SOFTWARE-FRONTIER-GATE.md`
 - `references/MULTI-AGENT-PARALLELISM.md`
 - `references/EXECUTION-BRIDGE.md`
 - `references/EXECUTION-CLOSURE-CONTRACT.md`
 - `references/FAILURE-INDEX.md`
-- `references/RAPTOR-ITERATION-CASE.md`
 
-## 状态声明
+## 状态
 
 ```text
-SKILL_VERSION=1.0.0
-METHOD_LOGIC_ACCEPTANCE=PASS
-LEGACY_INHERITANCE_REVIEW=PASS
-MULTI_AGENT_POLICY_DEFINED=PASS
-H3_FIRST_APPLICATION=NOT_STARTED
-H3_PHYSICAL_LIMIT_CALCULATION=NOT_STARTED
-H3_V1_RUN=NOT_STARTED
-RUNTIME_INSTALLATION=NOT_EXECUTED_BY_THIS_PACKAGE
+SKILL_VERSION=1.1.0
+TWO_STEP_METHOD=PASS（两步法通过）
+SOFTWARE_FRONTIER_GATE_DEFINED=PASS（软件前沿门禁已定义）
+BEST_SOFTWARE_STACK_REQUIRED_FOR_99=YES（99必须验证最佳软件栈）
+LEGACY_INHERITANCE_REVIEW=PASS（继承审查通过）
+MULTI_AGENT_POLICY_DEFINED=PASS（多智能体策略已定义）
 ```
