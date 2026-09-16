@@ -1,6 +1,6 @@
 # H3-P0 全量探索回归与旧基线冻结档案
 
-状态：REVIEW_READY（待远端核验）；本档案与机器可读 JSON、[证据索引](H3-P0-LEGACY-EVIDENCE-INDEX.md)、[失败索引](H3-P0-FAILURE-INDEX.md)、[成熟路径规则 v1.2](H3-P0-MATURE-PATH-FIRST-v1.2.md)构成下一任务的直接入口。完成精确提交、推送和远端 HEAD 核验后，才可宣告 H3_P0_LEGACY_RETROSPECTIVE=FROZEN（旧探索档案冻结）。本档案冻结历史事实，不宣称双 99 已完成。
+状态：FROZEN（远端已核验）；本档案与机器可读 JSON、[证据索引](H3-P0-LEGACY-EVIDENCE-INDEX.md)、[失败索引](H3-P0-FAILURE-INDEX.md)、[成熟路径规则 v1.2](H3-P0-MATURE-PATH-FIRST-v1.2.md)构成下一任务的直接入口。完成精确提交、推送和远端 HEAD 核验后，才可宣告 H3_P0_LEGACY_RETROSPECTIVE=FROZEN（旧探索档案冻结）。本档案冻结历史事实，不宣称双 99 已完成。
 
 ## 1. 目标、固定任务合同与计时
 
