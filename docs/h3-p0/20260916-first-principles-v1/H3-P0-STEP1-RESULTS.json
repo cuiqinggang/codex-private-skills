@@ -1,0 +1,58 @@
+{
+  "schema": "h3-p0-first-principles-targets/v1",
+  "method": "first-principles-physical-limit-convergence@1.0.0",
+  "task": {
+    "width": 32,
+    "height": 32,
+    "frames": 5,
+    "steps": 1,
+    "prompt": "static frame",
+    "input_mode": "T2VA",
+    "sampler": "res_multistep",
+    "scheduler": "beta",
+    "state": "warm_service_ready",
+    "output": "decoded_5_frame_minimal_video_artifact"
+  },
+  "targets_seconds": {
+    "physical_generation": {"low": 0.05, "high": 0.12, "confidence": "MEDIUM_HIGH"},
+    "physical_path": {"low": 0.18, "high": 0.45, "confidence": "MEDIUM"},
+    "physical_total": {"low": 0.23, "high": 0.57},
+    "machine_generation": {"low": 0.45, "high": 1.40, "confidence": "MEDIUM"},
+    "machine_path": {"low": 0.70, "high": 2.00, "confidence": "MEDIUM_LOW"},
+    "machine_total": {"low": 1.15, "high": 3.40}
+  },
+  "ninety_nine_v1": {
+    "generation": {"p50_max_s": 1.40, "p95_max_s": 1.70},
+    "path": {"p50_max_s": 2.00, "p95_max_s": 2.40},
+    "final_valid_warm_runs": 10,
+    "requires_no_high_value_remaining_gap": true,
+    "requires_shared_repo_sync": true
+  },
+  "two_99": [
+    "H3_P0_PATH_99",
+    "H3_P0_GENERATION_99"
+  ],
+  "legacy_alias": {
+    "H3_P0_GPU_CORE_99": "H3_P0_GENERATION_99"
+  },
+  "agent_policy": {
+    "mode": "SUPPORT_PARALLEL",
+    "max_support_agents": 3,
+    "main_executor": 1,
+    "gpu_exclusive": true,
+    "gpu_benchmark_serial": true,
+    "concurrent_gpu_heavy_agents": 0
+  },
+  "initial_attack_order": [
+    "V1_DEARMOR_MINIMAL_GRAPH",
+    "MODEL_RESIDENCY_RESERVE_VRAM",
+    "PINNED_MEMORY_AND_TRANSFER",
+    "CONDITIONING_CACHE",
+    "H3_VAE_RESIDENCY_TRANSITION",
+    "RESULT_PATH_DEARMOR",
+    "PYTHON_KERNEL_OVERHEAD_IF_STILL_MATERIAL"
+  ],
+  "target_revision_rule": "new evidence must invalidate a documented assumption; never move target only because current result is slow",
+  "new_h3_run_performed_in_step1": false,
+  "ready_to_execute_command": true
+}
