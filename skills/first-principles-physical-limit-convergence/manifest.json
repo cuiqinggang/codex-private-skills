@@ -1,0 +1,20 @@
+{
+  "skill_id": "first-principles-physical-limit-convergence",
+  "version": "1.0.0",
+  "display_name": "第一性原理物理极限收敛引擎",
+  "lineage": {
+    "skill_id": "absolute-time-fireworks-optimization",
+    "version": "2.0.1"
+  },
+  "canonical_method": [
+    "STEP 1 CALCULATE: TASK_CONTRACT -> PHYSICAL_DAG -> T_PHY -> T_MACHINE_STAR -> ATTACK_ORDER",
+    "STEP 2 CONVERGE: DE_ARMOR -> V1 -> MEASURE -> GAP -> ATTACK -> KEEP/ROLLBACK -> 99/FREEZE"
+  ],
+  "shared_fact_source": "cuiqinggang/codex-private-skills",
+  "status": {
+    "method_logic_acceptance": "PASS",
+    "runtime_installation": "NOT_EXECUTED",
+    "h3_first_application": "NOT_STARTED"
+  },
+  "created_date": "2026-09-16"
+}

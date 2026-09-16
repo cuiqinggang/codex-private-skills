@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "",
+  "target_version": "",
+  "iteration": "V1",
+  "task_completed": false,
+  "hard_constraints_pass": false,
+  "agent_mode": "",
+  "resource_isolation_pass": false,
+  "timing": {"total": null, "blocks": []},
+  "machine_target": {"total_low": null, "total_high": null, "blocks": []},
+  "reducible_gaps": [],
+  "change": {"mechanism": "", "expected_abs_gain": null, "actual_abs_gain": null},
+  "decision": "KEEP|ROLLBACK|UNDECIDED",
+  "target_revision": {"changed": false, "reason": "", "new_evidence": ""},
+  "shared_repo_sync": "PENDING",
+  "commit_sha": "",
+  "remote_verify": "PENDING"
+}
