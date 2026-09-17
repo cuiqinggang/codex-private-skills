@@ -1,30 +1,60 @@
-# v1.0 REGRESSION CHECKLIST
+# Regression Checklist — v2.0.0
 
-- [x] CURRENT is not required before STEP 1.
-- [x] External frontier is optional evidence.
-- [x] Raw stock baseline is not required.
-- [x] Two-step flow is canonical.
-- [x] T_PHY and T_MACHINE_STAR are separate.
-- [x] T_MACHINE_STAR >= T_PHY invariant exists.
-- [x] Unknown efficiencies become intervals/assumptions, not automatic blockers.
-- [x] Existing frozen 99 is inherited by default.
-- [x] Attack priority uses absolute reducible time.
-- [x] Target revision requires new evidence and invalidated assumption.
-- [x] Same contract/timing boundary is required for comparison.
-- [x] Measured result below T_PHY triggers model/contract/measurement audit.
-- [x] T_EXEC and T_CONVERGENCE are separated.
-- [x] Agent count is optimized, not maximized.
-- [x] Spawn gate exists.
-- [x] GPU-exclusive benchmark rule exists.
-- [x] De-Armoring, KEEP/ROLLBACK, 99/FREEZE, shared-repo closure, exact staging, Git safety, reversible instrumentation, Failure Index and existing-facts-first are inherited.
-- [x] Runtime installation is NOT claimed.
-- [x] H3 validation is NOT claimed.
-- [x] H3 T_PHY/T_MACHINE_STAR are NOT fabricated.
+## Core method
+
+- [x] 主流程仍只有四步。
+- [x] `NO_FREE_EXPLORATION=YES`。
+- [x] Codex 仅有有限执行灵活性。
+- [x] 新研究方向保持 `INDEPENDENT_99_PATH`。
+- [x] 正常 PASS/FAIL/ROLLBACK 分支不要求逐步返回 GPT。
+
+## Stochastic systems
+
+- [x] 区分 `ATTEMPT` 与 `DELIVERY`。
+- [x] 必须判断随机变量是否属于用户 TASK 语义。
+- [x] 支持 GPT 预授权 `QC FAIL -> NEW RANDOM STATE -> RETRY SAME PATH`。
+- [x] retry 不等于 Codex 自由探索。
+- [x] 正式指标支持 `T_TFVR`。
+- [x] 记录 first-attempt pass rate / attempts-to-success / invalid rejected / invalid delivered。
+- [x] 不把 accepted 20/20 PASS 表述为未来随机过程数学上绝对终止。
+- [x] exact-seed 任务禁止自动换种。
+
+## Failure classification
+
+- [x] control-plane failure 与 algorithm failure 分离。
+- [x] execution-environment failure 与 random-attempt QC failure 分离。
+- [x] source identity mismatch 不得伪装成候选失败。
+- [x] capacity 错误不得重放已完成本地工作。
+
+## Automation
+
+- [x] GitHub 是 shared truth workspace。
+- [x] GPT=planner/judge，Codex=deterministic executor。
+- [x] 浏览器桥接只负责 transport。
+- [x] checkpoint / DO_NOT_REPEAT / ACTION_ID 幂等规则存在。
+- [x] capacity router 接口存在。
+- [x] 用户保留 STOP / PAUSE / sensitive approval / task-contract change。
+
+## H3-P0 real application
 
 ```text
-METHOD_LOGIC_ACCEPTANCE=PASS
-LEGACY_INHERITANCE_REVIEW=PASS
-MULTI_AGENT_POLICY_DEFINED=PASS
-RUNTIME_INSTALLATION=NOT_EXECUTED
-H3_FIRST_APPLICATION=NOT_STARTED
+H3_P0_DELIVERY_SYSTEM_99=YES
+FINAL_ACCEPTED_QC=20/20
+FIRST_ATTEMPT_PASS_RATE=90%
+MEAN_ATTEMPTS_PER_TASK=1.10
+T_TFVR_P50=6.076s
+T_TFVR_P95=11.974s
+INVALID_OUTPUT_DELIVERED=0
+FINAL_99=YES
+FREEZE=YES
+```
+
+## Non-regression assertions
+
+```text
+SIMPLE_FOUR_STEP_METHOD=PASS
+NO_REAL_EXECUTION_REPLAN_LOOP=PASS
+STOCHASTIC_VERIFIED_DELIVERY=PASS
+AUTOMATION_DOES_NOT_TRANSFER_RESEARCH_AUTHORITY_TO_CODEX=PASS
+H3_HISTORY_FAILURES_PRESERVED=YES
 ```
