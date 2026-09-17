@@ -1,382 +1,408 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 在固定任务与硬约束下，以时间为主优化目标；先用第一性原理计算物理边界，再用极简真实运行校准真实执行态，优先收割世界成熟方案，只对成熟方案无法覆盖的最大剩余 Gap 做有数据支撑的定向攻击，并按生命周期 ROI 决定何时停止。
+description: 在固定任务和硬约束下，先计算第一性原理物理极限，再用极简真实运行校准现实可实现极限；吸收世界成熟方案后，先在推演层把从当前真实态到99的完整成熟优化路径跑通，再由执行器按路径快速验证；停止条件按剩余全部优化组合的未来生命周期总收益与总成本判断。
 metadata:
-  version: "1.3.0"
-  short-description: 第一性原理物理极限收敛引擎·真实态/成熟收割/ROI版
-  lineage: first-principles-physical-limit-convergence@1.2.0 <- @1.1.0 <- @1.0.0 <- absolute-time-fireworks-optimization@2.0.1
+  version: "1.4.0"
+  short-description: 第一性原理物理极限收敛引擎·虚拟成熟路径/组合收益版
+  lineage: first-principles-physical-limit-convergence@1.3.0 <- @1.2.0 <- @1.1.0 <- @1.0.0
 ---
 
-# 第一性原理物理极限收敛引擎 v1.3.0
+# 第一性原理物理极限收敛引擎 v1.4.0
+
+## 总目标
 
 ```text
-PRIMARY_OBJECTIVE = MINIMIZE T_END_TO_END（最小化真实端到端时间）
-SECONDARY_OBJECTIVE = MINIMIZE T_CONVERGENCE（最小化达到稳定最优的工程时间）
+PRIMARY_OBJECTIVE（主目标）
+= 最小化真实端到端执行时间
 
-SUBJECT TO（硬约束）:
-TASK_COMPLETED == TRUE（任务真实完成）
-CORRECTNESS == PASS（正确性通过）
-QUALITY >= FIXED_THRESHOLD（质量达到固定阈值）
-STABILITY >= FIXED_THRESHOLD（稳定性达到固定阈值）
-SAFETY == PASS（安全通过）
-TASK_CONTRACT == IDENTICAL（任务合同一致）
+SECONDARY_OBJECTIVE（第二目标）
+= 最小化达到稳定最优所需的工程时间
 ```
 
-## 核心定义
+硬约束始终优先：任务必须真实完成，正确性、质量、稳定性和安全必须通过，任务合同不得为了提速而偷偷改变。
 
-### 第一性原理不等于自由探索
+---
+
+# 核心原则
+
+## 1. 第一性原理不等于自由探索
 
 第一性原理负责：
 
-- 冻结任务合同和当前真实硬件边界；
-- 建立不可避免步骤与物理因果链；
-- 计算 `T_PHY（物理极限）`；
-- 识别假设、约束和剩余 Gap。
+- 确定任务合同；
+- 确定当前真实硬件边界；
+- 建立物理因果链；
+- 计算 `T_PHY（第一性原理物理极限）`；
+- 识别不可避免成本和可消灭成本。
 
-第一性原理**不要求重新发明已有成熟优化**。如果市场、官方、同硬件实测已经提供高置信成熟路径，必须优先复用并本机 A/B。
+它**不要求重新发明市场、官方、成熟开源项目已经反复验证过的优化**。
 
-默认主路径：
+只要存在高适用、高证据的成熟方案，就必须优先吸收成熟收益；禁止先进入无边界自研。
+
+## 2. 复杂系统不能只看静态信息
+
+硬件型号、软件版本、模型大小只能描述“静态机器”，不能完整描述“真正运行中的机器”。
+
+复杂任务必须尽快完成一次 `MRE（极简真实运行）`，让最小完整关键链真实跑通，得到真实设备放置、模型加载、缓存、预取、编译、显存、内存、冷/热状态和实际阶段时间。
+
+## 3. 实际执行前先形成完整虚拟99路径
+
+不能再采用：
 
 ```text
-FIRST-PRINCIPLES BOUND（第一性原理边界）
-→ MINIMAL REAL RUN（极简真实运行）
-→ REAL-STATE CALIBRATION（真实态校准）
-→ MATURE HARVEST（成熟方案收割）
-→ DATA-DRIVEN REHEARSAL（数据驱动模拟推演）
-→ TARGETED ATTACK（定向攻击）
-→ ROI STOP（收益停止）
-→ 99 / FREEZE（99 / 冻结）
+发现一个点
+→ 试一个点
+→ 再发现一个点
+→ 再试一个点
+→ 连续V1…Vn
 ```
+
+正式方法是：
+
+```text
+第一性原理极限
+→ 极简真实运行
+→ 真实态现实极限
+→ 成熟方案吸收
+→ 完整虚拟运行到99
+→ 形成成熟执行路径
+→ Codex按路径快速验证
+```
+
+## 4. 停止条件看“剩余优化组合”的长期总收益
+
+不能因为某个单点只省0.1秒、0.5秒就停止。
+
+必须把仍可做的优化点视为一个组合，计算：
+
+- 剩余组合全部完成后，一次完整任务总共能再省多少；
+- 未来预计运行多少次；
+- 这些节省在整个生命周期中的总价值；
+- 完成整个剩余组合需要多少工程、验证、风险、集成和维护成本。
+
+只有组合未来总收益不再大于组合总成本，才允许经济性停止。
 
 ---
 
-# STEP 1 — CALCULATE + REAL-STATE CALIBRATION（计算 + 真实态校准）
+# STEP 1 — 计算极限 + 极简真实运行 + 真实态校准
 
-## 1. 冻结边界
+## 1.1 冻结任务合同
 
-冻结：
+必须冻结：
+
+- `TASK_CONTRACT（任务合同）`；
+- `TASK_COMPLETED（任务完成条件）`；
+- correctness（正确性）；
+- quality（质量）；
+- stability（稳定性）；
+- safety（安全）；
+- 权威计时边界。
+
+## 1.2 冻结当前有效硬件边界
 
 ```text
-TASK_CONTRACT（任务合同）
-TASK_COMPLETED（完成条件）
 ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）
-QUALITY / STABILITY / SAFETY（质量 / 稳定 / 安全）
+= 此刻真实安装 + 可正常使用 + 本任务允许使用的硬件
 ```
 
-`ACTIVE_HARDWARE_BOUNDARY` 只包含此刻真实安装、可正常使用、允许用于本任务的硬件。未来计划增加但当前不存在的硬件不得阻断当前 99。
+未来计划增加但当前不存在的硬件，不进入本轮99，也不得阻断本轮99。
 
-## 2. 继承经验先验
+## 1.3 继承历史经验
 
-如果存在以前兼容的真实 99、阶段测试或失败复盘，禁止从零猜测。必须继承：
+如果存在兼容的历史任务，必须优先继承：
 
-- `VERIFIED_99（已验证99）`；
-- P50/P95 与真实分块时间；
-- KEEP / ROLLBACK；
+- 已验证99；
+- P50/P95；
+- 已保留方案；
+- 已回滚方案；
 - Failure Index（失败索引）；
-- 稳定 VRAM / RAM / I/O / 设备放置事实；
-- 已证实有效和已证伪机制。
+- 真实阶段成本；
+- 稳定显存/内存边界；
+- 已证伪机制。
 
-旧经验不兼容时降低置信度并说明，不得静默套用。
+禁止在已有证据时重新从零探索。
 
-## 3. 计算物理与机器初始区间
-
-```text
-T_PHY（物理极限）
-= 固定任务在当前硬件边界与物理规律下的理论下界区间
-
-T_MACHINE_STAR_PRE（本机稳定理论极限初算）
-= 当前硬件 + 已知最佳成熟软件/实现 + 经验先验下的稳定理论区间
-```
-
-未知效率使用区间 + 置信度，不制造伪精确值。
-
-## 4. 复杂任务必须做 MRE（最小真实执行）
-
-仅靠静态硬件/软件版本不足以代表真实执行态。复杂任务必须尽快建立：
+## 1.4 先计算第一性原理物理极限
 
 ```text
-MRE = MINIMAL REAL EXECUTION（最小真实执行版本）
+T_PHY（第一性原理物理极限）
+= 固定任务在当前硬件边界、物理规律和不可避免工作量下的理论下界区间
 ```
 
-MRE 要让完整关键链真实跑通并暴露：
+未知项必须使用区间和置信度，不能制造伪精确值。
 
-- 实际模型装载/卸载；
-- 动态显存/内存行为；
+## 1.5 计算现实极限初稿
+
+```text
+T_MACHINE_STAR_PRE（本机现实极限初算）
+= 当前硬件
++ 当前软件
++ 已知成熟实现
++ 历史经验先验
+下的稳定理论区间初稿
+```
+
+## 1.6 做一次 MRE（极简真实运行）
+
+复杂系统必须尽快让最小完整链真实运行一次。
+
+默认目标：在约10分钟级工程时间内取得足够校准方向的真实数据；如果任务单次运行物理上更长，则使用机制一致的最小合同或最小子合同。
+
+MRE必须尽量暴露：
+
+- 各主要阶段实际时间；
+- 冷启动、预热、稳态差异；
+- 真实模型加载/卸载；
+- 真实设备放置；
+- 显存/内存行为；
 - 缓存/预取/编译是否真正启用；
-- 实际设备放置；
-- 冷启动/预热/稳态差异；
-- 真实关键路径；
-- 运行时依赖、竞态和故障；
-- 足以校准方向的关键时间数据。
+- 真实依赖和运行故障；
+- 与静态推算冲突的事实。
 
-默认目标是在**约 10 分钟级工程时间**内取得足以校准方向的真实态数据；若任务单次运行物理上更长，则使用机制一致的最小合同或最小子合同。
-
-禁止在方向未校准前投入数小时深度 profiling（剖析）。
-
-## 5. 建立 REAL_STATE_MODEL（真实态模型）
+## 1.7 校准真实态现实极限
 
 ```text
-STATIC FACTS（静态事实）
-+ MRE OBSERVATIONS（最小真实运行观测）
-+ EMPIRICAL_PRIORS（经验先验）
-=> REAL_STATE_MODEL（真实态模型）
-=> T_MACHINE_STAR_REAL（真实态本机稳定理论极限）
+T_PHY
++ STATIC_FACTS（静态事实）
++ MRE_OBSERVATIONS（极简真实运行数据）
++ EMPIRICAL_PRIORS（历史经验先验）
+= REAL_STATE_MODEL（真实态模型）
+→ T_MACHINE_STAR_REAL（真实态本机稳定理论极限区间）
 ```
 
-若修订目标，必须记录：失效假设、新证据、旧/新区间、修订理由。禁止因为当前结果慢而单纯上调目标。
+如果现实数据推翻初始假设，必须记录失效假设、新证据、旧区间、新区间和修订原因。
 
-详细规则见：
-
-`references/REAL-STATE-MATURE-HARVEST-ROI.md`
+这叫模型校正，不是因为当前结果慢而随意放宽目标。
 
 ---
 
-# STEP 2 — MATURE HARVEST → TARGETED ATTACK → ROI STOP
+# STEP 2 — 成熟方案吸收 + 完整虚拟99路径 + 快速验证
 
-## 6. MATURE FRONTIER SCAN（成熟前沿扫描）
+## 2.1 扫描世界成熟方案
 
-优先检索：
+优先顺序：
 
-1. 官方稳定版和官方性能提交；
-2. 同 GPU 架构 / VRAM / 模型 / 任务的真实 A/B；
-3. 成熟开源 workflow / runtime / model format / quant / cache / prefetch / compiler / memory management；
-4. 多次复现的高质量社区成熟方案。
+1. 官方稳定方案和官方性能提交；
+2. 同硬件、同模型、同任务或高度相近任务的真实成熟方案；
+3. 已反复验证的成熟开源工程；
+4. 本机以前已经成功的成熟经验包；
+5. 大量社区重复验证、机制清楚的方案。
 
-建立 `MATURE_HARVEST_MATRIX（成熟收益收割矩阵）`：
+成熟方案可包括：工作流、运行时、模型格式、量化、缓存、预取、编译、内存管理、模型管理、设备分配等。
 
-```text
-SOURCE_LEVEL（证据等级）
-HARDWARE_MATCH（硬件匹配）
-TASK_MATCH（任务匹配）
-MECHANISM（机制）
-TARGET_BLOCK（目标块）
-EXPECTED_ABS_GAIN（预期绝对收益）
-QUALITY_RISK（质量风险）
-STABILITY_RISK（稳定风险）
-INTEGRATION_COST（集成成本）
-REVERSIBILITY（可逆性）
-CURRENTLY_PRESENT（当前是否已有）
-```
+## 2.2 建立成熟收益矩阵
 
-排序原则：
+每个成熟方案至少记录：
 
-```text
-EXPECTED_ABS_GAIN
-× APPLICABILITY_CONFIDENCE
-× EVIDENCE_CONFIDENCE
-÷ INTEGRATION_COST
-```
-
-不追求伪精确分数，只保证大收益、强证据、高适用、低成本候选先测试。
-
-## 7. DATA-DRIVEN REHEARSAL（数据驱动模拟推演）
-
-每个候选真实改动前，先基于 REAL_STATE_MODEL 做时间预算推演：
-
-```text
-CURRENT_BLOCK_TIME
-- EXPECTED_REMOVABLE_TIME
-+ NEW_OVERHEAD
-= PROJECTED_NEW_TIME
-```
-
-必须回答：
-
+- 来源等级；
+- 硬件匹配度；
+- 任务匹配度；
+- 作用机制；
 - 攻击哪个真实时间块；
-- 为什么适用于本机；
-- 理论最多能省多少；
-- 新增什么开销/风险；
-- 回滚点在哪里；
-- 是否值得一次正式 benchmark。
+- 预期绝对收益；
+- 质量风险；
+- 稳定风险；
+- 集成成本；
+- 可逆性；
+- 当前是否已经具备。
 
-模拟推演只用于淘汰逻辑上不值钱的候选，不能伪装成真实 benchmark。
+优先大收益、强证据、高适用、低成本、可逆方案。
 
-## 8. MATURE HARVEST（成熟收益收割）
+## 2.3 构建 VIRTUAL_MATURE_PATH（虚拟成熟路径）
 
-外部成熟方案只决定优先级，不自动决定 KEEP。
+这一步是 v1.4 的核心。
 
-```text
-FASTER + HARD_CONSTRAINTS_PASS => KEEP（保留）
-ELSE => ROLLBACK（回滚）
-```
-
-成熟完整栈若不可合理拆分，可整体 A/B 后直接 KEEP，不要求先自行重构。
-
-每次 KEEP 后重新计算绝对 Gap 和剩余成熟候选。
-
-## 9. NO FREE EXPLORATION（禁止自由摸索）
-
-只要：
+不是只评估一个候选，而是基于真实态模型，把从当前真实状态到99的完整优化路线先推演出来：
 
 ```text
-HIGH_VALUE_MATURE_CANDIDATES_REMAINING = YES
+CURRENT_REAL_STATE（当前真实态）
+→ 成熟方案1
+→ 成熟方案2
+→ 剩余最大Gap攻击1
+→ 剩余最大Gap攻击2
+→ ……
+→ 99
 ```
 
-就禁止优先进入自研 kernel、参数盲扫、无限 profiling 或大量 Vn 候选。
+每一步必须写清：
 
-只有在高价值成熟方案已吃完/不适用且仍有显著剩余 Gap 时，才允许定向自研。
+```text
+STEP（步骤）
+CURRENT_STATE（当前状态）
+TARGET_BLOCK（攻击块）
+MECHANISM（方法）
+SOURCE（成熟来源或真实数据依据）
+EXPECTED_REMOVABLE_TIME（预计可消灭时间）
+NEW_OVERHEAD（新增开销）
+PROJECTED_RESULT（预计结果）
+RISK（风险）
+ROLLBACK（回滚）
+VERIFICATION（Codex验证方式）
+```
 
-每个自研候选必须满足：
+前一步预计结果必须成为后一步输入。
+
+禁止把多个理论收益直接相加；必须处理收益重叠、交互、新开销和依赖关系。
+
+## 2.4 虚拟路径必须先推演到99
+
+在进入长时间实际执行前，高质量推理层必须先回答：
+
+- 当前最短成熟路线是什么；
+- 哪些成熟收益先吃；
+- 成熟收益吃完还剩哪些Gap；
+- 剩余Gap用什么数据支持的方法处理；
+- 每一步预计达到什么时间；
+- 失败时替代路径是什么；
+- 怎样最终进入真实态现实极限区间或组合经济性停止区间。
+
+也就是说：
+
+```text
+先形成虚拟99成熟方案
+再实际执行
+```
+
+## 2.5 Codex只负责快速验证
+
+Codex主要负责：
+
+- 按明确步骤部署；
+- 按指定方法运行；
+- 采集指定数据；
+- QC；
+- 验证预计结果；
+- 保留/回滚；
+- 保存证据；
+- Git收口。
+
+正常情况下，一个执行步骤应当是短而明确的验证任务，而不是开放式探索任务。
+
+如果实测偏离虚拟路径：
+
+```text
+ACTUAL_RESULT（实测） != PROJECTED_RESULT（预计）
+```
+
+必须停止自由延伸，回到高质量推理层，用新事实重新计算剩余虚拟路径。
+
+禁止让Codex自己在本机连续摸索出V1…Vn。
+
+## 2.6 自研攻击的唯一入口
+
+只有成熟方案无法覆盖某个显著剩余Gap，而且真实数据已经明确指向具体机制时，才允许定向自研。
+
+每个自研步骤必须同时满足：
 
 ```text
 REAL_DATA_SUPPORT=YES（有真实数据）
 MECHANISM_EXPLAINED=YES（机制清楚）
-EXPECTED_GAIN_ESTIMATED=YES（收益可估）
-ROLLBACK_DEFINED=YES（可回滚）
+EXPECTED_GAIN_ESTIMATED=YES（收益已估算）
+ROLLBACK_DEFINED=YES（回滚明确）
 ```
 
 否则不执行。
 
-禁止：
-
-- 长时间参数盲扫；
-- 无真实数据的 kernel 猜测；
-- 因“也许会快”连续创建 V1…Vn；
-- 已有成熟实现却自行重新实现；
-- 已有失败证据却无条件重测；
-- 收益模型不清楚时连续数小时 profiling；
-- 只看局部指标，不看端到端收益。
-
-## 10. TARGETED ATTACK（定向攻击）
-
-成熟方案收割后，对剩余 Gap：
-
-```text
-DELTA_T_REDUCIBLE_i
-= T_CURRENT_BLOCK_i - T_MACHINE_TARGET_BLOCK_i
-
-NEXT_ATTACK
-= argmax_i(DELTA_T_REDUCIBLE_i)
-```
-
-只攻击绝对可减少时间最大的高置信块；每次 KEEP/ROLLBACK 后重新推演，不机械沿一个方向做到底。
-
 ---
 
-# ROI STOP（收益停止）
+# PORTFOLIO ROI（组合收益停止）
 
-是否继续迭代不能只看“还能不能再省 0.5 秒”。
+## 3.1 不能按单点停止
 
-估算：
+剩余可行优化点记为：
 
 ```text
-EXPECTED_LIFETIME_BENEFIT（未来总收益）
-≈ DELTA_T_PER_RUN（每次节省时间）
+S = {优化点1, 优化点2, …, 优化点n}
+```
+
+必须在虚拟路径中按真实顺序把这些点整体推演。
+
+## 3.2 计算组合单次总收益
+
+```text
+DELTA_T_PORTFOLIO（剩余组合单次总节省）
+= T_CURRENT（当前一次任务时间）
+- T_PROJECTED_FINAL（全部剩余优化完成后的预计一次任务时间）
+```
+
+必须使用顺序推演后的最终差值，禁止把各点理论收益直接求和造成重复计算。
+
+## 3.3 计算未来生命周期总收益
+
+```text
+EXPECTED_LIFETIME_BENEFIT_PORTFOLIO（组合未来总收益）
+≈ DELTA_T_PORTFOLIO
 × EXPECTED_FUTURE_RUNS（预计未来运行次数）
 × VALUE_FACTOR（时间/资源价值系数）
++ 其他可量化资源收益
 ```
 
-继续优化的必要条件：
+## 3.4 计算组合总成本
 
 ```text
-EXPECTED_LIFETIME_BENEFIT
-> ENGINEERING_COST
-+ VALIDATION_COST
-+ RISK_COST
+PORTFOLIO_COST（组合总成本）
+= 工程实施成本
++ 验证成本
++ 风险成本
++ 集成交互成本
++ 必要维护成本
 ```
+
+## 3.5 停止条件
+
+如果：
+
+```text
+EXPECTED_LIFETIME_BENEFIT_PORTFOLIO > PORTFOLIO_COST
+```
+
+则继续把剩余优化组合纳入虚拟99路径并执行。
 
 否则：
 
 ```text
-ECONOMIC_STOP=YES（经济性停止）
+PORTFOLIO_ECONOMIC_STOP=YES（组合经济性停止）
 ```
 
-因此同样 0.5 秒：一次性任务可能不值得，未来会执行成千上万次的基础能力可能非常值得。
+因此，小的单点收益在高频基础能力上仍可能非常值得；不能因为单点小就提前停止。
 
 ---
 
 # 99 / FREEZE（99 / 冻结）
 
-99 不是数学绝对极限，也不是固定 1% 阈值。
+99必须同时满足：
 
-必须同时满足：
+1. `T_PHY（第一性原理物理极限）` 已计算；
+2. MRE极简真实运行完成；
+3. `T_MACHINE_STAR_REAL（真实态现实极限）` 已校准；
+4. 成熟方案已系统扫描并吸收；
+5. `VIRTUAL_MATURE_PATH（虚拟成熟路径）` 已完整推演到99；
+6. 实际执行按成熟路径验证，没有无边界自由探索；
+7. 实测偏离时已经重新推演；
+8. 剩余全部优化按组合生命周期收益计算；
+9. 要么高价值收益已经吃完，要么 `PORTFOLIO_ECONOMIC_STOP=YES`；
+10. correctness / quality / stability / safety 全部通过；
+11. 软件前沿和当前硬件拓扑门禁通过；
+12. 最终认证通过；
+13. Shared Fact Source（共同事实源）同步和远端验证通过。
 
-1. 固定任务真实完成；
-2. correctness / quality / stability / safety 全部通过；
-3. 权威计时稳定；
-4. `MRE_REAL_STATE_CALIBRATION=PASS（真实态校准通过）`；
-5. `MATURE_PATH_FIRST_GATE=PASS（成熟路径优先门禁通过）`；
-6. `SOFTWARE_FRONTIER_GATE=PASS（软件前沿门禁通过）`；
-7. `HARDWARE_TOPOLOGY_GATE=PASS（当前硬件拓扑门禁通过）`；
-8. 当前结果进入或贴近高置信 `T_MACHINE_STAR_REAL`，或剩余 Gap 已有充分证据证明不具备更高 ROI；
-9. 没有明显大块重甲；
-10. 没有高置信高收益成熟候选遗漏；
-11. 剩余自研候选已达到 `ECONOMIC_STOP` 或无显著绝对收益；
-12. Final Certification（最终认证）通过；
-13. Shared Fact Source（共同事实源）同步并 remote verify（远端验证）通过。
-
-因此：
-
-> **99 = 当前真实硬件边界 + 当前最佳成熟实现 + 真实运行校准 + 已收割成熟收益 + 剩余 Gap 的数据驱动定向优化 + 生命周期 ROI 停止后的稳定最优。**
+> **99 = 当前真实硬件边界下，经过第一性原理定边界、极简真实运行校准、成熟方案系统吸收、完整虚拟99路径推演、实际快速验证，以及剩余优化组合生命周期收益判断后得到的稳定最优。**
 
 ---
 
-# 执行角色
+# 默认读取顺序
 
-分析、候选排序、机制判断、收益推演、停止条件由高质量推理完成；执行器主要负责：
-
-- 精确修改；
-- 可逆部署；
-- 真实运行；
-- 证据采集；
-- QC；
-- KEEP / ROLLBACK 所需事实；
-- Git 收口。
-
-禁止把“探索方向”无限下放给执行器，让其在本机无边界试错。
-
-单 GPU 正式 benchmark 必须串行、独占。
-
----
-
-# CONTEXT HYGIENE（上下文卫生）
-
-长项目必须：
-
-- 每个大阶段形成正式报告和机器可读状态；
-- 新阶段读取冻结事实，不依赖长会话记忆；
-- 页面/会话明显过长时冻结当前阶段并换新页面；
-- 新页面从任务文件 + Shared Fact Source 恢复；
-- 简单执行阶段用简洁指令，复杂规划/复盘阶段使用高强度推理。
-
----
-
-# Shared Fact Source（共同事实源）
-
-```text
-SHARED_FACT_SOURCE=cuiqinggang/codex-private-skills
-SHARED_REPO_LOCAL=C:\Users\A\Documents\Codex\codex-private-skills
-SHARED_REPO_SYNC_REQUIRED=YES
-```
-
-产生新工程事实：
-
-```text
-LOCAL RESULT
-→ FORMAL REPORT
-→ SHARED REPOSITORY
-→ EXACT STAGE
-→ COMMIT
-→ PUSH
-→ REMOTE VERIFY
-```
-
-禁止 `git add .`、force push、`reset --hard`。
-
----
-
-# 默认最短读取路径
-
-正常任务读取：
+正常任务优先读取：
 
 1. `SKILL.md`
 2. `references/FAST-PATH.md`
-3. `references/REAL-STATE-MATURE-HARVEST-ROI.md`
+3. `references/VIRTUAL-MATURE-PATH-PORTFOLIO-ROI.md`
 
 按需读取：
 
-- `references/FIRST-PRINCIPLES-LIMIT-MODEL.md`
+- `references/REAL-STATE-MATURE-HARVEST-ROI.md`
 - `references/MATURE-PATH-FIRST-GATE.md`
+- `references/FIRST-PRINCIPLES-LIMIT-MODEL.md`
 - `references/SOFTWARE-FRONTIER-GATE.md`
 - `references/HARDWARE-TOPOLOGY-GATE.md`
 - `references/MULTI-AGENT-PARALLELISM.md`
@@ -384,20 +410,29 @@ LOCAL RESULT
 - `references/EXECUTION-CLOSURE-CONTRACT.md`
 - `references/FAILURE-INDEX.md`
 
+---
+
+# 上下文与角色纪律
+
+- 长阶段必须形成正式报告和机器可读状态；
+- 页面过长时冻结阶段并换新页面；
+- 新页面从任务文件和共同事实源恢复；
+- 复杂分析、虚拟99路径和重规划由高质量推理完成；
+- 简单部署、运行、采证、回滚交给执行器；
+- 单GPU正式测试必须串行、独占；
+- 禁止改变与任务无关的代理、系统设置或其他环境。
+
+---
+
 ## 状态
 
 ```text
-SKILL_VERSION=1.3.0
-TWO_STEP_METHOD=PASS（两步法保留）
-MRE_REAL_STATE_CALIBRATION_REQUIRED=YES（复杂任务必须极简真实运行校准）
-MATURE_PATH_FIRST_GATE_DEFINED=PASS（成熟路径优先门禁已定义）
-NO_FREE_EXPLORATION=YES（禁止无依据自由探索）
-DATA_DRIVEN_REHEARSAL_REQUIRED=YES（高价值候选需先数据推演）
-ROI_STOP_DEFINED=PASS（生命周期收益停止条件已定义）
-ACTIVE_HARDWARE_BOUNDARY_DEFINED=PASS（当前有效硬件边界已定义）
-EMPIRICAL_PRIOR_REUSE_DEFINED=PASS（经验先验复用已定义）
-SOFTWARE_FRONTIER_GATE_DEFINED=PASS（软件前沿门禁已定义）
-HARDWARE_TOPOLOGY_GATE_DEFINED=PASS（硬件拓扑门禁已定义）
-FUTURE_UNAVAILABLE_HARDWARE_BLOCKS_CURRENT_99=NO（未来不可用硬件不阻断当前99）
-SHARED_FACT_SOURCE_REQUIRED=YES（共同事实源必需）
+SKILL_VERSION=1.4.0
+FIRST_PRINCIPLES_BOUND=REQUIRED（第一性原理边界必需）
+MRE_REAL_STATE_CALIBRATION=REQUIRED（极简真实运行校准必需）
+MATURE_HARVEST=REQUIRED（成熟方案收割必需）
+VIRTUAL_MATURE_PATH_TO_99=REQUIRED（虚拟成熟路径必须先推演到99）
+CODEX_FREE_EXPLORATION=FORBIDDEN（禁止Codex自由探索）
+PORTFOLIO_ROI_STOP=REQUIRED（组合收益停止必需）
+SHARED_FACT_SOURCE_CLOSURE=REQUIRED（共同事实源收口必需）
 ```
