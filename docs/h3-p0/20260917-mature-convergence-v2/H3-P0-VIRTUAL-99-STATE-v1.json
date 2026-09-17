@@ -1,6 +1,6 @@
 {
   "project_id": "H3-P0",
-  "state": "VIRTUAL_99_READY_FOR_FIRST_BOUNDED_EXECUTION",
+  "state": "FOUR_STEP_99_DESIGN_COMPLETE_READY_FOR_E0_E1",
   "method": {
     "skill_id": "first-principles-physical-limit-convergence",
     "required_version": "1.8.0",
@@ -25,71 +25,59 @@
     "vram_mib": 22528,
     "architecture": "Turing sm_75"
   },
-  "single_physical_limit_reference_s": {
-    "low": 0.23,
-    "high": 0.57,
+  "step1_physical_limit": {
+    "status": "COMPLETE",
+    "t_phy_total_reference_s": [0.23, 0.57],
     "confidence": "MEDIUM",
-    "formal_reference": true
+    "formal_physical_reference_count": 1
+  },
+  "step2_real_state_optimum": {
+    "status": "COMPLETE",
+    "generation_optimum_range_s": [2.0, 5.0],
+    "path_optimum_range_s": [2.0, 9.0],
+    "total_optimum_range_s": [4.0, 14.0],
+    "confidence": "MEDIUM_LOW",
+    "role": "REALITY_CALIBRATED_ATTACK_TARGET",
+    "strict_evidence_outer_envelope_total_s": {
+      "low_exclusive": 2.07,
+      "high_inclusive": 38.042308
+    },
+    "proven_stable_v3_total_p50_s": 38.042308,
+    "current_mre_total_p50_s": 54.817736
+  },
+  "step3_virtual_attack": {
+    "status": "COMPLETE",
+    "virtual_mature_path_complete": true,
+    "composite_stack": [
+      "A1_STAR7_FP16_EXACT_IF_KEEP",
+      "A2_W4A8_FL2VA_IF_KEEP",
+      "A3_CONDITIONING_CACHE_IF_NATIVE_REENCODES",
+      "A4_INT8_CONVROT_VAE_IF_STRICT_QC_PASS",
+      "R1_NEW_TOPOLOGY_CO_RESIDENCY_IF_MAJOR_RESIDUAL",
+      "R2_MINIMAL_H3_HOST_SYNC_PATCH_IF_MAJOR_GENERATION_RESIDUAL"
+    ],
+    "final_projected_total_p50_wide_s": [6.0, 14.0],
+    "final_projected_total_p50_central_s": [8.0, 12.0],
+    "overlaps_real_state_optimum_range": true,
+    "virtual_attack_stop": "PASS"
+  },
+  "step4_codex_command_pack": {
+    "status": "COMPLETE_REVIEWED_NOT_EXECUTED",
+    "file": "H3-P0-STEP4-CODEX-TEST-COMMAND-PACK-v1.md",
+    "current_execution_unlock": ["E0_SAME_WINDOW_CONTROL", "E1_STAR7_FP16_EXACT"],
+    "locked_future_stages": ["E2_W4A8", "E3_CONDITIONING_CACHE", "E4_INT8_VAE", "E5_CO_RESIDENCY", "E6_HOST_SYNC"],
+    "codex_may_auto_continue": false,
+    "max_gpu_runs_current_stage": 8
   },
   "real_state": {
-    "current_mre_total_p50_s": 54.817736,
-    "current_mre_total_p95_s": 59.811207,
-    "proven_stable_v3_total_p50_s": 38.042308,
-    "proven_stable_v3_total_p95_s": 38.488666,
-    "mre_physical_headroom_vs_high_s": 54.247736,
-    "stable_v3_physical_headroom_vs_high_s": 37.472308,
     "performance_drift_present": true,
-    "candidate_comparisons_require_same_window_paired_control": true
-  },
-  "mature_batch_1": [
-    {
-      "id": "M1",
-      "name": "Star7 Native FP16 Exact Loader",
-      "priority": 1,
-      "target": ["Generation"],
-      "status": "READY_AS_FIRST_BOUNDED_VALIDATION",
-      "external_gain_not_transferable": true
-    },
-    {
-      "id": "M2",
-      "name": "W4A8 FL2VA diffusion",
-      "priority": 2,
-      "target": ["Generation", "Path residency"],
-      "status": "VIRTUAL_RAIL_DEFINED_WAITING_M1_GPT_DECISION",
-      "current_diffusion_size_gb": 20.97,
-      "candidate_diffusion_size_gb_approx": 12.5
-    },
-    {
-      "id": "M3",
-      "name": "INT8 ConvRot Video VAE",
-      "priority": 3,
-      "target": ["Path", "VAE", "Residency"],
-      "status": "VIRTUAL_RAIL_DEFINED_STRICT_QC_REQUIRED",
-      "candidate_vae_size_gb_approx": 3.2,
-      "same_gpu_public_black_nan_risk": true
-    },
-    {
-      "id": "M4",
-      "name": "Exact conditioning cache",
-      "priority": 4,
-      "target": ["Conditioning", "Path"],
-      "status": "CONDITIONAL_APPLICABILITY_CHECK_FIRST",
-      "native_cache_overlap_must_be_checked": true
-    }
-  ],
-  "excluded_or_deferred": [
-    {"name": "SageAttention standalone", "status": "EXCLUDE_BATCH_1", "reason": "same-card mature project reports failure; local attention block tiny"},
-    {"name": "T8/PDD/Turbo/MotionCache", "status": "NOT_APPLICABLE", "reason": "fixed task is 1 step"},
-    {"name": "ComfyUI v0.36 whole-stack upgrade", "status": "PROVEN_BAD_LOCAL_AB"},
-    {"name": "pinned memory", "status": "PROVEN_BAD_LOCAL_AB"},
-    {"name": "forced VAE full-load request", "status": "PROVEN_BAD_LOCAL_AB"},
-    {"name": "Star7 Activation Chunk/Sparse Attention", "status": "RESIDUAL_ONLY", "reason": "minimal token task; no current large attention block"}
-  ],
-  "transition_rule": {
-    "major_residual_threshold_fraction_of_total": 0.10,
-    "meaning": "work-mode transition only, not a 99 mathematical threshold",
-    "if_major_measured_block_and_short_roi_positive_mechanism_exists": "BUILD_NEXT_MATURE_OR_TARGETED_BATCH",
-    "otherwise": "ENTER_RESIDUAL_VIRTUAL_CONVERGENCE"
+    "candidate_comparisons_require_same_window_paired_control": true,
+    "v11_gpu_operator_self_s": [1.46, 1.62],
+    "v7_vae_decoder_call_p50_s": 17.8252511,
+    "v7_vae_requested_bytes_per_run": 4846446592,
+    "v10_h3_resident_misses_per_steady_run": 155,
+    "v10_h3_requested_bytes_per_steady_run": 5952846848,
+    "requested_bytes_are_not_measured_pcie_bytes": true
   },
   "final_stop_rule": {
     "portfolio_roi_required": true,
@@ -100,8 +88,9 @@
     "remote_verify_required": true
   },
   "execution": {
-    "new_gpu_run_performed_in_this_virtual_phase": false,
-    "next_authorized_stage": "GPT_ISSUES_M1_COMPLETE_VALIDATION_RAILROAD",
-    "codex_may_auto_continue_to_m2": false
+    "new_gpu_run_performed_in_this_gpt_phase": false,
+    "next_authorized_stage": "CODEX_EXECUTE_E0_PLUS_E1_ONLY",
+    "return_to_gpt_after_e1": true,
+    "final_99": false
   }
 }
