@@ -1,57 +1,64 @@
-# FAST PATH — 成熟收割优先的物理极限收敛最短路径 v1.2
+# FAST PATH — 真实态校准 + 成熟收割优先 v1.3
 
-## STEP 1 — CALCULATE + HARVEST PLAN（第一步：计算 + 成熟收割计划）
+## STEP 1 — CALCULATE + REAL-STATE CALIBRATION（计算 + 真实态校准）
 
-1. 冻结 `TASK_CONTRACT（任务合同）`、`TASK_COMPLETED（完成条件）` 和 hard constraints（硬约束）。
-2. 冻结 `ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）`：只包含此刻已经真实安装、可正常使用、并允许用于本任务的硬件。未来计划增加但当前不存在的硬件不进入本轮 99，也不得阻断本轮 99。
-3. 继承最近一次兼容的 `VERIFIED_99（已验证99）`、`EMPIRICAL_PRIORS（经验先验）`、Failure Index（失败索引）和已证伪机制；禁止从零重复探索。
-4. 复用已有事实，只补关键缺口。
-5. 建立 `PHYSICAL_DAG（物理因果图）` 与 critical path（关键路径）。
-6. 推导 `T_PHY（物理极限）=[LOW,HIGH]`。
-7. 执行 `MATURE_FRONTIER_SCAN（成熟前沿扫描）`：官方稳定方案、官方性能提交、同 GPU 架构/同 VRAM/同模型的实测方案、主要成熟社区方案。
-8. 对成熟方案执行 `APPLICABILITY_FILTER（适用性筛选）`：GPU 架构、VRAM/RAM、模型/量化、任务 shape（形状）、软件版本、质量/稳定/可复现要求必须匹配。
-9. 建立 `MATURE_HARVEST_MATRIX（成熟收益收割矩阵）`，按“预期绝对收益秒数 × 适用性置信度 × 证据置信度 ÷ 集成成本”排序；先挑大收益、强证据、低成本候选。
-10. 执行 `SOFTWARE_FRONTIER_SCAN（软件前沿扫描）`：当前版、官方最新稳定版、主要成熟优化版。
-11. 执行 `HARDWARE_TOPOLOGY_SCAN（硬件拓扑扫描）`，但只扫描 `ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）` 内真实存在的 GPU、PCIe、显示器连接、主辅卡分工和功能拆分可能性。
-12. 以“当前有效硬件边界 + 最佳成熟软件/实现 + 当前边界内最佳硬件拓扑 + 已验证经验先验”推导 `T_MACHINE_STAR（本机稳定理论极限）=[LOW,HIGH]`。
-13. 建立 `ASSUMPTION_LEDGER（假设账本）`；未知量用区间 + 置信度。
-14. 输出两条攻击序列：`MATURE_HARVEST_ORDER（成熟收割顺序）` 和 `CUSTOM_ATTACK_ORDER（定制攻击顺序）`。
-15. 判断多智能体模式；排他 GPU benchmark（基准测试）串行。
+1. 冻结 `TASK_CONTRACT（任务合同）`、`TASK_COMPLETED（完成条件）`、hard constraints（硬约束）。
+2. 冻结 `ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）`：只包含此刻真实安装、可正常使用、允许用于本任务的硬件。
+3. 继承最近兼容的 `VERIFIED_99（已验证99）`、`EMPIRICAL_PRIORS（经验先验）`、Failure Index（失败索引）和已证伪机制；禁止从零重复探索。
+4. 建立 `PHYSICAL_DAG（物理因果图）` 与 critical path（关键路径）。
+5. 推导 `T_PHY（物理极限）=[LOW,HIGH]`。
+6. 根据当前硬件、已知成熟软件/实现和经验先验，先算 `T_MACHINE_STAR_PRE（本机理论极限初算）=[LOW,HIGH]`。
+7. 对复杂系统必须尽快建立 `MRE（最小真实执行版本）`，让完整关键链真实跑通；默认目标是在约 10 分钟级工程时间内得到足够的真实态数据。若单次任务物理上更长，则使用机制一致的最小合同/最小子合同。
+8. MRE 必须暴露真实：模型装载/卸载、设备放置、DynamicVRAM/内存行为、缓存/预取/编译是否真正启用、首次运行与稳态差异、主要故障与真实关键路径。
+9. 用 `STATIC FACTS + MRE OBSERVATIONS + EMPIRICAL PRIORS` 建立 `REAL_STATE_MODEL（真实态模型）`。
+10. 基于真实态修订为 `T_MACHINE_STAR_REAL（真实态本机稳定理论极限）`；如修订，必须记录失效假设、证据、旧/新区间和原因，禁止因为跑得慢而随意放宽目标。
+11. 执行 `MATURE_FRONTIER_SCAN（成熟前沿扫描）`：官方稳定方案、官方性能提交、同 GPU 架构/同 VRAM/同模型真实 A/B、成熟开源方案。
+12. 建 `MATURE_HARVEST_MATRIX（成熟收益收割矩阵）`；按“预期绝对收益 × 适用性 × 证据强度 ÷ 集成成本”排序。
+13. 对高价值候选先做 `DATA_DRIVEN_REHEARSAL（数据驱动模拟推演）`：明确作用块、最多可省多少、新增开销/风险、回滚点、是否值得一次正式 benchmark。
+14. 输出：`MATURE_HARVEST_ORDER（成熟收割顺序）` 与 `CUSTOM_ATTACK_ORDER（定制攻击顺序）`。
+15. 排他 GPU benchmark（基准测试）串行；复杂规划/复盘用高强度推理，简单执行保持简洁。
 
-## STEP 2 — HARVEST → CUSTOM CONVERGE（第二步：先成熟收割，再定制收敛）
+## STEP 2 — HARVEST → TARGETED ATTACK → ROI STOP（成熟收割 → 定向攻击 → 收益停止）
 
-16. 安全去重甲，建立 `V1（第一最小正确执行版本）`。
-17. 审核命令包：合同、计时、资源隔离、可逆性、证据、Git 收口。
-18. 真实运行 V1，得到 `T_CURRENT（当前实测）`。
+### PHASE A — MATURE HARVEST（成熟收益收割）
 
-### PHASE A — MATURE HARVEST（阶段A：成熟收益收割）
+16. 优先复用已被外部真实验证、且与当前任务高度匹配的成熟 workflow / version / official feature / model format / patch（工作流 / 版本 / 官方功能 / 模型格式 / 补丁）。
+17. 外部 benchmark 只决定优先级，不自动决定本机 KEEP。
+18. 同任务更快且硬约束通过 => `KEEP（保留）`；否则 `ROLLBACK（回滚）`。
+19. 成熟完整栈若不可合理拆分，可整体 A/B 后直接 KEEP；不要求先自行重构。
+20. 每次 KEEP 后重新计算绝对 Gap，重新排序剩余成熟候选；不机械跑完低价值列表。
 
-19. 按 `MATURE_HARVEST_ORDER` 优先测试已经被外部真实验证、且与当前任务高度匹配的成熟方案；禁止先进入自研 kernel/微参数探索。
-20. 优先直接复用成熟 workflow / version / official feature / model format / patch（工作流 / 版本 / 官方功能 / 模型格式 / 补丁）。
-21. 外部 benchmark（基准测试）只决定测试优先级，不自动决定本机 KEEP。
-22. 同任务更快且硬约束通过 => `KEEP（保留）`；否则 `ROLLBACK（回滚）`。
-23. 成熟完整栈如果本身不可合理拆分，可以整体 A/B 后直接 KEEP；不要求为了理解机制先把成熟栈重新拆散。
-24. 每次 KEEP 后重新计算绝对 Gap，并重新排序剩余成熟候选；不机械跑完低价值列表。
+### PHASE B — RESIDUAL TARGETED ATTACK（剩余差距定向攻击）
 
-### PHASE B — RESIDUAL CUSTOM ATTACK（阶段B：剩余差距定制攻击）
+21. 只有当 `HIGH_VALUE_MATURE_CANDIDATES_REMAINING=NO` 或成熟方案明显不适用，并且仍存在显著剩余 Gap 时，才允许进入深度 profiling（分块诊断）和自研攻击。
+22. 每个自研候选必须满足：`REAL_DATA_SUPPORT=YES`、`MECHANISM_EXPLAINED=YES`、`EXPECTED_GAIN_ESTIMATED=YES`、`ROLLBACK_DEFINED=YES`。
+23. 计算 `DELTA_T_REDUCIBLE（可消灭时间差）`，永远优先攻击最大绝对剩余 Gap。
+24. 禁止长时间参数盲扫、无数据 kernel 猜测、连续创建“也许会快”的 Vn、已有成熟实现却自行重写、已有失败证据却无条件重测。
+25. 更快且硬约束通过 => KEEP；否则 ROLLBACK；每次裁决后重新推演。
 
-25. 只有当高价值成熟候选已经收割完、明显不适用，或仍存在显著剩余 Gap 时，才进入深度 profiling（分块诊断）和自研攻击。
-26. 计算 `DELTA_T_REDUCIBLE（可消灭时间差）`。
-27. 永远优先攻击最大绝对剩余 Gap（差距），而不是最大百分比或最容易测的参数。
-28. 更快且硬约束通过 => KEEP；否则 ROLLBACK。
-29. 每次 KEEP 后重新测量、重排 Gap；禁止因为已经开始某个自研方向就机械做到底。
+### PHASE C — ROI STOP（收益停止）
+
+26. 不以“还能不能再省 0.5 秒”决定是否继续。
+27. 估算：`EXPECTED_LIFETIME_BENEFIT ≈ DELTA_T_PER_RUN × EXPECTED_FUTURE_RUNS × VALUE_FACTOR`。
+28. 只有当 `EXPECTED_LIFETIME_BENEFIT > ENGINEERING_COST + VALIDATION_COST + RISK_COST` 才继续迭代。
+29. 如果继续优化的预期生命周期总收益不足以覆盖继续迭代成本，标记 `ECONOMIC_STOP=YES（经济性停止）`。
+30. 对高频基础能力，小的单次节省仍可能非常值得；对一次性任务，同样的单次节省可能不值得。
 
 ### FINAL GATES（最终门禁）
 
-30. 99 前执行 `SOFTWARE_FRONTIER_GATE（软件前沿门禁）`，确认当前成熟软件赢家和最新高价值候选没有遗漏。
-31. 执行 `HARDWARE_TOPOLOGY_GATE（硬件拓扑门禁）`：只核验当前真实可用硬件。若当前只有单 GPU，则确认单卡拓扑和资源边界后即可 PASS；不存在的第二 GPU 不进入本轮门禁。
-32. Final Certification（最终认证）前确认：`MATURE_FRONTIER_SCANNED=YES`、`HIGH_VALUE_MATURE_CANDIDATES_TESTED=YES`、`RESIDUAL_HIGH_VALUE_MATURE_GAP=NO`。
-33. 只有 `MATURE_PATH_FIRST_GATE=PASS（成熟路径优先门禁通过）` + `SOFTWARE_FRONTIER_GATE=PASS（软件前沿门禁通过）` + `HARDWARE_TOPOLOGY_GATE=PASS（硬件拓扑门禁通过）` + `SHARED_REPO_SYNC=PASS（共同仓库同步通过）` 才允许 `99=YES / FREEZE=YES / FINAL=PASS`。
-34. 冻结 99 后，把真实分块时间、成熟方案赢家、有效/无效攻击、稳定配置和 Failure Index 写入 `EMPIRICAL_PRIORS（经验先验）`，供下一次硬件/软件/任务条件变化时直接继承。
+31. 99 前确认 `MRE_REAL_STATE_CALIBRATION=PASS（真实态校准通过）`。
+32. 确认 `MATURE_PATH_FIRST_GATE=PASS（成熟路径优先门禁通过）`。
+33. 执行 `SOFTWARE_FRONTIER_GATE（软件前沿门禁）` 与当前边界内 `HARDWARE_TOPOLOGY_GATE（硬件拓扑门禁）`。
+34. 确认 `RESIDUAL_HIGH_VALUE_GAP=NO` 或剩余 Gap 已触发合理 `ECONOMIC_STOP`。
+35. 完成 Final Certification（最终认证）与 Shared Fact Source（共同事实源）同步后，才允许 `99=YES / FREEZE=YES / FINAL=PASS`。
+36. 冻结后把真实分块时间、成熟方案赢家、失败路线、Failure Index、MRE 真实态和 ROI 停止依据写入 `EMPIRICAL_PRIORS（经验先验）`。
+37. 页面/会话过长时冻结阶段报告并换新页面；新页面从任务文件 + Shared Fact Source 恢复，禁止依赖超长会话继续硬撑。
 
 ```text
-先复制世界已经验证过的最快成熟路径，把最大成熟收益一次吃掉；
-再对剩余 Gap 做第一性原理定制攻击；
-当前有什么硬件，就先把当前真实硬件做到自己的 99；
-下一次不重新从零探索，而是从成熟世界经验 + 本机经验先验继续向前。
+先算物理边界；
+再用极简真实运行把纸面状态校准成真实运行状态；
+先吃掉世界成熟方案已经验证的大收益；
+再只攻击成熟方案吃不掉的最大剩余 Gap；
+任何自研必须有真实数据、机制、收益预算和回滚；
+最后按未来生命周期总收益，而不是单次毫秒，决定是否继续。
 ```
