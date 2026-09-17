@@ -1,58 +1,65 @@
-# v1.8.0 REGRESSION CHECKLIST
+# v1.9.0 REGRESSION CHECKLIST
 
 ## Canonical identity / lineage
 
 - [x] Current mother skill id is `first-principles-physical-limit-convergence`.
 - [x] Current skill path is `skills/first-principles-physical-limit-convergence/`.
-- [x] Current version branch matches declared version `v1.8.0`.
-- [x] `absolute-time-fireworks-optimization` is historical ancestor / compatibility asset only.
-- [x] Legacy ancestor is not current mother skill.
-- [x] Legacy ancestor is not current upgrade target.
-- [x] Legacy `v2.x` numbering does not control current `v1.x` lineage.
-- [x] Old fixed `v1.0.0` canonical distribution pointer has been removed for this release.
+- [x] Current version branch matches declared `v1.9.0`.
+- [x] `absolute-time-fireworks-optimization` remains historical ancestor only.
+- [x] Legacy version numbering does not control current lineage.
 
-## v1.7 method-core preservation
+## Core invariants preserved
 
 - [x] `NO_FREE_EXPLORATION=YES` remains mandatory.
 - [x] Codex remains deterministic validator/executor only.
-- [x] Codex cannot design tests, add candidates, extend iterations, or profile without GPT plan.
-- [x] GPT complete validation railroad is required.
-- [x] Unexpected results return to GPT instead of opening exploration.
-- [x] Command cannot weaken no-free-exploration rule.
-- [x] Single formal physical-limit reference remains `T_PHY_TOTAL_REFERENCE`.
-- [x] Formal physical-limit output is one end-to-end time number or interval only.
-- [x] `T_MACHINE_STAR*` is no longer a parallel formal physical-limit standard.
-- [x] Remote shared workspace rule remains defined.
-- [x] Local checkout is not shared workspace.
-- [x] MRE / REAL_STATE_MODEL remains defined.
-- [x] Mature harvest remains defined.
-- [x] Full virtual 99 path remains defined.
-- [x] Residual virtual convergence remains defined.
-- [x] Portfolio lifetime ROI remains defined.
-- [x] Final certification and remote verify remain required.
+- [x] Codex cannot design tests, add candidates, change order, extend runs, or profile without GPT plan.
+- [x] GPT complete Virtual-99 / validation railroad remains required.
+- [x] Unexpected results return to GPT.
+- [x] Commands cannot weaken no-free-exploration.
+- [x] Single physical limit remains `T_PHY_TOTAL_REFERENCE`.
+- [x] Remote shared workspace remains authoritative.
+- [x] MRE / REAL_STATE_MODEL remains required.
+- [x] Mature harvest / residual convergence / portfolio ROI / final certification remain required.
 
-## Legacy invariants still inherited
+## v1.9 batch execution semantics
 
-- [x] Task contract and hard correctness/quality/stability/safety gates remain mandatory.
-- [x] External frontier is evidence, not the physical limit.
-- [x] Existing compatible frozen facts are inherited by default.
-- [x] Same contract/timing boundary is required for comparison.
-- [x] Measured result below physical reference triggers model/contract/measurement audit.
-- [x] Single-GPU formal benchmark remains serial/exclusive when applicable.
-- [x] Failure Index / existing-facts-first / reversible rollback remain inherited.
+- [x] `PREAUTHORIZED_BATCH_EXECUTION=YES` is defined.
+- [x] Expected PASS may follow predefined `NEXT_ON_PASS` without GPT re-entry.
+- [x] Expected FAIL may rollback and follow predefined `NEXT_ON_FAIL` without GPT re-entry.
+- [x] Expected NOT_APPLICABLE may follow predefined next action without GPT re-entry.
+- [x] `MATERIAL_REPLAN_TRIGGER` is explicitly defined.
+- [x] `NO_REPLAN_ON_MAGNITUDE_SURPRISE=YES` is defined.
+- [x] A result being much faster than projected does not itself open new exploration.
+- [x] `NO_OPEN_ENDED_PREFLIGHT_CHAIN=YES` is defined.
+- [x] Same-candidate preflight-A -> GPT -> preflight-B -> GPT loops are prohibited unless the finite chain was predesigned in Virtual-99.
+- [x] Residual Virtual Convergence defaults to batch boundary, not each normal stage boundary.
+- [x] Batch global GPU and wall-time budgets are required.
+- [x] Incomplete stage railroad does not become Codex design authority.
+
+## Legacy invariants inherited
+
+- [x] Task contract and correctness/quality/stability/safety gates remain mandatory.
+- [x] External frontier is evidence, not physical limit.
+- [x] Compatible frozen facts are inherited by default.
+- [x] Same timing/contract is required for A/B.
+- [x] Single-GPU formal benchmarks remain serial/exclusive when applicable.
+- [x] Failure Index, existing-facts-first, and reversible rollback remain inherited.
 
 ## Claims not made by this release
 
-- [x] Runtime installation v1.8.0 is NOT claimed.
-- [x] New H3 Virtual-99 execution is NOT claimed.
+- [x] Runtime installation v1.9.0 is NOT claimed.
+- [x] H3 application under v1.9.0 is NOT yet claimed.
 - [x] H3 final 99 is NOT claimed.
-- [x] No new H3 `T_PHY_TOTAL_REFERENCE` value is fabricated by this governance release.
+- [x] No new physical-limit number is fabricated by this governance release.
 
 ```text
 CANONICAL_IDENTITY_GATE=PASS
-METHOD_CORE_PRESERVED_FROM_1_7_0=PASS
+NO_FREE_EXPLORATION=PASS
+PREAUTHORIZED_BATCH_EXECUTION=PASS
+NO_REPLAN_ON_MAGNITUDE_SURPRISE=PASS
+NO_OPEN_ENDED_PREFLIGHT_CHAIN=PASS
 METHOD_LOGIC_ACCEPTANCE=PASS
 RUNTIME_INSTALLATION=NOT_EXECUTED
-H3_VIRTUAL_99=NOT_YET_EXECUTED
+H3_V1_9_PROJECT_APPLICATION=NOT_YET_EXECUTED
 H3_FINAL_99=NO
 ```
