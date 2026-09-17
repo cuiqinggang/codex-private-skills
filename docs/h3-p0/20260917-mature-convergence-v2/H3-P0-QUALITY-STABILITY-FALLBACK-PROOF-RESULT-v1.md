@@ -52,4 +52,4 @@ ComfyUI 提交 `8a33128f2f8c5585c57486c07de481241e70a39c`，GPU RTX 2080 Ti 22GB
 
 原始运行记录、逐帧 QC、四份工作流、日志和提交账本保存在 `C:\AI\H3-P0-Acceptance\mature-convergence-v2\20260918-fallback-proof-v1-01`。同目录 `runner-state.json` 的完整数据已保存为本仓库对应的 `...FALLBACK-PROOF-STATE-v1.json`。
 
-Git 证据提交与远端回读将在提交后补记；最终远端 HEAD 以返回 GPT 时的回读为准。
+Git 证据提交为 `a3955b4310ebb5c9703d460d2215596d9e8dd424`。推送后执行 `git ls-remote origin refs/heads/codex/h3-p0-mature-convergence-v2`，回读的远端 HEAD 与该提交一致。本段补记另行提交；最终远端 HEAD 以返回 GPT 时的再次回读为准。

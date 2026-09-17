@@ -221,5 +221,8 @@
   "final_accepted_qc_count": 1,
   "verified_fast_path_proof": "FAIL_REFERENCE_QUALITY",
   "ready_for_system_time_roi_recalc": false,
-  "final_99": false
+  "final_99": false,
+  "evidence_commit": "a3955b4310ebb5c9703d460d2215596d9e8dd424",
+  "remote_verify_evidence_commit": "a3955b4310ebb5c9703d460d2215596d9e8dd424",
+  "remote_verify_method": "git ls-remote origin refs/heads/codex/h3-p0-mature-convergence-v2"
 }
