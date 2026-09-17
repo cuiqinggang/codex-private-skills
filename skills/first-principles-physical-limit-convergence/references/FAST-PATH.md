@@ -1,158 +1,87 @@
-# FAST PATH — First-Principles Physical-Limit Convergence v1.9.0
+# 最短执行路径 — v1.9.0
 
-## GATE -2 — CANONICAL IDENTITY
+英文：`FAST PATH（最短路径）`
 
-```text
-SKILL_ID=first-principles-physical-limit-convergence
-SKILL_VERSION=1.9.0
-SKILL_PATH=skills/first-principles-physical-limit-convergence/
-VERSION_BRANCH=codex/first-principles-physical-limit-convergence-v1.9.0
-CANONICAL_IDENTITY_GATE=PASS
-```
-
-## GATE -1 — NO FREE EXPLORATION
+## 先确认身份
 
 ```text
-NO_FREE_EXPLORATION=YES
-CODEX_ROLE=DETERMINISTIC_VALIDATOR_EXECUTOR
-CODEX_MAY_DESIGN_TEST_PLAN=NO
-CODEX_MAY_ADD_CANDIDATE=NO
-CODEX_MAY_EXTEND_ITERATION=NO
-GPT_COMPLETE_VALIDATION_RAILROAD_REQUIRED=YES
-PREAUTHORIZED_BATCH_EXECUTION=YES
+技能ID = first-principles-physical-limit-convergence
+版本 = 1.9.0
+正式分支 = codex/first-principles-physical-limit-convergence-v1.9.0
 ```
 
-## STEP 0 — PROJECT REMOTE WORKSPACE
-
-声明远端共同工作区、本地执行副本与 `REMOTE_VERIFY_REQUIRED=YES`。
-
-流程：
+## 第1步：物理极限
 
 ```text
-REMOTE LOCATE
--> FETCH/PULL
--> LOCAL CHECKOUT
--> EXECUTE PREAUTHORIZED BATCH
--> REPORT
--> PUSH
--> REMOTE VERIFY
+固定任务
++ 当前硬件边界
+→ T_PHY_TOTAL_REFERENCE（端到端物理极限参照）
 ```
 
-## STEP 1 — TASK + T_PHY + MRE + REAL STATE
+只保留一个正式物理极限数字或区间。
 
-1. 冻结 TASK / QC / TIMING / HARDWARE。
-2. 继承历史共同事实。
-3. 只发布一个正式物理极限：
+## 第2步：本机现实最优区间
 
 ```text
-T_PHY_TOTAL_REFERENCE=<one number or interval>
+历史真实数据
++ MRE（最小真实执行）
++ 本机硬件/软件/模型约束
+→ REAL_STATE_OPTIMUM_RANGE（本机现实最优区间）
 ```
 
-4. 做一次有明确结束条件的 MRE。
-5. 建立：
+## 第3步：GPT虚拟99
 
 ```text
-T_PHY_TOTAL_REFERENCE
-+ STATIC_FACTS
-+ MRE_OBSERVATIONS
-+ EMPIRICAL_PRIORS
-= REAL_STATE_MODEL
+成熟方案矩阵
+→ 多方案虚拟吸收
+→ 处理重叠收益和冲突
+→ 反复虚拟攻击剩余差距
+→ 达到停止点
+→ VIRTUAL_99_FINAL_PLAN（虚拟99最终方案）
 ```
 
-## STEP 2 — MATURE HARVEST + COMPLETE VIRTUAL-99
+**循环只放在这里。**
 
-GPT 建立 mature matrix，并一次性设计当前 batch 的全部：
+## 第4步：Codex完整执行命令包
 
 ```text
-CANDIDATES
-ORDER
-CONDITIONAL BRANCHES
-PASS/FAIL/NOT_APPLICABLE/INCONCLUSIVE
-ROLLBACK
-MAX RUNS
-STAGE BUDGETS
-BATCH GLOBAL BUDGET
-BATCH STOP POINT
-FINAL RETURN-TO-GPT POINT
+读取完整命令包
+→ 按顺序执行全部既定候选
+→ 按规则保留/回滚
+→ 完成最终认证
+→ Git提交/推送
+→ 远端核验
+→ 停止并返回GPT
 ```
 
-未预定义分支不得由 Codex 发明。
+正常的通过、失败、回滚不需要每一步返回 GPT。
 
-## STEP 3 — PREAUTHORIZED BATCH EXECUTION
+## 禁止
 
 ```text
-VERIFY IDENTITY/VERSION/WORKSPACE
--> VERIFY COMPLETE BATCH RAILROAD
--> EXECUTE STAGE
--> QC
--> EVIDENCE
--> APPLY PREDEFINED DECISION
--> EXPECTED PASS/FAIL/NOT_APPLICABLE ? CONTINUE NEXT PREAUTHORIZED STAGE
--> MATERIAL_REPLAN_TRIGGER ? SAFE STOP + RETURN GPT
--> BATCH COMPLETE ? PUSH + REMOTE VERIFY + RETURN GPT
+Codex自行加候选 = NO
+Codex自行改顺序 = NO
+Codex自行加运行 = NO
+Codex自行profile = NO
+真实执行层V1→Vn式循环 = NO
 ```
 
-特别规定：
+## 新发现的路线
+
+如果当前主流程之外又发现明显有价值的新方向：
 
 ```text
-NO_REPLAN_ON_MAGNITUDE_SURPRISE=YES
-NO_OPEN_ENDED_PREFLIGHT_CHAIN=YES
+记录为独立99路径
+→ 当前主流程照常收口
+→ 以后单独再走四步法
 ```
 
-收益比预测大很多、小一些但仍 PASS、预定义 FAIL/ROLLBACK/NOT_APPLICABLE，都不单独重开 Virtual-99。
+不要把新路线重新插入当前流程。
 
-## MATERIAL_REPLAN_TRIGGER
-
-只有：
-
-- 未定义结果；
-- QC/correctness/stability/safety失效；
-- task/hardware/software/model identity 未授权变化；
-- 后续关键前提被推翻且无 fallback；
-- control window 失稳；
-- batch 预算耗尽；
-- Git/远端事实冲突。
-
-## STEP 4 — BATCH-BOUNDARY RESIDUAL CONVERGENCE
-
-批次完成后才由 GPT 重算：
+## 最后
 
 ```text
-CURRENT_WINNER
--> REMAINING_CANDIDATES
--> RESIDUAL_GAPS
--> INTERACTIONS
--> PORTFOLIO_GAIN
--> TOTAL_COST
--> NEXT BATCH or FINAL CERTIFICATION
+Final Certification（最终认证）通过
++ Remote Verify（远端核验）通过
+→ 99 / Freeze（99分 / 冻结）
 ```
-
-## STEP 5 — PORTFOLIO ROI
-
-```text
-EXPECTED_LIFETIME_BENEFIT_PORTFOLIO
-vs
-PORTFOLIO_COST
-```
-
-收益不足、风险高、需要软件迁移或会开启未知研究链的候选可直接 `DEFERRED/EXHAUSTED`。
-
-## FINAL — 99 / FREEZE
-
-至少：
-
-```text
-CANONICAL_IDENTITY_GATE=PASS
-NO_FREE_EXPLORATION=YES
-T_PHY_TOTAL_REFERENCE_DEFINED=YES
-MRE_REAL_STATE_MODEL_COMPLETE=YES
-MATURE_HIGH_VALUE_CANDIDATES_ADJUDICATED=YES
-VIRTUAL_MATURE_PATH_COMPLETE=YES
-PREAUTHORIZED_BATCH_EXECUTION_COMPLETE=YES
-RESIDUAL_VIRTUAL_CONVERGENCE_COMPLETE=YES
-PORTFOLIO_ROI_EVALUATED=YES
-FINAL_CERTIFICATION=PASS
-REMOTE_VERIFY=PASS
-```
-
-一句话：**虚拟阶段把路线一次设计完整；真实阶段在预授权批次内机械连续执行；只有真正破坏路线前提的异常才回 GPT；批次边界再做残余收敛。**
