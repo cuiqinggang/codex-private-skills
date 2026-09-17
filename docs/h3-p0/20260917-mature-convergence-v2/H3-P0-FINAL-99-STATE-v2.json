@@ -410,5 +410,8 @@
   "evidence_dir": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-final-cert-retry-01",
   "sampler_source_restored": true,
   "sampler_sha256": "2850B400E0C07DDB73429F35E5DA3DE01952E7EE58F4C050124EA948CBDA53AE",
-  "remote_verify": "PENDING"
+  "remote_verify": "PASS",
+  "remote_verified_report_commit": "e301bf8557d3f88199ca749333d87ac5c165457c",
+  "remote_report_blob": "bd06e72d89021f63bf5beca9f253d17e1c593fde",
+  "remote_json_blob": "2f42da52badcd332615eff6b1dcd2c9673ed6301"
 }

@@ -68,4 +68,4 @@ STOP
 RETURN_TO_GPT
 ```
 
-远端核验：PENDING（提交、推送并远端回读 MD/JSON 后记录）。
+远端核验：PASS。已从远端回读提交 `e301bf8557d3f88199ca749333d87ac5c165457c`，MD/JSON 的远端 Git blob 与本地一致；本段核验回执随下一提交推送。
