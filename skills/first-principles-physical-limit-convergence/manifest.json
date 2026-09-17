@@ -1,26 +1,26 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "display_name": "第一性原理物理极限收敛引擎",
   "display_name_en": "First-Principles Physical-Limit Convergence",
   "lineage": {
     "skill_id": "first-principles-physical-limit-convergence",
-    "version": "1.7.0"
+    "version": "1.8.0"
   },
   "canonical_identity": {
     "current_mother_skill_id": "first-principles-physical-limit-convergence",
     "canonical_path": "skills/first-principles-physical-limit-convergence/",
-    "canonical_version_branch": "codex/first-principles-physical-limit-convergence-v1.8.0",
+    "canonical_version_branch": "codex/first-principles-physical-limit-convergence-v1.9.0",
     "legacy_ancestor_skill_id": "absolute-time-fireworks-optimization",
     "legacy_ancestor_is_current_mother_skill": false,
     "legacy_ancestor_is_current_upgrade_target": false,
     "legacy_version_controls_current_version": false
   },
   "canonical_method": [
-    "IDENTITY: verify canonical mother skill id/path/version/branch before reading or modifying the mother skill",
+    "IDENTITY: verify canonical mother skill id/path/version/branch",
     "SKILL_PRECEDENCE: NO_FREE_EXPLORATION; Codex is deterministic validator/executor only",
     "STEP 1: REMOTE_WORKSPACE -> TASK_CONTRACT -> SINGLE_T_PHY_TOTAL_REFERENCE -> MRE -> REAL_STATE_MODEL",
-    "STEP 2: MATURE_HARVEST -> GPT_COMPLETE_VIRTUAL_99_RAILROAD -> CODEX_BOUNDED_VALIDATION -> RESIDUAL_VIRTUAL_CONVERGENCE -> PORTFOLIO_ROI -> FINAL_CERTIFICATION -> FREEZE"
+    "STEP 2: MATURE_HARVEST -> GPT_COMPLETE_VIRTUAL_99 -> PREAUTHORIZED_BATCH_RAILROAD -> CODEX_BATCH_EXECUTION -> BATCH_BOUNDARY_RESIDUAL_CONVERGENCE -> PORTFOLIO_ROI -> FINAL_CERTIFICATION -> FREEZE"
   ],
   "hard_gates": {
     "canonical_identity_gate": true,
@@ -31,14 +31,18 @@
     "codex_may_extend_iteration": false,
     "codex_may_profile_without_gpt_plan": false,
     "gpt_complete_validation_railroad_required": true,
+    "preauthorized_batch_execution": true,
+    "no_replan_on_magnitude_surprise": true,
+    "no_open_ended_preflight_chain": true,
+    "material_replan_trigger_required": true,
     "single_physical_limit_reference": "T_PHY_TOTAL_REFERENCE"
   },
   "shared_fact_source": "project-scoped remote authoritative workspace",
   "status": {
-    "method_logic_acceptance": "PASS",
-    "runtime_installation": "NOT_VERIFIED_FOR_1.8.0",
+    "method_logic_acceptance": "PASS_PENDING_STATIC_ACCEPTANCE_UPDATE",
+    "runtime_installation": "NOT_VERIFIED_FOR_1.9.0",
     "h3_mre_application": "PASS",
-    "h3_virtual_99": "NOT_YET_EXECUTED"
+    "h3_v1_9_project_application": "NOT_YET_EXECUTED"
   },
   "created_date": "2026-09-16",
   "updated_date": "2026-09-17"
