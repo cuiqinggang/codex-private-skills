@@ -66,4 +66,4 @@ ComfyUI 提交 `8a33128f2f8c5585c57486c07de481241e70a39c`，GPU RTX 2080 Ti 22GB
 
 原始逐 attempt JSON、工作流、运行日志、seed 抽取账本、GPU 提交账本和 MP4 保存在 `C:\AI\H3-P0-Acceptance\mature-convergence-v2\20260918-reseed-recovery-proof-v1-01`。本仓库的同名 JSON 保存完整运行状态。
 
-Git 提交与远端回读将在证据提交后补记；最终远端 HEAD 以返回 GPT 时的再次回读为准。
+Git 证据提交为 `6ab23e34cf9c2c40ea43b66fa76e0fb594412678`。推送后执行 `git ls-remote origin refs/heads/codex/h3-p0-mature-convergence-v2`，回读的远端 HEAD 与该提交一致。本段补记另行提交；最终远端 HEAD 以返回 GPT 时的再次回读为准。
