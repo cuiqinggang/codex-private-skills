@@ -1,0 +1,51 @@
+{
+  "schema": "H3-P0-QUALITY-STABILITY-DIAGNOSTIC-STATE-v1",
+  "status": "BLOCKED_EXECUTION_ENVIRONMENT",
+  "branch": "codex/h3-p0-mature-convergence-v2",
+  "start_remote_head": "fba426ae97527ed32a0834a3a38acc26507438d7",
+  "command_git_blob": "6a8cd6b72c12e41c0b1376ad9481f4bc51f740d9",
+  "virtual_plan_git_blob": "90aa2fa36d4c5eee483f551207f84f0010eba1c2",
+  "gpu_runs_executed": 0,
+  "max_gpu_runs": 4,
+  "runs": [
+    {
+      "seed": 930103,
+      "loader": "MiniMaxH3FP16LoaderStar7",
+      "status": "NOT_RUN",
+      "mp4_qc": "NOT_TESTED"
+    },
+    {
+      "seed": 930103,
+      "loader": "UNETLoader",
+      "status": "NOT_RUN",
+      "mp4_qc": "NOT_TESTED"
+    },
+    {
+      "seed": 930100,
+      "loader": "MiniMaxH3FP16LoaderStar7",
+      "status": "NOT_RUN",
+      "mp4_qc": "NOT_TESTED"
+    },
+    {
+      "seed": 930100,
+      "loader": "UNETLoader",
+      "status": "NOT_RUN",
+      "mp4_qc": "NOT_TESTED"
+    }
+  ],
+  "numerical_boundaries": "NOT_SAMPLED",
+  "first_divergence": "NOT_LOCALIZED",
+  "confidence": "LOW",
+  "likely_mechanism": "未执行数值边界采样，无法判断机制。",
+  "instrumentation_applied": false,
+  "source_modified": false,
+  "source_sha256_before": null,
+  "source_sha256_after": null,
+  "restoration": "NOT_APPLICABLE_NO_MODIFICATION",
+  "local_source_verification": "UNAVAILABLE_EXECUTOR_FAILURE",
+  "blocking_errors": [
+    "CreateProcess: SetTokenInformation(TokenDefaultDacl) failed: 1344",
+    "trusted Node process exited unexpectedly; kernel reset"
+  ],
+  "next_action": "RETURN_TO_GPT"
+}
