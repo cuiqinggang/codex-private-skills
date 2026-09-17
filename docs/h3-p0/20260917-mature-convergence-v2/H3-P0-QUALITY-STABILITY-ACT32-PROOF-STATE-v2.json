@@ -82,5 +82,8 @@
   "ready_for_final_quality_stability_certification": false,
   "final_quality_stability_99": false,
   "evidence_dir": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-act32-proof-v2-01",
-  "patch_file": "H3-P0-QUALITY-STABILITY-ACT32-PATCH-v2.diff"
+  "patch_file": "H3-P0-QUALITY-STABILITY-ACT32-PATCH-v2.diff",
+  "evidence_commit": "3a5886bc36502cf39b08762b4ee8c61d9f248ee3",
+  "remote_verify_evidence_commit": "3a5886bc36502cf39b08762b4ee8c61d9f248ee3",
+  "remote_verify_method": "git ls-remote origin refs/heads/codex/h3-p0-mature-convergence-v2"
 }

@@ -63,4 +63,4 @@ ComfyUI 提交 `8a33128f2f8c5585c57486c07de481241e70a39c`；RTX 2080 Ti 22GB / s
 
 GPU 提交账本只有 `940098`、`940099`、`930103` 三条。Star7 `nodes.py` 已按字节备份恢复，恢复后 SHA256 为 `8F6D3EB42D5123A36A814F3EFE6910D499CDF618E190DE74F3BCA0D5935E232B`。临时计时插入的 `comfy/samplers.py` 亦已恢复，SHA256 为 `2850B400E0C07DDB73429F35E5DA3DE01952E7EE58F4C050124EA948CBDA53AE`。原始运行 JSON、工作流、日志、账本、备份与 MP4 路径保存在 `C:\AI\H3-P0-Acceptance\mature-convergence-v2\20260917-act32-proof-v2-01`。本仓库的 v2 JSON 保存裁决和逐条摘要。
 
-Git 提交与远端回读结果将在证据提交后补记；最终远端 HEAD 以返回 GPT 时的再次回读为准。
+Git 证据提交为 `3a5886bc36502cf39b08762b4ee8c61d9f248ee3`。推送后执行 `git ls-remote origin refs/heads/codex/h3-p0-mature-convergence-v2`，回读的远端 HEAD 与该提交一致。本段补记另行提交；最终远端 HEAD 以返回 GPT 时的再次回读为准。
