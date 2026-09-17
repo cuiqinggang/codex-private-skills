@@ -1,17 +1,55 @@
-# first-principles-physical-limit-convergence v1.0.0
+# 第一性原理物理极限收敛引擎 v2.0.0
 
-中文名：**第一性原理物理极限收敛引擎**
+正式技能：`first-principles-physical-limit-convergence`
 
-这是 `absolute-time-fireworks-optimization v2.0.1` 的方法论升级版。旧技能保存为历史成功基线；本技能建立新的两步主流程：
+核心仍然只有四步：
 
 ```text
-STEP 1 — CALCULATE
-TASK -> PHYSICAL DAG -> T_PHY -> T_MACHINE_STAR -> ATTACK_ORDER
-
-STEP 2 — CONVERGE
-DE-ARMOR -> V1 -> MEASURE -> GAP -> ATTACK -> KEEP/ROLLBACK -> ... -> 99/FREEZE
+1. 物理极限
+2. 本机现实最优区间
+3. GPT Virtual-99
+4. Codex 完整实测命令包
 ```
 
-`CURRENT` 降级为迭代证据；`EXTERNAL FRONTIER` 降级为可选证据；raw stock baseline 不再强制。多智能体主要用于缩短 `T_CONVERGENCE`，不自动缩短单次 `T_EXEC`；单 GPU 正式 benchmark 默认独占 GPU。
+v2.0 新增两项横向能力，不增加主流程层级：
 
-首个计划验证案例是 H3-P0。本 v1.0 只完成方法与执行合同固化；H3 的 `T_PHY / T_MACHINE_STAR` 尚未在本包内计算，H3 V1 尚未运行。
+- **随机系统的验证式交付**：区分 attempt 与 delivery，优化 `T_TFVR = Time To First Valid Result`，用严格 verifier 拒绝坏候选并按冻结规则重采样；
+- **GPT-Codex 自动控制面**：GitHub 共同事实源 + ChatGPT 浏览器桥接 + Codex 确定性执行 + checkpoint/idempotency + capacity router，去除人工复制粘贴。
+
+关键原则：
+
+```text
+NO_FREE_EXPLORATION=YES
+CODEX_ROLE=DETERMINISTIC_EXECUTOR
+GPT_ROLE=PLANNER/JUDGE
+```
+
+随机系统中：
+
+```text
+single attempt failure != delivery failure
+```
+
+如果随机变量不是用户任务语义，可采用：
+
+```text
+fast proposal -> QC -> reject invalid -> resample -> first valid result
+```
+
+正式时间指标：
+
+```text
+T_TFVR
+```
+
+H3-P0 实证：20 个交付任务最终 20/20 QC PASS；首次成功率 90%；平均 1.10 次尝试；T_TFVR P50 6.076s、P95 11.974s；无效输出交付 0。
+
+详细规则：
+
+- `SKILL.md`
+- `references/STOCHASTIC-VERIFIED-DELIVERY.md`
+- `references/AUTOMATED-GPT-CODEX-CONTROL-PLANE.md`
+
+正式分支：
+
+`codex/first-principles-physical-limit-convergence-v2.0.0`
