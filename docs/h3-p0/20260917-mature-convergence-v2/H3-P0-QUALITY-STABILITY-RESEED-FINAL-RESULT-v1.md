@@ -104,3 +104,5 @@ Generation CUDA 与 Path CUDA 因冻结源码没有 CUDA Event 分段，逐条�
 本轮自然 capacity 触发：`NO`；真实 route event：`NONE`。
 
 原始证据：`C:\AI\H3-P0-Acceptance\mature-convergence-v2\20260918-reseed-final-certification-v1-01`。
+
+证据提交为 `6df22620d49a9129208b03a805f880d990df60ea`。推送后通过 `git ls-remote origin refs/heads/codex/h3-p0-mature-convergence-v2` 回读，远端 HEAD 与该证据提交一致。本段远端核验补记另行提交；最终远端 HEAD 以返回 GPT 时的再次回读为准。

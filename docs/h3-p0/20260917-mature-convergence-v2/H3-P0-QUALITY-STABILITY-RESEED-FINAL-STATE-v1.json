@@ -1604,5 +1604,8 @@
   "star7_only": true,
   "step_remains_1": true,
   "model_and_runtime_unchanged": true,
-  "gpu_runs_executed": 24
+  "gpu_runs_executed": 24,
+  "evidence_commit": "6df22620d49a9129208b03a805f880d990df60ea",
+  "remote_verify_evidence_commit": "6df22620d49a9129208b03a805f880d990df60ea",
+  "remote_verify_method": "git ls-remote origin refs/heads/codex/h3-p0-mature-convergence-v2"
 }
