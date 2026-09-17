@@ -1,6 +1,6 @@
 # H3-P0 简洁最终执行命令 v1
 
-状态：`READY_TO_EXECUTE / MAIN_PATH_ONLY`
+状态：`READY_TO_EXECUTE / MAIN_PATH_ONLY / FINAL_RESIDUAL_VIRTUAL_ATTACK_COMPLETE`
 
 方法：`first-principles-physical-limit-convergence v1.9.0（第一性原理物理极限收敛引擎 v1.9.0）`
 
@@ -18,9 +18,23 @@ REAL_STATE_OPTIMUM_RANGE（本机现实最优区间） = 4–14 s
 
 Star7 已经真实进入本机现实目标区间。
 
-当前主流程不再增加任何新候选。
+在最终认证前，GPT 已完成最后一轮末端收益虚拟攻击：
 
-W4A8、INT8 VAE、conditioning cache（条件缓存）、host-sync（主机同步）等全部不插回当前主流程。
+```text
+H3-P0-FINAL-RESIDUAL-VIRTUAL-ATTACK-v1.md
+H3-P0-FINAL-RESIDUAL-VIRTUAL-STATE-v1.json
+```
+
+正式裁决：
+
+```text
+FINAL_RESIDUAL_VIRTUAL_ATTACK = COMPLETE
+CURRENT_MAIN_PATH_POSITIVE_ROI_MATURE_CANDIDATE_REMAINS = NO
+GLOBAL_ALL_POSSIBLE_OPTIMIZATION_EXHAUSTED = NO
+READY_FOR_FINAL_CERTIFICATION = YES
+```
+
+含义：当前主流程已经没有“成熟、低风险、明确高收益、可以短命令直接验证”的剩余候选；W4A8、Star7尾部稳定化、不同prompt文本编码器、大规格注意力优化等仍可能有价值，但都作为独立99路径，不插回当前主流程。
 
 ## 2. Codex执行边界
 
@@ -219,6 +233,7 @@ H3-P0-FINAL-99-STATE.json
 - 固定任务合同；
 - Star7 最终配置；
 - E1 KEEP 证据；
+- 最后一轮末端收益虚拟攻击结果；
 - 10 次正式 P50/P95 Generation/Path/Total；
 - QC 10/10；
 - 物理极限 0.23–0.57 s；
