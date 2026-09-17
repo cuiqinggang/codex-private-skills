@@ -1,0 +1,12 @@
+{
+  "model_source": "codex_live_then_models_cache",
+  "model_cache_ttl_seconds": 300,
+  "capacity_cooldown_seconds": 600,
+  "all_models_recheck_seconds": 300,
+  "probe_reasoning_effort": "low",
+  "preferred_models": [],
+  "denied_models": [],
+  "min_capability_class": null,
+  "quota_sensitive": true,
+  "probe_timeout_seconds": 90
+}
