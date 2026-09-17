@@ -31,3 +31,9 @@ FINAL_QUALITY_STABILITY_99=NO
 两次预热、四条正式 QC、backend/force_cast/dense fallback 运行证明及三条 paired Total 均未产生；不能据此裁决候选质量或性能。Star7 `nodes.py` 未修改，结束时 SHA256 仍为 `8F6D3EB42D5123A36A814F3EFE6910D499CDF618E190DE74F3BCA0D5935E232B`。无 ACT32 修改，因此没有实际 ACT32 diff 文件。
 
 停止点：等待 GPT 修正或确认命令包的 Star7 源码冻结 SHA256；本轮不自行改动冻结命令或补做 GPU 实验。
+
+## Git 证据
+
+- 阻断证据提交：`8550416e05918fc0b937733922ef9b7e60fcfa70`。
+- 首次推送后通过 `git ls-remote origin refs/heads/codex/h3-p0-mature-convergence-v2` 回读，远端 HEAD 与上述提交一致。
+- 本节补记在后续提交中；最终远端 HEAD 以任务返回的再次回读结果为准。

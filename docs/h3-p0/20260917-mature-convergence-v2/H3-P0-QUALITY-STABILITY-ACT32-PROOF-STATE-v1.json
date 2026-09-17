@@ -20,5 +20,8 @@
   "act32_diff": null,
   "act32_proof": "NOT_RUN_SOURCE_IDENTITY_MISMATCH",
   "ready_for_final_quality_stability_certification": false,
-  "final_quality_stability_99": false
+  "final_quality_stability_99": false,
+  "evidence_commit": "8550416e05918fc0b937733922ef9b7e60fcfa70",
+  "remote_verify_evidence_commit": "8550416e05918fc0b937733922ef9b7e60fcfa70",
+  "remote_verify_method": "git ls-remote origin refs/heads/codex/h3-p0-mature-convergence-v2"
 }
