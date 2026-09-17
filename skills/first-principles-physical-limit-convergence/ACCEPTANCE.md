@@ -1,8 +1,17 @@
-# ACCEPTANCE — v1.7.0
+# ACCEPTANCE — v1.8.0
 
 ```text
 SKILL_ID=first-principles-physical-limit-convergence
-VERSION=1.7.0
+VERSION=1.8.0
+CANONICAL_IDENTITY_GATE_DEFINED=PASS
+CANONICAL_MOTHER_SKILL_ID=first-principles-physical-limit-convergence
+CANONICAL_SKILL_PATH=skills/first-principles-physical-limit-convergence/
+CANONICAL_VERSION_BRANCH=codex/first-principles-physical-limit-convergence-v1.8.0
+LEGACY_ANCESTOR_SKILL_ID=absolute-time-fireworks-optimization
+LEGACY_ANCESTOR_IS_CURRENT_MOTHER_SKILL=NO
+LEGACY_ANCESTOR_IS_CURRENT_UPGRADE_TARGET=NO
+LEGACY_VERSION_CONTROLS_CURRENT_VERSION=NO
+BRANCH_MATCHES_DECLARED_SKILL_VERSION=PASS
 SKILL_PRECEDENCE_GATE_DEFINED=PASS
 NO_FREE_EXPLORATION=YES
 CODEX_ROLE=DETERMINISTIC_VALIDATOR_EXECUTOR
@@ -25,11 +34,24 @@ PORTFOLIO_LIFETIME_ROI_DEFINED=PASS
 NO_MULTI_HOUR_OPEN_ENDED_VALIDATION=YES
 FINAL_CERTIFICATION_DEFINED=PASS
 REMOTE_VERIFY_REQUIRED=YES
+METHOD_CORE_PRESERVED_FROM_1_7_0=PASS
 METHOD_LOGIC_ACCEPTANCE=PASS
-RUNTIME_INSTALLATION_1_7_0=NOT_VERIFIED
+RUNTIME_INSTALLATION_1_8_0=NOT_VERIFIED
 H3_MRE=PASS
 H3_VIRTUAL_99=NOT_YET_EXECUTED
 H3_FINAL_99=NO
 ```
 
-`METHOD_LOGIC_ACCEPTANCE=PASS` 只表示 v1.7.0 的方法合同已经远端自洽，不表示本机 Codex 技能目录已经部署/回读 v1.7.0，也不表示 H3-P0 已经执行 Virtual-99 或完成最终 99。
+## v1.8.0 变更范围
+
+v1.8.0 只新增并锁定：
+
+1. 当前母技能的 canonical identity；
+2. 当前版本分支与 skill version 必须一致；
+3. 旧 `absolute-time-fireworks-optimization` 只能作为历史祖先/兼容资产；
+4. 不允许把旧技能的 `v2.x` 版本线拿来覆盖当前 `v1.x` 谱系；
+5. 修正旧 `DISTRIBUTION-NOTE.md` 长期指向 v1.0.0 branch 的风险。
+
+v1.7.0 已经正确建立的核心方法——技能优先、禁止自由探索、Codex 确定性验证、GPT 完整铁路、单一 `T_PHY_TOTAL_REFERENCE`、远端共同工作区、MRE、成熟方案收割、虚拟99、残余虚拟收敛、组合生命周期 ROI、最终认证——全部保留。
+
+`METHOD_LOGIC_ACCEPTANCE=PASS` 只表示 v1.8.0 的远端方法合同与身份治理自洽，不表示本机 Codex 技能目录已经部署/回读 v1.8.0，也不表示 H3-P0 已执行 Virtual-99 或完成最终 99。
