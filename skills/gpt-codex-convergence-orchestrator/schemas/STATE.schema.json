@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GPT Codex Convergence Orchestrator State",
+  "type": "object",
+  "required": [
+    "task_id",
+    "revision",
+    "phase",
+    "status",
+    "owner",
+    "last_remote_head",
+    "completed_steps",
+    "do_not_repeat",
+    "next_action",
+    "updated_at"
+  ],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "revision": {"type": "integer", "minimum": 0},
+    "phase": {
+      "enum": [
+        "NEW",
+        "GPT_PLANNING",
+        "READY_FOR_CODEX",
+        "CODEX_RUNNING",
+        "RESULT_READY",
+        "READY_FOR_GPT",
+        "GPT_JUDGING",
+        "FREEZE",
+        "BLOCKED",
+        "USER_APPROVAL_REQUIRED"
+      ]
+    },
+    "status": {"type": "string"},
+    "owner": {"enum": ["GPT", "CODEX", "ORCHESTRATOR", "USER", "NONE"]},
+    "source_commit": {"type": ["string", "null"]},
+    "last_remote_head": {"type": "string"},
+    "completed_steps": {"type": "array", "items": {"type": "string"}},
+    "do_not_repeat": {"type": "array", "items": {"type": "string"}},
+    "next_action": {"type": "string"},
+    "requested_model": {"type": ["string", "null"]},
+    "actual_model": {"type": ["string", "null"]},
+    "fallback_reason": {"type": ["string", "null"]},
+    "chatgpt_conversation_ref": {"type": ["string", "null"]},
+    "last_consumed_gpt_revision": {"type": ["integer", "null"]},
+    "last_consumed_codex_revision": {"type": ["integer", "null"]},
+    "action_id": {"type": ["string", "null"]},
+    "updated_at": {"type": "string"},
+    "blocked_reason": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}
