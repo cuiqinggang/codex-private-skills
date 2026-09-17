@@ -1,0 +1,225 @@
+{
+  "candidate": "VERIFIED_FAST_PATH_V1",
+  "status": "FAIL_REFERENCE_QUALITY",
+  "source_sha256_before": {
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\custom_nodes\\minimax-h3-fp16-exact-star7\\nodes.py": "8F6D3EB42D5123A36A814F3EFE6910D499CDF618E190DE74F3BCA0D5935E232B",
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\nodes.py": "5AB70A74109118256934B63675ED620A47BECB54343A77DAA66B4FE20A4D0EE7",
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\ldm\\minimax\\model.py": "3267343A034C6DA91234D20FB63F74A0A439EFC4E468F473C9477D436B3BFC8A"
+  },
+  "seeds": [
+    {
+      "seed": 930103,
+      "fast": {
+        "phase": "STAR7_FAST",
+        "index": 0,
+        "seed": 930103,
+        "loader": "MiniMaxH3FP16LoaderStar7",
+        "prompt_id": "698482f9-5c0a-4316-9284-3e758bc87563",
+        "result_ready": "history_completed_and_mp4_exists",
+        "post_before_epoch_ns": 1789662566520148700,
+        "ready_epoch_ns": 1789662746884971400,
+        "qc_done_epoch_ns": 1789662750219005200,
+        "total_s": 180.36243530000502,
+        "qc_time_s": 3.334391099997447,
+        "post_before_monotonic": 101354.5638908,
+        "qc_done_monotonic": 101538.2607172,
+        "qc": {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260918-fallback-proof-v1-01\\STAR7_FAST-0-930103_00001_.mp4",
+          "sha256": "20A833E11F5D8E7103B61B95E8C5C8C04477CC031CE8C9AD9DCC5754519E1FAB",
+          "bytes": 3283,
+          "frame_means": [
+            254.0,
+            223.92740885416666,
+            202.7666015625,
+            197.42643229166666,
+            193.20377604166666
+          ],
+          "frame_ranges": [
+            3,
+            26,
+            40,
+            46,
+            50
+          ],
+          "frame_stds": [
+            1.4142135623730951,
+            8.488787261522152,
+            13.83700754402986,
+            15.095651770480977,
+            16.335337185067278
+          ],
+          "finite_pixels": true,
+          "non_black": true,
+          "qc_pass": false,
+          "flat_content": false
+        }
+      },
+      "fallback_triggered": true,
+      "reference": {
+        "phase": "REFERENCE_FALLBACK",
+        "index": 1,
+        "seed": 930103,
+        "loader": "REFERENCE_UNETLoader",
+        "prompt_id": "807fc1ab-68b8-4622-83b2-9c126d39e4fd",
+        "result_ready": "history_completed_and_mp4_exists",
+        "post_before_epoch_ns": 1789662750234005900,
+        "ready_epoch_ns": 1789662841237111300,
+        "qc_done_epoch_ns": 1789662841738839100,
+        "total_s": 91.00232720001077,
+        "qc_time_s": 0.5017497999942861,
+        "post_before_monotonic": 101538.2754798,
+        "qc_done_monotonic": 101629.7795568,
+        "qc": {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260918-fallback-proof-v1-01\\REFERENCE_FALLBACK-1-930103_00001_.mp4",
+          "sha256": "91DB737B1E9A2AC9F013F3CBB6F5E2E5663370D2648B9129D268BEFD694475D0",
+          "bytes": 3321,
+          "frame_means": [
+            251.66438802083334,
+            221.79069010416666,
+            198.4697265625,
+            192.02506510416666,
+            185.724609375
+          ],
+          "frame_ranges": [
+            9,
+            18,
+            29,
+            39,
+            50
+          ],
+          "frame_stds": [
+            2.879241891587705,
+            4.592878805463221,
+            8.245247695530354,
+            10.393981600493053,
+            12.650075905714115
+          ],
+          "finite_pixels": true,
+          "non_black": true,
+          "qc_pass": true,
+          "flat_content": false
+        }
+      },
+      "final_accepted_loader": "UNETLoader",
+      "fallback_status": "FALLBACK_PASS",
+      "delivery_total_s": 275.2156660000037,
+      "final_accepted_qc": "PASS",
+      "final_decision": "ACCEPT"
+    },
+    {
+      "seed": 920108,
+      "fast": {
+        "phase": "STAR7_FAST",
+        "index": 2,
+        "seed": 920108,
+        "loader": "MiniMaxH3FP16LoaderStar7",
+        "prompt_id": "24624576-8178-4f2f-8aa7-7285ac69aa21",
+        "result_ready": "history_completed_and_mp4_exists",
+        "post_before_epoch_ns": 1789662841763010400,
+        "ready_epoch_ns": 1789662934082376700,
+        "qc_done_epoch_ns": 1789662934559414800,
+        "total_s": 92.31793489999836,
+        "qc_time_s": 0.47791159999906085,
+        "post_before_monotonic": 101629.8032293,
+        "qc_done_monotonic": 101722.5990758,
+        "qc": {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260918-fallback-proof-v1-01\\STAR7_FAST-2-920108_00001_.mp4",
+          "sha256": "99B36AF38CA2DD577A1B597A16438E7A24FD43FF378C68C28B557CAB4BC87B28",
+          "bytes": 3214,
+          "frame_means": [
+            254.83333333333334,
+            255.0,
+            255.0,
+            255.0,
+            255.0
+          ],
+          "frame_ranges": [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          "frame_stds": [
+            0.5527707983925775,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "finite_pixels": true,
+          "non_black": true,
+          "qc_pass": false,
+          "flat_content": true
+        }
+      },
+      "fallback_triggered": true,
+      "reference": {
+        "phase": "REFERENCE_FALLBACK",
+        "index": 3,
+        "seed": 920108,
+        "loader": "REFERENCE_UNETLoader",
+        "prompt_id": "f4e5a6a0-392c-4f4c-8bd9-fa2ce8bfbddf",
+        "result_ready": "history_completed_and_mp4_exists",
+        "post_before_epoch_ns": 1789662934578333200,
+        "ready_epoch_ns": 1789663039712307200,
+        "qc_done_epoch_ns": 1789663040722458800,
+        "total_s": 105.13296039999113,
+        "qc_time_s": 1.009692100007669,
+        "post_before_monotonic": 101722.617291,
+        "qc_done_monotonic": 101828.7599435,
+        "qc": {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260918-fallback-proof-v1-01\\REFERENCE_FALLBACK-3-920108_00001_.mp4",
+          "sha256": "CFD9F1B4CFFAEA3AE3A6480692657105BFDB7A6F36BD58C2042939CE3D9A4D65",
+          "bytes": 3231,
+          "frame_means": [
+            253.08333333333334,
+            255.0,
+            255.0,
+            255.0,
+            255.0
+          ],
+          "frame_ranges": [
+            5,
+            0,
+            0,
+            0,
+            0
+          ],
+          "frame_stds": [
+            1.6562172428626343,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "finite_pixels": true,
+          "non_black": true,
+          "qc_pass": false,
+          "flat_content": true
+        }
+      },
+      "final_accepted_loader": null,
+      "fallback_status": "FAIL_REFERENCE_QUALITY",
+      "delivery_total_s": 198.95671420000144,
+      "final_accepted_qc": "FAIL",
+      "final_decision": "CONTROLLED_FAIL"
+    }
+  ],
+  "gpu_runs_executed": 4,
+  "invalid_output_delivered": false,
+  "no_seed_change": true,
+  "no_manual_intervention": true,
+  "max_gpu_runs": 4,
+  "evidence_dir": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260918-fallback-proof-v1-01",
+  "source_sha256_after": {
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\custom_nodes\\minimax-h3-fp16-exact-star7\\nodes.py": "8F6D3EB42D5123A36A814F3EFE6910D499CDF618E190DE74F3BCA0D5935E232B",
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\nodes.py": "5AB70A74109118256934B63675ED620A47BECB54343A77DAA66B4FE20A4D0EE7",
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\ldm\\minimax\\model.py": "3267343A034C6DA91234D20FB63F74A0A439EFC4E468F473C9477D436B3BFC8A"
+  },
+  "source_unchanged": true,
+  "final_accepted_qc_count": 1,
+  "verified_fast_path_proof": "FAIL_REFERENCE_QUALITY",
+  "ready_for_system_time_roi_recalc": false,
+  "final_99": false
+}
