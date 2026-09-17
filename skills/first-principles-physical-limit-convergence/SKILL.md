@@ -1,13 +1,74 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 在固定任务与硬约束下，以单一端到端第一性原理物理极限为最终时间参照；先声明项目远端共同工作区并完成极简真实运行，再由GPT/高质量推理层一次性设计完整虚拟99铁路。Codex只允许作为确定性验证器/执行器按铁路高速验证，绝对禁止自行发现候选、制定测试、扩展迭代、开放式profiling或自由探索。成熟大收益后再次做残余虚拟收敛，最终按组合生命周期ROI、最终认证与远端核验冻结99。
+description: 在固定任务与硬约束下，以单一端到端第一性原理物理极限为最终时间参照；先锁定当前母技能身份与版本谱系，再声明项目远端共同工作区并完成极简真实运行，由GPT/高质量推理层一次性设计完整虚拟99铁路。Codex只允许作为确定性验证器/执行器按铁路高速验证，绝对禁止自行发现候选、制定测试、扩展迭代、开放式profiling或自由探索。成熟大收益后再次做残余虚拟收敛，最终按组合生命周期ROI、最终认证与远端核验冻结99。
 metadata:
-  version: "1.7.0"
-  short-description: 第一性原理物理极限收敛引擎·技能优先/零自由探索版
-  lineage: first-principles-physical-limit-convergence@1.6.0 <- @1.5.0 <- @1.4.0 <- @1.3.0 <- @1.2.0 <- @1.1.0 <- @1.0.0
+  version: "1.8.0"
+  short-description: 第一性原理物理极限收敛引擎·身份锁定/技能优先/零自由探索版
+  lineage: first-principles-physical-limit-convergence@1.7.0 <- @1.6.0 <- @1.5.0 <- @1.4.0 <- @1.3.0 <- @1.2.0 <- @1.1.0 <- @1.0.0
 ---
 
-# 第一性原理物理极限收敛引擎 v1.7.0
+# 第一性原理物理极限收敛引擎 v1.8.0
+
+## 第 -2 门禁：CANONICAL IDENTITY / LINEAGE ISOLATION
+
+这是 v1.8.0 新增的最高前置身份门禁。任何“更新母技能、读取母技能、把新规则写回母技能”的动作，在进入方法逻辑前必须先证明当前操作对象就是本技能，而不是历史祖先、兼容资产或旧工程入口。
+
+```text
+CANONICAL_MOTHER_SKILL_ID=first-principles-physical-limit-convergence
+CANONICAL_DISPLAY_NAME_ZH=第一性原理物理极限收敛引擎
+CANONICAL_DISPLAY_NAME_EN=First-Principles Physical-Limit Convergence
+CANONICAL_SKILL_VERSION=1.8.0
+CANONICAL_SKILL_PATH=skills/first-principles-physical-limit-convergence/
+CANONICAL_VERSION_BRANCH=codex/first-principles-physical-limit-convergence-v1.8.0
+```
+
+### 历史祖先不是当前母技能
+
+```text
+LEGACY_ANCESTOR_SKILL_ID=absolute-time-fireworks-optimization
+LEGACY_METHOD_SOURCE=mature-replication-four-column
+LEGACY_ANCESTOR_IS_CURRENT_MOTHER_SKILL=NO
+LEGACY_ANCESTOR_IS_CURRENT_UPGRADE_TARGET=NO
+LEGACY_VERSION_NUMBER_CONTROLS_CURRENT_VERSION=NO
+```
+
+`absolute-time-fireworks-optimization` 是本方法演化历史中的祖先/旧工程资产；`mature-replication-four-column` 是历史方法来源/参考资产。它们可以保留历史案例、冻结资产、兼容材料，但**不得因为当前方法脱胎于它们，就把新的母技能规则继续写回旧 skill id**。
+
+不同 skill id 的版本号属于各自独立谱系。旧技能存在 `v2.x` 不代表它比本技能 `v1.8.0` 更新，也不允许把本技能版本重新切回旧技能版本线。
+
+### 每次正式读取或修改母技能前先验证身份
+
+```text
+REQUESTED_MOTHER_SKILL_ID
+REQUESTED_DISPLAY_NAME
+CURRENT_REMOTE_BRANCH
+CURRENT_SKILL_PATH
+CURRENT_SKILL_VERSION
+LINEAGE_ROLE
+```
+
+必须满足：
+
+```text
+REQUESTED_MOTHER_SKILL_ID == first-principles-physical-limit-convergence
+CURRENT_SKILL_PATH == skills/first-principles-physical-limit-convergence/
+CURRENT_SKILL_VERSION == REQUIRED_SKILL_VERSION
+LINEAGE_ROLE == CURRENT_MOTHER_SKILL
+```
+
+任何一项不成立：
+
+```text
+CANONICAL_IDENTITY_GATE=BLOCKED
+→ DO NOT MODIFY LEGACY SKILL
+→ LOCATE CURRENT VERSION BRANCH
+→ READ CURRENT SKILL.md
+→ REPORT MISMATCH / RETURN TO GPT
+```
+
+详细规则见：`references/CANONICAL-IDENTITY-GATE.md`。
+
+---
 
 ## 第 -1 门禁：SKILL PRECEDENCE / NO FREE EXPLORATION
 
@@ -54,13 +115,14 @@ COMMAND_CONFLICT_WITH_SKILL=YES
 ### 每次正式执行前必须先验证技能
 
 ```text
+CANONICAL_IDENTITY_GATE=PASS
 SKILL_ID=first-principles-physical-limit-convergence
 REQUIRED_SKILL_VERSION=<项目声明版本>
 SKILL_VERSION_VERIFIED=YES
 PROJECT_WORKSPACE_DECLARATION_GATE=PASS
 ```
 
-若技能不存在、版本不符、无法读取或项目没有声明所需版本：
+若技能不存在、版本不符、无法读取、身份门禁不通过或项目没有声明所需版本：
 
 ```text
 SKILL_PRECEDENCE_GATE=BLOCKED
@@ -359,6 +421,7 @@ Codex只做：
 
 ```text
 LOAD REQUIRED SKILL
+→ VERIFY CANONICAL IDENTITY
 → VERIFY VERSION
 → VERIFY PROJECT WORKSPACE
 → VERIFY PREDEFINED RAILROAD COMPLETE
@@ -422,19 +485,20 @@ PORTFOLIO_ECONOMIC_STOP=YES
 
 必须同时满足：
 
-1. `SKILL_PRECEDENCE_GATE=PASS`；
-2. `NO_FREE_EXPLORATION=YES` 全过程未被破坏；
-3. 项目远端工作区已声明并可核验；
-4. 固定任务、correctness、quality、stability、safety 全通过；
-5. 单一 `T_PHY_TOTAL_REFERENCE` 已发布；
-6. MRE / REAL_STATE_MODEL 已完成；
-7. 高价值成熟候选全部已有 KEEP / ROLLBACK / NOT_APPLICABLE / EXHAUSTED 裁决；
-8. `VIRTUAL_MATURE_PATH_COMPLETE=YES`；
-9. `RESIDUAL_VIRTUAL_CONVERGENCE_COMPLETE=YES`；
-10. `PORTFOLIO_ROI_EVALUATED=YES`；
-11. 没有剩余 ROI 为正且可在短边界内验证的高价值组合；
-12. Final Certification 通过；
-13. 正式配置、证据、Failure Index、经验先验已经远端冻结并 `REMOTE_VERIFY=PASS`。
+1. `CANONICAL_IDENTITY_GATE=PASS`；
+2. `SKILL_PRECEDENCE_GATE=PASS`；
+3. `NO_FREE_EXPLORATION=YES` 全过程未被破坏；
+4. 项目远端工作区已声明并可核验；
+5. 固定任务、correctness、quality、stability、safety 全通过；
+6. 单一 `T_PHY_TOTAL_REFERENCE` 已发布；
+7. MRE / REAL_STATE_MODEL 已完成；
+8. 高价值成熟候选全部已有 KEEP / ROLLBACK / NOT_APPLICABLE / EXHAUSTED 裁决；
+9. `VIRTUAL_MATURE_PATH_COMPLETE=YES`；
+10. `RESIDUAL_VIRTUAL_CONVERGENCE_COMPLETE=YES`；
+11. `PORTFOLIO_ROI_EVALUATED=YES`；
+12. 没有剩余 ROI 为正且可在短边界内验证的高价值组合；
+13. Final Certification 通过；
+14. 正式配置、证据、Failure Index、经验先验已经远端冻结并 `REMOTE_VERIFY=PASS`。
 
 因此：
 
@@ -447,7 +511,7 @@ PORTFOLIO_ECONOMIC_STOP=YES
 # 执行与上下文纪律
 
 - GPT / 高质量推理层负责：极限、方案、候选、顺序、条件分支、预算、停止条件。
-- Codex负责：读取技能、验证版本、精确执行、QC、证据、回滚、Git收口。
+- Codex负责：验证当前母技能身份、读取技能、验证版本、精确执行、QC、证据、回滚、Git收口。
 - 单GPU正式 benchmark 串行独占。
 - 不允许因会话长度、capacity error、审批等待或恢复操作改变实验计划。
 - 页面过长时先冻结远端阶段报告，再由新页面从共同事实恢复。
@@ -460,17 +524,21 @@ PORTFOLIO_ECONOMIC_STOP=YES
 每次执行优先读取：
 
 1. `SKILL.md`
-2. `references/NO-FREE-EXPLORATION-GATE.md`
-3. `references/REMOTE-SHARED-WORKSPACE.md`
-4. 项目远端工作区声明
-5. GPT生成的当前验证铁路
+2. `references/CANONICAL-IDENTITY-GATE.md`
+3. `references/NO-FREE-EXPLORATION-GATE.md`
+4. `references/REMOTE-SHARED-WORKSPACE.md`
+5. 项目远端工作区声明
+6. GPT生成的当前验证铁路
 
 其余 references 仅在 GPT 设计阶段按需读取；Codex不得因为“想了解更多”而扩大读取范围并自行设计实验。
 
 ## 状态
 
 ```text
-SKILL_VERSION=1.7.0
+SKILL_VERSION=1.8.0
+CANONICAL_IDENTITY_GATE_DEFINED=PASS
+CANONICAL_MOTHER_SKILL_ID=first-principles-physical-limit-convergence
+LEGACY_ANCESTOR_MUTATION=NO
 SKILL_PRECEDENCE_GATE_DEFINED=PASS
 NO_FREE_EXPLORATION=YES
 CODEX_ROLE=DETERMINISTIC_VALIDATOR_EXECUTOR
