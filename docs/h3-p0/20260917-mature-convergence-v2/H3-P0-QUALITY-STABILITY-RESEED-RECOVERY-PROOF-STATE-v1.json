@@ -1,0 +1,299 @@
+{
+  "candidate": "STAR7_RESEED_UNTIL_PASS_V1",
+  "status": "PASS",
+  "quality_retry_limit": null,
+  "stop_condition": "QC_PASS",
+  "source_sha256_before": {
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\custom_nodes\\minimax-h3-fp16-exact-star7\\nodes.py": "8F6D3EB42D5123A36A814F3EFE6910D499CDF618E190DE74F3BCA0D5935E232B",
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\nodes.py": "5AB70A74109118256934B63675ED620A47BECB54343A77DAA66B4FE20A4D0EE7",
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\ldm\\minimax\\model.py": "3267343A034C6DA91234D20FB63F74A0A439EFC4E468F473C9477D436B3BFC8A",
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\samplers.py": "2850B400E0C07DDB73429F35E5DA3DE01952E7EE58F4C050124EA948CBDA53AE"
+  },
+  "tasks": [
+    {
+      "task": "A",
+      "initial_seed": 930103,
+      "attempts": [
+        {
+          "index": 0,
+          "task": "A",
+          "retry_index": 0,
+          "seed": 930103,
+          "seed_source": "fixed_failure_start",
+          "duplicate_seed": false,
+          "loader": "MiniMaxH3FP16LoaderStar7",
+          "step": 1,
+          "prompt_id": "df1dec30-0f79-4c48-95c9-02550b3b1757",
+          "result_ready": "history_completed_and_mp4_exists",
+          "post_before_epoch_ns": 1789664339323722800,
+          "ready_epoch_ns": 1789664508172718000,
+          "qc_done_epoch_ns": 1789664508910989300,
+          "post_before_monotonic": 103127.3490502,
+          "qc_done_monotonic": 103296.934949,
+          "total_s": 168.8475899999903,
+          "qc_time_s": 0.7383088000060525,
+          "generation_cuda_s": null,
+          "generation_cuda_note": "unavailable without prohibited source instrumentation or profiler",
+          "path_cuda_s": null,
+          "generation_wall_s": 79.23,
+          "generation_wall_method": "comfy_tqdm_s_per_it_wall",
+          "path_wall_proxy_s": 89.6175899999903,
+          "qc": {
+            "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260918-reseed-recovery-proof-v1-01\\RESEED_TASK_A-0-930103_00001_.mp4",
+            "sha256": "5433E769C2A72BA1752296942F9A1E2B4305E8922A9B9E73547ADF252A031685",
+            "bytes": 3293,
+            "frame_means": [
+              254.0,
+              223.92740885416666,
+              202.7666015625,
+              197.42643229166666,
+              193.20377604166666
+            ],
+            "frame_ranges": [
+              3,
+              26,
+              40,
+              46,
+              50
+            ],
+            "frame_stds": [
+              1.4142135623730951,
+              8.488787261522152,
+              13.83700754402986,
+              15.095651770480977,
+              16.335337185067278
+            ],
+            "finite_pixels": true,
+            "non_black": true,
+            "qc_pass": false,
+            "flat_content": false
+          },
+          "accepted": false
+        },
+        {
+          "index": 1,
+          "task": "A",
+          "retry_index": 1,
+          "seed": 4462651218371415901,
+          "seed_source": "secrets.randbits(63)",
+          "duplicate_seed": false,
+          "loader": "MiniMaxH3FP16LoaderStar7",
+          "step": 1,
+          "prompt_id": "9d95e8b1-1a2e-4e30-b592-61ae97cdac1a",
+          "result_ready": "history_completed_and_mp4_exists",
+          "post_before_epoch_ns": 1789664509416576500,
+          "ready_epoch_ns": 1789664528531482400,
+          "qc_done_epoch_ns": 1789664528833320900,
+          "post_before_monotonic": 103297.4408953,
+          "qc_done_monotonic": 103316.8578214,
+          "total_s": 19.114426000000094,
+          "qc_time_s": 0.30250010000600014,
+          "generation_cuda_s": null,
+          "generation_cuda_note": "unavailable without prohibited source instrumentation or profiler",
+          "path_cuda_s": null,
+          "generation_wall_s": 15.31,
+          "generation_wall_method": "comfy_tqdm_s_per_it_wall",
+          "path_wall_proxy_s": 3.8044260000000936,
+          "qc": {
+            "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260918-reseed-recovery-proof-v1-01\\RESEED_TASK_A-1-4462651218371415901_00001_.mp4",
+            "sha256": "631E8284829025B5B52F8A3BE46FD42955CB1D45CFBCE553BD218528B908A6DE",
+            "bytes": 3313,
+            "frame_means": [
+              245.29915364583334,
+              234.326171875,
+              233.95572916666666,
+              233.45182291666666,
+              236.6923828125
+            ],
+            "frame_ranges": [
+              19,
+              38,
+              40,
+              40,
+              33
+            ],
+            "frame_stds": [
+              5.481564682370959,
+              11.438171311430233,
+              11.969388842375366,
+              11.897140404398614,
+              10.099703187641436
+            ],
+            "finite_pixels": true,
+            "non_black": true,
+            "qc_pass": true,
+            "flat_content": false
+          },
+          "accepted": true
+        }
+      ],
+      "failure_not_reproduced": false,
+      "attempts_to_success": 2,
+      "delivery_total_s": 189.50877119999495,
+      "accepted_seed": 4462651218371415901,
+      "accepted_mp4_sha256": "631E8284829025B5B52F8A3BE46FD42955CB1D45CFBCE553BD218528B908A6DE",
+      "final_accepted_qc": "PASS"
+    },
+    {
+      "task": "B",
+      "initial_seed": 920108,
+      "attempts": [
+        {
+          "index": 2,
+          "task": "B",
+          "retry_index": 0,
+          "seed": 920108,
+          "seed_source": "fixed_failure_start",
+          "duplicate_seed": false,
+          "loader": "MiniMaxH3FP16LoaderStar7",
+          "step": 1,
+          "prompt_id": "872209af-63a7-41d4-90b8-ca683b213925",
+          "result_ready": "history_completed_and_mp4_exists",
+          "post_before_epoch_ns": 1789664528858529600,
+          "ready_epoch_ns": 1789664534409320100,
+          "qc_done_epoch_ns": 1789664534539379600,
+          "post_before_monotonic": 103316.8829663,
+          "qc_done_monotonic": 103322.563562,
+          "total_s": 5.550599299996975,
+          "qc_time_s": 0.12999639999179635,
+          "generation_cuda_s": null,
+          "generation_cuda_note": "unavailable without prohibited source instrumentation or profiler",
+          "path_cuda_s": null,
+          "generation_wall_s": 2.16,
+          "generation_wall_method": "comfy_tqdm_s_per_it_wall",
+          "path_wall_proxy_s": 3.3905992999969747,
+          "qc": {
+            "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260918-reseed-recovery-proof-v1-01\\RESEED_TASK_B-2-920108_00001_.mp4",
+            "sha256": "6C53B6F8BCE6B49BA27EDF8BE9E067BC13FF30954229AAC552149E0A12ECF6AE",
+            "bytes": 3224,
+            "frame_means": [
+              254.83333333333334,
+              255.0,
+              255.0,
+              255.0,
+              255.0
+            ],
+            "frame_ranges": [
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "frame_stds": [
+              0.5527707983925775,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "finite_pixels": true,
+            "non_black": true,
+            "qc_pass": false,
+            "flat_content": true
+          },
+          "accepted": false
+        },
+        {
+          "index": 3,
+          "task": "B",
+          "retry_index": 1,
+          "seed": 1350105258942230860,
+          "seed_source": "secrets.randbits(63)",
+          "duplicate_seed": false,
+          "loader": "MiniMaxH3FP16LoaderStar7",
+          "step": 1,
+          "prompt_id": "27e625ea-aa81-440c-9821-62acd46457c2",
+          "result_ready": "history_completed_and_mp4_exists",
+          "post_before_epoch_ns": 1789664534564381800,
+          "ready_epoch_ns": 1789664540265645700,
+          "qc_done_epoch_ns": 1789664540399504700,
+          "post_before_monotonic": 103322.5884727,
+          "qc_done_monotonic": 103328.423451,
+          "total_s": 5.701763800010667,
+          "qc_time_s": 0.13321449999057222,
+          "generation_cuda_s": null,
+          "generation_cuda_note": "unavailable without prohibited source instrumentation or profiler",
+          "path_cuda_s": null,
+          "generation_wall_s": 2.33,
+          "generation_wall_method": "comfy_tqdm_s_per_it_wall",
+          "path_wall_proxy_s": 3.371763800010667,
+          "qc": {
+            "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260918-reseed-recovery-proof-v1-01\\RESEED_TASK_B-3-1350105258942230860_00001_.mp4",
+            "sha256": "6FAD79527DF6A3FE876D29931AF75CF7DD2030F3E5CC27B9BEC95630967B58BB",
+            "bytes": 3333,
+            "frame_means": [
+              211.2119140625,
+              194.76106770833334,
+              190.8701171875,
+              187.03483072916666,
+              185.19075520833334
+            ],
+            "frame_ranges": [
+              110,
+              144,
+              149,
+              151,
+              155
+            ],
+            "frame_stds": [
+              44.295090329809106,
+              61.17670631649816,
+              63.688586576736945,
+              65.06859679925886,
+              65.60800925249568
+            ],
+            "finite_pixels": true,
+            "non_black": true,
+            "qc_pass": true,
+            "flat_content": false
+          },
+          "accepted": true
+        }
+      ],
+      "failure_not_reproduced": false,
+      "attempts_to_success": 2,
+      "delivery_total_s": 11.540484699988156,
+      "accepted_seed": 1350105258942230860,
+      "accepted_mp4_sha256": "6FAD79527DF6A3FE876D29931AF75CF7DD2030F3E5CC27B9BEC95630967B58BB",
+      "final_accepted_qc": "PASS"
+    }
+  ],
+  "seed_draws": [
+    {
+      "task": "A",
+      "seed": 4462651218371415901,
+      "method": "secrets.randbits(63) / OS cryptographic random source",
+      "duplicate": false,
+      "submitted": true
+    },
+    {
+      "task": "B",
+      "seed": 1350105258942230860,
+      "method": "secrets.randbits(63) / OS cryptographic random source",
+      "duplicate": false,
+      "submitted": true
+    }
+  ],
+  "gpu_runs_executed": 4,
+  "invalid_outputs_rejected": 2,
+  "invalid_output_delivered": false,
+  "no_manual_seed_selection": true,
+  "every_retry_used_new_random_seed": true,
+  "generation_cuda_available": false,
+  "evidence_dir": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260918-reseed-recovery-proof-v1-01",
+  "backend_proof": [
+    "\u001b[32m[INFO]\u001b[0m [Star7 H3 FP16] Enabled v2.0.14 | mode=loader-quantized | backend=int8_tensorwise+convrot:200 | force-cast=False | weight-patches=0 | blocks=50"
+  ],
+  "source_sha256_after": {
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\custom_nodes\\minimax-h3-fp16-exact-star7\\nodes.py": "8F6D3EB42D5123A36A814F3EFE6910D499CDF618E190DE74F3BCA0D5935E232B",
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\nodes.py": "5AB70A74109118256934B63675ED620A47BECB54343A77DAA66B4FE20A4D0EE7",
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\ldm\\minimax\\model.py": "3267343A034C6DA91234D20FB63F74A0A439EFC4E468F473C9477D436B3BFC8A",
+    "C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\samplers.py": "2850B400E0C07DDB73429F35E5DA3DE01952E7EE58F4C050124EA948CBDA53AE"
+  },
+  "source_unchanged": true,
+  "accepted_qc_count": 2,
+  "reseed_recovery_proof": "PASS",
+  "ready_for_final_reseed_system_certification": true,
+  "final_quality_stability_99": false
+}
