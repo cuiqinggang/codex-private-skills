@@ -1,0 +1,12 @@
+{
+  "architecture": "CODEX_FIRST_NUMBERED_GITHUB_BUS",
+  "loop_owner": "CODEX",
+  "gpt_role": "ON_DEMAND_PLANNER_JUDGE",
+  "github_role": "NUMBERED_MESSAGE_BUS",
+  "browser_role": "WAKEUP_ACK_ONLY",
+  "orchestrator_version": "1.1.0",
+  "pilot_v1": "SUPERSEDED_DO_NOT_EXECUTE",
+  "pilot_v2": "READY_TO_EXECUTE",
+  "manual_copy_paste_target": "ZERO",
+  "h3_gpu_allowed_in_pilot": false
+}
