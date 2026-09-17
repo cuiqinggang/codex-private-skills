@@ -1,0 +1,336 @@
+{
+  "PROJECT_ID": "H3-P0",
+  "STAGE": "FINAL_99_CERTIFICATION",
+  "METHOD_SKILL_ID": "first-principles-physical-limit-convergence",
+  "METHOD_VERSION": "1.9.0",
+  "CANONICAL_SKILL_BRANCH": "codex/first-principles-physical-limit-convergence-v1.9.0",
+  "NO_FREE_EXPLORATION": "YES",
+  "PROJECT_REMOTE_HEAD_BEFORE": "ea96ebbf75fe0b2918147186b8064fc595a0424e",
+  "FINAL_CERTIFICATION": "FAIL",
+  "FAILURE_REASON": "920108 MP4 decodes but all five frames violate range>=8 and std>=1.5; formal 920109 not submitted per fail-stop rule",
+  "GPU_RUNS_ALLOWED": 11,
+  "GPU_RUNS_EXECUTED": 10,
+  "WARMUP": {
+    "seed": 920099,
+    "total_s": 175.50394830000005,
+    "generation_cuda_s": 80.1943125,
+    "path_s": 95.30963580000005,
+    "qc": "PASS"
+  },
+  "FORMAL_SEEDS_PLANNED": [
+    920100,
+    920101,
+    920102,
+    920103,
+    920104,
+    920105,
+    920106,
+    920107,
+    920108,
+    920109
+  ],
+  "FORMAL_RUNS": [
+    {
+      "seed": 920100,
+      "status": "QC_PASS",
+      "generation_cuda_s": 16.07611328125,
+      "path_s": 3.9180345187464276,
+      "total_s": 19.994147799996426,
+      "mp4_sha256": "BEAB76E2CED7A857403FE2B3F7422D29F907AFE2BFB6A1781A6C416DD70F43D5",
+      "mp4_bytes": 3545,
+      "frame_ranges": [
+        189,
+        187,
+        187,
+        214,
+        223
+      ],
+      "frame_stds": [
+        50.67016422911207,
+        59.76496484506851,
+        61.94614294324654,
+        61.37341923176795,
+        60.42618015848204
+      ]
+    },
+    {
+      "seed": 920101,
+      "status": "QC_PASS",
+      "generation_cuda_s": 2.77359619140625,
+      "path_s": 3.3285944085888333,
+      "total_s": 6.102190599995083,
+      "mp4_sha256": "E841A446771FC137502D7A897F24143B446660DEC2F54DC1AC758F524B03B6D2",
+      "mp4_bytes": 3212,
+      "frame_ranges": [
+        11,
+        11,
+        11,
+        11,
+        10
+      ],
+      "frame_stds": [
+        4.96655480858378,
+        4.523301817433529,
+        4.52006221822194,
+        4.52006221822194,
+        4.496912521077287
+      ]
+    },
+    {
+      "seed": 920102,
+      "status": "QC_PASS",
+      "generation_cuda_s": 2.0215869140625,
+      "path_s": 3.544909185937722,
+      "total_s": 5.566496100000222,
+      "mp4_sha256": "DC77BBB93E197302563ECAF5CCEB0E4178B3F5CBC4BA5503F2A4345C4E4801CB",
+      "mp4_bytes": 3345,
+      "frame_ranges": [
+        102,
+        79,
+        70,
+        69,
+        56
+      ],
+      "frame_stds": [
+        27.572597139123825,
+        24.6139705095753,
+        22.356993293581134,
+        17.950533064563146,
+        15.44159020015368
+      ]
+    },
+    {
+      "seed": 920103,
+      "status": "QC_PASS",
+      "generation_cuda_s": 2.1523056640625,
+      "path_s": 3.383924135933863,
+      "total_s": 5.536229799996363,
+      "mp4_sha256": "E7E34298FF085AC2558DEE559896574E4A4FFEAAA087D380660F81C9B29DAD28",
+      "mp4_bytes": 3772,
+      "frame_ranges": [
+        255,
+        255,
+        90,
+        132,
+        93
+      ],
+      "frame_stds": [
+        58.775525178613194,
+        78.09798934045403,
+        22.418899065721547,
+        21.138920538209195,
+        19.48684992091662
+      ]
+    },
+    {
+      "seed": 920104,
+      "status": "QC_PASS",
+      "generation_cuda_s": 2.078498291015625,
+      "path_s": 3.8799077089895726,
+      "total_s": 5.958406000005198,
+      "mp4_sha256": "A686A096253BA8ADD5F09CC2592C915409F31083B802EEB63BB406FB066FB163",
+      "mp4_bytes": 3260,
+      "frame_ranges": [
+        53,
+        58,
+        65,
+        71,
+        68
+      ],
+      "frame_stds": [
+        23.153993062714875,
+        25.158654560718723,
+        27.507112696808278,
+        28.603342117090687,
+        28.008925211315244
+      ]
+    },
+    {
+      "seed": 920105,
+      "status": "QC_PASS",
+      "generation_cuda_s": 2.080821044921875,
+      "path_s": 3.4643007550725016,
+      "total_s": 5.5451217999943765,
+      "mp4_sha256": "9B3EFBA0639F5D66985FAAC0D800887249858D261D72CADD9C7DC52EBAF8BFFB",
+      "mp4_bytes": 3308,
+      "frame_ranges": [
+        57,
+        61,
+        50,
+        48,
+        53
+      ],
+      "frame_stds": [
+        18.095191849802433,
+        19.294604292692938,
+        15.623997170373986,
+        13.332447642473252,
+        13.617606191544498
+      ]
+    },
+    {
+      "seed": 920106,
+      "status": "QC_PASS",
+      "generation_cuda_s": 2.19310498046875,
+      "path_s": 3.692482019528281,
+      "total_s": 5.885586999997031,
+      "mp4_sha256": "E77F560FBA534306C94AB062EFCD49F7FB2E0DED93CA0AE41DBFC30CF97297EC",
+      "mp4_bytes": 3291,
+      "frame_ranges": [
+        31,
+        34,
+        38,
+        39,
+        42
+      ],
+      "frame_stds": [
+        9.057119077208565,
+        9.115333296666336,
+        9.369280662830482,
+        10.067409899729087,
+        10.71609492361306
+      ]
+    },
+    {
+      "seed": 920107,
+      "status": "QC_PASS",
+      "generation_cuda_s": 2.165243896484375,
+      "path_s": 3.2697173035088927,
+      "total_s": 5.434961199993268,
+      "mp4_sha256": "836736B331809B70F593FD9EE93D5922B9147DDB43EC58E0F5E9F0051862620A",
+      "mp4_bytes": 3440,
+      "frame_ranges": [
+        182,
+        134,
+        109,
+        83,
+        90
+      ],
+      "frame_stds": [
+        49.31063017518651,
+        34.68770166592432,
+        29.01265785057103,
+        23.446249442901706,
+        23.308312195327286
+      ]
+    },
+    {
+      "seed": 920108,
+      "status": "QC_FAIL_FLAT_WHITE",
+      "generation_cuda_s": 2.103322509765625,
+      "path_s": null,
+      "total_s": null,
+      "mp4_sha256": "A27B423156BCC56ACD187EBDDDBF6F333EAA36AE6FB692C15BB9CF59FDE9B871",
+      "mp4_bytes": 3205,
+      "frame_ranges": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "frame_stds": [
+        0.5527707983925775,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "seed": 920109,
+      "status": "NOT_SUBMITTED_AFTER_QC_FAILURE",
+      "generation_cuda_s": null,
+      "path_s": null,
+      "total_s": null,
+      "mp4_sha256": null
+    }
+  ],
+  "FORMAL_ATTEMPTED": 9,
+  "FORMAL_QC_PASS": 8,
+  "FORMAL_VALID": 8,
+  "AUTO_RETRY": "NO",
+  "SERVER_CRASH": "NO",
+  "TIMING_BOUNDARY": {
+    "generation": "CUDA Event before/after sampler_function plus synchronize",
+    "total": "before POST /prompt until history complete and real MP4 exists",
+    "path": "Total minus Generation",
+    "qc": "after RESULT_READY, excluded from Total"
+  },
+  "PARTIAL_VALID_8_STATS": {
+    "generation": {
+      "sample_count": 8,
+      "p50_s": 2.158774780273437,
+      "p95_s": 11.42023229980468,
+      "min_s": 2.0215869140625,
+      "max_s": 16.07611328125
+    },
+    "path": {
+      "sample_count": 8,
+      "p50_s": 3.504604970505112,
+      "p95_s": 3.904690135331528,
+      "min_s": 3.2697173035088927,
+      "max_s": 3.9180345187464276
+    },
+    "total": {
+      "sample_count": 8,
+      "p50_s": 5.726041549998627,
+      "p95_s": 15.131962779995948,
+      "min_s": 5.434961199993268,
+      "max_s": 19.994147799996426
+    }
+  },
+  "PARTIAL_TOTAL_P95_LE_2X_P50": false,
+  "PARTIAL_TOTAL_MAX_LE_2_5X_P50": false,
+  "FULL_10_STABILITY_CERTIFIED": "NO",
+  "H3_P0_GENERATION_99": "NO",
+  "H3_P0_PATH_99": "NO",
+  "FINAL_99": "NO",
+  "FREEZE": "NO",
+  "T_PHY_TOTAL_REFERENCE_S": [
+    0.23,
+    0.57
+  ],
+  "REAL_STATE_OPTIMUM_RANGE_S": [
+    4,
+    14
+  ],
+  "E1_KEEP": {
+    "status": "KEEP",
+    "total_p50_s": 10.561752699999488,
+    "total_p95_s": 14.510164390000863,
+    "fastest_valid_total_s": 6.484253500006162
+  },
+  "FINAL_RESIDUAL_VIRTUAL_ATTACK": "COMPLETE",
+  "MODEL_HASHES": [
+    {
+      "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\diffusion_models\\minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "bytes": 20970379616,
+      "sha256": "E889202C41DAFB67B10D67B97F0D8541508036A6090AF23425A5C2615D03C47A"
+    },
+    {
+      "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\text_encoders\\qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "bytes": 15687142551,
+      "sha256": "35A88D51044231FE332301D7A62AA81E3F2CBA62FEBEB446E2C1E3E0EF76F2C6"
+    },
+    {
+      "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\vae\\minimax_h3_video_vae_fp16.safetensors",
+      "bytes": 5207808496,
+      "sha256": "7C1F131492E7EDDACAAC9069A61B81BDD39DE5CC96561E677C5EAB1CDCE5E522"
+    }
+  ],
+  "SOURCE_HASHES": {
+    "comfyui_commit": "8a33128f2f8c5585c57486c07de481241e70a39c",
+    "star7_commit": "dc8ea63b51439ffd767eead53faaed23b550c504",
+    "star7_nodes_sha256": "8F6D3EB42D5123A36A814F3EFE6910D499CDF618E190DE74F3BCA0D5935E232B",
+    "samplers_restored_sha256": "2850B400E0C07DDB73429F35E5DA3DE01952E7EE58F4C050124EA948CBDA53AE",
+    "final_runner_sha256": "649CAA234C67E5F1646440950356B349B22327A0587BD83B47D1CB02259B6E05"
+  },
+  "WORKFLOW_TEMPLATE_SHA256": "66834FD34C192188DAE55F0CB6A7C4064D3AECC50EE4A9FEB00A8CE0C18E2632",
+  "EVIDENCE_ROOT": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-final-99-01",
+  "SAMPLERS_RESTORED": "YES",
+  "REPORT_COMMIT": "PENDING",
+  "REMOTE_VERIFY": "PENDING",
+  "NEXT_ACTION": "STOP_RETURN_TO_GPT",
+  "CURRENT_MAIN_PATH_MATURE_CANDIDATE_REMAINS": "NO"
+}
