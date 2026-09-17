@@ -1,45 +1,35 @@
-# DISTRIBUTION NOTE — v1.9.0
+# 分发说明 — v1.9.0
 
-## Canonical source
+英文：`DISTRIBUTION NOTE（分发说明）`
 
-```text
-repository=cuiqinggang/codex-private-skills
-branch=codex/first-principles-physical-limit-convergence-v1.9.0
-path=skills/first-principles-physical-limit-convergence/
-skill_id=first-principles-physical-limit-convergence
-version=1.9.0
-```
-
-Hard rule:
+## 正式来源
 
 ```text
-BRANCH_MATCHES_DECLARED_SKILL_VERSION=YES
-SKILL_ID_MATCH=YES
-VERSION_MATCH=YES
-REMOTE_VERIFY=PASS
+仓库 = cuiqinggang/codex-private-skills
+分支 = codex/first-principles-physical-limit-convergence-v1.9.0
+路径 = skills/first-principles-physical-limit-convergence/
+技能ID = first-principles-physical-limit-convergence
+版本 = 1.9.0
 ```
 
-固定历史分支不得长期作为后续版本 canonical source。
-
-语义冲突时，以声明版本对应远端 canonical `SKILL.md` 为准，同时服从更高层级系统/安全/平台约束。
-
-## Lineage isolation
-
-`absolute-time-fireworks-optimization` 是历史祖先/兼容资产，不是当前 mother skill、alias 或 upgrade target。
-
-## v1.9 execution semantic
-
-本版本新增：
+必须满足：
 
 ```text
-PREAUTHORIZED_BATCH_EXECUTION=YES
-NO_REPLAN_ON_MAGNITUDE_SURPRISE=YES
-NO_OPEN_ENDED_PREFLIGHT_CHAIN=YES
-RETURN_TO_GPT_AT_BATCH_BOUNDARY=YES
+分支与版本一致 = YES
+技能ID一致 = YES
+远端核验 = PASS
 ```
 
-即完整 Virtual-99 后，Codex 可在预定义 batch 内沿预定义分支连续执行；只有材料级重规划触发器才提前返回 GPT。
+历史 `absolute-time-fireworks-optimization` 只是祖先技能，不是当前母技能。
 
-## Expanded ZIP
+## v1.9 核心执行语义
 
-会话 ZIP 可以是扩展归档，但不得成为第二真相源或第二方法。
+```text
+四步主干 = YES
+GPT虚拟层完成全部攻击迭代 = YES
+Codex完整执行命令包 = YES
+真实执行层反复回GPT循环 = NO
+新研究方向单独建立独立99路径 = YES
+```
+
+若不同说明文件发生冲突，以本版本远端 `SKILL.md` 为准。
