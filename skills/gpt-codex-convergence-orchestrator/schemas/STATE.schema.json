@@ -1,14 +1,16 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "GPT Codex Convergence Orchestrator State",
+  "title": "GPT Codex Convergence Orchestrator State v1.1",
   "type": "object",
   "required": [
     "task_id",
-    "revision",
+    "architecture",
+    "loop_owner",
     "phase",
     "status",
-    "owner",
     "last_remote_head",
+    "max_remote_seq",
+    "last_consumed_seq",
     "completed_steps",
     "do_not_repeat",
     "next_action",
@@ -16,25 +18,31 @@
   ],
   "properties": {
     "task_id": {"type": "string", "minLength": 1},
+    "architecture": {"const": "CODEX_FIRST_NUMBERED_GITHUB_BUS"},
+    "loop_owner": {"const": "CODEX"},
     "revision": {"type": "integer", "minimum": 0},
     "phase": {
       "enum": [
         "NEW",
-        "GPT_PLANNING",
+        "CODEX_REQUESTING_GPT",
+        "WAITING_FOR_GPT_COMMIT",
         "READY_FOR_CODEX",
         "CODEX_RUNNING",
-        "RESULT_READY",
-        "READY_FOR_GPT",
-        "GPT_JUDGING",
+        "CODEX_RESULT_COMMITTED",
         "FREEZE",
         "BLOCKED",
-        "USER_APPROVAL_REQUIRED"
+        "USER_APPROVAL_REQUIRED",
+        "PAUSED"
       ]
     },
     "status": {"type": "string"},
-    "owner": {"enum": ["GPT", "CODEX", "ORCHESTRATOR", "USER", "NONE"]},
+    "owner": {"enum": ["CODEX", "GPT", "USER", "NONE"]},
     "source_commit": {"type": ["string", "null"]},
     "last_remote_head": {"type": "string"},
+    "max_remote_seq": {"type": "integer", "minimum": 0},
+    "last_consumed_seq": {"type": "integer", "minimum": 0},
+    "last_gpt_request_seq": {"type": ["integer", "null"]},
+    "last_gpt_response_seq": {"type": ["integer", "null"]},
     "completed_steps": {"type": "array", "items": {"type": "string"}},
     "do_not_repeat": {"type": "array", "items": {"type": "string"}},
     "next_action": {"type": "string"},
@@ -42,11 +50,10 @@
     "actual_model": {"type": ["string", "null"]},
     "fallback_reason": {"type": ["string", "null"]},
     "chatgpt_conversation_ref": {"type": ["string", "null"]},
-    "last_consumed_gpt_revision": {"type": ["integer", "null"]},
-    "last_consumed_codex_revision": {"type": ["integer", "null"]},
     "action_id": {"type": ["string", "null"]},
     "updated_at": {"type": "string"},
-    "blocked_reason": {"type": ["string", "null"]}
+    "blocked_reason": {"type": ["string", "null"]},
+    "stop_requested": {"type": "boolean"}
   },
   "additionalProperties": true
 }
