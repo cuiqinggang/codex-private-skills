@@ -1,0 +1,24 @@
+{
+  "candidate": "STAR7_ACT32_INT8_CONVROT",
+  "status": "BLOCKED_SOURCE_IDENTITY",
+  "stop_rule": "ACT32 proof command v1 section 3: source SHA256 mismatch => do not overwrite; record and stop",
+  "source_identity_gate": "FAIL",
+  "hashes": {
+    "star7_nodes_expected": "5AB70A74109118256934B63675ED620A47BECB54343A77DAA66B4FE20A4D0EE7",
+    "star7_nodes_actual_before_and_after": "8F6D3EB42D5123A36A814F3EFE6910D499CDF618E190DE74F3BCA0D5935E232B",
+    "comfyui_root_nodes_actual": "5AB70A74109118256934B63675ED620A47BECB54343A77DAA66B4FE20A4D0EE7",
+    "minimax_model_expected_and_actual": "3267343A034C6DA91234D20FB63F74A0A439EFC4E468F473C9477D436B3BFC8A"
+  },
+  "source_modified": false,
+  "warmups": [],
+  "formal_runs": [],
+  "gpu_runs_executed": 0,
+  "paired_total_deltas": null,
+  "backend_proof": "NOT_RUN",
+  "force_cast_weights_proof": "NOT_RUN",
+  "dense_fallback_proof": "NOT_RUN",
+  "act32_diff": null,
+  "act32_proof": "NOT_RUN_SOURCE_IDENTITY_MISMATCH",
+  "ready_for_final_quality_stability_certification": false,
+  "final_quality_stability_99": false
+}
