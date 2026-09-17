@@ -1,28 +1,26 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 在固定任务与硬约束下，以单一端到端第一性原理物理极限为最终时间参照；先锁定当前母技能身份与版本谱系，再声明项目远端共同工作区并完成极简真实运行，由GPT/高质量推理层一次性设计完整虚拟99铁路。Codex只允许作为确定性验证器/执行器按铁路高速验证，绝对禁止自行发现候选、制定测试、扩展迭代、开放式profiling或自由探索。成熟大收益后再次做残余虚拟收敛，最终按组合生命周期ROI、最终认证与远端核验冻结99。
+description: 在固定任务与硬约束下，以单一端到端第一性原理物理极限为最终时间参照；锁定母技能身份与远端共同工作区，建立MRE/REAL_STATE_MODEL，收割成熟方案，由GPT一次性设计完整Virtual-99与预授权批次铁路。Codex只作为确定性验证器/执行器，可在批次内沿预定义PASS/FAIL/NOT_APPLICABLE分支连续执行，但绝对禁止自行发现候选、设计实验、扩展迭代、开放式profiling或自由探索。仅在批次边界或材料级重规划触发器出现时返回GPT，最终按残余虚拟收敛、组合生命周期ROI、最终认证与远端核验冻结99。
 metadata:
-  version: "1.8.0"
-  short-description: 第一性原理物理极限收敛引擎·身份锁定/技能优先/零自由探索版
-  lineage: first-principles-physical-limit-convergence@1.7.0 <- @1.6.0 <- @1.5.0 <- @1.4.0 <- @1.3.0 <- @1.2.0 <- @1.1.0 <- @1.0.0
+  version: "1.9.0"
+  short-description: 第一性原理物理极限收敛引擎·预授权批次铁路版
+  lineage: first-principles-physical-limit-convergence@1.8.0 <- @1.7.0 <- @1.6.0 <- @1.5.0 <- @1.4.0 <- @1.3.0 <- @1.2.0 <- @1.1.0 <- @1.0.0
 ---
 
-# 第一性原理物理极限收敛引擎 v1.8.0
+# 第一性原理物理极限收敛引擎 v1.9.0
 
 ## 第 -2 门禁：CANONICAL IDENTITY / LINEAGE ISOLATION
-
-这是 v1.8.0 新增的最高前置身份门禁。任何“更新母技能、读取母技能、把新规则写回母技能”的动作，在进入方法逻辑前必须先证明当前操作对象就是本技能，而不是历史祖先、兼容资产或旧工程入口。
 
 ```text
 CANONICAL_MOTHER_SKILL_ID=first-principles-physical-limit-convergence
 CANONICAL_DISPLAY_NAME_ZH=第一性原理物理极限收敛引擎
 CANONICAL_DISPLAY_NAME_EN=First-Principles Physical-Limit Convergence
-CANONICAL_SKILL_VERSION=1.8.0
+CANONICAL_SKILL_VERSION=1.9.0
 CANONICAL_SKILL_PATH=skills/first-principles-physical-limit-convergence/
-CANONICAL_VERSION_BRANCH=codex/first-principles-physical-limit-convergence-v1.8.0
+CANONICAL_VERSION_BRANCH=codex/first-principles-physical-limit-convergence-v1.9.0
 ```
 
-### 历史祖先不是当前母技能
+历史关系：
 
 ```text
 LEGACY_ANCESTOR_SKILL_ID=absolute-time-fireworks-optimization
@@ -32,47 +30,29 @@ LEGACY_ANCESTOR_IS_CURRENT_UPGRADE_TARGET=NO
 LEGACY_VERSION_NUMBER_CONTROLS_CURRENT_VERSION=NO
 ```
 
-`absolute-time-fireworks-optimization` 是本方法演化历史中的祖先/旧工程资产；`mature-replication-four-column` 是历史方法来源/参考资产。它们可以保留历史案例、冻结资产、兼容材料，但**不得因为当前方法脱胎于它们，就把新的母技能规则继续写回旧 skill id**。
-
-不同 skill id 的版本号属于各自独立谱系。旧技能存在 `v2.x` 不代表它比本技能 `v1.8.0` 更新，也不允许把本技能版本重新切回旧技能版本线。
-
-### 每次正式读取或修改母技能前先验证身份
+任何读取、修改、部署母技能动作前必须验证：
 
 ```text
 REQUESTED_MOTHER_SKILL_ID
-REQUESTED_DISPLAY_NAME
 CURRENT_REMOTE_BRANCH
 CURRENT_SKILL_PATH
 CURRENT_SKILL_VERSION
 LINEAGE_ROLE
 ```
 
-必须满足：
-
-```text
-REQUESTED_MOTHER_SKILL_ID == first-principles-physical-limit-convergence
-CURRENT_SKILL_PATH == skills/first-principles-physical-limit-convergence/
-CURRENT_SKILL_VERSION == REQUIRED_SKILL_VERSION
-LINEAGE_ROLE == CURRENT_MOTHER_SKILL
-```
-
-任何一项不成立：
+若不匹配：
 
 ```text
 CANONICAL_IDENTITY_GATE=BLOCKED
-→ DO NOT MODIFY LEGACY SKILL
-→ LOCATE CURRENT VERSION BRANCH
-→ READ CURRENT SKILL.md
-→ REPORT MISMATCH / RETURN TO GPT
+-> DO NOT MODIFY LEGACY SKILL
+-> LOCATE CURRENT VERSION BRANCH
+-> READ CURRENT SKILL.md
+-> RETURN_TO_GPT IF STILL AMBIGUOUS
 ```
-
-详细规则见：`references/CANONICAL-IDENTITY-GATE.md`。
 
 ---
 
 ## 第 -1 门禁：SKILL PRECEDENCE / NO FREE EXPLORATION
-
-这是本技能在项目方法层级中的最高优先级执行规则。它不能被后续任务命令、临时说明、执行器自行判断或“为了完成任务”的扩展解释削弱；更高层级的系统、安全和平台约束仍然优先。
 
 ```text
 SKILL_PRECEDENCE_GATE=ABSOLUTE_WITHIN_PROJECT
@@ -80,121 +60,149 @@ NO_FREE_EXPLORATION=YES
 CODEX_ROLE=DETERMINISTIC_VALIDATOR_EXECUTOR
 CODEX_MAY_DESIGN_TEST_PLAN=NO
 CODEX_MAY_ADD_CANDIDATE=NO
+CODEX_MAY_CHANGE_CANDIDATE_ORDER=NO
 CODEX_MAY_EXTEND_ITERATION=NO
 CODEX_MAY_PROFILE_WITHOUT_GPT_PLAN=NO
 GPT_COMPLETE_VALIDATION_RAILROAD_REQUIRED=YES
+PREAUTHORIZED_BATCH_EXECUTION=YES
 ```
 
-### 绝对禁止
+Codex 永久不得自行：
 
-Codex / 本地执行器不得自行：
+- 发现优化点后顺手测试；
+- 增加、替换或重排候选；
+- 自己制定 A/B、seed、run count、阈值、停止条件；
+- 因结果慢/快而追加第4、第5、第N次运行；
+- 开 profiler、kernel trace、VRAM sweep、版本 sweep、参数 search；
+- 从结果自行推导新的实验；
+- 在 GPT 铁路缺项时补计划；
+- 把“做到99”“继续优化”解释成开放授权。
 
-- 发现一个优化点后顺手测试；
-- 选择新的候选、替换候选或改变候选顺序；
-- 自己制定 A/B、seed、运行次数、阈值或停止规则；
-- 因结果“不理想”而自动追加第 4、第 5、第 N 次运行；
-- 自己开启 profiler、kernel trace、VRAM 扫描、版本扫描或参数搜索；
-- 从一个验证结果推导下一个实验并继续执行；
-- 把“继续完成任务”“尽量优化”“做到99”等宽泛目标解释为自行设计子计划的授权；
-- 在 GPT 方案缺项时自行补齐方案。
-
-### 命令与技能冲突
-
-若项目任务命令与本技能发生冲突：
+命令与技能冲突：
 
 ```text
 COMMAND_CONFLICT_WITH_SKILL=YES
-→ NO_FREE_EXPLORATION_RULE_WINS
-→ STOP UNSPECIFIED ACTION
-→ PRESERVE FACTS
-→ RETURN_TO_GPT
+-> NO_FREE_EXPLORATION_RULE_WINS
+-> STOP UNSPECIFIED ACTION
+-> PRESERVE FACTS
+-> RETURN_TO_GPT
 ```
 
-任务命令可以比本技能更严格、可以指定更具体的执行步骤，但不得弱化 `NO_FREE_EXPLORATION=YES`。
+---
 
-### 每次正式执行前必须先验证技能
+# v1.9 核心修正：PREAUTHORIZED BATCH RAILROAD
+
+v1.8 已正确要求 GPT 在执行前一次性设计完整 Virtual-99 条件铁路，但同时把“每个结果都返回 GPT”写得过强，会把一条已设计完整的铁路拆成：
 
 ```text
-CANONICAL_IDENTITY_GATE=PASS
-SKILL_ID=first-principles-physical-limit-convergence
-REQUIRED_SKILL_VERSION=<项目声明版本>
-SKILL_VERSION_VERIFIED=YES
-PROJECT_WORKSPACE_DECLARATION_GATE=PASS
+STEP-A -> GPT -> STEP-B -> GPT -> PREFLIGHT-C -> GPT -> ...
 ```
 
-若技能不存在、版本不符、无法读取、身份门禁不通过或项目没有声明所需版本：
+这与“实际执行前完整虚拟运行到99”的原意冲突，也增加工程时间和上下文成本。
+
+v1.9 修正为：
 
 ```text
-SKILL_PRECEDENCE_GATE=BLOCKED
-→ NO GPU RUN
-→ NO NEW EXPERIMENT
-→ REPORT MISMATCH
-→ RETURN_TO_GPT
+GPT DESIGN COMPLETE BATCH
+-> CODEX EXECUTE PREAUTHORIZED STAGES
+-> FOLLOW ONLY PREDEFINED BRANCHES
+-> CHECKPOINT / QC / KEEP-ROLLBACK
+-> CONTINUE INSIDE BATCH WHEN RESULT IS EXPECTED
+-> RETURN TO GPT AT BATCH BOUNDARY
 ```
 
-### GPT 完整验证铁路的最小合同
-
-任何允许 Codex 执行的验证步骤必须已经由 GPT / 高质量推理层明确给出：
+仍然：
 
 ```text
-OBJECTIVE
-CURRENT_STATE
-ALLOWED_CHANGE
-ALLOWED_FILES_OR_COMPONENTS
-BASELINE
-SEEDS_AND_RUN_COUNT
-TIMING_BOUNDARY
-QC_GATE
-EXPECTED_BOUNDED_OUTCOME
-SUCCESS_RULE
-FAILURE_RULE
-INCONCLUSIVE_RULE
-ROLLBACK
-STOP_POINT
-MAX_GPU_RUNS
-TIME_BUDGET
-CODEX_BUDGET
-NEXT_ACTION_AFTER_EACH_OUTCOME
+NO_FREE_EXPLORATION=YES
 ```
 
-缺任何关键项：
+### 批次内可以自动继续的结果
+
+如果铁路已明确写出下一步：
 
 ```text
-VALIDATION_PLAN_NOT_MATURE=YES
-→ STOP EXECUTION
-→ RETURN_TO_GPT
+EXPECTED_PASS
+EXPECTED_FAIL
+EXPECTED_NOT_APPLICABLE
 ```
 
-意外结果的默认行为永远不是继续探索，而是：
+Codex 按 `NEXT_ON_*` 连续执行，不需要每一步重新回 GPT。
+
+### 必须提前回 GPT 的 MATERIAL_REPLAN_TRIGGER
+
+只有以下情况：
+
+1. 铁路没有覆盖的结果/错误；
+2. correctness / quality / stability / safety 失效；
+3. task contract、硬件、关键软件或模型身份发生未授权变化；
+4. 下一阶段前提被真实证据推翻，且没有预定义 fallback；
+5. control window 失稳导致裁决无效；
+6. batch 全局 GPU / wall budget 到顶；
+7. Git / 远端事实冲突；
+8. 继续执行会超出原始允许变更范围。
+
+处理：
 
 ```text
-UNEXPECTED_RESULT=YES
-→ SAVE EVIDENCE
-→ RESTORE / SAFE STOP AS PREDEFINED
-→ RETURN_TO_GPT
+SAVE EVIDENCE
+SAFE STOP / RESTORE
+PUSH / REMOTE VERIFY WHEN APPROPRIATE
+RETURN_TO_GPT
 ```
 
-详细规则见：`references/NO-FREE-EXPLORATION-GATE.md`。
+### 不触发重规划
+
+只要后续条件分支仍然有效：
+
+```text
+GAIN_LARGER_THAN_PROJECTED
+GAIN_SMALLER_THAN_PROJECTED_BUT_PASS
+EXPECTED_FAIL
+EXPECTED_ROLLBACK
+EXPECTED_NOT_APPLICABLE
+```
+
+都不单独触发 GPT 重规划。
+
+硬规则：
+
+```text
+NO_REPLAN_ON_MAGNITUDE_SURPRISE=YES
+```
+
+“比预计快很多”不是开启新研究链的授权。
+
+### 禁止无限 preflight 链
+
+```text
+NO_OPEN_ENDED_PREFLIGHT_CHAIN=YES
+```
+
+对于已在 Virtual-99 中选中的成熟候选：
+
+- 要么 GPT 在批次设计阶段一次性写完有限 preflight；
+- 要么直接在 bounded A/B 中把 load fail / metadata incompatibility / mechanism inactive 写成 FAIL/NOT_APPLICABLE；
+- 不允许执行期无限拆成 E2P -> E2M -> E2X -> ...。
+
+详细规则：`references/PREAUTHORIZED-BATCH-RAILROAD.md`。
 
 ---
 
 # 总目标
 
 ```text
-PRIMARY_OBJECTIVE
-= 最小化固定任务真实端到端执行时间
-
-SECONDARY_OBJECTIVE
-= 最小化达到稳定最优所需的工程时间、GPU时间与智能体资源成本
+PRIMARY_OBJECTIVE = MINIMIZE FIXED-TASK END-TO-END TIME
+SECONDARY_OBJECTIVE = MINIMIZE ENGINEERING CONVERGENCE TIME / GPU COST / AGENT COST
 ```
 
-硬约束优先：任务必须真实完成，correctness、quality、stability、safety 全部通过；不得为了提速偷偷改变任务合同。
+硬约束：correctness、quality、stability、safety 优先；不得改变任务合同换取速度。
 
 ---
 
 # 第0门禁：PROJECT REMOTE WORKSPACE
 
-正式任务开始前必须声明项目自己的远端共同工作区：
+项目必须声明：
 
 ```text
 PROJECT_ID
@@ -206,115 +214,91 @@ LOCAL_EXECUTION_CHECKOUT
 REMOTE_VERIFY_REQUIRED=YES
 ```
 
-硬规则：
+规则：
 
 ```text
 SHARED_WORKSPACE_IS_REMOTE=YES
 LOCAL_PATH_IS_SHARED_WORKSPACE=NO
 ```
 
-任何 `C:\...`、`D:\...`、`/home/...`、本机 clone 或 worktree 只能叫 `LOCAL_EXECUTION_CHECKOUT` 或 `LOCAL_EVIDENCE_ROOT`，不能叫共同工作区或共同事实源。
-
-正确顺序：
+流程：
 
 ```text
 REMOTE LOCATE
-→ FETCH/PULL
-→ LOCAL CHECKOUT
-→ EXECUTE PREDEFINED RAILROAD
-→ REPORT
-→ PUSH
-→ REMOTE VERIFY
+-> FETCH/PULL
+-> LOCAL CHECKOUT
+-> EXECUTE PREAUTHORIZED RAILROAD
+-> REPORT
+-> PUSH
+-> REMOTE VERIFY
 ```
 
-只有远端核验成功后：
+只有远端核验后：
 
 ```text
 SHARED_FACT_CONFIRMED=YES
 ```
 
-详细规则见：`references/REMOTE-SHARED-WORKSPACE.md`。
-
 ---
 
 # 核心原则
 
-## 1. 第一性原理只负责边界，不授权自由探索
+## 1. 第一性原理负责边界，不授权探索
 
-第一性原理负责：冻结任务、硬件边界、物理因果链、不可避免工作量和最终时间下界；成熟方案负责吸收世界已经解决的工程收益；GPT负责完整虚拟推演；Codex只负责短验证。
+第一性原理负责固定任务、硬件边界、不可避免物理工作量和最终时间参照；成熟方案负责吸收世界已解决的工程收益；GPT负责 Virtual-99 和铁路；Codex只负责确定性执行。
 
-## 2. 物理极限板只保留一个端到端时间标准
+## 2. 单一物理极限板
 
-每个固定任务最终只发布一个正式对比标准：
-
-```text
-T_PHY_TOTAL_REFERENCE
-= 固定任务在当前物理边界下的端到端理论最短时间
-= 一个数字或一个区间
-```
-
-Generation、Path、I/O、load、decode 等分量可以在内部建模，但**不得再作为并列的正式“物理极限板”标准**。
-
-用途只有一个：
+每个固定任务只发布：
 
 ```text
-CURRENT / CANDIDATE / FINAL
-↔ T_PHY_TOTAL_REFERENCE
+T_PHY_TOTAL_REFERENCE=<one number or interval>
 ```
 
-`T_PHY_TOTAL_REFERENCE` 是理论物理参照，不是实测机器 benchmark，也不等于 99 通过门槛。未知效率允许使用区间和置信度，禁止伪精确。
+Generation、Path、I/O、load、decode 等只用于内部推导，不作为并列正式极限。
+
+`T_PHY_TOTAL_REFERENCE` 是理论参照，不是当前机器 benchmark，也不是99阈值。
 
 ## 3. 复杂系统先做 MRE
 
-静态版本和模型大小不能代表运行态。复杂任务先让最小完整链真实跑通，得到冷态、预热、稳态、实际时间、设备放置、驻留、缓存、故障与质量事实。
+MRE 获取：冷态、warm、steady、实际时间、设备放置、驻留、缓存、故障、QC。
 
-MRE 是 `REAL_STATE_CALIBRATOR`，不是性能终测，也不授权 MRE 后立即进入下一实验。
+```text
+MRE_ROLE=REAL_STATE_CALIBRATOR
+```
 
-## 4. 实际执行前先完整虚拟运行到99
+不是终测，不授权自由优化。
+
+## 4. 实际执行前先完整 Virtual-99
 
 禁止：
 
 ```text
-发现一点 → 测一点 → 再发现一点 → 再测一点 → V1...Vn
+发现一点 -> 测一点 -> 再发现 -> 再测 -> V1...Vn
 ```
 
 正式路径：
 
 ```text
-远端共同事实
-→ T_PHY_TOTAL_REFERENCE
-→ MRE
-→ REAL_STATE_MODEL
-→ 成熟方案收割
-→ GPT完整虚拟99铁路
-→ Codex按铁路短验证
-→ 每个结果返回GPT裁决
-→ 残余虚拟收敛
-→ Final Certification
-→ FREEZE
+REMOTE SHARED FACTS
+-> T_PHY_TOTAL_REFERENCE
+-> MRE
+-> REAL_STATE_MODEL
+-> MATURE HARVEST
+-> GPT COMPLETE VIRTUAL-99
+-> GPT PREAUTHORIZED BATCH RAILROAD
+-> CODEX BATCH EXECUTION
+-> BATCH BOUNDARY
+-> GPT RESIDUAL VIRTUAL CONVERGENCE
+-> NEXT BATCH OR FINAL CERTIFICATION
+-> FREEZE
 ```
-
-## 5. 成熟大收益后再次虚拟收敛
-
-成熟候选验证完成后，Codex停止。GPT根据最新真实数据重新执行 `RESIDUAL_VIRTUAL_CONVERGENCE`，把剩余优化作为组合推演到停止点，再生成下一批完整验证铁路。
-
-## 6. 停止条件看组合生命周期ROI，但执行仍必须短而确定
-
-单个 0.1s / 0.5s 不能单独决定停止。GPT比较：
-
-```text
-EXPECTED_LIFETIME_BENEFIT_PORTFOLIO
-vs
-PORTFOLIO_COST
-```
-
-即使组合长期收益很大，也只代表值得继续设计；不代表允许 Codex 自由探索。
 
 ---
 
-# STEP 1：边界 + 单一物理极限 + MRE + 真实态
+# STEP 1：边界 + T_PHY + MRE + REAL_STATE_MODEL
 
-## 1.1 冻结任务合同
+## 1.1 TASK CONTRACT
 
 ```text
 TASK_CONTRACT
@@ -326,34 +310,32 @@ SAFETY_GATE
 TIMING_BOUNDARY
 ```
 
-## 1.2 冻结当前有效硬件边界
+## 1.2 ACTIVE HARDWARE
 
 ```text
 ACTIVE_HARDWARE_BOUNDARY
-= 此刻真实安装 + 可正常使用 + 本任务允许使用的硬件
+= 当前真实安装 + 可正常使用 + 本任务允许使用的硬件
 ```
 
-未来未安装硬件不得阻断当前 99。
+未来未安装硬件不阻断当前99。
 
-## 1.3 继承历史共同事实
+## 1.3 历史事实继承
 
-优先继承：已验证基线、P50/P95、KEEP/ROLLBACK、Failure Index、真实阶段时间、驻留/VRAM/RAM/I/O事实、已证实和已证伪机制。有兼容历史证据时禁止从零重探。
+继承已验证 baseline、P50/P95、KEEP/ROLLBACK、Failure Index、VRAM/RAM/I/O、已证实/证伪机制。兼容历史存在时禁止从零重探。
 
-## 1.4 发布单一物理极限参照
-
-只发布：
+## 1.4 单一物理极限
 
 ```text
 T_PHY_TOTAL_REFERENCE=<number or interval>
 ```
 
-必须写明任务合同、硬件边界、估算依据和置信度。分块极限只留在计算工作底稿，不进入对外极限板。
+必须记录固定任务、硬件、推导依据、置信度。
 
-## 1.5 做一次 MRE
+## 1.5 MRE
 
-目标是在最小工程成本下校准真实态。MRE 固定结束条件必须提前写明；完成后立即停止，返回 GPT。
+MRE 的结束条件提前写明。完成后形成真实态，不自动开放优化。
 
-## 1.6 建立 REAL_STATE_MODEL
+## 1.6 REAL_STATE_MODEL
 
 ```text
 T_PHY_TOTAL_REFERENCE
@@ -363,15 +345,13 @@ T_PHY_TOTAL_REFERENCE
 = REAL_STATE_MODEL
 ```
 
-现实数据推翻假设时记录失效假设、新证据和修订原因。不得为了“更容易达到99”而修改物理极限参照。
+现实数据推翻假设时记录 invalidated assumption，不为容易达99而修改物理参照。
 
 ---
 
-# STEP 2：成熟方案 + 完整虚拟99 + 确定性验证
+# STEP 2：成熟方案 + Virtual-99 + 批次铁路
 
-## 2.1 建立 MATURE_HARVEST_MATRIX
-
-优先证据：官方稳定方案、同硬件实测、成熟开源、本机历史成功、机制清晰的社区重复验证。
+## 2.1 MATURE_HARVEST_MATRIX
 
 每个候选至少记录：
 
@@ -389,11 +369,11 @@ REVERSIBILITY
 CURRENTLY_PRESENT
 ```
 
-外部百分比只用于排序，不直接变成本机收益，也不自动 KEEP。
+外部比例只用于排序，不直接变成本机收益。
 
-## 2.2 GPT 构建完整 VIRTUAL_MATURE_PATH
+## 2.2 GPT COMPLETE VIRTUAL_MATURE_PATH
 
-GPT必须在执行前一次性把当前批次从起点到停止点设计完整。每一步包含：
+GPT 在执行前一次性设计当前批次从起点到停止点：
 
 ```text
 STEP
@@ -413,65 +393,104 @@ CODEX_BUDGET
 STOP_POINT
 ```
 
-前一步结果决定后一步是否仍适用，但**这个条件分支必须提前写在铁路里**。未预定义的分支不得由 Codex 自行发明。
+条件分支必须提前写入。
 
-## 2.3 Codex执行规则
+## 2.3 批次铁路合同
 
-Codex只做：
+每个 stage 至少有：
 
 ```text
-LOAD REQUIRED SKILL
-→ VERIFY CANONICAL IDENTITY
-→ VERIFY VERSION
-→ VERIFY PROJECT WORKSPACE
-→ VERIFY PREDEFINED RAILROAD COMPLETE
-→ EXECUTE EXACT STEP
-→ QC
-→ WRITE EVIDENCE
-→ ROLLBACK/KEEP ONLY BY PREDEFINED RULE
-→ STOP
-→ RETURN RESULT TO GPT
+OBJECTIVE
+CURRENT_STATE / BASELINE_RULE
+EXACT_ALLOWED_CHANGE
+ALLOWED_FILES_OR_COMPONENTS
+SEEDS_AND_RUN_COUNT
+TIMING_BOUNDARY
+QC_GATE
+EXPECTED_BOUNDED_OUTCOME
+SUCCESS_RULE
+FAILURE_RULE
+NOT_APPLICABLE_RULE
+INCONCLUSIVE_RULE
+ROLLBACK
+NEXT_ON_PASS
+NEXT_ON_FAIL
+NEXT_ON_NOT_APPLICABLE
+NEXT_ON_INCONCLUSIVE
+MAX_GPU_RUNS
+TIME_BUDGET
 ```
 
-如果实测与预计不符、控制组漂移、环境异常、审批门禁等待、Git远端变化或其他异常没有预定义处理：保存事实并停止。
+整个 batch 还必须有：
 
-## 2.4 禁止数小时开放式验证
+```text
+BATCH_GLOBAL_GPU_BUDGET
+BATCH_GLOBAL_WALL_BUDGET
+BATCH_STOP_POINT
+FINAL_RETURN_TO_GPT_POINT
+```
+
+缺关键字段：
+
+```text
+VALIDATION_PLAN_NOT_MATURE=YES
+-> DO NOT START THAT STAGE
+```
+
+## 2.4 Codex 执行
+
+```text
+LOAD SKILL
+-> VERIFY CANONICAL IDENTITY/VERSION
+-> VERIFY PROJECT WORKSPACE
+-> VERIFY COMPLETE PREAUTHORIZED BATCH
+-> EXECUTE CURRENT STAGE
+-> QC
+-> WRITE EVIDENCE
+-> KEEP/ROLLBACK/NOT_APPLICABLE BY PREDEFINED RULE
+-> IF EXPECTED BRANCH: CONTINUE NEXT PREAUTHORIZED STAGE
+-> IF MATERIAL_REPLAN_TRIGGER: STOP AND RETURN GPT
+-> IF BATCH COMPLETE: REMOTE VERIFY AND RETURN GPT
+```
+
+## 2.5 禁止开放式长验证
 
 ```text
 NO_MULTI_HOUR_OPEN_ENDED_VALIDATION=YES
 ```
 
-超过预定时间预算且没有铁路中定义的继续条件：
+超过 batch budget：安全停止，保存证据，返回 GPT。
 
-```text
-BUDGET_DRIFT=YES
-→ SAFE STOP
-→ SAVE EVIDENCE
-→ RETURN_TO_GPT
-```
+## 2.6 自研入口
 
-## 2.5 自研攻击入口
-
-自研只允许由 GPT 在虚拟层提出；Codex不得自行进入。GPT提出的自研步骤必须同时有真实数据、明确机制、预计收益、可逆回滚和有限预算。
+自研只能由 GPT 在 Virtual 层提出，必须有真实数据、明确机制、预计收益、回滚和有限预算。Codex不得自行进入。
 
 ---
 
 # RESIDUAL VIRTUAL CONVERGENCE
 
-每批成熟验证后，Codex停止；GPT重新读取最新共同事实并做：
+只在：
+
+```text
+PREAUTHORIZED_BATCH_COMPLETE
+```
+
+或 `MATERIAL_REPLAN_TRIGGER=YES` 时重新进入 GPT。
+
+正常 batch 边界做：
 
 ```text
 CURRENT_WINNER
-→ REMAINING_MATURE_CANDIDATES
-→ RESIDUAL_GAPS
-→ INTERACTIONS
-→ EXPECTED_PORTFOLIO_GAIN
-→ TOTAL_VALIDATION_COST
-→ RISK
-→ NEXT PREDEFINED RAILROAD or STOP
+-> REMAINING_MATURE_CANDIDATES
+-> RESIDUAL_GAPS
+-> INTERACTIONS
+-> EXPECTED_PORTFOLIO_GAIN
+-> TOTAL_VALIDATION_COST
+-> RISK
+-> NEXT PREAUTHORIZED BATCH or FINAL CERTIFICATION
 ```
 
-若没有 ROI 为正且高于测量噪声/风险、可被短验证的剩余组合：
+若没有 ROI 为正、收益高于噪声/风险且可短验证的组合：
 
 ```text
 PORTFOLIO_ECONOMIC_STOP=YES
@@ -479,71 +498,96 @@ PORTFOLIO_ECONOMIC_STOP=YES
 
 ---
 
-# 99 / FREEZE
+# ROI 与研究支线门禁
 
-99不是“距离物理极限只差1%”，也不是强迫达到某个旧预测秒数。
+不是所有理论可优化点都值得验证。
 
-必须同时满足：
+如果候选：
 
-1. `CANONICAL_IDENTITY_GATE=PASS`；
-2. `SKILL_PRECEDENCE_GATE=PASS`；
-3. `NO_FREE_EXPLORATION=YES` 全过程未被破坏；
-4. 项目远端工作区已声明并可核验；
-5. 固定任务、correctness、quality、stability、safety 全通过；
-6. 单一 `T_PHY_TOTAL_REFERENCE` 已发布；
-7. MRE / REAL_STATE_MODEL 已完成；
-8. 高价值成熟候选全部已有 KEEP / ROLLBACK / NOT_APPLICABLE / EXHAUSTED 裁决；
-9. `VIRTUAL_MATURE_PATH_COMPLETE=YES`；
-10. `RESIDUAL_VIRTUAL_CONVERGENCE_COMPLETE=YES`；
-11. `PORTFOLIO_ROI_EVALUATED=YES`；
-12. 没有剩余 ROI 为正且可在短边界内验证的高价值组合；
-13. Final Certification 通过；
-14. 正式配置、证据、Failure Index、经验先验已经远端冻结并 `REMOTE_VERIFY=PASS`。
+- 剩余可消灭绝对时间小；
+- 风险高；
+- 需要升级/迁移整个软件栈；
+- 需要新的 profiler / kernel research；
+- 会开启多轮未知兼容性 preflight；
+- 生命周期收益不足覆盖工程成本；
 
-因此：
+则 GPT 可直接：
 
-> **99 = 当前真实硬件 + 固定任务 + 单一物理极限作终极参照 + 世界成熟收益 + GPT完整虚拟铁路 + Codex零自由探索的确定性验证 + 残余组合ROI收敛 + 最终认证后的稳定最优。**
+```text
+PORTFOLIO_ROI_NEGATIVE_OR_INSUFFICIENT
+-> DEFERRED / EXHAUSTED
+```
 
-若项目把 Generation 与 Path 分别定义为正式优化对象，可以有两个项目级 99；Total 可以只是组合观测。是否拆分 99 由项目任务合同决定，不改变“物理极限板只保留一个端到端 T_PHY_TOTAL_REFERENCE”的规则。
+不为了“理论完整”继续。
 
 ---
 
-# 执行与上下文纪律
+# FINAL CERTIFICATION / 99 / FREEZE
 
-- GPT / 高质量推理层负责：极限、方案、候选、顺序、条件分支、预算、停止条件。
-- Codex负责：验证当前母技能身份、读取技能、验证版本、精确执行、QC、证据、回滚、Git收口。
-- 单GPU正式 benchmark 串行独占。
-- 不允许因会话长度、capacity error、审批等待或恢复操作改变实验计划。
-- 页面过长时先冻结远端阶段报告，再由新页面从共同事实恢复。
+99不是距离物理极限1%，也不是强迫达到旧预测秒数。
+
+必须同时满足：
+
+1. CANONICAL_IDENTITY_GATE=PASS；
+2. SKILL_PRECEDENCE_GATE=PASS；
+3. NO_FREE_EXPLORATION=YES 全过程未破坏；
+4. 远端项目工作区声明并可核验；
+5. 固定任务 correctness/quality/stability/safety 全通过；
+6. 单一 T_PHY_TOTAL_REFERENCE 已发布；
+7. MRE / REAL_STATE_MODEL 已完成；
+8. 高价值成熟候选已 KEEP / ROLLBACK / NOT_APPLICABLE / EXHAUSTED / DEFERRED；
+9. VIRTUAL_MATURE_PATH_COMPLETE=YES；
+10. PREAUTHORIZED_BATCH_EXECUTION_COMPLETE=YES；
+11. RESIDUAL_VIRTUAL_CONVERGENCE_COMPLETE=YES；
+12. PORTFOLIO_ROI_EVALUATED=YES；
+13. 无剩余 ROI 为正且值得短验证的高价值组合；
+14. Final Certification 通过；
+15. 最终配置、证据、Failure Index、经验先验远端冻结，REMOTE_VERIFY=PASS。
+
+定义：
+
+> 99 = 当前真实硬件 + 固定任务 + 单一物理极限参照 + 世界成熟收益 + GPT完整Virtual-99 + 预授权批次确定性执行 + 批次边界残余收敛 + 组合生命周期ROI停止 + 最终认证后的稳定最优。
+
+---
+
+# 执行纪律
+
+- GPT：极限、候选、顺序、条件分支、批次预算、停止条件。
+- Codex：身份验证、精确执行、QC、证据、回滚、按预定义分支连续执行、Git收口。
+- 单GPU benchmark 串行独占。
+- AI断线/capacity/审批等待不改变铁路。
 - 本地结果未 push + remote verify 前不是共同事实。
 
 ---
 
-# 默认最短读取路径
-
-每次执行优先读取：
+# 默认最短读取顺序
 
 1. `SKILL.md`
 2. `references/CANONICAL-IDENTITY-GATE.md`
 3. `references/NO-FREE-EXPLORATION-GATE.md`
-4. `references/REMOTE-SHARED-WORKSPACE.md`
-5. 项目远端工作区声明
-6. GPT生成的当前验证铁路
+4. `references/PREAUTHORIZED-BATCH-RAILROAD.md`
+5. `references/REMOTE-SHARED-WORKSPACE.md`
+6. 项目远端工作区声明
+7. GPT 当前完整 batch railroad
 
-其余 references 仅在 GPT 设计阶段按需读取；Codex不得因为“想了解更多”而扩大读取范围并自行设计实验。
+---
 
-## 状态
+# 状态
 
 ```text
-SKILL_VERSION=1.8.0
+SKILL_VERSION=1.9.0
 CANONICAL_IDENTITY_GATE_DEFINED=PASS
 CANONICAL_MOTHER_SKILL_ID=first-principles-physical-limit-convergence
-LEGACY_ANCESTOR_MUTATION=NO
 SKILL_PRECEDENCE_GATE_DEFINED=PASS
 NO_FREE_EXPLORATION=YES
 CODEX_ROLE=DETERMINISTIC_VALIDATOR_EXECUTOR
 CODEX_MAY_DESIGN_TEST_PLAN=NO
 GPT_COMPLETE_VALIDATION_RAILROAD_REQUIRED=YES
+PREAUTHORIZED_BATCH_EXECUTION=YES
+NO_REPLAN_ON_MAGNITUDE_SURPRISE=YES
+NO_OPEN_ENDED_PREFLIGHT_CHAIN=YES
+MATERIAL_REPLAN_TRIGGER_DEFINED=PASS
+RETURN_TO_GPT_AT_BATCH_BOUNDARY=PASS
 SINGLE_T_PHY_TOTAL_REFERENCE_DEFINED=PASS
 REMOTE_SHARED_WORKSPACE_DEFINED=PASS
 MRE_REAL_STATE_CALIBRATION_DEFINED=PASS
