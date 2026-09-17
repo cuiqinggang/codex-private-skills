@@ -17,7 +17,7 @@
 
 ## 禁止循环
 
-- [x] `NO_FREE_EXPLORATION=YES`。
+- [x] 禁止自由探索（NO_FREE_EXPLORATION）= YES。
 - [x] Codex 不得新增候选。
 - [x] Codex 不得改变候选顺序。
 - [x] Codex 不得追加运行。
@@ -25,6 +25,14 @@
 - [x] 正常通过/失败/回滚不要求每一步返回 GPT。
 - [x] 真实执行层不形成 V1→Vn 式重规划循环。
 - [x] 虚拟攻击迭代只发生在 GPT 层。
+
+## 有限执行灵活性
+
+- [x] 允许等价命令写法、脚本封装、路径修正和既定任务恢复。
+- [x] 上述灵活性只作用于“怎么执行同一个动作”。
+- [x] Codex 不得改变“执行什么任务”。
+- [x] Codex 不得借执行问题换模型、候选、版本、参数、运行次数、顺序、阈值或测试范围。
+- [x] 既定步骤无法在允许边界内完成时，保存证据并停止返回 GPT。
 
 ## 新优化方向
 
@@ -41,6 +49,8 @@
 ```text
 METHOD_LOGIC_ACCEPTANCE=PASS
 SIMPLE_FOUR_STEP_METHOD=PASS
+BOUNDED_EXECUTION_FLEXIBILITY=PASS
+PLAN_MUTATION_BY_CODEX=NO
 NO_REAL_EXECUTION_REPLAN_LOOP=PASS
 INDEPENDENT_99_PATH_RULE=PASS
 RUNTIME_INSTALLATION=NOT_EXECUTED
