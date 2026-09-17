@@ -1,0 +1,107 @@
+{
+  "project_id": "H3-P0",
+  "state": "VIRTUAL_99_READY_FOR_FIRST_BOUNDED_EXECUTION",
+  "method": {
+    "skill_id": "first-principles-physical-limit-convergence",
+    "required_version": "1.8.0",
+    "canonical_branch": "codex/first-principles-physical-limit-convergence-v1.8.0",
+    "no_free_exploration": true,
+    "codex_role": "DETERMINISTIC_VALIDATOR_EXECUTOR"
+  },
+  "task_contract": {
+    "mode": "T2VA",
+    "width": 32,
+    "height": 32,
+    "frames": 5,
+    "steps": 1,
+    "prompt": "static frame",
+    "sampler": "res_multistep",
+    "scheduler": "beta",
+    "input_audio": false,
+    "final_output": "REAL_MP4"
+  },
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 2080 Ti",
+    "vram_mib": 22528,
+    "architecture": "Turing sm_75"
+  },
+  "single_physical_limit_reference_s": {
+    "low": 0.23,
+    "high": 0.57,
+    "confidence": "MEDIUM",
+    "formal_reference": true
+  },
+  "real_state": {
+    "current_mre_total_p50_s": 54.817736,
+    "current_mre_total_p95_s": 59.811207,
+    "proven_stable_v3_total_p50_s": 38.042308,
+    "proven_stable_v3_total_p95_s": 38.488666,
+    "mre_physical_headroom_vs_high_s": 54.247736,
+    "stable_v3_physical_headroom_vs_high_s": 37.472308,
+    "performance_drift_present": true,
+    "candidate_comparisons_require_same_window_paired_control": true
+  },
+  "mature_batch_1": [
+    {
+      "id": "M1",
+      "name": "Star7 Native FP16 Exact Loader",
+      "priority": 1,
+      "target": ["Generation"],
+      "status": "READY_AS_FIRST_BOUNDED_VALIDATION",
+      "external_gain_not_transferable": true
+    },
+    {
+      "id": "M2",
+      "name": "W4A8 FL2VA diffusion",
+      "priority": 2,
+      "target": ["Generation", "Path residency"],
+      "status": "VIRTUAL_RAIL_DEFINED_WAITING_M1_GPT_DECISION",
+      "current_diffusion_size_gb": 20.97,
+      "candidate_diffusion_size_gb_approx": 12.5
+    },
+    {
+      "id": "M3",
+      "name": "INT8 ConvRot Video VAE",
+      "priority": 3,
+      "target": ["Path", "VAE", "Residency"],
+      "status": "VIRTUAL_RAIL_DEFINED_STRICT_QC_REQUIRED",
+      "candidate_vae_size_gb_approx": 3.2,
+      "same_gpu_public_black_nan_risk": true
+    },
+    {
+      "id": "M4",
+      "name": "Exact conditioning cache",
+      "priority": 4,
+      "target": ["Conditioning", "Path"],
+      "status": "CONDITIONAL_APPLICABILITY_CHECK_FIRST",
+      "native_cache_overlap_must_be_checked": true
+    }
+  ],
+  "excluded_or_deferred": [
+    {"name": "SageAttention standalone", "status": "EXCLUDE_BATCH_1", "reason": "same-card mature project reports failure; local attention block tiny"},
+    {"name": "T8/PDD/Turbo/MotionCache", "status": "NOT_APPLICABLE", "reason": "fixed task is 1 step"},
+    {"name": "ComfyUI v0.36 whole-stack upgrade", "status": "PROVEN_BAD_LOCAL_AB"},
+    {"name": "pinned memory", "status": "PROVEN_BAD_LOCAL_AB"},
+    {"name": "forced VAE full-load request", "status": "PROVEN_BAD_LOCAL_AB"},
+    {"name": "Star7 Activation Chunk/Sparse Attention", "status": "RESIDUAL_ONLY", "reason": "minimal token task; no current large attention block"}
+  ],
+  "transition_rule": {
+    "major_residual_threshold_fraction_of_total": 0.10,
+    "meaning": "work-mode transition only, not a 99 mathematical threshold",
+    "if_major_measured_block_and_short_roi_positive_mechanism_exists": "BUILD_NEXT_MATURE_OR_TARGETED_BATCH",
+    "otherwise": "ENTER_RESIDUAL_VIRTUAL_CONVERGENCE"
+  },
+  "final_stop_rule": {
+    "portfolio_roi_required": true,
+    "expected_gain_above_noise_required": true,
+    "short_bounded_validation_required": true,
+    "quality_stability_risk_acceptable_required": true,
+    "final_certification_runs": 10,
+    "remote_verify_required": true
+  },
+  "execution": {
+    "new_gpu_run_performed_in_this_virtual_phase": false,
+    "next_authorized_stage": "GPT_ISSUES_M1_COMPLETE_VALIDATION_RAILROAD",
+    "codex_may_auto_continue_to_m2": false
+  }
+}
