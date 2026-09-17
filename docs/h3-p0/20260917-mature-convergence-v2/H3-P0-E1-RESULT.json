@@ -1,0 +1,434 @@
+{
+  "PROJECT_ID": "H3-P0",
+  "STAGE": "E0_SAME_WINDOW_CONTROL_PLUS_E1_STAR7_NATIVE_FP16_EXACT",
+  "CANONICAL_SKILL_ID": "first-principles-physical-limit-convergence",
+  "CANONICAL_SKILL_VERSION": "1.8.0",
+  "CANONICAL_SKILL_BRANCH": "codex/first-principles-physical-limit-convergence-v1.8.0",
+  "CANONICAL_IDENTITY_GATE": "PASS",
+  "NO_FREE_EXPLORATION": "YES",
+  "REMOTE_PROJECT_HEAD_BEFORE": "a94ea765cbae7fa56199dc4e3e35924bb19c7c03",
+  "CONTROL_CONFIG": {
+    "loader": "UNETLoader",
+    "diffusion": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+    "text_encoder": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+    "video_vae": "minimax_h3_video_vae_fp16.safetensors",
+    "flags": [
+      "--fast-disk",
+      "--reserve-vram 1.0",
+      "--disable-pinned-memory"
+    ],
+    "task": "T2VA 32x32 5 frames 1 step static frame res_multistep beta no input audio real MP4",
+    "warmup_seed": 910002,
+    "formal_seeds": [
+      910100,
+      910102,
+      910103
+    ]
+  },
+  "CANDIDATE_CONFIG": {
+    "loader": "MiniMaxH3FP16LoaderStar7",
+    "diffusion": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+    "text_encoder": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+    "video_vae": "minimax_h3_video_vae_fp16.safetensors",
+    "flags": [
+      "--fast-disk",
+      "--reserve-vram 1.0",
+      "--disable-pinned-memory"
+    ],
+    "task": "T2VA 32x32 5 frames 1 step static frame res_multistep beta no input audio real MP4",
+    "warmup_seed": 910002,
+    "formal_seeds": [
+      910100,
+      910102,
+      910103
+    ]
+  },
+  "EXACT_ONE_CHANGE": "Workflow node 1: UNETLoader(unet_name,weight_dtype=default) -> MiniMaxH3FP16LoaderStar7(unet_name); all other nodes identical",
+  "MECHANISM_ACTIVE_PROOF": {
+    "gpu_arch": "sm75",
+    "protected_fp16_path_active": true,
+    "quantized_checkpoint_detected": true,
+    "force_cast_weights": false,
+    "int8_convrot_preserved": true,
+    "loader_log": "\u001b[32m[INFO]\u001b[0m [Star7 H3 FP16] Loading at creation-time FP16 | device=sm75",
+    "enabled_log": "\u001b[32m[INFO]\u001b[0m [Star7 H3 FP16] Enabled v2.0.14 | mode=loader-quantized | backend=int8_tensorwise+convrot:200 | force-cast=False | weight-patches=0 | blocks=50"
+  },
+  "TIMING_BOUNDARY": {
+    "generation": "CUDA Event around sampler_function plus synchronize",
+    "total": "before POST /prompt until history completed and real MP4 exists",
+    "path": "Total minus Generation",
+    "qc": "after RESULT_READY, excluded from Total"
+  },
+  "RUNS": [
+    {
+      "phase": "warmup",
+      "seed": 910002,
+      "total_s": 165.74369920000026,
+      "generation_cuda_s": 71.5443359375,
+      "path_s": 94.19936326250027,
+      "result_ready": "history_completed_and_mp4_exists",
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\control\\warmup-0-910002_00001_.mp4",
+        "sha256": "6E23BE1201C81DBBBBDE6F4099BE78E85586580C97195FD83D83A7DF83C18700",
+        "bytes": 3940,
+        "frame_means": [
+          124.9658203125,
+          118.76139322916667,
+          115.38802083333333,
+          99.67610677083333,
+          109.16927083333333
+        ],
+        "frame_ranges": [
+          255,
+          255,
+          241,
+          221,
+          229
+        ],
+        "frame_stds": [
+          49.124454682925446,
+          44.61178062412139,
+          39.03141045789801,
+          34.44116135934269,
+          36.826945998163794
+        ]
+      }
+    },
+    {
+      "phase": "E0_CONTROL",
+      "seed": 910100,
+      "total_s": 42.34583340000245,
+      "generation_cuda_s": 24.10716796875,
+      "path_s": 18.238665431252446,
+      "result_ready": "history_completed_and_mp4_exists",
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\control\\E0_CONTROL-1-910100_00001_.mp4",
+        "sha256": "F90EA7B5103EB4462DAD9E0D9CDF3D100296F8D4210D2CCF08D2317E33EB636C",
+        "bytes": 3343,
+        "frame_means": [
+          81.35481770833333,
+          80.86490885416667,
+          76.27897135416667,
+          68.58756510416667,
+          52.930989583333336
+        ],
+        "frame_ranges": [
+          168,
+          162,
+          161,
+          154,
+          132
+        ],
+        "frame_stds": [
+          66.70820625288233,
+          65.25689652943336,
+          61.12735361423221,
+          55.187076622181294,
+          42.39343782822675
+        ]
+      }
+    },
+    {
+      "phase": "E0_CONTROL",
+      "seed": 910102,
+      "total_s": 38.81579759999295,
+      "generation_cuda_s": 19.883205078125,
+      "path_s": 18.93259252186795,
+      "result_ready": "history_completed_and_mp4_exists",
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\control\\E0_CONTROL-2-910102_00001_.mp4",
+        "sha256": "0B309EFD7D5873B8A6332C39D9DD427AAFF160F02C33D84F3908F8DB31D8FB11",
+        "bytes": 3456,
+        "frame_means": [
+          239.728515625,
+          194.92545572916666,
+          156.78125,
+          145.60221354166666,
+          142.939453125
+        ],
+        "frame_ranges": [
+          43,
+          55,
+          78,
+          87,
+          87
+        ],
+        "frame_stds": [
+          6.724430303066389,
+          9.834369362386834,
+          14.455987892133141,
+          16.889094277577513,
+          16.780723710334858
+        ]
+      }
+    },
+    {
+      "phase": "E0_CONTROL",
+      "seed": 910103,
+      "total_s": 38.75604780000867,
+      "generation_cuda_s": 20.102029296875,
+      "path_s": 18.654018503133674,
+      "result_ready": "history_completed_and_mp4_exists",
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\control\\E0_CONTROL-3-910103_00001_.mp4",
+        "sha256": "9D8E2B6337336439CB2AB1241B03388D8417DE0507D7B3D6C20138245B91D97D",
+        "bytes": 3287,
+        "frame_means": [
+          243.56510416666666,
+          239.5703125,
+          236.53092447916666,
+          235.642578125,
+          237.84114583333334
+        ],
+        "frame_ranges": [
+          29,
+          46,
+          47,
+          45,
+          38
+        ],
+        "frame_stds": [
+          8.562784726992811,
+          11.852237126481386,
+          13.273969354589907,
+          13.311638650504484,
+          11.446809723837047
+        ]
+      }
+    },
+    {
+      "phase": "warmup",
+      "seed": 910002,
+      "total_s": 170.03760089998832,
+      "generation_cuda_s": 71.6213984375,
+      "path_s": 98.41620246248831,
+      "result_ready": "history_completed_and_mp4_exists",
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\candidate\\warmup-0-910002_00001_.mp4",
+        "sha256": "85503B78BDEE41A8A2D7EDAB2406B6C61F77C8CBE6E46A024BE62A23B35120F2",
+        "bytes": 3582,
+        "frame_means": [
+          96.50846354166667,
+          89.0390625,
+          87.9833984375,
+          78.2099609375,
+          85.05143229166667
+        ],
+        "frame_ranges": [
+          165,
+          143,
+          116,
+          99,
+          92
+        ],
+        "frame_stds": [
+          28.581787000818007,
+          24.50162962599482,
+          19.94416158074728,
+          16.109706644615148,
+          16.334155821040834
+        ]
+      }
+    },
+    {
+      "phase": "E1_STAR7",
+      "seed": 910100,
+      "total_s": 14.948876800001017,
+      "generation_cuda_s": 11.518501953125,
+      "path_s": 3.430374846876017,
+      "result_ready": "history_completed_and_mp4_exists",
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\candidate\\E1_STAR7-1-910100_00001_.mp4",
+        "sha256": "9C725A9FD80950E4BC39B8129626B064D40680862F1AE238BC9A3CB0282546B5",
+        "bytes": 3363,
+        "frame_means": [
+          106.37955729166667,
+          115.93033854166667,
+          113.6435546875,
+          98.24739583333333,
+          82.916015625
+        ],
+        "frame_ranges": [
+          249,
+          240,
+          248,
+          255,
+          252
+        ],
+        "frame_stds": [
+          104.87698249423248,
+          99.47369164544341,
+          101.0972399133298,
+          110.0410611974824,
+          100.89276668076734
+        ]
+      }
+    },
+    {
+      "phase": "E1_STAR7",
+      "seed": 910102,
+      "total_s": 6.484253500006162,
+      "generation_cuda_s": 3.1019296875,
+      "path_s": 3.3823238125061614,
+      "result_ready": "history_completed_and_mp4_exists",
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\candidate\\E1_STAR7-2-910102_00001_.mp4",
+        "sha256": "A4EFCC6B45D160B37F65A6712C8FB86BF4CEF9B9E303681D090AE06A02AAF1DC",
+        "bytes": 3310,
+        "frame_means": [
+          146.50325520833334,
+          126.78873697916667,
+          115.70930989583333,
+          113.6494140625,
+          112.84635416666667
+        ],
+        "frame_ranges": [
+          58,
+          47,
+          59,
+          65,
+          68
+        ],
+        "frame_stds": [
+          12.331467616236196,
+          10.65763814118905,
+          13.835475491497895,
+          15.632679560126405,
+          16.464899921233467
+        ]
+      }
+    },
+    {
+      "phase": "E1_STAR7",
+      "seed": 910103,
+      "total_s": 10.561752699999488,
+      "generation_cuda_s": 2.469808837890625,
+      "path_s": 8.091943862108863,
+      "result_ready": "history_completed_and_mp4_exists",
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\candidate\\E1_STAR7-3-910103_00001_.mp4",
+        "sha256": "C452D9FB1984250543A8F18B4EECF4A9D665628218633DC7F314944A804D6030",
+        "bytes": 3299,
+        "frame_means": [
+          212.23111979166666,
+          208.47884114583334,
+          197.2607421875,
+          190.30924479166666,
+          193.52864583333334
+        ],
+        "frame_ranges": [
+          43,
+          51,
+          60,
+          61,
+          51
+        ],
+        "frame_stds": [
+          12.451545473697815,
+          13.875312316709236,
+          16.310046765439527,
+          16.865682395291113,
+          14.126561021396336
+        ]
+      }
+    }
+  ],
+  "SUMMARY": {
+    "control": {
+      "phase": "E0_CONTROL",
+      "reserve_vram_gib": 1.0,
+      "pinned_memory": "disabled",
+      "percentile_method": "linear_interpolation_n_minus_1",
+      "valid_warm_runs": 3,
+      "generation_p50_s": 20.102029296875,
+      "generation_p95_s": 23.7066541015625,
+      "path_p50_s": 18.654018503133674,
+      "path_p95_s": 18.904735119994523,
+      "total_p50_s": 38.81579759999295,
+      "total_p95_s": 41.992829820001496
+    },
+    "candidate": {
+      "phase": "E1_STAR7",
+      "reserve_vram_gib": 1.0,
+      "pinned_memory": "disabled",
+      "percentile_method": "linear_interpolation_n_minus_1",
+      "valid_warm_runs": 3,
+      "generation_p50_s": 3.1019296875,
+      "generation_p95_s": 10.6768447265625,
+      "path_p50_s": 3.430374846876017,
+      "path_p95_s": 7.625786960585578,
+      "total_p50_s": 10.561752699999488,
+      "total_p95_s": 14.510164390000863
+    },
+    "p50_total_gain_s": 28.25404489999346,
+    "paired_median_total_gain_s": 28.194295100009185,
+    "keep_threshold_s": 1.1644739279997884,
+    "formal_seeds_faster": 3,
+    "max_gpu_runs": 8,
+    "actual_gpu_runs": 8,
+    "sum_run_total_s": 487.6938618999993,
+    "first_submit_to_last_ready_s": 561.625250048
+  },
+  "PAIRED_GAINS": [
+    {
+      "seed": 910100,
+      "gain_total_s": 27.39695660000143,
+      "gain_generation_s": 12.588666015625002,
+      "gain_path_s": 14.80829058437643,
+      "candidate_faster": true
+    },
+    {
+      "seed": 910102,
+      "gain_total_s": 32.331544099986786,
+      "gain_generation_s": 16.781275390624998,
+      "gain_path_s": 15.550268709361788,
+      "candidate_faster": true
+    },
+    {
+      "seed": 910103,
+      "gain_total_s": 28.194295100009185,
+      "gain_generation_s": 17.632220458984374,
+      "gain_path_s": 10.562074641024811,
+      "candidate_faster": true
+    }
+  ],
+  "QC": {
+    "all_8_runs_pass": true,
+    "control_formal_pass": "3/3",
+    "candidate_formal_pass": "3/3",
+    "ffprobe": "32x32x5 each",
+    "ffmpeg_decode": "PASS each",
+    "finite_pixels": "PASS; decoded rgb24 byte frames",
+    "non_black_non_flat": "PASS each",
+    "frame_range_minimum": 8,
+    "frame_std_minimum": 1.5,
+    "artifact_sha256": "recorded per RUNS"
+  },
+  "KEEP_ROLLBACK_INCONCLUSIVE": "KEEP",
+  "DECISION_REASON": "All QC pass; P50 Total gain exceeds max(0.5s,3% control P50); paired median positive; 3/3 formal seeds faster; Star7 mechanism active; no stability/runtime failure",
+  "VARIABILITY_NOTE": "Candidate formal Total 6.484-14.949s and Path 3.382-8.092s; no extra samples authorized",
+  "ROLLBACK_PROOF": {
+    "status": "KEEP candidate asset; original P0 workflow unchanged and not replaced as default",
+    "sampler_restored": true,
+    "service_8194_stopped": true,
+    "original_model_files_unchanged": true,
+    "control_workflow_preserved": true
+  },
+  "SOURCE_SHA_BEFORE_AFTER": {
+    "frozen_runner_sha256": "EA3B3FB4FA70DFE05448B138E90FFDC6A22121033F936D764A8CD03A82B574E4",
+    "sampler_before_sha256": "2850B400E0C07DDB73429F35E5DA3DE01952E7EE58F4C050124EA948CBDA53AE",
+    "sampler_after_sha256": "2850B400E0C07DDB73429F35E5DA3DE01952E7EE58F4C050124EA948CBDA53AE",
+    "original_workflow_before_sha256": "89B6A40B13485A6633191F1350DB472556359CDB6407E5272C9ED109698FD0F5",
+    "original_workflow_after_sha256": "89B6A40B13485A6633191F1350DB472556359CDB6407E5272C9ED109698FD0F5",
+    "candidate_template_sha256": "66834FD34C192188DAE55F0CB6A7C4064D3AECC50EE4A9FEB00A8CE0C18E2632",
+    "candidate_wrapper_sha256": "A7C5D31078AE94EAF7158F6365A8823AEF9E0539ECD0CC48EE73397D36D1BCDB",
+    "star7_git_commit": "dc8ea63b51439ffd767eead53faaed23b550c504",
+    "star7_nodes_sha256": "8F6D3EB42D5123A36A814F3EFE6910D499CDF618E190DE74F3BCA0D5935E232B"
+  },
+  "EVIDENCE_ROOT": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-e0-e1-01",
+  "REMOTE_COMMIT": "PENDING_FIRST_PUSH",
+  "REMOTE_VERIFY": "PENDING_FIRST_PUSH",
+  "SHARED_FACT_CONFIRMED": "NO_UNTIL_REMOTE_VERIFY",
+  "NEXT_ACTION": "RETURN_TO_GPT",
+  "E2_UNLOCKED": "NO"
+}
