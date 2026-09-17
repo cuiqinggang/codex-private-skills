@@ -1,65 +1,48 @@
-# v1.9.0 REGRESSION CHECKLIST
+# v1.9.0 回归检查
 
-## Canonical identity / lineage
+## 母技能身份
 
-- [x] Current mother skill id is `first-principles-physical-limit-convergence`.
-- [x] Current skill path is `skills/first-principles-physical-limit-convergence/`.
-- [x] Current version branch matches declared `v1.9.0`.
-- [x] `absolute-time-fireworks-optimization` remains historical ancestor only.
-- [x] Legacy version numbering does not control current lineage.
+- [x] 当前技能ID正确。
+- [x] 当前版本为 v1.9.0。
+- [x] 当前分支与版本一致。
+- [x] 历史祖先技能没有被误改。
 
-## Core invariants preserved
+## 四步法
 
-- [x] `NO_FREE_EXPLORATION=YES` remains mandatory.
-- [x] Codex remains deterministic validator/executor only.
-- [x] Codex cannot design tests, add candidates, change order, extend runs, or profile without GPT plan.
-- [x] GPT complete Virtual-99 / validation railroad remains required.
-- [x] Unexpected results return to GPT.
-- [x] Commands cannot weaken no-free-exploration.
-- [x] Single physical limit remains `T_PHY_TOTAL_REFERENCE`.
-- [x] Remote shared workspace remains authoritative.
-- [x] MRE / REAL_STATE_MODEL remains required.
-- [x] Mature harvest / residual convergence / portfolio ROI / final certification remain required.
+- [x] 第1步只发布一个端到端物理极限。
+- [x] 第2步建立本机现实最优区间。
+- [x] 第3步由 GPT 完成成熟方案矩阵与虚拟99攻击迭代。
+- [x] 第4步由 GPT 生成完整 Codex 命令包。
+- [x] Codex 按完整命令包执行到底。
 
-## v1.9 batch execution semantics
+## 禁止循环
 
-- [x] `PREAUTHORIZED_BATCH_EXECUTION=YES` is defined.
-- [x] Expected PASS may follow predefined `NEXT_ON_PASS` without GPT re-entry.
-- [x] Expected FAIL may rollback and follow predefined `NEXT_ON_FAIL` without GPT re-entry.
-- [x] Expected NOT_APPLICABLE may follow predefined next action without GPT re-entry.
-- [x] `MATERIAL_REPLAN_TRIGGER` is explicitly defined.
-- [x] `NO_REPLAN_ON_MAGNITUDE_SURPRISE=YES` is defined.
-- [x] A result being much faster than projected does not itself open new exploration.
-- [x] `NO_OPEN_ENDED_PREFLIGHT_CHAIN=YES` is defined.
-- [x] Same-candidate preflight-A -> GPT -> preflight-B -> GPT loops are prohibited unless the finite chain was predesigned in Virtual-99.
-- [x] Residual Virtual Convergence defaults to batch boundary, not each normal stage boundary.
-- [x] Batch global GPU and wall-time budgets are required.
-- [x] Incomplete stage railroad does not become Codex design authority.
+- [x] `NO_FREE_EXPLORATION=YES`。
+- [x] Codex 不得新增候选。
+- [x] Codex 不得改变候选顺序。
+- [x] Codex 不得追加运行。
+- [x] Codex 不得自行性能剖析或参数搜索。
+- [x] 正常通过/失败/回滚不要求每一步返回 GPT。
+- [x] 真实执行层不形成 V1→Vn 式重规划循环。
+- [x] 虚拟攻击迭代只发生在 GPT 层。
 
-## Legacy invariants inherited
+## 新优化方向
 
-- [x] Task contract and correctness/quality/stability/safety gates remain mandatory.
-- [x] External frontier is evidence, not physical limit.
-- [x] Compatible frozen facts are inherited by default.
-- [x] Same timing/contract is required for A/B.
-- [x] Single-GPU formal benchmarks remain serial/exclusive when applicable.
-- [x] Failure Index, existing-facts-first, and reversible rollback remain inherited.
+- [x] 命令包外的新研究方向不插回当前主流程。
+- [x] 新研究方向记录为“独立99路径”。
+- [x] 独立99路径以后单独走同样四步法。
 
-## Claims not made by this release
+## 99与收口
 
-- [x] Runtime installation v1.9.0 is NOT claimed.
-- [x] H3 application under v1.9.0 is NOT yet claimed.
-- [x] H3 final 99 is NOT claimed.
-- [x] No new physical-limit number is fabricated by this governance release.
+- [x] Final Certification（最终认证）保留。
+- [x] Remote Verify（远端核验）保留。
+- [x] 质量、稳定、安全硬约束保留。
 
 ```text
-CANONICAL_IDENTITY_GATE=PASS
-NO_FREE_EXPLORATION=PASS
-PREAUTHORIZED_BATCH_EXECUTION=PASS
-NO_REPLAN_ON_MAGNITUDE_SURPRISE=PASS
-NO_OPEN_ENDED_PREFLIGHT_CHAIN=PASS
 METHOD_LOGIC_ACCEPTANCE=PASS
+SIMPLE_FOUR_STEP_METHOD=PASS
+NO_REAL_EXECUTION_REPLAN_LOOP=PASS
+INDEPENDENT_99_PATH_RULE=PASS
 RUNTIME_INSTALLATION=NOT_EXECUTED
-H3_V1_9_PROJECT_APPLICATION=NOT_YET_EXECUTED
 H3_FINAL_99=NO
 ```
