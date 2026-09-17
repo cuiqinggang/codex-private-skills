@@ -76,6 +76,6 @@ block 14 是最强局部候选，但**不能裁决为首次致病突变**：该�
 
 `REPAIR_EXPERIMENTS_EXECUTED=0`
 
-Git commit 与 remote verify 的核验记录将在结果提交推送后回填；最终远端 HEAD 见交付返回。
+结果提交：`04e6353b130764262d6701707b6751841c70faca`。该提交已推送，`git ls-remote origin refs/heads/codex/h3-p0-mature-convergence-v2` 返回同一 SHA，`REMOTE_VERIFY=PASS`。本段验收信息回填后的最终远端 HEAD 见交付返回。
 
 `NEXT_ACTION=STOP_RETURN_TO_GPT_VIRTUAL_99`
