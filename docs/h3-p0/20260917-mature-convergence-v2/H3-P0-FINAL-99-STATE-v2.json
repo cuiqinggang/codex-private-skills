@@ -1,0 +1,414 @@
+{
+  "schema": "H3-P0-FINAL-99-STATE-v2",
+  "method": "first-principles-physical-limit-convergence",
+  "method_version": "1.9.0",
+  "branch": "codex/h3-p0-mature-convergence-v2",
+  "source_command": "H3-P0-FINAL-CERTIFICATION-RETRY-COMMAND-v1.md",
+  "source_repair": "H3-P0-FINAL-CERTIFICATION-REPAIR-v1.md",
+  "fixed_stack": {
+    "loader": "MiniMaxH3FP16LoaderStar7",
+    "diffusion": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+    "text_encoder": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+    "video_vae": "minimax_h3_video_vae_fp16.safetensors",
+    "flags": "--fast-disk --reserve-vram 1.0 --disable-pinned-memory",
+    "task": "T2VA / 32x32 / 5 frames / 1 step / static frame / res_multistep / beta / no audio / real MP4"
+  },
+  "warmup_runs": [
+    {
+      "phase": "warmup",
+      "index": 0,
+      "seed": 930098,
+      "loader": "MiniMaxH3FP16LoaderStar7",
+      "prompt_id": "1d820282-6a71-4061-b5db-a14dcd53877e",
+      "total_s": 208.9703781999997,
+      "generation_cuda_s": 87.27925,
+      "generation_wall_s": 87.29308200000378,
+      "path_s": 121.69112819999968,
+      "result_ready": "history_completed_and_mp4_exists",
+      "submit_epoch_ns": 1789652050765998300,
+      "ready_epoch_ns": 1789652259736812300,
+      "generation_start_epoch_ns": 1789652147154957000,
+      "generation_end_epoch_ns": 1789652234448032500,
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260917-final-cert-retry-01\\warmup-0-930098_00001_.mp4",
+        "sha256": "EE6AAA516DDCC1CB08A1658C4F813E802395965517FC3DF3B5D66DEF4AF6CC40",
+        "bytes": 3257,
+        "frame_means": [
+          251.91666666666666,
+          254.83333333333334,
+          254.83333333333334,
+          250.08235677083334,
+          250.38997395833334
+        ],
+        "frame_ranges": [
+          9,
+          2,
+          2,
+          25,
+          52
+        ],
+        "frame_stds": [
+          2.669919890600134,
+          0.5527707983925999,
+          0.5527707983925999,
+          4.965380269069501,
+          5.813418699740135
+        ],
+        "finite_pixels": true,
+        "non_black": true,
+        "qc_pass": false,
+        "flat_content": false
+      },
+      "task_completed": true
+    },
+    {
+      "phase": "warmup",
+      "index": 1,
+      "seed": 930099,
+      "loader": "MiniMaxH3FP16LoaderStar7",
+      "prompt_id": "a8fac922-76fb-45fb-aa9d-94279a4b1b2f",
+      "total_s": 23.516027000005124,
+      "generation_cuda_s": 20.039353515625,
+      "generation_wall_s": 20.04220070000156,
+      "path_s": 3.4766734843801252,
+      "result_ready": "history_completed_and_mp4_exists",
+      "submit_epoch_ns": 1789652261905450000,
+      "ready_epoch_ns": 1789652285421205500,
+      "generation_start_epoch_ns": 1789652262647788000,
+      "generation_end_epoch_ns": 1789652282689470700,
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260917-final-cert-retry-01\\warmup-1-930099_00001_.mp4",
+        "sha256": "2AD011EE190B0C401448640A3FAA69C7A091935AC6660AF1D6BAF1394FD5267F",
+        "bytes": 3272,
+        "frame_means": [
+          25.3505859375,
+          23.152994791666668,
+          20.973958333333332,
+          16.001302083333332,
+          15.390950520833334
+        ],
+        "frame_ranges": [
+          52,
+          50,
+          49,
+          41,
+          39
+        ],
+        "frame_stds": [
+          18.03937586747189,
+          16.22321603218858,
+          15.156474618897015,
+          13.254126651898954,
+          13.389782869577395
+        ],
+        "finite_pixels": true,
+        "non_black": true,
+        "qc_pass": true,
+        "flat_content": false
+      },
+      "task_completed": true
+    }
+  ],
+  "formal_seed_plan": [
+    930100,
+    930101,
+    930102,
+    930103,
+    930104,
+    930105,
+    930106,
+    930107,
+    930108,
+    930109
+  ],
+  "formal_runs": [
+    {
+      "phase": "STAR7_FORMAL",
+      "index": 2,
+      "seed": 930100,
+      "loader": "MiniMaxH3FP16LoaderStar7",
+      "prompt_id": "aca3188f-cbbf-4b1b-9dc0-ea4fd1b13308",
+      "total_s": 6.889588200006983,
+      "generation_cuda_s": 3.396941650390625,
+      "generation_wall_s": 3.4001250000001164,
+      "path_s": 3.4926465496163583,
+      "result_ready": "history_completed_and_mp4_exists",
+      "submit_epoch_ns": 1789652285584105200,
+      "ready_epoch_ns": 1789652292474096600,
+      "generation_start_epoch_ns": 1789652286550677000,
+      "generation_end_epoch_ns": 1789652289950224000,
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260917-final-cert-retry-01\\STAR7_FORMAL-2-930100_00001_.mp4",
+        "sha256": "95FF543BF21120CB3E9660B2892FA7F71DC88D35DB1830C7B5BF350578F92E3D",
+        "bytes": 3294,
+        "frame_means": [
+          61.406901041666664,
+          57.861979166666664,
+          54.638346354166664,
+          53.820963541666664,
+          55.656575520833336
+        ],
+        "frame_ranges": [
+          163,
+          148,
+          133,
+          126,
+          129
+        ],
+        "frame_stds": [
+          61.020694741625675,
+          55.880328905464715,
+          52.407641984841064,
+          51.51488183149852,
+          52.16934154891997
+        ],
+        "finite_pixels": true,
+        "non_black": true,
+        "qc_pass": true,
+        "flat_content": false
+      },
+      "task_completed": true
+    },
+    {
+      "phase": "STAR7_FORMAL",
+      "index": 3,
+      "seed": 930101,
+      "loader": "MiniMaxH3FP16LoaderStar7",
+      "prompt_id": "861bef1d-b8fd-447e-8a34-181f13a5ebf7",
+      "total_s": 8.651377100002719,
+      "generation_cuda_s": 4.5419599609375,
+      "generation_wall_s": 4.546268500009319,
+      "path_s": 4.109417139065219,
+      "result_ready": "history_completed_and_mp4_exists",
+      "submit_epoch_ns": 1789652292642149400,
+      "ready_epoch_ns": 1789652301293309400,
+      "generation_start_epoch_ns": 1789652293704136700,
+      "generation_end_epoch_ns": 1789652298251105800,
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260917-final-cert-retry-01\\STAR7_FORMAL-3-930101_00001_.mp4",
+        "sha256": "5CE379BC70AAE9E2EC906FAA6494F5D714D4048BFBD1FAB46A31B207DE2C8BB9",
+        "bytes": 3303,
+        "frame_means": [
+          204.09700520833334,
+          175.75846354166666,
+          158.54752604166666,
+          145.09147135416666,
+          136.8701171875
+        ],
+        "frame_ranges": [
+          34,
+          46,
+          48,
+          45,
+          43
+        ],
+        "frame_stds": [
+          8.499408152800388,
+          11.514777359519169,
+          12.085188361531443,
+          11.798813948678541,
+          11.3640798194362
+        ],
+        "finite_pixels": true,
+        "non_black": true,
+        "qc_pass": true,
+        "flat_content": false
+      },
+      "task_completed": true
+    },
+    {
+      "phase": "STAR7_FORMAL",
+      "index": 4,
+      "seed": 930102,
+      "loader": "MiniMaxH3FP16LoaderStar7",
+      "prompt_id": "5afb75d0-0979-4974-9dc8-5d2fd012e801",
+      "total_s": 6.604351400004816,
+      "generation_cuda_s": 2.279043212890625,
+      "generation_wall_s": 2.2826136000076076,
+      "path_s": 4.325308187114191,
+      "result_ready": "history_completed_and_mp4_exists",
+      "submit_epoch_ns": 1789652301455991000,
+      "ready_epoch_ns": 1789652308060046000,
+      "generation_start_epoch_ns": 1789652303025352700,
+      "generation_end_epoch_ns": 1789652305308142000,
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260917-final-cert-retry-01\\STAR7_FORMAL-4-930102_00001_.mp4",
+        "sha256": "DA766FA94852F3667F0E4AF6372ACB7B9B0030E92EF610F7C28091288D7521E2",
+        "bytes": 3539,
+        "frame_means": [
+          232.87955729166666,
+          218.89095052083334,
+          209.2333984375,
+          175.50911458333334,
+          167.8759765625
+        ],
+        "frame_ranges": [
+          117,
+          127,
+          130,
+          182,
+          186
+        ],
+        "frame_stds": [
+          18.87958205453753,
+          26.506205471994303,
+          29.85126788664438,
+          45.11078573734907,
+          47.01006148908746
+        ],
+        "finite_pixels": true,
+        "non_black": true,
+        "qc_pass": true,
+        "flat_content": false
+      },
+      "task_completed": true
+    },
+    {
+      "phase": "STAR7_FORMAL",
+      "index": 5,
+      "seed": 930103,
+      "loader": "MiniMaxH3FP16LoaderStar7",
+      "prompt_id": "85be2b57-e1ec-4ff0-aa39-69ab9e04b364",
+      "total_s": 6.137897799999337,
+      "generation_cuda_s": 2.255084716796875,
+      "generation_wall_s": 2.2581440999929328,
+      "path_s": 3.882813083202462,
+      "result_ready": "history_completed_and_mp4_exists",
+      "submit_epoch_ns": 1789652308525376500,
+      "ready_epoch_ns": 1789652314663071700,
+      "generation_start_epoch_ns": 1789652309436265200,
+      "generation_end_epoch_ns": 1789652311694319600,
+      "qc": {
+        "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260917-final-cert-retry-01\\STAR7_FORMAL-5-930103_00001_.mp4",
+        "sha256": "F26429ECAAFEE7ED05E22DC36693148FB38E3237F4582DB9E128AA3F944F446D",
+        "bytes": 3284,
+        "frame_means": [
+          254,
+          223.92740885416666,
+          202.7666015625,
+          197.42643229166666,
+          193.20377604166666
+        ],
+        "frame_ranges": [
+          3,
+          26,
+          40,
+          46,
+          50
+        ],
+        "frame_stds": [
+          1.4142135623730951,
+          8.488787261522152,
+          13.83700754402986,
+          15.095651770480977,
+          16.335337185067278
+        ],
+        "finite_pixels": true,
+        "non_black": true,
+        "qc_pass": false,
+        "flat_content": false
+      },
+      "task_completed": true
+    }
+  ],
+  "formal_unrun_seeds": [
+    930104,
+    930105,
+    930106,
+    930107,
+    930108,
+    930109
+  ],
+  "reference_qc": {
+    "phase": "REFERENCE_QC",
+    "index": 6,
+    "seed": 930103,
+    "loader": "REFERENCE_UNETLoader",
+    "prompt_id": "1bc5c9bc-9c44-42ee-8058-3bb4bfac003a",
+    "total_s": 162.39105700000073,
+    "generation_cuda_s": 72.7251875,
+    "generation_wall_s": 72.74183850000554,
+    "path_s": 89.66586950000072,
+    "result_ready": "history_completed_and_mp4_exists",
+    "submit_epoch_ns": 1789652501583766800,
+    "ready_epoch_ns": 1789652663975174100,
+    "generation_start_epoch_ns": 1789652572598594300,
+    "generation_end_epoch_ns": 1789652645340314000,
+    "qc": {
+      "file": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260917-final-cert-retry-01\\REFERENCE_QC-6-930103_00001_.mp4",
+      "sha256": "7B9D056A87F510C23BD253FA23BE2FB5A489CEF5C1B81BC115366A00DB33227F",
+      "bytes": 3314,
+      "frame_means": [
+        251.66438802083334,
+        221.79069010416666,
+        198.4697265625,
+        192.02506510416666,
+        185.724609375
+      ],
+      "frame_ranges": [
+        9,
+        18,
+        29,
+        39,
+        50
+      ],
+      "frame_stds": [
+        2.879241891587705,
+        4.592878805463221,
+        8.245247695530354,
+        10.393981600493053,
+        12.650075905714115
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "qc_pass": true,
+      "flat_content": false
+    },
+    "task_completed": true
+  },
+  "backup_seeds_used": [],
+  "seed_replacements": [],
+  "gpu_runs_executed": 7,
+  "gpu_runs_cap": 16,
+  "valid_formal_runs": 3,
+  "formal_target": 10,
+  "formal_qc_pass": 3,
+  "formal_qc_target": 10,
+  "partial_valid_3_descriptive_only": {
+    "generation_s": {
+      "p50": 3.396941650390625,
+      "p95": 4.427458129882812,
+      "min": 2.279043212890625,
+      "max": 4.5419599609375
+    },
+    "path_s": {
+      "p50": 4.109417139065219,
+      "p95": 4.303719082309295,
+      "min": 3.4926465496163583,
+      "max": 4.325308187114191
+    },
+    "total_s": {
+      "p50": 6.889588200006983,
+      "p95": 8.475198210003146,
+      "min": 6.604351400004816,
+      "max": 8.651377100002719
+    }
+  },
+  "certified_10_run_metrics": null,
+  "stability_certification": "FAIL_INCOMPLETE",
+  "NO_CRASH": "YES",
+  "NO_AUTO_RETRY": "YES",
+  "SEED_INVALID": "NO",
+  "STAR7_QUALITY_FAIL": "YES",
+  "FINAL_CERTIFICATION": "FAIL",
+  "H3_P0_GENERATION_99": "NO",
+  "H3_P0_PATH_99": "NO",
+  "FINAL_99": "NO",
+  "FREEZE": "NO",
+  "STOP": "YES",
+  "RETURN_TO_GPT": "YES",
+  "evidence_dir": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-final-cert-retry-01",
+  "sampler_source_restored": true,
+  "sampler_sha256": "2850B400E0C07DDB73429F35E5DA3DE01952E7EE58F4C050124EA948CBDA53AE",
+  "remote_verify": "PENDING"
+}
