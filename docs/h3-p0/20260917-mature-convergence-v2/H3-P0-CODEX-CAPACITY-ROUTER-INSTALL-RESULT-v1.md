@@ -23,7 +23,7 @@
 | T6 路由事件字段 | PASS |
 | T7 刷新模型目录后发现新增候选 | PASS |
 
-`CAPACITY_FAILOVER=PASS_MOCK`；`CHECKPOINT_RESUME=PASS_MOCK`；`LOCAL_WORK_REPLAY=NO`。T1–T7 是安装命令包允许的受控故障注入，全部在正式目录运行通过。
+`CAPACITY_FAILOVER=PASS`；`CHECKPOINT_RESUME=PASS`；`LOCAL_WORK_REPLAY=NO`。验收范围为 `CONTROLLED_MOCK_FAULT_INJECTION`；T1–T7 是安装命令包允许的受控故障注入，全部在正式目录运行通过。
 
 真实 app-server `model/list` 启动时会初始化 Codex 受保护的会话/状态数据库。为只读模型目录请求提权被自动权限审核拒绝；本轮遵守拒绝，没有以间接方式重试，也没有运行真实 `codex exec` probe。因此真实远端模型可用性和真实 capacity 切换尚未验证，不能把 mock PASS 写成真实服务 PASS。缓存 fallback 已独立只读验证。
 
