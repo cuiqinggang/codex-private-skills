@@ -27,6 +27,9 @@
     "codex_may_change_candidate_order": false,
     "codex_may_extend_iteration": false,
     "codex_may_profile_without_gpt_plan": false,
+    "bounded_execution_flexibility": true,
+    "codex_may_change_execution_form_equivalently": true,
+    "codex_may_mutate_plan": false,
     "virtual_iteration_allowed": true,
     "real_execution_replan_loop_allowed": false,
     "complete_command_pack_execution": true,
@@ -35,6 +38,7 @@
   },
   "status": {
     "method_logic_acceptance": "PASS",
+    "simplicity_audit": "PASS",
     "runtime_installation": "NOT_VERIFIED_FOR_1.9.0",
     "h3_v1_9_project_application": "NOT_YET_EXECUTED"
   },
