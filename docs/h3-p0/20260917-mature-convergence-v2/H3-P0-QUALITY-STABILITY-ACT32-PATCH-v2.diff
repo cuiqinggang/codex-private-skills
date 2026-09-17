@@ -1,0 +1,61 @@
+--- a/custom_nodes/minimax-h3-fp16-exact-star7/nodes.py
++++ b/custom_nodes/minimax-h3-fp16-exact-star7/nodes.py
+@@ -25,6 +25,7 @@
+ TE_BOUNDARY_WRAPPER_KEY = "star7_minimax_h3_fp16_commercial_te_boundary"
+ K_OUT_PROJ = 64.0
+ K_FC2 = 256.0
++logging.info('[Star7 H3 ACT32] Temporary candidate active')
+ 
+ _te_logged_runtime = ContextVar("star7_h3_fp16_te_logged_runtime", default=None)
+ 
+@@ -144,7 +145,7 @@
+ 
+ def _out_proj_forward(original_forward):
+     def forward(self, tensor):
+-        scaled = (tensor / K_OUT_PROJ).to(torch.float16)
++        scaled = tensor.to(torch.float32) / K_OUT_PROJ
+         return original_forward(scaled).to(torch.float32).mul_(K_OUT_PROJ)
+ 
+     return forward
+@@ -152,13 +153,10 @@
+ 
+ def _mlp_forward(original_forward):
+     def forward(self, tensor):
+-        if tensor.dtype != torch.float16:
+-            return original_forward(tensor)
+-
+         projected = self.fc1(tensor)
+         gate, up = projected.chunk(2, dim=-1)
+         activated = F.silu(gate.to(torch.float32)).mul_(up.to(torch.float32))
+-        scaled = (activated / K_FC2).to(torch.float16)
++        scaled = activated / K_FC2
+         return self.fc2(scaled).to(torch.float32).mul_(K_FC2)
+ 
+     return forward
+@@ -176,7 +174,7 @@
+ 
+         h = minimax_module._mod_scale_shift(
+             self.norm1(x), shift_msa, scale_msa, mod_segments
+-        ).to(torch.float16)
++        )
+         attention_fn = self.attn if attention is None else attention
+         attention_output = attention_fn(
+             h,
+@@ -189,7 +187,7 @@
+ 
+         h = minimax_module._mod_scale_shift(
+             self.norm2(x), shift_mlp, scale_mlp, mod_segments
+-        ).to(torch.float16)
++        )
+         mlp = self.mlp(h)
+         return minimax_module._mod_gate(
+             x, gate_mlp, mlp.to(torch.float32), mod_segments
+@@ -352,7 +350,7 @@
+     weight_patches = len(getattr(patched, "patches", {}))
+     backend = _format_quantization(quant_formats) if is_quantized else "dense-fp16"
+     logging.info(
+-        "[Star7 H3 FP16] Enabled v%s | mode=%s | backend=%s | force-cast=%s | weight-patches=%d | blocks=%d",
++        "[Star7 H3 ACT32] Enabled v%s | mode=%s | backend=%s | force-cast=%s | weight-patches=%d | blocks=%d",
+         NODE_VERSION,
+         mode,
+         backend,

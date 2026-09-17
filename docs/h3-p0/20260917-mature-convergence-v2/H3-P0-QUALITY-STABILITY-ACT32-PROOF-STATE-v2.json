@@ -1,0 +1,86 @@
+{
+  "candidate": "STAR7_ACT32_INT8_CONVROT",
+  "act32_proof": "FAIL_QUALITY",
+  "gpu_runs_executed": 3,
+  "max_gpu_runs": 6,
+  "source_identity_gate": "PASS",
+  "source_sha256": {
+    "star7_before_and_after": "8F6D3EB42D5123A36A814F3EFE6910D499CDF618E190DE74F3BCA0D5935E232B",
+    "star7_candidate": "1C0A0D9B3FE514D172FE22909ED7F79C66F808D69644220AB1019CD708590AE6",
+    "comfyui_root_nodes_before_and_after": "5AB70A74109118256934B63675ED620A47BECB54343A77DAA66B4FE20A4D0EE7",
+    "minimax_model_before_and_after": "3267343A034C6DA91234D20FB63F74A0A439EFC4E468F473C9477D436B3BFC8A",
+    "samplers_restored": "2850B400E0C07DDB73429F35E5DA3DE01952E7EE58F4C050124EA948CBDA53AE"
+  },
+  "syntax_check": "PASS",
+  "startup_marker": "PASS",
+  "backend": "int8_tensorwise+convrot:200",
+  "force_cast_weights": false,
+  "weight_patches": 0,
+  "blocks": 50,
+  "backend_preserved": true,
+  "dense_weight_fallback_detected": false,
+  "dense_fallback_evidence_limit": "Inferred from backend/force-cast/weight-patches log and unchanged ComfyUI quantized path; no kernel trace by command restriction",
+  "warmups": [
+    {
+      "seed": 940098,
+      "history_complete": true,
+      "mp4_decode_32x32x5": true,
+      "total_s": 186.37543580000056,
+      "generation_cuda_s": 89.9951484375,
+      "path_s": 96.38028736250055,
+      "qc_pass": true,
+      "frame_ranges": [88, 90, 92, 80, 88],
+      "frame_stds": [32.583837700377174, 31.59444093268415, 30.23143143060378, 26.10236454918584, 29.234952354472792],
+      "mp4_sha256": "9D33049BC179CE885D885FBF57855F4D50285643836A75974AAE382010B03A3B"
+    },
+    {
+      "seed": 940099,
+      "history_complete": true,
+      "mp4_decode_32x32x5": true,
+      "total_s": 19.424469199992018,
+      "generation_cuda_s": 15.9498408203125,
+      "path_s": 3.474628379679517,
+      "qc_pass": false,
+      "frame_ranges": [6, 20, 29, 35, 34],
+      "frame_stds": [2.265666508203043, 3.399285104802852, 5.793601895126192, 7.748104225918539, 7.3772148355454155],
+      "mp4_sha256": "2B9DEA8F1B357C8663E810039501A28F2B695298777D00435C8C8A7C0C357AD2"
+    }
+  ],
+  "formal_runs": [
+    {
+      "seed": 930103,
+      "history_complete": true,
+      "mp4_decode_32x32x5": true,
+      "finite_pixels": true,
+      "non_black": true,
+      "total_s": 5.0536685999977635,
+      "generation_cuda_s": 2.093630126953125,
+      "path_s": 2.9600384730446385,
+      "qc_pass": false,
+      "failure": "frame 1 range=2 < 8 and std=0.7453559924999278 < 1.5",
+      "frame_ranges": [2, 28, 43, 48, 51],
+      "frame_stds": [0.7453559924999278, 8.842622964469232, 13.712372498801892, 14.527388882137393, 15.664654961065533],
+      "mp4_sha256": "EA7F3C1B3B99048FCD2E4A1C662E6E721617FB42638C93EEB82F44A16BECD65B"
+    }
+  ],
+  "unexecuted_formal_seeds": [920108, 930100, 930101],
+  "repair_status": {
+    "930103": "NO",
+    "920108": "NOT_TESTED",
+    "930100_remains_pass": "NOT_TESTED",
+    "930101_remains_pass": "NOT_TESTED"
+  },
+  "paired_total": {
+    "930103": {"baseline_s": 6.1379, "act32_s": 5.0536685999977635, "delta_s": -1.0842314000022366, "ratio": 0.8233546652760331, "percent_change": -17.66453347239669},
+    "930100": {"baseline_s": 6.8896, "act32_s": null, "delta_s": null, "ratio": null},
+    "930101": {"baseline_s": 8.6514, "act32_s": null, "delta_s": null, "ratio": null},
+    "paired_median": null,
+    "performance_proof": "NOT_EVALUATED_QUALITY_STOP"
+  },
+  "source_restored": true,
+  "samplers_restored": true,
+  "ready_for_final_quality_stability_certification": false,
+  "final_quality_stability_99": false,
+  "evidence_dir": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-act32-proof-v2-01",
+  "patch_file": "H3-P0-QUALITY-STABILITY-ACT32-PATCH-v2.diff"
+}
