@@ -1,0 +1,369 @@
+{
+  "status": {
+    "MRE_COMPLETE": "YES",
+    "FORMAL_VALID_RUNS": 3,
+    "FORMAL_QC_PASS": "3/3",
+    "SUMMARY_COMPLETE": "YES",
+    "SAMPLERS_RESTORED": "YES",
+    "NO_SECOND_H3_INSTANCE": "YES",
+    "REAL_STATE_REPORT_WRITTEN": "YES",
+    "NO_NEW_OPTIMIZATION": "YES",
+    "NO_STAR7_TEST": "YES",
+    "NO_VIRTUAL_99_EXECUTION": "YES",
+    "RETURN_TO_GPT": "YES"
+  },
+  "STATIC_FACTS": {
+    "task_contract": {
+      "mode": "T2VA",
+      "width": 32,
+      "height": 32,
+      "frames": 5,
+      "steps": 1,
+      "prompt": "static frame",
+      "sampler": "res_multistep",
+      "scheduler": "beta",
+      "input_audio": false,
+      "final_output": "REAL_MP4"
+    },
+    "fixed_configuration": {
+      "fast_disk": true,
+      "reserve_vram_gib": 1,
+      "disable_pinned_memory": true,
+      "port": 8194
+    },
+    "seeds": {
+      "cold": 910001,
+      "warmup": 910002,
+      "formal": [
+        910100,
+        910102,
+        910103
+      ]
+    },
+    "physical_reference_s": {
+      "generation": [
+        0.05,
+        0.12
+      ],
+      "path": [
+        0.18,
+        0.45
+      ],
+      "total": [
+        0.23,
+        0.57
+      ]
+    },
+    "runner_sha256": "EA3B3FB4FA70DFE05448B138E90FFDC6A22121033F936D764A8CD03A82B574E4",
+    "canonical_workflow_sha256": "89B6A40B13485A6633191F1350DB472556359CDB6407E5272C9ED109698FD0F5"
+  },
+  "LEGACY_PRIORS": {
+    "phase": "V3_RESERVE1",
+    "summary": {
+      "phase": "V3_RESERVE1",
+      "reserve_vram_gib": 1,
+      "pinned_memory": "disabled",
+      "percentile_method": "linear_interpolation_n_minus_1",
+      "valid_warm_runs": 3,
+      "generation_p50_s": 20.226025390625,
+      "generation_p95_s": 20.53385703125,
+      "path_p50_s": 17.970200653124397,
+      "path_p95_s": 18.00712352718653,
+      "total_p50_s": 38.04230809999899,
+      "total_p95_s": 38.48866588999935
+    },
+    "same_seed_runs": [
+      {
+        "seed": 910100,
+        "generation_cuda_s": 20.568060546875,
+        "path_s": 17.970200653124397,
+        "total_s": 38.5382611999994
+      },
+      {
+        "seed": 910102,
+        "generation_cuda_s": 20.03108203125,
+        "path_s": 18.01122606874899,
+        "total_s": 38.04230809999899
+      },
+      {
+        "seed": 910103,
+        "generation_cuda_s": 20.226025390625,
+        "path_s": 17.792972509375613,
+        "total_s": 38.01899790000061
+      }
+    ],
+    "source": "C:\\AI\\H3-P0-Acceptance\\fp-convergence\\20260916-run-01\\summary-V3_RESERVE1.json"
+  },
+  "NEW_MRE_OBSERVATIONS": {
+    "evidence_root": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-mre-01",
+    "preflight_json": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-mre-01\\preflight.json",
+    "runner_exit_code": 0,
+    "cold": {
+      "seed": 910001,
+      "total_s": 208.31393250000838,
+      "generation_cuda_s": 77.5218515625,
+      "generation_wall_s": 77.5381347000075,
+      "path_s": 130.7920809375084,
+      "result_ready": "history_completed_and_mp4_exists",
+      "mp4_path": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260917-mre-01\\cold-0-910001_00001_.mp4",
+      "mp4_sha256": "0633249141ED50B8A8C0F0006CD51BFA7C51A8D216E9E1377D190D0246C913ED",
+      "mp4_bytes": 3366,
+      "frame_means": [
+        115.61686197916667,
+        112.35514322916667,
+        113.38639322916667,
+        99.12630208333333,
+        118.8984375
+      ],
+      "frame_ranges": [
+        175,
+        154,
+        153,
+        148,
+        133
+      ],
+      "frame_stds": [
+        54.20095483232857,
+        44.91652246639604,
+        44.54160461207324,
+        42.013278355781864,
+        40.16361521504167
+      ],
+      "task_completed": true,
+      "qc_pass": true,
+      "raw_json": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-mre-01\\runs\\cold\\run-0-910001.json"
+    },
+    "warmup": {
+      "seed": 910002,
+      "total_s": 49.60592639999231,
+      "generation_cuda_s": 23.54545703125,
+      "generation_wall_s": 23.549549600007595,
+      "path_s": 26.060469368742314,
+      "result_ready": "history_completed_and_mp4_exists",
+      "mp4_path": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260917-mre-01\\warmup-1-910002_00001_.mp4",
+      "mp4_sha256": "8BE1A054288648FFAB1C207415931DA73350F94BB41AC08E19E5BA55E8A41F69",
+      "mp4_bytes": 3948,
+      "frame_means": [
+        124.9658203125,
+        118.76139322916667,
+        115.38802083333333,
+        99.67610677083333,
+        109.16927083333333
+      ],
+      "frame_ranges": [
+        255,
+        255,
+        241,
+        221,
+        229
+      ],
+      "frame_stds": [
+        49.124454682925446,
+        44.61178062412139,
+        39.03141045789801,
+        34.44116135934269,
+        36.826945998163794
+      ],
+      "task_completed": true,
+      "qc_pass": true,
+      "raw_json": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-mre-01\\runs\\warmup\\run-1-910002.json"
+    },
+    "formal": [
+      {
+        "seed": 910100,
+        "total_s": 54.81773599999724,
+        "generation_cuda_s": 24.467068359375,
+        "generation_wall_s": 24.468701300007524,
+        "path_s": 30.35066764062224,
+        "result_ready": "history_completed_and_mp4_exists",
+        "mp4_path": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260917-mre-01\\MRE_REAL_STATE_01-2-910100_00001_.mp4",
+        "mp4_sha256": "446D5DB75E726C12CC2CBD8790C97399331BFE9D20B50F3D8A4C98ECDF00BD31",
+        "mp4_bytes": 3358,
+        "frame_means": [
+          81.35481770833333,
+          80.86490885416667,
+          76.27897135416667,
+          68.58756510416667,
+          52.930989583333336
+        ],
+        "frame_ranges": [
+          168,
+          162,
+          161,
+          154,
+          132
+        ],
+        "frame_stds": [
+          66.70820625288233,
+          65.25689652943336,
+          61.12735361423221,
+          55.187076622181294,
+          42.39343782822675
+        ],
+        "task_completed": true,
+        "qc_pass": true,
+        "raw_json": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-mre-01\\runs\\MRE_REAL_STATE_01\\run-2-910100.json"
+      },
+      {
+        "seed": 910102,
+        "total_s": 60.366036699997494,
+        "generation_cuda_s": 30.1851328125,
+        "generation_wall_s": 30.18859109999903,
+        "path_s": 30.180903887497493,
+        "result_ready": "history_completed_and_mp4_exists",
+        "mp4_path": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260917-mre-01\\MRE_REAL_STATE_01-3-910102_00001_.mp4",
+        "mp4_sha256": "1A34A5C8DFA9F43B14C68201716DAFA88E0D23D78DB376EB78333AFD3A5DF9FB",
+        "mp4_bytes": 3471,
+        "frame_means": [
+          239.728515625,
+          194.92545572916666,
+          156.78125,
+          145.60221354166666,
+          142.939453125
+        ],
+        "frame_ranges": [
+          43,
+          55,
+          78,
+          87,
+          87
+        ],
+        "frame_stds": [
+          6.724430303066389,
+          9.834369362386834,
+          14.455987892133141,
+          16.889094277577513,
+          16.780723710334858
+        ],
+        "task_completed": true,
+        "qc_pass": true,
+        "raw_json": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-mre-01\\runs\\MRE_REAL_STATE_01\\run-3-910102.json"
+      },
+      {
+        "seed": 910103,
+        "total_s": 47.27969199999643,
+        "generation_cuda_s": 20.3167109375,
+        "generation_wall_s": 20.321628399993642,
+        "path_s": 26.96298106249643,
+        "result_ready": "history_completed_and_mp4_exists",
+        "mp4_path": "C:\\AI\\MiniMax-H3\\projects\\H3-05-xuejing-dukou\\07-RENDERS\\e-preflight-output\\H3-P0\\20260917-mre-01\\MRE_REAL_STATE_01-4-910103_00001_.mp4",
+        "mp4_sha256": "D2720B99217E5F78C781CBB9A0CDC3A25F7508F76FA71D418AC621EB58B850E3",
+        "mp4_bytes": 3302,
+        "frame_means": [
+          243.56510416666666,
+          239.5703125,
+          236.53092447916666,
+          235.642578125,
+          237.84114583333334
+        ],
+        "frame_ranges": [
+          29,
+          46,
+          47,
+          45,
+          38
+        ],
+        "frame_stds": [
+          8.562784726992811,
+          11.852237126481386,
+          13.273969354589907,
+          13.311638650504484,
+          11.446809723837047
+        ],
+        "task_completed": true,
+        "qc_pass": true,
+        "raw_json": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-mre-01\\runs\\MRE_REAL_STATE_01\\run-4-910103.json"
+      }
+    ],
+    "summary": {
+      "phase": "MRE_REAL_STATE_01",
+      "reserve_vram_gib": 1,
+      "pinned_memory": "disabled",
+      "percentile_method": "linear_interpolation_n_minus_1",
+      "valid_warm_runs": 3,
+      "generation_p50_s": 24.467068359375,
+      "generation_p95_s": 29.6133263671875,
+      "path_p50_s": 30.180903887497493,
+      "path_p95_s": 30.333691265309767,
+      "total_p50_s": 54.81773599999724,
+      "total_p95_s": 59.81120662999747
+    },
+    "paired_drift_s": [
+      {
+        "seed": 910100,
+        "generation_delta_s": 3.899007812499999,
+        "path_delta_s": 12.380466987497844,
+        "total_delta_s": 16.279474799997843
+      },
+      {
+        "seed": 910102,
+        "generation_delta_s": 10.15405078125,
+        "path_delta_s": 12.169677818748504,
+        "total_delta_s": 22.323728599998503
+      },
+      {
+        "seed": 910103,
+        "generation_delta_s": 0.09068554687500097,
+        "path_delta_s": 9.170008553120816,
+        "total_delta_s": 9.260694099995817
+      }
+    ],
+    "percentile_drift_s": {
+      "generation_p50_s": 4.241042968749998,
+      "generation_p95_s": 9.0794693359375,
+      "path_p50_s": 12.210703234373096,
+      "path_p95_s": 12.326567738123238,
+      "total_p50_s": 16.77542789999825,
+      "total_p95_s": 21.322540739998118
+    },
+    "source_restore": {
+      "sha_before": "2850B400E0C07DDB73429F35E5DA3DE01952E7EE58F4C050124EA948CBDA53AE",
+      "sha_after": "2850B400E0C07DDB73429F35E5DA3DE01952E7EE58F4C050124EA948CBDA53AE",
+      "restored": true
+    },
+    "formal_qc_pass": "3/3",
+    "all_five_mp4_sha_reverified": true,
+    "postrun_8194_8195_listeners": false
+  },
+  "CONFLICTS": [
+    {
+      "fact": "相同合同、启动参数及已记录软硬件版本下，本轮正式计时比旧 V3 慢。",
+      "total_p50_drift_s": 16.77542789999825,
+      "causal_explanation": "未确定；本轮没有做新的性能剖析。"
+    },
+    {
+      "fact": "三个相同 seed 的帧均值、范围和标准差与旧 V3 一致，MP4 SHA256 则不同。",
+      "limit": "帧统计一致不等于逐像素相同。"
+    }
+  ],
+  "REAL_STATE_FACTS": {
+    "gpu_snapshot": "NVIDIA GeForce RTX 2080 Ti, 22528 MiB, 21007 MiB, 591.74",
+    "python": "3.11.15 (main, May 10 2026, 19:31:25) [MSC v.1944 64 bit (AMD64)]",
+    "torch": "2.9.1+cu130",
+    "cuda": "13.0",
+    "comfyui_commit": "8a33128f2f8c5585c57486c07de481241e70a39c",
+    "comfy_kitchen": "0.2.31",
+    "comfy_aimdo": "0.4.15",
+    "model_paths_and_sizes": [
+      {
+        "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\diffusion_models\\minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+        "bytes": 20970379616
+      },
+      {
+        "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\text_encoders\\qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "bytes": 15687142551
+      },
+      {
+        "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\vae\\minimax_h3_video_vae_fp16.safetensors",
+        "bytes": 5207808496
+      }
+    ],
+    "samplers_restored_sha256": "2850B400E0C07DDB73429F35E5DA3DE01952E7EE58F4C050124EA948CBDA53AE",
+    "no_second_h3_instance": true
+  },
+  "UNKNOWN_REMAINDER": [
+    "性能漂移原因与未归属等待时间。",
+    "实际数据传输量；本轮未做 profiler。",
+    "T_MACHINE_STAR_REAL 由后续 GPT 使用本轮事实校准，本轮不修订。"
+  ]
+}
