@@ -1,0 +1,71 @@
+{
+  "PROJECT_ID": "H3-P0",
+  "STAGE": "E2P_W4A8_COMPATIBILITY_PREFLIGHT",
+  "METHOD_SKILL_ID": "first-principles-physical-limit-convergence",
+  "METHOD_VERSION": "1.8.0",
+  "REMOTE_PROJECT_HEAD_BEFORE": "13f4ab3d869bac6a3f88e160ba31201b2e1571d7",
+  "READ_ONLY": "YES",
+  "GPU_RUNS_ALLOWED": 0,
+  "GPU_RUNS_EXECUTED": 0,
+  "COMFY_KITCHEN_VERSION": "0.2.31",
+  "COMFY_KITCHEN_PACKAGE_PATH": "C:\\AI\\MiniMax-H3\\.venv\\Lib\\site-packages\\comfy_kitchen",
+  "COMFY_KITCHEN_BUILD_COMMIT": "UNKNOWN",
+  "TORCH_VERSION": "2.9.1+cu130",
+  "CUDA_RUNTIME": "13.0 (Torch build)",
+  "COMFYUI_COMMIT": "8a33128f2f8c5585c57486c07de481241e70a39c",
+  "STAR7_VERSION": "2.0.14",
+  "STAR7_COMMIT": "dc8ea63b51439ffd767eead53faaed23b550c504",
+  "ASYM_W4A8_LAYOUT_PRESENT": "YES",
+  "MIN_SM_VERSION": [
+    8,
+    0
+  ],
+  "SM75_BEHAVIOR": "FALLBACK_SUPPORTED",
+  "SM75_FALLBACK": "CUDA/Triton W4A8 linear require SM80; registry selects eager W4A8 linear without SM minimum; static source conclusion only",
+  "SM75_W4A8_END_TO_END_EXECUTED": "NO",
+  "STAR7_PROVIDES_W4A8_KERNEL": "NO",
+  "STAR7_CAN_PRESERVE_W4A8_METADATA": "YES",
+  "STAR7_ALONE_MAKES_SM75_W4A8_EXECUTABLE": "NO",
+  "STAR7_W4A8_END_TO_END_COMPATIBILITY": "UNKNOWN",
+  "SAME_GPU": "YES",
+  "SAME_OS": "UNKNOWN",
+  "SAME_COMFY_KITCHEN_VERSION": "UNKNOWN",
+  "SAME_W4A8_MODEL_FORMAT": "UNKNOWN",
+  "SAME_LOADER_PATH": "NO",
+  "LOCAL_W4A8_FILE_PRESENT": "NO",
+  "LOCAL_W4A8_FILE_SIZE": "NOT_APPLICABLE",
+  "EXPECTED_FILENAME": "minimax_h3_fl2va_pruned_w4a8_mixed.safetensors",
+  "EXPECTED_REMOTE_BYTES": 12540858008,
+  "EXPECTED_REMOTE_SHA256": "01aa7b92c007c599890461c325f9b7e3c96fb06c36f242f95b62f7f20e538dec",
+  "W4A8_CANDIDATE_MATURE": "NO",
+  "STATUS": "COMPATIBILITY_INCONCLUSIVE",
+  "NEXT_ACTION": "STOP_RETURN_TO_GPT",
+  "SOURCE_MODIFICATION": "NO",
+  "ENVIRONMENT_MODIFICATION": "NO",
+  "MODEL_DOWNLOAD": "NO",
+  "SOURCES": {
+    "local_comfy_kitchen": [
+      "tensor/w4a8_int8.py:93-125,322-333",
+      "tensor/base.py:125-132",
+      "backends/cuda/__init__.py:3328-3395",
+      "backends/triton/__init__.py:252-267",
+      "backends/eager/__init__.py:387-414",
+      "backends/eager/w4a8_int8.py:509-560",
+      "registry.py:217-270"
+    ],
+    "local_comfyui": [
+      "comfy/quant_ops.py:276-280",
+      "comfy/ops.py:1142-1229,1360-1419,1529-1539,1651-1667"
+    ],
+    "local_star7": [
+      "nodes.py:21,246-260,298-305,387-427",
+      "README.md:84"
+    ],
+    "external": [
+      "https://github.com/IvenKooLab/minimax-h3-turing",
+      "https://github.com/IvenKooLab/minimax-h3-turing/blob/main/docs/en/01-hardware-limits.md",
+      "https://github.com/IvenKooLab/minimax-h3-turing/blob/main/docs/en/05-workflows.md",
+      "https://raw.githubusercontent.com/IvenKooLab/minimax-h3-turing/main/workflows/h3_w4a8_t2v_compat_api.json"
+    ]
+  }
+}
