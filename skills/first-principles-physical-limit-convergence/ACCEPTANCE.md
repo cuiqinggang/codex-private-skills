@@ -29,6 +29,18 @@ Codex只做确定性执行 = YES
 未覆盖异常才返回GPT = YES
 ```
 
+## Codex有限灵活性
+
+```text
+有限执行灵活性 = PASS
+执行形式允许等价调整 = PASS
+方案内容由Codex自行调整 = NO
+```
+
+允许：等价命令写法、脚本封装、路径修正、既定任务恢复。
+
+禁止：换模型、换候选、换版本、改参数、改运行次数、改顺序、改阈值、新增性能剖析或新研究路线。
+
 ## 独立新路线
 
 ```text
@@ -52,12 +64,16 @@ MRE最小真实执行 = PASS
 
 v1.9.0 不改变第一性原理、MRE、成熟方案、虚拟99、质量门禁或99定义。
 
-只纠正一个执行解释：
+只纠正两个执行解释：
 
-> 完整命令包既然已经由 GPT 根据虚拟99一次设计完成，Codex 就应完整执行到底，不应把正常中间结果拆成一次次返回 GPT 的循环。
+1. 完整命令包既然已经由 GPT 根据虚拟99一次设计完成，Codex 就应完整执行到底，不应把正常中间结果拆成一次次返回 GPT 的循环；
+2. Codex 可以灵活调整执行形式，但绝不能自行改变方案内容。
 
 ```text
 METHOD_LOGIC_ACCEPTANCE=PASS
+SIMPLICITY_AUDIT=PASS
+BOUNDED_EXECUTION_FLEXIBILITY=PASS
+PLAN_MUTATION_BY_CODEX=NO
 RUNTIME_INSTALLATION_1_9_0=NOT_VERIFIED
 H3_FINAL_99=NO
 ```
