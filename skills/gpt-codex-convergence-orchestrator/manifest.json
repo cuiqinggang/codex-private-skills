@@ -1,0 +1,16 @@
+{
+  "skill_id": "gpt-codex-convergence-orchestrator",
+  "version": "1.1.0",
+  "display_name": "GPT-Codex 自动收敛编排器",
+  "architecture": "CODEX_FIRST_NUMBERED_GITHUB_BUS",
+  "loop_owner": "CODEX",
+  "planner": "GPT",
+  "shared_truth": "GitHub",
+  "browser_role": "WAKEUP_ACK_ONLY",
+  "capacity_router": "codex-capacity-aware-model-router",
+  "status": {
+    "design_acceptance": "PASS",
+    "shadow_pilot_v2": "NOT_YET_EXECUTED",
+    "manual_copy_paste_target": "ZERO"
+  }
+}
