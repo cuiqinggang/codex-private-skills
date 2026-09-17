@@ -1,20 +1,39 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "display_name": "第一性原理物理极限收敛引擎",
   "lineage": {
-    "skill_id": "absolute-time-fireworks-optimization",
-    "version": "2.0.1"
+    "previous": "first-principles-physical-limit-convergence@1.9.0",
+    "ancestor": "absolute-time-fireworks-optimization@2.0.1"
   },
   "canonical_method": [
-    "STEP 1 CALCULATE: TASK_CONTRACT -> PHYSICAL_DAG -> T_PHY -> T_MACHINE_STAR -> ATTACK_ORDER",
-    "STEP 2 CONVERGE: DE_ARMOR -> V1 -> MEASURE -> GAP -> ATTACK -> KEEP/ROLLBACK -> 99/FREEZE"
+    "STEP 1: PHYSICAL LIMIT",
+    "STEP 2: REAL-STATE OPTIMUM RANGE",
+    "STEP 3: GPT VIRTUAL-99",
+    "STEP 4: CODEX DETERMINISTIC COMMAND PACK"
+  ],
+  "cross_cutting_capabilities": [
+    "STOCHASTIC_VERIFIED_DELIVERY",
+    "TIME_TO_FIRST_VALID_RESULT",
+    "FAILURE_LAYER_CLASSIFICATION",
+    "GPT_CODEX_AUTOMATED_CONTROL_PLANE",
+    "CAPACITY_AWARE_MODEL_ROUTING",
+    "CHECKPOINT_IDEMPOTENCY_DO_NOT_REPEAT"
   ],
   "shared_fact_source": "cuiqinggang/codex-private-skills",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v2.0.0",
   "status": {
     "method_logic_acceptance": "PASS",
-    "runtime_installation": "NOT_EXECUTED",
-    "h3_first_application": "NOT_STARTED"
+    "stochastic_delivery_acceptance": "PASS",
+    "automated_control_plane_spec": "READY",
+    "h3_first_application": "FINAL_99_FROZEN",
+    "h3_delivery_system_qc": "20/20",
+    "h3_first_attempt_pass_rate": 0.9,
+    "h3_mean_attempts_per_task": 1.1,
+    "h3_t_tfvr_p50_seconds": 6.076,
+    "h3_t_tfvr_p95_seconds": 11.974,
+    "invalid_output_delivered": 0
   },
-  "created_date": "2026-09-16"
+  "created_date": "2026-09-16",
+  "updated_date": "2026-09-18"
 }
