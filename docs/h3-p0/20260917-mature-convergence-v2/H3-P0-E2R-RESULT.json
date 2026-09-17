@@ -1,0 +1,225 @@
+{
+  "PROJECT_ID": "H3-P0",
+  "STAGE": "E2R_READ_ONLY_TAIL_ATTRIBUTION",
+  "METHOD_SKILL_ID": "first-principles-physical-limit-convergence",
+  "METHOD_VERSION": "1.8.0",
+  "CANONICAL_BRANCH": "codex/first-principles-physical-limit-convergence-v1.8.0",
+  "REMOTE_PROJECT_HEAD_BEFORE": "64f5b9aa07621e78bae613e39f75343caeb0274b",
+  "NO_FREE_EXPLORATION": "YES",
+  "GPU_RUNS_ALLOWED": 0,
+  "GPU_RUNS_EXECUTED": 0,
+  "NEW_INSTRUMENTATION": "NO",
+  "SOURCE_MODIFICATION": "NO",
+  "EVIDENCE_ROOT": "C:\\AI\\H3-P0-Acceptance\\mature-convergence-v2\\20260917-e0-e1-01",
+  "EVIDENCE_SHA256": {
+    "candidate_server_log_sha256": "E7634124D44169343D24847979332589131262FCA8F45110988C3D43ECF73817",
+    "control_server_log_sha256": "508AA9E89CD94958143482BC15159BB36F96FFFB7E5FD42BDB51A1B382215706",
+    "formal_run_json_sha256": {
+      "910100": "9339C6F406E651628CCFD07E66E4EF05FF1114E3C56DCCA5DBC4904E58F711BA",
+      "910102": "E9EBA4F525334A2EB15534F1DE85CEA184A992B255A6175D5B07D2ECFE55A9DE",
+      "910103": "62B444E68A7DADEB08D869926AB8B5E150305AD34ABA4652D52F9725B48B225E"
+    }
+  },
+  "TIMING_SOURCE": "Existing E1 run JSON authoritative CUDA Event Generation, Total, Path; existing submit/gen-start/gen-end/ready epoch markers only",
+  "ATTRIBUTION_MATRIX": [
+    {
+      "seed": 910100,
+      "generation_cuda_s": 11.518501953125,
+      "path_s": 3.430374846876017,
+      "total_s": 14.948876800001017,
+      "pre_generation_existing_markers_s": 0.7129893,
+      "generation_wall_existing_markers_s": 11.5219412,
+      "post_generation_existing_markers_s": 2.7143357,
+      "path_stage_events_count": 0,
+      "candidate_log_lines": [
+        75,
+        76,
+        77,
+        79,
+        80,
+        81
+      ],
+      "h3_dynamic_vram_preparation_observed": true,
+      "zero_models_unloaded_line_observed": true,
+      "h3_residency_reload_cause": "UNKNOWN",
+      "qwen_conditioning_rerun_or_cache": "UNKNOWN",
+      "vae_prepare_after_generation_observed": true,
+      "vae_decode_duration": "UNKNOWN"
+    },
+    {
+      "seed": 910102,
+      "generation_cuda_s": 3.1019296875,
+      "path_s": 3.3823238125061614,
+      "total_s": 6.484253500006162,
+      "pre_generation_existing_markers_s": 0.7337764,
+      "generation_wall_existing_markers_s": 3.1044378,
+      "post_generation_existing_markers_s": 2.6455571,
+      "path_stage_events_count": 0,
+      "candidate_log_lines": [
+        82,
+        83,
+        84,
+        86,
+        87,
+        88,
+        89
+      ],
+      "h3_dynamic_vram_preparation_observed": true,
+      "zero_models_unloaded_line_observed": true,
+      "h3_residency_reload_cause": "UNKNOWN",
+      "qwen_conditioning_rerun_or_cache": "UNKNOWN",
+      "vae_prepare_after_generation_observed": true,
+      "vae_decode_duration": "UNKNOWN"
+    },
+    {
+      "seed": 910103,
+      "generation_cuda_s": 2.469808837890625,
+      "path_s": 8.091943862108863,
+      "total_s": 10.561752699999488,
+      "pre_generation_existing_markers_s": 5.0662294,
+      "generation_wall_existing_markers_s": 2.4753912,
+      "post_generation_existing_markers_s": 3.0195978,
+      "path_stage_events_count": 0,
+      "candidate_log_lines": [
+        90,
+        91,
+        92,
+        94,
+        95,
+        96
+      ],
+      "h3_dynamic_vram_preparation_observed": true,
+      "zero_models_unloaded_line_observed": true,
+      "h3_residency_reload_cause": "UNKNOWN",
+      "qwen_conditioning_rerun_or_cache": "UNKNOWN",
+      "vae_prepare_after_generation_observed": true,
+      "vae_decode_duration": "UNKNOWN"
+    }
+  ],
+  "QUESTION_910100_GENERATION_TAIL": {
+    "status": "MEASURED_TAIL_MECHANISM_UNKNOWN",
+    "generation_excess_over_910102_s": 8.416572265625,
+    "share_of_910100_total_percent": 56.30237226668714,
+    "observed": "H3 dynamic VRAM preparation and 0 models unloaded before Generation, same pattern in all three formal runs; model initializing progress matches 11.52s Generation",
+    "h3_load_offload_residency_reload_causal_proof": "UNKNOWN",
+    "evidence_log_lines": [
+      75,
+      76,
+      77,
+      79,
+      82,
+      83,
+      84,
+      86,
+      90,
+      91,
+      92,
+      94
+    ]
+  },
+  "QUESTION_910103_PATH_TAIL": {
+    "status": "MEASURED_PRE_GENERATION_TAIL_MECHANISM_UNKNOWN",
+    "path_excess_over_910102_s": 4.709620049602702,
+    "pre_generation_excess_over_910102_s": 4.332453,
+    "pre_generation_share_of_path_excess_percent": 91.99156098304535,
+    "observed": "Additional Path time lies mostly before Generation start. VAE preparation log follows the Generation timer in all formal runs; no per-event durations.",
+    "qwen_conditioning_cause": "UNKNOWN",
+    "h3_to_vae_transition_cause": "UNKNOWN",
+    "vae_decode_cause": "UNKNOWN",
+    "other_existing_event_cause": "UNKNOWN",
+    "evidence_log_lines": [
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      94,
+      95,
+      96
+    ]
+  },
+  "QUESTION_910102_FAST_PATH": {
+    "status": "MEASURED_FAST_PATH",
+    "pre_generation_s": 0.7337764,
+    "generation_cuda_s": 3.1019296875,
+    "post_generation_s": 2.6455571,
+    "difference_from_910100": "Generation 8.417s lower; pre/post intervals similar",
+    "difference_from_910103": "Pre-generation 4.332s lower; Generation 0.632s higher",
+    "causal_reason": "UNKNOWN",
+    "evidence_log_lines": [
+      82,
+      83,
+      84,
+      86,
+      87,
+      88,
+      89
+    ]
+  },
+  "QUESTION_CONDITIONING_CACHE": {
+    "status": "UNKNOWN",
+    "observed": "Qwen/MiniMaxH3TE load request appears during warmup only (log lines 56-57); no formal TE load request, explicit conditioning execution trace, or cache HIT marker",
+    "reexecuted": "UNKNOWN",
+    "already_cached": "UNKNOWN"
+  },
+  "QUESTION_10_PERCENT_RESIDUAL": {
+    "measured_material_intervals": [
+      {
+        "name": "910100 Generation excess versus 910102",
+        "seconds": 8.416572265625,
+        "percent_of_same_seed_total": 56.30237226668714,
+        "decision": "MATERIAL"
+      },
+      {
+        "name": "910103 pre-Generation excess versus 910102",
+        "seconds": 4.332453,
+        "percent_of_same_seed_total": 41.02020870077946,
+        "decision": "MATERIAL"
+      }
+    ],
+    "mechanism_specific_confirmed_10_percent_block": "UNKNOWN",
+    "note": "Existing timing proves material intervals, not a unique load/cache/VAE/host-sync cause"
+  },
+  "RESIDUAL_CANDIDATE_DECISIONS": {
+    "conditioning_cache": {
+      "decision": "UNKNOWN_NEEDS_FUTURE_BOUNDED_TEST",
+      "reason": "No explicit conditioning execution trace or cache HIT marker"
+    },
+    "int8_convrot_text_encoder": {
+      "decision": "UNKNOWN_NEEDS_FUTURE_BOUNDED_TEST",
+      "reason": "Formal TE rerun and material Path contribution unproven"
+    },
+    "star7_era_residency_policy": {
+      "decision": "UNKNOWN_NEEDS_FUTURE_BOUNDED_TEST",
+      "reason": "Dynamic VRAM preparation occurs in all formal runs; no differential residency event timing"
+    },
+    "minimal_host_sync_patch": {
+      "decision": "UNKNOWN_NEEDS_FUTURE_BOUNDED_TEST",
+      "reason": "Generation tail measured, host sync contribution unproven"
+    },
+    "int8_convrot_vae": {
+      "decision": "HIGH_RISK_DEFER",
+      "reason": "Carried from Post-E1 state; E2R adds no VAE causality proof"
+    },
+    "w4a8_diffusion": {
+      "decision": "UNSUPPORTED_ON_CURRENT_HW",
+      "reason": "Carried from Post-E1 state; E2R does not retest"
+    }
+  },
+  "NEXT_GPU_CANDIDATE_MATURE": "NO",
+  "ATTRIBUTION_INCONCLUSIVE": "YES",
+  "QC": {
+    "no_new_gpu_prompt": "PASS",
+    "no_evidence_file_modification": "PASS_BY_READ_ONLY_OPERATIONS_AND_RECHECK",
+    "no_new_instrumentation": "PASS",
+    "claims_traceable_to_existing_evidence": "PASS",
+    "existing_stage_event_arrays": "EMPTY_FOR_ALL_THREE_FORMAL"
+  },
+  "ROLLBACK": "NOT_APPLICABLE_NO_RUNTIME_CHANGE",
+  "REMOTE_COMMIT": "PENDING_FIRST_PUSH",
+  "REMOTE_VERIFY": "PENDING_FIRST_PUSH",
+  "SHARED_FACT_CONFIRMED": "NO_UNTIL_REMOTE_VERIFY",
+  "NEXT_ACTION": "RETURN_TO_GPT"
+}
