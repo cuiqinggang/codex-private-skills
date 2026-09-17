@@ -1,16 +1,17 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 在固定任务和硬约束下，以时间为唯一优化目标；先冻结 ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界），计算 T_PHY（物理极限）和 T_MACHINE_STAR（当前有效硬件 + 最佳成熟软件栈下的稳定理论极限），再从去重甲 V1 开始按最大绝对 Gap（差距）迭代，并在 99 前强制通过 Software Frontier Gate（软件前沿门禁）与当前硬件边界内的 Hardware Topology Gate（硬件拓扑门禁）。
+description: 在固定任务与硬约束下，以时间为主优化目标；先用第一性原理计算物理边界，再用极简真实运行校准真实执行态，优先收割世界成熟方案，只对成熟方案无法覆盖的最大剩余 Gap 做有数据支撑的定向攻击，并按生命周期 ROI 决定何时停止。
 metadata:
-  version: "1.1.0"
-  short-description: 第一性原理物理极限收敛引擎·软件/硬件边界版
-  lineage: first-principles-physical-limit-convergence@1.0.0 <- absolute-time-fireworks-optimization@2.0.1
+  version: "1.3.0"
+  short-description: 第一性原理物理极限收敛引擎·真实态/成熟收割/ROI版
+  lineage: first-principles-physical-limit-convergence@1.2.0 <- @1.1.0 <- @1.0.0 <- absolute-time-fireworks-optimization@2.0.1
 ---
 
-# 第一性原理物理极限收敛引擎 v1.1.0
+# 第一性原理物理极限收敛引擎 v1.3.0
 
 ```text
 PRIMARY_OBJECTIVE = MINIMIZE T_END_TO_END（最小化真实端到端时间）
+SECONDARY_OBJECTIVE = MINIMIZE T_CONVERGENCE（最小化达到稳定最优的工程时间）
 
 SUBJECT TO（硬约束）:
 TASK_COMPLETED == TRUE（任务真实完成）
@@ -18,317 +19,329 @@ CORRECTNESS == PASS（正确性通过）
 QUALITY >= FIXED_THRESHOLD（质量达到固定阈值）
 STABILITY >= FIXED_THRESHOLD（稳定性达到固定阈值）
 SAFETY == PASS（安全通过）
-TASK_CONTRACT == IDENTICAL（任务合同保持一致）
+TASK_CONTRACT == IDENTICAL（任务合同一致）
 ```
 
-本版继承 v1.0.0 的两步法、去重甲、KEEP/ROLLBACK（保留/回滚）、多智能体资源约束、Shared Fact Source（共同事实源）和 99/FREEZE（99/冻结），新增两条硬规则：
+## 核心定义
 
-> **软件规则：本机极限不由“当前已安装软件”定义，而由当前可获得、成熟、兼容、可验证的最佳软件栈定义。**
+### 第一性原理不等于自由探索
 
-> **硬件规则：本轮 99 只由 ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）定义；未来计划增加但当前不存在的硬件，不得阻断当前 99。**
+第一性原理负责：
 
-“最新版”只是候选；“最优化版”必须通过同任务真实 benchmark（基准测试）证明更快后才获得正式地位。
+- 冻结任务合同和当前真实硬件边界；
+- 建立不可避免步骤与物理因果链；
+- 计算 `T_PHY（物理极限）`；
+- 识别假设、约束和剩余 Gap。
+
+第一性原理**不要求重新发明已有成熟优化**。如果市场、官方、同硬件实测已经提供高置信成熟路径，必须优先复用并本机 A/B。
+
+默认主路径：
+
+```text
+FIRST-PRINCIPLES BOUND（第一性原理边界）
+→ MINIMAL REAL RUN（极简真实运行）
+→ REAL-STATE CALIBRATION（真实态校准）
+→ MATURE HARVEST（成熟方案收割）
+→ DATA-DRIVEN REHEARSAL（数据驱动模拟推演）
+→ TARGETED ATTACK（定向攻击）
+→ ROI STOP（收益停止）
+→ 99 / FREEZE（99 / 冻结）
+```
 
 ---
 
-## STEP 1 — CALCULATE（第一步：计算）
+# STEP 1 — CALCULATE + REAL-STATE CALIBRATION（计算 + 真实态校准）
 
-先冻结：
+## 1. 冻结边界
+
+冻结：
 
 ```text
 TASK_CONTRACT（任务合同）
+TASK_COMPLETED（完成条件）
 ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）
+QUALITY / STABILITY / SAFETY（质量 / 稳定 / 安全）
 ```
 
-其中：
+`ACTIVE_HARDWARE_BOUNDARY` 只包含此刻真实安装、可正常使用、允许用于本任务的硬件。未来计划增加但当前不存在的硬件不得阻断当前 99。
 
-```text
-ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）
-= 此刻已经真实安装 + 可正常使用 + 本任务允许使用的硬件
-```
+## 2. 继承经验先验
 
-尚未安装、未来计划购买或当前不可用的硬件不进入本轮目标。
+如果存在以前兼容的真实 99、阶段测试或失败复盘，禁止从零猜测。必须继承：
 
-然后计算：
+- `VERIFIED_99（已验证99）`；
+- P50/P95 与真实分块时间；
+- KEEP / ROLLBACK；
+- Failure Index（失败索引）；
+- 稳定 VRAM / RAM / I/O / 设备放置事实；
+- 已证实有效和已证伪机制。
+
+旧经验不兼容时降低置信度并说明，不得静默套用。
+
+## 3. 计算物理与机器初始区间
 
 ```text
 T_PHY（物理极限）
-= 同一固定任务在已冻结硬件边界、物理规律和不可避免工作约束下的绝对下界区间
+= 固定任务在当前硬件边界与物理规律下的理论下界区间
 
-T_MACHINE_STAR（本机稳定理论极限）
-= 同一固定任务在 ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）
-  + 当前边界内最佳硬件拓扑
-  + 当前可获得最佳成熟兼容软件栈
-  + 已验证 EMPIRICAL_PRIORS（经验先验）下，
-  正确、稳定、可持续运行的理论极限区间
+T_MACHINE_STAR_PRE（本机稳定理论极限初算）
+= 当前硬件 + 已知最佳成熟软件/实现 + 经验先验下的稳定理论区间
 ```
 
-硬不变量：
+未知效率使用区间 + 置信度，不制造伪精确值。
+
+## 4. 复杂任务必须做 MRE（最小真实执行）
+
+仅靠静态硬件/软件版本不足以代表真实执行态。复杂任务必须尽快建立：
 
 ```text
-T_MACHINE_STAR >= T_PHY
+MRE = MINIMAL REAL EXECUTION（最小真实执行版本）
 ```
 
-### STEP 1 必须继承 Empirical Priors（经验先验）
+MRE 要让完整关键链真实跑通并暴露：
 
-如果存在以前兼容的真实 99、阶段测试或失败复盘，禁止从零猜测。必须优先继承：
+- 实际模型装载/卸载；
+- 动态显存/内存行为；
+- 缓存/预取/编译是否真正启用；
+- 实际设备放置；
+- 冷启动/预热/稳态差异；
+- 真实关键路径；
+- 运行时依赖、竞态和故障；
+- 足以校准方向的关键时间数据。
 
-- VERIFIED_99（已验证99）；
-- 分块 P50/P95；
-- 已证实有效的 KEEP（保留）机制；
-- 已证伪的 ROLLBACK（回滚）机制；
-- Failure Index（失败索引）；
-- 模型加载、卸载、VAE、编码、传输等真实成本；
-- 稳定 VRAM（显存）边界与资源竞争事实。
+默认目标是在**约 10 分钟级工程时间**内取得足以校准方向的真实态数据；若任务单次运行物理上更长，则使用机制一致的最小合同或最小子合同。
 
-当硬件/软件条件改变时，以：
+禁止在方向未校准前投入数小时深度 profiling（剖析）。
+
+## 5. 建立 REAL_STATE_MODEL（真实态模型）
 
 ```text
-OLD VERIFIED FACTS（旧验证事实）
+STATIC FACTS（静态事实）
++ MRE OBSERVATIONS（最小真实运行观测）
 + EMPIRICAL_PRIORS（经验先验）
-+ NEW HARDWARE/SOFTWARE FACTS（新硬件/软件事实）
-=> NEW T_MACHINE_STAR（新的本机稳定理论极限）
+=> REAL_STATE_MODEL（真实态模型）
+=> T_MACHINE_STAR_REAL（真实态本机稳定理论极限）
 ```
 
-不兼容的旧经验降低置信度，而不是静默沿用。
+若修订目标，必须记录：失效假设、新证据、旧/新区间、修订理由。禁止因为当前结果慢而单纯上调目标。
 
-### STEP 1 必须包含 Software Frontier Scan（软件前沿扫描）
+详细规则见：
 
-在计算 `T_MACHINE_STAR` 时，不得只读取当前已安装版本。必须检查与关键路径相关的软件层：
-
-- GPU driver（显卡驱动）；
-- CUDA / PyTorch（CUDA / PyTorch运行时）；
-- ComfyUI / inference runtime（ComfyUI / 推理运行时）；
-- model kernels / quant ops（模型内核 / 量化算子）；
-- attention backend（注意力后端）；
-- compiler / graph capture（编译器 / 图捕获）；
-- memory allocator / prefetch / offload（内存分配 / 预取 / 卸载）；
-- model format / quantization（模型格式 / 量化实现）；
-- VAE / codec / output path（VAE / 编码器 / 输出路径）；
-- 与固定任务关键路径直接相关的成熟第三方优化。
-
-每个候选分类：
-
-```text
-CURRENT（当前已安装）
-LATEST_STABLE（官方最新稳定版）
-MATURE_OPTIMIZED（成熟优化版）
-EXPERIMENTAL（实验版）
-```
-
-只有前 3 类可进入正式 99 候选；`EXPERIMENTAL（实验版）` 默认只做研究，不直接进入最终冻结。
-
-### 最佳软件栈定义
-
-```text
-BEST_SOFTWARE_STACK（最佳软件栈）
-= argmin_stack T_EXEC（任务实际执行时间）
-```
-
-但必须同时满足：
-
-```text
-TASK_CONTRACT_IDENTICAL=YES（任务一致）
-HARD_CONSTRAINTS_PASS=YES（硬约束通过）
-STABILITY_PASS=YES（稳定通过）
-COMPATIBILITY_PASS=YES（兼容通过）
-REPRODUCIBLE=YES（可复现）
-```
-
-因此：
-
-```text
-LATEST != AUTOMATIC_WINNER
-（最新版不自动等于最优版）
-```
-
-### Hardware Topology Scan（硬件拓扑扫描）
-
-只扫描 `ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）` 内真实存在的硬件。
-
-如果当前只有一张 GPU，则单卡就是本轮硬件边界；未来第二张 GPU 不进入本轮 `T_MACHINE_STAR` 和 99 门禁。
-
-如果未来第二张 GPU 实际安装，资源边界发生变化，则重新计算新的 `T_MACHINE_STAR`，旧 99 作为经验先验继续继承。
-
-详细规则见 `references/HARDWARE-TOPOLOGY-GATE.md`。
-
-### 第一步必须产出
-
-- `ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）`；
-- `T_PHY=[LOW,HIGH]（物理极限区间）`；
-- `T_MACHINE_STAR=[LOW,HIGH]（本机稳定理论极限区间）`；
-- `EMPIRICAL_PRIORS（经验先验）`；
-- `CURRENT_STACK（当前软件栈）`；
-- `SOFTWARE_FRONTIER_CANDIDATES（软件前沿候选）`；
-- `BEST_KNOWN_STACK_ASSUMPTION（当前最佳栈假设）`；
-- `PHYSICAL_DAG（物理因果图）`；
-- `ASSUMPTION_LEDGER（假设账本）`；
-- `ATTACK_ORDER（攻击顺序）`；
-- 多智能体模式。
-
-未知效率优先写成区间，不因缺少一次新实测而取消第一性原理计算。
+`references/REAL-STATE-MATURE-HARVEST-ROI.md`
 
 ---
 
-## STEP 2 — CONVERGE（第二步：收敛）
+# STEP 2 — MATURE HARVEST → TARGETED ATTACK → ROI STOP
 
-先继承兼容的冻结 99，不为展示提升百分比故意退回慢版本。
+## 6. MATURE FRONTIER SCAN（成熟前沿扫描）
 
-建立：
+优先检索：
+
+1. 官方稳定版和官方性能提交；
+2. 同 GPU 架构 / VRAM / 模型 / 任务的真实 A/B；
+3. 成熟开源 workflow / runtime / model format / quant / cache / prefetch / compiler / memory management；
+4. 多次复现的高质量社区成熟方案。
+
+建立 `MATURE_HARVEST_MATRIX（成熟收益收割矩阵）`：
 
 ```text
-V1 = FIRST MINIMUM VIABLE EXECUTION（第一最小正确执行版本）
+SOURCE_LEVEL（证据等级）
+HARDWARE_MATCH（硬件匹配）
+TASK_MATCH（任务匹配）
+MECHANISM（机制）
+TARGET_BLOCK（目标块）
+EXPECTED_ABS_GAIN（预期绝对收益）
+QUALITY_RISK（质量风险）
+STABILITY_RISK（稳定风险）
+INTEGRATION_COST（集成成本）
+REVERSIBILITY（可逆性）
+CURRENTLY_PRESENT（当前是否已有）
 ```
 
-V1 是去重甲后的第一个可测版本，不要求已经使用最终最佳软件栈。
-
-每轮：
+排序原则：
 
 ```text
-DELTA_T_REDUCIBLE_i（可消灭时间差）
-= T_CURRENT_BLOCK_i - T_MACHINE_TARGET_BLOCK_i
-
-NEXT_ATTACK（下一攻击）
-= argmax_i(DELTA_T_REDUCIBLE_i)
+EXPECTED_ABS_GAIN
+× APPLICABILITY_CONFIDENCE
+× EVIDENCE_CONFIDENCE
+÷ INTEGRATION_COST
 ```
 
-真实修改后：
+不追求伪精确分数，只保证大收益、强证据、高适用、低成本候选先测试。
+
+## 7. DATA-DRIVEN REHEARSAL（数据驱动模拟推演）
+
+每个候选真实改动前，先基于 REAL_STATE_MODEL 做时间预算推演：
+
+```text
+CURRENT_BLOCK_TIME
+- EXPECTED_REMOVABLE_TIME
++ NEW_OVERHEAD
+= PROJECTED_NEW_TIME
+```
+
+必须回答：
+
+- 攻击哪个真实时间块；
+- 为什么适用于本机；
+- 理论最多能省多少；
+- 新增什么开销/风险；
+- 回滚点在哪里；
+- 是否值得一次正式 benchmark。
+
+模拟推演只用于淘汰逻辑上不值钱的候选，不能伪装成真实 benchmark。
+
+## 8. MATURE HARVEST（成熟收益收割）
+
+外部成熟方案只决定优先级，不自动决定 KEEP。
 
 ```text
 FASTER + HARD_CONSTRAINTS_PASS => KEEP（保留）
 ELSE => ROLLBACK（回滚）
 ```
 
-持续：
+成熟完整栈若不可合理拆分，可整体 A/B 后直接 KEEP，不要求先自行重构。
+
+每次 KEEP 后重新计算绝对 Gap 和剩余成熟候选。
+
+## 9. NO FREE EXPLORATION（禁止自由摸索）
+
+只要：
 
 ```text
-V1 -> V2 -> V3 -> ...
+HIGH_VALUE_MATURE_CANDIDATES_REMAINING = YES
 ```
 
-但**在任何 99 / FREEZE 之前，必须通过 Software Frontier Gate（软件前沿门禁），以及当前有效硬件边界内的 Hardware Topology Gate（硬件拓扑门禁）**。
+就禁止优先进入自研 kernel、参数盲扫、无限 profiling 或大量 Vn 候选。
+
+只有在高价值成熟方案已吃完/不适用且仍有显著剩余 Gap 时，才允许定向自研。
+
+每个自研候选必须满足：
+
+```text
+REAL_DATA_SUPPORT=YES（有真实数据）
+MECHANISM_EXPLAINED=YES（机制清楚）
+EXPECTED_GAIN_ESTIMATED=YES（收益可估）
+ROLLBACK_DEFINED=YES（可回滚）
+```
+
+否则不执行。
+
+禁止：
+
+- 长时间参数盲扫；
+- 无真实数据的 kernel 猜测；
+- 因“也许会快”连续创建 V1…Vn；
+- 已有成熟实现却自行重新实现；
+- 已有失败证据却无条件重测；
+- 收益模型不清楚时连续数小时 profiling；
+- 只看局部指标，不看端到端收益。
+
+## 10. TARGETED ATTACK（定向攻击）
+
+成熟方案收割后，对剩余 Gap：
+
+```text
+DELTA_T_REDUCIBLE_i
+= T_CURRENT_BLOCK_i - T_MACHINE_TARGET_BLOCK_i
+
+NEXT_ATTACK
+= argmax_i(DELTA_T_REDUCIBLE_i)
+```
+
+只攻击绝对可减少时间最大的高置信块；每次 KEEP/ROLLBACK 后重新推演，不机械沿一个方向做到底。
 
 ---
 
-# SOFTWARE FRONTIER GATE（软件前沿门禁）
+# ROI STOP（收益停止）
 
-## 触发时机
+是否继续迭代不能只看“还能不能再省 0.5 秒”。
 
-以下任一发生时必须执行：
-
-1. STEP 1 初次计算 `T_MACHINE_STAR`；
-2. 当前候选已经接近旧目标区间；
-3. 准备声明 `99=YES`；
-4. 距上次前沿扫描期间出现相关软件重大新版本；
-5. 新 release / commit 明确修改了当前任务关键路径相关代码。
-
-## 候选优先级
-
-优先测试预计高收益、低风险候选：
+估算：
 
 ```text
-Tier A（A档）= 运行时/框架/内核/内存管理/编译器更新
-Tier B（B档）= 模型格式、量化、注意力、VAE、codec 等成熟替代实现
-Tier C（C档）= driver / CUDA / 系统级更新
+EXPECTED_LIFETIME_BENEFIT（未来总收益）
+≈ DELTA_T_PER_RUN（每次节省时间）
+× EXPECTED_FUTURE_RUNS（预计未来运行次数）
+× VALUE_FACTOR（时间/资源价值系数）
 ```
 
-Tier C 系统级候选只有在有明确收益证据和安全回滚路径时才进入；不得为了追“最新”随意破坏稳定环境。
-
-## 测试方式
-
-软件前沿候选必须在隔离 branch/worktree/compat-lab（分支/工作树/兼容实验区）中测试：
+继续优化的必要条件：
 
 ```text
-CURRENT_BEST（当前最佳）
-vs
-SOFTWARE_CANDIDATE（软件候选）
-```
-
-固定：
-
-```text
-TASK_CONTRACT（任务合同）
-INPUT（输入）
-SEEDS（随机种子集合）
-TIMING_BOUNDARY（计时边界）
-RESOURCE_STATE（资源状态）
-QUALITY_GATE（质量门禁）
-```
-
-只有真实更快且稳定：
-
-```text
-SOFTWARE_CANDIDATE_WINS=YES（软件候选胜出）
-=> KEEP（保留）
-=> 更新 BEST_SOFTWARE_STACK（最佳软件栈）
-=> 必要时重新计算 T_MACHINE_STAR（本机稳定理论极限）
+EXPECTED_LIFETIME_BENEFIT
+> ENGINEERING_COST
++ VALIDATION_COST
++ RISK_COST
 ```
 
 否则：
 
 ```text
-ROLLBACK（回滚）
+ECONOMIC_STOP=YES（经济性停止）
 ```
 
-## 软件前沿与物理极限的关系
+因此同样 0.5 秒：一次性任务可能不值得，未来会执行成千上万次的基础能力可能非常值得。
 
-软件升级不能改变已冻结硬件边界下正确的 `T_PHY（物理极限）`，但可以显著降低软件造成的效率损失，使现实结果更接近 `T_PHY`。
+---
+
+# 99 / FREEZE（99 / 冻结）
+
+99 不是数学绝对极限，也不是固定 1% 阈值。
+
+必须同时满足：
+
+1. 固定任务真实完成；
+2. correctness / quality / stability / safety 全部通过；
+3. 权威计时稳定；
+4. `MRE_REAL_STATE_CALIBRATION=PASS（真实态校准通过）`；
+5. `MATURE_PATH_FIRST_GATE=PASS（成熟路径优先门禁通过）`；
+6. `SOFTWARE_FRONTIER_GATE=PASS（软件前沿门禁通过）`；
+7. `HARDWARE_TOPOLOGY_GATE=PASS（当前硬件拓扑门禁通过）`；
+8. 当前结果进入或贴近高置信 `T_MACHINE_STAR_REAL`，或剩余 Gap 已有充分证据证明不具备更高 ROI；
+9. 没有明显大块重甲；
+10. 没有高置信高收益成熟候选遗漏；
+11. 剩余自研候选已达到 `ECONOMIC_STOP` 或无显著绝对收益；
+12. Final Certification（最终认证）通过；
+13. Shared Fact Source（共同事实源）同步并 remote verify（远端验证）通过。
 
 因此：
 
-```text
-T_PHY（物理极限）
-= 当前有效硬件边界 + 物理规律参照
-
-T_MACHINE_STAR（本机稳定理论极限）
-= 当前有效硬件边界 + 当前边界内最佳硬件拓扑 + 当前最佳成熟软件栈 + 经验先验参照
-
-T_CURRENT（当前实测）
-= 当前实际实现
-```
-
-软件进步时，`T_MACHINE_STAR` 可以因为新证据而下修；硬件边界改变时，应建立新的版本化 `T_MACHINE_STAR`。必须记录：
-
-```text
-OLD_BOUNDARY（旧硬件边界）
-NEW_BOUNDARY（新硬件边界，如有）
-OLD_STACK（旧软件栈）
-NEW_STACK（新软件栈）
-OLD_TARGET（旧目标）
-NEW_TARGET（新目标）
-BENCHMARK_EVIDENCE（基准证据）
-REASON（修订原因）
-```
-
-禁止因为当前结果慢而把目标往上放宽。
+> **99 = 当前真实硬件边界 + 当前最佳成熟实现 + 真实运行校准 + 已收割成熟收益 + 剩余 Gap 的数据驱动定向优化 + 生命周期 ROI 停止后的稳定最优。**
 
 ---
 
-## 多智能体
+# 执行角色
 
-多智能体优化 `T_CONVERGENCE（收敛工程时间）`，不自动优化单次 `T_EXEC（任务执行时间）`。
+分析、候选排序、机制判断、收益推演、停止条件由高质量推理完成；执行器主要负责：
 
-```text
-AGENT_MODE = OFF | SUPPORT_PARALLEL | RESOURCE_PARTITIONED
-```
+- 精确修改；
+- 可逆部署；
+- 真实运行；
+- 证据采集；
+- QC；
+- KEEP / ROLLBACK 所需事实；
+- Git 收口。
 
-对单 GPU 正式 benchmark：
+禁止把“探索方向”无限下放给执行器，让其在本机无边界试错。
 
-```text
-GPU_BENCHMARK_SERIAL=YES（GPU正式基准串行）
-GPU_EXCLUSIVE=YES（GPU独占）
-```
-
-软件前沿扫描适合并行拆分：官方最新版、成熟第三方优化、兼容性/风险、benchmark 审计可由不同只读智能体并行完成。
-
----
-
-## 继承的成熟纪律
-
-继续继承：TASK_COMPLETED（任务完成边界）、De-Armoring（去重甲）、真实端到端计时、CUDA Event（CUDA事件）、KEEP/ROLLBACK（保留/回滚）、99/FREEZE（99/冻结）、可逆 instrumentation（插桩）、已有事实优先、Failure Index（失败索引）、dirty worktree（工作树保护）、Shared Fact Source（共同事实源）、精确 stage（精确暂存）、禁止 `git add .` / force push / `reset --hard`、remote verify（远端验证）。
+单 GPU 正式 benchmark 必须串行、独占。
 
 ---
 
-## SHARED FACT SOURCE CLOSURE GATE（共同事实源收口门禁）
+# CONTEXT HYGIENE（上下文卫生）
+
+长项目必须：
+
+- 每个大阶段形成正式报告和机器可读状态；
+- 新阶段读取冻结事实，不依赖长会话记忆；
+- 页面/会话明显过长时冻结当前阶段并换新页面；
+- 新页面从任务文件 + Shared Fact Source 恢复；
+- 简单执行阶段用简洁指令，复杂规划/复盘阶段使用高强度推理。
+
+---
+
+# Shared Fact Source（共同事实源）
 
 ```text
 SHARED_FACT_SOURCE=cuiqinggang/codex-private-skills
@@ -336,89 +349,34 @@ SHARED_REPO_LOCAL=C:\Users\A\Documents\Codex\codex-private-skills
 SHARED_REPO_SYNC_REQUIRED=YES
 ```
 
-产生新工程事实时：
+产生新工程事实：
 
 ```text
-LOCAL RESULT（本机结果）
--> FORMAL REPORT（正式报告）
--> SHARED REPOSITORY（共同仓库）
--> EXACT STAGE（精确暂存）
--> COMMIT（提交）
--> PUSH（推送）
--> REMOTE VERIFY（远端验证）
+LOCAL RESULT
+→ FORMAL REPORT
+→ SHARED REPOSITORY
+→ EXACT STAGE
+→ COMMIT
+→ PUSH
+→ REMOTE VERIFY
 ```
 
-只有：
-
-```text
-LOCAL_TASK_RESULT=PASS（本机任务通过）
-AND SHARED_REPO_SYNC=PASS（共同仓库同步通过）
-AND SOFTWARE_FRONTIER_GATE=PASS（软件前沿门禁通过）
-AND HARDWARE_TOPOLOGY_GATE=PASS（当前硬件拓扑门禁通过）
-```
-
-才允许最终：
-
-```text
-99=YES
-FREEZE=YES
-FINAL=PASS
-```
+禁止 `git add .`、force push、`reset --hard`。
 
 ---
 
-## 99 / FREEZE（99 / 冻结）
-
-99 不是数学绝对极限，也不是固定 1% 阈值。
-
-必须同时满足：
-
-1. 固定任务真实完成；
-2. hard constraints（硬约束）全部通过；
-3. 权威计时稳定；
-4. 当前结果进入或贴近高置信 `T_MACHINE_STAR`；
-5. 没有明显大块重甲；
-6. 没有高置信高收益剩余 Gap；
-7. `SOFTWARE_FRONTIER_GATE=PASS（软件前沿门禁通过）`；
-8. 已比较当前版本、最新稳定版和主要成熟优化候选；
-9. 最终采用栈已真实 benchmark 证明是当前最佳已知可复现方案；
-10. `HARDWARE_TOPOLOGY_GATE=PASS（当前硬件拓扑门禁通过）`；
-11. `ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）` 已明确冻结，未来不存在的硬件不参与本轮门禁；
-12. Shared Fact Source closure（共同事实源收口）PASS。
-
-因此：
-
-> **99 = 当前真实可用硬件边界 + 当前边界内最佳硬件拓扑 + 当前最佳成熟兼容软件栈 + 当前已知可验证方法下的稳定最优。**
-
-当未来增加硬件或关键软件发生重大变化时：
-
-```text
-旧 99 不直接冒充新 99
-旧 99 也不作废
-```
-
-而是：
-
-```text
-OLD 99（旧99）
-+ EMPIRICAL_PRIORS（经验先验）
-+ NEW FACTS（新事实）
-=> NEW T_MACHINE_STAR（新本机稳定理论极限）
-=> 新一轮收敛
-```
-
----
-
-## 默认最短读取路径
+# 默认最短读取路径
 
 正常任务读取：
 
 1. `SKILL.md`
 2. `references/FAST-PATH.md`
+3. `references/REAL-STATE-MATURE-HARVEST-ROI.md`
 
 按需读取：
 
 - `references/FIRST-PRINCIPLES-LIMIT-MODEL.md`
+- `references/MATURE-PATH-FIRST-GATE.md`
 - `references/SOFTWARE-FRONTIER-GATE.md`
 - `references/HARDWARE-TOPOLOGY-GATE.md`
 - `references/MULTI-AGENT-PARALLELISM.md`
@@ -429,14 +387,17 @@ OLD 99（旧99）
 ## 状态
 
 ```text
-SKILL_VERSION=1.1.0
-TWO_STEP_METHOD=PASS（两步法通过）
+SKILL_VERSION=1.3.0
+TWO_STEP_METHOD=PASS（两步法保留）
+MRE_REAL_STATE_CALIBRATION_REQUIRED=YES（复杂任务必须极简真实运行校准）
+MATURE_PATH_FIRST_GATE_DEFINED=PASS（成熟路径优先门禁已定义）
+NO_FREE_EXPLORATION=YES（禁止无依据自由探索）
+DATA_DRIVEN_REHEARSAL_REQUIRED=YES（高价值候选需先数据推演）
+ROI_STOP_DEFINED=PASS（生命周期收益停止条件已定义）
 ACTIVE_HARDWARE_BOUNDARY_DEFINED=PASS（当前有效硬件边界已定义）
 EMPIRICAL_PRIOR_REUSE_DEFINED=PASS（经验先验复用已定义）
 SOFTWARE_FRONTIER_GATE_DEFINED=PASS（软件前沿门禁已定义）
 HARDWARE_TOPOLOGY_GATE_DEFINED=PASS（硬件拓扑门禁已定义）
-BEST_SOFTWARE_STACK_REQUIRED_FOR_99=YES（99必须验证最佳软件栈）
 FUTURE_UNAVAILABLE_HARDWARE_BLOCKS_CURRENT_99=NO（未来不可用硬件不阻断当前99）
-LEGACY_INHERITANCE_REVIEW=PASS（继承审查通过）
-MULTI_AGENT_POLICY_DEFINED=PASS（多智能体策略已定义）
+SHARED_FACT_SOURCE_REQUIRED=YES（共同事实源必需）
 ```
