@@ -75,5 +75,4 @@ ComfyUI commit=8a33128f2f8c5585c57486c07de481241e70a39c；Star7 commit=dc8ea63b5
 
 FI-H3-P0-FINAL-920108-FLAT-WHITE：固定 Star7 KEEP 栈在本次连续认证的第 9 条正式 seed 输出可解码但接近全白的 MP4，违反逐帧质量门槛。现有证据只能确定产物失败，根因 UNKNOWN；不得用此结果自行改模型、参数、版本或添加测试。第 1 条正式运行的慢尾使已完成 8 条子集的 P95/Max 比例超过阈值，持续性根因 UNKNOWN。
 
-Git 证据提交：PENDING。远端回读核验：PENDING。按失败规则保存证据、停止并返回 GPT；不冻结 99。
-
+Git 证据提交：c6eaee1ae54c8f45e22eefbc463d9f9596f605f9。该提交的远端回读核验：PASS（两份文件存在且 FAIL / NO / NO 状态一致）。按失败规则保存证据、停止并返回 GPT；不冻结 99。
