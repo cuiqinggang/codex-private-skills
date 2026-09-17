@@ -1,0 +1,70 @@
+{
+  "project_id": "H3-P0",
+  "method": "first-principles-physical-limit-convergence v1.9.0",
+  "final_residual_virtual_attack": "COMPLETE",
+  "current_winner": "Star7 Native FP16 Exact",
+  "current_total_p50_s": 10.562,
+  "current_total_p95_s": 14.510,
+  "current_generation_p50_s": 3.102,
+  "current_path_p50_s": 3.430,
+  "fastest_valid_total_s": 6.484,
+  "visible_tail_gap_s": 4.078,
+  "visible_tail_gap_fraction_of_p50": 0.3861,
+  "t_phy_total_reference_s": [0.23, 0.57],
+  "real_state_optimum_range_s": [4, 14],
+  "long_run_savings": {
+    "per_1s_gain": {
+      "1000_runs_minutes": 16.7,
+      "10000_runs_hours": 2.78,
+      "100000_runs_hours": 27.8
+    },
+    "per_4s_gain": {
+      "1000_runs_hours": 1.11,
+      "10000_runs_hours": 11.1,
+      "100000_runs_hours": 111.0
+    }
+  },
+  "candidate_disposition": {
+    "star7_tail_stabilization": {
+      "potential": "HIGH_VISIBLE_HEADROOM",
+      "mature_executable_mechanism": false,
+      "main_path_test_required": false,
+      "future": "INDEPENDENT_99_PATH_IF_FINAL_CERT_SHOWS_PERSISTENT_TAIL"
+    },
+    "w4a8_diffusion": {
+      "potential": "POSSIBLY_SEVERAL_SECONDS",
+      "maturity": "INSUFFICIENT_FOR_CURRENT_MAIN_PATH",
+      "main_path_test_required": false,
+      "future": "INDEPENDENT_99_PATH"
+    },
+    "int8_video_vae": {
+      "path_p50_s": 3.430,
+      "optimistic_1_5x_whole_path_gain_upper_bound_s": 1.143,
+      "same_gpu_quality_risk": "BLACK_NAN_INF_PUBLIC_REPORT",
+      "main_path_test_required": false
+    },
+    "text_encoder_int8_convrot": {
+      "hardware_direction": "BETTER_MATCH_FOR_TURING_THAN_NVFP4_AWQ",
+      "steady_state_gain": "UNKNOWN_OR_ZERO_IF_CONDITIONING_CACHED",
+      "requires_new_attribution": true,
+      "main_path_test_required": false
+    },
+    "attention_activation_chunk": {
+      "large_sequence_value": "HIGH",
+      "current_p0_value": "VERY_LOW",
+      "main_path_test_required": false
+    },
+    "host_sync_patch": {
+      "mechanism_exists": true,
+      "current_attributed_gain": "UNKNOWN",
+      "requires_new_research": true,
+      "main_path_test_required": false
+    }
+  },
+  "current_main_path_positive_roi_mature_candidate_remains": false,
+  "global_all_possible_optimization_exhausted": false,
+  "ready_for_final_certification": true,
+  "final_99": false,
+  "final_99_blocker": "FINAL_10_RUN_CERTIFICATION_NOT_YET_EXECUTED",
+  "next_action": "RUN_SIMPLE_FINAL_CERTIFICATION_ONLY"
+}
