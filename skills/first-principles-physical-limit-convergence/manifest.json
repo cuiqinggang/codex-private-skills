@@ -35,7 +35,7 @@
   },
   "shared_fact_source": "project-scoped remote authoritative workspace",
   "status": {
-    "method_logic_acceptance": "PENDING_V1.8_STATIC_ACCEPTANCE",
+    "method_logic_acceptance": "PASS",
     "runtime_installation": "NOT_VERIFIED_FOR_1.8.0",
     "h3_mre_application": "PASS",
     "h3_virtual_99": "NOT_YET_EXECUTED"
