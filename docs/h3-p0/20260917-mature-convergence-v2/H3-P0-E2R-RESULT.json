@@ -218,8 +218,8 @@
     "existing_stage_event_arrays": "EMPTY_FOR_ALL_THREE_FORMAL"
   },
   "ROLLBACK": "NOT_APPLICABLE_NO_RUNTIME_CHANGE",
-  "REMOTE_COMMIT": "PENDING_FIRST_PUSH",
-  "REMOTE_VERIFY": "PENDING_FIRST_PUSH",
-  "SHARED_FACT_CONFIRMED": "NO_UNTIL_REMOTE_VERIFY",
+  "REMOTE_COMMIT": "fdb054fd730abae3217ed91fd1d0c3b4b073439f",
+  "REMOTE_VERIFY": "PASS: initial E2R md/json fetched from GitHub target branch; final receipt push to be verified separately",
+  "SHARED_FACT_CONFIRMED": "YES_FOR_FIRST_PUSH",
   "NEXT_ACTION": "RETURN_TO_GPT"
 }
