@@ -1,0 +1,70 @@
+{
+  "schema": "H3-P0-FINAL-99-FREEZE-v1",
+  "status": "FROZEN",
+  "final_99": true,
+  "freeze": true,
+  "success_level": "DELIVERY_SYSTEM_99",
+  "single_attempt_first_pass_100_percent": false,
+  "delivery_final_accepted_qc_100_percent": true,
+  "quality_stability_proof": "PASS",
+  "time_99_under_quality_constraint": "PASS",
+  "final_reseed_system_certification": "PASS",
+  "h3_p0_delivery_system_99": true,
+  "task_contract": {
+    "mode": "T2VA",
+    "width": 32,
+    "height": 32,
+    "frames": 5,
+    "steps_per_attempt": 1,
+    "prompt": "static frame",
+    "sampler": "res_multistep",
+    "scheduler": "beta",
+    "input_audio": null,
+    "final_output": "REAL_MP4"
+  },
+  "delivery_algorithm": "STAR7_1STEP -> QC -> if FAIL reject and draw new OS-random seed -> repeat until first QC PASS",
+  "formal_tasks": 20,
+  "formal_attempts": 22,
+  "first_attempt_pass_count": 18,
+  "first_attempt_pass_rate": 0.9,
+  "mean_attempts_per_task": 1.1,
+  "final_accepted_qc": "20/20",
+  "invalid_outputs_rejected": 2,
+  "invalid_output_delivered": 0,
+  "delivery_total_seconds": {
+    "mean": 6.804,
+    "p50": 6.076,
+    "p95": 11.974,
+    "max": 12.862
+  },
+  "warmups_seconds": [165.307, 15.944],
+  "physical_reference_seconds": [0.23, 0.57],
+  "real_state_optimum_range_seconds": [4.0, 14.0],
+  "rejected_or_deferred_routes": {
+    "act32": "FAIL_QUALITY",
+    "same_seed_reference_fallback": "FAIL_REFERENCE_QUALITY",
+    "single_fixed_seed_10_of_10": "FAIL",
+    "single_local_numerical_divergence": "NOT_FOUND",
+    "error_topology": "DISTRIBUTED_ACCUMULATION",
+    "w4a8": "INDEPENDENT_99_PATH"
+  },
+  "codex_capacity_router": {
+    "enabled": true,
+    "static_model_list": false,
+    "mock_fault_injection_t1_t7": "PASS",
+    "real_service_failover": "UNVERIFIED",
+    "local_work_replay": false
+  },
+  "certification_remote_head": "37ed26e2b46b0c7a402f917b7b6884a5270a2f2d",
+  "source_reports": [
+    "H3-P0-QUALITY-STABILITY-RESEED-FINAL-RESULT-v1.md",
+    "H3-P0-QUALITY-STABILITY-RESEED-FINAL-STATE-v1.json"
+  ],
+  "reopen_conditions": [
+    "TASK_CONTRACT_CHANGE",
+    "HARDWARE_OR_MODEL_STACK_CHANGE",
+    "MATURE_NEW_ROUTE_WITH_MEANINGFUL_T_TFVR_GAIN",
+    "QC_GATE_PROVEN_INSUFFICIENT",
+    "PRODUCTION_DISTRIBUTION_DRIFT"
+  ]
+}
