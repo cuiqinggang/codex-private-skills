@@ -1,211 +1,516 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 在固定任务完成条件和硬约束下，以时间为唯一优化目标；先用第一性原理计算绝对物理极限区间 T_PHY 与本机稳定可实现极限区间 T_MACHINE_STAR，再从去重甲后的最小 V1 开始，按最大绝对可消灭时间 Gap 真实迭代，直到 99 / FREEZE。适用于工程、AI 推理、软件、工作流、生产与其他可以明确任务合同、资源约束和时间测量边界的问题。
+description: 第一性原理物理极限收敛引擎。固定任务后，先计算端到端物理极限，再基于本机真实状态建立现实最优区间；由 GPT 在虚拟层完成成熟方案组合与 99 攻击，最后生成完整 Codex 命令包并确定性执行。v2.0 新增随机系统的“交付级成功/Time To First Valid Result”规则，以及 GPT-Codex-GitHub-浏览器桥接-容量路由的自动控制面。主流程仍严格保持四步，禁止 Codex 自由探索。
 metadata:
-  version: "1.0.0"
-  short-description: 第一性原理物理极限收敛引擎
-  lineage: absolute-time-fireworks-optimization@2.0.1
+  version: "2.0.0"
+  short-description: 第一性原理物理极限收敛引擎·随机交付与自动闭环版
+  lineage: first-principles-physical-limit-convergence@1.9.0 <- @1.8.0 <- @1.7.0 <- @1.6.0 <- @1.5.0 <- @1.4.0 <- @1.3.0 <- @1.2.0 <- @1.1.0 <- @1.0.0
 ---
 
-# 第一性原理物理极限收敛引擎 v1.0.0
+# 第一性原理物理极限收敛引擎 v2.0.0
+
+> 核心目标：**简单、完整、一次规划、一次执行、最后收口。**
+
+v2.0 不增加第五步。新增内容全部是四步法的横向规则：
+
+1. 对随机系统区分 `attempt（候选尝试）` 与 `delivery（最终交付）`；
+2. 用 `T_TFVR = Time To First Valid Result（首个有效结果时间）` 评价随机系统；
+3. 把 GPT/Codex 之间的文本搬运自动化为控制面，不再要求人工复制粘贴；
+4. 远端模型容量、Windows执行器、浏览器运输等错误与业务算法失败分层。
+
+---
+
+# 一、最高规则
+
+## 1. 当前母技能身份
 
 ```text
-PRIMARY_OBJECTIVE = MINIMIZE T_END_TO_END
-
-SUBJECT TO:
-TASK_COMPLETED == TRUE
-CORRECTNESS == PASS
-QUALITY >= FIXED_THRESHOLD
-STABILITY >= FIXED_THRESHOLD
-SAFETY == PASS
-TASK_CONTRACT == IDENTICAL
+SKILL_ID = first-principles-physical-limit-convergence
+中文名 = 第一性原理物理极限收敛引擎
+VERSION = 2.0.0
+CANONICAL_BRANCH = codex/first-principles-physical-limit-convergence-v2.0.0
 ```
 
-本技能由 `absolute-time-fireworks-optimization v2.0.1` 演化而来。旧技能已经证明了“固定任务完成条件 + 去重甲 + 真实计时 + KEEP/ROLLBACK + 99/FREEZE”的有效性；本版不抛弃这些成熟执行纪律，只替换旧版的固定四列主流程。
+历史 `absolute-time-fireworks-optimization` 只是祖先技能，不是当前母技能。
 
-## 唯一核心：两步法
-
-### STEP 1 — CALCULATE：先算终点与最短攻击路线
-
-不要求先制造一个低性能 CURRENT，也不要求先找到外部成熟方案。
-
-固定 `TASK_CONTRACT` 后，利用已有真实硬件、软件、模型、执行图、数据流、依赖关系和资源约束，计算：
+## 2. 禁止自由探索
 
 ```text
-T_PHY
-= 同一固定任务在物理规律与不可避免操作约束下的绝对物理下界区间
-
-T_MACHINE_STAR
-= 同一固定任务在当前真实机器/运行环境上，
-  在正确、稳定、可持续条件下理论可实现的极限区间
+NO_FREE_EXPLORATION = YES
+CODEX_ROLE = 确定性执行器 / 验证器
+GPT_ROLE = 规划器 / 裁决器 / Virtual-99
 ```
 
-硬不变量：
+Codex 不得自行：
+
+- 增加新候选；
+- 改候选顺序；
+- 发明新实验；
+- 改模型、版本、参数、阈值；
+- 启用未授权 profiler / kernel trace / sweep；
+- 根据一次结果继续发明下一轮。
+
+## 3. 有限执行灵活性
+
+Codex 可以改变“如何完成同一个授权动作”，不能改变“下一步做什么”。
+
+允许：
+
+- PowerShell 与 `.ps1` 等价改写；
+- 绝对路径替换；
+- 日志、备份、报告；
+- 同一任务的 checkpoint/resume；
+- 命令包明确授权的条件分支与条件循环；
+- 随机系统中，若命令包已经授权 `QC FAIL -> draw new random seed -> retry same fast path`，则换种属于同一方案执行，不属于自由探索。
+
+禁止：
+
+- 临场新增候选；
+- 改成功定义；
+- 为了“看起来更快”改变任务合同；
+- 把控制面故障当成业务失败；
+- 因会话/模型切换而重放已经完成的本地工作。
+
+如果既定步骤无法在边界内完成：
 
 ```text
-T_MACHINE_STAR >= T_PHY
+保存证据 -> 安全停止 -> 返回 GPT
 ```
 
-任何未知现实效率、kernel 利用率、带宽利用率、并行重叠比例、调度损失等，优先表达为区间和 `ASSUMPTION_LEDGER`，而不是以“尚未实测”为理由取消第一性原理计算。
+---
 
-第一步必须产出：
-
-- 固定任务合同与完成边界；
-- 物理因果 DAG / critical path；
-- 不可避免的操作、数据移动、同步与资源占用；
-- `T_PHY=[LOW,HIGH]`；
-- `T_MACHINE_STAR=[LOW,HIGH]`；
-- 分块极限（若任务自然存在分块）；
-- 每个假设、置信度和误差来源；
-- 可删除 / 合并 / 旁路 / 后移 / 并行 / 常驻 / 缓存 / 预计算的候选；
-- 第一版 `ATTACK_ORDER`；
-- 是否使用多智能体，以及最优并行模式。
-
-`EXTERNAL FRONTIER` 降级为 `OPTIONAL EVIDENCE`：它可以用来校验模型、借成熟实现、防漏机制，但不是终点，也不是必经步骤。
-
-### STEP 2 — CONVERGE：V1 → 最大 Gap → 攻击 → 99
-
-优先继承所有与本任务兼容的既有冻结 99。禁止为了展示提升百分比而故意退回 stock / raw baseline。
-
-在第一次真实运行前，先移除第一步已经明确证明不属于任务完成关键路径的重甲，得到：
+# 二、整个方法仍然只有四步
 
 ```text
-V1 = FIRST MINIMUM VIABLE EXECUTION
+第1步：物理极限
+第2步：本机现实最优区间
+第3步：GPT Virtual-99
+第4步：Codex 完整实测命令包
 ```
 
-V1 不是最终优化版；它是“攻击迭代开始前的第一个最小、正确、可测版本”。V1 命令包必须先经过审计，再真实运行。
+---
 
-测得 `T_CURRENT_BLOCK_i` 后，与第一步的本机目标比较：
+# 第1步：第一性原理物理极限
+
+先冻结：
 
 ```text
-DELTA_T_REDUCIBLE_i
-=
-T_CURRENT_BLOCK_i
--
-T_MACHINE_TARGET_BLOCK_i
-
-NEXT_ATTACK
-=
-argmax_i(DELTA_T_REDUCIBLE_i)
+TASK
+TASK_COMPLETED
+CORRECTNESS
+QUALITY
+STABILITY
+SAFETY
+TIMING_BOUNDARY
+ACTIVE_HARDWARE_BOUNDARY
 ```
 
-重点是最大绝对可消灭时间，不是最大百分比，也不一定是当前耗时最大的块。
-
-每轮只改变一个可解释的机制或一组不可拆分的同一机制，真实运行后：
+正式发布一个端到端物理参照：
 
 ```text
-FASTER + HARD_CONSTRAINTS_PASS => KEEP
-ELSE => ROLLBACK
+T_PHY_TOTAL_REFERENCE
 ```
 
-然后重新测量 Gap，持续：
+## 1.1 随机系统必须再冻结 attempt / delivery 语义
+
+如果任务本质含随机变量，例如生成模型 seed、随机搜索、Monte Carlo 候选、非确定性启发式，则必须明确：
 
 ```text
-V1 -> V2 -> V3 -> ... -> 99 -> FREEZE
+ATTEMPT = 一次随机候选计算
+DELIVERY = 最终允许交付给用户的有效结果
 ```
 
-## T_PHY 与 T_MACHINE_STAR 的关系
-
-`T_PHY` 是终极物理参照，不允许由成熟方案定义。
-
-`T_MACHINE_STAR` 是当前机器的现实理论目标。它可以随着新证据证明原假设错误或不完整而版本化修订，但禁止为了让 99 更容易通过而移动目标。
-
-如果同一任务合同、同一计时边界下出现 `MEASURED < T_PHY`，优先检查任务合同、计时边界、缓存/结果身份、物理模型和测量。现实不能真正突破同一任务定义下正确计算的物理下界；冲突意味着模型、合同或测量至少有一项需要修正。
-
-## 多智能体不是“越多越快”
-
-先区分：
+必须回答：
 
 ```text
-T_EXEC = 被优化任务本身的真实完成时间
-T_CONVERGENCE = 研究、计算、审计、编码、测试、证据分析与决策收敛所需墙钟时间
+随机变量是不是用户任务语义？
 ```
 
-多智能体通常优化 `T_CONVERGENCE`；只有智能体编排本身属于固定任务运行时关键路径时，才进入 `T_EXEC`。
+- 如果用户要求 exact seed / exact reproducibility，则 seed 属于 TASK，不能自动改；
+- 如果 seed 只是内部随机初始条件，则它不是交付语义，失败后可以按冻结策略重新采样。
 
-选择智能体数量：
+随机任务的物理目标仍是“在质量/正确性硬约束下最短完成”，不能因为某个随机 attempt 失败就人为提高物理极限。
+
+---
+
+# 第2步：本机现实最优区间
+
+复杂任务先做最小真实执行，继承：
+
+- 历史基线；
+- P50 / P95；
+- KEEP / ROLLBACK；
+- GPU / VRAM / RAM；
+- 驻留、加载、卸载；
+- 已验证成功/失败机制；
+- 当前软件与硬件约束。
+
+然后计算：
 
 ```text
-N_STAR = argmin_N(
-    T_RESOURCE_CRITICAL_PATH(N)
-  + T_COORDINATION(N)
-  + T_MERGE(N)
-  + T_CONTENTION(N)
-)
+REAL_STATE_OPTIMUM_RANGE
 ```
 
-只有同时满足以下条件才并行：至少两个独立子任务；子任务时间明显大于协调开销；不争用排他资源；输出可独立验证并安全合并；预计墙钟收益 > 0。
+## 2.1 随机任务追加现实统计
 
-默认模式：
+如果 attempt 可能失败，必须同时记录：
 
 ```text
-AGENT_MODE = OFF | SUPPORT_PARALLEL | RESOURCE_PARTITIONED
+FIRST_ATTEMPT_PASS_RATE
+ATTEMPT_PASS_RATE
+MEAN_ATTEMPTS_PER_TASK
+ATTEMPTS_P50/P95/MAX
+INVALID_OUTPUTS_REJECTED
+INVALID_OUTPUT_DELIVERED
+T_TFVR Mean/P50/P95/Max
 ```
 
-对单 GPU 的权威 GPU benchmark，默认：
+正式时间指标优先使用：
 
 ```text
-GPU_BENCHMARK_SERIAL=YES
-GPU_EXCLUSIVE=YES
+T_TFVR = 从 task 第一次提交，到首个通过确定性验证器并被 ACCEPT 的结果出现
 ```
 
-详细规则见 `references/MULTI-AGENT-PARALLELISM.md`。
+不要只用某个固定随机样本的单次 runtime 代表用户完成时间。
 
-## 继承旧技能的成熟纪律
+---
 
-继续继承：TASK_COMPLETED / hard constraints；De-Armoring；真实端到端时间与权威分块计时；GPU 异步同步/CUDA Event；KEEP/ROLLBACK；99/FREEZE；可逆 instrumentation；已有事实优先与 gap-only verification；dirty worktree 保护；Failure Index；高价值决策回到推理大脑；共同事实源强制收口；正式报告 + 机器可读结果；精确 stage；禁止 `git add .`、force push、`reset --hard`、覆盖陌生修改；remote verify；只读任务不制造无意义 commit。
+# 第3步：GPT Virtual-99
 
-完整继承表见 `references/LEGACY-INHERITANCE-MAP.md`。
+循环只发生在 GPT 虚拟层。
 
-## SHARED FACT SOURCE CLOSURE GATE
+## 3.1 成熟方案矩阵
+
+每个候选至少判断：
 
 ```text
-SHARED_FACT_SOURCE=cuiqinggang/codex-private-skills
-SHARED_REPO_LOCAL=C:\Users\A\Documents\Codex\codex-private-skills
-SHARED_REPO_SYNC_REQUIRED=YES
+SOURCE
+HARDWARE_MATCH
+TASK_MATCH
+MECHANISM
+TARGET_BLOCK
+EXPECTED_GAIN
+QUALITY_RISK
+STABILITY_RISK
+INTEGRATION_COST
+REVERSIBLE
 ```
 
-凡产生后续需要复用的新工程事实：
+## 3.2 虚拟组合
 
 ```text
-LOCAL RESULT
--> FORMAL REPORT / STRUCTURED FACT
--> SHARED REPOSITORY
--> EXACT STAGE
--> COMMIT
--> PUSH
--> REMOTE VERIFY
+CURRENT
+-> mature route 1
+-> mature route 2
+-> interaction / duplicated gain correction
+-> residual gap
+-> continue until stop condition
 ```
 
-只有 `LOCAL_TASK_RESULT=PASS AND SHARED_REPO_SYNC=PASS` 才允许 `STAGE_COMPLETE=YES / FINAL=PASS / 99=YES / FREEZE=YES`。
-
-只读回答、纯解释、未执行草案、读取已有事实且不产生新工程事实时允许 `SHARED_REPO_SYNC_REQUIRED=NO`。
-
-## 99 / FREEZE
-
-99 不是 `T_CURRENT/T_PHY=99%`，也不是任意固定 1% 阈值。只有固定任务真实完成、hard constraints 通过、权威计时稳定、当前结果已进入或贴近高置信 `T_MACHINE_STAR` 区间、剩余高置信机制的绝对收益不再显著高于测量噪声 + 工程/切换成本、没有明显大块重甲、目标没有为了过 99 被移动、shared-repo closure PASS，才允许 `99=YES / FREEZE=YES`。
-
-## 默认最短读取路径
-
-正常任务只读 `SKILL.md` 和 `references/FAST-PATH.md`。
-
-按需读取：
-- `references/FIRST-PRINCIPLES-LIMIT-MODEL.md`
-- `references/MULTI-AGENT-PARALLELISM.md`
-- `references/EXECUTION-BRIDGE.md`
-- `references/EXECUTION-CLOSURE-CONTRACT.md`
-- `references/FAILURE-INDEX.md`
-- `references/RAPTOR-ITERATION-CASE.md`
-
-## 状态声明
+对比：
 
 ```text
-SKILL_VERSION=1.0.0
-METHOD_LOGIC_ACCEPTANCE=PASS
-LEGACY_INHERITANCE_REVIEW=PASS
-MULTI_AGENT_POLICY_DEFINED=PASS
-H3_FIRST_APPLICATION=NOT_STARTED
-H3_PHYSICAL_LIMIT_CALCULATION=NOT_STARTED
-H3_V1_RUN=NOT_STARTED
-RUNTIME_INSTALLATION=NOT_EXECUTED_BY_THIS_PACKAGE
+Virtual result
+<-> REAL_STATE_OPTIMUM_RANGE
+<-> T_PHY_TOTAL_REFERENCE
 ```
+
+## 3.3 随机系统的优先 Virtual 模式
+
+如果单次候选成功率已经较高，且存在可靠、便宜的 deterministic verifier（确定性验证器），必须优先评估：
+
+```text
+fast stochastic proposal
+-> deterministic verifier
+-> invalid proposal rejected
+-> resample
+-> first valid result delivered
+```
+
+这是系统级优化候选，不等于“算法不稳定所以降低标准”。
+
+硬规则：
+
+```text
+QC 不能降低
+FAIL 输出不能交付
+随机 retry 不应人工挑历史 PASS seed
+新 attempt 必须按冻结随机源策略产生
+```
+
+有限实验不能证明随机系统未来数学上绝对终止，因此禁止把“20/20 accepted PASS”表述为“未来任何随机序列绝对100%会终止”。
+
+工程可冻结的是：
+
+```text
+INVALID_OUTPUT_DELIVERED = 0
+FINAL_ACCEPTED_QC = certification sample all PASS
+```
+
+## 3.4 停止条件
+
+满足任一：
+
+1. 虚拟方案进入现实最优区间；
+2. 剩余收益小；
+3. 风险/成本大于收益；
+4. 剩余方案不成熟；
+5. 需要新的独立研究方向。
+
+冻结：
+
+```text
+VIRTUAL_99_FINAL_PLAN
+```
+
+---
+
+# 第4步：Codex 完整实测命令包
+
+命令包至少包含：
+
+```text
+OBJECTIVE
+CURRENT_STATE
+ALLOWED_CHANGE
+ALLOWED_FILES_OR_COMPONENTS
+BASELINE
+CANDIDATE_ORDER
+SEEDS_AND_RUN_COUNT or RANDOM_SOURCE_POLICY
+TIMING_BOUNDARY
+QC_GATE
+SUCCESS_RULE
+FAILURE_RULE
+ROLLBACK
+GPU_BUDGET
+TIME_BUDGET
+FINAL_CERTIFICATION
+REMOTE_FREEZE
+```
+
+## 4.1 预授权状态机
+
+命令包可以包含确定的状态机，例如：
+
+```text
+RUN
+-> QC PASS: ACCEPT
+-> QC FAIL: REJECT + NEW RANDOM SEED + RUN SAME PATH
+```
+
+这不是 Codex 自由探索，因为：
+
+- 候选没变；
+- TASK 没变；
+- QC 没变；
+- 分支由 GPT 预先冻结；
+- Codex 只是执行状态机。
+
+## 4.2 正常执行
+
+```text
+读取技能
+-> 核验版本/远端事实源
+-> 读取完整命令包
+-> 执行既定状态机
+-> 生成证据
+-> push
+-> remote verify
+-> STOP
+```
+
+正常 PASS/FAIL/ROLLBACK 分支不需要每一步返回 GPT。
+
+---
+
+# 三、失败分层规则
+
+任何失败先分类：
+
+```text
+CONTROL_PLANE_FAILURE
+EXECUTION_ENVIRONMENT_FAILURE
+SOURCE_IDENTITY_FAILURE
+RANDOM_ATTEMPT_QC_FAILURE
+ALGORITHM_QUALITY_FAILURE
+PERFORMANCE_FAILURE
+DELIVERY_SYSTEM_FAILURE
+```
+
+不同层级不得混判。
+
+例：
+
+- `Selected model is at capacity` = 控制面容量问题，不是 GPU 算法失败；
+- `TokenDefaultDacl 1344` = Windows执行环境问题；
+- 随机 seed QC FAIL = 可能只是 attempt failure；
+- accepted output QC FAIL = delivery system failure。
+
+---
+
+# 四、独立99路径
+
+新发现的优化方向如果需要新模型/内核/版本/架构或独立研究，不插回冻结主流程。
+
+记录为：
+
+```text
+INDEPENDENT_99_PATH
+```
+
+以后独立重复四步。
+
+---
+
+# 五、99 定义
+
+99 不是距离物理极限只差 1%。
+
+确定性任务：
+
+```text
+固定 TASK
++ 当前硬件
++ T_PHY
++ REAL_STATE_OPTIMUM_RANGE
++ Virtual-99
++ Codex实测
++ Quality/Stability/Safety PASS
++ Final Certification
++ Remote Verify
+= 当前稳定最优99
+```
+
+随机任务必须标明冻结层级：
+
+```text
+SINGLE_ATTEMPT_99
+或
+DELIVERY_SYSTEM_99
+```
+
+不得把 90% first-attempt pass 写成 100% single-attempt success。
+
+可以在 accepted-delivery 层冻结：
+
+```text
+FINAL_ACCEPTED_QC = 100% in certification set
+INVALID_OUTPUT_DELIVERED = 0
+T_TFVR distribution certified
+```
+
+---
+
+# 六、远端共同事实源
+
+本地路径不是共同事实源。
+
+固定流程：
+
+```text
+远端读取
+-> 本机执行
+-> 报告
+-> Git commit
+-> push
+-> remote verify
+```
+
+任何阶段报告至少保存：
+
+```text
+TASK_ID
+BRANCH
+LAST_REMOTE_HEAD
+COMPLETED_STEPS
+DO_NOT_REPEAT
+NEXT_ACTION
+ARTIFACT_PATHS
+```
+
+---
+
+# 七、自动控制面
+
+v2.0 正式支持去除人工复制粘贴。
+
+推荐角色：
+
+```text
+GPT = planner / judge / Virtual-99
+Codex = deterministic executor
+GitHub = shared truth workspace / event bus
+AI Browser = ChatGPT transport
+Capacity Router = Codex model availability failover
+Workflow Orchestrator = state machine / checkpoint / idempotency
+```
+
+## 7.1 自动闭环
+
+```text
+GPT writes PLAN + COMMAND to GitHub
+-> orchestrator detects READY_FOR_CODEX
+-> Codex reads exact command from GitHub
+-> Codex executes locally
+-> Codex writes RESULT + STATE + evidence pointers
+-> push + remote verify
+-> orchestrator detects RETURN_TO_GPT
+-> AI Browser opens/reuses ChatGPT conversation
+-> sends only new result + exact artifact refs
+-> GPT judges and writes next command
+-> repeat until FREEZE or BLOCKED
+```
+
+用户保留：
+
+```text
+STOP
+PAUSE
+APPROVE_SENSITIVE_ACTION
+CHANGE_TASK_CONTRACT
+```
+
+但不再负责纯文本搬运。
+
+## 7.2 控制面安全规则
+
+- 自动化不得绕过登录、验证码、支付、安全提示；
+- capacity 切换不得重放已完成本地工作；
+- 所有写操作必须幂等；
+- 每个阶段必须有 `DO_NOT_REPEAT`；
+- ChatGPT/Codex 回复必须经 GitHub 状态文件确认后再推进；
+- 浏览器运输失败不等于业务失败。
+
+详细规则见：
+
+- `references/STOCHASTIC-VERIFIED-DELIVERY.md`
+- `references/AUTOMATED-GPT-CODEX-CONTROL-PLANE.md`
+
+---
+
+# 八、H3-P0 成功案例
+
+v2.0 的随机交付规则来自真实 H3-P0：
+
+```text
+20 formal delivery tasks
+22 total attempts
+first-attempt pass = 18/20 = 90%
+mean attempts = 1.10
+T_TFVR mean = 6.804s
+P50 = 6.076s
+P95 = 11.974s
+max = 12.862s
+final accepted QC = 20/20
+invalid output delivered = 0
+```
+
+案例事实源：
+
+`docs/h3-p0/20260917-mature-convergence-v2/H3-P0-FINAL-99-FREEZE-v1.md`
+
+---
+
+# 九、最终一句话
+
+> 固定任务后，以物理时间为终极参照，在 GPT 虚拟层吸收成熟方案并冻结状态机，让 Codex 只执行；对于随机系统，不要求每个随机候选一次成功，而用严格验证器拒绝坏候选，以最快路径重新采样，最小化首个有效交付结果的端到端时间。
