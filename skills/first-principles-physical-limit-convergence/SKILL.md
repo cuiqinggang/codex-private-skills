@@ -1,510 +1,488 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 在固定任务与硬约束下，先声明项目级远端共同工作区，再计算第一性原理物理极限，用极简真实运行校准真实可实现极限；先吸收成熟方案，在推演层形成完整虚拟99路径，再由Codex做短时确定性验证；成熟大收益收割后再次做残余收益虚拟收敛；最终按剩余优化组合的未来生命周期总收益与总成本决定停止。共同工作区永远是远端在线权威空间，本地目录只能是执行副本。
+description: 在固定任务与硬约束下，以单一端到端第一性原理物理极限为最终时间参照；先声明项目远端共同工作区并完成极简真实运行，再由GPT/高质量推理层一次性设计完整虚拟99铁路。Codex只允许作为确定性验证器/执行器按铁路高速验证，绝对禁止自行发现候选、制定测试、扩展迭代、开放式profiling或自由探索。成熟大收益后再次做残余虚拟收敛，最终按组合生命周期ROI、最终认证与远端核验冻结99。
 metadata:
-  version: "1.6.0"
-  short-description: 第一性原理物理极限收敛引擎·远端共同工作区/双层虚拟收敛版
-  lineage: first-principles-physical-limit-convergence@1.5.0 <- @1.4.0 <- @1.3.0 <- @1.2.0 <- @1.1.0 <- @1.0.0
+  version: "1.7.0"
+  short-description: 第一性原理物理极限收敛引擎·技能优先/零自由探索版
+  lineage: first-principles-physical-limit-convergence@1.6.0 <- @1.5.0 <- @1.4.0 <- @1.3.0 <- @1.2.0 <- @1.1.0 <- @1.0.0
 ---
 
-# 第一性原理物理极限收敛引擎 v1.6.0
+# 第一性原理物理极限收敛引擎 v1.7.0
 
-## 总目标
+## 第 -1 门禁：SKILL PRECEDENCE / NO FREE EXPLORATION
+
+这是本技能在项目方法层级中的最高优先级执行规则。它不能被后续任务命令、临时说明、执行器自行判断或“为了完成任务”的扩展解释削弱；更高层级的系统、安全和平台约束仍然优先。
 
 ```text
-PRIMARY_OBJECTIVE（主目标）
-= 最小化真实端到端执行时间
-
-SECONDARY_OBJECTIVE（第二目标）
-= 最小化达到稳定最优所需的工程时间与智能体资源成本
+SKILL_PRECEDENCE_GATE=ABSOLUTE_WITHIN_PROJECT
+NO_FREE_EXPLORATION=YES
+CODEX_ROLE=DETERMINISTIC_VALIDATOR_EXECUTOR
+CODEX_MAY_DESIGN_TEST_PLAN=NO
+CODEX_MAY_ADD_CANDIDATE=NO
+CODEX_MAY_EXTEND_ITERATION=NO
+CODEX_MAY_PROFILE_WITHOUT_GPT_PLAN=NO
+GPT_COMPLETE_VALIDATION_RAILROAD_REQUIRED=YES
 ```
 
-硬约束永远优先：任务必须真实完成，correctness（正确性）、quality（质量）、stability（稳定性）、safety（安全）必须通过；不得为了提速偷偷改变任务合同。
+### 绝对禁止
+
+Codex / 本地执行器不得自行：
+
+- 发现一个优化点后顺手测试；
+- 选择新的候选、替换候选或改变候选顺序；
+- 自己制定 A/B、seed、运行次数、阈值或停止规则；
+- 因结果“不理想”而自动追加第 4、第 5、第 N 次运行；
+- 自己开启 profiler、kernel trace、VRAM 扫描、版本扫描或参数搜索；
+- 从一个验证结果推导下一个实验并继续执行；
+- 把“继续完成任务”“尽量优化”“做到99”等宽泛目标解释为自行设计子计划的授权；
+- 在 GPT 方案缺项时自行补齐方案。
+
+### 命令与技能冲突
+
+若项目任务命令与本技能发生冲突：
+
+```text
+COMMAND_CONFLICT_WITH_SKILL=YES
+→ NO_FREE_EXPLORATION_RULE_WINS
+→ STOP UNSPECIFIED ACTION
+→ PRESERVE FACTS
+→ RETURN_TO_GPT
+```
+
+任务命令可以比本技能更严格、可以指定更具体的执行步骤，但不得弱化 `NO_FREE_EXPLORATION=YES`。
+
+### 每次正式执行前必须先验证技能
+
+```text
+SKILL_ID=first-principles-physical-limit-convergence
+REQUIRED_SKILL_VERSION=<项目声明版本>
+SKILL_VERSION_VERIFIED=YES
+PROJECT_WORKSPACE_DECLARATION_GATE=PASS
+```
+
+若技能不存在、版本不符、无法读取或项目没有声明所需版本：
+
+```text
+SKILL_PRECEDENCE_GATE=BLOCKED
+→ NO GPU RUN
+→ NO NEW EXPERIMENT
+→ REPORT MISMATCH
+→ RETURN_TO_GPT
+```
+
+### GPT 完整验证铁路的最小合同
+
+任何允许 Codex 执行的验证步骤必须已经由 GPT / 高质量推理层明确给出：
+
+```text
+OBJECTIVE
+CURRENT_STATE
+ALLOWED_CHANGE
+ALLOWED_FILES_OR_COMPONENTS
+BASELINE
+SEEDS_AND_RUN_COUNT
+TIMING_BOUNDARY
+QC_GATE
+EXPECTED_BOUNDED_OUTCOME
+SUCCESS_RULE
+FAILURE_RULE
+INCONCLUSIVE_RULE
+ROLLBACK
+STOP_POINT
+MAX_GPU_RUNS
+TIME_BUDGET
+CODEX_BUDGET
+NEXT_ACTION_AFTER_EACH_OUTCOME
+```
+
+缺任何关键项：
+
+```text
+VALIDATION_PLAN_NOT_MATURE=YES
+→ STOP EXECUTION
+→ RETURN_TO_GPT
+```
+
+意外结果的默认行为永远不是继续探索，而是：
+
+```text
+UNEXPECTED_RESULT=YES
+→ SAVE EVIDENCE
+→ RESTORE / SAFE STOP AS PREDEFINED
+→ RETURN_TO_GPT
+```
+
+详细规则见：`references/NO-FREE-EXPLORATION-GATE.md`。
 
 ---
 
-# 第0门禁 — PROJECT REMOTE WORKSPACE（项目远端共同工作区）
-
-任何正式任务开始前，必须先声明本项目自己的远端共同工作区。
+# 总目标
 
 ```text
-PROJECT_ID（项目ID）
-SHARED_WORKSPACE_TYPE（共同工作区类型）
-SHARED_WORKSPACE_REMOTE（远端共同工作区）
-SHARED_WORKSPACE_BRANCH（远端工作分支，如适用）
-SHARED_WORKSPACE_PROJECT_PATH（远端项目路径，如适用）
-LOCAL_EXECUTION_CHECKOUT（本地执行副本，可选）
-REMOTE_VERIFY_REQUIRED=YES（必须远端核验）
+PRIMARY_OBJECTIVE
+= 最小化固定任务真实端到端执行时间
+
+SECONDARY_OBJECTIVE
+= 最小化达到稳定最优所需的工程时间、GPU时间与智能体资源成本
+```
+
+硬约束优先：任务必须真实完成，correctness、quality、stability、safety 全部通过；不得为了提速偷偷改变任务合同。
+
+---
+
+# 第0门禁：PROJECT REMOTE WORKSPACE
+
+正式任务开始前必须声明项目自己的远端共同工作区：
+
+```text
+PROJECT_ID
+SHARED_WORKSPACE_TYPE
+SHARED_WORKSPACE_REMOTE
+SHARED_WORKSPACE_BRANCH
+SHARED_WORKSPACE_PROJECT_PATH
+LOCAL_EXECUTION_CHECKOUT
+REMOTE_VERIFY_REQUIRED=YES
 ```
 
 硬规则：
 
 ```text
-SHARED_WORKSPACE_IS_REMOTE=YES（共同工作区必须是远端在线空间）
-LOCAL_PATH_IS_SHARED_WORKSPACE=NO（本地路径绝不等于共同工作区）
+SHARED_WORKSPACE_IS_REMOTE=YES
+LOCAL_PATH_IS_SHARED_WORKSPACE=NO
 ```
 
-任何 `C:\...`、`D:\...`、`/home/...`、本机 clone（克隆）或 worktree（工作树），只能叫：
+任何 `C:\...`、`D:\...`、`/home/...`、本机 clone 或 worktree 只能叫 `LOCAL_EXECUTION_CHECKOUT` 或 `LOCAL_EVIDENCE_ROOT`，不能叫共同工作区或共同事实源。
+
+正确顺序：
 
 ```text
-LOCAL_EXECUTION_CHECKOUT（本地执行副本 / 本地检出副本）
+REMOTE LOCATE
+→ FETCH/PULL
+→ LOCAL CHECKOUT
+→ EXECUTE PREDEFINED RAILROAD
+→ REPORT
+→ PUSH
+→ REMOTE VERIFY
 ```
 
-不得称为“共同工作区”“共同事实源”或“共享仓库真源”。
-
-共同工作区是**项目级配置**，不是全局固定仓库。H3-P0 可以使用一个 GitHub 仓库，未来其他项目可以使用另一个 GitHub / GitLab / 其他远端在线工作区；不得默认沿用 H3-P0 的仓库。
-
-如果项目尚未明确远端共同工作区：
+只有远端核验成功后：
 
 ```text
-PROJECT_WORKSPACE_DECLARATION_GATE=BLOCKED（项目工作区声明门禁阻断）
+SHARED_FACT_CONFIRMED=YES
 ```
 
-此时不得通过全盘搜索本机磁盘来猜“共同工作区”在哪里。
-
-正确读取顺序：
-
-```text
-REMOTE LOCATE（远端定位）
-→ FETCH / PULL（拉取远端）
-→ LOCAL CHECKOUT（本地检出副本）
-→ EXECUTE（本机执行）
-→ REPORT（形成报告）
-→ PUSH（推送远端）
-→ REMOTE VERIFY（远端核验）
-```
-
-所有新工程事实只有 push（推送）并通过 remote verify（远端核验）后，才允许成为：
-
-```text
-SHARED_FACT_CONFIRMED=YES（共同事实已确认）
-```
-
-本机大日志、视频、模型等可暂留 `LOCAL_EVIDENCE_ROOT（本机证据目录）`，但正式报告、摘要、哈希、证据索引和关键结论必须写回远端共同工作区；否则只能叫本机结果，不能叫共同事实。
-
-详细规则见：
-
-`references/REMOTE-SHARED-WORKSPACE.md`
+详细规则见：`references/REMOTE-SHARED-WORKSPACE.md`。
 
 ---
 
 # 核心原则
 
-## 1. 第一性原理不是自由探索
+## 1. 第一性原理只负责边界，不授权自由探索
 
-第一性原理负责：
+第一性原理负责：冻结任务、硬件边界、物理因果链、不可避免工作量和最终时间下界；成熟方案负责吸收世界已经解决的工程收益；GPT负责完整虚拟推演；Codex只负责短验证。
 
-- 冻结任务合同；
-- 冻结当前真实硬件边界；
-- 建立物理因果链；
-- 计算 `T_PHY（第一性原理物理极限）`；
-- 区分不可避免成本与可消灭成本；
-- 给现实优化提供终极参照。
+## 2. 物理极限板只保留一个端到端时间标准
 
-它不要求重新发明官方、市场和成熟开源项目已经反复验证过的优化。
+每个固定任务最终只发布一个正式对比标准：
 
-只要存在高适用、高证据的成熟方案，就优先吸收成熟收益；禁止先进入无边界自研。
+```text
+T_PHY_TOTAL_REFERENCE
+= 固定任务在当前物理边界下的端到端理论最短时间
+= 一个数字或一个区间
+```
 
-## 2. 复杂系统必须先得到真实运行态
+Generation、Path、I/O、load、decode 等分量可以在内部建模，但**不得再作为并列的正式“物理极限板”标准**。
 
-静态硬件型号、软件版本、模型大小不能代表真正运行时状态。
+用途只有一个：
 
-复杂任务必须尽快完成一次 `MRE（极简真实运行）`，让最小完整关键链真实跑通，得到真实：阶段时间、设备放置、模型装载/卸载、显存/内存、缓存/预取/编译是否启用、冷启动/预热/稳态差异、运行故障和真实关键路径。
+```text
+CURRENT / CANDIDATE / FINAL
+↔ T_PHY_TOTAL_REFERENCE
+```
 
-## 3. 实际执行前先形成完整虚拟99铁路
+`T_PHY_TOTAL_REFERENCE` 是理论物理参照，不是实测机器 benchmark，也不等于 99 通过门槛。未知效率允许使用区间和置信度，禁止伪精确。
+
+## 3. 复杂系统先做 MRE
+
+静态版本和模型大小不能代表运行态。复杂任务先让最小完整链真实跑通，得到冷态、预热、稳态、实际时间、设备放置、驻留、缓存、故障与质量事实。
+
+MRE 是 `REAL_STATE_CALIBRATOR`，不是性能终测，也不授权 MRE 后立即进入下一实验。
+
+## 4. 实际执行前先完整虚拟运行到99
 
 禁止：
 
 ```text
-发现一个点
-→ 试一个点
-→ 再发现一个点
-→ 再试一个点
-→ V1…Vn
+发现一点 → 测一点 → 再发现一点 → 再测一点 → V1...Vn
 ```
 
 正式路径：
 
 ```text
-远端共同事实源
-→ 第一性原理极限
-→ 极简真实运行
-→ 真实态现实极限
-→ 成熟方案吸收
-→ 完整虚拟运行到99
-→ 形成成熟执行铁路
-→ Codex按铁路快速验证
-→ 写回远端共同工作区
+远端共同事实
+→ T_PHY_TOTAL_REFERENCE
+→ MRE
+→ REAL_STATE_MODEL
+→ 成熟方案收割
+→ GPT完整虚拟99铁路
+→ Codex按铁路短验证
+→ 每个结果返回GPT裁决
+→ 残余虚拟收敛
+→ Final Certification
+→ FREEZE
 ```
 
-## 4. 成熟大收益收割后，必须再次虚拟收敛
+## 5. 成熟大收益后再次虚拟收敛
 
-成熟方案先吃掉大头收益。剩余收益往往更小、更细、更相互耦合，但不能因此交给 Codex 数小时慢慢摸索。
+成熟候选验证完成后，Codex停止。GPT根据最新真实数据重新执行 `RESIDUAL_VIRTUAL_CONVERGENCE`，把剩余优化作为组合推演到停止点，再生成下一批完整验证铁路。
 
-必须用更新后的真实运行数据，再执行：
+## 6. 停止条件看组合生命周期ROI，但执行仍必须短而确定
+
+单个 0.1s / 0.5s 不能单独决定停止。GPT比较：
 
 ```text
-RESIDUAL_VIRTUAL_CONVERGENCE（残余收益虚拟收敛）
+EXPECTED_LIFETIME_BENEFIT_PORTFOLIO
+vs
+PORTFOLIO_COST
 ```
 
-把剩余全部可行优化作为一个组合，在 GPT / 高质量推理层重新推演到停止点，形成新的短验证铁路。
-
-## 5. 停止条件看剩余优化组合的长期总收益
-
-不能因为某一个点只省 0.1 秒、0.5 秒就停止，也不能因为未来收益很大就默认允许数小时开放式执行。
-
-必须同时满足两层判断：
-
-1. 剩余优化组合在未来生命周期中的总收益是否大于总成本；
-2. 这些优化是否已经被推演成短、确定、可验证的执行步骤。
-
-如果还需要数小时开放式试错才能知道方向，说明虚拟路径没有成熟，应退回推演层，而不是继续消耗 Codex / GPU 配额。
+即使组合长期收益很大，也只代表值得继续设计；不代表允许 Codex 自由探索。
 
 ---
 
-# STEP 1 — 计算极限 + 极简真实运行 + 真实态校准
+# STEP 1：边界 + 单一物理极限 + MRE + 真实态
 
 ## 1.1 冻结任务合同
 
-必须冻结：
-
 ```text
-TASK_CONTRACT（任务合同）
-TASK_COMPLETED（完成条件）
-CORRECTNESS_GATE（正确性门禁）
-QUALITY_GATE（质量门禁）
-STABILITY_GATE（稳定门禁）
-SAFETY_GATE（安全门禁）
-TIMING_BOUNDARY（权威计时边界）
+TASK_CONTRACT
+TASK_COMPLETED
+CORRECTNESS_GATE
+QUALITY_GATE
+STABILITY_GATE
+SAFETY_GATE
+TIMING_BOUNDARY
 ```
 
 ## 1.2 冻结当前有效硬件边界
 
 ```text
-ACTIVE_HARDWARE_BOUNDARY（当前有效硬件边界）
+ACTIVE_HARDWARE_BOUNDARY
 = 此刻真实安装 + 可正常使用 + 本任务允许使用的硬件
 ```
 
-未来计划增加但当前不存在的硬件，不进入本轮99，也不得阻断本轮99。
+未来未安装硬件不得阻断当前 99。
 
-## 1.3 继承历史经验
+## 1.3 继承历史共同事实
 
-若存在兼容历史任务，必须优先从本项目 `SHARED_FACT_SOURCE（共同事实源）` 继承：
+优先继承：已验证基线、P50/P95、KEEP/ROLLBACK、Failure Index、真实阶段时间、驻留/VRAM/RAM/I/O事实、已证实和已证伪机制。有兼容历史证据时禁止从零重探。
 
-- `VERIFIED_99（已验证99）`；
-- P50 / P95；
-- KEEP / ROLLBACK（保留 / 回滚）；
-- Failure Index（失败索引）；
-- 真实阶段成本；
-- 稳定 VRAM / RAM / I/O / 设备放置事实；
-- 已证实有效和已证伪机制。
+## 1.4 发布单一物理极限参照
 
-有远端共同事实时禁止重新从零探索。
-
-## 1.4 计算第一性原理物理极限
+只发布：
 
 ```text
-T_PHY（第一性原理物理极限）
-= 固定任务在当前硬件边界、物理规律和不可避免工作量下的理论下界区间
+T_PHY_TOTAL_REFERENCE=<number or interval>
 ```
 
-未知效率使用区间 + 置信度，禁止伪精确。
+必须写明任务合同、硬件边界、估算依据和置信度。分块极限只留在计算工作底稿，不进入对外极限板。
 
-## 1.5 计算现实极限初稿
+## 1.5 做一次 MRE
+
+目标是在最小工程成本下校准真实态。MRE 固定结束条件必须提前写明；完成后立即停止，返回 GPT。
+
+## 1.6 建立 REAL_STATE_MODEL
 
 ```text
-T_MACHINE_STAR_PRE（本机现实极限初算）
-= 当前硬件
-+ 当前软件
-+ 已知成熟实现
-+ 历史经验先验
-下的稳定理论区间初稿
+T_PHY_TOTAL_REFERENCE
++ STATIC_FACTS
++ MRE_OBSERVATIONS
++ EMPIRICAL_PRIORS
+= REAL_STATE_MODEL
 ```
 
-## 1.6 做一次 MRE（极简真实运行）
-
-复杂系统必须尽快让最小完整链真实运行。
-
-默认目标：约10分钟级工程时间内获得足以校准方向的数据；若任务本身物理运行时间更长，则使用机制一致的最小合同或最小子合同。
-
-MRE不是性能终测，而是 `REAL_STATE_CALIBRATOR（真实态校准器）`。
-
-## 1.7 建立 REAL_STATE_MODEL（真实态模型）
-
-```text
-T_PHY
-+ STATIC_FACTS（静态事实）
-+ MRE_OBSERVATIONS（极简真实运行数据）
-+ EMPIRICAL_PRIORS（经验先验）
-= REAL_STATE_MODEL（真实态模型）
-→ T_MACHINE_STAR_REAL（真实态本机稳定理论极限）
-```
-
-如现实数据推翻初始假设，必须记录：失效假设、新证据、旧区间、新区间、修订原因。
-
-这是模型校正，不是为了通过99而随意放宽目标。
+现实数据推翻假设时记录失效假设、新证据和修订原因。不得为了“更容易达到99”而修改物理极限参照。
 
 ---
 
-# STEP 2 — 成熟方案吸收 + 完整虚拟99路径 + 快速验证 + 残余虚拟收敛
+# STEP 2：成熟方案 + 完整虚拟99 + 确定性验证
 
-## 2.1 扫描世界成熟方案
+## 2.1 建立 MATURE_HARVEST_MATRIX
 
-优先顺序：
+优先证据：官方稳定方案、同硬件实测、成熟开源、本机历史成功、机制清晰的社区重复验证。
 
-1. 官方稳定方案与官方性能提交；
-2. 同硬件、同模型、同任务或高度相似任务的真实成熟方案；
-3. 反复验证的成熟开源工程；
-4. 本机历史成功经验包；
-5. 大量社区重复验证且机制清楚的方案。
-
-## 2.2 建立 MATURE_HARVEST_MATRIX（成熟收益收割矩阵）
-
-至少记录：
+每个候选至少记录：
 
 ```text
-SOURCE_LEVEL（来源等级）
-HARDWARE_MATCH（硬件匹配）
-TASK_MATCH（任务匹配）
-MECHANISM（机制）
-TARGET_BLOCK（目标时间块）
-EXPECTED_ABS_GAIN（预期绝对收益）
-QUALITY_RISK（质量风险）
-STABILITY_RISK（稳定风险）
-INTEGRATION_COST（集成成本）
-REVERSIBILITY（可逆性）
-CURRENTLY_PRESENT（当前是否已有）
+SOURCE_LEVEL
+HARDWARE_MATCH
+TASK_MATCH
+MECHANISM
+TARGET_BLOCK
+EXPECTED_ABS_GAIN
+QUALITY_RISK
+STABILITY_RISK
+INTEGRATION_COST
+REVERSIBILITY
+CURRENTLY_PRESENT
 ```
 
-优先“大收益、强证据、高适用、低成本、可逆”。
+外部百分比只用于排序，不直接变成本机收益，也不自动 KEEP。
 
-## 2.3 构建 VIRTUAL_MATURE_PATH（虚拟成熟路径）
+## 2.2 GPT 构建完整 VIRTUAL_MATURE_PATH
 
-不是只评估一个候选，而是把从当前真实状态到99的完整路线先推演出来：
+GPT必须在执行前一次性把当前批次从起点到停止点设计完整。每一步包含：
 
 ```text
-CURRENT_REAL_STATE（当前真实态）
-→ 成熟方案1
-→ 成熟方案2
-→ 剩余最大Gap攻击1
-→ 剩余最大Gap攻击2
-→ ……
-→ 99
+STEP
+CURRENT_STATE
+TARGET_BLOCK
+MECHANISM
+SOURCE
+EXPECTED_REMOVABLE_TIME
+NEW_OVERHEAD
+PROJECTED_RESULT_RANGE
+RISK
+ROLLBACK
+VERIFICATION_RAILROAD
+MAX_GPU_RUNS
+TIME_BUDGET
+CODEX_BUDGET
+STOP_POINT
 ```
 
-每一步必须包含：
+前一步结果决定后一步是否仍适用，但**这个条件分支必须提前写在铁路里**。未预定义的分支不得由 Codex 自行发明。
+
+## 2.3 Codex执行规则
+
+Codex只做：
 
 ```text
-STEP（步骤）
-CURRENT_STATE（当前状态）
-TARGET_BLOCK（攻击块）
-MECHANISM（方法）
-SOURCE（成熟来源/真实数据）
-EXPECTED_REMOVABLE_TIME（预计可消灭时间）
-NEW_OVERHEAD（新增开销）
-PROJECTED_RESULT（预计结果）
-RISK（风险）
-ROLLBACK（回滚）
-VERIFICATION（Codex验证方法）
-EXPECTED_EXECUTION_TIME（预计执行时间）
-EXPECTED_GPU_RUNS（预计GPU运行次数）
-EXPECTED_CODEX_COST（预计Codex成本）
+LOAD REQUIRED SKILL
+→ VERIFY VERSION
+→ VERIFY PROJECT WORKSPACE
+→ VERIFY PREDEFINED RAILROAD COMPLETE
+→ EXECUTE EXACT STEP
+→ QC
+→ WRITE EVIDENCE
+→ ROLLBACK/KEEP ONLY BY PREDEFINED RULE
+→ STOP
+→ RETURN RESULT TO GPT
 ```
 
-前一步预计结果必须成为后一步输入；禁止简单累加各点理论收益。
+如果实测与预计不符、控制组漂移、环境异常、审批门禁等待、Git远端变化或其他异常没有预定义处理：保存事实并停止。
 
-## 2.4 Codex只做快速验证
-
-Codex默认角色：
+## 2.4 禁止数小时开放式验证
 
 ```text
-VALIDATOR / EXECUTOR（验证器 / 执行器）
+NO_MULTI_HOUR_OPEN_ENDED_VALIDATION=YES
 ```
 
-不负责开放式寻找优化方向。
-
-每个执行步骤必须有明确目标、修改、预计结果、计时/QC、成功/失败条件、回滚、预算和停止点。
-
-如果：
+超过预定时间预算且没有铁路中定义的继续条件：
 
 ```text
-ACTUAL_RESULT（实测） != PROJECTED_RESULT（预计）
+BUDGET_DRIFT=YES
+→ SAFE STOP
+→ SAVE EVIDENCE
+→ RETURN_TO_GPT
 ```
 
-立即停止自由延伸，保存证据，把新事实返回高质量推理层重新计算剩余虚拟路径。
+## 2.5 自研攻击入口
 
-## 2.5 成熟大收益后必须做 RESIDUAL_VIRTUAL_CONVERGENCE（残余收益虚拟收敛）
-
-把剩余优化点按真实依赖组成 `RESIDUAL_VIRTUAL_PATH（残余虚拟路径）`；每个点必须有当前块时间、机制、成熟依据/真实证据、预计收益、交互、新增开销、验证成本、质量/稳定风险和回滚。
-
-这一阶段的主要复杂工作仍在 GPT / 高质量推理层完成。
-
-## 2.6 禁止小时级开放式验证
-
-```text
-NO_MULTI_HOUR_OPEN_ENDED_VALIDATION=YES（禁止数小时开放式验证）
-```
-
-如果某个优化需要不断试参数、改代码、再测数小时才能知道方向：
-
-```text
-VALIDATION_PLAN_NOT_MATURE=YES（验证计划不成熟）
-→ STOP EXECUTION（停止执行）
-→ RETURN TO VIRTUAL REHEARSAL（退回虚拟推演）
-```
-
-如果实际执行明显超过预计预算且没有对应信息增益：
-
-```text
-BUDGET_DRIFT=YES（预算漂移）
-→ SAFE STOP（安全停止）
-→ 保存已有证据
-→ 回到虚拟推演层
-```
-
-## 2.7 自研攻击的唯一入口
-
-只有成熟方案无法覆盖显著剩余 Gap，而且真实数据已明确指向具体机制时，才允许定向自研。
-
-每个自研步骤必须同时满足：
-
-```text
-REAL_DATA_SUPPORT=YES（有真实数据）
-MECHANISM_EXPLAINED=YES（机制清楚）
-EXPECTED_GAIN_ESTIMATED=YES（收益已估算）
-ROLLBACK_DEFINED=YES（回滚明确）
-EXECUTION_BUDGET_DEFINED=YES（执行预算明确）
-```
-
-否则不执行。
+自研只允许由 GPT 在虚拟层提出；Codex不得自行进入。GPT提出的自研步骤必须同时有真实数据、明确机制、预计收益、可逆回滚和有限预算。
 
 ---
 
-# PORTFOLIO ROI（剩余组合收益停止）
+# RESIDUAL VIRTUAL CONVERGENCE
 
-剩余可行优化：
-
-```text
-S = {优化点1, 优化点2, …, 优化点n}
-```
-
-必须按真实顺序在 `RESIDUAL_VIRTUAL_PATH（残余虚拟路径）` 中整体推演。
+每批成熟验证后，Codex停止；GPT重新读取最新共同事实并做：
 
 ```text
-DELTA_T_PORTFOLIO（组合单次总节省）
-= T_CURRENT（当前一次任务时间）
-- T_PROJECTED_FINAL（全部剩余优化完成后的预计一次任务时间）
+CURRENT_WINNER
+→ REMAINING_MATURE_CANDIDATES
+→ RESIDUAL_GAPS
+→ INTERACTIONS
+→ EXPECTED_PORTFOLIO_GAIN
+→ TOTAL_VALIDATION_COST
+→ RISK
+→ NEXT PREDEFINED RAILROAD or STOP
 ```
+
+若没有 ROI 为正且高于测量噪声/风险、可被短验证的剩余组合：
 
 ```text
-EXPECTED_LIFETIME_BENEFIT_PORTFOLIO（组合未来总收益）
-≈ DELTA_T_PORTFOLIO
-× EXPECTED_FUTURE_RUNS（预计未来运行次数）
-× VALUE_FACTOR（时间/算力/等待价值系数）
-+ 其他可量化资源收益
+PORTFOLIO_ECONOMIC_STOP=YES
 ```
-
-```text
-PORTFOLIO_COST（组合总成本）
-= GPT/Codex 配额与推理成本
-+ 工程实施成本
-+ 实机验证成本
-+ GPU/CPU/电力/等待成本
-+ 风险成本
-+ 集成交互成本
-+ 必要维护成本
-```
-
-若未来组合收益大于组合总成本，继续把这些优化纳入残余虚拟路径；否则：
-
-```text
-PORTFOLIO_ECONOMIC_STOP=YES（组合经济性停止）
-```
-
-重要：即使未来组合收益很大，也不等于允许数小时开放式探索；大收益只说明“值得继续设计和验证”，实际执行仍必须先压缩成短、确定、有边界的成熟验证路线。
 
 ---
 
-# 99 / FREEZE（99 / 冻结）
+# 99 / FREEZE
 
-99不是数学绝对极限，也不是固定1%阈值。
+99不是“距离物理极限只差1%”，也不是强迫达到某个旧预测秒数。
 
 必须同时满足：
 
-1. 项目远端共同工作区已声明，`PROJECT_WORKSPACE_DECLARATION_GATE=PASS（项目工作区声明门禁通过）`；
-2. 固定任务真实完成；
-3. correctness / quality / stability / safety 全部通过；
-4. 权威计时稳定；
-5. `T_PHY（第一性原理物理极限）` 已计算；
-6. `MRE_REAL_STATE_CALIBRATION=PASS（极简真实运行与真实态校准通过）`；
-7. `T_MACHINE_STAR_REAL（真实态本机稳定理论极限）` 已建立；
-8. `MATURE_PATH_FIRST_GATE=PASS（成熟路径优先门禁通过）`；
-9. `VIRTUAL_MATURE_PATH_COMPLETE=YES（完整虚拟成熟路径已形成）`；
-10. 成熟大收益已系统收割；
-11. `RESIDUAL_VIRTUAL_PATH_COMPLETE=YES（残余收益虚拟路径已形成）`；
-12. `PORTFOLIO_ROI_EVALUATED=YES（剩余组合生命周期收益已计算）`；
-13. `CODEX_VALIDATION_PATH_BOUNDED=YES（Codex验证路径短且有边界）`；
-14. `NO_MULTI_HOUR_EXPLORATION_REQUIRED=YES（不依赖数小时自由探索）`；
-15. `SOFTWARE_FRONTIER_GATE=PASS（软件前沿门禁通过）`；
-16. `HARDWARE_TOPOLOGY_GATE=PASS（当前硬件拓扑门禁通过）`；
-17. 当前结果进入/贴近高置信 `T_MACHINE_STAR_REAL`，或剩余组合已满足 `PORTFOLIO_ECONOMIC_STOP`；
-18. Final Certification（最终认证）通过；
-19. 所有正式新工程事实已经写回本项目远端共同工作区，并 `REMOTE_VERIFY=PASS（远端核验通过）`。
+1. `SKILL_PRECEDENCE_GATE=PASS`；
+2. `NO_FREE_EXPLORATION=YES` 全过程未被破坏；
+3. 项目远端工作区已声明并可核验；
+4. 固定任务、correctness、quality、stability、safety 全通过；
+5. 单一 `T_PHY_TOTAL_REFERENCE` 已发布；
+6. MRE / REAL_STATE_MODEL 已完成；
+7. 高价值成熟候选全部已有 KEEP / ROLLBACK / NOT_APPLICABLE / EXHAUSTED 裁决；
+8. `VIRTUAL_MATURE_PATH_COMPLETE=YES`；
+9. `RESIDUAL_VIRTUAL_CONVERGENCE_COMPLETE=YES`；
+10. `PORTFOLIO_ROI_EVALUATED=YES`；
+11. 没有剩余 ROI 为正且可在短边界内验证的高价值组合；
+12. Final Certification 通过；
+13. 正式配置、证据、Failure Index、经验先验已经远端冻结并 `REMOTE_VERIFY=PASS`。
 
 因此：
 
-> **99 = 当前真实硬件边界 + 真实运行校准 + 世界成熟大收益 + 完整虚拟99铁路 + Codex短验证 + 残余虚拟收敛 + 组合生命周期ROI停止 + 远端共同事实源收口后的稳定最优。**
+> **99 = 当前真实硬件 + 固定任务 + 单一物理极限作终极参照 + 世界成熟收益 + GPT完整虚拟铁路 + Codex零自由探索的确定性验证 + 残余组合ROI收敛 + 最终认证后的稳定最优。**
+
+若项目把 Generation 与 Path 分别定义为正式优化对象，可以有两个项目级 99；Total 可以只是组合观测。是否拆分 99 由项目任务合同决定，不改变“物理极限板只保留一个端到端 T_PHY_TOTAL_REFERENCE”的规则。
 
 ---
 
 # 执行与上下文纪律
 
-- 高质量推理层负责：工作区声明、极限计算、真实态建模、成熟方案吸收、两轮虚拟路径、收益/成本推演、停止条件。
-- Codex负责：精确执行、短验证、QC、证据、回滚、Git收口。
-- 单GPU正式 benchmark（基准测试）必须串行、独占。
-- 页面/会话明显过长时，冻结阶段报告并换新页面；新页面通过任务文件 + 远端 `SHARED_FACT_SOURCE（共同事实源）` 恢复。
-- 所有新工程事实必须形成正式报告、机器可读状态并同步到本项目远端共同工作区。
-- 本地执行副本即使工作树干净、提交成功，也不能替代远端核验。
+- GPT / 高质量推理层负责：极限、方案、候选、顺序、条件分支、预算、停止条件。
+- Codex负责：读取技能、验证版本、精确执行、QC、证据、回滚、Git收口。
+- 单GPU正式 benchmark 串行独占。
+- 不允许因会话长度、capacity error、审批等待或恢复操作改变实验计划。
+- 页面过长时先冻结远端阶段报告，再由新页面从共同事实恢复。
+- 本地结果未 push + remote verify 前不是共同事实。
 
 ---
 
 # 默认最短读取路径
 
-正常任务优先读取：
+每次执行优先读取：
 
 1. `SKILL.md`
-2. `references/REMOTE-SHARED-WORKSPACE.md`
-3. `references/FAST-PATH.md`
-4. `references/REAL-STATE-MATURE-HARVEST-ROI.md`
-5. `references/RESIDUAL-VIRTUAL-CONVERGENCE-BUDGET.md`
+2. `references/NO-FREE-EXPLORATION-GATE.md`
+3. `references/REMOTE-SHARED-WORKSPACE.md`
+4. 项目远端工作区声明
+5. GPT生成的当前验证铁路
 
-按需读取：
-
-- `references/FIRST-PRINCIPLES-LIMIT-MODEL.md`
-- `references/SOFTWARE-FRONTIER-GATE.md`
-- `references/HARDWARE-TOPOLOGY-GATE.md`
-- `references/MATURE-PATH-FIRST-GATE.md`
-- `references/MULTI-AGENT-PARALLELISM.md`
-- `references/EXECUTION-BRIDGE.md`
-- `references/EXECUTION-CLOSURE-CONTRACT.md`
-- `references/FAILURE-INDEX.md`
+其余 references 仅在 GPT 设计阶段按需读取；Codex不得因为“想了解更多”而扩大读取范围并自行设计实验。
 
 ## 状态
 
 ```text
-SKILL_VERSION=1.6.0
-REMOTE_SHARED_WORKSPACE_DEFINED=PASS（远端共同工作区定义通过）
-LOCAL_CHECKOUT_SEPARATION_DEFINED=PASS（本地执行副本分离定义通过）
-PROJECT_SCOPED_WORKSPACE_DEFINED=PASS（项目级工作区定义通过）
-REMOTE_VERIFY_REQUIRED=YES（必须远端核验）
-TWO_MAJOR_STEPS=PASS（两大步结构通过）
-FIRST_PRINCIPLES_BOUND_DEFINED=PASS（第一性原理边界已定义）
-MRE_REAL_STATE_CALIBRATION_DEFINED=PASS（极简真实运行/真实态校准已定义）
-MATURE_HARVEST_DEFINED=PASS（成熟方案收割已定义）
-FULL_VIRTUAL_99_PATH_DEFINED=PASS（完整虚拟99路径已定义）
-RESIDUAL_VIRTUAL_CONVERGENCE_DEFINED=PASS（残余收益虚拟收敛已定义）
-PORTFOLIO_LIFETIME_ROI_DEFINED=PASS（组合生命周期收益已定义）
-CODEX_BOUNDED_VALIDATION_DEFINED=PASS（Codex短验证边界已定义）
-NO_MULTI_HOUR_OPEN_ENDED_EXPLORATION=YES（禁止数小时开放式探索）
-CONTEXT_HYGIENE_DEFINED=PASS（上下文卫生已定义）
+SKILL_VERSION=1.7.0
+SKILL_PRECEDENCE_GATE_DEFINED=PASS
+NO_FREE_EXPLORATION=YES
+CODEX_ROLE=DETERMINISTIC_VALIDATOR_EXECUTOR
+CODEX_MAY_DESIGN_TEST_PLAN=NO
+GPT_COMPLETE_VALIDATION_RAILROAD_REQUIRED=YES
+SINGLE_T_PHY_TOTAL_REFERENCE_DEFINED=PASS
+REMOTE_SHARED_WORKSPACE_DEFINED=PASS
+MRE_REAL_STATE_CALIBRATION_DEFINED=PASS
+MATURE_HARVEST_DEFINED=PASS
+FULL_VIRTUAL_99_PATH_DEFINED=PASS
+RESIDUAL_VIRTUAL_CONVERGENCE_DEFINED=PASS
+PORTFOLIO_LIFETIME_ROI_DEFINED=PASS
+NO_MULTI_HOUR_OPEN_ENDED_EXPLORATION=YES
+REMOTE_VERIFY_REQUIRED=YES
 ```
