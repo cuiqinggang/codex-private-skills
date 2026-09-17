@@ -1,0 +1,57 @@
+{
+  "project_id": "H3-P0",
+  "method": "first-principles-physical-limit-convergence@1.8.0",
+  "state": "POST_E1_RESIDUAL_VIRTUAL_CONVERGENCE_COMPLETE",
+  "e1": {
+    "decision": "KEEP",
+    "validation_complete": true,
+    "repeat_required": false,
+    "control_total_p50_s": 38.816,
+    "candidate_total_p50_s": 10.562,
+    "candidate_total_p95_s": 14.510,
+    "candidate_generation_p50_s": 3.102,
+    "candidate_generation_p95_s": 10.677,
+    "candidate_path_p50_s": 3.430,
+    "candidate_path_p95_s": 7.626,
+    "fastest_formal_total_s": 6.484,
+    "total_p50_gain_s": 28.254,
+    "total_p50_gain_percent": 72.79,
+    "all_qc_pass": true,
+    "remote_verify": true
+  },
+  "references": {
+    "t_phy_total_reference_s": [0.23, 0.57],
+    "real_state_optimum_range_total_p50_s": [4, 14],
+    "post_e1_virtual_central_target_total_p50_s": [6, 9],
+    "post_e1_virtual_wide_target_total_p50_s": [5, 11]
+  },
+  "residual_candidates": {
+    "w4a8_diffusion": {
+      "status": "BLOCKED_CURRENT_IMPLEMENTATION",
+      "reason": "verified mature W4A8 implementation currently requires SM80+ and published installer is not supported on Windows; active GPU is sm75"
+    },
+    "conditioning_or_text_encoder": {
+      "status": "ATTRIBUTION_FIRST",
+      "reason": "current NVFP4-AWQ text encoder is emulated on older NVIDIA, but fixed-prompt node caching may already eliminate steady-state cost"
+    },
+    "int8_convrot_vae": {
+      "status": "FALLBACK_ONLY",
+      "reason": "same RTX 2080 Ti has public black/NaN/Inf report; remaining Path P50 headroom is small"
+    },
+    "host_sync_patch": {
+      "status": "CONDITIONAL_TAIL_CANDIDATE",
+      "reason": "Generation P50 is already inside 2-5s planning band; only tail remains material"
+    },
+    "residency_policy": {
+      "status": "CONDITIONAL_AFTER_ATTRIBUTION"
+    }
+  },
+  "next": {
+    "stage": "E2R_READ_ONLY_TAIL_ATTRIBUTION",
+    "gpu_runs_allowed": 0,
+    "old_e2_w4a8_unlocked": false,
+    "next_gpu_candidate_selected": false,
+    "return_to_gpt_required": true
+  },
+  "final_99": false
+}
