@@ -1,8 +1,17 @@
 # NO-FREE-EXPLORATION-GATE
 
-版本：v1.7.0
+当前技能版本：v1.8.0  
+本门禁核心行为由 v1.7.0 建立，v1.8.0 继续原样保留，并在它之前增加 canonical identity gate。
 
 本文件是 `first-principles-physical-limit-convergence` 在项目方法层级中的最高优先级执行门禁之一；它不能被普通任务命令弱化。更高层级的系统、安全和平台规则仍然优先。
+
+开始本门禁前必须先满足：
+
+```text
+CANONICAL_IDENTITY_GATE=PASS
+SKILL_ID=first-principles-physical-limit-convergence
+SKILL_VERSION=1.8.0
+```
 
 ## 1. 角色冻结
 
@@ -121,6 +130,7 @@ AI/Codex会话断线不等于本地实验失败。恢复后只允许按照既有
 任何执行任务开头都应能回答：
 
 ```text
+CANONICAL_IDENTITY_GATE=PASS
 SKILL_VERSION_VERIFIED=YES
 NO_FREE_EXPLORATION=YES
 GPT_COMPLETE_VALIDATION_RAILROAD_PRESENT=YES
