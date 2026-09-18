@@ -1,42 +1,45 @@
 {
   "skill_id": "gpt-codex-convergence-orchestrator",
-  "version": "1.4.2",
-  "display_name": "GPT-Codex 自动闭环",
+  "version": "1.5.0",
+  "display_name": "GPT-Codex 简洁自动闭环",
   "method_dependency": "first-principles-physical-limit-convergence@3.1.1",
-  "architecture": "GITHUB_PRIMARY_PAGE_FALLBACK",
+  "architecture": "PAGE_DIRECT_CONTROL_GITHUB_OPTIONAL_MIRROR",
+  "core_mapping": {
+    "core_1": "MINIMIZE_T_VALID",
+    "core_2": "REUSE_MATURE_BROWSER_GPT_CODEX_AND_OPTIONAL_GITHUB",
+    "core_3": "FREEZE_PAGE_DIRECT_CONTROL_LOOP"
+  },
   "roles": {
     "gpt": "PLANNER_JUDGE",
-    "codex": "EXECUTOR",
     "browser": "TRANSPORT",
-    "github": "PREFERRED_SHARED_WORKSPACE"
+    "codex": "DETERMINISTIC_EXECUTOR",
+    "github": "OPTIONAL_MIRROR_EVIDENCE_BACKUP"
   },
-  "transport": {
-    "primary": "GITHUB",
-    "fallback": "PAGE_DIRECT",
-    "fallback_triggers": [
-      "GITHUB_WRITE_BLOCKED",
-      "GITHUB_WRITE_ERROR",
-      "GITHUB_WRITE_SAFETY_CHECK",
-      "TRANSPORT_DELAY_NOT_WORTH_WAITING"
-    ],
-    "github_repair_blocks_task": false,
-    "browser_business_payload_allowed_in_fallback": true
-  },
+  "control_loop": [
+    "CODEX_PREPARE_CONTEXT",
+    "BROWSER_SEND_TO_GPT",
+    "GPT_COMMAND",
+    "BROWSER_EXTRACT",
+    "CODEX_EXECUTE_VERIFY",
+    "BROWSER_SEND_RESULT_TO_GPT",
+    "GPT_DECISION",
+    "CODEX_CONTINUE_OR_STOP"
+  ],
+  "github_required_for_control": false,
+  "fault_policy": "ONE_SIMPLE_RECOVERY_THEN_BYPASS",
   "thinking_timeout": {
     "SIMPLE_SECONDS": 60,
     "NORMAL_SECONDS": 180,
     "LARGE_SECONDS": 600,
     "scope": "BEFORE_FIRST_VISIBLE_ANSWER_ONLY"
   },
-  "simple_resilience": {
-    "rule": "PRIMARY -> ONE_SIMPLE_RECOVERY -> FALLBACK -> CONTINUE",
-    "simple_recovery_attempts": 1,
-    "stop_only_if": [
-      "PRIMARY_AND_FALLBACK_BOTH_FAIL",
-      "VALID_WOULD_BE_BROKEN",
-      "SAFETY_OR_PERMISSION_BOUNDARY"
-    ],
-    "recurrent_fault_policy": "SOLVE_SEPARATELY_IF_IT_BECOMES_PERSISTENT",
-    "occasional_fault_policy": "RECORD_AND_BYPASS"
-  }
+  "minimal_state": [
+    "TASK_ID",
+    "CURRENT_STEP",
+    "LAST_GPT_COMMAND_HASH",
+    "LAST_RESULT",
+    "DONE"
+  ],
+  "plan_status": "FROZEN",
+  "real_execution_status": "NOT_RUN_UNDER_V1_5"
 }
