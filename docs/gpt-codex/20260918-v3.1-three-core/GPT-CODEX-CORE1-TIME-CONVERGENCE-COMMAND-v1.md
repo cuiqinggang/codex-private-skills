@@ -11,14 +11,14 @@ CORE_1_TIME_CONVERGENCE=AUTHORIZED
 ## READ
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.5-time-primary
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.6-fixed-timeout
 file   = docs/gpt-codex/20260918-v3.1-three-core/GPT-CODEX-REAL-CASE-V2-SHARED-RESULT.md
 ~~~
 
 以及当前冻结技能：
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.5-time-primary
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.6-fixed-timeout
 file   = skills/gpt-codex-convergence-orchestrator/SKILL.md
 ~~~
 
@@ -100,46 +100,52 @@ FINAL_POST_DECISION_WAIT
 为了快而降低 VALID
 ~~~
 
-### C. GPT Thinking 时间优先故障恢复
+### C. GPT Thinking 固定时间故障恢复
 
-对 REQUEST->COMMAND 和 RESULT->DECISION 分别维护同类成功样本的正常等待上限：
+使用固定三档：
 
 ~~~text
-NORMAL_WAIT_UPPER
-= 同类成功 wake 的正常等待上界
+SIMPLE = 120 秒
+NORMAL = 240 秒
+LARGE  = 600 秒
+~~~
+
+本项目固定：
+
+~~~text
+RESULT -> DECISION = SIMPLE = 120 秒
+REQUEST -> COMMAND = NORMAL = 240 秒
 ~~~
 
 规则：
 
 ~~~text
 先查 GitHub
--> 目标消息已存在：立即继续
--> 不存在：
-   elapsed <= NORMAL_WAIT_UPPER -> 继续等待
-   elapsed >  NORMAL_WAIT_UPPER -> 按高概率故障处理
+-> 已有目标消息：立即继续
+-> 没有目标消息：
+   未超时 -> 继续等
+   已超时 -> 一律按故障恢复
 ~~~
 
-超过上限后不要因为页面仍显示 Thinking 就继续无限等待。
+超时后不再看页面是否仍显示 Thinking/Generating。
 
 恢复：
 
 ~~~text
-再次检查 GitHub
+再次查 GitHub
 -> 无目标消息
--> refresh/reconnect 当前 ChatGPT 会话
+-> refresh/reconnect 当前 ChatGPT
 -> 同 TASK_ID / MESSAGE_SEQ / logical_event_id 重新 wake
--> 若当前会话不可恢复，可同 profile 新页面/新会话从 GitHub 恢复
+-> 必要时同 profile 新页面/会话恢复
 ~~~
 
-禁止创建新的业务 request 或新的 logical_event_id。
-
-NORMAL_WAIT_UPPER 优先由本轮及历史成功样本校准；样本不足时使用 Browser SKILL/正式配置已有等待上限作为临时基线，不凭空猜固定秒数。
+禁止超过固定上限后继续等待。
 
 记录：
 
 ~~~text
-NORMAL_WAIT_UPPER_SECONDS
-NORMAL_WAIT_BASELINE_SOURCE
+GPT_WAIT_CLASS
+GPT_WAIT_LIMIT_SECONDS
 GPT_THINKING_STUCK_COUNT
 GPT_THINKING_STUCK_RECOVERY_SECONDS
 ~~~
@@ -222,8 +228,8 @@ P50_RESULT_TO_DECISION_SECONDS=<value>
 P50_FINAL_CONSUME_SECONDS=<value>
 P50_TLS_RECOVERY_WAIT_SECONDS=<value>
 P50_LOCAL_AVOIDABLE_WAIT_SECONDS=<value>
-NORMAL_WAIT_UPPER_SECONDS=<value>
-NORMAL_WAIT_BASELINE_SOURCE=<successful-history/browser-formal-baseline>
+GPT_WAIT_CLASS=<SIMPLE/NORMAL/LARGE>
+GPT_WAIT_LIMIT_SECONDS=<120/240/600>
 GPT_THINKING_STUCK_COUNT=<n>
 GPT_THINKING_STUCK_RECOVERY_SECONDS=<value>
 FUNCTIONAL_VALID=3/3 or <n>/3
