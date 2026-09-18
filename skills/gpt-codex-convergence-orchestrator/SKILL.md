@@ -2,12 +2,12 @@
 name: gpt-codex-convergence-orchestrator
 description: GPT↔Codex 自动闭环执行技能。服从 first-principles-physical-limit-convergence v3.1.1 三核心。正常优先使用 GitHub 共同工作区；若 GitHub 写入被阻断、失败或明显异常，则立即切换为页面直传，不让偶发 transport 故障阻塞任务。GPT 始终负责业务规划/裁决，Codex 始终只负责执行。
 metadata:
-  version: "1.4.1"
+  version: "1.4.2"
   method_dependency: "first-principles-physical-limit-convergence@3.1.1"
   architecture: "GITHUB_PRIMARY_PAGE_FALLBACK"
 ---
 
-# GPT↔Codex 自动闭环 v1.4.1
+# GPT↔Codex 自动闭环 v1.4.2
 
 ## 只保留一个简单原则
 
@@ -33,6 +33,52 @@ B. GitHub 写入失败 / 被安全检查阻断 / 明显异常
 ~~~
 
 没有第三条复杂恢复路线。
+
+## 简单故障冗余
+
+故障本身不是任务目标。对已理解范围内的普通故障，只允许：
+
+~~~text
+NORMAL PATH
+-> 小故障
+-> SIMPLE RECOVERY ONCE
+-> 仍不通
+-> SIMPLE FALLBACK
+-> CONTINUE TASK
+~~~
+
+例如：
+
+~~~text
+GitHub 暂时写不了
+-> 简单重试一次
+-> 还不通
+-> 页面直传
+-> 任务继续
+~~~
+
+只有以下情况才真正 STOP：
+
+~~~text
+主路径不可用
+AND
+备用路径也不可用
+
+或
+
+继续会破坏 VALID / 安全 / 权限边界
+~~~
+
+禁止：
+
+~~~text
+为了修一个偶发 transport 故障无限排查
+为每一种小故障新增一套协议
+任务明明能走备用路却停机研究主路
+把临时故障升级成系统重构
+~~~
+
+故障若以后反复成为常态，再单独解决；偶发故障只记录证据，不阻塞当前任务。
 
 ## 正常路径 A：GitHub
 
@@ -176,4 +222,4 @@ GitHub 临时写不了 -> B
 
 # 最终一句话
 
-> 共同工作区能用就用；临时不能用就直接页面交流。传输故障只影响传输方式，不应该把简单任务变成复杂系统工程。
+> 正常路先走；小故障简单恢复一次；还不通就走备用路；能得到 VALID 结果就继续。只有主路和备用路都失效，才停下来处理故障。
