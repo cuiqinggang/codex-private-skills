@@ -1,15 +1,28 @@
-# GPT↔Codex 简化验证命令 v1.4.1
+# GPT↔Codex 简化验证命令 v1.4.2
 
 ## READ
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.4.1-simple-fallback
+branch = codex/gpt-codex-convergence-orchestrator-v1.4.2-simple-resilience
 file   = skills/gpt-codex-convergence-orchestrator/SKILL.md
 ~~~
 
 ## DO
 
 不要继续复杂化 GitHub 写入故障。
+
+固定故障处理只有：
+
+~~~text
+正常路径
+-> 出现已知小故障
+-> 简单恢复一次
+-> 仍失败
+-> 立即切备用路径
+-> 继续任务
+~~~
+
+不要为了修偶发故障反复停机。只有主路径和备用路径都失败，或继续会破坏 VALID / 安全 / 权限边界，才 STOP + REALITY_DELTA。
 
 按下面简单规则继续当前 GPT↔Codex 验证：
 
@@ -18,7 +31,8 @@ GitHub 正常可写
 -> 走 GitHub 共同工作区
 
 GitHub 写不了 / 被 GITHUB_WRITE_SAFETY_CHECK 阻断 / 明显 transport 异常
--> 立即切页面直传
+-> 只做一次简单恢复尝试
+-> 仍不通就立即切页面直传
 ~~~
 
 页面 fallback 时：
