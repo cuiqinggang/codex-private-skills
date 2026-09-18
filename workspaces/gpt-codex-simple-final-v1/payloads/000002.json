@@ -1,0 +1,7 @@
+{
+  "action": "WRITE_FILE",
+  "action_id": "gpt-codex-simple-final-v1:write-toy-result-v1",
+  "content": "GPT_CODEX_CODE_TO_CODE_OK",
+  "path": "toy-result.txt",
+  "verify": "exact readback + SHA256"
+}
