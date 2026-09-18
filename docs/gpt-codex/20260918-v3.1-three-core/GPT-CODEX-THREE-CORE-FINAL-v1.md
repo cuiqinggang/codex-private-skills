@@ -1,95 +1,129 @@
-# GPT↔Codex 三核心最终方案 v1.1 — v3.1.1
+# GPT↔Codex 三核心最终方案 v1.2 — v3.1.1
 
 状态：
 
 ```text
 CORE_1=COMPLETE
 CORE_2=COMPLETE
-CORE_3=REFROZEN_AFTER_BROWSER_ENTRY_REALITY_DELTA
+CORE_3=REFROZEN_AFTER_REALITY_DELTA_02
 ```
 
-## REALITY_DELTA-01
+## REALITY_DELTA-02
 
-现实执行发现：
+gpt-codex-real-case-v1 的远端 GitHub bus 已成功写入 000004，但：
 
 ```text
-C:\AI\Playwright-Native-AI-Browser\scripts\chatgpt-business-entry.js
-C:\AI\Playwright-Native-AI-Browser\references\MATURE-OPERATIONS-CONTRACT.md
-C:\AI\Playwright-Native-AI-Browser\references\GPT-BUSINESS-VALIDATION-SOP.md
+000004.type=ACK
 ```
 
-这些写死路径不存在。
-
-同时真实存在：
+冻结方案要求：
 
 ```text
-C:\Users\A\.codex\skills\playwright-native-ai-browser\SKILL.md
+000004.type=DECISION
 ```
 
-修正结论：
+000004 payload 实际已经包含：
 
 ```text
-Browser 能力不判定为缺失。
-错误在于冻结方案写死/猜测了旧入口位置。
+accepted=true
+status=PASS
+result_message_id=000003 RESULT
+verification exact_readback=true
+verification sha256=<expected>
 ```
 
-## CORE 3 修正
-
-Browser 唯一定位逻辑改为：
+因此：
 
 ```text
-读取 C:\Users\A\.codex\skills\playwright-native-ai-browser\SKILL.md
--> 若为 Junction/Symlink，解析 Target
--> 读取 SKILL.md 当前正式入口/恢复约定
--> 使用它明确声明的业务入口
+BUS_WRITE=PASS
+GPT_BUSINESS_JUDGMENT=PASS
+FINAL_MESSAGE_TYPE=FAIL
 ```
 
-只有：
+根因是页面 transport ACK 与 GitHub bus DECISION 语义未被显式分离。
+
+## CORE 3 唯一修正
+
+新增唯一 bus 回复白名单：
 
 ```text
-SKILL.md 不存在
-或
-SKILL.md 明确声明的正式入口也不存在
+REQUEST -> COMMAND
+RESULT  -> DECISION
 ```
-
-才：
 
 ```text
-STOP
-REALITY_DELTA
-RETURN_TO_GPT
+ACK = page/browser transport only
+ACK != GitHub bus message
 ```
 
-禁止继续猜测旧的 root\scripts 或 root\references 路径。
+publish 前必须验证 parent.type -> reply.type。
 
-## 冻结完整链
+000004 DECISION payload 至少：
 
 ```text
-Codex
--> 000001 REQUEST -> GitHub
--> 通过 installed playwright-native-ai-browser/SKILL.md 解析正式 Browser 入口
--> Browser wake GPT
--> GPT reads GitHub
--> 000002 COMMAND -> GitHub
--> Codex reads GitHub
--> execute + verify
--> 000003 RESULT -> GitHub
--> Browser wake GPT
--> GPT reads GitHub
--> 000004 DECISION -> GitHub
--> Codex reads DECISION
--> STOP
+result_message_id
+accepted
+status
+control_action
+verification
 ```
 
-其余 CORE 1、CORE 2、GitHub、SQLite、去重、恢复和现实案例定义保持 v1 不变。
-
-当前唯一现实案例仍为：
+PASS 时：
 
 ```text
-TASK_ID=gpt-codex-real-case-v1
-OUTPUT=toy-result.txt
-CONTENT=GPT_CODEX_CODE_TO_CODE_OK
-VERIFY=exact readback + SHA256
+accepted=true
+status=PASS
+control_action=STOP
 ```
 
-这就是修正后的冻结 CORE 3。
+## 下一次认证
+
+保留 real-case-v1 作为失败证据，不覆盖。
+
+重新执行：
+
+```text
+TASK_ID=gpt-codex-real-case-v2
+```
+
+必须严格：
+
+```text
+000001 REQUEST
+-> 000002 COMMAND
+-> 000003 RESULT
+-> 000004 DECISION
+-> Codex STOP
+```
+
+## 当前实测时间基线（v1，非 VALID）
+
+来自远端消息 created_at：
+
+```text
+000001 REQUEST = 14:54:10.563120Z
+000002 COMMAND = 14:56:43.602139Z
+000003 RESULT  = 14:58:39.288871Z
+000004 ACK     = 15:01:09.991Z
+```
+
+分段：
+
+```text
+REQUEST -> COMMAND = 153.039 s
+COMMAND -> RESULT  = 115.687 s
+RESULT -> ACK      = 150.702 s
+000001 -> 000004   = 419.428 s ≈ 6m59.4s
+```
+
+两次 GPT 方向等待约占 72.4%。
+
+由于 000004 类型错误，本轮：
+
+```text
+T_VALID = NOT_VALID
+```
+
+但 419.428 s 可作为下一轮性能对照的预基线。
+
+下一轮 correctness PASS 后，必须记录真实 T_VALID 和各分段；如果仍有明显可避免等待，再返回 CORE 1 做极限时间优化。
