@@ -1,189 +1,224 @@
 ---
 name: gpt-codex-convergence-orchestrator
-description: GPT↔Codex 自动闭环执行技能。服从 first-principles-physical-limit-convergence v3.1.1 三核心。正常优先使用 GitHub 共同工作区；若 GitHub 写入被阻断、失败或明显异常，则立即切换为页面直传，不让偶发 transport 故障阻塞任务。GPT 始终负责业务规划/裁决，Codex 始终只负责执行。
+description: GPT↔Codex 简洁自动闭环。服从 first-principles-physical-limit-convergence v3.1.1 三核心。控制链只依赖现有 Playwright Native AI Browser 页面通信：GPT 决策，Codex 执行。GitHub 共同工作区只作为可选同步/证据区，任何 GitHub 写入故障都不得阻塞主任务。
 metadata:
-  version: "1.4.2"
+  version: "1.5.0"
   method_dependency: "first-principles-physical-limit-convergence@3.1.1"
-  architecture: "GITHUB_PRIMARY_PAGE_FALLBACK"
+  architecture: "PAGE_DIRECT_CONTROL_GITHUB_OPTIONAL_MIRROR"
 ---
 
-# GPT↔Codex 自动闭环 v1.4.2
+# GPT↔Codex 简洁自动闭环 v1.5.0
 
-## 只保留一个简单原则
+## CORE 1 — 极限短时间
 
-业务目标是：
+目标只有一个：
 
 ~~~text
-GPT 决定
-Codex 执行
-用户中间不搬运
-尽快得到 VALID 结果
+Codex 接到任务
+-> GPT 给出正确方案/命令
+-> Codex 执行
+-> GPT 判断结果
+-> 得到第一个 VALID 结果
 ~~~
 
-传输方式不是目标。
-
-因此只有两条合法路径：
+唯一优化：
 
 ~~~text
-A. GitHub 正常
-   -> 用 GitHub 共同工作区
-
-B. GitHub 写入失败 / 被安全检查阻断 / 明显异常
-   -> 立即改用页面直传
+T_VALID = 上述完整闭环耗时
 ~~~
 
-没有第三条复杂恢复路线。
-
-## 简单故障冗余
-
-故障本身不是任务目标。对已理解范围内的普通故障，只允许：
+VALID：
 
 ~~~text
-NORMAL PATH
--> 小故障
--> SIMPLE RECOVERY ONCE
--> 仍不通
--> SIMPLE FALLBACK
--> CONTINUE TASK
+GPT 负责业务规划/判断
+Codex 负责确定性执行
+用户中间复制粘贴 = 0
+结果正确
+无重复业务副作用
+故障不会无意义阻塞主任务
 ~~~
 
-例如：
+## CORE 2 — 成熟方案集群
+
+直接复用已经成熟、已经真实使用过的能力：
 
 ~~~text
-GitHub 暂时写不了
--> 简单重试一次
--> 还不通
--> 页面直传
--> 任务继续
+Playwright Native AI Browser
+= GPT 页面自动发送 / 读取
+
+ChatGPT 页面
+= GPT 规划与判断
+
+Codex
+= 本机执行器
+
+现有本机状态/去重能力
+= 防止同一命令重复执行
+
+GitHub 共同工作区
+= 可选共享记录 / 证据 / 备份
 ~~~
 
-只有以下情况才真正 STOP：
+不再把 GitHub 写入作为控制链硬依赖。
+
+## CORE 3 — 最终冻结方案
+
+唯一控制链：
 
 ~~~text
-主路径不可用
-AND
-备用路径也不可用
+1. Codex 准备当前任务/结果所需的最小完整上下文
 
-或
+2. Browser 直接发送到 GPT 页面
 
-继续会破坏 VALID / 安全 / 权限边界
+3. GPT 页面返回：
+   GPT_COMMAND
+   <完整命令>
+   END_GPT_COMMAND
+
+4. Browser 原样读取
+
+5. Codex 原样执行
+   -> 验证现实结果
+
+6. Browser 把执行结果直接发给 GPT
+
+7. GPT 页面返回：
+   GPT_DECISION
+   <裁决；必要时给下一命令或 STOP>
+   END_GPT_DECISION
+
+8. Codex 原样消费
+
+9. 若还需继续：
+   回到第 1 步
+
+10. 达到 VALID：
+    STOP
 ~~~
 
-禁止：
+没有 GitHub 才不能继续的条件。
+
+## GitHub 的唯一地位
+
+GitHub 只做：
 
 ~~~text
-为了修一个偶发 transport 故障无限排查
-为每一种小故障新增一套协议
-任务明明能走备用路却停机研究主路
-把临时故障升级成系统重构
+MIRROR
+EVIDENCE
+BACKUP
+SHARED_REFERENCE
 ~~~
 
-故障若以后反复成为常态，再单独解决；偶发故障只记录证据，不阻塞当前任务。
-
-## 正常路径 A：GitHub
+Codex 在方便时可以把：
 
 ~~~text
-Codex REQUEST -> GitHub
--> Browser wake GPT
--> GPT COMMAND -> GitHub
--> Codex execute
--> RESULT
--> GPT DECISION
--> STOP
-~~~
-
-GitHub 正常时继续把它作为共享事实源和证据区。
-
-## fallback 路径 B：页面直传
-
-以下任一发生，就直接切 B：
-
-~~~text
-GitHub write blocked
-GitHub write safety check
-GitHub write error
-明显 transport 异常导致继续等待不划算
-~~~
-
-切换后：
-
-~~~text
-Codex / Browser
--> 把当前必要任务上下文直接发给 GPT 页面
--> GPT 页面直接返回 COMMAND 或 DECISION
--> Browser 原样读取
--> Codex 原样执行 / 消费
--> 继续任务
-~~~
-
-fallback 时允许 Browser 携带必要业务正文。
-
-不要求 GPT 再写 GitHub。
-不要求 Codex 为 GitHub 故障停机。
-不要求先把共同工作区修好。
-
-## 页面回复格式
-
-COMMAND：
-
-~~~text
+TASK
 GPT_COMMAND
-<完整业务命令>
-END_GPT_COMMAND
-~~~
-
-DECISION：
-
-~~~text
+RESULT
 GPT_DECISION
-<完整裁决>
-END_GPT_DECISION
+FINAL_REPORT
 ~~~
 
-Codex 只能原样读取和执行，不得改变业务语义。
-
-## GitHub 恢复后的处理
-
-任务过程中先完成任务。
-
-如果之后 GitHub 已恢复，可以把最终结果/报告同步回共同仓库作为证据。
+同步到共同工作区。
 
 但：
 
 ~~~text
-SYNC_BACK_FAILURE != TASK_FAILURE
+GITHUB_SYNC_FAIL != TASK_FAIL
+GITHUB_WRITE_BLOCKED != TASK_FAIL
+GITHUB_UNAVAILABLE != TASK_FAIL
 ~~~
 
-偶发共同工作区故障不能阻塞主任务。
-
-## GPT Thinking 首答超时
-
-只看“是否开始回答”。
+同步失败时：
 
 ~~~text
-简单任务 = 60 秒
-普通任务 = 180 秒
-大型复杂任务 = 600 秒
+记录一次
+-> 跳过同步
+-> 主任务继续
 ~~~
 
-一旦正文开始：
+任务完成后，如果 GitHub 已恢复，再补同步即可。
+
+## 简单故障处理
+
+故障处理永远保持：
+
+~~~text
+正常执行
+-> 小故障
+-> 简单恢复一次
+-> 仍不通
+-> 用最简单备用方式继续
+~~~
+
+### GPT 一直“正在思考”
+
+只判断“开始回答以前”。
+
+固定标准：
+
+~~~text
+简单任务：60 秒
+普通任务：180 秒
+大型复杂任务：600 秒
+~~~
+
+一旦 GPT 开始正常正文：
 
 ~~~text
 ANSWER_STARTED=YES
 -> 正常
--> 不再按 Thinking timeout 刷新
+-> 不再触发 Thinking 超时
 ~~~
 
-始终没有开始正文并超过上限：
+一直没有开始正文并超时：
 
 ~~~text
 refresh/reconnect
 -> 重发同一请求
 ~~~
 
-## 权限边界
+仍不行：
 
-无论走 A 还是 B：
+~~~text
+同一登录 profile 新页面/新会话
+-> 重发同一请求
+~~~
+
+不要继续无限等待。
+
+### Browser 临时异常
+
+~~~text
+刷新/重连一次
+-> 仍异常则重新打开正式 Browser 入口
+-> 继续同一任务
+~~~
+
+### GitHub 临时异常
+
+~~~text
+跳过
+-> 主任务继续
+~~~
+
+## 只有什么时候才 STOP
+
+只有：
+
+~~~text
+页面直传本身也无法继续
+或
+继续会破坏 VALID
+或
+遇到登录/验证码/敏感权限/安全边界
+或
+用户 STOP
+~~~
+
+普通 transport 故障不值得停主任务。
+
+## 权限边界
 
 ~~~text
 GPT_PLAN_AUTHORITY=YES
@@ -193,33 +228,37 @@ CODEX_PLAN_AUTHORITY=NONE
 Codex 可以：
 
 ~~~text
-传递
-读取
+发送上下文
+读取 GPT 输出
 执行
 验证
 记录
+可选同步 GitHub
 ~~~
 
 Codex 不可以：
 
 ~~~text
-改 GPT 的业务方案
-自己补新方案
-自己决定下一研究方向
+修改 GPT 的业务语义
+自行补新方案
+自己改变研究方向
+因为 transport 故障重新设计业务路线
 ~~~
 
-## 现实测试
+## 最小状态
 
-新测试直接验证：
+只需保留：
 
 ~~~text
-GitHub 正常 -> A
-GitHub 临时写不了 -> B
-两条都能把任务完成
+TASK_ID
+CURRENT_STEP
+LAST_GPT_COMMAND_HASH
+LAST_RESULT
+DONE
 ~~~
 
-不再因为 transport 选择本身判整个业务失败。
+目的是避免重复执行，不建立复杂状态机。
 
 # 最终一句话
 
-> 正常路先走；小故障简单恢复一次；还不通就走备用路；能得到 VALID 结果就继续。只有主路和备用路都失效，才停下来处理故障。
+> **GPT 页面是控制通道，Codex 是执行器，GitHub 只是可选共同记录区；小故障简单恢复，恢复不了就绕过，始终优先把 VALID 任务做完。**
