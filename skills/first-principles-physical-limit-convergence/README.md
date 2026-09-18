@@ -1,47 +1,51 @@
-# 第一性原理极限短时间引擎 v3.0.0
+# 第一性原理极限短时间引擎 v3.1.0
 
-正式 Skill ID 保持不变：
+正式 Skill ID 保持：
 
-`first-principles-physical-limit-convergence`
-
-旧中文名“第一性原理物理极限收敛引擎”、v1.x/v2.0 分支和全部历史资料继续保留，可检索、读取和引用。
+first-principles-physical-limit-convergence
 
 ## 一句话
 
-> **用成熟世界已有的答案，经高智能虚拟成熟，得到达到有效结果的极限短时间路径。**
+> **用成熟世界已有的答案，经高智能虚拟成熟，得到极限短时间路径；现实执行必须逐动作证明自己正在执行被冻结的路径。**
 
-## 三个核心
+## v3.1 为什么升级
 
-1. **极限短时间**：先冻结 VALID 与现实资源边界，之后唯一优化 `T_VALID`。
-2. **成熟方案集群**：现实世界已经解决的能力优先复制、组合、适配，禁止无必要重新发明。
-3. **高智能虚拟成熟**：搜索、匹配、组合、排错优先在虚拟层完成；现实层主要做最小标定和最终认证。
+v3.0 的方法逻辑已经明确，但缺少一个强制机制来保证实际 GPT/Codex/脚本不会退回旧流程。
 
-## 运行骨架
+v3.1 不增加第四个方法核心，而增加一个强制执行层：
 
-```text
-Gate 0  成熟方案集群闸口
-Step 1  VALID + 现实边界 + T_PHY_VALID
-Step 2  最小真实标定 -> REAL_STATE_VALID_RANGE
-Step 3  成熟方案矩阵 -> GPT Virtual-99
-Step 4  确定性现实认证 -> FREEZE / RETURN TO GPT
-```
+~~~text
+NO REAL ACTION WITHOUT FROZEN PLAN PROOF
+PRE-ACTION CONFORMANCE GATE
+FAIL CLOSED ON METHOD DRIFT
+~~~
 
-v2.0 的关键能力全部继承：
+## 三个核心保持不变
 
-- `ATTEMPT / DELIVERY`；
-- `T_TFVR` 与 verifier/reject/resample；
-- failure-layer classification；
-- GPT-Codex 自动控制面；
-- checkpoint / idempotency / DO_NOT_REPEAT；
-- Capacity Router；
-- H3-P0 delivery-system 99 实证。
+1. 极限短时间：唯一优化 T_VALID。
+2. 成熟方案集群：先吸收现实成熟解。
+3. 高智能虚拟成熟：先在虚拟层组合、排错、冻结最终方案。
 
-H3-P0 冻结事实仍为：20/20 最终交付 QC PASS，first-attempt 90%，平均 1.10 attempts，T_TFVR P50 6.076s / P95 11.974s，无效输出交付 0。
+## canonical 流程
+
+~~~text
+Gate 0  Mature Solution Cluster
+Step 1  VALID + Resource Boundary + T_PHY_VALID
+Step 2  FROZEN CALIBRATION_PLAN -> Minimal Real Calibration
+Step 3  Mature Matrix -> GPT Virtual-99 -> FROZEN
+Step 4  Certification Case Injection -> Real End-to-End Certification
+PASS    FINAL_99_FREEZE
+FAIL    REALITY_DELTA -> RETURN_TO_GPT
+~~~
+
+每一个现实动作都必须通过 METHOD_EXECUTION_CONTRACT 与 Pre-Action Conformance Gate。
+
+旧 L0/L1/L2/L3/L4 只保留为历史标签，不再具有 canonical execution authority。
 
 正式分支：
 
-`codex/first-principles-physical-limit-convergence-v3.0.0`
+codex/first-principles-physical-limit-convergence-v3.1.0
 
-上一正式分支：
+上一版本：
 
-`codex/first-principles-physical-limit-convergence-v2.0.0`
+codex/first-principles-physical-limit-convergence-v3.0.0
