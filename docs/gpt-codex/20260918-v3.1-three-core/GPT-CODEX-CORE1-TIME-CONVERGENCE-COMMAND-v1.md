@@ -11,14 +11,14 @@ CORE_1_TIME_CONVERGENCE=AUTHORIZED
 ## READ
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.3-thinking-stuck
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.4-thinking-watchdog
 file   = docs/gpt-codex/20260918-v3.1-three-core/GPT-CODEX-REAL-CASE-V2-SHARED-RESULT.md
 ~~~
 
 以及当前冻结技能：
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.3-thinking-stuck
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.4-thinking-watchdog
 file   = skills/gpt-codex-convergence-orchestrator/SKILL.md
 ~~~
 
@@ -100,34 +100,59 @@ FINAL_POST_DECISION_WAIT
 为了快而降低 VALID
 ~~~
 
-### C. GPT thinking-stuck 小故障恢复
+### C. GPT Thinking Watchdog
 
-等待 GPT 回复时：
-
-~~~text
-THINKING_TIMEOUT_SECONDS = 从已安装 playwright-native-ai-browser/SKILL.md 或其当前正式配置读取
-~~~
-
-若没有正式等待上限：不要猜 5 秒/10 秒，保存 REALITY_DELTA 并返回 GPT。
-
-超过该正式等待上限仍显示“正在思考/生成中”时：
+不要用单一固定秒数判定故障。对每次 GPT wake 同时观察：
 
 ~~~text
-先检查 GitHub 是否已有期待的 COMMAND/DECISION
--> 有：直接继续
--> 无：刷新/重连同一个 ChatGPT 会话
--> 复用同一个 TASK_ID / MESSAGE_SEQ / logical_event_id 重新 wake
--> 不创建新业务请求
+目标 GitHub COMMAND/DECISION 是否出现
+页面回复/DOM/Thinking 状态是否仍有进展
+同类 wake + 同复杂度历史成功区间
+Browser SKILL/正式配置的健康约定
 ~~~
+
+状态：
+
+~~~text
+NORMAL_PROGRESS          -> 继续
+SLOW_BUT_PROGRESSING     -> 继续，不刷新
+SUSPECT_STALL            -> 加密观察 + health probe
+CONFIRMED_STUCK          -> 执行恢复阶梯
+~~~
+
+确认卡死后严格：
+
+~~~text
+R0 先查 GitHub；已有目标回复则直接继续
+R1 当前页停止生成（如可用）+ reload/hard refresh + 同 logical_event_id re-wake
+R2 同一 profile 新页面/标签打开同一 conversation + 同 logical_event_id re-wake
+R3 原 conversation 失效则新 ChatGPT 页面/新会话，从 GitHub 重新恢复上下文 + 同 logical_event_id re-wake
+~~~
+
+每一级前后都先查 GitHub；目标消息一出现立即停止恢复。
+
+R0-R3 全部失败：
+
+~~~text
+BLOCKED
+SAVE REALITY_DELTA
+RETURN TO GPT
+~~~
+
+禁止无限恢复循环。
+
+OpenAI 官方“看起来无限挂起时先短暂等待，然后停止/重试、刷新、必要时新开聊天”的排障步骤只作为无进展 guard；不要把它误写成模型固定最大思考时间。
 
 记录：
 
 ~~~text
+GPT_THINKING_STATE
 GPT_THINKING_STUCK_COUNT
+STUCK_CLASSIFICATION_REASON
+RECOVERY_LEVEL_USED
 GPT_THINKING_STUCK_RECOVERY_SECONDS
+THINKING_BASELINE_SOURCE
 ~~~
-
-禁止无限等待半小时不处理。
 
 ### D. Warm clean timing certification
 
@@ -207,9 +232,12 @@ P50_RESULT_TO_DECISION_SECONDS=<value>
 P50_FINAL_CONSUME_SECONDS=<value>
 P50_TLS_RECOVERY_WAIT_SECONDS=<value>
 P50_LOCAL_AVOIDABLE_WAIT_SECONDS=<value>
+GPT_THINKING_STATE=<state>
 GPT_THINKING_STUCK_COUNT=<n>
+STUCK_CLASSIFICATION_REASON=<reason>
+RECOVERY_LEVEL_USED=<R0/R1/R2/R3/NONE>
 GPT_THINKING_STUCK_RECOVERY_SECONDS=<value>
-THINKING_TIMEOUT_SOURCE=<path/config>
+THINKING_BASELINE_SOURCE=<history/browser-contract/official-guard>
 FUNCTIONAL_VALID=3/3 or <n>/3
 DUPLICATE_BUSINESS_EFFECT=0/<other>
 REMOTE_REPORT_PATH=<path>
