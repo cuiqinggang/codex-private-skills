@@ -1,0 +1,6 @@
+{
+  "action_id": "gpt-codex-simple-path-b-v1:write-toy-result-v1",
+  "exact_readback": true,
+  "path": "toy-result.txt",
+  "sha256": "6c26f2350c539e156ca37983864f421d0d8d87e77472ce50634abbac08ef90f7"
+}
