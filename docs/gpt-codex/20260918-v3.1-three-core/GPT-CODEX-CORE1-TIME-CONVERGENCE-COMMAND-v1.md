@@ -11,14 +11,14 @@ CORE_1_TIME_CONVERGENCE=AUTHORIZED
 ## READ
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.4-thinking-watchdog
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.5-time-primary
 file   = docs/gpt-codex/20260918-v3.1-three-core/GPT-CODEX-REAL-CASE-V2-SHARED-RESULT.md
 ~~~
 
 以及当前冻结技能：
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.4-thinking-watchdog
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.5-time-primary
 file   = skills/gpt-codex-convergence-orchestrator/SKILL.md
 ~~~
 
@@ -100,58 +100,48 @@ FINAL_POST_DECISION_WAIT
 为了快而降低 VALID
 ~~~
 
-### C. GPT Thinking Watchdog
+### C. GPT Thinking 时间优先故障恢复
 
-不要用单一固定秒数判定故障。对每次 GPT wake 同时观察：
-
-~~~text
-目标 GitHub COMMAND/DECISION 是否出现
-页面回复/DOM/Thinking 状态是否仍有进展
-同类 wake + 同复杂度历史成功区间
-Browser SKILL/正式配置的健康约定
-~~~
-
-状态：
+对 REQUEST->COMMAND 和 RESULT->DECISION 分别维护同类成功样本的正常等待上限：
 
 ~~~text
-NORMAL_PROGRESS          -> 继续
-SLOW_BUT_PROGRESSING     -> 继续，不刷新
-SUSPECT_STALL            -> 加密观察 + health probe
-CONFIRMED_STUCK          -> 执行恢复阶梯
+NORMAL_WAIT_UPPER
+= 同类成功 wake 的正常等待上界
 ~~~
 
-确认卡死后严格：
+规则：
 
 ~~~text
-R0 先查 GitHub；已有目标回复则直接继续
-R1 当前页停止生成（如可用）+ reload/hard refresh + 同 logical_event_id re-wake
-R2 同一 profile 新页面/标签打开同一 conversation + 同 logical_event_id re-wake
-R3 原 conversation 失效则新 ChatGPT 页面/新会话，从 GitHub 重新恢复上下文 + 同 logical_event_id re-wake
+先查 GitHub
+-> 目标消息已存在：立即继续
+-> 不存在：
+   elapsed <= NORMAL_WAIT_UPPER -> 继续等待
+   elapsed >  NORMAL_WAIT_UPPER -> 按高概率故障处理
 ~~~
 
-每一级前后都先查 GitHub；目标消息一出现立即停止恢复。
+超过上限后不要因为页面仍显示 Thinking 就继续无限等待。
 
-R0-R3 全部失败：
+恢复：
 
 ~~~text
-BLOCKED
-SAVE REALITY_DELTA
-RETURN TO GPT
+再次检查 GitHub
+-> 无目标消息
+-> refresh/reconnect 当前 ChatGPT 会话
+-> 同 TASK_ID / MESSAGE_SEQ / logical_event_id 重新 wake
+-> 若当前会话不可恢复，可同 profile 新页面/新会话从 GitHub 恢复
 ~~~
 
-禁止无限恢复循环。
+禁止创建新的业务 request 或新的 logical_event_id。
 
-OpenAI 官方“看起来无限挂起时先短暂等待，然后停止/重试、刷新、必要时新开聊天”的排障步骤只作为无进展 guard；不要把它误写成模型固定最大思考时间。
+NORMAL_WAIT_UPPER 优先由本轮及历史成功样本校准；样本不足时使用 Browser SKILL/正式配置已有等待上限作为临时基线，不凭空猜固定秒数。
 
 记录：
 
 ~~~text
-GPT_THINKING_STATE
+NORMAL_WAIT_UPPER_SECONDS
+NORMAL_WAIT_BASELINE_SOURCE
 GPT_THINKING_STUCK_COUNT
-STUCK_CLASSIFICATION_REASON
-RECOVERY_LEVEL_USED
 GPT_THINKING_STUCK_RECOVERY_SECONDS
-THINKING_BASELINE_SOURCE
 ~~~
 
 ### D. Warm clean timing certification
@@ -232,12 +222,10 @@ P50_RESULT_TO_DECISION_SECONDS=<value>
 P50_FINAL_CONSUME_SECONDS=<value>
 P50_TLS_RECOVERY_WAIT_SECONDS=<value>
 P50_LOCAL_AVOIDABLE_WAIT_SECONDS=<value>
-GPT_THINKING_STATE=<state>
+NORMAL_WAIT_UPPER_SECONDS=<value>
+NORMAL_WAIT_BASELINE_SOURCE=<successful-history/browser-formal-baseline>
 GPT_THINKING_STUCK_COUNT=<n>
-STUCK_CLASSIFICATION_REASON=<reason>
-RECOVERY_LEVEL_USED=<R0/R1/R2/R3/NONE>
 GPT_THINKING_STUCK_RECOVERY_SECONDS=<value>
-THINKING_BASELINE_SOURCE=<history/browser-contract/official-guard>
 FUNCTIONAL_VALID=3/3 or <n>/3
 DUPLICATE_BUSINESS_EFFECT=0/<other>
 REMOTE_REPORT_PATH=<path>
