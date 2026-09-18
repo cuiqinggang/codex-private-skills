@@ -1,38 +1,31 @@
 {
   "skill_id": "gpt-codex-convergence-orchestrator",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "display_name": "GPT-Codex 自动闭环",
   "method_dependency": "first-principles-physical-limit-convergence@3.1.1",
-  "architecture": "GPT_STRUCTURED_REPLY_CODEX_RELAY_GITHUB_TRUTH",
+  "architecture": "GITHUB_PRIMARY_PAGE_FALLBACK",
   "roles": {
-    "gpt": "PLANNER_JUDGE_SEMANTIC_AUTHOR",
-    "codex": "LOOP_OWNER_DETERMINISTIC_EXECUTOR_MECHANICAL_RELAY",
-    "github": "FINAL_SHARED_TRUTH",
-    "browser": "WAKE_AND_EXTRACT_STRUCTURED_REPLY",
-    "sqlite": "LOCAL_DEDUPE_RESUME"
+    "gpt": "PLANNER_JUDGE",
+    "codex": "EXECUTOR",
+    "browser": "TRANSPORT",
+    "github": "PREFERRED_SHARED_WORKSPACE"
   },
-  "reply_protocol": {
-    "name": "GPT_BUS_REPLY_V1",
-    "request_reply": "COMMAND",
-    "result_reply": "DECISION",
-    "browser_business_transport_allowed": true,
-    "codex_semantic_edit_allowed": false,
-    "relay_transport_metadata_allowed": true,
-    "source_reply_sha256_required": true
+  "transport": {
+    "primary": "GITHUB",
+    "fallback": "PAGE_DIRECT",
+    "fallback_triggers": [
+      "GITHUB_WRITE_BLOCKED",
+      "GITHUB_WRITE_ERROR",
+      "GITHUB_WRITE_SAFETY_CHECK",
+      "TRANSPORT_DELAY_NOT_WORTH_WAITING"
+    ],
+    "github_repair_blocks_task": false,
+    "browser_business_payload_allowed_in_fallback": true
   },
-  "direct_gpt_github_write": {
-    "required": false,
-    "reason": "UNATTENDED_WRITE_CAN_BE_BLOCKED_BY_CHATGPT_SAFETY_CHECK"
-  },
-  "first_answer_timeout": {
+  "thinking_timeout": {
     "SIMPLE_SECONDS": 60,
     "NORMAL_SECONDS": 180,
     "LARGE_SECONDS": 600,
-    "scope": "BEFORE_FIRST_VISIBLE_ASSISTANT_ANSWER_ONLY"
-  },
-  "warm_cases": [
-    "gpt-codex-time-v3-r1",
-    "gpt-codex-time-v3-r2",
-    "gpt-codex-time-v3-r3"
-  ]
+    "scope": "BEFORE_FIRST_VISIBLE_ANSWER_ONLY"
+  }
 }
