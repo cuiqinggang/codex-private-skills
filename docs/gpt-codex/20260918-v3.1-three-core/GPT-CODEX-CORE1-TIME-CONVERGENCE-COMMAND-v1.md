@@ -108,6 +108,8 @@ FINAL_POST_DECISION_WAIT
 THINKING_TIMEOUT_SECONDS = 从已安装 playwright-native-ai-browser/SKILL.md 或其当前正式配置读取
 ~~~
 
+若没有正式等待上限：不要猜 5 秒/10 秒，保存 REALITY_DELTA 并返回 GPT。
+
 超过该正式等待上限仍显示“正在思考/生成中”时：
 
 ~~~text
