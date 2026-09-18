@@ -1,4 +1,4 @@
-# Acceptance — first-principles-physical-limit-convergence v3.1.1
+# Acceptance — first-principles-physical-limit-convergence v3.1.2
 
 ## 唯一验收
 
@@ -50,20 +50,27 @@ CURRENT_METHOD_AUTHORITY=NO
 
 ## 完成即交接
 
-如果已经生成冻结方案/执行入口/命令包，且下一步需要外部执行器：
+如果已经生成完整执行文件/技能包，且下一步需要外部执行器：
 
-```text
+~~~text
 HANDOFF_COMMAND_REQUIRED=YES
 HANDOFF_SAME_REPLY=YES
-HANDOFF_FIELDS=READ+DO+RETURN
+HANDOFF_IS_POINTER_ONLY=YES
+HANDOFF_DUPLICATE_INSTRUCTIONS=0
+ONE_EXECUTION_SOURCE_OF_TRUTH=YES
 HANDOFF_EXTRA_USER_TURN=0
-```
+~~~
 
-只报告“完成”但没有给出可复制执行命令：
+默认交接只包含：
 
-```text
-DELIVERY_COMPLETE=NO
-```
+~~~text
+READ = 仓库/分支/文件 或 本地技能包入口
+DO   = 按文件完整执行
+RETURN = 按文件要求回传
+~~~
+
+只有远端文件和本地已部署技能包都无法读取时，才允许在页面完整展开执行正文。
+
 
 ## 失败
 
@@ -86,5 +93,6 @@ HIGH_INTELLIGENCE_VIRTUAL_MATURITY=PASS
 ALL_CURRENT_ACTIONS_MAP_TO_1_2_3=PASS
 UNMAPPED_CURRENT_ACTIONS=0
 HANDOFF_EXTRA_USER_TURN=0
+HANDOFF_DUPLICATE_INSTRUCTIONS=0
 FINAL_99_ALLOWED=YES
 ```
