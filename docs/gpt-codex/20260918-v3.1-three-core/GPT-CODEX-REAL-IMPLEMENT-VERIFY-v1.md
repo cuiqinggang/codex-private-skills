@@ -1,4 +1,4 @@
-# GPT↔Codex v3.1 现实实现与案例验证命令 v1
+# GPT↔Codex v3.1.1 现实实现与案例验证命令 v1
 
 状态：
 
@@ -6,15 +6,25 @@
 AUTHORIZED_CORE_3_REAL_IMPLEMENT_VERIFY
 ```
 
-先读：
+## 唯一读取入口
+
+必须按下面三个**明确分支**读取，禁止读取当前工作分支中的旧母技能副本：
 
 ```text
-skills/first-principles-physical-limit-convergence/SKILL.md
-skills/gpt-codex-convergence-orchestrator/SKILL.md
-docs/gpt-codex/20260918-v3.1-three-core/GPT-CODEX-THREE-CORE-FINAL-v1.md
+READ 1:
+branch = codex/first-principles-physical-limit-convergence-v3.1.1
+file   = skills/first-principles-physical-limit-convergence/SKILL.md
+
+READ 2:
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.0-v3.1
+file   = skills/gpt-codex-convergence-orchestrator/SKILL.md
+
+READ 3:
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.0-v3.1
+file   = docs/gpt-codex/20260918-v3.1-three-core/GPT-CODEX-THREE-CORE-FINAL-v1.md
 ```
 
-只实现被冻结的最终链，不自行增加新架构。
+读取后只实现被冻结的最终链，不自行增加新架构。
 
 ## 本机实现位置
 
