@@ -2,12 +2,12 @@
 name: gpt-codex-convergence-orchestrator
 description: GPT↔Codex 自动闭环执行技能。当前版本只服从 first-principles-physical-limit-convergence v3.1.1 的三核心白名单：极限短时间、成熟方案集群、高智能虚拟成熟。Codex 负责主动循环和确定性执行，GPT 负责按需规划/裁决，GitHub 是共享事实源，AI Browser 只负责唤醒 GPT。Browser 入口从已安装 playwright-native-ai-browser/SKILL.md 解析。GitHub 总线回复类型使用唯一白名单：REQUEST 只能由 GPT 回复 COMMAND；RESULT 只能由 GPT 回复 DECISION；页面 ACK 永远不能作为 GitHub 总线消息类型。
 metadata:
-  version: "1.3.2"
+  version: "1.3.3"
   method_dependency: "first-principles-physical-limit-convergence@3.1.1"
   architecture: "CODEX_GITHUB_GPT_CLOSED_LOOP"
 ---
 
-# GPT↔Codex 自动闭环 v1.3.2
+# GPT↔Codex 自动闭环 v1.3.3
 
 ## CORE 1：极限短时间
 
@@ -156,6 +156,51 @@ REQUEST wakeup -> EXPECTED_GPT_BUS_REPLY_TYPE=COMMAND
 RESULT wakeup  -> EXPECTED_GPT_BUS_REPLY_TYPE=DECISION
 ```
 
+## GPT“正在思考”卡死恢复
+
+这是 Browser transport 的小故障恢复，不改变四消息架构。
+
+等待 GPT 时必须使用 **已安装 Playwright Browser 技能/配置中现有的正式响应等待上限**：
+
+```text
+THINKING_TIMEOUT_SECONDS = Browser SKILL / 当前正式配置中的响应等待上限
+```
+
+不要凭空另写 5 秒或 10 秒常量。
+
+如果超过该正式等待上限，页面仍停留在“正在思考/生成中”，且 GitHub 还没有出现当前期待的 COMMAND 或 DECISION：
+
+```text
+GPT_THINKING_STUCK = YES
+```
+
+恢复只做：
+
+```text
+先检查 GitHub 是否已存在目标回复
+-> 已存在：直接继续，不刷新、不重发
+-> 不存在：刷新/重连当前 ChatGPT 会话
+-> 使用同一个 TASK_ID / MESSAGE_SEQ / logical_event_id 重新 wake
+-> 继续等待同一个期待消息
+```
+
+禁止：
+
+```text
+无限等待
+创建新的业务请求
+改变 MESSAGE_SEQ
+产生第二个 logical_event_id
+改变任务或方案
+```
+
+该恢复时间必须单独记录：
+
+```text
+GPT_THINKING_STUCK_COUNT
+GPT_THINKING_STUCK_RECOVERY_SECONDS
+```
+
 ---
 
 # GitHub 消息与防重复
@@ -253,4 +298,4 @@ Codex restart
 
 # 最终一句话
 
-> **页面 ACK 只确认 transport；GitHub 总线只认 REQUEST→COMMAND、RESULT→DECISION。先得到正确四消息闭环，再用真实分段时间做极限时间优化。**
+> **页面 ACK 只确认 transport；GitHub 总线只认 REQUEST→COMMAND、RESULT→DECISION；GPT 超过 Browser 正式等待上限仍卡“正在思考”时，先查 GitHub、再刷新重连并复用同一 logical_event_id，禁止无限等待。**
