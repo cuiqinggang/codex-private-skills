@@ -1,17 +1,17 @@
 ---
 name: gpt-codex-convergence-orchestrator
-description: GPT↔Codex 自动闭环执行技能。当前版本只服从 first-principles-physical-limit-convergence v3.1 的三核心白名单：极限短时间、成熟方案集群、高智能虚拟成熟。Codex 负责主动循环和确定性执行，GPT 负责按需规划/裁决，GitHub 是共享事实源，AI Browser 只负责唤醒 GPT。旧 L0/L1/L2/L3/L4 仅为历史资料，不具有当前方法权。
+description: GPT↔Codex 自动闭环执行技能。当前版本只服从 first-principles-physical-limit-convergence v3.1.1 的三核心白名单：极限短时间、成熟方案集群、高智能虚拟成熟。Codex 负责主动循环和确定性执行，GPT 负责按需规划/裁决，GitHub 是共享事实源，AI Browser 只负责唤醒 GPT。Browser 入口不得写死脚本路径，必须先读取已安装 playwright-native-ai-browser/SKILL.md，再按其中正式入口执行。
 metadata:
-  version: "1.3.0"
-  method_dependency: "first-principles-physical-limit-convergence@3.1.0"
+  version: "1.3.1"
+  method_dependency: "first-principles-physical-limit-convergence@3.1.1"
   architecture: "CODEX_GITHUB_GPT_CLOSED_LOOP"
 ---
 
-# GPT↔Codex 自动闭环 v1.3.0
+# GPT↔Codex 自动闭环 v1.3.1
 
 ## 唯一方法映射
 
-本技能只允许映射到 v3.1 三核心：
+本技能只允许映射到 v3.1.1 三核心：
 
 ### CORE 1：极限短时间
 
@@ -100,6 +100,51 @@ Codex 可以决定同一个已授权动作怎么完成，但不能决定下一�
 
 ---
 
+# Browser 正式入口
+
+Browser 业务入口**不得写死为某个猜测脚本路径**。
+
+唯一入口顺序：
+
+```text
+1. 读取：
+   C:\Users\A\.codex\skills\playwright-native-ai-browser\SKILL.md
+
+2. 如果该路径是 Junction/Symlink：
+   解析其实际 Target
+
+3. 严格使用 SKILL.md 当前声明/引用的正式业务入口与恢复约定
+
+4. 只有当 SKILL.md 本身或它明确指向的正式入口真实不存在时：
+   STOP
+   SAVE REALITY_DELTA
+   RETURN TO GPT
+```
+
+禁止：
+
+```text
+根据旧资料猜：
+C:\AI\Playwright-Native-AI-Browser\scripts\...
+或
+C:\AI\Playwright-Native-AI-Browser\references\...
+```
+
+Browser 唤醒 GPT 时只发送：
+
+```text
+TASK_ID
+BUS_BRANCH
+MESSAGE_SEQ
+MESSAGE_PATH
+```
+
+GPT 自己从 GitHub 读取正文。
+
+Browser 不搬运完整命令/结果。
+
+---
+
 # GitHub 消息
 
 每个任务使用独立 bus branch：
@@ -176,23 +221,6 @@ remote_commit
 重复 transport
 不能产生重复 VALID 业务结果
 ```
-
----
-
-# Browser
-
-Browser 唤醒 GPT 时只发送：
-
-```text
-TASK_ID
-BUS_BRANCH
-MESSAGE_SEQ
-MESSAGE_PATH
-```
-
-GPT 自己从 GitHub 读取正文。
-
-Browser 不搬运完整命令/结果。
 
 ---
 
@@ -276,22 +304,11 @@ CODEX_FREE_EXPLORATION=0
 FINAL_DECISION_CONSUMED=PASS
 ```
 
-通过后即认为当前冻结方案的现实认证成立。
-
 ---
 
 # 历史资料
 
-旧：
-
-```text
-L0/L1/L2/L3/L4
-Shadow Pilot
-Assisted Pilot
-旧 H3-P0 自动化命令
-```
-
-只允许作为历史证据。
+旧 L0/L1/L2/L3/L4、Shadow Pilot、Assisted Pilot、旧 H3-P0 自动化命令只允许作为历史证据。
 
 当前下一步不得由这些旧标签决定。
 
@@ -299,4 +316,4 @@ Assisted Pilot
 
 # 最终一句话
 
-> **Codex 主动、GPT 决策、GitHub 传事实、Browser 只唤醒；成熟机制只作为工具，完整现实闭环一次验证被冻结的最终方案。**
+> **Codex 主动、GPT 决策、GitHub 传事实、Browser 只唤醒；Browser 入口永远从已安装 SKILL.md 解析，不猜旧路径。**
