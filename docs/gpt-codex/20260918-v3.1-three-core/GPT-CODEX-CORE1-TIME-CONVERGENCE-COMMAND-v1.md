@@ -11,14 +11,14 @@ CORE_1_TIME_CONVERGENCE=AUTHORIZED
 ## READ
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.6-fixed-timeout
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.7-first-answer-timeout
 file   = docs/gpt-codex/20260918-v3.1-three-core/GPT-CODEX-REAL-CASE-V2-SHARED-RESULT.md
 ~~~
 
 以及当前冻结技能：
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.6-fixed-timeout
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.7-first-answer-timeout
 file   = skills/gpt-codex-convergence-orchestrator/SKILL.md
 ~~~
 
@@ -100,52 +100,52 @@ FINAL_POST_DECISION_WAIT
 为了快而降低 VALID
 ~~~
 
-### C. GPT Thinking 固定时间故障恢复
+### C. GPT Thinking 首答超时恢复
 
-使用固定三档：
+只测“多久开始回答”，不测“多久回答完”。
+
+固定三档：
 
 ~~~text
-SIMPLE = 120 秒
-NORMAL = 240 秒
+SIMPLE = 60 秒
+NORMAL = 180 秒
 LARGE  = 600 秒
 ~~~
 
-本项目固定：
+本项目：
 
 ~~~text
-RESULT -> DECISION = SIMPLE = 120 秒
-REQUEST -> COMMAND = NORMAL = 240 秒
+RESULT -> DECISION = SIMPLE = 60 秒
+REQUEST -> COMMAND = NORMAL = 180 秒
+~~~
+
+计时：
+
+~~~text
+wakeup_sent -> first_visible_assistant_answer
 ~~~
 
 规则：
 
 ~~~text
-先查 GitHub
--> 已有目标消息：立即继续
--> 没有目标消息：
-   未超时 -> 继续等
-   已超时 -> 一律按故障恢复
+一旦 GPT 开始正常输出正文
+-> 立即停止 Thinking timeout
+-> 后续完整回答无论继续多久，都不因为本规则刷新
+
+如果一直没有开始回答、仍停留在 Thinking/Generating：
+-> 未超过上限：继续等待
+-> 超过上限：按故障恢复
 ~~~
 
-超时后不再看页面是否仍显示 Thinking/Generating。
-
-恢复：
-
-~~~text
-再次查 GitHub
--> 无目标消息
--> refresh/reconnect 当前 ChatGPT
--> 同 TASK_ID / MESSAGE_SEQ / logical_event_id 重新 wake
--> 必要时同 profile 新页面/会话恢复
-~~~
-
-禁止超过固定上限后继续等待。
+恢复前先检查 GitHub 是否已有目标消息；没有则 refresh/reconnect，并使用同一 TASK_ID / MESSAGE_SEQ / logical_event_id 重新 wake。必要时同一 profile 新开页面/会话。
 
 记录：
 
 ~~~text
 GPT_WAIT_CLASS
-GPT_WAIT_LIMIT_SECONDS
+GPT_FIRST_ANSWER_LIMIT_SECONDS
+GPT_FIRST_ANSWER_SECONDS
+ANSWER_STARTED
 GPT_THINKING_STUCK_COUNT
 GPT_THINKING_STUCK_RECOVERY_SECONDS
 ~~~
@@ -229,7 +229,9 @@ P50_FINAL_CONSUME_SECONDS=<value>
 P50_TLS_RECOVERY_WAIT_SECONDS=<value>
 P50_LOCAL_AVOIDABLE_WAIT_SECONDS=<value>
 GPT_WAIT_CLASS=<SIMPLE/NORMAL/LARGE>
-GPT_WAIT_LIMIT_SECONDS=<120/240/600>
+GPT_FIRST_ANSWER_LIMIT_SECONDS=<60/180/600>
+GPT_FIRST_ANSWER_SECONDS=<value>
+ANSWER_STARTED=<YES/NO>
 GPT_THINKING_STUCK_COUNT=<n>
 GPT_THINKING_STUCK_RECOVERY_SECONDS=<value>
 FUNCTIONAL_VALID=3/3 or <n>/3
