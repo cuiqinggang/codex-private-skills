@@ -7,9 +7,7 @@
     "method_version",
     "task_contract_hash",
     "valid_contract_hash",
-    "virtual_plan_id",
-    "virtual_plan_hash",
-    "virtual_plan_status",
+    "authorization_plan",
     "execution_mode",
     "authorized_actions",
     "runtime_policy"
@@ -20,9 +18,17 @@
     "task_contract_hash": {"type": "string", "minLength": 8},
     "valid_contract_hash": {"type": "string", "minLength": 8},
     "resource_boundary_hash": {"type": ["string", "null"]},
-    "virtual_plan_id": {"type": "string", "minLength": 1},
-    "virtual_plan_hash": {"type": "string", "minLength": 8},
-    "virtual_plan_status": {"const": "FROZEN"},
+    "authorization_plan": {
+      "type": "object",
+      "required": ["plan_type", "plan_id", "plan_hash", "plan_status"],
+      "properties": {
+        "plan_type": {"enum": ["CALIBRATION_PLAN", "VIRTUAL_99_FINAL_PLAN"]},
+        "plan_id": {"type": "string", "minLength": 1},
+        "plan_hash": {"type": "string", "minLength": 8},
+        "plan_status": {"const": "FROZEN"}
+      },
+      "additionalProperties": false
+    },
     "execution_mode": {
       "enum": ["MINIMAL_CALIBRATION", "FINAL_CERTIFICATION"]
     },
@@ -88,5 +94,27 @@
       "additionalProperties": false
     }
   },
+  "allOf": [
+    {
+      "if": {"properties": {"execution_mode": {"const": "MINIMAL_CALIBRATION"}}},
+      "then": {
+        "properties": {
+          "authorization_plan": {
+            "properties": {"plan_type": {"const": "CALIBRATION_PLAN"}}
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"execution_mode": {"const": "FINAL_CERTIFICATION"}}},
+      "then": {
+        "properties": {
+          "authorization_plan": {
+            "properties": {"plan_type": {"const": "VIRTUAL_99_FINAL_PLAN"}}
+          }
+        }
+      }
+    }
+  ],
   "additionalProperties": true
 }
