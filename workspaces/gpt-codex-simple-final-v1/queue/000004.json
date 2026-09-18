@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-09-18T18:13:00+00:00",
+  "logical_event_id": "gpt-codex-simple-final-v1:decision-v1",
+  "message_id": "gpt-codex-simple-final-v1:000004:DECISION",
+  "parent_message_id": "gpt-codex-simple-final-v1:000003:RESULT",
+  "payload_path": "workspaces/gpt-codex-simple-final-v1/payloads/000004.json",
+  "payload_sha256": "1ad5bb89861680c2b6f979204ac5c4616561998cbb77d6cfcec6116d415a1620",
+  "receiver": "CODEX",
+  "sender": "GPT",
+  "seq": 4,
+  "task_id": "gpt-codex-simple-final-v1",
+  "type": "DECISION"
+}
