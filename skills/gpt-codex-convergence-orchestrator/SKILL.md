@@ -1,29 +1,25 @@
 ---
 name: gpt-codex-convergence-orchestrator
-description: GPT↔Codex 自动闭环执行技能。当前版本只服从 first-principles-physical-limit-convergence v3.1.1 的三核心白名单：极限短时间、成熟方案集群、高智能虚拟成熟。Codex 负责主动循环和确定性执行，GPT 负责按需规划/裁决，GitHub 是共享事实源，AI Browser 只负责唤醒 GPT。Browser 入口不得写死脚本路径，必须先读取已安装 playwright-native-ai-browser/SKILL.md，再按其中正式入口执行。
+description: GPT↔Codex 自动闭环执行技能。当前版本只服从 first-principles-physical-limit-convergence v3.1.1 的三核心白名单：极限短时间、成熟方案集群、高智能虚拟成熟。Codex 负责主动循环和确定性执行，GPT 负责按需规划/裁决，GitHub 是共享事实源，AI Browser 只负责唤醒 GPT。Browser 入口从已安装 playwright-native-ai-browser/SKILL.md 解析。GitHub 总线回复类型使用唯一白名单：REQUEST 只能由 GPT 回复 COMMAND；RESULT 只能由 GPT 回复 DECISION；页面 ACK 永远不能作为 GitHub 总线消息类型。
 metadata:
-  version: "1.3.1"
+  version: "1.3.2"
   method_dependency: "first-principles-physical-limit-convergence@3.1.1"
   architecture: "CODEX_GITHUB_GPT_CLOSED_LOOP"
 ---
 
-# GPT↔Codex 自动闭环 v1.3.1
+# GPT↔Codex 自动闭环 v1.3.2
 
-## 唯一方法映射
-
-本技能只允许映射到 v3.1.1 三核心：
-
-### CORE 1：极限短时间
+## CORE 1：极限短时间
 
 目标：
 
 ```text
 从 Codex 收到起始任务
-到 GPT 最终判断被 Codex 消费并停止
+到 GPT 最终 DECISION 被 Codex 消费并停止
 得到第一个完整 VALID 自动闭环
 ```
 
-唯一时间指标：
+唯一指标：
 
 ```text
 T_VALID
@@ -35,17 +31,18 @@ VALID：
 用户中间复制粘贴 = 0
 Codex 主动发起
 GPT 直接读写 GitHub
-Codex 只执行 GPT 已写入 GitHub 的命令
+Codex 只执行 GPT 已写入 GitHub 的 COMMAND
 真实任务结果通过验证
+最终 GPT GitHub 消息必须是 DECISION
 重复 wakeup/poll 不产生重复业务结果
 中断后能继续同一个任务
 Codex 不自行规划下一业务动作
 代理/系统设置不改变
 ```
 
-### CORE 2：成熟方案集群
+## CORE 2：成熟方案集群
 
-只复用当前已经成熟且匹配的能力：
+冻结复用：
 
 ```text
 GitHub commit/branch = 远端共享事实源
@@ -59,146 +56,119 @@ read-after-write verification = 副作用确认
 
 不部署新的 workflow engine，不新建 Browser 栈，不重新研究可靠自动化理论。
 
-### CORE 3：高智能虚拟成熟
+## CORE 3：高智能虚拟成熟
 
-最终冻结链只有：
+唯一闭环：
 
 ```text
 Codex
--> GitHub: REQUEST
--> Browser: wake GPT
--> GPT
--> GitHub: COMMAND
--> Codex
--> execute + verify
--> GitHub: RESULT
--> Browser: wake GPT
--> GPT
--> GitHub: DECISION
--> Codex
+-> 000001 REQUEST -> GitHub
+-> Browser wake GPT
+-> GPT reads GitHub
+-> 000002 COMMAND -> GitHub
+-> Codex execute + verify
+-> 000003 RESULT -> GitHub
+-> Browser wake GPT
+-> GPT reads GitHub
+-> 000004 DECISION -> GitHub
+-> Codex consumes DECISION
 -> STOP
 ```
 
-这条链就是当前 FINAL VIRTUAL-99。
+### GitHub 总线类型白名单
 
-现实实现和案例验证只验证这条链，不现场改架构。
-
----
-
-# 角色
+只允许：
 
 ```text
-CODEX = LOOP_OWNER + DETERMINISTIC_EXECUTOR
-GPT = ON_DEMAND_PLANNER_JUDGE
-GITHUB = SHARED_TRUTH + IMMUTABLE MESSAGE BUS
-AI_BROWSER = GPT_WAKEUP_ONLY
-SQLITE = LOCAL_DEDUPE/RESUME LEDGER
-CAPACITY_ROUTER = MODEL_AVAILABILITY ONLY
+parent.type=REQUEST
+-> GPT reply.type MUST = COMMAND
+
+parent.type=RESULT
+-> GPT reply.type MUST = DECISION
 ```
 
-Codex 可以决定同一个已授权动作怎么完成，但不能决定下一业务动作。
+除此之外：
+
+```text
+PUBLISH=DENY
+```
+
+特别规定：
+
+```text
+ACK = Browser/page transport acknowledgement only
+ACK = NEVER a GitHub bus message type
+```
+
+在 GitHub publish 前必须先检查 parent.type 和 intended reply.type；不匹配就不发布。
+
+### DECISION 最小内容
+
+000004 必须至少包含：
+
+```text
+type=DECISION
+result_message_id
+accepted=true|false
+status=PASS|FAIL
+control_action=STOP|BLOCKED
+verification
+```
+
+当 toy result 完全通过：
+
+```text
+accepted=true
+status=PASS
+control_action=STOP
+```
+
+页面可以另外返回短 ACK，但不能把 ACK 写入 GitHub queue。
 
 ---
 
 # Browser 正式入口
 
-Browser 业务入口**不得写死为某个猜测脚本路径**。
-
-唯一入口顺序：
+先读取：
 
 ```text
-1. 读取：
-   C:\Users\A\.codex\skills\playwright-native-ai-browser\SKILL.md
-
-2. 如果该路径是 Junction/Symlink：
-   解析其实际 Target
-
-3. 严格使用 SKILL.md 当前声明/引用的正式业务入口与恢复约定
-
-4. 只有当 SKILL.md 本身或它明确指向的正式入口真实不存在时：
-   STOP
-   SAVE REALITY_DELTA
-   RETURN TO GPT
+C:\Users\A\.codex\skills\playwright-native-ai-browser\SKILL.md
 ```
 
-禁止：
+若为 Junction/Symlink，解析 Target，再严格使用 SKILL.md 当前声明的正式业务入口与恢复约定。
 
-```text
-根据旧资料猜：
-C:\AI\Playwright-Native-AI-Browser\scripts\...
-或
-C:\AI\Playwright-Native-AI-Browser\references\...
-```
+禁止猜测旧 root\scripts / root\references 路径。
 
-Browser 唤醒 GPT 时只发送：
+Browser wakeup 只发送：
 
 ```text
 TASK_ID
 BUS_BRANCH
 MESSAGE_SEQ
 MESSAGE_PATH
+EXPECTED_GPT_BUS_REPLY_TYPE
 ```
 
-GPT 自己从 GitHub 读取正文。
+其中：
 
-Browser 不搬运完整命令/结果。
+```text
+REQUEST wakeup -> EXPECTED_GPT_BUS_REPLY_TYPE=COMMAND
+RESULT wakeup  -> EXPECTED_GPT_BUS_REPLY_TYPE=DECISION
+```
 
 ---
 
-# GitHub 消息
+# GitHub 消息与防重复
 
-每个任务使用独立 bus branch：
+每个任务独立：
 
 ```text
 bus/<TASK_ID>
 ```
 
-目录：
+消息只追加，不覆盖；envelope + payload 同一 commit；ref update non-force。
 
-```text
-workspaces/<TASK_ID>/
-  TASK.md
-  queue/
-  payloads/
-  RESULT.md
-```
-
-正式闭环四条消息：
-
-```text
-000001 CODEX -> GPT REQUEST
-000002 GPT   -> CODEX COMMAND
-000003 CODEX -> GPT RESULT
-000004 GPT   -> CODEX DECISION
-```
-
-消息只追加，不覆盖。
-
-每条消息至少有：
-
-```text
-task_id
-seq
-message_id
-parent_message_id
-logical_event_id
-sender
-receiver
-type
-payload_path
-payload_sha256
-created_at
-```
-
-envelope + payload 同一个 Git commit 发布。
-
-Git ref 更新必须 non-force；冲突就重新读取，不覆盖别人工作。
-
----
-
-# 防重复与恢复
-
-本机 SQLite 只保存：
+本机 SQLite 保存最小去重/恢复字段：
 
 ```text
 message_id
@@ -209,111 +179,78 @@ effect_fingerprint
 remote_commit
 ```
 
-规则只有三条：
-
-1. 同一个 logical_event_id 已发布 -> 不再发布第二条语义相同消息。
-2. 同一个 action_id 已完成且结果仍通过验证 -> 不再执行。
-3. 如果进程在副作用后崩溃 -> 先检查现实结果；已经成立就补记录，不重复副作用。
-
-不宣称全局 exactly-once；目标只是：
+规则：
 
 ```text
-重复 transport
-不能产生重复 VALID 业务结果
+同 logical_event_id 已发布 -> 不再发布
+同 action_id 已完成且效果仍成立 -> 不再执行
+副作用后崩溃 -> 先验证现实效果，成立则补记录，不重复副作用
 ```
 
 ---
 
-# GPT
+# 时间测量
 
-GPT 被唤醒后：
+每次真实认证必须记录：
 
 ```text
-读取当前 GitHub message
--> 读取 TASK/必要证据
--> 做规划或裁决
--> 检查是否已经对同一 parent 写过回复
--> 未写过：写下一条 GitHub message
--> 已写过：不重复写
--> 返回短 ACK
+T0 = 000001 REQUEST published
+T1 = 000002 COMMAND published
+T2 = 000003 RESULT published
+T3 = 000004 DECISION published
+T4 = Codex consumed DECISION and STOP
 ```
+
+计算：
+
+```text
+T_GPT_REQUEST_TO_COMMAND = T1-T0
+T_CODEX_COMMAND_TO_RESULT = T2-T1
+T_GPT_RESULT_TO_DECISION = T3-T2
+T_FINAL_CONSUME = T4-T3
+T_VALID = T4-T0
+```
+
+先 correctness PASS，再依据这些真实时间只优化最大瓶颈。
 
 ---
 
-# Codex
+# 现实认证
 
-Codex 循环：
+上一轮 gpt-codex-real-case-v1 保留为失败证据，不覆盖。
 
-```text
-读取 GitHub
--> 有 GPT COMMAND：去重 -> 执行 -> 验证 -> 写 RESULT -> wake GPT
--> 有 GPT DECISION：执行 FREEZE/BLOCKED/STOP
--> 没有授权业务动作：REQUEST GPT 或等待
-```
-
-未知问题：
+重新用干净任务：
 
 ```text
-保存证据
--> STOP
--> 返回 GPT
-```
-
-禁止现实中自行产生新方案。
-
----
-
-# 第一个现实认证案例
-
-```text
-TASK_ID=gpt-codex-real-case-v1
+TASK_ID=gpt-codex-real-case-v2
 OUTPUT=toy-result.txt
 CONTENT=GPT_CODEX_CODE_TO_CODE_OK
 VERIFY=exact readback + SHA256
 ```
 
-真实路径：
+必须严格产生：
 
 ```text
 000001 REQUEST
--> GPT 000002 COMMAND
--> Codex 创建并验证 toy-result.txt
--> 000003 RESULT
--> GPT 000004 DECISION
--> Codex STOP
+000002 COMMAND
+000003 RESULT
+000004 DECISION
+STOP
 ```
 
-同一次认证额外验证：
+同时验证：
 
 ```text
-duplicate wakeup -> no duplicate GPT message
-duplicate poll -> no duplicate Codex effect
-Browser reconnect -> same task continues
-Codex restart -> same task continues, completed effect not replayed
+duplicate wakeup
+duplicate poll
+Browser reconnect
+Codex restart
 ```
 
-通过条件：
-
-```text
-FOUR_MESSAGE_LOOP=PASS
-TOY_RESULT=PASS
-MANUAL_MIDDLE_COPY_PASTE=0
-DUPLICATE_BUSINESS_EFFECT=0
-RESTART_RESUME=PASS
-CODEX_FREE_EXPLORATION=0
-FINAL_DECISION_CONSUMED=PASS
-```
-
----
-
-# 历史资料
-
-旧 L0/L1/L2/L3/L4、Shadow Pilot、Assisted Pilot、旧 H3-P0 自动化命令只允许作为历史证据。
-
-当前下一步不得由这些旧标签决定。
+失败只保存 REALITY_DELTA 并返回 GPT，不现场改方案。
 
 ---
 
 # 最终一句话
 
-> **Codex 主动、GPT 决策、GitHub 传事实、Browser 只唤醒；Browser 入口永远从已安装 SKILL.md 解析，不猜旧路径。**
+> **页面 ACK 只确认 transport；GitHub 总线只认 REQUEST→COMMAND、RESULT→DECISION。先得到正确四消息闭环，再用真实分段时间做极限时间优化。**
