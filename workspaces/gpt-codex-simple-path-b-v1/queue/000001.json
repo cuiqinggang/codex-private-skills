@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-09-18T18:16:14.794907+00:00",
+  "logical_event_id": "gpt-codex-simple-path-b-v1:request-v1",
+  "message_id": "gpt-codex-simple-path-b-v1:000001:REQUEST",
+  "parent_message_id": null,
+  "payload_path": "workspaces/gpt-codex-simple-path-b-v1/payloads/000001.json",
+  "payload_sha256": "ee6c5c6c9f6bc70a830715fe60bb009bd637503a4ee09cc01474996ac656fdf0",
+  "receiver": "GPT",
+  "sender": "CODEX",
+  "seq": 1,
+  "task_id": "gpt-codex-simple-path-b-v1",
+  "type": "REQUEST"
+}

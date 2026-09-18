@@ -1,0 +1,29 @@
+{
+  "browser_ack_is_transport_only": true,
+  "bus_reply_rule": {
+    "REQUEST": "COMMAND",
+    "RESULT": "DECISION"
+  },
+  "command_contract": {
+    "action": "WRITE_FILE",
+    "action_id": "gpt-codex-simple-path-b-v1:write-toy-result-v1",
+    "content": "GPT_CODEX_CODE_TO_CODE_OK",
+    "path": "toy-result.txt",
+    "verify": "exact readback + SHA256"
+  },
+  "content": "GPT_CODEX_CODE_TO_CODE_OK",
+  "decision_contract": {
+    "accepted": true,
+    "control_action": "STOP",
+    "result_message_id": "gpt-codex-simple-path-b-v1:000003:RESULT",
+    "status": "PASS",
+    "verification": {
+      "exact_readback": true,
+      "sha256": "6c26f2350c539e156ca37983864f421d0d8d87e77472ce50634abbac08ef90f7"
+    }
+  },
+  "expected_gpt_bus_reply_type": "COMMAND",
+  "goal": "create a fresh task-local toy-result.txt only after GPT COMMAND",
+  "output": "toy-result.txt",
+  "verify": "exact readback + SHA256"
+}
