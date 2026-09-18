@@ -1,25 +1,48 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "2.0.0",
-  "display_name": "第一性原理物理极限收敛引擎",
+  "version": "3.0.0",
+  "display_name": "第一性原理极限短时间引擎",
+  "compatibility_aliases": [
+    "第一性原理物理极限收敛引擎",
+    "first-principles-physical-limit-convergence"
+  ],
   "lineage": {
-    "previous": "first-principles-physical-limit-convergence@1.9.0",
+    "previous": "first-principles-physical-limit-convergence@2.0.0",
     "ancestor": "absolute-time-fireworks-optimization@2.0.1"
   },
-  "canonical_method": [
-    "STEP 1: PHYSICAL LIMIT",
-    "STEP 2: REAL-STATE OPTIMUM RANGE",
-    "STEP 3: GPT VIRTUAL-99",
-    "STEP 4: CODEX DETERMINISTIC COMMAND PACK"
+  "core_principles": [
+    "MINIMUM_VALID_TIME_ONLY",
+    "MATURE_SOLUTION_CLUSTER_FIRST",
+    "HIGH_INTELLIGENCE_VIRTUAL_MATURITY"
   ],
-  "cross_cutting_capabilities": [
+  "objective": {
+    "metric": "T_VALID",
+    "definition": "time from task start to first VALID real-world result",
+    "optimize": "MINIMIZE"
+  },
+  "canonical_method": [
+    "GATE 0: MATURE SOLUTION CLUSTER",
+    "STEP 1: VALID + RESOURCE BOUNDARY + T_PHY_VALID",
+    "STEP 2: MINIMAL REAL CALIBRATION",
+    "STEP 3: MATURE MATRIX + GPT VIRTUAL-99",
+    "STEP 4: DETERMINISTIC REAL CERTIFICATION"
+  ],
+  "inherited_capabilities": [
     "STOCHASTIC_VERIFIED_DELIVERY",
     "TIME_TO_FIRST_VALID_RESULT",
     "FAILURE_LAYER_CLASSIFICATION",
     "GPT_CODEX_AUTOMATED_CONTROL_PLANE",
     "CAPACITY_AWARE_MODEL_ROUTING",
-    "CHECKPOINT_IDEMPOTENCY_DO_NOT_REPEAT"
+    "CHECKPOINT_IDEMPOTENCY_DO_NOT_REPEAT",
+    "KEEP_ROLLBACK_FREEZE",
+    "SHARED_REMOTE_FACT_SOURCE"
   ],
+  "legacy_compatibility": {
+    "preserve_old_skill_id": true,
+    "preserve_old_branches": true,
+    "preserve_references_sources_templates_tests": true,
+    "v2_branch": "codex/first-principles-physical-limit-convergence-v2.0.0"
+  },
   "automation_control_plane": {
     "role": "OPTIONAL_EXECUTION_LAYER",
     "architecture": "CODEX_FIRST_NUMBERED_GITHUB_BUS",
@@ -34,10 +57,11 @@
     "no_free_exploration": true
   },
   "shared_fact_source": "cuiqinggang/codex-private-skills",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v2.0.0",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v3.0.0",
   "status": {
     "method_logic_acceptance": "PASS",
-    "stochastic_delivery_acceptance": "PASS",
+    "v3_core_model": "PASS",
+    "stochastic_delivery_acceptance": "PASS_INHERITED",
     "automated_control_plane_spec": "PASS_UNDER_VALIDATION",
     "h3_first_application": "FINAL_99_FROZEN",
     "h3_delivery_system_qc": "20/20",
