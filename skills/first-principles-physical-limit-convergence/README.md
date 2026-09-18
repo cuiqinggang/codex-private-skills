@@ -1,55 +1,47 @@
-# 第一性原理物理极限收敛引擎 v2.0.0
+# 第一性原理极限短时间引擎 v3.0.0
 
-正式技能：`first-principles-physical-limit-convergence`
+正式 Skill ID 保持不变：
 
-核心仍然只有四步：
+`first-principles-physical-limit-convergence`
 
-```text
-1. 物理极限
-2. 本机现实最优区间
-3. GPT Virtual-99
-4. Codex 完整实测命令包
-```
+旧中文名“第一性原理物理极限收敛引擎”、v1.x/v2.0 分支和全部历史资料继续保留，可检索、读取和引用。
 
-v2.0 新增两项横向能力，不增加主流程层级：
+## 一句话
 
-- **随机系统的验证式交付**：区分 attempt 与 delivery，优化 `T_TFVR = Time To First Valid Result`，用严格 verifier 拒绝坏候选并按冻结规则重采样；
-- **GPT-Codex 自动控制面**：GitHub 共同事实源 + ChatGPT 浏览器桥接 + Codex 确定性执行 + checkpoint/idempotency + capacity router，去除人工复制粘贴。
+> **用成熟世界已有的答案，经高智能虚拟成熟，得到达到有效结果的极限短时间路径。**
 
-关键原则：
+## 三个核心
 
-```text
-NO_FREE_EXPLORATION=YES
-CODEX_ROLE=DETERMINISTIC_EXECUTOR
-GPT_ROLE=PLANNER/JUDGE
-```
+1. **极限短时间**：先冻结 VALID 与现实资源边界，之后唯一优化 `T_VALID`。
+2. **成熟方案集群**：现实世界已经解决的能力优先复制、组合、适配，禁止无必要重新发明。
+3. **高智能虚拟成熟**：搜索、匹配、组合、排错优先在虚拟层完成；现实层主要做最小标定和最终认证。
 
-随机系统中：
+## 运行骨架
 
 ```text
-single attempt failure != delivery failure
+Gate 0  成熟方案集群闸口
+Step 1  VALID + 现实边界 + T_PHY_VALID
+Step 2  最小真实标定 -> REAL_STATE_VALID_RANGE
+Step 3  成熟方案矩阵 -> GPT Virtual-99
+Step 4  确定性现实认证 -> FREEZE / RETURN TO GPT
 ```
 
-如果随机变量不是用户任务语义，可采用：
+v2.0 的关键能力全部继承：
 
-```text
-fast proposal -> QC -> reject invalid -> resample -> first valid result
-```
+- `ATTEMPT / DELIVERY`；
+- `T_TFVR` 与 verifier/reject/resample；
+- failure-layer classification；
+- GPT-Codex 自动控制面；
+- checkpoint / idempotency / DO_NOT_REPEAT；
+- Capacity Router；
+- H3-P0 delivery-system 99 实证。
 
-正式时间指标：
-
-```text
-T_TFVR
-```
-
-H3-P0 实证：20 个交付任务最终 20/20 QC PASS；首次成功率 90%；平均 1.10 次尝试；T_TFVR P50 6.076s、P95 11.974s；无效输出交付 0。
-
-详细规则：
-
-- `SKILL.md`
-- `references/STOCHASTIC-VERIFIED-DELIVERY.md`
-- `references/AUTOMATED-GPT-CODEX-CONTROL-PLANE.md`
+H3-P0 冻结事实仍为：20/20 最终交付 QC PASS，first-attempt 90%，平均 1.10 attempts，T_TFVR P50 6.076s / P95 11.974s，无效输出交付 0。
 
 正式分支：
+
+`codex/first-principles-physical-limit-convergence-v3.0.0`
+
+上一正式分支：
 
 `codex/first-principles-physical-limit-convergence-v2.0.0`
