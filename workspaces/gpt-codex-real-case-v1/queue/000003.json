@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-09-18T14:58:39.288871+00:00",
+  "logical_event_id": "gpt-codex-real-case-v1:result-v1",
+  "message_id": "gpt-codex-real-case-v1:000003:RESULT",
+  "parent_message_id": "gpt-codex-real-case-v1:000002:COMMAND",
+  "payload_path": "workspaces/gpt-codex-real-case-v1/payloads/000003.json",
+  "payload_sha256": "13cf2201970d7f3772dc9587b507116031ff8460030f31acf065cde514cf6e4d",
+  "receiver": "GPT",
+  "sender": "CODEX",
+  "seq": 3,
+  "task_id": "gpt-codex-real-case-v1",
+  "type": "RESULT"
+}
