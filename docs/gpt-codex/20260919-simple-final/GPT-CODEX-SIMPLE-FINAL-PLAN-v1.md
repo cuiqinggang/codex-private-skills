@@ -1,4 +1,4 @@
-# GPT↔Codex 最终简化方案 v1
+# GPT↔Codex 最终简洁灵活方案 v2
 
 状态：
 
@@ -7,29 +7,31 @@ METHOD=first-principles-physical-limit-convergence v3.1.1
 CORE_1=COMPLETE
 CORE_2=COMPLETE
 CORE_3=FROZEN
-REAL_EXECUTION=NOT_STARTED_FOR_THIS_PLAN
+REAL_EXECUTION=NOT_STARTED_FOR_V1_5_1
 ~~~
 
-## 1. 为什么重新做
+## 1. 这次修正什么
 
-前面已经获得足够现实信息：
+v1.5.0 把页面直传写成了唯一控制主链，这又走到了另一个极端。
 
-- GPT 页面和 Browser 直接交流长期可用；
-- Codex 本机执行可靠；
-- GitHub 共同工作区有价值，但会偶发写入/权限/transport 问题；
-- 把 GitHub 变成控制链硬依赖后，偶发故障会把简单任务拖成复杂故障处理；
-- GPT 直接写 GitHub 还可能触发外部写安全检查；
-- 这些故障不影响“GPT 做决定、Codex 执行”这个本质能力。
+现实上：
 
-因此重新按三核心设计。
+- GitHub 共同工作区长期很有价值；
+- 大资料、跨页面、证据、长期记录放共同工作区最方便；
+- 多数时候 GitHub 是正常的；
+- 偶发网络、写入或安全检查故障属于可理解的小故障；
+- 这些故障不应该让任务失败；
+- 页面直传本身也是长期成熟的快捷路径。
+
+因此最终方案不是“一条唯一链”，而是“几条都很简单的成熟路径，优先共同工作区，故障时快速切换”。
 
 ## 2. CORE 1 — 极限短时间
 
 TASK：
 
 ~~~text
-让 Codex 自动向 GPT 获取方案/判断并执行，
-用户不在中间搬运文本，
+Codex 自动向 GPT 获取方案/判断并执行，
+用户不在中间搬运，
 尽快得到第一个正确 VALID 结果。
 ~~~
 
@@ -39,137 +41,138 @@ TASK：
 T_VALID
 ~~~
 
-任何传输方案都只服务于缩短 T_VALID。
+任何路径只按“是否更快、更稳地达到 VALID”判断。
 
 ## 3. CORE 2 — 成熟方案集群
 
-直接采用已有成熟能力：
+直接采用：
 
 ~~~text
+GitHub 共同工作区
 Playwright Native AI Browser
 ChatGPT 页面
 Codex 本机执行
-现有本机去重/恢复
-GitHub 共同工作区
+现有简单去重/恢复
 ~~~
 
-其中 GitHub 只保留它最擅长的用途：
+不新建新的 transport 基础设施。
+
+## 4. CORE 3 — 三条简单路径
+
+### PATH A — 共同工作区完整通道（默认）
 
 ~~~text
-记录
-共享
-证据
-备份
-跨页面参考
+Codex 把 TASK / RESULT / 大资料放 GitHub
+-> Browser 给 GPT 指针
+-> GPT 读 GitHub
+-> GPT 写 COMMAND / DECISION 到 GitHub
+-> Codex 读并执行
 ~~~
 
-不让它承担“控制链必须在线”的责任。
+适合绝大多数正常情况。
 
-## 4. CORE 3 — 最终路径
+### PATH B — 共同工作区读取 + 页面回传
 
-### 4.1 控制主链
+如果：
 
 ~~~text
-Codex 准备必要上下文
--> Browser 发给 GPT 页面
--> GPT 返回 GPT_COMMAND
--> Browser 原样读取
--> Codex 执行 + 验证
--> Browser 把 RESULT 发给 GPT
--> GPT 返回 GPT_DECISION
--> Browser 原样读取
--> Codex 继续下一步或 STOP
+GitHub 读正常
+但 GPT 写回临时失败 / 被 safety check 阻断
 ~~~
 
-这是唯一控制主链。
-
-### 4.2 GPT 输出
-
-命令：
+则：
 
 ~~~text
-GPT_COMMAND
-<完整业务命令>
-END_GPT_COMMAND
+TASK / RESULT / 大资料仍放 GitHub
+-> GPT 继续从 GitHub 读取
+-> COMMAND / DECISION 直接在页面返回
+-> Browser 读取
+-> Codex 执行
 ~~~
 
-判断：
+不放弃共同工作区，只绕开出故障的“写回”一小段。
+
+### PATH C — 纯页面直传
+
+如果：
 
 ~~~text
-GPT_DECISION
-<完整判断；必要时包含下一命令或 STOP>
-END_GPT_DECISION
+GitHub 整体暂时不可用
+或继续等待明显不划算
 ~~~
 
-Codex 不修改其中业务语义。
-
-### 4.3 GitHub
-
-GitHub 不在控制链中。
-
-每一步如果方便：
+则：
 
 ~~~text
-Codex -> mirror 当前 TASK / COMMAND / RESULT / DECISION 到 GitHub
+Browser 直接把当前必要上下文发 GPT
+-> GPT 页面返回 COMMAND / DECISION
+-> Browser 读取
+-> Codex 执行
 ~~~
 
-同步失败：
+只带当前步骤需要的信息。
+
+## 5. 路径切换
+
+只有：
 
 ~~~text
-记录 GITHUB_SYNC_SKIPPED
--> 继续主任务
+A 正常 -> A
+A 写回失败但还能读 -> B
+GitHub 整体不可用 -> C
 ~~~
 
-任务完成后再补同步也可以。
+每个小故障最多简单恢复一次。
 
-### 4.4 故障处理
+不通就切路，不反复修 transport。
 
-只允许简单处理：
+下一自然步骤发现共同工作区恢复，可以自然回 A。
+
+## 6. 故障处理
+
+统一：
 
 ~~~text
 正常
--> 故障
+-> 已知小故障
 -> 简单恢复一次
 -> 仍失败
--> 最简单备用方式
--> 继续
+-> 下一条简单路径
+-> 继续任务
 ~~~
 
-具体：
-
-GPT 长时间没开始回答：
+GPT 首答：
 
 ~~~text
 simple 60s
 normal 180s
 large 600s
--> 超时 refresh/reconnect
--> 重发同一请求
 ~~~
 
-正文一旦开始就算正常。
+只限制开始回答以前；正文开始即正常。
 
-Browser 异常：
+## 7. GitHub 的价值
+
+GitHub 不是必须永远在线，但仍然是优先路径，因为它最适合：
 
 ~~~text
-refresh/reconnect
--> 必要时重新打开正式 Browser 入口
--> 继续同一请求
+大资料
+长上下文
+跨页面
+跨会话
+证据
+长期积累
+共享报告
 ~~~
 
-GitHub 异常：
+所以不是“能记就记”的边缘角色，而是“优先使用、故障可绕过”的共享工作区。
 
-~~~text
-跳过同步
--> 继续
-~~~
-
-### 4.5 STOP 条件
+## 8. STOP
 
 只有：
 
 ~~~text
-页面通信本身也无法恢复
+A/B/C 都走不通
 VALID 会被破坏
 安全/权限边界
 用户 STOP
@@ -177,46 +180,37 @@ VALID 会被破坏
 
 才停。
 
-## 5. 明确删除的复杂性
+## 9. 删除复杂性
 
-当前方案不再要求：
+当前不再需要：
 
 ~~~text
-GPT 直接 GitHub write
-四消息 GitHub Bus 作为控制主链
-ACK 与 DECISION transport 协议
-GitHub write safety recovery
-复杂 relay state machine
+把任何单一 transport 设成唯一
+为了 GitHub 偶发故障重构系统
+复杂 ACK/relay 状态机
+每个小故障一套协议
 L0/L1/L2/L3/L4
-为了偶发 transport 故障停主任务
 ~~~
 
-这些历史资料可以保留，但没有当前执行权。
+保留成熟能力，删掉硬绑定。
 
-## 6. 最小实现
+## 10. 当前结论
 
-现有工程只需要保留/实现：
+方案已经重新冻结。
+
+下一阶段如果现实执行，只需要实现/整理：
 
 ~~~text
-Browser send
-Browser read
-GPT_COMMAND parser
-GPT_DECISION parser
-Codex execute
-result verify
-minimal local state
-optional GitHub mirror
-simple timeout/reconnect
+PATH A
+PATH B
+PATH C
+简单切换
+首答 timeout
+最小去重
 ~~~
 
-没有必要再增加新的基础设施。
-
-## 7. 当前结论
-
-方案已经完整。
-
-下一阶段如果要现实执行，应直接按本方案实现/整理现有工程，然后做一次端到端真实运行；不再回头继续设计 transport 协议。
+不再继续设计 transport。
 
 # 一句话
 
-> GPT 页面负责想和说，Browser 负责传，Codex 负责做，GitHub 能记就记；偶发故障简单绕过，始终优先完成任务。
+> **共同工作区优先，但不是唯一；能读写走 A，只写回坏走 B，整体暂时坏走 C。三条都简单、都成熟、都服务于最短 VALID。**
