@@ -2,12 +2,12 @@
 name: gpt-codex-convergence-orchestrator
 description: GPT↔Codex 自动闭环执行技能。当前版本只服从 first-principles-physical-limit-convergence v3.1.1 的三核心白名单：极限短时间、成熟方案集群、高智能虚拟成熟。Codex 负责主动循环和确定性执行，GPT 负责按需规划/裁决，GitHub 是共享事实源，AI Browser 只负责唤醒 GPT。Browser 入口从已安装 playwright-native-ai-browser/SKILL.md 解析。GitHub 总线回复类型使用唯一白名单：REQUEST 只能由 GPT 回复 COMMAND；RESULT 只能由 GPT 回复 DECISION；页面 ACK 永远不能作为 GitHub 总线消息类型。
 metadata:
-  version: "1.3.6"
+  version: "1.3.7"
   method_dependency: "first-principles-physical-limit-convergence@3.1.1"
   architecture: "CODEX_GITHUB_GPT_CLOSED_LOOP"
 ---
 
-# GPT↔Codex 自动闭环 v1.3.6
+# GPT↔Codex 自动闭环 v1.3.7
 
 ## CORE 1：极限短时间
 
@@ -156,49 +156,58 @@ REQUEST wakeup -> EXPECTED_GPT_BUS_REPLY_TYPE=COMMAND
 RESULT wakeup  -> EXPECTED_GPT_BUS_REPLY_TYPE=DECISION
 ```
 
-## GPT“正在思考”固定时间故障恢复
+## GPT“正在思考”首答超时恢复
 
-这是简单超时恢复，不改变四消息架构。
+这是一个简单规则：**只限制“开始回答以前”的 Thinking 时间，不限制完整回答时长。**
 
-只按任务大小使用固定等待上限：
-
-~~~text
-SIMPLE  = 120 秒
-NORMAL  = 240 秒
-LARGE   = 600 秒
-~~~
-
-当前 GPT↔Codex 四消息链固定映射：
+固定三档：
 
 ~~~text
-RESULT -> DECISION = SIMPLE = 120 秒
-REQUEST -> COMMAND = NORMAL = 240 秒
+SIMPLE = 60 秒
+NORMAL = 180 秒
+LARGE  = 600 秒
 ~~~
 
-只有明确标记为大型复杂规划任务，才允许：
+当前 GPT↔Codex：
+
+~~~text
+RESULT -> DECISION = SIMPLE = 60 秒
+REQUEST -> COMMAND = NORMAL = 180 秒
+~~~
+
+只有明确的大型复杂规划才使用：
 
 ~~~text
 LARGE = 600 秒
 ~~~
 
-规则只有一条：
+计时定义：
 
 ~~~text
-先查 GitHub 是否已有目标 COMMAND / DECISION
--> 有：立即继续
--> 没有：
-   elapsed <= 当前档位上限 -> 继续等待
-   elapsed >  当前档位上限 -> 一律按故障恢复
+T_START = Browser 成功发送 wakeup
+T_FIRST_ANSWER = GPT 页面第一次出现正常 assistant 正文输出
+T_THINKING = T_FIRST_ANSWER - T_START
 ~~~
 
-超过时间后，不再判断页面“看起来是否还正常”，也不因为仍显示 Thinking/Generating 而继续等。
-
-恢复：
+规则：
 
 ~~~text
-再次检查 GitHub
--> 仍无目标消息
--> refresh / reconnect 当前 ChatGPT
+GPT 已开始正常输出正文
+-> ANSWER_STARTED=YES
+-> 立即停止 Thinking 超时计时
+-> 后续回答继续完成，视为正常
+
+GPT 尚未开始正文，仍停留在 Thinking/Generating
+-> elapsed <= 当前档位上限：继续等待
+-> elapsed >  当前档位上限：一律按故障恢复
+~~~
+
+恢复前先查 GitHub；如果目标 COMMAND / DECISION 已经存在，直接继续。
+
+否则：
+
+~~~text
+refresh / reconnect 当前 ChatGPT
 -> 复用同一个 TASK_ID / MESSAGE_SEQ / logical_event_id 重新 wake
 -> 必要时同一 profile 新开页面/会话恢复
 ~~~
@@ -206,19 +215,22 @@ LARGE = 600 秒
 禁止：
 
 ~~~text
-无限等待
-超过上限仍继续等
+回答已经开始后因为总耗时长而刷新
+无限停留在 Thinking
+超时后继续等待
 创建新的业务 REQUEST
 改变 MESSAGE_SEQ
 产生第二个 logical_event_id
 改变任务或方案
 ~~~
 
-必须记录：
+记录：
 
 ~~~text
 GPT_WAIT_CLASS=SIMPLE|NORMAL|LARGE
-GPT_WAIT_LIMIT_SECONDS
+GPT_FIRST_ANSWER_LIMIT_SECONDS
+GPT_FIRST_ANSWER_SECONDS
+ANSWER_STARTED=YES|NO
 GPT_THINKING_STUCK_COUNT
 GPT_THINKING_STUCK_RECOVERY_SECONDS
 ~~~
@@ -320,4 +332,4 @@ Codex restart
 
 # 最终一句话
 
-> **页面 ACK 只确认 transport；GitHub 总线只认 REQUEST→COMMAND、RESULT→DECISION；GPT 等待只按固定时间上限处理，超时且 GitHub 无目标回复就立即恢复。**
+> **页面 ACK 只确认 transport；GitHub 总线只认 REQUEST→COMMAND、RESULT→DECISION；只限制 GPT 开始回答前的 Thinking 时间，一旦正文开始输出即视为正常，只有迟迟不开始回答并超过固定上限才恢复。**
