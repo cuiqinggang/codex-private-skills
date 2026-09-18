@@ -1,6 +1,6 @@
 {
   "skill_id": "gpt-codex-convergence-orchestrator",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "display_name": "GPT-Codex 自动闭环",
   "method_dependency": "first-principles-physical-limit-convergence@3.1.1",
   "architecture": "GITHUB_PRIMARY_PAGE_FALLBACK",
@@ -27,5 +27,16 @@
     "NORMAL_SECONDS": 180,
     "LARGE_SECONDS": 600,
     "scope": "BEFORE_FIRST_VISIBLE_ANSWER_ONLY"
+  },
+  "simple_resilience": {
+    "rule": "PRIMARY -> ONE_SIMPLE_RECOVERY -> FALLBACK -> CONTINUE",
+    "simple_recovery_attempts": 1,
+    "stop_only_if": [
+      "PRIMARY_AND_FALLBACK_BOTH_FAIL",
+      "VALID_WOULD_BE_BROKEN",
+      "SAFETY_OR_PERMISSION_BOUNDARY"
+    ],
+    "recurrent_fault_policy": "SOLVE_SEPARATELY_IF_IT_BECOMES_PERSISTENT",
+    "occasional_fault_policy": "RECORD_AND_BYPASS"
   }
 }
