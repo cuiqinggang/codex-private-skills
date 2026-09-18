@@ -1,62 +1,34 @@
-# LEGACY INHERITANCE MAP
+# LEGACY INHERITANCE MAP — v3.1
 
-当前版本：first-principles-physical-limit-convergence@3.1.0
+历史能力和资料继续全部保留。
 
-直接上一版本：first-principles-physical-limit-convergence@3.0.0
+但 v3.1 对历史内容只有两个允许用途：
 
-v3.1 是继承式执行约束升级，不删除 v3.0/v2/v1 的历史资料、案例或证据。
+```text
+1. EVIDENCE
+2. MATURE_SOLUTION_SOURCE
+```
 
-## 当前最高优先级
+当前方法权只有三个核心：
 
-~~~text
-v3.1 canonical rules
-> v3.0
-> v2/v1
-> project-specific legacy workflow
-> historical maturity/status labels
-~~~
+```text
+1. 极限短时间
+2. 成熟方案集群
+3. 高智能虚拟成熟
+```
 
-## v3.0 三核心完整继承
+旧 KEEP/ROLLBACK、T_PHY、Failure Index、T_TFVR、checkpoint、idempotency、Capacity Router、GPT-Codex 自动化、H3-P0、L0/L1/L2/L3/L4 等，都可以继续读取。
 
-~~~text
-极限短时间
-成熟方案集群
-高智能虚拟成熟
-~~~
+但任何历史内容若要进入当前执行，必须先回答：
 
-## v3.1 新增的统一解释
+```text
+它属于 CORE 1、CORE 2 还是 CORE 3？
+```
 
-历史规则只有在被当前 v3.1 冻结计划重新授权后，才可以成为现实动作。
+不能明确归类：
 
-因此：
+```text
+BLACKLIST
+```
 
-~~~text
-HISTORICAL_EVIDENCE=ALLOWED
-HISTORICAL_EXECUTION_AUTHORITY=NONE
-~~~
-
-旧 L0/L1/L2/L3/L4、Shadow Pilot、Assisted Pilot、旧 command pack 等可以继续用于追溯历史，但不得决定当前下一步。
-
-当前 canonical 生命周期：
-
-~~~text
-MATURE_SOLUTION_CLUSTER
--> FROZEN_MINIMAL_CALIBRATION_PLAN
--> MINIMAL_REAL_CALIBRATION
--> VIRTUAL_99_FROZEN
--> REAL_END_TO_END_CERTIFICATION
--> PASS: FINAL_99_FREEZE
--> FAIL: REALITY_DELTA_RETURN_TO_GPT
-~~~
-
-历史 KEEP/ROLLBACK、T_PHY、Failure Index、随机交付、T_TFVR、checkpoint/idempotency、Shared Fact Source、Capacity Router、H3-P0 等能力全部继续保留；但现实调用必须通过 v3.1 METHOD_EXECUTION_CONTRACT。
-
-H3-P0 冻结事实继续有效：
-
-~~~text
-T_TFVR P50=6.076s
-T_TFVR P95=11.974s
-FINAL_ACCEPTED_QC=20/20
-INVALID_OUTPUT_DELIVERED=0
-DELIVERY_SYSTEM_99=YES
-~~~
+因此历史不会丢失，也不会再次控制当前方法。
