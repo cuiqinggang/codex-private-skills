@@ -11,14 +11,14 @@ CORE_1_TIME_CONVERGENCE=AUTHORIZED
 ## READ
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.7-first-answer-timeout
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.8-self-contained-wakeup
 file   = docs/gpt-codex/20260918-v3.1-three-core/GPT-CODEX-REAL-CASE-V2-SHARED-RESULT.md
 ~~~
 
 以及当前冻结技能：
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.7-first-answer-timeout
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.8-self-contained-wakeup
 file   = skills/gpt-codex-convergence-orchestrator/SKILL.md
 ~~~
 
@@ -100,7 +100,49 @@ FINAL_POST_DECISION_WAIT
 为了快而降低 VALID
 ~~~
 
-### C. GPT Thinking 首答超时恢复
+### C. GPT Bus 自包含动作唤醒
+
+r1 保留为失败证据，不覆盖。r1 已证明：GPT 页面正文开始输出，不代表 GitHub Bus 写动作发生。
+
+后续每次 wakeup 必须使用：
+
+~~~text
+GPT_BUS_WAKEUP_V1
+TASK_ID=<task>
+REPOSITORY=cuiqinggang/codex-private-skills
+BUS_BRANCH=<branch>
+MESSAGE_SEQ=<seq>
+MESSAGE_PATH=<queue path>
+EXPECTED_GPT_BUS_REPLY_TYPE=COMMAND|DECISION
+REQUIRED_ACTION=WRITE_NEXT_BUS_MESSAGE_TO_GITHUB
+~~~
+
+附带固定指令：
+
+~~~text
+读取 GitHub request/result。
+必须使用当前 ChatGPT 可用的 GitHub 写动作，把下一条 COMMAND/DECISION 直接提交到同一 BUS_BRANCH。
+禁止只在聊天正文输出业务命令。
+remote verify 后页面只回复 GPT_BUS_COMMIT_OK。
+如果当前会话没有 GitHub 写动作/权限，只回复 GPT_BUS_WRITE_UNAVAILABLE。
+如有授权/登录/审批等阻断，只回复 GPT_BUS_BLOCKED。
+~~~
+
+页面 turn 完成后：
+
+~~~text
+先查 GitHub
+-> 目标 Bus message 已存在：继续
+-> 不存在且页面=GPT_BUS_WRITE_UNAVAILABLE/BLOCKED：STOP + REALITY_DELTA
+-> 不存在且页面只是业务正文：GPT_BUS_PROTOCOL_FAIL
+   -> refresh/reconnect
+   -> 同 TASK_ID / MESSAGE_SEQ / logical_event_id 重试一次相同 self-contained wakeup
+   -> 第二次仍无远端消息：STOP + REALITY_DELTA
+~~~
+
+页面正文永远不能被 Codex 当作 COMMAND/DECISION。
+
+### D. GPT Thinking 首答超时恢复
 
 只测“多久开始回答”，不测“多久回答完”。
 
@@ -150,14 +192,14 @@ GPT_THINKING_STUCK_COUNT
 GPT_THINKING_STUCK_RECOVERY_SECONDS
 ~~~
 
-### D. Warm clean timing certification
+### E. Warm clean timing certification
 
 完成时间收敛后，用同一 frozen architecture 连续执行 3 个独立 warm clean case：
 
 ~~~text
-gpt-codex-time-v1-r1
-gpt-codex-time-v1-r2
-gpt-codex-time-v1-r3
+gpt-codex-time-v2-r1
+gpt-codex-time-v2-r2
+gpt-codex-time-v2-r3
 ~~~
 
 每个都完成：
@@ -190,7 +232,7 @@ T_VALID_MAX
 自然故障次数
 ~~~
 
-### E. 共享事实闭环
+### F. 共享事实闭环
 
 最终必须同时保存：
 
@@ -232,6 +274,8 @@ GPT_WAIT_CLASS=<SIMPLE/NORMAL/LARGE>
 GPT_FIRST_ANSWER_LIMIT_SECONDS=<60/180/600>
 GPT_FIRST_ANSWER_SECONDS=<value>
 ANSWER_STARTED=<YES/NO>
+GPT_BUS_ACTION_STATUS=<COMMIT_OK/WRITE_UNAVAILABLE/BLOCKED/PROTOCOL_FAIL>
+GPT_BUS_PROTOCOL_RETRY_COUNT=<n>
 GPT_THINKING_STUCK_COUNT=<n>
 GPT_THINKING_STUCK_RECOVERY_SECONDS=<value>
 FUNCTIONAL_VALID=3/3 or <n>/3
