@@ -11,14 +11,14 @@ CORE_1_TIME_CONVERGENCE=AUTHORIZED
 ## READ
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-core1-time-v1
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.3-thinking-stuck
 file   = docs/gpt-codex/20260918-v3.1-three-core/GPT-CODEX-REAL-CASE-V2-SHARED-RESULT.md
 ~~~
 
 以及当前冻结技能：
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.2-final-decision
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.3-thinking-stuck
 file   = skills/gpt-codex-convergence-orchestrator/SKILL.md
 ~~~
 
@@ -100,7 +100,34 @@ FINAL_POST_DECISION_WAIT
 为了快而降低 VALID
 ~~~
 
-### C. Warm clean timing certification
+### C. GPT thinking-stuck 小故障恢复
+
+等待 GPT 回复时：
+
+~~~text
+THINKING_TIMEOUT_SECONDS = 从已安装 playwright-native-ai-browser/SKILL.md 或其当前正式配置读取
+~~~
+
+超过该正式等待上限仍显示“正在思考/生成中”时：
+
+~~~text
+先检查 GitHub 是否已有期待的 COMMAND/DECISION
+-> 有：直接继续
+-> 无：刷新/重连同一个 ChatGPT 会话
+-> 复用同一个 TASK_ID / MESSAGE_SEQ / logical_event_id 重新 wake
+-> 不创建新业务请求
+~~~
+
+记录：
+
+~~~text
+GPT_THINKING_STUCK_COUNT
+GPT_THINKING_STUCK_RECOVERY_SECONDS
+~~~
+
+禁止无限等待半小时不处理。
+
+### D. Warm clean timing certification
 
 完成时间收敛后，用同一 frozen architecture 连续执行 3 个独立 warm clean case：
 
@@ -140,7 +167,7 @@ T_VALID_MAX
 自然故障次数
 ~~~
 
-### D. 共享事实闭环
+### E. 共享事实闭环
 
 最终必须同时保存：
 
@@ -178,6 +205,9 @@ P50_RESULT_TO_DECISION_SECONDS=<value>
 P50_FINAL_CONSUME_SECONDS=<value>
 P50_TLS_RECOVERY_WAIT_SECONDS=<value>
 P50_LOCAL_AVOIDABLE_WAIT_SECONDS=<value>
+GPT_THINKING_STUCK_COUNT=<n>
+GPT_THINKING_STUCK_RECOVERY_SECONDS=<value>
+THINKING_TIMEOUT_SOURCE=<path/config>
 FUNCTIONAL_VALID=3/3 or <n>/3
 DUPLICATE_BUSINESS_EFFECT=0/<other>
 REMOTE_REPORT_PATH=<path>
