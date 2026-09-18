@@ -1,64 +1,38 @@
 {
   "skill_id": "gpt-codex-convergence-orchestrator",
-  "version": "1.3.8",
+  "version": "1.4.0",
   "display_name": "GPT-Codex 自动闭环",
   "method_dependency": "first-principles-physical-limit-convergence@3.1.1",
-  "method_mapping": {
-    "core_1": "MINIMUM_VALID_TIME",
-    "core_2": "MATURE_SOLUTION_CLUSTER",
-    "core_3": "HIGH_INTELLIGENCE_VIRTUAL_MATURITY"
+  "architecture": "GPT_STRUCTURED_REPLY_CODEX_RELAY_GITHUB_TRUTH",
+  "roles": {
+    "gpt": "PLANNER_JUDGE_SEMANTIC_AUTHOR",
+    "codex": "LOOP_OWNER_DETERMINISTIC_EXECUTOR_MECHANICAL_RELAY",
+    "github": "FINAL_SHARED_TRUTH",
+    "browser": "WAKE_AND_EXTRACT_STRUCTURED_REPLY",
+    "sqlite": "LOCAL_DEDUPE_RESUME"
   },
-  "architecture": "CODEX_GITHUB_GPT_CLOSED_LOOP",
-  "browser_entry": {
-    "canonical_skill": "C:\\Users\\A\\.codex\\skills\\playwright-native-ai-browser\\SKILL.md",
-    "resolution": "READ_SKILL_THEN_FOLLOW_DECLARED_ENTRY"
+  "reply_protocol": {
+    "name": "GPT_BUS_REPLY_V1",
+    "request_reply": "COMMAND",
+    "result_reply": "DECISION",
+    "browser_business_transport_allowed": true,
+    "codex_semantic_edit_allowed": false,
+    "relay_transport_metadata_allowed": true,
+    "source_reply_sha256_required": true
   },
-  "bus_reply_whitelist": {
-    "REQUEST": "COMMAND",
-    "RESULT": "DECISION"
+  "direct_gpt_github_write": {
+    "required": false,
+    "reason": "UNATTENDED_WRITE_CAN_BE_BLOCKED_BY_CHATGPT_SAFETY_CHECK"
   },
-  "github_bus_ack_allowed": false,
-  "page_transport_ack_allowed": true,
-  "real_case": "gpt-codex-real-case-v2",
-  "timing_required": [
-    "T_GPT_REQUEST_TO_COMMAND",
-    "T_CODEX_COMMAND_TO_RESULT",
-    "T_GPT_RESULT_TO_DECISION",
-    "T_FINAL_CONSUME",
-    "T_VALID"
-  ],
   "first_answer_timeout": {
     "SIMPLE_SECONDS": 60,
     "NORMAL_SECONDS": 180,
     "LARGE_SECONDS": 600,
-    "mapping": {
-      "RESULT_TO_DECISION": "SIMPLE",
-      "REQUEST_TO_COMMAND": "NORMAL"
-    },
-    "starts_at": "WAKEUP_SENT",
-    "stops_at": "FIRST_VISIBLE_ASSISTANT_ANSWER_OUTPUT",
-    "full_response_duration_used_for_stuck": false,
-    "on_timeout_before_answer": "CHECK_GITHUB_THEN_REFRESH_RECONNECT_REWAKE_SAME_LOGICAL_EVENT"
+    "scope": "BEFORE_FIRST_VISIBLE_ASSISTANT_ANSWER_ONLY"
   },
-  "gpt_bus_wakeup": {
-    "format": "GPT_BUS_WAKEUP_V1",
-    "self_contained": true,
-    "required_action": "WRITE_NEXT_BUS_MESSAGE_TO_GITHUB",
-    "required_fields": [
-      "TASK_ID",
-      "REPOSITORY",
-      "BUS_BRANCH",
-      "MESSAGE_SEQ",
-      "MESSAGE_PATH",
-      "EXPECTED_GPT_BUS_REPLY_TYPE"
-    ],
-    "page_status_whitelist": [
-      "GPT_BUS_COMMIT_OK",
-      "GPT_BUS_WRITE_UNAVAILABLE",
-      "GPT_BUS_BLOCKED"
-    ],
-    "page_business_payload_allowed": false,
-    "no_remote_message_after_page_business_text": "GPT_BUS_PROTOCOL_FAIL",
-    "protocol_retry_once_same_logical_event": true
-  }
+  "warm_cases": [
+    "gpt-codex-time-v3-r1",
+    "gpt-codex-time-v3-r2",
+    "gpt-codex-time-v3-r3"
+  ]
 }
