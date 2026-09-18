@@ -2,12 +2,12 @@
 name: gpt-codex-convergence-orchestrator
 description: GPT↔Codex 自动闭环执行技能。当前版本只服从 first-principles-physical-limit-convergence v3.1.1 的三核心白名单：极限短时间、成熟方案集群、高智能虚拟成熟。Codex 负责主动循环和确定性执行，GPT 负责按需规划/裁决，GitHub 是共享事实源，AI Browser 只负责唤醒 GPT。Browser 入口从已安装 playwright-native-ai-browser/SKILL.md 解析。GitHub 总线回复类型使用唯一白名单：REQUEST 只能由 GPT 回复 COMMAND；RESULT 只能由 GPT 回复 DECISION；页面 ACK 永远不能作为 GitHub 总线消息类型。
 metadata:
-  version: "1.3.3"
+  version: "1.3.4"
   method_dependency: "first-principles-physical-limit-convergence@3.1.1"
   architecture: "CODEX_GITHUB_GPT_CLOSED_LOOP"
 ---
 
-# GPT↔Codex 自动闭环 v1.3.3
+# GPT↔Codex 自动闭环 v1.3.4
 
 ## CORE 1：极限短时间
 
@@ -156,49 +156,109 @@ REQUEST wakeup -> EXPECTED_GPT_BUS_REPLY_TYPE=COMMAND
 RESULT wakeup  -> EXPECTED_GPT_BUS_REPLY_TYPE=DECISION
 ```
 
-## GPT“正在思考”卡死恢复
+## GPT“正在思考”状态 Watchdog
 
-这是 Browser transport 的小故障恢复，不改变四消息架构。
+这是 Browser transport 的故障恢复，不改变四消息架构。
 
-等待 GPT 时必须使用 **已安装 Playwright Browser 技能/配置中现有的正式响应等待上限**：
+### 1. 不用单一固定秒数判故障
+
+时间只是一个信号。状态判断同时看：
 
 ```text
-THINKING_TIMEOUT_SECONDS = Browser SKILL / 当前正式配置中的响应等待上限
+A. 期待的 GitHub COMMAND / DECISION 是否已经出现
+B. 页面是否仍有真实输出进展
+   - 回复文本/DOM 持续增长
+   - Thinking/Generating 状态发生变化
+   - 页面仍可响应
+C. 当前 wake 类型与任务复杂度的历史正常完成区间
+D. Browser SKILL / 正式配置里的响应等待/健康检查约定
+E. OpenAI 官方“无限挂起”排障观察窗只作为无进展 guard，不作为模型最大思考时间
 ```
 
-不要凭空另写 5 秒或 10 秒常量。若 SKILL/正式配置中没有可读取的等待上限，则不要猜测，保存该事实为 REALITY_DELTA 并返回 GPT。
-
-如果超过该正式等待上限，页面仍停留在“正在思考/生成中”，且 GitHub 还没有出现当前期待的 COMMAND 或 DECISION：
+### 2. 状态分类
 
 ```text
-GPT_THINKING_STUCK = YES
+NORMAL_PROGRESS
+= GitHub 已有目标回复，或页面仍持续产生可观察进展
+
+SLOW_BUT_PROGRESSING
+= 已经较慢，但仍有输出/状态变化
+-> 继续等待，不刷新
+
+SUSPECT_STALL
+= GitHub 无目标回复
++ 页面持续显示 Thinking/Generating
++ 一个完整观察窗口内无输出/DOM/状态进展
+
+CONFIRMED_STUCK
+= SUSPECT_STALL 持续
++ 已明显超过同类 wake/同复杂度历史正常区间或 Browser 正式健康上限
++ 再次 health probe 仍无进展
 ```
 
-恢复只做：
+没有足够历史数据时，不猜“模型最大思考时间”；使用 Browser 正式约定 + 官方无进展排障窗口作为保守 guard，并持续积累真实成功样本。
+
+### 3. 恢复阶梯
+
+一旦 CONFIRMED_STUCK：
 
 ```text
-先检查 GitHub 是否已存在目标回复
--> 已存在：直接继续，不刷新、不重发
--> 不存在：刷新/重连当前 ChatGPT 会话
--> 使用同一个 TASK_ID / MESSAGE_SEQ / logical_event_id 重新 wake
--> 继续等待同一个期待消息
+R0 REMOTE_FIRST
+   先查 GitHub
+   -> 目标回复已存在：直接继续，禁止刷新/重发
+
+R1 SAME_PAGE_RECOVERY
+   -> 当前页仍健康：停止生成（如可用）
+   -> reload / hard refresh 当前会话
+   -> 同一 TASK_ID / MESSAGE_SEQ / logical_event_id 重新 wake
+
+R2 SAME_CONVERSATION_NEW_PAGE
+   -> 在同一已登录 profile 新开页面/标签
+   -> 打开同一 conversation
+   -> 同一 logical_event_id 重新 wake
+
+R3 FRESH_CHAT_REHYDRATE
+   -> 如果原 conversation 本身无法继续
+   -> 新开 ChatGPT 页面/新会话
+   -> 仍发送同一个最小 wakeup
+   -> GPT 从 GitHub TASK/message/证据重新恢复上下文
+   -> 不创建新的业务 request / seq / logical_event_id
 ```
 
-禁止：
+每一级恢复前后都必须先查 GitHub；一旦目标消息出现，立即停止恢复链。
+
+完整 R0-R3 走完仍无目标回复：
 
 ```text
-无限等待
-创建新的业务请求
+BLOCKED
+SAVE REALITY_DELTA
+RETURN TO GPT
+```
+
+禁止再次无限循环 R0-R3。
+
+### 4. 绝对不允许
+
+```text
+因为“时间长”但仍有输出进展就刷新
+无限显示 Thinking 半小时不处理
+改变 TASK_ID
 改变 MESSAGE_SEQ
 产生第二个 logical_event_id
-改变任务或方案
+产生第二个业务 REQUEST
+修改业务方案
+改变代理/网络设置
 ```
 
-该恢复时间必须单独记录：
+### 5. 必须记录
 
 ```text
+GPT_THINKING_STATE
 GPT_THINKING_STUCK_COUNT
+STUCK_CLASSIFICATION_REASON
+RECOVERY_LEVEL_USED
 GPT_THINKING_STUCK_RECOVERY_SECONDS
+THINKING_BASELINE_SOURCE
 ```
 
 ---
@@ -298,4 +358,4 @@ Codex restart
 
 # 最终一句话
 
-> **页面 ACK 只确认 transport；GitHub 总线只认 REQUEST→COMMAND、RESULT→DECISION；GPT 超过 Browser 正式等待上限仍卡“正在思考”时，先查 GitHub、再刷新重连并复用同一 logical_event_id，禁止无限等待。**
+> **页面 ACK 只确认 transport；GitHub 总线只认 REQUEST→COMMAND、RESULT→DECISION；GPT Thinking 是否故障必须由“远端结果 + 页面进展 + 历史正常区间 + Browser 健康约定”共同判断，确认卡死后按 R0→R3 恢复，并始终复用同一 logical_event_id。**
