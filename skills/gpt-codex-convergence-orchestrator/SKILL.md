@@ -1,202 +1,190 @@
 ---
 name: gpt-codex-convergence-orchestrator
-description: GPT↔Codex 自动闭环执行技能。当前版本只服从 first-principles-physical-limit-convergence v3.1.1 的三核心白名单：极限短时间、成熟方案集群、高智能虚拟成熟。Codex 负责主动循环和确定性执行，GPT 负责按需规划/裁决，GitHub 是共享事实源，AI Browser 只负责唤醒 GPT。Browser 入口从已安装 playwright-native-ai-browser/SKILL.md 解析。GitHub 总线回复类型使用唯一白名单：REQUEST 只能由 GPT 回复 COMMAND；RESULT 只能由 GPT 回复 DECISION；页面 ACK 永远不能作为 GitHub 总线消息类型。
+description: GPT↔Codex 自动闭环执行技能。服从 first-principles-physical-limit-convergence v3.1.1 三核心。GPT 负责规划/裁决；Codex 负责主动循环、确定性执行和机械 Bus Relay；GitHub 是最终共享事实源；Playwright Native AI Browser 负责唤醒 GPT 并提取结构化 GPT_BUS_REPLY_V1。由于 ChatGPT 外部写安全检查可能阻止无人值守 GitHub 写动作，v1.4.0 不再要求 GPT 页面直接写 GitHub。
 metadata:
-  version: "1.3.8"
+  version: "1.4.0"
   method_dependency: "first-principles-physical-limit-convergence@3.1.1"
-  architecture: "CODEX_GITHUB_GPT_CLOSED_LOOP"
+  architecture: "GPT_STRUCTURED_REPLY_CODEX_RELAY_GITHUB_TRUTH"
 ---
 
-# GPT↔Codex 自动闭环 v1.3.8
+# GPT↔Codex 自动闭环 v1.4.0
 
 ## CORE 1：极限短时间
 
-目标：
-
-```text
-从 Codex 收到起始任务
-到 GPT 最终 DECISION 被 Codex 消费并停止
-得到第一个完整 VALID 自动闭环
-```
-
 唯一指标：
 
-```text
+~~~text
 T_VALID
-```
+= Codex 接收起始 TASK
+-> 完整 REQUEST / COMMAND / RESULT / DECISION
+-> Codex 消费 DECISION 并 STOP
+~~~
 
-VALID：
+VALID 必须：
 
-```text
-用户中间复制粘贴 = 0
-Codex 主动发起
-GPT 直接读写 GitHub
-Codex 只执行 GPT 已写入 GitHub 的 COMMAND
-真实任务结果通过验证
-最终 GPT GitHub 消息必须是 DECISION
-重复 wakeup/poll 不产生重复业务结果
-中断后能继续同一个任务
-Codex 不自行规划下一业务动作
-代理/系统设置不改变
-```
+~~~text
+MANUAL_MIDDLE_COPY_PASTE=0
+GPT_PLAN_AUTHORITY=YES
+CODEX_PLAN_AUTHORITY=NONE
+GITHUB_FINAL_TRUTH=YES
+TOY_RESULT=PASS
+DUPLICATE_BUSINESS_EFFECT=0
+RESTART_RESUME=PASS
+~~~
 
 ## CORE 2：成熟方案集群
 
-冻结复用：
+直接复用：
 
-```text
-GitHub commit/branch = 远端共享事实源
-non-force fast-forward update = 防覆盖并发工作
-SQLite = 本机 durable action ledger
-stable logical_event_id / action_id = 去重
-existing Playwright Native AI Browser = GPT wakeup
-existing Capacity Router = Codex model availability
-read-after-write verification = 副作用确认
-```
+~~~text
+GitHub append-only bus
+SQLite dedupe/resume
+non-force Git updates
+read-after-write verification
+Playwright Native AI Browser
+chatgpt-web-plan-bridge-latest 的成熟“页面答案 -> Codex”传输能力
+Capacity Router
+~~~
 
-不部署新的 workflow engine，不新建 Browser 栈，不重新研究可靠自动化理论。
+现实证据：
 
-## CORE 3：高智能虚拟成熟
+~~~text
+GPT 直接写 GitHub：
+- real-case-v2 曾成功
+- 后续 warm timing 被 GITHUB_WRITE_SAFETY_CHECK 阻断
+- GitHub app 权限即使允许 all actions，也不能保证绕过产品安全保护
 
-唯一闭环：
+因此无人值守稳定路径不再依赖 GPT 外部 write action。
+~~~
 
-```text
+## CORE 3：冻结闭环
+
+~~~text
 Codex
--> 000001 REQUEST -> GitHub
+-> GitHub 000001 REQUEST
 -> Browser wake GPT
 -> GPT reads GitHub
--> 000002 COMMAND -> GitHub
+-> GPT 页面输出 GPT_BUS_REPLY_V1 (COMMAND)
+-> Browser 原样提取
+-> Codex 机械校验 + relay publish
+-> GitHub 000002 COMMAND
 -> Codex execute + verify
--> 000003 RESULT -> GitHub
+-> GitHub 000003 RESULT
 -> Browser wake GPT
 -> GPT reads GitHub
--> 000004 DECISION -> GitHub
--> Codex consumes DECISION
+-> GPT 页面输出 GPT_BUS_REPLY_V1 (DECISION)
+-> Browser 原样提取
+-> Codex 机械校验 + relay publish
+-> GitHub 000004 DECISION
+-> Codex consume DECISION
 -> STOP
-```
+~~~
 
-### GitHub 总线类型白名单
+GitHub 仍是正式业务事实源；页面 reply 只是提交前 transport artifact。
 
-只允许：
+## GPT_BUS_REPLY_V1
 
-```text
-parent.type=REQUEST
--> GPT reply.type MUST = COMMAND
+GPT 页面只能返回一个结构化对象：
 
-parent.type=RESULT
--> GPT reply.type MUST = DECISION
-```
+~~~text
+BEGIN_GPT_BUS_REPLY_V1
+{
+  "protocol": "GPT_BUS_REPLY_V1",
+  "task_id": "<TASK_ID>",
+  "parent_message_id": "<current request/result message_id>",
+  "type": "COMMAND|DECISION",
+  "logical_event_id": "<stable logical event id>",
+  "payload": { ... }
+}
+END_GPT_BUS_REPLY_V1
+~~~
 
-除此之外：
+类型白名单：
 
-```text
-PUBLISH=DENY
-```
+~~~text
+parent REQUEST -> reply COMMAND
+parent RESULT  -> reply DECISION
+~~~
 
-特别规定：
+COMMAND payload 必须完整表达 GPT 的业务动作。
+DECISION payload 至少：
 
-```text
-ACK = Browser/page transport acknowledgement only
-ACK = NEVER a GitHub bus message type
-```
-
-在 GitHub publish 前必须先检查 parent.type 和 intended reply.type；不匹配就不发布。
-
-### DECISION 最小内容
-
-000004 必须至少包含：
-
-```text
-type=DECISION
+~~~text
+accepted
+status
+control_action
 result_message_id
-accepted=true|false
-status=PASS|FAIL
-control_action=STOP|BLOCKED
 verification
-```
+~~~
 
-当 toy result 完全通过：
+## Codex Relay 权限边界
 
-```text
-accepted=true
-status=PASS
-control_action=STOP
-```
+Codex 对 GPT_BUS_REPLY_V1 只允许：
 
-页面可以另外返回短 ACK，但不能把 ACK 写入 GitHub queue。
+~~~text
+PARSE
+SCHEMA_VALIDATE
+PARENT_VALIDATE
+TYPE_VALIDATE
+TASK_VALIDATE
+HASH
+ADD_TRANSPORT_METADATA
+PUBLISH
+REMOTE_VERIFY
+~~~
 
----
+Codex 禁止：
 
-# Browser 正式入口
+~~~text
+修改 payload 业务语义
+补写 GPT 没有给出的业务参数
+重排候选
+改变 COMMAND / DECISION
+自行产生新业务动作
+~~~
 
-先读取：
+发布后的 Bus envelope 可增加：
 
-```text
+~~~text
+sender=GPT
+receiver=CODEX
+relay_publisher=CODEX
+source_reply_sha256=<hash of extracted GPT reply>
+seq=<next seq>
+created_at=<transport timestamp>
+payload_sha256=<payload hash>
+~~~
+
+这表示：
+- 业务语义作者 = GPT
+- GitHub 提交执行者 = Codex relay
+
+## Browser
+
+正式入口始终从：
+
+~~~text
 C:\Users\A\.codex\skills\playwright-native-ai-browser\SKILL.md
-```
+~~~
 
-若为 Junction/Symlink，解析 Target，再严格使用 SKILL.md 当前声明的正式业务入口与恢复约定。
+解析。
 
-禁止猜测旧 root\scripts / root\references 路径。
+Browser 负责：
 
-Browser wakeup 必须是**自包含动作命令**，不能依赖当前 ChatGPT 会话记得旧上下文。
+~~~text
+发送 wakeup
+观察首答
+等待完整 GPT_BUS_REPLY_V1
+提取 BEGIN/END 之间原始内容
+交给 Codex relay
+保存 transport evidence
+~~~
 
-每次 wakeup 固定包含：
+Browser 不解释业务内容。
 
-```text
-GPT_BUS_WAKEUP_V1
-TASK_ID=<...>
-REPOSITORY=cuiqinggang/codex-private-skills
-BUS_BRANCH=<...>
-MESSAGE_SEQ=<...>
-MESSAGE_PATH=<...>
-EXPECTED_GPT_BUS_REPLY_TYPE=COMMAND|DECISION
-REQUIRED_ACTION=WRITE_NEXT_BUS_MESSAGE_TO_GITHUB
-```
+## 首答 Thinking 超时
 
-并明确告诉 GPT：
-
-```text
-1. 读取 BUS_BRANCH 上 MESSAGE_PATH 与 TASK 证据。
-2. 必须使用当前 ChatGPT 可用的 GitHub 写动作，把下一条不可变 Bus message + payload 直接提交到同一 BUS_BRANCH。
-3. REQUEST 的下一条必须是 COMMAND；RESULT 的下一条必须是 DECISION。
-4. 禁止把业务 COMMAND / DECISION 只写在聊天正文里。
-5. GitHub remote verify 成功后，页面只回复：
-   GPT_BUS_COMMIT_OK TASK_ID=<...> SEQ=<...> HEAD=<sha>
-6. 如果当前会话没有 GitHub 写动作/权限，页面只回复：
-   GPT_BUS_WRITE_UNAVAILABLE TASK_ID=<...>
-7. 如果遇到登录、授权、审批或其他阻断，页面只回复：
-   GPT_BUS_BLOCKED TASK_ID=<...> REASON=<short>
-```
-
-其中：
-
-```text
-REQUEST wakeup -> EXPECTED_GPT_BUS_REPLY_TYPE=COMMAND
-RESULT wakeup  -> EXPECTED_GPT_BUS_REPLY_TYPE=DECISION
-```
-
-页面回复不是业务事实源，只用于 transport 状态。
-
-如果 assistant turn 已经完成，但 GitHub 仍没有目标 Bus message：
-
-```text
-GPT_BUS_COMMIT_OK       -> 重新查 GitHub；仍无则 PROTOCOL_FAIL
-GPT_BUS_WRITE_UNAVAILABLE -> 立即 STOP + REALITY_DELTA
-GPT_BUS_BLOCKED         -> 立即 STOP + REALITY_DELTA
-其他页面业务正文        -> GPT_BUS_PROTOCOL_FAIL
-                           不得把正文当 COMMAND/DECISION
-                           刷新/重连后用同一个 logical_event_id 重试一次自包含 wakeup
-                           第二次仍失败 -> STOP + REALITY_DELTA
-```
-
-这样刷新、新标签或新会话都能仅凭 wakeup + GitHub 恢复，不依赖聊天历史。
-
-## GPT“正在思考”首答超时恢复
-
-这是一个简单规则：**只限制“开始回答以前”的 Thinking 时间，不限制完整回答时长。**
-
-固定三档：
+只限制“开始回答前”的 Thinking 时间：
 
 ~~~text
 SIMPLE = 60 秒
@@ -204,168 +192,111 @@ NORMAL = 180 秒
 LARGE  = 600 秒
 ~~~
 
-当前 GPT↔Codex：
+当前：
 
 ~~~text
-RESULT -> DECISION = SIMPLE = 60 秒
-REQUEST -> COMMAND = NORMAL = 180 秒
+RESULT -> DECISION = SIMPLE
+REQUEST -> COMMAND = NORMAL
 ~~~
 
-只有明确的大型复杂规划才使用：
+一旦 GPT 开始正常正文：
 
 ~~~text
-LARGE = 600 秒
+ANSWER_STARTED=YES
+-> 停止 Thinking timeout
 ~~~
 
-计时定义：
+一直未开始正文并超时：
 
 ~~~text
-T_START = Browser 成功发送 wakeup
-T_FIRST_ANSWER = GPT 页面第一次出现正常 assistant 正文输出
-T_THINKING = T_FIRST_ANSWER - T_START
+check GitHub
+-> refresh/reconnect
+-> same TASK_ID / MESSAGE_SEQ / logical_event_id re-wake
 ~~~
 
-规则：
+## Relay 失败
+
+以下任一出现：
 
 ~~~text
-GPT 已开始正常输出正文
--> ANSWER_STARTED=YES
--> 立即停止 Thinking 超时计时
--> 后续回答继续完成，视为正常
-
-GPT 尚未开始正文，仍停留在 Thinking/Generating
--> elapsed <= 当前档位上限：继续等待
--> elapsed >  当前档位上限：一律按故障恢复
+没有 BEGIN/END 标记
+JSON 无效
+task_id 不匹配
+parent_message_id 不匹配
+reply type 不匹配
+logical_event_id 冲突
+payload 不完整
 ~~~
 
-恢复前先查 GitHub；如果目标 COMMAND / DECISION 已经存在，直接继续。
-
-否则：
+则：
 
 ~~~text
-refresh / reconnect 当前 ChatGPT
--> 复用同一个 TASK_ID / MESSAGE_SEQ / logical_event_id 重新 wake
--> 必要时同一 profile 新开页面/会话恢复
+GPT_BUS_REPLY_INVALID
+-> 不发布
+-> same logical_event_id 重试一次
+-> 第二次仍失败：STOP + REALITY_DELTA
 ~~~
 
-禁止：
+## 去重/恢复
 
 ~~~text
-回答已经开始后因为总耗时长而刷新
-无限停留在 Thinking
-超时后继续等待
-创建新的业务 REQUEST
-改变 MESSAGE_SEQ
-产生第二个 logical_event_id
-改变任务或方案
+同 logical_event_id 已发布 -> 不再发布
+同 action_id 已完成且现实效果仍成立 -> 不 replay
+relay publish 后本地 ACK 丢失 -> 先查 GitHub 再决定
 ~~~
+
+## 时间测量
 
 记录：
 
 ~~~text
-GPT_WAIT_CLASS=SIMPLE|NORMAL|LARGE
-GPT_FIRST_ANSWER_LIMIT_SECONDS
-GPT_FIRST_ANSWER_SECONDS
-ANSWER_STARTED=YES|NO
-GPT_THINKING_STUCK_COUNT
-GPT_THINKING_STUCK_RECOVERY_SECONDS
+T0 REQUEST publish
+T1 GPT COMMAND reply first complete
+T1G COMMAND GitHub publish
+T2 RESULT publish
+T3 GPT DECISION reply first complete
+T3G DECISION GitHub publish
+T4 Codex consume DECISION + STOP
+
+T_VALID=T4-T0
 ~~~
 
----
+另外记录：
 
-# GitHub 消息与防重复
+~~~text
+GPT_FIRST_ANSWER_SECONDS
+GPT_REPLY_COMPLETION_SECONDS
+RELAY_PARSE_VALIDATE_SECONDS
+RELAY_GITHUB_PUBLISH_SECONDS
+LOCAL_AVOIDABLE_WAIT_SECONDS
+~~~
 
-每个任务独立：
+## 当前现实验证
 
-```text
-bus/<TASK_ID>
-```
+旧失败证据全部保留：
 
-消息只追加，不覆盖；envelope + payload 同一 commit；ref update non-force。
+~~~text
+gpt-codex-real-case-v1
+gpt-codex-time-v1-r1
+gpt-codex-time-v2-r1
+~~~
 
-本机 SQLite 保存最小去重/恢复字段：
+新 warm clean tasks：
 
-```text
-message_id
-logical_event_id
-action_id
-status
-effect_fingerprint
-remote_commit
-```
+~~~text
+gpt-codex-time-v3-r1
+gpt-codex-time-v3-r2
+gpt-codex-time-v3-r3
+~~~
 
-规则：
+三次都必须：
 
-```text
-同 logical_event_id 已发布 -> 不再发布
-同 action_id 已完成且效果仍成立 -> 不再执行
-副作用后崩溃 -> 先验证现实效果，成立则补记录，不重复副作用
-```
-
----
-
-# 时间测量
-
-每次真实认证必须记录：
-
-```text
-T0 = 000001 REQUEST published
-T1 = 000002 COMMAND published
-T2 = 000003 RESULT published
-T3 = 000004 DECISION published
-T4 = Codex consumed DECISION and STOP
-```
-
-计算：
-
-```text
-T_GPT_REQUEST_TO_COMMAND = T1-T0
-T_CODEX_COMMAND_TO_RESULT = T2-T1
-T_GPT_RESULT_TO_DECISION = T3-T2
-T_FINAL_CONSUME = T4-T3
-T_VALID = T4-T0
-```
-
-先 correctness PASS，再依据这些真实时间只优化最大瓶颈。
-
----
-
-# 现实认证
-
-上一轮 gpt-codex-real-case-v1 保留为失败证据，不覆盖。
-
-重新用干净任务：
-
-```text
-TASK_ID=gpt-codex-real-case-v2
-OUTPUT=toy-result.txt
-CONTENT=GPT_CODEX_CODE_TO_CODE_OK
-VERIFY=exact readback + SHA256
-```
-
-必须严格产生：
-
-```text
-000001 REQUEST
-000002 COMMAND
-000003 RESULT
-000004 DECISION
-STOP
-```
-
-同时验证：
-
-```text
-duplicate wakeup
-duplicate poll
-Browser reconnect
-Codex restart
-```
-
-失败只保存 REALITY_DELTA 并返回 GPT，不现场改方案。
-
----
+~~~text
+REQUEST -> GPT reply COMMAND -> relay 000002
+-> RESULT -> GPT reply DECISION -> relay 000004
+-> STOP
+~~~
 
 # 最终一句话
 
-> **GitHub Bus 是唯一业务事实源；每次 GPT wakeup 都必须自包含并明确要求执行 GitHub 写动作。页面只能返回 BUS_COMMIT_OK / BUS_WRITE_UNAVAILABLE / BUS_BLOCKED，不得承载业务 COMMAND/DECISION。**
+> **GPT 负责决定“写什么”，Codex 只负责把 GPT 的结构化回复原样搬进 GitHub；这样保留 GPT 规划权和 GitHub 最终事实源，同时避开 ChatGPT 无人值守外部写操作的安全阻断。**
