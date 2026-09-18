@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-09-18T18:07:44.929241+00:00",
+  "logical_event_id": "gpt-codex-simple-final-v1:request-v1",
+  "message_id": "gpt-codex-simple-final-v1:000001:REQUEST",
+  "parent_message_id": null,
+  "payload_path": "workspaces/gpt-codex-simple-final-v1/payloads/000001.json",
+  "payload_sha256": "61d3da5b2c39ae73265e63d6d43763bc951414ada6d10731c459d7e1d19069e9",
+  "receiver": "GPT",
+  "sender": "CODEX",
+  "seq": 1,
+  "task_id": "gpt-codex-simple-final-v1",
+  "type": "REQUEST"
+}
