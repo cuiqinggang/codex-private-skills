@@ -2,12 +2,12 @@
 name: gpt-codex-convergence-orchestrator
 description: GPT↔Codex 自动闭环执行技能。当前版本只服从 first-principles-physical-limit-convergence v3.1.1 的三核心白名单：极限短时间、成熟方案集群、高智能虚拟成熟。Codex 负责主动循环和确定性执行，GPT 负责按需规划/裁决，GitHub 是共享事实源，AI Browser 只负责唤醒 GPT。Browser 入口从已安装 playwright-native-ai-browser/SKILL.md 解析。GitHub 总线回复类型使用唯一白名单：REQUEST 只能由 GPT 回复 COMMAND；RESULT 只能由 GPT 回复 DECISION；页面 ACK 永远不能作为 GitHub 总线消息类型。
 metadata:
-  version: "1.3.7"
+  version: "1.3.8"
   method_dependency: "first-principles-physical-limit-convergence@3.1.1"
   architecture: "CODEX_GITHUB_GPT_CLOSED_LOOP"
 ---
 
-# GPT↔Codex 自动闭环 v1.3.7
+# GPT↔Codex 自动闭环 v1.3.8
 
 ## CORE 1：极限短时间
 
@@ -139,14 +139,34 @@ C:\Users\A\.codex\skills\playwright-native-ai-browser\SKILL.md
 
 禁止猜测旧 root\scripts / root\references 路径。
 
-Browser wakeup 只发送：
+Browser wakeup 必须是**自包含动作命令**，不能依赖当前 ChatGPT 会话记得旧上下文。
+
+每次 wakeup 固定包含：
 
 ```text
-TASK_ID
-BUS_BRANCH
-MESSAGE_SEQ
-MESSAGE_PATH
-EXPECTED_GPT_BUS_REPLY_TYPE
+GPT_BUS_WAKEUP_V1
+TASK_ID=<...>
+REPOSITORY=cuiqinggang/codex-private-skills
+BUS_BRANCH=<...>
+MESSAGE_SEQ=<...>
+MESSAGE_PATH=<...>
+EXPECTED_GPT_BUS_REPLY_TYPE=COMMAND|DECISION
+REQUIRED_ACTION=WRITE_NEXT_BUS_MESSAGE_TO_GITHUB
+```
+
+并明确告诉 GPT：
+
+```text
+1. 读取 BUS_BRANCH 上 MESSAGE_PATH 与 TASK 证据。
+2. 必须使用当前 ChatGPT 可用的 GitHub 写动作，把下一条不可变 Bus message + payload 直接提交到同一 BUS_BRANCH。
+3. REQUEST 的下一条必须是 COMMAND；RESULT 的下一条必须是 DECISION。
+4. 禁止把业务 COMMAND / DECISION 只写在聊天正文里。
+5. GitHub remote verify 成功后，页面只回复：
+   GPT_BUS_COMMIT_OK TASK_ID=<...> SEQ=<...> HEAD=<sha>
+6. 如果当前会话没有 GitHub 写动作/权限，页面只回复：
+   GPT_BUS_WRITE_UNAVAILABLE TASK_ID=<...>
+7. 如果遇到登录、授权、审批或其他阻断，页面只回复：
+   GPT_BUS_BLOCKED TASK_ID=<...> REASON=<short>
 ```
 
 其中：
@@ -155,6 +175,22 @@ EXPECTED_GPT_BUS_REPLY_TYPE
 REQUEST wakeup -> EXPECTED_GPT_BUS_REPLY_TYPE=COMMAND
 RESULT wakeup  -> EXPECTED_GPT_BUS_REPLY_TYPE=DECISION
 ```
+
+页面回复不是业务事实源，只用于 transport 状态。
+
+如果 assistant turn 已经完成，但 GitHub 仍没有目标 Bus message：
+
+```text
+GPT_BUS_COMMIT_OK       -> 重新查 GitHub；仍无则 PROTOCOL_FAIL
+GPT_BUS_WRITE_UNAVAILABLE -> 立即 STOP + REALITY_DELTA
+GPT_BUS_BLOCKED         -> 立即 STOP + REALITY_DELTA
+其他页面业务正文        -> GPT_BUS_PROTOCOL_FAIL
+                           不得把正文当 COMMAND/DECISION
+                           刷新/重连后用同一个 logical_event_id 重试一次自包含 wakeup
+                           第二次仍失败 -> STOP + REALITY_DELTA
+```
+
+这样刷新、新标签或新会话都能仅凭 wakeup + GitHub 恢复，不依赖聊天历史。
 
 ## GPT“正在思考”首答超时恢复
 
@@ -332,4 +368,4 @@ Codex restart
 
 # 最终一句话
 
-> **页面 ACK 只确认 transport；GitHub 总线只认 REQUEST→COMMAND、RESULT→DECISION；只限制 GPT 开始回答前的 Thinking 时间，一旦正文开始输出即视为正常，只有迟迟不开始回答并超过固定上限才恢复。**
+> **GitHub Bus 是唯一业务事实源；每次 GPT wakeup 都必须自包含并明确要求执行 GitHub 写动作。页面只能返回 BUS_COMMIT_OK / BUS_WRITE_UNAVAILABLE / BUS_BLOCKED，不得承载业务 COMMAND/DECISION。**
