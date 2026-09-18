@@ -1,32 +1,40 @@
 {
   "skill_id": "gpt-codex-convergence-orchestrator",
-  "version": "1.5.0",
-  "display_name": "GPT-Codex 简洁自动闭环",
+  "version": "1.5.1",
+  "display_name": "GPT-Codex 简洁灵活自动闭环",
   "method_dependency": "first-principles-physical-limit-convergence@3.1.1",
-  "architecture": "PAGE_DIRECT_CONTROL_GITHUB_OPTIONAL_MIRROR",
-  "core_mapping": {
-    "core_1": "MINIMIZE_T_VALID",
-    "core_2": "REUSE_MATURE_BROWSER_GPT_CODEX_AND_OPTIONAL_GITHUB",
-    "core_3": "FREEZE_PAGE_DIRECT_CONTROL_LOOP"
-  },
+  "architecture": "PREFERRED_SHARED_WORKSPACE_WITH_SIMPLE_FALLBACKS",
   "roles": {
     "gpt": "PLANNER_JUDGE",
-    "browser": "TRANSPORT",
     "codex": "DETERMINISTIC_EXECUTOR",
-    "github": "OPTIONAL_MIRROR_EVIDENCE_BACKUP"
+    "browser": "PAGE_TRANSPORT",
+    "github": "PREFERRED_SHARED_WORKSPACE"
   },
-  "control_loop": [
-    "CODEX_PREPARE_CONTEXT",
-    "BROWSER_SEND_TO_GPT",
-    "GPT_COMMAND",
-    "BROWSER_EXTRACT",
-    "CODEX_EXECUTE_VERIFY",
-    "BROWSER_SEND_RESULT_TO_GPT",
-    "GPT_DECISION",
-    "CODEX_CONTINUE_OR_STOP"
+  "paths": {
+    "A": {
+      "name": "SHARED_WORKSPACE_FULL",
+      "priority": 1,
+      "use_when": "GITHUB_READ_WRITE_OK"
+    },
+    "B": {
+      "name": "SHARED_WORKSPACE_READ_PAGE_REPLY",
+      "priority": 2,
+      "use_when": "GITHUB_READ_OK_WRITE_BLOCKED"
+    },
+    "C": {
+      "name": "PAGE_DIRECT",
+      "priority": 3,
+      "use_when": "GITHUB_UNAVAILABLE_OR_NOT_WORTH_WAITING"
+    }
+  },
+  "switching_rule": "A_IF_AVAILABLE_ELSE_B_IF_READ_AVAILABLE_ELSE_C",
+  "simple_recovery_attempts": 1,
+  "stop_only_if": [
+    "A_B_C_ALL_UNAVAILABLE",
+    "VALID_WOULD_BREAK",
+    "SAFETY_OR_PERMISSION_BOUNDARY",
+    "USER_STOP"
   ],
-  "github_required_for_control": false,
-  "fault_policy": "ONE_SIMPLE_RECOVERY_THEN_BYPASS",
   "thinking_timeout": {
     "SIMPLE_SECONDS": 60,
     "NORMAL_SECONDS": 180,
@@ -36,10 +44,11 @@
   "minimal_state": [
     "TASK_ID",
     "CURRENT_STEP",
+    "ACTIVE_PATH",
     "LAST_GPT_COMMAND_HASH",
     "LAST_RESULT",
     "DONE"
   ],
   "plan_status": "FROZEN",
-  "real_execution_status": "NOT_RUN_UNDER_V1_5"
+  "real_execution_status": "NOT_RUN_UNDER_V1_5_1"
 }
