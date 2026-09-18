@@ -1,8 +1,8 @@
 {
   "skill_id": "gpt-codex-convergence-orchestrator",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "display_name": "GPT-Codex 简洁灵活自动闭环",
-  "method_dependency": "first-principles-physical-limit-convergence@3.1.1",
+  "method_dependency": "first-principles-physical-limit-convergence@3.1.2",
   "architecture": "PREFERRED_SHARED_WORKSPACE_WITH_SIMPLE_FALLBACKS",
   "roles": {
     "gpt": "PLANNER_JUDGE",
@@ -50,5 +50,9 @@
     "DONE"
   ],
   "plan_status": "FROZEN",
-  "real_execution_status": "NOT_RUN_UNDER_V1_5_1"
+  "real_execution_status": "PASS_TOY_A_B_C_CONTROLLED",
+  "control_architecture_status": "CURRENT_MATURE_FROZEN",
+  "natural_abc_failover": "AWAIT_FUTURE_REAL_FAULT_EVIDENCE",
+  "evidence_report": "docs/gpt-codex/20260919-simple-final/GPT-CODEX-SIMPLE-FINAL-REAL-EXECUTION-v1.md",
+  "freeze_record": "docs/gpt-codex/20260919-simple-final/GPT-CODEX-v1.5.2-FREEZE-CLOSEOUT.md"
 }

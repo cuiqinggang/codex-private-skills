@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.2 - 2026-09-19
+
+- 将当前母方法引用统一为 first-principles-physical-limit-convergence v3.1.2。
+- 按既有 v1.5.1 实测证据修正版本身份、验收与现实执行状态；A 完整闭环、B/C 独立受控验证。
+- 冻结三条简单路径为当前成熟控制架构。自然 ABC failover 等待未来真实故障事件补证。
+- 保留 v1.5.1 计划、现实报告与全部计时原样；未重跑案例或改变 transport。
+
 ## 1.1.0 - 2026-09-18
 
 - 改为 `CODEX_FIRST_NUMBERED_GITHUB_BUS` 架构。

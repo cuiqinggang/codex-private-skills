@@ -1,13 +1,13 @@
 ---
 name: gpt-codex-convergence-orchestrator
-description: GPT↔Codex 简洁灵活自动闭环。服从 first-principles-physical-limit-convergence v3.1.1 三核心。共同工作区优先，但不是唯一；按当前可用性在“共同工作区完整通道 / 共同工作区读+页面回传 / 纯页面直传”三条简单成熟路径之间切换。GPT 决策，Codex 执行，偶发 transport 故障只切路，不把简单任务变成故障工程。
+description: GPT↔Codex 简洁灵活自动闭环。服从 first-principles-physical-limit-convergence v3.1.2 三核心。共同工作区优先，但不是唯一；按当前可用性在“共同工作区完整通道 / 共同工作区读+页面回传 / 纯页面直传”三条简单成熟路径之间切换。GPT 决策，Codex 执行，偶发 transport 故障只切路，不把简单任务变成故障工程。
 metadata:
-  version: "1.5.1"
-  method_dependency: "first-principles-physical-limit-convergence@3.1.1"
+  version: "1.5.2"
+  method_dependency: "first-principles-physical-limit-convergence@3.1.2"
   architecture: "PREFERRED_SHARED_WORKSPACE_WITH_SIMPLE_FALLBACKS"
 ---
 
-# GPT↔Codex 简洁灵活自动闭环 v1.5.1
+# GPT↔Codex 简洁灵活自动闭环 v1.5.2
 
 ## CORE 1 — 极限短时间
 
