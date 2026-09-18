@@ -1,101 +1,83 @@
-# GPT↔Codex v3.1.1 现实实现与案例验证命令 v1
+# GPT↔Codex v3.1.1 现实实现与案例验证命令 v1.1
 
 状态：
 
 ```text
 AUTHORIZED_CORE_3_REAL_IMPLEMENT_VERIFY
+REALITY_DELTA_01_RESOLVED_VIRTUALLY
 ```
 
-## 唯一读取入口
+## READ
 
-必须按下面三个**明确分支**读取，禁止读取当前工作分支中的旧母技能副本：
-
+1. 母方法：
 ```text
-READ 1:
 branch = codex/first-principles-physical-limit-convergence-v3.1.1
 file   = skills/first-principles-physical-limit-convergence/SKILL.md
+```
 
-READ 2:
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.0-v3.1
+2. GPT↔Codex 技能：
+```text
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.1-browser-entry
 file   = skills/gpt-codex-convergence-orchestrator/SKILL.md
+```
 
-READ 3:
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.0-v3.1
+3. 修正后的冻结方案：
+```text
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.1-browser-entry
 file   = docs/gpt-codex/20260918-v3.1-three-core/GPT-CODEX-THREE-CORE-FINAL-v1.md
 ```
 
-读取后只实现被冻结的最终链，不自行增加新架构。
+## Browser 入口规则
 
-## 本机实现位置
-
-```text
-C:\AI\GPT-Codex-Convergence-Orchestrator
-```
-
-优先只使用：
+不要再读取猜测的：
 
 ```text
-Python stdlib
-sqlite3
-native git / GitHub API
-existing Playwright Native AI Browser
-existing Capacity Router
+C:\AI\Playwright-Native-AI-Browser\scripts\chatgpt-business-entry.js
+C:\AI\Playwright-Native-AI-Browser\references\...
 ```
 
-禁止：
+先读取：
 
 ```text
-改变代理/网络
-改变系统全局设置
-force push
-新建另一套 browser stack
-自行增加新的 workflow engine
-自行改变角色和四消息闭环
-把旧 L0/L1/L2/L3/L4 当当前流程
+C:\Users\A\.codex\skills\playwright-native-ai-browser\SKILL.md
 ```
 
-## 需要实现
+如果它是 Junction/Symlink，解析 Target。
 
-最小文件即可：
+然后严格按照 **SKILL.md 当前明确声明/引用的正式业务入口与恢复约定** 调用 Browser。
 
-```text
-orchestrator.py
-storage.py
-github_bus.py
-chatgpt_wakeup.py
-codex_executor.py
-config.json
-state/orchestrator.db
-reports/
-```
+只在 SKILL.md 本身或它明确指向的正式入口真实不存在时，才停止并回传新的 REALITY_DELTA。
 
-必须支持：
+## DO
 
-```text
-000001 REQUEST
-000002 COMMAND
-000003 RESULT
-000004 DECISION
-
-logical_event_id dedupe
-action_id dedupe
-read-after-write verification
-restart resume
-non-force Git publish
-```
-
-## 现实案例
+继续上次已停止的同一任务，不重做已经完成的无关探索：
 
 ```text
 TASK_ID=gpt-codex-real-case-v1
+```
+
+实现最小 GPT↔Codex 四消息链与 SQLite 去重/恢复：
+
+```text
+000001 REQUEST
+-> Browser wake GPT
+-> 000002 COMMAND
+-> Codex execute + verify
+-> 000003 RESULT
+-> Browser wake GPT
+-> 000004 DECISION
+-> Codex STOP
+```
+
+现实案例：
+
+```text
 OUTPUT=toy-result.txt
 CONTENT=GPT_CODEX_CODE_TO_CODE_OK
 VERIFY=exact readback + SHA256
 ```
 
-先做最小本地验证，随后直接进行真实 GPT↔Codex 四消息闭环。
-
-真实认证中加入：
+并验证：
 
 ```text
 duplicate wakeup
@@ -104,10 +86,15 @@ Browser reconnect
 Codex restart
 ```
 
-最终只返回：
+不要自行增加新架构、workflow engine 或 Browser 栈；不要改变代理/系统设置。
+
+## RETURN
+
+完成后只回传：
 
 ```text
 CORE_3_REAL_IMPLEMENT_VERIFY=PASS/FAIL
+BROWSER_ENTRY_RESOLVED=<actual canonical entry>
 FOUR_MESSAGE_LOOP=PASS/FAIL
 TOY_RESULT=PASS/FAIL
 MANUAL_MIDDLE_COPY_PASTE=<n>
@@ -120,12 +107,10 @@ REMOTE_HEAD=<sha>
 REPORT_PATH=<path>
 ```
 
-如果出现冻结方案之外的问题：
+若出现冻结方案之外的新问题：
 
 ```text
 STOP
 SAVE REALITY_DELTA
 RETURN TO GPT
 ```
-
-不要在现实执行中自行设计新方案。
