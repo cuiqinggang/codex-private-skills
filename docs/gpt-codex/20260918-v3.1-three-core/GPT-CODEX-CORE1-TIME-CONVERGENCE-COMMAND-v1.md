@@ -1,138 +1,84 @@
-# GPT↔Codex CORE 1 + Relay 时间收敛命令 v1.4
-
-状态：
-
-~~~text
-REALITY_DELTA_GITHUB_WRITE_SAFETY=ABSORBED
-GPT_DIRECT_GITHUB_WRITE_REQUIRED=NO
-ARCHITECTURE=GPT_STRUCTURED_REPLY_CODEX_RELAY_GITHUB_TRUTH
-~~~
+# GPT↔Codex 简化验证命令 v1.4.1
 
 ## READ
 
 ~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.4.0-relay
+branch = codex/gpt-codex-convergence-orchestrator-v1.4.1-simple-fallback
 file   = skills/gpt-codex-convergence-orchestrator/SKILL.md
-~~~
-
-同时读取共同报告：
-
-~~~text
-branch = codex/gpt-codex-convergence-orchestrator-v1.4.0-relay
-file   = docs/gpt-codex/20260918-v3.1-three-core/GPT-CODEX-CORE1-TIME-CONVERGENCE-v1.md
 ~~~
 
 ## DO
 
-不要再要求 GPT 页面直接调用 GitHub write action。
+不要继续复杂化 GitHub 写入故障。
 
-使用现有正式 Playwright Native AI Browser / chatgpt-web-plan-bridge 路径：
+按下面简单规则继续当前 GPT↔Codex 验证：
 
 ~~~text
-Codex GitHub REQUEST
--> Browser wake GPT
--> GPT 页面输出 GPT_BUS_REPLY_V1
--> Browser 原样提取
--> Codex 机械 relay 到 GitHub COMMAND
--> Codex execute + RESULT
--> Browser wake GPT
--> GPT 页面输出 GPT_BUS_REPLY_V1 DECISION
--> Browser 原样提取
--> Codex 机械 relay 到 GitHub DECISION
--> Codex STOP
+GitHub 正常可写
+-> 走 GitHub 共同工作区
+
+GitHub 写不了 / 被 GITHUB_WRITE_SAFETY_CHECK 阻断 / 明显 transport 异常
+-> 立即切页面直传
 ~~~
 
-### GPT 页面格式
-
-COMMAND：
+页面 fallback 时：
 
 ~~~text
-BEGIN_GPT_BUS_REPLY_V1
-{
-  "protocol":"GPT_BUS_REPLY_V1",
-  "task_id":"<task>",
-  "parent_message_id":"<000001 REQUEST message_id>",
-  "type":"COMMAND",
-  "logical_event_id":"<stable id>",
-  "payload":{...complete command...}
-}
-END_GPT_BUS_REPLY_V1
+Browser 直接把当前必要 REQUEST / RESULT 内容发给 GPT
+GPT 页面直接返回 COMMAND / DECISION
+Browser 原样读取
+Codex 原样执行 / 消费
 ~~~
 
-DECISION 同结构，type=DECISION，payload 包含 accepted/status/control_action/result_message_id/verification。
-
-### Relay
-
-Codex 只能：
+页面格式：
 
 ~~~text
-parse
-validate task/parent/type
-hash raw reply
-publish exact payload
-add transport metadata
-remote verify
+GPT_COMMAND
+<完整命令>
+END_GPT_COMMAND
 ~~~
 
-禁止修改业务 payload。
-
-### 首答故障
-
-继续使用：
+或：
 
 ~~~text
-RESULT->DECISION 首答 60 秒
-REQUEST->COMMAND 首答 180 秒
-大型复杂规划 600 秒
+GPT_DECISION
+<完整裁决>
+END_GPT_DECISION
 ~~~
 
-只限制开始回答前；正文一旦开始就停止 Thinking timeout。
+Codex 不得修改 GPT 业务语义。
 
-### Clean runs
+不要因为 GitHub 临时不可写停主任务，也不要现场修 GitHub。
 
-不要修补旧失败 branch。
-
-新建并连续完成：
+继续执行 3 个 clean run：
 
 ~~~text
-gpt-codex-time-v3-r1
-gpt-codex-time-v3-r2
-gpt-codex-time-v3-r3
+gpt-codex-time-v4-r1
+gpt-codex-time-v4-r2
+gpt-codex-time-v4-r3
 ~~~
 
-每轮必须：
+每轮记录：
 
 ~~~text
-000001 REQUEST
-000002 COMMAND (Codex relay, semantic author GPT)
-000003 RESULT
-000004 DECISION (Codex relay, semantic author GPT)
-STOP
-~~~
-
-记录：
-
-~~~text
+TRANSPORT_USED=GITHUB|PAGE
 GPT_FIRST_ANSWER_SECONDS
-GPT_REPLY_COMPLETION_SECONDS
-RELAY_PARSE_VALIDATE_SECONDS
-RELAY_GITHUB_PUBLISH_SECONDS
+COMMAND_READY_SECONDS
 COMMAND_TO_RESULT_SECONDS
+DECISION_READY_SECONDS
 FINAL_CONSUME_SECONDS
 T_VALID_SECONDS
 ~~~
 
-## 共享报告
-
-最终同时保存：
+首答 Thinking 仍按：
 
 ~~~text
-C:\AI\GPT-Codex-Convergence-Orchestrator\reports\CORE1-TIME-CONVERGENCE-v1.4.md
-
-docs/gpt-codex/20260918-v3.1-three-core/GPT-CODEX-CORE1-TIME-CONVERGENCE-v1.4.md
+simple 60s
+normal 180s
+large 600s
 ~~~
 
-push + remote verify。
+一旦 GPT 开始正文就停止 Thinking timeout。
 
 ## RETURN
 
@@ -140,24 +86,19 @@ push + remote verify。
 
 ~~~text
 CORE_1_TIME_CONVERGENCE=PASS/FAIL
-ARCHITECTURE=GPT_STRUCTURED_REPLY_CODEX_RELAY_GITHUB_TRUTH
 WARM_RUNS_COMPLETED=<n>/3
 FUNCTIONAL_VALID=<n>/3
+TRANSPORT_USED_RUNS=<A,B,C>
 T_VALID_RUNS=<a,b,c>
 T_VALID_MIN_SECONDS=<value>
 T_VALID_P50_SECONDS=<value>
 T_VALID_MAX_SECONDS=<value>
 P50_GPT_FIRST_ANSWER_SECONDS=<value>
-P50_GPT_REPLY_COMPLETION_SECONDS=<value>
-P50_RELAY_PARSE_VALIDATE_SECONDS=<value>
-P50_RELAY_GITHUB_PUBLISH_SECONDS=<value>
 P50_COMMAND_TO_RESULT_SECONDS=<value>
 P50_FINAL_CONSUME_SECONDS=<value>
 DUPLICATE_BUSINESS_EFFECT=<n>
-CODEX_SEMANTIC_MODIFICATION_COUNT=0
-REMOTE_REPORT_PATH=<path>
-REMOTE_HEAD=<sha>
+CODEX_FREE_EXPLORATION=<n>
 FINAL_TIME_FREEZE_RECOMMENDATION=YES/NO
 ~~~
 
-出现 GPT_BUS_REPLY_V1 无效时只允许同 logical_event_id 重试一次；仍失败就 STOP + REALITY_DELTA。
+如果 GitHub 恢复后方便，再同步最终报告到共同仓库；同步失败本身不阻塞任务完成。
