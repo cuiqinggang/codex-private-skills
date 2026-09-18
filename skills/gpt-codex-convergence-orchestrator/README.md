@@ -1,36 +1,32 @@
-# GPT↔Codex 简洁自动闭环 v1.5.0
-
-这是按第一性原理重新整理后的最终简化方案。
+# GPT↔Codex 简洁灵活自动闭环 v1.5.1
 
 ## 核心
 
 ~~~text
 GPT 决策
-Browser 传递
 Codex 执行
-GitHub 可选同步
+Browser 负责页面传递
+GitHub 共同工作区优先
 ~~~
 
-## 控制链
+但共同工作区不是唯一通道。
+
+## 三条简单路径
 
 ~~~text
-Codex -> GPT 页面 -> GPT_COMMAND
--> Codex 执行 -> GPT 页面 -> GPT_DECISION
--> 继续或 STOP
+A  GitHub 完整通道（优先）
+B  GitHub 读资料 + 页面回 COMMAND/DECISION
+C  纯页面直传
 ~~~
 
-GitHub 不再参与“任务能不能继续”的判定。
-
-## 故障
+规则很简单：
 
 ~~~text
-小故障
--> 简单恢复一次
--> 仍不通
--> 绕过/备用方式
--> 继续任务
+A 能用 -> A
+只写回坏 -> B
+GitHub 整体暂时坏 -> C
 ~~~
 
-只有页面主链本身也无法继续，才真正 STOP。
+不为了偶发 transport 故障停主任务，也不为每个故障设计新协议。
 
-旧 v1.3/v1.4 的 GitHub Bus 强依赖、GPT 直写 GitHub、复杂 relay/ACK/Bus-write 安全处理全部降为历史证据，不再是当前方案。
+旧版本中“GitHub 必须成功”或“页面是唯一控制链”的两种极端都不再采用。
