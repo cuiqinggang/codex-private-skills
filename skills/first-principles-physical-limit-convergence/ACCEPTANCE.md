@@ -1,4 +1,4 @@
-# Acceptance — first-principles-physical-limit-convergence v3.1.0
+# Acceptance — first-principles-physical-limit-convergence v3.1.1
 
 ## 唯一验收
 
@@ -20,15 +20,7 @@ THREE_CORE_WHITELIST=PASS
 
 ## 下一步白名单
 
-任何下一步必须明确标注：
-
-```text
-CORE=1
-或
-CORE=2
-或
-CORE=3
-```
+任何下一步必须明确标注 CORE=1 / CORE=2 / CORE=3。
 
 不能直接映射：
 
@@ -46,8 +38,6 @@ HISTORICAL_REFERENCE=ALLOWED
 CURRENT_METHOD_AUTHORITY=NO
 ```
 
-它们只有在内容被重新映射到三核心后，才可以作为当前方案的一部分。
-
 ## 顺序
 
 ```text
@@ -57,6 +47,23 @@ CURRENT_METHOD_AUTHORITY=NO
 ```
 
 现实实现与案例验证属于第 3 核心冻结方案的验证动作，不建立第四层。
+
+## 完成即交接
+
+如果已经生成冻结方案/执行入口/命令包，且下一步需要外部执行器：
+
+```text
+HANDOFF_COMMAND_REQUIRED=YES
+HANDOFF_SAME_REPLY=YES
+HANDOFF_FIELDS=READ+DO+RETURN
+HANDOFF_EXTRA_USER_TURN=0
+```
+
+只报告“完成”但没有给出可复制执行命令：
+
+```text
+DELIVERY_COMPLETE=NO
+```
 
 ## 失败
 
@@ -70,8 +77,6 @@ REALITY_DELTA
 -> RE-VERIFY
 ```
 
-不得现场产生新的方法路线。
-
 ## 最终验收
 
 ```text
@@ -80,11 +85,6 @@ MATURE_SOLUTION_CLUSTER_FIRST=PASS
 HIGH_INTELLIGENCE_VIRTUAL_MATURITY=PASS
 ALL_CURRENT_ACTIONS_MAP_TO_1_2_3=PASS
 UNMAPPED_CURRENT_ACTIONS=0
+HANDOFF_EXTRA_USER_TURN=0
 FINAL_99_ALLOWED=YES
-```
-
-只要出现一个无法映射到 1/2/3 的当前动作：
-
-```text
-FINAL_99_ALLOWED=NO
 ```
