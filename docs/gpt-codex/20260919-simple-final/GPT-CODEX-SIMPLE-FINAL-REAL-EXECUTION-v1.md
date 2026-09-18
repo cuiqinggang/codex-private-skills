@@ -90,5 +90,20 @@ FINAL_RECOMMENDATION=KEEP_V1_5_1_THREE_SIMPLE_PATHS
 
 The three path transports and the bounded toy business contract are real. The B/C route triggers were controlled tests; no production GitHub outage or current GPT write block was induced. These cases have different start boundaries, so B/C elapsed times are not compared with A T_VALID.
 
-CodeGraph usage: .codegraph absent in the local project; not used.
-Knowledge Brain usage: INDEX, ROUTING_MAP and code-reference-index.md checked; no hot index changed.
+CodeGraph usage:
+- MCP available: not checked; no .codegraph index in the local project.
+- CLI available: not checked; no .codegraph index in the local project.
+- .codegraph index present: no.
+- status checked before work: yes, index presence checked.
+- callers/callees/impact checked where relevant: not applicable without an index; existing call sites were read directly.
+- sync/refresh run after meaningful code changes: no index present.
+- if not used, reason: .codegraph is absent.
+
+Knowledge Brain usage:
+- INDEX checked: yes.
+- ROUTING_MAP checked: yes.
+- Relevant indexes checked: code-reference-index.md.
+- CodeGraph used where relevant: no index present.
+- OpenHuman reference used where relevant: not relevant.
+- Sync run before/after: kb_health_check.ps1 PASS; no hot entry changed, so no hot/deep sync.
+- If not used, reason: Knowledge Brain was used for project continuity routing.
