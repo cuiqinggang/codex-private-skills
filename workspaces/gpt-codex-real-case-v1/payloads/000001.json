@@ -1,0 +1,12 @@
+{
+  "command_contract": {
+    "action": "WRITE_FILE",
+    "action_id": "gpt-codex-real-case-v1:write-toy-result-v1",
+    "content": "GPT_CODEX_CODE_TO_CODE_OK",
+    "path": "toy-result.txt"
+  },
+  "content": "GPT_CODEX_CODE_TO_CODE_OK",
+  "goal": "create toy-result.txt only after GPT COMMAND",
+  "output": "toy-result.txt",
+  "verify": "exact readback + SHA256"
+}
