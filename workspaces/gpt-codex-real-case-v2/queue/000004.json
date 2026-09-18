@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-09-18T15:31:00+00:00",
+  "logical_event_id": "gpt-codex-real-case-v2:decision-v1",
+  "message_id": "gpt-codex-real-case-v2:000004:DECISION",
+  "parent_message_id": "gpt-codex-real-case-v2:000003:RESULT",
+  "payload_path": "workspaces/gpt-codex-real-case-v2/payloads/000004.json",
+  "payload_sha256": "7e50f875e7437f1f515beb504227d86bb2400dc60d130c42465443aa106483dd",
+  "receiver": "CODEX",
+  "sender": "GPT",
+  "seq": 4,
+  "task_id": "gpt-codex-real-case-v2",
+  "type": "DECISION"
+}
