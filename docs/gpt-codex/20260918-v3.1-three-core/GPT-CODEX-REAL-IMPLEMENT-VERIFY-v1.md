@@ -1,83 +1,85 @@
-# GPT↔Codex v3.1.1 现实实现与案例验证命令 v1.1
+# GPT↔Codex v3.1.1 现实实现与案例验证命令 v1.2
 
 状态：
 
 ```text
-AUTHORIZED_CORE_3_REAL_IMPLEMENT_VERIFY
-REALITY_DELTA_01_RESOLVED_VIRTUALLY
+AUTHORIZED_CORE_3_REVERIFY_AFTER_REALITY_DELTA_02
 ```
 
 ## READ
 
-1. 母方法：
+母方法：
 ```text
 branch = codex/first-principles-physical-limit-convergence-v3.1.1
 file   = skills/first-principles-physical-limit-convergence/SKILL.md
 ```
 
-2. GPT↔Codex 技能：
+GPT↔Codex 当前技能：
 ```text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.1-browser-entry
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.2-final-decision
 file   = skills/gpt-codex-convergence-orchestrator/SKILL.md
 ```
 
-3. 修正后的冻结方案：
+冻结方案：
 ```text
-branch = codex/gpt-codex-convergence-orchestrator-v1.3.1-browser-entry
+branch = codex/gpt-codex-convergence-orchestrator-v1.3.2-final-decision
 file   = docs/gpt-codex/20260918-v3.1-three-core/GPT-CODEX-THREE-CORE-FINAL-v1.md
 ```
 
-## Browser 入口规则
-
-不要再读取猜测的：
-
-```text
-C:\AI\Playwright-Native-AI-Browser\scripts\chatgpt-business-entry.js
-C:\AI\Playwright-Native-AI-Browser\references\...
-```
-
-先读取：
-
-```text
-C:\Users\A\.codex\skills\playwright-native-ai-browser\SKILL.md
-```
-
-如果它是 Junction/Symlink，解析 Target。
-
-然后严格按照 **SKILL.md 当前明确声明/引用的正式业务入口与恢复约定** 调用 Browser。
-
-只在 SKILL.md 本身或它明确指向的正式入口真实不存在时，才停止并回传新的 REALITY_DELTA。
-
 ## DO
 
-继续上次已停止的同一任务，不重做已经完成的无关探索：
+先保留 `gpt-codex-real-case-v1` 及其 000004 ACK 作为失败证据，不覆盖、不追加修复消息。
+
+在实现中加入最小 bus 类型校验：
 
 ```text
-TASK_ID=gpt-codex-real-case-v1
+parent REQUEST -> GPT bus reply MUST be COMMAND
+parent RESULT  -> GPT bus reply MUST be DECISION
+otherwise PUBLISH DENY
 ```
 
-实现最小 GPT↔Codex 四消息链与 SQLite 去重/恢复：
+明确：
 
 ```text
-000001 REQUEST
--> Browser wake GPT
--> 000002 COMMAND
--> Codex execute + verify
--> 000003 RESULT
--> Browser wake GPT
--> 000004 DECISION
--> Codex STOP
+Browser/page ACK 只属于 transport
+ACK 禁止写入 GitHub bus
 ```
 
-现实案例：
+然后用全新干净任务：
 
 ```text
+TASK_ID=gpt-codex-real-case-v2
 OUTPUT=toy-result.txt
 CONTENT=GPT_CODEX_CODE_TO_CODE_OK
 VERIFY=exact readback + SHA256
 ```
 
-并验证：
+运行完整真实链：
+
+```text
+000001 REQUEST
+-> Browser wake GPT with EXPECTED_GPT_BUS_REPLY_TYPE=COMMAND
+-> 000002 COMMAND
+-> Codex execute + verify
+-> 000003 RESULT
+-> Browser wake GPT with EXPECTED_GPT_BUS_REPLY_TYPE=DECISION
+-> 000004 DECISION
+-> Codex consume DECISION
+-> STOP
+```
+
+000004 DECISION 至少要求：
+
+```text
+type=DECISION
+accepted=true|false
+status=PASS|FAIL
+control_action=STOP|BLOCKED
+result_message_id=<000003>
+verification=<readback+sha>
+```
+
+同时继续验证：
 
 ```text
 duplicate wakeup
@@ -86,7 +88,19 @@ Browser reconnect
 Codex restart
 ```
 
-不要自行增加新架构、workflow engine 或 Browser 栈；不要改变代理/系统设置。
+并记录：
+
+```text
+T0 request published
+T1 command published
+T2 result published
+T3 decision published
+T4 Codex consumed decision and stopped
+```
+
+计算全部分段时间与 T_VALID。
+
+不要自行增加新架构，不要改变代理/系统设置。
 
 ## RETURN
 
@@ -94,18 +108,25 @@ Codex restart
 
 ```text
 CORE_3_REAL_IMPLEMENT_VERIFY=PASS/FAIL
-BROWSER_ENTRY_RESOLVED=<actual canonical entry>
-FOUR_MESSAGE_LOOP=PASS/FAIL
+BUS_BRANCH=<branch>
+FOUR_MESSAGE_TYPES=<000001..000004 types>
+FINAL_000004_TYPE=<type>
 TOY_RESULT=PASS/FAIL
 MANUAL_MIDDLE_COPY_PASTE=<n>
 DUPLICATE_BUSINESS_EFFECT=<n>
 BROWSER_RECONNECT=PASS/FAIL
 CODEX_RESTART_RESUME=PASS/FAIL
 CODEX_FREE_EXPLORATION=<n>
+T_GPT_REQUEST_TO_COMMAND_SECONDS=<value>
+T_CODEX_COMMAND_TO_RESULT_SECONDS=<value>
+T_GPT_RESULT_TO_DECISION_SECONDS=<value>
+T_FINAL_CONSUME_SECONDS=<value>
 T_VALID_SECONDS=<value>
 REMOTE_HEAD=<sha>
 REPORT_PATH=<path>
 ```
+
+如果 correctness PASS 但 T_VALID 仍明显偏慢，只报告真实分段数据，不自行改变架构；由 GPT 回到 CORE 1 做极限时间优化。
 
 若出现冻结方案之外的新问题：
 
