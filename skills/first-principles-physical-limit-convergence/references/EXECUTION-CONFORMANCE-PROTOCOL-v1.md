@@ -12,21 +12,48 @@ v3.1 增加一个强制执行层。它不是第四个优化目标，也不是第
 METHOD_LOGIC != EXECUTION_PERMISSION
 
 任何现实动作都必须先证明：
-它属于已经冻结的 VIRTUAL_99_FINAL_PLAN。
+它属于一个已经冻结的授权计划。
 否则没有执行权限。
 ~~~
 
-## 2. 五个强制对象
+## 2. 两类唯一合法现实计划
+
+现实层只允许两类预先冻结的计划：
+
+~~~text
+A. CALIBRATION_PLAN
+   用于 Step 2 最小真实标定
+
+B. VIRTUAL_99_FINAL_PLAN
+   用于 Step 4 最终现实认证
+~~~
+
+因此：
+
+~~~text
+NO_REAL_ACTION_WITHOUT_FROZEN_AUTHORIZATION_PLAN=YES
+~~~
+
+Step 2 不能借“标定”之名自由探索；Step 4 不能借“认证”之名现场改方案。
+
+## 3. 五个强制对象
 
 ~~~text
 CURRENT_METHOD_VERSION
 TASK_CONTRACT
 VALID_CONTRACT
-VIRTUAL_99_FINAL_PLAN
+AUTHORIZATION_PLAN
 METHOD_EXECUTION_CONTRACT
 ~~~
 
-其中 VIRTUAL_99_FINAL_PLAN 必须有不可变 plan_id / plan_hash。
+AUTHORIZATION_PLAN 必须具有不可变：
+
+~~~text
+PLAN_TYPE
+PLAN_ID
+PLAN_HASH
+PLAN_STATUS=FROZEN
+~~~
 
 METHOD_EXECUTION_CONTRACT 必须把每一个允许的现实动作映射到：
 
@@ -40,7 +67,7 @@ VERIFIER
 FAILURE_POLICY
 ~~~
 
-## 3. Pre-Action Conformance Gate
+## 4. Pre-Action Conformance Gate
 
 任何现实动作执行前必须逐项通过：
 
@@ -49,7 +76,7 @@ C1 CURRENT_METHOD_VERSION == canonical version
 C2 TASK_CONTRACT frozen
 C3 VALID_CONTRACT frozen
 C4 required mature-solution-cluster evidence exists
-C5 VIRTUAL_99_FINAL_PLAN == FROZEN
+C5 authorization plan == FROZEN
 C6 plan_hash matches current execution contract
 C7 ACTION_ID exists in frozen plan
 C8 parameters stay inside frozen action contract
@@ -57,6 +84,13 @@ C9 action class is allowed
 C10 expected evidence + verifier are defined
 C11 no unresolved REALITY_DELTA exists
 C12 no legacy workflow has higher authority
+~~~
+
+Step-specific requirement:
+
+~~~text
+STEP_2 -> PLAN_TYPE must be CALIBRATION_PLAN
+STEP_4 -> PLAN_TYPE must be VIRTUAL_99_FINAL_PLAN
 ~~~
 
 只有全部 PASS：
@@ -76,9 +110,9 @@ RETURN_TO_GPT
 
 不得由 GPT、Codex、Browser、脚本或人工“先做了再说”。
 
-## 4. 允许的现实动作类型
+## 5. 允许的现实动作类型
 
-在冻结 Virtual-99 之后，只允许：
+在冻结授权计划以后，只允许：
 
 ~~~text
 MINIMAL_CALIBRATION
@@ -108,9 +142,9 @@ PATCH_IN_PLACE_TO_FIND_A_SOLUTION
 
 执行器仍可在同一个授权动作内选择等价执行方式，但不得改变动作语义、参数边界、验证条件或后续路线。
 
-## 5. 现实案例注入
+## 6. 现实案例注入
 
-现实认证必须使用预先冻结的 CERTIFICATION_CASE_BUNDLE。
+最终现实认证必须使用预先冻结的 CERTIFICATION_CASE_BUNDLE。
 
 它至少包含：
 
@@ -126,9 +160,9 @@ FINAL_VERIFIER
 
 故障注入不是现场探索；它必须在 Virtual-99 阶段预先定义。
 
-## 6. 失败处理
+## 7. 失败处理
 
-如果现实认证出现未预见问题：
+如果现实标定或认证出现未预见问题：
 
 ~~~text
 DO NOT PATCH AND CONTINUE
@@ -138,14 +172,14 @@ STOP
 -> preserve evidence
 -> create REALITY_DELTA
 -> return to GPT
--> update Virtual-99
+-> update calibration plan or Virtual-99
 -> freeze new plan version
--> rerun full certification
+-> rerun the required real phase
 ~~~
 
 现实层负责提供 delta；方案层仍由高智能 Virtual-99 负责。
 
-## 7. 执行一致性硬指标
+## 8. 执行一致性硬指标
 
 ~~~text
 EXECUTION_CONFORMANCE_RATE
@@ -173,7 +207,7 @@ FREEZE=NO
 
 “PASS_BY_DESIGN”不能替代运行证据。
 
-## 8. 版本与旧流程优先级
+## 9. 版本与旧流程优先级
 
 ~~~text
 CURRENT_CANONICAL_METHOD > legacy process > historical status labels
@@ -192,6 +226,7 @@ LEGACY_MATURITY_LABEL_AUTHORITY=NONE
 
 ~~~text
 MATURE_SOLUTION_CLUSTER
+-> FROZEN_MINIMAL_CALIBRATION_PLAN
 -> MINIMAL_REAL_CALIBRATION
 -> VIRTUAL_99_FROZEN
 -> REAL_END_TO_END_CERTIFICATION
@@ -199,7 +234,7 @@ MATURE_SOLUTION_CLUSTER
 -> FAIL: REALITY_DELTA_RETURN_TO_GPT
 ~~~
 
-## 9. 核心结论
+## 10. 核心结论
 
 v3.1 不再接受“规则写在文档里，因此默认会被遵守”。
 
