@@ -1,6 +1,6 @@
 {
   "skill_id": "gpt-codex-convergence-orchestrator",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "display_name": "GPT-Codex 自动闭环",
   "method_dependency": "first-principles-physical-limit-convergence@3.1.1",
   "method_mapping": {
@@ -27,18 +27,15 @@
     "T_FINAL_CONSUME",
     "T_VALID"
   ],
-  "thinking_time_recovery": {
-    "primary_signal": "ELAPSED_WAIT_VS_NORMAL_WAIT_UPPER",
-    "remote_override": "EXPECTED_GITHUB_MESSAGE_EXISTS",
-    "normal_wait_upper_source": "SUCCESSFUL_SAME_CLASS_HISTORY_OR_BROWSER_FORMAL_BASELINE",
-    "on_exceeded_without_remote_reply": "REFRESH_RECONNECT_AND_REWAKE_SAME_LOGICAL_EVENT",
-    "page_thinking_may_extend_indefinitely": false,
-    "new_business_request_allowed": false,
-    "metrics": [
-      "NORMAL_WAIT_UPPER_SECONDS",
-      "NORMAL_WAIT_BASELINE_SOURCE",
-      "GPT_THINKING_STUCK_COUNT",
-      "GPT_THINKING_STUCK_RECOVERY_SECONDS"
-    ]
+  "fixed_thinking_timeout": {
+    "SIMPLE_SECONDS": 120,
+    "NORMAL_SECONDS": 240,
+    "LARGE_SECONDS": 600,
+    "mapping": {
+      "RESULT_TO_DECISION": "SIMPLE",
+      "REQUEST_TO_COMMAND": "NORMAL"
+    },
+    "on_timeout_without_remote_reply": "REFRESH_RECONNECT_REWAKE_SAME_LOGICAL_EVENT",
+    "page_thinking_can_extend_wait": false
   }
 }
