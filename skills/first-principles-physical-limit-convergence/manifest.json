@@ -1,24 +1,12 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "display_name": "第一性原理极限短时间引擎",
   "whitelist_only": true,
   "core_whitelist": [
-    {
-      "id": 1,
-      "name": "极限短时间",
-      "key": "MINIMUM_VALID_TIME"
-    },
-    {
-      "id": 2,
-      "name": "成熟方案集群",
-      "key": "MATURE_SOLUTION_CLUSTER"
-    },
-    {
-      "id": 3,
-      "name": "高智能虚拟成熟",
-      "key": "HIGH_INTELLIGENCE_VIRTUAL_MATURITY"
-    }
+    {"id": 1, "name": "极限短时间", "key": "MINIMUM_VALID_TIME"},
+    {"id": 2, "name": "成熟方案集群", "key": "MATURE_SOLUTION_CLUSTER"},
+    {"id": 3, "name": "高智能虚拟成熟", "key": "HIGH_INTELLIGENCE_VIRTUAL_MATURITY"}
   ],
   "core_count": 3,
   "fourth_core_allowed": false,
@@ -29,6 +17,12 @@
     "CORE_2_MATURE_SOLUTION_CLUSTER",
     "CORE_3_HIGH_INTELLIGENCE_VIRTUAL_MATURITY"
   ],
+  "completion_handoff": {
+    "required_when_executor_is_next": true,
+    "same_reply": true,
+    "fields": ["READ", "DO", "RETURN"],
+    "extra_user_turn_target": 0
+  },
   "real_execution": {
     "role": "VERIFY_FROZEN_CORE_3_OUTPUT",
     "may_create_new_method": false,
@@ -36,17 +30,11 @@
   },
   "legacy": {
     "preserved": true,
-    "allowed_roles": [
-      "EVIDENCE",
-      "MATURE_SOLUTION_SOURCE"
-    ],
+    "allowed_roles": ["EVIDENCE", "MATURE_SOLUTION_SOURCE"],
     "current_method_authority": false
   },
-  "objective": {
-    "metric": "T_VALID",
-    "optimize": "MINIMIZE"
-  },
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v3.1.0",
-  "previous_version": "3.0.0",
+  "objective": {"metric": "T_VALID", "optimize": "MINIMIZE"},
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v3.1.1",
+  "previous_version": "3.1.0",
   "updated_date": "2026-09-18"
 }
