@@ -1,0 +1,99 @@
+# GPT↔Codex real-case-v2 — Shared Reality Result
+
+状态：
+
+~~~text
+CORE_3_REAL_IMPLEMENT_VERIFY=PASS
+FUNCTIONAL_CLOSED_LOOP=PASS
+CORE_1_TIME_MATURITY=NOT_YET_FROZEN
+~~~
+
+## 远端事实
+
+~~~text
+BUS_BRANCH=bus/gpt-codex-real-case-v2
+REMOTE_HEAD=5fdd6cbf0932c39674b8df3a4dadfce1cc9e59a4
+FOUR_MESSAGE_TYPES=REQUEST,COMMAND,RESULT,DECISION
+FINAL_000004_TYPE=DECISION
+~~~
+
+toy result：
+
+~~~text
+CONTENT=GPT_CODEX_CODE_TO_CODE_OK
+SHA256=6c26f2350c539e156ca37983864f421d0d8d87e77472ce50634abbac08ef90f7
+TOY_RESULT=PASS
+~~~
+
+可靠性：
+
+~~~text
+MANUAL_MIDDLE_COPY_PASTE=0
+DUPLICATE_BUSINESS_EFFECT=0
+BROWSER_RECONNECT=PASS
+CODEX_RESTART_RESUME=PASS
+CODEX_FREE_EXPLORATION=0
+FINAL_DECISION_CONSUMED=PASS
+~~~
+
+## T_VALID 实测
+
+~~~text
+T_GPT_REQUEST_TO_COMMAND_SECONDS=179.501
+T_CODEX_COMMAND_TO_RESULT_SECONDS=126.916
+T_GPT_RESULT_TO_DECISION_SECONDS=73.913
+T_FINAL_CONSUME_SECONDS=259.609
+T_VALID_SECONDS=639.939
+~~~
+
+分段占比：
+
+~~~text
+REQUEST -> COMMAND = 28.05%
+COMMAND -> RESULT  = 19.83%
+RESULT -> DECISION = 11.55%
+FINAL CONSUME      = 40.57%
+~~~
+
+~~~text
+000001 -> 000004 DECISION = 380.330 s
+~~~
+
+对比 real-case-v1：
+
+~~~text
+v1 000001 -> invalid 000004 ACK = 419.428 s
+v2 000001 -> valid 000004 DECISION = 380.330 s
+improvement = 39.098 s = 9.32%
+~~~
+
+本轮 T_FINAL_CONSUME 包含一次 GitHub TLS 超时后的恢复等待，因此单次 639.939 s 不可直接视为稳定生产基线。
+
+## 当前判断
+
+~~~text
+CORE_3_ARCHITECTURE_DIRECTION=KEEP
+CORE_3_REAL_CORRECTNESS=PASS
+CORE_3_RECOVERY=PASS
+CORE_3_NO_FREE_EXPLORATION=PASS
+
+FINAL_FUNCTIONAL_MATURITY=CANDIDATE_PASS
+FINAL_TIME_MATURITY=NO
+~~~
+
+不再改变四消息架构。
+
+下一步只进入 CORE 1 极限时间收敛：
+
+1. 拆分等待时间；
+2. 优先消除 final consume 的可避免等待/TLS恢复放大；
+3. 再检查 COMMAND->RESULT 为什么对 toy effect 仍达到 126.916 s；
+4. 不改变 GPT/Codex/GitHub/Browser 角色；
+5. 用少量 warm clean runs 建立稳定 T_VALID 区间；
+6. 再决定 FINAL FREEZE。
+
+本机原始报告：
+
+~~~text
+C:/AI/GPT-Codex-Convergence-Orchestrator/reports/gpt-codex-real-case-v2.md
+~~~
