@@ -1,12 +1,24 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "display_name": "第一性原理极限短时间引擎",
   "whitelist_only": true,
   "core_whitelist": [
-    {"id": 1, "name": "极限短时间", "key": "MINIMUM_VALID_TIME"},
-    {"id": 2, "name": "成熟方案集群", "key": "MATURE_SOLUTION_CLUSTER"},
-    {"id": 3, "name": "高智能虚拟成熟", "key": "HIGH_INTELLIGENCE_VIRTUAL_MATURITY"}
+    {
+      "id": 1,
+      "name": "极限短时间",
+      "key": "MINIMUM_VALID_TIME"
+    },
+    {
+      "id": 2,
+      "name": "成熟方案集群",
+      "key": "MATURE_SOLUTION_CLUSTER"
+    },
+    {
+      "id": 3,
+      "name": "高智能虚拟成熟",
+      "key": "HIGH_INTELLIGENCE_VIRTUAL_MATURITY"
+    }
   ],
   "core_count": 3,
   "fourth_core_allowed": false,
@@ -20,7 +32,16 @@
   "completion_handoff": {
     "required_when_executor_is_next": true,
     "same_reply": true,
-    "fields": ["READ", "DO", "RETURN"],
+    "source_of_truth": "EXECUTION_FILE_OR_SKILL",
+    "pointer_only_when_source_readable": true,
+    "duplicate_instructions_allowed": false,
+    "remote_read_failure_fallback": "LOCAL_DEPLOYED_SKILL_OR_FILE",
+    "full_inline_instructions_only_if": "REMOTE_AND_LOCAL_UNREADABLE",
+    "fields": [
+      "READ",
+      "DO",
+      "RETURN"
+    ],
     "extra_user_turn_target": 0
   },
   "real_execution": {
@@ -30,11 +51,17 @@
   },
   "legacy": {
     "preserved": true,
-    "allowed_roles": ["EVIDENCE", "MATURE_SOLUTION_SOURCE"],
+    "allowed_roles": [
+      "EVIDENCE",
+      "MATURE_SOLUTION_SOURCE"
+    ],
     "current_method_authority": false
   },
-  "objective": {"metric": "T_VALID", "optimize": "MINIMIZE"},
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v3.1.1",
-  "previous_version": "3.1.0",
+  "objective": {
+    "metric": "T_VALID",
+    "optimize": "MINIMIZE"
+  },
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v3.1.2",
+  "previous_version": "3.1.1",
   "updated_date": "2026-09-18"
 }
