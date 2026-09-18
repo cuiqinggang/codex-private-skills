@@ -166,7 +166,7 @@ RESULT wakeup  -> EXPECTED_GPT_BUS_REPLY_TYPE=DECISION
 THINKING_TIMEOUT_SECONDS = Browser SKILL / 当前正式配置中的响应等待上限
 ```
 
-不要凭空另写 5 秒或 10 秒常量。
+不要凭空另写 5 秒或 10 秒常量。若 SKILL/正式配置中没有可读取的等待上限，则不要猜测，保存该事实为 REALITY_DELTA 并返回 GPT。
 
 如果超过该正式等待上限，页面仍停留在“正在思考/生成中”，且 GitHub 还没有出现当前期待的 COMMAND 或 DECISION：
 
