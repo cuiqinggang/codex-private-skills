@@ -1,23 +1,36 @@
-# GPT↔Codex 自动闭环 v1.3.0
+# GPT↔Codex 简洁自动闭环 v1.5.0
 
-当前只服从 `first-principles-physical-limit-convergence v3.1` 三核心。
+这是按第一性原理重新整理后的最终简化方案。
 
-## 完整路径
+## 核心
 
-```text
-CORE 1  极限短时间
-        冻结 TASK / VALID / T_VALID
+~~~text
+GPT 决策
+Browser 传递
+Codex 执行
+GitHub 可选同步
+~~~
 
-CORE 2  成熟方案集群
-        GitHub + SQLite + Existing Browser + Capacity Router
+## 控制链
 
-CORE 3  高智能虚拟成熟
-        Codex REQUEST
-        -> GPT COMMAND
-        -> Codex RESULT
-        -> GPT DECISION
-        -> Codex STOP
-        -> 一个现实案例完整认证
-```
+~~~text
+Codex -> GPT 页面 -> GPT_COMMAND
+-> Codex 执行 -> GPT 页面 -> GPT_DECISION
+-> 继续或 STOP
+~~~
 
-旧 L0/L1/L2/L3/L4 仅为历史，不再决定当前流程。
+GitHub 不再参与“任务能不能继续”的判定。
+
+## 故障
+
+~~~text
+小故障
+-> 简单恢复一次
+-> 仍不通
+-> 绕过/备用方式
+-> 继续任务
+~~~
+
+只有页面主链本身也无法继续，才真正 STOP。
+
+旧 v1.3/v1.4 的 GitHub Bus 强依赖、GPT 直写 GitHub、复杂 relay/ACK/Bus-write 安全处理全部降为历史证据，不再是当前方案。
