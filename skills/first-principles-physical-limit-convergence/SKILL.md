@@ -271,3 +271,34 @@ H3-P0 第一验证只允许历史 known-answer shadow replay，`H3_GPU_RUNS=0`�
 `docs/h3-p0/20260919-jev-shadow/H3-P0-JEV-SHADOW-COMMAND-v1.md`
 
 只有 shadow gate 与后续低风险 real gated 验证都通过后，才允许讨论升级正式 v3.1.3。
+
+---
+
+## Jev Probability-Attack Virtual-99
+
+本分支在 Experimental Jev shadow overlay 之上新增一个已经冻结的 Virtual-99 方案；仍然不是第四核心。
+
+它只属于：
+
+```text
+CORE_3 高智能虚拟成熟
+-> JEV_PROBABILITY_ATTACK_VIRTUAL_99
+```
+
+权威设计：
+
+`references/JEV-PROBABILITY-ATTACK-VIRTUAL-99-v1.md`
+
+机器合同：
+
+`references/JEV-PROBABILITY-ATTACK-VIRTUAL-99-v1.json`
+
+冻结记录：
+
+`docs/h3-p0/20260919-jev-virtual99/H3-P0-JEV-VIRTUAL-99-FREEZE-v1.md`
+
+未来验证命令：
+
+`docs/h3-p0/20260919-jev-virtual99/H3-P0-JEV-PROBABILITY-ATTACK-VERIFY-02-COMMAND-v1.md`
+
+固定规则：先 Virtual-99，后 reality verify；现实验证只证明冻结方案，不现场重新设计。
