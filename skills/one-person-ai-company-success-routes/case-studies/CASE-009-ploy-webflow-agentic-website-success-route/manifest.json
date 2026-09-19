@@ -1,0 +1,8 @@
+{
+  "name": "ploy-webflow-agentic-website-success-route",
+  "version": "1.0.0",
+  "parent": "one-person-ai-company-success-routes",
+  "case_id": "CASE-009",
+  "status": "REFERENCE_MATURE_ROUTE",
+  "created": "2026-09-19"
+}
