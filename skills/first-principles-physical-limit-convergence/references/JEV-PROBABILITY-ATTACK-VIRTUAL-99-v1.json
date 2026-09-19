@@ -1,0 +1,155 @@
+{
+  "schema": "JEV-PROBABILITY-ATTACK-VIRTUAL-99-v1",
+  "status": "VIRTUAL_99_FROZEN_CANDIDATE",
+  "parent_skill": "first-principles-physical-limit-convergence@3.1.2",
+  "method_authority": "CORE_3_HIGH_INTELLIGENCE_VIRTUAL_MATURITY",
+  "objective": {
+    "primary": "MINIMIZE_T_VALID",
+    "hard_constraints": [
+      "AUTO_ACCEPTED_CRITICAL_ERRORS=0",
+      "AUTO_ACCEPTED_ANY_ERRORS=0",
+      "ILLEGAL_OUTPUTS=0",
+      "PRIVACY_DOWNGRADE=0"
+    ]
+  },
+  "roles": {
+    "CODE": [
+      "deterministic facts",
+      "arithmetic",
+      "QC",
+      "hash",
+      "final hard verification"
+    ],
+    "JEV": [
+      "finite semantic classification",
+      "routing",
+      "gating",
+      "ranking"
+    ],
+    "GPT": [
+      "open-ended synthesis",
+      "new plan",
+      "new code",
+      "unresolved conflict"
+    ]
+  },
+  "views": {
+    "A": "canonical mega",
+    "B": "deterministic case/family/criteria order permutation",
+    "C": "deterministic locality diversification",
+    "D": "schema-equivalent frozen representation",
+    "E": "wording-equivalent frozen question template"
+  },
+  "stage_A": {
+    "parallel": true,
+    "calls": [
+      "MEGA_A",
+      "MEGA_B",
+      "MEGA_C",
+      "FAMILY_ANCHORS_ALL_FAMILIES"
+    ],
+    "noncritical_accept": "family == majority(A,B,C) && mega_majority>=2/3 && calibrated_gate",
+    "critical_accept": "family == A == B == C && calibrated_gate"
+  },
+  "stage_B": {
+    "run_only_for_unresolved": true,
+    "parallel": true,
+    "calls": [
+      "MEGA_D",
+      "MEGA_E",
+      "SECOND_FAMILY_VIEW_DISPUTED_ONLY"
+    ],
+    "noncritical_accept": "mega_majority_5>=4/5 && family1==family2==mega_majority && calibrated_gate",
+    "critical_accept": "mega_majority_5>=4/5 && family1==family2==mega_majority && critical_calibrated_gate",
+    "otherwise": "ESCALATE_TO_GPT"
+  },
+  "probability_fusion": {
+    "formula": "S(a)=sum_j w_j*log(max(eps,p_j(a))); P*=softmax(S)",
+    "mega_weight_grid": [
+      0.5,
+      0.75,
+      1,
+      1.25,
+      1.5
+    ],
+    "family_weight_grid": [
+      1,
+      1.5,
+      2,
+      2.5,
+      3
+    ],
+    "selection_priority": [
+      "zero critical autoaccepted errors",
+      "zero all autoaccepted errors",
+      "maximize coverage",
+      "minimize P95",
+      "minimize cost"
+    ]
+  },
+  "correlation_metrics": [
+    "pairwise_error_overlap",
+    "P(Ej|Ei)",
+    "per_case_error_frequency",
+    "all_view_common_error_count",
+    "mega_family_disagreement_rate"
+  ],
+  "adaptive_stop": {
+    "stage_A_safe": "STOP_ACCEPT",
+    "stage_A_uncertain": "STAGE_B",
+    "stage_B_uncertain": "GPT"
+  },
+  "observed_console_reference": {
+    "verification_state": "PENDING_REMOTE_RESULT_VERIFY",
+    "deterministic_qc_accuracy": 1,
+    "mega": {
+      "accuracy_range": [
+        0.92,
+        0.96
+      ],
+      "p50_s": 1.58146,
+      "p95_s": 2.199664,
+      "cost_usd": 0.00014902
+    },
+    "family": {
+      "accuracy_all_5_runs": 1,
+      "p50_serial_total_s": 8.35234,
+      "p95_serial_total_s": 9.693266,
+      "cost_usd": 0.00019337
+    },
+    "case": {
+      "accuracy_all_5_runs": 0.84,
+      "p50_s": 46.47005,
+      "p95_s": 58.654986,
+      "cost_usd": 0.00039098
+    }
+  },
+  "virtual_cost_model": {
+    "stage_A_full_25_case_estimate_usd": 0.00064043,
+    "stage_B_full_scope_upper_increment_usd": 0.00049141,
+    "all_escalate_upper_estimate_usd": 0.00113184
+  },
+  "verification_contract": {
+    "task_id": "H3-P0-JEV-PROBABILITY-ATTACK-VERIFY-02",
+    "known_answer_cases": 25,
+    "repeats": 20,
+    "h3_gpu_runs": 0,
+    "no_free_exploration": true,
+    "no_runtime_threshold_tuning": true,
+    "result_states": [
+      "PASS",
+      "SAFE_BUT_NOT_TIME_99",
+      "FAIL_RETURN_TO_VIRTUAL"
+    ],
+    "targets": {
+      "auto_accepted_critical_errors": 0,
+      "auto_accepted_any_errors": 0,
+      "illegal_outputs": 0,
+      "auto_coverage_gte": 0.95,
+      "gpt_escalation_lte": 0.05,
+      "stage_A_p95_s_lte": 4,
+      "full_system_p95_s_lte": 5,
+      "mean_jev_cost_per_25_case_system_usd_lte": 0.0015
+    }
+  }
+}
