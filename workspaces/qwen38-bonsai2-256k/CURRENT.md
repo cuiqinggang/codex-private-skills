@@ -2,13 +2,21 @@
 
 当前正式命令包：
 
-`DOWNLOAD-AND-BASELINE-COMMAND-PACK-v2.md`
+`DOWNLOAD-AND-BASELINE-COMMAND-PACK-v3.md`
 
-原因：v1 的 Phase B 假定固定上游 setup.ps1 支持 BONSAI_SKIP_GGUF；第一次现实执行证明该变量不存在，且 setup.ps1 会无条件进入模型下载。v1 因此正确 BLOCKED 并保留为历史证据。
+## 为什么进入 v3
 
-v2 只修复这一点：绕过 setup.ps1，直接从同一固定 PrismML llama.cpp release 下载并校验 CUDA runtime，然后继续唯一 PQ2_0 + 262144 上下文基线。
+- v1：Phase A PASS；setup.ps1 的 runtime-only 假设被现实证据否定。
+- v2：改为固定官方 release 直下；但本机 direct aria2/curl 到 GitHub release 被 TLS/443 超时阻断。
+- v3：不修改代理，只**只读发现并显式复用机器当前已经存在的代理端点**，先做 1 MiB 小流量验证，PASS 后才继续固定 aria2 并行/续传下载。
 
-第一次 BLOCKED 结果：
-`results/20260919-224518/`
+v3 不改变模型、上下文或运行时版本。
 
-当前仍不授权 PTQ1_0、128K fallback、视觉塔、drafter、推测解码或其他候选。
+仍然：
+- 只 PQ2_0；
+- 262144；
+- KV4；
+- thinking off；
+- no PTQ1_0；
+- no 128K auto fallback；
+- no proxy/network/system change。
