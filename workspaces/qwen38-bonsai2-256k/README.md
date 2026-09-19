@@ -1,6 +1,6 @@
 # Qwen3.8 / Bonsai 2 27B — 256K 极限短时间现实基线
 
-状态：PLANNED / COMMAND_PACK_REVIEWED / NOT_EXECUTED
+状态：V1_BLOCKED_SAFELY / V2_READY_TO_RESUME
 
 ## 唯一目标
 
@@ -41,3 +41,15 @@
 1. 极限短时间：唯一优化指标仍为真实任务端到端时间。
 2. 广域成熟方案池：本轮只把已经收敛出的 PQ2_0 官方成熟路径拿到现实中建立锚点；其余候选仍保留在广域池中，不下载。
 3. 高智能虚拟成熟：现实基线返回后再决定下一刀，执行器不得现场扩展新路线。
+
+
+## 2026-09-19 现实回传与 v2
+
+第一次执行在 Phase B 正确停止：固定上游 `setup.ps1` 不支持 `BONSAI_SKIP_GGUF`，会无条件进入模型下载。结果已冻结在 commit `664a2289ede02d295611384e41fd6777331b369d`。
+
+当前唯一执行入口改为：
+- `CURRENT.md`
+- `DOWNLOAD-AND-BASELINE-COMMAND-PACK-v2.md`
+- `COMMAND-PACK-AUDIT-v2.md`
+
+v2 不再执行 `setup.ps1`，而是直接从同一固定 PrismML llama.cpp release 下载并 SHA256 校验 Windows CUDA 12.4 runtime，再继续唯一 PQ2_0 / 262144 上下文基线。其他目标与禁项不变。
