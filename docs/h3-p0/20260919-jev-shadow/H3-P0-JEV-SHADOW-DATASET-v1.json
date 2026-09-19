@@ -1,0 +1,534 @@
+{
+  "schema": "H3-P0-JEV-SHADOW-DATASET-v1",
+  "status": "KNOWN_ANSWER_REPLAY",
+  "source_branch": "codex/h3-p0-mature-convergence-v2",
+  "source_files": [
+    "docs/h3-p0/20260917-mature-convergence-v2/H3-P0-FINAL-99-FREEZE-v1.md",
+    "docs/h3-p0/20260917-mature-convergence-v2/H3-P0-FINAL-99-FREEZE-v1.json",
+    "docs/h3-p0/20260917-mature-convergence-v2/H3-P0-END-TO-END-METHOD-RETROSPECTIVE-v1.md"
+  ],
+  "constraints": {
+    "h3_gpu_reruns": 0,
+    "mutate_frozen_h3": false,
+    "invalid_output_delivered": 0
+  },
+  "cases": [
+    {
+      "id": "D01",
+      "family": "delivery",
+      "critical": true,
+      "domain": "JEV",
+      "state": {
+        "qc": "FAIL",
+        "artifact_exists": true,
+        "contract": "accept only QC PASS"
+      },
+      "question": {
+        "type": "noul",
+        "instructions": "Should this artifact be accepted for delivery?"
+      },
+      "gold": {
+        "noul": false
+      }
+    },
+    {
+      "id": "D02",
+      "family": "delivery",
+      "critical": true,
+      "domain": "JEV",
+      "state": {
+        "qc": "PASS",
+        "ffprobe": "32x32x5",
+        "decode": "PASS",
+        "finite_pixels": true,
+        "non_black": true,
+        "frame_range_min": 8,
+        "frame_std_min": 1.5
+      },
+      "question": {
+        "type": "noul",
+        "instructions": "Under the frozen H3-P0 delivery contract, may this artifact be accepted?"
+      },
+      "gold": {
+        "noul": true
+      }
+    },
+    {
+      "id": "D03",
+      "family": "delivery",
+      "critical": true,
+      "domain": "JEV",
+      "state": {
+        "attempt_path": "Star7 1-step",
+        "qc": "FAIL",
+        "seed_role": "random initial condition",
+        "delivery_rule": "reject invalid and resample"
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "What is the next authorized action?",
+        "criteria": {
+          "reseed_same_star7": "Reject this attempt, draw a new OS-random seed, run the same Star7 1-step path.",
+          "deliver_anyway": "Deliver the failed artifact.",
+          "switch_slow_loader": "Switch all tasks to the slow reference loader.",
+          "increase_steps": "Increase steps for all tasks."
+        }
+      },
+      "gold": {
+        "choice": "reseed_same_star7"
+      }
+    },
+    {
+      "id": "D04",
+      "family": "delivery",
+      "critical": false,
+      "domain": "JEV",
+      "state": {
+        "seed": "920108",
+        "star7_same_seed_1step": "FAIL",
+        "original_unet_same_seed_1step": "FAIL"
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which explanation is best supported by this evidence?",
+        "criteria": {
+          "stochastic_contract_limit": "The fixed random initial condition plus 1-step task contract can itself yield an invalid sample.",
+          "star7_only_precision_bug": "Only Star7 precision is responsible.",
+          "control_plane_fault": "The remote control plane caused the visual QC failure."
+        }
+      },
+      "gold": {
+        "choice": "stochastic_contract_limit"
+      }
+    },
+    {
+      "id": "D05",
+      "family": "delivery",
+      "critical": false,
+      "domain": "JEV",
+      "state": {
+        "seed": "930103",
+        "star7": "FAIL",
+        "original_unet_same_seed": "PASS"
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which failure category is directly supported?",
+        "criteria": {
+          "star7_specific_quality_failure": "A Star7-specific quality failure exists for this seed.",
+          "pure_random_only": "The result proves Star7 has no seed-specific quality issue.",
+          "capacity_failure": "Remote model capacity caused the output."
+        }
+      },
+      "gold": {
+        "choice": "star7_specific_quality_failure"
+      }
+    },
+    {
+      "id": "D06",
+      "family": "delivery",
+      "critical": true,
+      "domain": "JEV",
+      "state": {
+        "first_attempt_pass_rate": 0.9,
+        "fast_attempt_seconds": "about 5-8",
+        "slow_fallback_seconds": "about 90-100",
+        "same_seed_fallback_guaranteed": false
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which recovery policy minimizes time to first valid result under the known evidence?",
+        "criteria": {
+          "reseed_same_fast_path": "Only failed proposals pay for another fast Star7 attempt.",
+          "slow_fallback_for_all": "Move every task to the slow loader.",
+          "slow_fallback_after_every_fail": "Always pay the slow fallback after a failed proposal."
+        }
+      },
+      "gold": {
+        "choice": "reseed_same_fast_path"
+      }
+    },
+    {
+      "id": "D07",
+      "family": "delivery",
+      "critical": false,
+      "domain": "JEV",
+      "state": {
+        "candidate": "ACT32",
+        "speed": "faster",
+        "known_bad_seed_qc": "FAIL"
+      },
+      "question": {
+        "type": "noul",
+        "instructions": "Should ACT32 replace the frozen main delivery path based on this evidence?"
+      },
+      "gold": {
+        "noul": false
+      }
+    },
+    {
+      "id": "D08",
+      "family": "delivery",
+      "critical": false,
+      "domain": "JEV",
+      "state": {
+        "candidate": "W4A8",
+        "status": "independent 99 path",
+        "frozen_main": "Star7 + QC + reseed"
+      },
+      "question": {
+        "type": "noul",
+        "instructions": "Does the evidence authorize inserting W4A8 into the frozen H3-P0 main path now?"
+      },
+      "gold": {
+        "noul": false
+      }
+    },
+    {
+      "id": "C01",
+      "family": "control",
+      "critical": true,
+      "domain": "JEV",
+      "state": {
+        "event": "remote Codex model capacity failure",
+        "completed_local_gpu_work": true,
+        "ledger": "DO_NOT_REPEAT completed local work"
+      },
+      "question": {
+        "type": "noul",
+        "instructions": "Should already completed local GPU work be replayed because of this remote capacity failure?"
+      },
+      "gold": {
+        "noul": false
+      }
+    },
+    {
+      "id": "C02",
+      "family": "control",
+      "critical": false,
+      "domain": "JEV",
+      "state": {
+        "event": "Windows TokenDefaultDacl / executor launch failure",
+        "h3_algorithm_not_run": true
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which layer owns this failure?",
+        "criteria": {
+          "control_plane": "Execution/control infrastructure.",
+          "stochastic_sample": "Random H3 proposal content.",
+          "h3_algorithm": "H3 model mathematics."
+        }
+      },
+      "gold": {
+        "choice": "control_plane"
+      }
+    },
+    {
+      "id": "C03",
+      "family": "control",
+      "critical": false,
+      "domain": "JEV",
+      "state": {
+        "event": "source identity mismatch before experiment",
+        "artifact_qc_not_reached": true
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which class should be handled first?",
+        "criteria": {
+          "source_or_execution_control": "Source/execution control issue.",
+          "stochastic_sample": "Random sample failure.",
+          "delivery_quality": "Accepted output quality failure."
+        }
+      },
+      "gold": {
+        "choice": "source_or_execution_control"
+      }
+    },
+    {
+      "id": "C04",
+      "family": "control",
+      "critical": false,
+      "domain": "JEV",
+      "state": {
+        "event": "single seed produces flat near-white frames",
+        "process_and_decode": "PASS",
+        "other_seeds": "PASS"
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which layer is most consistent with the evidence?",
+        "criteria": {
+          "stochastic_sample": "A proposal/sample-level failure.",
+          "remote_capacity": "A remote model capacity failure.",
+          "git_transport": "A GitHub transport failure."
+        }
+      },
+      "gold": {
+        "choice": "stochastic_sample"
+      }
+    },
+    {
+      "id": "R01",
+      "family": "reopen",
+      "critical": true,
+      "domain": "JEV",
+      "state": {
+        "task_contract_changed": false,
+        "hardware_or_model_stack_changed": false,
+        "new_mature_route_with_meaningful_gain": false,
+        "qc_proven_insufficient": false,
+        "production_drift": false
+      },
+      "question": {
+        "type": "noul",
+        "instructions": "Should the frozen H3-P0 main path be reopened?"
+      },
+      "gold": {
+        "noul": false
+      }
+    },
+    {
+      "id": "R02",
+      "family": "reopen",
+      "critical": true,
+      "domain": "JEV",
+      "state": {
+        "hardware_or_model_stack_changed": true
+      },
+      "question": {
+        "type": "noul",
+        "instructions": "Does this satisfy a frozen H3-P0 reopen condition?"
+      },
+      "gold": {
+        "noul": true
+      }
+    },
+    {
+      "id": "R03",
+      "family": "reopen",
+      "critical": true,
+      "domain": "JEV",
+      "state": {
+        "new_route": "mature and independently verified",
+        "meaningful_T_TFVR_gain": true,
+        "quality_gate": "PASS"
+      },
+      "question": {
+        "type": "noul",
+        "instructions": "Does this satisfy a frozen H3-P0 reopen condition?"
+      },
+      "gold": {
+        "noul": true
+      }
+    },
+    {
+      "id": "R04",
+      "family": "reopen",
+      "critical": true,
+      "domain": "JEV",
+      "state": {
+        "long_term_production_data": "significant first-pass/T_TFVR distribution drift"
+      },
+      "question": {
+        "type": "noul",
+        "instructions": "Does this satisfy a frozen H3-P0 reopen condition?"
+      },
+      "gold": {
+        "noul": true
+      }
+    },
+    {
+      "id": "R05",
+      "family": "reopen",
+      "critical": true,
+      "domain": "JEV",
+      "state": {
+        "current_qc_gate": "proven insufficient"
+      },
+      "question": {
+        "type": "noul",
+        "instructions": "Does this satisfy a frozen H3-P0 reopen condition?"
+      },
+      "gold": {
+        "noul": true
+      }
+    },
+    {
+      "id": "M01",
+      "family": "method",
+      "critical": true,
+      "domain": "JEV",
+      "state": {
+        "goal": "quality-gated minimum delivery time",
+        "evidence": {
+          "star7_qc_reseed": "20/20 accepted; 90% first attempt; mean attempts 1.10",
+          "act32": "quality fail",
+          "same_seed_slow_fallback": "quality not guaranteed and 90-100s"
+        }
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which mature route is the frozen winner?",
+        "criteria": {
+          "star7_qc_reseed": "Star7 1-step + deterministic QC + reseed only on FAIL.",
+          "act32_main": "ACT32 for all tasks.",
+          "slow_reference_main": "Slow reference loader for all tasks."
+        }
+      },
+      "gold": {
+        "choice": "star7_qc_reseed"
+      }
+    },
+    {
+      "id": "M02",
+      "family": "method",
+      "critical": false,
+      "domain": "JEV",
+      "state": {
+        "system": "stochastic proposal with deterministic acceptance gate"
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which time metric is the formal optimization target?",
+        "criteria": {
+          "T_TFVR": "Time To First Valid Result.",
+          "single_seed_runtime": "Runtime of one arbitrarily fixed seed.",
+          "warmup_time": "Cold/warmup duration."
+        }
+      },
+      "gold": {
+        "choice": "T_TFVR"
+      }
+    },
+    {
+      "id": "M03",
+      "family": "method",
+      "critical": true,
+      "domain": "JEV",
+      "state": {
+        "first_attempt_pass_rate": 0.9,
+        "final_accepted_qc": "20/20",
+        "invalid_output_delivered": 0
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "At which layer is the project's 100% quality claim defined?",
+        "criteria": {
+          "accepted_output": "Every delivered/accepted output passes QC.",
+          "every_random_attempt": "Every random proposal must pass first try.",
+          "model_math": "All internal numerical paths are identical."
+        }
+      },
+      "gold": {
+        "choice": "accepted_output"
+      }
+    },
+    {
+      "id": "H01",
+      "family": "handler",
+      "critical": true,
+      "domain": "CODE",
+      "state": {
+        "task": "Check whether a file exists and compute SHA256 exactly."
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which execution layer should own this task in the Jev accelerator architecture?",
+        "criteria": {
+          "code": "Deterministic program/code.",
+          "jev": "Jev semantic decision.",
+          "gpt": "GPT/DeepSeek synthesis."
+        }
+      },
+      "gold": {
+        "choice": "code"
+      }
+    },
+    {
+      "id": "H02",
+      "family": "handler",
+      "critical": false,
+      "domain": "JEV",
+      "state": {
+        "task": "Choose one failure category from a closed set using ambiguous semantic evidence."
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which execution layer is the intended owner?",
+        "criteria": {
+          "code": "Deterministic program/code.",
+          "jev": "Jev typed semantic decision.",
+          "gpt": "GPT/DeepSeek synthesis."
+        }
+      },
+      "gold": {
+        "choice": "jev"
+      }
+    },
+    {
+      "id": "H03",
+      "family": "handler",
+      "critical": true,
+      "domain": "GPT",
+      "state": {
+        "task": "Invent a new optimization algorithm and write a new implementation from an open problem."
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which execution layer should own this task?",
+        "criteria": {
+          "code": "Deterministic program/code.",
+          "jev": "Jev typed semantic decision.",
+          "gpt": "GPT/DeepSeek high-intelligence synthesis."
+        }
+      },
+      "gold": {
+        "choice": "gpt"
+      }
+    },
+    {
+      "id": "H04",
+      "family": "handler",
+      "critical": true,
+      "domain": "CODE",
+      "state": {
+        "task": "Calculate a physical time lower bound from known byte counts, bandwidth, FLOPs and dependency constraints."
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which layer should perform the exact arithmetic after the formula is fixed?",
+        "criteria": {
+          "code": "Deterministic arithmetic/program.",
+          "jev": "Jev semantic decision.",
+          "gpt": "Free-form language generation."
+        }
+      },
+      "gold": {
+        "choice": "code"
+      }
+    },
+    {
+      "id": "H05",
+      "family": "handler",
+      "critical": true,
+      "domain": "CODE",
+      "state": {
+        "task": "Final acceptance requires ffprobe dimensions, successful decode, finite pixels and SHA256."
+      },
+      "question": {
+        "type": "choice",
+        "instructions": "Which layer is authoritative for final PASS/FAIL?",
+        "criteria": {
+          "code": "Deterministic verifier.",
+          "jev": "Jev probability alone.",
+          "gpt": "GPT prose judgment."
+        }
+      },
+      "gold": {
+        "choice": "code"
+      }
+    }
+  ]
+}
