@@ -6,7 +6,8 @@
 
 使用已经冻结的 H3-P0 历史事实作为 known-answer dataset，通过 OpenRouter Decisions API 调用 TypeSafe Jev 1.13，测量：
 
-- 已知答案准确率与关键错误数；
+- 25 个语义 known-answer 的准确率与关键错误数；
+- 22 个真实 H3-P0 formal attempt 的 deterministic QC 代码复现与本机纳秒级基线；
 - mega / family / case 三种批处理方式的端到端 P50/P95；
 - confidence threshold 与零错误自动覆盖率；
 - 每轮实际 API cost；
@@ -128,7 +129,10 @@ git ls-remote origin refs/heads/codex/first-principles-physical-limit-convergenc
 H3_P0_JEV_SHADOW_COMPLETE=YES|NO
 REMOTE_HEAD=<sha>
 MODEL=<resolved model>
-DATASET_CASES=25
+SEMANTIC_CASES=25
+FORMAL_QC_CASES=22
+DETERMINISTIC_QC_ACCURACY=<value>
+DETERMINISTIC_QC_NS_PER_DECISION=<value>
 H3_GPU_RUNS=0
 BEST_BATCH_MODE=mega|family|case|NONE
 ACCURACY_MEAN=<value>
