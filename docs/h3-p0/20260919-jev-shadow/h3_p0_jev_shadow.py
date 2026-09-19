@@ -232,6 +232,62 @@ def extract_answer(response: dict[str, Any], case: dict[str, Any]) -> dict[str, 
     }
 
 
+def deterministic_qc(case: dict[str, Any], contract: dict[str, Any]) -> bool:
+    return (
+        bool(case.get("finite_pixels"))
+        and bool(case.get("non_black"))
+        and bool(case.get("non_flat"))
+        and all(float(x) >= float(contract["every_frame_range_gte"]) for x in case.get("frame_ranges", []))
+        and all(float(x) >= float(contract["every_frame_std_gte"]) for x in case.get("frame_stds", []))
+        and len(case.get("frame_ranges", [])) > 0
+        and len(case.get("frame_stds", [])) > 0
+    )
+
+
+def benchmark_deterministic_qc(dataset: dict[str, Any], iterations: int) -> dict[str, Any]:
+    contract = dataset.get("deterministic_qc_contract", {})
+    cases = dataset.get("formal_attempt_qc_cases", [])
+    one_pass = []
+    for case in cases:
+        predicted = "PASS" if deterministic_qc(case, contract) else "FAIL"
+        one_pass.append(
+            {
+                "task_id": case["task_id"],
+                "attempt_index": case["attempt_index"],
+                "predicted_qc": predicted,
+                "expected_qc": case["expected_qc"],
+                "correct": predicted == case["expected_qc"],
+            }
+        )
+
+    mismatches = [x for x in one_pass if not x["correct"]]
+    checksum = 0
+    started_ns = time.perf_counter_ns()
+    total_decisions = 0
+    for _ in range(max(1, iterations)):
+        for case in cases:
+            checksum += int(deterministic_qc(case, contract))
+            total_decisions += 1
+    elapsed_ns = time.perf_counter_ns() - started_ns
+    per_decision_ns = (elapsed_ns / total_decisions) if total_decisions else None
+    decisions_per_second = (1_000_000_000.0 / per_decision_ns) if per_decision_ns else None
+
+    return {
+        "owner": "CODE_NOT_JEV",
+        "formal_attempt_cases": len(cases),
+        "exact_accuracy": ((len(cases) - len(mismatches)) / len(cases)) if cases else 0.0,
+        "mismatches": mismatches,
+        "iterations": max(1, iterations),
+        "total_decisions_benchmarked": total_decisions,
+        "elapsed_ns": elapsed_ns,
+        "per_decision_ns": per_decision_ns,
+        "decisions_per_second": decisions_per_second,
+        "checksum": checksum,
+        "note": "Python programmatic baseline only; not a hardware physical lower bound.",
+        "one_pass": one_pass,
+    }
+
+
 def normalize_usage(response: dict[str, Any]) -> dict[str, Any]:
     usage = response.get("usage")
     if not isinstance(usage, dict):
@@ -452,6 +508,14 @@ def write_summary(path: Path, result: dict[str, Any]) -> None:
         "- Provider privacy: ZDR required; data collection denied",
         "- Frozen H3-P0 mutated: NO",
         "",
+        "## Deterministic QC baseline",
+        "",
+        f"- Real formal attempt states: {result['deterministic_qc_baseline']['formal_attempt_cases']}",
+        f"- Exact replay accuracy: {result['deterministic_qc_baseline']['exact_accuracy']:.4f}",
+        f"- Python per-decision time: {float(result['deterministic_qc_baseline']['per_decision_ns'] or 0.0):.2f} ns",
+        f"- Python decisions/s: {float(result['deterministic_qc_baseline']['decisions_per_second'] or 0.0):.2f}",
+        "- Owner: CODE_NOT_JEV",
+        "",
         "## Batch modes",
         "",
         "| mode | accuracy mean | accuracy min | critical errors | invalid outputs | end-to-end P50 ms | P95 ms | mean cost/run USD | answers/s @ P50 |",
@@ -518,6 +582,7 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=DEFAULT_RESULT)
     parser.add_argument("--summary", type=Path, default=DEFAULT_SUMMARY)
     parser.add_argument("--baseline-gpt-ms", type=float, default=0.0)
+    parser.add_argument("--code-benchmark-iterations", type=int, default=20000)
     args = parser.parse_args()
 
     api_key = os.environ.get("OPENROUTER_API_KEY")
@@ -526,6 +591,15 @@ def main() -> int:
         return 3
 
     dataset = json.loads(args.dataset.read_text(encoding="utf-8"))
+    deterministic = benchmark_deterministic_qc(dataset, args.code_benchmark_iterations)
+    if deterministic["mismatches"]:
+        print("DETERMINISTIC_QC_REPLAY_MISMATCH: dataset or QC contract is inconsistent.", file=sys.stderr)
+        return 4
+    print(
+        f"DETERMINISTIC_QC cases={deterministic['formal_attempt_cases']} "
+        f"accuracy={deterministic['exact_accuracy']:.4f} "
+        f"per_decision_ns={float(deterministic['per_decision_ns'] or 0.0):.2f}"
+    )
     cases = dataset["cases"]
     modes = [x.strip() for x in args.modes.split(",") if x.strip()]
     all_runs: dict[str, list[dict[str, Any]]] = {}
@@ -559,6 +633,7 @@ def main() -> int:
         "dataset_case_count": len(cases),
         "h3_gpu_runs": 0,
         "frozen_h3_mutated": False,
+        "deterministic_qc_baseline": deterministic,
         "aggregates": aggregates,
         "decision": decision,
         "runs": all_runs,
