@@ -236,3 +236,38 @@ ATTEMPT / DELIVERY、T_TFVR、verifier、checkpoint、idempotency、Capacity Rou
 # 最终一句话
 
 > **三核心就是唯一白名单；方案完成后只发最小“读取并执行”指令，详细执行规则只保留在一个正式文件/技能包中。**
+
+---
+
+## Experimental Jev shadow overlay
+
+本分支允许一个实验性 overlay，但它不是第四核心，也不改变 v3.1.2 正式版本。
+
+它只映射到：
+
+```text
+CORE_3 高智能虚拟成熟
+-> JEV_DECISION_ACCELERATOR
+```
+
+适用范围：已由高智能建立闭合答案空间、但仍需要快速语义判断的 routing / classification / gating / ranking 节点。
+
+职责边界固定：
+
+```text
+确定事实、算术、最终验证 -> CODE
+有限语义判断             -> JEV
+开放式推理、方案创造     -> GPT/DeepSeek
+```
+
+H3-P0 第一验证只允许历史 known-answer shadow replay，`H3_GPU_RUNS=0`。
+
+正式参考：
+
+`references/JEV-DECISION-ACCELERATOR-v0.1.md`
+
+执行命令：
+
+`docs/h3-p0/20260919-jev-shadow/H3-P0-JEV-SHADOW-COMMAND-v1.md`
+
+只有 shadow gate 与后续低风险 real gated 验证都通过后，才允许讨论升级正式 v3.1.3。
