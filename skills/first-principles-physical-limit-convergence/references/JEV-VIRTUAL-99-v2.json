@@ -1,0 +1,132 @@
+{
+  "schema": "JEV-VIRTUAL-99-v2",
+  "status": "ACTIVE_CANONICAL_FROZEN",
+  "step": "2_VIRTUAL_99",
+  "role": "SIMPLIFICATION_CONVERGENCE",
+  "parent_skill": "first-principles-physical-limit-convergence@3.1.2",
+  "new_skill": false,
+  "fourth_step": false,
+  "history_deleted": false,
+  "sources": {
+    "history_design": "references/JEV-PROBABILITY-ATTACK-VIRTUAL-99-v1.md",
+    "history_machine_contract": "references/JEV-PROBABILITY-ATTACK-VIRTUAL-99-v1.json",
+    "verify_02_result_json": "docs/h3-p0/20260919-jev-virtual99/H3-P0-JEV-PROBABILITY-ATTACK-VERIFY-02-RESULT-v1.json",
+    "verify_02_result_md": "docs/h3-p0/20260919-jev-virtual99/H3-P0-JEV-PROBABILITY-ATTACK-VERIFY-02-RESULT-v1.md",
+    "offline_replay": "docs/h3-p0/20260919-jev-virtual99/H3-P0-JEV-VIRTUAL99-V2-OFFLINE-REPLAY-v1.md"
+  },
+  "responsibilities": {
+    "CODE": "state plus frozen contract yields one deterministic answer",
+    "JEV": "not directly deterministic, finite closed semantic judgment",
+    "GPT": "open problem or unresolved/invalid single-Jev conflict"
+  },
+  "case_routing": [
+    {"case_id":"D01","owner":"CODE","output":false},
+    {"case_id":"D02","owner":"CODE","output":true},
+    {"case_id":"D03","owner":"CODE","output":"reseed_same_star7"},
+    {"case_id":"D04","owner":"CODE","output":"stochastic_contract_limit"},
+    {"case_id":"D05","owner":"CODE","output":"star7_specific_quality_failure"},
+    {"case_id":"D06","owner":"CODE","output":"reseed_same_fast_path"},
+    {"case_id":"D07","owner":"CODE","output":false},
+    {"case_id":"D08","owner":"CODE","output":false},
+    {"case_id":"C01","owner":"CODE","output":false},
+    {"case_id":"C02","owner":"CODE","output":"control_plane"},
+    {"case_id":"C03","owner":"CODE","output":"source_or_execution_control"},
+    {"case_id":"C04","owner":"CODE","output":"stochastic_sample"},
+    {"case_id":"R01","owner":"CODE","output":false},
+    {"case_id":"R02","owner":"CODE","output":true},
+    {"case_id":"R03","owner":"CODE","output":true},
+    {"case_id":"R04","owner":"CODE","output":true},
+    {"case_id":"R05","owner":"CODE","output":true},
+    {"case_id":"M01","owner":"CODE","output":"star7_qc_reseed"},
+    {"case_id":"M02","owner":"CODE","output":"T_TFVR"},
+    {"case_id":"M03","owner":"CODE","output":"accepted_output"},
+    {"case_id":"H01","owner":"CODE","output":"code"},
+    {"case_id":"H02","owner":"CODE","output":"jev","note":"deterministic meta-routing result; no Jev call"},
+    {"case_id":"H03","owner":"CODE","output":"gpt","note":"deterministic meta-routing result; no GPT call"},
+    {"case_id":"H04","owner":"CODE","output":"code"},
+    {"case_id":"H05","owner":"CODE","output":"code"}
+  ],
+  "active_path": {
+    "sequence": [
+      "INPUT",
+      "CODE_DETERMINISTIC_PRE_HANDLER",
+      "OPTIONAL_ONE_JEV_TYPED_REQUEST_IF_NOT_DETERMINISTIC_AND_CLOSED",
+      "GPT_IF_OPEN_OR_STILL_UNCERTAIN",
+      "CODE_FINAL_VERIFIER",
+      "VALID_RESULT"
+    ],
+    "known_25_case_jev_requests": 0,
+    "known_25_case_gpt_requests": 0,
+    "always_on_views": 0,
+    "fixed_ensemble_stages": 0,
+    "weight_or_probability_fusion_layers": 0
+  },
+  "removed_from_active": [
+    "MEGA_A_B_C_D_E",
+    "ALWAYS_ON_FAMILY_ANCHORS",
+    "FIXED_STAGE_A_STAGE_B",
+    "SECOND_FAMILY_RESCUE",
+    "WEIGHT_GRID",
+    "LOG_PROBABILITY_FUSION",
+    "LOO_WEIGHT_SELECTION",
+    "CASE_SPECIFIC_EXTRA_JEV_CALLS"
+  ],
+  "retained": [
+    "CODE_DETERMINISTIC_PRE_HANDLER",
+    "ONE_MINIMAL_JEV_TYPED_FAST_PATH_FOR_TRULY_NONDETERMINISTIC_CLOSED_SEMANTICS",
+    "GPT_OPEN_OR_CONFLICT_FALLBACK",
+    "CODE_FINAL_VERIFIER",
+    "V1_VERIFY02_REALITY_DELTA_HISTORY"
+  ],
+  "hard_constraints": {
+    "auto_accepted_critical_errors": 0,
+    "auto_accepted_any_errors": 0,
+    "illegal_outputs": 0,
+    "h3_gpu_runs": 0,
+    "frozen_h3_mutation": 0
+  },
+  "complexity": {
+    "v1": {
+      "jev_request_batches_per_repeat": 11,
+      "fixed_stages": 2,
+      "active_view_types": 7,
+      "fallback_layers": 2
+    },
+    "v2_known_25_cases": {
+      "jev_request_batches_per_repeat": 0,
+      "fixed_stages": 0,
+      "active_view_types": 0,
+      "fallback_layers": 0
+    },
+    "v2_generic_maximum": {
+      "optional_jev_requests_per_input": 1,
+      "fallback_layers": 1
+    }
+  },
+  "next_real_verify_contract_draft": {
+    "task_id": "H3-P0-JEV-VIRTUAL99-V2-REAL-VERIFY-01",
+    "status": "DRAFT_ONLY_DO_NOT_EXECUTE",
+    "dataset": "docs/h3-p0/20260919-jev-shadow/H3-P0-JEV-SHADOW-DATASET-v1.json",
+    "cases": 25,
+    "repeats": 20,
+    "expected_decisions": 500,
+    "expected_jev_requests": 0,
+    "expected_gpt_requests": 0,
+    "h3_gpu_runs": 0,
+    "frozen_h3_mutation": 0,
+    "pass": {
+      "deterministic_output_accuracy": "500/500",
+      "auto_accepted_critical_errors": 0,
+      "auto_accepted_any_errors": 0,
+      "illegal_outputs": 0,
+      "active_external_requests": 0,
+      "full_system_p95_seconds_lte": 5.0,
+      "history_files_unchanged": true
+    },
+    "on_fail": "SAVE_REALITY_DELTA_RETURN_TO_STEP_2_NO_RUNTIME_PATCH"
+  },
+  "final": {
+    "active_complexity_removed": true,
+    "v2_frozen": true
+  }
+}

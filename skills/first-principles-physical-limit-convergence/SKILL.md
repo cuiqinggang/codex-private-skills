@@ -1,19 +1,64 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 第一性原理极限短时间引擎 v3.1.2。唯一方法白名单只有三个核心：极限短时间、成熟方案集群、高智能虚拟成熟。任何方案、流程、旧规则、状态标签或下一步，只要不能直接映射到这三个核心之一，就是黑名单，不得进入当前执行。新增“完成即交接”：当冻结方案、执行入口或命令包已经完成时，必须在同一回复末尾立即给出一条可直接复制给执行器的小命令，避免用户再追问一次。
+description: 第一性原理极限短时间引擎 v3.1.3。唯一方法白名单只有三个核心：极限短时间、成熟方案集群、高智能虚拟成熟。任何方案、流程、旧规则、状态标签或下一步，只要不能直接映射到这三个核心之一，就是黑名单，不得进入当前执行。新增“完成即交接”：当冻结方案、执行入口或命令包已经完成时，必须在同一回复末尾立即给出一条可直接复制给执行器的小命令，避免用户再追问一次。
 metadata:
-  version: "3.1.2"
+  version: "3.1.3"
   short-description: 三核心唯一白名单·完成即交接
-  lineage: first-principles-physical-limit-convergence@3.1.2 <- @3.1.1 <- @3.1.0 <- @3.0.0 <- @2.0.0 <- @1.x
+  lineage: first-principles-physical-limit-convergence@3.1.3 <- @3.1.2 <- @3.1.1 <- @3.1.0 <- @3.0.0 <- @2.0.0 <- @1.x
 ---
 
-# 第一性原理极限短时间引擎 v3.1.2
+# 第一性原理极限短时间引擎 v3.1.3
 
 > **只走三条路：用唯一时间标准确定目标；先吸收成熟方案集群；再由高智能虚拟成熟并直接验证冻结方案。除此之外，没有第四条路。**
 
 正式 Skill ID 不变：
 
 `first-principles-physical-limit-convergence`
+
+## MANDATORY 3-STEP GATE
+
+本技能执行流程只有三个步骤：
+
+STEP 1 = MATURE_REALITY
+只建立成熟方案、现实事实、历史证据与边界。
+
+STEP 2 = VIRTUAL_99
+只进行设计、简化、收敛和冻结。
+
+STEP 3 = REAL_VERIFY
+只执行和观察 STEP 2 已冻结的方案。
+
+每次 GPT 发布执行命令前必须声明：
+
+CURRENT_STEP=<1|2|3>
+
+命令必须属于 CURRENT_STEP。
+
+如果命令不属于 CURRENT_STEP，
+或者无法明确判断属于哪一步：
+
+BLOCK
+禁止发布或执行命令。
+
+STEP 3 中如果发现任何需要改变冻结方案的问题：
+
+只记录 REALITY_DELTA
+STOP
+RETURN_TO_STEP_2
+
+禁止在 STEP 3 现场修改：
+算法、prompt、threshold、权重、view、模型、fallback、路由或验证合同。
+
+Codex 收到：
+- 没有 CURRENT_STEP 的正式执行命令
+- CURRENT_STEP 与命令实际内容冲突的命令
+
+必须：
+
+SKILL_GATE=BLOCKED
+ACTION=STOP
+
+不得自行补全、猜测或探索。
 
 ## 唯一白名单
 
@@ -241,7 +286,7 @@ ATTEMPT / DELIVERY、T_TFVR、verifier、checkpoint、idempotency、Capacity Rou
 
 ## Experimental Jev shadow overlay
 
-本分支允许一个实验性 overlay，但它不是第四核心，也不改变 v3.1.2 正式版本。
+本分支允许一个实验性 overlay，但它不是第四核心，也不改变 v3.1.3 正式版本。
 
 它只映射到：
 
@@ -274,31 +319,39 @@ H3-P0 第一验证只允许历史 known-answer shadow replay，`H3_GPU_RUNS=0`�
 
 ---
 
-## Jev Probability-Attack Virtual-99
+## Jev Virtual-99 v2（ACTIVE）
 
-本分支在 Experimental Jev shadow overlay 之上新增一个已经冻结的 Virtual-99 方案；仍然不是第四核心。
+Verify-02 返回 `SAFE_BUT_NOT_TIME_99` 后，按三步规则返回第 2 步完成简化收敛。当前 ACTIVE Virtual-99 是 v2；仍然不是第四核心，也不是新技能。
 
 它只属于：
 
 ```text
 CORE_3 高智能虚拟成熟
--> JEV_PROBABILITY_ATTACK_VIRTUAL_99
+-> JEV_VIRTUAL_99_V2_SIMPLIFIED
 ```
 
 权威设计：
 
-`references/JEV-PROBABILITY-ATTACK-VIRTUAL-99-v1.md`
+`references/JEV-VIRTUAL-99-v2.md`
 
 机器合同：
 
-`references/JEV-PROBABILITY-ATTACK-VIRTUAL-99-v1.json`
+`references/JEV-VIRTUAL-99-v2.json`
 
-冻结记录：
+ACTIVE 最短职责：
 
-`docs/h3-p0/20260919-jev-virtual99/H3-P0-JEV-VIRTUAL-99-FREEZE-v1.md`
+```text
+CODE = state + frozen contract 可唯一确定
+JEV  = 仅限无法 CODE 化的闭合语义判断；最多一次 canonical typed request
+GPT  = 开放问题或仍不确定的冲突
+```
 
-未来验证命令：
+当前 25-case known-answer replay 已全部归 CODE；H02/H03 的 `jev` / `gpt` 是确定性路由输出，不触发真实模型调用。
 
-`docs/h3-p0/20260919-jev-virtual99/H3-P0-JEV-PROBABILITY-ATTACK-VERIFY-02-COMMAND-v1.md`
+历史证据（非 ACTIVE）：
 
-固定规则：先 Virtual-99，后 reality verify；现实验证只证明冻结方案，不现场重新设计。
+- `references/JEV-PROBABILITY-ATTACK-VIRTUAL-99-v1.md/json`
+- `docs/h3-p0/20260919-jev-virtual99/H3-P0-JEV-PROBABILITY-ATTACK-VERIFY-02-RESULT-v1.md/json`
+- v1 freeze、Verify-02 command/runner 与 Reality Delta
+
+下一次唯一 Real Verify 仅以 v2 内的合同草案为准；未生成可执行命令包，禁止自动开始。
