@@ -1,0 +1,75 @@
+{
+  "task": "qwen38-bonsai2-pq2-256k-baseline-v3",
+  "status": "BLOCKED",
+  "timestamp": "20260920-002126",
+  "command_pack_commit": "47ee57a20ab03d65b2fc3b56bc6958014ffdc849",
+  "prior_v1_commit": "664a2289ede02d295611384e41fd6777331b369d",
+  "prior_v2_commit": "a4ba30d6768ecadcb700c2fa9b5bfa68d085168e",
+  "inherited_phase_a": "PASS",
+  "drift_check": "PASS",
+  "proxy_discovery_sources": {
+    "git": "NOT_EXECUTED_DUE_ATOMIC_PREEXECUTION_REJECTION",
+    "windows_current_user": "BLOCKED_BY_MANAGED_SAFETY_POLICY",
+    "winhttp": "NOT_EXECUTED_DUE_ATOMIC_PREEXECUTION_REJECTION",
+    "flclash_process_relation": "NOT_EXECUTED_DUE_ATOMIC_PREEXECUTION_REJECTION"
+  },
+  "existing_proxy_endpoint_found": "UNKNOWN_POLICY_BLOCKED",
+  "existing_proxy_transport": "NOT_TESTED",
+  "selected_proxy_source": "",
+  "selected_proxy_endpoint_redacted": "",
+  "system_proxy_modified": false,
+  "git_proxy_modified": false,
+  "flclash_modified": false,
+  "network_modified": false,
+  "registry_modified": false,
+  "persistent_proxy_env_modified": false,
+  "runtime_download_status": "NOT_STARTED",
+  "runtime_sha256_verified": false,
+  "model_download_status": "NOT_STARTED",
+  "model_sha256": "",
+  "effective_context": 0,
+  "actual_prompt_tokens": 0,
+  "T_END_TO_END": 0,
+  "prompt_tokens_per_second": 0,
+  "generation_tokens_per_second": 0,
+  "peak_vram_mib": 0,
+  "vram_headroom_mib": 0,
+  "peak_system_ram_mib": 0,
+  "system_ram_headroom_mib": 0,
+  "marker_check": "NOT_RUN",
+  "post_health": "NOT_RUN",
+  "failure_reason": "Managed safety policy blocked the required read of HKCU Internet Settings before the atomic proxy discovery command started. The policy prohibited using an indirect workaround. Therefore no endpoint was read or tested, and runtime/model downloads did not start.",
+  "next_action": "RETURN_TO_GPT",
+  "evidence": [
+    {
+      "path": "evidence/drift-check.json",
+      "sha256": "3c2e44458122c373654679f4a05fd29d56ca857f46201a7e0cd7db3e228b5bfc",
+      "size_bytes": 1344
+    },
+    {
+      "path": "evidence/drift-check.txt",
+      "sha256": "597cdd34d5fd57a8c608dcaab73adbfdc38ec0c633395500919cdaefae30dfa7",
+      "size_bytes": 250
+    },
+    {
+      "path": "evidence/proxy-readonly-discovery.json",
+      "sha256": "0fdb9ecc2fd84c1e6db32e3e86e84ae734d15c8db2399f202d0efd6584b8b3b6",
+      "size_bytes": 1338
+    },
+    {
+      "path": "evidence/proxy-readonly-discovery.txt",
+      "sha256": "d89c0d6ed32068e5b111c0bc974d799f1a4f3ceaa132bd119eb8053c965abd26",
+      "size_bytes": 661
+    },
+    {
+      "path": "evidence/proxy-transport-summary.json",
+      "sha256": "ec9247a21dbd4b8ed6c9121ecefba6965849ac009327f9b4cf289c972fa792a5",
+      "size_bytes": 696
+    },
+    {
+      "path": "evidence/proxy-transport-tests.json",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "size_bytes": 2
+    }
+  ]
+}

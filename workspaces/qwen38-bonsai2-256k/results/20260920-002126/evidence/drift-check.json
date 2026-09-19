@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "task": "qwen38-bonsai2-pq2-256k-baseline-v3",
+  "timestamp": "20260920-002126",
+  "captured_local": "2026-09-20T00:21:27.3781988+08:00",
+  "status": "PASS",
+  "inherited_v1_commit": "664a2289ede02d295611384e41fd6777331b369d",
+  "inherited_v2_commit": "a4ba30d6768ecadcb700c2fa9b5bfa68d085168e",
+  "checks": {
+    "pwsh_available": true,
+    "pwsh_version": "7.6.6",
+    "aria2c_available": true,
+    "aria2c_exit_code": 0,
+    "aria2c_version_line": "aria2 version 1.37.0",
+    "rtx_2080_ti_visible": true,
+    "c_free_bytes": 376725307392,
+    "c_free_gib": 350.853,
+    "c_free_over_20_gib": true,
+    "flclash_process_count": 2,
+    "project_llama_server_count": 0
+  },
+  "gpu": [
+    {
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 2080 Ti",
+      "memory_total_mib": 22528.0,
+      "memory_used_mib": 1502.0,
+      "driver_version": "591.74"
+    }
+  ],
+  "flclash_processes": [
+    {
+      "pid": 20032,
+      "name": "FlClash.exe",
+      "executable_path": "C:\\Program Files\\FlClash\\FlClash.exe",
+      "parent_pid": 12508
+    },
+    {
+      "pid": 5520,
+      "name": "FlClashCore.exe",
+      "executable_path": "C:\\Program Files\\FlClash\\FlClashCore.exe",
+      "parent_pid": 20032
+    }
+  ],
+  "proxy_modified": false,
+  "network_modified": false
+}

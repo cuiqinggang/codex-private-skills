@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "task": "qwen38-bonsai2-pq2-256k-baseline-v3",
+  "captured_local": "2026-09-20T00:24:28.1205200+08:00",
+  "status": "BLOCKED",
+  "block_phase": "PROXY_READONLY_DISCOVERY_PRE_EXECUTION",
+  "command_started": false,
+  "policy_block": "Managed safety policy rejected reading HKCU Internet Settings and persisting an actual selected proxy endpoint. The composite command did not start.",
+  "sources": {
+    "git": {
+      "status": "NOT_EXECUTED_DUE_ATOMIC_PREEXECUTION_REJECTION"
+    },
+    "windows_current_user": {
+      "status": "BLOCKED_BY_MANAGED_SAFETY_POLICY",
+      "registry_path": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings",
+      "values_requested": [
+        "ProxyEnable",
+        "ProxyServer",
+        "AutoConfigURL"
+      ]
+    },
+    "winhttp": {
+      "status": "NOT_EXECUTED_DUE_ATOMIC_PREEXECUTION_REJECTION"
+    },
+    "flclash_process_relation": {
+      "status": "NOT_EXECUTED_DUE_ATOMIC_PREEXECUTION_REJECTION"
+    }
+  },
+  "existing_explicit_proxy_endpoint": "UNKNOWN_POLICY_BLOCKED",
+  "candidates": [],
+  "modifications": {
+    "system_proxy": false,
+    "git_proxy": false,
+    "flclash": false,
+    "network": false,
+    "registry": false,
+    "persistent_proxy_env": false
+  },
+  "next_action": "RETURN_TO_GPT"
+}

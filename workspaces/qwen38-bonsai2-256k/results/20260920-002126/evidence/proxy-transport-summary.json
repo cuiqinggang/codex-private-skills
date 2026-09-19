@@ -1,0 +1,17 @@
+{
+  "status": "BLOCKED",
+  "existing_explicit_proxy_endpoint": "UNKNOWN_POLICY_BLOCKED",
+  "existing_proxy_transport": "NOT_TESTED",
+  "candidate_count": 0,
+  "tested_count": 0,
+  "selected_proxy_source": "",
+  "selected_proxy_endpoint_redacted": "",
+  "system_proxy_modified": false,
+  "git_proxy_modified": false,
+  "flclash_modified": false,
+  "network_modified": false,
+  "runtime_download_started": false,
+  "model_download_started": false,
+  "failure_reason": "Managed safety policy blocked the required HKCU proxy read before the composite discovery command started. No workaround, guessed port, scan, or network change was attempted.",
+  "next_action": "RETURN_TO_GPT"
+}
