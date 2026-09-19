@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "result_timestamp": "20260920-014439",
+  "status": "BLOCKED_TRANSPORT",
+  "task_completed": false,
+  "next_action": "RETURN_TO_GPT",
+  "stop": true,
+  "v3_commit": "8a293bb4a459436893b9d8e6ce1187e0497ca529",
+  "v4_validation": {
+    "status": "PASS",
+    "git_diff_check": "PASS_WITH_LF_TO_CRLF_WARNING_ONLY",
+    "unexpected_changes": false,
+    "files": {
+      "CURRENT.md": "37721ce31d3b0e727e73937f80030678f9af148f3e724e0dc6ae411cce29087d",
+      "DOWNLOAD-AND-BASELINE-COMMAND-PACK-v4.md": "dd1c7fb17b2c45e22db233b6a95e8570423ceb724b5a2c81896d82d235bfaefa",
+      "COMMAND-PACK-AUDIT-v4.md": "d94cd96b903c05d8a5a03cd918641f8d463244c6e3b86d308d2416e56b3b3a26"
+    }
+  },
+  "proxy_discovery": {
+    "windows_hkcu_source": "POLICY_BLOCKED_EXCLUDED",
+    "git_proxy_source_status": "FOUND",
+    "winhttp_source_status": "NONE",
+    "flclash_listener_source_status": "POLICY_BLOCKED",
+    "flclash_listener_error": "PermissionDenied / HRESULT 0x80041003",
+    "atomic_commands_used": true,
+    "policy_bypass_attempted": false,
+    "existing_endpoint_found": true,
+    "endpoint_source": "git_http_proxy",
+    "endpoint_fingerprint": "f1410cd719dcee161d171a3729c50bffabb9325546e31867d85db2b0773db22e",
+    "raw_endpoint_persisted": false
+  },
+  "range_probe": {
+    "asset": "llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip",
+    "requested_range": "0-1048575",
+    "status": "FAIL",
+    "curl_exit_code": 35,
+    "http_status": 0,
+    "bytes_received": 0,
+    "existing_proxy_transport": "FAIL_OR_NONE"
+  },
+  "production_contract": {
+    "target_context": 262144,
+    "only_model": "Ternary-Bonsai-2-27B-PQ2_0.gguf",
+    "ptq1_0": "FORBIDDEN",
+    "kv4": true,
+    "thinking": false,
+    "speculative": false,
+    "concurrency": 1,
+    "text_only": true,
+    "t_phy": false,
+    "no_auto_128k_fallback": true
+  },
+  "execution": {
+    "aria2c_started": false,
+    "runtime_started": false,
+    "model_started": false,
+    "server_started": false,
+    "baseline_started": false
+  },
+  "mutations": {
+    "system_proxy_modified": false,
+    "git_proxy_modified": false,
+    "flclash_modified": false,
+    "network_modified": false,
+    "registry_modified": false,
+    "persistent_proxy_env_modified": false
+  }
+}

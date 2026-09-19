@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "remove_hkcu_discovery": true,
+  "hkcu_read_attempted": false,
+  "atomic_proxy_discovery": true,
+  "commands": [
+    {
+      "command": "git config --show-origin --get-all http.proxy",
+      "started": true,
+      "exit_code": 0,
+      "status": "FOUND",
+      "candidate_count": 1,
+      "endpoint_fingerprints": [
+        "f1410cd719dcee161d171a3729c50bffabb9325546e31867d85db2b0773db22e"
+      ]
+    },
+    {
+      "command": "git config --show-origin --get-all https.proxy",
+      "started": true,
+      "exit_code": 0,
+      "status": "FOUND",
+      "candidate_count": 1,
+      "endpoint_fingerprints": [
+        "f1410cd719dcee161d171a3729c50bffabb9325546e31867d85db2b0773db22e"
+      ]
+    },
+    {
+      "command": "git config --show-origin --get-regexp http\\..*proxy|https\\..*proxy",
+      "started": true,
+      "exit_code": 0,
+      "status": "FOUND",
+      "candidate_count": 2,
+      "endpoint_fingerprints": [
+        "f1410cd719dcee161d171a3729c50bffabb9325546e31867d85db2b0773db22e",
+        "f1410cd719dcee161d171a3729c50bffabb9325546e31867d85db2b0773db22e"
+      ]
+    },
+    {
+      "command": "netsh winhttp show proxy",
+      "started": true,
+      "exit_code": 0,
+      "status": "NONE",
+      "candidate_count": 0
+    },
+    {
+      "command": "Get-Process -Name FlClashCore",
+      "started": true,
+      "status": "FOUND",
+      "pid_count": 1
+    },
+    {
+      "command": "Get-NetTCPConnection -State Listen -OwningProcess <exact-FlClashCore-PID>",
+      "started": true,
+      "status": "POLICY_BLOCKED",
+      "error_id": "HRESULT 0x80041003,Get-NetTCPConnection",
+      "category": "PermissionDenied",
+      "candidate_count": 0
+    },
+    {
+      "command": "curl --proxy <in-memory-existing-endpoint> --location --range 0-1048575 --max-time 20 <fixed-runtime-asset>",
+      "started": true,
+      "exit_code": 35,
+      "status": "FAIL",
+      "http_status": 0,
+      "bytes_received": 0,
+      "endpoint_source": "git_http_proxy",
+      "endpoint_fingerprint": "f1410cd719dcee161d171a3729c50bffabb9325546e31867d85db2b0773db22e"
+    }
+  ],
+  "raw_endpoint_persisted": false,
+  "policy_bypass_attempted": false,
+  "port_guessing_attempted": false,
+  "port_sweep_attempted": false
+}
