@@ -5,7 +5,9 @@
   "source_files": [
     "docs/h3-p0/20260917-mature-convergence-v2/H3-P0-FINAL-99-FREEZE-v1.md",
     "docs/h3-p0/20260917-mature-convergence-v2/H3-P0-FINAL-99-FREEZE-v1.json",
-    "docs/h3-p0/20260917-mature-convergence-v2/H3-P0-END-TO-END-METHOD-RETROSPECTIVE-v1.md"
+    "docs/h3-p0/20260917-mature-convergence-v2/H3-P0-END-TO-END-METHOD-RETROSPECTIVE-v1.md",
+    "docs/h3-p0/20260917-mature-convergence-v2/H3-P0-QUALITY-STABILITY-RESEED-FINAL-RESULT-v1.md",
+    "docs/h3-p0/20260917-mature-convergence-v2/H3-P0-QUALITY-STABILITY-RESEED-FINAL-STATE-v1.json"
   ],
   "constraints": {
     "h3_gpu_reruns": 0,
@@ -530,5 +532,507 @@
         "choice": "code"
       }
     }
-  ]
+  ],
+  "deterministic_qc_contract": {
+    "every_frame_range_gte": 8,
+    "every_frame_std_gte": 1.5,
+    "finite_pixels": true,
+    "non_black": true,
+    "non_flat": true,
+    "owner": "CODE_NOT_JEV"
+  },
+  "formal_attempt_qc_cases": [
+    {
+      "task_id": "T01",
+      "attempt_index": 1,
+      "frame_ranges": [
+        61,
+        96,
+        100,
+        109,
+        111
+      ],
+      "frame_stds": [
+        22.599,
+        36.256,
+        38.08,
+        40.036,
+        40.545
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T02",
+      "attempt_index": 1,
+      "frame_ranges": [
+        4,
+        17,
+        25,
+        35,
+        37
+      ],
+      "frame_stds": [
+        1.29,
+        3.702,
+        6.608,
+        9.524,
+        10.292
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": false,
+      "expected_qc": "FAIL"
+    },
+    {
+      "task_id": "T02",
+      "attempt_index": 2,
+      "frame_ranges": [
+        92,
+        91,
+        87,
+        79,
+        76
+      ],
+      "frame_stds": [
+        24.722,
+        27.886,
+        24.075,
+        18.708,
+        13.832
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T03",
+      "attempt_index": 1,
+      "frame_ranges": [
+        56,
+        56,
+        65,
+        50,
+        38
+      ],
+      "frame_stds": [
+        14.087,
+        16.981,
+        18.65,
+        13.399,
+        10.371
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T04",
+      "attempt_index": 1,
+      "frame_ranges": [
+        85,
+        114,
+        113,
+        110,
+        116
+      ],
+      "frame_stds": [
+        21.808,
+        30.757,
+        29.613,
+        29.044,
+        30.093
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T05",
+      "attempt_index": 1,
+      "frame_ranges": [
+        83,
+        54,
+        40,
+        27,
+        25
+      ],
+      "frame_stds": [
+        23.819,
+        14.287,
+        10.515,
+        8.069,
+        7.635
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T06",
+      "attempt_index": 1,
+      "frame_ranges": [
+        106,
+        84,
+        65,
+        58,
+        59
+      ],
+      "frame_stds": [
+        33.498,
+        29.83,
+        18.279,
+        15.488,
+        15.241
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T07",
+      "attempt_index": 1,
+      "frame_ranges": [
+        34,
+        45,
+        47,
+        47,
+        45
+      ],
+      "frame_stds": [
+        11.592,
+        16.192,
+        17.327,
+        17.656,
+        16.496
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T08",
+      "attempt_index": 1,
+      "frame_ranges": [
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "frame_stds": [
+        1.164,
+        0.666,
+        0.666,
+        0.64,
+        0.64
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": false,
+      "expected_qc": "FAIL"
+    },
+    {
+      "task_id": "T08",
+      "attempt_index": 2,
+      "frame_ranges": [
+        194,
+        193,
+        151,
+        125,
+        118
+      ],
+      "frame_stds": [
+        70.151,
+        69.333,
+        52.219,
+        44.607,
+        42.111
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T09",
+      "attempt_index": 1,
+      "frame_ranges": [
+        42,
+        80,
+        113,
+        124,
+        104
+      ],
+      "frame_stds": [
+        7.457,
+        21.953,
+        30.902,
+        37.508,
+        28.477
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T10",
+      "attempt_index": 1,
+      "frame_ranges": [
+        17,
+        32,
+        32,
+        35,
+        43
+      ],
+      "frame_stds": [
+        5.215,
+        10.781,
+        11.205,
+        11.339,
+        12.532
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T11",
+      "attempt_index": 1,
+      "frame_ranges": [
+        255,
+        255,
+        124,
+        194,
+        164
+      ],
+      "frame_stds": [
+        49.177,
+        74.918,
+        24.905,
+        29.401,
+        29.956
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T12",
+      "attempt_index": 1,
+      "frame_ranges": [
+        174,
+        176,
+        204,
+        202,
+        202
+      ],
+      "frame_stds": [
+        65.017,
+        71.915,
+        86.309,
+        86.443,
+        87.033
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T13",
+      "attempt_index": 1,
+      "frame_ranges": [
+        56,
+        48,
+        51,
+        59,
+        70
+      ],
+      "frame_stds": [
+        11.635,
+        11.988,
+        14.052,
+        16.826,
+        19.611
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T14",
+      "attempt_index": 1,
+      "frame_ranges": [
+        68,
+        90,
+        57,
+        35,
+        42
+      ],
+      "frame_stds": [
+        13.09,
+        25.19,
+        17.186,
+        10.399,
+        11.437
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T15",
+      "attempt_index": 1,
+      "frame_ranges": [
+        55,
+        60,
+        51,
+        51,
+        42
+      ],
+      "frame_stds": [
+        10.106,
+        15.786,
+        12.941,
+        10.46,
+        10.71
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T16",
+      "attempt_index": 1,
+      "frame_ranges": [
+        39,
+        34,
+        33,
+        35,
+        32
+      ],
+      "frame_stds": [
+        11.421,
+        8.501,
+        8.022,
+        9.457,
+        8.45
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T17",
+      "attempt_index": 1,
+      "frame_ranges": [
+        14,
+        16,
+        20,
+        20,
+        21
+      ],
+      "frame_stds": [
+        4.593,
+        4.619,
+        5.696,
+        5.691,
+        5.75
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T18",
+      "attempt_index": 1,
+      "frame_ranges": [
+        22,
+        27,
+        42,
+        44,
+        46
+      ],
+      "frame_stds": [
+        5.317,
+        7.103,
+        10.807,
+        11.179,
+        12.013
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T19",
+      "attempt_index": 1,
+      "frame_ranges": [
+        43,
+        56,
+        63,
+        59,
+        60
+      ],
+      "frame_stds": [
+        9.014,
+        10.409,
+        11.613,
+        10.915,
+        10.652
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    },
+    {
+      "task_id": "T20",
+      "attempt_index": 1,
+      "frame_ranges": [
+        157,
+        146,
+        120,
+        105,
+        107
+      ],
+      "frame_stds": [
+        44.526,
+        38.403,
+        32.467,
+        27.373,
+        28.36
+      ],
+      "finite_pixels": true,
+      "non_black": true,
+      "non_flat": true,
+      "expected_qc": "PASS"
+    }
+  ],
+  "real_attempt_source_summary": {
+    "formal_tasks": 20,
+    "formal_attempts": 22,
+    "pass_attempts": 20,
+    "fail_attempts": 2,
+    "first_attempt_pass_rate": 0.9,
+    "note": "These 22 formal attempts are replayed by deterministic code, not sent to Jev, because the QC contract is exact arithmetic/boolean logic."
+  }
 }
