@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "task": "qwen38-bonsai2-pq2-256k-baseline-v1",
+  "captured_local": "2026-09-19T22:48:41.0138851+08:00",
+  "status": "BLOCKED",
+  "phase": "B_PRE_SETUP_AUDIT",
+  "upstream_demo_commit": "17b143e889a45c090816b520e79a50c996164e1f",
+  "expected_commit": "17b143e889a45c090816b520e79a50c996164e1f",
+  "setup_ps1_sha256": "5f29a77ca7af510425f2e6d87afc243c0b68d9b3c60cc6a58e51d0a79b03c475",
+  "bonsai_skip_gguf_reference_count": 0,
+  "unconditional_download_call": [
+    {
+      "line": 373,
+      "text": "Download-GgufModel $fam $sz"
+    }
+  ],
+  "gguf_file_count": 0,
+  "staging_file_count": 0,
+  "runtime_binary_file_count": 0,
+  "setup_executed": false,
+  "model_download_started": false,
+  "proxy_changed": false,
+  "network_changed": false,
+  "system_settings_changed": false,
+  "failure_reason": "Pinned setup.ps1 does not implement BONSAI_SKIP_GGUF and unconditionally calls Download-GgufModel, so executing it would violate the no-model-download Phase B contract.",
+  "next_action": "RETURN_TO_GPT"
+}

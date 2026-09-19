@@ -1,0 +1,42 @@
+BONSAI_SKIP_GGUF_REFERENCE_COUNT=0
+SETUP_EXECUTED=NO
+MODEL_DOWNLOAD_STARTED=NO
+GGUF_FILE_COUNT=0
+STAGING_FILE_COUNT=0
+RUNTIME_BINARY_FILE_COUNT=0
+FAILURE_REASON=Pinned setup.ps1 does not implement BONSAI_SKIP_GGUF and unconditionally calls Download-GgufModel, so executing it would violate the no-model-download Phase B contract.
+---RELEVANT_SETUP_LINES---
+220:         $GpuType = "hip"
+221:         Write-Host "[OK] AMD HIP/ROCm toolchain found at $HipPath" -ForegroundColor Green
+222:     } elseif (Get-Command vulkaninfo -ErrorAction SilentlyContinue) {
+223:         $GpuType = "vulkan"
+224:         Write-Host "[OK] Vulkan SDK detected." -ForegroundColor Green
+225:     } else {
+226:         $GpuType = "cpu"
+227:         Write-Host "[INFO] No GPU toolchain detected. Will use CPU build." -ForegroundColor Yellow
+228:     }
+229: }
+230:
+231: # ── 7. Download GGUF model ──
+232: Write-Host "==> Downloading model (family=$BonsaiFamily size=$BonsaiModel) ..." -ForegroundColor Cyan
+233:
+234: # Ensure Python-based HF CLI output is UTF-8-safe on hosted Windows runners.
+235: $env:PYTHONUTF8 = "1"
+236: $env:PYTHONIOENCODING = "utf-8"
+237:
+238: function Download-GgufModel($Family, $Size) {
+239:     # Each GGUF repo ships multiple quants (e.g. F16 + Q2_0); only fetch the
+240:     # quant the demo is built around so the directory deterministically holds
+241:     # one .gguf and we skip multi-GB reference weights we don't need.
+242:     if ($Family -eq "bonsai2") {
+365:     Write-Host "[OK] GGUF $display downloaded." -ForegroundColor Green
+366: }
+367:
+368: # Expand "all" for family and size into concrete lists, then iterate.
+369: $families = if ($BonsaiFamily -eq "all") { @("bonsai2", "bonsai", "ternary") } else { @($BonsaiFamily) }
+370: $sizes    = if ($BonsaiModel  -eq "all") { @("27B", "8B", "4B", "1.7B") } else { @($BonsaiModel) }
+371: foreach ($fam in $families) {
+372:     foreach ($sz in $sizes) {
+373:         Download-GgufModel $fam $sz
+374:     }
+375: }

@@ -1,0 +1,69 @@
+{
+  "task": "qwen38-bonsai2-pq2-256k-baseline-v1",
+  "status": "BLOCKED",
+  "timestamp": "20260919-224518",
+  "model_file": "Ternary-Bonsai-2-27B-PQ2_0.gguf",
+  "model_size_bytes": 0,
+  "model_sha256": "",
+  "upstream_demo_commit": "17b143e889a45c090816b520e79a50c996164e1f",
+  "effective_context": 0,
+  "target_prompt_tokens": 0,
+  "actual_prompt_tokens": 0,
+  "thinking_off": false,
+  "kv4_active": false,
+  "cuda_active": false,
+  "download_probe_best_mib_s": 0,
+  "download_total_seconds": 0,
+  "t_end_to_end_seconds": 0,
+  "prompt_tokens_per_second": 0,
+  "generation_tokens_per_second": 0,
+  "peak_vram_mib": 0,
+  "vram_headroom_mib": 0,
+  "peak_system_ram_mib": 0,
+  "system_ram_headroom_mib": 0,
+  "marker_check": "FAIL",
+  "post_health": "FAIL",
+  "phase_a": "PASS",
+  "phase_b": "BLOCKED_PRE_SETUP",
+  "setup_executed": false,
+  "model_download_started": false,
+  "gguf_file_count": 0,
+  "staging_file_count": 0,
+  "runtime_binary_file_count": 0,
+  "powershell_guard_probe": "PASS",
+  "powershell_guard_analyzer": "UNAVAILABLE",
+  "failure_reason": "Pinned Bonsai-demo setup.ps1 at commit 17b143e889a45c090816b520e79a50c996164e1f does not implement BONSAI_SKIP_GGUF and unconditionally calls Download-GgufModel. Running it would violate the command pack and the user instruction not to download any model before Phase B runtime preparation is safely isolated.",
+  "next_action": "RETURN_TO_GPT",
+  "evidence": [
+    {
+      "path": "evidence/Invoke-PhaseA.ps1",
+      "sha256": "54a857f345966f9cfaca42e6f81ed6576aa9db2939b1b45f5bd18ece079870cb",
+      "size_bytes": 8703
+    },
+    {
+      "path": "evidence/phase-b-blocker.json",
+      "sha256": "71086279c9c0ca4fd542b9f8007e7e17c768819866b29c4b0dbfdf247b8c3698",
+      "size_bytes": 1058
+    },
+    {
+      "path": "evidence/powershell-guard-incidents.jsonl",
+      "sha256": "6ef0a6754d44d7a3056f77b050a39349e606134e4fcedb90d1e85fc6f41b1091",
+      "size_bytes": 2023
+    },
+    {
+      "path": "evidence/preflight.json",
+      "sha256": "d614bb717c029c90d60e2482c4f229155e73817ef3eb6ad4df8f6c3a14df4f12",
+      "size_bytes": 8396
+    },
+    {
+      "path": "evidence/preflight.txt",
+      "sha256": "5e48da523fbe7ef303b88cfee13ae2f512ccbeed08aef8ce07814a6654a4ef54",
+      "size_bytes": 873
+    },
+    {
+      "path": "evidence/setup-skip-audit.txt",
+      "sha256": "b633c9ee539e84023c809a9269ec7113a3c45133a41f077a748498f74ea75aab",
+      "size_bytes": 2024
+    }
+  ]
+}

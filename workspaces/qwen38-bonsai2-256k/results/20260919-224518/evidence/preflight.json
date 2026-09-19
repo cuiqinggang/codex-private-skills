@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "task": "qwen38-bonsai2-pq2-256k-baseline-v1",
+  "captured_local": "2026-09-19T22:45:21.4213460+08:00",
+  "status": "PASS",
+  "failure_reasons": [],
+  "workspace": {
+    "root": "C:\\AI\\Bonsai2-27B-256K",
+    "existed_before": false,
+    "entries_before": [],
+    "bonsai_demo_path": "C:\\AI\\Bonsai2-27B-256K\\Bonsai-demo",
+    "staging_path": "C:\\AI\\Bonsai2-27B-256K\\downloads\\staging",
+    "evidence_path": "C:\\AI\\Bonsai2-27B-256K\\evidence\\20260919-224518"
+  },
+  "powershell": {
+    "edition": "Core",
+    "version": "7.6.6",
+    "process_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "pshome": "C:\\Program Files\\PowerShell\\7"
+  },
+  "tools": {
+    "git": {
+      "command": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "arguments": [
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "git version 2.53.0.windows.1"
+    },
+    "curl": {
+      "command": "C:\\Windows\\system32\\curl.exe",
+      "arguments": [
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "curl 8.13.0 (Windows) libcurl/8.13.0 Schannel zlib/1.3.1 WinIDN\r\nRelease-Date: 2025-04-02\r\nProtocols: dict file ftp ftps http https imap imaps ipfs ipns mqtt pop3 pop3s smb smbs smtp smtps telnet tftp ws wss\r\nFeatures: alt-svc AsynchDNS HSTS HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM SPNEGO SSL SSPI threadsafe Unicode UnixSockets"
+    },
+    "aria2c_present": true,
+    "aria2c": {
+      "command": "C:\\Users\\A\\AppData\\Local\\Microsoft\\WinGet\\Links\\aria2c.exe",
+      "arguments": [
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "aria2 version 1.37.0\r\nCopyright (C) 2006, 2019 Tatsuhiro Tsujikawa\r\n\r\nThis program is free software; you can redistribute it and/or modify\r\nit under the terms of the GNU General Public License as published by\r\nthe Free Software Foundation; either version 2 of the License, or\r\n(at your option) any later version.\r\n\r\nThis program is distributed in the hope that it will be useful,\r\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\r\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\nGNU General Public License for more details.\r\n\r\n** Configuration **\r\nEnabled Features: Async DNS, BitTorrent, Firefox3 Cookie, GZip, HTTPS, Message Digest, Metalink, XML-RPC, SFTP\r\nHash Algorithms: sha-1, sha-224, sha-256, sha-384, sha-512, md5, adler32\r\nLibraries: zlib/1.3 expat/2.5.0 sqlite3/3.43.1 GMP/6.3.0 c-ares/1.19.1 libssh2/1.11.0\r\nCompiler: mingw-w64 8.0.0 (alpha) / gcc 10-win32 20220113\r\n  built by  x86_64-pc-linux-gnu\r\n  targeting x86_64-w64-mingw32\r\n  on        Nov 15 2023 11:17:49\r\nSystem: Windows 6.2 (x86_64) (6.2)\r\n\r\nReport bugs to https://github.com/aria2/aria2/issues\r\nVisit https://aria2.github.io/"
+    },
+    "nvidia_smi_present": true,
+    "nvidia_smi": {
+      "command": "C:\\Windows\\system32\\nvidia-smi.exe",
+      "arguments": [],
+      "exit_code": 0,
+      "output": "Sat Sep 19 22:45:20 2026       \r\n+-----------------------------------------------------------------------------------------+\r\n| NVIDIA-SMI 591.74                 Driver Version: 591.74         CUDA Version: 13.1     |\r\n+-----------------------------------------+------------------------+----------------------+\r\n| GPU  Name                  Driver-Model | Bus-Id          Disp.A | Volatile Uncorr. ECC |\r\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\r\n|                                         |                        |               MIG M. |\r\n|=========================================+========================+======================|\r\n|   0  NVIDIA GeForce RTX 2080 Ti   WDDM  |   00000000:01:00.0  On |                  N/A |\r\n| 31%   46C    P0             53W /  250W |    1501MiB /  22528MiB |     22%      Default |\r\n|                                         |                        |                  N/A |\r\n+-----------------------------------------+------------------------+----------------------+\r\n\r\n+-----------------------------------------------------------------------------------------+\r\n| Processes:                                                                              |\r\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\r\n|        ID   ID                                                               Usage      |\r\n|=========================================================================================|\r\n|    0   N/A  N/A             208    C+G   ...we\\Microsoft.Media.Player.exe      N/A      |\r\n|    0   N/A  N/A            4416    C+G   ....0.4234.32\\msedgewebview2.exe      N/A      |\r\n|    0   N/A  N/A            6760    C+G   ...ns\\RadiumWMPF\\WeChatAppEx.exe      N/A      |\r\n|    0   N/A  N/A            7836    C+G   ...y\\StartMenuExperienceHost.exe      N/A      |\r\n|    0   N/A  N/A            8604    C+G   ...Local\\PowerToys\\PowerToys.exe      N/A      |\r\n|    0   N/A  N/A            8912    C+G   ...\\codex-computer-use-swift.exe      N/A      |\r\n|    0   N/A  N/A            9912    C+G   ...Toys\\PowerToys.FancyZones.exe      N/A      |\r\n|    0   N/A  N/A           11268    C+G   ...UI3Apps\\PowerToys.Peek.UI.exe      N/A      |\r\n|    0   N/A  N/A           12508    C+G   C:\\Windows\\explorer.exe               N/A      |\r\n|    0   N/A  N/A           13212    C+G   ...Chrome\\Application\\chrome.exe      N/A      |\r\n|    0   N/A  N/A           13372    C+G   ...r\\frontend\\Docker Desktop.exe      N/A      |\r\n|    0   N/A  N/A           13772    C+G   ...2p2nqsd0c76g0\\app\\ChatGPT.exe      N/A      |\r\n|    0   N/A  N/A           14704    C+G   ...8wekyb3d8bbwe\\M365Copilot.exe      N/A      |\r\n|    0   N/A  N/A           14720    C+G   ...5n1h2txyewy\\TextInputHost.exe      N/A      |\r\n|    0   N/A  N/A           15932    C+G   ...t\\Edge\\Application\\msedge.exe      N/A      |\r\n|    0   N/A  N/A           17112    C+G   ...8bbwe\\Microsoft.CmdPal.UI.exe      N/A      |\r\n|    0   N/A  N/A           17736    C+G   ...Chrome\\Application\\chrome.exe      N/A      |\r\n|    0   N/A  N/A           17848    C+G   ...Files\\LM Studio\\LM Studio.exe      N/A      |\r\n|    0   N/A  N/A           18152    C+G   ...ntrolPanel\\SystemSettings.exe      N/A      |\r\n|    0   N/A  N/A           19208    C+G   ...les\\Tencent\\Weixin\\Weixin.exe      N/A      |\r\n|    0   N/A  N/A           19756    C+G   ...pps\\PowerToys.QuickAccess.exe      N/A      |\r\n|    0   N/A  N/A           19860    C+G   ...s\\PowerToys.PowerLauncher.exe      N/A      |\r\n|    0   N/A  N/A           19920    C+G   ...h_cw5n1h2txyewy\\SearchApp.exe      N/A      |\r\n|    0   N/A  N/A           20032    C+G   ...ram Files\\FlClash\\FlClash.exe      N/A      |\r\n|    0   N/A  N/A           22424    C+G   ...xyewy\\ShellExperienceHost.exe      N/A      |\r\n|    0   N/A  N/A           23396    C+G   ...ions\\v1.38.7\\app\\Reasonix.exe      N/A      |\r\n|    0   N/A  N/A           24180    C+G   ...s\\PowerToys.ColorPickerUI.exe      N/A      |\r\n|    0   N/A  N/A           24516    C+G   ...les\\Tencent\\Weixin\\Weixin.exe      N/A      |\r\n+-----------------------------------------------------------------------------------------+"
+    }
+  },
+  "gpu": [
+    {
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 2080 Ti",
+      "memory_total_mib": 22528.0,
+      "memory_used_mib": 1501.0,
+      "driver_version": "591.74"
+    }
+  ],
+  "cuda_driver_reported_version": "13.1",
+  "ram": {
+    "total_bytes": 34302468096,
+    "available_bytes": 17598488576,
+    "total_gib": 31.947,
+    "available_gib": 16.39
+  },
+  "c_drive": {
+    "free_bytes": 378916212736,
+    "free_gib": 352.893,
+    "gate_minimum_gib": 20,
+    "gate_pass": true
+  },
+  "proxy_environment_read_only": {
+    "http_proxy": "",
+    "https_proxy": "",
+    "all_proxy": "",
+    "no_proxy": ""
+  },
+  "gates": {
+    "nvidia_gpu_present": true,
+    "target_2080_ti_class_present": true,
+    "c_drive_20_gib_free": true,
+    "phase_b_authorized": true
+  },
+  "prohibited_actions_confirmed": {
+    "proxy_changed": false,
+    "network_changed": false,
+    "system_settings_changed": false,
+    "model_download_started": false
+  }
+}
