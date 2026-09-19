@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "task": "qwen38-bonsai2-pq2-256k-baseline-v2",
+  "timestamp": "20260919-233425",
+  "captured_local": "2026-09-19T23:34:26.3511174+08:00",
+  "status": "PASS",
+  "inherited_result": "results/20260919-224518",
+  "inherited_phase_a": "PASS",
+  "checks": {
+    "pwsh_available": true,
+    "pwsh_version": "7.6.6",
+    "aria2c_available": true,
+    "aria2c_exit_code": 0,
+    "aria2c_version_line": "aria2 version 1.37.0",
+    "rtx_2080_ti_visible": true,
+    "c_free_bytes": 376847843328,
+    "c_free_gib": 350.967,
+    "c_free_over_20_gib": true,
+    "project_llama_server_count": 0
+  },
+  "gpu": [
+    {
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 2080 Ti",
+      "memory_total_mib": 22528.0,
+      "memory_used_mib": 1777.0,
+      "driver_version": "591.74"
+    }
+  ],
+  "setup_ps1_executed": false,
+  "model_download_started": false
+}

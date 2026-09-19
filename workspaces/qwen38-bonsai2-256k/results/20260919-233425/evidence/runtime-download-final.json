@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "BLOCKED",
+  "phase": "B_RUNTIME_DOWNLOAD",
+  "runtime_source": "PINNED_RELEASE",
+  "cuda_variant": "12.4",
+  "release": "prism-b10709-9a9394a",
+  "runtime_hash_verified": false,
+  "cuda_binary_exists": false,
+  "setup_ps1_executed": false,
+  "model_files_downloaded_during_runtime_phase": 0,
+  "downloaded_assets": [
+    {
+      "name": "llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip",
+      "expected_bytes": 253442371,
+      "actual_bytes": 0,
+      "expected_sha256": "f565c8428c1f108311f65ed97f02425188b3aa3c745c2bc597521bbd24bcbbc9",
+      "actual_sha256": "",
+      "hash_verified": false,
+      "partial_preserved": true,
+      "aria2_control_preserved": true,
+      "aria2_control_sha256": "f44626fa59d07673a03ab11059825c90107d3f0a68a6c097449ff5b21bae8eb9"
+    },
+    {
+      "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+      "expected_bytes": 391443627,
+      "actual_bytes": 0,
+      "expected_sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6",
+      "actual_sha256": "",
+      "hash_verified": false,
+      "partial_preserved": false,
+      "aria2_control_preserved": false,
+      "aria2_control_sha256": ""
+    }
+  ],
+  "failure_reason": "Pinned GitHub release asset could not be downloaded: aria2 TLS handshake failed with remote forced close 2746 and curl HEAD failed to connect to github.com:443 with exit 28. Proxy/network changes are forbidden.",
+  "next_action": "RETURN_TO_GPT"
+}

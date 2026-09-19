@@ -1,0 +1,62 @@
+[
+  {
+    "invocation": 1,
+    "stage": "probe-x1",
+    "connections": 1,
+    "splits": 1,
+    "elapsed_s": 0,
+    "bytes_before": 0,
+    "bytes_after": 0,
+    "delta_bytes": 0,
+    "mib_per_s": 0,
+    "retry_count": 0,
+    "error_count": 1,
+    "outcome": "ARGUMENT_REJECTED_BEFORE_NETWORK",
+    "evidence": "llama-probe-x1.stderr.txt.failed-invocation1"
+  },
+  {
+    "invocation": 1,
+    "stage": "probe-x4",
+    "connections": 4,
+    "splits": 4,
+    "elapsed_s": 0,
+    "bytes_before": 0,
+    "bytes_after": 0,
+    "delta_bytes": 0,
+    "mib_per_s": 0,
+    "retry_count": 0,
+    "error_count": 1,
+    "outcome": "ARGUMENT_REJECTED_BEFORE_NETWORK",
+    "evidence": "llama-probe-x4.stderr.txt.failed-invocation1"
+  },
+  {
+    "invocation": 2,
+    "stage": "probe-x1",
+    "connections": 1,
+    "splits": 1,
+    "elapsed_s": 30,
+    "bytes_before": 0,
+    "bytes_after": 0,
+    "delta_bytes": 0,
+    "mib_per_s": 0,
+    "retry_count": 0,
+    "error_count": 0,
+    "outcome": "NO_BYTES_AFTER_GITHUB_REDIRECT_WITHIN_30S",
+    "evidence": "llama-probe-x1.aria2.txt"
+  },
+  {
+    "invocation": 2,
+    "stage": "probe-x4",
+    "connections": 4,
+    "splits": 4,
+    "elapsed_s": 22,
+    "bytes_before": 0,
+    "bytes_after": 0,
+    "delta_bytes": 0,
+    "mib_per_s": 0,
+    "retry_count": 0,
+    "error_count": 1,
+    "outcome": "TLS_HANDSHAKE_REMOTE_FORCED_CLOSE_2746",
+    "evidence": "llama-probe-x4.aria2.txt"
+  }
+]

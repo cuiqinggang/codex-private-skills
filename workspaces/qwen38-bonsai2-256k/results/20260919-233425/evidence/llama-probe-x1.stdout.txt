@@ -1,0 +1,73 @@
+
+09/19 23:42:29 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/0B CN:1 DL:0B]
+
+ *** Download Progress Summary as of Sat Sep 19 23:42:34 2026 ***
+===============================================================================
+[#828711 0B/0B CN:1 DL:0B]
+FILE: C:/AI/Bonsai2-27B-256K/downloads/staging/runtime/llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip
+-------------------------------------------------------------------------------
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/0B CN:1 DL:0B]
+09/19 23:42:36 [[1;32mNOTICE[0m] CUID#7 - Redirecting to https://release-assets.githubusercontent.com/<REDACTED_SIGNED_QUERY>
+
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/0B CN:1 DL:0B]
+
+ *** Download Progress Summary as of Sat Sep 19 23:42:39 2026 ***
+===============================================================================
+[#828711 0B/0B CN:1 DL:0B]
+FILE: C:/AI/Bonsai2-27B-256K/downloads/staging/runtime/llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip
+-------------------------------------------------------------------------------
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/0B CN:1 DL:0B]
+
+ *** Download Progress Summary as of Sat Sep 19 23:42:45 2026 ***
+===============================================================================
+[#828711 0B/0B CN:1 DL:0B]
+FILE: C:/AI/Bonsai2-27B-256K/downloads/staging/runtime/llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip
+-------------------------------------------------------------------------------
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/0B CN:1 DL:0B]
+
+ *** Download Progress Summary as of Sat Sep 19 23:42:53 2026 ***
+===============================================================================
+[#828711 0B/0B CN:1 DL:0B]
+FILE: C:/AI/Bonsai2-27B-256K/downloads/staging/runtime/llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip
+-------------------------------------------------------------------------------
+
+[#828711 0B/0B CN:1 DL:0B]
+
+[#828711 0B/241MiB(0%) CN:1 DL:0B]
+
+[#828711 0B/241MiB(0%) CN:1 DL:0B]
+
+[#828711 0B/241MiB(0%) CN:1 DL:0B]
+
+[#828711 0B/241MiB(0%) CN:1 DL:0B]

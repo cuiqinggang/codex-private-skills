@@ -1,0 +1,3 @@
+"timestamp","asset","stage","downloaded_bytes","delta_bytes","interval_mib_s","process_alive"
+"2026-09-19T23:42:58+08:00","llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip","probe-x1","0","0","0","False"
+"2026-09-19T23:43:22+08:00","llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip","probe-x4","0","0","0","False"

@@ -1,0 +1,84 @@
+
+09/19 23:43:00 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+ *** Download Progress Summary as of Sat Sep 19 23:43:05 2026 ***
+===============================================================================
+[#c15da6 0B/0B CN:1 DL:0B]
+FILE: C:/AI/Bonsai2-27B-256K/downloads/staging/runtime/llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip
+-------------------------------------------------------------------------------
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+ *** Download Progress Summary as of Sat Sep 19 23:43:10 2026 ***
+===============================================================================
+[#c15da6 0B/0B CN:1 DL:0B]
+FILE: C:/AI/Bonsai2-27B-256K/downloads/staging/runtime/llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip
+-------------------------------------------------------------------------------
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+ *** Download Progress Summary as of Sat Sep 19 23:43:15 2026 ***
+===============================================================================
+[#c15da6 0B/0B CN:1 DL:0B]
+FILE: C:/AI/Bonsai2-27B-256K/downloads/staging/runtime/llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip
+-------------------------------------------------------------------------------
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+[#c15da6 0B/0B CN:1 DL:0B]
+
+ *** Download Progress Summary as of Sat Sep 19 23:43:21 2026 ***
+===============================================================================
+[#c15da6 0B/0B CN:1 DL:0B]
+FILE: C:/AI/Bonsai2-27B-256K/downloads/staging/runtime/llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip
+-------------------------------------------------------------------------------
+
+[#c15da6 0B/0B CN:1 DL:0B]
+09/19 23:43:22 [[1;31mERROR[0m] CUID#7 - Download aborted. URI=https://github.com/PrismML-Eng/llama.cpp/releases/download/prism-b10709-9a9394a/llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip
+Exception: [AbstractCommand.cc:351] errorCode=1 URI=https://github.com/PrismML-Eng/llama.cpp/releases/download/prism-b10709-9a9394a/llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip
+  -> [SocketCore.cc:1019] errorCode=1 SSL/TLS handshake failure: Error: 远程主机强迫关闭了一个现有的连接。
+(2746)
+
+09/19 23:43:22 [[1;32mNOTICE[0m] Download GID#c15da6e3ba2262c7 not complete: C:/AI/Bonsai2-27B-256K/downloads/staging/runtime/llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+c15da6|ERR |       0B/s|C:/AI/Bonsai2-27B-256K/downloads/staging/runtime/llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip
+
+Status Legend:
+(ERR):error occurred.
+
+aria2 will resume download if the transfer is restarted.
+If there are any errors, then see the log file. See '-l' option in help/man page for details.

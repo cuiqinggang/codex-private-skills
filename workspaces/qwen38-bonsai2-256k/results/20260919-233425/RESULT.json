@@ -1,0 +1,139 @@
+{
+  "task": "qwen38-bonsai2-pq2-256k-baseline-v2",
+  "status": "BLOCKED",
+  "timestamp": "20260919-233425",
+  "prior_blocker_commit": "664a2289ede02d295611384e41fd6777331b369d",
+  "command_pack_commit": "7e80232b2dec8bffcc623fdc86904812cdaac133",
+  "inherited_phase_a": "PASS",
+  "drift_check": "PASS",
+  "runtime_bootstrap_method": "PINNED_RELEASE_DIRECT",
+  "setup_ps1_executed": false,
+  "runtime_asset_hashes": [
+    {
+      "name": "llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip",
+      "expected_sha256": "f565c8428c1f108311f65ed97f02425188b3aa3c745c2bc597521bbd24bcbbc9",
+      "actual_sha256": "",
+      "verified": false
+    },
+    {
+      "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+      "expected_sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6",
+      "actual_sha256": "",
+      "verified": false
+    }
+  ],
+  "runtime_status": "BLOCKED_DOWNLOAD",
+  "runtime_partial_preserved": true,
+  "runtime_partial_bytes": 0,
+  "runtime_aria2_control_sha256": "f44626fa59d07673a03ab11059825c90107d3f0a68a6c097449ff5b21bae8eb9",
+  "model_file": "Ternary-Bonsai-2-27B-PQ2_0.gguf",
+  "model_size_bytes": 0,
+  "model_sha256": "",
+  "model_download_started": false,
+  "effective_context": 0,
+  "actual_prompt_tokens": 0,
+  "download_probe_best_mib_s": 0,
+  "download_total_seconds": 52,
+  "t_end_to_end_seconds": 0,
+  "T_END_TO_END": 0,
+  "prompt_tokens_per_second": 0,
+  "generation_tokens_per_second": 0,
+  "peak_vram_mib": 0,
+  "vram_headroom_mib": 0,
+  "peak_system_ram_mib": 0,
+  "system_ram_headroom_mib": 0,
+  "marker_check": "NOT_RUN",
+  "post_health": "NOT_RUN",
+  "proxy_changed": false,
+  "network_changed": false,
+  "system_settings_changed": false,
+  "failure_reason": "Pinned GitHub runtime asset could not be downloaded. aria2 x4 failed with TLS handshake remote forced close 2746, and curl HEAD to the same GitHub URL failed to connect to github.com:443 with exit 28. The contract forbids changing proxy or system network settings.",
+  "next_action": "RETURN_TO_GPT",
+  "evidence": [
+    {
+      "path": "evidence/drift-check.json",
+      "sha256": "056cc845b291bd1265eae6b2ccd087b219d95271c8490b2143bae4468ac0b386",
+      "size_bytes": 901
+    },
+    {
+      "path": "evidence/drift-check.txt",
+      "sha256": "fc21aa57b9359295ec0e9057573ff2e07b56a2dd4a7100ca1c7563b2e5194ff4",
+      "size_bytes": 299
+    },
+    {
+      "path": "evidence/Invoke-PhaseBv2.ps1",
+      "sha256": "35d0ec4c66f94746bfaef701aa2edd232b9f655a00c235a3b1eb2ad50d25aafe",
+      "size_bytes": 17838
+    },
+    {
+      "path": "evidence/llama-probe-x1.aria2.txt",
+      "sha256": "088c0329cb104342e022c16a1f8960ef682a50ec0b174b9c630d0a063d210270",
+      "size_bytes": 226
+    },
+    {
+      "path": "evidence/llama-probe-x1.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/llama-probe-x1.stderr.txt.failed-invocation1",
+      "sha256": "225ba2ab840dcc98cedbca8d93b602685b63f8f5616b74c95788de3912200183",
+      "size_bytes": 487
+    },
+    {
+      "path": "evidence/llama-probe-x1.stdout.txt",
+      "sha256": "2345f56415153d7fbf6ef81e870deb23652dae99075dedda5d5b92dc0ad706e4",
+      "size_bytes": 2357
+    },
+    {
+      "path": "evidence/llama-probe-x4.aria2.txt",
+      "sha256": "1ea7a07b4f1fb6e9f3831ffbc0f9c18fc11b9e96ffc28370bd42a13e8c0bc03c",
+      "size_bytes": 823
+    },
+    {
+      "path": "evidence/llama-probe-x4.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/llama-probe-x4.stderr.txt.failed-invocation1",
+      "sha256": "0059295b451b2f0a5118d6ae14a0d96cc54d787ae57a76321638b3372b480bd8",
+      "size_bytes": 487
+    },
+    {
+      "path": "evidence/llama-probe-x4.stdout.txt",
+      "sha256": "a2884bbdbbe00ee4d48cf68313a9593396af10d702ff1cb566dd9a577f0846a8",
+      "size_bytes": 3295
+    },
+    {
+      "path": "evidence/network-diagnostic.txt",
+      "sha256": "b66df143f7471e52822f1fe76df4e99c7eaf80c5ec01f6449757ddaefec1676d",
+      "size_bytes": 392
+    },
+    {
+      "path": "evidence/powershell-guard-incidents.jsonl",
+      "sha256": "27ad1aea42c20a6817c8c9bc1261829595fadc4a24b95ded76f14a623d8dc636",
+      "size_bytes": 1698
+    },
+    {
+      "path": "evidence/runtime-download-final.json",
+      "sha256": "0bfcfb28a4117eec1d1a2a660df768f4af4c781d935fac6dcb5e9279b3929b6c",
+      "size_bytes": 1514
+    },
+    {
+      "path": "evidence/runtime-download-monitor.csv",
+      "sha256": "6b19f5c73da11e588725b9de18ceae4174388e93567c05343560cf1aa198d4b1",
+      "size_bytes": 325
+    },
+    {
+      "path": "evidence/runtime-download-probes.json",
+      "sha256": "4cb9ac0ac70778e1a730f854f70f06817b515063d28f89ac5c29751a928bcba9",
+      "size_bytes": 1478
+    },
+    {
+      "path": "evidence/runtime-existing-before.json",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "size_bytes": 2
+    }
+  ]
+}

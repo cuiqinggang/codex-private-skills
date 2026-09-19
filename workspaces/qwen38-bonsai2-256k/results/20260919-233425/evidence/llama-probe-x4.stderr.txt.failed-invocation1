@@ -1,0 +1,9 @@
+Exception: [AbstractOptionHandler.cc:69] errorCode=28 We encountered a problem while processing the option '--max-connection-per-server'.
+  -> [OptionHandlerImpl.cc:159] errorCode=1 Bad number =4
+Usage:
+ -x, --max-connection-per-server=NUM The maximum number of connections to one
+                              server for each download.
+
+                              Possible Values: 1-16
+                              Default: 1
+                              Tags: #basic, #http, #ftp
