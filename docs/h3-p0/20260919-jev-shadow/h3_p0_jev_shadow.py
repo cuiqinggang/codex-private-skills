@@ -77,7 +77,7 @@ def post_decisions(api_key: str, payload: dict[str, Any], timeout: float, retrie
             elapsed_ms = (time.perf_counter() - started) * 1000.0
             return json.loads(raw), elapsed_ms, attempt
         except urllib.error.HTTPError as exc:
-            retryable = exc.code in (408, 409, 425, 429, 500, 502, 503, 504)
+            retryable = exc.code in (408, 409, 425, 429, 500, 502, 503, 504, 524, 529)
             if retryable and attempt <= retries:
                 time.sleep(min(2.0, 0.25 * (2 ** (attempt - 1))))
                 continue
@@ -90,6 +90,16 @@ def post_decisions(api_key: str, payload: dict[str, Any], timeout: float, retrie
             raise RuntimeError(f"OpenRouter transport error: {exc}") from exc
 
 
+def normalize_question(question: dict[str, Any]) -> dict[str, Any]:
+    q = dict(question)
+    if q.get("type") == "noul" and "criteria" not in q:
+        q["criteria"] = {
+            "false": "No: the proposition asked by instructions is not supported by the supplied state.",
+            "true": "Yes: the proposition asked by instructions is supported by the supplied state.",
+        }
+    return q
+
+
 def build_batch(cases: list[dict[str, Any]], mode: str) -> list[tuple[str, dict[str, Any], list[dict[str, Any]]]]:
     if mode == "case":
         return [
@@ -97,7 +107,7 @@ def build_batch(cases: list[dict[str, Any]], mode: str) -> list[tuple[str, dict[
                 case["id"],
                 {
                     "state": case["state"],
-                    "questions": {case["id"]: case["question"]},
+                    "questions": {case["id"]: normalize_question(case["question"])},
                 },
                 [case],
             )
@@ -118,7 +128,7 @@ def build_batch(cases: list[dict[str, Any]], mode: str) -> list[tuple[str, dict[
         state = {"cases": {case["id"]: case["state"] for case in members}}
         questions: dict[str, Any] = {}
         for case in members:
-            q = dict(case["question"])
+            q = normalize_question(case["question"])
             q["instructions"] = (
                 f"Evaluate only state.cases.{case['id']}. "
                 + q["instructions"]
