@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "result_timestamp": "20260920-014431",
+  "status": "BLOCKED_RUNTIME_COMPATIBILITY",
+  "task_completed": false,
+  "next_action": "RETURN_TO_GPT",
+  "stop": true,
+  "v3_commit": "8a293bb4a459436893b9d8e6ce1187e0497ca529",
+  "proxy_discovery": {
+    "windows_hkcu_source": "POLICY_BLOCKED_EXCLUDED",
+    "git_proxy_source_status": "POLICY_BLOCKED_SENSITIVE_VALUE",
+    "winhttp_source_status": "NONE",
+    "flclash_listener_source_status": "FOUND",
+    "atomic_commands_used": true,
+    "policy_bypass_attempted": false,
+    "existing_endpoint_found": true,
+    "endpoint_source": "FlClashCore_process_listener",
+    "candidate_count": 2,
+    "loopback": true,
+    "endpoint_fingerprint": "f1410cd719dcee161d171a3729c50bffabb9325546e31867d85db2b0773db22e",
+    "raw_endpoint_persisted": false
+  },
+  "atomic_commands": [
+    {
+      "source": "git_proxy",
+      "started": null,
+      "exit_code": null,
+      "stdout_persisted": false,
+      "stderr_persisted": false,
+      "policy_status": "POLICY_BLOCKED_SENSITIVE_VALUE",
+      "retried": false
+    },
+    {
+      "source": "winhttp",
+      "started_utc": "2026-09-19T17:59:12.736Z",
+      "exit_code": 0,
+      "stdout_summary": "Direct access (no proxy server).",
+      "stderr": "",
+      "policy_status": "ALLOWED"
+    },
+    {
+      "source": "flclashcore_process",
+      "started_utc": "2026-09-19T17:59:29.871Z",
+      "exit_code": 0,
+      "stdout_summary": "FlClashCore.exe PID 5520 and executable path returned.",
+      "stderr": "",
+      "policy_status": "ALLOWED"
+    },
+    {
+      "source": "flclashcore_exact_pid_listen",
+      "started_utc": "2026-09-19T17:59:48.421Z",
+      "exit_code": 0,
+      "stdout_summary": "2 loopback LISTEN sockets owned by exact PID 5520.",
+      "raw_stdout_persisted": false,
+      "stderr": "",
+      "policy_status": "ALLOWED"
+    }
+  ],
+  "range_probe": {
+    "asset": "llama-prism-b10709-9a9394a-bin-win-cuda-12.4-x64.zip",
+    "requested_range": "0-1048575",
+    "proxy_source": "FlClashCore_process_listener",
+    "proxy_protocol": "http",
+    "endpoint_fingerprint": "f1410cd719dcee161d171a3729c50bffabb9325546e31867d85db2b0773db22e",
+    "http_status": 206,
+    "bytes_received": 1048576,
+    "elapsed_ms": 3637.314,
+    "exit_code": 0,
+    "status": "PASS",
+    "existing_proxy_transport": "PASS"
+  },
+  "runtime_assets": {
+    "asset_1": {
+      "bytes": 253442371,
+      "sha256": "f565c8428c1f108311f65ed97f02425188b3aa3c745c2bc597521bbd24bcbbc9",
+      "download": "x1_s1_complete",
+      "verified": true
+    },
+    "asset_2": {
+      "bytes": 391443627,
+      "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6",
+      "download": "x1_s1_partial_then_x4_s4_continue",
+      "partial_bytes_before_continue": 249820203,
+      "verified": true
+    },
+    "x8_run": false,
+    "extracted": true,
+    "required_files_present": true
+  },
+  "runtime_gate": {
+    "llama_server_version_output": null,
+    "exit_code": -1073741795,
+    "windows_status_hex": "0xC000001D",
+    "status": "FAIL_ILLEGAL_INSTRUCTION"
+  },
+  "production_contract": {
+    "target_context": 262144,
+    "only_model": "Ternary-Bonsai-2-27B-PQ2_0.gguf",
+    "ptq1_0": "FORBIDDEN",
+    "f16": "FORBIDDEN",
+    "mmproj": "FORBIDDEN",
+    "drafter": "FORBIDDEN",
+    "kv4": true,
+    "thinking": false,
+    "speculative": false,
+    "concurrency": 1,
+    "text_only": true,
+    "t_phy": false,
+    "no_auto_128k_fallback": true
+  },
+  "execution": {
+    "runtime_downloaded": true,
+    "runtime_verified": true,
+    "runtime_extracted": true,
+    "model_started": false,
+    "server_started": false,
+    "baseline_started": false
+  },
+  "baseline": {
+    "actual_prompt_tokens": null,
+    "T_END_TO_END": null,
+    "prompt_tokens_per_second": null,
+    "generation_tokens_per_second": null,
+    "peak_vram_mib": null,
+    "vram_headroom_mib": null,
+    "peak_system_ram_mib": null,
+    "system_ram_headroom_mib": null,
+    "marker_check": null,
+    "post_health": null
+  },
+  "mutations": {
+    "system_proxy_modified": false,
+    "git_proxy_modified": false,
+    "flclash_modified": false,
+    "network_modified": false,
+    "registry_modified": false,
+    "persistent_proxy_env_modified": false
+  }
+}

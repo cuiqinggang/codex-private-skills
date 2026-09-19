@@ -12,3 +12,11 @@ DOWNLOAD-AND-BASELINE-COMMAND-PACK-v4.md
 - v4：永久排除 HKCU；Git、WinHTTP、FlClashCore listener 分别原子只读发现；只有 1 MiB probe PASS 才同链复用内存中的既有 endpoint。
 
 v4 不改变模型、上下文或 runtime：只 PQ2_0、262144、KV4、thinking off、no PTQ1_0、no 128K fallback、no proxy/network/system change。
+## 当前 v4 现实结果
+
+- 结果：results/20260920-014431/RESULT.md
+- 状态：BLOCKED_RUNTIME_COMPATIBILITY
+- transport probe：PASS
+- runtime SHA-256：PASS
+- llama-server version gate：FAIL_ILLEGAL_INSTRUCTION (0xC000001D)
+- NEXT_ACTION=RETURN_TO_GPT

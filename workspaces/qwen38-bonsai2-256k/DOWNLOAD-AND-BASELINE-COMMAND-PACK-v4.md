@@ -1,6 +1,6 @@
 # Bonsai 2 27B PQ2_0 — 256K 下载与现实基线命令包 v4
 
-状态：READY_FOR_CODEX / ATOMIC-PROXY-DISCOVERY / NOT_EXECUTED
+状态：EXECUTED / RESULT=results/20260920-014431 / RETURN_TO_GPT
 
 ## 0. 继承与唯一变化
 
@@ -37,6 +37,10 @@ policy 拒绝：SOURCE_GIT_PROXY=POLICY_BLOCKED，不绕过；无配置：SOURCE
 只按 FlClashCore 精确 PID 过滤仅属于该 PID 的 LISTEN socket。禁止扫描全部端口、猜 7890/7891 或任何端口、读 FlClash 配置、读 HKCU、切节点/模式/TUN、改配置。
 
 policy 拒绝：SOURCE_FLCLASH_LISTENER=POLICY_BLOCKED，停止该来源且不绕过。真实 loopback listener 属于进程直接证据。host/port 只在当前进程内；evidence 只记录 source=FlClashCore_process_listener、candidate_count、loopback、endpoint_fingerprint=SHA256(normalized_endpoint)。
+
+### 2.4 Approval storm 防护
+
+任一独立命令被 managed safety review 拒绝后，该来源立即标记 POLICY_BLOCKED；不得重发同一命令、不得用语义等价命令重试、不得请求第二次 approval，直接进入下一独立来源。Git proxy value 来源已冻结为 GIT_PROXY_SOURCE_STATUS=POLICY_BLOCKED_SENSITIVE_VALUE，不得解释为 NONE。
 
 ## 3. 小流量验证与同链复用
 
