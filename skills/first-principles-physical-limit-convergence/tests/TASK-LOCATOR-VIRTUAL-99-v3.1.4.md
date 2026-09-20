@@ -2,53 +2,56 @@
 
 ```text
 STEP=2_VIRTUAL_99
-CORE=3_HIGH_INTELLIGENCE_VIRTUAL_MATURITY
 REAL_EXECUTION=NO
-CASES=12
+VISIBLE_FIELDS=2
+FORMAT=【页面名｜序号】
 ```
 
-基准 ORDER：
+唯一基准：
 
 ```text
-【定位｜页=P01·第一性原理极限短时间引擎v3.1.4｜任务=T01·建立任务定位规则｜序=001｜STEP=2·虚拟成熟｜CORE=3·高智能虚拟成熟｜ROLE=ORDER·命令｜状态=OPEN·已下发】
+【第一性原理极限短时间引擎v3.1.4｜1】
 ```
 
-基准 ANSWER：
+机器解析只认：
 
 ```text
-【定位｜页=P01·第一性原理极限短时间引擎v3.1.4｜任务=T01·建立任务定位规则｜序=001｜STEP=2·虚拟成熟｜CORE=3·高智能虚拟成熟｜ROLE=ANSWER·答案｜状态=PASS·通过】
+PAGE_NAME = 第一段完整字符串
+SEQ = 第二段普通整数
+LOCATOR_KEY = PAGE_NAME + "|" + SEQ
 ```
 
-| Case | 输入变化 | 预期 |
+冻结案例：
+
+| Case | 输入/条件 | 预期 |
 |---|---|---|
-| T01 | ORDER/ANSWER 五个匹配字段完全一致 | PASS |
-| T02 | 页面不同 | BLOCK |
-| T03 | 任务号或中文任务名不同 | BLOCK |
-| T04 | 序号不同 | BLOCK |
-| T05 | STEP 不同或不在 1/2/3 | BLOCK |
-| T06 | CORE 不同或不在 1/2/3 | BLOCK |
-| T07 | ORDER 缺第一行定位 | BLOCK |
-| T08 | ORDER 缺最后一行定位 | BLOCK |
-| T09 | ANSWER 最后一行缺定位 | BLOCK |
-| T10 | 序号 001→002→003 单调递增 | PASS |
-| T11 | 003 未闭环，004 前先记录原因，再进入 004..006 | PASS |
-| T12 | 006 未闭环仍尝试同任务 007 | BLOCK |
+| T01 | `【第一性原理极限短时间引擎v3.1.4｜1】` | PASS |
+| T02 | `【Bonsai 27B 256K｜6】` | PASS |
+| T03 | 序号为 0 | BLOCK |
+| T04 | 序号为 7 | BLOCK |
+| T05 | 序号写成 001 | BLOCK |
+| T06 | 增加 CORE/STEP/ROLE/STATUS 等可见字段 | BLOCK |
+| T07 | 同页面按 1→2→3 单调递增 | PASS |
+| T08 | 3 未闭环，记录原因后进入 4→5→6 | PASS |
+| T09 | 6 后仍试图继续 7 | BLOCK |
+| T10 | 页面首次编号后，定位名称沿用首次冻结名称 | PASS |
 
-最终虚拟判定：
+确定性重放：
 
 ```text
-EXPECTED_CASES=12
-EXPECTED_CORRECT=12
-ACTUAL_CORRECT=12
-ACTUAL_BLOCK_PASS_MATRIX=12/12
-VIRTUAL_PASS=12/12
+EXPECTED_CASES=10
+ACTUAL_CORRECT=10
+VIRTUAL_PASS=10/10
 VIRTUAL_ACCURACY=100%
+VISIBLE_FIELDS=2
 HUMAN_READABLE=PASS
-MACHINE_MATCHABLE=PASS
-ORDER_ANSWER_CORRESPONDENCE=PASS
-THREE_CORE_UNCHANGED=YES
+MACHINE_PARSEABLE=PASS
+PAGE_SEQUENCE_UNIQUE_WITHIN_FROZEN_PAGE_NAME=PASS
+CORE_GATE_DUPLICATION=0
 FOURTH_CORE_CREATED=NO
 FOURTH_STEP_CREATED=NO
 ```
+
+说明：100% 仅指上述 10 个冻结规则案例全部符合预期。
 
 STOP
