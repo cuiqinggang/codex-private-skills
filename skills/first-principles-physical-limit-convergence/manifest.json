@@ -30,19 +30,21 @@
     "CORE_3_HIGH_INTELLIGENCE_VIRTUAL_MATURITY"
   ],
   "completion_handoff": {
+    "trigger": "VIRTUAL_MATURITY_PASS_WITH_EXECUTABLE_NEXT_VERIFY",
     "required_when_executor_is_next": true,
     "same_reply": true,
-    "source_of_truth": "EXECUTION_FILE_OR_SKILL",
+    "omission_result": "VIRTUAL_CLOSEOUT_INCOMPLETE",
+    "extra_user_turn_target": 0,
+    "source_of_truth_priority": "REMOTE_EXECUTION_FILE_OR_SKILL",
     "pointer_only_when_source_readable": true,
+    "inline_when_shorter_than_pointer_workflow": true,
     "duplicate_instructions_allowed": false,
-    "remote_read_failure_fallback": "LOCAL_DEPLOYED_SKILL_OR_FILE",
-    "full_inline_instructions_only_if": "REMOTE_AND_LOCAL_UNREADABLE",
-    "fields": [
-      "READ",
-      "DO",
-      "RETURN"
+    "prohibited_defer_phrases": [
+      "NEXT_STEP_I_CAN_GIVE_COMMAND",
+      "WAIT_FOR_USER_CONFIRMATION_BEFORE_HANDOFF",
+      "DEPLOY_LATER"
     ],
-    "extra_user_turn_target": 0
+    "locator_missing_ui_title_does_not_block_handoff": true
   },
   "real_execution": {
     "role": "VERIFY_FROZEN_CORE_3_OUTPUT",
