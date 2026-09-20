@@ -1,0 +1,145 @@
+{
+  "schema": "MVT-BROWSER-DEPLOYMENT-ASSEMBLY-CONTRACT-v2",
+  "version": "1.0.0-rc2",
+  "method_authority": "first-principles-physical-limit-convergence@3.1.5",
+  "core_zh": "高智能虚拟成熟",
+  "objective": "close D001-D007 by reusing mature browser primitives, separating performance competition, capability conformance, and recovery execution",
+  "frozen_source_commit": "6a8c3b0dfb98bfd3312df319dbd31b0ffd7ed629",
+  "principles": {
+    "single_primary_metric": "T_VALID_FULL",
+    "winner_rule": ["VALID_FIRST","MINIMUM_T_VALID_FULL","EXACT_TIE_REMAINS_TIE","NO_SECOND_KPI"],
+    "normal_recovery_overhead": 0,
+    "codex_design_authority": false,
+    "codex_self_repair": false
+  },
+  "D001_real_run_config": {
+    "status_virtual": "PASS",
+    "condition_freeze": {
+      "B1": {"route":"F1","run_condition":"WARM","reason":"finite closed semantic/Jev comparison requires ready initial state; COLD would mix launch cost and RECONNECT would mix recovery cost","max_jev":1},
+      "D1": {"route":"F1","run_condition":"WARM","reason":"open-plan comparison requires ready initial state; COLD would mix launch cost and RECONNECT would mix recovery cost","max_open_plan":1}
+    },
+    "preserve_existing_A1_C1_conditions": true,
+    "E1_scope": "D007_RECOVERY_EXECUTION_MATRIX",
+    "CAP_scope": "D006_CAPABILITY_CONFORMANCE_MATRIX"
+  },
+  "D002_harness_matrix_binding": {
+    "status_virtual": "PASS",
+    "scope": ["A","B","C","D"],
+    "excluded_from_generic_route_binding": {
+      "E": "handled_by_D007",
+      "CAP": "handled_by_D006"
+    },
+    "B1": {
+      "route":"F1",
+      "condition":"WARM",
+      "runner":"candidate-f1/runner.cjs::module.exports.run",
+      "verifier":"step3-harness/verifier.cjs::module.exports.verify"
+    },
+    "D1": {
+      "route":"F1",
+      "condition":"WARM",
+      "runner":"candidate-f1/runner.cjs::module.exports.run",
+      "verifier":"step3-harness/verifier.cjs::module.exports.verify"
+    },
+    "ambiguous_bindings": 0,
+    "unbound_required_cases_after_rc2": 0
+  },
+  "D003_condition_state_machine": {
+    "status_virtual": "PASS",
+    "preserve_v1_exact_sequences": true
+  },
+  "D004_t_valid_full_recorder": {
+    "status_virtual": "PASS",
+    "clock": "MONOTONIC_HIGH_RESOLUTION",
+    "formula": "t_valid_full_ms=end_monotonic_ms-start_monotonic_ms",
+    "timing_boundary_overrides": 0
+  },
+  "D005_result_pipeline": {
+    "status_virtual": "PASS",
+    "sequence": ["RUNNER_RESULT","INDEPENDENT_VERIFIER","NORMALIZED_ATTEMPT","APPEND_ONLY_JSONL","STATISTICS","PROVISIONAL_WINNER_SELECTOR","ARTIFACT_HASHES"],
+    "append_only": true,
+    "dropped_failure_attempts": 0
+  },
+  "D006_capability_conformance": {
+    "status_virtual": "PASS",
+    "rule": "every source capability row must have an explicit disposition; capability PASS is never inferred from route availability",
+    "generic_CAP_route_required": false,
+    "rows": [
+      {"case_id":"CAP-001","source_status":"PASS","capability":"launch","disposition":"COMPETITION_PRIMITIVE"},
+      {"case_id":"CAP-002","source_status":"PASS","capability":"connect/reconnect","disposition":"CONDITION_RECOVERY_CAPABILITY"},
+      {"case_id":"CAP-003","source_status":"PASS","capability":"navigation/state/locator","disposition":"COMPETITION_PRIMITIVE"},
+      {"case_id":"CAP-004","source_status":"PASS","capability":"click/input/wait","disposition":"COMPETITION_PRIMITIVE"},
+      {"case_id":"CAP-005","source_status":"PASS","capability":"tabs/upload/download","disposition":"PRODUCT_CAPABILITY_NOT_YET_COMPETITION_BOUND"},
+      {"case_id":"CAP-006","source_status":"PARTIAL","capability":"profile/login","disposition":"PRODUCT_PROFILE_CAPABILITY"},
+      {"case_id":"CAP-007","source_status":"PASS","capability":"long answer/page","disposition":"PRODUCT_CAPABILITY_NOT_YET_COMPETITION_BOUND"},
+      {"case_id":"CAP-008","source_status":"PASS","capability":"table/JSON/code/Markdown","disposition":"PRODUCT_EXTRACTION_CAPABILITY"},
+      {"case_id":"CAP-009","source_status":"PASS","capability":"interrupt recovery","disposition":"RECOVERY_CAPABILITY"},
+      {"case_id":"CAP-010","source_status":"PARTIAL","capability":"network recovery","disposition":"RECOVERY_CAPABILITY"},
+      {"case_id":"CAP-011","source_status":"UNKNOWN","capability":"PDF","disposition":"EXPLICIT_UNKNOWN"},
+      {"case_id":"CAP-012","source_status":"PASS","capability":"CLI","disposition":"PRODUCT_INTERFACE_CAPABILITY"},
+      {"case_id":"CAP-013","source_status":"PASS","capability":"MCP STDIO","disposition":"PRODUCT_INTERFACE_CAPABILITY"},
+      {"case_id":"CAP-014","source_status":"BLOCKED","capability":"standard CDP 9222","disposition":"EXPLICIT_BLOCKED_LEGACY_PATH"},
+      {"case_id":"CAP-015","source_status":"UNKNOWN","capability":"ai-resource-orchestrator profile","disposition":"EXPLICIT_UNKNOWN_PROTECTED_PROFILE"}
+    ],
+    "explicit_dispositions": "15/15",
+    "silent_drop": 0,
+    "inferred_pass": 0,
+    "capability_matrix_normalized": true,
+    "final_product_capability_complete": false
+  },
+  "D007_recovery_execution": {
+    "status_virtual": "PASS",
+    "generic_E1_route_required": false,
+    "E1_repeat_each": 3,
+    "policy_resolver": "existing recovery.cjs::resolve(trigger)",
+    "policy_resolution_is_not_execution": true,
+    "normal_path_recovery_calls": 0,
+    "mature_primitives": {
+      "SESSION_LOST": {
+        "fault": "competition-owned Playwright protocol/controller disconnect fixture",
+        "recovery": "Playwright BrowserType.connect to competition-owned BrowserServer wsEndpoint",
+        "constraint": "never fixed 9222; never shared browser"
+      },
+      "STALE_STATE": {
+        "fault": "deterministic DOM/state fixture invalidation",
+        "recovery": "Playwright Locator re-resolution plus one bounded reacquire",
+        "constraint": "no model/Jev/Open-Agent"
+      },
+      "TARGET_CHANGED": {
+        "fault": "deterministic target identity fixture change",
+        "recovery": "one semantic Locator re-resolution when frozen semantics remain valid",
+        "constraint": "semantic contract change escalates to CONTRACT_DRIFT"
+      },
+      "BROWSER_CRASH": {
+        "fault": "competition-owned BrowserServer kill in recovery test only",
+        "recovery": "frozen cold-launch path plus restore frozen initial/auth state",
+        "constraint": "never kill shared/user browser"
+      },
+      "NETWORK_INTERRUPTION": {
+        "fault": "BrowserContext.route plus Route.abort on competition-owned context; remove with unroute/unrouteAll after test",
+        "recovery": "remove injected route and one bounded resume",
+        "constraint": "no Windows network, FlClash, adapter, or system proxy mutation"
+      },
+      "CONTRACT_DRIFT": {
+        "fault": "contract-copy or manifest/hash mismatch fixture",
+        "recovery": "RECORD_REALITY_DELTA -> STOP -> RETURN_TO_GPT",
+        "constraint": "no self-repair; no frozen source mutation"
+      }
+    },
+    "all_6_faults_virtual_bound": "6/6"
+  },
+  "virtual_io": {
+    "real_browser_runs": 0,
+    "real_jev_requests": 0,
+    "real_open_agent_requests": 0,
+    "production_mutation": 0,
+    "codex_self_repair": 0
+  },
+  "next_execution": {
+    "purpose": "materialize rc2 only",
+    "real_browser_allowed": false,
+    "real_jev_allowed": false,
+    "real_open_agent_allowed": false,
+    "final_reality_competition_allowed": false
+  }
+}
