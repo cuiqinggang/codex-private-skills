@@ -1,4 +1,4 @@
-# 第一性原理极限短时间引擎 v3.1.6
+# 第一性原理极限短时间引擎 v3.1.7
 
 ## 唯一三个核心
 
@@ -81,15 +81,29 @@ v3.1.4 中“4..6 是修复窗口”的语义已取消。
 
 正式分支：
 
-`codex/first-principles-physical-limit-convergence-v3.1.6`
+`codex/first-principles-physical-limit-convergence-v3.1.7`
 
 
-## v3.1.6 新增正式能力
+## v3.1.7 浏览器现实扩展
 
-- 现实锚定技能：reality-execution-environment-anchor@1.1.0
+- 现实锚定技能：`reality-execution-environment-anchor@1.2.0`
 - 中文：现实执行环境精确锚定与数字孪生基线
-- 唯一数字孪生：exact-reality-digital-twin@1.0.0
+- 唯一数字孪生：`exact-reality-digital-twin@1.1.0`
 - 中文：现实执行环境精确数字孪生唯一版
-- Reality Fingerprint V3：9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8
+- R1/R2 Host Reality Fingerprint V3 保持：
+  `9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8`
 
-现实采集属于“成熟方案集群”；Twin 的重放、故障注入、差异收敛与 Virtual-99 属于“高智能虚拟成熟”。不是第四核心。
+v1.2.0 新增 Browser Reality R3，完整把 Browser/Profile/Context/Auth/DOM/actionability/Network/Service Worker/WebSocket/Runtime/Trace/CDP/Golden Task 纳入现实锚定。
+
+当前状态：
+
+```text
+HOST_R2_REALITY_ANCHOR_COMPLETE=YES
+BROWSER_R3_COLLECTOR_CONTRACT=FROZEN
+BROWSER_R3_REAL_CAPTURE=NOT_YET
+BROWSER_R3_FINGERPRINT=NOT_YET
+BROWSER_TWIN_INPUT_READY=NO
+ENVIRONMENT_99=NOT_YET
+```
+
+现实采集仍属于“成熟方案集群”；Twin 的重放、差异收敛、故障推演与 Virtual-99 仍属于“高智能虚拟成熟”。没有第四核心。
