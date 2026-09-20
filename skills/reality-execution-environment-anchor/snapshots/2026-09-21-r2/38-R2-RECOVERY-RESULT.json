@@ -1,0 +1,104 @@
+{
+  "GAPS": [
+    {
+      "GAP_ID": "GAP-01",
+      "BEFORE": "UNKNOWN",
+      "RECOVERY_ACTION": "config/read includeLayers=true",
+      "AFTER": {
+        "project_doc_max_bytes": 32768,
+        "project_doc_fallback_filenames": []
+      },
+      "STATUS": "RESOLVED",
+      "SOURCE": "CODEX_APP_SERVER_READ_ONLY",
+      "BLOCKS_TWIN_AFTER_RECOVERY": false
+    },
+    {
+      "GAP_ID": "GAP-02",
+      "BEFORE": "UNKNOWN",
+      "RECOVERY_ACTION": "config/read includeLayers=true with recursive credential redaction",
+      "AFTER": "SANITIZED_FULL_EFFECTIVE_CONFIG_CAPTURED",
+      "STATUS": "RESOLVED",
+      "SOURCE": "CODEX_APP_SERVER_READ_ONLY",
+      "BLOCKS_TWIN_AFTER_RECOVERY": false
+    },
+    {
+      "GAP_ID": "GAP-03",
+      "BEFORE": "UNKNOWN",
+      "RECOVERY_ACTION": "configRequirements/read",
+      "AFTER": "NONE",
+      "STATUS": "RESOLVED",
+      "SOURCE": "CODEX_APP_SERVER_READ_ONLY",
+      "BLOCKS_TWIN_AFTER_RECOVERY": false
+    },
+    {
+      "GAP_ID": "GAP-04",
+      "BEFORE": "UNKNOWN",
+      "RECOVERY_ACTION": "config/read Windows runtime fields",
+      "AFTER": {
+        "sandbox": "unelevated",
+        "sandbox_private_desktop": null
+      },
+      "STATUS": "RESOLVED",
+      "SOURCE": "CODEX_APP_SERVER_READ_ONLY",
+      "BLOCKS_TWIN_AFTER_RECOVERY": false
+    },
+    {
+      "GAP_ID": "GAP-05",
+      "BEFORE": "UNKNOWN",
+      "RECOVERY_ACTION": "skills/list forceReload=true for three frozen cwds",
+      "AFTER": {
+        "cwd_count": 3,
+        "skill_count": 948
+      },
+      "STATUS": "RESOLVED",
+      "SOURCE": "CODEX_APP_SERVER_READ_ONLY",
+      "BLOCKS_TWIN_AFTER_RECOVERY": false
+    },
+    {
+      "GAP_ID": "GAP-06",
+      "BEFORE": "UNKNOWN",
+      "RECOVERY_ACTION": "config/read + configRequirements/read + existing static rules evidence",
+      "AFTER": "INCOMPLETE_NO_DEDICATED_EFFECTIVE_RULES_RETURN",
+      "STATUS": "UNRESOLVED",
+      "SOURCE": "PARTIAL_RUNTIME_AND_SOURCE_FILE",
+      "BLOCKS_TWIN_AFTER_RECOVERY": true
+    },
+    {
+      "GAP_ID": "GAP-07",
+      "BEFORE": "UNRESOLVED",
+      "RECOVERY_ACTION": "parse npm launcher and enumerate @openai/codex platform package",
+      "AFTER": {
+        "codex_real_executable": "C:\\Users\\A\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\bin\\codex.exe",
+        "codex_real_executable_size": 307108144,
+        "codex_real_executable_sha256": "EBA0F32C976667CB9298EFAFD98513E823EEDA7B576A03EC658BB8BE8D336316",
+        "inventory_file_count": 56
+      },
+      "STATUS": "RESOLVED",
+      "SOURCE": "SOURCE_FILE",
+      "BLOCKS_TWIN_AFTER_RECOVERY": false
+    },
+    {
+      "GAP_ID": "GAP-08",
+      "BEFORE": "UNKNOWN",
+      "RECOVERY_ACTION": "NONE_1344_3_OF_3_FROZEN_NO_MORE_TESTS",
+      "AFTER": "UNKNOWN_TARGET_ONLY",
+      "STATUS": "UNRESOLVED",
+      "SOURCE": "TARGET 1344 evidence",
+      "BLOCKS_TWIN_AFTER_RECOVERY": true
+    }
+  ],
+  "CRITICAL_UNKNOWN_COUNT_BEFORE": 8,
+  "RECOVERED_CRITICAL_COUNT": 6,
+  "CRITICAL_UNKNOWN_COUNT_AFTER_RECOVERY": 2,
+  "REMAINING_CRITICAL_FIELDS": [
+    "RULES_RUNTIME_EFFECTIVE",
+    "TARGET_PATH_RESOLUTION_AND_PROCESS_TOKEN"
+  ],
+  "OBSERVABLE_EXECUTION_STATE_COVERAGE_PERCENT_BEFORE": 27.27,
+  "OBSERVABLE_EXECUTION_STATE_COVERAGE_PERCENT_AFTER_RECOVERY": 81.82,
+  "REALITY_R2_CAPTURE": "PARTIAL",
+  "REALITY_ANCHOR_COMPLETE": "NO",
+  "EXECUTION_RELEVANT_STATE_COMPLETE": "NO",
+  "TWIN_INPUT_READY": "NO",
+  "TARGET_PROCESS_CREATION_RESTRICTION_REPRODUCED": "YES"
+}

@@ -1,0 +1,13 @@
+{
+  "OS": "Microsoft Windows 10 Pro",
+  "BUILD": "19045",
+  "PROCESS_ARCHITECTURE": "X64",
+  "POWERSHELL": "7.5.4",
+  "DOTNET": "8.0.21",
+  "COLLECTOR_CONTEXT": "non-elevated Medium integrity",
+  "DETAIL_SOURCE_FILES_LOCAL_ONLY": [
+    "01-HOST-HARDWARE.json",
+    "02-LOCALE-TIME-ENCODING.json",
+    "04-SHELL-RUNTIME.json"
+  ]
+}

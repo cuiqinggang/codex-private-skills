@@ -1,0 +1,2 @@
+# 权威来源
+仓库 `cuiqinggang/codex-private-skills`；分支 `codex/reality-execution-environment-anchor-r2-recovery`；路径 `skills/reality-execution-environment-anchor`；当前快照 `snapshots/2026-09-21-r2`。本包只保存安全在线证据，本机原始 R2 不直接发布。

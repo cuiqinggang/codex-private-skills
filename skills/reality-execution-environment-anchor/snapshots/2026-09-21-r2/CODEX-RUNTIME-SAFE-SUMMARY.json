@@ -1,0 +1,16 @@
+{
+  "CODEX_VERSION": "0.155.1",
+  "REAL_EXECUTABLE": "C:\\Users\\A\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\bin\\codex.exe",
+  "REAL_EXECUTABLE_SHA256": "EBA0F32C976667CB9298EFAFD98513E823EEDA7B576A03EC658BB8BE8D336316",
+  "MODEL": "gpt-5.6-sol",
+  "APPROVAL_POLICY": "on-request",
+  "APPROVALS_REVIEWER": "auto_review",
+  "PROJECT_DOC_MAX_BYTES": 32768,
+  "PROJECT_DOC_FALLBACK_FILENAMES": [],
+  "WINDOWS_SANDBOX": "unelevated",
+  "WINDOWS_PRIVATE_DESKTOP": null,
+  "MANAGED_REQUIREMENTS": "NONE",
+  "SKILL_CWD_COUNT": 3,
+  "SKILL_COUNT": 948,
+  "CREDENTIAL_FIELDS": "REDACTED_OR_OMITTED"
+}

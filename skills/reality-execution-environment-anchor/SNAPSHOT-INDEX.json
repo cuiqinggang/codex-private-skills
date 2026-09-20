@@ -1,0 +1,14 @@
+{
+  "r1": {
+    "date": "2026-09-20",
+    "status": "PARTIAL_SAFE_METADATA_ONLY",
+    "path": "snapshots/2026-09-20-r1"
+  },
+  "r2": {
+    "date": "2026-09-21",
+    "status": "PARTIAL_REALITY_BASELINE",
+    "path": "snapshots/2026-09-21-r2",
+    "reality_fingerprint": "8581312C0580050B0D6959363A019A622455B226A22013CC96B972EC6D2EAA54"
+  },
+  "CURRENT_SNAPSHOT": "2026-09-21-r2"
+}

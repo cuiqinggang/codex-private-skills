@@ -1,0 +1,59 @@
+{
+  "MODULES": [
+    {
+      "MODULE": "instruction_chain",
+      "STATUS": "FAIL"
+    },
+    {
+      "MODULE": "effective_config",
+      "STATUS": "FAIL"
+    },
+    {
+      "MODULE": "requirements",
+      "STATUS": "FAIL"
+    },
+    {
+      "MODULE": "sandbox_approval",
+      "STATUS": "FAIL"
+    },
+    {
+      "MODULE": "skills_runtime",
+      "STATUS": "FAIL"
+    },
+    {
+      "MODULE": "hooks_runtime",
+      "STATUS": "PASS"
+    },
+    {
+      "MODULE": "rules_runtime",
+      "STATUS": "FAIL"
+    },
+    {
+      "MODULE": "codex_binary",
+      "STATUS": "FAIL"
+    },
+    {
+      "MODULE": "target_path_resolution",
+      "STATUS": "FAIL"
+    },
+    {
+      "MODULE": "filesystem_acl",
+      "STATUS": "PASS"
+    },
+    {
+      "MODULE": "git_context",
+      "STATUS": "PASS"
+    }
+  ],
+  "CRITICAL_REQUIRED_TOTAL": 11,
+  "CRITICAL_CAPTURED": 3,
+  "CRITICAL_UNKNOWN_COUNT": 8,
+  "CRITICAL_ACCESS_DENIED_COUNT": 4,
+  "OBSERVABLE_EXECUTION_STATE_COVERAGE_PERCENT": 27.27,
+  "STATIC_HOST_STATE_COMPLETE": "NO",
+  "TARGET_RUNTIME_STATE_COMPLETE": "NO",
+  "COLLECTOR_CONTEXT_CAPTURED": "YES",
+  "TARGET_COLLECTOR_DELTA_CAPTURED": "YES",
+  "SANDBOX_RUNTIME_BOUNDARY_CAPTURED": "YES",
+  "TWIN_INPUT_READY": "NO"
+}

@@ -1,0 +1,4 @@
+# 使用说明
+当前状态为 `PARTIAL_REALITY_BASELINE`：8 个关键缺口解决 6 个，仍剩 `RULES_RUNTIME_EFFECTIVE` 与 `TARGET_PATH_RESOLUTION_AND_PROCESS_TOKEN`。
+读取：`SKILL.md` → `DUAL-CONTEXT-MODEL.md` → `snapshots/2026-09-21-r2/35-CRITICAL-GAPS.json` → `38-R2-RECOVERY-RESULT.json` → `37-REALITY-FINGERPRINT-V2.json`。
+不得解释为完整 Reality Anchor、完整 Twin 输入或 Environment-99。

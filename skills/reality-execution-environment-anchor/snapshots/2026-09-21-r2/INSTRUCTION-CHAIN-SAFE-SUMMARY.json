@@ -1,0 +1,9 @@
+{
+  "GLOBAL_EFFECTIVE_FILE": "AGENTS.md",
+  "EXACT_RAW_SNAPSHOTS_PUBLISHED": false,
+  "REASON": "Content-level credential verification not authorized",
+  "STATIC_CHAIN_CAPTURED_LOCALLY": true,
+  "RUNTIME_LIMIT_RECOVERED": 32768,
+  "FALLBACK_FILENAMES": [],
+  "TWIN_STATUS": "PARTIAL"
+}
