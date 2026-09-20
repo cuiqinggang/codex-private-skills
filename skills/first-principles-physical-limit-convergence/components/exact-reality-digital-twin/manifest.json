@@ -1,19 +1,29 @@
 {
   "component_id": "exact-reality-digital-twin",
   "display_name_zh": "现实执行环境精确数字孪生唯一版",
-  "version": "1.0.0",
-  "parent_method": "first-principles-physical-limit-convergence@3.1.6",
-  "reality_anchor_skill": "reality-execution-environment-anchor@1.1.0",
+  "version": "1.1.0",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.7",
+  "reality_anchor_skill": "reality-execution-environment-anchor@1.2.0",
   "canonical_single_implementation": true,
-  "reality_fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
-  "contract_selftest": "24/24 PASS",
-  "reality_shadow_run": "NOT_YET",
+  "host_r2": {
+    "reality_fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
+    "contract_selftest": "24/24 PASS",
+    "status": "READY"
+  },
+  "browser_r3": {
+    "input_contract": "BROWSER-TWIN-INPUT-CONTRACT.md",
+    "real_capture": "NOT_YET",
+    "fingerprint": "NOT_YET",
+    "twin_input_ready": false,
+    "golden_replay": "NOT_YET",
+    "reality_twin_delta": "NOT_YET",
+    "shadow_run": "NOT_YET"
+  },
   "environment_99": "NOT_YET",
-  "virtual_99_hardening": {
+  "virtual_99_hardening_legacy": {
     "status": "PASS",
     "plan_id": "WIN1344-NARROW-SESSION-CWD-v1",
     "canonical_plan_count": 1,
-    "minimum_change_cardinality": 1,
-    "real_verify": "NOT_YET"
+    "minimum_change_cardinality": 1
   }
 }
