@@ -1,0 +1,216 @@
+{
+  "schema": "PLAYWRIGHT-BROWSER-AUTOMATION5-FINAL-REALITY-COMPETITION-CONTRACT-v1",
+  "method_authority": "first-principles-physical-limit-convergence@3.1.5",
+  "core_zh": "高智能虚拟成熟",
+  "only_objective": "T_VALID",
+  "objective": "T_STAR=min(T_VALID)",
+  "executor_role": [
+    "RUN",
+    "MEASURE",
+    "RECORD",
+    "RETURN",
+    "STOP"
+  ],
+  "forbidden_executor_actions": [
+    "FINAL_PRODUCT_DECISION",
+    "ROUTE_EDIT",
+    "TASK_EDIT",
+    "TIMING_EDIT",
+    "VALID_EDIT",
+    "RUN_COUNT_EDIT",
+    "WINNER_RULE_EDIT",
+    "SELF_REPAIR",
+    "NEW_FALLBACK",
+    "NEW_ROUTE",
+    "MIDRUN_OPTIMIZATION",
+    "REALTIME_REPLAN"
+  ],
+  "frozen_source": {
+    "workspace": "C:\\Users\\A\\playwright-browser-automation5-step2-work",
+    "commit": "6a8c3b0dfb98bfd3312df319dbd31b0ffd7ed629",
+    "validations": {
+      "tests": "22/22 PASS",
+      "simulations": "26/26 PASS",
+      "manifest_hashes": "58/58 PASS"
+    },
+    "sha256": {
+      "result_md": "c2135912acee0a9821431a406a775534accddabcdfb516b33b1cc8ebeb130ad1",
+      "result_json": "97b3e7db2397bf9711015a2a61adf55be953d2c19b760bd8e1ba783104a8f080",
+      "test_matrix": "6bad5bcb8f1dea52bef930f878af4660f607eb349a7e1d207f9cd90b197b42e1",
+      "manifest": "a4b27d4f1953200d050a729285701c3b73aac200538de2b779bc6f1b4b8ecca1",
+      "step3_command_v2": "a15960a5d8af06a5d272bd6342e44dd21c6fd051fea384e7ccce8b0b2cf0d6c5"
+    }
+  },
+  "finalists": [
+    "F1_PLAYWRIGHT_NATIVE_DIRECT_PERSISTENT",
+    "F2_PLAYWRIGHT_COMPILED_REPLAY",
+    "F3_PERSISTENT_CDP_BATCHED_HELPER"
+  ],
+  "auxiliary_paths": {
+    "jev": "FINITE_CLOSED_SEMANTICS_ONLY_MAX_ONE_REQUEST",
+    "open_agent": "OPEN_PROBLEM_OR_INVALID_UNCERTAIN_ONE_JEV_ONLY",
+    "recovery": "ON_DEMAND_ONLY"
+  },
+  "families": [
+    "A_DETERMINISTIC",
+    "B_FINITE_CLOSED_SEMANTIC",
+    "C_REPEATED_SOLVED_WORKFLOW",
+    "D_OPEN_COMPLEX_REASONING",
+    "E_RECOVERY_CHANGED_REALITY",
+    "CAP_NORMAL_CAPABILITY"
+  ],
+  "timing": {
+    "primary_metric": "T_VALID_FULL",
+    "cold": {
+      "start": "TASK_ACCEPTED_BROWSER_PROCESS_NOT_RUNNING",
+      "end": "FIRST_INDEPENDENT_VALID_VERIFICATION",
+      "include": [
+        "BROWSER_STARTUP",
+        "INITIAL_NAVIGATION_IF_REQUIRED",
+        "STATE",
+        "MODELS",
+        "ACTIONS",
+        "WAITS",
+        "REQUIRED_RECOVERY"
+      ]
+    },
+    "warm": {
+      "start": "TASK_ACCEPTED_WITH_READY_INITIAL_STATE",
+      "end": "FIRST_INDEPENDENT_VALID_VERIFICATION"
+    },
+    "reconnect": {
+      "start": "RECONNECT_TASK_ISSUED_AFTER_FROZEN_DISCONNECT",
+      "end": "FIRST_INDEPENDENT_VALID_VERIFICATION"
+    }
+  },
+  "matrix": {
+    "A1": {
+      "F1": {
+        "COLD": 10,
+        "WARM": 20,
+        "RECONNECT": 10
+      },
+      "F2": {
+        "COLD": 10,
+        "WARM": 20,
+        "RECONNECT": "ONLY_IF_ALREADY_DEFINED_BY_FROZEN_F2_CONTRACT"
+      },
+      "F3": {
+        "COLD": 10,
+        "WARM": 20,
+        "RECONNECT": 10
+      }
+    },
+    "B1": {
+      "CODE": 20,
+      "ONE_JEV": 10,
+      "jev_max_requests_per_case": 1,
+      "jev_retry": 0,
+      "ensemble": 0,
+      "probability_fusion": 0
+    },
+    "C1": {
+      "F1": {
+        "WARM": 20,
+        "COLD": 10
+      },
+      "F2": {
+        "WARM": 20,
+        "COLD": 10
+      },
+      "F3": {
+        "WARM": 20,
+        "COLD": 10
+      }
+    },
+    "D1": {
+      "each_frozen_case": 5,
+      "max_open_planning_calls_per_attempt": 1
+    },
+    "E1": {
+      "SESSION_LOST": 3,
+      "STALE_STATE": 3,
+      "TARGET_CHANGED": 3,
+      "BROWSER_CRASH": 3,
+      "NETWORK_INTERRUPTION": 3,
+      "CONTRACT_DRIFT": 3
+    },
+    "CAP": {
+      "each_frozen_capability_case": 3
+    }
+  },
+  "validity": {
+    "all_required_attempts_must_pass": true,
+    "illegal_outputs": 0,
+    "duplicate_side_effects": 0,
+    "unauthorized_human_intervention": 0,
+    "preserve_all_failures": true,
+    "production_architecture_mutation": 0,
+    "proxy_mutation": 0,
+    "flclash_mutation": 0,
+    "profile_destruction": 0
+  },
+  "winner_rule": [
+    "VALID_FIRST",
+    "THEN_MINIMUM_T_VALID_FULL",
+    "EXACT_TIE_REMAINS_TIE",
+    "NO_SECOND_KPI"
+  ],
+  "diagnostic_stats": [
+    "COUNT",
+    "VALID_COUNT",
+    "FAIL_COUNT",
+    "MINIMUM",
+    "MEDIAN",
+    "MAXIMUM",
+    "P95_IF_MEANINGFUL"
+  ],
+  "jev_reference": {
+    "repo": "browser-use/jev-ultrafast",
+    "main_sha": "1231850a0bf1a0c0341fe408ef1668dbbfdfac46",
+    "url": "https://www.google.com/travel/flights?hl=en",
+    "goal": "Find one-way flights from Zurich to London on September 20, 2026, for one adult in economy. Stop when matching flight options are visible.",
+    "public_video_ms": 7073,
+    "public_optimized_median_ms": 7092,
+    "public_original_median_ms": 9450,
+    "compatible_boundary": {
+      "setup_excluded": true,
+      "initial_navigation_excluded": true,
+      "start": "FIRST_PREDICTION_AFTER_INITIAL_HOMEPAGE_OBSERVATION",
+      "end": "ACCEPTED_DONE",
+      "post_run_independent_verification_excluded": true
+    },
+    "J0_local_reference": {
+      "repeats": 3,
+      "role": "REFERENCE_ONLY_NOT_PRODUCT_CANDIDATE"
+    },
+    "J1_first_seen": {
+      "warm_repeats_per_eligible_route": 10,
+      "F2_task_specific_precompiled_replay_forbidden": true,
+      "beat_median_rule": "ALL_VALID_AND_MEDIAN_COMPAT_MS<7092",
+      "beat_video_rule": "AT_LEAST_ONE_VALID_COMPAT_MS<7073"
+    },
+    "J2_repeated": {
+      "warm_repeats": 20,
+      "F2_allowed": true,
+      "claim_scope": "REPEATED_PRODUCTION_NOT_FIRST_SEEN"
+    }
+  },
+  "outputs": [
+    "FINAL-REALITY-RAW-RUNS-v1.jsonl",
+    "FINAL-REALITY-SUMMARY-v1.json",
+    "FINAL-REALITY-SUMMARY-v1.md",
+    "FINAL-REALITY-CAPABILITY-v1.json",
+    "FINAL-REALITY-JEV-COMPAT-v1.json",
+    "PROVISIONAL-WINNER-MAP-v1.json",
+    "REALITY-DELTA-v1.json",
+    "ARTIFACT-HASHES-v1.json"
+  ],
+  "on_design_change_needed": [
+    "RECORD_REALITY_DELTA",
+    "STOP",
+    "RETURN_TO_GPT_PAGE"
+  ],
+  "final_authority": "GPT_PAGE_AFTER_REALITY_DATA",
+  "codex_may_finalize_product": false
+}
