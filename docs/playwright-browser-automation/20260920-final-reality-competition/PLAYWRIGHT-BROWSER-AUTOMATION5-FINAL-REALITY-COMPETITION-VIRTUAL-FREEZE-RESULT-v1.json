@@ -1,0 +1,33 @@
+{
+  "schema": "PLAYWRIGHT-BROWSER-AUTOMATION5-FINAL-REALITY-COMPETITION-VIRTUAL-FREEZE-RESULT-v1",
+  "method_authority": "3.1.5",
+  "core_zh": "高智能虚拟成熟",
+  "only_objective": "T_VALID",
+  "finalists": [
+    "F1_PLAYWRIGHT_NATIVE_DIRECT_PERSISTENT",
+    "F2_PLAYWRIGHT_COMPILED_REPLAY",
+    "F3_PERSISTENT_CDP_BATCHED_HELPER"
+  ],
+  "virtual_cases": 18,
+  "virtual_pass": "18/18",
+  "virtual_accuracy": "100%",
+  "assertions": {
+    "executor_only_role": "PASS",
+    "codex_self_repair": "BLOCKED",
+    "codex_final_product_decision": "BLOCKED",
+    "failure_retention": "PASS",
+    "winner_rule": "VALID_FIRST_THEN_MINIMUM_T_VALID_FULL",
+    "no_second_kpi": "PASS",
+    "jev_reference_boundary_separated_from_primary_t_valid": "PASS",
+    "jev_first_seen_f2_task_specific_replay": "FORBIDDEN",
+    "reality_failure_return_to_gpt": "PASS",
+    "final_product_authority": "GPT_PAGE_AFTER_REALITY_DATA"
+  },
+  "real_runs": {
+    "browser": 0,
+    "jev": 0,
+    "open_agent": 0
+  },
+  "virtual_freeze": "PASS",
+  "ready_for_codex_reality_execution": true
+}
