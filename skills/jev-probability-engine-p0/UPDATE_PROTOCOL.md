@@ -1,55 +1,61 @@
-# UPDATE PROTOCOL
+# UPDATE PROTOCOL — 更新而不丢历史
 
-目的：以后改变时更新，不覆盖今天的依据。
+本文件解决：以后现实环境、Jev、任务结构或方法发生变化时，如何更新而不是覆盖今天的依据。
 
-## 版本
+## 1. 真值优先级
+1. 当前版本 freeze / Virtual-99 freeze。
+2. CURRENT_STATE.md。
+3. CHANGELOG.md 与对应版本历史。
+4. 原始来源/实验记录。
 
-MAJOR：改变三核心、唯一目标、COMMERCIAL_GATE、T0/T1 或 E=(C,P,S,V)。
-MINOR：改变 P0 任务、Jev 主版本、基本原语或依赖结构，导致 D_MIN/T_PHY 重算。
-PATCH：非语义修正或证据补充。
+旧版本不删除，只声明被哪个版本替代以及原因。
 
-## 每次更新必须记录
+## 2. 版本规则
+- MAJOR：改变三核心、唯一目标、COMMERCIAL_GATE、T0/T1 或 E=(C,P,S,V) 核心抽象。
+- MINOR：新增/替换 P0 任务、Jev 主版本、状态/动作原语，或改变最小依赖结构/关键屏障。
+- PATCH：文字、证据补充、非语义错误修正。
 
-CHANGE_ID
-DATE
-OLD_VERSION
-NEW_VERSION
-TRIGGER
-NEW_EVIDENCE
-AFFECTED_INVARIANTS
-AFFECTED_FILES
-RECALCULATE_D_MIN=YES/NO
+## 3. 每次更新必须记录
+```text
+CHANGE_ID=
+DATE=
+OLD_VERSION=
+NEW_VERSION=
+TRIGGER=
+NEW_EVIDENCE=
+AFFECTED_INVARIANTS=
+AFFECTED_FILES=
+RECALCULATE_MODEL_BARRIER=YES/NO
+RECALCULATE_ACTION_DEPENDENCY=YES/NO
 RECALCULATE_T_PHY=YES/NO
 REMEASURE_T_REAL_STAR=YES/NO
 RERUN_REAL_P0=YES/NO
 BACKWARD_COMPATIBLE=YES/NO
-SUPERSEDES
+SUPERSEDES=
+```
 
-## 必须触发更新
+## 4. 必须触发更新的事件
+- Jev 版本、Provider 或 API 语义变化。
+- 网络、机器、代理、动作后端、Verifier 改变且影响现实时间。
+- 发现更成熟结构能减少关键路径。
+- COMMERCIAL_GATE 不能覆盖生产要求。
+- 新普通任务暴露缺失基本原语。
+- 发现伪依赖、oracle 泄露或 benchmark 作弊风险。
 
-Jev 版本或 Provider 变化；
-机器、网络、代理、动作后端、verifier 改变并影响现实时间；
-发现成熟结构能减少关键路径；
-COMMERCIAL_GATE 不足以覆盖真实生产要求；
-新普通任务暴露底层缺失的基本原语；
-发现伪依赖、oracle 泄露或 benchmark 作弊风险。
+## 5. 不允许
+- 直接改旧冻结结果，让历史看起来从未变化。
+- 为迁就更快结果降低门槛。
+- 把现实数值变化误写成理论结构变化。
+- 用社区 benchmark 覆盖当前现实锚定。
+- 新增成本分、成熟度分等并列主指标。
 
-## 禁止
+## 6. 更新流程
+新事实 → 识别受影响层 → 旧版为新版本起点 → 最小修改 → 重算受影响物理量 → 必要现实复测 → 新 freeze → CURRENT_STATE/CHANGELOG → 旧版永久保留。
 
-直接覆盖旧冻结结果；
-为了更快而降低门槛；
-把现实数值变化误写成理论结构变化；
-拿社区 benchmark 替代当前环境实测；
-重新引入成本分、成熟度分等第二主指标。
+## 7. 0.2.0 起必须分离屏障类型
+不得用一个裸 D_MIN 同时代表全部依赖。至少区分：
+- MODEL_BARRIER_DEPTH：必须串行等待的概率/模型波次。
+- ACTION_DEPENDENCY_DEPTH：真实动作/receipt 的因果层数。
+- FINAL_VERIFY_BARRIERS：无法与动作隐藏的最终验证屏障。
 
-## 固定更新流程
-
-新事实
-→ 判断影响层
-→ 从旧版复制为新版本
-→ 最小修改
-→ 重算受影响物理量
-→ 必要现实复测
-→ 新 freeze
-→ 更新 CURRENT_STATE 与 HISTORY/CHANGELOG
-→ 保留旧版。
+若 speculative precompute 可以消除模型等待，应重算 model barrier；但不能因此提前提交依赖真实结果的动作。
