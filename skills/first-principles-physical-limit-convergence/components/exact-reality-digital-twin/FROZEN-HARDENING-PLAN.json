@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "plan_id": "WIN1344-NARROW-SESSION-CWD-v1",
+  "status": "FROZEN_FOR_REAL_VERIFY",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.6",
+  "reality_anchor": "reality-execution-environment-anchor@1.1.0",
+  "exact_twin": "exact-reality-digital-twin@1.0.0",
+  "virtual_99": "PASS",
+  "canonical_plan_count": 1,
+  "objective_zh": "以最少现实变化消除 SetTokenInformation(TokenDefaultDacl) 1344，同时保留 workspace-write 与 Windows sandbox",
+  "only_change": {
+    "field": "Codex session CWD / workspace root",
+    "from": "C:\\Users\\A",
+    "to": "C:\\Users\\A\\playwright-browser-automation5-final-reality-competition-work"
+  },
+  "frozen_non_changes": [
+    "不改 Windows",
+    "不改 Codex 版本",
+    "不改 config.toml",
+    "不改 AGENTS",
+    "不改 rules",
+    "不改 skills",
+    "不改 windows.sandbox=unelevated",
+    "不改 approval_policy=on-request",
+    "不改 ACL",
+    "不清 cap_sid",
+    "不改代理",
+    "不改网络",
+    "不改 PATH"
+  ],
+  "launch_semantics_zh": "必须从新的 Codex 进程/会话启动点把 CWD 设为窄项目目录；只改工具调用的 workdir 不算执行本方案",
+  "validation": {
+    "runs": 3,
+    "identical_runs": true,
+    "probe": "最小只读子进程，输出 H1_NARROW_CWD_OK",
+    "success": [
+      "3/3 子进程成功启动",
+      "3/3 不出现 SetTokenInformation/1344",
+      "3/3 stdout 精确为 H1_NARROW_CWD_OK",
+      "无其他 Reality 配置修改"
+    ],
+    "failure": [
+      "任一 1344",
+      "任一新错误（包括 1920）",
+      "结果不一致",
+      "出现非冻结修改"
+    ],
+    "on_failure": "只回传 REALITY_DELTA 并 STOP；Codex 禁止自行修复"
+  },
+  "rollback_zh": "不做持久配置修改；结束该窄目录会话即可回到原 Reality。"
+}

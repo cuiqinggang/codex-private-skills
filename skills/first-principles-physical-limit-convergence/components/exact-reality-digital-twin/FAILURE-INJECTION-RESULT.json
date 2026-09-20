@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "plan": "H1",
+  "tests": [
+    {
+      "case": "仍使用用户主目录作为 session CWD",
+      "expected": "REJECT_PLAN_OR_REPRODUCE_1344",
+      "pass": true
+    },
+    {
+      "case": "只改 per-command workdir",
+      "expected": "NOT_EQUIVALENT_TO_H1",
+      "pass": true
+    },
+    {
+      "case": "同时改 sandbox backend",
+      "expected": "NON_MINIMAL",
+      "pass": true
+    },
+    {
+      "case": "同时改 approval",
+      "expected": "NON_MINIMAL",
+      "pass": true
+    },
+    {
+      "case": "清 cap_sid",
+      "expected": "NON_MINIMAL_PERSISTENT_MUTATION",
+      "pass": true
+    },
+    {
+      "case": "切 read-only",
+      "expected": "INVALID_CAPABILITY_LOSS",
+      "pass": true
+    },
+    {
+      "case": "切 danger-full-access",
+      "expected": "INVALID_SANDBOX_LOSS",
+      "pass": true
+    },
+    {
+      "case": "目标项目目录不存在",
+      "expected": "STOP_NO_SUBSTITUTE",
+      "pass": true
+    },
+    {
+      "case": "H1 后仍是 1344",
+      "expected": "REALITY_DELTA_STOP",
+      "pass": true
+    },
+    {
+      "case": "H1 后出现 1920 或其他新错误",
+      "expected": "NEW_REALITY_DELTA_STOP_NO_AUTO_PATH_EDIT",
+      "pass": true
+    },
+    {
+      "case": "H1 3次结果不一致",
+      "expected": "FAIL_STABILITY_GATE",
+      "pass": true
+    },
+    {
+      "case": "H1 成功但修改了其他配置",
+      "expected": "FAIL_MUTATION_GATE",
+      "pass": true
+    }
+  ],
+  "passed": 12,
+  "failed": 0,
+  "failure_injection_pass": "YES"
+}

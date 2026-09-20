@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "optimization": "在保留 workspace-write 与 Windows sandbox 的条件下最小化现实变化因素数量",
+  "winner": {
+    "id": "H1",
+    "changed_factors": 1,
+    "change": "SESSION_CWD_ONLY",
+    "from": "C:\\Users\\A",
+    "to": "C:\\Users\\A\\playwright-browser-automation5-final-reality-competition-work",
+    "system_mutation": false,
+    "config_mutation": false,
+    "acl_mutation": false,
+    "sandbox_backend_mutation": false,
+    "approval_mutation": false,
+    "proxy_mutation": false,
+    "network_mutation": false,
+    "codex_version_mutation": false,
+    "cap_sid_reset": false
+  },
+  "rejected": [
+    {
+      "id": "H2",
+      "change": "per-command workdir only",
+      "reason_zh": "公开复现表明 sandbox setup 使用 session CWD；不解决宽 session root"
+    },
+    {
+      "id": "H3",
+      "change": "switch elevated/unelevated",
+      "reason_zh": "1344 在两种后端均有现实复现，且用户当前已是 unelevated"
+    },
+    {
+      "id": "H4",
+      "change": "approval policy",
+      "reason_zh": "只改变失败后的审批/回退，不改变 TokenDefaultDacl 构造"
+    },
+    {
+      "id": "H5",
+      "change": "read-only",
+      "reason_zh": "绕过 writable DACL 但丢失工作区写能力，不满足生产合同"
+    },
+    {
+      "id": "H6",
+      "change": "danger-full-access",
+      "reason_zh": "绕过沙盒，破坏安全边界"
+    },
+    {
+      "id": "H7",
+      "change": "clear cap_sid / ACL cleanup",
+      "reason_zh": "0.155.1 源码只把当前 active roots SID 放入令牌；不是最小必要变化且有持久修改风险"
+    },
+    {
+      "id": "H8",
+      "change": "downgrade 0.154.x",
+      "reason_zh": "0.154.x 也有同类 1344 现实复现，不能针对根因"
+    },
+    {
+      "id": "H9",
+      "change": "WSL",
+      "reason_zh": "改变执行平台，远大于必要变化，破坏原生 Windows Reality 基线"
+    }
+  ],
+  "irreducible_change_set": true,
+  "minimum_change_cardinality": 1
+}

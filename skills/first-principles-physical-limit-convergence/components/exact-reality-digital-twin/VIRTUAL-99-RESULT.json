@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "method": "first-principles-physical-limit-convergence@3.1.6",
+  "twin": "exact-reality-digital-twin@1.0.0",
+  "reality_fingerprint": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
+  "target_problem": "SetTokenInformation(TokenDefaultDacl) error 1344 before child start",
+  "candidate_count": 9,
+  "canonical_candidate": "H1",
+  "canonical_change_zh": "仅把 Codex workspace-write 会话级工作目录从 C:\\Users\\A 缩窄到现有真实项目目录；其他 Reality 条件全部保持不变",
+  "changed_factor_count": 1,
+  "virtual_gate_total": 24,
+  "virtual_gate_pass": 24,
+  "virtual_gate_fail": 0,
+  "virtual_99": "PASS",
+  "scope": "方案选择与最小性虚拟成熟通过；仍需 Codex 在真实机器做冻结方案现实验证",
+  "reality_mutation": 0,
+  "real_verify": "NOT_YET"
+}

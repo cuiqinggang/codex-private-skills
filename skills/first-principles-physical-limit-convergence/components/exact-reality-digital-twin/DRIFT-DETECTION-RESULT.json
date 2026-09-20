@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "frozen_invariants": [
+    "Codex CLI 0.155.1",
+    "windows.sandbox=unelevated",
+    "approval_policy=on-request",
+    "Reality Fingerprint V3 remains source baseline",
+    "AGENTS/config/rules/skills/proxy/network/ACL remain unchanged",
+    "only session CWD changes"
+  ],
+  "critical_drift": [
+    "Codex version changed",
+    "sandbox backend changed",
+    "approval changed",
+    "rules/config/AGENTS changed",
+    "proxy/network changed",
+    "target path changed",
+    "target project path missing",
+    "baseline fingerprint unexpectedly changed"
+  ],
+  "on_drift": "STOP_RETURN_REALITY_DELTA",
+  "drift_detection_pass": "YES"
+}
