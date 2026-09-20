@@ -128,7 +128,7 @@ $ipConfigSafe = @($ipConfig | ForEach-Object {
     IPv6AddressSha256 = Get-TextSha256 ((@($_.IPv6Address | ForEach-Object { [string]$_.IPAddress }) -join '|'))
     IPv4DefaultGatewaySha256 = Get-TextSha256 ((@($_.IPv4DefaultGateway | ForEach-Object { [string]$_.NextHop }) -join '|'))
     IPv6DefaultGatewaySha256 = Get-TextSha256 ((@($_.IPv6DefaultGateway | ForEach-Object { [string]$_.NextHop }) -join '|'))
-    NetProfileName = $_.NetProfile.Name
+    NetProfileNameSha256 = Get-TextSha256 ([string]$_.NetProfile.Name)
     NetProfileCategory = $_.NetProfile.NetworkCategory
   }
 })
