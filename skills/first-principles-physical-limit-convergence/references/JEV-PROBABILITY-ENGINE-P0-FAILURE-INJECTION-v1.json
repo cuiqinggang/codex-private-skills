@@ -1,0 +1,56 @@
+{
+  "suite": "PE-P0-v3.1.6-GPT-VIRTUAL-99",
+  "total": 12,
+  "pass_count": 12,
+  "result": "PASS",
+  "cases": [
+    [
+      "normal_A_fast",
+      "PASS + early release"
+    ],
+    [
+      "normal_B_fast",
+      "PASS + early release"
+    ],
+    [
+      "schema_malformed",
+      "BLOCK"
+    ],
+    [
+      "wrong_action",
+      "COMMERCIAL_GATE_FAIL"
+    ],
+    [
+      "drop_question",
+      "BLOCK"
+    ],
+    [
+      "drop_receipt",
+      "COMMERCIAL_GATE_FAIL"
+    ],
+    [
+      "dependency_early",
+      "DEPENDENCY_ORDER_FAIL"
+    ],
+    [
+      "shard_A_timeout",
+      "BLOCK"
+    ],
+    [
+      "shard_B_timeout",
+      "BLOCK"
+    ],
+    [
+      "model_drift",
+      "BLOCK"
+    ],
+    [
+      "duplicate_receipt",
+      "COMMERCIAL_GATE_FAIL"
+    ],
+    [
+      "slow_straggler_no_global_join",
+      "PASS + early release"
+    ]
+  ]
+}
