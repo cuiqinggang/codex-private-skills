@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "contract_id": "BROWSER-REALITY-R3",
+  "skill": "reality-execution-environment-anchor@1.2.0",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.7",
+  "role": "CORE_2_MATURE_SOLUTION_CLUSTER_REALITY_CAPTURE",
+  "preservation": {
+    "r1_r2_history_append_only": true,
+    "legacy_reality_fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
+    "overwrite_legacy_anchor": false
+  },
+  "capture_modes": {
+    "golden_timing_run": {
+      "trace_required": false,
+      "har_required": false,
+      "heavy_cdp_required": false,
+      "authoritative_for_time": true
+    },
+    "golden_observability_run": {
+      "trace_required": true,
+      "cdp_required": true,
+      "dom_snapshot_required": true,
+      "authoritative_for_time": false
+    }
+  },
+  "required_modules": [
+    "R3_BROWSER_PROCESS",
+    "R3_CONTEXT_CONFIG",
+    "R3_AUTH_STORAGE",
+    "R3_PAGE_GRAPH",
+    "R3_DOM_ACTIONABILITY",
+    "R3_NETWORK_HOST",
+    "R3_NETWORK_BROWSER",
+    "R3_RUNTIME_ERRORS",
+    "R3_ARTIFACTS",
+    "R3_GOLDEN_TASK_RESULT"
+  ],
+  "actionability_required": [
+    "EXACTLY_ONE",
+    "VISIBLE",
+    "STABLE",
+    "RECEIVES_EVENTS",
+    "ENABLED"
+  ],
+  "network_required": [
+    "REQUEST_RESPONSE_FINISH_FAILURE",
+    "REDIRECT_CHAIN",
+    "RESOURCE_TYPE",
+    "STATUS_PROTOCOL",
+    "TIMING",
+    "CACHE_AND_SERVICE_WORKER_SOURCE_WHEN_AVAILABLE",
+    "TLS_SECURITY_DETAILS_WHEN_AVAILABLE",
+    "WEBSOCKET_WHEN_PRESENT",
+    "HOST_PROXY_DNS_INTERFACE_ROUTE_SUMMARY"
+  ],
+  "secret_policy": {
+    "remote_plaintext_credentials": false,
+    "remote_raw_storage_state": false,
+    "remote_raw_cookie_values": false,
+    "remote_raw_har": false,
+    "remote_raw_trace": false,
+    "allowed_remote": "SANITIZED_METADATA_COUNTS_HASHES_AND_REDACTED_EVENTS"
+  },
+  "reality_mutation_forbidden": [
+    "PROXY_CHANGE",
+    "NETWORK_CHANGE",
+    "PROFILE_CHANGE",
+    "COOKIE_CHANGE",
+    "SERVICE_WORKER_BLOCK",
+    "REQUEST_ROUTING_OR_MOCK",
+    "NETWORK_EMULATION",
+    "CACHE_POLICY_CHANGE",
+    "PAGE_CONTENT_MUTATION"
+  ],
+  "current_status": {
+    "browser_r3_collector_contract": "FROZEN",
+    "browser_r3_real_capture": "NOT_YET",
+    "browser_r3_fingerprint": "NOT_YET",
+    "browser_twin_input_ready": false,
+    "environment_99": "NOT_YET"
+  }
+}
