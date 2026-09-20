@@ -634,3 +634,44 @@ GPT  = 开放问题或仍不确定的冲突
 - v1 freeze、Verify-02 command/runner 与 Reality Delta
 
 下一次唯一 Real Verify 仅以 v2 内的合同草案为准；未生成可执行命令包，禁止自动开始。
+
+
+---
+
+## JEV Probability Engine P0 — v3.1.6 现实基线再收敛（ACTIVE FROZEN CASE）
+
+本案例严格属于三核心，不创建第四核心。
+
+现实锚：
+```text
+PE-P0-GENERAL-01
+REAL_BASELINE_VERSION=jev-probability-engine-p0 v0.3.0
+REAL_BASELINE_T_P0_MS=840.6046999999962
+REAL_BASELINE_GATE=30/30 PASS
+```
+
+CORE 2 广域成熟方案池：
+`references/JEV-PROBABILITY-ENGINE-P0-MATURE-POOL-v1.md`
+
+CORE 3 GPT Virtual-99：
+`references/JEV-PROBABILITY-ENGINE-P0-VIRTUAL-99-v1.md`
+`references/JEV-PROBABILITY-ENGINE-P0-VIRTUAL-99-v1.json`
+
+唯一冻结实现：
+`components/jev-probability-engine-p0-extreme/`
+
+当前门禁：
+```text
+MATURE_SOLUTION_CLUSTER=PASS
+VIRTUAL_99=PASS
+SOLUTION_FROZEN=YES
+REAL_VERIFY=NOT_YET
+CODEX_DESIGN_AUTHORITY=NO
+CODEX_EXECUTOR_ONLY=YES
+```
+
+冻结方案固定为：Jev 1.13、一个 model barrier、2 个 dependency-affinity + runtime LPT byte-balanced shards、projected state、short state-path Choice、2 条预热 persistent connections、per-shard early release、receipt O(1) policy lookup、in-memory reducer + 单 append-only log、incremental deterministic verifier + one final gate。
+
+现实执行若任何一项失败或 30/30 通过但最短时间未低于 840.6046999999962 ms：
+`REALITY_DELTA -> STOP -> RETURN_TO_GPT`。
+Codex/Reasonix/本地执行器禁止自行改变方案。
