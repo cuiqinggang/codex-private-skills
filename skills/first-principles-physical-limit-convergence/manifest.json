@@ -86,7 +86,6 @@
       "TASK_NAME",
       "SEQ"
     ],
-    "page_name_source": "ACTUAL_UI_PAGE_TITLE_ONLY",
     "page_name_guessing_allowed": false,
     "task_name_source": "DIRECT_CONCISE_RESTATEMENT_OF_CURRENT_TASK",
     "task_extra_id": false,
@@ -101,6 +100,14 @@
     "after_6_incomplete": "STOP_AND_REFREEZE_OR_SPLIT_TASK",
     "core_mapping_source": "EXISTING_MANDATORY_3_STEP_GATE",
     "duplicate_core_in_locator": false,
-    "visible_extra_fields_allowed": false
+    "visible_extra_fields_allowed": false,
+    "page_name_source_priority": [
+      "USER_PROVIDED_EXACT",
+      "SYSTEM_READABLE_ACTUAL_UI_TITLE",
+      "NO_GUESS"
+    ],
+    "command_missing_first_or_last_locator": "REAL_VERIFY_FAIL",
+    "answer_missing_or_mismatched_locator": "REAL_LOCATOR_TEST_FAIL",
+    "real_roundtrip_required": true
   }
 }
