@@ -84,7 +84,8 @@ foreach ($p in $processes) {
     Name = $p.Name
     ProcessId = $p.ProcessId
     ParentProcessId = $p.ParentProcessId
-    ExecutablePath = $p.ExecutablePath
+    ExecutableName = if ($p.ExecutablePath) { [IO.Path]::GetFileName($p.ExecutablePath) } else { $p.Name }
+    ExecutablePathSha256 = Get-TextSha256 ([string]$p.ExecutablePath)
     CommandLinePresent = -not [string]::IsNullOrWhiteSpace([string]$p.CommandLine)
     CommandLineSha256 = Get-TextSha256 ([string]$p.CommandLine)
     FileVersion = $version
@@ -106,6 +107,53 @@ $tcpSafe = @($tcpRaw | ForEach-Object {
     OwningProcess = $_.OwningProcess
     LocalAddressSha256 = Get-TextSha256 ([string]$_.LocalAddress)
     RemoteAddressSha256 = Get-TextSha256 ([string]$_.RemoteAddress)
+  }
+})
+
+$dnsSafe = @($dns | ForEach-Object {
+  [ordered]@{
+    InterfaceAlias = $_.InterfaceAlias
+    InterfaceIndex = $_.InterfaceIndex
+    AddressFamily = $_.AddressFamily
+    ServerAddressCount = @($_.ServerAddresses).Count
+    ServerAddressesSha256 = Get-TextSha256 ((@($_.ServerAddresses) -join '|'))
+  }
+})
+
+$ipConfigSafe = @($ipConfig | ForEach-Object {
+  [ordered]@{
+    InterfaceAlias = $_.InterfaceAlias
+    InterfaceIndex = $_.InterfaceIndex
+    IPv4AddressSha256 = Get-TextSha256 ((@($_.IPv4Address | ForEach-Object { [string]$_.IPAddress }) -join '|'))
+    IPv6AddressSha256 = Get-TextSha256 ((@($_.IPv6Address | ForEach-Object { [string]$_.IPAddress }) -join '|'))
+    IPv4DefaultGatewaySha256 = Get-TextSha256 ((@($_.IPv4DefaultGateway | ForEach-Object { [string]$_.NextHop }) -join '|'))
+    IPv6DefaultGatewaySha256 = Get-TextSha256 ((@($_.IPv6DefaultGateway | ForEach-Object { [string]$_.NextHop }) -join '|'))
+    NetProfileName = $_.NetProfile.Name
+    NetProfileCategory = $_.NetProfile.NetworkCategory
+  }
+})
+
+$routesSafe = @($routes | ForEach-Object {
+  [ordered]@{
+    AddressFamily = $_.AddressFamily
+    DestinationPrefixSha256 = Get-TextSha256 ([string]$_.DestinationPrefix)
+    NextHopSha256 = Get-TextSha256 ([string]$_.NextHop)
+    InterfaceIndex = $_.InterfaceIndex
+    RouteMetric = $_.RouteMetric
+    Protocol = $_.Protocol
+    State = $_.State
+  }
+})
+
+$adaptersSafe = @($adapters | ForEach-Object {
+  [ordered]@{
+    Name = $_.Name
+    InterfaceDescription = $_.InterfaceDescription
+    ifIndex = $_.ifIndex
+    Status = $_.Status
+    MacAddressSha256 = Get-TextSha256 ([string]$_.MacAddress)
+    LinkSpeed = $_.LinkSpeed
+    MediaConnectionState = $_.MediaConnectionState
   }
 })
 
@@ -133,10 +181,10 @@ $safe = [ordered]@{
   proxy_environment = $proxyEnvSafe
   winhttp_proxy_sha256 = Get-TextSha256 $winHttp
   user_internet_settings = $userProxySafe
-  dns = $dns
-  ip_configuration = $ipConfig
-  routes = $routes
-  adapters = $adapters
+  dns = $dnsSafe
+  ip_configuration = $ipConfigSafe
+  routes = $routesSafe
+  adapters = $adaptersSafe
   browser_node_processes = $procSafe
   browser_tcp_connections_safe = $tcpSafe
 }
