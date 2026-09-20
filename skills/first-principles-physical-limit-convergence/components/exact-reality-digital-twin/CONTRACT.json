@@ -1,16 +1,27 @@
 {
   "component_id": "exact-reality-digital-twin",
   "display_name_zh": "现实执行环境精确数字孪生唯一版",
-  "version": "1.0.0",
-  "parent_method": "first-principles-physical-limit-convergence@3.1.6",
+  "version": "1.1.0",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.7",
   "core_owner": "高智能虚拟成熟",
+  "canonical_single_implementation": true,
   "reality_input": {
-    "skill": "reality-execution-environment-anchor@1.1.0",
-    "fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
-    "final_anchor": "snapshots/2026-09-21-r2/45-REALITY-ENVIRONMENT-ANCHOR-R2-FINAL.json",
-    "final_fingerprint": "snapshots/2026-09-21-r2/46-REALITY-FINGERPRINT-V3.json"
+    "skill": "reality-execution-environment-anchor@1.2.0",
+    "host_r2": {
+      "fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
+      "final_anchor": "snapshots/2026-09-21-r2/45-REALITY-ENVIRONMENT-ANCHOR-R2-FINAL.json",
+      "final_fingerprint": "snapshots/2026-09-21-r2/46-REALITY-FINGERPRINT-V3.json",
+      "status": "READY"
+    },
+    "browser_r3": {
+      "contract": "BROWSER-REALITY-R3-CONTRACT.json",
+      "input_contract": "BROWSER-TWIN-INPUT-CONTRACT.md",
+      "real_capture": "NOT_YET",
+      "fingerprint": "NOT_YET",
+      "twin_input_ready": false
+    }
   },
-  "exact_current_behavior": {
+  "legacy_exact_current_behavior": {
     "api": "SetTokenInformation",
     "error_code": 1344,
     "reproduction": "3_OF_3",
@@ -18,15 +29,32 @@
     "child_path_resolution": "NOT_REACHED",
     "child_execution_token": "NO_RUNNING_CHILD_PROCESS_TOKEN"
   },
+  "browser_required_state": [
+    "BROWSER_PROCESS",
+    "PLAYWRIGHT_AND_NODE_VERSION",
+    "LAUNCH_AND_CONTEXT_CONFIG",
+    "PROFILE_AND_USER_DATA_DIR_FINGERPRINT",
+    "AUTH_AND_STORAGE_STRUCTURE",
+    "PAGE_FRAME_WORKER_SERVICE_WORKER_GRAPH",
+    "DOM_LAYOUT_OVERLAY_ANIMATION",
+    "PLAYWRIGHT_ACTIONABILITY",
+    "HTTP_NETWORK_TIMING_TLS",
+    "WEBSOCKET_WHEN_PRESENT",
+    "RUNTIME_ERRORS_AND_DIALOGS",
+    "TRACE_CDP_DOMSNAPSHOT_HASHES",
+    "GOLDEN_TASK_REALITY_3_OF_3"
+  ],
   "modes": {
-    "reality": "READ_ONLY_EXACT_REPLAY",
+    "reality": "READ_ONLY_EXACT_REPLAY_OF_OBSERVED_FACTS",
     "shadow": "HYPOTHETICAL_OVERLAY_NEVER_RELABEL_AS_REALITY"
   },
   "gates": {
-    "critical_unknown_count": 0,
-    "critical_execution_coverage_percent": "100.00",
-    "contract_selftest": "24/24 PASS",
-    "reality_shadow_run": "NOT_YET",
+    "legacy_contract_selftest": "24/24 PASS",
+    "host_r2_reality_input": "READY",
+    "browser_r3_reality_input": "NOT_YET",
+    "browser_golden_replay": "NOT_YET",
+    "browser_reality_twin_delta": "NOT_YET",
+    "browser_shadow_run": "NOT_YET",
     "environment_99": "NOT_YET"
   }
 }
