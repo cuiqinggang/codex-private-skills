@@ -1,0 +1,10 @@
+{
+  "TARGET_PROCESS_CREATION": "DENIED",
+  "API": "SetTokenInformation",
+  "ERROR_CODE": 1344,
+  "REPRODUCED": "3/3",
+  "WINDOWS_SANDBOX": "unelevated",
+  "PRIVATE_DESKTOP": null,
+  "APPROVAL_POLICY": "on-request",
+  "APPROVALS_REVIEWER": "auto_review"
+}

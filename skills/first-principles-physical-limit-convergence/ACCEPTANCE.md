@@ -1,4 +1,4 @@
-# Acceptance — first-principles-physical-limit-convergence v3.1.5
+# Acceptance — first-principles-physical-limit-convergence v3.1.6
 
 ## 1. 三核心唯一白名单
 
@@ -198,7 +198,7 @@ STOP
 
 即使当前 Skill 没有加载，接收端也不得允许 Codex 自行修复或重新设计。
 
-## 9. v3.1.5 虚拟验收要求
+## 9. v3.1.6 虚拟验收要求
 
 必须至少覆盖：
 
@@ -243,3 +243,23 @@ REAL_FAILURE_RETURNS_TO_GPT=PASS
 UNMAPPED_CURRENT_ACTIONS=0
 FINAL_99_ALLOWED=YES
 ```
+
+
+## 11. v3.1.6 现实锚定与精确数字孪生验收
+
+```text
+REALITY_ANCHOR_SKILL_VERSION=1.1.0
+REALITY_FINGERPRINT_V3_PRESENT=PASS
+CRITICAL_UNKNOWN_COUNT=0
+CRITICAL_EXECUTION_STATE_COVERAGE_PERCENT=100.00
+EXACT_TWIN_VERSION=1.0.0
+EXACT_TWIN_CHINESE_NAME=现实执行环境精确数字孪生唯一版
+TWIN_CONTRACT_SELFTEST=24/24 PASS
+TWIN_REALITY_MODE_MUTATION=FORBIDDEN
+SHADOW_RELABEL_AS_REALITY=FORBIDDEN
+REALITY_SHADOW_RUN=NOT_YET
+ENVIRONMENT_99=NOT_YET
+FOURTH_CORE_CREATED=NO
+```
+
+Twin 必须先复现 SetTokenInformation/1344 的 3/3 现实边界，之后才允许研究 Shadow 硬化方案。

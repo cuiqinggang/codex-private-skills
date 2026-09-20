@@ -1,0 +1,449 @@
+{
+  "FILES": [
+    {
+      "SOURCE_PATH": "00-CAPTURE-CONTEXT.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "00-CONTEXT-BOUNDARY.json",
+      "CLASS": "SAFE_RAW",
+      "REASON": "Known-safe recovery/control report",
+      "PUBLISHED_PATH": "00-CONTEXT-BOUNDARY.json",
+      "PUBLISHED_SHA256": "989DC03322D6C3B674301C740F27500EDDF5DEB5C53EE7089CD547536FAF09BE"
+    },
+    {
+      "SOURCE_PATH": "01-HOST-HARDWARE.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Field-level host/shell summary",
+      "PUBLISHED_PATH": "HOST-SHELL-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "B8F91CBA60B6B4648252BCDE7E1542A42C3E32B285AA281F802AA2AD25FF9262"
+    },
+    {
+      "SOURCE_PATH": "02-LOCALE-TIME-ENCODING.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Field-level host/shell summary",
+      "PUBLISHED_PATH": "HOST-SHELL-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "B8F91CBA60B6B4648252BCDE7E1542A42C3E32B285AA281F802AA2AD25FF9262"
+    },
+    {
+      "SOURCE_PATH": "03-PROCESS-SESSION-TOKEN.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "04-SHELL-RUNTIME.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Field-level host/shell summary",
+      "PUBLISHED_PATH": "HOST-SHELL-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "B8F91CBA60B6B4648252BCDE7E1542A42C3E32B285AA281F802AA2AD25FF9262"
+    },
+    {
+      "SOURCE_PATH": "05-ENVIRONMENT-VARIABLES.json",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Potential credential-bearing detail",
+      "PUBLISHED_PATH": "NETWORK-ENV-AUTH-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "EA1505F6EFD4787425E45D6FD8CA1CEFBF5007F459434B4591E6F1B928667B18"
+    },
+    {
+      "SOURCE_PATH": "06-COMMAND-RESOLUTION.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "07-CODEX-INSTALLATION.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Selected non-secret fields",
+      "PUBLISHED_PATH": "CODEX-RUNTIME-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "F4051F133D002C198DBD9629B4AD888BE713C776EDBD11AEB1864095364EEF3F"
+    },
+    {
+      "SOURCE_PATH": "08-CODEX-PATHS.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Selected non-secret fields",
+      "PUBLISHED_PATH": "CODEX-RUNTIME-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "F4051F133D002C198DBD9629B4AD888BE713C776EDBD11AEB1864095364EEF3F"
+    },
+    {
+      "SOURCE_PATH": "09-CODEX-EFFECTIVE-CONFIG.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Selected non-secret fields",
+      "PUBLISHED_PATH": "CODEX-RUNTIME-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "F4051F133D002C198DBD9629B4AD888BE713C776EDBD11AEB1864095364EEF3F"
+    },
+    {
+      "SOURCE_PATH": "10-CONFIG-LAYERS.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "11-CODEX-REQUIREMENTS.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Selected non-secret fields",
+      "PUBLISHED_PATH": "CODEX-RUNTIME-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "F4051F133D002C198DBD9629B4AD888BE713C776EDBD11AEB1864095364EEF3F"
+    },
+    {
+      "SOURCE_PATH": "12-SANDBOX-PERMISSIONS.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Sandbox summary",
+      "PUBLISHED_PATH": "SANDBOX-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "F532F05220ECB2E1DD0E08D2EB39C52D8EF42912247FFEF38231F3A216B7E3F5"
+    },
+    {
+      "SOURCE_PATH": "13-GLOBAL-INSTRUCTIONS.json",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Raw instruction bytes not content-verified",
+      "PUBLISHED_PATH": "INSTRUCTION-CHAIN-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "A23541654F79A9BB465630F91D563DAA35293C4B8098C3D64BE29B6F854C0CA2"
+    },
+    {
+      "SOURCE_PATH": "14-INSTRUCTION-CHAIN.json",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Raw instruction bytes not content-verified",
+      "PUBLISHED_PATH": "INSTRUCTION-CHAIN-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "A23541654F79A9BB465630F91D563DAA35293C4B8098C3D64BE29B6F854C0CA2"
+    },
+    {
+      "SOURCE_PATH": "15-SKILLS-RUNTIME.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Selected non-secret fields",
+      "PUBLISHED_PATH": "CODEX-RUNTIME-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "F4051F133D002C198DBD9629B4AD888BE713C776EDBD11AEB1864095364EEF3F"
+    },
+    {
+      "SOURCE_PATH": "16-HOOKS.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "17-RULES.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "18-TOOLS-APPS-MCP.json",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Potential credential-bearing detail",
+      "PUBLISHED_PATH": "NETWORK-ENV-AUTH-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "EA1505F6EFD4787425E45D6FD8CA1CEFBF5007F459434B4591E6F1B928667B18"
+    },
+    {
+      "SOURCE_PATH": "19-AUTH-STATE.json",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Potential credential-bearing detail",
+      "PUBLISHED_PATH": "NETWORK-ENV-AUTH-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "EA1505F6EFD4787425E45D6FD8CA1CEFBF5007F459434B4591E6F1B928667B18"
+    },
+    {
+      "SOURCE_PATH": "20-GIT-PROJECT.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Filesystem/Git summary",
+      "PUBLISHED_PATH": "FILESYSTEM-GIT-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "4A06438430381E54B037998146E47D6E1147D041399D595154DEAD115048B70F"
+    },
+    {
+      "SOURCE_PATH": "21-FILESYSTEM-SECURITY.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Filesystem/Git summary",
+      "PUBLISHED_PATH": "FILESYSTEM-GIT-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "4A06438430381E54B037998146E47D6E1147D041399D595154DEAD115048B70F"
+    },
+    {
+      "SOURCE_PATH": "22-WINDOWS-SECURITY-STATE.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "23-NETWORK-PROXY.json",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Potential credential-bearing detail",
+      "PUBLISHED_PATH": "NETWORK-ENV-AUTH-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "EA1505F6EFD4787425E45D6FD8CA1CEFBF5007F459434B4591E6F1B928667B18"
+    },
+    {
+      "SOURCE_PATH": "24-PROCESS-SERVICE-SNAPSHOT.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "25-RESOURCE-SNAPSHOT.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "26-CODEX-STARTUP-PROBE.txt",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "27-R1-MANIFEST.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "R1 safe metadata only",
+      "PUBLISHED_PATH": "R1-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "1CF043ADA192B335F9CF719211F1FF38706D21D6D43F0697DBA31F549E98CA67"
+    },
+    {
+      "SOURCE_PATH": "28-R1-R2-DELTA.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "R1 safe metadata only",
+      "PUBLISHED_PATH": "R1-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "1CF043ADA192B335F9CF719211F1FF38706D21D6D43F0697DBA31F549E98CA67"
+    },
+    {
+      "SOURCE_PATH": "29-SECRET-DEPENDENCIES.json",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Potential credential-bearing detail",
+      "PUBLISHED_PATH": "NETWORK-ENV-AUTH-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "EA1505F6EFD4787425E45D6FD8CA1CEFBF5007F459434B4591E6F1B928667B18"
+    },
+    {
+      "SOURCE_PATH": "30-UNOBSERVABLE-BOUNDARIES.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "31-SHA256-MANIFEST.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "32-DRIFT-CHECK.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "33-CAPTURE-COVERAGE.json",
+      "CLASS": "SAFE_RAW",
+      "REASON": "Known-safe recovery/control report",
+      "PUBLISHED_PATH": "33-CAPTURE-COVERAGE.json",
+      "PUBLISHED_SHA256": "373637430CE8B57C45FFA580526A461DCBC2DE89793E78C1A3D546B09A66478C"
+    },
+    {
+      "SOURCE_PATH": "34-R2-RECOVERY-INVENTORY.json",
+      "CLASS": "SAFE_RAW",
+      "REASON": "Known-safe recovery/control report",
+      "PUBLISHED_PATH": "34-R2-RECOVERY-INVENTORY.json",
+      "PUBLISHED_SHA256": "84064B38B1F63C0DAFA39FD2EC8D28DE9793216FB1837FD80C1A2CF3852BEC3D"
+    },
+    {
+      "SOURCE_PATH": "35-CRITICAL-GAPS.json",
+      "CLASS": "SAFE_RAW",
+      "REASON": "Known-safe recovery/control report",
+      "PUBLISHED_PATH": "35-CRITICAL-GAPS.json",
+      "PUBLISHED_SHA256": "8A7EF4A29785A7AB043B6A8B39289DF2346C518B40B8482BB9BB07667B15EFE2"
+    },
+    {
+      "SOURCE_PATH": "36-INCOMPLETE-MODULES.json",
+      "CLASS": "SAFE_RAW",
+      "REASON": "Known-safe recovery/control report",
+      "PUBLISHED_PATH": "36-INCOMPLETE-MODULES.json",
+      "PUBLISHED_SHA256": "9A06F9DB9D8AE7BFECE35B1845C06906CE77F419A5B7897E1EEC5B6DFB76051A"
+    },
+    {
+      "SOURCE_PATH": "37-REALITY-FINGERPRINT-V2.json",
+      "CLASS": "SAFE_RAW",
+      "REASON": "Known-safe recovery/control report",
+      "PUBLISHED_PATH": "37-REALITY-FINGERPRINT-V2.json",
+      "PUBLISHED_SHA256": "1B0FAB9FF63AB56400066A4593D1424D82F92F80CFD55B8FF91BC5B5F4CF14F9"
+    },
+    {
+      "SOURCE_PATH": "38-R2-RECOVERY-RESULT.json",
+      "CLASS": "SAFE_RAW",
+      "REASON": "Known-safe recovery/control report",
+      "PUBLISHED_PATH": "38-R2-RECOVERY-RESULT.json",
+      "PUBLISHED_SHA256": "7E25A728990C6CAEA834564022171240F25E1529BAA5222C98CD399F121E7804"
+    },
+    {
+      "SOURCE_PATH": "ACCOUNT-READ-SANITIZED.json",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Potential credential-bearing detail",
+      "PUBLISHED_PATH": "NETWORK-ENV-AUTH-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "EA1505F6EFD4787425E45D6FD8CA1CEFBF5007F459434B4591E6F1B928667B18"
+    },
+    {
+      "SOURCE_PATH": "APP-SERVER-CAPTURE-SUMMARY.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "APP-SERVER-INITIALIZE.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "APPS-RAW.json",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Potential credential-bearing detail",
+      "PUBLISHED_PATH": "NETWORK-ENV-AUTH-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "EA1505F6EFD4787425E45D6FD8CA1CEFBF5007F459434B4591E6F1B928667B18"
+    },
+    {
+      "SOURCE_PATH": "CONFIG-READ-RAW.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "CONFIG-READ-SANITIZED.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "CONFIG-REQUIREMENTS-RAW.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "HOOKS-LIST-RAW.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "INSTRUCTION-MERGED-RECONSTRUCTION.bin",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Raw instruction bytes not content-verified",
+      "PUBLISHED_PATH": "INSTRUCTION-CHAIN-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "A23541654F79A9BB465630F91D563DAA35293C4B8098C3D64BE29B6F854C0CA2"
+    },
+    {
+      "SOURCE_PATH": "INSTRUCTION-MERGED-RECONSTRUCTION.json",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Raw instruction bytes not content-verified",
+      "PUBLISHED_PATH": "INSTRUCTION-CHAIN-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "A23541654F79A9BB465630F91D563DAA35293C4B8098C3D64BE29B6F854C0CA2"
+    },
+    {
+      "SOURCE_PATH": "instruction-snapshots\\000-global.bin",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Raw instruction bytes not content-verified",
+      "PUBLISHED_PATH": "INSTRUCTION-CHAIN-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "A23541654F79A9BB465630F91D563DAA35293C4B8098C3D64BE29B6F854C0CA2"
+    },
+    {
+      "SOURCE_PATH": "MCP-STATUS-RAW.json",
+      "CLASS": "LOCAL_ONLY_SECRET",
+      "REASON": "Potential credential-bearing detail",
+      "PUBLISHED_PATH": "NETWORK-ENV-AUTH-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "EA1505F6EFD4787425E45D6FD8CA1CEFBF5007F459434B4591E6F1B928667B18"
+    },
+    {
+      "SOURCE_PATH": "R2-RECOVERY-RUNTIME.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Selected non-secret fields",
+      "PUBLISHED_PATH": "CODEX-RUNTIME-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "F4051F133D002C198DBD9629B4AD888BE713C776EDBD11AEB1864095364EEF3F"
+    },
+    {
+      "SOURCE_PATH": "REALITY-ENVIRONMENT-ANCHOR-R2.json",
+      "CLASS": "SAFE_RAW",
+      "REASON": "Known-safe recovery/control report",
+      "PUBLISHED_PATH": "REALITY-ENVIRONMENT-ANCHOR-R2.json",
+      "PUBLISHED_SHA256": "DBD4CCCF1E3B314A4D7E600E19CF09F3AEF274838EF6BCFBE7A88DAFBFED3DFF"
+    },
+    {
+      "SOURCE_PATH": "REALITY-FINGERPRINT.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "SANDBOX-SOURCE-MATRIX.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Sandbox summary",
+      "PUBLISHED_PATH": "SANDBOX-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "F532F05220ECB2E1DD0E08D2EB39C52D8EF42912247FFEF38231F3A216B7E3F5"
+    },
+    {
+      "SOURCE_PATH": "SECRET-SCAN.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "SHA256SUMS.txt",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "SKILL-DESCRIPTION-BUDGET-INPUT.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "SKILLS-LIST-RAW.json",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "TARGET-COLLECTOR-DELTA.json",
+      "CLASS": "SANITIZED_COPY",
+      "REASON": "Sandbox summary",
+      "PUBLISHED_PATH": "SANDBOX-SAFE-SUMMARY.json",
+      "PUBLISHED_SHA256": "F532F05220ECB2E1DD0E08D2EB39C52D8EF42912247FFEF38231F3A216B7E3F5"
+    },
+    {
+      "SOURCE_PATH": "WHOAMI-ALL.txt",
+      "CLASS": "EXCLUDED_TRANSIENT",
+      "REASON": "Not required in minimum safe mirror",
+      "PUBLISHED_PATH": null,
+      "PUBLISHED_SHA256": null
+    },
+    {
+      "SOURCE_PATH": "39-PUBLISH-CLASSIFICATION.json",
+      "CLASS": "SAFE_RAW",
+      "REASON": "Self-classifying manifest",
+      "PUBLISHED_PATH": "39-PUBLISH-CLASSIFICATION.json",
+      "PUBLISHED_SHA256": "SELF_REFERENTIAL_MANIFEST"
+    }
+  ],
+  "LOCAL_ONLY_SECRET_FILE_COUNT": 13,
+  "SAFE_RAW_COUNT": 9,
+  "SANITIZED_COPY_COUNT": 16,
+  "EXCLUDED_TRANSIENT_COUNT": 25
+}

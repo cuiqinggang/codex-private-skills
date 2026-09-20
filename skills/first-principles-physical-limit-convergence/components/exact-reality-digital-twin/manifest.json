@@ -1,0 +1,12 @@
+{
+  "component_id": "exact-reality-digital-twin",
+  "display_name_zh": "现实执行环境精确数字孪生唯一版",
+  "version": "1.0.0",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.6",
+  "reality_anchor_skill": "reality-execution-environment-anchor@1.1.0",
+  "canonical_single_implementation": true,
+  "reality_fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
+  "contract_selftest": "24/24 PASS",
+  "reality_shadow_run": "NOT_YET",
+  "environment_99": "NOT_YET"
+}

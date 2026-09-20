@@ -1,0 +1,8 @@
+{
+  "engine_version": "1.0.0",
+  "case_count": 24,
+  "passed": 24,
+  "failed": 0,
+  "virtual_contract_99": "PASS",
+  "scope_zh": "仅证明合同、差异检测、Reality/Shadow 隔离和确定性重放逻辑；不替代用户机器现实 Shadow 验证。"
+}

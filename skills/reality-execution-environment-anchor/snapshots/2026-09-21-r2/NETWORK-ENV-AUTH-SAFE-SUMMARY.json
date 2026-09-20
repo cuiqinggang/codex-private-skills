@@ -1,0 +1,15 @@
+{
+  "PROXY_CREDENTIALS": "NOT_READ_BY_CREDENTIAL_POLICY",
+  "ENVIRONMENT_SECRET_VALUES": "NOT_READ_BY_CREDENTIAL_POLICY",
+  "AUTH_CONTENT": "NOT_READ_BY_CREDENTIAL_POLICY",
+  "SECRET_IDENTITY_BASIS": [
+    "path/name",
+    "presence",
+    "size",
+    "time",
+    "owner",
+    "ACL",
+    "policy status"
+  ],
+  "PLAINTEXT_SECRET_PUBLISHED": 0
+}

@@ -1,0 +1,32 @@
+{
+  "component_id": "exact-reality-digital-twin",
+  "display_name_zh": "现实执行环境精确数字孪生唯一版",
+  "version": "1.0.0",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.6",
+  "core_owner": "高智能虚拟成熟",
+  "reality_input": {
+    "skill": "reality-execution-environment-anchor@1.1.0",
+    "fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
+    "final_anchor": "snapshots/2026-09-21-r2/45-REALITY-ENVIRONMENT-ANCHOR-R2-FINAL.json",
+    "final_fingerprint": "snapshots/2026-09-21-r2/46-REALITY-FINGERPRINT-V3.json"
+  },
+  "exact_current_behavior": {
+    "api": "SetTokenInformation",
+    "error_code": 1344,
+    "reproduction": "3_OF_3",
+    "child_running": "NO",
+    "child_path_resolution": "NOT_REACHED",
+    "child_execution_token": "NO_RUNNING_CHILD_PROCESS_TOKEN"
+  },
+  "modes": {
+    "reality": "READ_ONLY_EXACT_REPLAY",
+    "shadow": "HYPOTHETICAL_OVERLAY_NEVER_RELABEL_AS_REALITY"
+  },
+  "gates": {
+    "critical_unknown_count": 0,
+    "critical_execution_coverage_percent": "100.00",
+    "contract_selftest": "24/24 PASS",
+    "reality_shadow_run": "NOT_YET",
+    "environment_99": "NOT_YET"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "NON_PASS_MODULE_COUNT": 19,
+  "MODULES": [
+    {
+      "MODULE": "REALITY_CAPTURE",
+      "STATUS": "FAIL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "PROCESS_CONTEXT_CAPTURE",
+      "STATUS": "PARTIAL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "RUNTIME_CAPTURE",
+      "STATUS": "PARTIAL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "ENVIRONMENT_VARIABLE_CAPTURE",
+      "STATUS": "FAIL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "COMMAND_RESOLUTION_CAPTURE",
+      "STATUS": "PARTIAL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "CODEX_BINARY_CAPTURE",
+      "STATUS": "FAIL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "CODEX_EFFECTIVE_CONFIG_CAPTURE",
+      "STATUS": "FAIL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "MANAGED_REQUIREMENTS_CAPTURE",
+      "STATUS": "FAIL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "SANDBOX_CAPTURE",
+      "STATUS": "PARTIAL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "PROJECT_INSTRUCTION_CHAIN_CAPTURE",
+      "STATUS": "FAIL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "SKILL_RUNTIME_CAPTURE",
+      "STATUS": "FAIL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "RULE_CAPTURE",
+      "STATUS": "FAIL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "MCP_APP_CAPTURE",
+      "STATUS": "PARTIAL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "AUTH_STATE_CAPTURE",
+      "STATUS": "PARTIAL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "WINDOWS_SECURITY_CAPTURE",
+      "STATUS": "ACCESS_DENIED",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "NETWORK_PROXY_CAPTURE",
+      "STATUS": "PARTIAL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "R1_HISTORY_CAPTURE",
+      "STATUS": "PARTIAL",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "DRIFT_ZERO",
+      "STATUS": "UNKNOWN",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    },
+    {
+      "MODULE": "SECRET_PLAINTEXT_ZERO",
+      "STATUS": "UNKNOWN",
+      "INCOMPLETE_FIELDS": [
+        "See corresponding module evidence and 35-CRITICAL-GAPS.json"
+      ]
+    }
+  ]
+}

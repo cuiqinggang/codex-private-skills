@@ -1,0 +1,112 @@
+{
+  "SCHEMA_VERSION": "2.0-recovery",
+  "COMPONENTS": {
+    "STATIC_REALITY_FINGERPRINT": "EA7C266E913F816AF5F7DB210AC282E823120324D0B4412E76B5D1EB084BF0F0",
+    "TARGET_RUNTIME_FINGERPRINT": "CFA94FB9118DED629A1651B4C3D9D086B4FD282B450023CE1BB03CA4857C91C0",
+    "COLLECTOR_CONTEXT_FINGERPRINT": "AE67BF654B28FFE6627734BC26032E4D8593DC52BF14D7F5BF7F825865947313",
+    "SECURE_SECRET_DEPENDENCY_FINGERPRINT": "74157ABEB54D8C68BA0AF100B92D106859AB5D971565C9ED52A54BFD9D27E281",
+    "UNOBSERVABLE_BOUNDARY_FINGERPRINT": "B753765C7F180CE4C33E98B47DBE3A325B578FFDCC58F0A69E5B0E55297FA292"
+  },
+  "REALITY_FINGERPRINT_SHA256": "8581312C0580050B0D6959363A019A622455B226A22013CC96B972EC6D2EAA54",
+  "STATIC_IDENTITY": {
+    "codex_real_executable": "C:\\Users\\A\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\bin\\codex.exe",
+    "codex_real_executable_size": 307108144,
+    "codex_real_executable_sha256": "EBA0F32C976667CB9298EFAFD98513E823EEDA7B576A03EC658BB8BE8D336316",
+    "inventory_file_count": 56
+  },
+  "TARGET_RUNTIME_IDENTITY": {
+    "model": "gpt-5.6-sol",
+    "approval_policy": "on-request",
+    "approvals_reviewer": "auto_review",
+    "project_doc_max_bytes": 32768,
+    "project_doc_fallback_filenames": [],
+    "windows_sandbox": "unelevated",
+    "windows_sandbox_private_desktop": null,
+    "managed_requirements": "NONE",
+    "runtime_skill_cwd_count": 3,
+    "runtime_skill_count": 948,
+    "process_creation_restriction": {
+      "api": "SetTokenInformation",
+      "code": 1344,
+      "samples": "3/3",
+      "result": "DENIED"
+    }
+  },
+  "COLLECTOR_IDENTITY": {
+    "context": "EXTERNAL_READONLY_COLLECTOR",
+    "elevated": "NO",
+    "integrity": "Medium",
+    "mutation_permission_used": "NO"
+  },
+  "SECRET_IDENTITY_POLICY": {
+    "credential_content": "NOT_READ_BY_CREDENTIAL_POLICY",
+    "identity_basis": [
+      "path_or_variable_name",
+      "present",
+      "file_size",
+      "last_write_time",
+      "owner",
+      "acl",
+      "policy_status"
+    ],
+    "plaintext_in_publish": "PROHIBITED"
+  },
+  "UNOBSERVABLE_BOUNDARIES": [
+    {
+      "BOUNDARY": "OpenAI cloud model internal state",
+      "WHY_UNOBSERVABLE": "Future or remote internal state cannot be permanently frozen",
+      "EXECUTION_CRITICAL_FOR_TWIN": false
+    },
+    {
+      "BOUNDARY": "Cloud sampling randomness",
+      "WHY_UNOBSERVABLE": "Future or remote internal state cannot be permanently frozen",
+      "EXECUTION_CRITICAL_FOR_TWIN": false
+    },
+    {
+      "BOUNDARY": "Cloud scheduling",
+      "WHY_UNOBSERVABLE": "Future or remote internal state cannot be permanently frozen",
+      "EXECUTION_CRITICAL_FOR_TWIN": false
+    },
+    {
+      "BOUNDARY": "Future request latency",
+      "WHY_UNOBSERVABLE": "Future or remote internal state cannot be permanently frozen",
+      "EXECUTION_CRITICAL_FOR_TWIN": false
+    },
+    {
+      "BOUNDARY": "Future network congestion",
+      "WHY_UNOBSERVABLE": "Future or remote internal state cannot be permanently frozen",
+      "EXECUTION_CRITICAL_FOR_TWIN": false
+    },
+    {
+      "BOUNDARY": "Future DNS response",
+      "WHY_UNOBSERVABLE": "Future or remote internal state cannot be permanently frozen",
+      "EXECUTION_CRITICAL_FOR_TWIN": false
+    },
+    {
+      "BOUNDARY": "Future server load",
+      "WHY_UNOBSERVABLE": "Future or remote internal state cannot be permanently frozen",
+      "EXECUTION_CRITICAL_FOR_TWIN": false
+    },
+    {
+      "BOUNDARY": "Future OS thread scheduling",
+      "WHY_UNOBSERVABLE": "Future or remote internal state cannot be permanently frozen",
+      "EXECUTION_CRITICAL_FOR_TWIN": false
+    },
+    {
+      "BOUNDARY": "Future disk cache",
+      "WHY_UNOBSERVABLE": "Future or remote internal state cannot be permanently frozen",
+      "EXECUTION_CRITICAL_FOR_TWIN": false
+    },
+    {
+      "BOUNDARY": "Future CPU/GPU temperature",
+      "WHY_UNOBSERVABLE": "Future or remote internal state cannot be permanently frozen",
+      "EXECUTION_CRITICAL_FOR_TWIN": false
+    },
+    {
+      "BOUNDARY": "Future behavior of other programs",
+      "WHY_UNOBSERVABLE": "Future or remote internal state cannot be permanently frozen",
+      "EXECUTION_CRITICAL_FOR_TWIN": false
+    }
+  ],
+  "SECRET_PLAINTEXT_REQUIRED": false
+}

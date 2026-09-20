@@ -1,13 +1,13 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 第一性原理极限短时间引擎 v3.1.5。唯一方法白名单只有三个核心：极限短时间、成熟方案集群、高智能虚拟成熟。正式执行命令的定位标签必须用第四个中文字段明确标注真实核心归属；不能明确归属或任务跨多个核心时必须拆分，不得发布。Codex/Reasonix/本地执行器只有冻结方案执行权，没有修复、重新设计、虚拟成熟或自行找路线的权限；现实失败只回传差异并停止，由 GPT 页面重新进入三个核心之一处理。
+description: 第一性原理极限短时间引擎 v3.1.6。唯一方法白名单只有三个核心：极限短时间、成熟方案集群、高智能虚拟成熟。正式执行命令的定位标签必须用第四个中文字段明确标注真实核心归属；不能明确归属或任务跨多个核心时必须拆分，不得发布。Codex/Reasonix/本地执行器只有冻结方案执行权，没有修复、重新设计、虚拟成熟或自行找路线的权限；现实失败只回传差异并停止，由 GPT 页面重新进入三个核心之一处理。
 metadata:
-  version: "3.1.5"
+  version: "3.1.6"
   short-description: 三核心唯一白名单·四字段中文核心定位·执行器禁止自行修复
-  lineage: first-principles-physical-limit-convergence@3.1.5 <- @3.1.4 <- @3.1.3 <- @3.1.2 <- @3.1.1 <- @3.1.0 <- @3.0.0 <- @2.0.0 <- @1.x
+  lineage: first-principles-physical-limit-convergence@3.1.6 <- @3.1.5 <- @3.1.4 <- @3.1.3 <- @3.1.2 <- @3.1.1 <- @3.1.0 <- @3.0.0 <- @2.0.0 <- @1.x
 ---
 
-# 第一性原理极限短时间引擎 v3.1.5
+# 第一性原理极限短时间引擎 v3.1.6
 
 > **只走三条路：用唯一时间标准确定目标；先吸收成熟方案集群；再由高智能虚拟成熟并直接验证冻结方案。除此之外，没有第四条路。**
 
@@ -496,6 +496,70 @@ ATTEMPT / DELIVERY、T_TFVR、verifier、checkpoint、idempotency、Capacity Rou
 # 最终一句话
 
 > **三核心就是唯一白名单；方案完成后只发最小“读取并执行”指令，详细执行规则只保留在一个正式文件/技能包中。**
+
+
+---
+
+## v3.1.6 正式能力：现实锚定 → 精确现实数字孪生唯一版
+
+v3.1.6 不增加第四核心，只把已经完成的现实锚定与后续数字孪生正式纳入三核心：
+
+```text
+核心2 成熟方案集群
+→ reality-execution-environment-anchor v1.1.0
+→ 完整现实事实、原始字节、运行时边界、规则、指令链、沙盒、技能、Git、安全摘要
+→ Reality Fingerprint（现实环境指纹）
+
+核心3 高智能虚拟成熟
+→ exact-reality-digital-twin v1.0.0
+→ 先复现现实
+→ Reality/Twin 差异归零
+→ Shadow（影子假设）
+→ 故障注入
+→ 漂移检测
+→ Virtual-99（虚拟99）
+→ 冻结最小现实方案
+```
+
+唯一正式 Twin：
+- 中文名：现实执行环境精确数字孪生唯一版
+- 机器名：exact-reality-digital-twin
+- 版本：1.0.0
+- 正式入口：components/exact-reality-digital-twin/
+- 现实输入：reality-execution-environment-anchor@1.1.0
+- 当前 Reality Fingerprint V3：9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8
+
+Twin 第一原则：**先复制现实，不能先修现实。**
+
+当前现实基线必须首先复现：
+
+```text
+TARGET Windows sandbox
+→ SetTokenInformation
+→ ERROR 1344
+→ 3/3
+→ 子进程未成功启动
+→ PATH 解析 NOT_REACHED（未到达）
+→ NO_RUNNING_CHILD_PROCESS_TOKEN（不存在运行中的子进程令牌）
+```
+
+Reality Mode（现实模式）只读不可修改。
+Shadow Mode（影子模式）只能修改 Twin 内存中的假设状态，禁止把 Shadow 结果写回 Reality。
+
+当前状态：
+
+```text
+REALITY_ANCHOR_COMPLETE=YES
+CRITICAL_UNKNOWN_COUNT=0
+CRITICAL_EXECUTION_STATE_COVERAGE_PERCENT=100.00
+TWIN_INPUT_READY=YES
+TWIN_CONTRACT_SELFTEST=24/24 PASS
+REALITY_SHADOW_RUN=NOT_YET
+ENVIRONMENT_99=NOT_YET
+```
+
+24/24 只证明 Twin 合同、差异检测、Reality/Shadow 隔离和确定性重放逻辑通过虚拟自测；不替代用户机器上的真实 Shadow 验证。
+
 
 ---
 

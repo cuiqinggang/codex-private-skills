@@ -1,0 +1,16 @@
+{
+  "r1": {
+    "date": "2026-09-20",
+    "status": "PARTIAL_SAFE_METADATA_ONLY",
+    "path": "snapshots/2026-09-20-r1"
+  },
+  "r2": {
+    "date": "2026-09-21",
+    "status": "REALITY_ANCHOR_COMPLETE",
+    "path": "snapshots/2026-09-21-r2",
+    "reality_fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
+    "authoritative_anchor": "45-REALITY-ENVIRONMENT-ANCHOR-R2-FINAL.json",
+    "authoritative_fingerprint": "46-REALITY-FINGERPRINT-V3.json"
+  },
+  "CURRENT_SNAPSHOT": "2026-09-21-r2"
+}
