@@ -77,25 +77,28 @@
   "updated_date": "2026-09-20",
   "task_locator": {
     "enabled": true,
-    "purpose": "MINIMAL_PAGE_TASK_POSITIONING",
-    "visible_format": "【<PAGE_NAME>｜<SEQ>】",
+    "purpose": "MINIMAL_PAGE_TASK_COMMAND_POSITIONING",
+    "visible_format": "【<PAGE_NAME>|<TASK_NAME>|<SEQ>】",
     "key_fields": [
       "PAGE_NAME",
+      "TASK_NAME",
       "SEQ"
     ],
-    "page_name_uses_existing_title": true,
+    "page_name_source": "ACTUAL_UI_PAGE_TITLE_ONLY",
+    "page_name_guessing_allowed": false,
+    "task_name_source": "DIRECT_CONCISE_RESTATEMENT_OF_CURRENT_TASK",
+    "task_extra_id": false,
+    "sequence_scope": "PER_TASK",
     "sequence_start": 1,
     "sequence_max": 6,
     "sequence_format": "PLAIN_INTEGER",
     "order_requires_first_and_last_line": true,
     "answer_requires_final_line": true,
     "normal_closeout_max_seq": 3,
-    "after_3_incomplete": "RECORD_GAP_BEFORE_CONTINUING",
+    "after_3_incomplete": "RECORD_GAP_BEFORE_SEQ_4",
     "after_6_incomplete": "STOP_AND_REFREEZE_OR_SPLIT_TASK",
-    "core_mapping_source": "MANDATORY_3_STEP_GATE_V3_1_3",
+    "core_mapping_source": "EXISTING_MANDATORY_3_STEP_GATE",
     "duplicate_core_in_locator": false,
-    "page_name_frozen_on_first_sequence": true,
-    "future_hidden_internal_id_allowed": true,
-    "future_hidden_internal_id_visible": false
+    "visible_extra_fields_allowed": false
   }
 }
