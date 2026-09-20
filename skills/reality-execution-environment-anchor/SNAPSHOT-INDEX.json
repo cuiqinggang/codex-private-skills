@@ -12,5 +12,13 @@
     "authoritative_anchor": "45-REALITY-ENVIRONMENT-ANCHOR-R2-FINAL.json",
     "authoritative_fingerprint": "46-REALITY-FINGERPRINT-V3.json"
   },
-  "CURRENT_SNAPSHOT": "2026-09-21-r2"
+  "CURRENT_SNAPSHOT": "2026-09-21-r2",
+  "r3_browser": {
+    "status": "COLLECTOR_CONTRACT_FROZEN_REAL_CAPTURE_NOT_YET",
+    "path_template": "snapshots/YYYY-MM-DD-r3-browser-<run-id>",
+    "reality_fingerprint": "NOT_YET",
+    "browser_twin_input_ready": false
+  },
+  "CURRENT_REALITY_SNAPSHOT": "2026-09-21-r2",
+  "NEXT_REALITY_SNAPSHOT_KIND": "r3_browser"
 }
