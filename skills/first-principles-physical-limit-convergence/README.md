@@ -1,4 +1,4 @@
-# 第一性原理极限短时间引擎 v3.1.2
+# 第一性原理极限短时间引擎 v3.1.4
 
 ## 只保留三个核心
 
@@ -35,4 +35,15 @@
 
 正式分支：
 
-`codex/first-principles-physical-limit-convergence-v3.1.2`
+`codex/first-principles-physical-limit-convergence-v3.1.4`
+
+
+## v3.1.4 任务定位
+
+每个正式任务使用一行定位标签：
+
+```text
+【定位｜页=P01·中文页面名｜任务=T01·中文任务名｜序=001｜STEP=2·虚拟成熟｜CORE=3·高智能虚拟成熟｜ROLE=ORDER·命令｜状态=OPEN·已下发】
+```
+
+ORDER 与 ANSWER 通过 `页 + 任务 + 序 + STEP + CORE` 精确配对。正常目标 3 次内闭环；第 3 次未完成先记录原因，最多到第 6 次；第 6 次仍未闭环则停止并重新建立任务，不允许无限编号。
