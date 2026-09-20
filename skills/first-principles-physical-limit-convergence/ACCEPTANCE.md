@@ -1,160 +1,245 @@
-# Acceptance — first-principles-physical-limit-convergence v3.1.4
+# Acceptance — first-principles-physical-limit-convergence v3.1.5
 
-## 唯一验收
-
-当前方法只允许三个核心：
-
-```text
-CORE_1 = 极限短时间
-CORE_2 = 成熟方案集群
-CORE_3 = 高智能虚拟成熟
-```
+## 1. 三核心唯一白名单
 
 必须满足：
 
 ```text
-CORE_COUNT=3
-CORE_4_EXISTS=NO
-THREE_CORE_WHITELIST=PASS
+核心数量=3
+第四核心存在=否
+核心1=极限短时间
+核心2=成熟方案集群
+核心3=高智能虚拟成熟
 ```
 
-## 下一步白名单
+任何当前动作必须真实、唯一地映射到三个核心之一。
 
-任何下一步必须明确标注 CORE=1 / CORE=2 / CORE=3。
-
-不能直接映射：
+不能唯一映射：
 
 ```text
-BLACKLIST=YES
-EXECUTE=NO
+发布命令=否
+执行=否
+动作=停止
 ```
 
-## 历史规则
+## 2. 四字段任务定位
 
-旧版本、旧 command pack、L0/L1/L2/L3/L4、Shadow Pilot、Assisted Pilot 等：
+正式命令第一行和最后一行必须完全一致：
 
 ```text
-HISTORICAL_REFERENCE=ALLOWED
-CURRENT_METHOD_AUTHORITY=NO
+【实际页面名｜具体任务名｜序号｜核心归属】
 ```
 
-## 顺序
+验收：
 
 ```text
-1 极限短时间
--> 2 成熟方案集群
--> 3 高智能虚拟成熟
+VISIBLE_FIELDS=4
+FIELD_1=ACTUAL_PAGE_NAME
+FIELD_2=TASK_NAME
+FIELD_3=SEQ
+FIELD_4=EXACT_CHINESE_CORE_NAME
 ```
 
-现实实现与案例验证属于第 3 核心冻结方案的验证动作，不建立第四层。
+第四字段只允许：
 
-## 完成即交接
+```text
+极限短时间
+成熟方案集群
+高智能虚拟成熟
+```
+
+以下均必须 BLOCK：
+
+- 只有原三字段；
+- 第四字段为空；
+- 第四字段使用 CORE_1 / CORE_2 / CORE_3；
+- 第四字段使用 STEP 1 / STEP 2 / STEP 3；
+- 第四字段使用英文别名；
+- 第四字段写“修复/补丁/优化/验收”等自造类别；
+- 第四字段同时写两个或三个核心；
+- 标签核心与命令正文实际工作不一致；
+- 页面名由执行器猜测；
+- 首尾标签不一致。
+
+机器定位键：
+
+```text
+LOCATOR_KEY=PAGE_NAME+TASK_NAME+SEQ+EXACT_CHINESE_CORE_NAME
+```
+
+## 3. 序号验收
+
+```text
+SEQ_SCOPE=PER_TASK
+SEQ_FORMAT=PLAIN_INTEGER
+SEQ_IS_COUNT_ONLY=YES
+REPAIR_WINDOW_EXISTS=NO
+```
+
+v3.1.4 的“4..6 修复窗口”语义必须不存在。
+
+执行器失败后不得把下一序号解释成修复权限。
+
+## 4. Codex / Reasonix / 本地执行器权限
 
 必须满足：
 
-~~~text
-VIRTUAL_MATURITY_PASS -> SAME_REPLY_CODEX_HANDOFF_REQUIRED
-HANDOFF_SAME_REPLY=YES
+```text
+EXECUTOR_ROLE=FROZEN_COMMAND_EXECUTOR_ONLY
+CODEX_REPAIR_TASK_ALLOWED=NO
+CODEX_REPLAN_ALLOWED=NO
+CODEX_VIRTUAL_MATURITY_ALLOWED=NO
+CODEX_NEW_ROUTE_ALLOWED=NO
+GPT_PAGE_OWNS_REPAIR_DESIGN=YES
+GPT_PAGE_OWNS_VIRTUAL_MATURITY=YES
+```
+
+执行器允许：
+
+- 执行 GPT 已冻结命令；
+- 做命令明确要求的确定性读写/运行/测试/部署/现实验证；
+- 收集事实；
+- 记录现实差异；
+- 回传；
+- 停止。
+
+执行器不允许：
+
+- 自己建立“修复任务”；
+- 自己决定修复办法；
+- 自己重新设计；
+- 自己增加候选路线；
+- 自己更换模型、阈值、路由、fallback、验证合同；
+- 失败后继续自由探索。
+
+如果现实失败：
+
+```text
+记录现实差异
+-> 停止
+-> 返回 GPT 页面
+```
+
+之后只能由 GPT 页面重新进入三个核心之一。
+
+## 5. 已冻结修正方案的执行
+
+如果 GPT 已经完成：
+
+```text
+问题分析
+-> 高智能虚拟成熟
+-> 方案冻结
+```
+
+Codex 可以执行该冻结方案。
+
+但正式任务不得定义为“Codex 修复”。
+
+其语义必须是：
+
+```text
+执行冻结方案
+或
+执行冻结方案现实验证
+```
+
+并用第四字段标明真实核心归属。
+
+## 6. 三核心失败闭环
+
+唯一合法闭环：
+
+```text
+现实失败
+-> 执行器记录现实差异并停止
+-> GPT 页面
+-> 极限短时间 / 成熟方案集群 / 高智能虚拟成熟（三选一）
+-> GPT 冻结新的执行命令
+-> 执行器再次执行
+```
+
+禁止：
+
+```text
+现实失败
+-> Codex 自己修
+-> Codex 再试
+```
+
+## 7. 完成即交接
+
+虚拟成熟已经 PASS 且存在冻结执行源时：
+
+```text
+SAME_REPLY_HANDOFF_REQUIRED=YES
 HANDOFF_EXTRA_USER_TURN=0
-HANDOFF_IS_POINTER_ONLY_WHEN_REMOTE_SOURCE_EXISTS=YES
-HANDOFF_INLINE_ALLOWED_WHEN_SHORTER=YES
-HANDOFF_DUPLICATE_INSTRUCTIONS=0
-OMITTED_HANDOFF_AFTER_VIRTUAL_PASS=FAIL
-VIRTUAL_CLOSEOUT_INCOMPLETE_IF_HANDOFF_MISSING=YES
-~~~
-
-虚拟成熟 PASS 的同一回复中出现“下一步再给命令/确认后再给命令”，验收直接失败。
-
-
-## 失败
-
-现实验证失败：
-
-```text
-REALITY_DELTA
--> RETURN_TO CORE_3
--> RE-MATURE
--> RE-FREEZE
--> RE-VERIFY
+ONE_EXECUTION_SOURCE_OF_TRUTH=YES
 ```
 
-## 最终验收
+交接命令也必须使用四字段中文核心定位标签。
+
+## 8. 全局接收端兜底
+
+`~/.codex/AGENTS.md` 的全局门禁必须最终升级为：
+
+```text
+【页面名｜任务名｜序号｜核心归属】
+```
+
+并检查第四字段只能是三个中文核心之一。
+
+缺失、错误、正文不匹配：
+
+```text
+BLOCK
+STOP
+```
+
+即使当前 Skill 没有加载，接收端也不得允许 Codex 自行修复或重新设计。
+
+## 9. v3.1.5 虚拟验收要求
+
+必须至少覆盖：
+
+```text
+有效核心1标签
+有效核心2标签
+有效核心3标签
+缺第四字段
+英文核心字段
+非法第四字段
+多个核心同时出现
+正文/标签核心冲突
+Codex 自行修复
+Codex 自行重新设计
+失败后 Reality Delta + STOP
+GPT 冻结方案后 Codex 仅执行
+```
+
+要求：
+
+```text
+PASS_REQUIRED=12/12
+FOUR_FIELD_LOCATOR=PASS
+CHINESE_CORE_ONLY=PASS
+EXECUTOR_ONLY_GATE=PASS
+NO_REPAIR_WINDOW=PASS
+NO_FOURTH_PATH=PASS
+```
+
+## 10. 最终验收
 
 ```text
 TIME_ONLY_OBJECTIVE=PASS
 MATURE_SOLUTION_CLUSTER_FIRST=PASS
 HIGH_INTELLIGENCE_VIRTUAL_MATURITY=PASS
-ALL_CURRENT_ACTIONS_MAP_TO_1_2_3=PASS
+THREE_CORE_ONLY=PASS
+VISIBLE_LOCATOR_FIELDS=4
+CHINESE_CORE_FIELD_REQUIRED=PASS
+CODEX_EXECUTOR_ONLY=PASS
+CODEX_SELF_REPAIR=FORBIDDEN
+REAL_FAILURE_RETURNS_TO_GPT=PASS
 UNMAPPED_CURRENT_ACTIONS=0
-HANDOFF_EXTRA_USER_TURN=0
-HANDOFF_DUPLICATE_INSTRUCTIONS=0
 FINAL_99_ALLOWED=YES
-```
-
-## 最小任务定位验收
-
-必须满足：
-
-```text
-VISIBLE_FIELDS=3
-FIELD_1=ACTUAL_PAGE_NAME
-FIELD_2=TASK_NAME
-FIELD_3=SEQ
-FORMAT=【<ACTUAL_PAGE_NAME>｜<TASK_NAME>｜<SEQ>】
-PAGE_NAME_PRIORITY=USER_PROVIDED_EXACT>SYSTEM_UI_TITLE>NO_GUESS
-PAGE_NAME_GUESSING=FORBIDDEN
-TASK_NAME_DIRECT_RESTATEMENT=YES
-TASK_EXTRA_ID=NO
-SEQ_SCOPE=PER_TASK
-SEQ_FORMAT=1..6
-CORE_FIELD=NO
-STEP_FIELD=NO
-ROLE_FIELD=NO
-STATUS_FIELD=NO
-ORDER_FIRST_AND_LAST_LOCATOR=YES
-MISSING_ORDER_LOCATOR=REAL_VERIFY_FAIL
-ANSWER_FINAL_LOCATOR=YES
-MISSING_OR_MISMATCHED_ANSWER_LOCATOR=REAL_LOCATOR_TEST_FAIL
-REAL_ROUNDTRIP_REQUIRED=YES
-LOCATOR_KEY=PAGE_NAME+TASK_NAME+SEQ
-```
-
-冻结虚拟验收：
-
-```text
-CASES=12
-PASS_REQUIRED=12/12
-ACTUAL_PASS=12/12
-VIRTUAL_ACCURACY=100%
-```
-
-
-## Same-Reply Handoff 虚拟验收
-
-```text
-CASES=8
-PASS_REQUIRED=8/8
-ACTUAL_PASS=8/8
-VIRTUAL_ACCURACY=100%
-```
-
-
-## 全局定位双门禁验收
-
-```text
-GPT_SENDER_LOCATOR_REQUIRED=YES
-CODEX_GLOBAL_RECEIVER_GATE_REQUIRED=YES
-GLOBAL_GATE_TARGET=~/.codex/AGENTS.md
-MISSING_LOCATOR=BLOCK_AND_STOP
-GUESSING=FORBIDDEN
-FINAL_LINE_ECHO_REQUIRED=YES
-SKILL_NOT_LOADED_RECEIVER_PROTECTION=YES
-```
-
-虚拟验收：
-
-```text
-CASES=6
-PASS_REQUIRED=6/6
-ACTUAL_PASS=6/6
 ```
