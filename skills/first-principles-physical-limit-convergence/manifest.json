@@ -108,6 +108,15 @@
     ],
     "command_missing_first_or_last_locator": "REAL_VERIFY_FAIL",
     "answer_missing_or_mismatched_locator": "REAL_LOCATOR_TEST_FAIL",
-    "real_roundtrip_required": true
+    "real_roundtrip_required": true,
+    "global_receiver_gate": {
+      "required": true,
+      "target": "~/.codex/AGENTS.md",
+      "applies_to": "ALL_FORMAL_EXECUTION_COMMANDS",
+      "missing_locator": "BLOCK_AND_STOP",
+      "guessing_allowed": false,
+      "final_line_echo_required": true,
+      "purpose": "CATCH_SENDER_OMISSION_EVEN_WHEN_SKILL_NOT_LOADED"
+    }
   }
 }
