@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JEV Probability Engine P0 v0.4.0 Certification</title>
+  <style>
+    body { max-width: 960px; margin: 40px auto; padding: 0 24px; font: 16px/1.55 system-ui, sans-serif; color: #172033; background: #f4f7fb; }
+    main { background: white; border: 1px solid #d8e0ec; border-radius: 16px; padding: 28px; box-shadow: 0 12px 36px #1d315214; }
+    h1 { margin-top: 0; } .pass { color: #087443; font-weight: 750; }
+    table { width: 100%; border-collapse: collapse; margin: 18px 0; }
+    th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #e3e8f0; }
+    code { overflow-wrap: anywhere; } .note { color: #526078; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>JEV Probability Engine P0 v0.4.0</h1>
+  <p class="pass">REAL_P0_CERTIFIED — PASS</p>
+  <table>
+    <tr><th>Previous P0</th><td>840.6046999999962 ms (v0.3.0, preserved)</td></tr>
+    <tr><th>New P0 / T_REAL*</th><td>560.9819 ms</td></tr>
+    <tr><th>Distribution</th><td>P50 648.87 / P95 988.8238 / MAX 1285.2925 ms</td></tr>
+    <tr><th>Runs</th><td>30 pass / 0 fail</td></tr>
+    <tr><th>Commercial gate</th><td>PASS</td></tr>
+    <tr><th>HTTP count</th><td>67 actual / 67 expected — PASS</td></tr>
+    <tr><th>Improvement</th><td>33.2644821044% reduction / 1.4984524456x speedup</td></tr>
+  </table>
+  <h2>Evidence SHA-256</h2>
+  <p><code>C495E53182D91B310615FCA95FDB343980AE9533BC9C6BFEDDF32FB519D85691</code> — RESULT.json</p>
+  <p><code>AAB27543F56B7995EF15FEBCBF6401FBE8366E72AE9DDD785CA72930125BA076</code> — ACCEPTANCE.md</p>
+  <p><code>98EEC72B7060B9F7A21A5E0C97CBE98ABFAB587F321F5C17361FB123D801C3E8</code> — candidate C#</p>
+  <p><code>F7A6601128F21190F1515908929B93CDFC114A7120F0DA25F7272FDAB9316939</code> — runner PowerShell</p>
+  <p class="note">Writeback used the completed Reality Challenge V2 evidence only. No benchmark rerun, topology change, OpenRouter call, or Virtual-99 re-entry occurred.</p>
+</main>
+</body>
+</html>

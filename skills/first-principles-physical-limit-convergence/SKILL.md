@@ -645,16 +645,15 @@ GPT  = 开放问题或仍不确定的冲突
 
 ---
 
-## JEV Probability Engine P0 — v3.1.6 现实基线再收敛（ACTIVE FROZEN CASE）
+## JEV Probability Engine P0 — v0.4.0 现实认证（REAL_P0_CERTIFIED）
 
 本案例严格属于三核心，不创建第四核心。
 
-现实锚：
+历史现实锚（完整保留）：
 ```text
 PE-P0-GENERAL-01
-REAL_BASELINE_VERSION=jev-probability-engine-p0 v0.3.0
-REAL_BASELINE_T_P0_MS=840.6046999999962
-REAL_BASELINE_GATE=30/30 PASS
+PREVIOUS_REAL_P0_VERSION=v0.3.0
+PREVIOUS_T_P0_MS=840.6046999999962
 ```
 
 CORE 2 广域成熟方案池：
@@ -667,18 +666,33 @@ CORE 3 GPT Virtual-99：
 唯一冻结实现：
 `components/jev-probability-engine-p0-extreme/`
 
-当前门禁：
+当前现实认证：
 ```text
-MATURE_SOLUTION_CLUSTER=PASS
-VIRTUAL_99=PASS
-SOLUTION_FROZEN=YES
-REAL_VERIFY=NOT_YET
-CODEX_DESIGN_AUTHORITY=NO
-CODEX_EXECUTOR_ONLY=YES
+NEW_REAL_P0_VERSION=v0.4.0
+STATUS=REAL_P0_CERTIFIED
+REAL_CERTIFIED=YES
+REAL_P0_CERTIFIED=YES
+T_REAL_STAR_MS=560.9819
+T_P0_MS=560.9819
+P50_MS=648.87
+P95_MS=988.8238
+MAX_MS=1285.2925
+MEASURED_RUNS=30
+PASS_RUNS=30
+FAIL_RUNS=0
+COMMERCIAL_GATE_SERIES=PASS
+BASELINE_BEATEN=YES
+EXPECTED_HTTP_REQUESTS=67
+ACTUAL_HTTP_REQUESTS=67
+REQUEST_COUNT_MATCH=PASS
 ```
 
-冻结方案固定为：Jev 1.13、一个 model barrier、2 个 dependency-affinity + runtime LPT byte-balanced shards、projected state、short state-path Choice、2 条预热 persistent connections、per-shard early release、receipt O(1) policy lookup、in-memory reducer + 单 append-only log、incremental deterministic verifier + one final gate。
+真实结构固定为：每次运行 1 个 JEV decision wave、2 个并发 HTTP requests、2 个 local execution waves；进程级单例 `SocketsHttpHandler` 与 `HttpClient`，使用 `System.Text.Json`、`Task.WhenAll` 和连接池/keep-alive。
 
-现实执行若任何一项失败或 30/30 通过但最短时间未低于 840.6046999999962 ms：
-`REALITY_DELTA -> STOP -> RETURN_TO_GPT`。
-Codex/Reasonix/本地执行器禁止自行改变方案。
+计时边界未变：T0 位于正式 public input read 之前；T1 位于 `VerifyRealityAsync` 完成且 manifest 写盘之后。正式 input/state/questions/shards/serialization/HTTP/parse/local execution/dependency wait/verifier/manifest 全部仍在 timer 内。
+
+权威现实认证及哈希：
+`components/jev-probability-engine-p0-extreme/certifications/v0.4.0/REALITY_CERTIFICATION.md`
+`components/jev-probability-engine-p0-extreme/certifications/v0.4.0/manifest.json`
+
+旧 v0.3.0、V1/V2 与 840.6046999999962 ms 历史不得删除或改写；后续候选必须另建版本并以当前 560.9819 ms 现实 P0 为比较基线。

@@ -83,6 +83,28 @@ v3.1.4 中“4..6 是修复窗口”的语义已取消。
 
 `codex/first-principles-physical-limit-convergence-v3.1.7`
 
+## JEV Probability Engine P0 v0.4.0 现实认证
+
+`jev-probability-engine-p0` 子组件已由 Reality Challenge V2 正式认证：
+
+```text
+STATUS=REAL_P0_CERTIFIED
+PREVIOUS_T_P0_MS=840.6046999999962
+T_REAL_STAR_MS=560.9819
+T_P0_MS=560.9819
+P50_MS=648.87
+P95_MS=988.8238
+MAX_MS=1285.2925
+PASS_RUNS=30
+FAIL_RUNS=0
+COMMERCIAL_GATE_SERIES=PASS
+EXPECTED_HTTP_REQUESTS=67
+ACTUAL_HTTP_REQUESTS=67
+REQUEST_COUNT_MATCH=PASS
+```
+
+认证入口：`components/jev-probability-engine-p0-extreme/certifications/v0.4.0/REALITY_CERTIFICATION.md`。旧 v0.3.0、V1/V2 和 840.6046999999962 ms 历史继续保留。
+
 
 ## v3.1.7 浏览器现实扩展
 
