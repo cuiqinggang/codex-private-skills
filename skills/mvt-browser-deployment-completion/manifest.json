@@ -1,0 +1,57 @@
+{
+  "skill_id": "mvt-browser-deployment-completion",
+  "version": "1.0.0-rc1",
+  "display_name": "MVT 浏览器部署完整性与现实竞争总装",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.5",
+  "core_zh": "高智能虚拟成熟",
+  "purpose": "TURN_FROZEN_BROWSER_COMPONENTS_INTO_A_FULLY_BOUND_REALITY_COMPETITION_SYSTEM",
+  "reality_delta_origin": [
+    "D001",
+    "D002",
+    "D003",
+    "D004",
+    "D005",
+    "D006",
+    "D007"
+  ],
+  "completeness_gates": [
+    "REAL_RUN_CONFIG",
+    "HARNESS_MATRIX_BINDING",
+    "CONDITION_STATE_MACHINE",
+    "T_VALID_FULL_RECORDER",
+    "RESULT_PIPELINE",
+    "CAPABILITY_MATRIX_BINDING",
+    "RECOVERY_EXECUTION_BINDING"
+  ],
+  "executor_role": [
+    "READ_FROZEN_SOURCE",
+    "MATERIALIZE_FROZEN_ASSEMBLY",
+    "STATIC_VALIDATE",
+    "SIMULATE",
+    "HASH",
+    "REPORT",
+    "STOP"
+  ],
+  "forbidden_executor_actions": [
+    "SELF_REPAIR",
+    "REPLAN",
+    "NEW_ROUTE",
+    "MODIFY_FINALISTS",
+    "MODIFY_VALID",
+    "MODIFY_TIMING_BOUNDARY",
+    "MODIFY_WINNER_RULE",
+    "REAL_BROWSER_RUN_BEFORE_ALL_GATES_PASS"
+  ],
+  "success": {
+    "deployment_completeness": "PASS",
+    "reality_competition_ready": true,
+    "virtual_99": "PASS",
+    "real_browser_runs_during_assembly": 0,
+    "real_model_runs_during_assembly": 0
+  },
+  "on_failure": [
+    "RECORD_EXACT_DELTA",
+    "STOP",
+    "RETURN_TO_GPT_PAGE"
+  ]
+}
