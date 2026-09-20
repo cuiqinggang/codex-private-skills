@@ -93,6 +93,9 @@
     "after_3_incomplete": "RECORD_GAP_BEFORE_CONTINUING",
     "after_6_incomplete": "STOP_AND_REFREEZE_OR_SPLIT_TASK",
     "core_mapping_source": "MANDATORY_3_STEP_GATE_V3_1_3",
-    "duplicate_core_in_locator": false
+    "duplicate_core_in_locator": false,
+    "page_name_frozen_on_first_sequence": true,
+    "future_hidden_internal_id_allowed": true,
+    "future_hidden_internal_id_visible": false
   }
 }
