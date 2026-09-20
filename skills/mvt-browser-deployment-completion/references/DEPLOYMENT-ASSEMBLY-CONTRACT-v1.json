@@ -1,0 +1,372 @@
+{
+  "schema": "MVT-BROWSER-DEPLOYMENT-ASSEMBLY-CONTRACT-v1",
+  "version": "1.0.0-rc1",
+  "method_authority": "first-principles-physical-limit-convergence@3.1.5",
+  "core_zh": "高智能虚拟成熟",
+  "objective": "make the frozen reality competition mechanically executable without executor design authority",
+  "frozen_source": {
+    "workspace": "C:\\Users\\A\\playwright-browser-automation5-step2-work",
+    "commit": "6a8c3b0dfb98bfd3312df319dbd31b0ffd7ed629",
+    "required_clean_worktree": true,
+    "candidates": {
+      "F1": "candidate-f1",
+      "F2": "candidate-f2",
+      "F3": "candidate-f3"
+    },
+    "harness": "step3-harness",
+    "final_router": "final-router"
+  },
+  "step1_capability_source": {
+    "preferred_path": "C:\\Users\\A\\playwright-browser-automation5-step1-sparse\\docs\\playwright-browser-automation\\20260920-step1-mature-reality\\PLAYWRIGHT-BROWSER-AUTOMATION5-STEP1-CAPABILITY-MATRIX-v1.json",
+    "must_parse_json": true,
+    "if_missing": "BLOCK_RETURN_TO_GPT"
+  },
+  "output_bundle": {
+    "relative_root": "deployment-complete-v1",
+    "files": [
+      "real-run-config.json",
+      "route-bindings.json",
+      "condition-state-machines.json",
+      "t-valid-full-record-contract.json",
+      "result-pipeline.json",
+      "capability-execution-matrix.json",
+      "recovery-execution-bindings.json",
+      "deployment-manifest.json",
+      "virtual-assembly-test-result.json",
+      "FINAL-REALITY-COMPETITION-COMMAND-v2.md"
+    ]
+  },
+  "resolution_rules": {
+    "allowed_runner_extensions": [
+      ".mjs",
+      ".js",
+      ".cjs",
+      ".ps1",
+      ".py"
+    ],
+    "candidate_directories_must_be_exact": [
+      "candidate-f1",
+      "candidate-f2",
+      "candidate-f3",
+      "step3-harness",
+      "final-router"
+    ],
+    "file_resolution": "EXACTLY_ONE_MATCH_OR_BLOCK",
+    "ambiguous_match_action": "BLOCK_RETURN_TO_GPT",
+    "missing_match_action": "BLOCK_RETURN_TO_GPT",
+    "no_executor_guessing": true,
+    "F1_required": [
+      "manifest.json",
+      "runner.*",
+      "adapter.*",
+      "CONTRACT.md"
+    ],
+    "F2_required": [
+      "manifest.json",
+      "runner.*",
+      "compiler.*",
+      "verifier.*",
+      "workflow-schema.json",
+      "parameter-schema.json",
+      "CONTRACT.md",
+      "AT_LEAST_ONE_FROZEN_WORKFLOW_JSON"
+    ],
+    "F3_required": [
+      "manifest.json",
+      "runner.*",
+      "verifier.*",
+      "session-owner.*",
+      "batched-helper.*",
+      "CONTRACT.md"
+    ],
+    "harness_required": [
+      "task-schema.json",
+      "route-interface-schema.json",
+      "result-schema.json",
+      "timing-boundary.json",
+      "run-matrix.json",
+      "harness.*",
+      "verifier.*",
+      "statistics.*",
+      "winner-selector.*",
+      "CONTRACT.md"
+    ],
+    "final_router_required": [
+      "router.*",
+      "winner-map.schema.json",
+      "CONTRACT.md"
+    ],
+    "auxiliary_package_discovery": {
+      "jev": {
+        "name_tokens": [
+          "jev",
+          "typed"
+        ],
+        "must_resolve_exactly_one_top_level_package": true
+      },
+      "open_agent": {
+        "name_tokens": [
+          "open",
+          "agent"
+        ],
+        "must_resolve_exactly_one_top_level_package": true
+      },
+      "recovery": {
+        "name_tokens": [
+          "recovery"
+        ],
+        "must_resolve_exactly_one_top_level_package": true
+      }
+    }
+  },
+  "gates": {
+    "D001": {
+      "name": "REAL_RUN_CONFIG",
+      "output": "real-run-config.json",
+      "requires": [
+        "source_commit",
+        "route_roots",
+        "harness_root",
+        "task_matrix",
+        "conditions",
+        "repeats",
+        "timing_contract",
+        "result_contract",
+        "mutation_policy"
+      ]
+    },
+    "D002": {
+      "name": "HARNESS_MATRIX_BINDING",
+      "output": "route-bindings.json",
+      "invariant": "every required family/case/condition/route tuple has exactly one runner and verifier binding",
+      "ambiguous_bindings": 0,
+      "unbound_required_cases": 0
+    },
+    "D003": {
+      "name": "CONDITION_STATE_MACHINE",
+      "output": "condition-state-machines.json",
+      "conditions": {
+        "COLD": [
+          "ASSERT_BROWSER_ABSENT",
+          "TASK_ACCEPTED",
+          "TIMER_START",
+          "LAUNCH",
+          "RUN",
+          "INDEPENDENT_VERIFY_VALID",
+          "TIMER_STOP",
+          "TEARDOWN"
+        ],
+        "WARM": [
+          "ASSERT_READY_INITIAL_STATE",
+          "TASK_ACCEPTED",
+          "TIMER_START",
+          "RUN",
+          "INDEPENDENT_VERIFY_VALID",
+          "TIMER_STOP",
+          "RESTORE_NEXT_INITIAL_STATE_OUTSIDE_ATTEMPT"
+        ],
+        "RECONNECT": [
+          "ASSERT_BROWSER_ALIVE",
+          "DISCONNECT_CONTROLLER",
+          "TASK_ACCEPTED",
+          "TIMER_START",
+          "RECONNECT",
+          "RUN",
+          "INDEPENDENT_VERIFY_VALID",
+          "TIMER_STOP"
+        ]
+      }
+    },
+    "D004": {
+      "name": "T_VALID_FULL_RECORDER",
+      "output": "t-valid-full-record-contract.json",
+      "clock": "MONOTONIC_HIGH_RESOLUTION",
+      "formula": "t_valid_full_ms=end_monotonic_ms-start_monotonic_ms",
+      "required_fields": [
+        "route_id",
+        "family",
+        "case_id",
+        "condition",
+        "attempt_index",
+        "start_monotonic_ms",
+        "end_monotonic_ms",
+        "t_valid_full_ms",
+        "component_times",
+        "valid",
+        "verifier_result",
+        "model_calls",
+        "jev_calls",
+        "open_agent_calls",
+        "recovery_triggered",
+        "error",
+        "artifacts",
+        "contract_version",
+        "source_commit"
+      ],
+      "timing_boundary_overrides": 0
+    },
+    "D005": {
+      "name": "RESULT_PIPELINE",
+      "output": "result-pipeline.json",
+      "sequence": [
+        "RUNNER_RESULT",
+        "INDEPENDENT_VERIFIER",
+        "NORMALIZED_ATTEMPT",
+        "APPEND_ONLY_JSONL",
+        "STATISTICS",
+        "PROVISIONAL_WINNER_SELECTOR",
+        "ARTIFACT_HASHES"
+      ],
+      "append_only": true,
+      "dropped_failures": 0,
+      "winner_rule": [
+        "VALID_FIRST",
+        "MINIMUM_T_VALID_FULL",
+        "EXACT_TIE_REMAINS_TIE",
+        "NO_SECOND_KPI"
+      ]
+    },
+    "D006": {
+      "name": "CAPABILITY_MATRIX_BINDING",
+      "output": "capability-execution-matrix.json",
+      "source": "STEP1_CAPABILITY_MATRIX",
+      "each_case_requires": [
+        "case_id",
+        "capability",
+        "status",
+        "route_binding",
+        "fixture_or_request",
+        "expected",
+        "verifier",
+        "repeat_count"
+      ],
+      "missing_required_binding_action": "CAPABILITY_UNKNOWN_AND_OVERALL_NOT_COMPLETE"
+    },
+    "D007": {
+      "name": "RECOVERY_EXECUTION_BINDING",
+      "output": "recovery-execution-bindings.json",
+      "faults": [
+        "SESSION_LOST",
+        "STALE_STATE",
+        "TARGET_CHANGED",
+        "BROWSER_CRASH",
+        "NETWORK_INTERRUPTION",
+        "CONTRACT_DRIFT"
+      ],
+      "each_fault_requires": [
+        "fault_injector",
+        "recovery_runner",
+        "verifier",
+        "repeat_count",
+        "result_record"
+      ],
+      "repeat_count": 3,
+      "normal_path_recovery_overhead": 0
+    }
+  },
+  "frozen_competition_matrix": {
+    "A1": {
+      "F1": {
+        "COLD": 10,
+        "WARM": 20,
+        "RECONNECT": 10
+      },
+      "F2": {
+        "COLD": 10,
+        "WARM": 20,
+        "RECONNECT": "ONLY_IF_FROZEN_F2_CONTRACT_SUPPORTS"
+      },
+      "F3": {
+        "COLD": 10,
+        "WARM": 20,
+        "RECONNECT": 10
+      }
+    },
+    "B1": {
+      "CODE": 20,
+      "ONE_JEV": 10,
+      "jev_max_requests": 1,
+      "jev_retry": 0
+    },
+    "C1": {
+      "F1": {
+        "WARM": 20,
+        "COLD": 10
+      },
+      "F2": {
+        "WARM": 20,
+        "COLD": 10
+      },
+      "F3": {
+        "WARM": 20,
+        "COLD": 10
+      }
+    },
+    "D1": {
+      "EACH_FROZEN_CASE": 5,
+      "max_open_plan_calls": 1
+    },
+    "E1": {
+      "EACH_FROZEN_FAULT": 3
+    },
+    "CAP": {
+      "EACH_BOUND_CAPABILITY_CASE": 3
+    }
+  },
+  "jev_reference": {
+    "public_optimized_median_ms": 7092,
+    "public_video_ms": 7073,
+    "primary_metric_remains": "T_VALID_FULL",
+    "compatible_metric_is_separate": true
+  },
+  "virtual_maturity": {
+    "no_real_browser": true,
+    "no_real_jev": true,
+    "no_real_open_agent": true,
+    "required_simulations": [
+      "all_7_gates_present",
+      "missing_runner_blocks",
+      "ambiguous_runner_blocks",
+      "cold_state_order",
+      "warm_state_order",
+      "reconnect_state_order",
+      "negative_timing_blocks",
+      "timing_formula_exact",
+      "failure_attempt_retained",
+      "winner_valid_first",
+      "winner_minimum_t_valid",
+      "exact_tie_retained",
+      "capability_missing_binding_marks_unknown",
+      "all_6_recovery_faults_bound",
+      "normal_recovery_overhead_zero",
+      "codex_self_repair_forbidden",
+      "real_io_zero"
+    ]
+  },
+  "pass": {
+    "D001": "PASS",
+    "D002": "PASS",
+    "D003": "PASS",
+    "D004": "PASS",
+    "D005": "PASS",
+    "D006": "PASS",
+    "D007": "PASS",
+    "ambiguous_bindings": 0,
+    "unbound_required_cases": 0,
+    "timing_boundary_overrides": 0,
+    "dropped_failure_attempts": 0,
+    "real_browser_runs": 0,
+    "real_jev_requests": 0,
+    "real_open_agent_requests": 0,
+    "production_mutation": 0,
+    "codex_self_repair": 0,
+    "virtual_99": "PASS",
+    "deployment_completeness": "PASS",
+    "reality_competition_ready": true
+  },
+  "on_failure": [
+    "RECORD_EXACT_DELTA",
+    "STOP",
+    "RETURN_TO_GPT_PAGE"
+  ]
+}
