@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 0.3.0 — 2026-09-21
+
+Reality certified:
+- OpenRouter Key/API/model path PASS.
+- Decision schema PASS.
+- s1/s2/s4/s8 sweep 全部 10/10 PASS.
+- sweep winner = s2.
+- s2 confirmation = 30/30 PASS.
+- COMMERCIAL_GATE_SERIES=PASS.
+- T_REAL*=840.6046999999962 ms.
+- T_P0=840.6046999999962 ms.
+- REAL_CERTIFIED=YES.
+
+Diagnostics:
+- confirmation P50=907.2285 ms.
+- P95=1014.1072 ms.
+- MAX=1192.165 ms.
+
+Evidence boundary:
+- certification values derive from the user's posted PowerShell transcript.
+- local RESULT.json path was reported by the runner but was not independently fetched by the connector.
+
 ## 0.2.1 — 2026-09-21
 
 Added:

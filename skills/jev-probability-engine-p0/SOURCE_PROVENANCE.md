@@ -41,3 +41,10 @@ Checked 2026-09-21:
 - Persistent snapshot: `ChatGPT Library /AI-Skills/jev-probability-engine-p0-v0.2.1-command-pack.zip`.
 
 Runtime winner topology is intentionally not inferred from public latency; it must come from the frozen real benchmark.
+
+
+## v0.3.0 reality evidence
+
+2026-09-21 用户在本机 Windows PowerShell 执行 v0.2.2 command pack，并在当前 ChatGPT 会话贴出完整控制台结果。关键结果：Decision schema PASS；s1/s2/s4/s8 全部 correctness PASS；s2 30/30 confirmation PASS；COMMERCIAL_GATE_SERIES=PASS；T_REAL*=T_P0=840.6046999999962 ms；REAL_CERTIFIED=YES。
+
+本次没有通过连接器读取用户本机 RESULT.json，因此只把用户贴出的 console transcript 作为当前 reality certification 的直接证据，不声称已独立读取本地结果文件。

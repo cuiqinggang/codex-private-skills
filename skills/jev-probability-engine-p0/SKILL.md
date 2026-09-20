@@ -61,3 +61,20 @@ VIRTUAL_99.md
 UPDATE_PROTOCOL.md
 
 禁止覆盖旧历史；发现新成熟结构、伪依赖、Jev/Provider 或现实环境变化，按 UPDATE_PROTOCOL 产生新版本。
+
+
+## 现实认证
+
+2026-09-21，v0.2.2 reality command 完成首轮真实运行：
+
+```text
+SWEEP_s1/s2/s4/s8=ALL_PASS
+SWEEP_WINNER_SHARDS=2
+CONFIRM_s2=30/30_PASS
+COMMERCIAL_GATE_SERIES=PASS
+T_REAL_STAR_MS=840.6046999999962
+T_P0_MS=840.6046999999962
+REAL_CERTIFIED=YES
+```
+
+840.605 ms 是当前固定现实环境下的已认证最短有效观测值，不是永久物理常数。模型、Provider、网络、机器、代理、action backend 或 verifier 改变时必须按 UPDATE_PROTOCOL 重测。

@@ -1,0 +1,59 @@
+{
+  "skill_id": "jev-probability-engine-p0",
+  "version": "0.3.0",
+  "date": "2026-09-21",
+  "benchmark": "PE-P0-GENERAL-01",
+  "command_pack_version": "0.2.2",
+  "requested_model": "typesafe/jev-1.13",
+  "returned_model": "typesafe/jev-1.13-20260917",
+  "connectivity": {
+    "key_auth": "PASS",
+    "http_decisions": "PASS",
+    "decision_schema": "PASS"
+  },
+  "sweep": {
+    "s1": {
+      "pass": "10/10",
+      "min_ms": 866.845,
+      "p50_ms": 946.8055,
+      "p95_ms": 1029.6251,
+      "max_ms": 1045.133
+    },
+    "s2": {
+      "pass": "10/10",
+      "min_ms": 850.206,
+      "p50_ms": 918.086,
+      "p95_ms": 1093.64995,
+      "max_ms": 1110.007
+    },
+    "s4": {
+      "pass": "10/10",
+      "min_ms": 908.026,
+      "p50_ms": 930.981,
+      "p95_ms": 1199.92255,
+      "max_ms": 1306.132
+    },
+    "s8": {
+      "pass": "10/10",
+      "min_ms": 874.781,
+      "p50_ms": 991.401,
+      "p95_ms": 1528.78575,
+      "max_ms": 1550.073
+    },
+    "winner_shards": 2
+  },
+  "confirm": {
+    "shards": 2,
+    "pass": "30/30",
+    "min_ms": 840.6046999999962,
+    "p50_ms": 907.2285,
+    "p95_ms": 1014.1072,
+    "max_ms": 1192.165,
+    "mean_ms": 920.4147666666667
+  },
+  "commercial_gate_series": "PASS",
+  "T_REAL_STAR_MS": 840.6046999999962,
+  "T_P0_MS": 840.6046999999962,
+  "REAL_CERTIFIED": "YES",
+  "evidence_source": "user-provided PowerShell console transcript; local RESULT.json path reported but not independently read"
+}

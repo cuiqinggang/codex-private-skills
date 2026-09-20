@@ -1,8 +1,8 @@
 {
   "skill_id": "jev-probability-engine-p0",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "date": "2026-09-21",
-  "status": "STEP3_REALITY_TEST_COMMAND_VIRTUAL_FROZEN",
+  "status": "REAL_P0_CERTIFIED",
   "objective": "min T_E2E subject to COMMERCIAL_GATE=PASS",
   "engine": "E=(C,P,S,V)",
   "benchmark": {
@@ -34,12 +34,18 @@
   "real_state": {
     "MATURE_CLUSTER": "FROZEN_V0.2",
     "VIRTUAL_99_STRUCTURAL": "PASS",
-    "T_REAL_STAR": "NOT_MEASURED",
-    "T_P0": "NOT_MEASURED",
-    "REAL_P0": "READY_NOT_RUN",
-    "REAL_CERTIFIED": "NO"
+    "REALITY_COMMAND_VERSION": "0.2.2",
+    "KEY_AUTH": "PASS",
+    "HTTP_DECISIONS": "PASS",
+    "DECISION_SCHEMA": "PASS",
+    "SWEEP_WINNER_SHARDS": 2,
+    "CONFIRM_PASS": "30/30",
+    "T_REAL_STAR_MS": 840.6046999999962,
+    "T_P0_MS": 840.6046999999962,
+    "REAL_CERTIFIED": "YES",
+    "EVIDENCE_SOURCE": "user-provided PowerShell console transcript"
   },
-  "next": "STEP3_REALITY_ANCHOR_AND_REAL_P0",
+  "next": "MAINTAIN_CERTIFIED_BASELINE_AND_REMEASURE_ON_ENVIRONMENT_CHANGE",
   "reality_command": {
     "model": "typesafe/jev-1.13",
     "endpoint": "https://openrouter.ai/api/alpha/decisions",
