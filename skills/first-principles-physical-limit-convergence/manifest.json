@@ -1,6 +1,6 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "3.1.4",
+  "version": "3.1.5",
   "display_name": "第一性原理极限短时间引擎",
   "whitelist_only": true,
   "core_whitelist": [
@@ -22,8 +22,8 @@
   ],
   "core_count": 3,
   "fourth_core_allowed": false,
-  "execution_rule": "EVERY_CURRENT_ACTION_MUST_MAP_DIRECTLY_TO_CORE_1_2_OR_3",
-  "unmapped_action_policy": "BLACKLIST_DO_NOT_EXECUTE",
+  "execution_rule": "EVERY_FORMAL_COMMAND_MUST_MAP_TRUTHFULLY_TO_EXACTLY_ONE_OF_THE_THREE_CORES_AND_SHOW_THE_CHINESE_CORE_NAME_IN_LOCATOR",
+  "unmapped_action_policy": "BLOCK_DO_NOT_PUBLISH_OR_EXECUTE",
   "canonical_sequence": [
     "CORE_1_MINIMUM_VALID_TIME",
     "CORE_2_MATURE_SOLUTION_CLUSTER",
@@ -44,12 +44,16 @@
       "WAIT_FOR_USER_CONFIRMATION_BEFORE_HANDOFF",
       "DEPLOY_LATER"
     ],
-    "locator_missing_ui_title_does_not_block_handoff": true
+    "locator_missing_ui_title_does_not_block_handoff": true,
+    "locator_format_version": "4_FIELD_CHINESE_CORE_V3_1_5"
   },
   "real_execution": {
-    "role": "VERIFY_FROZEN_CORE_3_OUTPUT",
+    "role": "EXECUTE_FROZEN_GPT_OUTPUT_AND_REPORT_REALITY_ONLY",
     "may_create_new_method": false,
-    "on_failure": "RETURN_REALITY_DELTA_TO_CORE_3"
+    "may_self_repair": false,
+    "may_replan": false,
+    "may_create_repair_task": false,
+    "on_failure": "RECORD_REALITY_DELTA_STOP_RETURN_TO_GPT_PAGE"
   },
   "active_virtual_99": {
     "version": "2",
@@ -74,17 +78,18 @@
     "metric": "T_VALID",
     "optimize": "MINIMIZE"
   },
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v3.1.4",
-  "previous_version": "3.1.3",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v3.1.5",
+  "previous_version": "3.1.4",
   "updated_date": "2026-09-20",
   "task_locator": {
     "enabled": true,
-    "purpose": "MINIMAL_PAGE_TASK_COMMAND_POSITIONING",
-    "visible_format": "【<PAGE_NAME>|<TASK_NAME>|<SEQ>】",
+    "purpose": "MINIMAL_PAGE_TASK_SEQUENCE_AND_CHINESE_CORE_POSITIONING",
+    "visible_format": "【<PAGE_NAME>｜<TASK_NAME>｜<SEQ>｜<CORE_ZH>】",
     "key_fields": [
       "PAGE_NAME",
       "TASK_NAME",
-      "SEQ"
+      "SEQ",
+      "CORE_ZH"
     ],
     "page_name_guessing_allowed": false,
     "task_name_source": "DIRECT_CONCISE_RESTATEMENT_OF_CURRENT_TASK",
@@ -93,30 +98,63 @@
     "sequence_start": 1,
     "sequence_max": 6,
     "sequence_format": "PLAIN_INTEGER",
-    "order_requires_first_and_last_line": true,
-    "answer_requires_final_line": true,
-    "normal_closeout_max_seq": 3,
-    "after_3_incomplete": "RECORD_GAP_BEFORE_SEQ_4",
-    "after_6_incomplete": "STOP_AND_REFREEZE_OR_SPLIT_TASK",
-    "core_mapping_source": "EXISTING_MANDATORY_3_STEP_GATE",
-    "duplicate_core_in_locator": false,
+    "sequence_is_repair_stage": false,
+    "repair_window_exists": false,
+    "normal_closeout_target_max_seq": 3,
+    "after_incomplete": "EXECUTOR_STOPS_AND_RETURNS_RESULT; GPT_PAGE_DECIDES_ANY_NEXT_COMMAND",
+    "after_6_incomplete": "STOP_AND_RETURN_TO_GPT_PAGE_FOR_REFREEZE_OR_SPLIT",
+    "core_field_required": true,
+    "core_field_language": "zh-CN",
+    "core_field_allowed_values": [
+      "极限短时间",
+      "成熟方案集群",
+      "高智能虚拟成熟"
+    ],
+    "core_field_exactly_one": true,
+    "english_core_alias_allowed_in_visible_field": false,
+    "cross_core_command_allowed": false,
+    "cross_core_action": "GPT_MUST_SPLIT_BEFORE_PUBLISHING",
+    "core_truthfulness_required": true,
+    "task_body_core_mismatch": "BLOCK_AND_STOP",
     "visible_extra_fields_allowed": false,
     "page_name_source_priority": [
       "USER_PROVIDED_EXACT",
       "SYSTEM_READABLE_ACTUAL_UI_TITLE",
       "NO_GUESS"
     ],
-    "command_missing_first_or_last_locator": "REAL_VERIFY_FAIL",
-    "answer_missing_or_mismatched_locator": "REAL_LOCATOR_TEST_FAIL",
+    "order_requires_first_and_last_line": true,
+    "answer_requires_final_line": true,
+    "command_missing_first_or_last_locator": "BLOCK_AND_STOP",
+    "answer_missing_or_mismatched_locator": "LOCATOR_TEST_FAIL",
+    "locator_key": "PAGE_NAME|TASK_NAME|SEQ|CORE_ZH",
     "real_roundtrip_required": true,
     "global_receiver_gate": {
       "required": true,
       "target": "~/.codex/AGENTS.md",
       "applies_to": "ALL_FORMAL_EXECUTION_COMMANDS",
-      "missing_locator": "BLOCK_AND_STOP",
+      "required_fields": 4,
+      "allowed_core_zh": [
+        "极限短时间",
+        "成熟方案集群",
+        "高智能虚拟成熟"
+      ],
+      "missing_or_invalid_locator": "BLOCK_AND_STOP",
+      "body_core_mismatch": "BLOCK_AND_STOP",
       "guessing_allowed": false,
+      "codex_repair_task_allowed": false,
+      "codex_replan_allowed": false,
+      "failure_action": "RECORD_REALITY_DELTA_STOP_RETURN_TO_GPT_PAGE",
       "final_line_echo_required": true,
-      "purpose": "CATCH_SENDER_OMISSION_EVEN_WHEN_SKILL_NOT_LOADED"
+      "purpose": "CATCH_SENDER_OMISSION_OR_FOURTH_PATH_EVEN_WHEN_SKILL_NOT_LOADED"
     }
+  },
+  "executor_role": {
+    "codex": "FROZEN_COMMAND_EXECUTOR_ONLY",
+    "reasonix": "FROZEN_COMMAND_EXECUTOR_ONLY",
+    "local_executor": "FROZEN_COMMAND_EXECUTOR_ONLY",
+    "virtual_maturity_owner": "GPT_PAGE",
+    "repair_design_owner": "GPT_PAGE",
+    "executor_may_apply_frozen_change": true,
+    "executor_may_decide_change": false
   }
 }
