@@ -1,2 +1,2 @@
 # 更新协议
-1. 先区分 TARGET 与 COLLECTOR。2. 历史只追加。3. 动态行为以 TARGET/运行时为权威。4. 秘密只保存安全元数据。5. 生成缺口、模块、恢复和 V2 指纹。6. 构造 ONLINE-SAFE-ARCHIVE 后只扫描发布副本。7. PASS/PARTIAL/FAIL 均可追加，但版本状态必须真实。
+1. 先区分 TARGET 与 COLLECTOR。2. 历史只追加。3. 动态行为以 TARGET/运行时为权威。4. 秘密只保存安全元数据。5. 生成缺口、模块、恢复和 V2 指纹。6. 对实际配置层发现规则源，并用官方 codex execpolicy check 计算验证向量。7. 以已观测动态边界建模，不虚构未启动子进程的 PATH 或令牌。8. 分开计算关键执行覆盖率与辅助可观测覆盖率。9. 生成最终锚点和 V3 指纹。10. 构造 ONLINE-SAFE-ARCHIVE 后只扫描发布副本。11. PASS/PARTIAL/FAIL 均可追加，但版本状态必须真实。

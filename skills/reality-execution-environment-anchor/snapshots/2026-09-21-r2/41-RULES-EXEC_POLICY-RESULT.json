@@ -1,0 +1,1738 @@
+{
+  "SCHEMA_VERSION": "1.0",
+  "GENERATED_UTC": "2026-09-20T17:58:15.0070601Z",
+  "OBSERVATION_CONTEXT": "COLLECTOR",
+  "OFFICIAL_INTERPRETER": "codex execpolicy check",
+  "CHECKED_RULE_FILES": [
+    "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+    "C:\\Users\\A\\.codex\\rules\\default.rules"
+  ],
+  "RULE_DEFINITION_COUNT": 46,
+  "DECLARED_MATCH_VECTOR_COUNT": 0,
+  "DECLARED_NOT_MATCH_VECTOR_COUNT": 0,
+  "DIRECT_PREFIX_VECTOR_COUNT": 46,
+  "RULE_TEST_VECTOR": [
+    {
+      "TEST_INDEX": 1,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "netsh",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 1,
+        "PATTERN": [
+          "netsh"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "netsh"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "netsh"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 2,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "route",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 2,
+        "PATTERN": [
+          "route"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "route"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "route"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 3,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "ipconfig",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 3,
+        "PATTERN": [
+          "ipconfig"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "ipconfig"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "ipconfig"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 4,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "reg",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 4,
+        "PATTERN": [
+          "reg"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "reg"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "reg"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 5,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "sc",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 5,
+        "PATTERN": [
+          "sc"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "sc"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "sc"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 6,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "Stop-Service",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 6,
+        "PATTERN": [
+          "Stop-Service"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "Stop-Service"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "Stop-Service"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 7,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "Set-Service",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 7,
+        "PATTERN": [
+          "Set-Service"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "Set-Service"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "Set-Service"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 8,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "Restart-Service",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 8,
+        "PATTERN": [
+          "Restart-Service"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "Restart-Service"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "Restart-Service"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 9,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "schtasks",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 9,
+        "PATTERN": [
+          "schtasks"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "schtasks"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "schtasks"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 10,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "bcdedit",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 10,
+        "PATTERN": [
+          "bcdedit"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "bcdedit"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "bcdedit"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 11,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "shutdown",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 11,
+        "PATTERN": [
+          "shutdown"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "shutdown"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "shutdown"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 12,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "Restart-Computer",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 12,
+        "PATTERN": [
+          "Restart-Computer"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "Restart-Computer"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "Restart-Computer"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 13,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "Stop-Computer",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 13,
+        "PATTERN": [
+          "Stop-Computer"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "Stop-Computer"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "Stop-Computer"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 14,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "taskkill",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 14,
+        "PATTERN": [
+          "taskkill"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "taskkill"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "taskkill"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 15,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "wsl",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 15,
+        "PATTERN": [
+          "wsl"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "wsl"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "wsl"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 16,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "docker",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 16,
+        "PATTERN": [
+          "docker"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "docker"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "docker"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 17,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "format",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 17,
+        "PATTERN": [
+          "format"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "format"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "format"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 18,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "diskpart",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 18,
+        "PATTERN": [
+          "diskpart"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "diskpart"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "diskpart"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 19,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "setx",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 19,
+        "PATTERN": [
+          "setx"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "setx"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "setx"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 20,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-Command",
+        "$target='H:\\AI\\skills\\ecc-endurance-ladder-unified'; if (Test-Path -LiteralPath $target) { Get-Item -LiteralPath $target | Select-Object FullName,PSIsContainer,LastWriteTime } else { 'TARGET_NOT_FOUND' }",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 20,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$target='H:\\AI\\skills\\ecc-endurance-ladder-unified'; if (Test-Path -LiteralPath $target) { Get-Item -LiteralPath $target | Select-Object FullName,PSIsContainer,LastWriteTime } else { 'TARGET_NOT_FOUND' }"
+        ],
+        "DECISION": "allow"
+      },
+      "FINAL_DECISION": "allow",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$target='H:\\AI\\skills\\ecc-endurance-ladder-unified'; if (Test-Path -LiteralPath $target) { Get-Item -LiteralPath $target | Select-Object FullName,PSIsContainer,LastWriteTime } else { 'TARGET_NOT_FOUND' }"
+          ],
+          "DECISION": "allow"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$target='H:\\AI\\skills\\ecc-endurance-ladder-unified'; if (Test-Path -LiteralPath $target) { Get-Item -LiteralPath $target | Select-Object FullName,PSIsContainer,LastWriteTime } else { 'TARGET_NOT_FOUND' }"
+          ],
+          "DECISION": "allow"
+        }
+      ],
+      "STRICTEST_DECISION": "allow",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 21,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-Command",
+        "$base='H:\\AI\\skills\\ecc-endurance-ladder-unified'; $files=@('README.md','RUNBOOK.md','SOURCE-OF-TRUTH-MAP.md','CLAUDE-STYLE-12-LAYER-WORKFLOW.md'); foreach($f in $files){ '===== '+$f+' ====='; Get-Content -LiteralPath (Join-Path $base $f) -Raw }",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 21,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$base='H:\\AI\\skills\\ecc-endurance-ladder-unified'; $files=@('README.md','RUNBOOK.md','SOURCE-OF-TRUTH-MAP.md','CLAUDE-STYLE-12-LAYER-WORKFLOW.md'); foreach($f in $files){ '===== '+$f+' ====='; Get-Content -LiteralPath (Join-Path $base $f) -Raw }"
+        ],
+        "DECISION": "allow"
+      },
+      "FINAL_DECISION": "allow",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$base='H:\\AI\\skills\\ecc-endurance-ladder-unified'; $files=@('README.md','RUNBOOK.md','SOURCE-OF-TRUTH-MAP.md','CLAUDE-STYLE-12-LAYER-WORKFLOW.md'); foreach($f in $files){ '===== '+$f+' ====='; Get-Content -LiteralPath (Join-Path $base $f) -Raw }"
+          ],
+          "DECISION": "allow"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$base='H:\\AI\\skills\\ecc-endurance-ladder-unified'; $files=@('README.md','RUNBOOK.md','SOURCE-OF-TRUTH-MAP.md','CLAUDE-STYLE-12-LAYER-WORKFLOW.md'); foreach($f in $files){ '===== '+$f+' ====='; Get-Content -LiteralPath (Join-Path $base $f) -Raw }"
+          ],
+          "DECISION": "allow"
+        }
+      ],
+      "STRICTEST_DECISION": "allow",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 22,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-Command",
+        "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $p=Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 22,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $p=Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+        ],
+        "DECISION": "allow"
+      },
+      "FINAL_DECISION": "allow",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $p=Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+          ],
+          "DECISION": "allow"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $p=Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+          ],
+          "DECISION": "allow"
+        }
+      ],
+      "STRICTEST_DECISION": "allow",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 23,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-Command",
+        "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $self=$PID; $p=Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $self -and $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "LINE": 23,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $self=$PID; $p=Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $self -and $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+        ],
+        "DECISION": "allow"
+      },
+      "FINAL_DECISION": "allow",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $self=$PID; $p=Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $self -and $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+          ],
+          "DECISION": "allow"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $self=$PID; $p=Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $self -and $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+          ],
+          "DECISION": "allow"
+        }
+      ],
+      "STRICTEST_DECISION": "allow",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 24,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "netsh",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 1,
+        "PATTERN": [
+          "netsh"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "netsh"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "netsh"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 25,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "route",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 2,
+        "PATTERN": [
+          "route"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "route"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "route"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 26,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "ipconfig",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 3,
+        "PATTERN": [
+          "ipconfig"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "ipconfig"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "ipconfig"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 27,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "reg",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 4,
+        "PATTERN": [
+          "reg"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "reg"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "reg"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 28,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "sc",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 5,
+        "PATTERN": [
+          "sc"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "sc"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "sc"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 29,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "Stop-Service",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 6,
+        "PATTERN": [
+          "Stop-Service"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "Stop-Service"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "Stop-Service"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 30,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "Set-Service",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 7,
+        "PATTERN": [
+          "Set-Service"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "Set-Service"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "Set-Service"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 31,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "Restart-Service",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 8,
+        "PATTERN": [
+          "Restart-Service"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "Restart-Service"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "Restart-Service"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 32,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "schtasks",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 9,
+        "PATTERN": [
+          "schtasks"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "schtasks"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "schtasks"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 33,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "bcdedit",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 10,
+        "PATTERN": [
+          "bcdedit"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "bcdedit"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "bcdedit"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 34,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "shutdown",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 11,
+        "PATTERN": [
+          "shutdown"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "shutdown"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "shutdown"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 35,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "Restart-Computer",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 12,
+        "PATTERN": [
+          "Restart-Computer"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "Restart-Computer"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "Restart-Computer"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 36,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "Stop-Computer",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 13,
+        "PATTERN": [
+          "Stop-Computer"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "Stop-Computer"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "Stop-Computer"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 37,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "taskkill",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 14,
+        "PATTERN": [
+          "taskkill"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "taskkill"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "taskkill"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 38,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "wsl",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 15,
+        "PATTERN": [
+          "wsl"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "wsl"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "wsl"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 39,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "docker",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 16,
+        "PATTERN": [
+          "docker"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "docker"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "docker"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 40,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "format",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 17,
+        "PATTERN": [
+          "format"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "format"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "format"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 41,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "diskpart",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 18,
+        "PATTERN": [
+          "diskpart"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "diskpart"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "diskpart"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 42,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "setx",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 19,
+        "PATTERN": [
+          "setx"
+        ],
+        "DECISION": "prompt"
+      },
+      "FINAL_DECISION": "prompt",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "setx"
+          ],
+          "DECISION": "prompt"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "setx"
+          ],
+          "DECISION": "prompt"
+        }
+      ],
+      "STRICTEST_DECISION": "prompt",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 43,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-Command",
+        "$target='H:\\AI\\skills\\ecc-endurance-ladder-unified'; if (Test-Path -LiteralPath $target) { Get-Item -LiteralPath $target | Select-Object FullName,PSIsContainer,LastWriteTime } else { 'TARGET_NOT_FOUND' }",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 20,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$target='H:\\AI\\skills\\ecc-endurance-ladder-unified'; if (Test-Path -LiteralPath $target) { Get-Item -LiteralPath $target | Select-Object FullName,PSIsContainer,LastWriteTime } else { 'TARGET_NOT_FOUND' }"
+        ],
+        "DECISION": "allow"
+      },
+      "FINAL_DECISION": "allow",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$target='H:\\AI\\skills\\ecc-endurance-ladder-unified'; if (Test-Path -LiteralPath $target) { Get-Item -LiteralPath $target | Select-Object FullName,PSIsContainer,LastWriteTime } else { 'TARGET_NOT_FOUND' }"
+          ],
+          "DECISION": "allow"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$target='H:\\AI\\skills\\ecc-endurance-ladder-unified'; if (Test-Path -LiteralPath $target) { Get-Item -LiteralPath $target | Select-Object FullName,PSIsContainer,LastWriteTime } else { 'TARGET_NOT_FOUND' }"
+          ],
+          "DECISION": "allow"
+        }
+      ],
+      "STRICTEST_DECISION": "allow",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 44,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-Command",
+        "$base='H:\\AI\\skills\\ecc-endurance-ladder-unified'; $files=@('README.md','RUNBOOK.md','SOURCE-OF-TRUTH-MAP.md','CLAUDE-STYLE-12-LAYER-WORKFLOW.md'); foreach($f in $files){ '===== '+$f+' ====='; Get-Content -LiteralPath (Join-Path $base $f) -Raw }",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 21,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$base='H:\\AI\\skills\\ecc-endurance-ladder-unified'; $files=@('README.md','RUNBOOK.md','SOURCE-OF-TRUTH-MAP.md','CLAUDE-STYLE-12-LAYER-WORKFLOW.md'); foreach($f in $files){ '===== '+$f+' ====='; Get-Content -LiteralPath (Join-Path $base $f) -Raw }"
+        ],
+        "DECISION": "allow"
+      },
+      "FINAL_DECISION": "allow",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$base='H:\\AI\\skills\\ecc-endurance-ladder-unified'; $files=@('README.md','RUNBOOK.md','SOURCE-OF-TRUTH-MAP.md','CLAUDE-STYLE-12-LAYER-WORKFLOW.md'); foreach($f in $files){ '===== '+$f+' ====='; Get-Content -LiteralPath (Join-Path $base $f) -Raw }"
+          ],
+          "DECISION": "allow"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$base='H:\\AI\\skills\\ecc-endurance-ladder-unified'; $files=@('README.md','RUNBOOK.md','SOURCE-OF-TRUTH-MAP.md','CLAUDE-STYLE-12-LAYER-WORKFLOW.md'); foreach($f in $files){ '===== '+$f+' ====='; Get-Content -LiteralPath (Join-Path $base $f) -Raw }"
+          ],
+          "DECISION": "allow"
+        }
+      ],
+      "STRICTEST_DECISION": "allow",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 45,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-Command",
+        "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $p=Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 22,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $p=Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+        ],
+        "DECISION": "allow"
+      },
+      "FINAL_DECISION": "allow",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $p=Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+          ],
+          "DECISION": "allow"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $p=Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+          ],
+          "DECISION": "allow"
+        }
+      ],
+      "STRICTEST_DECISION": "allow",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    },
+    {
+      "TEST_INDEX": 46,
+      "VECTOR_TYPE": "DIRECT_PREFIX_VALIDATION",
+      "INPUT_ARGV": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-Command",
+        "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $self=$PID; $p=Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $self -and $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }",
+        "__R2_EXEC_POLICY_DIRECT_PREFIX_CHECK__"
+      ],
+      "EXPECTED_SOURCE_RULE": {
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "LINE": 23,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $self=$PID; $p=Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $self -and $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+        ],
+        "DECISION": "allow"
+      },
+      "FINAL_DECISION": "allow",
+      "MATCHED_RULES": [
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $self=$PID; $p=Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $self -and $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+          ],
+          "DECISION": "allow"
+        },
+        {
+          "MATCHED_PREFIX": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "-Command",
+            "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $self=$PID; $p=Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $self -and $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+          ],
+          "DECISION": "allow"
+        }
+      ],
+      "STRICTEST_DECISION": "allow",
+      "JUSTIFICATION": null,
+      "CHECK_EXIT_CODE": 0,
+      "OUTPUT_JSON_PARSE_STATUS": "PASS",
+      "EXPECTATION_MET": true
+    }
+  ],
+  "RULE_ENGINE_VALIDATION": "PASS",
+  "CHECKED_COMMANDS_EXECUTED": false
+}

@@ -1,0 +1,599 @@
+{
+  "SCHEMA_VERSION": "1.0",
+  "GENERATED_UTC": "2026-09-20T17:58:15.1394184Z",
+  "OBSERVATION_CONTEXT": "RUNTIME_REPORTED_AND_SOURCE_FILE_AND_COLLECTOR",
+  "RULE_SOURCE_COUNT": 2,
+  "ACTIVE_RULE_FILES": [
+    {
+      "ORDER": 1,
+      "CONFIG_LAYER": "user",
+      "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+      "SIZE_BYTES": 2561,
+      "SHA256": "a29b9679173d2a63f564d6d6c90376a1bb9f94dc451893471dfe57adf64ef90b",
+      "LAST_WRITE_TIME_UTC": "2026-06-21T10:22:17.7482745Z",
+      "BYTE_SNAPSHOT_PATH": "rule-snapshots-final/001-default.backup.permission-guard-20260703-212006.rules.bin",
+      "SNAPSHOT_SHA256": "a29b9679173d2a63f564d6d6c90376a1bb9f94dc451893471dfe57adf64ef90b",
+      "BYTE_IDENTICAL": true,
+      "OBSERVATION_CONTEXT": "SOURCE_FILE"
+    },
+    {
+      "ORDER": 2,
+      "CONFIG_LAYER": "user",
+      "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+      "SIZE_BYTES": 2561,
+      "SHA256": "a29b9679173d2a63f564d6d6c90376a1bb9f94dc451893471dfe57adf64ef90b",
+      "LAST_WRITE_TIME_UTC": "2026-06-21T10:22:17.7482745Z",
+      "BYTE_SNAPSHOT_PATH": "rule-snapshots-final/002-default.rules.bin",
+      "SNAPSHOT_SHA256": "a29b9679173d2a63f564d6d6c90376a1bb9f94dc451893471dfe57adf64ef90b",
+      "BYTE_IDENTICAL": true,
+      "OBSERVATION_CONTEXT": "SOURCE_FILE"
+    }
+  ],
+  "ACTIVE_RULE_FILES_ORDERED_SHA256": [
+    "a29b9679173d2a63f564d6d6c90376a1bb9f94dc451893471dfe57adf64ef90b",
+    "a29b9679173d2a63f564d6d6c90376a1bb9f94dc451893471dfe57adf64ef90b"
+  ],
+  "RULE_ENGINE_VALIDATION": "PASS",
+  "MANAGED_RULE_INPUT": "PRESENT",
+  "EFFECTIVE_RULE_MODEL": {
+    "ACTIVE_CONFIG_LAYERS": [
+      {
+        "LAYER_INDEX": 1,
+        "SOURCE": "user",
+        "PATH": "C:\\Users\\A\\.codex\\config.toml",
+        "ACTIVE": true,
+        "VERSION": "sha256:1af331e42ab697c1ecd8af61e1eb0ad93fa340de0b4b3ab0146e52ad198f3826",
+        "OBSERVATION_CONTEXT": "RUNTIME_REPORTED"
+      },
+      {
+        "LAYER_INDEX": 2,
+        "SOURCE": "system",
+        "PATH": "C:\\ProgramData\\OpenAI\\Codex\\config.toml",
+        "ACTIVE": true,
+        "VERSION": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "OBSERVATION_CONTEXT": "RUNTIME_REPORTED"
+      }
+    ],
+    "ORDERED_RULE_FILES": [
+      {
+        "ORDER": 1,
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SHA256": "a29b9679173d2a63f564d6d6c90376a1bb9f94dc451893471dfe57adf64ef90b"
+      },
+      {
+        "ORDER": 2,
+        "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SHA256": "a29b9679173d2a63f564d6d6c90376a1bb9f94dc451893471dfe57adf64ef90b"
+      }
+    ],
+    "PREFIX_RULES": [
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 1,
+        "PATTERN": [
+          "netsh"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 2,
+        "PATTERN": [
+          "route"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 3,
+        "PATTERN": [
+          "ipconfig"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 4,
+        "PATTERN": [
+          "reg"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 5,
+        "PATTERN": [
+          "sc"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 6,
+        "PATTERN": [
+          "Stop-Service"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 7,
+        "PATTERN": [
+          "Set-Service"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 8,
+        "PATTERN": [
+          "Restart-Service"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 9,
+        "PATTERN": [
+          "schtasks"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 10,
+        "PATTERN": [
+          "bcdedit"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 11,
+        "PATTERN": [
+          "shutdown"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 12,
+        "PATTERN": [
+          "Restart-Computer"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 13,
+        "PATTERN": [
+          "Stop-Computer"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 14,
+        "PATTERN": [
+          "taskkill"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 15,
+        "PATTERN": [
+          "wsl"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 16,
+        "PATTERN": [
+          "docker"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 17,
+        "PATTERN": [
+          "format"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 18,
+        "PATTERN": [
+          "diskpart"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 19,
+        "PATTERN": [
+          "setx"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 20,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$target='H:\\AI\\skills\\ecc-endurance-ladder-unified'; if (Test-Path -LiteralPath $target) { Get-Item -LiteralPath $target | Select-Object FullName,PSIsContainer,LastWriteTime } else { 'TARGET_NOT_FOUND' }"
+        ],
+        "DECISION": "allow",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 21,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$base='H:\\AI\\skills\\ecc-endurance-ladder-unified'; $files=@('README.md','RUNBOOK.md','SOURCE-OF-TRUTH-MAP.md','CLAUDE-STYLE-12-LAYER-WORKFLOW.md'); foreach($f in $files){ '===== '+$f+' ====='; Get-Content -LiteralPath (Join-Path $base $f) -Raw }"
+        ],
+        "DECISION": "allow",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 22,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $p=Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+        ],
+        "DECISION": "allow",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+        "SOURCE_LINE": 23,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $self=$PID; $p=Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $self -and $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+        ],
+        "DECISION": "allow",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 1,
+        "PATTERN": [
+          "netsh"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 2,
+        "PATTERN": [
+          "route"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 3,
+        "PATTERN": [
+          "ipconfig"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 4,
+        "PATTERN": [
+          "reg"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 5,
+        "PATTERN": [
+          "sc"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 6,
+        "PATTERN": [
+          "Stop-Service"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 7,
+        "PATTERN": [
+          "Set-Service"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 8,
+        "PATTERN": [
+          "Restart-Service"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 9,
+        "PATTERN": [
+          "schtasks"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 10,
+        "PATTERN": [
+          "bcdedit"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 11,
+        "PATTERN": [
+          "shutdown"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 12,
+        "PATTERN": [
+          "Restart-Computer"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 13,
+        "PATTERN": [
+          "Stop-Computer"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 14,
+        "PATTERN": [
+          "taskkill"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 15,
+        "PATTERN": [
+          "wsl"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 16,
+        "PATTERN": [
+          "docker"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 17,
+        "PATTERN": [
+          "format"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 18,
+        "PATTERN": [
+          "diskpart"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 19,
+        "PATTERN": [
+          "setx"
+        ],
+        "DECISION": "prompt",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 20,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$target='H:\\AI\\skills\\ecc-endurance-ladder-unified'; if (Test-Path -LiteralPath $target) { Get-Item -LiteralPath $target | Select-Object FullName,PSIsContainer,LastWriteTime } else { 'TARGET_NOT_FOUND' }"
+        ],
+        "DECISION": "allow",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 21,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$base='H:\\AI\\skills\\ecc-endurance-ladder-unified'; $files=@('README.md','RUNBOOK.md','SOURCE-OF-TRUTH-MAP.md','CLAUDE-STYLE-12-LAYER-WORKFLOW.md'); foreach($f in $files){ '===== '+$f+' ====='; Get-Content -LiteralPath (Join-Path $base $f) -Raw }"
+        ],
+        "DECISION": "allow",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 22,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $p=Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+        ],
+        "DECISION": "allow",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      },
+      {
+        "SOURCE_FILE": "C:\\Users\\A\\.codex\\rules\\default.rules",
+        "SOURCE_LINE": 23,
+        "PATTERN": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-Command",
+          "$pattern='ECC-CLAUDE-12L-LONG-RUN-DEPLOYMENT-20260527-20260621-172325'; $self=$PID; $p=Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $self -and $_.CommandLine -like \"*$pattern*\" }; if ($p) { $p | Select-Object ProcessId,Name,CommandLine } else { 'ECC_LONG_RUN_STOPPED' }"
+        ],
+        "DECISION": "allow",
+        "JUSTIFICATION": null,
+        "DECLARED_MATCH": [],
+        "DECLARED_NOT_MATCH": []
+      }
+    ],
+    "MANAGED_RULE_INPUT": "PRESENT",
+    "INTERPRETER_RESULT_SHA256": "536f8b962beeec187eaae02f54edc3d6311fba7fb210481a0f1a447ef97f81ea"
+  },
+  "RULES_EFFECTIVE_FINGERPRINT_SHA256": "e39581817b4416a11a8d7e0452b6f30c5e878241ba8c26335f6ab3e9904f26cc",
+  "RULES_RUNTIME_EFFECTIVE": "CAPTURED",
+  "STATUS": "RESOLVED"
+}

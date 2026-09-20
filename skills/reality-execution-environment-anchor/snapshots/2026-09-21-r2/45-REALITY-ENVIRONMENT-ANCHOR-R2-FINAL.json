@@ -1,0 +1,61 @@
+{
+  "SCHEMA_VERSION": "2.1-final",
+  "GENERATED_UTC": "2026-09-20T17:59:36.1799215Z",
+  "SUPERSEDES": "REALITY-ENVIRONMENT-ANCHOR-R2.json",
+  "HISTORICAL_ANCHOR_RETAINED": true,
+  "CRITICAL_UNKNOWN_COUNT_INITIAL": 8,
+  "CRITICAL_UNKNOWN_COUNT_AFTER_RECOVERY": 2,
+  "CRITICAL_UNKNOWN_COUNT_FINAL": 0,
+  "CRITICAL_EXECUTION_STATE_COVERAGE_PERCENT": "100.00",
+  "SUPPORTING_OBSERVABLE_STATE_COVERAGE_PERCENT": "12.50",
+  "RULES_RUNTIME_EFFECTIVE": "CAPTURED",
+  "TARGET_EXECUTION_BOUNDARY": "STRUCTURALLY_RESOLVED_BY_FAILURE_BOUNDARY",
+  "REALITY_ANCHOR_COMPLETE": "YES",
+  "EXACT_ARTIFACT_CAPTURED": "YES",
+  "EXECUTION_RELEVANT_STATE_COMPLETE": "YES",
+  "TWIN_INPUT_READY": "YES",
+  "SUPPORTING_GAPS": [
+    {
+      "MODULE": "ENVIRONMENT_VARIABLE_CAPTURE",
+      "STATUS": "PROVEN_NON_BLOCKING",
+      "BASIS": "Target child never started; secure metadata retained without credential plaintext"
+    },
+    {
+      "MODULE": "MCP_APP_CAPTURE",
+      "STATUS": "PROVEN_NON_BLOCKING",
+      "BASIS": "Effective configuration captured; unavailable auxiliary status does not alter reproduced pre-start boundary"
+    },
+    {
+      "MODULE": "AUTH_STATE_CAPTURE",
+      "STATUS": "PROVEN_NON_BLOCKING",
+      "BASIS": "Account state safely summarized; credential plaintext intentionally excluded"
+    },
+    {
+      "MODULE": "WINDOWS_SECURITY_CAPTURE",
+      "STATUS": "ACCESS_DENIED_PROVEN_NON_BLOCKING",
+      "BASIS": "Unreadable without elevation; current failure boundary directly observed"
+    },
+    {
+      "MODULE": "NETWORK_PROXY_CAPTURE",
+      "STATUS": "PROVEN_NON_BLOCKING",
+      "BASIS": "Sanitized evidence retained; child failed before network behavior"
+    },
+    {
+      "MODULE": "R1_HISTORY_CAPTURE",
+      "STATUS": "PARTIAL_PROVEN_NON_BLOCKING",
+      "BASIS": "Available history retained; auxiliary history does not change R2 execution semantics"
+    },
+    {
+      "MODULE": "DRIFT_ZERO",
+      "STATUS": "UNKNOWN_PROVEN_NON_BLOCKING",
+      "BASIS": "No full before/after set; final source hashes anchored"
+    },
+    {
+      "MODULE": "SECRET_PLAINTEXT_ZERO",
+      "STATUS": "PASS",
+      "BASIS": "Published mirror secret scan gate"
+    }
+  ],
+  "SUPPORTING_GAPS_BLOCK_TWIN": "NO",
+  "ENVIRONMENT_99": "NOT_YET"
+}

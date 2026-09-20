@@ -1,0 +1,52 @@
+{
+  "SCHEMA_VERSION": "1.0",
+  "GENERATED_UTC": "2026-09-20T17:57:46.4143720Z",
+  "OBSERVATION_CONTEXT": "RUNTIME_REPORTED_AND_SOURCE_FILE",
+  "ACTIVE_CONFIG_LAYERS": [
+    {
+      "LAYER_INDEX": 1,
+      "SOURCE": "user",
+      "PATH": "C:\\Users\\A\\.codex\\config.toml",
+      "ACTIVE": true,
+      "VERSION": "sha256:1af331e42ab697c1ecd8af61e1eb0ad93fa340de0b4b3ab0146e52ad198f3826",
+      "OBSERVATION_CONTEXT": "RUNTIME_REPORTED"
+    },
+    {
+      "LAYER_INDEX": 2,
+      "SOURCE": "system",
+      "PATH": "C:\\ProgramData\\OpenAI\\Codex\\config.toml",
+      "ACTIVE": true,
+      "VERSION": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "OBSERVATION_CONTEXT": "RUNTIME_REPORTED"
+    }
+  ],
+  "RULE_SOURCE_COUNT": 2,
+  "ACTIVE_RULE_SOURCES": [
+    {
+      "ORDER": 1,
+      "CONFIG_LAYER": "user",
+      "PATH": "C:\\Users\\A\\.codex\\rules\\default.backup.permission-guard-20260703-212006.rules",
+      "SIZE_BYTES": 2561,
+      "SHA256": "a29b9679173d2a63f564d6d6c90376a1bb9f94dc451893471dfe57adf64ef90b",
+      "LAST_WRITE_TIME_UTC": "2026-06-21T10:22:17.7482745Z",
+      "BYTE_SNAPSHOT_PATH": "rule-snapshots-final/001-default.backup.permission-guard-20260703-212006.rules.bin",
+      "SNAPSHOT_SHA256": "a29b9679173d2a63f564d6d6c90376a1bb9f94dc451893471dfe57adf64ef90b",
+      "BYTE_IDENTICAL": true,
+      "OBSERVATION_CONTEXT": "SOURCE_FILE"
+    },
+    {
+      "ORDER": 2,
+      "CONFIG_LAYER": "user",
+      "PATH": "C:\\Users\\A\\.codex\\rules\\default.rules",
+      "SIZE_BYTES": 2561,
+      "SHA256": "a29b9679173d2a63f564d6d6c90376a1bb9f94dc451893471dfe57adf64ef90b",
+      "LAST_WRITE_TIME_UTC": "2026-06-21T10:22:17.7482745Z",
+      "BYTE_SNAPSHOT_PATH": "rule-snapshots-final/002-default.rules.bin",
+      "SNAPSHOT_SHA256": "a29b9679173d2a63f564d6d6c90376a1bb9f94dc451893471dfe57adf64ef90b",
+      "BYTE_IDENTICAL": true,
+      "OBSERVATION_CONTEXT": "SOURCE_FILE"
+    }
+  ],
+  "MANAGED_RULE_INPUT": "PRESENT",
+  "CONFIG_REQUIREMENTS_RUNTIME_RESULT": "PRESENT"
+}

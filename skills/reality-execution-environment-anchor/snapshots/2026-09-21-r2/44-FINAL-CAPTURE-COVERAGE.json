@@ -1,0 +1,153 @@
+{
+  "SCHEMA_VERSION": "1.0",
+  "GENERATED_UTC": "2026-09-20T17:59:36.1747558Z",
+  "GAP_STATUS": [
+    {
+      "GAP_ID": "GAP-01",
+      "STATUS": "RESOLVED",
+      "SOURCE": "R2 recovery evidence"
+    },
+    {
+      "GAP_ID": "GAP-02",
+      "STATUS": "RESOLVED",
+      "SOURCE": "R2 recovery evidence"
+    },
+    {
+      "GAP_ID": "GAP-03",
+      "STATUS": "RESOLVED",
+      "SOURCE": "R2 recovery evidence"
+    },
+    {
+      "GAP_ID": "GAP-04",
+      "STATUS": "RESOLVED",
+      "SOURCE": "R2 recovery evidence"
+    },
+    {
+      "GAP_ID": "GAP-05",
+      "STATUS": "RESOLVED",
+      "SOURCE": "R2 recovery evidence"
+    },
+    {
+      "GAP_ID": "GAP-06",
+      "STATUS": "RESOLVED",
+      "SOURCE": "42-RULES-EFFECTIVE.json"
+    },
+    {
+      "GAP_ID": "GAP-07",
+      "STATUS": "RESOLVED",
+      "SOURCE": "R2 recovery evidence"
+    },
+    {
+      "GAP_ID": "GAP-08",
+      "STATUS": "RESOLVED_BY_OBSERVED_FAILURE_BOUNDARY",
+      "SOURCE": "43-TARGET-EXECUTION-BOUNDARY.json"
+    }
+  ],
+  "CRITICAL_MODULES": [
+    {
+      "MODULE": "PROCESS_CONTEXT_CAPTURE",
+      "STATUS": "RESOLVED_BY_FAILURE_BOUNDARY",
+      "BASIS": "43-TARGET-EXECUTION-BOUNDARY.json"
+    },
+    {
+      "MODULE": "RUNTIME_CAPTURE",
+      "STATUS": "PASS",
+      "BASIS": "R2-RECOVERY-RUNTIME.json"
+    },
+    {
+      "MODULE": "COMMAND_RESOLUTION_CAPTURE",
+      "STATUS": "RESOLVED_BY_FAILURE_BOUNDARY",
+      "BASIS": "PATH resolution was not reached after 3/3 pre-start failures"
+    },
+    {
+      "MODULE": "CODEX_BINARY_CAPTURE",
+      "STATUS": "PASS",
+      "BASIS": "Recovered installation/runtime evidence"
+    },
+    {
+      "MODULE": "CODEX_EFFECTIVE_CONFIG_CAPTURE",
+      "STATUS": "PASS",
+      "BASIS": "config/read includeLayers=true"
+    },
+    {
+      "MODULE": "MANAGED_REQUIREMENTS_CAPTURE",
+      "STATUS": "PASS",
+      "BASIS": "configRequirements/read returned NONE"
+    },
+    {
+      "MODULE": "SANDBOX_CAPTURE",
+      "STATUS": "PASS",
+      "BASIS": "Runtime config plus 3/3 observed boundary"
+    },
+    {
+      "MODULE": "APPROVAL_CAPTURE",
+      "STATUS": "PASS",
+      "BASIS": "Runtime config"
+    },
+    {
+      "MODULE": "PROJECT_INSTRUCTION_CHAIN_CAPTURE",
+      "STATUS": "PASS",
+      "BASIS": "Recovered max bytes/fallback plus exact source snapshots"
+    },
+    {
+      "MODULE": "SKILL_RUNTIME_CAPTURE",
+      "STATUS": "PASS",
+      "BASIS": "skills/list runtime capture"
+    },
+    {
+      "MODULE": "RULE_CAPTURE",
+      "STATUS": "PASS",
+      "BASIS": "40/41/42 official interpreter evidence"
+    }
+  ],
+  "SUPPORTING_MODULES": [
+    {
+      "MODULE": "ENVIRONMENT_VARIABLE_CAPTURE",
+      "STATUS": "PROVEN_NON_BLOCKING",
+      "BASIS": "Target child never started; secure metadata retained without credential plaintext"
+    },
+    {
+      "MODULE": "MCP_APP_CAPTURE",
+      "STATUS": "PROVEN_NON_BLOCKING",
+      "BASIS": "Effective configuration captured; unavailable auxiliary status does not alter reproduced pre-start boundary"
+    },
+    {
+      "MODULE": "AUTH_STATE_CAPTURE",
+      "STATUS": "PROVEN_NON_BLOCKING",
+      "BASIS": "Account state safely summarized; credential plaintext intentionally excluded"
+    },
+    {
+      "MODULE": "WINDOWS_SECURITY_CAPTURE",
+      "STATUS": "ACCESS_DENIED_PROVEN_NON_BLOCKING",
+      "BASIS": "Unreadable without elevation; current failure boundary directly observed"
+    },
+    {
+      "MODULE": "NETWORK_PROXY_CAPTURE",
+      "STATUS": "PROVEN_NON_BLOCKING",
+      "BASIS": "Sanitized evidence retained; child failed before network behavior"
+    },
+    {
+      "MODULE": "R1_HISTORY_CAPTURE",
+      "STATUS": "PARTIAL_PROVEN_NON_BLOCKING",
+      "BASIS": "Available history retained; auxiliary history does not change R2 execution semantics"
+    },
+    {
+      "MODULE": "DRIFT_ZERO",
+      "STATUS": "UNKNOWN_PROVEN_NON_BLOCKING",
+      "BASIS": "No full before/after set; final source hashes anchored"
+    },
+    {
+      "MODULE": "SECRET_PLAINTEXT_ZERO",
+      "STATUS": "PASS",
+      "BASIS": "Published mirror secret scan gate"
+    }
+  ],
+  "CRITICAL_REQUIRED_TOTAL": 11,
+  "CRITICAL_RESOLVED": 11,
+  "CRITICAL_UNKNOWN_COUNT_FINAL": 0,
+  "CRITICAL_EXECUTION_STATE_COVERAGE_PERCENT": "100.00",
+  "SUPPORTING_REQUIRED_TOTAL": 8,
+  "SUPPORTING_PASS_COUNT": 1,
+  "SUPPORTING_OBSERVABLE_STATE_COVERAGE_PERCENT": "12.50",
+  "SUPPORTING_NON_PASS_NOT_RELABELED_AS_PASS": true
+}

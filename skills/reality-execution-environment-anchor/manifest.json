@@ -1,1 +1,12 @@
-{"skill_id":"reality-execution-environment-anchor","version":"0.9.0-partial","status":"PARTIAL_REALITY_BASELINE","not_ready_for_exact_twin":true,"current_snapshot":"2026-09-21-r2","history_append_only":true,"environment_99":"NOT_YET"}
+{
+  "skill_id": "reality-execution-environment-anchor",
+  "version": "1.0.0",
+  "status": "REALITY_ANCHOR_COMPLETE",
+  "not_ready_for_exact_twin": false,
+  "twin_input_ready": true,
+  "current_snapshot": "2026-09-21-r2",
+  "current_authoritative_anchor": "snapshots/2026-09-21-r2/45-REALITY-ENVIRONMENT-ANCHOR-R2-FINAL.json",
+  "current_authoritative_fingerprint": "snapshots/2026-09-21-r2/46-REALITY-FINGERPRINT-V3.json",
+  "history_append_only": true,
+  "environment_99": "NOT_YET"
+}
