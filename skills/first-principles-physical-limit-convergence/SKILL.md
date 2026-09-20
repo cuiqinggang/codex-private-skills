@@ -1,13 +1,13 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 第一性原理极限短时间引擎 v3.1.6。唯一方法白名单只有三个核心：极限短时间、成熟方案集群、高智能虚拟成熟。正式执行命令的定位标签必须用第四个中文字段明确标注真实核心归属；不能明确归属或任务跨多个核心时必须拆分，不得发布。Codex/Reasonix/本地执行器只有冻结方案执行权，没有修复、重新设计、虚拟成熟或自行找路线的权限；现实失败只回传差异并停止，由 GPT 页面重新进入三个核心之一处理。
+description: 第一性原理极限短时间引擎 v3.1.7。唯一方法白名单只有三个核心：极限短时间、成熟方案集群、高智能虚拟成熟。正式执行命令的定位标签必须用第四个中文字段明确标注真实核心归属；不能明确归属或任务跨多个核心时必须拆分，不得发布。Codex/Reasonix/本地执行器只有冻结方案执行权，没有修复、重新设计、虚拟成熟或自行找路线的权限；现实失败只回传差异并停止，由 GPT 页面重新进入三个核心之一处理。
 metadata:
-  version: "3.1.6"
+  version: "3.1.7"
   short-description: 三核心唯一白名单·四字段中文核心定位·执行器禁止自行修复
-  lineage: first-principles-physical-limit-convergence@3.1.6 <- @3.1.5 <- @3.1.4 <- @3.1.3 <- @3.1.2 <- @3.1.1 <- @3.1.0 <- @3.0.0 <- @2.0.0 <- @1.x
+  lineage: first-principles-physical-limit-convergence@3.1.7 <- @3.1.6 <- @3.1.5 <- @3.1.4 <- @3.1.3 <- @3.1.2 <- @3.1.1 <- @3.1.0 <- @3.0.0 <- @2.0.0 <- @1.x
 ---
 
-# 第一性原理极限短时间引擎 v3.1.6
+# 第一性原理极限短时间引擎 v3.1.7
 
 > **只走三条路：用唯一时间标准确定目标；先吸收成熟方案集群；再由高智能虚拟成熟并直接验证冻结方案。除此之外，没有第四条路。**
 
@@ -500,18 +500,18 @@ ATTEMPT / DELIVERY、T_TFVR、verifier、checkpoint、idempotency、Capacity Rou
 
 ---
 
-## v3.1.6 正式能力：现实锚定 → 精确现实数字孪生唯一版
+## v3.1.7 正式能力：现实锚定 → 浏览器 Reality R3 → 精确现实数字孪生唯一版
 
-v3.1.6 不增加第四核心，只把已经完成的现实锚定与后续数字孪生正式纳入三核心：
+v3.1.7 不增加第四核心。在 v3.1.6 的 Host/Codex Reality 基线之上，正式补入 Browser Reality R3（浏览器现实第三轮采集），并把它纳入同一个现实锚定技能与唯一数字孪生：
 
 ```text
 核心2 成熟方案集群
-→ reality-execution-environment-anchor v1.1.0
+→ reality-execution-environment-anchor v1.2.0
 → 完整现实事实、原始字节、运行时边界、规则、指令链、沙盒、技能、Git、安全摘要
 → Reality Fingerprint（现实环境指纹）
 
 核心3 高智能虚拟成熟
-→ exact-reality-digital-twin v1.0.0
+→ exact-reality-digital-twin v1.1.0
 → 先复现现实
 → Reality/Twin 差异归零
 → Shadow（影子假设）
@@ -524,9 +524,9 @@ v3.1.6 不增加第四核心，只把已经完成的现实锚定与后续数字�
 唯一正式 Twin：
 - 中文名：现实执行环境精确数字孪生唯一版
 - 机器名：exact-reality-digital-twin
-- 版本：1.0.0
+- 版本：1.1.0
 - 正式入口：components/exact-reality-digital-twin/
-- 现实输入：reality-execution-environment-anchor@1.1.0
+- 现实输入：reality-execution-environment-anchor@1.2.0
 - 当前 Reality Fingerprint V3：9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8
 
 Twin 第一原则：**先复制现实，不能先修现实。**
@@ -552,13 +552,20 @@ Shadow Mode（影子模式）只能修改 Twin 内存中的假设状态，禁止
 REALITY_ANCHOR_COMPLETE=YES
 CRITICAL_UNKNOWN_COUNT=0
 CRITICAL_EXECUTION_STATE_COVERAGE_PERCENT=100.00
-TWIN_INPUT_READY=YES
-TWIN_CONTRACT_SELFTEST=24/24 PASS
-REALITY_SHADOW_RUN=NOT_YET
+HOST_R2_TWIN_INPUT_READY=YES
+LEGACY_TWIN_CONTRACT_SELFTEST=24/24 PASS
+BROWSER_R3_COLLECTOR_CONTRACT=FROZEN
+BROWSER_R3_REAL_CAPTURE=NOT_YET
+BROWSER_R3_FINGERPRINT=NOT_YET
+BROWSER_TWIN_INPUT_READY=NO
+BROWSER_GOLDEN_REPLAY=NOT_YET
+BROWSER_SHADOW_RUN=NOT_YET
 ENVIRONMENT_99=NOT_YET
 ```
 
-24/24 只证明 Twin 合同、差异检测、Reality/Shadow 隔离和确定性重放逻辑通过虚拟自测；不替代用户机器上的真实 Shadow 验证。
+24/24 只证明旧 Host/Codex Twin 合同、差异检测、Reality/Shadow 隔离和确定性重放逻辑通过虚拟自测；不代表完整浏览器 Twin 已完成。
+
+Browser Reality R3 现在必须把 Browser/Profile/Context/Auth/DOM/actionability/Network/Service Worker/WebSocket/Runtime/Trace/CDP/Golden Task 纳入现实输入。R2 中“网络代理对 1344 边界非阻断”的结论不得外推到浏览器 E2E。Browser R3 未在用户机器真实 Golden Task 上完成 3/3 现实采集并生成新指纹前，禁止宣称 FULL_BROWSER_TWIN=YES 或 ENVIRONMENT_99=YES。
 
 
 ---
