@@ -115,6 +115,39 @@ Codex / Reasonix / 本地执行器最终汇报：最后一行必须原样返回�
 LOCATOR_KEY = EXACT_PAGE_NAME + "|" + EXACT_TASK_NAME + "|" + INTEGER_SEQUENCE
 ```
 
+### 全局接收端兜底门禁
+
+仅靠本技能不能保证所有未来任务都加载本技能，因此 Codex 端还必须在全局 `~/.codex/AGENTS.md` 保留一个极短兜底规则：
+
+```text
+任何来自 GPT/用户、要求执行实际工作的正式命令，必须包含：
+【页面名｜任务名｜序号】
+
+缺失任一字段：
+LOCATOR_GATE=BLOCKED
+ACTION=STOP
+不得执行，不得猜页面名、任务名或序号。
+
+有标签时，最终汇报最后一行必须原样返回同一标签。
+```
+
+这是接收端兜底，不替代 GPT 发送端规则。
+
+固定闭环：
+
+```text
+GPT_SENDER_GATE
+-> LOCATOR_REQUIRED
+-> CODEX_GLOBAL_RECEIVER_GATE
+-> EXECUTE
+-> FINAL_LINE_ECHO
+```
+
+只有发送端和接收端同时通过，才允许：
+```text
+LOCATOR_CLOSED_LOOP=PASS
+```
+
 ---
 
 ## 唯一白名单
