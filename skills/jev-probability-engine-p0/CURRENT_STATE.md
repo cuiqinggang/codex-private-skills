@@ -1,0 +1,51 @@
+# CURRENT STATE
+
+版本：0.1.0
+冻结日期：2026-09-21
+
+SKILL_ID=jev-probability-engine-p0
+CURRENT_STAGE=STEP1_STRUCTURAL_PHYSICAL_LIMIT_FROZEN
+
+SINGLE_OBJECTIVE=min_T_E2E
+COMMERCIAL_GATE_RULE=FROZEN
+TIMING_T0_T1=FROZEN
+
+P0_TASK=PE-P0-GENERAL-01
+TASK_CONTRACT=FROZEN_V1
+
+PROBABILITY_NODE_COUNT_MIN=24
+LAYER_WIDTHS_MIN=20,4
+MAX_PARALLEL_WIDTH=20
+D_MIN=2
+JEV_ROUNDS_MIN=2
+ACTION_OBJECT_COUNT_MIN=24
+ACTION_BATCH_ROUNDS_MIN=2
+VERIFY_OBJECT_COUNT_MIN=24
+FINAL_VERIFY_BARRIERS_MIN=1
+
+T_PHY_FORMULA=DERIVED
+T_PHY_NUMERIC=NOT_ASSIGNED_WITHOUT_REALITY_CONSTANTS
+T_REAL_STAR=NOT_MEASURED
+T_P0=NOT_MEASURED
+VIRTUAL_99=NOT_RUN
+REAL_P0=NOT_RUN
+REAL_CERTIFIED=NO
+
+## 已完成
+
+- 从多指标评价纠偏为：可商用门槛内只计端到端时间。
+- 从“复杂任务不适合 Jev”纠偏为：节点可简单，任务图可复杂。
+- 从优化节点数量 N 纠偏为优化串行深度 D。
+- 从逐案例积累纠偏为通用 E=(C,P,S,V)。
+- 从只看 Jev latency 纠偏为完整 T_E2E。
+- 已冻结第一个测功任务、最小 DAG、计时合同、门槛和更新制度。
+
+## 下一阶段
+
+不再改题。进入成熟方案集群 + Virtual-99：
+1. 为 Compiler / Kernel / State / Verifier 各自选择成熟可复用组件。
+2. 组合最小 Runtime 候选。
+3. 删除所有不必要串行。
+4. 再进入现实锚定，测得 T_REAL*。
+5. 运行完整 P0，得到 T_P0。
+6. 只有真实 verifier 通过才允许 REAL_CERTIFIED=YES。
