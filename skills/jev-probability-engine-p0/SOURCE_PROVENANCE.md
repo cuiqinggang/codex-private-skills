@@ -29,3 +29,15 @@ SHA256：c61718f9d235e90519afa944a2f7b5f7fe619b064e791e9513447918cfa695be
 - https://openrouter.ai/typesafe/jev-1.13/
 
 公开 latency/uptime 只用于成熟性参考，不替代本机 T_REAL*。
+
+
+## 0.2.1 command-pack evidence
+
+Checked 2026-09-21:
+- OpenRouter model: `typesafe/jev-1.13`.
+- OpenRouter Decisions endpoint: `POST https://openrouter.ai/api/alpha/decisions`.
+- OpenRouter Jev Lab demonstrates multi-question Decisions requests.
+- Full command pack SHA256: `208d816c5372ccb6fec4f4b7055d03774bc2794a875c206518dd274520291ad4`.
+- Persistent snapshot: `ChatGPT Library /AI-Skills/jev-probability-engine-p0-v0.2.1-command-pack.zip`.
+
+Runtime winner topology is intentionally not inferred from public latency; it must come from the frozen real benchmark.

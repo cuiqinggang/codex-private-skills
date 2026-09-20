@@ -1,8 +1,8 @@
 {
   "skill_id": "jev-probability-engine-p0",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "date": "2026-09-21",
-  "status": "STEP2_MATURE_CLUSTER_VIRTUAL99_STRUCTURAL_FROZEN",
+  "status": "STEP3_REALITY_TEST_COMMAND_VIRTUAL_FROZEN",
   "objective": "min T_E2E subject to COMMERCIAL_GATE=PASS",
   "engine": "E=(C,P,S,V)",
   "benchmark": {
@@ -36,8 +36,26 @@
     "VIRTUAL_99_STRUCTURAL": "PASS",
     "T_REAL_STAR": "NOT_MEASURED",
     "T_P0": "NOT_MEASURED",
-    "REAL_P0": "NOT_RUN",
+    "REAL_P0": "READY_NOT_RUN",
     "REAL_CERTIFIED": "NO"
   },
-  "next": "STEP3_REALITY_ANCHOR_AND_REAL_P0"
+  "next": "STEP3_REALITY_ANCHOR_AND_REAL_P0",
+  "reality_command": {
+    "model": "typesafe/jev-1.13",
+    "endpoint": "https://openrouter.ai/api/alpha/decisions",
+    "topology_shards": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "sweep_warmups": 2,
+    "sweep_measured_runs": 10,
+    "confirm_warmups": 3,
+    "confirm_measured_runs": 30,
+    "virtual_freeze": "PASS",
+    "offline_mock_e2e": "PASS",
+    "command_pack_sha256": "208d816c5372ccb6fec4f4b7055d03774bc2794a875c206518dd274520291ad4",
+    "library_path": "/AI-Skills/jev-probability-engine-p0-v0.2.1-command-pack.zip"
+  }
 }
