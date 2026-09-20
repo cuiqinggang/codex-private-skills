@@ -1,64 +1,43 @@
-# PE-P0-GENERAL-01 TASK CONTRACT
+# PE-P0-GENERAL-01 TASK CONTRACT — v1.1 clarification
 
-## 目的
+业务语义、24 项 fixture、hidden oracle、COMMERCIAL_GATE 与 T0/T1 均未改题。
 
-测整台 Probability Engine，而不是测一个 Jev 分类调用。
+## 固定依赖
 
-固定执行链：
-输入 → 编译/状态构造 → 第一层并行概率判断 → 第一批真实动作/回执 → 第二层依赖判断 → 第二批动作 → Reality Verify → DONE
+01–20 读取输入后互相无现实依赖。
+21–24 分别依赖 17–20 的真实动作结果。
+动作集合固定为 EXECUTE / HOLD / ROUTE / REJECT。
 
-## 固定规模
+## v1.1 对“依赖”的精确定义
 
-总项目：24。
-第一层：20 项，01–20，读取输入后互相无依赖。
-第二层：4 项，21–24，分别依赖 17–20 的真实动作回执。
+21–24 的最终动作提交时间必须晚于对应真实 predecessor receipt。
 
-动作集合：
-EXECUTE
-HOLD
-ROUTE
-REJECT
+允许在 receipt 出现前做 speculative policy compilation：对有限的可能 receipt 状态预先计算“若该状态发生，应采取什么动作”。这不是提前执行，也不是 oracle 泄露。
 
-每项最少输入字段：
-item_id
-request
-current_state
-evidence[]
-constraints[]
-allowed_actions[]
-dependency_ids[]
+Verifier 必须检查：
 
-第二层在第一批动作完成后新增 dependency_receipts[]。
+`dependent_action_commit_time > predecessor_receipt_time`
+
+而不是强制：
+
+`dependent_model_query_time > predecessor_receipt_time`
+
+后者不是业务要求，会制造伪串行。
 
 ## 状态转移
 
-初始均为 PENDING。
+EXECUTE: SUCCESS→DONE；FAIL_TEMP→FAILED_RETRYABLE；FAIL_PERM→FAILED_FINAL。
+HOLD→ON_HOLD。
+ROUTE→ROUTED。
+REJECT→REJECTED。
+真实 action 必须产生不可变 receipt。
 
-EXECUTE：通过动作执行器；SUCCESS → DONE；FAIL_TEMP → FAILED_RETRYABLE；FAIL_PERM → FAILED_FINAL。
-HOLD → ON_HOLD。
-ROUTE → ROUTED。
-REJECT → REJECTED。
+## COMMERCIAL_GATE
 
-每个动作必须产生不可变 receipt。
-
-## 商业门槛
-
-只有以下全部满足才 PASS：
-24/24 有且只有一个最终动作；
-动作与隐藏 oracle 一致；
-最终状态与隐藏 oracle 一致；
-EXECUTE 项读取真实 receipt；
-21–24 的最终决策发生在依赖 receipt 之后；
-非法动作、非法转移、漏项、重复项均为 0；
-最终 verifier 读取独立 oracle、动作日志和最终状态；
-最终 manifest 的输入/输出/动作日志/verifier 结果 hash 一致；
-反作弊规则通过。
+24/24 动作与最终状态必须匹配 hidden oracle；EXECUTE 必须读取真实 receipt；21–24 最终动作必须在自己的真实依赖 receipt 后提交；非法动作/转移/漏项/重复项为 0；独立 verifier 校验 private oracle、action log、最终状态与 manifest hashes；anti-cheat 必须 PASS。
 
 任何一项失败，COMMERCIAL_GATE=FAIL，该次时间不参与最快比较。
 
-## 基准完整性
+## Anti-cheat
 
-Engine 不得读取 private oracle 或隐藏动作结果。
-不得按 item_id 或 benchmark 名称写死答案。
-T0 前不得读取当前 24 项、构造本次 DAG 或缓存本 benchmark 的 Jev 答案。
-允许预加载通用 Runtime、通用 Compiler 规则、通用状态机、Jev client、认证与连接池。
+Engine 不得读取 private oracle / hidden executor outcomes；不得按 item_id 或 benchmark 名写死答案；T0 前不得读取当前输入或缓存本 benchmark 答案；不得把 hypothetical receipt 冒充真实 receipt；不得在真实 receipt 前提交 21–24 最终动作。

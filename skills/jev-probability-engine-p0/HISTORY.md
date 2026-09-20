@@ -1,45 +1,44 @@
 # HISTORY — 方法收敛过程
 
-本文件保存为什么今天的规则与旧思路不同，防止以后重新走已经否定的路线。
+旧版本不删除。
 
-## H1 简单任务 → 通用概率执行引擎
-早期问题偏向 Jev 适合哪些简单判断。后来冻结：单个概率节点可以简单，但整个任务图可以很深、很宽、循环。真正边界是信息可观察、状态可表达、动作可执行、结果可验证。
+## H1–H9
 
-## H2 多指标 → 时间唯一标准
-曾考虑时间、成本、准确率、成熟度、风险、分解收益率等并列评价。最终冻结：这些进入 COMMERCIAL_GATE；门槛内唯一优化量是 min T_E2E。
+简单任务 → 节点可简单、任务图可复杂。
+多指标 → COMMERCIAL_GATE 内只优化 min T_E2E。
+节点数量 N → 关键路径/串行屏障。
+同题重复 → 独立证据、状态约束、现实反馈、verifier。
+逐行业案例库 → E=(C,P,S,V)。
+先开发再找任务 → 任务就是测功机。
+Jev latency → 完整 T_E2E。
+历史基础设施成本与本次现场时间分开。
+“99 分” → 逼近物理/现实极限的收敛状态。
 
-## H3 节点数量 N → 串行深度 D
-同层节点可以 Fan-out，并不会按节点数线性累加。真正约束极限时间的是最长不可并行依赖链 D(G)。
+## H10 — 0.1.0
 
-## H4 同题重复 → 独立证据与现实反馈
-同一个问题换措辞、反问或重复采样不天然独立，不能简单相乘宣称 99%。优先独立证据维度、状态约束、逻辑一致性、现实动作反馈和 verifier。
+首次冻结 PE-P0-GENERAL-01、COMMERCIAL_GATE、T0/T1 与旧链路：
+P1 → A1/receipts → P2 → A2 → Verify。
+当时写为 D_MIN=2 与 JEV_ROUNDS_MIN=2。
 
-## H5 逐行业案例库 → E=(C,P,S,V)
-客服、浏览器、代码等不再作为底层长期堆模板的方式。底层冻结为 Compiler + Probabilistic Kernel + State Runtime + Verifier；行业语义属于输入。
+## H11 — 0.2.0 根本纠偏
 
-## H6 先开发再测试 → 任务就是测功机
-不先花很久独立开发引擎。固定一个普通现实任务，在把该任务 T_E2E 压向物理极限的同一过程中完成 Probability Engine P0。
+成熟 TypeSafe pattern 明确：只有第二请求在第一结果前根本无法构造时才是真模型依赖；否则应 speculative fan-out。
 
-## H7 Jev latency → 完整 T_E2E
-单次 API 延迟不能代表完整任务。读取、现场编译/拆解、状态、Jev、调度、动作、重试、恢复、验证、最终提交全部属于任务时间。
+21–24 的真实动作确实等待 17–20 receipt，但有限 receipt 状态空间可预先做条件策略计算。因此：
 
-## H8 历史研发成本 → 与本次现场时间分开
-已部署的通用基础设施不重复计入以后每次任务；但本次输入特有的编译、状态构造、调用、动作和验证不能藏进历史成本。
+动作依赖 ≠ 模型依赖。
 
-## H9 “99 分” → 逼近物理极限
-Virtual-99 不再是成熟度评分。它表示结构已利用成熟方案收敛，继续优化难以实质缩短关键路径；最终仍必须现实测时。
+从 0.2.0 起分别记录：
+MODEL_BARRIER_DEPTH_MIN=1
+ACTION_DEPENDENCY_DEPTH_MIN=2
 
-## H10 本版本的根本变化
-2026-09-21 将上述纠偏正式固化为可版本化技能包，并首次冻结：
-PE-P0-GENERAL-01
-COMMERCIAL_GATE
-T0/T1
-最少信息与动作集合
-最小 Decision DAG
-D_MIN=2
-JEV_ROUNDS_MIN=2
-T_PHY 结构式
-现实锚定计划
-更新协议
+0.1.0 JEV_ROUNDS_MIN=2 被 supersede，但原历史不删除。
 
-以后若发现更好结构，发布新版本，旧版不覆盖。
+## H12 — 0.2.0 成熟集群
+
+C：TypeScript deterministic binder + Ajv standalone。
+P：pinned jev-1.13.0 + speculative fan-out。
+S：in-process finite-state reducer + immutable receipts + per-dependency unlock。
+V：independent preloaded harness + private oracle + strict compare + SHA-256。
+
+Virtual-99 删除固定 post-receipt Jev round、全局 wait-all、生成式 planner、runtime schema compile、无条件重采样和 LLM verifier。

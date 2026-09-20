@@ -1,51 +1,50 @@
 # CURRENT STATE
 
-版本：0.1.0
+版本：0.2.0
 冻结日期：2026-09-21
 
+```text
 SKILL_ID=jev-probability-engine-p0
-CURRENT_STAGE=STEP1_STRUCTURAL_PHYSICAL_LIMIT_FROZEN
+VERSION=0.2.0
+CURRENT_STAGE=STEP2_MATURE_CLUSTER_VIRTUAL99_STRUCTURAL_FROZEN
 
 SINGLE_OBJECTIVE=min_T_E2E
 COMMERCIAL_GATE_RULE=FROZEN
 TIMING_T0_T1=FROZEN
 
 P0_TASK=PE-P0-GENERAL-01
-TASK_CONTRACT=FROZEN_V1
+TASK_CONTRACT=FROZEN_V1_1
 
-PROBABILITY_NODE_COUNT_MIN=24
-LAYER_WIDTHS_MIN=20,4
-MAX_PARALLEL_WIDTH=20
-D_MIN=2
-JEV_ROUNDS_MIN=2
-ACTION_OBJECT_COUNT_MIN=24
-ACTION_BATCH_ROUNDS_MIN=2
-VERIFY_OBJECT_COUNT_MIN=24
+SEMANTIC_FINAL_DECISIONS=24
+SPECULATIVE_POLICY_BRANCHES=12
+V99_MODEL_QUESTION_COUNT=32
+
+MODEL_BARRIER_DEPTH_MIN=1
+ACTION_DEPENDENCY_DEPTH_MIN=2
 FINAL_VERIFY_BARRIERS_MIN=1
 
-T_PHY_FORMULA=DERIVED
+LEGACY_D_MIN_0_1_0=2_DEPRECATED_AS_AMBIGUOUS
+LEGACY_JEV_ROUNDS_MIN_0_1_0=2_SUPERSEDED
+
+MATURE_CLUSTER=FROZEN_V0.2
+VIRTUAL_99_STRUCTURAL=PASS
+T_PHY_V2_FORMULA=DERIVED
 T_PHY_NUMERIC=NOT_ASSIGNED_WITHOUT_REALITY_CONSTANTS
 T_REAL_STAR=NOT_MEASURED
 T_P0=NOT_MEASURED
-VIRTUAL_99=NOT_RUN
 REAL_P0=NOT_RUN
 REAL_CERTIFIED=NO
+```
 
-## 已完成
+## 本版本完成
 
-- 从多指标评价纠偏为：可商用门槛内只计端到端时间。
-- 从“复杂任务不适合 Jev”纠偏为：节点可简单，任务图可复杂。
-- 从优化节点数量 N 纠偏为优化串行深度 D。
-- 从逐案例积累纠偏为通用 E=(C,P,S,V)。
-- 从只看 Jev latency 纠偏为完整 T_E2E。
-- 已冻结第一个测功任务、最小 DAG、计时合同、门槛和更新制度。
+- C/P/S/V 成熟方案集群已冻结。
+- 修复 v0.1.0 的伪串行：动作必须等待 receipt，不等于模型必须等 receipt 后再问。
+- 21–24 对 SUCCESS / FAIL_TEMP / FAIL_PERM 的 12 个条件动作策略可提前求值。
+- 分离 model barrier depth 与 action dependency depth。
+- 删除固定 post-receipt Jev round、全局 wait-all、生成式 planner、运行时 schema compile、无条件重复采样和 LLM verifier。
+- Virtual-99 结构调度证明 PASS。
 
 ## 下一阶段
 
-不再改题。进入成熟方案集群 + Virtual-99：
-1. 为 Compiler / Kernel / State / Verifier 各自选择成熟可复用组件。
-2. 组合最小 Runtime 候选。
-3. 删除所有不必要串行。
-4. 再进入现实锚定，测得 T_REAL*。
-5. 运行完整 P0，得到 T_P0。
-6. 只有真实 verifier 通过才允许 REAL_CERTIFIED=YES。
+进入 Step 3 Reality Anchor + Real P0：实测 Provider、transport、batch/shard、Jev correctness、action executor 与 verifier，得到 T_REAL* 和 T_P0。未真实验收不得写 REAL_CERTIFIED=YES。

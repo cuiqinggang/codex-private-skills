@@ -1,76 +1,55 @@
-# STEP-1 PHYSICAL LIMIT
+# PHYSICAL LIMIT — v0.2.0
 
-## 最少概率节点
+## v0.1.0 的结构纠偏
 
-在固定动作集合和显式约束下，每个项目至少要确定一个最终动作。
+v0.1.0 因 21–24 必须等待 17–20 的真实 receipt，把 D_MIN=2 与 JEV_ROUNDS_MIN=2 一起冻结。
 
-第一层 01–20：20 个最终 Choice 节点。
-第二层 21–24：4 个最终 Choice 节点，必须读取 17–20 的真实动作回执。
+Core② / Virtual-99 证明：这只能证明现实动作依赖深度为 2，不能证明 Jev 模型屏障必须为 2。有限 receipt 状态可以提前 speculative policy evaluation，真实 receipt 只负责选择已经得到的分支。
 
-PROBABILITY_NODE_COUNT_MIN=24
+从 0.2.0 起废弃裸 D_MIN 同时表达两类深度。
 
-额外 Noul、Score、重采样只在通过商业门槛确实必要时保留，不作为结构先验。
+## 修正后的结构量
 
-## 确定性部分
+```text
+SEMANTIC_FINAL_DECISIONS=24
+SPECULATIVE_POLICY_BRANCHES=12
+V99_MODEL_QUESTION_COUNT=32
 
-schema 校验、依赖图、允许动作掩码、状态转移、批量调度、receipt 记录、hash、oracle verifier、manifest 都可确定性完成。
+MODEL_BARRIER_DEPTH_MIN=1
+ACTION_DEPENDENCY_DEPTH_MIN=2
+FINAL_VERIFY_BARRIERS_MIN=1
+```
 
-## 最小 DAG
+01–20：20 个当前动作 Choice。
+21–24：对 predecessor EXECUTE 的三个真实结果 SUCCESS / FAIL_TEMP / FAIL_PERM，各提前生成一个直接条件 Choice，共 12 个 conditional-policy Choice。
+
+这些语义问题可在同一个 model barrier 中完成。它可以是一个大 batch，也可以是多个 concurrent shard；实际最快拓扑留给 Step 3 实测。
+
+21–24 的真实动作仍只能在对应 receipt 后提交，因此 ACTION_DEPENDENCY_DEPTH_MIN=2 不变。
+
+## Virtual-99 DAG
 
 T0
-→ READ / VALIDATE / BUILD DEPENDENCY GRAPH
-→ P1: Jev Fan-out ITEM01..ITEM20，宽度 20
-→ D1: apply allowed-action mask / combine
-→ A1: batch action ITEM01..ITEM20
-→ O1: commit receipts，尤其 ITEM17..20
-→ P2: Jev Fan-out ITEM21..ITEM24，宽度 4
-→ D2: mask / combine
-→ A2: batch action ITEM21..ITEM24
-→ V: final reality verify + manifest
+→ BIND: parse + standalone schema validate + dependency bind + question build
+→ J_SPEC: all current-action + conditional-policy semantic judgments
+→ A01..A20 parallel
+   A17→receipt17→policy lookup→A21
+   A18→receipt18→policy lookup→A22
+   A19→receipt19→policy lookup→A23
+   A20→receipt20→policy lookup→A24
+→ V: one final independent verifier barrier
+→ OUT: manifest/commit
 → T1
 
-第一批其它项目的局部验证应与 P2/A2 重叠，不形成新的关键路径屏障。
+不存在物理必需的 receipt → Jev network round → dependent action。
 
-## D_MIN 证明
+## T_PHY v2
 
-21–24 的正确输入包含真实 receipt；receipt 在 A1 前物理上不存在，所以不能与 P1 同一轮完成最终判断。
-20 个第一层判断互相独立，可同轮 Fan-out。
-4 个第二层判断在 receipts 到齐后互相独立，可同轮 Fan-out。
+`T_PHY_v2 = t_bind* + t_Jspec* + max(max(first-wave-only paths), max_{j=17..20}(t_Aj* + t_Adep(j)*)) + t_Vtail* + t_out*`
 
-因此：
-LAYER_WIDTHS_MIN=20,4
-MAX_PARALLEL_WIDTH=20
-D_MIN=2
-JEV_ROUNDS_MIN=2
+局部验证、增量 hash、日志整理若可与 action 并行，不得重复串行相加。
 
-## 动作与验证下界
-
-每项必须到达真实终态：
-ACTION_OBJECT_COUNT_MIN=24
-
-第二层依赖第一批动作回执：
-ACTION_BATCH_ROUNDS_MIN=2
-
-全部 24 项需要现实验证：
-VERIFY_OBJECT_COUNT_MIN=24
-FINAL_VERIFY_BARRIERS_MIN=1
-
-## T_PHY 结构式
-
-T_PHY =
-t_in*
-+ t_J20*
-+ t_A20*
-+ t_J4*
-+ t_A4*
-+ t_Vtail*
-+ t_out*
-
-其中每个星号量是在固定协议/硬件/网络/后端下的最低物理极限。
-
-本版本不把公开 Jev 百毫秒级案例或社区 benchmark 直接代入，从而避免制造假的当前机器物理极限。
-
-T_PHY_FORMULA=DERIVED
+T_PHY_V2_FORMULA=DERIVED
 T_PHY_NUMERIC=REQUIRES_REALITY_CONSTANTS
-
-数值现实锚定以后得到 T_REAL*；真实实现运行得到 T_P0。
+T_REAL_STAR=NOT_MEASURED
+T_P0=NOT_MEASURED

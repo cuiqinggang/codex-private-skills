@@ -1,0 +1,25 @@
+{
+  "benchmark": "PE-P0-GENERAL-01",
+  "version": "0.2.0",
+  "model_barrier_depth": 1,
+  "action_dependency_depth": 2,
+  "dependent_edges": [
+    [
+      "A17",
+      "A21"
+    ],
+    [
+      "A18",
+      "A22"
+    ],
+    [
+      "A19",
+      "A23"
+    ],
+    [
+      "A20",
+      "A24"
+    ]
+  ],
+  "pass": true
+}

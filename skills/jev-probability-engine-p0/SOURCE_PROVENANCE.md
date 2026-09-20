@@ -1,30 +1,31 @@
 # SOURCE PROVENANCE
 
-版本：0.1.0
-冻结日期：2026-09-21
+版本：0.2.0
+日期：2026-09-21
 
-本版本的主要原始接续材料：
-粘贴的 markdown (1)。md(20260920-172718)
+## 原始内部来源
 
-原始材料 SHA256：
-c61718f9d235e90519afa944a2f7b5f7fe619b064e791e9513447918cfa695be
+2026-09-20 接续材料：粘贴的 markdown (1)。md(20260920-172718)
+SHA256：c61718f9d235e90519afa944a2f7b5f7fe619b064e791e9513447918cfa695be
 
-该原始材料记录了：
-项目目标与背景；
-已完成成果；
-当前状态；
-关键判断与选择原因；
-已经否定的路线；
-固定规则；
-风险；
-未完成事项；
-下一步执行顺序。
+旧来源不得被新结论覆盖。
 
-完整原始文件已原样包含在完整快照：
-ChatGPT Library /AI-Skills/jev-probability-engine-p0-v0.1.0.zip
-快照内路径：
-references/source-20260920-continuation-summary.md
+## 0.2.0 外部成熟证据
 
-GitHub 主目录保存经过冻结的可执行真值与收敛史；完整 ZIP 保存详细拆分文档、24 项固定 fixture、private oracle、executor outcomes、SHA256SUMS 和原始接续材料。
+检查日期：2026-09-21。
 
-以后更新不得把旧来源改写为新结论；如来源发生变化，新增来源记录和新版本。
+- https://docs.typesafe.ai/concepts/how-to-build-with-system-one
+- https://docs.typesafe.ai/patterns/fan-out
+- https://docs.typesafe.ai/primitives
+- https://docs.typesafe.ai/model-jaggedness/jev-1.13
+- https://docs.typesafe.ai/models
+- https://github.com/typesafe-ai/typesafe-sdk-js
+  - package.json blob 40e9181f1874fb8c40f12e925dc5b28b88146239
+  - client.ts blob 5846677aaaf2d2578d3c79f09a90f06d8e28a085
+  - retry.ts blob e201f0ff3549ffc9c72fcaf11b9c2a9467313183
+- https://ajv.js.org/standalone.html
+- https://stately.ai/docs
+- https://undici.nodejs.org/
+- https://openrouter.ai/typesafe/jev-1.13/
+
+公开 latency/uptime 只用于成熟性参考，不替代本机 T_REAL*。

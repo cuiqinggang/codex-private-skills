@@ -1,36 +1,43 @@
 {
   "skill_id": "jev-probability-engine-p0",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "date": "2026-09-21",
-  "status": "STEP1_STRUCTURAL_PHYSICAL_LIMIT_FROZEN",
+  "status": "STEP2_MATURE_CLUSTER_VIRTUAL99_STRUCTURAL_FROZEN",
   "objective": "min T_E2E subject to COMMERCIAL_GATE=PASS",
   "engine": "E=(C,P,S,V)",
   "benchmark": {
     "id": "PE-P0-GENERAL-01",
-    "version": "1.0",
+    "task_contract_version": "1.1",
     "items": 24,
-    "layer_widths": [
-      20,
-      4
-    ],
-    "max_parallel_width": 20,
-    "probability_node_count_min": 24,
-    "D_MIN": 2,
-    "JEV_ROUNDS_MIN": 2,
-    "ACTION_OBJECT_COUNT_MIN": 24,
-    "ACTION_BATCH_ROUNDS_MIN": 2,
-    "VERIFY_OBJECT_COUNT_MIN": 24,
-    "FINAL_VERIFY_BARRIERS_MIN": 1
+    "semantic_final_decisions": 24,
+    "speculative_policy_branches": 12,
+    "v99_model_question_count": 32,
+    "model_barrier_depth_min": 1,
+    "action_dependency_depth_min": 2,
+    "final_verify_barriers_min": 1,
+    "legacy_v0_1": {
+      "D_MIN": 2,
+      "JEV_ROUNDS_MIN": 2,
+      "status": "SUPERSEDED_AS_AMBIGUOUS_MODEL_VS_ACTION_DEPTH"
+    }
+  },
+  "mature_cluster": {
+    "compiler": "TypeScript deterministic binder + Ajv standalone + speculative-policy compiler",
+    "kernel": "pinned jev-1.13.0 + one serial model barrier + reality-tunable sharding",
+    "state": "in-process finite-state reducer + immutable receipts + per-dependency unlock",
+    "verifier": "independent preloaded harness + private oracle + strict compare + SHA-256"
   },
   "t_phy": {
-    "formula": "t_in* + t_J20* + t_A20* + t_J4* + t_A4* + t_Vtail* + t_out*",
+    "formula": "t_bind* + t_Jspec* + max(first_wave_only_paths, max_j(t_Aj* + t_Adep(j)*)) + t_Vtail* + t_out*",
     "numeric": "NOT_ASSIGNED_WITHOUT_REALITY_CONSTANTS"
   },
   "real_state": {
+    "MATURE_CLUSTER": "FROZEN_V0.2",
+    "VIRTUAL_99_STRUCTURAL": "PASS",
     "T_REAL_STAR": "NOT_MEASURED",
     "T_P0": "NOT_MEASURED",
-    "VIRTUAL_99": "NOT_RUN",
+    "REAL_P0": "NOT_RUN",
     "REAL_CERTIFIED": "NO"
   },
-  "full_snapshot": "ChatGPT Library /AI-Skills/jev-probability-engine-p0-v0.1.0.zip"
+  "next": "STEP3_REALITY_ANCHOR_AND_REAL_P0"
 }
