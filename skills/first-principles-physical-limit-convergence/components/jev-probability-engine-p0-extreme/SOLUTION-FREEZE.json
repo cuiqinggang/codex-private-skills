@@ -1,0 +1,82 @@
+{
+  "case_id": "JEV-PROBABILITY-ENGINE-P0-V316-EXTREME-01",
+  "method": "first-principles-physical-limit-convergence",
+  "method_version": "3.1.6",
+  "date": "2026-09-21",
+  "objective": "min T_VALID subject to COMMERCIAL_GATE=PASS",
+  "baseline": {
+    "version": "jev-probability-engine-p0 v0.3.0",
+    "T_P0_ms": 840.6046999999962,
+    "confirm": "30/30 PASS"
+  },
+  "gates": {
+    "MATURE_SOLUTION_CLUSTER": "PASS",
+    "VIRTUAL_99": "PASS",
+    "SOLUTION_FROZEN": "YES",
+    "REAL_VERIFY": "NOT_YET"
+  },
+  "frozen_solution": {
+    "model": {
+      "request_id": "typesafe/jev-1.13",
+      "expected_family": "typesafe/jev-1.13",
+      "model_barrier_depth": 1
+    },
+    "questions": {
+      "semantic_final_decisions": 24,
+      "speculative_policy_branches": 12,
+      "total_choice_questions": 32
+    },
+    "state": "per-shard projection: action ontology once + request/evidence/constraints for referenced items only",
+    "question_form": "short Choice with state-path criteria",
+    "sharding": {
+      "count": 2,
+      "algorithm": "T0 runtime LPT byte-balance over 20 semantic units",
+      "dependency_affinity": true,
+      "answer_cache": false
+    },
+    "payload_fixture": {
+      "baseline_max_bytes": 24482,
+      "frozen_max_bytes": 7310,
+      "baseline_total_bytes": 48964,
+      "frozen_total_bytes": 14620,
+      "reduction_percent": 70.141
+    },
+    "transport": {
+      "client": "undici Pool/request",
+      "connections": 2,
+      "pipelining": 1,
+      "prewarm_before_T0": true,
+      "response_cache": "FORBIDDEN",
+      "timed_retry_count": 0
+    },
+    "scheduler": {
+      "global_model_join": false,
+      "per_shard_early_release": true,
+      "dependent_policy_colocated": true,
+      "action_dependency_depth": 2
+    },
+    "state_runtime": {
+      "type": "in-process deterministic reducer",
+      "receipts": "immutable memory + append-only JSONL"
+    },
+    "verifier": {
+      "type": "independent deterministic",
+      "incremental": true,
+      "final_global_barriers": 1,
+      "final_manifest_writes": 1
+    },
+    "failure_policy": "REALITY_DELTA -> STOP -> RETURN_TO_GPT"
+  },
+  "virtual_evidence": {
+    "partition_fixture": "7310/7310",
+    "failure_injection": "12/12 PASS",
+    "shadow_p50_ms": 865.339,
+    "shadow_lower_tail_target_ms": 798.715,
+    "numeric_status": "VIRTUAL_ONLY"
+  },
+  "promotion_gate": {
+    "measured_runs": 30,
+    "all_pass_required": true,
+    "must_beat_ms": 840.6046999999962
+  }
+}
