@@ -22,6 +22,34 @@ function safeHeaders(headers = {}) {
   return Object.keys(headers).sort();
 }
 
+function sanitizeRemote(value, key = '') {
+  if (value == null) return value;
+  if (/password|passwd|token|secret|authorization|cookie|credential|headers?/i.test(key)) return '<REDACTED>';
+  if (Array.isArray(value)) return value.map(v => sanitizeRemote(v, key));
+  if (typeof value === 'object') {
+    const out = {};
+    for (const [k, v] of Object.entries(value)) out[k] = sanitizeRemote(v, k);
+    return out;
+  }
+  if (typeof value === 'string') {
+    if (/url|uri|endpoint|proxy/i.test(key)) return safeUrl(value);
+    return value;
+  }
+  return value;
+}
+
+function safeCommandLine(commandLine) {
+  if (!commandLine || !Array.isArray(commandLine.arguments)) return null;
+  return {
+    arguments: commandLine.arguments.map(arg => {
+      const s = String(arg);
+      const i = s.indexOf('=');
+      if (i < 0) return { flag: s };
+      return { flag: s.slice(0, i), value_sha256: sha256(s.slice(i + 1)) };
+    })
+  };
+}
+
 function jsonLine(obj) {
   return JSON.stringify(obj) + '\n';
 }
@@ -95,7 +123,7 @@ async function actionabilityProbe(page, selector) {
       receives_events_approx: !!hit && (hit === el || el.contains(hit)),
       active_animations: animations
     };
-  }).catch(error => ({ probe_error: String(error) }));
+  }).catch(error => ({ probe_error_sha256: sha256(String(error)) }));
 
   return {
     selector,
@@ -127,6 +155,7 @@ export async function startBrowserRealityR3({
   const rawCdp = path.join(outputDir, 'raw', 'cdp.jsonl');
   const safeCdp = path.join(outputDir, 'safe', 'cdp.jsonl');
   const actionability = [];
+  let traceOwned = false;
 
   const record = async (type, data = {}) => {
     await append(safeEvents, { ts: now(), type, ...data });
@@ -158,10 +187,19 @@ export async function startBrowserRealityR3({
   context.on('serviceworker', w => { void record('service_worker', { url: safeUrl(w.url()) }); });
 
   page.on('console', msg => {
-    void record('console', { level: msg.type(), text_sha256: sha256(msg.text()), location: msg.location() });
+    const loc = msg.location?.() ?? {};
+    void record('console', {
+      level: msg.type(),
+      text_sha256: sha256(msg.text()),
+      location: { ...loc, url: loc.url ? safeUrl(loc.url) : undefined }
+    });
   });
   page.on('pageerror', error => {
-    void record('pageerror', { name: error.name, message_sha256: sha256(error.message), stack_sha256: sha256(error.stack ?? '') });
+    void record('pageerror', {
+      name: error.name,
+      message_sha256: sha256(error.message),
+      stack_sha256: sha256(error.stack ?? '')
+    });
   });
   page.on('crash', () => { void record('page_crash'); });
   page.on('worker', w => { void record('worker', { url: safeUrl(w.url()) }); });
@@ -176,9 +214,14 @@ export async function startBrowserRealityR3({
   if (enableTrace) {
     try {
       await context.tracing.start({ screenshots: true, snapshots: true, sources: true });
-      await record('trace_start', { status: 'STARTED' });
+      traceOwned = true;
+      await record('trace_start', { status: 'STARTED_BY_R3' });
     } catch (error) {
-      await record('trace_start', { status: 'NOT_STARTED', error_sha256: sha256(String(error)) });
+      await record('trace_start', {
+        status: 'NOT_OWNED',
+        note: 'Existing trace or unsupported state is left untouched',
+        error_sha256: sha256(String(error))
+      });
     }
   }
 
@@ -233,6 +276,9 @@ export async function startBrowserRealityR3({
       await bcdp.detach().catch(() => {});
     }
   }
+  if (browserCommandLine) {
+    await writeJson(path.join(outputDir, 'raw', 'browser-command-line.json'), browserCommandLine);
+  }
 
   const runtimeEnv = await page.evaluate(() => ({
     href: location.href,
@@ -284,11 +330,15 @@ export async function startBrowserRealityR3({
     task_id: taskId,
     captured_at: now(),
     target_selector: targetSelector,
-    declared_config: declaredConfig,
+    declared_config: sanitizeRemote(declaredConfig, 'declared_config'),
     browser_version: browserVersion,
-    browser_command_line: browserCommandLine,
+    browser_command_line_safe: safeCommandLine(browserCommandLine),
     system_info: systemInfo,
-    runtime: { ...runtimeEnv, href: safeUrl(runtimeEnv.href), title_sha256: sha256(runtimeEnv.title) },
+    runtime: {
+      ...runtimeEnv,
+      href: safeUrl(runtimeEnv.href),
+      title_sha256: sha256(runtimeEnv.title)
+    },
     viewport: page.viewportSize(),
     context_pages: context.pages().map(p => safeUrl(p.url())),
     service_workers: context.serviceWorkers().map(w => safeUrl(w.url())),
@@ -320,19 +370,22 @@ export async function startBrowserRealityR3({
     },
     async stop(result = {}) {
       await recorder.checkpoint('FINAL', targetSelector).catch(() => {});
-      if (enableTrace) {
+      if (traceOwned) {
         try {
           await context.tracing.stop({ path: path.join(outputDir, 'raw', 'trace.zip') });
-          await record('trace_stop', { status: 'SAVED' });
+          await record('trace_stop', { status: 'SAVED_BY_R3' });
         } catch (error) {
           await record('trace_stop', { status: 'NOT_SAVED', error_sha256: sha256(String(error)) });
         }
+      } else if (enableTrace) {
+        await record('trace_stop', { status: 'NOT_TOUCHED_NOT_OWNED' });
       }
       if (cdp) await cdp.detach().catch(() => {});
 
       const artifacts = {};
       for (const rel of [
         'raw/trace.zip','raw/cdp.jsonl','raw/storage-state.json','raw/dom-snapshot.json',
+        'raw/browser-command-line.json',
         'safe/events.jsonl','safe/cdp.jsonl','safe/environment.json','safe/actionability.json'
       ]) {
         const abs = path.join(outputDir, rel);
@@ -346,7 +399,8 @@ export async function startBrowserRealityR3({
         task_id: taskId,
         stopped_at: now(),
         target_selector: targetSelector,
-        result,
+        result: sanitizeRemote(result, 'result'),
+        trace_owned_by_r3: traceOwned,
         artifacts
       };
       await writeJson(path.join(outputDir, 'safe', 'golden-task-result.json'), finalResult);
