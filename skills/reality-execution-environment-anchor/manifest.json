@@ -1,20 +1,36 @@
 {
   "skill_id": "reality-execution-environment-anchor",
-  "version": "1.1.0",
-  "status": "REALITY_ANCHOR_COMPLETE",
-  "not_ready_for_exact_twin": false,
-  "twin_input_ready": true,
-  "current_snapshot": "2026-09-21-r2",
-  "current_authoritative_anchor": "snapshots/2026-09-21-r2/45-REALITY-ENVIRONMENT-ANCHOR-R2-FINAL.json",
-  "current_authoritative_fingerprint": "snapshots/2026-09-21-r2/46-REALITY-FINGERPRINT-V3.json",
+  "display_name_zh": "现实执行环境精确锚定与数字孪生基线",
+  "version": "1.2.0",
+  "status": "HOST_R2_COMPLETE_BROWSER_R3_COLLECTOR_READY",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.7",
   "history_append_only": true,
+  "host_r2": {
+    "status": "REALITY_ANCHOR_COMPLETE",
+    "current_snapshot": "2026-09-21-r2",
+    "current_authoritative_anchor": "snapshots/2026-09-21-r2/45-REALITY-ENVIRONMENT-ANCHOR-R2-FINAL.json",
+    "current_authoritative_fingerprint": "snapshots/2026-09-21-r2/46-REALITY-FINGERPRINT-V3.json",
+    "reality_fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
+    "critical_execution_state_coverage_percent": "100.00",
+    "legacy_twin_input_ready": true
+  },
+  "browser_r3": {
+    "spec": "BROWSER-REALITY-R3.md",
+    "contract": "BROWSER-REALITY-R3-CONTRACT.json",
+    "acceptance": "BROWSER-REALITY-R3-ACCEPTANCE.md",
+    "playwright_hook": "collectors/browser-reality-r3.mjs",
+    "host_network_collector": "collectors/browser-host-network-r3.ps1",
+    "collector_contract": "FROZEN",
+    "real_capture": "NOT_YET",
+    "fingerprint": "NOT_YET",
+    "browser_twin_input_ready": false
+  },
+  "secret_policy": "SECRET_PLAINTEXT_ZERO_REMOTE",
   "environment_99": "NOT_YET",
-  "parent_method": "first-principles-physical-limit-convergence@3.1.6",
-  "collection_process": "COLLECTION-PROCESS-R1-R2.md",
   "twin_consumer": {
     "id": "exact-reality-digital-twin",
     "display_name_zh": "现实执行环境精确数字孪生唯一版",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "parent_path": "skills/first-principles-physical-limit-convergence/components/exact-reality-digital-twin"
   }
 }
