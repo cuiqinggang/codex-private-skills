@@ -1,0 +1,51 @@
+{
+  "schema": "MVT-BROWSER-DEPLOYMENT-ASSEMBLY-VIRTUAL-99-v1",
+  "version": "1.0.0-rc1",
+  "method_authority": "first-principles-physical-limit-convergence@3.1.5",
+  "core_zh": "高智能虚拟成熟",
+  "contract_sha": "a60a92cc3f896152c72273b7f964f3bdc0ece359",
+  "positive_invariants": {
+    "pass": 30,
+    "total": 30
+  },
+  "negative_fault_injections": {
+    "pass": 16,
+    "total": 16
+  },
+  "total": {
+    "pass": 46,
+    "total": 46,
+    "accuracy": "100%"
+  },
+  "verified": [
+    "SEVEN_GATES_PRESENT",
+    "AMBIGUOUS_BINDING_BLOCKED",
+    "UNBOUND_CASE_BLOCKED",
+    "COLD_STATE_MACHINE_FROZEN",
+    "WARM_STATE_MACHINE_FROZEN",
+    "RECONNECT_STATE_MACHINE_FROZEN",
+    "MONOTONIC_TVALID_FORMULA_FROZEN",
+    "TIMING_OVERRIDE_BLOCKED",
+    "APPEND_ONLY_RAW_RESULTS",
+    "DROPPED_FAILURE_BLOCKED",
+    "VALID_FIRST_MINIMUM_TVALID_WINNER_RULE",
+    "CAPABILITY_MISSING_BINDING_NOT_INVENTED",
+    "ALL_SIX_RECOVERY_FAULTS_REQUIRED",
+    "NORMAL_RECOVERY_OVERHEAD_ZERO",
+    "EXECUTOR_GUESSING_BLOCKED",
+    "REAL_BROWSER_IO_BLOCKED_DURING_ASSEMBLY",
+    "REAL_JEV_IO_BLOCKED_DURING_ASSEMBLY",
+    "REAL_OPEN_AGENT_IO_BLOCKED_DURING_ASSEMBLY",
+    "ONE_JEV_NO_RETRY",
+    "PRIMARY_METRIC_REMAINS_T_VALID_FULL",
+    "FAILURE_RETURNS_TO_GPT"
+  ],
+  "real_io": {
+    "browser_runs": 0,
+    "jev_requests": 0,
+    "open_agent_requests": 0
+  },
+  "virtual_99": "PASS",
+  "deployment_solution_frozen": true,
+  "next_action": "CODEX_MATERIALIZE_FROZEN_ASSEMBLY_ONLY"
+}
