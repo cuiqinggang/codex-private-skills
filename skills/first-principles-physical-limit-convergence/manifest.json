@@ -77,31 +77,22 @@
   "updated_date": "2026-09-20",
   "task_locator": {
     "enabled": true,
-    "purpose": "HUMAN_AND_MACHINE_TASK_CORRESPONDENCE",
-    "format_fields": [
-      "PAGE",
-      "TASK",
-      "SEQ",
-      "STEP",
-      "CORE",
-      "ROLE",
-      "STATUS"
+    "purpose": "MINIMAL_PAGE_TASK_POSITIONING",
+    "visible_format": "【<PAGE_NAME>｜<SEQ>】",
+    "key_fields": [
+      "PAGE_NAME",
+      "SEQ"
     ],
-    "page_and_task_require_chinese_name": true,
+    "page_name_uses_existing_title": true,
+    "sequence_start": 1,
+    "sequence_max": 6,
+    "sequence_format": "PLAIN_INTEGER",
     "order_requires_first_and_last_line": true,
     "answer_requires_final_line": true,
-    "pair_match_fields": [
-      "PAGE",
-      "TASK",
-      "SEQ",
-      "STEP",
-      "CORE"
-    ],
-    "sequence_monotonic": true,
     "normal_closeout_max_seq": 3,
-    "repair_window_max_seq": 6,
-    "after_3_incomplete": "RECORD_GAP_BEFORE_SEQ_004",
-    "after_6_incomplete": "STOP_AND_CREATE_NEW_TASK_OR_REFREEZE",
-    "mismatch_policy": "BLOCK"
+    "after_3_incomplete": "RECORD_GAP_BEFORE_CONTINUING",
+    "after_6_incomplete": "STOP_AND_REFREEZE_OR_SPLIT_TASK",
+    "core_mapping_source": "MANDATORY_3_STEP_GATE_V3_1_3",
+    "duplicate_core_in_locator": false
   }
 }
