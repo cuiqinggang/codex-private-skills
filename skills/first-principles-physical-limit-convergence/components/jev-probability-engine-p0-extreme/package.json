@@ -1,0 +1,9 @@
+{
+  "name": "jev-p0-v316-frozen-real-verify",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "undici": "6.28.1"
+  }
+}
