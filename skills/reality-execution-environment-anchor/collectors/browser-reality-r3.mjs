@@ -302,7 +302,20 @@ export async function startBrowserRealityR3({
     }
   }));
 
-  const storageState = await context.storageState();
+  let storageState = null;
+  let storageCaptureMode = 'BASE';
+  try {
+    storageState = await context.storageState({ indexedDB: true, opfs: true });
+    storageCaptureMode = 'INDEXEDDB_OPFS';
+  } catch {
+    try {
+      storageState = await context.storageState({ indexedDB: true });
+      storageCaptureMode = 'INDEXEDDB';
+    } catch {
+      storageState = await context.storageState();
+      storageCaptureMode = 'BASE_FALLBACK';
+    }
+  }
   await writeJson(path.join(outputDir, 'raw', 'storage-state.json'), storageState);
   const storageSafe = {
     cookies: storageState.cookies.map(c => ({
@@ -342,8 +355,15 @@ export async function startBrowserRealityR3({
     viewport: page.viewportSize(),
     context_pages: context.pages().map(p => safeUrl(p.url())),
     service_workers: context.serviceWorkers().map(w => safeUrl(w.url())),
+    storage_capture_mode: storageCaptureMode,
     storage_state_safe: storageSafe,
-    session_storage_safe: sessionStorageSafe
+    session_storage_safe: sessionStorageSafe,
+    frames: page.frames().map((frame, index, all) => ({
+      index,
+      name: frame.name(),
+      url: safeUrl(frame.url()),
+      parent_index: frame.parentFrame() ? all.indexOf(frame.parentFrame()) : null
+    }))
   };
   delete envSafe.runtime.title;
   await writeJson(path.join(outputDir, 'safe', 'environment.json'), envSafe);
