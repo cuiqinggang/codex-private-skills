@@ -1,0 +1,29 @@
+{
+  "baseline_v0_3_0_s2": {
+    "strategy": "round_robin_full_state",
+    "shard_bytes": [
+      24482,
+      24482
+    ],
+    "max_bytes": 24482,
+    "total_bytes": 48964
+  },
+  "frozen_v316_s2": {
+    "strategy": "dependency_affinity_runtime_LPT",
+    "fixture_shard_bytes": [
+      7310,
+      7310
+    ],
+    "questions": [
+      16,
+      16
+    ],
+    "max_bytes": 7310,
+    "total_bytes": 14620
+  },
+  "max_payload_reduction_percent": 70.141,
+  "total_payload_reduction_percent": 70.141,
+  "exhaustive_fixture_partition_space_symmetry_reduced": 524288,
+  "generic_runtime_LPT_reproduces_fixture_optimum": true,
+  "anti_cheat": "partition is computed after T0 from public task bytes; no oracle/answers"
+}
