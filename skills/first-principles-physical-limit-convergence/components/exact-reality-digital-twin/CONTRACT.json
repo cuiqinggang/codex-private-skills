@@ -15,7 +15,7 @@
     },
     "browser_r3": {
       "contract": "BROWSER-REALITY-R3-CONTRACT.json",
-      "input_contract": "BROWSER-TWIN-INPUT-CONTRACT.md",
+      "input_contract": "BROWSER-TWIN-INPUT-CONTRACT-v2.md",
       "real_capture": "NOT_YET",
       "fingerprint": "NOT_YET",
       "twin_input_ready": false
@@ -71,6 +71,7 @@
       "observability_run": "O1",
       "optimization_metric": "T_VALID=min(T1,T2,T3)",
       "observability_counts_toward_metric": false
-    }
+    },
+    "real_verify": "BROWSER-NETWORK-TWIN-REAL-VERIFY-v2.md"
   }
 }
