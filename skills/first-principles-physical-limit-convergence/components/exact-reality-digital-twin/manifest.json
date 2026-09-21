@@ -42,5 +42,16 @@
     "reality_replay": "NOT_YET",
     "machine_contract": "VIRTUAL-FUSION-CONTRACT-v2.json",
     "real_verify": "BROWSER-NETWORK-TWIN-REAL-VERIFY-v2.md"
+  },
+  "promotion_status": "FROZEN_PENDING_REAL_APPLY",
+  "promotion_contract": "PROMOTE-TASK-LOCAL-BROWSER-TWIN-v1.md",
+  "promotion_target_version": "1.3.0",
+  "browser_reality_authority": {
+    "fingerprint": "9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd",
+    "canonical_golden_sha256": "1c67a634e0c0fc24ed057752358f4c20a6c05550be6146fd8d11b1a723f25e08",
+    "reality_profile_validation": "PASS",
+    "browser_golden_replay": "PASS",
+    "material_delta_count": 0,
+    "shadow_isolation": "PASS"
   }
 }
