@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "mode": "HYPOTHETICAL_SHADOW",
+  "shadow_delta_present": "YES",
+  "changed_paths": [
+    "dialog_actionability.BEFORE_DIALOG.visible"
+  ],
+  "reality_mutated": "NO",
+  "reality_profile_sha256_before": "016b98bb2cfc0dc9aa04fa0e9a4da65e257cc571130d92b9af2d43e787bc5ceb",
+  "reality_profile_sha256_after": "016b98bb2cfc0dc9aa04fa0e9a4da65e257cc571130d92b9af2d43e787bc5ceb",
+  "shadow_state_sha256": "45b91b5184c3cccf33c2aaada24c6587cd0929ef5cc76bf3eef3cb0da8865373"
+}
