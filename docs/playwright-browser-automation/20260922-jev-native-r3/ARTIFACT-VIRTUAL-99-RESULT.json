@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "project": "playwright浏览器自动化10",
+  "freeze_id": "JEV-NATIVE-PLAYWRIGHT-EXTREME-V1-R3-COMPILED-WARM",
+  "gate": "ARTIFACT_VIRTUAL_99",
+  "runner_path": "docs/playwright-browser-automation/20260922-jev-native-r3/REAL-VERIFY-RUNNER-R3.cjs",
+  "runner_git_blob": "05a400b542193b7e51cc3b959ad2ac03bab15ae5",
+  "exact_remote_blob_readback": "PASS",
+  "syntax": {
+    "v8_parse": "PASS",
+    "bad_escaped_backtick_count": 0,
+    "bad_escaped_template_count": 0
+  },
+  "frozen_contract": {
+    "task_sha256": "PASS",
+    "valid_rule_sha256": "PASS",
+    "canonical_golden_sha256": "PASS",
+    "browser_r3_fingerprint_sha256": "PASS",
+    "reality_anchor_1241_68": "PASS",
+    "target_820": "PASS",
+    "mature_1050": "PASS",
+    "warmups_3": "PASS",
+    "measured_runs_30": "PASS",
+    "fail_closed_return_to_gpt": "PASS",
+    "success_stop_return_no": "PASS",
+    "result_schema": "PASS",
+    "deterministic_golden_jev_zero": "PASS",
+    "compiled_replay": "PASS",
+    "isolated_context_prewarm": "PASS"
+  },
+  "business_order_static_gate": "PASS",
+  "virtual_execution": {
+    "positive_path": "PASS",
+    "positive_trace": [
+      "identity_gate",
+      "reset_ready",
+      "navigation",
+      "compiled_cluster",
+      "upload",
+      "download",
+      "dialog",
+      "popup",
+      "frame",
+      "route_api",
+      "isolated",
+      "final_valid"
+    ],
+    "single_fault_cases": 14,
+    "single_fault_false_pass": 0,
+    "random_trajectories": 100000,
+    "random_pass": 6698,
+    "random_fail_closed": 93302,
+    "false_valid_pass": 0
+  },
+  "artifact_static_gate": "PASS",
+  "artifact_execution_sim_gate": "PASS",
+  "artifact_virtual_99": "PASS",
+  "limitation": "Virtual artifact validation does not replace Windows/Playwright reality verification. Real browser runs remain the final reality gate.",
+  "promotion_rule": "VIRTUAL_99=PASS is valid only when exact frozen runner blob passes syntax, contract, business-order, positive-path and fault-injection artifact gates."
+}
