@@ -195,8 +195,8 @@
       "legacy_selftest": "24/24 PASS",
       "reality_shadow_baseline": "PASS"
     },
-    "promotion_contract": "components/exact-reality-digital-twin/PROMOTE-TASK-LOCAL-BROWSER-TWIN-v1.md",
-    "promotion_status": "FROZEN_PENDING_REAL_APPLY",
+    "promotion_contract": "components/exact-reality-digital-twin/PROMOTE-TASK-LOCAL-BROWSER-TWIN-v4.md",
+    "promotion_status": "FROZEN_PENDING_REAL_APPLY_V4",
     "historical_t_star_real_ms": 1525.09,
     "environment_99": "PENDING_PROMOTION_VERIFY"
   },
