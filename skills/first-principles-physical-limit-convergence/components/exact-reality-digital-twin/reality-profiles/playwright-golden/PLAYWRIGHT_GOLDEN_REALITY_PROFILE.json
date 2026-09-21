@@ -1,0 +1,601 @@
+{
+  "profile_id": "PLAYWRIGHT_GOLDEN_REALITY_PROFILE",
+  "component_id": "exact-reality-digital-twin",
+  "method_version": "3.1.7",
+  "twin_source_version": "1.1.0",
+  "mode": "READ_ONLY_REALITY_REPLAY",
+  "browser_process": {
+    "products": [
+      "HeadlessChrome/151.0.7922.34",
+      "HeadlessChrome/151.0.7922.34",
+      "HeadlessChrome/151.0.7922.34"
+    ],
+    "identity_source": "PLAYWRIGHT_EXECUTABLE_PATH_PLUS_FROZEN_GOLDEN_LAUNCH_CONFIG",
+    "raw_command_line_stored": false,
+    "process_closure_sha256": "a7189b1a05e75963e4847f810833bd04fdd678743d4824f87c4860e50ab8f384"
+  },
+  "versions": {
+    "node": "v24.14.0",
+    "playwright": "1.62.1",
+    "browser": "151.0.7922.34"
+  },
+  "browser_executable_fingerprint": {
+    "path_sha256": "1b09a0b7957890702fd9139ed21b105e5cdf5b16f46d5d09893d599a959724d0",
+    "file_sha256": "409805a16d6416087e6b2f778df1cf8f7bbb267d6b99f6b5bb0a618eace234f2"
+  },
+  "launch_config_fingerprint": {
+    "sha256": "2a81491f665b4c2d89eaae694e522d440162ef255245edcfb225f04d1276a93e",
+    "config": {
+      "browser_type": "chromium",
+      "launch_api": "chromium.launch",
+      "headless": true,
+      "explicit_executable_path": false,
+      "explicit_channel": false,
+      "explicit_args": false,
+      "explicit_proxy": false,
+      "playwright_version": "1.62.1",
+      "browser_executable_sha256": "409805a16d6416087e6b2f778df1cf8f7bbb267d6b99f6b5bb0a618eace234f2",
+      "canonical_golden_sha256": "1c67a634e0c0fc24ed057752358f4c20a6c05550be6146fd8d11b1a723f25e08"
+    }
+  },
+  "context_config": {
+    "type": "NON_PERSISTENT_BROWSER_NEW_CONTEXT",
+    "viewport": [
+      {
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "width": 1280,
+        "height": 720
+      }
+    ],
+    "locale": [
+      "zh-CN",
+      "zh-CN",
+      "zh-CN"
+    ],
+    "timezone": [
+      "Asia/Shanghai",
+      "Asia/Shanghai",
+      "Asia/Shanghai"
+    ],
+    "user_agent_sha256": [
+      "3caf269ff15e9469bb7f47985b75b52aa4c2fd24dbe3118b40ca31edb48c9178",
+      "3caf269ff15e9469bb7f47985b75b52aa4c2fd24dbe3118b40ca31edb48c9178",
+      "3caf269ff15e9469bb7f47985b75b52aa4c2fd24dbe3118b40ca31edb48c9178"
+    ],
+    "accept_downloads": true,
+    "default_timeout_ms": 5000
+  },
+  "profile_user_data_dir_fingerprint": {
+    "profile_path_sha256": "7d29e0a3d387275fd61ad79a276fefcbac43c8f907a9aa7acf09ad26d9beb861",
+    "collector_mutated_profile": false
+  },
+  "auth_storage_structure": {
+    "capture_modes": [
+      "INDEXEDDB_OPFS",
+      "INDEXEDDB_OPFS",
+      "INDEXEDDB_OPFS"
+    ],
+    "counts": [
+      {
+        "cookies": 0,
+        "origins": 0,
+        "session_storage": 0
+      },
+      {
+        "cookies": 0,
+        "origins": 0,
+        "session_storage": 0
+      },
+      {
+        "cookies": 0,
+        "origins": 0,
+        "session_storage": 0
+      }
+    ],
+    "auth_state_criterion": "COOKIE_OR_ORIGIN_OR_SESSION_STORAGE_PRESENT",
+    "plaintext_values_stored": false
+  },
+  "page_frame_worker_service_worker_graph": {
+    "pages": [
+      1,
+      1,
+      1
+    ],
+    "frames": [
+      [
+        {
+          "index": 0,
+          "name": "",
+          "url": "http://127.0.0.1:60579/",
+          "parent_index": null
+        },
+        {
+          "index": 1,
+          "name": "frame",
+          "url": "http://127.0.0.1:60579/frame",
+          "parent_index": 0
+        }
+      ],
+      [
+        {
+          "index": 0,
+          "name": "",
+          "url": "http://127.0.0.1:60579/",
+          "parent_index": null
+        },
+        {
+          "index": 1,
+          "name": "frame",
+          "url": "http://127.0.0.1:60579/frame",
+          "parent_index": 0
+        }
+      ],
+      [
+        {
+          "index": 0,
+          "name": "",
+          "url": "http://127.0.0.1:60579/",
+          "parent_index": null
+        },
+        {
+          "index": 1,
+          "name": "frame",
+          "url": "http://127.0.0.1:60579/frame",
+          "parent_index": 0
+        }
+      ]
+    ],
+    "worker_status": "NOT_PRESENT",
+    "service_worker_status": "NOT_PRESENT"
+  },
+  "dom_layout_overlay_animation": {
+    "dom_snapshot_hashes": [
+      "7823a569ebf56994067f2c353c633537b5844e5ce64c36ec14ce99e95e97b3cf",
+      "f1ed619aa15f7640a062f71d2e1ff7650177eaf5c7361060be81e8226ca36468",
+      "6cb0e8752830f3f2d1ec37d694f2e789918aafaf8b69a09a7fc3ae044ba8dec5"
+    ],
+    "target_selector": "#dialog",
+    "overlay_or_interceptor": "NOT_PRESENT_AT_CENTER_HIT_TEST",
+    "active_animations": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ]
+  },
+  "dialog_actionability": {
+    "BEFORE_DIALOG": {
+      "exactly_one": true,
+      "visible": true,
+      "enabled": true,
+      "stable_approx_two_animation_frames": true,
+      "receives_events_approx": true,
+      "locator_count": [
+        1,
+        1,
+        1
+      ],
+      "hit_target": [
+        {
+          "tag": "BUTTON",
+          "id": "dialog",
+          "classes": ""
+        },
+        {
+          "tag": "BUTTON",
+          "id": "dialog",
+          "classes": ""
+        },
+        {
+          "tag": "BUTTON",
+          "id": "dialog",
+          "classes": ""
+        }
+      ],
+      "computed_style": [
+        {
+          "display": "inline-block",
+          "visibility": "visible",
+          "opacity": "1",
+          "pointer_events": "auto",
+          "z_index": "auto",
+          "position": "static",
+          "transform": "none"
+        },
+        {
+          "display": "inline-block",
+          "visibility": "visible",
+          "opacity": "1",
+          "pointer_events": "auto",
+          "z_index": "auto",
+          "position": "static",
+          "transform": "none"
+        },
+        {
+          "display": "inline-block",
+          "visibility": "visible",
+          "opacity": "1",
+          "pointer_events": "auto",
+          "z_index": "auto",
+          "position": "static",
+          "transform": "none"
+        }
+      ],
+      "active_animations": [
+        [],
+        [],
+        []
+      ]
+    },
+    "AFTER_DIALOG": {
+      "exactly_one": true,
+      "visible": true,
+      "enabled": true,
+      "stable_approx_two_animation_frames": true,
+      "receives_events_approx": true,
+      "locator_count": [
+        1,
+        1,
+        1
+      ],
+      "hit_target": [
+        {
+          "tag": "BUTTON",
+          "id": "dialog",
+          "classes": ""
+        },
+        {
+          "tag": "BUTTON",
+          "id": "dialog",
+          "classes": ""
+        },
+        {
+          "tag": "BUTTON",
+          "id": "dialog",
+          "classes": ""
+        }
+      ],
+      "computed_style": [
+        {
+          "display": "inline-block",
+          "visibility": "visible",
+          "opacity": "1",
+          "pointer_events": "auto",
+          "z_index": "auto",
+          "position": "static",
+          "transform": "none"
+        },
+        {
+          "display": "inline-block",
+          "visibility": "visible",
+          "opacity": "1",
+          "pointer_events": "auto",
+          "z_index": "auto",
+          "position": "static",
+          "transform": "none"
+        },
+        {
+          "display": "inline-block",
+          "visibility": "visible",
+          "opacity": "1",
+          "pointer_events": "auto",
+          "z_index": "auto",
+          "position": "static",
+          "transform": "none"
+        }
+      ],
+      "active_animations": [
+        [],
+        [],
+        []
+      ]
+    }
+  },
+  "browser_network": {
+    "event_counts": [
+      {
+        "trace_start": 1,
+        "request": 5,
+        "response": 5,
+        "requestfinished": 5,
+        "context_page": 1,
+        "trace_stop": 1
+      },
+      {
+        "trace_start": 1,
+        "request": 5,
+        "response": 5,
+        "requestfinished": 5,
+        "context_page": 1,
+        "trace_stop": 1
+      },
+      {
+        "trace_start": 1,
+        "request": 5,
+        "response": 5,
+        "requestfinished": 5,
+        "context_page": 1,
+        "trace_stop": 1
+      }
+    ],
+    "redirect_observed": [
+      false,
+      false,
+      false
+    ],
+    "websocket_status": "NOT_PRESENT",
+    "service_worker_status": "NOT_PRESENT",
+    "tls_status": "NOT_PRESENT_LOCAL_HTTP",
+    "route_api_observed": true
+  },
+  "host_network": {
+    "pre_safe_sha256": "ded1b431f959b9bc7c1e83893fc1c79e704ed1191597dd202633cb5f3bc02367",
+    "post_safe_sha256": "6a19f02bdde3bf50e50dbedee8614f2316b2db85ee9ef9afb4a3869233510623",
+    "proxy_unchanged": true,
+    "network_settings_unchanged": true,
+    "outbound_probe": "NO"
+  },
+  "runtime_dialog_lifecycle": {
+    "cdp_method_counts": [
+      {
+        "Page.lifecycleEvent": 35,
+        "Page.frameStartedLoading": 3,
+        "Network.requestWillBeSent": 4,
+        "Network.responseReceived": 4,
+        "Page.frameNavigated": 3,
+        "Network.loadingFinished": 4,
+        "Page.domContentEventFired": 2,
+        "Page.loadEventFired": 2,
+        "Page.frameStoppedLoading": 3,
+        "Page.frameAttached": 1,
+        "Page.javascriptDialogOpening": 1,
+        "Page.javascriptDialogClosed": 1
+      },
+      {
+        "Page.lifecycleEvent": 35,
+        "Page.frameStartedLoading": 3,
+        "Network.requestWillBeSent": 4,
+        "Network.responseReceived": 4,
+        "Page.frameNavigated": 3,
+        "Network.loadingFinished": 4,
+        "Page.domContentEventFired": 2,
+        "Page.loadEventFired": 2,
+        "Page.frameStoppedLoading": 3,
+        "Page.frameAttached": 1,
+        "Page.javascriptDialogOpening": 1,
+        "Page.javascriptDialogClosed": 1
+      },
+      {
+        "Page.lifecycleEvent": 35,
+        "Page.frameStartedLoading": 3,
+        "Network.requestWillBeSent": 4,
+        "Network.responseReceived": 4,
+        "Page.frameNavigated": 3,
+        "Network.loadingFinished": 4,
+        "Page.domContentEventFired": 2,
+        "Page.loadEventFired": 2,
+        "Page.frameStoppedLoading": 3,
+        "Page.frameAttached": 1,
+        "Page.javascriptDialogOpening": 1,
+        "Page.javascriptDialogClosed": 1
+      }
+    ],
+    "dialog_opening": [
+      [
+        {
+          "url": "http://127.0.0.1:60579/",
+          "frameId": "5E27BD25397135D4D895007D40439B84",
+          "message": "native-dialog",
+          "type": "alert",
+          "hasBrowserHandler": false,
+          "defaultPrompt": ""
+        }
+      ],
+      [
+        {
+          "url": "http://127.0.0.1:60579/",
+          "frameId": "44FBA0CB96360D78B6C004AD0CEA1096",
+          "message": "native-dialog",
+          "type": "alert",
+          "hasBrowserHandler": false,
+          "defaultPrompt": ""
+        }
+      ],
+      [
+        {
+          "url": "http://127.0.0.1:60579/",
+          "frameId": "A60B9DFD7C7DC84755E027F1B38C006B",
+          "message": "native-dialog",
+          "type": "alert",
+          "hasBrowserHandler": false,
+          "defaultPrompt": ""
+        }
+      ]
+    ],
+    "dialog_closed": [
+      [
+        {
+          "frameId": "5E27BD25397135D4D895007D40439B84",
+          "result": true,
+          "userInput": ""
+        }
+      ],
+      [
+        {
+          "frameId": "44FBA0CB96360D78B6C004AD0CEA1096",
+          "result": true,
+          "userInput": ""
+        }
+      ],
+      [
+        {
+          "frameId": "A60B9DFD7C7DC84755E027F1B38C006B",
+          "result": true,
+          "userInput": ""
+        }
+      ]
+    ],
+    "pageerror_status": "NOT_PRESENT",
+    "crash_status": "NOT_PRESENT"
+  },
+  "artifact_hashes": [
+    {
+      "path": "run-01/raw/cdp.jsonl",
+      "bytes": 20373,
+      "sha256": "d7750830332dac4659f14278d17a2d4429b674bc6612d95ce8af6253e220e5bf"
+    },
+    {
+      "path": "run-01/raw/dom-snapshot.json",
+      "bytes": 33570,
+      "sha256": "7823a569ebf56994067f2c353c633537b5844e5ce64c36ec14ce99e95e97b3cf"
+    },
+    {
+      "path": "run-01/raw/trace.zip",
+      "bytes": 369027,
+      "sha256": "3692773c04078686ef3fe54c538021a1394ffb36c5f9a31f10a1c8b013da98f9"
+    },
+    {
+      "path": "run-01/safe/cdp.jsonl",
+      "bytes": 18529,
+      "sha256": "0b79382a9597cab78693a20b29d05abf13c0b039f0231676339c13e6f6a2ab66"
+    },
+    {
+      "path": "run-02/raw/cdp.jsonl",
+      "bytes": 20369,
+      "sha256": "9b926af603bc4aaf634db817b3cf74ba077c39b3602270741396ca14983b0864"
+    },
+    {
+      "path": "run-02/raw/dom-snapshot.json",
+      "bytes": 33570,
+      "sha256": "f1ed619aa15f7640a062f71d2e1ff7650177eaf5c7361060be81e8226ca36468"
+    },
+    {
+      "path": "run-02/raw/trace.zip",
+      "bytes": 369321,
+      "sha256": "3a88730d2d4e8313b34ebecc37c1441d833044507cebaa359018040198208fed"
+    },
+    {
+      "path": "run-02/safe/cdp.jsonl",
+      "bytes": 18526,
+      "sha256": "ccea2894218d8d7ecb4ff223974d29b91c88acb31b71dfca5b3da2ee5582e9e2"
+    },
+    {
+      "path": "run-03/raw/cdp.jsonl",
+      "bytes": 20371,
+      "sha256": "3dd162d76acd3a303c9915439a588cc9dea8c11551e0a50d95b7f57718ff051c"
+    },
+    {
+      "path": "run-03/raw/dom-snapshot.json",
+      "bytes": 33570,
+      "sha256": "6cb0e8752830f3f2d1ec37d694f2e789918aafaf8b69a09a7fc3ae044ba8dec5"
+    },
+    {
+      "path": "run-03/raw/trace.zip",
+      "bytes": 359476,
+      "sha256": "17cb4e5085032ab14f9833dbbdb802f1118587659f81b57e79d7014d0de12af7"
+    },
+    {
+      "path": "run-03/safe/cdp.jsonl",
+      "bytes": 18528,
+      "sha256": "fd5d09986c91743369bb7e6a2fecb663aac9dd54ab01ab5a582905aae289ce28"
+    }
+  ],
+  "golden_task": {
+    "reproduced": "3_OF_3",
+    "outcomes": [
+      "PASS",
+      "PASS",
+      "PASS"
+    ],
+    "errors_present": [
+      false,
+      false,
+      false
+    ],
+    "frozen_action_order": [
+      "TASK_IDENTITY",
+      "VALID_IDENTITY",
+      "BROWSER_PROCESS_IDENTITY",
+      "CONTEXT_IDENTITY",
+      "PROFILE_IDENTITY",
+      "PAGE_FRAME_GRAPH",
+      "NAVIGATION",
+      "LOCATOR",
+      "INPUT",
+      "CLICK",
+      "EXTRACT",
+      "KEYBOARD",
+      "DRAG_DROP",
+      "UPLOAD",
+      "DOWNLOAD",
+      "BEFORE_DIALOG_ACTIONABILITY",
+      "DIALOG_OPENING",
+      "DIALOG_ACCEPT",
+      "AFTER_DIALOG_ACTIONABILITY",
+      "POPUP",
+      "FRAME",
+      "ROUTE_API",
+      "ISOLATED_CONTEXT",
+      "SCREENSHOT",
+      "PERSISTENT_RECONNECT_1",
+      "PERSISTENT_RECONNECT_2",
+      "FINAL_GOLDEN_RESULT"
+    ],
+    "persistent_reconnect_in_frozen_golden": true
+  },
+  "task_sha256": "31f60923bddd1fece2a1d64a574f6ad5a3bc16fd0b0ef01127c87522e7084960",
+  "valid_rule_sha256": "2d2e4ab5495fdffb921a57113e6c7ecf5e9cf6802f9a729386bf941a3fd5c7ae",
+  "reality_pack_manifest": {
+    "sha256": "fd7d381a7f8185a5c12af7a74f7b4d43809d172d84fff78454863383ae9727cd",
+    "files": [
+      {
+        "relative_path": "golden-harness.cjs",
+        "size_bytes": 5607,
+        "sha256": "9ec5020496a7d703eae0da7ffbe0c6968bdd669cd848469e844bcc6f508d2cfb"
+      },
+      {
+        "relative_path": "trace.zip",
+        "size_bytes": 389229,
+        "sha256": "401fa76fc26610d660c6430f453461ab287473dda84283248c321fd9a795588d"
+      },
+      {
+        "relative_path": "network.har",
+        "size_bytes": 17166,
+        "sha256": "79886266d9b3ae1801c30b5df2f9b18fd5f40b67642b922e1046c9b721bb1b80"
+      },
+      {
+        "relative_path": "storage-state.json",
+        "size_bytes": 36,
+        "sha256": "4ee89bbf1a160c9df977d5de59c3aa28b8c1ea4f51b8393c99b8c49f7fee0bfa"
+      },
+      {
+        "relative_path": "environment.json",
+        "size_bytes": 1021,
+        "sha256": "c500cf3d2155ebf00adbeafc9f7708bcdbe7d93c8a00d89b9e2e474c408bb3b2"
+      }
+    ]
+  },
+  "browser_r3_fingerprint_sha256": "9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd",
+  "canonical_golden_sha256": "1c67a634e0c0fc24ed057752358f4c20a6c05550be6146fd8d11b1a723f25e08",
+  "historical_t_star_real_ms": 1525.09,
+  "source_invariants": {
+    "observation_perturbation": "NO",
+    "profile_mutated": "NO",
+    "routing_or_mock_enabled_by_collector": "NO"
+  }
+}
