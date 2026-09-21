@@ -215,7 +215,7 @@ TIME_CLASSIFICATION=VIRTUAL_ONLY_UNTIL_REAL_VERIFY
 
 ```text
 RUNNER_SOURCE_RELATIVE_PATH=docs/playwright-browser-automation/20260922-jev-native-r3/REAL-VERIFY-RUNNER-R3.cjs
-RUNNER_GIT_BLOB_SHA=1aefdfcc409fc44ff9b7a1b135c7cecf0d8a4e99
+RUNNER_GIT_BLOB_SHA=05a400b542193b7e51cc3b959ad2ac03bab15ae5
 RUNNER_EXECUTION_MODE=GIT_OBJECT_STREAM_TO_NODE_STDIN
 RUNNER_MATERIALIZATION=NONE
 RUNNER_PATCH_ALLOWED=NO
@@ -234,14 +234,14 @@ NODE_SYNTAX_CHECK=PASS
 SHARED_REPO_LOCAL=C:\Users\A\Documents\Codex\codex-private-skills
 SOURCE_BRANCH=codex/playwright-browser-automation10-jev-native-r2-final-freeze
 RUNNER_PATH=docs/playwright-browser-automation/20260922-jev-native-r3/REAL-VERIFY-RUNNER-R3.cjs
-EXPECTED_RUNNER_BLOB=1aefdfcc409fc44ff9b7a1b135c7cecf0d8a4e99
+EXPECTED_RUNNER_BLOB=05a400b542193b7e51cc3b959ad2ac03bab15ae5
 ```
 
 Codex 只允许：
 
 1. `git fetch origin codex/playwright-browser-automation10-jev-native-r2-final-freeze`
 2. `git rev-parse origin/codex/playwright-browser-automation10-jev-native-r2-final-freeze:docs/playwright-browser-automation/20260922-jev-native-r3/REAL-VERIFY-RUNNER-R3.cjs`
-3. blob 必须等于 `1aefdfcc409fc44ff9b7a1b135c7cecf0d8a4e99`
+3. blob 必须等于 `05a400b542193b7e51cc3b959ad2ac03bab15ae5`
 4. 直接：
    `git show origin/codex/playwright-browser-automation10-jev-native-r2-final-freeze:docs/playwright-browser-automation/20260922-jev-native-r3/REAL-VERIFY-RUNNER-R3.cjs | node -`
 5. 原样回传最终结果并 STOP。
