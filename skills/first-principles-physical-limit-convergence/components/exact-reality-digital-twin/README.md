@@ -1,44 +1,21 @@
-# 现实执行环境精确数字孪生唯一版 v1.1.0
+# 现实执行环境精确数字孪生唯一版 v1.2.0
 
-机器名：`exact-reality-digital-twin`
+机器名：exact-reality-digital-twin
 
-唯一目标：**先重放现实，再在 Shadow（影子）中试验。**
-Reality（现实）不可修改；Shadow 不得冒充 Reality。
+当前唯一实现已经从 1344 单点重放器升级为统一 Twin 引擎。
 
-## 双层 Reality 输入
+已完成：
+- Host R2 Reality 输入保留。
+- Host R2 Fingerprint 保持 9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8。
+- ENGINE.py 已统一 Host、Browser、Network、Runtime、actionability、Golden Task、Reality/Twin Diff、Shadow 与 T_VALID。
+- 虚拟夹具自测 39/39 PASS。
+- 时间合同冻结：T1/T2/T3 为轻量计时，O1 为独立可观测运行，T_VALID=min(T1,T2,T3)。
 
-### 1. Host / Codex 现实（已完成）
-来源：`reality-execution-environment-anchor@1.2.0` 的历史 R1/R2。
-Reality Fingerprint V3：
-`9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8`
-
-已冻结现实行为：
-```text
-SetTokenInformation
--> error 1344
--> 3/3
--> child not running
--> PATH NOT_REACHED
--> no running child token
-```
-
-旧合同自测：24/24 PASS。
-
-### 2. Browser E2E 现实（新增合同，尚未真实采集）
-v1.1.0 正式加入 Browser Reality R3 输入合同：
-`BROWSER-TWIN-INPUT-CONTRACT.md`
-
-它要求真实采集并重放：
-Browser/Profile/Context/Auth/DOM/actionability/Network/Service Worker/WebSocket/Runtime/Trace/CDP/Golden Task。
-
-当前：
-```text
-BROWSER_R3_REALITY_INPUT=NOT_YET
-BROWSER_GOLDEN_REPLAY=NOT_YET
-BROWSER_REALITY_TWIN_DELTA=NOT_YET
-BROWSER_SHADOW_RUN=NOT_YET
+当前真实输入仍不完整，因此：
+VIRTUAL_MATURITY=PASS
+UNIFIED_TWIN_ENGINE=FROZEN
+BROWSER_TWIN_INPUT_READY=NO
+FULL_BROWSER_TWIN=NO
 ENVIRONMENT_99=NOT_YET
-```
 
-因此，v1.1.0 已修正“同一台电脑 = 完整浏览器环境”的旧理解。
-在 Browser R3 真实指纹产生之前，本 Twin 禁止声称已完成完整浏览器数字孪生。
+现实验证只允许执行 BROWSER-NETWORK-TWIN-REAL-VERIFY-v2.md。
