@@ -19,7 +19,7 @@ $baselineCert = Join-Path $repoRoot 'skills\first-principles-physical-limit-conv
 $baselineManifest = Join-Path $repoRoot 'skills\first-principles-physical-limit-convergence\components\jev-probability-engine-p0-extreme\certifications\v0.4.0\manifest.json'
 
 $expected = @{
-    $sourcePath = 'a875d09d2c2785911dd85b2b9eac6f2c3835b784'
+    $sourcePath = '66de96b172c50efea8f3f520c0c31669d6122c67'
     $frozenPath = '4b273b74a7d74851d1e99715a72cb52e168d7752'
     $contractPath = 'f89584f72bafe04f61d347bfc2960ecbfbbde997'
     $virtualPath = 'e2333b65d87486247223f62a881a1eef4b3f5613'
