@@ -39,6 +39,7 @@
     ],
     "observability_run": "O1",
     "t_valid": "MIN_OF_3_AFTER_CERTIFICATION",
-    "reality_replay": "NOT_YET"
+    "reality_replay": "NOT_YET",
+    "machine_contract": "VIRTUAL-FUSION-CONTRACT-v2.json"
   }
 }
