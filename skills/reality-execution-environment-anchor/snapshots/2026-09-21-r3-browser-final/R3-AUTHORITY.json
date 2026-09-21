@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "capture": "BROWSER_REALITY_R3",
+  "status": "PASS",
+  "browser_r3_fingerprint_sha256": "9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd",
+  "canonical_golden_sha256": "1c67a634e0c0fc24ed057752358f4c20a6c05550be6146fd8d11b1a723f25e08",
+  "browser_critical_unknown_count": 0,
+  "browser_execution_relevant_state_complete": true,
+  "golden_task_reality_reproduced": "3_OF_3",
+  "browser_twin_input_ready": true,
+  "browser_r3_real_capture": "PASS",
+  "observation_perturbation": "NO",
+  "secret_plaintext_zero_remote": "PASS",
+  "reality_delta": "NONE",
+  "historical_t_star_real_ms": 1525.09,
+  "source_workspace": "C:\\Users\\A\\playwright-browser-automation5-final-reality-competition-work",
+  "source_method_version": "3.1.7",
+  "source_twin_contract_version": "1.1.0"
+}
