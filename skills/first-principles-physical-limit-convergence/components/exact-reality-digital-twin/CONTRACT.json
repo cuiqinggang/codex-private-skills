@@ -1,8 +1,8 @@
 {
   "component_id": "exact-reality-digital-twin",
   "display_name_zh": "现实执行环境精确数字孪生唯一版",
-  "version": "1.1.0",
-  "parent_method": "first-principles-physical-limit-convergence@3.1.7",
+  "version": "1.2.0",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.8",
   "core_owner": "高智能虚拟成熟",
   "canonical_single_implementation": true,
   "reality_input": {
@@ -56,5 +56,21 @@
     "browser_reality_twin_delta": "NOT_YET",
     "browser_shadow_run": "NOT_YET",
     "environment_99": "NOT_YET"
+  },
+  "virtual_fusion": {
+    "plan_id": "BROWSER-NETWORK-TWIN-FUSION-V2",
+    "status": "PASS",
+    "engine_schema": "browser-network-unified-twin-2.0",
+    "selftest": "39/39 PASS",
+    "time_contract": {
+      "timing_runs": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "observability_run": "O1",
+      "optimization_metric": "T_VALID=min(T1,T2,T3)",
+      "observability_counts_toward_metric": false
+    }
   }
 }
