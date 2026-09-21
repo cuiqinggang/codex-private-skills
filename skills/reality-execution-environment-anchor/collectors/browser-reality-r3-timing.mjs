@@ -4,6 +4,13 @@ import crypto from 'node:crypto';
 
 const now = () => new Date().toISOString();
 const sha256 = data => crypto.createHash('sha256').update(data).digest('hex');
+const canonicalJson = value => {
+  if (Array.isArray(value)) return '[' + value.map(canonicalJson).join(',') + ']';
+  if (value && typeof value === 'object') {
+    return '{' + Object.keys(value).sort().map(k => JSON.stringify(k) + ':' + canonicalJson(value[k])).join(',') + '}';
+  }
+  return JSON.stringify(value);
+};
 
 function safeUrl(input) {
   try {
@@ -61,7 +68,7 @@ export async function startBrowserRealityTiming({
     dpr: identity.dpr,
     context_page_count: contextPageCount
   };
-  const identityFingerprint = sha256(JSON.stringify(identitySafe));
+  const identityFingerprint = sha256(canonicalJson(identitySafe));
 
   return {
     async stop(result = {}) {
