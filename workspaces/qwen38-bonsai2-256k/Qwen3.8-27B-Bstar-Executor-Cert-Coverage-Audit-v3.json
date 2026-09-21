@@ -1,0 +1,176 @@
+{
+  "audit_id": "bstar-executor-cert-v3-coverage-audit",
+  "suite_id": "bstar-executor-cert-v3",
+  "pairwise_coverage_all_factors_pass": true,
+  "pairwise": {
+    "domain×context_band": {
+      "observed": 64,
+      "possible": 64,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "domain×tool_family": {
+      "observed": 64,
+      "possible": 64,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "domain×failure_mode": {
+      "observed": 64,
+      "possible": 64,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "domain×plan_shape": {
+      "observed": 64,
+      "possible": 64,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "domain×reasoning_route": {
+      "observed": 32,
+      "possible": 32,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "context_band×tool_family": {
+      "observed": 64,
+      "possible": 64,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "context_band×failure_mode": {
+      "observed": 64,
+      "possible": 64,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "context_band×plan_shape": {
+      "observed": 64,
+      "possible": 64,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "context_band×reasoning_route": {
+      "observed": 32,
+      "possible": 32,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "tool_family×failure_mode": {
+      "observed": 64,
+      "possible": 64,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "tool_family×plan_shape": {
+      "observed": 64,
+      "possible": 64,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "tool_family×reasoning_route": {
+      "observed": 32,
+      "possible": 32,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "failure_mode×plan_shape": {
+      "observed": 64,
+      "possible": 64,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "failure_mode×reasoning_route": {
+      "observed": 32,
+      "possible": 32,
+      "coverage": 1.0,
+      "missing": []
+    },
+    "plan_shape×reasoning_route": {
+      "observed": 32,
+      "possible": 32,
+      "coverage": 1.0,
+      "missing": []
+    }
+  },
+  "case_contract_fields_pass": true,
+  "per_domain_level_coverage": {
+    "E1_PLAN_FIDELITY": {
+      "count": 64,
+      "context_levels": 8,
+      "tool_levels": 8,
+      "failure_levels": 8,
+      "plan_levels": 8,
+      "reasoning_levels": 4
+    },
+    "E2_STATE_CONTINUITY": {
+      "count": 64,
+      "context_levels": 8,
+      "tool_levels": 8,
+      "failure_levels": 8,
+      "plan_levels": 8,
+      "reasoning_levels": 4
+    },
+    "E3_FILE_CODE_MUTATION": {
+      "count": 96,
+      "context_levels": 8,
+      "tool_levels": 8,
+      "failure_levels": 8,
+      "plan_levels": 8,
+      "reasoning_levels": 4
+    },
+    "E4_TOOL_INVOCATION": {
+      "count": 80,
+      "context_levels": 8,
+      "tool_levels": 8,
+      "failure_levels": 8,
+      "plan_levels": 8,
+      "reasoning_levels": 4
+    },
+    "E5_FAILURE_RECOVERY": {
+      "count": 96,
+      "context_levels": 8,
+      "tool_levels": 8,
+      "failure_levels": 8,
+      "plan_levels": 8,
+      "reasoning_levels": 4
+    },
+    "E6_VERIFICATION_EVIDENCE": {
+      "count": 64,
+      "context_levels": 8,
+      "tool_levels": 8,
+      "failure_levels": 8,
+      "plan_levels": 8,
+      "reasoning_levels": 4
+    },
+    "E7_LONG_CONTEXT_RESOURCE": {
+      "count": 64,
+      "context_levels": 8,
+      "tool_levels": 8,
+      "failure_levels": 8,
+      "plan_levels": 8,
+      "reasoning_levels": 4
+    },
+    "E8_STOP_SCOPE_DISCIPLINE": {
+      "count": 64,
+      "context_levels": 8,
+      "tool_levels": 8,
+      "failure_levels": 8,
+      "plan_levels": 8,
+      "reasoning_levels": 4
+    }
+  },
+  "counts_pass": {
+    "atomic": true,
+    "jev": true,
+    "thinking": true,
+    "long": true,
+    "long_steps": true,
+    "injected_failures": true,
+    "cache": true,
+    "memory": true
+  },
+  "virtual_model_pass_claimed": false,
+  "reality_required": true
+}
