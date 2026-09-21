@@ -1,0 +1,19 @@
+{
+  "freeze_id": "EXACT-REALITY-DIGITAL-TWIN-FORMAL-1.3.0",
+  "mother_method": "first-principles-physical-limit-convergence@3.1.9",
+  "reality_anchor": "reality-execution-environment-anchor@1.3.0",
+  "exact_twin": "exact-reality-digital-twin@1.3.0",
+  "core": "高智能虚拟成熟",
+  "engine_sha256": "3ae06c58eba60e618cedc1c7ce39fe991ae399836205e3df512296cafecd8385",
+  "test_sha256": "3676f79e40b35306b0b29ab80c4439f6fa129d775245dffa1af211cc7293ef8e",
+  "reality_authority_sha256": "dd8fdc2d2f0628b038c23f46f498abe765cfabcec3c805cd884889a2ebe17a05",
+  "browser_r3_fingerprint_sha256": "9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd",
+  "canonical_golden_sha256": "1c67a634e0c0fc24ed057752358f4c20a6c05550be6146fd8d11b1a723f25e08",
+  "legacy_selftest": "24/24 PASS",
+  "browser_twin_tests_reality_source": "6/6 PASS",
+  "material_reality_twin_delta_count": 0,
+  "shadow_isolation": "PASS",
+  "full_browser_twin": true,
+  "environment_99": "PASS",
+  "canonical_verify": "FINAL-REAL-VERIFY.md"
+}
