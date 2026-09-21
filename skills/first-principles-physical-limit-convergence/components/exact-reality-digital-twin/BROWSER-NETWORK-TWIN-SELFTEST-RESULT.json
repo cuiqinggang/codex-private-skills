@@ -1,0 +1,31 @@
+{
+  "engine_version": "1.2.0",
+  "schema_version": "browser-network-unified-twin-1.0",
+  "virtual_fixture_only": true,
+  "case_count": 33,
+  "passed": 33,
+  "failed": 0,
+  "virtual_fusion_selftest": "PASS",
+  "fixture_timing_ms": {
+    "runs": [
+      100,
+      101,
+      99.5
+    ],
+    "t_valid_ms": 99.5,
+    "certification_evidence_time_ms": 300.5
+  },
+  "fixture_fusion_fingerprint": "76f73f4c15972da88c0551fc82328d772092bbc87a3948eed3af8a168fe4e722",
+  "benchmark_5000": {
+    "status": "PASS",
+    "replay_overhead_ms": {
+      "min": 0.00674,
+      "p50": 0.007021,
+      "p95": 0.007992,
+      "max": 1.079297
+    },
+    "note": "Virtual engine replay overhead only. Not real Browser R3 T_VALID."
+  },
+  "real_browser_r3_certified": false,
+  "environment_99": "NOT_YET"
+}
