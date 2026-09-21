@@ -43,8 +43,8 @@
     "machine_contract": "VIRTUAL-FUSION-CONTRACT-v2.json",
     "real_verify": "BROWSER-NETWORK-TWIN-REAL-VERIFY-v2.md"
   },
-  "promotion_status": "FROZEN_PENDING_REAL_APPLY_V4",
-  "promotion_contract": "PROMOTE-TASK-LOCAL-BROWSER-TWIN-v4.md",
+  "promotion_status": "FROZEN_PENDING_REAL_APPLY_V5",
+  "promotion_contract": "PROMOTE-TASK-LOCAL-BROWSER-TWIN-v5.md",
   "promotion_target_version": "1.3.0",
   "browser_reality_authority": {
     "fingerprint": "9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd",
@@ -57,5 +57,5 @@
   "write_path": "POWERSHELL_DOTNET_DETERMINISTIC_IO",
   "blocked_write_path": "APPLY_PATCH_WINDOWS_1344",
   "release_adaptation": "FORMAL_ENGINE_PATH_PLUS_COMPONENT_VERSION",
-  "conflict_resolution": "REMOTE_HEAD_MANIFEST_REBUILD"
+  "conflict_resolution": "FROZEN_REMOTE_HEAD_MANIFEST_REBUILD"
 }
