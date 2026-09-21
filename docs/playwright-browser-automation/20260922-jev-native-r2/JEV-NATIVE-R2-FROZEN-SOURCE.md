@@ -3,7 +3,7 @@
 ```text
 SOURCE_OF_TRUTH=THIS_FILE
 PROJECT=playwright浏览器自动化10
-FREEZE_ID=JEV-NATIVE-PLAYWRIGHT-EXTREME-V1-R2-EXECUTABLE
+FREEZE_ID=JEV-NATIVE-PLAYWRIGHT-EXTREME-V1-R2-STREAM-EXEC
 STATUS=VIRTUAL_99_EXECUTABLE_FROZEN
 CURRENT_STEP=3
 CURRENT_CORE=高智能虚拟成熟
@@ -17,6 +17,8 @@ SHARED_REPO_REMOTE=cuiqinggang/codex-private-skills
 SHARED_REPO_LOCAL=C:\Users\A\Documents\Codex\codex-private-skills
 SOURCE_BRANCH=codex/playwright-browser-automation10-jev-native-r2-final-freeze
 SOURCE_RELATIVE_PATH=docs/playwright-browser-automation/20260922-jev-native-r2/JEV-NATIVE-R2-FROZEN-SOURCE.md
+RUNNER_SOURCE_RELATIVE_PATH=docs/playwright-browser-automation/20260922-jev-native-r2/REAL-VERIFY-RUNNER.cjs
+RUNNER_GIT_BLOB_SHA=9b5d2c870c60a9a6a1edeb78623dee66fca0e644
 
 WORKSPACE=C:\Users\A\playwright-browser-automation5-final-reality-competition-work
 BROWSER_ROOT=C:\AI\Playwright-Native-AI-Browser
@@ -74,7 +76,7 @@ BROWSER_R3_FINGERPRINT_SHA256=9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1c
 
 ## 4. JEV-native 分工最终冻结
 
-本固定 Golden 的 action/selector/VALID 均由 state + frozen contract 唯一确定，因此按现有 JEV Virtual-99 规则必须走 CODE，而不是为了“出现 JEV”强行增加网络调用。
+本固定 Golden 的 action/selector/VALID 均由 state + frozen contract 唯一确定，因此按现有 JEV Virtual-99 规则走 CODE，不为了“出现 JEV”强行增加网络调用。
 
 ```text
 GOLDEN_DECISION_CLASS=DETERMINISTIC
@@ -84,64 +86,76 @@ JEV_REQUIRED_ONLY_FOR_NON_CODEABLE_CLOSED_SEMANTIC_DECISION=YES
 FORCE_JEV_ON_DETERMINISTIC_GOLDEN=FORBIDDEN
 ```
 
-这不是删除 JEV-native 架构，而是执行其既有职责边界：
-- CODE：状态 + 冻结合同可唯一确定；
-- JEV：无法 CODE 化的闭合语义判断；
-- GPT/DeepSeek：开放问题，只能回 GPT 后重新虚拟成熟，禁止现实现场调用。
-
-因此本次现实测速专门验证 JEV-native 架构的**确定性最快分支**，不人为增加 JEV latency。
-
-## 5. 可执行 Runner 已冻结
-
-上一轮 `FROZEN_SOURCE_NOT_MECHANICALLY_EXECUTABLE` 的根因已经在这里关闭：不再允许 Codex自己物化/设计 runner，Runner 文件本身已经成为冻结资产。
+## 5. 可执行 Runner 冻结
 
 ```text
 RUNNER_PRESENT=YES
-RUNNER_SOURCE_RELATIVE_PATH=docs/playwright-browser-automation/20260922-jev-native-r2/REAL-VERIFY-RUNNER.cjs
-RUNNER_SHA256=da3832e99299fc9e0781880bb0070d8d64db10499c628d8b47316b408729e4aa
-RUNNER_MATERIALIZED_PATH=C:\Users\A\playwright-browser-automation5-final-reality-competition-work\TWIN-PLAYWRIGHT-GOLDEN-REALITY-SHADOW\JEV-NATIVE-VIRTUAL-99\REAL-VERIFY-RUNNER.cjs
-RUNNER_SYNTAX_CHECK=PASS
-NEW_RUNNER_DESIGN_BY_CODEX=FORBIDDEN
+RUNNER_EXECUTION_MODE=GIT_OBJECT_STREAM_TO_NODE_STDIN
+RUNNER_MATERIALIZATION=NONE
+RUNNER_PATCH_ALLOWED=NO
+RUNNER_FILE_WRITE_ALLOWED=NO
+RUNNER_REDESIGN_ALLOWED=NO
+RUNNER_GIT_BLOB_SHA=9b5d2c870c60a9a6a1edeb78623dee66fca0e644
 ```
 
-Runner 已冻结的执行语义：
-- Browser/Context/Page 在 measured T0 前建立；
-- 每轮 measured run 先恢复 ready initial state，再开始 T0；
-- 继承 Golden 的 page state、navigation、locator、input、click、extract、keyboard、drag/drop、upload、download、dialog、popup、frame、route/api、isolated-context 业务语义；
-- 使用 `goto(...,{waitUntil:'commit'})` + Locator signal readiness；
-- 不使用固定 waitForTimeout / networkidle；
-- trace/screenshot/reconnect 等非 first-valid 热路径内容不进入 T_VALID；
-- first complete independent hot-path VALID 后立即 T1；
-- 3 warmups + 30 measured；
-- 30/30 VALID 才允许现实结果成立。
+上一轮 `EXECUTABLE_FREEZE_MATERIALIZATION_FAILED` 的根因是仍要求把 runner 写入工作区，因此执行器尝试 patch。该层现已删除。
 
-## 6. Runner 唯一物化和执行流程
+Runner 不再被复制、patch、生成或覆盖。Git object 本身就是可执行冻结资产。
 
-Codex 不得重写 runner。只允许下列确定性动作：
+## 6. 唯一现实验证流程
 
-1. 在 `SHARED_REPO_LOCAL` 验证 origin 指向 `cuiqinggang/codex-private-skills`。
-2. 执行一次：
+Codex 只允许以下确定性动作：
+
+1. 在 `SHARED_REPO_LOCAL` 确认 Git origin 为 `cuiqinggang/codex-private-skills`。
+2. 只执行一次：
    `git fetch origin codex/playwright-browser-automation10-jev-native-r2-final-freeze`
-3. 用：
-   `git show origin/codex/playwright-browser-automation10-jev-native-r2-final-freeze:docs/playwright-browser-automation/20260922-jev-native-r2/REAL-VERIFY-RUNNER.cjs`
-   原字节写到 `RUNNER_MATERIALIZED_PATH`。
-4. 计算 SHA-256，必须精确等于：
-   `da3832e99299fc9e0781880bb0070d8d64db10499c628d8b47316b408729e4aa`
-5. 执行：
-   `node C:\Users\A\playwright-browser-automation5-final-reality-competition-work\TWIN-PLAYWRIGHT-GOLDEN-REALITY-SHADOW\JEV-NATIVE-VIRTUAL-99\REAL-VERIFY-RUNNER.cjs`
-6. 原样回传 runner 最终输出，STOP。
+3. 验证 Runner Git blob：
+   `git rev-parse origin/codex/playwright-browser-automation10-jev-native-r2-final-freeze:docs/playwright-browser-automation/20260922-jev-native-r2/REAL-VERIFY-RUNNER.cjs`
+   必须精确等于：
+   `9b5d2c870c60a9a6a1edeb78623dee66fca0e644`
+4. 不创建任何 runner 文件，直接执行冻结 Git object：
+   `git show origin/codex/playwright-browser-automation10-jev-native-r2-final-freeze:docs/playwright-browser-automation/20260922-jev-native-r2/REAL-VERIFY-RUNNER.cjs | node -`
+5. 原样回传 Runner 最终结果并 STOP。
 
-若任何一步无法机械执行：
+明确禁止：
 
 ```text
-REALITY_DELTA=EXECUTABLE_FREEZE_MATERIALIZATION_FAILED
+apply_patch
+Set-Content runner
+Out-File runner
+Copy-Item runner
+生成新的 runner
+编辑 runner
+改变 runner
+checkout/switch/merge/rebase
+```
+
+如果 Git blob 不匹配、stdin 执行环境不支持、或 Runner 自身返回 Reality Delta：
+
+```text
 ACTION=STOP
 RETURN_TO_GPT=YES
 ```
 
-禁止现场修改 runner 后继续。
+不得换另一种实现继续尝试。
 
-## 7. 最终输出格式
+## 7. Runner 固定执行语义
+
+冻结 Runner 自身负责：
+- 校验 TASK / VALID / canonical Golden / Browser R3 / Twin；
+- Runtime / Browser / Context / Page 在 measured T0 前建立；
+- 每轮恢复 ready initial state 后再 T0；
+- 复用 Golden 的确定性业务动作与 VALID 语义；
+- signal-driven readiness；
+- 无 fixed wait / networkidle 主等待；
+- 3 warmups；
+- 30 measured；
+- 30/30 VALID；
+- 输出 min/P50/P95/max；
+- 比较 820 / 1050 / 1525.09；
+- Reality Delta -> STOP -> GPT。
+
+## 8. 最终输出格式
 
 ```text
 REAL_RUNS=
@@ -159,15 +173,15 @@ ACTION=STOP
 RETURN_TO_GPT=
 ```
 
-## 8. 极短交接合同
+## 9. 极短交接合同
 
-聊天页面不再重复设计、版本、hash 或 runner 细节。
+聊天页面不再重复设计、版本、hash 或 runner 内容。
 
 Codex 唯一需要收到：
 
 ```text
 CURRENT_STEP=3
 LOCAL_SHARED_REPO=C:\Users\A\Documents\Codex\codex-private-skills
-读取唯一冻结源，按其中“Runner 唯一物化和执行流程”执行。
-只回传最终结果；任何 Reality Delta 立即停止。
+读取唯一冻结源并执行“唯一现实验证流程”。
+禁止物化/patch/修改 Runner；任何 Reality Delta 立即停止。
 ```
