@@ -1,13 +1,13 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 第一性原理极限短时间引擎 v3.1.8。唯一方法白名单只有三个核心：极限短时间、成熟方案集群、高智能虚拟成熟。正式执行命令的定位标签必须用第四个中文字段明确标注真实核心归属；不能明确归属或任务跨多个核心时必须拆分，不得发布。Codex/Reasonix/本地执行器只有冻结方案执行权，没有修复、重新设计、虚拟成熟或自行找路线的权限；现实失败只回传差异并停止，由 GPT 页面重新进入三个核心之一处理。
+description: 第一性原理极限短时间引擎 v3.1.9。唯一方法白名单只有三个核心：极限短时间、成熟方案集群、高智能虚拟成熟。正式执行命令的定位标签必须用第四个中文字段明确标注真实核心归属；不能明确归属或任务跨多个核心时必须拆分，不得发布。Codex/Reasonix/本地执行器只有冻结方案执行权，没有修复、重新设计、虚拟成熟或自行找路线的权限；现实失败只回传差异并停止，由 GPT 页面重新进入三个核心之一处理。
 metadata:
-  version: "3.1.8"
+  version: "3.1.9"
   short-description: 三核心唯一白名单·四字段中文核心定位·执行器禁止自行修复
   lineage: first-principles-physical-limit-convergence@3.1.8 <- @3.1.7 <- @3.1.6 <- @3.1.5 <- @3.1.4 <- @3.1.3 <- @3.1.2 <- @3.1.1 <- @3.1.0 <- @3.0.0 <- @2.0.0 <- @1.x
 ---
 
-# 第一性原理极限短时间引擎 v3.1.8
+# 第一性原理极限短时间引擎 v3.1.9
 
 > **只走三条路：用唯一时间标准确定目标；先吸收成熟方案集群；再由高智能虚拟成熟并直接验证冻结方案。除此之外，没有第四条路。**
 
@@ -738,3 +738,39 @@ ENVIRONMENT_99=NOT_YET
 
 因此 v3.1.8 已完成第三核心的完整虚拟成熟，但没有冒充现实认证完成。
 下一步只允许执行冻结现实验证；若现实 Attach 不存在或任何门禁失败，只记录 REALITY_DELTA 并 STOP。
+
+
+---
+
+## v3.1.9 ACTIVE：最终正式 Browser Twin 已冻结
+
+本版本不增加第四核心，也不存在独立“发布核心”。
+
+```text
+核心1 极限短时间：历史现实基线 1525.09 ms
+核心2 成熟方案集群：Browser Reality R3 = PASS
+核心3 高智能虚拟成熟：Formal Browser Twin = PASS
+```
+
+当前唯一正式组件：
+- reality-execution-environment-anchor@1.3.0
+- exact-reality-digital-twin@1.3.0
+
+当前权威结果：
+- BROWSER_R3_FINGERPRINT=9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd
+- BROWSER_R3_REAL_CAPTURE=PASS
+- BROWSER_CRITICAL_UNKNOWN_COUNT=0
+- BROWSER_GOLDEN_REPLAY=PASS
+- MATERIAL_REALITY_TWIN_DELTA_COUNT=0
+- SHADOW_ISOLATION=PASS
+- LEGACY_SELFTEST=24/24 PASS
+- BROWSER_TWIN_TESTS=6/6 PASS
+- FULL_BROWSER_TWIN=YES
+- ENVIRONMENT_99=PASS
+
+PROMOTE v1-v5 只保留为历史执行证据，不再参与当前流程。
+
+唯一最终现实验收入口：
+`components/exact-reality-digital-twin/FINAL-REAL-VERIFY.md`
+
+执行器只做 VERIFY；不得修改、修复、发布或重新设计。
