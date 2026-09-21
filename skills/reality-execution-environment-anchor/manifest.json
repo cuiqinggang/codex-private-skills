@@ -1,38 +1,32 @@
 {
   "skill_id": "reality-execution-environment-anchor",
   "display_name_zh": "现实执行环境精确锚定与数字孪生基线",
-  "version": "1.2.0",
-  "status": "HOST_R2_COMPLETE_BROWSER_R3_COLLECTOR_READY",
-  "parent_method": "first-principles-physical-limit-convergence@3.1.8",
+  "version": "1.3.0",
+  "status": "HOST_R2_AND_BROWSER_R3_COMPLETE",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.9",
   "history_append_only": true,
   "host_r2": {
     "status": "REALITY_ANCHOR_COMPLETE",
     "current_snapshot": "2026-09-21-r2",
-    "current_authoritative_anchor": "snapshots/2026-09-21-r2/45-REALITY-ENVIRONMENT-ANCHOR-R2-FINAL.json",
-    "current_authoritative_fingerprint": "snapshots/2026-09-21-r2/46-REALITY-FINGERPRINT-V3.json",
     "reality_fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
     "critical_execution_state_coverage_percent": "100.00",
-    "legacy_twin_input_ready": true
+    "twin_input_ready": true
   },
   "browser_r3": {
-    "spec": "BROWSER-REALITY-R3.md",
-    "contract": "BROWSER-REALITY-R3-CONTRACT.json",
-    "acceptance": "BROWSER-REALITY-R3-ACCEPTANCE.md",
-    "playwright_hook": "collectors/browser-reality-r3.mjs",
-    "host_network_collector": "collectors/browser-host-network-r3.ps1",
-    "collector_contract": "FROZEN",
-    "real_capture": "NOT_YET",
-    "fingerprint": "NOT_YET",
-    "browser_twin_input_ready": false,
-    "timing_collector": "collectors/browser-reality-r3-timing.mjs",
-    "timing_contract": "T1_T2_T3_LIGHTWEIGHT_PLUS_O1_OBSERVABILITY"
+    "status": "REALITY_ANCHOR_COMPLETE",
+    "authority": "snapshots/2026-09-21-r3-browser-final/R3-AUTHORITY.json",
+    "fingerprint": "9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd",
+    "canonical_golden_sha256": "1c67a634e0c0fc24ed057752358f4c20a6c05550be6146fd8d11b1a723f25e08",
+    "golden_task_reality_reproduced": "3_OF_3",
+    "critical_unknown_count": 0,
+    "browser_twin_input_ready": true,
+    "observation_perturbation": "NO",
+    "secret_plaintext_zero_remote": "PASS"
   },
-  "secret_policy": "SECRET_PLAINTEXT_ZERO_REMOTE",
-  "environment_99": "NOT_YET",
+  "environment_99": "PASS",
   "twin_consumer": {
     "id": "exact-reality-digital-twin",
-    "display_name_zh": "现实执行环境精确数字孪生唯一版",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "parent_path": "skills/first-principles-physical-limit-convergence/components/exact-reality-digital-twin"
   }
 }
