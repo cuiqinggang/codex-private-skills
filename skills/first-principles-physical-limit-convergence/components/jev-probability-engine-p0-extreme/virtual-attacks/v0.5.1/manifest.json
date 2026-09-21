@@ -1,0 +1,81 @@
+{
+  "project": "JEV Probability Engine P0",
+  "attack": "v0.4.0 -> v0.5.1-candidate",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.7",
+  "branch": "codex/jev-probability-engine-p0-v0.5.1-virtual99-freeze",
+  "status": "VIRTUAL_99_FROZEN_REAL_VERIFY_ONLY",
+  "baseline": {
+    "version": "v0.4.0",
+    "t_p0_ms": 560.9819,
+    "real_certified": true
+  },
+  "rejected_predecessor": {
+    "version": "v0.5.0-candidate",
+    "candidate_id": "JPE-P0-S2-PROJECTED-EARLY-RELEASE-V3",
+    "reality": "0/30 PASS",
+    "reason": "semantic contract drift",
+    "reusable_for_latency": false
+  },
+  "candidate": {
+    "id": "JPE-P0-S2-SEMANTIC-PROJECTION-V4",
+    "version": "v0.5.1-candidate",
+    "single_factor_change": "per-shard state projection only"
+  },
+  "semantic_equivalence": {
+    "exact_equal_methods": 11,
+    "question_text": "PRESERVED",
+    "choice_criteria": "PRESERVED",
+    "retained_item_fields": "PRESERVED",
+    "question_sharding": "PRESERVED",
+    "executor": "PRESERVED",
+    "verifier": "PRESERVED",
+    "timing_boundary": "PRESERVED"
+  },
+  "projection": {
+    "baseline_items_per_request": [
+      24,
+      24
+    ],
+    "candidate_items_per_request": [
+      16,
+      16
+    ],
+    "baseline_item_copies_total": 48,
+    "candidate_item_copies_total": 32,
+    "item_copy_reduction_percent": 33.3333333333,
+    "payload_relation": "STRICTLY_SMALLER_PER_REQUEST_AND_TOTAL"
+  },
+  "virtual": {
+    "mature_solution_cluster": "PASS",
+    "semantic_equivalence_gate": "PASS",
+    "structural_payload_reduction": "PASS",
+    "virtual_99": "PASS",
+    "solution_frozen": "YES",
+    "numeric_virtual_p0": "NOT_CLAIMED",
+    "reason": "No reality-calibrated latency model exists for this exact single-factor transformation."
+  },
+  "authority": {
+    "codex_design_authority": "NO",
+    "codex_executor_only": "YES",
+    "user_powershell_owns_secret_bearing_run": true
+  },
+  "promotion_gate": {
+    "auth_schema_probe": 1,
+    "warmups": 3,
+    "measured_runs": 30,
+    "pass_runs_required": 30,
+    "expected_http_requests": 67,
+    "commercial_gate_series": "PASS_REQUIRED",
+    "must_beat_ms": 560.9819
+  },
+  "blobs": {
+    "candidate_source": "a3fd338f3adda24f93c4e9c155224364137116d4",
+    "semantic_equivalence_proof": "ddc7ef45c81b65184090eb350bb222c5342626f3",
+    "virtual_99_freeze": "4c0c3e201d34f4d2548196a41844bd437c1a1f02",
+    "real_verify_contract": "b2f1852ea455433788ad002cf68e7d9a3d5c6778",
+    "runner": "7759a2cf4611efe10f49740e0fa0534b2276c5d0",
+    "post_run_verifier": "8713167fb0b6e727aa46ff23fb3907daf3152ebc",
+    "codex_post_run_handoff": "4d71c4a4568cd14df84488aad94ea3525d197022"
+  },
+  "next_action": "RUN_FROZEN_V0.5.1_REAL_VERIFY_ONCE"
+}
