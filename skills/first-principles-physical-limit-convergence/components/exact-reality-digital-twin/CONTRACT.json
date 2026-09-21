@@ -72,6 +72,7 @@
       "optimization_metric": "T_VALID=min(T1,T2,T3)",
       "observability_counts_toward_metric": false
     },
-    "real_verify": "BROWSER-NETWORK-TWIN-REAL-VERIFY-v2.md"
+    "real_verify": "BROWSER-NETWORK-TWIN-REAL-VERIFY-v2.md",
+    "machine_contract": "VIRTUAL-FUSION-CONTRACT-v2.json"
   }
 }
