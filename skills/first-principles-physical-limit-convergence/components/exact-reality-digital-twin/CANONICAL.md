@@ -1,19 +1,21 @@
 # 权威定义
 
-唯一正式实现：`exact-reality-digital-twin@1.1.0`
-中文名：**现实执行环境精确数字孪生唯一版**
-母技能：`first-principles-physical-limit-convergence@3.1.7`
-现实输入：`reality-execution-environment-anchor@1.2.0`
+唯一正式实现：exact-reality-digital-twin@1.2.0
+中文名：现实执行环境精确数字孪生唯一版
+母技能：first-principles-physical-limit-convergence@3.1.8
+现实输入：reality-execution-environment-anchor@1.2.0
 
 禁止第二个并行正式 Twin。
 
-v1.1.0 同时承载：
-1. R1/R2 的 Host/Codex 现实重放（已有 1344 基线）。
-2. Browser Reality R3 的浏览器现实输入合同（尚未真实采集）。
+唯一执行引擎：ENGINE.py
+唯一 Browser 输入增量合同：BROWSER-TWIN-INPUT-CONTRACT-v2.md
+唯一现实验证：BROWSER-NETWORK-TWIN-REAL-VERIFY-v2.md
+虚拟成熟状态：VIRTUAL-FUSION-STATUS-v2.txt
 
-在 Browser R3 Fingerprint 未产生前：
-```text
+旧 1344 Virtual-99 文件继续作为历史证据，不再代表当前完整 Twin 能力。
+
+当前：
+VIRTUAL_MATURITY=PASS
+BROWSER_TWIN_INPUT_READY=NO
 FULL_BROWSER_TWIN=NO
-BROWSER_ENVIRONMENT_99=NO
-```
-不得用 Host/Codex 指纹替代 Browser Reality 指纹。
+ENVIRONMENT_99=NOT_YET
