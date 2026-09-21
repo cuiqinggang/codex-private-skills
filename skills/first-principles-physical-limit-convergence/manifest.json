@@ -1,6 +1,6 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "3.1.7",
+  "version": "3.1.8",
   "display_name": "第一性原理极限短时间引擎",
   "whitelist_only": true,
   "core_whitelist": [
@@ -78,8 +78,8 @@
     "metric": "T_VALID",
     "optimize": "MINIMIZE"
   },
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v3.1.7",
-  "previous_version": "3.1.6",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v3.1.8",
+  "previous_version": "3.1.7",
   "updated_date": "2026-09-21",
   "task_locator": {
     "enabled": true,
@@ -169,21 +169,34 @@
       "collector_contract": "FROZEN",
       "real_capture": "NOT_YET",
       "fingerprint": "NOT_YET",
-      "browser_twin_input_ready": false
-    }
+      "browser_twin_input_ready": false,
+      "timing_collector": "collectors/browser-reality-r3-timing.mjs",
+      "timing_contract": "T1_T2_T3_LIGHTWEIGHT_PLUS_O1_OBSERVABILITY"
+    },
+    "parent_method": "first-principles-physical-limit-convergence@3.1.8"
   },
   "exact_reality_digital_twin": {
     "id": "exact-reality-digital-twin",
     "display_name_zh": "现实执行环境精确数字孪生唯一版",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "path": "components/exact-reality-digital-twin",
     "role": "CORE_3_HIGH_INTELLIGENCE_VIRTUAL_MATURITY",
     "canonical_single_implementation": true,
-    "reality_first": true,
-    "legacy_contract_selftest": "24/24 PASS",
-    "browser_r3_reality_input": "NOT_YET",
-    "browser_golden_replay": "NOT_YET",
-    "browser_shadow_run": "NOT_YET",
+    "virtual_maturity": "PASS",
+    "unified_twin_engine": "FROZEN",
+    "engine_schema": "browser-network-unified-twin-2.0",
+    "virtual_selftest": "39/39 PASS",
+    "timing_runs": [
+      "T1",
+      "T2",
+      "T3"
+    ],
+    "observability_run": "O1",
+    "t_valid": "MIN_OF_3_AFTER_CERTIFICATION",
+    "real_browser_attach": "BLOCKED",
+    "browser_r3_reality_input": "INCOMPLETE",
+    "browser_twin_input_ready": false,
+    "full_browser_twin": false,
     "environment_99": "NOT_YET"
   },
   "jev_probability_engine_p0_extreme": {
