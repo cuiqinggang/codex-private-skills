@@ -3,7 +3,7 @@
   "attack": "v0.4.0 -> v0.5.0-candidate",
   "parent_method": "first-principles-physical-limit-convergence@3.1.7",
   "branch": "codex/jev-probability-engine-p0-v0.5.0-virtual99-freeze",
-  "status": "VIRTUAL_99_FROZEN_REAL_VERIFY_ONLY",
+  "status": "REJECTED_BY_REALITY",
   "baseline": {
     "version": "v0.4.0",
     "t_p0_ms": 560.9819,
@@ -31,7 +31,7 @@
     "real_verify_contract": "f89584f72bafe04f61d347bfc2960ecbfbbde997",
     "runner": "5890c4c169bb6b69fe98eed61e1a89e6c1cd264e"
   },
-  "next_action": "RUN_FROZEN_REAL_VERIFY_ONCE",
+  "next_action": "RETURN_TO_STEP_2",
   "reality_delta": {
     "type": "CODEX_CREDENTIAL_BOUNDARY",
     "candidate_executed": "NO",
@@ -55,5 +55,20 @@
     "handoff": "CODEX-POST-RUN-VERIFY.md",
     "codex_credential_access": "FORBIDDEN",
     "codex_api_calls": "FORBIDDEN"
-  }
+  },
+  "reality_result": {
+    "measured_runs": 30,
+    "pass_runs": 0,
+    "fail_runs": 30,
+    "commercial_gate_series": "FAIL",
+    "expected_http_requests": 67,
+    "actual_http_requests": 67,
+    "request_count_match": "PASS",
+    "baseline_beaten": "NO",
+    "new_real_p0_eligible": "NO",
+    "keep_version": "v0.4.0",
+    "keep_t_p0_ms": 560.9819
+  },
+  "virtual_99_status": "INVALIDATED_BY_REALITY",
+  "solution_frozen_status": "REJECTED"
 }
