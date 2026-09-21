@@ -3,7 +3,7 @@
   "attack": "v0.4.0 -> v0.5.1-candidate",
   "parent_method": "first-principles-physical-limit-convergence@3.1.7",
   "branch": "codex/jev-probability-engine-p0-v0.5.1-virtual99-freeze",
-  "status": "VIRTUAL_99_FROZEN_REAL_VERIFY_ONLY",
+  "status": "REALITY_VERIFIED_NO_P0_GAIN",
   "baseline": {
     "version": "v0.4.0",
     "t_p0_ms": 560.9819,
@@ -47,9 +47,9 @@
   },
   "virtual": {
     "mature_solution_cluster": "PASS",
-    "semantic_equivalence_gate": "PASS",
+    "semantic_equivalence_gate": "REALITY_CONFIRMED",
     "structural_payload_reduction": "PASS",
-    "virtual_99": "PASS",
+    "virtual_99": "PASS_STRUCTURAL_ONLY",
     "solution_frozen": "YES",
     "numeric_virtual_p0": "NOT_CLAIMED",
     "reason": "No reality-calibrated latency model exists for this exact single-factor transformation."
@@ -77,5 +77,22 @@
     "post_run_verifier": "8713167fb0b6e727aa46ff23fb3907daf3152ebc",
     "codex_post_run_handoff": "4d71c4a4568cd14df84488aad94ea3525d197022"
   },
-  "next_action": "RUN_FROZEN_V0.5.1_REAL_VERIFY_ONCE"
+  "next_action": "STOP_RETURN_TO_STEP_2_IF_CONTINUING",
+  "reality_result": {
+    "measured_runs": 30,
+    "pass_runs": 30,
+    "fail_runs": 0,
+    "commercial_gate_series": "PASS",
+    "expected_http_requests": 67,
+    "actual_http_requests": 67,
+    "request_count_match": "PASS",
+    "min_ms": 956.2431,
+    "p50_ms": 1699.9615,
+    "p95_ms": 3809.9468,
+    "max_ms": 4455.7899,
+    "baseline_beaten": "NO",
+    "new_real_p0_eligible": "NO",
+    "keep_version": "v0.4.0",
+    "keep_t_p0_ms": 560.9819
+  }
 }
