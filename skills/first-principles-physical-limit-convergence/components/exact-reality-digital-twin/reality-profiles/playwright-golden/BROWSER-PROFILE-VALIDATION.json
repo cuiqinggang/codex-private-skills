@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "profile_id": "PLAYWRIGHT_GOLDEN_REALITY_PROFILE",
+  "critical_unknown_count": 0,
+  "input_gate": {
+    "BROWSER_R3_FINGERPRINT_SHA256": true,
+    "BROWSER_R3_FINGERPRINT_RECOMPUTED": true,
+    "GOLDEN_SHA256_ACTUAL": true,
+    "GOLDEN_SHA256_ANCHOR": true,
+    "BROWSER_CRITICAL_UNKNOWN_COUNT": true,
+    "BROWSER_EXECUTION_RELEVANT_STATE_COMPLETE": true,
+    "GOLDEN_TASK_REALITY_REPRODUCED": true,
+    "BROWSER_TWIN_INPUT_READY": true,
+    "BROWSER_R3_REAL_CAPTURE": true,
+    "REALITY_DELTA": true,
+    "TASK_SHA256": true,
+    "VALID_RULE_SHA256": true,
+    "REALITY_PACK_MANIFEST_SHA256": true,
+    "PROCESS_CLOSURE_SHA256": true
+  },
+  "profile_sha256": "f18c1e2f8668132e936c3acebd8b2b22a0a8928363561d13752944e406db65ff"
+}
