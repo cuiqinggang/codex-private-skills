@@ -1,13 +1,13 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 第一性原理极限短时间引擎 v3.1.7。唯一方法白名单只有三个核心：极限短时间、成熟方案集群、高智能虚拟成熟。正式执行命令的定位标签必须用第四个中文字段明确标注真实核心归属；不能明确归属或任务跨多个核心时必须拆分，不得发布。Codex/Reasonix/本地执行器只有冻结方案执行权，没有修复、重新设计、虚拟成熟或自行找路线的权限；现实失败只回传差异并停止，由 GPT 页面重新进入三个核心之一处理。
+description: 第一性原理极限短时间引擎 v3.1.8。唯一方法白名单只有三个核心：极限短时间、成熟方案集群、高智能虚拟成熟。正式执行命令的定位标签必须用第四个中文字段明确标注真实核心归属；不能明确归属或任务跨多个核心时必须拆分，不得发布。Codex/Reasonix/本地执行器只有冻结方案执行权，没有修复、重新设计、虚拟成熟或自行找路线的权限；现实失败只回传差异并停止，由 GPT 页面重新进入三个核心之一处理。
 metadata:
-  version: "3.1.7"
+  version: "3.1.8"
   short-description: 三核心唯一白名单·四字段中文核心定位·执行器禁止自行修复
-  lineage: first-principles-physical-limit-convergence@3.1.7 <- @3.1.6 <- @3.1.5 <- @3.1.4 <- @3.1.3 <- @3.1.2 <- @3.1.1 <- @3.1.0 <- @3.0.0 <- @2.0.0 <- @1.x
+  lineage: first-principles-physical-limit-convergence@3.1.8 <- @3.1.7 <- @3.1.6 <- @3.1.5 <- @3.1.4 <- @3.1.3 <- @3.1.2 <- @3.1.1 <- @3.1.0 <- @3.0.0 <- @2.0.0 <- @1.x
 ---
 
-# 第一性原理极限短时间引擎 v3.1.7
+# 第一性原理极限短时间引擎 v3.1.8
 
 > **只走三条路：用唯一时间标准确定目标；先吸收成熟方案集群；再由高智能虚拟成熟并直接验证冻结方案。除此之外，没有第四条路。**
 
@@ -682,3 +682,59 @@ CODEX_EXECUTOR_ONLY=YES
 现实执行若任何一项失败或 30/30 通过但最短时间未低于 840.6046999999962 ms：
 `REALITY_DELTA -> STOP -> RETURN_TO_GPT`。
 Codex/Reasonix/本地执行器禁止自行改变方案。
+
+
+---
+
+## v3.1.8 ACTIVE：Browser + Network 统一数字孪生虚拟成熟冻结
+
+本升级不增加第四核心。
+
+归属：
+- 现实锚定与真实输入采集：核心2「成熟方案集群」
+- Twin 的组合、冲突消解、故障推演、虚拟测试与冻结：核心3「高智能虚拟成熟」
+
+当前 ACTIVE 组件：
+
+```text
+reality-execution-environment-anchor@1.2.0
+  + browser-reality-r3-timing.mjs
+  + browser-reality-r3.mjs
+
+exact-reality-digital-twin@1.2.0
+  + ENGINE.py
+  + BROWSER-TWIN-INPUT-CONTRACT-v2.md
+  + BROWSER-NETWORK-TWIN-REAL-VERIFY-v2.md
+```
+
+虚拟成熟结果：
+
+```text
+VIRTUAL_MATURITY=PASS
+UNIFIED_TWIN_ENGINE=FROZEN
+ENGINE_SCHEMA=browser-network-unified-twin-2.0
+VIRTUAL_SELFTEST=39/39 PASS
+```
+
+时间唯一标准冻结为：
+
+```text
+T1/T2/T3 = 三个轻量真实计时运行
+O1       = 独立重观测运行
+T_VALID  = min(T1,T2,T3)
+```
+
+O1 只证明因果链和完整 Reality，不进入 T_VALID，也不能替代失败的 T1/T2/T3。
+
+当前现实门禁仍然真实保持：
+
+```text
+REAL_BROWSER_ATTACH=BLOCKED
+REAL_BROWSER_R3_INPUT=INCOMPLETE
+BROWSER_TWIN_INPUT_READY=NO
+FULL_BROWSER_TWIN=NO
+ENVIRONMENT_99=NOT_YET
+```
+
+因此 v3.1.8 已完成第三核心的完整虚拟成熟，但没有冒充现实认证完成。
+下一步只允许执行冻结现实验证；若现实 Attach 不存在或任何门禁失败，只记录 REALITY_DELTA 并 STOP。
