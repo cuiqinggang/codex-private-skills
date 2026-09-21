@@ -114,3 +114,22 @@ LOCAL_READONLY_RUNTIME_TOOLCHAIN_PREFLIGHT
 ```
 
 此修正只重开 Runtime 实现层，不重开 B* 模型选择、262144 上下文、Q8/Q4 门、JEV、Executor Suite、Verifier、Recovery 或其它已冻结设计。
+
+
+## Runtime-only Virtual-99 v1 freeze
+
+```text
+CURRENT_STEP=2_COMPLETE
+RUNTIME_ONLY_VIRTUAL_99=MATURE
+RUNTIME_WINNER=R1_SAME_RELEASE_CPU_BACKEND_GRAFT
+MIN_T_VALID_VIRTUAL_TARGET_MS=60000
+MIN_T_VALID_VIRTUAL_TARGET=60s
+NEXT_STEP=3_RUNTIME_ONLY_REALITY_CERTIFICATION
+AUTO_R2_R3_FALLBACK=NO
+```
+
+Authority:
+- Qwen3.8-27B-Bstar-Runtime-Only-Virtual99-v1.md
+- Qwen3.8-27B-Bstar-Runtime-Only-Reality-Cert-v1.md
+
+Reality 只允许验证 R1；任何质量门失败或 T_VALID>60s 必须 STOP 并 RETURN_TO_STEP_2。
