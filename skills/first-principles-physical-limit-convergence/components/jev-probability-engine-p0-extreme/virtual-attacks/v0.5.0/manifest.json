@@ -29,7 +29,7 @@
     "virtual_99_freeze": "e2333b65d87486247223f62a881a1eef4b3f5613",
     "frozen_candidate": "4b273b74a7d74851d1e99715a72cb52e168d7752",
     "real_verify_contract": "f89584f72bafe04f61d347bfc2960ecbfbbde997",
-    "runner": "d88e4bef88b1da7ddf313d42d751c355dde692be"
+    "runner": "5890c4c169bb6b69fe98eed61e1a89e6c1cd264e"
   },
   "next_action": "RUN_FROZEN_REAL_VERIFY_ONCE",
   "reality_delta": {
