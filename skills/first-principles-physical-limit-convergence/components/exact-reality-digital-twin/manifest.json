@@ -1,8 +1,8 @@
 {
   "component_id": "exact-reality-digital-twin",
   "display_name_zh": "现实执行环境精确数字孪生唯一版",
-  "version": "1.1.0",
-  "parent_method": "first-principles-physical-limit-convergence@3.1.7",
+  "version": "1.2.0",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.8",
   "reality_anchor_skill": "reality-execution-environment-anchor@1.2.0",
   "canonical_single_implementation": true,
   "host_r2": {
@@ -25,5 +25,20 @@
     "plan_id": "WIN1344-NARROW-SESSION-CWD-v1",
     "canonical_plan_count": 1,
     "minimum_change_cardinality": 1
+  },
+  "virtual_fusion": {
+    "status": "PASS",
+    "engine": "ENGINE.py",
+    "engine_schema": "browser-network-unified-twin-2.0",
+    "selftest": "39/39 PASS",
+    "frozen_status_file": "VIRTUAL-FUSION-STATUS-v2.txt",
+    "timing_runs": [
+      "T1",
+      "T2",
+      "T3"
+    ],
+    "observability_run": "O1",
+    "t_valid": "MIN_OF_3_AFTER_CERTIFICATION",
+    "reality_replay": "NOT_YET"
   }
 }
