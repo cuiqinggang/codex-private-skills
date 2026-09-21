@@ -34,12 +34,13 @@
     "self_contained_package": true,
     "frozen_safe_evidence_count": 6,
     "frozen_safe_evidence_dir": "reality-profiles/playwright-golden",
-    "final_browser_tests": "PENDING_CODEX_EXECUTION",
-    "final_formal_skill_verify": "NOT_YET",
-    "gpt_remote_structural_check": "PASS"
+    "final_browser_tests": "6/6 PASS",
+    "final_formal_skill_verify": "PASS",
+    "gpt_remote_structural_check": "PASS",
+    "final_result": "FINAL-REAL-VERIFY-RESULT.json"
   },
   "historical_t_star_real_ms": 1525.09,
-  "full_browser_twin": "PENDING_FINAL_FORMAL_VERIFY",
-  "environment_99": "PENDING_FINAL_FORMAL_VERIFY",
+  "full_browser_twin": true,
+  "environment_99": "PASS",
   "promotion_history": "PROMOTE v1-v5 are historical evidence only."
 }
