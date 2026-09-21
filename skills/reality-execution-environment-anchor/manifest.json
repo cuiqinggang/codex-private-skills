@@ -23,7 +23,7 @@
     "observation_perturbation": "NO",
     "secret_plaintext_zero_remote": "PASS"
   },
-  "environment_99": "PASS",
+  "environment_99": "PENDING_FINAL_FORMAL_VERIFY",
   "twin_consumer": {
     "id": "exact-reality-digital-twin",
     "version": "1.3.0",
