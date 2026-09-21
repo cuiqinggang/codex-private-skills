@@ -1,0 +1,63 @@
+{
+  "candidate_id": "JPE-P0-S2-SEMANTIC-PROJECTION-V4",
+  "candidate_version": "v0.5.1-candidate",
+  "baseline_version": "v0.4.0",
+  "baseline_source_blob": "8a7e1a3e8a6162fd7e86b1a70ca3c1fb3d16638a",
+  "candidate_source_blob": "a3fd338f3adda24f93c4e9c155224364137116d4",
+  "exact_equal_methods": [
+    "QChoice",
+    "NormalizeItem",
+    "BuildQuestions",
+    "ShardObject",
+    "RequestDecisionAsync",
+    "NumberValue",
+    "ChooseAction",
+    "FinalStateFor",
+    "ExecuteItemAsync",
+    "VerifyRealityAsync",
+    "ExecuteDependentAsync"
+  ],
+  "allowed_differences": [
+    "namespace/candidate id/version labels",
+    "promotion baseline 840.6046999999962 -> 560.9819",
+    "new BuildProjectedStateForQuestions",
+    "RunOnceSafelyAsync passes shard-specific projected state instead of one full shared state"
+  ],
+  "semantic_contract": {
+    "question_text": "EXACTLY_PRESERVED",
+    "choice_criteria": "EXACTLY_PRESERVED",
+    "item_fields": "EXACTLY_PRESERVED_FOR_REFERENCED_ITEMS",
+    "top_level_description": "PRESERVED",
+    "action_ontology": "PRESERVED",
+    "initial_state": "PRESERVED",
+    "round_robin_question_sharding": "EXACTLY_PRESERVED",
+    "executor": "EXACTLY_PRESERVED",
+    "verifier": "EXACTLY_PRESERVED",
+    "timing_boundary": "EXACTLY_PRESERVED"
+  },
+  "projection_proof": {
+    "baseline_item_copies_across_two_requests": 48,
+    "candidate_item_copies_across_two_requests": 32,
+    "item_copy_reduction_percent": 33.3333333333,
+    "baseline_items_per_request": [
+      24,
+      24
+    ],
+    "candidate_items_per_request": [
+      16,
+      16
+    ],
+    "payload_relation": "STRICTLY_SMALLER_PER_REQUEST_AND_TOTAL",
+    "rationale": "All omitted item objects have positive serialized length; all retained fields and all questions are unchanged."
+  },
+  "virtual_verdict": {
+    "mature_solution_cluster": "PASS",
+    "semantic_equivalence_gate": "PASS",
+    "structural_payload_reduction": "PASS",
+    "virtual_99": "PASS",
+    "solution_frozen": "YES",
+    "real_verify": "NOT_YET",
+    "numeric_virtual_p0": "NOT_CLAIMED",
+    "reason": "No reality-calibrated latency model exists for this exact semantics-preserving transformation."
+  }
+}
