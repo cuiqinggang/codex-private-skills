@@ -1,0 +1,29 @@
+{
+  "contract_id": "BROWSER_NETWORK_TWIN_FUSION_V2",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.8",
+  "twin": "exact-reality-digital-twin@1.2.0",
+  "core": "高智能虚拟成熟",
+  "virtual_maturity": "PASS",
+  "engine": "ENGINE.py",
+  "engine_schema": "browser-network-unified-twin-2.0",
+  "selftest": "39/39 PASS",
+  "timing": {
+    "runs": [
+      "T1",
+      "T2",
+      "T3"
+    ],
+    "observability": "O1",
+    "metric": "T_VALID=min(T1,T2,T3)",
+    "o1_in_metric": false
+  },
+  "input_contract": "BROWSER-TWIN-INPUT-CONTRACT-v2.md",
+  "real_verify": "BROWSER-NETWORK-TWIN-REAL-VERIFY-v2.md",
+  "unknown_policy": "PRESERVE_AND_BLOCK",
+  "current_reality": {
+    "attach": "BLOCKED",
+    "input_ready": false,
+    "full_twin": false,
+    "environment_99": "NOT_YET"
+  }
+}
