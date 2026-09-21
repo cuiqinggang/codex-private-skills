@@ -11,7 +11,7 @@
     "status": "READY"
   },
   "browser_r3": {
-    "input_contract": "BROWSER-TWIN-INPUT-CONTRACT.md",
+    "input_contract": "BROWSER-TWIN-INPUT-CONTRACT-v2.md",
     "real_capture": "NOT_YET",
     "fingerprint": "NOT_YET",
     "twin_input_ready": false,
@@ -40,6 +40,7 @@
     "observability_run": "O1",
     "t_valid": "MIN_OF_3_AFTER_CERTIFICATION",
     "reality_replay": "NOT_YET",
-    "machine_contract": "VIRTUAL-FUSION-CONTRACT-v2.json"
+    "machine_contract": "VIRTUAL-FUSION-CONTRACT-v2.json",
+    "real_verify": "BROWSER-NETWORK-TWIN-REAL-VERIFY-v2.md"
   }
 }
