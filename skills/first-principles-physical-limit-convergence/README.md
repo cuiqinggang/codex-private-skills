@@ -1,4 +1,4 @@
-# 第一性原理极限短时间引擎 v3.1.7
+# 第一性原理极限短时间引擎 v3.1.8
 
 ## 唯一三个核心
 
@@ -81,7 +81,7 @@ v3.1.4 中“4..6 是修复窗口”的语义已取消。
 
 正式分支：
 
-`codex/first-principles-physical-limit-convergence-v3.1.7`
+`codex/first-principles-physical-limit-convergence-v3.1.8`
 
 
 ## v3.1.7 浏览器现实扩展
@@ -107,3 +107,19 @@ ENVIRONMENT_99=NOT_YET
 ```
 
 现实采集仍属于“成熟方案集群”；Twin 的重放、差异收敛、故障推演与 Virtual-99 仍属于“高智能虚拟成熟”。没有第四核心。
+
+
+## v3.1.8 当前 ACTIVE
+
+- 现实锚定：reality-execution-environment-anchor@1.2.0
+- 唯一 Twin：exact-reality-digital-twin@1.2.0
+- Twin 虚拟成熟：PASS
+- 统一引擎：FROZEN
+- 自测：39/39 PASS
+- 计时合同：T1/T2/T3 轻量计时 + O1 独立可观测
+- 唯一性能指标：T_VALID=min(T1,T2,T3)
+- 真实 Browser Attach：BLOCKED
+- Browser Twin 输入：NO
+- Environment-99：NOT_YET
+
+下一步只执行冻结现实验证，不允许执行器现场重新设计。
