@@ -28,6 +28,30 @@ C:\Users\A\Documents\Codex\worktrees\first-principles-v3.1.9-promotion
 冲突目标：
 skills\first-principles-physical-limit-convergence\components\exact-reality-digital-twin\manifest.json
 
+## -1. 本轮远端权威冻结
+
+执行开始第一件事：
+
+```text
+git fetch origin codex/first-principles-physical-limit-convergence-v3.1.9
+REMOTE_AUTHORITY_HEAD=$(git rev-parse origin/codex/first-principles-physical-limit-convergence-v3.1.9)
+```
+
+从这一刻起，本轮只认该 `REMOTE_AUTHORITY_HEAD`；执行中即使远端之后又变化，也不得漂移到新的 HEAD。
+
+v4 合同与远端 manifest 都必须使用：
+
+```text
+git show <REMOTE_AUTHORITY_HEAD>:<path>
+```
+
+读取。
+
+最终 push 前若远端实际 HEAD 已不再等于 `REMOTE_AUTHORITY_HEAD`：
+REALITY_DELTA=REMOTE_BRANCH_MOVED_DURING_PROMOTION
+STOP。
+禁止自动追新 HEAD。
+
 ## 0. 冲突边界门禁
 先只读：
 git status --short
@@ -226,6 +250,32 @@ ENVIRONMENT_99=PASS
 REALITY_DELTA=<实际事实>
 ACTION=STOP
 RETURN_TO_GPT=YES
+
+## 6.5 本地通过后的唯一 Git 同步算法
+
+本节只处理“本地 worktree 起点早于 REMOTE_AUTHORITY_HEAD”这一事实，不改变发布内容。
+
+1. 所有第 6 节本地验收先 PASS。
+2. 将当前合同允许的目标文件创建一个本地 promotion commit：
+   TEMP_PROMOTION_COMMIT=<sha>
+3. 执行：
+   git rebase <REMOTE_AUTHORITY_HEAD>
+4. 若 rebase 无冲突：继续。
+5. 若发生冲突：
+   - 只允许 exact-reality-digital-twin/manifest.json 一个冲突文件；
+   - 若出现第二个冲突文件：REALITY_DELTA=UNEXPECTED_REBASE_CONFLICT；abort rebase；STOP。
+6. 若唯一冲突仍是 exact Twin manifest：
+   - 不选 ours/theirs；
+   - 按本合同第 2 节“最终正式 manifest”从 JSON 重新确定性生成；
+   - git add 仅该 manifest；
+   - 使用非交互 rebase continue；
+   - 禁止编辑其它文件。
+7. rebase 完成后必须再次完整执行第 6 节 1–14 验收。
+8. 再次读取远端 HEAD；必须仍等于 REMOTE_AUTHORITY_HEAD。
+9. 普通 push，禁止 force / force-with-lease。
+10. remote readback HEAD 必须等于 push 后本地 HEAD。
+
+rebase 前后的业务文件语义必须一致；以测试、Fingerprint、Delta、Shadow 与关键 JSON 字段复验为准。
 
 ## 7. stash 收尾
 只有 commit + push + remote readback 全 PASS 后：
