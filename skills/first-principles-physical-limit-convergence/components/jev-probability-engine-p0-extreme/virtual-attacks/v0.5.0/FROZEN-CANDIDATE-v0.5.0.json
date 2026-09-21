@@ -1,0 +1,68 @@
+{
+  "skill": "jev-probability-engine-p0",
+  "candidate_version": "v0.5.0-candidate",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.7",
+  "candidate_id": "JPE-P0-S2-PROJECTED-EARLY-RELEASE-V3",
+  "baseline": {
+    "version": "v0.4.0",
+    "t_p0_ms": 560.9819,
+    "status": "REAL_P0_CERTIFIED",
+    "pass_runs": 30,
+    "fail_runs": 0
+  },
+  "objective": "min T_VALID subject to COMMERCIAL_GATE=PASS",
+  "frozen_structure": {
+    "model": "typesafe/jev-1.13",
+    "model_barrier_depth": 1,
+    "http_requests_per_run": 2,
+    "http_concurrency": 2,
+    "question_count": 32,
+    "semantic_units": 20,
+    "dependency_bundles": [
+      "17->21",
+      "18->22",
+      "19->23",
+      "20->24"
+    ],
+    "sharding": "dependency-affinity + runtime 2-way LPT byte balance",
+    "state": "per-shard projected request/evidence/constraints + action ontology",
+    "scheduler": "per-shard early release; no global model join before local action",
+    "receipts": "single append-only JSONL",
+    "action_dependency_depth": 2,
+    "final_verify_barriers": 1,
+    "response_cache": "FORBIDDEN",
+    "timed_retry_count": 0,
+    "timing_boundary": "UNCHANGED_FROM_V0.4.0"
+  },
+  "inherited_virtual_evidence": {
+    "payload_old_total_bytes": 48964,
+    "payload_projected_total_bytes": 14620,
+    "payload_reduction_percent": 70.141,
+    "failure_injection": "12/12 PASS",
+    "old_reality_ms": 840.6046999999962,
+    "old_shadow_lower_tail_ms": 798.715,
+    "shadow_relative_reduction_percent": 4.983281678
+  },
+  "shadow_prediction": {
+    "virtual_target_ms": 533.026592,
+    "frozen_display_target_ms": 533,
+    "real_claim": false,
+    "confidence": "STRUCTURAL_ONLY"
+  },
+  "gates": {
+    "mature_solution_cluster": "PASS",
+    "virtual_99": "PASS",
+    "solution_frozen": "YES",
+    "real_verify": "NOT_YET",
+    "codex_design_authority": "NO",
+    "codex_executor_only": "YES"
+  },
+  "real_promotion": {
+    "warmups": 3,
+    "measured_runs": 30,
+    "all_pass_required": true,
+    "expected_http_requests": 67,
+    "must_beat_ms": 560.9819
+  },
+  "candidate_source": "candidate-reality-challenge-v3.cs"
+}
