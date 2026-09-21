@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "comparisons": {
+    "SAME_TASK": "PASS",
+    "SAME_VALID": "PASS",
+    "SAME_BROWSER_PROCESS": "PASS",
+    "SAME_CONTEXT": "PASS",
+    "SAME_PROFILE": "PASS",
+    "SAME_ACTION_SEQUENCE": "PASS",
+    "SAME_DIALOG_BEHAVIOR": "PASS",
+    "SAME_ACTIONABILITY": "PASS",
+    "SAME_NETWORK_SEMANTICS": "PASS",
+    "SAME_RUNTIME_SEMANTICS": "PASS",
+    "SAME_RECONNECT_RESULT": "PASS",
+    "SAME_BUSINESS_RESULT": "PASS"
+  },
+  "twin_critical_unknown_count": 0,
+  "material_reality_twin_delta_count": 0,
+  "same_critical_browser_behavior": "PASS",
+  "reality_delta": "NONE"
+}
