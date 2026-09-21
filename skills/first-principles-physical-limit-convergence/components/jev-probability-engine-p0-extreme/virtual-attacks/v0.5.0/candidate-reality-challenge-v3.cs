@@ -30,7 +30,7 @@ namespace JevP0V3
         private static readonly JsonSerializerOptions CompactJson = new JsonSerializerOptions { WriteIndented = false };
         private static readonly JsonSerializerOptions PrettyJson = new JsonSerializerOptions { WriteIndented = true };
 
-        // Frozen V2 process lifetime: exactly one handler and one client.
+        // Frozen V3 process lifetime: exactly one handler and one client.
         private static readonly SocketsHttpHandler Handler = new SocketsHttpHandler();
         private static readonly HttpClient Client = new HttpClient(Handler) { Timeout = TimeSpan.FromMilliseconds(30000) };
 
@@ -245,33 +245,6 @@ namespace JevP0V3
             var result = await RequestDecisionAsync(state, questions);
             if (!result.Answers.TryGetProperty("probe", out var answer)) return false;
             return ChooseAction(answer).action == "EXECUTE";
-        }
-
-        private static JsonObject QChoice(string instructions)
-        {
-            return new JsonObject
-            {
-                ["type"] = "choice",
-                ["instructions"] = instructions,
-                ["criteria"] = new JsonObject
-                {
-                    ["EXECUTE"] = "Choose EXECUTE only when the requested action is permitted now and every mandatory prerequisite is satisfied.",
-                    ["HOLD"] = "Choose HOLD when the action may be allowed later but a mandatory prerequisite, timing condition, evidence item, or temporary dependency is not satisfied now.",
-                    ["ROUTE"] = "Choose ROUTE when the request requires a specialist, review path, security response, tax/privacy/billing review, or specialized executor before completion.",
-                    ["REJECT"] = "Choose REJECT when the requested action is prohibited, must never be performed by this workflow, or a permanent failure makes automatic execution impermissible."
-                }
-            };
-        }
-
-        private static JsonObject NormalizeItem(JsonObject item)
-        {
-            return new JsonObject
-            {
-                ["item_id"] = item["item_id"]!.DeepClone(), ["request"] = item["request"]!.DeepClone(),
-                ["current_state"] = item["current_state"]!.DeepClone(), ["evidence"] = item["evidence"]!.DeepClone(),
-                ["constraints"] = item["constraints"]!.DeepClone(), ["allowed_actions"] = item["allowed_actions"]!.DeepClone(),
-                ["dependency_ids"] = item["dependency_ids"]!.DeepClone()
-            };
         }
 
         private static JsonObject QCurrent(string id)
