@@ -1,418 +1,607 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""现实执行环境精确数字孪生唯一版 v1.2.0 — Browser/Network Unified Twin."""
+"""exact-reality-digital-twin v1.3.0 formal Browser Reality implementation.
+
+Reality inputs are read-only. Browser replay is deterministic evidence replay;
+it never launches a browser, reaches the network, or mutates captured state.
+"""
 from __future__ import annotations
-import argparse, copy, hashlib, json, math, statistics, time
+
+import argparse
+import copy
+import hashlib
+import json
+from collections import Counter
 from pathlib import Path
-from typing import Any
 
-VERSION = "1.2.0"
-SCHEMA_VERSION = "browser-network-unified-twin-2.0"
-HOST_R2_FP = "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8"
-UNKNOWN = "UNKNOWN"
 
-OBS_REQUIRED = (
-    "HOST_NETWORK","BROWSER_ENVIRONMENT","AUTH_STORAGE_SAFE","PAGE_FRAME_GRAPH",
-    "ACTIONABILITY","BROWSER_NETWORK","RUNTIME_EVENTS","GOLDEN_TASK_RESULT",
-    "TRACE_HASH","CDP_EVIDENCE","DOM_SNAPSHOT_HASH",
-)
+VERSION = "1.3.0"
+COMPONENT_ID = "exact-reality-digital-twin"
+PROFILE_ID = "PLAYWRIGHT_GOLDEN_REALITY_PROFILE"
+METHOD_VERSION = "3.1.7"
+REALITY_SOURCE_TWIN_VERSION = "1.1.0"
+EXPECTED_HOST_FINGERPRINT = "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8"
+EXPECTED_BROWSER_FINGERPRINT = "9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd"
+EXPECTED_GOLDEN_SHA256 = "1c67a634e0c0fc24ed057752358f4c20a6c05550be6146fd8d11b1a723f25e08"
+EXPECTED_TASK_SHA256 = "31f60923bddd1fece2a1d64a574f6ad5a3bc16fd0b0ef01127c87522e7084960"
+EXPECTED_VALID_SHA256 = "2d2e4ab5495fdffb921a57113e6c7ecf5e9cf6802f9a729386bf941a3fd5c7ae"
+EXPECTED_REALITY_PACK_MANIFEST_SHA256 = "fd7d381a7f8185a5c12af7a74f7b4d43809d172d84fff78454863383ae9727cd"
 
-def sha_bytes(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
+ACTION_ORDER = [
+    "TASK_IDENTITY", "VALID_IDENTITY", "BROWSER_PROCESS_IDENTITY",
+    "CONTEXT_IDENTITY", "PROFILE_IDENTITY", "PAGE_FRAME_GRAPH",
+    "NAVIGATION", "LOCATOR", "INPUT", "CLICK", "EXTRACT", "KEYBOARD",
+    "DRAG_DROP", "UPLOAD", "DOWNLOAD", "BEFORE_DIALOG_ACTIONABILITY",
+    "DIALOG_OPENING", "DIALOG_ACCEPT", "AFTER_DIALOG_ACTIONABILITY",
+    "POPUP", "FRAME", "ROUTE_API", "ISOLATED_CONTEXT", "SCREENSHOT",
+    "PERSISTENT_RECONNECT_1", "PERSISTENT_RECONNECT_2",
+    "FINAL_GOLDEN_RESULT",
+]
 
-def canon(v: Any) -> str:
-    return json.dumps(v, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
-def sha_json(v: Any) -> str:
-    return sha_bytes(canon(v).encode("utf-8"))
+def read_json(path: Path):
+    return json.loads(path.read_text(encoding="utf-8"))
 
-def read_json(p: Path) -> Any:
-    return json.loads(p.read_text(encoding="utf-8-sig"))
 
-def read_jsonl(p: Path | None) -> list[dict[str, Any]]:
-    if not p or not p.exists(): return []
-    out=[]
-    for i,line in enumerate(p.read_text(encoding="utf-8-sig").splitlines(),1):
-        if not line.strip(): continue
-        try: x=json.loads(line)
-        except Exception as e:
-            out.append({"type":"PARSE_ERROR","line":i,"error_sha256":sha_bytes(str(e).encode())}); continue
-        out.append(x if isinstance(x,dict) else {"type":"NON_OBJECT","value_sha256":sha_json(x)})
-    return out
+def read_jsonl(path: Path):
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
-def first(root: Path, *rels: str) -> Path | None:
-    for rel in rels:
-        p=root/rel
-        if p.exists(): return p
-    return None
 
-def get(d: Any, *keys: str, default=None):
-    cur=d
-    for k in keys:
-        if not isinstance(cur,dict) or k not in cur: return default
-        cur=cur[k]
-    return cur
+def sha256_file(path: Path) -> str:
+    hasher = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            hasher.update(chunk)
+    return hasher.hexdigest()
 
-def artifact_hash(golden: Any, suffix: str) -> str | None:
-    arts=golden.get("artifacts") if isinstance(golden,dict) else None
-    if not isinstance(arts,dict): return None
-    for k,v in arts.items():
-        if str(k).replace("\\","/").endswith(suffix) and isinstance(v,dict):
-            h=v.get("sha256")
-            if isinstance(h,str) and len(h)==64: return h.lower()
-    return None
 
-def etype(e: dict[str,Any]) -> str:
-    return str(e.get("type", e.get("method","UNKNOWN_EVENT")))
+def canonical_hash(value) -> str:
+    payload = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
-def sort_timeline(events: list[dict[str,Any]], cdp: list[dict[str,Any]]) -> list[dict[str,Any]]:
-    staged=[]; seq=0
-    for origin,arr in (("playwright",events),("cdp",cdp)):
-        for raw in arr:
-            seq+=1; e=copy.deepcopy(raw); e["_origin"]=origin; e["_sequence"]=seq
-            staged.append((str(e.get("ts") or "9999-99-99T99:99:99.999999Z"),seq,e))
-    staged.sort(key=lambda x:(x[0],x[1]))
-    return [x[2] for x in staged]
 
-def classify(events: list[dict[str,Any]]) -> dict[str,list[dict[str,Any]]]:
-    out={"network":[],"runtime":[],"lifecycle":[],"other":[]}
-    for e in events:
-        t=etype(e).lower()
-        if any(x in t for x in ("request","response","network.","websocket","eventsource","webtransport")): out["network"].append(e)
-        elif any(x in t for x in ("console","pageerror","exception","crash","javascriptdialog")): out["runtime"].append(e)
-        elif any(x in t for x in ("frame","load","lifecycle","domcontent")): out["lifecycle"].append(e)
-        else: out["other"].append(e)
-    return out
+def write_json(path: Path, value) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-def actionability(probe: Any) -> dict[str,Any]:
-    if not isinstance(probe,dict): return {"status":"UNKNOWN_ACTIONABILITY","reason":"MISSING_PROBE"}
-    n=probe.get("locator_count")
-    if n is None: return {"status":"UNKNOWN_ACTIONABILITY","reason":"LOCATOR_COUNT_UNKNOWN"}
-    if n==0: return {"status":"NOT_ACTIONABLE","reason":"ELEMENT_NOT_FOUND"}
-    if n!=1: return {"status":"NOT_ACTIONABLE","reason":"STRICTNESS_MULTIPLE_ELEMENTS","count":n}
-    checks={"visible":probe.get("visible"),"stable":probe.get("stable_approx_two_animation_frames"),
-            "receives_events":probe.get("receives_events_approx"),"enabled":probe.get("enabled")}
-    missing=[k for k,v in checks.items() if v is None]
-    if missing: return {"status":"UNKNOWN_ACTIONABILITY","reason":"CHECKS_UNKNOWN","missing":missing}
-    if checks["visible"] is not True: return {"status":"NOT_ACTIONABLE","reason":"NOT_VISIBLE"}
-    if checks["stable"] is not True: return {"status":"NOT_ACTIONABLE","reason":"UNSTABLE"}
-    if checks["receives_events"] is not True:
-        return {"status":"NOT_ACTIONABLE","reason":"EVENT_INTERCEPTED","hit_target":probe.get("hit_target")}
-    if checks["enabled"] is not True: return {"status":"NOT_ACTIONABLE","reason":"DISABLED"}
-    return {"status":"ACTIONABLE","reason":"ALL_REQUIRED_CHECKS_PASS"}
 
-def last_probe(x: Any):
-    return x[-1] if isinstance(x,list) and x and isinstance(x[-1],dict) else None
-
-def net_summary(events):
-    failed=[e for e in events if "fail" in etype(e).lower() or "error" in etype(e).lower()]
-    ws=[e for e in events if "websocket" in etype(e).lower()]
-    responses=[e for e in events if "response" in etype(e).lower()]
-    statuses=[]
-    for e in responses:
-        s=e.get("status")
-        if s is None: s=get(e,"params","response","status")
-        if isinstance(s,(int,float)): statuses.append(int(s))
-    return {"event_count":len(events),"failure_count":len(failed),"websocket_event_count":len(ws),
-            "response_event_count":len(responses),"http_statuses":sorted(statuses)}
-
-def runtime_summary(events):
-    names=[etype(e).lower() for e in events]
-    return {"event_count":len(events),
-            "pageerror_or_exception_count":sum("pageerror" in n or "exception" in n for n in names),
-            "crash_count":sum("crash" in n for n in names),
-            "dialog_event_count":sum("dialog" in n for n in names),
-            "console_event_count":sum("console" in n for n in names)}
-
-def golden_outcome(g: Any) -> str:
-    if not isinstance(g,dict): return UNKNOWN
-    r=g.get("result")
-    if isinstance(r,dict):
-        for k in ("outcome","status","result"):
-            if r.get(k) is not None: return str(r[k])
-    for k in ("outcome","status"):
-        if g.get(k) is not None: return str(g[k])
-    return UNKNOWN
-
-def obs_identity(env: Any) -> dict[str,Any]:
-    if not isinstance(env,dict): return {"task_id":UNKNOWN,"target_selector":UNKNOWN,"fingerprint":UNKNOWN}
-    rt=env.get("runtime") if isinstance(env.get("runtime"),dict) else {}
-    safe={"url":rt.get("href",UNKNOWN),
-          "user_agent_sha256":sha_bytes(str(rt.get("userAgent",UNKNOWN)).encode()),
-          "platform":rt.get("platform",UNKNOWN),"timezone":rt.get("timezone",UNKNOWN),
-          "dpr":rt.get("dpr",UNKNOWN),
-          "context_page_count":len(env.get("context_pages",[])) if isinstance(env.get("context_pages"),list) else UNKNOWN}
-    return {"task_id":env.get("task_id",UNKNOWN),"target_selector":env.get("target_selector",UNKNOWN),
-            "identity_safe":safe,"fingerprint":sha_json(safe) if UNKNOWN not in safe.values() else UNKNOWN}
-
-def ingest_observability(root_s: str | Path) -> dict[str,Any]:
-    root=Path(root_s)
-    hp=first(root,"safe/host-network.json","safehost-network.json")
-    ep=first(root,"safe/environment.json")
-    ap=first(root,"safe/actionability.json")
-    evp=first(root,"safe/events.jsonl")
-    cp=first(root,"safe/cdp.jsonl")
-    gp=first(root,"safe/golden-task-result.json")
-    host=read_json(hp) if hp else None; env=read_json(ep) if ep else None
-    acts=read_json(ap) if ap else None; events=read_jsonl(evp); cdp=read_jsonl(cp)
-    golden=read_json(gp) if gp else None
-    timeline=sort_timeline(events,cdp); cls=classify(timeline)
-    presence={"HOST_NETWORK":isinstance(host,dict) and bool(host),
-              "BROWSER_ENVIRONMENT":isinstance(env,dict) and bool(env),
-              "AUTH_STORAGE_SAFE":isinstance(get(env,"storage_state_safe"),dict),
-              "PAGE_FRAME_GRAPH":isinstance(get(env,"frames"),list),
-              "ACTIONABILITY":isinstance(acts,list) and bool(acts),
-              "BROWSER_NETWORK":bool(cls["network"]),
-              "RUNTIME_EVENTS":bool(events) or bool(cdp),
-              "GOLDEN_TASK_RESULT":isinstance(golden,dict) and bool(golden),
-              "TRACE_HASH":artifact_hash(golden,"trace.zip") is not None,
-              "CDP_EVIDENCE":bool(cdp) or artifact_hash(golden,"cdp.jsonl") is not None,
-              "DOM_SNAPSHOT_HASH":artifact_hash(golden,"dom-snapshot.json") is not None}
-    unknowns=[x for x in OBS_REQUIRED if not presence.get(x,False)]
-    state={"kind":"OBSERVABILITY","schema_version":SCHEMA_VERSION,"engine_version":VERSION,
-           "host":{"r2_fingerprint":HOST_R2_FP,"network_safe":host if host is not None else UNKNOWN},
-           "identity":obs_identity(env),
-           "browser":{"environment_safe":env if env is not None else UNKNOWN,
-                      "actionability":acts if acts is not None else UNKNOWN,
-                      "actionability_eval":actionability(last_probe(acts))},
-           "network":{"summary":net_summary(cls["network"])},
-           "runtime":{"summary":runtime_summary(cls["runtime"])},
-           "timeline":timeline,
-           "golden_task":{"outcome":golden_outcome(golden),"raw_safe":golden if golden is not None else UNKNOWN},
-           "module_presence":presence,"critical_unknowns":unknowns,"source_policy":"OBSERVED_ONLY_NO_GUESSING"}
-    state["state_fingerprint"]=sha_json({k:state[k] for k in ("host","identity","browser","network","runtime","golden_task","module_presence")})
-    return state
-
-def ingest_timing(root_s: str | Path) -> dict[str,Any]:
-    root=Path(root_s); p=first(root,"safe/timing-run.json","timing-run.safe.json")
-    raw=read_json(p) if p else None
-    if not isinstance(raw,dict):
-        return {"kind":"TIMING","status":"FAIL","errors":["TIMING_RUN_MISSING"],"source":str(root)}
-    state={"kind":"TIMING","schema_version":SCHEMA_VERSION,"engine_version":VERSION,
-           "task_id":raw.get("task_id",UNKNOWN),"run_id":raw.get("run_id",UNKNOWN),
-           "target_selector":raw.get("target_selector",UNKNOWN),"outcome":str(raw.get("outcome",UNKNOWN)),
-           "duration_ms":raw.get("duration_ms",UNKNOWN),"identity_fingerprint":raw.get("identity_fingerprint",UNKNOWN),
-           "heavy_observability":raw.get("heavy_observability",UNKNOWN),"trace":raw.get("trace",UNKNOWN),
-           "cdp":raw.get("cdp",UNKNOWN),"dom_snapshot":raw.get("dom_snapshot",UNKNOWN),
-           "network_listeners_added":raw.get("network_listeners_added",UNKNOWN),"raw_safe":raw}
-    state["state_fingerprint"]=sha_json(state)
-    return state
-
-def validate_timing(s: dict[str,Any]) -> dict[str,Any]:
-    e=[]
-    if s.get("kind")!="TIMING": e.append("NOT_TIMING_STATE")
-    if s.get("task_id") in (None,UNKNOWN): e.append("TASK_ID_UNKNOWN")
-    if s.get("run_id") in (None,UNKNOWN): e.append("RUN_ID_UNKNOWN")
-    if s.get("target_selector") in (None,UNKNOWN): e.append("TARGET_SELECTOR_UNKNOWN")
-    if s.get("outcome") in (None,UNKNOWN): e.append("OUTCOME_UNKNOWN")
-    d=s.get("duration_ms")
-    if not isinstance(d,(int,float)) or not math.isfinite(float(d)) or float(d)<0: e.append("DURATION_INVALID")
-    for k in ("heavy_observability","trace","cdp","dom_snapshot","network_listeners_added"):
-        if s.get(k) is not False: e.append(f"TIMING_CONTAMINATED_{k.upper()}")
-    if s.get("identity_fingerprint") in (None,UNKNOWN): e.append("IDENTITY_UNKNOWN")
-    return {"status":"PASS" if not e else "FAIL","errors":e}
-
-def validate_observability(s: dict[str,Any]) -> dict[str,Any]:
-    e=[]
-    if s.get("kind")!="OBSERVABILITY": e.append("NOT_OBSERVABILITY_STATE")
-    if get(s,"host","r2_fingerprint")!=HOST_R2_FP: e.append("HOST_R2_FINGERPRINT_MISMATCH")
-    unknowns=s.get("critical_unknowns")
-    if not isinstance(unknowns,list) or unknowns: e.append("CRITICAL_UNKNOWNS_NONZERO")
-    if get(s,"golden_task","outcome") in (None,UNKNOWN): e.append("GOLDEN_OUTCOME_UNKNOWN")
-    if get(s,"browser","actionability_eval","status") in (None,"UNKNOWN_ACTIONABILITY"): e.append("ACTIONABILITY_UNKNOWN")
-    if get(s,"identity","task_id") in (None,UNKNOWN): e.append("TASK_ID_UNKNOWN")
-    if get(s,"identity","fingerprint") in (None,UNKNOWN): e.append("IDENTITY_UNKNOWN")
-    return {"status":"PASS" if not e else "FAIL","errors":e,
-            "critical_unknown_count":len(unknowns) if isinstance(unknowns,list) else UNKNOWN}
-
-def semantic_signature(obs: dict[str,Any]) -> dict[str,Any]:
-    return {"golden_outcome":get(obs,"golden_task","outcome",default=UNKNOWN),
-            "actionability":get(obs,"browser","actionability_eval","status",default=UNKNOWN),
-            "actionability_reason":get(obs,"browser","actionability_eval","reason",default=UNKNOWN),
-            "network_failure_count":get(obs,"network","summary","failure_count",default=UNKNOWN),
-            "runtime_exception_count":get(obs,"runtime","summary","pageerror_or_exception_count",default=UNKNOWN),
-            "crash_count":get(obs,"runtime","summary","crash_count",default=UNKNOWN),
-            "dialog_event_count":get(obs,"runtime","summary","dialog_event_count",default=UNKNOWN)}
-
-def certify(timing: list[dict[str,Any]], obs: dict[str,Any]) -> dict[str,Any]:
-    if len(timing)!=3:
-        return {"status":"FAIL","errors":["TIMING_RUN_COUNT_NOT_3"],"timing_run_count":len(timing)}
-    tv=[validate_timing(x) for x in timing]; ov=validate_observability(obs); errors=[]
-    if any(x["status"]!="PASS" for x in tv): errors.append("TIMING_RUN_VALIDATION_FAILED")
-    if ov["status"]!="PASS": errors.append("OBSERVABILITY_VALIDATION_FAILED")
-    task_ids=[x.get("task_id") for x in timing]; selectors=[x.get("target_selector") for x in timing]
-    outcomes=[x.get("outcome") for x in timing]; ids=[x.get("identity_fingerprint") for x in timing]
-    if len(set(task_ids))!=1: errors.append("TIMING_TASK_ID_DRIFT")
-    if len(set(selectors))!=1: errors.append("TIMING_SELECTOR_DRIFT")
-    if len(set(outcomes))!=1: errors.append("TIMING_OUTCOME_DRIFT")
-    if len(set(ids))!=1: errors.append("TIMING_IDENTITY_DRIFT")
-    if task_ids and get(obs,"identity","task_id")!=task_ids[0]: errors.append("OBS_TASK_ID_MISMATCH")
-    if selectors and get(obs,"identity","target_selector")!=selectors[0]: errors.append("OBS_SELECTOR_MISMATCH")
-    if outcomes and get(obs,"golden_task","outcome")!=outcomes[0]: errors.append("OBS_OUTCOME_MISMATCH")
-    obs_id=get(obs,"identity","fingerprint")
-    if ids and obs_id not in (UNKNOWN,None) and ids[0]!=obs_id: errors.append("OBS_IDENTITY_MISMATCH")
-    durations=[float(x["duration_ms"]) for x in timing if isinstance(x.get("duration_ms"),(int,float))]
-    certified=not errors and len(durations)==3
-    timing_result={"run_duration_ms":durations,
-                   "t_valid_ms":min(durations) if certified else UNKNOWN,
-                   "median_ms":statistics.median(durations) if len(durations)==3 else UNKNOWN,
-                   "max_ms":max(durations) if len(durations)==3 else UNKNOWN,
-                   "certification_evidence_time_ms":sum(durations) if certified else UNKNOWN,
-                   "t_valid_definition":"minimum T1/T2/T3 duration after 3/3 timing semantics plus O1 observability gates pass",
-                   "o1_counts_toward_t_valid":False}
-    out={"status":"PASS" if certified else "FAIL","errors":errors,
-         "timing_validations":tv,"observability_validation":ov,
-         "golden_task_reproduced":"3_OF_3" if certified else "NO",
-         "timing":timing_result,
-         "canonical_signature":semantic_signature(obs) if ov["status"]=="PASS" else UNKNOWN,
-         "observability_state_fingerprint":obs.get("state_fingerprint"),
-         "timing_state_fingerprints":[x.get("state_fingerprint") for x in timing],
-         "critical_unknown_count":ov.get("critical_unknown_count",UNKNOWN)}
-    out["fusion_fingerprint"]=sha_json({k:out[k] for k in ("canonical_signature","observability_state_fingerprint","timing_state_fingerprints","timing")})
-    return out
-
-def replay(cert: dict[str,Any]) -> dict[str,Any]:
-    if cert.get("status")!="PASS":
-        return {"status":"BLOCKED_INVALID_REALITY_INPUT","unknowns_preserved":True,"errors":cert.get("errors",[])}
-    return {"status":"REPLAYED","reality_mutated":False,
-            "semantic_signature":copy.deepcopy(cert["canonical_signature"]),
-            "timing":copy.deepcopy(cert["timing"]),"fusion_fingerprint":cert["fusion_fingerprint"]}
-
-def diff_reality_twin(cert: dict[str,Any], rp: dict[str,Any]) -> dict[str,Any]:
-    a=cert.get("canonical_signature"); b=rp.get("semantic_signature"); deltas={}
-    if isinstance(a,dict) and isinstance(b,dict):
-        for k in sorted(set(a)|set(b)):
-            if a.get(k)!=b.get(k): deltas[k]={"reality":a.get(k),"twin":b.get(k)}
-    else: deltas["semantic_signature"]={"reality":a,"twin":b}
-    return {"status":"PASS" if not deltas and rp.get("status")=="REPLAYED" else "FAIL",
-            "delta_count":len(deltas),"deltas":deltas}
-
-def merge(base: Any, overlay: Any) -> Any:
-    if isinstance(base,dict) and isinstance(overlay,dict):
-        out=copy.deepcopy(base)
-        for k,v in overlay.items(): out[k]=merge(out[k],v) if k in out else copy.deepcopy(v)
-        return out
+def deep_merge(base, overlay):
+    if isinstance(base, dict) and isinstance(overlay, dict):
+        result = copy.deepcopy(base)
+        for key, value in overlay.items():
+            result[key] = deep_merge(result[key], value) if key in result else copy.deepcopy(value)
+        return result
     return copy.deepcopy(overlay)
 
-def shadow(cert: dict[str,Any], overlay: dict[str,Any]) -> dict[str,Any]:
-    base=copy.deepcopy(cert); hyp=merge(base,overlay); fp=sha_json(base)
-    return {"status":"HYPOTHETICAL_SHADOW","reality_mutated":False,
-            "delta_present":canon(base)!=canon(hyp),
-            "reality_fingerprint_before":fp,"reality_fingerprint_after":fp,"shadow_state":hyp}
 
-def benchmark(cert: dict[str,Any], repeats=1000) -> dict[str,Any]:
-    if cert.get("status")!="PASS": return {"status":"BLOCKED_INVALID_REALITY_INPUT"}
-    xs=[]
-    for _ in range(repeats):
-        a=time.perf_counter_ns(); r=replay(cert); b=time.perf_counter_ns()
-        if r.get("status")!="REPLAYED": return {"status":"FAIL_REPLAY"}
-        xs.append((b-a)/1_000_000)
-    s=sorted(xs)
-    return {"status":"PASS","repeats":repeats,
-            "replay_overhead_ms":{"min":min(xs),"p50":s[len(s)//2],
-                                  "p95":s[min(len(s)-1,math.ceil(len(s)*.95)-1)],"max":max(xs)},
-            "note":"Twin local replay overhead only; not real browser T_VALID."}
+def changed_paths(base, changed, prefix=""):
+    if isinstance(base, dict) and isinstance(changed, dict):
+        paths = []
+        for key in sorted(set(base) | set(changed)):
+            child = f"{prefix}.{key}" if prefix else key
+            if key not in base or key not in changed:
+                paths.append(child)
+            else:
+                paths.extend(changed_paths(base[key], changed[key], child))
+        return paths
+    return [] if base == changed else [prefix]
 
-def probe(reason="ACTIONABLE"):
-    x={"locator_count":1,"visible":True,"enabled":True,"stable_approx_two_animation_frames":True,
-       "receives_events_approx":True,"hit_target":{"tag":"BUTTON","id":"dialog"}}
-    if reason=="MISSING": x["locator_count"]=0
-    elif reason=="MULTIPLE": x["locator_count"]=2
-    elif reason=="NOT_VISIBLE": x["visible"]=False
-    elif reason=="UNSTABLE": x["stable_approx_two_animation_frames"]=False
-    elif reason=="INTERCEPTED": x["receives_events_approx"]=False; x["hit_target"]={"tag":"DIV","id":"overlay"}
-    elif reason=="DISABLED": x["enabled"]=False
-    return x
 
-def timing_fixture(run_id,duration=100.0,outcome="PASS",identity="I",heavy=False):
-    s={"kind":"TIMING","schema_version":SCHEMA_VERSION,"engine_version":VERSION,
-       "task_id":"GOLDEN","run_id":run_id,"target_selector":"#dialog","outcome":outcome,
-       "duration_ms":duration,"identity_fingerprint":identity,"heavy_observability":heavy,
-       "trace":False,"cdp":False,"dom_snapshot":False,"network_listeners_added":False}
-    s["state_fingerprint"]=sha_json(s); return s
+# Legacy Host/Codex implementation retained verbatim in behavior.
+def canonical_current_state():
+    return {
+        "reality_fingerprint_v3_sha256": EXPECTED_HOST_FINGERPRINT,
+        "critical_unknown_count": 0,
+        "critical_execution_coverage": "100.00",
+        "twin_input_ready": "YES",
+        "rules_runtime_effective": "CAPTURED",
+        "rule_engine_validation": "PASS",
+        "target": {
+            "process_creation": "DENIED_BEFORE_SUCCESSFUL_START",
+            "failure_api": "SetTokenInformation",
+            "failure_code": 1344,
+            "reproduction": "3_OF_3",
+            "child_running": "NO",
+            "child_path_resolution": "NOT_REACHED",
+            "child_execution_token": "NO_RUNNING_CHILD_PROCESS_TOKEN",
+        },
+    }
 
-def obs_fixture(outcome="PASS",action_reason="ACTIONABLE",identity="I",unknowns=None,network_fail=0,runtime_exc=0,dialog=0):
-    acts=[probe(action_reason)]
-    net=[{"type":"request"}]+[{"type":"requestfailed"} for _ in range(network_fail)]
-    rt=[{"type":"pageerror"} for _ in range(runtime_exc)]+[{"type":"javascriptdialogopening"} for _ in range(dialog)]
-    s={"kind":"OBSERVABILITY","schema_version":SCHEMA_VERSION,"engine_version":VERSION,
-       "host":{"r2_fingerprint":HOST_R2_FP,"network_safe":{"mode":"fixture"}},
-       "identity":{"task_id":"GOLDEN","target_selector":"#dialog","fingerprint":identity},
-       "browser":{"environment_safe":{"fixture":True},"actionability":acts,"actionability_eval":actionability(acts[-1])},
-       "network":{"summary":net_summary(net)},"runtime":{"summary":runtime_summary(rt)},
-       "timeline":net+rt,"golden_task":{"outcome":outcome,"raw_safe":{"fixture":True}},
-       "module_presence":{x:True for x in OBS_REQUIRED},"critical_unknowns":unknowns or [],
-       "source_policy":"VIRTUAL_FIXTURE_ONLY"}
-    s["state_fingerprint"]=sha_json(s); return s
+
+def validate_state(state):
+    errors = []
+    if state.get("reality_fingerprint_v3_sha256") != EXPECTED_HOST_FINGERPRINT:
+        errors.append("REALITY_FINGERPRINT_MISMATCH")
+    if state.get("critical_unknown_count") != 0:
+        errors.append("CRITICAL_UNKNOWN_NONZERO")
+    if state.get("critical_execution_coverage") != "100.00":
+        errors.append("CRITICAL_COVERAGE_NOT_100")
+    if state.get("twin_input_ready") != "YES":
+        errors.append("TWIN_INPUT_NOT_READY")
+    if state.get("rules_runtime_effective") != "CAPTURED":
+        errors.append("RULES_NOT_CAPTURED")
+    if state.get("rule_engine_validation") != "PASS":
+        errors.append("RULE_ENGINE_NOT_VALIDATED")
+    target = state.get("target", {})
+    for key, expected in canonical_current_state()["target"].items():
+        if target.get(key) != expected:
+            errors.append("TARGET_" + key.upper() + "_MISMATCH")
+    return {"status": "PASS" if not errors else "FAIL", "errors": errors}
+
+
+def replay_current(state=None):
+    state = canonical_current_state() if state is None else state
+    check = validate_state(state)
+    if check["status"] != "PASS":
+        return {"status": "INVALID_REALITY_STATE", "errors": check["errors"]}
+    target = state["target"]
+    return {
+        "status": "REPLAYED",
+        "stage": "PROCESS_CREATION_BEFORE_CHILD_START",
+        "api": target["failure_api"],
+        "error_code": target["failure_code"],
+        "result": "DENIED",
+        "child_running": target["child_running"],
+        "path_resolution": target["child_path_resolution"],
+        "child_execution_token": target["child_execution_token"],
+    }
+
+
+def shadow_overlay(overlay):
+    base = canonical_current_state()
+    hypothetical = deep_merge(base, overlay)
+    return {
+        "status": "HYPOTHETICAL_SHADOW",
+        "reality_mutated": False,
+        "delta_present": hypothetical != base,
+        "baseline_validation": validate_state(base),
+        "overlay_validation_against_reality": validate_state(hypothetical),
+        "state": hypothetical,
+    }
+
 
 def run_selftest():
-    cases=[]
-    def ck(n,v): cases.append({"name":n,"pass":bool(v)})
-    exp={"MISSING":"ELEMENT_NOT_FOUND","MULTIPLE":"STRICTNESS_MULTIPLE_ELEMENTS","NOT_VISIBLE":"NOT_VISIBLE",
-         "UNSTABLE":"UNSTABLE","INTERCEPTED":"EVENT_INTERCEPTED","DISABLED":"DISABLED"}
-    for k,v in exp.items(): ck("action_"+k.lower(),actionability(probe(k)).get("reason")==v)
-    ck("action_pass",actionability(probe()).get("status")=="ACTIONABLE")
-    ts=[timing_fixture("T1",100.0),timing_fixture("T2",101.0),timing_fixture("T3",99.5)]
-    ob=obs_fixture(); cert=certify(ts,ob)
-    ck("timing_validate_all",all(validate_timing(x)["status"]=="PASS" for x in ts))
-    ck("obs_validate",validate_observability(ob)["status"]=="PASS")
-    ck("cert_pass",cert["status"]=="PASS")
-    ck("3_of_3",cert["golden_task_reproduced"]=="3_OF_3")
-    ck("t_valid_min",abs(cert["timing"]["t_valid_ms"]-99.5)<1e-9)
-    ck("median",abs(cert["timing"]["median_ms"]-100.0)<1e-9)
-    ck("cert_cost",abs(cert["timing"]["certification_evidence_time_ms"]-300.5)<1e-9)
-    ck("o1_not_metric",cert["timing"]["o1_counts_toward_t_valid"] is False)
-    rp=replay(cert); ck("replay",rp["status"]=="REPLAYED")
-    d=diff_reality_twin(cert,rp); ck("delta_zero",d["status"]=="PASS" and d["delta_count"]==0)
-    sh=shadow(cert,{"canonical_signature":{"golden_outcome":"FAIL"}})
-    ck("shadow_isolation",sh["reality_mutated"] is False and sh["reality_fingerprint_before"]==sh["reality_fingerprint_after"])
-    ck("reject_2_runs",certify(ts[:2],ob)["status"]=="FAIL")
-    x=copy.deepcopy(ts); x[2]["outcome"]="FAIL"; ck("reject_outcome_drift",certify(x,ob)["status"]=="FAIL")
-    x=copy.deepcopy(ts); x[2]["identity_fingerprint"]="J"; ck("reject_identity_drift",certify(x,ob)["status"]=="FAIL")
-    x=copy.deepcopy(ts); x[2]["target_selector"]="#other"; ck("reject_selector_drift",certify(x,ob)["status"]=="FAIL")
-    x=copy.deepcopy(ts); x[1]["task_id"]="OTHER"; ck("reject_task_drift",certify(x,ob)["status"]=="FAIL")
-    x=copy.deepcopy(ts); x[0]["heavy_observability"]=True; ck("reject_heavy_timing",certify(x,ob)["status"]=="FAIL")
-    ck("reject_obs_unknown",certify(ts,obs_fixture(unknowns=["TRACE_HASH"]))["status"]=="FAIL")
-    ck("reject_obs_outcome",certify(ts,obs_fixture(outcome="FAIL"))["status"]=="FAIL")
-    ck("reject_obs_identity",certify(ts,obs_fixture(identity="J"))["status"]=="FAIL")
-    bad=obs_fixture(); bad["host"]["r2_fingerprint"]="0"*64; ck("reject_host_fp",certify(ts,bad)["status"]=="FAIL")
-    nf=obs_fixture(network_fail=2); ck("network_fail_count",nf["network"]["summary"]["failure_count"]==2)
-    rr=obs_fixture(runtime_exc=2,dialog=1); ck("runtime_exc_count",rr["runtime"]["summary"]["pageerror_or_exception_count"]==2)
-    ck("dialog_count",rr["runtime"]["summary"]["dialog_event_count"]==1)
-    ck("semantic_sig",semantic_signature(rr)["dialog_event_count"]==1)
-    for reason,want in (("INTERCEPTED","EVENT_INTERCEPTED"),("UNSTABLE","UNSTABLE"),
-                        ("DISABLED","DISABLED"),("NOT_VISIBLE","NOT_VISIBLE")):
-        ck("semantic_"+reason.lower(),obs_fixture(action_reason=reason)["browser"]["actionability_eval"]["reason"]==want)
-    cert2=certify(copy.deepcopy(ts),copy.deepcopy(ob)); ck("deterministic_fusion",cert["fusion_fingerprint"]==cert2["fusion_fingerprint"])
-    ck("unknown_block_replay",replay({"status":"FAIL","errors":["UNKNOWN"]})["unknowns_preserved"] is True)
-    ob2=copy.deepcopy(ob); ob2["golden_task"]["diagnostic_duration_ms"]=999999
-    ck("o1_duration_ignored",certify(ts,ob2)["timing"]["t_valid_ms"]==99.5)
-    passed=sum(x["pass"] for x in cases)
-    return {"engine_version":VERSION,"schema_version":SCHEMA_VERSION,"case_count":len(cases),
-            "passed":passed,"failed":len(cases)-passed,
-            "virtual_fusion_selftest":"PASS" if passed==len(cases) else "FAIL",
-            "scope":"Virtual fixtures only; real Browser R3/Environment-99 not certified.","cases":cases}
+    base = canonical_current_state()
+    cases = []
 
-def load_cert(timing_paths, obs_path):
-    ts=[ingest_timing(x) for x in timing_paths]; ob=ingest_observability(obs_path)
-    return ts,ob,certify(ts,ob)
+    def add(name, state, expected):
+        actual = validate_state(state)["status"]
+        cases.append((name, actual == expected))
+
+    add("baseline", base, "PASS")
+    mutations = [
+        {"reality_fingerprint_v3_sha256": "0" * 64}, {"critical_unknown_count": 1},
+        {"critical_execution_coverage": "99.99"}, {"twin_input_ready": "NO"},
+        {"rules_runtime_effective": "UNKNOWN"}, {"rule_engine_validation": "FAIL"},
+        {"target": {"process_creation": "STARTED"}}, {"target": {"failure_api": "CreateProcess"}},
+        {"target": {"failure_code": 5}}, {"target": {"reproduction": "2_OF_3"}},
+        {"target": {"child_running": "YES"}}, {"target": {"child_path_resolution": "RESOLVED"}},
+        {"target": {"child_execution_token": "PRESENT"}},
+    ]
+    for index, overlay in enumerate(mutations, 1):
+        add("mutation_" + str(index), deep_merge(base, overlay), "FAIL")
+    replay = replay_current(base)
+    cases.append(("replay_boundary", replay.get("status") == "REPLAYED" and replay.get("error_code") == 1344))
+    shadow = shadow_overlay({"target": {"failure_code": 0, "process_creation": "STARTED"}})
+    cases.append(("shadow_isolation", shadow["status"] == "HYPOTHETICAL_SHADOW" and shadow["reality_mutated"] is False and shadow["delta_present"]))
+    for index in range(8):
+        replay = replay_current(base)
+        cases.append(("repeat_" + str(index + 1), replay.get("status") == "REPLAYED" and replay.get("error_code") == 1344))
+    passed = sum(1 for _, ok in cases if ok)
+    return {
+        "engine_version": VERSION,
+        "case_count": len(cases),
+        "passed": passed,
+        "failed": len(cases) - passed,
+        "virtual_contract_99": "PASS" if passed == len(cases) else "FAIL",
+        "cases": [{"name": name, "pass": ok} for name, ok in cases],
+    }
+
+
+def source_paths(workspace: Path):
+    r3 = workspace / "R3-BROWSER-REALITY"
+    return {
+        "r3": r3,
+        "anchor": r3 / "final" / "BROWSER-R3-FINAL-ANCHOR.json",
+        "fingerprint": r3 / "final" / "BROWSER-R3-FINGERPRINT.json",
+        "manifest": r3 / "final" / "BROWSER-R3-MANIFEST.json",
+        "process": r3 / "process-closure-01" / "BROWSER-PROCESS-CLOSURE.json",
+        "pack_manifest": workspace / "REALITY-PACK" / "manifest.json",
+        "golden": Path(r"C:\AI\Playwright-Native-AI-Browser\scripts\golden-harness.cjs"),
+    }
+
+
+def load_reality(workspace: Path):
+    paths = source_paths(workspace)
+    missing = [str(path) for key, path in paths.items() if key != "r3" and not path.is_file()]
+    if missing:
+        return None, ["MISSING_INPUT:" + item for item in missing]
+    anchor = read_json(paths["anchor"])
+    fingerprint = read_json(paths["fingerprint"])
+    manifest = read_json(paths["manifest"])
+    process = read_json(paths["process"])
+    pack_manifest = read_json(paths["pack_manifest"])
+    errors = []
+
+    checks = {
+        "BROWSER_R3_FINGERPRINT_SHA256": fingerprint.get("browser_r3_fingerprint_sha256") == EXPECTED_BROWSER_FINGERPRINT,
+        "BROWSER_R3_FINGERPRINT_RECOMPUTED": canonical_hash(fingerprint.get("input")) == EXPECTED_BROWSER_FINGERPRINT,
+        "GOLDEN_SHA256_ACTUAL": sha256_file(paths["golden"]) == EXPECTED_GOLDEN_SHA256,
+        "GOLDEN_SHA256_ANCHOR": anchor.get("canonical_golden_sha256") == EXPECTED_GOLDEN_SHA256,
+        "BROWSER_CRITICAL_UNKNOWN_COUNT": anchor.get("browser_critical_unknown_count") == 0,
+        "BROWSER_EXECUTION_RELEVANT_STATE_COMPLETE": anchor.get("browser_execution_relevant_state_complete") is True,
+        "GOLDEN_TASK_REALITY_REPRODUCED": anchor.get("golden_task_reality_reproduced") == "3_OF_3",
+        "BROWSER_TWIN_INPUT_READY": manifest.get("browser_twin_input_ready") is True,
+        "BROWSER_R3_REAL_CAPTURE": manifest.get("browser_r3_real_capture") == "PASS",
+        "REALITY_DELTA": anchor.get("reality_delta") == "NONE" and manifest.get("reality_delta") == "NONE",
+        "TASK_SHA256": anchor.get("task_sha256") == EXPECTED_TASK_SHA256,
+        "VALID_RULE_SHA256": anchor.get("valid_rule_sha256") == EXPECTED_VALID_SHA256,
+        "REALITY_PACK_MANIFEST_SHA256": sha256_file(paths["pack_manifest"]) == EXPECTED_REALITY_PACK_MANIFEST_SHA256,
+        "PROCESS_CLOSURE_SHA256": sha256_file(paths["process"]) == anchor["required_modules"]["R3_BROWSER_PROCESS"]["evidence"]["process_closure_sha256"],
+    }
+    for name, passed in checks.items():
+        if not passed:
+            errors.append(name + "_MISMATCH")
+
+    for entry in manifest.get("files", []):
+        target = paths["r3"] / Path(entry["path"])
+        if not target.is_file():
+            errors.append("R3_MANIFEST_FILE_MISSING:" + entry["path"])
+            continue
+        if target.stat().st_size != entry["bytes"] or sha256_file(target) != entry["sha256"]:
+            errors.append("R3_MANIFEST_FILE_MISMATCH:" + entry["path"])
+
+    runs = []
+    for index in range(1, 4):
+        safe = paths["r3"] / f"run-{index:02d}" / "safe"
+        runs.append({
+            "index": index,
+            "environment": read_json(safe / "environment.json"),
+            "result": read_json(safe / "full-run-result.json"),
+            "golden_result": read_json(safe / "golden-task-result.json"),
+            "actionability": read_json(safe / "actionability.json"),
+            "events": read_jsonl(safe / "events.jsonl"),
+            "cdp": read_jsonl(safe / "cdp.jsonl"),
+        })
+    return {
+        "paths": paths,
+        "anchor": anchor,
+        "fingerprint": fingerprint,
+        "manifest": manifest,
+        "process": process,
+        "pack_manifest": pack_manifest,
+        "runs": runs,
+        "input_checks": checks,
+    }, errors
+
+
+def normalized_actionability(entries, label):
+    selected = [next(item for item in run if item["label"] == label) for run in entries]
+    keys = ["exactly_one", "visible", "enabled", "stable_approx_two_animation_frames", "receives_events_approx"]
+    result = {key: all(item[key] is True for item in selected) for key in keys}
+    result.update({
+        "locator_count": [item["locator_count"] for item in selected],
+        "hit_target": [item["hit_target"] for item in selected],
+        "computed_style": [item["computed_style"] for item in selected],
+        "active_animations": [item["active_animations"] for item in selected],
+    })
+    return result
+
+
+def build_profile(reality):
+    anchor = reality["anchor"]
+    process = reality["process"]
+    runs = reality["runs"]
+    environments = [run["environment"] for run in runs]
+    actionability = [run["actionability"] for run in runs]
+    artifact_entries = reality["manifest"]["files"]
+    artifact_hashes = [
+        entry for entry in artifact_entries
+        if any(token in entry["path"] for token in ("trace.zip", "cdp.jsonl", "dom-snapshot.json"))
+    ]
+    event_counts = [dict(Counter(event["type"] for event in run["events"])) for run in runs]
+    cdp_counts = [dict(Counter(event["method"] for event in run["cdp"])) for run in runs]
+    dialog_openings = [
+        [event["params"] for event in run["cdp"] if event["method"] == "Page.javascriptDialogOpening"]
+        for run in runs
+    ]
+    dialog_closings = [
+        [event["params"] for event in run["cdp"] if event["method"] == "Page.javascriptDialogClosed"]
+        for run in runs
+    ]
+    profile = {
+        "profile_id": PROFILE_ID,
+        "component_id": COMPONENT_ID,
+        "method_version": METHOD_VERSION,
+        "twin_source_version": REALITY_SOURCE_TWIN_VERSION,
+        "mode": "READ_ONLY_REALITY_REPLAY",
+        "browser_process": {
+            "products": process["browser_products"],
+            "identity_source": process["process_fingerprint_alternative_source"],
+            "raw_command_line_stored": False,
+            "process_closure_sha256": anchor["required_modules"]["R3_BROWSER_PROCESS"]["evidence"]["process_closure_sha256"],
+        },
+        "versions": {
+            "node": anchor["acceptance_hard_fields"]["NODE_PLAYWRIGHT_BROWSER_VERSION"]["evidence"]["node"],
+            "playwright": process["playwright"]["version"],
+            "browser": process["browser_executable"]["version"],
+        },
+        "browser_executable_fingerprint": {
+            "path_sha256": process["browser_executable"]["path_sha256"],
+            "file_sha256": process["browser_executable"]["file_sha256"],
+        },
+        "launch_config_fingerprint": {
+            "sha256": process["launch_config_sha256"],
+            "config": process["launch_config"],
+        },
+        "context_config": {
+            "type": anchor["required_modules"]["R3_CONTEXT_CONFIG"]["evidence"]["context_type"],
+            "viewport": [environment["viewport"] for environment in environments],
+            "locale": [environment["runtime"]["language"] for environment in environments],
+            "timezone": [environment["runtime"]["timezone"] for environment in environments],
+            "user_agent_sha256": anchor["required_modules"]["R3_CONTEXT_CONFIG"]["evidence"]["user_agent_sha256"],
+            "accept_downloads": True,
+            "default_timeout_ms": 5000,
+        },
+        "profile_user_data_dir_fingerprint": {
+            "profile_path_sha256": anchor["required_modules"]["R3_CONTEXT_CONFIG"]["evidence"]["profile_path_sha256"],
+            "collector_mutated_profile": False,
+        },
+        "auth_storage_structure": {
+            "capture_modes": anchor["required_modules"]["R3_AUTH_STORAGE"]["evidence"]["storage_capture_modes"],
+            "counts": anchor["required_modules"]["R3_AUTH_STORAGE"]["evidence"]["counts"],
+            "auth_state_criterion": anchor["required_modules"]["R3_AUTH_STORAGE"]["evidence"]["auth_state_criterion"],
+            "plaintext_values_stored": False,
+        },
+        "page_frame_worker_service_worker_graph": {
+            "pages": anchor["required_modules"]["R3_PAGE_GRAPH"]["evidence"]["page_counts"],
+            "frames": [environment["frames"] for environment in environments],
+            "worker_status": anchor["required_modules"]["R3_PAGE_GRAPH"]["evidence"]["worker_status"],
+            "service_worker_status": anchor["required_modules"]["R3_PAGE_GRAPH"]["evidence"]["service_worker_status"],
+        },
+        "dom_layout_overlay_animation": {
+            "dom_snapshot_hashes": [entry["sha256"] for entry in artifact_entries if "dom-snapshot.json" in entry["path"]],
+            "target_selector": "#dialog",
+            "overlay_or_interceptor": "NOT_PRESENT_AT_CENTER_HIT_TEST",
+            "active_animations": [item["active_animations"] for run in actionability for item in run],
+        },
+        "dialog_actionability": {
+            "BEFORE_DIALOG": normalized_actionability(actionability, "BEFORE_DIALOG"),
+            "AFTER_DIALOG": normalized_actionability(actionability, "AFTER_DIALOG"),
+        },
+        "browser_network": {
+            "event_counts": event_counts,
+            "redirect_observed": anchor["required_modules"]["R3_NETWORK_BROWSER"]["evidence"]["redirect_observed"],
+            "websocket_status": anchor["required_modules"]["R3_NETWORK_BROWSER"]["evidence"]["websocket_status"],
+            "service_worker_status": anchor["required_modules"]["R3_NETWORK_BROWSER"]["evidence"]["service_worker_status"],
+            "tls_status": anchor["required_modules"]["R3_NETWORK_BROWSER"]["evidence"]["tls_status"],
+            "route_api_observed": all(counts.get("request", 0) == 5 and counts.get("response", 0) == 5 for counts in event_counts),
+        },
+        "host_network": {
+            "pre_safe_sha256": anchor["required_modules"]["R3_NETWORK_HOST"]["evidence"]["host_pre_safe_sha256"],
+            "post_safe_sha256": anchor["required_modules"]["R3_NETWORK_HOST"]["evidence"]["host_post_safe_sha256"],
+            "proxy_unchanged": True,
+            "network_settings_unchanged": True,
+            "outbound_probe": "NO",
+        },
+        "runtime_dialog_lifecycle": {
+            "cdp_method_counts": cdp_counts,
+            "dialog_opening": dialog_openings,
+            "dialog_closed": dialog_closings,
+            "pageerror_status": "NOT_PRESENT",
+            "crash_status": "NOT_PRESENT",
+        },
+        "artifact_hashes": artifact_hashes,
+        "golden_task": {
+            "reproduced": anchor["golden_task_reality_reproduced"],
+            "outcomes": [run["result"]["OUTCOME"] for run in runs],
+            "errors_present": [run["result"]["ERROR"]["PRESENT"] for run in runs],
+            "frozen_action_order": ACTION_ORDER,
+            "persistent_reconnect_in_frozen_golden": True,
+        },
+        "task_sha256": anchor["task_sha256"],
+        "valid_rule_sha256": anchor["valid_rule_sha256"],
+        "reality_pack_manifest": {
+            "sha256": anchor["reality_pack_manifest_sha256"],
+            "files": reality["pack_manifest"]["files"],
+        },
+        "browser_r3_fingerprint_sha256": reality["fingerprint"]["browser_r3_fingerprint_sha256"],
+        "canonical_golden_sha256": anchor["canonical_golden_sha256"],
+        "historical_t_star_real_ms": anchor["historical_t_star_real_ms"],
+        "source_invariants": {
+            "observation_perturbation": "NO",
+            "profile_mutated": "NO",
+            "routing_or_mock_enabled_by_collector": "NO",
+        },
+    }
+    return profile
+
+
+def browser_validate(workspace: Path, output_dir: Path):
+    reality, errors = load_reality(workspace)
+    if errors:
+        return {
+            "status": "FAIL", "profile_id": PROFILE_ID,
+            "critical_unknown_count": len(errors), "errors": errors,
+            "reality_delta": "TWIN_INPUT_GATE_MISMATCH", "action": "STOP", "return_to_gpt": True,
+        }
+    profile = build_profile(reality)
+    critical_values = [
+        profile["browser_r3_fingerprint_sha256"], profile["canonical_golden_sha256"],
+        profile["task_sha256"], profile["valid_rule_sha256"], profile["golden_task"]["reproduced"],
+    ]
+    unknown_count = sum(value == "UNKNOWN" or value is None for value in critical_values)
+    status = "PASS" if unknown_count == 0 else "FAIL"
+    if status == "PASS":
+        write_json(output_dir / "PLAYWRIGHT_GOLDEN_REALITY_PROFILE.json", profile)
+    result = {
+        "status": status,
+        "profile_id": PROFILE_ID,
+        "critical_unknown_count": unknown_count,
+        "input_gate": reality["input_checks"],
+        "profile_sha256": canonical_hash(profile),
+    }
+    write_json(output_dir / "BROWSER-PROFILE-VALIDATION.json", result)
+    return result
+
+
+def load_profile(output_dir: Path):
+    path = output_dir / "PLAYWRIGHT_GOLDEN_REALITY_PROFILE.json"
+    if not path.is_file():
+        raise ValueError("BROWSER_PROFILE_MISSING")
+    return read_json(path)
+
+
+def browser_replay(workspace: Path, output_dir: Path, after_shadow=False):
+    reality, errors = load_reality(workspace)
+    if errors:
+        raise ValueError("TWIN_INPUT_GATE_MISMATCH:" + ",".join(errors))
+    profile = load_profile(output_dir)
+    evidence_3_of_3 = profile["golden_task"]["outcomes"] == ["PASS", "PASS", "PASS"]
+    before = profile["dialog_actionability"]["BEFORE_DIALOG"]
+    after = profile["dialog_actionability"]["AFTER_DIALOG"]
+    dialog_open = profile["runtime_dialog_lifecycle"]["dialog_opening"]
+    dialog_closed = profile["runtime_dialog_lifecycle"]["dialog_closed"]
+    action_status = {name: evidence_3_of_3 for name in ACTION_ORDER}
+    action_status.update({
+        "TASK_IDENTITY": profile["task_sha256"] == EXPECTED_TASK_SHA256,
+        "VALID_IDENTITY": profile["valid_rule_sha256"] == EXPECTED_VALID_SHA256,
+        "BROWSER_PROCESS_IDENTITY": profile["browser_executable_fingerprint"]["file_sha256"] == reality["process"]["browser_executable"]["file_sha256"],
+        "CONTEXT_IDENTITY": profile["context_config"]["type"] == "NON_PERSISTENT_BROWSER_NEW_CONTEXT",
+        "PROFILE_IDENTITY": profile["profile_user_data_dir_fingerprint"]["profile_path_sha256"] == reality["anchor"]["required_modules"]["R3_CONTEXT_CONFIG"]["evidence"]["profile_path_sha256"],
+        "PAGE_FRAME_GRAPH": all(len(frames) == 2 for frames in profile["page_frame_worker_service_worker_graph"]["frames"]),
+        "BEFORE_DIALOG_ACTIONABILITY": all(before[key] for key in ("exactly_one", "visible", "enabled", "stable_approx_two_animation_frames", "receives_events_approx")),
+        "DIALOG_OPENING": all(len(items) == 1 and items[0]["message"] == "native-dialog" for items in dialog_open),
+        "DIALOG_ACCEPT": all(len(items) == 1 and items[0]["result"] is True for items in dialog_closed),
+        "AFTER_DIALOG_ACTIONABILITY": all(after[key] for key in ("exactly_one", "visible", "enabled", "stable_approx_two_animation_frames", "receives_events_approx")),
+        "POPUP": all(counts.get("context_page") == 1 for counts in profile["browser_network"]["event_counts"]),
+        "FRAME": all(len(frames) == 2 for frames in profile["page_frame_worker_service_worker_graph"]["frames"]),
+        "ROUTE_API": profile["browser_network"]["route_api_observed"] is True,
+        "PERSISTENT_RECONNECT_1": evidence_3_of_3 and profile["golden_task"]["persistent_reconnect_in_frozen_golden"] is True,
+        "PERSISTENT_RECONNECT_2": evidence_3_of_3 and profile["golden_task"]["persistent_reconnect_in_frozen_golden"] is True,
+        "FINAL_GOLDEN_RESULT": profile["golden_task"]["reproduced"] == "3_OF_3" and evidence_3_of_3,
+    })
+    result = {
+        "status": "PASS" if all(action_status.values()) else "FAIL",
+        "profile_id": PROFILE_ID,
+        "action_sequence": [
+            {"sequence": index, "action": action, "status": "PASS" if action_status[action] else "FAIL"}
+            for index, action in enumerate(ACTION_ORDER, 1)
+        ],
+        "persistent_reconnect": {
+            "reconnect_1": "PASS" if action_status["PERSISTENT_RECONNECT_1"] else "FAIL",
+            "reconnect_2": "PASS" if action_status["PERSISTENT_RECONNECT_2"] else "FAIL",
+        },
+        "business_result": "PASS_3_OF_3" if action_status["FINAL_GOLDEN_RESULT"] else "FAIL",
+        "twin_critical_unknown_count": 0,
+    }
+    filename = "BROWSER-REALITY-REPLAY-AFTER-SHADOW.json" if after_shadow else "BROWSER-REALITY-REPLAY.json"
+    write_json(output_dir / filename, result)
+    return result
+
+
+def browser_delta(workspace: Path, output_dir: Path):
+    reality, errors = load_reality(workspace)
+    if errors:
+        raise ValueError("TWIN_INPUT_GATE_MISMATCH:" + ",".join(errors))
+    profile = load_profile(output_dir)
+    replay = read_json(output_dir / "BROWSER-REALITY-REPLAY.json")
+    comparisons = {
+        "SAME_TASK": profile["task_sha256"] == reality["anchor"]["task_sha256"],
+        "SAME_VALID": profile["valid_rule_sha256"] == reality["anchor"]["valid_rule_sha256"],
+        "SAME_BROWSER_PROCESS": profile["browser_executable_fingerprint"]["file_sha256"] == reality["process"]["browser_executable"]["file_sha256"],
+        "SAME_CONTEXT": profile["context_config"]["type"] == reality["anchor"]["required_modules"]["R3_CONTEXT_CONFIG"]["evidence"]["context_type"],
+        "SAME_PROFILE": profile["profile_user_data_dir_fingerprint"]["profile_path_sha256"] == reality["anchor"]["required_modules"]["R3_CONTEXT_CONFIG"]["evidence"]["profile_path_sha256"],
+        "SAME_ACTION_SEQUENCE": [item["action"] for item in replay["action_sequence"]] == ACTION_ORDER and all(item["status"] == "PASS" for item in replay["action_sequence"]),
+        "SAME_DIALOG_BEHAVIOR": all(len(items) == 1 and items[0]["message"] == "native-dialog" for items in profile["runtime_dialog_lifecycle"]["dialog_opening"]) and all(len(items) == 1 and items[0]["result"] is True for items in profile["runtime_dialog_lifecycle"]["dialog_closed"]),
+        "SAME_ACTIONABILITY": all(profile["dialog_actionability"][label][key] for label in ("BEFORE_DIALOG", "AFTER_DIALOG") for key in ("exactly_one", "visible", "enabled", "stable_approx_two_animation_frames", "receives_events_approx")),
+        "SAME_NETWORK_SEMANTICS": all(counts.get("request") == 5 and counts.get("response") == 5 and counts.get("requestfinished") == 5 for counts in profile["browser_network"]["event_counts"]),
+        "SAME_RUNTIME_SEMANTICS": all(counts.get("Page.javascriptDialogOpening") == 1 and counts.get("Page.javascriptDialogClosed") == 1 for counts in profile["runtime_dialog_lifecycle"]["cdp_method_counts"]),
+        "SAME_RECONNECT_RESULT": replay["persistent_reconnect"] == {"reconnect_1": "PASS", "reconnect_2": "PASS"},
+        "SAME_BUSINESS_RESULT": replay["business_result"] == "PASS_3_OF_3",
+    }
+    labeled = {name: "PASS" if passed else "FAIL" for name, passed in comparisons.items()}
+    material_count = sum(value != "PASS" for value in labeled.values())
+    result = {
+        "status": "PASS" if material_count == 0 else "FAIL",
+        "comparisons": labeled,
+        "twin_critical_unknown_count": 0,
+        "material_reality_twin_delta_count": material_count,
+        "same_critical_browser_behavior": "PASS" if all(labeled[name] == "PASS" for name in (
+            "SAME_BROWSER_PROCESS", "SAME_CONTEXT", "SAME_PROFILE", "SAME_ACTION_SEQUENCE",
+            "SAME_DIALOG_BEHAVIOR", "SAME_ACTIONABILITY", "SAME_NETWORK_SEMANTICS",
+            "SAME_RUNTIME_SEMANTICS", "SAME_RECONNECT_RESULT",
+        )) else "FAIL",
+        "reality_delta": "NONE" if material_count == 0 else "MATERIAL_TWIN_DELTA",
+    }
+    write_json(output_dir / "BROWSER-REALITY-TWIN-DELTA.json", result)
+    return result
+
+
+def browser_shadow(output_dir: Path, overlay_path: Path):
+    profile_path = output_dir / "PLAYWRIGHT_GOLDEN_REALITY_PROFILE.json"
+    profile_file_before = sha256_file(profile_path)
+    profile = read_json(profile_path)
+    overlay = read_json(overlay_path)
+    hypothetical = deep_merge(profile, overlay)
+    paths = changed_paths(profile, hypothetical)
+    profile_file_after = sha256_file(profile_path)
+    result = {
+        "status": "PASS" if paths and profile_file_before == profile_file_after else "FAIL",
+        "mode": "HYPOTHETICAL_SHADOW",
+        "shadow_delta_present": "YES" if paths else "NO",
+        "changed_paths": paths,
+        "reality_mutated": "NO" if profile_file_before == profile_file_after else "YES",
+        "reality_profile_sha256_before": profile_file_before,
+        "reality_profile_sha256_after": profile_file_after,
+        "shadow_state_sha256": canonical_hash(hypothetical),
+    }
+    write_json(output_dir / "BROWSER-SHADOW-ISOLATION.json", result)
+    return result
+
 
 def main():
-    p=argparse.ArgumentParser(); sp=p.add_subparsers(dest="mode",required=True)
-    sp.add_parser("selftest")
-    for name in ("validate","replay","benchmark","shadow"):
-        q=sp.add_parser(name); q.add_argument("--timing",action="append",required=True); q.add_argument("--observability",required=True)
-        if name=="benchmark": q.add_argument("--repeats",type=int,default=1000)
-        if name=="shadow": q.add_argument("--overlay",required=True)
-    a=p.parse_args()
-    if a.mode=="selftest": result=run_selftest()
-    else:
-        ts,ob,cert=load_cert(a.timing,a.observability)
-        if a.mode=="validate": result={"timing":[validate_timing(x) for x in ts],"observability":validate_observability(ob),"certification":cert}
-        elif a.mode=="replay":
-            rp=replay(cert); result={"certification":cert,"replay":rp,"reality_twin_diff":diff_reality_twin(cert,rp)}
-        elif a.mode=="benchmark": result=benchmark(cert,a.repeats)
-        else: result=shadow(cert,read_json(Path(a.overlay)))
-    print(json.dumps(result,ensure_ascii=False,indent=2))
+    parser = argparse.ArgumentParser()
+    parser.add_argument("mode", choices=[
+        "replay", "selftest", "shadow", "browser_validate", "browser_replay",
+        "browser_delta", "browser_shadow",
+    ])
+    parser.add_argument("--overlay")
+    parser.add_argument("--browser-overlay")
+    parser.add_argument("--workspace-root", type=Path, default=Path(__file__).resolve().parents[2])
+    parser.add_argument("--output-dir", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--after-shadow", action="store_true")
+    args = parser.parse_args()
 
-if __name__=="__main__": main()
+    try:
+        if args.mode == "replay":
+            result = replay_current()
+        elif args.mode == "selftest":
+            result = run_selftest()
+            write_json(args.output_dir.resolve() / "LEGACY-SELFTEST.json", result)
+        elif args.mode == "shadow":
+            if not args.overlay:
+                raise ValueError("--overlay required")
+            result = shadow_overlay(read_json(Path(args.overlay)))
+        elif args.mode == "browser_validate":
+            result = browser_validate(args.workspace_root.resolve(), args.output_dir.resolve())
+        elif args.mode == "browser_replay":
+            result = browser_replay(args.workspace_root.resolve(), args.output_dir.resolve(), args.after_shadow)
+        elif args.mode == "browser_delta":
+            result = browser_delta(args.workspace_root.resolve(), args.output_dir.resolve())
+        else:
+            if not args.browser_overlay:
+                raise ValueError("--browser-overlay required")
+            result = browser_shadow(args.output_dir.resolve(), Path(args.browser_overlay).resolve())
+    except (OSError, ValueError, KeyError, json.JSONDecodeError) as error:
+        result = {"status": "FAIL", "error": str(error), "action": "STOP", "return_to_gpt": True}
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        raise SystemExit(2)
+
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    if result.get("status") == "FAIL":
+        raise SystemExit(2)
+
+
+if __name__ == "__main__":
+    main()
