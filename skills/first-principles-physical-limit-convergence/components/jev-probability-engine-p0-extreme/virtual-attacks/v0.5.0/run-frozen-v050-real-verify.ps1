@@ -68,7 +68,7 @@ if ((Get-FileHash -Algorithm SHA256 -LiteralPath $anchorPath).Hash -ne $expected
     throw 'VERIFY=BLOCKED_BASELINE_SOURCE_INTEGRITY_FAIL'
 }
 
-$workspace = 'C:\Users\A\Documents\Codex\2026-09-21\jev-probability-engine-p0-v050-frozen-real-verify'
+$workspace = 'C:\Users\A\Documents\Codex\2026-09-21\jev-probability-engine-p0-v050-frozen-real-verify-r2'
 if (Test-Path -LiteralPath $workspace) {
     throw "VERIFY=BLOCKED_OUTPUT_ALREADY_EXISTS: $workspace"
 }
