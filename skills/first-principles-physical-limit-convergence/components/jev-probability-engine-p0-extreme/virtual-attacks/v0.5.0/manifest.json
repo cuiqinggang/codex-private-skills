@@ -24,12 +24,12 @@
     "reality_verify_only": true
   },
   "git_blob_sha": {
-    "candidate_source": "a875d09d2c2785911dd85b2b9eac6f2c3835b784",
+    "candidate_source": "66de96b172c50efea8f3f520c0c31669d6122c67",
     "mature_solution_fusion": "6a2cca2b0bc35e9b4ffe0a3574b8c416df4042b2",
     "virtual_99_freeze": "e2333b65d87486247223f62a881a1eef4b3f5613",
     "frozen_candidate": "4b273b74a7d74851d1e99715a72cb52e168d7752",
     "real_verify_contract": "f89584f72bafe04f61d347bfc2960ecbfbbde997",
-    "runner": "196ec40445f0debdec935425f97e9d398b94526a"
+    "runner": "d88e4bef88b1da7ddf313d42d751c355dde692be"
   },
   "next_action": "RUN_FROZEN_REAL_VERIFY_ONCE",
   "reality_delta": {
@@ -38,7 +38,17 @@
     "runner_started": "NO",
     "result_path": "NONE",
     "candidate_status": "UNCHANGED",
-    "action": "USER_POWERSHELL_SECRET_BEARING_RUN_THEN_CODEX_CREDENTIAL_FREE_POST_VERIFY"
+    "action": "USER_POWERSHELL_SECRET_BEARING_RUN_THEN_CODEX_CREDENTIAL_FREE_POST_VERIFY",
+    "compile_preflight_v1": {
+      "status": "BLOCKED_BEFORE_BENCHMARK",
+      "compiler_error": "CS0136 local variable name collision",
+      "candidate_executed": "NO",
+      "performance_result": "NOT_MEASURED",
+      "correction": "IDENTIFIER_RENAME_ONLY",
+      "structure_changed": "NO",
+      "corrected_source_blob": "66de96b172c50efea8f3f520c0c31669d6122c67",
+      "next_output_root": "C:\\Users\\A\\Documents\\Codex\\2026-09-21\\jev-probability-engine-p0-v050-frozen-real-verify-r2"
+    }
   },
   "post_run_verify": {
     "verifier": "verify-frozen-v050-result.ps1",
