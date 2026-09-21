@@ -8,6 +8,7 @@ METHOD=first-principles-physical-limit-convergence v3.1.7
 CURRENT_STEP=2
 STEP_NAME=高智能虚拟成熟
 SCOPE=RUNTIME_ONLY_REOPEN
+VIRTUAL99_STATUS=BLOCKED_SUITE_EXECUTABILITY
 REALITY_REDESIGN=FORBIDDEN
 B_STAR_MODEL_SELECTION=FROZEN
 TARGET_CONTEXT=262144
@@ -270,54 +271,63 @@ T_CERT_TOTAL_MODEL≈116:13:00
 
 其中后者继续包含 decode、long-workflow、thinking/JEV、prefix-mutated cache、stability、tool/verifier/recovery 的冻结工作量模型。
 
-## 7. 新的 min T_VALID
+## 7. full-system T_VALID 不能在本版合法冻结
 
-从当前现实状态出发：
+Runtime candidate 与 timing prior 已形成：
 
 ```text
-T_RUNTIME_READY*   ≈ 00:10:00
-T_MODEL_READY*     ≈ 01:48:00
-T_SERVER_READY*    ≈ 00:02:00
-T_CERT+FINALVERIFY ≈116:13:00
---------------------------------
-MIN_T_VALID_VIRTUAL99 = 118:13:00
-MIN_T_VALID_SECONDS    = 425580
+RUNTIME_WINNER=
+R1_SAME_RELEASE_DETERMINISTIC_AVX_SM75_SERVER_ONLY
+
+T_RUNTIME_READY_MODEL≈00:10:00
+T_MODEL_READY_MODEL≈01:48:00
+T_CERT_TOTAL_MODEL≈116:13:00
+PROVISIONAL_FULL_SYSTEM_TIME_MODEL≈118:13:00
 ```
 
-这里的 `118:13:00` 是新的 **full-system Virtual-99 可证伪极限目标**，不是 Reality 已实测值，也不是物理定律常数。
-
-冻结判定：
+但继续做 executability audit 后发现冻结 v3 Suite 至少存在两个硬问题：
 
 ```text
-QUALITY_GATE_FAIL
-=> REALITY_FAIL
-=> SAVE_MINIMUM_CONTRADICTION_EVIDENCE
-=> STOP
-=> RETURN_TO_STEP_2
+A. 252-255K context band 中存在 16 个 HIGH_8192 Atomic cases。
+   仅 252K prompt + 8192 reserve = 266240 > 262144，
+   尚未加入 tool schema / final output，数学上不可执行。
 
-ALL_QUALITY_GATES_PASS AND T_VALID_REAL > 425580s
-=> TIME_MODEL_FAIL
-=> SAVE_FULL_TIME_DECOMPOSITION
-=> STOP
-=> RETURN_TO_STEP_2
-
-ALL_QUALITY_GATES_PASS AND T_VALID_REAL <= 425580s
-=> REALITY_CERTIFIED
+B. Suite case 声明 fixture.generator=bstar-fixture-v3，
+   但当前 Authority workspace 没有该 generator 的实现，
+   也没有完整 1018-unit deterministic Reality runner binding。
 ```
 
-Reality 若更快，允许 PASS；不得为了“贴近模型”故意等待。
-
-## 8. 冻结结果
+因此：
 
 ```text
-RUNTIME_ONLY_VIRTUAL_99_V2=PASS
+SUITE_EXECUTABILITY_GATE=FAIL
+RUNNER_BINDING_GATE=FAIL
+FULL_SYSTEM_MIN_T_VALID*=UNRESOLVED
+PROVISIONAL_TIME_MODEL=118:13:00
+REALITY_ENTRY=FORBIDDEN
+```
+
+`118:13:00` 只保留为时间模型草案，不能作为 Step 3 PASS/FAIL gate。
+
+详细矛盾证据：
+
+```text
+Qwen3.8-27B-Bstar-Suite-Executability-Contradiction-v1.md
+```
+
+## 8. 当前冻结结果
+
+```text
+RUNTIME_CANDIDATE_VIRTUAL_MATURE=YES
 RUNTIME_WINNER=R1_SAME_RELEASE_DETERMINISTIC_AVX_SM75_SERVER_ONLY
-FULL_SYSTEM_MIN_T_VALID*=118:13:00
-FULL_SYSTEM_MIN_T_VALID_SECONDS=425580
-RUNTIME_ONLY_V1=SUPERSEDED
-REALITY_CERTIFIED=NO
-NEXT_STEP=3_REALITY_CERTIFICATION
-AUTO_FALLBACK=NO
+RUNTIME_REALITY_CERTIFIED=NO
+
+RUNTIME_ONLY_VIRTUAL_99_V2=BLOCKED
+BLOCKER=SUITE_EXECUTABILITY_AND_RUNNER_BINDING
+FULL_VIRTUAL_99=NOT_MATURE
+MIN_T_VALID=UNRESOLVED
+STEP3_COMMAND=FORBIDDEN
+NEXT_ACTION=CONTINUE_STEP_2_EXECUTABLE_SUITE_BINDING
 ```
 
-Reality 禁止现场切 R2/R3/R4；任何矛盾必须带证据回 Step 2。
+禁止以旧 60s、旧 600s 或 provisional 118:13:00 绕过该门进入 Reality。
