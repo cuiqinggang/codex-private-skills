@@ -3,7 +3,7 @@
   "display_name_zh": "现实执行环境精确锚定与数字孪生基线",
   "version": "1.2.0",
   "status": "HOST_R2_COMPLETE_BROWSER_R3_COLLECTOR_READY",
-  "parent_method": "first-principles-physical-limit-convergence@3.1.7",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.8",
   "history_append_only": true,
   "host_r2": {
     "status": "REALITY_ANCHOR_COMPLETE",
@@ -23,14 +23,16 @@
     "collector_contract": "FROZEN",
     "real_capture": "NOT_YET",
     "fingerprint": "NOT_YET",
-    "browser_twin_input_ready": false
+    "browser_twin_input_ready": false,
+    "timing_collector": "collectors/browser-reality-r3-timing.mjs",
+    "timing_contract": "T1_T2_T3_LIGHTWEIGHT_PLUS_O1_OBSERVABILITY"
   },
   "secret_policy": "SECRET_PLAINTEXT_ZERO_REMOTE",
   "environment_99": "NOT_YET",
   "twin_consumer": {
     "id": "exact-reality-digital-twin",
     "display_name_zh": "现实执行环境精确数字孪生唯一版",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "parent_path": "skills/first-principles-physical-limit-convergence/components/exact-reality-digital-twin"
   }
 }
