@@ -1,0 +1,35 @@
+{
+  "project": "JEV Probability Engine P0",
+  "attack": "v0.4.0 -> v0.5.0-candidate",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.7",
+  "branch": "codex/jev-probability-engine-p0-v0.5.0-virtual99-freeze",
+  "status": "VIRTUAL_99_FROZEN_REAL_VERIFY_ONLY",
+  "baseline": {
+    "version": "v0.4.0",
+    "t_p0_ms": 560.9819,
+    "real_certified": true
+  },
+  "candidate": {
+    "id": "JPE-P0-S2-PROJECTED-EARLY-RELEASE-V3",
+    "version": "v0.5.0-candidate"
+  },
+  "shadow": {
+    "virtual_target_ms": 533,
+    "real_claim": false,
+    "iteration_space": "YES"
+  },
+  "authority": {
+    "codex_design_authority": "NO",
+    "codex_executor_only": "YES",
+    "reality_verify_only": true
+  },
+  "git_blob_sha": {
+    "candidate_source": "a875d09d2c2785911dd85b2b9eac6f2c3835b784",
+    "mature_solution_fusion": "6a2cca2b0bc35e9b4ffe0a3574b8c416df4042b2",
+    "virtual_99_freeze": "e2333b65d87486247223f62a881a1eef4b3f5613",
+    "frozen_candidate": "4b273b74a7d74851d1e99715a72cb52e168d7752",
+    "real_verify_contract": "f89584f72bafe04f61d347bfc2960ecbfbbde997",
+    "runner": "196ec40445f0debdec935425f97e9d398b94526a"
+  },
+  "next_action": "RUN_FROZEN_REAL_VERIFY_ONCE"
+}
