@@ -36,8 +36,8 @@ function fmt(n) { return Number(n).toFixed(2); }
 function emitFailure(delta, realRuns = 0, validRuns = 0, error = null) {
   if (error) process.stderr.write(String(error && error.stack ? error.stack : error) + '\n');
   process.stdout.write([
-    \`REAL_RUNS=\${realRuns}\`,
-    \`VALID_RUNS=\${validRuns}\`,
+    `REAL_RUNS=${realRuns}`,
+    `VALID_RUNS=${validRuns}`,
     'T_REAL_MIN_MS=N/A',
     'T_REAL_P50_MS=N/A',
     'T_REAL_P95_MS=N/A',
@@ -45,8 +45,8 @@ function emitFailure(delta, realRuns = 0, validRuns = 0, error = null) {
     'TARGET_820_REACHED=NOT_EVALUATED',
     'MATURE_1050_REACHED=NOT_EVALUATED',
     'BEATS_1241_68=NOT_EVALUATED',
-    \`NEW_T_STAR_REAL_MS=\${EXPECTED.historicalMs}\`,
-    \`REALITY_DELTA=\${delta}\`,
+    `NEW_T_STAR_REAL_MS=${EXPECTED.historicalMs}`,
+    `REALITY_DELTA=${delta}`,
     'ACTION=STOP',
     'RETURN_TO_GPT=YES',
   ].join('\n') + '\n');
@@ -56,11 +56,11 @@ function emitFailure(delta, realRuns = 0, validRuns = 0, error = null) {
 (async () => {
   try {
     for (const p of [WORKSPACE, BROWSER_ROOT, GOLDEN, FIXTURE, UPLOAD, PROFILE]) {
-      if (!fs.existsSync(p)) return emitFailure(\`REQUIRED_PATH_MISSING:\${p}\`);
+      if (!fs.existsSync(p)) return emitFailure(`REQUIRED_PATH_MISSING:${p}`);
     }
 
     const goldenHash = sha256File(GOLDEN);
-    if (goldenHash !== EXPECTED.goldenSha256) return emitFailure(\`CANONICAL_GOLDEN_SHA_MISMATCH:\${goldenHash}\`);
+    if (goldenHash !== EXPECTED.goldenSha256) return emitFailure(`CANONICAL_GOLDEN_SHA_MISMATCH:${goldenHash}`);
 
     const twinProfile = path.join(WORKSPACE, 'TWIN-PLAYWRIGHT-GOLDEN-REALITY-SHADOW', 'PLAYWRIGHT_GOLDEN_REALITY_PROFILE.json');
     if (!fs.existsSync(twinProfile)) return emitFailure('TWIN_PROFILE_MISSING');
@@ -112,7 +112,7 @@ function emitFailure(delta, realRuns = 0, validRuns = 0, error = null) {
         agree.checked = true;
         agree.dispatchEvent(new Event('change', { bubbles: true }));
         submit.click();
-        must(result.textContent === \`round-\${r}:blue:true\`, 'extract mismatch');
+        must(result.textContent === `round-${r}:blue:true`, 'extract mismatch');
 
         const keyboard = document.querySelector('#keyboard');
         keyboard.focus();
@@ -193,7 +193,7 @@ function emitFailure(delta, realRuns = 0, validRuns = 0, error = null) {
       await resetReady();
       for (let i = 1; i <= EXPECTED.warmups; i++) {
         const r = await one(i, false);
-        if (!r.pass) return emitFailure(\`WARMUP_FAIL:\${i}\`, 0, 0, r.error);
+        if (!r.pass) return emitFailure(`WARMUP_FAIL:${i}`, 0, 0, r.error);
       }
 
       const results = [];
@@ -202,7 +202,7 @@ function emitFailure(delta, realRuns = 0, validRuns = 0, error = null) {
         results.push(r);
         if (!r.pass) {
           fs.writeFileSync(path.join(OUT_ROOT, 'FAILED-RUN.json'), JSON.stringify({ run: i, ...r }, null, 2));
-          return emitFailure(\`MEASURED_RUN_FAIL:\${i}\`, results.length, results.filter(x => x.pass).length, r.error);
+          return emitFailure(`MEASURED_RUN_FAIL:${i}`, results.length, results.filter(x => x.pass).length, r.error);
         }
       }
 
@@ -236,16 +236,16 @@ function emitFailure(delta, realRuns = 0, validRuns = 0, error = null) {
       }, null, 2));
 
       process.stdout.write([
-        \`REAL_RUNS=\${EXPECTED.runs}\`,
-        \`VALID_RUNS=\${EXPECTED.runs}\`,
-        \`T_REAL_MIN_MS=\${fmt(min)}\`,
-        \`T_REAL_P50_MS=\${fmt(p50)}\`,
-        \`T_REAL_P95_MS=\${fmt(p95)}\`,
-        \`T_REAL_MAX_MS=\${fmt(max)}\`,
-        \`TARGET_820_REACHED=\${min <= EXPECTED.targetMs ? 'YES' : 'NO'}\`,
-        \`MATURE_1050_REACHED=\${min <= EXPECTED.matureMaxMs ? 'YES' : 'NO'}\`,
-        \`BEATS_1241_68=\${min < EXPECTED.historicalMs ? 'YES' : 'NO'}\`,
-        \`NEW_T_STAR_REAL_MS=\${fmt(newStar)}\`,
+        `REAL_RUNS=${EXPECTED.runs}`,
+        `VALID_RUNS=${EXPECTED.runs}`,
+        `T_REAL_MIN_MS=${fmt(min)}`,
+        `T_REAL_P50_MS=${fmt(p50)}`,
+        `T_REAL_P95_MS=${fmt(p95)}`,
+        `T_REAL_MAX_MS=${fmt(max)}`,
+        `TARGET_820_REACHED=${min <= EXPECTED.targetMs ? 'YES' : 'NO'}`,
+        `MATURE_1050_REACHED=${min <= EXPECTED.matureMaxMs ? 'YES' : 'NO'}`,
+        `BEATS_1241_68=${min < EXPECTED.historicalMs ? 'YES' : 'NO'}`,
+        `NEW_T_STAR_REAL_MS=${fmt(newStar)}`,
         'REALITY_DELTA=NONE',
         'ACTION=STOP',
         'RETURN_TO_GPT=NO',
