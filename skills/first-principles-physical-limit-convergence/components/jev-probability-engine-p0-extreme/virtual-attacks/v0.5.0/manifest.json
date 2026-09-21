@@ -31,5 +31,19 @@
     "real_verify_contract": "f89584f72bafe04f61d347bfc2960ecbfbbde997",
     "runner": "196ec40445f0debdec935425f97e9d398b94526a"
   },
-  "next_action": "RUN_FROZEN_REAL_VERIFY_ONCE"
+  "next_action": "RUN_FROZEN_REAL_VERIFY_ONCE",
+  "reality_delta": {
+    "type": "CODEX_CREDENTIAL_BOUNDARY",
+    "candidate_executed": "NO",
+    "runner_started": "NO",
+    "result_path": "NONE",
+    "candidate_status": "UNCHANGED",
+    "action": "USER_POWERSHELL_SECRET_BEARING_RUN_THEN_CODEX_CREDENTIAL_FREE_POST_VERIFY"
+  },
+  "post_run_verify": {
+    "verifier": "verify-frozen-v050-result.ps1",
+    "handoff": "CODEX-POST-RUN-VERIFY.md",
+    "codex_credential_access": "FORBIDDEN",
+    "codex_api_calls": "FORBIDDEN"
+  }
 }
