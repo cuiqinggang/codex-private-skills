@@ -341,11 +341,13 @@ def fuse_runs(states: list[dict[str, Any]]) -> dict[str, Any]:
     certified = not errors
     timing = {
         "run_duration_ms": durations,
+        "t_valid_ms": min(durations) if len(durations) == 3 and certified else UNKNOWN,
         "task_min_ms": min(durations) if len(durations) == 3 else UNKNOWN,
         "task_median_ms": statistics.median(durations) if len(durations) == 3 else UNKNOWN,
         "task_max_ms": max(durations) if len(durations) == 3 else UNKNOWN,
-        "t_valid_certification_ms": sum(durations) if len(durations) == 3 and certified else UNKNOWN,
-        "metric_definition": "sum of three frozen Golden Task run durations; valid only after all three pass the same semantic gate",
+        "certification_evidence_time_ms": sum(durations) if len(durations) == 3 and certified else UNKNOWN,
+        "t_valid_definition": "minimum measured Golden Task duration among the frozen 3/3 timing runs, valid only after all quality/reality gates pass",
+        "certification_time_note": "sum of the three run durations is evidence cost, not the optimization metric",
     }
     fused = {
         "schema_version": SCHEMA_VERSION, "engine_version": VERSION,
@@ -485,7 +487,7 @@ def run_selftest() -> dict[str, Any]:
     fused = fuse_runs(states)
     check("fuse_3_of_3_pass", fused.get("status") == "PASS")
     check("golden_semantics_3_of_3", fused.get("golden_task_reproduced") == "3_OF_3")
-    check("t_valid_certification_defined", isinstance(_safe_get(fused, "timing", "t_valid_certification_ms"), (int,float)))
+    check("t_valid_defined", isinstance(_safe_get(fused, "timing", "t_valid_ms"), (int,float)))
     replay = replay_fused(fused)
     check("replay_pass", replay.get("status") == "REPLAYED")
     diff = compare_replay_to_reality(fused, replay)
@@ -513,7 +515,8 @@ def run_selftest() -> dict[str, Any]:
     check("task_min_correct", abs(_safe_get(fused,"timing","task_min_ms") - 99.5) < 1e-9)
     check("task_median_correct", abs(_safe_get(fused,"timing","task_median_ms") - 100.0) < 1e-9)
     check("task_max_correct", abs(_safe_get(fused,"timing","task_max_ms") - 101.0) < 1e-9)
-    check("certification_sum_correct", abs(_safe_get(fused,"timing","t_valid_certification_ms") - 300.5) < 1e-9)
+    check("t_valid_min_correct", abs(_safe_get(fused,"timing","t_valid_ms") - 99.5) < 1e-9)
+    check("certification_sum_correct", abs(_safe_get(fused,"timing","certification_evidence_time_ms") - 300.5) < 1e-9)
     check("unknown_not_fabricated", replay_fused({"status":"FAIL","errors":["X"]}).get("unknowns_preserved") is True)
     for reason, expected_reason in (("INTERCEPTED","EVENT_INTERCEPTED"),("UNSTABLE","UNSTABLE"),
                                     ("DISABLED","DISABLED"),("NOT_VISIBLE","NOT_VISIBLE")):
