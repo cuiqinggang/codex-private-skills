@@ -1,0 +1,147 @@
+{
+  "status": "PASS",
+  "profile_id": "PLAYWRIGHT_GOLDEN_REALITY_PROFILE",
+  "action_sequence": [
+    {
+      "sequence": 1,
+      "action": "TASK_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "sequence": 2,
+      "action": "VALID_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "sequence": 3,
+      "action": "BROWSER_PROCESS_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "sequence": 4,
+      "action": "CONTEXT_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "sequence": 5,
+      "action": "PROFILE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "sequence": 6,
+      "action": "PAGE_FRAME_GRAPH",
+      "status": "PASS"
+    },
+    {
+      "sequence": 7,
+      "action": "NAVIGATION",
+      "status": "PASS"
+    },
+    {
+      "sequence": 8,
+      "action": "LOCATOR",
+      "status": "PASS"
+    },
+    {
+      "sequence": 9,
+      "action": "INPUT",
+      "status": "PASS"
+    },
+    {
+      "sequence": 10,
+      "action": "CLICK",
+      "status": "PASS"
+    },
+    {
+      "sequence": 11,
+      "action": "EXTRACT",
+      "status": "PASS"
+    },
+    {
+      "sequence": 12,
+      "action": "KEYBOARD",
+      "status": "PASS"
+    },
+    {
+      "sequence": 13,
+      "action": "DRAG_DROP",
+      "status": "PASS"
+    },
+    {
+      "sequence": 14,
+      "action": "UPLOAD",
+      "status": "PASS"
+    },
+    {
+      "sequence": 15,
+      "action": "DOWNLOAD",
+      "status": "PASS"
+    },
+    {
+      "sequence": 16,
+      "action": "BEFORE_DIALOG_ACTIONABILITY",
+      "status": "PASS"
+    },
+    {
+      "sequence": 17,
+      "action": "DIALOG_OPENING",
+      "status": "PASS"
+    },
+    {
+      "sequence": 18,
+      "action": "DIALOG_ACCEPT",
+      "status": "PASS"
+    },
+    {
+      "sequence": 19,
+      "action": "AFTER_DIALOG_ACTIONABILITY",
+      "status": "PASS"
+    },
+    {
+      "sequence": 20,
+      "action": "POPUP",
+      "status": "PASS"
+    },
+    {
+      "sequence": 21,
+      "action": "FRAME",
+      "status": "PASS"
+    },
+    {
+      "sequence": 22,
+      "action": "ROUTE_API",
+      "status": "PASS"
+    },
+    {
+      "sequence": 23,
+      "action": "ISOLATED_CONTEXT",
+      "status": "PASS"
+    },
+    {
+      "sequence": 24,
+      "action": "SCREENSHOT",
+      "status": "PASS"
+    },
+    {
+      "sequence": 25,
+      "action": "PERSISTENT_RECONNECT_1",
+      "status": "PASS"
+    },
+    {
+      "sequence": 26,
+      "action": "PERSISTENT_RECONNECT_2",
+      "status": "PASS"
+    },
+    {
+      "sequence": 27,
+      "action": "FINAL_GOLDEN_RESULT",
+      "status": "PASS"
+    }
+  ],
+  "persistent_reconnect": {
+    "reconnect_1": "PASS",
+    "reconnect_2": "PASS"
+  },
+  "business_result": "PASS_3_OF_3",
+  "twin_critical_unknown_count": 0
+}
