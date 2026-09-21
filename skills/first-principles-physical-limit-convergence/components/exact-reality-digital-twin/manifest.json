@@ -30,7 +30,11 @@
     "task_local_browser_tests": "6/6 PASS",
     "formal_legacy_selftest": "24/24 PASS",
     "source_gates": "PASS",
-    "secret_plaintext_zero_remote": "PASS"
+    "secret_plaintext_zero_remote": "PASS",
+    "self_contained_package": true,
+    "frozen_safe_evidence_count": 6,
+    "frozen_safe_evidence_dir": "reality-profiles/playwright-golden",
+    "final_browser_tests": "6/6 SELF_CONTAINED"
   },
   "historical_t_star_real_ms": 1525.09,
   "full_browser_twin": true,
