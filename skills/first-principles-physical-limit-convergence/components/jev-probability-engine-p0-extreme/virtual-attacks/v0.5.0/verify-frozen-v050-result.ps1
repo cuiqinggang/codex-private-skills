@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-  [string]$ResultRoot = 'C:\Users\A\Documents\Codex\2026-09-21\jev-probability-engine-p0-v050-frozen-real-verify'
+  [string]$ResultRoot = 'C:\Users\A\Documents\Codex\2026-09-21\jev-probability-engine-p0-v050-frozen-real-verify-r2'
 )
 
 Set-StrictMode -Version Latest
