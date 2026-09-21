@@ -19,9 +19,7 @@ HISTORICAL_T_STAR_REAL_MS=1525.09
 分支：
 codex/first-principles-physical-limit-convergence-v3.1.9
 
-执行开始时 GitHub 远端权威 HEAD：
-e21d606af6bec43c90bd70e751ce79abdf326570
-
+执行开始时 GitHub 远端权威 HEAD：动态读取并冻结为 REMOTE_AUTHORITY_HEAD。\n
 隔离 worktree：
 C:\Users\A\Documents\Codex\worktrees\first-principles-v3.1.9-promotion
 
@@ -43,18 +41,18 @@ git fetch origin ^
 
 REMOTE_AUTHORITY_HEAD=$(git rev-parse refs/remotes/origin/codex/first-principles-physical-limit-convergence-v3.1.9)
 
-必须精确等于：
-e21d606af6bec43c90bd70e751ce79abdf326570
+必须同时满足：
+- REMOTE_AUTHORITY_HEAD 非空；
+- git show REMOTE_AUTHORITY_HEAD:.../PROMOTE-TASK-LOCAL-BROWSER-TWIN-v5.md 可读；
+- 该 v5 文件内容包含“唯一正式 Twin 提升合同 v5”；
+- 远端 manifest 的 promotion_contract 指向 v5。
 
 否则：
-REALITY_DELTA=REMOTE_AUTHORITY_REF_NOT_REFRESHED_TO_FROZEN_HEAD
+REALITY_DELTA=REMOTE_AUTHORITY_REF_INVALID
 STOP。
 
 本轮禁止使用 FETCH_HEAD 作为 authority。
-本轮禁止追随任何比上述冻结 HEAD 更新的远端提交。
-若 GitHub 分支实际已移动：
-REALITY_DELTA=REMOTE_BRANCH_MOVED_AFTER_V5_FREEZE
-STOP。
+从这里开始冻结 REMOTE_AUTHORITY_HEAD；执行期间不得漂移。
 
 ## 1. 当前冲突边界
 只读：
@@ -80,9 +78,7 @@ git stash list
 
 ## 2. 唯一 manifest 冲突解决
 
-从冻结 authority 读取：
-
-git show e21d606af6bec43c90bd70e751ce79abdf326570:skills/first-principles-physical-limit-convergence/components/exact-reality-digital-twin/manifest.json
+从冻结 authority 读取：\n\ngit show <REMOTE_AUTHORITY_HEAD>:skills/first-principles-physical-limit-convergence/components/exact-reality-digital-twin/manifest.json
 
 此内容为唯一基底。
 
@@ -235,7 +231,7 @@ EXACT_TWIN_VERSION=1.3.0
 1. 创建一个本地 promotion commit。
 2. 此 commit 的父提交允许早于 REMOTE_AUTHORITY_HEAD。
 3. 执行：
-   git rebase e21d606af6bec43c90bd70e751ce79abdf326570
+   git rebase <REMOTE_AUTHORITY_HEAD>
 4. 若无冲突，继续。
 5. 若有冲突：
    - 只允许 exact Twin manifest 一个文件；
@@ -247,8 +243,7 @@ EXACT_TWIN_VERSION=1.3.0
    abort rebase
    STOP。
 7. rebase 后重新完整执行第 7 节。
-8. 再次读取 GitHub 远端分支实际 HEAD；必须仍等于：
-   e21d606af6bec43c90bd70e751ce79abdf326570
+8. 再次读取 GitHub 远端分支实际 HEAD；必须仍等于本轮开始冻结的 REMOTE_AUTHORITY_HEAD
 9. 普通 push。
 10. 禁止 force / force-with-lease。
 11. remote readback HEAD 必须等于本地 HEAD。
