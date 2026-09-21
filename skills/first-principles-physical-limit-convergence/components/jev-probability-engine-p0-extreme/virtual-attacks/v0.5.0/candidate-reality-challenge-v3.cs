@@ -297,7 +297,7 @@ namespace JevP0V3
                 if (!byId.ContainsKey(pred) || !byId.ContainsKey(dep)) throw new InvalidOperationException("BUNDLE_ITEM_MISSING_" + pred + "_" + dep);
                 var qs = new JsonObject { ["item_" + pred + "__current_action"] = QCurrent(pred) };
                 foreach (string branchResult in new[] { "SUCCESS", "FAIL_TEMP", "FAIL_PERM" })
-                    qs["item_" + dep + "__if_" + pred + "_" + result] = QBranch(dep, result);
+                    qs["item_" + dep + "__if_" + pred + "_" + branchResult] = QBranch(dep, branchResult);
                 units.Add(new SemanticUnit
                 {
                     Id = "b" + pred + "-" + dep,
@@ -596,7 +596,7 @@ namespace JevP0V3
 
                 foreach (var shard in shards)
                     foreach (var unit in shard.Units.Where(x => x.Pred != null && x.Dep != null))
-                        foreach (string result in new[] { "SUCCESS", "FAIL_TEMP", "FAIL_PERM" })
+                        foreach (string branchResult in new[] { "SUCCESS", "FAIL_TEMP", "FAIL_PERM" })
                             if (!shard.Questions.ContainsKey("item_" + unit.Dep + "__if_" + unit.Pred + "_" + branchResult))
                                 throw new InvalidOperationException("DEPENDENCY_BUNDLE_SPLIT_" + unit.Id);
 
