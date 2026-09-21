@@ -10,6 +10,41 @@ CURRENT_CORE=高智能虚拟成熟
 EXECUTOR_ROLE=RUN_VERIFY_REPORT_STOP
 ```
 
+## 0. 冻结源定位与本机路径授权
+
+这部分专门吸收上一轮 `BLOCKED_REPO_PATH_UNCONFIRMED`，禁止执行器再猜仓库位置。
+
+```text
+SHARED_REPO_REMOTE=cuiqinggang/codex-private-skills
+SHARED_REPO_LOCAL=C:\Users\A\Documents\Codex\codex-private-skills
+SOURCE_BRANCH=codex/playwright-browser-automation10-jev-native-r2-final-freeze
+SOURCE_RELATIVE_PATH=docs/playwright-browser-automation/20260922-jev-native-r2/JEV-NATIVE-R2-FROZEN-SOURCE.md
+
+WORKSPACE=C:\Users\A\playwright-browser-automation5-final-reality-competition-work
+BROWSER_ROOT=C:\AI\Playwright-Native-AI-Browser
+
+SHARED_REPO_READ_AUTHORIZED=YES
+WORKSPACE_VERIFY_AUTHORIZED=YES
+BROWSER_ROOT_READ_AND_VERIFY_AUTHORIZED=YES
+PROXY_OR_SYSTEM_MUTATION_AUTHORIZED=NO
+```
+
+执行器读取冻结源的唯一确定性流程：
+
+1. 只使用 `SHARED_REPO_LOCAL`，不得自行搜索其他盘或猜路径。
+2. 验证该目录是 Git repo，且 `origin` 指向 `cuiqinggang/codex-private-skills`。
+3. 若本地没有 `SOURCE_BRANCH` 的最新 ref，允许只执行一次确定性的 `git fetch origin SOURCE_BRANCH`；禁止 checkout/switch、禁止改工作树、禁止 merge/rebase。
+4. 用 `git show origin/SOURCE_BRANCH:SOURCE_RELATIVE_PATH` 读取冻结源。
+5. 如果上述任一定位/读取失败：
+   ```text
+   REALITY_DELTA=FROZEN_SOURCE_READ_FAILED
+   ACTION=STOP
+   RETURN_TO_GPT=YES
+   ```
+6. `BROWSER_ROOT` 已明确授权用于本次冻结方案的只读检查和现实验证执行；禁止修改代理、Windows 系统设置或破坏 Profile。
+
+本节通过后，Codex 不再需要用户额外确认仓库路径或 Browser root。
+
 ## 1. 唯一目标
 
 ```text
@@ -53,12 +88,10 @@ BROWSER_R3_FINGERPRINT_SHA256=9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1c
 ```
 
 固定本机入口：
-- Workspace: `C:\Users\A\playwright-browser-automation5-final-reality-competition-work`
-- Browser root: `C:\AI\Playwright-Native-AI-Browser`
 - Golden: `C:\AI\Playwright-Native-AI-Browser\scripts\golden-harness.cjs`
 - Fixture: `C:\AI\Playwright-Native-AI-Browser\scripts\local-fixture-server.cjs`
-- Twin: `TWIN-PLAYWRIGHT-GOLDEN-REALITY-SHADOW\`
-- JEV virtual package: `TWIN-PLAYWRIGHT-GOLDEN-REALITY-SHADOW\JEV-NATIVE-VIRTUAL-99\`
+- Twin: `C:\Users\A\playwright-browser-automation5-final-reality-competition-work\TWIN-PLAYWRIGHT-GOLDEN-REALITY-SHADOW\`
+- JEV virtual package: `C:\Users\A\playwright-browser-automation5-final-reality-competition-work\TWIN-PLAYWRIGHT-GOLDEN-REALITY-SHADOW\JEV-NATIVE-VIRTUAL-99\`
 
 任何固定身份不匹配：不得继续，输出 Reality Delta。
 
@@ -180,6 +213,7 @@ Codex 唯一需要收到：
 
 ```text
 CURRENT_STEP=3
+LOCAL_SHARED_REPO=C:\Users\A\Documents\Codex\codex-private-skills
 读取本唯一冻结源。
 执行“唯一现实验证”。
 完成后只回传冻结格式结果；任何 Reality Delta 立即停止。
