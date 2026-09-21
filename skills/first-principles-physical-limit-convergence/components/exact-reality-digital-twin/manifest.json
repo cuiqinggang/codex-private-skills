@@ -1,61 +1,39 @@
 {
   "component_id": "exact-reality-digital-twin",
   "display_name_zh": "现实执行环境精确数字孪生唯一版",
-  "version": "1.2.0",
-  "parent_method": "first-principles-physical-limit-convergence@3.1.8",
-  "reality_anchor_skill": "reality-execution-environment-anchor@1.2.0",
+  "version": "1.3.0",
+  "parent_method": "first-principles-physical-limit-convergence@3.1.9",
+  "reality_anchor_skill": "reality-execution-environment-anchor@1.3.0",
   "canonical_single_implementation": true,
+  "engine": "ENGINE.py",
+  "authority": "REALITY-AUTHORITY.json",
+  "canonical_verify": "FINAL-REAL-VERIFY.md",
   "host_r2": {
     "reality_fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
     "contract_selftest": "24/24 PASS",
     "status": "READY"
   },
   "browser_r3": {
-    "input_contract": "BROWSER-TWIN-INPUT-CONTRACT-v2.md",
-    "real_capture": "NOT_YET",
-    "fingerprint": "NOT_YET",
-    "twin_input_ready": false,
-    "golden_replay": "NOT_YET",
-    "reality_twin_delta": "NOT_YET",
-    "shadow_run": "NOT_YET"
-  },
-  "environment_99": "NOT_YET",
-  "virtual_99_hardening_legacy": {
-    "status": "PASS",
-    "plan_id": "WIN1344-NARROW-SESSION-CWD-v1",
-    "canonical_plan_count": 1,
-    "minimum_change_cardinality": 1
-  },
-  "virtual_fusion": {
-    "status": "PASS",
-    "engine": "ENGINE.py",
-    "engine_schema": "browser-network-unified-twin-2.0",
-    "selftest": "39/39 PASS",
-    "frozen_status_file": "VIRTUAL-FUSION-STATUS-v2.txt",
-    "timing_runs": [
-      "T1",
-      "T2",
-      "T3"
-    ],
-    "observability_run": "O1",
-    "t_valid": "MIN_OF_3_AFTER_CERTIFICATION",
-    "reality_replay": "NOT_YET",
-    "machine_contract": "VIRTUAL-FUSION-CONTRACT-v2.json",
-    "real_verify": "BROWSER-NETWORK-TWIN-REAL-VERIFY-v2.md"
-  },
-  "promotion_status": "FROZEN_PENDING_REAL_APPLY_V5",
-  "promotion_contract": "PROMOTE-TASK-LOCAL-BROWSER-TWIN-v5.md",
-  "promotion_target_version": "1.3.0",
-  "browser_reality_authority": {
+    "source_method_version": "3.1.7",
+    "source_twin_version": "1.1.0",
     "fingerprint": "9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd",
     "canonical_golden_sha256": "1c67a634e0c0fc24ed057752358f4c20a6c05550be6146fd8d11b1a723f25e08",
-    "reality_profile_validation": "PASS",
-    "browser_golden_replay": "PASS",
-    "material_delta_count": 0,
-    "shadow_isolation": "PASS"
+    "real_capture": "PASS",
+    "critical_unknown_count": 0,
+    "twin_input_ready": true,
+    "golden_replay": "PASS",
+    "reality_twin_delta_count": 0,
+    "shadow_isolation": "PASS",
+    "reality_mutated": "NO"
   },
-  "write_path": "POWERSHELL_DOTNET_DETERMINISTIC_IO",
-  "blocked_write_path": "APPLY_PATCH_WINDOWS_1344",
-  "release_adaptation": "FORMAL_ENGINE_PATH_PLUS_COMPONENT_VERSION",
-  "conflict_resolution": "FROZEN_REMOTE_HEAD_MANIFEST_REBUILD"
+  "formal_validation": {
+    "task_local_browser_tests": "6/6 PASS",
+    "formal_legacy_selftest": "24/24 PASS",
+    "source_gates": "PASS",
+    "secret_plaintext_zero_remote": "PASS"
+  },
+  "historical_t_star_real_ms": 1525.09,
+  "full_browser_twin": true,
+  "environment_99": "PASS",
+  "promotion_history": "PROMOTE v1-v5 are historical evidence only."
 }
