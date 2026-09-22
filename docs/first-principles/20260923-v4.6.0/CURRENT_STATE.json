@@ -2,7 +2,7 @@
   "skill": "first-principles-physical-limit-convergence",
   "display_name": "极限短时间引擎",
   "current_version": "4.6.0",
-  "status": "FROZEN_METHOD_READY_FOR_CLEAN_BENCHMARK",
+  "status": "FROZEN_METHOD_WITH_FIRST_EXACT_CLEAN_T_STAR",
   "method_steps": [
     "VIRTUAL",
     "REAL"
@@ -34,11 +34,10 @@
     "interpretation": "Evidence of avoidable rework cost and of which gates were missing."
   },
   "next_measurement": {
-    "new_task_time_id": "ESTE-20260923-003",
+    "new_task_time_id": "ESTE-20260923-004",
     "first_sequence": "01",
-    "purpose": "Clean v4.6.0 end-to-end benchmark with no method redesign during the run",
-    "required_result": "Exact T_VALID_RUN_CLEAN",
-    "benchmark_rule": "Start at problem receipt, complete one VIRTUAL and one REAL, stop only at GPT FINAL_VALID."
+    "purpose": "Second clean v4.6.0 run to compete against current T*=00:03:14.419",
+    "benchmark_rule": "No method redesign; only valid complete closed-loop runs can replace T*."
   },
   "consolidation_task": {
     "task_time_id": "ESTE-20260923-002",
@@ -48,5 +47,20 @@
     "gpt_active_ms": 184000,
     "gpt_active_human": "00:03:04",
     "result": "PASS"
+  },
+  "clean_benchmarks": [
+    {
+      "task_time_id": "ESTE-20260923-003",
+      "sequence": "01",
+      "result": "PASS",
+      "exact_t_valid_run_clean_ms": 194419.3759,
+      "exact_t_valid_run_clean_human": "00:03:14.419"
+    }
+  ],
+  "current_t_star": {
+    "exact": true,
+    "source_task_time_id": "ESTE-20260923-003",
+    "t_star_ms": 194419.3759,
+    "t_star_human": "00:03:14.419"
   }
 }
