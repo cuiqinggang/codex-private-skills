@@ -1,0 +1,58 @@
+{
+  "method": "extreme-short-time-engine-v4.7.0",
+  "purpose": "Mature asset inputs for automation regression certification",
+  "gpt_codex": {
+    "asset": "gpt-codex-convergence-orchestrator",
+    "version": "1.5.2",
+    "branch": "codex/gpt-codex-convergence-orchestrator-v1.5.2-freeze-closeout",
+    "head": "c00dbc63abda76acc7b787caf9c2f8fd2cd206a1",
+    "local_project": "C:\\AI\\GPT-Codex-Convergence-Orchestrator",
+    "local_entry": "simple_flow.py",
+    "browser_entry": "C:\\AI\\Playwright-Native-AI-Browser\\skills\\playwright-native-ai-browser\\scripts\\chatgpt-business-entry.js",
+    "evidence": {
+      "PATH_A_REAL": "PASS",
+      "PATH_B_REAL": "PASS_CONTROLLED",
+      "PATH_C_REAL": "PASS_CONTROLLED",
+      "BUSINESS_VALID": "3/3_TOY_WRITE_FILE",
+      "USER_MIDDLE_COPY_PASTE": 0,
+      "DUPLICATE_BUSINESS_EFFECT": 0,
+      "PATH_A_T_VALID_SECONDS": 373.903
+    },
+    "caveats": [
+      "NATURAL_A_TO_B_FAILOVER_UNVERIFIED",
+      "NATURAL_B_TO_C_FAILOVER_UNVERIFIED",
+      "TOY_WRITE_FILE_SCOPE_NOT_GENERAL_ARBITRARY_ACTION"
+    ],
+    "role": "REUSE_AND_RECERTIFY_NOT_REBUILD"
+  },
+  "playwright": {
+    "asset": "playwright-native-ai-browser",
+    "frozen_branch": "codex/playwright-browser-automation10-jev-native-r2-final-freeze",
+    "frozen_head": "45314ddaea7d913fe27a5afed50e58a8def4d282",
+    "frozen_runner": "docs/playwright-browser-automation/20260922-jev-native-r3/REAL-VERIFY-RUNNER-R3.cjs",
+    "runner_blob": "05a400b542193b7e51cc3b959ad2ac03bab15ae5",
+    "artifact_virtual_99": "PASS",
+    "browser_r3_fingerprint": "9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd",
+    "latest_real_result_source": "USER_PROVIDED_RECENT_REAL_OUTPUT",
+    "latest_real_result": {
+      "REAL_RUNS": 30,
+      "VALID_RUNS": 30,
+      "T_REAL_MIN_MS": 272.98,
+      "T_REAL_P50_MS": 304.46,
+      "T_REAL_P95_MS": 424.48,
+      "T_REAL_MAX_MS": 448.97,
+      "TARGET_820_REACHED": "YES",
+      "MATURE_1050_REACHED": "YES",
+      "BEATS_1241_68": "YES",
+      "NEW_T_STAR_REAL_MS": 272.98,
+      "REALITY_DELTA": "NONE"
+    },
+    "caveat": "Latest 272.98ms result is preserved from the user's supplied real output; the frozen branch contains the R3 runner and virtual artifact gates but not a separately located remote final-result artifact in this inspection.",
+    "role": "REUSE_AND_COMPATIBILITY_RECERTIFY"
+  },
+  "legacy_control_plane": {
+    "path": "skills/first-principles-physical-limit-convergence/references/AUTOMATED-GPT-CODEX-CONTROL-PLANE.md",
+    "status_in_legacy_doc": "L0_SPEC_READY",
+    "interpretation": "Older control-plane document is stale relative to later v1.5.2 controlled real evidence; v4.7.0 must recertify autonomous closed-loop maturity under the new timing contract rather than inherit L4 by assertion."
+  }
+}
