@@ -34,10 +34,19 @@
     "interpretation": "Evidence of avoidable rework cost and of which gates were missing."
   },
   "next_measurement": {
-    "new_task_time_id": "ESTE-20260923-002",
+    "new_task_time_id": "ESTE-20260923-003",
     "first_sequence": "01",
     "purpose": "Clean v4.6.0 end-to-end benchmark with no method redesign during the run",
     "required_result": "Exact T_VALID_RUN_CLEAN",
     "benchmark_rule": "Start at problem receipt, complete one VIRTUAL and one REAL, stop only at GPT FINAL_VALID."
+  },
+  "consolidation_task": {
+    "task_time_id": "ESTE-20260923-002",
+    "purpose": "Consolidate v4.5.x into clean v4.6.0 skill package",
+    "active_start_timestamp": "2026-09-23T03:29:53+08:00",
+    "active_end_timestamp": "2026-09-23T03:32:57+08:00",
+    "gpt_active_ms": 184000,
+    "gpt_active_human": "00:03:04",
+    "result": "PASS"
   }
 }
