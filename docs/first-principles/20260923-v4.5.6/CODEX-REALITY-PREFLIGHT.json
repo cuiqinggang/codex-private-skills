@@ -1,17 +1,18 @@
 {
   "method": "extreme-short-time-engine-v4.5.6",
   "reality_foundation": "local-ai-reality-foundation@1.1.1",
-  "verifier_version": "2",
+  "verifier_version": "3",
   "checks": {
     "SINGLE_QUOTED_HERE_STRING": true,
+    "PROMPT_HAS_NO_CALLER_VARIABLE_EXPANSIONS": true,
     "NO_W32TM_EXECUTION": true,
     "STOPWATCH_AROUND_CODEX": true,
     "NO_TEMP_STAGING": true,
     "STREAMED_EXECUTION": true,
     "REAL_SCRIPT_ASCII": true,
-    "REAL_SCRIPT_LITERAL_TOKENS": false
+    "REAL_SCRIPT_SELF_CONTAINED": true
   },
-  "result": "FAIL",
-  "freeze": "BLOCK",
-  "limitation": "Known observed constraints are covered. This does not claim to enumerate every internal Codex safety policy."
+  "result": "PASS",
+  "freeze": "ALLOW",
+  "limitation": "Known observed constraints are covered. This verifier does not claim to enumerate every internal Codex safety policy."
 }
