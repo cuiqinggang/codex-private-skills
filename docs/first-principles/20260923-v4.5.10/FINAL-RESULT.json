@@ -1,0 +1,41 @@
+{
+  "task_time_id": "ESTE-20260922-001",
+  "method": "extreme-short-time-engine-v4.5.10",
+  "final_valid": "YES",
+  "final_valid_network_timestamp": "2026-09-23T03:20:25+08:00",
+  "phase_model": [
+    "VIRTUAL",
+    "REAL"
+  ],
+  "final_real_sequence": "02",
+  "final_four_position_label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜02｜实】",
+  "reality_foundation": "local-ai-reality-foundation@1.1.3",
+  "real_result": {
+    "valid_real": "PASS",
+    "powershell_reality": "PASS",
+    "gpu_reality": "PASS",
+    "gpu_probe_stdout": "NVIDIA GeForce RTX 2080 Ti, 22528",
+    "gpu_probe_exit_status": 0,
+    "asset_paths": "PASS",
+    "reality_delta": "NONE"
+  },
+  "timing": {
+    "anchor_name_zh": "整体闭环极限时间",
+    "formula": "measure(UNION(REQUIRED_LOOP_ACTIVE_INTERVALS))",
+    "codex_sequence_02_active_ms": 409.3605,
+    "gpt_final_acceptance_ms": 71000,
+    "certified_total_type": "LOWER_BOUND",
+    "certified_total_lower_bound_ms": 3067109.0184,
+    "certified_total_lower_bound_human": "00:51:07.109",
+    "exact_total_unavailable_reason": "Legacy uninstrumented interval(s) before the mature timing contract; not retroactively fabricated.",
+    "future_task_rule": "From the mature contract onward every GPT dispatch, Codex active interval, and GPT final acceptance must be instrumented."
+  },
+  "error_closure_matrix": "docs/first-principles/20260923-v4.5.10/ERROR-CLOSURE-MATRIX.json",
+  "foundation_absorb_check": {
+    "result": "PASS",
+    "absorb": "NO",
+    "version_unchanged": "1.1.3"
+  },
+  "task_completed": true,
+  "closed_loop": true
+}
