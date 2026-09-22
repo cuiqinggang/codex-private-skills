@@ -1,7 +1,7 @@
 {
   "skill_id": "local-ai-reality-foundation",
-  "version": "1.1.0",
-  "previous_version": "1.0.0",
+  "version": "1.1.1",
+  "previous_version": "1.1.0",
   "display_name": "本地 AI 现实底座永久资产",
   "role": "VERSIONED_PERSISTENT_REALITY_FOUNDATION",
   "method_step": false,
@@ -35,5 +35,31 @@
     "flclash": "PERSISTENT",
     "proxy_change_allowed": false
   },
-  "updated_date": "2026-09-22"
+  "updated_date": "2026-09-23",
+  "codex_execution_constraints": {
+    "executor_required_for_default_closed_loop": true,
+    "temp_executable_staging": {
+      "observed_path": "C:\\Users\\A\\AppData\\Local\\Temp",
+      "observed_result": "REJECTED_BY_CODEX_SAFETY_POLICY",
+      "default_rule": "DO_NOT_STAGE_EXECUTABLE_PS1_IN_APPDATA_LOCAL_TEMP",
+      "preferred": "WORKSPACE_FROZEN_ARTIFACT_OR_GIT_OBJECT_STREAM"
+    },
+    "powershell_prompt_transport": {
+      "double_quoted_here_string": "VARIABLE_INTERPOLATION_RISK",
+      "literal_safe_default": "SINGLE_QUOTED_HERE_STRING_OR_EQUIVALENT",
+      "freeze_gate": "SHELL_INTERPOLATION_SAFE_PASS"
+    },
+    "time_source": {
+      "w32tm_query_source_non_admin": "ACCESS_DENIED_0x80070005_OBSERVED",
+      "duration_clock": "SYSTEM_DIAGNOSTICS_STOPWATCH",
+      "wall_clock_role": "AUDIT_COORDINATE_ONLY",
+      "time_source_query_hard_dependency": false
+    },
+    "startup_diagnostics": {
+      "skill_load_errors": "OBSERVED",
+      "model_refresh_timeout": "OBSERVED",
+      "skill_description_budget_warning": "OBSERVED",
+      "rule": "ONLY_PROMOTE_TO_REALITY_DELTA_IF_TASK_VALIDITY_IS_AFFECTED"
+    }
+  }
 }
