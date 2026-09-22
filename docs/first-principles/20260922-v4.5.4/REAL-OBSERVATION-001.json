@@ -1,0 +1,29 @@
+{
+  "method": "extreme-short-time-engine-v4.5.4",
+  "task_time_id": "ESTE-20260922-001",
+  "phase": "REAL",
+  "observed_at_network_timestamp": "2026-09-22T23:58:31+08:00",
+  "real_functional_result": "PENDING",
+  "evidence_from_codex_output": [
+    "local frozen commit not present",
+    "contract moved to fetch only specified branch",
+    "git fetch started",
+    "no VALID_REAL result yet"
+  ],
+  "reality_deltas": [
+    {
+      "id": "HANDOFF_LOCAL_OBJECT_MISSING_REQUIRES_NETWORK_FETCH",
+      "status": "OBSERVED",
+      "meaning": "The frozen runner itself is network-independent, but VIRTUAL->REAL handoff still needs network when the pinned commit is absent locally."
+    },
+    {
+      "id": "CODEX_ACTIVE_INTERVAL_START_NOT_INSTRUMENTED",
+      "status": "OBSERVED",
+      "meaning": "The emitted Codex real-entry command did not record an exact Codex active start/end interval, so exact T_VALID_ACTIVE_GLOBAL certification cannot be completed from this run alone."
+    }
+  ],
+  "timing_certification": "BLOCKED_EXACT",
+  "timer_reset": "FORBIDDEN",
+  "action_during_real": "NO_REDESIGN",
+  "next_decision": "WAIT_FOR_THIS_REAL_OUTPUT_ONLY_FOR_FUNCTIONAL_RESULT; timing delta must return to VIRTUAL after real stops"
+}
