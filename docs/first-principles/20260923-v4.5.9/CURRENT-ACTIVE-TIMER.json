@@ -1,0 +1,340 @@
+{
+  "method": "extreme-short-time-engine-v4.5.9",
+  "task_time_id": "ESTE-20260922-001",
+  "task_name": "global-active-agent-time-definition-and-reality-verification",
+  "problem_entry_network_timestamp": "2026-09-22T22:44:11+08:00",
+  "timer_state": "RUNNING",
+  "optimization_anchor": "T_VALID_ACTIVE_GLOBAL",
+  "formula": "measure(UNION(AGENT_ACTIVE_INTERVALS))",
+  "final_valid_condition": "The current problem is fully resolved under the frozen v4.5.x contract and GPT confirms all required validity/closeout gates pass.",
+  "segments": [
+    {
+      "segment_id": "S001",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T22:44:11+08:00",
+      "active_end_network_timestamp": "2026-09-22T22:45:32+08:00",
+      "active_duration_ms": 81000,
+      "status": "CLOSED",
+      "work": "global timer instrumentation and repository verification"
+    },
+    {
+      "segment_id": "S002",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T22:57:07+08:00",
+      "status": "CLOSED",
+      "work": "refine anchor from wall-clock to active GPT/Codex problem-solving time and persist v4.5.2",
+      "active_end_network_timestamp": "2026-09-22T22:59:24+08:00",
+      "active_duration_ms": 137000
+    },
+    {
+      "segment_id": "S003",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T23:17:16+08:00",
+      "status": "CLOSED",
+      "work": "operationalize mandatory per-turn timing display, phase status, next-step plan, and final closeout accounting",
+      "active_end_network_timestamp": "2026-09-22T23:19:12+08:00",
+      "active_duration_ms": 116000,
+      "result": "PASS",
+      "bottleneck": "NONE"
+    },
+    {
+      "segment_id": "S004",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T23:24:22+08:00",
+      "status": "CLOSED",
+      "work": "correct method representation back to exactly two phases: VIRTUAL and REAL",
+      "active_end_network_timestamp": "2026-09-22T23:25:35+08:00",
+      "active_duration_ms": 73000,
+      "result": "PASS"
+    },
+    {
+      "segment_id": "S005",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T23:30:17+08:00",
+      "active_end_network_timestamp": "2026-09-22T23:37:03+08:00",
+      "active_duration_ms": 406000,
+      "status": "CLOSED",
+      "work": "complete VIRTUAL as one phase: freeze self-contained real package, close external dependencies, pin immutable hashes, and pass closure verification",
+      "result": "PASS",
+      "bottleneck": "FREEZE_PACKAGE_CONSTRUCTION_AND_CLOSURE_VERIFICATION"
+    },
+    {
+      "segment_id": "S006",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T23:50:16+08:00",
+      "active_end_network_timestamp": "2026-09-22T23:55:15+08:00",
+      "active_duration_ms": 299000,
+      "status": "CLOSED",
+      "work": "repair virtual-to-real handoff so VIRTUAL completes only after shared publish and direct Codex command emission",
+      "result": "PASS",
+      "bottleneck": "PREVIOUS_HANDOFF_OMISSION"
+    },
+    {
+      "segment_id": "S007",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T23:58:31+08:00",
+      "active_end_network_timestamp": "2026-09-22T23:59:25+08:00",
+      "active_duration_ms": 54000,
+      "status": "CLOSED",
+      "work": "analyze partial REAL output and identify handoff-network and missing Codex timing instrumentation deltas",
+      "result": "PASS",
+      "bottleneck": "CODEX_ACTIVE_INTERVAL_NOT_SELF_INSTRUMENTED"
+    },
+    {
+      "segment_id": "S009",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-23T00:19:06+08:00",
+      "active_end_network_timestamp": "2026-09-23T00:25:30+08:00",
+      "active_duration_ms": 384000,
+      "status": "CLOSED",
+      "work": "restore Codex as required closed-loop executor, redefine whole-loop anchor, remove Temp staging, and freeze timed streamed handoff",
+      "result": "PASS",
+      "bottleneck": "LOCAL_FASTEST_WAS_INCORRECTLY_SUBSTITUTED_FOR_WHOLE_LOOP_VALIDITY"
+    },
+    {
+      "segment_id": "S010",
+      "agent": "CODEX",
+      "active_start_network_timestamp": "2026-09-23T00:35:16.4440006+08:00",
+      "active_end_network_timestamp": "2026-09-23T00:36:32.1111893+08:00",
+      "active_duration_ms": 75664.93,
+      "status": "CLOSED",
+      "work": "v4.5.5 REAL attempt; prompt arrived corrupted by caller-shell interpolation and ended in ParserError",
+      "result": "FAIL",
+      "bottleneck": "CALLER_SHELL_INTERPOLATION_AND_W32TM_PERMISSION"
+    },
+    {
+      "segment_id": "S011",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-23T00:37:55+08:00",
+      "status": "CLOSED",
+      "work": "absorb Codex execution constraints into Reality Foundation, add freeze preflight, build and verify v4.5.6 literal-safe handoff",
+      "result": "PASS",
+      "active_end_network_timestamp": "2026-09-23T00:43:31+08:00",
+      "active_duration_ms": 336000,
+      "bottleneck": "CODEx_REALITY_CONSTRAINT_ABSORPTION_AND_PREFLIGHT_REPAIR"
+    },
+    {
+      "segment_id": "S012",
+      "agent": "CODEX",
+      "active_start_network_timestamp": "2026-09-23T00:57:42.3608997+08:00",
+      "active_end_network_timestamp": "2026-09-23T00:59:09.2156519+08:00",
+      "active_duration_ms": 86851.972,
+      "status": "CLOSED",
+      "work": "v4.5.6 REAL attempt; local frozen commit absent and git fetch failed because .git/FETCH_HEAD was permission denied",
+      "result": "FAIL",
+      "bottleneck": "LOCAL_GIT_METADATA_WRITE_PERMISSION"
+    },
+    {
+      "segment_id": "S013",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-23T01:03:03+08:00",
+      "active_end_network_timestamp": "2026-09-23T01:08:23+08:00",
+      "active_duration_ms": 320000,
+      "status": "CLOSED",
+      "work": "absorb FETCH_HEAD permission constraint, restore four-position gate, remove outer PowerShell wrapper, and freeze direct Codex self-timed contract",
+      "result": "PASS",
+      "bottleneck": "REAL_BOOTSTRAP_WAS_COUPLED_TO_GIT_METADATA_WRITE"
+    },
+    {
+      "segment_id": "S014",
+      "agent": "CODEX",
+      "active_start_network_timestamp": "2026-09-23T01:25:06.9843389+08:00",
+      "active_end_network_timestamp": "2026-09-23T01:25:07.7129523+08:00",
+      "active_duration_ms": 706.7559,
+      "status": "CLOSED",
+      "work": "v4.5.7 REAL attempt; GPU stdout semantically matched frozen reality but nonzero exit status caused false-negative fail",
+      "result": "FAIL",
+      "bottleneck": "READ_ONLY_PROBE_EXIT_STATUS_OVERRULED_VALID_SEMANTIC_EVIDENCE"
+    },
+    {
+      "segment_id": "S015",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-23T02:35:15+08:00",
+      "active_end_network_timestamp": "2026-09-23T02:37:49+08:00",
+      "active_duration_ms": 154000,
+      "status": "CLOSED",
+      "work": "classify GPU evidence as semantic PASS, absorb probe false-negative reality fact, freeze v4.5.8 semantic-first validator",
+      "result": "PASS",
+      "bottleneck": "VALIDATOR_FALSE_NEGATIVE_NOT_REAL_GPU_FAILURE"
+    },
+    {
+      "segment_id": "S016",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-23T02:51:45+08:00",
+      "active_end_network_timestamp": "2026-09-23T02:53:24+08:00",
+      "active_duration_ms": 99000,
+      "status": "CLOSED",
+      "work": "identify duplicate four-position sequence bug, define monotonic per-TASK_TIME_ID sequence state machine, create ledger, and freeze next sequence 02",
+      "result": "PASS",
+      "bottleneck": "SEQUENCE_FIELD_HAD_FORMAT_GATE_BUT_NO_STATE_MACHINE"
+    }
+  ],
+  "excluded_intervals": [
+    {
+      "start": "2026-09-22T22:45:32+08:00",
+      "end": "2026-09-22T22:57:07+08:00",
+      "duration_ms": 695000,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-22T22:59:24+08:00",
+      "end": "2026-09-22T23:17:16+08:00",
+      "duration_ms": 1072000,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-22T23:19:12+08:00",
+      "end": "2026-09-22T23:24:22+08:00",
+      "duration_ms": 310000,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-22T23:25:35+08:00",
+      "end": "2026-09-22T23:30:17+08:00",
+      "duration_ms": 282000,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-22T23:37:03+08:00",
+      "end": "2026-09-22T23:50:16+08:00",
+      "duration_ms": 793000,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-23T00:03:58+08:00",
+      "end": "2026-09-23T00:19:06+08:00",
+      "duration_ms": 908000,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-23T00:25:30+08:00",
+      "end": "2026-09-23T00:35:16.4440006+08:00",
+      "duration_ms": 586444.001,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-23T00:36:32.1111893+08:00",
+      "end": "2026-09-23T00:37:55+08:00",
+      "duration_ms": 82888.811,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-23T00:43:31+08:00",
+      "end": "2026-09-23T00:57:42.3608997+08:00",
+      "duration_ms": 851360.9,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-23T00:59:09.2156519+08:00",
+      "end": "2026-09-23T01:03:03+08:00",
+      "duration_ms": 233784.348,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-23T01:08:23+08:00",
+      "end": "2026-09-23T01:25:06.9843389+08:00",
+      "duration_ms": 1003984.339,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-23T01:25:07.7129523+08:00",
+      "end": "2026-09-23T02:35:15+08:00",
+      "duration_ms": 4207287.048,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-23T02:37:49+08:00",
+      "end": "2026-09-23T02:51:45+08:00",
+      "duration_ms": 836000,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    }
+  ],
+  "per_agent_active_at_checkpoint_ms": {
+    "GPT": 1112000,
+    "CODEX": 0
+  },
+  "global_active_union_at_checkpoint_ms": 1112000,
+  "global_active_union_at_checkpoint_human": "00:18:32",
+  "checkpoint_timestamp": "2026-09-23T02:53:24+08:00",
+  "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
+  "human_idle": "EXCLUDED",
+  "reset_on_failure": "FORBIDDEN",
+  "current_phase": "VIRTUAL",
+  "current_status": "VIRTUAL_COMPLETE=YES",
+  "next_action": "PASTE_DIRECT_CODEX_REAL_CONTRACT_V4.5.9_SEQUENCE_02",
+  "phase_model": {
+    "current": "VIRTUAL",
+    "virtual_complete": true,
+    "next": "REAL",
+    "only_method_steps": [
+      "VIRTUAL",
+      "REAL"
+    ],
+    "internal_checkpoints_are_steps": false,
+    "on_real_fail": "RETURN_TO_VIRTUAL_WITHOUT_TIMER_RESET"
+  },
+  "virtual_complete": true,
+  "virtual_complete_network_timestamp": "2026-09-23T02:53:24+08:00",
+  "next_phase": "REAL",
+  "predicted_final_active_if_first_real_pass": {
+    "lower_ms": 828000,
+    "upper_ms": 903000,
+    "lower_human": "00:13:48",
+    "upper_human": "00:15:03",
+    "basis": "current 13m33s active + predicted remaining 15-90s active"
+  },
+  "handoff_overhead_correction": {
+    "defect": "VIRTUAL_PREVIOUSLY_CLOSED_BEFORE_REAL_ENTRY_COMMAND_WAS_EMITTED",
+    "fix": "MAKE_SHARED_PUBLISH_AND_COMMAND_EMISSION_VIRTUAL_EXIT_CONDITIONS",
+    "expected_time_benefit": "ELIMINATES_EXTRA_USER_QUESTION_DOWNLOAD_AND_COMMAND_GENERATION_ROUNDTRIP"
+  },
+  "real_attempt": {
+    "method": "v4.5.7",
+    "valid_real": "FAIL",
+    "codex_active_ms": 706.7559,
+    "gpu_semantic_gate": "PASS",
+    "delta": "READ_ONLY_GPU_PROBE_FALSE_NEGATIVE_FROM_EXIT_STATUS",
+    "return_to_virtual": "YES"
+  },
+  "global_active_exact_through_network_timestamp": "2026-09-22T23:55:15+08:00",
+  "global_active_exact_ms": 1112000,
+  "global_active_exact_human": "00:18:32",
+  "global_active_lower_bound_ms": 2765699.6579,
+  "global_active_lower_bound_human": "00:46:05.700",
+  "global_active_exact_current": "UNKNOWN_ONLY_BECAUSE_OF_LEGACY_UNINSTRUMENTED_CODEX_INTERVAL_BEFORE_V4.5.5",
+  "recovered_prior_codex_evidence": {
+    "earliest_observed_codex_timestamp": "2026-09-22T23:56:55.523963+08:00",
+    "latest_observed_codex_work_timestamp": "2026-09-22T23:59:11.664450+08:00",
+    "observed_interval_ms": 136140.487,
+    "overlap_with_already_counted_gpt_segment_ms": 40664.45,
+    "additional_certified_nonoverlap_lower_bound_ms": 95476.037,
+    "exact_full_codex_interval": "UNKNOWN"
+  },
+  "reality_foundation": "local-ai-reality-foundation@1.1.3",
+  "latest_real_delta": "READ_ONLY_GPU_PROBE_FALSE_NEGATIVE_FROM_EXIT_STATUS",
+  "preflight": "PASS",
+  "positioning": {
+    "required_format": "【页面名｜任务名｜序号｜虚/实】",
+    "current_real_label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜01｜实】"
+  },
+  "latest_virtual_delta": "DUPLICATE_FOUR_POSITION_SEQUENCE_01",
+  "sequence_state": {
+    "last_valid_sequence": "01",
+    "next_sequence": "02",
+    "rejected_duplicate_emission": "01",
+    "required_next_label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜02｜实】"
+  }
+}
