@@ -1,12 +1,12 @@
 ---
 name: local-ai-reality-foundation
-description: 本地 AI 现实底座永久资产 v1.1.0。版本化、任务后吸收的 Reality Foundation。每个完成任务都必须判断新现实事实是否能减少未来 min(T_VALID) 或避免重复现实采集/踩坑；只有有价值时才形成新版本。每版自包含完整当前资产、Reality Fingerprints、关键时间基线、约束、本版 delta、证据指针和上一版本。它不是方法步骤，只是“虚”的长期现实输入。
+description: 本地 AI 现实底座永久资产 v1.1.1。版本化、任务后吸收的 Reality Foundation。每个完成任务都必须判断新现实事实是否能减少未来 min(T_VALID) 或避免重复现实采集/踩坑；只有有价值时才形成新版本。每版自包含完整当前资产、Reality Fingerprints、关键时间基线、约束、本版 delta、证据指针和上一版本。它不是方法步骤，只是“虚”的长期现实输入。
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
   status: ACTIVE_VERSIONED_FOUNDATION
 ---
 
-# 本地 AI 现实底座永久资产 v1.1.0
+# 本地 AI 现实底座永久资产 v1.1.1
 
 ## 1. 唯一目的
 
@@ -71,7 +71,7 @@ MINOR = 新现实域、新资产类别、新吸收能力
 MAJOR = Foundation 合同发生不兼容变化
 ```
 
-当前 v1.1.0 是 MINOR，因为增加了“任务后吸收 + 自包含版本”能力。
+当前 v1.1.1 是 MINOR，因为增加了“任务后吸收 + 自包含版本”能力。
 
 ## 5. 当前完整资产
 
@@ -107,6 +107,57 @@ MAJOR = Foundation 合同发生不兼容变化
 - MiniMax H3：`C:\AI\MiniMax-H3`
 - Visual-Art-Engine：`C:\AI\Visual-Art-Engine`
 - 只按具体任务补充现实状态
+
+
+
+### Codex 执行现实约束
+
+以下均为真实执行中已经观察到、会导致返工的现实约束；虚拟成熟必须在冻结前读取并规避：
+
+```text
+CODEX_EXECUTOR=REQUIRED_FOR_DEFAULT_GPT_CODEX_CLOSED_LOOP
+
+OBSERVED_CONSTRAINT_001
+= 在 workspace-write / 当前安全策略下，
+  向 C:\Users\A\AppData\Local\Temp 写入或覆盖待执行 .ps1
+  可能被 Codex 安全策略拒绝。
+ACTION
+= 默认禁止把可执行脚本 staging 到 AppData\Local\Temp；
+  优先使用工作区内已冻结产物，或从不可变 Git 对象直接流式送入解释器。
+
+OBSERVED_CONSTRAINT_002
+= PowerShell 双引号 Here-String（@"..."@）会在任务文本送给 Codex 之前
+  展开 $变量、$null、$LASTEXITCODE 等 PowerShell 表达式，
+  可破坏内嵌冻结命令。
+ACTION
+= 含 PowerShell 代码的 Codex prompt 默认使用单引号 Here-String（@'...'@）
+  或其他经过字节/字符串等价验证的 literal-safe 传输；
+  冻结前必须做 SHELL_INTERPOLATION_SAFE 验收。
+
+OBSERVED_CONSTRAINT_003
+= 当前非管理员 PowerShell 7 环境中，
+  w32tm /query /source 已真实返回 0x80070005 Access Denied。
+ACTION
+= 不得把 w32tm source query 设为主计时硬依赖。
+  有效工作时长使用 System.Diagnostics.Stopwatch 单调计时；
+  wall-clock timestamp 仅作审计坐标，时间源查询失败不得阻塞任务。
+
+OBSERVED_CONSTRAINT_004
+= Codex 启动时可能出现部分 Skill YAML/frontmatter 加载错误、
+  model refresh timeout、Skill description budget warning。
+ACTION
+= 对自包含冻结合同，明确禁止额外 Skill 读取；
+  这些启动诊断只在确实影响任务有效性时升级为 Reality Delta。
+```
+
+原则：
+
+```text
+已知现实约束
+-> 虚阶段预检
+-> 不兼容候选直接淘汰
+-> 不允许把已知必失败路径再次冻结到“实”
+```
 
 ### 网络硬约束
 - FlClash 常驻
