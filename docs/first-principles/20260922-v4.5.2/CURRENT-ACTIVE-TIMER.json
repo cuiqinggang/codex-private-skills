@@ -41,8 +41,11 @@
       "segment_id": "S004",
       "agent": "GPT",
       "active_start_network_timestamp": "2026-09-22T23:24:22+08:00",
-      "status": "OPEN",
-      "work": "correct method representation back to exactly two phases: VIRTUAL and REAL"
+      "status": "CLOSED",
+      "work": "correct method representation back to exactly two phases: VIRTUAL and REAL",
+      "active_end_network_timestamp": "2026-09-22T23:25:35+08:00",
+      "active_duration_ms": 73000,
+      "result": "PASS"
     }
   ],
   "excluded_intervals": [
@@ -69,12 +72,12 @@
     }
   ],
   "per_agent_active_at_checkpoint_ms": {
-    "GPT": 334000,
+    "GPT": 407000,
     "CODEX": 0
   },
-  "global_active_union_at_checkpoint_ms": 334000,
-  "global_active_union_at_checkpoint_human": "00:05:34",
-  "checkpoint_timestamp": "2026-09-22T23:19:12+08:00",
+  "global_active_union_at_checkpoint_ms": 407000,
+  "global_active_union_at_checkpoint_human": "00:06:47",
+  "checkpoint_timestamp": "2026-09-22T23:25:35+08:00",
   "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
   "human_idle": "EXCLUDED",
   "reset_on_failure": "FORBIDDEN",
