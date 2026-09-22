@@ -1,0 +1,43 @@
+{
+  "skill": "first-principles-physical-limit-convergence",
+  "display_name": "极限短时间引擎",
+  "current_version": "4.6.0",
+  "status": "FROZEN_METHOD_READY_FOR_CLEAN_BENCHMARK",
+  "method_steps": [
+    "VIRTUAL",
+    "REAL"
+  ],
+  "anchor": {
+    "name": "整体闭环极限时间",
+    "run_metric": "T_VALID_RUN",
+    "objective": "T*=min(VALID_CLEAN_RUNS)",
+    "valid_only_if": [
+      "TASK_COMPLETED_TRUE",
+      "CLOSED_LOOP_TRUE",
+      "CODEX_EXECUTOR_PRESENT",
+      "GPT_FINAL_VALID_TRUE"
+    ]
+  },
+  "reality_foundation": "local-ai-reality-foundation@1.1.3",
+  "executor_chain": "GPT -> Codex -> deterministic tools -> local evidence -> Codex result -> GPT FINAL_VALID",
+  "delivery": "same-response direct GPT-to-Codex self-contained contract",
+  "four_position": "【PAGE_NAME｜TASK_NAME｜SEQUENCE｜PHASE】",
+  "sequence": "monotonic within TASK_TIME_ID; reset only on new TASK_TIME_ID",
+  "timing": "GPT dispatch + Codex self-timing + GPT final acceptance; Stopwatch authoritative for duration",
+  "github": "shared fact source after reusable result; not default REAL bootstrap transport",
+  "historical_v4_5_episode": {
+    "final_valid": true,
+    "active_time_certified_lower_bound": "00:51:07.109",
+    "classification": "DEVELOPMENT_REWORK_SAMPLE",
+    "is_mature_t_star": false,
+    "is_physical_lower_bound": false,
+    "interpretation": "Evidence of avoidable rework cost and of which gates were missing."
+  },
+  "next_measurement": {
+    "new_task_time_id": "ESTE-20260923-002",
+    "first_sequence": "01",
+    "purpose": "Clean v4.6.0 end-to-end benchmark with no method redesign during the run",
+    "required_result": "Exact T_VALID_RUN_CLEAN",
+    "benchmark_rule": "Start at problem receipt, complete one VIRTUAL and one REAL, stop only at GPT FINAL_VALID."
+  }
+}
