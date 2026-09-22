@@ -17,6 +17,31 @@
     "TIMING_CONTRACT_READY": "PASS",
     "HANDOFF_TEMPLATE_READY": "PASS"
   },
-  "virtual_complete": "PENDING_DISPATCH_TIMESTAMP",
-  "contract_label": "【极限短时间引擎｜v4.6.0干净闭环验证｜01｜实】"
+  "virtual_complete": "YES",
+  "contract_label": "【极限短时间引擎｜v4.6.0干净闭环验证｜01｜实】",
+  "virtual_start_timestamp": "2026-09-23T03:33:46+08:00",
+  "virtual_end_timestamp": "2026-09-23T03:36:15+08:00",
+  "virtual_active_ms": 149000,
+  "virtual_active_human": "00:02:29",
+  "dispatch_timestamp": "2026-09-23T03:36:15+08:00",
+  "active_total_before_dispatch_ms": 149000,
+  "active_total_before_dispatch_human": "00:02:29",
+  "next_phase": "REAL",
+  "next_action": "RUN_DIRECT_CODEX_SEQUENCE_01",
+  "prediction": {
+    "codex_real_anchor_ms": 409.3605,
+    "gpt_final_closeout_expected_range_ms": [
+      10000,
+      30000
+    ],
+    "predicted_total_clean_range_ms": [
+      159409.3605,
+      179409.3605
+    ],
+    "predicted_total_clean_range_human": [
+      "00:02:39.409",
+      "00:02:59.409"
+    ],
+    "interpretation": "Current reachable clean whole-loop band assuming no Reality Delta and final GPT closeout needs only read/verify/persist."
+  }
 }
