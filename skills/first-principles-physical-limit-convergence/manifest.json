@@ -1,6 +1,6 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.5.2",
+  "version": "4.5.3",
   "display_name": "极限短时间引擎",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
@@ -58,7 +58,7 @@
     "FOUNDATION_ABSORB_CHECK_DONE"
   ],
   "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_TOTAL_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.2",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.3",
   "timing_contract": {
     "clock_source": "NETWORK_TIMESTAMP_FOR_BOUNDARIES",
     "optimization_clock": "ACTIVE_AGENT_ELAPSED",
@@ -115,5 +115,20 @@
     ],
     "missing_time_segment": "INVALID_ACCOUNTING",
     "optimization_rule": "EVERY_STEP_MUST_JUSTIFY_ITSELF_BY_EXPECTED_REDUCTION_IN_T_VALID_ACTIVE_GLOBAL"
+  },
+  "phase_model": {
+    "method_steps_exactly": [
+      "VIRTUAL",
+      "REAL"
+    ],
+    "count": 2,
+    "numbered_virtual_substeps": "FORBIDDEN",
+    "numbered_real_substeps": "FORBIDDEN",
+    "checkpoints_role": "INTERNAL_DIAGNOSTIC_EVENTS_NOT_METHOD_STEPS",
+    "transitions": [
+      "VIRTUAL->REAL",
+      "REAL_PASS->FINAL",
+      "REAL_FAIL->VIRTUAL"
+    ]
   }
 }
