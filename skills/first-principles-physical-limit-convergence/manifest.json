@@ -1,6 +1,6 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.5.9",
+  "version": "4.5.10",
   "display_name": "极限短时间引擎",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
@@ -69,7 +69,7 @@
     "FOUNDATION_ABSORB_CHECK_DONE"
   ],
   "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_TOTAL_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.9",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.10",
   "timing_contract": {
     "clock_source": "NETWORK_TIMESTAMP_FOR_BOUNDARIES",
     "optimization_clock": "ACTIVE_AGENT_ELAPSED",
@@ -183,6 +183,12 @@
   },
   "codex_timing_relay": {
     "measured_inside_codex": true,
+    "handoff_fields": [
+      "TASK_TIME_ID",
+      "TASK_SEQUENCE",
+      "GPT_DISPATCH_TIMESTAMP",
+      "ACTIVE_TOTAL_BEFORE_DISPATCH"
+    ],
     "start_fields": [
       "CODEX_ACTIVE_START_TIMESTAMP",
       "CODEX_START_TICK",
@@ -262,7 +268,23 @@
         "SEQUENCE_UNIQUE",
         "SEQUENCE_EXPECTED_NEXT",
         "SEQUENCE_NOT_REUSED"
-      ]
+      ],
+      "dispatch_timing": {
+        "required": true,
+        "fields": [
+          "TASK_TIME_ID",
+          "TASK_SEQUENCE",
+          "GPT_DISPATCH_TIMESTAMP",
+          "ACTIVE_TOTAL_BEFORE_DISPATCH"
+        ],
+        "label_remains_exactly_four_fields": true,
+        "required_gates": [
+          "DISPATCH_TIME_READY",
+          "ACTIVE_TOTAL_READY",
+          "SEQUENCE_EXPECTED_NEXT"
+        ],
+        "on_valid_emission": "ADVANCE_SEQUENCE_LEDGER"
+      }
     },
     "current_sequence_ledger": "docs/first-principles/20260923-v4.5.9/TASK-SEQUENCE-LEDGER.json",
     "last_valid_sequence": "01",
