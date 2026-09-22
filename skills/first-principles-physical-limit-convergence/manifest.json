@@ -1,9 +1,10 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.1.0",
-  "display_name": "第一性原理极限短时间引擎",
+  "version": "4.2.0",
+  "display_name": "极限短时间引擎",
+  "legacy_display_name": "第一性原理极限短时间引擎",
   "method_name_zh": "一虚一实",
-  "previous_version": "4.0.0",
+  "previous_version": "4.1.0",
   "maturity_status": "DISCUSSION_REFINEMENT_ACTIVE",
   "local_deployment_status": "DEFERRED_UNTIL_METHOD_FREEZE",
   "objective": {
@@ -12,58 +13,86 @@
     "formula": "T*=min(T_VALID)",
     "single_anchor": true,
     "anchor_zh": "极限短时间",
-    "physical_meaning_zh": "极限效率"
+    "physical_meaning_zh": "极限效率",
+    "no_parallel_score": true
+  },
+  "anchor_law": {
+    "applies_to": "ALL_MATERIAL_DECISIONS_IN_VIRTUAL_AND_REAL",
+    "rule": "PASS_VALID_GATES_THEN_MINIMIZE_T_VALID",
+    "unknown_time_relation_action": "DO_NOT_FREEZE_AS_CURRENT_OPTIMUM",
+    "noncontributing_action_default": "DELETE",
+    "virtual_closeout_requires_predicted_t_valid": true,
+    "real_closeout_requires_t_valid_real": true,
+    "task_closeout_requires_current_real_extreme_time_or_explicit_NOT_CLOSED": true
   },
   "current_method": {
     "step_count": 2,
     "steps": [
-      {"id":1,"key":"VIRTUAL_MATURITY","name_zh":"虚拟成熟","visible_locator_value":"虚"},
-      {"id":2,"key":"REAL_VERIFY","name_zh":"实际验证","visible_locator_value":"实"}
+      {
+        "id": 1,
+        "key": "VIRTUAL_MATURITY",
+        "name_zh": "虚拟成熟",
+        "visible_locator_value": "虚"
+      },
+      {
+        "id": 2,
+        "key": "REAL_VERIFY",
+        "name_zh": "实际验证",
+        "visible_locator_value": "实"
+      }
     ],
     "failure_loop": "实->REALITY_DELTA->STOP->虚"
   },
   "task_locator": {
     "visible_format": "【<PAGE_NAME>｜<TASK_NAME>｜<SEQ>｜<ATTR_ZH>】",
-    "allowed_attr_zh": ["虚","实"],
-    "full_phase_names_allowed_in_locator": false,
+    "allowed_attr_zh": [
+      "虚",
+      "实"
+    ],
     "page_name_guessing_allowed": false,
     "cross_phase_command_allowed": false
   },
   "virtual_maturity": {
+    "candidate_required_fields": [
+      "VALID_GATE",
+      "PREDICTED_T_VALID",
+      "KEEP"
+    ],
     "mature_pool_is_dynamic": true,
     "old_winner_is_candidate_not_authority": true,
     "reality_foundation_is_input_not_step": true,
-    "jev_is_optional_time_accelerator": true,
-    "operations": ["READ_REALITY","DISCOVER_MATURE","COPY","ADAPT","COMPOSE","DELETE","ATTACK","VERIFY","TIME_COMPARE","FREEZE"]
+    "jev_is_optional_time_accelerator": true
   },
   "real_execution": {
     "executor_role": "FROZEN_CONTRACT_EXECUTE_VERIFY_REPORT_STOP_ONLY",
+    "real_pass_requires_valid": true,
+    "real_pass_requires_t_valid_real": true,
+    "invalid_timing_may_be_evidence_but_not_compete": true,
     "self_repair": false,
     "replan": false,
-    "search_new_route": false,
     "on_failure": "MINIMAL_REALITY_DELTA_STOP_RETURN_TO_VIRTUAL"
   },
   "foundation": {
     "skill_id": "local-ai-reality-foundation",
-    "required_absorb_check_after_each_completed_task": true,
-    "absorb_gate": "ONLY_IF_FUTURE_MIN_T_VALID_BENEFIT_OR_REPEAT_COST_REDUCTION",
-    "no_value_action": "NO_VERSION_CHANGE",
-    "current_expected_version": "1.1.0"
+    "current_expected_version": "1.1.0",
+    "absorb_gate": "ONLY_IF_FUTURE_MIN_T_VALID_BENEFIT_OR_REPEAT_COST_REDUCTION"
+  },
+  "jev_maturity": {
+    "required_before_v4_mature_freeze": true,
+    "integration_role": "OPTIONAL_INTERNAL_VIRTUAL_TIME_ACCELERATOR",
+    "use_rule": "USE_IFF_TOTAL_T_VALID_LOWER_AND_HARD_GATES_PASS",
+    "status": "PENDING_SEPARATE_MATURITY_WORK"
   },
   "automation_roadmap": {
     "attach_now": false,
-    "reason": "TWO_STEP_METHOD_NOT_YET_REAL_CASE_MATURE",
     "future_carrier": "gpt-codex-convergence-orchestrator@1.5.2",
-    "future_carrier_branch": "codex/gpt-codex-convergence-orchestrator-v1.5.2-freeze-closeout",
-    "reinvent_automation": false,
-    "next_major_requires_real_maturity": true
+    "reinvent_automation": false
   },
   "deployment_gate": {
     "deploy_now": false,
-    "reason": "USER_REQUESTED_DISCUSS_AND_MATURE_FIRST",
-    "old_v4_0_deploy_docs_are_history_only_on_this_branch": true,
-    "codex_deploy_command_publish_allowed": false
+    "codex_deploy_command_publish_allowed": false,
+    "reason": "DISCUSSION_REFINEMENT_ACTIVE"
   },
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.1.0",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.2.0",
   "updated_date": "2026-09-22"
 }
