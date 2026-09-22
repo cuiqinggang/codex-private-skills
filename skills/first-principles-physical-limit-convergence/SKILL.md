@@ -1,19 +1,19 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.5.6。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
+description: 极限短时间引擎 v4.5.7。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
 metadata:
-  version: "4.5.6"
+  version: "4.5.7"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.5.6
+# 极限短时间引擎 v4.5.7
 
 ## 根基：现实底座
 
 ```text
 本地 AI 现实底座永久资产
 local-ai-reality-foundation
-当前版本=v1.1.1
+当前版本=v1.1.2
 ```
 
 它不是第三步，而是“虚/实”共同的现实根基。
@@ -420,6 +420,128 @@ CODEX_PROCESS_END_TIMESTAMP
 计时覆盖整个 `codex exec` 进程，包括模型启动、推理、工具调用、现实执行和结果输出。
 
 Codex 结束后，结果回到 GPT；GPT 的重新读取与最终裁决继续计入同一 TASK_TIME_ID，不重置。
+
+
+
+## 四定位门：每个任务必须完整定位
+
+GPT -> Codex 的每个执行任务，开头必须且只能使用四字段标签：
+
+```text
+【页面名｜任务名｜序号｜虚/实】
+```
+
+四字段分别是：
+
+```text
+POSITION_1=PAGE_NAME
+POSITION_2=TASK_NAME
+POSITION_3=SEQUENCE
+POSITION_4=PHASE(VIRTUAL|REAL)
+```
+
+要求：
+
+```text
+FOUR_POSITION_FIELDS_PRESENT=PASS
+POSITION_LABEL_EXACT_ECHO=PASS
+PHASE_MATCH_CURRENT_STATE=PASS
+```
+
+Codex 必须在最终结果末尾原样回显同一标签。
+
+任一字段缺失、顺序错误、阶段错误或最终未原样回显：
+
+```text
+EXECUTION=BLOCK
+```
+
+定位标签只负责定位，不创建新方法步骤。
+
+## 虚 -> 实最短交接：直接 Codex，不再增加外层 PowerShell
+
+当前人工衔接模式下：
+
+```text
+GPT 完成虚
+-> 同一回复直接给 Codex 自包含任务
+-> 用户把任务直接交给 Codex
+-> Codex 自己计时并执行
+-> Codex 返回现实证据
+-> GPT 最终验收
+```
+
+禁止默认再增加：
+
+```text
+GPT -> PowerShell wrapper -> codex exec -> Codex
+```
+
+因为这一层增加复制、转义、Shell 插值和定位丢失风险，而不增加闭环有效性。
+
+PowerShell 仍然可以由 Codex 作为内部确定性工具调用。
+
+## GitHub 的位置
+
+```text
+GitHub = SHARED_FACT_SOURCE
+GitHub != DEFAULT_REAL_BOOTSTRAP_TRANSPORT
+```
+
+默认现实启动不得依赖：
+
+```text
+git fetch
+FETCH_HEAD write
+remote commit acquisition
+```
+
+“实”使用 GPT 直接交给 Codex 的自包含冻结合同。
+
+现实证据产生后：
+
+```text
+Codex result
+-> GPT
+-> formal result
+-> GitHub shared fact source
+-> remote verify
+-> GPT reread
+```
+
+这仍是同一个整体闭环，不是第三步。
+
+## Codex 内部时间接力
+
+不再依赖外层 PowerShell 才能计时。
+
+Codex 接到任务后第一项必须记录：
+
+```text
+CODEX_ACTIVE_START_TIMESTAMP
+CODEX_START_TICK
+CODEX_STOPWATCH_FREQUENCY
+```
+
+最后返回结果之前必须记录：
+
+```text
+CODEX_ACTIVE_END_TIMESTAMP
+CODEX_END_TICK
+CODEX_PROCESS_ACTIVE_MS
+```
+
+其中：
+
+```text
+CODEX_PROCESS_ACTIVE_MS
+= (END_TICK - START_TICK) * 1000 / FREQUENCY
+```
+
+持续时间以 System.Diagnostics.Stopwatch 的单调计时为准。
+绝对时间戳只作审计坐标，不作为持续时间计算来源。
+
+该计时属于 Codex 自己的执行合同，不要求用户额外运行命令。
 
 # 两步状态机：唯一结构
 
