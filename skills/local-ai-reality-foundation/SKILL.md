@@ -1,12 +1,12 @@
 ---
 name: local-ai-reality-foundation
-description: 本地 AI 现实底座永久资产 v1.1.1。版本化、任务后吸收的 Reality Foundation。每个完成任务都必须判断新现实事实是否能减少未来 min(T_VALID) 或避免重复现实采集/踩坑；只有有价值时才形成新版本。每版自包含完整当前资产、Reality Fingerprints、关键时间基线、约束、本版 delta、证据指针和上一版本。它不是方法步骤，只是“虚”的长期现实输入。
+description: 本地 AI 现实底座永久资产 v1.1.2。版本化、任务后吸收的 Reality Foundation。每个完成任务都必须判断新现实事实是否能减少未来 min(T_VALID) 或避免重复现实采集/踩坑；只有有价值时才形成新版本。每版自包含完整当前资产、Reality Fingerprints、关键时间基线、约束、本版 delta、证据指针和上一版本。它不是方法步骤，只是“虚”的长期现实输入。
 metadata:
-  version: "1.1.1"
+  version: "1.1.2"
   status: ACTIVE_VERSIONED_FOUNDATION
 ---
 
-# 本地 AI 现实底座永久资产 v1.1.1
+# 本地 AI 现实底座永久资产 v1.1.2
 
 ## 1. 唯一目的
 
@@ -71,7 +71,7 @@ MINOR = 新现实域、新资产类别、新吸收能力
 MAJOR = Foundation 合同发生不兼容变化
 ```
 
-当前 v1.1.1 是 MINOR，因为增加了“任务后吸收 + 自包含版本”能力。
+当前 v1.1.2 是 MINOR，因为增加了“任务后吸收 + 自包含版本”能力。
 
 ## 5. 当前完整资产
 
@@ -157,6 +157,37 @@ ACTION
 -> 虚阶段预检
 -> 不兼容候选直接淘汰
 -> 不允许把已知必失败路径再次冻结到“实”
+```
+
+
+
+### Codex Git / 沙箱现实约束增量
+
+```text
+OBSERVED_CONSTRAINT_005
+= 在当前 Codex v0.155.1 + workspace-write 现实执行中，
+  git fetch origin <branch>
+  已真实失败：
+  cannot open '.git/FETCH_HEAD': Permission denied
+
+CLASSIFICATION
+= LOCAL_GIT_METADATA_WRITE_PERMISSION
+!= NETWORK_TRANSPORT_FAILURE
+
+ACTION
+= “实”的启动关键路径默认禁止依赖 git fetch / 写 FETCH_HEAD。
+  GitHub 继续作为 SHARED_FACT_SOURCE（共同事实源），
+  但不作为 Codex 现实执行的必经启动传输层。
+
+DEFAULT_REAL_HANDOFF
+= GPT 直接把自包含冻结合同交给 Codex
+  -> Codex 本机执行
+  -> Codex 返回现实证据
+  -> GPT 写正式结果到 GitHub
+  -> GPT 重新读取/确认
+
+只有当虚阶段已经现实证明该 Codex 沙箱允许所需 Git 元数据写入时，
+才允许把相应 git 写操作重新放进“实”的关键路径。
 ```
 
 ### 网络硬约束
