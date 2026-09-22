@@ -1,12 +1,12 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.5.3。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
+description: 极限短时间引擎 v4.5.4。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
 metadata:
-  version: "4.5.3"
+  version: "4.5.4"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.5.3
+# 极限短时间引擎 v4.5.4
 
 ## 根基：现实底座
 
@@ -457,7 +457,41 @@ FROZEN_SOLUTION=YES
 不可变产物=已固定
 冻结闭环验收=通过
 冻结方案=有
+共同工作区发布=完成
+实入口命令=已经生成并在虚结束时直接交付
 ```
+
+### 虚 -> 实交接规则
+
+交接不是第三步，而是“虚”的完成条件。
+
+```text
+VIRTUAL_COMPLETE=YES
+iff
+FROZEN_SOLUTION=YES
+AND SHARED_WORKSPACE_PUBLISHED=PASS
+AND REAL_ENTRY_COMMAND_READY=PASS
+AND REAL_ENTRY_COMMAND_EMITTED=YES
+```
+
+现阶段默认最短交接：
+
+```text
+共同 GitHub 工作区保存不可变冻结执行文件
++
+虚结束的同一条回复直接给唯一 Codex 执行命令
+```
+
+禁止把以下动作留给下一轮：
+
+```text
+另行下载桌面
+再次询问如何执行
+再次生成执行命令
+手工搬运冻结文件
+```
+
+因为这些动作不提高有效性，只增加 T_VALID_ACTIVE_GLOBAL。
 
 # 实
 
