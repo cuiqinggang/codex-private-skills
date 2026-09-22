@@ -1,34 +1,17 @@
 # Changelog
 
-## 4.0.0 — 2026-09-22 — “一虚一实”重大升级
+## 4.1.0 — 2026-09-22 — v4 成熟协议
 
-### BREAKING
-- 当前方法从 v3.1.9 的三核心/三关压缩为两步：“虚拟成熟 + 实际验证”。
-- “极限短时间”不再是一个步骤，而提升为所有动作共同的唯一锚定物：`T*=min(T_VALID)`。
-- “成熟方案集群 + 高智能虚拟成熟”合并为一次“虚拟成熟”。
-- “实际验证”成为唯一现实步骤；现实失败只允许 Reality Delta → STOP → 返回虚拟成熟。
-- v4 正式命令第四字段只允许“虚拟成熟 / 实际验证”。
+- 保持“一虚一实”两步，不增加第三步。
+- 正式命令第四字段由“虚拟成熟/实际验证”压缩为“虚/实”。
+- 每个任务完成后新增 Foundation 吸收检查。
+- Foundation 必须版本化、自包含、保留 delta/evidence/previous version；无时间价值则不吸收、不升版。
+- 动态成熟方案池明确：旧赢家只是候选，不是永久权威。
+- 明确 v4.x 先通过真实案例成熟，不提前自动化。
+- 未来一步化优先适配既有 `gpt-codex-convergence-orchestrator@1.5.2`，不从零重造。
+- v4.0.0 保留为“一虚一实”架构首次形成的历史台阶。
 
-### ADDED
-- 永久资产聚合技能 `local-ai-reality-foundation@1.0.0`。
-- 漂移触发的增量 Reality 刷新规则。
-- 动态成熟方案池：每个新任务/重大现实差异允许重新检索，不把旧最佳永久化。
-- 历史索引 `HISTORY-v1-v3.1.9.md`。
-- v4 Codex 本地部署合同与 runner。
-
-### PRESERVED
-- v1.x–v3.1.9 分支与文件不删除。
-- reality-execution-environment-anchor 历史证据保留。
-- exact-reality-digital-twin 历史证据保留。
-- Browser/JEV/Probability Engine/H3 等历史能力保留为证据或成熟方案来源。
-
----
-
-## 3.1.9 — historical
-最终 Browser Twin 冻结；Reality Anchor 1.3.0；Exact Reality Twin 1.3.0；v3 当前方法仍为三核心。
-
-## 3.1.6 — historical
-Reality Anchor 正式进入旧核心2；Exact Twin 进入旧核心3；JEV Probability Engine P0 extreme case 冻结。
-
-## 3.1.5 — historical
-四字段中文核心定位门禁进入旧三核心方法。
+## 4.0.0 — 2026-09-22
+- v3 三核心/三关压缩为“一虚一实”。
+- 极限短时间提升为全流程唯一锚定物。
+- 建立 `local-ai-reality-foundation@1.0.0`。
