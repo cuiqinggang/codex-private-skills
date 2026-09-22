@@ -1,6 +1,6 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.5.1",
+  "version": "4.5.2",
   "display_name": "极限短时间引擎",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
@@ -8,9 +8,9 @@
     "current_version": "1.1.0",
     "role": "REQUIRED_ROOT_NOT_METHOD_STEP"
   },
-  "anchor": "T*=min(T_VALID)",
-  "anchor_formula": "T_VALID=t(FINAL_VALID_SOLUTION)-t(PROBLEM_ENTRY)",
-  "anchor_meaning": "TOTAL_PROBLEM_RESOLUTION_TIME",
+  "anchor": "T*=min(T_VALID_ACTIVE_GLOBAL)",
+  "anchor_formula": "T_VALID_ACTIVE_GLOBAL=measure(UNION(AGENT_ACTIVE_INTERVALS))",
+  "anchor_meaning": "TOTAL_ACTIVE_AGENT_PROBLEM_RESOLUTION_TIME",
   "timer_reset_on_retry": "FORBIDDEN",
   "t_valid_includes": [
     "REALITY_FACT_COLLECTION",
@@ -29,7 +29,7 @@
     "FINAL_ACCEPTANCE_AND_CLOSEOUT"
   ],
   "subtime_role": "DIAGNOSTIC_ONLY_NOT_OPTIMIZATION_ANCHOR",
-  "rule": "VALID_PASS_THEN_MIN_TOTAL_T_VALID",
+  "rule": "VALID_PASS_THEN_MIN_TOTAL_ACTIVE_AGENT_T_VALID",
   "time_anchor_gate": {
     "required_first_question": "NET_EFFECT_ON_TOTAL_T_VALID",
     "add_component_rule": "ADD_IFF_EXPECTED_T_VALID_WITH_COMPONENT_LT_WITHOUT_COMPONENT",
@@ -58,36 +58,31 @@
     "FOUNDATION_ABSORB_CHECK_DONE"
   ],
   "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_TOTAL_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.1",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.2",
   "timing_contract": {
-    "clock": "WALL_CLOCK_ELAPSED",
-    "start_field": "PROBLEM_ENTRY_TIMESTAMP",
-    "stop_field": "FINAL_VALID_TIMESTAMP",
-    "global_timer_state": [
-      "RUNNING",
-      "STOPPED"
+    "clock_source": "NETWORK_TIMESTAMP_FOR_BOUNDARIES",
+    "optimization_clock": "ACTIVE_AGENT_ELAPSED",
+    "task_time_id_format": "ESTE-YYYYMMDD-NNN",
+    "start_field": "PROBLEM_ENTRY_NETWORK_TIMESTAMP",
+    "stop_field": "FINAL_VALID_NETWORK_TIMESTAMP",
+    "segment_fields": [
+      "SEGMENT_ID",
+      "AGENT",
+      "ACTIVE_START_NETWORK_TIMESTAMP",
+      "ACTIVE_END_NETWORK_TIMESTAMP",
+      "ACTIVE_DURATION"
     ],
-    "global_formula": "T_VALID_GLOBAL=FINAL_VALID_TIMESTAMP-PROBLEM_ENTRY_TIMESTAMP",
-    "includes_failures_rework_wait_retries_handoffs": true,
+    "included_agents": [
+      "GPT",
+      "CODEX",
+      "DIRECT_EXECUTION_TOOLS_UNDER_GPT_OR_CODEX"
+    ],
+    "human_idle": "EXCLUDED",
+    "failures_rework_retries": "INCLUDED_WHEN_AGENT_ACTIVE",
+    "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
+    "per_agent_totals_role": "DIAGNOSTIC_ONLY",
+    "global_formula": "T_VALID_ACTIVE_GLOBAL=measure(UNION(AGENT_ACTIVE_INTERVALS))",
     "reset": "FORBIDDEN",
-    "unknown_start_rule": "DO_NOT_RETROACTIVELY_FABRICATE_TIMESTAMP",
-    "checkpoint_fields": [
-      "CHECKPOINT_NAME",
-      "CHECKPOINT_TIMESTAMP",
-      "ELAPSED_FROM_PROBLEM_ENTRY",
-      "BOTTLENECK_IF_ANY"
-    ],
-    "local_timer_role": "DIAGNOSTIC_ONLY",
-    "local_timers": [
-      "T_VIRTUAL",
-      "T_REAL",
-      "T_FETCH",
-      "T_RUNNER",
-      "T_VERIFY",
-      "T_FAILURE_DIAGNOSIS",
-      "T_REWORK",
-      "T_WAIT",
-      "T_HANDOFF"
-    ]
+    "final_stop_authority": "GPT_AFTER_FINAL_VALID_CONDITION_PASS"
   }
 }
