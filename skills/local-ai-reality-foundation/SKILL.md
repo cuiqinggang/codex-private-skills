@@ -1,12 +1,12 @@
 ---
 name: local-ai-reality-foundation
-description: 本地 AI 现实底座永久资产 v1.1.2。版本化、任务后吸收的 Reality Foundation。每个完成任务都必须判断新现实事实是否能减少未来 min(T_VALID) 或避免重复现实采集/踩坑；只有有价值时才形成新版本。每版自包含完整当前资产、Reality Fingerprints、关键时间基线、约束、本版 delta、证据指针和上一版本。它不是方法步骤，只是“虚”的长期现实输入。
+description: 本地 AI 现实底座永久资产 v1.1.3。版本化、任务后吸收的 Reality Foundation。每个完成任务都必须判断新现实事实是否能减少未来 min(T_VALID) 或避免重复现实采集/踩坑；只有有价值时才形成新版本。每版自包含完整当前资产、Reality Fingerprints、关键时间基线、约束、本版 delta、证据指针和上一版本。它不是方法步骤，只是“虚”的长期现实输入。
 metadata:
-  version: "1.1.2"
+  version: "1.1.3"
   status: ACTIVE_VERSIONED_FOUNDATION
 ---
 
-# 本地 AI 现实底座永久资产 v1.1.2
+# 本地 AI 现实底座永久资产 v1.1.3
 
 ## 1. 唯一目的
 
@@ -71,7 +71,7 @@ MINOR = 新现实域、新资产类别、新吸收能力
 MAJOR = Foundation 合同发生不兼容变化
 ```
 
-当前 v1.1.2 是 MINOR，因为增加了“任务后吸收 + 自包含版本”能力。
+当前 v1.1.3 是 MINOR，因为增加了“任务后吸收 + 自包含版本”能力。
 
 ## 5. 当前完整资产
 
@@ -188,6 +188,38 @@ DEFAULT_REAL_HANDOFF
 
 只有当虚阶段已经现实证明该 Codex 沙箱允许所需 Git 元数据写入时，
 才允许把相应 git 写操作重新放进“实”的关键路径。
+```
+
+
+
+### 只读探针：语义证据与退出码冲突
+
+```text
+OBSERVED_CONSTRAINT_006
+= Codex 现实验证中执行只读 nvidia-smi 探针时，
+  已真实出现：
+  stdout = NVIDIA GeForce RTX 2080 Ti, 22528
+  但执行层报告 nonzero exit status。
+
+CLASSIFICATION
+= READ_ONLY_PROBE_SEMANTIC_EVIDENCE_EXIT_STATUS_CONFLICT
+
+MEANING
+= 现实对象数据本身已经完整返回且满足冻结条件；
+  单独把非零退出码作为硬失败，会产生 false negative（假阴性）。
+
+ACTION
+= 对只读、无副作用、输出结构已冻结且可完整语义解析的探针：
+  1. 先判断语义证据是否完整、可解析、满足硬门；
+  2. exit code 作为诊断字段保留；
+  3. 若语义证据完整且满足硬门、且无证据表明输出不完整/陈旧/来自错误对象，
+     不得仅凭 nonzero exit status 判 REAL FAIL；
+  4. 若语义证据缺失、矛盾、截断、解析失败，或命令有副作用，
+     nonzero exit status 仍可作为硬失败依据。
+
+SCOPE
+= 仅适用于已冻结的 read-only probe（只读探针），
+  不得推广为“所有非零退出码都忽略”。
 ```
 
 ### 网络硬约束
