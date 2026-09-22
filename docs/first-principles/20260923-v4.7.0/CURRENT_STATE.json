@@ -1,0 +1,36 @@
+{
+  "method": "extreme-short-time-engine-v4.7.0",
+  "status": "V47_CONTRACT_FROZEN_AUTOMATION_RECERTIFICATION_READY",
+  "method_steps": [
+    "VIRTUAL",
+    "REAL"
+  ],
+  "timing_model": "DUAL_TIME_SINGLE_CLOSED_LOOP",
+  "t_mature_star": {
+    "exact": true,
+    "value_human": "00:03:14.419",
+    "source": "ESTE-20260923-003"
+  },
+  "t_closed_real": {
+    "historical_exact": false,
+    "historical_user_report": "SEVERAL_HOURS",
+    "next_runs_exact_required": true
+  },
+  "mature_assets": {
+    "gpt_codex": "v1.5.2",
+    "playwright": "JEV-NATIVE R3 / latest user-supplied real 30/30, min 272.98ms"
+  },
+  "next_reality_acceptance": {
+    "id": "V47-AUTOMATION-CLOSED-LOOP-01",
+    "task_time_id": "ESTE-20260923-005",
+    "user_initial_input_count": 1,
+    "manual_middle_interventions_target": 0,
+    "injected_recoverable_delta": true,
+    "spec_path": "docs/first-principles/20260923-v4.7.0/V47-AUTOMATION-CLOSED-LOOP-01.md"
+  },
+  "comparison_plan": {
+    "automated_first": true,
+    "paired_manual_baseline_after": true,
+    "exact_saved_time_requires_exact_paired_baseline": true
+  }
+}
