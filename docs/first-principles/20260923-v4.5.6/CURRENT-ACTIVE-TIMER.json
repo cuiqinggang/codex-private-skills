@@ -106,11 +106,12 @@
       "segment_id": "S011",
       "agent": "GPT",
       "active_start_network_timestamp": "2026-09-23T00:37:55+08:00",
-      "latest_checkpoint_network_timestamp": "2026-09-23T00:42:26+08:00",
-      "active_duration_at_checkpoint_ms": 271000,
-      "status": "OPEN",
+      "status": "CLOSED",
       "work": "absorb Codex execution constraints into Reality Foundation, add freeze preflight, build and verify v4.5.6 literal-safe handoff",
-      "result": "IN_PROGRESS"
+      "result": "PASS",
+      "active_end_network_timestamp": "2026-09-23T00:43:31+08:00",
+      "active_duration_ms": 336000,
+      "bottleneck": "CODEx_REALITY_CONSTRAINT_ABSORPTION_AND_PREFLIGHT_REPAIR"
     }
   ],
   "excluded_intervals": [
@@ -177,7 +178,7 @@
   },
   "global_active_union_at_checkpoint_ms": 1112000,
   "global_active_union_at_checkpoint_human": "00:18:32",
-  "checkpoint_timestamp": "2026-09-23T00:42:26+08:00",
+  "checkpoint_timestamp": "2026-09-23T00:43:31+08:00",
   "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
   "human_idle": "EXCLUDED",
   "reset_on_failure": "FORBIDDEN",
@@ -196,7 +197,7 @@
     "on_real_fail": "RETURN_TO_VIRTUAL_WITHOUT_TIMER_RESET"
   },
   "virtual_complete": true,
-  "virtual_complete_network_timestamp": "2026-09-23T00:42:26+08:00",
+  "virtual_complete_network_timestamp": "2026-09-23T00:43:31+08:00",
   "next_phase": "REAL",
   "predicted_final_active_if_first_real_pass": {
     "lower_ms": 828000,
@@ -222,8 +223,8 @@
   "global_active_exact_through_network_timestamp": "2026-09-22T23:55:15+08:00",
   "global_active_exact_ms": 1112000,
   "global_active_exact_human": "00:18:32",
-  "global_active_lower_bound_ms": 2040140.93,
-  "global_active_lower_bound_human": "00:34:00.141",
+  "global_active_lower_bound_ms": 2105140.93,
+  "global_active_lower_bound_human": "00:35:05.141",
   "global_active_exact_current": "UNKNOWN_ONLY_BECAUSE_OF_LEGACY_UNINSTRUMENTED_CODEX_INTERVAL_BEFORE_V4.5.5",
   "recovered_prior_codex_evidence": {
     "earliest_observed_codex_timestamp": "2026-09-22T23:56:55.523963+08:00",
