@@ -1,0 +1,23 @@
+{
+  "method_from": "extreme-short-time-engine-v4.5.4",
+  "method_to": "extreme-short-time-engine-v4.5.5",
+  "task_time_id": "ESTE-20260922-001",
+  "real_result": "FAIL",
+  "reality_delta": "CODEX_POLICY_REJECTED_TEMP_SCRIPT_WRITE",
+  "evidence": {
+    "local_commit_initially_missing": true,
+    "branch_fetch": "PASS",
+    "frozen_commit_after_fetch": "PASS",
+    "temp_write": "REJECTED_BY_CODEX_SAFETY_POLICY",
+    "real_runner_started": false
+  },
+  "method_root_cause": "VIRTUAL_HANDOFF_CONTRACT_USED_TEMP_SCRIPT_STAGING_AND_DID_NOT_PRESERVE_WHOLE_LOOP_EXECUTOR_TIMING",
+  "return_to_virtual": "YES",
+  "timer_reset": "FORBIDDEN",
+  "virtual_fix": [
+    "KEEP_CODEX_AS_EXECUTOR",
+    "STREAM_FROZEN_GIT_OBJECT_DIRECTLY_TO_POWERSHELL",
+    "FORBID_TEMP_SCRIPT_STAGING",
+    "WRAP_FULL_CODEX_EXEC_WITH_START_END_AND_ACTIVE_DURATION_TIMING"
+  ]
+}
