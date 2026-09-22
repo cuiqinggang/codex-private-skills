@@ -1,0 +1,28 @@
+{
+  "method": "extreme-short-time-engine-v4.5.5",
+  "task_time_id": "ESTE-20260922-001",
+  "phase": "VIRTUAL",
+  "return_from_real_delta": "CODEX_POLICY_REJECTED_TEMP_SCRIPT_WRITE",
+  "anchor_name_zh": "整体闭环极限时间",
+  "anchor": "T*=min(T_VALID_ACTIVE_GLOBAL) subject to TASK_COMPLETED=TRUE and CLOSED_LOOP=TRUE",
+  "executor_chain": "GPT -> CODEX -> POWERSHELL/LOCAL_TOOLS -> CODEX_RESULT -> GPT_FINAL_VALID",
+  "checks": {
+    "TWO_PHASE_ONLY": true,
+    "CODEX_EXECUTOR_REQUIRED": true,
+    "DIRECT_POWERSHELL_NOT_REPLACEMENT": true,
+    "WHOLE_LOOP_GATED": true,
+    "TEMP_WRITE_FORBIDDEN": true,
+    "STREAM_EXECUTION": true,
+    "CODEX_TIMING_RELAY": true,
+    "HANDOFF_COMMAND_PRESENT": true,
+    "REAL_SCRIPT_ASCII": true
+  },
+  "virtual_complete": "YES",
+  "frozen_solution": "YES",
+  "real_artifact_commit": "ba4b82004102fa8e833f45b3f88404b10a576a3e",
+  "real_artifact_path": "docs/first-principles/20260923-v4.5.5/REAL-ENTRY-FROZEN.ps1",
+  "real_artifact_blob_sha": "901b8ee53237f11e5a8d9f643d0341cea4f88cf4",
+  "handoff_contract_path": "docs/first-principles/20260923-v4.5.5/VIRTUAL-TO-REAL-HANDOFF.md",
+  "real_entry_command_ready": "PASS",
+  "next_phase": "REAL"
+}
