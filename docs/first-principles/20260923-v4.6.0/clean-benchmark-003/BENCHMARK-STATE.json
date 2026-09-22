@@ -60,6 +60,26 @@
   },
   "gpt_final_start_timestamp": "2026-09-23T03:45:33+08:00",
   "real_complete": "YES",
-  "final_valid": "PENDING_GPT_CLOSEOUT",
-  "human_idle_or_handoff_gaps_excluded": true
+  "final_valid": "YES",
+  "human_idle_or_handoff_gaps_excluded": true,
+  "gpt_final_end_timestamp": "2026-09-23T03:45:46+08:00",
+  "gpt_final_active_ms": 13000,
+  "gpt_final_active_human": "00:00:13",
+  "task_completed": true,
+  "closed_loop": true,
+  "timer_state": "STOPPED",
+  "t_valid_run_clean_ms": 194419.3759,
+  "t_valid_run_clean_human": "00:03:14.419",
+  "t_star_current_ms": 194419.3759,
+  "t_star_current_human": "00:03:14.419",
+  "result_classification": "FIRST_EXACT_CLEAN_MATURE_RUN",
+  "breakdown": {
+    "virtual_ms": 181000,
+    "virtual_human": "00:03:01",
+    "codex_real_ms": 419.3759,
+    "codex_real_human": "00:00:00.419",
+    "gpt_final_ms": 13000,
+    "gpt_final_human": "00:00:13",
+    "human_idle_and_handoff_gaps": "EXCLUDED"
+  }
 }
