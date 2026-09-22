@@ -145,7 +145,7 @@
   "virtual_to_real_handoff": {
     "role": "VIRTUAL_EXIT_CONDITION_NOT_THIRD_STEP",
     "default_mode": "DIRECT_GPT_TO_CODEX_SELF_CONTAINED_CONTRACT",
-    "direct_contract_path": "docs/first-principles/20260923-v4.5.8/DIRECT-CODEX-REAL-CONTRACT.md",
+    "direct_contract_path": "docs/first-principles/20260923-v4.5.9/DIRECT-CODEX-REAL-CONTRACT.md",
     "preflight_path": "docs/first-principles/20260923-v4.5.8/CODEX-REALITY-PREFLIGHT.json",
     "outer_powershell_wrapper": "NOT_DEFAULT",
     "codex_executor_required": true,
@@ -153,7 +153,8 @@
     "github_role": "POST_EXECUTION_SHARED_FACT_SOURCE",
     "powershell_role": "CODEX_INTERNAL_DETERMINISTIC_TOOL",
     "same_response_delivery_required": true,
-    "read_only_probe_semantic_rule": "SEMANTIC_EVIDENCE_PRECEDES_EXIT_STATUS_FOR_FROZEN_SIDE_EFFECT_FREE_PROBES"
+    "read_only_probe_semantic_rule": "SEMANTIC_EVIDENCE_PRECEDES_EXIT_STATUS_FOR_FROZEN_SIDE_EFFECT_FREE_PROBES",
+    "sequence_preflight": "PASS"
   },
   "anchor_name_zh": "整体闭环极限时间",
   "anchor_name_en": "WHOLE_LOOP_VALID_ACTIVE_TIME",
@@ -205,7 +206,7 @@
   "local_fast_path_rule": "A_LOCAL_FASTER_PATH_THAT_BREAKS_ANY_VALIDITY_GATE_IS_NOT_A_VALID_GLOBAL_CANDIDATE",
   "codex_reality_preflight": {
     "required_when_real_executor_is_codex": true,
-    "source": "local-ai-reality-foundation@1.1.1.codex_execution_constraints",
+    "source": "local-ai-reality-foundation@1.1.3.codex_execution_constraints",
     "gates": [
       "CODEX_REALITY_CONSTRAINTS_LOADED",
       "CODEX_POLICY_COMPATIBILITY",
@@ -262,7 +263,11 @@
         "SEQUENCE_EXPECTED_NEXT",
         "SEQUENCE_NOT_REUSED"
       ]
-    }
+    },
+    "current_sequence_ledger": "docs/first-principles/20260923-v4.5.9/TASK-SEQUENCE-LEDGER.json",
+    "last_valid_sequence": "01",
+    "next_sequence": "02",
+    "current_required_label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜02｜实】"
   },
   "read_only_probe_validity": {
     "required": true,
