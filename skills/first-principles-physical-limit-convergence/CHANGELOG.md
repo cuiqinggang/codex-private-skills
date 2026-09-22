@@ -1,17 +1,22 @@
 # Changelog
 
-## 4.1.0 — 2026-09-22 — v4 成熟协议
+## 4.2.0 — 2026-09-22 — 极限短时间锚定律
+- 正式中文名从“第一性原理极限短时间引擎”缩为“极限短时间引擎”。
+- 机器 Skill ID 保持 first-principles-physical-limit-convergence，避免历史断链。
+- 极限短时间从顶层目标说明升级为所有实质判断的强制决策律。
+- 所有候选先过 HARD GATES，再只比较 T_VALID。
+- TIME_RELATION=UNKNOWN 的候选不得冻结为当前最优。
+- 虚收口必须有 PREDICTED_T_VALID。
+- 实收口必须有 VALID=PASS + T_VALID_REAL；无现实时间不得宣称完成。
+- INVALID timing 可作为 Reality evidence，但不得进入 min(T_VALID)。
+- Foundation 吸收继续被同一 T_VALID 锚定。
+- v4 mature freeze 前新增 JEV_MATURITY_GATE；JEV 先完成自身极限成熟，再按是否降低总 T_VALID 决定节点使用。
+- 本地部署和自动化继续延后。
 
-- 保持“一虚一实”两步，不增加第三步。
-- 正式命令第四字段由“虚拟成熟/实际验证”压缩为“虚/实”。
-- 每个任务完成后新增 Foundation 吸收检查。
-- Foundation 必须版本化、自包含、保留 delta/evidence/previous version；无时间价值则不吸收、不升版。
-- 动态成熟方案池明确：旧赢家只是候选，不是永久权威。
-- 明确 v4.x 先通过真实案例成熟，不提前自动化。
-- 未来一步化优先适配既有 `gpt-codex-convergence-orchestrator@1.5.2`，不从零重造。
-- v4.0.0 保留为“一虚一实”架构首次形成的历史台阶。
+## 4.1.0 — 2026-09-22
+- 虚/实单字属性。
+- Foundation 任务后吸收、版本化、自包含。
+- 自动化一步化延后。
 
 ## 4.0.0 — 2026-09-22
-- v3 三核心/三关压缩为“一虚一实”。
-- 极限短时间提升为全流程唯一锚定物。
-- 建立 `local-ai-reality-foundation@1.0.0`。
+- 三核心/三关压缩为一虚一实。
