@@ -1,12 +1,12 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.5.8。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
+description: 极限短时间引擎 v4.5.9。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
 metadata:
-  version: "4.5.8"
+  version: "4.5.9"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.5.8
+# 极限短时间引擎 v4.5.9
 
 ## 根基：现实底座
 
@@ -457,6 +457,66 @@ EXECUTION=BLOCK
 ```
 
 定位标签只负责定位，不创建新方法步骤。
+
+
+
+## 四定位第三字段：任务发布序号状态机
+
+四定位中的第三字段 `SEQUENCE` 不是装饰性编号，而是同一 `TASK_TIME_ID` 下 GPT -> Codex 有效任务发布的单调递增序号。
+
+```text
+SEQUENCE_SCOPE = TASK_TIME_ID
+INITIAL_SEQUENCE = 01
+NEXT_SEQUENCE = LAST_VALID_EMITTED_SEQUENCE + 1
+```
+
+固定规则：
+
+```text
+失败不重置
+回虚不重置
+方法 PATCH/MINOR 升版不重置
+同一现实问题重新冻结后再次发给 Codex 必须 +1
+只有建立新的 TASK_TIME_ID 才重新从 01 开始
+```
+
+冻结前必须读取任务序号账本并通过：
+
+```text
+SEQUENCE_LEDGER_LOADED=PASS
+SEQUENCE_UNIQUE=PASS
+SEQUENCE_EXPECTED_NEXT=PASS
+SEQUENCE_NOT_REUSED=PASS
+```
+
+若上一条有效 Codex 任务标签为：
+
+```text
+【页面名｜任务名｜01｜实】
+```
+
+则下一条有效任务只能是：
+
+```text
+【页面名｜任务名｜02｜实】
+```
+
+不得因为上一条 FAIL、返回虚、方法升级而再次使用 `01`。
+
+如果 GPT 生成了重复/错误序号，但尚未成为有效执行合同：
+
+```text
+SEQUENCE_GATE=FAIL
+INVALID_EMISSION=NOT_COUNTED_AS_VALID_SEQUENCE
+```
+
+账本不前进；修正后的下一条仍使用本来应有的 NEXT_SEQUENCE。
+
+Codex 开头和结尾必须原样回显相同四定位标签；序号不一致同样：
+
+```text
+EXECUTION=BLOCK
+```
 
 ## 虚 -> 实最短交接：直接 Codex，不再增加外层 PowerShell
 
