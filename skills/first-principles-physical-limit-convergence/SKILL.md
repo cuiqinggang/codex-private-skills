@@ -1,12 +1,12 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.5.0。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
+description: 极限短时间引擎 v4.5.1。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
 metadata:
-  version: "4.5.0"
+  version: "4.5.1"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.5.0
+# 极限短时间引擎 v4.5.1
 
 ## 根基：现实底座
 
@@ -197,6 +197,86 @@ REPEATED_REWORK_TIME_WITHOUT_RULE
 若乐观上界收益仍小于新增成本 -> 不加
 否则 -> 回虚做最小验证以缩小不确定性
 ```
+
+
+# 全局计时落地
+
+主时钟必须真正记录，不得只停留在概念定义。
+
+每个新问题进入引擎时，立即记录：
+
+```text
+PROBLEM_ENTRY_TIMESTAMP=<精确时间戳或可追溯事件>
+GLOBAL_TIMER_STATE=RUNNING
+GLOBAL_TIME_ANCHOR=T_VALID
+```
+
+问题最终有效解决并完成收口时记录：
+
+```text
+FINAL_VALID_TIMESTAMP=<精确时间戳或可追溯事件>
+GLOBAL_TIMER_STATE=STOPPED
+T_VALID_GLOBAL
+= FINAL_VALID_TIMESTAMP - PROBLEM_ENTRY_TIMESTAMP
+```
+
+主计时口径采用实际经过时间（wall-clock elapsed time，墙钟经过时间）；失败、等待、回退、返工、重跑、交接均不从主时间中扣除。
+
+若问题进入时没有可靠的精确时间戳：
+
+```text
+不得倒推或伪造。
+START_TIME_CONFIDENCE=UNKNOWN
+```
+
+从第一次能够可靠建立时间锚的时点开始记录，并明确说明此前区间未被精确计量。
+
+## 局部时间：只用于瓶颈定位
+
+允许同时记录：
+
+```text
+T_VIRTUAL
+T_REAL
+T_FETCH
+T_RUNNER
+T_VERIFY
+T_FAILURE_DIAGNOSIS
+T_REWORK
+T_WAIT
+T_HANDOFF
+```
+
+用途：
+
+```text
+定位瓶颈
+比较局部方案
+解释总 T_VALID 为什么变化
+```
+
+限制：
+
+```text
+LOCAL_TIMER_ROLE=DIAGNOSTIC_ONLY
+LOCAL_TIMER_CANNOT_REPLACE_GLOBAL_T_VALID=YES
+```
+
+局部更快但导致总 T_VALID 更长的方案，判为整体更差。
+
+## 时间检查点
+
+每个具有决策意义的阶段结束后记录一次：
+
+```text
+CHECKPOINT_NAME=<阶段>
+CHECKPOINT_TIMESTAMP=<时间>
+ELAPSED_FROM_PROBLEM_ENTRY=<累计时间>
+BOTTLENECK_IF_ANY=<瓶颈或 NONE>
+```
+
+检查点只提供可观测性，不创建新的优化目标。
+
 
 # 虚
 
