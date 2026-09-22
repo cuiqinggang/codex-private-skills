@@ -2,8 +2,8 @@
   "task_time_id": "ESTE-20260922-001",
   "sequence_scope": "TASK_TIME_ID",
   "initial_sequence": "01",
-  "last_valid_emitted_sequence": "01",
-  "next_sequence": "02",
+  "last_valid_emitted_sequence": "02",
+  "next_sequence": "03",
   "reset_rules": {
     "on_real_fail": false,
     "on_return_to_virtual": false,
@@ -17,6 +17,16 @@
       "method": "extreme-short-time-engine-v4.5.7",
       "result": "FAIL",
       "reality_delta": "READ_ONLY_GPU_PROBE_FALSE_NEGATIVE_FROM_EXIT_STATUS"
+    },
+    {
+      "sequence": "02",
+      "label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜02｜实】",
+      "method": "extreme-short-time-engine-v4.5.10",
+      "result": "EMITTED_PENDING_REAL",
+      "gpt_dispatch_timestamp": "2026-09-23T03:05:25+08:00",
+      "active_total_before_dispatch_ms": 2955699.6579,
+      "active_total_before_dispatch_human": "00:49:15.700",
+      "time_accounting_status": "LOWER_BOUND_DUE_TO_LEGACY_UNINSTRUMENTED_INTERVALS"
     }
   ],
   "rejected_emissions": [
@@ -27,18 +37,9 @@
       "counted_as_valid_sequence": false
     }
   ],
-  "required_next_label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜02｜实】",
+  "required_next_label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜03｜实】",
   "method": "extreme-short-time-engine-v4.5.10",
   "dispatch_time_required": true,
-  "pending_emission": {
-    "sequence": "02",
-    "label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜02｜实】",
-    "status": "WAITING_FINAL_DISPATCH_TIMESTAMP",
-    "required_metadata": [
-      "TASK_TIME_ID",
-      "TASK_SEQUENCE",
-      "GPT_DISPATCH_TIMESTAMP",
-      "ACTIVE_TOTAL_BEFORE_DISPATCH"
-    ]
-  }
+  "pending_emission": null,
+  "last_dispatch_timestamp": "2026-09-23T03:05:25+08:00"
 }
