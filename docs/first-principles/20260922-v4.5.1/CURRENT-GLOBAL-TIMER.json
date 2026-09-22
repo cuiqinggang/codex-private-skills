@@ -9,7 +9,7 @@
   "current_phase": "VIRTUAL",
   "timer_reset": "FORBIDDEN",
   "local_timer_role": "DIAGNOSTIC_ONLY",
-  "note": "Earlier discussion on this page predates the first exact unified timer anchor and is not retroactively assigned a fabricated duration.",
+  "note": "Earlier discussion on this page predates the first exact unified timer anchor and is not retroactively assigned a fabricated duration. v4.5.2 replaces raw wall-clock elapsed as the optimization anchor with active GPT/Codex problem-solving time; historical timestamps are retained as evidence.",
   "checkpoints": [
     {
       "checkpoint_name": "GLOBAL_TIMER_INSTRUMENTATION_ACTIVE",
@@ -21,5 +21,7 @@
       "note": "Global wall-clock anchor, non-reset rule, local diagnostic timers, and checkpoint contract are committed and read back."
     }
   ],
-  "current_status": "GLOBAL_TIMER_ACTIVE_VIRTUAL_NOT_YET_FINAL"
+  "current_status": "GLOBAL_TIMER_ACTIVE_VIRTUAL_NOT_YET_FINAL",
+  "status": "SUPERSEDED_AS_OPTIMIZATION_ANCHOR",
+  "superseded_by": "docs/first-principles/20260922-v4.5.2/CURRENT-ACTIVE-TIMER.json"
 }
