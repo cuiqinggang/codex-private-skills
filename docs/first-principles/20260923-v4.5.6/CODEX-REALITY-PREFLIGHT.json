@@ -1,16 +1,17 @@
 {
   "method": "extreme-short-time-engine-v4.5.6",
   "reality_foundation": "local-ai-reality-foundation@1.1.1",
+  "verifier_version": "2",
   "checks": {
     "SINGLE_QUOTED_HERE_STRING": true,
-    "NO_W32TM_HARD_DEPENDENCY": false,
+    "NO_W32TM_EXECUTION": true,
     "STOPWATCH_AROUND_CODEX": true,
     "NO_TEMP_STAGING": true,
-    "STREAMED_EXECUTION": false,
+    "STREAMED_EXECUTION": true,
     "REAL_SCRIPT_ASCII": true,
-    "REAL_SCRIPT_HAS_VARIABLES": false
+    "REAL_SCRIPT_LITERAL_TOKENS": false
   },
   "result": "FAIL",
   "freeze": "BLOCK",
-  "note": "This verifies known observed constraints and literal-safe transport. It does not claim to enumerate every internal Codex safety policy."
+  "limitation": "Known observed constraints are covered. This does not claim to enumerate every internal Codex safety policy."
 }
