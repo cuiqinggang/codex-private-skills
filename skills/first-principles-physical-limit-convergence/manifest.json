@@ -145,14 +145,15 @@
   "virtual_to_real_handoff": {
     "role": "VIRTUAL_EXIT_CONDITION_NOT_THIRD_STEP",
     "default_mode": "DIRECT_GPT_TO_CODEX_SELF_CONTAINED_CONTRACT",
+    "direct_contract_path": "docs/first-principles/20260923-v4.5.8/DIRECT-CODEX-REAL-CONTRACT.md",
+    "preflight_path": "docs/first-principles/20260923-v4.5.8/CODEX-REALITY-PREFLIGHT.json",
     "outer_powershell_wrapper": "NOT_DEFAULT",
     "codex_executor_required": true,
     "runtime_git_fetch_required": false,
     "github_role": "POST_EXECUTION_SHARED_FACT_SOURCE",
     "powershell_role": "CODEX_INTERNAL_DETERMINISTIC_TOOL",
     "same_response_delivery_required": true,
-    "direct_contract_path": "docs/first-principles/20260923-v4.5.7/DIRECT-CODEX-REAL-CONTRACT.md",
-    "git_metadata_write_on_real_bootstrap": "FORBIDDEN_BY_DEFAULT"
+    "read_only_probe_semantic_rule": "SEMANTIC_EVIDENCE_PRECEDES_EXIT_STATUS_FOR_FROZEN_SIDE_EFFECT_FREE_PROBES"
   },
   "anchor_name_zh": "整体闭环极限时间",
   "anchor_name_en": "WHOLE_LOOP_VALID_ACTIVE_TIME",
