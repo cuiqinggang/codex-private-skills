@@ -22,7 +22,7 @@
       "sequence": "02",
       "label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜02｜实】",
       "method": "extreme-short-time-engine-v4.5.10",
-      "result": "PASS",
+      "result": "PASS_FINAL",
       "gpt_dispatch_timestamp": "2026-09-23T03:06:05+08:00",
       "active_total_before_dispatch_ms": 2995699.6579,
       "active_total_before_dispatch_human": "00:49:55.700",
@@ -33,7 +33,8 @@
       "codex_active_end_timestamp": "2026-09-23T03:16:02.1364721+08:00",
       "codex_process_active_ms": 409.3605,
       "valid_real": "PASS",
-      "reality_delta": "NONE"
+      "reality_delta": "NONE",
+      "gpt_final_valid_timestamp": "2026-09-23T03:20:25+08:00"
     }
   ],
   "rejected_emissions": [
@@ -44,10 +45,13 @@
       "counted_as_valid_sequence": false
     }
   ],
-  "required_next_label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜03｜实】",
+  "required_next_label": null,
   "method": "extreme-short-time-engine-v4.5.10",
   "dispatch_time_required": true,
   "pending_emission": null,
   "last_dispatch_timestamp": "2026-09-23T03:06:05+08:00",
-  "task_result": "REAL_PASS_PENDING_GPT_FINAL_VALID"
+  "task_result": "FINAL_VALID",
+  "task_closed": true,
+  "task_closed_timestamp": "2026-09-23T03:20:25+08:00",
+  "next_sequence_if_task_reopened": "03"
 }
