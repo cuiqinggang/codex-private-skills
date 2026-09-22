@@ -1,20 +1,18 @@
-# v4.1.0 权威来源
+# v4.2.0 权威来源
 
-```text
-Skill ID=first-principles-physical-limit-convergence
-中文名=第一性原理极限短时间引擎
-版本=4.1.0
+Machine Skill ID=first-principles-physical-limit-convergence
+正式中文名=极限短时间引擎
+版本=4.2.0
 方法=一虚一实
 可见属性=虚|实
-权威分支=codex/first-principles-physical-limit-convergence-v4.1.0
 唯一锚定=T*=min(T_VALID)
+唯一判断律=HARD_GATES_PASS -> MIN(T_VALID)
+权威分支=codex/first-principles-physical-limit-convergence-v4.2.0
 Foundation=local-ai-reality-foundation@1.1.0
-上一版本=4.0.0
-```
+上一版本=4.1.0
+本地部署=DEFERRED
 
-当前方法权只有“虚 / 实”两种属性。
-v4.0.0、v3.1.9 及更早版本全部保留为历史台阶。
+名称中的“第一性原理”自 v4.2 起移出正式显示名，但机器 ID 不改，避免历史索引断裂。
 
-未来一步自动化只允许复用并适配：
-`gpt-codex-convergence-orchestrator@1.5.2`
-当前不得把该自动化层冒充 v4.1 已成熟能力。
+当前 v4 成熟冻结必要里程碑：JEV_MATURITY_GATE=PENDING。
+JEV 必须先在自身适用范围内完成极限成熟，再按是否降低总 T_VALID 决定具体节点是否使用。
