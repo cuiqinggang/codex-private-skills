@@ -21,8 +21,8 @@
       "segment_id": "S002",
       "agent": "GPT",
       "active_start_network_timestamp": "2026-09-22T22:57:07+08:00",
-      "latest_checkpoint_network_timestamp": "2026-09-22T22:58:42+08:00",
-      "active_duration_at_checkpoint_ms": 95000,
+      "latest_checkpoint_network_timestamp": "2026-09-22T22:59:24+08:00",
+      "active_duration_at_checkpoint_ms": 137000,
       "status": "OPEN",
       "work": "refine anchor from wall-clock to active GPT/Codex problem-solving time and persist v4.5.2"
     }
@@ -37,12 +37,12 @@
     }
   ],
   "per_agent_active_at_checkpoint_ms": {
-    "GPT": 176000,
+    "GPT": 218000,
     "CODEX": 0
   },
-  "global_active_union_at_checkpoint_ms": 176000,
-  "global_active_union_at_checkpoint_human": "00:02:56",
-  "checkpoint_timestamp": "2026-09-22T22:58:42+08:00",
+  "global_active_union_at_checkpoint_ms": 218000,
+  "global_active_union_at_checkpoint_human": "00:03:38",
+  "checkpoint_timestamp": "2026-09-22T22:59:24+08:00",
   "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
   "human_idle": "EXCLUDED",
   "reset_on_failure": "FORBIDDEN"
