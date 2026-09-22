@@ -1,6 +1,6 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.5.3",
+  "version": "4.5.4",
   "display_name": "极限短时间引擎",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
@@ -47,7 +47,10 @@
     "EXTERNAL_DEPENDENCIES_CLOSED",
     "IMMUTABLE_ARTIFACT_PINNED",
     "FREEZE_CLOSURE_VERIFIER_PASS",
-    "FROZEN_SOLUTION"
+    "FROZEN_SOLUTION",
+    "SHARED_WORKSPACE_PUBLISHED",
+    "REAL_ENTRY_COMMAND_READY",
+    "REAL_ENTRY_COMMAND_EMITTED"
   ],
   "freeze_rule": "NO_FREEZE_UNTIL_EVERY_REAL_STEP_HAS_INPUT_ACTION_POSTCONDITION_FAILURE_CLASS_NEXT_STEP_DEPENDENCY_CLOSURE_AND_TOTAL_T_VALID_MAPPING",
   "external_dependency_rule": "NON_INTRINSIC_EXTERNAL_DEPENDENCY_MUST_NOT_BE_SINGLE_POINT_OF_REALITY_ENTRY_FAILURE",
@@ -58,7 +61,7 @@
     "FOUNDATION_ABSORB_CHECK_DONE"
   ],
   "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_TOTAL_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.3",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.4",
   "timing_contract": {
     "clock_source": "NETWORK_TIMESTAMP_FOR_BOUNDARIES",
     "optimization_clock": "ACTIVE_AGENT_ELAPSED",
@@ -130,5 +133,13 @@
       "REAL_PASS->FINAL",
       "REAL_FAIL->VIRTUAL"
     ]
+  },
+  "virtual_to_real_handoff": {
+    "role": "VIRTUAL_EXIT_CONDITION_NOT_THIRD_STEP",
+    "default_shared_workspace": "GITHUB_SHARED_REPOSITORY",
+    "required_same_response_delivery": true,
+    "forbid_deferred_manual_download": true,
+    "forbid_second_question_for_execution_command": true,
+    "optimization_reason": "ELIMINATE_NON_VALUE_HANDOFF_LATENCY_FROM_T_VALID_ACTIVE_GLOBAL"
   }
 }
