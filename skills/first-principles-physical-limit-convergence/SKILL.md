@@ -1,19 +1,19 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.5.5。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
+description: 极限短时间引擎 v4.5.6。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
 metadata:
-  version: "4.5.5"
+  version: "4.5.6"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.5.5
+# 极限短时间引擎 v4.5.6
 
 ## 根基：现实底座
 
 ```text
 本地 AI 现实底座永久资产
 local-ai-reality-foundation
-当前版本=v1.1.0
+当前版本=v1.1.1
 ```
 
 它不是第三步，而是“虚/实”共同的现实根基。
@@ -470,6 +470,39 @@ OBJECTIVE=min(T_VALID)
 
 如果无法回答 FINAL_VALID_CONDITION，则问题边界未定义，禁止优化局部时间。
 
+
+
+## Codex 执行环境兼容性预检
+
+只要“实”由 Codex 执行，虚冻结前必须把现实底座中的 Codex 约束注册表作为硬输入，并完成：
+
+```text
+CODEX_REALITY_CONSTRAINTS_LOADED=PASS
+CODEX_POLICY_COMPATIBILITY=PASS
+SHELL_INTERPOLATION_SAFE=PASS
+EXECUTABLE_STAGING_SAFE=PASS
+TIMING_PATH_SAFE=PASS
+PROMPT_ROUNDTRIP_EQUIVALENCE=PASS
+NO_KNOWN_CONSTRAINT_VIOLATION=PASS
+```
+
+含义：
+
+- 已知会被安全策略拒绝的写入/覆盖路径，不得再次冻结。
+- 含 PowerShell 代码的 GPT -> Codex 文本，必须使用 literal-safe（字面安全）传输；冻结前要检查关键 `$变量` 在交给 Codex 前后没有被调用方 Shell 展开或改写。
+- 计时器必须在 Codex 进程外层启动并在进程结束后停止；主持续时间使用 `Stopwatch`，不得把权限敏感的时间源查询作为硬依赖。
+- 如果某个动作的 Codex 安全策略兼容性未知，而且存在更安全等价路径，优先冻结更安全路径。
+- 不允许为了绕过安全策略而设计规避路径；目标是选择本来就符合现实权限边界的成熟执行方式。
+
+任一项不是 PASS：
+
+```text
+VIRTUAL_COMPLETE=NO
+FREEZE=BLOCK
+```
+
+这仍然只是“虚”的内部硬门，不是第三步。
+
 ## 冻结闭环门
 
 冻结不是“方案写完”，而是虚阶段最后一个验收动作。
@@ -515,6 +548,13 @@ FINAL_VALID_CONDITION_DEFINED=PASS
 EXECUTION_CHAIN_CLOSED=PASS
 EXTERNAL_DEPENDENCIES_CLOSED=PASS
 IMMUTABLE_ARTIFACT_PINNED=PASS
+CODEX_REALITY_CONSTRAINTS_LOADED=PASS
+CODEX_POLICY_COMPATIBILITY=PASS
+SHELL_INTERPOLATION_SAFE=PASS
+EXECUTABLE_STAGING_SAFE=PASS
+TIMING_PATH_SAFE=PASS
+PROMPT_ROUNDTRIP_EQUIVALENCE=PASS
+NO_KNOWN_CONSTRAINT_VIOLATION=PASS
 FREEZE_CLOSURE_VERIFIER=PASS
 ```
 
