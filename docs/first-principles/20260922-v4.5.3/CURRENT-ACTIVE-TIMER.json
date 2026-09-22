@@ -1,0 +1,126 @@
+{
+  "method": "extreme-short-time-engine-v4.5.3",
+  "task_time_id": "ESTE-20260922-001",
+  "task_name": "global-active-agent-time-definition-and-reality-verification",
+  "problem_entry_network_timestamp": "2026-09-22T22:44:11+08:00",
+  "timer_state": "RUNNING",
+  "optimization_anchor": "T_VALID_ACTIVE_GLOBAL",
+  "formula": "measure(UNION(AGENT_ACTIVE_INTERVALS))",
+  "final_valid_condition": "The current problem is fully resolved under the frozen v4.5.x contract and GPT confirms all required validity/closeout gates pass.",
+  "segments": [
+    {
+      "segment_id": "S001",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T22:44:11+08:00",
+      "active_end_network_timestamp": "2026-09-22T22:45:32+08:00",
+      "active_duration_ms": 81000,
+      "status": "CLOSED",
+      "work": "global timer instrumentation and repository verification"
+    },
+    {
+      "segment_id": "S002",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T22:57:07+08:00",
+      "status": "CLOSED",
+      "work": "refine anchor from wall-clock to active GPT/Codex problem-solving time and persist v4.5.2",
+      "active_end_network_timestamp": "2026-09-22T22:59:24+08:00",
+      "active_duration_ms": 137000
+    },
+    {
+      "segment_id": "S003",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T23:17:16+08:00",
+      "status": "CLOSED",
+      "work": "operationalize mandatory per-turn timing display, phase status, next-step plan, and final closeout accounting",
+      "active_end_network_timestamp": "2026-09-22T23:19:12+08:00",
+      "active_duration_ms": 116000,
+      "result": "PASS",
+      "bottleneck": "NONE"
+    },
+    {
+      "segment_id": "S004",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T23:24:22+08:00",
+      "status": "CLOSED",
+      "work": "correct method representation back to exactly two phases: VIRTUAL and REAL",
+      "active_end_network_timestamp": "2026-09-22T23:25:35+08:00",
+      "active_duration_ms": 73000,
+      "result": "PASS"
+    },
+    {
+      "segment_id": "S005",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T23:30:17+08:00",
+      "active_end_network_timestamp": "2026-09-22T23:35:49+08:00",
+      "active_duration_ms": 332000,
+      "status": "CLOSED",
+      "work": "complete VIRTUAL as one phase: freeze self-contained real package, close external dependencies, pin immutable hashes, and pass closure verification",
+      "result": "PASS",
+      "bottleneck": "FREEZE_PACKAGE_CONSTRUCTION_AND_CLOSURE_VERIFICATION"
+    }
+  ],
+  "excluded_intervals": [
+    {
+      "start": "2026-09-22T22:45:32+08:00",
+      "end": "2026-09-22T22:57:07+08:00",
+      "duration_ms": 695000,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-22T22:59:24+08:00",
+      "end": "2026-09-22T23:17:16+08:00",
+      "duration_ms": 1072000,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-22T23:19:12+08:00",
+      "end": "2026-09-22T23:24:22+08:00",
+      "duration_ms": 310000,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    },
+    {
+      "start": "2026-09-22T23:25:35+08:00",
+      "end": "2026-09-22T23:30:17+08:00",
+      "duration_ms": 282000,
+      "reason": "HUMAN_IDLE_OR_NON_AGENT_GAP",
+      "counted": false
+    }
+  ],
+  "per_agent_active_at_checkpoint_ms": {
+    "GPT": 739000,
+    "CODEX": 0
+  },
+  "global_active_union_at_checkpoint_ms": 739000,
+  "global_active_union_at_checkpoint_human": "00:12:19",
+  "checkpoint_timestamp": "2026-09-22T23:35:49+08:00",
+  "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
+  "human_idle": "EXCLUDED",
+  "reset_on_failure": "FORBIDDEN",
+  "current_phase": "VIRTUAL",
+  "current_status": "VIRTUAL_COMPLETE=YES",
+  "next_action": "ENTER_REAL_AND_EXECUTE_FROZEN_SELF_CONTAINED_LAUNCHER",
+  "phase_model": {
+    "current": "VIRTUAL",
+    "virtual_complete": true,
+    "next": "REAL",
+    "only_method_steps": [
+      "VIRTUAL",
+      "REAL"
+    ],
+    "internal_checkpoints_are_steps": false,
+    "on_real_fail": "RETURN_TO_VIRTUAL_WITHOUT_TIMER_RESET"
+  },
+  "virtual_complete": true,
+  "virtual_complete_network_timestamp": "2026-09-22T23:35:49+08:00",
+  "next_phase": "REAL",
+  "predicted_final_active_if_first_real_pass": {
+    "lower_ms": 754000,
+    "upper_ms": 829000,
+    "lower_human": "00:12:34",
+    "upper_human": "00:13:49",
+    "basis": "current 12m19s active + predicted remaining 15-90s active"
+  }
+}
