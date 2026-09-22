@@ -4,6 +4,8 @@
   "display_name": "第一性原理极限短时间引擎",
   "method_name_zh": "一虚一实",
   "previous_version": "4.0.0",
+  "maturity_status": "DISCUSSION_REFINEMENT_ACTIVE",
+  "local_deployment_status": "DEFERRED_UNTIL_METHOD_FREEZE",
   "objective": {
     "metric": "T_VALID",
     "optimize": "MINIMIZE",
@@ -55,6 +57,12 @@
     "future_carrier_branch": "codex/gpt-codex-convergence-orchestrator-v1.5.2-freeze-closeout",
     "reinvent_automation": false,
     "next_major_requires_real_maturity": true
+  },
+  "deployment_gate": {
+    "deploy_now": false,
+    "reason": "USER_REQUESTED_DISCUSS_AND_MATURE_FIRST",
+    "old_v4_0_deploy_docs_are_history_only_on_this_branch": true,
+    "codex_deploy_command_publish_allowed": false
   },
   "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.1.0",
   "updated_date": "2026-09-22"
