@@ -10,7 +10,9 @@
     "optimize": "MINIMIZE",
     "anchor_zh": "极限短时间",
     "physical_meaning_zh": "极限效率",
-    "hard_gate_rule": "ALL_NON_TIME_REQUIREMENTS_DEFINE_VALID_OR_REALITY_BOUNDARIES_ONLY"
+    "hard_gate_rule": "ALL_NON_TIME_REQUIREMENTS_DEFINE_VALID_OR_REALITY_BOUNDARIES_ONLY",
+    "formula": "T*=min(T_VALID)",
+    "single_anchor": true
   },
   "current_method": {
     "step_count": 2,
