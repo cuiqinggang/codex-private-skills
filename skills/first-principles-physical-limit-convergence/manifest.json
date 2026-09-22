@@ -1,22 +1,12 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.3.0",
+  "version": "4.4.0",
   "display_name": "极限短时间引擎",
-  "objective": "T*=min(T_VALID)",
-  "rule": "VALID_GATE_PASS_THEN_MINIMIZE_T_VALID",
-  "steps": [
-    {"name":"虚","complete_requires":["VALID_PASS","PREDICTED_T_VALID","FROZEN_SOLUTION"]},
-    {"name":"实","complete_requires":["VALID_PASS","T_VALID_REAL"],"on_fail":"REALITY_DELTA_STOP_RETURN_TO_虚"}
-  ],
-  "delete_if": "NO_VALID_BENEFIT_AND_NO_T_VALID_REDUCTION_AND_NO_REPEAT_COST_REDUCTION",
-  "foundation": "local-ai-reality-foundation@1.1.0",
-  "foundation_absorb": "ONLY_IF_FUTURE_T_VALID_BENEFIT_OR_REPEAT_COST_REDUCTION",
-  "jev": {
-    "maturity_required_before_v4_freeze": true,
-    "use_only_if_total_t_valid_lower": true
-  },
-  "automation": "DEFER_UNTIL_TWO_STEP_REAL_MATURE",
-  "deployment": "DEFERRED",
-  "previous_version": "4.2.0",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.3.0"
+  "anchor": "T*=min(T_VALID)",
+  "rule": "VALID_PASS_THEN_MIN_T_VALID",
+  "virtual_complete": ["VALID_PASS", "PREDICTED_T_VALID", "FROZEN_SOLUTION"],
+  "real_complete": ["VALID_PASS", "T_VALID_REAL"],
+  "real_fail": "MIN_REALITY_DELTA_STOP_RETURN_TO_VIRTUAL",
+  "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.4.0"
 }
