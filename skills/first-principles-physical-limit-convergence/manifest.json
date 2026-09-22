@@ -84,5 +84,36 @@
     "global_formula": "T_VALID_ACTIVE_GLOBAL=measure(UNION(AGENT_ACTIVE_INTERVALS))",
     "reset": "FORBIDDEN",
     "final_stop_authority": "GPT_AFTER_FINAL_VALID_CONDITION_PASS"
+  },
+  "active_time_reporting_contract": {
+    "required": true,
+    "protocol_path": "docs/first-principles/20260922-v4.5.2/ACTIVE-TIME-RUN-PROTOCOL.md",
+    "every_segment_start_fields": [
+      "TASK_TIME_ID",
+      "PROBLEM_ENTRY_NETWORK_TIMESTAMP",
+      "SEGMENT_ID",
+      "SEGMENT_START",
+      "ACTIVE_TOTAL_BEFORE",
+      "PHASE",
+      "STATUS",
+      "OBJECTIVE"
+    ],
+    "every_segment_end_fields": [
+      "SEGMENT_END",
+      "SEGMENT_ACTIVE",
+      "ACTIVE_TOTAL_AFTER",
+      "PHASE",
+      "STEP_RESULT",
+      "BOTTLENECK",
+      "NEXT_ACTION"
+    ],
+    "final_fields": [
+      "FINAL_VALID",
+      "FINAL_VALID_NETWORK_TIMESTAMP",
+      "GLOBAL_TIMER_STATE",
+      "T_VALID_ACTIVE_GLOBAL"
+    ],
+    "missing_time_segment": "INVALID_ACCOUNTING",
+    "optimization_rule": "EVERY_STEP_MUST_JUSTIFY_ITSELF_BY_EXPECTED_REDUCTION_IN_T_VALID_ACTIVE_GLOBAL"
   }
 }
