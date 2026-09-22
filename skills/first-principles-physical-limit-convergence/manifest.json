@@ -1,180 +1,30 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.5.10",
+  "version": "4.6.0",
   "display_name": "极限短时间引擎",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.6.0",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
-    "display_name": "本地 AI 现实底座永久资产",
     "current_version": "1.1.3",
     "role": "REQUIRED_ROOT_NOT_METHOD_STEP"
   },
-  "anchor": "T*=min(T_VALID_ACTIVE_GLOBAL)",
-  "anchor_formula": "T_VALID_ACTIVE_GLOBAL=measure(UNION(REQUIRED_LOOP_ACTIVE_INTERVALS))",
-  "anchor_meaning": "TOTAL_ACTIVE_AGENT_PROBLEM_RESOLUTION_TIME",
-  "timer_reset_on_retry": "FORBIDDEN",
-  "t_valid_includes": [
-    "REALITY_FACT_COLLECTION",
-    "VIRTUAL_MATURATION",
-    "SOLUTION_SEARCH_AND_SELECTION",
-    "PREDICTION_AND_VERIFICATION",
-    "FREEZE_CLOSURE_VERIFICATION",
-    "REAL_EXECUTION",
-    "FAILURE_WAIT",
-    "FAILURE_DIAGNOSIS",
-    "REALITY_DELTA",
-    "RETURN_TO_VIRTUAL",
-    "RULE_REPAIR",
-    "REFREEZE",
-    "RETRY",
-    "FINAL_ACCEPTANCE_AND_CLOSEOUT"
+  "method_steps": [
+    "VIRTUAL",
+    "REAL"
   ],
-  "subtime_role": "DIAGNOSTIC_ONLY_NOT_OPTIMIZATION_ANCHOR",
-  "rule": "VALID_PASS_THEN_MIN_TOTAL_ACTIVE_AGENT_T_VALID",
-  "time_anchor_gate": {
-    "required_first_question": "NET_EFFECT_ON_TOTAL_T_VALID",
-    "add_component_rule": "ADD_IFF_EXPECTED_T_VALID_WITH_COMPONENT_LT_WITHOUT_COMPONENT",
-    "net_time_gain": "EXPECTED_AVOIDED_REWORK_TIME-ADDED_GATE_TIME-ADDED_MAINTENANCE_TIME",
-    "uncertainty_rule": "USE_CONSERVATIVE_BOUNDS_OR_MINIMAL_VIRTUAL_TEST_DO_NOT_FAKE_PRECISION"
-  },
-  "reusable_rule_horizon": "ONE_TIME_BUILD_PLUS_REPEATED_OVERHEAD_PLUS_RESIDUAL_REWORK_VS_REPEATED_REWORK_WITHOUT_RULE",
-  "virtual_complete": [
-    "REALITY_FOUNDATION_SUFFICIENT",
-    "TIME_ANCHOR_DEFINED",
-    "FINAL_VALID_CONDITION_DEFINED",
-    "VALID_PASS",
-    "PREDICTED_TOTAL_T_VALID",
-    "EXECUTION_CHAIN_CLOSED",
-    "EXTERNAL_DEPENDENCIES_CLOSED",
-    "IMMUTABLE_ARTIFACT_PINNED",
-    "FREEZE_CLOSURE_VERIFIER_PASS",
-    "FROZEN_SOLUTION",
-    "SHARED_WORKSPACE_PUBLISHED",
-    "REAL_ENTRY_COMMAND_READY",
-    "REAL_ENTRY_COMMAND_EMITTED",
-    "CODEX_REALITY_CONSTRAINTS_LOADED",
-    "CODEX_POLICY_COMPATIBILITY",
-    "SHELL_INTERPOLATION_SAFE",
-    "EXECUTABLE_STAGING_SAFE",
-    "TIMING_PATH_SAFE",
-    "PROMPT_ROUNDTRIP_EQUIVALENCE",
-    "NO_KNOWN_CONSTRAINT_VIOLATION",
-    "READ_ONLY_PROBE_SEMANTIC_VALIDITY_DEFINED"
-  ],
-  "freeze_rule": "NO_FREEZE_UNTIL_EVERY_REAL_STEP_HAS_INPUT_ACTION_POSTCONDITION_FAILURE_CLASS_NEXT_STEP_DEPENDENCY_CLOSURE_AND_TOTAL_T_VALID_MAPPING",
-  "external_dependency_rule": "NON_INTRINSIC_EXTERNAL_DEPENDENCY_MUST_NOT_BE_SINGLE_POINT_OF_REALITY_ENTRY_FAILURE",
-  "real_fail": "MIN_REALITY_DELTA_STOP_RETURN_TO_VIRTUAL_WITHOUT_RESETTING_MAIN_T_VALID_CLOCK",
-  "real_complete": [
-    "FINAL_VALID_SOLUTION",
-    "TOTAL_T_VALID_RECORDED",
-    "FOUNDATION_ABSORB_CHECK_DONE"
-  ],
-  "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_TOTAL_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.10",
-  "timing_contract": {
-    "clock_source": "NETWORK_TIMESTAMP_FOR_BOUNDARIES",
-    "optimization_clock": "ACTIVE_AGENT_ELAPSED",
-    "task_time_id_format": "ESTE-YYYYMMDD-NNN",
-    "start_field": "PROBLEM_ENTRY_NETWORK_TIMESTAMP",
-    "stop_field": "FINAL_VALID_NETWORK_TIMESTAMP",
-    "segment_fields": [
-      "SEGMENT_ID",
-      "AGENT",
-      "ACTIVE_START_NETWORK_TIMESTAMP",
-      "ACTIVE_END_NETWORK_TIMESTAMP",
-      "ACTIVE_DURATION"
-    ],
-    "included_agents": [
-      "GPT",
-      "CODEX",
-      "DIRECT_EXECUTION_TOOLS_UNDER_GPT_OR_CODEX"
-    ],
-    "human_idle": "EXCLUDED",
-    "failures_rework_retries": "INCLUDED_WHEN_AGENT_ACTIVE",
-    "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
-    "per_agent_totals_role": "DIAGNOSTIC_ONLY",
-    "global_formula": "T_VALID_ACTIVE_GLOBAL=measure(UNION(AGENT_ACTIVE_INTERVALS))",
-    "reset": "FORBIDDEN",
-    "final_stop_authority": "GPT_AFTER_FINAL_VALID_CONDITION_PASS"
-  },
-  "active_time_reporting_contract": {
-    "required": true,
-    "protocol_path": "docs/first-principles/20260922-v4.5.2/ACTIVE-TIME-RUN-PROTOCOL.md",
-    "every_segment_start_fields": [
-      "TASK_TIME_ID",
-      "PROBLEM_ENTRY_NETWORK_TIMESTAMP",
-      "SEGMENT_ID",
-      "SEGMENT_START",
-      "ACTIVE_TOTAL_BEFORE",
-      "PHASE",
-      "STATUS",
-      "OBJECTIVE"
-    ],
-    "every_segment_end_fields": [
-      "SEGMENT_END",
-      "SEGMENT_ACTIVE",
-      "ACTIVE_TOTAL_AFTER",
-      "PHASE",
-      "STEP_RESULT",
-      "BOTTLENECK",
-      "NEXT_ACTION"
-    ],
-    "final_fields": [
-      "FINAL_VALID",
-      "FINAL_VALID_NETWORK_TIMESTAMP",
-      "GLOBAL_TIMER_STATE",
-      "T_VALID_ACTIVE_GLOBAL"
-    ],
-    "missing_time_segment": "INVALID_ACCOUNTING",
-    "optimization_rule": "EVERY_STEP_MUST_JUSTIFY_ITSELF_BY_EXPECTED_REDUCTION_IN_T_VALID_ACTIVE_GLOBAL",
-    "dispatch_metadata_required": true,
-    "dispatch_metadata_fields": [
-      "TASK_TIME_ID",
-      "TASK_SEQUENCE",
-      "GPT_DISPATCH_TIMESTAMP",
-      "ACTIVE_TOTAL_BEFORE_DISPATCH"
+  "method_step_count": 2,
+  "anchor": {
+    "name_zh": "整体闭环极限时间",
+    "name_en": "WHOLE_LOOP_VALID_ACTIVE_TIME",
+    "run_formula": "T_VALID_RUN=measure(UNION(REQUIRED_LOOP_ACTIVE_INTERVALS))",
+    "objective": "T*=min(VALID_CLEAN_RUNS)",
+    "valid_only_if": [
+      "TASK_COMPLETED_TRUE",
+      "CLOSED_LOOP_TRUE",
+      "CODEX_EXECUTOR_PRESENT",
+      "GPT_FINAL_VALID_TRUE"
     ]
   },
-  "phase_model": {
-    "method_steps_exactly": [
-      "VIRTUAL",
-      "REAL"
-    ],
-    "count": 2,
-    "numbered_virtual_substeps": "FORBIDDEN",
-    "numbered_real_substeps": "FORBIDDEN",
-    "checkpoints_role": "INTERNAL_DIAGNOSTIC_EVENTS_NOT_METHOD_STEPS",
-    "transitions": [
-      "VIRTUAL->REAL",
-      "REAL_PASS->FINAL",
-      "REAL_FAIL->VIRTUAL"
-    ]
-  },
-  "virtual_to_real_handoff": {
-    "role": "VIRTUAL_EXIT_CONDITION_NOT_THIRD_STEP",
-    "default_mode": "DIRECT_GPT_TO_CODEX_SELF_CONTAINED_CONTRACT",
-    "direct_contract_path": "docs/first-principles/20260923-v4.5.10/DIRECT-CODEX-REAL-CONTRACT.md",
-    "preflight_path": "docs/first-principles/20260923-v4.5.8/CODEX-REALITY-PREFLIGHT.json",
-    "outer_powershell_wrapper": "NOT_DEFAULT",
-    "codex_executor_required": true,
-    "runtime_git_fetch_required": false,
-    "github_role": "POST_EXECUTION_SHARED_FACT_SOURCE",
-    "powershell_role": "CODEX_INTERNAL_DETERMINISTIC_TOOL",
-    "same_response_delivery_required": true,
-    "read_only_probe_semantic_rule": "SEMANTIC_EVIDENCE_PRECEDES_EXIT_STATUS_FOR_FROZEN_SIDE_EFFECT_FREE_PROBES",
-    "sequence_preflight": "PASS"
-  },
-  "anchor_name_zh": "整体闭环极限时间",
-  "anchor_name_en": "WHOLE_LOOP_VALID_ACTIVE_TIME",
-  "anchor_boundary": [
-    "GPT_PROBLEM_RECEIPT",
-    "GPT_VIRTUAL_MATURATION_AND_FREEZE",
-    "CODEX_HANDOFF",
-    "CODEX_REAL_EXECUTION",
-    "LOCAL_EVIDENCE",
-    "CODEX_FORMAL_RESULT",
-    "GPT_REREAD",
-    "GPT_FINAL_VALID_CONFIRMATION"
-  ],
   "executor_contract": {
     "reasoning_brain": "GPT",
     "executor": "CODEX",
@@ -184,132 +34,84 @@
       "LOCAL_TOOLS"
     ],
     "final_judge": "GPT",
-    "codex_executor_required_by_default": true,
-    "direct_powershell_may_replace_codex": false,
-    "reason": "LOCAL_FASTEST_MUST_NOT_BREAK_WHOLE_LOOP_TASK_COMPLETION"
+    "outer_powershell_wrapper_default": false
   },
-  "codex_timing_relay": {
-    "measured_inside_codex": true,
-    "handoff_fields": [
+  "phase_transition": {
+    "virtual_to_real": "ONLY_AFTER_FREEZE_AND_HANDOFF_READY",
+    "real_pass": "FINAL",
+    "real_fail": "RETURN_TO_VIRTUAL_WITHOUT_TIMER_RESET"
+  },
+  "position_contract": {
+    "format": "【PAGE_NAME｜TASK_NAME｜SEQUENCE｜PHASE】",
+    "sequence_scope": "TASK_TIME_ID",
+    "initial_sequence": "01",
+    "next_sequence": "LAST_VALID_EMITTED_SEQUENCE+1",
+    "reset_on_fail": false,
+    "reset_on_return_to_virtual": false,
+    "reset_on_version_change": false,
+    "reset_only_on_new_task_time_id": true,
+    "final_exact_echo_required": true
+  },
+  "timing_contract": {
+    "task_fields": [
+      "TASK_TIME_ID",
+      "PROBLEM_ENTRY_TIMESTAMP"
+    ],
+    "dispatch_fields": [
       "TASK_TIME_ID",
       "TASK_SEQUENCE",
       "GPT_DISPATCH_TIMESTAMP",
       "ACTIVE_TOTAL_BEFORE_DISPATCH"
     ],
-    "start_fields": [
+    "codex_start_fields": [
       "CODEX_ACTIVE_START_TIMESTAMP",
       "CODEX_START_TICK",
       "CODEX_STOPWATCH_FREQUENCY"
     ],
-    "end_fields": [
+    "codex_end_fields": [
       "CODEX_ACTIVE_END_TIMESTAMP",
       "CODEX_END_TICK",
       "CODEX_PROCESS_ACTIVE_MS"
     ],
     "authoritative_duration_clock": "SYSTEM_DIAGNOSTICS_STOPWATCH",
-    "user_extra_wrapper_required": false,
-    "included_in_global_anchor": true
+    "human_idle": "EXCLUDED",
+    "local_timer_role": "DIAGNOSTIC_ONLY"
   },
-  "validity_gate_for_anchor": [
-    "TASK_COMPLETED_TRUE",
-    "CLOSED_LOOP_TRUE",
-    "CODEX_EXECUTOR_PRESENT",
-    "GPT_FINAL_VALID_TRUE"
+  "virtual_freeze_gates": [
+    "REALITY_FOUNDATION_SUFFICIENT",
+    "FINAL_VALID_CONDITION_DEFINED",
+    "EXECUTION_CHAIN_CLOSED",
+    "EXTERNAL_DEPENDENCIES_CLOSED",
+    "CODEX_POLICY_COMPATIBILITY",
+    "KNOWN_FAILURE_GATES",
+    "POSITION_AND_SEQUENCE_GATE",
+    "TIMING_CONTRACT_READY",
+    "FROZEN_SOLUTION",
+    "HANDOFF_READY"
   ],
-  "local_fast_path_rule": "A_LOCAL_FASTER_PATH_THAT_BREAKS_ANY_VALIDITY_GATE_IS_NOT_A_VALID_GLOBAL_CANDIDATE",
-  "codex_reality_preflight": {
-    "required_when_real_executor_is_codex": true,
-    "source": "local-ai-reality-foundation@1.1.3.codex_execution_constraints",
-    "gates": [
-      "CODEX_REALITY_CONSTRAINTS_LOADED",
-      "CODEX_POLICY_COMPATIBILITY",
-      "SHELL_INTERPOLATION_SAFE",
-      "EXECUTABLE_STAGING_SAFE",
-      "TIMING_PATH_SAFE",
-      "PROMPT_ROUNDTRIP_EQUIVALENCE",
-      "NO_KNOWN_CONSTRAINT_VIOLATION"
-    ],
-    "any_fail": "FREEZE_BLOCK_VIRTUAL_COMPLETE_NO",
-    "safety_rule": "CHOOSE_POLICY_COMPATIBLE_PATH_DO_NOT_BYPASS_SECURITY_POLICY",
-    "additional_gates": [
-      "FOUR_POSITION_FIELDS_PRESENT",
-      "POSITION_LABEL_EXACT_ECHO",
-      "RUNTIME_GIT_FETCH_REQUIRED_NO",
-      "DIRECT_CODEX_HANDOFF",
-      "CODEX_INTERNAL_TIMING_READY",
-      "SEQUENCE_LEDGER_LOADED",
-      "SEQUENCE_UNIQUE",
-      "SEQUENCE_EXPECTED_NEXT",
-      "SEQUENCE_NOT_REUSED"
-    ]
+  "known_constraints": {
+    "temp_executable_staging": "AVOID",
+    "powershell_double_quoted_here_string": "INTERPOLATION_RISK",
+    "w32tm_non_admin": "NOT_REQUIRED",
+    "git_fetch_fetch_head_write": "NOT_REAL_BOOTSTRAP_DEFAULT",
+    "readonly_probe_nonzero_exit": "SEMANTIC_EVIDENCE_PRECEDES_EXIT_FOR_FROZEN_SIDE_EFFECT_FREE_PROBES"
   },
-  "position_gate": {
-    "required": true,
-    "exact_format": "【PAGE_NAME｜TASK_NAME｜SEQUENCE｜PHASE】",
-    "fields": [
-      "PAGE_NAME",
-      "TASK_NAME",
-      "SEQUENCE",
-      "PHASE"
-    ],
-    "phase_values": [
-      "虚",
-      "实",
-      "VIRTUAL",
-      "REAL"
-    ],
-    "final_exact_echo_required": true,
-    "any_mismatch": "EXECUTION_BLOCK",
-    "sequence_contract": {
-      "scope": "TASK_TIME_ID",
-      "initial": "01",
-      "rule": "NEXT_SEQUENCE=LAST_VALID_EMITTED_SEQUENCE+1",
-      "reset_only_on_new_task_time_id": true,
-      "reset_on_real_fail": false,
-      "reset_on_return_to_virtual": false,
-      "reset_on_method_version_change": false,
-      "reuse": "FORBIDDEN",
-      "invalid_duplicate_emission": "NOT_COUNTED_AS_VALID_SEQUENCE",
-      "required_freeze_gates": [
-        "SEQUENCE_LEDGER_LOADED",
-        "SEQUENCE_UNIQUE",
-        "SEQUENCE_EXPECTED_NEXT",
-        "SEQUENCE_NOT_REUSED"
-      ],
-      "dispatch_timing": {
-        "required": true,
-        "fields": [
-          "TASK_TIME_ID",
-          "TASK_SEQUENCE",
-          "GPT_DISPATCH_TIMESTAMP",
-          "ACTIVE_TOTAL_BEFORE_DISPATCH"
-        ],
-        "label_remains_exactly_four_fields": true,
-        "required_gates": [
-          "DISPATCH_TIME_READY",
-          "ACTIVE_TOTAL_READY",
-          "SEQUENCE_EXPECTED_NEXT"
-        ],
-        "on_valid_emission": "ADVANCE_SEQUENCE_LEDGER"
-      }
-    },
-    "current_sequence_ledger": "docs/first-principles/20260923-v4.5.10/TASK-SEQUENCE-LEDGER.json",
-    "last_valid_sequence": "01",
-    "next_sequence": "02",
-    "current_required_label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜02｜实】"
+  "github_role": {
+    "shared_fact_source": true,
+    "default_real_bootstrap_transport": false,
+    "sync_reusable_facts_after_result": true
   },
-  "read_only_probe_validity": {
-    "required": true,
-    "semantic_gate_precedes_exit_status": true,
-    "pass_rule": "COMPLETE_PARSEABLE_EXPECTED_SEMANTIC_EVIDENCE_AND_NO_CONTRADICTION",
-    "nonzero_exit_role": "DIAGNOSTIC_IF_SEMANTIC_GATE_PASS",
-    "hard_fail_if": [
-      "SEMANTIC_EVIDENCE_MISSING",
-      "OUTPUT_PARSE_FAIL",
-      "OUTPUT_CONTRADICTION",
-      "OUTPUT_INCOMPLETE",
-      "PROBE_HAS_SIDE_EFFECT"
-    ],
-    "forbidden_generalization": "DO_NOT_IGNORE_NONZERO_EXIT_FOR_SIDE_EFFECTING_COMMANDS"
+  "handoff_principle": "SAME_RESPONSE_ONE_HIGH_VALUE_ACTION_DIRECT_GPT_TO_CODEX",
+  "historical_development_sample": {
+    "classification": "DEVELOPMENT_REWORK_SAMPLE_NOT_MATURE_T_STAR",
+    "certified_lower_bound_human": "00:51:07.109",
+    "reason_not_exact": "Legacy uninstrumented interval(s)",
+    "use": "BASELINE_AND_ERROR_COST_EVIDENCE_ONLY"
+  },
+  "next_benchmark": {
+    "purpose": "CLEAN_MATURE_V4_6_0_END_TO_END_RUN",
+    "new_task_time_id_required": true,
+    "sequence_starts_at": "01",
+    "result_required": "EXACT_T_VALID_RUN_CLEAN"
   }
 }
