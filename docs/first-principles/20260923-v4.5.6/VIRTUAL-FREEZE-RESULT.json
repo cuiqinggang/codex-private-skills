@@ -23,5 +23,9 @@
   "real_artifact_commit": "00f277aee824c324f52c6b7678f724c541da63c7",
   "handoff_contract": "docs/first-principles/20260923-v4.5.6/VIRTUAL-TO-REAL-HANDOFF.md",
   "preflight": "docs/first-principles/20260923-v4.5.6/CODEX-REALITY-PREFLIGHT.json",
-  "executor_chain": "GPT -> Codex -> streamed PowerShell -> Codex result -> GPT final valid"
+  "executor_chain": "GPT -> Codex -> streamed PowerShell -> Codex result -> GPT final valid",
+  "virtual_complete_network_timestamp": "2026-09-23T00:43:31+08:00",
+  "real_entry_command_ready": "PASS",
+  "real_entry_command_emitted": "YES",
+  "real_entry_command_emitted_network_timestamp": "2026-09-23T00:43:31+08:00"
 }
