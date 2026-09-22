@@ -23,9 +23,9 @@
       "label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜02｜实】",
       "method": "extreme-short-time-engine-v4.5.10",
       "result": "EMITTED_PENDING_REAL",
-      "gpt_dispatch_timestamp": "2026-09-23T03:05:25+08:00",
-      "active_total_before_dispatch_ms": 2955699.6579,
-      "active_total_before_dispatch_human": "00:49:15.700",
+      "gpt_dispatch_timestamp": "2026-09-23T03:06:05+08:00",
+      "active_total_before_dispatch_ms": 2995699.6579,
+      "active_total_before_dispatch_human": "00:49:55.700",
       "time_accounting_status": "LOWER_BOUND_DUE_TO_LEGACY_UNINSTRUMENTED_INTERVALS"
     }
   ],
@@ -41,5 +41,5 @@
   "method": "extreme-short-time-engine-v4.5.10",
   "dispatch_time_required": true,
   "pending_emission": null,
-  "last_dispatch_timestamp": "2026-09-23T03:05:25+08:00"
+  "last_dispatch_timestamp": "2026-09-23T03:06:05+08:00"
 }
