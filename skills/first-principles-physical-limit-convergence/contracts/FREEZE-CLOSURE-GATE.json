@@ -1,0 +1,33 @@
+{
+  "contract_id": "freeze-closure-gate",
+  "contract_version": "1.0.0",
+  "method_version": "4.4.2",
+  "required_step_fields": [
+    "input_closed",
+    "action_defined",
+    "success_postcondition_defined",
+    "failure_delta_classified",
+    "next_step_unique",
+    "artifact_locatable_and_verifiable",
+    "external_dependency_closed_or_fallback_frozen"
+  ],
+  "freeze_pass": [
+    "EXECUTION_CHAIN_CLOSED",
+    "EXTERNAL_DEPENDENCIES_CLOSED",
+    "IMMUTABLE_ARTIFACT_PINNED",
+    "FREEZE_CLOSURE_VERIFIER_PASS"
+  ],
+  "external_dependency_policy": {
+    "non_intrinsic": "MUST_NOT_BE_SINGLE_POINT_OF_REALITY_ENTRY_FAILURE",
+    "intrinsic": "MUST_BE_EXPLICIT_VALIDITY_GATE_WITH_FAILURE_CLASSIFICATION"
+  },
+  "on_any_missing_step_field": {
+    "FREEZE": "BLOCK",
+    "VIRTUAL_COMPLETE": "NO"
+  },
+  "on_reality_entry_precondition_gap": {
+    "VALID_REAL": "NOT_STARTED",
+    "ACTION": "STOP",
+    "RETURN_TO_VIRTUAL": "YES"
+  }
+}
