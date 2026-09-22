@@ -1,0 +1,63 @@
+{
+  "skill_id": "local-ai-reality-foundation",
+  "version": "1.0.0",
+  "display_name": "本地 AI 现实底座永久资产",
+  "role": "PERSISTENT_REALITY_ASSET_INDEX",
+  "method_step": false,
+  "optimization_objective": "INHERIT_MIN_T_VALID_ONLY",
+  "consumed_by": "first-principles-physical-limit-convergence@4.0.0:VIRTUAL_MATURITY",
+  "verified_core_assets": {
+    "reality_anchor": {
+      "id": "reality-execution-environment-anchor",
+      "version": "1.3.0",
+      "host_r2_fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
+      "browser_r3_fingerprint": "9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd",
+      "environment_99": "PASS"
+    },
+    "exact_twin": {
+      "id": "exact-reality-digital-twin",
+      "version": "1.3.0",
+      "full_browser_twin": true,
+      "legacy_selftest": "24/24 PASS",
+      "browser_tests": "6/6 PASS"
+    }
+  },
+  "known_local_assets": [
+    {
+      "id": "playwright-native-ai-browser",
+      "path": "C:\\AI\\Playwright-Native-AI-Browser",
+      "state_policy": "VERIFY_ON_USE"
+    },
+    {
+      "id": "openhands-canvas",
+      "path": "C:\\AI\\OpenHands-Canvas",
+      "state_policy": "VERIFY_ON_USE"
+    },
+    {
+      "id": "bonsai2-27b-256k",
+      "path": "C:\\AI\\Bonsai2-27B-256K",
+      "state_policy": "VERIFY_ON_USE"
+    },
+    {
+      "id": "minimax-h3-comfyui",
+      "path": "C:\\AI\\MiniMax-H3",
+      "state_policy": "VERIFY_ON_USE"
+    },
+    {
+      "id": "visual-art-engine",
+      "path": "C:\\AI\\Visual-Art-Engine",
+      "state_policy": "VERIFY_ON_USE"
+    }
+  ],
+  "network_invariants": {
+    "flclash": "PERSISTENT",
+    "proxy_change_allowed": false
+  },
+  "refresh": {
+    "default_full_reanchor": false,
+    "mode": "INCREMENTAL_ON_DRIFT_OR_MISSING_EVIDENCE",
+    "history_append_only": true,
+    "shadow_may_overwrite_reality": false
+  },
+  "updated_date": "2026-09-22"
+}
