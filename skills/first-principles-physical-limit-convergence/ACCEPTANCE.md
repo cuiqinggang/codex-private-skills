@@ -1,41 +1,15 @@
-# Acceptance — 极限短时间引擎 v4.2.0
+# v4.3.0 验收
 
-## 名称
-DISPLAY_NAME=极限短时间引擎
-LEGACY_MACHINE_ID=first-principles-physical-limit-convergence
+必须全部成立：
 
-## 唯一锚定
-ANCHOR=T*=min(T_VALID)
-PARALLEL_OPTIMIZATION_METRIC=NO
-所有实质判断必须 HARD_GATES=PASS 后只比较 T_VALID。
-
-## 虚
-冻结前必须：VALID_GATE=PASS；PREDICTED_T_VALID_PRESENT=YES；WHY_WINNER_IS_TIME_MINIMUM=PASS。
-若 TIME_RELATION=UNKNOWN，则 FREEZE_AS_CURRENT_OPTIMUM=NO。
-
-## 实
-完成必须：VALID=PASS；T_VALID_REAL_PRESENT=YES。
-功能 PASS 但无时间：REAL_VERIFY_COMPLETE=NO。
-INVALID run 的时间可入 Reality evidence，但不得参与 min(T_VALID)。
-
-## 两步与标签
-METHOD_STEP_COUNT=2
-VIRTUAL=虚
-REAL=实
-THIRD_STEP=NO
-
-## Foundation
-吸收只看 FUTURE_MIN_T_VALID_BENEFIT 或 REPEAT_COST_REDUCTION。
-
-## JEV
-v4 mature freeze 前：JEV_MATURITY_GATE=REQUIRED。
-具体节点：USE_JEV_IFF_TOTAL_T_VALID_LOWER_AND_HARD_GATES_PASS。
-
-## 当前阶段
-DISCUSSION_REFINEMENT_ACTIVE=YES
-LOCAL_DEPLOYMENT=DEFERRED
-AUTOMATION_ATTACH=DEFERRED
-
-## 最终防漂移门
-任一任务结束必须能回答 CURRENT_REAL_T_VALID=?。
-如果不能：EXTREME_TIME_TASK_CLOSED=NO。
+```text
+唯一核心=T*=min(T_VALID)
+步骤=虚|实
+第三步=无
+虚完成=有效通过+预测T_VALID+冻结方案
+实完成=有效通过+现实T_VALID
+实失败=最小现实差异+停止+回虚
+无时间收益且无有效收益的内容=删除
+JEV成熟门=需要
+本地部署=暂缓
+```
