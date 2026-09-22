@@ -1,6 +1,6 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.5.0",
+  "version": "4.5.1",
   "display_name": "极限短时间引擎",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
@@ -58,5 +58,36 @@
     "FOUNDATION_ABSORB_CHECK_DONE"
   ],
   "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_TOTAL_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.0"
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.1",
+  "timing_contract": {
+    "clock": "WALL_CLOCK_ELAPSED",
+    "start_field": "PROBLEM_ENTRY_TIMESTAMP",
+    "stop_field": "FINAL_VALID_TIMESTAMP",
+    "global_timer_state": [
+      "RUNNING",
+      "STOPPED"
+    ],
+    "global_formula": "T_VALID_GLOBAL=FINAL_VALID_TIMESTAMP-PROBLEM_ENTRY_TIMESTAMP",
+    "includes_failures_rework_wait_retries_handoffs": true,
+    "reset": "FORBIDDEN",
+    "unknown_start_rule": "DO_NOT_RETROACTIVELY_FABRICATE_TIMESTAMP",
+    "checkpoint_fields": [
+      "CHECKPOINT_NAME",
+      "CHECKPOINT_TIMESTAMP",
+      "ELAPSED_FROM_PROBLEM_ENTRY",
+      "BOTTLENECK_IF_ANY"
+    ],
+    "local_timer_role": "DIAGNOSTIC_ONLY",
+    "local_timers": [
+      "T_VIRTUAL",
+      "T_REAL",
+      "T_FETCH",
+      "T_RUNNER",
+      "T_VERIFY",
+      "T_FAILURE_DIAGNOSIS",
+      "T_REWORK",
+      "T_WAIT",
+      "T_HANDOFF"
+    ]
+  }
 }
