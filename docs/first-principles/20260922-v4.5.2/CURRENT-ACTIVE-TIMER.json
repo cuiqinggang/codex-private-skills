@@ -32,8 +32,8 @@
       "active_start_network_timestamp": "2026-09-22T23:17:16+08:00",
       "status": "CLOSED",
       "work": "operationalize mandatory per-turn timing display, phase status, next-step plan, and final closeout accounting",
-      "active_end_network_timestamp": "2026-09-22T23:18:38+08:00",
-      "active_duration_ms": 82000,
+      "active_end_network_timestamp": "2026-09-22T23:19:12+08:00",
+      "active_duration_ms": 116000,
       "result": "PASS",
       "bottleneck": "NONE"
     }
@@ -55,12 +55,12 @@
     }
   ],
   "per_agent_active_at_checkpoint_ms": {
-    "GPT": 300000,
+    "GPT": 334000,
     "CODEX": 0
   },
-  "global_active_union_at_checkpoint_ms": 300000,
-  "global_active_union_at_checkpoint_human": "00:05:00",
-  "checkpoint_timestamp": "2026-09-22T23:18:38+08:00",
+  "global_active_union_at_checkpoint_ms": 334000,
+  "global_active_union_at_checkpoint_human": "00:05:34",
+  "checkpoint_timestamp": "2026-09-22T23:19:12+08:00",
   "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
   "human_idle": "EXCLUDED",
   "reset_on_failure": "FORBIDDEN",
