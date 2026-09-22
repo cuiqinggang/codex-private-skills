@@ -125,7 +125,14 @@
       "T_VALID_ACTIVE_GLOBAL"
     ],
     "missing_time_segment": "INVALID_ACCOUNTING",
-    "optimization_rule": "EVERY_STEP_MUST_JUSTIFY_ITSELF_BY_EXPECTED_REDUCTION_IN_T_VALID_ACTIVE_GLOBAL"
+    "optimization_rule": "EVERY_STEP_MUST_JUSTIFY_ITSELF_BY_EXPECTED_REDUCTION_IN_T_VALID_ACTIVE_GLOBAL",
+    "dispatch_metadata_required": true,
+    "dispatch_metadata_fields": [
+      "TASK_TIME_ID",
+      "TASK_SEQUENCE",
+      "GPT_DISPATCH_TIMESTAMP",
+      "ACTIVE_TOTAL_BEFORE_DISPATCH"
+    ]
   },
   "phase_model": {
     "method_steps_exactly": [
@@ -145,7 +152,7 @@
   "virtual_to_real_handoff": {
     "role": "VIRTUAL_EXIT_CONDITION_NOT_THIRD_STEP",
     "default_mode": "DIRECT_GPT_TO_CODEX_SELF_CONTAINED_CONTRACT",
-    "direct_contract_path": "docs/first-principles/20260923-v4.5.9/DIRECT-CODEX-REAL-CONTRACT.md",
+    "direct_contract_path": "docs/first-principles/20260923-v4.5.10/DIRECT-CODEX-REAL-CONTRACT.md",
     "preflight_path": "docs/first-principles/20260923-v4.5.8/CODEX-REALITY-PREFLIGHT.json",
     "outer_powershell_wrapper": "NOT_DEFAULT",
     "codex_executor_required": true,
@@ -286,7 +293,7 @@
         "on_valid_emission": "ADVANCE_SEQUENCE_LEDGER"
       }
     },
-    "current_sequence_ledger": "docs/first-principles/20260923-v4.5.9/TASK-SEQUENCE-LEDGER.json",
+    "current_sequence_ledger": "docs/first-principles/20260923-v4.5.10/TASK-SEQUENCE-LEDGER.json",
     "last_valid_sequence": "01",
     "next_sequence": "02",
     "current_required_label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜02｜实】"
