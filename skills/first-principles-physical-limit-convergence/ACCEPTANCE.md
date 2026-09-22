@@ -1,82 +1,41 @@
-# Acceptance — first-principles-physical-limit-convergence v4.1.0
+# Acceptance — 极限短时间引擎 v4.2.0
 
-## 1. 唯一锚定
-```text
-T*=min(T_VALID)
-SECOND_OPTIMIZATION_METRIC=NO
-```
+## 名称
+DISPLAY_NAME=极限短时间引擎
+LEGACY_MACHINE_ID=first-principles-physical-limit-convergence
 
-## 2. 两步
-```text
+## 唯一锚定
+ANCHOR=T*=min(T_VALID)
+PARALLEL_OPTIMIZATION_METRIC=NO
+所有实质判断必须 HARD_GATES=PASS 后只比较 T_VALID。
+
+## 虚
+冻结前必须：VALID_GATE=PASS；PREDICTED_T_VALID_PRESENT=YES；WHY_WINNER_IS_TIME_MINIMUM=PASS。
+若 TIME_RELATION=UNKNOWN，则 FREEZE_AS_CURRENT_OPTIMUM=NO。
+
+## 实
+完成必须：VALID=PASS；T_VALID_REAL_PRESENT=YES。
+功能 PASS 但无时间：REAL_VERIFY_COMPLETE=NO。
+INVALID run 的时间可入 Reality evidence，但不得参与 min(T_VALID)。
+
+## 两步与标签
 METHOD_STEP_COUNT=2
 VIRTUAL=虚
 REAL=实
 THIRD_STEP=NO
-```
 
-## 3. 标签
-正式标签第四字段只允许：
-```text
-虚
-实
-```
-“虚拟成熟 / 实际验证 / 旧三核心名”作为第四字段均 FAIL。
+## Foundation
+吸收只看 FUTURE_MIN_T_VALID_BENEFIT 或 REPEAT_COST_REDUCTION。
 
-## 4. 虚
-必须完成：
-- Reality Foundation 读取；
-- 成熟方案动态检索；
-- 组合/淘汰/攻击；
-- verifier 虚拟验证；
-- T_VALID 预测竞争；
-- 唯一 S* 冻结。
+## JEV
+v4 mature freeze 前：JEV_MATURITY_GATE=REQUIRED。
+具体节点：USE_JEV_IFF_TOTAL_T_VALID_LOWER_AND_HARD_GATES_PASS。
 
-## 5. 实
-必须：
-```text
-EXECUTE_FROZEN_ONLY=YES
-SELF_REPAIR=NO
-REPLAN=NO
-ON_FAIL=REALITY_DELTA_STOP_RETURN_TO_虚
-```
+## 当前阶段
+DISCUSSION_REFINEMENT_ACTIVE=YES
+LOCAL_DEPLOYMENT=DEFERRED
+AUTOMATION_ATTACH=DEFERRED
 
-## 6. Foundation 吸收
-每个完成任务必须：
-```text
-FOUNDATION_ABSORB_CHECK=PASS
-```
-
-若无未来时间价值：
-```text
-ABSORB=NO
-VERSION_CHANGE=NO
-```
-
-若有价值：
-```text
-ABSORB=YES
-MINIMUM_NECESSARY_DATA_ONLY=PASS
-NEW_VERSION=REQUIRED
-SELF_CONTAINED_CURRENT_SNAPSHOT=PASS
-DELTA_RECORDED=PASS
-EVIDENCE_POINTER=PASS
-OLD_VERSION_PRESERVED=PASS
-```
-
-## 7. 自动化延后
-```text
-AUTOMATION_ATTACH_NOW=NO
-FUTURE_CARRIER=gpt-codex-convergence-orchestrator@1.5.2
-REINVENT_AUTOMATION=NO
-V5_BEFORE_V4_REAL_MATURITY=FORBIDDEN
-```
-
-## 8. 最终
-```text
-ONE_VIRTUAL_ONE_REAL=PASS
-MIN_T_VALID_SINGLE_ANCHOR=PASS
-ONE_CHAR_PHASE_LOCATOR=PASS
-FOUNDATION_VERSIONED_ABSORPTION=PASS
-DYNAMIC_MATURE_POOL=PASS
-AUTOMATION_PREMATURE_ATTACH=NO
-```
+## 最终防漂移门
+任一任务结束必须能回答 CURRENT_REAL_T_VALID=?。
+如果不能：EXTREME_TIME_TASK_CLOSED=NO。
