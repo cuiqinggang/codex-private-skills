@@ -1,7 +1,7 @@
 {
   "skill_id": "local-ai-reality-foundation",
-  "version": "1.1.1",
-  "previous_version": "1.1.0",
+  "version": "1.1.2",
+  "previous_version": "1.1.1",
   "display_name": "本地 AI 现实底座永久资产",
   "role": "VERSIONED_PERSISTENT_REALITY_FOUNDATION",
   "method_step": false,
@@ -60,6 +60,15 @@
       "model_refresh_timeout": "OBSERVED",
       "skill_description_budget_warning": "OBSERVED",
       "rule": "ONLY_PROMOTE_TO_REALITY_DELTA_IF_TASK_VALIDITY_IS_AFFECTED"
+    },
+    "git_metadata_write": {
+      "observed_operation": "git fetch origin codex/first-principles-physical-limit-convergence-v4.5.6",
+      "observed_error": "cannot open .git/FETCH_HEAD: Permission denied",
+      "classification": "LOCAL_GIT_METADATA_WRITE_PERMISSION",
+      "not_network_error": true,
+      "default_real_rule": "DO_NOT_REQUIRE_GIT_FETCH_OR_FETCH_HEAD_WRITE_ON_REAL_CRITICAL_PATH",
+      "shared_fact_source_role": "POST_EXECUTION_PERSISTENCE_AND_REREAD_NOT_REAL_BOOTSTRAP",
+      "allow_only_if": "VIRTUAL_PREFLIGHT_PROVES_REQUIRED_GIT_METADATA_WRITE_IS_ALLOWED"
     }
   }
 }
