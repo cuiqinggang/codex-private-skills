@@ -1,0 +1,26 @@
+{
+  "task_time_id": "ESTE-20260922-001",
+  "from_method": "extreme-short-time-engine-v4.5.5",
+  "to_method": "extreme-short-time-engine-v4.5.6",
+  "phase": "REAL",
+  "valid_real": "FAIL",
+  "codex_handoff_start_timestamp": "2026-09-23T00:35:16.4440006+08:00",
+  "codex_process_end_timestamp": "2026-09-23T00:36:32.1111893+08:00",
+  "codex_process_active_ms": 75664.93,
+  "observed_deltas": [
+    {
+      "id": "CALLER_SHELL_EXPANDED_CODEX_PROMPT",
+      "evidence": "PowerShell double-quoted here-string expanded embedded $variables before codex exec received the prompt.",
+      "consequence": "Frozen command became syntactically invalid and PowerShell returned ParserError."
+    },
+    {
+      "id": "W32TM_SOURCE_QUERY_ACCESS_DENIED",
+      "evidence": "w32tm /query /source returned 0x80070005 Access Denied in current non-admin PowerShell.",
+      "consequence": "Time-source query cannot be a hard dependency."
+    }
+  ],
+  "root_cause": "VIRTUAL_FREEZE_DID_NOT_MODEL_CALLER_SHELL_INTERPOLATION_AND_TIME_SOURCE_PERMISSION_REALITY",
+  "action": "STOP_RETURN_TO_VIRTUAL",
+  "timer_reset": "FORBIDDEN",
+  "absorbed_into_reality_foundation": "local-ai-reality-foundation@1.1.1"
+}
