@@ -1,12 +1,12 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.5.4。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
+description: 极限短时间引擎 v4.5.5。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
 metadata:
-  version: "4.5.4"
+  version: "4.5.5"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.5.4
+# 极限短时间引擎 v4.5.5
 
 ## 根基：现实底座
 
@@ -340,6 +340,86 @@ BOTTLENECK_IF_ANY=<瓶颈或 NONE>
 
 检查点只提供可观测性，不创建新的优化目标。
 
+
+
+# 整体闭环极限时间：禁止局部最快替代整体最快
+
+唯一锚定物的中文正式名称：
+
+```text
+整体闭环极限时间
+WHOLE_LOOP_VALID_ACTIVE_TIME
+```
+
+完整边界：
+
+```text
+GPT 接收问题
+-> GPT 虚拟成熟并冻结
+-> Codex 接手现实执行
+-> Codex 调用 PowerShell/浏览器/本机工具取得现实证据
+-> Codex 返回正式现实结果
+-> GPT 重新读取并判断 TASK_COMPLETED
+-> GPT 最终确认 FINAL_VALID
+```
+
+只有上面完整闭环完成，任务才有资格产生有效总时间。
+
+```text
+T_VALID_ACTIVE_GLOBAL
+= measure(UNION(REQUIRED_LOOP_ACTIVE_INTERVALS))
+
+T*
+= min(T_VALID_ACTIVE_GLOBAL)
+subject to TASK_COMPLETED=TRUE
+```
+
+## Codex 执行器不可被局部优化删除
+
+当前自动化架构固定：
+
+```text
+REASONING_BRAIN=GPT
+EXECUTOR=CODEX
+DETERMINISTIC_TOOL=PowerShell/Browser/Local Tools
+FINAL_JUDGE=GPT
+```
+
+PowerShell 是 Codex 可调用的确定性工具，不是完整闭环执行器的替代物。
+
+只有当整个任务合同明确不需要 Codex 执行/证据回传时，才允许省略 Codex；对于本技能默认自动化闭环：
+
+```text
+CODEX_EXECUTOR_REQUIRED=YES
+```
+
+因此不得因为：
+
+```text
+PowerShell 局部执行更快
+```
+
+就推导：
+
+```text
+删除 Codex
+```
+
+必须比较的是完整闭环的 T_VALID_ACTIVE_GLOBAL。
+
+## Codex 时间接力
+
+GPT -> Codex 交接时必须由命令外壳记录：
+
+```text
+CODEX_HANDOFF_START_TIMESTAMP
+CODEX_PROCESS_ACTIVE_MS
+CODEX_PROCESS_END_TIMESTAMP
+```
+
+计时覆盖整个 `codex exec` 进程，包括模型启动、推理、工具调用、现实执行和结果输出。
+
+Codex 结束后，结果回到 GPT；GPT 的重新读取与最终裁决继续计入同一 TASK_TIME_ID，不重置。
 
 # 两步状态机：唯一结构
 
