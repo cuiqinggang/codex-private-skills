@@ -149,7 +149,9 @@
     "runtime_git_fetch_required": false,
     "github_role": "POST_EXECUTION_SHARED_FACT_SOURCE",
     "powershell_role": "CODEX_INTERNAL_DETERMINISTIC_TOOL",
-    "same_response_delivery_required": true
+    "same_response_delivery_required": true,
+    "direct_contract_path": "docs/first-principles/20260923-v4.5.7/DIRECT-CODEX-REAL-CONTRACT.md",
+    "git_metadata_write_on_real_bootstrap": "FORBIDDEN_BY_DEFAULT"
   },
   "anchor_name_zh": "整体闭环极限时间",
   "anchor_name_en": "WHOLE_LOOP_VALID_ACTIVE_TIME",
@@ -231,6 +233,8 @@
       "PHASE"
     ],
     "phase_values": [
+      "虚",
+      "实",
       "VIRTUAL",
       "REAL"
     ],
