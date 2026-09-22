@@ -68,6 +68,17 @@
       "work": "repair virtual-to-real handoff so VIRTUAL completes only after shared publish and direct Codex command emission",
       "result": "PASS",
       "bottleneck": "PREVIOUS_HANDOFF_OMISSION"
+    },
+    {
+      "segment_id": "S007",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-22T23:58:31+08:00",
+      "active_end_network_timestamp": "2026-09-22T23:59:25+08:00",
+      "active_duration_ms": 54000,
+      "status": "CLOSED",
+      "work": "analyze partial REAL output and identify handoff-network and missing Codex timing instrumentation deltas",
+      "result": "PASS",
+      "bottleneck": "CODEX_ACTIVE_INTERVAL_NOT_SELF_INSTRUMENTED"
     }
   ],
   "excluded_intervals": [
@@ -113,13 +124,13 @@
   },
   "global_active_union_at_checkpoint_ms": 1112000,
   "global_active_union_at_checkpoint_human": "00:18:32",
-  "checkpoint_timestamp": "2026-09-22T23:55:15+08:00",
+  "checkpoint_timestamp": "2026-09-22T23:59:25+08:00",
   "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
   "human_idle": "EXCLUDED",
   "reset_on_failure": "FORBIDDEN",
-  "current_phase": "VIRTUAL",
-  "current_status": "VIRTUAL_COMPLETE=YES",
-  "next_action": "USER_PASTES_ALREADY_EMITTED_SINGLE_CODEX_REAL_COMMAND",
+  "current_phase": "REAL",
+  "current_status": "REAL_IN_PROGRESS_FUNCTIONAL_RESULT_PENDING_TIMING_CERTIFICATION_BLOCKED",
+  "next_action": "READ_THE_REMAINDER_OF_THIS_FROZEN_REAL_OUTPUT; DO_NOT_REDESIGN_IN_REAL",
   "phase_model": {
     "current": "VIRTUAL",
     "virtual_complete": true,
@@ -145,5 +156,20 @@
     "defect": "VIRTUAL_PREVIOUSLY_CLOSED_BEFORE_REAL_ENTRY_COMMAND_WAS_EMITTED",
     "fix": "MAKE_SHARED_PUBLISH_AND_COMMAND_EMISSION_VIRTUAL_EXIT_CONDITIONS",
     "expected_time_benefit": "ELIMINATES_EXTRA_USER_QUESTION_DOWNLOAD_AND_COMMAND_GENERATION_ROUNDTRIP"
-  }
+  },
+  "real_attempt": {
+    "status": "RUNNING_OR_OUTPUT_INCOMPLETE",
+    "local_commit_present": false,
+    "git_fetch_started": true,
+    "valid_real_result": "PENDING",
+    "codex_active_interval_exact": false,
+    "codex_active_start_network_timestamp": "UNKNOWN",
+    "timing_certification": "BLOCKED_EXACT"
+  },
+  "global_active_exact_through_network_timestamp": "2026-09-22T23:55:15+08:00",
+  "global_active_exact_ms": 1112000,
+  "global_active_exact_human": "00:18:32",
+  "global_active_lower_bound_ms": 1166000,
+  "global_active_lower_bound_human": "00:19:26",
+  "global_active_exact_current": "UNKNOWN_DUE_TO_UNINSTRUMENTED_CODEX_INTERVAL"
 }
