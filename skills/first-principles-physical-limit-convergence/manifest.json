@@ -1,12 +1,18 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.4.0",
+  "version": "4.4.1",
   "display_name": "极限短时间引擎",
+  "reality_foundation": {
+    "skill_id": "local-ai-reality-foundation",
+    "display_name": "本地 AI 现实底座永久资产",
+    "current_version": "1.1.0",
+    "role": "REQUIRED_ROOT_NOT_METHOD_STEP"
+  },
   "anchor": "T*=min(T_VALID)",
   "rule": "VALID_PASS_THEN_MIN_T_VALID",
-  "virtual_complete": ["VALID_PASS", "PREDICTED_T_VALID", "FROZEN_SOLUTION"],
-  "real_complete": ["VALID_PASS", "T_VALID_REAL"],
+  "virtual_complete": ["REALITY_FOUNDATION_SUFFICIENT", "VALID_PASS", "PREDICTED_T_VALID", "FROZEN_SOLUTION"],
+  "real_complete": ["VALID_PASS", "T_VALID_REAL", "FOUNDATION_ABSORB_CHECK_DONE"],
   "real_fail": "MIN_REALITY_DELTA_STOP_RETURN_TO_VIRTUAL",
   "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.4.0"
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.4.1"
 }
