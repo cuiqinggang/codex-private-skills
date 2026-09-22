@@ -1,0 +1,31 @@
+{
+  "task_time_id": "ESTE-20260922-001",
+  "sequence_scope": "TASK_TIME_ID",
+  "initial_sequence": "01",
+  "last_valid_emitted_sequence": "01",
+  "next_sequence": "02",
+  "reset_rules": {
+    "on_real_fail": false,
+    "on_return_to_virtual": false,
+    "on_method_version_change": false,
+    "on_new_task_time_id": true
+  },
+  "valid_history": [
+    {
+      "sequence": "01",
+      "label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜01｜实】",
+      "method": "extreme-short-time-engine-v4.5.7",
+      "result": "FAIL",
+      "reality_delta": "READ_ONLY_GPU_PROBE_FALSE_NEGATIVE_FROM_EXIT_STATUS"
+    }
+  ],
+  "rejected_emissions": [
+    {
+      "sequence": "01",
+      "method": "extreme-short-time-engine-v4.5.8",
+      "reason": "DUPLICATE_SEQUENCE",
+      "counted_as_valid_sequence": false
+    }
+  ],
+  "required_next_label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜02｜实】"
+}
