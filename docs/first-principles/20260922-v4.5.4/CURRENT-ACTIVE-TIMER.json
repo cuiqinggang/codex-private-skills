@@ -62,8 +62,8 @@
       "segment_id": "S006",
       "agent": "GPT",
       "active_start_network_timestamp": "2026-09-22T23:50:16+08:00",
-      "active_end_network_timestamp": "2026-09-22T23:54:34+08:00",
-      "active_duration_ms": 258000,
+      "active_end_network_timestamp": "2026-09-22T23:55:15+08:00",
+      "active_duration_ms": 299000,
       "status": "CLOSED",
       "work": "repair virtual-to-real handoff so VIRTUAL completes only after shared publish and direct Codex command emission",
       "result": "PASS",
@@ -108,12 +108,12 @@
     }
   ],
   "per_agent_active_at_checkpoint_ms": {
-    "GPT": 1071000,
+    "GPT": 1112000,
     "CODEX": 0
   },
-  "global_active_union_at_checkpoint_ms": 1071000,
-  "global_active_union_at_checkpoint_human": "00:17:51",
-  "checkpoint_timestamp": "2026-09-22T23:54:34+08:00",
+  "global_active_union_at_checkpoint_ms": 1112000,
+  "global_active_union_at_checkpoint_human": "00:18:32",
+  "checkpoint_timestamp": "2026-09-22T23:55:15+08:00",
   "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
   "human_idle": "EXCLUDED",
   "reset_on_failure": "FORBIDDEN",
@@ -132,7 +132,7 @@
     "on_real_fail": "RETURN_TO_VIRTUAL_WITHOUT_TIMER_RESET"
   },
   "virtual_complete": true,
-  "virtual_complete_network_timestamp": "2026-09-22T23:54:34+08:00",
+  "virtual_complete_network_timestamp": "2026-09-22T23:55:15+08:00",
   "next_phase": "REAL",
   "predicted_final_active_if_first_real_pass": {
     "lower_ms": 828000,
