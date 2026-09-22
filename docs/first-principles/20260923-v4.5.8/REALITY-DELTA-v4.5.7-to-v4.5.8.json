@@ -1,0 +1,21 @@
+{
+  "task_time_id": "ESTE-20260922-001",
+  "from_method": "extreme-short-time-engine-v4.5.7",
+  "to_method": "extreme-short-time-engine-v4.5.8",
+  "phase": "REAL",
+  "valid_real": "FAIL",
+  "codex_active_start_timestamp": "2026-09-23T01:25:06.9843389+08:00",
+  "codex_active_end_timestamp": "2026-09-23T01:25:07.7129523+08:00",
+  "codex_process_active_ms": 706.7559,
+  "observed_evidence": {
+    "gpu_stdout": "NVIDIA GeForce RTX 2080 Ti, 22528",
+    "gpu_semantic_gate": "PASS",
+    "reported_exit_status": "NONZERO",
+    "remaining_checks_completed": false
+  },
+  "reality_delta": "READ_ONLY_GPU_PROBE_FALSE_NEGATIVE_FROM_EXIT_STATUS",
+  "root_cause": "VALIDATOR_USED_NONZERO_EXIT_AS_HARD_FAIL_BEFORE_COMPLETING_SEMANTIC_VALIDITY_AND_REMAINING_CHECKS",
+  "action": "STOP_RETURN_TO_VIRTUAL",
+  "timer_reset": "FORBIDDEN",
+  "absorbed_into_reality_foundation": "local-ai-reality-foundation@1.1.3"
+}
