@@ -1,12 +1,12 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.5.9。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
+description: 极限短时间引擎 v4.5.10。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
 metadata:
-  version: "4.5.9"
+  version: "4.5.10"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.5.9
+# 极限短时间引擎 v4.5.10
 
 ## 根基：现实底座
 
@@ -517,6 +517,55 @@ Codex 开头和结尾必须原样回显相同四定位标签；序号不一致�
 ```text
 EXECUTION=BLOCK
 ```
+
+
+## Codex 任务发布时间必须进入时间账本
+
+每一条真正发布给 Codex 的任务，在四定位标签之后必须紧跟时间元数据：
+
+TASK_TIME_ID=<当前整体任务编号>
+TASK_SEQUENCE=<本次发布序号>
+GPT_DISPATCH_TIMESTAMP=<GPT 本轮交付该任务的真实时间>
+ACTIVE_TOTAL_BEFORE_DISPATCH=<发布前累计整体有效时间；若历史存在未精确区间则标 LOWER_BOUND>
+
+规则：
+
+四定位标签负责“这是什么任务”。
+时间元数据负责“什么时候发布、发布前已经用了多少有效时间”。
+二者不得混成第五定位字段。
+
+每次发布 Codex 任务前必须同时满足：
+
+DISPATCH_TIME_READY=PASS
+ACTIVE_TOTAL_READY=PASS
+SEQUENCE_EXPECTED_NEXT=PASS
+
+发布后序号账本立即记录：
+
+EMITTED_SEQUENCE
+EMITTED_LABEL
+GPT_DISPATCH_TIMESTAMP
+ACTIVE_TOTAL_BEFORE_DISPATCH
+
+并推进：
+
+LAST_VALID_EMITTED_SEQUENCE = EMITTED_SEQUENCE
+NEXT_SEQUENCE = EMITTED_SEQUENCE + 1
+
+Codex 自己仍负责记录其接手和结束：
+
+CODEX_ACTIVE_START_TIMESTAMP
+CODEX_ACTIVE_END_TIMESTAMP
+CODEX_PROCESS_ACTIVE_MS
+
+这样同一任务形成连续时间接力：
+
+GPT 有效工作段
+-> GPT_DISPATCH_TIMESTAMP
+-> Codex ACTIVE START
+-> Codex ACTIVE END
+-> GPT 重新读取
+-> FINAL_VALID
 
 ## 虚 -> 实最短交接：直接 Codex，不再增加外层 PowerShell
 
