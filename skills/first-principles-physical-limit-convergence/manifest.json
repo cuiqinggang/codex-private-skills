@@ -140,6 +140,15 @@
     "required_same_response_delivery": true,
     "forbid_deferred_manual_download": true,
     "forbid_second_question_for_execution_command": true,
-    "optimization_reason": "ELIMINATE_NON_VALUE_HANDOFF_LATENCY_FROM_T_VALID_ACTIVE_GLOBAL"
+    "optimization_reason": "ELIMINATE_NON_VALUE_HANDOFF_LATENCY_FROM_T_VALID_ACTIVE_GLOBAL",
+    "frozen_real_artifact": {
+      "commit": "daf1d1b059daf5f975de414579c3ab14c1519f3b",
+      "path": "docs/first-principles/20260922-v4.5.4/REAL-ENTRY-FROZEN.ps1",
+      "git_blob_sha": "629be3ce49dd951d23b583c3a51678db704b5a46"
+    },
+    "handoff_contract_path": "docs/first-principles/20260922-v4.5.4/VIRTUAL-TO-REAL-HANDOFF.md",
+    "shared_workspace_published": "PASS",
+    "real_entry_command_ready": "PASS",
+    "command_delivery_rule": "MUST_BE_EMITTED_IN_SAME_RESPONSE_AS_VIRTUAL_COMPLETE"
   }
 }
