@@ -1,98 +1,61 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "display_name": "第一性原理极限短时间引擎",
   "method_name_zh": "一虚一实",
-  "breaking_change": true,
-  "previous_version": "3.1.9",
+  "previous_version": "4.0.0",
   "objective": {
     "metric": "T_VALID",
     "optimize": "MINIMIZE",
-    "anchor_zh": "极限短时间",
-    "physical_meaning_zh": "极限效率",
-    "hard_gate_rule": "ALL_NON_TIME_REQUIREMENTS_DEFINE_VALID_OR_REALITY_BOUNDARIES_ONLY",
     "formula": "T*=min(T_VALID)",
-    "single_anchor": true
+    "single_anchor": true,
+    "anchor_zh": "极限短时间",
+    "physical_meaning_zh": "极限效率"
   },
   "current_method": {
     "step_count": 2,
     "steps": [
-      {
-        "id": 1,
-        "key": "VIRTUAL_MATURITY",
-        "name_zh": "虚拟成熟",
-        "role": "ONE_SHOT_SOLVE_COMPOSE_ATTACK_VERIFY_FREEZE",
-        "inputs": [
-          "LOCAL_AI_REALITY_FOUNDATION",
-          "DYNAMIC_MATURE_SOLUTION_POOL",
-          "HISTORICAL_REALITY_EVIDENCE"
-        ],
-        "output": "FROZEN_SOLUTION_CONTRACT"
-      },
-      {
-        "id": 2,
-        "key": "REAL_VERIFY",
-        "name_zh": "实际验证",
-        "role": "EXECUTE_FROZEN_CONTRACT_MEASURE_T_VALID_REPORT_REALITY_DELTA",
-        "on_fail": "REALITY_DELTA_STOP_RETURN_TO_VIRTUAL_MATURITY"
-      }
-    ]
+      {"id":1,"key":"VIRTUAL_MATURITY","name_zh":"虚拟成熟","visible_locator_value":"虚"},
+      {"id":2,"key":"REAL_VERIFY","name_zh":"实际验证","visible_locator_value":"实"}
+    ],
+    "failure_loop": "实->REALITY_DELTA->STOP->虚"
   },
   "task_locator": {
-    "visible_format": "【<PAGE_NAME>｜<TASK_NAME>｜<SEQ>｜<PHASE_ZH>】",
-    "allowed_phase_zh": [
-      "虚拟成熟",
-      "实际验证"
-    ],
+    "visible_format": "【<PAGE_NAME>｜<TASK_NAME>｜<SEQ>｜<ATTR_ZH>】",
+    "allowed_attr_zh": ["虚","实"],
+    "full_phase_names_allowed_in_locator": false,
     "page_name_guessing_allowed": false,
-    "cross_phase_command_allowed": false,
-    "first_and_last_line_required_for_formal_executor_commands": true
+    "cross_phase_command_allowed": false
   },
   "virtual_maturity": {
     "mature_pool_is_dynamic": true,
-    "world_solved_default": true,
-    "operations": [
-      "DISCOVER",
-      "COPY",
-      "ADAPT",
-      "COMPOSE",
-      "DELETE",
-      "CONFLICT_RESOLVE",
-      "ATTACK",
-      "SIMULATE",
-      "VERIFY",
-      "TIME_RANK",
-      "FREEZE"
-    ],
-    "reality_anchor_is_subcapability_not_step": true,
-    "mature_solution_cluster_is_subcapability_not_step": true,
-    "virtual_99_is_subcapability_not_step": true,
-    "jev_is_optional_accelerator": true
+    "old_winner_is_candidate_not_authority": true,
+    "reality_foundation_is_input_not_step": true,
+    "jev_is_optional_time_accelerator": true,
+    "operations": ["READ_REALITY","DISCOVER_MATURE","COPY","ADAPT","COMPOSE","DELETE","ATTACK","VERIFY","TIME_COMPARE","FREEZE"]
   },
   "real_execution": {
     "executor_role": "FROZEN_CONTRACT_EXECUTE_VERIFY_REPORT_STOP_ONLY",
-    "codex_may_self_repair": false,
-    "codex_may_replan": false,
-    "codex_may_search_new_route": false,
-    "on_failure": "RECORD_MINIMAL_SUFFICIENT_REALITY_DELTA_STOP_RETURN_TO_VIRTUAL_MATURITY"
+    "self_repair": false,
+    "replan": false,
+    "search_new_route": false,
+    "on_failure": "MINIMAL_REALITY_DELTA_STOP_RETURN_TO_VIRTUAL"
   },
   "foundation": {
     "skill_id": "local-ai-reality-foundation",
-    "role": "PERSISTENT_EVOLVING_REALITY_ASSET_INDEX_NOT_METHOD_STEP",
-    "refresh_policy": "INCREMENTAL_ON_DRIFT_OR_MISSING_EVIDENCE"
+    "required_absorb_check_after_each_completed_task": true,
+    "absorb_gate": "ONLY_IF_FUTURE_MIN_T_VALID_BENEFIT_OR_REPEAT_COST_REDUCTION",
+    "no_value_action": "NO_VERSION_CHANGE",
+    "current_expected_version": "1.1.0"
   },
-  "legacy": {
-    "preserved": true,
-    "history_index": "HISTORY-v1-v3.1.9.md",
-    "previous_canonical_branch": "codex/first-principles-physical-limit-convergence-v3.1.9",
-    "allowed_roles": [
-      "EVIDENCE",
-      "MATURE_SOLUTION_SOURCE",
-      "FAILURE_HISTORY",
-      "REALITY_BASELINE"
-    ],
-    "current_method_authority": false
+  "automation_roadmap": {
+    "attach_now": false,
+    "reason": "TWO_STEP_METHOD_NOT_YET_REAL_CASE_MATURE",
+    "future_carrier": "gpt-codex-convergence-orchestrator@1.5.2",
+    "future_carrier_branch": "codex/gpt-codex-convergence-orchestrator-v1.5.2-freeze-closeout",
+    "reinvent_automation": false,
+    "next_major_requires_real_maturity": true
   },
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.0.0",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.1.0",
   "updated_date": "2026-09-22"
 }
