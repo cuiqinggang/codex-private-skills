@@ -1,0 +1,19 @@
+{
+  "method": "extreme-short-time-engine-v4.5.7",
+  "reality_foundation": "local-ai-reality-foundation@1.1.2",
+  "checks": {
+    "FOUR_POSITION_LABEL_COUNT": true,
+    "DIRECT_CODEX_CONTRACT": true,
+    "NO_OUTER_POWERSHELL_WRAPPER": true,
+    "NO_RUNTIME_GIT_FETCH": true,
+    "NO_FETCH_HEAD_BOOTSTRAP": true,
+    "NO_TEMP_PS1": true,
+    "CODEX_INTERNAL_STOPWATCH": true,
+    "FOUR_POSITION_FINAL_ECHO": true,
+    "RETURN_TO_GPT": true,
+    "FOUNDATION_1_1_2": true
+  },
+  "result": "PASS",
+  "freeze": "ALLOW",
+  "next_phase": "REAL"
+}
