@@ -65,13 +65,13 @@
   "next_phase": "REAL",
   "numbered_virtual_substeps": "FORBIDDEN",
   "numbered_real_substeps": "FORBIDDEN",
-  "virtual_complete_network_timestamp": "2026-09-22T23:35:49+08:00",
-  "active_total_at_virtual_complete_ms": 739000,
-  "active_total_at_virtual_complete_human": "00:12:19",
+  "virtual_complete_network_timestamp": "2026-09-22T23:37:03+08:00",
+  "active_total_at_virtual_complete_ms": 813000,
+  "active_total_at_virtual_complete_human": "00:13:33",
   "predicted_final_active_if_first_real_pass": {
-    "lower_ms": 754000,
-    "upper_ms": 829000,
-    "lower_human": "00:12:34",
-    "upper_human": "00:13:49"
+    "lower_ms": 828000,
+    "upper_ms": 903000,
+    "lower_human": "00:13:48",
+    "upper_human": "00:15:03"
   }
 }
