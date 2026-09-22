@@ -1,6 +1,6 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.5.8",
+  "version": "4.5.9",
   "display_name": "极限短时间引擎",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
@@ -69,7 +69,7 @@
     "FOUNDATION_ABSORB_CHECK_DONE"
   ],
   "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_TOTAL_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.8",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.9",
   "timing_contract": {
     "clock_source": "NETWORK_TIMESTAMP_FOR_BOUNDARIES",
     "optimization_clock": "ACTIVE_AGENT_ELAPSED",
@@ -222,7 +222,11 @@
       "POSITION_LABEL_EXACT_ECHO",
       "RUNTIME_GIT_FETCH_REQUIRED_NO",
       "DIRECT_CODEX_HANDOFF",
-      "CODEX_INTERNAL_TIMING_READY"
+      "CODEX_INTERNAL_TIMING_READY",
+      "SEQUENCE_LEDGER_LOADED",
+      "SEQUENCE_UNIQUE",
+      "SEQUENCE_EXPECTED_NEXT",
+      "SEQUENCE_NOT_REUSED"
     ]
   },
   "position_gate": {
@@ -241,7 +245,24 @@
       "REAL"
     ],
     "final_exact_echo_required": true,
-    "any_mismatch": "EXECUTION_BLOCK"
+    "any_mismatch": "EXECUTION_BLOCK",
+    "sequence_contract": {
+      "scope": "TASK_TIME_ID",
+      "initial": "01",
+      "rule": "NEXT_SEQUENCE=LAST_VALID_EMITTED_SEQUENCE+1",
+      "reset_only_on_new_task_time_id": true,
+      "reset_on_real_fail": false,
+      "reset_on_return_to_virtual": false,
+      "reset_on_method_version_change": false,
+      "reuse": "FORBIDDEN",
+      "invalid_duplicate_emission": "NOT_COUNTED_AS_VALID_SEQUENCE",
+      "required_freeze_gates": [
+        "SEQUENCE_LEDGER_LOADED",
+        "SEQUENCE_UNIQUE",
+        "SEQUENCE_EXPECTED_NEXT",
+        "SEQUENCE_NOT_REUSED"
+      ]
+    }
   },
   "read_only_probe_validity": {
     "required": true,
