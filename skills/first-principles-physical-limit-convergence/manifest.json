@@ -1,6 +1,6 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.5.4",
+  "version": "4.5.5",
   "display_name": "极限短时间引擎",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
@@ -9,7 +9,7 @@
     "role": "REQUIRED_ROOT_NOT_METHOD_STEP"
   },
   "anchor": "T*=min(T_VALID_ACTIVE_GLOBAL)",
-  "anchor_formula": "T_VALID_ACTIVE_GLOBAL=measure(UNION(AGENT_ACTIVE_INTERVALS))",
+  "anchor_formula": "T_VALID_ACTIVE_GLOBAL=measure(UNION(REQUIRED_LOOP_ACTIVE_INTERVALS))",
   "anchor_meaning": "TOTAL_ACTIVE_AGENT_PROBLEM_RESOLUTION_TIME",
   "timer_reset_on_retry": "FORBIDDEN",
   "t_valid_includes": [
@@ -61,7 +61,7 @@
     "FOUNDATION_ABSORB_CHECK_DONE"
   ],
   "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_TOTAL_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.4",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.5",
   "timing_contract": {
     "clock_source": "NETWORK_TIMESTAMP_FOR_BOUNDARIES",
     "optimization_clock": "ACTIVE_AGENT_ELAPSED",
@@ -152,5 +152,37 @@
     "command_delivery_rule": "MUST_BE_EMITTED_IN_SAME_RESPONSE_AS_VIRTUAL_COMPLETE",
     "real_entry_command_emitted": "PASS",
     "emitted_network_timestamp": "2026-09-22T23:54:34+08:00"
+  },
+  "anchor_name_zh": "整体闭环极限时间",
+  "anchor_name_en": "WHOLE_LOOP_VALID_ACTIVE_TIME",
+  "anchor_boundary": [
+    "GPT_PROBLEM_RECEIPT",
+    "GPT_VIRTUAL_MATURATION_AND_FREEZE",
+    "CODEX_HANDOFF",
+    "CODEX_REAL_EXECUTION",
+    "LOCAL_EVIDENCE",
+    "CODEX_FORMAL_RESULT",
+    "GPT_REREAD",
+    "GPT_FINAL_VALID_CONFIRMATION"
+  ],
+  "executor_contract": {
+    "reasoning_brain": "GPT",
+    "executor": "CODEX",
+    "deterministic_tools": [
+      "POWERSHELL",
+      "PLAYWRIGHT_NATIVE_AI_BROWSER",
+      "LOCAL_TOOLS"
+    ],
+    "final_judge": "GPT",
+    "codex_executor_required_by_default": true,
+    "direct_powershell_may_replace_codex": false,
+    "reason": "LOCAL_FASTEST_MUST_NOT_BREAK_WHOLE_LOOP_TASK_COMPLETION"
+  },
+  "codex_timing_relay": {
+    "start": "CODEX_HANDOFF_START_TIMESTAMP",
+    "duration": "CODEX_PROCESS_ACTIVE_MS",
+    "end": "CODEX_PROCESS_END_TIMESTAMP",
+    "measured_by": "OUTER_COMMAND_WRAPPER_AROUND_CODEX_EXEC",
+    "included_in_global_anchor": true
   }
 }
