@@ -1,0 +1,18 @@
+{
+  "method": "extreme-short-time-engine-v4.5.8",
+  "reality_foundation": "local-ai-reality-foundation@1.1.3",
+  "checks": {
+    "FOUR_POSITION_LABEL_COUNT": true,
+    "NO_GIT_FETCH": true,
+    "NO_TEMP_PS1": true,
+    "CODEX_SELF_TIMING": true,
+    "SEMANTIC_GPU_GATE": true,
+    "GPU_EXIT_DIAGNOSTIC": true,
+    "PATHS_STILL_CHECKED": true,
+    "FINAL_GATE": true,
+    "RETURN_TO_GPT": true
+  },
+  "result": "PASS",
+  "freeze": "ALLOW",
+  "next_phase": "REAL"
+}
