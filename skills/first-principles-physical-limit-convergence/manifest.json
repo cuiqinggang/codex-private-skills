@@ -1,11 +1,11 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.5.6",
+  "version": "4.5.7",
   "display_name": "极限短时间引擎",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
     "display_name": "本地 AI 现实底座永久资产",
-    "current_version": "1.1.1",
+    "current_version": "1.1.2",
     "role": "REQUIRED_ROOT_NOT_METHOD_STEP"
   },
   "anchor": "T*=min(T_VALID_ACTIVE_GLOBAL)",
@@ -68,7 +68,7 @@
     "FOUNDATION_ABSORB_CHECK_DONE"
   ],
   "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_TOTAL_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.6",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.7",
   "timing_contract": {
     "clock_source": "NETWORK_TIMESTAMP_FOR_BOUNDARIES",
     "optimization_clock": "ACTIVE_AGENT_ELAPSED",
@@ -143,20 +143,13 @@
   },
   "virtual_to_real_handoff": {
     "role": "VIRTUAL_EXIT_CONDITION_NOT_THIRD_STEP",
+    "default_mode": "DIRECT_GPT_TO_CODEX_SELF_CONTAINED_CONTRACT",
+    "outer_powershell_wrapper": "NOT_DEFAULT",
     "codex_executor_required": true,
-    "real_artifact_commit": "00f277aee824c324f52c6b7678f724c541da63c7",
-    "real_artifact_path": "docs/first-principles/20260923-v4.5.6/REAL-ENTRY-FROZEN.ps1",
-    "real_artifact_blob_sha": "7a1c813a4d8c72d16f557a851344129889a4c2ef",
-    "handoff_contract_path": "docs/first-principles/20260923-v4.5.6/VIRTUAL-TO-REAL-HANDOFF.md",
-    "preflight_path": "docs/first-principles/20260923-v4.5.6/CODEX-REALITY-PREFLIGHT.json",
-    "temp_script_write": "FORBIDDEN",
-    "prompt_transport": "POWERSHELL_SINGLE_QUOTED_HERE_STRING",
-    "execution_transport": "GIT_OBJECT_STREAM_TO_POWERSHELL",
-    "timing_relay": "OUTER_POWERSHELL_STOPWATCH_AROUND_FULL_CODEX_EXEC",
-    "w32tm_required": false,
-    "preflight": "PASS",
-    "shared_workspace_published": "PASS",
-    "real_entry_command_ready": "PASS"
+    "runtime_git_fetch_required": false,
+    "github_role": "POST_EXECUTION_SHARED_FACT_SOURCE",
+    "powershell_role": "CODEX_INTERNAL_DETERMINISTIC_TOOL",
+    "same_response_delivery_required": true
   },
   "anchor_name_zh": "整体闭环极限时间",
   "anchor_name_en": "WHOLE_LOOP_VALID_ACTIVE_TIME",
@@ -184,13 +177,19 @@
     "reason": "LOCAL_FASTEST_MUST_NOT_BREAK_WHOLE_LOOP_TASK_COMPLETION"
   },
   "codex_timing_relay": {
-    "start": "CODEX_HANDOFF_START_TIMESTAMP",
-    "duration": "CODEX_PROCESS_ACTIVE_MS",
-    "end": "CODEX_PROCESS_END_TIMESTAMP",
-    "measured_by": "OUTER_POWERSHELL_STOPWATCH_AROUND_CODEX_EXEC",
-    "absolute_timestamp_clock": "LOCAL_SYSTEM_CLOCK_FOR_AUDIT",
+    "measured_inside_codex": true,
+    "start_fields": [
+      "CODEX_ACTIVE_START_TIMESTAMP",
+      "CODEX_START_TICK",
+      "CODEX_STOPWATCH_FREQUENCY"
+    ],
+    "end_fields": [
+      "CODEX_ACTIVE_END_TIMESTAMP",
+      "CODEX_END_TICK",
+      "CODEX_PROCESS_ACTIVE_MS"
+    ],
     "authoritative_duration_clock": "SYSTEM_DIAGNOSTICS_STOPWATCH",
-    "w32tm_required": false,
+    "user_extra_wrapper_required": false,
     "included_in_global_anchor": true
   },
   "validity_gate_for_anchor": [
@@ -213,6 +212,29 @@
       "NO_KNOWN_CONSTRAINT_VIOLATION"
     ],
     "any_fail": "FREEZE_BLOCK_VIRTUAL_COMPLETE_NO",
-    "safety_rule": "CHOOSE_POLICY_COMPATIBLE_PATH_DO_NOT_BYPASS_SECURITY_POLICY"
+    "safety_rule": "CHOOSE_POLICY_COMPATIBLE_PATH_DO_NOT_BYPASS_SECURITY_POLICY",
+    "additional_gates": [
+      "FOUR_POSITION_FIELDS_PRESENT",
+      "POSITION_LABEL_EXACT_ECHO",
+      "RUNTIME_GIT_FETCH_REQUIRED_NO",
+      "DIRECT_CODEX_HANDOFF",
+      "CODEX_INTERNAL_TIMING_READY"
+    ]
+  },
+  "position_gate": {
+    "required": true,
+    "exact_format": "【PAGE_NAME｜TASK_NAME｜SEQUENCE｜PHASE】",
+    "fields": [
+      "PAGE_NAME",
+      "TASK_NAME",
+      "SEQUENCE",
+      "PHASE"
+    ],
+    "phase_values": [
+      "VIRTUAL",
+      "REAL"
+    ],
+    "final_exact_echo_required": true,
+    "any_mismatch": "EXECUTION_BLOCK"
   }
 }
