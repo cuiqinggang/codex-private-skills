@@ -1,19 +1,19 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.5.7。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
+description: 极限短时间引擎 v4.5.8。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
 metadata:
-  version: "4.5.7"
+  version: "4.5.8"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.5.7
+# 极限短时间引擎 v4.5.8
 
 ## 根基：现实底座
 
 ```text
 本地 AI 现实底座永久资产
 local-ai-reality-foundation
-当前版本=v1.1.2
+当前版本=v1.1.3
 ```
 
 它不是第三步，而是“虚/实”共同的现实根基。
@@ -593,6 +593,54 @@ OBJECTIVE=min(T_VALID)
 如果无法回答 FINAL_VALID_CONDITION，则问题边界未定义，禁止优化局部时间。
 
 
+
+
+
+## 只读现实探针的语义有效门
+
+虚阶段冻结只读探针时，必须明确：
+
+```text
+PROBE_SIDE_EFFECT_FREE=YES
+EXPECTED_OUTPUT_SCHEMA=DEFINED
+SEMANTIC_VALIDITY_RULE=DEFINED
+EXIT_STATUS_ROLE=DEFINED
+```
+
+对满足以上条件的只读探针：
+
+```text
+SEMANTIC_EVIDENCE_COMPLETE=YES
+AND SEMANTIC_GATE=PASS
+AND OUTPUT_CONTRADICTION=NO
+=> PROBE_VALID=PASS
+```
+
+此时如果：
+
+```text
+EXIT_STATUS != 0
+```
+
+则只记录：
+
+```text
+PROBE_EXIT_STATUS_DIAGNOSTIC=<真实值>
+```
+
+不得仅凭退出码覆盖已经成立的语义现实证据。
+
+只有以下情况才允许把 nonzero exit 作为现实失败：
+
+```text
+SEMANTIC_EVIDENCE_MISSING
+OR OUTPUT_PARSE_FAIL
+OR OUTPUT_CONTRADICTION
+OR OUTPUT_INCOMPLETE
+OR PROBE_HAS_SIDE_EFFECT
+```
+
+该规则禁止泛化到写操作、修改操作或有副作用的命令。
 
 ## Codex 执行环境兼容性预检
 
