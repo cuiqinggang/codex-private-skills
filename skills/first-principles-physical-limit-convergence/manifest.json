@@ -1,11 +1,11 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.5.5",
+  "version": "4.5.6",
   "display_name": "极限短时间引擎",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
     "display_name": "本地 AI 现实底座永久资产",
-    "current_version": "1.1.0",
+    "current_version": "1.1.1",
     "role": "REQUIRED_ROOT_NOT_METHOD_STEP"
   },
   "anchor": "T*=min(T_VALID_ACTIVE_GLOBAL)",
@@ -50,7 +50,14 @@
     "FROZEN_SOLUTION",
     "SHARED_WORKSPACE_PUBLISHED",
     "REAL_ENTRY_COMMAND_READY",
-    "REAL_ENTRY_COMMAND_EMITTED"
+    "REAL_ENTRY_COMMAND_EMITTED",
+    "CODEX_REALITY_CONSTRAINTS_LOADED",
+    "CODEX_POLICY_COMPATIBILITY",
+    "SHELL_INTERPOLATION_SAFE",
+    "EXECUTABLE_STAGING_SAFE",
+    "TIMING_PATH_SAFE",
+    "PROMPT_ROUNDTRIP_EQUIVALENCE",
+    "NO_KNOWN_CONSTRAINT_VIOLATION"
   ],
   "freeze_rule": "NO_FREEZE_UNTIL_EVERY_REAL_STEP_HAS_INPUT_ACTION_POSTCONDITION_FAILURE_CLASS_NEXT_STEP_DEPENDENCY_CLOSURE_AND_TOTAL_T_VALID_MAPPING",
   "external_dependency_rule": "NON_INTRINSIC_EXTERNAL_DEPENDENCY_MUST_NOT_BE_SINGLE_POINT_OF_REALITY_ENTRY_FAILURE",
@@ -61,7 +68,7 @@
     "FOUNDATION_ABSORB_CHECK_DONE"
   ],
   "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_TOTAL_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.5",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.6",
   "timing_contract": {
     "clock_source": "NETWORK_TIMESTAMP_FOR_BOUNDARIES",
     "optimization_clock": "ACTIVE_AGENT_ELAPSED",
@@ -176,7 +183,10 @@
     "start": "CODEX_HANDOFF_START_TIMESTAMP",
     "duration": "CODEX_PROCESS_ACTIVE_MS",
     "end": "CODEX_PROCESS_END_TIMESTAMP",
-    "measured_by": "OUTER_COMMAND_WRAPPER_AROUND_CODEX_EXEC",
+    "measured_by": "OUTER_POWERSHELL_STOPWATCH_AROUND_CODEX_EXEC",
+    "absolute_timestamp_clock": "LOCAL_SYSTEM_CLOCK_FOR_AUDIT",
+    "authoritative_duration_clock": "SYSTEM_DIAGNOSTICS_STOPWATCH",
+    "w32tm_required": false,
     "included_in_global_anchor": true
   },
   "validity_gate_for_anchor": [
@@ -185,5 +195,20 @@
     "CODEX_EXECUTOR_PRESENT",
     "GPT_FINAL_VALID_TRUE"
   ],
-  "local_fast_path_rule": "A_LOCAL_FASTER_PATH_THAT_BREAKS_ANY_VALIDITY_GATE_IS_NOT_A_VALID_GLOBAL_CANDIDATE"
+  "local_fast_path_rule": "A_LOCAL_FASTER_PATH_THAT_BREAKS_ANY_VALIDITY_GATE_IS_NOT_A_VALID_GLOBAL_CANDIDATE",
+  "codex_reality_preflight": {
+    "required_when_real_executor_is_codex": true,
+    "source": "local-ai-reality-foundation@1.1.1.codex_execution_constraints",
+    "gates": [
+      "CODEX_REALITY_CONSTRAINTS_LOADED",
+      "CODEX_POLICY_COMPATIBILITY",
+      "SHELL_INTERPOLATION_SAFE",
+      "EXECUTABLE_STAGING_SAFE",
+      "TIMING_PATH_SAFE",
+      "PROMPT_ROUNDTRIP_EQUIVALENCE",
+      "NO_KNOWN_CONSTRAINT_VIOLATION"
+    ],
+    "any_fail": "FREEZE_BLOCK_VIRTUAL_COMPLETE_NO",
+    "safety_rule": "CHOOSE_POLICY_COMPATIBLE_PATH_DO_NOT_BYPASS_SECURITY_POLICY"
+  }
 }
