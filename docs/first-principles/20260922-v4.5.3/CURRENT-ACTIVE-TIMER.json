@@ -51,8 +51,8 @@
       "segment_id": "S005",
       "agent": "GPT",
       "active_start_network_timestamp": "2026-09-22T23:30:17+08:00",
-      "active_end_network_timestamp": "2026-09-22T23:35:49+08:00",
-      "active_duration_ms": 332000,
+      "active_end_network_timestamp": "2026-09-22T23:37:03+08:00",
+      "active_duration_ms": 406000,
       "status": "CLOSED",
       "work": "complete VIRTUAL as one phase: freeze self-contained real package, close external dependencies, pin immutable hashes, and pass closure verification",
       "result": "PASS",
@@ -90,12 +90,12 @@
     }
   ],
   "per_agent_active_at_checkpoint_ms": {
-    "GPT": 739000,
+    "GPT": 813000,
     "CODEX": 0
   },
-  "global_active_union_at_checkpoint_ms": 739000,
-  "global_active_union_at_checkpoint_human": "00:12:19",
-  "checkpoint_timestamp": "2026-09-22T23:35:49+08:00",
+  "global_active_union_at_checkpoint_ms": 813000,
+  "global_active_union_at_checkpoint_human": "00:13:33",
+  "checkpoint_timestamp": "2026-09-22T23:37:03+08:00",
   "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
   "human_idle": "EXCLUDED",
   "reset_on_failure": "FORBIDDEN",
@@ -114,13 +114,13 @@
     "on_real_fail": "RETURN_TO_VIRTUAL_WITHOUT_TIMER_RESET"
   },
   "virtual_complete": true,
-  "virtual_complete_network_timestamp": "2026-09-22T23:35:49+08:00",
+  "virtual_complete_network_timestamp": "2026-09-22T23:37:03+08:00",
   "next_phase": "REAL",
   "predicted_final_active_if_first_real_pass": {
-    "lower_ms": 754000,
-    "upper_ms": 829000,
-    "lower_human": "00:12:34",
-    "upper_human": "00:13:49",
-    "basis": "current 12m19s active + predicted remaining 15-90s active"
+    "lower_ms": 828000,
+    "upper_ms": 903000,
+    "lower_human": "00:13:48",
+    "upper_human": "00:15:03",
+    "basis": "current 13m33s active + predicted remaining 15-90s active"
   }
 }
