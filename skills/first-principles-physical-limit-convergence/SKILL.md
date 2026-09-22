@@ -1,969 +1,107 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.5.10。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
+description: 极限短时间引擎 v4.6.0。只有“虚/实”两步；以完整 GPT→Codex→现实证据→GPT 收口的整体闭环有效工作时间为唯一优化锚定物。
 metadata:
-  version: "4.5.10"
+  version: "4.6.0"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.5.10
+# 极限短时间引擎 v4.6.0
 
-## 根基：现实底座
+## 唯一目标
 
-```text
-本地 AI 现实底座永久资产
-local-ai-reality-foundation
-当前版本=v1.1.3
-```
+TASK_COMPLETED=TRUE
+CLOSED_LOOP=TRUE
+T_VALID_RUN=measure(UNION(REQUIRED_LOOP_ACTIVE_INTERVALS))
+T*=min(T_VALID_RUN)
 
-它不是第三步，而是“虚/实”共同的现实根基。
+在任务真正完成、闭环完整的前提下，让“问题进入 → GPT 虚拟成熟 → Codex 现实执行 → 现实证据返回 → GPT 最终确认”所消耗的有效智能体工作时间最短。
+局部更快但破坏完整闭环的方案，不是有效候选。
 
-虚开始前必须读取与任务有关的最小充分现实；缺少会影响最终有效性或总 T_VALID 的关键现实事实时，虚未完成。
+## 方法永远只有两步
 
-实结束后必须做现实底座吸收检查：只有能缩短未来总 T_VALID 或避免重复失败/重复测量的新现实事实才吸收，否则不吸收、不升版。
+1. 虚 VIRTUAL
+2. 实 REAL
 
-# 唯一锚定物：问题总解决时间
+唯一状态转换：VIRTUAL -> REAL；REAL PASS -> FINAL；REAL FAIL -> VIRTUAL。
+检索、组合、冻结、预检、检查点、Reality Delta、日志都只是两步内部动作，不得再编号成 V1/V2/R1/R2。
 
-```text
-T_VALID_ACTIVE
-= measure(UNION(AGENT_ACTIVE_INTERVALS))
+## 现实底座
 
-T*
-= min(T_VALID_ACTIVE)
-```
+Reality Foundation=local-ai-reality-foundation@1.1.3
+虚开始前必须读取与任务相关的最小充分现实约束。
+已知 Codex 现实限制必须在虚阶段规避：Temp/AppData 可执行脚本 staging 风险；PowerShell 双引号 Here-String 变量提前展开风险；w32tm 非管理员 Access Denied；workspace-write 下 .git/FETCH_HEAD 写权限失败；只读 nvidia-smi 可能出现“有效 stdout + 非零 exit status”冲突。
+已知同类错误再次穿过“虚”进入“实”，视为 Gate Regression。
 
-中文：
+## 虚：一次完成成熟与交付
 
-```text
-T_VALID_ACTIVE
-= 从“问题/目标正式进入”
-  到“该问题第一次得到最终有效解决并完成收口”之间，
-  GPT、Codex 及其直接执行工具真正处于解决该问题状态的
-  全部有效工作区间之并集时间。
+虚的目标：冻结预测整体 T_VALID_RUN 最短的完整有效方案。
+冻结前必须同时满足：REALITY_FOUNDATION_SUFFICIENT、FINAL_VALID_CONDITION_DEFINED、EXECUTION_CHAIN_CLOSED、EXTERNAL_DEPENDENCIES_CLOSED、CODEX_POLICY_COMPATIBILITY、KNOWN_FAILURE_GATES、POSITION_AND_SEQUENCE_GATE、TIMING_CONTRACT_READY、FROZEN_SOLUTION、HANDOFF_READY 全部 PASS。
+虚完成时必须在同一轮直接交付“实”的 Codex 自包含任务，不允许留下“再问一次怎么执行 / 再下载 / 再生成命令”的无价值往返。
 
-用户离开、休息、现实事务造成的空档不计入主锚定时间。
-```
+## 实：Codex 是默认执行器
 
-## 同一只钟，禁止重置
+完整闭环：GPT -> Codex -> PowerShell/Browser/Local Tools -> 本机现实证据 -> Codex 正式结果 -> GPT -> FINAL_VALID。
+固定角色：REASONING_BRAIN=GPT；EXECUTOR=CODEX；DETERMINISTIC_TOOLS=PowerShell/Browser/Local Tools；FINAL_JUDGE=GPT。
+PowerShell 是 Codex 内部工具，不替代 Codex 执行器。
+实阶段禁止现场重新设计或修复。失败只允许：最小 Reality Delta -> STOP -> 回虚；累计时间不重置。
 
-从 PROBLEM_ENTRY 建立任务计时编号，直到 FINAL_VALID_SOLUTION 才关闭该任务编号。主时间不是简单墙钟差，而是该编号下所有 AGENT_ACTIVE_INTERVAL 的时间并集。
+## 四定位 + 单调序号
 
-中间以下时间全部属于同一个 T_VALID：
+每个 GPT -> Codex 执行任务必须使用：【页面名｜任务名｜序号｜虚/实】。
+第三字段 SEQUENCE 是同一 TASK_TIME_ID 下的单调递增发布序号。
+INITIAL_SEQUENCE=01；NEXT_SEQUENCE=LAST_VALID_EMITTED_SEQUENCE+1。
+REAL FAIL、返回虚、方法版本升级都不重置序号；只有新 TASK_TIME_ID 才从 01 开始。
+Codex 开头与最后一行必须原样回显同一四定位标签。
 
-```text
-现实事实读取
-虚拟成熟
-成熟方案检索/组合/淘汰
-预测与验证
-冻结闭环验收
-现实执行
-现实前置检查
-失败等待
-失败诊断
-Reality Delta 归因
-返回虚拟成熟
-规则修正
-重新冻结
-重新执行
-重试
-GPT/Codex 为解决问题发生的必要执行等待
-最终验收与收口
-```
+## 时间接力
 
-发生失败、回虚、换 runner、换路径、重试时：
+每个整体问题建立 TASK_TIME_ID 与 PROBLEM_ENTRY_TIMESTAMP。
+每次 GPT 发布 Codex 任务记录：TASK_TIME_ID、TASK_SEQUENCE、GPT_DISPATCH_TIMESTAMP、ACTIVE_TOTAL_BEFORE_DISPATCH。
+Codex 接手记录：CODEX_ACTIVE_START_TIMESTAMP、CODEX_START_TICK、CODEX_STOPWATCH_FREQUENCY。
+Codex 结束记录：CODEX_ACTIVE_END_TIMESTAMP、CODEX_END_TICK、CODEX_PROCESS_ACTIVE_MS。
+持续时间以 System.Diagnostics.Stopwatch 为权威；绝对时间戳只作审计坐标。
+GPT 收到结果后的读取、判断、最终收口继续计入同一 TASK_TIME_ID。用户离开、休息、现实事务造成的空档不计入主动智能体工作时间。
 
-```text
-TIMER_RESET=FORBIDDEN
-```
+## 整体时间与局部时间
 
-因此任何“单次运行很快但导致返工”的方案，都不能借重置计时制造虚假的极限短时间。
+唯一优化指标：T_VALID_RUN=完整闭环的有效工作时间。
+T_GPT、T_CODEX、T_REAL、T_VERIFY、T_REWORK、T_HANDOFF 等局部时间只用于找瓶颈，LOCAL_TIMER_ROLE=DIAGNOSTIC_ONLY。
+任何新增规则/门禁，只在预期能降低完整任务 T_VALID_RUN 时保留。
 
-## 子时间只允许诊断，不允许取代锚定物
+## 只读探针语义规则
 
-例如：
+对冻结的只读、无副作用、结构化探针：SEMANTIC_EVIDENCE_COMPLETE=YES 且 SEMANTIC_GATE=PASS 且 OUTPUT_CONTRADICTION=NO，则 PROBE_VALID=PASS。
+若 exit status 非零，只作为诊断信息，不得单独推翻已经成立的完整语义证据。该规则不得推广到写操作或有副作用的命令。
 
-```text
-T_ATTEMPT_REAL
-T_RUNNER
-T_FETCH
-T_VERIFY
-T_VIRTUAL
-```
+## GitHub 共同事实源
 
-都可以记录，用于定位瓶颈。
+GitHub=SHARED_FACT_SOURCE；GitHub!=DEFAULT_REAL_BOOTSTRAP_TRANSPORT。
+现实启动默认不依赖 git fetch / FETCH_HEAD 写入。
+产生可复用新事实时：GPT 分析 -> Codex 执行 -> 本机证据 -> GPT 正式结果包 -> GitHub 共同事实源 -> 远端验证 -> GPT 重新读取。
+只读解释、未执行方案草拟、读取已有事实或不改变 CURRENT 的查询，不强制制造 Git commit。
 
-但它们只能是：
+## 交付原则
 
-```text
-ROLE=DIAGNOSTIC_ONLY
-```
+每轮只交付一个明确高价值动作。
+虚结束时必须同时给：四定位标签 + 正确 NEXT_SEQUENCE + 发布时间 + 发布前累计有效时间 + 自包含 Codex 实任务。
+不默认增加外层 PowerShell 包装、桌面下载、手工搬运或第二次询问。
 
-不得用来替代：
+## 错误吸收原则
 
-```text
-T*=min(T_VALID)
-```
+现实失败后，不只修当前错误，还必须问：为什么“虚”没有提前挡住它？
+若可复用且能减少未来返工时间，则 Reality Foundation 吸收现实限制，和/或虚增加前置门禁。
+已知同类原因原则上不得第二次以相同方式进入“实”。
 
-不得用“某一步更短”证明整体方案更优。
+## 计时样本分类
 
-# 时间锚定强制规则
+历史 v4.5.x 首次开发过程包含方法设计、返工和多次 Reality Delta。
+HISTORICAL_DEVELOPMENT_RUN >= 00:51:07.109。
+它是开发/返工成本样本，不是 v4.6.0 成熟运行的 T*，也不是物理下界。
+v4.6.0 成熟性能必须重新用干净任务测量：T_VALID_RUN_CLEAN=新 TASK_TIME_ID 下完整一虚一实闭环的真实有效时间；T*=min(VALID CLEAN RUNS)。
 
-讨论、设计、修复、增加或删除任何东西时，第一判断必须是：
+## 收口
 
-```text
-它对总 T_VALID 的净影响是什么？
-```
+只有 VALID_REAL=PASS、GPT_FINAL_VALID=YES、TIME_ACCOUNTING_COMPLETE=YES 才允许任务结束。
 
-任何新增步骤 g，只允许在以下条件成立时加入：
-
-```text
-E[T_VALID | WITH_g]
-<
-E[T_VALID | WITHOUT_g]
-```
-
-等价理解：
-
-```text
-新增步骤自身耗时
-<
-它所避免的预期返工 / 修复 / 重跑 / 等待总时间
-```
-
-更完整地：
-
-```text
-NET_TIME_GAIN(g)
-= Expected_Avoided_Rework_Time
-- Added_Gate_Time
-- Added_Maintenance_Time
-
-ADD_g iff NET_TIME_GAIN(g) > 0
-```
-
-这里没有第二指标，所有项最终都折算回同一个“问题总解决时间”。
-
-## 一次性任务
-
-对一次性任务：
-
-```text
-比较当前问题从进入到最终解决的 T_VALID。
-```
-
-## 可复用规则/永久资产
-
-对会反复使用的规则、门禁、缓存、技能资产：
-
-```text
-总时间
-= 一次性建立时间
-+ 后续每次额外检查时间
-+ 后续仍残留的返工时间
-```
-
-与“不建立该规则”时未来重复发生的返工总时间比较。
-
-即：
-
-```text
-ADD_REUSABLE_RULE
-iff
-BUILD_TIME
-+ REPEATED_GATE_OVERHEAD
-+ RESIDUAL_REWORK_TIME
-<
-REPEATED_REWORK_TIME_WITHOUT_RULE
-```
-
-所以：
-
-```text
-增加一步
-!= 时间一定变差
-
-删除一步
-!= 时间一定变好
-```
-
-真正判断永远是：
-
-```text
-最终总 T_VALID 是否更短。
-```
-
-若概率或返工成本无法精确知道，不伪造精确数字：
-
-```text
-若保守下界收益仍大于新增成本 -> 加
-若乐观上界收益仍小于新增成本 -> 不加
-否则 -> 回虚做最小验证以缩小不确定性
-```
-
-
-# 全局计时落地
-
-主时钟必须真正记录，不得只停留在概念定义。
-
-每个新问题进入引擎时，立即记录：
-
-```text
-TASK_TIME_ID=<唯一任务计时编号>
-PROBLEM_ENTRY_NETWORK_TIMESTAMP=<网络时间或可追溯事件>
-GLOBAL_TIMER_STATE=RUNNING
-GLOBAL_TIME_ANCHOR=T_VALID_ACTIVE
-```
-
-问题最终有效解决并完成收口时记录：
-
-```text
-FINAL_VALID_TIMESTAMP=<精确时间戳或可追溯事件>
-GLOBAL_TIMER_STATE=STOPPED
-T_VALID_ACTIVE_GLOBAL
-= measure(UNION(AGENT_ACTIVE_INTERVALS))
-```
-
-网络时间只负责给任务入口、出口和每个有效工作区间提供可追溯时间戳。主计时口径为 ACTIVE_AGENT_ELAPSED（智能体有效工作经过时间），不再直接使用“结束墙钟 - 开始墙钟”。
-
-用户离开、休息、现实事务造成的空档：
-```text
-HUMAN_IDLE=EXCLUDED
-```
-
-GPT、Codex 以及它们直接调用的执行工具正在解决该问题时：
-```text
-AGENT_ACTIVE=INCLUDED
-```
-
-失败诊断、回虚、修正、重跑只要智能体正在实际处理，仍全部计入；不得因为失败而重置累计时间。
-
-若问题进入时没有可靠的精确时间戳：
-
-```text
-不得倒推或伪造。
-START_TIME_CONFIDENCE=UNKNOWN
-```
-
-从第一次能够可靠建立时间锚的时点开始记录，并明确说明此前区间未被精确计量。
-
-
-## 任务时间编号与有效工作区间
-
-每个问题第一次进入时必须立即生成唯一编号：
-
-```text
-TASK_TIME_ID=ESTE-YYYYMMDD-NNN
-```
-
-每次 GPT、Codex 或其直接执行工具开始实际解决该问题时，记录：
-
-```text
-SEGMENT_ID=SNNN
-AGENT=GPT|CODEX
-ACTIVE_START_NETWORK_TIMESTAMP=<网络时间>
-```
-
-该段工作结束、等待用户下一次输入或任务交给另一智能体时，记录：
-
-```text
-ACTIVE_END_NETWORK_TIMESTAMP=<网络时间>
-ACTIVE_DURATION=<结束-开始>
-```
-
-主锚定物：
-
-```text
-T_VALID_ACTIVE_GLOBAL
-= 所有有效工作区间的时间并集
-```
-
-当前 GPT 与 Codex 串行工作时，近似等于：
-
-```text
-T_GPT_ACTIVE + T_CODEX_ACTIVE
-```
-
-若以后并行，重叠时间只计一次；各智能体各自累计时间保留作诊断，不得重复加入主锚。
-
-GPT 只有在冻结的 FINAL_VALID_CONDITION 已满足并通过最终验收时，才允许写入：
-
-```text
-FINAL_VALID=YES
-GLOBAL_TIMER_STATE=STOPPED
-```
-
-GPT 不得仅凭“看起来完成”自行提前停表。
-
-## 局部时间：只用于瓶颈定位
-
-允许同时记录：
-
-```text
-T_VIRTUAL
-T_REAL
-T_FETCH
-T_RUNNER
-T_VERIFY
-T_FAILURE_DIAGNOSIS
-T_REWORK
-T_WAIT
-T_HANDOFF
-```
-
-用途：
-
-```text
-定位瓶颈
-比较局部方案
-解释总 T_VALID 为什么变化
-```
-
-限制：
-
-```text
-LOCAL_TIMER_ROLE=DIAGNOSTIC_ONLY
-LOCAL_TIMER_CANNOT_REPLACE_GLOBAL_T_VALID=YES
-```
-
-局部更快但导致总 T_VALID 更长的方案，判为整体更差。
-
-## 时间检查点
-
-每个具有决策意义的阶段结束后记录一次：
-
-```text
-CHECKPOINT_NAME=<阶段>
-CHECKPOINT_TIMESTAMP=<时间>
-ELAPSED_FROM_PROBLEM_ENTRY=<累计时间>
-BOTTLENECK_IF_ANY=<瓶颈或 NONE>
-```
-
-检查点只提供可观测性，不创建新的优化目标。
-
-
-
-# 整体闭环极限时间：禁止局部最快替代整体最快
-
-唯一锚定物的中文正式名称：
-
-```text
-整体闭环极限时间
-WHOLE_LOOP_VALID_ACTIVE_TIME
-```
-
-完整边界：
-
-```text
-GPT 接收问题
--> GPT 虚拟成熟并冻结
--> Codex 接手现实执行
--> Codex 调用 PowerShell/浏览器/本机工具取得现实证据
--> Codex 返回正式现实结果
--> GPT 重新读取并判断 TASK_COMPLETED
--> GPT 最终确认 FINAL_VALID
-```
-
-只有上面完整闭环完成，任务才有资格产生有效总时间。
-
-```text
-T_VALID_ACTIVE_GLOBAL
-= measure(UNION(REQUIRED_LOOP_ACTIVE_INTERVALS))
-
-T*
-= min(T_VALID_ACTIVE_GLOBAL)
-subject to TASK_COMPLETED=TRUE
-```
-
-## Codex 执行器不可被局部优化删除
-
-当前自动化架构固定：
-
-```text
-REASONING_BRAIN=GPT
-EXECUTOR=CODEX
-DETERMINISTIC_TOOL=PowerShell/Browser/Local Tools
-FINAL_JUDGE=GPT
-```
-
-PowerShell 是 Codex 可调用的确定性工具，不是完整闭环执行器的替代物。
-
-只有当整个任务合同明确不需要 Codex 执行/证据回传时，才允许省略 Codex；对于本技能默认自动化闭环：
-
-```text
-CODEX_EXECUTOR_REQUIRED=YES
-```
-
-因此不得因为：
-
-```text
-PowerShell 局部执行更快
-```
-
-就推导：
-
-```text
-删除 Codex
-```
-
-必须比较的是完整闭环的 T_VALID_ACTIVE_GLOBAL。
-
-## Codex 时间接力
-
-GPT -> Codex 交接时必须由命令外壳记录：
-
-```text
-CODEX_HANDOFF_START_TIMESTAMP
-CODEX_PROCESS_ACTIVE_MS
-CODEX_PROCESS_END_TIMESTAMP
-```
-
-计时覆盖整个 `codex exec` 进程，包括模型启动、推理、工具调用、现实执行和结果输出。
-
-Codex 结束后，结果回到 GPT；GPT 的重新读取与最终裁决继续计入同一 TASK_TIME_ID，不重置。
-
-
-
-## 四定位门：每个任务必须完整定位
-
-GPT -> Codex 的每个执行任务，开头必须且只能使用四字段标签：
-
-```text
-【页面名｜任务名｜序号｜虚/实】
-```
-
-四字段分别是：
-
-```text
-POSITION_1=PAGE_NAME
-POSITION_2=TASK_NAME
-POSITION_3=SEQUENCE
-POSITION_4=PHASE(VIRTUAL|REAL)
-```
-
-要求：
-
-```text
-FOUR_POSITION_FIELDS_PRESENT=PASS
-POSITION_LABEL_EXACT_ECHO=PASS
-PHASE_MATCH_CURRENT_STATE=PASS
-```
-
-Codex 必须在最终结果末尾原样回显同一标签。
-
-任一字段缺失、顺序错误、阶段错误或最终未原样回显：
-
-```text
-EXECUTION=BLOCK
-```
-
-定位标签只负责定位，不创建新方法步骤。
-
-
-
-## 四定位第三字段：任务发布序号状态机
-
-四定位中的第三字段 `SEQUENCE` 不是装饰性编号，而是同一 `TASK_TIME_ID` 下 GPT -> Codex 有效任务发布的单调递增序号。
-
-```text
-SEQUENCE_SCOPE = TASK_TIME_ID
-INITIAL_SEQUENCE = 01
-NEXT_SEQUENCE = LAST_VALID_EMITTED_SEQUENCE + 1
-```
-
-固定规则：
-
-```text
-失败不重置
-回虚不重置
-方法 PATCH/MINOR 升版不重置
-同一现实问题重新冻结后再次发给 Codex 必须 +1
-只有建立新的 TASK_TIME_ID 才重新从 01 开始
-```
-
-冻结前必须读取任务序号账本并通过：
-
-```text
-SEQUENCE_LEDGER_LOADED=PASS
-SEQUENCE_UNIQUE=PASS
-SEQUENCE_EXPECTED_NEXT=PASS
-SEQUENCE_NOT_REUSED=PASS
-```
-
-若上一条有效 Codex 任务标签为：
-
-```text
-【页面名｜任务名｜01｜实】
-```
-
-则下一条有效任务只能是：
-
-```text
-【页面名｜任务名｜02｜实】
-```
-
-不得因为上一条 FAIL、返回虚、方法升级而再次使用 `01`。
-
-如果 GPT 生成了重复/错误序号，但尚未成为有效执行合同：
-
-```text
-SEQUENCE_GATE=FAIL
-INVALID_EMISSION=NOT_COUNTED_AS_VALID_SEQUENCE
-```
-
-账本不前进；修正后的下一条仍使用本来应有的 NEXT_SEQUENCE。
-
-Codex 开头和结尾必须原样回显相同四定位标签；序号不一致同样：
-
-```text
-EXECUTION=BLOCK
-```
-
-
-## Codex 任务发布时间必须进入时间账本
-
-每一条真正发布给 Codex 的任务，在四定位标签之后必须紧跟时间元数据：
-
-TASK_TIME_ID=<当前整体任务编号>
-TASK_SEQUENCE=<本次发布序号>
-GPT_DISPATCH_TIMESTAMP=<GPT 本轮交付该任务的真实时间>
-ACTIVE_TOTAL_BEFORE_DISPATCH=<发布前累计整体有效时间；若历史存在未精确区间则标 LOWER_BOUND>
-
-规则：
-
-四定位标签负责“这是什么任务”。
-时间元数据负责“什么时候发布、发布前已经用了多少有效时间”。
-二者不得混成第五定位字段。
-
-每次发布 Codex 任务前必须同时满足：
-
-DISPATCH_TIME_READY=PASS
-ACTIVE_TOTAL_READY=PASS
-SEQUENCE_EXPECTED_NEXT=PASS
-
-发布后序号账本立即记录：
-
-EMITTED_SEQUENCE
-EMITTED_LABEL
-GPT_DISPATCH_TIMESTAMP
-ACTIVE_TOTAL_BEFORE_DISPATCH
-
-并推进：
-
-LAST_VALID_EMITTED_SEQUENCE = EMITTED_SEQUENCE
-NEXT_SEQUENCE = EMITTED_SEQUENCE + 1
-
-Codex 自己仍负责记录其接手和结束：
-
-CODEX_ACTIVE_START_TIMESTAMP
-CODEX_ACTIVE_END_TIMESTAMP
-CODEX_PROCESS_ACTIVE_MS
-
-这样同一任务形成连续时间接力：
-
-GPT 有效工作段
--> GPT_DISPATCH_TIMESTAMP
--> Codex ACTIVE START
--> Codex ACTIVE END
--> GPT 重新读取
--> FINAL_VALID
-
-## 虚 -> 实最短交接：直接 Codex，不再增加外层 PowerShell
-
-当前人工衔接模式下：
-
-```text
-GPT 完成虚
--> 同一回复直接给 Codex 自包含任务
--> 用户把任务直接交给 Codex
--> Codex 自己计时并执行
--> Codex 返回现实证据
--> GPT 最终验收
-```
-
-禁止默认再增加：
-
-```text
-GPT -> PowerShell wrapper -> codex exec -> Codex
-```
-
-因为这一层增加复制、转义、Shell 插值和定位丢失风险，而不增加闭环有效性。
-
-PowerShell 仍然可以由 Codex 作为内部确定性工具调用。
-
-## GitHub 的位置
-
-```text
-GitHub = SHARED_FACT_SOURCE
-GitHub != DEFAULT_REAL_BOOTSTRAP_TRANSPORT
-```
-
-默认现实启动不得依赖：
-
-```text
-git fetch
-FETCH_HEAD write
-remote commit acquisition
-```
-
-“实”使用 GPT 直接交给 Codex 的自包含冻结合同。
-
-现实证据产生后：
-
-```text
-Codex result
--> GPT
--> formal result
--> GitHub shared fact source
--> remote verify
--> GPT reread
-```
-
-这仍是同一个整体闭环，不是第三步。
-
-## Codex 内部时间接力
-
-不再依赖外层 PowerShell 才能计时。
-
-Codex 接到任务后第一项必须记录：
-
-```text
-CODEX_ACTIVE_START_TIMESTAMP
-CODEX_START_TICK
-CODEX_STOPWATCH_FREQUENCY
-```
-
-最后返回结果之前必须记录：
-
-```text
-CODEX_ACTIVE_END_TIMESTAMP
-CODEX_END_TICK
-CODEX_PROCESS_ACTIVE_MS
-```
-
-其中：
-
-```text
-CODEX_PROCESS_ACTIVE_MS
-= (END_TICK - START_TICK) * 1000 / FREQUENCY
-```
-
-持续时间以 System.Diagnostics.Stopwatch 的单调计时为准。
-绝对时间戳只作审计坐标，不作为持续时间计算来源。
-
-该计时属于 Codex 自己的执行合同，不要求用户额外运行命令。
-
-# 两步状态机：唯一结构
-
-方法层级永远只有两个步骤：
-
-```text
-1. 虚
-2. 实
-```
-
-任何检索、组合、冻结、闭环检查、时间检查点、失败分类、产物固定，全部只是“虚”的内部动作或日志，不得编号为 V1/V2/V3，也不得成为新的方法步骤。
-
-任何现实执行、验收、Reality Delta 记录，全部只是“实”的内部动作或日志，不得编号为 R1/R2/R3，也不得成为新的方法步骤。
-
-唯一允许的状态转换：
-
-```text
-VIRTUAL -> REAL
-REAL PASS -> FINAL
-REAL FAIL -> VIRTUAL
-```
-
-失败返回虚时，方法仍然只有两步，累计有效时间不重置。
-
-# 虚
-
-```text
-【页面名｜任务名｜序号｜虚】
-```
-
-虚的目标不是“做出一个能跑的方案”，而是：
-
-```text
-在当前现实底座下，
-冻结预测总 T_VALID 最短的有效方案。
-```
-
-## 虚开始时必须先声明时间锚
-
-每次问题进入虚阶段，先固定：
-
-```text
-PROBLEM_ENTRY=<时间点或可追溯事件>
-FINAL_VALID_CONDITION=<什么才算问题真正解决>
-TIME_ANCHOR=T_VALID
-OBJECTIVE=min(T_VALID)
-```
-
-如果无法回答 FINAL_VALID_CONDITION，则问题边界未定义，禁止优化局部时间。
-
-
-
-
-
-## 只读现实探针的语义有效门
-
-虚阶段冻结只读探针时，必须明确：
-
-```text
-PROBE_SIDE_EFFECT_FREE=YES
-EXPECTED_OUTPUT_SCHEMA=DEFINED
-SEMANTIC_VALIDITY_RULE=DEFINED
-EXIT_STATUS_ROLE=DEFINED
-```
-
-对满足以上条件的只读探针：
-
-```text
-SEMANTIC_EVIDENCE_COMPLETE=YES
-AND SEMANTIC_GATE=PASS
-AND OUTPUT_CONTRADICTION=NO
-=> PROBE_VALID=PASS
-```
-
-此时如果：
-
-```text
-EXIT_STATUS != 0
-```
-
-则只记录：
-
-```text
-PROBE_EXIT_STATUS_DIAGNOSTIC=<真实值>
-```
-
-不得仅凭退出码覆盖已经成立的语义现实证据。
-
-只有以下情况才允许把 nonzero exit 作为现实失败：
-
-```text
-SEMANTIC_EVIDENCE_MISSING
-OR OUTPUT_PARSE_FAIL
-OR OUTPUT_CONTRADICTION
-OR OUTPUT_INCOMPLETE
-OR PROBE_HAS_SIDE_EFFECT
-```
-
-该规则禁止泛化到写操作、修改操作或有副作用的命令。
-
-## Codex 执行环境兼容性预检
-
-只要“实”由 Codex 执行，虚冻结前必须把现实底座中的 Codex 约束注册表作为硬输入，并完成：
-
-```text
-CODEX_REALITY_CONSTRAINTS_LOADED=PASS
-CODEX_POLICY_COMPATIBILITY=PASS
-SHELL_INTERPOLATION_SAFE=PASS
-EXECUTABLE_STAGING_SAFE=PASS
-TIMING_PATH_SAFE=PASS
-PROMPT_ROUNDTRIP_EQUIVALENCE=PASS
-NO_KNOWN_CONSTRAINT_VIOLATION=PASS
-```
-
-含义：
-
-- 已知会被安全策略拒绝的写入/覆盖路径，不得再次冻结。
-- 含 PowerShell 代码的 GPT -> Codex 文本，必须使用 literal-safe（字面安全）传输；冻结前要检查关键 `$变量` 在交给 Codex 前后没有被调用方 Shell 展开或改写。
-- 计时器必须在 Codex 进程外层启动并在进程结束后停止；主持续时间使用 `Stopwatch`，不得把权限敏感的时间源查询作为硬依赖。
-- 如果某个动作的 Codex 安全策略兼容性未知，而且存在更安全等价路径，优先冻结更安全路径。
-- 不允许为了绕过安全策略而设计规避路径；目标是选择本来就符合现实权限边界的成熟执行方式。
-
-任一项不是 PASS：
-
-```text
-VIRTUAL_COMPLETE=NO
-FREEZE=BLOCK
-```
-
-这仍然只是“虚”的内部硬门，不是第三步。
-
-## 冻结闭环门
-
-冻结不是“方案写完”，而是虚阶段最后一个验收动作。
-
-现实执行链必须先展开为完整步骤图；每一个会在“实”中发生的步骤，在冻结前都必须满足：
-
-```text
-输入=已知或已冻结
-动作=已定义
-成功后置条件=已定义
-失败差异=可分类
-下一步=唯一
-外部依赖=已证明或已有冻结兜底
-产物=可定位且可校验
-时间影响=已映射到总 T_VALID
-```
-
-任一步缺一项：
-
-```text
-FREEZE=BLOCK
-VIRTUAL_COMPLETE=NO
-```
-
-尤其是 GitHub、模型 API、浏览器、账号、网络、文件、GPU、外部服务等：
-
-```text
-若外部依赖不是任务本身必须测量的对象：
-    不得成为现实启动的单点硬依赖；
-    必须在虚阶段预先物化/缓存/固定不可变标识，
-    并冻结无需该外部服务也能启动的本地或内联兜底。
-
-若外部依赖本身就是任务有效性的组成部分：
-    必须把其可用性与失败分类写入有效门，
-    不能当作默认成立的环境假设。
-```
-
-冻结前必须运行一次独立闭环验收：
-
-```text
-TIME_ANCHOR_DEFINED=PASS
-FINAL_VALID_CONDITION_DEFINED=PASS
-EXECUTION_CHAIN_CLOSED=PASS
-EXTERNAL_DEPENDENCIES_CLOSED=PASS
-IMMUTABLE_ARTIFACT_PINNED=PASS
-CODEX_REALITY_CONSTRAINTS_LOADED=PASS
-CODEX_POLICY_COMPATIBILITY=PASS
-SHELL_INTERPOLATION_SAFE=PASS
-EXECUTABLE_STAGING_SAFE=PASS
-TIMING_PATH_SAFE=PASS
-PROMPT_ROUNDTRIP_EQUIVALENCE=PASS
-NO_KNOWN_CONSTRAINT_VIOLATION=PASS
-FREEZE_CLOSURE_VERIFIER=PASS
-```
-
-全部 PASS 后才允许：
-
-```text
-FROZEN_SOLUTION=YES
-```
-
-## 虚完成条件
-
-```text
-现实底座=足够
-总 T_VALID 边界=已定义
-最终有效条件=已定义
-有效门=通过
-预测总 T_VALID=有
-执行链闭合=通过
-外部依赖闭合=通过
-不可变产物=已固定
-冻结闭环验收=通过
-冻结方案=有
-共同工作区发布=完成
-实入口命令=已经生成并在虚结束时直接交付
-```
-
-### 虚 -> 实交接规则
-
-交接不是第三步，而是“虚”的完成条件。
-
-```text
-VIRTUAL_COMPLETE=YES
-iff
-FROZEN_SOLUTION=YES
-AND SHARED_WORKSPACE_PUBLISHED=PASS
-AND REAL_ENTRY_COMMAND_READY=PASS
-AND REAL_ENTRY_COMMAND_EMITTED=YES
-```
-
-现阶段默认最短交接：
-
-```text
-共同 GitHub 工作区保存不可变冻结执行文件
-+
-虚结束的同一条回复直接给唯一 Codex 执行命令
-```
-
-禁止把以下动作留给下一轮：
-
-```text
-另行下载桌面
-再次询问如何执行
-再次生成执行命令
-手工搬运冻结文件
-```
-
-因为这些动作不提高有效性，只增加 T_VALID_ACTIVE_GLOBAL。
-
-# 实
-
-```text
-【页面名｜任务名｜序号｜实】
-```
-
-严格执行冻结方案。
-
-“实”的局部现实时间可以作为诊断数据记录，但不能重新起一只用于优化的主时钟。
-
-主时钟始终是：
-
-```text
-PROBLEM_ENTRY
-→ ...
-→ FINAL_VALID_SOLUTION
-```
-
-现实阶段不得补设计、补依赖、补兜底；这些都属于虚阶段未完成。
-
-如果现实失败：
-
-```text
-记录最小 Reality Delta
-→ STOP
-→ 回虚
-→ 修正
-→ 再冻结
-→ 再实
-```
-
-但：
-
-```text
-主 T_VALID 继续累计
-不得从第二次尝试重新计时
-```
-
-# 规则升级判据
-
-发现一次错误后，不以“把当前错误修掉”为完成条件。
-
-必须继续问：
-
-```text
-为什么原冻结/规则没有在更早处阻止它？
-```
-
-如果存在一个低成本、可复用的检查或闭环规则，且其预期避免的返工时间大于自身时间成本，则吸收为永久规则。
-
-如果新增规则不能证明能缩短当前或未来问题总 T_VALID，则不加入。
-
-# 收口
-
-```text
-答不出 PROBLEM_ENTRY -> 未开始正确计时
-答不出 FINAL_VALID_CONDITION -> 未定义真正完成
-失败/回退后重置主时钟 -> T_VALID 无效
-只优化局部步骤时间 -> 不能证明极限短时间
-新增规则不比较净总时间收益 -> 不允许加入
-虚无闭合执行链/冻结闭环验收/冻结方案 -> 未完成
-最终没有现实有效解决 -> T_VALID 未完成
-```
-
-只有“虚/实”，无第三步。
-
-唯一标准始终只有一个：
-
-```text
-T*=min(
-  从问题进入
-  到问题最终有效解决
-  的全部端到端时间
-)
-```
+一句话：不是让某一步最快，而是在完整闭环真正解决问题的前提下，让整个任务最快。
