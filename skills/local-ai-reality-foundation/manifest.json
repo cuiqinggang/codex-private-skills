@@ -1,63 +1,39 @@
 {
   "skill_id": "local-ai-reality-foundation",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "previous_version": "1.0.0",
   "display_name": "本地 AI 现实底座永久资产",
-  "role": "PERSISTENT_REALITY_ASSET_INDEX",
+  "role": "VERSIONED_PERSISTENT_REALITY_FOUNDATION",
   "method_step": false,
-  "optimization_objective": "INHERIT_MIN_T_VALID_ONLY",
-  "consumed_by": "first-principles-physical-limit-convergence@4.0.0:VIRTUAL_MATURITY",
-  "verified_core_assets": {
-    "reality_anchor": {
-      "id": "reality-execution-environment-anchor",
-      "version": "1.3.0",
-      "host_r2_fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
-      "browser_r3_fingerprint": "9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd",
-      "environment_99": "PASS"
-    },
-    "exact_twin": {
-      "id": "exact-reality-digital-twin",
-      "version": "1.3.0",
-      "full_browser_twin": true,
-      "legacy_selftest": "24/24 PASS",
-      "browser_tests": "6/6 PASS"
-    }
+  "optimization_objective": "INHERIT_T*=min(T_VALID)",
+  "post_task_absorption": {
+    "check_required": true,
+    "absorb_only_if": "FUTURE_MIN_T_VALID_BENEFIT_OR_REPEAT_COST_REDUCTION",
+    "no_value_action": "NO_ABSORB_NO_VERSION_BUMP",
+    "minimum_necessary_data_only": true
   },
-  "known_local_assets": [
-    {
-      "id": "playwright-native-ai-browser",
-      "path": "C:\\AI\\Playwright-Native-AI-Browser",
-      "state_policy": "VERIFY_ON_USE"
-    },
-    {
-      "id": "openhands-canvas",
-      "path": "C:\\AI\\OpenHands-Canvas",
-      "state_policy": "VERIFY_ON_USE"
-    },
-    {
-      "id": "bonsai2-27b-256k",
-      "path": "C:\\AI\\Bonsai2-27B-256K",
-      "state_policy": "VERIFY_ON_USE"
-    },
-    {
-      "id": "minimax-h3-comfyui",
-      "path": "C:\\AI\\MiniMax-H3",
-      "state_policy": "VERIFY_ON_USE"
-    },
-    {
-      "id": "visual-art-engine",
-      "path": "C:\\AI\\Visual-Art-Engine",
-      "state_policy": "VERIFY_ON_USE"
-    }
-  ],
+  "version_policy": {
+    "patch": "REALITY_DATA_TIME_STATE_INCREMENT",
+    "minor": "NEW_REALITY_DOMAIN_ASSET_CLASS_OR_ABSORPTION_CAPABILITY",
+    "major": "INCOMPATIBLE_FOUNDATION_CONTRACT_CHANGE",
+    "self_contained_snapshot_required": true,
+    "history_overwrite_allowed": false
+  },
+  "current_assets": {
+    "reality_anchor": "reality-execution-environment-anchor@1.3.0",
+    "exact_twin": "exact-reality-digital-twin@1.3.0",
+    "browser_r3_fingerprint": "9a3b067287d64b6ec28d09a86fc92a88de710597148d37ce1ca8bc7b51713edd",
+    "host_r2_fingerprint_v3": "9bdd4430596e306cf6f8061069659e2680d8a1b66bd69d7bb3e45fe4cfd63dd8",
+    "gpu": "RTX 2080 Ti",
+    "bonsai2_root": "C:\\AI\\Bonsai2-27B-256K",
+    "playwright_root": "C:\\AI\\Playwright-Native-AI-Browser",
+    "openhands_root": "C:\\AI\\OpenHands-Canvas",
+    "minimax_h3_root": "C:\\AI\\MiniMax-H3",
+    "visual_art_engine_root": "C:\\AI\\Visual-Art-Engine"
+  },
   "network_invariants": {
     "flclash": "PERSISTENT",
     "proxy_change_allowed": false
-  },
-  "refresh": {
-    "default_full_reanchor": false,
-    "mode": "INCREMENTAL_ON_DRIFT_OR_MISSING_EVIDENCE",
-    "history_append_only": true,
-    "shadow_may_overwrite_reality": false
   },
   "updated_date": "2026-09-22"
 }
