@@ -1,0 +1,13 @@
+{
+  "method": "extreme-short-time-engine-v4.5.1",
+  "task_id": "v4.5.1-global-time-accounting-and-final-resolution",
+  "problem_entry_timestamp": "2026-09-22T22:44:11+08:00",
+  "start_time_confidence": "EXACT",
+  "global_timer_state": "RUNNING",
+  "objective": "min(T_VALID_GLOBAL)",
+  "final_valid_condition": "v4.5.1 virtual freeze is complete, full execution chain is closed, and the problem proceeds to final valid real resolution/closeout under the frozen contract",
+  "current_phase": "VIRTUAL",
+  "timer_reset": "FORBIDDEN",
+  "local_timer_role": "DIAGNOSTIC_ONLY",
+  "note": "Earlier discussion on this page predates the first exact unified timer anchor and is not retroactively assigned a fabricated duration."
+}
