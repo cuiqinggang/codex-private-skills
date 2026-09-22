@@ -30,8 +30,12 @@
       "segment_id": "S003",
       "agent": "GPT",
       "active_start_network_timestamp": "2026-09-22T23:17:16+08:00",
-      "status": "OPEN",
-      "work": "operationalize mandatory per-turn timing display, phase status, next-step plan, and final closeout accounting"
+      "status": "CLOSED",
+      "work": "operationalize mandatory per-turn timing display, phase status, next-step plan, and final closeout accounting",
+      "active_end_network_timestamp": "2026-09-22T23:18:38+08:00",
+      "active_duration_ms": 82000,
+      "result": "PASS",
+      "bottleneck": "NONE"
     }
   ],
   "excluded_intervals": [
@@ -51,15 +55,66 @@
     }
   ],
   "per_agent_active_at_checkpoint_ms": {
-    "GPT": 218000,
+    "GPT": 300000,
     "CODEX": 0
   },
-  "global_active_union_at_checkpoint_ms": 218000,
-  "global_active_union_at_checkpoint_human": "00:03:38",
-  "checkpoint_timestamp": "2026-09-22T23:17:16+08:00",
+  "global_active_union_at_checkpoint_ms": 300000,
+  "global_active_union_at_checkpoint_human": "00:05:00",
+  "checkpoint_timestamp": "2026-09-22T23:18:38+08:00",
   "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
   "human_idle": "EXCLUDED",
   "reset_on_failure": "FORBIDDEN",
   "current_phase": "VIRTUAL",
-  "current_status": "VIRTUAL_ACTIVE_TIMING_PROTOCOL_BEING_FROZEN"
+  "current_status": "V1_ACTIVE_TIME_PROTOCOL_FROZEN_PASS",
+  "next_action": "V2_FREEZE_REAL_EXECUTION_PACKAGE_WITHOUT_NONESSENTIAL_LIVE_GITHUB_SINGLE_POINT",
+  "execution_plan": [
+    {
+      "id": "V1",
+      "phase": "VIRTUAL",
+      "work": "Freeze mandatory active-time reporting protocol",
+      "status": "PASS"
+    },
+    {
+      "id": "V2",
+      "phase": "VIRTUAL",
+      "work": "Freeze real execution package and remove nonessential live GitHub single-point dependency",
+      "status": "NEXT"
+    },
+    {
+      "id": "V3",
+      "phase": "VIRTUAL",
+      "work": "Run freeze-closure verifier across the complete outer bootstrap and runner chain",
+      "status": "PENDING"
+    },
+    {
+      "id": "V4",
+      "phase": "VIRTUAL",
+      "work": "Record VIRTUAL_COMPLETE checkpoint only if all freeze gates pass",
+      "status": "PENDING"
+    },
+    {
+      "id": "R1",
+      "phase": "REAL",
+      "work": "Execute only the frozen package and measure active GPT/Codex execution time",
+      "status": "PENDING"
+    },
+    {
+      "id": "R2",
+      "phase": "REAL",
+      "work": "On failure record minimum Reality Delta and return to VIRTUAL without resetting accumulated active time",
+      "status": "PENDING"
+    },
+    {
+      "id": "R3",
+      "phase": "REAL",
+      "work": "On pass GPT checks FINAL_VALID_CONDITION",
+      "status": "PENDING"
+    },
+    {
+      "id": "R4",
+      "phase": "REAL",
+      "work": "Stop timer and emit final active-time and bottleneck report",
+      "status": "PENDING"
+    }
+  ]
 }
