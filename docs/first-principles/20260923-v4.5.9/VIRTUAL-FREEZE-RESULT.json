@@ -1,0 +1,36 @@
+{
+  "method": "extreme-short-time-engine-v4.5.9",
+  "task_time_id": "ESTE-20260922-001",
+  "phase": "VIRTUAL",
+  "reason_for_return_to_virtual": "DUPLICATE_FOUR_POSITION_SEQUENCE_01_EMITTED_WHEN_NEXT_SEQUENCE_MUST_BE_02",
+  "sequence_contract": {
+    "scope": "TASK_TIME_ID",
+    "last_valid_sequence": "01",
+    "next_sequence": "02",
+    "required_label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜02｜实】",
+    "reset_on_fail": false,
+    "reset_on_return_to_virtual": false,
+    "reset_on_version_change": false
+  },
+  "closure_gates": {
+    "FOUR_POSITION_FIELDS_PRESENT": "PASS",
+    "SEQUENCE_LEDGER_LOADED": "PASS",
+    "SEQUENCE_UNIQUE": "PASS",
+    "SEQUENCE_EXPECTED_NEXT": "PASS",
+    "SEQUENCE_NOT_REUSED": "PASS",
+    "POSITION_LABEL_EXACT_ECHO": "PASS",
+    "PHASE_MATCH_CURRENT_STATE": "PASS",
+    "CODEX_REALITY_PREFLIGHT": "PASS"
+  },
+  "invalid_previous_emission": {
+    "label": "【极限短时间引擎｜ESTE-20260922-001现实验证｜01｜实】",
+    "method": "v4.5.8",
+    "reason": "DUPLICATE_SEQUENCE",
+    "counted_as_valid_sequence": false
+  },
+  "virtual_complete": "YES",
+  "frozen_solution": "YES",
+  "direct_contract": "docs/first-principles/20260923-v4.5.9/DIRECT-CODEX-REAL-CONTRACT.md",
+  "sequence_ledger": "docs/first-principles/20260923-v4.5.9/TASK-SEQUENCE-LEDGER.json",
+  "next_phase": "REAL"
+}
