@@ -1,11 +1,11 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.5.7",
+  "version": "4.5.8",
   "display_name": "极限短时间引擎",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
     "display_name": "本地 AI 现实底座永久资产",
-    "current_version": "1.1.2",
+    "current_version": "1.1.3",
     "role": "REQUIRED_ROOT_NOT_METHOD_STEP"
   },
   "anchor": "T*=min(T_VALID_ACTIVE_GLOBAL)",
@@ -57,7 +57,8 @@
     "EXECUTABLE_STAGING_SAFE",
     "TIMING_PATH_SAFE",
     "PROMPT_ROUNDTRIP_EQUIVALENCE",
-    "NO_KNOWN_CONSTRAINT_VIOLATION"
+    "NO_KNOWN_CONSTRAINT_VIOLATION",
+    "READ_ONLY_PROBE_SEMANTIC_VALIDITY_DEFINED"
   ],
   "freeze_rule": "NO_FREEZE_UNTIL_EVERY_REAL_STEP_HAS_INPUT_ACTION_POSTCONDITION_FAILURE_CLASS_NEXT_STEP_DEPENDENCY_CLOSURE_AND_TOTAL_T_VALID_MAPPING",
   "external_dependency_rule": "NON_INTRINSIC_EXTERNAL_DEPENDENCY_MUST_NOT_BE_SINGLE_POINT_OF_REALITY_ENTRY_FAILURE",
@@ -68,7 +69,7 @@
     "FOUNDATION_ABSORB_CHECK_DONE"
   ],
   "delete_if": "NO_VALID_BENEFIT_AND_NO_CURRENT_OR_FUTURE_TOTAL_T_VALID_BENEFIT_AND_NO_REPEAT_COST_REDUCTION",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.7",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.5.8",
   "timing_contract": {
     "clock_source": "NETWORK_TIMESTAMP_FOR_BOUNDARIES",
     "optimization_clock": "ACTIVE_AGENT_ELAPSED",
@@ -240,5 +241,19 @@
     ],
     "final_exact_echo_required": true,
     "any_mismatch": "EXECUTION_BLOCK"
+  },
+  "read_only_probe_validity": {
+    "required": true,
+    "semantic_gate_precedes_exit_status": true,
+    "pass_rule": "COMPLETE_PARSEABLE_EXPECTED_SEMANTIC_EVIDENCE_AND_NO_CONTRADICTION",
+    "nonzero_exit_role": "DIAGNOSTIC_IF_SEMANTIC_GATE_PASS",
+    "hard_fail_if": [
+      "SEMANTIC_EVIDENCE_MISSING",
+      "OUTPUT_PARSE_FAIL",
+      "OUTPUT_CONTRADICTION",
+      "OUTPUT_INCOMPLETE",
+      "PROBE_HAS_SIDE_EFFECT"
+    ],
+    "forbidden_generalization": "DO_NOT_IGNORE_NONZERO_EXIT_FOR_SIDE_EFFECTING_COMMANDS"
   }
 }
