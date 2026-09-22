@@ -79,6 +79,17 @@
       "work": "analyze partial REAL output and identify handoff-network and missing Codex timing instrumentation deltas",
       "result": "PASS",
       "bottleneck": "CODEX_ACTIVE_INTERVAL_NOT_SELF_INSTRUMENTED"
+    },
+    {
+      "segment_id": "S008",
+      "agent": "GPT",
+      "active_start_network_timestamp": "2026-09-23T00:03:10+08:00",
+      "active_end_network_timestamp": "2026-09-23T00:03:58+08:00",
+      "active_duration_ms": 48000,
+      "status": "CLOSED",
+      "work": "classify deterministic REAL execution routing: direct PowerShell vs Codex wrapper",
+      "result": "PASS",
+      "bottleneck": "UNNECESSARY_CODEX_WRAPPER_FOR_DETERMINISTIC_FROZEN_VALIDATION"
     }
   ],
   "excluded_intervals": [
@@ -124,13 +135,13 @@
   },
   "global_active_union_at_checkpoint_ms": 1112000,
   "global_active_union_at_checkpoint_human": "00:18:32",
-  "checkpoint_timestamp": "2026-09-22T23:59:25+08:00",
+  "checkpoint_timestamp": "2026-09-23T00:03:58+08:00",
   "parallel_overlap_rule": "COUNT_ONCE_IN_GLOBAL_UNION",
   "human_idle": "EXCLUDED",
   "reset_on_failure": "FORBIDDEN",
   "current_phase": "REAL",
-  "current_status": "REAL_IN_PROGRESS_FUNCTIONAL_RESULT_PENDING_TIMING_CERTIFICATION_BLOCKED",
-  "next_action": "READ_THE_REMAINDER_OF_THIS_FROZEN_REAL_OUTPUT; DO_NOT_REDESIGN_IN_REAL",
+  "current_status": "REAL_FUNCTIONAL_RESULT_STILL_PENDING; FUTURE_EXECUTOR_ROUTING_RULE_IDENTIFIED",
+  "next_action": "ALLOW_CURRENT_FROZEN_REAL_ATTEMPT_TO_FINISH_UNCHANGED; APPLY_DIRECT_POWERSHELL_RULE_IN_NEXT_VIRTUAL_IF_NEEDED",
   "phase_model": {
     "current": "VIRTUAL",
     "virtual_complete": true,
@@ -169,7 +180,7 @@
   "global_active_exact_through_network_timestamp": "2026-09-22T23:55:15+08:00",
   "global_active_exact_ms": 1112000,
   "global_active_exact_human": "00:18:32",
-  "global_active_lower_bound_ms": 1166000,
-  "global_active_lower_bound_human": "00:19:26",
+  "global_active_lower_bound_ms": 1214000,
+  "global_active_lower_bound_human": "00:20:14",
   "global_active_exact_current": "UNKNOWN_DUE_TO_UNINSTRUMENTED_CODEX_INTERVAL"
 }
