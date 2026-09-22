@@ -1,0 +1,110 @@
+{
+  "task_time_id": "ESTE-20260922-001",
+  "method": "extreme-short-time-engine-v4.5.10",
+  "principle": "A known repeated cause must be blocked in VIRTUAL; recurrence of the same cause after its gate exists is a gate regression, not a new normal retry.",
+  "items": [
+    {
+      "id": "E01",
+      "cause": "RUNNER_ENCODING_PARSER_ERROR",
+      "resolution": "ASCII-only frozen runner/contract; no non-ASCII executable dependency",
+      "future_gate": "ASCII/LITERAL-SAFE freeze checks",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E02",
+      "cause": "LIVE_GITHUB_OR_GIT_BOOTSTRAP_ON_REAL_CRITICAL_PATH",
+      "resolution": "REAL no longer requires runtime git fetch; GitHub is post-execution shared fact source",
+      "future_gate": "RUNTIME_GIT_FETCH_REQUIRED=NO",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E03",
+      "cause": "OUTER_BOOTSTRAP_NOT_INCLUDED_IN_FREEZE",
+      "resolution": "freeze-closure gate covers full execution chain and external dependencies",
+      "future_gate": "EXECUTION_CHAIN_CLOSED + EXTERNAL_DEPENDENCIES_CLOSED",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E04",
+      "cause": "LOCAL_STEP_TIME_USED_AS_GLOBAL_OBJECTIVE",
+      "resolution": "whole-loop valid active time from GPT problem receipt through Codex evidence to GPT final valid",
+      "future_gate": "TASK_COMPLETED + CLOSED_LOOP + GPT_FINAL_VALID",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E05",
+      "cause": "PSEUDO_V1_V2_R1_R2_METHOD_STEPS",
+      "resolution": "method locked to exactly VIRTUAL and REAL; checkpoints are logs only",
+      "future_gate": "NUMBERED_VIRTUAL_SUBSTEPS/REAL_SUBSTEPS=FORBIDDEN",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E06",
+      "cause": "EXTRA_DOWNLOAD_OR_SECOND_HANDOFF_QUESTION",
+      "resolution": "VIRTUAL must emit direct Codex handoff in same response",
+      "future_gate": "REAL_ENTRY_COMMAND_READY/EMITTED",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E07",
+      "cause": "CODEX_TEMP_EXECUTABLE_STAGING_REJECTED",
+      "resolution": "Reality Foundation 1.1.1 records Temp/AppData executable staging risk; default direct Codex contract avoids it",
+      "future_gate": "EXECUTABLE_STAGING_SAFE",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E08",
+      "cause": "CALLER_SHELL_EXPANDED_CODEX_PROMPT",
+      "resolution": "remove outer PowerShell wrapper/direct GPT-to-Codex contract; literal-safe transport when shell is used",
+      "future_gate": "SHELL_INTERPOLATION_SAFE + PROMPT_ROUNDTRIP_EQUIVALENCE",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E09",
+      "cause": "W32TM_ACCESS_DENIED",
+      "resolution": "Stopwatch is authoritative duration clock; absolute timestamps are audit only",
+      "future_gate": "TIMING_PATH_SAFE; w32tm not required",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E10",
+      "cause": "GIT_FETCH_FETCH_HEAD_PERMISSION_DENIED",
+      "resolution": "Reality Foundation 1.1.2; no runtime git fetch/FETCH_HEAD write in REAL bootstrap",
+      "future_gate": "RUNTIME_GIT_FETCH_REQUIRED_NO",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E11",
+      "cause": "GPU_READ_ONLY_PROBE_FALSE_NEGATIVE_FROM_NONZERO_EXIT",
+      "resolution": "Reality Foundation 1.1.3 semantic evidence precedes exit status for frozen side-effect-free probes",
+      "future_gate": "READ_ONLY_PROBE_SEMANTIC_VALIDITY_DEFINED",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E12",
+      "cause": "FOUR_POSITION_SEQUENCE_REUSED",
+      "resolution": "monotonic TASK_TIME_ID-scoped sequence ledger; fail/return/version change do not reset",
+      "future_gate": "SEQUENCE_LEDGER_LOADED + EXPECTED_NEXT + NOT_REUSED",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E13",
+      "cause": "DISPATCH_TIME_NOT_RECORDED",
+      "resolution": "every Codex emission carries dispatch timestamp and active total before dispatch",
+      "future_gate": "DISPATCH_TIME_READY + ACTIVE_TOTAL_READY",
+      "status": "CLOSED"
+    },
+    {
+      "id": "E14",
+      "cause": "FOUR_POSITION_LABEL_INCOMPLETE_OR_NOT_EXACT",
+      "resolution": "exact four-field label plus exact final echo",
+      "future_gate": "FOUR_POSITION_FIELDS_PRESENT + POSITION_LABEL_EXACT_ECHO",
+      "status": "CLOSED"
+    }
+  ],
+  "recurrence_policy": {
+    "known_same_cause_should_enter_real_again": false,
+    "if_recurrence_occurs": "CLASSIFY_AS_GATE_REGRESSION_RETURN_TO_VIRTUAL_AND_REPAIR_GATE",
+    "zero_future_unknown_failures_guaranteed": false
+  }
+}
