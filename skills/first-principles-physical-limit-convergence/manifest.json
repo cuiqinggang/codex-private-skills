@@ -178,5 +178,12 @@
     "end": "CODEX_PROCESS_END_TIMESTAMP",
     "measured_by": "OUTER_COMMAND_WRAPPER_AROUND_CODEX_EXEC",
     "included_in_global_anchor": true
-  }
+  },
+  "validity_gate_for_anchor": [
+    "TASK_COMPLETED_TRUE",
+    "CLOSED_LOOP_TRUE",
+    "CODEX_EXECUTOR_PRESENT",
+    "GPT_FINAL_VALID_TRUE"
+  ],
+  "local_fast_path_rule": "A_LOCAL_FASTER_PATH_THAT_BREAKS_ANY_VALIDITY_GATE_IS_NOT_A_VALID_GLOBAL_CANDIDATE"
 }
