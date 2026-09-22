@@ -1,4 +1,4 @@
-# 极限短时间引擎 v4.5.2：活动时间运行协议
+# 极限短时间引擎 v4.5.3：活动时间运行协议
 
 ## 目的
 
@@ -49,22 +49,34 @@ T_VALID_ACTIVE_GLOBAL=<最终累计有效智能体时间>
 7. 每个阶段必须有明确开始与结束检查点，禁止存在“做过但未记时”的有效工作段。
 8. 网络时间用于锚定每个时间段的开始/结束边界；不把人类空档直接算进主锚定时间。
 
-## 当前任务最短闭环
+## 当前任务结构：只有一虚一实
 
 ```text
 TASK_TIME_ID=ESTE-20260922-001
 
-VIRTUAL
-V1 活动时间协议冻结
-V2 冻结现实执行包，移除非必要 GitHub 实时单点依赖
-V3 冻结闭环验证器 PASS
-V4 VIRTUAL_COMPLETE 检查点
+PHASE=VIRTUAL
+- 在这一阶段内部一次性完成：现实信息读取、方案成熟、执行链闭合、外部依赖闭合、冻结产物与冻结验收。
+- 这些都是 VIRTUAL 内部动作/检查点，不是新的步骤，不编号 V1/V2/V3。
+- 只有当全部虚完成条件同时 PASS，才发生唯一状态转换：
 
-REAL
-R1 按冻结执行包现实运行
-R2 FAIL -> Reality Delta -> 回 VIRTUAL，主累计时间不重置
-R3 PASS -> GPT 按 FINAL_VALID_CONDITION 最终验收
-R4 FINAL_VALID=YES -> 停表 -> 输出最终时间与瓶颈统计
+VIRTUAL -> REAL
+
+PHASE=REAL
+- 严格执行冻结方案并做最终现实验收。
+- 这些都是 REAL 内部动作/检查点，不编号 R1/R2/R3。
+- PASS：FINAL_VALID=YES，停表。
+- FAIL：记录最小 Reality Delta，然后：
+
+REAL -> VIRTUAL
+
+累计有效时间继续，不重置。
+```
+
+检查点允许记录时间和瓶颈，但：
+```text
+CHECKPOINT_IS_METHOD_STEP=NO
+NUMBERED_VIRTUAL_SUBSTEPS=FORBIDDEN
+NUMBERED_REAL_SUBSTEPS=FORBIDDEN
 ```
 
 ## 极限短时间约束
