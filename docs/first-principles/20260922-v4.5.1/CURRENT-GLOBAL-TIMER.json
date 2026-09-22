@@ -9,5 +9,17 @@
   "current_phase": "VIRTUAL",
   "timer_reset": "FORBIDDEN",
   "local_timer_role": "DIAGNOSTIC_ONLY",
-  "note": "Earlier discussion on this page predates the first exact unified timer anchor and is not retroactively assigned a fabricated duration."
+  "note": "Earlier discussion on this page predates the first exact unified timer anchor and is not retroactively assigned a fabricated duration.",
+  "checkpoints": [
+    {
+      "checkpoint_name": "GLOBAL_TIMER_INSTRUMENTATION_ACTIVE",
+      "checkpoint_timestamp": "2026-09-22T22:45:32+08:00",
+      "elapsed_from_problem_entry_ms": 81000,
+      "elapsed_from_problem_entry_human": "00:01:21",
+      "phase": "VIRTUAL",
+      "bottleneck_if_any": "NONE",
+      "note": "Global wall-clock anchor, non-reset rule, local diagnostic timers, and checkpoint contract are committed and read back."
+    }
+  ],
+  "current_status": "GLOBAL_TIMER_ACTIVE_VIRTUAL_NOT_YET_FINAL"
 }
