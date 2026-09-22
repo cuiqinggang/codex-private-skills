@@ -1,12 +1,12 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.5.1。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
+description: 极限短时间引擎 v4.5.2。唯一锚定物改为“从问题进入到问题第一次最终有效解决”的总 T_VALID；所有虚拟、验证、失败、回退、修复、重跑均计时且不得重置。新增时间锚定强制规则。
 metadata:
-  version: "4.5.1"
+  version: "4.5.2"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.5.1
+# 极限短时间引擎 v4.5.2
 
 ## 根基：现实底座
 
@@ -25,26 +25,28 @@ local-ai-reality-foundation
 # 唯一锚定物：问题总解决时间
 
 ```text
-T_VALID
-= t(FINAL_VALID_SOLUTION)
-- t(PROBLEM_ENTRY)
+T_VALID_ACTIVE
+= measure(UNION(AGENT_ACTIVE_INTERVALS))
 
 T*
-= min(T_VALID)
+= min(T_VALID_ACTIVE)
 ```
 
 中文：
 
 ```text
-T_VALID
-= 从“问题/目标正式进入引擎”
-  到“该问题第一次得到最终有效解决并完成收口”
-  的全部端到端时间。
+T_VALID_ACTIVE
+= 从“问题/目标正式进入”
+  到“该问题第一次得到最终有效解决并完成收口”之间，
+  GPT、Codex 及其直接执行工具真正处于解决该问题状态的
+  全部有效工作区间之并集时间。
+
+用户离开、休息、现实事务造成的空档不计入主锚定时间。
 ```
 
 ## 同一只钟，禁止重置
 
-从 PROBLEM_ENTRY 开始计时后，直到 FINAL_VALID_SOLUTION 才停止。
+从 PROBLEM_ENTRY 建立任务计时编号，直到 FINAL_VALID_SOLUTION 才关闭该任务编号。主时间不是简单墙钟差，而是该编号下所有 AGENT_ACTIVE_INTERVAL 的时间并集。
 
 中间以下时间全部属于同一个 T_VALID：
 
@@ -64,7 +66,7 @@ Reality Delta 归因
 重新冻结
 重新执行
 重试
-人工/智能体交接造成的有效等待
+GPT/Codex 为解决问题发生的必要执行等待
 最终验收与收口
 ```
 
@@ -206,9 +208,10 @@ REPEATED_REWORK_TIME_WITHOUT_RULE
 每个新问题进入引擎时，立即记录：
 
 ```text
-PROBLEM_ENTRY_TIMESTAMP=<精确时间戳或可追溯事件>
+TASK_TIME_ID=<唯一任务计时编号>
+PROBLEM_ENTRY_NETWORK_TIMESTAMP=<网络时间或可追溯事件>
 GLOBAL_TIMER_STATE=RUNNING
-GLOBAL_TIME_ANCHOR=T_VALID
+GLOBAL_TIME_ANCHOR=T_VALID_ACTIVE
 ```
 
 问题最终有效解决并完成收口时记录：
@@ -216,11 +219,23 @@ GLOBAL_TIME_ANCHOR=T_VALID
 ```text
 FINAL_VALID_TIMESTAMP=<精确时间戳或可追溯事件>
 GLOBAL_TIMER_STATE=STOPPED
-T_VALID_GLOBAL
-= FINAL_VALID_TIMESTAMP - PROBLEM_ENTRY_TIMESTAMP
+T_VALID_ACTIVE_GLOBAL
+= measure(UNION(AGENT_ACTIVE_INTERVALS))
 ```
 
-主计时口径采用实际经过时间（wall-clock elapsed time，墙钟经过时间）；失败、等待、回退、返工、重跑、交接均不从主时间中扣除。
+网络时间只负责给任务入口、出口和每个有效工作区间提供可追溯时间戳。主计时口径为 ACTIVE_AGENT_ELAPSED（智能体有效工作经过时间），不再直接使用“结束墙钟 - 开始墙钟”。
+
+用户离开、休息、现实事务造成的空档：
+```text
+HUMAN_IDLE=EXCLUDED
+```
+
+GPT、Codex 以及它们直接调用的执行工具正在解决该问题时：
+```text
+AGENT_ACTIVE=INCLUDED
+```
+
+失败诊断、回虚、修正、重跑只要智能体正在实际处理，仍全部计入；不得因为失败而重置累计时间。
 
 若问题进入时没有可靠的精确时间戳：
 
@@ -230,6 +245,54 @@ START_TIME_CONFIDENCE=UNKNOWN
 ```
 
 从第一次能够可靠建立时间锚的时点开始记录，并明确说明此前区间未被精确计量。
+
+
+## 任务时间编号与有效工作区间
+
+每个问题第一次进入时必须立即生成唯一编号：
+
+```text
+TASK_TIME_ID=ESTE-YYYYMMDD-NNN
+```
+
+每次 GPT、Codex 或其直接执行工具开始实际解决该问题时，记录：
+
+```text
+SEGMENT_ID=SNNN
+AGENT=GPT|CODEX
+ACTIVE_START_NETWORK_TIMESTAMP=<网络时间>
+```
+
+该段工作结束、等待用户下一次输入或任务交给另一智能体时，记录：
+
+```text
+ACTIVE_END_NETWORK_TIMESTAMP=<网络时间>
+ACTIVE_DURATION=<结束-开始>
+```
+
+主锚定物：
+
+```text
+T_VALID_ACTIVE_GLOBAL
+= 所有有效工作区间的时间并集
+```
+
+当前 GPT 与 Codex 串行工作时，近似等于：
+
+```text
+T_GPT_ACTIVE + T_CODEX_ACTIVE
+```
+
+若以后并行，重叠时间只计一次；各智能体各自累计时间保留作诊断，不得重复加入主锚。
+
+GPT 只有在冻结的 FINAL_VALID_CONDITION 已满足并通过最终验收时，才允许写入：
+
+```text
+FINAL_VALID=YES
+GLOBAL_TIMER_STATE=STOPPED
+```
+
+GPT 不得仅凭“看起来完成”自行提前停表。
 
 ## 局部时间：只用于瓶颈定位
 
