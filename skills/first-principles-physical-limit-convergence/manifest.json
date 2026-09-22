@@ -149,6 +149,8 @@
     "handoff_contract_path": "docs/first-principles/20260922-v4.5.4/VIRTUAL-TO-REAL-HANDOFF.md",
     "shared_workspace_published": "PASS",
     "real_entry_command_ready": "PASS",
-    "command_delivery_rule": "MUST_BE_EMITTED_IN_SAME_RESPONSE_AS_VIRTUAL_COMPLETE"
+    "command_delivery_rule": "MUST_BE_EMITTED_IN_SAME_RESPONSE_AS_VIRTUAL_COMPLETE",
+    "real_entry_command_emitted": "PASS",
+    "emitted_network_timestamp": "2026-09-22T23:54:34+08:00"
   }
 }
