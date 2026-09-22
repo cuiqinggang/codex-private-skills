@@ -136,22 +136,16 @@
   },
   "virtual_to_real_handoff": {
     "role": "VIRTUAL_EXIT_CONDITION_NOT_THIRD_STEP",
-    "default_shared_workspace": "GITHUB_SHARED_REPOSITORY",
-    "required_same_response_delivery": true,
-    "forbid_deferred_manual_download": true,
-    "forbid_second_question_for_execution_command": true,
-    "optimization_reason": "ELIMINATE_NON_VALUE_HANDOFF_LATENCY_FROM_T_VALID_ACTIVE_GLOBAL",
-    "frozen_real_artifact": {
-      "commit": "daf1d1b059daf5f975de414579c3ab14c1519f3b",
-      "path": "docs/first-principles/20260922-v4.5.4/REAL-ENTRY-FROZEN.ps1",
-      "git_blob_sha": "629be3ce49dd951d23b583c3a51678db704b5a46"
-    },
-    "handoff_contract_path": "docs/first-principles/20260922-v4.5.4/VIRTUAL-TO-REAL-HANDOFF.md",
+    "codex_executor_required": true,
+    "real_artifact_commit": "ba4b82004102fa8e833f45b3f88404b10a576a3e",
+    "real_artifact_path": "docs/first-principles/20260923-v4.5.5/REAL-ENTRY-FROZEN.ps1",
+    "real_artifact_blob_sha": "901b8ee53237f11e5a8d9f643d0341cea4f88cf4",
+    "handoff_contract_path": "docs/first-principles/20260923-v4.5.5/VIRTUAL-TO-REAL-HANDOFF.md",
+    "temp_script_write": "FORBIDDEN",
+    "execution_transport": "GIT_OBJECT_STREAM_TO_POWERSHELL",
+    "timing_relay": "OUTER_POWERSHELL_WRAPS_FULL_CODEX_EXEC",
     "shared_workspace_published": "PASS",
-    "real_entry_command_ready": "PASS",
-    "command_delivery_rule": "MUST_BE_EMITTED_IN_SAME_RESPONSE_AS_VIRTUAL_COMPLETE",
-    "real_entry_command_emitted": "PASS",
-    "emitted_network_timestamp": "2026-09-22T23:54:34+08:00"
+    "real_entry_command_ready": "PASS"
   },
   "anchor_name_zh": "整体闭环极限时间",
   "anchor_name_en": "WHOLE_LOOP_VALID_ACTIVE_TIME",
