@@ -51,13 +51,20 @@
       "end": "2026-09-23T20:44:46+08:00",
       "duration_ms": 193466.692,
       "work": "GitHub remote readback; audit/time-ledger publication correction; final virtual handoff verification"
+    },
+    {
+      "id": "VIRTUAL_RECOVERY_05",
+      "start": "2026-09-23T21:22:24.614753+08:00",
+      "end": "2026-09-23T21:55:47+08:00",
+      "duration_ms": 2006376.367,
+      "work": "diagnosed interruption as context/authority inheritance break rather than GitHub connectivity; rediscovered canonical capability-envelope branch; re-ran canonical 1018/1018 zero-GPU self-test and emitted frozen reality-boundary plan; verified official Bonsai 2 native tool_calls capability; restored canonical task/time identity and sequence"
     }
   ],
-  "instrumented_active_total_ms": 1695886.929,
-  "instrumented_active_total_hms": "00:28:15.887",
+  "instrumented_active_total_ms": 3702263.296,
+  "instrumented_active_total_hms": "01:01:42.263",
   "active_total_before_real_dispatch": {
     "exact_ms": null,
-    "known_lower_bound_ms": 1695886.929,
+    "known_lower_bound_ms": 3702263.296,
     "reason_exact_unknown": "Active work before 20:16:33+08:00 was not Stopwatch-instrumented.",
     "not_zero": true
   },
@@ -65,8 +72,10 @@
     "virtual_complete": true,
     "real_entry_ready": true,
     "freeze_timestamp": "2026-09-23T20:41:35.754970+08:00",
+    "recovery_revalidated_at": "2026-09-23T21:55:47+08:00",
+    "recovery_result": "PASS",
     "sequence_next": "01",
-    "ledger_last_update": "2026-09-23T20:44:46+08:00"
+    "ledger_last_update": "2026-09-23T21:55:47+08:00"
   },
   "clean_run_policy": {
     "current_run_class": "HISTORICAL_DEVELOPMENT_CLOSEOUT",
