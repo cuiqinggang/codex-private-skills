@@ -1,7 +1,7 @@
 {
   "skill_id": "local-ai-reality-foundation",
-  "version": "1.1.3",
-  "previous_version": "1.1.2",
+  "version": "1.1.4",
+  "previous_version": "1.1.3",
   "display_name": "本地 AI 现实底座永久资产",
   "role": "VERSIONED_PERSISTENT_REALITY_FOUNDATION",
   "method_step": false,
@@ -29,7 +29,13 @@
     "playwright_root": "C:\\AI\\Playwright-Native-AI-Browser",
     "openhands_root": "C:\\AI\\OpenHands-Canvas",
     "minimax_h3_root": "C:\\AI\\MiniMax-H3",
-    "visual_art_engine_root": "C:\\AI\\Visual-Art-Engine"
+    "visual_art_engine_root": "C:\\AI\\Visual-Art-Engine",
+    "download_tools_observed": {
+      "aria2c": "AVAILABLE_OBSERVED_VERSION_VERIFY_ON_USE",
+      "hf": "AVAILABLE_OBSERVED_VERSION_VERIFY_ON_USE",
+      "curl": "AVAILABLE_OBSERVED",
+      "gh": "UNKNOWN_NOT_CORE_REQUIRED"
+    }
   },
   "network_invariants": {
     "flclash": "PERSISTENT",
@@ -37,47 +43,17 @@
   },
   "updated_date": "2026-09-23",
   "codex_execution_constraints": {
-    "executor_required_for_default_closed_loop": true,
-    "temp_executable_staging": {
-      "observed_path": "C:\\Users\\A\\AppData\\Local\\Temp",
-      "observed_result": "REJECTED_BY_CODEX_SAFETY_POLICY",
-      "default_rule": "DO_NOT_STAGE_EXECUTABLE_PS1_IN_APPDATA_LOCAL_TEMP",
-      "preferred": "WORKSPACE_FROZEN_ARTIFACT_OR_GIT_OBJECT_STREAM"
-    },
-    "powershell_prompt_transport": {
-      "double_quoted_here_string": "VARIABLE_INTERPOLATION_RISK",
-      "literal_safe_default": "SINGLE_QUOTED_HERE_STRING_OR_EQUIVALENT",
-      "freeze_gate": "SHELL_INTERPOLATION_SAFE_PASS"
-    },
-    "time_source": {
-      "w32tm_query_source_non_admin": "ACCESS_DENIED_0x80070005_OBSERVED",
-      "duration_clock": "SYSTEM_DIAGNOSTICS_STOPWATCH",
-      "wall_clock_role": "AUDIT_COORDINATE_ONLY",
-      "time_source_query_hard_dependency": false
-    },
-    "startup_diagnostics": {
-      "skill_load_errors": "OBSERVED",
-      "model_refresh_timeout": "OBSERVED",
-      "skill_description_budget_warning": "OBSERVED",
-      "rule": "ONLY_PROMOTE_TO_REALITY_DELTA_IF_TASK_VALIDITY_IS_AFFECTED"
-    },
-    "git_metadata_write": {
-      "observed_operation": "git fetch origin codex/first-principles-physical-limit-convergence-v4.5.6",
-      "observed_error": "cannot open .git/FETCH_HEAD: Permission denied",
-      "classification": "LOCAL_GIT_METADATA_WRITE_PERMISSION",
-      "not_network_error": true,
-      "default_real_rule": "DO_NOT_REQUIRE_GIT_FETCH_OR_FETCH_HEAD_WRITE_ON_REAL_CRITICAL_PATH",
-      "shared_fact_source_role": "POST_EXECUTION_PERSISTENCE_AND_REREAD_NOT_REAL_BOOTSTRAP",
-      "allow_only_if": "VIRTUAL_PREFLIGHT_PROVES_REQUIRED_GIT_METADATA_WRITE_IS_ALLOWED"
-    },
-    "read_only_probe_semantics": {
-      "observed_probe": "nvidia-smi --query-gpu=name,memory.total --format=csv,noheader,nounits",
-      "observed_stdout": "NVIDIA GeForce RTX 2080 Ti, 22528",
-      "observed_exit_status": "NONZERO",
-      "classification": "READ_ONLY_PROBE_SEMANTIC_EVIDENCE_EXIT_STATUS_CONFLICT",
-      "rule": "FOR_FROZEN_READ_ONLY_PROBES_COMPLETE_VALID_SEMANTIC_EVIDENCE_MAY_OVERRIDE_EXIT_STATUS_AS_VALIDITY_DECIDER",
-      "exit_status_role": "DIAGNOSTIC_UNLESS_SEMANTIC_EVIDENCE_IS_INCOMPLETE_OR_CONTRADICTORY",
-      "scope": "READ_ONLY_SIDE_EFFECT_FREE_STRUCTURED_PROBES_ONLY"
+    "temp_executable_staging": "DO_NOT_STAGE_EXECUTABLE_PS1_IN_APPDATA_LOCAL_TEMP",
+    "powershell_prompt_transport": "LITERAL_SAFE_DEFAULT",
+    "duration_clock": "SYSTEM_DIAGNOSTICS_STOPWATCH",
+    "git_metadata_write": "DO_NOT_REQUIRE_GIT_FETCH_ON_REAL_CRITICAL_PATH",
+    "read_only_probe_semantics": "SEMANTIC_EVIDENCE_PRECEDES_EXIT_FOR_FROZEN_SIDE_EFFECT_FREE_PROBES",
+    "windows_process_spawn_1344": {
+      "observed_error": "SetTokenInformation(TokenDefaultDacl) failed: 1344",
+      "classification": "CODEX_WINDOWS_PROCESS_SPAWN_CHANNEL_FAILURE",
+      "not_download_tool_missing": true,
+      "known_alternate_channel_success_observed": true,
+      "real_rule": "ON_SAME_1344_RETRY_ONCE_VIA_PREEXISTING_AUTHORIZED_PROVEN_CHANNEL_ELSE_STOP"
     }
   }
 }
