@@ -358,29 +358,22 @@ def main():
         save()
         print(f"STAGE_DONE=seed PROMPT_MS={seed['prompt_ms']} E2E_MS={seed['e2e_ms']}")
 
-        def log_size():
-            total=0
-            for p in (SERVER_OUT,SERVER_ERR):
-                try: total += p.stat().st_size
-                except Exception: pass
-            return total
-
-        def log_tail_since(size_before):
+        def read_server_logs():
             parts=[]
             for p in (SERVER_OUT,SERVER_ERR):
                 try: parts.append(p.read_text(encoding="utf-8",errors="replace"))
                 except Exception: pass
-            joined="\n".join(parts)
-            return joined[max(0,min(size_before,len(joined))):]
+            return "\n".join(parts)
 
         def run_hot(name, tokens, min_cached_ratio):
             print(f"STAGE_START={name}")
-            before=log_size()
+            before_logs=read_server_logs()
             x=completion(tokens,name,128,True,False)
             ver=strict_verify(x["output"])
             eff,source=effective_cached(x["response"],len(tokens))
             ratio=(float(eff)/float(len(tokens))) if eff >= 0 and len(tokens) else -1.0
-            delta_log=log_tail_since(before)
+            after_logs=read_server_logs()
+            delta_log=after_logs[len(before_logs):] if after_logs.startswith(before_logs) else after_logs
             forced_full=("forcing full prompt re-processing" in delta_log.lower())
             x["verify"]=ver
             x["effective_cached_tokens"]=eff
