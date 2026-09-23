@@ -1,0 +1,423 @@
+{
+  "strategy": "FULL_VIRTUAL_UNIVERSE_PLUS_ADAPTIVE_REALITY_BOUNDARY_SEARCH",
+  "full_catalog_units": 1018,
+  "atomic_pairwise_universe_pairs": 800,
+  "atomic_anchor_case_count": 64,
+  "atomic_anchor_case_ids": [
+    "E1_PLAN_FIDELITY-001",
+    "E1_PLAN_FIDELITY-012",
+    "E1_PLAN_FIDELITY-021",
+    "E1_PLAN_FIDELITY-032",
+    "E2_STATE_CONTINUITY-002",
+    "E2_STATE_CONTINUITY-011",
+    "E2_STATE_CONTINUITY-022",
+    "E2_STATE_CONTINUITY-031",
+    "E3_FILE_CODE_MUTATION-003",
+    "E3_FILE_CODE_MUTATION-010",
+    "E3_FILE_CODE_MUTATION-023",
+    "E3_FILE_CODE_MUTATION-030",
+    "E4_TOOL_INVOCATION-004",
+    "E4_TOOL_INVOCATION-009",
+    "E4_TOOL_INVOCATION-024",
+    "E4_TOOL_INVOCATION-029",
+    "E5_FAILURE_RECOVERY-005",
+    "E5_FAILURE_RECOVERY-016",
+    "E5_FAILURE_RECOVERY-017",
+    "E5_FAILURE_RECOVERY-028",
+    "E6_VERIFICATION_EVIDENCE-006",
+    "E6_VERIFICATION_EVIDENCE-015",
+    "E6_VERIFICATION_EVIDENCE-018",
+    "E6_VERIFICATION_EVIDENCE-027",
+    "E7_LONG_CONTEXT_RESOURCE-007",
+    "E7_LONG_CONTEXT_RESOURCE-014",
+    "E7_LONG_CONTEXT_RESOURCE-019",
+    "E7_LONG_CONTEXT_RESOURCE-026",
+    "E8_STOP_SCOPE_DISCIPLINE-008",
+    "E8_STOP_SCOPE_DISCIPLINE-013",
+    "E8_STOP_SCOPE_DISCIPLINE-020",
+    "E8_STOP_SCOPE_DISCIPLINE-025",
+    "E1_PLAN_FIDELITY-038",
+    "E1_PLAN_FIDELITY-047",
+    "E1_PLAN_FIDELITY-050",
+    "E1_PLAN_FIDELITY-059",
+    "E2_STATE_CONTINUITY-037",
+    "E2_STATE_CONTINUITY-048",
+    "E2_STATE_CONTINUITY-049",
+    "E2_STATE_CONTINUITY-060",
+    "E3_FILE_CODE_MUTATION-040",
+    "E3_FILE_CODE_MUTATION-045",
+    "E3_FILE_CODE_MUTATION-052",
+    "E3_FILE_CODE_MUTATION-057",
+    "E4_TOOL_INVOCATION-039",
+    "E4_TOOL_INVOCATION-046",
+    "E4_TOOL_INVOCATION-051",
+    "E4_TOOL_INVOCATION-058",
+    "E5_FAILURE_RECOVERY-034",
+    "E5_FAILURE_RECOVERY-043",
+    "E5_FAILURE_RECOVERY-054",
+    "E5_FAILURE_RECOVERY-063",
+    "E6_VERIFICATION_EVIDENCE-033",
+    "E6_VERIFICATION_EVIDENCE-044",
+    "E6_VERIFICATION_EVIDENCE-053",
+    "E6_VERIFICATION_EVIDENCE-064",
+    "E7_LONG_CONTEXT_RESOURCE-036",
+    "E7_LONG_CONTEXT_RESOURCE-041",
+    "E7_LONG_CONTEXT_RESOURCE-056",
+    "E7_LONG_CONTEXT_RESOURCE-061",
+    "E8_STOP_SCOPE_DISCIPLINE-035",
+    "E8_STOP_SCOPE_DISCIPLINE-042",
+    "E8_STOP_SCOPE_DISCIPLINE-055",
+    "E8_STOP_SCOPE_DISCIPLINE-062"
+  ],
+  "atomic_batch_groups_count": 32,
+  "atomic_batch_groups": [
+    {
+      "context_band": "8K",
+      "reasoning_route": "OFF",
+      "case_ids": [
+        "E1_PLAN_FIDELITY-001",
+        "E5_FAILURE_RECOVERY-005"
+      ]
+    },
+    {
+      "context_band": "8K",
+      "reasoning_route": "LOW_512",
+      "case_ids": [
+        "E2_STATE_CONTINUITY-002",
+        "E6_VERIFICATION_EVIDENCE-006"
+      ]
+    },
+    {
+      "context_band": "8K",
+      "reasoning_route": "MEDIUM_2048",
+      "case_ids": [
+        "E3_FILE_CODE_MUTATION-003",
+        "E7_LONG_CONTEXT_RESOURCE-007"
+      ]
+    },
+    {
+      "context_band": "8K",
+      "reasoning_route": "HIGH_8192",
+      "case_ids": [
+        "E4_TOOL_INVOCATION-004",
+        "E8_STOP_SCOPE_DISCIPLINE-008"
+      ]
+    },
+    {
+      "context_band": "32K",
+      "reasoning_route": "OFF",
+      "case_ids": [
+        "E2_STATE_CONTINUITY-011",
+        "E6_VERIFICATION_EVIDENCE-015"
+      ]
+    },
+    {
+      "context_band": "32K",
+      "reasoning_route": "LOW_512",
+      "case_ids": [
+        "E1_PLAN_FIDELITY-012",
+        "E5_FAILURE_RECOVERY-016"
+      ]
+    },
+    {
+      "context_band": "32K",
+      "reasoning_route": "MEDIUM_2048",
+      "case_ids": [
+        "E4_TOOL_INVOCATION-009",
+        "E8_STOP_SCOPE_DISCIPLINE-013"
+      ]
+    },
+    {
+      "context_band": "32K",
+      "reasoning_route": "HIGH_8192",
+      "case_ids": [
+        "E3_FILE_CODE_MUTATION-010",
+        "E7_LONG_CONTEXT_RESOURCE-014"
+      ]
+    },
+    {
+      "context_band": "64K",
+      "reasoning_route": "OFF",
+      "case_ids": [
+        "E4_TOOL_INVOCATION-024",
+        "E8_STOP_SCOPE_DISCIPLINE-020"
+      ]
+    },
+    {
+      "context_band": "64K",
+      "reasoning_route": "LOW_512",
+      "case_ids": [
+        "E3_FILE_CODE_MUTATION-023",
+        "E7_LONG_CONTEXT_RESOURCE-019"
+      ]
+    },
+    {
+      "context_band": "64K",
+      "reasoning_route": "MEDIUM_2048",
+      "case_ids": [
+        "E2_STATE_CONTINUITY-022",
+        "E6_VERIFICATION_EVIDENCE-018"
+      ]
+    },
+    {
+      "context_band": "64K",
+      "reasoning_route": "HIGH_8192",
+      "case_ids": [
+        "E1_PLAN_FIDELITY-021",
+        "E5_FAILURE_RECOVERY-017"
+      ]
+    },
+    {
+      "context_band": "128K",
+      "reasoning_route": "OFF",
+      "case_ids": [
+        "E3_FILE_CODE_MUTATION-030",
+        "E7_LONG_CONTEXT_RESOURCE-026"
+      ]
+    },
+    {
+      "context_band": "128K",
+      "reasoning_route": "LOW_512",
+      "case_ids": [
+        "E4_TOOL_INVOCATION-029",
+        "E8_STOP_SCOPE_DISCIPLINE-025"
+      ]
+    },
+    {
+      "context_band": "128K",
+      "reasoning_route": "MEDIUM_2048",
+      "case_ids": [
+        "E1_PLAN_FIDELITY-032",
+        "E5_FAILURE_RECOVERY-028"
+      ]
+    },
+    {
+      "context_band": "128K",
+      "reasoning_route": "HIGH_8192",
+      "case_ids": [
+        "E2_STATE_CONTINUITY-031",
+        "E6_VERIFICATION_EVIDENCE-027"
+      ]
+    },
+    {
+      "context_band": "192K",
+      "reasoning_route": "OFF",
+      "case_ids": [
+        "E2_STATE_CONTINUITY-037",
+        "E6_VERIFICATION_EVIDENCE-033"
+      ]
+    },
+    {
+      "context_band": "192K",
+      "reasoning_route": "LOW_512",
+      "case_ids": [
+        "E1_PLAN_FIDELITY-038",
+        "E5_FAILURE_RECOVERY-034"
+      ]
+    },
+    {
+      "context_band": "192K",
+      "reasoning_route": "MEDIUM_2048",
+      "case_ids": [
+        "E4_TOOL_INVOCATION-039",
+        "E8_STOP_SCOPE_DISCIPLINE-035"
+      ]
+    },
+    {
+      "context_band": "192K",
+      "reasoning_route": "HIGH_8192",
+      "case_ids": [
+        "E3_FILE_CODE_MUTATION-040",
+        "E7_LONG_CONTEXT_RESOURCE-036"
+      ]
+    },
+    {
+      "context_band": "224K",
+      "reasoning_route": "OFF",
+      "case_ids": [
+        "E1_PLAN_FIDELITY-047",
+        "E5_FAILURE_RECOVERY-043"
+      ]
+    },
+    {
+      "context_band": "224K",
+      "reasoning_route": "LOW_512",
+      "case_ids": [
+        "E2_STATE_CONTINUITY-048",
+        "E6_VERIFICATION_EVIDENCE-044"
+      ]
+    },
+    {
+      "context_band": "224K",
+      "reasoning_route": "MEDIUM_2048",
+      "case_ids": [
+        "E3_FILE_CODE_MUTATION-045",
+        "E7_LONG_CONTEXT_RESOURCE-041"
+      ]
+    },
+    {
+      "context_band": "224K",
+      "reasoning_route": "HIGH_8192",
+      "case_ids": [
+        "E4_TOOL_INVOCATION-046",
+        "E8_STOP_SCOPE_DISCIPLINE-042"
+      ]
+    },
+    {
+      "context_band": "240-245K",
+      "reasoning_route": "OFF",
+      "case_ids": [
+        "E3_FILE_CODE_MUTATION-052",
+        "E7_LONG_CONTEXT_RESOURCE-056"
+      ]
+    },
+    {
+      "context_band": "240-245K",
+      "reasoning_route": "LOW_512",
+      "case_ids": [
+        "E4_TOOL_INVOCATION-051",
+        "E8_STOP_SCOPE_DISCIPLINE-055"
+      ]
+    },
+    {
+      "context_band": "240-245K",
+      "reasoning_route": "MEDIUM_2048",
+      "case_ids": [
+        "E1_PLAN_FIDELITY-050",
+        "E5_FAILURE_RECOVERY-054"
+      ]
+    },
+    {
+      "context_band": "240-245K",
+      "reasoning_route": "HIGH_8192",
+      "case_ids": [
+        "E2_STATE_CONTINUITY-049",
+        "E6_VERIFICATION_EVIDENCE-053"
+      ]
+    },
+    {
+      "context_band": "252-255K",
+      "reasoning_route": "OFF",
+      "case_ids": [
+        "E4_TOOL_INVOCATION-058",
+        "E8_STOP_SCOPE_DISCIPLINE-062"
+      ]
+    },
+    {
+      "context_band": "252-255K",
+      "reasoning_route": "LOW_512",
+      "case_ids": [
+        "E3_FILE_CODE_MUTATION-057",
+        "E7_LONG_CONTEXT_RESOURCE-061"
+      ]
+    },
+    {
+      "context_band": "252-255K",
+      "reasoning_route": "MEDIUM_2048",
+      "case_ids": [
+        "E2_STATE_CONTINUITY-060",
+        "E6_VERIFICATION_EVIDENCE-064"
+      ]
+    },
+    {
+      "context_band": "252-255K",
+      "reasoning_route": "HIGH_8192",
+      "case_ids": [
+        "E1_PLAN_FIDELITY-059",
+        "E5_FAILURE_RECOVERY-063"
+      ]
+    }
+  ],
+  "jev_pairwise_universe_pairs": 57,
+  "jev_anchor_case_count": 24,
+  "jev_anchor_case_ids": [
+    "JEV-Choice-01",
+    "JEV-Choice-05",
+    "JEV-Choice-09",
+    "JEV-Noul-02",
+    "JEV-Noul-04",
+    "JEV-Score-03",
+    "JEV-Score-07",
+    "JEV-State-06",
+    "JEV-State-08",
+    "JEV-Noul-09",
+    "JEV-Score-05",
+    "JEV-State-01",
+    "JEV-Route-01",
+    "JEV-Route-05",
+    "JEV-Route-09",
+    "JEV-FiniteClassification-01",
+    "JEV-FiniteClassification-05",
+    "JEV-FiniteClassification-09",
+    "JEV-ExecuteStop-01",
+    "JEV-ExecuteStop-05",
+    "JEV-ExecuteStop-09",
+    "JEV-ErrorType-01",
+    "JEV-ErrorType-05",
+    "JEV-ErrorType-09"
+  ],
+  "thinking_anchor_case_count": 5,
+  "thinking_anchor_case_ids": [
+    "THINK-OFF-01",
+    "THINK-LOW_512-01",
+    "THINK-MEDIUM_2048-01",
+    "THINK-HIGH_8192-02",
+    "THINK-HIGH_8192-01"
+  ],
+  "long_workflow_ladders": {
+    "browser_fixture_flow": [
+      "LONG-50-04",
+      "LONG-100-02",
+      "LONG-200-02"
+    ],
+    "git_branch_closeout": [
+      "LONG-50-03",
+      "LONG-100-01",
+      "LONG-200-01"
+    ],
+    "http_data_pipeline": [
+      "LONG-50-05",
+      "LONG-100-03",
+      "LONG-200-03"
+    ],
+    "local_service_release": [
+      "LONG-50-02",
+      "LONG-50-08",
+      "LONG-100-06"
+    ],
+    "mixed_tool_recovery": [
+      "LONG-50-06",
+      "LONG-100-04",
+      "LONG-200-04"
+    ],
+    "multi_file_patch": [
+      "LONG-50-01",
+      "LONG-50-07",
+      "LONG-100-05"
+    ]
+  },
+  "cache_primary_policy": "q8 only in normal path; q4 only after hard-memory failure. Reuse progressive shared prefixes; do not cold-prefill each trial.",
+  "memory_primary_policy": "Test q8 at the hardest executable band with b2048/ub512 and b2048/ub1024; lower bands are expanded only after contradiction.",
+  "adaptive_expansion": "Every PASS region stops when boundary confidence is closed by deterministic oracle + repeated stability check. Every FAIL/ambiguous region expands only to neighboring cases sharing the failing factors until the first stable boundary is located.",
+  "prefix_reuse_optimization": "Reality context bands are generated as nested prefixes. Within a band, route groups share the same prefix. The first request pays the new prefix delta; later route groups use cache_prompt/context checkpoints.",
+  "external_jev": {
+    "role": "OPTIONAL_ACCELERATOR_NOT_HARD_DEPENDENCY",
+    "certified_prior": "jev-probability-engine-p0 v0.4.0 / JPE-P0-S2-PERSISTENT-TRANSPORT-V2 / 560.9819 ms on PE-P0-GENERAL-01",
+    "promotion_rule": "Use external JEV for a task class only after same-task A/B proves all quality gates PASS and T_VALID_JEV < T_VALID_LOCAL.",
+    "fallback": "LOCAL_BONSAI_STRUCTURED_DECISION"
+  },
+  "failure_boundary_protocol": {
+    "anchor_fail_is_capability_data_not_reality_delta": true,
+    "stable_fail_rule": "Repeat the failed anchor once. Two consecutive oracle FAIL results freeze that point as a stable FAIL boundary.",
+    "ambiguous_rule": "If repeat disagrees, run up to 4 nearest catalog neighbors sharing the same domain and at least 4/6 atomic factors.",
+    "neighbor_limit_per_failed_anchor": 4,
+    "infrastructure_failures_that_stop": [
+      "runner exception",
+      "server unavailable",
+      "tokenizer/apply-template unavailable",
+      "suite/hash mismatch",
+      "time accounting broken",
+      "model/runtime reality foundation mismatch"
+    ]
+  }
+}
