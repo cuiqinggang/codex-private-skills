@@ -1,10 +1,10 @@
 {
   "skill_id": "mature-download-router",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "display_name": "成熟下载工具最短调用路由",
-  "status": "PRE_RELEASE_REAL_MATURE_LOCAL_REAL_PENDING",
-  "method": "first-principles-physical-limit-convergence@4.6.1",
-  "reality_foundation": "local-ai-reality-foundation@1.1.6",
+  "status": "HF_PUBLIC_DOWNLOAD_REAL_CERTIFIED_TIME_BASELINE_PENDING",
+  "method": "first-principles-physical-limit-convergence@4.6.2",
+  "reality_foundation": "local-ai-reality-foundation@1.1.7",
   "objective": "MIN_VALID_DOWNLOAD_ROUTING_OVERHEAD",
   "custom_layers": false,
   "pre_release_real_fetch": {
@@ -42,6 +42,20 @@
     "expected_sha256": "0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4"
   },
   "gpt_unexecutable_remainder": "USER_LOCAL_CODEX_RESTRICTED_PROCESS_HF_TLS_EXECUTION",
-  "local_real_certified": false,
-  "updated_date": "2026-09-23"
+  "local_real_certified": true,
+  "updated_date": "2026-09-23",
+  "real_certified_scope": "HF_PUBLIC_SMALL_FILE_VIA_HF_1.19_PROCESS_PROXY",
+  "real_result": {
+    "valid_real": "PASS",
+    "output_bytes": 665,
+    "sha256": "0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4",
+    "t_valid_ms": 13727.948,
+    "reality_delta": "NONE"
+  },
+  "time_certification": {
+    "whole_loop_time_accounting_complete": false,
+    "tstar_eligible": false,
+    "reason": "HISTORICAL_TASK_TIME_ID_ACTIVE_LEDGER_INCOMPLETE"
+  },
+  "general_router_local_certification": "PARTIAL"
 }
