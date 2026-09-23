@@ -1,0 +1,14 @@
+{
+  "version":"0.3.0",
+  "mode":"selftest",
+  "family":"HIPE-E2E-V3-48",
+  "routes":{"CODE":16,"JEV":24,"GPT":8},
+  "jev_questions":32,
+  "structural_pass":true,
+  "sql_tests":{"pass":64,"total":64},
+  "paid_network_calls":0,
+  "runner_sha256":"ba76c518de350a1efd826e819d2d72d8ad5e7e3f96621c9a0a4df1d9842509c7",
+  "launcher_sha256":"f61afd0a16e0907728dbf73535e74e02484480d147fe5e9a3e26171cb03f0043",
+  "public_benchmark_sha256":"178fa593013bee9df9d28c7413229da7cf0848b2d9c6e8016b757c33c083de00",
+  "private_oracle_sha256":"7a63df87a004ca5dc9fa5ef87af0ede4789ba5067e2ee0cc7c203c7de2e954ea"
+}
