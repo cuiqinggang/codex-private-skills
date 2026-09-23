@@ -53,7 +53,9 @@
       "classification": "CODEX_WINDOWS_PROCESS_SPAWN_CHANNEL_FAILURE",
       "not_download_tool_missing": true,
       "known_alternate_channel_success_observed": true,
-      "real_rule": "ON_SAME_1344_RETRY_ONCE_VIA_PREEXISTING_AUTHORIZED_PROVEN_CHANNEL_ELSE_STOP"
+      "real_rule": "FIRST_USE_TASK_SCOPED_WORKDIR; IF_SAME_1344_RETRY_ONCE_VIA_PREEXISTING_AUTHORIZED_PROVEN_CHANNEL; ELSE_STOP",
+      "scoped_workdir_default": "USE_TASK_SCOPED_DIRECTORY_NOT_USER_HOME_FOR_WORKSPACE_WRITE",
+      "public_repro_support": "Codex Windows issue reports Home workspace can inflate write roots/default DACL; scoped project directory can remove 1344"
     }
   }
 }
