@@ -1,40 +1,31 @@
-# v0.1.2 Reality Certification
+# v0.1.3 Local Reality Certification
 
-原则：这个技能只负责“把下载任务交给成熟下载工具”。不再为路由规则设计多阶段认证。
+发布前真实取件已通过。现在只验证用户本机能否重复同一个 665-byte 公开文件下载。
 
-唯一现实认证目标：
-
-```text
-把一个最小真实下载任务交给成熟下载器
--> 文件成功落地
--> 文件大小 > 0
--> 记录 T_VALID
-```
-
-固定最小测试：
+固定样本：
 
 ```text
-TOOL=aria2c
-URL=https://raw.githubusercontent.com/aria2/aria2/release-1.37.0/README.rst
-DEST=C:\AI\Mature-Download-Router-Real-Test\minimal\README.rst
-NETWORK_CONTEXT=http://127.0.0.1:7890
+URL=https://huggingface.co/openai-community/gpt2/resolve/main/config.json
+EXPECTED_BYTES=665
+PRE_RELEASE_FETCH=PASS
+PRE_RELEASE_ARTIFACT_REREAD=PASS
+LOCAL_TOOL=curl.exe
+LOCAL_NETWORK_CONTEXT=http://127.0.0.1:7890
+TIME_LIMIT=30s
 ```
-
-只使用当前已存在的网络出口，不修改任何持久代理设置。
 
 PASS：
 
 ```text
-aria2c command succeeds
-OUTPUT_EXISTS=YES
-OUTPUT_SIZE>0
-T_VALID_MS recorded
+curl exit=0
+output exists
+output bytes=665
+T_VALID <= 30s
 ```
 
-PASS 后：
-
+成功后：
 ```text
-REAL_CERTIFIED=YES
+LOCAL_REAL_CERTIFIED=YES
 ```
 
-以后遇到 Hugging Face / GitHub / Browser 等来源，直接按 SKILL.md 的成熟工具映射调用；不再为本技能额外制造测试工程。具体成熟工具若在未来真实任务中失败，再记录该现实差异。
+失败后只返回最小 Reality Delta，不切换工具、不改方案。
