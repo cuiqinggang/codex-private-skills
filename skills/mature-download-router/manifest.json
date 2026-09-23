@@ -3,43 +3,41 @@
   "version": "1.0.0",
   "display_name": "成熟下载工具最短调用路由",
   "status": "STABLE_MINIMAL_ROUTER",
-  "purpose": "识别下载来源并选择现成成熟工具；本技能不实现下载功能。",
-  "routes": [
+  "responsibility": "route_only",
+  "decision_order": [
     {
-      "source": "huggingface",
+      "priority": 1,
+      "when": "browser_session_or_web_interaction_required",
+      "tool": "playwright-native-ai-browser",
+      "version": "managed_by_target_skill"
+    },
+    {
+      "priority": 2,
+      "when": "huggingface_resource",
       "tool": "hf",
       "command": "hf download",
       "known_working_version": "1.19.0"
     },
     {
-      "source": "github",
+      "priority": 3,
+      "when": "github_native_task",
       "tool": "gh",
       "commands": [
         "gh release download",
         "gh repo clone"
       ],
-      "known_working_version": "2.92.0"
+      "known_working_version": "2.92.0",
+      "exception": "direct_github_raw_url_goes_to_direct_url_route"
     },
     {
-      "source": "direct_url",
+      "priority": 4,
+      "when": "direct_http_https_ftp_file_url",
       "tool": "aria2c",
       "software": "aria2",
-      "protocols": [
-        "http",
-        "https",
-        "ftp"
-      ],
       "known_working_version": "1.37.0"
-    },
-    {
-      "source": "browser_session_required",
-      "tool": "playwright-native-ai-browser",
-      "version_policy": "managed_by_target_skill"
     }
   ],
-  "version_policy": "Use the currently installed working version. Do not auto-upgrade. Handle version changes only when the selected tool is missing, fails, lacks a required capability, or the user explicitly asks.",
-  "no_custom_download_logic": true,
-  "no_validation_framework": true,
-  "no_benchmark": true,
-  "no_time_ledger": true
+  "version_policy": "use_installed_working_version_no_auto_upgrade",
+  "insufficient_information": "determine_source_or_actual_download_url_first",
+  "implementation_scope": "no_download_implementation"
 }
