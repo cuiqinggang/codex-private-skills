@@ -1,11 +1,11 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.6.0",
+  "version": "4.6.1",
   "display_name": "极限短时间引擎",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.6.0",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.6.1",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
-    "current_version": "1.1.3",
+    "current_version": "1.1.6",
     "role": "REQUIRED_ROOT_NOT_METHOD_STEP"
   },
   "method_steps": [
@@ -37,7 +37,7 @@
     "outer_powershell_wrapper_default": false
   },
   "phase_transition": {
-    "virtual_to_real": "ONLY_AFTER_FREEZE_AND_HANDOFF_READY",
+    "virtual_to_real": "ONLY_AFTER_FREEZE_HANDOFF_READY_AND_REQUIRED_PREEXEC_EVIDENCE",
     "real_pass": "FINAL",
     "real_fail": "RETURN_TO_VIRTUAL_WITHOUT_TIMER_RESET"
   },
@@ -80,6 +80,7 @@
   "virtual_freeze_gates": [
     "REALITY_FOUNDATION_SUFFICIENT",
     "FINAL_VALID_CONDITION_DEFINED",
+    "GPT_REAL_PREEXECUTION_EVIDENCE",
     "EXECUTION_CHAIN_CLOSED",
     "EXTERNAL_DEPENDENCIES_CLOSED",
     "CODEX_POLICY_COMPATIBILITY",
@@ -113,5 +114,13 @@
     "new_task_time_id_required": true,
     "sequence_starts_at": "01",
     "result_required": "EXACT_T_VALID_RUN_CLEAN"
+  },
+  "virtual_preexecution_gate": {
+    "role": "VIRTUAL_INTERNAL_ACTION_NOT_THIRD_STEP",
+    "rule": "IF_GPT_CAN_REAL_PREEXECUTE_CRITICAL_PUBLIC_SUBPATH_AT_LOW_COST_THEN_IT_MUST_PASS_BEFORE_FREEZE",
+    "evidence_required": true,
+    "on_failure": "FIX_OR_SWITCH_OR_BLOCK_IN_VIRTUAL",
+    "unexecutable_by_gpt": "EXPLICITLY_MARK_AND_LEAVE_ONLY_ENVIRONMENT_SPECIFIC_REMAINDER_FOR_REAL",
+    "objective": "REDUCE_REWORK_AND_WHOLE_LOOP_T_VALID"
   }
 }
