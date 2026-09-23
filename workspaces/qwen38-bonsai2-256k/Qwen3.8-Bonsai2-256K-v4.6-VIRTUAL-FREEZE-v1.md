@@ -196,7 +196,7 @@ EXTRA_OUTER_TEXT=FAIL
 INVALID_JSON=FAIL
 ```
 
-9/9 才允许启动 GPU。
+10/10 才允许启动 GPU。
 
 ## 6. Reality 执行链
 
