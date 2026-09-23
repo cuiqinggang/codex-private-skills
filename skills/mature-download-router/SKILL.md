@@ -1,13 +1,13 @@
 ---
 name: mature-download-router
-description: 成熟下载工具最短调用路由 v0.1.4。只做最小来源判断并调用成熟工具；公开样本发布给 Codex 前必须先由 GPT 真实取件成功，Windows 受限沙箱避免 Schannel 路径，优先成熟 OpenSSL/httpx 工具。
+description: 成熟下载工具最短调用路由 v0.1.5。只做最小来源判断并调用成熟工具；公开样本发布给 Codex 前必须先由 GPT 真实取件成功，Windows 受限沙箱避免 Schannel 路径，优先成熟 OpenSSL/httpx 工具。
 metadata:
   version: "0.1.4"
   display_name: "成熟下载工具最短调用路由"
-  status: "PRE_RELEASE_REAL_MATURE_LOCAL_REAL_PENDING"
+  status: "HF_PUBLIC_DOWNLOAD_REAL_CERTIFIED_TIME_BASELINE_PENDING"
 ---
 
-# 成熟下载工具最短调用路由 v0.1.4
+# 成熟下载工具最短调用路由 v0.1.5
 
 ## 核心
 
@@ -77,13 +77,36 @@ hf 1.19 proxy via HTTP_PROXY/HTTPS_PROXY=OFFICIAL_DOCS_VERIFIED
 
 只有最后一项留给 REAL。
 
+## 现实认证结果
+
+```text
+HF_PUBLIC_DOWNLOAD_REAL_CERTIFIED=YES
+TOOL=hf 1.19.0
+OUTPUT_BYTES=665
+SHA256=0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4
+LOCAL_T_VALID_MS=13727.948
+REALITY_DELTA=NONE
+```
+
+注意：
+
+```text
+WHOLE_LOOP_TIME_ACCOUNTING_COMPLETE=NO
+TSTAR_ELIGIBLE=NO
+```
+
+原因：此前同一 TASK_TIME_ID 的 GPT/Codex 主动工作时间没有全程连续记账，所以 13.727948s 只能作为该下载动作的局部现实基线，不能冒充整体 T*。
+
+其他来源路由仍采用成熟工具映射，但没有因为 HF 单样本 PASS 就宣称所有来源已完成本机现实认证。
+
 ## 状态
 
 ```text
-PRE_RELEASE_REAL_MATURE=PASS
-LOCAL_REAL_CERTIFIED=NO
-METHOD=first-principles-physical-limit-convergence@4.6.1
-REALITY_FOUNDATION=local-ai-reality-foundation@1.1.6
+HF_PUBLIC_DOWNLOAD_REAL_CERTIFIED=YES
+GENERAL_ROUTER_LOCAL_CERTIFICATION=PARTIAL
+TIME_BASELINE_CERTIFIED=NO
+METHOD=first-principles-physical-limit-convergence@4.6.2
+REALITY_FOUNDATION=local-ai-reality-foundation@1.1.7
 ```
 
 一句话：GPT 能真实做的先做成功；只把用户本机独有的最后一小段交给 Codex。
