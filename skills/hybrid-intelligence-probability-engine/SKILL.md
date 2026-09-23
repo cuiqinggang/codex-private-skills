@@ -1,94 +1,130 @@
 ---
 name: hybrid-intelligence-probability-engine
-version: "0.2.0"
-status: VIRTUAL_MATURATION_IN_PROGRESS
+version: "0.3.1"
+status: VIRTUAL_MATURITY_PASS_REALITY_PENDING
 mother_method: first-principles-physical-limit-convergence-v4.6
 ---
 
-# 混合智能概率引擎 v0.2.0
+# 混合智能概率引擎 v0.3.1
 
-## 名称修正
+## 作用
 
-本引擎从 v0.2.0 起不再使用 P0 作为显示名称或当前机器名的一部分。
+把完整任务在商业有效硬门内编译到最快的有效执行路径：
 
-历史目录 `hybrid-intelligence-probability-engine-p0` 与 v0.1.0 / v0.1.1 永久保留，只作为历史证据，不覆盖。
+原始任务
+→ 已认证任务族识别
+→ JEV 舒适区导向正向拆解
+→ CODE / JEV / GPT residual
+→ 合法并行
+→ 独立验证器
+→ 可交付结果
 
-JEV Probability Engine P0 v0.4.0 仍是下游概率核心自己的历史正式名称；其 P0 标签不得再传播到本混合引擎。
-
-## 唯一目标
-
-在全部商业有效硬门通过后，最小化完整任务端到端：
+唯一优化目标：
 
 `T* = min(T_VALID_E2E)`
 
-完整时间边界必须包括：
+不追求 JEV 占比本身。
 
-原始任务进入
-→ 正向拆解/编译
-→ 确定性路由校验
-→ CODE / JEV / GPT residual
-→ 合法并行
-→ deterministic executor
-→ independent verifier
-→ 可交付结果落盘
+## 当前已认证任务族
 
-不得再使用“预先标好路由的节点执行时间”冒充完整任务 T_VALID。
+`HIPE-E2E-V3-48`
 
-## 当前成熟规则
+固定组成：
+- 16 个确定性 CODE；
+- 24 个 JEV Choice 节点，编译为 32 个 Choice 问题；
+- 8 个 GPT SQL 构造 residual。
 
-只有同时满足以下条件才允许 VIRTUAL_MATURITY=PASS：
+Full-GPT 与 Hybrid 从同一原始 benchmark 开始，使用同一最终 verifier。
 
-1. 正向拆解规则成为独立可版本化组件；
-2. 形式舒适区规则空间完成穷举边界测试；
-3. 语义拆解 benchmark 完成并通过独立 oracle；
-4. Full-GPT 与 Hybrid 使用同一原始任务、同一 verifier；
-5. 正向拆解/编译时间被计入双方完整 T_VALID；
-6. Exact Reality Twin 得到明确数值 `T_VIRTUAL_STAR`；
-7. 虚拟收益（时间/成本）有明确数值与证据来源；
-8. Reality runner 与失败合同冻结；
-9. GPT 能验证的内容已在虚阶段全部验证；
-10. 仍需现实测量的变量被压缩为最小集合。
+## 正向拆解
 
-任一项缺失：
-`VIRTUAL_MATURITY=NO`
+独立组件：
 
-Reality 通过前：
-`REALITY_CERTIFIED=NO`
+**JEV 舒适区导向正向拆解器 v0.1.0**
 
-## 正向拆解组件
+生产 JEV 舒适区仅允许：
+- 语义保持；
+- 状态可显式化；
+- 有限 Choice；
+- 已认证动作本体；
+- 确定性 verifier；
+- 无开放生成；
+- 无隐藏信息；
+- 无 timed retry。
 
-当前组件：
-`components/comfort-zone-forward-compiler/`
+任一条件不能证明：
+→ GPT residual。
 
-中文名称：
-**JEV 舒适区导向正向拆解器**
+可由确定性算法唯一完成：
+→ CODE 优先。
 
-它不是“运行时反向重拆循环”。
+禁止 JEV↔GPT 循环重拆。
 
-固定方向：
+## 已认证任务族快路径
 
-原始任务
-→ 提取可确定执行部分
-→ 显式化状态/证据/约束
-→ 判断是否可无损映射到已认证有限 Choice
-→ 建立确定性 verifier
-→ CODE / JEV / GPT residual
-→ STOP
+已经成熟的任务族不再在线调用 GPT 做“拆解器”。
 
-无法证明无损、安全、可验证时直接进入 GPT residual，不强塞 JEV。
+直接使用冻结确定性编译器，从而避免额外串行 GPT 延迟。
 
-## 当前历史现实锚点
+未知任务族：
+→ 直接 Full-GPT。
 
-JEV Probability Engine P0 v0.4.0：
-- T_REAL_STAR_MS = 560.9819
-- 30/30 PASS
+新的任务族只有经过新的“虚”完成舒适区发现、攻击、时间竞争和冻结后，才允许进入确定性混合快路径。
 
-这只是概率核心已有现实锚点，不是 v0.2.0 的新增收益，也不是混合引擎的 T_VALID。
+## 当前虚拟目标
+
+```text
+全GPT虚拟端到端=14336.448 ms
+混合虚拟端到端=9448.948 ms
+
+T_虚拟极限候选=9448.948 ms
+虚拟时间加速=1.517253x
+虚拟时间下降=34.0914%
+
+虚拟成本收益=5.009473x
+虚拟成本下降=80.0378%
+```
+
+以上是数字孪生虚拟目标，不是 Reality 结果。
+
+## 成熟证据
+
+```text
+形式规则空间=1024/1024 PASS
+任务族语义边界=128/128 PASS
+结构/Schema攻击=192/192 PASS
+JEV条件破坏攻击=256/256 PASS
+SQL攻击=64/64 PASS
+历史48节点回归=48/48 PASS
+```
+
+## 历史 JEV 数据
+
+JEV Probability Engine P0 v0.4.0 的 560.9819 ms 是下游概率核心历史现实锚点。
+
+禁止把它算作 v0.3.1 的新增收益。
+
+## Reality
+
+Reality 只认证冻结方案。
+
+禁止现实阶段：
+- 改模型；
+- 改 benchmark；
+- 改编译器；
+- 改 verifier；
+- 换路线；
+- 失败后现场修复。
+
+失败固定：
+Reality Delta → STOP → 返回 GPT 的“虚”。
+
+现实入口为冻结 GUI launcher，不向用户发布 PowerShell 命令行模式。
 
 ## 标签
 
 虚：
-`【混合智能概率引擎｜v0.2.0继续虚拟成熟｜2｜虚】`
+`【混合智能概率引擎｜v0.3.1虚拟成熟冻结｜2｜虚】`
 
 实：
 `【混合智能概率引擎｜完整任务现实认证｜3｜实】`
