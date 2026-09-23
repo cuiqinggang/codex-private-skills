@@ -1,10 +1,10 @@
 {
   "skill_id": "mature-download-router",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "display_name": "成熟下载工具最短调用路由",
   "status": "VIRTUAL_MATURE_REAL_PENDING",
   "method": "first-principles-physical-limit-convergence@4.6.0",
-  "reality_foundation": "local-ai-reality-foundation@1.1.4",
+  "reality_foundation": "local-ai-reality-foundation@1.1.5",
   "objective": "MIN_VALID_DOWNLOAD_ROUTING_OVERHEAD",
   "no_custom_layers": [
     "downloader",
@@ -21,18 +21,22 @@
     "other_official_tool": "official mature CLI/API"
   },
   "local_reality": {
-    "aria2c": "AVAILABLE_OBSERVED_VERSION_VERIFY_ON_USE",
-    "hf": "AVAILABLE_OBSERVED_VERSION_VERIFY_ON_USE",
-    "curl": "AVAILABLE_OBSERVED",
-    "gh": "UNKNOWN_NOT_CORE_REQUIRED",
-    "codex_spawn_1344": "KNOWN_EXECUTOR_CHANNEL_FAILURE_NOT_TOOL_MISSING"
+    "workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
+    "process_spawn": "PASS",
+    "aria2c": "1.37.0",
+    "hf": "1.19.0",
+    "gh": "2.92.0_OPTIONAL",
+    "verified_proxy_candidate": "http://127.0.0.1:7890",
+    "real_04_route_match": "2/2",
+    "real_04_result": "NETWORK_STAGE_FAIL_CONNECTION_REFUSED"
   },
   "frozen_external_versions": {
     "aria2": "1.37.0",
     "huggingface_hub": "1.32.0",
     "github_cli_optional": "2.101.0"
   },
-  "virtual_test_status": "PASS",
+  "virtual_test_status": "PASS_REVISED_AFTER_REAL_04",
   "real_certification_status": "PENDING",
-  "updated_date": "2026-09-23"
+  "updated_date": "2026-09-23",
+  "network_rule": "INHERIT_CURRENT_VERIFIED_NETWORK_CONTEXT_PROCESS_LOCALLY; DO_NOT_CHANGE_PERSISTENT_PROXY_SETTINGS"
 }
