@@ -28,7 +28,7 @@ T*=min(T_VALID_RUN)
 
 ## 现实底座
 
-Reality Foundation=local-ai-reality-foundation@1.1.6
+Reality Foundation=local-ai-reality-foundation@1.1.7
 虚开始前必须读取与任务相关的最小充分现实约束。
 已知 Codex 现实限制必须在虚阶段规避：Temp/AppData 可执行脚本 staging 风险；PowerShell 双引号 Here-String 变量提前展开风险；w32tm 非管理员 Access Denied；workspace-write 下 .git/FETCH_HEAD 写权限失败；只读 nvidia-smi 可能出现“有效 stdout + 非零 exit status”冲突。
 已知同类错误再次穿过“虚”进入“实”，视为 Gate Regression。
