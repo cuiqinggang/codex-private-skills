@@ -30,7 +30,7 @@ NGL=99
 
 任何一项不存在或与冻结事实矛盾：记录最小 Reality Delta，STOP。
 
-## 必须先通过 0-GPU verifier 9/9
+## 必须先通过 0-GPU verifier 10/10
 
 正确 verifier：
 - 解析整个 trim 后输出；
@@ -38,7 +38,7 @@ NGL=99
 - exact integer values 3817/6241/9053/42；
 - extra key/text 均 FAIL。
 
-未 9/9 PASS：GPU_RUNS=0，STOP。
+未 10/10 PASS：GPU_RUNS=0，STOP。
 
 ## Server
 
@@ -108,7 +108,7 @@ q8 只有 hard OOM/alloc failure 才允许同模型 q4 fallback；不得因“�
 ## RESULT 最少字段
 
 ```text
-VALIDATOR_SELFTEST=9/9 PASS
+VALIDATOR_SELFTEST=10/10 PASS
 
 SERVER_READY_MS
 KV_MODE
