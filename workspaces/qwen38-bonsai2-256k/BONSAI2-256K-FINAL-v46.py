@@ -111,8 +111,8 @@ def strict_verify(text):
         if set(parsed.keys()) != set(EXPECTED.keys()) or len(parsed) != 4:
             raise ValueError("KEY_SET_MISMATCH")
         for k,v in EXPECTED.items():
-            if isinstance(parsed.get(k), bool) or int(parsed.get(k)) != v:
-                raise ValueError(f"VALUE_MISMATCH_{k}")
+            if type(parsed.get(k)) is not int or parsed.get(k) != v:
+                raise ValueError(f"TYPE_OR_VALUE_MISMATCH_{k}")
         ok=True
     except Exception as e:
         ok=False
@@ -131,6 +131,7 @@ def validator_selftest():
       ("EXTRA_KEY",'{"begin":3817,"middle":6241,"end":9053,"sum":42,"x":1}',False),
       ("EXTRA_OUTER_TEXT",'answer: {"begin":3817,"middle":6241,"end":9053,"sum":42}',False),
       ("INVALID_JSON",'{"begin":3817,"middle":6241,"end":9053,"sum":}',False),
+      ("STRING_NUMBERS",'{"begin":"3817","middle":"6241","end":"9053","sum":"42"}',False),
     ]
     rows=[]
     passed=0
