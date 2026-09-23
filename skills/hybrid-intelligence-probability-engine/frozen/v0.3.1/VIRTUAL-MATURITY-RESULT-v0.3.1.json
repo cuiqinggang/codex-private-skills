@@ -1,0 +1,131 @@
+{
+  "version": "0.3.1",
+  "display_name": "混合智能概率引擎",
+  "scope": "HIPE-E2E-V3-48 已认证任务族",
+  "virtual_maturity": "PASS",
+  "reality_certified": false,
+  "routes": {
+    "CODE": 16,
+    "JEV": 24,
+    "GPT": 8
+  },
+  "jev_questions": 32,
+  "forward_compiler": "JEV 舒适区导向正向拆解器 v0.1.0",
+  "evidence": {
+    "formal_rule_space": {
+      "pass": 1024,
+      "total": 1024
+    },
+    "semantic_family_boundary": {
+      "pass": 128,
+      "total": 128
+    },
+    "schema_attacks": {
+      "pass": 192,
+      "total": 192
+    },
+    "jev_condition_flip_attacks": {
+      "pass": 256,
+      "total": 256,
+      "unsafe_jev_overroute": 0
+    },
+    "sql_attacks": {
+      "pass": 64,
+      "total": 64
+    },
+    "historical_48_regression": {
+      "pass": 48,
+      "total": 48
+    },
+    "recorded_test_instances": 1664,
+    "note": "测试维度存在交叠，1664 不是唯一语义任务数。"
+  },
+  "local_actual_v030": {
+    "parse_compile_p50_ms": 0.105456,
+    "verify_p50_ms": 1.2774765,
+    "write_p50_ms": 0.0653365,
+    "local_p50_total_ms": 1.448269,
+    "classification": "同结构 v0.3.0 本地实际无付费测试；v0.3.1 仅版本/路径/校准升级"
+  },
+  "virtual_twin": {
+    "calibration_date": "2026-09-24",
+    "gpt_model": "openai/gpt-5.6-sol",
+    "gpt_reasoning": "low",
+    "gpt_route": "provider.sort=throughput",
+    "gpt_provider_calibration": "OpenAI Fast current P50 snapshot",
+    "gpt_ttft_ms": 3260,
+    "gpt_throughput_tps": 80,
+    "gpt_input_usd_per_m": 4,
+    "gpt_output_usd_per_m": 20,
+    "jev_model": "typesafe/jev-1.13",
+    "jev_historical_real_anchor_min_ms": 560.9819,
+    "jev_input_usd_per_m": 0.042,
+    "chars_per_token_proxy": 3.5,
+    "payload_bytes": {
+      "full_in": 50077,
+      "residual_in": 3940,
+      "jev_total_in": 46504,
+      "full_out": 3101,
+      "residual_out": 1731
+    },
+    "token_proxy": {
+      "full_in": 14308,
+      "residual_in": 1126,
+      "jev_in": 13287,
+      "full_out": 886,
+      "residual_out": 495
+    },
+    "time": {
+      "full_gpt_virtual_ms": 14336.448269,
+      "hybrid_virtual_ms": 9448.948269,
+      "speedup": 1.5172533345,
+      "reduction_pct": 34.0914284228,
+      "critical_path": "GPT residual"
+    },
+    "cost_proxy": {
+      "full_gpt_usd": 0.074952,
+      "hybrid_usd": 0.014962054,
+      "speedup": 5.0094726299,
+      "reduction_pct": 80.0378188707
+    },
+    "classification": "VIRTUAL_ONLY_NOT_REALITY"
+  },
+  "sensitivity": {
+    "time": {
+      "cases": 25,
+      "min_speedup": 1.2345314331,
+      "max_speedup": 1.6790754093,
+      "min_reduction_pct": 18.9976072537,
+      "max_reduction_pct": 40.4434134138,
+      "all_positive": true
+    },
+    "cost": {
+      "cases": 20,
+      "min_speedup": 4.5079215472,
+      "max_speedup": 5.0297180633,
+      "min_reduction_pct": 77.8168277881,
+      "max_reduction_pct": 80.118169897,
+      "all_positive": true
+    }
+  },
+  "architecture_winner": "已认证任务族确定性正向编译 + CODE/JEV/GPT residual 并行",
+  "unknown_family_policy": "直接 Full-GPT，不强行进入混合路径",
+  "eliminated": [
+    "在线 GPT 编译器后再调用 GPT residual（增加串行 GPT 屏障）",
+    "JEV 先做全局 router（增加串行 JEV 屏障）",
+    "Full-GPT 与 Hybrid 生产双跑竞速（成本门失败）",
+    "未认证 Noul/Score/开放动作空间强塞 JEV",
+    "JEV v0.5.0 语义过度压缩路线",
+    "JEV v0.5.1 未能打败 v0.4.0 历史现实锚点"
+  ],
+  "reality_only_remaining": [
+    "真实 OPENROUTER_API_KEY 可用性",
+    "真实 provider 路由/网络",
+    "GPT-5.6 Sol 30 组 A/B 的真实有效性与延迟",
+    "JEV 本轮真实有效性与延迟",
+    "真实 usage.cost",
+    "真实 T_REAL_STAR",
+    "真实端到端时间/成本收益",
+    "真实结果 SHA256"
+  ]
+}
