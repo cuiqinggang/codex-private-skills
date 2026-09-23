@@ -2,7 +2,7 @@
 
 - Mother method: 整体闭环极限短时间引擎 v4.6
 - Probability core: JEV Probability Engine P0 v0.4.0 (\`typesafe/jev-1.13\`), certified anchor \`T*=560.9819 ms\`, 30/30 PASS on PE-P0-GENERAL-01.
-- High-intelligence baseline/residual: OpenAI \`gpt-5.6-sol\`, standard API path.
+- High-intelligence baseline/residual: OpenAI GPT-5.6 Sol through the same OpenRouter gateway as JEV (\`openai/gpt-5.6-sol\`).
 - P0 scope: canonical hybrid decision plane, not arbitrary Browser/Desktop/Search automation.
 
 ## Frozen runtime rule
@@ -28,7 +28,7 @@ A fixed 48-node canonical workload:
 Full-GPT baseline and Hybrid use the same public tasks and verifier. Hybrid runs two JEV shards plus one GPT-residual batch concurrently. One warmup is outside measured arrays; default measured runs = 10. All measured Full-GPT and Hybrid runs must be VALID. Hybrid normalized cost must not exceed Full-GPT baseline. Promotion additionally requires \`min(T_HYBRID) < min(T_FULL_GPT)\`.
 
 ## External-dependency closure
-Auth availability is a measured reality property, not a design degree of freedom. Frozen environment variables: \`OPENAI_API_KEY\` and \`OPENROUTER_API_KEY\`. Missing auth -> exact Reality Delta and STOP; no probing of credential stores, no fallback model, no provider/model substitution.
+Auth availability is a measured reality property, not a design degree of freedom. Frozen credential: \`OPENROUTER_API_KEY\` only; GPT and JEV share the same already-used gateway. Missing auth -> exact Reality Delta and STOP; no probing of credential stores, no fallback model, no provider/model substitution.
 
 ## Time contract
 Reality wrapper starts before the child runner and stops after the child has written the final result file and exited. Component timings are diagnostic only. The promotion metric is measured wall-clock \`T_VALID\` inside the fixed benchmark; process timing is separately reported.
@@ -37,10 +37,10 @@ Reality wrapper starts before the child runner and stops after the child has wri
 \`VIRTUAL_MATURITY=PASS\` applies only to this P0 benchmark and runtime contract. It does not certify real performance. Reality may only execute the frozen files; any required design change returns to GPT.
 
 ## GPT/JEV commercial snapshot
-For this freeze, normalized price constants are frozen to the current public model pages used on 2026-09-23:
-- GPT-5.6 Sol: $4.00 / 1M input tokens, $20.00 / 1M output tokens.
+For this freeze, normalized price constants are frozen to the current public OpenRouter model pages used on 2026-09-23:
+- GPT-5.6 Sol via OpenRouter: $2.00 / 1M input tokens, $10.00 / 1M output tokens (current promotional list snapshot).
 - Jev 1.13 via OpenRouter: $0.042 / 1M input tokens, $0 output.
 These constants are for normalized comparison only; actual account credits/discounts do not override the normalized commercial gate.
 
 ## Virtual evidence
-The GPT-side structural self-test passed. Mock timings and mock costs are explicitly excluded from commercial/time promotion. Missing-auth failure injection returns a fixed Reality Delta and stops.
+The GPT-side structural self-test passed. Mock timings and mock costs are explicitly excluded from commercial/time promotion. Missing-auth failure injection returns \`REALITY_DELTA=OPENROUTER_AUTH_MISSING\` and stops.
