@@ -1,35 +1,47 @@
-# v0.1.3 Pre-release maturity
+# v0.1.4 Pre-release maturity
 
-This package no longer treats theoretical routing as sufficient.
-
-## Real pre-release matrix
+## Real pre-execution
 
 ```text
-HF_PUBLIC_FILE_REAL_FETCH=PASS
-GENERIC_HTTPS_REAL_FETCH=PASS
-GITHUB_REPOSITORY_FILE_REAL_FETCH=PASS
-SHARED_REPO_SAVE=PASS
-SHARED_REPO_REREAD=PASS
-
-GITHUB_RELEASE_ASSET_BODY=NOT_TESTABLE_ON_CURRENT_GPT_CONNECTOR
-BROWSER_AUTH_DOWNLOAD=NOT_TESTABLE_WITHOUT_USER_SESSION
+HF_RESOURCE_FETCH=PASS
+HF_RESOURCE_BYTES=665
+HF_RESOURCE_SHA256=0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4
+GENERIC_HTTPS_FETCH=PASS
+GITHUB_REPOSITORY_FILE_FETCH=PASS
+SHARED_REPO_SAVE_AND_REREAD=PASS
 ```
 
-Only tested capability is claimed.
-
-## Release rule
+## Environment attack learned from REAL 07
 
 ```text
-same public sample externally fetched first
--> evidence saved
--> evidence reread
--> then local Codex reality task may be published
+WINDOWS_SCHANNEL_CURL=FAIL_EXIT_35
+SCHANNEL_ROUTE_REUSED=NO
 ```
 
-## Current result
+Public independent reproductions show restricted-token Windows sandboxes can break Schannel while OpenSSL-based Python/HTTP stacks remain usable.
+
+## Mature candidate
 
 ```text
-PRE_RELEASE_MATURE=PASS
-CODEX_RELEASE_ALLOWED_FOR_HF_CONFIG_SAMPLE=YES
+LOCAL_TOOL=hf 1.19.0
+PROXY=HTTP_PROXY/HTTPS_PROXY process-local only
+COMMAND=hf download openai-community/gpt2 config.json --revision 607a30d783dfa663caf39e06633721c8d4cfcd7e --local-dir <dir>
+```
+
+Official Hugging Face v1.19 docs:
+- proxy is configured globally through HTTP_PROXY / HTTPS_PROXY;
+- hf download supports repo, filename, revision and local-dir.
+
+## Freeze
+
+```text
+GPT_REAL_PREEXECUTION_EVIDENCE=PASS
+RESOURCE_IDENTITY=PASS
+COMMAND_CONTRACT=PASS
+PROXY_CONTRACT=PASS
+KNOWN_SCHANNEL_FAILURE_AVOIDED=PASS
+USER_LOCAL_HF_TLS_EXECUTION=UNEXECUTABLE_BY_GPT
+PRE_RELEASE_REAL_MATURE=PASS
 LOCAL_REAL_CERTIFIED=NO
+CODEX_RELEASE_ALLOWED=YES
 ```
