@@ -1,12 +1,12 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.6.1。只有“虚/实”两步；以完整 GPT→Codex→现实证据→GPT 收口的整体闭环有效工作时间为唯一优化锚定物。
+description: 极限短时间引擎 v4.6.2。只有“虚/实”两步；以完整 GPT→Codex→现实证据→GPT 收口的整体闭环有效工作时间为唯一优化锚定物。
 metadata:
-  version: "4.6.0"
+  version: "4.6.2"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.6.1
+# 极限短时间引擎 v4.6.2
 
 ## 唯一目标
 
@@ -69,6 +69,89 @@ CAN_GPT_REAL_PREEXECUTE=NO
 只有本机专属、账号专属、GPU专属、浏览器登录态专属、Windows执行上下文专属等 GPT 无法等价复现的剩余差异，才允许进入 REAL。
 
 这条门的目的不是增加测试数量，而是减少“理论方案 -> Codex失败 -> 回虚”的返工时间；若某项预跑不能降低完整 T_VALID_RUN，则不增加无价值测试。
+
+## v4.6.2：发布时间账本 + REAL 单次发布纪律
+
+规则存在但未执行，等于规则无效。v4.6.2 把以下两项升级为不可绕过发布门。
+
+### A. 时间账本门
+
+在任何 VIRTUAL -> REAL 发布前，必须已经存在：
+
+```text
+TASK_TIME_ID
+PROBLEM_ENTRY_TIMESTAMP
+ACTIVE_TOTAL_BEFORE_DISPATCH
+GPT_DISPATCH_TIMESTAMP
+TIME_LEDGER_READY=PASS
+```
+
+REAL 回来后必须补齐：
+
+```text
+CODEX_ACTIVE_START_TIMESTAMP
+CODEX_ACTIVE_END_TIMESTAMP
+CODEX_PROCESS_ACTIVE_MS
+GPT_POST_RETURN_ACTIVE_MS
+TIME_ACCOUNTING_COMPLETE=PASS
+```
+
+若缺任一关键字段：
+
+```text
+FINAL_VALID=BLOCK
+T*=NOT_ELIGIBLE
+```
+
+允许保留功能性 PASS，但不得把该样本用于 T* 或成熟时间基线。
+
+### B. REAL 单次发布纪律
+
+同一冻结方案只允许一次正式 REAL 认证。
+
+```text
+FREEZE_ID=S*
+-> REAL_RELEASE_COUNT=1
+```
+
+如果 REAL FAIL：
+
+```text
+STOP
+-> RETURN_TO_VIRTUAL
+-> 吸收 Reality Delta
+-> 重新预跑
+-> 生成 NEW_FREEZE_ID
+-> 只有新冻结完成后才允许下一次 REAL
+```
+
+禁止：
+
+```text
+REAL FAIL
+-> 不回虚成熟
+-> 直接改一点命令
+-> 再发下一条 REAL
+```
+
+连续 Codex 试错不属于现实认证，而属于未完成的虚拟成熟返工。
+
+### C. 发布序号不是方法步骤
+
+TASK_SEQUENCE 仅是审计发布序号，不是“第 N 步”。
+
+```text
+METHOD_STEP_COUNT=2
+TASK_SEQUENCE_ROLE=AUDIT_ONLY
+```
+
+用户可见表述不得把 08、09 等发布序号描述成“第八步/第九步”。
+真正的方法永远只有：
+
+```text
+VIRTUAL
+REAL
+```
 
 ## 实：Codex 是默认执行器
 
