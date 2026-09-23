@@ -1,12 +1,12 @@
 ---
 name: local-ai-reality-foundation
-description: 本地 AI 现实底座永久资产 v1.1.5。版本化、任务后吸收的 Reality Foundation；本版吸收 Codex Windows 子进程创建 1344 现实差异，以及下载工具存在性事实。
+description: 本地 AI 现实底座永久资产 v1.1.6。版本化、任务后吸收的 Reality Foundation；本版吸收 Codex Windows 子进程创建 1344 现实差异，以及下载工具存在性事实。
 metadata:
-  version: "1.1.4"
+  version: "1.1.6"
   status: ACTIVE_VERSIONED_FOUNDATION
 ---
 
-# 本地 AI 现实底座永久资产 v1.1.5
+# 本地 AI 现实底座永久资产 v1.1.6
 
 ## 1. 唯一目的
 
@@ -33,7 +33,7 @@ MINOR = 新现实域、新资产类别、新吸收能力
 MAJOR = Foundation 合同发生不兼容变化
 ```
 
-v1.1.5 = PATCH。
+v1.1.6 = PATCH。
 
 ## 4. 当前完整资产
 
@@ -135,6 +135,33 @@ ACTION
 = 不允许把 1344 错误解释成 aria2/hf/gh 不存在。
 ```
 
+### OBSERVED_CONSTRAINT_008 — Windows curl / Schannel TLS 执行上下文差异
+
+现实认证 07：
+```text
+curl.exe exit=35
+message=Schannel 无可用凭据
+output_bytes=0
+T_VALID_MS=61.278
+```
+
+curl 官方定义 exit 35 为 SSL/TLS handshake failure。
+同一台机器此前在另一已授权执行上下文中，`curl.exe --proxy http://127.0.0.1:7890` 对 Hugging Face HEAD 请求曾返回 HTTP 200。
+
+```text
+CLASSIFICATION
+= WINDOWS_CURL_SCHANNEL_TLS_CONTEXT_FAILURE
+!= PUBLIC_RESOURCE_NOT_FOUND
+!= ROUTE_SELECTION_ERROR
+!= PROXY_ENDPOINT_PROVEN_DEAD
+```
+
+ACTION：
+- 不把 Schannel 35 自动解释成 URL、下载器或代理本身失败；
+- 同一 REAL 任务若依赖 Windows curl/Schannel，必须以“同一执行上下文中的实际 TLS 请求”作为可用性证据；
+- 只有 GPT/Reality Twin 不能现实复现的本机 TLS/凭据差异，才留给 Codex REAL 验证；
+- 不通过修改系统证书、注册表或代理来现场修复。
+
 ## 6. 网络硬约束
 - FlClash 常驻。
 - 禁止为了任务改变代理。
@@ -145,9 +172,10 @@ ACTION
 相对 v1.1.4：
 
 ```text
-ADD exact download tool versions from REAL 04
-ADD scoped-workdir PROCESS_SPAWN=PASS evidence
-ADD download network context inheritance rule
+ADD Windows curl/Schannel exit 35 execution-context reality fact
+KEEP exact download tool versions from REAL 04
+KEEP scoped-workdir PROCESS_SPAWN=PASS evidence
+KEEP download network context inheritance rule
 NO METHOD CHANGE
 NO HARDWARE FINGERPRINT CHANGE
 ```
