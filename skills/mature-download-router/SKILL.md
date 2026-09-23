@@ -1,110 +1,92 @@
 ---
 name: mature-download-router
-description: 成熟下载工具最短调用路由 v0.1.2。只做最小确定性分发，并继承 Reality Foundation 已验证的本机网络出口；不自建下载器、适配器、队列、状态页或选源算法。
+description: 成熟下载工具最短调用路由 v0.1.3。只做最小来源判断并调用成熟工具；发布给 Codex 前，同一公开测试资源必须先由 GPT 外部取件成功并保存可回读证据。
 metadata:
-  version: "0.1.2"
+  version: "0.1.3"
   display_name: "成熟下载工具最短调用路由"
-  status: "VIRTUAL_MATURE_REAL_PENDING"
+  status: "PRE_RELEASE_REAL_FETCH_PASS_LOCAL_REAL_PENDING"
 ---
 
-# 成熟下载工具最短调用路由 v0.1.2
+# 成熟下载工具最短调用路由 v0.1.3
 
-## 1. 核心
+## 核心
 
-```text
-下载任务
--> 识别来源
--> 继承当前已验证的网络上下文
--> 直接交给成熟工具
--> 等结果
-```
-
-禁止自建 downloader / adapter / queue / status UI / source selector。
-
-## 2. 路由
+下载任务只做一件事：
 
 ```text
-HUGGING_FACE -> hf download
-GITHUB_RELEASE -> gh（若已可用），否则 asset URL -> aria2c
-DIRECT_URL / HTTP(S) / FTP / SFTP / METALINK / BITTORRENT -> aria2c
-BROWSER_SESSION_REQUIRED -> Playwright Native AI Browser
-OTHER_OFFICIAL_MATURE_CLI_OR_API -> 官方成熟工具
+识别来源 -> 交给成熟工具
 ```
 
-## 3. 唯一新增现实规则：网络上下文继承
+不自建下载器、适配器、队列、状态页或下载算法。
 
-现实认证 04 已证明路由匹配 2/2，但 hf 与 aria2c 都在联网阶段失败。此前现实证据又已证明目标站点在显式使用现有本机代理出口后可访问。
-
-因此冻结：
+## 路由原则
 
 ```text
-ROUTE_SELECTION != NETWORK_ROUTE
+来源有官方成熟工具 -> 官方成熟工具
+已有直接 URL -> 成熟直接下载工具
+必须依赖网页登录态 -> Playwright
 ```
 
-调用成熟下载工具时，不重新设计代理；只继承 Reality Foundation 当前已验证的网络出口。
+## 发布门
 
-当前本机已知有效出口候选：
+任何用于 Codex 现实认证的公开测试资源，发布前必须满足：
 
 ```text
-http://127.0.0.1:7890
+GPT_EXTERNAL_FETCH=PASS
+ARTIFACT_SAVED_TO_SHARED_REPO=PASS
+ARTIFACT_REREAD=PASS
 ```
 
-使用方式必须是进程级或命令级，不修改 Windows / FlClash / Git 持久设置：
+否则：
 
 ```text
-hf:
-  启动进程前继承 HTTP_PROXY / HTTPS_PROXY
-
-aria2c:
-  --all-proxy=<CURRENT_VERIFIED_PROXY>
-  或继承标准 proxy 环境变量
+CODEX_REAL_TASK_RELEASE=BLOCK
 ```
 
-若该已有 endpoint 当前不可连接：
-```text
-STOP
-REALITY_DELTA=EXISTING_NETWORK_ENDPOINT_UNAVAILABLE
-```
-
-不得把它误判成 hf/aria2 算法失败。
-
-## 4. 多任务
-
-同一工具多个任务交给工具自己的批量/队列/并发；不同来源拆成最少成熟工具调用。不建立统一调度器。
-
-## 5. 本机现实基线
-
-现实认证 04：
+## 当前发布前真实样本
 
 ```text
-WORKDIR=C:\AI\Mature-Download-Router-Real-Test
-PROCESS_SPAWN=PASS
-aria2c=1.37.0
-hf=1.19.0
-gh=2.92.0
+1. Hugging Face
+   source=https://huggingface.co/openai-community/gpt2/resolve/main/config.json
+   bytes=665
+   blob_sha=10c66461e4c109db5a2196bff4bb59be30396ed8
+   result=PASS
+
+2. Generic HTTPS
+   source=https://www.cloudflare.com/robots.txt
+   bytes=1093
+   saved_blob_sha=8e68773cbc7b359bd3f22570effed16019ea7706
+   result=PASS
+
+3. GitHub repository file
+   source=aria2/aria2@release-1.37.0:README.rst
+   bytes=22434
+   source_blob_sha=75559047dabff9cc609760551d49b342de504cd6
+   saved_blob_sha=75559047dabff9cc609760551d49b342de504cd6
+   result=PASS
 ```
 
-版本漂移不是本次 connection refused 的已证实原因。
+GitHub Release asset 正文当前 GPT 连接器不能直接拉取，因此不伪造 PASS，也不用于首个本地认证样本。
 
-当前上游稳定基线（2026-09-23）：
+## 本地认证
+
+本地认证只需要重复一个已经通过发布门的小文件下载。
+
+当前首选样本：
+```text
+Hugging Face config.json, 665 bytes
+```
+
+本机先前已有现实证据：
+```text
+curl.exe + existing proxy http://127.0.0.1:7890 -> Hugging Face HTTP 200
+```
+
+因此首个本地认证使用 curl.exe，不再临时更换未经同类现实证明的工具。
+
+## 状态
 
 ```text
-aria2=1.37.0
-huggingface_hub/hf=1.32.0
-GitHub CLI=2.101.0 (optional)
+PRE_RELEASE_REAL_FETCH=PASS
+LOCAL_REAL_CERTIFIED=NO
 ```
-
-## 6. Executor Entry
-
-现实任务使用窄工作目录，不从用户 Home 启动 workspace-write。1344 属于 Codex Windows 进程创建问题，不等于下载工具缺失。
-
-## 7. 方法
-
-```text
-METHOD=first-principles-physical-limit-convergence@4.6.0
-REALITY_FOUNDATION=local-ai-reality-foundation@1.1.5
-VIRTUAL_MATURE=PASS
-REAL_CERTIFIED=NO
-```
-
-一句话：选对成熟工具，同时把现实中已经验证有效的网络出口原样带给它；除此之外不增加中间层。
