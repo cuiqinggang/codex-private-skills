@@ -1,8 +1,8 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.6.1",
+  "version": "4.6.2",
   "display_name": "极限短时间引擎",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.6.1",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.6.2",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
     "current_version": "1.1.6",
@@ -50,7 +50,9 @@
     "reset_on_return_to_virtual": false,
     "reset_on_version_change": false,
     "reset_only_on_new_task_time_id": true,
-    "final_exact_echo_required": true
+    "final_exact_echo_required": true,
+    "sequence_role": "AUDIT_ONLY_NOT_METHOD_STEP",
+    "user_visible_rule": "DO_NOT_DESCRIBE_TASK_SEQUENCE_AS_METHOD_STEP"
   },
   "timing_contract": {
     "task_fields": [
@@ -75,7 +77,25 @@
     ],
     "authoritative_duration_clock": "SYSTEM_DIAGNOSTICS_STOPWATCH",
     "human_idle": "EXCLUDED",
-    "local_timer_role": "DIAGNOSTIC_ONLY"
+    "local_timer_role": "DIAGNOSTIC_ONLY",
+    "release_gate": {
+      "required_before_real": [
+        "TASK_TIME_ID",
+        "PROBLEM_ENTRY_TIMESTAMP",
+        "ACTIVE_TOTAL_BEFORE_DISPATCH",
+        "GPT_DISPATCH_TIMESTAMP",
+        "TIME_LEDGER_READY_PASS"
+      ],
+      "on_missing": "REAL_RELEASE_BLOCK"
+    },
+    "final_gate": {
+      "required_after_real": [
+        "CODEX_PROCESS_ACTIVE_MS",
+        "GPT_POST_RETURN_ACTIVE_MS",
+        "TIME_ACCOUNTING_COMPLETE_PASS"
+      ],
+      "on_missing": "FINAL_VALID_BLOCK_AND_TSTAR_INELIGIBLE"
+    }
   },
   "virtual_freeze_gates": [
     "REALITY_FOUNDATION_SUFFICIENT",
@@ -88,7 +108,9 @@
     "POSITION_AND_SEQUENCE_GATE",
     "TIMING_CONTRACT_READY",
     "FROZEN_SOLUTION",
-    "HANDOFF_READY"
+    "HANDOFF_READY",
+    "TIME_LEDGER_READY",
+    "REAL_RELEASE_COUNT_ZERO_FOR_NEW_FREEZE"
   ],
   "known_constraints": {
     "temp_executable_staging": "AVOID",
@@ -122,5 +144,10 @@
     "on_failure": "FIX_OR_SWITCH_OR_BLOCK_IN_VIRTUAL",
     "unexecutable_by_gpt": "EXPLICITLY_MARK_AND_LEAVE_ONLY_ENVIRONMENT_SPECIFIC_REMAINDER_FOR_REAL",
     "objective": "REDUCE_REWORK_AND_WHOLE_LOOP_T_VALID"
+  },
+  "real_release_discipline": {
+    "one_real_per_freeze_id": true,
+    "on_real_fail": "STOP_RETURN_TO_VIRTUAL_ABSORB_DELTA_RERUN_PREEXEC_CREATE_NEW_FREEZE",
+    "direct_real_retry_without_new_freeze": "FORBIDDEN"
   }
 }
