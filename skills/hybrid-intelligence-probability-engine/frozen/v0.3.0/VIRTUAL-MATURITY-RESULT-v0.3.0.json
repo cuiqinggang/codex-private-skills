@@ -1,43 +1,83 @@
 {
   "version": "0.3.0",
   "scope": "HIPE-E2E-V3-48_CERTIFIED_FAMILY",
+  "virtual_maturity": "PASS",
+  "reality_certified": false,
   "routes": {"CODE":16,"JEV":24,"GPT":8},
   "jev_questions": 32,
-  "schema_attacks_total": 192,
-  "schema_attacks_fail": 0,
-  "family_128_total": 128,
-  "family_128_fail": 0,
-  "formal_1024": {"CODE":128,"JEV":3,"GPT":893},
-  "sql_attacks_total": 64,
-  "sql_attacks_fail": 0,
-  "local": {
-    "parse_compile_ms":{"min":0.083093,"p50":0.092257,"p95":0.16215,"max":1.4154},
-    "verify_ms":{"min":1.194978,"p50":1.29756,"p95":1.737371,"max":5.788245},
-    "write_ms":{"min":0.058276,"p50":0.066288,"p95":0.093539,"max":1.108962},
-    "raw_bytes":12061
+  "formal_rule_space": {"pass":1024,"total":1024},
+  "family_boundary": {"pass":128,"total":128},
+  "schema_attacks": {"pass":192,"total":192},
+  "sql_attacks": {"pass":64,"total":64},
+  "local_actual": {
+    "parse_compile_ms":{"min":0.083924,"p50":0.105456,"p95":0.161078,"max":1.276588},
+    "verify_ms":{"min":1.187769,"p50":1.2774765,"p95":1.562001,"max":3.658827},
+    "write_ms":{"min":0.057916,"p50":0.0653365,"p95":0.087900,"max":1.813913},
+    "p50_total_ms":1.448269,
+    "raw_benchmark_bytes":12061,
+    "classification":"LOCAL_DETERMINISTIC_ACTUAL"
   },
   "twin": {
     "calibration": {
       "snapshot_date":"2026-09-24",
+      "gpt_model":"openai/gpt-5.6-sol",
       "gpt_route":"provider.sort=throughput",
       "gpt_provider_snapshot":"OpenAI Fast",
       "gpt_latency_p50_ms":3700.0,
       "gpt_tps":71.0,
       "gpt_input_usd_per_m":4.0,
       "gpt_output_usd_per_m":20.0,
+      "jev_model":"typesafe/jev-1.13",
       "jev_real_anchor_min_ms":560.9819,
       "jev_input_usd_per_m":0.042,
       "chars_per_token_proxy":3.5,
       "classification":"VIRTUAL_ONLY"
     },
-    "bytes":{"full_in":18765,"residual_in":3908,"jev_total_in":46504,"full_out":3101,"residual_out":1731},
-    "tokens_proxy":{"full_in":5362,"residual_in":1117,"jev_in":13287,"full_out":886,"residual_out":495},
-    "time":{"full_ms":16178.87323943662,"hybrid_ms":10673.287090915494,"residual_ms":10671.830985915494,"local_p50_ms":1.456105,"speedup":1.5158285448170108,"reduction_pct":34.02947824018455},
-    "cost":{"full_usd_proxy":0.039168,"hybrid_usd_proxy":0.014926054,"speedup":2.624136292150624,"reduction_pct":61.89222324346404}
+    "bytes":{"full_in":50077,"residual_in":3940,"jev_total_in":46504,"full_out":3101,"residual_out":1731},
+    "tokens_proxy":{"full_in":14308,"residual_in":1126,"jev_in":13287,"full_out":886,"residual_out":495},
+    "time":{
+      "full_ms":16178.87323943662,
+      "hybrid_ms":10673.279254915495,
+      "residual_ms":10671.830985915494,
+      "local_p50_ms":1.448269,
+      "speedup":1.5158296576926502,
+      "reduction_pct":34.0295266737181
+    },
+    "cost":{
+      "full_usd_proxy":0.074952,
+      "hybrid_usd_proxy":0.014962054,
+      "speedup":5.0094726298942645,
+      "reduction_pct":80.03781887074395
+    }
   },
-  "sensitivity":{"cases":25,"min_speedup":1.2641829924861254,"max_speedup":1.605502107913139,"min_reduction_pct":20.89752781490808,"max_reduction_pct":37.71418953165884,"all_positive":true},
-  "cost_sensitivity":{"cases":20,"min_speedup":2.3586122363069455,"max_speedup":2.6351259392449937,"min_reduction_pct":57.60218722659667,"max_reduction_pct":62.05114962032834,"all_positive":true},
+  "time_sensitivity":{
+    "cases":25,
+    "min_speedup":1.264183623087868,
+    "max_speedup":1.605503124909255,
+    "min_reduction_pct":20.897567272907615,
+    "max_reduction_pct":37.714228986223794,
+    "all_positive":true
+  },
+  "cost_sensitivity":{
+    "cases":20,
+    "min_speedup":4.503298620763979,
+    "max_speedup":5.029476097372655,
+    "min_reduction_pct":77.79405533114854,
+    "max_reduction_pct":80.11721339082635,
+    "all_positive":true
+  },
   "architecture_winner":"CERTIFIED_FAMILY_DETERMINISTIC_COMPILER_PARALLEL_HYBRID",
   "unknown_family_policy":"DIRECT_FULL_GPT",
-  "result_sha256":"0b03c8f9de8701b286e0903323137d3da1ba4d700622a7a0bbfd2a85c602661c"
+  "virtual_reproduction_sha256":"e0a58369b0843fbb3aee707154a04081197aac7cdb8a10c58808d2afaa278892",
+  "reality_only_remaining":[
+    "OPENROUTER_API_KEY availability",
+    "actual provider routing and network latency",
+    "GPT-5.6 Sol real 30/30 validity",
+    "JEV real current-run latency and validity",
+    "actual usage.cost",
+    "same-session interleaved Full-GPT/Hybrid A/B",
+    "T_REAL_STAR",
+    "real cost speedup",
+    "real result SHA256"
+  ]
 }
