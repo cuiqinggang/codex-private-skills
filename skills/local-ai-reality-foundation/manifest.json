@@ -1,7 +1,7 @@
 {
   "skill_id": "local-ai-reality-foundation",
-  "version": "1.1.5",
-  "previous_version": "1.1.4",
+  "version": "1.1.6",
+  "previous_version": "1.1.5",
   "display_name": "本地 AI 现实底座永久资产",
   "role": "VERSIONED_PERSISTENT_REALITY_FOUNDATION",
   "method_step": false,
@@ -67,6 +67,16 @@
       "workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
       "process_spawn": "PASS",
       "r0_ms": 4171
+    },
+    "windows_curl_schannel_real_07": {
+      "exit_code": 35,
+      "message": "Schannel no usable credentials",
+      "output_bytes": 0,
+      "t_valid_ms": 61.278,
+      "classification": "WINDOWS_CURL_SCHANNEL_TLS_CONTEXT_FAILURE",
+      "curl_semantics": "CURLE_SSL_CONNECT_ERROR_TLS_HANDSHAKE_FAILURE",
+      "prior_same_machine_other_context_proxy_head_200": true,
+      "rule": "REQUIRE_SAME_EXECUTION_CONTEXT_TLS_PRECHECK_WHEN_RELYING_ON_WINDOWS_CURL_SCHANNEL; DO_NOT_MUTATE_SYSTEM_CERTS_REGISTRY_OR_PROXY"
     }
   }
 }
