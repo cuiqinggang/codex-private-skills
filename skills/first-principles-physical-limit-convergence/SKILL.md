@@ -1,12 +1,12 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.6.0。只有“虚/实”两步；以完整 GPT→Codex→现实证据→GPT 收口的整体闭环有效工作时间为唯一优化锚定物。
+description: 极限短时间引擎 v4.6.1。只有“虚/实”两步；以完整 GPT→Codex→现实证据→GPT 收口的整体闭环有效工作时间为唯一优化锚定物。
 metadata:
   version: "4.6.0"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.6.0
+# 极限短时间引擎 v4.6.1
 
 ## 唯一目标
 
@@ -28,7 +28,7 @@ T*=min(T_VALID_RUN)
 
 ## 现实底座
 
-Reality Foundation=local-ai-reality-foundation@1.1.3
+Reality Foundation=local-ai-reality-foundation@1.1.6
 虚开始前必须读取与任务相关的最小充分现实约束。
 已知 Codex 现实限制必须在虚阶段规避：Temp/AppData 可执行脚本 staging 风险；PowerShell 双引号 Here-String 变量提前展开风险；w32tm 非管理员 Access Denied；workspace-write 下 .git/FETCH_HEAD 写权限失败；只读 nvidia-smi 可能出现“有效 stdout + 非零 exit status”冲突。
 已知同类错误再次穿过“虚”进入“实”，视为 Gate Regression。
@@ -38,6 +38,37 @@ Reality Foundation=local-ai-reality-foundation@1.1.3
 虚的目标：冻结预测整体 T_VALID_RUN 最短的完整有效方案。
 冻结前必须同时满足：REALITY_FOUNDATION_SUFFICIENT、FINAL_VALID_CONDITION_DEFINED、EXECUTION_CHAIN_CLOSED、EXTERNAL_DEPENDENCIES_CLOSED、CODEX_POLICY_COMPATIBILITY、KNOWN_FAILURE_GATES、POSITION_AND_SEQUENCE_GATE、TIMING_CONTRACT_READY、FROZEN_SOLUTION、HANDOFF_READY 全部 PASS。
 虚完成时必须在同一轮直接交付“实”的 Codex 自包含任务，不允许留下“再问一次怎么执行 / 再下载 / 再生成命令”的无价值往返。
+
+## v4.6.1：虚内现实预跑证据门
+
+“虚拟成熟”不得只等于“推理认为可行”。
+
+凡 GPT 在当前会话里已经具备现实执行/访问能力、并且能够低成本复现冻结方案的关键公开子路径，冻结前必须先真实执行该子路径并形成证据。
+
+固定规则：
+
+```text
+CAN_GPT_REAL_PREEXECUTE=YES
+-> MUST_REAL_PREEXECUTE_BEFORE_FREEZE=YES
+-> EVIDENCE_REQUIRED=YES
+-> PREEXEC_RESULT=PASS 才允许该子路径进入 FROZEN_SOLUTION
+
+CAN_GPT_REAL_PREEXECUTE=NO
+-> 明确标记 UNEXECUTABLE_BY_GPT
+-> 只把环境专属剩余差异交给 REAL
+```
+
+预跑仍属于 VIRTUAL 内部动作，不新增第三步。
+
+预跑证据至少证明与当前冻结主张直接相关的事实，例如：
+- 公共资源/URL真实存在并能取得；
+- 文件内容、大小、哈希或 revision 与冻结目标一致；
+- 可由 GPT 当前工具实际完成的 API / GitHub / Web / 文件动作已经成功；
+- 若预跑失败，必须在“虚”中修正、换成熟路径或 BLOCK，不得把未经预跑的同一路径直接发布给 Codex 试错。
+
+只有本机专属、账号专属、GPU专属、浏览器登录态专属、Windows执行上下文专属等 GPT 无法等价复现的剩余差异，才允许进入 REAL。
+
+这条门的目的不是增加测试数量，而是减少“理论方案 -> Codex失败 -> 回虚”的返工时间；若某项预跑不能降低完整 T_VALID_RUN，则不增加无价值测试。
 
 ## 实：Codex 是默认执行器
 
@@ -97,8 +128,8 @@ GitHub=SHARED_FACT_SOURCE；GitHub!=DEFAULT_REAL_BOOTSTRAP_TRANSPORT。
 
 历史 v4.5.x 首次开发过程包含方法设计、返工和多次 Reality Delta。
 HISTORICAL_DEVELOPMENT_RUN >= 00:51:07.109。
-它是开发/返工成本样本，不是 v4.6.0 成熟运行的 T*，也不是物理下界。
-v4.6.0 成熟性能必须重新用干净任务测量：T_VALID_RUN_CLEAN=新 TASK_TIME_ID 下完整一虚一实闭环的真实有效时间；T*=min(VALID CLEAN RUNS)。
+它是开发/返工成本样本，不是 v4.6.1 成熟运行的 T*，也不是物理下界。
+v4.6.1 成熟性能必须重新用干净任务测量：T_VALID_RUN_CLEAN=新 TASK_TIME_ID 下完整一虚一实闭环的真实有效时间；T*=min(VALID CLEAN RUNS)。
 
 ## 收口
 
