@@ -31,3 +31,19 @@ v0.1.1 keeps the 48-node benchmark, model IDs, endpoints, run count and verifier
 Current labels:
 - Virtual: `【混合智能概率引擎｜v0.1.1虚拟成熟与冻结｜2｜虚】`
 - Reality: `【混合智能概率引擎｜冻结方案现实验证｜3｜实】`
+
+
+## v0.2.0 纠正说明
+
+本目录 v0.1.0 / v0.1.1 现仅作为“预先路由后的决策执行平面”历史原型保留。
+
+由于旧 48 节点 runner 没有把“原始任务 → 正向拆解/语义编译 → 路由”计入完整 T_VALID，因此：
+
+```text
+FULL_ENGINE_VIRTUAL_MATURITY=NO
+FULL_ENGINE_REALITY_CERTIFICATION=NOT_ELIGIBLE
+V010_V011_LAUNCHER=HISTORICAL_DECISION_PLANE_ONLY
+SUPERSEDED_BY=hybrid-intelligence-probability-engine v0.2.0 maturation
+```
+
+旧 launcher 不得用于宣称完整混合智能概率引擎现实认证。
