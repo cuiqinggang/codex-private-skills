@@ -1,0 +1,44 @@
+{
+  "project": "qwen38-bonsai2-27b-256k-final-closeout",
+  "method": "extreme-time-engine-v4.6.0",
+  "branch": "codex/qwen38-bonsai2-256k-v4.6-final-freeze-v1",
+  "phase": "VIRTUAL_FROZEN",
+  "authority": {
+    "current_md_git_blob": "6c619edaf171fdc4234058a9d40124ab52e8bb14",
+    "virtual_freeze_git_blob": "4e52a6bf11618f9dfb62b3901e9b858d5a4a599a",
+    "real_contract_git_blob": "90cd33f48bb4f394435e34e7bbf7ec1ca7a181bb",
+    "runner_git_blob": "b0d68b59b22c767c30804944f40ea921aa85ae29",
+    "mature_solution_delta_git_blob": "0d712e0579a84a6126d337f3ad51cd36d90df583"
+  },
+  "frozen": {
+    "model": "Ternary-Bonsai-2-27B-PQ2_0.gguf",
+    "context": 262144,
+    "runtime_commit": "9a9394a895b96003ca842a6041cb28ac49a108f7",
+    "cuda_arch": 75,
+    "parallel": 1,
+    "flash_attention": true,
+    "kv_primary": "q8_0",
+    "kv_fallback": "q4_0_on_hard_memory_only",
+    "ctx_checkpoints": 32,
+    "checkpoint_min_step": 8192,
+    "cache_ram_mib": 0,
+    "cache_idle_slots": false,
+    "cache_reuse": 0,
+    "speculative": false,
+    "jev_ab": "SKIP_NOT_CRITICAL_PATH",
+    "old_1018_suite": "HISTORY_ONLY_FOR_SEPARATE_CODEX_REPLACEMENT_GOAL"
+  },
+  "virtual_gates": {
+    "REALITY_FOUNDATION_SUFFICIENT": "PASS",
+    "FINAL_VALID_CONDITION_DEFINED": "PASS",
+    "EXECUTION_CHAIN_CLOSED": "PASS",
+    "EXTERNAL_DEPENDENCIES_CLOSED": "PASS",
+    "CODEX_POLICY_COMPATIBILITY": "PASS",
+    "KNOWN_FAILURE_GATES": "PASS",
+    "POSITION_AND_SEQUENCE_GATE": "PASS",
+    "TIMING_CONTRACT_READY": "PASS",
+    "FROZEN_SOLUTION": "PASS",
+    "HANDOFF_READY": "PASS"
+  },
+  "next": "REAL"
+}
