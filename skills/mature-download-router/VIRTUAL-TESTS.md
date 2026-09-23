@@ -13,7 +13,8 @@
 | V05 | direct HTTPS | aria2 | PASS |
 | V06 | browser-session-only | Playwright | PASS |
 | V07 | mixed HF + direct URL | hf + aria2; no custom queue | PASS |
-| V08 | default Codex channel returns 1344 | retry once on pre-existing proven execution channel; do not classify tool missing | PASS |
+| V08 | workspace-write launched from user Home and returns 1344 | restart reality task from task-scoped narrow workdir; do not classify tool missing | PASS |
+| V08b | scoped workdir still returns 1344 | retry once on pre-existing authorized proven execution channel; otherwise STOP | PASS |
 | V09 | aria2 missing | bootstrap task required; router does not invent downloader | PASS |
 | V10 | hf missing | bootstrap task required; router does not invent downloader | PASS |
 
