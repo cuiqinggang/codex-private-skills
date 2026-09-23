@@ -1,0 +1,813 @@
+{
+  "version": "0.2.0",
+  "title": "混合智能概率引擎—正向拆解语义基准",
+  "cases_count": 128,
+  "distribution": {
+    "CODE": 32,
+    "JEV": 32,
+    "GPT": 64
+  },
+  "oracle_visibility": "hidden-from-compiler",
+  "cases": [
+    {
+      "id": "C001",
+      "task": "把整数 1 和 5 相加并返回结果。",
+      "expected_route": "CODE",
+      "category": "arithmetic"
+    },
+    {
+      "id": "C002",
+      "task": "如果数值 8 大于阈值 8 就返回 BLOCK，否则返回 ALLOW。",
+      "expected_route": "CODE",
+      "category": "threshold"
+    },
+    {
+      "id": "C003",
+      "task": "从 JSON 对象中读取字段 'count'，原样返回该字段值。",
+      "expected_route": "CODE",
+      "category": "json_extract"
+    },
+    {
+      "id": "C004",
+      "task": "把日期 2026-09-04 按 YYYY/MM/DD 格式化。",
+      "expected_route": "CODE",
+      "category": "date_format"
+    },
+    {
+      "id": "C005",
+      "task": "把整数 29 和 17 相加并返回结果。",
+      "expected_route": "CODE",
+      "category": "arithmetic"
+    },
+    {
+      "id": "C006",
+      "task": "如果数值 5 大于阈值 20 就返回 BLOCK，否则返回 ALLOW。",
+      "expected_route": "CODE",
+      "category": "threshold"
+    },
+    {
+      "id": "C007",
+      "task": "从 JSON 对象中读取字段 'count'，原样返回该字段值。",
+      "expected_route": "CODE",
+      "category": "json_extract"
+    },
+    {
+      "id": "C008",
+      "task": "把日期 2026-09-08 按 YYYY/MM/DD 格式化。",
+      "expected_route": "CODE",
+      "category": "date_format"
+    },
+    {
+      "id": "C009",
+      "task": "把整数 26 和 12 相加并返回结果。",
+      "expected_route": "CODE",
+      "category": "arithmetic"
+    },
+    {
+      "id": "C010",
+      "task": "如果数值 2 大于阈值 15 就返回 BLOCK，否则返回 ALLOW。",
+      "expected_route": "CODE",
+      "category": "threshold"
+    },
+    {
+      "id": "C011",
+      "task": "从 JSON 对象中读取字段 'count'，原样返回该字段值。",
+      "expected_route": "CODE",
+      "category": "json_extract"
+    },
+    {
+      "id": "C012",
+      "task": "把日期 2026-09-12 按 YYYY/MM/DD 格式化。",
+      "expected_route": "CODE",
+      "category": "date_format"
+    },
+    {
+      "id": "C013",
+      "task": "把整数 23 和 7 相加并返回结果。",
+      "expected_route": "CODE",
+      "category": "arithmetic"
+    },
+    {
+      "id": "C014",
+      "task": "如果数值 30 大于阈值 10 就返回 BLOCK，否则返回 ALLOW。",
+      "expected_route": "CODE",
+      "category": "threshold"
+    },
+    {
+      "id": "C015",
+      "task": "从 JSON 对象中读取字段 'count'，原样返回该字段值。",
+      "expected_route": "CODE",
+      "category": "json_extract"
+    },
+    {
+      "id": "C016",
+      "task": "把日期 2026-09-16 按 YYYY/MM/DD 格式化。",
+      "expected_route": "CODE",
+      "category": "date_format"
+    },
+    {
+      "id": "C017",
+      "task": "把整数 20 和 19 相加并返回结果。",
+      "expected_route": "CODE",
+      "category": "arithmetic"
+    },
+    {
+      "id": "C018",
+      "task": "如果数值 27 大于阈值 5 就返回 BLOCK，否则返回 ALLOW。",
+      "expected_route": "CODE",
+      "category": "threshold"
+    },
+    {
+      "id": "C019",
+      "task": "从 JSON 对象中读取字段 'count'，原样返回该字段值。",
+      "expected_route": "CODE",
+      "category": "json_extract"
+    },
+    {
+      "id": "C020",
+      "task": "把日期 2026-09-20 按 YYYY/MM/DD 格式化。",
+      "expected_route": "CODE",
+      "category": "date_format"
+    },
+    {
+      "id": "C021",
+      "task": "把整数 17 和 14 相加并返回结果。",
+      "expected_route": "CODE",
+      "category": "arithmetic"
+    },
+    {
+      "id": "C022",
+      "task": "如果数值 24 大于阈值 17 就返回 BLOCK，否则返回 ALLOW。",
+      "expected_route": "CODE",
+      "category": "threshold"
+    },
+    {
+      "id": "C023",
+      "task": "从 JSON 对象中读取字段 'count'，原样返回该字段值。",
+      "expected_route": "CODE",
+      "category": "json_extract"
+    },
+    {
+      "id": "C024",
+      "task": "把日期 2026-09-24 按 YYYY/MM/DD 格式化。",
+      "expected_route": "CODE",
+      "category": "date_format"
+    },
+    {
+      "id": "C025",
+      "task": "把整数 14 和 9 相加并返回结果。",
+      "expected_route": "CODE",
+      "category": "arithmetic"
+    },
+    {
+      "id": "C026",
+      "task": "如果数值 21 大于阈值 12 就返回 BLOCK，否则返回 ALLOW。",
+      "expected_route": "CODE",
+      "category": "threshold"
+    },
+    {
+      "id": "C027",
+      "task": "从 JSON 对象中读取字段 'count'，原样返回该字段值。",
+      "expected_route": "CODE",
+      "category": "json_extract"
+    },
+    {
+      "id": "C028",
+      "task": "把日期 2026-09-28 按 YYYY/MM/DD 格式化。",
+      "expected_route": "CODE",
+      "category": "date_format"
+    },
+    {
+      "id": "C029",
+      "task": "把整数 11 和 21 相加并返回结果。",
+      "expected_route": "CODE",
+      "category": "arithmetic"
+    },
+    {
+      "id": "C030",
+      "task": "如果数值 18 大于阈值 7 就返回 BLOCK，否则返回 ALLOW。",
+      "expected_route": "CODE",
+      "category": "threshold"
+    },
+    {
+      "id": "C031",
+      "task": "从 JSON 对象中读取字段 'count'，原样返回该字段值。",
+      "expected_route": "CODE",
+      "category": "json_extract"
+    },
+    {
+      "id": "C032",
+      "task": "把日期 2026-09-04 按 YYYY/MM/DD 格式化。",
+      "expected_route": "CODE",
+      "category": "date_format"
+    },
+    {
+      "id": "J001",
+      "task": "请求：发布月报。证据：负责人批准、校验和、目标位置均已提供。约束：批准和证据完整时允许发布。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "EXECUTE",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J002",
+      "task": "请求：发布月报。证据：报告已完成但缺少负责人批准。约束：负责人批准是发布前置条件。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "HOLD",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J003",
+      "task": "请求：应用生产配置。证据：批准已提供，但必要依赖正在临时维护。约束：临时依赖不可用时必须等待。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "HOLD",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J004",
+      "task": "请求：修改下月工资导出目标。证据：申请已批准但当前提交给基础设施团队。约束：财务运营负责已批准的工资变更。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "ROUTE",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J005",
+      "task": "请求：永久关闭强制审计日志。证据：工作区负责人已批准。约束：强制审计日志不得被工作区批准关闭。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "REJECT",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J006",
+      "task": "请求：修改下月工资导出目标。证据：当前提交给基础设施团队，且财务批准缺失。约束：必须先补齐批准；批准后由财务负责。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "HOLD",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J007",
+      "task": "请求：部署已批准的静态网站。证据：负责人批准、构建校验和、目标环境均存在。约束：静态部署证据完整可执行。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "EXECUTE",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J008",
+      "task": "请求：删除受保留策略保护的记录。证据：管理员批准存在。约束：保留策略禁止永久删除。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "REJECT",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J009",
+      "task": "请求：发布月报。证据：负责人批准、校验和、目标位置均已提供。约束：批准和证据完整时允许发布。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "EXECUTE",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J010",
+      "task": "请求：发布月报。证据：报告已完成但缺少负责人批准。约束：负责人批准是发布前置条件。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "HOLD",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J011",
+      "task": "请求：应用生产配置。证据：批准已提供，但必要依赖正在临时维护。约束：临时依赖不可用时必须等待。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "HOLD",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J012",
+      "task": "请求：修改下月工资导出目标。证据：申请已批准但当前提交给基础设施团队。约束：财务运营负责已批准的工资变更。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "ROUTE",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J013",
+      "task": "请求：永久关闭强制审计日志。证据：工作区负责人已批准。约束：强制审计日志不得被工作区批准关闭。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "REJECT",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J014",
+      "task": "请求：修改下月工资导出目标。证据：当前提交给基础设施团队，且财务批准缺失。约束：必须先补齐批准；批准后由财务负责。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "HOLD",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J015",
+      "task": "请求：部署已批准的静态网站。证据：负责人批准、构建校验和、目标环境均存在。约束：静态部署证据完整可执行。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "EXECUTE",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J016",
+      "task": "请求：删除受保留策略保护的记录。证据：管理员批准存在。约束：保留策略禁止永久删除。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "REJECT",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J017",
+      "task": "请求：发布月报。证据：负责人批准、校验和、目标位置均已提供。约束：批准和证据完整时允许发布。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "EXECUTE",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J018",
+      "task": "请求：发布月报。证据：报告已完成但缺少负责人批准。约束：负责人批准是发布前置条件。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "HOLD",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J019",
+      "task": "请求：应用生产配置。证据：批准已提供，但必要依赖正在临时维护。约束：临时依赖不可用时必须等待。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "HOLD",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J020",
+      "task": "请求：修改下月工资导出目标。证据：申请已批准但当前提交给基础设施团队。约束：财务运营负责已批准的工资变更。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "ROUTE",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J021",
+      "task": "请求：永久关闭强制审计日志。证据：工作区负责人已批准。约束：强制审计日志不得被工作区批准关闭。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "REJECT",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J022",
+      "task": "请求：修改下月工资导出目标。证据：当前提交给基础设施团队，且财务批准缺失。约束：必须先补齐批准；批准后由财务负责。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "HOLD",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J023",
+      "task": "请求：部署已批准的静态网站。证据：负责人批准、构建校验和、目标环境均存在。约束：静态部署证据完整可执行。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "EXECUTE",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J024",
+      "task": "请求：删除受保留策略保护的记录。证据：管理员批准存在。约束：保留策略禁止永久删除。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "REJECT",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J025",
+      "task": "请求：发布月报。证据：负责人批准、校验和、目标位置均已提供。约束：批准和证据完整时允许发布。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "EXECUTE",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J026",
+      "task": "请求：发布月报。证据：报告已完成但缺少负责人批准。约束：负责人批准是发布前置条件。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "HOLD",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J027",
+      "task": "请求：应用生产配置。证据：批准已提供，但必要依赖正在临时维护。约束：临时依赖不可用时必须等待。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "HOLD",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J028",
+      "task": "请求：修改下月工资导出目标。证据：申请已批准但当前提交给基础设施团队。约束：财务运营负责已批准的工资变更。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "ROUTE",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J029",
+      "task": "请求：永久关闭强制审计日志。证据：工作区负责人已批准。约束：强制审计日志不得被工作区批准关闭。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "REJECT",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J030",
+      "task": "请求：修改下月工资导出目标。证据：当前提交给基础设施团队，且财务批准缺失。约束：必须先补齐批准；批准后由财务负责。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "HOLD",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J031",
+      "task": "请求：部署已批准的静态网站。证据：负责人批准、构建校验和、目标环境均存在。约束：静态部署证据完整可执行。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "EXECUTE",
+      "category": "finite_choice"
+    },
+    {
+      "id": "J032",
+      "task": "请求：删除受保留策略保护的记录。证据：管理员批准存在。约束：保留策略禁止永久删除。可选动作仅为 EXECUTE/HOLD/ROUTE/REJECT。",
+      "expected_route": "JEV",
+      "expected_action": "REJECT",
+      "category": "finite_choice"
+    },
+    {
+      "id": "G001",
+      "task": "为新品牌写一段有感染力的中文发布文案，语气自然，不要套模板。（案例 1）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G002",
+      "task": "根据以下要点写一封完整的客户道歉邮件并调整语气：延迟、补偿、后续计划。（案例 2）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G003",
+      "task": "总结一份长报告并解释主要风险、因果关系和不确定性。（案例 3）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G004",
+      "task": "设计一个新的算法来解决未知规模的调度问题，并说明权衡。（案例 4）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G005",
+      "task": "判断这个客户是否会在明天付款；没有提供客户当前财务状态或承诺信息。（案例 5）",
+      "expected_route": "GPT",
+      "category": "hidden_information"
+    },
+    {
+      "id": "G006",
+      "task": "根据尚未发生的服务器状态决定是否执行发布；需要等到明天的健康检查结果。（案例 6）",
+      "expected_route": "GPT",
+      "category": "timed_retry"
+    },
+    {
+      "id": "G007",
+      "task": "从所有可能的软件架构中选择最合适的一种，没有给出有限候选集。（案例 7）",
+      "expected_route": "GPT",
+      "category": "unbounded_choice"
+    },
+    {
+      "id": "G008",
+      "task": "把下面故事改写得更幽默但保持人物风格。（案例 8）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G009",
+      "task": "为新品牌写一段有感染力的中文发布文案，语气自然，不要套模板。（案例 9）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G010",
+      "task": "根据以下要点写一封完整的客户道歉邮件并调整语气：延迟、补偿、后续计划。（案例 10）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G011",
+      "task": "总结一份长报告并解释主要风险、因果关系和不确定性。（案例 11）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G012",
+      "task": "设计一个新的算法来解决未知规模的调度问题，并说明权衡。（案例 12）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G013",
+      "task": "判断这个客户是否会在明天付款；没有提供客户当前财务状态或承诺信息。（案例 13）",
+      "expected_route": "GPT",
+      "category": "hidden_information"
+    },
+    {
+      "id": "G014",
+      "task": "根据尚未发生的服务器状态决定是否执行发布；需要等到明天的健康检查结果。（案例 14）",
+      "expected_route": "GPT",
+      "category": "timed_retry"
+    },
+    {
+      "id": "G015",
+      "task": "从所有可能的软件架构中选择最合适的一种，没有给出有限候选集。（案例 15）",
+      "expected_route": "GPT",
+      "category": "unbounded_choice"
+    },
+    {
+      "id": "G016",
+      "task": "把下面故事改写得更幽默但保持人物风格。（案例 16）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G017",
+      "task": "为新品牌写一段有感染力的中文发布文案，语气自然，不要套模板。（案例 17）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G018",
+      "task": "根据以下要点写一封完整的客户道歉邮件并调整语气：延迟、补偿、后续计划。（案例 18）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G019",
+      "task": "总结一份长报告并解释主要风险、因果关系和不确定性。（案例 19）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G020",
+      "task": "设计一个新的算法来解决未知规模的调度问题，并说明权衡。（案例 20）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G021",
+      "task": "判断这个客户是否会在明天付款；没有提供客户当前财务状态或承诺信息。（案例 21）",
+      "expected_route": "GPT",
+      "category": "hidden_information"
+    },
+    {
+      "id": "G022",
+      "task": "根据尚未发生的服务器状态决定是否执行发布；需要等到明天的健康检查结果。（案例 22）",
+      "expected_route": "GPT",
+      "category": "timed_retry"
+    },
+    {
+      "id": "G023",
+      "task": "从所有可能的软件架构中选择最合适的一种，没有给出有限候选集。（案例 23）",
+      "expected_route": "GPT",
+      "category": "unbounded_choice"
+    },
+    {
+      "id": "G024",
+      "task": "把下面故事改写得更幽默但保持人物风格。（案例 24）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G025",
+      "task": "为新品牌写一段有感染力的中文发布文案，语气自然，不要套模板。（案例 25）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G026",
+      "task": "根据以下要点写一封完整的客户道歉邮件并调整语气：延迟、补偿、后续计划。（案例 26）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G027",
+      "task": "总结一份长报告并解释主要风险、因果关系和不确定性。（案例 27）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G028",
+      "task": "设计一个新的算法来解决未知规模的调度问题，并说明权衡。（案例 28）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G029",
+      "task": "判断这个客户是否会在明天付款；没有提供客户当前财务状态或承诺信息。（案例 29）",
+      "expected_route": "GPT",
+      "category": "hidden_information"
+    },
+    {
+      "id": "G030",
+      "task": "根据尚未发生的服务器状态决定是否执行发布；需要等到明天的健康检查结果。（案例 30）",
+      "expected_route": "GPT",
+      "category": "timed_retry"
+    },
+    {
+      "id": "G031",
+      "task": "从所有可能的软件架构中选择最合适的一种，没有给出有限候选集。（案例 31）",
+      "expected_route": "GPT",
+      "category": "unbounded_choice"
+    },
+    {
+      "id": "G032",
+      "task": "把下面故事改写得更幽默但保持人物风格。（案例 32）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G033",
+      "task": "为新品牌写一段有感染力的中文发布文案，语气自然，不要套模板。（案例 33）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G034",
+      "task": "根据以下要点写一封完整的客户道歉邮件并调整语气：延迟、补偿、后续计划。（案例 34）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G035",
+      "task": "总结一份长报告并解释主要风险、因果关系和不确定性。（案例 35）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G036",
+      "task": "设计一个新的算法来解决未知规模的调度问题，并说明权衡。（案例 36）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G037",
+      "task": "判断这个客户是否会在明天付款；没有提供客户当前财务状态或承诺信息。（案例 37）",
+      "expected_route": "GPT",
+      "category": "hidden_information"
+    },
+    {
+      "id": "G038",
+      "task": "根据尚未发生的服务器状态决定是否执行发布；需要等到明天的健康检查结果。（案例 38）",
+      "expected_route": "GPT",
+      "category": "timed_retry"
+    },
+    {
+      "id": "G039",
+      "task": "从所有可能的软件架构中选择最合适的一种，没有给出有限候选集。（案例 39）",
+      "expected_route": "GPT",
+      "category": "unbounded_choice"
+    },
+    {
+      "id": "G040",
+      "task": "把下面故事改写得更幽默但保持人物风格。（案例 40）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G041",
+      "task": "为新品牌写一段有感染力的中文发布文案，语气自然，不要套模板。（案例 41）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G042",
+      "task": "根据以下要点写一封完整的客户道歉邮件并调整语气：延迟、补偿、后续计划。（案例 42）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G043",
+      "task": "总结一份长报告并解释主要风险、因果关系和不确定性。（案例 43）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G044",
+      "task": "设计一个新的算法来解决未知规模的调度问题，并说明权衡。（案例 44）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G045",
+      "task": "判断这个客户是否会在明天付款；没有提供客户当前财务状态或承诺信息。（案例 45）",
+      "expected_route": "GPT",
+      "category": "hidden_information"
+    },
+    {
+      "id": "G046",
+      "task": "根据尚未发生的服务器状态决定是否执行发布；需要等到明天的健康检查结果。（案例 46）",
+      "expected_route": "GPT",
+      "category": "timed_retry"
+    },
+    {
+      "id": "G047",
+      "task": "从所有可能的软件架构中选择最合适的一种，没有给出有限候选集。（案例 47）",
+      "expected_route": "GPT",
+      "category": "unbounded_choice"
+    },
+    {
+      "id": "G048",
+      "task": "把下面故事改写得更幽默但保持人物风格。（案例 48）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G049",
+      "task": "为新品牌写一段有感染力的中文发布文案，语气自然，不要套模板。（案例 49）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G050",
+      "task": "根据以下要点写一封完整的客户道歉邮件并调整语气：延迟、补偿、后续计划。（案例 50）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G051",
+      "task": "总结一份长报告并解释主要风险、因果关系和不确定性。（案例 51）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G052",
+      "task": "设计一个新的算法来解决未知规模的调度问题，并说明权衡。（案例 52）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G053",
+      "task": "判断这个客户是否会在明天付款；没有提供客户当前财务状态或承诺信息。（案例 53）",
+      "expected_route": "GPT",
+      "category": "hidden_information"
+    },
+    {
+      "id": "G054",
+      "task": "根据尚未发生的服务器状态决定是否执行发布；需要等到明天的健康检查结果。（案例 54）",
+      "expected_route": "GPT",
+      "category": "timed_retry"
+    },
+    {
+      "id": "G055",
+      "task": "从所有可能的软件架构中选择最合适的一种，没有给出有限候选集。（案例 55）",
+      "expected_route": "GPT",
+      "category": "unbounded_choice"
+    },
+    {
+      "id": "G056",
+      "task": "把下面故事改写得更幽默但保持人物风格。（案例 56）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G057",
+      "task": "为新品牌写一段有感染力的中文发布文案，语气自然，不要套模板。（案例 57）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G058",
+      "task": "根据以下要点写一封完整的客户道歉邮件并调整语气：延迟、补偿、后续计划。（案例 58）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    },
+    {
+      "id": "G059",
+      "task": "总结一份长报告并解释主要风险、因果关系和不确定性。（案例 59）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G060",
+      "task": "设计一个新的算法来解决未知规模的调度问题，并说明权衡。（案例 60）",
+      "expected_route": "GPT",
+      "category": "open_reasoning"
+    },
+    {
+      "id": "G061",
+      "task": "判断这个客户是否会在明天付款；没有提供客户当前财务状态或承诺信息。（案例 61）",
+      "expected_route": "GPT",
+      "category": "hidden_information"
+    },
+    {
+      "id": "G062",
+      "task": "根据尚未发生的服务器状态决定是否执行发布；需要等到明天的健康检查结果。（案例 62）",
+      "expected_route": "GPT",
+      "category": "timed_retry"
+    },
+    {
+      "id": "G063",
+      "task": "从所有可能的软件架构中选择最合适的一种，没有给出有限候选集。（案例 63）",
+      "expected_route": "GPT",
+      "category": "unbounded_choice"
+    },
+    {
+      "id": "G064",
+      "task": "把下面故事改写得更幽默但保持人物风格。（案例 64）",
+      "expected_route": "GPT",
+      "category": "open_generation"
+    }
+  ]
+}
