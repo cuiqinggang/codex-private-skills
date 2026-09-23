@@ -5,7 +5,7 @@
   "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.6.2",
   "reality_foundation": {
     "skill_id": "local-ai-reality-foundation",
-    "current_version": "1.1.6",
+    "current_version": "1.1.7",
     "role": "REQUIRED_ROOT_NOT_METHOD_STEP"
   },
   "method_steps": [
