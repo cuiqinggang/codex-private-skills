@@ -1,64 +1,79 @@
-# v0.1.1 Virtual Tests
+# v0.1.2 Virtual Tests
 
-## Goal
+## 结论先行
 
-验证最短路由，不测试成熟下载器内部算法。
+v0.1.1 的“路由逻辑 PASS”是真的，但把它标成完整 VIRTUAL_MATURE=PASS 过早，因为没有把 Reality Foundation 已知的本机网络出口加入调用合同。
 
-| Case | Input | Expected | Result |
+v0.1.2 只补这一条，不增加下载器逻辑。
+
+## Cases
+
+| Case | 条件 | 冻结行为 | 结果 |
 |---|---|---|---|
-| V01 | HF public single file | hf | PASS |
-| V02 | HF multiple files | one hf invocation / native batch | PASS |
-| V03 | GitHub Release + gh available | gh | PASS |
-| V04 | GitHub Release + gh unavailable + asset URL available | aria2 | PASS |
-| V05 | direct HTTPS | aria2 | PASS |
-| V06 | browser-session-only | Playwright | PASS |
-| V07 | mixed HF + direct URL | hf + aria2; no custom queue | PASS |
-| V08 | workspace-write launched from user Home and returns 1344 | restart reality task from task-scoped narrow workdir; do not classify tool missing | PASS |
-| V08b | scoped workdir still returns 1344 | retry once on pre-existing authorized proven execution channel; otherwise STOP | PASS |
-| V09 | aria2 missing | bootstrap task required; router does not invent downloader | PASS |
-| V10 | hf missing | bootstrap task required; router does not invent downloader | PASS |
+| V01 | HF public file + network context available | hf + inherited process proxy | PASS |
+| V02 | Direct HTTPS + network context available | aria2c + inherited/explicit proxy | PASS |
+| V03 | HF + Direct URL mixed | hf + aria2c; no custom queue | PASS |
+| V04 | route correct but network context omitted | BLOCK before freeze | PASS |
+| V05 | existing verified proxy endpoint currently reachable | use it process-locally; no persistent change | PASS |
+| V06 | existing endpoint unavailable | STOP with minimal Reality Delta | PASS |
+| V07 | gh missing | GitHub asset URL -> aria2c | PASS |
+| V08 | scoped workdir | PROCESS_SPAWN path preserved | PASS |
 
-## Attack
+## Attack checks
 
 ```text
-AMBIGUOUS_ROUTE=0
+ROUTE_AMBIGUITY=0
 CUSTOM_DOWNLOADER=0
 CUSTOM_ADAPTER=0
 CUSTOM_QUEUE=0
 CUSTOM_STATUS_UI=0
 JEV_REQUIRED=0
-GH_HARD_DEPENDENCY=0
-SPAWN_1344_MISCLASSIFIED_AS_TOOL_MISSING=0
+NETWORK_CONTEXT_OMISSION_ALLOWED=0
+PERSISTENT_PROXY_MUTATION=0
 ```
 
-## Time
+## Reality consistency
+
+Known real evidence included in the twin:
 
 ```text
-v0.1.0:
-executor-entry failure could stop before tool verification
+REAL_01:
+  explicit existing proxy -> HF official/mirror reachable
 
-v0.1.1:
-executor-entry classified first
--> source classification
+REAL_04:
+  WORKDIR scoped -> PROCESS_SPAWN=PASS
+  aria2c=1.37.0
+  hf=1.19.0
+  gh=2.92.0
+  route match=2/2
+  both download tools failed at network stage with connection refused
+```
+
+Therefore the virtual correction is:
+
+```text
+source classification
+-> inherit current verified network context
 -> mature tool
 ```
 
-不伪造毫秒值：
+not:
 
 ```text
-NUMERIC_T_VALID=REAL_TEST_REQUIRED
+source classification
+-> mature tool
 ```
 
 ## Freeze
 
 ```text
-RULE_SET_CLOSED=PASS
+ROUTE_LOGIC=PASS
+NETWORK_CONTEXT_CLOSED=PASS
 LOCAL_REALITY_INPUT_SUFFICIENT=PASS
-TOOL_BOOTSTRAP_INFO_SUFFICIENT=PASS
 SINGLE_TASK_ROUTING=PASS
 MULTI_TASK_ROUTING=PASS
-EXECUTOR_1344_CLASSIFICATION=PASS
 NO_REDUNDANT_LAYER=PASS
 VIRTUAL_MATURE=PASS
 REAL_CERTIFIED=NO
+NUMERIC_T_VALID=REAL_TEST_REQUIRED
 ```
