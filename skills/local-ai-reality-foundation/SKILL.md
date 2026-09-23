@@ -128,8 +128,10 @@ CLASSIFICATION
 
 ACTION
 = 任何 REAL 任务在把“命令无法启动”归因给目标工具前，先区分 executor-entry failure。
-= 若默认执行通道返回同类 1344，允许按冻结合同仅重试一次已经存在、已授权、已证明可工作的替代执行通道。
-= 若替代执行通道也不能创建进程，则 STOP，返回最小 Reality Delta。
+= workspace-write 现实任务默认不得从用户 Home（C:\Users\<user> / ~）作为工作目录启动；优先使用任务专属窄目录（例如 C:\AI\<Task>）。
+= 公开 Codex Windows 1344 复现已显示：Home 工作目录可导致过多 write roots / 默认 DACL 膨胀，窄项目目录可消除 1344。
+= 若窄目录仍返回同类 1344，再允许按冻结合同仅重试一次已经存在、已授权、已证明可工作的替代执行通道。
+= 若仍不能创建进程，则 STOP，返回最小 Reality Delta。
 = 不允许把 1344 错误解释成 aria2/hf/gh 不存在。
 ```
 
