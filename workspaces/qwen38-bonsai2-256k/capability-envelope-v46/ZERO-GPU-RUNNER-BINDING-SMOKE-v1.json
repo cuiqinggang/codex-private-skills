@@ -1,0 +1,78 @@
+{
+  "schema": "Bonsai2-Capability-Envelope-Reality-v3",
+  "suite_id": "bstar-capability-envelope-v4",
+  "phase": "REAL",
+  "no_real_redesign": true,
+  "valid_real": "PARTIAL_PASS",
+  "reality_delta": null,
+  "atomic_groups": [
+    {
+      "route": "OFF",
+      "case_ids": [
+        "E1_PLAN_FIDELITY-001",
+        "E5_FAILURE_RECOVERY-005"
+      ],
+      "target_prompt_tokens": 8192,
+      "actual_prompt_tokens": 8163,
+      "filler_lines": 305,
+      "e2e_ms": 5.072,
+      "prompt_n": 8163,
+      "prompt_ms": 1.0,
+      "per_case": {
+        "E1_PLAN_FIDELITY-001": {
+          "valid": true,
+          "why": "PASS"
+        },
+        "E5_FAILURE_RECOVERY-005": {
+          "valid": true,
+          "why": "PASS"
+        }
+      },
+      "output": "{\"cases\": [{\"id\": \"E1_PLAN_FIDELITY-001\", \"action\": \"ACTION_4\", \"recovery\": \"CONTINUE\"}, {\"id\": \"E5_FAILURE_RECOVERY-005\", \"action\": \"ACTION_4\", \"recovery\": \"REFRESH_STATE\"}]}",
+      "context_band": "8K"
+    }
+  ],
+  "atomic_failed_ids": [],
+  "atomic_expansions": [],
+  "local_jev": [],
+  "thinking": null,
+  "long_workflows": [],
+  "external_jev_same_task_ab": "PENDING",
+  "zero_gpu_selftest": {
+    "schema": "Bonsai2-Capability-Envelope-ZeroGPU-SelfTest-v2",
+    "suite_id": "bstar-capability-envelope-v4",
+    "suite_sha256": "9b94215208f55d2ac07065249d72eff113043f9cc18f7e8b8c103271e6487ba4",
+    "gpu_runs": 0,
+    "model_calls": 0,
+    "units_expected": 1018,
+    "units_instantiated": 1018,
+    "per_kind": {
+      "atomic_cases": 592,
+      "jev_cases": 240,
+      "thinking_cases": 96,
+      "long_workflows": 18,
+      "cache_trials": 48,
+      "memory_trials": 24
+    },
+    "original_16_hard_conflicts_repaired": true,
+    "explicit_reserve_clamped_cases": 32,
+    "token_envelope_overflows": 0,
+    "atomic_full_pairwise_pairs": 800,
+    "atomic_anchor_cases": 64,
+    "atomic_anchor_pairwise_pairs": 800,
+    "jev_full_pairwise_pairs": 57,
+    "jev_anchor_cases": 24,
+    "jev_anchor_pairwise_pairs": 57,
+    "long_steps": 1800,
+    "injected_failures": 86,
+    "validator_binding_all_categories": "PASS",
+    "fixture_digest": "e4c465e2c61cfb9aed58d53e936488a4c656d33e9cdc79ccf0e8a6ea6992fa87",
+    "errors": [],
+    "warnings": [],
+    "pass": true,
+    "elapsed_ms": 74.001
+  },
+  "health": {
+    "status": "ok"
+  }
+}
