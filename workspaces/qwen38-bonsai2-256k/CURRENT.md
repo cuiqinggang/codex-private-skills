@@ -1,65 +1,101 @@
-# Qwen3.8 / Bonsai 2 27B 256K — v4.6 当前唯一入口
+# Qwen3.8 / Bonsai 2 27B — 千问3.8 27B1 当前唯一入口（v4.6 能力边界）
 
 ```text
-PROJECT=qwen38-bonsai2-27b-256k-final-closeout
+PAGE=千问3.8 27B1
+TASK_TIME_ID=QWEN38-27B1-20260923T182700+0800
 METHOD=极限短时间引擎 v4.6.0
-CURRENT_PHASE=虚
-MODEL=Ternary Bonsai 2 27B PQ2_0
-TARGET_CONTEXT=262144
-DOWNLOAD=COMPLETE
-RUNTIME_BUILD=COMPLETE
-COLD_242K_REALITY_ANCHOR=PASS
-REAL_ENTRY=READY_AFTER_FROZEN_HANDOFF
+CURRENT_PHASE=实（待现实执行）
+VIRTUAL_COMPLETE=YES
+REAL_ENTRY=READY
+NEXT_SEQUENCE=01
+TIME_RESET=FORBIDDEN
 ```
 
-## 已冻结现实事实
+## 当前目标
 
-- Root: `C:\AI\Bonsai2-27B-256K`
-- Model: `Ternary-Bonsai-2-27B-PQ2_0.gguf`
-- Bytes: `7206168928`
-- SHA256: `3907dc1658db1f78a9826bf8d5bcb8dc65db0d466388937af57f2294fae62ec1`
-- Runtime source commit: `9a9394a895b96003ca842a6041cb28ac49a108f7`
-- Runtime: IvyBridge-compatible source build, CUDA sm_75
-- GPU: RTX 2080 Ti / 22528 MiB
-- Context: 262144
-- 242054-token cold prompt:
-  - prompt_ms = `1367320.567`
-  - e2e_ms = `1378701.719`
-  - semantic VALID = PASS
-- Old `COLD_FULL_VALIDITY_FAIL` = validator false-negative, not model failure.
+不再把项目定义成“单独 256K 收尾”。
 
-## 当前真正未完成的收尾
+唯一产品目标：
 
-只剩：
+```text
+本地 Bonsai 2 27B 智能体
++ 可选 JEV 概率判断加速器
++ 自适应 Thinking
++ 独立 deterministic verifier
+=> 能力边界图 + 每个 PASS 区域的 min T_VALID
+```
 
-1. 修正 strict JSON verifier；
-2. 0-GPU verifier self-test；
-3. 一次 242K physical cache seed；
-4. 同一 server / 同一 slot 生命周期内测 HOT100 / HOT98 / HOT95；
-5. 3-run isolated Decode；
-6. 资源、缓存命中、输出有效性与现实时间收口；
-7. GPT 最终判断。
+## 已完成的虚
 
-## 当前删除
+- 旧 1018 全量测试宇宙保留；
+- 原 16 个 252-255K × HIGH_8192 硬冲突修复；
+- 加入显式工具/输出余量后发现的 16 个 MEDIUM 潜在冲突同步 clamp；
+- 总 token 溢出 = 0；
+- runner + fixture + verifier 绑定完成；
+- 1018/1018 零 GPU 自检 PASS；
+- 592 原子题压缩为 64 reality anchors，仍覆盖 800/800 pairwise；
+- 240 概率题压缩为 24 anchors，仍覆盖 57/57 pairwise；
+- Reality runner 假服务器控制链 smoke PASS；
+- 现实失败与“能力 FAIL”语义分离：模型 FAIL 用于画边界，只有基础设施/合同矛盾才返虚。
 
-旧 1018-unit executor/JEV/thinking/full certification suite 不再属于本 256K 收尾任务。
-它只在未来重新打开“Bonsai 替代 Codex 执行器”独立目标时复活。
+## 冻结资产
 
-禁止：
-- 重新下载模型；
-- 重新编译已验证 runtime；
-- 重跑 242K cold 质量认证；
-- stock llama.cpp；
-- PTQ1_0 换模；
-- speculative decoding；
-- 把 q4 KV 当速度优化；
-- 跨重启 slot restore；
-- 把 JEV A/B 混进当前 GPU 物理测功；
-- 大范围参数 sweep。
+目录：
 
-## 当前 Authority
+```text
+workspaces/qwen38-bonsai2-256k/capability-envelope-v46/
+```
 
-- `Qwen3.8-Bonsai2-256K-v4.6-VIRTUAL-FREEZE-v1.md`
-- `Qwen3.8-Bonsai2-256K-v4.6-REAL-CONTRACT-v1.md`
+权威：
 
-旧文件全部作为历史证据保留。
+```text
+CAPABILITY-ENVELOPE-PATCH-v4.json
+BONSAI2-CAPABILITY-ENVELOPE-RUNNER-v2.py
+MATERIALIZE-CAPABILITY-ENVELOPE-v1.ps1
+ZERO-GPU-SELFTEST-v2.json
+ZERO-GPU-RUNNER-BINDING-SMOKE-v1.json
+REALITY-BOUNDARY-PLAN-v1.json
+Qwen3.8-Bonsai2-v4.6-CAPABILITY-ENVELOPE-VIRTUAL-FREEZE-v1.md
+Qwen3.8-Bonsai2-v4.6-CAPABILITY-ENVELOPE-REAL-CONTRACT-v1.md
+TIME-LEDGER-v4.6.json
+VIRTUAL-FREEZE-AUDIT-v1.md
+```
+
+基础 1018 suite 继续复用：
+
+```text
+Qwen3.8-27B-Bstar-Executor-Cert-Suite-v3.json
+```
+
+运行时由：
+
+```text
+v3 suite + CAPABILITY-ENVELOPE-PATCH-v4
+```
+
+确定性生成有效 v4 suite，不复制 1.8MB 题库。
+
+## Reality 规则
+
+四定位：
+
+```text
+【千问3.8 27B1｜本地智能体能力边界现实验证｜01｜实】
+```
+
+现实禁止现场设计。合同/runner/现实底座矛盾：
+
+```text
+Reality Delta -> STOP -> 同一 TASK_TIME_ID 返虚
+```
+
+模型某一任务失败：
+
+```text
+不是 Reality Delta
+-> 按冻结邻域规则定位能力边界
+-> 记录 FAIL 区域
+-> 继续
+```
+
+版本变化、现实失败、返虚都不得重置时间。
