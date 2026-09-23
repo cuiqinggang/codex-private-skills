@@ -1,9 +1,9 @@
 import argparse,json,os,re,statistics,time,urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-GPT='gpt-5.6-sol'; JEV='typesafe/jev-1.13'
-OU='https://api.openai.com/v1/chat/completions'; JU='https://openrouter.ai/api/alpha/decisions'
-GI,GO,JI=4.0,20.0,.042
+GPT='openai/gpt-5.6-sol'; JEV='typesafe/jev-1.13'
+OU='https://openrouter.ai/api/v1/chat/completions'; JU='https://openrouter.ai/api/alpha/decisions'
+GI,GO,JI=2.0,10.0,.042
 A={'EXECUTE':'Required evidence is complete and no blocking constraint applies.','HOLD':'Required evidence is incomplete or a temporary prerequisite blocks progress.','ROUTE':'The case belongs to a different authorized owner or specialized path.','REJECT':'A permanent policy violation makes execution invalid.'}
 P=[
 ({'request':'Publish the approved monthly report.','evidence':'Owner approval, checksum, and destination are present.','constraints':'Approved reports may be published when evidence is complete.'},'EXECUTE'),
@@ -63,9 +63,9 @@ def hyb(ok,rk,ts,m=False):
   f1=ex.submit(jev,rk,j[::2],m);f2=ex.submit(jev,rk,j[1::2],m);fg=ex.submit(gpt,ok,g,m);x1,j1,c1=f1.result();x2,j2,c2=f2.result();xg,gg,cg=fg.result()
  a.update(x1);a.update(x2);a.update(xg);e=verify(ts,a);return {'v':not e,'e':e,'ms':(time.perf_counter()-z)*1000,'c':c1+c2+cg,'jm':max(j1,j2),'gm':gg,'jc':c1+c2}
 def main():
- p=argparse.ArgumentParser();p.add_argument('--mode',choices=['selftest','live'],default='selftest');p.add_argument('--runs',type=int,default=10);p.add_argument('--out',default='HIPE-P0-REAL-RESULT.json');a=p.parse_args();ts=fx();m=a.mode=='selftest';ok='mock' if m else os.getenv('OPENAI_API_KEY','');rk='mock' if m else os.getenv('OPENROUTER_API_KEY','')
+ p=argparse.ArgumentParser();p.add_argument('--mode',choices=['selftest','live'],default='selftest');p.add_argument('--runs',type=int,default=10);p.add_argument('--out',default='HIPE-P0-REAL-RESULT.json');a=p.parse_args();ts=fx();m=a.mode=='selftest';rk='mock' if m else os.getenv('OPENROUTER_API_KEY','');ok=rk
  if not ok or not rk:
-  d='GPT_AUTH_MISSING' if not ok else 'JEV_AUTH_MISSING';print(f'REAL_VALID=FAIL\nREALITY_DELTA={d}\nACTION=STOP\nRETURN_TO_GPT=YES');return 3
+  d='OPENROUTER_AUTH_MISSING';print(f'REAL_VALID=FAIL\nREALITY_DELTA={d}\nACTION=STOP\nRETURN_TO_GPT=YES');return 3
  base(ok,ts,m);hyb(ok,rk,ts,m);B=[];H=[]
  for _ in range(a.runs):
   b=base(ok,ts,m);h=hyb(ok,rk,ts,m);B.append(b);H.append(h)
