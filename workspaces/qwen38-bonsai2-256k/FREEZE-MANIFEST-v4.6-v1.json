@@ -7,7 +7,7 @@
     "current_md_git_blob": "6c619edaf171fdc4234058a9d40124ab52e8bb14",
     "virtual_freeze_git_blob": "4e52a6bf11618f9dfb62b3901e9b858d5a4a599a",
     "real_contract_git_blob": "90cd33f48bb4f394435e34e7bbf7ec1ca7a181bb",
-    "runner_git_blob": "b0d68b59b22c767c30804944f40ea921aa85ae29",
+    "runner_git_blob": "a2bf94624f2e153fe9d81bc48c7fdfc91fa09ff3",
     "mature_solution_delta_git_blob": "0d712e0579a84a6126d337f3ad51cd36d90df583"
   },
   "frozen": {
@@ -26,7 +26,8 @@
     "cache_reuse": 0,
     "speculative": false,
     "jev_ab": "SKIP_NOT_CRITICAL_PATH",
-    "old_1018_suite": "HISTORY_ONLY_FOR_SEPARATE_CODEX_REPLACEMENT_GOAL"
+    "old_1018_suite": "HISTORY_ONLY_FOR_SEPARATE_CODEX_REPLACEMENT_GOAL",
+    "validator_selftest": "10/10"
   },
   "virtual_gates": {
     "REALITY_FOUNDATION_SUFFICIENT": "PASS",
