@@ -135,7 +135,15 @@ SetTokenInformation(TokenDefaultDacl) failed: 1344
 != DOWNLOAD_TOOL_MISSING
 ```
 
-若默认通道出现同类 1344：
+现实任务必须先切到任务专属窄工作目录，例如：
+
+```text
+C:\AI\Mature-Download-Router-Real-Test
+```
+
+不得从 `~` / `C:\Users\<user>` 作为 workspace-write 工作目录启动。
+
+若窄目录仍出现同类 1344：
 - 允许仅重试一次已存在、已授权、以前现实成功的替代执行通道；
 - 仍失败则 STOP；
 - 不得把它误判成 aria2/hf 缺失。
