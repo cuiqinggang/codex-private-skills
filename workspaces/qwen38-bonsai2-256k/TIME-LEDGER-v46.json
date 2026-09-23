@@ -11,19 +11,26 @@
   },
   "exact_continuation": {
     "start_timestamp": "2026-09-23T21:22:24.614753+08:00",
-    "active_checkpoint_ms": 700815.591,
+    "checkpoint_timestamp": "2026-09-23T21:48:11+08:00",
+    "active_checkpoint_ms": 1548857.321,
+    "active_checkpoint_hms": "00:25:48.857",
     "authority": "Python time.perf_counter for this GPT active continuation"
   },
-  "phase": "VIRTUAL",
+  "phase": "REAL_READY",
   "virtual_status": "COMPLETE",
   "next_phase": "REAL",
+  "virtual_closeout": {
+    "suite_units": "1018/1018",
+    "token_budget_conflicts_fixed": "16/16",
+    "zero_gpu_selftest": "PASS",
+    "execution_chain_closed": "PASS",
+    "runner_binding_closed": "PASS",
+    "initial_reality_frontier_units": 144,
+    "source_bundle_remote": "Qwen3.8-27B-Agent-Capability-SOURCE-v46.tar.gz",
+    "source_bundle_sha256": "fa601064245f588bd89bb78f7241a9d74130f2f67ab91e3b378623be77d924ee"
+  },
   "local_times_diagnostic_only": [
-    "T_GPT",
-    "T_CODEX",
-    "T_REAL",
-    "T_VERIFY",
-    "T_REWORK",
-    "T_HANDOFF"
+    "T_GPT","T_CODEX","T_REAL","T_VERIFY","T_REWORK","T_HANDOFF"
   ],
   "primary_metric": "T_VALID_RUN = UNION(required active work intervals)",
   "no_reset_on_release": true,
