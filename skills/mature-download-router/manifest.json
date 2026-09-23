@@ -1,30 +1,36 @@
 {
   "skill_id": "mature-download-router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "display_name": "成熟下载工具最短调用路由",
   "status": "VIRTUAL_MATURE_REAL_PENDING",
   "method": "first-principles-physical-limit-convergence@4.6.0",
-  "reality_foundation": "local-ai-reality-foundation@1.1.3",
+  "reality_foundation": "local-ai-reality-foundation@1.1.4",
   "objective": "MIN_VALID_DOWNLOAD_ROUTING_OVERHEAD",
-  "build_policy": {
-    "downloader": false,
-    "adapter": false,
-    "queue_engine": false,
-    "status_ui": false,
-    "source_selector": false
-  },
+  "no_custom_layers": [
+    "downloader",
+    "adapter",
+    "queue_engine",
+    "status_ui",
+    "source_selector"
+  ],
   "routes": {
     "hugging_face": "hf download",
-    "github_release": "gh release download",
+    "github_release": "gh release download IF locally available; otherwise release asset direct URL -> aria2c",
     "direct_url": "aria2c",
     "browser_session_required": "Playwright Native AI Browser",
     "other_official_tool": "official mature CLI/API"
   },
-  "frozen_tool_versions": {
+  "local_reality": {
+    "aria2c": "AVAILABLE_OBSERVED_VERSION_VERIFY_ON_USE",
+    "hf": "AVAILABLE_OBSERVED_VERSION_VERIFY_ON_USE",
+    "curl": "AVAILABLE_OBSERVED",
+    "gh": "UNKNOWN_NOT_CORE_REQUIRED",
+    "codex_spawn_1344": "KNOWN_EXECUTOR_CHANNEL_FAILURE_NOT_TOOL_MISSING"
+  },
+  "frozen_external_versions": {
     "aria2": "1.37.0",
-    "github_cli": "2.101.0",
     "huggingface_hub": "1.32.0",
-    "playwright_native_ai_browser": "VERIFY_ON_USE_FROM_REALITY_FOUNDATION"
+    "github_cli_optional": "2.101.0"
   },
   "virtual_test_status": "PASS",
   "real_certification_status": "PENDING",
