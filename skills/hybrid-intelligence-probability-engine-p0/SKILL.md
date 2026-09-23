@@ -46,3 +46,12 @@ TASK
 `frozen/v0.1.1/REAL-HANDOFF-v0.1.1.md`
 
 v0.1.0 历史保留，不覆盖。
+
+
+## 历史状态纠正
+
+v0.1.x 的“VIRTUAL_MATURITY_PASS”只保留为当时对决策执行平面的历史记录，不再代表完整混合引擎成熟。
+
+完整引擎的新成熟门与计时边界由：
+`skills/hybrid-intelligence-probability-engine/`
+接管。
