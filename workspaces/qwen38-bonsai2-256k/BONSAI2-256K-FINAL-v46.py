@@ -160,6 +160,16 @@ def avail_ram_mib():
         return None
     return s.ullAvailPhys/1024/1024
 
+def gpu_identity():
+    p=subprocess.run(["nvidia-smi","--query-gpu=name,memory.total,memory.used,utilization.gpu",
+                      "--format=csv,noheader,nounits"],capture_output=True,text=True)
+    line=(p.stdout or "").strip().splitlines()
+    if not line: return None
+    vals=[x.strip() for x in line[0].split(",")]
+    if len(vals)<4:return None
+    try:return {"name":vals[0],"total_mib":float(vals[1]),"used_mib":float(vals[2]),"util_pct":float(vals[3])}
+    except:return None
+
 def gpu_line():
     p=subprocess.run(["nvidia-smi","--query-gpu=memory.used,utilization.gpu,temperature.gpu,power.draw",
                       "--format=csv,noheader,nounits"],capture_output=True,text=True)
@@ -248,6 +258,14 @@ def main():
         if not p.is_file(): fail(f"{n}_MISSING",str(p))
     if MODEL.stat().st_size != EXPECTED_MODEL_BYTES:
         fail("MODEL_SIZE_MISMATCH",str(MODEL.stat().st_size))
+    g0=gpu_identity()
+    if not g0:
+        fail("GPU_PROBE_FAIL","No parseable nvidia-smi semantic output")
+    result["server_state"]["gpu_prestart"]=g0
+    if "RTX 2080 Ti" not in g0["name"] or g0["total_mib"] < 22000:
+        fail("GPU_REALITY_MISMATCH",json.dumps(g0,ensure_ascii=False))
+    if g0["used_mib"] > 2500:
+        fail("GPU_PRESTART_BUSY",json.dumps(g0,ensure_ascii=False))
     try:
         get("/health",2)
         fail("PORT_IN_USE",BASE)
@@ -276,6 +294,13 @@ def main():
         nctx=obj_field(obj_field(props,"default_generation_settings",{}),"n_ctx",None)
         result["server_state"]["props_n_ctx"]=nctx
         if int(nctx or 0) != CTX: fail("CONTEXT_262144_REALITY_GATE_FAIL",str(nctx))
+        g1=gpu_identity()
+        if not g1:
+            fail("GPU_POSTLOAD_PROBE_FAIL","No parseable nvidia-smi semantic output")
+        result["server_state"]["gpu_postload"]=g1
+        result["server_state"]["gpu_used_delta_mib"]=round(g1["used_mib"]-g0["used_mib"],1)
+        if result["server_state"]["gpu_used_delta_mib"] < 5500:
+            fail("FULL_GPU_OFFLOAD_REALITY_GATE_FAIL",json.dumps(result["server_state"],ensure_ascii=False))
 
         prompt_text=PROMPT_FILE.read_text(encoding="utf-8")
         tok_resp,tok_ms=post("/tokenize",{"content":prompt_text,"add_special":True,
@@ -357,6 +382,7 @@ def main():
         save()
 
     print(f"RUN_DIR={OUT}")
+    print(f"RESULT_JSON={RESULT}")
     print(f"KV_MODE={result['server_state'].get('kv_mode')}")
     print(f"SEED_PROMPT_MS={result['timing']['seed'].get('prompt_ms')}")
     for n in ["hot100","hot98","hot95"]:
