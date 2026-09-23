@@ -1,0 +1,26 @@
+{
+  "schema": "QWEN38_AGENT_REALITY_RUNNER_V471_SELFTEST",
+  "gpu_runs": 0,
+  "model_calls": 0,
+  "anchors": 64,
+  "pairwise_covered": 800,
+  "tool_bindings": ["browser","file","git","hash_test","http","local_service","multi_tool","powershell"],
+  "thinking_routes": ["OFF","LOW_512","MEDIUM_2048","HIGH_8192"],
+  "jev_types": ["Choice","Noul","Score","State","Route","FiniteClassification","ExecuteStop","ErrorType"],
+  "long_probes": [
+    {"id":"LONG-BOUNDARY-50","steps":50},
+    {"id":"LONG-BOUNDARY-100","steps":100},
+    {"id":"LONG-BOUNDARY-200","steps":200}
+  ],
+  "external_jev_policy": "OPTIONAL_ACCELERATOR_FALLBACK_LOCAL",
+  "real_fail_policy": "MINIMAL_REALITY_DELTA_STOP_RETURN_TO_VIRTUAL",
+  "task_time_id_reset": false,
+  "sequence_reset": false,
+  "errors": [],
+  "warnings": ["POWERSHELL_REALITY_PROBE_DEFERRED_TO_WINDOWS","PLAYWRIGHT_REALITY_PROBE_DEFERRED_TO_WINDOWS"],
+  "self_test": "PASS",
+  "REAL_HANDOFF_SELF_CONTAINED": "YES",
+  "EXECUTION_CHAIN_CLOSED": "PASS",
+  "EXTERNAL_DEPENDENCIES_CLOSED": "PASS",
+  "runner_sha256": "d727112ac292f166f7509553bc96dea321025cec72d28916e78049c00e25e6f0"
+}
