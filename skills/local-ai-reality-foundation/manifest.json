@@ -1,7 +1,7 @@
 {
   "skill_id": "local-ai-reality-foundation",
-  "version": "1.1.6",
-  "previous_version": "1.1.5",
+  "version": "1.1.7",
+  "previous_version": "1.1.6",
   "display_name": "本地 AI 现实底座永久资产",
   "role": "VERSIONED_PERSISTENT_REALITY_FOUNDATION",
   "method_step": false,
@@ -32,7 +32,7 @@
     "visual_art_engine_root": "C:\\AI\\Visual-Art-Engine",
     "download_tools_observed": {
       "aria2c": "1.37.0_REAL_04",
-      "hf": "1.19.0_REAL_04",
+      "hf": "1.19.0_REAL_PASS",
       "gh": "2.92.0_REAL_04_OPTIONAL",
       "curl": "AVAILABLE_OBSERVED"
     }
@@ -77,6 +77,20 @@
       "curl_semantics": "CURLE_SSL_CONNECT_ERROR_TLS_HANDSHAKE_FAILURE",
       "prior_same_machine_other_context_proxy_head_200": true,
       "rule": "REQUIRE_SAME_EXECUTION_CONTEXT_TLS_PRECHECK_WHEN_RELYING_ON_WINDOWS_CURL_SCHANNEL; DO_NOT_MUTATE_SYSTEM_CERTS_REGISTRY_OR_PROXY"
+    },
+    "hf_local_real_success": {
+      "workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
+      "proxy_mode": "PROCESS_LOCAL_HTTP_PROXY_HTTPS_PROXY",
+      "proxy_endpoint": "http://127.0.0.1:7890",
+      "repo": "openai-community/gpt2",
+      "file": "config.json",
+      "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "bytes": 665,
+      "sha256": "0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4",
+      "t_valid_ms": 13727.948,
+      "valid_real": "PASS",
+      "whole_loop_tstar_eligible": false,
+      "reason": "HISTORICAL_TASK_TIME_LEDGER_INCOMPLETE"
     }
   }
 }
