@@ -1,0 +1,25 @@
+{
+  "schema": "QWEN38_AGENT_V46_REALITY_PLAN_V1",
+  "strategy": "BOUNDARY_FIRST_THEN_EXPAND",
+  "primary_atomic_anchor_count": 64,
+  "pairwise_combinations_covered": 800,
+  "pairwise_combinations_missing": 0,
+  "always_run": {
+    "thinking_routes": ["OFF","LOW_512","MEDIUM_2048","HIGH_8192"],
+    "jev_boundary": "high/medium/low confidence plus ambiguity strata",
+    "long_context": ["8K","128K","224K","240-245K","252-255K total-envelope boundary"],
+    "cache": "cold/warm/prefix-mutated boundary set",
+    "memory": "q8 primary; q4 only hard-memory fallback"
+  },
+  "expansion_rule": "For any FAIL, unstable result, or confidence-boundary crossing, expand to all neighboring source-suite cases sharing >=4 of 6 atomic factors; repeat until PASS/FAIL boundary is stable. Full 1018 remains available and is mandatory only when boundary remains unresolved.",
+  "production_route_policy": {
+    "deterministic_clear": "local agent / Thinking OFF",
+    "finite_structured": "JEV if its validated end-to-end path is faster",
+    "jev_low_confidence_or_failure": "local agent",
+    "minor_ambiguity": "LOW_512",
+    "local_failure": "MEDIUM_2048",
+    "multi_receipt_conflict": "HIGH_8192",
+    "unresolved_or_replan": "GPT"
+  },
+  "quality_policy": "Case FAIL maps the capability boundary; it does not invalidate the entire project. Only PASS cells are eligible for min T_VALID competition."
+}
