@@ -1,7 +1,7 @@
 {
   "skill_id": "local-ai-reality-foundation",
-  "version": "1.1.4",
-  "previous_version": "1.1.3",
+  "version": "1.1.5",
+  "previous_version": "1.1.4",
   "display_name": "本地 AI 现实底座永久资产",
   "role": "VERSIONED_PERSISTENT_REALITY_FOUNDATION",
   "method_step": false,
@@ -31,15 +31,21 @@
     "minimax_h3_root": "C:\\AI\\MiniMax-H3",
     "visual_art_engine_root": "C:\\AI\\Visual-Art-Engine",
     "download_tools_observed": {
-      "aria2c": "AVAILABLE_OBSERVED_VERSION_VERIFY_ON_USE",
-      "hf": "AVAILABLE_OBSERVED_VERSION_VERIFY_ON_USE",
-      "curl": "AVAILABLE_OBSERVED",
-      "gh": "UNKNOWN_NOT_CORE_REQUIRED"
+      "aria2c": "1.37.0_REAL_04",
+      "hf": "1.19.0_REAL_04",
+      "gh": "2.92.0_REAL_04_OPTIONAL",
+      "curl": "AVAILABLE_OBSERVED"
     }
   },
   "network_invariants": {
     "flclash": "PERSISTENT",
-    "proxy_change_allowed": false
+    "proxy_change_allowed": false,
+    "download_network_context": {
+      "known_proxy_candidate": "http://127.0.0.1:7890",
+      "prior_explicit_proxy_probe": "PASS_TO_HUGGINGFACE_AND_HF_MIRROR",
+      "real_04": "HF_AND_ARIA2_NETWORK_STAGE_CONNECTION_REFUSED_WITH_ROUTE_MATCH_2_OF_2",
+      "rule": "INHERIT_CURRENT_VERIFIED_NETWORK_CONTEXT_PROCESS_LOCALLY; NEVER_CHANGE_PERSISTENT_PROXY_SETTINGS"
+    }
   },
   "updated_date": "2026-09-23",
   "codex_execution_constraints": {
@@ -56,6 +62,11 @@
       "real_rule": "FIRST_USE_TASK_SCOPED_WORKDIR; IF_SAME_1344_RETRY_ONCE_VIA_PREEXISTING_AUTHORIZED_PROVEN_CHANNEL; ELSE_STOP",
       "scoped_workdir_default": "USE_TASK_SCOPED_DIRECTORY_NOT_USER_HOME_FOR_WORKSPACE_WRITE",
       "public_repro_support": "Codex Windows issue reports Home workspace can inflate write roots/default DACL; scoped project directory can remove 1344"
+    },
+    "scoped_workdir_real_04": {
+      "workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
+      "process_spawn": "PASS",
+      "r0_ms": 4171
     }
   }
 }
