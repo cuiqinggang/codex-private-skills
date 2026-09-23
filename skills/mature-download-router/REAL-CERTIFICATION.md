@@ -25,4 +25,6 @@ TIME_LIMIT=30s
 
 No fallback or redesign is allowed inside REAL.
 
+The command must include --force-download so success cannot be satisfied only from cache.
+
 PASS = hf exit 0 + exact bytes/hash + <=30s.
