@@ -1,0 +1,32 @@
+{
+  "skill_id": "mature-download-router",
+  "version": "0.1.0",
+  "display_name": "成熟下载工具最短调用路由",
+  "status": "VIRTUAL_MATURE_REAL_PENDING",
+  "method": "first-principles-physical-limit-convergence@4.6.0",
+  "reality_foundation": "local-ai-reality-foundation@1.1.3",
+  "objective": "MIN_VALID_DOWNLOAD_ROUTING_OVERHEAD",
+  "build_policy": {
+    "downloader": false,
+    "adapter": false,
+    "queue_engine": false,
+    "status_ui": false,
+    "source_selector": false
+  },
+  "routes": {
+    "hugging_face": "hf download",
+    "github_release": "gh release download",
+    "direct_url": "aria2c",
+    "browser_session_required": "Playwright Native AI Browser",
+    "other_official_tool": "official mature CLI/API"
+  },
+  "frozen_tool_versions": {
+    "aria2": "1.37.0",
+    "github_cli": "2.101.0",
+    "huggingface_hub": "1.32.0",
+    "playwright_native_ai_browser": "VERIFY_ON_USE_FROM_REALITY_FOUNDATION"
+  },
+  "virtual_test_status": "PASS",
+  "real_certification_status": "PENDING",
+  "updated_date": "2026-09-23"
+}
