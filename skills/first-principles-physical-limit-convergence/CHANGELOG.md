@@ -1,5 +1,12 @@
 # 版本变化
 
+## v4.6.2
+- 把时间账本从“规则”升级为不可绕过发布门：没有 ACTIVE_TOTAL_BEFORE_DISPATCH / TIME_LEDGER_READY 不允许 VIRTUAL -> REAL。
+- REAL 返回后没有完整时间记账，只能保留功能性结果，不得进入 T* / 成熟时间基线。
+- 同一 FREEZE_ID 只允许一次正式 REAL；REAL FAIL 必须完整回虚、吸收差异、重新预跑并形成 NEW_FREEZE_ID 后才能再次发布。
+- TASK_SEQUENCE 仅是审计序号，不是方法步骤；禁止把 08/09 等描述成“第八步/第九步”。
+- 方法仍严格只有 VIRTUAL / REAL 两步，唯一优化目标仍为 T*=min(T_VALID_RUN)。
+
 ## v4.6.1
 - 新增“虚内现实预跑证据门”：能由 GPT 当前现实能力低成本执行的关键公开子路径，冻结前必须实际跑通并形成证据。
 - 预跑仍属于 VIRTUAL 内部动作，不新增第三步。
