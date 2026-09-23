@@ -1,0 +1,63 @@
+{
+  "contract_id": "virtual-real-atomic-dispatch-gate",
+  "contract_version": "1.0.0",
+  "method_version": "4.7.1",
+  "purpose": "Prevent any legal state in which virtual maturation is declared complete without emitting the next numbered Codex reality command.",
+  "states": [
+    "VIRTUAL_ACTIVE",
+    "VIRTUAL_FREEZE_PASS",
+    "NEXT_SEQUENCE_ASSIGNED",
+    "REAL_HANDOFF_PREPARED",
+    "REAL_COMMAND_EMITTED",
+    "REAL",
+    "FINAL"
+  ],
+  "transition": {
+    "from": "VIRTUAL_ACTIVE",
+    "to": "REAL",
+    "atomic": true,
+    "required_order": [
+      "FREEZE_GATES_ALL_PASS",
+      "NEXT_SEQUENCE_ASSIGNED",
+      "REAL_HANDOFF_SELF_CONTAINED",
+      "REAL_COMMAND_EMITTED",
+      "TIME_LEDGER_CONTINUITY"
+    ]
+  },
+  "completion_gate": {
+    "VIRTUAL_COMPLETE": "YES only when all required_order items are PASS",
+    "CURRENT_PHASE": "REAL only when REAL_COMMAND_EMITTED=YES"
+  },
+  "invalid_states": [
+    "VIRTUAL_COMPLETE=YES AND REAL_COMMAND_EMITTED!=YES",
+    "CURRENT_PHASE=REAL AND REAL_COMMAND_EMITTED!=YES",
+    "HANDOFF_READY=PASS AND REAL_HANDOFF_SELF_CONTAINED!=YES",
+    "FREEZE_GATES_ALL_PASS=YES AND NEXT_SEQUENCE_ASSIGNED!=YES"
+  ],
+  "same_turn_outputs": [
+    "virtual_freeze_result",
+    "task_time_id",
+    "next_sequence",
+    "four_locator_real_label",
+    "self_contained_codex_reality_command",
+    "real_no_redesign_rule",
+    "pass_fail_output_contract",
+    "time_handoff_fields"
+  ],
+  "dispatch_modes": {
+    "AUTO_BRIDGE_AVAILABLE": "AUTO_DISPATCH_REQUIRED",
+    "NO_AUTO_BRIDGE": "COMMAND_EMISSION_REQUIRED_IN_SAME_REPLY"
+  },
+  "real_fail": {
+    "action": "MINIMAL_REALITY_DELTA -> STOP -> RETURN_TO_VIRTUAL",
+    "task_time_id_reset": false,
+    "sequence_reset": false,
+    "refreeze_requires_new_real_command": true
+  },
+  "invariants": {
+    "VIRTUAL_COMPLETE_IMPLIES_REAL_COMMAND_EMITTED": true,
+    "REAL_PHASE_IMPLIES_REAL_COMMAND_EXISTS": true,
+    "REAL_FAIL_DOES_NOT_RESET_TASK_TIME_ID": true,
+    "REAL_FAIL_DOES_NOT_RESET_SEQUENCE": true
+  }
+}
