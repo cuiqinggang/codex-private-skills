@@ -1,112 +1,98 @@
 ---
 name: mature-download-router
-description: 成熟下载工具最短调用路由 v0.1.5。只做最小来源判断并调用成熟工具；公开样本发布给 Codex 前必须先由 GPT 真实取件成功，Windows 受限沙箱避免 Schannel 路径，优先成熟 OpenSSL/httpx 工具。
+description: 成熟下载工具最短调用路由 v1.0.0。只识别下载来源并调用明确的现成工具；不实现下载器、不做下载验证工程、不自动升级工具。
 metadata:
-  version: "0.1.4"
+  version: "1.0.0"
   display_name: "成熟下载工具最短调用路由"
-  status: "HF_PUBLIC_DOWNLOAD_REAL_CERTIFIED_TIME_BASELINE_PENDING"
+  status: "STABLE_MINIMAL_ROUTER"
 ---
 
-# 成熟下载工具最短调用路由 v0.1.5
+# 成熟下载工具最短调用路由 v1.0.0
 
-## 核心
+## 唯一职责
 
-```text
-识别来源 -> 交给成熟工具
-```
-
-不自建下载器、适配器、队列、状态页或下载算法。
-
-## 发布前证据门
-
-对公开测试资源：
+识别下载来源，然后直接调用对应的现成成熟工具。
 
 ```text
-GPT_EXTERNAL_FETCH=PASS
-ARTIFACT_SAVED=PASS
-ARTIFACT_REREAD=PASS
+只选工具，不做下载器。
 ```
 
-才允许发布本地现实验证。
+## 唯一路由表
 
-当前已实测：
+### 1. Hugging Face
+
+识别条件：Hugging Face 模型、数据集或 huggingface.co 资源。
+
+调用工具：`hf`
+
+主要命令：`hf download`
+
+当前已知本机可用版本：`1.19.0`
+
+### 2. GitHub
+
+识别条件：GitHub Release、Release Asset、仓库克隆等 GitHub 原生任务。
+
+调用工具：`gh`（GitHub CLI）
+
+常用命令：
+- Release 资源：`gh release download`
+- 仓库：`gh repo clone`
+
+当前已知本机可用版本：`2.92.0`
+
+说明：如果目标本身是一个可直接访问的 raw HTTP/HTTPS 文件 URL，则按第 3 条处理。
+
+### 3. 普通直接下载链接
+
+识别条件：无需网页登录态的普通 HTTP / HTTPS / FTP 直接文件链接，且没有更合适的平台官方 CLI。
+
+调用工具：`aria2c`
+
+软件：`aria2`
+
+当前已知本机可用版本：`1.37.0`
+
+### 4. 必须依赖网页登录态
+
+识别条件：必须使用登录态、Cookie、Session、网页按钮或 JavaScript 动态生成下载地址。
+
+调用工具：`playwright-native-ai-browser`
+
+版本：由该技能自身管理；本路由不复制其版本号。
+
+## 版本规则
+
+- 默认直接使用本机当前已安装且能工作的版本。
+- 不因为存在更新版本而先升级。
+- 不为一次下载任务自动安装、升级或替换工具。
+- 只有当前工具缺失、明确失败、缺少任务所需功能，或用户明确要求升级时，才处理版本问题。
+
+## 失败规则
+
+当前选中的成熟工具正常完成任务：结束。
+
+当前选中的成熟工具实际失败：报告具体失败，再针对这个具体问题处理。
+
+不要因为“以后可能失败”预先建设 fallback、源竞争或下载框架。
+
+## 禁止
+
+本技能不得实现或引入：
+- 自定义 downloader
+- 自定义 retry / queue / cache / chunk / concurrency
+- 多源竞争
+- 下载测速或 benchmark
+- Virtual-99 / REAL / Reality Certification
+- T* 或时间账本
+- 下载证据矩阵
+- 为证明成熟下载器能工作而进行重复认证
+
+## 一句话定义
 
 ```text
-HF_PUBLIC_FILE=PASS (665 bytes)
-GENERIC_HTTPS=PASS (1093 bytes)
-GITHUB_REPOSITORY_FILE=PASS (22434 bytes)
+Hugging Face -> hf
+GitHub -> gh
+普通直接 URL -> aria2c
+必须网页登录态 -> playwright-native-ai-browser
 ```
-
-## Windows 受限执行环境规则
-
-Reality Foundation v1.1.6 已记录：
-
-```text
-Windows curl.exe / Schannel
--> REAL 07 exit 35
--> SEC_E_NO_CREDENTIALS class
-```
-
-因此在该受限执行上下文中：
-
-```text
-DO_NOT_SELECT=Schannel-based curl / Invoke-WebRequest for HTTPS certification
-SELECT=existing mature non-Schannel stack when available
-```
-
-当前 Hugging Face 本地路线：
-
-```text
-TOOL=hf 1.19.0
-NETWORK_STACK=huggingface_hub/httpx
-PROXY_INPUT=process-local HTTP_PROXY + HTTPS_PROXY
-RESOURCE=openai-community/gpt2 config.json
-REVISION=607a30d783dfa663caf39e06633721c8d4cfcd7e
-EXPECTED_BYTES=665
-EXPECTED_SHA256=0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4
-```
-
-## 已验证 vs 未验证
-
-```text
-资源存在与内容=GPT_REAL_PREEXEC_PASS
-hf命令语义=OFFICIAL_DOCS_VERIFIED
-hf 1.19 proxy via HTTP_PROXY/HTTPS_PROXY=OFFICIAL_DOCS_VERIFIED
-用户本机 Codex 受限子进程中的 hf 实际 TLS=UNEXECUTABLE_BY_GPT
-```
-
-只有最后一项留给 REAL。
-
-## 现实认证结果
-
-```text
-HF_PUBLIC_DOWNLOAD_REAL_CERTIFIED=YES
-TOOL=hf 1.19.0
-OUTPUT_BYTES=665
-SHA256=0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4
-LOCAL_T_VALID_MS=13727.948
-REALITY_DELTA=NONE
-```
-
-注意：
-
-```text
-WHOLE_LOOP_TIME_ACCOUNTING_COMPLETE=NO
-TSTAR_ELIGIBLE=NO
-```
-
-原因：此前同一 TASK_TIME_ID 的 GPT/Codex 主动工作时间没有全程连续记账，所以 13.727948s 只能作为该下载动作的局部现实基线，不能冒充整体 T*。
-
-其他来源路由仍采用成熟工具映射，但没有因为 HF 单样本 PASS 就宣称所有来源已完成本机现实认证。
-
-## 状态
-
-```text
-HF_PUBLIC_DOWNLOAD_REAL_CERTIFIED=YES
-GENERAL_ROUTER_LOCAL_CERTIFICATION=PARTIAL
-TIME_BASELINE_CERTIFIED=NO
-METHOD=first-principles-physical-limit-convergence@4.6.2
-REALITY_FOUNDATION=local-ai-reality-foundation@1.1.7
-```
-
-一句话：GPT 能真实做的先做成功；只把用户本机独有的最后一小段交给 Codex。
