@@ -7,19 +7,14 @@
   "decision_order": [
     {
       "priority": 1,
-      "when": "browser_session_or_web_interaction_required",
-      "tool": "playwright-native-ai-browser",
-      "version": "managed_by_target_skill"
-    },
-    {
-      "priority": 2,
       "when": "huggingface_resource",
       "tool": "hf",
       "command": "hf download",
+      "auth": "public=no_login; private_or_gated=hf auth whoami/login",
       "known_working_version": "1.19.0"
     },
     {
-      "priority": 3,
+      "priority": 2,
       "when": "github_native_task",
       "tool": "gh",
       "commands": [
@@ -30,14 +25,19 @@
       "exception": "direct_github_raw_url_goes_to_direct_url_route"
     },
     {
-      "priority": 4,
+      "priority": 3,
       "when": "direct_http_https_ftp_file_url",
       "tool": "aria2c",
       "software": "aria2",
       "known_working_version": "1.37.0"
+    },
+    {
+      "priority": 4,
+      "when": "browser_session_required_and_no_cli_or_direct_url",
+      "tool": "playwright-native-ai-browser",
+      "version": "managed_by_target_skill"
     }
   ],
   "version_policy": "use_installed_working_version_no_auto_upgrade",
-  "insufficient_information": "determine_source_or_actual_download_url_first",
   "implementation_scope": "no_download_implementation"
 }
