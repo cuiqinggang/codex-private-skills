@@ -1,30 +1,24 @@
-# v0.1.4 Local Reality Certification
+# v0.1.5 Reality Certification
 
-Everything GPT can pre-execute has already passed.
-
-The only remaining reality question:
+## Certified scope
 
 ```text
-Can the user's local restricted Codex process run the already-installed hf 1.19.0 through the existing proxy and reproduce the same 665-byte file?
+SOURCE=Hugging Face public file
+TOOL=hf 1.19.0
+PROCESS_PROXY=http://127.0.0.1:7890
+VALID_REAL=PASS
+OUTPUT_BYTES=665
+SHA256=0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4
+LOCAL_T_VALID_MS=13727.948
+REALITY_DELTA=NONE
 ```
 
-Frozen:
+## Not certified by this sample
 
 ```text
-TOOL=hf
-VERSION=1.19.0
-HTTP_PROXY=http://127.0.0.1:7890
-HTTPS_PROXY=http://127.0.0.1:7890
-REPO=openai-community/gpt2
-FILE=config.json
-REVISION=607a30d783dfa663caf39e06633721c8d4cfcd7e
-EXPECTED_BYTES=665
-EXPECTED_SHA256=0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4
-TIME_LIMIT=30s
+ALL_SOURCE_TYPES_LOCAL_REAL_CERTIFIED=NO
+WHOLE_LOOP_TIME_ACCOUNTING_COMPLETE=NO
+TSTAR_ELIGIBLE=NO
 ```
 
-No fallback or redesign is allowed inside REAL.
-
-The command must include --force-download so success cannot be satisfied only from cache.
-
-PASS = hf exit 0 + exact bytes/hash + <=30s.
+The functionality is real-certified for the stated HF scope. A future clean timing run under v4.6.2 is required before claiming a whole-loop mature T*.
