@@ -47,9 +47,13 @@ Remove-Item -LiteralPath $Out -Force -ErrorAction SilentlyContinue
 
 $oldHttp=$env:HTTP_PROXY
 $oldHttps=$env:HTTPS_PROXY
+$oldEtag=$env:HF_HUB_ETAG_TIMEOUT
+$oldDownload=$env:HF_HUB_DOWNLOAD_TIMEOUT
 
 $env:HTTP_PROXY='http://127.0.0.1:7890'
 $env:HTTPS_PROXY='http://127.0.0.1:7890'
+$env:HF_HUB_ETAG_TIMEOUT='10'
+$env:HF_HUB_DOWNLOAD_TIMEOUT='10'
 
 $sw=[System.Diagnostics.Stopwatch]::StartNew()
 
@@ -60,6 +64,8 @@ $sw.Stop()
 
 if($null -eq $oldHttp){ Remove-Item Env:HTTP_PROXY -ErrorAction SilentlyContinue } else { $env:HTTP_PROXY=$oldHttp }
 if($null -eq $oldHttps){ Remove-Item Env:HTTPS_PROXY -ErrorAction SilentlyContinue } else { $env:HTTPS_PROXY=$oldHttps }
+if($null -eq $oldEtag){ Remove-Item Env:HF_HUB_ETAG_TIMEOUT -ErrorAction SilentlyContinue } else { $env:HF_HUB_ETAG_TIMEOUT=$oldEtag }
+if($null -eq $oldDownload){ Remove-Item Env:HF_HUB_DOWNLOAD_TIMEOUT -ErrorAction SilentlyContinue } else { $env:HF_HUB_DOWNLOAD_TIMEOUT=$oldDownload }
 
 $f=Get-Item -LiteralPath $Out -ErrorAction SilentlyContinue
 if($f){
