@@ -1,55 +1,67 @@
-# 混合智能概率引擎 v0.2.0 — 当前状态
+# 混合智能概率引擎 v0.3.1 — 当前状态
 
 ```text
-VERSION=0.2.0
-DISPLAY_NAME=混合智能概率引擎
+版本=0.3.1
+显示名称=混合智能概率引擎
 
-VIRTUAL_MATURITY=NO
-VIRTUAL_MATURATION=IN_PROGRESS
-REALITY_CERTIFIED=NO
+虚拟成熟=通过（限定已认证任务族 HIPE-E2E-V3-48）
+现实认证=未完成
+现实成熟=否
 
-HISTORICAL_JEV_CORE=JEV Probability Engine P0 v0.4.0
-HISTORICAL_JEV_T_REAL_STAR_MS=560.9819
-HISTORICAL_JEV_GAIN_IS_NEW_HIPE_GAIN=NO
+下游概率核心=JEV Probability Engine P0 v0.4.0
+JEV历史现实极限=560.9819 ms
+该历史收益属于本轮新收益=否
 
-OLD_HIPE_V010_V011=HISTORICAL_DECISION_PLANE_PROTOTYPES
+正向拆解器=JEV舒适区导向正向拆解器 v0.1.0
+形式规则空间=1024/1024 PASS
+任务族语义边界=128/128 PASS
+结构/Schema攻击=192/192 PASS
+JEV单条件破坏攻击=256/256 PASS
+SQL residual攻击=64/64 PASS
+历史48节点路由回归=48/48 PASS
 
-FORWARD_COMPILER_COMPONENT=CREATED_AND_FORMAL_GATE_PASS
-FORMAL_ROUTE_RULE_SPACE_TEST=PASS_1024_OF_1024
-SEMANTIC_BENCHMARK_CONTRACT=FROZEN_128_CASES
-SEMANTIC_FORWARD_DECOMPOSITION_REAL_CERT=NOT_DONE
-END_TO_END_TIMING_CONTRACT=FROZEN
-OLD_48_PRELABELED_RUNNER_COUNTS_AS_COMPLETE_E2E=NO
+冻结任务族=HIPE-E2E-V3-48
+未知任务族策略=直接Full-GPT
 
-T_VIRTUAL_STAR=NOT_ESTABLISHED
-T_REAL_STAR=NOT_MEASURED
+全GPT虚拟端到端=14336.448 ms
+混合虚拟端到端=9448.948 ms
+T_虚拟极限候选=9448.948 ms
+虚拟时间加速=1.517253x
+虚拟时间下降=34.0914%
 
-FULL_GPT_E2E_REAL_MS=NOT_MEASURED
-HYBRID_E2E_REAL_MS=NOT_MEASURED
-E2E_TIME_SPEEDUP=NOT_CERTIFIED
-E2E_COST_SPEEDUP=NOT_CERTIFIED
+全GPT成本代理=0.074952 USD
+混合成本代理=0.014962054 USD
+虚拟成本收益=5.009473x
+虚拟成本下降=80.0378%
+
+时间敏感性=25/25正收益
+时间加速范围=1.234531x~1.679075x
+成本敏感性=20/20正收益
+成本收益范围=4.507922x~5.029718x
+
+T_现实极限=未测量
+现实时间收益=未认证
+现实成本收益=未认证
 ```
 
-## 为什么降级
+## 当前结论
 
-v0.1.x 的固定 48 节点 runner 在进入执行层之前已经预先带有 CODE/JEV/GPT 类别。
+v0.1.x 只保留为“预先分流后的决策执行平面”历史原型。
 
-因此它没有实际测量：
-- 原始任务理解；
-- 正向拆解；
-- 舒适区转换；
-- 编译/路由时间。
+v0.2.0 完成了成熟门纠正、P0 命名纠正和正向拆解器独立化。
 
-所以即便旧 runner 现实运行成功，也只能认证“决策执行平面”，不能认证完整混合智能引擎的端到端极限时间。
+v0.3.0 首次形成完整任务族端到端虚拟冻结。
 
-## 成熟恢复条件
+v0.3.1 在不改变冠军架构的情况下：
+- 加入 256 次 JEV 舒适区单条件破坏攻击；
+- 使用 2026-09-24 当前 provider P50 快照重新校准数字孪生；
+- 重新计算完整端到端虚拟极限目标和收益区间；
+- 冻结 v0.3.1 Reality runner / GUI launcher / Reality contract。
 
-必须先得到：
-- 可复用正向拆解技能组件；
-- 舒适区边界的形式与语义证据；
-- 完整任务 Virtual-99 的明确 `T_VIRTUAL_STAR`；
-- Full-GPT 与 Hybrid 的完整任务同 verifier 收益；
-- 冻结 Reality runner。
+因此当前“虚”已经结束；下一阶段只允许现实认证，不允许现场重新设计。
 
-达到后才能重新标：
-`VIRTUAL_MATURITY=PASS`
+标签：
+`【混合智能概率引擎｜v0.3.1虚拟成熟冻结｜2｜虚】`
+
+下一步：
+`【混合智能概率引擎｜完整任务现实认证｜3｜实】`
