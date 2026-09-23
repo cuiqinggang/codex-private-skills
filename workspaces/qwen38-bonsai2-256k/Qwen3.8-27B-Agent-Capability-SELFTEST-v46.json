@@ -1,0 +1,85 @@
+{
+  "task": "千问3.8 27B1 本地智能体能力边界 v4.6 零GPU闭环自检",
+  "gpu_runs": 0,
+  "network_calls": 0,
+  "model_calls": 0,
+  "suite_units": 1018,
+  "suite_counts": {
+    "atomic": 592,
+    "jev": 240,
+    "thinking": 96,
+    "long": 18,
+    "cache": 48,
+    "memory": 24
+  },
+  "token_corrections": 16,
+  "token_correction_ids": [
+    "E1_PLAN_FIDELITY-059",
+    "E1_PLAN_FIDELITY-063",
+    "E2_STATE_CONTINUITY-059",
+    "E2_STATE_CONTINUITY-063",
+    "E3_FILE_CODE_MUTATION-059",
+    "E3_FILE_CODE_MUTATION-063",
+    "E4_TOOL_INVOCATION-059",
+    "E4_TOOL_INVOCATION-063",
+    "E5_FAILURE_RECOVERY-059",
+    "E5_FAILURE_RECOVERY-063",
+    "E6_VERIFICATION_EVIDENCE-059",
+    "E6_VERIFICATION_EVIDENCE-063",
+    "E7_LONG_CONTEXT_RESOURCE-059",
+    "E7_LONG_CONTEXT_RESOURCE-063",
+    "E8_STOP_SCOPE_DISCIPLINE-059",
+    "E8_STOP_SCOPE_DISCIPLINE-063"
+  ],
+  "frontier_pairwise_coverage": {
+    "atomic_cases": {
+      "selected": 64,
+      "required_pairs": 800,
+      "covered_pairs": 800,
+      "missing_pairs": 0,
+      "pass": true
+    },
+    "jev_cases": {
+      "selected": 24,
+      "required_pairs": 57,
+      "covered_pairs": 57,
+      "missing_pairs": 0,
+      "pass": true
+    },
+    "thinking_cases": {
+      "selected": 4,
+      "required_pairs": 12,
+      "covered_pairs": 12,
+      "missing_pairs": 0,
+      "pass": true
+    },
+    "long_workflows": {
+      "selected": 16,
+      "required_pairs": 31,
+      "covered_pairs": 31,
+      "missing_pairs": 0,
+      "pass": true
+    },
+    "cache_trials": {
+      "selected": 24,
+      "required_pairs": 69,
+      "covered_pairs": 69,
+      "missing_pairs": 0,
+      "pass": true
+    },
+    "memory_trials": {
+      "selected": 12,
+      "required_pairs": 28,
+      "covered_pairs": 28,
+      "missing_pairs": 0,
+      "pass": true
+    }
+  },
+  "frontier_initial_units": 144,
+  "fixture_manifest_sha256": "f686fa72d40c4726f31d7bea52a4e0428d8176cbfcfde651a417bdba2419e365",
+  "elapsed_ms": 36.369,
+  "execution_chain_closed": true,
+  "runner_binding_closed": true,
+  "result": "PASS",
+  "errors": []
+}
