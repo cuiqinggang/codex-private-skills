@@ -53,7 +53,7 @@ $env:HTTPS_PROXY='http://127.0.0.1:7890'
 
 $sw=[System.Diagnostics.Stopwatch]::StartNew()
 
-& hf download openai-community/gpt2 config.json --revision 607a30d783dfa663caf39e06633721c8d4cfcd7e --local-dir $Root
+& hf download openai-community/gpt2 config.json --revision 607a30d783dfa663caf39e06633721c8d4cfcd7e --local-dir $Root --force-download
 
 $rc=$LASTEXITCODE
 $sw.Stop()
