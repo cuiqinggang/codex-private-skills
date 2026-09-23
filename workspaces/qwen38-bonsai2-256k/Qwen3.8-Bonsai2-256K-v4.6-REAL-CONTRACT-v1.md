@@ -40,6 +40,23 @@ NGL=99
 
 未 10/10 PASS：GPU_RUNS=0，STOP。
 
+## GPU reality gate
+
+启动前必须：
+```text
+GPU=NVIDIA GeForce RTX 2080 Ti
+TOTAL_VRAM>=22000 MiB
+PRESTART_USED_VRAM<=2500 MiB
+```
+
+server ready 后必须：
+```text
+GPU_USED_DELTA>=5500 MiB
+PROPS_N_CTX=262144
+```
+
+否则 Reality Delta + STOP，不允许继续污染计时。
+
 ## Server
 
 主：
