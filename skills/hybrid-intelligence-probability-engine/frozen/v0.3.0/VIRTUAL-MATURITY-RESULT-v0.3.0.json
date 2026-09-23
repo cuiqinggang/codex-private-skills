@@ -1,0 +1,43 @@
+{
+  "version": "0.3.0",
+  "scope": "HIPE-E2E-V3-48_CERTIFIED_FAMILY",
+  "routes": {"CODE":16,"JEV":24,"GPT":8},
+  "jev_questions": 32,
+  "schema_attacks_total": 192,
+  "schema_attacks_fail": 0,
+  "family_128_total": 128,
+  "family_128_fail": 0,
+  "formal_1024": {"CODE":128,"JEV":3,"GPT":893},
+  "sql_attacks_total": 64,
+  "sql_attacks_fail": 0,
+  "local": {
+    "parse_compile_ms":{"min":0.083093,"p50":0.092257,"p95":0.16215,"max":1.4154},
+    "verify_ms":{"min":1.194978,"p50":1.29756,"p95":1.737371,"max":5.788245},
+    "write_ms":{"min":0.058276,"p50":0.066288,"p95":0.093539,"max":1.108962},
+    "raw_bytes":12061
+  },
+  "twin": {
+    "calibration": {
+      "snapshot_date":"2026-09-24",
+      "gpt_route":"provider.sort=throughput",
+      "gpt_provider_snapshot":"OpenAI Fast",
+      "gpt_latency_p50_ms":3700.0,
+      "gpt_tps":71.0,
+      "gpt_input_usd_per_m":4.0,
+      "gpt_output_usd_per_m":20.0,
+      "jev_real_anchor_min_ms":560.9819,
+      "jev_input_usd_per_m":0.042,
+      "chars_per_token_proxy":3.5,
+      "classification":"VIRTUAL_ONLY"
+    },
+    "bytes":{"full_in":18765,"residual_in":3908,"jev_total_in":46504,"full_out":3101,"residual_out":1731},
+    "tokens_proxy":{"full_in":5362,"residual_in":1117,"jev_in":13287,"full_out":886,"residual_out":495},
+    "time":{"full_ms":16178.87323943662,"hybrid_ms":10673.287090915494,"residual_ms":10671.830985915494,"local_p50_ms":1.456105,"speedup":1.5158285448170108,"reduction_pct":34.02947824018455},
+    "cost":{"full_usd_proxy":0.039168,"hybrid_usd_proxy":0.014926054,"speedup":2.624136292150624,"reduction_pct":61.89222324346404}
+  },
+  "sensitivity":{"cases":25,"min_speedup":1.2641829924861254,"max_speedup":1.605502107913139,"min_reduction_pct":20.89752781490808,"max_reduction_pct":37.71418953165884,"all_positive":true},
+  "cost_sensitivity":{"cases":20,"min_speedup":2.3586122363069455,"max_speedup":2.6351259392449937,"min_reduction_pct":57.60218722659667,"max_reduction_pct":62.05114962032834,"all_positive":true},
+  "architecture_winner":"CERTIFIED_FAMILY_DETERMINISTIC_COMPILER_PARALLEL_HYBRID",
+  "unknown_family_policy":"DIRECT_FULL_GPT",
+  "result_sha256":"0b03c8f9de8701b286e0903323137d3da1ba4d700622a7a0bbfd2a85c602661c"
+}
