@@ -1,12 +1,12 @@
 ---
 name: local-ai-reality-foundation
-description: 本地 AI 现实底座永久资产 v1.1.6。版本化、任务后吸收的 Reality Foundation；本版吸收 Codex Windows 子进程创建 1344 现实差异，以及下载工具存在性事实。
+description: 本地 AI 现实底座永久资产 v1.1.7。版本化、任务后吸收的 Reality Foundation；本版吸收 Codex Windows 子进程创建 1344 现实差异，以及下载工具存在性事实。
 metadata:
   version: "1.1.6"
   status: ACTIVE_VERSIONED_FOUNDATION
 ---
 
-# 本地 AI 现实底座永久资产 v1.1.6
+# 本地 AI 现实底座永久资产 v1.1.7
 
 ## 1. 唯一目的
 
@@ -33,7 +33,7 @@ MINOR = 新现实域、新资产类别、新吸收能力
 MAJOR = Foundation 合同发生不兼容变化
 ```
 
-v1.1.6 = PATCH。
+v1.1.7 = PATCH。
 
 ## 4. 当前完整资产
 
@@ -162,6 +162,28 @@ ACTION：
 - 只有 GPT/Reality Twin 不能现实复现的本机 TLS/凭据差异，才留给 Codex REAL 验证；
 - 不通过修改系统证书、注册表或代理来现场修复。
 
+### OBSERVED_CONSTRAINT_009 — hf 本地现实成功路径
+
+现实认证：
+```text
+TOOL=hf 1.19.0
+WORKDIR=C:\AI\Mature-Download-Router-Real-Test
+HTTP_PROXY=http://127.0.0.1:7890 (process-local)
+HTTPS_PROXY=http://127.0.0.1:7890 (process-local)
+REPO=openai-community/gpt2
+FILE=config.json
+REVISION=607a30d783dfa663caf39e06633721c8d4cfcd7e
+OUTPUT_BYTES=665
+SHA256=0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4
+T_VALID_MS=13727.948
+VALID_REAL=PASS
+```
+
+MEANING：
+- 当前本机受限 Codex 执行上下文中，hf + 进程级现有代理已经真实可用；
+- 该 13.727948s 是局部现实下载有效时间，不是整个 TASK_TIME_ID 的 T*；
+- 因历史整条任务主动时间账本不完整，本次不得进入整体成熟 T* 基线。
+
 ## 6. 网络硬约束
 - FlClash 常驻。
 - 禁止为了任务改变代理。
@@ -172,9 +194,9 @@ ACTION：
 相对 v1.1.4：
 
 ```text
-ADD Windows curl/Schannel exit 35 execution-context reality fact
-KEEP exact download tool versions from REAL 04
-KEEP scoped-workdir PROCESS_SPAWN=PASS evidence
+ADD hf 1.19.0 local real PASS path with 13.727948s local T_VALID
+KEEP Windows curl/Schannel exit 35 execution-context fact
+KEEP exact download tool versions and scoped-workdir evidence
 KEEP download network context inheritance rule
 NO METHOD CHANGE
 NO HARDWARE FINGERPRINT CHANGE
