@@ -4,7 +4,7 @@
   "display_name": "成熟下载工具最短调用路由",
   "status": "PRE_RELEASE_REAL_FETCH_PASS_LOCAL_REAL_PENDING",
   "method": "first-principles-physical-limit-convergence@4.6.0",
-  "reality_foundation": "local-ai-reality-foundation@1.1.5",
+  "reality_foundation": "local-ai-reality-foundation@1.1.6",
   "objective": "MIN_VALID_DOWNLOAD_ROUTING_OVERHEAD",
   "rule": "SOURCE_CLASSIFY_THEN_CALL_MATURE_TOOL",
   "custom_layers": false,
@@ -33,5 +33,12 @@
   },
   "code_task_release_sample": "https://huggingface.co/openai-community/gpt2/resolve/main/config.json",
   "local_real_certified": false,
-  "updated_date": "2026-09-23"
+  "updated_date": "2026-09-23",
+  "real_07": {
+    "status": "FAIL",
+    "t_valid_ms": 61.278,
+    "curl_exit": 35,
+    "detail": "Schannel no usable credentials",
+    "classification": "LOCAL_WINDOWS_CURL_TLS_CONTEXT_FAILURE_AFTER_GPT_PUBLIC_RESOURCE_PRECHECK_PASS"
+  }
 }
