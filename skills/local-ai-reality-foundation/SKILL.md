@@ -1,12 +1,12 @@
 ---
 name: local-ai-reality-foundation
-description: 本地 AI 现实底座永久资产 v1.1.4。版本化、任务后吸收的 Reality Foundation；本版吸收 Codex Windows 子进程创建 1344 现实差异，以及下载工具存在性事实。
+description: 本地 AI 现实底座永久资产 v1.1.5。版本化、任务后吸收的 Reality Foundation；本版吸收 Codex Windows 子进程创建 1344 现实差异，以及下载工具存在性事实。
 metadata:
   version: "1.1.4"
   status: ACTIVE_VERSIONED_FOUNDATION
 ---
 
-# 本地 AI 现实底座永久资产 v1.1.4
+# 本地 AI 现实底座永久资产 v1.1.5
 
 ## 1. 唯一目的
 
@@ -33,7 +33,7 @@ MINOR = 新现实域、新资产类别、新吸收能力
 MAJOR = Foundation 合同发生不兼容变化
 ```
 
-v1.1.4 = PATCH。
+v1.1.5 = PATCH。
 
 ## 4. 当前完整资产
 
@@ -142,11 +142,12 @@ ACTION
 
 ## 7. 本版 delta
 
-相对 v1.1.3：
+相对 v1.1.4：
 
 ```text
-ADD OBSERVED_CONSTRAINT_007
-ADD download tool presence facts
+ADD exact download tool versions from REAL 04
+ADD scoped-workdir PROCESS_SPAWN=PASS evidence
+ADD download network context inheritance rule
 NO METHOD CHANGE
 NO HARDWARE FINGERPRINT CHANGE
 ```
