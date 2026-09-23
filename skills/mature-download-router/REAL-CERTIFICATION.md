@@ -1,31 +1,28 @@
-# v0.1.3 Local Reality Certification
+# v0.1.4 Local Reality Certification
 
-发布前真实取件已通过。现在只验证用户本机能否重复同一个 665-byte 公开文件下载。
+Everything GPT can pre-execute has already passed.
 
-固定样本：
+The only remaining reality question:
 
 ```text
-URL=https://huggingface.co/openai-community/gpt2/resolve/main/config.json
+Can the user's local restricted Codex process run the already-installed hf 1.19.0 through the existing proxy and reproduce the same 665-byte file?
+```
+
+Frozen:
+
+```text
+TOOL=hf
+VERSION=1.19.0
+HTTP_PROXY=http://127.0.0.1:7890
+HTTPS_PROXY=http://127.0.0.1:7890
+REPO=openai-community/gpt2
+FILE=config.json
+REVISION=607a30d783dfa663caf39e06633721c8d4cfcd7e
 EXPECTED_BYTES=665
-PRE_RELEASE_FETCH=PASS
-PRE_RELEASE_ARTIFACT_REREAD=PASS
-LOCAL_TOOL=curl.exe
-LOCAL_NETWORK_CONTEXT=http://127.0.0.1:7890
+EXPECTED_SHA256=0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4
 TIME_LIMIT=30s
 ```
 
-PASS：
+No fallback or redesign is allowed inside REAL.
 
-```text
-curl exit=0
-output exists
-output bytes=665
-T_VALID <= 30s
-```
-
-成功后：
-```text
-LOCAL_REAL_CERTIFIED=YES
-```
-
-失败后只返回最小 Reality Delta，不切换工具、不改方案。
+PASS = hf exit 0 + exact bytes/hash + <=30s.
