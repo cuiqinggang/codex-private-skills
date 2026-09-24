@@ -1,100 +1,67 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.7.5",
+  "version": "4.7.6",
   "display_name": "极限短时间引擎",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.7.5",
-  "method_steps": [
-    "VIRTUAL",
-    "REAL"
-  ],
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.7.6-virtual-freeze",
+  "method_steps": ["VIRTUAL", "REAL"],
   "method_step_count": 2,
   "reality_foundation": "local-ai-reality-foundation@1.1.8",
-  "visible_state": {
-    "format": "【PAGE_NAME｜TASK_NAME｜NN-NN｜PHASE】 极限锚03:14.419",
-    "numeric_state_meaning": "方案代-本代现实尝试号",
-    "only_visible_time": "T_MATURE_STAR"
+  "current_generation_attempt": "03-01",
+  "timing": {
+    "t_mature_star_ms": 194419.3759,
+    "t_mature_star_human": "00:03:14.419",
+    "real_time_required": true,
+    "real_time_ceiling_ms": 194419.3759,
+    "t_closed_real_internal_ledger": true
+  },
+  "phase_executor_gate": {
+    "virtual_executor": "GPT",
+    "real_executor": "CODEX",
+    "codex_requires_phase_real": true,
+    "virtual_codex_dispatch_forbidden": true,
+    "blocked_dispatch_count": 0,
+    "blocked_business_side_effect": 0
+  },
+  "virtual_completion": {
+    "freeze_id_required": true,
+    "freeze_publish_required": true,
+    "freeze_reread_required": true,
+    "real_contract_required": true,
+    "real_command_required": true,
+    "real_command_phase_must_be_real": true,
+    "time_contract_required": true,
+    "evidence_consistency_required": true
   },
   "finite_retry": {
     "max_real_attempts_per_generation": 6,
     "attempt_7_forbidden": true,
-    "attempt_6_fail": "MANDATORY_REASSEMBLY_NEXT_GENERATION_01"
+    "attempt_6_fail": "NEXT_GENERATION_01",
+    "structural_failure": "ALLOW_EARLY_NEXT_GENERATION_01"
   },
-  "timing": {
-    "t_mature_star_ms": 194419.3759,
-    "t_mature_star_human": "00:03:14.419",
-    "t_closed_real_internal_ledger": true,
-    "user_visible_full_wall_clock_default": false,
-    "full_iso_internal_only": true
+  "real_validity": {
+    "same_freeze_id_real_once": true,
+    "redesign_in_real_forbidden": true,
+    "real_start_required": true,
+    "real_end_required": true,
+    "t_valid_real_ms_required": true,
+    "verifier_pass_required": true,
+    "evidence_consistency_required": true
   },
-  "inherited_rules": {
-    "v4_6_1": "GPT_REAL_PREEXECUTION_EVIDENCE_WHEN_FEASIBLE",
-    "v4_6_2": [
-      "TIME_LEDGER_REQUIRED",
-      "ONE_REAL_PER_FREEZE_ID",
-      "NO_DIRECT_REAL_RETRY_SAME_FREEZE"
-    ],
-    "v4_7_1": "ATOMIC_VIRTUAL_TO_REAL_DISPATCH",
-    "v4_7_0": "DUAL_TIME_SINGLE_CLOSED_LOOP"
+  "provenance": {
+    "commit_scope_required": true,
+    "branch_scope_required": true,
+    "remote_claim_requires_remote_reread": true
   },
-  "hard_validator": {
-    "scope": "PRE_DISPATCH_CONTROL_PLANE",
-    "purpose": "Validate state/attempt/freeze/time-anchor before Codex receives task",
-    "local_codex_subprocess_required": false,
-    "contract": "skills/first-principles-physical-limit-convergence/contracts/PRE-DISPATCH-STATE-GATE-v4.7.5.json"
+  "contracts": {
+    "phase_state_machine": "skills/first-principles-physical-limit-convergence/contracts/PHASE-STATE-MACHINE-v4.7.6.json",
+    "real_certification": "skills/first-principles-physical-limit-convergence/contracts/REAL-CERTIFICATION-v4.7.6.json",
+    "inherited_atomic_dispatch": "skills/first-principles-physical-limit-convergence/contracts/VIRTUAL-REAL-ATOMIC-DISPATCH-GATE-v4.7.1.json",
+    "freeze_closure": "skills/first-principles-physical-limit-convergence/contracts/FREEZE-CLOSURE-GATE.json"
   },
-  "chat_reply_marker": {
-    "required_by_skill": true,
-    "enforcement": "SELF_CHECK_UNTIL_AUTOMATION_HOOK_EXISTS",
-    "do_not_claim_external_hard_block": true
+  "virtual_validation": {
+    "logic_vectors": "20/20 PASS",
+    "validation_scope": "PURE_STATE_TRANSITION_LOGIC",
+    "codex_used_for_virtual_maturation": false
   },
-  "language": {
-    "user_visible": "CHINESE_FIRST",
-    "translate_required_english_terms": true,
-    "machine_fields_paths_formulas_exempt": true
-  },
-  "status": "V4_7_5_PRE_DISPATCH_LOGIC_PASS_AUTOMATION_HOOK_PENDING_STATE_02_01_VIRTUAL",
-  "validation": {
-    "v473_minimal_state_selftest": "16/16 PASS",
-    "v474_workdir_logic_selftest": "8/8 PASS_BUT_NOT_PROCESS_REALITY",
-    "v474_real_01_02": "FAIL_1344_IN_HISTORICALLY_PASSING_WORKDIR",
-    "classification": "STRUCTURAL_REASSEMBLY_REQUIRED",
-    "current_state": "02-01/VIRTUAL",
-    "next_required": "CONTROL_PLANE_PRE_DISPATCH_GATE_INTEGRATION",
-    "do_not_repeat_local_spawn_gate": true,
-    "control_plane_gate_selftest": {
-      "result": "PASS",
-      "tests_total": 10,
-      "tests_passed": 10,
-      "path": "skills/first-principles-physical-limit-convergence/tests/PRE-DISPATCH-GATE-SELFTEST-v4.7.5.json"
-    },
-    "automation_hook": {
-      "status": "PENDING",
-      "requirement": "GPT_CODEX_ORCHESTRATOR_MUST_CALL_PRE_DISPATCH_GATE_BEFORE_ANY_REAL_DISPATCH"
-    }
-  },
-  "execution_entry_gate": {
-    "required_for_local_process_tasks": true,
-    "source": "Reality Foundation 1.1.7 / OBSERVED_CONSTRAINT_007",
-    "explicit_real_workdir_required": true,
-    "user_home_default_forbidden": true,
-    "proven_workdir_required": true,
-    "current_proven_workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
-    "process_spawn_precheck_required": true,
-    "exact_1344_recurrence_without_workdir_binding": "GATE_REGRESSION",
-    "same_1344_in_proven_workdir": "ONE_AUTHORIZED_PROVEN_CHANNEL_RETRY_THEN_STOP",
-    "process_spawn_precheck_timing": "FIRST_REAL_ACTION",
-    "pre_dispatch_requires": [
-      "REAL_WORKDIR",
-      "REAL_WORKDIR_PROVEN"
-    ]
-  },
-  "executor_capability_gate": {
-    "separate_from_state_gate": true,
-    "required_only_for_tasks_needing_local_subprocess": true,
-    "execution_channel_id_required": true,
-    "current_context_process_spawn_real_pass_required": true,
-    "historical_workdir_pass_sufficient": false,
-    "mock_or_assumed_pass_forbidden": true,
-    "on_1344_with_unresolved_channel": "STOP_EXECUTION_CHANNEL_UNRESOLVED"
-  }
+  "status": "VIRTUAL_FREEZE_CANDIDATE"
 }
