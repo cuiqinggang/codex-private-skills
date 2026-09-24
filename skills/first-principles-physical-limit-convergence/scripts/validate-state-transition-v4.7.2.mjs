@@ -31,6 +31,8 @@ if (!target) fail('UNKNOWN_TARGET_STATE');
 else if (event.PHASE !== target.phase) fail('PHASE_STATE_MISMATCH');
 
 if (event.TIME_CORE_VISIBLE !== 'PASS') fail('TIME_CORE_NOT_VISIBLE');
+const allowedNext = contract.next_state_rules[event.TO_STATE] || [];
+if (!allowedNext.includes(event.NEXT_STATE)) fail('NEXT_STATE_MISMATCH');
 if (event.T_CLOSED_REAL_START !== ledger.t_closed_real_start) fail('T_CLOSED_REAL_START_MISMATCH');
 
 for (const key of (contract.state_requirements[event.TO_STATE] || [])) {
