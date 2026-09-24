@@ -2,7 +2,7 @@
 name: local-ai-reality-foundation
 description: 本地 AI 现实底座永久资产 v1.1.7。版本化、任务后吸收的 Reality Foundation；本版吸收 Codex Windows 子进程创建 1344 现实差异，以及下载工具存在性事实。
 metadata:
-  version: "1.1.6"
+  version: "1.1.7"
   status: ACTIVE_VERSIONED_FOUNDATION
 ---
 
