@@ -1,0 +1,85 @@
+{
+  "contract_id": "extreme-short-time-engine-phase-state-machine",
+  "contract_version": "1.0.0",
+  "method_version": "4.7.6",
+  "method_steps": ["虚", "实"],
+  "method_step_count": 2,
+  "t_mature_star_ms": 194419.3759,
+  "max_attempts_per_generation": 6,
+  "executors": {
+    "虚": "GPT",
+    "实": "CODEX"
+  },
+  "top_invariant": "IF EXECUTOR=CODEX AND PHASE!=实 THEN BLOCK_BEFORE_SIDE_EFFECT",
+  "virtual_rules": {
+    "codex_dispatch_allowed": false,
+    "business_side_effect_allowed": false,
+    "gpt_control_plane_freeze_publish_allowed": true,
+    "complete_requires": [
+      "VIRTUAL_MATURE_PASS",
+      "FREEZE_ID_CREATED",
+      "FREEZE_PUBLISHED",
+      "FREEZE_REREAD_PASS",
+      "REAL_CONTRACT_READY",
+      "REAL_COMMAND_READY",
+      "REAL_COMMAND_PHASE_REAL",
+      "TIME_CONTRACT_READY",
+      "EVIDENCE_CONSISTENCY_PASS"
+    ]
+  },
+  "atomic_virtual_to_real": {
+    "required": true,
+    "order": [
+      "VIRTUAL_MATURE_PASS",
+      "FREEZE_ID_CREATED",
+      "FREEZE_PUBLISHED",
+      "FREEZE_REREAD_PASS",
+      "REAL_CONTRACT_READY",
+      "TIME_CONTRACT_READY",
+      "REAL_COMMAND_READY_WITH_PHASE_REAL",
+      "PHASE_FLIP_TO_REAL"
+    ],
+    "virtual_complete_only_after_all": true
+  },
+  "real_entry_requires": [
+    "PHASE_REAL",
+    "EXECUTOR_CODEX",
+    "ATTEMPT_1_TO_6",
+    "NEW_FREEZE_ID",
+    "FREEZE_PUBLISHED",
+    "FREEZE_REREAD_PASS",
+    "REAL_CONTRACT_READY",
+    "TIME_CONTRACT_READY",
+    "EVIDENCE_CONSISTENCY_PASS"
+  ],
+  "real_pass_requires": [
+    "REAL_DISPATCHED",
+    "REAL_START_RECORDED",
+    "REAL_END_RECORDED",
+    "T_VALID_REAL_MS_RECORDED",
+    "T_VALID_REAL_MS_LE_194419_3759",
+    "VERIFIER_PASS",
+    "EVIDENCE_CONSISTENCY_PASS"
+  ],
+  "retry_rules": {
+    "attempt_7": "ILLEGAL",
+    "attempt_6_fail": "NEXT_GENERATION_ATTEMPT_01",
+    "structural_failure_attempt_1_to_5": "ALLOW_EARLY_NEXT_GENERATION_ATTEMPT_01",
+    "ordinary_fail_attempt_1_to_5": "SAME_GENERATION_NEXT_ATTEMPT_WITH_NEW_FREEZE_ID"
+  },
+  "invalid_states": [
+    "PHASE_VIRTUAL_AND_EXECUTOR_CODEX",
+    "VIRTUAL_COMPLETE_WITHOUT_REAL_COMMAND",
+    "VIRTUAL_COMPLETE_WITH_REAL_COMMAND_PHASE_VIRTUAL",
+    "PHASE_REAL_WITHOUT_NEW_FREEZE_ID",
+    "PHASE_REAL_WITHOUT_TIME_CONTRACT",
+    "REAL_PASS_WITHOUT_T_VALID_REAL_MS",
+    "REAL_PASS_WITH_EVIDENCE_CONTRADICTION",
+    "ATTEMPT_GREATER_THAN_6"
+  ],
+  "validation": {
+    "logic_vectors_passed": 20,
+    "logic_vectors_total": 20,
+    "status": "PASS"
+  }
+}
