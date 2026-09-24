@@ -23,11 +23,11 @@ if(from?.init){
  if(e.REAL_WORKDIR_PROVEN!=='YES')fail('REAL_WORKDIR_NOT_PROVEN');
  const wd=String(e.REAL_WORKDIR).replace(/\//g,'\\');
  if(/^C:\\Users\\[^\\]+\\?$/i.test(wd))fail('USER_HOME_WORKDIR_FORBIDDEN');
- if(e.PROCESS_SPAWN_PRECHECK!=='PASS')fail('PROCESS_SPAWN_PRECHECK_REQUIRED');
  if(Number(l.real_release_count_for_current_freeze||0)!==0)fail('SECOND_REAL_SAME_FREEZE');
  if(e.REAL_COMMAND_EMITTED!=='YES'&&e.REAL_DISPATCHED!=='AUTO')fail('REAL_COMMAND_NOT_EMITTED');
 }else if(e.FROM_PHASE==='REAL'){
  if(e.VALID_REAL==='PASS'){
+  if(e.PROCESS_SPAWN_PRECHECK!=='PASS')fail('PROCESS_SPAWN_PRECHECK_REQUIRED');
   if(!to.final)fail('REAL_PASS_MUST_FINAL');
  }else if(e.VALID_REAL==='FAIL'){
   if(to.final)fail('REAL_FAIL_CANNOT_FINAL');
