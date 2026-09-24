@@ -1,0 +1,51 @@
+{
+  "capsule_id": "ESTE-v4.7.7-0401-REAL-CAPSULE-01",
+  "method_version": "4.7.7",
+  "page_name": "整体闭环极限时间引擎 4.7版2",
+  "task_name": "v4.7.7自包含现实入口认证",
+  "state": "04-01",
+  "phase": "实",
+  "executor": "CODEX",
+  "freeze_id": "ESTE-v4.7.7-0401-VIRTUAL-FREEZE-01",
+  "no_remote_read_required": true,
+  "target_root": "C:\\AI\\GPT-Codex-Convergence-Orchestrator\\upgrade-v1.5.2",
+  "target_candidate_branch": "codex/gpt-codex-convergence-orchestrator-v1.6.0-candidate",
+  "target_candidate_commit": "726eaa5cc817e2cffaecf38e4079165aecd34b2f",
+  "required_behavior": [
+    "Codex receiving phase 虚 must block before business side effect",
+    "Codex receiving phase 实 may continue only after frozen envelope checks",
+    "attempt must be 01..06",
+    "same freeze id cannot be consumed twice",
+    "real command must exist",
+    "real time must be recorded",
+    "evidence contradictions block final pass"
+  ],
+  "reality_checks": [
+    "阶段=虚 + Codex -> BLOCK",
+    "虚阻断时业务副作用=0",
+    "阶段=实 + 完整胶囊 -> ALLOW",
+    "阶段=实但无Freeze -> BLOCK",
+    "尝试=07 -> BLOCK",
+    "重复Freeze -> BLOCK",
+    "无现实命令 -> BLOCK",
+    "无REAL_START -> BLOCK",
+    "无REAL_END -> BLOCK",
+    "无T_VALID_REAL_MS -> BLOCK",
+    "证据矛盾 -> BLOCK",
+    "全部有效门通过且时间不超基准 -> PASS"
+  ],
+  "time_gate": {
+    "real_start_required": true,
+    "real_end_required": true,
+    "t_valid_real_ms_required": true,
+    "current_engine_benchmark_ms": 194419.3759
+  },
+  "forbidden": [
+    "remote_read_of_freeze_at_real_start",
+    "permission_wait_to_obtain_freeze",
+    "redesign_in_real",
+    "codex_exec_wrapper",
+    "proxy_change",
+    "system_setting_change"
+  ]
+}
