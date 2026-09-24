@@ -1,0 +1,27 @@
+{
+  "suite": "v4.7.6虚实边界状态机20项验证",
+  "method_version": "4.7.6",
+  "cases": [
+    {"id":1,"中文":"虚+Codex必须阻断","expected":"BLOCK"},
+    {"id":2,"中文":"未冻结不得虚完成","expected":"BLOCK"},
+    {"id":3,"中文":"冻结、回读、现实合同、现实任务、时间合同齐全才可虚完成","expected":"ALLOW"},
+    {"id":4,"中文":"原子切换后实+Codex可进入发送前门","expected":"ALLOW"},
+    {"id":5,"中文":"第7次现实尝试永久非法","expected":"BLOCK"},
+    {"id":6,"中文":"没有时间合同不得进入现实","expected":"BLOCK"},
+    {"id":7,"中文":"证据自相矛盾不得进入现实","expected":"BLOCK"},
+    {"id":8,"中文":"现实没有T_VALID_REAL不得判通过","expected":"BLOCK"},
+    {"id":9,"中文":"现实计时完整且验证通过可判通过","expected":"ALLOW"},
+    {"id":10,"中文":"验证器失败不得判通过","expected":"BLOCK"},
+    {"id":11,"中文":"虚阶段不得由Codex成熟","expected":"BLOCK"},
+    {"id":12,"中文":"没有现实任务不得宣布虚完成","expected":"BLOCK"},
+    {"id":13,"中文":"冻结包没有回读不得宣布虚完成","expected":"BLOCK"},
+    {"id":14,"中文":"现实合同缺失不得宣布虚完成","expected":"BLOCK"},
+    {"id":15,"中文":"现实尝试号0非法","expected":"BLOCK"},
+    {"id":16,"中文":"标签为虚但发生Codex执行仍按非法处理","expected":"BLOCK"},
+    {"id":17,"中文":"第6次现实失败必须换到下一方案代01","expected":"NEXT_GENERATION_01"},
+    {"id":18,"中文":"第1至5次结构性失败允许提前换到下一方案代01","expected":"NEXT_GENERATION_01"},
+    {"id":19,"中文":"第1至5次普通失败只进入同方案下一尝试且必须新冻结编号","expected":"NEXT_ATTEMPT_NEW_FREEZE"},
+    {"id":20,"中文":"现实未开始或未结束不得判通过","expected":"BLOCK"}
+  ],
+  "expected_summary": "20/20 PASS"
+}
