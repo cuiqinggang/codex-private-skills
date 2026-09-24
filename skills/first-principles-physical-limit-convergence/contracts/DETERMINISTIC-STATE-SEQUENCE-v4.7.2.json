@@ -199,5 +199,38 @@
     "VIRTUAL_COMPLETE_WITHOUT_REAL_COMMAND",
     "FINAL_WITHOUT_VALID_REAL_PASS",
     "FINAL_WITHOUT_TIME_ACCOUNTING_COMPLETE"
-  ]
+  ],
+  "next_state_rules": {
+    "E00": [
+      "E10"
+    ],
+    "E10": [
+      "E20"
+    ],
+    "E20": [
+      "E30"
+    ],
+    "E30": [
+      "E40"
+    ],
+    "E40": [
+      "E50"
+    ],
+    "E50": [
+      "E60"
+    ],
+    "E60": [
+      "E70"
+    ],
+    "E70": [
+      "E80"
+    ],
+    "E80": [
+      "E90",
+      "E20"
+    ],
+    "E90": [
+      "FINAL"
+    ]
+  }
 }
