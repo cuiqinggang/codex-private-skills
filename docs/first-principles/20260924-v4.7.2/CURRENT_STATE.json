@@ -2,50 +2,24 @@
   "skill": "first-principles-physical-limit-convergence",
   "display_name": "极限短时间引擎",
   "current_version": "4.7.2",
-  "status": "FROZEN_CANDIDATE_STATE_MACHINE_SELFTEST_PASS_REAL_GATE_PENDING",
-  "branch": "codex/first-principles-physical-limit-convergence-v4.7.2",
+  "status": "FINITE_CYCLE_CANDIDATE_PENDING_SELFTEST_AND_LOCAL_CODEX_REAL_GATE",
   "method_steps": [
     "VIRTUAL",
     "REAL"
   ],
-  "canonical_state_sequence": [
-    "E00",
-    "E10",
-    "E20",
-    "E30",
-    "E40",
-    "E50",
-    "E60",
-    "E70",
-    "E80",
-    "E90"
+  "canonical_state_display": "Gnn-Amm-虚/实",
+  "horizontal_header": "【状态 Gnn-Amm-虚/实｜极限锚 03:14.419｜闭环 hh:mm:ss.mmm｜偏差 ±hh:mm:ss.mmm｜时间状态 目标内/超目标】",
+  "max_attempts_per_generation": 6,
+  "attempt_limit_rule": "A06 REAL FAIL -> mandatory new solution generation G+1/A01; A07 forbidden",
+  "reality_foundation": "local-ai-reality-foundation@1.1.7",
+  "t_mature_star": "00:03:14.419",
+  "validator": "skills/first-principles-physical-limit-convergence/scripts/validate-cycle-state-v4.7.2.mjs",
+  "contract": "skills/first-principles-physical-limit-convergence/contracts/FINITE-CYCLE-TIME-STATE-v4.7.2.json",
+  "inherited": [
+    "v4.6.1 preexecution gate",
+    "v4.6.2 time ledger + one REAL per freeze",
+    "v4.7.1 atomic dispatch",
+    "v4.7.0 dual-time single loop"
   ],
-  "only_fail_loop": "E80.FAIL->E20",
-  "deterministic_validator": "skills/first-principles-physical-limit-convergence/scripts/validate-state-transition-v4.7.2.mjs",
-  "contract": "skills/first-principles-physical-limit-convergence/contracts/DETERMINISTIC-STATE-SEQUENCE-v4.7.2.json",
-  "selftest": {
-    "result": "PASS",
-    "passed": 20,
-    "total": 20
-  },
-  "inherited": {
-    "v4_6_1": "GPT virtual preexecution evidence gate",
-    "v4_6_2": "time ledger + one REAL per FREEZE_ID + no direct REAL retry",
-    "v4_7_1": "atomic virtual-to-real dispatch",
-    "v4_7_0": "dual-time single closed loop"
-  },
-  "corrected_history": {
-    "reality_foundation_claim_in_v4_6_1_v4_6_2": "Text/manifest referenced 1.1.6/1.1.7, but actual repository Foundation files remained 1.1.3.",
-    "canonical_reality_foundation": "local-ai-reality-foundation@1.1.3"
-  },
-  "time_core": {
-    "T_MATURE_STAR": "00:03:14.419",
-    "T_CLOSED_REAL": "per-task wall clock, exact start/end required"
-  },
-  "next_gate": {
-    "task_time_id": "ESTE-20260924-002",
-    "task": "v4.7.2 local Codex deterministic state-gate reality certification",
-    "sequence": "01",
-    "required_result": "PASS before long-term canonical promotion"
-  }
+  "next_test": "finite-cycle contract selftest then local Codex reality gate"
 }
