@@ -2,7 +2,7 @@
   "skill": "first-principles-physical-limit-convergence",
   "display_name": "极限短时间引擎",
   "current_version": "4.7.3",
-  "status": "MINIMAL_STATE_SELFTEST_PASS_LOCAL_CODEX_REAL_GATE_PENDING",
+  "status": "MINIMAL_STATE_SELFTEST_PASS_LOCAL_CODEX_REAL_GATE_DISPATCHED",
   "method_steps": [
     "虚",
     "实"
@@ -21,6 +21,8 @@
   "next_gate": {
     "task_time_id": "ESTE-20260924-004",
     "state": "01-01｜实",
-    "purpose": "本机 Codex 验证极简有限状态硬门"
+    "purpose": "本机 Codex 验证极简有限状态硬门",
+    "result": "PENDING",
+    "dispatch_timestamp": "2026-09-24T21:24:15+08:00"
   }
 }
