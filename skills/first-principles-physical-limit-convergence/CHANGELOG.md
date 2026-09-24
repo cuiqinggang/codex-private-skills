@@ -1,5 +1,13 @@
 # 版本变化
 
+## v4.7.5
+- 纠正 v4.7.4 的测试对象错误：8/8 自测只验证了规则逻辑，并把 PROCESS_SPAWN_PRECHECK=PASS 当模拟输入，没有真实创建子进程，因此不能证明当前 Codex 通道能运行 PowerShell。
+- 重新审计 REAL-TASK-04 / REAL-RESULT-04：旧合同允许窄目录 1344 后切到备用授权执行通道，但结果未记录成功通道；因此“该目录本身解决1344”的证据不足。
+- Reality Foundation 升至 1.1.8：工作目录降级为风险提示，当前 execution channel（执行通道）真实启动证据才是能力证明。
+- 状态机硬门前移到 GPT↔Codex 控制层，在发送给 Codex 前完成；状态规则认证不再依赖 Codex 本地子进程。
+- 本地子进程能力成为独立执行器能力门：要求 EXECUTION_CHANNEL_ID + 当前上下文真实 process-spawn PASS，禁止 mock/历史别通道代替。
+- 01-01 与 01-02 连续同根 1344，按结构性错误提前重组，状态进入 02-01｜虚；不再发送第三次同类本地启动测试。
+
 ## v4.7.4
 - 修复 v4.7.3 本机现实认证的 Gate Regression（门禁回归）：Reality Foundation 1.1.7 已知 Windows 1344 子进程失败，但现实合同未绑定已验证窄工作目录。
 - REAL 本地子进程任务发布前新增唯一必要入口门：显式 REAL_WORKDIR + REAL_WORKDIR_PROVEN。
