@@ -1,0 +1,28 @@
+{
+  "method_version": "4.7.3",
+  "model": "纯数字有限状态 + 单一可见极限锚",
+  "total_tests": 16,
+  "passed": 16,
+  "failed": 0,
+  "allowed": [
+    "INIT->01-01虚",
+    "01-01虚->01-01实",
+    "REAL PASS->FINAL",
+    "A01失败->A02虚",
+    "A02失败->A03虚",
+    "A03失败->A04虚",
+    "A04失败->A05虚",
+    "A05失败->A06虚",
+    "A06失败->02-01虚",
+    "结构性错误提前->下一方案代01"
+  ],
+  "blocked": [
+    "A07",
+    "虚完成但未发布现实任务",
+    "同一FREEZE第二次REAL",
+    "REAL FAIL复用FREEZE",
+    "REAL FAIL直接FINAL",
+    "T_MATURE_STAR错误"
+  ],
+  "result": "PASS"
+}
