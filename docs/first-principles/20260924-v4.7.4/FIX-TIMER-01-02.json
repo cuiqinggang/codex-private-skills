@@ -1,0 +1,10 @@
+{
+  "task_time_id": "ESTE-20260924-004",
+  "event": "01-01 REAL failure -> 01-02 virtual fix -> 01-02 REAL dispatch",
+  "gpt_fix_start": "2026-09-24T21:38:03+08:00",
+  "gpt_fix_end": "2026-09-24T21:43:42+08:00",
+  "gpt_active_ms": 339000,
+  "gpt_active_human": "00:05:39",
+  "t_mature_star_human": "00:03:14.419",
+  "note": "内部时间账；用户可见只保留极限锚。"
+}
