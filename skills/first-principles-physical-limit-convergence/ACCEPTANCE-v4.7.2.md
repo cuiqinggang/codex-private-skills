@@ -1,36 +1,25 @@
-# v4.7.2 确定性状态序列验收
+# v4.7.2 有限循环时间锚状态机验收
 
-METHOD_STEPS=2
-STATE_MACHINE_IS_METHOD_STEPS=NO
-STATE_SEQUENCE=E00>E10>E20>E30>E40>E50>E60>E70>E80>E90
-ONLY_FAIL_LOOP=E80.FAIL>E20
+方法永远只有：虚（VIRTUAL）/ 实（REAL）。
+
+用户可见唯一状态码：Gnn-Amm-虚/实。
+`G`=方案代；`A`=本方案代第几次现实尝试；A 只允许 01–06。
+
+正常：G01-A01-虚 → G01-A01-实 → PASS → FINAL。
+失败且 A<06：G01-A01-实 FAIL → G01-A02-虚。
+第 6 次仍 FAIL：G01-A06-实 FAIL → 必须重组 → G02-A01-虚。
+禁止 A07。
+
+每个相关回答第一行必须横向显示：
+【状态 Gnn-Amm-虚/实｜极限锚 03:14.419｜闭环 hh:mm:ss.mmm｜偏差 ±hh:mm:ss.mmm｜时间状态 目标内/超目标】
+
+这条状态行不是装饰；缺失即判漂移。
 
 必须继承：
-- v4.6.1 GPT 可执行关键公开子路径的虚内现实预跑证据门；
-- v4.6.2 时间账本门 + 单 FREEZE_ID 单次 REAL 发布纪律；
-- v4.7.1 虚→实原子发布门；
-- v4.7.0 双时间单闭环；
-- Reality Foundation 实际版本 1.1.3。
+- v4.6.1：GPT 能低成本现实预跑的关键公开路径先预跑；
+- v4.6.2：时间账本完整 + 同一 FREEZE_ID 只允许一次 REAL；
+- v4.7.1：冻结与现实任务发布同轮原子完成；
+- v4.7.0：T_MATURE* + T_CLOSED_REAL 双时间单闭环；
+- Reality Foundation（现实底座）=1.1.7。
 
-每个状态输出必须带：
-ENGINE_VERSION / TASK_TIME_ID / CYCLE_ID / STATE_ID / PHASE /
-T_MATURE_STAR / T_CLOSED_REAL_START / T_CLOSED_REAL_NOW / NEXT_STATE /
-TIME_CORE_VISIBLE。
-
-以下任一情况必须 BLOCK：
-1. 跳过状态；
-2. 缺 STATE_ID；
-3. 缺时间核心；
-4. 四定位或序号错误；
-5. E60 未发布现实命令却宣布 VIRTUAL_COMPLETE；
-6. 同一 FREEZE_ID 第二次 REAL；
-7. REAL FAIL 后直接重试 E70；
-8. REAL FAIL 后复用 FREEZE_ID；
-9. FINAL 没有 VALID_REAL=PASS；
-10. FINAL 没有 TIME_ACCOUNTING_COMPLETE=PASS。
-
-验收目标：
-RULES_AS_PROSE_ONLY=NO
-MACHINE_TRANSITION_GATE=YES
-ILLEGAL_PATH=BLOCK
-TIME_CORE_CANNOT_DISAPPEAR=YES
+用户可见语言：中文优先。必须出现的英文术语首次出现时紧跟中文解释；机器字段/公式可保留英文。
