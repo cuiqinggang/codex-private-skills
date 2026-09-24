@@ -51,7 +51,7 @@
     "translate_required_english_terms": true,
     "machine_fields_paths_formulas_exempt": true
   },
-  "status": "V4_7_4_WORKDIR_ENTRY_GATE_FROZEN_PENDING_REAL_RETRY_01_02",
+  "status": "V4_7_4_ENTRY_GATE_FROZEN_SELFTEST_PENDING",
   "validation": {
     "minimal_state_selftest": {
       "result": "PASS",
@@ -77,6 +77,11 @@
     "current_proven_workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
     "process_spawn_precheck_required": true,
     "exact_1344_recurrence_without_workdir_binding": "GATE_REGRESSION",
-    "same_1344_in_proven_workdir": "ONE_AUTHORIZED_PROVEN_CHANNEL_RETRY_THEN_STOP"
+    "same_1344_in_proven_workdir": "ONE_AUTHORIZED_PROVEN_CHANNEL_RETRY_THEN_STOP",
+    "process_spawn_precheck_timing": "FIRST_REAL_ACTION",
+    "pre_dispatch_requires": [
+      "REAL_WORKDIR",
+      "REAL_WORKDIR_PROVEN"
+    ]
   }
 }
