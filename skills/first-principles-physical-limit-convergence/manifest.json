@@ -52,7 +52,7 @@
     "translate_required_english_terms": true,
     "machine_fields_paths_formulas_exempt": true
   },
-  "status": "V4_7_5_STRUCTURAL_REASSEMBLY_PRE_DISPATCH_GATE_FROZEN",
+  "status": "V4_7_5_PRE_DISPATCH_LOGIC_PASS_AUTOMATION_HOOK_PENDING_STATE_02_01_VIRTUAL",
   "validation": {
     "v473_minimal_state_selftest": "16/16 PASS",
     "v474_workdir_logic_selftest": "8/8 PASS_BUT_NOT_PROCESS_REALITY",
@@ -60,7 +60,17 @@
     "classification": "STRUCTURAL_REASSEMBLY_REQUIRED",
     "current_state": "02-01/VIRTUAL",
     "next_required": "CONTROL_PLANE_PRE_DISPATCH_GATE_INTEGRATION",
-    "do_not_repeat_local_spawn_gate": true
+    "do_not_repeat_local_spawn_gate": true,
+    "control_plane_gate_selftest": {
+      "result": "PASS",
+      "tests_total": 10,
+      "tests_passed": 10,
+      "path": "skills/first-principles-physical-limit-convergence/tests/PRE-DISPATCH-GATE-SELFTEST-v4.7.5.json"
+    },
+    "automation_hook": {
+      "status": "PENDING",
+      "requirement": "GPT_CODEX_ORCHESTRATOR_MUST_CALL_PRE_DISPATCH_GATE_BEFORE_ANY_REAL_DISPATCH"
+    }
   },
   "execution_entry_gate": {
     "required_for_local_process_tasks": true,
