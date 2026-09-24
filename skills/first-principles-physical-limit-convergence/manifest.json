@@ -79,11 +79,21 @@
       "required": true
     },
     "local_codex_reality_gate": {
-      "status": "PENDING",
+      "status": "DISPATCHED_PENDING_RESULT",
+      "task_time_id": "ESTE-20260924-002",
+      "state": "G01-A01-R",
+      "contract": "docs/first-principles/20260924-v4.7.2/LOCAL-CODEX-REAL-GATE.md",
       "required_before_long_term_canonical": true
+    },
+    "user_output_anchor_selftest": {
+      "result": "PASS",
+      "tests_total": 4,
+      "tests_passed": 4,
+      "tests_failed": 0,
+      "path": "skills/first-principles-physical-limit-convergence/tests/USER-OUTPUT-ANCHOR-SELFTEST-v4.7.2.json"
     }
   },
-  "status": "FINITE_CYCLE_SELFTEST_PASS_LOCAL_CODEX_REAL_GATE_PENDING",
+  "status": "FINITE_CYCLE_SELFTEST_PASS_LOCAL_CODEX_REAL_GATE_DISPATCHED",
   "state_model": {
     "canonical": "FINITE_GENERATION_ATTEMPT_PHASE_TIME_ANCHOR",
     "state_code": "Gnn-Amm-P",
