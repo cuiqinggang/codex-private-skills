@@ -1,0 +1,29 @@
+{
+  "page_name": "整体闭环极限时间引擎4.7版",
+  "version": "4.7.5",
+  "state": "02-01｜虚",
+  "t_mature_star": "00:03:14.419",
+  "reality_foundation": "local-ai-reality-foundation@1.1.8",
+  "prior_failures": [
+    {
+      "state": "01-01｜实",
+      "delta": "SetTokenInformation(TokenDefaultDacl) failed: 1344"
+    },
+    {
+      "state": "01-02｜实",
+      "delta": "same 1344 in C:\\AI\\Mature-Download-Router-Real-Test"
+    }
+  ],
+  "structural_conclusion": "STATE_GATE_WAS_VALIDATED_IN_WRONG_LAYER_AND_PROCESS_SPAWN_WAS_MOCKED_IN_SELFTEST",
+  "correction": {
+    "state_gate_location": "GPT_CODEX_CONTROL_PLANE_PRE_DISPATCH",
+    "state_gate_requires_local_subprocess": false,
+    "local_process_capability_separate": true,
+    "workdir_is_sufficient_proof": false,
+    "execution_channel_identity_required_for_real_subprocess_tasks": true
+  },
+  "control_plane_gate_selftest": "10/10 PASS",
+  "automation_hook": "PENDING",
+  "do_not_do": "DO_NOT_DISPATCH_THIRD_1344_LOCAL_PROCESS_GATE",
+  "next_action": "Integrate pre-dispatch state gate into GPT-Codex orchestrator, then certify no invalid envelope reaches Codex."
+}
