@@ -1,36 +1,35 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.7.6",
+  "version": "4.7.7",
   "display_name": "极限短时间引擎",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.7.6-virtual-freeze",
-  "method_steps": ["VIRTUAL", "REAL"],
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.7.7-virtual-freeze",
+  "method_steps": ["VIRTUAL","REAL"],
   "method_step_count": 2,
   "reality_foundation": "local-ai-reality-foundation@1.1.8",
-  "current_generation_attempt": "03-01",
-  "timing": {
-    "t_mature_star_ms": 194419.3759,
-    "t_mature_star_human": "00:03:14.419",
-    "real_time_required": true,
-    "real_time_ceiling_ms": 194419.3759,
-    "t_closed_real_internal_ledger": true
+  "current_generation_attempt": "04-01",
+  "visible_anchor": {
+    "human": "00:03:14.419",
+    "ms": 194419.3759,
+    "meaning": "CURRENT_MATURE_ENGINE_BENCHMARK_NOT_TASK_PHYSICAL_LOWER_BOUND"
   },
   "phase_executor_gate": {
     "virtual_executor": "GPT",
     "real_executor": "CODEX",
-    "codex_requires_phase_real": true,
-    "virtual_codex_dispatch_forbidden": true,
-    "blocked_dispatch_count": 0,
-    "blocked_business_side_effect": 0
+    "codex_requires_phase_real": true
   },
-  "virtual_completion": {
-    "freeze_id_required": true,
-    "freeze_publish_required": true,
-    "freeze_reread_required": true,
-    "real_contract_required": true,
-    "real_command_required": true,
-    "real_command_phase_must_be_real": true,
-    "time_contract_required": true,
-    "evidence_consistency_required": true
+  "real_entry_closure": {
+    "self_contained_capsule_required": true,
+    "remote_read_required_at_real_start": false,
+    "permission_approval_for_freeze_at_real_start": false,
+    "remote_repository_role": "AUDIT_SOURCE_ONLY",
+    "unavailable_local_target_action": "STOP_MINIMAL_REALITY_DELTA"
+  },
+  "timing": {
+    "real_start_required": true,
+    "real_end_required": true,
+    "t_valid_real_ms_required": true,
+    "current_benchmark_ceiling_ms": 194419.3759,
+    "benchmark_scope": "ENGINE_MATURE_BENCHMARK"
   },
   "finite_retry": {
     "max_real_attempts_per_generation": 6,
@@ -38,29 +37,9 @@
     "attempt_6_fail": "NEXT_GENERATION_01",
     "structural_failure": "ALLOW_EARLY_NEXT_GENERATION_01"
   },
-  "real_validity": {
-    "same_freeze_id_real_once": true,
-    "redesign_in_real_forbidden": true,
-    "real_start_required": true,
-    "real_end_required": true,
-    "t_valid_real_ms_required": true,
-    "verifier_pass_required": true,
-    "evidence_consistency_required": true
-  },
-  "provenance": {
-    "commit_scope_required": true,
-    "branch_scope_required": true,
-    "remote_claim_requires_remote_reread": true
-  },
-  "contracts": {
-    "phase_state_machine": "skills/first-principles-physical-limit-convergence/contracts/PHASE-STATE-MACHINE-v4.7.6.json",
-    "real_certification": "skills/first-principles-physical-limit-convergence/contracts/REAL-CERTIFICATION-v4.7.6.json",
-    "inherited_atomic_dispatch": "skills/first-principles-physical-limit-convergence/contracts/VIRTUAL-REAL-ATOMIC-DISPATCH-GATE-v4.7.1.json",
-    "freeze_closure": "skills/first-principles-physical-limit-convergence/contracts/FREEZE-CLOSURE-GATE.json"
-  },
   "virtual_validation": {
-    "logic_vectors": "20/20 PASS",
-    "validation_scope": "PURE_STATE_TRANSITION_LOGIC",
+    "v476_state_transition": "20/20 PASS",
+    "v477_self_contained_boundary": "22/22 PASS",
     "codex_used_for_virtual_maturation": false
   },
   "status": "VIRTUAL_FREEZE_CANDIDATE"
