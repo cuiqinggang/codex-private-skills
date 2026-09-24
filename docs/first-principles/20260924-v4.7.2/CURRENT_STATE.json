@@ -2,7 +2,7 @@
   "skill": "first-principles-physical-limit-convergence",
   "display_name": "极限短时间引擎",
   "current_version": "4.7.2",
-  "status": "FINITE_CYCLE_CANDIDATE_PENDING_SELFTEST_AND_LOCAL_CODEX_REAL_GATE",
+  "status": "FINITE_CYCLE_SELFTEST_PASS_LOCAL_CODEX_REAL_GATE_PENDING",
   "method_steps": [
     "VIRTUAL",
     "REAL"
@@ -21,5 +21,17 @@
     "v4.7.1 atomic dispatch",
     "v4.7.0 dual-time single loop"
   ],
-  "next_test": "finite-cycle contract selftest then local Codex reality gate"
+  "next_test": "finite-cycle contract selftest then local Codex reality gate",
+  "selftest": {
+    "result": "PASS",
+    "passed": 20,
+    "total": 20
+  },
+  "user_output_anchor_validator": "skills/first-principles-physical-limit-convergence/scripts/validate-user-output-anchor-v4.7.2.mjs",
+  "next_reality_gate": {
+    "task_time_id": "ESTE-20260924-003",
+    "state": "G01-A01-实",
+    "purpose": "本机 Codex 实际运行有限循环状态验证器正反例",
+    "required_before": "LONG_TERM_CANONICAL=YES"
+  }
 }
