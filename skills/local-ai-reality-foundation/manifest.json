@@ -1,7 +1,7 @@
 {
   "skill_id": "local-ai-reality-foundation",
-  "version": "1.1.3",
-  "previous_version": "1.1.2",
+  "version": "1.1.7",
+  "previous_version": "1.1.6",
   "display_name": "本地 AI 现实底座永久资产",
   "role": "VERSIONED_PERSISTENT_REALITY_FOUNDATION",
   "method_step": false,
@@ -29,55 +29,68 @@
     "playwright_root": "C:\\AI\\Playwright-Native-AI-Browser",
     "openhands_root": "C:\\AI\\OpenHands-Canvas",
     "minimax_h3_root": "C:\\AI\\MiniMax-H3",
-    "visual_art_engine_root": "C:\\AI\\Visual-Art-Engine"
+    "visual_art_engine_root": "C:\\AI\\Visual-Art-Engine",
+    "download_tools_observed": {
+      "aria2c": "1.37.0_REAL_04",
+      "hf": "1.19.0_REAL_PASS",
+      "gh": "2.92.0_REAL_04_OPTIONAL",
+      "curl": "AVAILABLE_OBSERVED"
+    }
   },
   "network_invariants": {
     "flclash": "PERSISTENT",
-    "proxy_change_allowed": false
+    "proxy_change_allowed": false,
+    "download_network_context": {
+      "known_proxy_candidate": "http://127.0.0.1:7890",
+      "prior_explicit_proxy_probe": "PASS_TO_HUGGINGFACE_AND_HF_MIRROR",
+      "real_04": "HF_AND_ARIA2_NETWORK_STAGE_CONNECTION_REFUSED_WITH_ROUTE_MATCH_2_OF_2",
+      "rule": "INHERIT_CURRENT_VERIFIED_NETWORK_CONTEXT_PROCESS_LOCALLY; NEVER_CHANGE_PERSISTENT_PROXY_SETTINGS"
+    }
   },
   "updated_date": "2026-09-23",
   "codex_execution_constraints": {
-    "executor_required_for_default_closed_loop": true,
-    "temp_executable_staging": {
-      "observed_path": "C:\\Users\\A\\AppData\\Local\\Temp",
-      "observed_result": "REJECTED_BY_CODEX_SAFETY_POLICY",
-      "default_rule": "DO_NOT_STAGE_EXECUTABLE_PS1_IN_APPDATA_LOCAL_TEMP",
-      "preferred": "WORKSPACE_FROZEN_ARTIFACT_OR_GIT_OBJECT_STREAM"
+    "temp_executable_staging": "DO_NOT_STAGE_EXECUTABLE_PS1_IN_APPDATA_LOCAL_TEMP",
+    "powershell_prompt_transport": "LITERAL_SAFE_DEFAULT",
+    "duration_clock": "SYSTEM_DIAGNOSTICS_STOPWATCH",
+    "git_metadata_write": "DO_NOT_REQUIRE_GIT_FETCH_ON_REAL_CRITICAL_PATH",
+    "read_only_probe_semantics": "SEMANTIC_EVIDENCE_PRECEDES_EXIT_FOR_FROZEN_SIDE_EFFECT_FREE_PROBES",
+    "windows_process_spawn_1344": {
+      "observed_error": "SetTokenInformation(TokenDefaultDacl) failed: 1344",
+      "classification": "CODEX_WINDOWS_PROCESS_SPAWN_CHANNEL_FAILURE",
+      "not_download_tool_missing": true,
+      "known_alternate_channel_success_observed": true,
+      "real_rule": "FIRST_USE_TASK_SCOPED_WORKDIR; IF_SAME_1344_RETRY_ONCE_VIA_PREEXISTING_AUTHORIZED_PROVEN_CHANNEL; ELSE_STOP",
+      "scoped_workdir_default": "USE_TASK_SCOPED_DIRECTORY_NOT_USER_HOME_FOR_WORKSPACE_WRITE",
+      "public_repro_support": "Codex Windows issue reports Home workspace can inflate write roots/default DACL; scoped project directory can remove 1344"
     },
-    "powershell_prompt_transport": {
-      "double_quoted_here_string": "VARIABLE_INTERPOLATION_RISK",
-      "literal_safe_default": "SINGLE_QUOTED_HERE_STRING_OR_EQUIVALENT",
-      "freeze_gate": "SHELL_INTERPOLATION_SAFE_PASS"
+    "scoped_workdir_real_04": {
+      "workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
+      "process_spawn": "PASS",
+      "r0_ms": 4171
     },
-    "time_source": {
-      "w32tm_query_source_non_admin": "ACCESS_DENIED_0x80070005_OBSERVED",
-      "duration_clock": "SYSTEM_DIAGNOSTICS_STOPWATCH",
-      "wall_clock_role": "AUDIT_COORDINATE_ONLY",
-      "time_source_query_hard_dependency": false
+    "windows_curl_schannel_real_07": {
+      "exit_code": 35,
+      "message": "Schannel no usable credentials",
+      "output_bytes": 0,
+      "t_valid_ms": 61.278,
+      "classification": "WINDOWS_CURL_SCHANNEL_TLS_CONTEXT_FAILURE",
+      "curl_semantics": "CURLE_SSL_CONNECT_ERROR_TLS_HANDSHAKE_FAILURE",
+      "prior_same_machine_other_context_proxy_head_200": true,
+      "rule": "REQUIRE_SAME_EXECUTION_CONTEXT_TLS_PRECHECK_WHEN_RELYING_ON_WINDOWS_CURL_SCHANNEL; DO_NOT_MUTATE_SYSTEM_CERTS_REGISTRY_OR_PROXY"
     },
-    "startup_diagnostics": {
-      "skill_load_errors": "OBSERVED",
-      "model_refresh_timeout": "OBSERVED",
-      "skill_description_budget_warning": "OBSERVED",
-      "rule": "ONLY_PROMOTE_TO_REALITY_DELTA_IF_TASK_VALIDITY_IS_AFFECTED"
-    },
-    "git_metadata_write": {
-      "observed_operation": "git fetch origin codex/first-principles-physical-limit-convergence-v4.5.6",
-      "observed_error": "cannot open .git/FETCH_HEAD: Permission denied",
-      "classification": "LOCAL_GIT_METADATA_WRITE_PERMISSION",
-      "not_network_error": true,
-      "default_real_rule": "DO_NOT_REQUIRE_GIT_FETCH_OR_FETCH_HEAD_WRITE_ON_REAL_CRITICAL_PATH",
-      "shared_fact_source_role": "POST_EXECUTION_PERSISTENCE_AND_REREAD_NOT_REAL_BOOTSTRAP",
-      "allow_only_if": "VIRTUAL_PREFLIGHT_PROVES_REQUIRED_GIT_METADATA_WRITE_IS_ALLOWED"
-    },
-    "read_only_probe_semantics": {
-      "observed_probe": "nvidia-smi --query-gpu=name,memory.total --format=csv,noheader,nounits",
-      "observed_stdout": "NVIDIA GeForce RTX 2080 Ti, 22528",
-      "observed_exit_status": "NONZERO",
-      "classification": "READ_ONLY_PROBE_SEMANTIC_EVIDENCE_EXIT_STATUS_CONFLICT",
-      "rule": "FOR_FROZEN_READ_ONLY_PROBES_COMPLETE_VALID_SEMANTIC_EVIDENCE_MAY_OVERRIDE_EXIT_STATUS_AS_VALIDITY_DECIDER",
-      "exit_status_role": "DIAGNOSTIC_UNLESS_SEMANTIC_EVIDENCE_IS_INCOMPLETE_OR_CONTRADICTORY",
-      "scope": "READ_ONLY_SIDE_EFFECT_FREE_STRUCTURED_PROBES_ONLY"
+    "hf_local_real_success": {
+      "workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
+      "proxy_mode": "PROCESS_LOCAL_HTTP_PROXY_HTTPS_PROXY",
+      "proxy_endpoint": "http://127.0.0.1:7890",
+      "repo": "openai-community/gpt2",
+      "file": "config.json",
+      "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+      "bytes": 665,
+      "sha256": "0daed7749b4f02b8f76240d5444551d7b08712dab4d0adb8239c56ba823bb7b4",
+      "t_valid_ms": 13727.948,
+      "valid_real": "PASS",
+      "whole_loop_tstar_eligible": false,
+      "reason": "HISTORICAL_TASK_TIME_LEDGER_INCOMPLETE"
     }
   }
 }
