@@ -1,0 +1,25 @@
+{
+  "version": "4.7.4",
+  "page_name": "整体闭环极限时间引擎4.7版",
+  "task_id": "ESTE-20260924-004",
+  "current_state": "01-02｜虚",
+  "previous_real_result": {
+    "state": "01-01｜实",
+    "result": "FAIL",
+    "reality_delta": "SetTokenInformation(TokenDefaultDacl) failed: 1344",
+    "classification": "GATE_REGRESSION_KNOWN_1344_NOT_BOUND_TO_PROVEN_WORKDIR"
+  },
+  "t_mature_star": "00:03:14.419",
+  "reality_foundation": "local-ai-reality-foundation@1.1.7",
+  "fix": {
+    "method_version_bump": "4.7.3 -> 4.7.4",
+    "foundation_version_bump": "NO",
+    "required_real_workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
+    "workdir_proven": "YES",
+    "process_spawn_precheck": "FIRST_REAL_ACTION",
+    "default_user_home_workdir": "FORBIDDEN"
+  },
+  "selftest": "8/8 PASS",
+  "next_state": "01-02｜实",
+  "new_freeze_id": "V474-STATE-GATE-01-02"
+}
