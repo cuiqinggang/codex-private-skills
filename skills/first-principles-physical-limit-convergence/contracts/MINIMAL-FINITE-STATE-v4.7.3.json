@@ -1,0 +1,44 @@
+{
+  "contract_id": "minimal-finite-state",
+  "contract_version": "1.0.0",
+  "method_version": "4.7.3",
+  "reality_foundation": "local-ai-reality-foundation@1.1.7",
+  "t_mature_star_ms": 194419.3759,
+  "t_mature_star_human": "00:03:14.419",
+  "state": {
+    "format": "NN-NN",
+    "max_attempt": 6,
+    "attempt_7_forbidden": true,
+    "phase_values": [
+      "VIRTUAL",
+      "REAL"
+    ]
+  },
+  "user_marker": {
+    "format": "【PAGE_NAME｜TASK_NAME｜NN-NN｜虚/实】 极限锚03:14.419",
+    "hard_gate_scope": "EXECUTION_TASK_ONLY"
+  },
+  "internal_time_ledger": {
+    "full_iso_retained": true,
+    "user_visible_by_default": false,
+    "t_closed_real_required_at_final": true
+  },
+  "transitions": {
+    "initial": "INIT->01-01/VIRTUAL",
+    "virtual_to_real": "NN-NN/VIRTUAL->same NN-NN/REAL",
+    "real_fail_before_6": "GG-AA/REAL->GG-(AA+1)/VIRTUAL",
+    "real_fail_at_6": "GG-06/REAL->(GG+1)-01/VIRTUAL",
+    "structural_reassembly": "GG-AA/REAL->(GG+1)-01/VIRTUAL",
+    "real_pass": "GG-AA/REAL->FINAL"
+  },
+  "invariants": [
+    "T_MATURE_STAR_MATCH",
+    "ATTEMPT_LE_6",
+    "NEW_FREEZE_FOR_REAL",
+    "REAL_COMMAND_EMITTED",
+    "ONE_REAL_PER_FREEZE",
+    "NEW_FREEZE_AFTER_FAIL",
+    "A06_FAIL_NEW_GENERATION",
+    "REAL_PASS_FOR_FINAL"
+  ]
+}
