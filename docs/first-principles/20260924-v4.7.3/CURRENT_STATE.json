@@ -1,0 +1,26 @@
+{
+  "skill": "first-principles-physical-limit-convergence",
+  "display_name": "极限短时间引擎",
+  "current_version": "4.7.3",
+  "status": "MINIMAL_STATE_SELFTEST_PASS_LOCAL_CODEX_REAL_GATE_PENDING",
+  "method_steps": [
+    "虚",
+    "实"
+  ],
+  "visible_marker": "【页面名｜任务名｜NN-NN｜虚/实】 极限锚03:14.419",
+  "state_meaning": "前两位=方案代；后两位=本代现实尝试号",
+  "max_attempts_per_generation": 6,
+  "attempt_6_fail": "下一方案代-01",
+  "attempt_7": "禁止",
+  "visible_time": "T_MATURE*=00:03:14.419",
+  "internal_time": "T_CLOSED_REAL 全量账本，不默认展示",
+  "reality_foundation": "local-ai-reality-foundation@1.1.7",
+  "hard_gate_scope": "Codex/自动化执行任务封装",
+  "chat_reply_gate_scope": "技能自检，当前非外部硬拦截",
+  "selftest": "16/16 PASS",
+  "next_gate": {
+    "task_time_id": "ESTE-20260924-004",
+    "state": "01-01｜实",
+    "purpose": "本机 Codex 验证极简有限状态硬门"
+  }
+}
