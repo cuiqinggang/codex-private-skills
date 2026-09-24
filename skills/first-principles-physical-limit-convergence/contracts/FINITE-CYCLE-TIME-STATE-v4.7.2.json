@@ -1,0 +1,103 @@
+{
+  "contract_id": "finite-cycle-time-anchored-state",
+  "contract_version": "2.0.0",
+  "method_version": "4.7.2",
+  "reality_foundation": "local-ai-reality-foundation@1.1.7",
+  "method_steps": [
+    "VIRTUAL",
+    "REAL"
+  ],
+  "max_attempts_per_generation": 6,
+  "state_code": {
+    "format": "Gnn-Amm-P",
+    "generation_prefix": "G",
+    "attempt_prefix": "A",
+    "phase_codes": {
+      "V": "VIRTUAL",
+      "R": "REAL"
+    },
+    "example": "G01-A03-V"
+  },
+  "four_locator": {
+    "format": "【页面名｜任务名｜Gnn-Amm｜虚/实】",
+    "sequence_meaning": "方案代 + 本代现实尝试号",
+    "reset_rule": "A resets to 01 only when G increments; G increments only after plan reassembly."
+  },
+  "time_anchor": {
+    "t_mature_star_ms": 194419.3759,
+    "t_mature_star_human": "00:03:14.419",
+    "required_fields": [
+      "T_MATURE_STAR_MS",
+      "T_CLOSED_REAL_START_TIMESTAMP",
+      "T_CLOSED_REAL_NOW_MS",
+      "TIME_GAP_MS",
+      "TIME_STATE"
+    ],
+    "formula": "TIME_GAP_MS=T_CLOSED_REAL_NOW_MS-T_MATURE_STAR_MS",
+    "time_state_rule": {
+      "WITHIN_TARGET": "TIME_GAP_MS<=0",
+      "OVER_TARGET": "TIME_GAP_MS>0"
+    },
+    "user_visible_header": "【状态 Gnn-Amm-虚/实｜极限锚 03:14.419｜闭环 hh:mm:ss.mmm｜偏差 ±hh:mm:ss.mmm｜时间状态 目标内/超目标】"
+  },
+  "transitions": {
+    "initial": "INIT->G01-A01-V",
+    "virtual_to_real": "Gxx-Ayy-V->Gxx-Ayy-R",
+    "real_pass": "Gxx-Ayy-R->FINAL",
+    "real_fail_before_limit": "Gxx-A01..A05-R->Gxx-A(next)-V",
+    "real_fail_at_limit": "Gxx-A06-R->G(next)-A01-V",
+    "structural_early_reassembly": "Gxx-Ayy-R->G(next)-A01-V"
+  },
+  "virtual_to_real_requires": [
+    "VIRTUAL_COMPLETE=YES",
+    "PREEXEC_EVIDENCE_READY=PASS_WHEN_FEASIBLE",
+    "FREEZE_ID_PRESENT",
+    "FREEZE_ID_NOT_PREVIOUSLY_USED",
+    "REAL_RELEASE_COUNT_FOR_FREEZE=0_BEFORE_RELEASE",
+    "REAL_COMMAND_EMITTED_OR_AUTO_DISPATCHED=YES",
+    "TIME_LEDGER_READY=PASS"
+  ],
+  "real_rules": {
+    "codex_executor_required": true,
+    "no_redesign": true,
+    "one_real_release_per_freeze_id": true,
+    "direct_retry_same_freeze_forbidden": true
+  },
+  "fail_rules": {
+    "real_fail_action": "MINIMAL_REALITY_DELTA_STOP_RETURN_TO_VIRTUAL",
+    "attempt_increment_on_real_fail": true,
+    "task_time_id_reset": false,
+    "t_closed_real_reset": false,
+    "sequence_reset": false,
+    "freeze_reuse": false,
+    "attempt_limit": 6,
+    "on_attempt_6_fail": "MANDATORY_PLAN_REASSEMBLY_AND_NEW_GENERATION",
+    "early_reassembly_when_structural_delta": true,
+    "attempt_7_forbidden": true
+  },
+  "response_rules": {
+    "horizontal_state_header_required": true,
+    "state_header_first_nonempty_line": true,
+    "time_anchor_visible_every_response": true,
+    "chinese_first": true,
+    "english_terms_require_chinese_explanation_when_user_visible": true,
+    "machine_fields_and_formulas_exempt_from_repeated_translation": true
+  },
+  "block_rules": [
+    "MISSING_STATE_HEADER",
+    "MISSING_TIME_ANCHOR",
+    "TIME_ARITHMETIC_MISMATCH",
+    "TIME_STATE_MISMATCH",
+    "INVALID_STATE_CODE",
+    "ATTEMPT_OUT_OF_RANGE",
+    "ILLEGAL_TRANSITION",
+    "VIRTUAL_COMPLETE_WITHOUT_REAL_COMMAND",
+    "FREEZE_ID_REUSE",
+    "SECOND_REAL_SAME_FREEZE",
+    "REAL_FAIL_DIRECT_REAL_RETRY",
+    "ATTEMPT_7_OR_HIGHER",
+    "ATTEMPT_6_FAIL_WITHOUT_REASSEMBLY",
+    "FINAL_WITHOUT_VALID_REAL_PASS",
+    "FINAL_WITHOUT_TIME_ACCOUNTING_COMPLETE"
+  ]
+}
