@@ -1,8 +1,8 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.7.3",
+  "version": "4.7.4",
   "display_name": "极限短时间引擎",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.7.3",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.7.4",
   "method_steps": [
     "VIRTUAL",
     "REAL"
@@ -51,7 +51,7 @@
     "translate_required_english_terms": true,
     "machine_fields_paths_formulas_exempt": true
   },
-  "status": "MINIMAL_STATE_SELFTEST_PASS_LOCAL_CODEX_REAL_GATE_DISPATCHED",
+  "status": "V4_7_4_WORKDIR_ENTRY_GATE_FROZEN_PENDING_REAL_RETRY_01_02",
   "validation": {
     "minimal_state_selftest": {
       "result": "PASS",
@@ -67,5 +67,16 @@
       "dispatch_timestamp": "2026-09-24T21:24:15+08:00",
       "contract": "docs/first-principles/20260924-v4.7.3/LOCAL-CODEX-REAL-GATE.md"
     }
+  },
+  "execution_entry_gate": {
+    "required_for_local_process_tasks": true,
+    "source": "Reality Foundation 1.1.7 / OBSERVED_CONSTRAINT_007",
+    "explicit_real_workdir_required": true,
+    "user_home_default_forbidden": true,
+    "proven_workdir_required": true,
+    "current_proven_workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
+    "process_spawn_precheck_required": true,
+    "exact_1344_recurrence_without_workdir_binding": "GATE_REGRESSION",
+    "same_1344_in_proven_workdir": "ONE_AUTHORIZED_PROVEN_CHANNEL_RETRY_THEN_STOP"
   }
 }
