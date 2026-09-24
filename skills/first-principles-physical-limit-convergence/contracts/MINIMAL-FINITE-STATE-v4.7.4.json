@@ -41,13 +41,15 @@
     "A06_FAIL_NEW_GENERATION",
     "REAL_PASS_FOR_FINAL",
     "REAL_WORKDIR_BOUND_AND_PROVEN",
-    "PROCESS_SPAWN_PRECHECK"
+    "REAL_PASS_REQUIRES_PROCESS_SPAWN_PRECHECK_PASS"
   ],
   "execution_entry": {
     "explicit_real_workdir_required": true,
     "proven_workdir_required": true,
     "current_proven_workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
     "user_home_default_forbidden": true,
-    "process_spawn_precheck_required": true
+    "process_spawn_precheck_required": true,
+    "process_spawn_precheck_timing": "FIRST_REAL_ACTION",
+    "process_spawn_precheck_not_required_before_real_dispatch": true
   }
 }
