@@ -1,0 +1,28 @@
+{
+  "contract_id": "REAL-ENTRY-CLOSURE-v4.7.7",
+  "method_version": "4.7.7",
+  "state": "04-01",
+  "phase": "实",
+  "freeze_id": "ESTE-v4.7.7-0401-VIRTUAL-FREEZE-01",
+  "rules": {
+    "real_capsule_self_contained": true,
+    "remote_read_during_real_entry": false,
+    "permission_approval_to_read_freeze_during_real_entry": false,
+    "github_role": "audit_only",
+    "target_local_candidate_root": "C:\\AI\\GPT-Codex-Convergence-Orchestrator\\upgrade-v1.5.2",
+    "existing_candidate_branch": "codex/gpt-codex-convergence-orchestrator-v1.6.0-candidate",
+    "existing_candidate_commit": "726eaa5cc817e2cffaecf38e4079165aecd34b2f"
+  },
+  "real_time": {
+    "start_before_first_reality_action": true,
+    "end_after_final_evidence": true,
+    "t_valid_real_ms_required": true,
+    "current_engine_benchmark_ms": 194419.3759,
+    "benchmark_is_not_task_physical_lower_bound": true
+  },
+  "on_missing_local_target_access": {
+    "action": "STOP",
+    "retry": false,
+    "delta": "LOCAL_TARGET_ACCESS_BLOCKED"
+  }
+}
