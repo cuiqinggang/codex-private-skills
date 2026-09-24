@@ -51,21 +51,22 @@
     "translate_required_english_terms": true,
     "machine_fields_paths_formulas_exempt": true
   },
-  "status": "V4_7_4_ENTRY_GATE_FROZEN_SELFTEST_PENDING",
+  "status": "V4_7_4_WORKDIR_ENTRY_SELFTEST_PASS_REAL_01_02_DISPATCHED",
   "validation": {
-    "minimal_state_selftest": {
+    "minimal_state_selftest_inherited": "v4.7.3 16/16 PASS",
+    "workdir_entry_selftest": {
       "result": "PASS",
-      "tests_total": 16,
-      "tests_passed": 16,
-      "tests_failed": 0,
-      "path": "skills/first-principles-physical-limit-convergence/tests/MINIMAL-STATE-SELFTEST-v4.7.3.json"
+      "tests_total": 8,
+      "tests_passed": 8,
+      "path": "skills/first-principles-physical-limit-convergence/tests/WORKDIR-ENTRY-SELFTEST-v4.7.4.json"
     },
     "local_codex_reality_gate": {
       "status": "DISPATCHED_PENDING_RESULT",
       "task_time_id": "ESTE-20260924-004",
-      "state": "01-01/REAL",
-      "dispatch_timestamp": "2026-09-24T21:24:15+08:00",
-      "contract": "docs/first-principles/20260924-v4.7.3/LOCAL-CODEX-REAL-GATE.md"
+      "state": "01-02/REAL",
+      "freeze_id": "V474-STATE-GATE-01-02",
+      "real_workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
+      "contract": "docs/first-principles/20260924-v4.7.4/LOCAL-CODEX-REAL-GATE-01-02.md"
     }
   },
   "execution_entry_gate": {
