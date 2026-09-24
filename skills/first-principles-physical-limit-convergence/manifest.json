@@ -1,14 +1,14 @@
 {
   "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.7.4",
+  "version": "4.7.5",
   "display_name": "极限短时间引擎",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.7.4",
+  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.7.5",
   "method_steps": [
     "VIRTUAL",
     "REAL"
   ],
   "method_step_count": 2,
-  "reality_foundation": "local-ai-reality-foundation@1.1.7",
+  "reality_foundation": "local-ai-reality-foundation@1.1.8",
   "visible_state": {
     "format": "【PAGE_NAME｜TASK_NAME｜NN-NN｜PHASE】 极限锚03:14.419",
     "numeric_state_meaning": "方案代-本代现实尝试号",
@@ -37,9 +37,10 @@
     "v4_7_0": "DUAL_TIME_SINGLE_CLOSED_LOOP"
   },
   "hard_validator": {
-    "scope": "EXECUTION_TASK_ENVELOPE_ONLY",
-    "contract": "skills/first-principles-physical-limit-convergence/contracts/MINIMAL-FINITE-STATE-v4.7.3.json",
-    "script": "skills/first-principles-physical-limit-convergence/scripts/validate-minimal-state-v4.7.3.mjs"
+    "scope": "PRE_DISPATCH_CONTROL_PLANE",
+    "purpose": "Validate state/attempt/freeze/time-anchor before Codex receives task",
+    "local_codex_subprocess_required": false,
+    "contract": "skills/first-principles-physical-limit-convergence/contracts/PRE-DISPATCH-STATE-GATE-v4.7.5.json"
   },
   "chat_reply_marker": {
     "required_by_skill": true,
@@ -51,23 +52,15 @@
     "translate_required_english_terms": true,
     "machine_fields_paths_formulas_exempt": true
   },
-  "status": "V4_7_4_WORKDIR_ENTRY_SELFTEST_PASS_REAL_01_02_DISPATCHED",
+  "status": "V4_7_5_STRUCTURAL_REASSEMBLY_PRE_DISPATCH_GATE_FROZEN",
   "validation": {
-    "minimal_state_selftest_inherited": "v4.7.3 16/16 PASS",
-    "workdir_entry_selftest": {
-      "result": "PASS",
-      "tests_total": 8,
-      "tests_passed": 8,
-      "path": "skills/first-principles-physical-limit-convergence/tests/WORKDIR-ENTRY-SELFTEST-v4.7.4.json"
-    },
-    "local_codex_reality_gate": {
-      "status": "DISPATCHED_PENDING_RESULT",
-      "task_time_id": "ESTE-20260924-004",
-      "state": "01-02/REAL",
-      "freeze_id": "V474-STATE-GATE-01-02",
-      "real_workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
-      "contract": "docs/first-principles/20260924-v4.7.4/LOCAL-CODEX-REAL-GATE-01-02.md"
-    }
+    "v473_minimal_state_selftest": "16/16 PASS",
+    "v474_workdir_logic_selftest": "8/8 PASS_BUT_NOT_PROCESS_REALITY",
+    "v474_real_01_02": "FAIL_1344_IN_HISTORICALLY_PASSING_WORKDIR",
+    "classification": "STRUCTURAL_REASSEMBLY_REQUIRED",
+    "current_state": "02-01/VIRTUAL",
+    "next_required": "CONTROL_PLANE_PRE_DISPATCH_GATE_INTEGRATION",
+    "do_not_repeat_local_spawn_gate": true
   },
   "execution_entry_gate": {
     "required_for_local_process_tasks": true,
@@ -84,5 +77,14 @@
       "REAL_WORKDIR",
       "REAL_WORKDIR_PROVEN"
     ]
+  },
+  "executor_capability_gate": {
+    "separate_from_state_gate": true,
+    "required_only_for_tasks_needing_local_subprocess": true,
+    "execution_channel_id_required": true,
+    "current_context_process_spawn_real_pass_required": true,
+    "historical_workdir_pass_sufficient": false,
+    "mock_or_assumed_pass_forbidden": true,
+    "on_1344_with_unresolved_channel": "STOP_EXECUTION_CHANNEL_UNRESOLVED"
   }
 }
