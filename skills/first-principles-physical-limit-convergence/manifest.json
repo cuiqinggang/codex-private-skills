@@ -67,20 +67,23 @@
   },
   "automation_goal": "ONE_USER_INPUT_AUTONOMOUS_GPT_CODEX_BROWSER_LOOP_TO_FINAL_VALID",
   "validation": {
-    "deterministic_state_selftest": {
-      "path": "skills/first-principles-physical-limit-convergence/tests/STATE-SEQUENCE-SELFTEST-v4.7.2.json",
+    "finite_cycle_selftest": {
       "result": "PASS",
       "tests_total": 20,
       "tests_passed": 20,
-      "tests_failed": 0
+      "tests_failed": 0,
+      "path": "skills/first-principles-physical-limit-convergence/tests/FINITE-CYCLE-STATE-SELFTEST-v4.7.2.json"
+    },
+    "user_output_anchor_validator": {
+      "path": "skills/first-principles-physical-limit-convergence/scripts/validate-user-output-anchor-v4.7.2.mjs",
+      "required": true
     },
     "local_codex_reality_gate": {
       "status": "PENDING",
-      "required_before_long_term_canonical": true,
-      "purpose": "Verify actual local Codex execution obeys validator ALLOW/BLOCK semantics."
+      "required_before_long_term_canonical": true
     }
   },
-  "status": "FINITE_CYCLE_CANDIDATE_PENDING_SELFTEST_AND_LOCAL_CODEX_REAL_GATE",
+  "status": "FINITE_CYCLE_SELFTEST_PASS_LOCAL_CODEX_REAL_GATE_PENDING",
   "state_model": {
     "canonical": "FINITE_GENERATION_ATTEMPT_PHASE_TIME_ANCHOR",
     "state_code": "Gnn-Amm-P",
