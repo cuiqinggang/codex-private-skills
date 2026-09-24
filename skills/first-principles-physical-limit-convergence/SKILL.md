@@ -1,17 +1,17 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.7.4。极简确定版：一虚一实、纯数字有限状态、每代最多6次现实尝试、单一可见极限时间锚、执行任务机器硬门、Reality Foundation 1.1.7。
+description: 极限短时间引擎 v4.7.5。极简确定版：一虚一实、纯数字有限状态、每代最多6次现实尝试、单一可见极限时间锚、执行任务机器硬门、Reality Foundation 1.1.7。
 metadata:
-  version: "4.7.4"
+  version: "4.7.5"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.7.4
+# 极限短时间引擎 v4.7.5
 
 ## 核心
 - 方法只有：虚、实。
 - 成熟极限时间锚：T_MATURE*=00:03:14.419。
-- Reality Foundation（现实底座）=1.1.7。
+- Reality Foundation（现实底座）=1.1.8。
 - T_CLOSED_REAL（现实闭环墙钟）继续在机器时间账本中记录，但不要求每条用户回答展示。
 
 ## 唯一状态
@@ -40,7 +40,7 @@ metadata:
 阈值6只能通过升版和现实证据调整，不能临场放宽。
 
 ## 虚
-- 读取现实底座1.1.7。
+- 读取现实底座1.1.8。
 - 使用成熟方案，不自由探索。
 - 定义 FINAL_VALID（最终有效）条件。
 - 关闭已知失败门。
@@ -53,24 +53,27 @@ metadata:
 没有现实任务，不允许宣布虚完成。
 
 
-## 实执行入口硬门
+## 执行硬门的位置
 
-Reality Foundation（现实底座）1.1.7 已知 Windows Codex 可能在默认/过宽工作目录触发 `SetTokenInformation(TokenDefaultDacl) failed: 1344`。
+v4.7.5 修正 v4.7.4 的结构性错误：状态机硬门不再放在 Codex 本地子进程内部认证。
 
-因此任何需要创建本地子进程的 REAL（现实）任务，在发布前必须同时冻结：
-- `REAL_WORKDIR`：明确的窄工作目录；
-- `REAL_WORKDIR_PROVEN=YES`：该目录已有现实子进程启动证据，或虚阶段已完成低成本预检；
-- `PROCESS_SPAWN_PRECHECK`：现实第一条本地动作必须是无副作用的子进程启动探针。
+状态机/序号/Freeze/时间锚这些规则，属于“任务是否可以发给 Codex”的控制面规则，必须在 GPT↔Codex 控制层 PRE-DISPATCH（发送前）机械验证。
 
-默认禁止从用户 Home（用户主目录）作为 workspace-write 的现实启动工作目录。
+因此：
 
-当前 Reality Foundation 1.1.7 已验证可用目录：`C:\AI\Mature-Download-Router-Real-Test`。
+- 状态机 gate（门）PASS 后，才允许任务进入 Codex；
+- 状态机 gate 本身不依赖 PowerShell/Node 子进程；
+- 1344 不再阻塞“状态规则是否正确”的认证。
 
-Codex 必须让执行工具本身直接使用该 `workdir（工作目录）`，不是先在默认目录启动 PowerShell 再执行 `cd`。
+对真正需要本机子进程的业务 REAL（现实）任务，另设 executor capability（执行器能力）条件：
 
-若已验证窄目录仍出现同样 1344：按现实底座规则，只允许一次已存在、已授权、已证明可工作的备用执行通道；若不可用或仍失败，STOP 并返回最小 Reality Delta（现实差异）。
+- 必须记录当前 EXECUTION_CHANNEL_ID（执行通道标识）；
+- 当前通道必须通过真实 PROCESS_SPAWN_CERTIFIED_CURRENT_CONTEXT=PASS；
+- 这个 PASS 必须来自当前通道的真实子进程启动，不允许由虚拟测试字段或历史别的通道代替；
+- 只知道工作目录曾 PASS 不足以放行；
+- 若当前通道 1344 且历史备用通道没有稳定可定位标识，STOP，返回 EXECUTION_CHANNEL_UNRESOLVED（执行通道未解析）。
 
-已知 1344 因未绑定窄工作目录再次发生，分类为 `GATE_REGRESSION（门禁回归）`，不是新的未知环境问题。
+v4.7.3/4.7.4 连续两次 1344 证明“让 Codex 自己启动子进程来认证上游状态门”是错误路径；本轮按结构性错误提前重组方案代。
 
 ## 实
 Codex 是现实执行器。
@@ -84,12 +87,10 @@ REAL FAIL（现实失败）只能：最小 Reality Delta（现实差异）-> STO
 机器内部时间账保留：任务开始、现实发布、Codex开始/结束、GPT最终确认、T_CLOSED_REAL。
 这样时间核心不会丢，又不让显示字段反过来增加复杂度。
 
-## Reality Foundation（现实底座）1.1.7
-真实版本链：1.1.3 -> 1.1.4 -> 1.1.5 -> 1.1.6 -> 1.1.7。
-1.1.4：Windows Codex 1344 子进程创建差异、下载工具存在性。
-1.1.5：aria2c/hf/gh 精确版本、窄工作目录现实 PASS、进程级网络上下文。
-1.1.6：Windows curl/Schannel TLS exit 35 执行上下文差异。
-1.1.7：hf 1.19.0 本机现实成功下载路径。
+## Reality Foundation（现实底座）1.1.8
+真实版本链：1.1.3 -> 1.1.4 -> 1.1.5 -> 1.1.6 -> 1.1.7 -> 1.1.8。
+1.1.8 新增关键修正：同一个历史曾 PASS 的窄工作目录，在当前 Codex 执行通道仍可 1344；因此工作目录只作为风险降低提示，不再作为“子进程一定能启动”的证明。
+真正相关的是当前 execution channel（执行通道）/ token context（令牌上下文）。
 
 ## 语言
 用户可见内容中文优先。
