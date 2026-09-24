@@ -1,6 +1,6 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.7.2。最终确定性版：一虚一实、双时间单闭环、唯一 E00→E90 状态序列、机器状态转换门、虚内现实预跑、单 Freeze 单 REAL、虚→实原子发布。
+description: 极限短时间引擎 v4.7.2。最终确定性版：一虚一实、双时间单闭环、G/A 有限循环状态、6 次现实尝试强制方案重组、时间锚强制可见、机器验证。
 metadata:
   version: "4.7.2"
   display_name: "极限短时间引擎"
@@ -8,180 +8,162 @@ metadata:
 
 # 极限短时间引擎 v4.7.2
 
-## 0. 永久核心
+## 1. 永久核心
 
-METHOD_STEPS=2
-STEP_1=VIRTUAL
-STEP_2=REAL
-THIRD_STEP=NONE
+方法永远只有两个步骤：虚（VIRTUAL）和实（REAL）。
+第三步骤禁止创建。
 
-T_MATURE_STAR = 成熟方案在完整有效约束下的最短必要有效时间。
-T_CLOSED_REAL = 用户首次提交到 GPT FINAL_VALID=PASS 的真实墙钟时间。
-第三个核心时间禁止建立。
+两个核心时间：
+- `T_MATURE*`（成熟极限时间）：当前精确锚 `00:03:14.419`。
+- `T_CLOSED_REAL`（现实闭环墙钟）：用户首次提交到 `FINAL_VALID=PASS` 的真实墙钟时间。
 
-当前成熟锚：T_MATURE_STAR=00:03:14.419，来源 ESTE-20260923-003。
+不允许建立第三个并列核心时间。
 
-## 1. 唯一执行状态序列
+## 2. 唯一状态码
 
-执行状态不是方法步骤。方法仍只有 VIRTUAL / REAL；状态仅用于机械约束执行。
+唯一用户可见状态码：`Gnn-Amm-虚/实`。
 
-E00 TASK_BIND
-E10 TIME_BIND
-E20 REALITY_BIND
-E30 VIRTUAL_MATURE
-E40 GPT_PREEXEC
-E50 FREEZE
-E60 ATOMIC_DISPATCH
-E70 REAL_EXEC
-E80 REAL_JUDGE
-E90 FINAL_CLOSE
+- `G`（方案代）：当前方案族第几代。
+- `A`（本代现实尝试号）：当前方案代第几次正式现实尝试。
+- `虚/实`：当前唯一方法阶段。
 
-唯一正常路径：
-E00 -> E10 -> E20 -> E30 -> E40 -> E50 -> E60 -> E70 -> E80 -> E90
+示例：`G01-A03-虚` 表示“第一代方案，第 3 次现实尝试之前的虚阶段”。
 
-唯一失败回路：
-E80.FAIL -> E20
+## 3. 有限循环，不允许无限顺延
 
-回路规则：同一 TASK_TIME_ID；CYCLE_ID+1；时间不重置；TASK_SEQUENCE 不重置；必须产生 NEW_FREEZE_ID；不得直接从 E80 回 E70。
+同一方案代的 `A` 只允许 `01–06`。
 
-任何未列出的跳转一律 INVALID_TRANSITION=BLOCK。
+正常：`G01-A01-虚 → G01-A01-实 → PASS → FINAL`。
 
-## 2. 每个状态都必须显式携带核心时间
+现实失败且 A<06：
+`G01-A01-实 FAIL → G01-A02-虚`。
 
-每个状态输出都必须包含：
-ENGINE_VERSION=4.7.2
-TASK_TIME_ID=<id>
-CYCLE_ID=<Cnn>
-STATE_ID=<Exx>
-PHASE=VIRTUAL|REAL|FINAL
-T_MATURE_STAR=00:03:14.419
-T_CLOSED_REAL_START=<timestamp>
-T_CLOSED_REAL_NOW=<elapsed wall clock or exact timestamps>
-NEXT_STATE=<Exx|FINAL|BLOCK>
-TIME_CORE_VISIBLE=PASS
+若出现结构性 Reality Delta（现实差异），允许提前重组：
+`G01-A03-实 FAIL → G02-A01-虚`。
 
-缺少上述任一核心字段，STATE_OUTPUT_VALID=NO。
-因此任何讨论都不能把最核心的时间忘掉。
+第 6 次现实仍失败时：
+`G01-A06-实 FAIL → 必须方案重组 → G02-A01-虚`。
 
-## 3. E00 TASK_BIND
+`A07` 及以上永远非法。
 
-建立唯一 TASK_TIME_ID、页面名、任务名、CYCLE_ID=C01。
-记录用户首次提交时间，作为 T_CLOSED_REAL_START。
-新任务 TASK_SEQUENCE 从 01 开始。
+当前冻结阈值：`MAX_REAL_ATTEMPTS_PER_GENERATION=6`。
+以后如有现实证据可调整，但调整本身必须升版并重新验证。
 
-## 4. E10 TIME_BIND
+## 4. 每个相关回答必须先显示横向时间状态锚
 
-绑定 T_MATURE_STAR 参考值、墙钟起点、活动时间账本。
-TIME_LEDGER_READY=PASS 才能进入 E20。
+第一非空行固定为：
 
-## 5. E20 REALITY_BIND
+`【状态 Gnn-Amm-虚/实｜极限锚 03:14.419｜闭环 hh:mm:ss.mmm｜偏差 ±hh:mm:ss.mmm｜时间状态 目标内/超目标】`
 
-加载 Reality Foundation=local-ai-reality-foundation@1.1.3。
-加载所有已知失败门：Temp/AppData executable staging、Here-String 插值、w32tm 权限、FETCH_HEAD 权限、只读 probe 假阴性、四定位/序号/发布时间、原子发布。
-已知同类错误再次进入 REAL = GATE_REGRESSION。
+含义：
+- `极限锚` = 当前 `T_MATURE*`（成熟极限时间）。
+- `闭环` = 当前 `T_CLOSED_REAL`（现实闭环墙钟）已用时间。
+- `偏差` = `闭环 - 极限锚`。
+- `时间状态`：偏差≤0 为“目标内”，偏差>0 为“超目标”。
 
-## 6. E30 VIRTUAL_MATURE
+这不是装饰。缺少状态锚行，视为 `DRIFT=YES`（已漂移），该回答对本技能无效。
 
-只做虚拟成熟：现实约束下寻找最短完整有效方案。
-不得创建第三步骤，不得把日志/检查点包装成 V1/V2/R1/R2。
+## 5. 时间核心不得在讨论中消失
 
-## 7. E40 GPT_PREEXEC
+机器字段必须同时满足：
+`T_MATURE_STAR_MS`、`T_CLOSED_REAL_START_TIMESTAMP`、`T_CLOSED_REAL_NOW_MS`、`TIME_GAP_MS`、`TIME_STATE`。
 
-继承 v4.6.1：凡 GPT 当前工具能低成本真实预跑的关键公开子路径，冻结前必须先实际跑成功并留证据。
-CAN_GPT_REAL_PREEXECUTE=YES -> PREEXEC_RESULT=PASS 才能继续。
-无法等价预跑的本机/GPU/登录态/Windows 专属差异明确标记 UNEXECUTABLE_BY_GPT，留给 REAL。
-预跑只在预期减少整体闭环返工时执行。
+`TIME_GAP_MS = T_CLOSED_REAL_NOW_MS - T_MATURE_STAR_MS`。
 
-## 8. E50 FREEZE
+如果算术不一致，机器验证器直接 BLOCK（阻断）。
 
-冻结前必须全部 PASS：
-FINAL_VALID_CONDITION_DEFINED
-EXECUTION_CHAIN_CLOSED
-EXTERNAL_DEPENDENCIES_CLOSED
-CODEX_POLICY_COMPATIBILITY
-KNOWN_FAILURE_GATES
-POSITION_AND_SEQUENCE_GATE
-TIME_LEDGER_READY
-PREEXEC_EVIDENCE_READY
+## 6. 虚阶段
 
-生成唯一 FREEZE_ID。
-同一 FREEZE_ID 的 REAL_RELEASE_COUNT 初始必须为 0。
+虚必须完成：现实底座读取、成熟方案组合、已知失败门、最终有效条件、执行链闭合、时间账本。
 
-## 9. E60 ATOMIC_DISPATCH
+继承 v4.6.1：GPT 当前工具能低成本真实预跑的关键公开子路径，冻结前必须真实预跑并取得 PASS 证据。
 
-继承 v4.7.1：VIRTUAL 完成与 REAL 命令发布是一个原子事务。
-同一轮必须依次完成：
-NEXT_SEQUENCE_ASSIGNED
-FOUR_LOCATOR_REAL_LABEL_CREATED
-REAL_HANDOFF_SELF_CONTAINED
-PASS_FAIL_CONTRACT_DEFINED
-GPT_DISPATCH_TIMESTAMP_RECORDED
-ACTIVE_TOTAL_BEFORE_DISPATCH_RECORDED
-REAL_COMMAND_EMITTED_OR_AUTO_DISPATCHED
+不能由 GPT 等价现实预跑的本机/GPU/登录态/Windows 专属差异，明确标记后留给实。
 
-只有全部 PASS 才允许：VIRTUAL_COMPLETE=YES 且 CURRENT_PHASE=REAL。
-HANDOFF_READY 但没有现实命令 = INVALID。
+冻结产生唯一 `FREEZE_ID`（冻结方案编号）。
 
-四定位唯一格式：【页面名｜任务名｜序号｜虚/实】。
-序号只作审计，不是方法步骤。
+## 7. 虚→实原子交付
 
-## 10. E70 REAL_EXEC
+继承 v4.7.1：虚完成与现实任务发布必须同一轮原子完成。
 
-Codex 是默认现实执行器；PowerShell/Browser/Local Tools 是内部确定性工具。
-继承 v4.6.2：同一 FREEZE_ID 只允许一次正式 REAL 发布。
-REAL_RELEASE_COUNT 必须从 0 变 1；若已为 1，再次发布同一 FREEZE_ID = BLOCK。
-REAL 禁止重新设计、补方案、现场修复。
+必须同时完成：
+`FREEZE_ID`、四定位、`Gnn-Amm`、现实合同、发布时间、发布前时间账、PASS/FAIL 输出合同、现实命令发布/自动发送。
 
-## 11. E80 REAL_JUDGE
+没有现实命令，不允许宣布虚完成。
 
-PASS：验证真实结果与冻结 VALID 条件；进入 E90。
-FAIL：只记录最小 Reality Delta；STOP；不得直接重试；回 E20；CYCLE_ID+1；吸收必要现实事实；重新预跑；生成 NEW_FREEZE_ID；NEXT_SEQUENCE=LAST_VALID_SEQUENCE+1。
+四定位格式：`【页面名｜任务名｜Gnn-Amm｜虚/实】`。
 
-## 12. E90 FINAL_CLOSE
+## 8. 实阶段
 
-只有 VALID_REAL=PASS、GPT_FINAL_VALID=YES、TIME_ACCOUNTING_COMPLETE=YES 才能结束。
-记录 T_MATURE 样本、T_CLOSED_REAL_END、T_CLOSED_REAL。
-执行 Foundation absorb check。
-可复用事实写入 GitHub 共同事实源并回读验证。
+Codex（现实执行器）是默认执行器；PowerShell / Playwright / 本机工具只是其内部确定性工具。
 
-## 13. 双时间单闭环
+继承 v4.6.2：同一 `FREEZE_ID` 只允许一次正式 REAL（现实）发布。
 
-T_MATURE_STAR 负责回答：成熟方案本体最短需要多少有效工作时间。
-T_CLOSED_REAL 负责回答：用户现实从提交到最终交付到底等了多久。
+现实阶段禁止现场重新设计、补方案、修方案。
 
-T_CLOSED_REAL 的诊断桶只能用于归因，不创建第三核心：
-T_MATURE_NECESSARY, T_AI_WAIT, T_HUMAN_READ, T_HUMAN_UNDERSTAND, T_HUMAN_COPY_INPUT, T_HUMAN_CONFIRM, T_REWORK, T_BUGFIX, T_ENV_DELTA, T_AUTOMATION_FAILURE, T_EXTERNAL_PAUSE。
+REAL FAIL（现实失败）只允许：最小 Reality Delta（现实差异）→ STOP（停止）→ 回虚。
+
+禁止：同一冻结方案直接再跑一次。
+
+## 9. 第 6 次失败强制重组
+
+第 6 次 REAL FAIL（现实失败）不是“再试第 7 次”的信号，而是“当前方案代存在较高结构风险”的强制审查点。
+
+必须：旧方案代标记 superseded（被替代）→ 重新组合成熟方案 → 新 `G` → `A01` 重新开始。
+
+这就是及时回头机制。
+
+## 10. Reality Foundation（现实底座）
+
+唯一真实版本：`local-ai-reality-foundation@1.1.7`。
+
+版本链：`1.1.3 → 1.1.4 → 1.1.5 → 1.1.6 → 1.1.7`。
+
+新增现实约束包括：Windows Codex 1344 子进程失败、窄工作目录成功路径、下载工具真实版本、curl/Schannel TLS 上下文差异、hf 1.19.0 本机真实成功下载路径。
+
+## 11. 用户可见语言规则
+
+用户可见说明以中文为主。
+
+必须出现的英文术语，首次出现时必须紧跟中文解释，例如：`validator（验证器）`、`Reality Foundation（现实底座）`、`Gate Regression（门禁回归）`。
+
+机器字段、公式、版本号、路径可以保留英文，不要求每次重复翻译。
+
+如果一整段英文让用户无法直接理解，则该输出不合格。
+
+## 12. 横向展示规则
+
+用户可见状态必须横向展示，不把状态码竖着堆成大列表。
+
+推荐格式：
+`G01-A01-虚 ｜ 极限锚03:14.419 ｜ 闭环00:01:40 ｜ 偏差-01:34.419 ｜ 目标内`。
+
+## 13. GitHub / Browser / Codex 角色
+
+GPT：推理与最终裁决。
+Codex：现实执行器。
+Playwright Native AI Browser（Playwright 原生 AI 浏览器）：浏览器通信/执行桥。
+GitHub：共同事实源，不是默认 REAL 启动硬依赖。
 
 ## 14. 自动闭环目标
 
-用户只提交一次；GPT 自动虚；自动发送给 Codex；Codex 自动实并回传；GPT 自动判定；若 Reality Delta 则自动回虚、重新冻结、再次发布和执行；FINAL_VALID 后才通知用户。
+用户只输入一次；GPT 自动虚；自动交给 Codex；Codex 自动实并回传；GPT 自动判断；失败则自动回虚并进入下一 A 或新 G；FINAL_VALID 后才通知用户。
 
-自动验收硬门：INITIAL_USER_INPUT_COUNT=1；MANUAL_MIDDLE_COPY_PASTE=0；MANUAL_CODEX_INPUT=0；MANUAL_RESULT_RELAY=0；MANUAL_BROWSER_ROUTING=0；GPT_TO_CODEX=AUTO；CODEX_TO_GPT=AUTO；REALITY_DELTA_RETURN=AUTO；SECOND_FREEZE=AUTO；SECOND_EXECUTION=AUTO；FINAL_VALID=PASS；CLOSED_LOOP_AUTONOMOUS=PASS。
+## 15. 机器门
 
-## 15. GitHub / Browser / Codex
+最终执行不是靠 AI 自觉，而是靠 `validate-cycle-state-v4.7.2.mjs`（有限循环状态验证器）。
 
-GPT=推理与最终裁决。
-Codex=现实执行器。
-Playwright Native AI Browser=浏览器通信/执行桥。
-GitHub=共同事实源，不是默认 REAL 启动硬依赖。
+它机械阻断：非法状态码、A>06、时间锚缺失/算错、同 Freeze 二次 REAL、REAL FAIL 直接重试、第 6 次失败不重组、FINAL 缺现实 PASS 或时间账。
 
-## 16. 机器执行门
+## 16. 最终不变量
 
-任何状态转换在执行前必须通过 deterministic state validator。
-validator 只接受合同允许的 from_state -> to_state、必需字段、时间核心、序号、FREEZE_ID、REAL_RELEASE_COUNT。
-validator FAIL -> EXECUTION=BLOCK；AI 不得用自然语言解释绕过。
+`METHOD_STEP_COUNT=2`。
+`A<=06`。
+`A06_FAIL -> NEW_G + A01`。
+`TIME_CORE_VISIBLE_ALWAYS=TRUE`。
+`ONE_REAL_PER_FREEZE_ID=TRUE`。
+`REAL_FAIL_DOES_NOT_RESET_TASK_TIME_ID=TRUE`。
+`REAL_FAIL_DOES_NOT_RESET_T_CLOSED_REAL=TRUE`。
+`USER_VISIBLE_CHINESE_FIRST=TRUE`。
 
-## 17. 最终不变量
-
-METHOD_STEP_COUNT=2
-TIME_CORE_VISIBLE_ALWAYS=TRUE
-STATE_SEQUENCE_REQUIRED=TRUE
-ILLEGAL_TRANSITION_BLOCKED=TRUE
-VIRTUAL_COMPLETE_IMPLIES_REAL_COMMAND_EMITTED=TRUE
-ONE_REAL_PER_FREEZE_ID=TRUE
-REAL_FAIL_REQUIRES_NEW_FREEZE_ID=TRUE
-REAL_FAIL_DOES_NOT_RESET_TASK_TIME_ID=TRUE
-REAL_FAIL_DOES_NOT_RESET_SEQUENCE=TRUE
-FINAL_REQUIRES_TIME_ACCOUNTING_COMPLETE=TRUE
-
-一句话：规则不是建议；进入本技能后只能沿 E00→E90 状态机执行，机器门不通过就不能继续。
+一句话：进入本技能后，任何有效回答都必须同时告诉你“当前是哪一代方案、第几次现实尝试、处于虚还是实、距离极限时间还有多少”；第 6 次失败必须重组，不允许无限往下试。
