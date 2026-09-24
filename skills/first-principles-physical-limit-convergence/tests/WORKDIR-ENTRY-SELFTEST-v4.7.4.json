@@ -1,0 +1,18 @@
+{
+  "method_version": "4.7.4",
+  "purpose": "执行入口工作目录门 + 1344 预防",
+  "total_tests": 8,
+  "passed": 8,
+  "failed": 0,
+  "cases": [
+    "绑定已验证窄目录进入REAL=PASS",
+    "缺REAL_WORKDIR=BLOCK",
+    "REAL_WORKDIR未验证=BLOCK",
+    "REAL PASS且PROCESS_SPAWN_PRECHECK=PASS=ALLOW",
+    "REAL PASS但无PROCESS_SPAWN_PRECHECK=BLOCK",
+    "REAL失败回虚并新FREEZE=ALLOW",
+    "A07=BLOCK",
+    "A06失败进入新方案代=ALLOW"
+  ],
+  "result": "PASS"
+}
