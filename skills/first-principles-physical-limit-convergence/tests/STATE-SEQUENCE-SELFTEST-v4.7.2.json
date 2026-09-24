@@ -1,0 +1,34 @@
+{
+  "method_version": "4.7.2",
+  "contract": "DETERMINISTIC-STATE-SEQUENCE-v4.7.2",
+  "validator": "validate-state-transition-v4.7.2.mjs",
+  "total_tests": 20,
+  "passed": 20,
+  "failed": 0,
+  "positive_full_path": "PASS",
+  "positive_transitions": [
+    "E00->E10",
+    "E10->E20",
+    "E20->E30",
+    "E30->E40",
+    "E40->E50",
+    "E50->E60",
+    "E60->E70",
+    "E70->E80",
+    "E80->E90"
+  ],
+  "fail_loop": "E80.FAIL->E20=PASS",
+  "blocked_cases": {
+    "SKIP_STATE": "PASS",
+    "MISSING_REAL_COMMAND": "PASS",
+    "SEQUENCE_REUSE": "PASS",
+    "MISSING_TIME_CORE": "PASS",
+    "WRONG_NEXT_STATE": "PASS",
+    "SECOND_REAL_SAME_FREEZE": "PASS",
+    "REAL_FAIL_DIRECT_RETRY": "PASS",
+    "FINAL_WITHOUT_TIME_ACCOUNTING": "PASS",
+    "PHASE_STATE_MISMATCH": "PASS"
+  },
+  "result": "PASS",
+  "conclusion": "The canonical execution path is mechanically constrained; prose-only compliance is no longer sufficient."
+}
