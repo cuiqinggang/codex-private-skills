@@ -1,12 +1,12 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 极限短时间引擎 v4.7.3。极简确定版：一虚一实、纯数字有限状态、每代最多6次现实尝试、单一可见极限时间锚、执行任务机器硬门、Reality Foundation 1.1.7。
+description: 极限短时间引擎 v4.7.4。极简确定版：一虚一实、纯数字有限状态、每代最多6次现实尝试、单一可见极限时间锚、执行任务机器硬门、Reality Foundation 1.1.7。
 metadata:
-  version: "4.7.3"
+  version: "4.7.4"
   display_name: "极限短时间引擎"
 ---
 
-# 极限短时间引擎 v4.7.3
+# 极限短时间引擎 v4.7.4
 
 ## 核心
 - 方法只有：虚、实。
@@ -51,6 +51,26 @@ metadata:
 虚成熟最后一个动作就是交付现实任务。
 同一轮完成：冻结、数字状态、四定位、现实合同、时间账、PASS/FAIL合同、发布/自动发送 Codex 任务。
 没有现实任务，不允许宣布虚完成。
+
+
+## 实执行入口硬门
+
+Reality Foundation（现实底座）1.1.7 已知 Windows Codex 可能在默认/过宽工作目录触发 `SetTokenInformation(TokenDefaultDacl) failed: 1344`。
+
+因此任何需要创建本地子进程的 REAL（现实）任务，在发布前必须同时冻结：
+- `REAL_WORKDIR`：明确的窄工作目录；
+- `REAL_WORKDIR_PROVEN=YES`：该目录已有现实子进程启动证据，或虚阶段已完成低成本预检；
+- `PROCESS_SPAWN_PRECHECK`：现实第一条本地动作必须是无副作用的子进程启动探针。
+
+默认禁止从用户 Home（用户主目录）作为 workspace-write 的现实启动工作目录。
+
+当前 Reality Foundation 1.1.7 已验证可用目录：`C:\AI\Mature-Download-Router-Real-Test`。
+
+Codex 必须让执行工具本身直接使用该 `workdir（工作目录）`，不是先在默认目录启动 PowerShell 再执行 `cd`。
+
+若已验证窄目录仍出现同样 1344：按现实底座规则，只允许一次已存在、已授权、已证明可工作的备用执行通道；若不可用或仍失败，STOP 并返回最小 Reality Delta（现实差异）。
+
+已知 1344 因未绑定窄工作目录再次发生，分类为 `GATE_REGRESSION（门禁回归）`，不是新的未知环境问题。
 
 ## 实
 Codex 是现实执行器。
