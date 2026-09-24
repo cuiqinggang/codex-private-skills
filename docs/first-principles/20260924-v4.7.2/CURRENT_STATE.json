@@ -2,7 +2,7 @@
   "skill": "first-principles-physical-limit-convergence",
   "display_name": "极限短时间引擎",
   "current_version": "4.7.2",
-  "status": "FINITE_CYCLE_SELFTEST_PASS_LOCAL_CODEX_REAL_GATE_PENDING",
+  "status": "FINITE_CYCLE_SELFTEST_PASS_LOCAL_CODEX_REAL_GATE_DISPATCHED",
   "method_steps": [
     "VIRTUAL",
     "REAL"
@@ -23,15 +23,31 @@
   ],
   "next_test": "finite-cycle contract selftest then local Codex reality gate",
   "selftest": {
-    "result": "PASS",
-    "passed": 20,
-    "total": 20
+    "finite_cycle": "20/20 PASS",
+    "user_output_anchor": "4/4 PASS"
   },
   "user_output_anchor_validator": "skills/first-principles-physical-limit-convergence/scripts/validate-user-output-anchor-v4.7.2.mjs",
   "next_reality_gate": {
-    "task_time_id": "ESTE-20260924-003",
+    "task_time_id": "ESTE-20260924-002",
     "state": "G01-A01-实",
-    "purpose": "本机 Codex 实际运行有限循环状态验证器正反例",
-    "required_before": "LONG_TERM_CANONICAL=YES"
+    "purpose": "本机 Codex 实际验证有限循环状态门",
+    "contract": "docs/first-principles/20260924-v4.7.2/LOCAL-CODEX-REAL-GATE.md",
+    "result": "PENDING"
+  },
+  "current_task": {
+    "task_time_id": "ESTE-20260924-002",
+    "generation": "G01",
+    "attempt": "A01",
+    "phase": "REAL",
+    "state_code": "G01-A01-R",
+    "t_closed_real_start": "2026-09-24T20:26:57+08:00",
+    "dispatch_timestamp": "2026-09-24T20:38:37+08:00",
+    "t_closed_real_now_ms": 700000,
+    "t_closed_real_now_human": "00:11:40.000",
+    "t_mature_star_ms": 194419.3759,
+    "t_mature_star_human": "00:03:14.419",
+    "time_gap_ms": 505580.6241,
+    "time_gap_human": "+00:08:25.581",
+    "time_state": "OVER_TARGET"
   }
 }
