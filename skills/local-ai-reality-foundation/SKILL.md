@@ -1,12 +1,12 @@
 ---
 name: local-ai-reality-foundation
-description: 本地 AI 现实底座永久资产 v1.1.7。版本化、任务后吸收的 Reality Foundation；本版吸收 Codex Windows 子进程创建 1344 现实差异，以及下载工具存在性事实。
+description: 本地 AI 现实底座永久资产 v1.1.8。版本化、任务后吸收的 Reality Foundation；本版吸收 Codex Windows 子进程创建 1344 现实差异，以及下载工具存在性事实。
 metadata:
-  version: "1.1.7"
+  version: "1.1.8"
   status: ACTIVE_VERSIONED_FOUNDATION
 ---
 
-# 本地 AI 现实底座永久资产 v1.1.7
+# 本地 AI 现实底座永久资产 v1.1.8
 
 ## 1. 唯一目的
 
@@ -33,7 +33,7 @@ MINOR = 新现实域、新资产类别、新吸收能力
 MAJOR = Foundation 合同发生不兼容变化
 ```
 
-v1.1.7 = PATCH。
+v1.1.8 = PATCH。
 
 ## 4. 当前完整资产
 
@@ -184,6 +184,44 @@ MEANING：
 - 该 13.727948s 是局部现实下载有效时间，不是整个 TASK_TIME_ID 的 T*；
 - 因历史整条任务主动时间账本不完整，本次不得进入整体成熟 T* 基线。
 
+
+### OBSERVED_CONSTRAINT_010 — 1344 与执行通道绑定，窄工作目录不是充分条件
+
+2026-09-24 在“整体闭环极限时间引擎4.7版”现实认证中，连续两次观察到：
+
+```text
+REAL 01-01:
+SetTokenInformation(TokenDefaultDacl) failed: 1344
+
+REAL 01-02:
+REAL_WORKDIR=C:\AI\Mature-Download-Router-Real-Test
+该目录曾在 REAL-RESULT-04 记录 PROCESS_SPAWN=PASS，
+但当前 Codex 执行通道仍在第一条子进程启动预检返回同样 1344。
+```
+
+重新审计历史证据发现：REAL-TASK-04 明确允许“窄目录仍 1344 时，重试一次已授权、曾成功运行 PowerShell 7.6.6 的备用执行通道”；REAL-RESULT-04 只记录最终 PROCESS_SPAWN=PASS，没有记录究竟是哪条执行通道成功。
+
+因此旧结论“该窄工作目录本身已经证明可消除 1344”证据不足。
+
+```text
+CLASSIFICATION
+= CODEX_WINDOWS_PROCESS_SPAWN_CHANNEL_CONTEXT_FAILURE
+
+SCOPED_WORKDIR
+= RISK_REDUCTION_HINT
+!= SUFFICIENT_PROOF_OF_PROCESS_SPAWN
+
+REAL-RESULT-04 PROCESS_SPAWN=PASS
+= HISTORICAL_PASS_WITH_EXECUTION_CHANNEL_PROVENANCE_GAP
+```
+
+ACTION：
+- 不再把“目录曾 PASS”当成当前会话可创建子进程的充分条件；
+- 任何依赖子进程的现实任务，必须绑定并记录当前 `EXECUTION_CHANNEL_ID`（执行通道标识）；
+- `PROCESS_SPAWN_CERTIFIED_CURRENT_CONTEXT=PASS` 必须来自当前执行通道的真实启动，不允许由虚拟自测/mock 字段代替；
+- 若当前通道 1344，而历史备用通道没有可定位、可调用的稳定标识，则不得继续猜测目录或工具；应 STOP 并返回 `EXECUTION_CHANNEL_UNRESOLVED`；
+- 状态机/控制面验证若本质上不需要本机业务子进程，应移到 Codex 之前的控制层执行，避免把执行器自身启动故障当成状态机正确性的验收前提。
+
 ## 6. 网络硬约束
 - FlClash 常驻。
 - 禁止为了任务改变代理。
@@ -191,13 +229,14 @@ MEANING：
 
 ## 7. 本版 delta
 
-相对 v1.1.4：
+相对 v1.1.7：
 
 ```text
-ADD hf 1.19.0 local real PASS path with 13.727948s local T_VALID
-KEEP Windows curl/Schannel exit 35 execution-context fact
-KEEP exact download tool versions and scoped-workdir evidence
-KEEP download network context inheritance rule
+ADD OBSERVED_CONSTRAINT_010
+CORRECT scoped-workdir evidence semantics: workdir is not sufficient proof
+ADD current execution-channel certification requirement
+MARK REAL-RESULT-04 process-spawn provenance gap
+KEEP all v1.1.7 assets and constraints
 NO METHOD CHANGE
 NO HARDWARE FINGERPRINT CHANGE
 ```
