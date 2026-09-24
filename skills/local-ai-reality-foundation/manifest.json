@@ -1,7 +1,7 @@
 {
   "skill_id": "local-ai-reality-foundation",
-  "version": "1.1.7",
-  "previous_version": "1.1.6",
+  "version": "1.1.8",
+  "previous_version": "1.1.7",
   "display_name": "本地 AI 现实底座永久资产",
   "role": "VERSIONED_PERSISTENT_REALITY_FOUNDATION",
   "method_step": false,
@@ -47,7 +47,7 @@
       "rule": "INHERIT_CURRENT_VERIFIED_NETWORK_CONTEXT_PROCESS_LOCALLY; NEVER_CHANGE_PERSISTENT_PROXY_SETTINGS"
     }
   },
-  "updated_date": "2026-09-23",
+  "updated_date": "2026-09-24",
   "codex_execution_constraints": {
     "temp_executable_staging": "DO_NOT_STAGE_EXECUTABLE_PS1_IN_APPDATA_LOCAL_TEMP",
     "powershell_prompt_transport": "LITERAL_SAFE_DEFAULT",
@@ -59,9 +59,13 @@
       "classification": "CODEX_WINDOWS_PROCESS_SPAWN_CHANNEL_FAILURE",
       "not_download_tool_missing": true,
       "known_alternate_channel_success_observed": true,
-      "real_rule": "FIRST_USE_TASK_SCOPED_WORKDIR; IF_SAME_1344_RETRY_ONCE_VIA_PREEXISTING_AUTHORIZED_PROVEN_CHANNEL; ELSE_STOP",
+      "real_rule": "SCOPED_WORKDIR_IS_HINT_NOT_SUFFICIENT; REQUIRE_CURRENT_EXECUTION_CHANNEL_ID_AND_REAL_PROCESS_SPAWN_CERTIFICATION; IF_CHANNEL_UNRESOLVED_STOP",
       "scoped_workdir_default": "USE_TASK_SCOPED_DIRECTORY_NOT_USER_HOME_FOR_WORKSPACE_WRITE",
-      "public_repro_support": "Codex Windows issue reports Home workspace can inflate write roots/default DACL; scoped project directory can remove 1344"
+      "public_repro_support": "Codex Windows issue reports Home workspace can inflate write roots/default DACL; scoped project directory can remove 1344",
+      "scoped_workdir_sufficient_proof": false,
+      "execution_channel_identity_required": true,
+      "current_context_real_certification_required": true,
+      "real_result_04_provenance": "PROCESS_SPAWN_PASS_BUT_SUCCESSFUL_CHANNEL_NOT_RECORDED"
     },
     "scoped_workdir_real_04": {
       "workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
@@ -91,6 +95,18 @@
       "valid_real": "PASS",
       "whole_loop_tstar_eligible": false,
       "reason": "HISTORICAL_TASK_TIME_LEDGER_INCOMPLETE"
+    },
+    "current_1344_recurrence": {
+      "date": "2026-09-24",
+      "task": "整体闭环极限时间引擎4.7版 状态门现实认证",
+      "attempts": [
+        "01-01 REAL",
+        "01-02 REAL"
+      ],
+      "second_attempt_workdir": "C:\\AI\\Mature-Download-Router-Real-Test",
+      "both_result": "SETTOKENINFORMATION_TOKENDEFAULTDACL_1344",
+      "new_fact": "SAME_HISTORICALLY_PASSING_WORKDIR_CAN_STILL_FAIL_IN_CURRENT_EXECUTION_CHANNEL",
+      "classification": "EXECUTION_CHANNEL_CONTEXT_UNRESOLVED"
     }
   }
 }
