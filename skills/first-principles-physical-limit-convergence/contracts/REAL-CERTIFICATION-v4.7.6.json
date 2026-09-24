@@ -1,0 +1,55 @@
+{
+  "contract_id": "ESTE-v4.7.6-STATE-MACHINE-REAL-01",
+  "method_version": "4.7.6",
+  "page_name": "整体闭环极限时间引擎 4.7版2",
+  "task_name": "v4.7.6虚实边界现实认证",
+  "state": "03-01",
+  "phase": "实",
+  "executor": "CODEX",
+  "freeze_id": "ESTE-v4.7.6-0301-VIRTUAL-FREEZE-01",
+  "source_branch": "codex/first-principles-physical-limit-convergence-v4.7.6-virtual-freeze",
+  "t_mature_star_ms": 194419.3759,
+  "time_gate": {
+    "real_start_required": true,
+    "real_end_required": true,
+    "t_valid_real_ms_required": true,
+    "pass_ceiling_ms": 194419.3759
+  },
+  "scope": [
+    "materialize_or_update_v4.7.6_skill_from_frozen_source",
+    "integrate_phase_executor_gate_before_existing_pre_dispatch_gate",
+    "ensure_phase_virtual_to_codex_blocks_before_side_effect",
+    "ensure_phase_real_with_complete_frozen_envelope_can_reach_existing_dispatch",
+    "preserve_v1.5.2_and_existing_v1.6_candidate_evidence",
+    "run_frozen_20_case_acceptance",
+    "record_real_time_and_evidence_consistency"
+  ],
+  "forbidden": [
+    "REDESIGN_METHOD_IN_REAL",
+    "MARK_VIRTUAL_TASK_AS_CODEX_EXECUTABLE",
+    "REUSE_FREEZE_ID_FOR_SECOND_REAL",
+    "PASS_WITHOUT_T_VALID_REAL_MS",
+    "PASS_WITH_EVIDENCE_CONTRADICTION",
+    "CHANGE_PROXY_OR_SYSTEM_SETTINGS",
+    "CODEX_EXEC_WRAPPER"
+  ],
+  "required_result": [
+    "页面名",
+    "任务名",
+    "状态",
+    "阶段",
+    "冻结编号",
+    "阶段执行器一致性",
+    "虚任务阻断",
+    "实任务放行",
+    "20项验收",
+    "现实开始时间",
+    "现实结束时间",
+    "现实有效时间毫秒",
+    "是否低于极限锚",
+    "证据一致性",
+    "本地提交范围",
+    "远程提交范围",
+    "最终现实有效"
+  ]
+}
