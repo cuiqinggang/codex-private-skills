@@ -1,0 +1,32 @@
+{
+  "method_version": "4.7.2",
+  "contract": "FINITE-CYCLE-TIME-STATE-v4.7.2",
+  "total_tests": 20,
+  "passed": 20,
+  "failed": 0,
+  "positive": [
+    "INIT->G01-A01-V",
+    "G01-A01-V->G01-A01-R",
+    "REAL PASS->FINAL",
+    "A01 FAIL->A02 V",
+    "A02 FAIL->A03 V",
+    "A03 FAIL->A04 V",
+    "A04 FAIL->A05 V",
+    "A05 FAIL->A06 V",
+    "A06 FAIL->G02-A01 V",
+    "STRUCTURAL DELTA->EARLY NEW G"
+  ],
+  "blocked": [
+    "A07",
+    "A06 FAIL WITHOUT REASSEMBLY",
+    "REAL FAIL DIRECT REAL RETRY",
+    "TIME ARITHMETIC MISMATCH",
+    "TIME STATE MISMATCH",
+    "MISSING T_MATURE_STAR",
+    "FREEZE_ID REUSE",
+    "SECOND REAL SAME FREEZE",
+    "VIRTUAL COMPLETE WITHOUT REAL COMMAND",
+    "FINAL WITHOUT TIME ACCOUNTING"
+  ],
+  "result": "PASS"
+}
