@@ -1,0 +1,27 @@
+{
+  "contract_id": "pre-dispatch-state-gate",
+  "contract_version": "1.0.0",
+  "method_version": "4.7.5",
+  "reality_foundation": "local-ai-reality-foundation@1.1.8",
+  "runs_before_codex_dispatch": true,
+  "requires_local_subprocess": false,
+  "visible_state_format": "【PAGE_NAME｜TASK_NAME｜NN-NN｜虚/实】 极限锚03:14.419",
+  "t_mature_star_ms": 194419.3759,
+  "max_attempts_per_generation": 6,
+  "checks": [
+    "STATE_FORMAT_VALID",
+    "ATTEMPT_LE_6",
+    "T_MATURE_STAR_MATCH",
+    "NEW_FREEZE_ID_FOR_REAL",
+    "FREEZE_ID_NOT_USED",
+    "REAL_COMMAND_PRESENT",
+    "A06_FAIL_REQUIRES_NEW_GENERATION",
+    "REAL_PASS_ONLY_FINAL"
+  ],
+  "structural_rules": {
+    "same_failure_after_targeted_fix_count": 2,
+    "action": "ALLOW_EARLY_NEW_GENERATION",
+    "current_case": "01-01 and 01-02 both failed with same 1344; move to 02-01"
+  },
+  "local_process_capability_is_separate": true
+}
