@@ -1,0 +1,20 @@
+{
+  "task_time_id": "ESTE-20260924-001",
+  "task": "v4.7.2 deterministic final-candidate consolidation",
+  "method": "extreme-short-time-engine-v4.7.2",
+  "start_timestamp": "2026-09-24T19:04:32+08:00",
+  "checkpoint_timestamp": "2026-09-24T19:10:49+08:00",
+  "gpt_active_ms": 377000,
+  "gpt_active_human": "00:06:17",
+  "result": "PASS",
+  "outputs": [
+    "v4.7.2 SKILL",
+    "deterministic E00-E90 contract",
+    "state transition validator",
+    "20/20 state-machine selftest",
+    "current state",
+    "release note"
+  ],
+  "t_mature_star_reference": "00:03:14.419",
+  "note": "This is version-consolidation work time, not T_MATURE_STAR and not an automation T_CLOSED_REAL measurement."
+}
