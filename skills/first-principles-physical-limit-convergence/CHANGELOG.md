@@ -1,5 +1,15 @@
 # 版本变化
 
+## v4.7.4
+- 修复 v4.7.3 本机现实认证的 Gate Regression（门禁回归）：Reality Foundation 1.1.7 已知 Windows 1344 子进程失败，但现实合同未绑定已验证窄工作目录。
+- REAL 本地子进程任务发布前新增唯一必要入口门：显式 REAL_WORKDIR + REAL_WORKDIR_PROVEN。
+- 当前采用 Reality Foundation 1.1.7 已现实证明可用的 `C:\AI\Mature-Download-Router-Real-Test`。
+- Codex 必须让执行工具本身直接使用窄 workdir（工作目录），禁止先在默认目录启动进程后再 cd。
+- PROCESS_SPAWN_PRECHECK（子进程启动预检）放在 REAL 第一动作，不在发布前形成逻辑死锁。
+- Reality Foundation 不升版：1344 事实不是新发现，修的是引擎没有消费已有现实事实。
+- 01-01 REAL 失败后按有限状态规则进入 01-02；不重置方案代。
+- 工作目录入口门自测 8/8 PASS。
+
 ## v4.7.3
 - 用户可见状态简化为纯数字 `NN-NN`：前两位=方案代，后两位=本代现实尝试号；去掉 G/A 英文字母。
 - 用户可见默认只保留一个时间：`极限锚03:14.419`；完整 T_CLOSED_REAL 墙钟继续在机器内部账本记录。
