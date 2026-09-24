@@ -1,0 +1,26 @@
+{
+  "method_version": "4.7.2",
+  "validator": "validate-user-output-anchor-v4.7.2.mjs",
+  "total_tests": 4,
+  "passed": 4,
+  "failed": 0,
+  "cases": [
+    {
+      "case": "合法横向状态锚",
+      "result": "PASS"
+    },
+    {
+      "case": "缺状态锚必须阻断",
+      "result": "PASS"
+    },
+    {
+      "case": "A07 状态锚必须阻断",
+      "result": "PASS"
+    },
+    {
+      "case": "缺字段/短状态锚必须阻断",
+      "result": "PASS"
+    }
+  ],
+  "result": "PASS"
+}
