@@ -1,0 +1,22 @@
+{
+  "method_version": "4.7.5",
+  "gate": "PRE_DISPATCH_CONTROL_PLANE",
+  "local_subprocess_required": false,
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "cases": [
+    "允许 02-01 虚准备",
+    "允许 02-01 REAL 发布封装",
+    "阻断尝试号07",
+    "阻断极限锚错误",
+    "阻断 Freeze 复用",
+    "阻断现实命令缺失",
+    "阻断 A06 FAIL 仍停旧方案代",
+    "允许 A06 FAIL -> 新方案代01",
+    "阻断 REAL FAIL -> FINAL",
+    "允许 REAL PASS -> FINAL"
+  ],
+  "result": "PASS",
+  "limitation": "逻辑门已验证；真正自动硬拦截仍需接入 GPT-Codex 控制层 dispatch hook。"
+}
