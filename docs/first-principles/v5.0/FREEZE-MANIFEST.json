@@ -1,0 +1,22 @@
+{
+  "freeze_id": "ESTE-v5.0-0501-VIRTUAL-FREEZE-01",
+  "version": "5.0.0",
+  "page_name": "整体闭环极限时间引擎 4.7版2",
+  "task_name": "v5.0确定性状态机虚拟成熟",
+  "phase": "虚",
+  "virtual_tests": "16587/16587 PASS",
+  "files": {
+    "skills/first-principles-physical-limit-convergence/SKILL.md": "5d2f907477b595f512809a156d0e1791a71af9ec",
+    "skills/first-principles-physical-limit-convergence/manifest.json": "b2660458450a91b022573c08ee67a96c8ce8ab48",
+    "skills/first-principles-physical-limit-convergence/VERSION": "0062ac971805f7b700058db4bb0f5c5b771dda76",
+    "skills/first-principles-physical-limit-convergence/contracts/STATE-MACHINE-v5.0.json": "8184a4b74302aefcf54144b3600c453b8c35bf26",
+    "skills/first-principles-physical-limit-convergence/runtime/state_machine_v5.py": "82a605d3138e011a5085e79617a17a7a87862a6e",
+    "skills/first-principles-physical-limit-convergence/tests/test_state_machine_v5.py": "5c114e371b36b206517c0d65b275c91e5159da0a",
+    "docs/first-principles/v5.0/PRODUCT-GUIDE-ZH.md": "73fdffdce43aac2d8da77cadbb406e3f8552f951",
+    "docs/first-principles/v5.0/MIGRATION-v4-to-v5.md": "59d57311f97633adcd7e38a9e2b99e80f6388f62",
+    "docs/first-principles/v5.0/TEST-REPORT.md": "5f72c78ccbdc7c444357bb5b4d7e6ef801720ed5",
+    "docs/first-principles/v5.0/VIRTUAL-FREEZE.md": "f773a398e4a5faa42343fbfd0491e6ad2e12feb6",
+    "docs/first-principles/v5.0/REAL-CAPSULE.json": "21de516f62567f821ff9677e6af5198125471c24",
+    "docs/first-principles/v5.0/REAL-CAPSULE-SOURCE.py": "1b93f73f1de0e35c787468fa448050366de12cf6"
+  }
+}
