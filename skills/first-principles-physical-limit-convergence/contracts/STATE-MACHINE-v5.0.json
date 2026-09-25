@@ -1,0 +1,15 @@
+{
+  "name":"整体闭环极限短时间引擎 v5.0 状态机",
+  "type":"deterministic_extended_finite_state_machine",
+  "phases":["虚","实"],
+  "terminal_is_phase":false,
+  "events":["冻结转实","现实通过","现实失败"],
+  "state":{"PAGE_NAME":"required_string","TASK_NAME":"required_string","GENERATION":"integer>=1","ATTEMPT":"integer 1..6","PHASE":"虚|实","T_STAR_MS":"finite_number>0","FREEZE_ID":"null in 虚; required in 实","REAL_ADAPTER":"null in 虚; registered adapter in 实","DISPATCH_MODE":"null in 虚; adapter-legal mode in 实","DONE":"boolean"},
+  "transition_table":[
+    {"from":"虚","event":"冻结转实","to":"实","guard":"virtual maturity + freeze + reread + capsule + adapter + time + provenance all pass"},
+    {"from":"实","event":"现实通过","to":"实 + DONE","guard":"real timing + verifier + evidence + frozen T* all pass"},
+    {"from":"实","event":"现实失败","to":"虚","guard":"Reality Delta exists","retry":"attempt+1; structural or attempt6 => next generation attempt01"}
+  ],
+  "invalid_by_construction":["Codex real work while phase=虚","attempt=07","real without freeze","real without adapter","Codex dispatch mode EXEC/POWERSHELL/SHELL","freeze reread hash mismatch","real task labeled 虚","real pass without T_VALID_REAL_MS","real pass with verifier fail","real pass with evidence contradiction","real pass slower than frozen task T*","reuse same FREEZE_ID"],
+  "render_locator_from_state_only":true
+}

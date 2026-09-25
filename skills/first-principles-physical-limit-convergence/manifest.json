@@ -1,46 +1,22 @@
 {
-  "skill_id": "first-principles-physical-limit-convergence",
-  "version": "4.7.7",
-  "display_name": "极限短时间引擎",
-  "canonical_branch": "codex/first-principles-physical-limit-convergence-v4.7.7-virtual-freeze",
-  "method_steps": ["VIRTUAL","REAL"],
-  "method_step_count": 2,
-  "reality_foundation": "local-ai-reality-foundation@1.1.8",
-  "current_generation_attempt": "04-01",
-  "visible_anchor": {
-    "human": "00:03:14.419",
-    "ms": 194419.3759,
-    "meaning": "CURRENT_MATURE_ENGINE_BENCHMARK_NOT_TASK_PHYSICAL_LOWER_BOUND"
-  },
-  "phase_executor_gate": {
-    "virtual_executor": "GPT",
-    "real_executor": "CODEX",
-    "codex_requires_phase_real": true
-  },
-  "real_entry_closure": {
-    "self_contained_capsule_required": true,
-    "remote_read_required_at_real_start": false,
-    "permission_approval_for_freeze_at_real_start": false,
-    "remote_repository_role": "AUDIT_SOURCE_ONLY",
-    "unavailable_local_target_action": "STOP_MINIMAL_REALITY_DELTA"
-  },
-  "timing": {
-    "real_start_required": true,
-    "real_end_required": true,
-    "t_valid_real_ms_required": true,
-    "current_benchmark_ceiling_ms": 194419.3759,
-    "benchmark_scope": "ENGINE_MATURE_BENCHMARK"
-  },
-  "finite_retry": {
-    "max_real_attempts_per_generation": 6,
-    "attempt_7_forbidden": true,
-    "attempt_6_fail": "NEXT_GENERATION_01",
-    "structural_failure": "ALLOW_EARLY_NEXT_GENERATION_01"
-  },
-  "virtual_validation": {
-    "v476_state_transition": "20/20 PASS",
-    "v477_self_contained_boundary": "22/22 PASS",
-    "codex_used_for_virtual_maturation": false
-  },
-  "status": "VIRTUAL_FREEZE_CANDIDATE"
+  "skill_id":"first-principles-physical-limit-convergence",
+  "version":"5.0.0",
+  "display_name":"整体闭环极限短时间引擎",
+  "architecture":"DETERMINISTIC_EXTENDED_FINITE_STATE_MACHINE",
+  "objective":"MIN_T_VALID",
+  "method_steps":["VIRTUAL","REAL"],
+  "method_step_count":2,
+  "work_cores":{"virtual_maturation":"GENERAL_INTELLIGENCE_CORE","real_execution":"FROZEN_EXECUTION_CORE"},
+  "control_kernel":"DETERMINISTIC_STATE_MACHINE",
+  "runtime_state_fields":["PAGE_NAME","TASK_NAME","GENERATION","ATTEMPT","PHASE","T_STAR_MS","FREEZE_ID","REAL_ADAPTER","DISPATCH_MODE","DONE"],
+  "renderer":{"model_writes_locator":false,"format":"【PAGE_NAME｜TASK_NAME｜NN-NN｜PHASE】 极限锚MM:SS.mmm"},
+  "finite_retry":{"max_real_attempts_per_generation":6,"attempt_7_forbidden":true,"attempt_6_fail":"NEXT_GENERATION_01","structural_failure":"ALLOW_EARLY_NEXT_GENERATION_01"},
+  "adapter_registry":{"CODEX":["CHAT"],"PLAYWRIGHT":["NATIVE_BROWSER"],"REASONIX":["UI_AGENT"],"LOCAL_FROZEN":["FROZEN_RUNNER"]},
+  "codex_policy":{"natural_language_chat_only":true,"codex_exec_forbidden":true,"powershell_dispatch_forbidden":true,"shell_dispatch_forbidden":true},
+  "virtual_to_real":{"atomic":true,"freeze_publish_reread_required":true,"self_contained_real_capsule_required":true,"task_specific_t_star_required":true,"real_task_phase_must_be_real":true},
+  "real_pass":{"real_start_required":true,"real_end_required":true,"t_valid_real_ms_required":true,"verifier_pass_required":true,"evidence_consistency_required":true,"must_meet_frozen_t_star":true},
+  "legacy_runtime_dependency":false,
+  "product_guide_runtime_dependency":false,
+  "virtual_validation":{"directed_regression":"26/26 PASS","freeze_guard_exhaustive":"16384/16384 PASS; exactly 1 ALLOW","real_pass_exhaustive":"128/128 PASS; exactly 1 ALLOW","adapter_matrix":"32/32 PASS","failure_transition_matrix":"12/12 PASS","determinism":"5/5 PASS","total":"16587/16587 PASS"},
+  "status":"VIRTUAL_FREEZE_CANDIDATE"
 }
