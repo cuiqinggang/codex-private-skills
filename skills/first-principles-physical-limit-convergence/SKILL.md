@@ -42,6 +42,32 @@ Reality 返回：
 详细合同：
 - `contracts/CONTROL-BOUNDARY-TIME-v5.0.8.json`
 
+## v5.0.8 Reality 可执行载荷物化规则
+
+v5.0.7 Reality 暴露的 `UnicodeEncodeError` 已作为 Reality Delta 吸收。
+
+人类可读文档可以继续使用中文；真正送入 Python 的冻结 Reality Capsule 必须为 ASCII-only 可执行源码。
+
+进入 Reality 计时前必须依次机械通过：
+`远程精确 blob 读取 -> blob 回读一致 -> source.isascii() -> compile -> fresh namespace exec -> run_reality_certificate callable`。
+
+这些都属于 Reality 前置物化门，不计入证书 `T_VALID_REAL`。
+
+只有前置物化 PASS 后：
+- 紧接 `run_reality_certificate()` 前记录 `T_VALID_START`；
+- 全部证书项 PASS 返回后立即记录 `T_VALID_END`。
+
+若编码/物化失败：
+- 不得修改当前 Freeze；
+- 不得原地重试；
+- 必须以 FAIL/BLOCKED 数值时间信封返回；
+- Reality Delta -> STOP -> 回虚。
+
+权威合同：
+- `contracts/REALITY-PAYLOAD-MATERIALIZATION-v5.0.8.json`
+- `tests/test_reality_materialization_v5_0_8.py`
+- `docs/first-principles/v5.0.8/REAL-CAPSULE-SOURCE-R2.py`
+
 ## v5.0.7 当前权威规则：数值时间锚
 
 v5.0.7 不改变 v5.0.5 已冻结的原状态机，不改变共同私库直读主路径。
