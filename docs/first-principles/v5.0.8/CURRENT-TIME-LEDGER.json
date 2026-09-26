@@ -70,9 +70,55 @@
       "t_exchange_elapsed_ms": 0,
       "t_star_ms": 0.01136838145574825,
       "freeze_id": "ESTE-v5.0.8-DUAL-END-NUMERIC-TIME-ASCII-CAPSULE-VIRTUAL-FREEZE-R2"
+    },
+    {
+      "seq": 9,
+      "name": "R2_EXECUTOR_RETURN_BLOCKED",
+      "at_utc": "2026-09-26T20:32:43.939728+00:00",
+      "t_closed_loop_elapsed_ms": 4827490.999,
+      "t_exchange_elapsed_ms": 385939,
+      "t_certificate_elapsed_ms": 0,
+      "certificate_state": "NOT_STARTED",
+      "result": "BLOCKED",
+      "real_pass": false,
+      "reality_delta": "ReferenceError: btoa is not defined"
+    },
+    {
+      "seq": 10,
+      "name": "R3_RETURN_TO_VIRTUAL",
+      "at_utc": "2026-09-26T20:39:17+00:00",
+      "t_closed_loop_elapsed_ms": 5220551.271
+    },
+    {
+      "seq": 11,
+      "name": "R3_VIRTUAL_MATURITY_TIME_CLOSEOUT",
+      "at_utc": "2026-09-26T20:43:11+00:00",
+      "t_closed_loop_elapsed_ms": 5454551.271,
+      "t_boundary_segment_elapsed_ms": 234000
+    },
+    {
+      "seq": 12,
+      "name": "R3_IMPLEMENTATION_DISPATCH",
+      "at_utc": "2026-09-26T20:45:34+00:00",
+      "t_closed_loop_elapsed_ms": 5597551.271,
+      "t_exchange_elapsed_ms": 0,
+      "t_star_ms": 0.01136838145574825
+    },
+    {
+      "seq": 13,
+      "name": "R3_FREEZE_REREAD",
+      "at_utc": "2026-09-26T21:01:06.312Z",
+      "t_closed_loop_elapsed_ms": 6529863.999,
+      "t_exchange_elapsed_ms": 932312,
+      "freeze_id": "ESTE-v5.0.8-GIT-NATIVE-BYTES-MATERIALIZATION-VIRTUAL-FREEZE-R3",
+      "manifest_blob": "a4f1d7275c94c82a5287c8e42ae3e5e707fd9b54",
+      "freeze_reread": "27/27 PASS",
+      "r2_assets_unchanged": true,
+      "real_started": false,
+      "t_star_ms": 0.01136838145574825
     }
   ],
   "unique_objective": "T*=min(T_VALID)",
   "top_level_t_valid": "T_CLOSED_LOOP_VALID",
-  "next_boundary": "EXECUTOR_RETURN_PASS_FAIL_OR_BLOCKED"
+  "next_boundary": "R3_IMPLEMENTATION_RETURN_TO_GPT"
 }
