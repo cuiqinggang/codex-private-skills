@@ -1,7 +1,7 @@
 import math
 from dataclasses import dataclass, replace
 from enum import Enum
-from typing import Optional, FrozenSet
+from typing import Optional, FrozenSet, Tuple
 
 class Phase(str, Enum):
     VIRTUAL = "虚"
@@ -29,13 +29,29 @@ class Blocked(Exception):
     pass
 
 @dataclass(frozen=True)
+class TimeEvent:
+    seq: int
+    name: str
+    phase: Phase
+    at_utc: str
+    active_t_star_ms: Optional[float] = None
+    t_valid_real_ms: Optional[float] = None
+    source: Optional[str] = None
+
+@dataclass(frozen=True)
 class EngineState:
     page_name: str
     task_name: str
     generation: int
     attempt: int
     phase: Phase
+    timeline_id: str
+    time_origin_utc: str
+    time_event_seq: int = 0
+    time_events: Tuple[TimeEvent, ...] = ()
     t_star_ms: Optional[float] = None
+    t_star_status: str = "PENDING"
+    best_certified_t_valid_ms: Optional[float] = None
     t_valid_start: Optional[str] = None
     t_valid_end: Optional[str] = None
     t_star_source: Optional[str] = None
@@ -78,6 +94,7 @@ class VirtualMature:
     t_valid_start: str
     t_valid_end: str
     t_star_source: str
+    event_at_utc: str
     freeze_id: str
     freeze_hash: str
     reread_hash: str
@@ -96,6 +113,8 @@ class RealResult:
     real_start_ms: Optional[float]
     real_end_ms: Optional[float]
     t_valid_real_ms: Optional[float]
+    real_start_utc: Optional[str] = None
+    real_end_utc: Optional[str] = None
     reality_delta: Optional[str] = None
     structural_failure: bool = False
 
@@ -160,6 +179,32 @@ def virtual_complete_pass(v: VirtualMature) -> bool:
         and v.real_task_phase == Phase.REAL
     )
 
+def append_time_event(
+    s: EngineState,
+    name: str,
+    phase: Phase,
+    at_utc: str,
+    active_t_star_ms: Optional[float] = None,
+    t_valid_real_ms: Optional[float] = None,
+    source: Optional[str] = None,
+) -> EngineState:
+    _require(_nonempty(at_utc), "TIME_EVENT_UTC_MISSING")
+    next_seq = s.time_event_seq + 1
+    event = TimeEvent(
+        seq=next_seq,
+        name=name,
+        phase=phase,
+        at_utc=at_utc,
+        active_t_star_ms=active_t_star_ms,
+        t_valid_real_ms=t_valid_real_ms,
+        source=source,
+    )
+    return replace(
+        s,
+        time_event_seq=next_seq,
+        time_events=s.time_events + (event,),
+    )
+
 def time_anchor_ready(t_star_ms, t_valid_start, t_valid_end, t_star_source) -> bool:
     return (
         t_star_ms is not None
@@ -182,8 +227,19 @@ def validate_state(s: EngineState):
     _require(bool(s.task_name.strip()), "TASK_NAME_MISSING")
     _require(s.generation >= 1, "GENERATION_INVALID")
     _require(1 <= s.attempt <= 6, "ATTEMPT_INVALID")
+    _require(_nonempty(s.timeline_id), "TIMELINE_ID_MISSING")
+    _require(_nonempty(s.time_origin_utc), "TIME_ORIGIN_MISSING")
+    _require(s.time_event_seq == len(s.time_events), "TIME_EVENT_SEQ_MISMATCH")
+    for idx, event in enumerate(s.time_events, start=1):
+        _require(event.seq == idx, "TIME_EVENT_ORDER_INVALID")
+        _require(_nonempty(event.name), "TIME_EVENT_NAME_MISSING")
+        _require(_nonempty(event.at_utc), "TIME_EVENT_UTC_MISSING")
+    _require(s.t_star_status in {"PENDING","VIRTUAL_FROZEN","REAL_CERTIFIED"}, "T_STAR_STATUS_INVALID")
+    if s.best_certified_t_valid_ms is not None:
+        _require(math.isfinite(s.best_certified_t_valid_ms) and s.best_certified_t_valid_ms >= 0, "BEST_CERTIFIED_T_INVALID")
     if s.phase == Phase.VIRTUAL:
         _require(not s.done, "VIRTUAL_CANNOT_BE_DONE")
+        _require(s.t_star_status == "PENDING", "VIRTUAL_T_STAR_STATUS_INVALID")
         any_anchor = (
             s.t_star_ms is not None
             or s.t_valid_start is not None
@@ -202,6 +258,7 @@ def validate_state(s: EngineState):
             time_anchor_ready(s.t_star_ms, s.t_valid_start, s.t_valid_end, s.t_star_source),
             "REAL_TIME_ANCHOR_MISSING"
         )
+        _require(s.t_star_status in {"VIRTUAL_FROZEN","REAL_CERTIFIED"}, "REAL_T_STAR_STATUS_INVALID")
         _require(bool(s.freeze_id), "REAL_WITHOUT_FREEZE")
         _require(s.real_adapter is not None, "REAL_ADAPTER_MISSING")
         _require(bool(s.dispatch_mode), "DISPATCH_MODE_MISSING")
@@ -228,10 +285,15 @@ def render_dispatch_header(s: EngineState) -> str:
     )
     return "\n".join([
         render_locator(s),
+        f"TIMELINE_ID={s.timeline_id}",
+        f"TIME_ORIGIN_UTC={s.time_origin_utc}",
+        f"TIME_EVENT_SEQ={s.time_event_seq}",
+        f"T_STAR_STATUS={s.t_star_status}",
         f"T_STAR_MS={s.t_star_ms:.6f}",
         f"T_VALID_START={s.t_valid_start}",
         f"T_VALID_END={s.t_valid_end}",
         f"T_STAR_SOURCE={s.t_star_source}",
+        f"BEST_CERTIFIED_T_VALID_MS={'' if s.best_certified_t_valid_ms is None else f'{s.best_certified_t_valid_ms:.6f}'}",
     ])
 
 def transition(s: EngineState, event: Event, payload):
@@ -257,6 +319,7 @@ def transition(s: EngineState, event: Event, payload):
         _require(_nonempty(v.t_valid_start), "T_VALID_START_MISSING")
         _require(_nonempty(v.t_valid_end), "T_VALID_END_MISSING")
         _require(_nonempty(v.t_star_source), "T_STAR_SOURCE_MISSING")
+        _require(_nonempty(v.event_at_utc), "FREEZE_EVENT_UTC_MISSING")
         _require(bool(v.freeze_id), "FREEZE_ID_MISSING")
         _require(v.freeze_id not in s.used_freezes, "FREEZE_ID_ALREADY_USED")
         _require(bool(v.freeze_hash), "FREEZE_HASH_MISSING")
@@ -273,12 +336,21 @@ def transition(s: EngineState, event: Event, payload):
             s,
             phase=Phase.REAL,
             t_star_ms=v.proposed_t_star_ms,
+            t_star_status="VIRTUAL_FROZEN",
             t_valid_start=v.t_valid_start,
             t_valid_end=v.t_valid_end,
             t_star_source=v.t_star_source,
             freeze_id=v.freeze_id,
             real_adapter=v.real_adapter,
             dispatch_mode=v.dispatch_mode,
+        )
+        out = append_time_event(
+            out,
+            "FREEZE_TO_REAL",
+            Phase.REAL,
+            v.event_at_utc,
+            active_t_star_ms=v.proposed_t_star_ms,
+            source=v.t_star_source,
         )
         validate_state(out)
         return out
@@ -290,13 +362,43 @@ def transition(s: EngineState, event: Event, payload):
         _require(r.real_start_ms is not None, "REAL_START_MISSING")
         _require(r.real_end_ms is not None, "REAL_END_MISSING")
         _require(r.t_valid_real_ms is not None, "T_VALID_REAL_MISSING")
+        _require(_nonempty(r.real_start_utc), "REAL_START_UTC_MISSING")
+        _require(_nonempty(r.real_end_utc), "REAL_END_UTC_MISSING")
         _require(r.real_end_ms >= r.real_start_ms, "REAL_TIME_ORDER_INVALID")
         _require(r.t_valid_real_ms >= 0, "T_VALID_REAL_INVALID")
         _require(r.verifier_pass, "VERIFIER_FAIL")
         _require(r.evidence_consistent, "EVIDENCE_INCONSISTENT")
         _require(r.t_valid_real_ms <= s.t_star_ms, "T_STAR_NOT_MET")
         new_used = frozenset(set(s.used_freezes) | {s.freeze_id})
-        out = replace(s, used_freezes=new_used, done=True)
+        best = (
+            r.t_valid_real_ms
+            if s.best_certified_t_valid_ms is None
+            else min(s.best_certified_t_valid_ms, r.t_valid_real_ms)
+        )
+        out = append_time_event(
+            s,
+            "REAL_START",
+            Phase.REAL,
+            r.real_start_utc,
+            active_t_star_ms=s.t_star_ms,
+            source=s.t_star_source,
+        )
+        out = append_time_event(
+            out,
+            "REAL_PASS",
+            Phase.REAL,
+            r.real_end_utc,
+            active_t_star_ms=s.t_star_ms,
+            t_valid_real_ms=r.t_valid_real_ms,
+            source="REAL_CERTIFIED",
+        )
+        out = replace(
+            out,
+            used_freezes=new_used,
+            done=True,
+            t_star_status="REAL_CERTIFIED",
+            best_certified_t_valid_ms=best,
+        )
         validate_state(out)
         return out
 
@@ -305,16 +407,35 @@ def transition(s: EngineState, event: Event, payload):
         r = payload
         _require(isinstance(r, RealResult), "REAL_RESULT_REQUIRED")
         _require(bool(r.reality_delta), "REALITY_DELTA_MISSING")
+        _require(_nonempty(r.real_start_utc), "REAL_START_UTC_MISSING")
+        _require(_nonempty(r.real_end_utc), "REAL_END_UTC_MISSING")
         _require(s.freeze_id is not None, "REAL_FAIL_WITHOUT_FREEZE")
         new_used = frozenset(set(s.used_freezes) | {s.freeze_id})
         change_generation = r.structural_failure or s.attempt == 6
-        out = EngineState(
-            page_name=s.page_name,
-            task_name=s.task_name,
+        out = append_time_event(
+            s,
+            "REAL_START",
+            Phase.REAL,
+            r.real_start_utc,
+            active_t_star_ms=s.t_star_ms,
+            source=s.t_star_source,
+        )
+        out = append_time_event(
+            out,
+            "REAL_FAIL",
+            Phase.REAL,
+            r.real_end_utc,
+            active_t_star_ms=s.t_star_ms,
+            t_valid_real_ms=r.t_valid_real_ms,
+            source=r.reality_delta,
+        )
+        out = replace(
+            out,
             generation=s.generation + (1 if change_generation else 0),
             attempt=1 if change_generation else s.attempt + 1,
             phase=Phase.VIRTUAL,
             t_star_ms=None,
+            t_star_status="PENDING",
             t_valid_start=None,
             t_valid_end=None,
             t_star_source=None,
