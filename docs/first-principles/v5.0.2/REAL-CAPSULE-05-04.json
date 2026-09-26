@@ -1,0 +1,25 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "freeze_candidate": "ESTE-v5.0.2-0504-COMPLETE-FREEZE-01",
+  "source": {
+    "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE-05-04-R2.py",
+    "blob_sha": "f89519ee6e44c9df7032121bd6f1181a129f790e",
+    "sha256": "723e622c923ff972c24cc3b739aac05a6e0ad69b5698f124b56ef57767aaa2ba"
+  },
+  "execution_contract": {
+    "path": "docs/first-principles/v5.0.2/REAL-EXECUTION-CONTRACT-05-04-R2.json",
+    "blob_sha": "d95c7f1250ff87a7b1b572251683bed3212af0db"
+  },
+  "gpt_virtual_verification": {
+    "runs": 70,
+    "valid_runs": 70,
+    "verifier": "66745/66745 PASS",
+    "t_star_ms": 493.886824,
+    "payload_materialization": "PASS"
+  },
+  "reality_source": "shared private GitHub repository",
+  "local_workspace_copy_required": false,
+  "adapter": "CODEX",
+  "mode": "CHAT"
+}
