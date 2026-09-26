@@ -1,0 +1,35 @@
+{
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "locator": "【整体闭环极限时间引擎5.0.2版｜v5.0.2虚拟成熟现实认证｜05-03｜实】",
+  "version": "5.0.2",
+  "result": "FAIL_BEFORE_VERIFIER",
+  "reality_delta_class": [
+    "FREEZE_MANIFEST_CONFLICT",
+    "PYTHON_SOURCE_NOT_MATERIALIZED"
+  ],
+  "facts": {
+    "remote_objects_resolved": true,
+    "handoff_manifest_blob_matched": true,
+    "capsule_blob_matched": true,
+    "capsule_sha256_matched": true,
+    "base_manifest_skill_blob": "7d1ca2b000d35157d89d8a71cc1cd6faad457cd1",
+    "current_and_0503_skill_blob": "6a78f13217dc5e579408046924ecdedaa51dc919",
+    "skill_blob_consistent": false,
+    "python_error": "KeyError: 'run_verifier'",
+    "run_verifier_called": false,
+    "t_valid_real_ms": null,
+    "real_pass": false
+  },
+  "root_cause": [
+    "A policy change to SKILL.md occurred after the 05-02 base manifest was frozen, but 05-03 referenced that old base manifest instead of producing a new full freeze.",
+    "The dispatch required executing the remote capsule but did not mechanically specify that the fetched full source text must be materialized into the Python namespace before resolving run_verifier."
+  ],
+  "correction": [
+    "Do not layer a handoff manifest on a stale base manifest.",
+    "Produce one new complete 05-04 freeze manifest from all current authoritative blobs.",
+    "Freeze an explicit Python source-materialization contract.",
+    "Reread every frozen asset and re-run the exact post-freeze capsule in GPT before REAL."
+  ],
+  "action": "STOP -> RETURN_TO_GPT -> 05-04 VIRTUAL",
+  "method_version_bump_required": false
+}
