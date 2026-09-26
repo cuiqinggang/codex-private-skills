@@ -1,0 +1,34 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "attempt": "05-05",
+  "source": {
+    "repository": "https://github.com/cuiqinggang/codex-private-skills",
+    "branch": "codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze",
+    "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE-05-05.py",
+    "blob_sha": "aec8e3addd54b677ced8843db60774841623924b"
+  },
+  "proof_model": {
+    "virtual_full_proof": "66745/66745 PASS",
+    "reality_certificate": "62/62 PASS",
+    "rationale": "Exact immutable blob identity carries the exhaustive proof into Reality; Reality measures only target-environment compatibility."
+  },
+  "materialization": [
+    "Fetch the complete UTF-8 source text.",
+    "Execute exact source in one fresh Python namespace with __name__='remote_capsule'.",
+    "Assert callable(namespace['run_verifier']) and callable(namespace['run_reality_certificate']).",
+    "Do not run run_verifier() in Reality when the exact complete Freeze and proof receipt match.",
+    "Record REAL_START immediately before run_reality_certificate().",
+    "Record REAL_END immediately after successful return.",
+    "T_VALID_REAL_MS=(REAL_END-REAL_START)/1_000_000."
+  ],
+  "expected_result": "62/62 PASS",
+  "t_star_ms": 2.280776761,
+  "forbidden": [
+    "Running the 66745-case exhaustive verifier again in Reality after exact proof/hash match",
+    "Changing VALID semantics",
+    "Timing remote fetch/compile under this frozen timing scope",
+    "Using a different source blob",
+    "Repairing or redesigning in Reality"
+  ]
+}
