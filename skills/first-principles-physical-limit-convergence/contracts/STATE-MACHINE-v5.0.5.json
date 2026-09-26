@@ -1,0 +1,45 @@
+{
+  "version": "5.0.5",
+  "freeze_id": "ESTE-v5.0.5-STATE-MACHINE-PRESERVED-TIME-MASTER-VIRTUAL-FREEZE-R1",
+  "purpose": "时间总控只叠加约束，不得改写既有状态机动作。",
+  "top_architecture": ["虚", "实"],
+  "preserved_state_machine": {
+    "source_version_lineage": "v4.7.x -> v5.0.3",
+    "legal_events": ["FREEZE_TO_REAL", "REAL_PASS", "REAL_FAIL"],
+    "rules": [
+      "FREEZE_TO_REAL 只能从虚发生，且必须先完成虚拟成熟与完整 Freeze。",
+      "进入实后只执行冻结方案；Codex 不得重新设计、现场修复、换路线或创造第三阶段。",
+      "REAL_PASS 只能由实产生，必须满足冻结 verifier 与冻结时间门。",
+      "REAL_FAIL 必须记录 Reality Delta，消费当前 Freeze，STOP，并返回虚。",
+      "REAL_FAIL 后不得在同一 Freeze 上现场修复再重跑；必须回虚重新成熟并生成新 Freeze。",
+      "同一 FREEZE_ID 只允许一次正式 REAL。",
+      "连续任务序号保持既有 01-06 规则；第 6 次仍失败或结构性失败时进入下一代虚。",
+      "TIMELINE_ID / TIME_ORIGIN 在失败回虚时保持不变，历史事件只追加。"
+    ]
+  },
+  "executor_policy": {
+    "CODEX": "CHAT",
+    "PLAYWRIGHT": "NATIVE_BROWSER",
+    "REASONIX": "UI_AGENT",
+    "LOCAL_FROZEN": "FROZEN_RUNNER",
+    "forbidden_codex_modes": ["PowerShell", "Shell", "codex exec"]
+  },
+  "authoritative_source_policy": {
+    "normal_path": "REMOTE_SHARED_REPO_DIRECT",
+    "repository": "cuiqinggang/codex-private-skills",
+    "download_package_as_normal_path": "FORBIDDEN",
+    "local_copy_as_normal_path": "FORBIDDEN",
+    "when_remote_available": "直接按冻结 repository/branch/path/blob 读取；不得要求用户下载、重新找位置或本地扫描。",
+    "remote_unavailable_states": ["NETWORK_UNAVAILABLE", "AUTH_UNAVAILABLE", "REPOSITORY_UNAVAILABLE"],
+    "real_behavior_when_remote_unavailable": "STOP -> REMOTE_REPO_UNAVAILABLE -> Reality Delta -> RETURN_TO_GPT",
+    "fallback_rule": "备用下载/本地/内联只能在回到虚后显式形成新 Freeze；不得在当前 REAL 中切换。"
+  },
+  "time_master_overlay": {
+    "may_add_guards": true,
+    "may_change_state_transitions": false,
+    "may_change_executor_roles": false,
+    "may_change_freeze_consumption": false,
+    "may_change_remote_source_priority": false,
+    "may_insert_download_handoff": false
+  }
+}
