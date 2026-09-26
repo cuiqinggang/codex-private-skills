@@ -1,0 +1,34 @@
+{
+  "version": "5.0.8",
+  "revision": "R4",
+  "purpose": "一次性最终现实收口：现实有效优先，旧虚拟预测不再作为VALID硬门。",
+  "unique_objective": "T*=min(T_VALID)",
+  "candidates": {
+    "A": "R3_BASELINE",
+    "B": "R4_OPTIMIZED_SEMANTIC_EQUIVALENT"
+  },
+  "validity": {
+    "baseline_required": "1000/1000 valid and every result 18/18 PASS",
+    "optimized_candidate": "1000/1000 valid to participate; otherwise reject candidate without blocking baseline closeout",
+    "external_time_hard_limit": false
+  },
+  "measurement": {
+    "warmup_per_candidate": 1000,
+    "measured_calls_per_candidate": 1000,
+    "clock": "perf_counter_ns",
+    "timed_region": "immediately before candidate call to immediately after candidate returns",
+    "record": [
+      "MIN",
+      "P50",
+      "P95",
+      "MAX"
+    ]
+  },
+  "selection": {
+    "rule": "among reality-valid candidates select minimum MIN time",
+    "final_t_star": "minimum valid measured reality time",
+    "historical_virtual_prediction_ms": 0.01136838145574825,
+    "historical_prediction_is_gate": false,
+    "stop_after_this_reality": true
+  }
+}
