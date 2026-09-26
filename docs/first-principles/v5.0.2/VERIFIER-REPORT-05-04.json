@@ -1,0 +1,50 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "attempt": "05-04",
+  "artifact_blob": "f89519ee6e44c9df7032121bd6f1181a129f790e",
+  "checks": {
+    "execution_closure_matrix": {
+      "cases": 1024,
+      "allowed": 1,
+      "status": "PASS"
+    },
+    "freeze_matrix": {
+      "cases": 65536,
+      "allowed": 1,
+      "status": "PASS"
+    },
+    "real_pass_matrix": {
+      "cases": 128,
+      "allowed": 1,
+      "status": "PASS"
+    },
+    "adapter_matrix": {
+      "cases": 32,
+      "status": "PASS"
+    },
+    "failure_transitions": {
+      "cases": 12,
+      "status": "PASS"
+    },
+    "evidence_hash_checks": {
+      "cases": 6,
+      "status": "PASS"
+    },
+    "determinism": {
+      "cases": 5,
+      "status": "PASS"
+    },
+    "total": {
+      "cases": 66745,
+      "status": "PASS"
+    }
+  },
+  "newly_mechanized_evidence": [
+    "freeze_manifest_consistent",
+    "payload_materialization_verified",
+    "freeze_manifest_consistency_hash",
+    "payload_materialization_report_hash"
+  ],
+  "result": "PASS"
+}
