@@ -1,12 +1,37 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.0.5。永久保持“虚→实”原状态机；时间总控只做约束，不改写动作；共同私库为正常 Reality 权威源。唯一目标 min(T_VALID)。\nmetadata:
-  version: "5.0.3"
+description: 整体闭环极限短时间引擎 v5.0.7。保持原“虚→实”状态机和共同私库直读主路径；关键控制节点必须显示数值时间锚。唯一目标 min(T_VALID)。
+metadata:
+  version: "5.0.7"
   display_name: "整体闭环极限短时间引擎"
 ---
 
-# 整体闭环极限短时间引擎 v5.0.2
+# 整体闭环极限短时间引擎 v5.0.7
 
+
+## v5.0.7 当前权威规则：数值时间锚
+
+v5.0.7 不改变 v5.0.5 已冻结的原状态机，不改变共同私库直读主路径。
+
+关键控制节点的时间锚必须首先是有限数值：
+- `T_CLOSED_LOOP_ELAPSED_MS`：整体闭环累计实际时间；
+- `T_STAGE_ELAPSED_MS`：当前阶段累计实际时间；
+- `T_STAGE_STAR_MS`：当前阶段冻结的极限有效时间。
+
+状态词只能解释数值，不能代替数值。以下均非法：
+`N/A / NA / NULL / MISSING / Infinity / NaN / 空值`。
+
+REAL_DISPATCH 首屏必须至少显示：
+`闭环已用=<数值>ms｜本段已用=<数值>ms｜T*=<数值>ms`。
+
+如果任一必需数值缺失或不是有限数值：
+`TIME_ANCHOR_VALUE_MISSING_OR_INVALID -> ANCHOR_CONTINUITY_FAIL -> BLOCK`。
+
+详细权威合同：
+- `contracts/NUMERIC-TIME-ANCHOR-v5.0.7.json`
+- `runtime/state_machine_v5_0_7_overlay.py`
+- `tests/test_state_machine_v5_0_7_overlay.py`
+- `docs/first-principles/v5.0.7/VIRTUAL-FREEZE.md`
 
 ## v5.0.5 当前权威规则：原状态机不可被时间规范改写
 
