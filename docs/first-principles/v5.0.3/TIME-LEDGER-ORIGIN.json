@@ -1,0 +1,15 @@
+{
+  "version": "5.0.3",
+  "purpose": "continuous time-state contract for the v5.0.3 Reality certification task",
+  "timeline_id": "ESTE-v5.0.3-TIME-LEDGER-MATURATION-01",
+  "time_origin_utc": "2026-09-26T15:51:00Z",
+  "current_event_seq": 0,
+  "current_status": "VIRTUAL",
+  "t_star_status": "PENDING",
+  "best_certified_t_valid_ms": null,
+  "frozen_valid_boundary": {
+    "start": "immediately before run_reality_certificate() after exact capsule materialization",
+    "end": "immediately after run_reality_certificate() returns 37/37 PASS and evidence consistency is confirmed"
+  },
+  "rule": "This timeline_id and origin survive all Reality failures/retries; events are append-only. Active T* may return to PENDING, but history is never reset."
+}
