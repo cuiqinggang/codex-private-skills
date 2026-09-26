@@ -1,0 +1,42 @@
+{
+  "version": "5.0.2",
+  "checks": {
+    "freeze_matrix": {
+      "cases": 65536,
+      "allowed": 1,
+      "status": "PASS"
+    },
+    "execution_closure_matrix": {
+      "cases": 256,
+      "allowed": 1,
+      "status": "PASS"
+    },
+    "real_pass_matrix": {
+      "cases": 128,
+      "allowed": 1,
+      "status": "PASS"
+    },
+    "adapter_matrix": {
+      "cases": 32,
+      "status": "PASS"
+    },
+    "failure_transitions": {
+      "cases": 12,
+      "status": "PASS"
+    },
+    "determinism": {
+      "cases": 5,
+      "status": "PASS"
+    },
+    "directed_and_hash_checks": {
+      "cases": 38,
+      "status": "PASS"
+    },
+    "total": {
+      "cases": 66011,
+      "status": "PASS"
+    }
+  },
+  "invariant": "Only the fully evidenced maturity vector may transition VIRTUAL -> REAL",
+  "status": "PASS"
+}
