@@ -1,0 +1,37 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "attempt": "05-04",
+  "principle": "设计存在 != 实现存在；远程文件存在 != 已进入执行 namespace；新 handoff != 可覆盖旧基清单冲突",
+  "evidence_map": [
+    {
+      "criterion": "implementation behavior mapped",
+      "artifact": "runtime/state_machine_v5_0_2.py",
+      "blob": "a78f09efc7658a723b70639c19de8bf8d7fc169c"
+    },
+    {
+      "criterion": "spec contract",
+      "artifact": "contracts/STATE-MACHINE-v5.0.2.json",
+      "blob": "b7e8e28b59a811a2d91db881248191185cf1c990"
+    },
+    {
+      "criterion": "test definitions",
+      "artifact": "tests/test_state_machine_v5_0_2.py",
+      "blob": "f792df4a5c81fc174239c26a6b40f1980d8c73e1"
+    },
+    {
+      "criterion": "freeze_manifest_consistent",
+      "evidence": "post-freeze full asset reread required before REAL"
+    },
+    {
+      "criterion": "payload_materialization_verified",
+      "artifact": "REAL-EXECUTION-CONTRACT-05-04-R2.json",
+      "blob": "d95c7f1250ff87a7b1b572251683bed3212af0db"
+    },
+    {
+      "criterion": "self-contained executable",
+      "artifact": "REAL-CAPSULE-SOURCE-05-04-R2.py",
+      "blob": "f89519ee6e44c9df7032121bd6f1181a129f790e"
+    }
+  ]
+}
