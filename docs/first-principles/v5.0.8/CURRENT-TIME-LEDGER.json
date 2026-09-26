@@ -176,9 +176,33 @@
       "trigger": "TARGET_ENVIRONMENT_PERFORMANCE_DELTA",
       "observed_real_t_ms": 0.0315,
       "prior_t_star_ms": 0.01136838145574825
+    },
+    {
+      "seq": 18,
+      "name": "R4_VIRTUAL_MATURITY_TIME_CLOSEOUT",
+      "at_utc": "2026-09-26T21:50:30+00:00",
+      "t_closed_loop_elapsed_ms": 9493551.271,
+      "t_boundary_segment_elapsed_ms": 704000,
+      "strategy": "ONE_OPTIMIZATION_PASS_PLUS_ONE_FINAL_REALITY",
+      "current_real_anchor_ms": 0.0315,
+      "historical_virtual_prediction_ms": 0.01136838145574825,
+      "historical_prediction_is_gate": false,
+      "semantic_equivalence": "100000/100000 PASS"
+    },
+    {
+      "seq": 19,
+      "name": "R4_FREEZE_COMMIT",
+      "at_utc": "2026-09-26T21:51:12+00:00",
+      "t_closed_loop_elapsed_ms": 9535551.271,
+      "t_boundary_segment_elapsed_ms": 42000,
+      "freeze_id": "ESTE-v5.0.8-REALITY-FIRST-FINAL-CLOSEOUT-VIRTUAL-FREEZE-R4",
+      "manifest_blob": "ae548214d56ff699e06ce6203432e859c1113308",
+      "freeze_reread": "31/31 PASS",
+      "current_real_anchor_ms": 0.0315,
+      "historical_virtual_prediction_is_gate": false
     }
   ],
   "unique_objective": "T*=min(T_VALID)",
   "top_level_t_valid": "T_CLOSED_LOOP_VALID",
-  "next_boundary": "R4_VIRTUAL_MATURITY_TIME_CLOSEOUT"
+  "next_boundary": "R4_FINAL_REAL_DISPATCH"
 }
