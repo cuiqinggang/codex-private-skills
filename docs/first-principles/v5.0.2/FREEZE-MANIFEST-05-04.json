@@ -1,0 +1,98 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "freeze_id": "ESTE-v5.0.2-0504-COMPLETE-FREEZE-01",
+  "freeze_scope": "complete authoritative freeze; no stale base manifest layering",
+  "repository": {
+    "url": "https://github.com/cuiqinggang/codex-private-skills",
+    "full_name": "cuiqinggang/codex-private-skills",
+    "branch": "codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze"
+  },
+  "top_level_method": [
+    "虚",
+    "实"
+  ],
+  "t_star_ms": 493.886824,
+  "locator_display": "00:00.494",
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob_sha": "a1ef0cae1833461faa044dad33ce6f3a7acba402"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob_sha": "5d6df0f143f4587c5984f35de1d94d541c2c0d5d"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/STATE-MACHINE-v5.0.2.json",
+      "blob_sha": "b7e8e28b59a811a2d91db881248191185cf1c990"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/state_machine_v5_0_2.py",
+      "blob_sha": "a78f09efc7658a723b70639c19de8bf8d7fc169c"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_state_machine_v5_0_2.py",
+      "blob_sha": "f792df4a5c81fc174239c26a6b40f1980d8c73e1"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE-05-04-R2.py",
+      "blob_sha": "f89519ee6e44c9df7032121bd6f1181a129f790e",
+      "sha256": "723e622c923ff972c24cc3b739aac05a6e0ad69b5698f124b56ef57767aaa2ba"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/REAL-EXECUTION-CONTRACT-05-04-R2.json",
+      "blob_sha": "d95c7f1250ff87a7b1b572251683bed3212af0db"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/PAYLOAD-MATERIALIZATION-REPORT-05-04.json",
+      "blob_sha": "641e581b5ec5902a550e20ffc77535161024c44c"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/VERIFIER-REPORT-05-04.json",
+      "blob_sha": "35b84bf61071ab68a9a7a7888dfb644becd184c9"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/GPT-VIRTUAL-VERIFICATION-05-04.json",
+      "blob_sha": "c3b17a27ba7161c9c6b18d3dd64858be87ee0b48"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/IMPLEMENTATION-MAP-05-04.json",
+      "blob_sha": "c50ce04364140e4e2b2779f9cfeaa09d689d90d8"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/FAULT-INJECTION-REPORT-05-04.json",
+      "blob_sha": "52e43d352b2993503605e4a1e089ad65a2d43e08"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-05-04.json",
+      "blob_sha": "64748e1410d9fa86d5e9a1f144a2dcf8be7926b6"
+    }
+  ],
+  "virtual_completion": {
+    "spec_complete": "PASS",
+    "implementation_complete": "PASS",
+    "execution_chain_closed": "PASS",
+    "freeze_manifest_consistent": "PENDING_POST_PUBLISH_REREAD",
+    "payload_materialization_verified": "PASS",
+    "payload_materialization_report_blob": "641e581b5ec5902a550e20ffc77535161024c44c",
+    "gpt_virtual_verified": "PASS",
+    "gpt_runs": "70/70",
+    "verifier": "66745/66745 PASS",
+    "external_dependencies_closed": "PASS",
+    "remote_source_locator_frozen": "PASS",
+    "real_capsule_self_contained": "PASS",
+    "time_contract": "PASS"
+  },
+  "dispatch": {
+    "adapter": "CODEX",
+    "mode": "CHAT",
+    "phase": "实"
+  },
+  "invariants": [
+    "This manifest is the only base authority for 05-04.",
+    "No 05-02 or 05-03 manifest is part of the 05-04 execution dependency chain.",
+    "Any mutation of a listed asset invalidates this 05-04 freeze.",
+    "Reality must materialize the complete remote capsule source into one Python namespace before resolving run_verifier."
+  ]
+}
