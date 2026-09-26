@@ -19,7 +19,11 @@
     "capsule_contains_implementation",
     "implementation_map_hash_nonempty",
     "fault_injection_report_hash_nonempty",
-    "verifier_report_hash_nonempty"
+    "verifier_report_hash_nonempty",
+    "freeze_manifest_consistent",
+    "payload_materialization_verified",
+    "freeze_manifest_consistency_hash_nonempty",
+    "payload_materialization_report_hash_nonempty"
   ],
   "virtual_complete_requires": [
     "valid_defined",
@@ -40,5 +44,9 @@
     "remote_claim_requires_reread",
     "real_task_phase_is_REAL"
   ],
-  "render_locator_from_state_only": true
+  "render_locator_from_state_only": true,
+  "invalid_by_construction": [
+    "freeze manifest references a stale blob for any current frozen asset",
+    "run_verifier resolved before full remote source is materialized into the execution namespace"
+  ]
 }
