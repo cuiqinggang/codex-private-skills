@@ -1,0 +1,26 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "freeze_candidate": "ESTE-v5.0.2-0505-PROOF-CARRYING-FREEZE-R2",
+  "capsule": {
+    "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE-05-05.py",
+    "blob_sha": "aec8e3addd54b677ced8843db60774841623924b",
+    "sha256": "4baf7d00c1921cd85bf8117d325e22772a1372e6946750045504befc1c9881ee"
+  },
+  "virtual_exact_proof": {
+    "path": "docs/first-principles/v5.0.2/VIRTUAL-EXACT-PROOF-05-05-R2.json",
+    "blob_sha": "2eaa2ded44b91c775110927e63d25903e6907d02",
+    "exhaustive": "66745/66745 PASS",
+    "reality_certificate": "62/62 PASS"
+  },
+  "timing": {
+    "gpt_certificate_min_ms": 0.475232,
+    "windows_anchor_ratio": 4.768616382444736,
+    "t_star_ms": 2.266199100661977,
+    "locator_display": "00:00.002"
+  },
+  "execution_contract_blob": "6e8496fd8edbab5e795409f508cf6939d53976d5",
+  "payload_materialization_report_blob": "724d2248d9f6293f885375706877ebd22abb0863",
+  "adapter": "CODEX",
+  "mode": "CHAT"
+}
