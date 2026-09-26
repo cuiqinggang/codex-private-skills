@@ -1,0 +1,59 @@
+{
+  "version": "5.0.3",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "unique_anchor": "T*=min(T_VALID)",
+  "core_result": "PASS",
+  "machine_semantics": {
+    "anchor_metric_mandatory_in_every_state": true,
+    "invalid_anchor_blocks_state": true,
+    "every_transition_passes_authorize_executable_step": true,
+    "every_executable_step_has_render_time_control_snapshot": true,
+    "pending_is_explicit_state_not_absence": true,
+    "timeline_is_continuous": true,
+    "fail_preserves_history": true,
+    "fail_clears_only_active_t_star": true,
+    "pass_updates_best_certified_min": true
+  },
+  "repository_assets": {
+    "version_blob": "50e2274e6d3ed76d60eb3072067376078c0317a2",
+    "skill_blob": "1f0fc5cc3198643815e172edaa67fae136a81999",
+    "contract_blob": "9cf4e60d986a8cca949e69770a88daa7ca2fff3e",
+    "runtime_blob": "e976d299ff045c8aa55e9ea172960226dc92311e",
+    "test_blob": "7e705b97a6d7c9d0e875deb15a31840c95ee179b",
+    "reality_capsule_blob": "b61c4c2efc50ad144c3b92653da1eb787fe5bbc6"
+  },
+  "execution_tests": {
+    "targeted_runtime_chain": "PASS",
+    "final_chain": [
+      "FREEZE_TO_REAL",
+      "REAL_START",
+      "REAL_FAIL",
+      "FREEZE_TO_REAL",
+      "REAL_START",
+      "REAL_PASS"
+    ],
+    "unique_anchor_invalid_block": "PASS",
+    "action_name_missing_block": "PASS",
+    "anchor_presence_matrix": "32/32 PASS; ALLOW=1",
+    "stress_task_chains": "20000/20000 PASS",
+    "timeline_rebuilds": 0,
+    "lost_events": 0,
+    "stale_t_star_reuse": 0
+  },
+  "performance": {
+    "representative_fail_refreeze_pass_runs": 1000,
+    "min_ms": 0.126892,
+    "p50_ms": 0.1298855,
+    "p95_ms": 0.201333,
+    "max_ms": 1.117474,
+    "certificate_checks": 27,
+    "certificate_runs": 2000,
+    "certificate_min_ms": 0.174353,
+    "certificate_p50_ms": 0.17925,
+    "certificate_p95_ms": 0.253162,
+    "certificate_max_ms": 0.764844
+  },
+  "target_windows_t_star_ms": 0.8314225721283871,
+  "target_windows_t_star_source": "0.174353ms * 4.768616382444736 (v5.0.2 certified Windows/GPT ratio)",
+  "virtual_maturity": "PASS"
+}
