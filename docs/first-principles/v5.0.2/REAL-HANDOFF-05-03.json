@@ -1,0 +1,30 @@
+{
+  "version": "5.0.2",
+  "handoff_id": "ESTE-v5.0.2-0503-REMOTE-LOCATOR-FREEZE-01",
+  "repository_full_name": "cuiqinggang/codex-private-skills",
+  "repository_url": "https://github.com/cuiqinggang/codex-private-skills",
+  "branch": "codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze",
+  "required_reads": [
+    {
+      "path": "docs/first-principles/v5.0.2/FREEZE-MANIFEST.json",
+      "blob_sha": "052538814aed80507a155e5fe93e4ff34b261fb7",
+      "purpose": "base immutable freeze"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE.py",
+      "blob_sha": "ce4d43553538580d04d80b457b7ad4f24de7f8b1",
+      "sha256": "c7c960f74b201cf70829db9a998644f00b15dc968ca0888c4b0bdda4301f30d9",
+      "purpose": "frozen executable verifier capsule"
+    }
+  ],
+  "source_resolution_order": [
+    "Read the named shared private GitHub repository using the exact branch/path.",
+    "Verify returned blob SHAs before execution.",
+    "Do not search current workspace or C drive when the remote repository is accessible.",
+    "If network/auth/repository access fails, STOP with REMOTE_REPO_UNAVAILABLE; local/inline fallback is only a later GPT decision."
+  ],
+  "t_star_ms": 269.560254,
+  "expected_verifier": "65975/65975 PASS",
+  "adapter": "CODEX",
+  "dispatch_mode": "CHAT"
+}
