@@ -1,0 +1,95 @@
+{
+  "version": "5.0.3",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "freeze_id": "ESTE-v5.0.3-CONTINUOUS-ANCHOR-FREEZE-01",
+  "freeze_scope": "complete v5.0.3 unique-anchor continuous-time-state freeze",
+  "repository": {
+    "url": "https://github.com/cuiqinggang/codex-private-skills",
+    "full_name": "cuiqinggang/codex-private-skills",
+    "branch": "codex/first-principles-physical-limit-convergence-v5.0.3-virtual-freeze"
+  },
+  "unique_anchor": "T*=min(T_VALID)",
+  "time_state": {
+    "timeline_id": "ESTE-v5.0.3-TIME-LEDGER-MATURATION-01",
+    "time_origin_utc": "2026-09-26T15:51:00Z",
+    "time_event_seq": 1,
+    "anchor_state": "VIRTUAL_FROZEN",
+    "active_t_star_ms": 0.8314225721283871,
+    "best_certified_t_valid_ms": null,
+    "t_valid_start": "immediately before run_reality_certificate() after exact frozen capsule materialization",
+    "t_valid_end": "immediately after run_reality_certificate() returns 27/27 PASS and evidence consistency is confirmed",
+    "t_star_source": "GPT_27_CHECK_CERT_MIN_X_v5.0.2_CERTIFIED_WINDOWS_GPT_RATIO"
+  },
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob_sha": "50e2274e6d3ed76d60eb3072067376078c0317a2"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob_sha": "1f0fc5cc3198643815e172edaa67fae136a81999"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/STATE-MACHINE-v5.0.3.json",
+      "blob_sha": "9cf4e60d986a8cca949e69770a88daa7ca2fff3e"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/state_machine_v5_0_3.py",
+      "blob_sha": "e976d299ff045c8aa55e9ea172960226dc92311e"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_state_machine_v5_0_3.py",
+      "blob_sha": "7e705b97a6d7c9d0e875deb15a31840c95ee179b"
+    },
+    {
+      "path": "docs/first-principles/v5.0.3/VIRTUAL-TEST-REPORT-R2.json",
+      "blob_sha": "6b7f59fe3ea1a60a3baf3d6b47a0f32ed07c49cb"
+    },
+    {
+      "path": "docs/first-principles/v5.0.3/REAL-CAPSULE-SOURCE-R2.py",
+      "blob_sha": "b61c4c2efc50ad144c3b92653da1eb787fe5bbc6"
+    },
+    {
+      "path": "docs/first-principles/v5.0.3/REALITY-CERTIFICATE-BENCHMARK-R2.json",
+      "blob_sha": "8bece606f1344ef004e90a473753c485a4dec282"
+    },
+    {
+      "path": "docs/first-principles/v5.0.3/TIME-LEDGER-ORIGIN.json",
+      "blob_sha": "d8e11d7de4ed6a7b964142195c7b1bfa53238802"
+    },
+    {
+      "path": "docs/first-principles/v5.0.3/REAL-CAPSULE.json",
+      "blob_sha": "60323062a71c137984fd81fba8cee45ea23da2aa"
+    }
+  ],
+  "virtual_completion": {
+    "unique_anchor_machine_constant": "PASS",
+    "unique_anchor_mandatory_every_state": "PASS",
+    "executable_step_control_snapshot": "PASS",
+    "continuous_timeline": "PASS",
+    "append_only_time_events": "PASS",
+    "stale_t_star_reuse_blocked": "PASS",
+    "target_t_star_frozen": "PASS",
+    "virtual_tests": "PASS"
+  },
+  "reality_contract": {
+    "adapter": "CODEX",
+    "mode": "CHAT",
+    "timed_function": "run_reality_certificate",
+    "expected_result": "27/27 PASS",
+    "t_star_ms": 0.8314225721283871,
+    "require_same_timeline_id": true,
+    "require_same_time_origin": true,
+    "require_time_control_snapshot": true
+  },
+  "invariants": [
+    "T*=min(T_VALID) is the only ranking objective.",
+    "VALID gates can reject candidates but cannot become parallel ranking objectives.",
+    "Every executable step must display the current unique-anchor snapshot.",
+    "TIMELINE_ID and TIME_ORIGIN survive all failures/retries.",
+    "TIME_EVENTS are append-only.",
+    "REAL FAIL returns active T* to PENDING but retains history.",
+    "REAL PASS appends T_VALID_REAL and updates BEST_CERTIFIED_T_VALID_MS=min(history,current).",
+    "Any mutation of a listed asset invalidates this Freeze."
+  ]
+}
