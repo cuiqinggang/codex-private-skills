@@ -1,0 +1,14 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "attempt": "05-05",
+  "freeze_id": "ESTE-v5.0.2-0505-PROOF-CARRYING-FREEZE-01",
+  "manifest_path": "docs/first-principles/v5.0.2/FREEZE-MANIFEST-05-05.json",
+  "manifest_blob": "15dd55a62750980c75ca2c2bf7630b6e5f8297a3",
+  "asset_count": 11,
+  "post_publish_reread_count": 11,
+  "mismatches": [],
+  "exhaustive_virtual_proof": "66745/66745 PASS",
+  "reality_certificate_virtual_test": "62/62 PASS",
+  "result": "FREEZE_MANIFEST_CONSISTENT=PASS"
+}
