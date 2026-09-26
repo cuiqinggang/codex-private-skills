@@ -1,0 +1,22 @@
+# v5.0.6 虚拟冻结
+
+FREEZE_ID=ESTE-v5.0.6-DISPATCH-TIME-VISIBILITY-VIRTUAL-FREEZE-R1
+
+本版继承 v5.0.5，不改变原状态机，也不改变共同私库直读主路径。
+
+新增唯一规则：Codex / Reality 派发属于关键控制节点，命令首屏必须显式显示简洁时间状态。详细时间账本继续保存在共同私库。
+
+派发最小可见状态：
+- UNIQUE_ANCHOR=T*=min(T_VALID)
+- TIMELINE_ID=ESTE-v5.0.3-TIME-LEDGER-MATURATION-01
+- ANCHOR_STATE=VIRTUAL_FROZEN
+- CLOSED_LOOP_STATUS=RUNNING
+- TOP_LEVEL_T_STAR_STATUS=SOLVING
+- VIRTUAL_TIME_CLOSEOUT=PASS
+
+N/A、NULL、MISSING、空值均非法。
+
+虚拟测试：64种字段存在组合全部符合预期，仅完整的1种允许派发；30次非法值注入全部阻断。
+
+VIRTUAL_MATURE=YES
+FREEZE=PASS
