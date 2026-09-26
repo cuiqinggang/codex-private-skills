@@ -1,15 +1,33 @@
 {
   "version": "5.0.3",
-  "purpose": "continuous time-state contract for the v5.0.3 Reality certification task",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "task": "v5.0.3唯一锚定物连续状态升级",
+  "unique_anchor": "T*=min(T_VALID)",
   "timeline_id": "ESTE-v5.0.3-TIME-LEDGER-MATURATION-01",
   "time_origin_utc": "2026-09-26T15:51:00Z",
-  "current_event_seq": 0,
-  "current_status": "VIRTUAL",
-  "t_star_status": "PENDING",
+  "current_event_seq": 1,
+  "events": [
+    {
+      "seq": 1,
+      "name": "VIRTUAL_MATURATION_COMPLETE",
+      "phase": "虚",
+      "at_local": "2026-09-27T00:14:34+08:00",
+      "anchor_state": "VIRTUAL_FROZEN",
+      "active_t_star_ms": 0.8314225721283871,
+      "source": "GPT_27_CHECK_CERT_MIN_0.174353ms * v5.0.2_CERTIFIED_WINDOWS_GPT_RATIO_4.768616382444736"
+    }
+  ],
+  "anchor_state": "VIRTUAL_FROZEN",
+  "active_t_star_ms": 0.8314225721283871,
   "best_certified_t_valid_ms": null,
-  "frozen_valid_boundary": {
-    "start": "immediately before run_reality_certificate() after exact capsule materialization",
-    "end": "immediately after run_reality_certificate() returns 37/37 PASS and evidence consistency is confirmed"
-  },
-  "rule": "This timeline_id and origin survive all Reality failures/retries; events are append-only. Active T* may return to PENDING, but history is never reset."
+  "t_valid_start": "immediately before run_reality_certificate() after exact frozen capsule materialization",
+  "t_valid_end": "immediately after run_reality_certificate() returns 27/27 PASS and evidence consistency is confirmed",
+  "t_star_source": "GPT_27_CHECK_CERT_MIN_X_v5.0.2_CERTIFIED_WINDOWS_GPT_RATIO",
+  "invariants": [
+    "TIMELINE_ID and TIME_ORIGIN remain unchanged across Reality failures/retries",
+    "events are append-only",
+    "every executable step displays the unique-anchor snapshot",
+    "REAL FAIL clears only active T* to PENDING; history remains",
+    "REAL PASS appends T_VALID_REAL and updates BEST_CERTIFIED_T_VALID_MS"
+  ]
 }
