@@ -1,0 +1,20 @@
+{
+  "version": "5.0.2",
+  "locator": "【整体闭环极限时间引擎 4.7版2｜v5.0.2虚拟成熟现实认证｜05-02｜实】",
+  "result": "FAIL",
+  "class": "STRUCTURAL_EXTERNAL_DEPENDENCY_CLOSURE_FAILURE",
+  "facts": [
+    "Current task directory contains no frozen files",
+    "Checked C drive locations contain no specified FREEZE-MANIFEST or REAL-CAPSULE-SOURCE.py",
+    "Blob/SHA256/FREEZE_ID could not be verified in target environment",
+    "run_verifier() was not called",
+    "65975/65975 and T_VALID_REAL_MS were not certified"
+  ],
+  "root_cause": "GPT virtual stage froze repository artifacts but did not close transport/delivery into target Windows environment.",
+  "action": "STOP -> RETURN_TO_GPT -> generation 06 attempt 01",
+  "invalidated_claims": [
+    "EXTERNAL_DEPENDENCIES_CLOSED=PASS",
+    "REAL_CAPSULE_SELF_CONTAINED=PASS as previously interpreted",
+    "VIRTUAL_COMPLETE=YES for v5.0.2 target-environment handoff"
+  ]
+}
