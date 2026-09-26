@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "scope": "ASSET_RECOVERY_CPU_FIXTURES_ONLY",
+  "tests_run": 20,
+  "failures": 0,
+  "errors": 0,
+  "passed": true,
+  "start_utc": "2026-09-26T12:22:52.664933+00:00",
+  "end_utc": "2026-09-26T12:22:52.683486+00:00",
+  "start_ns": 96349752840,
+  "end_ns": 96368282681,
+  "elapsed_ms": 18.529841,
+  "source_sha256": "4e2b7ec3937290a60e747c7596f70d6792a1ce3772942ebba43dfb80cf09548c",
+  "tests_sha256": "ae4edcf7cd5d0a07322c7b898648b3521d31c3eff78d1db0d114b7312bbff52e",
+  "windows_target_tested": false,
+  "gpu_calls": 0,
+  "paid_api_calls": 0,
+  "p1_generation_certified": false,
+  "p1_virtual_complete": false,
+  "p1_t_valid_ms": null
+}
