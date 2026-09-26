@@ -1,0 +1,12 @@
+{
+  "version": "5.0.3",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "freeze_id": "ESTE-v5.0.3-CONTINUOUS-ANCHOR-FREEZE-01",
+  "manifest_path": "docs/first-principles/v5.0.3/FREEZE-MANIFEST.json",
+  "manifest_blob": "ad12352fcd4a3b44004b60b60e8088f58db5667f",
+  "asset_count": 10,
+  "post_publish_reread_count": 10,
+  "mismatches": [],
+  "unique_anchor": "T*=min(T_VALID)",
+  "result": "FREEZE_MANIFEST_CONSISTENT=PASS"
+}
