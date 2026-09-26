@@ -1,0 +1,31 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "attempt": "05-05-R2",
+  "exact_capsule_blob": "aec8e3addd54b677ced8843db60774841623924b",
+  "function": "run_reality_certificate",
+  "runs": 1000,
+  "valid_runs": 1000,
+  "checks_per_run": 62,
+  "gpt_benchmark_ms": {
+    "min": 0.475232,
+    "p50": 0.505645,
+    "p95": 0.7857822,
+    "max": 9.094154
+  },
+  "windows_anchor": {
+    "source": "05-04 REAL exact full verifier",
+    "gpt_t_star_ms": 493.886824,
+    "windows_real_ms": 2355.1568,
+    "ratio": 4.768616382444736
+  },
+  "target_windows_prediction_ms": {
+    "min": 2.266199100661977,
+    "p50": 2.4112270307012684,
+    "p95": 3.747093871953466,
+    "sampled_max": 43.366531748875325
+  },
+  "frozen_t_star_ms": 2.266199100661977,
+  "locator_display": "00:00.002",
+  "status": "PASS"
+}
