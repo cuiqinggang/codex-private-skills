@@ -1,0 +1,23 @@
+{
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "locator": "【整体闭环极限时间引擎5.0.2版｜v5.0.2虚拟成熟现实认证｜05-04｜实】",
+  "version": "5.0.2",
+  "result": "FAIL_TIME_ONLY",
+  "reality_delta_class": "TARGET_ENVIRONMENT_PERFORMANCE_DELTA",
+  "frozen_evidence_consistent": true,
+  "verifier_pass": true,
+  "verifier_result": "66745/66745 PASS",
+  "real_start": 856106849267300,
+  "real_end": 856109204424100,
+  "t_valid_real_ms": 2355.1568,
+  "frozen_t_star_ms": 493.886824,
+  "overrun_ms": 1861.269976,
+  "ratio_to_t_star": 4.768616,
+  "functional_failure": false,
+  "transport_failure": false,
+  "payload_materialization_failure": false,
+  "evidence_failure": false,
+  "time_failure": true,
+  "action": "STOP -> RETURN_TO_GPT -> 05-05 VIRTUAL",
+  "virtual_absorption_rule": "Keep VALID semantics fixed; optimize the target-environment certification path only."
+}
