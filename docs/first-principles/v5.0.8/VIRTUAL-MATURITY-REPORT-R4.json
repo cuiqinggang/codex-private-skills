@@ -1,0 +1,24 @@
+{
+  "version": "5.0.8",
+  "revision": "R4",
+  "status": "VIRTUAL_MATURE",
+  "source_delta": "R3 reality: 18/18 PASS, REAL_T=0.031500ms, old virtual target mismatch",
+  "correction": "虚拟性能预测不得自动成为现实有效性的硬门，除非时间是外部明确硬约束。",
+  "frozen_strategy": "one optimization pass + one final multi-sample Reality + mandatory closeout",
+  "semantic_equivalence": "100000/100000 PASS in GPT validation",
+  "gpt_benchmark": {
+    "baseline": {
+      "min_ms": 0.002514,
+      "p50_ms": 0.002694,
+      "p95_ms": 0.002834
+    },
+    "optimized": {
+      "min_ms": 0.001001,
+      "p50_ms": 0.001122,
+      "p95_ms": 0.001202
+    },
+    "min_speedup_ratio": 2.511488511488512
+  },
+  "note": "GPT benchmark only demonstrates obvious optimization headroom; it is not the final reality T*.",
+  "final_rule": "R4 Reality baseline valid => project closes; optimized participates only if also valid; final T*=min(valid reality measurements)."
+}
