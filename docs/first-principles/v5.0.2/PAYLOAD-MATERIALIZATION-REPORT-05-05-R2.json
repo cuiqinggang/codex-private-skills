@@ -1,0 +1,16 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "attempt": "05-05-R2",
+  "capsule_blob": "aec8e3addd54b677ced8843db60774841623924b",
+  "capsule_sha256": "4baf7d00c1921cd85bf8117d325e22772a1372e6946750045504befc1c9881ee",
+  "materialization": [
+    "exact UTF-8 source reconstructed from repository reread",
+    "Git blob SHA recomputed and matched",
+    "fresh namespace __name__='remote_capsule'",
+    "exact source compile+exec in same namespace",
+    "run_verifier callable",
+    "run_reality_certificate callable"
+  ],
+  "result": "PAYLOAD_MATERIALIZATION_VERIFIED=PASS"
+}
