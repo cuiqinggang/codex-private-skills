@@ -1,319 +1,348 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.0.8。保持原状态机；时间连续性在所有关键控制边界必须显式携带数值快照。
+description: 整体闭环极限短时间引擎 v5.0.8 最终版。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最终性能以现实有效结果为准，虚拟预测不自动成为现实有效性的硬门。
 metadata:
   version: "5.0.8"
   display_name: "整体闭环极限短时间引擎"
+  release_state: "FINAL"
 ---
 
-# 整体闭环极限短时间引擎 v5.0.8
+# 整体闭环极限短时间引擎 v5.0.8 最终版
 
+## 1. 唯一目标
 
-## v5.0.8 当前权威规则：控制边界显性时间连续性
+唯一优化目标永久只有：
 
-v5.0.8 不改变原“虚→实”状态机，也不要求每个内部小动作刷时间。
+`T* = min(T_VALID)`
 
-新增硬门：
-凡发生以下任一情况，都属于 CONTROL_BOUNDARY（控制边界）：
-- 关键方案定案；
-- 虚拟成熟收口；
-- Freeze 提交；
-- GPT -> Codex 派发；
-- Codex -> GPT 返回；
-- REAL FAIL / BLOCKED 回虚；
-- FINAL_VALID。
+其中：
+- 正确性、安全、质量、完整性、任务要求、证据要求决定结果是否进入 `VALID` 集合；
+- 只有进入 `VALID` 集合的现实结果，才允许按 `T_VALID` 比较快慢；
+- 不再引入“时间+质量+成本+安全”的第二评分轴。
 
-每一个 CONTROL_BOUNDARY 必须显式携带同一 Timeline 的数值时间快照。
-最小必须有：
-`T_CLOSED_LOOP_ELAPSED_MS`
-`T_BOUNDARY_SEGMENT_ELAPSED_MS`
+顶层 `T_VALID` 固定为：
 
-若该边界已经存在冻结极限，还必须有：
-`T_STAR_MS`
+`T_CLOSED_LOOP_VALID`
 
-Reality 返回：
-- PASS：必须有整体累计、本次尝试、冻结 T*、现实 T_VALID；
-- FAIL/BLOCKED：也必须有整体累计、本次尝试、冻结 T*；
-- 若证书根本未启动，可写证书计时 `0.000ms（未启动）`，但本次尝试耗时不能消失。
+即从 `TASK_ACCEPTED` 到 `FINAL_VALID` 的整体闭环有效时间。
 
-派发有时间、回报无时间，或回报有时间、派发无时间，均判：
-`BOUNDARY_TIME_PROOF_MISSING -> ANCHOR_CONTINUITY_FAIL`。
+---
 
-详细合同：
-- `contracts/CONTROL-BOUNDARY-TIME-v5.0.8.json`
+## 2. 顶层状态机
 
-## v5.0.8 Reality 可执行载荷物化规则
+顶层永久只有两步：
 
-v5.0.7 Reality 暴露的 `UnicodeEncodeError` 已作为 Reality Delta 吸收。
+`虚 -> 实`
 
-人类可读文档可以继续使用中文；真正送入 Python 的冻结 Reality Capsule 必须为 ASCII-only 可执行源码。
-
-进入 Reality 计时前必须依次机械通过：
-`远程精确 blob 读取 -> blob 回读一致 -> source.isascii() -> compile -> fresh namespace exec -> run_reality_certificate callable`。
-
-这些都属于 Reality 前置物化门，不计入证书 `T_VALID_REAL`。
-
-只有前置物化 PASS 后：
-- 紧接 `run_reality_certificate()` 前记录 `T_VALID_START`；
-- 全部证书项 PASS 返回后立即记录 `T_VALID_END`。
-
-若编码/物化失败：
-- 不得修改当前 Freeze；
-- 不得原地重试；
-- 必须以 FAIL/BLOCKED 数值时间信封返回；
-- Reality Delta -> STOP -> 回虚。
-
-权威合同：
-- `contracts/REALITY-PAYLOAD-MATERIALIZATION-v5.0.8.json`
-- `tests/test_reality_materialization_v5_0_8.py`
-- `docs/first-principles/v5.0.8/REAL-CAPSULE-SOURCE-R2.py`
-
-## v5.0.7 当前权威规则：数值时间锚
-
-v5.0.7 不改变 v5.0.5 已冻结的原状态机，不改变共同私库直读主路径。
-
-关键控制节点的时间锚必须首先是有限数值：
-- `T_CLOSED_LOOP_ELAPSED_MS`：整体闭环累计实际时间；
-- `T_STAGE_ELAPSED_MS`：当前阶段累计实际时间；
-- `T_STAGE_STAR_MS`：当前阶段冻结的极限有效时间。
-
-状态词只能解释数值，不能代替数值。以下均非法：
-`N/A / NA / NULL / MISSING / Infinity / NaN / 空值`。
-
-REAL_DISPATCH 首屏必须至少显示：
-`闭环已用=<数值>ms｜本段已用=<数值>ms｜T*=<数值>ms`。
-
-如果任一必需数值缺失或不是有限数值：
-`TIME_ANCHOR_VALUE_MISSING_OR_INVALID -> ANCHOR_CONTINUITY_FAIL -> BLOCK`。
-
-详细权威合同：
-- `contracts/NUMERIC-TIME-ANCHOR-v5.0.7.json`
-- `runtime/state_machine_v5_0_7_overlay.py`
-- `tests/test_state_machine_v5_0_7_overlay.py`
-- `docs/first-principles/v5.0.7/VIRTUAL-FREEZE.md`
-
-## v5.0.5 当前权威规则：原状态机不可被时间规范改写
-
-v5.0.5 继承并锁死 v4.7.x → v5.0.3 已形成的状态机动作：
-`虚 -> 完整虚拟成熟 -> Freeze -> FREEZE_TO_REAL -> 实`；
-`REAL_PASS -> DONE`；
-`REAL_FAIL -> Reality Delta -> STOP -> 回虚 -> 新 Freeze -> 再实`。
-
-时间总控只是状态机内部 guard（守卫）：
-- 可以阻断缺失时间锚、非法 N/A/NULL/MISSING、未完成时间收口等非法状态；
-- 不得改变状态顺序、执行器角色、Freeze 消耗规则、01-06 规则或 Reality FAIL 回虚动作；
-- 不得新增第三阶段。
-
-### 正常权威源路径固定为共同私库直读
-
-当共同私库网络、权限、仓库均正常：
-`REMOTE_SHARED_REPO_DIRECT` 是唯一正常路径。
-
-禁止把以下动作重新插入正常闭环：
-- 让用户下载冻结包；
-- 让用户重新确认下载位置；
-- 为 Reality 无目的扫描本地磁盘；
-- 先下载再交给 Codex。
-
-Reality 直接按冻结的 `REPOSITORY / BRANCH / PATH / BLOB` 读取。
-
-只有 `NETWORK_UNAVAILABLE / AUTH_UNAVAILABLE / REPOSITORY_UNAVAILABLE` 才允许：
-`STOP -> REMOTE_REPO_UNAVAILABLE -> Reality Delta -> RETURN_TO_GPT`。
-
-备用下载/本地/内联只能回到“虚”后形成新的显式 Freeze；禁止在当前 REAL 中现场切换。
-
-### 时间总控继续生效
-
-`T*=min(T_VALID)` 永远在线，顶层 `T_VALID=T_CLOSED_LOOP_VALID`。
-任何进入闭环的时间段都必须有时间锚；`N/A / NULL / MISSING` 为非法。
-时间从 `PENDING/SOLVING` 连续演化到 `VIRTUAL_FROZEN/REAL_CERTIFIED`。
-虚拟成熟必须先完成时间收口。
-
-详细权威合同：
-- `contracts/STATE-MACHINE-v5.0.5.json`
-- `contracts/TIME-MASTER-CONTROL-v5.0.5.json`
-- `runtime/state_machine_v5_0_5_overlay.py`
-- `tests/test_state_machine_v5_0_5_overlay.py`
-- `docs/first-principles/v5.0.5/VIRTUAL-FREEZE.md`
-
-## 唯一目标
-所有有效门通过后，只优化：`T* = min(T_VALID)`。
-
-## 顶层方法永久只有两步
 ### 虚
-设计、物化实现、GPT 独立执行验证、故障注入、验证器攻击、时间竞争、Freeze、Reality Capsule 全部属于“虚”。
+负责：
+- 设计；
+- 成熟方案吸收；
+- 实现物化；
+- GPT 独立验证；
+- 故障注入；
+- 等价性验证；
+- Freeze；
+- Reality Capsule；
+- 时间收口。
 
 ### 实
-只执行冻结 Reality Capsule，记录真实开始/结束/T_VALID_REAL 并运行冻结 verifier。
-失败只能：`Reality Delta -> STOP -> 回虚 -> 新 Freeze`。
+只执行已经冻结的 Reality。
 
-不增加第三阶段，不新增顶层 Implementation Closure Gate。
+现实失败只能：
 
-## v5.0.2 核心修正
-`设计存在 != 实现存在`。
-`VIRTUAL_COMPLETE=YES` 必须同时成立：`SPEC_COMPLETE AND IMPLEMENTATION_COMPLETE AND GPT_VERIFICATION_PASS AND FREEZE_COMPLETE`。
+`Reality Delta -> STOP -> 回虚 -> 吸收差异 -> 新 Freeze -> 再实`
 
-`EXECUTION_CHAIN_CLOSED=PASS` 不再接受自由布尔声明；必须由实现证据机械推出：行为已实现、位置可定位、异常分类已实现、retry/recovery/fallback 已实现、路径可执行、失败分支已故障注入、verifier 可区分错误实现、Reality Capsule 包含真实实现；并且 implementation-map / fault-injection / verifier 三类不可变证据哈希非空。
+禁止在当前 Freeze 下现场修改、现场修复、原地重试或换路线。
 
-## 唯一转换
-`虚 --完整成熟+冻结证据PASS--> 实`
-`实 --PASS--> DONE`
-`实 --FAIL+Reality Delta--> 虚`
+---
 
-Codex 只做目标环境认证，不负责发现“函数没写”。
+## 3. Reality 的最终判定规则
 
-## 执行适配器
+### 3.1 现实有效性优先
+
+现实结果先判断：
+
+`REAL_VALID = YES / NO`
+
+现实有效的基本要求由当前任务冻结合同决定，例如：
+- 语义/功能检查全部通过；
+- 冻结资产一致；
+- Reality 前置物化通过；
+- 必要安全与证据门通过。
+
+### 3.2 虚拟性能预测不是现实硬门
+
+虚拟阶段得到的性能预测、估算值、跨环境换算值，只能作为：
+- 优化目标；
+- 假设；
+- Reality 前的参考锚；
+- Reality Delta 对照值。
+
+除非时间本身是外部任务明确规定的硬约束，否则：
+
+`REAL_T > VIRTUAL_PREDICTION`
+
+不得自动推出：
+
+`REAL_VALID = NO`
+
+Reality 的职责是让现实修正虚拟模型，不是让虚拟预测否定现实。
+
+### 3.3 现实 T* 的最终来源
+
+最终性能锚必须来自现实有效结果：
+
+`REAL_T* = min(REAL_VALID_T)`
+
+如果存在多个现实有效候选：
+- 保证任务语义等价；
+- 使用冻结的同一测量协议；
+- 比较现实有效候选的实际测量结果；
+- 最短有效现实时间成为最终 `T*`。
+
+---
+
+## 4. 最终优化收口规则
+
+当首次 Reality 已经证明：
+- 功能正确；
+- 现实可执行；
+- 但仍存在明确、低成本、可证明的性能浪费；
+
+允许：
+
+`一次明确优化 -> 一个新 Freeze -> 一次最终 Reality`
+
+禁止无限追求虚拟预测值。
+
+最终 Reality 推荐：
+- 保留现实有效基线作为候选 A；
+- 加入语义等价优化版作为候选 B；
+- 每个候选先预热，再进行固定次数正式现实测量；
+- 所有正式样本必须满足任务有效性；
+- 优化版无效时只淘汰优化版，不否定有效基线；
+- 所有现实有效候选中，最短实际时间成为最终 `T*`；
+- 最终 Reality 完成后必须收口，不进入无休止优化循环。
+
+v5.0.8 最终 Reality 使用：
+
+`warmup=1000`
+
+`samples=1000`
+
+并记录：
+- MIN
+- P50
+- P95
+- MAX
+
+唯一排序指标仍然是有效样本中的最短现实时间；P50/P95/MAX 用于诊断稳定性，不构成第二优化目标。
+
+---
+
+## 5. v5.0.8 最终现实认证结果
+
+最终冻结：
+
+`ESTE-v5.0.8-REALITY-FIRST-FINAL-CLOSEOUT-VIRTUAL-FREEZE-R4`
+
+Freeze 一致性：
+
+`31/31 PASS`
+
+两个候选均通过现实有效性：
+
+### R3 基线
+- VALID：1000/1000
+- MIN：0.0074 ms
+- P50：0.0077 ms
+- P95：0.0093 ms
+- MAX：0.6865 ms
+
+### R4 优化版
+- VALID：1000/1000
+- MIN：0.0027 ms
+- P50：0.0028 ms
+- P95：0.0030 ms
+- MAX：52.2077 ms
+
+最终赢家：
+
+`R4_OPTIMIZED`
+
+最终现实认证：
+
+`CERTIFIED_REAL_T_STAR_MS = 0.0027 ms`
+
+即：
+
+`2.7 微秒`
+
+历史虚拟预测：
+
+`0.01136838145574825 ms`
+
+只保留为历史预测证据：
+
+`HISTORICAL_PREDICTION_IS_GATE = NO`
+
+---
+
+## 6. 整体闭环最终时间
+
+当前正式 Timeline：
+
+`ESTE-v5.0.7-NUMERIC-TIME-ANCHOR-01`
+
+最终：
+
+`FINAL_CLOSED_LOOP_T_VALID_MS = 9983551.271 ms`
+
+即：
+
+`02:46:23.551271`
+
+最终状态：
+
+`FINAL_VALID = YES`
+
+`REAL_CERTIFIED = YES`
+
+`DONE = YES`
+
+---
+
+## 7. 时间连续性
+
+每个任务首次进入建立且以后不可更换：
+- `TIMELINE_ID`
+- `TIME_ORIGIN_UTC`
+
+所有虚/实转换只向同一账本追加事件。
+
+关键控制边界必须显式携带数值时间：
+- TASK_ACCEPTED
+- DECISION_COMMIT
+- VIRTUAL_MATURITY_TIME_CLOSEOUT
+- FREEZE_COMMIT
+- REAL_DISPATCH
+- EXECUTOR_RETURN_PASS
+- EXECUTOR_RETURN_FAIL
+- EXECUTOR_RETURN_BLOCKED
+- RETURN_TO_VIRTUAL
+- FINAL_VALID
+
+规则固定：
+
+`ALWAYS COUNT + PRINT AT CONTROL BOUNDARY`
+
+禁止：
+- N/A
+- NA
+- NULL
+- MISSING
+- Infinity
+- NaN
+- 空值
+
+状态词不能代替时间数字。
+
+---
+
+## 8. Freeze 与 Reality 资产规则
+
+正常权威源：
+
+`REMOTE_SHARED_REPO_DIRECT`
+
+Reality 必须按冻结的：
+- repository
+- branch/commit
+- path
+- blob
+
+读取权威资产。
+
+共同私库正常时禁止：
+- 下载包中转；
+- 让用户重新找本地位置；
+- 无目的扫描本地磁盘；
+- 现场切备用路径。
+
+Freeze 后任何冻结资产变化，旧 Freeze 不再代表新资产。
+
+认证过的 Freeze 必须保持不可变；后续文档/发布说明更新不得改写历史 Reality 证据。
+
+---
+
+## 9. Reality 物化规则
+
+可执行 Reality Capsule 使用无损物化路径。
+
+v5.0.8 最终采用：
+- Git 原生对象字节；
+- Python subprocess 参数数组；
+- `shell=False`；
+- `text=False`；
+- 原始 bytes；
+- 精确 Git blob 校验；
+- ASCII-only；
+- `compile(bytes)`；
+- fresh namespace exec；
+- callable 检查。
+
+禁止依赖：
+- btoa
+- atob
+- Buffer
+- JavaScript Base64 转码
+- PowerShell 文本管道重新编码冻结源码
+
+前置物化属于 Reality 前置门，不混入核心证书计时。
+
+---
+
+## 10. 执行器与固定约束
+
+执行适配器：
 - CODEX -> CHAT
 - PLAYWRIGHT -> NATIVE_BROWSER
 - REASONIX -> UI_AGENT
 - LOCAL_FROZEN -> FROZEN_RUNNER
 
-CODEX 的 EXEC / PowerShell / Shell 发送方式直接阻断。
+对 Codex：
+- 只发送 Codex CHAT 自然语言任务；
+- 禁止 PowerShell/Shell/`codex exec` 作为用户派发模式；
+- Locator 固定使用：
+  `【页面名｜任务名｜序号｜虚/实】`
+- 同一连续 Reality 任务序号最多 01–06；
+- 第 6 次仍未完成必须 STOP -> 回虚；
+- 结构性 Reality Delta 可提前回虚，不必机械耗尽 6 次。
 
-## 权威实现
-- `contracts/STATE-MACHINE-v5.0.2.json`
-- `runtime/state_machine_v5_0_2.py`
-- `tests/test_state_machine_v5_0_2.py`
-- `docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE.py`
+禁止修改：
+- FlClash
+- Windows 代理
+- 系统网络设置
 
-v5.0.0 保留为演化证据，不作为 v5.0.2 运行时权威。
+---
 
+## 11. 最终权威证据
 
-## 冻结源解析规则
-冻结资产的“可执行”不等于必须预先复制进目标工作目录。
+最终 Reality 报告：
 
-允许的首选权威源包括共同私有 GitHub 仓库。进入“实”前，派发合同必须明确冻结：
-- `REPOSITORY_URL / REPOSITORY_FULL_NAME`
-- `BRANCH`（或更强的不可变 commit/blob）
-- 完整 `PATH`
-- 期望 `BLOB_SHA`；必要时再加内容 `SHA-256`
+`docs/first-principles/v5.0.8/FINAL-REALITY-REPORT-R4.json`
 
-现实执行器必须先按冻结远程定位读取权威源。只要网络、登录权限和仓库访问正常，就直接读取，不要求先在当前工作区或 C 盘存在副本，也不得无目的扫描本地磁盘。
+最终证书：
 
-只有远程源因 `NETWORK_UNAVAILABLE / AUTH_UNAVAILABLE / REPOSITORY_UNAVAILABLE` 确实不可达时，才允许：
-`STOP -> REMOTE_REPO_UNAVAILABLE -> Reality Delta -> 回虚`
+`docs/first-principles/v5.0.8/FINAL-VALID-CERTIFICATE.json`
 
-本地/内联副本只是“虚”阶段可以预先冻结的兜底方案，不是远程仓库正常可用时的默认前置条件。
+最终 Reality Freeze：
 
+`docs/first-principles/v5.0.8/FREEZE-MANIFEST-R4.json`
 
-## 冻结一致性与执行物化
-同一 Reality 尝试只能有一个完整权威 Freeze。冻结后若任何被引用资产发生变化，旧 Manifest 自动失去当前尝试的权威资格；不得用新的 handoff 清单叠加引用一个已经含旧 blob 的基清单，必须重新生成完整 Freeze。
+认证分支保持不可变：
 
-`EXECUTION_CHAIN_CLOSED=PASS` 还必须机械证明：
-- `FREEZE_MANIFEST_CONSISTENT=PASS`：完整 Manifest 中每个当前冻结资产的 blob 与发布后回读完全一致；
-- `PAYLOAD_MATERIALIZATION_VERIFIED=PASS`：GPT 已按未来 Reality 的同一路径验证“远程全文读取 → 同一 Python namespace 执行 → run_verifier 存在且可调用”。
+`codex/first-principles-physical-limit-convergence-v5.0.8-r4-virtual-freeze`
 
-只核对远程文件元数据、只拿到文件名/blob、或在未执行源码的空 namespace 中寻找 `run_verifier`，均不得声明虚拟成熟。
-
-
-## 虚全量证明与实最小证书
-同一不可变 Reality Capsule 的正确性证明分工固定为：
-- 虚阶段：对确切冻结 blob 做完整状态空间/故障路径验证，形成全量 verifier 证据；
-- 实阶段：先严格核对完整 Freeze、blob、SHA-256 和全量证明收据；只有这些全部一致，才允许运行最小目标环境兼容性证书。
-
-Reality 不需要重复执行已经由“确切同一 blob + 不可变哈希”绑定的全部穷举用例。Reality Certificate 只验证目标解释器/运行环境中：正向转换、关键单故障阻断、证据哈希阻断、适配器策略、REAL PASS/FAIL、定位渲染和源码物化仍成立。
-
-这不改变 VALID 定义；如果 blob、Manifest 或全量证明证据任一不一致，最小证书没有资格运行。
-
-Reality 的 `T_VALID_REAL` 应测最小目标环境证书本身；全量穷举时间属于虚拟成熟的一次性证明成本，不重复计入每次 Reality 认证。
-
-
-## 时间锚定硬合同（v5.0.3）
-`T*=min(T_VALID)` 不是说明文字，而是每个任务的唯一控制锚。
-
-虚阶段可以在尚未成熟时显示 `T*=PENDING`；但一旦声明 `VIRTUAL_COMPLETE=YES`，必须已经冻结：
-- `T_STAR_MS`
-- `T_VALID_START`
-- `T_VALID_END`
-- `T_STAR_SOURCE`
-
-缺任意一项，禁止 `虚 -> 实`。
-
-所有 Reality/Codex 派发第一屏必须由状态机机械渲染时间锚，不允许模型自由省略。固定最小格式：
-
-`【页面名｜任务名｜NN-NN｜实】 极限锚MM:SS.mmm｜T*=X.XXXXXXms`
-
-紧随其后必须出现：
-
-`T_STAR_MS=...`
-`T_VALID_START=...`
-`T_VALID_END=...`
-`T_STAR_SOURCE=...`
-
-REAL PASS 只能使用该冻结状态中的同一个 `T_STAR_MS` 判断：
-`T_VALID_REAL_MS <= T_STAR_MS`。
-
-REAL FAIL 返回虚后，活动时间锚必须清空；下一次 Reality 必须重新虚拟成熟并生成新的 T*，禁止沿用旧任务/旧尝试的时间锚。
-
-
-## 连续时间状态（v5.0.3）
-时间不是每个命令包临时贴上的标签，而是整个任务从进入引擎到最终有效完成的一条连续状态链。
-
-每个任务首次进入时建立且以后不可更换：
-- `TIMELINE_ID`
-- `TIME_ORIGIN_UTC`
-
-以后所有虚/实转换只允许向同一账本追加：
-- `TIME_EVENT_SEQ`
-- `TIME_EVENTS[]`
-
-典型连续链：
-`TASK_ORIGIN -> FREEZE_TO_REAL -> REAL_START -> REAL_FAIL -> 新Freeze -> REAL_START -> REAL_PASS`
-
-REAL FAIL 返回虚时：
-- 不得新建时间轴；
-- 不得删除旧 T* / T_VALID / 失败事件；
-- 不得重置 `TIMELINE_ID / TIME_ORIGIN_UTC`；
-- 只把“当前活动 T*”变为 `PENDING`，防止旧 Freeze 的 T* 被下一次 Reality 偷用。
-
-新的虚拟成熟完成后，在同一时间轴追加新的 Freeze 事件并生成新的活动 T*。
-
-REAL PASS 后：
-- 把真实 `T_VALID_REAL_MS` 追加到同一账本；
-- `T_STAR_STATUS=REAL_CERTIFIED`；
-- `BEST_CERTIFIED_T_VALID_MS=min(历史已认证值, 本次T_VALID_REAL_MS)`。
-
-`BEST_CERTIFIED_T_VALID_MS`、事件序列和过程时间记录只是同一唯一目标 `T*=min(T_VALID)` 的状态证据，不构成第二优化目标。
-
-所有 Reality 派发都必须显示同一时间轴的当前快照：
-`TIMELINE_ID / TIME_ORIGIN_UTC / TIME_EVENT_SEQ / T_STAR_STATUS / T_STAR_MS / T_VALID_START / T_VALID_END / T_STAR_SOURCE / BEST_CERTIFIED_T_VALID_MS`。
-
-
-## 唯一锚定物的强制生效规则（v5.0.3）
-为什么只有一个锚定物：
-
-1. 正确性、安全、质量、成本、依赖等只决定结果是否进入 `VALID` 集合；
-2. 进入 `VALID` 后，所有候选只允许按 `T_VALID` 比较；
-3. 因此系统唯一排名目标固定为 `T*=min(T_VALID)`；
-4. `T_RESOLVE / T_TRANSFER / T_VERIFY` 等只是同一 `T_VALID` 的时间分解，用来定位瓶颈，不是并列目标；
-5. 若允许第二个独立评分轴，就无法再机械判定“整体闭环极限短时间”，因此违反本引擎定义。
-
-从 v5.0.3 起，`T*=min(T_VALID)` 必须存在于**每一个 EngineState**，不是可选说明文字。
-
-状态演化固定为：
-- 任务刚进入：`UNIQUE_ANCHOR=T*=min(T_VALID)`，`ANCHOR_STATE=PENDING`；
-- 虚拟成熟冻结：同一时间轴变为 `ANCHOR_STATE=VIRTUAL_FROZEN`，出现数值 `ACTIVE_T_STAR_MS`；
-- Reality FAIL：同一 `TIMELINE_ID` 继续，历史事件不删，活动 T* 回到 `PENDING`；
-- 新 Freeze：在同一时间轴追加新的活动 T*；
-- Reality PASS：追加真实 `T_VALID_REAL_MS`，状态变为 `REAL_CERTIFIED`，并更新 `BEST_CERTIFIED_T_VALID_MS=min(历史,本次)`。
-
-任何“要执行的步骤”在执行前必须经过唯一时间控制门，并显示：
-
-`ACTION`
-`UNIQUE_ANCHOR=T*=min(T_VALID)`
-`TIMELINE_ID`
-`TIME_ORIGIN_UTC`
-`TIME_EVENT_SEQ`
-`ANCHOR_STATE`
-`ACTIVE_T_STAR_MS`
-`BEST_CERTIFIED_T_VALID_MS`
-`T_VALID_START`
-`T_VALID_END`
-`T_STAR_SOURCE`
-
-即使尚未得到数值 T*，也必须明确显示 `PENDING`，不能把锚定物省略。
-
-以后所有 Locator 首行也必须直接显示：
-`锚定物=T*=min(T_VALID)｜状态=...｜当前T*=...｜现实最优=...`
-
-没有这份连续时间状态快照的动作，没有执行资格。
+v5.0.8 最终发布规则以本文件为准；历史 v5.0.2/v5.0.3/v5.0.5/v5.0.7/v5.0.8 R2/R3 文件保留为演化与 Reality Delta 证据，不得覆盖最终规则。
