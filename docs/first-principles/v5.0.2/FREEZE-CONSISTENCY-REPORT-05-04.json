@@ -1,0 +1,12 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "attempt": "05-04",
+  "freeze_id": "ESTE-v5.0.2-0504-COMPLETE-FREEZE-01",
+  "manifest_path": "docs/first-principles/v5.0.2/FREEZE-MANIFEST-05-04.json",
+  "manifest_blob": "e830f9f6a517cd7faea45f68f11893cfc5eeb182",
+  "asset_count": 13,
+  "post_publish_reread_count": 13,
+  "mismatches": [],
+  "result": "FREEZE_MANIFEST_CONSISTENT=PASS"
+}
