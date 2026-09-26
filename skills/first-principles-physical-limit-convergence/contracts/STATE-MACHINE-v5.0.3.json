@@ -6,7 +6,7 @@
     "实"
   ],
   "terminal_is_phase": false,
-  "semantic_patch": "T*=min(T_VALID) is a continuous task-time state, not a per-dispatch label; no new top-level phase",
+  "semantic_patch": "T*=min(T_VALID) is the single machine-enforced objective and an always-present continuous control state",
   "rule": "SPEC_COMPLETE != IMPLEMENTATION_COMPLETE; VIRTUAL_COMPLETE requires both plus GPT verification and freeze completeness",
   "execution_chain_closed_evidence": [
     "behavior_implementation_mapped",
@@ -65,7 +65,11 @@
     "time event order is non-contiguous",
     "old TIME_EVENTS erased on retry",
     "old certified best T_VALID erased on retry",
-    "active stale T* reused after REAL FAIL"
+    "active stale T* reused after REAL FAIL",
+    "engine state whose UNIQUE_ANCHOR is not exactly T*=min(T_VALID)",
+    "executable step without a renderable time-control snapshot",
+    "action with no continuous timeline identity",
+    "parallel ranking metric introduced beside T*=min(T_VALID)"
   ],
   "time_anchor_contract": {
     "virtual_pre_maturity": "T*=PENDING is allowed",
@@ -128,6 +132,36 @@
       "T_VALID_END",
       "T_STAR_SOURCE",
       "BEST_CERTIFIED_T_VALID_MS"
+    ]
+  },
+  "unique_anchor": {
+    "metric": "T*=min(T_VALID)",
+    "status": "MANDATORY_IN_EVERY_ENGINE_STATE",
+    "why_unique": [
+      "VALID gates decide admissibility, not ranking",
+      "all valid candidates are ranked only by T_VALID",
+      "component times explain the bottleneck but cannot become parallel objectives",
+      "cost/quality/safety/correctness remain gates or task constraints unless the task definition explicitly changes"
+    ],
+    "state_rule": [
+      "Early Virtual: UNIQUE_ANCHOR is active with ANCHOR_STATE=PENDING",
+      "Virtual Freeze: ANCHOR_STATE=VIRTUAL_FROZEN and ACTIVE_T_STAR_MS is numeric",
+      "Reality Pass: ANCHOR_STATE=REAL_CERTIFIED and BEST_CERTIFIED_T_VALID_MS is updated",
+      "Reality Fail: same TIMELINE_ID persists; active T* returns to PENDING; history is retained"
+    ],
+    "executable_step_rule": "Every executable step must pass authorize_executable_step() and produce render_time_control_snapshot().",
+    "mandatory_snapshot_fields": [
+      "ACTION",
+      "UNIQUE_ANCHOR",
+      "TIMELINE_ID",
+      "TIME_ORIGIN_UTC",
+      "TIME_EVENT_SEQ",
+      "ANCHOR_STATE",
+      "ACTIVE_T_STAR_MS",
+      "BEST_CERTIFIED_T_VALID_MS",
+      "T_VALID_START",
+      "T_VALID_END",
+      "T_STAR_SOURCE"
     ]
   }
 }
