@@ -76,3 +76,15 @@ v5.0.0 保留为演化证据，不作为 v5.0.2 运行时权威。
 - `PAYLOAD_MATERIALIZATION_VERIFIED=PASS`：GPT 已按未来 Reality 的同一路径验证“远程全文读取 → 同一 Python namespace 执行 → run_verifier 存在且可调用”。
 
 只核对远程文件元数据、只拿到文件名/blob、或在未执行源码的空 namespace 中寻找 `run_verifier`，均不得声明虚拟成熟。
+
+
+## 虚全量证明与实最小证书
+同一不可变 Reality Capsule 的正确性证明分工固定为：
+- 虚阶段：对确切冻结 blob 做完整状态空间/故障路径验证，形成全量 verifier 证据；
+- 实阶段：先严格核对完整 Freeze、blob、SHA-256 和全量证明收据；只有这些全部一致，才允许运行最小目标环境兼容性证书。
+
+Reality 不需要重复执行已经由“确切同一 blob + 不可变哈希”绑定的全部穷举用例。Reality Certificate 只验证目标解释器/运行环境中：正向转换、关键单故障阻断、证据哈希阻断、适配器策略、REAL PASS/FAIL、定位渲染和源码物化仍成立。
+
+这不改变 VALID 定义；如果 blob、Manifest 或全量证明证据任一不一致，最小证书没有资格运行。
+
+Reality 的 `T_VALID_REAL` 应测最小目标环境证书本身；全量穷举时间属于虚拟成熟的一次性证明成本，不重复计入每次 Reality 认证。
