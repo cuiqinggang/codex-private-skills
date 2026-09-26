@@ -1,0 +1,51 @@
+{
+  "version":"5.0.8",
+  "purpose":"把时间连续性从内部账本提升为控制边界不变量：任何关键分析定案、阶段转换或主体交接都必须显式携带数值时间快照。",
+  "inherits":[
+    "v5.0.5 state-machine preservation",
+    "v5.0.7 numeric time anchor"
+  ],
+  "state_machine_preserved":true,
+  "unique_objective":"T*=min(T_VALID)",
+  "top_level_t_valid":"T_CLOSED_LOOP_VALID",
+  "laws":{
+    "internal_continuity":"内部时间持续计量，不要求每个内部小动作显示。",
+    "boundary_visibility":"凡控制权、阶段、Freeze、方案定案或结果结论发生变化，必须显式显示数值时间快照。",
+    "handoff_symmetry":"GPT->Codex 派发和 Codex->GPT 回报都必须携带同一 TIMELINE_ID 的数值时间快照。",
+    "monotonicity":"后一个边界的整体累计时间不得小于前一个边界。",
+    "status_cannot_replace_number":"状态词不能替代时间数字。"
+  },
+  "mandatory_control_boundaries":[
+    "TASK_ACCEPTED",
+    "DECISION_COMMIT",
+    "VIRTUAL_MATURITY_TIME_CLOSEOUT",
+    "FREEZE_COMMIT",
+    "REAL_DISPATCH",
+    "EXECUTOR_RETURN_PASS",
+    "EXECUTOR_RETURN_FAIL",
+    "EXECUTOR_RETURN_BLOCKED",
+    "RETURN_TO_VIRTUAL",
+    "FINAL_VALID"
+  ],
+  "minimum_visible_numeric_fields":[
+    "T_CLOSED_LOOP_ELAPSED_MS",
+    "T_BOUNDARY_SEGMENT_ELAPSED_MS"
+  ],
+  "target_required_boundaries":[
+    "VIRTUAL_MATURITY_TIME_CLOSEOUT",
+    "FREEZE_COMMIT",
+    "REAL_DISPATCH",
+    "EXECUTOR_RETURN_PASS",
+    "EXECUTOR_RETURN_FAIL",
+    "EXECUTOR_RETURN_BLOCKED",
+    "FINAL_VALID"
+  ],
+  "target_field":"T_STAR_MS",
+  "return_rules":{
+    "PASS":"必须显示整体累计时间、本次尝试时间、冻结 T*、现实 T_VALID。",
+    "FAIL":"必须显示整体累计时间、本次尝试时间、冻结 T*；若证书未启动，证书计时明确为 0.000ms 并注明未启动。",
+    "BLOCKED":"与 FAIL 同样必须携带数值时间；阻断不能让时间链消失。"
+  },
+  "illegal_values":["N/A","NA","NULL","MISSING","","Infinity","NaN"],
+  "failure":"BOUNDARY_TIME_PROOF_MISSING -> ANCHOR_CONTINUITY_FAIL -> CONTROL_EXCHANGE_INVALID"
+}
