@@ -1,0 +1,17 @@
+{
+  "version":"5.0.8",
+  "timeline_id":"ESTE-v5.0.7-NUMERIC-TIME-ANCHOR-01",
+  "time_origin_utc":"2026-09-26T19:12:16.448729+00:00",
+  "events":[
+    {"seq":1,"name":"TASK_ORIGIN","at_utc":"2026-09-26T19:12:16.448729+00:00","t_closed_loop_elapsed_ms":0.0},
+    {"seq":2,"name":"V5_0_7_VIRTUAL_MATURITY_TIME_CLOSEOUT","at_utc":"2026-09-26T19:16:28.362079+00:00","t_closed_loop_elapsed_ms":251913.335569,"t_boundary_segment_elapsed_ms":251913.335569},
+    {"seq":3,"name":"V5_0_7_REAL_DISPATCH","at_utc":"2026-09-26T19:18:32.538554+00:00","t_closed_loop_elapsed_ms":376089.791698,"t_exchange_elapsed_ms":0.0,"t_star_ms":0.08314559524430643},
+    {"seq":4,"name":"V5_0_7_RETURN_OBSERVED_AT_GPT","at_utc":"2026-09-26T19:41:16+00:00","t_closed_loop_elapsed_ms":1739551.271,"t_exchange_elapsed_ms":1363461.446,"t_star_ms":0.08314559524430643,"result":"FAIL","t_certificate_elapsed_ms":0.0,"certificate_state":"NOT_STARTED","reality_delta":"UnicodeEncodeError before run_reality_certificate"},
+    {"seq":5,"name":"V5_0_8_RETURN_TO_VIRTUAL","at_utc":"2026-09-26T19:43:34+00:00","t_closed_loop_elapsed_ms":1877551.271},
+    {"seq":6,"name":"V5_0_8_VIRTUAL_MATURITY_TIME_CLOSEOUT_R2","at_utc":"2026-09-26T20:23:55+00:00","t_closed_loop_elapsed_ms":4298551.271,"t_boundary_segment_elapsed_ms":2421000.0,"t_virtual_validation_star_ms":215.557737,"t_reality_certificate_star_ms":0.01136838145574825},
+    {"seq":7,"name":"V5_0_8_FREEZE_COMMIT_R2","at_utc":"2026-09-26T20:25:53+00:00","t_closed_loop_elapsed_ms":4416551.271,"t_boundary_segment_elapsed_ms":118000.0,"freeze_id":"ESTE-v5.0.8-DUAL-END-NUMERIC-TIME-ASCII-CAPSULE-VIRTUAL-FREEZE-R2","manifest_blob":"de30a26c9c3f67084910f42931bac3201da991a9","freeze_reread":"22/22 PASS","t_star_ms":0.01136838145574825}
+  ],
+  "unique_objective":"T*=min(T_VALID)",
+  "top_level_t_valid":"T_CLOSED_LOOP_VALID",
+  "next_boundary":"REAL_DISPATCH"
+}
