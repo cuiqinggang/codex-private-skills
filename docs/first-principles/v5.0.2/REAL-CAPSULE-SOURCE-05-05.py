@@ -467,7 +467,7 @@ def run_reality_certificate():
     ok(not adapter_policy_pass(Adapter.CODEX,"POWERSHELL"))
     ok(not adapter_policy_pass(Adapter.CODEX,"SHELL"))
 
-    assert checks == 61, checks
+    assert checks == 62, checks
     return {"TOTAL": checks, "PASS": checks}
 
 if __name__ == "__main__":
