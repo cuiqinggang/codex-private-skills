@@ -1,0 +1,33 @@
+{
+  "version":"5.0.8",
+  "purpose":"GPT 和 Codex 使用同一个最小时间信封完成双向控制交接，保证唯一时间锚在去程和回程都显性连续。",
+  "inherits":"CONTROL-BOUNDARY-TIME-v5.0.8",
+  "single_shared_envelope":true,
+  "visible_fields":[
+    "LOCATOR",
+    "TIMELINE_ID",
+    "T_CLOSED_LOOP_ELAPSED_MS",
+    "T_EXCHANGE_ELAPSED_MS",
+    "T_STAR_MS"
+  ],
+  "dispatch":{
+    "producer":"GPT",
+    "consumer":"CODEX",
+    "result_field":"DISPATCH"
+  },
+  "return":{
+    "producer":"CODEX",
+    "consumer":"GPT",
+    "allowed_results":["PASS","FAIL","BLOCKED"],
+    "pass_requires":["T_REAL_VALID_MS","T_CERTIFICATE_ELAPSED_MS"],
+    "fail_or_blocked_requires":["T_CERTIFICATE_ELAPSED_MS"],
+    "certificate_not_started_rule":"T_CERTIFICATE_ELAPSED_MS=0.000 is legal only when explicitly marked NOT_STARTED; T_EXCHANGE_ELAPSED_MS must still be a real numeric duration."
+  },
+  "continuity":{
+    "same_timeline_required":true,
+    "closed_loop_monotonic_required":true,
+    "t_star_inherited_from_dispatch":true
+  },
+  "failure":"DUAL_END_TIME_HANDOFF_INVALID -> ANCHOR_CONTINUITY_FAIL",
+  "complexity_rule":"One envelope, one validator, both directions. No extra state-machine stage."
+}
