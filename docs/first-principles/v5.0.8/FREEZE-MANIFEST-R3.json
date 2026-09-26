@@ -1,0 +1,124 @@
+{
+  "version": "5.0.8",
+  "freeze_id": "ESTE-v5.0.8-GIT-NATIVE-BYTES-MATERIALIZATION-VIRTUAL-FREEZE-R3",
+  "repository": "cuiqinggang/codex-private-skills",
+  "branch": "codex/first-principles-physical-limit-convergence-v5.0.8-r3-virtual-freeze",
+  "base_commit": "0f1103318e7cd756c31740ede16c51a74b49f7e7",
+  "r2_manifest_blob": "de30a26c9c3f67084910f42931bac3201da991a9",
+  "r2_asset_count": 22,
+  "asset_count": 27,
+  "assets": [
+    {
+      "path": "docs/first-principles/v5.0.8/DUAL-END-VIRTUAL-TEST-REPORT.json",
+      "blob": "17c741ab814dfb08fb655748da8beaf0af181456"
+    },
+    {
+      "path": "docs/first-principles/v5.0.8/REAL-CAPSULE-SOURCE-R2.py",
+      "blob": "b265043bc4dac9ee2ca45057fcca18e451c51e25"
+    },
+    {
+      "path": "docs/first-principles/v5.0.8/TIME-LEDGER-R2.json",
+      "blob": "708a33073f87e002909b8bc0918845de5e62fb0f"
+    },
+    {
+      "path": "docs/first-principles/v5.0.8/VIRTUAL-FREEZE-R2.md",
+      "blob": "14a992b9a301b38c52c8eae728b5147ffbedb157"
+    },
+    {
+      "path": "docs/first-principles/v5.0.8/VIRTUAL-MATURITY-REPORT-R2.json",
+      "blob": "28667e0d172d33336a8d8beaa0b04f94a4964008"
+    },
+    {
+      "path": "docs/first-principles/v5.0.8/VIRTUAL-TEST-REPORT.json",
+      "blob": "58147126e88da81892743e195e77ad0aa1d64cd5"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob": "93343213d40e17e74160196ae95dc0840dc7b052"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob": "51e67ba4d030c9b7c6e94b506d3c2b12306de4d0"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/CONTROL-BOUNDARY-TIME-v5.0.8.json",
+      "blob": "e093819bca700e58a6250d0c45e668ae01b4fc58"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/DUAL-END-TIME-HANDOFF-v5.0.8.json",
+      "blob": "d61537ceaf53fa4bcddace7293aed26263b01760"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/NUMERIC-TIME-ANCHOR-v5.0.7.json",
+      "blob": "ad6daefc655a6d35d87183a8492c88f9a8ef9efa"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/REALITY-PAYLOAD-MATERIALIZATION-v5.0.8.json",
+      "blob": "67ab4bbc13c7228959d2c6eb73bf2d4e44a0bf82"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/STATE-MACHINE-v5.0.5.json",
+      "blob": "589842e4d159de0bbfde873fe2869cdc383ec7f6"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/TIME-MASTER-CONTROL-v5.0.5.json",
+      "blob": "949a95b372be2d0e18b8f72cc30d8d790764b3a7"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/dual_end_time_handoff_v5_0_8.py",
+      "blob": "be371b6484cfc7dc7143b4dcf7b2fbceb7a081d7"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/state_machine_v5_0_3.py",
+      "blob": "e976d299ff045c8aa55e9ea172960226dc92311e"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/state_machine_v5_0_5_overlay.py",
+      "blob": "2d5ed41b6d203cb2fcb16790d90ca2d0f4aeea1c"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/state_machine_v5_0_7_overlay.py",
+      "blob": "5f4651df73073f267c9705e40cd0d79c5f595bfb"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_dual_end_time_handoff_v5_0_8.py",
+      "blob": "f070605638443a3b2a80f02250953667183d963b"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_reality_materialization_v5_0_8.py",
+      "blob": "164d6c49dd364aa82bcf3d0e28e78adf2d95c74c"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_state_machine_v5_0_5_overlay.py",
+      "blob": "20e75f17782916d77cd5efe569e11583fb86e152"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_state_machine_v5_0_7_overlay.py",
+      "blob": "7e53dbc576c35574669b3bcd30146158c1a7bf49"
+    },
+    {
+      "path": "docs/first-principles/v5.0.8/VIRTUAL-FREEZE-R3.md",
+      "blob": "58dadbade31f77235983086b7006d8d6ac3ec9cf"
+    },
+    {
+      "path": "docs/first-principles/v5.0.8/VIRTUAL-MATURITY-REPORT-R3.json",
+      "blob": "7b72d02d230914e99259c07a85ed98f8346fceb0"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/REALITY-PAYLOAD-MATERIALIZATION-v5.0.8-R3.json",
+      "blob": "6e80caa67e8ec25ecfefb75c32642bf63464ba22"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/git_native_blob_materializer_v5_0_8_r3.py",
+      "blob": "632411256e808a588afbc672137f41cc97e32f59"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_git_native_blob_materializer_v5_0_8_r3.py",
+      "blob": "61432d9a0420a87cdefd6cbda6ad271dc187aa70"
+    }
+  ],
+  "normal_authoritative_source": "REMOTE_SHARED_REPO_DIRECT",
+  "download_handoff_required": false,
+  "state_machine_preserved": true,
+  "real_started": false
+}

@@ -1,0 +1,28 @@
+{
+  "version": "5.0.8",
+  "revision": "R3",
+  "freeze_id": "ESTE-v5.0.8-GIT-NATIVE-BYTES-MATERIALIZATION-VIRTUAL-FREEZE-R3",
+  "normal_authoritative_source": "REMOTE_SHARED_REPO_DIRECT",
+  "frozen_capsule_path": "docs/first-principles/v5.0.8/REAL-CAPSULE-SOURCE-R2.py",
+  "frozen_capsule_blob": "b265043bc4dac9ee2ca45057fcca18e451c51e25",
+  "implementation": "Git native object bytes -> Python subprocess argument array -> raw stdout bytes",
+  "git_invocation": {
+    "argument_array": true,
+    "shell": false,
+    "text": false,
+    "stdout": "raw bytes"
+  },
+  "preflight": [
+    "read frozen blob from Git object database",
+    "recompute exact Git blob SHA",
+    "require expected SHA",
+    "require ASCII-only raw bytes",
+    "compile raw bytes",
+    "exec in fresh namespace",
+    "require callable run_reality_certificate"
+  ],
+  "reality_certificate_invocation_in_03_01": false,
+  "real_timing_starts_after_preflight": true,
+  "failure": "Implementation/Reality Delta -> STOP -> GPT",
+  "state_machine_preserved": true
+}
