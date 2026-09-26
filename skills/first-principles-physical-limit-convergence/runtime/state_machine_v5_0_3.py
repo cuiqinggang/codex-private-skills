@@ -18,6 +18,8 @@ class Adapter(str, Enum):
     REASONIX = "REASONIX"
     LOCAL_FROZEN = "LOCAL_FROZEN"
 
+UNIQUE_OBJECTIVE = "T*=min(T_VALID)"
+
 ALLOWED_MODES = {
     Adapter.CODEX: frozenset({"CHAT"}),
     Adapter.PLAYWRIGHT: frozenset({"NATIVE_BROWSER"}),
@@ -47,6 +49,7 @@ class EngineState:
     phase: Phase
     timeline_id: str
     time_origin_utc: str
+    anchor_metric: str = UNIQUE_OBJECTIVE
     time_event_seq: int = 0
     time_events: Tuple[TimeEvent, ...] = ()
     t_star_ms: Optional[float] = None
@@ -229,6 +232,7 @@ def validate_state(s: EngineState):
     _require(1 <= s.attempt <= 6, "ATTEMPT_INVALID")
     _require(_nonempty(s.timeline_id), "TIMELINE_ID_MISSING")
     _require(_nonempty(s.time_origin_utc), "TIME_ORIGIN_MISSING")
+    _require(s.anchor_metric == UNIQUE_OBJECTIVE, "UNIQUE_ANCHOR_INVALID")
     _require(s.time_event_seq == len(s.time_events), "TIME_EVENT_SEQ_MISMATCH")
     for idx, event in enumerate(s.time_events, start=1):
         _require(event.seq == idx, "TIME_EVENT_ORDER_INVALID")
@@ -268,13 +272,42 @@ def validate_state(s: EngineState):
         else:
             _require(s.freeze_id not in s.used_freezes, "FREEZE_REUSED_BEFORE_REAL")
 
+def _display_optional_ms(value: Optional[float]) -> str:
+    return "PENDING" if value is None else f"{value:.6f}ms"
+
+def _display_optional_text(value: Optional[str]) -> str:
+    return "PENDING" if not _nonempty(value) else value
+
 def render_locator(s: EngineState) -> str:
     validate_state(s)
-    if s.t_star_ms is None:
-        anchor = "PENDING"
-    else:
-        anchor = f"{format_ms(s.t_star_ms)}｜T*={s.t_star_ms:.6f}ms"
-    return f"【{s.page_name}｜{s.task_name}｜{s.generation:02d}-{s.attempt:02d}｜{s.phase.value}】 极限锚{anchor}"
+    active = _display_optional_ms(s.t_star_ms)
+    best = _display_optional_ms(s.best_certified_t_valid_ms)
+    return (
+        f"【{s.page_name}｜{s.task_name}｜{s.generation:02d}-{s.attempt:02d}｜{s.phase.value}】 "
+        f"锚定物={UNIQUE_OBJECTIVE}｜状态={s.t_star_status}｜当前T*={active}｜现实最优={best}"
+    )
+
+def render_time_control_snapshot(s: EngineState, action: str) -> str:
+    validate_state(s)
+    _require(_nonempty(action), "ACTION_NAME_MISSING")
+    return "\n".join([
+        render_locator(s),
+        f"ACTION={action}",
+        f"UNIQUE_ANCHOR={s.anchor_metric}",
+        f"TIMELINE_ID={s.timeline_id}",
+        f"TIME_ORIGIN_UTC={s.time_origin_utc}",
+        f"TIME_EVENT_SEQ={s.time_event_seq}",
+        f"ANCHOR_STATE={s.t_star_status}",
+        f"ACTIVE_T_STAR_MS={_display_optional_ms(s.t_star_ms)}",
+        f"BEST_CERTIFIED_T_VALID_MS={_display_optional_ms(s.best_certified_t_valid_ms)}",
+        f"T_VALID_START={_display_optional_text(s.t_valid_start)}",
+        f"T_VALID_END={_display_optional_text(s.t_valid_end)}",
+        f"T_STAR_SOURCE={_display_optional_text(s.t_star_source)}",
+    ])
+
+def authorize_executable_step(s: EngineState, action: str) -> str:
+    # Every executable step must pass through the unique-anchor control snapshot.
+    return render_time_control_snapshot(s, action)
 
 def render_dispatch_header(s: EngineState) -> str:
     validate_state(s)
@@ -283,21 +316,10 @@ def render_dispatch_header(s: EngineState) -> str:
         time_anchor_ready(s.t_star_ms, s.t_valid_start, s.t_valid_end, s.t_star_source),
         "DISPATCH_TIME_ANCHOR_MISSING"
     )
-    return "\n".join([
-        render_locator(s),
-        f"TIMELINE_ID={s.timeline_id}",
-        f"TIME_ORIGIN_UTC={s.time_origin_utc}",
-        f"TIME_EVENT_SEQ={s.time_event_seq}",
-        f"T_STAR_STATUS={s.t_star_status}",
-        f"T_STAR_MS={s.t_star_ms:.6f}",
-        f"T_VALID_START={s.t_valid_start}",
-        f"T_VALID_END={s.t_valid_end}",
-        f"T_STAR_SOURCE={s.t_star_source}",
-        f"BEST_CERTIFIED_T_VALID_MS={'' if s.best_certified_t_valid_ms is None else f'{s.best_certified_t_valid_ms:.6f}'}",
-    ])
+    return render_time_control_snapshot(s, "REAL_DISPATCH")
 
 def transition(s: EngineState, event: Event, payload):
-    validate_state(s)
+    authorize_executable_step(s, f"STATE_TRANSITION:{event.value}")
     _require(not s.done, "TASK_ALREADY_DONE")
 
     if event == Event.FREEZE_TO_REAL:
