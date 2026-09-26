@@ -66,3 +66,13 @@ v5.0.0 保留为演化证据，不作为 v5.0.2 运行时权威。
 `STOP -> REMOTE_REPO_UNAVAILABLE -> Reality Delta -> 回虚`
 
 本地/内联副本只是“虚”阶段可以预先冻结的兜底方案，不是远程仓库正常可用时的默认前置条件。
+
+
+## 冻结一致性与执行物化
+同一 Reality 尝试只能有一个完整权威 Freeze。冻结后若任何被引用资产发生变化，旧 Manifest 自动失去当前尝试的权威资格；不得用新的 handoff 清单叠加引用一个已经含旧 blob 的基清单，必须重新生成完整 Freeze。
+
+`EXECUTION_CHAIN_CLOSED=PASS` 还必须机械证明：
+- `FREEZE_MANIFEST_CONSISTENT=PASS`：完整 Manifest 中每个当前冻结资产的 blob 与发布后回读完全一致；
+- `PAYLOAD_MATERIALIZATION_VERIFIED=PASS`：GPT 已按未来 Reality 的同一路径验证“远程全文读取 → 同一 Python namespace 执行 → run_verifier 存在且可调用”。
+
+只核对远程文件元数据、只拿到文件名/blob、或在未执行源码的空 namespace 中寻找 `run_verifier`，均不得声明虚拟成熟。
