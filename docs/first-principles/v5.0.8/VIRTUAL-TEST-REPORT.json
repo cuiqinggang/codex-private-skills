@@ -1,0 +1,20 @@
+{
+  "version":"5.0.8",
+  "result":"PASS",
+  "scope":"control-boundary explicit numeric time continuity",
+  "tests":{
+    "return_boundary_presence_matrix":{"pass":512,"total":512,"authorized":1},
+    "random_round_trip_chains":{"pass":20000,"total":20000},
+    "timeline_rebuild":0,
+    "boundary_time_omission":0,
+    "closed_loop_monotonicity_failure":0
+  },
+  "repeat_suite_ms":{
+    "runs":10,
+    "min":274.027449,
+    "p50":280.736542,
+    "p95":291.2564293,
+    "max":290.84191
+  },
+  "conclusion":"内部时间持续存在；关键控制边界必须显式携带同一 Timeline 的数值时间快照。派发与回报必须双向对称。"
+}
