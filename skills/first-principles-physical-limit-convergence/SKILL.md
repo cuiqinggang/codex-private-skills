@@ -1,13 +1,46 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.0.7。保持原“虚→实”状态机和共同私库直读主路径；关键控制节点必须显示数值时间锚。唯一目标 min(T_VALID)。
+description: 整体闭环极限短时间引擎 v5.0.8。保持原状态机；时间连续性在所有关键控制边界必须显式携带数值快照。
 metadata:
-  version: "5.0.7"
+  version: "5.0.8"
   display_name: "整体闭环极限短时间引擎"
 ---
 
-# 整体闭环极限短时间引擎 v5.0.7
+# 整体闭环极限短时间引擎 v5.0.8
 
+
+## v5.0.8 当前权威规则：控制边界显性时间连续性
+
+v5.0.8 不改变原“虚→实”状态机，也不要求每个内部小动作刷时间。
+
+新增硬门：
+凡发生以下任一情况，都属于 CONTROL_BOUNDARY（控制边界）：
+- 关键方案定案；
+- 虚拟成熟收口；
+- Freeze 提交；
+- GPT -> Codex 派发；
+- Codex -> GPT 返回；
+- REAL FAIL / BLOCKED 回虚；
+- FINAL_VALID。
+
+每一个 CONTROL_BOUNDARY 必须显式携带同一 Timeline 的数值时间快照。
+最小必须有：
+`T_CLOSED_LOOP_ELAPSED_MS`
+`T_BOUNDARY_SEGMENT_ELAPSED_MS`
+
+若该边界已经存在冻结极限，还必须有：
+`T_STAR_MS`
+
+Reality 返回：
+- PASS：必须有整体累计、本次尝试、冻结 T*、现实 T_VALID；
+- FAIL/BLOCKED：也必须有整体累计、本次尝试、冻结 T*；
+- 若证书根本未启动，可写证书计时 `0.000ms（未启动）`，但本次尝试耗时不能消失。
+
+派发有时间、回报无时间，或回报有时间、派发无时间，均判：
+`BOUNDARY_TIME_PROOF_MISSING -> ANCHOR_CONTINUITY_FAIL`。
+
+详细合同：
+- `contracts/CONTROL-BOUNDARY-TIME-v5.0.8.json`
 
 ## v5.0.7 当前权威规则：数值时间锚
 
