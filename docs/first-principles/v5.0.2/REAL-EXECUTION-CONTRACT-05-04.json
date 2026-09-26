@@ -1,0 +1,36 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "task": "v5.0.2虚拟成熟现实认证",
+  "attempt": "05-04",
+  "purpose": "mechanically materialize remotely fetched frozen source into Python before resolving run_verifier",
+  "source_resolution": {
+    "repository": "https://github.com/cuiqinggang/codex-private-skills",
+    "branch": "codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze",
+    "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE-05-04.py"
+  },
+  "python_materialization_contract": [
+    "Fetch the entire source file as text; metadata-only or partial reads are invalid.",
+    "Create one fresh Python namespace with __name__ set to a value other than __main__.",
+    "Compile and execute the fetched source text in that same namespace.",
+    "After execution, assert that namespace['run_verifier'] exists and is callable.",
+    "Only then start REAL_START timing immediately before calling namespace['run_verifier']().",
+    "Record REAL_END immediately after successful return.",
+    "Do not resolve run_verifier from an empty namespace, a different namespace, or file metadata."
+  ],
+  "reference_python_semantics": [
+    "namespace = {'__name__': 'remote_capsule'}",
+    "exec(compile(capsule_source, '<frozen-remote-capsule>', 'exec'), namespace, namespace)",
+    "assert callable(namespace.get('run_verifier'))",
+    "REAL_START = perf_counter_ns()",
+    "result = namespace['run_verifier']()",
+    "REAL_END = perf_counter_ns()"
+  ],
+  "forbidden": [
+    "Scanning C drive for a preexisting capsule when remote GitHub access works",
+    "Calling run_verifier before the fetched source text has been executed",
+    "Using a namespace different from the one receiving exec()",
+    "Editing the fetched source in Reality",
+    "Falling back silently after remote auth/network/repository failure"
+  ]
+}
