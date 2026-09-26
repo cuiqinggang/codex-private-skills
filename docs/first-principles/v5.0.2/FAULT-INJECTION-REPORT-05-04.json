@@ -1,0 +1,20 @@
+{
+  "version": "5.0.2",
+  "attempt": "05-04",
+  "injected_classes": [
+    "10 independent execution-closure booleans including manifest consistency and payload materialization",
+    "5 independent execution-evidence hash omissions",
+    "GPT verification hash omission",
+    "65536 whole virtual maturity combinations",
+    "128 REAL PASS timing/verifier/evidence combinations",
+    "adapter policy invalid modes",
+    "Reality failure retry/generation transitions"
+  ],
+  "execution_closure_state_space": {
+    "cases": 1024,
+    "allowed": 1,
+    "blocked": 1023
+  },
+  "overall_frozen_capsule_cases": 66745,
+  "result": "PASS"
+}
