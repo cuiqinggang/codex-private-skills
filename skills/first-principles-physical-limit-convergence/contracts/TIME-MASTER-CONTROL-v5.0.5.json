@@ -1,0 +1,47 @@
+{
+  "version": "5.0.5",
+  "freeze_id": "ESTE-v5.0.5-STATE-MACHINE-PRESERVED-TIME-MASTER-VIRTUAL-FREEZE-R1",
+  "unique_objective": "T*=min(T_VALID)",
+  "top_level_t_valid": "T_CLOSED_LOOP_VALID",
+  "role": "时间总控是原状态机的内部控制层，不是第三阶段，不拥有改写状态转换的权限。",
+  "laws": [
+    "TIME_ANCHOR_TOTALITY_LAW",
+    "TIME_CONTINUOUS_SOLVING_LAW",
+    "LOCAL_TO_GLOBAL_SUBORDINATION_LAW",
+    "VIRTUAL_MATURITY_TIME_CLOSEOUT_GATE",
+    "ANCHOR_CONTINUITY_LAW",
+    "STATE_MACHINE_PRESERVATION_LAW"
+  ],
+  "illegal_time_anchor_values": ["N/A", "NA", "NULL", "MISSING", "空值"],
+  "continuous_states": ["PENDING", "SOLVING", "VIRTUAL_FROZEN", "REAL_CERTIFIED"],
+  "segment_rule": {
+    "if_segment_exists": "TIME_ANCHOR_REQUIRED",
+    "elapsed": "阶段开始即存在并单调不减",
+    "extreme_efficiency": "始终存在；未成熟时为 PENDING/SOLVING，绝不允许 N/A",
+    "virtual_maturity": "冻结执行链中的时间承载段必须形成 VIRTUAL_T_STAR 数值",
+    "reality": "现实执行形成 REAL_T_VALID，最终形成 CERTIFIED_T_STAR"
+  },
+  "virtual_closeout": {
+    "required_before_virtual_mature": true,
+    "required_fields": [
+      "UNIQUE_OBJECTIVE",
+      "CLOSED_LOOP_ELAPSED",
+      "T_VIRTUAL_MATURATION",
+      "VIRTUAL_LOOP_T_STAR",
+      "LOCAL_T_STAR[*]",
+      "TIME_CLOSEOUT"
+    ],
+    "failure": "VIRTUAL_MATURE=NO; FREEZE_ALLOWED=NO; REAL_DISPATCH_ALLOWED=NO"
+  },
+  "visibility": {
+    "principle": "ALWAYS VALIDATE, NOT ALWAYS PRINT",
+    "mandatory_control_nodes": [
+      "TASK_ACCEPTED",
+      "VIRTUAL_MATURITY_TIME_CLOSEOUT",
+      "REAL_DISPATCH",
+      "REAL_RESULT",
+      "FINAL_VALID"
+    ],
+    "missing_at_control_node": "ANCHOR_CONTINUITY_FAIL"
+  }
+}
