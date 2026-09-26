@@ -116,3 +116,36 @@ REAL PASS 只能使用该冻结状态中的同一个 `T_STAR_MS` 判断：
 `T_VALID_REAL_MS <= T_STAR_MS`。
 
 REAL FAIL 返回虚后，活动时间锚必须清空；下一次 Reality 必须重新虚拟成熟并生成新的 T*，禁止沿用旧任务/旧尝试的时间锚。
+
+
+## 连续时间状态（v5.0.3）
+时间不是每个命令包临时贴上的标签，而是整个任务从进入引擎到最终有效完成的一条连续状态链。
+
+每个任务首次进入时建立且以后不可更换：
+- `TIMELINE_ID`
+- `TIME_ORIGIN_UTC`
+
+以后所有虚/实转换只允许向同一账本追加：
+- `TIME_EVENT_SEQ`
+- `TIME_EVENTS[]`
+
+典型连续链：
+`TASK_ORIGIN -> FREEZE_TO_REAL -> REAL_START -> REAL_FAIL -> 新Freeze -> REAL_START -> REAL_PASS`
+
+REAL FAIL 返回虚时：
+- 不得新建时间轴；
+- 不得删除旧 T* / T_VALID / 失败事件；
+- 不得重置 `TIMELINE_ID / TIME_ORIGIN_UTC`；
+- 只把“当前活动 T*”变为 `PENDING`，防止旧 Freeze 的 T* 被下一次 Reality 偷用。
+
+新的虚拟成熟完成后，在同一时间轴追加新的 Freeze 事件并生成新的活动 T*。
+
+REAL PASS 后：
+- 把真实 `T_VALID_REAL_MS` 追加到同一账本；
+- `T_STAR_STATUS=REAL_CERTIFIED`；
+- `BEST_CERTIFIED_T_VALID_MS=min(历史已认证值, 本次T_VALID_REAL_MS)`。
+
+`BEST_CERTIFIED_T_VALID_MS`、事件序列和过程时间记录只是同一唯一目标 `T*=min(T_VALID)` 的状态证据，不构成第二优化目标。
+
+所有 Reality 派发都必须显示同一时间轴的当前快照：
+`TIMELINE_ID / TIME_ORIGIN_UTC / TIME_EVENT_SEQ / T_STAR_STATUS / T_STAR_MS / T_VALID_START / T_VALID_END / T_STAR_SOURCE / BEST_CERTIFIED_T_VALID_MS`。
