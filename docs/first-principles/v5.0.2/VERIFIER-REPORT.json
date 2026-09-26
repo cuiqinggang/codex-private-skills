@@ -1,13 +1,24 @@
 {
   "version": "5.0.2",
-  "checks": {
-    "freeze_matrix": {
-      "cases": 65536,
+  "invariant": "Only the fully evidenced maturity vector may transition VIRTUAL -> REAL",
+  "repository_regression": {
+    "artifact": "tests/test_state_machine_v5_0_2.py",
+    "blob_sha": "3383f5c0012774ecb5973604f147c6c9322565a8",
+    "total_cases": 66011,
+    "status": "PASS"
+  },
+  "frozen_reality_capsule_verifier": {
+    "artifact": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE.py",
+    "blob_sha": "ce4d43553538580d04d80b457b7ad4f24de7f8b1",
+    "sha256": "c7c960f74b201cf70829db9a998644f00b15dc968ca0888c4b0bdda4301f30d9",
+    "total_cases": 65975,
+    "closure_matrix": {
+      "cases": 256,
       "allowed": 1,
       "status": "PASS"
     },
-    "execution_closure_matrix": {
-      "cases": 256,
+    "freeze_matrix": {
+      "cases": 65536,
       "allowed": 1,
       "status": "PASS"
     },
@@ -24,19 +35,15 @@
       "cases": 12,
       "status": "PASS"
     },
+    "evidence_hash_checks": {
+      "cases": 4,
+      "status": "PASS"
+    },
     "determinism": {
       "cases": 5,
       "status": "PASS"
     },
-    "directed_and_hash_checks": {
-      "cases": 38,
-      "status": "PASS"
-    },
-    "total": {
-      "cases": 66011,
-      "status": "PASS"
-    }
+    "status": "PASS"
   },
-  "invariant": "Only the fully evidenced maturity vector may transition VIRTUAL -> REAL",
   "status": "PASS"
 }
