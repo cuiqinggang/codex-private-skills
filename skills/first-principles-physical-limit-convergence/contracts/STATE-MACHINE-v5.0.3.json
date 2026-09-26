@@ -1,0 +1,82 @@
+{
+  "name": "整体闭环极限短时间引擎 v5.0.3 状态机",
+  "type": "deterministic_extended_finite_state_machine",
+  "phases": [
+    "虚",
+    "实"
+  ],
+  "terminal_is_phase": false,
+  "semantic_patch": "make T*=min(T_VALID) a mandatory machine-visible dispatch control; no new phase",
+  "rule": "SPEC_COMPLETE != IMPLEMENTATION_COMPLETE; VIRTUAL_COMPLETE requires both plus GPT verification and freeze completeness",
+  "execution_chain_closed_evidence": [
+    "behavior_implementation_mapped",
+    "behavior_locations_resolved",
+    "exception_classification_implemented",
+    "recovery_fallback_implemented",
+    "executable_path_verified",
+    "fault_injection_passed",
+    "verifier_discriminates",
+    "capsule_contains_implementation",
+    "implementation_map_hash_nonempty",
+    "fault_injection_report_hash_nonempty",
+    "verifier_report_hash_nonempty",
+    "freeze_manifest_consistent",
+    "payload_materialization_verified",
+    "freeze_manifest_consistency_hash_nonempty",
+    "payload_materialization_report_hash_nonempty"
+  ],
+  "virtual_complete_requires": [
+    "valid_defined",
+    "reality_facts_ready",
+    "mature_solution_selected",
+    "spec_complete",
+    "execution_chain_closed_derived_from_evidence",
+    "gpt_verification_pass",
+    "gpt_verification_report_hash_nonempty",
+    "external_dependencies_closed",
+    "task_t_star_frozen",
+    "new_freeze_id",
+    "freeze_hash_equals_reread_hash",
+    "real_capsule_self_contained",
+    "legal_adapter_mode",
+    "time_contract_ready",
+    "provenance_scoped",
+    "remote_claim_requires_reread",
+    "real_task_phase_is_REAL",
+    "t_valid_start_frozen",
+    "t_valid_end_frozen",
+    "t_star_source_frozen",
+    "locator_time_anchor_renderable"
+  ],
+  "render_locator_from_state_only": true,
+  "invalid_by_construction": [
+    "freeze manifest references a stale blob for any current frozen asset",
+    "run_verifier resolved before full remote source is materialized into the execution namespace",
+    "REAL dispatch without T_STAR_MS",
+    "REAL dispatch without T_VALID_START",
+    "REAL dispatch without T_VALID_END",
+    "REAL dispatch without T_STAR_SOURCE",
+    "REAL locator without machine-rendered T*",
+    "REAL PASS compared against a T* different from the frozen state",
+    "stale T* reused after REAL FAIL"
+  ],
+  "time_anchor_contract": {
+    "virtual_pre_maturity": "T*=PENDING is allowed",
+    "virtual_complete_requires": [
+      "T_STAR_MS finite > 0",
+      "T_VALID_START nonempty",
+      "T_VALID_END nonempty",
+      "T_STAR_SOURCE nonempty"
+    ],
+    "real_dispatch_requires": [
+      "Locator first line renders exact T*",
+      "T_STAR_MS",
+      "T_VALID_START",
+      "T_VALID_END",
+      "T_STAR_SOURCE"
+    ],
+    "real_pass_rule": "T_VALID_REAL_MS <= the exact frozen state T_STAR_MS",
+    "real_fail_rule": "return to VIRTUAL clears active time anchor so stale T* cannot be reused"
+  },
+  "render_dispatch_header_from_state_only": true
+}
