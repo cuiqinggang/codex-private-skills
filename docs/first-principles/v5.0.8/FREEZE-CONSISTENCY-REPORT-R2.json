@@ -1,0 +1,9 @@
+{
+  "version":"5.0.8",
+  "freeze_id":"ESTE-v5.0.8-DUAL-END-NUMERIC-TIME-ASCII-CAPSULE-VIRTUAL-FREEZE-R2",
+  "manifest_blob":"de30a26c9c3f67084910f42931bac3201da991a9",
+  "asset_count":22,
+  "reread_match":22,
+  "mismatches":[],
+  "result":"PASS"
+}
