@@ -1,0 +1,23 @@
+{
+  "version": "5.0.8",
+  "status": "FINAL_VALID",
+  "done": true,
+  "timeline_id": "ESTE-v5.0.7-NUMERIC-TIME-ANCHOR-01",
+  "time_origin_utc": "2026-09-26T19:12:16.448729+00:00",
+  "final_valid_utc": "2026-09-26T21:58:40+00:00",
+  "final_closed_loop_t_valid_ms": 9983551.271,
+  "final_closed_loop_hms": "02:46:23.551271",
+  "certified_real_t_star_ms": 0.0027,
+  "certified_real_t_star_us": 2.7,
+  "winning_candidate": "R4_OPTIMIZED",
+  "baseline_valid": "1000/1000",
+  "optimized_valid": "1000/1000",
+  "freeze_id": "ESTE-v5.0.8-REALITY-FIRST-FINAL-CLOSEOUT-VIRTUAL-FREEZE-R4",
+  "freeze_consistency": "31/31 PASS",
+  "reality_report_path": "docs/first-principles/v5.0.8/FINAL-REALITY-REPORT-R4.json",
+  "historical_virtual_prediction_ms": 0.01136838145574825,
+  "historical_prediction_is_gate": false,
+  "reality_delta": "NONE",
+  "next_action": "DONE",
+  "reality_report_blob": "6e3d81d5c4a52cdc2632dd29f4d34cc77cea3a3c"
+}
