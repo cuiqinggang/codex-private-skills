@@ -1,0 +1,25 @@
+{
+  "version": "5.0.2",
+  "scope": "virtual-maturity implementation-closure semantics",
+  "injected_failures": [
+    "missing behavior implementation mapping",
+    "missing behavior location evidence",
+    "missing exception classification implementation",
+    "missing recovery/fallback implementation",
+    "non-executable path",
+    "fault injection not passed",
+    "verifier cannot discriminate",
+    "capsule contains no implementation",
+    "missing implementation-map hash",
+    "missing fault-injection-report hash",
+    "missing verifier-report hash",
+    "missing GPT verification",
+    "missing GPT verification report hash"
+  ],
+  "matrix": {
+    "execution_closure_cases": 256,
+    "allowed": 1,
+    "blocked": 255
+  },
+  "status": "PASS"
+}
