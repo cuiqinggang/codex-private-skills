@@ -200,9 +200,23 @@
       "freeze_reread": "31/31 PASS",
       "current_real_anchor_ms": 0.0315,
       "historical_virtual_prediction_is_gate": false
+    },
+    {
+      "seq": 20,
+      "name": "R4_FINAL_REAL_DISPATCH",
+      "at_utc": "2026-09-26T21:51:54+00:00",
+      "t_closed_loop_elapsed_ms": 9577551.271,
+      "t_exchange_elapsed_ms": 0,
+      "t_star_ms": 0.0315,
+      "freeze_id": "ESTE-v5.0.8-REALITY-FIRST-FINAL-CLOSEOUT-VIRTUAL-FREEZE-R4",
+      "manifest_blob": "ae548214d56ff699e06ce6203432e859c1113308",
+      "freeze_reread": "31/31 PASS",
+      "dispatch_path": "docs/first-principles/v5.0.8/REAL-DISPATCH-04-01.md",
+      "dispatch_blob": "7523d653e7083216771a1d578b592da3853f6cd8",
+      "historical_virtual_prediction_is_gate": false
     }
   ],
   "unique_objective": "T*=min(T_VALID)",
   "top_level_t_valid": "T_CLOSED_LOOP_VALID",
-  "next_boundary": "R4_FINAL_REAL_DISPATCH"
+  "next_boundary": "R4_FINAL_EXECUTOR_RETURN"
 }
