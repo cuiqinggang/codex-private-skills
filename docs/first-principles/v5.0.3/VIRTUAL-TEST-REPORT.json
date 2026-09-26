@@ -1,0 +1,66 @@
+{
+  "version": "5.0.3",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "task": "v5.0.3连续时间状态虚拟成熟",
+  "change_type": "minor version semantic upgrade",
+  "core_change": "T*=min(T_VALID) promoted from per-dispatch label to append-only continuous task time state",
+  "exact_assets": {
+    "version_blob": "50e2274e6d3ed76d60eb3072067376078c0317a2",
+    "skill_blob": "e51f8058dc34726265f87e0c273299efd95a842e",
+    "contract_blob": "6d9fd68253c848de8ae0154fd25b2386d7f929f1",
+    "runtime_blob": "14b3c9e1adba6aafe8a6d8883ffba6dfbfab8232",
+    "test_blob": "9463872065f35f958621b0e81852dccb58c1b2a9"
+  },
+  "direct_execution": {
+    "continuous_time_ledger": "PASS",
+    "anchor_presence_matrix": {
+      "cases": 32,
+      "pass": 32,
+      "allowed": 1
+    },
+    "retry_chain": {
+      "events": 15,
+      "preserved": 15,
+      "status": "PASS"
+    },
+    "final_chain": [
+      "FREEZE_TO_REAL",
+      "REAL_START",
+      "REAL_FAIL",
+      "FREEZE_TO_REAL",
+      "REAL_START",
+      "REAL_PASS"
+    ],
+    "certified_best_update": "PASS"
+  },
+  "stress": {
+    "task_chains": 20000,
+    "passed": 20000,
+    "failures_per_chain": "0..4 before final PASS",
+    "timeline_identity_preserved": "20000/20000",
+    "time_origin_preserved": "20000/20000",
+    "stale_t_star_reuse": "0",
+    "event_loss": "0"
+  },
+  "benchmark": {
+    "runs": 100,
+    "min_ms": 2.206194,
+    "p50_ms": 2.434674,
+    "p95_ms": 3.4757799,
+    "max_ms": 7.212608,
+    "scope": "complete v5.0.3 continuous-time-ledger virtual test script"
+  },
+  "continuous_time_invariants": [
+    "One TIMELINE_ID per task",
+    "One TIME_ORIGIN_UTC per task",
+    "TIME_EVENTS are append-only",
+    "REAL FAIL preserves timeline/history/best certified T_VALID",
+    "REAL FAIL clears only active T* to PENDING",
+    "New Freeze appends a new T* event on the same timeline",
+    "REAL PASS appends T_VALID and updates BEST_CERTIFIED_T_VALID_MS=min(history,current)",
+    "Reality dispatch header mechanically exposes current time-ledger snapshot"
+  ],
+  "unique_optimization_target": "T*=min(T_VALID)",
+  "second_optimization_metric_added": false,
+  "virtual_maturity": "PASS"
+}
