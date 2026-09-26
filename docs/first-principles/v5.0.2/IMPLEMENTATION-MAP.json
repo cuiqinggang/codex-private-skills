@@ -1,0 +1,47 @@
+{
+  "version": "5.0.2",
+  "freeze_candidate": "ESTE-v5.0.2-0502-VIRTUAL-FREEZE-01",
+  "principle": "设计存在 != 实现存在",
+  "mappings": [
+    {
+      "criterion": "behavior_implementation_mapped",
+      "implementation": "runtime/state_machine_v5_0_2.py::ExecutionClosureEvidence + transition(FREEZE_TO_REAL)",
+      "verification": "EXECUTION_CLOSURE_MATRIX"
+    },
+    {
+      "criterion": "behavior_locations_resolved",
+      "implementation": "contract/runtime/test/capsule paths explicit",
+      "verification": "implementation map + freeze manifest"
+    },
+    {
+      "criterion": "exception_classification_implemented",
+      "implementation": "Blocked reason codes in transition()",
+      "verification": "directed negative tests"
+    },
+    {
+      "criterion": "recovery_fallback_implemented",
+      "implementation": "REAL_FAIL -> Reality Delta -> VIRTUAL; attempt/generation logic",
+      "verification": "12 failure transition cases"
+    },
+    {
+      "criterion": "executable_path_verified",
+      "implementation": "self-contained Python Reality Capsule",
+      "verification": "GPT local execution 30/30"
+    },
+    {
+      "criterion": "fault_injection_passed",
+      "implementation": "8 evidence flags independently falsified",
+      "verification": "256-state closure matrix"
+    },
+    {
+      "criterion": "verifier_discriminates",
+      "implementation": "invalid maturity/real-pass combinations blocked",
+      "verification": "65536 freeze + 128 REAL PASS matrices"
+    },
+    {
+      "criterion": "capsule_contains_implementation",
+      "implementation": "REAL-CAPSULE-SOURCE.py contains runtime + full tests",
+      "verification": "capsule source reread"
+    }
+  ]
+}
