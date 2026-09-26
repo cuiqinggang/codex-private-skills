@@ -4,8 +4,9 @@ from itertools import product
 from state_machine_v5_0_3 import (
     Phase, Event, Adapter, Blocked,
     EngineState, TimeEvent, ExecutionClosureEvidence, VirtualMature, RealResult,
-    transition, render_locator, render_dispatch_header, validate_state,
-    execution_closure_pass, virtual_complete_pass,
+    transition, render_locator, render_dispatch_header, render_time_control_snapshot,
+    authorize_executable_step, validate_state, execution_closure_pass,
+    virtual_complete_pass, UNIQUE_OBJECTIVE,
 )
 
 PAGE = "整体闭环极限时间引擎5.0.2版"
@@ -67,7 +68,7 @@ def expect_block(fn, reason=None):
 # 1. New task has one continuous timeline and may be PENDING in early Virtual.
 s0 = EngineState(PAGE,TASK,5,1,Phase.VIRTUAL,TL,ORIGIN)
 validate_state(s0)
-assert render_locator(s0) == f"【{PAGE}｜{TASK}｜05-01｜虚】 极限锚PENDING"
+assert render_locator(s0) == f"【{PAGE}｜{TASK}｜05-01｜虚】 锚定物=T*=min(T_VALID)｜状态=PENDING｜当前T*=PENDING｜现实最优=PENDING"
 assert s0.time_event_seq == 0 and s0.time_events == ()
 assert s0.t_star_status == "PENDING"
 
@@ -85,11 +86,13 @@ assert s1.t_star_status == "VIRTUAL_FROZEN"
 
 header = render_dispatch_header(s1)
 for expected in [
+    "ACTION=REAL_DISPATCH",
+    "UNIQUE_ANCHOR=T*=min(T_VALID)",
     f"TIMELINE_ID={TL}",
     f"TIME_ORIGIN_UTC={ORIGIN}",
     "TIME_EVENT_SEQ=1",
-    "T_STAR_STATUS=VIRTUAL_FROZEN",
-    "T_STAR_MS=1500.000000",
+    "ANCHOR_STATE=VIRTUAL_FROZEN",
+    "ACTIVE_T_STAR_MS=1500.000000ms",
     "T_VALID_START=PROGRAM_START",
     "T_VALID_END=VALID_OUTPUT_COMMITTED",
     "T_STAR_SOURCE=VIRTUAL_MIN_VALID_BENCHMARK",
@@ -120,7 +123,7 @@ assert s2.best_certified_t_valid_ms == 900.0
 assert s2.t_star_ms is None
 assert s2.t_star_status == "PENDING"
 assert s2.t_valid_start is None and s2.t_valid_end is None and s2.t_star_source is None
-assert render_locator(s2).endswith("极限锚PENDING")
+assert "状态=PENDING｜当前T*=PENDING" in render_locator(s2)
 
 # 5. Second freeze continues the SAME timeline and appends a new active T*.
 v2 = good_v(1200.0,event_at="2026-09-26T23:54:00+08:00",freeze_id="F2")
@@ -144,7 +147,7 @@ assert s4.time_events[-1].t_valid_real_ms == 500.0
 assert s4.best_certified_t_valid_ms == 500.0
 assert s4.t_star_status == "REAL_CERTIFIED"
 assert s4.t_star_ms == 1200.0
-assert "BEST_CERTIFIED_T_VALID_MS=500.000000" in render_dispatch_header(s4)
+assert "BEST_CERTIFIED_T_VALID_MS=500.000000ms" in render_dispatch_header(s4)
 
 # 7. Certified best is min(previous,current), not reset by later state.
 base_best = EngineState(PAGE,TASK,5,1,Phase.VIRTUAL,TL,ORIGIN,best_certified_t_valid_ms=400.0)
@@ -170,7 +173,27 @@ bad_event = TimeEvent(2,"X",Phase.VIRTUAL,"2026-09-26T23:51:00+08:00")
 expect_block(lambda:validate_state(replace(s0,time_event_seq=1,time_events=(bad_event,))),"TIME_EVENT_ORDER_INVALID")
 expect_block(lambda:validate_state(replace(s0,time_event_seq=2,time_events=(TimeEvent(1,"X",Phase.VIRTUAL,"2026-09-26T23:51:00+08:00"),))),"TIME_EVENT_SEQ_MISMATCH")
 
-# 11. Exhaustive time-anchor presence matrix: only all 5 present can enter REAL.
+# 11. Unique anchor is mandatory in every state and every executable step.
+assert s0.anchor_metric == UNIQUE_OBJECTIVE
+pending_snapshot = authorize_executable_step(s0,"VIRTUAL_ANALYZE")
+for expected in [
+    "ACTION=VIRTUAL_ANALYZE",
+    "UNIQUE_ANCHOR=T*=min(T_VALID)",
+    "ANCHOR_STATE=PENDING",
+    "ACTIVE_T_STAR_MS=PENDING",
+    "BEST_CERTIFIED_T_VALID_MS=PENDING",
+]:
+    assert expected in pending_snapshot
+frozen_snapshot = authorize_executable_step(s1,"VIRTUAL_FREEZE_READY")
+assert "ANCHOR_STATE=VIRTUAL_FROZEN" in frozen_snapshot
+assert "ACTIVE_T_STAR_MS=1500.000000ms" in frozen_snapshot
+certified_snapshot = authorize_executable_step(s4,"FINAL_REPORT")
+assert "ANCHOR_STATE=REAL_CERTIFIED" in certified_snapshot
+assert "BEST_CERTIFIED_T_VALID_MS=500.000000ms" in certified_snapshot
+expect_block(lambda:validate_state(replace(s0,anchor_metric="OTHER")),"UNIQUE_ANCHOR_INVALID")
+expect_block(lambda:authorize_executable_step(s0,""),"ACTION_NAME_MISSING")
+
+# 12. Exhaustive time-anchor presence matrix: only all 5 present can enter REAL.
 cases=allowed=0
 for bits in product([False,True],repeat=5):
     tstar,start,end,source,event_at=bits
@@ -193,7 +216,7 @@ for bits in product([False,True],repeat=5):
     allowed += int(ok)
 assert cases==32 and allowed==1
 
-# 12. Failure loop keeps a single ledger through all legal retries.
+# 13. Failure loop keeps a single ledger through all legal retries.
 loop = EngineState(PAGE,TASK,7,1,Phase.VIRTUAL,"TL-LOOP",ORIGIN)
 expected_seq=0
 for attempt in range(1,6):
