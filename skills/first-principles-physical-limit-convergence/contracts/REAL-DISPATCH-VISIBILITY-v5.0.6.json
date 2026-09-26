@@ -1,0 +1,25 @@
+{
+  "version": "5.0.6",
+  "freeze_id": "ESTE-v5.0.6-DISPATCH-TIME-VISIBILITY-VIRTUAL-FREEZE-R1",
+  "inherits": "v5.0.5",
+  "state_machine_preserved": true,
+  "remote_shared_repo_primary_path_preserved": true,
+  "required_visible_fields": [
+    "UNIQUE_ANCHOR",
+    "TIMELINE_ID",
+    "ANCHOR_STATE",
+    "CLOSED_LOOP_STATUS",
+    "TOP_LEVEL_T_STAR_STATUS",
+    "VIRTUAL_TIME_CLOSEOUT"
+  ],
+  "current_required_values": {
+    "UNIQUE_ANCHOR": "T*=min(T_VALID)",
+    "TIMELINE_ID": "ESTE-v5.0.3-TIME-LEDGER-MATURATION-01",
+    "ANCHOR_STATE": "VIRTUAL_FROZEN",
+    "CLOSED_LOOP_STATUS": "RUNNING",
+    "TOP_LEVEL_T_STAR_STATUS": "SOLVING",
+    "VIRTUAL_TIME_CLOSEOUT": "PASS"
+  },
+  "illegal_values": ["N/A", "NA", "NULL", "MISSING", ""],
+  "failure": "REAL_DISPATCH_VISIBILITY_GATE=FAIL"
+}
