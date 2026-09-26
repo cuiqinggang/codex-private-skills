@@ -1,0 +1,38 @@
+{
+  "version": "5.0.2",
+  "freeze_id": "ESTE-v5.0.2-0502-VIRTUAL-FREEZE-01",
+  "purpose": "Target-environment certification of an already GPT-verified frozen implementation",
+  "self_contained": true,
+  "source": {
+    "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE.py",
+    "blob_sha": "ce4d43553538580d04d80b457b7ad4f24de7f8b1",
+    "sha256": "c7c960f74b201cf70829db9a998644f00b15dc968ca0888c4b0bdda4301f30d9",
+    "chars": 14349,
+    "bytes": 14449
+  },
+  "virtual_verification": {
+    "runs": 30,
+    "valid_runs": 30,
+    "cases_per_run": 65975,
+    "status": "PASS",
+    "evidence_path": "docs/first-principles/v5.0.2/GPT-VIRTUAL-VERIFICATION.json",
+    "evidence_blob_sha": "18dec41e901ea6d203d04a6d3aae52200509acbf"
+  },
+  "verifier": {
+    "evidence_path": "docs/first-principles/v5.0.2/VERIFIER-REPORT.json",
+    "evidence_blob_sha": "a1b3d156275f0c07450875271d6f0106d115e48c",
+    "expected_total_cases": 65975
+  },
+  "time_contract": {
+    "t_star_ms": 269.560254,
+    "display": "00:00.270",
+    "timed_scope": "inside already-started Python interpreter: immediately before run_verifier() through successful return"
+  },
+  "reality_dispatch": {
+    "adapter": "CODEX",
+    "mode": "CHAT",
+    "phase": "实",
+    "redesign_allowed": false,
+    "on_fail": "Reality Delta -> STOP -> RETURN_TO_GPT"
+  }
+}
