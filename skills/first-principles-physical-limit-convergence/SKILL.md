@@ -149,3 +149,43 @@ REAL PASS 后：
 
 所有 Reality 派发都必须显示同一时间轴的当前快照：
 `TIMELINE_ID / TIME_ORIGIN_UTC / TIME_EVENT_SEQ / T_STAR_STATUS / T_STAR_MS / T_VALID_START / T_VALID_END / T_STAR_SOURCE / BEST_CERTIFIED_T_VALID_MS`。
+
+
+## 唯一锚定物的强制生效规则（v5.0.3）
+为什么只有一个锚定物：
+
+1. 正确性、安全、质量、成本、依赖等只决定结果是否进入 `VALID` 集合；
+2. 进入 `VALID` 后，所有候选只允许按 `T_VALID` 比较；
+3. 因此系统唯一排名目标固定为 `T*=min(T_VALID)`；
+4. `T_RESOLVE / T_TRANSFER / T_VERIFY` 等只是同一 `T_VALID` 的时间分解，用来定位瓶颈，不是并列目标；
+5. 若允许第二个独立评分轴，就无法再机械判定“整体闭环极限短时间”，因此违反本引擎定义。
+
+从 v5.0.3 起，`T*=min(T_VALID)` 必须存在于**每一个 EngineState**，不是可选说明文字。
+
+状态演化固定为：
+- 任务刚进入：`UNIQUE_ANCHOR=T*=min(T_VALID)`，`ANCHOR_STATE=PENDING`；
+- 虚拟成熟冻结：同一时间轴变为 `ANCHOR_STATE=VIRTUAL_FROZEN`，出现数值 `ACTIVE_T_STAR_MS`；
+- Reality FAIL：同一 `TIMELINE_ID` 继续，历史事件不删，活动 T* 回到 `PENDING`；
+- 新 Freeze：在同一时间轴追加新的活动 T*；
+- Reality PASS：追加真实 `T_VALID_REAL_MS`，状态变为 `REAL_CERTIFIED`，并更新 `BEST_CERTIFIED_T_VALID_MS=min(历史,本次)`。
+
+任何“要执行的步骤”在执行前必须经过唯一时间控制门，并显示：
+
+`ACTION`
+`UNIQUE_ANCHOR=T*=min(T_VALID)`
+`TIMELINE_ID`
+`TIME_ORIGIN_UTC`
+`TIME_EVENT_SEQ`
+`ANCHOR_STATE`
+`ACTIVE_T_STAR_MS`
+`BEST_CERTIFIED_T_VALID_MS`
+`T_VALID_START`
+`T_VALID_END`
+`T_STAR_SOURCE`
+
+即使尚未得到数值 T*，也必须明确显示 `PENDING`，不能把锚定物省略。
+
+以后所有 Locator 首行也必须直接显示：
+`锚定物=T*=min(T_VALID)｜状态=...｜当前T*=...｜现实最优=...`
+
+没有这份连续时间状态快照的动作，没有执行资格。
