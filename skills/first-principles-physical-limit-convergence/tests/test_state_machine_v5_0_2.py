@@ -12,8 +12,9 @@ base = EngineState(
     5, 2, Phase.VIRTUAL, 1000.0
 )
 good_e = ExecutionClosureEvidence(
-    True, True, True, True, True, True, True, True,
-    "impl-map-sha", "fault-report-sha", "verifier-report-sha"
+    True, True, True, True, True, True, True, True, True, True,
+    "impl-map-sha", "fault-report-sha", "verifier-report-sha",
+    "manifest-consistency-sha", "payload-materialization-sha"
 )
 good_v = VirtualMature(
     True, True, True, True,
@@ -89,9 +90,9 @@ for bits in product([False, True], repeat=16):
     freeze_cases += 1; freeze_allowed += int(allowed)
 
 closure_cases=closure_allowed=0
-e_fields=["behavior_implementation_mapped","behavior_locations_resolved","exception_classification_implemented","recovery_fallback_implemented","executable_path_verified","fault_injection_passed","verifier_discriminates","capsule_contains_implementation"]
-for bits in product([False,True],repeat=8):
-    e=ExecutionClosureEvidence(**dict(zip(e_fields,bits)),implementation_map_hash="impl",fault_injection_report_hash="fault",verifier_report_hash="verify")
+e_fields=["behavior_implementation_mapped","behavior_locations_resolved","exception_classification_implemented","recovery_fallback_implemented","executable_path_verified","fault_injection_passed","verifier_discriminates","capsule_contains_implementation","freeze_manifest_consistent","payload_materialization_verified"]
+for bits in product([False,True],repeat=10):
+    e=ExecutionClosureEvidence(**dict(zip(e_fields,bits)),implementation_map_hash="impl",fault_injection_report_hash="fault",verifier_report_hash="verify",freeze_manifest_consistency_hash="manifest",payload_materialization_report_hash="materialize")
     claim=all(bits); vm=replace(good_v,execution_chain_closed=claim,execution_evidence=e); expected=all(bits)
     try: transition(base,Event.FREEZE_TO_REAL,vm); allowed=True
     except Blocked: allowed=False
@@ -100,7 +101,7 @@ for bits in product([False,True],repeat=8):
     closure_cases += 1; closure_allowed += int(allowed)
 
 hash_cases=0
-for field in ["implementation_map_hash","fault_injection_report_hash","verifier_report_hash"]:
+for field in ["implementation_map_hash","fault_injection_report_hash","verifier_report_hash","freeze_manifest_consistency_hash","payload_materialization_report_hash"]:
     e=replace(good_e,**{field:""})
     assert not execution_closure_pass(e)
     expect_block(lambda e=e: transition(base,Event.FREEZE_TO_REAL,replace(good_v,execution_evidence=e)),"EXECUTION_CHAIN_CLAIM_MISMATCH")
@@ -145,7 +146,7 @@ for sample in samples:
 
 total=directed+freeze_cases+closure_cases+hash_cases+real_cases+adapter_cases+failure_cases+determinism_cases
 assert freeze_cases==65536 and freeze_allowed==1
-assert closure_cases==256 and closure_allowed==1
+assert closure_cases==1024 and closure_allowed==1
 assert real_cases==128 and real_allowed==1
 assert adapter_cases==32
 assert failure_cases==12
