@@ -6,7 +6,7 @@
     "实"
   ],
   "terminal_is_phase": false,
-  "semantic_patch": "make T*=min(T_VALID) a mandatory machine-visible dispatch control; no new phase",
+  "semantic_patch": "T*=min(T_VALID) is a continuous task-time state, not a per-dispatch label; no new top-level phase",
   "rule": "SPEC_COMPLETE != IMPLEMENTATION_COMPLETE; VIRTUAL_COMPLETE requires both plus GPT verification and freeze completeness",
   "execution_chain_closed_evidence": [
     "behavior_implementation_mapped",
@@ -58,7 +58,14 @@
     "REAL dispatch without T_STAR_SOURCE",
     "REAL locator without machine-rendered T*",
     "REAL PASS compared against a T* different from the frozen state",
-    "stale T* reused after REAL FAIL"
+    "stale T* reused after REAL FAIL",
+    "new TIMELINE_ID created after REAL FAIL for the same task",
+    "TIME_ORIGIN_UTC changed during the same task",
+    "TIME_EVENT_SEQ does not equal append-only event count",
+    "time event order is non-contiguous",
+    "old TIME_EVENTS erased on retry",
+    "old certified best T_VALID erased on retry",
+    "active stale T* reused after REAL FAIL"
   ],
   "time_anchor_contract": {
     "virtual_pre_maturity": "T*=PENDING is allowed",
@@ -78,5 +85,49 @@
     "real_pass_rule": "T_VALID_REAL_MS <= the exact frozen state T_STAR_MS",
     "real_fail_rule": "return to VIRTUAL clears active time anchor so stale T* cannot be reused"
   },
-  "render_dispatch_header_from_state_only": true
+  "render_dispatch_header_from_state_only": true,
+  "time_ledger": {
+    "invariant": "One task owns one immutable TIMELINE_ID and TIME_ORIGIN_UTC across Virtual, Real, failures, retries and final certification.",
+    "state_fields": [
+      "TIMELINE_ID",
+      "TIME_ORIGIN_UTC",
+      "TIME_EVENT_SEQ",
+      "TIME_EVENTS[]",
+      "T_STAR_STATUS",
+      "T_STAR_MS(active, may be PENDING in Virtual)",
+      "BEST_CERTIFIED_T_VALID_MS",
+      "T_VALID_START",
+      "T_VALID_END",
+      "T_STAR_SOURCE"
+    ],
+    "append_only_events": [
+      "FREEZE_TO_REAL",
+      "REAL_START",
+      "REAL_FAIL",
+      "REAL_PASS"
+    ],
+    "fail_semantics": [
+      "preserve TIMELINE_ID",
+      "preserve TIME_ORIGIN_UTC",
+      "preserve TIME_EVENTS",
+      "preserve BEST_CERTIFIED_T_VALID_MS",
+      "clear only the active freeze T* to PENDING so stale T* cannot be reused"
+    ],
+    "pass_semantics": [
+      "append REAL_START and REAL_PASS",
+      "set T_STAR_STATUS=REAL_CERTIFIED",
+      "BEST_CERTIFIED_T_VALID_MS=min(previous_best,current_T_VALID_REAL_MS)"
+    ],
+    "dispatch_visibility": [
+      "TIMELINE_ID",
+      "TIME_ORIGIN_UTC",
+      "TIME_EVENT_SEQ",
+      "T_STAR_STATUS",
+      "T_STAR_MS",
+      "T_VALID_START",
+      "T_VALID_END",
+      "T_STAR_SOURCE",
+      "BEST_CERTIFIED_T_VALID_MS"
+    ]
+  }
 }
