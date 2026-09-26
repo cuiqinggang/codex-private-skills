@@ -1,0 +1,94 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "freeze_id": "ESTE-v5.0.2-0505-PROOF-CARRYING-FREEZE-R2",
+  "freeze_scope": "complete exact-byte proof-carrying Reality freeze",
+  "repository": {
+    "url": "https://github.com/cuiqinggang/codex-private-skills",
+    "full_name": "cuiqinggang/codex-private-skills",
+    "branch": "codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze"
+  },
+  "valid_definition_changed": false,
+  "t_star_ms": 2.266199100661977,
+  "locator_display": "00:00.002",
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob_sha": "a1ef0cae1833461faa044dad33ce6f3a7acba402"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob_sha": "1792d14a2fb45b60cb93876f6d615c110990937d"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/STATE-MACHINE-v5.0.2.json",
+      "blob_sha": "b7e8e28b59a811a2d91db881248191185cf1c990"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/state_machine_v5_0_2.py",
+      "blob_sha": "a78f09efc7658a723b70639c19de8bf8d7fc169c"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_state_machine_v5_0_2.py",
+      "blob_sha": "f792df4a5c81fc174239c26a6b40f1980d8c73e1"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE-05-05.py",
+      "blob_sha": "aec8e3addd54b677ced8843db60774841623924b",
+      "sha256": "4baf7d00c1921cd85bf8117d325e22772a1372e6946750045504befc1c9881ee"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/VIRTUAL-EXACT-PROOF-05-05-R2.json",
+      "blob_sha": "2eaa2ded44b91c775110927e63d25903e6907d02"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/REALITY-CERTIFICATE-BENCHMARK-05-05-R2.json",
+      "blob_sha": "aa2bc6ea2ea103cb3892649e5eb1e2f7091b1a79"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/PAYLOAD-MATERIALIZATION-REPORT-05-05-R2.json",
+      "blob_sha": "724d2248d9f6293f885375706877ebd22abb0863"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/REAL-EXECUTION-CONTRACT-05-05-R2.json",
+      "blob_sha": "6e8496fd8edbab5e795409f508cf6939d53976d5"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-05-05-R2.json",
+      "blob_sha": "beb704d9397002560a4a3d31162b4056d6114bd5"
+    }
+  ],
+  "virtual_completion": {
+    "spec_complete": "PASS",
+    "implementation_complete": "PASS",
+    "execution_chain_closed": "PASS",
+    "freeze_manifest_consistent": "PENDING_POST_PUBLISH_REREAD",
+    "payload_materialization_verified": "PASS",
+    "exact_blob_recomputed": "PASS",
+    "exhaustive_virtual_proof": "66745/66745 PASS",
+    "reality_certificate": "62/62 PASS",
+    "reality_certificate_benchmark": "1000/1000 VALID",
+    "remote_source_locator_frozen": "PASS",
+    "external_dependencies_closed": "PASS",
+    "time_contract": "PASS"
+  },
+  "timing_model": {
+    "gpt_exact_certificate_min_ms": 0.475232,
+    "windows_anchor_ratio": 4.768616382444736,
+    "target_windows_t_star_ms": 2.266199100661977
+  },
+  "reality_contract": {
+    "exact_capsule_blob_required": "aec8e3addd54b677ced8843db60774841623924b",
+    "exact_capsule_sha256_required": "4baf7d00c1921cd85bf8117d325e22772a1372e6946750045504befc1c9881ee",
+    "exhaustive_proof_receipt_required": true,
+    "timed_function": "run_reality_certificate",
+    "expected_result": "62/62 PASS",
+    "do_not_repeat_exhaustive_66745_in_reality": true
+  },
+  "invariants": [
+    "This R2 manifest supersedes the unstarted 05-05 R1 freeze.",
+    "No 05-02/05-03/05-04/R1 manifest is an execution dependency.",
+    "Reality certificate is valid only for this exact capsule blob and SHA-256.",
+    "Any mutation of a listed asset invalidates this freeze."
+  ]
+}
