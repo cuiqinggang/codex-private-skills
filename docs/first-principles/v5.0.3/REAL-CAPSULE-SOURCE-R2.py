@@ -569,6 +569,6 @@ def run_reality_certificate():
     )
     blocked(lambda:transition(tight,Event.REAL_PASS,gp(5.0)),"T_STAR_NOT_MET")
 
-    assert checks == 25, checks
+    assert checks == 27, checks
     return {"TOTAL":checks,"PASS":checks}
 
