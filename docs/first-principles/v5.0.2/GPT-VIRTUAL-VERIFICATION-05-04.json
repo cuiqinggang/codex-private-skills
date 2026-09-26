@@ -1,0 +1,15 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "attempt": "05-04",
+  "owner": "GPT virtual stage",
+  "exact_frozen_capsule_blob": "f89519ee6e44c9df7032121bd6f1181a129f790e",
+  "exact_frozen_capsule_sha256": "723e622c923ff972c24cc3b739aac05a6e0ad69b5698f124b56ef57767aaa2ba",
+  "gpt_materialization_verified": true,
+  "run_verifier_callable": true,
+  "runs": "70/70 VALID",
+  "result_per_run": "66745/66745 PASS",
+  "t_star_ms": 493.886824,
+  "t_star_display": "00:00.494",
+  "result": "GPT_VIRTUAL_VERIFIED=PASS"
+}
