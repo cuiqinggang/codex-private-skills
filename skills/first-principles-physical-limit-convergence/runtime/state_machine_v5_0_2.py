@@ -52,9 +52,13 @@ class ExecutionClosureEvidence:
     fault_injection_passed: bool
     verifier_discriminates: bool
     capsule_contains_implementation: bool
+    freeze_manifest_consistent: bool
+    payload_materialization_verified: bool
     implementation_map_hash: str
     fault_injection_report_hash: str
     verifier_report_hash: str
+    freeze_manifest_consistency_hash: str
+    payload_materialization_report_hash: str
 
 @dataclass(frozen=True)
 class VirtualMature:
@@ -110,9 +114,13 @@ def execution_closure_pass(e: ExecutionClosureEvidence) -> bool:
         and e.fault_injection_passed
         and e.verifier_discriminates
         and e.capsule_contains_implementation
+        and e.freeze_manifest_consistent
+        and e.payload_materialization_verified
         and _nonempty(e.implementation_map_hash)
         and _nonempty(e.fault_injection_report_hash)
         and _nonempty(e.verifier_report_hash)
+        and _nonempty(e.freeze_manifest_consistency_hash)
+        and _nonempty(e.payload_materialization_report_hash)
     )
 
 def virtual_complete_pass(v: VirtualMature) -> bool:
