@@ -1,0 +1,48 @@
+{
+  "version":"5.0.8",
+  "freeze_id":"ESTE-v5.0.8-DUAL-END-NUMERIC-TIME-ASCII-CAPSULE-VIRTUAL-FREEZE-R2",
+  "result":"PASS",
+  "state_machine_preserved":true,
+  "remote_shared_repo_primary_path_preserved":true,
+  "tests":{
+    "control_boundary_return_matrix":"512/512 PASS; ALLOW=1",
+    "gpt_to_codex_dispatch_matrix":"32/32 PASS; ALLOW=1",
+    "codex_to_gpt_fail_blocked_matrix":"512/512 PASS; ALLOW=1",
+    "codex_to_gpt_pass_matrix":"1024/1024 PASS; ALLOW=1",
+    "round_trip_random_chains":"20000/20000 PASS",
+    "timeline_rebuild":0,
+    "closed_loop_time_reversal":0,
+    "t_star_handoff_drift":0,
+    "missing_numeric_time_on_return":0,
+    "ascii_only_capsule":"PASS",
+    "ascii_utf8_cp1252_latin1_roundtrip":"PASS",
+    "fresh_namespace_materialization":"5000/5000 PASS",
+    "reality_certificate_logic":"18/18 PASS"
+  },
+  "full_virtual_suite_ms":{
+    "runs":10,
+    "min":215.557737,
+    "p50":222.007210,
+    "p95":240.230782,
+    "max":245.786124
+  },
+  "reality_certificate_benchmark_ms":{
+    "runs":10000,
+    "min":0.002384,
+    "p50":0.002514,
+    "p95":0.002624,
+    "max":0.387835
+  },
+  "materialization_benchmark_ms":{
+    "runs":5000,
+    "min":0.179350,
+    "p50":0.199942,
+    "p95":0.303915,
+    "max":3.011062
+  },
+  "windows_gpt_ratio":4.768616382444736,
+  "reality_certificate_t_star_ms":0.01136838145574825,
+  "timing_rule":"materialization preflight is outside T_VALID_REAL; timed interval is only run_reality_certificate().",
+  "complexity_conclusion":"one numeric time envelope + one validator reused bidirectionally; no new state-machine stage.",
+  "virtual_mature":true
+}
