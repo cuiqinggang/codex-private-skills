@@ -1,0 +1,45 @@
+{
+  "version": "5.0.2",
+  "freeze_id": "ESTE-v5.0.2-0503-REMOTE-LOCATOR-FREEZE-01",
+  "freeze_scope": "Reality handoff locator only; implementation unchanged",
+  "implementation_changed": false,
+  "base_freeze": {
+    "path": "docs/first-principles/v5.0.2/FREEZE-MANIFEST.json",
+    "blob_sha": "052538814aed80507a155e5fe93e4ff34b261fb7"
+  },
+  "remote_locator": {
+    "repository_full_name": "cuiqinggang/codex-private-skills",
+    "repository_url": "https://github.com/cuiqinggang/codex-private-skills",
+    "branch": "codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze",
+    "handoff_path": "docs/first-principles/v5.0.2/REAL-HANDOFF-05-03.json",
+    "handoff_blob_sha": "c8695eeb1705e7e9730c2b10389dac574905a8ce",
+    "manifest_path": "docs/first-principles/v5.0.2/FREEZE-MANIFEST.json",
+    "manifest_blob_sha": "052538814aed80507a155e5fe93e4ff34b261fb7",
+    "manifest_browser_url": "https://github.com/cuiqinggang/codex-private-skills/blob/codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze/docs/first-principles/v5.0.2/FREEZE-MANIFEST.json",
+    "capsule_path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE.py",
+    "capsule_blob_sha": "ce4d43553538580d04d80b457b7ad4f24de7f8b1",
+    "capsule_sha256": "c7c960f74b201cf70829db9a998644f00b15dc968ca0888c4b0bdda4301f30d9",
+    "capsule_browser_url": "https://github.com/cuiqinggang/codex-private-skills/blob/codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze/docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE.py"
+  },
+  "gpt_remote_reread": {
+    "repository_access": "PASS",
+    "branch_resolution": "PASS",
+    "manifest_blob_match": "PASS",
+    "capsule_blob_match": "PASS"
+  },
+  "source_policy": {
+    "primary": "shared_private_github_repository",
+    "local_workspace_required": false,
+    "do_not_search_c_drive_when_remote_access_works": true,
+    "fallback_trigger": [
+      "NETWORK_UNAVAILABLE",
+      "AUTH_UNAVAILABLE",
+      "REPOSITORY_UNAVAILABLE"
+    ],
+    "fallback_action": "STOP -> REMOTE_REPO_UNAVAILABLE -> RETURN_TO_GPT"
+  },
+  "verifier_expected": "65975/65975 PASS",
+  "t_star_ms": 269.560254,
+  "dispatch_adapter": "CODEX",
+  "dispatch_mode": "CHAT"
+}
