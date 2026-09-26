@@ -49,3 +49,20 @@ CODEX 的 EXEC / PowerShell / Shell 发送方式直接阻断。
 - `docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE.py`
 
 v5.0.0 保留为演化证据，不作为 v5.0.2 运行时权威。
+
+
+## 冻结源解析规则
+冻结资产的“可执行”不等于必须预先复制进目标工作目录。
+
+允许的首选权威源包括共同私有 GitHub 仓库。进入“实”前，派发合同必须明确冻结：
+- `REPOSITORY_URL / REPOSITORY_FULL_NAME`
+- `BRANCH`（或更强的不可变 commit/blob）
+- 完整 `PATH`
+- 期望 `BLOB_SHA`；必要时再加内容 `SHA-256`
+
+现实执行器必须先按冻结远程定位读取权威源。只要网络、登录权限和仓库访问正常，就直接读取，不要求先在当前工作区或 C 盘存在副本，也不得无目的扫描本地磁盘。
+
+只有远程源因 `NETWORK_UNAVAILABLE / AUTH_UNAVAILABLE / REPOSITORY_UNAVAILABLE` 确实不可达时，才允许：
+`STOP -> REMOTE_REPO_UNAVAILABLE -> Reality Delta -> 回虚`
+
+本地/内联副本只是“虚”阶段可以预先冻结的兜底方案，不是远程仓库正常可用时的默认前置条件。
