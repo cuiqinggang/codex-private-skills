@@ -1,0 +1,30 @@
+{
+  "version": "5.0.3",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "task": "v5.0.3唯一锚定物连续状态升级",
+  "certificate": "run_reality_certificate",
+  "certificate_checks": 27,
+  "logic_execution": {
+    "result": "27/27 PASS",
+    "runs": 2000,
+    "valid_runs": 2000,
+    "benchmark_ms": {
+      "min": 0.174353,
+      "p50": 0.17925,
+      "p95": 0.253162,
+      "max": 0.764844
+    }
+  },
+  "repository_capsule": {
+    "path": "docs/first-principles/v5.0.3/REAL-CAPSULE-SOURCE-R2.py",
+    "git_blob": "b61c4c2efc50ad144c3b92653da1eb787fe5bbc6",
+    "post_write_reread": "PASS"
+  },
+  "target_windows_anchor": {
+    "source_ratio": "v5.0.2 certified Windows/GPT ratio",
+    "ratio": 4.768616382444736,
+    "predicted_t_star_ms": 0.8314225721283871
+  },
+  "note": "The Python host executed the current v5.0.3 logic and 27-check certificate; the repository artifact identity is separately frozen by Git blob and post-publish reread.",
+  "status": "PASS"
+}
