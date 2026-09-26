@@ -1,0 +1,30 @@
+{
+  "version":"5.0.8",
+  "purpose":"吸收 v5.0.7 UnicodeEncodeError Reality Delta；冻结可执行 Reality Capsule 必须在进入计时前完成无损物化。",
+  "state_machine_preserved":true,
+  "normal_source":"REMOTE_SHARED_REPO_DIRECT",
+  "executable_capsule_policy":{
+    "ascii_only":true,
+    "human_docs_may_use_unicode":true,
+    "required_preflight":[
+      "read exact frozen remote blob",
+      "verify expected blob",
+      "source_text_is_ascii",
+      "compile source in fresh namespace",
+      "exec source in same fresh namespace",
+      "run_reality_certificate exists and is callable"
+    ]
+  },
+  "timing_boundary":{
+    "materialization_preflight":"outside T_VALID_REAL",
+    "T_VALID_START":"immediately before calling run_reality_certificate after preflight PASS",
+    "T_VALID_END":"immediately after certificate returns all checks PASS"
+  },
+  "failure":"PAYLOAD_MATERIALIZATION_OR_ENCODING_FAIL -> REAL_FAIL/BLOCKED -> numeric return time envelope -> STOP -> RETURN_TO_GPT",
+  "forbidden":[
+    "modify frozen capsule during Reality",
+    "retry same Freeze after encoding failure",
+    "use non-ASCII executable text in Reality Capsule",
+    "drop numeric time envelope on FAIL/BLOCKED"
+  ]
+}
