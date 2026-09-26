@@ -1,0 +1,39 @@
+{
+  "version": "5.0.8",
+  "revision": "R4",
+  "result": "PASS",
+  "timeline_id": "ESTE-v5.0.7-NUMERIC-TIME-ANCHOR-01",
+  "freeze_id": "ESTE-v5.0.8-REALITY-FIRST-FINAL-CLOSEOUT-VIRTUAL-FREEZE-R4",
+  "manifest_blob": "ae548214d56ff699e06ce6203432e859c1113308",
+  "freeze_consistency": "31/31 PASS",
+  "materialization_preflight": "PASS",
+  "semantic_equivalence": "PASS",
+  "baseline": {
+    "valid": true,
+    "valid_count": 1000,
+    "samples": 1000,
+    "min_ms": 0.0074,
+    "p50_ms": 0.0077,
+    "p95_ms": 0.0093,
+    "max_ms": 0.6865
+  },
+  "optimized": {
+    "valid": true,
+    "valid_count": 1000,
+    "samples": 1000,
+    "min_ms": 0.0027,
+    "p50_ms": 0.0028,
+    "p95_ms": 0.003,
+    "max_ms": 52.2077
+  },
+  "winner": "R4_OPTIMIZED",
+  "final_real_t_star_ms": 0.0027,
+  "real_valid": true,
+  "final_valid_candidate": true,
+  "historical_virtual_prediction_ms": 0.01136838145574825,
+  "historical_prediction_is_gate": false,
+  "reality_delta": "NONE",
+  "executor_return_closed_loop_elapsed_ms": 9889460.999,
+  "executor_exchange_elapsed_ms": 311909,
+  "executor_return_utc": "2026-09-26T21:57:05.909728+00:00"
+}
