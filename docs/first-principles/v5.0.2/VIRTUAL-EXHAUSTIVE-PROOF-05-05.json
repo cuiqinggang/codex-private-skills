@@ -1,0 +1,31 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "attempt": "05-05",
+  "capsule": {
+    "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE-05-05.py",
+    "blob_sha": "aec8e3addd54b677ced8843db60774841623924b"
+  },
+  "exhaustive_virtual_proof": {
+    "cases": 66745,
+    "passed": 66745,
+    "status": "PASS",
+    "scope": [
+      "1024 execution-closure combinations",
+      "65536 virtual-maturity combinations",
+      "128 REAL PASS combinations",
+      "adapter policy",
+      "failure transitions",
+      "evidence hash omissions",
+      "determinism"
+    ]
+  },
+  "reality_certificate": {
+    "function": "run_reality_certificate",
+    "checks": 62,
+    "passed": 62,
+    "status": "PASS",
+    "role": "target-environment compatibility certificate for the exact blob already exhaustively proved in Virtual"
+  },
+  "invariant": "Reality certificate is valid only if the exact capsule blob and the complete Freeze match this proof."
+}
