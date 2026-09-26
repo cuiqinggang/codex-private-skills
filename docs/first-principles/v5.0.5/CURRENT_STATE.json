@@ -1,0 +1,14 @@
+{
+  "version": "5.0.5",
+  "freeze_id": "ESTE-v5.0.5-STATE-MACHINE-PRESERVED-TIME-MASTER-VIRTUAL-FREEZE-R1",
+  "phase": "虚",
+  "virtual_mature": true,
+  "freeze": true,
+  "real_started": false,
+  "real_certified": false,
+  "next_control_owner": "CODEX",
+  "normal_authoritative_source": "REMOTE_SHARED_REPO_DIRECT",
+  "download_handoff_required": false,
+  "state_machine_preserved": true,
+  "time_master_overlay_only": true
+}
