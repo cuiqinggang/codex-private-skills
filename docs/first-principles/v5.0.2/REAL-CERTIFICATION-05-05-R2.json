@@ -1,0 +1,55 @@
+{
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "locator": "【整体闭环极限时间引擎5.0.2版｜v5.0.2虚拟成熟现实认证｜05-05｜实】",
+  "version": "5.0.2",
+  "result": "REAL_PASS=YES",
+  "freeze": {
+    "freeze_id": "ESTE-v5.0.2-0505-PROOF-CARRYING-FREEZE-R2",
+    "manifest_path": "docs/first-principles/v5.0.2/FREEZE-MANIFEST-05-05-R2.json",
+    "manifest_blob": "4197518fcd2334c27a5d3fa91280540ba04b8efb",
+    "consistency_report_blob": "47e619072f6706064b84416cf67a41e47c52c02c",
+    "frozen_asset_count": 11,
+    "mismatches": []
+  },
+  "capsule": {
+    "blob": "aec8e3addd54b677ced8843db60774841623924b",
+    "sha256": "4baf7d00c1921cd85bf8117d325e22772a1372e6946750045504befc1c9881ee",
+    "exact_blob_match": true,
+    "exact_sha256_match": true
+  },
+  "proof": {
+    "exhaustive_virtual_proof": "66745/66745 PASS",
+    "reality_certificate": "62/62 PASS",
+    "evidence_consistent": true
+  },
+  "timing": {
+    "real_start": 857925210333500,
+    "real_end": 857925211246800,
+    "t_valid_real_ms": 0.9133,
+    "frozen_t_star_ms": 2.266199101,
+    "pass_threshold_met": true,
+    "headroom_ms": 1.352899101,
+    "real_as_fraction_of_frozen_t_star": 0.40300960299427807,
+    "frozen_t_star_over_real": 2.4813304511113548
+  },
+  "certified_anchor": {
+    "metric": "min(T_VALID) among target-Windows valid Reality results for the 05-05-R2 certificate",
+    "value_ms": 0.9133,
+    "status": "REAL_CERTIFIED"
+  },
+  "methodology": {
+    "top_level_method": [
+      "虚",
+      "实"
+    ],
+    "valid_definition_changed": false,
+    "virtual_exhaustive_proof_retained": true,
+    "reality_used_minimal_certificate": true,
+    "no_reality_redesign": true
+  },
+  "status": {
+    "done": true,
+    "real_certified": true,
+    "long_term_canonical": true
+  }
+}
