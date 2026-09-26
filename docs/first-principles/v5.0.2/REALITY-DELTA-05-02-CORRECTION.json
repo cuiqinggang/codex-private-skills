@@ -1,0 +1,27 @@
+{
+  "version": "5.0.2",
+  "supersedes": "docs/first-principles/v5.0.2/REALITY-DELTA-05-02.json classification only",
+  "reality_event": "05-02",
+  "corrected_class": "DISPATCH_REMOTE_LOCATOR_INCOMPLETE",
+  "structural_engine_failure": false,
+  "method_version_bump_required": false,
+  "facts": [
+    "Frozen assets existed in the shared private GitHub repository.",
+    "05-02 dispatch supplied filenames/blobs but did not give the repository URL + branch + full paths.",
+    "Codex searched the current task directory and C drive instead of the intended shared repository.",
+    "run_verifier() never started, so the implementation/verifier itself was not disproved."
+  ],
+  "canonical_remote_source": {
+    "repository_full_name": "cuiqinggang/codex-private-skills",
+    "repository_url": "https://github.com/cuiqinggang/codex-private-skills",
+    "branch": "codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze",
+    "freeze_manifest_path": "docs/first-principles/v5.0.2/FREEZE-MANIFEST.json",
+    "freeze_manifest_blob": "052538814aed80507a155e5fe93e4ff34b261fb7",
+    "capsule_path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE.py",
+    "capsule_blob": "ce4d43553538580d04d80b457b7ad4f24de7f8b1",
+    "capsule_sha256": "c7c960f74b201cf70829db9a998644f00b15dc968ca0888c4b0bdda4301f30d9"
+  },
+  "fallback_policy": "Only if network/auth/repository access fails: STOP and return a REMOTE_REPO_UNAVAILABLE Reality Delta. Do not silently search C drive or redesign.",
+  "next_state": "05-03 VIRTUAL -> corrected remote-locator handoff freeze -> 05-03 REAL",
+  "abandoned_noncanonical_branch": "codex/first-principles-physical-limit-convergence-v5.0.3-virtual-freeze"
+}
