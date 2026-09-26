@@ -2,7 +2,7 @@
 name: first-principles-physical-limit-convergence
 description: 整体闭环极限短时间引擎 v5.0.2。方法仍只有“虚→实”；v5.0.2 收紧虚拟成熟证据语义，禁止把“设计成熟”冒充“实现已成熟”。唯一目标 min(T_VALID)。
 metadata:
-  version: "5.0.2"
+  version: "5.0.3"
   display_name: "整体闭环极限短时间引擎"
 ---
 
@@ -88,3 +88,31 @@ Reality 不需要重复执行已经由“确切同一 blob + 不可变哈希”�
 这不改变 VALID 定义；如果 blob、Manifest 或全量证明证据任一不一致，最小证书没有资格运行。
 
 Reality 的 `T_VALID_REAL` 应测最小目标环境证书本身；全量穷举时间属于虚拟成熟的一次性证明成本，不重复计入每次 Reality 认证。
+
+
+## 时间锚定硬合同（v5.0.3）
+`T*=min(T_VALID)` 不是说明文字，而是每个任务的唯一控制锚。
+
+虚阶段可以在尚未成熟时显示 `T*=PENDING`；但一旦声明 `VIRTUAL_COMPLETE=YES`，必须已经冻结：
+- `T_STAR_MS`
+- `T_VALID_START`
+- `T_VALID_END`
+- `T_STAR_SOURCE`
+
+缺任意一项，禁止 `虚 -> 实`。
+
+所有 Reality/Codex 派发第一屏必须由状态机机械渲染时间锚，不允许模型自由省略。固定最小格式：
+
+`【页面名｜任务名｜NN-NN｜实】 极限锚MM:SS.mmm｜T*=X.XXXXXXms`
+
+紧随其后必须出现：
+
+`T_STAR_MS=...`
+`T_VALID_START=...`
+`T_VALID_END=...`
+`T_STAR_SOURCE=...`
+
+REAL PASS 只能使用该冻结状态中的同一个 `T_STAR_MS` 判断：
+`T_VALID_REAL_MS <= T_STAR_MS`。
+
+REAL FAIL 返回虚后，活动时间锚必须清空；下一次 Reality 必须重新虚拟成熟并生成新的 T*，禁止沿用旧任务/旧尝试的时间锚。
