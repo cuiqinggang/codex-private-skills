@@ -1,0 +1,26 @@
+{
+  "version": "5.0.2",
+  "freeze_id": "ESTE-v5.0.2-0503-REMOTE-LOCATOR-FREEZE-R2",
+  "scope": "remote locator and source policy; runtime unchanged",
+  "repository": "https://github.com/cuiqinggang/codex-private-skills",
+  "branch": "codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze",
+  "skill_policy": {
+    "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+    "blob": "6a78f13217dc5e579408046924ecdedaa51dc919"
+  },
+  "base_manifest": {
+    "path": "docs/first-principles/v5.0.2/FREEZE-MANIFEST.json",
+    "blob": "052538814aed80507a155e5fe93e4ff34b261fb7"
+  },
+  "capsule": {
+    "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE.py",
+    "blob": "ce4d43553538580d04d80b457b7ad4f24de7f8b1",
+    "sha256": "c7c960f74b201cf70829db9a998644f00b15dc968ca0888c4b0bdda4301f30d9"
+  },
+  "remote_source_rule": "Read the shared private GitHub repository first. A local workspace copy is not required while network/auth/repository access works.",
+  "remote_failure_rule": "Only NETWORK_UNAVAILABLE, AUTH_UNAVAILABLE, or REPOSITORY_UNAVAILABLE may stop remote resolution and return Reality Delta.",
+  "expected_verifier": "65975/65975 PASS",
+  "t_star_ms": 269.560254,
+  "adapter": "CODEX",
+  "mode": "CHAT"
+}
