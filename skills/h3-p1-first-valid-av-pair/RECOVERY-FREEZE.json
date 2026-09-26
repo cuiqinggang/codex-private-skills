@@ -1,0 +1,91 @@
+{
+  "schema": "H3-P1-RECOVERY-FREEZE-v1",
+  "version": "1.0.0",
+  "release_id": "H3-P1-v1.0.0",
+  "freeze_id": "H3P1-v1.0.0-ASSET-RECOVERY-R1",
+  "scope": "READ_ONLY_ASSET_RECOVERY_NOT_P1_GENERATION",
+  "repository_full_name": "cuiqinggang/codex-private-skills",
+  "branch": "codex/h3-p1-first-valid-av-pair-v1.0.0",
+  "payload_commit": "c69e6a734ba7239a93c11776a6345e8aae9ca991",
+  "files": [
+    {
+      "path": "skills/h3-p1-first-valid-av-pair/ASSET-RECOVERY.py",
+      "bytes": 8488,
+      "git_blob": "717dba78b8b3cb2fdcaa23d819ee2e0a01ebf92c",
+      "sha256": "4e2b7ec3937290a60e747c7596f70d6792a1ce3772942ebba43dfb80cf09548c"
+    },
+    {
+      "path": "skills/h3-p1-first-valid-av-pair/TEST-ASSET-RECOVERY.py",
+      "bytes": 7857,
+      "git_blob": "57ffbec50706f56372a14e5f6af792eb2fe3b8d1",
+      "sha256": "ae4edcf7cd5d0a07322c7b898648b3521d31c3eff78d1db0d114b7312bbff52e"
+    },
+    {
+      "path": "skills/h3-p1-first-valid-av-pair/SKILL.md",
+      "bytes": 7097,
+      "git_blob": "63cb6c429c2ebbd94df33062353222e7952a9e24",
+      "sha256": "7c9d5cb9f922c08f74b8ead461daf3bf7314a2593efc7c8eefe744ab88678248"
+    },
+    {
+      "path": "skills/h3-p1-first-valid-av-pair/GPT-SELFTEST-RESULT.json",
+      "bytes": 661,
+      "git_blob": "46a578cb2733a1def06e5b8371b74f6b2175ca7c",
+      "sha256": "7d7a9ecfa303417c77a44991a79d9a6889b4a7cf79b0c8d72c14f761ad9db62e"
+    },
+    {
+      "path": "skills/h3-p1-first-valid-av-pair/RECOVERY-FIXTURE-TIMING.json",
+      "bytes": 1032,
+      "git_blob": "cf24d8f4a47154b50a782b3e5da999ff93ee4754",
+      "sha256": "1e8fed3e43cb9b961940775e8f5506e1e2988133c3d57926eca244a404c8f7e1"
+    }
+  ],
+  "readback_all_five_blobs_match": true,
+  "materialization_evidence": {
+    "remote_fulltext_read": true,
+    "transfer_mode": "CONNECTOR_FULLTEXT_READ_AND_GIT_BLOB_BYTE_IDENTITY",
+    "same_namespace_compile_and_entrypoints": "PASS",
+    "same_namespace_fixture_recover_and_verifier": "PASS",
+    "direct_raw_http_download_claimed": false
+  },
+  "implementation_map": {
+    "fixed_input_scope": "ASSET-RECOVERY.py:ASSETS",
+    "bounded_reads_and_classified_errors": "ASSET-RECOVERY.py:inspect_asset",
+    "scope_content_verifier": "ASSET-RECOVERY.py:run_verifier",
+    "exclusive_output_and_readback": "ASSET-RECOVERY.py:recover",
+    "windows_entrypoint": "ASSET-RECOVERY.py:run_reality"
+  },
+  "test_evidence": {
+    "file": "GPT-SELFTEST-RESULT.json",
+    "tests_passed": 20,
+    "tests_failed": 0,
+    "scope": "CPU_FIXTURES_ONLY"
+  },
+  "recovery_fixture_timing": {
+    "file": "RECOVERY-FIXTURE-TIMING.json",
+    "samples": 30,
+    "min_ms": 0.304092,
+    "not_windows_prediction": true,
+    "not_p1_time": true
+  },
+  "allowed_reality_entrypoint": "run_reality()",
+  "allowed_interpreter": "C:\\AI\\MiniMax-H3\\.venv\\Scripts\\python.exe",
+  "allowed_output_root": "C:\\AI\\H3-P1-Acceptance\\v1.0.0",
+  "interpreter_missing_action": "STOP_RETURN_TO_GPT",
+  "source_unavailable_action": "STOP_RETURN_TO_GPT",
+  "asset_differences_action": "RECORD_ONLY_STOP_RETURN_TO_GPT",
+  "post_success_action": "STOP_RETURN_TO_GPT",
+  "generation_allowed": false,
+  "network_from_capsule_allowed": false,
+  "model_content_read_allowed": false,
+  "source_edits_allowed": false,
+  "recursive_scan_allowed": false,
+  "p1_spec_complete": false,
+  "p1_virtual_complete": false,
+  "p1_real_generation_runs": 0,
+  "p1_virtual_t_valid_ms": null,
+  "p1_real_t_valid_ms": null,
+  "locator": "【H3-P1首个有效图声对｜v1.0.0原资产只读回收｜01｜实】",
+  "manifest_identity": "not self-referential; pin this manifest by its returned Git blob in the handoff",
+  "source_integrity": "All five payload files are immutable at payload_commit; a changed file requires a new complete recovery freeze.",
+  "evidence_caveat": "Fixture checks are not Windows target certification or image/audio semantic validation."
+}
