@@ -1,0 +1,30 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "attempt": "05-05-R2",
+  "repository": "https://github.com/cuiqinggang/codex-private-skills",
+  "branch": "codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze",
+  "capsule_path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE-05-05.py",
+  "capsule_blob": "aec8e3addd54b677ced8843db60774841623924b",
+  "capsule_sha256": "4baf7d00c1921cd85bf8117d325e22772a1372e6946750045504befc1c9881ee",
+  "proof_model": {
+    "exhaustive_virtual_proof": "66745/66745 PASS on exact blob",
+    "reality_certificate": "62/62 PASS on exact blob"
+  },
+  "execution": [
+    "fetch full exact source text",
+    "verify blob and SHA-256",
+    "exec exact source in one fresh namespace with __name__='remote_capsule'",
+    "assert both run_verifier and run_reality_certificate are callable",
+    "do not run run_verifier in Reality after exact Freeze/proof match",
+    "time only run_reality_certificate"
+  ],
+  "expected_result": "62/62 PASS",
+  "t_star_ms": 2.266199100661977,
+  "forbidden": [
+    "re-running exhaustive 66745 proof in Reality after exact proof match",
+    "changing VALID",
+    "using a different blob",
+    "repairing in Reality"
+  ]
+}
