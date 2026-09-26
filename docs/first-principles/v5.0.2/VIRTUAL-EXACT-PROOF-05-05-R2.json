@@ -1,0 +1,27 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "attempt": "05-05-R2",
+  "exact_capsule": {
+    "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE-05-05.py",
+    "blob_sha": "aec8e3addd54b677ced8843db60774841623924b",
+    "sha256": "4baf7d00c1921cd85bf8117d325e22772a1372e6946750045504befc1c9881ee",
+    "chars": 19693,
+    "bytes": 19845,
+    "git_blob_recompute_match": true
+  },
+  "exact_execution": {
+    "run_verifier": {
+      "result": "66745/66745 PASS",
+      "elapsed_ms": 630.161501
+    },
+    "run_reality_certificate": {
+      "result": "62/62 PASS"
+    },
+    "callable_after_materialization": {
+      "run_verifier": true,
+      "run_reality_certificate": true
+    }
+  },
+  "status": "PASS"
+}
