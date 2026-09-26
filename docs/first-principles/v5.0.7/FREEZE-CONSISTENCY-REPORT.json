@@ -1,0 +1,9 @@
+{
+  "version":"5.0.7",
+  "freeze_id":"ESTE-v5.0.7-NUMERIC-TIME-ANCHOR-VIRTUAL-FREEZE-R1",
+  "manifest_blob":"c03a645bada556ab8b64c5b8b636be7080740733",
+  "asset_count":12,
+  "reread_match":12,
+  "mismatches":[],
+  "result":"PASS"
+}
