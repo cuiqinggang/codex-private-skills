@@ -1,0 +1,25 @@
+{
+  "version":"5.0.8",
+  "scope":"GPT<->Codex symmetric numeric time handoff",
+  "result":"PASS",
+  "tests":{
+    "gpt_to_codex_dispatch_matrix":{"pass":32,"total":32,"authorized":1},
+    "codex_to_gpt_fail_blocked_matrix":{"pass":512,"total":512,"authorized":1},
+    "codex_to_gpt_pass_matrix":{"pass":1024,"total":1024,"authorized":1},
+    "full_round_trip_random_chains":{"pass":20000,"total":20000},
+    "timeline_rebuild":0,
+    "closed_loop_time_reversal":0,
+    "t_star_drift_across_handoff":0,
+    "missing_numeric_time_on_return":0
+  },
+  "shared_validator_local_overhead_ms":{
+    "runs":100000,
+    "min":0.001021,
+    "p50":0.001092,
+    "p95":0.001172,
+    "max":0.261244,
+    "meaning":"单个共享时间信封校验器的局部执行开销；不是整体闭环 T*。"
+  },
+  "complexity_conclusion":"一套时间信封、一套校验器、双向复用；不增加状态机阶段。",
+  "visible_minimum":"定位 + 整体已用数值 + 本次已用数值 + 冻结T*数值 + 必要结果"
+}
