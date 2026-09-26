@@ -1,0 +1,18 @@
+{
+  "version": "5.0.8",
+  "release_state": "FINAL",
+  "final_release_branch": "codex/first-principles-physical-limit-convergence-v5.0.8-final",
+  "final_skill_path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+  "final_skill_blob": "3186a1d6a4b2b059b4d5805af20f92a839dc1865",
+  "version_file": "5.0.8",
+  "certified_reality_branch": "codex/first-principles-physical-limit-convergence-v5.0.8-r4-virtual-freeze",
+  "certified_freeze_id": "ESTE-v5.0.8-REALITY-FIRST-FINAL-CLOSEOUT-VIRTUAL-FREEZE-R4",
+  "certified_freeze_manifest_blob": "ae548214d56ff699e06ce6203432e859c1113308",
+  "final_reality_report_blob": "6e3d81d5c4a52cdc2632dd29f4d34cc77cea3a3c",
+  "final_valid_certificate_blob": "c5cf05684dd3db13d39f8d426ad99b2495e848c4",
+  "final_real_t_star_ms": 0.0027,
+  "final_closed_loop_t_valid_ms": 9983551.271,
+  "historical_virtual_prediction_ms": 0.01136838145574825,
+  "historical_prediction_is_gate": false,
+  "status": "DONE"
+}
