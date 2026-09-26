@@ -214,9 +214,47 @@
       "dispatch_path": "docs/first-principles/v5.0.8/REAL-DISPATCH-04-01.md",
       "dispatch_blob": "7523d653e7083216771a1d578b592da3853f6cd8",
       "historical_virtual_prediction_is_gate": false
+    },
+    {
+      "seq": 21,
+      "name": "R4_FINAL_EXECUTOR_RETURN",
+      "at_utc": "2026-09-26T21:57:05.909728+00:00",
+      "t_closed_loop_elapsed_ms": 9889460.999,
+      "t_exchange_elapsed_ms": 311909,
+      "freeze_id": "ESTE-v5.0.8-REALITY-FIRST-FINAL-CLOSEOUT-VIRTUAL-FREEZE-R4",
+      "freeze_consistency": "31/31 PASS",
+      "materialization_preflight": "PASS",
+      "semantic_equivalence": "PASS",
+      "baseline_valid": "1000/1000",
+      "baseline_min_ms": 0.0074,
+      "optimized_valid": "1000/1000",
+      "optimized_min_ms": 0.0027,
+      "winner": "R4_OPTIMIZED",
+      "final_real_t_star_ms": 0.0027,
+      "real_valid": true,
+      "final_valid_candidate": true,
+      "reality_delta": "NONE"
+    },
+    {
+      "seq": 22,
+      "name": "FINAL_VALID",
+      "at_utc": "2026-09-26T21:58:40+00:00",
+      "t_closed_loop_elapsed_ms": 9983551.271,
+      "t_boundary_segment_elapsed_ms": 94090.272,
+      "final_closed_loop_t_valid_ms": 9983551.271,
+      "final_real_t_star_ms": 0.0027,
+      "winner": "R4_OPTIMIZED",
+      "result": "PASS",
+      "done": true,
+      "final_certificate_path": "docs/first-principles/v5.0.8/FINAL-VALID-CERTIFICATE.json",
+      "final_certificate_blob": "c5cf05684dd3db13d39f8d426ad99b2495e848c4"
     }
   ],
   "unique_objective": "T*=min(T_VALID)",
   "top_level_t_valid": "T_CLOSED_LOOP_VALID",
-  "next_boundary": "R4_FINAL_EXECUTOR_RETURN"
+  "next_boundary": "DONE",
+  "final_valid": true,
+  "done": true,
+  "final_closed_loop_t_valid_ms": 9983551.271,
+  "final_real_t_star_ms": 0.0027
 }
