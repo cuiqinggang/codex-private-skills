@@ -1,0 +1,23 @@
+{
+  "version":"5.0.7",
+  "freeze_id":"ESTE-v5.0.7-NUMERIC-TIME-ANCHOR-VIRTUAL-FREEZE-R1",
+  "repository":"cuiqinggang/codex-private-skills",
+  "branch":"codex/first-principles-physical-limit-convergence-v5.0.7-virtual-freeze",
+  "assets":[
+    {"path":"skills/first-principles-physical-limit-convergence/VERSION","blob":"00433367c8897f3c3e3639002d04ef67a620f5aa"},
+    {"path":"skills/first-principles-physical-limit-convergence/SKILL.md","blob":"2ccd77417efe633d9da1f458fb744db5608390e4"},
+    {"path":"skills/first-principles-physical-limit-convergence/runtime/state_machine_v5_0_3.py","blob":"e976d299ff045c8aa55e9ea172960226dc92311e"},
+    {"path":"skills/first-principles-physical-limit-convergence/contracts/STATE-MACHINE-v5.0.5.json","blob":"589842e4d159de0bbfde873fe2869cdc383ec7f6"},
+    {"path":"skills/first-principles-physical-limit-convergence/contracts/TIME-MASTER-CONTROL-v5.0.5.json","blob":"949a95b372be2d0e18b8f72cc30d8d790764b3a7"},
+    {"path":"skills/first-principles-physical-limit-convergence/contracts/NUMERIC-TIME-ANCHOR-v5.0.7.json","blob":"ad6daefc655a6d35d87183a8492c88f9a8ef9efa"},
+    {"path":"skills/first-principles-physical-limit-convergence/runtime/state_machine_v5_0_7_overlay.py","blob":"5f4651df73073f267c9705e40cd0d79c5f595bfb"},
+    {"path":"skills/first-principles-physical-limit-convergence/tests/test_state_machine_v5_0_7_overlay.py","blob":"7e53dbc576c35574669b3bcd30146158c1a7bf49"},
+    {"path":"docs/first-principles/v5.0.7/REAL-CAPSULE-SOURCE.py","blob":"bfb84cd2b14f52c5f46021d112e0b1c8a23f8876"},
+    {"path":"docs/first-principles/v5.0.7/VIRTUAL-TEST-REPORT.json","blob":"132fd2d4e447b435bd7a487e2ba32f02253c572f"},
+    {"path":"docs/first-principles/v5.0.7/TIME-LEDGER.json","blob":"bcf6537e84f401f01a7924f18b3dc29c5de70ea1"},
+    {"path":"docs/first-principles/v5.0.7/VIRTUAL-FREEZE.md","blob":"db1db2e9a6cc78921398b901ae030d5296f35940"}
+  ],
+  "asset_count":12,
+  "normal_authoritative_source":"REMOTE_SHARED_REPO_DIRECT",
+  "download_handoff_required":false
+}
