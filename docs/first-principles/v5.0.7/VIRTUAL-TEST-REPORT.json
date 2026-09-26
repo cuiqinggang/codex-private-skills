@@ -1,0 +1,36 @@
+{
+  "version":"5.0.7",
+  "result":"PASS",
+  "state_machine_preserved":true,
+  "remote_shared_repo_primary_path_preserved":true,
+  "numeric_time_anchor_tests":{
+    "presence_matrix":"16/16 PASS; ALLOW=1",
+    "illegal_values":"32/32 BLOCKED",
+    "random_fail_return":"20000/20000 PASS",
+    "local_vs_global_attack":"100000/100000 PASS; FALSE_PROMOTION=0"
+  },
+  "full_virtual_validation_loop_ms":{
+    "runs":10,
+    "min":528.036666,
+    "p50":537.8600165,
+    "max":572.364588
+  },
+  "numeric_time_guard_local_ms":{
+    "runs":100000,
+    "min":0.000711,
+    "p50":0.000751,
+    "p95":0.000801,
+    "max":2.135911
+  },
+  "reality_certificate":{
+    "checks":"17/17 PASS",
+    "runs":10000,
+    "gpt_min_ms":0.017436,
+    "gpt_p50_ms":0.017907,
+    "gpt_p95_ms":0.022204,
+    "gpt_max_ms":0.860447,
+    "windows_gpt_ratio_source":"v5.0.2 certified ratio",
+    "windows_gpt_ratio":4.768616382444736,
+    "reality_t_star_ms":0.08314559524430643
+  }
+}
