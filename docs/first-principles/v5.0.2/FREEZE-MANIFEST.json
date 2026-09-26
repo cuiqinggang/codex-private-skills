@@ -1,0 +1,76 @@
+{
+  "version": "5.0.2",
+  "freeze_id": "ESTE-v5.0.2-0502-VIRTUAL-FREEZE-01",
+  "branch": "codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze",
+  "top_level_method": [
+    "虚",
+    "实"
+  ],
+  "semantic_change": "tighten VIRTUAL_COMPLETE evidence semantics; no new top-level phase or gate",
+  "principle": "设计存在 != 实现存在；实现证据不存在时禁止声明虚拟成熟",
+  "t_star_ms": 269.560254,
+  "locator_display": "00:00.270",
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob_sha": "a1ef0cae1833461faa044dad33ce6f3a7acba402"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob_sha": "7d1ca2b000d35157d89d8a71cc1cd6faad457cd1"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/STATE-MACHINE-v5.0.2.json",
+      "blob_sha": "32b52dafe959a235871231ffe7589922f5f948bb"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/state_machine_v5_0_2.py",
+      "blob_sha": "011f517c55a5155286064b9f05244b0dbd0bb034"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_state_machine_v5_0_2.py",
+      "blob_sha": "3383f5c0012774ecb5973604f147c6c9322565a8"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/IMPLEMENTATION-MAP.json",
+      "blob_sha": "2a54183d1883c8f8643cd4064eb5858bad18991d"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/FAULT-INJECTION-REPORT.json",
+      "blob_sha": "93b6fcfe1d2c4b149fff05a137cebc75ba2fd533"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/VERIFIER-REPORT.json",
+      "blob_sha": "a1b3d156275f0c07450875271d6f0106d115e48c"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/GPT-VIRTUAL-VERIFICATION.json",
+      "blob_sha": "18dec41e901ea6d203d04a6d3aae52200509acbf"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE.py",
+      "blob_sha": "ce4d43553538580d04d80b457b7ad4f24de7f8b1",
+      "sha256": "c7c960f74b201cf70829db9a998644f00b15dc968ca0888c4b0bdda4301f30d9"
+    },
+    {
+      "path": "docs/first-principles/v5.0.2/REAL-CAPSULE.json",
+      "blob_sha": "34a6c5d1869a78ae2e33a7d588e376dca01133b9"
+    }
+  ],
+  "virtual_completion": {
+    "spec_complete": "PASS",
+    "implementation_complete": "PASS",
+    "execution_chain_closed": "PASS",
+    "fault_injection": "PASS",
+    "verifier": "PASS",
+    "gpt_verification": "PASS",
+    "time_contract": "PASS",
+    "real_capsule_self_contained": "PASS"
+  },
+  "dispatch": {
+    "adapter": "CODEX",
+    "mode": "CHAT",
+    "real_task_phase": "实"
+  },
+  "manifest_rule": "Reality must consume these immutable blobs; branch HEAD is not authority."
+}
