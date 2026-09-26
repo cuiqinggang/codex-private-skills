@@ -1,0 +1,29 @@
+{
+  "version":"5.0.7",
+  "timeline_id":"ESTE-v5.0.7-NUMERIC-TIME-ANCHOR-01",
+  "time_origin_utc":"2026-09-26T19:12:16.448729+00:00",
+  "unique_objective":"T*=min(T_VALID)",
+  "events":[
+    {
+      "seq":1,
+      "name":"TASK_ACCEPTED",
+      "t_closed_loop_elapsed_ms":0.0
+    },
+    {
+      "seq":2,
+      "name":"VIRTUAL_MATURITY_TIME_CLOSEOUT",
+      "at_utc":"2026-09-26T19:16:28.362079+00:00",
+      "t_closed_loop_elapsed_ms":251913.335569,
+      "t_virtual_maturation_elapsed_ms":251913.335569,
+      "t_virtual_validation_star_ms":528.036666,
+      "reality_certificate_gpt_star_ms":0.017436,
+      "reality_certificate_frozen_target_ms":0.08314559524430643
+    }
+  ],
+  "rules":[
+    "关键控制节点时间字段必须为有限数值。",
+    "状态词不能替代时间数字。",
+    "N/A、NULL、MISSING、Infinity、NaN、空值非法。",
+    "后续 Reality 事件继续追加到同一任务时间账本。"
+  ]
+}
