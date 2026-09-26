@@ -1,0 +1,30 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "attempt": "05-05",
+  "function": "run_reality_certificate",
+  "gpt_runs": 1000,
+  "gpt_valid_runs": 1000,
+  "checks_per_run": 62,
+  "benchmark_ms": {
+    "min": 0.478289,
+    "p50": 0.5005135,
+    "p95": 0.67446905,
+    "max": 2.032017
+  },
+  "target_environment_anchor": {
+    "source_attempt": "05-04 REAL",
+    "full_verifier_gpt_t_star_ms": 493.886824,
+    "full_verifier_windows_real_ms": 2355.1568,
+    "observed_windows_to_gpt_ratio": 4.768616382444736
+  },
+  "target_windows_prediction": {
+    "predicted_min_ms": 2.2807767609431107,
+    "predicted_p50_ms": 2.3867568757347533,
+    "predicted_p95_ms": 3.2162841612819375,
+    "predicted_max_from_gpt_sample_ms": 9.689909555606206
+  },
+  "frozen_t_star_ms": 2.280776761,
+  "t_star_display": "00:00.002",
+  "principle": "T* remains min(T_VALID); target anchor is derived from measured 05-04 Windows/GPT ratio, not copied from GPT raw time."
+}
