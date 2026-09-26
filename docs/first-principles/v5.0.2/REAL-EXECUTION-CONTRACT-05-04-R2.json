@@ -1,0 +1,46 @@
+{
+  "version": "5.0.2",
+  "page_name": "整体闭环极限时间引擎5.0.2版",
+  "task": "v5.0.2虚拟成熟现实认证",
+  "attempt": "05-04",
+  "revision": "R2",
+  "purpose": "mechanically materialize the exact frozen remote source before resolving run_verifier",
+  "source_resolution": {
+    "repository": "https://github.com/cuiqinggang/codex-private-skills",
+    "branch": "codex/first-principles-physical-limit-convergence-v5.0.2-virtual-freeze",
+    "path": "docs/first-principles/v5.0.2/REAL-CAPSULE-SOURCE-05-04-R2.py",
+    "blob_sha": "f89519ee6e44c9df7032121bd6f1181a129f790e"
+  },
+  "python_materialization_contract": [
+    "Fetch the complete file body as UTF-8 source text, not only metadata/path/blob.",
+    "Create exactly one fresh namespace with __name__='remote_capsule'.",
+    "Compile that exact source text and execute it in the same namespace used for lookup.",
+    "Assert callable(namespace.get('run_verifier')) before starting the timed verifier region.",
+    "Record REAL_START immediately before namespace['run_verifier']().",
+    "Record REAL_END immediately after successful return.",
+    "T_VALID_REAL_MS=(REAL_END-REAL_START)/1_000_000.",
+    "The verifier result must report TOTAL=66745."
+  ],
+  "reference_python_semantics": [
+    "namespace = {'__name__': 'remote_capsule'}",
+    "exec(compile(capsule_source, '<frozen-remote-capsule>', 'exec'), namespace, namespace)",
+    "assert callable(namespace.get('run_verifier'))",
+    "REAL_START = perf_counter_ns()",
+    "result = namespace['run_verifier']()",
+    "REAL_END = perf_counter_ns()",
+    "T_VALID_REAL_MS = (REAL_END - REAL_START) / 1_000_000"
+  ],
+  "failure_classification": {
+    "source_not_received": "PAYLOAD_SOURCE_MISSING",
+    "run_verifier_missing_after_exec": "PAYLOAD_MATERIALIZATION_FAIL",
+    "remote_access_failure": "REMOTE_REPO_UNAVAILABLE",
+    "hash_mismatch": "FREEZE_EVIDENCE_MISMATCH"
+  },
+  "forbidden": [
+    "Looking up run_verifier before executing the full fetched source",
+    "Using different dictionaries for exec globals and later lookup",
+    "Executing a partial source excerpt",
+    "Editing source during Reality",
+    "Searching local disk when remote source is available"
+  ]
+}
