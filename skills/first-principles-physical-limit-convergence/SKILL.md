@@ -1,12 +1,56 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.0.2。方法仍只有“虚→实”；v5.0.2 收紧虚拟成熟证据语义，禁止把“设计成熟”冒充“实现已成熟”。唯一目标 min(T_VALID)。
-metadata:
+description: 整体闭环极限短时间引擎 v5.0.5。永久保持“虚→实”原状态机；时间总控只做约束，不改写动作；共同私库为正常 Reality 权威源。唯一目标 min(T_VALID)。\nmetadata:
   version: "5.0.3"
   display_name: "整体闭环极限短时间引擎"
 ---
 
 # 整体闭环极限短时间引擎 v5.0.2
+
+
+## v5.0.5 当前权威规则：原状态机不可被时间规范改写
+
+v5.0.5 继承并锁死 v4.7.x → v5.0.3 已形成的状态机动作：
+`虚 -> 完整虚拟成熟 -> Freeze -> FREEZE_TO_REAL -> 实`；
+`REAL_PASS -> DONE`；
+`REAL_FAIL -> Reality Delta -> STOP -> 回虚 -> 新 Freeze -> 再实`。
+
+时间总控只是状态机内部 guard（守卫）：
+- 可以阻断缺失时间锚、非法 N/A/NULL/MISSING、未完成时间收口等非法状态；
+- 不得改变状态顺序、执行器角色、Freeze 消耗规则、01-06 规则或 Reality FAIL 回虚动作；
+- 不得新增第三阶段。
+
+### 正常权威源路径固定为共同私库直读
+
+当共同私库网络、权限、仓库均正常：
+`REMOTE_SHARED_REPO_DIRECT` 是唯一正常路径。
+
+禁止把以下动作重新插入正常闭环：
+- 让用户下载冻结包；
+- 让用户重新确认下载位置；
+- 为 Reality 无目的扫描本地磁盘；
+- 先下载再交给 Codex。
+
+Reality 直接按冻结的 `REPOSITORY / BRANCH / PATH / BLOB` 读取。
+
+只有 `NETWORK_UNAVAILABLE / AUTH_UNAVAILABLE / REPOSITORY_UNAVAILABLE` 才允许：
+`STOP -> REMOTE_REPO_UNAVAILABLE -> Reality Delta -> RETURN_TO_GPT`。
+
+备用下载/本地/内联只能回到“虚”后形成新的显式 Freeze；禁止在当前 REAL 中现场切换。
+
+### 时间总控继续生效
+
+`T*=min(T_VALID)` 永远在线，顶层 `T_VALID=T_CLOSED_LOOP_VALID`。
+任何进入闭环的时间段都必须有时间锚；`N/A / NULL / MISSING` 为非法。
+时间从 `PENDING/SOLVING` 连续演化到 `VIRTUAL_FROZEN/REAL_CERTIFIED`。
+虚拟成熟必须先完成时间收口。
+
+详细权威合同：
+- `contracts/STATE-MACHINE-v5.0.5.json`
+- `contracts/TIME-MASTER-CONTROL-v5.0.5.json`
+- `runtime/state_machine_v5_0_5_overlay.py`
+- `tests/test_state_machine_v5_0_5_overlay.py`
+- `docs/first-principles/v5.0.5/VIRTUAL-FREEZE.md`
 
 ## 唯一目标
 所有有效门通过后，只优化：`T* = min(T_VALID)`。
