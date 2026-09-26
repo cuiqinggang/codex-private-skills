@@ -1,0 +1,18 @@
+{
+  "version": "5.0.2",
+  "owner": "GPT virtual stage",
+  "artifact_under_test": "self-contained v5.0.2 Reality Capsule candidate",
+  "runs": 30,
+  "valid_runs": 30,
+  "test_total_per_run": 66011,
+  "test_pass_per_run": 66011,
+  "benchmark_ms": {
+    "min": 315.949269,
+    "p50": 327.339537,
+    "p95": 338.76142675,
+    "max": 340.037117
+  },
+  "frozen_virtual_t_star_ms": 315.949269,
+  "local_capsule_sha256": "8494851b68da88252d56eb253700f1dba17d9877f8aa63a2e40149740425d087",
+  "result": "GPT_VERIFICATION_PASS"
+}
