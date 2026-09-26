@@ -1,0 +1,44 @@
+{
+  "name": "整体闭环极限短时间引擎 v5.0.2 状态机",
+  "type": "deterministic_extended_finite_state_machine",
+  "phases": [
+    "虚",
+    "实"
+  ],
+  "terminal_is_phase": false,
+  "semantic_patch": "tighten virtual maturity evidence; no new top-level phase/gate",
+  "rule": "SPEC_COMPLETE != IMPLEMENTATION_COMPLETE; VIRTUAL_COMPLETE requires both plus GPT verification and freeze completeness",
+  "execution_chain_closed_evidence": [
+    "behavior_implementation_mapped",
+    "behavior_locations_resolved",
+    "exception_classification_implemented",
+    "recovery_fallback_implemented",
+    "executable_path_verified",
+    "fault_injection_passed",
+    "verifier_discriminates",
+    "capsule_contains_implementation",
+    "implementation_map_hash_nonempty",
+    "fault_injection_report_hash_nonempty",
+    "verifier_report_hash_nonempty"
+  ],
+  "virtual_complete_requires": [
+    "valid_defined",
+    "reality_facts_ready",
+    "mature_solution_selected",
+    "spec_complete",
+    "execution_chain_closed_derived_from_evidence",
+    "gpt_verification_pass",
+    "gpt_verification_report_hash_nonempty",
+    "external_dependencies_closed",
+    "task_t_star_frozen",
+    "new_freeze_id",
+    "freeze_hash_equals_reread_hash",
+    "real_capsule_self_contained",
+    "legal_adapter_mode",
+    "time_contract_ready",
+    "provenance_scoped",
+    "remote_claim_requires_reread",
+    "real_task_phase_is_REAL"
+  ],
+  "render_locator_from_state_only": true
+}
