@@ -1,0 +1,69 @@
+{
+  "version": "5.3.2",
+  "name_cn": "Codex 主导的可见真实用户旅程验收",
+  "name_en": "Codex-Directed Visible Real-User Journey Acceptance",
+  "principle": "GPT freezes; Codex independently designs and executes the acceptance journey; GPT only adjudicates the returned evidence.",
+  "roles": {
+    "GPT": [
+      "完成虚拟成熟与 Freeze",
+      "发布一条面向 Codex 的验收任务",
+      "不得预先替 Codex 选择具体业务测试样例",
+      "收到 Codex 证据后只做最终裁决"
+    ],
+    "CODEX": [
+      "独立选择一个最小但有效的真实使用样例",
+      "优先选择极简、低副作用、结果容易核验的任务",
+      "通过正式用户路径执行，不调用隐藏函数或测试捷径代替",
+      "记录屏幕可见链路与真实结果",
+      "明确 PASS/FAIL/BLOCKED 与失败来源"
+    ],
+    "USER": [
+      "观察过程",
+      "不负责设计测试样例",
+      "不提醒系统补步骤",
+      "除正式产品路径需要的人类动作外，不介入测试逻辑"
+    ]
+  },
+  "test_case_selection": {
+    "chosen_by": "CODEX_AT_RUNTIME",
+    "prebuilt_by_gpt": false,
+    "prebuilt_by_user": false,
+    "criteria": [
+      "足够简单，能快速达到虚拟成熟",
+      "能覆盖 自动Freeze→完整Reality Dispatch→真实执行→返回GPT",
+      "副作用小且可回滚/可验证",
+      "业务结果有明确可核验终点",
+      "不依赖测试专用字段或隐藏入口"
+    ]
+  },
+  "highest_acceptance_path": [
+    "GPT freezes candidate",
+    "GPT issues Codex acceptance instruction",
+    "Codex independently chooses a small production-isomorphic task",
+    "Codex executes/observes the same visible path a user would use",
+    "Codex records whether GPT automatically reaches complete REAL dispatch without user reminder",
+    "Codex executes the resulting task in the real environment",
+    "Codex returns evidence and result to GPT",
+    "GPT adjudicates final state"
+  ],
+  "forbidden": [
+    "GPT preselects exact smoke task",
+    "User preselects exact smoke task",
+    "Codex only runs unit/regression scripts and calls that release evidence",
+    "Codex directly injects FSM state",
+    "Codex repairs product mid-run then continues same run as PASS",
+    "User reminds GPT to continue or send command"
+  ],
+  "release_pass_conditions": [
+    "Codex independently selected the acceptance task",
+    "The tested path was production-isomorphic and user-visible",
+    "No user reminder was needed",
+    "A complete Codex Reality command was actually produced",
+    "The real task was actually executed and its result verified",
+    "The full evidence returned to GPT without hidden repair"
+  ],
+  "core_runtime_changed": false,
+  "inherited_fsm_version": "5.3.0",
+  "final_valid": false,
+  "done": false
+}
