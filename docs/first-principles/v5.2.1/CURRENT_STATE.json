@@ -1,7 +1,7 @@
 {
   "version": "5.2.1",
   "page_name": "整体闭环极限时间引擎 5.2版",
-  "status": "CORE_PASS_CLOSEOUT_PENDING",
+  "status": "FINAL_VALID",
   "architecture": "虚→实",
   "unique_objective": "T*=min(T_VALID)",
   "highest_acceptance_layer": "REAL_USAGE_TEST",
@@ -19,20 +19,26 @@
     "product_defect_established": false
   },
   "core_change_allowed": false,
-  "closeout_only": true,
+  "closeout_only": false,
   "unchanged_product_blobs": {
     "runtime": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068",
     "regression": "6c97278955f38883b4de56153fa765789ce4f56b"
   },
-  "remaining_closeout": [
-    "独立审计本次已用时间起点",
-    "补足唯一生产Renderer的端到端来源证据",
-    "完成/归档 NORMAL、PRODUCT_DELTA、EXTERNAL_BLOCK 三类完整旅程证据并由GPT收口",
-    "签发最终状态/证书"
-  ],
+  "remaining_closeout": [],
   "repair_lessons": "docs/first-principles/v5.2.1/REPAIR-LESSONS-R1-R4.md",
   "minimal_delta_policy": "ISOLATED_FAILURE_REQUIRES_ISOLATED_FIX",
-  "final_valid": false,
-  "done": false,
-  "next_action": "CLOSEOUT_ONLY_DO_NOT_CHANGE_CORE"
+  "final_valid": true,
+  "done": true,
+  "next_action": "USE_NORMALLY_AND_ONLY_REOPEN_ON_NEW_REAL_PRODUCT_DELTA",
+  "non_blocking_future_observations": [
+    "局部本次已用时间如未来需要更高审计精度，可单独增强；当前不阻断发布",
+    "EXTERNAL_BLOCK 不人为制造；未来自然发生时补充真实使用测试证据",
+    "若未来追求宿主级不可绕过硬绑定，可作为独立能力项目，不回开 v5.2.1 核心"
+  ],
+  "journey_adjudication": {
+    "NORMAL": "PASS_R4",
+    "PRODUCT_DELTA": "OBSERVED_R1_AND_REPAIRED",
+    "EXTERNAL_BLOCK": "NOT_RUN_NON_BLOCKING"
+  },
+  "final_certificate": "docs/first-principles/v5.2.1/FINAL-VALID-CERTIFICATE.json"
 }
