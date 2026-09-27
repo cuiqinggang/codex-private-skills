@@ -1,0 +1,77 @@
+{
+  "version": "5.2.0",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-TEST-VIRTUAL-FREEZE-R3",
+  "freeze_type": "VIRTUAL_MATURE_REAL_USAGE_TEST_READY_R3",
+  "source_branch": "codex/first-principles-physical-limit-convergence-v5.2.0-r3-virtual",
+  "source_head_before_manifest": "f4eab8e22e805cc986fccf7377b1044c5b3a2a7a",
+  "unique_objective": "T*=min(T_VALID)",
+  "highest_acceptance_layer": "REAL_USAGE_TEST",
+  "highest_acceptance_layer_cn": "真实使用测试",
+  "virtual_mature": true,
+  "solution_frozen": true,
+  "low_level_regression": {
+    "status": "PASS",
+    "executed": true,
+    "exact_blob_execution": true,
+    "pass_count": 10,
+    "total_count": 10,
+    "report_blob": "f348709896f98c2de76520317e6a7b88620cde0d"
+  },
+  "r2_adjudication": {
+    "raw_result": "FAIL",
+    "fail_source": "TEST_HARNESS",
+    "product_defect_established": false,
+    "product_freeze_change_required": false,
+    "rule_added": "真实使用测试禁止现场编写临时辅助脚本；需要自动化时必须在虚拟阶段预先实现并Freeze。"
+  },
+  "compact_dispatch": {
+    "enabled": true,
+    "human_visible_control_surface": "MINIMAL",
+    "expanded_blob_list_visible": false,
+    "long_contract_visible": false,
+    "manifest_and_contract_refs_required": true,
+    "header_budget_chars": 1200
+  },
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob": "91ff57278e37ef9cecfeaea47f0d77966799af28"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
+      "blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_production_handoff_v5_2_0.py",
+      "blob": "6c97278955f38883b4de56153fa765789ce4f56b"
+    },
+    {
+      "path": "docs/first-principles/v5.2.0/REAL-USAGE-TEST-CONTRACT-R3.json",
+      "blob": "ead73baf5c92d9c780789e16f1a32e9e155b2079"
+    },
+    {
+      "path": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R3.json",
+      "blob": "f348709896f98c2de76520317e6a7b88620cde0d"
+    },
+    {
+      "path": "docs/first-principles/v5.2.0/CURRENT_STATE.json",
+      "blob": "aff318afb4787f856f56382f2469f9dcd59d1c77"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob": "ca9a896ab00562031720da5a7978714ecf62b3a4"
+    }
+  ],
+  "required_real_usage_test_journeys": [
+    "NORMAL",
+    "PRODUCT_DELTA",
+    "EXTERNAL_BLOCK"
+  ],
+  "release_boundary": {
+    "final_valid": false,
+    "done": false,
+    "real_usage_test_must_run": true
+  },
+  "next_action": "REAL_USAGE_TEST_R3_COMPACT_DISPATCH_IN_SAME_USER_VISIBLE_RESPONSE"
+}
