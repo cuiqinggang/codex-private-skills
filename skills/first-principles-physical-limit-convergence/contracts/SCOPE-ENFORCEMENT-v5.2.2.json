@@ -44,7 +44,18 @@
   },
   "minimal_delta_policy": "Only add skill-wide Scope Gate and authoritative rules; preserve existing renderer/time/materialization/product logic.",
   "release_requirement": "A real-use test from an actual downstream business page must show that a complete command is emitted and the old header-only form is rejected.",
-  "current_state": "VIRTUAL_MATURITY_IN_PROGRESS",
+  "current_state": "VIRTUAL_MATURE_REAL_USAGE_TEST_READY",
   "final_valid": false,
-  "done": false
+  "done": false,
+  "virtual_mature": true,
+  "solution_frozen": true,
+  "freeze_id": "ESTE-v5.2.2-SKILL-WIDE-SCOPE-GATE-VIRTUAL-FREEZE-R1",
+  "low_level_regression": {
+    "status": "PASS",
+    "executed": true,
+    "exact_blob_execution": true,
+    "pass_count": 6,
+    "total_count": 6,
+    "evidence": "docs/first-principles/v5.2.2/VIRTUAL-MATURITY-REPORT-R1.json"
+  }
 }
