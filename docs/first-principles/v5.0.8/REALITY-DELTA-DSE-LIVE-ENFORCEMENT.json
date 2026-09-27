@@ -1,0 +1,38 @@
+{
+  "version": "5.0.8",
+  "incident": "DSE_v1.0.3_REAL_USAGE_HANDOFF_ENFORCEMENT_FAILURE",
+  "observed_context": "DSE v1.0.3 virtual mature and frozen, then Reality command generated without v5.0.8 numeric time/timeline enforcement",
+  "actual_failures": [
+    "REAL locator present but numeric time envelope missing",
+    "TIMELINE_ID missing",
+    "TIME_ORIGIN_UTC missing",
+    "DISPATCH_UTC missing",
+    "RETURN_TO_GPT=NO on success path",
+    "case-level T_VALID present but top-level T_CLOSED_LOOP timeline not enforced"
+  ],
+  "root_cause": {
+    "category": "VALIDATION_SCOPE_MISMATCH_AND_MISSING_HOST_BINDING",
+    "component_tests": "PASS",
+    "live_e2e_enforcement": "FAIL",
+    "detail": [
+      "dual_end_time_handoff tests manually construct TimeEnvelope then call validate_envelope",
+      "state_machine tests manually call transition",
+      "tests do not prove a real GPT response invokes those functions",
+      "render_visible was not exercised by the main dual-end test",
+      "no final-response hook blocked a reply that ended after virtual freeze without REAL_DISPATCH"
+    ]
+  },
+  "prior_certification_correction": {
+    "component_logic_certified": true,
+    "automatic_live_enforcement_certified": false,
+    "prior_done_claim_for_this_capability": "WITHDRAWN_PENDING_LIVE_E2E_RETEST"
+  },
+  "remediation": [
+    "FINAL-RESPONSE-ENFORCEMENT-v5.0.8 contract",
+    "final_response_gate_v5_0_8.py",
+    "DSE failed response regression test",
+    "SKILL.md hard postcondition before response termination"
+  ],
+  "next_required_evidence": "A fresh real-use task must reach VIRTUAL_MATURE+FREEZE and automatically emit a complete REAL_DISPATCH without user reminder.",
+  "live_e2e_status": "PENDING"
+}
