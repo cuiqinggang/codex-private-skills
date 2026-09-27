@@ -4,10 +4,52 @@ description: 整体闭环极限短时间引擎 v5.1.1。唯一目标 T*=min(T_VA
 metadata:
   version: "5.1.1"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "RULE_FROZEN_REAL_USAGE_VALIDATION_PENDING"
+  release_state: "VIRTUAL_R2_FROZEN_REAL_USER_JOURNEY_PENDING"
 ---
 
 # 整体闭环极限短时间引擎 v5.1.1
+
+## CURRENT v5.1.1 R2 权威状态与两项 Reality Delta 封堵
+
+当前新增 Freeze：
+
+`ESTE-v5.1.1-HANDOFF-TIME-R2`
+
+当前状态：
+
+- `VIRTUAL_MATURE=YES`
+- `SOLUTION_FROZEN=YES`
+- `REAL_STARTED=NO`（直到真实用户可见的 Reality Dispatch 发出）
+- `REAL_USAGE_VALIDATION=PENDING`
+- `FINAL_VALID=NO`
+- `DONE=NO`
+
+本轮只封堵两个已被正式使用证明存在的 Reality Delta：
+
+1. **虚拟成熟后未自动进入实。** 旧 v5.0.8 Gate 只会在调用时校验候选文本，没有拥有正式发送出口；合同还明确标记 `host_response_auto_hook=REQUIRES_CALLER_BINDING`。因此“Gate 存在”不能机械保证用户可见回复会继续到 `REAL_DISPATCH`。
+2. **Codex 实命令时间字段偶发遗漏。** 旧 Gate 只检查时间字段是否存在，却不负责生成 Reality Dispatch；自由手写命令可绕开 Gate，所以时间锚、`TIMELINE_ID`、`TIME_ORIGIN_UTC`、`DISPATCH_UTC` 不能保证每次出现。
+
+R2 结构性修复：
+
+- 唯一生产 Reality Dispatch 出口固定为：
+  `runtime/production_handoff_v5_1_1.py::close_virtual_and_build_real_dispatch`
+- 一旦 `VIRTUAL_MATURE=YES && SOLUTION_FROZEN=YES && REAL_STARTED=NO`，禁止以“总结/Freeze 完成/等待下一步”结束；下一用户可见控制输出必须是 `REAL_DISPATCH`。
+- Renderer 自己生成 Locator、数字时间锚、Timeline、Freeze、Reality VALID、计时边界与返回合同，然后在返回前自校验；不再允许“先手写文本，再可选地调用 Validator”。
+- 缺真实可审计 Timeline：`BLOCK`，禁止伪造时间。
+- 手工/旁路 Codex Reality Dispatch：`INVALID_PRODUCTION_PATH`。
+- PASS / FAIL / BLOCKED 全部固定 `RETURN_TO_GPT=YES`，Reality 执行器不得宣布 `FINAL_VALID/DONE`。
+
+R2 合同：
+
+`contracts/PRODUCTION-HANDOFF-v5.1.1-R2.json`
+
+R2 回归：
+
+`tests/test_production_handoff_v5_1_1.py`
+
+低层回归只能证明实现可工作，不能签发真实用户旅程证书。v5.1.1 是否真正封堵，仍必须由本次正常正式用户旅程证明。
+
+---
 
 ## 0. v5.1.1 当前冻结规则
 
@@ -232,7 +274,7 @@ v5.0.8 最终 Reality 使用：
 
 ---
 
-## 5. v5.0.8 最终现实认证结果
+## 5. HISTORICAL：v5.0.8 最终现实认证结果（历史证据，非 v5.1.1 当前状态）
 
 最终冻结：
 
@@ -280,9 +322,9 @@ Freeze 一致性：
 
 ---
 
-## 6. 整体闭环最终时间
+## 6. HISTORICAL：v5.0.8 整体闭环最终时间（历史证据）
 
-当前正式 Timeline：
+v5.0.8 历史正式 Timeline：
 
 `ESTE-v5.0.7-NUMERIC-TIME-ANCHOR-01`
 
@@ -294,7 +336,7 @@ Freeze 一致性：
 
 `02:46:23.551271`
 
-最终状态：
+v5.0.8 历史最终状态：
 
 `FINAL_VALID = YES`
 
@@ -495,7 +537,7 @@ DSE v1.0.3 的真实失效回复已经作为回归反例：
 
 ---
 
-## 12. 最终权威证据
+## 12. HISTORICAL：v5.0.8 最终权威证据
 
 最终 Reality 报告：
 
@@ -513,4 +555,4 @@ DSE v1.0.3 的真实失效回复已经作为回归反例：
 
 `codex/first-principles-physical-limit-convergence-v5.0.8-r4-virtual-freeze`
 
-v5.0.8 最终发布规则以本文件为准；历史 v5.0.2/v5.0.3/v5.0.5/v5.0.7/v5.0.8 R2/R3 文件保留为演化与 Reality Delta 证据，不得覆盖最终规则。
+以下规则与证据仅对 v5.0.8 历史认证成立，不代表 v5.1.1 当前已 FINAL/DONE。v5.0.8 历史发布规则以本节证据为准；更早 v5.0.2/v5.0.3/v5.0.5/v5.0.7/v5.0.8 R2/R3 文件保留为演化与 Reality Delta 证据，不得覆盖历史认证。v5.1.1 当前状态以 docs/first-principles/v5.1.1/CURRENT_STATE.json 为最高状态权威。
