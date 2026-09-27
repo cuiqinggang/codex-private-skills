@@ -1,0 +1,50 @@
+{
+  "version": "5.2.2",
+  "name": "SKILL_WIDE_REALITY_DISPATCH_SCOPE_ENFORCEMENT",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "purpose": "把完整 Reality Dispatch 合同从“核心 Renderer 自测”提升为本技能包范围内所有业务任务的强制最终输出约束。",
+  "applicability": {
+    "rule": "凡任务明确使用、继承或受整体闭环极限短时间引擎治理，并进入实阶段，均在本 Scope Gate 范围内。",
+    "business_allowlist_required": false,
+    "business_specific_adapter_required": false,
+    "locator_trigger": "任何用户可见输出出现【页面名｜任务名｜01-06｜实】即触发完整 Reality Dispatch 校验。"
+  },
+  "mandatory_path": {
+    "builder": "runtime/scope_gate_v5_2_2.py::build_in_scope_real_dispatch",
+    "final_gate": "runtime/scope_gate_v5_2_2.py::enforce_in_scope_final_output",
+    "underlying_renderer": "runtime/production_handoff_v5_2_0.py::build_real_dispatch",
+    "manual_header_only_output_allowed": false,
+    "manual_freeform_real_dispatch_allowed": false
+  },
+  "required_complete_dispatch": [
+    "REAL Locator",
+    "numeric time envelope",
+    "TIMELINE_ID",
+    "TIME_ORIGIN_UTC",
+    "DISPATCH_UTC",
+    "FREEZE_ID",
+    "FREEZE_REF",
+    "CONTRACT_REF",
+    "non-empty execution body",
+    "RESULT=PASS|FAIL|BLOCKED",
+    "RETURN_TO_GPT=YES",
+    "NO_FINAL_VALID_DONE=YES"
+  ],
+  "negative_real_counterexample": {
+    "source": "DSE v1.0.3 real-use output supplied by user",
+    "result": "MUST_BLOCK",
+    "reason": "Header/status envelope only; missing numeric standard time contract, DISPATCH_UTC, execution body, complete return contract and production references."
+  },
+  "scope_delta": {
+    "predecessor": "5.2.1",
+    "predecessor_history_preserved": true,
+    "finding": "v5.2.1 validated the core renderer path but did not certify skill-wide downstream business enforcement.",
+    "classification": "VALIDATION_SCOPE_GAP_DOWNSTREAM_BINDING",
+    "reopen_required": true
+  },
+  "minimal_delta_policy": "Only add skill-wide Scope Gate and authoritative rules; preserve existing renderer/time/materialization/product logic.",
+  "release_requirement": "A real-use test from an actual downstream business page must show that a complete command is emitted and the old header-only form is rejected.",
+  "current_state": "VIRTUAL_MATURITY_IN_PROGRESS",
+  "final_valid": false,
+  "done": false
+}
