@@ -1,0 +1,23 @@
+{
+  "version": "5.1.1",
+  "freeze_id": "ESTE-v5.1.1-USER-JOURNEY-FIRST-TEST-STANDARD-R1",
+  "freeze_type": "TEST_STANDARD_RULE_FREEZE",
+  "rule_frozen": true,
+  "real_usage_validation": "PENDING",
+  "seven_star_certified": false,
+  "final_valid": false,
+  "done": false,
+  "frozen_rules": [
+    "正式怎么用，测试就怎么测",
+    "用户真正看到和得到的结果是最终测试对象",
+    "测试器只观察，不帮助系统完成任何一步",
+    "真实任务错误下沉为低层回归测试后重新跑完整真实任务"
+  ],
+  "release_gate": {
+    "test_entry_equals_production_entry": true,
+    "test_path_equals_production_path": true,
+    "test_output_equals_user_visible_production_output": true,
+    "low_level_tests_are_auxiliary_only": true,
+    "real_user_journey_required": true
+  }
+}
