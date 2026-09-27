@@ -41,7 +41,17 @@
       "PASS",
       "FAIL",
       "BLOCKED"
-    ]
+    ],
+    "transport_equivalence": {
+      "rule": "TIME_T_STAR_TOKEN_SEMANTIC_EQUIVALENCE",
+      "accepted": [
+        "PLAIN_T_STAR",
+        "SINGLE_MARKDOWN_ESCAPED_T_STAR"
+      ],
+      "broad_unescape_allowed": false,
+      "overescaped_form_rejected": true,
+      "semantic_token_change_rejected": true
+    }
   },
   "predecessor_evidence": {
     "version": "5.1.1",
@@ -57,19 +67,29 @@
     ],
     "role": "HISTORICAL_FAILURE_EVIDENCE_ONLY"
   },
-  "current_release_state": "VIRTUAL_MATURE_REAL_USAGE_READY",
+  "current_release_state": "VIRTUAL_MATURE_REAL_USAGE_READY_R2",
   "final_valid": false,
   "done": false,
-  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R1",
+  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R2",
   "virtual_mature": true,
   "solution_frozen": true,
   "low_level_regression": {
     "status": "PASS",
     "executed": true,
     "exact_blob_execution": true,
-    "pass_count": 6,
-    "total_count": 6,
-    "evidence": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R1.json"
+    "pass_count": 8,
+    "total_count": 8,
+    "evidence": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R2.json"
   },
-  "real_usage_status": "READY_TO_DISPATCH"
+  "real_usage_status": "READY_TO_DISPATCH_R2",
+  "real_usage_history": [
+    {
+      "freeze_id": "ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R1",
+      "result": "FAIL",
+      "real_t_valid_ms": 541106,
+      "executor_elapsed_ms": 351106,
+      "delta": "VALIDATOR_OVERCONSTRAINT_TRANSPORT_EQUIVALENCE_FALSE_NEGATIVE",
+      "historical_only": true
+    }
+  ]
 }
