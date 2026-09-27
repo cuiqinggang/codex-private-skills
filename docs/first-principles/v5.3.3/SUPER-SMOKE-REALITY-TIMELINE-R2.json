@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ESTE-v5.3.3-SUPER-SMOKE-R2",
+  "timeline_id": "ESTE-v533-R2-20260927T162319Z",
+  "time_origin_utc": "2026-09-27T16:23:19.729Z",
+  "origin_definition": "Actual GPT-host invocation of the frozen production FSM start(); not the user-message timestamp. Prior preparation is disclosed separately.",
+  "clock_source": "GPT_HOST_DATETIME_UTC",
+  "clock_crosscheck": "user_info Asia/Tokyo agrees with host UTC at minute/second scale; no cross-host synchronization certificate",
+  "origin_monotonic_ns": 175164293641,
+  "release_observed_utc": "2026-09-27T16:20:49.848Z",
+  "pre_acceptance_preparation_ms": 149881.41,
+  "candidate": "C3",
+  "fallback_order": [
+    "C3",
+    "C2",
+    "C1",
+    "C5"
+  ],
+  "source_commit": "1f96690a90bc41468f09aa9fa6c80b2682ae21dc",
+  "unique_objective": "T*=min(T_VALID)",
+  "virtual_t_valid_target_ms": 60000,
+  "virtual_target_is_validity_gate": false,
+  "t_valid_ms": null,
+  "real_t_star_ms": null,
+  "final_valid": false,
+  "done": false,
+  "events": [
+    {
+      "event": "TASK_ACCEPTED",
+      "utc": "2026-09-27T16:23:19.729Z",
+      "elapsed_ms": 0,
+      "monotonic_ns": 175164293641,
+      "producer": "GPT_HOST",
+      "runtime_call": "fsm_v5_3_0.start",
+      "state_after": {
+        "state": 10,
+        "last_result": "NONE",
+        "cycle": 1,
+        "freeze_id": "",
+        "timeline_id": "",
+        "state_name": "VIRTUAL"
+      }
+    },
+    {
+      "event": "VIRTUAL_MATURE_REAFFIRMED",
+      "utc": "2026-09-27T16:24:40.015Z",
+      "elapsed_ms": 80286.0,
+      "monotonic_ns": 255450381672,
+      "producer": "GPT_HOST",
+      "runtime_call": "fsm_v5_3_0.mark_virtual_mature",
+      "basis": "User released the existing frozen R2 C3 winner; no new candidate or product changes",
+      "state_after": {
+        "state": 20,
+        "last_result": "NONE",
+        "cycle": 1,
+        "freeze_id": "",
+        "timeline_id": "",
+        "state_name": "VIRTUAL_MATURE"
+      }
+    },
+    {
+      "event": "REALITY_DISPATCH_GENERATED",
+      "utc": "2026-09-27T16:24:40.028Z",
+      "elapsed_ms": 80299.0,
+      "monotonic_ns": 255463198899,
+      "producer": "GPT_HOST",
+      "runtime_call": "fsm_v5_3_0.freeze_and_dispatch",
+      "state_after": {
+        "state": 40,
+        "last_result": "DISPATCHED",
+        "cycle": 1,
+        "freeze_id": "ESTE-v5.3.3-SUPER-SMOKE-R2-C3-REALITY-01",
+        "timeline_id": "ESTE-v533-R2-20260927T162319Z",
+        "state_name": "REAL_DISPATCHED"
+      },
+      "scope_gate": "IN_SCOPE_REAL_DISPATCH_VALID",
+      "semantic_limit": "Complete command generated; remote receipt not established"
+    },
+    {
+      "event": "DISPATCH_REPOSITORY_PUBLICATION_OBSERVED",
+      "utc": "2026-09-27T16:25:33.874Z",
+      "elapsed_ms": 134145.0,
+      "monotonic_ns": 309309961435,
+      "producer": "GPT_HOST",
+      "commit": "537bcb7b185281da854ed6ed72109a77fa10833f",
+      "note": "Observed after successful GitHub create_file response; this is not Codex receipt or proof of Path A transport."
+    }
+  ],
+  "executor_receipt": "NOT_OBSERVED",
+  "codex_execution": "NOT_RUN",
+  "user_intervention_count_observed": 0,
+  "zero_user_intervention_certified": false,
+  "transport_delivery": "NOT_RUN",
+  "freeze_id": "ESTE-v5.3.3-SUPER-SMOKE-R2-C3-REALITY-01",
+  "freeze_ref": "git:1f96690a90bc41468f09aa9fa6c80b2682ae21dc",
+  "contract_ref": "docs/first-principles/v5.3.3/SUPER-SMOKE-TASK-R2.md@1f96690a90bc41468f09aa9fa6c80b2682ae21dc",
+  "dispatch_no": 1,
+  "dispatch_utc": "2026-09-27T16:24:40.015Z",
+  "elapsed_at_dispatch_ms": 80286.0,
+  "dispatch_artifact_sha256": "84c0c0b53056c067dfc7d6d9f43ffdf3a4bf6f5b67fcfc8449d86ee7e497c86f",
+  "dispatch_text_sha256": "73a71b81829eac452a78664104bd445dbecda43fcb68763367355ecfe58b5b5a",
+  "fsm_snapshot": {
+    "state": 40,
+    "last_result": "DISPATCHED",
+    "cycle": 1,
+    "freeze_id": "ESTE-v5.3.3-SUPER-SMOKE-R2-C3-REALITY-01",
+    "timeline_id": "ESTE-v533-R2-20260927T162319Z",
+    "state_name": "REAL_DISPATCHED"
+  },
+  "scope_gate_result": "IN_SCOPE_REAL_DISPATCH_VALID",
+  "reply_end_gate": "REPLY_END_ALLOWED",
+  "command_generated": true,
+  "command_published": true,
+  "publication_scope": "GITHUB_DISPATCH_ARTIFACT_ONLY; current-page publication occurs with the final response; remote receipt unconfirmed",
+  "state_40_semantics": "Original FSM confirms complete dispatch generation and validation; it does not implement transport or confirm executor receipt.",
+  "current_tool_delivery_limit": "No connected callable user-host Codex/Playwright endpoint was found; plugin discovery offered uninstalled remote computer/browser connectors. This is not evidence of a user-host product failure or exhaustion of all candidate routes.",
+  "runtime_byte_verification": [
+    {
+      "file": "fsm_v5_3_0.py",
+      "git_blob_sha": "d79661d478793cd183ae6559ac01d0aba387ad51",
+      "expected_git_blob_sha": "d79661d478793cd183ae6559ac01d0aba387ad51",
+      "byte_count": 3974,
+      "exact_bytes_match": true,
+      "sha256": "281c5fe8288941f4c395e168b79103dd0675beb6b73ebe3cfed9a2b66e8bdf7c"
+    },
+    {
+      "file": "scope_gate_v5_2_2.py",
+      "git_blob_sha": "5208d600060bef0cdcab10681f82e5cd6ab034fd",
+      "expected_git_blob_sha": "5208d600060bef0cdcab10681f82e5cd6ab034fd",
+      "byte_count": 2496,
+      "exact_bytes_match": true,
+      "sha256": "60996a4231a765d9ac0d2291abace6d351d40faf1fd544af2c0ab7c1bf3e2a95"
+    },
+    {
+      "file": "production_handoff_v5_2_0.py",
+      "git_blob_sha": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068",
+      "expected_git_blob_sha": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068",
+      "byte_count": 4383,
+      "exact_bytes_match": true,
+      "sha256": "fbdd5bf94e786d7c5a29093908278522b771e8535256a1fd91c603220653e7e8"
+    }
+  ],
+  "time_anchor_header_role": "Renderer T* field carries the virtual engineering target 60000ms only; REAL_T_STAR remains null.",
+  "cross_host_duration_rule": "Same GPT-host origin/final observation for end-to-end time. Codex local duration is supplementary; clock offset must not be assumed zero.",
+  "dispatch_publication_commit": "537bcb7b185281da854ed6ed72109a77fa10833f",
+  "dispatch_repository_path": "docs/first-principles/v5.3.3/SUPER-SMOKE-REALITY-DISPATCH-R2-01.md"
+}
