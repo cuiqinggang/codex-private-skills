@@ -1,0 +1,68 @@
+{
+  "version": "5.1.1",
+  "page_name": "整体闭环极限时间引擎 5.1.1版",
+  "freeze_id": "ESTE-v5.1.1-HANDOFF-TIME-R2",
+  "freeze_type": "VIRTUAL_MATURE_PRODUCTION_HANDOFF_R2",
+  "source_branch": "codex/first-principles-physical-limit-convergence-v5.1.1-handoff-time-r2",
+  "source_head_before_manifest": "916c3cb9f863fa207e12fe9af0a7ae9d2852c5b4",
+  "reality_deltas_closed_in_virtual": [
+    "DELTA-AUTO-HANDOFF-MISSING",
+    "DELTA-NUMERIC-TIME-INTERMITTENT"
+  ],
+  "root_cause": "VALIDATOR_AND_PRODUCTION_SEND_PATH_WERE_SEPARATE",
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_1_1.py",
+      "blob": "7361fc6713369f3ed754be4cc600aa1233fe2f57"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_production_handoff_v5_1_1.py",
+      "blob": "26b8f77656c2d58f2bdc984441294226d68abda1"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/PRODUCTION-HANDOFF-v5.1.1-R2.json",
+      "blob": "dbd4b9bc5da8dead3cbaa5ba1cf4b39cd4a93684"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob": "681c694a51f15071cd96565c96126cfda061ad41"
+    },
+    {
+      "path": "docs/first-principles/v5.1.1/CURRENT_STATE.json",
+      "blob": "a0a9c6ac3c448ce0446678abc2da038cd6a9f775"
+    }
+  ],
+  "production_rules": {
+    "only_dispatch_renderer": "close_virtual_and_build_real_dispatch",
+    "end_after_virtual_freeze_allowed": false,
+    "alternate_manual_reality_dispatch_allowed": false,
+    "numeric_time_envelope_required": true,
+    "timeline_required": true,
+    "missing_timeline": "BLOCK_NEVER_FABRICATE",
+    "return_to_gpt_required_for": [
+      "PASS",
+      "FAIL",
+      "BLOCKED"
+    ]
+  },
+  "gpt_low_level_precheck": {
+    "status": "PASS",
+    "tests": [
+      "AUTO_VIRTUAL_TO_REAL",
+      "NUMERIC_TIME_ENVELOPE_ALWAYS_RENDERED",
+      "MISSING_TIMELINE_HARD_BLOCK",
+      "DUPLICATE_REAL_DISPATCH_BLOCKED",
+      "TASK_NO_01_06_ENFORCED"
+    ],
+    "release_evidence": false
+  },
+  "real_user_journey": {
+    "status": "PENDING",
+    "test_entry": "NORMAL_USER_REQUEST",
+    "test_path": "PRODUCTION_PATH",
+    "test_output": "USER_VISIBLE_OUTPUT",
+    "next": "REAL_DISPATCH_FROM_THIS_SAME_RESPONSE"
+  },
+  "final_valid": false,
+  "done": false
+}
