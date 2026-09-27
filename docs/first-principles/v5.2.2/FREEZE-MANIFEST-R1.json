@@ -1,0 +1,65 @@
+{
+  "version": "5.2.2",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "freeze_id": "ESTE-v5.2.2-SKILL-WIDE-SCOPE-GATE-VIRTUAL-FREEZE-R1",
+  "freeze_type": "SKILL_WIDE_SCOPE_ENFORCEMENT",
+  "source_branch": "codex/first-principles-physical-limit-convergence-v5.2.2-scope-gate",
+  "source_head_before_manifest": "fd86c5af3584974df325cc3d3ddc3c5c786b5bcb",
+  "delta": {
+    "classification": "VALIDATION_SCOPE_GAP_DOWNSTREAM_BINDING",
+    "observed_in": "DSE v1.0.3 downstream real-stage output",
+    "fix_scope": "CORE_SKILL_SCOPE_GATE_ONLY"
+  },
+  "rule": "Any in-scope user-visible output with a REAL locator must pass the complete production Reality Dispatch gate, regardless of business name.",
+  "business_allowlist": false,
+  "business_specific_adapter": false,
+  "low_level_regression": {
+    "status": "PASS",
+    "executed": true,
+    "exact_blob_execution": true,
+    "pass_count": 6,
+    "total_count": 6,
+    "report_blob": "dc2196c551addac53949a12ef40cc11cd73a5ef3"
+  },
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob": "ce7f2b425b58a00a10f66891b6aaca857ad20c8b"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
+      "blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/scope_gate_v5_2_2.py",
+      "blob": "c04af6af12c1f4d6555788b538b439dc97fd9ca5"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_scope_gate_v5_2_2.py",
+      "blob": "54882ccaac49d5af129bfcd04cd36e612668a196"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/SCOPE-ENFORCEMENT-v5.2.2.json",
+      "blob": "de6c5b867ffbeb46d210e236eb684efb6e5cdc50"
+    },
+    {
+      "path": "docs/first-principles/v5.2.2/VIRTUAL-MATURITY-REPORT-R1.json",
+      "blob": "dc2196c551addac53949a12ef40cc11cd73a5ef3"
+    },
+    {
+      "path": "docs/first-principles/v5.2.2/CURRENT_STATE.json",
+      "blob": "9e9ea1ed4957889f1cdc7910858eca16b58a4153"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob": "475872a2f9ea83444ef0b6341cb470cd7ad5703b"
+    }
+  ],
+  "release_boundary": {
+    "real_usage_test_required": true,
+    "downstream_business_must_be_used": true,
+    "final_valid": false,
+    "done": false
+  },
+  "next_action": "RUN_DSE_DOWNSTREAM_REAL_USAGE_TEST"
+}
