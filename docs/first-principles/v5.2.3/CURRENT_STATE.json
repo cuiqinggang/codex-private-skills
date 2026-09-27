@@ -1,7 +1,7 @@
 {
   "version": "5.2.3",
   "page_name": "整体闭环极限时间引擎 5.2版",
-  "status": "VIRTUAL_MATURE_REAL_USAGE_TEST_PENDING",
+  "status": "VIRTUAL_MATURE_REAL_USAGE_TEST_READY",
   "architecture": "虚→实",
   "unique_objective": "T*=min(T_VALID)",
   "predecessor": {
@@ -29,9 +29,10 @@
     "exact_frozen_blob_execution": "PENDING_REAL_USAGE_TEST"
   },
   "virtual_mature": true,
-  "solution_frozen": false,
-  "real_usage_test_status": "PENDING",
+  "solution_frozen": true,
+  "real_usage_test_status": "READY_TO_DISPATCH",
   "final_valid": false,
   "done": false,
-  "next_action": "FREEZE_V5_2_3_THEN_RERUN_SAME_DOWNSTREAM_REAL_USAGE_TEST"
+  "next_action": "RERUN_SAME_DOWNSTREAM_REAL_USAGE_TEST",
+  "freeze_id": "ESTE-v5.2.3-SCOPE-MARKER-VIRTUAL-FREEZE-R1"
 }
