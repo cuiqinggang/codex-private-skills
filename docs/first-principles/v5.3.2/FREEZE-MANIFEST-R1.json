@@ -1,0 +1,69 @@
+{
+  "version": "5.3.2",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "freeze_id": "ESTE-v5.3.2-CODEX-JEV-BROWSER-ACCEPTANCE-VIRTUAL-FREEZE-R1",
+  "freeze_type": "CODEX_DIRECTED_VISIBLE_BROWSER_ACCEPTANCE",
+  "source_branch": "codex/first-principles-physical-limit-convergence-v5.3.2-codex-directed-acceptance",
+  "source_head_before_manifest": "575b8766269731acc03590be5ad278fdb8190527",
+  "principle": "GPT freezes; Codex independently selects the acceptance task; JEV-native Playwright R3 executes the visible production-isomorphic browser path; GPT adjudicates.",
+  "browser_executor": {
+    "display_name": "JEV-native Playwright 极限浏览器自动化 R3 编译热态版",
+    "skill_id": "playwright-native-ai-browser",
+    "codex_entry": "C:\\Users\\A\\.codex\\skills\\playwright-native-ai-browser",
+    "canonical_dir": "C:\\AI\\Playwright-Native-AI-Browser\\skills\\playwright-native-ai-browser",
+    "mcp": "playwright_native_ai_browser",
+    "codex_may_write_browser_script": false
+  },
+  "task_selection": {
+    "selected_by": "CODEX_AT_RUNTIME",
+    "gpt_preselects": false,
+    "user_preselects": false
+  },
+  "inherited_core": {
+    "fsm_version": "5.3.0",
+    "fsm_blob": "d79661d478793cd183ae6559ac01d0aba387ad51",
+    "scope_gate_blob": "5208d600060bef0cdcab10681f82e5cd6ab034fd",
+    "renderer_blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068",
+    "changed": false
+  },
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob": "84197c89467dd225393910da7c61a7a480822820"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/CODEX-DIRECTED-ACCEPTANCE-v5.3.2.json",
+      "blob": "6bb26b973e24d5c7487bcddb4e16680a5bcf7b52"
+    },
+    {
+      "path": "docs/first-principles/v5.3.2/CODEX-DIRECTED-ACCEPTANCE-R1.md",
+      "blob": "bf4adb0de3c084fcb4c932d3d1eb1f6f4399eef8"
+    },
+    {
+      "path": "docs/first-principles/v5.3.2/CURRENT_STATE.json",
+      "blob": "e8bdcb4049069a8be9135dc0accde5459f6f9dee"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob": "d1be458b2c66becbd5cbf5336e43987e0db181db"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/fsm_v5_3_0.py",
+      "blob": "d79661d478793cd183ae6559ac01d0aba387ad51"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/scope_gate_v5_2_2.py",
+      "blob": "5208d600060bef0cdcab10681f82e5cd6ab034fd"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
+      "blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068"
+    }
+  ],
+  "release_boundary": {
+    "final_valid": false,
+    "done": false,
+    "codex_real_acceptance_required": true
+  },
+  "next_action": "ATOMIC_FSM_DISPATCH_CODEX_JEV_BROWSER_ACCEPTANCE"
+}
