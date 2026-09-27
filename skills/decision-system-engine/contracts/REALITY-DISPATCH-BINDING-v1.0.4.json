@@ -1,0 +1,47 @@
+{
+  "version": "1.0.4",
+  "name": "DSE_REALITY_DISPATCH_BINDING",
+  "page_name": "决策系统引擎1",
+  "purpose": "只修复 DSE 虚拟成熟后进入实阶段时只输出任务头、不输出完整 Codex 执行命令的问题。",
+  "preserved_scope": [
+    "DSE DEFINE→FACT→COMPARE→DECIDE 决策逻辑",
+    "可选 DEEPEN 规则",
+    "DSE 已冻结业务判断逻辑",
+    "整体闭环极限时间引擎 v5.2.1 核心"
+  ],
+  "changed_scope": [
+    "DSE 虚→实的最终派发绑定"
+  ],
+  "binding": {
+    "required_renderer_ref": "current/first-principles-physical-limit-convergence",
+    "required_renderer_path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
+    "required_renderer_function": "build_real_dispatch",
+    "manual_header_only_dispatch_allowed": false,
+    "manual_freeform_dispatch_allowed": false
+  },
+  "required_visible": [
+    "Locator",
+    "数字时间锚",
+    "TIMELINE_ID",
+    "TIME_ORIGIN_UTC",
+    "DISPATCH_UTC",
+    "FREEZE_ID",
+    "FREEZE_REF",
+    "CONTRACT_REF",
+    "DSE_VERSION",
+    "DSE_LOGIC_FREEZE_ID",
+    "T_STAR_STATUS",
+    "执行正文",
+    "RESULT=PASS|FAIL|BLOCKED",
+    "RETURN_TO_GPT=YES",
+    "NO_FINAL_VALID_DONE=YES"
+  ],
+  "negative_example": "只有 Locator/时间/Timeline/Freeze 但没有执行正文与返回合同，只能算 Header，不算完整 Codex 命令。",
+  "result_contract": {
+    "result": "PASS|FAIL|BLOCKED",
+    "return_to_gpt": true,
+    "reality_executor_may_final_valid": false
+  },
+  "minimal_delta_policy": "ONLY_DSE_DISPATCH_BINDING_CHANGED",
+  "parent_engine_version": "5.2.1"
+}
