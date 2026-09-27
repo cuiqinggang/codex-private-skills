@@ -1,0 +1,52 @@
+{
+  "version": "5.3.1",
+  "name_cn": "可见真实用户旅程验收",
+  "name_en": "Visible Real-User Journey Acceptance",
+  "purpose": "最高级验收必须模拟真实用户的实际使用过程，并让关键过程在用户可见界面中发生；隐藏函数调用、直接状态注入、脚本自测和数据级回归只能作为低层证据，不能签发最终有效。",
+  "core_unchanged": {
+    "fsm_version": "5.3.0",
+    "fsm_path": "skills/first-principles-physical-limit-convergence/runtime/fsm_v5_3_0.py",
+    "scope_gate_path": "skills/first-principles-physical-limit-convergence/runtime/scope_gate_v5_2_2.py",
+    "renderer_path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
+    "change_core_runtime": false
+  },
+  "highest_acceptance": {
+    "name": "VISIBLE_REAL_USER_JOURNEY",
+    "release_evidence": true,
+    "entry": "NORMAL_USER_PROMPT",
+    "path": "NORMAL_PRODUCT_UI_PATH",
+    "output": "USER_VISIBLE_PRODUCTION_OUTPUT",
+    "hidden_direct_function_calls_as_release_evidence": false,
+    "helper_script_as_release_evidence": false,
+    "synthetic_state_injection_as_release_evidence": false,
+    "test_only_shortcut_as_release_evidence": false
+  },
+  "visible_journey_required_steps": [
+    "用户像平时一样用自然语言发起一个真实任务，不使用测试专用参数",
+    "GPT 在可见回复中完成虚阶段并在状态机允许下自动进入实，不能让用户提醒继续",
+    "用户可见界面出现完整 Codex CHAT 命令，而不是 Header-only",
+    "该命令由真实用户按平时方式交给 Codex，或由正式生产入口自动送达；不得调用隐藏测试入口代替",
+    "Codex 在实际环境执行任务并返回真实结果",
+    "GPT 收到真实返回后按 FSM 做 PASS/FAIL/BLOCKED 转移并完成可见收口",
+    "全过程不得由测试器暗中补时间、补字段、补状态、修正文后继续算 PASS"
+  ],
+  "release_pass_conditions": [
+    "全过程无需用户提醒系统补步骤",
+    "所有控制边界在屏幕可见",
+    "实际业务结果有效，不只是状态字段正确",
+    "最终用户看到的结果与正式使用时一致",
+    "若中途出现产品缺陷，本轮 FAIL 并回虚；不能现场修复后续跑"
+  ],
+  "low_level_role": "低层单元/回归/随机/状态机脚本只负责提前发现问题和定位根因；它们永远不能替代可见真实用户旅程验收。",
+  "acceptance_scope": "至少一条完整 NORMAL 用户旅程必须可见通过；历史真实 PRODUCT_DELTA 可作为失败回流证据；EXTERNAL_BLOCK 仅自然发生时记录，不人为制造。",
+  "real_task_requirement": "验收任务必须是用户真正会做的正常任务，不能只是检查状态机字段或运行测试脚本。",
+  "user_visible_evidence": [
+    "用户原始自然语言任务",
+    "GPT 可见虚阶段结果",
+    "GPT 可见完整 Reality Dispatch",
+    "Codex 可见真实执行返回",
+    "GPT 可见最终收口"
+  ],
+  "final_valid": false,
+  "done": false
+}
