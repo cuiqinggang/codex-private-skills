@@ -87,8 +87,8 @@
     "product_defect_established": false,
     "note": "Codex临时编写的参数提取辅助脚本遗漏R2_LOCAL_TURN_START_UTC并在冻结Renderer调用前KeyError；R2冻结产品未被该失败证实有故障。"
   },
-  "status": "VIRTUAL_R4_MATERIALIZATION_FIX_PENDING_FREEZE",
-  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-TEST-VIRTUAL-FREEZE-R3",
+  "status": "VIRTUAL_MATURE_REAL_USAGE_TEST_READY_R4",
+  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-TEST-VIRTUAL-FREEZE-R4",
   "virtual_mature": true,
   "solution_frozen": true,
   "low_level_regression": {
@@ -99,7 +99,7 @@
     "total_count": 10,
     "evidence": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R3.json"
   },
-  "next_action": "FREEZE_R4_HARNESS_ONLY_AND_RESTART_REAL_USAGE_TEST",
+  "next_action": "START_REAL_USAGE_TEST_R4_USING_GIT_OBJECT_BYTES_FOR_FREEZE_IDENTITY",
   "r3_adjudication": {
     "raw_result": "FAIL",
     "failure_source": "TEST_HARNESS",
@@ -124,5 +124,13 @@
       "01-06 locator rule",
       "product logic"
     ]
+  },
+  "product_assets_changed": false,
+  "product_execution_evidence": {
+    "source": "R3 exact-blob execution evidence",
+    "reusable_because_product_blobs_unchanged": true,
+    "runtime_blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068",
+    "test_blob": "6c97278955f38883b4de56153fa765789ce4f56b",
+    "prior_result": "10/10 PASS"
   }
 }
