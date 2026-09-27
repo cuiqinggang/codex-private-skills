@@ -1,7 +1,7 @@
 {
   "version": "5.2.2",
   "page_name": "整体闭环极限时间引擎 5.2版",
-  "status": "VIRTUAL_MATURE_SCOPE_GATE_REAL_USAGE_TEST_PENDING",
+  "status": "VIRTUAL_MATURE_REAL_USAGE_TEST_READY",
   "architecture": "虚→实",
   "unique_objective": "T*=min(T_VALID)",
   "scope": "ALL_BUSINESSES_GOVERNED_BY_THIS_SKILL",
@@ -32,9 +32,10 @@
     "evidence": "docs/first-principles/v5.2.2/VIRTUAL-MATURITY-REPORT-R1.json"
   },
   "virtual_mature": true,
-  "solution_frozen": false,
-  "real_usage_test_status": "PENDING",
+  "solution_frozen": true,
+  "real_usage_test_status": "READY_TO_DISPATCH",
   "final_valid": false,
   "done": false,
-  "next_action": "FREEZE_SCOPE_GATE_THEN_RUN_DOWNSTREAM_REAL_USAGE_TEST"
+  "next_action": "DOWNSTREAM_DSE_REAL_USAGE_TEST_OF_SKILL_WIDE_SCOPE_GATE",
+  "freeze_id": "ESTE-v5.2.2-SKILL-WIDE-SCOPE-GATE-VIRTUAL-FREEZE-R1"
 }
