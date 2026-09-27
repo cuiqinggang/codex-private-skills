@@ -4,7 +4,7 @@ description: 整体闭环极限短时间引擎 v5.2.0。唯一目标 T*=min(T_VA
 metadata:
   version: "5.2.0"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_MATURITY_R4_HARNESS_ONLY"
+  release_state: "VIRTUAL_MATURE_REAL_USAGE_TEST_READY_R4"
 ---
 
 # 整体闭环极限短时间引擎 v5.2.0
@@ -143,6 +143,14 @@ R4 只修这一点：
 - `ISOLATED_FAILURE_REQUIRES_ISOLATED_FIX`
 - 只有证据证明系统性/架构性根因时才允许扩大修改面；
 - 否则所有无关已通过资产必须保持不变。
+
+R4 虚拟成熟结论：
+- `VIRTUAL_MATURE=YES`
+- `SOLUTION_FROZEN=YES`
+- `PRODUCT_ASSETS_CHANGED=NO`
+- R3 已实际执行的 10/10 PASS 证据因 Runtime/Test blob 完全不变而继续适用于相同产品资产；
+- R4 新增物化规则本身必须由下一轮真实使用测试验证，当前不提前写 PASS。
+- `REAL_USAGE_TEST=READY_TO_DISPATCH_R4`
 
 本轮明确不改：
 - Runtime / Renderer；
