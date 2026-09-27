@@ -57,7 +57,19 @@
     ],
     "role": "HISTORICAL_FAILURE_EVIDENCE_ONLY"
   },
-  "current_release_state": "VIRTUAL_MATURITY_IN_PROGRESS",
+  "current_release_state": "VIRTUAL_MATURE_REAL_USAGE_READY",
   "final_valid": false,
-  "done": false
+  "done": false,
+  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R1",
+  "virtual_mature": true,
+  "solution_frozen": true,
+  "low_level_regression": {
+    "status": "PASS",
+    "executed": true,
+    "exact_blob_execution": true,
+    "pass_count": 6,
+    "total_count": 6,
+    "evidence": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R1.json"
+  },
+  "real_usage_status": "READY_TO_DISPATCH"
 }
