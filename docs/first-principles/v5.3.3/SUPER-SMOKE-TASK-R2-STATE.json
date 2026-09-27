@@ -1,0 +1,25 @@
+{
+  "task_id": "ESTE-v5.3.3-SUPER-SMOKE-R2",
+  "engine_version": "5.3.3",
+  "status": "VIRTUAL_MATURE_MATURE_POOL_WINNER_FROZEN_COMMAND_NOT_PUBLISHED",
+  "phase": "虚",
+  "predecessor_r1": "SUPERSEDED_AS_PRESELECTED_TOOL_TOPOLOGY",
+  "unique_objective": "T*=min(T_VALID)",
+  "t_valid_boundary": "TASK_ACCEPTED->FINAL_VALID",
+  "mature_pool_completed": true,
+  "mature_pool_evidence": "docs/first-principles/v5.3.3/SUPER-SMOKE-MATURE-POOL-R2.json",
+  "virtual_winner": "C3_PATH_C_DIRECT_PAGE_PLUS_JEV_NATIVE_PLAYWRIGHT_R3_PLUS_CODEX",
+  "fallback_order": [
+    "C3",
+    "C2",
+    "C1",
+    "C5"
+  ],
+  "virtual_t_valid_target_ms": 60000,
+  "virtual_target_is_validity_gate": false,
+  "final_t_star_source": "REAL_VALID_FULL_CLOSED_LOOP_ONLY",
+  "design_frozen": true,
+  "task_accepted_for_execution": false,
+  "command_published": false,
+  "next_action": "WHEN_EXECUTION_IS_RELEASED_CREATE_REAL_TIMELINE_AND_DISPATCH_ONLY_THE_FROZEN_C3_PATH"
+}
