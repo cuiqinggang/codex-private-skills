@@ -1,0 +1,35 @@
+{
+  "version": "5.3.1",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "status": "VISIBLE_REAL_USER_JOURNEY_PENDING",
+  "architecture": "虚→实",
+  "unique_objective": "T*=min(T_VALID)",
+  "core_runtime": {
+    "fsm_version": "5.3.0",
+    "changed": false,
+    "fsm": "skills/first-principles-physical-limit-convergence/runtime/fsm_v5_3_0.py",
+    "scope_gate": "skills/first-principles-physical-limit-convergence/runtime/scope_gate_v5_2_2.py",
+    "renderer": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py"
+  },
+  "highest_acceptance": {
+    "type": "VISIBLE_REAL_USER_JOURNEY",
+    "entry": "NORMAL_USER_PROMPT",
+    "user_visible": true,
+    "same_as_production_path": true,
+    "hidden_function_or_script_evidence_sufficient": false
+  },
+  "required_visible_chain": [
+    "NORMAL_USER_PROMPT",
+    "VISIBLE_VIRTUAL",
+    "AUTO_FREEZE",
+    "AUTO_REAL_DISPATCH",
+    "VISIBLE_CODEX_EXECUTION",
+    "VISIBLE_CODEX_RETURN",
+    "GPT_FINAL_CLOSEOUT"
+  ],
+  "tester_may_help": false,
+  "minimum_normal_journey_passes": 1,
+  "final_valid": false,
+  "done": false,
+  "next_action": "RUN_ONE_VISIBLE_NORMAL_USER_JOURNEY_FROM_A_PLAIN_USER_PROMPT"
+}
