@@ -1,0 +1,55 @@
+{
+  "version": "5.3.3",
+  "name": "FSM_ORCHESTRATOR_JEV_ACCEPTANCE_AUTOMATION",
+  "architecture": [
+    "v5.3.0 FSM = sole product state authority",
+    "gpt-codex-convergence-orchestrator v1.5.2 = transport/recovery subcomponent only",
+    "Codex = independent acceptance task selector and executor controller",
+    "playwright-native-ai-browser R3 = sole visible browser executor",
+    "GPT = product planner/refreezer/final adjudicator"
+  ],
+  "orchestrator_source": {
+    "branch": "codex/gpt-codex-convergence-orchestrator-v1.5.2-freeze-closeout",
+    "commit": "c00dbc63abda76acc7b787caf9c2f8fd2cd206a1",
+    "use_mode": "TRANSPORT_POLICY_ONLY",
+    "reused": [
+      "PATH_A_SHARED_WORKSPACE_FULL",
+      "PATH_B_SHARED_READ_PAGE_REPLY",
+      "PATH_C_PAGE_DIRECT",
+      "ONE_SIMPLE_RECOVERY_THEN_SWITCH"
+    ],
+    "not_reused": [
+      "old method dependency 3.1.2 as state authority",
+      "toy WRITE_FILE certification as product certification",
+      "orchestrator minimal state as product FSM"
+    ]
+  },
+  "browser_executor": {
+    "required_skill": "playwright-native-ai-browser",
+    "display_name": "JEV-native Playwright 极限浏览器自动化 R3 编译热态版",
+    "codex_entry": "C:\\Users\\A\\.codex\\skills\\playwright-native-ai-browser",
+    "canonical_dir": "C:\\AI\\Playwright-Native-AI-Browser\\skills\\playwright-native-ai-browser",
+    "ad_hoc_browser_script_allowed": false
+  },
+  "automated_loop": {
+    "PASS": "FSM 40->100 FINAL_VALID",
+    "PRODUCT_FAIL": "FSM 40->10 VIRTUAL; GPT rematures; new Freeze; redispatch",
+    "TEST_HARNESS_OR_TRANSPORT_FAIL": "product Freeze unchanged; supervisor recovers once or switches A->B->C; rerun acceptance",
+    "EXTERNAL_BLOCKED": "supervisor recovers/switches; if A/B/C all unavailable then FSM BLOCKED",
+    "max_dispatches_same_continuous_task": 6
+  },
+  "task_selection": {
+    "selected_by": "CODEX_AT_RUNTIME",
+    "gpt_preselected": false,
+    "user_preselected": false,
+    "criteria": [
+      "minimal",
+      "low side effect",
+      "easy to verify",
+      "production-isomorphic",
+      "screen-visible"
+    ]
+  },
+  "final_valid": false,
+  "done": false
+}
