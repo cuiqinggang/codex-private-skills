@@ -1,13 +1,49 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.3.1。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
+description: 整体闭环极限短时间引擎 v5.3.2。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
 metadata:
-  version: "5.3.1"
+  version: "5.3.2"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VISIBLE_REAL_USER_JOURNEY_READY"
+  release_state: "CODEX_DIRECTED_BROWSER_ACCEPTANCE_READY"
 ---
 
-# 整体闭环极限短时间引擎 v5.3.1
+# 整体闭环极限短时间引擎 v5.3.2
+
+## CURRENT v5.3.2：Codex 主导 + JEV-native Playwright R3 的真实用户验收
+
+v5.3.2 不修改 v5.3.0 编码状态机、Scope Gate、Renderer、时间或 Freeze 物化；只固定最高级验收的“独立验收者”和“真实界面执行器”。
+
+职责固定：
+- GPT：虚拟成熟、Freeze、发布 Codex 验收任务、收到证据后最终裁决；不得预先替 Codex 选具体测试样例。
+- Codex：独立选择一个最小但有效、低副作用、结果易核验的真实用户任务。
+- 浏览器执行器：必须使用现成 `playwright-native-ai-browser` 技能包，即“JEV-native Playwright 极限浏览器自动化 R3 编译热态版”。
+- 用户：观察，不负责出题，不提醒系统补步骤。
+
+浏览器固定入口：
+- 技能 ID：`playwright-native-ai-browser`
+- Codex 薄入口：`C:\Users\A\.codex\skills\playwright-native-ai-browser`
+- 权威技能目录：`C:\AI\Playwright-Native-AI-Browser\skills\playwright-native-ai-browser`
+- MCP：`playwright_native_ai_browser`
+
+硬规则：
+- Codex 禁止自行编写 Playwright/浏览器辅助脚本代替现成技能包；
+- Codex 必须通过真实界面、生产同构路径模拟用户；
+- 只跑单元/回归脚本不能作为最终发布证据；
+- 用户若需要提醒“继续/发命令”，本轮直接 FAIL；
+- 中途发现产品问题必须 FAIL 回 GPT，不能现场修复后继续算 PASS。
+
+合同：
+`skills/first-principles-physical-limit-convergence/contracts/CODEX-DIRECTED-ACCEPTANCE-v5.3.2.json`
+
+当前：
+- `CORE_FSM=v5.3.0 UNCHANGED`
+- `ACCEPTANCE_OPERATOR=CODEX`
+- `VISIBLE_BROWSER_EXECUTOR=playwright-native-ai-browser R3`
+- `REAL_USAGE_TEST=READY_TO_FREEZE`
+- `FINAL_VALID=NO`
+- `DONE=NO`
+
+---
 
 ## CURRENT v5.3.1：最高级验收改为“可见真实用户旅程”
 
