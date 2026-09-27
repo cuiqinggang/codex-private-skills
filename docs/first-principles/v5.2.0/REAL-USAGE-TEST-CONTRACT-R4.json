@@ -106,5 +106,23 @@
     "product_defect_established": false,
     "cause": "Windows worktree materialization converted LF to CRLF, so raw worktree bytes differed from frozen Git blob even though the frozen Git object itself remained unchanged.",
     "product_change_required": false
+  },
+  "minimal_delta_policy": {
+    "rule": "ISOLATED_FAILURE_REQUIRES_ISOLATED_FIX",
+    "default": "Preserve every unrelated frozen asset byte-for-byte. Modify only the proven failure source and the minimum control metadata needed to re-freeze.",
+    "expansion_allowed_only_if": "Evidence establishes a systemic/root-architecture defect that cannot be repaired locally.",
+    "r4_scope": [
+      "Freeze materialization / byte-identity verification path",
+      "R4 contract/state/freeze metadata required to describe that harness-only change"
+    ],
+    "explicitly_unchanged": [
+      "production_handoff_v5_2_0.py",
+      "test_production_handoff_v5_2_0.py",
+      "numeric time rules",
+      "compact visible dispatch",
+      "Markdown T-star equivalence rule",
+      "01-06 locator rule",
+      "product logic"
+    ]
   }
 }
