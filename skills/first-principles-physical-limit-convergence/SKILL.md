@@ -1,13 +1,55 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.2.1。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
+description: 整体闭环极限短时间引擎 v5.2.2。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
 metadata:
-  version: "5.2.1"
+  version: "5.2.2"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "FINAL_VALID"
+  release_state: "VIRTUAL_MATURE_SCOPE_GATE_REAL_USAGE_TEST_PENDING"
 ---
 
-# 整体闭环极限短时间引擎 v5.2.1
+# 整体闭环极限短时间引擎 v5.2.2
+
+## CURRENT v5.2.2：技能包级 Reality Dispatch 范围门
+
+v5.2.1 的历史 FINAL_VALID 被新的真实产品 Delta 重新打开。新证据来自 DSE 下游真实输出：任务已经标为 `实`，但只显示 Locator/时间/Timeline/Freeze 状态头，没有完整执行正文和返回合同。
+
+这证明 v5.2.1 的现实验收范围只覆盖了核心 Renderer 自己，并没有证明“本技能包范围内任意业务进入实阶段时都一定受同一派发合同约束”。
+
+v5.2.2 只修这一处范围缺口：
+
+- 所有明确使用、继承或受本技能包治理的业务任务，只要用户可见输出出现 `【页面名｜任务名｜01-06｜实】`，自动进入技能包级 Scope Gate；
+- 业务名称不是白名单，不需要 DSE/HIPE/H3 等分别写适配器；
+- 所有业务统一使用 `runtime/scope_gate_v5_2_2.py::build_in_scope_real_dispatch`；
+- 所有“实”阶段最终用户可见输出在发送前必须通过 `enforce_in_scope_final_output`；
+- Header-only、自由手写半截 Reality Dispatch 一律 INVALID，不允许发送。
+
+完整 Reality Dispatch 至少必须具备：
+- REAL Locator；
+- 数字时间锚；
+- TIMELINE_ID / TIME_ORIGIN_UTC / DISPATCH_UTC；
+- FREEZE_ID / FREEZE_REF / CONTRACT_REF；
+- 非空“执行”正文；
+- RESULT=PASS|FAIL|BLOCKED；
+- RETURN_TO_GPT=YES；
+- NO_FINAL_VALID_DONE=YES。
+
+真实反例：用户提供的 DSE v1.0.3 Header-only 输出必须被 Scope Gate 拒绝。
+
+当前精确 blob 低层回归：
+- `6/6 PASS`
+- Parent Renderer blob=`2a56e186ec94d912fa4d6b461657bdfd9c2fb068`
+- Scope Gate blob=`c04af6af12c1f4d6555788b538b439dc97fd9ca5`
+- Scope Test blob=`54882ccaac49d5af129bfcd04cd36e612668a196`
+- Evidence=`docs/first-principles/v5.2.2/VIRTUAL-MATURITY-REPORT-R1.json`
+
+当前：
+- `VIRTUAL_MATURE=YES`
+- `SOLUTION_FROZEN=PENDING_FREEZE_COMMIT`
+- `REAL_USAGE_TEST=PENDING`
+- `FINAL_VALID=NO`
+- `DONE=NO`
+
+---
 
 ## CURRENT v5.2.1：FINAL VALID
 
