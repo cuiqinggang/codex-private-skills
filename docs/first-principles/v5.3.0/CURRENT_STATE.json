@@ -1,7 +1,7 @@
 {
   "version": "5.3.0",
   "page_name": "整体闭环极限时间引擎 5.2版",
-  "status": "VIRTUAL_MATURE_FREEZE_PENDING",
+  "status": "VIRTUAL_MATURE_REAL_USAGE_TEST_READY",
   "architecture": "虚→实",
   "unique_objective": "T*=min(T_VALID)",
   "control_mode": "DETERMINISTIC_CODED_FSM",
@@ -26,9 +26,10 @@
     "report": "docs/first-principles/v5.3.0/VIRTUAL-MATURITY-REPORT-R1.json"
   },
   "virtual_mature": true,
-  "solution_frozen": false,
-  "real_usage_test_status": "PENDING",
+  "solution_frozen": true,
+  "real_usage_test_status": "READY_TO_DISPATCH",
   "final_valid": false,
   "done": false,
-  "next_action": "FREEZE_FSM_THEN_RUN_REAL_USAGE_TEST_WITH_ATOMIC_FREEZE_TO_DISPATCH"
+  "next_action": "ATOMIC_FREEZE_TO_REAL_DISPATCH_REAL_USAGE_TEST",
+  "freeze_id": "ESTE-v5.3.0-CODED-FSM-VIRTUAL-FREEZE-R1"
 }
