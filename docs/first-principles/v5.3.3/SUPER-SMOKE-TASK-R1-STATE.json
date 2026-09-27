@@ -2,7 +2,7 @@
   "task_id": "ESTE-v5.3.3-SUPER-SMOKE-R1",
   "engine_version": "5.3.3",
   "project_name_cn": "整体闭环极限短时间引擎 v5.3.3 超级冒烟任务 R1",
-  "status": "VIRTUAL_DESIGN_MATURE_COMMAND_NOT_PUBLISHED",
+  "status": "SUPERSEDED_BY_R2_MATURE_POOL_REBUILD",
   "phase": "虚",
   "task_accepted_for_execution": false,
   "design_frozen": true,
@@ -24,5 +24,8 @@
     "Codex: real executor",
     "GPT: virtual maturity / refreeze / final judge"
   ],
-  "next_action": "WHEN_USER_RELEASES_EXECUTION_HOLD_CREATE_TASK_TIMELINE_AND_ATOMICALLY_ENTER_REAL_DISPATCH"
+  "next_action": "WHEN_USER_RELEASES_EXECUTION_HOLD_CREATE_TASK_TIMELINE_AND_ATOMICALLY_ENTER_REAL_DISPATCH",
+  "superseded_by": "docs/first-principles/v5.3.3/SUPER-SMOKE-TASK-R2-STATE.json",
+  "supersede_reason": "R1 preselected Orchestrator + Playwright topology before mature-skill-pool comparison; R2 restores full mature-pool virtual flow.",
+  "current_for_execution": false
 }
