@@ -1,13 +1,59 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.2.3。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
+description: 整体闭环极限短时间引擎 v5.3.0。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
 metadata:
-  version: "5.2.3"
+  version: "5.3.0"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_MATURE_REAL_USAGE_TEST_READY"
+  release_state: "VIRTUAL_MATURE_FSM_REAL_USAGE_TEST_PENDING"
 ---
 
-# 整体闭环极限短时间引擎 v5.2.3
+# 整体闭环极限短时间引擎 v5.3.0
+
+## CURRENT v5.3.0：纯机械编码状态机
+
+v5.3.0 不再把“虚→Freeze→实”主要交给文字规范解释，而是交给唯一可执行状态机：
+
+`runtime/fsm_v5_3_0.py`
+
+### 固定状态码
+
+- `0 = NEW`
+- `10 = VIRTUAL`
+- `20 = VIRTUAL_MATURE`
+- `30 = FROZEN`（瞬时内部状态，禁止作为用户回复终点）
+- `40 = REAL_DISPATCHED`
+- `90 = BLOCKED`
+- `100 = FINAL_VALID`
+
+### 唯一合法路径
+
+`0 -> 10 -> 20 -> (30 -> 40 原子跳转)`
+
+现实返回：
+- `40 -> 100`：PASS
+- `40 -> 10`：FAIL，自动回虚
+- `40 -> 90`：BLOCKED
+- `90 -> 10`：恢复后回虚
+
+### 两个核心硬门
+
+1. `20=VIRTUAL_MATURE` 与 `30=FROZEN` 都禁止结束用户回复；
+2. 没有 `freeze_only()` API，只有 `freeze_and_dispatch()`。Freeze 成功后必须在同一次函数调用里生成并校验完整 Reality Dispatch，成功后才返回 `40=REAL_DISPATCHED`；派发失败则回到 `10=VIRTUAL`。
+
+业务名、页面名、任务名都只是 payload，不参与状态转移。DSE、HIPE、盈利成本、H3 等只要声明使用本技能包，都走同一个状态机和同一个 Scope Gate，不允许业务专用状态路径。
+
+技能包外部如果完全绕过/不调用本技能包，脚本无法从内部强制；但一旦调用本技能包，就不存在第二条合法状态路径。
+
+GPT 侧状态机回归：`10/10 PASS`。精确冻结 blob 与真实宿主调用仍必须由下一轮真实使用测试确认。
+
+当前：
+- `VIRTUAL_MATURE=YES`
+- `SOLUTION_FROZEN=PENDING_FREEZE_COMMIT`
+- `REAL_USAGE_TEST=PENDING`
+- `FINAL_VALID=NO`
+- `DONE=NO`
+
+---
 
 ## CURRENT v5.2.3：执行分隔符单点兼容补丁
 
