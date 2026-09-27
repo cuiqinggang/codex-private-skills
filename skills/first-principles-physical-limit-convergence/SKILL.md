@@ -4,7 +4,7 @@ description: 整体闭环极限短时间引擎 v5.2.0。唯一目标 T*=min(T_VA
 metadata:
   version: "5.2.0"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_MATURE_REAL_USAGE_READY"
+  release_state: "VIRTUAL_MATURE_REAL_USAGE_READY_R2"
 ---
 
 # 整体闭环极限短时间引擎 v5.2.0
@@ -56,13 +56,41 @@ v5.2.0 是结构性升级，不是 v5.1.1 的补丁号延伸。v5.1.1 R2 的真�
 
 ### v5.2.0 当前虚拟成熟收口
 
-- `FREEZE_ID=ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R1`
+- `FREEZE_ID=ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R1`（历史 R1；真实使用 FAIL）
 - 精确仓库 blob 低层回归：`6/6 PASS`
 - 证据：`docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R1.json`
 - `VIRTUAL_MATURE=YES`
 - `SOLUTION_FROZEN=YES`
 - `REAL_USAGE=READY_TO_DISPATCH`
 - 此状态不得以总结结束；必须在同一用户可见回复继续发布带完整时间合同的 `实` 命令。
+
+### v5.2.0 R2 真实使用失败回流与虚拟成熟
+
+R1 真实使用固定保留：
+- `REAL_RESULT=FAIL`
+- `REAL_T_VALID_MS=541106`
+- `EXECUTOR_ELAPSED_MS=351106`
+- 根因：`VALIDATOR_OVERCONSTRAINT_TRANSPORT_EQUIVALENCE_FALSE_NEGATIVE`
+
+判定：
+- 数字时间锚、Timeline、可审计时间合同仍是必要硬门；
+- Markdown 传输把 T-star 显示 token 加一层转义，不改变其语义，不应成为失败条件；
+- R1 不得追认 PASS，因为 R1 冻结 Validator 在真实使用中确实失败；
+- R2 只接受原形与单层 Markdown 转义两种等价表示，双层转义和 token 改名仍拒绝。
+
+R2 精确 blob 低层回归：
+- `8/8 PASS`
+- Runtime blob=`b8693ce4cd5b96678ffba8cd7305cf9d0959c8f0`
+- Test blob=`736f09a1970b1a07baf092928d81f6b485ddf3fa`
+- Evidence=`docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R2.json`
+
+当前：
+- `FREEZE_ID=ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R2`
+- `VIRTUAL_MATURE=YES`
+- `SOLUTION_FROZEN=YES`
+- `REAL_USAGE=READY_TO_DISPATCH_R2`
+- `FINAL_VALID=NO`
+- `DONE=NO`
 
 ### v5.2.0 生产交接
 
