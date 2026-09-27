@@ -1,0 +1,112 @@
+{
+  "project_id": "ESTE-v5.3.3-SUPER-SMOKE-R2",
+  "phase": "VIRTUAL_MATURE_SKILL_POOL",
+  "unique_objective": "T*=min(T_VALID)",
+  "valid_definition": [
+    "full TASK_ACCEPTED -> FINAL_VALID closed loop",
+    "user intervention count = 0",
+    "GPT virtual maturity visible",
+    "automatic freeze-to-real",
+    "complete Codex reality dispatch",
+    "real business effect correct",
+    "result returned to GPT",
+    "GPT final closeout",
+    "no hidden test shortcut"
+  ],
+  "mature_pool_method": {
+    "discovery_protocol": "mature-outcome-automation mature-success reuse pattern",
+    "rule": "existing mature capability first; task-specific candidates compete; runtime only keeps the shortest valid topology",
+    "no_preselected_tool": true
+  },
+  "historical_reality_priors": {
+    "jev_native_playwright_r3": {
+      "status": "REAL_VALID_30_OF_30_HISTORICAL_COMPONENT_PRIOR",
+      "t_real_min_ms": 272.98,
+      "p50_ms": 304.46,
+      "p95_ms": 424.48,
+      "max_ms": 448.97,
+      "note": "browser component prior only, not this project's closed-loop T_VALID"
+    },
+    "gpt_codex_orchestrator_v1_5_2_path_a": {
+      "status": "HISTORICAL_REAL_PASS",
+      "t_valid_seconds": 373.903,
+      "note": "historical toy closed-loop prior; not directly comparable to this new project"
+    }
+  },
+  "candidates": [
+    {
+      "id": "C0",
+      "topology": "Direct Codex only",
+      "maturity": "MATURE_EXECUTOR",
+      "valid_for_project": false,
+      "rejection": "Cannot by itself prove the required autonomous GPT-visible full closed loop with zero user mediation."
+    },
+    {
+      "id": "C1",
+      "topology": "GPT-Codex Orchestrator Path A + mature browser + Codex",
+      "maturity": "HISTORICAL_REAL_PASS",
+      "valid_for_project": true,
+      "mandatory_external_io": "highest among A/B/C",
+      "virtual_rank_reason": "Valid but dominated for tiny payload by extra shared-workspace read/write boundaries."
+    },
+    {
+      "id": "C2",
+      "topology": "GPT-Codex Orchestrator Path B + mature browser + Codex",
+      "maturity": "CONTROLLED_REAL_PASS",
+      "valid_for_project": true,
+      "mandatory_external_io": "medium",
+      "virtual_rank_reason": "Valid but still carries shared-workspace read path not needed for tiny payload."
+    },
+    {
+      "id": "C3",
+      "topology": "GPT-Codex Orchestrator Path C primitives + JEV-native Playwright R3 + Codex",
+      "maturity": "CONTROLLED_REAL_PATH + REAL_VALID_BROWSER_COMPONENT",
+      "valid_for_project": true,
+      "mandatory_external_io": "lowest mature zero-user transport topology among A/B/C",
+      "virtual_rank_reason": "Pure page direct transport removes shared-workspace round trips for a tiny payload while retaining mature browser and Codex execution."
+    },
+    {
+      "id": "C4",
+      "topology": "Mature Outcome Automation full stack + resource routing + browser + Codex",
+      "maturity": "MATURE_COMPOSITION_PROTOCOL",
+      "valid_for_project": true,
+      "virtual_rank_reason": "Useful for discovery/complex work, but runtime adds routing layers that do not improve this fixed trivial business effect."
+    },
+    {
+      "id": "C5",
+      "topology": "Screenshot Browser 100% gated route + Codex transport",
+      "maturity": "9_ROUND_100_PERCENT_GATED_SUCCESS historical",
+      "valid_for_project": true,
+      "virtual_rank_reason": "Mature fallback but action-by-action screenshot verification adds more mandatory UI operations than JEV-native R3."
+    },
+    {
+      "id": "C6",
+      "topology": "JEV-native Playwright R3 alone",
+      "maturity": "REAL_VALID_BROWSER_COMPONENT",
+      "valid_for_project": false,
+      "rejection": "Browser executor alone does not own the full GPT↔Codex closed-loop transport and final state return."
+    }
+  ],
+  "falsification": {
+    "strongest_attack": "For a trivial file write, any browser/orchestrator path is slower than a direct local write.",
+    "response": "True for the file effect alone, but direct local write is outside VALID because this project explicitly requires the entire autonomous GPT→Reality→Codex→GPT production loop. Optimization is only among VALID paths."
+  },
+  "virtual_winner": {
+    "candidate_id": "C3",
+    "topology": "Path C direct-page transport + JEV-native Playwright R3 + Codex, governed by v5.3.3 FSM/supervisor",
+    "reason": "Fewest mandatory transport boundaries among currently mature paths that satisfy the full VALID definition."
+  },
+  "fallback_order": [
+    "C3",
+    "C2",
+    "C1",
+    "C5"
+  ],
+  "runtime_excluded_from_fast_path": [
+    "MOA full stack unless a capability gap appears",
+    "shared workspace A/B unless C is invalid/blocked"
+  ],
+  "virtual_t_valid_target_ms": 60000,
+  "virtual_target_role": "engineering target only; final T* comes only from REAL_VALID closed-loop measurements",
+  "command_published": false
+}
