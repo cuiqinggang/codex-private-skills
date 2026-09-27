@@ -1,0 +1,63 @@
+{
+  "version": "5.2.0",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "contract_name": "REAL_USAGE_PRODUCTION_CONTRACT",
+  "top_level_architecture": "虚→实",
+  "unique_objective": "T*=min(T_VALID)",
+  "terminology": {
+    "highest_acceptance_layer": "REAL_USAGE",
+    "forbidden_name_for_highest_layer": "REAL_TEST",
+    "low_level_layer": "TEST"
+  },
+  "real_usage_principles": [
+    "正式怎么用，真实使用就怎么发生，不建立测试专用入口",
+    "用户真正看到和得到的生产结果拥有最高裁决权",
+    "真实使用中发现错误立即判本轮失败并返回虚",
+    "修复后先做低层测试，再形成新Freeze，再从新的正式任务入口重新真实使用"
+  ],
+  "evidence_state_machine": {
+    "allowed": [
+      "NOT_RUN",
+      "PASS",
+      "FAIL",
+      "BLOCKED"
+    ],
+    "initial": "NOT_RUN",
+    "pass_requires_actual_execution_evidence": true,
+    "source_code_exists_is_not_pass": true,
+    "test_file_exists_is_not_pass": true,
+    "planned_check_is_not_pass": true,
+    "inferred_pass_is_forbidden": true
+  },
+  "production_handoff": {
+    "only_renderer": "runtime/production_handoff_v5_2_0.py::build_real_dispatch",
+    "manual_bypass_allowed": false,
+    "virtual_mature_may_end_without_real_dispatch": false,
+    "numeric_time_envelope_required": true,
+    "timeline_required": true,
+    "missing_timeline": "BLOCK_NEVER_FABRICATE",
+    "task_no_range": "01-06",
+    "return_to_gpt_required_for": [
+      "PASS",
+      "FAIL",
+      "BLOCKED"
+    ]
+  },
+  "predecessor_evidence": {
+    "version": "5.1.1",
+    "freeze_id": "ESTE-v5.1.1-HANDOFF-TIME-R2",
+    "real_usage_result": "FAIL",
+    "real_t_valid_ms": 175000,
+    "deltas": [
+      "NUMERIC_TIME_ENVELOPE_REGEX_DOUBLE_ESCAPED",
+      "SINGLE_PRODUCTION_RENDERER_NOT_PROVEN",
+      "MANUAL_BYPASS_FORBIDDEN_NOT_PROVEN",
+      "MISSING_TIMELINE_BRANCH_NOT_EXECUTED",
+      "UNEXECUTED_LOW_LEVEL_CHECKS_WERE_PREVIOUSLY_MISREPORTED_AS_PASS"
+    ],
+    "role": "HISTORICAL_FAILURE_EVIDENCE_ONLY"
+  },
+  "current_release_state": "VIRTUAL_MATURITY_IN_PROGRESS",
+  "final_valid": false,
+  "done": false
+}
