@@ -1,13 +1,39 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.3.0。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
+description: 整体闭环极限短时间引擎 v5.3.1。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
 metadata:
-  version: "5.3.0"
+  version: "5.3.1"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_MATURE_REAL_USAGE_TEST_READY"
+  release_state: "VISIBLE_REAL_USER_JOURNEY_PENDING"
 ---
 
-# 整体闭环极限短时间引擎 v5.3.0
+# 整体闭环极限短时间引擎 v5.3.1
+
+## CURRENT v5.3.1：最高级验收改为“可见真实用户旅程”
+
+v5.3.1 不修改 v5.3.0 的编码状态机、Scope Gate、Renderer、时间、Freeze 物化或业务规则；只修正最高级验收方法。
+
+过去的低层/函数级验证能够证明代码逻辑，但不能证明真实用户坐在屏幕前正常使用时，系统会自动走完整路径。因此从 v5.3.1 起：
+
+- 最高验收入口必须是普通用户自然语言任务；
+- 禁止从状态码、测试脚本、Python 函数、隐藏测试入口或预制 Codex 命令开始；
+- 测试器只能观察，不得暗中补字段、补时间、推进状态、修正文后继续算 PASS；
+- 用户必须能在屏幕上看到：自然语言任务 → GPT 虚阶段 → 自动 Freeze → 自动完整 Reality Dispatch → Codex 真实执行 → 返回 GPT → 最终收口；
+- 至少一条真正的 NORMAL 用户旅程必须完整可见通过，才允许 FINAL_VALID；
+- 历史真实 PRODUCT_DELTA 可作为失败回流证据；EXTERNAL_BLOCK 只在自然发生时留证，不人为制造。
+
+低层测试仍然保留，但只负责诊断和防回归，永远不能替代这条用户可见旅程。
+
+合同：
+`skills/first-principles-physical-limit-convergence/contracts/VISIBLE-USER-JOURNEY-v5.3.1.json`
+
+当前：
+- `CORE_FSM=v5.3.0 UNCHANGED`
+- `VISIBLE_REAL_USER_JOURNEY=PENDING`
+- `FINAL_VALID=NO`
+- `DONE=NO`
+
+---
 
 ## CURRENT v5.3.0：纯机械编码状态机
 
