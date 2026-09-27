@@ -4,7 +4,7 @@ description: 整体闭环极限短时间引擎 v5.3.0。唯一目标 T*=min(T_VA
 metadata:
   version: "5.3.0"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_MATURE_FSM_REAL_USAGE_TEST_PENDING"
+  release_state: "VIRTUAL_MATURE_REAL_USAGE_TEST_READY"
 ---
 
 # 整体闭环极限短时间引擎 v5.3.0
@@ -46,10 +46,13 @@ v5.3.0 不再把“虚→Freeze→实”主要交给文字规范解释，而是�
 
 GPT 侧状态机回归：`10/10 PASS`。精确冻结 blob 与真实宿主调用仍必须由下一轮真实使用测试确认。
 
+当前 Freeze：
+`ESTE-v5.3.0-CODED-FSM-VIRTUAL-FREEZE-R1`
+
 当前：
 - `VIRTUAL_MATURE=YES`
-- `SOLUTION_FROZEN=PENDING_FREEZE_COMMIT`
-- `REAL_USAGE_TEST=PENDING`
+- `SOLUTION_FROZEN=YES`
+- `REAL_USAGE_TEST=READY_TO_DISPATCH`
 - `FINAL_VALID=NO`
 - `DONE=NO`
 
