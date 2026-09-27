@@ -35,11 +35,17 @@ v5.3.2 不修改 v5.3.0 编码状态机、Scope Gate、Renderer、时间或 Free
 合同：
 `skills/first-principles-physical-limit-convergence/contracts/CODEX-DIRECTED-ACCEPTANCE-v5.3.2.json`
 
+当前 Freeze：
+`ESTE-v5.3.2-CODEX-JEV-BROWSER-ACCEPTANCE-VIRTUAL-FREEZE-R1`
+
+验收说明：
+`docs/first-principles/v5.3.2/CODEX-DIRECTED-ACCEPTANCE-R1.md`
+
 当前：
 - `CORE_FSM=v5.3.0 UNCHANGED`
 - `ACCEPTANCE_OPERATOR=CODEX`
 - `VISIBLE_BROWSER_EXECUTOR=playwright-native-ai-browser R3`
-- `REAL_USAGE_TEST=READY_TO_FREEZE`
+- `REAL_USAGE_TEST=READY_TO_DISPATCH`
 - `FINAL_VALID=NO`
 - `DONE=NO`
 
