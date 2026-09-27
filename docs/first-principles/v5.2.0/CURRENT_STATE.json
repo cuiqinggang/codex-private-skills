@@ -1,7 +1,7 @@
 {
   "version": "5.2.0",
   "page_name": "整体闭环极限时间引擎 5.2版",
-  "status": "VIRTUAL_MATURITY_R4_HARNESS_ONLY",
+  "status": "VIRTUAL_MATURE_REAL_USAGE_TEST_READY_R4",
   "phase": "虚",
   "unique_objective": "T*=min(T_VALID)",
   "top_level_t_valid": "T_CLOSED_LOOP_VALID",
@@ -37,20 +37,23 @@
     "contract": "docs/first-principles/v5.2.0/REAL-USAGE-TEST-CONTRACT-R4.json",
     "regression": "skills/first-principles-physical-limit-convergence/tests/test_production_handoff_v5_2_0.py"
   },
-  "low_level_regression_status": "PASS",
+  "low_level_regression_status": "PASS_REUSED_EXECUTED_EVIDENCE_UNCHANGED_PRODUCT_BLOBS",
   "real_usage_status": "HISTORICAL_TERM_REPLACED_BY_REAL_USAGE_TEST",
   "final_valid": false,
   "done": false,
-  "next_action": "FREEZE_R4_HARNESS_ONLY_THEN_REAL_USAGE_TEST_04",
+  "next_action": "REAL_USAGE_TEST_R4_MINIMAL_HARNESS_FIX_DISPATCH",
   "freeze_id": "ESTE-v5.2.0-REAL-USAGE-TEST-VIRTUAL-FREEZE-R4",
   "virtual_mature": true,
   "solution_frozen": true,
   "real_started": false,
   "low_level_regression_evidence": {
-    "executed": true,
-    "exact_blob_execution": true,
+    "executed_previously": true,
+    "source_round": "R3",
     "pass_count": 10,
     "total_count": 10,
+    "runtime_blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068",
+    "test_blob": "6c97278955f38883b4de56153fa765789ce4f56b",
+    "unchanged_in_r4": true,
     "report": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R3.json"
   },
   "real_usage_r1": {
@@ -62,7 +65,7 @@
     "adjudication": "R1 remains FAIL; time-envelope gate remains required; byte-exact Markdown representation is not required."
   },
   "highest_acceptance_layer_cn": "真实使用测试",
-  "real_usage_test_status": "R4_VIRTUAL_HARNESS_FIX_IN_PROGRESS",
+  "real_usage_test_status": "READY_TO_DISPATCH_R4",
   "real_usage_r2": {
     "result": "FAIL",
     "fail_source": "TEST_HARNESS",
@@ -91,5 +94,6 @@
   "product_blobs_unchanged_from_r3": {
     "runtime": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068",
     "regression": "6c97278955f38883b4de56153fa765789ce4f56b"
-  }
+  },
+  "r4_virtual_report": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R4.json"
 }
