@@ -79,3 +79,37 @@ print("ALL_BUSINESS_NAMES_USE_SAME_SCOPE_GATE=PASS")
 print("COMPLETE_EXECUTION_BODY_REQUIRED=PASS")
 print("RETURN_CONTRACT_REQUIRED=PASS")
 print("NON_REAL_OUTPUT_NOT_OVERBLOCKED=PASS")
+
+
+# Real transport may add one Markdown line-continuation backslash after the execution marker.
+sample = mod.build_in_scope_real_dispatch(
+    page_name="决策系统引擎1",
+    task_name="DSE 下游完整派发真实使用测试",
+    task_no=1,
+    virtual_mature=True,
+    solution_frozen=True,
+    real_started=False,
+    timeline_id="MARKDOWN-LIVE-001",
+    time_origin_utc="2026-09-27T13:00:00Z",
+    turn_start_utc="2026-09-27T13:00:01Z",
+    dispatch_utc="2026-09-27T13:00:02Z",
+    freeze_id="MARKDOWN-FREEZE-1",
+    freeze_ref="freeze/markdown-1",
+    contract_ref="contracts/markdown-1.json",
+    t_star_ms=0.0027,
+    executor_task="执行冻结任务；必须实际完成任务，不得只输出状态头。",
+).text
+
+transport = sample.replace("\n\n执行：\n", "\n\n执行：\\\n", 1)
+assert mod.enforce_in_scope_final_output(transport) == "IN_SCOPE_REAL_DISPATCH_VALID"
+
+overescaped = sample.replace("\n\n执行：\n", "\n\n执行：\\\\\n", 1)
+try:
+    mod.enforce_in_scope_final_output(overescaped)
+except mod.ScopeGateViolation as e:
+    assert "EXECUTION_BODY_MISSING" in str(e)
+else:
+    raise AssertionError("double execution-marker escape must be rejected")
+
+print("MARKDOWN_EXECUTION_MARKER_EQUIVALENCE=PASS")
+print("OVERESCAPED_EXECUTION_MARKER_REJECTED=PASS")
