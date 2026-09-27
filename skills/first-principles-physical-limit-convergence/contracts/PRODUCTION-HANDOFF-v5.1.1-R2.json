@@ -1,0 +1,53 @@
+{
+  "version": "5.1.1",
+  "freeze_id": "ESTE-v5.1.1-HANDOFF-TIME-R2",
+  "purpose": "封堵虚拟成熟后未自动进入Reality，以及Codex Reality Dispatch偶发遗漏数字时间锚/Timeline的同源旁路问题。",
+  "reality_deltas": [
+    {
+      "id": "DELTA-AUTO-HANDOFF-MISSING",
+      "symptom": "VIRTUAL_MATURE=YES且SOLUTION_FROZEN=YES后，用户可见回复仍可能停在总结/Freeze，不发布实命令。",
+      "root_cause": "旧final_response_gate仅能在被调用时验证候选文本；没有拥有生产发送出口，且host_response_auto_hook=REQUIRES_CALLER_BINDING。",
+      "closure": "唯一生产收口函数close_virtual_and_build_real_dispatch直接把冻结态转换为完整REAL_DISPATCH；禁止以Freeze摘要作为终点。"
+    },
+    {
+      "id": "DELTA-NUMERIC-TIME-INTERMITTENT",
+      "symptom": "Codex实命令中的数字时间锚、TIMELINE_ID、TIME_ORIGIN_UTC、DISPATCH_UTC有时存在、有时遗漏。",
+      "root_cause": "旧Gate只检查时间字段，不负责生成；自由手写Reality Dispatch可以绕过Gate。",
+      "closure": "时间信封改为唯一生产Renderer的不可选输出字段；缺真实Timeline硬BLOCK，不允许手工补造。"
+    }
+  ],
+  "trigger": {
+    "virtual_mature": true,
+    "solution_frozen": true,
+    "real_started": false
+  },
+  "only_production_dispatch_renderer": "runtime/production_handoff_v5_1_1.py::close_virtual_and_build_real_dispatch",
+  "alternate_manual_dispatch_allowed": false,
+  "end_after_freeze_allowed": false,
+  "required_user_visible_fields": [
+    "LOCATOR_REAL",
+    "NUMERIC_TIME_ENVELOPE",
+    "TIMELINE_ID",
+    "TIME_ORIGIN_UTC",
+    "DISPATCH_UTC",
+    "FREEZE_ID",
+    "T_STAR_SOURCE",
+    "FROZEN_ASSETS",
+    "REALITY_VALID_CONTRACT",
+    "REALITY_TIMING_BOUNDARY",
+    "PASS_FAIL_BLOCKED_RETURN_CONTRACT",
+    "RETURN_TO_GPT=YES"
+  ],
+  "missing_timeline": "BLOCK_NEVER_FABRICATE_TIME",
+  "reality_executor_final_authority": false,
+  "final_valid_owned_by": "GPT_CONTROL_LAYER",
+  "test_policy": {
+    "low_level_regression_required": true,
+    "real_user_journey_required": true,
+    "low_level_tests_can_release": false,
+    "production_entry_must_equal_test_entry": true,
+    "production_path_must_equal_test_path": true,
+    "user_visible_output_is_final_test_object": true
+  },
+  "release_state": "VIRTUAL_R2_FROZEN_REAL_USER_JOURNEY_PENDING"
+}
