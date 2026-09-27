@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "deployment_version": "1.0.2",
+  "source_commit": "a6149ea00aca2ffc77373df7dcd790cc215b66ef",
+  "frozen_runtime_sources": [
+    {"path":"runtime/acceptance_isolation_guard_v1.py","bytes":3633,"sha256":"bd5dad599320a1a1baceecd6bde2c210c1b07188e90cf63add3ba5fd27cef073","git_blob_sha":"dc86a5d70f6449f13d417d2cb0e46c7472b342b6"},
+    {"path":"runtime/acceptance_review_v1_0_1.py","bytes":4683,"sha256":"c8bd07cdc269208b6d2c465f5a7c8c6d32ef86af2776967b6c7e418136292d41","git_blob_sha":"600bbbe3c997efc5d2dadc0cbb7fe1f90c600db2"},
+    {"path":"runtime/acceptance_supervisor_v5_3_3.py","bytes":2930,"sha256":"71e197777f2647b976ee61e9f6c5813d0a415f8ac4b0f5b6f6083e283108f897","git_blob_sha":"35af5dd5e7478898f5f1f7a751a3365daf858aed"},
+    {"path":"runtime/fsm_v5_3_0.py","bytes":3974,"sha256":"281c5fe8288941f4c395e168b79103dd0675beb6b73ebe3cfed9a2b66e8bdf7c","git_blob_sha":"d79661d478793cd183ae6559ac01d0aba387ad51"},
+    {"path":"runtime/production_handoff_v5_2_0.py","bytes":4383,"sha256":"fbdd5bf94e786d7c5a29093908278522b771e8535256a1fd91c603220653e7e8","git_blob_sha":"2a56e186ec94d912fa4d6b461657bdfd9c2fb068"},
+    {"path":"runtime/scope_gate_v5_2_2.py","bytes":2496,"sha256":"60996a4231a765d9ac0d2291abace6d351d40faf1fd544af2c0ab7c1bf3e2a95","git_blob_sha":"5208d600060bef0cdcab10681f82e5cd6ab034fd"},
+    {"path":"tests/test_acceptance_integration_v1_0_1.py","bytes":6642,"sha256":"d89c1eee439a29c3c813acbc70c583a94ff3d03a019596340f32fd38a694065b","git_blob_sha":"c60612e1eec26e3f7f62748e1154d649ec0eea59"},
+    {"path":"tests/test_acceptance_isolation_guard_v1.py","bytes":4326,"sha256":"2579f974d16726181fee278e3770afafe578d299f26d7875b467d0be636f3bb9","git_blob_sha":"e27ac55e5daeb9fb34701e7f6f3a8aa6bdaa3289"}
+  ],
+  "files": [
+    {
+      "path": "CANONICAL.md",
+      "bytes": 935,
+      "sha256": "ab15a4bf4e6390e6743f037b429d2974a157d5fe6ee211016c4d223d64c90148",
+      "content": "# 整体闭环极限短时间引擎 v5.3.3 — R2 完整运行基线\n\n技能 ID：first-principles-physical-limit-convergence。\n母引擎版本：5.3.3；验收修补：1.0.1；完整部署包：1.0.2。\n源冻结：a6149ea00aca2ffc77373df7dcd790cc215b66ef；六个运行时及两份测试保持该冻结字节。\n本部署包的 SKILL.md 是本 R2 使用范围的统一活动入口，不继承旧 CANONICAL.md 的 v4.4.1 指向。\n权威正式加载目录：C:\\Users\\A\\.codex\\skills\\first-principles-physical-limit-convergence。\n这是 R2 专项完整运行基线，不是把仓库全部历史版本搬入运行目录，也不是整版最终认证。\n旧目录完整保留于技能搜索路径之外的备份；禁止把备份当第二套活动技能。\n状态：候选代码已验证；Windows 本机安装和生产同构真实闭环必须另行验证。\n唯一目标 T*=min(T_VALID)，完整边界 TASK_ACCEPTED -> FINAL_VALID。\n"
+    },
+    {
+      "path": "DEPLOYMENT.json",
+      "bytes": 402,
+      "sha256": "7d9e00b96d4c77227bd0aec0187789d3a57b3b4082dd3d8edfc1c1c6b10f3aa5",
+      "content": "{\n  \"engine_version\": \"5.3.3\",\n  \"acceptance_patch_version\": \"1.0.1\",\n  \"deployment_version\": \"1.0.2\",\n  \"status\": \"CANDIDATE_NOT_FINAL_CERTIFIED\",\n  \"source_commit\": \"a6149ea00aca2ffc77373df7dcd790cc215b66ef\",\n  \"full_baseline_scope\": \"R2_ACTIVE_RUNTIME_AND_LOADING_CONTRACT; NOT_ENTIRE_HISTORICAL_REPOSITORY\",\n  \"six_runtime_files_unchanged\": true,\n  \"external_browser_and_Codex_not_bundled\": true\n}\n"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 5123,
+      "sha256": "22fcbf9b7478dc2213c34eb59f632e72f23dc5b05693d3f8fa4ec5b935d83c4a",
+      "content": "---\nname: first-principles-physical-limit-convergence\ndescription: 整体闭环极限短时间引擎 v5.3.3；R2 完整运行基线，验收修补 v1.0.1，部署包 v1.0.2。唯一目标 T*=min(T_VALID)，顶层只有虚→实。必须实际调用冻结运行时，正式怎么用就怎么测。\nmetadata:\n  version: \"5.3.3\"\n  acceptance_patch_version: \"1.0.1\"\n  deployment_version: \"1.0.2\"\n  release_state: \"CANDIDATE_NOT_FINAL_CERTIFIED\"\n---\n\n# 整体闭环极限短时间引擎 v5.3.3\n\n## 当前有效范围\n\n本入口为已冻结 R2 任务补齐完整可加载基线，不改变源冻结六运行时的字节，不声称包含所有历史版本的可执行工具。历史方法和案例仍以共同私库为档案。本次相对旧部署合同只授权已核实 v3.1.6 普通目录的备份后全量切换，不能只改版本号或把三文件补丁覆盖到旧版。\n\n唯一指标：T*=min(T_VALID)。VALID 是任务正确、安全、完整和指定自动闭环条件同时满足。T_VALID 是 TASK_ACCEPTED→FINAL_VALID，不用本地文件耗时代替。60000ms 是 R2 工程目标，不是超时门槛。真实结果可推翻虚拟判断。\n\n## 虚\n\nGPT 核对现实底座、任务目标及约束，使用成熟方案集群，先反证再比较有效路径，不重新开发已有成熟工具。R2 已冻结 C3 页面直传＋JEV-native Playwright R3＋Codex，回退 C3→C2→C1→C5；本次部署不重做方案池。GPT 完成方案、证据检查及虚拟测试后冻结；Codex 不做临场方案修补。\n\n## 实与真实调用\n\n导入路径固定为当前正式目录的 runtime；不要由旧会话缓存、其他 checkout 或测试 fixture 代替。执行前回读 VERSION、CANONICAL.md、SKILL.md 和六模块 SHA256；使用新 Python 进程确认实际模块 __file__。对本机权限/子进程故障按原样记录，不改变限制策略。\n\n状态权只属于 runtime/fsm_v5_3_0.py：0→10→20→(30→40)。30 是内部瞬时状态，20/30 禁止结束回复。调用 start、mark_virtual_mature、freeze_and_dispatch，自动经过 scope_gate_v5_2_2.py 与 production_handoff_v5_2_0.py；不得用手写状态替代真实调用。40 在此版本只证明完整命令已生成校验，不证明已经送达。\n\n正式回报进入 acceptance_supervisor_v5_3_3.acceptance_result(result, fail_source, expected=..., evidence=...)，经 acceptance_review_v1_0_1 和 acceptance_isolation_guard_v1；HOLD/REVIEW 不推进状态、不重发。只有完整证据使该入口返回 FSM_PASS_TO_FINAL_VALID，才由 GPT 使用 FSM 作最终裁决。Codex 的 PASS 只是执行回报，禁止直接以裸 PASS 调用 FSM 签证。\n\nexpected 必须来自冻结任务和实际会话绑定的 task_id/timeline_id/run_id/conversation_id。独立核实原始事件再填写 verified，不以模型摘要、USER角色、页面标题、自动粘贴或双窗口同步认定人工。未核实写 UNKNOWN，争议复核；不把未知直接改成零人工，也不自动判人工失败。四段自动证据及六个最终门详见 contracts/ACTIVE-R2.json。\n\nGPT 负责计划、重成熟和最终裁决；Codex 只执行→验证→回报→停止或按冻结自动链继续。浏览器只能用现成 playwright-native-ai-browser 技能，不写新浏览器脚本。传输只复用 Orchestrator v1.5.2 成熟原语，不采用其旧母方法。R2 不使用旧 Supervisor 默认 A/B/C 列表证明全部回退失败。\n\n## 新页面与时间\n\n控制页：极限短时间 v5.3.3冒烟 R2；控制对话：6ab94118-27c8-83ea-93c3-599270775902。\n独立页：极限短时间 v5.3.3冒烟 R2｜独立测试02。须通过专用浏览器新建真实新对话ID，并绑定上下文及本轮任务；不能只改标题、复制标签或打开旧地址。同名冲突用真实RUN_ID后缀，不能按标题猜旧页。当前讨论页只作控制，结果先回同一新页，完成后向控制页报告。\n\n母Timeline ESTE-v533-R2-20260927T162319Z，起点2026-09-27T16:23:19.729Z不得重置。第02号因基线冲突未受理 ISO02 子任务，第03号补齐后继续原计划，不重跑已完成第01轮业务。子Timeline仅在新页实际受理普通任务时建立；安装和建页准备时间单列且计入母线。未发生的时间不能补造。\n\n等待入口 acceptance_wait 只认匹配四ID的真实ACK/进展；有进展继续观察，已ACK不重复发送，等待超时先核实页面状态，不把生成慢直接判失败。保留既有有界等待，不修改全局超时。\n\n## 硬边界\n\n所有 Codex 派发采用自然语言，单行【页面名｜任务名｜01–06｜实】，同项目上限6次。禁止改变代理、FlClash、系统/权限策略、Git全局配置，禁止绕过授权。只在授权技能目录、其任务备份/暂存目录及对应业务目录写入；标准浏览器日志按既有机制记录位置，未授权额外写入不能豁免。\n\n最高验收必须普通用户任务→GPT虚→自动冻结派发→真实Codex→自动回新页→GPT收口；测试器只观察，不补字段、不代执行。单元测试和部署通过均不等于完整闭环认证。\n"
+    },
+    {"path":"VERSION","bytes":6,"sha256":"5c8858d7a2d6232382ef55533378435ccf25b3f785a4860e504ea4a984b76755","content":"5.3.3\n"},
+    {
+      "path": "contracts/ACTIVE-R2.json",
+      "bytes": 1388,
+      "sha256": "dfcd621e6fd62dc0ecffc5a05b3bec77ac5ed19a515d71c9f0f6016b0a37f326",
+      "content": "{\n  \"engine_version\": \"5.3.3\",\n  \"acceptance_patch_version\": \"1.0.1\",\n  \"deployment_version\": \"1.0.2\",\n  \"source_commit\": \"a6149ea00aca2ffc77373df7dcd790cc215b66ef\",\n  \"unique_objective\": \"T*=min(T_VALID)\",\n  \"boundary\": \"TASK_ACCEPTED->FINAL_VALID\",\n  \"task_id\": \"ESTE-v5.3.3-SUPER-SMOKE-R2\",\n  \"pending_child_task_id\": \"ESTE-v5.3.3-SUPER-SMOKE-R2-ISO02\",\n  \"control_conversation_id\": \"6ab94118-27c8-83ea-93c3-599270775902\",\n  \"test_page_title\": \"极限短时间 v5.3.3冒烟 R2｜独立测试02\",\n  \"candidate\": \"C3\",\n  \"fallback_order\": [\n    \"C3\",\n    \"C2\",\n    \"C1\",\n    \"C5\"\n  ],\n  \"stages\": [\n    \"TASK_SUBMISSION\",\n    \"COMMAND_RECEIPT\",\n    \"BUSINESS_EXECUTION\",\n    \"RESULT_RETURN\"\n  ],\n  \"pass_gates\": [\n    \"business_verified\",\n    \"delivery_verified\",\n    \"scope_verified\",\n    \"runtime_binding_verified\",\n    \"closed_loop_verified\",\n    \"timeline_verified\"\n  ],\n  \"external_dependencies\": {\n    \"browser_skill\": \"playwright-native-ai-browser\",\n    \"browser_mode_required\": \"JEV-native R3; verify on use; not installed by this package\",\n    \"transport\": \"gpt-codex-convergence-orchestrator v1.5.2 primitives only; verify on use\",\n    \"executors\": \"authorized Codex and GPT real sessions; not provided by this payload\",\n    \"python\": \"existing authorized Python 3.10+; no install/permission escalation\"\n  },\n  \"final_valid\": false,\n  \"done\": false,\n  \"real_t_star_ms\": null\n}\n"
+    },
+    {"path":"runtime/acceptance_isolation_guard_v1.py","bytes":3633,"sha256":"bd5dad599320a1a1baceecd6bde2c210c1b07188e90cf63add3ba5fd27cef073","git_blob_sha":"dc86a5d70f6449f13d417d2cb0e46c7472b342b6"},
+    {"path":"runtime/acceptance_review_v1_0_1.py","bytes":4683,"sha256":"c8bd07cdc269208b6d2c465f5a7c8c6d32ef86af2776967b6c7e418136292d41","git_blob_sha":"600bbbe3c997efc5d2dadc0cbb7fe1f90c600db2"},
+    {"path":"runtime/acceptance_supervisor_v5_3_3.py","bytes":2930,"sha256":"71e197777f2647b976ee61e9f6c5813d0a415f8ac4b0f5b6f6083e283108f897","git_blob_sha":"35af5dd5e7478898f5f1f7a751a3365daf858aed"},
+    {"path":"runtime/fsm_v5_3_0.py","bytes":3974,"sha256":"281c5fe8288941f4c395e168b79103dd0675beb6b73ebe3cfed9a2b66e8bdf7c","git_blob_sha":"d79661d478793cd183ae6559ac01d0aba387ad51"},
+    {"path":"runtime/production_handoff_v5_2_0.py","bytes":4383,"sha256":"fbdd5bf94e786d7c5a29093908278522b771e8535256a1fd91c603220653e7e8","git_blob_sha":"2a56e186ec94d912fa4d6b461657bdfd9c2fb068"},
+    {"path":"runtime/scope_gate_v5_2_2.py","bytes":2496,"sha256":"60996a4231a765d9ac0d2291abace6d351d40faf1fd544af2c0ab7c1bf3e2a95","git_blob_sha":"5208d600060bef0cdcab10681f82e5cd6ab034fd"},
+    {"path":"tests/test_acceptance_integration_v1_0_1.py","bytes":6642,"sha256":"d89c1eee439a29c3c813acbc70c583a94ff3d03a019596340f32fd38a694065b","git_blob_sha":"c60612e1eec26e3f7f62748e1154d649ec0eea59"},
+    {"path":"tests/test_acceptance_isolation_guard_v1.py","bytes":4326,"sha256":"2579f974d16726181fee278e3770afafe578d299f26d7875b467d0be636f3bb9","git_blob_sha":"e27ac55e5daeb9fb34701e7f6f3a8aa6bdaa3289"}
+  ],
+  "payload_sha256": "469567e166f2dedcf8d97c06969092f3ce0630585070aa7f6b7bb3c9a8be7a20"
+}
