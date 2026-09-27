@@ -1,9 +1,9 @@
 {
   "version": "5.1.1",
   "page_name": "整体闭环极限时间引擎 5.1.1版",
-  "status": "RULE_FROZEN_REAL_USAGE_VALIDATION_PENDING",
+  "status": "VIRTUAL_R2_FROZEN_REAL_USER_JOURNEY_PENDING",
   "phase": "虚",
-  "freeze_id": "ESTE-v5.1.1-USER-JOURNEY-FIRST-TEST-STANDARD-R1",
+  "freeze_id": "ESTE-v5.1.1-HANDOFF-TIME-R2",
   "unique_objective": "T*=min(T_VALID)",
   "top_level_t_valid": "T_CLOSED_LOOP_VALID",
   "architecture": "虚→实",
@@ -27,5 +27,20 @@
   "predecessor": "5.0.8",
   "predecessor_role": "HISTORICAL_EVIDENCE_ONLY",
   "historical_component_performance_t_star_ms": 0.0027,
-  "next_action": "VALIDATE_V5_1_1_BY_NORMAL_REAL_USER_USAGE"
+  "next_action": "AUTO_DISPATCH_R2_REAL_USER_JOURNEY_IN_SAME_USER_VISIBLE_RESPONSE",
+  "reality_deltas": [
+    "DELTA-AUTO-HANDOFF-MISSING",
+    "DELTA-NUMERIC-TIME-INTERMITTENT"
+  ],
+  "root_cause": "VALIDATOR_AND_PRODUCTION_SEND_PATH_WERE_SEPARATE",
+  "r2_closure": {
+    "only_production_dispatch_renderer": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_1_1.py::close_virtual_and_build_real_dispatch",
+    "end_after_virtual_freeze_allowed": false,
+    "alternate_manual_reality_dispatch_allowed": false,
+    "numeric_time_envelope_renderer_owned": true,
+    "missing_timeline": "BLOCK_NEVER_FABRICATE",
+    "low_level_regression_precheck": "PASS_5_OF_5",
+    "low_level_regression_is_release_evidence": false
+  },
+  "real_started": false
 }
