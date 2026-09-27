@@ -54,3 +54,17 @@ print("MISSING_TIMELINE_ID_BLOCK=PASS")
 print("MISSING_TIME_ORIGIN_BLOCK=PASS")
 print("DUPLICATE_REAL_DISPATCH_BLOCK=PASS")
 print("TASK_NO_01_06_BLOCK=PASS")
+
+# A manually composed/incomplete Reality dispatch must be rejected by the same production validator.
+manual_incomplete = """【整体闭环极限时间引擎 5.2版｜v5.2.0真实使用｜01｜实】
+FREEZE_ID=ESTE-v5.2.0-VIRTUAL-FREEZE-R1
+RETURN_TO_GPT=YES
+"""
+try:
+    mod.validate_rendered_dispatch(manual_incomplete)
+except mod.ProductionHandoffViolation:
+    pass
+else:
+    raise AssertionError("manual incomplete dispatch must be rejected")
+
+print("MANUAL_BYPASS_INCOMPLETE_REJECTED=PASS")
