@@ -4,7 +4,7 @@ description: 整体闭环极限短时间引擎 v5.2.2。唯一目标 T*=min(T_VA
 metadata:
   version: "5.2.2"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_MATURE_SCOPE_GATE_REAL_USAGE_TEST_PENDING"
+  release_state: "VIRTUAL_MATURE_REAL_USAGE_TEST_READY"
 ---
 
 # 整体闭环极限短时间引擎 v5.2.2
@@ -42,10 +42,13 @@ v5.2.2 只修这一处范围缺口：
 - Scope Test blob=`54882ccaac49d5af129bfcd04cd36e612668a196`
 - Evidence=`docs/first-principles/v5.2.2/VIRTUAL-MATURITY-REPORT-R1.json`
 
+当前 Freeze：
+`ESTE-v5.2.2-SKILL-WIDE-SCOPE-GATE-VIRTUAL-FREEZE-R1`
+
 当前：
 - `VIRTUAL_MATURE=YES`
-- `SOLUTION_FROZEN=PENDING_FREEZE_COMMIT`
-- `REAL_USAGE_TEST=PENDING`
+- `SOLUTION_FROZEN=YES`
+- `REAL_USAGE_TEST=READY_TO_DISPATCH`
 - `FINAL_VALID=NO`
 - `DONE=NO`
 
