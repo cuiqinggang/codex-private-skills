@@ -6,7 +6,6 @@ class ScopeGateViolation(Exception):
     pass
 
 _REAL_LOCATOR_RE = re.compile(r"【[^\n｜]+｜[^\n｜]+｜(?:0[1-6]|[1-6])｜实】")
-_EXECUTION_MARKER_RE = re.compile(r"\n\n执行：(?:\\\\)?[ \t]*\n")
 
 def _require(cond, reason):
     if not cond:
@@ -43,9 +42,14 @@ def enforce_in_scope_final_output(text: str) -> str:
     except Exception as exc:
         raise ScopeGateViolation("IN_SCOPE_REAL_OUTPUT_INVALID:" + str(exc)) from exc
 
-    marker = _EXECUTION_MARKER_RE.search(text)
-    _require(marker is not None, "EXECUTION_BODY_MISSING")
-    body = text[marker.end():].split("\n\n返回：", 1)[0].strip()
+    plain_marker = "\n\n执行：\n"
+    markdown_marker = "\n\n执行：\\\n"
+    if plain_marker in text:
+        body = text.split(plain_marker, 1)[1].split("\n\n返回：", 1)[0].strip()
+    elif markdown_marker in text:
+        body = text.split(markdown_marker, 1)[1].split("\n\n返回：", 1)[0].strip()
+    else:
+        raise ScopeGateViolation("EXECUTION_BODY_MISSING")
     _require(bool(body), "EXECUTION_BODY_EMPTY")
 
     _require("RESULT=PASS|FAIL|BLOCKED" in text, "RETURN_RESULT_CONTRACT_MISSING")
