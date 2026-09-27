@@ -1,0 +1,44 @@
+{
+  "version": "5.3.0",
+  "name": "DETERMINISTIC_CODED_FSM",
+  "principle": "If a task uses this skill, state progression is code-owned. Business content is payload only.",
+  "state_codes": {
+    "0": "NEW",
+    "10": "VIRTUAL",
+    "20": "VIRTUAL_MATURE",
+    "30": "FROZEN_TRANSIENT",
+    "40": "REAL_DISPATCHED",
+    "90": "BLOCKED",
+    "100": "FINAL_VALID"
+  },
+  "legal_transitions": [
+    "0 -> 10 via start",
+    "10 -> 20 via mark_virtual_mature",
+    "20 -> 30 -> 40 atomically via freeze_and_dispatch",
+    "40 -> 100 on PASS",
+    "40 -> 10 on FAIL",
+    "40 -> 90 on BLOCKED",
+    "90 -> 10 via resume_blocked"
+  ],
+  "forbidden": [
+    "manual set_state",
+    "freeze_only",
+    "ending user reply in state 20",
+    "ending user reply in state 30",
+    "manual Header-only REAL output",
+    "business-specific state transition logic",
+    "skipping Scope Gate for REAL dispatch"
+  ],
+  "atomic_freeze_rule": "FROZEN is an internal transient code. freeze_and_dispatch must not return until a complete Reality Dispatch has been built and validated; on build failure machine returns to VIRTUAL.",
+  "real_output_builder": "runtime/scope_gate_v5_2_2.py::build_in_scope_real_dispatch",
+  "final_output_gate": "runtime/scope_gate_v5_2_2.py::enforce_in_scope_final_output",
+  "state_machine": "runtime/fsm_v5_3_0.py",
+  "test": "tests/test_fsm_v5_3_0.py",
+  "business_specific_adapter_required": false,
+  "applicability": "All tasks that declare/use this skill.",
+  "limitation": "The skill cannot force a page that completely bypasses/does not invoke the skill. Once invoked, no alternate state path is valid.",
+  "low_level_result": "10/10 PASS in GPT-side execution",
+  "exact_frozen_blob_execution": "PENDING_REAL_USAGE_TEST",
+  "final_valid": false,
+  "done": false
+}
