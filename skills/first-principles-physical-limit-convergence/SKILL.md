@@ -4,7 +4,7 @@ description: 整体闭环极限短时间引擎 v5.2.3。唯一目标 T*=min(T_VA
 metadata:
   version: "5.2.3"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_MATURE_REAL_USAGE_TEST_PENDING"
+  release_state: "VIRTUAL_MATURE_REAL_USAGE_TEST_READY"
 ---
 
 # 整体闭环极限短时间引擎 v5.2.3
@@ -30,10 +30,13 @@ v5.2.3 只修这一点：
 
 GPT 侧逻辑回归：`8/8 PASS`。精确冻结 blob 的最终验证仍必须由下一轮真实使用测试完成。
 
+当前 Freeze：
+`ESTE-v5.2.3-SCOPE-MARKER-VIRTUAL-FREEZE-R1`
+
 当前：
 - `VIRTUAL_MATURE=YES`
-- `SOLUTION_FROZEN=PENDING_FREEZE_COMMIT`
-- `REAL_USAGE_TEST=PENDING`
+- `SOLUTION_FROZEN=YES`
+- `REAL_USAGE_TEST=READY_TO_DISPATCH`
 - `FINAL_VALID=NO`
 - `DONE=NO`
 
