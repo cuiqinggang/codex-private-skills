@@ -1,13 +1,47 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.2.0。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
+description: 整体闭环极限短时间引擎 v5.2.1。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
 metadata:
-  version: "5.2.0"
+  version: "5.2.1"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_MATURE_REAL_USAGE_TEST_READY_R4"
+  release_state: "CORE_PASS_CLOSEOUT_PENDING"
 ---
 
-# 整体闭环极限短时间引擎 v5.2.0
+# 整体闭环极限短时间引擎 v5.2.1
+
+## CURRENT v5.2.1：核心通过，细节收尾
+
+v5.2.1 不改变 v5.2.0 R4 已通过的整体设计与产品逻辑，只做版本收口和经验固化。
+
+当前判定：
+- `CORE_OVERALL=PASS`
+- `R4_REAL_USAGE_TEST_EXECUTABLE_SCOPE=PASS`
+- `PRODUCT_DEFECT_ESTABLISHED=NO`
+- `FINAL_VALID=PENDING_CLOSEOUT`
+- `DONE=NO`
+
+明确保持不变：
+- Runtime / Renderer；
+- 低层测试；
+- 数字时间锚与 Timeline；
+- Markdown T-star 语义等价规则；
+- 简洁可见派发；
+- 01–06 Locator；
+- Git Object Bytes 冻结物化原则；
+- “单点故障只做单点修复”原则。
+
+R4 已实际证明：Freeze/Manifest 原始字节匹配、Git Object 无损物化、10/10 低层回归 PASS、接收原文 Validator PASS、Freeze→实 PASS、Locator/时间锚/简洁派发 PASS。
+
+剩余只允许做收尾验证，不允许借收尾重新设计整体：
+1. 本次局部“本次已用时间”的独立起点审计；
+2. 派发确实由唯一生产 Renderer 产生的端到端证据；
+3. NORMAL / PRODUCT_DELTA / EXTERNAL_BLOCK 三类完整旅程与 GPT 最终收口，其中已经发生的历史 FAIL 只能作为对应失败类型证据，不得改写；
+4. 收尾后更新最终证书/状态，不改核心实现。
+
+经验文档：
+`docs/first-principles/v5.2.1/REPAIR-LESSONS-R1-R4.md`
+
+---
 
 ## CURRENT v5.2.0 权威状态
 
