@@ -4,7 +4,7 @@ description: 整体闭环极限短时间引擎 v5.3.1。唯一目标 T*=min(T_VA
 metadata:
   version: "5.3.1"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VISIBLE_REAL_USER_JOURNEY_PENDING"
+  release_state: "VISIBLE_REAL_USER_JOURNEY_READY"
 ---
 
 # 整体闭环极限短时间引擎 v5.3.1
@@ -27,9 +27,15 @@ v5.3.1 不修改 v5.3.0 的编码状态机、Scope Gate、Renderer、时间、Fr
 合同：
 `skills/first-principles-physical-limit-convergence/contracts/VISIBLE-USER-JOURNEY-v5.3.1.json`
 
+当前 Freeze：
+`ESTE-v5.3.1-VISIBLE-USER-JOURNEY-VIRTUAL-FREEZE-R1`
+
+测试场景：
+`docs/first-principles/v5.3.1/VISIBLE-USER-JOURNEY-R1.md`
+
 当前：
 - `CORE_FSM=v5.3.0 UNCHANGED`
-- `VISIBLE_REAL_USER_JOURNEY=PENDING`
+- `VISIBLE_REAL_USER_JOURNEY=READY`
 - `FINAL_VALID=NO`
 - `DONE=NO`
 
