@@ -1,0 +1,52 @@
+{
+  "version": "5.2.0",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "report_type": "R4_HARNESS_ONLY_MINIMAL_DELTA_VIRTUAL_MATURITY",
+  "predecessor_real_usage_test": {
+    "round": "R3",
+    "result": "FAIL",
+    "fail_source": "TEST_HARNESS",
+    "product_defect_established": false,
+    "cause": "Windows worktree converted LF to CRLF; raw worktree bytes differed from frozen Git blob.",
+    "remote_freeze_manifest_assets_match": true,
+    "product_logic_failure_observed": false
+  },
+  "minimal_delta": {
+    "rule": "ISOLATED_FAILURE_REQUIRES_ISOLATED_FIX",
+    "product_files_changed": false,
+    "runtime_blob_unchanged": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068",
+    "regression_blob_unchanged": "6c97278955f38883b4de56153fa765789ce4f56b",
+    "allowed_change_scope": [
+      "freeze materialization authority",
+      "R4 contract/state/skill/freeze metadata"
+    ],
+    "forbidden_change_scope": [
+      "runtime/renderer",
+      "product logic",
+      "time rules",
+      "Markdown equivalence rule",
+      "compact visible dispatch",
+      "01-06 locator",
+      "R3 low-level tests"
+    ]
+  },
+  "fix": {
+    "freeze_identity_authority": "GIT_OBJECT_BYTES",
+    "worktree_raw_bytes_authoritative": false,
+    "exact_byte_execution": "Materialize directly from Git object database without newline conversion.",
+    "modify_git_settings": false,
+    "modify_core_autocrlf": false,
+    "resubmit_crlf_product": false,
+    "ad_hoc_helper_script": false
+  },
+  "product_execution_evidence": {
+    "reused": true,
+    "reason": "R3 product runtime/test blobs are byte-identical and were already actually executed with 10/10 PASS.",
+    "prior_report": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R3.json",
+    "prior_result": "10/10 PASS"
+  },
+  "r4_new_rule_execution_status": "PENDING_REAL_USAGE_TEST",
+  "final_valid": false,
+  "done": false,
+  "next_action": "FREEZE_R4_THEN_REAL_USAGE_TEST_04"
+}
