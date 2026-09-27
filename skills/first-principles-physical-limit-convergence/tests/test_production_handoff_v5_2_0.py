@@ -68,3 +68,28 @@ else:
     raise AssertionError("manual incomplete dispatch must be rejected")
 
 print("MANUAL_BYPASS_INCOMPLETE_REJECTED=PASS")
+
+
+# Transport-layer Markdown escaping of the asterisk is semantically equivalent.
+escaped_time = out.text.replace("T*=", "T\\*=", 1)
+mod.validate_rendered_dispatch(escaped_time)
+print("MARKDOWN_T_STAR_TRANSPORT_EQUIVALENCE=PASS")
+
+# Do not broadly strip escapes: only the single Markdown escape before * is accepted.
+overescaped_time = out.text.replace("T*=", "T\\\\*=", 1)
+try:
+    mod.validate_rendered_dispatch(overescaped_time)
+except mod.ProductionHandoffViolation as e:
+    assert "NUMERIC_TIME_ENVELOPE_MISSING" in str(e)
+else:
+    raise AssertionError("overescaped time anchor must be rejected")
+
+wrong_token = out.text.replace("T*=", "TSTAR=", 1)
+try:
+    mod.validate_rendered_dispatch(wrong_token)
+except mod.ProductionHandoffViolation as e:
+    assert "NUMERIC_TIME_ENVELOPE_MISSING" in str(e)
+else:
+    raise AssertionError("semantic token change must be rejected")
+
+print("OVERBROAD_TRANSPORT_NORMALIZATION_FORBIDDEN=PASS")
