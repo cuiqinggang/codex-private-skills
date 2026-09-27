@@ -1,7 +1,7 @@
 {
   "version": "5.3.2",
   "page_name": "整体闭环极限时间引擎 5.2版",
-  "status": "CODEX_DIRECTED_BROWSER_ACCEPTANCE_READY_TO_FREEZE",
+  "status": "CODEX_DIRECTED_BROWSER_ACCEPTANCE_READY",
   "architecture": "虚→实",
   "unique_objective": "T*=min(T_VALID)",
   "core_runtime": {
@@ -25,9 +25,13 @@
     },
     "codex_may_write_browser_script": false,
     "user_reminder_allowed": false,
-    "production_isomorphic_ui_required": true
+    "production_isomorphic_ui_required": true,
+    "acceptance_doc": "docs/first-principles/v5.3.2/CODEX-DIRECTED-ACCEPTANCE-R1.md"
   },
   "final_valid": false,
   "done": false,
-  "next_action": "FREEZE_THEN_DISPATCH_CODEX_DIRECTED_BROWSER_ACCEPTANCE"
+  "next_action": "ATOMIC_DISPATCH_CODEX_DIRECTED_JEV_BROWSER_ACCEPTANCE",
+  "solution_frozen": true,
+  "freeze_id": "ESTE-v5.3.2-CODEX-JEV-BROWSER-ACCEPTANCE-VIRTUAL-FREEZE-R1",
+  "real_usage_test_status": "READY_TO_DISPATCH"
 }
