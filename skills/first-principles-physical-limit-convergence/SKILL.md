@@ -4,7 +4,7 @@ description: 整体闭环极限短时间引擎 v5.2.0。唯一目标 T*=min(T_VA
 metadata:
   version: "5.2.0"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_MATURITY_IN_PROGRESS"
+  release_state: "VIRTUAL_MATURE_REAL_USAGE_READY"
 ---
 
 # 整体闭环极限短时间引擎 v5.2.0
@@ -54,6 +54,16 @@ v5.2.0 是结构性升级，不是 v5.1.1 的补丁号延伸。v5.1.1 R2 的真�
 - 理论上应该通过；
 - 上一版本曾通过相似检查。
 
+### v5.2.0 当前虚拟成熟收口
+
+- `FREEZE_ID=ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R1`
+- 精确仓库 blob 低层回归：`6/6 PASS`
+- 证据：`docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R1.json`
+- `VIRTUAL_MATURE=YES`
+- `SOLUTION_FROZEN=YES`
+- `REAL_USAGE=READY_TO_DISPATCH`
+- 此状态不得以总结结束；必须在同一用户可见回复继续发布带完整时间合同的 `实` 命令。
+
 ### v5.2.0 生产交接
 
 唯一生产 Reality Dispatch Renderer：
@@ -71,9 +81,9 @@ v5.2.0 是结构性升级，不是 v5.1.1 的补丁号延伸。v5.1.1 R2 的真�
 当前状态：
 
 - `phase=虚`
-- `VIRTUAL_MATURITY_IN_PROGRESS`
-- `LOW_LEVEL_REGRESSION=NOT_RUN_IN_REPOSITORY_REALITY`
-- `REAL_USAGE=NOT_STARTED`
+- `VIRTUAL_MATURE=YES`
+- `LOW_LEVEL_REGRESSION=PASS (6/6 exact-blob execution)`
+- `REAL_USAGE=READY_TO_DISPATCH`
 - `FINAL_VALID=NO`
 - `DONE=NO`
 
