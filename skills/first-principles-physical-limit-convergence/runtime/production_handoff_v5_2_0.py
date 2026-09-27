@@ -6,7 +6,7 @@ class ProductionHandoffViolation(Exception):
     pass
 
 _TIME_ANCHOR_RE = re.compile(
-    r"【时间锚｜整体已用=\d+(?:\.\d+)?ms｜本次已用=\d+(?:\.\d+)?ms｜T\*=\d+(?:\.\d+)?ms】"
+    r"【时间锚｜整体已用=\d+(?:\.\d+)?ms｜本次已用=\d+(?:\.\d+)?ms｜T\\?\*=\d+(?:\.\d+)?ms】"
 )
 _LOCATOR_RE = re.compile(r"【[^\n｜]+｜[^\n｜]+｜(?:0[1-6]|[1-6])｜实】")
 
