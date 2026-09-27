@@ -1,10 +1,10 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.2.0。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是正式真实使用，测试仅属于低层诊断与防回归。
+description: 整体闭环极限短时间引擎 v5.2.0。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
 metadata:
   version: "5.2.0"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_MATURE_REAL_USAGE_READY_R2"
+  release_state: "VIRTUAL_MATURE_REAL_USAGE_TEST_READY_R3"
 ---
 
 # 整体闭环极限短时间引擎 v5.2.0
@@ -26,11 +26,11 @@ v5.2.0 是结构性升级，不是 v5.1.1 的补丁号延伸。v5.1.1 R2 的真�
 
 ### 最高级验收术语
 
-从 v5.2.0 起，最高级环节统一称：
+从 v5.2.0 R3 起，最高级验收统一称：
 
-`REAL_USAGE / 真实使用`
+`REAL_USAGE_TEST / 真实使用测试`
 
-不再称为“真实测试”。
+它仍然是测试；区别是必须使用正式使用同构的入口、路径、环境和用户可见输出，目标仍是全面验证产品真实有效状态，并尽量在交付到日常使用前暴露问题。
 
 原因：正式生产任务本身就是最终观察场。软件缺陷允许在真实使用中被发现，但发现后本轮必须失败，立即回虚修复；修复完成后先做低层测试，再形成新 Freeze，再从新的正式入口重新真实使用。
 
@@ -92,6 +92,39 @@ R2 精确 blob 低层回归：
 - `FINAL_VALID=NO`
 - `DONE=NO`
 
+### v5.2.0 R3：真实使用测试 + 简洁控制面
+
+R2 原始结果保留为 FAIL，但归因：
+- `FAIL_SOURCE=TEST_HARNESS`
+- `PRODUCT_DEFECT_ESTABLISHED=NO`
+- 原因：Codex 临时编写的参数提取辅助脚本在调用冻结 Renderer 前 KeyError。
+- 以后真实使用测试禁止现场编写临时辅助脚本；必要自动化必须在虚拟阶段预先实现并 Freeze。
+
+真实使用测试的“全面”固定为：
+- 覆盖冻结合同的全部关键功能、控制边界、用户可见行为；
+- 覆盖 NORMAL / PRODUCT_DELTA / EXTERNAL_BLOCK 三类顶层旅程；
+- 大量组合、随机、Mutation 等仍由低层测试承担，避免在最高层重复制造昂贵样本。
+
+Codex 用户可见派发改为最小控制面：
+- 保留 Locator、数字时间锚、Timeline、Freeze ID、Freeze Ref、Contract Ref、简短执行目标和返回合同；
+- 完整 blob/hash 清单进入 Freeze Manifest；
+- 长验收合同进入 Contract；
+- 禁止在可见命令中重复展开机器字段。
+
+R3 精确 blob 低层回归：
+- `10/10 PASS`
+- Runtime blob=`2a56e186ec94d912fa4d6b461657bdfd9c2fb068`
+- Test blob=`6c97278955f38883b4de56153fa765789ce4f56b`
+- Evidence=`docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R3.json`
+
+当前：
+- `FREEZE_ID=ESTE-v5.2.0-REAL-USAGE-TEST-VIRTUAL-FREEZE-R3`
+- `VIRTUAL_MATURE=YES`
+- `SOLUTION_FROZEN=YES`
+- `REAL_USAGE_TEST=READY_TO_DISPATCH_R3`
+- `FINAL_VALID=NO`
+- `DONE=NO`
+
 ### v5.2.0 生产交接
 
 唯一生产 Reality Dispatch Renderer：
@@ -100,7 +133,7 @@ R2 精确 blob 低层回归：
 
 合同：
 
-`contracts/REAL-USAGE-v5.2.0.json`
+`docs/first-principles/v5.2.0/REAL-USAGE-TEST-CONTRACT-R3.json`
 
 低层回归：
 
