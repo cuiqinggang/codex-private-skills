@@ -9,30 +9,35 @@ spec.loader.exec_module(mod)
 
 base = dict(
     page_name="整体闭环极限时间引擎 5.2版",
-    task_name="v5.2.0真实使用",
-    task_no=1,
+    task_name="v5.2.0真实使用测试",
+    task_no=3,
     virtual_mature=True,
     solution_frozen=True,
     real_started=False,
     timeline_id="ESTE-v5.2.0-LIVE-001",
     time_origin_utc="2026-09-27T12:00:00Z",
-    turn_start_utc="2026-09-27T12:00:00Z",
+    turn_start_utc="2026-09-27T12:00:01Z",
     dispatch_utc="2026-09-27T12:00:02Z",
-    freeze_id="ESTE-v5.2.0-VIRTUAL-FREEZE-R1",
-    frozen_assets="repo=cuiqinggang/codex-private-skills;branch=codex/first-principles-physical-limit-convergence-v5.2.0-virtual",
-    reality_valid_contract="按正式生产路径进行真实使用验收。",
-    reality_timing_boundary="REAL_DISPATCH→EXECUTOR_RETURN_*",
+    freeze_id="ESTE-v5.2.0-REAL-USAGE-TEST-VIRTUAL-FREEZE-R3",
+    freeze_ref="freeze/este-v5.2.0-r3",
+    contract_ref="docs/first-principles/v5.2.0/REAL-USAGE-TEST-CONTRACT-R3.json",
     t_star_ms=0.0027,
-    t_star_source="HISTORICAL_REFERENCE_ONLY",
-    executor_task="执行冻结任务并返回真实结果。",
+    executor_task="读取冻结清单与合同，运行冻结低层检查，再按合同直接检查本次收到的用户可见命令；禁止创建临时辅助脚本。",
 )
 
 out = mod.build_real_dispatch(**base)
-assert out.text.startswith("【整体闭环极限时间引擎 5.2版｜v5.2.0真实使用｜01｜实】")
-assert "【时间锚｜整体已用=2000.000ms｜本次已用=2000.000ms｜T*=0.0027ms】" in out.text
-assert "TIMELINE_ID=ESTE-v5.2.0-LIVE-001" in out.text
-assert "PASS / FAIL / BLOCKED" in out.text
+assert out.text.startswith("【整体闭环极限时间引擎 5.2版｜v5.2.0真实使用测试｜03｜实】")
+assert "【时间锚｜整体已用=2000.000ms｜本次已用=1000.000ms｜T*=0.0027ms】" in out.text
+assert "FREEZE_REF=freeze/este-v5.2.0-r3" in out.text
+assert "CONTRACT_REF=docs/first-principles/v5.2.0/REAL-USAGE-TEST-CONTRACT-R3.json" in out.text
+assert "FROZEN_ASSETS=" not in out.text
+assert "REALITY_VALID_CONTRACT=" not in out.text
+assert "RESULT=PASS|FAIL|BLOCKED" in out.text
 assert "RETURN_TO_GPT=YES" in out.text
+assert "NO_FINAL_VALID_DONE=YES" in out.text
+
+header = out.text.split("\n\n执行：", 1)[0]
+assert len(header) <= 1200
 
 def must_block(changes, expected):
     data = dict(base)
@@ -48,16 +53,11 @@ must_block({"timeline_id": ""}, "TIMELINE_ID_REQUIRED")
 must_block({"time_origin_utc": ""}, "UTC_TIMESTAMP_REQUIRED")
 must_block({"real_started": True}, "REAL_ALREADY_STARTED")
 must_block({"task_no": 7}, "TASK_NO_OUT_OF_RANGE_01_06")
+must_block({"freeze_ref": ""}, "FREEZE_REF_REQUIRED")
+must_block({"contract_ref": ""}, "CONTRACT_REF_REQUIRED")
 
-print("RENDERED_TIME_REGEX=PASS")
-print("MISSING_TIMELINE_ID_BLOCK=PASS")
-print("MISSING_TIME_ORIGIN_BLOCK=PASS")
-print("DUPLICATE_REAL_DISPATCH_BLOCK=PASS")
-print("TASK_NO_01_06_BLOCK=PASS")
-
-# A manually composed/incomplete Reality dispatch must be rejected by the same production validator.
-manual_incomplete = """【整体闭环极限时间引擎 5.2版｜v5.2.0真实使用｜01｜实】
-FREEZE_ID=ESTE-v5.2.0-VIRTUAL-FREEZE-R1
+manual_incomplete = """【整体闭环极限时间引擎 5.2版｜v5.2.0真实使用测试｜03｜实】
+FREEZE_ID=ESTE-v5.2.0-REAL-USAGE-TEST-VIRTUAL-FREEZE-R3
 RETURN_TO_GPT=YES
 """
 try:
@@ -67,15 +67,9 @@ except mod.ProductionHandoffViolation:
 else:
     raise AssertionError("manual incomplete dispatch must be rejected")
 
-print("MANUAL_BYPASS_INCOMPLETE_REJECTED=PASS")
-
-
-# Transport-layer Markdown escaping of the asterisk is semantically equivalent.
 escaped_time = out.text.replace("T*=", r"T\*=", 1)
 mod.validate_rendered_dispatch(escaped_time)
-print("MARKDOWN_T_STAR_TRANSPORT_EQUIVALENCE=PASS")
 
-# Do not broadly strip escapes: only the single Markdown escape before * is accepted.
 overescaped_time = out.text.replace("T*=", r"T\\*=", 1)
 try:
     mod.validate_rendered_dispatch(overescaped_time)
@@ -92,4 +86,21 @@ except mod.ProductionHandoffViolation as e:
 else:
     raise AssertionError("semantic token change must be rejected")
 
-print("OVERBROAD_TRANSPORT_NORMALIZATION_FORBIDDEN=PASS")
+expanded = out.text.replace("FREEZE_REF=", "FROZEN_ASSETS=x\nFREEZE_REF=", 1)
+try:
+    mod.validate_rendered_dispatch(expanded)
+except mod.ProductionHandoffViolation as e:
+    assert "EXPANDED_ASSET_LIST_FORBIDDEN" in str(e)
+else:
+    raise AssertionError("expanded visible asset list must be rejected")
+
+print("COMPACT_DISPATCH_RENDER=PASS")
+print("NUMERIC_TIME_ENVELOPE=PASS")
+print("TIMELINE_GATES=PASS")
+print("TASK_NO_01_06=PASS")
+print("FREEZE_AND_CONTRACT_REFS=PASS")
+print("MANUAL_INCOMPLETE_REJECTED=PASS")
+print("MARKDOWN_T_STAR_EQUIVALENCE=PASS")
+print("OVERBROAD_NORMALIZATION_REJECTED=PASS")
+print("EXPANDED_VISIBLE_ASSET_LIST_REJECTED=PASS")
+print("CONTROL_HEADER_BUDGET=PASS")
