@@ -1,15 +1,85 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.1.1。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；测试从真实用户正式使用路径反推，真实用户旅程是最高级验收，低层测试只负责快速发现与防回归。
+description: 整体闭环极限短时间引擎 v5.2.0。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是正式真实使用，测试仅属于低层诊断与防回归。
 metadata:
-  version: "5.1.1"
+  version: "5.2.0"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_R2_FROZEN_REAL_USER_JOURNEY_PENDING"
+  release_state: "VIRTUAL_MATURITY_IN_PROGRESS"
 ---
 
-# 整体闭环极限短时间引擎 v5.1.1
+# 整体闭环极限短时间引擎 v5.2.0
 
-## CURRENT v5.1.1 R2 权威状态与两项 Reality Delta 封堵
+## CURRENT v5.2.0 权威状态
+
+当前页面名称：
+
+`整体闭环极限时间引擎 5.2版`
+
+v5.2.0 是结构性升级，不是 v5.1.1 的补丁号延伸。v5.1.1 R2 的真实使用结果固定保留为历史失败证据：
+
+- `REAL_RESULT=FAIL`
+- `REAL_T_VALID_MS=175000`
+- 数字时间锚用户可见：PASS
+- 首次调用生产出口即因时间锚正则双重转义失败：FAIL
+- 唯一生产 Renderer、禁止旁路、缺 Timeline 分支均未获得完整现实证明
+- 未实际执行的低层检查曾被错误预报为 PASS；该行为在 v5.2.0 中明确禁止
+
+### 最高级验收术语
+
+从 v5.2.0 起，最高级环节统一称：
+
+`REAL_USAGE / 真实使用`
+
+不再称为“真实测试”。
+
+原因：正式生产任务本身就是最终观察场。软件缺陷允许在真实使用中被发现，但发现后本轮必须失败，立即回虚修复；修复完成后先做低层测试，再形成新 Freeze，再从新的正式入口重新真实使用。
+
+低层的单元、回归、随机、Mutation、故障注入仍可称“测试”，但它们不得代替真实使用签发最终证书。
+
+### 证据状态硬规则
+
+每个尚未实际执行的检查初始只能是：
+
+`NOT_RUN`
+
+只有存在对应的实际执行证据，才能改为：
+
+`PASS / FAIL / BLOCKED`
+
+以下均不得推导 PASS：
+
+- 代码文件已经存在；
+- 测试脚本已经写好；
+- GPT 静态阅读认为正确；
+- 理论上应该通过；
+- 上一版本曾通过相似检查。
+
+### v5.2.0 生产交接
+
+唯一生产 Reality Dispatch Renderer：
+
+`runtime/production_handoff_v5_2_0.py::build_real_dispatch`
+
+合同：
+
+`contracts/REAL-USAGE-v5.2.0.json`
+
+低层回归：
+
+`tests/test_production_handoff_v5_2_0.py`
+
+当前状态：
+
+- `phase=虚`
+- `VIRTUAL_MATURITY_IN_PROGRESS`
+- `LOW_LEVEL_REGRESSION=NOT_RUN_IN_REPOSITORY_REALITY`
+- `REAL_USAGE=NOT_STARTED`
+- `FINAL_VALID=NO`
+- `DONE=NO`
+
+---
+
+## HISTORICAL：v5.1.1 R2 权威状态与两项 Reality Delta 封堵（真实使用失败证据）
 
 当前新增 Freeze：
 
@@ -51,7 +121,7 @@ R2 回归：
 
 ---
 
-## 0. v5.1.1 当前冻结规则
+## HISTORICAL：v5.1.1 冻结规则
 
 当前页面名称：
 
