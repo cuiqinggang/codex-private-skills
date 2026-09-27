@@ -1,0 +1,61 @@
+{
+  "version": "5.3.0",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "report_type": "DETERMINISTIC_CODED_FSM_VIRTUAL_MATURITY",
+  "architecture": "虚→实",
+  "motivation": [
+    "文字规则可被解释但不能机械阻止回复在 Freeze 后结束",
+    "REAL 标签可出现但未必自动绑定完整执行命令",
+    "因此把状态、合法下一跳、必须动作编码进唯一状态机"
+  ],
+  "state_codes": {
+    "0": "NEW",
+    "10": "VIRTUAL",
+    "20": "VIRTUAL_MATURE",
+    "30": "FROZEN_TRANSIENT",
+    "40": "REAL_DISPATCHED",
+    "90": "BLOCKED",
+    "100": "FINAL_VALID"
+  },
+  "hard_properties": [
+    "state 20 and 30 cannot end user reply",
+    "no freeze_only API exists",
+    "freeze_and_dispatch performs 20->30->40 atomically",
+    "dispatch is built through the skill-wide Scope Gate",
+    "dispatch failure returns machine to state 10",
+    "PASS/FAIL/BLOCKED have fixed transitions",
+    "business names are payload only"
+  ],
+  "gpt_side_execution": {
+    "process_exit_code": 0,
+    "pass_count": 10,
+    "total_count": 10,
+    "checks": [
+      "STATE_CODES_FIXED",
+      "VIRTUAL_MATURE_REPLY_END_BLOCKED",
+      "NO_FREEZE_ONLY_API",
+      "FREEZE_TO_REAL_ATOMIC",
+      "REAL_DISPATCH_COMPLETE",
+      "FAIL_RETURNS_VIRTUAL",
+      "BLOCKED_RESUME_PATH",
+      "PASS_FINAL_VALID",
+      "ILLEGAL_TRANSITION_BLOCKED",
+      "BUSINESS_AGNOSTIC_STATE_MACHINE"
+    ],
+    "note": "Target process exit code was 0. Unrelated spreadsheet-runtime warmup noise occurred outside the target test process."
+  },
+  "exact_repo_blobs": {
+    "fsm": "d79661d478793cd183ae6559ac01d0aba387ad51",
+    "test": "cf8de4be25bb929944564df83a9135e1e4b73d69",
+    "scope_gate": "5208d600060bef0cdcab10681f82e5cd6ab034fd",
+    "renderer": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068",
+    "contract": "92f5c910296cb3c451f9d7d2b8bb5cde4bad4b8f"
+  },
+  "exact_frozen_blob_execution": "PENDING_REAL_USAGE_TEST",
+  "limitation": "A page that completely bypasses/does not invoke the skill cannot be controlled from inside the skill. Once invoked, the coded FSM is the only valid path.",
+  "virtual_mature": true,
+  "solution_frozen": false,
+  "real_usage_test_status": "PENDING",
+  "final_valid": false,
+  "done": false
+}
