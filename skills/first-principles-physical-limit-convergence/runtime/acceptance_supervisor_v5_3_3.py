@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from acceptance_review_v1_0_1 import review_acceptance, review_wait
 
 MAX_DISPATCHES = 6
 PATHS = ("A", "B", "C")
@@ -44,12 +45,18 @@ def transport_failure(s: Supervisor):
 
     return "ALL_PATHS_UNAVAILABLE_BLOCK"
 
-def acceptance_result(result: str, fail_source: str):
+def acceptance_result(result: str, fail_source: str, *, expected=None, evidence=None):
     r = str(result).upper().strip()
     f = str(fail_source).upper().strip()
 
     _require(r in {"PASS", "FAIL", "BLOCKED"}, "UNKNOWN_RESULT")
-    _require(f in {"NONE", "PRODUCT", "TEST_HARNESS", "TRANSPORT", "EXTERNAL"}, "UNKNOWN_FAIL_SOURCE")
+    _require(f in {"NONE", "PRODUCT", "TEST_HARNESS", "TRANSPORT", "EXTERNAL", "MANUAL_HANDOFF"}, "UNKNOWN_FAIL_SOURCE")
+
+    r, f = review_acceptance(r, f, expected=expected, evidence=evidence)
+    if r == "HOLD":
+        return f
+    if f == "MANUAL_HANDOFF":
+        return "ACCEPTANCE_FAIL_CONFIRMED_HUMAN_NO_PRODUCT_CHANGE"
 
     if r == "PASS":
         return "FSM_PASS_TO_FINAL_VALID"
@@ -67,6 +74,9 @@ def acceptance_result(result: str, fail_source: str):
         return "FSM_FAIL_TO_VIRTUAL_REMATURE_REFREEZE"
 
     return "FSM_BLOCKED"
+
+def acceptance_wait(*, expected=None, observation=None):
+    return review_wait(expected=expected, observation=observation)
 
 def codex_acceptance_requirements():
     return {
