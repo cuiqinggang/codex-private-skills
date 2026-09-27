@@ -4,7 +4,7 @@ description: 整体闭环极限短时间引擎 v5.0.8 最终版。唯一目标 T
 metadata:
   version: "5.0.8"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "FINAL"
+  release_state: "PATCH_PENDING_LIVE_E2E"
 ---
 
 # 整体闭环极限短时间引擎 v5.0.8 最终版
@@ -327,7 +327,84 @@ v5.0.8 最终采用：
 
 ---
 
-## 11. 最终权威证据
+## 11. 真实回复执行绑定与结束门
+
+v5.0.8 的状态机、时间信封和校验器只有在**真实回复结束前被调用**时才构成有效控制。
+
+必须区分两种认证：
+
+- `COMPONENT_CERTIFIED`：状态机/校验器在显式调用时行为正确；
+- `LIVE_E2E_ENFORCED`：真实 GPT/Codex 使用流程确实经过这些门并产生要求的控制交换。
+
+组件测试通过不得自动推出真实端到端执行约束已经生效。
+
+### 虚拟成熟后的强制结束门
+
+一旦同时满足：
+
+`VIRTUAL_MATURE=PASS`
+
+`SOLUTION_FROZEN=YES`
+
+`REAL_STARTED=NO`
+
+则当前回复**不得以总结、状态说明或 Freeze 结论结束**。
+
+必须继续完成：
+
+`VIRTUAL_MATURITY_TIME_CLOSEOUT -> FREEZE_COMMIT -> FREEZE_TO_REAL -> REAL_DISPATCH`
+
+并在同一回复中输出可直接交给目标执行器的 Reality Dispatch。
+
+Reality Dispatch 至少必须显式包含：
+
+1. `【页面名｜任务名｜序号｜实】`
+2. `【时间锚｜整体已用=<数字>ms｜本次已用=<数字>ms｜T*=<数字>ms】`
+3. `TIMELINE_ID`
+4. `TIME_ORIGIN_UTC`
+5. `DISPATCH_UTC`
+6. `FREEZE_ID`
+7. 冻结资产/路径/版本
+8. Reality VALID 条件
+9. Reality 计时边界
+10. PASS / FAIL / BLOCKED 返回合同
+11. `RETURN_TO_GPT=YES`
+
+如果真实可审计的 `TIMELINE_ID / TIME_ORIGIN_UTC` 从未建立：
+
+- 必须 BLOCK；
+- 不得伪造整体已用时间；
+- 先建立或恢复可审计 Timeline，再允许 REAL_DISPATCH。
+
+### 控制权规则
+
+Reality 执行器不得自行宣布整个任务 `FINAL_VALID/DONE`。
+
+无论 PASS / FAIL / BLOCKED，现实执行结束后均必须：
+
+`RETURN_TO_GPT=YES`
+
+由 GPT 验证时间连续性、Reality 结果和最终收口。
+
+### 机械回归门
+
+权威实现：
+- `contracts/FINAL-RESPONSE-ENFORCEMENT-v5.0.8.json`
+- `runtime/final_response_gate_v5_0_8.py`
+- `tests/test_final_response_gate_v5_0_8.py`
+
+DSE v1.0.3 的真实失效回复已经作为回归反例：
+- 有 REAL Locator，但没有数值时间信封；
+- 没有 TIMELINE_ID / TIME_ORIGIN_UTC / DISPATCH_UTC；
+- 成功路径写成 `RETURN_TO_GPT=NO`。
+
+该反例必须被结束门拒绝。
+
+> 注意：纯 Skill 文本和 Python 校验器本身不能证明宿主 ChatGPT/Codex 一定调用该 gate。最终 `LIVE_E2E_ENFORCED=YES` 只能由新的真实使用测试证明。
+
+---
+
+## 12. 最终权威证据
 
 最终 Reality 报告：
 
