@@ -1,0 +1,48 @@
+{
+  "version": "5.2.0",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "report_type": "R2_VIRTUAL_MATURITY_AFTER_REAL_USAGE_R1_FAIL",
+  "predecessor_real_usage": {
+    "freeze_id": "ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R1",
+    "real_result": "FAIL",
+    "real_t_valid_ms": 541106,
+    "executor_elapsed_ms": 351106,
+    "delta": "Markdown transport escaped the T-star token; frozen validator rejected the otherwise numeric time envelope."
+  },
+  "adjudication": {
+    "keep_required": "Numeric time envelope must exist, be numeric, and remain auditable.",
+    "remove_overconstraint": "Do not require one byte-level representation of the T-star token when Markdown transport is semantically equivalent.",
+    "classification": "VALIDATOR_OVERCONSTRAINT_TRANSPORT_EQUIVALENCE_FALSE_NEGATIVE",
+    "retroactive_r1_pass_allowed": false
+  },
+  "r2_rule": {
+    "accepted_forms": [
+      "T_STAR_PLAIN",
+      "T_STAR_SINGLE_MARKDOWN_ESCAPE"
+    ],
+    "broad_markdown_unescape": false,
+    "overescaped_form_rejected": true,
+    "semantic_token_change_rejected": true
+  },
+  "exact_blob_execution": {
+    "runtime_blob": "b8693ce4cd5b96678ffba8cd7305cf9d0959c8f0",
+    "test_blob": "736f09a1970b1a07baf092928d81f6b485ddf3fa",
+    "runtime_byte_identity": "PASS",
+    "test_byte_identity": "PASS",
+    "process_exit_code": 0,
+    "pass_count": 8,
+    "total_count": 8,
+    "checks": [
+      "RENDERED_TIME_REGEX",
+      "MISSING_TIMELINE_ID_BLOCK",
+      "MISSING_TIME_ORIGIN_BLOCK",
+      "DUPLICATE_REAL_DISPATCH_BLOCK",
+      "TASK_NO_01_06_BLOCK",
+      "MANUAL_BYPASS_INCOMPLETE_REJECTED",
+      "MARKDOWN_T_STAR_TRANSPORT_EQUIVALENCE",
+      "OVERBROAD_TRANSPORT_NORMALIZATION_FORBIDDEN"
+    ]
+  },
+  "release_evidence": false,
+  "next_action": "FREEZE_R2_AND_REENTER_REAL_USAGE"
+}
