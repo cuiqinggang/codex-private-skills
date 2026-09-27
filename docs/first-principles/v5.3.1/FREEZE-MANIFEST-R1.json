@@ -1,0 +1,62 @@
+{
+  "version": "5.3.1",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "freeze_id": "ESTE-v5.3.1-VISIBLE-USER-JOURNEY-VIRTUAL-FREEZE-R1",
+  "freeze_type": "VISIBLE_REAL_USER_JOURNEY_ACCEPTANCE",
+  "source_branch": "codex/first-principles-physical-limit-convergence-v5.3.1-visible-user-journey",
+  "source_head_before_manifest": "f6969d1085ab882d3ec61d96ef47de04b37b5b96",
+  "core_runtime_changed": false,
+  "inherited_core": {
+    "fsm_version": "5.3.0",
+    "fsm_blob": "d79661d478793cd183ae6559ac01d0aba387ad51",
+    "scope_gate_blob": "5208d600060bef0cdcab10681f82e5cd6ab034fd",
+    "renderer_blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068"
+  },
+  "acceptance_change": "Highest release gate is now a screen-visible, production-isomorphic real-user journey starting from a plain natural-language user task.",
+  "release_evidence_rules": {
+    "normal_user_prompt_required": true,
+    "screen_visible_chain_required": true,
+    "prebuilt_reality_dispatch_forbidden": true,
+    "hidden_function_call_not_release_evidence": true,
+    "test_script_not_release_evidence": true,
+    "tester_may_help": false,
+    "minimum_normal_visible_journey_passes": 1
+  },
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob": "c7cb1311a645f7c6c54caec24df8040e7e21e4fb"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/VISIBLE-USER-JOURNEY-v5.3.1.json",
+      "blob": "24dfe427c44253f93d10c65d3d40a850604a98b6"
+    },
+    {
+      "path": "docs/first-principles/v5.3.1/VISIBLE-USER-JOURNEY-R1.md",
+      "blob": "7123533e17ad6a149327f7a041462d2d00dd4ed8"
+    },
+    {
+      "path": "docs/first-principles/v5.3.1/CURRENT_STATE.json",
+      "blob": "fe1857ce801bfd9ca9a52693b3bf6261a023ef72"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob": "7555d689110e3c542c987130bc4543642a0bd26b"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/fsm_v5_3_0.py",
+      "blob": "d79661d478793cd183ae6559ac01d0aba387ad51"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/scope_gate_v5_2_2.py",
+      "blob": "5208d600060bef0cdcab10681f82e5cd6ab034fd"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
+      "blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068"
+    }
+  ],
+  "final_valid": false,
+  "done": false,
+  "next_action": "START_VISIBLE_R1_FROM_PLAIN_USER_PROMPT"
+}
