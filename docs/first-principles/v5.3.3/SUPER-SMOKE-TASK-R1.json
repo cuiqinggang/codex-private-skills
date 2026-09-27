@@ -1,0 +1,51 @@
+{
+  "task_id": "ESTE-v5.3.3-SUPER-SMOKE-R1",
+  "engine_version": "5.3.3",
+  "task_type": "FULL_CLOSED_LOOP_AUTOMATION_SMOKE",
+  "objective": "T*=min(T_VALID)",
+  "timing_boundary": "TASK_ACCEPTED->FINAL_VALID",
+  "business_task": {
+    "target": "C:\\Users\\A\\Documents\\Codex\\2026-09-27\\este-super-smoke-v533\\result.txt",
+    "exact_content": "V5.3.3_SMOKE_OK",
+    "allowed_side_effects": [
+      "create target directory if absent",
+      "create or overwrite target result.txt"
+    ],
+    "forbidden_side_effects": [
+      "modify outside target directory",
+      "modify historical freezes",
+      "modify proxy/network settings"
+    ]
+  },
+  "components": {
+    "state_authority": "first-principles v5.3.0 FSM",
+    "acceptance_supervisor": "first-principles v5.3.3",
+    "transport": "gpt-codex-convergence-orchestrator v1.5.2 A/B/C policy only",
+    "browser": "playwright-native-ai-browser / JEV-native Playwright R3",
+    "executor": "Codex",
+    "planner_judge": "GPT"
+  },
+  "auto_recovery": {
+    "product_fail": "return virtual -> remature -> new freeze -> redispatch",
+    "test_harness_or_transport_fail": "same product freeze -> recover once -> switch A/B/C",
+    "external_blocked": "recover/switch -> blocked only if all routes unavailable",
+    "max_dispatches": 6
+  },
+  "acceptance_required": [
+    "AUTO_USER_PROMPT_SUBMITTED",
+    "VISIBLE_VIRTUAL_MATURITY",
+    "AUTO_FREEZE_TO_REAL",
+    "COMPLETE_REALITY_DISPATCH",
+    "CODEX_REAL_EXECUTION",
+    "TARGET_FILE_EXISTS",
+    "TARGET_FILE_CONTENT_EXACT",
+    "NO_OUT_OF_SCOPE_FILE_CHANGE",
+    "RESULT_RETURNED_TO_GPT",
+    "GPT_FINAL_CLOSEOUT",
+    "USER_INTERVENTION_COUNT=0"
+  ],
+  "engineering_target_ms": 60000,
+  "engineering_target_is_validity_gate": false,
+  "command_published": false,
+  "state": "VIRTUAL_DESIGN_COMPLETE_NOT_DISPATCHED"
+}
