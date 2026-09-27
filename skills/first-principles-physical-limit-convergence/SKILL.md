@@ -4,7 +4,7 @@ description: 整体闭环极限短时间引擎 v5.2.0。唯一目标 T*=min(T_VA
 metadata:
   version: "5.2.0"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_MATURE_REAL_USAGE_TEST_READY_R3"
+  release_state: "VIRTUAL_MATURITY_R4_HARNESS_ONLY"
 ---
 
 # 整体闭环极限短时间引擎 v5.2.0
@@ -125,6 +125,38 @@ R3 精确 blob 低层回归：
 - `FINAL_VALID=NO`
 - `DONE=NO`
 
+### v5.2.0 R4：单点故障只做单点修复
+
+R3 真实使用测试结果保留：
+- `RESULT=FAIL`
+- `FAIL_SOURCE=TEST_HARNESS`
+- `PRODUCT_DEFECT_ESTABLISHED=NO`
+- 根因：Windows worktree 将 Git 中的 LF 自动物化为 CRLF；`git diff` 因换行归一化为空，但原始工作区 bytes 不等于 Freeze blob。
+
+R4 只修这一点：
+- Freeze 字节身份的权威源改为 `GIT_OBJECT_BYTES`；
+- 精确字节执行时从 Git 对象数据库无损物化，不经过会改换行的 worktree；
+- worktree 原始 bytes 不再作为跨平台 Freeze 身份证据；
+- 禁止为了验收修改 `core.autocrlf`、Windows Git 设置或重新提交 CRLF 版本。
+
+最小修改原则：
+- `ISOLATED_FAILURE_REQUIRES_ISOLATED_FIX`
+- 只有证据证明系统性/架构性根因时才允许扩大修改面；
+- 否则所有无关已通过资产必须保持不变。
+
+本轮明确不改：
+- Runtime / Renderer；
+- 低层测试逻辑；
+- 时间锚与 Timeline；
+- Markdown T-star 等价规则；
+- 简洁派发；
+- 01–06 Locator；
+- 产品功能逻辑。
+
+R3 产品 blob 继续保持：
+- Runtime=`2a56e186ec94d912fa4d6b461657bdfd9c2fb068`
+- Test=`6c97278955f38883b4de56153fa765789ce4f56b`
+
 ### v5.2.0 生产交接
 
 唯一生产 Reality Dispatch Renderer：
@@ -133,7 +165,7 @@ R3 精确 blob 低层回归：
 
 合同：
 
-`docs/first-principles/v5.2.0/REAL-USAGE-TEST-CONTRACT-R3.json`
+`docs/first-principles/v5.2.0/REAL-USAGE-TEST-CONTRACT-R4.json`
 
 低层回归：
 
