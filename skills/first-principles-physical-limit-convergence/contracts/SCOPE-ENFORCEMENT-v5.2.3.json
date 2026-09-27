@@ -1,0 +1,52 @@
+{
+  "version": "5.2.3",
+  "name": "SKILL_WIDE_REALITY_DISPATCH_SCOPE_ENFORCEMENT",
+  "parent_freeze": "ESTE-v5.2.2-SKILL-WIDE-SCOPE-GATE-VIRTUAL-FREEZE-R1",
+  "delta_classification": "MARKDOWN_EXECUTION_MARKER_TRANSPORT_FALSE_NEGATIVE",
+  "failure_observed": {
+    "result": "FAIL",
+    "fail_source": "PRODUCT",
+    "product_defect_established": true,
+    "symptom": "真实接收命令存在完整执行正文，但 Markdown 在“执行：”行尾增加单个反斜杠，Scope Gate 只接受精确换行而误报 EXECUTION_BODY_MISSING。"
+  },
+  "minimal_fix": {
+    "changed_scope": "ONLY_EXECUTION_SECTION_MARKER_PARSER",
+    "accepted_forms": [
+      "执行： 后直接换行",
+      "执行： 后单个 Markdown 行尾反斜杠再换行"
+    ],
+    "rejected_forms": [
+      "双反斜杠",
+      "缺执行正文",
+      "Header-only Reality Dispatch"
+    ]
+  },
+  "unchanged": [
+    "production_handoff_v5_2_0.py",
+    "numeric time contract",
+    "Freeze/Git Object materialization",
+    "T-star Markdown equivalence",
+    "business-agnostic scope rule",
+    "return contract",
+    "01-06 locator rule",
+    "DSE business logic"
+  ],
+  "scope_rule": "任何受本技能包治理并进入实阶段的业务仍必须通过同一 Scope Gate；本补丁不引入业务特例。",
+  "low_level_evidence": {
+    "gpt_side_execution": "8/8 PASS",
+    "exact_frozen_blob_execution": "PENDING_REAL_USAGE_TEST",
+    "checks": [
+      "DSE_REAL_COUNTEREXAMPLE_REJECTED",
+      "GENERIC_HEADER_ONLY_REJECTED",
+      "ALL_BUSINESS_NAMES_USE_SAME_SCOPE_GATE",
+      "COMPLETE_EXECUTION_BODY_REQUIRED",
+      "RETURN_CONTRACT_REQUIRED",
+      "NON_REAL_OUTPUT_NOT_OVERBLOCKED",
+      "MARKDOWN_EXECUTION_MARKER_EQUIVALENCE",
+      "OVERESCAPED_EXECUTION_MARKER_REJECTED"
+    ]
+  },
+  "release_state": "VIRTUAL_MATURE_REAL_USAGE_TEST_PENDING",
+  "final_valid": false,
+  "done": false
+}
