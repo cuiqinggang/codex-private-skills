@@ -91,5 +91,10 @@
       "p95_ms": 424.48,
       "max_ms": 448.97
     }
-  }
+  },
+  "freeze_id": "ESTE-v5.3.2-CODEX-JEV-BROWSER-ACCEPTANCE-VIRTUAL-FREEZE-R1",
+  "virtual_mature": true,
+  "solution_frozen": true,
+  "acceptance_doc": "docs/first-principles/v5.3.2/CODEX-DIRECTED-ACCEPTANCE-R1.md",
+  "real_usage_test_status": "READY_TO_DISPATCH"
 }
