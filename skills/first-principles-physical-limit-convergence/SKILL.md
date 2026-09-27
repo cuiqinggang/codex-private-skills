@@ -41,6 +41,22 @@ v5.3.1 不修改 v5.3.0 的编码状态机、Scope Gate、Renderer、时间、Fr
 
 ---
 
+
+### v5.3.1 R2：极简可见用户旅程
+
+R1 的 current 入口维护任务被判定为业务内容过多，不适合作为最短验收样本。R2 不修改状态机和验收原则，只把正常用户任务简化为一个隔离的一文件冒烟任务。
+
+用户任务：在 `C:\Users\A\Documents\Codex\2026-09-27\engine-smoke-v531\ok.txt` 创建文件，内容精确为 `OK`，其他文件不动。
+
+验收重点不是文件本身，而是用户必须在屏幕上自然看到：
+`普通任务 → 快速虚拟成熟 → 自动 Freeze → 同回复完整 Codex 命令 → Codex 真执行 → 返回 GPT → GPT 收口`。
+
+Freeze：
+`ESTE-v5.3.1-VISIBLE-USER-JOURNEY-VIRTUAL-FREEZE-R2`
+
+测试场景：
+`docs/first-principles/v5.3.1/VISIBLE-USER-JOURNEY-R2.md`
+
 ## CURRENT v5.3.0：纯机械编码状态机
 
 v5.3.0 不再把“虚→Freeze→实”主要交给文字规范解释，而是交给唯一可执行状态机：
