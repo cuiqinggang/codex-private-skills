@@ -13,6 +13,8 @@
     "CODEX": [
       "独立选择一个最小但有效的真实使用样例",
       "优先选择极简、低副作用、结果容易核验的任务",
+      "必须调用冻结的 playwright-native-ai-browser 技能包（JEV-native Playwright R3 编译热态版）执行屏幕级用户同构路径",
+      "禁止自行编写 Playwright/浏览器辅助脚本代替该技能包",
       "通过正式用户路径执行，不调用隐藏函数或测试捷径代替",
       "记录屏幕可见链路与真实结果",
       "明确 PASS/FAIL/BLOCKED 与失败来源"
@@ -40,15 +42,17 @@
     "GPT freezes candidate",
     "GPT issues Codex acceptance instruction",
     "Codex independently chooses a small production-isomorphic task",
-    "Codex executes/observes the same visible path a user would use",
+    "Codex invokes the frozen playwright-native-ai-browser R3 skill",
+    "The browser skill operates the actual user-visible UI path",
     "Codex records whether GPT automatically reaches complete REAL dispatch without user reminder",
-    "Codex executes the resulting task in the real environment",
+    "The browser skill completes the real task through the visible production path",
     "Codex returns evidence and result to GPT",
     "GPT adjudicates final state"
   ],
   "forbidden": [
     "GPT preselects exact smoke task",
     "User preselects exact smoke task",
+    "Codex writes its own Playwright/browser automation instead of using playwright-native-ai-browser",
     "Codex only runs unit/regression scripts and calls that release evidence",
     "Codex directly injects FSM state",
     "Codex repairs product mid-run then continues same run as PASS",
@@ -56,14 +60,36 @@
   ],
   "release_pass_conditions": [
     "Codex independently selected the acceptance task",
-    "The tested path was production-isomorphic and user-visible",
+    "Codex used the frozen playwright-native-ai-browser R3 skill, not ad-hoc browser code",
+    "The tested path was production-isomorphic and screen-visible",
     "No user reminder was needed",
     "A complete Codex Reality command was actually produced",
-    "The real task was actually executed and its result verified",
+    "The real task was actually executed through the visible browser path and its result verified",
     "The full evidence returned to GPT without hidden repair"
   ],
   "core_runtime_changed": false,
   "inherited_fsm_version": "5.3.0",
   "final_valid": false,
-  "done": false
+  "done": false,
+  "browser_acceptance_executor": {
+    "required": true,
+    "display_name_cn": "JEV-native Playwright 极限浏览器自动化 R3 编译热态版",
+    "machine_id": "JEV-NATIVE-PLAYWRIGHT-EXTREME-V1-R3-COMPILED-WARM",
+    "canonical_skill_id": "playwright-native-ai-browser",
+    "codex_thin_entry": "C:\\Users\\A\\.codex\\skills\\playwright-native-ai-browser",
+    "canonical_skill_dir": "C:\\AI\\Playwright-Native-AI-Browser\\skills\\playwright-native-ai-browser",
+    "canonical_skill_file": "C:\\AI\\Playwright-Native-AI-Browser\\skills\\playwright-native-ai-browser\\SKILL.md",
+    "mcp_name": "playwright_native_ai_browser",
+    "business_entry": "C:\\AI\\Playwright-Native-AI-Browser\\skills\\playwright-native-ai-browser\\scripts\\chatgpt-business-entry.js",
+    "r3_frozen_runner": "docs/playwright-browser-automation/20260922-jev-native-r3/REAL-VERIFY-RUNNER-R3.cjs",
+    "prior_certification": {
+      "real_runs": 30,
+      "valid_runs": 30,
+      "reality_delta": "NONE",
+      "t_real_min_ms": 272.98,
+      "p50_ms": 304.46,
+      "p95_ms": 424.48,
+      "max_ms": 448.97
+    }
+  }
 }
