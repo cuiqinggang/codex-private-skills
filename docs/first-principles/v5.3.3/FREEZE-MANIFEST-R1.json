@@ -1,0 +1,91 @@
+{
+  "version": "5.3.3",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "freeze_id": "ESTE-v5.3.3-AUTO-ACCEPTANCE-SUPERVISOR-VIRTUAL-FREEZE-R1",
+  "freeze_type": "FSM_ORCHESTRATOR_JEV_ACCEPTANCE_AUTOMATION",
+  "source_branch": "codex/first-principles-physical-limit-convergence-v5.3.3-acceptance-supervisor",
+  "source_head_before_manifest": "b05b755a14235e5ec4e9db3e910d41e11292c8a2",
+  "responsibilities": {
+    "state_authority": "v5.3.0 FSM",
+    "transport_recovery": "gpt-codex-convergence-orchestrator v1.5.2 transport policy only",
+    "acceptance_operator": "Codex",
+    "browser_executor": "playwright-native-ai-browser / JEV-native Playwright R3",
+    "planner_refreezer_final_judge": "GPT"
+  },
+  "orchestrator_source": {
+    "branch": "codex/gpt-codex-convergence-orchestrator-v1.5.2-freeze-closeout",
+    "commit": "c00dbc63abda76acc7b787caf9c2f8fd2cd206a1",
+    "reused_only": [
+      "A/B/C transport",
+      "one simple recovery",
+      "path switching"
+    ],
+    "state_authority": false
+  },
+  "automated_loop": {
+    "PASS": "FSM FINAL_VALID",
+    "PRODUCT_FAIL": "RETURN_VIRTUAL -> GPT REMATURE -> NEW FREEZE -> REDISPATCH",
+    "TEST_HARNESS_OR_TRANSPORT_FAIL": "RECOVER/SWITCH A-B-C WITH SAME PRODUCT FREEZE",
+    "EXTERNAL_BLOCKED": "RECOVER/SWITCH ELSE FSM BLOCKED",
+    "max_dispatches": 6
+  },
+  "browser_rule": {
+    "required_skill": "playwright-native-ai-browser",
+    "display_name": "JEV-native Playwright 极限浏览器自动化 R3 编译热态版",
+    "ad_hoc_browser_script_allowed": false,
+    "codex_selects_test_case_at_runtime": true
+  },
+  "low_level_regression": {
+    "gpt_side_execution": "8/8 PASS",
+    "exact_frozen_blob_execution": "PENDING_CODEX_REAL_ACCEPTANCE"
+  },
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob": "74664af740022e258c944a559486d22cfe8fc3e3"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/acceptance_supervisor_v5_3_3.py",
+      "blob": "c520152633e168fd418ac545d73e9c941f691b37"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_acceptance_supervisor_v5_3_3.py",
+      "blob": "32e4ee634928a7231898f203c45ebffaeff5f499"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/ACCEPTANCE-AUTOMATION-v5.3.3.json",
+      "blob": "458f6d3d675692a2c7c5fccc1327db6bef8fbdff"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/CODEX-DIRECTED-ACCEPTANCE-v5.3.2.json",
+      "blob": "6bb26b973e24d5c7487bcddb4e16680a5bcf7b52"
+    },
+    {
+      "path": "docs/first-principles/v5.3.2/CODEX-DIRECTED-ACCEPTANCE-R1.md",
+      "blob": "bf4adb0de3c084fcb4c932d3d1eb1f6f4399eef8"
+    },
+    {
+      "path": "docs/first-principles/v5.3.3/CURRENT_STATE.json",
+      "blob": "c4a32462d5379fb51cae84c74b785c82e1737845"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob": "f46a0edd0a96c39757e5e22ade3e6bbda83af52e"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/fsm_v5_3_0.py",
+      "blob": "d79661d478793cd183ae6559ac01d0aba387ad51"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/scope_gate_v5_2_2.py",
+      "blob": "5208d600060bef0cdcab10681f82e5cd6ab034fd"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
+      "blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068"
+    }
+  ],
+  "final_valid": false,
+  "done": false,
+  "next_action": "CODEX_REAL_ACCEPTANCE_USING_ORCHESTRATOR_PLUS_JEV_BROWSER"
+}
