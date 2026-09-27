@@ -1,0 +1,64 @@
+{
+  "version": "5.3.1",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "freeze_id": "ESTE-v5.3.1-VISIBLE-USER-JOURNEY-VIRTUAL-FREEZE-R2",
+  "freeze_type": "VISIBLE_REAL_USER_JOURNEY_SMOKE_R2",
+  "source_branch": "codex/first-principles-physical-limit-convergence-v5.3.1-visible-user-r2",
+  "source_head_before_manifest": "7cf7adc57af44de8ebe29235cae0b5b59a55d69b",
+  "core_runtime_changed": false,
+  "acceptance_change_only": "Replace complex maintenance journey with one-file visible smoke task.",
+  "plain_user_task": "在隔离目录 engine-smoke-v531 中创建 ok.txt，内容精确为 OK，其他文件不动。",
+  "success_chain": [
+    "NORMAL_USER_PROMPT",
+    "VISIBLE_VIRTUAL_MATURITY",
+    "AUTO_FREEZE",
+    "AUTO_REAL_DISPATCH",
+    "VISIBLE_CODEX_EXECUTION",
+    "VISIBLE_CODEX_RETURN",
+    "GPT_CLOSEOUT"
+  ],
+  "forbidden": [
+    "prebuilt Reality Dispatch",
+    "hidden function shortcut",
+    "tester advances state",
+    "user reminder to send command",
+    "same-run patch after failure"
+  ],
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob": "c7cb1311a645f7c6c54caec24df8040e7e21e4fb"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/VISIBLE-USER-JOURNEY-v5.3.1.json",
+      "blob": "24dfe427c44253f93d10c65d3d40a850604a98b6"
+    },
+    {
+      "path": "docs/first-principles/v5.3.1/VISIBLE-USER-JOURNEY-R2.md",
+      "blob": "19b2ad09ec0cf0a4c5805a5d3b61ea2a72324fb8"
+    },
+    {
+      "path": "docs/first-principles/v5.3.1/CURRENT_STATE.json",
+      "blob": "f2d3172aa6083aa5218c6f6e400a0c6d15780b03"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob": "d4b33efeff95980ded6adcb9c8db8f5ee2bd7a81"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/fsm_v5_3_0.py",
+      "blob": "d79661d478793cd183ae6559ac01d0aba387ad51"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/scope_gate_v5_2_2.py",
+      "blob": "5208d600060bef0cdcab10681f82e5cd6ab034fd"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
+      "blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068"
+    }
+  ],
+  "final_valid": false,
+  "done": false,
+  "next_action": "START_VISIBLE_R2_FROM_THE_PLAIN_USER_TASK_ONLY"
+}
