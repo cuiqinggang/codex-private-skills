@@ -3,9 +3,9 @@
   "project_slug": "first-principles-physical-limit-convergence",
   "current_version": "5.2.1",
   "page_name": "整体闭环极限时间引擎 5.2版",
-  "status": "FINAL_VALID",
-  "final_valid": true,
-  "done": true,
+  "status": "REOPENED_REAL_PRODUCT_DELTA",
+  "final_valid": false,
+  "done": false,
   "stable_current_branch": "current/first-principles-physical-limit-convergence",
   "source_release_branch": "codex/first-principles-physical-limit-convergence-v5.2.1-closeout",
   "source_release_commit": "cc7c7c1abaa37be82e0d831254ed5a0ce9018f1a",
@@ -16,6 +16,26 @@
     "final_certificate": "docs/first-principles/v5.2.1/FINAL-VALID-CERTIFICATE.json",
     "repair_lessons": "docs/first-principles/v5.2.1/REPAIR-LESSONS-R1-R4.md"
   },
-  "discovery_rule": "Always resolve this CURRENT_VERSION.json first. Do not infer the current release from older v5.1.1/v5.2.0 historical files or default-branch search results.",
-  "reopen_rule": "Only reopen the core when a new real-use product delta or systemic architectural defect is actually observed."
+  "discovery_rule": "先读取本文件并检查 status/final_valid/done。current_version、source_release_* 与 canonical_paths 保留最近一次正式发布 v5.2.1 的历史定位，不代表重新打开后的当前认证；不得以历史 SKILL/CURRENT_STATE/证书中的 FINAL_VALID 覆盖本入口状态。候选资产必须按 latest_candidate.commit 读取，不得在 current 分支混读。v5.3.1 尚未最终验收，不得仅因版本号更高将其提升为正式可用版本。",
+  "reopen_rule": "Only reopen the core when a new real-use product delta or systemic architectural defect is actually observed.",
+  "current_version_role": "LAST_FORMAL_RELEASE_REOPENED_NOT_CURRENT_CERTIFICATION",
+  "canonical_paths_role": "HISTORICAL_RELEASE_ASSETS_PRESERVED_UNCHANGED",
+  "reopen_evidence": {
+    "ref": "48ca2cd26779066e23c2dbb22009ee5b29860b8e",
+    "path": "docs/first-principles/v5.2.2/CURRENT_STATE.json",
+    "blob": "9e9ea1ed4957889f1cdc7910858eca16b58a4153",
+    "classification": "VALIDATION_SCOPE_GAP_DOWNSTREAM_BINDING"
+  },
+  "latest_candidate": {
+    "version": "5.3.1",
+    "branch": "codex/first-principles-physical-limit-convergence-v5.3.1-visible-user-journey",
+    "commit": "a6db0c901f79495b1ab8b19e18c130e5e44fc94e",
+    "status": "VISIBLE_REAL_USER_JOURNEY_READY",
+    "final_valid": false,
+    "done": false,
+    "promoted_to_formal": false,
+    "current_state": "docs/first-principles/v5.3.1/CURRENT_STATE.json",
+    "skill": "skills/first-principles-physical-limit-convergence/SKILL.md",
+    "freeze_id": "ESTE-v5.3.1-VISIBLE-USER-JOURNEY-VIRTUAL-FREEZE-R1"
+  }
 }
