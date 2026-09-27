@@ -1,0 +1,63 @@
+{
+  "version": "5.2.0",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-TEST-VIRTUAL-FREEZE-R4",
+  "freeze_type": "HARNESS_ONLY_MINIMAL_DELTA",
+  "source_branch": "codex/first-principles-physical-limit-convergence-v5.2.0-r4-virtual",
+  "source_head_before_manifest": "07701c72dc64983cb91568c9ac176132b2cdff38",
+  "minimal_delta_policy": "ISOLATED_FAILURE_REQUIRES_ISOLATED_FIX",
+  "product_assets_changed": false,
+  "product_assets_inherited_from_r3": {
+    "runtime_blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068",
+    "regression_blob": "6c97278955f38883b4de56153fa765789ce4f56b",
+    "prior_actual_execution": "10/10 PASS"
+  },
+  "r3_failure": {
+    "result": "FAIL",
+    "fail_source": "TEST_HARNESS",
+    "product_defect_established": false,
+    "cause": "LF-to-CRLF worktree materialization changed raw checkout bytes."
+  },
+  "r4_fix": {
+    "authority": "GIT_OBJECT_BYTES",
+    "exact_byte_execution": "Materialize directly from Git object database without newline conversion.",
+    "worktree_raw_bytes_authoritative": false,
+    "modify_git_settings": false,
+    "modify_product": false,
+    "ad_hoc_helper_script": false
+  },
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob": "91ff57278e37ef9cecfeaea47f0d77966799af28"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
+      "blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_production_handoff_v5_2_0.py",
+      "blob": "6c97278955f38883b4de56153fa765789ce4f56b"
+    },
+    {
+      "path": "docs/first-principles/v5.2.0/REAL-USAGE-TEST-CONTRACT-R4.json",
+      "blob": "a968185e298dc167de2410c1530db42a0793d88e"
+    },
+    {
+      "path": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R4.json",
+      "blob": "9f80644e765d19ba67f451b99178b90e2244a054"
+    },
+    {
+      "path": "docs/first-principles/v5.2.0/CURRENT_STATE.json",
+      "blob": "9cb4528521dedf5eece495af9aa2e436997e2196"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob": "1688466914b32a63149c332710cb5e8589d89be2"
+    }
+  ],
+  "real_usage_test_status": "READY_TO_DISPATCH_R4",
+  "final_valid": false,
+  "done": false,
+  "next_action": "REAL_USAGE_TEST_04_USING_GIT_OBJECT_BYTES"
+}
