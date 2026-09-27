@@ -1,0 +1,70 @@
+{
+  "version": "5.3.0",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "freeze_id": "ESTE-v5.3.0-CODED-FSM-VIRTUAL-FREEZE-R1",
+  "freeze_type": "DETERMINISTIC_CODED_FSM",
+  "source_branch": "codex/first-principles-physical-limit-convergence-v5.3.0-fsm",
+  "source_head_before_manifest": "b080ba1b9800588aca46fb9af8170cafcf61ac60",
+  "state_codes": {
+    "0": "NEW",
+    "10": "VIRTUAL",
+    "20": "VIRTUAL_MATURE",
+    "30": "FROZEN_TRANSIENT",
+    "40": "REAL_DISPATCHED",
+    "90": "BLOCKED",
+    "100": "FINAL_VALID"
+  },
+  "atomic_rule": "State 30 is internal-only. There is no freeze_only API. freeze_and_dispatch must perform 20->30->40 before returning or roll back to 10 on failure.",
+  "sole_builder": "runtime/fsm_v5_3_0.py::freeze_and_dispatch",
+  "sole_real_builder": "runtime/scope_gate_v5_2_2.py::build_in_scope_real_dispatch",
+  "reply_end_gate": "runtime/fsm_v5_3_0.py::require_reply_may_end",
+  "low_level_regression": {
+    "gpt_side_execution": "10/10 PASS",
+    "exact_frozen_blob_execution": "PENDING_REAL_USAGE_TEST"
+  },
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob": "03f488b076ae34efcfad44444186507b6415e8cc"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/fsm_v5_3_0.py",
+      "blob": "d79661d478793cd183ae6559ac01d0aba387ad51"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_fsm_v5_3_0.py",
+      "blob": "cf8de4be25bb929944564df83a9135e1e4b73d69"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/scope_gate_v5_2_2.py",
+      "blob": "5208d600060bef0cdcab10681f82e5cd6ab034fd"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
+      "blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/FSM-v5.3.0.json",
+      "blob": "718fb2307293c5439a12b23c8252b81ada67050c"
+    },
+    {
+      "path": "docs/first-principles/v5.3.0/VIRTUAL-MATURITY-REPORT-R1.json",
+      "blob": "a826ff6028c2c1b23b1759b7563f62d71cacb891"
+    },
+    {
+      "path": "docs/first-principles/v5.3.0/CURRENT_STATE.json",
+      "blob": "718221dbcd8ee856a68b670b95f45c0a89937822"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob": "6142f7f60f6b5565a328efad9b2ec868083a0148"
+    }
+  ],
+  "release_boundary": {
+    "real_usage_test_required": true,
+    "must_use_fsm": true,
+    "final_valid": false,
+    "done": false
+  },
+  "next_action": "ATOMIC_FSM_REAL_USAGE_TEST"
+}
