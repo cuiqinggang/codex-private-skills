@@ -1,0 +1,75 @@
+{
+  "version": "5.2.3",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "freeze_id": "ESTE-v5.2.3-SCOPE-MARKER-VIRTUAL-FREEZE-R1",
+  "freeze_type": "SINGLE_POINT_EXECUTION_MARKER_COMPATIBILITY",
+  "source_branch": "codex/first-principles-physical-limit-convergence-v5.2.3-scope-marker",
+  "source_head_before_manifest": "afdc4575a45b27b518d82cd654df797c4886a85f",
+  "predecessor_real_usage_test": {
+    "version": "5.2.2",
+    "result": "FAIL",
+    "fail_source": "PRODUCT",
+    "product_defect_established": true,
+    "delta": "MARKDOWN_EXECUTION_MARKER_TRANSPORT_FALSE_NEGATIVE"
+  },
+  "minimal_delta": {
+    "changed_only": "execution section marker parser in skill-wide Scope Gate",
+    "accepted": [
+      "plain execution marker",
+      "single Markdown line-end backslash execution marker"
+    ],
+    "rejected": [
+      "double backslash marker",
+      "missing execution body",
+      "header-only Reality Dispatch"
+    ]
+  },
+  "unchanged": [
+    "production renderer",
+    "numeric time contract",
+    "Freeze/Git Object materialization",
+    "T-star Markdown equivalence",
+    "skill-wide cross-business scope rule",
+    "return contract",
+    "01-06 locator rule",
+    "DSE business logic"
+  ],
+  "low_level_regression": {
+    "gpt_side_execution": "8/8 PASS",
+    "exact_frozen_blob_execution": "PENDING_REAL_USAGE_TEST"
+  },
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob": "c0baecbaaa9b1068414b0b3680b2362448f2ec3c"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
+      "blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/scope_gate_v5_2_2.py",
+      "blob": "5208d600060bef0cdcab10681f82e5cd6ab034fd"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_scope_gate_v5_2_2.py",
+      "blob": "f66d5366cf63efd5e596892d17725566366e3064"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/SCOPE-ENFORCEMENT-v5.2.3.json",
+      "blob": "168a250cce5dbcf13453d5a04a74816dd0fa52c7"
+    },
+    {
+      "path": "docs/first-principles/v5.2.3/CURRENT_STATE.json",
+      "blob": "95c896ce6e2123d4b8eb28a48391a13dcb7cc724"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob": "663bc3a6e289ccc581cc35b7a4c09de4147683d8"
+    }
+  ],
+  "real_usage_test_status": "READY_TO_DISPATCH",
+  "final_valid": false,
+  "done": false,
+  "next_action": "RERUN_SAME_DSE_DOWNSTREAM_REAL_USAGE_TEST"
+}
