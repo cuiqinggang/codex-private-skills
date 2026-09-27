@@ -1,0 +1,38 @@
+{
+  "version": "5.2.1",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "certificate_type": "FINAL_VALID_FROM_EXISTING_REAL_USAGE_TEST_EVIDENCE",
+  "final_valid": true,
+  "done": true,
+  "no_additional_closeout_test_run": true,
+  "rationale": "R4 already provided sufficient executed evidence for the core product path. Remaining items were adjudicated as non-blocking bookkeeping/provenance/future-natural-condition observations; another closeout run would be redundant and increase T_VALID without materially improving validity.",
+  "evidence_basis": {
+    "r4_result": "PASS",
+    "freeze_id": "ESTE-v5.2.0-REAL-USAGE-TEST-VIRTUAL-FREEZE-R4",
+    "freeze_commit": "9e762c8b9cb4a90002ab95125d4e2fb8c400289c",
+    "freeze_manifest_raw_identity": "PASS",
+    "git_object_materialization": "PASS",
+    "low_level_regression": "10/10 PASS",
+    "received_text_validator": "PASS",
+    "freeze_to_real_visible_handoff": "PASS",
+    "locator_time_anchor_compact_dispatch": "PASS",
+    "product_defect_established": false
+  },
+  "journeys": {
+    "NORMAL": "PASS via R4",
+    "PRODUCT_DELTA": "Observed in R1, repaired via minimal-delta loop",
+    "EXTERNAL_BLOCK": "Not artificially induced; non-blocking and to be recorded if it occurs naturally"
+  },
+  "non_blocking_items": [
+    "independent local-turn elapsed-start audit",
+    "additional host-level renderer provenance proof",
+    "artificial EXTERNAL_BLOCK injection"
+  ],
+  "frozen_core": {
+    "runtime_blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068",
+    "regression_blob": "6c97278955f38883b4de56153fa765789ce4f56b",
+    "core_change_allowed": false
+  },
+  "repair_lessons": "docs/first-principles/v5.2.1/REPAIR-LESSONS-R1-R4.md",
+  "reopen_rule": "Only reopen the core when a new real-use product delta or systemic architectural defect is actually observed."
+}
