@@ -1,0 +1,50 @@
+{
+  "version": "5.2.0",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "report_type": "R3_VIRTUAL_MATURITY_REAL_USAGE_TEST_SIMPLIFICATION",
+  "terminology": {
+    "highest_acceptance_layer": "REAL_USAGE_TEST",
+    "cn": "真实使用测试"
+  },
+  "r2_raw_result": {
+    "result": "FAIL",
+    "real_t_valid_ms": 331469,
+    "executor_elapsed_ms": 216469,
+    "fail_source": "TEST_HARNESS",
+    "product_defect_established": false,
+    "cause": "Codex临时编写的参数提取辅助脚本遗漏R2_LOCAL_TURN_START_UTC并在调用冻结Renderer前KeyError。",
+    "adjudication": "不追认PASS；也不把该FAIL当成产品Reality Delta。以后禁止真实使用测试现场编写临时辅助脚本。"
+  },
+  "design_changes": [
+    "最高级验收统一命名为真实使用测试",
+    "真实使用测试必须全面覆盖冻结验收合同的关键功能、控制边界、用户可见行为及三类顶层旅程",
+    "组合爆炸由低层测试承担，不在真实使用测试层穷举",
+    "用户可见Codex命令改为最小控制面",
+    "完整blob列表与长合同移入Freeze Manifest/Contract引用",
+    "真实使用测试禁止Codex临时编写辅助脚本；必要自动化必须虚拟阶段预先实现并Freeze",
+    "测试基础设施失败与产品故障分离归因"
+  ],
+  "exact_blob_execution": {
+    "runtime_blob": "2a56e186ec94d912fa4d6b461657bdfd9c2fb068",
+    "test_blob": "6c97278955f38883b4de56153fa765789ce4f56b",
+    "runtime_byte_identity": "PASS",
+    "test_byte_identity": "PASS",
+    "process_exit_code": 0,
+    "checks": [
+      "COMPACT_DISPATCH_RENDER",
+      "NUMERIC_TIME_ENVELOPE",
+      "TIMELINE_GATES",
+      "TASK_NO_01_06",
+      "FREEZE_AND_CONTRACT_REFS",
+      "MANUAL_INCOMPLETE_REJECTED",
+      "MARKDOWN_T_STAR_EQUIVALENCE",
+      "OVERBROAD_NORMALIZATION_REJECTED",
+      "EXPANDED_VISIBLE_ASSET_LIST_REJECTED",
+      "CONTROL_HEADER_BUDGET"
+    ],
+    "pass_count": 10,
+    "total_count": 10
+  },
+  "release_evidence": false,
+  "next_action": "FREEZE_R3_AND_START_REAL_USAGE_TEST"
+}
