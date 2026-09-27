@@ -1,0 +1,75 @@
+{
+  "version": "5.2.0",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R2",
+  "freeze_type": "VIRTUAL_MATURE_REAL_USAGE_READY_R2",
+  "source_branch": "codex/first-principles-physical-limit-convergence-v5.2.0-r2-virtual",
+  "source_head_before_manifest": "04412a164ab250a93be7382dffa14acba80fc285",
+  "unique_objective": "T*=min(T_VALID)",
+  "highest_acceptance_layer": "REAL_USAGE",
+  "virtual_mature": true,
+  "solution_frozen": true,
+  "real_usage_status": "READY_TO_DISPATCH_R2",
+  "r1_real_usage_history": {
+    "freeze_id": "ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R1",
+    "result": "FAIL",
+    "real_t_valid_ms": 541106,
+    "executor_elapsed_ms": 351106,
+    "delta": "VALIDATOR_OVERCONSTRAINT_TRANSPORT_EQUIVALENCE_FALSE_NEGATIVE"
+  },
+  "r2_adjudication": {
+    "numeric_time_envelope_gate_required": true,
+    "byte_exact_t_star_representation_required": false,
+    "accepted_transport_forms": [
+      "PLAIN_T_STAR",
+      "SINGLE_MARKDOWN_ESCAPED_T_STAR"
+    ],
+    "broad_unescape_allowed": false,
+    "overescaped_form_rejected": true,
+    "semantic_token_change_rejected": true
+  },
+  "low_level_regression": {
+    "status": "PASS",
+    "executed": true,
+    "exact_blob_execution": true,
+    "pass_count": 8,
+    "total_count": 8,
+    "report_blob": "27ae135ed7eeff1f421716c044fd744dff149ed8"
+  },
+  "frozen_assets": [
+    {
+      "path": "skills/first-principles-physical-limit-convergence/VERSION",
+      "blob": "91ff57278e37ef9cecfeaea47f0d77966799af28"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
+      "blob": "b8693ce4cd5b96678ffba8cd7305cf9d0959c8f0"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/tests/test_production_handoff_v5_2_0.py",
+      "blob": "736f09a1970b1a07baf092928d81f6b485ddf3fa"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/contracts/REAL-USAGE-v5.2.0.json",
+      "blob": "27e25ad71e9941966564345736563d9880eca933"
+    },
+    {
+      "path": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R2.json",
+      "blob": "27ae135ed7eeff1f421716c044fd744dff149ed8"
+    },
+    {
+      "path": "docs/first-principles/v5.2.0/CURRENT_STATE.json",
+      "blob": "70b5ac0782be073ee4121b9ef4405ecb49bb6bf7"
+    },
+    {
+      "path": "skills/first-principles-physical-limit-convergence/SKILL.md",
+      "blob": "57683a7b726a582a1809e1abe5a88f692cec47a8"
+    }
+  ],
+  "release_boundary": {
+    "final_valid": false,
+    "done": false,
+    "real_usage_must_run": true
+  },
+  "next_action": "REAL_DISPATCH_R2_IN_SAME_USER_VISIBLE_RESPONSE"
+}
