@@ -1,0 +1,21 @@
+{
+  "project_name_cn": "整体闭环极限短时间引擎",
+  "project_slug": "first-principles-physical-limit-convergence",
+  "current_version": "5.2.1",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "status": "FINAL_VALID",
+  "final_valid": true,
+  "done": true,
+  "stable_current_branch": "current/first-principles-physical-limit-convergence",
+  "source_release_branch": "codex/first-principles-physical-limit-convergence-v5.2.1-closeout",
+  "source_release_commit": "cc7c7c1abaa37be82e0d831254ed5a0ce9018f1a",
+  "canonical_paths": {
+    "version": "skills/first-principles-physical-limit-convergence/VERSION",
+    "skill": "skills/first-principles-physical-limit-convergence/SKILL.md",
+    "current_state": "docs/first-principles/v5.2.1/CURRENT_STATE.json",
+    "final_certificate": "docs/first-principles/v5.2.1/FINAL-VALID-CERTIFICATE.json",
+    "repair_lessons": "docs/first-principles/v5.2.1/REPAIR-LESSONS-R1-R4.md"
+  },
+  "discovery_rule": "Always resolve this CURRENT_VERSION.json first. Do not infer the current release from older v5.1.1/v5.2.0 historical files or default-branch search results.",
+  "reopen_rule": "Only reopen the core when a new real-use product delta or systemic architectural defect is actually observed."
+}
