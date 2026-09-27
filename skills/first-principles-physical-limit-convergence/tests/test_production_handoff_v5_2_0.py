@@ -71,12 +71,12 @@ print("MANUAL_BYPASS_INCOMPLETE_REJECTED=PASS")
 
 
 # Transport-layer Markdown escaping of the asterisk is semantically equivalent.
-escaped_time = out.text.replace("T*=", "T\\*=", 1)
+escaped_time = out.text.replace("T*=", r"T\*=", 1)
 mod.validate_rendered_dispatch(escaped_time)
 print("MARKDOWN_T_STAR_TRANSPORT_EQUIVALENCE=PASS")
 
 # Do not broadly strip escapes: only the single Markdown escape before * is accepted.
-overescaped_time = out.text.replace("T*=", "T\\\\*=", 1)
+overescaped_time = out.text.replace("T*=", r"T\\*=", 1)
 try:
     mod.validate_rendered_dispatch(overescaped_time)
 except mod.ProductionHandoffViolation as e:
