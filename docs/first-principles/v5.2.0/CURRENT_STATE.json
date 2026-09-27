@@ -1,12 +1,12 @@
 {
   "version": "5.2.0",
   "page_name": "整体闭环极限时间引擎 5.2版",
-  "status": "VIRTUAL_MATURE_REAL_USAGE_READY_R2",
+  "status": "VIRTUAL_MATURE_REAL_USAGE_TEST_READY_R3",
   "phase": "虚",
   "unique_objective": "T*=min(T_VALID)",
   "top_level_t_valid": "T_CLOSED_LOOP_VALID",
   "architecture": "虚→实",
-  "highest_acceptance_layer": "REAL_USAGE",
+  "highest_acceptance_layer": "REAL_USAGE_TEST",
   "test_role": "LOW_LEVEL_DIAGNOSTIC_AND_REGRESSION_ONLY",
   "predecessor": {
     "version": "5.1.1",
@@ -32,26 +32,26 @@
     "R2时间锚验证改为语义等价：仅允许T-star原形或单层Markdown转义，禁止广泛去转义"
   ],
   "assets": {
-    "branch": "codex/first-principles-physical-limit-convergence-v5.2.0-virtual",
+    "branch": "codex/first-principles-physical-limit-convergence-v5.2.0-r3-virtual",
     "runtime": "skills/first-principles-physical-limit-convergence/runtime/production_handoff_v5_2_0.py",
-    "contract": "skills/first-principles-physical-limit-convergence/contracts/REAL-USAGE-v5.2.0.json",
+    "contract": "docs/first-principles/v5.2.0/REAL-USAGE-TEST-CONTRACT-R3.json",
     "regression": "skills/first-principles-physical-limit-convergence/tests/test_production_handoff_v5_2_0.py"
   },
   "low_level_regression_status": "PASS",
-  "real_usage_status": "READY_TO_DISPATCH_R2",
+  "real_usage_status": "HISTORICAL_TERM_REPLACED_BY_REAL_USAGE_TEST",
   "final_valid": false,
   "done": false,
-  "next_action": "REAL_DISPATCH_R2_IN_SAME_USER_VISIBLE_RESPONSE",
-  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R2",
+  "next_action": "REAL_USAGE_TEST_R3_COMPACT_DISPATCH_IN_SAME_USER_VISIBLE_RESPONSE",
+  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-TEST-VIRTUAL-FREEZE-R3",
   "virtual_mature": true,
   "solution_frozen": true,
   "real_started": false,
   "low_level_regression_evidence": {
     "executed": true,
     "exact_blob_execution": true,
-    "pass_count": 8,
-    "total_count": 8,
-    "report": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R2.json"
+    "pass_count": 10,
+    "total_count": 10,
+    "report": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R3.json"
   },
   "real_usage_r1": {
     "freeze_id": "ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R1",
@@ -60,5 +60,15 @@
     "executor_elapsed_ms": 351106,
     "delta": "VALIDATOR_OVERCONSTRAINT_TRANSPORT_EQUIVALENCE_FALSE_NEGATIVE",
     "adjudication": "R1 remains FAIL; time-envelope gate remains required; byte-exact Markdown representation is not required."
+  },
+  "highest_acceptance_layer_cn": "真实使用测试",
+  "real_usage_test_status": "READY_TO_DISPATCH_R3",
+  "real_usage_r2": {
+    "result": "FAIL",
+    "fail_source": "TEST_HARNESS",
+    "product_defect_established": false,
+    "real_t_valid_ms": 331469,
+    "executor_elapsed_ms": 216469,
+    "adjudication": "临时辅助脚本在调用冻结Renderer前KeyError；不是产品故障证据。R3禁止现场编写辅助脚本。"
   }
 }
