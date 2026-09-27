@@ -1,7 +1,7 @@
 {
   "version": "5.2.0",
   "page_name": "整体闭环极限时间引擎 5.2版",
-  "status": "VIRTUAL_MATURE_REAL_USAGE_READY",
+  "status": "VIRTUAL_MATURE_REAL_USAGE_READY_R2",
   "phase": "虚",
   "unique_objective": "T*=min(T_VALID)",
   "top_level_t_valid": "T_CLOSED_LOOP_VALID",
@@ -20,14 +20,16 @@
     "SINGLE_PRODUCTION_RENDERER_NOT_PROVEN",
     "MANUAL_BYPASS_FORBIDDEN_NOT_PROVEN",
     "MISSING_TIMELINE_BRANCH_NOT_EXECUTED",
-    "UNEXECUTED_CHECKS_MUST_NOT_BE_REPORTED_PASS"
+    "UNEXECUTED_CHECKS_MUST_NOT_BE_REPORTED_PASS",
+    "MARKDOWN_TRANSPORT_EQUIVALENCE_FALSE_NEGATIVE_R1"
   ],
   "v5_2_changes": [
     "最高级验收术语从真实测试改为真实使用",
     "唯一生产Reality Dispatch Renderer独立为v5.2.0实现",
     "缺Timeline硬BLOCK且禁止编造时间",
     "任何检查初始状态必须为NOT_RUN，只有实际执行证据才能转PASS",
-    "真实使用失败后固定回虚，修复、低层回归、新Freeze后重新真实使用"
+    "真实使用失败后固定回虚，修复、低层回归、新Freeze后重新真实使用",
+    "R2时间锚验证改为语义等价：仅允许T-star原形或单层Markdown转义，禁止广泛去转义"
   ],
   "assets": {
     "branch": "codex/first-principles-physical-limit-convergence-v5.2.0-virtual",
@@ -36,19 +38,27 @@
     "regression": "skills/first-principles-physical-limit-convergence/tests/test_production_handoff_v5_2_0.py"
   },
   "low_level_regression_status": "PASS",
-  "real_usage_status": "READY_TO_DISPATCH",
+  "real_usage_status": "READY_TO_DISPATCH_R2",
   "final_valid": false,
   "done": false,
-  "next_action": "REAL_DISPATCH_IN_SAME_USER_VISIBLE_RESPONSE",
-  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R1",
+  "next_action": "REAL_DISPATCH_R2_IN_SAME_USER_VISIBLE_RESPONSE",
+  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R2",
   "virtual_mature": true,
   "solution_frozen": true,
   "real_started": false,
   "low_level_regression_evidence": {
     "executed": true,
     "exact_blob_execution": true,
-    "pass_count": 6,
-    "total_count": 6,
-    "report": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R1.json"
+    "pass_count": 8,
+    "total_count": 8,
+    "report": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R2.json"
+  },
+  "real_usage_r1": {
+    "freeze_id": "ESTE-v5.2.0-REAL-USAGE-VIRTUAL-FREEZE-R1",
+    "result": "FAIL",
+    "real_t_valid_ms": 541106,
+    "executor_elapsed_ms": 351106,
+    "delta": "VALIDATOR_OVERCONSTRAINT_TRANSPORT_EQUIVALENCE_FALSE_NEGATIVE",
+    "adjudication": "R1 remains FAIL; time-envelope gate remains required; byte-exact Markdown representation is not required."
   }
 }
