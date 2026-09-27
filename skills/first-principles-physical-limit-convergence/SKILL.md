@@ -1,13 +1,41 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.3.2。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
+description: 整体闭环极限短时间引擎 v5.3.3。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
 metadata:
-  version: "5.3.2"
+  version: "5.3.3"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "CODEX_DIRECTED_BROWSER_ACCEPTANCE_READY"
+  release_state: "ACCEPTANCE_SUPERVISOR_VIRTUAL_MATURE"
 ---
 
-# 整体闭环极限短时间引擎 v5.3.2
+# 整体闭环极限短时间引擎 v5.3.3
+
+## CURRENT v5.3.3：自动验收监督器
+
+v5.3.3 不改变 v5.3.0 编码 FSM，也不改变 JEV-native Playwright R3。它只把验收失败后的自动回流固定为一层轻量监督器。
+
+职责唯一分工：
+- v5.3.0 FSM：唯一产品状态权威；
+- GPT-Codex Orchestrator v1.5.2：仅复用 A/B/C 传输、一次恢复和切路策略；不接管状态机；
+- Codex：独立选择最小有效验收任务；
+- playwright-native-ai-browser：JEV-native Playwright R3，唯一屏幕级真实用户执行器；
+- GPT：产品方案、重新虚拟成熟、新 Freeze 与最终裁决。
+
+自动回流：
+- PASS → FSM FINAL_VALID；
+- PRODUCT FAIL → FSM 回 VIRTUAL → GPT重新成熟 → 新Freeze → 再派发；
+- TEST_HARNESS/TRANSPORT FAIL → 产品Freeze不动，Orchestrator恢复一次或 A→B→C 切路后重验；
+- EXTERNAL BLOCKED → Orchestrator恢复/切路，全部不可用才进入 FSM BLOCKED；
+- 同一连续任务最多 6 次派发。
+
+监督器：
+`runtime/acceptance_supervisor_v5_3_3.py`
+
+合同：
+`contracts/ACCEPTANCE-AUTOMATION-v5.3.3.json`
+
+GPT侧逻辑回归：`8/8 PASS`；精确冻结执行与真实浏览器验收仍待 Codex 完成。
+
+---
 
 ## CURRENT v5.3.2：Codex 主导 + JEV-native Playwright R3 的真实用户验收
 
