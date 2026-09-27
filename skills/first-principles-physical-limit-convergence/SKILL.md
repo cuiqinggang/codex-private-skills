@@ -1,13 +1,43 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.2.2。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
+description: 整体闭环极限短时间引擎 v5.2.3。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最高级验收是“真实使用测试”：用正式使用同构的入口、路径、环境和用户可见输出全面验证冻结产品；低层测试负责组合覆盖、快速定位与防回归。
 metadata:
-  version: "5.2.2"
+  version: "5.2.3"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "VIRTUAL_MATURE_REAL_USAGE_TEST_READY"
+  release_state: "VIRTUAL_MATURE_REAL_USAGE_TEST_PENDING"
 ---
 
-# 整体闭环极限短时间引擎 v5.2.2
+# 整体闭环极限短时间引擎 v5.2.3
+
+## CURRENT v5.2.3：执行分隔符单点兼容补丁
+
+v5.2.2 的技能包级 Scope Gate 真实使用测试结果为 FAIL，且已确认是单点产品缺陷：实际接收命令包含完整执行正文，但 Markdown 在“执行：”行尾加入单个反斜杠，旧 Gate 只接受精确的“执行：+换行”，因此误报 `EXECUTION_BODY_MISSING`。
+
+v5.2.3 只修这一点：
+- 接受“执行：”后直接换行；
+- 接受“执行：”后单个 Markdown 行尾反斜杠再换行；
+- 双反斜杠继续拒绝；
+- Header-only、缺正文继续拒绝。
+
+明确不改：
+- 父 Renderer；
+- 数字时间规则；
+- Freeze/Git Object 物化；
+- T-star Markdown 等价规则；
+- 技能包级跨业务 Scope 规则；
+- 返回合同；
+- DSE 业务逻辑。
+
+GPT 侧逻辑回归：`8/8 PASS`。精确冻结 blob 的最终验证仍必须由下一轮真实使用测试完成。
+
+当前：
+- `VIRTUAL_MATURE=YES`
+- `SOLUTION_FROZEN=PENDING_FREEZE_COMMIT`
+- `REAL_USAGE_TEST=PENDING`
+- `FINAL_VALID=NO`
+- `DONE=NO`
+
+---
 
 ## CURRENT v5.2.2：技能包级 Reality Dispatch 范围门
 
