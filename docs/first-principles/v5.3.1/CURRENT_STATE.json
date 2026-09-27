@@ -1,7 +1,7 @@
 {
   "version": "5.3.1",
   "page_name": "整体闭环极限时间引擎 5.2版",
-  "status": "VISIBLE_REAL_USER_JOURNEY_READY",
+  "status": "VISIBLE_REAL_USER_JOURNEY_R2_READY",
   "architecture": "虚→实",
   "unique_objective": "T*=min(T_VALID)",
   "core_runtime": {
@@ -31,10 +31,14 @@
   "minimum_normal_journey_passes": 1,
   "final_valid": false,
   "done": false,
-  "next_action": "START_R1_FROM_PLAIN_USER_PROMPT_IN_VISIBLE_UI",
-  "visible_journey_r1": "docs/first-principles/v5.3.1/VISIBLE-USER-JOURNEY-R1.md",
+  "next_action": "START_VISIBLE_R2_FROM_PLAIN_USER_PROMPT",
+  "visible_journey_r1": "HISTORICAL_TOO_COMPLEX_FOR_SMOKE_ACCEPTANCE",
   "test_prompt_must_be_plain_user_language": true,
   "prebuilt_reality_dispatch_forbidden": true,
   "solution_frozen": true,
-  "freeze_id": "ESTE-v5.3.1-VISIBLE-USER-JOURNEY-VIRTUAL-FREEZE-R1"
+  "freeze_id": "ESTE-v5.3.1-VISIBLE-USER-JOURNEY-VIRTUAL-FREEZE-R2",
+  "visible_journey_r2": "docs/first-principles/v5.3.1/VISIBLE-USER-JOURNEY-R2.md",
+  "r2_task_kind": "ONE_FILE_SMOKE_TASK",
+  "r2_target": "C:\\Users\\A\\Documents\\Codex\\2026-09-27\\engine-smoke-v531\\ok.txt",
+  "r2_expected_content": "OK"
 }
