@@ -1,0 +1,31 @@
+{
+  "version": "5.1.1",
+  "page_name": "整体闭环极限时间引擎 5.1.1版",
+  "status": "RULE_FROZEN_REAL_USAGE_VALIDATION_PENDING",
+  "phase": "虚",
+  "freeze_id": "ESTE-v5.1.1-USER-JOURNEY-FIRST-TEST-STANDARD-R1",
+  "unique_objective": "T*=min(T_VALID)",
+  "top_level_t_valid": "T_CLOSED_LOOP_VALID",
+  "architecture": "虚→实",
+  "test_method": "USER_JOURNEY_FIRST",
+  "core_rules": [
+    "正式怎么用，测试就怎么测",
+    "用户真正看到和得到的结果是最终测试对象",
+    "测试器只观察，不帮助系统完成任何一步",
+    "真实错误下沉为低层回归测试后，从真实任务重新完整运行"
+  ],
+  "required_real_user_journeys": [
+    "虚→实→PASS→FINAL_VALID",
+    "虚→实→FAIL→回虚",
+    "虚→实→BLOCKED→RETURN_TO_GPT"
+  ],
+  "low_level_tests_can_release": false,
+  "real_usage_validation": "PENDING",
+  "seven_star_certified": false,
+  "final_valid": false,
+  "done": false,
+  "predecessor": "5.0.8",
+  "predecessor_role": "HISTORICAL_EVIDENCE_ONLY",
+  "historical_component_performance_t_star_ms": 0.0027,
+  "next_action": "VALIDATE_V5_1_1_BY_NORMAL_REAL_USER_USAGE"
+}
