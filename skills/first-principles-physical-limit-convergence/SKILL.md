@@ -1,13 +1,104 @@
 ---
 name: first-principles-physical-limit-convergence
-description: 整体闭环极限短时间引擎 v5.0.8 最终版。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；最终性能以现实有效结果为准，虚拟预测不自动成为现实有效性的硬门。
+description: 整体闭环极限短时间引擎 v5.1.1。唯一目标 T*=min(T_VALID)；顶层永久只有“虚→实”；测试从真实用户正式使用路径反推，真实用户旅程是最高级验收，低层测试只负责快速发现与防回归。
 metadata:
-  version: "5.0.8"
+  version: "5.1.1"
   display_name: "整体闭环极限短时间引擎"
-  release_state: "PATCH_PENDING_LIVE_E2E"
+  release_state: "RULE_FROZEN_REAL_USAGE_VALIDATION_PENDING"
 ---
 
-# 整体闭环极限短时间引擎 v5.0.8 最终版
+# 整体闭环极限短时间引擎 v5.1.1
+
+## 0. v5.1.1 当前冻结规则
+
+当前页面名称：
+
+`整体闭环极限时间引擎 5.1.1版`
+
+当前版本：
+
+`5.1.1`
+
+前代 v5.0.8 / v5.0.9 / v5.1.0 只作为历史演化与 Reality Delta 证据，不再作为当前版本。
+
+### 0.1 测试第一性原理
+
+测试的唯一目的：在正式交付前，以最短有效时间发现“用户正式使用时会失败”的问题。
+
+当前最高级测试原则固定为：
+
+1. **正式怎么用，测试就怎么测。**
+2. **测试对象是用户真正看到和得到的结果，不是内部状态或实现。**
+3. **测试器只观察，不帮助系统补步骤、补字段、推进状态或调用正式运行不会自己调用的逻辑。**
+4. **真实使用发现的错误：记录 → 找根因 → 修复 → 下沉为低层回归测试 → 重新完整真实任务。**
+
+形式化要求：
+
+`TEST_ENTRY == PRODUCTION_ENTRY`
+
+`TEST_PATH == PRODUCTION_PATH`
+
+`TEST_OUTPUT == USER_VISIBLE_PRODUCTION_OUTPUT`
+
+任一不成立：
+
+`TEST_IS_NOT_RELEASE_EVIDENCE`
+
+### 0.2 最高级验收：真实用户旅程
+
+最高级验收采用少量、完整、与正式使用同构的真实任务，不允许以测试专用入口替代。
+
+最低覆盖三类真实旅程：
+
+- 正常：`虚 → 实 → PASS → FINAL_VALID`
+- 差异：`虚 → 实 → FAIL → 回虚`
+- 阻断：`虚 → 实 → BLOCKED → RETURN_TO_GPT`
+
+测试必须从用户正常自然语言任务开始，完整经过真实 GPT 输出、真实时间显示、真实 Freeze、真实 Codex CHAT 自然语言派发、真实返回和 GPT 最终收口。
+
+只要途中需要人工提醒系统“补时间、补 Locator、补 Timeline、继续进入实、修正 RETURN_TO_GPT”等，整轮真实用户旅程即判 FAIL。
+
+### 0.3 低层测试的正确角色
+
+单元测试、状态矩阵、随机测试、Mutation、故障注入、组件集成测试全部保留，但只用于：
+
+- 快速定位错误；
+- 提前发现已知错误；
+- 防止现实失败复发；
+- 缩短真实用户旅程失败后的修复时间。
+
+它们不能单独签发：
+
+- `REAL_CERTIFIED=YES`
+- `LIVE_E2E_ENFORCED=YES`
+- `FINAL_VALID=YES`
+- `DONE=YES`
+
+真实用户旅程是最终裁决对象。
+
+### 0.4 现实失败回流
+
+当真实用户旅程发现错误：
+
+`真实失败 → Reality Delta → 根因 → 修复 → 低层回归 → 新 Freeze → 从 TASK_ACCEPTED 重新完整真实任务`
+
+禁止在正在验收的同一轮任务中现场补丁后继续算 PASS。
+
+### 0.5 当前状态
+
+`RULE_FROZEN=YES`
+
+`REAL_USAGE_VALIDATION=PENDING`
+
+`SEVEN_STAR_CERTIFIED=NO`
+
+`FINAL_VALID=NO`
+
+`DONE=NO`
+
+v5.1.1 是否有效，只允许由下一次正式使用方式的真实用户旅程证明，不预先宣布“七星”。
+
+---
 
 ## 1. 唯一目标
 
