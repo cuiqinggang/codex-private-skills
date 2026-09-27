@@ -1,0 +1,110 @@
+{
+  "version": "5.2.0",
+  "page_name": "整体闭环极限时间引擎 5.2版",
+  "contract_id": "ESTE-v5.2.0-REAL-USAGE-TEST-R4",
+  "name_cn": "真实使用测试",
+  "name_en": "Real-Usage Test",
+  "definition": "在与正式使用同构的入口、路径、环境和用户可见输出下，对冻结产品的功能、控制链、失败回流和效果进行验收。它仍然是测试，但不使用测试专用捷径来代替正式使用路径。",
+  "objective": "在交付到用户日常使用之前，让真实使用方式能够暴露产品在正式运行中会出现的问题，并验证冻结版本的真实有效状态。",
+  "scope_rule": {
+    "comprehensive_means": "覆盖冻结验收合同定义的全部关键功能、控制边界、用户可见行为、正常路径、失败回流和阻断路径；组合爆炸由低层测试承担。",
+    "does_not_mean": "穷举所有理论输入组合或在真实使用层重复低层测试的所有样本。"
+  },
+  "architecture": "虚→实",
+  "unique_objective": "T*=min(T_VALID)",
+  "layers": {
+    "low_level_test": "单元/回归/随机/Mutation/故障注入，负责高覆盖、快速定位与防回归。",
+    "real_usage_test": "正式使用同构的最高验收层，负责证明用户真正会经历的生产路径和输出有效。"
+  },
+  "release_coverage": [
+    "生产入口与测试入口同构",
+    "虚拟成熟后同一用户可见回复自动转入实",
+    "Locator与数字时间锚实际可见且数值可审计",
+    "Freeze与Manifest完整一致",
+    "唯一生产Renderer可生成合法派发",
+    "T-star原形与单层Markdown转义语义等价",
+    "缺Timeline/重复派发/越界序号/不完整手工派发被拒绝",
+    "可见命令保持简洁，不展开机器证据清单",
+    "Codex真实执行返回PASS/FAIL/BLOCKED并回GPT",
+    "产品FAIL能够回虚；外部BLOCKED能够回GPT；最终收口权属于GPT"
+  ],
+  "required_real_usage_test_journeys": [
+    "NORMAL: 虚→实→PASS→GPT收口",
+    "PRODUCT_DELTA: 虚→实→FAIL→回虚",
+    "EXTERNAL_BLOCK: 虚→实→BLOCKED→RETURN_TO_GPT"
+  ],
+  "visible_dispatch_policy": {
+    "principle": "人类可读最小控制面；机器细节放Freeze Manifest与Contract引用中。",
+    "required_visible": [
+      "Locator",
+      "数字时间锚",
+      "TIMELINE_ID",
+      "TIME_ORIGIN_UTC",
+      "DISPATCH_UTC",
+      "FREEZE_ID",
+      "FREEZE_REF",
+      "CONTRACT_REF",
+      "简短执行目标",
+      "RESULT=PASS|FAIL|BLOCKED",
+      "RETURN_TO_GPT=YES",
+      "NO_FINAL_VALID_DONE=YES"
+    ],
+    "forbidden_visible": [
+      "完整FROZEN_ASSETS blob列表",
+      "整份REALITY_VALID_CONTRACT展开",
+      "为可审计而重复展示Manifest中已有机器字段"
+    ]
+  },
+  "harness_policy": {
+    "ad_hoc_helper_script_allowed": false,
+    "rule": "真实使用测试不得要求Codex临时编写解析/比对/执行辅助脚本。需要自动化的验证器或测试器必须在虚拟阶段预先实现、回归并Freeze。",
+    "if_unfrozen_helper_fails": "本轮测试结果仍为FAIL，但FAIL_SOURCE=TEST_HARNESS；不得据此认定产品故障，也不需要改变产品Freeze。丢弃/修复测试方法后必须从测试入口重新运行。",
+    "tester_self_repair": "仅允许修复测试基础设施或重新执行既有冻结测试；禁止修改冻结产品、合同、时间数据或用户可见输出后继续算PASS。",
+    "freeze_materialization": {
+      "authority": "GIT_OBJECT_BYTES",
+      "worktree_raw_bytes_authoritative": false,
+      "rule": "Freeze identity is verified against the Manifest's Git blob object bytes/IDs. For exact-byte execution, materialize from the Git object database without newline conversion; do not use checkout/worktree bytes as the identity source.",
+      "worktree_use": "Worktree files may be used only after semantic equivalence is separately established; they are not freeze-byte evidence on platforms that may rewrite line endings.",
+      "forbidden_actions": [
+        "修改core.autocrlf或系统Git设置来通过验收",
+        "把CRLF工作区文件重新提交为新的产品Freeze",
+        "把换行差异误判为产品逻辑故障"
+      ],
+      "no_ad_hoc_helper_script": true
+    }
+  },
+  "result_contract": {
+    "result": "PASS|FAIL|BLOCKED",
+    "fail_source": "NONE|PRODUCT|TEST_HARNESS|EXTERNAL",
+    "product_defect_established": "YES|NO",
+    "unexecuted_check": "NOT_RUN",
+    "return_to_gpt": true,
+    "reality_executor_may_final_valid": false
+  },
+  "r2_adjudication": {
+    "raw_result": "FAIL",
+    "failure_source": "TEST_HARNESS",
+    "product_defect_established": false,
+    "note": "Codex临时编写的参数提取辅助脚本遗漏R2_LOCAL_TURN_START_UTC并在冻结Renderer调用前KeyError；R2冻结产品未被该失败证实有故障。"
+  },
+  "status": "VIRTUAL_R4_MATERIALIZATION_FIX_PENDING_FREEZE",
+  "freeze_id": "ESTE-v5.2.0-REAL-USAGE-TEST-VIRTUAL-FREEZE-R3",
+  "virtual_mature": true,
+  "solution_frozen": true,
+  "low_level_regression": {
+    "status": "PASS",
+    "executed": true,
+    "exact_blob_execution": true,
+    "pass_count": 10,
+    "total_count": 10,
+    "evidence": "docs/first-principles/v5.2.0/VIRTUAL-MATURITY-REPORT-R3.json"
+  },
+  "next_action": "FREEZE_R4_HARNESS_ONLY_AND_RESTART_REAL_USAGE_TEST",
+  "r3_adjudication": {
+    "raw_result": "FAIL",
+    "failure_source": "TEST_HARNESS",
+    "product_defect_established": false,
+    "cause": "Windows worktree materialization converted LF to CRLF, so raw worktree bytes differed from frozen Git blob even though the frozen Git object itself remained unchanged.",
+    "product_change_required": false
+  }
+}
