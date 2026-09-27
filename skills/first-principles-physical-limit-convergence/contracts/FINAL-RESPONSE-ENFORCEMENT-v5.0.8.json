@@ -1,0 +1,33 @@
+{
+  "version": "5.0.8",
+  "name": "FINAL_RESPONSE_ENFORCEMENT",
+  "purpose": "把状态机/时间合同从被动校验器提升为回复结束前的强制后置条件，防止虚拟成熟后真实回复停在 Freeze 而未发布 Reality Dispatch。",
+  "trigger": {
+    "virtual_mature": true,
+    "solution_frozen": true,
+    "real_started": false
+  },
+  "required_next_action": "REAL_DISPATCH",
+  "final_response_may_end_without_dispatch": false,
+  "dispatch_required_fields": [
+    "LOCATOR_REAL",
+    "NUMERIC_TIME_ENVELOPE",
+    "TIMELINE_ID",
+    "TIME_ORIGIN_UTC",
+    "DISPATCH_UTC",
+    "FREEZE_ID",
+    "REALITY_VALID_CONTRACT",
+    "RETURN_CONTRACT"
+  ],
+  "missing_timeline_rule": "BLOCK; never fabricate elapsed time. Establish/recover auditable timeline before REAL_DISPATCH.",
+  "return_contract": {
+    "pass_fail_blocked_must_return_to_gpt": true,
+    "final_valid_owned_by_gpt": true
+  },
+  "enforcement_scope": {
+    "component_validation": "CERTIFIED",
+    "host_response_auto_hook": "REQUIRES_CALLER_BINDING",
+    "note": "纯 Skill 文本不能证明宿主 ChatGPT/Codex 一定调用 Python gate；真实 E2E 必须以实际回复验证。"
+  },
+  "failure": "VIRTUAL_TO_REAL_HANDOFF_MISSING -> FINAL_RESPONSE_INVALID -> BLOCK"
+}
