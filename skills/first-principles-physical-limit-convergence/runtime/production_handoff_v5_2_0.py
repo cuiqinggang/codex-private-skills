@@ -9,6 +9,7 @@ _TIME_ANCHOR_RE = re.compile(
     r"【时间锚｜整体已用=\d+(?:\.\d+)?ms｜本次已用=\d+(?:\.\d+)?ms｜T\\?\*=\d+(?:\.\d+)?ms】"
 )
 _LOCATOR_RE = re.compile(r"【[^\n｜]+｜[^\n｜]+｜(?:0[1-6]|[1-6])｜实】")
+_MAX_HEADER_CHARS = 1200
 
 @dataclass(frozen=True)
 class ProductionHandoff:
@@ -43,6 +44,7 @@ def _fmt_ms(value: float, decimals: int = 3) -> str:
     return s
 
 def validate_rendered_dispatch(text: str) -> None:
+    _require(bool(text and text.strip()), "DISPATCH_EMPTY")
     _require(_LOCATOR_RE.search(text) is not None, "REAL_LOCATOR_MISSING")
     _require(_TIME_ANCHOR_RE.search(text) is not None, "NUMERIC_TIME_ENVELOPE_MISSING")
     for marker in (
@@ -50,13 +52,17 @@ def validate_rendered_dispatch(text: str) -> None:
         "TIME_ORIGIN_UTC=",
         "DISPATCH_UTC=",
         "FREEZE_ID=",
-        "REALITY_VALID_CONTRACT=",
-        "REALITY_TIMING_BOUNDARY=",
+        "FREEZE_REF=",
+        "CONTRACT_REF=",
         "RETURN_TO_GPT=YES",
     ):
         _require(marker in text, marker.rstrip("=") + "_MISSING")
-    _require("PASS / FAIL / BLOCKED" in text, "RETURN_RESULT_CONTRACT_MISSING")
-    _require("FINAL_VALID/DONE 禁止由 Reality 执行器宣布" in text, "FINAL_OWNERSHIP_MISSING")
+    _require("RESULT=PASS|FAIL|BLOCKED" in text, "RETURN_RESULT_CONTRACT_MISSING")
+    _require("NO_FINAL_VALID_DONE=YES" in text, "FINAL_OWNERSHIP_MISSING")
+    _require("FROZEN_ASSETS=" not in text, "EXPANDED_ASSET_LIST_FORBIDDEN")
+    _require("REALITY_VALID_CONTRACT=" not in text, "EXPANDED_CONTRACT_INLINE_FORBIDDEN")
+    header = text.split("\n\n执行：", 1)[0]
+    _require(len(header) <= _MAX_HEADER_CHARS, "CONTROL_HEADER_TOO_LONG")
 
 def build_real_dispatch(
     *,
@@ -71,11 +77,9 @@ def build_real_dispatch(
     turn_start_utc: str,
     dispatch_utc: str,
     freeze_id: str,
-    frozen_assets: str,
-    reality_valid_contract: str,
-    reality_timing_boundary: str,
+    freeze_ref: str,
+    contract_ref: str,
     t_star_ms: float,
-    t_star_source: str,
     executor_task: str,
 ) -> ProductionHandoff:
     _require(virtual_mature, "VIRTUAL_MATURE_REQUIRED")
@@ -84,10 +88,8 @@ def build_real_dispatch(
     _require(1 <= int(task_no) <= 6, "TASK_NO_OUT_OF_RANGE_01_06")
     _require(bool(timeline_id.strip()), "TIMELINE_ID_REQUIRED")
     _require(bool(freeze_id.strip()), "FREEZE_ID_REQUIRED")
-    _require(bool(frozen_assets.strip()), "FROZEN_ASSETS_REQUIRED")
-    _require(bool(reality_valid_contract.strip()), "REALITY_VALID_CONTRACT_REQUIRED")
-    _require(bool(reality_timing_boundary.strip()), "REALITY_TIMING_BOUNDARY_REQUIRED")
-    _require(bool(t_star_source.strip()), "T_STAR_SOURCE_REQUIRED")
+    _require(bool(freeze_ref.strip()), "FREEZE_REF_REQUIRED")
+    _require(bool(contract_ref.strip()), "CONTRACT_REF_REQUIRED")
     _require(bool(executor_task.strip()), "EXECUTOR_TASK_REQUIRED")
 
     origin = _parse_utc(time_origin_utc)
@@ -99,40 +101,22 @@ def build_real_dispatch(
     elapsed_ms = (dispatch - origin).total_seconds() * 1000.0
     turn_elapsed_ms = (dispatch - turn_start).total_seconds() * 1000.0
 
-    locator = f"【{page_name}｜{task_name}｜{int(task_no):02d}｜实】"
-    anchor = (
-        "【时间锚｜整体已用="
-        + _fmt_ms(elapsed_ms)
-        + "ms｜本次已用="
-        + _fmt_ms(turn_elapsed_ms)
-        + "ms｜T*="
-        + _fmt_ms(float(t_star_ms), decimals=6)
-        + "ms】"
-    )
-
-    text = f"""{locator}
-{anchor}
+    text = f"""【{page_name}｜{task_name}｜{int(task_no):02d}｜实】
+【时间锚｜整体已用={_fmt_ms(elapsed_ms)}ms｜本次已用={_fmt_ms(turn_elapsed_ms)}ms｜T*={_fmt_ms(float(t_star_ms), decimals=6)}ms】
 TIMELINE_ID={timeline_id}
 TIME_ORIGIN_UTC={_fmt_utc(origin)}
 DISPATCH_UTC={_fmt_utc(dispatch)}
 FREEZE_ID={freeze_id}
-VIRTUAL_MATURE=YES
-SOLUTION_FROZEN=YES
-REAL_STARTED=YES
-T_STAR_SOURCE={t_star_source}
-FROZEN_ASSETS={frozen_assets}
-REALITY_VALID_CONTRACT={reality_valid_contract}
-REALITY_TIMING_BOUNDARY={reality_timing_boundary}
+FREEZE_REF={freeze_ref}
+CONTRACT_REF={contract_ref}
 
-执行任务：
+执行：
 {executor_task}
 
-返回合同：
-- 只允许 PASS / FAIL / BLOCKED 三种 Reality 结果。
-- 三种结果都必须保留同一 TIMELINE_ID，并给出真实起止时间与毫秒。
-- PASS / FAIL / BLOCKED 均必须 RETURN_TO_GPT=YES。
-- FINAL_VALID/DONE 禁止由 Reality 执行器宣布；最终收口权属于 GPT。
+返回：
+RESULT=PASS|FAIL|BLOCKED
 RETURN_TO_GPT=YES
+NO_FINAL_VALID_DONE=YES
 """
     validate_rendered_dispatch(text)
     return ProductionHandoff(
