@@ -82,6 +82,14 @@ def _dispatch_command(header, dispatch):
     return header + "\n\n" + body
 
 def advance(state, evidence, context, *, page, task, seq, time_anchor, dispatch=None):
+    if context.get("page") not in (None, page):
+        raise ValueError("页面定位与冻结上下文不一致")
+    if task != context.get("task") or seq != context.get("seq"):
+        raise ValueError("任务/序号定位与冻结上下文不一致")
+    if time_anchor.get("accepted") != context.get("accepted"):
+        raise ValueError("TASK_ACCEPTED显示与冻结上下文不一致")
+    if time_anchor.get("accepted_clock") != context.get("accepted_clock"):
+        raise ValueError("TASK_ACCEPTED时钟身份与冻结上下文不一致")
     verdict = judge(state, evidence, context, dispatch)
     code, name, phase, action = TRANSITIONS[state][verdict]
     header = render(page, task, seq, phase, code, name, time_anchor)
