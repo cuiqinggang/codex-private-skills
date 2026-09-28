@@ -1,4 +1,5 @@
 """v5.6.1 三行核心头：严格、单一、不可注入。"""
+import math
 
 _BAD = ("\r", "\n", "｜", "【", "】")
 
@@ -9,6 +10,12 @@ def _field(name, value):
     if any(x in s for x in _BAD):
         raise ValueError(f"{name}含非法分隔/换行")
     return s
+
+def _number(name, value):
+    x = float(value)
+    if not math.isfinite(x) or x < 0:
+        raise ValueError(f"{name}非法")
+    return x
 
 def render(page, task, seq, phase, code, name, time_anchor):
     page = _field("页面名", page)
@@ -26,18 +33,22 @@ def render(page, task, seq, phase, code, name, time_anchor):
     elapsed = time_anchor.get("elapsed_ms")
     t_valid = time_anchor.get("t_valid_ms")
     t_star = time_anchor.get("t_star_ms")
-
     same_clock = bool(aclock and eclock and aclock == eclock)
-    if elapsed is not None and (not same_clock or float(elapsed) < 0):
-        raise ValueError("整体已用缺少同一可比较时钟")
-    if t_valid is not None and (code != 100 or not same_clock or float(t_valid) < 0):
-        raise ValueError("T_VALID不具备合法整体时间条件")
-    if t_star is not None and float(t_star) < 0:
-        raise ValueError("T*非法")
 
-    elapsed_text = "未知" if elapsed is None else f"{float(elapsed):.3f}毫秒"
-    t_valid_text = "尚未产生" if t_valid is None else f"{float(t_valid):.3f}毫秒"
-    t_star_text = "未知" if t_star is None else f"{float(t_star):.3f}毫秒"
+    if elapsed is not None:
+        elapsed = _number("整体已用", elapsed)
+        if not same_clock:
+            raise ValueError("整体已用缺少同一可比较时钟")
+    if t_valid is not None:
+        t_valid = _number("T_VALID", t_valid)
+        if code != 100 or not same_clock:
+            raise ValueError("T_VALID不具备合法整体时间条件")
+    if t_star is not None:
+        t_star = _number("T*", t_star)
+
+    elapsed_text = "未知" if elapsed is None else f"{elapsed:.3f}毫秒"
+    t_valid_text = "尚未产生" if t_valid is None else f"{t_valid:.3f}毫秒"
+    t_star_text = "未知" if t_star is None else f"{t_star:.3f}毫秒"
 
     return "\n".join([
         f"【{page}｜{task}｜{seq}｜{phase}】",
