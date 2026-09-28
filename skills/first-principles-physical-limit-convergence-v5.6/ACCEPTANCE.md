@@ -48,3 +48,15 @@
 - 状态转移与三行显示：仍为同一advance原子返回。
 
 结论：VIRTUAL_MATURE=PASS。此结论只证明GPT侧虚拟成熟；现实认证仍须重新执行。
+
+
+## 20过渡态同轮发布验收
+
+- 共同工作区指针完整：20 PASS→30，并在同一次advance返回可直接发布command，PASS。
+- command前三行固定为定位/状态/时间锚，PASS。
+- 共同工作区不可用但有备用正文：20 PASS→30并同轮返回备用command，PASS。
+- 两种交付都缺失：20 PASS调用直接失败，不允许返回“下一轮发布”，PASS。
+- 30证据全真：直接40，PASS。
+- 30任一证据为False：留30，PASS。
+
+结论：20是过渡态而非可停留终点；VIRTUAL_MATURE=PASS。
