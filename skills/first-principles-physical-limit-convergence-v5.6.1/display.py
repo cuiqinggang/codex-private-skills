@@ -1,5 +1,6 @@
 """v5.6.1 三行核心头：严格、单一、不可注入。"""
 import math
+from datetime import datetime
 
 _BAD = ("\r", "\n", "｜", "【", "】")
 
@@ -9,6 +10,18 @@ def _field(name, value):
     s = str(value)
     if any(x in s for x in _BAD):
         raise ValueError(f"{name}含非法分隔/换行")
+    return s
+
+def _time_field(name, value):
+    s = _field(name, value)
+    if s.startswith("未知"):
+        return s
+    try:
+        dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ValueError(f"{name}不是现实可读时间") from exc
+    if dt.tzinfo is None:
+        raise ValueError(f"{name}缺少时区")
     return s
 
 def _number(name, value):
@@ -26,8 +39,8 @@ def render(page, task, seq, phase, code, name, time_anchor):
     if phase not in ("虚", "实"):
         raise ValueError("虚/实非法")
 
-    accepted = _field("TASK_ACCEPTED", time_anchor.get("accepted", "未知"))
-    event = _field("当前节点时间", time_anchor.get("event"))
+    accepted = _time_field("TASK_ACCEPTED", time_anchor.get("accepted"))
+    event = _time_field("当前节点时间", time_anchor.get("event"))
     aclock = time_anchor.get("accepted_clock")
     eclock = time_anchor.get("event_clock")
     elapsed = time_anchor.get("elapsed_ms")
