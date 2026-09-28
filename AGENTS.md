@@ -29,3 +29,14 @@
 | absolute-time-fireworks-optimization | [SKILL.md](skills/absolute-time-fireworks-optimization/SKILL.md) | 第一性原理四列法通用99收敛引擎 v2.0.0；以任务完成为单一边界、以端到端时间为唯一主指标 |
 
 2026-09-08新增的验收案例根据用户回传报告整理，未冒充编写端Windows实测或原始本机技能全文。其他既有技能以仓库实际目录为准。
+
+
+## 共同工作区统一入口
+
+跨智能体接手、技能包查找、工作区恢复时，统一先读取：
+
+- `00_START_HERE/COMMON-ENTRY.md`
+- `skills/shared-workspace-skill-index/SKILL.md`
+- `skills/shared-workspace-skill-index/INDEX.md`
+
+其中总索引只负责定位资产；具体项目仍以其自身 `SKILL.md`、CURRENT、FREEZE、RESULT 等远端文件为准。main 未找到时继续检查相关 `codex/*` 分支，不得仅凭历史聊天宣称仓库已保存。
