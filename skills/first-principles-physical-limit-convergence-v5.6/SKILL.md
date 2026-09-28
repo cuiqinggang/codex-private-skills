@@ -1,10 +1,10 @@
 ---
 name: first-principles-physical-limit-convergence
-version: "5.6-candidate"
+version: "5.6"
 description: 整体闭环极限短时间引擎；单一机械状态表候选。
 ---
 
-# 整体闭环极限短时间引擎 v5.6 候选
+# 整体闭环极限短时间引擎 v5.6
 
 唯一目标：`T*=min(T_VALID)`。  
 整体边界：`TASK_ACCEPTED → FINAL_VALID`。
