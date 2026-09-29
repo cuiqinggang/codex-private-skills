@@ -28,3 +28,18 @@ Reality 完成后保持状态40返回 GPT：
 RETURN_TO_GPT=YES
 
 不得自行宣布 FINAL_VALID 或 DONE。
+
+
+## 新增最小必测：五状态时间锚
+
+11. 分别观察 10、20、30、40、100 的正式状态输出；每个状态都必须同时有状态机行和时间锚行。
+12. 状态20→30→40 全程 TASK_ACCEPTED 与冻结起点不得被重置。
+13. 状态30必须区分 GPT_DISPATCH_TIME 与真实 TASK_ACCEPTED。
+14. 状态100只有合法同源计时链存在时才允许数值 T_VALID；缺起点必须 fail-closed。
+15. 输出：
+STATE10_TIME_ANCHOR=
+STATE20_TIME_ANCHOR=
+STATE30_TIME_ANCHOR=
+STATE40_TIME_ANCHOR=
+STATE100_TIME_ANCHOR=
+STATE_TIME_COUPLING=PASS/FAIL
