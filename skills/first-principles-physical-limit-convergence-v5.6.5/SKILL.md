@@ -80,3 +80,39 @@ v5.6.5 不修改：
 - 共同工作区来源规则；
 - 局部最小修复原则；
 - Reality 最终仍由 GPT 审核后才能进入100。
+
+
+## R2：Reality 最终权限边界
+
+Reality Executor 的最高合法状态是 40。
+
+状态40业务/证据检查 PASS 后：
+- 保持 STATE=40；
+- ACTION=RETURN_TO_GPT；
+- RETURN_TO_GPT=YES；
+- 不得由 Reality Executor 生成 STATE=100 / FINAL_VALID / REALITY_CERTIFIED / DONE。
+
+只有 GPT Final Reviewer 显式执行最终审核并批准，才允许 40 → 100。
+
+运行时接口同样机械化：
+- 普通 advance(... state=40 ...) 的 PASS 默认留40；
+- 只有 final_review=True 且 reviewer="GPT" 才允许进入100。
+
+## R2：T_FLOW / T_VALID 不可互换
+
+T_FLOW：
+FLOW_START_TIME → 当前 STATE_TIME，表示本轮流程耗时。
+
+T_VALID：
+必须来自被冻结业务任务本身的独立有效区间：
+- T_VALID_START
+- T_VALID_END
+
+运行时只允许由 t_valid_start / t_valid_end 机械计算 T_VALID。
+禁止外部直接提交 t_valid_ms 数值。
+
+如果没有独立记录 T_VALID_START / T_VALID_END：
+T_VALID=尚未产生。
+
+因此：
+T_FLOW 数值永远不能直接填入 T_VALID。
