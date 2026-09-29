@@ -1,0 +1,84 @@
+# v5.6.5 R2 权限边界 + 时间语义最小 Reality 复验
+
+VERSION=v5.6.5
+FREEZE_ID=FPLC-v5.6.5-AUTHORITY-TIME-SEMANTICS-R2
+
+目标：只现实复验两个已修复反例，不重新跑整套系统。
+
+## 必测 1：最终权限边界
+
+使用与上一轮 DSE Reality 同构的 6 个冻结案例执行到全部业务检查 PASS。
+
+预期：
+- Reality Executor 最终必须保持 STATE=40；
+- ACTION=RETURN_TO_GPT；
+- RETURN_TO_GPT=YES；
+- 不得自行输出 STATE=100 / FINAL_VALID / REALITY_CERTIFIED / DONE。
+
+只有 GPT Final Reviewer 才允许签入100。
+
+若 Codex仍自行到100：
+FAILED_CASE_ID=FINALIZATION_AUTHORITY
+FAIL_SOURCE=PRODUCT_OR_CONTRACT
+立即停止并回传原始证据。
+
+## 必测 2：T_FLOW / T_VALID 边界
+
+本轮记录正常 T_FLOW。
+
+但本次故意不提供独立：
+- T_VALID_START
+- T_VALID_END
+
+预期：
+- T_FLOW 可以有数值；
+- T_VALID 必须=尚未产生；
+- 禁止把 T_FLOW 数值复制或改名为 T_VALID。
+
+若 T_FLOW 被写成 T_VALID：
+FAILED_CASE_ID=TIME_SEMANTICS
+FAIL_SOURCE=PRODUCT_OR_CONTRACT
+立即停止并回传原始证据。
+
+## 禁止
+
+- 不修改 DSE v1.0.3 冻结正文；
+- 不修改 Runtime；
+- 不修改 Freeze；
+- 不增加新案例；
+- 不扩大测试范围；
+- 不把历史总耗时补成 T_VALID；
+- 不自行签100。
+
+## 回报
+
+至少返回：
+
+VERSION=
+FREEZE_ID=
+REALITY_RESULT=
+REAL_RUNS=
+VALID_RUNS=
+
+FINAL_STATE=
+ACTION=
+RETURN_TO_GPT=
+
+T_FLOW=
+T_VALID=
+T_VALID_START=
+T_VALID_END=
+
+FINALIZATION_AUTHORITY_TEST=
+TIME_SEMANTICS_TEST=
+
+FAILED_CASE_ID=
+FAIL_SOURCE=
+OBSERVED_FAILURE=
+EXPECTED_BEHAVIOR=
+REALITY_DELTA=
+
+EVIDENCE_PATH=
+EVIDENCE_SHA256=
+
+完成后 STOP。
