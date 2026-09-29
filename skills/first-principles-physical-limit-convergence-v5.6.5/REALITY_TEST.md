@@ -29,3 +29,12 @@ REALITY_CERTIFIED 由 GPT 决定
 FINAL_VALID 由 GPT 决定
 
 不得自行宣布状态100 / DONE。
+
+
+## R2 定点 Reality 检查
+
+11. 状态40业务/证据 PASS 后，Reality Executor 必须停在40并 RETURN_TO_GPT=YES。
+12. Reality Executor 不得自行生成 STATE=100 / FINAL_VALID / REALITY_CERTIFIED / DONE。
+13. GPT Final Reviewer 是唯一允许签入100的角色。
+14. 最终数值 T_VALID 必须有独立 T_VALID_START / T_VALID_END。
+15. 未记录独立 T_VALID 边界时，必须输出 T_VALID=尚未产生；禁止用 T_FLOW 替代。
