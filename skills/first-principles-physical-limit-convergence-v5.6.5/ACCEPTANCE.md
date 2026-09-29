@@ -1,6 +1,6 @@
 # v5.6.5 时间模型简化验收
 
-FREEZE_ID=FPLC-v5.6.5-TIME-MODEL-SIMPLIFICATION-R1
+FREEZE_ID=FPLC-v5.6.5-AUTHORITY-TIME-SEMANTICS-R2
 
 ## 必须满足
 
@@ -24,3 +24,15 @@ FREEZE_ID=FPLC-v5.6.5-TIME-MODEL-SIMPLIFICATION-R1
 
 REALITY_CERTIFIED=NO
 FINAL_VALID=NO
+
+
+## R2 定点验收
+
+13. Reality Executor 在状态40 PASS 后必须保持40并 RETURN_TO_GPT。
+14. 普通 Reality 路径不得生成 STATE=100。
+15. 只有 final_review=True 且 reviewer="GPT" 才允许 40→100。
+16. 非 GPT reviewer 请求 final_review 必须拒绝。
+17. 外部直接传 t_valid_ms 必须拒绝。
+18. 有 T_VALID_START / T_VALID_END 且时间可比较时，T_VALID 由二者机械计算。
+19. 缺 T_VALID_START 或 T_VALID_END 时，即使最终审核通过，T_VALID 仍为尚未产生。
+20. T_FLOW 不得作为 T_VALID 的直接输入。
