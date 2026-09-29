@@ -1,12 +1,12 @@
 # v5.6.5 Freeze
 
 VERSION=v5.6.5
-FREEZE_ID=FPLC-v5.6.5-TIME-MODEL-SIMPLIFICATION-R1
+FREEZE_ID=FPLC-v5.6.5-AUTHORITY-TIME-SEMANTICS-R2
 STATUS=VIRTUAL_FROZEN
 VIRTUAL_MATURE=PASS
 REALITY_CERTIFIED=NO
 FINAL_VALID=NO
-FROZEN_AT=2026-09-30T01:40:47+08:00
+FROZEN_AT=2026-09-30T02:49:06+08:00
 
 ## 唯一 Delta
 
@@ -57,3 +57,37 @@ TEST_RESULTS=13 PASS / 0 FAIL
 - 无时区时间拒绝进入可比较时间链。
 
 禁止在 Reality 阶段改写本 Freeze 来取得 PASS。
+
+
+## R2 局部定点修复
+
+现实 DSE 复验暴露两个同根因问题：执行合同仍存在剩余解释空间。
+
+1. 最终权限：
+   - Reality Executor 最高合法状态=40。
+   - 状态40 PASS 后必须 RETURN_TO_GPT。
+   - STATE=100 / FINAL_VALID / REALITY_CERTIFIED / DONE 只由 GPT Final Reviewer 产生。
+   - Runtime 默认40 PASS保持40；仅 final_review=True 且 reviewer="GPT" 允许40→100。
+
+2. 时间语义：
+   - T_FLOW 仍是本轮实际流程耗时。
+   - T_VALID 必须来自独立 T_VALID_START / T_VALID_END。
+   - 禁止外部直接提交 t_valid_ms。
+   - 未记录独立 T_VALID 边界时，T_VALID=尚未产生。
+   - 禁止把 T_FLOW 数值直接作为 T_VALID。
+
+本 R2 不修改 DSE Runtime、SHA256、共同工作区来源、其他状态转移和三行显示结构。
+
+## R2 定向行为测试
+
+TEST_RESULTS=6 PASS / 0 FAIL
+
+- reality_stays_40=PASS
+- non_gpt_rejected=PASS
+- direct_tvalid_rejected=PASS
+- gpt_finalizes_100=PASS
+- tvalid_from_bounds=PASS
+- missing_bounds_unknown=PASS
+
+REALITY_CERTIFIED=NO
+FINAL_VALID=NO
