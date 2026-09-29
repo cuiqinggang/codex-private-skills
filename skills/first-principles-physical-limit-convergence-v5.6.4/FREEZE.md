@@ -1,12 +1,12 @@
 # v5.6.4 Freeze
 
 VERSION=v5.6.4
-FREEZE_ID=FPLC-v5.6.4-REALITY-TIME-DISPATCH-CONTRACT-R2
+FREEZE_ID=FPLC-v5.6.4-REALITY-TIME-DISPATCH-CONTRACT-R3
 STATUS=VIRTUAL_FROZEN
 VIRTUAL_MATURE=PASS
 REALITY_CERTIFIED=NO
 FINAL_VALID=NO
-FROZEN_AT=2026-09-29T21:30:27+08:00
+FROZEN_AT=2026-09-29T22:33:53+08:00
 
 唯一 Delta：
 正式 Reality / Codex 命令必须在派发前同时具备定位行、状态机行、时间锚行；GPT_DISPATCH_TIME 与执行器真实 TASK_ACCEPTED 必须分离。
@@ -52,3 +52,27 @@ STATE_TIME_COUPLED=YES
 状态100只有在合法冻结起点与同源 event tick 存在时才允许数值 T_VALID；否则保持 T_VALID=尚未产生。
 
 本 R2 只补充状态-时间绑定合同；不修改 TRANSITIONS、不修改 runtime 时间算法、不修改 display 结构、不修改 SHA256 证据、不修改其他已 PASS 部分。
+
+
+## R3 最小修正：时间锚不绑定具体 API
+
+每个核心状态必须记录真实 STATE_TIME。
+
+同源单调高精度 tick：
+- 可用时优先；
+- 用于更精确的区间/T_VALID 计算；
+- 不是状态推进的硬前提。
+
+若单调 tick API 不可用，但当前环境仍能取得可靠、带时区、可比较的真实时间：
+- 继续状态推进；
+- 记录该节点 STATE_TIME；
+- 在同一可比较区间内可计算时再计算 elapsed/T_VALID；
+- 不得因单一 API 失败而 STOP。
+
+若区间无法可靠比较：
+- 状态本身仍可有效；
+- elapsed=未知；
+- T_VALID=尚未产生。
+
+跨宿主不得拼接不可比较的 tick。
+本 R3 不修改状态机、Runtime业务逻辑、display三行结构、SHA256证据及其他已PASS部分。
