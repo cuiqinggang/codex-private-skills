@@ -1,0 +1,49 @@
+# v5.6.4 R3 Reality 时间锚最小认证
+
+ENGINE_VERSION=v5.6.4
+FREEZE_ID=FPLC-v5.6.4-REALITY-TIME-DISPATCH-CONTRACT-R3
+ENGINE_PATH=skills/first-principles-physical-limit-convergence-v5.6.4/
+
+唯一目标：验证“每个核心状态都有真实节点时间；单调高精度 tick 是精度增强，不是状态推进硬门”。
+
+必须验证：
+1. 10/20/30/40/100 每个核心状态都有 STATE_TIME。
+2. 状态时间来自状态实际发生时的当前环境，不补造历史。
+3. GPT_DISPATCH_TIME 不得冒充执行器 TASK_ACCEPTED。
+4. 单调高精度时钟可用时优先使用并只冻结一次。
+5. 单调时钟 API 不可用但可靠带时区系统时间可用时，Reality 必须继续，不得因此 STOP。
+6. 同一可比较时间区间能算 elapsed/T_VALID 时如实计算并注明 TIME_SOURCE。
+7. 起止不可可靠比较时，状态仍可继续；elapsed=未知，T_VALID=尚未产生。
+8. 不跨宿主拼接不可比较的 tick。
+9. 不修改状态机、核心业务逻辑、display 三行结构、SHA256 证据、DSE/业务 Freeze。
+10. Reality 阶段禁止现场修改 Freeze 来取得 PASS。
+
+输出：
+STATE10_TIME=
+STATE20_TIME=
+STATE30_TIME=
+STATE40_TIME=
+STATE100_TIME=
+STATE_TIME_COVERAGE=
+TIME_SOURCE=
+MONOTONIC_TICK_AVAILABLE=
+MONOTONIC_TICK_REQUIRED_FOR_PROGRESS=NO
+API_FAILURE_BLOCKED_PROGRESS=NO
+TASK_ACCEPTED=
+GPT_DISPATCH_TIME_NOT_USED_AS_TASK_ACCEPTED=
+ELAPSED=
+T_VALID=
+T_VALID_SOURCE=
+CROSS_HOST_TICK_STITCHED=NO
+
+失败分类：
+STATE_TIME_MISSING
+GPT_HOST_DISPATCH
+RECEIPT_PROTOCOL
+TIME_SOURCE_POLICY
+RUNTIME_CALCULATION
+TEST_HARNESS
+EXTERNAL
+
+完成后 RETURN_TO_GPT=YES。
+不得自行宣布 FINAL_VALID 或 DONE。
