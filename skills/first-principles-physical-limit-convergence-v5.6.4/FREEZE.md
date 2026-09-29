@@ -1,7 +1,7 @@
 # v5.6.4 Freeze
 
 VERSION=v5.6.4
-FREEZE_ID=FPLC-v5.6.4-REALITY-TIME-DISPATCH-CONTRACT-R1
+FREEZE_ID=FPLC-v5.6.4-REALITY-TIME-DISPATCH-CONTRACT-R2
 STATUS=VIRTUAL_FROZEN
 VIRTUAL_MATURE=PASS
 REALITY_CERTIFIED=NO
@@ -36,3 +36,19 @@ DISPATCH_READY=NO
 4. tick 正确但 T_VALID 错误 → RUNTIME_CALCULATION
 
 禁止在 Reality 阶段现场修改本 Freeze 来取得 PASS。
+
+
+## R2 最小确定性补充：状态与时间不可拆分
+
+10 / 20 / 30 / 40 / 100 每个核心状态一旦显示或确认，必须同时显示时间锚。
+
+每个状态快照必须同时满足：
+STATE_HEADER_PRESENT=YES
+TIME_ANCHOR_PRESENT=YES
+STATE_TIME_COUPLED=YES
+
+状态20/30/40不得重置 TASK_ACCEPTED 或 accepted_tick_ns。
+状态30的 GPT_DISPATCH_TIME 不得替代 TASK_ACCEPTED。
+状态100只有在合法冻结起点与同源 event tick 存在时才允许数值 T_VALID；否则保持 T_VALID=尚未产生。
+
+本 R2 只补充状态-时间绑定合同；不修改 TRANSITIONS、不修改 runtime 时间算法、不修改 display 结构、不修改 SHA256 证据、不修改其他已 PASS 部分。
