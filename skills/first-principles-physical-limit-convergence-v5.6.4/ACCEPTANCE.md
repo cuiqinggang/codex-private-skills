@@ -1,6 +1,6 @@
 # v5.6.4 最小升级验收
 
-FREEZE_ID=FPLC-v5.6.4-REALITY-TIME-DISPATCH-CONTRACT-R2
+FREEZE_ID=FPLC-v5.6.4-REALITY-TIME-DISPATCH-CONTRACT-R3
 
 ## 唯一 Delta
 
@@ -13,9 +13,10 @@ Reality / Codex 正式命令必须强制携带定位行、状态机行、时间�
 3. TIME_ANCHOR_PRESENT=YES
 4. 任一缺失时 DISPATCH_READY=NO
 5. TASK_ACCEPTED 只能在执行器真实收件现场建立
-6. accepted_clock / accepted_tick_ns 只冻结一次
-7. 最终 T_VALID 只能由同源 tick 机械计算
-8. 无合法起点时不得产生数值 T_VALID
+6. 每个核心状态必须有真实 STATE_TIME
+7. 单调高精度 tick 可用时优先且只冻结一次，但不是状态推进硬门
+8. 单调 tick API 不可用但存在可靠带时区时间源时，不得因此停止 Reality
+9. T_VALID 只在起止时间可靠可比较时产生；否则显示尚未产生
 9. 不因本升级修改状态机、SHA256证据逻辑、DSE/业务 Freeze
 
 ## 已有现实依据
@@ -42,3 +43,12 @@ T_VALID_MS=401910.1415
 13. 状态40输出必须同时存在状态行与时间锚行，并使用同源冻结起点计算整体已用。
 14. 状态100输出必须同时存在状态行与时间锚行；只有合法同源起点存在时才允许数值 T_VALID。
 15. 任一核心状态缺时间锚：STATE_TIME_COUPLED=NO，该状态快照无效。
+
+
+## R3 现实失败反例
+
+PowerShell 受限语言模式阻止 Stopwatch.GetTimestamp() 时：
+- 不得把“某API不可用”判成“没有时间”；
+- 应继续使用当前环境可靠时间源记录 STATE_TIME；
+- 若无法形成精确单调区间，则精确耗时未知；
+- 业务状态推进不得因此被无条件阻塞。
