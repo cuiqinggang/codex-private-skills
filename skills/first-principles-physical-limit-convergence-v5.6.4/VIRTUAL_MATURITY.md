@@ -3,7 +3,7 @@
 VIRTUAL_MATURE=PASS
 REALITY_CERTIFIED=NO
 FINAL_VALID=NO
-FREEZE_ID=FPLC-v5.6.4-REALITY-TIME-DISPATCH-CONTRACT-R2
+FREEZE_ID=FPLC-v5.6.4-REALITY-TIME-DISPATCH-CONTRACT-R3
 
 ## 核心锚定
 
@@ -30,7 +30,7 @@ STATE + TIME_ANCHOR
 v5.6.3 的 advance → render → _dispatch_command 正式出口已经能生成完整三行。
 现实缺陷来自 GPT/宿主 Reality 文本可能绕过该合同；R1 已固化 Reality 三行派发合同，R2 进一步明确“每个核心状态都必须与时间锚耦合”。
 
-## R2 最小升级
+## R3 最小升级
 
 只固化：
 - 10/20/30/40/100 每个核心状态必须显示时间锚；
@@ -75,3 +75,19 @@ STATE_TIME_COUPLING=REQUIRED
 
 结论：
 R2 方案边界单一、资料闭合、无架构扩张，VIRTUAL_MATURE=PASS，允许进入 v5.6.4 Reality。
+
+
+## R3 新现实证据与修正
+
+R2 首次 Reality 在收件时间起点采集阶段停止：PowerShell 受限语言模式拒绝 Stopwatch.GetTimestamp()，五状态测试未运行。
+
+该事实不证明 Runtime 或状态机失败；它证明 R2 把“真实时间锚”过度绑定到某个单调时钟 API。
+
+R3 只修正这一点：
+- STATE_TIME 是每个状态的必需现实锚；
+- 单调 tick 是精度增强，不是启动许可证；
+- 有可靠带时区时间即可记录节点并继续；
+- 区间不可可靠比较时只把 elapsed/T_VALID 记为未知；
+- 不补造历史，不跨宿主拼接不可比较 tick。
+
+VIRTUAL_MATURE=PASS。
