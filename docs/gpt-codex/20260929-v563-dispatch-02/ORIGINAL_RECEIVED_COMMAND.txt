@@ -1,0 +1,336 @@
+【极限短时间 v5.63自动化4｜v5.6.3 GPT→Codex Reality派发修复生产同构检测｜02｜实】\
+【状态机｜v5.6.3｜30｜虚实交接中】\
+【时间锚｜TASK_ACCEPTED=待Codex正式收件建立｜当前节点时间=2026-09-29T21:04:27+08:00｜整体已用=未知｜T_VALID=尚未产生｜T\*=尚未产生】
+
+COMMAND_PACK=02/06
+
+按“整体闭环极限短时间引擎 v5.6.3”执行本次生产同构检测。
+
+本轮不是继续修改 Runtime，也不是继续设计方案。
+
+唯一目标：
+
+验证刚完成的“GPT → Codex Reality 派发行为修复”是否真实有效。
+
+共同工程工作区：
+
+REPO=cuiqinggang/codex-private-skills
+
+现有诊断目录：
+
+docs/gpt-codex/20260929-v563-dispatch-01/
+
+上一轮报告：
+
+docs/gpt-codex/20260929-v563-dispatch-01/REPORT.md
+
+━━━━━━━━━━━━━━━━━━\
+一、首先验证本命令本身\
+━━━━━━━━━━━━━━━━━━
+
+正式收件前先检查当前收到的完整命令。
+
+必须确认本命令顶部同时真实存在：
+
+1. \
+
+
+【极限短时间 v5.63自动化4｜v5.6.3 GPT→Codex Reality派发修复生产同构检测｜02｜实】
+
+2. \
+
+
+【状态机｜v5.6.3｜30｜虚实交接中】
+
+3. \
+
+
+【时间锚｜TASK_ACCEPTED=待Codex正式收件建立｜当前节点时间=2026-09-29T21:04:27+08:00｜整体已用=未知｜T_VALID=尚未产生｜T\*=尚未产生】
+
+机械记录：
+
+LOCATOR_PRESENT=\
+STATE_HEADER_PRESENT=\
+TIME_ANCHOR_PRESENT=
+
+只有三项全部 YES，才继续。
+
+如果任意一项为 NO：
+
+DISPATCH_BEHAVIOR_TEST=FAIL
+
+立即保存原始命令证据并 STOP。
+
+不得继续后续测试。
+
+━━━━━━━━━━━━━━━━━━\
+二、正式收件并建立真实时间锚\
+━━━━━━━━━━━━━━━━━━
+
+如果顶部三项完整，则现在才正式接受本任务。
+
+在正式 TASK_ACCEPTED 的同一现场立即记录：
+
+TASK_ACCEPTED_WALL_TIME\
+ACCEPTED_CLOCK\
+ACCEPTED_TICK_NS
+
+要求：
+
+TASK_ACCEPTED_WALL_TIME\
+必须是真实现场时间并带时区。
+
+ACCEPTED_TICK_NS\
+必须来自同一单调高精度时钟。
+
+tick 必须满足：
+
+type(value) is int\
+and\
+value >= 0
+
+True / False 不允许作为 tick。
+
+不得把 GPT 派发时间：
+
+2026-09-29T21:04:27+08:00
+
+冒充 Codex 的 TASK_ACCEPTED。
+
+完成正式收件后，状态立即更新为：
+
+【极限短时间 v5.63自动化4｜v5.6.3 GPT→Codex Reality派发修复生产同构检测｜02｜实】\
+【状态机｜v5.6.3｜40｜实：执行与审核中】\
+【时间锚｜TASK_ACCEPTED=<现场真实值>｜当前节点时间=<现场真实值>｜整体已用=<同源机械计算>｜T_VALID=尚未产生｜T\*=尚未产生】
+
+━━━━━━━━━━━━━━━━━━\
+三、本轮只检测四件事\
+━━━━━━━━━━━━━━━━━━
+
+TEST-01\
+GPT派出的 Reality 命令是否完整包含：
+
+定位行\
++\
+状态机行\
++\
+时间锚行
+
+TEST-02\
+GPT 派发时间是否与 Codex TASK_ACCEPTED 正确区分。
+
+必须满足：
+
+GPT_DISPATCH_TIME\
+!=\
+伪造的 TASK_ACCEPTED
+
+Codex TASK_ACCEPTED 只能在真实收件现场建立。
+
+TEST-03\
+TASK_ACCEPTED 后是否建立：
+
+ACCEPTED_CLOCK\
+ACCEPTED_TICK_NS
+
+并且该起点只冻结一次。
+
+TEST-04\
+完成本次检测后，使用同源 event tick 机械计算本任务从真实 TASK_ACCEPTED 到最终报告完成的整体 T_VALID。
+
+不得使用：
+
+局部 benchmark\
+人工填写 elapsed_ms\
+墙钟字符串相减\
+上一轮时间\
+GPT 派发到 Codex 收件之前的时间
+
+冒充整体 T_VALID。
+
+━━━━━━━━━━━━━━━━━━\
+四、禁止扩大范围\
+━━━━━━━━━━━━━━━━━━
+
+本轮禁止修改：
+
+skills/first-principles-physical-limit-convergence-v5.6.3/runtime.py
+
+skills/first-principles-physical-limit-convergence-v5.6.3/display.py
+
+DSE v1.0.3
+
+任何 Freeze
+
+状态机
+
+时间算法
+
+证据算法
+
+HANDOFF_SOURCE_POLICY
+
+正式 current
+
+因为上一轮已经确认：
+
+v5.6.3 的正式：
+
+advance\
+→ render\
+→ \_dispatch_command
+
+本身已经会产生完整三行。
+
+本轮只验证 GPT Reality 派发行为是否已经改正。
+
+━━━━━━━━━━━━━━━━━━\
+五、判定规则\
+━━━━━━━━━━━━━━━━━━
+
+只有同时满足：
+
+LOCATOR_PRESENT=YES\
+STATE_HEADER_PRESENT=YES\
+TIME_ANCHOR_PRESENT=YES
+
+TASK_ACCEPTED_CREATED_AT_RECEIPT=YES\
+GPT_DISPATCH_TIME_NOT_USED_AS_TASK_ACCEPTED=YES\
+ACCEPTED_CLOCK_CREATED=YES\
+ACCEPTED_TICK_NS_CREATED=YES\
+TIME_ORIGIN_FROZEN_ONCE=YES
+
+FINAL_EVENT_TICK_CREATED=YES\
+T_VALID_MECHANICALLY_DERIVED=YES
+
+才允许：
+
+DISPATCH_BEHAVIOR_TEST=PASS
+
+如果失败，不修改系统。
+
+只判断失败属于哪一层。
+
+A.
+
+如果收到的本命令仍然缺：
+
+定位行\
+状态机行\
+时间锚行
+
+则：
+
+FAIL_SOURCE=GPT_HOST_DISPATCH
+
+说明：
+
+上一轮所谓行为修复没有真正落实。
+
+返回 GPT。
+
+B.
+
+如果本命令三行完整，但 Codex 没有在收件现场建立真实 TASK_ACCEPTED：
+
+FAIL_SOURCE=REALITY_RECEIPT_PROTOCOL
+
+说明：
+
+GPT派发层已经修好，\
+但收件时间协议仍未落实。
+
+返回 GPT。
+
+C.
+
+如果三行完整、收件时间也正确，但 T_VALID 无法机械形成：
+
+再判断是否属于：
+
+PRODUCT\
+TEST_HARNESS\
+EXTERNAL
+
+不得提前归罪 Runtime。
+
+━━━━━━━━━━━━━━━━━━\
+六、证据保存\
+━━━━━━━━━━━━━━━━━━
+
+把本轮原始收到的完整命令、真实时间数据和结果报告保存到共同工程工作区。
+
+建议目录：
+
+docs/gpt-codex/20260929-v563-dispatch-02/
+
+至少保存：
+
+ORIGINAL_RECEIVED_COMMAND.txt
+
+REPORT.md
+
+如果生成独立时间证据文件，也一并保存。
+
+所有证据保存后回读确认。
+
+记录实际证据路径与 SHA256。
+
+━━━━━━━━━━━━━━━━━━\
+七、最终报告\
+━━━━━━━━━━━━━━━━━━
+
+最终报告顶部必须首先显示：
+
+【极限短时间 v5.63自动化4｜v5.6.3 GPT→Codex Reality派发修复生产同构检测｜02｜实】\
+【状态机｜v5.6.3｜40｜实：执行与审核中】\
+【时间锚｜TASK_ACCEPTED=<真实收件时间>｜当前节点时间=<最终节点真实时间>｜整体已用=<同源机械计算值>｜T_VALID=<本任务真实整体值或尚未产生>｜T\*=<真实状态>】
+
+然后报告：
+
+COMMAND_PACK=02/06
+
+DISPATCH_BEHAVIOR_TEST=
+
+LOCATOR_PRESENT=\
+STATE_HEADER_PRESENT=\
+TIME_ANCHOR_PRESENT=
+
+GPT_DISPATCH_TIME=2026-09-29T21:04:27+08:00
+
+TASK_ACCEPTED_WALL_TIME=\
+TASK_ACCEPTED_CREATED_AT_RECEIPT=\
+GPT_DISPATCH_TIME_NOT_USED_AS_TASK_ACCEPTED=
+
+ACCEPTED_CLOCK=\
+ACCEPTED_TICK_NS=\
+TIME_ORIGIN_FROZEN_ONCE=
+
+FINAL_EVENT_TICK_NS=
+
+T_VALID_MECHANICALLY_DERIVED=\
+T_VALID_MS=\
+T_VALID_SOURCE=
+
+RUNTIME_PY_CHANGED=NO\
+DISPLAY_PY_CHANGED=NO\
+DSE_CHANGED=NO\
+FREEZE_CHANGED=NO
+
+FAILED_CASE_ID=\
+FAIL_SOURCE=\
+OBSERVED_FAILURE=\
+EXPECTED_BEHAVIOR=\
+REALITY_DELTA=
+
+EVIDENCE_PATH=\
+EVIDENCE_SHA256=
+
+NEEDS_VERSIONED_UPGRADE=NO\
+RETURN_TO_GPT=YES
+
+不得自行宣布整个 v5.6.3 FINAL_VALID。\
+不得自行宣布项目 DONE。\
+不得现场修改问题来取得 PASS。
+
+完成报告后 STOP。
