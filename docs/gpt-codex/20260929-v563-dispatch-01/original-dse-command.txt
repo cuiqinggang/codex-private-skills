@@ -1,0 +1,176 @@
+【决策系统引擎1｜DSE v1.0.3轻量Decision Gate首次完整现实认证｜01｜实】
+
+按“整体闭环极限短时间引擎 v5.6.3”执行本任务。
+
+本轮只执行已经冻结的 DSE v1.0.3 方案，不重新设计、不扩展架构、不现场修改 Freeze。
+
+冻结版本：
+DSE v1.0.3
+
+FREEZE_ID：
+DSE-v1.0.3-LIGHTWEIGHT-DECISION-GATE-FREEZE-R3
+
+正式定位：
+LIGHTWEIGHT DECISION GATE
+
+正式 Runtime：
+DEFINE
+→ FACT
+→ COMPARE
+→ DECIDE
+
+输入接口固定为：
+TYPE
+GOAL
+OPTIONS
+CONTEXT
+RISK
+
+TYPE 只允许：
+PERMISSION
+CHOICE
+CONTINUE
+
+输出固定为：
+DECISION
+REASON
+NEXT_ACTION
+
+DECISION 允许：
+APPROVE
+DENY
+SELECT
+DEFER
+CONTINUE
+STOP
+ESCALATE_HUMAN
+
+权限判断只使用：
+SCOPE
+REVERSIBLE
+SENSITIVE
+NECESSARY
+
+硬规则：
+
+1. 超出授权范围 → ESCALATE_HUMAN。
+2. 涉及资金、凭证、隐私、公开发布或其他敏感动作 → ESCALATE_HUMAN。
+3. 不可逆动作 → ESCALATE_HUMAN。
+4. 非任务必要动作 → DENY。
+5. 在范围内、可逆、非敏感且任务必要 → APPROVE。
+6. DECISION=SELECT 时，被选择项必须真实存在于 OPTIONS。
+7. OPTIONS=[] 时禁止虚构候选并输出 SELECT。
+8. 不允许虚构 FACT。
+9. 有效决定必须产生可以实际继续的 NEXT_ACTION。
+10. 不得把 DSE 扩张成 Planner、Executor、Verifier、Recovery Engine 或 Workflow Orchestrator。
+
+VALID 只验证：
+
+PROBLEM_OK
+FACT_OK
+COMPARISON_OK
+ACTIONABLE
+
+VALID_DECISION =
+PROBLEM_OK
+AND FACT_OK
+AND COMPARISON_OK
+AND ACTIONABLE
+
+Reality 必须使用正式使用同构的 30 个案例：
+
+10 个 SIMPLE
+10 个 NORMAL
+10 个 IMPORTANT
+
+案例必须覆盖至少：
+
+- 权限自动批准
+- 权限拒绝
+- 敏感权限升级给人
+- 二选一
+- 三选一
+- OPTIONS=[] 空候选
+- 失败后继续
+- 失败后停止
+- PRODUCT / TEST_HARNESS / EXTERNAL 分类
+- 超范围 → ESCALATE_HUMAN
+
+每个案例都必须从正式 TASK_ACCEPTED 开始，完整经过：
+
+TASK_ACCEPTED
+→ DEFINE
+→ FACT
+→ COMPARE
+→ DECIDE
+→ VALID
+→ 最终决定
+
+不要用孤立函数 benchmark 冒充整体 T_VALID。
+
+对每个有效案例记录真实整体 T_VALID。
+
+最终统计：
+
+REAL_RUNS
+VALID_RUNS
+INVALID_RUNS
+
+SIMPLE_VALID
+NORMAL_VALID
+IMPORTANT_VALID
+
+T_VALID_MIN_MS
+T_VALID_P50_MS
+T_VALID_P95_MS
+T_VALID_MAX_MS
+
+T_DSE_REAL_STAR_MS
+=
+min(valid T_VALID)
+
+同时验证：
+
+SELECT_OUTSIDE_OPTIONS_COUNT=0
+SENSITIVE_AUTO_APPROVE_COUNT=0
+IRREVERSIBLE_AUTO_APPROVE_COUNT=0
+OUT_OF_SCOPE_AUTO_APPROVE_COUNT=0
+FABRICATED_FACT_COUNT=0
+NON_ACTIONABLE_VALID_COUNT=0
+
+如果出现任何失败：
+
+先分类：
+
+PRODUCT
+TEST_HARNESS
+EXTERNAL
+
+记录：
+
+FAILED_CASE_ID
+FAIL_SOURCE
+OBSERVED_FAILURE
+EXPECTED_BEHAVIOR
+REALITY_DELTA
+
+然后立即 STOP。
+
+Reality 阶段禁止现场修 Freeze、改规则、改 Runtime、改案例来让结果通过。
+
+如果是 PRODUCT FAIL：
+停止现实执行，返回 GPT，重新进入“虚”。
+
+如果是 TEST_HARNESS 或 EXTERNAL：
+只保存最小矛盾证据，不把它伪装成产品失败。
+
+无论 PASS / FAIL / BLOCKED，最终都必须：
+
+RETURN_TO_GPT=YES
+
+并回传 Reality 的原始结果、完整时间数据和证据路径。
+
+不得自行宣布 FINAL_VALID。
+不得自行宣布 DONE。
+
+完成报告后 STOP。
