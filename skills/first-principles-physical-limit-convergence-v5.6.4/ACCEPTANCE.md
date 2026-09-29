@@ -1,6 +1,6 @@
 # v5.6.4 最小升级验收
 
-FREEZE_ID=FPLC-v5.6.4-REALITY-TIME-DISPATCH-CONTRACT-R1
+FREEZE_ID=FPLC-v5.6.4-REALITY-TIME-DISPATCH-CONTRACT-R2
 
 ## 唯一 Delta
 
@@ -32,3 +32,13 @@ T_VALID_MECHANICALLY_DERIVED=YES
 T_VALID_MS=401910.1415
 
 该结果只证明修复方向可行，不替代 v5.6.4 自身 Reality 认证。
+
+
+## 状态-时间耦合验收
+
+10. 状态10输出必须同时存在状态行与时间锚行。
+11. 状态20输出必须同时存在状态行与时间锚行，并保持原 TASK_ACCEPTED。
+12. 状态30输出必须同时存在状态行与时间锚行，且 GPT_DISPATCH_TIME 不得替代 TASK_ACCEPTED。
+13. 状态40输出必须同时存在状态行与时间锚行，并使用同源冻结起点计算整体已用。
+14. 状态100输出必须同时存在状态行与时间锚行；只有合法同源起点存在时才允许数值 T_VALID。
+15. 任一核心状态缺时间锚：STATE_TIME_COUPLED=NO，该状态快照无效。
