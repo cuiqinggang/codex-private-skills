@@ -9,9 +9,9 @@
 3. 删除状态机行：必须拒绝派发。
 4. 删除时间锚行：必须拒绝派发。
 5. GPT_DISPATCH_TIME 不得作为 TASK_ACCEPTED。
-6. 执行器真实收件现场建立 TASK_ACCEPTED、accepted_clock、accepted_tick_ns。
-7. 起点只冻结一次。
-8. 同源 event_tick_ns 能机械产生 T_VALID。
+6. 执行器真实收件现场建立 TASK_ACCEPTED/STATE_TIME；可用时再建立 accepted_clock、accepted_tick_ns。
+7. 若使用单调 tick，起点只冻结一次。
+8. 同源 event_tick_ns 可用时优先机械产生 T_VALID；不可用时验证可靠带时区时间源不会阻塞状态推进。
 9. 无合法起点时不得产生数值 T_VALID。
 10. 不得因本测试现场修改 Freeze。
 
@@ -43,3 +43,13 @@ STATE30_TIME_ANCHOR=
 STATE40_TIME_ANCHOR=
 STATE100_TIME_ANCHOR=
 STATE_TIME_COUPLING=PASS/FAIL
+
+
+## R3 时间源灵活性必测
+
+16. 模拟/复现单调时钟 API 不可用，但可靠带时区系统时间可用：状态必须继续推进，不得因该 API 失败 STOP。
+17. 每个状态必须记录 STATE_TIME。
+18. 能取得同源单调 tick 时优先使用。
+19. 只能取得可靠可比较墙钟时，允许记录区间并明确 TIME_SOURCE。
+20. 起止不可可靠比较时，状态仍可继续；elapsed=未知，T_VALID=尚未产生。
+21. 禁止跨宿主拼接不可比较 tick。
