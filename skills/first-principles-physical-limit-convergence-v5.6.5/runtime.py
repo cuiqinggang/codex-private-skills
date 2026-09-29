@@ -1,4 +1,4 @@
-"""v5.6.5：继承 v5.6.4 业务/状态机；仅简化时间模型。"""
+"""v5.6.5 R2：时间模型保持简化；仅机械化 Reality 最终权限边界与 T_VALID 独立区间。"""
 from pathlib import Path
 from datetime import datetime
 import hashlib
@@ -8,7 +8,7 @@ TRANSITIONS = {
     10: {"PASS": (20, "虚：已冻结", "虚", "冻结"), "FAIL": (10, "虚：准备中", "虚", "留10"), "UNKNOWN": (10, "虚：准备中", "虚", "留10")},
     20: {"PASS": (30, "虚实交接中", "实", "发布现实交接"), "FAIL": (10, "虚：准备中", "虚", "回10"), "UNKNOWN": (10, "虚：准备中", "虚", "回10")},
     30: {"PASS": (40, "实：执行与审核中", "实", "立即执行同一冻结包"), "FAIL": (30, "虚实交接中", "实", "留30"), "UNKNOWN": (30, "虚实交接中", "实", "留30")},
-    40: {"PASS": (100, "完成", "实", "冻结最终证据"), "FAIL": (10, "虚：准备中", "虚", "明确失败回10"), "UNKNOWN": (40, "实：执行与审核中", "实", "缺证据留40")},
+    40: {"PASS": (40, "实：执行与审核中", "实", "RETURN_TO_GPT"), "FAIL": (10, "虚：准备中", "虚", "明确失败回10"), "UNKNOWN": (40, "实：执行与审核中", "实", "缺证据留40")},
     100: {"PASS": (100, "完成", "实", "STOP")},
 }
 
@@ -167,9 +167,18 @@ def _derived_time_anchor(context, supplied, code):
     if state_dt >= start_dt:
         elapsed_ms = (state_dt - start_dt).total_seconds() * 1000.0
 
-    t_valid_ms = supplied.get("t_valid_ms")
-    if code != 100:
-        t_valid_ms = None
+    if supplied.get("t_valid_ms") not in (None, ""):
+        raise ValueError("禁止外部直接提交T_VALID数值；必须提供t_valid_start/t_valid_end独立边界")
+
+    t_valid_ms = None
+    if code == 100:
+        valid_start = supplied.get("t_valid_start")
+        valid_end = supplied.get("t_valid_end")
+        if valid_start not in (None, "") and valid_end not in (None, ""):
+            _, valid_start_dt = _parse_real_time("T_VALID_START", valid_start)
+            _, valid_end_dt = _parse_real_time("T_VALID_END", valid_end)
+            if valid_end_dt >= valid_start_dt:
+                t_valid_ms = (valid_end_dt - valid_start_dt).total_seconds() * 1000.0
 
     return {
         "flow_start_state": start_state,
@@ -181,7 +190,11 @@ def _derived_time_anchor(context, supplied, code):
     }
 
 
-def advance(state, evidence, context, *, page, task, seq, time_anchor=None, dispatch=None):
+def advance(
+    state, evidence, context, *, page, task, seq,
+    time_anchor=None, dispatch=None,
+    final_review=False, reviewer=None,
+):
     if context.get("page") not in (None, page):
         raise ValueError("页面定位与冻结上下文不一致")
     if task != context.get("task") or seq != context.get("seq"):
@@ -190,6 +203,12 @@ def advance(state, evidence, context, *, page, task, seq, time_anchor=None, disp
     _freeze_flow_origin_once(state, context, supplied)
     verdict = judge(state, evidence, context, dispatch)
     code, name, phase, action = TRANSITIONS[state][verdict]
+
+    if state == 40 and verdict == "PASS" and final_review:
+        if reviewer != "GPT":
+            raise ValueError("只有GPT Final Reviewer可以把状态40签入100")
+        code, name, phase, action = (100, "完成", "实", "STOP")
+
     derived = _derived_time_anchor(context, supplied, code)
     header = render(page, task, seq, phase, code, name, derived)
     result = {"verdict": verdict, "state": code, "action": action, "header": header, "time": derived}
