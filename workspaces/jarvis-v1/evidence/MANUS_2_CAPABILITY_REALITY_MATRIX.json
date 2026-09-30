@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "page_name": "贾维斯版本2",
+  "project": "JARVIS v1.0",
+  "parent_method": "v5.6.5",
+  "jarvis_state": 10,
+  "evidence_scope": "preliminary_real_world_evidence_for_virtual_maturity",
+  "capabilities": {
+    "planning": "SUPPORTED",
+    "long_task": "PARTIAL",
+    "autonomous_continuation": "SUPPORTED",
+    "research": "SUPPORTED",
+    "coding": "SUPPORTED",
+    "debugging": "SUPPORTED",
+    "failure_recovery": "SUPPORTED",
+    "browser": "SUPPORTED",
+    "file_handling": "PARTIAL",
+    "delivery_integrity": "PARTIAL",
+    "self_verification": "PARTIAL",
+    "parallel_execution": "PARTIAL",
+    "cross_task_state_same_project": "SUPPORTED",
+    "scheduled_automation": "SUPPORTED",
+    "local_windows_computer_use": "NOT_TESTED_ENV",
+    "human_intervention_control": "SUPPORTED",
+    "permission_boundary": "PARTIAL",
+    "credit_efficiency": "PARTIAL"
+  },
+  "benchmark_summary": {
+    "R1": {
+      "result": "PARTIAL",
+      "credits_used": 200
+    },
+    "R2": {
+      "result": "PARTIAL_DELIVERY_PATH",
+      "autonomous_e2e_valid": false,
+      "normalized_system_valid": true
+    },
+    "R3": {
+      "result": "PARTIAL",
+      "hidden_tests": "11/11",
+      "public_tests": "2/2"
+    },
+    "R4": {
+      "result": "SUPPORTED",
+      "rules_retained": "8/8",
+      "facts_retained": "3/3"
+    },
+    "R5": {
+      "result": "SUPPORTED_WITH_DELAY"
+    },
+    "R6": {
+      "result": "NOT_TESTED_ENV_NOT_CONFIGURED"
+    },
+    "R7": {
+      "result": "PARTIAL",
+      "final_answers_correct": true,
+      "true_parallelism_observed": false
+    },
+    "R3_R7_credits_used": 389,
+    "ordinary_credits_remaining": 3830,
+    "daily_credits_remaining": 179
+  },
+  "time_semantics": {
+    "r4_reported_batch_elapsed_ms": 2123737,
+    "r5_reported_batch_elapsed_ms": 3013008,
+    "warning": "batch elapsed values are not certified per-task T_VALID; recompute from each task's accepted-to-verifier interval or mark uncertified"
+  },
+  "deep_test_gaps": [
+    "goal_retention_under_long_horizon",
+    "drift_detection_and_recovery",
+    "checkpoint_and_interruption_recovery",
+    "multi_failure_recovery",
+    "preemption_and_resume",
+    "state_isolation_under_concurrency",
+    "autonomous_multi_agent_orchestration",
+    "dependency_graph_scheduling",
+    "local_failure_containment",
+    "idempotency_and_duplicate_event_handling",
+    "untrusted_input_resistance",
+    "browser_precision_and_session_recovery",
+    "false_done_resistance",
+    "cross_day_restart_provider_failure_recovery"
+  ],
+  "next_benchmarks": [
+    "R8_CHAOS_MARATHON",
+    "R9_SWARM_ORCHESTRATION",
+    "R10_BROWSER_MISSION"
+  ],
+  "status_transition_prohibited": true
+}
