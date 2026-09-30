@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "project": "JARVIS v1.0",
+  "page_name": "贾维斯版本2",
+  "parent_method": "v5.6.5",
+  "state": 10,
+  "phase": "RESEARCH_INTEGRATION_ONLY",
+  "virtual_mature": false,
+  "freeze": false,
+  "evidence_policy": {
+    "A": "user-environment reality evidence",
+    "B": "mature historical/component evidence",
+    "C": "current public capability, not user-environment validated",
+    "D": "conceptual/unknown"
+  },
+  "roles": {
+    "controller": {
+      "primary": "JARVIS/ChatGPT controller",
+      "decision_gate": "DSE v1.0.3 only when needed",
+      "fixed_orchestrator": false
+    },
+    "local_execution": {
+      "primary": "Codex",
+      "secondary": [
+        "Reasonix + DeepSeek",
+        "DSH when stable"
+      ],
+      "evidence": "A/B"
+    },
+    "deterministic_browser": {
+      "primary": "JEV-native Playwright R3",
+      "secondary": [
+        "Manus 2.0",
+        "Codex Browser/Computer Use candidate"
+      ],
+      "evidence": "B/A/C"
+    },
+    "cloud_long_task": {
+      "primary": "Manus 2.0",
+      "evidence": "A"
+    },
+    "multi_agent": {
+      "primary": "Manus 2.0",
+      "evidence": "A"
+    },
+    "automation_control_plane": {
+      "primary": "n8n",
+      "use_only_when_needed": true,
+      "evidence": "A/B"
+    },
+    "state": {
+      "authoritative_project": "Git/GitHub shared workspace",
+      "runtime_task": "JSON/Markdown task ledger + task_id",
+      "workflow": "n8n persistence when used",
+      "checkpoint": "task-specific artifact/checkpoint",
+      "new_database_required": false
+    },
+    "verifier": {
+      "primary": "deterministic acceptance + raw evidence/hash + JARVIS final audit",
+      "executor_self_check_authoritative": false
+    },
+    "non_openai_backup": {
+      "layer1_model_outage": "Reasonix/DeepSeek or DeepSeek provider route",
+      "layer2_openai_product_outage": "local relay/n8n -> Reasonix/DeepSeek -> artifact -> deterministic verifier",
+      "layer3_restart_machine_failure": "reuse restart/resume and backup assets; JARVIS contract not yet certified"
+    }
+  },
+  "external_reference_candidates": {
+    "openai_dots": "REFERENCE_ONLY",
+    "meta_muse": "BACKUP_CANDIDATE_REFERENCE_ONLY",
+    "codex_windows_computer_use": "LOCAL_WINDOWS_CANDIDATE"
+  },
+  "minimum_gaps": [
+    "candidate task/result/state/verifier interface contracts",
+    "current environment binding for selected local assets",
+    "complete non-OpenAI product-outage backup loop",
+    "minimal JARVIS recovery contract"
+  ],
+  "research_sufficient_for_candidate_map": true,
+  "next_step": "STATE10_CANDIDATE_CONTRACT_DRAFT"
+}
