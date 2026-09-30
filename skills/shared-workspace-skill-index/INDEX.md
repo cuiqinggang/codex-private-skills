@@ -1,6 +1,6 @@
 # 共同工作区资产索引
 
-更新时间：2026-09-29  
+更新时间：2026-10-01  
 仓库：`cuiqinggang/codex-private-skills`  
 默认分支：`main`
 
@@ -14,7 +14,7 @@
 
 ## main 当前技能目录快照
 
-2026-09-29 实际枚举：**55 个目录**。
+以下枚举是 **2026-09-29 的历史快照**，不作为当前完整目录清单；实时仓库目录高于此快照。
 
 1. `ChatGPT官网规划桥接_让Codex读取GPT方案并执行_快照_20260504_225352`
 2. `ChatGPT官网规划桥接_让Codex读取GPT方案并执行_最新`
@@ -74,12 +74,17 @@
 
 ## main 当前工作区快照
 
+2026-09-29 历史快照：
 1. `workspaces/absolute-time-fireworks-optimization/`
 2. `workspaces/visual-art-engine-performance-ladder/`
 
+实时仓库中还应按任务继续查看 `workspaces/`，不能依赖上面旧枚举。
+
 ## 当前重点已验证入口
 
-- 整体闭环极限短时间引擎 v5.6：`skills/first-principles-physical-limit-convergence-v5.6/SKILL.md`
+- **JARVIS 长期超级助手核心方法 v0.1.0**：`skills/jarvis-long-term-super-assistant-core/SKILL.md`
+- **JARVIS v1 工作区**：`workspaces/jarvis-v1/README.md`
+- 整体闭环极限短时间引擎：按 CURRENT / 最新冻结入口读取，不只按目录名判断版本。
 - JEV Probability Engine P0：`skills/jev-probability-engine-p0/SKILL.md`
 - Visual Art Engine Performance Ladder：`skills/visual-art-engine-performance-ladder/SKILL.md`
 - 一人公司成功路线：`skills/one-person-ai-company-success-routes/`
@@ -102,4 +107,4 @@
 每次新增正式技能或长期工作区时：
 - 新资产写入本仓库；
 - 必要时更新本索引的“重点入口”，但不要求手工维护所有历史分支；
-- 其他智能体应以实时仓库目录/搜索结果为准，本文件的枚举只是 2026-09-29 快照。
+- 其他智能体应以实时仓库目录/搜索结果为准，历史枚举只是快照。
