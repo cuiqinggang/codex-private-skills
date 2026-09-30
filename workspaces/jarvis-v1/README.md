@@ -4,6 +4,24 @@
 > 母方法：整体闭环极限短时间引擎 v5.6.5。  
 > 核心目标：T* = min(T_VALID)。
 
+## 核心方法技能
+
+JARVIS 当前设计方法已单独建立长期技能包：
+
+- `skills/jarvis-long-term-super-assistant-core/SKILL.md`
+- `skills/jarvis-long-term-super-assistant-core/CURRENT_PROFILE.md`
+- `skills/jarvis-long-term-super-assistant-core/ACCEPTANCE.md`
+
+当前定义：
+
+```text
+JARVIS = MEMORY
+       + RELIABLE_AUTOMATION
+       + EXTREME_TIME_CONVERGENCE
+```
+
+JARVIS 不再定义为新的 Codex / Manus 类通用执行器。执行器属于可替换能力池；JARVIS 负责长期记忆、可靠自动化、第一性原理简化、v5.6.5 选路、纠偏和经验回流。
+
 ## 用途
 
 本目录统一保存：
@@ -27,7 +45,7 @@
 - `evidence/MANUS_2_CAPABILITY_REALITY_MATRIX.json`
 - `evidence/MANUS_2_DEEP_BENCHMARK_R8_R10.md`
 
-R1-R10 已形成足够角色级现实证据。当前停止新增 Manus 深测；未验证边界只在最终架构实际依赖时补测。
+R1-R10 已形成足够角色级现实证据。当前停止新增 Manus 深测；Manus 在当前 JARVIS 中默认仅作能力证据参考，不作为付费运行资源。
 
 ## 状态机
 
@@ -38,7 +56,9 @@ R1-R10 已形成足够角色级现实证据。当前停止新增 Manus 深测；
 
 ## 当前下一步
 
-不做 R11。  
-进入 **JARVIS 完整候选构造、最小职责分配和缺口清单**，然后在 STATE=10 内完成系统级虚拟成熟。
+不做 R11，不再把四列法放回当前 JARVIS 方法体系，也不再设计新的通用执行器。
+
+进入：
+**最小长期记忆现实形态 → 可靠自动化持久续接 → v5.6.5 能力池选路 → 真实单任务 Reality → 经验回流。**
 
 详细接续见 `SUMMARY.md`。
