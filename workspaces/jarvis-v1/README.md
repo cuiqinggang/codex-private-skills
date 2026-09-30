@@ -10,16 +10,24 @@
 - 成熟方案能力判断；
 - Reality Benchmark 证据；
 - 限制、失败与未验证边界；
-- Manus / Codex / JEV / n8n / 其他Agent的横向能力比较；
+- Manus / Codex / JEV / n8n / 其他Agent横向比较；
 - JARVIS候选构造与接续状态。
 
-## Manus 2.0 当前证据
+## Manus 2.0 统一入口
 
+以后优先读取：
+
+- `evidence/MANUS_2_EVIDENCE_MASTER_R1_R10.md`
+- `evidence/MANUS_2_EVIDENCE_MASTER_R1_R10.json`
+
+这两份已经把原 R1-R7 能力矩阵与 R8-R10 深测合并。
+
+来源证据仍保留：
 - `evidence/MANUS_2_CAPABILITY_REALITY_MATRIX.md`
 - `evidence/MANUS_2_CAPABILITY_REALITY_MATRIX.json`
 - `evidence/MANUS_2_DEEP_BENCHMARK_R8_R10.md`
 
-R1-R10 已形成足够的角色级现实证据。R8/R9/R10 已结束，当前停止新增 Manus 深测；未验证边界仅在最终架构实际依赖时补测。
+R1-R10 已形成足够角色级现实证据。当前停止新增 Manus 深测；未验证边界只在最终架构实际依赖时补测。
 
 ## 状态机
 
