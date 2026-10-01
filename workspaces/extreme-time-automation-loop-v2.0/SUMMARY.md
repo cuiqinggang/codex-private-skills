@@ -16,29 +16,43 @@ OBJECTIVE=T*=min(T_VALID)
 MATURE_SOLUTION_EXISTS=TRUE
 NO_NEW_IMPLEMENTATION_ESCAPE=TRUE
 CHANGE_SCOPE=ROOT_CAUSE_SCOPE
+
+REALITY_CONTRACT=WORKING_BASELINE_R1
+SOLUTION_COMPETITION=R1_COMPLETE
+REALITY_FINALISTS=ChatGPT Work;Manus 2.0
+WINNER=NOT_YET_CERTIFIED
 ```
 
-## v2.0 核心
+## 当前已推进
 
-1. 世界成熟解不是优先候选，而是当前任务域的固定前提。
-2. 不再保留“成熟方案不够时新增实现/自研”这一出口。
-3. 搜索失败意味着 Reality 定义、问题映射、搜索范围或成熟组合尚未收敛。
-4. 候选空间仅包括：完整成熟方案、成熟配置、成熟接口、成熟组件最小组合。
-5. 采用成熟方案后继续攻击仍有明确完整 T_VALID 收益的瓶颈。
-6. 局部优化只有降低完整端到端 T_VALID 才成立。
-7. 连续结构性故障不继续打补丁，回到成熟方案映射与竞争。
-8. 状态机、时间头、GPT/Codex/n8n/GitHub 等仍只是实现候选。
+1. Reality Contract 已从空模板变成可测试工作基线 R1。
+2. 已将“人肉胶水”具体化：复制/转发、换页恢复、提醒继续、普通错误纠偏、普通机器事实验收、状态保存与跨设备续接。
+3. 已完成第一轮成熟端到端方案官方能力核验。
+4. 完整整解 Reality 候选收敛为：
+   - ChatGPT Work
+   - Manus 2.0
+5. Microsoft Copilot Studio、Zapier、n8n 暂降为成熟基础设施/组件，不作为第一轮主路径。
+6. Manus R1-R10 历史 Reality 证据已并入判断，不再重复做无价值深测。
 
-## 当前下一步
+## 当前关键发现
+
+- ChatGPT Work 已具备 Projects、Plugins、Cloud Browser、Desktop Local Work、Scheduled / Event-triggered Tasks 与跨设备 Cloud Work 连续性。
+- Manus 2.0 当前具备 Cascade、Studio、Cloud Computer、Computer Use / Remote Control、Automations。
+- 两者都已具备“成熟完整产品”形态；下一步继续做功能表的收益很低。
+- 真正未决问题已经变成：同一个真实任务下，谁能用更少人工介入、更可靠恢复和更短完整 T_VALID 到达 FINAL_VALID。
+
+## 下一步唯一主线
 
 ```text
-Reality Contract
-→ 标准问题映射
-→ 成熟端到端方案搜索
-→ 完整方案竞争
-→ Reality
-→ FINAL_VALID
-→ 有收益则继续攻击 T_VALID 瓶颈
+同一个真实 Smoke Task
+→ ChatGPT Work Reality
+→ Manus 2.0 Reality
+→ 比较 T_VALID / 人工介入 / 恢复 / 自动验收
+→ 选当前成熟主路径
+→ 继续攻击仍有收益的 T_VALID 瓶颈
 ```
 
-当前不要继续设计新的架构。
+项目仍为 STATE=10；只有完整候选达到 Virtual Mature 才考虑后续状态变化。
+
+详细合同：`REALITY_CONTRACT.md`  
+第一轮竞争：`MATURE_SOLUTION_COMPETITION_R1.md`
