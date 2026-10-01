@@ -1,48 +1,37 @@
-# Manus 2.0 Benchmark Reality｜极限短时间自动化闭环 v2.0
+# Manus 2.0 Benchmark Reality｜Benchmark Case 001
 
 ```ini
 TASK_ID=ETAL-v2.0-BENCHMARK-MANUS-001
+CASE_ID=ETAL-v2.0-CASE-001
 ROLE=PAID_REFERENCE_ONLY
 PRODUCTION_CANDIDATE=NO
 USE_EXISTING_CREDITS_ONLY=YES
-OBJECTIVE=MEASURE_T_REF_MANUS
+OBJECTIVE=MEASURE_T_REF_MANUS_CASE_001
 ```
 
-## 目的
+## 测试题
 
-用现有 Manus 积分测出一个成熟商业整解的现实端到端参考：
+执行与 GPT 路径完全相同的 `BENCHMARK_CASE_001_DOUYIN.md`。
 
-```text
-T_REF_MANUS
-```
+用户只给一次目标和同一冻结样本。
 
-Manus 只作为 Benchmark，不进入正式生产主链。
+Manus 自行：
+- 理解目标；
+- 选择成熟路径；
+- 执行；
+- 普通失败恢复；
+- 机器验收。
 
-## 同一真实任务
-
-> 从共同私库恢复“极限短时间自动化闭环 v2.0”的当前状态，读取当前 R3 GPT CORE Reality Contract，核验当前官方事实，形成 Reality 结果，写回 GitHub main，并远端回读验证。
-
-## 必须读取
-
-- `00_START_HERE/COMMON-ENTRY.md`
-- `skills/extreme-time-agent-constitution/SKILL.md`
-- `workspaces/extreme-time-automation-loop-v2.0/README.md`
-- `workspaces/extreme-time-automation-loop-v2.0/REALITY_CONTRACT.md`
-- `workspaces/extreme-time-automation-loop-v2.0/MATURE_SOLUTION_COMPETITION_R3_GPT_CORE.md`
+不得要求用户搬运中间消息。
 
 ## 输出
 
-写入：
-
-`workspaces/extreme-time-automation-loop-v2.0/reality/MANUS-BENCHMARK-001.md`
-
-至少记录：
-
 ```ini
-TASK_ID=ETAL-v2.0-BENCHMARK-MANUS-001
+PATH=B1_MANUS_2
+CASE_ID=ETAL-v2.0-CASE-001
 FLOW_START=
 FLOW_END=
-T_REF_MANUS=
+T_REF_MANUS_CASE_001=
 RESULT=PASS|FAIL
 USER_INTERVENTIONS=
 RECOVERY_EVENTS=
@@ -52,9 +41,6 @@ CREDITS_CONSUMED=
 
 ## FINAL_VALID
 
-- 目标文件真实存在于 GitHub main；
-- 写后必须重新从远端读取；
-- 不允许用户搬运中间信息；
-- 普通失败由 Manus 自己恢复；
-- 所有人工介入、失败、等待和 credits 如实记录；
-- 不以 Manus 自报 Done 代替现实验证。
+完全服从 `BENCHMARK_CASE_001_DOUYIN.md`。
+
+即使 Manus 获得当前最短 T_VALID，也只更新 Reality reference，不自动进入生产主链。
