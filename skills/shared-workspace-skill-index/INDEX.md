@@ -82,8 +82,11 @@
 
 ## 当前重点已验证入口
 
-- **JARVIS 长期超级助手核心方法 v0.1.0**：`skills/jarvis-long-term-super-assistant-core/SKILL.md`
-- **JARVIS v1 工作区**：`workspaces/jarvis-v1/README.md`
+- **极限短时间智能体宪法 v0.2（FROZEN）**：`skills/extreme-time-agent-constitution/SKILL.md`
+- **极限短时间自动化闭环 v1.2（CURRENT）**：`workspaces/extreme-time-automation-loop-v1.2/README.md`
+- **v1.2 Reality Contract（DRAFT）**：`workspaces/extreme-time-automation-loop-v1.2/REALITY_CONTRACT.md`
+- **JARVIS v1 历史工作区（SUPERSEDED）**：`workspaces/jarvis-v1/README.md`
+- **JARVIS 长期超级助手核心方法 v0.1.0（HISTORICAL）**：`skills/jarvis-long-term-super-assistant-core/SKILL.md`
 - 整体闭环极限短时间引擎：按 CURRENT / 最新冻结入口读取，不只按目录名判断版本。
 - JEV Probability Engine P0：`skills/jev-probability-engine-p0/SKILL.md`
 - Visual Art Engine Performance Ladder：`skills/visual-art-engine-performance-ladder/SKILL.md`
