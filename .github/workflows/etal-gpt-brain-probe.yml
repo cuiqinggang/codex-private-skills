@@ -24,11 +24,22 @@ jobs:
       - name: Install GitHub Copilot CLI
         run: npm install -g @github/copilot@latest
 
-      - name: Invoke GPT-5.6 Sol without tools
+      - name: Probe non-Codex GPT models without tools
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          copilot -p 'Do not use any tools. Return exactly this text and nothing else: ETAL_GPT_PROBE_PASS'             -s             --model gpt-5.6-sol             --disable-builtin-mcps             --excluded-tools='web_fetch,web_search,bash,edit,grep,glob,write,read,url,memory'             > response.txt
-          cat response.txt
-          test "$(tr -d '\r\n' < response.txt)" = "ETAL_GPT_PROBE_PASS"
+          for model in gpt-5.5 gpt-5.4 gpt-5-mini; do
+            echo "TRY_MODEL=$model"
+            if copilot -p 'Do not use any tools. Return exactly this text and nothing else: ETAL_GPT_PROBE_PASS' -s --model "$model" --disable-builtin-mcps --excluded-tools='web_fetch,web_search,bash,edit,grep,glob,write,read,url,memory' > response.txt 2>error.txt; then
+              cat response.txt
+              if [ "$(tr -d '\r\n' < response.txt)" = "ETAL_GPT_PROBE_PASS" ]; then
+                echo "SELECTED_MODEL=$model"
+                exit 0
+              fi
+            else
+              cat error.txt
+            fi
+          done
+          echo "NO_ALLOWED_NON_CODEX_GPT_MODEL"
+          exit 1
