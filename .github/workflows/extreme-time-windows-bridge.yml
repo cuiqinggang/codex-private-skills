@@ -29,6 +29,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
+          sparse-checkout: |
+            .github/workflows/extreme-time-windows-bridge.yml
+            workspaces/extreme-time-automation-loop-v2.0/bridge
+            skills/extreme-time-automation-bridge
 
       - name: Parse bridge PowerShell
         shell: pwsh
@@ -108,14 +112,19 @@ jobs:
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: etal
+          sparse-checkout: |
+            workspaces/extreme-time-automation-loop-v2.0/bridge
+          sparse-checkout-cone-mode: true
 
       - name: Execute task through decisionless bridge
         shell: pwsh
         env:
           RESULT_DIR: ${{ runner.temp }}\\etal-bridge-result
-          TASK_FILE: ${{ needs.contract-static.outputs.task_file }}
+          TASK_FILE: etal\${{ needs.contract-static.outputs.task_file }}
         run: |
-          & 'workspaces/extreme-time-automation-loop-v2.0/bridge/runner/Invoke-BridgeTask.ps1' -TaskFile $env:TASK_FILE -ResultDir $env:RESULT_DIR
+          & 'etal\workspaces\extreme-time-automation-loop-v2.0\bridge\runner\Invoke-BridgeTask.ps1' -TaskFile $env:TASK_FILE -ResultDir $env:RESULT_DIR
 
       - name: Upload machine evidence
         if: always()
