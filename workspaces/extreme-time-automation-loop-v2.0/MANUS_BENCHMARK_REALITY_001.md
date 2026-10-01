@@ -10,19 +10,17 @@ OBJECTIVE=MEASURE_T_REF_MANUS
 
 ## 目的
 
-用一个成熟付费整解得到现实端到端参考时间：
+用现有 Manus 积分测出一个成熟商业整解的现实端到端参考：
 
 ```text
 T_REF_MANUS
 ```
 
-它不是最终采用候选，不改变 FREE-FIRST 生产边界。
+Manus 只作为 Benchmark，不进入正式生产主链。
 
-## 任务
+## 同一真实任务
 
-执行与免费候选相同的真实工作：
-
-> 从共同私库恢复 v2.0 当前状态，读取 FREE-FIRST Reality Contract 与 R2 竞争文件，核验当前官方事实，形成一份 Reality 结果，写回 GitHub main，并远端回读验证。
+> 从共同私库恢复“极限短时间自动化闭环 v2.0”的当前状态，读取当前 R3 GPT CORE Reality Contract，核验当前官方事实，形成 Reality 结果，写回 GitHub main，并远端回读验证。
 
 ## 必须读取
 
@@ -30,7 +28,7 @@ T_REF_MANUS
 - `skills/extreme-time-agent-constitution/SKILL.md`
 - `workspaces/extreme-time-automation-loop-v2.0/README.md`
 - `workspaces/extreme-time-automation-loop-v2.0/REALITY_CONTRACT.md`
-- `workspaces/extreme-time-automation-loop-v2.0/MATURE_SOLUTION_COMPETITION_R2_FREE_FIRST.md`
+- `workspaces/extreme-time-automation-loop-v2.0/MATURE_SOLUTION_COMPETITION_R3_GPT_CORE.md`
 
 ## 输出
 
