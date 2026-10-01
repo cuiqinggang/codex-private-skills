@@ -3,149 +3,119 @@
 ```ini
 PROJECT=极限短时间自动化闭环
 VERSION=v2.0
+PAGE_NAME=极限短时间自动化闭环 v2.0
 STATE=10
-PHASE=GPT_CORE_REALITY_COMPETITION
+PHASE=STANDARD_REALITY_BENCHMARK_COMPETITION
 VIRTUAL_MATURE=NO
 PROJECT_FREEZE=NO
 FINAL_VALID=NO
 
 CONSTITUTION_VERSION=v0.3
 CONSTITUTION_FREEZE_ID=ETAC-v0.3-FREEZE-R1
-
 OBJECTIVE=T*=min(T_VALID)
-MATURE_SOLUTION_EXISTS=TRUE
-NO_NEW_IMPLEMENTATION_ESCAPE=TRUE
-CHANGE_SCOPE=ROOT_CAUSE_SCOPE
 
 CORE_BRAIN=GPT
-CORE_BRAIN_FIXED=YES
-EXISTING_PAID_CAPACITY_ALLOWED=YES
-NEW_INCREMENTAL_PAID_DEPENDENCY=FORBIDDEN_BY_DEFAULT
-
-CODEX_ROLE=MATURE_TECHNICAL_EXECUTOR_CANDIDATE
-CODEX_FIXED=NO
-
-MANUS_2_ROLE=BENCHMARK_ONLY
+CODEX=MEASURED_EXECUTOR_CANDIDATE
+MANUS_2=BENCHMARK_ONLY
 BACKUP_PATH_REQUIRED=YES
 ```
 
 ## 1. 项目目标
 
-把用户过去亲自承担的复制、转发、提醒、换页、恢复上下文、普通故障纠偏、跨工具接力等“人肉胶水”尽量自动消除。
+建立一组真实、可重复的**极限短时间自动化 Benchmark Cases**。
 
-唯一目标：
+每个 Case 都来自已经完成的成熟真实任务。
+
+不同成熟路径跑同一题，真实测得 T_VALID，然后：
+
+```text
+比较
+→ 分析
+→ 删除
+→ 组合
+→ Virtual Mature
+→ Reality
+→ 持续攻击当前最短有效时间
+```
+
+唯一目标始终是：
 
 ```text
 T* = min(T_VALID)
 ```
 
-## 2. v2.0 当前正式结构
+## 2. 固定核心与可替换部分
 
-### 固定核心
-GPT 是当前正式超级大脑，负责：
-- 理解现实目标；
-- Reality Contract；
-- 成熟方案检索与组合；
-- 决策、纠偏与恢复；
-- FINAL_VALID；
-- 整体 T_VALID 收敛。
+GPT 是当前固定超级大脑。
 
-### 原生主链候选
-优先测试 ChatGPT Work：
+Codex、Browser、GitHub、n8n、OpenClaw、API、MCP、CLI 等都是可竞争成熟能力：
+- 有完整 T_VALID 收益则保留；
+- 无收益则删除；
+- 不因为历史使用习惯保护任何执行器。
 
-```text
-用户目标
-→ GPT / ChatGPT Work
-→ 原生工具 / connected apps / browser / files
-→ FINAL_VALID
-```
+Manus 2.0 只用现有积分做成熟商业 Benchmark，不进入正式主链。
 
-若 Work 单独已 VALID，不额外加入执行层。
+## 3. 当前标准题
 
-### 技术执行候选
-Codex 是强成熟技术执行器，但不是固定核心：
+### Case 001
+**抖音极速直下 Windows v1.0.0**
 
-```text
-Work 单独存在明确技术缺口
-或
-加入 Codex 能降低完整 T_VALID
-→ 才加入 Codex
-```
+适度复杂、用户级 E2E，覆盖 Browser / Windows / fallback / 文件 / 媒体验收。
 
-### 其他成熟能力
-JEV-native / Playwright、GitHub、n8n、OpenClaw、API、MCP、CLI 等只按现实缺口加入。
+详见：
+- `BENCHMARK_SUITE_R1.md`
+- `BENCHMARK_CASE_001_DOUYIN.md`
 
-## 3. 成本原则
+### Calibration Anchor 000
+**JEV Probability Engine P0 v0.4.0**
 
-本项目不是 FREE-FIRST。
+已认证：
+`T_REAL_STAR_MS=560.9819`，30/30 PASS。
 
-正确原则：
+它只用于短时计时和攻击方法校准，不替代 Case 001。
+
+## 4. 第一轮 Reality
 
 ```text
-已经付费拥有的能力 → 充分使用
-新增持续付费依赖 → 默认不加
+C0 Direct Mature
+→ P1 GPT / Work
+→ P2 GPT / Work + Codex
+→ B1 Manus 2.0
 ```
 
-未来若出现明确商业 ROI，用户可重新打开新增付费能力竞争。
+同一轮必须同 Case、同样本、同 FINAL_VALID。
 
-## 4. Manus 2.0
+## 5. 两类时间不能混淆
 
-Manus 2.0 只用现有积分做成熟商业整解 Benchmark：
+### 物理执行参考
+`T_DIRECT_MATURE_REF_CASE_001`
 
-```ini
-PRODUCTION=NO
-BENCHMARK=YES
-REFERENCE=T_REF_MANUS
-```
+成熟最终方案直接执行的现实参考。
 
-即使 Manus 更快，也不自动进入未来正式主链。
+### 智能路径完整时间
+`T_VALID_*`
 
-## 5. 独立备份
+从智能系统可开始推进到 FINAL_VALID 的完整现实时间。
 
-最终正式方案必须有 Backup。
+真正路径竞争只比较同边界的 T_VALID。
 
-Backup：
-- 不要求 GPT 与 Codex 同时正常；
-- 平时不与主链并行消耗资源；
-- 主链异常时提供最低可用恢复能力；
-- 只由成熟现成能力组成。
-
-Backup 在主链结构明确后再单独 Reality 竞争。
-
-## 6. v2.0 不再做什么
-
-- 不重新开发新的 orchestrator；
-- 不把状态机 / 三行头 / 四字段视为不可替代；
-- 不保护 Codex；
-- 不因某组件免费就优先；
-- 不因某组件收费就排除已经拥有的能力；
-- 不因为 Manus 是成熟商业产品就把它加入生产。
-
-## 7. 当前 Reality 顺序
+## 6. 当前现实极限
 
 ```text
-A1. GPT / ChatGPT Work 原生路径
-    → T_VALID_WORK
-
-A2. 只有需要时：GPT / Work + Codex
-    → T_VALID_WORK_CODEX
-
-B. Manus 2.0 同任务 Benchmark
-   → T_REF_MANUS
-
-C. 主链稳定后：
-   独立 Backup Reality
-   → T_VALID_BACKUP
+T_REAL_PHYSICAL_STAR_CASE
+= 同一 Case 当前所有已测 VALID 路径中的最短 T_VALID
 ```
 
-## 8. 当前状态
+新的成熟路径只要 Reality 更短，就更新当前 Reality Star。
 
-仍为：
+## 7. 下一步
 
-```ini
-STATE=10
-VIRTUAL_MATURE=NO
-PROJECT_FREEZE=NO
-```
+先跑 Case 001 的 C0，重新测最终完成版成熟方案。
 
-当前不是继续设计架构，而是进入 Reality。
+旧 Reality 02/03 时间因后续音频 / 播放 VALID 曾重新打开，只保留历史，不作为当前最终基线。
+
+得到 C0 后依次跑 P1 / P2 / B1。
+
+第一轮结束后再进入 Virtual Mature 攻击。
+
+当前仍为 STATE=10。
