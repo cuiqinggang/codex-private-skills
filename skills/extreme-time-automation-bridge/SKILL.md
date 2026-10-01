@@ -10,10 +10,17 @@ description: 极限短时间自动化闭环的无决策权执行桥。GPT负责�
 STATUS=PARTIAL_REALITY
 VERSION=0.1.3
 REALITY_CERTIFIED=NO
+
 STATIC_GATE=PASS
 STATIC_VALIDATION_RUN_ID=36900593142
-WINDOWS_REALITY=QUEUED_WAITING_SELF_HOSTED_RUNNER
-REALITY_RUN_ID=36899361139
+
+WINDOWS_REALITY=PASS
+WINDOWS_SMOKE_TASK=ETAL-BRIDGE-SMOKE-001
+WINDOWS_SMOKE_RUN_ID=36899361139
+WINDOWS_SMOKE_ARTIFACT_ID=11186888753
+WINDOWS_RUNNER_MODE=TEMPORARY_NON_PERSISTENT
+PERSISTENCE_CONFIGURED=NO
+CALLBACK_TESTED=NO
 
 CORE_BRAIN=GPT
 BRIDGE_DECISION_POWER=NONE
@@ -25,28 +32,40 @@ MIN_TASK_ENTRY=workspaces/extreme-time-automation-loop-v2.0/bridge/tasks/<TASK_I
 
 ## 当前现实
 
-首个任务 ETAL-BRIDGE-SMOKE-001 已真实触发工作流：
-- PowerShell解析 PASS；
-- 任务合同 PASS；
-- Windows Reality job 已 queued；
-- 当前物理阻塞是目标 Windows 尚无在线 self-hosted runner。
+Windows Reality 执行层已经真实 PASS。
 
-v0.1.2 暴露过一个调度级阻塞：workflow 级 concurrency 会让一个等待 self-hosted runner 的旧任务占住整个工作流组，导致后续静态验证长期 pending。
+Run `36899361139`：
+- `contract-static=success`
+- `windows-reality=success`
+- Runner：`DESKTOP-4A1EGTM-etal`
+- Labels：`self-hosted, Windows, X64`
+- `ETAL-BRIDGE-SMOKE-001` 真执行
+- artifact：`etal-bridge-ETAL-BRIDGE-SMOKE-001-36899361139`
+- artifact ID：`11186888753`
+- `result.json.status=PASS`
+- `exit_code=0`
+- `duration_ms=9316.85`
+- `stderr.txt` 为空
 
-v0.1.3 已在 Run 36900593142 Reality 验证：
-- contract-static = success；
-- Parse bridge PowerShell = success；
-- Validate task contracts = success；
-- Discover executable task = success；
-- windows-reality = skipped（本次无 task JSON 变化，符合预期）。
+本轮使用临时非持久化 runner；任务完成后 runner 已停止。
 
-## v0.1.3 修正
+## 为什么整体仍是 PARTIAL
 
-- 删除 workflow 顶层 concurrency。
-- 并发串行门仅放在 `windows-reality` job，组名 `extreme-time-windows-reality`。
-- 静态合同门禁不再被离线 Windows runner 阻塞。
-- 只有 tasks/*.json 真正变化或显式 workflow_dispatch 指定任务时，才进入 Windows Reality。
-- 旧 `ETAL-BRIDGE-SMOKE-001` 保持原 queued Reality，不因该修正重发。
+尚未 Reality 验证：
+1. Windows runner 长期常驻；
+2. `ETAL_BRIDGE_CALLBACK_URL`；
+3. Windows结果回来后自动唤醒 GPT；
+4. GPT 自动生成下一任务并再次进入 Windows Reality。
+
+因此：
+`WINDOWS_REALITY=PASS`，但 `REALITY_CERTIFIED=NO`。
+
+## v0.1.3 已验证修正
+
+- workflow 顶层 concurrency 已删除；
+- 并发串行门仅位于 `windows-reality` job；
+- 静态合同门禁不再被离线 Windows runner 阻塞；
+- 只有 tasks/*.json 变化或显式 workflow_dispatch 指定任务时才进入 Windows Reality。
 
 ## 最小入口
 
@@ -54,21 +73,14 @@ v0.1.3 已在 Run 36900593142 Reality 验证：
 workspaces/extreme-time-automation-loop-v2.0/bridge/tasks/<TASK_ID>.json
 ```
 
-任务 JSON 只引用同一 Git 提交中的 payload。桥不做方案判断。
-
 ## 安全与权限
 
 - 不修改 FlClash / Windows 网络代理。
 - 不执行 Windows 系统破坏性动作。
 - payload 只能来自固定 payload 目录。
-- 建议普通交互用户上下文运行，以保留桌面/用户配置能力。
-
-## 一次性接入
-
-`bootstrap/Install-GitHubSelfHostedRunner.ps1`
-会使用 GitHub 官方 Actions Runner；优先复用参数/环境变量中的注册 token，否则尝试已登录 GitHub CLI 自动申请短时 token。
+- Reality 失败必须原样记录。
 
 ## 计时
 
-桥的首次建设单列 T_PLATFORM_BOOTSTRAP。
-标准题001只有在桥 Reality PASS 后才正式起表。
+首次桥建设单列 `T_PLATFORM_BOOTSTRAP`。
+标准题001仍未正式起表。
