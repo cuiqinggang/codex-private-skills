@@ -1,56 +1,78 @@
 ---
 name: extreme-time-automation-bridge
-version: "0.1.0"
-description: 极限短时间自动化闭环的无决策权执行桥。GPT负责判断，执行桥只负责领取、执行、记录和回传；正式任务运行期间用户人工介入必须为0。
+version: "0.1.1"
+description: 极限短时间自动化闭环的无决策权执行桥。GPT负责判断，桥只负责领取、执行、记录、回传；正式任务运行期间用户人工介入必须为0。
 ---
 
-# 极限短时间自动化执行桥 v0.1.0
+# 极限短时间自动化执行桥 v0.1.1
 
 ```ini
-STATUS=REALITY_CANDIDATE
-VERSION=0.1.0
+STATUS=PARTIAL_REALITY
+VERSION=0.1.1
 REALITY_CERTIFIED=NO
-USER_INTERVENTION_DURING_TASK=0
+STATIC_GATE=PASS
+WINDOWS_REALITY=QUEUED_WAITING_SELF_HOSTED_RUNNER
+REALITY_RUN_ID=36899361139
+
 CORE_BRAIN=GPT
 BRIDGE_DECISION_POWER=NONE
+USER_INTERVENTION_DURING_TASK=0
+
 TRANSPORT=GitHub
 WINDOWS_EXECUTOR=GitHub_SELF_HOSTED_RUNNER
+MIN_TASK_ENTRY=workspaces/extreme-time-automation-loop-v2.0/bridge/tasks/<TASK_ID>.json
 ```
 
-## 目标
+## 已经实际完成
 
-把“GPT → 人工中继 → Windows”替换为：
+1. GitHub任务入口已建立。
+2. GitHub Actions工作流已由真实提交触发。
+3. PowerShell解析门禁已真实 PASS。
+4. 任务JSON合同门禁已真实 PASS。
+5. Windows Reality job 已进入 queued。
+6. 首个 Reality 冒烟任务：ETAL-BRIDGE-SMOKE-001。
+
+## 当前唯一现实缺口
+
+尚无在线 Windows self-hosted runner 领取 Reality job，因此不得宣布执行桥 Reality PASS。
+
+当前不是“方案未知”，而是：
+
+```text
+仓库侧任务总线 PASS
+→ 等待一次性接入 Windows runner
+→ 自动领取已经排队的冒烟任务
+→ 产出机器证据
+```
+
+## 架构
 
 ```text
 GPT
-→ GitHub任务入口
-→ Windows自托管运行器
-→ Reality执行
-→ 机器结果/证据
-→ 自动回传
+→ GitHub任务JSON
+→ GitHub Actions
+→ Windows self-hosted runner
+→ 受版本控制payload
+→ result/stdout/stderr/artifact
+→ 可选回调
 ```
 
-执行桥不是第二个智能体，不负责选方案、修改目标、判断根因或宣布最终完成。
+执行桥没有方案决策权；失败必须原样回传。
 
-## 最小任务入口
+## 安全与权限边界
 
-```text
-workspaces/extreme-time-automation-loop-v2.0/bridge/tasks/<TASK_ID>.json
-```
+- 不修改 FlClash / Windows 网络代理。
+- 不执行 Windows 系统破坏性动作。
+- payload 只允许来自固定 bridge/payloads 目录。
+- 执行器带基础 fail-closed 字符串门禁。
+- 推荐 runner 在专用普通用户上下文运行；需要桌面/剪贴板时优先交互用户会话，不默认使用 session 0 服务。
 
-向 main 写入一个新的任务文件，就是一次机器派发事件。GitHub 工作流监听该目录，不需要额外“派发 API”。
+## 计时
 
-## 有效性硬规则
+首次桥建设单独记录为 T_PLATFORM_BOOTSTRAP。
+Case 001 只有在桥 Reality PASS 后才正式起表；这样不会把“临时修基础设施”伪装成标准题路径时间，也不会把其成本丢掉。
 
-1. 正式任务从启动后到 FINAL_VALID，用户人工中继次数必须为0。
-2. Windows执行器只能执行任务中明确引用的 payload，不自行改任务。
-3. 网络代理与 FlClash 不得修改。
-4. 不得进行 Windows 系统破坏性操作。
-5. 结果必须机器记录；失败原样回传，不得伪装成功。
-6. GPT 仍是路径A唯一决策大脑。
-7. 本桥属于实现层，不修改“极限短时间智能体宪法 v0.3”。
+## 当前下一步
 
-## 现实状态
-
-v0.1.0 已实现仓库侧协议、任务入口、Windows执行器脚本、GitHub Actions 工作流和最小冒烟任务。
-只有自托管 Windows runner 实际领取并通过冒烟任务后，才能把 REALITY_CERTIFIED 改为 YES。
+执行 `bootstrap/Install-GitHubSelfHostedRunner.ps1` 在目标 Windows 上完成一次性 runner 接入。
+脚本优先尝试复用已登录的 GitHub CLI 自动获取短时注册令牌；否则接受显式 RegistrationToken。
