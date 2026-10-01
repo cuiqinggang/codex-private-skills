@@ -2,7 +2,7 @@ param(
   [string]$InstallDir = 'C:\actions-runner-etal',
   [string]$RepoFullName = 'cuiqinggang/codex-private-skills',
   [string]$RepoUrl = 'https://github.com/cuiqinggang/codex-private-skills',
-  [string]$RunnerName = ($env:COMPUTERNAME + '-etal'),
+  [string]$RunnerName = ([Environment]::MachineName + '-etal'),
   [string]$ServiceAccount = 'NT AUTHORITY\NETWORK SERVICE'
 )
 

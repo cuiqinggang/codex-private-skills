@@ -1,6 +1,6 @@
 param(
   [string]$RegistrationToken = $env:GITHUB_RUNNER_REGISTRATION_TOKEN,
-  [string]$RunnerName = ($env:COMPUTERNAME + '-etal'),
+  [string]$RunnerName = ([Environment]::MachineName + '-etal'),
   [string]$InstallDir = 'C:\actions-runner-etal',
   [string]$RepoUrl = 'https://github.com/cuiqinggang/codex-private-skills',
   [switch]$Replace

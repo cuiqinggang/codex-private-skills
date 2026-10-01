@@ -106,6 +106,10 @@ jobs:
     needs: contract-static
     if: needs.contract-static.outputs.should_run == 'true'
     runs-on: [self-hosted, Windows, X64]
+    env:
+      GIT_CONFIG_COUNT: '1'
+      GIT_CONFIG_KEY_0: core.longpaths
+      GIT_CONFIG_VALUE_0: 'true'
     timeout-minutes: 1440
     concurrency:
       group: extreme-time-windows-reality

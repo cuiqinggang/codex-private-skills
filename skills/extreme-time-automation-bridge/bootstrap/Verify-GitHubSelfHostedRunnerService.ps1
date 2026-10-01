@@ -1,7 +1,7 @@
 param(
   [string]$InstallDir = 'C:\actions-runner-etal',
   [string]$RepoFullName = 'cuiqinggang/codex-private-skills',
-  [string]$RunnerName = ($env:COMPUTERNAME + '-etal')
+  [string]$RunnerName = ([Environment]::MachineName + '-etal')
 )
 
 $ErrorActionPreference='Stop'

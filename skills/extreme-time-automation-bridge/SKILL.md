@@ -1,14 +1,14 @@
 ---
 name: extreme-time-automation-bridge
-version: "0.1.3"
+version: "0.2.0"
 description: 极限短时间自动化闭环的无决策权执行桥。GPT负责判断，桥只负责领取、执行、记录、回传；正式任务运行期间用户人工介入必须为0。
 ---
 
-# 极限短时间自动化执行桥 v0.1.3
+# 极限短时间自动化执行桥 v0.2.0
 
 ```ini
 STATUS=PARTIAL_REALITY
-VERSION=0.1.3
+VERSION=0.2.0
 REALITY_CERTIFIED=NO
 
 STATIC_GATE=PASS
@@ -25,14 +25,34 @@ CALLBACK_TESTED=NO
 CORE_BRAIN=GPT
 BRIDGE_DECISION_POWER=NONE
 USER_INTERVENTION_DURING_TASK=0
-TRANSPORT=GitHub
-WINDOWS_EXECUTOR=GitHub_SELF_HOSTED_RUNNER
+DIRECT_REMOTE_FIRST=YES
+PRIMARY_TRANSPORT=Desktop_Commander_Remote
+PRIMARY_WINDOWS_EXECUTOR=Desktop_Commander_Remote
+FALLBACK_TRANSPORT=GitHub
+FALLBACK_WINDOWS_EXECUTOR=GitHub_SELF_HOSTED_RUNNER
+DIRECT_REMOTE_REALITY=PASS
+DIRECT_REMOTE_SCOPE=LOCAL_FILE_AND_PROCESS_TASKS
+PRIMARY_ROUTE_CERTIFIED=YES
+FALLBACK_PERSISTENCE=USER_LOGON_SCHEDULED_TASK
+FALLBACK_TASK_NAME=ETAL-GitHub-Actions-Runner
+FALLBACK_RUNNER=DESKTOP-4A1EGTM-etal
+FALLBACK_RUNNER_STATUS=online
+FALLBACK_LONGPATH_FIX=JOB_ENV_CORE_LONGPATHS
+FALLBACK_ROUTE_RETEST=PENDING
 MIN_TASK_ENTRY=workspaces/extreme-time-automation-loop-v2.0/bridge/tasks/<TASK_ID>.json
 ```
 
 ## 当前现实
 
-Windows Reality 执行层已经真实 PASS。
+### 主路：Desktop Commander Remote
+
+已真实验证设备发现、Downloads/文件元数据读取、本地文件写入与回读、临时文件清理、本机命令/进程执行、Git 仓库读取。满足能力覆盖时，主路直接进入 Windows，不再先经过 GitHub。
+
+完整进入条件、降级规则与健康检查见 `DUAL_ROUTE.md`。
+
+### 备路：GitHub Actions + Windows self-hosted runner
+
+Windows Reality 执行层历史 smoke 已真实 PASS；当前已恢复为用户登录计划任务常驻，runner 在线。正在用注入式 `core.longpaths=true` 修复大型仓库 Windows checkout 后做最终复验。
 
 Run `36899361139`：
 - `contract-static=success`
