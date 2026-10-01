@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "task_id": "ETAL-BRIDGE-SMOKE-001",
+  "payload_path": "workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/ETAL-BRIDGE-SMOKE-001.ps1",
+  "timeout_seconds": 120,
+  "expected_exit_code": 0
+}

@@ -1,0 +1,124 @@
+name: Extreme Time Windows Autonomous Bridge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'workspaces/extreme-time-automation-loop-v2.0/bridge/**'
+      - 'skills/extreme-time-automation-bridge/**'
+      - '.github/workflows/extreme-time-windows-bridge.yml'
+  workflow_dispatch:
+    inputs:
+      task_file:
+        description: 'Repository-relative task JSON path'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: extreme-time-windows-bridge
+  cancel-in-progress: false
+
+jobs:
+  contract-static:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Parse bridge PowerShell
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $files = Get-ChildItem 'workspaces/extreme-time-automation-loop-v2.0/bridge' -Recurse -Filter *.ps1
+          foreach ($file in $files) {
+            $tokens=$null; $errors=$null
+            [void][System.Management.Automation.Language.Parser]::ParseFile($file.FullName,[ref]$tokens,[ref]$errors)
+            if ($errors.Count) { $errors | Format-List | Out-String | Write-Error; throw "Parse failed: $($file.FullName)" }
+          }
+          Write-Host 'BRIDGE_STATIC_PARSE_PASS'
+
+      - name: Validate task contracts
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $tasks = Get-ChildItem 'workspaces/extreme-time-automation-loop-v2.0/bridge/tasks' -Filter *.json
+          foreach ($f in $tasks) {
+            $t = Get-Content $f.FullName -Raw | ConvertFrom-Json
+            if ($t.schema_version -ne 1) { throw "Bad schema: $($f.Name)" }
+            if (-not $t.task_id -or -not $t.payload_path) { throw "Missing fields: $($f.Name)" }
+            if (-not (Test-Path -LiteralPath $t.payload_path)) { throw "Missing payload: $($t.payload_path)" }
+          }
+          Write-Host 'BRIDGE_TASK_CONTRACT_PASS'
+
+  windows-reality:
+    needs: contract-static
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 1440
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Discover one task
+        id: discover
+        shell: pwsh
+        env:
+          MANUAL_TASK: ${{ inputs.task_file }}
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+        run: |
+          $ErrorActionPreference='Stop'
+          $task = $env:MANUAL_TASK
+          if ([string]::IsNullOrWhiteSpace($task)) {
+            $changed = @(git diff --name-only $env:BEFORE_SHA $env:CURRENT_SHA | Where-Object {
+              $_ -like 'workspaces/extreme-time-automation-loop-v2.0/bridge/tasks/*.json'
+            })
+            if ($changed.Count -eq 0) {
+              "should_run=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+              Write-Host 'No new task file in this push.'
+              exit 0
+            }
+            if ($changed.Count -ne 1) { throw 'Exactly one task JSON must be added/changed per dispatch commit.' }
+            $task = $changed[0]
+          }
+          if (-not (Test-Path -LiteralPath $task)) { throw "Task file not found: $task" }
+          "should_run=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "task_file=$task" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          $id = (Get-Content -LiteralPath $task -Raw | ConvertFrom-Json).task_id
+          "task_id=$id" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+
+      - name: Execute task through decisionless bridge
+        if: steps.discover.outputs.should_run == 'true'
+        shell: pwsh
+        env:
+          RESULT_DIR: ${{ runner.temp }}\etal-bridge-result
+        run: |
+          & 'workspaces/extreme-time-automation-loop-v2.0/bridge/runner/Invoke-BridgeTask.ps1'             -TaskFile '${{ steps.discover.outputs.task_file }}'             -ResultDir $env:RESULT_DIR
+
+      - name: Upload machine evidence
+        if: always() && steps.discover.outputs.should_run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: etal-bridge-${{ steps.discover.outputs.task_id }}-${{ github.run_id }}
+          path: ${{ runner.temp }}\etal-bridge-result
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Optional callback to orchestrator
+        if: always() && steps.discover.outputs.should_run == 'true'
+        shell: pwsh
+        env:
+          CALLBACK_URL: ${{ secrets.ETAL_BRIDGE_CALLBACK_URL }}
+          RESULT_FILE: ${{ runner.temp }}\etal-bridge-result\result.json
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:CALLBACK_URL)) {
+            Write-Host 'ETAL_BRIDGE_CALLBACK_URL not configured; evidence remains in Actions artifact.'
+            exit 0
+          }
+          if (-not (Test-Path -LiteralPath $env:RESULT_FILE)) { throw 'result.json missing; callback aborted.' }
+          Invoke-RestMethod -Uri $env:CALLBACK_URL -Method Post -ContentType 'application/json' -Body (Get-Content $env:RESULT_FILE -Raw)

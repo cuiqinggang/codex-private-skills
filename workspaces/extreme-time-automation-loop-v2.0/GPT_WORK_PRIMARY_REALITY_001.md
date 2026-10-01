@@ -1,58 +1,49 @@
-# GPT / ChatGPT Work Reality｜Benchmark Case 001
+# 路径A｜GPT原生全自动 Reality｜标准题001
 
 ```ini
-TASK_ID=ETAL-v2.0-GPT-WORK-001
+TASK_ID=ETAL-v2.0-GPT-A-001
 CASE_ID=ETAL-v2.0-CASE-001
-PAGE_NAME=极限短时间自动化闭环 v2.0
-ROLE=MEASURE_PRIMARY_INTELLIGENT_PATH
+PATH=A
 CORE_BRAIN=GPT
-CODEX=NOT_ASSUMED
-OBJECTIVE=MEASURE_T_VALID_WORK_CASE_001
+CODEX=NO
+MANUS=NO
+EXECUTION_BRIDGE=extreme-time-automation-bridge
+USER_INTERVENTION_DURING_TASK=0
+OBJECTIVE=MEASURE_FULL_T_VALID
 ```
 
-## 测试题
+## 唯一可见输入
 
-固定读取：
+正式起表时只读取：
+- BENCHMARK_SUITE_R2.md
+- BENCHMARK_CASE_001_FULL_LIFECYCLE_R2.md
+- 冻结后的标准题001原始需求
+- 必要现实环境与权限边界
 
-- `BENCHMARK_SUITE_R1.md`
-- `BENCHMARK_CASE_001_DOUYIN.md`
-- `REALITY_CONTRACT.md`
-- `MATURE_SOLUTION_COMPETITION_R3_GPT_CORE.md`
+不得读取历史最终实现、历史修复答案、最终冻结代码。
 
-然后执行 Case 001。
+## 路径定义
 
-用户只给一次目标和冻结样本：
+GPT负责需求理解、成熟方案检索、比较、组合、根因判断、修正/换路与最终判断。
+Windows现实操作通过“极限短时间自动化执行桥”完成。执行桥没有决策权。
 
-> 把这条抖音分享链接以完整、有声、可正常播放的视频下载到 Windows 桌面；普通路径选择、成熟方案检索、执行、失败恢复和机器验收自动完成。
+正式任务运行期间，用户不得作为 GPT↔Windows 消息总线；任何一次人工复制命令、转述结果、选择下一步或人工补验收都使本轮 PATH_VALID=NO。
 
-## 规则
+## 起表前门禁
 
-1. GPT 是核心大脑。
-2. 不预设 Codex 必须参与。
-3. 优先检索 / 复用已有成熟完成方案。
-4. 不重新开发下载器。
-5. 不修改 FlClash / Windows 网络代理。
-6. 不允许用户做人肉 GPT↔执行器消息总线。
-7. 机器可验事实必须自动验收。
-8. 全部等待 / 失败 / 恢复计入同一 T_VALID。
+先完成 ETAL-BRIDGE-SMOKE-001。
+桥未 Reality PASS 时，Case 001 不起表。
 
 ## 输出
 
 ```ini
-PATH=P1_GPT_WORK
-CASE_ID=ETAL-v2.0-CASE-001
+PATH=A_GPT_AUTONOMOUS
 FLOW_START=
 FLOW_END=
-T_VALID_WORK_CASE_001=
-RESULT=PASS|FAIL
-USER_INTERVENTIONS=
+T_VALID=
+FINAL_VALID=YES|NO
+PATH_VALID=YES|NO
+USER_INTERVENTIONS=0
 RECOVERY_EVENTS=
 FALSE_COMPLETION_EVENTS=
-CODEX_USED=YES|NO
 ```
-
-若 P1 需要 Codex 才能完成，不在这一结果里伪装成 Work-only PASS；转入 P2 单独计时。
-
-## FINAL_VALID
-
-完全服从 `BENCHMARK_CASE_001_DOUYIN.md` 的 FINAL_VALID。
