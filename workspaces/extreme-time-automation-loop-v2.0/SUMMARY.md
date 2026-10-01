@@ -17,43 +17,66 @@ MATURE_SOLUTION_EXISTS=TRUE
 NO_NEW_IMPLEMENTATION_ESCAPE=TRUE
 CHANGE_SCOPE=ROOT_CAUSE_SCOPE
 
-REALITY_CONTRACT=WORKING_BASELINE_R1
-SOLUTION_COMPETITION=R1_COMPLETE
-REALITY_FINALISTS=ChatGPT Work;Manus 2.0
-WINNER=NOT_YET_CERTIFIED
+REALITY_CONTRACT=WORKING_BASELINE_R2_FREE_FIRST
+PRODUCTION_PAID_DEPENDENCY=FORBIDDEN
+PRODUCTION_INCREMENTAL_SUBSCRIPTION_COST=0
+PAID_BENCHMARK=Manus 2.0
+PAID_BENCHMARK_ROLE=REFERENCE_ONLY
+FREE_PRODUCTION_FRONT_RUNNER=OpenClaw
+PRODUCTION_WINNER=NOT_YET_CERTIFIED
 ```
 
-## 当前已推进
+## 当前正式变化
 
-1. Reality Contract 已从空模板变成可测试工作基线 R1。
-2. 已将“人肉胶水”具体化：复制/转发、换页恢复、提醒继续、普通错误纠偏、普通机器事实验收、状态保存与跨设备续接。
-3. 已完成第一轮成熟端到端方案官方能力核验。
-4. 完整整解 Reality 候选收敛为：
-   - ChatGPT Work
-   - Manus 2.0
-5. Microsoft Copilot Studio、Zapier、n8n 暂降为成熟基础设施/组件，不作为第一轮主路径。
-6. Manus R1-R10 历史 Reality 证据已并入判断，不再重复做无价值深测。
+1. 正式生产改为 FREE-FIRST：长期主链不得依赖必须付费才能持续使用的能力。
+2. Manus 2.0 不再是生产候选，只用现有积分跑一次成熟付费 Benchmark，得到 `T_REF_MANUS`。
+3. ChatGPT Work 因属于付费能力，退出生产候选。
+4. OpenClaw 成为当前最重要免费成熟整解候选。
+5. Codex Free、现有免费模型池、既有成熟 Browser 技能、n8n Community Edition 只作为成熟免费组件按缺口加入。
+6. OpenClaw Windows Computer Use 当前官方仍属 experimental，不能直接作为成熟生产证据。
+7. 付费商业能力只有未来出现明确商业 ROI 且用户明确重开成本门时，才重新进入生产候选。
 
-## 当前关键发现
-
-- ChatGPT Work 已具备 Projects、Plugins、Cloud Browser、Desktop Local Work、Scheduled / Event-triggered Tasks 与跨设备 Cloud Work 连续性。
-- Manus 2.0 当前具备 Cascade、Studio、Cloud Computer、Computer Use / Remote Control、Automations。
-- 两者都已具备“成熟完整产品”形态；下一步继续做功能表的收益很低。
-- 真正未决问题已经变成：同一个真实任务下，谁能用更少人工介入、更可靠恢复和更短完整 T_VALID 到达 FINAL_VALID。
-
-## 下一步唯一主线
+## 当前比较模型
 
 ```text
-同一个真实 Smoke Task
-→ ChatGPT Work Reality
-→ Manus 2.0 Reality
-→ 比较 T_VALID / 人工介入 / 恢复 / 自动验收
-→ 选当前成熟主路径
-→ 继续攻击仍有收益的 T_VALID 瓶颈
+T_REF_MANUS = Manus 2.0 同一真实任务端到端 T_VALID
+T_VALID_FREE = 免费生产候选同一任务端到端 T_VALID
+GAP = T_VALID_FREE - T_REF_MANUS
 ```
 
-项目仍为 STATE=10；只有完整候选达到 Virtual Mature 才考虑后续状态变化。
+GAP 只用于定位剩余时间损失；唯一优化目标仍是免费 VALID 候选里的 `min(T_VALID)`。
 
-详细合同：`REALITY_CONTRACT.md`  
-第一轮竞争：`MATURE_SOLUTION_COMPETITION_R1.md`  
-统一 Reality：`REALITY_SMOKE_TASK_R1.md`
+## 当前 Reality 文件
+
+- `REALITY_CONTRACT.md`：R2 FREE-FIRST 工作合同
+- `MATURE_SOLUTION_COMPETITION_R2_FREE_FIRST.md`：免费生产候选竞争
+- `MANUS_BENCHMARK_REALITY_001.md`：Manus 2.0 付费基准任务
+- `FREE_PRODUCTION_REALITY_OPENCLAW_001.md`：OpenClaw 免费生产 Reality
+
+## 下一步顺序
+
+```text
+1. Manus 2.0 跑一次同任务 Benchmark
+   → 得到 T_REF_MANUS
+
+2. 本机 OpenClaw 只读现状核验
+   → 版本 / Gateway / Sessions / Automations / Browser
+   → 免费模型池
+   → Codex Free 可用性
+   → 不先升级、不先改造
+
+3. 若升级是已成熟且明显必要的路径
+   → 复用既有 OpenClaw upgrade skill
+
+4. OpenClaw 免费路径跑同一 Reality
+   → 得到 T_VALID_FREE
+
+5. 计算 GAP
+   → 找最大现实时间损失
+
+6. 只用成熟免费能力攻击最大 GAP
+   → 重测
+   → 有完整 T_VALID 收益才保留
+```
+
+当前仍为 STATE=10。未跑完两条 Reality 前，不宣布生产主路径 Freeze。
