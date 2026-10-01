@@ -1,3 +1,5 @@
+> 已废弃：本文件把“成熟成品运行一次的耗时”误当成项目级极限时间。当前正确测试边界请读取 BENCHMARK_SUITE_R2.md 与 BENCHMARK_CASE_001_FULL_LIFECYCLE_R2.md。本文件仅保留历史，不再执行。
+
 # C0 Direct Mature Control｜Benchmark Case 001
 
 ```ini
