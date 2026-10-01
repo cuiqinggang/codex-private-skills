@@ -1,7 +1,7 @@
 # v2.0 无人执行桥
 
 ```ini
-BRIDGE_SKILL_VERSION=0.1.1
+BRIDGE_SKILL_VERSION=0.1.2
 STATIC_GATE=PASS
 REALITY_RUN_ID=36899361139
 WINDOWS_REALITY=QUEUED_WAITING_SELF_HOSTED_RUNNER
@@ -13,41 +13,29 @@ WINDOWS_REALITY=QUEUED_WAITING_SELF_HOSTED_RUNNER
 workspaces/extreme-time-automation-loop-v2.0/bridge/tasks/<TASK_ID>.json
 ```
 
-新任务文件进入 main 后，`.github/workflows/extreme-time-windows-bridge.yml` 自动触发。
+新任务 JSON 进入 main 后，工作流先做静态门禁；只有发现恰好一个任务 JSON 发生变化，才调度本地 Windows。
 
-## 已实际验证
+## 当前已走通
 
 ```text
-任务文件提交
+任务JSON提交
 → GitHub workflow触发
 → PowerShell解析 PASS
-→ 任务JSON合同 PASS
-→ Windows Reality job queued
+→ 任务合同 PASS
+→ Windows Reality queued
 ```
 
-当前卡点不是任务协议，而是还没有在线 `[self-hosted, Windows, X64]` runner。
+当前唯一缺口：
+目标 Windows 尚无在线 [self-hosted, Windows, X64] runner。
 
 ## 一次性接入
-
-使用：
 
 ```text
 skills/extreme-time-automation-bridge/bootstrap/Install-GitHubSelfHostedRunner.ps1
 ```
 
-它采用 GitHub 官方 runner，固定校验下载 SHA256，不修改网络代理。
-默认跑在当前交互用户会话，并注册“登录时启动”的 Windows 计划任务。
+安装后当前已排队的 ETAL-BRIDGE-SMOKE-001 可以直接被领取，不需要重新设计桥。
 
-## 首次 Reality
+## 非任务提交
 
-`ETAL-BRIDGE-SMOKE-001` 已经放入任务入口并处于 Reality 流程。
-当 Windows runner 上线后，无需重新发 smoke；GitHub 会把排队 job 分配给匹配的在线 runner。
-
-## 目录
-
-```text
-bridge/
-├─ tasks/       # 最小任务入口
-├─ payloads/    # GPT生成、Git版本控制的执行物
-└─ runner/      # 无决策权执行器
-```
+v0.1.2 起，技能包/文档/执行器更新只做 hosted 静态检查，不再制造本地 runner 队列。
