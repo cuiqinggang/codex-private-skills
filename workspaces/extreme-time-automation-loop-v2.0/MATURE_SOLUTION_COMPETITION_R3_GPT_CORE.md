@@ -10,7 +10,8 @@ CORE_BRAIN_FIXED=YES
 EXISTING_PAID_CAPACITY_ALLOWED=YES
 NEW_INCREMENTAL_PAID_DEPENDENCY=FORBIDDEN_BY_DEFAULT
 
-CODEX=PRIMARY_EXECUTOR_CANDIDATE
+GPT_NATIVE_AGENTIC_CANDIDATE=ChatGPT Work
+CODEX=PRIMARY_TECHNICAL_EXECUTOR_CANDIDATE
 CODEX_FIXED=NO
 
 MANUS_2=BENCHMARK_ONLY
@@ -29,12 +30,11 @@ R3 正式修正为：
 新增长期付费依赖 → 默认不加
 ```
 
-## 2. 当前核心结构
+## 2. 固定核心
 
-### 固定核心
-**GPT = 超级大脑**
+**GPT = 超级大脑。**
 
-负责：
+GPT 负责：
 - 目标理解；
 - Reality Contract；
 - 世界成熟方案检索；
@@ -44,44 +44,77 @@ R3 正式修正为：
 - FINAL_VALID 判断；
 - 整体 T_VALID 收敛。
 
-### 执行层
-**Codex = 当前第一执行候选，但不是固定核心。**
+## 3. GPT 原生成熟执行形态｜ChatGPT Work
 
-它必须与其他成熟执行方式在 Reality 中比较。
+OpenAI 当前官方产品已经把 Work 定义为长任务、多步骤 Agent：
 
-Codex 如果：
-- T_VALID 最短；
-- 可靠；
-- 人工介入少；
-- 与 GPT 交接成本低；
+- 可在 Project 中使用上下文；
+- 可使用 connected apps / plugins；
+- 可使用 Cloud Browser；
+- 桌面端可在授权后处理本地文件和桌面应用；
+- Cloud Work 可以跨 web / mobile / desktop 续接；
+- Work 可运行一次、按计划重复、按触发器启动或监控变化。
 
-则保留。
+因此主链不应先假设需要外部 orchestrator。
 
-否则可被成熟替代路径部分或全部替换。
+优先 Reality：
 
-## 3. 主链候选
+```text
+用户目标
+→ GPT / ChatGPT Work
+→ 原生工具与成熟 connected apps
+→ FINAL_VALID
+```
 
-### P1｜GPT + Codex
-当前最值得先跑 Reality 的路径。
+若这一条已经满足 VALID，就不因为历史上习惯使用 Codex 而额外加入 Codex。
 
-原因：
-- GPT 提供核心最高智能；
-- Codex 已是成熟工程执行器；
-- 用户已经拥有两者；
-- 当前项目已有大量 GPT↔Codex 现实经验与资产；
-- 真正问题集中在“自动交接 / 自动恢复 / 自动验收”，不是缺一个新 Agent。
+## 4. Codex 的正确角色
 
-### P2｜GPT + 最小成熟执行能力组合
-若 Codex 在某类任务不是最佳：
-- Browser：JEV-native / Playwright / 其他成熟 Browser；
-- deterministic automation：n8n；
-- GitHub / APIs / MCP / CLI；
-- OpenClaw 可作为已有成熟 Agent / automation 壳层候选；
-- 其他未来成熟执行器。
+OpenAI 官方当前明确：Codex 仍是独立视图，历史与 ChatGPT / Work 分开。
 
-原则：按任务只启用最小有效组合。
+因此：
 
-## 4. Manus 2.0
+```ini
+CODEX_ROLE=MATURE_TECHNICAL_EXECUTOR_CANDIDATE
+CODEX_FIXED=NO
+AUTO_HANDOFF_ASSUMED=NO
+```
+
+Codex 优先用于：
+- 编码；
+- repository / terminal / developer tools；
+- 工程修改；
+- 测试；
+- 技术长流程。
+
+只有当某任务加入 Codex 后能：
+- 让原本不 VALID 的任务变 VALID；或
+- 降低完整 T_VALID，
+
+才进入该任务的主链。
+
+否则由 GPT / Work 直接完成。
+
+## 5. 当前主链候选顺序
+
+### P1｜GPT / ChatGPT Work 原生闭环
+当前第一条要验证的路径。
+
+### P2｜GPT / Work + Codex
+仅用于技术/工程任务，且必须把 Work↔Codex 的上下文与交接成本计入完整 T_VALID。
+
+### P3｜GPT + 最小成熟执行能力
+按具体缺口调用：
+- JEV-native / Playwright；
+- GitHub；
+- n8n；
+- OpenClaw；
+- API / MCP / CLI；
+- 其他成熟现成能力。
+
+不固定组件数；只保留本任务实际需要的最小组合。
+
+## 6. Manus 2.0
 
 ```ini
 PRODUCTION=NO
@@ -92,66 +125,72 @@ USE_EXISTING_CREDITS_ONLY=YES
 输出：
 `T_REF_MANUS`
 
-它只用于回答：
-> 一个成熟完整商业产品对同一 Reality 可以做到多快？
+只回答：
+> 一个成熟商业整解对同一 Reality 可以做到多快？
 
-不进入未来正式主链。
+它不进入未来正式主链。
 
-## 5. Backup｜独立备份路径
+## 7. Backup｜独立备份路径
 
-正式方案最终还必须有 Backup。
+正式方案最终必须有 Backup。
 
 要求：
 - 不要求 GPT 与 Codex 同时正常；
-- 可以在主链服务异常时恢复最低可用工作能力；
+- 主链故障时能恢复最低可用工作能力；
 - 只由成熟现成能力组成；
 - 平时不与主链并行消耗资源；
-- 只在故障或灾备 Reality 中启用。
+- 只在故障 / 灾备 Reality 启用。
 
-候选可从：
-- OpenClaw；
-- 其他成熟模型 / Agent；
-- 现有本地模型与免费模型池；
-- n8n CE；
-- JEV-native；
-- 其他成熟平台
-中竞争。
+备份候选以后单独竞争，不提前固定。
 
-当前不提前选定。
+## 8. 现在真正应该测什么
 
-## 6. 现在真正应该测什么
-
-不是继续做功能列表，而是三个 Reality：
+按价值排序：
 
 ```text
-A. GPT + Codex 主链
-   → T_VALID_PRIMARY
+A1. GPT / Work 原生主链
+    → T_VALID_WORK
+
+A2. 对确实需要工程执行的任务：
+    GPT / Work + Codex
+    → T_VALID_WORK_CODEX
 
 B. Manus 2.0 Benchmark
    → T_REF_MANUS
 
-C. 独立成熟 Backup
+C. 独立 Backup
    → T_VALID_BACKUP
 ```
 
-当前顺序先 A+B。
+当前先做 A+B；Backup 等主链结构明确后再 Reality。
 
-原因：
-A 是真正未来主链候选；
-B 提供成熟参考极限；
-C 等 A 的结构明确后再选，避免提前为备份搭系统。
+## 9. 比较逻辑
 
-## 7. 下一步
+如果 Work 单独 VALID：
 
 ```text
-① 固定同一个真实任务 Reality
-② 跑 GPT + Codex
-③ 跑 Manus 2.0 对照
-④ 比较完整 T_VALID 和人工胶水
-⑤ 定位 GPT+Codex 最大损失点
-⑥ 只引入成熟能力攻击这个损失点
-⑦ 重跑 GPT 主链
-⑧ 主链稳定后，再选择并验证 Backup
+Work
+vs
+Work + Codex
+vs
+Manus Reference
 ```
 
-不新增架构；不因为 Codex 是当前默认执行器就保护它。
+只有 Work+Codex 的完整 T_VALID 更优，Codex 才保留在该类任务主链。
+
+如果 Work 单独不 VALID，而 Codex 补齐工程缺口，则 Codex 属于必要成熟执行组件。
+
+## 10. 下一步
+
+```text
+① 用一个真实任务先跑 GPT / Work 原生路径
+② 同一任务中若确有技术执行缺口，再跑 GPT / Work + Codex
+③ Manus 2.0 跑同一 Reality Benchmark
+④ 比较 T_VALID 与人工胶水
+⑤ 找 GPT 主链最大时间损失点
+⑥ 只引入成熟能力攻击该损失点
+⑦ 重测
+⑧ 主链稳定后再选择 Backup
+```
+
+不新增架构；不保护 Codex；也不浪费已经拥有的 GPT / Codex 能力。
