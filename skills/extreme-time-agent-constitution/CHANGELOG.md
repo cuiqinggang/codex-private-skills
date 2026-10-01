@@ -1,17 +1,30 @@
 # CHANGELOG
 
-## v0.2.0 — 2026-10-01 — FROZEN
+## v0.3.0 — 2026-10-01 — FROZEN
+
+Freeze ID: `ETAC-v0.3-FREEZE-R1`  
+Supersedes: `ETAC-v0.2-FREEZE-R1`
+
+核心变化：
+- 删除“前述成熟方案均不能满足 VALID 时才考虑新增实现”这一出口；
+- 将 `MATURE_SOLUTION_EXISTS=TRUE` 从检索工作假设提升为当前任务域固定前提；
+- 新增 `NO_NEW_IMPLEMENTATION_ESCAPE=TRUE`；
+- 候选空间限定为现有成熟方案、成熟配置、成熟接口和成熟组件最小组合；
+- 成熟方案采用后继续攻击对完整 `T_VALID` 有现实收益的瓶颈；
+- 优化必须优先使用成熟替代、配置、接口、并行、缓存、恢复等已有成熟能力；
+- 继续保留 `CHANGE_SCOPE=ROOT_CAUSE_SCOPE`、删除非必要复杂度和最低充分智能资源原则。
+
+说明：v0.3 宪法冻结不等于具体项目 Freeze。
+
+## v0.2.0 — 2026-10-01 — SUPERSEDED
 
 Freeze ID: `ETAC-v0.2-FREEZE-R1`
 
-主要变化：
-- 将唯一目标统一为单一端到端 `T*=min(T_VALID)`；
-- 明确当前任务域默认 `MATURE_SOLUTION_EXISTS=TRUE`；
-- 将“完整成熟方案”置于自有 Skill / 自建组合之前；
-- 固化 `CHANGE_SCOPE=ROOT_CAUSE_SCOPE`；
-- 删除非必要 Agent / Adapter / Verifier / State / Memory 的原则升为核心规则；
-- 将状态机、四字段、三行时间头、GPT/Codex/n8n/GitHub 等下沉为实现候选；
-- 明确最低充分智能资源原则；
-- 本版本由“v0.2 候选”转为正式冻结基线。
+历史贡献：
+- 单一端到端 `T*=min(T_VALID)`；
+- 成熟完整方案优先；
+- `CHANGE_SCOPE=ROOT_CAUSE_SCOPE`；
+- 实现层与普适宪法分离。
 
-说明：宪法冻结不等于具体项目 Freeze。
+被 v0.3 替代原因：
+- v0.2 仍保留“最终考虑新增实现”的出口，与当前成熟解固定前提不一致。
