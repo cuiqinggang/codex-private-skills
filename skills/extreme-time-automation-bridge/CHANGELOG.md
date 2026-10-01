@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.3 - 2026-10-02
+
+- 修复 workflow 级 concurrency 被离线 self-hosted runner 长期占用、导致后续静态验证也 pending 的问题。
+- 删除 workflow 顶层 concurrency。
+- 仅对 windows-reality job 使用串行组 `extreme-time-windows-reality`。
+- 静态门禁与 Windows Reality 排队解耦；旧 smoke 不重发。
+- Reality 状态仍为 PARTIAL，必须等待真实 Windows runner 领取并产出 artifact 才能认证。
+
 ## 0.1.2 - 2026-10-02
 
 - 修复非任务提交也占用 self-hosted Windows 队列的问题。

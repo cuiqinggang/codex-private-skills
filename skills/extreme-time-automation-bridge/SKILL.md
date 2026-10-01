@@ -1,16 +1,16 @@
 ---
 name: extreme-time-automation-bridge
-version: "0.1.2"
+version: "0.1.3"
 description: 极限短时间自动化闭环的无决策权执行桥。GPT负责判断，桥只负责领取、执行、记录、回传；正式任务运行期间用户人工介入必须为0。
 ---
 
-# 极限短时间自动化执行桥 v0.1.2
+# 极限短时间自动化执行桥 v0.1.3
 
 ```ini
 STATUS=PARTIAL_REALITY
-VERSION=0.1.2
+VERSION=0.1.3
 REALITY_CERTIFIED=NO
-STATIC_GATE=PASS
+STATIC_GATE=PASS_PREVIOUS
 WINDOWS_REALITY=QUEUED_WAITING_SELF_HOSTED_RUNNER
 REALITY_RUN_ID=36899361139
 
@@ -28,12 +28,17 @@ MIN_TASK_ENTRY=workspaces/extreme-time-automation-loop-v2.0/bridge/tasks/<TASK_I
 - PowerShell解析 PASS；
 - 任务合同 PASS；
 - Windows Reality job 已 queued；
-- 当前唯一阻塞是目标 Windows 尚无在线 self-hosted runner。
+- 当前物理阻塞是目标 Windows 尚无在线 self-hosted runner。
 
-## v0.1.2 修正
+v0.1.2 还暴露出一个调度级阻塞：workflow 级 concurrency 会让一个等待 self-hosted runner 的旧任务占住整个工作流组，导致后续静态验证也长期 pending。
 
-只有真正新增/修改任务 JSON 时才调度 self-hosted Windows。
-技能包、说明文档、runner代码等普通更新只跑 GitHub-hosted 静态门禁，不再占用本地 runner 队列。
+## v0.1.3 修正
+
+- 删除 workflow 顶层 concurrency。
+- 并发串行门仅放在 `windows-reality` job，组名 `extreme-time-windows-reality`。
+- 静态合同门禁不再被离线 Windows runner 阻塞。
+- 只有 tasks/*.json 真正变化或显式 workflow_dispatch 指定任务时，才进入 Windows Reality。
+- 旧 `ETAL-BRIDGE-SMOKE-001` 保持原 queued Reality，不因该修正重发。
 
 ## 最小入口
 

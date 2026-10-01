@@ -17,10 +17,6 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: extreme-time-windows-bridge
-  cancel-in-progress: false
-
 jobs:
   contract-static:
     runs-on: windows-latest
@@ -107,13 +103,16 @@ jobs:
     if: needs.contract-static.outputs.should_run == 'true'
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 1440
+    concurrency:
+      group: extreme-time-windows-reality
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
 
       - name: Execute task through decisionless bridge
         shell: pwsh
         env:
-          RESULT_DIR: ${{ runner.temp }}\etal-bridge-result
+          RESULT_DIR: ${{ runner.temp }}\\etal-bridge-result
           TASK_FILE: ${{ needs.contract-static.outputs.task_file }}
         run: |
           & 'workspaces/extreme-time-automation-loop-v2.0/bridge/runner/Invoke-BridgeTask.ps1' -TaskFile $env:TASK_FILE -ResultDir $env:RESULT_DIR
@@ -123,7 +122,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: etal-bridge-${{ needs.contract-static.outputs.task_id }}-${{ github.run_id }}
-          path: ${{ runner.temp }}\etal-bridge-result
+          path: ${{ runner.temp }}\\etal-bridge-result
           if-no-files-found: error
           retention-days: 30
 
@@ -132,7 +131,7 @@ jobs:
         shell: pwsh
         env:
           CALLBACK_URL: ${{ secrets.ETAL_BRIDGE_CALLBACK_URL }}
-          RESULT_FILE: ${{ runner.temp }}\etal-bridge-result\result.json
+          RESULT_FILE: ${{ runner.temp }}\\etal-bridge-result\\result.json
         run: |
           if ([string]::IsNullOrWhiteSpace($env:CALLBACK_URL)) {
             Write-Host 'ETAL_BRIDGE_CALLBACK_URL not configured; evidence remains in Actions artifact.'
