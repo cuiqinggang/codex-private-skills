@@ -1,14 +1,15 @@
 ---
 name: extreme-time-automation-bridge
 version: "0.2.0"
-description: 极限短时间自动化闭环的无决策权执行桥。GPT负责判断，桥只负责领取、执行、记录、回传；正式任务运行期间用户人工介入必须为0。
+description: GPT直连Windows双路执行桥。主路使用 Desktop Commander Remote 直接连接并操作 Windows；备路使用 GitHub Actions + Windows self-hosted runner，在主路不可用时降级执行。
 ---
 
-# 极限短时间自动化执行桥 v0.2.0
+# GPT直连Windows双路执行桥 v0.2.0
 
 ```ini
 STATUS=PARTIAL_REALITY
 VERSION=0.2.0
+DISPLAY_NAME=GPT直连Windows双路执行桥
 REALITY_CERTIFIED=NO
 
 STATIC_GATE=PASS

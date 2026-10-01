@@ -2,6 +2,8 @@
 
 ## 0.2.0 - 2026-10-02
 
+正式中文名：`GPT直连Windows双路执行桥`
+
 - 新增双路执行：Desktop Commander Remote 作为默认主路，GitHub Actions + Windows self-hosted runner 作为备路。
 - 主路已 Reality 验证设备发现、目录/文件读取、文件写入回读与清理、本机命令/进程执行。
 - 备路恢复 `ETAL-GitHub-Actions-Runner` 用户登录计划任务常驻，runner `DESKTOP-4A1EGTM-etal` 在线。
