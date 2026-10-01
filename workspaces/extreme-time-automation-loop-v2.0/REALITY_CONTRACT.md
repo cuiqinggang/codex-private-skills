@@ -1,18 +1,24 @@
 # Reality Contract｜极限短时间自动化闭环 v2.0
 
 ```ini
-STATUS=WORKING_BASELINE_R1
+STATUS=WORKING_BASELINE_R2_FREE_FIRST
 STATE=10
 PURPOSE=定义现实必须发生什么，不预设具体成熟方案
 MATURE_SOLUTION_EXISTS=TRUE
 NO_NEW_IMPLEMENTATION_ESCAPE=TRUE
 OBJECTIVE=T*=min(T_VALID)
+
+PRODUCTION_PAID_DEPENDENCY=FORBIDDEN
+PRODUCTION_INCREMENTAL_SUBSCRIPTION_COST=0
+PAID_BENCHMARK_ALLOWED=YES
+PAID_BENCHMARK=Manus 2.0
+COMMERCIAL_ROI_EXCEPTION=ONLY_IF_EXPLICITLY_REOPENED
 ```
 
 ## A. 用户现实入口
 
 ### 用户怎样提出目标
-用户只需要用自然语言给出最终现实目标，可以来自 ChatGPT 网页、桌面端、移动端或未来等价成熟入口。
+用户只需要用自然语言给出最终现实目标。
 
 ### 用户最少需要提供什么
 只提供机器无法替代的内容：
@@ -47,15 +53,16 @@ OBJECTIVE=T*=min(T_VALID)
 
 任务只有同时满足以下条件才算完成：
 
-1. **现实结果存在**：目标动作、文件、数据、页面、部署、消息或其他现实产物已在目标环境中真实产生。
-2. **结果符合合同**：不是“做了很多步骤”，而是满足用户定义的最终结果。
-3. **完成可验证**：能机器验证的必须机器验证；只能现实检查的必须有相应现实证据。
-4. **禁止自报完成**：执行智能体自身的“PASS / Done”不能单独作为 FINAL_VALID。
-5. **没有遗留人肉胶水**：除 A 节允许的人类不可替代动作外，不需要用户再复制、转发、提醒、换页或人工续接。
-6. **可继续任务有持久状态**：长任务若尚未结束，状态必须可恢复，不因页面、会话或单一执行器消失而要求用户重建上下文。
-7. **失败计入同一时间轴**：所有搜索、等待、失败、恢复、重试都属于本轮 T_FLOW。
+1. 现实结果真实存在；
+2. 结果符合合同，而不是只完成中间步骤；
+3. 能机器验证的必须机器验证；
+4. 执行智能体自身“PASS / Done”不能单独作为 FINAL_VALID；
+5. 除 A 节允许的人类不可替代动作外，不需要用户做人肉消息总线；
+6. 长任务状态可恢复；
+7. 所有搜索、等待、失败、恢复、重试都计入同一 T_FLOW；
+8. **正式生产路径不得依赖必须付费才能持续运行的能力。**
 
-## C. 必须消除的人肉胶水
+## C. 需要消除的人肉胶水
 
 | 当前人工动作 | 标准自动化问题 | v2.0 要求 |
 |---|---|---|
@@ -66,7 +73,7 @@ OBJECTIVE=T*=min(T_VALID)
 | 普通错误出现后人工判断重试还是换路 | failure recovery / mature alternative routing | 自动处理 |
 | 手动打开网页、文件、应用完成普通步骤 | computer use / app action | 自动执行 |
 | 人工盯任务是否结束 | monitoring / completion event | 自动监控 |
-| 人工确认“文件是否存在、声音是否存在、是否下载成功”等机器可验事实 | machine verification | 自动验收 |
+| 人工确认机器可验事实 | machine verification | 自动验收 |
 | 人工保存阶段状态供下次继续 | persistent project/task state | 自动持久化 |
 | 在设备之间手动同步进度 | cross-device continuation | 自动同步或成熟平台原生续接 |
 
@@ -85,29 +92,56 @@ OBJECTIVE=T*=min(T_VALID)
 ### 禁止改变
 - Windows 关键系统不得破坏或删除；
 - FlClash / Windows 网络代理配置不得改变；
-- 不通过“关闭安全限制”来换取自动化。
+- 不通过关闭安全限制换取自动化。
 
-### 原则
-权限边界由成熟平台的原生权限 / 审批系统实现优先，不额外自造审批框架。
+## E. 成本边界｜FREE-FIRST
 
-## E. 中断与恢复
+### 正式生产 VALID 硬门
+正式长期主链：
 
-### 页面 / Session 消失
-应从成熟平台的 Project / Task / Run / durable state 自动继续；不得要求用户重新贴上下文。
+```ini
+PRODUCTION_INCREMENTAL_SUBSCRIPTION_COST=0
+```
 
-### 执行器失败
-优先使用成熟平台原生 retry / resume / alternate path；如果当前成熟方案持续结构性失败，则回到成熟方案映射与竞争，不进入自研出口。
+允许：
+- 免费版本；
+- MIT / 开源 / Community Edition；
+- 本机已有硬件；
+- 已存在且无需新增付费的免费额度；
+- 已有成熟免费模型池；
+- 免费计划明确包含的能力。
 
-### 网络 / 服务失败
-保留现实任务状态，等待可恢复条件或切换到另一成熟可用能力；失败等待时间继续计入 T_FLOW。
+不允许把以下能力作为最终生产依赖：
+- 只有付费计划才开放的 Agent / Cloud / Computer Use；
+- 需要持续购买 credits 才能运行的主链；
+- 免费试用到期后无法继续的能力。
 
-### 用户中途修改目标
-把变化作为 Reality Contract Delta，只重做受影响部分，不机械重跑整个任务。
+### Manus 2.0 特例
+Manus 2.0 只作为成熟付费 Benchmark：
 
-### 同一现实任务身份
-优先使用成熟平台原生 Project / Task / Run / Thread / Artifact 身份与持久记录。四字段定位或旧状态头仅在能实际降低 T_VALID 时保留。
+```ini
+PRODUCTION_CANDIDATE=NO
+BENCHMARK_REFERENCE=YES
+USE_EXISTING_CREDITS_ONLY=YES
+```
 
-## F. 时间合同
+用途：
+- 测一个真实成熟整解的端到端 `T_VALID`；
+- 作为免费生产路径持续攻击的现实参照；
+- 不因 Manus 更快而自动进入最终生产。
+
+### 商业例外
+只有未来任务产生明确商业收益，并且用户明确重开成本门时，付费能力才重新进入生产候选。
+
+## F. 中断与恢复
+
+- 页面 / Session 消失：从成熟平台的持久状态自动继续；
+- 执行器失败：优先成熟原生 retry / resume / alternate path；
+- 网络 / 服务失败：保留状态，恢复或切换另一成熟免费能力；
+- 用户修改目标：只重做受影响部分；
+- 同一任务身份：优先成熟平台原生 Project / Task / Run / Thread / Artifact 身份。
+
+## G. 时间合同
 
 ```ini
 FLOW_START=系统已拥有足够信息、可以不再等待用户澄清而开始现实推进的时间点
@@ -116,52 +150,45 @@ T_VALID=只有 FINAL_VALID 后才产生
 OBJECTIVE=T*=min(T_VALID)
 ```
 
-包含：
-- 搜索；
-- 分析；
-- 等待；
-- 配置；
-- 执行；
-- 登录等待；
-- 失败；
-- 恢复；
-- 换平台 / Session；
-- 重试；
-- 验收。
+失败、恢复、排队、免费额度限流等待都计入 T_FLOW。
 
-局部耗时仅用于找瓶颈，不形成第二优化目标。
+## H. 成熟生产方案进入门槛
 
-## G. 成熟整解进入门槛
+正式生产候选必须同时满足：
 
-一个“完整成熟端到端方案”要进入最终 Reality 竞争，必须尽量原生覆盖：
-
-1. 自然语言目标入口；
-2. 项目 / 任务上下文持续；
-3. Web / App / File 跨工具执行；
-4. Windows 本地任务或等价成熟 computer-use 路径；
-5. 后台长任务；
-6. 定时 / 触发 / 监控；
+1. 零新增付费依赖；
+2. 自然语言目标入口；
+3. 项目 / 任务上下文持续；
+4. Web / App / File 跨工具执行能力；
+5. 后台 / 可恢复任务能力；
+6. 定时 / 触发 / 监控能力，或可由成熟免费组件补齐；
 7. 普通失败恢复；
 8. 结果与产物回传；
 9. 机器可验事实自动验收；
-10. 仅在不可替代的人类判断或平台强制审批时暂停；
-11. 用户离开页面 / 设备后仍可继续；
-12. 不要求用户做人肉消息总线。
+10. 用户离开后仍可继续；
+11. 不要求用户做人肉消息总线。
 
-若某候选缺失关键项，只能降为成熟组件，不能因为知名或已有投入就冒充“完整整解”。
+关键项缺失时可使用**成熟免费组件最小组合**补齐，但不得开发新的自研框架。
 
-## H. Reality 竞争测量
+## I. Benchmark 与生产比较
 
-同一真实任务、同一 VALID、同一现实起点下比较：
+付费 Benchmark 不参加生产 VALID 排名。
+
+定义：
 
 ```text
-T_VALID
-+ 人工介入次数
-+ 人工介入总时长
-+ 恢复次数
-+ 伪完成 / 漏验收
+T_REF_MANUS = Manus 2.0 对同一真实任务的端到端 T_VALID
+T_VALID_FREE = 免费生产候选对同一任务的端到端 T_VALID
+GAP = T_VALID_FREE - T_REF_MANUS
 ```
 
-唯一排序目标仍是最短有效 T_VALID；其余字段用于解释某方案为什么不是 VALID 或为什么 T_VALID 变长。
+GAP 只用于定位还有多少现实时间可攻击，不成为第二优化目标。
 
-> 本合同是 STATE=10 的工作基线，不等于 Project Freeze。
+正式目标始终是：
+
+```text
+在所有满足 FREE-FIRST VALID 的成熟候选中：
+T* = min(T_VALID)
+```
+
+> 本合同是 STATE=10 工作基线，不等于 Project Freeze。
