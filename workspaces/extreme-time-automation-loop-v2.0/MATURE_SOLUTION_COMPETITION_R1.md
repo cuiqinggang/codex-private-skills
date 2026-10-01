@@ -1,3 +1,7 @@
+> STATUS=SUPERSEDED_BY_R2_FREE_FIRST  
+> Current: `MATURE_SOLUTION_COMPETITION_R2_FREE_FIRST.md`  
+> R1 is retained only as historical evidence before the FREE-FIRST production constraint.
+
 # 成熟端到端方案竞争 R1｜极限短时间自动化闭环 v2.0
 
 ```ini
