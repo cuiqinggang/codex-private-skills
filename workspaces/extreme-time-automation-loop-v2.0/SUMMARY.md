@@ -55,4 +55,5 @@ WINNER=NOT_YET_CERTIFIED
 项目仍为 STATE=10；只有完整候选达到 Virtual Mature 才考虑后续状态变化。
 
 详细合同：`REALITY_CONTRACT.md`  
-第一轮竞争：`MATURE_SOLUTION_COMPETITION_R1.md`
+第一轮竞争：`MATURE_SOLUTION_COMPETITION_R1.md`  
+统一 Reality：`REALITY_SMOKE_TASK_R1.md`
