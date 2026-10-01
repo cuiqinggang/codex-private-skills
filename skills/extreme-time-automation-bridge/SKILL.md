@@ -10,7 +10,8 @@ description: 极限短时间自动化闭环的无决策权执行桥。GPT负责�
 STATUS=PARTIAL_REALITY
 VERSION=0.1.3
 REALITY_CERTIFIED=NO
-STATIC_GATE=PASS_PREVIOUS
+STATIC_GATE=PASS
+STATIC_VALIDATION_RUN_ID=36900593142
 WINDOWS_REALITY=QUEUED_WAITING_SELF_HOSTED_RUNNER
 REALITY_RUN_ID=36899361139
 
@@ -30,7 +31,14 @@ MIN_TASK_ENTRY=workspaces/extreme-time-automation-loop-v2.0/bridge/tasks/<TASK_I
 - Windows Reality job 已 queued；
 - 当前物理阻塞是目标 Windows 尚无在线 self-hosted runner。
 
-v0.1.2 还暴露出一个调度级阻塞：workflow 级 concurrency 会让一个等待 self-hosted runner 的旧任务占住整个工作流组，导致后续静态验证也长期 pending。
+v0.1.2 暴露过一个调度级阻塞：workflow 级 concurrency 会让一个等待 self-hosted runner 的旧任务占住整个工作流组，导致后续静态验证长期 pending。
+
+v0.1.3 已在 Run 36900593142 Reality 验证：
+- contract-static = success；
+- Parse bridge PowerShell = success；
+- Validate task contracts = success；
+- Discover executable task = success；
+- windows-reality = skipped（本次无 task JSON 变化，符合预期）。
 
 ## v0.1.3 修正
 
