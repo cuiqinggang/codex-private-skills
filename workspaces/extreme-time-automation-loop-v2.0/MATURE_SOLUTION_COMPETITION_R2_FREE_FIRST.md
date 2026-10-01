@@ -1,3 +1,7 @@
+> STATUS=SUPERSEDED_BY_R3_GPT_CORE  
+> R2 FREE-FIRST was based on an overly strict interpretation of the user's cost boundary.  
+> Current: `MATURE_SOLUTION_COMPETITION_R3_GPT_CORE.md`
+
 # 成熟方案竞争 R2｜FREE-FIRST｜极限短时间自动化闭环 v2.0
 
 ```ini
