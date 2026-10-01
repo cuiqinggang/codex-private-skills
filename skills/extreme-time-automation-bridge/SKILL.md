@@ -38,7 +38,9 @@ FALLBACK_TASK_NAME=ETAL-GitHub-Actions-Runner
 FALLBACK_RUNNER=DESKTOP-4A1EGTM-etal
 FALLBACK_RUNNER_STATUS=online
 FALLBACK_LONGPATH_FIX=JOB_ENV_CORE_LONGPATHS
-FALLBACK_ROUTE_RETEST=PENDING
+FALLBACK_ROUTE_RETEST=PASS
+FALLBACK_REALITY_RUN_ID=36917244551
+FALLBACK_REALITY_ARTIFACT_ID=11189839827
 MIN_TASK_ENTRY=workspaces/extreme-time-automation-loop-v2.0/bridge/tasks/<TASK_ID>.json
 ```
 
@@ -52,7 +54,9 @@ MIN_TASK_ENTRY=workspaces/extreme-time-automation-loop-v2.0/bridge/tasks/<TASK_I
 
 ### 备路：GitHub Actions + Windows self-hosted runner
 
-Windows Reality 执行层历史 smoke 已真实 PASS；当前已恢复为用户登录计划任务常驻，runner 在线。正在用注入式 `core.longpaths=true` 修复大型仓库 Windows checkout 后做最终复验。
+Windows Reality 执行层已再次真实 PASS；当前使用用户登录计划任务常驻，runner 在线。Windows checkout 通过 job 环境强制注入 `core.longpaths=true`，不依赖临时 HOME、用户 Git 配置或管理员权限。
+
+最新复验：Run `36917244551` = success；`windows-reality`、任务执行、artifact 上传全部成功；artifact ID `11189839827`。
 
 Run `36899361139`：
 - `contract-static=success`

@@ -9,6 +9,7 @@
 - 修复 Windows checkout 长路径风险：在 `windows-reality` job 注入 `core.longpaths=true`，不依赖临时 HOME 或管理员级系统 Git 配置。
 - runner 名称默认值改用 `[Environment]::MachineName`，避免 Remote 环境变量缺失导致错误名称。
 - Windows Service 仅作为可选增强，不再作为备路可用的必要前置条件。
+- 最终备路复验 Run `36917244551` 成功；artifact ID `11189839827`；`windows-reality`、任务执行和 artifact 上传全部 success。
 
 ## 0.1.3 - 2026-10-02
 

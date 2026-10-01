@@ -36,20 +36,21 @@
 - 任务需要排队执行、GitHub 工作流证据链或与当前聊天解耦执行；
 - Windows runner 在线。
 
-既有 Reality：
+Reality：
 - ETAL-BRIDGE-SMOKE-001：PASS；
-- Run ID 36899361139；
-- artifact ID 11186888753；
-- exit_code=0；
+- 最新 Run ID：36917244551；
+- 最新 artifact ID：11189839827；
+- `windows-reality`、任务执行、artifact 上传：全部 success；
 - 用户执行中介入=0。
 
 当前持久化条件：
 - 安装目录：C:\actions-runner-etal；
 - runner 名：DESKTOP-4A1EGTM-etal；
-- 目标形态：Windows Service；
-- 当前 service：未安装（2026-10-02 验证 count=0）；
-- 转换需要一次管理员权限；
-- 转换后必须验证 service=Running、StartMode=Auto、runner=online。
+- 计划任务：ETAL-GitHub-Actions-Runner；
+- 模式：当前用户登录时自动启动并持续运行；
+- runner GitHub 状态必须为 online；
+- `windows-reality` 必须注入 `core.longpaths=true`，否则大型仓库 checkout 可能因 Filename too long 失败；
+- Windows Service 是可选增强，不是备路可用的必要条件。
 
 ## 自动路由
 
@@ -76,9 +77,10 @@
 - 目标路径可访问。
 
 备路：
-- Verify-GitHubSelfHostedRunnerService.ps1 返回 ready=true；
-- GitHub API runner.status=online；
-- service_state=Running；
-- service_start_mode=Auto。
+- `ETAL-GitHub-Actions-Runner` 计划任务存在；
+- GitHub API `runner.status=online`；
+- labels 至少包含 `self-hosted,Windows,X64`；
+- workflow 的 `windows-reality` job 保留 `core.longpaths=true` 注入；
+- 若升级为 Windows Service，再额外要求 service=Running、StartMode=Auto。
 
 只有健康检查通过的路由才进入正式执行。
