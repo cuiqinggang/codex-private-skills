@@ -1,3 +1,7 @@
+> STATUS=SUPERSEDED_BY_R3_GPT_CORE  
+> This file was created under the mistaken FREE-FIRST interpretation.  
+> OpenClaw remains a mature component / backup candidate, not the current primary production path.
+
 # Free Production Reality｜OpenClaw｜极限短时间自动化闭环 v2.0
 
 ```ini
