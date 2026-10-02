@@ -15,15 +15,22 @@ jobs:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 10
     steps:
-      - name: Configure and start Desktop Commander Remote
+      - name: Configure Desktop Commander Remote for interactive user
         shell: pwsh
         run: |
           $ErrorActionPreference='Stop'
           $taskName='GPT-DesktopCommander-Remote-Autostart'
-          $root=Join-Path $env:LOCALAPPDATA 'DesktopCommanderRemote'
+          $interactiveUser=(Get-CimInstance Win32_ComputerSystem).UserName
+          if ([string]::IsNullOrWhiteSpace($interactiveUser)) { throw 'NO_INTERACTIVE_WINDOWS_USER' }
+
+          $sid=(New-Object System.Security.Principal.NTAccount($interactiveUser)).Translate([System.Security.Principal.SecurityIdentifier]).Value
+          $profile=(Get-CimInstance Win32_UserProfile | Where-Object { $_.SID -eq $sid } | Select-Object -First 1).LocalPath
+          if ([string]::IsNullOrWhiteSpace($profile)) { throw "PROFILE_NOT_FOUND user=$interactiveUser" }
+
+          $root=Join-Path $profile 'AppData\Local\DesktopCommanderRemote'
           $launcher=Join-Path $root 'Start-DesktopCommanderRemote.ps1'
           $log=Join-Path $root 'remote.log'
-          $session=Join-Path $HOME '.desktop-commander-device\device.json'
+          $session=Join-Path $profile '.desktop-commander-device\device.json'
           $npx=(Get-Command npx.cmd -ErrorAction Stop).Source
 
           New-Item -ItemType Directory -Path $root -Force | Out-Null
@@ -31,6 +38,8 @@ jobs:
           $escapedLog=$log.Replace("'","''")
           $launcherLines=@(
             "$" + "ErrorActionPreference='Continue'",
+            "$" + "env:USERPROFILE='" + $profile.Replace("'","''") + "'",
+            "$" + "HOME='" + $profile.Replace("'","''") + "'",
             "$" + "npx='" + $escapedNpx + "'",
             "$" + "log='" + $escapedLog + "'",
             "& $" + "npx -y '@wonderwhy-er/desktop-commander@latest' remote *>> $" + "log",
@@ -38,22 +47,30 @@ jobs:
           )
           Set-Content -LiteralPath $launcher -Value $launcherLines -Encoding UTF8
 
-          $user=[Security.Principal.WindowsIdentity]::GetCurrent().Name
           $action=New-ScheduledTaskAction -Execute 'powershell.exe' -Argument ('-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "'+$launcher+'"')
-          $trigger=New-ScheduledTaskTrigger -AtLogOn -User $user
-          $principal=New-ScheduledTaskPrincipal -UserId $user -LogonType Interactive -RunLevel Limited
+          $trigger=New-ScheduledTaskTrigger -AtLogOn -User $interactiveUser
+          $principal=New-ScheduledTaskPrincipal -UserId $interactiveUser -LogonType Interactive -RunLevel Limited
           $settings=New-ScheduledTaskSettingsSet -MultipleInstances IgnoreNew -RestartCount 999 -RestartInterval (New-TimeSpan -Minutes 1) -ExecutionTimeLimit ([TimeSpan]::Zero) -StartWhenAvailable
-          Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Principal $principal -Settings $settings -Force | Out-Null
+
+          try {
+            Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Principal $principal -Settings $settings -Force | Out-Null
+          } catch {
+            throw "REGISTER_AUTOSTART_FAILED user=$interactiveUser error=$($_.Exception.Message)"
+          }
 
           Start-ScheduledTask -TaskName $taskName
-          Start-Sleep -Seconds 15
+          Start-Sleep -Seconds 20
 
           $task=Get-ScheduledTask -TaskName $taskName
           $proc=@(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object {
             $_.CommandLine -match '(?i)desktop-commander' -and $_.CommandLine -match '(?i)remote'
           })
+
+          Write-Host "DCR_TARGET_USER=$interactiveUser"
+          Write-Host "DCR_TARGET_PROFILE=$profile"
           Write-Host "DCR_AUTOSTART_TASK=$($task.State)"
           Write-Host "DCR_SESSION_FILE_EXISTS=$(Test-Path -LiteralPath $session)"
           Write-Host "DCR_MATCHING_PROCESSES=$($proc.Count)"
           Write-Host "DCR_LOG=$log"
+          if (-not (Test-Path -LiteralPath $session)) { throw 'DESKTOP_COMMANDER_PERSISTED_SESSION_NOT_FOUND_FOR_USER' }
           if ($proc.Count -lt 1) { throw 'DESKTOP_COMMANDER_REMOTE_PROCESS_NOT_FOUND' }
