@@ -55,6 +55,7 @@ let runtimeContext=null;
 let leasedPage=null;
 let attachedBrowser=null;
 let externalBrowserAttached=false;
+let lastAttachError=null;
 let stopping=false;
 let currentTask=null;
 let lastSig='',lastProgress=now(),probeDone=false,priorDisconnect=0;
@@ -156,16 +157,20 @@ function externalProfileProcessCount(){
 
 async function attachExistingBrowser(){
  try{
-  const b=await chromium.connectOverCDP(cdpEndpoint);
+  const b=await Promise.race([
+   chromium.connectOverCDP(cdpEndpoint),
+   new Promise((_,reject)=>setTimeout(()=>reject(new Error('CDP_ATTACH_TIMEOUT')),8000))
+  ]);
   const contexts=b.contexts();
-  if(!contexts.length) return null;
+  if(!contexts.length){lastAttachError='CDP_NO_CONTEXT';return null}
   attachedBrowser=b;externalBrowserAttached=true;runtimeContext=contexts[0];
   const pages=runtimeContext.pages();
   leasedPage=pages.find(p=>/chatgpt\.com/.test(p.url()))||null;
   if(!leasedPage) leasedPage=await runtimeContext.newPage();
+  lastAttachError=null;
   leaseState({acquiredAt:new Date().toISOString(),attachedVia:'CDP',cdpEndpoint,externalBrowserAttached:true});
   return leasedPage;
- }catch{return null}
+ }catch(e){lastAttachError=String(e.message||e);return null}
 }
 
 async function ensureLeasedPage(){
@@ -176,7 +181,7 @@ async function ensureLeasedPage(){
   const attached=await attachExistingBrowser();
   if(attached) return attached;
   const owners=externalProfileProcessCount();
-  if(owners>0) throw new Error('PROFILE_ALREADY_OWNED_NO_SECOND_LAUNCH:'+owners);
+  if(owners>0) throw new Error('EXISTING_BROWSER_PRESENT_NO_SECOND_LAUNCH owners='+owners+' attach='+String(lastAttachError||'UNKNOWN'));
   runtimeContext=await chromium.launchPersistentContext(profile,{headless:false,viewport:{width:1365,height:850}});
  }
  const pages=runtimeContext.pages();
