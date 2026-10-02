@@ -48,13 +48,6 @@ function enqueueTask(taskPath,targetInbox=inboxDir){
  return {status:'QUEUED_TO_EXISTING_PAGE_LEASE',marker,target};
 }
 
-const prior=readJson(statePath,null);
-if(prior&&prior.status==='LEASE_ACTIVE'&&isPidAlive(prior.pid)&&prior.pid!==process.pid){
- if(initialTaskPath){console.log(JSON.stringify(enqueueTask(initialTaskPath),null,2));process.exit(0)}
- console.log(JSON.stringify({status:'LEASE_ALREADY_ACTIVE',pid:prior.pid,pageUrl:prior.pageUrl||null},null,2));
- process.exit(0);
-}
-
 const globalWriter=acquireGlobalWriterLease({leasePath:globalWriterLeasePath,ownerRoot:root,inboxDir,marker:'RUNTIME_START'});
 if(!globalWriter.acquired){
  if(initialTaskPath&&globalWriter.current?.inboxDir){
