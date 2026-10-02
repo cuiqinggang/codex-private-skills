@@ -20,6 +20,7 @@ const pollMs=Number(arg('poll-ms','1200'));
 const silenceMs=Number(arg('silence-ms','45000'));
 const maxTurns=Number(arg('max-turns','24'));
 const maxText=Number(arg('max-text','80000'));
+const cdpEndpoint=arg('cdp-endpoint','http://127.0.0.1:9223');
 if(!profile) throw new Error('Usage: --profile <dir> [--task <task.json>] [--lease-root <dir>]');
 
 for(const d of [root,inboxDir,doneDir,failDir]) fs.mkdirSync(d,{recursive:true});
@@ -52,6 +53,8 @@ if(prior&&prior.status==='LEASE_ACTIVE'&&isPidAlive(prior.pid)&&prior.pid!==proc
 
 let runtimeContext=null;
 let leasedPage=null;
+let attachedBrowser=null;
+let externalBrowserAttached=false;
 let stopping=false;
 let currentTask=null;
 let lastSig='',lastProgress=now(),probeDone=false,priorDisconnect=0;
@@ -142,15 +145,44 @@ function ledger(){return readJson(ledgerPath,{schemaVersion:1,markers:{}})}
 function ledgerSet(marker,data){const x=ledger();x.markers[marker]={...(x.markers[marker]||{}),...data,updatedAt:new Date().toISOString()};writeJson(ledgerPath,x)}
 function delivered(marker){return Boolean(ledger().markers[marker]?.sentConfirmed)}
 
+function externalProfileProcessCount(){
+ if(process.platform!=='win32') return 0;
+ const escaped=profile.replace(/'/g,"''");
+ const ps="$p='"+escaped+"'; @(Get-CimInstance Win32_Process | Where-Object {$_.CommandLine -and $_.CommandLine.Contains($p)}).Count";
+ const r=spawnSync('powershell.exe',['-NoProfile','-Command',ps],{encoding:'utf8',windowsHide:true,timeout:5000});
+ const n=Number(String(r.stdout||'').trim());
+ return Number.isFinite(n)?n:0;
+}
+
+async function attachExistingBrowser(){
+ try{
+  const b=await chromium.connectOverCDP(cdpEndpoint);
+  const contexts=b.contexts();
+  if(!contexts.length) return null;
+  attachedBrowser=b;externalBrowserAttached=true;runtimeContext=contexts[0];
+  const pages=runtimeContext.pages();
+  leasedPage=pages.find(p=>/chatgpt\.com/.test(p.url()))||null;
+  if(!leasedPage) leasedPage=await runtimeContext.newPage();
+  leaseState({acquiredAt:new Date().toISOString(),attachedVia:'CDP',cdpEndpoint,externalBrowserAttached:true});
+  return leasedPage;
+ }catch{return null}
+}
+
 async function ensureLeasedPage(){
  const decision=pageLeaseDecision({taskFinalValid:false,explicitStop:false,
   existingUsablePage:Boolean(leasedPage&&!leasedPage.isClosed()),pageLeaseActive:Boolean(runtimeContext),pageRecoverable:true});
  if(decision.action==='REUSE_EXISTING_PAGE'||decision.action==='KEEP_PAGE_OPEN') return leasedPage;
- if(!runtimeContext) runtimeContext=await chromium.launchPersistentContext(profile,{headless:false,viewport:{width:1365,height:850}});
+ if(!runtimeContext){
+  const attached=await attachExistingBrowser();
+  if(attached) return attached;
+  const owners=externalProfileProcessCount();
+  if(owners>0) throw new Error('PROFILE_ALREADY_OWNED_NO_SECOND_LAUNCH:'+owners);
+  runtimeContext=await chromium.launchPersistentContext(profile,{headless:false,viewport:{width:1365,height:850}});
+ }
  const pages=runtimeContext.pages();
  leasedPage=pages.find(p=>/chatgpt\.com/.test(p.url()))||pages[0]||await runtimeContext.newPage();
  if(!/chatgpt\.com/.test(leasedPage.url())) await leasedPage.goto('https://chatgpt.com/',{waitUntil:'domcontentloaded',timeout:60000});
- leaseState({acquiredAt:new Date().toISOString()});return leasedPage;
+ leaseState({acquiredAt:new Date().toISOString(),attachedVia:externalBrowserAttached?'CDP':'LAUNCH',externalBrowserAttached});return leasedPage;
 }
 
 async function rotateTrueNewChatSamePage(task,cp){
@@ -252,7 +284,7 @@ async function ownerLoop(){
 async function explicitStop(signal){
  if(stopping)return;stopping=true;
  writeJson(statePath,{schemaVersion:1,status:'LEASE_RELEASED_EXPLICIT_STOP',pid:process.pid,signal,updatedAt:new Date().toISOString()});
- try{if(runtimeContext)await runtimeContext.close()}catch{}
+ try{if(runtimeContext&&!externalBrowserAttached)await runtimeContext.close()}catch{}
  process.exit(0);
 }
 process.on('SIGINT',()=>explicitStop('SIGINT'));process.on('SIGTERM',()=>explicitStop('SIGTERM'));
