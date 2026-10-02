@@ -1,3 +1,9 @@
+function rotate(s){
+ if(!s.safeCheckpoint) return {action:'WAIT_SAFE_CHECKPOINT',writeOwner:s.writeOwner};
+ if(!s.freshChatAvailable) return {action:'FAILOVER_BACKUP',fencePrimary:true,nextFenceToken:s.fenceToken+1,writeOwner:'BACKUP'};
+ if((s.freshSessionKind||'NEW_CHAT')!=='NEW_CHAT') return {action:'OPEN_TRUE_NEW_CHAT',writeOwner:s.writeOwner};
+ return {action:'ROTATE_TO_NEW_CHAT',writeOwner:s.writeOwner};
+}
 function decide(s){
  if(s.humanVerificationRequired) return {action:'PAUSE_FOR_HUMAN_VERIFICATION',writeOwner:s.writeOwner};
  if(s.primaryRecovered && s.writeOwner==='BACKUP') return {action:'RECONCILE_BEFORE_PRIMARY_RESUME',writeOwner:'BACKUP'};
@@ -10,15 +16,10 @@ function decide(s){
  }
  if(!s.pageHealthy || (s.transportDisconnected && s.hardDeadlineExceeded)){
   if(!s.readOnlyProbeDone) return {action:'PROBE_PAGE',writeOwner:s.writeOwner};
-  if(s.freshChatAvailable && s.safeCheckpoint) return {action:'ROTATE_SESSION',writeOwner:s.writeOwner};
-  if(!s.freshChatAvailable) return {action:'FAILOVER_BACKUP',fencePrimary:true,nextFenceToken:s.fenceToken+1,writeOwner:'BACKUP'};
-  return {action:'WAIT_SAFE_CHECKPOINT',writeOwner:s.writeOwner};
+  return rotate(s);
  }
  if(s.primaryPathBlocked && s.alternateValidPathAvailable) return {action:'FAILOVER_ALTERNATE_VALID',writeOwner:s.writeOwner};
- if(s.proactiveRotation){
-  if(!s.safeCheckpoint) return {action:'WAIT_SAFE_CHECKPOINT',writeOwner:s.writeOwner};
-  return {action:'ROTATE_SESSION',writeOwner:s.writeOwner};
- }
+ if(s.proactiveRotation) return rotate(s);
  return {action:'CONTINUE',writeOwner:s.writeOwner};
 }
 module.exports={decide};
