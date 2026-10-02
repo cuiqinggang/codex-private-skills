@@ -1,15 +1,15 @@
 ---
 name: long-term-memory-super-virtual-human
-version: "0.1.1"
-description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human）。以高智能主脑为核心，以长期记忆、权威任务合同、Checkpoint、按需工具路由和独立强备份实现长期现实任务推进；唯一优化目标仍是 T*=min(T_VALID)。
+version: "0.2.0"
+description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human）。以高智能主脑为核心，吸收成熟 Recovery/Long-Flow/Browser 机制，以长期记忆、权威任务合同、Checkpoint、按需工具路由、低相关冗余和独立强备份推进现实任务；唯一优化目标仍是 T*=min(T_VALID)。
 ---
 
-# 长期记忆超级虚拟人 v0.1.1
+# 长期记忆超级虚拟人 v0.2.0
 # Long-Term Memory Super Virtual Human
 
 ```ini
-VERSION=0.1.1
-STATUS=EARLY_REALITY_BASELINE
+VERSION=0.2.0
+STATUS=MATURE_CAPABILITY_ABSORPTION_BASELINE
 VIRTUAL_MATURE=NO
 FINAL_VALID=NO
 
@@ -23,105 +23,146 @@ CHECKPOINT_RECOVERY=REQUIRED
 INDEPENDENT_STRONG_BACKUP=REQUIRED
 CRITICAL_CAPABILITY_REDUNDANCY_REQUIRED=YES
 MIN_MATURE_PATHS_FOR_CRITICAL_CAPABILITY=2
+
+REASONIX_RECOVERY_KIT_ABSORPTION=R1
+ECC_V3_1_1=REUSE
+PLAYWRIGHT_NATIVE_AI_BROWSER=REUSE
+CHATGPT_MODEL_EFFORT_CONTROLLER=DESIGNED_NOT_E2E_CERTIFIED
+CHATGPT_SESSION_CONTINUITY_CONTROLLER=DESIGNED_NOT_E2E_CERTIFIED
 ```
 
 ## 1. 产品定位
 
-“长期记忆超级虚拟人”是用户的长期数字化认知与执行代理：在用户授权范围内持续记忆、观察、判断、调用现实能力、行动、验收和积累经验。
+“长期记忆超级虚拟人”是用户的长期数字化认知与执行代理：在授权范围内持续记忆、观察、判断、调用现实能力、行动、验收、恢复和积累经验。
 
-它不是把全部工具同时塞进一个巨型 Agent，而是保持一个**轻入口 + 强能力池 + 按需激活**的高智能核心。
+运行形态固定为：
 
 ```text
-用户现实目标
-→ 高智能主脑
-→ 读取当前任务合同 / 必要长期记忆
-→ 查询能力索引
-→ 只激活本轮必要工具
-→ 现实执行
-→ 自动验证
+轻入口
+→ 读取最小必要长期记忆 / TASK_CONTRACT
+→ 查 Capability Registry
+→ 发现成熟能力
+→ 只激活本轮必要能力
+→ Reality 执行与验证
 → 写回权威状态
 → FINAL_VALID
 ```
 
-## 2. 三个独立基础资产
+能力池可以很大，但当前工作集必须小。
 
-本 Skill 调用但不合并：
+## 2. 方法与成熟能力来源
+
+本 Skill 调用但不复制以下独立成熟资产：
 
 - 极限短时间智能体宪法 v0.3.1；
 - 极限短时间自动化闭环 v2.0；
-- GPT直连Windows双路执行桥 v0.2.0。
+- GPT直连Windows双路执行桥 v0.2.0；
+- Reasonix Recovery Kit；
+- ECC v3.1.1；
+- Playwright Native AI Browser；
+- 本机 Mature AI Coding SuperTool Ecosystem Station。
 
-它们分别负责判断原则、完整 T_VALID 工作方法、Windows 主备现实通道。
+成熟能力吸收边界见 `MATURE_CAPABILITY_ABSORPTION_R1.md`。
 
 ## 3. 默认主脑
 
-GPT 当前为首选主脑候选，因为它可组合推理、网络、连接器和本地执行能力。
+GPT 当前为首选主脑候选，但不是不可替代真理。
 
 ```ini
 GPT_IS_UNREPLACEABLE=NO
 ```
 
-只有 Reality 数据能证明某条路线是否更快。
+简单任务优先主脑直达。只有加入工程执行器、长流程模块、生态工作站或并行层能让任务进入 VALID，或降低完整 T_VALID 时才升级执行档位。
 
 ## 4. 轻入口、强后端
 
 ```text
-先识别任务
-→ 查 TOOL_INDEX
-→ 只激活本轮必要能力
+识别任务
+→ 查 TOOL_INDEX / CAPABILITY_REGISTRY
+→ 优先成熟方案
+→ 只加载最小必要 Skill / Tool
 → 能原生直达则直达
-→ 需要工程化才调用 Codex / 其他执行器
-→ 能并行且能降低完整 T_VALID 才拆子智能体
+→ 工程化再调用 Codex / Reasonix
+→ 长流程复用 ECC
+→ 多工具重工程按需唤醒成熟生态站
 ```
 
-不因为工具已经安装就默认加载，不因为多智能体“更高级”就增加层级。能力发现与即时健康探测见 `CAPABILITY_REGISTRY.md`。
+不因为安装了数百个 Skill 就全部加载，也不默认私有 Skill 一定优于当前外部成熟方案。
 
 ## 5. 长流程防漂移
 
-长任务必须有一个**单任务权威合同 / Source of Truth**。
+长任务必须有单任务 Source of Truth：
 
-主脑、子任务、Codex 和其他执行器都以同一 TASK_ID / 合同版本为准。与权威合同冲突的新增范围默认停止；目标变更必须显式更新合同。
+```text
+TASK_CONTRACT
+= FINAL_REALITY_GOAL
++ SCOPE
++ HARD_BOUNDARIES
++ DONE_WHEN
++ EVIDENCE_REQUIRED
+```
 
-Checkpoint 负责“恢复到哪里继续”，不替代 Source of Truth。
+Checkpoint 只负责“恢复到哪里”，不替代任务合同。
+
+长流程的 checkpoint/handoff、Gate/Repair、lease/fencing 优先复用 Reasonix/ECC 已有成熟能力，不重造第二套。
 
 详见：
 - `DRIFT_CONTROL.md`
 - `DRIFT_BENCHMARK.md`
+- `MATURE_CAPABILITY_ABSORPTION_R1.md`
 
-## 6. 页面与长期记忆
+## 6. 页面、记忆与连续性
 
 聊天页面只是工作内存：
 
 ```text
 长期记忆
 + 项目权威状态
-+ 当前任务合同
++ TASK_CONTRACT
 + Checkpoint
 + 当前工作会话
 ```
 
-页面迟缓、上下文过长或无响应时，Checkpoint 后换页恢复，不把完整历史永久塞入当前上下文。
+页面迟缓、上下文过长、无响应或损坏时，不无限塞上下文；由外部连续性控制器探测并恢复。
+
+详见 `CHATGPT_SESSION_CONTINUITY_CONTROLLER.md`。
 
 ## 7. 工具与执行器
 
-工具是能力池，不默认平级常驻。按 `TOOL_INDEX.md` 路由，包括但不限于：
-
+工具是能力池，不默认平级常驻。按 `TOOL_INDEX.md` 路由，包括：
 - Web / Browser；
 - Desktop Commander Remote；
 - GitHub Windows runner；
 - Codex；
 - Reasonix / DeepSeek；
+- ECC；
+- Playwright Native AI Browser；
 - MCP / Plugin / API / CLI；
-- n8n / OpenClaw；
-- 图像、视频和专项模型。
-
-GUI 不是唯一执行面。优先 API / Connector / CLI / 原生协议；只有任务本身必须操作 GUI 时才启用交互桌面自动化。
+- Mature AI Coding SuperTool Ecosystem Station；
+- 图像、视频和专项模型；
+- OpenAI 托管云与按需外部云节点。
 
 ## 8. 模型与思考强度
 
-当前 ChatGPT 页面自身的产品级模型 / 思考档不能假定由本 Skill 编程切换；外部 Agent / API / 执行器若暴露 model / reasoning 参数，则可按任务显式路由。
+当前 ChatGPT 页面没有官方“由当前回答中的 GPT 直接切换自身 UI 模型/Thinking 档”的程序化接口。
 
-详见 `MODEL_ROUTER.md`。
+v0.2 采用双控制面：
+
+```text
+A. ChatGPT Page Mode
+GPT/Router → MODEL_REQUEST → 外部 UI Controller
+→ 切换 → 读回确认 → exactly-once continue
+
+B. Programmable Agent Mode
+Agents API / 外部执行器
+→ 直接设置 model / reasoning.effort
+```
+
+Page Mode 优先复用 Playwright Native AI Browser，不重新造第二套 ChatGPT 浏览器通信。
+
+详见：
+- `MODEL_ROUTER.md`
+- `CHATGPT_MODEL_EFFORT_CONTROLLER.md`
 
 ## 9. 现实权限边界
 
@@ -135,47 +176,74 @@ GUI 不是唯一执行面。优先 API / Connector / CLI / 原生协议；只有
 
 所有会阻塞 FINAL_VALID 的关键能力默认要求至少两条成熟路径，并尽量分离控制面、认证、传输、运行身份、执行引擎、供应商和存储位置。
 
-主路优化完整 T_VALID；备路允许更慢，但必须能达到同一个 FINAL_VALID。主路故障时先切已验证备路恢复业务，再修主路，并重新补齐第二条低相关冗余。
+主路优化完整 T_VALID；备路允许更慢，但必须能达到同一个 FINAL_VALID。
+
+主路异常：
+```text
+先 failover 恢复业务
+→ 再 repair 主路
+→ 重新补齐至少双路冗余
+```
 
 详见 `RESILIENCE_REDUNDANCY.md`。
 
 ## 11. 按需执行档位
 
-简单任务不启动重型工作站；工程、长流程和多工具复杂任务分别按需升级到成熟执行档位。
+- P0 Direct Fast Path
+- P1 Engineering Executor
+- P2 Long-Flow ECC
+- P3 Mature AI Coding SuperTool Ecosystem Station
+- P4 Independent Continuity
+- P5 Cloud / Network Execution Substrate
 
-现有 ECC v3.1.1 和本机成熟态 AI Coding SuperTool 生态站作为可调用能力，不重新从零建设。
+详见 `EXECUTION_PROFILES.md` 与 `CLOUD_RUNTIME_OPTIONS.md`。
 
-详见 `EXECUTION_PROFILES.md`。
+## 12. GPT 故障恢复
 
-## 12. 恢复与强备份
+GPT 会话故障与 GPT 服务故障分开处理：
 
-页面、网络、工具、执行器故障都按可恢复事件处理。恢复阶梯见 `RECOVERY.md`。
+```text
+页面/会话坏
+→ Playwright query/recovery
+→ checkpoint/handoff
+→ 新 ChatGPT 会话 exactly-once 继续
 
-GPT 本身不可用时必须存在独立强备份路线；故障检测与接管必须位于 GPT 之外，不能依赖 GPT 自报故障。主脑故障检测、lease/fencing 与备脑接管见 `BRAIN_FAILOVER_CONTRACT.md`。未通过真实 failover Reality 前保持 `INDEPENDENT_STRONG_BACKUP=REQUIRED`，不得伪装完成。
+GPT 服务不可用
+→ 外部 watchdog 判定
+→ fencing primary writer
+→ Reasonix / DeepSeek 独立备脑
+→ 读取同一 TASK_CONTRACT + Checkpoint
+→ 继续 FINAL_VALID
+```
 
-## 13. 当前开放问题
+详见：
+- `CHATGPT_SESSION_CONTINUITY_CONTROLLER.md`
+- `BRAIN_FAILOVER_CONTRACT.md`
 
-- GPT Checkpoint / 自动换页恢复 Reality；
-- GPT 本身不可用时的独立强备份 Reality；
-- ChatGPT 当前会话模型 / 思考强度可编程切换；
-- 多层 Agent 自动化编排路线的同批正式任务 Reality；
-- Desktop Commander Remote 用户级长期常驻最终 Reality；
-- 共同私库第二份本地完整备份最终 Reality。
+## 13. v1.0 毕业门槛
+
+以下未全部通过前不签 v1.0：
+
+1. DCR 注销/重登录自动恢复 Reality PASS；
+2. ChatGPT model/effort 自动切换 + 读回确认 PASS；
+3. 页面无响应/上下文损坏 → 新会话恢复 PASS；
+4. GPT 服务不可用 → 独立备脑接管 PASS；
+5. ECC lease/fencing 防脑裂 PASS；
+6. GitHub + K盘状态恢复 PASS；
+7. 至少一组真实任务证明成熟能力吸收没有让普通任务变重。
 
 ## 14. 当前入口
 
-用户可直接说：
+用户只给现实目标。
+
+运行时：
 
 ```text
-使用“长期记忆超级虚拟人”完成这个任务，并以完整 T_VALID 作为唯一效率指标。
-```
-
-复杂 Reality 测试时：
-
-```text
-参考“极限短时间自动化闭环 v2.0”；
-需要本地 Windows 时优先使用“GPT直连Windows双路执行桥 v0.2.0”；
-按 TOOL_INDEX 最小加载；
-长流程以唯一 TASK_CONTRACT 为权威；
+参考极限短时间自动化闭环 v2.0；
+先查成熟方案；
+按需加载；
+长流程复用 ECC；
+ChatGPT 页面控制复用 Playwright Native AI Browser；
+关键能力保留低相关双路；
 记录 FLOW_START → FINAL_VALID 的完整 T_VALID。
 ```
