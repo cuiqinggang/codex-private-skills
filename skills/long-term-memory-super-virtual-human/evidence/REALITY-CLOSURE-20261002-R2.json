@@ -35,7 +35,11 @@
     "repoHeadBeforeClosureCommit": "bae165c1949d326cd6ea9b4696cea33fc93e4d62",
     "priorBundleVerify": "PASS",
     "priorBundleHead": "66af1cc752c67d1c57948660f77ff0612d227a36",
-    "freshPostCommitRestore": "PENDING"
+    "freshPostCommitRestore": "PASS",
+    "freshBundle": "K:\\AI\\backups\\codex-private-skills\\bundles\\codex-private-skills-20261002-LTMVH-R2-00e7cd9.bundle",
+    "freshRestoredHead": "00e7cd9ac0db66d17e745f7ee87444647d6782da",
+    "freshRestoreFsck": "PASS",
+    "freshRestoreWorkingTree": "CLEAN"
   },
   "gates": {
     "virtualArchitectureAndStateMachine": "PASS",
@@ -43,7 +47,7 @@
     "pageToFreshSessionRecovery": "OPEN",
     "independentBackupBrain": "PASS",
     "leaseFencing": "PASS",
-    "githubAndKRestore": "PENDING_FRESH_POST_COMMIT",
+    "githubAndKRestore": "PASS",
     "dcrLogoffRelogin": "OPEN",
     "realTaskNoBloatRegression": "OPEN"
   },
