@@ -29,23 +29,31 @@ async function recoverExistingChat({endpoint='http://127.0.0.1:9223',marker,prom
  if(!target) throw new Error('NO_EXISTING_CHATGPT_TARGET');
  const c=await new CdpClient(target.webSocketDebuggerUrl).open();
  try{
-  await c.send('Page.navigate',{url:'https://chatgpt.com/'});
-  let composer=false;
-  for(let i=0;i<40;i++){
-   composer=await c.eval("Boolean(document.querySelector('#prompt-textarea,[contenteditable=\"true\"][role=\"textbox\"],textarea'))");
-   if(composer)break;
-   await sleep(500);
+  const currentComposerText=await c.eval("(()=>{const e=document.querySelector('#prompt-textarea,[contenteditable=\"true\"][role=\"textbox\"],textarea');return e?(e.innerText||e.textContent||e.value||''):''})()");
+  const currentBodyHasMarker=await c.eval("(document.body?.innerText||'').includes("+JSON.stringify(marker)+")");
+  let submissionCount=0;
+  if(currentComposerText&&currentComposerText.includes(marker)){
+   const clickedDraft=await c.eval("(()=>{const b=document.querySelector('button[data-testid=\"send-button\"],button[aria-label*=\"发送\"],button[aria-label*=\"Send\"]');if(!b||b.disabled)return false;b.click();return true})()");
+   if(!clickedDraft) throw new Error('EXISTING_DRAFT_SEND_BUTTON_UNAVAILABLE');
+   submissionCount=1;
+  }else if(!currentBodyHasMarker){
+   await c.send('Page.navigate',{url:'https://chatgpt.com/'});
+   let composer=false;
+   for(let i=0;i<40;i++){
+    composer=await c.eval("Boolean(document.querySelector('#prompt-textarea,[contenteditable=\"true\"][role=\"textbox\"],textarea'))");
+    if(composer)break;
+    await sleep(500);
+   }
+   if(!composer) throw new Error('TRUE_NEW_CHAT_COMPOSER_NOT_READY');
+   const path=await c.eval('location.pathname');
+   if(path!=='/'&&path!=='') throw new Error('NOT_TRUE_NEW_CHAT:'+path);
+   const focused=await c.eval("(()=>{const e=document.querySelector('#prompt-textarea,[contenteditable=\"true\"][role=\"textbox\"],textarea');if(!e)return false;e.focus();return true})()");
+   if(!focused) throw new Error('NO_COMPOSER');
+   await c.send('Input.insertText',{text:prompt});
+   const clicked=await c.eval("(()=>{const b=document.querySelector('button[data-testid=\"send-button\"],button[aria-label*=\"发送\"],button[aria-label*=\"Send\"]');if(!b||b.disabled)return false;b.click();return true})()");
+   if(!clicked) throw new Error('NO_ENABLED_SEND_BUTTON');
+   submissionCount=1;
   }
-  if(!composer) throw new Error('TRUE_NEW_CHAT_COMPOSER_NOT_READY');
-  const path=await c.eval('location.pathname');
-  if(path!=='/'&&path!=='') throw new Error('NOT_TRUE_NEW_CHAT:'+path);
-  const bodyHasMarker=await c.eval("(document.body?.innerText||'').includes("+JSON.stringify(marker)+")");
-  if(bodyHasMarker) return {status:'ALREADY_DELIVERED_NO_RESEND',submissionCount:0,markerCount:1,url:await c.eval('location.href'),transport:'RAW_CDP_EXISTING_BROWSER'};
-  const focused=await c.eval("(()=>{const e=document.querySelector('#prompt-textarea,[contenteditable=\"true\"][role=\"textbox\"],textarea');if(!e)return false;e.focus();return true})()");
-  if(!focused) throw new Error('NO_COMPOSER');
-  await c.send('Input.insertText',{text:prompt});
-  const clicked=await c.eval("(()=>{const b=document.querySelector('button[data-testid=\"send-button\"],button[aria-label*=\"发送\"],button[aria-label*=\"Send\"]');if(!b||b.disabled)return false;b.click();return true})()");
-  if(!clicked) throw new Error('NO_ENABLED_SEND_BUTTON');
   let markerSeen=false;
   for(let i=0;i<40;i++){
    markerSeen=await c.eval("(document.body?.innerText||'').includes("+JSON.stringify(marker)+")");
@@ -61,7 +69,7 @@ async function recoverExistingChat({endpoint='http://127.0.0.1:9223',marker,prom
    await sleep(500);
   }
   if(!ackSeen) throw new Error('ACK_TIMEOUT');
-  return {status:'TRUE_NEW_CHAT_SENT_CONFIRMED',submissionCount:1,markerCount:1,ackConfirmed:ackSeen,
+  return {status:submissionCount===0?'ALREADY_DELIVERED_NO_RESEND':'TRUE_NEW_CHAT_SENT_CONFIRMED',submissionCount,markerCount:1,ackConfirmed:ackSeen,
    url:await c.eval('location.href'),transport:'RAW_CDP_EXISTING_BROWSER',branchUsed:false,newBrowserLaunched:false};
  }finally{c.close()}
 }
