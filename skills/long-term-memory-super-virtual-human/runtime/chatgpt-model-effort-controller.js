@@ -15,21 +15,25 @@ async (page) => {
     cfg = await page.evaluate(() => JSON.parse(sessionStorage.getItem('__ltmvh_model_effort_v1') || '{}'));
     record.operation=cfg.operation; record.requested=cfg.target || null;
     if (await menu.isVisible()) await page.keyboard.press('Escape');
-    const before = (await trigger.innerText()).trim();
-    record.original = before; record.actual = before;
+    const normalize = (value) => ({'中':'Medium','高':'High',Medium:'Medium',High:'High'}[String(value || '').trim()] || null);
+    const displayFor = (canonical, localeSample) => /[中高]/.test(localeSample) ? (canonical === 'Medium' ? '中' : '高') : canonical;
+    const beforeRaw = (await trigger.innerText()).trim();
+    const before = normalize(beforeRaw);
+    const target = normalize(cfg.target);
+    record.originalRaw = beforeRaw; record.original = before; record.actualRaw = beforeRaw; record.actual = before;
     record.conversationUrl = page.url();
     if (cfg.operation === 'read') { record.status='READ'; return record; }
     if (cfg.operation !== 'set') throw Error('UNSUPPORTED_OPERATION');
     record.transitions.push('SET_REQUESTED');
-    if (!['Medium','High'].includes(cfg.target)) { record.status='UNAVAILABLE'; record.reason='TARGET_NOT_ALLOWED_OR_DISCOVERED'; record.changed=false; return record; }
-    if (!['Medium','High'].includes(before)) { record.status='UNAVAILABLE'; record.reason='ORIGINAL_OUTSIDE_CERTIFIED_RANGE'; record.changed=false; return record; }
-    if (before === cfg.target) { record.status='READBACK_MATCH'; record.changed=false; return record; }
+    if (!target) { record.status='UNAVAILABLE'; record.reason='TARGET_NOT_ALLOWED_OR_DISCOVERED'; record.changed=false; return record; }
+    if (!before) { record.status='UNAVAILABLE'; record.reason='ORIGINAL_OUTSIDE_CERTIFIED_RANGE'; record.changed=false; return record; }
+    if (before === target) { record.status='READBACK_MATCH'; record.changed=false; return record; }
     await trigger.click();
     const strength = menu.getByRole('menuitem',{name:'强度',exact:true});
     if (await strength.count() !== 1 || !(await strength.isEnabled())) throw Error('STRENGTH_UNAVAILABLE');
     const status = menu.getByRole('status');
     const announcement = (await status.innerText()).trim();
-    if (!announcement.startsWith(before+'，')) throw Error('MENU_READBACK_MISMATCH');
+    if (!announcement.startsWith(beforeRaw+'，')) throw Error('MENU_READBACK_MISMATCH');
     record.beforeAnnouncement=announcement;
     await safety();
     await strength.press(before==='Medium'?'ArrowRight':'ArrowLeft');
@@ -38,9 +42,11 @@ async (page) => {
     const afterAnnouncement = (await status.innerText()).trim();
     record.afterAnnouncement=afterAnnouncement;
     await page.keyboard.press('Escape');
-    record.actual=(await trigger.innerText()).trim();
+    record.actualRaw=(await trigger.innerText()).trim();
+    record.actual=normalize(record.actualRaw);
     await safety();
-    if (record.actual !== cfg.target || !afterAnnouncement.startsWith(cfg.target+'，')) throw Error('READBACK_MISMATCH');
+    const targetRaw=displayFor(target,beforeRaw);
+    if (record.actual !== target || !afterAnnouncement.startsWith(targetRaw+'，')) throw Error('READBACK_MISMATCH');
     record.transitions.push('READBACK_MATCH'); record.status='READBACK_MATCH';
     record.completedAt=new Date().toISOString(); return record;
   } catch (error) {

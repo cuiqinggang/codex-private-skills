@@ -3,7 +3,7 @@
 ```ini
 PROJECT=长期记忆超级虚拟人
 WORKSPACE_VERSION=v1.0
-SKILL_VERSION=v0.4.1
+SKILL_VERSION=v0.4.2
 SKILL_ENGLISH_NAME=Long-Term Memory Super Virtual Human
 
 STATE=10
@@ -35,13 +35,13 @@ K_DRIVE_REPO_BACKUP_RESTORE=PASS
 
 NATURAL_STALL_DETECTION_FULL_E2E=PASS_BY_SAFE_FAULT_INJECTION_R10
 DCR_LOGOFF_RELOGIN_REALITY=OPEN
-MODEL_EFFORT_FULL_E2E=OPEN
+MODEL_EFFORT_FULL_E2E=PASS_R14
 REAL_VALUABLE_LONG_TASK_FINAL_VALID=OPEN
 ```
 
 ## 当前正式判断
 
-- 技能包已升级为 **v0.4.1**；v0.4 的核心仍是默认连续性运行合同，v0.4.1 补齐了活跃长回答卡死的自动判死、停止旧 turn 与 true New chat 恢复 Reality。
+- 技能包已升级为 **v0.4.2**；v0.4 的核心仍是默认连续性运行合同，v0.4.1 补齐活跃长回答卡死的自动恢复，v0.4.2 闭合模型/Thinking 切换→exactly-once continuation→恢复原档完整 Reality。
 - 当用户明确说“按长期记忆超级虚拟人运行/完成当前任务”时，当前任务自动启用：连续性监控、Checkpoint、长页提前轮换、真正 New chat、禁止 Branch、复用已打开 GPT 浏览器、exactly-once、全局 writer lease。
 - 长任务不追求无限单页；页面较长、下一阶段复杂或已有卡顿历史时，在安全 checkpoint 能换就提前换。
 - “连接已断开/正在重新连接”不等于后台任务失败；先观察后台进展，确认停滞后才恢复，避免重复执行。
@@ -84,14 +84,13 @@ GLOBAL_WRITER_LEASE=PASS
 - Reasonix v1.38.6 + DeepSeek-V4.1-Flash 独立备脑 Reality PASS；
 - GitHub + K 盘状态备份/恢复已有 PASS 证据；
 - Windows 执行层已具备 Desktop Commander Remote + GitHub self-hosted runner 双路径基础；
-- 模型/Thinking：Medium → High + 语义读回已有 PASS，但完整 continue + restore E2E 仍 OPEN。
+- 模型/Thinking：R14 已完成现有浏览器复用、High → Medium、语义读回、exactly-once continuation、ACK、非法档位 fail-closed 与恢复原 High；`MODEL_EFFORT_FULL_E2E=PASS_R14`。
 
 ## 当前未完成且不得误报
 
-1. Desktop Commander 实际注销/重登后的自动恢复 Reality；
-2. ChatGPT 模型/Thinking 切换 → exactly-once 继续 → 恢复原档完整 E2E；
-3. 至少一组真实有价值长任务从开始到 FINAL_VALID 的完整回归；
-4. 独立备脑完成真实业务 DONE_WHEN，而不仅是恢复/健康 ACK。
+1. Desktop Commander 实际注销/重登后的自动恢复 Reality（R12 进程重连 PASS 不能替代本门）；
+2. 至少一组真实有价值长任务从开始到 FINAL_VALID 的完整回归；
+3. 独立备脑完成真实业务 DONE_WHEN，而不仅是恢复/健康 ACK。
 
 以上未全部完成前，保持 FINAL_VALID=NO，不升级 v1.0 正式成熟版。
 

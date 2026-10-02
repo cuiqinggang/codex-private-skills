@@ -1,0 +1,83 @@
+﻿{
+    "schemaVersion":  1,
+    "test":  "DCR_PROCESS_RECONNECT_R12",
+    "startedAt":  "2026-10-03T03:16:36.0103194+08:00",
+    "watchdogPid":  28868,
+    "watchdogAliveBefore":  true,
+    "targetPids":  [
+                       14876,
+                       22304,
+                       19700,
+                       23796,
+                       24212
+                   ],
+    "before":  [
+                   {
+                       "ProcessId":  28868,
+                       "ParentProcessId":  1636,
+                       "Name":  "powershell.exe",
+                       "CommandLine":  "\"powershell.exe\" -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File \"C:\\Users\\A\\AppData\\Local\\DesktopCommanderRemote\\Start-DesktopCommanderRemote.ps1\""
+                   },
+                   {
+                       "ProcessId":  24212,
+                       "ParentProcessId":  28868,
+                       "Name":  "cmd.exe",
+                       "CommandLine":  "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Program Files\\nodejs\\npx.cmd\" -y @wonderwhy-er/desktop-commander@latest remote\""
+                   },
+                   {
+                       "ProcessId":  23796,
+                       "ParentProcessId":  24212,
+                       "Name":  "node.exe",
+                       "CommandLine":  "\"C:\\Program Files\\nodejs\\\\node.exe\"  \"C:\\Program Files\\nodejs\\\\node_modules\\npm\\bin\\npx-cli.js\" -y @wonderwhy-er/desktop-commander@latest remote"
+                   },
+                   {
+                       "ProcessId":  19700,
+                       "ParentProcessId":  23796,
+                       "Name":  "cmd.exe",
+                       "CommandLine":  "C:\\Windows\\system32\\cmd.exe /d /s /c desktop-commander remote"
+                   },
+                   {
+                       "ProcessId":  22304,
+                       "ParentProcessId":  19700,
+                       "Name":  "node.exe",
+                       "CommandLine":  "\"node\"   \"C:\\Users\\A\\AppData\\Local\\npm-cache\\_npx\\4b4c857f6efdfb61\\node_modules\\.bin\\\\..\\@wonderwhy-er\\desktop-commander\\dist\\index.js\" remote"
+                   },
+                   {
+                       "ProcessId":  14876,
+                       "ParentProcessId":  22304,
+                       "Name":  "node.exe",
+                       "CommandLine":  "\"C:\\Program Files\\nodejs\\node.exe\" C:\\Users\\A\\AppData\\Local\\npm-cache\\_npx\\4b4c857f6efdfb61\\node_modules\\@wonderwhy-er\\desktop-commander\\dist\\index.js"
+                   }
+               ],
+    "killed":  [
+                   14876,
+                   22304
+               ],
+    "disconnectedAt":  "2026-10-03T03:16:38.9419184+08:00",
+    "reconnectedAt":  "2026-10-03T03:16:52.3215001+08:00",
+    "watchdogAliveAfter":  true,
+    "after":  [
+                  {
+                      "ProcessId":  33052,
+                      "ParentProcessId":  28868,
+                      "Name":  "cmd.exe",
+                      "CommandLine":  "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Program Files\\nodejs\\npx.cmd\" -y @wonderwhy-er/desktop-commander@latest remote\""
+                  },
+                  {
+                      "ProcessId":  16292,
+                      "ParentProcessId":  33052,
+                      "Name":  "node.exe",
+                      "CommandLine":  "\"C:\\Program Files\\nodejs\\\\node.exe\"  \"C:\\Program Files\\nodejs\\\\node_modules\\npm\\bin\\npx-cli.js\" -y @wonderwhy-er/desktop-commander@latest remote"
+                  }
+              ],
+    "serverAfter":  [
+
+                    ],
+    "newRemotePids":  [
+                          33052,
+                          16292
+                      ],
+    "oldRemotePidsGone":  true,
+    "pass":  true,
+    "durationMs":  16683
+}

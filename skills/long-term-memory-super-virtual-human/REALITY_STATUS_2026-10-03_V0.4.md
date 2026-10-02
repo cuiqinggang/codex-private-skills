@@ -1,7 +1,7 @@
-# 长期记忆超级虚拟人 v0.4.1｜状态固化 2026-10-03
+# 长期记忆超级虚拟人 v0.4.2｜状态固化 2026-10-03
 
 ```ini
-VERSION=0.4.1
+VERSION=0.4.2
 STATUS=VIRTUAL_MATURE_CONTINUITY_RUNTIME_ACTIVE
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
@@ -34,7 +34,7 @@ K_DRIVE_REPO_BACKUP_RESTORE=PASS
 
 NATURAL_STALL_DETECTION_FULL_E2E=PASS_BY_SAFE_FAULT_INJECTION_R10
 DCR_LOGOFF_RELOGIN_REALITY=OPEN
-MODEL_EFFORT_FULL_E2E=OPEN
+MODEL_EFFORT_FULL_E2E=PASS_R14
 REAL_VALUABLE_LONG_TASK_FINAL_VALID=OPEN
 ```
 
@@ -88,11 +88,21 @@ R10（v0.4.1）：
 权威证据：`evidence/STALL-DETECTION-FULL-E2E-REALITY-20261003-R10.json`。
 正式常驻 v0.4.1 runtime 复位证据：`evidence/RUNTIME-ACTIVATION-20261003-V041-R11.json`。
 
+R14（v0.4.2）：
+- 复用现有 shared-mcp 浏览器：PASS；未启动第二浏览器；
+- 中文 UI `高/中` 与 canonical `High/Medium` 归一化：PASS；
+- High → Medium 实际切换与语义读回：PASS；
+- continuation 只提交一次，ACK：PASS；
+- exactly-once：PASS；非法档位 fail-closed：PASS；
+- finally 恢复原 High：PASS。
+权威证据：`evidence/MODEL-EFFORT-FULL-E2E-REALITY-20261003-R14.json`。
+
+补充：`DCR_PROCESS_RECONNECT_R12=PASS` 只证明 Desktop Commander Remote 进程断连后的自动重连，不等于 Windows 注销/重登 Reality。
+
 ## 当前仍未完成
 
-1. Desktop Commander 注销/重登 Reality；
-2. 模型/Thinking 完整切换、继续、恢复 E2E；
-3. 真实有价值长任务完整 FINAL_VALID；
-4. 独立备脑完成业务级 DONE_WHEN。
+1. Desktop Commander 真正注销/重登 Reality；
+2. 真实有价值长任务完整 FINAL_VALID；
+3. 独立备脑完成业务级 DONE_WHEN。
 
 这些门槛未全部满足前，不宣布 FINAL_VALID，不升级 v1.0 正式成熟版。

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.4.2 - 2026-10-03
+
+- 闭合 ChatGPT 模型/Thinking 完整 E2E：复用现有 shared-mcp 浏览器，经 CDP 连接完成 High→Medium 实际切换、语义读回、exactly-once continuation、ACK、非法档位 fail-closed，并恢复原 High；Reality R14 PASS；
+- 修复中文界面兼容：`中/高` 与 `Medium/High` 双向归一化，不再把中文 UI 标签误判为未认证档位；
+- E2E harness 改为 `connectOverCDP` 复用现有浏览器，删除再次 `launchPersistentContext` 的错误路径；
+- 当前 ChatGPT 新 DOM 不再暴露旧 `data-message-author-role` 时，R14 使用页面可见“你说/ChatGPT 说”语义完成 exactly-once 验证；
+- `FINAL_VALID=NO` 不变；仍需 DCR 真正注销/重登、真实有价值长任务 FINAL_VALID、独立备脑业务级 DONE_WHEN。
+
 ## 0.4.1 - 2026-10-03
 
 - 闭合会话连续性的剩余核心门：安全长回答故障注入 → 活跃 turn 静默超时 → read-only probe → 自动停止旧 turn → Checkpoint → 真正 New chat → 最小 handoff exactly-once → ACK，Reality R10 PASS；

@@ -107,10 +107,10 @@ SET_REQUESTED
 
 当前：
 ```ini
-MODEL_EFFORT_CONTROLLER=SWITCH_READBACK_REALITY_PASS_E2E_OPEN
+MODEL_EFFORT_CONTROLLER=FULL_E2E_REALITY_PASS_R14
 DETERMINISTIC_UIA_PATH=REJECTED_AS_PRIMARY
 PLAYWRIGHT_PATH=MATURE_BASE_REUSED
-E2E_CERTIFIED=NO
+E2E_CERTIFIED=YES
 ```
 
 ## Model/Effort Reality 2026-10-02 / 01
@@ -135,4 +135,14 @@ E2E_CERTIFIED=NO
 - Send step: FAIL because the user turn was not DOM-confirmed within 10 seconds; duplicate sends observed=0.
 - Repeated automated relaunches then entered a Cloudflare challenge, so final Medium restoration readback could not be certified in this run.
 - The E2E harness was repaired so future failures attempt restoration in `finally` before closing the context.
-- Overall: switch/readback capability is Reality-proven; full `CONTINUE_ONCE → answer → restore` remains OPEN. Evidence: `evidence/REALITY-CLOSURE-20261002-R2.json`.
+- Overall: switch/readback capability is Reality-proven;该次 full `CONTINUE_ONCE → answer → restore` 仍 OPEN。Evidence: `evidence/REALITY-CLOSURE-20261002-R2.json`.
+
+## Model/Effort Reality 2026-10-03 / R14
+- Existing shared-mcp browser reuse: PASS；`newBrowserLaunched=false`，通过 `connectOverCDP` 连接现有浏览器。
+- 当前中文 UI 原档为 `高`，规范化为 `High`；成功切到 `中/Medium`，语义读回 PASS。
+- Continuation 只提交一次；页面确认 `userCount=1`，收到 `LTMVH-MODEL-EFFORT-E2E-20261003-R14-ACK`；exactly-once PASS。
+- 非法目标 `Impossible`：fail-closed，`changed=false`。
+- finally 恢复原档：`中/Medium → 高/High`，读回 PASS。
+- 当前 ChatGPT DOM 已不稳定暴露旧 `data-message-author-role`；R14 verifier 使用可见“你说/You said”语义兜底，不把 DOM 适配失败冒充业务失败。
+- Evidence: `evidence/MODEL-EFFORT-FULL-E2E-REALITY-20261003-R14.json`。
+- Result: `MODEL_EFFORT_FULL_E2E=PASS_R14`；该门已闭合，但项目 `FINAL_VALID=NO` 不变。

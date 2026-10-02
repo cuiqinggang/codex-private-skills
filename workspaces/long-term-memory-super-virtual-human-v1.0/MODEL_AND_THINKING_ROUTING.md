@@ -23,8 +23,10 @@ EXTERNAL_MODEL_ROUTING=AVAILABLE_WHEN_TOOL_OR_API_EXPOSES_MODEL_SELECTION
 4. 同一现实任务如果需要比较模型档位，必须记录完整 T_VALID，而不是只看单次回答速度；
 5. 未来若 ChatGPT 提供可靠的可编程模型/思考档切换接口，再升级此能力状态。
 
-## 不消失项
+## Reality 状态
 
-这是长期项目的明确开放问题，直到得到 Reality 证明前保持：
+2026-10-03 R14 已证明当前 ChatGPT UI 的外部确定性控制链：复用现有 shared-mcp 浏览器，High→Medium 切换与语义读回 PASS；continuation exactly-once + ACK PASS；非法档位 fail-closed；finally 恢复原 High PASS。中文 `高/中` 已规范化为 canonical `High/Medium`。
 
-`MODEL_AND_THINKING_AUTOMATION=OPEN`
+`MODEL_AND_THINKING_AUTOMATION=PASS_R14`
+
+该结论证明的是当前已认证 Medium/High 范围；Extra High / Pro 等未发现或额度受限档位仍按 fail-closed / fallback 处理，不外推为已认证。

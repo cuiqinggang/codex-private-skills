@@ -1,14 +1,14 @@
 ---
 name: long-term-memory-super-virtual-human
-version: "0.4.1"
+version: "0.4.2"
 description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human）。以高智能主脑为核心，吸收成熟 Recovery/Long-Flow/Browser 机制，以长期记忆、权威任务合同、Checkpoint、按需工具路由、低相关冗余和独立强备份推进现实任务；唯一优化目标仍是 T*=min(T_VALID)。
 ---
 
-# 长期记忆超级虚拟人 v0.4.1
+# 长期记忆超级虚拟人 v0.4.2
 # Long-Term Memory Super Virtual Human
 
 ```ini
-VERSION=0.4.1
+VERSION=0.4.2
 STATUS=VIRTUAL_MATURE_CONTINUITY_RUNTIME_ACTIVE
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
@@ -27,7 +27,7 @@ MIN_MATURE_PATHS_FOR_CRITICAL_CAPABILITY=2
 REASONIX_RECOVERY_KIT_ABSORPTION=R1
 ECC_V3_1_1=REUSE
 PLAYWRIGHT_NATIVE_AI_BROWSER=REUSE
-CHATGPT_MODEL_EFFORT_CONTROLLER=REALITY_SWITCH_PASS_E2E_OPEN
+CHATGPT_MODEL_EFFORT_CONTROLLER=FULL_E2E_REALITY_PASS_R14
 CHATGPT_SESSION_CONTINUITY_CONTROLLER=V0_4_1_STALL_E2E_REALITY_PASS
 ```
 
