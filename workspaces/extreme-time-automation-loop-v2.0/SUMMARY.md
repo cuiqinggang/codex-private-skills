@@ -9,95 +9,71 @@ VIRTUAL_MATURE=NO
 PROJECT_FREEZE=NO
 FINAL_VALID=NO
 
-CONSTITUTION=极限短时间智能体宪法 v0.3
-CONSTITUTION_FREEZE_ID=ETAC-v0.3-FREEZE-R1
+CONSTITUTION=极限短时间智能体宪法 v0.3.1
+CONSTITUTION_FREEZE_ID=ETAC-v0.3.1-FREEZE-R1
 
 OBJECTIVE=T*=min(T_VALID)
-USER_INTERVENTIONS=0
 
-EXECUTION_BRIDGE=极限短时间自动化执行桥 v0.1.3
+EXECUTION_BRIDGE=GPT直连Windows双路执行桥 v0.2.0
 BRIDGE_STATUS=PARTIAL_REALITY
 BRIDGE_REALITY_CERTIFIED=NO
 
-WINDOWS_REALITY=PASS
-WINDOWS_SMOKE_RUN_ID=36899361139
-WINDOWS_SMOKE_ARTIFACT_ID=11186888753
-PERSISTENCE_CONFIGURED=NO
+DIRECT_REMOTE_REALITY=PASS
+GITHUB_RUNNER_REALITY=PASS
+GITHUB_RUNNER_LATEST_RUN_ID=36917244551
+GITHUB_RUNNER_LATEST_ARTIFACT_ID=11189839827
+RUNNER_PERSISTENCE=USER_LOGON_SCHEDULED_TASK
+
+DESKTOP_COMMANDER_AUTOSTART_REALITY=IN_PROGRESS
 CALLBACK_TESTED=NO
+AUTONOMOUS_NEXT_TURN=NO
 ```
 
 ## 当前正式目标
 
-T_VALID 是从原始现实需求被候选系统接受，到成熟版完成并通过真实最终验收的全部现实时间。
+`T_VALID` 是从系统已经拥有足够信息开始现实推进，到成熟结果完成并通过最终验收的全部现实时间。
 
-正式任务开始后必须满足 `USER_INTERVENTIONS=0`。
+v2.0 是极限效率方法，不是固定架构模板。
 
-## 路径A
+## 当前主路线候选
 
 ```text
-GPT判断
-→ 无决策权执行桥
-→ Windows Reality
-→ 自动记录/验证/回传
-→ GPT继续判断
-→ 循环
+用户目标
+→ GPT 高智能判断
+→ 优先直接成熟工具
+→ 必要时 Codex / Reasonix / Browser / GitHub runner / 其他执行器
+→ 现实结果
+→ 自动验证
 → FINAL_VALID
 ```
 
-GPT 是唯一决策大脑；执行桥只有领取、执行、记录、回传权。
+执行器不固定；只有对完整 T_VALID 有贡献的层才保留。
 
 ## 已完成 Reality
 
-### 静态调度隔离
-Run `36900593142`：PASS。
-
-### Windows Reality Smoke
-Run `36899361139`：PASS。
-
-真实证据：
-- runner `DESKTOP-4A1EGTM-etal`
-- labels `self-hosted, Windows, X64`
-- task `ETAL-BRIDGE-SMOKE-001`
-- `result.json.status=PASS`
-- `exit_code=0`
-- `duration_ms=9316.85`
-- artifact ID `11186888753`
-- stderr 空
-- `USER_INTERVENTIONS_DURING_SMOKE=0`
-
-本轮采用临时非持久化 runner，完成后已停止。
+- Desktop Commander Remote 直连 Windows：PASS；
+- GitHub self-hosted runner：PASS；
+- Windows checkout 长路径问题已通过 job 环境 `core.longpaths=true` 修复并复验；
+- runner 用户登录计划任务持久化：已配置并曾验证 online。
 
 ## 当前未完成
 
-完整桥仍不能标记 Reality PASS，因为尚缺：
-
 ```text
-长期常驻 runner
+Desktop Commander Remote 自动常驻最终复验
 +
-Windows结果自动回调/调度
+Checkpoint / 换页恢复
 +
-GPT自动继续下一判断
+结果自动唤醒 GPT
 +
-GPT自动派发下一任务
+GPT 自动继续下一判断
 +
-下一任务再次 Windows Reality
+独立强备份
 ```
 
-## 下一 Gate
+以上未完成前不宣布 Virtual Mature。
 
-不要开始标准题001计时。
+## 当前相关新项目
 
-先把：
+`workspaces/long-term-memory-super-virtual-human-v1.0/`
 
-```text
-PERSISTENCE_CONFIGURED=YES
-CALLBACK_TESTED=YES
-AUTONOMOUS_NEXT_TURN=PASS
-USER_INTERVENTIONS=0
-```
-
-真实跑通。
-
-只有完整连续无人闭环成立后，执行桥才升级 `REALITY_CERTIFIED=YES`。
-
-首次平台建设时间继续单列 `T_PLATFORM_BOOTSTRAP`。
+“长期记忆超级虚拟人”使用 v2.0 作为核心方法参照之一，但不会把 v2.0 的某个具体流程当成不可替代真理。
