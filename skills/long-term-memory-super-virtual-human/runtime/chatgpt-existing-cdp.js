@@ -33,7 +33,12 @@ async function recoverExistingChat({endpoint='http://127.0.0.1:9223',marker,prom
   const currentBodyHasMarker=await c.eval("(document.body?.innerText||'').includes("+JSON.stringify(marker)+")");
   let submissionCount=0;
   if(currentComposerText&&currentComposerText.includes(marker)){
-   const clickedDraft=await c.eval("(()=>{const b=document.querySelector('button[data-testid=\"send-button\"],button[aria-label*=\"发送\"],button[aria-label*=\"Send\"]');if(!b||b.disabled)return false;b.click();return true})()");
+   let clickedDraft=false;
+   for(let i=0;i<20;i++){
+    clickedDraft=await c.eval("(()=>{const b=document.querySelector('button[aria-label=\"发送\"],button[data-testid=\"send-button\"],button[data-testid=\"composer-submit-button\"],button[aria-label*=\"Send\"]');if(!b||b.disabled||!b.getClientRects().length)return false;b.click();return true})()");
+    if(clickedDraft)break;
+    await sleep(250);
+   }
    if(!clickedDraft) throw new Error('EXISTING_DRAFT_SEND_BUTTON_UNAVAILABLE');
    submissionCount=1;
   }else if(!currentBodyHasMarker){
@@ -50,7 +55,12 @@ async function recoverExistingChat({endpoint='http://127.0.0.1:9223',marker,prom
    const focused=await c.eval("(()=>{const e=document.querySelector('#prompt-textarea,[contenteditable=\"true\"][role=\"textbox\"],textarea');if(!e)return false;e.focus();return true})()");
    if(!focused) throw new Error('NO_COMPOSER');
    await c.send('Input.insertText',{text:prompt});
-   const clicked=await c.eval("(()=>{const b=document.querySelector('button[data-testid=\"send-button\"],button[aria-label*=\"发送\"],button[aria-label*=\"Send\"]');if(!b||b.disabled)return false;b.click();return true})()");
+   let clicked=false;
+   for(let i=0;i<20;i++){
+    clicked=await c.eval("(()=>{const b=document.querySelector('button[aria-label=\"发送\"],button[data-testid=\"send-button\"],button[data-testid=\"composer-submit-button\"],button[aria-label*=\"Send\"]');if(!b||b.disabled||!b.getClientRects().length)return false;b.click();return true})()");
+    if(clicked)break;
+    await sleep(250);
+   }
    if(!clicked) throw new Error('NO_ENABLED_SEND_BUTTON');
    submissionCount=1;
   }
