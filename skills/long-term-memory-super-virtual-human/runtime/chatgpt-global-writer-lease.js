@@ -1,8 +1,17 @@
 const fs=require('fs');
 const path=require('path');
+const {spawnSync}=require('child_process');
 
 function readJson(p){try{return JSON.parse(fs.readFileSync(p,'utf8'))}catch{return null}}
 function pidAlive(pid){if(!Number.isInteger(Number(pid))||Number(pid)<=0)return false;try{process.kill(Number(pid),0);return true}catch{return false}}
+function pidIsWriter(pid){
+ if(!pidAlive(pid))return false;
+ if(process.platform!=='win32')return true;
+ const n=Number(pid);
+ const ps="$p=Get-CimInstance Win32_Process -Filter 'ProcessId="+n+"'; if($p){$p.CommandLine}";
+ const r=spawnSync('powershell.exe',['-NoProfile','-Command',ps],{encoding:'utf8',windowsHide:true,timeout:5000});
+ return String(r.stdout||'').includes('chatgpt-continuity-runtime.js');
+}
 function writeNew(p,v){
  fs.mkdirSync(path.dirname(p),{recursive:true});
  const fd=fs.openSync(p,'wx');
@@ -17,7 +26,7 @@ function acquireGlobalWriterLease({leasePath,ownerRoot,inboxDir,marker='OWNER'})
   catch(e){
    if(e.code!=='EEXIST')throw e;
    const current=readJson(leasePath);
-   if(current&&pidAlive(current.pid))return {acquired:false,reason:'HELD_BY_LIVE_WRITER',current};
+   if(current&&pidIsWriter(current.pid))return {acquired:false,reason:'HELD_BY_LIVE_WRITER',current};
    const stale=leasePath+'.stale-'+Date.now()+'-'+process.pid;
    try{fs.renameSync(leasePath,stale)}catch{}
   }
@@ -38,4 +47,4 @@ function releaseGlobalWriterLease({leasePath,token}){
  if(!current||current.token!==token)return false;
  try{fs.unlinkSync(leasePath);return true}catch{return false}
 }
-module.exports={acquireGlobalWriterLease,heartbeatGlobalWriterLease,releaseGlobalWriterLease,pidAlive};
+module.exports={acquireGlobalWriterLease,heartbeatGlobalWriterLease,releaseGlobalWriterLease,pidAlive,pidIsWriter};
