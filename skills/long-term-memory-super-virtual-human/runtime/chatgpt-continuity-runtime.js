@@ -4,6 +4,7 @@ const {spawnSync}=require('child_process');
 const {chromium}=require('playwright');
 const {decide}=require('./session-continuity-supervisor');
 const {pageLeaseDecision,conversationRotation}=require('./chatgpt-page-lease');
+const {recoverExistingChat}=require('./chatgpt-existing-cdp');
 
 function arg(name,def=null){const i=process.argv.indexOf('--'+name);return i>=0?process.argv[i+1]:def}
 const profile=arg('profile');
@@ -264,8 +265,49 @@ async function claimTaskFile(){
  const src=path.join(inboxDir,files[0]);return {src,name:files[0],task:readJson(src,null)};
 }
 
+async function rawCdpOwnerLoop(trigger){
+ leaseState({status:'LEASE_ACTIVE',attachedVia:'RAW_CDP_EXISTING_BROWSER',cdpEndpoint,externalBrowserAttached:true,
+  pageLease:true,browserMustStayOpen:true,attachFallbackReason:trigger});
+ if(initialTaskPath){const q=enqueueTask(initialTaskPath);console.log(JSON.stringify(q))}
+ for(;;){
+  if(stopping)break;
+  const item=await claimTaskFile();
+  if(item&&item.task){
+   const task=item.task;
+   const priorCp=readJson(checkpointPath,null);
+   const cp=priorCp&&priorCp.marker===task.marker?priorCp:{
+    schemaVersion:1,version:'0.3.0',createdAt:new Date().toISOString(),reason:'RAW_CDP_EXISTING_BROWSER_RECOVERY',
+    marker:task.marker,sourceConversationUrl:'EXISTING_CHATGPT_PAGE',taskContract:task.taskContract||task.goal||'',
+    acceptedConclusion:task.acceptedConclusion||'',lastUser:'',unresolvedItems:task.unresolvedItems||[],
+    nextInstruction:task.nextInstruction||'根据以上接续上下文继续当前未完成任务，从下一步唯一动作开始，不重新讨论已冻结结论。',
+    safetyBoundaries:task.safetyBoundaries||[]
+   };
+   writeJson(checkpointPath,cp);
+   try{
+    const result=await recoverExistingChat({endpoint:cdpEndpoint,marker:task.marker,prompt:handoffText(task,cp),
+      expectedText:task.expectedRecoveryText||'',timeoutMs:task.answerTimeoutMs||120000});
+    ledgerSet(task.marker,{sentConfirmed:true,conversationUrl:result.url,rawCdp:true,ackConfirmed:result.ackConfirmed||false});
+    writeJson(path.join(doneDir,item.name),{task,result:{decision:{action:'ROTATE_TO_NEW_CHAT'},recovery:result,checkpoint:checkpointPath,
+      pageLeaseRetained:true},finishedAt:new Date().toISOString()});
+    fs.unlinkSync(item.src);
+    console.log(JSON.stringify({decision:{action:'ROTATE_TO_NEW_CHAT'},recovery:result,checkpoint:checkpointPath,pageLeaseRetained:true},null,2));
+   }catch(e){
+    const result={task,error:String(e.stack||e),failedAt:new Date().toISOString(),pageLeaseRetained:true};
+    writeJson(path.join(failDir,item.name),result);fs.unlinkSync(item.src);console.error('RAW_CDP_TASK_FAIL',e.stack||e);
+   }
+  }
+  leaseState({status:'LEASE_ACTIVE',attachedVia:'RAW_CDP_EXISTING_BROWSER',cdpEndpoint,externalBrowserAttached:true});
+  await sleep(1000);
+ }
+}
+
 async function ownerLoop(){
- await ensureLeasedPage();
+ try{await ensureLeasedPage()}
+ catch(e){
+  const msg=String(e.message||e);
+  if(msg.startsWith('EXISTING_BROWSER_PRESENT_NO_SECOND_LAUNCH')) return rawCdpOwnerLoop(msg);
+  throw e;
+ }
  if(initialTaskPath){const q=enqueueTask(initialTaskPath);console.log(JSON.stringify(q))}
  for(;;){
   if(stopping)break;
