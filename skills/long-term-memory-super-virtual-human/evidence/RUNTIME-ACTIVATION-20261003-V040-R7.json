@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "locator": "【长期记忆超级虚拟人 v0.4.0｜连续性 Runtime 激活｜R7｜实】",
+  "version": "0.4.0",
+  "result": "PASS",
+  "runtime": {
+    "status": "LEASE_ACTIVE",
+    "pageLease": true,
+    "browserMustStayOpen": true,
+    "existingBrowserPreserved": true,
+    "existingBrowserPid": 22140,
+    "currentTaskMarker": null,
+    "runtimeVersion": "0.4.0"
+  },
+  "regression": "17 PASS / 0 FAIL",
+  "activationContract": "Skill invocation activates continuity runtime for the current task lifecycle",
+  "notes": [
+    "Continuity owner was restarted to v0.4.0 without closing the persistent ChatGPT browser.",
+    "Long tasks should rotate early at safe checkpoints.",
+    "True New chat is required; Branch is forbidden.",
+    "Existing logged-in browser is reused and second launch is forbidden while it exists."
+  ]
+}
