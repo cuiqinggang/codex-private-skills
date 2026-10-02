@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "task_id": "LTMVH-DCR-DIAG-R13",
+  "payload_path": "workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/LTMVH-DCR-DIAG-R13.ps1",
+  "timeout_seconds": 120,
+  "expected_exit_code": 0
+}
