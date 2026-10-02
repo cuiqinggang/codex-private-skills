@@ -1,15 +1,15 @@
 ---
 name: long-term-memory-super-virtual-human
-version: "0.2.1"
+version: "0.3.0"
 description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human）。以高智能主脑为核心，吸收成熟 Recovery/Long-Flow/Browser 机制，以长期记忆、权威任务合同、Checkpoint、按需工具路由、低相关冗余和独立强备份推进现实任务；唯一优化目标仍是 T*=min(T_VALID)。
 ---
 
-# 长期记忆超级虚拟人 v0.2.1
+# 长期记忆超级虚拟人 v0.3.0
 # Long-Term Memory Super Virtual Human
 
 ```ini
-VERSION=0.2.1
-STATUS=VIRTUAL_MATURE_REALITY_CLOSURE_IN_PROGRESS
+VERSION=0.3.0
+STATUS=VIRTUAL_MATURE_RECOVERY_AUTOMATION_IMPLEMENTING
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
 
@@ -28,7 +28,7 @@ REASONIX_RECOVERY_KIT_ABSORPTION=R1
 ECC_V3_1_1=REUSE
 PLAYWRIGHT_NATIVE_AI_BROWSER=REUSE
 CHATGPT_MODEL_EFFORT_CONTROLLER=REALITY_SWITCH_PASS_E2E_OPEN
-CHATGPT_SESSION_CONTINUITY_CONTROLLER=VIRTUAL_MATURE_REALITY_PARTIAL
+CHATGPT_SESSION_CONTINUITY_CONTROLLER=VIRTUAL_MATURE_V0_3_TRUE_NEW_CHAT
 ```
 
 ## 1. 产品定位
@@ -124,6 +124,15 @@ Checkpoint 只负责“恢复到哪里”，不替代任务合同。
 ```
 
 页面迟缓、上下文过长、无响应或损坏时，不无限塞上下文；由外部连续性控制器探测并恢复。
+
+v0.3.0 冻结恢复目标：
+```ini
+FRESH_RECOVERY_TARGET=TRUE_NEW_CHAT
+BRANCH_IN_NEW_CHAT_ALLOWED_FOR_RECOVERY=NO
+FULL_OLD_CONVERSATION_REPLAY=NO
+MINIMAL_HANDOFF_REQUIRED=YES
+```
+“在新聊天中分支 / Branch”可能继承原会话树与上下文负担，因此不得作为故障恢复的“干净新页”；恢复必须进入真正的 New chat，再投递最小 handoff。
 
 对复杂任务采用**高频预防换页 + 断连后保守判定**：在安全 checkpoint 上提前收敛上下文，以最小 handoff（任务合同 + 已确认结论 + 当前 checkpoint + 未决项 + 下一条指令）进入新会话。当前页越长、下一阶段越复杂、或本页已出现过一次瞬时断连/卡顿，越倾向在下一阶段开始前提前轮换；特别大的独立问题可以默认“一大问题一页”。
 
