@@ -66,3 +66,34 @@ FINAL_VALID=NO
 5. GPT 服务不可用后的备脑完成业务任务级 DONE_WHEN，而不只是健康 ACK。
 
 这些未完成前，不升级 v1.0，不宣布 FINAL_VALID。
+
+
+## R6｜现有浏览器复用 + 真 New chat 恢复
+
+```ini
+EXISTING_BROWSER_REUSE=PASS
+TRUE_NEW_CHAT_RECOVERY=PASS
+BRANCH_RECOVERY=FORBIDDEN
+SECOND_BROWSER_LAUNCH_WHEN_EXISTING=FORBIDDEN
+EXACTLY_ONCE=PASS
+ACK_CONFIRMATION=PASS
+PAGE_LEASE_RETAINED=PASS
+GLOBAL_WRITER_LEASE=PASS
+PID_REUSE_FALSE_OWNER=FIXED
+NATURAL_STALL_DETECTION_FULL_E2E=OPEN
+```
+
+本轮使用既有 `shared-mcp` 登录浏览器 PID 22140 / CDP 9223。未启动第二个浏览器；同一页面进入真正 New chat，最小 handoff 发送 1 次，marker=1，ACK 确认，任务完成后 browser/page 保持存活。
+
+现有页面控制优先级：
+
+```text
+已有浏览器 + 已有 ChatGPT page
+→ 直接复用
+→ Playwright attach 可用则使用
+→ Playwright 发送确认不兼容时切 raw CDP
+→ 两者都不可接管但 profile 已占用：fail closed，不重新 launch
+→ 只有无现有 owner 时才首次启动
+```
+
+证据：`evidence/TRUE-NEW-CHAT-EXISTING-BROWSER-REALITY-20261003-R6.json`。
