@@ -101,11 +101,12 @@ For long tasks, reuse ECC v3.1.1 lease/fencing concepts so only the current leas
 Current status:
 
 ```ini
-SESSION_CONTINUITY_CONTROLLER=V0_4_RUNTIME_ACTIVE
+SESSION_CONTINUITY_CONTROLLER=V0_4_1_RUNTIME_ACTIVE
 PROACTIVE_SESSION_ROTATION=VIRTUAL_MATURE_REALITY_OPEN
 TRUE_NEW_CHAT_ONLY=YES
 BRANCH_RECOVERY=FORBIDDEN
 PAGE_FAILOVER_E2E=TRUE_NEW_CHAT_RECOVERY_PASS
+STALL_DETECTION_FULL_E2E=PASS_SAFE_FAULT_INJECTION_R10
 SERVICE_FAILOVER_BACKUP_BRAIN=PASS
 ```
 
@@ -210,8 +211,30 @@ GLOBAL_WRITER_LEASE=ACTIVE
 
 Reality 证据：`evidence/TRUE-NEW-CHAT-EXISTING-BROWSER-REALITY-20261003-R6.json`。
 
-注意：**恢复执行 E2E 已 PASS；自然发生的“长回答真实卡死 → 自动判定停滞 → 自动触发恢复”完整故障注入 Reality 仍待单独认证。** 当前停滞判定逻辑已有 17/17 确定性回归测试，并已有真实主路失败→自动备路恢复证据，但不把这两者冒充自然卡死全链路认证。
+## Reality R10 / 2026-10-03｜活跃卡死全链路故障注入
 
+v0.4.1 已完成安全、无副作用的完整 Reality：
+
+```text
+同一 existing shared-mcp 浏览器
+→ raw CDP 启动长文本 turn
+→ 故障注入抑制进展信号
+→ silence deadline exceeded
+→ read-only probe
+→ turnActive 仍为 true
+→ ABORT_STALLED_TURN
+→ stop=false / composer=true
+→ checkpoint: CONFIRMED_STALL_ABORTED
+→ 真正 New chat
+→ raw CDP 最小 handoff
+→ submissionCount=1
+→ markerCount=1
+→ ACK=true
+```
+
+同时验证 `branchUsed=false`、`newBrowserLaunched=false`、PAGE_LEASE 保留。确定性 supervisor 回归同步提升为 19/19。R8/R9/早期 R10 均按 fail-closed 记录失败，没有冒充 PASS。
+
+权威证据：`evidence/STALL-DETECTION-FULL-E2E-REALITY-20261003-R10.json`。
 
 ## v0.4｜技能包激活即启用连续性运行
 

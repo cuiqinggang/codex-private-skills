@@ -3,7 +3,7 @@
 ```ini
 PROJECT=长期记忆超级虚拟人
 WORKSPACE_VERSION=v1.0
-SKILL_VERSION=v0.4.0
+SKILL_VERSION=v0.4.1
 SKILL_ENGLISH_NAME=Long-Term Memory Super Virtual Human
 
 STATE=10
@@ -28,12 +28,12 @@ PAGE_LEASE_RETAINED=PASS
 GLOBAL_WRITER_LEASE=PASS
 PID_REUSE_FALSE_OWNER=FIXED
 
-SESSION_CONTINUITY_TESTS=17_PASS_0_FAIL
+SESSION_CONTINUITY_TESTS=19_PASS_0_FAIL
 ECC_LEASE_TAKEOVER_FAULT=59_PASS_0_FAIL
 INDEPENDENT_BACKUP_BRAIN=PASS_REASONIX_DEEPSEEK
 K_DRIVE_REPO_BACKUP_RESTORE=PASS
 
-NATURAL_STALL_DETECTION_FULL_E2E=OPEN
+NATURAL_STALL_DETECTION_FULL_E2E=PASS_BY_SAFE_FAULT_INJECTION_R10
 DCR_LOGOFF_RELOGIN_REALITY=OPEN
 MODEL_EFFORT_FULL_E2E=OPEN
 REAL_VALUABLE_LONG_TASK_FINAL_VALID=OPEN
@@ -41,7 +41,7 @@ REAL_VALUABLE_LONG_TASK_FINAL_VALID=OPEN
 
 ## 当前正式判断
 
-- 技能包已升级为 **v0.4.0**；v0.4 的核心不是新增层级，而是把已经验证的连续性能力变成默认运行合同。
+- 技能包已升级为 **v0.4.1**；v0.4 的核心仍是默认连续性运行合同，v0.4.1 补齐了活跃长回答卡死的自动判死、停止旧 turn 与 true New chat 恢复 Reality。
 - 当用户明确说“按长期记忆超级虚拟人运行/完成当前任务”时，当前任务自动启用：连续性监控、Checkpoint、长页提前轮换、真正 New chat、禁止 Branch、复用已打开 GPT 浏览器、exactly-once、全局 writer lease。
 - 长任务不追求无限单页；页面较长、下一阶段复杂或已有卡顿历史时，在安全 checkpoint 能换就提前换。
 - “连接已断开/正在重新连接”不等于后台任务失败；先观察后台进展，确认停滞后才恢复，避免重复执行。
@@ -88,11 +88,10 @@ GLOBAL_WRITER_LEASE=PASS
 
 ## 当前未完成且不得误报
 
-1. 自然发生或故障注入的“长回答真实卡死 → 自动判断停滞 → 自动触发 true New chat 恢复”的完整 E2E；
-2. Desktop Commander 实际注销/重登后的自动恢复 Reality；
-3. ChatGPT 模型/Thinking 切换 → exactly-once 继续 → 恢复原档完整 E2E；
-4. 至少一组真实有价值长任务从开始到 FINAL_VALID 的完整回归；
-5. 独立备脑完成真实业务 DONE_WHEN，而不仅是恢复/健康 ACK。
+1. Desktop Commander 实际注销/重登后的自动恢复 Reality；
+2. ChatGPT 模型/Thinking 切换 → exactly-once 继续 → 恢复原档完整 E2E；
+3. 至少一组真实有价值长任务从开始到 FINAL_VALID 的完整回归；
+4. 独立备脑完成真实业务 DONE_WHEN，而不仅是恢复/健康 ACK。
 
 以上未全部完成前，保持 FINAL_VALID=NO，不升级 v1.0 正式成熟版。
 
@@ -105,6 +104,9 @@ GLOBAL_WRITER_LEASE=PASS
 `skills/long-term-memory-super-virtual-human/CHATGPT_SESSION_CONTINUITY_CONTROLLER.md`
 
 最新 Reality：
+`skills/long-term-memory-super-virtual-human/evidence/STALL-DETECTION-FULL-E2E-REALITY-20261003-R10.json`
+
+前置恢复 Reality：
 `skills/long-term-memory-super-virtual-human/evidence/TRUE-NEW-CHAT-EXISTING-BROWSER-REALITY-20261003-R6.json`
 
 v0.4 状态：

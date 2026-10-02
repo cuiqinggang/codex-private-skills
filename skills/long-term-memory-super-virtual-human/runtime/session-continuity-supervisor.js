@@ -14,6 +14,10 @@ function decide(s){
   if(!s.readOnlyProbeDone) return {action:'PROBE_PAGE',writeOwner:s.writeOwner};
   if(!s.hardDeadlineExceeded) return {action:'WAIT_WITH_PROBE',writeOwner:s.writeOwner};
  }
+ if(s.turnActive && s.hardDeadlineExceeded && !s.backendActivityObserved && !s.finalAnswerObserved){
+  if(!s.readOnlyProbeDone) return {action:'PROBE_PAGE',writeOwner:s.writeOwner};
+  return {action:'ABORT_STALLED_TURN',writeOwner:s.writeOwner};
+ }
  if(!s.pageHealthy || (s.transportDisconnected && s.hardDeadlineExceeded)){
   if(!s.readOnlyProbeDone) return {action:'PROBE_PAGE',writeOwner:s.writeOwner};
   return rotate(s);

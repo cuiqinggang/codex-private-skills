@@ -1,14 +1,14 @@
 ---
 name: long-term-memory-super-virtual-human
-version: "0.4.0"
+version: "0.4.1"
 description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human）。以高智能主脑为核心，吸收成熟 Recovery/Long-Flow/Browser 机制，以长期记忆、权威任务合同、Checkpoint、按需工具路由、低相关冗余和独立强备份推进现实任务；唯一优化目标仍是 T*=min(T_VALID)。
 ---
 
-# 长期记忆超级虚拟人 v0.4.0
+# 长期记忆超级虚拟人 v0.4.1
 # Long-Term Memory Super Virtual Human
 
 ```ini
-VERSION=0.4.0
+VERSION=0.4.1
 STATUS=VIRTUAL_MATURE_CONTINUITY_RUNTIME_ACTIVE
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
@@ -28,7 +28,7 @@ REASONIX_RECOVERY_KIT_ABSORPTION=R1
 ECC_V3_1_1=REUSE
 PLAYWRIGHT_NATIVE_AI_BROWSER=REUSE
 CHATGPT_MODEL_EFFORT_CONTROLLER=REALITY_SWITCH_PASS_E2E_OPEN
-CHATGPT_SESSION_CONTINUITY_CONTROLLER=V0_4_REALITY_PROVEN_TRUE_NEW_CHAT
+CHATGPT_SESSION_CONTINUITY_CONTROLLER=V0_4_1_STALL_E2E_REALITY_PASS
 ```
 
 ## 1. 产品定位
@@ -282,7 +282,7 @@ KEEP_BROWSER_OPEN=YES
 运行语义：
 - 页面较长、下一阶段复杂、已出现卡顿/断连历史时，在安全 checkpoint **提前换会话**，不等页面彻底坏掉；
 - 出现“连接已断开/正在重新连接”时先判断后台是否仍在推进，不立刻重复任务；
-- 确认停滞后自动整理最小 handoff，进入真正 New chat，禁止 Branch；
+- 活跃回答超过 silence window 后先只读 probe；若仍处于生成中且无进展，则自动停止旧 turn，写入 `CONFIRMED_STALL_ABORTED` Checkpoint，再以最小 handoff 进入真正 New chat，禁止 Branch；
 - 已有 `shared-mcp` 登录浏览器时必须复用；控制接口异常也不得因此启动第二个浏览器；
 - 普通任务完成、主路失败、切备脑均不得关闭持久 GPT 浏览器；
 - 页面只是工作内存，权威事实必须持续写回技能包/项目状态/Checkpoint。

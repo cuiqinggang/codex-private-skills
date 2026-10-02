@@ -34,7 +34,7 @@ async function recoverExistingChat({endpoint='http://127.0.0.1:9223',marker,prom
   let submissionCount=0;
   if(currentComposerText&&currentComposerText.includes(marker)){
    let clickedDraft=false;
-   for(let i=0;i<20;i++){
+   for(let i=0;i<80;i++){
     clickedDraft=await c.eval("(()=>{const b=document.querySelector('button[aria-label=\"发送\"],button[data-testid=\"send-button\"],button[data-testid=\"composer-submit-button\"],button[aria-label*=\"Send\"]');if(!b||b.disabled||!b.getClientRects().length)return false;b.click();return true})()");
     if(clickedDraft)break;
     await sleep(250);
@@ -56,7 +56,7 @@ async function recoverExistingChat({endpoint='http://127.0.0.1:9223',marker,prom
    if(!focused) throw new Error('NO_COMPOSER');
    await c.send('Input.insertText',{text:prompt});
    let clicked=false;
-   for(let i=0;i<20;i++){
+   for(let i=0;i<80;i++){
     clicked=await c.eval("(()=>{const b=document.querySelector('button[aria-label=\"发送\"],button[data-testid=\"send-button\"],button[data-testid=\"composer-submit-button\"],button[aria-label*=\"Send\"]');if(!b||b.disabled||!b.getClientRects().length)return false;b.click();return true})()");
     if(clicked)break;
     await sleep(250);

@@ -1,7 +1,7 @@
-# 长期记忆超级虚拟人 v0.4.0｜状态固化 2026-10-03
+# 长期记忆超级虚拟人 v0.4.1｜状态固化 2026-10-03
 
 ```ini
-VERSION=0.4.0
+VERSION=0.4.1
 STATUS=VIRTUAL_MATURE_CONTINUITY_RUNTIME_ACTIVE
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
@@ -27,12 +27,12 @@ PAGE_LEASE_RETAINED=PASS
 GLOBAL_WRITER_LEASE=PASS
 PID_REUSE_FALSE_OWNER=FIXED
 
-SESSION_CONTINUITY_TESTS=17_PASS_0_FAIL
+SESSION_CONTINUITY_TESTS=19_PASS_0_FAIL
 ECC_LEASE_TAKEOVER_FAULT=59_PASS_0_FAIL
 INDEPENDENT_BACKUP_BRAIN=PASS_REASONIX_DEEPSEEK
 K_DRIVE_REPO_BACKUP_RESTORE=PASS
 
-NATURAL_STALL_DETECTION_FULL_E2E=OPEN
+NATURAL_STALL_DETECTION_FULL_E2E=PASS_BY_SAFE_FAULT_INJECTION_R10
 DCR_LOGOFF_RELOGIN_REALITY=OPEN
 MODEL_EFFORT_FULL_E2E=OPEN
 REAL_VALUABLE_LONG_TASK_FINAL_VALID=OPEN
@@ -74,12 +74,25 @@ R6：
 权威证据：
 `evidence/TRUE-NEW-CHAT-EXISTING-BROWSER-REALITY-20261003-R6.json`
 
+R10（v0.4.1）：
+- 安全长文本故障注入启动：PASS；
+- 活跃 turn 静默超时识别：PASS；
+- read-only probe：PASS；
+- 旧 turn 自动停止并确认：PASS；
+- Checkpoint reason=`CONFIRMED_STALL_ABORTED`；
+- 真正 New chat：PASS；
+- raw CDP 最小 handoff：PASS；
+- submissionCount=1 / markerCount=1 / ACK=true；
+- Branch=false / newBrowserLaunched=false；
+- PAGE_LEASE 保留：PASS。
+权威证据：`evidence/STALL-DETECTION-FULL-E2E-REALITY-20261003-R10.json`。
+正式常驻 v0.4.1 runtime 复位证据：`evidence/RUNTIME-ACTIVATION-20261003-V041-R11.json`。
+
 ## 当前仍未完成
 
-1. 自然卡死或专门故障注入：长回答真实停滞 → 自动识别 → 自动 true New chat 恢复完整 E2E；
-2. Desktop Commander 注销/重登 Reality；
-3. 模型/Thinking 完整切换、继续、恢复 E2E；
-4. 真实有价值长任务完整 FINAL_VALID；
-5. 独立备脑完成业务级 DONE_WHEN。
+1. Desktop Commander 注销/重登 Reality；
+2. 模型/Thinking 完整切换、继续、恢复 E2E；
+3. 真实有价值长任务完整 FINAL_VALID；
+4. 独立备脑完成业务级 DONE_WHEN。
 
 这些门槛未全部满足前，不宣布 FINAL_VALID，不升级 v1.0 正式成熟版。

@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.4.1 - 2026-10-03
+
+- 闭合会话连续性的剩余核心门：安全长回答故障注入 → 活跃 turn 静默超时 → read-only probe → 自动停止旧 turn → Checkpoint → 真正 New chat → 最小 handoff exactly-once → ACK，Reality R10 PASS；
+- Session Continuity Supervisor 新增活跃生成超时分支，确定性回归由 17/17 提升为 19/19；
+- 修复当前 ChatGPT UI 兼容：停止按钮现为 `aria-label="停止"` 时也可检测与终止；
+- existing-browser raw CDP 发送器将 composer hydration 等待窗口由 5 秒扩展到 20 秒，保持 attach-first / launch-last；
+- R8、R9、R10 首次尝试均 fail-closed，未被冒充为 PASS；最终 R10 证据记录 `submissionCount=1`、`markerCount=1`、`ACK=true`、`branch=false`、`newBrowserLaunched=false`；
+- `FINAL_VALID=NO` 不变；仍需 DCR 注销/重登、模型/Thinking 完整 E2E、真实有价值长任务 FINAL_VALID、独立备脑业务级 DONE_WHEN。
+
 ## 0.4.0 - 2026-10-03
 
 - 将 v0.3 已完成的连续性成果正式升级为默认运行合同，而不是可选恢复模块；

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "evidenceId": "LTMVH-STALL-DETECTION-FULL-E2E-R10",
+  "skillVersion": "0.4.1",
+  "date": "2026-10-03",
+  "result": "PASS",
+  "gate": "STALL_DETECTION_FULL_E2E",
+  "mode": "CONTROLLED_SAFE_FAULT_INJECTION",
+  "marker": "LTMVH-V040-STALL-E2E-R10",
+  "finalValid": false,
+  "existingBrowser": {
+    "profile": "C:\\AI\\Playwright-Native-AI-Browser\\profile\\shared-mcp",
+    "pid": 22140,
+    "reused": true,
+    "secondBrowserLaunched": false,
+    "pageLeaseRetained": true,
+    "globalWriterLease": true
+  },
+  "detection": {
+    "faultInjection": true,
+    "silenceMs": 1200,
+    "seedTransport": "RAW_CDP_EXISTING_BROWSER",
+    "seedSubmissionCount": 1,
+    "hardDeadlineExceeded": true,
+    "readOnlyProbeObserved": true,
+    "abortConfirmed": true,
+    "startedAt": "2026-10-02T19:02:51.412Z",
+    "hardDeadlineExceededAt": "2026-10-02T19:02:55.595Z",    "probeAt": "2026-10-02T19:02:55.595Z",
+    "decisionAt": "2026-10-02T19:02:56.219Z",
+    "abortedAt": "2026-10-02T19:03:03.811Z"
+  },
+  "checkpoint": {
+    "reason": "CONFIRMED_STALL_ABORTED",
+    "path": "C:\\AI\\Playwright-Native-AI-Browser\\ltmvh-chatgpt-lease\\checkpoint.json"
+  },
+  "recovery": {
+    "decision": "ROTATE_TO_NEW_CHAT_RAW_CDP_RECOVERY",
+    "status": "TRUE_NEW_CHAT_SENT_CONFIRMED",
+    "submissionCount": 1,
+    "markerCount": 1,
+    "ackConfirmed": true,
+    "transport": "RAW_CDP_EXISTING_BROWSER",
+    "branchUsed": false,
+    "newBrowserLaunched": false,
+    "conversationUrl": "https://chatgpt.com/c/6abffffe-8f2c-83ee-9d9c-8e8808b4f232",
+    "finishedAt": "2026-10-02T19:03:36.366Z",
+    "endToEndDurationMs": 44954
+  },
+  "compatibilityFixes": [
+    "active-turn silence now triggers read-only probe then ABORT_STALLED_TURN",
+    "current ChatGPT stop aria-label '停止' recognized",
+    "existing-browser raw CDP composer hydration wait extended from 5s to 20s"
+  ],
+  "negativeAttempts": [
+    {"id":"R8","result":"FAIL_CLOSED","reason":"Playwright composer send confirmation incompatible"},
+    {"id":"R9","result":"FAIL_CLOSED","reason":"current UI stop label changed to 停止"},
+    {"id":"R10-first","result":"FAIL_CLOSED","reason":"raw CDP composer hydration exceeded old 5s window"}
+  ],
+  "remainingGates": [
+    "DCR_LOGOFF_RELOGIN_REALITY",
+    "MODEL_EFFORT_FULL_E2E",
+    "REAL_VALUABLE_LONG_TASK_FINAL_VALID",
+    "BACKUP_BRAIN_BUSINESS_DONE_WHEN"
+  ]
+}

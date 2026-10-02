@@ -1,5 +1,5 @@
 const assert=require('assert');const {decide}=require('./session-continuity-supervisor');
-const b={safeCheckpoint:true,proactiveRotation:false,gptServiceAvailable:true,pageHealthy:true,transportDisconnected:false,backendActivityObserved:false,finalAnswerObserved:false,readOnlyProbeDone:false,hardDeadlineExceeded:false,freshChatAvailable:true,freshSessionKind:'NEW_CHAT',fenceToken:4,writeOwner:'PRIMARY',primaryRecovered:false,humanVerificationRequired:false,primaryPathBlocked:false,alternateValidPathAvailable:false};
+const b={safeCheckpoint:true,proactiveRotation:false,gptServiceAvailable:true,pageHealthy:true,transportDisconnected:false,backendActivityObserved:false,finalAnswerObserved:false,readOnlyProbeDone:false,hardDeadlineExceeded:false,turnActive:false,freshChatAvailable:true,freshSessionKind:'NEW_CHAT',fenceToken:4,writeOwner:'PRIMARY',primaryRecovered:false,humanVerificationRequired:false,primaryPathBlocked:false,alternateValidPathAvailable:false};
 assert.equal(decide(b).action,'CONTINUE');
 assert.equal(decide({...b,humanVerificationRequired:true}).action,'PAUSE_FOR_HUMAN_VERIFICATION');
 assert.equal(decide({...b,transportDisconnected:true,backendActivityObserved:true}).action,'WAIT_BACKEND_COMPLETION');
@@ -17,4 +17,6 @@ assert.equal(decide({...b,writeOwner:'BACKUP',primaryRecovered:true}).action,'RE
 assert.equal(decide({...b,pageHealthy:false,readOnlyProbeDone:true,freshChatAvailable:false}).action,'FAILOVER_BACKUP');
 assert.equal(decide({...b,primaryPathBlocked:true,alternateValidPathAvailable:true}).action,'FAILOVER_ALTERNATE_VALID');
 assert.equal(decide({...b,primaryPathBlocked:true,alternateValidPathAvailable:false}).action,'CONTINUE');
-console.log('SESSION_CONTINUITY_TESTS=17 PASS / 0 FAIL');
+assert.equal(decide({...b,turnActive:true,hardDeadlineExceeded:true}).action,'PROBE_PAGE');
+assert.equal(decide({...b,turnActive:true,hardDeadlineExceeded:true,readOnlyProbeDone:true}).action,'ABORT_STALLED_TURN');
+console.log('SESSION_CONTINUITY_TESTS=19 PASS / 0 FAIL');

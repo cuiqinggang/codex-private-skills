@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "evidenceId": "LTMVH-V041-RUNTIME-ACTIVATION-R11",
+  "skillVersion": "0.4.1",
+  "date": "2026-10-03",
+  "result": "PASS",
+  "runtime": {
+    "status": "LEASE_ACTIVE",
+    "pid": 25852,
+    "currentTaskMarker": null,
+    "defaultSilenceMs": 45000,
+    "defaultPollMs": 1200,
+    "pageLease": true,
+    "browserMustStayOpen": true
+  },
+  "browser": {
+    "profile": "C:\\AI\\Playwright-Native-AI-Browser\\profile\\shared-mcp",
+    "pid": 22140,
+    "alive": true,
+    "health": "HEALTHY",
+    "cdp": "PASS",
+    "createdPage": false,
+    "humanVerification": false,
+    "disconnected": false
+  },
+  "stallE2EGate": "PASS_SAFE_FAULT_INJECTION_R10",
+  "finalValid": false
+}

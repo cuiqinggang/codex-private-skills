@@ -132,8 +132,8 @@ v0.4 已把以下能力纳入默认运行合同：
 
 ## 7. 当前阶段
 
-当前技能包版本为 **v0.4.0**，已签 VIRTUAL_MATURE=YES，但 FINAL_VALID=NO。
+当前技能包版本为 **v0.4.1**，已签 VIRTUAL_MATURE=YES，但 FINAL_VALID=NO。
 
-v0.4 已完成现有浏览器复用、真正 New chat、禁止 Branch、最小 handoff、exactly-once、page lease、global writer lease 等连续性 Reality。下一阶段重点是自然卡死/故障注入完整 E2E、DCR 重登恢复、模型档位完整 E2E 与真实有价值长任务 FINAL_VALID。
+v0.4.1 已完成现有浏览器复用、真正 New chat、禁止 Branch、最小 handoff、exactly-once、page lease、global writer lease，以及“活跃长回答静默超时 → read-only probe → 自动停止旧 turn → Checkpoint → true New chat → ACK”的安全故障注入完整 E2E。下一阶段重点是 DCR 重登恢复、模型档位完整 E2E、真实有价值长任务 FINAL_VALID 与独立备脑业务级 DONE_WHEN。
 
 当用户明确指定“长期记忆超级虚拟人”运行当前任务时，上述连续性规则自动生效；长页面能安全提前换就提前换。

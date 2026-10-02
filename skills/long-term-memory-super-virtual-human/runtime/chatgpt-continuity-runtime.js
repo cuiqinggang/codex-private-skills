@@ -72,7 +72,7 @@ let lastSig='',lastProgress=now(),probeDone=false,priorDisconnect=0;
 
 function leaseState(extra={}){
  heartbeatGlobalWriterLease({leasePath:globalWriterLeasePath,token:globalWriterToken,marker:currentTask?.marker||'IDLE'});
- const base={schemaVersion:1,status:'LEASE_ACTIVE',version:'0.4.0',pid:process.pid,profile,globalWriterLeasePath,
+ const base={schemaVersion:1,status:'LEASE_ACTIVE',version:'0.4.1',pid:process.pid,profile,globalWriterLeasePath,
   pageLease:true,browserMustStayOpen:true,updatedAt:new Date().toISOString(),pageUrl:leasedPage&&!leasedPage.isClosed()?leasedPage.url():null};
  writeJson(statePath,{...base,...extra});
 }
@@ -84,7 +84,7 @@ async function observe(page){
   const assistants=[...document.querySelectorAll('[data-message-author-role="assistant"]')];
   const visible=el=>!!(el&&el.getClientRects().length);
   const stop=[...document.querySelectorAll('button')].some(b=>visible(b)&&(
-   b.getAttribute('data-testid')==='stop-button'||/Stop generating|停止生成/i.test(b.getAttribute('aria-label')||'')));
+   b.getAttribute('data-testid')==='stop-button'||/^(Stop generating|Stop|停止生成|停止)$/i.test(b.getAttribute('aria-label')||'')));
   const composer=[
    document.querySelector('#prompt-textarea'),
    ...document.querySelectorAll('[contenteditable="true"]'),
@@ -105,7 +105,7 @@ async function observe(page){
 }
 
 function buildCheckpoint(task,obs,reason){
- const cp={schemaVersion:1,version:'0.4.0',createdAt:new Date().toISOString(),reason,
+ const cp={schemaVersion:1,version:'0.4.1',createdAt:new Date().toISOString(),reason,
   marker:task.marker,sourceConversationUrl:obs.url,taskContract:task.taskContract||task.goal||'',
   acceptedConclusion:(obs.lastAssistant||'').slice(0,12000),lastUser:(obs.lastUser||'').slice(0,6000),
   unresolvedItems:task.unresolvedItems||[],nextInstruction:task.nextInstruction||
@@ -126,6 +126,35 @@ function handoffText(task,cp){
  ].join('\n\n');
  if(text.length>24000) throw new Error('HANDOFF_TOO_LARGE:'+text.length);
  return text;
+}
+
+async function startStallFaultInjection(task,p){
+ const prompt=task.faultPrompt||('[LTMVH_STALL_FAULT_INJECTION '+task.marker+'] 安全故障注入测试。请从 1 开始连续编号，每行输出“连续性故障注入测试”，目标 10000 行；不要调用工具，不执行任何现实动作；持续输出直到测试监督器停止本轮。');
+ const seed=await recoverExistingChat({endpoint:cdpEndpoint,marker:task.marker,prompt,expectedText:'',timeoutMs:20000});
+ let active=null;
+ for(let i=0;i<60;i++){
+  active=await observe(p);
+  if(active.humanVerification) throw new Error('HUMAN_VERIFICATION_REQUIRED');
+  if(active.stop)break;
+  await sleep(100);
+ }
+ if(!active?.stop) throw new Error('STALL_ACTIVE_TURN_NOT_OBSERVED assistantLen='+String(active?.lastAssistant?.length||0));
+ return {prompt,startedAt:new Date().toISOString(),startedAtEpochMs:now(),url:p.url(),seedTransport:seed.transport,seedSubmissionCount:seed.submissionCount};
+}
+
+async function abortStalledTurn(p){
+ const stopButton=p.locator('button[data-testid="stop-button"]:visible, button[aria-label="Stop generating"]:visible, button[aria-label="Stop"]:visible, button[aria-label="停止生成"]:visible, button[aria-label="停止"]:visible').last();
+ if(!(await stopButton.count())) throw new Error('STALL_ABORT_BUTTON_NOT_FOUND');
+ await stopButton.click();
+ await p.waitForFunction(()=>{
+  const vis=e=>!!(e&&e.getClientRects().length);
+  const stop=[...document.querySelectorAll('button')].some(b=>vis(b)&&(b.getAttribute('data-testid')==='stop-button'||/^(Stop generating|Stop|停止生成|停止)$/i.test(b.getAttribute('aria-label')||'')));
+  const composer=[document.querySelector('#prompt-textarea'),...document.querySelectorAll('[contenteditable="true"]'),...document.querySelectorAll('textarea')].find(vis);
+  return !stop&&!!composer;
+ },null,{timeout:15000});
+ const o=await observe(p);
+ if(o.stop||!o.composer) throw new Error('STALL_ABORT_NOT_CONFIRMED');
+ return o;
 }
 
 function backupText(task,cp,trigger){
@@ -238,7 +267,14 @@ async function rotateTrueNewChatSamePage(task,cp){
 
 async function processTask(task){
  currentTask=task;lastSig='';lastProgress=now();probeDone=false;priorDisconnect=0;
+ const stallMeta={faultInjection:task.faultInjectStall===true,silenceMs,probeObserved:false,hardDeadlineExceeded:false,abortConfirmed:false};
  const p=await ensureLeasedPage();let o=await observe(p);
+ if(task.faultInjectStall===true){
+  const started=await startStallFaultInjection(task,p);
+  Object.assign(stallMeta,started,{progressSuppressed:true});
+  lastProgress=started.startedAtEpochMs;lastSig='';o=await observe(p);
+  console.log(JSON.stringify({event:'STALL_FAULT_INJECTION_STARTED',marker:task.marker,url:started.url,silenceMs}));
+ }
  const cp0=buildCheckpoint(task,o,task.forceRotate?'FORCED_REALITY_TEST':'TASK_MONITOR_START');
  if(task.forceRotate){
   try{return {decision:{action:'ROTATE_TO_NEW_CHAT'},recovery:await rotateTrueNewChatSamePage(task,cp0),checkpoint:checkpointPath}}
@@ -256,20 +292,49 @@ async function processTask(task){
   }
  }
  for(;;){
-  o=await observe(p);const sig=[o.url,o.userTurns,o.assistantTurns,o.stop,o.lastAssistant.length,o.txtLen].join('|');
-  if(sig!==lastSig){lastSig=sig;lastProgress=now();}
+  o=await observe(p);const tickNow=now();const sig=[o.url,o.userTurns,o.assistantTurns,o.stop,o.lastAssistant.length,o.txtLen].join('|');
+  const suppressProgress=task.faultInjectStall===true&&Boolean(stallMeta.startedAtEpochMs);
+  if(sig!==lastSig){lastSig=sig;if(!suppressProgress)lastProgress=tickNow;}
   if(o.humanVerification){const cp=buildCheckpoint(task,o,'HUMAN_VERIFICATION_REQUIRED');
    return {decision:{action:'FAILOVER_BACKUP'},backup:runReasonixBackup(task,cp,'HUMAN_VERIFICATION_REQUIRED'),checkpoint:checkpointPath,pageLeaseRetained:true}}
   if(o.disconnected)priorDisconnect++;
-  const hard=now()-lastProgress>=silenceMs;
+  const hard=tickNow-lastProgress>=silenceMs;
+  if(hard&&!stallMeta.hardDeadlineExceeded){
+   stallMeta.hardDeadlineExceeded=true;stallMeta.hardDeadlineExceededAt=new Date().toISOString();
+   console.log(JSON.stringify({event:'STALL_HARD_DEADLINE_EXCEEDED',marker:task.marker,turnActive:o.stop,silenceMs}));
+  }
   const proactive=o.safeCheckpoint&&(o.userTurns>=maxTurns||o.txtLen>=maxText||priorDisconnect>0);
   const s={safeCheckpoint:o.safeCheckpoint,proactiveRotation:proactive,gptServiceAvailable:!o.serviceUnavailable,
-   pageHealthy:o.composer||o.stop||o.assistantTurns>0,transportDisconnected:o.disconnected,
+   pageHealthy:o.composer||o.stop||o.assistantTurns>0,transportDisconnected:o.disconnected,turnActive:o.stop,
    backendActivityObserved:o.stop&&!hard,finalAnswerObserved:o.safeCheckpoint,readOnlyProbeDone:probeDone,
    hardDeadlineExceeded:hard,freshChatAvailable:true,freshSessionKind:'NEW_CHAT',fenceToken:task.fenceToken||0,
    writeOwner:'PRIMARY',primaryRecovered:false,humanVerificationRequired:false,primaryPathBlocked:false,alternateValidPathAvailable:false};
   const d=decide(s);
-  if(d.action==='PROBE_PAGE'){probeDone=true;await sleep(pollMs);continue}
+  if(d.action==='PROBE_PAGE'){
+   probeDone=true;stallMeta.probeObserved=true;stallMeta.probeAt=new Date().toISOString();
+   console.log(JSON.stringify({event:'STALL_READ_ONLY_PROBE',marker:task.marker,turnActive:o.stop,hardDeadlineExceeded:hard}));
+   await sleep(pollMs);continue
+  }
+  if(d.action==='ABORT_STALLED_TURN'){
+   stallMeta.decisionAt=new Date().toISOString();
+   const stopped=await abortStalledTurn(p);
+   stallMeta.abortConfirmed=true;stallMeta.abortedAt=new Date().toISOString();stallMeta.partialAssistantLength=(stopped.lastAssistant||'').length;
+   console.log(JSON.stringify({event:'STALL_ABORT_CONFIRMED',marker:task.marker,composer:stopped.composer,stop:stopped.stop}));
+   const cp=buildCheckpoint(task,stopped,'CONFIRMED_STALL_ABORTED');
+   try{return {decision:d,stallDetection:stallMeta,recovery:await rotateTrueNewChatSamePage(task,cp),checkpoint:checkpointPath}}
+   catch(e){
+    try{
+     const raw=await recoverExistingChat({endpoint:cdpEndpoint,marker:task.marker,prompt:handoffText(task,cp),
+      expectedText:task.expectedRecoveryText||'',timeoutMs:task.answerTimeoutMs||120000});
+     ledgerSet(task.marker,{sentConfirmed:true,conversationUrl:raw.url,rawCdp:true,ackConfirmed:raw.ackConfirmed||false});
+     return {decision:{...d,action:'ROTATE_TO_NEW_CHAT_RAW_CDP_RECOVERY'},stallDetection:stallMeta,recovery:raw,checkpoint:checkpointPath,pageLeaseRetained:true}
+    }catch(rawErr){
+     return {decision:{action:'FAILOVER_BACKUP'},stallDetection:stallMeta,backup:runReasonixBackup(task,cp,
+      'STALL_NEW_CHAT_RECOVERY_FAILED:'+String(e.message||e)+'; RAW_CDP_FAILED:'+String(rawErr.message||rawErr)),
+      checkpoint:checkpointPath,pageLeaseRetained:true}
+    }
+   }
+  }
   if(d.action==='ROTATE_TO_NEW_CHAT'||d.action==='OPEN_TRUE_NEW_CHAT'){const cp=buildCheckpoint(task,o,proactive?'PROACTIVE_ROTATION':'CONFIRMED_STALL');
    try{return {decision:d,recovery:await rotateTrueNewChatSamePage(task,cp),checkpoint:checkpointPath}}
    catch(e){
@@ -306,7 +371,7 @@ async function rawCdpOwnerLoop(trigger){
    const task=item.task;
    const priorCp=readJson(checkpointPath,null);
    const cp=priorCp&&priorCp.marker===task.marker?priorCp:{
-    schemaVersion:1,version:'0.4.0',createdAt:new Date().toISOString(),reason:'RAW_CDP_EXISTING_BROWSER_RECOVERY',
+    schemaVersion:1,version:'0.4.1',createdAt:new Date().toISOString(),reason:'RAW_CDP_EXISTING_BROWSER_RECOVERY',
     marker:task.marker,sourceConversationUrl:'EXISTING_CHATGPT_PAGE',taskContract:task.taskContract||task.goal||'',
     acceptedConclusion:task.acceptedConclusion||'',lastUser:'',unresolvedItems:task.unresolvedItems||[],
     nextInstruction:task.nextInstruction||'根据以上接续上下文继续当前未完成任务，从下一步唯一动作开始，不重新讨论已冻结结论。',
