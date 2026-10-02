@@ -72,7 +72,7 @@ let lastSig='',lastProgress=now(),probeDone=false,priorDisconnect=0;
 
 function leaseState(extra={}){
  heartbeatGlobalWriterLease({leasePath:globalWriterLeasePath,token:globalWriterToken,marker:currentTask?.marker||'IDLE'});
- const base={schemaVersion:1,status:'LEASE_ACTIVE',version:'0.3.0',pid:process.pid,profile,globalWriterLeasePath,
+ const base={schemaVersion:1,status:'LEASE_ACTIVE',version:'0.4.0',pid:process.pid,profile,globalWriterLeasePath,
   pageLease:true,browserMustStayOpen:true,updatedAt:new Date().toISOString(),pageUrl:leasedPage&&!leasedPage.isClosed()?leasedPage.url():null};
  writeJson(statePath,{...base,...extra});
 }
@@ -105,7 +105,7 @@ async function observe(page){
 }
 
 function buildCheckpoint(task,obs,reason){
- const cp={schemaVersion:1,version:'0.3.0',createdAt:new Date().toISOString(),reason,
+ const cp={schemaVersion:1,version:'0.4.0',createdAt:new Date().toISOString(),reason,
   marker:task.marker,sourceConversationUrl:obs.url,taskContract:task.taskContract||task.goal||'',
   acceptedConclusion:(obs.lastAssistant||'').slice(0,12000),lastUser:(obs.lastUser||'').slice(0,6000),
   unresolvedItems:task.unresolvedItems||[],nextInstruction:task.nextInstruction||
@@ -306,7 +306,7 @@ async function rawCdpOwnerLoop(trigger){
    const task=item.task;
    const priorCp=readJson(checkpointPath,null);
    const cp=priorCp&&priorCp.marker===task.marker?priorCp:{
-    schemaVersion:1,version:'0.3.0',createdAt:new Date().toISOString(),reason:'RAW_CDP_EXISTING_BROWSER_RECOVERY',
+    schemaVersion:1,version:'0.4.0',createdAt:new Date().toISOString(),reason:'RAW_CDP_EXISTING_BROWSER_RECOVERY',
     marker:task.marker,sourceConversationUrl:'EXISTING_CHATGPT_PAGE',taskContract:task.taskContract||task.goal||'',
     acceptedConclusion:task.acceptedConclusion||'',lastUser:'',unresolvedItems:task.unresolvedItems||[],
     nextInstruction:task.nextInstruction||'根据以上接续上下文继续当前未完成任务，从下一步唯一动作开始，不重新讨论已冻结结论。',
