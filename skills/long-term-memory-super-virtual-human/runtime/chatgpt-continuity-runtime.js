@@ -19,7 +19,7 @@ const marker=task.marker||('LTMVH-'+Date.now());
 const now=()=>Date.now();
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const rxDisconnect=/连接已断开|正在重新连接|disconnected|reconnecting/i;
-const rxHuman=/verify you are human|captcha|确认您是真人|验证.*真人/i;
+const rxHuman=/verify you are human|captcha|确认您是真人|验证.*真人|just a moment|checking your browser|请稍候/i;
 const rxService=/service unavailable|temporarily unavailable|bad gateway|internal server error/i;
 
 async function observe(page){
@@ -42,7 +42,7 @@ async function observe(page){
  const body=o.bodyText;
  return {...o,
   disconnected:rxDisconnect.test(body),
-  humanVerification:rxHuman.test(body),
+  humanVerification:rxHuman.test(body)||rxHuman.test(o.title||''),
   serviceUnavailable:rxService.test(body),
   safeCheckpoint:!o.stop&&o.composer&&o.assistantTurns>0&&o.copyReady};
 }
@@ -107,8 +107,10 @@ async function rotateTrueNewChat(context,cp){
  return {status:'TRUE_NEW_CHAT_SENT_CONFIRMED',url:p.url(),source:cp.sourceConversationUrl};
 }
 
+let runtimeContext=null;
 (async()=>{
- const context=await chromium.launchPersistentContext(profile,{headless:false,viewport:{width:1365,height:850}});
+ runtimeContext=await chromium.launchPersistentContext(profile,{headless:false,viewport:{width:1365,height:850}});
+ const context=runtimeContext;
  let page=context.pages().find(p=>/chatgpt\.com/.test(p.url())&&/\/c\//.test(new URL(p.url()).pathname))
    ||context.pages().find(p=>/chatgpt\.com/.test(p.url()));
  if(!page){page=await context.newPage();await page.goto('https://chatgpt.com/',{waitUntil:'domcontentloaded'});}
@@ -154,5 +156,10 @@ async function rotateTrueNewChat(context,cp){
   }
   await sleep(pollMs);
  }
- await context.close();
-})().catch(e=>{console.error('LTMVH_CONTINUITY_RUNTIME_FAIL',e.stack||e.message);process.exitCode=1});
+ await context.close(); runtimeContext=null;
+})().catch(async e=>{
+ console.error('LTMVH_CONTINUITY_RUNTIME_FAIL',e.stack||e.message);
+ try{if(runtimeContext) await runtimeContext.close();}catch{}
+ runtimeContext=null;
+ process.exitCode=1;
+});
