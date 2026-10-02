@@ -16,9 +16,16 @@ WINDOWS_BRIDGE=GPT直连Windows双路执行桥 v0.2.0
 
 MISSING_CORE_1=GPT_CHECKPOINT_AND_SESSION_RECOVERY
 MISSING_CORE_2=GPT_INDEPENDENT_STRONG_BACKUP
-MODEL_THINKING_AUTO_SELECTION=UNRESOLVED
-LOCAL_REPO_SECOND_BACKUP=IN_PROGRESS
-DESKTOP_COMMANDER_AUTOSTART=IN_PROGRESS
+MODEL_THINKING_AUTOMATION=OPEN
+
+LOCAL_REPO_SECOND_BACKUP=RETRY_IN_PROGRESS
+LOCAL_REPO_BACKUP_RUN_ID=36991788863
+
+DESKTOP_COMMANDER_REMOTE=OFFLINE
+DESKTOP_COMMANDER_OFFLINE_ROOT_CAUSE=LOCAL_REMOTE_DEVICE_PROCESS_NOT_RUNNING
+DESKTOP_COMMANDER_AUTOSTART=BLOCKED_UNTIL_USER_SESSION_RECONNECTED_ONCE
+GITHUB_RUNNER_ACCOUNT=NETWORK_SERVICE
+INTERACTIVE_WINDOWS_USER=A
 ```
 
 ## 已冻结判断
@@ -30,17 +37,48 @@ DESKTOP_COMMANDER_AUTOSTART=IN_PROGRESS
 - 2.0 方法作为重要工作方法和参照，不把任何实现流程写死。
 - 页面不是长期事实库；必须建立 Checkpoint + 权威项目状态。
 - GPT 本身必须有独立强备份。
+- 旧 v5.6.5 保留为历史参照与故障经验，不再作为当前唯一方法。
+
+## Desktop Commander 当前 Reality
+
+官方 Remote Device 必须在目标电脑本机运行；进程停止后设备即 Offline，持久化会话通常可在重新启动后复用。
+
+本轮已确认：
+- GitHub Windows runner 仍能接收任务；
+- runner 当前执行身份是 `NETWORK SERVICE`；
+- A 用户才持有原 Desktop Commander 配对会话；
+- 服务账户不能写 `C:\Users\A\AppData\Local`，因此不能替 A 强行安装用户级自启动；
+- 不扩大服务账户权限。
+
+下一动作：
+1. A 用户执行一次 `npx @wonderwhy-er/desktop-commander@latest remote`；
+2. Remote Online 后由 GPT 直连进入 A 用户环境；
+3. 再创建用户级“登录自动启动 + 异常重启”；
+4. 重启/重新登录 Reality 验证。
+
+## 仓库第二备份
+
+目标：
+- 完整 mirror；
+- 独立 `.bundle`；
+- SHA256；
+- 本机路径 `C:\AI\backups\codex-private-skills`。
+
+首次 Reality 未进入备份正文：Windows 到 GitHub HTTPS 临时 reset。
+当前自动重试 Run：`36991788863`。
 
 ## 当前最优先
 
-1. 修复并常驻 Desktop Commander Remote；
-2. 给共同私库建立本地完整第二备份；
+1. 恢复 Desktop Commander Remote 并完成 A 用户级常驻；
+2. 完成本地完整第二备份；
 3. 打造 GPT 直控主路线 v1.0 Reality；
-4. 同批任务比较 A/B/C 三路线；
+4. 同批正式任务比较 A/B/C 三路线；
 5. 主路线初步稳定后，建立 GPT 不可用时的独立强备份。
 
-## 未解决
+## 未解决且不得消失
 
-- ChatGPT 页面内是否能自动切换模型 / 思考强度，以及可自动化到什么程度；
-- GPT 无响应时怎样自动触发新会话恢复；
-- 路线 C 的多层 Agent 自动化编排目前是否具备完整 Reality 条件。
+- GPT Checkpoint / 换页恢复；
+- GPT 服务不可用时的独立强备份；
+- ChatGPT 当前会话模型 / 思考强度的可编程切换；
+- GPT 无响应时如何自动触发新会话恢复；
+- 路线 C 多层 Agent + 自动化编排的 Reality 可用性。
