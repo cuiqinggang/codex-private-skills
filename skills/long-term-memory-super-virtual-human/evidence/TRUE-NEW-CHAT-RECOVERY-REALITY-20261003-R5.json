@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "locator": "【长期记忆超级虚拟人 v0.3.0｜真新聊天恢复 Reality｜R5｜实】",
+  "version": "0.3.0",
+  "virtualMature": true,
+  "finalValid": false,
+  "testedAt": "2026-10-03",
+  "testMarker": "LTMVH-V030-REALITY-20261003-03",
+  "recoveryPolicy": {
+    "target": "TRUE_NEW_CHAT",
+    "branchForbidden": true,
+    "minimalHandoff": true,
+    "exactlyOnceRequired": true,
+    "pageLeaseRetained": true
+  },
+  "primaryChatGPTPath": {
+    "attempted": true,
+    "result": "NOT_CERTIFIED",
+    "failure": "page.waitForFunction timeout after 20000ms waiting for user-marker DOM confirmation",
+    "branchUsed": false,
+    "pageClosed": false
+  },
+  "automaticFallback": {
+    "triggered": true,
+    "route": "Reasonix v1.38.6 + DeepSeek-V4.1-Flash",
+    "result": "PASS",
+    "durationMs": 18622,
+    "ack": "LTMVH_V030-RECOVERY-ACK"
+  },
+  "supervisorRegression": "17 PASS / 0 FAIL",
+  "conclusion": "Automatic detection/failover is reality-active. True-New-chat main-path send confirmation remains the single open page-recovery E2E gap; no false PASS was issued and backup completed automatically."
+}
