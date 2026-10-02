@@ -1,0 +1,70 @@
+name: Local Repository Second Backup
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/local-repository-second-backup.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backup:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Create verified local mirror and bundle
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $repoUrl='https://github.com/cuiqinggang/codex-private-skills.git'
+          $root='C:\actions-runner-etal\_local-backups\codex-private-skills'
+          $mirror=Join-Path $root 'codex-private-skills.git'
+          $bundleDir=Join-Path $root 'bundles'
+          New-Item -ItemType Directory -Path $bundleDir -Force | Out-Null
+
+          $raw="x-access-token:$env:GH_TOKEN"
+          $basic=[Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes($raw))
+          $extra="AUTHORIZATION: basic $basic"
+
+          if (Test-Path -LiteralPath (Join-Path $mirror 'HEAD')) {
+            git --git-dir=$mirror remote set-url origin $repoUrl
+            if ($LASTEXITCODE -ne 0) { throw 'MIRROR_SET_URL_FAILED' }
+            git --git-dir=$mirror -c "http.https://github.com/.extraheader=$extra" remote update --prune
+            if ($LASTEXITCODE -ne 0) { throw 'MIRROR_UPDATE_FAILED' }
+          } else {
+            git -c "http.https://github.com/.extraheader=$extra" clone --mirror $repoUrl $mirror
+            if ($LASTEXITCODE -ne 0) { throw 'MIRROR_CLONE_FAILED' }
+          }
+
+          git --git-dir=$mirror fsck --full
+          if ($LASTEXITCODE -ne 0) { throw 'MIRROR_FSCK_FAILED' }
+
+          $stamp=(Get-Date).ToString('yyyyMMdd-HHmmss')
+          $bundle=Join-Path $bundleDir ("codex-private-skills-$stamp.bundle")
+          git --git-dir=$mirror bundle create $bundle --all
+          if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $bundle)) { throw 'BUNDLE_CREATE_FAILED' }
+
+          git bundle verify $bundle
+          if ($LASTEXITCODE -ne 0) { throw 'BUNDLE_VERIFY_FAILED' }
+
+          $head=(git --git-dir=$mirror rev-parse refs/heads/main).Trim()
+          $hash=(Get-FileHash -LiteralPath $bundle -Algorithm SHA256).Hash.ToLowerInvariant()
+          $size=(Get-Item -LiteralPath $bundle).Length
+          $meta=[ordered]@{
+            status='LOCAL_SECOND_BACKUP_PASS'
+            backup_root=$root
+            mirror_path=$mirror
+            bundle_path=$bundle
+            bundle_sha256=$hash
+            bundle_size_bytes=$size
+            main_head=$head
+            verified=$true
+            created=(Get-Date).ToString('o')
+          }
+          $meta | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $root 'LATEST.json') -Encoding UTF8
+          $meta | ConvertTo-Json -Depth 5
