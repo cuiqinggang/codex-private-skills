@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.3.0 - 2026-10-03
+
+- 正式做一次成果状态固化：版本由 v0.2.1 升级为 v0.3.0；VIRTUAL_MATURE=YES，FINAL_VALID 继续保持 NO；
+- 保留并登记既有 Reality：Session Continuity Supervisor 15/15、ECC lease/takeover/fault 59/59、Reasonix/DeepSeek 独立备脑 PASS、K 盘仓库备份与恢复 PASS、Windows 双路径基础能力；
+- 根据新的直接使用证据修正换页规则：**“Branch in new chat / 在新聊天中分支”不得作为故障恢复的新页**；
+- 恢复目标固定为真正的 ChatGPT **New chat**，只投递最小 handoff，不重放整个旧会话；
+- Session Continuity Supervisor 升级：新增 Branch 拒绝门，回归扩展为 17 PASS / 0 FAIL；
+- 新增 `runtime/chatgpt-continuity-runtime.js`：外部监测页面健康/断连/静默窗口/上下文膨胀，在安全 checkpoint 自动生成最小恢复包并切到真正 New chat，marker 防重复发送；
+- 恢复路径继续遵守 conservative post-disconnect：断连横幅不等于后台任务失败；先只读探测，超出任务专属窗口后才换页；
+- v0.3.0 是成果固化与连续性实现版本，不等于 v1.0 / FINAL_VALID；真正“旧页故障 → New chat → exactly-once 继续”的 Reality 仍需本轮复验。
+
 ## 0.2.0 - 2026-10-02
 
 - 吸收 Reasonix Recovery Kit 的成熟通用机制，但不复制历史 96/100 评分为本项目成熟度；
