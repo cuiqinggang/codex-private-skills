@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "locator": "【长期记忆超级虚拟人 v0.3.0｜成果状态固化与真新聊天恢复｜R4｜实/待闭合】",
+  "version": "0.3.0",
+  "virtualMature": true,
+  "finalValid": false,
+  "stateSnapshotFrozen": true,
+  "preservedReality": {
+    "sessionContinuityPrior": "15 PASS / 0 FAIL",
+    "ecc": "59 PASS / 0 FAIL",
+    "backupBrain": "PASS Reasonix/DeepSeek",
+    "kDriveRestore": "PASS"
+  },
+  "v03Correction": {
+    "recoveryTarget": "TRUE_NEW_CHAT",
+    "branchRecovery": "FORBIDDEN",
+    "minimalHandoff": true,
+    "fullOldConversationReplay": false,
+    "exactlyOnceMarker": true
+  },
+  "runtime": {
+    "supervisorExpected": "17 PASS / 0 FAIL",
+    "continuityRuntime": "runtime/chatgpt-continuity-runtime.js"
+  },
+  "openGates": [
+    "true new chat page-failover E2E",
+    "DCR logoff/relogin",
+    "model-effort continue+restore E2E",
+    "real valuable long-task FINAL_VALID regression"
+  ],
+  "note": "v0.3.0 is a state-preservation and recovery-implementation version; it does not claim FINAL_VALID."
+}
