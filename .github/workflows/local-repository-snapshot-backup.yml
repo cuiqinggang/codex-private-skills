@@ -1,0 +1,63 @@
+name: Local Repository Snapshot Backup
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/local-repository-snapshot-backup.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Download and verify current main snapshot
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $root='C:\actions-runner-etal\_local-backups\codex-private-skills'
+          $snapDir=Join-Path $root 'snapshots'
+          New-Item -ItemType Directory -Path $snapDir -Force | Out-Null
+
+          $sha='${{ github.sha }}'
+          $zip=Join-Path $snapDir ("codex-private-skills-main-$sha.zip")
+          $part=$zip+'.part'
+          $url="https://api.github.com/repos/cuiqinggang/codex-private-skills/zipball/$sha"
+
+          if (Test-Path $part) { Remove-Item $part -Force }
+          & curl.exe -L --fail --retry 20 --retry-all-errors --retry-delay 5 --connect-timeout 30 --max-time 3600 `
+            -H "Authorization: Bearer $env:GH_TOKEN" `
+            -H "Accept: application/vnd.github+json" `
+            -H "X-GitHub-Api-Version: 2022-11-28" `
+            -o $part $url
+          if ($LASTEXITCODE -ne 0) { throw "SNAPSHOT_DOWNLOAD_FAILED exit=$LASTEXITCODE" }
+
+          Move-Item -LiteralPath $part -Destination $zip -Force
+          $size=(Get-Item -LiteralPath $zip).Length
+          if ($size -lt 1048576) { throw "SNAPSHOT_TOO_SMALL bytes=$size" }
+
+          $entries=@(& tar.exe -tf $zip)
+          if ($LASTEXITCODE -ne 0) { throw 'SNAPSHOT_ARCHIVE_VERIFY_FAILED' }
+          if ($entries.Count -lt 1000) { throw "SNAPSHOT_ENTRY_COUNT_TOO_SMALL count=$($entries.Count)" }
+
+          $hash=(Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLowerInvariant()
+          $meta=[ordered]@{
+            status='LOCAL_MAIN_SNAPSHOT_BACKUP_PASS'
+            source_repository='cuiqinggang/codex-private-skills'
+            source_commit=$sha
+            snapshot_path=$zip
+            snapshot_sha256=$hash
+            snapshot_size_bytes=$size
+            archive_entries=$entries.Count
+            verified=$true
+            created=(Get-Date).ToString('o')
+            note='Current main snapshot; full Git history mirror remains a separate enhancement.'
+          }
+          $meta | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $root 'LATEST_SNAPSHOT.json') -Encoding UTF8
+          $meta | ConvertTo-Json -Depth 5
