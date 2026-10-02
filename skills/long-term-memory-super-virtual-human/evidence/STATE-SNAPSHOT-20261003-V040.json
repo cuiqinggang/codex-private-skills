@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "locator": "【长期记忆超级虚拟人 v0.4.0｜连续性默认运行合同｜STATE-SNAPSHOT｜实】",
+  "version": "0.4.0",
+  "virtualMature": true,
+  "finalValid": false,
+  "stateSnapshotFrozen": true,
+  "activation": {
+    "trigger": "User explicitly invokes Long-Term Memory Super Virtual Human for the current task",
+    "continuityRuntimeRequired": true,
+    "proactiveEarlyRotation": true,
+    "checkpointBeforeRotation": true,
+    "trueNewChatOnly": true,
+    "branchForbidden": true,
+    "reuseExistingChatgptBrowser": true,
+    "keepBrowserOpen": true,
+    "exactlyOnceRequired": true
+  },
+  "preservedReality": {
+    "r6ExistingBrowserTrueNewChat": "PASS",
+    "sessionContinuityRegression": "17 PASS / 0 FAIL",
+    "eccLeaseTakeoverFault": "59 PASS / 0 FAIL",
+    "independentBackupBrain": "PASS Reasonix/DeepSeek",
+    "kDriveRepoRestore": "PASS"
+  },
+  "openGates": [
+    "natural or injected real ChatGPT stall -> automatic detection -> true New chat recovery E2E",
+    "Desktop Commander logoff/relogin recovery",
+    "model/effort switch + continue + restore E2E",
+    "real valuable long task FINAL_VALID",
+    "backup brain business-level DONE_WHEN"
+  ],
+  "note": "v0.4.0 promotes Reality-proven continuity behavior to the default runtime contract when the skill is invoked; it does not claim FINAL_VALID."
+}
