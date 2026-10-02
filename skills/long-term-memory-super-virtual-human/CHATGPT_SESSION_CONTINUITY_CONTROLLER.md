@@ -1,4 +1,4 @@
-# ChatGPT Session Continuity Controller v0.3
+# ChatGPT Session Continuity Controller v0.4
 
 ## Purpose
 
@@ -101,11 +101,11 @@ For long tasks, reuse ECC v3.1.1 lease/fencing concepts so only the current leas
 Current status:
 
 ```ini
-SESSION_CONTINUITY_CONTROLLER=VIRTUAL_MATURE_V0_3
+SESSION_CONTINUITY_CONTROLLER=V0_4_RUNTIME_ACTIVE
 PROACTIVE_SESSION_ROTATION=VIRTUAL_MATURE_REALITY_OPEN
 TRUE_NEW_CHAT_ONLY=YES
 BRANCH_RECOVERY=FORBIDDEN
-PAGE_FAILOVER_E2E=IMPLEMENTATION_IN_PROGRESS
+PAGE_FAILOVER_E2E=TRUE_NEW_CHAT_RECOVERY_PASS
 SERVICE_FAILOVER_BACKUP_BRAIN=PASS
 ```
 
@@ -211,3 +211,22 @@ GLOBAL_WRITER_LEASE=ACTIVE
 Reality 证据：`evidence/TRUE-NEW-CHAT-EXISTING-BROWSER-REALITY-20261003-R6.json`。
 
 注意：**恢复执行 E2E 已 PASS；自然发生的“长回答真实卡死 → 自动判定停滞 → 自动触发恢复”完整故障注入 Reality 仍待单独认证。** 当前停滞判定逻辑已有 17/17 确定性回归测试，并已有真实主路失败→自动备路恢复证据，但不把这两者冒充自然卡死全链路认证。
+
+
+## v0.4｜技能包激活即启用连续性运行
+
+当“长期记忆超级虚拟人”被明确指定为当前任务运行技能包时，本控制器不再是可选附加项，而是默认运行层。
+
+```ini
+ACTIVATION_SCOPE=CURRENT_TASK_LIFECYCLE
+MONITOR_CURRENT_CHAT=YES
+PROACTIVE_ROTATION=YES
+TRUE_NEW_CHAT_ONLY=YES
+BRANCH=FORBIDDEN
+EXISTING_BROWSER_FIRST=YES
+KEEP_BROWSER_OPEN=YES
+CHECKPOINT_REQUIRED=YES
+EXACTLY_ONCE_REQUIRED=YES
+```
+
+长页面策略：能在安全 checkpoint 提前换就提前换，不以“已经彻底卡死”作为换页前提。页面发生异常时按故障分类处理：短暂断连先观察后台；确认停滞则 checkpoint → true New chat；服务级不可用则切独立备脑。恢复和换页都不得关闭已存在的 shared-mcp GPT 浏览器。
