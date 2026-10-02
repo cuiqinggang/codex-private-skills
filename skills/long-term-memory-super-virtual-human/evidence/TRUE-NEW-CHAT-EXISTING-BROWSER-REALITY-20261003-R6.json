@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "locator": "【长期记忆超级虚拟人 v0.3.0｜现有GPT浏览器复用与真新聊天恢复｜R6｜实】",
+  "version": "0.3.0",
+  "testedAt": "2026-10-03",
+  "marker": "LTMVH-V030-PRODUCT-RECOVERY-004",
+  "result": "PASS",
+  "browser": {
+    "existingBrowserPid": 22140,
+    "existingProfile": "C:\\AI\\Playwright-Native-AI-Browser\\profile\\shared-mcp",
+    "cdpEndpoint": "http://127.0.0.1:9223",
+    "existingBrowserReused": true,
+    "newBrowserLaunched": false,
+    "pageLeaseRetained": true
+  },
+  "recovery": {
+    "trueNewChat": true,
+    "branchUsed": false,
+    "minimalHandoff": true,
+    "exactlyOnce": true,
+    "submissionCount": 1,
+    "markerCount": 1,
+    "ackConfirmed": true,
+    "transport": "RAW_CDP_EXISTING_BROWSER",
+    "decision": "ROTATE_TO_NEW_CHAT_RAW_CDP_RECOVERY"
+  },
+  "primaryPath": {
+    "playwrightAttachExistingBrowser": "PASS",
+    "playwrightSendDomConfirm": "TIMEOUT",
+    "rawCdpRecoveryAfterPlaywrightConfirmFailure": "PASS"
+  },
+  "protections": {
+    "branchRecoveryForbidden": true,
+    "secondBrowserLaunchForbiddenWhenExistingProfilePresent": true,
+    "globalWriterLeaseAuthoritative": true,
+    "pidReuseFalseOwnerFixed": true
+  },
+  "monitoringStatus": {
+    "deterministicSupervisor": "17 PASS / 0 FAIL",
+    "naturalStallDetectionFullE2E": "NOT_YET_DIRECTLY_CERTIFIED",
+    "note": "Recovery and failover are Reality-proven; detection decisions are mechanically regression-tested. A naturally stalled ChatGPT turn has not yet been deliberately induced end-to-end."
+  }
+}
