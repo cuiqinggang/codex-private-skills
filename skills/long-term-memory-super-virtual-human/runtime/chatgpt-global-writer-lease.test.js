@@ -1,0 +1,18 @@
+const assert=require('assert');
+const fs=require('fs');
+const path=require('path');
+const os=require('os');
+const {acquireGlobalWriterLease,heartbeatGlobalWriterLease,releaseGlobalWriterLease}=require('./chatgpt-global-writer-lease');
+const dir=fs.mkdtempSync(path.join(os.tmpdir(),'ltmvh-global-writer-'));
+const leasePath=path.join(dir,'writer.json');
+const a=acquireGlobalWriterLease({leasePath,ownerRoot:'A',inboxDir:path.join(dir,'inbox-a'),marker:'A'});
+assert.equal(a.acquired,true);
+const b=acquireGlobalWriterLease({leasePath,ownerRoot:'B',inboxDir:path.join(dir,'inbox-b'),marker:'B'});
+assert.equal(b.acquired,false);assert.equal(b.reason,'HELD_BY_LIVE_WRITER');
+assert.equal(heartbeatGlobalWriterLease({leasePath,token:a.token,marker:'A2'}),true);
+assert.equal(releaseGlobalWriterLease({leasePath,token:a.token}),true);
+fs.writeFileSync(leasePath,JSON.stringify({pid:999999999,token:'stale',ownerRoot:'OLD',inboxDir:'OLD'}));
+const c=acquireGlobalWriterLease({leasePath,ownerRoot:'C',inboxDir:path.join(dir,'inbox-c'),marker:'C'});
+assert.equal(c.acquired,true);
+assert.equal(releaseGlobalWriterLease({leasePath,token:c.token}),true);
+console.log('GLOBAL_WRITER_LEASE_TESTS=6 PASS / 0 FAIL');
