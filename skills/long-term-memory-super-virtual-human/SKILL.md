@@ -151,7 +151,7 @@ GUI 不是唯一执行面。优先 API / Connector / CLI / 原生协议；只有
 
 页面、网络、工具、执行器故障都按可恢复事件处理。恢复阶梯见 `RECOVERY.md`。
 
-GPT 本身不可用时必须存在独立强备份路线；未通过 Reality 前保持 `INDEPENDENT_STRONG_BACKUP=REQUIRED`，不得伪装完成。
+GPT 本身不可用时必须存在独立强备份路线；故障检测与接管必须位于 GPT 之外，不能依赖 GPT 自报故障。主脑故障检测、lease/fencing 与备脑接管见 `BRAIN_FAILOVER_CONTRACT.md`。未通过真实 failover Reality 前保持 `INDEPENDENT_STRONG_BACKUP=REQUIRED`，不得伪装完成。
 
 ## 13. 当前开放问题
 
