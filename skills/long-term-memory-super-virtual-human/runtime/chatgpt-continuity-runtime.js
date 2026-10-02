@@ -5,6 +5,7 @@ const {chromium}=require('playwright');
 const {decide}=require('./session-continuity-supervisor');
 const {pageLeaseDecision,conversationRotation}=require('./chatgpt-page-lease');
 const {recoverExistingChat}=require('./chatgpt-existing-cdp');
+const {acquireGlobalWriterLease,heartbeatGlobalWriterLease,releaseGlobalWriterLease}=require('./chatgpt-global-writer-lease');
 
 function arg(name,def=null){const i=process.argv.indexOf('--'+name);return i>=0?process.argv[i+1]:def}
 const profile=arg('profile');
@@ -23,6 +24,7 @@ const maxTurns=Number(arg('max-turns','24'));
 const maxText=Number(arg('max-text','80000'));
 const cdpEndpoint=arg('cdp-endpoint','http://127.0.0.1:9223');
 if(!profile) throw new Error('Usage: --profile <dir> [--task <task.json>] [--lease-root <dir>]');
+const globalWriterLeasePath=arg('global-writer-lease',path.resolve(profile,'..','..','state','chatgpt-global-writer-lease.json'));
 
 for(const d of [root,inboxDir,doneDir,failDir]) fs.mkdirSync(d,{recursive:true});
 const now=()=>Date.now();
@@ -36,11 +38,12 @@ function readJson(p,fallback){try{return JSON.parse(fs.readFileSync(p,'utf8'))}c
 function writeJson(p,v){fs.writeFileSync(p,JSON.stringify(v,null,2))}
 function safeName(s){return String(s||Date.now()).replace(/[^a-zA-Z0-9._-]/g,'_').slice(0,120)}
 
-function enqueueTask(taskPath){
+function enqueueTask(taskPath,targetInbox=inboxDir){
+ fs.mkdirSync(targetInbox,{recursive:true});
  const task=JSON.parse(fs.readFileSync(taskPath,'utf8'));
  const marker=task.marker||('LTMVH-'+Date.now());
  task.marker=marker;
- const target=path.join(inboxDir,Date.now()+'-'+safeName(marker)+'.json');
+ const target=path.join(targetInbox,Date.now()+'-'+safeName(marker)+'.json');
  writeJson(target,task);
  return {status:'QUEUED_TO_EXISTING_PAGE_LEASE',marker,target};
 }
@@ -52,6 +55,19 @@ if(prior&&prior.status==='LEASE_ACTIVE'&&isPidAlive(prior.pid)&&prior.pid!==proc
  process.exit(0);
 }
 
+const globalWriter=acquireGlobalWriterLease({leasePath:globalWriterLeasePath,ownerRoot:root,inboxDir,marker:'RUNTIME_START'});
+if(!globalWriter.acquired){
+ if(initialTaskPath&&globalWriter.current?.inboxDir){
+  const queued=enqueueTask(initialTaskPath,globalWriter.current.inboxDir);
+  console.log(JSON.stringify({...queued,status:'QUEUED_TO_GLOBAL_PAGE_WRITER',globalWriterPid:globalWriter.current.pid},null,2));
+  process.exit(0);
+ }
+ console.log(JSON.stringify({status:'GLOBAL_PAGE_WRITER_ALREADY_ACTIVE',reason:globalWriter.reason,
+  pid:globalWriter.current?.pid||null,ownerRoot:globalWriter.current?.ownerRoot||null},null,2));
+ process.exit(0);
+}
+const globalWriterToken=globalWriter.token;
+
 let runtimeContext=null;
 let leasedPage=null;
 let attachedBrowser=null;
@@ -62,7 +78,8 @@ let currentTask=null;
 let lastSig='',lastProgress=now(),probeDone=false,priorDisconnect=0;
 
 function leaseState(extra={}){
- const base={schemaVersion:1,status:'LEASE_ACTIVE',version:'0.3.0',pid:process.pid,profile,
+ heartbeatGlobalWriterLease({leasePath:globalWriterLeasePath,token:globalWriterToken,marker:currentTask?.marker||'IDLE'});
+ const base={schemaVersion:1,status:'LEASE_ACTIVE',version:'0.3.0',pid:process.pid,profile,globalWriterLeasePath,
   pageLease:true,browserMustStayOpen:true,updatedAt:new Date().toISOString(),pageUrl:leasedPage&&!leasedPage.isClosed()?leasedPage.url():null};
  writeJson(statePath,{...base,...extra});
 }
@@ -350,6 +367,7 @@ async function ownerLoop(){
 
 async function explicitStop(signal){
  if(stopping)return;stopping=true;
+ releaseGlobalWriterLease({leasePath:globalWriterLeasePath,token:globalWriterToken});
  writeJson(statePath,{schemaVersion:1,status:'LEASE_RELEASED_EXPLICIT_STOP',pid:process.pid,signal,updatedAt:new Date().toISOString()});
  try{if(runtimeContext&&!externalBrowserAttached)await runtimeContext.close()}catch{}
  process.exit(0);
@@ -358,6 +376,7 @@ process.on('SIGINT',()=>explicitStop('SIGINT'));process.on('SIGTERM',()=>explici
 
 ownerLoop().catch(async e=>{
  console.error('LTMVH_LEASE_OWNER_FATAL',e.stack||e);
+ releaseGlobalWriterLease({leasePath:globalWriterLeasePath,token:globalWriterToken});
  leaseState({status:'LEASE_FATAL',error:String(e.message||e),browserCloseRequested:false});
  // Fail closed without ordinary context.close(): the page lease remains until the owner itself is explicitly stopped
  await new Promise(()=>{});
