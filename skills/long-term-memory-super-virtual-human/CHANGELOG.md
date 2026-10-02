@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.4.0 - 2026-10-03
+
+- 将 v0.3 已完成的连续性成果正式升级为默认运行合同，而不是可选恢复模块；
+- Reality R6 已证明：复用既有 shared-mcp 登录浏览器、禁止第二次 launch、同一浏览器进入真正 New chat、禁止 Branch、最小 handoff、exactly-once、ACK 确认、PAGE_LEASE 保留；
+- 现有浏览器控制采用 attach-first / launch-last；Playwright attach 或 DOM 确认不兼容时，自动切 existing-browser raw CDP，仍不得重开浏览器；
+- 全局 writer lease 成为唯一写入权威，修复 Windows PID reuse 导致“假 owner”问题；
+- 当用户明确指定“长期记忆超级虚拟人”运行当前任务时，连续性监控、Checkpoint、长页提前轮换、true New chat、浏览器复用、禁止 Branch、exactly-once 自动生效；
+- 长任务默认“能安全换就提前换”，不等到页面彻底卡死后才处理；
+- 断连仍采用保守判断：连接断开不等于后台停止，先观察/只读探测，确认停滞后再恢复；
+- v0.4.0 仍保持 FINAL_VALID=NO；自然发生的“长回答真实卡死 → 自动识别 → 自动恢复”完整故障注入 Reality、DCR 注销/重登、模型档位完整 E2E 和真实业务长任务 FINAL_VALID 仍为后续门槛。
+
 ## 0.3.0 - 2026-10-03
 
 - 正式做一次成果状态固化：版本由 v0.2.1 升级为 v0.3.0；VIRTUAL_MATURE=YES，FINAL_VALID 继续保持 NO；
