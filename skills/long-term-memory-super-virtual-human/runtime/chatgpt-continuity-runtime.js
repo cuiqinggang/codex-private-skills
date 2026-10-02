@@ -11,6 +11,7 @@ const pollMs=Number(arg('poll-ms','1200'));
 const silenceMs=Number(arg('silence-ms','45000'));
 const maxTurns=Number(arg('max-turns','24'));
 const maxText=Number(arg('max-text','80000'));
+const forceRotate=process.argv.includes('--force-rotate');
 if(!profile||!taskPath) throw new Error('Usage: --profile <dir> --task <task.json> [--checkpoint <file>]');
 
 const task=JSON.parse(fs.readFileSync(taskPath,'utf8'));
@@ -111,6 +112,15 @@ async function rotateTrueNewChat(context,cp){
    ||context.pages().find(p=>/chatgpt\.com/.test(p.url()));
  if(!page){page=await context.newPage();await page.goto('https://chatgpt.com/',{waitUntil:'domcontentloaded'});}
  let lastSig='',lastProgress=now(),probeDone=false,priorDisconnect=0;
+ if(forceRotate){
+  const o=await observe(page);
+  if(o.humanVerification) throw new Error('HUMAN_VERIFICATION_REQUIRED');
+  const cp=buildCheckpoint(o,'FORCED_REALITY_TEST');
+  const r=await rotateTrueNewChat(context,cp);
+  console.log(JSON.stringify({decision:{action:'ROTATE_TO_NEW_CHAT'},recovery:r,checkpoint:checkpointPath},null,2));
+  await context.close();
+  return;
+ }
  for(;;){
   const o=await observe(page);
   const sig=[o.url,o.userTurns,o.assistantTurns,o.stop,o.lastAssistant.length,o.txtLen].join('|');
