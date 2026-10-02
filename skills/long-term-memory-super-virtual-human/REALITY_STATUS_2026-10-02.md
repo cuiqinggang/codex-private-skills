@@ -1,8 +1,8 @@
-# 长期记忆超级虚拟人 v0.1.1｜Reality Status 2026-10-02
+# 长期记忆超级虚拟人 v0.2.0｜Reality Status 2026-10-02
 
 ```ini
-VERSION=0.1.1
-STATUS=EARLY_REALITY_BASELINE
+VERSION=0.2.0
+STATUS=MATURE_CAPABILITY_ABSORPTION_BASELINE
 VIRTUAL_MATURE=NO
 FINAL_VALID=NO
 
@@ -10,143 +10,76 @@ DCR_REMOTE_CURRENT=ONLINE
 DCR_RUNTIME_WATCHDOG_RECOVERY=PASS
 DCR_LOGIN_AUTOSTART=CONFIGURED_NOT_RELOGIN_TESTED
 
-WINDOWS_BACKUP_ROUTE=GITHUB_SELF_HOSTED_RUNNER
-WINDOWS_DUAL_ROUTE=AVAILABLE
+WINDOWS_PATH_A=Desktop_Commander_Remote
+WINDOWS_PATH_B=GitHub_self_hosted_runner
 
-K_DRIVE_REPO_BACKUP=PASS
+K_DRIVE_REPO_BACKUP=PASS_AT_PREVIOUS_HEAD
 ECC_V3_1_1_RELEASE=VERIFIED
 MATURE_SUPERTOOL_ASSET=FOUND_DORMANT
+REASONIX_RECOVERY_KIT=ABSORBED_AS_MATURE_SOURCE
+REASONIX_FRESH_RUNTIME_VERIFY=NOT_RECERTIFIED
 
-CHATGPT_SELF_MODEL_SWITCH=NO_PROGRAMMABLE_INTERFACE
-EXTERNAL_MODEL_ROUTER_CONFIG=PASS
-EXTERNAL_MODEL_ROUTER_E2E=PARTIAL
+CHATGPT_MODEL_EFFORT_CONTROLLER=DESIGNED
+CHATGPT_MODEL_EFFORT_E2E=NOT_RUN
+CHATGPT_SESSION_CONTINUITY_CONTROLLER=DESIGNED
+CHATGPT_PAGE_FAILOVER_E2E=NOT_RUN
+GPT_SERVICE_FAILOVER_E2E=NOT_RUN
 ```
 
-## 1. Desktop Commander Remote
+## Reasonix Recovery Kit probe
 
-Reality:
-- Device `DESKTOP-4A1EGTM` Online；
-- Remote ping 成功；
-- watchdog launcher 已存在；
-- Startup 用户级自启入口已建立；
-- launcher 已加入单实例 mutex，防止 Task Scheduler / Startup 双触发造成重复实例。
+Current source:
+```text
+C:\Users\A\AppData\Roaming\reasonix\global-workspace\.reasonix\skills\reasonix-recovery-kit\SKILL.md
+```
 
-运行时恢复测试：
-- 主动终止 Remote 子进程 PID `30224`；
-- watchdog 自动重新拉起 Remote；
-- 复测出现新 Remote 进程 PID：`24212 / 23796 / 19700 / 22304`；
-- watchdog 保持单实例 PID `28868`；
-- 云端再次检测 Device=Online 且 ping 成功。
+Observed mature mechanisms:
+- light entry / heavy library split
+- capability and skill registry
+- model router
+- context fallback
+- checkpoint/handoff/resume
+- Gate/Repair
+- fix verification
+- health/runtime verification
+- multi-agent
+- recovery playbooks
 
-结论：
+Historical `runtime-verify.json`:
+```text
+timestamp=2026-09-28T21:59:27+08:00
+total=48
+passed=48
+failed=0
+verdict=ALL_PASS
+```
+
+A fresh `verify-runtime.ps1` was invoked on 2026-10-02, but no new report was written; the report modified time remained 2026-09-28. Therefore historical maturity is accepted as source evidence but is not treated as a fresh 2026-10-02 runtime certification.
+
+## ChatGPT UI automation probe
+
+Windows UI Automation read-only probe found only the ChatGPT Chromium shell/title-bar controls; the web content model/thinking controls were not exposed as a stable UIA tree.
+
+Conclusion:
 ```ini
-DCR_RUNTIME_CRASH_RECOVERY=PASS
+WINDOWS_UIA_MODEL_SWITCH=NOT_PRIMARY
+PLAYWRIGHT_NATIVE_AI_BROWSER=PRIMARY_CANDIDATE
+COMPUTER_USE_VISUAL=FALLBACK
 ```
 
-未做 Windows 注销/重启，因此：
-```ini
-DCR_LOGIN_AUTOSTART_RELOGIN_REALITY=NOT_RUN
-```
-
-## 2. Windows 低相关备路
-
-另一控制面为 GitHub Actions Windows self-hosted runner：
-- `RunnerService.exe` / `Runner.Listener.exe` 当前本机可见；
-- 与 DCR 不同控制面、不同运行身份；
-- 历史 Windows bridge Reality 已成功。
-
-定位：
+Existing mature browser asset:
 ```text
-P1 Desktop Commander Remote（交互用户会话）
-P2 GitHub self-hosted runner（服务执行面）
+C:\AI\Playwright-Native-AI-Browser
 ```
 
-## 3. K 盘安全备份
+It already provides persistent headed ChatGPT browser identity, exactly-once send/query/wait_extract and recovery. The v0.2 model/effort controller must extend/reuse that formal path rather than create a second ChatGPT communication route.
 
-最终本轮备份基线：
-```text
-SOURCE_HEAD=cb0506507eb4e702fc05bd757693a8e12fa84540
-MIRROR=K:\AI\backups\codex-private-skills\codex-private-skills.git
-BUNDLE=K:\AI\backups\codex-private-skills\bundles\codex-private-skills-20261002-194008.bundle
-BUNDLE_SHA256=53ac3c8989071afe6b00e39afa9089c6a3d3cd72f2203d9f370d3dcec6c86def
-BUNDLE_SIZE=66276837
-SKILL_COPY=K:\AI\skills\long-term-memory-super-virtual-human-v0.1.1-cb05065
-SKILL_FILE_COUNT=11
-```
+## v1.0 gates still open
 
-验证：
-- mirror update PASS；
-- `git fsck --full` PASS；
-- `git bundle verify` PASS；
-- SHA256 已写入 `K:\AI\backups\codex-private-skills\LATEST.json`。
-
-## 4. ECC v3.1.1
-
-公开正式 Release 仍为 `v3.1.1`。
-
-已确认成熟能力：
-- LoopX；
-- 四角色长流程；
-- checkpoint/handoff；
-- lease/fencing；
-- Gate/Repair；
-- Codex Runner；
-- Reasonix adapter；
-- fault injection；
-- endurance/recovery/delivery verification。
-
-结论：
-```text
-长流程默认复用 ECC v3.1.1
-不建立第二套重复长流程体系
-```
-
-## 5. 成熟态 AI Coding SuperTool 生态站
-
-本机资产：
-```text
-C:\AI\DeerFlow-SuperEmployee-Station
-```
-
-Reality：
-- 资产目录存在；
-- 任务合同、Gate、Repair、checkpoint、handoff、模型路由、多智能体、验证/回滚等文件均存在；
-- 当前 `127.0.0.1:2026` 未启动。
-
-定位：
-```text
-FOUND_DORMANT
-按复杂任务需要启动
-不永久挂进 GPT 工作上下文
-```
-
-## 6. 模型/思考路由
-
-当前 ChatGPT 页面：
-```ini
-SELF_MODEL_SWITCH=NO_PROGRAMMABLE_INTERFACE
-SELF_THINKING_SWITCH=NO_PROGRAMMABLE_INTERFACE
-```
-
-本机 Codex 实际 smoke：
-- CLI 支持 `-m/--model`；
-- CLI 支持 config override；
-- 本机基础配置显示 `model=gpt-6.1-sol`、`model_reasoning_effort=medium`；
-- smoke 使用 `model_reasoning_effort=low` 后，Codex session 启动信息实际显示 `reasoning effort: low`。
-
-但随后 model metadata refresh timeout，未得到最终模型回答。
-
-因此：
-```ini
-EXTERNAL_MODEL_ROUTER_CONFIG=PASS
-EXTERNAL_MODEL_ROUTER_E2E=PARTIAL
-```
-
-## 7. 当前原则
-
-- 关键能力至少两条成熟低相关路径；
-- 主路追求最短完整 T_VALID；
-- 备路优先保证 VALID 与可恢复；
-- 主路故障先 failover，后 repair；
-- 恢复后重新补齐至少双路冗余；
-- 只有用户本人不可替代动作才要求人工介入。
+1. DCR logoff/relogin recovery
+2. ChatGPT model/effort switch + readback + exactly-once continuation
+3. stalled/broken ChatGPT page → new conversation recovery
+4. GPT service unavailable → independent backup brain
+5. lease/fencing split-brain prevention
+6. GitHub + K-drive state restore
+7. real-task T_VALID regression check
