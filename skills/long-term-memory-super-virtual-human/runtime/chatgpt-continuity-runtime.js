@@ -167,7 +167,10 @@ async function rotateTrueNewChatSamePage(task,cp){
  const u=new URL(p.url());if(/^\/c\//.test(u.pathname)||/branch/i.test(p.url()))throw new Error('NOT_TRUE_NEW_CHAT:'+p.url());
  const composer=p.locator('#prompt-textarea:visible, [contenteditable="true"]:visible, textarea:visible').last();
  await composer.waitFor({state:'visible',timeout:20000});
- await composer.fill(handoffText(task,cp));await composer.press('Enter');
+ await composer.fill(handoffText(task,cp));
+ const sendButton=p.locator('button[data-testid="send-button"]:visible, button[aria-label*="Send"]:visible, button[aria-label*="发送"]:visible').last();
+ if(await sendButton.count() && await sendButton.isEnabled()) await sendButton.click();
+ else await composer.press('Enter');
  await p.waitForFunction(m=>[...document.querySelectorAll('[data-message-author-role="user"]')].some(x=>(x.innerText||'').includes(m)),
   task.marker,{timeout:20000});
  const markerCount=await p.locator('[data-message-author-role="user"]').filter({hasText:task.marker}).count();
