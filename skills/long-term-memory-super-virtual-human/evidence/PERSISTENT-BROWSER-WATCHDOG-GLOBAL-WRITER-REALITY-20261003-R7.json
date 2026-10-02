@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "locator": "【长期记忆超级虚拟人 v0.3.0｜常驻GPT浏览器看门狗与全局唯一写者｜R7｜实】",
+  "version": "0.3.0",
+  "testedAt": "2026-10-03",
+  "result": "PASS_WITH_OPEN_NATURAL_STALL_GATE",
+  "persistentBrowser": {
+    "browserPid": 22140,
+    "profile": "C:\\AI\\Playwright-Native-AI-Browser\\profile\\shared-mcp",
+    "cdpEndpoint": "http://127.0.0.1:9223",
+    "processIndependentPagePersistence": "PASS",
+    "controllerReconnectReuse": "PASS",
+    "pagePresent": true,
+    "browserClosedByControllers": false
+  },
+  "watchdog": {
+    "deployed": true,
+    "startupConfigured": true,
+    "watchdogPid": 22448,
+    "health": "HEALTHY",
+    "cdp": "PASS",
+    "createdPage": false,
+    "composer": true,
+    "humanVerification": false,
+    "disconnected": false,
+    "rules": [
+      "CDP healthy: do nothing",
+      "ChatGPT page missing: create page inside same browser",
+      "CDP degraded while shared-mcp browser process exists: never relaunch browser",
+      "browser process truly absent on consecutive checks: launch once",
+      "human verification: record/pause, no brute-force/relaunch loop",
+      "transport disconnect: degrade/observe, do not treat as immediate task death"
+    ]
+  },
+  "globalWriter": {
+    "canonicalLease": "C:\\AI\\Playwright-Native-AI-Browser\\state\\chatgpt-global-writer-lease.json",
+    "acrossLeaseRoots": true,
+    "regression": "6 PASS / 0 FAIL",
+    "continuityRegression": "17 PASS / 0 FAIL",
+    "purpose": "read-only monitors may coexist; New chat/navigation/composer/send are single-writer only"
+  },
+  "selfRecoveryEvidence": {
+    "trueNewChatExistingBrowser": "PASS R6",
+    "branchUsed": false,
+    "newBrowserLaunched": false,
+    "exactlyOnce": true,
+    "ackConfirmed": true,
+    "orphanRecoveryTakeover": "PASS_ALREADY_COMPLETED_NO_RESEND",
+    "backupFailover": "PASS Reasonix/DeepSeek from R5"
+  },
+  "rootCauseFixed": [
+    "per-task runtime previously could launchPersistentContext directly instead of reusing the existing browser",
+    "Playwright MCP shared-browser-context was incorrectly treated as process-independent page persistence",
+    "per-lease-root ownership did not prevent two writers using different roots"
+  ],
+  "openGate": {
+    "naturalLongTurnStallDetectionFullE2E": "NOT_YET_DIRECTLY_CERTIFIED",
+    "meaning": "Recovery, true-New-chat continuation, watchdog, backup failover and writer fencing have real evidence; an intentionally/naturally stalled long ChatGPT turn has not yet been run through the complete detect→classify→checkpoint→recover lifecycle as one single Reality."
+  },
+  "finalValid": false
+}
