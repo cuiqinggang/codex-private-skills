@@ -4,15 +4,15 @@
 PROJECT=长期记忆超级虚拟人
 VERSION=v1.0
 STATE=10
-VIRTUAL_MATURE=NO
+VIRTUAL_MATURE=YES
 PROJECT_FREEZE=NO
 FINAL_VALID=NO
 
 OBJECTIVE=T*=min(T_VALID)
 PRIMARY_BRAIN=GPT
 LONG_TERM_MEMORY=REQUIRED
-PRIMARY_ROUTE_CERTIFIED=NO
-STRONG_BACKUP_CERTIFIED=NO
+PRIMARY_ROUTE_CERTIFIED=PARTIAL
+STRONG_BACKUP_CERTIFIED=PASS_RECOVERY_LEVEL
 ```
 
 ## 1. 项目定义
@@ -72,18 +72,18 @@ GPT 当前作为首要超级大脑候选，但在 Reality 数据证明之前，�
 
 需要并行时，GPT 可按任务拆出搜索、执行、审核、整合等子任务；只有能改善完整 T_VALID 时才保留并行层。
 
-## 4. 两个当前必补核心能力
+## 4. 当前核心连续性能力
 
 ### A. GPT 连续性与换页恢复
 
-必须解决：
+v0.4 已把以下能力纳入默认运行合同：
 - 上下文过长；
 - 页面卡顿 / 不回答；
 - 网络节点暂时故障；
 - 长任务中途停止；
 - 新页面丢失当前项目状态。
 
-目标不是无限延长单一聊天，而是：
+当前目标不是无限延长单一聊天，而是：
 
 ```text
 工作会话
@@ -132,8 +132,8 @@ GPT 当前作为首要超级大脑候选，但在 Reality 数据证明之前，�
 
 ## 7. 当前阶段
 
-v1.0 先验证“GPT 超级大脑 + 直接工具”的最短主链。
+当前技能包版本为 **v0.4.0**，已签 VIRTUAL_MATURE=YES，但 FINAL_VALID=NO。
 
-不提前宣布成熟，不提前宣布 GPT 路线必然最快。
+v0.4 已完成现有浏览器复用、真正 New chat、禁止 Branch、最小 handoff、exactly-once、page lease、global writer lease 等连续性 Reality。下一阶段重点是自然卡死/故障注入完整 E2E、DCR 重登恢复、模型档位完整 E2E 与真实有价值长任务 FINAL_VALID。
 
-Reality 数据产生后再决定 v1.1 / v2.0 / v3.0 的真实升级内容。
+当用户明确指定“长期记忆超级虚拟人”运行当前任务时，上述连续性规则自动生效；长页面能安全提前换就提前换。
