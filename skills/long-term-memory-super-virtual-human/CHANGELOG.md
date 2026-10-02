@@ -35,3 +35,6 @@
 - GPT 作为当前首选主脑候选，但不写成不可替代真理；
 - 引用极限短时间智能体宪法 v0.3.1、自动化闭环 v2.0、Windows 双路桥 v0.2.0；
 - 建立 TASK_CONTRACT、Checkpoint、漂移 Benchmark、模型路由和独立强备份要求。
+
+## 0.2.0 Reality attempt 01 - 2026-10-02
+新增未认证薄控制器及失败证据；零发送 probe 已执行，独占控制未证明，保持 NOT_E2E_CERTIFIED，不升版。

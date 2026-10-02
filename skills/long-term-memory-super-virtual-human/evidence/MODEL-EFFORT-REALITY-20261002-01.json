@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "locator": "【长期记忆超级虚拟人 v0.2.0｜Model/Effort Controller Reality｜01｜实】",
+  "flowStart": "2026-10-02T21:30:31.1866217+08:00",
+  "recordedAt": "2026-10-02T13:52:18.461Z",
+  "FORMAL_BUSINESS_ENTRYPOINT": "SOURCE_VERIFIED_NOT_INVOKED",
+  "ACTUAL_ENTRYPOINT": "C:\\AI\\Playwright-Native-AI-Browser\\skills\\playwright-native-ai-browser\\scripts\\chatgpt-business-entry.js",
+  "FORMAL_FLOW_REUSED": "NO_NOT_RUN",
+  "AUTHENTICATED_PROFILE": "shared-mcp: authenticated page observed; composer available; no auth UI observed",
+  "ORIGINAL_SETTING": "Medium",
+  "SWITCH_1_REQUESTED": "High (planned, not executed)",
+  "SWITCH_1_READBACK": "NOT_RUN",
+  "SWITCH_2_REQUESTED": "Medium (planned, not executed)",
+  "SWITCH_2_READBACK": "NOT_RUN",
+  "CONTINUE_ONCE": "NOT_RUN",
+  "SUBMISSION_COUNT": 0,
+  "DUPLICATE_SENDS": 0,
+  "FAIL_CLOSED_TEST": "REQUIRED_NONEXISTENT_TARGET_TEST_NOT_RUN; WRONG_ORIGIN_FAIL_OBSERVED",
+  "RESTORED_ORIGINAL": "NOT_REQUIRED_NO_SETTING_CHANGE; restoration READBACK_MATCH not obtained",
+  "E2E_RESULT": "NOT_E2E_CERTIFIED",
+  "EVIDENCE_PATH": "skills/long-term-memory-super-virtual-human/evidence/MODEL-EFFORT-REALITY-20261002-01.json",
+  "COMMON_REPO_HEAD_BEFORE": "66af1cc752c67d1c57948660f77ff0612d227a36",
+  "COMMON_REPO_HEAD_AFTER": "Resolve containing commit with git log -1 --format=%H -- evidence path; final response reports actual commit",
+  "VERSION_AFTER": "0.2.0",
+  "T_VALID": "NOT_PRODUCED",
+  "conversationUrl": null,
+  "marker": "LTMVH-MODEL-EFFORT-REALITY-20261002-01",
+  "businessEntrySha256": "b4a8d32390161bbcc365fefc3d363e69f562e15044de2cd9c828fb20a0d3c0c0",
+  "reuseAudit": {
+    "current": "canonical formal STDIO MCP, shared-mcp, existing exactly-once entry",
+    "gap": "High control and E2E remain unverified",
+    "cause": "UNVERIFIED / uncontrolled page state transition",
+    "reuse": "canonical business source loaded unchanged, not invoked; no send flow recreated"
+  },
+  "ownership": {
+    "codexPid": 4148,
+    "registeredStdioPids": [
+      14832,
+      16016,
+      18100
+    ],
+    "actualBrowserParentPid": 18100,
+    "actualBrowserPid": 30932,
+    "existingHttpPid": 26452,
+    "httpUsed": false,
+    "secondOwnerLaunched": false,
+    "exclusiveAccess": "NOT_PROVEN",
+    "note": "Only one Chromium root holds shared-mcp; multiple registered same-config servers do not themselves prove concurrent browser owners."
+  },
+  "observations": [
+    {
+      "at": "2026-10-02T13:44:00.989Z",
+      "url": "https://chatgpt.com/",
+      "composerCount": 1,
+      "userTurns": 0,
+      "setting": "Medium"
+    },
+    {
+      "event": "no-send first strict-empty-string check false positive; empty contenteditable innerText is newline; no submissions"
+    },
+    {
+      "event": "same-object retry",
+      "draftMatch": true,
+      "emptyRaw": "\\n",
+      "cleared": true,
+      "userBefore": 0,
+      "userAfter": 0,
+      "sent": 0,
+      "submissionCount": 0,
+      "emptyHandoffObserved": "about:blank"
+    },
+    {
+      "event": "menu inspection",
+      "trigger": "选择 ChatGPT 模型",
+      "strengthRole": "menuitem",
+      "strengthName": "强度",
+      "currentAnnouncement": "Medium，第 2 项，共 4 项。",
+      "keyboardHint": "使用左右方向键调整强度",
+      "model": "Latest",
+      "pro": "disabled",
+      "high": "not yet observed"
+    },
+    {
+      "at": "2026-10-02T13:48:05.27Z",
+      "event": "controller first read",
+      "status": "FAIL",
+      "reason": "URL is not defined",
+      "actual": "Medium",
+      "uiChanged": false
+    },
+    {
+      "event": "read after local repair",
+      "status": "FAIL",
+      "reason": "sessionStorage SecurityError; page unexpectedly about:blank; no navigation issued in intervening controller write/read calls"
+    },
+    {
+      "at": "2026-10-02T13:50:00.805Z",
+      "event": "wrong origin fail closed",
+      "status": "FAIL",
+      "reason": "WRONG_ORIGIN",
+      "actual": null,
+      "transitions": []
+    }
+  ],
+  "blocker": "EXCLUSIVE_CONTROL_NOT_PROVEN: page changed to about:blank without this run navigating; actual actor unknown. Stop before setting/send; establish exclusive access to existing owner, then resume discovery and full E-H sequence.",
+  "controllerStatus": "THIN_CANDIDATE_NOT_E2E_CERTIFIED; High fails closed until target is observed; no target UI selection inferred from numerical position",
+  "boundaries": {
+    "profileCopied": false,
+    "cliUsed": false,
+    "networkSettingsModified": false,
+    "credentialsOrCookiesSaved": false,
+    "playwrightRepoModified": false,
+    "v1Signed": false
+  },
+  "validation": {
+    "syntax": "PASS (final source syntax checked at closeout)",
+    "goldenHarnessSha256": "1c67a634e0c0fc24ed057752358f4c20a6c05550be6146fd8d11b1a723f25e08",
+    "knowledgeBrainHealth": "PASS"
+  },
+  "CodeGraphUsage": ".codegraph absent; MCP/CLI not required or invoked; callers/callees not applicable to new standalone controller; no index refresh required",
+  "KnowledgeBrainUsage": "INDEX and ROUTING_MAP read; skills-index and mature Playwright note read; OpenHuman not relevant to browser controller; health PASS; no hot/deep sync or index changes"
+}

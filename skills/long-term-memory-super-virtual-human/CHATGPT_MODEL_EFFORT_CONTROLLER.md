@@ -107,8 +107,22 @@ SET_REQUESTED
 
 当前：
 ```ini
-MODEL_EFFORT_CONTROLLER=DESIGNED
+MODEL_EFFORT_CONTROLLER=NOT_E2E_CERTIFIED
 DETERMINISTIC_UIA_PATH=REJECTED_AS_PRIMARY
 PLAYWRIGHT_PATH=CANDIDATE_MATURE_BASE
 E2E_CERTIFIED=NO
 ```
+
+## Model/Effort Reality 2026-10-02 / 01
+- Result: NOT_E2E_CERTIFIED; VERSION remains 0.2.0; no v1.0 signature.
+- Formal entry source verified at canonical skill scripts/chatgpt-business-entry.js; query/send/wait_extract NOT RUN.
+- Original setting: Medium, observed on authenticated shared-mcp page with composer.
+- No-send: draft matched, whitespace-only empty composer verified, user turns 0 -> 0, blank handoff observed.
+- Blocker: EXCLUSIVE_CONTROL_NOT_PROVEN. Without this run navigating, the current page changed to about:blank; actor unknown. Multiple same-config MCP servers exist, but only one Chromium root was observed holding shared-mcp. Do not equate idle server count with active browser ownership.
+- Switch 1 High / Switch 2 Medium / exactly-once continuation / nonexistent-target test / restoration readback: NOT RUN.
+- submissionCount=0; duplicate sends=0; no model/effort change performed.
+- Candidate controller: runtime/chatgpt-model-effort-controller.js. It only reads/sets/reads back. Medium is observed; High remains UNAVAILABLE until its target is discovered on the real UI. No inference of High from a slider position is certified.
+- Wrong-origin test returned FAIL / WRONG_ORIGIN with zero UI_CHANGED transitions.
+- Evidence: evidence/MODEL-EFFORT-REALITY-20261002-01.json.
+- Resume: establish exclusive control of the existing formal STDIO owner without launching another owner; discover High semantically; read original; execute both switches and exactly-once query -> send -> wait_extract; read back and restore; run nonexistent-target no-change test. Only all PASS authorizes v0.2.1 / E2E_CERTIFIED.
+- T_VALID=NOT_PRODUCED.
