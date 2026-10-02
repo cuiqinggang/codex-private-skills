@@ -232,8 +232,18 @@ async function processTask(task){
  const cp0=buildCheckpoint(task,o,task.forceRotate?'FORCED_REALITY_TEST':'TASK_MONITOR_START');
  if(task.forceRotate){
   try{return {decision:{action:'ROTATE_TO_NEW_CHAT'},recovery:await rotateTrueNewChatSamePage(task,cp0),checkpoint:checkpointPath}}
-  catch(e){return {decision:{action:'FAILOVER_BACKUP'},backup:runReasonixBackup(task,cp0,'NEW_CHAT_RECOVERY_FAILED:'+String(e.message||e)),
-   checkpoint:checkpointPath,pageLeaseRetained:true}}
+  catch(e){
+   try{
+    const raw=await recoverExistingChat({endpoint:cdpEndpoint,marker:task.marker,prompt:handoffText(task,cp0),
+     expectedText:task.expectedRecoveryText||'',timeoutMs:task.answerTimeoutMs||120000});
+    ledgerSet(task.marker,{sentConfirmed:true,conversationUrl:raw.url,rawCdp:true,ackConfirmed:raw.ackConfirmed||false});
+    return {decision:{action:'ROTATE_TO_NEW_CHAT_RAW_CDP_RECOVERY'},recovery:raw,checkpoint:checkpointPath,pageLeaseRetained:true}
+   }catch(rawErr){
+    return {decision:{action:'FAILOVER_BACKUP'},backup:runReasonixBackup(task,cp0,
+     'NEW_CHAT_RECOVERY_FAILED:'+String(e.message||e)+'; RAW_CDP_FAILED:'+String(rawErr.message||rawErr)),
+     checkpoint:checkpointPath,pageLeaseRetained:true}
+   }
+  }
  }
  for(;;){
   o=await observe(p);const sig=[o.url,o.userTurns,o.assistantTurns,o.stop,o.lastAssistant.length,o.txtLen].join('|');
@@ -252,8 +262,18 @@ async function processTask(task){
   if(d.action==='PROBE_PAGE'){probeDone=true;await sleep(pollMs);continue}
   if(d.action==='ROTATE_TO_NEW_CHAT'||d.action==='OPEN_TRUE_NEW_CHAT'){const cp=buildCheckpoint(task,o,proactive?'PROACTIVE_ROTATION':'CONFIRMED_STALL');
    try{return {decision:d,recovery:await rotateTrueNewChatSamePage(task,cp),checkpoint:checkpointPath}}
-   catch(e){return {decision:{action:'FAILOVER_BACKUP'},backup:runReasonixBackup(task,cp,'NEW_CHAT_RECOVERY_FAILED:'+String(e.message||e)),
-    checkpoint:checkpointPath,pageLeaseRetained:true}}}
+   catch(e){
+    try{
+     const raw=await recoverExistingChat({endpoint:cdpEndpoint,marker:task.marker,prompt:handoffText(task,cp),
+      expectedText:task.expectedRecoveryText||'',timeoutMs:task.answerTimeoutMs||120000});
+     ledgerSet(task.marker,{sentConfirmed:true,conversationUrl:raw.url,rawCdp:true,ackConfirmed:raw.ackConfirmed||false});
+     return {decision:{...d,action:'ROTATE_TO_NEW_CHAT_RAW_CDP_RECOVERY'},recovery:raw,checkpoint:checkpointPath,pageLeaseRetained:true}
+    }catch(rawErr){
+     return {decision:{action:'FAILOVER_BACKUP'},backup:runReasonixBackup(task,cp,
+      'NEW_CHAT_RECOVERY_FAILED:'+String(e.message||e)+'; RAW_CDP_FAILED:'+String(rawErr.message||rawErr)),
+      checkpoint:checkpointPath,pageLeaseRetained:true}
+    }
+   }}
   if(d.action==='FAILOVER_BACKUP'){const cp=buildCheckpoint(task,o,'GPT_SERVICE_UNAVAILABLE');
    return {decision:d,backup:runReasonixBackup(task,cp,'GPT_SERVICE_UNAVAILABLE'),checkpoint:checkpointPath,pageLeaseRetained:true}}
   await sleep(pollMs);
