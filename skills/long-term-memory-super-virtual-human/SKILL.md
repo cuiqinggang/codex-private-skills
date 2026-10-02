@@ -1,14 +1,14 @@
 ---
 name: long-term-memory-super-virtual-human
-version: "0.2.0"
+version: "0.2.1"
 description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human）。以高智能主脑为核心，吸收成熟 Recovery/Long-Flow/Browser 机制，以长期记忆、权威任务合同、Checkpoint、按需工具路由、低相关冗余和独立强备份推进现实任务；唯一优化目标仍是 T*=min(T_VALID)。
 ---
 
-# 长期记忆超级虚拟人 v0.2.0
+# 长期记忆超级虚拟人 v0.2.1
 # Long-Term Memory Super Virtual Human
 
 ```ini
-VERSION=0.2.0
+VERSION=0.2.1
 STATUS=VIRTUAL_MATURE_REALITY_CLOSURE_IN_PROGRESS
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
@@ -125,7 +125,9 @@ Checkpoint 只负责“恢复到哪里”，不替代任务合同。
 
 页面迟缓、上下文过长、无响应或损坏时，不无限塞上下文；由外部连续性控制器探测并恢复。
 
-对复杂任务采用**主动换页优先**：在安全 checkpoint 上提前收敛上下文，以最小 handoff（任务合同 + 已确认结论 + 当前 checkpoint + 未决项 + 下一条指令）进入新会话。不要等到“连接已断开”才换页；当前页越长、下一阶段越复杂、或本页已出现过一次瞬时断连/卡顿，越倾向提前轮换。换页频率宁可偏高，也不让旧页长时间累积无效等待。
+对复杂任务采用**高频预防换页 + 断连后保守判定**：在安全 checkpoint 上提前收敛上下文，以最小 handoff（任务合同 + 已确认结论 + 当前 checkpoint + 未决项 + 下一条指令）进入新会话。当前页越长、下一阶段越复杂、或本页已出现过一次瞬时断连/卡顿，越倾向在下一阶段开始前提前轮换；特别大的独立问题可以默认“一大问题一页”。
+
+但“连接已断开/正在重新连接”不能单独证明后台任务已经停止。若断连发生在回答生成过程中，先只读探测并观察原任务是否仍产生后台进展或最终答案；只有任务专属恢复窗口或硬截止超过且仍无完成证据时，才 checkpoint + fencing + 新页 exactly-once 接续，避免重复执行。
 
 详见 `CHATGPT_SESSION_CONTINUITY_CONTROLLER.md`。
 
@@ -182,10 +184,15 @@ Page Mode 优先复用 Playwright Native AI Browser，不重新造第二套 Chat
 
 主路异常：
 ```text
-先 failover 恢复业务
-→ 再 repair 主路
+先判断主路是否仍可能完成并验收
+→ 若只是短暂传输异常且后台仍在推进，继续观察
+→ 若主路已经阻塞、受限或长期无法验收，则切换下一条成熟可完成路径
+→ 先完成现实结果
+→ 再修复或优化原主路
 → 重新补齐至少双路冗余
 ```
+
+`T*=min(T_VALID)` 只在真正能完成并验收的有效候选中比较速度。更快但本轮过不去的路线不属于有效候选；更慢但能够最终完成的成熟备路优先于无限等待。
 
 详见 `RESILIENCE_REDUNDANCY.md`。
 
@@ -224,15 +231,19 @@ GPT 服务不可用
 
 ## 13. v1.0 毕业门槛
 
-以下未全部通过前不签 v1.0：
+v1.0 按**能力结果**验收，不把某一个实现工具写成唯一毕业条件。指定主路失败时，只要成熟备路能达到同一个现实结果并留下证据，就可以判定该能力 PASS；失败的主路另行修复和优化。
 
-1. DCR 注销/重登录自动恢复 Reality PASS；
-2. ChatGPT model/effort 自动切换 + 读回确认 PASS；
-3. 页面无响应/上下文损坏 → 新会话恢复 PASS；
-4. GPT 服务不可用 → 独立备脑接管 PASS；
-5. ECC lease/fencing 防脑裂 PASS；
-6. GitHub + K盘状态恢复 PASS；
-7. 至少一组真实任务证明成熟能力吸收没有让普通任务变重。
+以下能力未全部通过前不签 v1.0：
+
+1. **Windows 连续执行能力**：登录态变化/主控制面异常后，至少一条已授权 Windows 路径可恢复任务并继续；DCR 是主路，GitHub runner/其他成熟执行面可作为适用场景的备路；
+2. **推理档位适配能力**：能根据阶段需要获得合适计算强度；ChatGPT UI 自动切档是主路之一，但 CAPTCHA/UI 阻塞时允许保持当前档继续，或转 Programmable Agent / Reasonix 等成熟路径，不因“切档动作本身”阻塞最终任务；
+3. **会话连续性能力**：断连后若后台仍在完成则等待原结果；确认停滞后可以 checkpoint/handoff 到新会话或备脑，并 exactly-once 继续；
+4. **独立备脑能力**：GPT 服务不可用时至少一条独立模型路径可读取同一任务合同并继续到 DONE_WHEN；
+5. **防脑裂能力**：lease/fencing 能确保只有当前 writer 更新权威状态；
+6. **状态恢复能力**：至少一个远端状态源 + 一个独立本地/离线副本能够真实恢复项目状态；
+7. **真实任务有效性**：至少一组真实有价值任务达到 FINAL_VALID，并证明成熟能力吸收没有制造阻塞性无效层级。
+
+原则：实现路径可以降级，DONE_WHEN 不能降级。
 
 ## 14. 当前入口
 

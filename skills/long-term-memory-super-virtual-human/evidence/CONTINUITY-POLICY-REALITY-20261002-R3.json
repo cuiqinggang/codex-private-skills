@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "locator": "【长期记忆超级虚拟人 v0.2.1｜连续性策略修正与Reality｜R3｜实】",
+  "version": "0.2.1",
+  "virtualMature": true,
+  "finalValid": false,
+  "policyCorrection": {
+    "preventiveRotation": "HIGH_FREQUENCY_AT_SAFE_CHECKPOINT",
+    "largeIndependentProblemDefault": "ONE_LARGE_PROBLEM_PER_CONVERSATION_ALLOWED",
+    "disconnectBannerMeaning": "TRANSPORT_DEGRADED_NOT_AUTOMATIC_TASK_FAILURE",
+    "disconnectDuringActiveTurn": "PROBE_AND_OBSERVE_BACKEND_OR_FINAL_BEFORE_FAILOVER",
+    "confirmedStall": "ONLY_AFTER_TASK_SPECIFIC_WINDOW_OR_HARD_DEADLINE",
+    "humanVerification": "PAUSE_FOR_USER_NO_BYPASS",
+    "validFirstFailover": "REMOVE_BLOCKED_ROUTE_FROM_VALID_CANDIDATES_AND_USE_NEXT_MATURE_VALID_ROUTE"
+  },
+  "runtime": {
+    "supervisorTests": "15 PASS / 0 FAIL",
+    "taskContractContinuityFieldsAdded": true,
+    "capabilityBasedGraduationGates": true
+  },
+  "observations": {
+    "userObservedDisconnectCanStillFinish": true,
+    "note": "User observed a disconnected UI banner during a long answer and later received the completed final answer; this is treated as direct product-use evidence for conservative post-disconnect failover.",
+    "captchaHumanGateObserved": true
+  },
+  "modelEffortE2ERetry": {
+    "startedAt": "2026-10-02T15:16:16.034Z",
+    "result": "FAIL_CLOSED",
+    "reason": "shared-mcp page did not expose the composer within 45000 ms",
+    "uiHammeringContinued": false,
+    "fullE2ECertified": false
+  },
+  "graduationRule": {
+    "principle": "IMPLEMENTATION_PATH_MAY_DEGRADE_DONE_WHEN_MAY_NOT",
+    "tValidMeaning": "Optimize time only among routes that can actually complete and be verified.",
+    "examples": [
+      "If a ChatGPT UI switching route is blocked, continue at the current setting or move to a programmable/backup mature route.",
+      "If Codex cannot complete a task in the current environment, use Reasonix or another mature executor that can reach the same DONE_WHEN."
+    ]
+  }
+}

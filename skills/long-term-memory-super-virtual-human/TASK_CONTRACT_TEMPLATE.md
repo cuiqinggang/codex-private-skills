@@ -32,6 +32,21 @@ CURRENT_STATE: <当前阶段>
 CURRENT_ROUTE: <当前工具/执行器>
 NEXT_ACTION: <下一步唯一现实动作>
 
+CONTINUITY_POLICY:
+  expected_silence_window: <本阶段合理静默窗口>
+  hard_deadline: <超过后才允许判定真实停滞>
+  next_stage_complexity: <small|medium|large>
+  proactive_rotation: <YES|NO>
+  transport_disconnected: <YES|NO>
+  backend_activity_observed: <YES|NO>
+  human_verification_required: <YES|NO>
+
+FALLBACK_POLICY:
+  primary_route: <首选成熟路径>
+  alternate_valid_routes:
+    - <较慢但可达到同一 DONE_WHEN 的成熟路径>
+  failover_when: <首选路径不能在门限内进入 VALID 时的切换条件>
+
 FAILED_ROUTES:
   - route: <路径>
     root_cause: <根因>

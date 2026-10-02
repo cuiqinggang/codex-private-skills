@@ -50,3 +50,15 @@
 - Reasonix v1.38.6 + OpenRouter/DeepSeek-V4.1-Flash 独立备脑 Reality PASS（8045ms）；
 - 确认 DCR 当前在线且存在登录 Startup 入口；GitHub self-hosted runner 为 Running + Automatic；
 - 新增 `evidence/REALITY-CLOSURE-20261002-R2.json` 作为本轮权威证据。
+
+
+## 0.2.1 - 2026-10-02
+- 修正连续性策略：高频预防换页，但“连接已断开”不再直接等同任务失败；
+- 大型独立问题允许默认“一大问题一页”，以更短上下文换取更稳定的长流程；
+- 断连发生在生成中时先只读探测/观察后台结果，超过任务专属窗口后才 exactly-once 换页；
+- CAPTCHA/真人验证正式建模为 HUMAN_VERIFICATION_REQUIRED，自动化暂停等待用户完成，不尝试绕过；
+- 新增“VALID-first failover”：最快路径本轮过不去时，从有效候选集中移除并切成熟备路完成现实结果；
+- v1.0 毕业门槛由“指定实现必须成功”改为“能力结果至少有一条 Reality 可完成路径”；
+- TASK_CONTRACT 增加连续性与 fallback 字段；
+- Session Continuity Supervisor 回归升级为 15/15 PASS；
+- 新增 `evidence/CONTINUITY-POLICY-REALITY-20261002-R3.json`。

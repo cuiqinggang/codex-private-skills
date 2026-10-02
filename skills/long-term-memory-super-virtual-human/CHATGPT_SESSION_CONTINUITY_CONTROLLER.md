@@ -1,4 +1,4 @@
-# ChatGPT Session Continuity Controller v0.1
+# ChatGPT Session Continuity Controller v0.2
 
 ## Purpose
 
@@ -38,15 +38,20 @@ Do not use one global timeout. Each task contract records:
 
 ## Proactive session rotation
 
-Do not wait for `连接已断开` / hard stall when the page is already becoming a high-risk long-flow context. Prefer a shorter fresh conversation at a durable checkpoint.
+Default policy is **high-frequency preventive rotation, conservative post-disconnect failover**.
+
+Do not wait until a long page is already unstable before starting the next large stage. At a durable safe checkpoint, prefer moving a large/complex next problem to a fresh conversation even if the old page still appears usable. For very large independent problems, one large problem per conversation is a valid default.
+
+However, `连接已断开` / reconnecting is **not by itself proof that backend generation stopped**. A transport/UI disconnect can coexist with continued backend work and a later final answer. Therefore never immediately duplicate the task into a new page merely because the banner appears.
 
 Rotation is allowed only at a safe checkpoint, never in the middle of an uncertain non-idempotent action.
 
-Priority triggers:
-1. **Hard trigger**: page reports connection lost/reconnecting or the current turn exceeds its task-specific silence window after a read-only probe.
-2. **Preventive trigger**: a complex/high-thinking stage is about to start and the current conversation already carries substantial prior work.
-3. **Growth trigger**: cumulative visible conversation text or turn count has grown materially since the last checkpoint; rotate before starting another large answer.
-4. **History trigger**: the page has already suffered one transient disconnect/stall in the current task; use the next safe checkpoint to rotate rather than continue loading the same page.
+Priority rules:
+1. **Preventive trigger**: before a large/high-thinking next stage, if the current conversation already contains substantial prior work, rotate early.
+2. **Growth trigger**: cumulative visible conversation text or turn count has grown materially since the last checkpoint; rotate before another large answer.
+3. **History trigger**: the page has already suffered one transient disconnect/stall; use the next safe checkpoint for early rotation.
+4. **Disconnect during an active turn**: first classify it as transport degraded, not task failed. Read-only probe and observe backend/final-answer evidence within the task-specific deadline.
+5. **Confirmed stall trigger**: only after no backend progress/final answer is observed and the recovery/deadline gate is exceeded may the controller checkpoint, fence if needed, and open a fresh session exactly once.
 
 The handoff payload stays minimal:
 ```text
@@ -96,3 +101,31 @@ SERVICE_FAILOVER_BACKUP_BRAIN=PASS
 - Independent backup-brain Reality: Reasonix v1.38.6 using OpenRouter/DeepSeek-V4.1-Flash returned `LTMVH-BACKUP-BRAIN-ACK` in 8045 ms without GPT.
 - Remaining Reality gap: actual stalled ChatGPT page → fresh authenticated ChatGPT conversation → exactly-once continue is not certified because the shared-mcp profile entered a Cloudflare challenge during the model/effort run.
 - Therefore controller is virtually mature, service-level backup route is Reality-proven, but page-failover E2E remains OPEN.
+
+## Human verification / CAPTCHA gate
+
+If the dedicated ChatGPT browser presents `Verify you are human` / CAPTCHA / account-security verification:
+- treat it as `HUMAN_VERIFICATION_REQUIRED`, not as a model/controller failure;
+- pause automation at the current checkpoint;
+- do not try to bypass or repeatedly brute-force the challenge;
+- after the user completes the required verification, re-read the page state and continue from the same task marker.
+
+A challenge can appear even when the persistent profile was previously authenticated. Existing login state reduces login work but does not guarantee that anti-bot verification will never be requested.
+
+## Valid-first failover
+
+`T*=min(T_VALID)` means time is optimized **inside the set of routes that can actually reach VALID**. A route that is blocked, permission-denied, repeatedly unverifiable, or unable to satisfy DONE_WHEN is removed from the current VALID candidate set.
+
+Therefore:
+```text
+fast primary path succeeds
+→ keep it
+
+fast primary path cannot reach VALID
+→ do not wait indefinitely
+→ switch to the next mature VALID-capable route
+→ finish the task
+→ optimize or retest the faster path later
+```
+
+This applies across Codex / Reasonix / GPT / browser / runner routes. A slower successful mature route is preferable to an indefinitely stalled faster route because only completed valid results participate in `T_VALID`.

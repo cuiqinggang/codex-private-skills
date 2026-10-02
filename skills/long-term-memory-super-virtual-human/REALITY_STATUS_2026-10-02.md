@@ -1,7 +1,7 @@
-# 长期记忆超级虚拟人 v0.2.0｜Reality Status 2026-10-02
+# 长期记忆超级虚拟人 v0.2.1｜Reality Status 2026-10-02
 
 ```ini
-VERSION=0.2.0
+VERSION=0.2.1
 STATUS=VIRTUAL_MATURE_REALITY_CLOSURE_IN_PROGRESS
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
@@ -22,8 +22,10 @@ REASONIX_FRESH_RUNTIME_VERIFY=DOCTOR_PASS_BACKUP_BRAIN_PASS
 
 CHATGPT_MODEL_EFFORT_CONTROLLER=SWITCH_READBACK_PASS_E2E_OPEN
 CHATGPT_MODEL_EFFORT_E2E=OPEN_CONTINUE_ONCE_AND_RESTORE
-CHATGPT_SESSION_CONTINUITY_CONTROLLER=VIRTUAL_MATURE
-PROACTIVE_SESSION_ROTATION=VIRTUAL_MATURE_REALITY_OPEN
+CHATGPT_SESSION_CONTINUITY_CONTROLLER=VIRTUAL_MATURE_V0_2
+SESSION_CONTINUITY_TESTS=15_PASS_0_FAIL
+PROACTIVE_SESSION_ROTATION=HIGH_FREQUENCY_PREVENTIVE
+POST_DISCONNECT_FAILOVER=CONSERVATIVE_PROBE_FIRST
 PROACTIVE_ROTATION_UI_NAV=PASS_DIAGNOSTIC_PUBLIC_NOAUTH
 PROACTIVE_ROTATION_HANDOFF_E2E=NOT_CERTIFIED
 CHATGPT_PAGE_FAILOVER_E2E=NOT_CERTIFIED
@@ -115,3 +117,13 @@ It already provides persistent headed ChatGPT browser identity, exactly-once sen
 - ECC direct Reality: lease 30/30, takeover 8/8, fault injection 21/21; total 59/59.
 - Windows execution substrate: Desktop Commander Remote is online and has a login Startup entry; GitHub self-hosted runner service is Running + Automatic. Actual Windows logoff/relogin remains an intentionally open disruptive gate.
 - Primary evidence: `evidence/REALITY-CLOSURE-20261002-R2.json`.
+
+
+## v0.2.1 continuity-policy correction
+- Preventive rotation frequency is intentionally high: before another large/high-thinking stage, rotate at a safe checkpoint; very large independent problems may use one conversation per problem.
+- A visible `连接已断开` banner is no longer treated as proof that backend work stopped. During an active turn, probe/read only and observe backend/final-answer evidence until the task-specific recovery window or hard deadline is exceeded.
+- Human/CAPTCHA verification is a user gate: pause and resume after verification; do not bypass or brute-force it.
+- Graduation gates are capability-based. A blocked implementation path may be replaced by another mature path that reaches the same DONE_WHEN; DONE_WHEN itself may not be weakened.
+- Supervisor regression after this correction: 15 PASS / 0 FAIL.
+- A one-shot model/effort E2E retry after manual verification still failed closed because the dedicated shared-mcp page did not expose a composer within 45 seconds. No repeated hammering was performed.
+- Evidence: `evidence/CONTINUITY-POLICY-REALITY-20261002-R3.json`.
