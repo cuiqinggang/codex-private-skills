@@ -33,7 +33,11 @@ async function observe(page){
   const visible=el=>!!(el&&el.getClientRects().length);
   const stop=[...document.querySelectorAll('button')].some(b=>visible(b)&&(
    b.getAttribute('data-testid')==='stop-button'||/Stop generating|停止生成/i.test(b.getAttribute('aria-label')||'')));
-  const composer=[...document.querySelectorAll('[contenteditable="true"][role="textbox"]')].find(visible);
+  const composer=[
+   document.querySelector('#prompt-textarea'),
+   ...document.querySelectorAll('[contenteditable="true"]'),
+   ...document.querySelectorAll('textarea')
+  ].find(visible);
   const lastUser=users.at(-1)?.innerText||'';
   const lastAssistant=assistants.at(-1)?.innerText||'';
   const copyReady=!!assistants.at(-1)?.closest('article,[data-testid^="conversation-turn-"]')
@@ -137,7 +141,7 @@ async function rotateTrueNewChat(context,cp){
  if(first.humanVerification) throw new Error('HUMAN_VERIFICATION_REQUIRED');
  const u=new URL(p.url());
  if(/^\/c\//.test(u.pathname)||/branch/i.test(p.url())) throw new Error('NOT_TRUE_NEW_CHAT:'+p.url());
- const composer=p.locator('[contenteditable="true"][role="textbox"]:visible').last();
+ const composer=p.locator('#prompt-textarea:visible, [contenteditable="true"]:visible, textarea:visible').last();
  await composer.waitFor({state:'visible',timeout:20000});
  await composer.fill(handoffText(cp));
  await composer.press('Enter');
