@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 0.2.0 - 2026-10-02
+
+- 吸收 Reasonix Recovery Kit 的成熟通用机制，但不复制历史 96/100 评分为本项目成熟度；
+- 新增 `MATURE_CAPABILITY_ABSORPTION_R1.md`，按 DIRECT_COPY / LIGHT_ADAPT / REFERENCE_ONLY 分类；
+- 新增 `CHATGPT_MODEL_EFFORT_CONTROLLER.md`；
+- 新增 `CHATGPT_SESSION_CONTINUITY_CONTROLLER.md`；
+- 新增 `CLOUD_RUNTIME_OPTIONS.md`；
+- ChatGPT 页面模型/Thinking 自动调整改为“主脑决策 + 外部确定性控制器 + 读回确认”；优先复用 Playwright Native AI Browser；
+- 页面卡顿/上下文损坏与 GPT 服务级不可用分层处理；
+- 长流程优先复用 ECC v3.1.1，不重造第二套 lease/fencing/checkpoint/Gate/Repair；
+- Mature AI Coding SuperTool Ecosystem Station 保持按需唤醒，不做永久中间层；
+- OpenAI 托管云、Codex Cloud、Work Cloud Browser 与自有 VPS 明确分层；
+- 定义 v1.0 七项 Reality 毕业门槛；
+- 当前仍不宣布 VIRTUAL_MATURE。
+
 ## 0.1.1 - 2026-10-02
 
 - 新增系统级低相关冗余合同：关键能力至少两条成熟路径；
@@ -14,19 +29,9 @@
 
 ## 0.1.0 - 2026-10-02
 
-中文名：**长期记忆超级虚拟人**  
-英文名：**Long-Term Memory Super Virtual Human**
-
 - 建立首个技能包版本；
 - 固定“轻入口、强能力池、按需激活”；
-- 明确产品定位：作为用户授权范围内的长期数字化认知与执行代理；
+- 明确产品定位；
 - GPT 作为当前首选主脑候选，但不写成不可替代真理；
-- 引用极限短时间智能体宪法 v0.3.1；
-- 引用极限短时间自动化闭环 v2.0；
-- 引用 GPT直连Windows双路执行桥 v0.2.0；
-- 长流程采用“稳定规则 + 单任务 Source of Truth”，Checkpoint 只负责恢复；
-- 新增 `DRIFT_BENCHMARK.md`：与单一权威文件、完整 Spec-Driven 三类方案做同批 Reality 比较；
-- 新增 `MODEL_ROUTER.md`：区分 ChatGPT 自身档位与可编程外部模型/推理路由；
-- GUI 自动化降为按需执行面，优先原生 API / Connector / CLI；
-- 新增独立强备份要求；
-- 当前状态仍为 EARLY_REALITY_BASELINE，不宣布成熟。
+- 引用极限短时间智能体宪法 v0.3.1、自动化闭环 v2.0、Windows 双路桥 v0.2.0；
+- 建立 TASK_CONTRACT、Checkpoint、漂移 Benchmark、模型路由和独立强备份要求。
