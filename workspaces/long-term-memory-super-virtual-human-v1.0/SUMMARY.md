@@ -3,107 +3,109 @@
 ```ini
 PROJECT=长期记忆超级虚拟人
 WORKSPACE_VERSION=v1.0
-SKILL_VERSION=v0.1.0
+SKILL_VERSION=v0.4.0
 SKILL_ENGLISH_NAME=Long-Term Memory Super Virtual Human
 
 STATE=10
-VIRTUAL_MATURE=NO
+VIRTUAL_MATURE=YES
 FINAL_VALID=NO
 
-PRIMARY_BRAIN_CANDIDATE=GPT
 OBJECTIVE=T*=min(T_VALID)
+PRIMARY_BRAIN_CANDIDATE=GPT
+LONG_TERM_MEMORY=REQUIRED
 
 CONSTITUTION=极限短时间智能体宪法 v0.3.1
 METHOD_REFERENCE=极限短时间自动化闭环 v2.0
 WINDOWS_BRIDGE=GPT直连Windows双路执行桥 v0.2.0
 
-MISSING_CORE_1=GPT_CHECKPOINT_AND_SESSION_RECOVERY
-MISSING_CORE_2=GPT_INDEPENDENT_STRONG_BACKUP
-MODEL_THINKING_AUTOMATION=OPEN
+CONTINUITY_RUNTIME=ACTIVE_BY_SKILL_INVOCATION
+TRUE_NEW_CHAT_RECOVERY=PASS
+BRANCH_RECOVERY=FORBIDDEN
+EXISTING_BROWSER_REUSE=PASS
+SECOND_BROWSER_LAUNCH_WHEN_EXISTING=FORBIDDEN
+EXACTLY_ONCE_RECOVERY=PASS
+PAGE_LEASE_RETAINED=PASS
+GLOBAL_WRITER_LEASE=PASS
+PID_REUSE_FALSE_OWNER=FIXED
 
-LOCAL_MAIN_SNAPSHOT_BACKUP=IN_PROGRESS
-LOCAL_MAIN_SNAPSHOT_RUN_ID=36997334861
-FULL_GIT_HISTORY_MIRROR=NOT_YET_PASS
-LOCAL_BACKUP_TARGET=C:\\actions-runner-etal\\_local-backups\\codex-private-skills
+SESSION_CONTINUITY_TESTS=17_PASS_0_FAIL
+ECC_LEASE_TAKEOVER_FAULT=59_PASS_0_FAIL
+INDEPENDENT_BACKUP_BRAIN=PASS_REASONIX_DEEPSEEK
+K_DRIVE_REPO_BACKUP_RESTORE=PASS
 
-DESKTOP_COMMANDER_REMOTE=OFFLINE_AFTER_TEMPORARY_RECONNECT
-DESKTOP_COMMANDER_PAIRING_RESTORE=PASS
-DESKTOP_COMMANDER_TOOL_COMMAND_CHANNEL=NOT_STABLE
-DESKTOP_COMMANDER_AUTOSTART_INSTALLER_PREP=QUEUED
-DCR_INSTALLER_PREP_RUN_ID=36997636632
-
-GITHUB_RUNNER_ACCOUNT=NETWORK_SERVICE
-INTERACTIVE_WINDOWS_USER=A
+NATURAL_STALL_DETECTION_FULL_E2E=OPEN
+DCR_LOGOFF_RELOGIN_REALITY=OPEN
+MODEL_EFFORT_FULL_E2E=OPEN
+REAL_VALUABLE_LONG_TASK_FINAL_VALID=OPEN
 ```
 
-## 已冻结判断
+## 当前正式判断
 
-- 项目名称固定“长期记忆超级虚拟人”。
-- 英文名固定 **Long-Term Memory Super Virtual Human**。
-- 首个技能包版本为 `v0.1.0`，目录 `skills/long-term-memory-super-virtual-human/`。
-- 长期记忆是项目核心，不省略。
-- GPT 当前是主脑首选候选，但是否完整最快必须用 Reality 证明。
-- 能力采用“轻入口、强后端、按需路由”，不把所有工具常驻上下文。
-- Codex 是强执行器，不是唯一执行器。
-- 2.0 方法作为重要工作方法和参照，不把任何实现流程写死。
-- 长流程采用“稳定规则 + 权威任务合同 + Checkpoint + Reality 验证”。
-- 页面不是长期事实库；必须建立 Checkpoint + 权威项目状态。
-- GPT 本身必须有独立强备份。
-- 旧 v5.6.5 保留为历史参照与故障经验，不再作为当前唯一方法。
+- 技能包已升级为 **v0.4.0**；v0.4 的核心不是新增层级，而是把已经验证的连续性能力变成默认运行合同。
+- 当用户明确说“按长期记忆超级虚拟人运行/完成当前任务”时，当前任务自动启用：连续性监控、Checkpoint、长页提前轮换、真正 New chat、禁止 Branch、复用已打开 GPT 浏览器、exactly-once、全局 writer lease。
+- 长任务不追求无限单页；页面较长、下一阶段复杂或已有卡顿历史时，在安全 checkpoint 能换就提前换。
+- “连接已断开/正在重新连接”不等于后台任务失败；先观察后台进展，确认停滞后才恢复，避免重复执行。
+- 页面只是工作内存；长期记忆、项目权威状态、TASK_CONTRACT 和 Checkpoint 才是恢复依据。
 
-## Desktop Commander 当前 Reality
+## 已通过的连续性 Reality
 
-本轮用户已成功恢复 persisted session：
-- Session restored；
-- Device 曾重新标记 Online；
-- Pairing restore = PASS。
+Reality R6 已真实证明：
 
-随后 GPT 对 Remote 的 `ping / list_directory / start_process` 仍发生超时，之后设备再次显示 Offline，因此不能把“Presence Online”当成完整工具链 PASS。
+```ini
+EXISTING_BROWSER_REUSED=YES
+EXISTING_BROWSER_PID=22140
+SECOND_BROWSER_LAUNCHED=NO
+TRUE_NEW_CHAT=PASS
+BRANCH_USED=NO
+MINIMAL_HANDOFF=PASS
+SUBMISSION_COUNT=1
+MARKER_COUNT=1
+ACK_CONFIRMED=YES
+PAGE_LEASE_RETAINED=YES
+GLOBAL_WRITER_LEASE=PASS
+```
 
-已确认：
-- GitHub Windows runner 仍能接收任务；
-- runner 身份是 `NETWORK SERVICE`；
-- A 用户才持有 Desktop Commander 用户会话；
-- runner 无权替 A 注册用户级计划任务，这是正常 Windows 隔离；
-- 不扩大服务账户权限。
+现有浏览器优先级：
 
-当前方案：
-- runner 先在共享目录准备 A 用户级安装器；
-- A 用户只需运行一次；
-- 安装器注册“登录自动启动”任务；
-- launcher 自循环，Remote 退出后 5 秒重连；
-- 再做重登 / 重启 Reality。
+```text
+已有 shared-mcp GPT 浏览器
+→ 直接复用
+→ Playwright 可用则用
+→ Playwright attach/DOM 确认不兼容则切 existing-browser raw CDP
+→ profile 已被占用但控制面暂不可接管：fail closed，不重新 launch
+→ 只有确认不存在现有 owner 时才允许首次启动
+```
 
-安装器准备任务：Run `36997636632`，当前 Windows Reality 排队。
+任务完成、主路失败或切独立备脑时均不得自动关闭持久 GPT 浏览器。
 
-## 仓库第二备份
+## 已完成的其他基础能力
 
-“完整 Git mirror”多次失败原因已经分离：
-1. Windows→GitHub HTTPS 临时 reset；
-2. runner 没有 A 用户 `gh` 登录态；
-3. 改为 GitHub Actions 短期令牌后，完整 mirror 长连接在约 26 分钟处 `early EOF`。
+- ECC v3.1.1 lease / takeover / fault：59 PASS / 0 FAIL；
+- Reasonix v1.38.6 + DeepSeek-V4.1-Flash 独立备脑 Reality PASS；
+- GitHub + K 盘状态备份/恢复已有 PASS 证据；
+- Windows 执行层已具备 Desktop Commander Remote + GitHub self-hosted runner 双路径基础；
+- 模型/Thinking：Medium → High + 语义读回已有 PASS，但完整 continue + restore E2E 仍 OPEN。
 
-因此先保证当前成果不丢：
-- 正在下载当前 main 的完整 ZIP snapshot；
-- 带 SHA256 和 archive entry 验证；
-- Run `36997334861`；
-- 目标 `C:\actions-runner-etal\_local-backups\codex-private-skills\snapshots`。
+## 当前未完成且不得误报
 
-完整 Git 历史 mirror 保留为第二阶段增强，不能冒充已完成。
+1. 自然发生或故障注入的“长回答真实卡死 → 自动判断停滞 → 自动触发 true New chat 恢复”的完整 E2E；
+2. Desktop Commander 实际注销/重登后的自动恢复 Reality；
+3. ChatGPT 模型/Thinking 切换 → exactly-once 继续 → 恢复原档完整 E2E；
+4. 至少一组真实有价值长任务从开始到 FINAL_VALID 的完整回归；
+5. 独立备脑完成真实业务 DONE_WHEN，而不仅是恢复/健康 ACK。
 
-## 当前最优先
+以上未全部完成前，保持 FINAL_VALID=NO，不升级 v1.0 正式成熟版。
 
-1. 完成 Desktop Commander A 用户级常驻并 Reality 复验；
-2. 完成当前 main 本地快照第二备份；
-3. 打造 GPT 直控主路线 v0.1 Reality；
-4. 同批正式任务比较 A/B/C 三路线；
-5. 主路线稳定后立即进入 GPT 不可用时的独立强备份 Reality。
+## 权威入口
 
-## 未解决且不得消失
+技能：
+`skills/long-term-memory-super-virtual-human/SKILL.md`
 
-- GPT Checkpoint / 自动换页恢复；
-- GPT 服务不可用时的独立强备份；
-- ChatGPT 当前会话模型 / 思考强度的可编程切换；
-- GPT 无响应时如何自动触发新会话恢复；
-- 路线 C 多层 Agent + 自动化编排的 Reality 可用性；
-- 完整 Git 历史 mirror 的稳定本地备份。
+连续性控制：
+`skills/long-term-memory-super-virtual-human/CHATGPT_SESSION_CONTINUITY_CONTROLLER.md`
+
+最新 Reality：
+`skills/long-term-memory-super-virtual-human/evidence/TRUE-NEW-CHAT-EXISTING-BROWSER-REALITY-20261003-R6.json`
+
+v0.4 状态：
+`skills/long-term-memory-super-virtual-human/REALITY_STATUS_2026-10-03_V0.4.md`
