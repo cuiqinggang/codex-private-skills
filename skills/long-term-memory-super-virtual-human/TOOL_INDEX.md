@@ -21,7 +21,7 @@
 | 视频 | 专项视频工具 | 本地/云端成熟流水线 |
 | 极低延迟概率/路径类专项 | 任务匹配时调用 | `jev-probability-engine-p0` 等既有专项技能 |
 | 长任务恢复 | TASK_CONTRACT + Checkpoint + 项目权威状态 | ECC v3.1.1 / 独立强备份 |
-| GPT 不可用 | 独立强备份 | Reasonix / DeepSeek 等候选，待 Reality 认证 |
+| GPT 不可用 | 独立强备份 | Reasonix / DeepSeek；页面租约继续保留，主脑恢复后再 reconcile |
 
 ## 轻入口规则
 
