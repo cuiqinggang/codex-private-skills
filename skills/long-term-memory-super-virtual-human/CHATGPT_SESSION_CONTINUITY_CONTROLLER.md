@@ -1,4 +1,4 @@
-# ChatGPT Session Continuity Controller v0.2
+# ChatGPT Session Continuity Controller v0.3
 
 ## Purpose
 
@@ -15,8 +15,9 @@ If the task-specific silence window is exceeded:
 2. perform the existing browser recovery path;
 3. query again;
 4. if still stalled, save checkpoint and handoff;
-5. open a fresh ChatGPT conversation;
-6. continue exactly once using the existing validated browser business entrypoint.
+5. open a **true New chat** at the ChatGPT new-conversation root; never use “Branch in new chat” as the recovery target;
+6. verify the destination is not a branch/continuation of the old conversation;
+7. continue exactly once using the existing validated browser business entrypoint.
 
 ### Service-level failure
 
@@ -53,6 +54,18 @@ Priority rules:
 4. **Disconnect during an active turn**: first classify it as transport degraded, not task failed. Read-only probe and observe backend/final-answer evidence within the task-specific deadline.
 5. **Confirmed stall trigger**: only after no backend progress/final answer is observed and the recovery/deadline gate is exceeded may the controller checkpoint, fence if needed, and open a fresh session exactly once.
 
+### True-new-chat rule
+
+Recovery freshness is semantic, not cosmetic:
+
+```ini
+RECOVERY_SESSION_KIND=NEW_CHAT_ONLY
+BRANCH_IN_NEW_CHAT=FORBIDDEN
+OLD_CONVERSATION_REPLAY=FORBIDDEN
+```
+
+A branch may look like a new page while still inheriting the old conversation tree/context burden. It is therefore excluded from the recovery path. The controller must open the normal ChatGPT New chat surface/root, then send only the minimal handoff.
+
 The handoff payload stays minimal:
 ```text
 TASK_CONTRACT
@@ -88,9 +101,11 @@ For long tasks, reuse ECC v3.1.1 lease/fencing concepts so only the current leas
 Current status:
 
 ```ini
-SESSION_CONTINUITY_CONTROLLER=VIRTUAL_MATURE
+SESSION_CONTINUITY_CONTROLLER=VIRTUAL_MATURE_V0_3
 PROACTIVE_SESSION_ROTATION=VIRTUAL_MATURE_REALITY_OPEN
-PAGE_FAILOVER_E2E=NO
+TRUE_NEW_CHAT_ONLY=YES
+BRANCH_RECOVERY=FORBIDDEN
+PAGE_FAILOVER_E2E=IMPLEMENTATION_IN_PROGRESS
 SERVICE_FAILOVER_BACKUP_BRAIN=PASS
 ```
 
@@ -129,3 +144,10 @@ fast primary path cannot reach VALID
 ```
 
 This applies across Codex / Reasonix / GPT / browser / runner routes. A slower successful mature route is preferable to an indefinitely stalled faster route because only completed valid results participate in `T_VALID`.
+
+
+## v0.3.0 correction / 2026-10-03
+- Recovery target is now explicitly **true New chat**, not “Branch in new chat”.
+- User Reality observation: branch-based continuation immediately exhibited old-page-like latency/stall characteristics, so it is removed from the valid clean-session recovery candidates.
+- The supervisor and runtime runner must reject branch-style recovery and use a minimal handoff into a true new conversation.
+- This correction does not by itself certify the full page-failover E2E; Reality still requires old-page failure/stall → checkpoint → true New chat → exactly-once continuation.
