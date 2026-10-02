@@ -151,3 +151,25 @@ This applies across Codex / Reasonix / GPT / browser / runner routes. A slower s
 - User Reality observation: branch-based continuation immediately exhibited old-page-like latency/stall characteristics, so it is removed from the valid clean-session recovery candidates.
 - The supervisor and runtime runner must reject branch-style recovery and use a minimal handoff into a true new conversation.
 - This correction does not by itself certify the full page-failover E2E; Reality still requires old-page failure/stall → checkpoint → true New chat → exactly-once continuation.
+
+
+## 单页持久租约 v0.3
+
+专用 ChatGPT 浏览器页在任务生命周期内视为持久资源，不是一次性页面。
+
+```text
+任务开始
+→ 优先复用已经打开的专用 ChatGPT 页
+→ 建立 PAGE_LEASE
+→ 保持同一 browser context + 同一 page 持续存活
+→ 需要换会话时，仅在同一 leased page 内进入真正 New chat
+→ FINAL_VALID / 明确 STOP / 页面不可恢复后才允许释放
+```
+
+硬规则：
+- 已有可用专用 ChatGPT 页时，不为同一任务启动第二个 persistent context；
+- “换页/新页”在恢复语义上指**新 conversation**，不是关闭浏览器再打开；
+- 禁止使用 Branch；同一 leased page 导航到正常 New chat 根页后只投递最小 handoff；
+- 子步骤失败、GPT 暂时不可用、切备脑，都不能自动关闭 leased page；
+- refresh/recovery 允许，但不是默认；只有 page/browser 被证明不可恢复才重建；
+- PAGE_LEASE 直到 FINAL_VALID、明确 STOP 或不可恢复才释放。
