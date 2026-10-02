@@ -147,7 +147,17 @@ async function rotateTrueNewChat(context,cp){
  await composer.press('Enter');
  await p.waitForFunction(m=>[...document.querySelectorAll('[data-message-author-role="user"]')]
    .some(x=>(x.innerText||'').includes(m)),marker,{timeout:20000});
- return {status:'TRUE_NEW_CHAT_SENT_CONFIRMED',url:p.url(),source:cp.sourceConversationUrl};
+ let assistantAck=null;
+ if(task.expectedRecoveryText){
+  assistantAck=await p.waitForFunction(expected=>{
+   const a=[...document.querySelectorAll('[data-message-author-role="assistant"]')];
+   const hit=a.find(x=>(x.innerText||x.textContent||'').includes(expected));
+   return hit?(hit.innerText||hit.textContent||''):null;
+  },task.expectedRecoveryText,{timeout:120000}).then(h=>h.jsonValue());
+ }
+ const markerCount=await p.locator('[data-message-author-role="user"]').filter({hasText:marker}).count();
+ if(markerCount!==1) throw new Error('EXACTLY_ONCE_VIOLATION:'+markerCount);
+ return {status:'TRUE_NEW_CHAT_SENT_CONFIRMED',url:p.url(),source:cp.sourceConversationUrl,submissionCount:1,markerCount,assistantAck};
 }
 
 let runtimeContext=null;
