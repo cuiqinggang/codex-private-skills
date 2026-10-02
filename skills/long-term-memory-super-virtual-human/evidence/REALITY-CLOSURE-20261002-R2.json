@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "locator": "【长期记忆超级虚拟人 v0.2.0｜虚拟成熟与Reality闭环｜R2｜实】",
+  "version": "0.2.0",
+  "virtualMature": true,
+  "finalValid": false,
+  "modelEffort": {
+    "exclusiveProfileControl": "PASS",
+    "original": "Medium",
+    "switchMediumToHigh": "PASS",
+    "highReadback": "High，第 3 项，共 4 项。",
+    "continueOnce": "FAIL_SEND_NOT_DOM_CONFIRMED_WITHIN_10S",
+    "duplicateSendsObserved": 0,
+    "restoreMedium": "NOT_VERIFIED_CLOUDFLARE_CHALLENGE",
+    "e2eCertified": false
+  },
+  "continuity": {
+    "supervisorTests": "9 PASS / 0 FAIL",
+    "pageFailoverActualChatGPT": "NOT_CERTIFIED",
+    "serviceFailoverBackupBrain": "PASS",
+    "backupBrain": "Reasonix v1.38.6 / OpenRouter DeepSeek-V4.1-Flash",
+    "backupAck": "LTMVH-BACKUP-BRAIN-ACK",
+    "backupDurationMs": 8045,
+    "eccLeaseTakeoverFaultTests": "59 PASS / 0 FAIL"
+  },
+  "windows": {
+    "desktopCommanderRemoteOnline": true,
+    "desktopCommanderStartupEntry": "GPT-DesktopCommander-Remote-Autostart.cmd",
+    "actualLogoffReloginTest": "NOT_RUN_DISRUPTIVE_CURRENT_SESSION",
+    "githubRunnerService": "RUNNING_AUTOMATIC",
+    "githubRunnerName": "actions.runner.cuiqinggang-codex-private-skills.DESKTOP-4A1EGTM-etal"
+  },
+  "storage": {
+    "repoFsck": "PASS",
+    "repoHeadBeforeClosureCommit": "bae165c1949d326cd6ea9b4696cea33fc93e4d62",
+    "priorBundleVerify": "PASS",
+    "priorBundleHead": "66af1cc752c67d1c57948660f77ff0612d227a36",
+    "freshPostCommitRestore": "PENDING"
+  },
+  "gates": {
+    "virtualArchitectureAndStateMachine": "PASS",
+    "modelEffortSwitchReadback": "PASS_PARTIAL_E2E",
+    "pageToFreshSessionRecovery": "OPEN",
+    "independentBackupBrain": "PASS",
+    "leaseFencing": "PASS",
+    "githubAndKRestore": "PENDING_FRESH_POST_COMMIT",
+    "dcrLogoffRelogin": "OPEN",
+    "realTaskNoBloatRegression": "OPEN"
+  },
+  "blockingReason": "ChatGPT shared-mcp profile entered Cloudflare challenge after repeated automated launches; exactly-once continuation and restoration readback cannot be certified in this run. DCR actual logoff/relogin is intentionally not forced inside the active control session.",
+  "boundaries": {
+    "windowsSystemModified": false,
+    "networkProxyModified": false,
+    "codexMainProcessKilled": false,
+    "playwrightChildMcpPausedForExclusiveMaintenance": true
+  }
+}

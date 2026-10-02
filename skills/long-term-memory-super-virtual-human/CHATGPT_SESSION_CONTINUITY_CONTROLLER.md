@@ -83,8 +83,16 @@ For long tasks, reuse ECC v3.1.1 lease/fencing concepts so only the current leas
 Current status:
 
 ```ini
-SESSION_CONTINUITY_CONTROLLER=DESIGNED_FROM_MATURE_ASSETS
-PROACTIVE_SESSION_ROTATION=DESIGNED_NOT_E2E_CERTIFIED
+SESSION_CONTINUITY_CONTROLLER=VIRTUAL_MATURE
+PROACTIVE_SESSION_ROTATION=VIRTUAL_MATURE_REALITY_OPEN
 PAGE_FAILOVER_E2E=NO
-SERVICE_FAILOVER_E2E=NO
+SERVICE_FAILOVER_BACKUP_BRAIN=PASS
 ```
+
+## Reality / Virtual-Maturity Closure 2026-10-02
+- `runtime/session-continuity-supervisor.js` added as a thin external decision layer; it does not duplicate ECC checkpoint/lease/fencing or Playwright send/query/recovery.
+- Deterministic supervisor tests: 9 PASS / 0 FAIL, covering CONTINUE, read-only probe, safe rotation, service failover, unsafe-checkpoint hold, backup writer ownership, and primary-recovery reconcile.
+- ECC v3.1.1 direct tests: lease 30 PASS, takeover 8 PASS, fault injection 21 PASS; total 59 PASS / 0 FAIL.
+- Independent backup-brain Reality: Reasonix v1.38.6 using OpenRouter/DeepSeek-V4.1-Flash returned `LTMVH-BACKUP-BRAIN-ACK` in 8045 ms without GPT.
+- Remaining Reality gap: actual stalled ChatGPT page → fresh authenticated ChatGPT conversation → exactly-once continue is not certified because the shared-mcp profile entered a Cloudflare challenge during the model/effort run.
+- Therefore controller is virtually mature, service-level backup route is Reality-proven, but page-failover E2E remains OPEN.

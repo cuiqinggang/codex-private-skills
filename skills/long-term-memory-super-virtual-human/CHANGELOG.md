@@ -38,3 +38,15 @@
 
 ## 0.2.0 Reality attempt 01 - 2026-10-02
 新增未认证薄控制器及失败证据；零发送 probe 已执行，独占控制未证明，保持 NOT_E2E_CERTIFIED，不升版。
+
+
+## 0.2.0 Reality closure R2 - 2026-10-02
+- 正式签署 `VIRTUAL_MATURE=YES`；`FINAL_VALID` 继续保持 NO，未提前升级 v1.0；
+- ChatGPT Model/Effort：独占 shared-mcp Reality 建立，Medium → High + 语义读回 PASS；
+- 正式 exactly-once business entrypoint 已复用；本轮 send 未在 10 秒内 DOM 确认，后续 Cloudflare challenge 阻断恢复读回，因此完整 E2E 仍 OPEN；
+- E2E harness 修正为任何中途失败都在 finally 优先尝试恢复原档；
+- 新增薄层 Session Continuity Supervisor，9/9 单测通过；
+- ECC v3.1.1 lease/takeover/fault 直接 Reality 59/59 PASS；
+- Reasonix v1.38.6 + OpenRouter/DeepSeek-V4.1-Flash 独立备脑 Reality PASS（8045ms）；
+- 确认 DCR 当前在线且存在登录 Startup 入口；GitHub self-hosted runner 为 Running + Automatic；
+- 新增 `evidence/REALITY-CLOSURE-20261002-R2.json` 作为本轮权威证据。

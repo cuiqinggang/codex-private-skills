@@ -2,8 +2,8 @@
 
 ```ini
 VERSION=0.2.0
-STATUS=MATURE_CAPABILITY_ABSORPTION_BASELINE
-VIRTUAL_MATURE=NO
+STATUS=VIRTUAL_MATURE_REALITY_CLOSURE_IN_PROGRESS
+VIRTUAL_MATURE=YES
 FINAL_VALID=NO
 
 DCR_REMOTE_CURRENT=ONLINE
@@ -13,23 +13,25 @@ DCR_LOGIN_AUTOSTART=CONFIGURED_NOT_RELOGIN_TESTED
 WINDOWS_PATH_A=Desktop_Commander_Remote
 WINDOWS_PATH_B=GitHub_self_hosted_runner
 
-K_DRIVE_REPO_BACKUP=PASS_AT_PREVIOUS_HEAD
+K_DRIVE_REPO_BACKUP=PASS_AT_PREVIOUS_HEAD_FRESH_FINAL_PENDING
 ECC_V3_1_1_RELEASE=VERIFIED
+ECC_LEASE_TAKEOVER_FAULT_REALITY=59_PASS_0_FAIL
 MATURE_SUPERTOOL_ASSET=FOUND_DORMANT
 REASONIX_RECOVERY_KIT=ABSORBED_AS_MATURE_SOURCE
-REASONIX_FRESH_RUNTIME_VERIFY=NOT_RECERTIFIED
+REASONIX_FRESH_RUNTIME_VERIFY=DOCTOR_PASS_BACKUP_BRAIN_PASS
 
-CHATGPT_MODEL_EFFORT_CONTROLLER=NOT_E2E_CERTIFIED
-CHATGPT_MODEL_EFFORT_E2E=BLOCKED_EXCLUSIVE_CONTROL_NOT_PROVEN
-CHATGPT_SESSION_CONTINUITY_CONTROLLER=DESIGNED
-PROACTIVE_SESSION_ROTATION=DESIGNED_NOT_E2E_CERTIFIED
+CHATGPT_MODEL_EFFORT_CONTROLLER=SWITCH_READBACK_PASS_E2E_OPEN
+CHATGPT_MODEL_EFFORT_E2E=OPEN_CONTINUE_ONCE_AND_RESTORE
+CHATGPT_SESSION_CONTINUITY_CONTROLLER=VIRTUAL_MATURE
+PROACTIVE_SESSION_ROTATION=VIRTUAL_MATURE_REALITY_OPEN
 PROACTIVE_ROTATION_UI_NAV=PASS_DIAGNOSTIC_PUBLIC_NOAUTH
 PROACTIVE_ROTATION_HANDOFF_E2E=NOT_CERTIFIED
-CHATGPT_PAGE_FAILOVER_E2E=NOT_RUN
-GPT_SERVICE_FAILOVER_E2E=NOT_RUN
+CHATGPT_PAGE_FAILOVER_E2E=NOT_CERTIFIED
+GPT_SERVICE_FAILOVER_E2E=BACKUP_BRAIN_PASS
 CHATGPT_CLI_HEADLESS_PROBE=FAIL_HTTP_403_WAIT_PAGE
 CHATGPT_CLI_HEADED_PROBE=PASS_PUBLIC_PAGE_NOT_LOGGED_IN
-MODEL_EFFORT_AUTHENTICATED_SWITCH=NOT_RUN_OWNER_EXCLUSIVITY_BLOCKED
+MODEL_EFFORT_AUTHENTICATED_SWITCH=PASS_MEDIUM_TO_HIGH
+MODEL_EFFORT_RESTORE=NOT_VERIFIED_CLOUDFLARE_CHALLENGE
 ```
 
 ## Reasonix Recovery Kit probe
@@ -103,3 +105,13 @@ It already provides persistent headed ChatGPT browser identity, exactly-once sen
 - Evidence: evidence/MODEL-EFFORT-REALITY-20261002-01.json.
 - Resume: establish exclusive control of the existing formal STDIO owner without launching another owner; discover High semantically; read original; execute both switches and exactly-once query -> send -> wait_extract; read back and restore; run nonexistent-target no-change test. Only all PASS authorizes v0.2.1 / E2E_CERTIFIED.
 - T_VALID=NOT_PRODUCED.
+
+
+## R2 Reality closure
+- Virtual maturity is signed: controller contracts, failure decisions, mature-module reuse boundaries, and split-brain rules are mechanically testable.
+- Model/effort Reality: authenticated Medium → High succeeded with semantic readback. Formal exactly-once send was invoked unchanged but did not DOM-confirm a user turn within 10 seconds; no duplicate send was observed.
+- Repeated automation relaunches triggered a Cloudflare challenge on the dedicated shared-mcp profile, so restore-to-Medium readback and fresh-session handoff were stopped rather than brute-forced.
+- Independent backup brain: Reasonix v1.38.6 + OpenRouter/DeepSeek-V4.1-Flash returned the exact health-check ACK in 8045 ms.
+- ECC direct Reality: lease 30/30, takeover 8/8, fault injection 21/21; total 59/59.
+- Windows execution substrate: Desktop Commander Remote is online and has a login Startup entry; GitHub self-hosted runner service is Running + Automatic. Actual Windows logoff/relogin remains an intentionally open disruptive gate.
+- Primary evidence: `evidence/REALITY-CLOSURE-20261002-R2.json`.

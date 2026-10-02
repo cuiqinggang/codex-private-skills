@@ -1,0 +1,12 @@
+const assert=require('assert');const {decide}=require('./session-continuity-supervisor');
+const b={safeCheckpoint:true,proactiveRotation:false,gptServiceAvailable:true,pageHealthy:true,readOnlyProbeDone:false,freshChatAvailable:true,fenceToken:4,writeOwner:'PRIMARY',primaryRecovered:false};
+assert.equal(decide(b).action,'CONTINUE');
+assert.equal(decide({...b,pageHealthy:false}).action,'PROBE_PAGE');
+assert.equal(decide({...b,pageHealthy:false,readOnlyProbeDone:true}).action,'ROTATE_SESSION');
+let x=decide({...b,gptServiceAvailable:false});assert.equal(x.action,'FAILOVER_BACKUP');assert.equal(x.nextFenceToken,5);assert.equal(x.writeOwner,'BACKUP');
+assert.equal(decide({...b,gptServiceAvailable:false,safeCheckpoint:false}).action,'FAILOVER_BACKUP');
+assert.equal(decide({...b,proactiveRotation:true,safeCheckpoint:false}).action,'WAIT_SAFE_CHECKPOINT');
+assert.equal(decide({...b,proactiveRotation:true}).action,'ROTATE_SESSION');
+assert.equal(decide({...b,writeOwner:'BACKUP',primaryRecovered:true}).action,'RECONCILE_BEFORE_PRIMARY_RESUME');
+assert.equal(decide({...b,pageHealthy:false,readOnlyProbeDone:true,freshChatAvailable:false}).action,'FAILOVER_BACKUP');
+console.log('SESSION_CONTINUITY_TESTS=9 PASS / 0 FAIL');

@@ -107,9 +107,9 @@ SET_REQUESTED
 
 当前：
 ```ini
-MODEL_EFFORT_CONTROLLER=NOT_E2E_CERTIFIED
+MODEL_EFFORT_CONTROLLER=SWITCH_READBACK_REALITY_PASS_E2E_OPEN
 DETERMINISTIC_UIA_PATH=REJECTED_AS_PRIMARY
-PLAYWRIGHT_PATH=CANDIDATE_MATURE_BASE
+PLAYWRIGHT_PATH=MATURE_BASE_REUSED
 E2E_CERTIFIED=NO
 ```
 
@@ -126,3 +126,13 @@ E2E_CERTIFIED=NO
 - Evidence: evidence/MODEL-EFFORT-REALITY-20261002-01.json.
 - Resume: establish exclusive control of the existing formal STDIO owner without launching another owner; discover High semantically; read original; execute both switches and exactly-once query -> send -> wait_extract; read back and restore; run nonexistent-target no-change test. Only all PASS authorizes v0.2.1 / E2E_CERTIFIED.
 - T_VALID=NOT_PRODUCED.
+
+## Model/Effort Reality 2026-10-02 / 02
+- Exclusive `shared-mcp` persistent-profile control: PASS after pausing only the Playwright MCP child processes; Codex main process remained running.
+- Authenticated ChatGPT page: PASS; composer present; model control semantically located as `选择 ChatGPT 模型`.
+- Medium → High: PASS. Readback: `High，第 3 项，共 4 项。` with `SET_REQUESTED → UI_CHANGED → READBACK_MATCH`.
+- Formal exactly-once business entrypoint was reused unchanged. Query-before returned userCount=0.
+- Send step: FAIL because the user turn was not DOM-confirmed within 10 seconds; duplicate sends observed=0.
+- Repeated automated relaunches then entered a Cloudflare challenge, so final Medium restoration readback could not be certified in this run.
+- The E2E harness was repaired so future failures attempt restoration in `finally` before closing the context.
+- Overall: switch/readback capability is Reality-proven; full `CONTINUE_ONCE → answer → restore` remains OPEN. Evidence: `evidence/REALITY-CLOSURE-20261002-R2.json`.

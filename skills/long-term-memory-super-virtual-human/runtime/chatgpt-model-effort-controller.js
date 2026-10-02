@@ -23,7 +23,6 @@ async (page) => {
     record.transitions.push('SET_REQUESTED');
     if (!['Medium','High'].includes(cfg.target)) { record.status='UNAVAILABLE'; record.reason='TARGET_NOT_ALLOWED_OR_DISCOVERED'; record.changed=false; return record; }
     if (!['Medium','High'].includes(before)) { record.status='UNAVAILABLE'; record.reason='ORIGINAL_OUTSIDE_CERTIFIED_RANGE'; record.changed=false; return record; }
-    if (cfg.target === 'High') { record.status='UNAVAILABLE'; record.reason='HIGH_TARGET_NOT_YET_OBSERVED_IN_REALITY'; record.changed=false; return record; }
     if (before === cfg.target) { record.status='READBACK_MATCH'; record.changed=false; return record; }
     await trigger.click();
     const strength = menu.getByRole('menuitem',{name:'强度',exact:true});
