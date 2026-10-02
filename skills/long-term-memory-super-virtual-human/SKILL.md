@@ -1,15 +1,15 @@
 ---
 name: long-term-memory-super-virtual-human
-version: "0.3.0"
+version: "0.4.0"
 description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human）。以高智能主脑为核心，吸收成熟 Recovery/Long-Flow/Browser 机制，以长期记忆、权威任务合同、Checkpoint、按需工具路由、低相关冗余和独立强备份推进现实任务；唯一优化目标仍是 T*=min(T_VALID)。
 ---
 
-# 长期记忆超级虚拟人 v0.3.0
+# 长期记忆超级虚拟人 v0.4.0
 # Long-Term Memory Super Virtual Human
 
 ```ini
-VERSION=0.3.0
-STATUS=VIRTUAL_MATURE_RECOVERY_AUTOMATION_IMPLEMENTING
+VERSION=0.4.0
+STATUS=VIRTUAL_MATURE_CONTINUITY_RUNTIME_ACTIVE
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
 
@@ -28,7 +28,7 @@ REASONIX_RECOVERY_KIT_ABSORPTION=R1
 ECC_V3_1_1=REUSE
 PLAYWRIGHT_NATIVE_AI_BROWSER=REUSE
 CHATGPT_MODEL_EFFORT_CONTROLLER=REALITY_SWITCH_PASS_E2E_OPEN
-CHATGPT_SESSION_CONTINUITY_CONTROLLER=VIRTUAL_MATURE_V0_3_TRUE_NEW_CHAT
+CHATGPT_SESSION_CONTINUITY_CONTROLLER=V0_4_REALITY_PROVEN_TRUE_NEW_CHAT
 ```
 
 ## 1. 产品定位
@@ -254,7 +254,42 @@ v1.0 按**能力结果**验收，不把某一个实现工具写成唯一毕业�
 
 原则：实现路径可以降级，DONE_WHEN 不能降级。
 
-## 14. 当前入口
+## 14. v0.4 默认运行合同
+
+当用户明确说以下任一含义时：
+
+```text
+按“长期记忆超级虚拟人”运行当前任务
+使用“长期记忆超级虚拟人”技能包完成
+当前页面属于“长期记忆超级虚拟人”任务
+```
+
+即自动启用以下页面运行规则，不等待用户再次提醒：
+
+```ini
+LTMVH_RUNTIME_ACTIVE=YES
+CONTINUITY_MONITORING=REQUIRED
+EARLY_ROTATION_FOR_LONG_TASKS=YES
+CHECKPOINT_BEFORE_ROTATION=YES
+RECOVERY_TARGET=TRUE_NEW_CHAT
+BRANCH_RECOVERY=FORBIDDEN
+REUSE_EXISTING_CHATGPT_BROWSER=REQUIRED
+SECOND_BROWSER_LAUNCH_WHEN_EXISTING=FORBIDDEN
+EXACTLY_ONCE_CONTINUATION=REQUIRED
+KEEP_BROWSER_OPEN=YES
+```
+
+运行语义：
+- 页面较长、下一阶段复杂、已出现卡顿/断连历史时，在安全 checkpoint **提前换会话**，不等页面彻底坏掉；
+- 出现“连接已断开/正在重新连接”时先判断后台是否仍在推进，不立刻重复任务；
+- 确认停滞后自动整理最小 handoff，进入真正 New chat，禁止 Branch；
+- 已有 `shared-mcp` 登录浏览器时必须复用；控制接口异常也不得因此启动第二个浏览器；
+- 普通任务完成、主路失败、切备脑均不得关闭持久 GPT 浏览器；
+- 页面只是工作内存，权威事实必须持续写回技能包/项目状态/Checkpoint。
+
+该合同在技能包被明确调用后，对当前任务生命周期持续有效，直到任务 FINAL_VALID、用户明确 STOP，或用户明确退出该技能运行模式。
+
+## 15. 当前入口
 
 用户只给现实目标。
 
