@@ -66,3 +66,5 @@ jobs:
           Write-Host "DCR_LAUNCHER=$launcher"
           if (-not (Test-Path -LiteralPath $session)) { throw 'DESKTOP_COMMANDER_PERSISTED_SESSION_NOT_FOUND_FOR_USER' }
           if ($proc.Count -lt 1) { throw 'DESKTOP_COMMANDER_REMOTE_PROCESS_NOT_FOUND' }
+
+# recovery-trigger: LTMVH-DCR-PROCESS-R12-20261003
