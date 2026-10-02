@@ -1,14 +1,14 @@
 ---
 name: long-term-memory-super-virtual-human
-version: "0.1.0"
+version: "0.1.1"
 description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human）。以高智能主脑为核心，以长期记忆、权威任务合同、Checkpoint、按需工具路由和独立强备份实现长期现实任务推进；唯一优化目标仍是 T*=min(T_VALID)。
 ---
 
-# 长期记忆超级虚拟人 v0.1.0
+# 长期记忆超级虚拟人 v0.1.1
 # Long-Term Memory Super Virtual Human
 
 ```ini
-VERSION=0.1.0
+VERSION=0.1.1
 STATUS=EARLY_REALITY_BASELINE
 VIRTUAL_MATURE=NO
 FINAL_VALID=NO
@@ -21,6 +21,8 @@ ON_DEMAND_TOOL_ROUTING=YES
 TASK_CONTRACT_REQUIRED_FOR_LONG_FLOW=YES
 CHECKPOINT_RECOVERY=REQUIRED
 INDEPENDENT_STRONG_BACKUP=REQUIRED
+CRITICAL_CAPABILITY_REDUNDANCY_REQUIRED=YES
+MIN_MATURE_PATHS_FOR_CRITICAL_CAPABILITY=2
 ```
 
 ## 1. 产品定位
@@ -129,13 +131,29 @@ GUI 不是唯一执行面。优先 API / Connector / CLI / 原生协议；只有
 - 支付、账号安全、不可逆高风险动作按现实权限门处理；
 - 其他已授权普通操作尽量自动完成，不要求用户做人肉消息总线。
 
-## 10. 恢复与强备份
+## 10. 韧性与低相关冗余
+
+所有会阻塞 FINAL_VALID 的关键能力默认要求至少两条成熟路径，并尽量分离控制面、认证、传输、运行身份、执行引擎、供应商和存储位置。
+
+主路优化完整 T_VALID；备路允许更慢，但必须能达到同一个 FINAL_VALID。主路故障时先切已验证备路恢复业务，再修主路，并重新补齐第二条低相关冗余。
+
+详见 `RESILIENCE_REDUNDANCY.md`。
+
+## 11. 按需执行档位
+
+简单任务不启动重型工作站；工程、长流程和多工具复杂任务分别按需升级到成熟执行档位。
+
+现有 ECC v3.1.1 和本机成熟态 AI Coding SuperTool 生态站作为可调用能力，不重新从零建设。
+
+详见 `EXECUTION_PROFILES.md`。
+
+## 12. 恢复与强备份
 
 页面、网络、工具、执行器故障都按可恢复事件处理。恢复阶梯见 `RECOVERY.md`。
 
 GPT 本身不可用时必须存在独立强备份路线；未通过 Reality 前保持 `INDEPENDENT_STRONG_BACKUP=REQUIRED`，不得伪装完成。
 
-## 11. 当前开放问题
+## 13. 当前开放问题
 
 - GPT Checkpoint / 自动换页恢复 Reality；
 - GPT 本身不可用时的独立强备份 Reality；
@@ -144,7 +162,7 @@ GPT 本身不可用时必须存在独立强备份路线；未通过 Reality 前�
 - Desktop Commander Remote 用户级长期常驻最终 Reality；
 - 共同私库第二份本地完整备份最终 Reality。
 
-## 12. 当前入口
+## 14. 当前入口
 
 用户可直接说：
 
