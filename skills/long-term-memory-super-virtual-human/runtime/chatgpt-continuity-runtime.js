@@ -94,6 +94,7 @@ async function rotateTrueNewChat(context,cp){
  await p.goto('https://chatgpt.com/',{waitUntil:'domcontentloaded',timeout:60000});
  await sleep(1200);
  const first=await observe(p);
+ console.log(JSON.stringify({event:'NEW_CHAT_PROBE',url:p.url(),title:first.title,composer:first.composer,userTurns:first.userTurns,assistantTurns:first.assistantTurns,body:first.bodyText.slice(0,1600)}));
  if(first.humanVerification) throw new Error('HUMAN_VERIFICATION_REQUIRED');
  const u=new URL(p.url());
  if(/^\/c\//.test(u.pathname)||/branch/i.test(p.url())) throw new Error('NOT_TRUE_NEW_CHAT:'+p.url());
