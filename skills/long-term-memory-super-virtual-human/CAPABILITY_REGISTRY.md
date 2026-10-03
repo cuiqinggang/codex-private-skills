@@ -33,6 +33,7 @@
 | 收费软件→免费/开源替代 | `../paid-to-free-open-source-replacement/SKILL.md` v1.0.0 | 先查 96 项全景目录；优先成熟 OSS/自托管 + API/CLI/MCP/Headless；必须经过任务级 DONE_WHEN Reality，不盲替换 |
 | 定时/条件任务 | Automations | n8n / 外部调度 |
 | 长流程状态 | TASK_CONTRACT + Checkpoint | 项目权威状态 |
+| ChatGPT 会话连续性 | `CHATGPT_SESSION_CONTINUITY_CONTROLLER.md` v0.4.4 | 单一生产 supervisor/runtime；旧方案只读索引，不并行运行 |
 | GPT 故障灾备 | 独立强备份 | 待 Reality 认证 |
 
 ## Lazy Activation｜按需激活
