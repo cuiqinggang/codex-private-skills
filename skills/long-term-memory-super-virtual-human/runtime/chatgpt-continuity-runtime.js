@@ -23,6 +23,8 @@ const silenceMs=Number(arg('silence-ms','45000'));
 const maxTurns=Number(arg('max-turns','24'));
 const maxText=Number(arg('max-text','80000'));
 const cdpEndpoint=arg('cdp-endpoint','http://127.0.0.1:9223');
+const neverLaunch=String(arg('never-launch','false')).toLowerCase()==='true';
+const noAutoNewPage=String(arg('no-auto-new-page','false')).toLowerCase()==='true';
 if(!profile) throw new Error('Usage: --profile <dir> [--task <task.json>] [--lease-root <dir>]');
 const globalWriterLeasePath=arg('global-writer-lease',path.resolve(profile,'..','..','state','chatgpt-global-writer-lease.json'));
 
@@ -72,7 +74,7 @@ let lastSig='',lastProgress=now(),probeDone=false,priorDisconnect=0;
 
 function leaseState(extra={}){
  heartbeatGlobalWriterLease({leasePath:globalWriterLeasePath,token:globalWriterToken,marker:currentTask?.marker||'IDLE'});
- const base={schemaVersion:1,status:'LEASE_ACTIVE',version:'0.4.1',pid:process.pid,profile,globalWriterLeasePath,
+ const base={schemaVersion:1,status:'LEASE_ACTIVE',version:'0.4.3',pid:process.pid,profile,globalWriterLeasePath,
   pageLease:true,browserMustStayOpen:true,updatedAt:new Date().toISOString(),pageUrl:leasedPage&&!leasedPage.isClosed()?leasedPage.url():null};
  writeJson(statePath,{...base,...extra});
 }
@@ -105,7 +107,7 @@ async function observe(page){
 }
 
 function buildCheckpoint(task,obs,reason){
- const cp={schemaVersion:1,version:'0.4.1',createdAt:new Date().toISOString(),reason,
+ const cp={schemaVersion:1,version:'0.4.3',createdAt:new Date().toISOString(),reason,
   marker:task.marker,sourceConversationUrl:obs.url,taskContract:task.taskContract||task.goal||'',
   acceptedConclusion:(obs.lastAssistant||'').slice(0,12000),lastUser:(obs.lastUser||'').slice(0,6000),
   unresolvedItems:task.unresolvedItems||[],nextInstruction:task.nextInstruction||
@@ -206,6 +208,7 @@ async function attachExistingBrowser(){
   attachedBrowser=b;externalBrowserAttached=true;runtimeContext=contexts[0];
   const pages=runtimeContext.pages();
   leasedPage=pages.find(p=>/chatgpt\.com/.test(p.url()))||null;
+  if(!leasedPage&&noAutoNewPage){lastAttachError='NO_EXISTING_CHATGPT_PAGE_ATTACH_ONLY';return null}
   if(!leasedPage) leasedPage=await runtimeContext.newPage();
   lastAttachError=null;
   leaseState({acquiredAt:new Date().toISOString(),attachedVia:'CDP',cdpEndpoint,externalBrowserAttached:true});
@@ -222,6 +225,7 @@ async function ensureLeasedPage(){
   if(attached) return attached;
   const owners=externalProfileProcessCount();
   if(owners>0) throw new Error('EXISTING_BROWSER_PRESENT_NO_SECOND_LAUNCH owners='+owners+' attach='+String(lastAttachError||'UNKNOWN'));
+  if(neverLaunch) throw new Error('ATTACH_ONLY_NO_BROWSER_LAUNCH attach='+String(lastAttachError||'UNKNOWN'));
   runtimeContext=await chromium.launchPersistentContext(profile,{headless:false,viewport:{width:1365,height:850}});
  }
  const pages=runtimeContext.pages();
@@ -371,7 +375,7 @@ async function rawCdpOwnerLoop(trigger){
    const task=item.task;
    const priorCp=readJson(checkpointPath,null);
    const cp=priorCp&&priorCp.marker===task.marker?priorCp:{
-    schemaVersion:1,version:'0.4.1',createdAt:new Date().toISOString(),reason:'RAW_CDP_EXISTING_BROWSER_RECOVERY',
+    schemaVersion:1,version:'0.4.3',createdAt:new Date().toISOString(),reason:'RAW_CDP_EXISTING_BROWSER_RECOVERY',
     marker:task.marker,sourceConversationUrl:'EXISTING_CHATGPT_PAGE',taskContract:task.taskContract||task.goal||'',
     acceptedConclusion:task.acceptedConclusion||'',lastUser:'',unresolvedItems:task.unresolvedItems||[],
     nextInstruction:task.nextInstruction||'根据以上接续上下文继续当前未完成任务，从下一步唯一动作开始，不重新讨论已冻结结论。',
@@ -400,7 +404,7 @@ async function ownerLoop(){
  try{await ensureLeasedPage()}
  catch(e){
   const msg=String(e.message||e);
-  if(msg.startsWith('EXISTING_BROWSER_PRESENT_NO_SECOND_LAUNCH')) return rawCdpOwnerLoop(msg);
+  if(msg.startsWith('EXISTING_BROWSER_PRESENT_NO_SECOND_LAUNCH')||msg.startsWith('ATTACH_ONLY_NO_BROWSER_LAUNCH')) return rawCdpOwnerLoop(msg);
   throw e;
  }
  if(initialTaskPath){const q=enqueueTask(initialTaskPath);console.log(JSON.stringify(q))}

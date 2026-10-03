@@ -1,7 +1,7 @@
-# 长期记忆超级虚拟人 v0.4.2｜状态固化 2026-10-03
+# 长期记忆超级虚拟人 v0.4.3｜状态固化 2026-10-03
 
 ```ini
-VERSION=0.4.2
+VERSION=0.4.3
 STATUS=VIRTUAL_MATURE_CONTINUITY_RUNTIME_ACTIVE
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
@@ -23,6 +23,10 @@ EXACTLY_ONCE_RECOVERY=PASS
 
 EXISTING_BROWSER_REUSE=PASS
 SECOND_BROWSER_LAUNCH_WHEN_EXISTING=FORBIDDEN
+AUTO_BROWSER_LAUNCH_MAX_PER_WINDOWS_BOOT=1
+CONTINUITY_RUNTIME_BROWSER_LAUNCH=FORBIDDEN
+CONTINUITY_RUNTIME_AUTO_NEW_PAGE=FORBIDDEN
+SINGLE_BROWSER_LOOP_GUARD=PASS_R15
 PAGE_LEASE_RETAINED=PASS
 GLOBAL_WRITER_LEASE=PASS
 PID_REUSE_FALSE_OWNER=FIXED
@@ -96,6 +100,15 @@ R14（v0.4.2）：
 - exactly-once：PASS；非法档位 fail-closed：PASS；
 - finally 恢复原 High：PASS。
 权威证据：`evidence/MODEL-EFFORT-FULL-E2E-REALITY-20261003-R14.json`。
+
+R15（v0.4.3）：
+- 用户 Reality 发现专用 ChatGPT 浏览器/页签重复创建并导致系统卡顿；
+- watchdog 日志确认修复前已累计 12 次 `browser_launch_once`；
+- 根因收敛为：watchdog 无本次开机 launch 上限 + 旧 continuity supervisor 仍可 `browser_tabs new` + 注册表额外 Chromium AutoLaunch；
+- 已收敛为唯一浏览器 owner：Watchdog 仅负责本次 Windows 启动最多一次 bootstrap launch；连续性 runtime 只能 attach，禁止 launch 和自动新建 page；
+- 修复后 15 秒及追加 20 秒，launch count 均保持 12；专用 Chrome-for-Testing 顶层窗口保持 1；现有浏览器未关闭；
+- CDP 当前不可用时明确进入 `CDP_DEGRADED_EXISTING_BROWSER_NO_RELAUNCH`，不再以重开浏览器作为恢复手段。
+权威证据：`evidence/SINGLE-BROWSER-LOOP-FIX-REALITY-20261003-R15.json`。
 
 补充：`DCR_PROCESS_RECONNECT_R12=PASS` 只证明 Desktop Commander Remote 进程断连后的自动重连，不等于 Windows 注销/重登 Reality。
 

@@ -3,7 +3,7 @@
 ```ini
 PROJECT=长期记忆超级虚拟人
 WORKSPACE_VERSION=v1.0
-SKILL_VERSION=v0.4.2
+SKILL_VERSION=v0.4.3
 SKILL_ENGLISH_NAME=Long-Term Memory Super Virtual Human
 
 STATE=10
@@ -23,6 +23,10 @@ TRUE_NEW_CHAT_RECOVERY=PASS
 BRANCH_RECOVERY=FORBIDDEN
 EXISTING_BROWSER_REUSE=PASS
 SECOND_BROWSER_LAUNCH_WHEN_EXISTING=FORBIDDEN
+AUTO_BROWSER_LAUNCH_MAX_PER_WINDOWS_BOOT=1
+CONTINUITY_RUNTIME_BROWSER_LAUNCH=FORBIDDEN
+CONTINUITY_RUNTIME_AUTO_NEW_PAGE=FORBIDDEN
+SINGLE_BROWSER_LOOP_GUARD=PASS_R15
 EXACTLY_ONCE_RECOVERY=PASS
 PAGE_LEASE_RETAINED=PASS
 GLOBAL_WRITER_LEASE=PASS
@@ -41,7 +45,7 @@ REAL_VALUABLE_LONG_TASK_FINAL_VALID=OPEN
 
 ## 当前正式判断
 
-- 技能包已升级为 **v0.4.2**；v0.4 的核心仍是默认连续性运行合同，v0.4.1 补齐活跃长回答卡死的自动恢复，v0.4.2 闭合模型/Thinking 切换→exactly-once continuation→恢复原档完整 Reality。
+- 技能包已升级为 **v0.4.3**；v0.4.1 补齐活跃长回答卡死自动恢复，v0.4.2 闭合模型/Thinking 完整 E2E，v0.4.3 修复专用浏览器重复 launch/造页死循环并冻结“一次开机最多一次自动 launch、后续只 attach”的硬规则。
 - 当用户明确说“按长期记忆超级虚拟人运行/完成当前任务”时，当前任务自动启用：连续性监控、Checkpoint、长页提前轮换、真正 New chat、禁止 Branch、复用已打开 GPT 浏览器、exactly-once、全局 writer lease。
 - 长任务不追求无限单页；页面较长、下一阶段复杂或已有卡顿历史时，在安全 checkpoint 能换就提前换。
 - “连接已断开/正在重新连接”不等于后台任务失败；先观察后台进展，确认停滞后才恢复，避免重复执行。
@@ -77,6 +81,8 @@ GLOBAL_WRITER_LEASE=PASS
 ```
 
 任务完成、主路失败或切独立备脑时均不得自动关闭持久 GPT 浏览器。
+
+R15 进一步冻结：Watchdog 是唯一允许执行 bootstrap launch 的入口，同一次 Windows 启动最多 1 次；连续性 runtime 只能 attach/refresh/同浏览器切 true New chat，不允许 launch 第二浏览器，也不允许健康检查自动新建标签页。控制接口失效时 fail closed，保留现有浏览器。
 
 ## 已完成的其他基础能力
 

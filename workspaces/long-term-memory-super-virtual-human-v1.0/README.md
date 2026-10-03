@@ -132,8 +132,8 @@ v0.4 已把以下能力纳入默认运行合同：
 
 ## 7. 当前阶段
 
-当前技能包版本为 **v0.4.2**，已签 VIRTUAL_MATURE=YES，但 FINAL_VALID=NO。
+当前技能包版本为 **v0.4.3**，已签 VIRTUAL_MATURE=YES，但 FINAL_VALID=NO。
 
-v0.4.2 已完成现有浏览器复用、真正 New chat、禁止 Branch、最小 handoff、exactly-once、page lease、global writer lease、长回答停滞自动恢复，以及模型/Thinking“切换 → 继续一次 → ACK → exactly-once → 恢复原档”完整 R14 Reality。下一阶段重点是 DCR 真正注销/重登恢复、真实有价值长任务 FINAL_VALID 与独立备脑业务级 DONE_WHEN。
+v0.4.3 已完成现有浏览器复用、真正 New chat、禁止 Branch、最小 handoff、exactly-once、page lease、global writer lease、长回答停滞自动恢复、模型/Thinking 完整 R14 Reality，并完成 R15 专用浏览器死循环修复：同一次 Windows 启动最多自动 launch 一次，后续连续性组件只能 attach，控制接口故障时 fail closed，禁止再次打开专用浏览器或自动堆叠 ChatGPT 标签页。下一阶段重点是 DCR 真正注销/重登恢复、真实有价值长任务 FINAL_VALID 与独立备脑业务级 DONE_WHEN。
 
 当用户明确指定“长期记忆超级虚拟人”运行当前任务时，上述连续性规则自动生效；长页面能安全提前换就提前换。

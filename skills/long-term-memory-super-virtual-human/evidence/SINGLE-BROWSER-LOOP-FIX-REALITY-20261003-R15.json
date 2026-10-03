@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "evidenceId": "LTMVH-SINGLE-BROWSER-LOOP-FIX-R15",
+  "date": "2026-10-03",
+  "skillVersion": "0.4.3",
+  "result": "PASS",
+  "incident": {
+    "symptom": "dedicated ChatGPT browser repeatedly launched/opened pages until system slowdown",
+    "watchdogLaunchCountObservedBeforeFix": 12,
+    "legacyContinuitySupervisorAutoNewTab": true,
+    "genericChromeAutoRunPresent": true
+  },
+  "fixes": {
+    "watchdogBootLaunchLatch": true,
+    "maxAutomaticBrowserLaunchPerWindowsBoot": 1,
+    "existingDedicatedBrowserHardFence": true,
+    "watchdogAutoCreateChatTarget": false,
+    "currentBootExistingBrowserAdoptedIntoLaunchLatch": true,
+    "legacyStartupSupervisorReplacedWithAttachOnlyRuntime": true,
+    "runtimeNeverLaunch": true,
+    "runtimeNoAutoNewPage": true,
+    "genericChromeAutoRunDisabled": true,
+    "canonicalWatchdogPath": "skills/long-term-memory-super-virtual-human/runtime/ChatGPT-Persistent-Browser-Watchdog.js"
+  },
+  "reality": {
+    "launchCountBefore": 12,
+    "launchCountAfter15s": 12,
+    "launchCountAfterAdditional20s": 12,
+    "dedicatedTopLevelWindowsAfter": 1,
+    "normalChromeTopLevelWindowsAfter": 1,
+    "watchdogStatus": "CDP_DEGRADED_EXISTING_BROWSER_NO_RELAUNCH",
+    "existingBrowserClosed": false,
+    "newBrowserLaunchedByFixedPath": false
+  },
+  "policy": "ATTACH_FIRST_REUSE_EXISTING_BROWSER; FAIL_CLOSED_ON_CONTROL_LOSS; NEVER_RELAUNCH_WHILE_EXISTING_DEDICATED_BROWSER_PRESENT",
+  "finalValid": false
+}

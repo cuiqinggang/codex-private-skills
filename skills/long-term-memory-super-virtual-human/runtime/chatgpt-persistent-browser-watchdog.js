@@ -1,5 +1,6 @@
 const fs=require('fs');
 const path=require('path');
+const os=require('os');
 const {spawn,spawnSync}=require('child_process');
 
 function arg(name,def=null){const i=process.argv.indexOf('--'+name);return i>=0?process.argv[i+1]:def}
@@ -12,6 +13,8 @@ const lockPath=path.join(root,'chatgpt-browser-watchdog.json');
 const statePath=path.join(root,'chatgpt-browser-health.json');
 const logPath=path.join(root,'chatgpt-browser-watchdog.jsonl');
 const disabledPath=path.join(root,'chatgpt-watchdog.disable');
+const bootLaunchLatchPath=path.join(root,'chatgpt-browser-launch-latch.json');
+const bootId=String(Math.floor((Date.now()-os.uptime()*1000)/60000));
 fs.mkdirSync(root,{recursive:true});
 
 function log(event,data={}){fs.appendFileSync(logPath,JSON.stringify({at:new Date().toISOString(),event,...data})+'\n')}
@@ -29,6 +32,19 @@ function profileProcessCount(){
  const r=spawnSync('powershell.exe',['-NoProfile','-Command',ps],{encoding:'utf8',windowsHide:true,timeout:5000});
  const n=Number(String(r.stdout||'').trim());return Number.isFinite(n)?n:0;
 }
+function dedicatedBrowserProcessCount(){
+ if(process.platform!=='win32')return 0;
+ const escaped=exe.replace(/'/g,"''");
+ const ps="$e='"+escaped+"'; @(Get-CimInstance Win32_Process | Where-Object {$_.Name -eq 'chrome.exe' -and $_.ExecutablePath -eq $e}).Count";
+ const r=spawnSync('powershell.exe',['-NoProfile','-Command',ps],{encoding:'utf8',windowsHide:true,timeout:5000});
+ const n=Number(String(r.stdout||'').trim());return Number.isFinite(n)?n:0;
+}
+function launchAlreadyUsedThisBoot(){
+ const x=readJson(bootLaunchLatchPath);return Boolean(x&&x.bootId===bootId);
+}
+function markLaunchUsed(pid){
+ fs.writeFileSync(bootLaunchLatchPath,JSON.stringify({bootId,pid,launchedAt:new Date().toISOString()},null,2));
+}
 async function json(url){const c=new AbortController();const t=setTimeout(()=>c.abort(),2500);try{const r=await fetch(url,{signal:c.signal});if(!r.ok)throw new Error('HTTP_'+r.status);return await r.json()}finally{clearTimeout(t)}}
 class Cdp{
  constructor(u){this.u=u;this.ws=null;this.id=0;this.p=new Map()}
@@ -38,11 +54,9 @@ class Cdp{
 }
 async function ensureChatTarget(){
  const list=await json(endpoint+'/json/list');
- let page=list.find(x=>x.type==='page'&&String(x.url||'').startsWith('https://chatgpt.com/'));
+ const page=list.find(x=>x.type==='page'&&String(x.url||'').startsWith('https://chatgpt.com/'));
  if(page)return {created:false,page};
- const ver=await json(endpoint+'/json/version');const c=await new Cdp(ver.webSocketDebuggerUrl).open();
- try{const r=await c.call('Target.createTarget',{url:'https://chatgpt.com/'});log('chatgpt_target_created',{targetId:r.targetId});return {created:true,targetId:r.targetId}}
- finally{c.close()}
+ return {created:false,page:null,missing:true};
 }
 async function pageHealth(){
  const list=await json(endpoint+'/json/list');const page=list.find(x=>x.type==='page'&&String(x.url||'').startsWith('https://chatgpt.com/'));if(!page)return {pagePresent:false};
@@ -53,8 +67,10 @@ async function pageHealth(){
  }finally{c.close()}
 }
 function launchBrowser(){
+ if(launchAlreadyUsedThisBoot())throw new Error('LAUNCH_ALREADY_USED_THIS_BOOT');
  const child=spawn(exe,['--remote-debugging-address=127.0.0.1','--remote-debugging-port=9223','--user-data-dir='+profile,'--no-first-run','--no-default-browser-check','https://chatgpt.com/'],{detached:true,stdio:'ignore',windowsHide:false});
- child.unref();log('browser_launch_once',{pid:child.pid,profile});return child.pid;
+ markLaunchUsed(child.pid);
+ child.unref();log('browser_launch_once',{pid:child.pid,profile,bootId});return child.pid;
 }
 
 let missingProcessStreak=0,stopping=false;
@@ -67,11 +83,19 @@ async function tick(){
   writeState({status,cdp:'PASS',createdPage:Boolean(t.created),...h});
  }catch(e){
   const owners=profileProcessCount();
-  if(owners>0){missingProcessStreak=0;writeState({status:'CDP_DEGRADED_EXISTING_BROWSER_NO_RELAUNCH',cdp:'FAIL',profileProcesses:owners,error:String(e.message||e)});log('cdp_degraded_existing_browser',{owners,error:String(e.message||e)})}
-  else{
+  const dedicated=dedicatedBrowserProcessCount();
+  if(owners>0||dedicated>0){
+   missingProcessStreak=0;
+   writeState({status:'CDP_DEGRADED_EXISTING_BROWSER_NO_RELAUNCH',cdp:'FAIL',profileProcesses:owners,dedicatedBrowserProcesses:dedicated,error:String(e.message||e)});
+   log('cdp_degraded_existing_browser',{owners,dedicated,error:String(e.message||e)});
+  }else{
    missingProcessStreak++;
-   writeState({status:'BROWSER_PROCESS_MISSING_CONFIRMING',cdp:'FAIL',profileProcesses:0,missingProcessStreak,error:String(e.message||e)});
-   if(missingProcessStreak>=2){launchBrowser();missingProcessStreak=0}
+   const used=launchAlreadyUsedThisBoot();
+   writeState({status:used?'AUTO_RELAUNCH_FENCED_FOR_BOOT':'BROWSER_PROCESS_MISSING_CONFIRMING',cdp:'FAIL',profileProcesses:0,dedicatedBrowserProcesses:0,missingProcessStreak,launchUsedThisBoot:used,error:String(e.message||e)});
+   if(missingProcessStreak>=2&&!used){
+    try{launchBrowser()}catch(launchErr){log('browser_launch_fenced',{error:String(launchErr.message||launchErr),bootId})}
+    missingProcessStreak=0;
+   }
   }
  }
 }

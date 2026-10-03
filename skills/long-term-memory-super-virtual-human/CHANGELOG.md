@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.4.3 - 2026-10-03
+
+- 修复专用 ChatGPT 浏览器重复 launch / 标签页累积死循环：Reality R15 观察到修复前 watchdog 已累计 `browser_launch_once=12`；
+- Watchdog 新增 Windows boot launch latch：同一次 Windows 启动自动 launch 上限固定为 1；只要检测到任意现有 Chrome-for-Testing 专用进程，即 fail-closed，不再 launch；
+- Watchdog 不再通过 `Target.createTarget` 自动补 ChatGPT 标签页，避免健康检查误判时无限造页；
+- 禁用注册表 `GoogleChromeAutoLaunch_*` 的额外 Playwright Chromium 开机入口，并保存恢复备份；
+- 旧 `ChatGPT-Continuity.cmd` 开机入口不再启动旧 supervisor，改为启动 v0.4.3 attach-only runtime；runtime 使用 `--never-launch true --no-auto-new-page true`；
+- Reality：修复版运行 15 秒及追加 20 秒后 launch 计数均保持 12，专用顶层窗口保持 1；当前 CDP 故障时状态为 `CDP_DEGRADED_EXISTING_BROWSER_NO_RELAUNCH`；现有浏览器未关闭；
+- 权威证据：`evidence/SINGLE-BROWSER-LOOP-FIX-REALITY-20261003-R15.json`；`FINAL_VALID=NO` 不变。
+
 ## 0.4.2 - 2026-10-03
 
 - 闭合 ChatGPT 模型/Thinking 完整 E2E：复用现有 shared-mcp 浏览器，经 CDP 连接完成 High→Medium 实际切换、语义读回、exactly-once continuation、ACK、非法档位 fail-closed，并恢复原 High；Reality R14 PASS；

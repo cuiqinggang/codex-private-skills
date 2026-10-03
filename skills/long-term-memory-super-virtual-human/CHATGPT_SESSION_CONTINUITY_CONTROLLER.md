@@ -101,7 +101,7 @@ For long tasks, reuse ECC v3.1.1 lease/fencing concepts so only the current leas
 Current status:
 
 ```ini
-SESSION_CONTINUITY_CONTROLLER=V0_4_1_RUNTIME_ACTIVE
+SESSION_CONTINUITY_CONTROLLER=V0_4_3_SINGLE_BROWSER_LOOP_GUARD_PASS_R15
 PROACTIVE_SESSION_ROTATION=VIRTUAL_MATURE_REALITY_OPEN
 TRUE_NEW_CHAT_ONLY=YES
 BRANCH_RECOVERY=FORBIDDEN
@@ -205,11 +205,30 @@ GLOBAL_WRITER_LEASE=ACTIVE
 → 任务结束后保持 browser/page lease
 ```
 
-若 Playwright attach 或发送 DOM 确认失败，但现有浏览器仍活着，不得因此重新启动浏览器；改走 existing-browser raw CDP。只有确认不存在可用现有浏览器/profile owner 时，才允许首次 launch。
+若 Playwright attach 或发送 DOM 确认失败，但现有浏览器仍活着，不得因此重新启动浏览器；改走 existing-browser raw CDP。R15 起进一步收紧：自动 bootstrap launch 只允许由唯一 Watchdog 在同一次 Windows 启动中执行最多 1 次；连续性 runtime 永久 attach-only，不具备 launch 权限，也不因健康检查自动创建新标签页。控制接口不可接管时 fail closed 并保留现有浏览器。
 
 本轮同时修复 PID reuse：旧 lease-state 不再凭“PID 数字仍活着”冒充 owner；全局 writer lease 必须确认 PID 对应进程确实是 `chatgpt-continuity-runtime.js`。
 
 Reality 证据：`evidence/TRUE-NEW-CHAT-EXISTING-BROWSER-REALITY-20261003-R6.json`。
+
+## Reality R15 / 2026-10-03｜单专用浏览器死循环修复
+
+用户现场发现专用 ChatGPT 浏览器出现重复打开、标签页持续堆叠并导致电脑卡顿。取证确认旧 Watchdog 在 CDP/profile 状态抖动后重复 `browser_launch_once`，修复前累计 12 次；旧 continuity supervisor 同时仍具备 `browser_tabs new` 能力，注册表另有 Chromium AutoLaunch，形成多 owner 冲突。
+
+v0.4.3 收敛为：
+
+```ini
+DEDICATED_BROWSER_BOOTSTRAP_OWNER=WATCHDOG_ONLY
+AUTO_BROWSER_LAUNCH_MAX_PER_WINDOWS_BOOT=1
+CONTINUITY_RUNTIME_BROWSER_LAUNCH=FORBIDDEN
+CONTINUITY_RUNTIME_AUTO_NEW_PAGE=FORBIDDEN
+EXISTING_DEDICATED_BROWSER_PRESENT=NO_RELAUNCH
+CONTROL_LOSS=FAIL_CLOSED_KEEP_BROWSER
+```
+
+Reality：修复版运行 15 秒并追加观察 20 秒，`browser_launch_once` 计数保持 `12 → 12 → 12`；专用 Chrome-for-Testing 顶层窗口保持 1；现有浏览器没有被关闭。当前 CDP 不可用时 Watchdog 正确进入 `CDP_DEGRADED_EXISTING_BROWSER_NO_RELAUNCH`。
+
+权威证据：`evidence/SINGLE-BROWSER-LOOP-FIX-REALITY-20261003-R15.json`。
 
 ## Reality R10 / 2026-10-03｜活跃卡死全链路故障注入
 
