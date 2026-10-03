@@ -11,36 +11,22 @@ jobs:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 5
     steps:
-      - name: Inspect A-session recovery watchdog supervision
+      - name: Inspect existing shared recovery runtime
         shell: pwsh
         run: |
           $ErrorActionPreference='Continue'
-          $pidTarget=16764
-          Write-Host '=== WATCHDOG PROCESS ==='
-          Get-CimInstance Win32_Process -Filter "ProcessId=$pidTarget" |
-            Select-Object ProcessId,ParentProcessId,SessionId,Name,ExecutablePath,CommandLine | Format-List
-          Write-Host '=== WATCHDOG GET-PROCESS ==='
-          try { Get-Process -Id $pidTarget -IncludeUserName | Select-Object Id,SessionId,UserName,Path,StartTime | Format-List } catch { Write-Host ('GETPROCESS_ERROR='+$_.Exception.Message) }
-          $p=Get-CimInstance Win32_Process -Filter "ProcessId=$pidTarget" -ErrorAction SilentlyContinue
-          if($p){
-            Write-Host '=== PARENT ==='
-            Get-CimInstance Win32_Process -Filter ("ProcessId="+$p.ParentProcessId) |
-              Select-Object ProcessId,ParentProcessId,SessionId,Name,ExecutablePath,CommandLine | Format-List
+          $root='C:\AI\LTMVH-Recovery'
+          foreach($f in @('Recovery-Watchdog.ps1','Recover-LTMVH.ps1','Invoke-Recovery.ps1','Recovery-Request-Watchdog.ps1')){
+            Write-Host ('=== '+$f+' ===')
+            $p=Join-Path $root $f
+            if(Test-Path $p){Get-Content -LiteralPath $p -Raw}
           }
-          Write-Host '=== SCHEDULED TASK ACTION MATCHES ==='
-          Get-ScheduledTask -ErrorAction SilentlyContinue | ForEach-Object {
-            $t=$_
-            foreach($a in @($t.Actions)){
-              $s=($a.Execute+' '+$a.Arguments)
-              if($s -match 'LTMVH-Recovery|Recovery-Request-Watchdog|Recover-LTMVH'){
-                [pscustomobject]@{TaskName=$t.TaskName;TaskPath=$t.TaskPath;State=$t.State;User=$t.Principal.UserId;LogonType=$t.Principal.LogonType;Action=$s}
-              }
-            }
-          } | Format-List
-          Write-Host '=== STARTUP MATCHES ==='
-          Get-CimInstance Win32_StartupCommand -ErrorAction SilentlyContinue |
-            Where-Object {$_.Command -match 'LTMVH-Recovery|Recovery-Request-Watchdog|Recover-LTMVH'} |
-            Select-Object Name,Command,Location,User | Format-List
-          Write-Host '=== RECOVERY DIR ==='
-          Get-ChildItem 'C:\AI\LTMVH-Recovery' -Force -ErrorAction SilentlyContinue |
-            Select-Object Name,Length,LastWriteTime | Format-Table -AutoSize
+          Write-Host '=== RECOVERY RELATED PROCESSES ==='
+          Get-CimInstance Win32_Process -ErrorAction SilentlyContinue |
+            Where-Object {$_.Name -match 'powershell|pwsh|node|cmd' -and $_.SessionId -eq 1} |
+            Select-Object ProcessId,ParentProcessId,SessionId,Name,ExecutablePath,CommandLine | Format-List
+          Write-Host '=== MUTEX/STATE FILES ==='
+          foreach($f in @('recovery-state.json','last-recovery-state.json','request-watchdog.log','recovery.log')){
+            $p=Join-Path $root $f
+            if(Test-Path $p){Write-Host ('--- '+$f+' ---'); Get-Content -LiteralPath $p -Tail 100}
+          }
