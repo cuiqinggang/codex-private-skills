@@ -15,29 +15,22 @@ jobs:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 5
     steps:
-      - name: Test isolated user A scheduled-task bridge
+      - name: Probe backup-semantic access to DCR startup script
         shell: pwsh
         run: |
           $ErrorActionPreference='Continue'
-          $name='LTMVH-UserBridge-Temp'
-          $out='C:\AI\LTMVH-Recovery\user-bridge-temp.txt'
-          Remove-Item $out -Force -ErrorAction SilentlyContinue
-          try {
-            Unregister-ScheduledTask -TaskName $name -Confirm:$false -ErrorAction SilentlyContinue
-            $action=New-ScheduledTaskAction -Execute 'powershell.exe' -Argument ('-NoProfile -WindowStyle Hidden -Command "'+[char]36+'env:USERNAME + ''|'' + (Get-Date).ToString(''o'') | Set-Content -LiteralPath '''+$out+''' -Encoding UTF8"')
-            $principal=New-ScheduledTaskPrincipal -UserId 'A' -LogonType Interactive -RunLevel Limited
-            Register-ScheduledTask -TaskName $name -Action $action -Principal $principal -Force -ErrorAction Stop | Out-Null
-            Write-Host 'REGISTER_USER_BRIDGE=PASS'
-            Start-ScheduledTask -TaskName $name -ErrorAction Stop
-            Start-Sleep -Seconds 5
-            if(Test-Path $out){
-              Write-Host 'USER_BRIDGE_EXEC=PASS'
-              Get-Content $out -Raw
-            } else {
-              Write-Host 'USER_BRIDGE_EXEC=FAIL_NO_OUTPUT'
-            }
-          } catch {
-            Write-Host ('REGISTER_OR_RUN_FAIL='+$_.Exception.Message)
-          } finally {
-            try { Unregister-ScheduledTask -TaskName $name -Confirm:$false -ErrorAction Stop; Write-Host 'TEMP_TASK_CLEANUP=PASS' } catch { Write-Host ('TEMP_TASK_CLEANUP='+$_.Exception.Message) }
+          Write-Host '=== PRIVILEGES ==='
+          whoami /priv
+          Write-Host '=== ACL ==='
+          icacls 'C:\Users\A\AppData\Local\DesktopCommanderRemote'
+          Write-Host '=== ROBOCOPY BACKUP ==='
+          $dst='C:\AI\LTMVH-Recovery\dcr-script-backup-read'
+          New-Item -ItemType Directory -Force -Path $dst | Out-Null
+          robocopy 'C:\Users\A\AppData\Local\DesktopCommanderRemote' $dst 'Start-DesktopCommanderRemote.ps1' /B /R:0 /W:0 /NFL /NDL /NJH /NJS
+          Write-Host ('ROBOCOPY_EXIT='+$LASTEXITCODE)
+          if(Test-Path (Join-Path $dst 'Start-DesktopCommanderRemote.ps1')){
+            Write-Host 'BACKUP_READ=PASS'
+            Get-Content (Join-Path $dst 'Start-DesktopCommanderRemote.ps1') -Raw
+          } else {
+            Write-Host 'BACKUP_READ=FAIL'
           }
