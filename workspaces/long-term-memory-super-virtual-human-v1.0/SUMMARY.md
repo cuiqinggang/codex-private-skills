@@ -38,6 +38,8 @@ INDEPENDENT_BACKUP_BRAIN=PASS_REASONIX_DEEPSEEK
 K_DRIVE_REPO_BACKUP_RESTORE=PASS
 
 NATURAL_STALL_DETECTION_FULL_E2E=PASS_BY_SAFE_FAULT_INJECTION_R10
+PAGE_RECOVERY_DEDICATED_BROWSER_REALITY=PASS_R25
+CURRENT_SHARED_MCP_IN_PLACE_RECOVERY=DEGRADED_NO_CDP
 DCR_LOGOFF_RELOGIN_REALITY=OPEN
 MODEL_EFFORT_FULL_E2E=PASS_R14
 REAL_VALUABLE_LONG_TASK_FINAL_VALID=OPEN
@@ -94,6 +96,13 @@ R15 进一步冻结：Watchdog 是唯一允许执行 bootstrap launch 的入口�
 - Windows 执行层已具备 Desktop Commander Remote + GitHub self-hosted runner 双路径基础；
 - 模型/Thinking：R14 已完成现有浏览器复用、High → Medium、语义读回、exactly-once continuation、ACK、非法档位 fail-closed 与恢复原 High；`MODEL_EFFORT_FULL_E2E=PASS_R14`。
 - **收费转免费·开源替代技能包 v1.0.0** 已注册为按需能力：目录 `2026-10-03-R1` 共 96 项；优先成熟 OSS/自托管与 Agent 可操作接口，强制区分免费/开源/开放核心/Source-available；本扩展不改变 v0.4.3 连续性 runtime 与 `FINAL_VALID=NO`。
+
+## 页面恢复 Reality R25（2026-10-03）
+
+- 独立 `profile\\tests` 浏览器以 CDP 9333 实测完成：活跃生成故障注入 → 8 秒无进展硬门槛 → 只读 probe → 停止旧 turn → checkpoint → 真正 New chat → exactly-once handoff → 指定 ACK；`R25_PAGE_RECOVERY_REALITY=PASS`。
+- `submissionCount=1`、`markerCount=1`、`ackConfirmed=true`、`branchUsed=false`、runtime 未另启浏览器。
+- 证据：`workspaces/long-term-memory-super-virtual-human-v1.0/evidence/LTMVH-PAGE-RECOVERY-R25.md`。
+- 本 PASS 仅证明独立可控测试浏览器链；当前已运行但无 CDP 的 `shared-mcp` 生产浏览器仍为 DEGRADED，不能把 R25 冒充为其原地恢复 PASS；`FINAL_VALID=NO` 保持不变。
 
 ## 当前未完成且不得误报
 
