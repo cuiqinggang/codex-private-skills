@@ -130,7 +130,7 @@
     "runtime_online_single_browser_preserved": "PASS",
     "deterministic_continuity_regression": "PASS_25_0",
     "live_runtime_check_completed": "PASS",
-    "evidence_written_and_readback_required": "PENDING_WRITE_READBACK"
+    "evidence_written_and_readback_required": "PASS"
   },
   "deployment_metadata_note": {
     "local_checkout_state_observed": "detached HEAD at f513babec4dbd5c08508125e70bd21d296cf6888 with diagnostic working-tree files",
@@ -141,5 +141,13 @@
     "FINAL_VALID": "YES",
     "applies_to": "Gate A only",
     "entire_ltmvh_v1_final_valid": "NO"
+  },
+  "readback_verification": {
+    "verified": true,
+    "verified_at": "2026-10-04T01:00:00+08:00",
+    "evidence_blob_sha": "b780044ccfc9d8b0f5fa4eb478b679f3f659e40b",
+    "summary_blob_sha": "4088130e79acbdb0605650470f95fe23c277f1c2",
+    "summary_gate_marker_present": true,
+    "main_head_observed_before_evidence_finalize": "9318d8a7c6411bb1da6d71e649c62a7c020c50cd"
   }
 }
