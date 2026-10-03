@@ -40,4 +40,4 @@ jobs:
           $json=$obj | ConvertTo-Json -Depth 4
           $json | Set-Content -LiteralPath (Join-Path $root 'CROSS-RECOVERY-R18B.json') -Encoding UTF8
           $json | Write-Host
-# gate-b-dcr-recovery-trigger: 20261004-0113
+# gate-c-post-logoff-recovery-trigger: 20261004-0132
