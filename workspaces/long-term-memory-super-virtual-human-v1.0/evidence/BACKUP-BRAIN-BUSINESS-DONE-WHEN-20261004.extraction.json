@@ -1,0 +1,10 @@
+﻿{
+    "extraction":  "MECHANICAL_FROM_REASONIX_TRAJECTORY",
+    "source_trajectory":  "C:\\AI\\LTMVH-Gate-B-20261004\\reasonix-attempt5-trajectory.jsonl",
+    "source_seq":  792,
+    "source_declared_path":  "C:\\AI\\LTMVH-Gate-B-20261004\\BACKUP-BRAIN-BUSINESS-DONE-WHEN-20261004.md",
+    "content_chars":  9888,
+    "target":  "C:\\AI\\LTMVH-Gate-B-20261004\\BACKUP-BRAIN-BUSINESS-DONE-WHEN-20261004.md",
+    "sha256":  "71B8A5B54389B22F11082BF2388B822D48F039FCED5ABA43C4DB76BDD40BD250",
+    "candidate_count":  6
+}

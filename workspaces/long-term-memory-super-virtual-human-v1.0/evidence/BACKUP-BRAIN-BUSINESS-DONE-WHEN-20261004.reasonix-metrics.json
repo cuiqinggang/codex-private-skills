@@ -1,0 +1,247 @@
+{
+  "prompt_tokens": 368505,
+  "completion_tokens": 26540,
+  "cache_hit_tokens": 350208,
+  "cache_miss_tokens": 18297,
+  "steps": 10,
+  "cost": 0,
+  "currency": "",
+  "cost_complete": false,
+  "display_complete": false,
+  "display_status": "unavailable",
+  "cost_quotes": [
+    {
+      "original": {
+        "amount": "",
+        "currency": ""
+      },
+      "estimated": true,
+      "costComplete": false,
+      "displayComplete": false,
+      "complete": false,
+      "displayStatus": "unavailable",
+      "modelRef": "OpenRouter/DeepSeek-V4.1-Flash",
+      "usageSource": "executor",
+      "incompleteReason": "no_price"
+    },
+    {
+      "original": {
+        "amount": "",
+        "currency": ""
+      },
+      "estimated": true,
+      "costComplete": false,
+      "displayComplete": false,
+      "complete": false,
+      "displayStatus": "unavailable",
+      "modelRef": "OpenRouter/DeepSeek-V4.1-Flash",
+      "usageSource": "executor",
+      "incompleteReason": "no_price"
+    },
+    {
+      "original": {
+        "amount": "",
+        "currency": ""
+      },
+      "estimated": true,
+      "costComplete": false,
+      "displayComplete": false,
+      "complete": false,
+      "displayStatus": "unavailable",
+      "modelRef": "OpenRouter/DeepSeek-V4.1-Flash",
+      "usageSource": "executor",
+      "incompleteReason": "no_price"
+    },
+    {
+      "original": {
+        "amount": "",
+        "currency": ""
+      },
+      "estimated": true,
+      "costComplete": false,
+      "displayComplete": false,
+      "complete": false,
+      "displayStatus": "unavailable",
+      "modelRef": "OpenRouter/DeepSeek-V4.1-Flash",
+      "usageSource": "executor",
+      "incompleteReason": "no_price"
+    },
+    {
+      "original": {
+        "amount": "",
+        "currency": ""
+      },
+      "estimated": true,
+      "costComplete": false,
+      "displayComplete": false,
+      "complete": false,
+      "displayStatus": "unavailable",
+      "modelRef": "OpenRouter/DeepSeek-V4.1-Flash",
+      "usageSource": "executor",
+      "incompleteReason": "no_price"
+    },
+    {
+      "original": {
+        "amount": "",
+        "currency": ""
+      },
+      "estimated": true,
+      "costComplete": false,
+      "displayComplete": false,
+      "complete": false,
+      "displayStatus": "unavailable",
+      "modelRef": "OpenRouter/DeepSeek-V4.1-Flash",
+      "usageSource": "executor",
+      "incompleteReason": "no_price"
+    },
+    {
+      "original": {
+        "amount": "",
+        "currency": ""
+      },
+      "estimated": true,
+      "costComplete": false,
+      "displayComplete": false,
+      "complete": false,
+      "displayStatus": "unavailable",
+      "modelRef": "OpenRouter/DeepSeek-V4.1-Flash",
+      "usageSource": "executor",
+      "incompleteReason": "no_price"
+    },
+    {
+      "original": {
+        "amount": "",
+        "currency": ""
+      },
+      "estimated": true,
+      "costComplete": false,
+      "displayComplete": false,
+      "complete": false,
+      "displayStatus": "unavailable",
+      "modelRef": "OpenRouter/DeepSeek-V4.1-Flash",
+      "usageSource": "executor",
+      "incompleteReason": "no_price"
+    },
+    {
+      "original": {
+        "amount": "",
+        "currency": ""
+      },
+      "estimated": true,
+      "costComplete": false,
+      "displayComplete": false,
+      "complete": false,
+      "displayStatus": "unavailable",
+      "modelRef": "OpenRouter/DeepSeek-V4.1-Flash",
+      "usageSource": "executor",
+      "incompleteReason": "no_price"
+    },
+    {
+      "original": {
+        "amount": "",
+        "currency": ""
+      },
+      "estimated": true,
+      "costComplete": false,
+      "displayComplete": false,
+      "complete": false,
+      "displayStatus": "unavailable",
+      "modelRef": "OpenRouter/DeepSeek-V4.1-Flash",
+      "usageSource": "executor",
+      "incompleteReason": "no_price"
+    }
+  ],
+  "estimated": true,
+  "compactions": 0,
+  "readiness_checks": 1,
+  "readiness_allowed": 1,
+  "readiness_blocks": 0,
+  "readiness_recoveries": 0,
+  "readiness_errors": 0,
+  "readiness_missing_project_checks": 0,
+  "readiness_incomplete_todos": 0,
+  "readiness_command_mismatches": 0,
+  "readiness_missing_acceptance_criteria": 0,
+  "readiness_missing_verification": 0,
+  "readiness_missing_review": 0,
+  "readiness_missing_signoff": 0,
+  "readiness_missing_action_evidence": 0,
+  "readiness_missing_mutation": 0,
+  "capability_routes": 1,
+  "capability_routed_candidates": 59,
+  "capability_routed_prefer": 59,
+  "capability_discovery": {
+    "Lists": 0,
+    "Searches": 0,
+    "Inspects": 0,
+    "ResultCount": 0,
+    "ResultBytes": 0,
+    "NetworkCalls": 0
+  },
+  "capability_arguments": {
+    "Validations": 15,
+    "Fail": 0,
+    "Skip": 0,
+    "RemoteDispatch": 0
+  },
+  "capability_loop_guard": {
+    "RepeatFailures": 0,
+    "RepeatClarifications": 0,
+    "SoftBudgetNudges": 0,
+    "BlockedCalls": 0
+  },
+  "capability_mcp_lists": {
+    "SharedHost": 0,
+    "DiskCache": 0,
+    "Remote": 0,
+    "DurationMs": 0,
+    "ToolCount": 0,
+    "SchemaBytes": 0
+  },
+  "capability_tool_exec": {
+    "Calls": 15,
+    "ReadOnly": 10,
+    "Parallel": 5,
+    "QueueMs": 2903,
+    "ExecMs": 14857,
+    "RawBytes": 50265,
+    "VisibleBytes": 50265
+  },
+  "capability_phases": {
+    "ProviderWaitMs": 0,
+    "ToolExecMs": 0,
+    "SubagentWaitMs": 0,
+    "UserWaitMs": 0,
+    "CompactMs": 0,
+    "ReviewMs": 0
+  },
+  "complete": true,
+  "usage_by_source": {
+    "executor": {
+      "calls": 10,
+      "prompt_tokens": 368505,
+      "completion_tokens": 26540,
+      "cost": 0
+    }
+  },
+  "arm": "full",
+  "duration_ms": 100124,
+  "outcome": "success",
+  "tool_calls": 15,
+  "tool_failures": 6,
+  "tool_duration_ms": 14857,
+  "subagent_tool_calls": 0,
+  "retries": 0,
+  "tool_calls_by_name": {
+    "ask": 1,
+    "bash": 4,
+    "read_file": 6,
+    "update_goal": 1,
+    "write_file": 3
+  },
+  "tool_failures_by_name": {
+    "bash": 2,
+    "update_goal": 1,
+    "write_file": 3
+  }
+}
