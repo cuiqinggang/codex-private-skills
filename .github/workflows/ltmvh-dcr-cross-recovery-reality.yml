@@ -11,18 +11,50 @@ jobs:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 5
     steps:
-      - name: Dump raw 4104 fields for failed DCR launch window
+      - name: Diagnose DCR persisted session and direct launch
         shell: pwsh
         run: |
           $ErrorActionPreference='Continue'
-          $start=[datetime]'2026-10-03T22:09:30'
-          $end=[datetime]'2026-10-03T22:11:20'
-          $ev=Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-PowerShell/Operational';Id=4104;StartTime=$start;EndTime=$end} -ErrorAction SilentlyContinue
-          Write-Host ('COUNT='+@($ev).Count)
-          foreach($e in $ev){
-            $vals=@($e.Properties | ForEach-Object {$_.Value})
-            Write-Host '--- EVENT ---'
-            Write-Host ('TIME='+$e.TimeCreated.ToString('o'))
-            Write-Host ('PROPS='+($vals | ConvertTo-Json -Compress -Depth 3))
-            Write-Host ('MSG='+$e.Message)
-          }
+          Write-Host ('IDENTITY=' + [Security.Principal.WindowsIdentity]::GetCurrent().Name)
+          Write-Host ('INTERACTIVE_USER=' + (Get-CimInstance Win32_ComputerSystem).UserName)
+          $profile='C:\Users\A'
+          $session=Join-Path $profile '.desktop-commander-device\device.json'
+          Write-Host ('SESSION_PATH='+$session)
+          try {
+            Write-Host ('SESSION_EXISTS='+(Test-Path -LiteralPath $session))
+            if(Test-Path -LiteralPath $session){
+              $fi=Get-Item -LiteralPath $session
+              Write-Host ('SESSION_SIZE='+$fi.Length)
+              Write-Host ('SESSION_WRITE='+$fi.LastWriteTime.ToString('o'))
+            }
+          } catch { Write-Host ('SESSION_PROBE_ERROR='+$_.Exception.Message) }
+
+          $root='C:\AI\LTMVH-Recovery'
+          New-Item -ItemType Directory -Force -Path $root | Out-Null
+          $stdout=Join-Path $root 'dcr-direct.stdout.log'
+          $stderr=Join-Path $root 'dcr-direct.stderr.log'
+          Remove-Item $stdout,$stderr -Force -ErrorAction SilentlyContinue
+
+          $env:USERPROFILE=$profile
+          $env:HOME=$profile
+          $env:RUNNER_TRACKING_ID=''
+
+          try {
+            $npx=(Get-Command npx.cmd -ErrorAction Stop).Source
+            Write-Host ('NPX='+$npx)
+            $p=Start-Process -FilePath $npx -ArgumentList @('-y','@wonderwhy-er/desktop-commander@latest','remote') -WindowStyle Hidden -RedirectStandardOutput $stdout -RedirectStandardError $stderr -PassThru
+            Write-Host ('DCR_DIRECT_PID='+$p.Id)
+            Start-Sleep -Seconds 15
+            $alive=-not $p.HasExited
+            Write-Host ('DCR_DIRECT_ALIVE_AFTER_15S='+$alive)
+            if($p.HasExited){Write-Host ('DCR_DIRECT_EXITCODE='+$p.ExitCode)}
+          } catch { Write-Host ('DCR_DIRECT_START_ERROR='+$_.Exception.Message) }
+
+          Write-Host '=== STDOUT ==='
+          if(Test-Path $stdout){Get-Content $stdout -Raw}
+          Write-Host '=== STDERR ==='
+          if(Test-Path $stderr){Get-Content $stderr -Raw}
+          Write-Host '=== MATCHING PROCESSES ==='
+          Get-CimInstance Win32_Process -ErrorAction SilentlyContinue |
+            Where-Object {$_.CommandLine -and $_.CommandLine -match 'desktop-commander|wonderwhy-er'} |
+            Select-Object ProcessId,ParentProcessId,Name,CommandLine | Format-List
