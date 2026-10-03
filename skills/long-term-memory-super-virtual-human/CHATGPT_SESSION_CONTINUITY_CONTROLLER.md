@@ -1,4 +1,4 @@
-# ChatGPT Session Continuity Controller v0.4.4
+# ChatGPT Session Continuity Controller v0.4.5
 
 ## Purpose
 
@@ -89,9 +89,9 @@ The controller records:
 Default policy is intentionally biased toward **earlier rotation for complex work**. Thresholds are tuning parameters and must be calibrated from real T_VALID/failure evidence; they are not treated as universal constants.
 
 
-## v0.4.4 unified page lifecycle
+## v0.4.5 unified clean page lifecycle
 
-v0.4.4 has one production controller only. Historical recovery/page-continuity methods are indexed in `LEGACY_CONTINUITY_INDEX.md` and must not run as a second supervisor.
+v0.4.5 has one production controller only. Historical recovery/page-continuity methods are indexed in `LEGACY_CONTINUITY_INDEX.md` and must not run as a second supervisor. v0.4.5 additionally freezes the clean dedicated-browser lifecycle proven by R18/R19.
 
 Default role thresholds are intentionally preventive tuning values, not universal limits:
 
@@ -102,11 +102,62 @@ EXECUTOR_VISIBLE_TEXT_LIMIT=30000
 EXECUTOR_USER_TURN_LIMIT=3
 POLL_INTERVAL_APPROX_MS=1200
 WAIT_UNTIL_SLOW=NO
+IDLE_CHAT_PAGE_TARGET=1
+IDLE_CHAT_PAGE_KIND=BLANK_NEW_CHAT_ROOT
+CLOSE_FINISHED_EXECUTOR_PAGE=YES
+CLOSE_FINISHED_CEO_PAGE_AFTER_PERSIST=YES
+PREWARM_UNUSED_CHAT_PAGES=NO
+T_STAR_OBSERVED_MS=51454
+T_STAR_REALITY=R18
+T_STAR_CONFIRMATION_R19_MS=54246
 ```
 
 The controller accepts multiple page-failure signals under the same decision path: growth, prior disconnect/stall history, explicit UI failure, missing/unusable composer, response pending with no progress, active-turn hard stall, and service-level failure. The rule is not “always rotate”: when a disconnect or active response still has backend progress, keep observing the original turn. Rotate only when a safe checkpoint exists, or when a replay-safe confirmed stall has been fenced/aborted.
 
 Reality 2026-10-04 R1 proved a forced CEO rotation using the existing authenticated shared-mcp browser: true New chat, one submission, one marker, ACK confirmed, no Branch, no second browser launch, page lease retained.
+
+
+## Clean dedicated-browser lifecycle v0.4.5
+
+The dedicated ChatGPT browser is a runtime resource, not long-term memory. When no task is active, the production target is exactly one blank ChatGPT New chat root page.
+
+```text
+ONE_BLANK_NEW_CHAT_ROOT
+→ reuse as CEO-1
+→ CEO-1 decomposes / defines DONE_WHEN only
+→ create only the minimum required executor pages
+→ persist minimal checkpoint
+→ close old CEO
+→ create a true New chat CEO-2
+→ CEO-2 takes over from checkpoint; never redo accepted child work
+→ collect original executor results
+→ close each executor immediately after its result is durably accepted
+→ final validation + evidence persist
+→ close final CEO
+→ restore exactly ONE_BLANK_NEW_CHAT_ROOT
+```
+
+Hard rules:
+
+```ini
+CLEAN_BASELINE_REQUIRED=YES
+REUSE_BASELINE_AS_CEO1=YES
+EXECUTOR_PAGE_COUNT=MIN_REQUIRED_ONLY
+UNUSED_PAGE_PREWARM=NO
+EXECUTOR_CLOSE_AFTER_ACCEPTED_RESULT=YES
+OLD_CEO_CLOSE_AFTER_CHECKPOINT=YES
+CEO2_SESSION_KIND=TRUE_NEW_CHAT
+BRANCH_AS_CEO2=FORBIDDEN
+FULL_OLD_CONVERSATION_REPLAY=FORBIDDEN
+FINAL_BROWSER_STATE=ONE_BLANK_NEW_CHAT_ROOT
+```
+
+Reality R18: 51,454 ms, all lifecycle assertions PASS, checkpoint length 125 chars, final ChatGPT page count 1.
+Reality R19: 54,246 ms, same contract PASS. Current observed `T*=min(T_VALID)=51,454 ms` from R18.
+
+Rejected as default after Reality comparison: unused executor prewarm, Instant control chain, same physical CEO tab reuse, and deleting the separate takeover-confirmation round. These candidates did not reduce complete T_VALID in this environment; some were materially slower.
+
+`51,454 ms` is the best observed valid result under the frozen contract, not a claim of a universal lower bound. Replace it only with a faster Reality that keeps the same VALID contract.
 
 ## Split-brain prevention
 
@@ -121,7 +172,7 @@ For long tasks, reuse ECC v3.1.1 lease/fencing concepts so only the current leas
 Current status:
 
 ```ini
-SESSION_CONTINUITY_CONTROLLER=V0_4_4_UNIFIED_ROTATION_REALITY_PASS_R1
+SESSION_CONTINUITY_CONTROLLER=V0_4_5_CLEAN_LIFECYCLE_TSTAR_R18_R19
 PROACTIVE_SESSION_ROTATION=REALITY_PASS_FORCE_ROTATE_R1
 TRUE_NEW_CHAT_ONLY=YES
 BRANCH_RECOVERY=FORBIDDEN
