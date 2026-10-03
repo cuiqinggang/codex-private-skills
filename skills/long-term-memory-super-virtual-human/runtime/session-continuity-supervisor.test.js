@@ -1,5 +1,5 @@
 const assert=require('assert');const {decide}=require('./session-continuity-supervisor');
-const b={safeCheckpoint:true,proactiveRotation:false,gptServiceAvailable:true,pageHealthy:true,transportDisconnected:false,backendActivityObserved:false,finalAnswerObserved:false,readOnlyProbeDone:false,hardDeadlineExceeded:false,turnActive:false,freshChatAvailable:true,freshSessionKind:'NEW_CHAT',fenceToken:4,writeOwner:'PRIMARY',primaryRecovered:false,humanVerificationRequired:false,primaryPathBlocked:false,alternateValidPathAvailable:false};
+const b={safeCheckpoint:true,proactiveRotation:false,gptServiceAvailable:true,pageHealthy:true,uiFailure:false,transportDisconnected:false,backendActivityObserved:false,finalAnswerObserved:false,readOnlyProbeDone:false,hardDeadlineExceeded:false,turnActive:false,responsePending:false,pageUnresponsive:false,replaySafe:true,freshChatAvailable:true,freshSessionKind:'NEW_CHAT',fenceToken:4,writeOwner:'PRIMARY',primaryRecovered:false,humanVerificationRequired:false,primaryPathBlocked:false,alternateValidPathAvailable:false};
 assert.equal(decide(b).action,'CONTINUE');
 assert.equal(decide({...b,humanVerificationRequired:true}).action,'PAUSE_FOR_HUMAN_VERIFICATION');
 assert.equal(decide({...b,transportDisconnected:true,backendActivityObserved:true}).action,'WAIT_BACKEND_COMPLETION');
@@ -8,6 +8,9 @@ assert.equal(decide({...b,transportDisconnected:true}).action,'PROBE_PAGE');
 assert.equal(decide({...b,transportDisconnected:true,readOnlyProbeDone:true}).action,'WAIT_WITH_PROBE');
 assert.equal(decide({...b,transportDisconnected:true,readOnlyProbeDone:true,hardDeadlineExceeded:true}).action,'ROTATE_TO_NEW_CHAT');
 assert.equal(decide({...b,pageHealthy:false}).action,'PROBE_PAGE');
+assert.equal(decide({...b,pageHealthy:false,readOnlyProbeDone:true}).action,'ROTATE_TO_NEW_CHAT');
+assert.equal(decide({...b,uiFailure:true}).action,'PROBE_PAGE');
+assert.equal(decide({...b,uiFailure:true,readOnlyProbeDone:true}).action,'ROTATE_TO_NEW_CHAT');
 let x=decide({...b,gptServiceAvailable:false});assert.equal(x.action,'FAILOVER_BACKUP');assert.equal(x.nextFenceToken,5);
 assert.equal(decide({...b,proactiveRotation:true,safeCheckpoint:false}).action,'WAIT_SAFE_CHECKPOINT');
 assert.equal(decide({...b,proactiveRotation:true}).action,'ROTATE_TO_NEW_CHAT');
@@ -19,4 +22,7 @@ assert.equal(decide({...b,primaryPathBlocked:true,alternateValidPathAvailable:tr
 assert.equal(decide({...b,primaryPathBlocked:true,alternateValidPathAvailable:false}).action,'CONTINUE');
 assert.equal(decide({...b,turnActive:true,hardDeadlineExceeded:true}).action,'PROBE_PAGE');
 assert.equal(decide({...b,turnActive:true,hardDeadlineExceeded:true,readOnlyProbeDone:true}).action,'ABORT_STALLED_TURN');
-console.log('SESSION_CONTINUITY_TESTS=19 PASS / 0 FAIL');
+assert.equal(decide({...b,responsePending:true,pageUnresponsive:true,hardDeadlineExceeded:true}).action,'PROBE_PAGE');
+assert.equal(decide({...b,responsePending:true,pageUnresponsive:true,hardDeadlineExceeded:true,readOnlyProbeDone:true}).action,'ROTATE_TO_NEW_CHAT');
+assert.equal(decide({...b,responsePending:true,pageUnresponsive:true,hardDeadlineExceeded:true,readOnlyProbeDone:true,replaySafe:false,safeCheckpoint:false}).action,'WAIT_SAFE_CHECKPOINT');
+console.log('SESSION_CONTINUITY_TESTS=25 PASS / 0 FAIL');
