@@ -1,0 +1,36 @@
+name: LTMVH DCR Cross-Recovery Reality
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ltmvh-dcr-cross-recovery-reality.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recover-dcr:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 5
+    steps:
+      - name: Request DCR revival through user-session watchdog
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $root='C:\AI\LTMVH-Recovery'
+          $req=Join-Path $root 'requests'
+          $ack=Join-Path $root 'acks'
+          New-Item -ItemType Directory -Force -Path $req,$ack | Out-Null
+          $ackFile=Join-Path $ack 'revive-dcr.ack.json'
+          Remove-Item $ackFile -Force -ErrorAction SilentlyContinue
+          '{"request":"revive-dcr","source":"github-runner","reality":"R19"}' | Set-Content -LiteralPath (Join-Path $req 'revive-dcr.flag') -Encoding UTF8
+          $deadline=(Get-Date).AddSeconds(90)
+          while((Get-Date) -lt $deadline -and -not (Test-Path $ackFile)){ Start-Sleep -Seconds 2 }
+          if(-not (Test-Path $ackFile)){ throw 'DCR_REVIVE_ACK_TIMEOUT' }
+          $raw=Get-Content $ackFile -Raw
+          Write-Host $raw
+          $obj=$raw | ConvertFrom-Json
+          if(-not $obj.startAttempted){ throw 'DCR_START_NOT_ATTEMPTED' }
+          Write-Host 'DCR_CROSS_RECOVERY_REQUEST_ACK=PASS'
