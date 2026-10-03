@@ -9,42 +9,39 @@ permissions:
 jobs:
   recover-dcr:
     runs-on: [self-hosted, Windows, X64]
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
-      - name: Final root-cause probes
+      - name: Bootstrap fresh DCR identity and capture pairing flow
         shell: pwsh
         run: |
-          $ErrorActionPreference='Continue'
-          Write-Host '=== VERSION ==='
-          node --version
-          npm view '@wonderwhy-er/desktop-commander' version
-          Write-Host '=== CDP ==='
+          $ErrorActionPreference='Stop'
+          $root='C:\AI\DCR-PathA-v2'
+          $home=Join-Path $root 'home'
+          $log=Join-Path $root 'remote-bootstrap.log'
+          $err=Join-Path $root 'remote-bootstrap.err.log'
+          New-Item -ItemType Directory -Force -Path $home | Out-Null
+          Remove-Item $log,$err -Force -ErrorAction SilentlyContinue
+
+          $env:HOME=$home
+          $env:USERPROFILE=$home
+          $env:RUNNER_TRACKING_ID=''
+          $npx=(Get-Command npx.cmd -ErrorAction Stop).Source
+
+          Write-Host ('FRESH_HOME='+$home)
+          Write-Host ('DCR_VERSION='+(npm view '@wonderwhy-er/desktop-commander' version))
+          $p=Start-Process -FilePath $npx -ArgumentList @('-y','@wonderwhy-er/desktop-commander@latest','remote') -WindowStyle Hidden -RedirectStandardOutput $log -RedirectStandardError $err -PassThru
+          Write-Host ('BOOTSTRAP_PID='+$p.Id)
+          Start-Sleep -Seconds 25
+          Write-Host ('BOOTSTRAP_ALIVE='+(-not $p.HasExited))
+          if($p.HasExited){Write-Host ('BOOTSTRAP_EXIT='+$p.ExitCode)}
+          Write-Host '=== BOOTSTRAP STDOUT ==='
+          if(Test-Path $log){Get-Content -LiteralPath $log -Raw}
+          Write-Host '=== BOOTSTRAP STDERR ==='
+          if(Test-Path $err){Get-Content -LiteralPath $err -Raw}
+          Write-Host '=== FRESH HOME TREE ==='
+          Get-ChildItem $home -Force -Recurse -ErrorAction SilentlyContinue |
+            Select-Object FullName,Length,LastWriteTime | Format-Table -AutoSize
+          Write-Host '=== CDP TARGETS ==='
           try {
-            $r=Invoke-WebRequest -UseBasicParsing -TimeoutSec 2 'http://127.0.0.1:9223/json/version'
-            Write-Host ('CDP_9223=PASS status='+$r.StatusCode)
-            Write-Host $r.Content
-          } catch { Write-Host ('CDP_9223=FAIL '+$_.Exception.Message) }
-          Write-Host '=== SESSION1 PROCESS TIMES ==='
-          foreach($id in @(16628,4444,236,20848,21444,8988,16764)){
-            try {
-              $p=Get-Process -Id $id -ErrorAction Stop
-              Write-Host ("PID={0} NAME={1} SESSION={2} START={3:o}" -f $p.Id,$p.ProcessName,$p.SessionId,$p.StartTime)
-            } catch { Write-Host ("PID={0} NOT_FOUND_OR_DENIED" -f $id) }
-          }
-          Write-Host '=== TCP BY CANDIDATE PIDS ==='
-          foreach($id in @(236,21444,8988,12844,14716,5072)){
-            try {
-              Get-NetTCPConnection -OwningProcess $id -ErrorAction Stop |
-                Select-Object OwningProcess,State,LocalAddress,LocalPort,RemoteAddress,RemotePort | Format-Table -AutoSize
-            } catch {}
-          }
-          Write-Host '=== NPM CACHE ACCESS ==='
-          try {
-            Get-ChildItem 'C:\Users\A\AppData\Local\npm-cache\_npx' -Directory -ErrorAction Stop |
-              Sort-Object LastWriteTime -Descending | Select-Object -First 8 Name,LastWriteTime | Format-Table -AutoSize
-          } catch { Write-Host ('NPM_CACHE_ACCESS=FAIL '+$_.Exception.Message) }
-          Write-Host '=== DCR ENDPOINT ==='
-          try {
-            $r=Invoke-WebRequest -UseBasicParsing -TimeoutSec 5 'https://mcp.desktopcommander.app/api/mcp-info'
-            Write-Host ('MCP_INFO=PASS status='+$r.StatusCode)
-          } catch { Write-Host ('MCP_INFO=FAIL '+$_.Exception.Message) }
+            (Invoke-WebRequest -UseBasicParsing -TimeoutSec 3 'http://127.0.0.1:9223/json').Content
+          } catch { Write-Host ('CDP_TARGETS_FAIL='+$_.Exception.Message) }
