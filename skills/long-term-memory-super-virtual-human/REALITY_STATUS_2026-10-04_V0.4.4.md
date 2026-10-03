@@ -1,0 +1,98 @@
+# 长期记忆超级虚拟人 v0.4.4｜状态固化 2026-10-04
+
+```ini
+VERSION=0.4.4
+STATUS=VIRTUAL_MATURE_CONTINUITY_RUNTIME_ACTIVE
+VIRTUAL_MATURE=YES
+FINAL_VALID=NO
+
+SINGLE_PRODUCTION_CONTINUITY_PATH=YES
+LEGACY_PARALLEL_SUPERVISOR=NO
+TRUE_NEW_CHAT_ONLY=YES
+BRANCH_RECOVERY=FORBIDDEN
+EXACTLY_ONCE_CONTINUATION=REQUIRED
+KEEP_EXISTING_BROWSER=YES
+SECOND_BROWSER_LAUNCH_WHEN_EXISTING=FORBIDDEN
+
+CEO_VISIBLE_TEXT_LIMIT_DEFAULT=40000
+CEO_USER_TURN_LIMIT_DEFAULT=10
+EXECUTOR_VISIBLE_TEXT_LIMIT_DEFAULT=30000
+EXECUTOR_USER_TURN_LIMIT_DEFAULT=3
+POLL_INTERVAL_APPROX_MS=1200
+
+SESSION_CONTINUITY_TESTS=25_PASS_0_FAIL
+PROACTIVE_ROTATION_REALITY=PASS_LTMVH-CEO-ROTATE-REALITY-20261004-R1
+NATURAL_STALL_DETECTION_FULL_E2E=PASS_BY_SAFE_FAULT_INJECTION_R10
+MODEL_EFFORT_FULL_E2E=PASS_R14
+SINGLE_BROWSER_LOOP_GUARD=PASS_R15
+FINAL_VALID=NO
+```
+
+## v0.4.4 的正式变化
+
+页面生命周期不再由“压缩几次再换页”或多套 supervisor 分别管理，而统一进入一套外部连续性控制链：
+
+```text
+页面增长 / 阶段结束 / 历史断连 / UI异常 / 无进展 / 活跃turn卡死
+→ 统一观察与只读 probe
+→ 若后台仍推进：继续等待原结果
+→ 若确认停滞或到预防阈值且存在安全 checkpoint
+→ 必要时停止旧 turn
+→ checkpoint
+→ 真正 New chat
+→ 最小 handoff
+→ exactly-once
+→ ACK
+→ 新会话接管
+```
+
+同页总结只用于形成可接续状态，不被视为真正释放上下文。
+
+## 2026-10-04 Reality R1
+
+`LTMVH-CEO-ROTATE-REALITY-20261004-R1`：
+
+```ini
+TRUE_NEW_CHAT=PASS
+SUBMISSION_COUNT=1
+MARKER_COUNT=1
+ACK_CONFIRMED=YES
+BRANCH_USED=NO
+NEW_BROWSER_LAUNCHED=NO
+PAGE_LEASE_RETAINED=YES
+```
+
+该 Reality 证明：使用现有已登录 shared-mcp 专用浏览器，可以在不启动第二浏览器、不使用 Branch 的条件下完成真正 New chat + 最小 handoff + ACK。
+
+## 旧方案退役
+
+旧本机方案：
+
+`C:\AI\LTMVH-Reality\chatgpt-continuity-v1\`
+
+历史特征包括：
+- 5 秒轮询；
+- preventiveVisibleChars=140000；
+- preventiveMessageCount=80；
+- generationStallMs=600000；
+- 独立 `continuity-supervisor.cjs`；
+- 历史状态曾进入 `SUPERVISOR_FATAL`。
+
+处理原则：
+
+```ini
+DELETE_HISTORY=NO
+RUN_IN_PARALLEL=NO
+USE_AS_PRODUCTION_ENTRY=NO
+KEEP_FOR_EVIDENCE_AND_FALLBACK_REFERENCE=YES
+```
+
+历史索引：`LEGACY_CONTINUITY_INDEX.md`。
+
+## 当前仍未完成
+
+1. Desktop Commander 真正注销/重登后的自动恢复 Reality；
+2. 至少一组真实有价值长任务从开始到 FINAL_VALID；
+3. 独立备脑完成真实业务 DONE_WHEN。
+
+因此 v0.4.4 是连续性与运行层升级，不代表整个 LTMVH v1.0 已 FINAL_VALID。
