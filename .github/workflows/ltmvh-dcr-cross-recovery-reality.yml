@@ -16,18 +16,18 @@ jobs:
         run: |
           $ErrorActionPreference='Stop'
           $root='C:\AI\DCR-PathA-v2'
-          $home=Join-Path $root 'home'
+          $freshHome=Join-Path $root 'home'
           $log=Join-Path $root 'remote-bootstrap.log'
           $err=Join-Path $root 'remote-bootstrap.err.log'
-          New-Item -ItemType Directory -Force -Path $home | Out-Null
+          New-Item -ItemType Directory -Force -Path $freshHome | Out-Null
           Remove-Item $log,$err -Force -ErrorAction SilentlyContinue
 
-          $env:HOME=$home
-          $env:USERPROFILE=$home
+          $env:HOME=$freshHome
+          $env:USERPROFILE=$freshHome
           $env:RUNNER_TRACKING_ID=''
           $npx=(Get-Command npx.cmd -ErrorAction Stop).Source
 
-          Write-Host ('FRESH_HOME='+$home)
+          Write-Host ('FRESH_HOME='+$freshHome)
           Write-Host ('DCR_VERSION='+(npm view '@wonderwhy-er/desktop-commander' version))
           $p=Start-Process -FilePath $npx -ArgumentList @('-y','@wonderwhy-er/desktop-commander@latest','remote') -WindowStyle Hidden -RedirectStandardOutput $log -RedirectStandardError $err -PassThru
           Write-Host ('BOOTSTRAP_PID='+$p.Id)
@@ -39,7 +39,7 @@ jobs:
           Write-Host '=== BOOTSTRAP STDERR ==='
           if(Test-Path $err){Get-Content -LiteralPath $err -Raw}
           Write-Host '=== FRESH HOME TREE ==='
-          Get-ChildItem $home -Force -Recurse -ErrorAction SilentlyContinue |
+          Get-ChildItem $freshHome -Force -Recurse -ErrorAction SilentlyContinue |
             Select-Object FullName,Length,LastWriteTime | Format-Table -AutoSize
           Write-Host '=== CDP TARGETS ==='
           try {
