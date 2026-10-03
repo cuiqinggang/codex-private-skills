@@ -1,0 +1,26 @@
+name: LTMVH Cancel Stuck Self-Hosted Runs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ltmvh-cancel-stuck.yml'
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  cancel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel stuck self-hosted recovery runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -e
+          for RUN in 37117171534 37117355240; do
+            curl -sS -L -X POST               -H "Authorization: Bearer $GH_TOKEN"               -H "Accept: application/vnd.github+json"               "https://api.github.com/repos/$REPO/actions/runs/$RUN/cancel" || true
+          done
+          echo "CANCEL_REQUESTS_SENT"
