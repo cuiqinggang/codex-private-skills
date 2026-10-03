@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.0",
+  "gate_id": "LTMVH-V044-GATE-A-20261004",
+  "gate_name": "REAL_VALUABLE_LONG_TASK_FINAL_VALID",
+  "scope": "LTMVH v0.4.4 production continuity chain stability governance and acceptance",
+  "task_contract": {
+    "authority_repo": "cuiqinggang/codex-private-skills",
+    "authority_branch": "main",
+    "skill_version": "0.4.4",
+    "requirements": [
+      "GitHub main / Windows current runtime / Startup consistent on v0.4.4 single production chain",
+      "legacy chatgpt-continuity-v1 not running in production",
+      "current runtime online with single-browser constraint preserved",
+      "deterministic continuity regression passes",
+      "at least one live runtime check/operation completed",
+      "machine-readable evidence written to authoritative repository and read back"
+    ],
+    "safety_boundaries": [
+      "do not close existing shared-mcp browser",
+      "do not launch a second browser",
+      "do not modify FlClash or Windows proxy",
+      "do not use ChatGPT Branch"
+    ]
+  },
+  "timing": {
+    "task_accepted": "2026-10-04T00:52:00+08:00",
+    "reality_execution_end": "2026-10-04T00:58:23.1839968+08:00"
+  },
+  "source_of_truth_before_gate": {
+    "github_main_sha": "ff1650c2e2956ef59886101e33ea85c8b826a632"
+  },
+  "windows_target": {
+    "device_name": "DESKTOP-4A1EGTM",
+    "device_id": "503e66bf-4f80-49fc-a90f-020ec8c71b1e",
+    "deployment_root": "C:\\AI\\ltmvh-v03-test",
+    "startup_folder": "C:\\Users\\A\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup",
+    "runtime_pid": 19860,
+    "browser_root_pid": 8776,
+    "watchdog_pid": 14716,
+    "cdp_endpoint": "http://127.0.0.1:9223",
+    "shared_profile": "C:\\AI\\Playwright-Native-AI-Browser\\profile\\shared-mcp"
+  },
+  "discrepancies_found_and_repaired": [
+    {
+      "item": "local SKILL.md",
+      "before_blob": "c63152da26a2f30b2e5cd0874ceb115d4cf2de3c",
+      "authoritative_main_blob": "ebf50ad97a5b07c6263991aa8e18c0d85d429ccd",
+      "repair": "replaced local deployment copy with exact GitHub main content",
+      "after_blob": "ebf50ad97a5b07c6263991aa8e18c0d85d429ccd",
+      "status": "FIXED"
+    },
+    {
+      "item": "local CHATGPT_SESSION_CONTINUITY_CONTROLLER.md",
+      "before_blob": "f9a265e40c08d95a0c4674069cc58de7d30d47f7",
+      "authoritative_main_blob": "1796ba9f8fce8e1cbb73dc563d1935cb706dbab0",
+      "repair": "replaced local deployment copy with exact GitHub main content",
+      "after_blob": "1796ba9f8fce8e1cbb73dc563d1935cb706dbab0",
+      "status": "FIXED"
+    },
+    {
+      "item": "local LEGACY_CONTINUITY_INDEX.md",
+      "before": "MISSING",
+      "authoritative_main_blob": "34a9c655a915e21a28d5be2d5fc58134b7df9ac0",
+      "repair": "deployed exact GitHub main file",
+      "after_blob": "34a9c655a915e21a28d5be2d5fc58134b7df9ac0",
+      "status": "FIXED"
+    }
+  ],
+  "main_to_windows_hash_attestation": {
+    "skills/long-term-memory-super-virtual-human/SKILL.md": "ebf50ad97a5b07c6263991aa8e18c0d85d429ccd",
+    "skills/long-term-memory-super-virtual-human/CHATGPT_SESSION_CONTINUITY_CONTROLLER.md": "1796ba9f8fce8e1cbb73dc563d1935cb706dbab0",
+    "skills/long-term-memory-super-virtual-human/LEGACY_CONTINUITY_INDEX.md": "34a9c655a915e21a28d5be2d5fc58134b7df9ac0",
+    "skills/long-term-memory-super-virtual-human/runtime/session-continuity-supervisor.js": "91104c0f416c762acb40b2ba175d8fad8a2361c5",
+    "skills/long-term-memory-super-virtual-human/runtime/session-continuity-supervisor.test.js": "c1f4c7cea3abc402f591134fa074af6e583ce449",
+    "skills/long-term-memory-super-virtual-human/runtime/chatgpt-continuity-runtime.js": "d8c0395e3ca14396362b40e723a8a167eea399ed",
+    "skills/long-term-memory-super-virtual-human/runtime/chatgpt-existing-cdp.js": "38677fcf3d07575a0b57ad9541bf01f89e515f7f",
+    "skills/long-term-memory-super-virtual-human/runtime/chatgpt-persistent-browser-watchdog.js": "5844e6d5e7e645431c0903c2adae757a44d7e32d",
+    "skills/long-term-memory-super-virtual-human/runtime/ChatGPT-Continuity-AttachOnly.cmd": "fb777a6ff987a6a7a9b27f44e3bbbd5fc8b6d369",
+    "workspaces/long-term-memory-super-virtual-human-v1.0/SUMMARY.md_before_gate_update": "da1cc5c3078dfbb11ad34298487986c3ccdd13a8",
+    "workspaces/long-term-memory-super-virtual-human-v1.0/README.md": "385b2b9ee32a83217bb58024bf803bf31085e673"
+  },
+  "startup_validation": {
+    "active_entry": "ChatGPT-Continuity.cmd",
+    "matches_repo_attach_only_bytes": true,
+    "runtime_args": {
+      "never_launch": true,
+      "no_auto_new_page": true,
+      "cdp_endpoint": "http://127.0.0.1:9223",
+      "profile": "shared-mcp"
+    },
+    "active_startup_old_chatgpt_continuity_v1_reference_count": 0
+  },
+  "live_runtime_validation": {
+    "runtime_process_count": 1,
+    "legacy_process_count": 0,
+    "persistent_browser_watchdog_count": 1,
+    "shared_mcp_browser_root_count": 1,
+    "lease_state_version": "0.4.4",
+    "page_lease": true,
+    "browser_must_stay_open": true,
+    "heartbeat_1": "2026-10-03T16:57:40.670Z",
+    "heartbeat_2": "2026-10-03T16:57:42.806Z",
+    "heartbeat_advanced": true,
+    "cdp_ok": true,
+    "cdp_browser": "Chrome/151.0.7922.34",
+    "browser_closed_by_gate": false,
+    "second_browser_launched_by_gate": false,
+    "proxy_modified_by_gate": false
+  },
+  "thresholds_verified_from_running_code": {
+    "ceo_visible_text_limit_default": 40000,
+    "ceo_user_turn_limit_default": 10,
+    "executor_visible_text_limit_default": 30000,
+    "executor_user_turn_limit_default": 3
+  },
+  "regression": {
+    "command": "node runtime/session-continuity-supervisor.test.js",
+    "result": "SESSION_CONTINUITY_TESTS=25 PASS / 0 FAIL",
+    "exit_code": 0,
+    "node_syntax_checks": {
+      "session-continuity-supervisor.js": 0,
+      "chatgpt-continuity-runtime.js": 0,
+      "chatgpt-existing-cdp.js": 0,
+      "chatgpt-persistent-browser-watchdog.js": 0
+    }
+  },
+  "done_when": {
+    "github_main_windows_runtime_startup_consistent_v044": "PASS",
+    "legacy_chatgpt_continuity_v1_not_running": "PASS",
+    "runtime_online_single_browser_preserved": "PASS",
+    "deterministic_continuity_regression": "PASS_25_0",
+    "live_runtime_check_completed": "PASS",
+    "evidence_written_and_readback_required": "PENDING_WRITE_READBACK"
+  },
+  "deployment_metadata_note": {
+    "local_checkout_state_observed": "detached HEAD at f513babec4dbd5c08508125e70bd21d296cf6888 with diagnostic working-tree files",
+    "authority": "GitHub main",
+    "production_relevance": "non-blocking because every production file and startup entry used by this Gate was independently hash-attested to GitHub main after repair"
+  },
+  "gate_result": {
+    "FINAL_VALID": "YES",
+    "applies_to": "Gate A only",
+    "entire_ltmvh_v1_final_valid": "NO"
+  }
+}
