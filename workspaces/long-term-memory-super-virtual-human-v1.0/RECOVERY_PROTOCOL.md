@@ -1,3 +1,5 @@
+> **2026-10-04 状态说明：** 本文件保留为历史/系统级恢复协议。ChatGPT 页面生命周期（预防换页、卡死、断连、true New chat、exactly-once）当前唯一生产入口为 `skills/long-term-memory-super-virtual-human/CHATGPT_SESSION_CONTINUITY_CONTROLLER.md` v0.4.4。旧页面换页规则不得作为第二套 supervisor 并行运行；历史索引见 `LEGACY_CONTINUITY_INDEX.md`。
+
 # 长期记忆超级虚拟人｜恢复协议 v1.0
 
 ## 目标
