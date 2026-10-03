@@ -13,25 +13,30 @@ permissions:
 jobs:
   recover:
     runs-on: [self-hosted, Windows, X64]
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
-      - name: Revive DCR and write local evidence without checkout
+      - name: Revive DCR without checkout or WMI
         shell: pwsh
         run: |
           $ErrorActionPreference='Continue'
           $root='C:\AI\LTMVH-Recovery'
           New-Item -ItemType Directory -Force -Path $root | Out-Null
           $dcrScript='C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommanderRemote.ps1'
-          $before=@(Get-CimInstance Win32_Process | Where-Object {$_.CommandLine -match 'desktop-commander.*remote|Start-DesktopCommanderRemote'}).Count
-          if($before -eq 0 -and (Test-Path $dcrScript)){
+          $dcrLog='C:\Users\A\AppData\Local\DesktopCommanderRemote\remote.log'
+          $beforeLog=if(Test-Path $dcrLog){(Get-Item $dcrLog).LastWriteTimeUtc}else{$null}
+          $attempted=$false
+          if(Test-Path $dcrScript){
+            $attempted=$true
             Start-Process powershell.exe -WindowStyle Hidden -ArgumentList '-NoProfile','-ExecutionPolicy','Bypass','-File',$dcrScript
-            Start-Sleep -Seconds 10
           }
-          $after=@(Get-CimInstance Win32_Process | Where-Object {$_.CommandLine -match 'desktop-commander.*remote|Start-DesktopCommanderRemote'}).Count
-          $runner=@(Get-CimInstance Win32_Process | Where-Object {$_.Name -match 'RunnerService|Runner.Listener'}).Count
-          $browser=@(Get-CimInstance Win32_Process | Where-Object {$_.Name -eq 'chrome.exe' -and $_.ExecutablePath -like '*ms-playwright*'}).Count
-          $port=@(Get-NetTCPConnection -LocalPort 9223 -State Listen -ErrorAction SilentlyContinue).Count
-          $obj=[ordered]@{schemaVersion=1;evidenceId='LTMVH-CROSS-RECOVERY-R18';at=(Get-Date).ToString('o');machine=$env:COMPUTERNAME;runnerName=$env:RUNNER_NAME;checkoutUsed=$false;dcrBefore=$before;dcrAfter=$after;runnerProcesses=$runner;dedicatedBrowserProcesses=$browser;cdp9223ListenCount=$port;status=if($after -gt 0){'PASS'}else{'DCR_NOT_RECOVERED'}}
+          Start-Sleep -Seconds 12
+          $afterLog=if(Test-Path $dcrLog){(Get-Item $dcrLog).LastWriteTimeUtc}else{$null}
+          $runnerService=@(Get-Process -Name RunnerService -ErrorAction SilentlyContinue).Count
+          $runnerListener=@(Get-Process -Name Runner.Listener -ErrorAction SilentlyContinue).Count
+          $chrome=@(Get-Process -Name chrome -ErrorAction SilentlyContinue | Where-Object {$_.Path -like '*ms-playwright*'}).Count
+          $logTail=if(Test-Path $dcrLog){(Get-Content $dcrLog -Tail 30 -ErrorAction SilentlyContinue) -join [Environment]::NewLine}else{''}
+          $onlineEvidence=($logTail -match 'Device marked as online|Status:\s*Online|Desktop Commander Remote is connected')
+          $obj=[ordered]@{schemaVersion=1;evidenceId='LTMVH-CROSS-RECOVERY-R18B';at=(Get-Date).ToString('o');machine=$env:COMPUTERNAME;runnerName=$env:RUNNER_NAME;checkoutUsed=$false;wmiUsed=$false;dcrStartScriptExists=(Test-Path $dcrScript);dcrStartAttempted=$attempted;dcrLogBefore=$beforeLog;dcrLogAfter=$afterLog;dcrOnlineEvidence=$onlineEvidence;runnerServiceCount=$runnerService;runnerListenerCount=$runnerListener;dedicatedChromeProcessCount=$chrome;status=if($onlineEvidence){'PASS'}else{'DCR_RECOVERY_UNCONFIRMED'}}
           $json=$obj | ConvertTo-Json -Depth 4
-          $json | Set-Content -LiteralPath (Join-Path $root 'CROSS-RECOVERY-R18.json') -Encoding UTF8
+          $json | Set-Content -LiteralPath (Join-Path $root 'CROSS-RECOVERY-R18B.json') -Encoding UTF8
           $json | Write-Host
