@@ -11,34 +11,27 @@ jobs:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 5
     steps:
-      - name: Inventory user-context execution entries
+      - name: Inspect interactive session and task events
         shell: pwsh
         run: |
           $ErrorActionPreference='Continue'
-          Write-Host '=== TASKS WITH RELEVANT ACTIONS ==='
-          foreach($t in Get-ScheduledTask){
-            foreach($a in @($t.Actions)){
-              $s=(($a.Execute+' '+$a.Arguments+' '+$a.WorkingDirectory) -as [string])
-              if($s -match 'C:\\AI|LTMVH|Recovery|DesktopCommander|desktop-commander|Start-Desktop'){
-                [pscustomobject]@{
-                  TaskName=$t.TaskName; TaskPath=$t.TaskPath; State=$t.State
-                  UserId=$t.Principal.UserId; LogonType=$t.Principal.LogonType; RunLevel=$t.Principal.RunLevel
-                  Execute=$a.Execute; Arguments=$a.Arguments; WorkingDirectory=$a.WorkingDirectory
-                } | Format-List
-              }
-            }
-          }
-          Write-Host '=== RUN KEYS ==='
-          $keys=@(
-            'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run',
-            'HKLM:\Software\Microsoft\Windows\CurrentVersion\Run',
-            'HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Run'
-          )
-          foreach($k in $keys){ if(Test-Path $k){ Write-Host $k; Get-ItemProperty $k | Format-List * } }
-          Write-Host '=== SERVICES RELEVANT ==='
-          Get-CimInstance Win32_Service | Where-Object {
-            $_.PathName -match 'C:\\AI|DesktopCommander|Recovery|LTMVH' -or $_.Name -match 'Desktop|LTMVH|Recovery'
-          } | Select-Object Name,StartName,State,StartMode,PathName | Format-List
-          Write-Host '=== USER WATCHDOG PROCESS ==='
-          Get-CimInstance Win32_Process | Where-Object {$_.CommandLine -match 'Recovery-Request-Watchdog'} |
-            Select-Object ProcessId,ParentProcessId,SessionId,Name,ExecutablePath,CommandLine | Format-List
+          Write-Host '=== QUSER ==='
+          quser
+          Write-Host '=== LOGON SESSIONS ==='
+          Get-CimInstance Win32_LogonSession | Where-Object {$_.LogonType -in 2,10,11} |
+            Select-Object LogonId,LogonType,StartTime | Format-Table -AutoSize
+          Write-Host '=== EXPLORER USERS ==='
+          Get-CimInstance Win32_Process -Filter "Name='explorer.exe'" | ForEach-Object {
+            $o=$_.GetOwner()
+            [pscustomobject]@{PID=$_.ProcessId;SessionId=$_.SessionId;Domain=$o.Domain;User=$o.User}
+          } | Format-Table -AutoSize
+          Write-Host '=== TASK INFO ==='
+          Get-ScheduledTaskInfo -TaskName 'GPT-DesktopCommander-Remote-Autostart' | Format-List *
+          Write-Host '=== TASK SCHEDULER EVENTS ==='
+          Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-TaskScheduler/Operational';StartTime=(Get-Date).AddHours(-3)} -ErrorAction SilentlyContinue |
+            Where-Object {$_.Message -match 'GPT-DesktopCommander-Remote-Autostart'} |
+            Select-Object -First 30 TimeCreated,Id,LevelDisplayName,Message | Format-List
+          Write-Host '=== POWERSHELL EVENTS ==='
+          Get-WinEvent -FilterHashtable @{LogName='Windows PowerShell';StartTime=(Get-Date).AddHours(-3)} -ErrorAction SilentlyContinue |
+            Where-Object {$_.Message -match 'Start-DesktopCommanderRemote|DesktopCommanderRemote'} |
+            Select-Object -First 30 TimeCreated,Id,LevelDisplayName,Message | Format-List
