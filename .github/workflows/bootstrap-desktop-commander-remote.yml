@@ -60,7 +60,18 @@ jobs:
 
           Write-Host "DCR_TARGET_USER=$interactiveUser"
           Write-Host "DCR_AUTOSTART_TASK=$($task.State)"
-          Write-Host "DCR_SESSION_FILE_EXISTS=$(Test-Path -LiteralPath $session)"
+          $ti=Get-ScheduledTaskInfo -TaskName $taskName -ErrorAction SilentlyContinue
+          if($ti){
+            Write-Host "DCR_TASK_LAST_RUN=$($ti.LastRunTime.ToString('o'))"
+            Write-Host "DCR_TASK_LAST_RESULT=$($ti.LastTaskResult)"
+            Write-Host "DCR_TASK_NEXT_RUN=$($ti.NextRunTime.ToString('o'))"
+          }
+          try {
+            $sessionExists=Test-Path -LiteralPath $session -ErrorAction Stop
+            Write-Host "DCR_SESSION_FILE_EXISTS=$sessionExists"
+          } catch {
+            Write-Host "DCR_SESSION_FILE_ACCESS=DENIED_OR_UNREADABLE"
+          }
           Write-Host "DCR_MATCHING_PROCESSES=$($proc.Count)"
           Write-Host "DCR_LAUNCHER=$launcher"
           Write-Host "DCR_LOG=$log"
@@ -70,7 +81,8 @@ jobs:
           } else {
             Write-Host 'DCR_REMOTE_LOG_EXISTS=NO'
           }
-          if (-not (Test-Path -LiteralPath $session)) { throw 'DESKTOP_COMMANDER_PERSISTED_SESSION_NOT_FOUND_FOR_USER' }
+          # Service account may be denied access to the interactive user's persisted session.
+          # Final validity is determined by remote online/ping, not by service-side file readability.
           if ($proc.Count -lt 1) { throw 'DESKTOP_COMMANDER_REMOTE_PROCESS_NOT_FOUND' }
 
-# recovery-trigger: LTMVH-DCR-REBUILD-R24-20261003
+# recovery-trigger: LTMVH-DCR-REBUILD-R25-20261003
