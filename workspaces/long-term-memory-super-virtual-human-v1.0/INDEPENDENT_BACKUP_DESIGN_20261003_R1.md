@@ -147,3 +147,25 @@ T*=min(T_VALID)，质量、正确性、权限和证据决定 VALID 集合。
 - OpenClaw/DeepSeek：https://docs.openclaw.ai/providers/deepseek
 - OpenClaw 记忆配置：https://docs.openclaw.ai/reference/memory-config
 注意：OpenClaw 文档明确记忆检索默认嵌入 provider 为 openai，需显式选择非 OpenAI 路线。官方功能存在不等于本机组合已验收。
+
+## 用户纠正后的正式方向（2026-10-03 R2，覆盖 R1 的路线选择及测试顺序）
+
+用户明确：目标是一套日常即可独立运行、不使用 GPT/Codex 的完整成熟自动化流程，作为 v0.4.3 的额外强备份；不是先做 GPT/Codex 不可用模拟，再搭备脑。
+
+判断：保留“独立强备份”的现实目标，撤销“默认新建另一套编排/恢复系统”的建设预设。先找完整成熟产品并直接采用其原生记忆、工具、调度、恢复与模型后备；仅做必要配置、现有任务合同/状态接入和真实业务验收。
+
+候选筛选改为完整产品优先：Hermes Agent、OpenClaw 等 + 非 GPT 模型。Reasonix/OpenCode 仅在成品确有工程执行缺口时按需接入；n8n/LangGraph 作为调度/框架能力，不能仅凭组件成熟就宣称完整个人助理等价。
+
+官方资料核验：
+- Hermes 原生持续记忆、技能和定时自动化：https://hermes-agent.nousresearch.com/docs/
+- Hermes 模型后备：https://hermes-agent.nousresearch.com/docs/user-guide/features/fallback-providers/
+- OpenClaw 完整个人助理入口：https://docs.openclaw.ai/start/openclaw/index.html
+- OpenClaw 模型后备：https://docs.openclaw.ai/concepts/model-failover
+- OpenClaw Gateway 重启会话恢复：https://docs.openclaw.ai/concepts/session
+- LangGraph 持久化属于应用框架能力：https://docs.langchain.com/oss/python/langgraph/persistence
+
+成熟功能存在不等于每种故障都能不中断。模型后备需要配置；本机断电/磁盘故障/所有外部服务不可达的恢复范围取决于部署与独立资源。恢复允许短暂停顿，同一任务状态与完成标准不能丢失。
+
+下一步：核对用户已有成品安装与可用功能 → 选一个最小完整成熟组合 → 直接完成真实任务 → 验证该产品原生恢复及其承诺范围 → 只对已证实缺口做最小配置/接入。GPT/Codex 不参与运行是部署属性，故障注入只是后续验收手段之一。
+
+T*=min(T_VALID) 保持唯一优化目标；未有真实业务结果前不宣称同等功能已成熟。当前仍 STATE=10、未部署、未认证。
