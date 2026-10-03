@@ -1,4 +1,4 @@
-# 长期记忆超级虚拟人｜恢复阶梯 v0.3
+# 长期记忆超级虚拟人｜恢复阶梯 v0.4.4
 
 ```text
 L0 当前会话正常执行
@@ -43,3 +43,11 @@ EXACTLY_ONCE_MARKER=YES
 ```
 
 页面异常时，优先读取最近可信 Checkpoint；只有超过任务专属静默/恢复窗口且没有后台完成证据，才切换到真正 New chat。恢复包只携带任务合同、已确认结论、当前 checkpoint、未决项、下一条动作和安全边界。
+
+## 页面连续性唯一入口
+
+本文件只保留系统级恢复阶梯。ChatGPT 页面异常、主动换页、卡死、断连、true New chat 与 exactly-once 的具体执行，统一委托：
+
+`CHATGPT_SESSION_CONTINUITY_CONTROLLER.md`
+
+旧页面恢复方案不删除，统一通过 `LEGACY_CONTINUITY_INDEX.md` 检索；不得与 v0.4.4 生产控制器并行运行。
