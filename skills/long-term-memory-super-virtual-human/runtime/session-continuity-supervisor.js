@@ -1,5 +1,5 @@
 function rotate(s){
- if(!s.safeCheckpoint) return {action:'WAIT_SAFE_CHECKPOINT',writeOwner:s.writeOwner};
+ if(!s.safeCheckpoint && !s.confirmedReplaySafeStall) return {action:'WAIT_SAFE_CHECKPOINT',writeOwner:s.writeOwner};
  if(!s.freshChatAvailable) return {action:'FAILOVER_BACKUP',fencePrimary:true,nextFenceToken:s.fenceToken+1,writeOwner:'BACKUP'};
  if((s.freshSessionKind||'NEW_CHAT')!=='NEW_CHAT') return {action:'OPEN_TRUE_NEW_CHAT',writeOwner:s.writeOwner};
  return {action:'ROTATE_TO_NEW_CHAT',writeOwner:s.writeOwner};
@@ -14,11 +14,19 @@ function decide(s){
   if(!s.readOnlyProbeDone) return {action:'PROBE_PAGE',writeOwner:s.writeOwner};
   if(!s.hardDeadlineExceeded) return {action:'WAIT_WITH_PROBE',writeOwner:s.writeOwner};
  }
- if(s.turnActive && s.hardDeadlineExceeded && !s.backendActivityObserved && !s.finalAnswerObserved){
+ const confirmedStall=Boolean(
+  s.hardDeadlineExceeded &&
+  !s.backendActivityObserved &&
+  !s.finalAnswerObserved &&
+  (s.turnActive || s.responsePending || s.pageUnresponsive)
+ );
+ if(confirmedStall){
   if(!s.readOnlyProbeDone) return {action:'PROBE_PAGE',writeOwner:s.writeOwner};
-  return {action:'ABORT_STALLED_TURN',writeOwner:s.writeOwner};
+  if(s.turnActive) return {action:'ABORT_STALLED_TURN',writeOwner:s.writeOwner};
+  if(!s.replaySafe) return {action:'WAIT_SAFE_CHECKPOINT',writeOwner:s.writeOwner};
+  return rotate({...s,confirmedReplaySafeStall:true});
  }
- if(!s.pageHealthy || (s.transportDisconnected && s.hardDeadlineExceeded)){
+ if(!s.pageHealthy || s.uiFailure || (s.transportDisconnected && s.hardDeadlineExceeded)){
   if(!s.readOnlyProbeDone) return {action:'PROBE_PAGE',writeOwner:s.writeOwner};
   return rotate(s);
  }
