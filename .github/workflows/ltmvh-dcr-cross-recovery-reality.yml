@@ -45,3 +45,5 @@ jobs:
           try {
             (Invoke-WebRequest -UseBasicParsing -TimeoutSec 3 'http://127.0.0.1:9223/json').Content
           } catch { Write-Host ('CDP_TARGETS_FAIL='+$_.Exception.Message) }
+
+# fresh-reregister-trigger: 20261004-0133
