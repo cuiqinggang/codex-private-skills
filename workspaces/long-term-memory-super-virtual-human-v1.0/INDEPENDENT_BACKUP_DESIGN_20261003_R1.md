@@ -181,3 +181,17 @@ T*=min(T_VALID) 保持唯一优化目标；未有真实业务结果前不宣称�
 本轮发出启用/启动 Hermes8642SilentHealthCheck 请求后 Remote 回执丢失，不能确认写操作完成，不得重复派发。GitHub 备路已提交只读状态核查：run 37120091817，任务 LTMVH-HERMES-STARTUP-AUDIT-20261003；静态门 PASS，Windows job 执行中，结果待回收。
 
 当前主项目/强备份仍未认证。不启用旧 Watchdog/旧 NewAPI AutoRecover；不重启 Windows；不修改网络代理，不发送 Telegram 消息。下一步：先回收只读核查结果，确认启用操作实际状态，再恢复已验证的原网页自启入口、验证独立非 GPT/Codex 业务链路。
+
+
+## 自启恢复 Reality（2026-10-03 R4，覆盖 R3 待确认状态）
+
+用户授权经 GPT直连Windows双路执行桥 v0.2.0 恢复自启，并在 GPT 旁边打开网页。
+Remote 主路实际恢复：Hermes8642SilentHealthCheck 已 Enabled=true；2026-10-03 20:02:02+08:00 新 healthcheck 状态 healthy，8642 health OK。
+网页包装器原文件先备份为 Open-HermesOpenWebUI.ps1.before-20261003-R4，仅将旧模型断言 Hermes-GLM-5.2-OpenRouter 改为 DeepSeek-V4-Pro；实际 /v1/models 已包含该 id。未改模型/provider 配置。
+调用原 Install-HermesOpenWebUIAutoOpen.ps1，返回 G_INSTALL_PASS_STAGE04B_STARTUP_VBS_READY；Startup 的 HermesOpenWebUIAutoOpen.vbs 已存在。原 VBS 手动调用成功。2026-07-06 去重文档提示存在较新主 opener，但现场其 Hermes_OpenWebUI_AutoStart_Hidden.vbs 已 disabled，本轮仅保留一个活跃网页 opener，没有同时启用两个。
+本次成熟启动日志 daily-start-20261003-200718.log 于 20:07:57 FINAL_PASS：Hermes8642 healthy、Docker API ready、open-webui-clean 启动、3000 HTTP PASS、浏览器已打开。包装器状态于 20:08:08 FINAL_PASS；该结果证明启动/网页可达，不证明账号登录或强备份功能等价。
+通过 Windows 本地 CDP9223，在现有 GPT 浏览器新增 3000 标签页并 bringToFront；保留原 GPT 标签页。正式 UI 读回为 /auth?redirect=%2F，显示“登录 Open WebUI / 电子邮箱 / 密码 / 登录”。未获得可用登录会话或原自动账号登录脚本，WEB_ACCOUNT_LOGIN=BLOCKED_CREDENTIALS，不重置账号、不关闭认证、不提取浏览器密码。
+本轮未重启 Windows，REBOOT_TESTED=NO；未修改全局代理、未发送 Telegram 消息；Telegram 可用性未重新验收。
+GitHub 备路旧审计 run37120091817 failure；无需 checkout 的 run37121562608 已在 DESKTOP-4A1EGTM-etal 执行，但用户账号不是 A，安全前置检查在写入前阻止操作。最后通过恢复后的 Remote 主路完成上述修改与读回。
+STARTUP_RESTORED=YES；MANUAL_STARTUP_REALITY=PASS；WEB_OPENED_BESIDE_GPT=YES；WEB_ACCOUNT_LOGIN=OPEN；STRONG_BACKUP_CERTIFIED=NO；FUNCTIONAL_PARITY_CERTIFIED=NO。
+下一步仅需现有 Open WebUI 账号登录后核验真实任务与独立运行能力；本轮不可把启动通过记作完整 FINAL_VALID。
