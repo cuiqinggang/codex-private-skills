@@ -42,7 +42,7 @@ PAGE_RECOVERY_DEDICATED_BROWSER_REALITY=PASS_R25
 CURRENT_SHARED_MCP_IN_PLACE_RECOVERY=PASS_PREVENTIVE_ROTATION_R1
 DCR_LOGOFF_RELOGIN_REALITY=OPEN
 MODEL_EFFORT_FULL_E2E=PASS_R14
-REAL_VALUABLE_LONG_TASK_FINAL_VALID=OPEN
+REAL_VALUABLE_LONG_TASK_FINAL_VALID=PASS_GATE_A_20261004
 PAID_TO_FREE_OPEN_SOURCE_REPLACEMENT=V1_0_0_REGISTERED
 SINGLE_PRODUCTION_CONTINUITY_PATH=YES
 LEGACY_PARALLEL_SUPERVISOR=NO
@@ -73,8 +73,7 @@ FREE_SOFTWARE_CATALOG=2026-10-03-R1_96_ENTRIES
 ## 当前未完成且不得误报
 
 1. Desktop Commander 实际注销/重登后的自动恢复 Reality（R12 进程重连 PASS 不能替代本门）；
-2. 至少一组真实有价值长任务从开始到 FINAL_VALID 的完整回归；
-3. 独立备脑完成真实业务 DONE_WHEN，而不仅是恢复/健康 ACK。
+2. 独立备脑完成真实业务 DONE_WHEN，而不仅是恢复/健康 ACK。
 
 以上未全部完成前，保持 FINAL_VALID=NO，不升级 v1.0 正式成熟版。
 
@@ -105,3 +104,13 @@ v0.4 状态：
 - 整链路检查独立性，包含入口、监督器、记忆嵌入、搜索、账号接口、视觉/媒体、验收与通知；不得保留隐藏 OpenAI 必需依赖。
 - 不再等待主路线 v1.0 毕业才启动备份建设；此变化依据用户本轮明确要求。
 - v0.4.3 主技能及主项目 FINAL_VALID=NO 保持不变。
+
+
+## Gate A｜真实有价值长任务端到端 FINAL_VALID（2026-10-04）
+
+- Gate A 任务：对 LTMVH v0.4.4 生产连续性链执行完整生产稳定性治理与验收。
+- GitHub main / Windows 当前运行态 / Startup 已核对并收敛到 v0.4.4 单一生产链；本机发现的 SKILL、Controller 文档漂移和缺失 Legacy Index 已按 main 精确修复。
+- Reality：runtime=1、legacy supervisor=0、shared-mcp browser root=1、lease heartbeat 持续前进、CDP 9223 在线；未关闭现有浏览器、未启动第二浏览器、未修改 FlClash/Windows 代理。
+- 确定性回归：SESSION_CONTINUITY_TESTS=25 PASS / 0 FAIL；核心 JS syntax checks 全部 exit 0。
+- 机器可读证据：`workspaces/long-term-memory-super-virtual-human-v1.0/evidence/LTMVH-V044-GATE-A-20261004.json`。
+- `REAL_VALUABLE_LONG_TASK_FINAL_VALID=PASS_GATE_A_20261004`；仅关闭本 Gate，不改变项目级 `FINAL_VALID=NO`。
