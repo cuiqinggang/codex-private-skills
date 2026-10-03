@@ -169,3 +169,15 @@ T*=min(T_VALID)，质量、正确性、权限和证据决定 VALID 集合。
 下一步：核对用户已有成品安装与可用功能 → 选一个最小完整成熟组合 → 直接完成真实任务 → 验证该产品原生恢复及其承诺范围 → 只对已证实缺口做最小配置/接入。GPT/Codex 不参与运行是部署属性，故障注入只是后续验收手段之一。
 
 T*=min(T_VALID) 保持唯一优化目标；未有真实业务结果前不宣称同等功能已成熟。当前仍 STATE=10、未部署、未认证。
+
+## Hermes 已选定与现存自启技能定位（2026-10-03 R3）
+
+用户已选择 Hermes Agent，明确已有安装与能力，要求直接复用；并授权需要时恢复原有开机启动。用户随后要求先找到完整自启技能包。
+
+已找到：skills/hermes-014-restoration-ladder/SKILL.md，核心参考为 references/stage-04-8642-silent-healthcheck-20260522.md、references/stage-04b-openwebui-autoopen-build-runbook-20260522.md。该包包含静默保活、Docker/Open WebUI 网页面板自启、安装/验证/回滚和历史真实重启证据。历史 H 盘路径已过时，本机现存脚本已改用 C 盘。
+
+通过 Windows 桥 Remote 主路实查：Hermes v0.20.0 (2026.8.3)，安装 C:\Users\A\.hermes\hermes-agent；CLI 仅显示 default，gateway stopped；3000 HTTP 200；8642 检查不可用。Hermes8642SilentHealthCheck 及旧任务均 Disabled。现存 C:\Users\A\Hermes_AutoStart\healthcheck-8642 和 openwebui-autoopen 脚本；Startup 的 HermesOpenWebUIAutoOpen.vbs 不存在。
+
+本轮发出启用/启动 Hermes8642SilentHealthCheck 请求后 Remote 回执丢失，不能确认写操作完成，不得重复派发。GitHub 备路已提交只读状态核查：run 37120091817，任务 LTMVH-HERMES-STARTUP-AUDIT-20261003；静态门 PASS，Windows job 执行中，结果待回收。
+
+当前主项目/强备份仍未认证。不启用旧 Watchdog/旧 NewAPI AutoRecover；不重启 Windows；不修改网络代理，不发送 Telegram 消息。下一步：先回收只读核查结果，确认启用操作实际状态，再恢复已验证的原网页自启入口、验证独立非 GPT/Codex 业务链路。
