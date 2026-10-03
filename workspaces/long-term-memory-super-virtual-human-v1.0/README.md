@@ -132,8 +132,8 @@ v0.4 已把以下能力纳入默认运行合同：
 
 ## 7. 当前阶段
 
-当前技能包版本为 **v0.4.3**，已签 VIRTUAL_MATURE=YES，但 FINAL_VALID=NO。
+当前技能包版本为 **v0.4.4**，已签 VIRTUAL_MATURE=YES，但 FINAL_VALID=NO。
 
-v0.4.3 已完成现有浏览器复用、真正 New chat、禁止 Branch、最小 handoff、exactly-once、page lease、global writer lease、长回答停滞自动恢复、模型/Thinking 完整 R14 Reality，并完成 R15 专用浏览器死循环修复：同一次 Windows 启动最多自动 launch 一次，后续连续性组件只能 attach，控制接口故障时 fail closed，禁止再次打开专用浏览器或自动堆叠 ChatGPT 标签页。下一阶段重点是 DCR 真正注销/重登恢复、真实有价值长任务 FINAL_VALID 与独立备脑业务级 DONE_WHEN。
+v0.4.4 在 v0.4.3 已完成的现有浏览器复用、真正 New chat、禁止 Branch、最小 handoff、exactly-once、page lease、global writer lease、长回答停滞自动恢复、模型/Thinking R14 Reality 与单浏览器 R15 修复基础上，进一步把页面生命周期收敛为**唯一生产连续性控制链**。总控/CEO 默认在可见文本 40,000 或用户轮次 10 任一先到时预防性换真正 New chat；执行页默认 30,000 / 3 轮。页面/UI 异常、断连、无进展、活跃 turn 卡死统一进入同一决策器：若后台仍推进则等待，确认停滞后才停止旧 turn、Checkpoint、true New chat、最小 handoff、exactly-once。Reality `LTMVH-CEO-ROTATE-REALITY-20261004-R1` 已证明 shared-mcp 现有浏览器上的强制预防轮换可行。旧 `chatgpt-continuity-v1` 与旧恢复/换页策略只保留为历史索引，不再作为第二套 supervisor 并行运行。下一阶段重点仍是 DCR 真正注销/重登恢复、真实有价值长任务 FINAL_VALID 与独立备脑业务级 DONE_WHEN。
 
 当用户明确指定“长期记忆超级虚拟人”运行当前任务时，上述连续性规则自动生效；长页面能安全提前换就提前换。
