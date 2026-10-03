@@ -1,36 +1,44 @@
 name: LTMVH DCR Cross-Recovery Reality
-
 on:
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/ltmvh-dcr-cross-recovery-reality.yml'
+    paths: ['.github/workflows/ltmvh-dcr-cross-recovery-reality.yml']
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
   recover-dcr:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 5
     steps:
-      - name: Probe backup-semantic access to DCR startup script
+      - name: Inventory user-context execution entries
         shell: pwsh
         run: |
           $ErrorActionPreference='Continue'
-          Write-Host '=== PRIVILEGES ==='
-          whoami /priv
-          Write-Host '=== ACL ==='
-          icacls 'C:\Users\A\AppData\Local\DesktopCommanderRemote'
-          Write-Host '=== ROBOCOPY BACKUP ==='
-          $dst='C:\AI\LTMVH-Recovery\dcr-script-backup-read'
-          New-Item -ItemType Directory -Force -Path $dst | Out-Null
-          robocopy 'C:\Users\A\AppData\Local\DesktopCommanderRemote' $dst 'Start-DesktopCommanderRemote.ps1' /B /R:0 /W:0 /NFL /NDL /NJH /NJS
-          Write-Host ('ROBOCOPY_EXIT='+$LASTEXITCODE)
-          if(Test-Path (Join-Path $dst 'Start-DesktopCommanderRemote.ps1')){
-            Write-Host 'BACKUP_READ=PASS'
-            Get-Content (Join-Path $dst 'Start-DesktopCommanderRemote.ps1') -Raw
-          } else {
-            Write-Host 'BACKUP_READ=FAIL'
+          Write-Host '=== TASKS WITH RELEVANT ACTIONS ==='
+          foreach($t in Get-ScheduledTask){
+            foreach($a in @($t.Actions)){
+              $s=(($a.Execute+' '+$a.Arguments+' '+$a.WorkingDirectory) -as [string])
+              if($s -match 'C:\\AI|LTMVH|Recovery|DesktopCommander|desktop-commander|Start-Desktop'){
+                [pscustomobject]@{
+                  TaskName=$t.TaskName; TaskPath=$t.TaskPath; State=$t.State
+                  UserId=$t.Principal.UserId; LogonType=$t.Principal.LogonType; RunLevel=$t.Principal.RunLevel
+                  Execute=$a.Execute; Arguments=$a.Arguments; WorkingDirectory=$a.WorkingDirectory
+                } | Format-List
+              }
+            }
           }
+          Write-Host '=== RUN KEYS ==='
+          $keys=@(
+            'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run',
+            'HKLM:\Software\Microsoft\Windows\CurrentVersion\Run',
+            'HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Run'
+          )
+          foreach($k in $keys){ if(Test-Path $k){ Write-Host $k; Get-ItemProperty $k | Format-List * } }
+          Write-Host '=== SERVICES RELEVANT ==='
+          Get-CimInstance Win32_Service | Where-Object {
+            $_.PathName -match 'C:\\AI|DesktopCommander|Recovery|LTMVH' -or $_.Name -match 'Desktop|LTMVH|Recovery'
+          } | Select-Object Name,StartName,State,StartMode,PathName | Format-List
+          Write-Host '=== USER WATCHDOG PROCESS ==='
+          Get-CimInstance Win32_Process | Where-Object {$_.CommandLine -match 'Recovery-Request-Watchdog'} |
+            Select-Object ProcessId,ParentProcessId,SessionId,Name,ExecutablePath,CommandLine | Format-List
