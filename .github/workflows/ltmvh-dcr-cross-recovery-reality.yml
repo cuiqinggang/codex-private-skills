@@ -11,50 +11,36 @@ jobs:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 5
     steps:
-      - name: Diagnose DCR persisted session and direct launch
+      - name: Inspect A-session recovery watchdog supervision
         shell: pwsh
         run: |
           $ErrorActionPreference='Continue'
-          Write-Host ('IDENTITY=' + [Security.Principal.WindowsIdentity]::GetCurrent().Name)
-          Write-Host ('INTERACTIVE_USER=' + (Get-CimInstance Win32_ComputerSystem).UserName)
-          $profile='C:\Users\A'
-          $session=Join-Path $profile '.desktop-commander-device\device.json'
-          Write-Host ('SESSION_PATH='+$session)
-          try {
-            Write-Host ('SESSION_EXISTS='+(Test-Path -LiteralPath $session))
-            if(Test-Path -LiteralPath $session){
-              $fi=Get-Item -LiteralPath $session
-              Write-Host ('SESSION_SIZE='+$fi.Length)
-              Write-Host ('SESSION_WRITE='+$fi.LastWriteTime.ToString('o'))
+          $pidTarget=16764
+          Write-Host '=== WATCHDOG PROCESS ==='
+          Get-CimInstance Win32_Process -Filter "ProcessId=$pidTarget" |
+            Select-Object ProcessId,ParentProcessId,SessionId,Name,ExecutablePath,CommandLine | Format-List
+          Write-Host '=== WATCHDOG GET-PROCESS ==='
+          try { Get-Process -Id $pidTarget -IncludeUserName | Select-Object Id,SessionId,UserName,Path,StartTime | Format-List } catch { Write-Host ('GETPROCESS_ERROR='+$_.Exception.Message) }
+          $p=Get-CimInstance Win32_Process -Filter "ProcessId=$pidTarget" -ErrorAction SilentlyContinue
+          if($p){
+            Write-Host '=== PARENT ==='
+            Get-CimInstance Win32_Process -Filter ("ProcessId="+$p.ParentProcessId) |
+              Select-Object ProcessId,ParentProcessId,SessionId,Name,ExecutablePath,CommandLine | Format-List
+          }
+          Write-Host '=== SCHEDULED TASK ACTION MATCHES ==='
+          Get-ScheduledTask -ErrorAction SilentlyContinue | ForEach-Object {
+            $t=$_
+            foreach($a in @($t.Actions)){
+              $s=($a.Execute+' '+$a.Arguments)
+              if($s -match 'LTMVH-Recovery|Recovery-Request-Watchdog|Recover-LTMVH'){
+                [pscustomobject]@{TaskName=$t.TaskName;TaskPath=$t.TaskPath;State=$t.State;User=$t.Principal.UserId;LogonType=$t.Principal.LogonType;Action=$s}
+              }
             }
-          } catch { Write-Host ('SESSION_PROBE_ERROR='+$_.Exception.Message) }
-
-          $root='C:\AI\LTMVH-Recovery'
-          New-Item -ItemType Directory -Force -Path $root | Out-Null
-          $stdout=Join-Path $root 'dcr-direct.stdout.log'
-          $stderr=Join-Path $root 'dcr-direct.stderr.log'
-          Remove-Item $stdout,$stderr -Force -ErrorAction SilentlyContinue
-
-          $env:USERPROFILE=$profile
-          $env:HOME=$profile
-          $env:RUNNER_TRACKING_ID=''
-
-          try {
-            $npx=(Get-Command npx.cmd -ErrorAction Stop).Source
-            Write-Host ('NPX='+$npx)
-            $p=Start-Process -FilePath $npx -ArgumentList @('-y','@wonderwhy-er/desktop-commander@latest','remote') -WindowStyle Hidden -RedirectStandardOutput $stdout -RedirectStandardError $stderr -PassThru
-            Write-Host ('DCR_DIRECT_PID='+$p.Id)
-            Start-Sleep -Seconds 15
-            $alive=-not $p.HasExited
-            Write-Host ('DCR_DIRECT_ALIVE_AFTER_15S='+$alive)
-            if($p.HasExited){Write-Host ('DCR_DIRECT_EXITCODE='+$p.ExitCode)}
-          } catch { Write-Host ('DCR_DIRECT_START_ERROR='+$_.Exception.Message) }
-
-          Write-Host '=== STDOUT ==='
-          if(Test-Path $stdout){Get-Content $stdout -Raw}
-          Write-Host '=== STDERR ==='
-          if(Test-Path $stderr){Get-Content $stderr -Raw}
-          Write-Host '=== MATCHING PROCESSES ==='
-          Get-CimInstance Win32_Process -ErrorAction SilentlyContinue |
-            Where-Object {$_.CommandLine -and $_.CommandLine -match 'desktop-commander|wonderwhy-er'} |
-            Select-Object ProcessId,ParentProcessId,Name,CommandLine | Format-List
+          } | Format-List
+          Write-Host '=== STARTUP MATCHES ==='
+          Get-CimInstance Win32_StartupCommand -ErrorAction SilentlyContinue |
+            Where-Object {$_.Command -match 'LTMVH-Recovery|Recovery-Request-Watchdog|Recover-LTMVH'} |
+            Select-Object Name,Command,Location,User | Format-List
+          Write-Host '=== RECOVERY DIR ==='
+          Get-ChildItem 'C:\AI\LTMVH-Recovery' -Force -ErrorAction SilentlyContinue |
+            Select-Object Name,Length,LastWriteTime | Format-Table -AutoSize
