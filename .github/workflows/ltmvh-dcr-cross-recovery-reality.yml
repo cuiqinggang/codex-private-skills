@@ -15,88 +15,41 @@ jobs:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 5
     steps:
-      - name: Inspect DCR recovery state
+      - name: Inspect and invoke existing DCR autostart task
         shell: pwsh
         run: |
           $ErrorActionPreference='Continue'
-          Write-Host "=== IDENTITY ==="
-          whoami
-          Write-Host "SESSION=$env:SESSIONNAME"
-          Write-Host "USERPROFILE=$env:USERPROFILE"
+          $name='GPT-DesktopCommander-Remote-Autostart'
+          Write-Host "=== TASK DEFINITION ==="
+          $t=Get-ScheduledTask -TaskName $name -ErrorAction SilentlyContinue
+          if(-not $t){ throw "TASK_NOT_FOUND" }
+          $t | Select-Object TaskName,TaskPath,State | Format-List
+          Write-Host "=== PRINCIPAL ==="
+          $t.Principal | Select-Object UserId,LogonType,RunLevel | Format-List
+          Write-Host "=== ACTIONS ==="
+          $t.Actions | Select-Object Execute,Arguments,WorkingDirectory | Format-List
+          Write-Host "=== TRIGGERS ==="
+          $t.Triggers | Format-List *
+          Write-Host "=== TASK INFO BEFORE ==="
+          Get-ScheduledTaskInfo -TaskName $name | Format-List *
 
-          Write-Host "=== FILES ==="
-          $files=@(
-            'C:\AI\LTMVH-Recovery\Recovery-Request-Watchdog.ps1',
-            'C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommanderRemote.ps1',
-            'C:\AI\LTMVH-Recovery\request-watchdog.log',
-            'C:\AI\LTMVH-Recovery\recovery.log'
-          )
-          foreach($p in $files){
-            if(Test-Path $p){
-              $i=Get-Item $p
-              Write-Host ("FILE {0} SIZE={1} WRITE={2:o}" -f $p,$i.Length,$i.LastWriteTime)
-            } else { Write-Host "MISSING $p" }
+          Write-Host "=== INVOKE TASK ==="
+          try {
+            Start-ScheduledTask -TaskName $name -ErrorAction Stop
+            Write-Host "TASK_START_CALL=PASS"
+          } catch {
+            Write-Host ("TASK_START_CALL=FAIL "+$_.Exception.Message)
           }
+          Start-Sleep -Seconds 12
 
-          Write-Host "=== START SCRIPT ==="
-          if(Test-Path 'C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommanderRemote.ps1'){
-            Get-Content 'C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommanderRemote.ps1' -Raw
-          }
+          Write-Host "=== TASK INFO AFTER ==="
+          Get-ScheduledTaskInfo -TaskName $name | Format-List *
 
-          Write-Host "=== WATCHDOG SCRIPT ==="
-          if(Test-Path 'C:\AI\LTMVH-Recovery\Recovery-Request-Watchdog.ps1'){
-            Get-Content 'C:\AI\LTMVH-Recovery\Recovery-Request-Watchdog.ps1' -Raw
-          }
-
-          Write-Host "=== DCR PROCESSES ==="
+          Write-Host "=== DCR PROCESS AFTER TASK ==="
           Get-CimInstance Win32_Process | Where-Object {
             $_.CommandLine -and ($_.CommandLine -match 'desktop-commander|DesktopCommanderRemote|Start-DesktopCommanderRemote')
           } | Select-Object ProcessId,ParentProcessId,Name,ExecutablePath,CommandLine | Format-List
 
-          Write-Host "=== WATCHDOG PROCESSES ==="
-          Get-CimInstance Win32_Process | Where-Object {
-            $_.CommandLine -and $_.CommandLine -match 'Recovery-Request-Watchdog'
-          } | Select-Object ProcessId,ParentProcessId,Name,CommandLine | Format-List
-
-          Write-Host "=== RECENT WATCHDOG LOG ==="
-          if(Test-Path 'C:\AI\LTMVH-Recovery\request-watchdog.log'){
-            Get-Content 'C:\AI\LTMVH-Recovery\request-watchdog.log' -Tail 80
-          }
-
-          Write-Host "=== TASKS ==="
-          Get-ScheduledTask | Where-Object {
-            $_.TaskName -match 'Desktop|Commander|LTMVH|Recovery' -or $_.TaskPath -match 'Desktop|Commander|LTMVH|Recovery'
-          } | Select-Object TaskName,TaskPath,State | Format-Table -AutoSize
-
-          Write-Host "=== STARTUP ==="
-          Get-CimInstance Win32_StartupCommand | Where-Object {
-            $_.Name -match 'Desktop|Commander|LTMVH|Recovery' -or $_.Command -match 'Desktop|Commander|LTMVH|Recovery'
-          } | Select-Object Name,Command,Location,User | Format-List
-
-          Write-Host "=== NETWORK PROBE ==="
-          try { (Invoke-WebRequest -UseBasicParsing -Uri 'https://mcp.desktopcommander.app' -TimeoutSec 10).StatusCode } catch { Write-Host ("MCP_WEB_FAIL="+$_.Exception.Message) }
-
-      - name: Request DCR revival through user-session watchdog
-        shell: pwsh
-        run: |
-          $ErrorActionPreference='Stop'
-          $root='C:\AI\LTMVH-Recovery'
-          $req=Join-Path $root 'requests'
-          $ack=Join-Path $root 'acks'
-          New-Item -ItemType Directory -Force -Path $req,$ack | Out-Null
-          $ackFile=Join-Path $ack 'revive-dcr.ack.json'
-          Remove-Item $ackFile -Force -ErrorAction SilentlyContinue
-          '{"request":"revive-dcr","source":"github-runner","reality":"R26-DIAG"}' | Set-Content -LiteralPath (Join-Path $req 'revive-dcr.flag') -Encoding UTF8
-          $deadline=(Get-Date).AddSeconds(90)
-          while((Get-Date) -lt $deadline -and -not (Test-Path $ackFile)){ Start-Sleep -Seconds 2 }
-          if(-not (Test-Path $ackFile)){ throw 'DCR_REVIVE_ACK_TIMEOUT' }
-          Get-Content $ackFile -Raw
-          Write-Host "=== POST START PROCESSES ==="
-          Start-Sleep -Seconds 8
-          Get-CimInstance Win32_Process | Where-Object {
-            $_.CommandLine -and ($_.CommandLine -match 'desktop-commander|DesktopCommanderRemote|Start-DesktopCommanderRemote')
-          } | Select-Object ProcessId,ParentProcessId,Name,ExecutablePath,CommandLine | Format-List
-          Write-Host "=== POST WATCHDOG LOG ==="
-          if(Test-Path 'C:\AI\LTMVH-Recovery\request-watchdog.log'){
-            Get-Content 'C:\AI\LTMVH-Recovery\request-watchdog.log' -Tail 40
-          }
+          Write-Host "=== DCR EVENT/LOG CANDIDATES ==="
+          Get-ChildItem 'C:\Users\A\AppData\Local\DesktopCommanderRemote' -Force -ErrorAction SilentlyContinue |
+            Select-Object Name,Length,LastWriteTime | Format-Table -AutoSize
