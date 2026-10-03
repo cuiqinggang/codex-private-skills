@@ -43,13 +43,12 @@ jobs:
             "exit $" + "LASTEXITCODE"
           )
           Set-Content -LiteralPath $launcher -Value $lines -Encoding UTF8
-
-          $action=New-ScheduledTaskAction -Execute 'powershell.exe' -Argument ('-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "'+$launcher+'"')
-          $trigger=New-ScheduledTaskTrigger -AtLogOn -User $interactiveUser
-          $principal=New-ScheduledTaskPrincipal -UserId $interactiveUser -LogonType Interactive -RunLevel Limited
-          $settings=New-ScheduledTaskSettingsSet -MultipleInstances IgnoreNew -RestartCount 999 -RestartInterval (New-TimeSpan -Minutes 1) -ExecutionTimeLimit ([TimeSpan]::Zero) -StartWhenAvailable
-
-          Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Principal $principal -Settings $settings -Force | Out-Null
+          $existingTask=Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
+          if($null -eq $existingTask){
+            Write-Host 'DCR_AUTOSTART_TASK_EXISTS=NO'
+            throw 'DCR_AUTOSTART_TASK_MISSING_REQUIRES_INTERACTIVE_ADMIN_RECREATE'
+          }
+          Write-Host 'DCR_AUTOSTART_TASK_EXISTS=YES'
           Start-ScheduledTask -TaskName $taskName
 
           Start-Sleep -Seconds 20
@@ -64,7 +63,14 @@ jobs:
           Write-Host "DCR_SESSION_FILE_EXISTS=$(Test-Path -LiteralPath $session)"
           Write-Host "DCR_MATCHING_PROCESSES=$($proc.Count)"
           Write-Host "DCR_LAUNCHER=$launcher"
+          Write-Host "DCR_LOG=$log"
+          if(Test-Path -LiteralPath $log){
+            Write-Host '=== DCR_REMOTE_LOG_TAIL ==='
+            Get-Content -LiteralPath $log -Tail 120 -ErrorAction SilentlyContinue
+          } else {
+            Write-Host 'DCR_REMOTE_LOG_EXISTS=NO'
+          }
           if (-not (Test-Path -LiteralPath $session)) { throw 'DESKTOP_COMMANDER_PERSISTED_SESSION_NOT_FOUND_FOR_USER' }
           if ($proc.Count -lt 1) { throw 'DESKTOP_COMMANDER_REMOTE_PROCESS_NOT_FOUND' }
 
-# recovery-trigger: LTMVH-DCR-REBUILD-R23-20261003
+# recovery-trigger: LTMVH-DCR-REBUILD-R24-20261003
