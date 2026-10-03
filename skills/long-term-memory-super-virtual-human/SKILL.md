@@ -1,14 +1,14 @@
 ---
 name: long-term-memory-super-virtual-human
-version: "0.4.3"
+version: "0.4.4"
 description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human）。以高智能主脑为核心，吸收成熟 Recovery/Long-Flow/Browser 机制，以长期记忆、权威任务合同、Checkpoint、按需工具路由、低相关冗余和独立强备份推进现实任务；唯一优化目标仍是 T*=min(T_VALID)。
 ---
 
-# 长期记忆超级虚拟人 v0.4.3
+# 长期记忆超级虚拟人 v0.4.4
 # Long-Term Memory Super Virtual Human
 
 ```ini
-VERSION=0.4.3
+VERSION=0.4.4
 STATUS=VIRTUAL_MATURE_CONTINUITY_RUNTIME_ACTIVE
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
@@ -28,7 +28,7 @@ REASONIX_RECOVERY_KIT_ABSORPTION=R1
 ECC_V3_1_1=REUSE
 PLAYWRIGHT_NATIVE_AI_BROWSER=REUSE
 CHATGPT_MODEL_EFFORT_CONTROLLER=FULL_E2E_REALITY_PASS_R14
-CHATGPT_SESSION_CONTINUITY_CONTROLLER=V0_4_3_SINGLE_BROWSER_LOOP_GUARD_PASS_R15
+CHATGPT_SESSION_CONTINUITY_CONTROLLER=V0_4_4_UNIFIED_ROTATION_REALITY_PASS_R1
 PAID_TO_FREE_OPEN_SOURCE_REPLACEMENT=V1_0_0_REGISTERED
 ```
 
@@ -57,7 +57,7 @@ PAID_TO_FREE_OPEN_SOURCE_REPLACEMENT=V1_0_0_REGISTERED
 
 - 极限短时间智能体宪法 v0.3.1；
 - 极限短时间自动化闭环 v2.0；
-- GPT直连Windows双路执行桥 v0.2.0；
+- GPT直连Windows双路执行桥 v0.3.0；
 - Reasonix Recovery Kit；
 - ECC v3.1.1；
 - Playwright Native AI Browser；
@@ -257,7 +257,7 @@ v1.0 按**能力结果**验收，不把某一个实现工具写成唯一毕业�
 
 原则：实现路径可以降级，DONE_WHEN 不能降级。
 
-## 14. v0.4 默认运行合同
+## 14. v0.4.4 默认运行合同
 
 当用户明确说以下任一含义时：
 
@@ -295,6 +295,36 @@ KEEP_BROWSER_OPEN=YES
 - 页面只是工作内存，权威事实必须持续写回技能包/项目状态/Checkpoint。
 
 该合同在技能包被明确调用后，对当前任务生命周期持续有效，直到任务 FINAL_VALID、用户明确 STOP，或用户明确退出该技能运行模式。
+
+
+### v0.4.4 页面生命周期统一规则
+
+同页“压缩/总结”只用于形成可接续状态，不视为真正释放上下文。页面生命周期只由一套连续性控制链管理：
+
+```ini
+SINGLE_PRODUCTION_CONTINUITY_PATH=YES
+LEGACY_PARALLEL_SUPERVISOR=NO
+WAIT_UNTIL_SLOW=NO
+TRUE_NEW_CHAT_ONLY=YES
+BRANCH_RECOVERY=FORBIDDEN
+
+CEO_VISIBLE_TEXT_LIMIT_DEFAULT=40000
+CEO_USER_TURN_LIMIT_DEFAULT=10
+EXECUTOR_VISIBLE_TEXT_LIMIT_DEFAULT=30000
+EXECUTOR_USER_TURN_LIMIT_DEFAULT=3
+```
+
+统一触发器：
+- **增长触发**：可见文本量或轮数达到角色阈值，在安全 checkpoint 主动进入真正 New chat；
+- **阶段触发**：超大独立阶段结束后可立即轮换，不等待阈值；
+- **历史触发**：本页发生过断连/卡顿后，在下一个安全 checkpoint 提前轮换；
+- **UI/页面异常**：composer、页面状态、发送/加载异常，经只读 probe 确认后轮换；
+- **活跃 turn 卡死**：静默窗口超过且无后台进展时，先 probe，确认后停止旧 turn，再 checkpoint + true New chat；
+- **断连但后台仍推进**：继续等待原结果，避免重复执行；
+- **真人验证**：暂停自动化，不尝试绕过；
+- **服务级不可用**：按备脑/备路合同切换，不把页面轮换误当成服务恢复。
+
+旧页面连续性/恢复方案全部保留为历史资产，不再并行运行；索引见 `LEGACY_CONTINUITY_INDEX.md`。
 
 ## 15. 当前入口
 
