@@ -21,28 +21,24 @@ jobs:
           $ErrorActionPreference='Stop'
           $root='C:\AI\LTMVH-Recovery'
           $probe=Join-Path $root 'DCR-UserContext-Probe.ps1'
-          $out=Join-Path $root 'dcr-user-probe.log'
-          $err=Join-Path $root 'dcr-user-probe.err.log'
-          $dump=Join-Path $root 'dcr-start-script-copy.txt'
-          $orig='C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommanderRemote.ps1'
-          @'
-$ErrorActionPreference='Continue'
-$orig='C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommanderRemote.ps1'
-$root='C:\AI\LTMVH-Recovery'
-$dump=Join-Path $root 'dcr-start-script-copy.txt'
-$meta=Join-Path $root 'dcr-user-probe-meta.json'
-try {
-  Get-Content -LiteralPath $orig -Raw | Set-Content -LiteralPath $dump -Encoding UTF8
-  $p=Start-Process powershell.exe -WindowStyle Hidden -ArgumentList @('-NoProfile','-ExecutionPolicy','Bypass','-File',$orig) -RedirectStandardOutput (Join-Path $root 'dcr-user-probe.log') -RedirectStandardError (Join-Path $root 'dcr-user-probe.err.log') -PassThru
-  Start-Sleep -Seconds 12
-  $alive=-not $p.HasExited
-  $exit=if($p.HasExited){$p.ExitCode}else{$null}
-  $procs=@(Get-CimInstance Win32_Process | Where-Object {$_.CommandLine -and ($_.CommandLine -match 'desktop-commander|DesktopCommanderRemote|Start-DesktopCommanderRemote') } | Select-Object ProcessId,ParentProcessId,Name,ExecutablePath,CommandLine)
-  [ordered]@{at=(Get-Date).ToString('o');probePid=$PID;childPid=$p.Id;childAlive=$alive;childExitCode=$exit;processCount=$procs.Count;processes=$procs} | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $meta -Encoding UTF8
-} catch {
-  [ordered]@{at=(Get-Date).ToString('o');error=$_.Exception.Message;stack=$_.ScriptStackTrace} | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $meta -Encoding UTF8
-}
-'@ | Set-Content -LiteralPath $probe -Encoding UTF8
+          @(
+            '$ErrorActionPreference=''Continue''',
+            '$orig=''C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommanderRemote.ps1''',
+            '$root=''C:\AI\LTMVH-Recovery''',
+            '$dump=Join-Path $root ''dcr-start-script-copy.txt''',
+            '$meta=Join-Path $root ''dcr-user-probe-meta.json''',
+            'try {',
+            '  Get-Content -LiteralPath $orig -Raw | Set-Content -LiteralPath $dump -Encoding UTF8',
+            '  $p=Start-Process powershell.exe -WindowStyle Hidden -ArgumentList @(''-NoProfile'',''-ExecutionPolicy'',''Bypass'',''-File'',$orig) -RedirectStandardOutput (Join-Path $root ''dcr-user-probe.log'') -RedirectStandardError (Join-Path $root ''dcr-user-probe.err.log'') -PassThru',
+            '  Start-Sleep -Seconds 12',
+            '  $alive=-not $p.HasExited',
+            '  $exit=if($p.HasExited){$p.ExitCode}else{$null}',
+            '  $procs=@(Get-CimInstance Win32_Process | Where-Object {$_.CommandLine -and ($_.CommandLine -match ''desktop-commander|DesktopCommanderRemote|Start-DesktopCommanderRemote'')} | Select-Object ProcessId,ParentProcessId,Name,ExecutablePath,CommandLine)',
+            '  [ordered]@{at=(Get-Date).ToString(''o'');probePid=$PID;childPid=$p.Id;childAlive=$alive;childExitCode=$exit;processCount=$procs.Count;processes=$procs} | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $meta -Encoding UTF8',
+            '} catch {',
+            '  [ordered]@{at=(Get-Date).ToString(''o'');error=$_.Exception.Message;stack=$_.ScriptStackTrace} | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $meta -Encoding UTF8',
+            '}'
+          ) | Set-Content -LiteralPath $probe -Encoding UTF8
 
           $name='GPT-DesktopCommander-Remote-Autostart'
           $t=Get-ScheduledTask -TaskName $name
@@ -54,12 +50,15 @@ try {
             $newAction=New-ScheduledTaskAction -Execute 'powershell.exe' -Argument ('-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "'+$probe+'"')
             Set-ScheduledTask -TaskName $name -Action $newAction | Out-Null
             Start-ScheduledTask -TaskName $name
-            $deadline=(Get-Date).AddSeconds(40)
             $meta=Join-Path $root 'dcr-user-probe-meta.json'
+            Remove-Item $meta -Force -ErrorAction SilentlyContinue
+            Start-ScheduledTask -TaskName $name
+            $deadline=(Get-Date).AddSeconds(45)
             while((Get-Date) -lt $deadline -and -not (Test-Path $meta)){Start-Sleep -Seconds 1}
             if(-not (Test-Path $meta)){ throw 'USER_PROBE_META_TIMEOUT' }
           } finally {
-            $restore=New-ScheduledTaskAction -Execute $oldExec -Argument $oldArgs -WorkingDirectory $oldWd
+            $restore=New-ScheduledTaskAction -Execute $oldExec -Argument $oldArgs
+            if($oldWd){$restore=New-ScheduledTaskAction -Execute $oldExec -Argument $oldArgs -WorkingDirectory $oldWd}
             Set-ScheduledTask -TaskName $name -Action $restore | Out-Null
           }
 
@@ -68,8 +67,8 @@ try {
           Write-Host '=== ORIGINAL START SCRIPT ==='
           Get-Content (Join-Path $root 'dcr-start-script-copy.txt') -Raw
           Write-Host '=== STDOUT ==='
-          if(Test-Path $out){Get-Content $out -Raw}
+          if(Test-Path (Join-Path $root 'dcr-user-probe.log')){Get-Content (Join-Path $root 'dcr-user-probe.log') -Raw}
           Write-Host '=== STDERR ==='
-          if(Test-Path $err){Get-Content $err -Raw}
+          if(Test-Path (Join-Path $root 'dcr-user-probe.err.log')){Get-Content (Join-Path $root 'dcr-user-probe.err.log') -Raw}
           Write-Host '=== TASK ACTION RESTORED ==='
           (Get-ScheduledTask -TaskName $name).Actions | Select-Object Execute,Arguments,WorkingDirectory | Format-List
