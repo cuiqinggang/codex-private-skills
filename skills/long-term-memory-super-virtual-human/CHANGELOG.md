@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.4.5 - 2026-10-04
+
+- 冻结专用 ChatGPT 浏览器 **Clean CEO Lifecycle（干净 CEO 生命周期）**：空闲态只保留 1 个空白 New chat 页；该页直接复用为 CEO-1；执行页只按业务最小数量临时创建；结果持久化后立即关闭；最终再次恢复 1 个空白页；
+- Reality R18 / R19 完整通过：CEO-1 拆分 → A/B 独立执行 → 最小 checkpoint → 关闭 CEO-1 → 真正 New chat CEO-2 接管 → 使用原 A/B 结果 → FINAL_VALID → 执行页/CEO 清理 → 单空白页收口；
+- R18 `T_VALID=51,454 ms`，R19 同构复验 `T_VALID=54,246 ms`；当前观测 `T*=min(T_VALID)=51,454 ms`，来源 R18；该值是当前合同下实测最好值，不声明为数学绝对下界；
+- R18 checkpoint 仅 125 chars；冻结“页面只是运行时资源，记忆/状态必须持久化”的规则；
+- 页面资源规则：`IDLE_CHAT_PAGE_TARGET=1`、`EXECUTOR_PAGE_COUNT=MIN_REQUIRED_ONLY`、`PREWARM_UNUSED_CHAT_PAGES=NO`、`CLOSE_EXECUTOR_AFTER_RESULT_PERSISTED=YES`、`FINAL_BROWSER_STATE=ONE_BLANK_NEW_CHAT_PAGE`；
+- 实测淘汰为默认路径：A/B 提前预热、Instant 控制链、CEO 同物理 tab 复用、删除独立接管确认回合；这些路线没有降低完整 T_VALID，部分显著变慢；
+- 不改变项目级 `FINAL_VALID=NO`；本次升级只冻结 CEO 专用浏览器控制链、页面清理合同和当前极限短时间路径。
+
+
 ## 0.4.4 - 2026-10-04
 
 - 将 LTMVH 页面连续性正式收敛为**唯一生产控制链**：`CHATGPT_SESSION_CONTINUITY_CONTROLLER.md` + 单一 supervisor/runtime；旧恢复/换页方案全部转为历史参考，不再并行运行；
