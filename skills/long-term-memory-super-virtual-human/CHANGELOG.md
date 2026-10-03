@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.4.3 Capability Registry Extension - 2026-10-03
+
+- **不升级 LTMVH 核心版本**：v0.4.3 连续性 runtime 与既有 Reality 状态不变；
+- 新注册独立能力包 **收费转免费·开源替代技能包 v1.0.0**：`skills/paid-to-free-open-source-replacement/`；
+- 新增 `2026-10-03-R1` 目录，收录 96 项收费/商业软件 → 免费/开源/自托管候选；
+- 强制 `FREE_IS_NOT_OPEN_SOURCE`：区分 OSS、开放核心、Source-available、Freeware；
+- 新增 Agent 操作优先级：API/CLI/MCP/Headless 优先，生产替换必须通过任务级 DONE_WHEN Reality；
+- 本扩展只增加可调取能力，不改变 `FINAL_VALID=NO` 与 v1.0 毕业门槛。
+
 ## 0.4.3 - 2026-10-03
 
 - 修复专用 ChatGPT 浏览器重复 launch / 标签页累积死循环：Reality R15 观察到修复前 watchdog 已累计 `browser_launch_once=12`；

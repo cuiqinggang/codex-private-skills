@@ -29,6 +29,7 @@ ECC_V3_1_1=REUSE
 PLAYWRIGHT_NATIVE_AI_BROWSER=REUSE
 CHATGPT_MODEL_EFFORT_CONTROLLER=FULL_E2E_REALITY_PASS_R14
 CHATGPT_SESSION_CONTINUITY_CONTROLLER=V0_4_3_SINGLE_BROWSER_LOOP_GUARD_PASS_R15
+PAID_TO_FREE_OPEN_SOURCE_REPLACEMENT=V1_0_0_REGISTERED
 ```
 
 ## 1. 产品定位
@@ -60,7 +61,8 @@ CHATGPT_SESSION_CONTINUITY_CONTROLLER=V0_4_3_SINGLE_BROWSER_LOOP_GUARD_PASS_R15
 - Reasonix Recovery Kit；
 - ECC v3.1.1；
 - Playwright Native AI Browser；
-- 本机 Mature AI Coding SuperTool Ecosystem Station。
+- 本机 Mature AI Coding SuperTool Ecosystem Station；
+- 收费转免费·开源替代技能包 v1.0.0（按需调用；免费/开源/自托管 + Agent 可操作优先）。
 
 成熟能力吸收边界见 `MATURE_CAPABILITY_ABSORPTION_R1.md`。
 
@@ -153,7 +155,8 @@ MINIMAL_HANDOFF_REQUIRED=YES
 - MCP / Plugin / API / CLI；
 - Mature AI Coding SuperTool Ecosystem Station；
 - 图像、视频和专项模型；
-- OpenAI 托管云与按需外部云节点。
+- OpenAI 托管云与按需外部云节点；
+- 收费/订阅软件替换：调用 `../paid-to-free-open-source-replacement/SKILL.md`，先查成熟免费/开源路线，再过 DONE_WHEN Reality。
 
 ## 8. 模型与思考强度
 

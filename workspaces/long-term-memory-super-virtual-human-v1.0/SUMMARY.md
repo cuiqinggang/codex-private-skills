@@ -41,6 +41,8 @@ NATURAL_STALL_DETECTION_FULL_E2E=PASS_BY_SAFE_FAULT_INJECTION_R10
 DCR_LOGOFF_RELOGIN_REALITY=OPEN
 MODEL_EFFORT_FULL_E2E=PASS_R14
 REAL_VALUABLE_LONG_TASK_FINAL_VALID=OPEN
+PAID_TO_FREE_OPEN_SOURCE_REPLACEMENT=V1_0_0_REGISTERED
+FREE_SOFTWARE_CATALOG=2026-10-03-R1_96_ENTRIES
 ```
 
 ## 当前正式判断
@@ -91,6 +93,7 @@ R15 进一步冻结：Watchdog 是唯一允许执行 bootstrap launch 的入口�
 - GitHub + K 盘状态备份/恢复已有 PASS 证据；
 - Windows 执行层已具备 Desktop Commander Remote + GitHub self-hosted runner 双路径基础；
 - 模型/Thinking：R14 已完成现有浏览器复用、High → Medium、语义读回、exactly-once continuation、ACK、非法档位 fail-closed 与恢复原 High；`MODEL_EFFORT_FULL_E2E=PASS_R14`。
+- **收费转免费·开源替代技能包 v1.0.0** 已注册为按需能力：目录 `2026-10-03-R1` 共 96 项；优先成熟 OSS/自托管与 Agent 可操作接口，强制区分免费/开源/开放核心/Source-available；本扩展不改变 v0.4.3 连续性 runtime 与 `FINAL_VALID=NO`。
 
 ## 当前未完成且不得误报
 

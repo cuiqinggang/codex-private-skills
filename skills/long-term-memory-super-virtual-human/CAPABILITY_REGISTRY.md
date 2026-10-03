@@ -30,6 +30,7 @@
 | 日历 | Google Calendar Connector | Browser |
 | 云文件/Docs/Sheets/Slides | Google Drive Connector | Browser |
 | 图像 | 原生图像工具 | 专项视觉模型 |
+| 收费软件→免费/开源替代 | `../paid-to-free-open-source-replacement/SKILL.md` v1.0.0 | 先查 96 项全景目录；优先成熟 OSS/自托管 + API/CLI/MCP/Headless；必须经过任务级 DONE_WHEN Reality，不盲替换 |
 | 定时/条件任务 | Automations | n8n / 外部调度 |
 | 长流程状态 | TASK_CONTRACT + Checkpoint | 项目权威状态 |
 | GPT 故障灾备 | 独立强备份 | 待 Reality 认证 |
@@ -88,3 +89,6 @@
 - 外部模型：接口/model 参数可用性。
 
 故障时按 `RECOVERY.md` 切换，而不是把所有备份层同时常驻运行。
+
+## 收费转免费
+按需调用 `../paid-to-free-open-source-replacement/SKILL.md` v1.0.0。
