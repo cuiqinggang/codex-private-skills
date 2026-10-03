@@ -15,61 +15,23 @@ jobs:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 10
     steps:
-      - name: Install local recovery kit and revive DCR without checkout
+      - name: Revive DCR and write local evidence without checkout
         shell: pwsh
         run: |
           $ErrorActionPreference='Continue'
           $root='C:\AI\LTMVH-Recovery'
           New-Item -ItemType Directory -Force -Path $root | Out-Null
           $dcrScript='C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommanderRemote.ps1'
-          $dcrRunning=@(Get-CimInstance Win32_Process | Where-Object {
-            $_.CommandLine -match 'desktop-commander.*remote|Start-DesktopCommanderRemote'
-          }).Count
-          if($dcrRunning -eq 0 -and (Test-Path $dcrScript)){
-            Start-Process powershell.exe -WindowStyle Hidden -ArgumentList @(
-              '-NoProfile','-ExecutionPolicy','Bypass','-File',$dcrScript
-            )
-            Start-Sleep -Seconds 8
+          $before=@(Get-CimInstance Win32_Process | Where-Object {$_.CommandLine -match 'desktop-commander.*remote|Start-DesktopCommanderRemote'}).Count
+          if($before -eq 0 -and (Test-Path $dcrScript)){
+            Start-Process powershell.exe -WindowStyle Hidden -ArgumentList '-NoProfile','-ExecutionPolicy','Bypass','-File',$dcrScript
+            Start-Sleep -Seconds 10
           }
-          $dcrAfter=@(Get-CimInstance Win32_Process | Where-Object {
-            $_.CommandLine -match 'desktop-commander.*remote|Start-DesktopCommanderRemote'
-          }).Count
-          $runner=@(Get-CimInstance Win32_Process | Where-Object {
-            $_.Name -match 'RunnerService|Runner.Listener'
-          }).Count
-          $browser=@(Get-CimInstance Win32_Process | Where-Object {
-            $_.Name -eq 'chrome.exe' -and $_.ExecutablePath -like '*ms-playwright*'
-          }).Count
-          $port9223=@(Get-NetTCPConnection -LocalPort 9223 -State Listen -ErrorAction SilentlyContinue).Count
-          @'
-param([string]$Mode='probe')
-$ErrorActionPreference='Continue'
-$result=[ordered]@{
-  at=(Get-Date).ToString('o')
-  mode=$Mode
-  machine=$env:COMPUTERNAME
-  dcr=@(Get-CimInstance Win32_Process | Where-Object {$_.CommandLine -match 'desktop-commander.*remote|Start-DesktopCommanderRemote'}).Count
-  runner=@(Get-CimInstance Win32_Process | Where-Object {$_.Name -match 'RunnerService|Runner.Listener'}).Count
-  browser=@(Get-CimInstance Win32_Process | Where-Object {$_.Name -eq 'chrome.exe' -and $_.ExecutablePath -like '*ms-playwright*'}).Count
-  cdp9223=@(Get-NetTCPConnection -LocalPort 9223 -State Listen -ErrorAction SilentlyContinue).Count
-}
-$result | ConvertTo-Json -Depth 4
-'@ | Set-Content -LiteralPath (Join-Path $root 'Invoke-Recovery.ps1') -Encoding UTF8
-          $evidence=[ordered]@{
-            schemaVersion=1
-            evidenceId='LTMVH-CROSS-RECOVERY-R18'
-            at=(Get-Date).ToString('o')
-            machine=$env:COMPUTERNAME
-            runnerName=$env:RUNNER_NAME
-            checkoutUsed=$false
-            dcrBefore=$dcrRunning
-            dcrAfter=$dcrAfter
-            runnerProcesses=$runner
-            dedicatedBrowserProcesses=$browser
-            cdp9223ListenCount=$port9223
-            localRecoveryKitInstalled=(Test-Path (Join-Path $root 'Invoke-Recovery.ps1'))
-            status=if($dcrAfter -gt 0){'PASS'}else{'DCR_NOT_RECOVERED'}
-          }
-          $json=$evidence | ConvertTo-Json -Depth 5
+          $after=@(Get-CimInstance Win32_Process | Where-Object {$_.CommandLine -match 'desktop-commander.*remote|Start-DesktopCommanderRemote'}).Count
+          $runner=@(Get-CimInstance Win32_Process | Where-Object {$_.Name -match 'RunnerService|Runner.Listener'}).Count
+          $browser=@(Get-CimInstance Win32_Process | Where-Object {$_.Name -eq 'chrome.exe' -and $_.ExecutablePath -like '*ms-playwright*'}).Count
+          $port=@(Get-NetTCPConnection -LocalPort 9223 -State Listen -ErrorAction SilentlyContinue).Count
+          $obj=[ordered]@{schemaVersion=1;evidenceId='LTMVH-CROSS-RECOVERY-R18';at=(Get-Date).ToString('o');machine=$env:COMPUTERNAME;runnerName=$env:RUNNER_NAME;checkoutUsed=$false;dcrBefore=$before;dcrAfter=$after;runnerProcesses=$runner;dedicatedBrowserProcesses=$browser;cdp9223ListenCount=$port;status=if($after -gt 0){'PASS'}else{'DCR_NOT_RECOVERED'}}
+          $json=$obj | ConvertTo-Json -Depth 4
           $json | Set-Content -LiteralPath (Join-Path $root 'CROSS-RECOVERY-R18.json') -Encoding UTF8
           $json | Write-Host
