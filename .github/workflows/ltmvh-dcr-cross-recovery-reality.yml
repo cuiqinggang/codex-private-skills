@@ -11,120 +11,40 @@ jobs:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 5
     steps:
-      - name: Repair DCR through existing A-session watchdog
+      - name: Final root-cause probes
         shell: pwsh
         run: |
-          $ErrorActionPreference='Stop'
-          $root='C:\AI\LTMVH-Recovery'
-          $req=Join-Path $root 'requests'
-          $ack=Join-Path $root 'acks'
-          New-Item -ItemType Directory -Force -Path $req,$ack | Out-Null
-
-          $supervisor=Join-Path $root 'DCR-Supervisor-v2.ps1'
-          @'
           $ErrorActionPreference='Continue'
-          $env:RUNNER_TRACKING_ID=''
-          $root='C:\AI\LTMVH-Recovery'
-          $log=Join-Path $root 'dcr-supervisor-v2.log'
-          $created=$false
-          $mutex=New-Object System.Threading.Mutex($true,'Local\DCRRemoteSupervisorV2',[ref]$created)
-          if(-not $created){exit 0}
+          Write-Host '=== VERSION ==='
+          node --version
+          npm view '@wonderwhy-er/desktop-commander' version
+          Write-Host '=== CDP ==='
           try {
-            $profile=[Environment]::GetFolderPath('UserProfile')
-            $env:USERPROFILE=$profile
-            $env:HOME=$profile
-            $npx=(Get-Command npx.cmd -ErrorAction Stop).Source
-            ('['+(Get-Date).ToString('o')+'] SUPERVISOR_START identity='+[Security.Principal.WindowsIdentity]::GetCurrent().Name+' profile='+$profile) | Add-Content -LiteralPath $log
-            $session=Join-Path $profile '.desktop-commander-device\device.json'
+            $r=Invoke-WebRequest -UseBasicParsing -TimeoutSec 2 'http://127.0.0.1:9223/json/version'
+            Write-Host ('CDP_9223=PASS status='+$r.StatusCode)
+            Write-Host $r.Content
+          } catch { Write-Host ('CDP_9223=FAIL '+$_.Exception.Message) }
+          Write-Host '=== SESSION1 PROCESS TIMES ==='
+          foreach($id in @(16628,4444,236,20848,21444,8988,16764)){
             try {
-              $fi=Get-Item -LiteralPath $session -ErrorAction Stop
-              ('['+(Get-Date).ToString('o')+'] SESSION_OK size='+$fi.Length+' write='+$fi.LastWriteTime.ToString('o')) | Add-Content -LiteralPath $log
-            } catch {
-              ('['+(Get-Date).ToString('o')+'] SESSION_FAIL '+$_.Exception.Message) | Add-Content -LiteralPath $log
-            }
-            while($true){
-              ('['+(Get-Date).ToString('o')+'] REMOTE_START') | Add-Content -LiteralPath $log
-              try {
-                & $npx -y '@wonderwhy-er/desktop-commander@latest' remote *>> $log
-                ('['+(Get-Date).ToString('o')+'] REMOTE_EXIT code='+$LASTEXITCODE) | Add-Content -LiteralPath $log
-              } catch {
-                ('['+(Get-Date).ToString('o')+'] REMOTE_EXCEPTION '+$_.Exception.Message) | Add-Content -LiteralPath $log
-              }
-              Start-Sleep -Seconds 5
-            }
-          } finally {
-            try{$mutex.ReleaseMutex()}catch{}
-            $mutex.Dispose()
+              $p=Get-Process -Id $id -ErrorAction Stop
+              Write-Host ("PID={0} NAME={1} SESSION={2} START={3:o}" -f $p.Id,$p.ProcessName,$p.SessionId,$p.StartTime)
+            } catch { Write-Host ("PID={0} NOT_FOUND_OR_DENIED" -f $id) }
           }
-          '@ | Set-Content -LiteralPath $supervisor -Encoding UTF8
-
-          $invoke=Join-Path $root 'Invoke-Recovery.ps1'
-          $backup=Join-Path $root 'Invoke-Recovery.pre-dcr-fix.ps1'
-          if(-not (Test-Path $backup)){ Copy-Item -LiteralPath $invoke -Destination $backup -Force }
-
-          @'
-          param([ValidateSet('probe','revive-dcr','revive-runner','revive-all')][string]$Mode='probe')
-          $ErrorActionPreference='Continue'
-          $root='C:\AI\LTMVH-Recovery'
-          New-Item -ItemType Directory -Force -Path $root | Out-Null
-          $runnerSvc='actions.runner.cuiqinggang-codex-private-skills.DESKTOP-4A1EGTM-etal'
-          $repairFlag=Join-Path $root 'requests\repair-dcr-v2.flag'
-          $repairAck=Join-Path $root 'acks\repair-dcr-v2.ack.json'
-          $sharedSupervisor=Join-Path $root 'DCR-Supervisor-v2.ps1'
-          $userLauncher='C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommanderRemote.ps1'
-
-          function Count-Proc([string]$name){
-            try { return @((Get-Process -Name $name -ErrorAction Stop)).Count } catch { return 0 }
-          }
-          function Revive-Runner {
+          Write-Host '=== TCP BY CANDIDATE PIDS ==='
+          foreach($id in @(236,21444,8988,12844,14716,5072)){
             try {
-              $s=Get-Service $runnerSvc -ErrorAction Stop
-              if($s.Status -ne 'Running'){ Start-Service $runnerSvc -ErrorAction Stop; Start-Sleep -Seconds 5 }
-              return ((Get-Service $runnerSvc).Status -eq 'Running')
-            } catch { return $false }
+              Get-NetTCPConnection -OwningProcess $id -ErrorAction Stop |
+                Select-Object OwningProcess,State,LocalAddress,LocalPort,RemoteAddress,RemotePort | Format-Table -AutoSize
+            } catch {}
           }
-
-          if(Test-Path $repairFlag){
-            $repair=[ordered]@{schemaVersion=2;at=(Get-Date).ToString('o');identity=[Security.Principal.WindowsIdentity]::GetCurrent().Name;sessionId=(Get-Process -Id $PID).SessionId;launcherRewritten=$false;launchAttempted=$false;deviceSessionExists=$false;processCount=0;errors=@()}
-            try {
-              $profile=[Environment]::GetFolderPath('UserProfile')
-              $session=Join-Path $profile '.desktop-commander-device\device.json'
-              $repair.deviceSessionExists=(Test-Path -LiteralPath $session)
-              if(-not $repair.deviceSessionExists){throw 'PERSISTED_DCR_DEVICE_SESSION_MISSING'}
-              Copy-Item -LiteralPath $sharedSupervisor -Destination $userLauncher -Force
-              $repair.launcherRewritten=$true
-              Start-Process powershell.exe -WindowStyle Hidden -ArgumentList @('-NoProfile','-ExecutionPolicy','Bypass','-File',$userLauncher)
-              $repair.launchAttempted=$true
-              Start-Sleep -Seconds 15
-              $procs=@(Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -and ($_.CommandLine -match 'DCR-Supervisor-v2|desktop-commander.*remote|wonderwhy-er.*remote')})
-              $repair.processCount=$procs.Count
-              $repair.processes=@($procs | Select-Object ProcessId,ParentProcessId,SessionId,Name,CommandLine)
-            } catch {
-              $repair.errors+=($_.Exception.Message)
-            }
-            $repair.atDone=(Get-Date).ToString('o')
-            $repair | ConvertTo-Json -Depth 7 | Set-Content -LiteralPath $repairAck -Encoding UTF8
-            Remove-Item -LiteralPath $repairFlag -Force -ErrorAction SilentlyContinue
-          }
-
-          if($Mode -in @('revive-runner','revive-all')){ $null=Revive-Runner }
-          $svcStatus='UNKNOWN'
-          try{$svcStatus=(Get-Service $runnerSvc -ErrorAction Stop).Status.ToString()}catch{}
-          [ordered]@{schemaVersion=2;at=(Get-Date).ToString('o');mode=$Mode;machine=$env:COMPUTERNAME;runnerService=$svcStatus;runnerListenerCount=(Count-Proc 'Runner.Listener');runnerServiceCount=(Count-Proc 'RunnerService')} |
-            ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $root 'last-recovery-state.json') -Encoding UTF8
-          '@ | Set-Content -LiteralPath $invoke -Encoding UTF8
-
-          $ackFile=Join-Path $ack 'repair-dcr-v2.ack.json'
-          Remove-Item $ackFile -Force -ErrorAction SilentlyContinue
-          '{"request":"repair-dcr-v2","source":"github-runner"}' | Set-Content -LiteralPath (Join-Path $req 'repair-dcr-v2.flag') -Encoding UTF8
-          Write-Host 'REPAIR_REQUEST_WRITTEN=YES'
-
-          $deadline=(Get-Date).AddSeconds(100)
-          while((Get-Date) -lt $deadline -and -not (Test-Path $ackFile)){Start-Sleep -Seconds 2}
-          if(-not (Test-Path $ackFile)){throw 'A_SESSION_REPAIR_ACK_TIMEOUT'}
-          Write-Host '=== REPAIR ACK ==='
-          Get-Content -LiteralPath $ackFile -Raw
-          Start-Sleep -Seconds 12
-          Write-Host '=== SUPERVISOR LOG ==='
-          $log=Join-Path $root 'dcr-supervisor-v2.log'
-          if(Test-Path $log){Get-Content -LiteralPath $log -Tail 160}
+          Write-Host '=== NPM CACHE ACCESS ==='
+          try {
+            Get-ChildItem 'C:\Users\A\AppData\Local\npm-cache\_npx' -Directory -ErrorAction Stop |
+              Sort-Object LastWriteTime -Descending | Select-Object -First 8 Name,LastWriteTime | Format-Table -AutoSize
+          } catch { Write-Host ('NPM_CACHE_ACCESS=FAIL '+$_.Exception.Message) }
+          Write-Host '=== DCR ENDPOINT ==='
+          try {
+            $r=Invoke-WebRequest -UseBasicParsing -TimeoutSec 5 'https://mcp.desktopcommander.app/api/mcp-info'
+            Write-Host ('MCP_INFO=PASS status='+$r.StatusCode)
+          } catch { Write-Host ('MCP_INFO=FAIL '+$_.Exception.Message) }
