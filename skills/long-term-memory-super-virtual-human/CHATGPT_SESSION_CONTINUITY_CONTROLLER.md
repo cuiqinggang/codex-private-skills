@@ -1,4 +1,4 @@
-# ChatGPT Session Continuity Controller v0.4
+# ChatGPT Session Continuity Controller v0.4.4
 
 ## Purpose
 
@@ -88,6 +88,26 @@ The controller records:
 
 Default policy is intentionally biased toward **earlier rotation for complex work**. Thresholds are tuning parameters and must be calibrated from real T_VALID/failure evidence; they are not treated as universal constants.
 
+
+## v0.4.4 unified page lifecycle
+
+v0.4.4 has one production controller only. Historical recovery/page-continuity methods are indexed in `LEGACY_CONTINUITY_INDEX.md` and must not run as a second supervisor.
+
+Default role thresholds are intentionally preventive tuning values, not universal limits:
+
+```ini
+CEO_VISIBLE_TEXT_LIMIT=40000
+CEO_USER_TURN_LIMIT=10
+EXECUTOR_VISIBLE_TEXT_LIMIT=30000
+EXECUTOR_USER_TURN_LIMIT=3
+POLL_INTERVAL_APPROX_MS=1200
+WAIT_UNTIL_SLOW=NO
+```
+
+The controller accepts multiple page-failure signals under the same decision path: growth, prior disconnect/stall history, explicit UI failure, missing/unusable composer, response pending with no progress, active-turn hard stall, and service-level failure. The rule is not “always rotate”: when a disconnect or active response still has backend progress, keep observing the original turn. Rotate only when a safe checkpoint exists, or when a replay-safe confirmed stall has been fenced/aborted.
+
+Reality 2026-10-04 R1 proved a forced CEO rotation using the existing authenticated shared-mcp browser: true New chat, one submission, one marker, ACK confirmed, no Branch, no second browser launch, page lease retained.
+
 ## Split-brain prevention
 
 For long tasks, reuse ECC v3.1.1 lease/fencing concepts so only the current lease holder updates authoritative task state.
@@ -101,8 +121,8 @@ For long tasks, reuse ECC v3.1.1 lease/fencing concepts so only the current leas
 Current status:
 
 ```ini
-SESSION_CONTINUITY_CONTROLLER=V0_4_3_SINGLE_BROWSER_LOOP_GUARD_PASS_R15
-PROACTIVE_SESSION_ROTATION=VIRTUAL_MATURE_REALITY_OPEN
+SESSION_CONTINUITY_CONTROLLER=V0_4_4_UNIFIED_ROTATION_REALITY_PASS_R1
+PROACTIVE_SESSION_ROTATION=REALITY_PASS_FORCE_ROTATE_R1
 TRUE_NEW_CHAT_ONLY=YES
 BRANCH_RECOVERY=FORBIDDEN
 PAGE_FAILOVER_E2E=TRUE_NEW_CHAT_RECOVERY_PASS
@@ -272,3 +292,8 @@ EXACTLY_ONCE_REQUIRED=YES
 ```
 
 长页面策略：能在安全 checkpoint 提前换就提前换，不以“已经彻底卡死”作为换页前提。页面发生异常时按故障分类处理：短暂断连先观察后台；确认停滞则 checkpoint → true New chat；服务级不可用则切独立备脑。恢复和换页都不得关闭已存在的 shared-mcp GPT 浏览器。
+
+
+## Legacy policy status
+
+All pre-v0.4.4 page-continuity/recovery policies remain available through Git history/evidence and `LEGACY_CONTINUITY_INDEX.md`. They are reference-only and must not be started in parallel with the v0.4.4 controller.
