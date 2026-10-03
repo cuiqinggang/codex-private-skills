@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.4.4 - 2026-10-04
+
+- 将 LTMVH 页面连续性正式收敛为**唯一生产控制链**：`CHATGPT_SESSION_CONTINUITY_CONTROLLER.md` + 单一 supervisor/runtime；旧恢复/换页方案全部转为历史参考，不再并行运行；
+- 新增 `LEGACY_CONTINUITY_INDEX.md`，保留旧恢复阶梯、旧连续性规范、Reality、失败证据和 Git 历史；不删除历史成果；
+- 总控/CEO 页面采用预防性增长阈值：默认可见文本 40,000 或用户轮次 10，任一先到即在安全 checkpoint 主动换真正 New chat；执行页默认 30,000 / 3 轮；
+- 同页压缩/总结不再被视为释放上下文的性能机制，只可作为 handoff 状态材料；
+- 统一页面异常触发器：增长、阶段结束、历史断连、UI/加载/发送异常、无进展、活跃 turn 卡死；统一进入同一决策器；
+- 保留断连保守规则：若后台仍有活动或最终答案可能产生，则先只读 probe / 等待，避免重复执行；确认停滞后才停止旧 turn、checkpoint、true New chat、exactly-once；
+- RAW CDP fallback 增加页面观察与卡死停止能力，避免当前真实 fallback 路径只会“收任务后换页”而不能持续监测；
+- Reality `LTMVH-CEO-ROTATE-REALITY-20261004-R1` PASS：existing shared-mcp browser retained、true New chat、submissionCount=1、markerCount=1、ACK=true、Branch=false、newBrowserLaunched=false；
+- `FINAL_VALID=NO` 不变；v0.4.4 是连续性策略/运行层升级，不代表整个 LTMVH v1.0 毕业。
+
 ## 0.4.3 Capability Registry Extension - 2026-10-03
 
 - **不升级 LTMVH 核心版本**：v0.4.3 连续性 runtime 与既有 Reality 状态不变；
