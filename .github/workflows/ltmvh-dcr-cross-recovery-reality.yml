@@ -34,3 +34,5 @@ jobs:
           $obj=$raw | ConvertFrom-Json
           if(-not $obj.startAttempted){ throw 'DCR_START_NOT_ATTEMPTED' }
           Write-Host 'DCR_CROSS_RECOVERY_REQUEST_ACK=PASS'
+
+# PATH_B_CONNECTIVITY_TEST_20261003_2204
