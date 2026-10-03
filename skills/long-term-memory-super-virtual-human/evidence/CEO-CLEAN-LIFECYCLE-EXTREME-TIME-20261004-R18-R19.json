@@ -1,0 +1,91 @@
+{
+  "schema": "LTMVH_CEO_CLEAN_LIFECYCLE_V045_FREEZE",
+  "version": "0.4.5",
+  "date": "2026-10-04",
+  "objective": "T*=min(T_VALID)",
+  "frozen_contract": {
+    "clean_baseline": "exactly_one_blank_chatgpt_new_chat_root",
+    "reuse_baseline_as_ceo1": true,
+    "executor_pages": "minimum_required_only",
+    "prewarm_unused_pages": false,
+    "checkpoint": "minimal",
+    "old_ceo_close_after_checkpoint": true,
+    "ceo2_session": "true_new_chat_only",
+    "branch_forbidden": true,
+    "redo_accepted_child_work": false,
+    "close_executor_after_result_persisted": true,
+    "final_state": "exactly_one_blank_chatgpt_new_chat_root"
+  },
+  "R18": {
+    "marker": "LTMVH-V044-CEO-CLEAN-E2E-20261004-R18",
+    "t_valid_ms": 51454,
+    "checkpoint_chars": 125,
+    "final_chat_pages": 1,
+    "final_blank_url": "https://chatgpt.com/",
+    "assertions": {
+      "baselineOneBlank": true,
+      "ceo1ReusedBaseline": true,
+      "ceo1Closed": true,
+      "ceo2TrueNewChat": true,
+      "takeover": true,
+      "A": true,
+      "B": true,
+      "executorsClosed": true,
+      "sum": true,
+      "continuity": true,
+      "finalValid": true,
+      "checkpointCompact": true,
+      "finalOneBlank": true
+    },
+    "pass": true
+  },
+  "R19": {
+    "marker": "LTMVH-V044-CEO-CLEAN-E2E-20261004-R19",
+    "t_valid_ms": 54246,
+    "checkpoint_chars": 125,
+    "final_chat_pages": 1,
+    "final_blank_url": "https://chatgpt.com/",
+    "assertions": {
+      "baselineOneBlank": true,
+      "ceo1ReusedBaseline": true,
+      "ceo1Closed": true,
+      "ceo2TrueNewChat": true,
+      "takeover": true,
+      "A": true,
+      "B": true,
+      "executorsClosed": true,
+      "sum": true,
+      "continuity": true,
+      "finalValid": true,
+      "checkpointCompact": true,
+      "finalOneBlank": true
+    },
+    "pass": true
+  },
+  "current_t_star_observed_ms": 51454,
+  "current_t_star_source": "R18",
+  "candidate_results_ms": {
+    "R8": 52542,
+    "R10": 53005,
+    "R13": 66945,
+    "R14": 62540,
+    "R15": 122269,
+    "R16": 90623,
+    "R17": 61827,
+    "R18": 51454,
+    "R19": 54246
+  },
+  "invalid_or_rejected_notes": {
+    "R9": "invalid parser delimiter compression; not a valid candidate",
+    "R11": "invalid due selector encoding corruption; not a valid candidate",
+    "R12": "invalid Enter-submit reliability failure; not a valid candidate",
+    "rejected_default_paths": [
+      "executor_page_prewarm",
+      "Instant_control_chain",
+      "same_physical_CEO_tab_reuse",
+      "delete_separate_takeover_confirmation_round"
+    ]
+  },
+  "interpretation": "51454 ms is the best observed valid result under this frozen contract, not a universal mathematical lower bound.",
+  "project_final_valid": "NO"
+}
