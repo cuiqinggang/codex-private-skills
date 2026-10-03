@@ -4,7 +4,7 @@ const {spawnSync}=require('child_process');
 const {chromium}=require('playwright');
 const {decide}=require('./session-continuity-supervisor');
 const {pageLeaseDecision,conversationRotation}=require('./chatgpt-page-lease');
-const {recoverExistingChat}=require('./chatgpt-existing-cdp');
+const {recoverExistingChat,observeExistingChat,abortExistingChatTurn}=require('./chatgpt-existing-cdp');
 const {acquireGlobalWriterLease,heartbeatGlobalWriterLease,releaseGlobalWriterLease}=require('./chatgpt-global-writer-lease');
 
 function arg(name,def=null){const i=process.argv.indexOf('--'+name);return i>=0?process.argv[i+1]:def}
@@ -20,8 +20,8 @@ const checkpointPath=arg('checkpoint',path.join(root,'checkpoint.json'));
 const backupResultPath=arg('backup-result',path.join(root,'backup-result.json'));
 const pollMs=Number(arg('poll-ms','1200'));
 const silenceMs=Number(arg('silence-ms','45000'));
-const maxTurns=Number(arg('max-turns','24'));
-const maxText=Number(arg('max-text','80000'));
+const maxTurns=Number(arg('max-turns','10'));
+const maxText=Number(arg('max-text','40000'));
 const cdpEndpoint=arg('cdp-endpoint','http://127.0.0.1:9223');
 const neverLaunch=String(arg('never-launch','false')).toLowerCase()==='true';
 const noAutoNewPage=String(arg('no-auto-new-page','false')).toLowerCase()==='true';
@@ -34,6 +34,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const rxDisconnect=/连接已断开|正在重新连接|disconnected|reconnecting/i;
 const rxHuman=/verify you are human|captcha|确认您是真人|验证.*真人|just a moment|checking your browser|请稍候/i;
 const rxService=/service unavailable|temporarily unavailable|bad gateway|internal server error/i;
+const rxUiFailure=/something went wrong|try again|unable to load|network error|出了点问题|出现错误|重试|加载失败|网络错误/i;
 
 function isPidAlive(pid){if(!pid)return false;try{process.kill(pid,0);return true}catch{return false}}
 function readJson(p,fallback){try{return JSON.parse(fs.readFileSync(p,'utf8'))}catch{return fallback}}
@@ -74,7 +75,7 @@ let lastSig='',lastProgress=now(),probeDone=false,priorDisconnect=0;
 
 function leaseState(extra={}){
  heartbeatGlobalWriterLease({leasePath:globalWriterLeasePath,token:globalWriterToken,marker:currentTask?.marker||'IDLE'});
- const base={schemaVersion:1,status:'LEASE_ACTIVE',version:'0.4.3',pid:process.pid,profile,globalWriterLeasePath,
+ const base={schemaVersion:1,status:'LEASE_ACTIVE',version:'0.4.4',pid:process.pid,profile,globalWriterLeasePath,
   pageLease:true,browserMustStayOpen:true,updatedAt:new Date().toISOString(),pageUrl:leasedPage&&!leasedPage.isClosed()?leasedPage.url():null};
  writeJson(statePath,{...base,...extra});
 }
@@ -103,11 +104,12 @@ async function observe(page){
   disconnected:rxDisconnect.test(o.bodyText),
   humanVerification:rxHuman.test(o.bodyText)||rxHuman.test(o.title||''),
   serviceUnavailable:rxService.test(o.bodyText),
+  uiFailure:rxUiFailure.test(o.bodyText),
   safeCheckpoint:!o.stop&&o.composer&&o.assistantTurns>0&&o.copyReady};
 }
 
 function buildCheckpoint(task,obs,reason){
- const cp={schemaVersion:1,version:'0.4.3',createdAt:new Date().toISOString(),reason,
+ const cp={schemaVersion:1,version:'0.4.4',createdAt:new Date().toISOString(),reason,
   marker:task.marker,sourceConversationUrl:obs.url,taskContract:task.taskContract||task.goal||'',
   acceptedConclusion:(obs.lastAssistant||'').slice(0,12000),lastUser:(obs.lastUser||'').slice(0,6000),
   unresolvedItems:task.unresolvedItems||[],nextInstruction:task.nextInstruction||
@@ -307,10 +309,16 @@ async function processTask(task){
    stallMeta.hardDeadlineExceeded=true;stallMeta.hardDeadlineExceededAt=new Date().toISOString();
    console.log(JSON.stringify({event:'STALL_HARD_DEADLINE_EXCEEDED',marker:task.marker,turnActive:o.stop,silenceMs}));
   }
-  const proactive=o.safeCheckpoint&&(o.userTurns>=maxTurns||o.txtLen>=maxText||priorDisconnect>0);
+  const role=String(task.role||'CEO').toUpperCase();
+  const roleMaxTurns=Number(task.maxTurns||(role==='EXECUTOR'?3:maxTurns));
+  const roleMaxText=Number(task.maxText||(role==='EXECUTOR'?30000:maxText));
+  const responsePending=o.userTurns>o.assistantTurns&&!o.safeCheckpoint;
+  const pageUnresponsive=hard&&responsePending&&!o.stop;
+  const replaySafe=task.replaySafe===true||role==='CEO';
+  const proactive=o.safeCheckpoint&&(o.userTurns>=roleMaxTurns||o.txtLen>=roleMaxText||priorDisconnect>0);
   const s={safeCheckpoint:o.safeCheckpoint,proactiveRotation:proactive,gptServiceAvailable:!o.serviceUnavailable,
-   pageHealthy:o.composer||o.stop||o.assistantTurns>0,transportDisconnected:o.disconnected,turnActive:o.stop,
-   backendActivityObserved:o.stop&&!hard,finalAnswerObserved:o.safeCheckpoint,readOnlyProbeDone:probeDone,
+   pageHealthy:Boolean(o.composer||o.stop)&&!o.uiFailure,uiFailure:o.uiFailure,transportDisconnected:o.disconnected,turnActive:o.stop,
+   responsePending,pageUnresponsive,replaySafe,backendActivityObserved:o.stop&&!hard,finalAnswerObserved:o.safeCheckpoint,readOnlyProbeDone:probeDone,
    hardDeadlineExceeded:hard,freshChatAvailable:true,freshSessionKind:'NEW_CHAT',fenceToken:task.fenceToken||0,
    writeOwner:'PRIMARY',primaryRecovered:false,humanVerificationRequired:false,primaryPathBlocked:false,alternateValidPathAvailable:false};
   const d=decide(s);
@@ -368,14 +376,16 @@ async function rawCdpOwnerLoop(trigger){
  leaseState({status:'LEASE_ACTIVE',attachedVia:'RAW_CDP_EXISTING_BROWSER',cdpEndpoint,externalBrowserAttached:true,
   pageLease:true,browserMustStayOpen:true,attachFallbackReason:trigger});
  if(initialTaskPath){const q=enqueueTask(initialTaskPath);console.log(JSON.stringify(q))}
+ let rawLastSig='',rawLastProgress=now(),rawProbeDone=false,rawPriorDisconnect=0;
  for(;;){
   if(stopping)break;
   const item=await claimTaskFile();
   if(item&&item.task){
+   currentTask=item.task;
    const task=item.task;
    const priorCp=readJson(checkpointPath,null);
    const cp=priorCp&&priorCp.marker===task.marker?priorCp:{
-    schemaVersion:1,version:'0.4.3',createdAt:new Date().toISOString(),reason:'RAW_CDP_EXISTING_BROWSER_RECOVERY',
+    schemaVersion:1,version:'0.4.4',createdAt:new Date().toISOString(),reason:'RAW_CDP_EXISTING_BROWSER_RECOVERY',
     marker:task.marker,sourceConversationUrl:'EXISTING_CHATGPT_PAGE',taskContract:task.taskContract||task.goal||'',
     acceptedConclusion:task.acceptedConclusion||'',lastUser:'',unresolvedItems:task.unresolvedItems||[],
     nextInstruction:task.nextInstruction||'根据以上接续上下文继续当前未完成任务，从下一步唯一动作开始，不重新讨论已冻结结论。',
@@ -389,17 +399,60 @@ async function rawCdpOwnerLoop(trigger){
     writeJson(path.join(doneDir,item.name),{task,result:{decision:{action:'ROTATE_TO_NEW_CHAT'},recovery:result,checkpoint:checkpointPath,
       pageLeaseRetained:true},finishedAt:new Date().toISOString()});
     fs.unlinkSync(item.src);
+    rawLastSig='';rawLastProgress=now();rawProbeDone=false;rawPriorDisconnect=0;
     console.log(JSON.stringify({decision:{action:'ROTATE_TO_NEW_CHAT'},recovery:result,checkpoint:checkpointPath,pageLeaseRetained:true},null,2));
    }catch(e){
     const result={task,error:String(e.stack||e),failedAt:new Date().toISOString(),pageLeaseRetained:true};
     writeJson(path.join(failDir,item.name),result);fs.unlinkSync(item.src);console.error('RAW_CDP_TASK_FAIL',e.stack||e);
    }
+  }else if(currentTask){
+   try{
+    const o=await observeExistingChat(cdpEndpoint);
+    const tickNow=now();
+    const sig=[o.url,o.userTurns,o.assistantTurns,o.stop,(o.lastAssistant||'').length,o.txtLen,o.composer,o.uiFailure].join('|');
+    if(sig!==rawLastSig){rawLastSig=sig;rawLastProgress=tickNow;}
+    if(o.disconnected)rawPriorDisconnect++;
+    const hard=tickNow-rawLastProgress>=silenceMs;
+    const role=String(currentTask.role||'CEO').toUpperCase();
+    const roleMaxTurns=Number(currentTask.maxTurns||(role==='EXECUTOR'?3:maxTurns));
+    const roleMaxText=Number(currentTask.maxText||(role==='EXECUTOR'?30000:maxText));
+    const responsePending=o.userTurns>o.assistantTurns&&!o.safeCheckpoint;
+    const pageUnresponsive=hard&&responsePending&&!o.stop;
+    const replaySafe=currentTask.replaySafe===true||role==='CEO';
+    const proactive=o.safeCheckpoint&&(o.userTurns>=roleMaxTurns||o.txtLen>=roleMaxText||rawPriorDisconnect>0);
+    const s={safeCheckpoint:o.safeCheckpoint,proactiveRotation:proactive,gptServiceAvailable:!o.serviceUnavailable,
+     pageHealthy:Boolean(o.composer||o.stop)&&!o.uiFailure,uiFailure:o.uiFailure,transportDisconnected:o.disconnected,turnActive:o.stop,
+     responsePending,pageUnresponsive,replaySafe,backendActivityObserved:o.stop&&!hard,finalAnswerObserved:o.safeCheckpoint,
+     readOnlyProbeDone:rawProbeDone,hardDeadlineExceeded:hard,freshChatAvailable:true,freshSessionKind:'NEW_CHAT',
+     fenceToken:currentTask.fenceToken||0,writeOwner:'PRIMARY',primaryRecovered:false,
+     humanVerificationRequired:o.humanVerification,primaryPathBlocked:false,alternateValidPathAvailable:false};
+    const d=decide(s);
+    if(d.action==='PROBE_PAGE'){rawProbeDone=true;console.log(JSON.stringify({event:'RAW_CDP_READ_ONLY_PROBE',marker:currentTask.marker,hardDeadlineExceeded:hard}));}
+    else if(d.action==='ABORT_STALLED_TURN'){
+     await abortExistingChatTurn(cdpEndpoint);
+     const stopped=await observeExistingChat(cdpEndpoint);
+     const cp=buildCheckpoint(currentTask,stopped,'CONFIRMED_STALL_ABORTED_RAW_CDP');
+     const result=await recoverExistingChat({endpoint:cdpEndpoint,marker:currentTask.marker,prompt:handoffText(currentTask,cp),
+      expectedText:currentTask.expectedRecoveryText||'',timeoutMs:currentTask.answerTimeoutMs||120000});
+     ledgerSet(currentTask.marker,{sentConfirmed:true,conversationUrl:result.url,rawCdp:true,ackConfirmed:result.ackConfirmed||false});
+     rawLastSig='';rawLastProgress=now();rawProbeDone=false;rawPriorDisconnect=0;
+     console.log(JSON.stringify({decision:d,recovery:result,checkpoint:checkpointPath,pageLeaseRetained:true},null,2));
+    }else if(d.action==='ROTATE_TO_NEW_CHAT'||d.action==='OPEN_TRUE_NEW_CHAT'){
+     const cp=buildCheckpoint(currentTask,o,proactive?'PROACTIVE_GROWTH_ROTATION_RAW_CDP':'PAGE_FAILURE_ROTATION_RAW_CDP');
+     const result=await recoverExistingChat({endpoint:cdpEndpoint,marker:currentTask.marker,prompt:handoffText(currentTask,cp),
+      expectedText:currentTask.expectedRecoveryText||'',timeoutMs:currentTask.answerTimeoutMs||120000});
+     ledgerSet(currentTask.marker,{sentConfirmed:true,conversationUrl:result.url,rawCdp:true,ackConfirmed:result.ackConfirmed||false});
+     rawLastSig='';rawLastProgress=now();rawProbeDone=false;rawPriorDisconnect=0;
+     console.log(JSON.stringify({decision:d,recovery:result,checkpoint:checkpointPath,pageLeaseRetained:true},null,2));
+    }else if(d.action==='PAUSE_FOR_HUMAN_VERIFICATION'){
+     leaseState({status:'HUMAN_VERIFICATION_REQUIRED',currentTaskMarker:currentTask.marker});
+    }
+   }catch(e){leaseState({status:'LEASE_DEGRADED',error:String(e.message||e),currentTaskMarker:currentTask?.marker||null});}
   }
-  leaseState({status:'LEASE_ACTIVE',attachedVia:'RAW_CDP_EXISTING_BROWSER',cdpEndpoint,externalBrowserAttached:true});
+  leaseState({status:'LEASE_ACTIVE',attachedVia:'RAW_CDP_EXISTING_BROWSER',cdpEndpoint,externalBrowserAttached:true,currentTaskMarker:currentTask?.marker||null});
   await sleep(1000);
  }
 }
-
 async function ownerLoop(){
  try{await ensureLeasedPage()}
  catch(e){
