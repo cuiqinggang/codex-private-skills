@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "task_id": "LTMVH-HERMES-STARTUP-AUDIT-20261003",
+  "payload_path": "workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/LTMVH-HERMES-STARTUP-AUDIT-20261003.ps1",
+  "timeout_seconds": 60,
+  "expected_exit_code": 0
+}
