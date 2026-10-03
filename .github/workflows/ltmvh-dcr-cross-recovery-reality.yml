@@ -11,27 +11,19 @@ jobs:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 5
     steps:
-      - name: Inspect interactive session and task events
+      - name: Inspect PowerShell script-block evidence for DCR startup
         shell: pwsh
         run: |
           $ErrorActionPreference='Continue'
-          Write-Host '=== QUSER ==='
-          quser
-          Write-Host '=== LOGON SESSIONS ==='
-          Get-CimInstance Win32_LogonSession | Where-Object {$_.LogonType -in 2,10,11} |
-            Select-Object LogonId,LogonType,StartTime | Format-Table -AutoSize
-          Write-Host '=== EXPLORER USERS ==='
-          Get-CimInstance Win32_Process -Filter "Name='explorer.exe'" | ForEach-Object {
-            $o=$_.GetOwner()
-            [pscustomobject]@{PID=$_.ProcessId;SessionId=$_.SessionId;Domain=$o.Domain;User=$o.User}
-          } | Format-Table -AutoSize
-          Write-Host '=== TASK INFO ==='
-          Get-ScheduledTaskInfo -TaskName 'GPT-DesktopCommander-Remote-Autostart' | Format-List *
-          Write-Host '=== TASK SCHEDULER EVENTS ==='
-          Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-TaskScheduler/Operational';StartTime=(Get-Date).AddHours(-3)} -ErrorAction SilentlyContinue |
-            Where-Object {$_.Message -match 'GPT-DesktopCommander-Remote-Autostart'} |
-            Select-Object -First 30 TimeCreated,Id,LevelDisplayName,Message | Format-List
-          Write-Host '=== POWERSHELL EVENTS ==='
-          Get-WinEvent -FilterHashtable @{LogName='Windows PowerShell';StartTime=(Get-Date).AddHours(-3)} -ErrorAction SilentlyContinue |
-            Where-Object {$_.Message -match 'Start-DesktopCommanderRemote|DesktopCommanderRemote'} |
-            Select-Object -First 30 TimeCreated,Id,LevelDisplayName,Message | Format-List
+          $logs=@('Microsoft-Windows-PowerShell/Operational','Windows PowerShell')
+          foreach($ln in $logs){
+            Write-Host ("=== LOG "+$ln+" ===")
+            try {
+              Get-WinEvent -FilterHashtable @{LogName=$ln;StartTime=(Get-Date).AddHours(-3)} -ErrorAction Stop |
+                Where-Object {
+                  $_.Id -in 4103,4104,400,403 -and (
+                    $_.Message -match 'DesktopCommanderRemote|desktop-commander|Start-DesktopCommanderRemote|npx|wonderwhy'
+                  )
+                } | Select-Object -First 80 TimeCreated,Id,LevelDisplayName,Message | Format-List
+            } catch { Write-Host ("READ_FAIL="+$_.Exception.Message) }
+          }
