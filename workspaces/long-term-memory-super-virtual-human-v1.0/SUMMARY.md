@@ -119,3 +119,14 @@ R15 进一步冻结：Watchdog 是唯一允许执行 bootstrap launch 的入口�
 
 v0.4 状态：
 `skills/long-term-memory-super-virtual-human/REALITY_STATUS_2026-10-03_V0.4.md`
+
+## 独立强备份建设（2026-10-03 R1）
+
+用户要求：完全不依赖 GPT、Codex，以 v0.4.3 的同等现实功能为目标，沿用自动化闭环 v2.0 与 T*=min(T_VALID)；先讨论，再建设。
+
+- 方案与建设合同：[INDEPENDENT_BACKUP_DESIGN_20261003_R1.md](INDEPENDENT_BACKUP_DESIGN_20261003_R1.md)。
+- 当前为 STATE=10 讨论基线；本轮没有部署或完成独立业务 Reality；STRONG_BACKUP_CERTIFIED=NO。
+- 优先验证已有 Reasonix＋DeepSeek 最短组合；OpenCode/OpenClaw 为对照候选，按完整 T_VALID 选择。
+- 整链路检查独立性，包含入口、监督器、记忆嵌入、搜索、账号接口、视觉/媒体、验收与通知；不得保留隐藏 OpenAI 必需依赖。
+- 不再等待主路线 v1.0 毕业才启动备份建设；此变化依据用户本轮明确要求。
+- v0.4.3 主技能及主项目 FINAL_VALID=NO 保持不变。
