@@ -1,14 +1,14 @@
 ---
 name: long-term-memory-super-virtual-human
-version: "0.4.4"
+version: "0.4.5"
 description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human）。以高智能主脑为核心，吸收成熟 Recovery/Long-Flow/Browser 机制，以长期记忆、权威任务合同、Checkpoint、按需工具路由、低相关冗余和独立强备份推进现实任务；唯一优化目标仍是 T*=min(T_VALID)。
 ---
 
-# 长期记忆超级虚拟人 v0.4.4
+# 长期记忆超级虚拟人 v0.4.5
 # Long-Term Memory Super Virtual Human
 
 ```ini
-VERSION=0.4.4
+VERSION=0.4.5
 STATUS=VIRTUAL_MATURE_CONTINUITY_RUNTIME_ACTIVE
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
@@ -28,7 +28,7 @@ REASONIX_RECOVERY_KIT_ABSORPTION=R1
 ECC_V3_1_1=REUSE
 PLAYWRIGHT_NATIVE_AI_BROWSER=REUSE
 CHATGPT_MODEL_EFFORT_CONTROLLER=FULL_E2E_REALITY_PASS_R14
-CHATGPT_SESSION_CONTINUITY_CONTROLLER=V0_4_4_UNIFIED_ROTATION_REALITY_PASS_R1
+CHATGPT_SESSION_CONTINUITY_CONTROLLER=V0_4_5_CLEAN_LIFECYCLE_TSTAR_R18_R19
 PAID_TO_FREE_OPEN_SOURCE_REPLACEMENT=V1_0_0_REGISTERED
 ```
 
@@ -257,7 +257,7 @@ v1.0 按**能力结果**验收，不把某一个实现工具写成唯一毕业�
 
 原则：实现路径可以降级，DONE_WHEN 不能降级。
 
-## 14. v0.4.4 默认运行合同
+## 14. v0.4.5 默认运行合同
 
 当用户明确说以下任一含义时：
 
@@ -283,7 +283,11 @@ CONTINUITY_RUNTIME_BROWSER_LAUNCH=FORBIDDEN
 CONTINUITY_RUNTIME_AUTO_NEW_PAGE=FORBIDDEN
 CONTROL_LOSS_BEHAVIOR=FAIL_CLOSED_KEEP_EXISTING_BROWSER
 EXACTLY_ONCE_CONTINUATION=REQUIRED
-KEEP_BROWSER_OPEN=YES
+KEEP_BROWSER_PROCESS_OPEN=YES
+IDLE_CHAT_PAGE_TARGET=1
+IDLE_CHAT_PAGE_KIND=BLANK_NEW_CHAT_ROOT
+CLOSE_FINISHED_EXECUTOR_PAGE=YES
+CLOSE_FINISHED_CEO_PAGE_AFTER_PERSIST=YES
 ```
 
 运行语义：
@@ -297,7 +301,7 @@ KEEP_BROWSER_OPEN=YES
 该合同在技能包被明确调用后，对当前任务生命周期持续有效，直到任务 FINAL_VALID、用户明确 STOP，或用户明确退出该技能运行模式。
 
 
-### v0.4.4 页面生命周期统一规则
+### v0.4.5 页面生命周期统一规则
 
 同页“压缩/总结”只用于形成可接续状态，不视为真正释放上下文。页面生命周期只由一套连续性控制链管理：
 
@@ -325,6 +329,60 @@ EXECUTOR_USER_TURN_LIMIT_DEFAULT=3
 - **服务级不可用**：按备脑/备路合同切换，不把页面轮换误当成服务恢复。
 
 旧页面连续性/恢复方案全部保留为历史资产，不再并行运行；索引见 `LEGACY_CONTINUITY_INDEX.md`。
+
+
+### v0.4.5 专用浏览器 CEO 干净生命周期冻结合同
+
+Reality R18 / R19 已证明专用浏览器可以在**单空白页干净基线**下完成完整 CEO 控制链，并在任务结束后恢复到单空白页。生产默认按以下最小路径运行：
+
+```text
+1 个空白 ChatGPT New chat 页
+→ 复用为 CEO-1
+→ CEO-1 只负责理解 / 拆分 / DONE_WHEN
+→ 仅按需创建最少执行页
+→ 写入最小 checkpoint
+→ 关闭旧 CEO
+→ 真正 New chat 创建 CEO-2
+→ CEO-2 基于 checkpoint 接管，禁止重做已派任务
+→ 收回原执行结果并验收
+→ 已完成执行页立即关闭
+→ FINAL_VALID 与证据持久化
+→ 关闭最终 CEO
+→ 恢复恰好 1 个空白 ChatGPT New chat 页
+```
+
+冻结规则：
+
+```ini
+CLEAN_BROWSER_BASELINE_REQUIRED=YES
+IDLE_CHAT_PAGE_TARGET=1
+IDLE_CHAT_PAGE_KIND=BLANK_NEW_CHAT_ROOT
+REUSE_BASELINE_AS_CEO1=YES
+EXECUTOR_PAGE_COUNT=MIN_REQUIRED_ONLY
+PREWARM_UNUSED_CHAT_PAGES=NO
+CLOSE_EXECUTOR_AFTER_RESULT_PERSISTED=YES
+CLOSE_OLD_CEO_AFTER_CHECKPOINT=YES
+CEO_REPLACEMENT_SESSION=TRUE_NEW_CHAT_ONLY
+BRANCH_RECOVERY=FORBIDDEN
+FULL_CONVERSATION_REPLAY=NO
+MINIMAL_CHECKPOINT=REQUIRED
+FINAL_BROWSER_STATE=ONE_BLANK_NEW_CHAT_PAGE
+```
+
+当前 Reality 极限短时间记录：
+
+```ini
+CEO_CLEAN_LIFECYCLE_REALITY=PASS_R18_R19
+T_VALID_R18_MS=51454
+T_VALID_R19_MS=54246
+T_STAR_OBSERVED_MS=51454
+T_STAR_SOURCE=R18
+CHECKPOINT_CHARS_R18=125
+```
+
+`T_STAR_OBSERVED_MS=51454` 表示在当前设备、当前 ChatGPT 服务状态和本冻结合同下**已观测到的最小有效值**，不是不可突破的数学下界；后续只有新的 Reality 在不降低 VALID 合同的前提下更快，才允许替换当前 T*。
+
+已实测但不采用为默认路径的候选包括：执行页提前预热、Instant 控制链、CEO 同物理 tab 复用、删除独立接管确认回合。它们在本轮 Reality 中没有降低完整 T_VALID，部分显著变慢；不得仅凭“理论上步骤更少”替换当前冻结路径。
 
 ## 15. 当前入口
 
