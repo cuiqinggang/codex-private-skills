@@ -3,7 +3,7 @@
 ```ini
 PROJECT=长期记忆超级虚拟人
 WORKSPACE_VERSION=v1.0
-SKILL_VERSION=v0.4.4
+SKILL_VERSION=v0.4.5
 SKILL_ENGLISH_NAME=Long-Term Memory Super Virtual Human
 
 STATE=10
@@ -51,17 +51,34 @@ CEO_USER_TURN_LIMIT_DEFAULT=10
 EXECUTOR_VISIBLE_TEXT_LIMIT_DEFAULT=30000
 EXECUTOR_USER_TURN_LIMIT_DEFAULT=3
 PROACTIVE_ROTATION_REALITY=PASS_20261004_R1
+CEO_CLEAN_LIFECYCLE_REALITY=PASS_R18_R19
+CEO_CLEAN_LIFECYCLE_T_STAR_MS=51454
+CEO_CLEAN_LIFECYCLE_R19_MS=54246
+IDLE_CHAT_PAGE_TARGET=1
+FINAL_BROWSER_STATE=ONE_BLANK_NEW_CHAT_ROOT
 FREE_SOFTWARE_CATALOG=2026-10-03-R1_96_ENTRIES
 ```
 
 ## 当前正式判断
 
-- 技能包已升级为 **v0.4.4**；页面连续性已统一为单一生产控制链，不再运行两套 supervisor。
+- 技能包已升级为 **v0.4.5**；页面连续性继续使用单一生产控制链，并新增专用浏览器 CEO 干净生命周期冻结合同。
 - CEO/总控页默认按 `40,000 可见字符 OR 10 用户轮次` 预防性轮换；执行页默认 `30,000 OR 3 轮`；同页压缩只用于形成 handoff，不视为释放上下文。
 - 页面/UI 异常、断连、无进展、活跃 turn 卡死进入同一状态机：后台仍推进则等待；确认停滞才 abort + checkpoint + true New chat + minimal handoff + exactly-once。
 - Reality `LTMVH-CEO-ROTATE-REALITY-20261004-R1` 已证明：现有 shared-mcp 浏览器保留、真正 New chat、submissionCount=1、markerCount=1、ACK=true、Branch=false、未启动第二浏览器。
 - 旧 `C:\\AI\\LTMVH-Reality\\chatgpt-continuity-v1\\` 及旧页面恢复策略退役为历史资产；索引为 `skills/long-term-memory-super-virtual-human/LEGACY_CONTINUITY_INDEX.md`，禁止作为第二套生产控制器并行运行。
 - **收费转免费·开源替代技能包 v1.0.0** 继续作为按需能力；本次升级不改变 `FINAL_VALID=NO`。
+
+
+## v0.4.5｜CEO 专用浏览器干净生命周期与极限短时间冻结
+
+- 干净基线：专用浏览器空闲时只保留 **1 个空白 ChatGPT New chat 页**；该页直接复用为 CEO-1。
+- 执行页只按当前业务的最小必要数量创建；结果已被权威状态/CEO 接受后立即关闭，不保留历史执行页。
+- CEO-1 只负责理解、拆分、DONE_WHEN；生成最小 checkpoint 后关闭；CEO-2 必须是真正 New chat，禁止 Branch，禁止重做已接受的 A/B 原任务。
+- 任务 FINAL_VALID 与证据持久化后关闭最终 CEO，并恢复 **恰好 1 个空白 New chat 页**。
+- Reality R18：全门 PASS，`T_VALID=51,454 ms`，checkpoint=125 chars，最终 ChatGPT 页数=1。
+- Reality R19：同构复验全门 PASS，`T_VALID=54,246 ms`，最终 ChatGPT 页数=1。
+- 当前观测 `T*=min(T_VALID)=51,454 ms`，来源 R18；仅当后续 Reality 在不降低 VALID 合同的条件下更快，才允许替换。
+- 已测但不采用为默认路径：A/B 提前预热、Instant 控制链、CEO 同物理 tab 复用、删除独立接管确认回合。
 
 ## 页面恢复 Reality R25（2026-10-03）
 
