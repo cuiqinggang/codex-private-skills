@@ -25,7 +25,7 @@ jobs:
           New-Item -ItemType Directory -Force -Path $req,$ack | Out-Null
           $ackFile=Join-Path $ack 'revive-dcr.ack.json'
           Remove-Item $ackFile -Force -ErrorAction SilentlyContinue
-          '{"request":"revive-dcr","source":"github-runner","reality":"R19"}' | Set-Content -LiteralPath (Join-Path $req 'revive-dcr.flag') -Encoding UTF8
+          '{"request":"revive-dcr","source":"github-runner","reality":"R22"}' | Set-Content -LiteralPath (Join-Path $req 'revive-dcr.flag') -Encoding UTF8
           $deadline=(Get-Date).AddSeconds(90)
           while((Get-Date) -lt $deadline -and -not (Test-Path $ackFile)){ Start-Sleep -Seconds 2 }
           if(-not (Test-Path $ackFile)){ throw 'DCR_REVIVE_ACK_TIMEOUT' }
