@@ -28,3 +28,10 @@ v0.7 最终冻结前至少需要：
 3. 没有已知会破坏 v0.6 冻结合同的回归；
 4. 主运行合同、方法文档、证据、Changelog 一致；
 5. 明确 FINAL_VALID 范围，不把未测能力写成 PASS。
+
+## 2026-10-04 现场新增 P0
+- R14：透明有界调度：同一专用 browser/context 内 1 路 vs 2 路 vs 3 路 executor 页面；验证无第二浏览器、无无限标签、状态可见。
+- R15：队列透明度：至少验证 QUEUED / DISPATCHED / RUNNING / WAITING_EXTERNAL / STALL_SUSPECTED / VALID，排队时必须可见 queue position。
+- R16：模型强度路由：简单 executor 用 Instant/Medium、复杂任务按需 High，对比 T_VALID、返工率与高档额度消耗；禁止把 R14 的“恢复原 High”误当永久默认。
+- R17：多入口竞争：两个普通浏览器/两个上层任务同时派发时，验证它们进入同一 scheduler 后不会争夺同一 page、不会双写、不会形成不可解释长黑箱。
+
