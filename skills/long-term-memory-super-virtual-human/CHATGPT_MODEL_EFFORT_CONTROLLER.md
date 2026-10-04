@@ -146,3 +146,21 @@ E2E_CERTIFIED=YES
 - 当前 ChatGPT DOM 已不稳定暴露旧 `data-message-author-role`；R14 verifier 使用可见“你说/You said”语义兜底，不把 DOM 适配失败冒充业务失败。
 - Evidence: `evidence/MODEL-EFFORT-FULL-E2E-REALITY-20261003-R14.json`。
 - Result: `MODEL_EFFORT_FULL_E2E=PASS_R14`；该门已闭合，但项目 `FINAL_VALID=NO` 不变。
+
+## v0.7.0 调度补充
+
+专用浏览器当前页面显示 High 不代表执行器默认必须使用 High。历史 R14 的“finally 恢复原档 High”是**状态恢复测试**，不是默认路由策略。
+
+v0.7.0 采用最低充分能力原则：
+
+```ini
+CEO_ROUTER_DEFAULT=Medium
+SIMPLE_EXECUTOR=Instant_or_Medium
+NORMAL_EXECUTOR=Medium
+COMPLEX_ANALYSIS=High_when_justified
+EXTRA_HIGH_OR_PRO=exception_only
+PER_STAGE_READBACK=REQUIRED
+```
+
+简单节点（格式转换、确定性检查、短计算、已冻结输入的单步执行）优先 Instant/Medium；只有复杂推理、较高返工风险或 Reality 证明 Medium 更慢时才升 High。多个并发执行页不得无差别全部 High，以免高档算力被并发消耗。
+
