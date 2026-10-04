@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "task_id": "LTMVH-V050-BRIDGE-20261004-R1",
+  "payload_path": "workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/LTMVH-V050-BRIDGE-20261004-R1.ps1",
+  "timeout_seconds": 120,
+  "expected_exit_code": 0
+}
