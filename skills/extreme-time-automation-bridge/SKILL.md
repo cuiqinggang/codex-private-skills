@@ -10,7 +10,7 @@ STATUS=REALITY_PARTIAL_PERSISTENCE
 VERSION=0.3.0
 PRIMARY_ROUTE_CURRENT=PASS
 PRIMARY_DEVICE_NAME=DESKTOP-4A1EGTM
-PRIMARY_DEVICE_ID=503e66bf-4f80-49fc-a90f-020ec8c71b1e
+PRIMARY_DEVICE_ID=f6990966-5870-484b-bf79-409bc6fb963e
 PRIMARY_APP_VERSION=0.2.52
 PRIMARY_PING_REALITY=PASS
 PRIMARY_WINDOWS_COMMAND_REALITY=PASS
@@ -46,3 +46,13 @@ launcher：C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommande
 3. 主路暂不可恢复而 GitHub runner Online → 备路。
 4. 两路都不可用 → 明确阻塞原因，不伪装成功。
 5. 不修改 FlClash / Windows 网络代理。
+
+## 2026-10-04 双路真实复验 R1（当前状态）
+
+- 当前在线主设备 ID：f6990966-5870-484b-bf79-409bc6fb963e；历史503e设备已Offline，以实时list_devices为准。
+- 主路：真实Windows命令、部署、循环检查与实际runtime inbox验证PASS。
+- 备路：首测 Actions run 37192980220 在 Git checkout 阶段两次连接GitHub失败；不得把Online当畅通。
+- 根因范围修复：Windows任务不再依赖Git partial clone补取blob；从同一github.sha经Contents API按需读取任务JSON、payload和Invoke-BridgeTask.ps1。每文件最多3次、每次30秒、间隔2秒；使用本次workflow临时token，不存入文件/日志。
+- 复测 run 37193387268 全部success；实际runner=DESKTOP-4A1EGTM-etal，执行exit_code=0、duration_ms=2453.998，真实进程/文件循环4/4 PASS及唯一marker回传。
+- 未修改FlClash、Windows网络代理；当前双路限定命令任务PASS不保证未来零故障，不替代重启/注销持久化Reality。
+- 证据：../long-term-memory-super-virtual-human/evidence/V050-WINDOWS-GOAL-LOOP-REALITY-20261004-R1.json。
