@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "evidenceId": "LTMVH-V070-SAVED-BASELINE-20261004-R1",
+  "date": "2026-10-04",
+  "version": "0.7.0",
+  "state": "SAVED_NOT_FROZEN",
+  "finalVersion": false,
+  "projectFinalValid": false,
+  "parentFrozenVersion": "0.6.0",
+  "methodDocument": "FROZEN_NODE_MINIMAL_CONTEXT_EXECUTION.md",
+  "savedBaseline": "V070_SAVED_BASELINE.md",
+  "realityBacklog": "V070_REALITY_BACKLOG.md",
+  "verifiedInherited": {
+    "cleanCeoLifecycle": "PASS_R18_R19",
+    "sessionContinuity": "PASS_EXISTING_EVIDENCE",
+    "goalLoopControlledWindows": "PASS_V050_R1",
+    "firstPrinciplesCdpRepair": "PASS_V060_R1"
+  },
+  "notYetCertified": [
+    "dynamic current-page vs rotate T_VALID policy",
+    "Frozen Node parallel scheduler",
+    "optimal concurrency under machine load",
+    "automatic page value cleanup",
+    "automatic first-principles fault diagnosis trigger",
+    "full GPT/web fault Goal Loop E2E",
+    "ECC V3.1 + Frozen Node performance policy",
+    "unified executor routing benchmark"
+  ],
+  "safeForNewChat": true,
+  "oldLongChatRequired": false
+}
