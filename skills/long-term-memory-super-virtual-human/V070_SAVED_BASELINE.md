@@ -221,3 +221,17 @@ V070_REALITY_COMPLETE=NO
 SAFE_TO_START_NEW_CHAT=YES
 OLD_LONG_CHAT_REQUIRED_FOR_CONTINUATION=NO
 ```
+
+### 2026-10-04 现场修正：透明有界调度
+
+现场发现：多个上层任务都显示 ChatGPT“正在进一步处理”，但 dedicated browser 实际只有单页执行。代码核对表明当前 continuity runtime 使用全局 writer lease + 单 leasedPage + inbox FIFO，因此多个任务可被串到一个不可见长队列中。
+
+这不是 v0.7 最终目标。保存以下**未冻结修正候选**：
+- 大任务必须拆成最小完整可验收节点，节点逐个有明确状态与回报；
+- 同一 dedicated persistent browser 可以有多个受控 executor 页面，但仍禁止第二个 persistent browser；
+- 候选默认并发上限 3，最终并发度由 R2/R14 Reality 决定；
+- CEO 页负责优先级/派发/合并/验收，executor 页负责小节点；
+- 排队必须显示 queue position，不能用“处理中”掩盖 QUEUED；
+- 页面显示 High 不作为 executor 默认；普通执行默认 Instant/Medium，High 按需；
+- 当前实现尚未完成 scheduler Reality，因此仍为 SAVED_NOT_FROZEN / PROJECT_FINAL_VALID=NO。
+
