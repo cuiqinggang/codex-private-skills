@@ -85,3 +85,16 @@ GPT既可判断也可直接调用现实工具；按需调用执行器，不强�
 `runtime/goal-loop-reality.js`已在 Linux/Node v24.19.0 实际启动独立进程并读写真实文件，4/4 场景 PASS：不合格结果7→返修结果18→真实文件验证→停止且重复运行不重复写；进程写入7后真实退出码73→新进程读取pending→核对原动作→只执行下一轮18；文件结果不再变化→阻塞；STOP文件→不执行。
 
 故障次数与业务返修次数分离；`maxRecoveryAttempts`默认每动作2次，独立计数；故障恢复必须复用既有连续性/备脑链。适配器提供`recover`时，恢复后必须重新验收和reconcile，不能把恢复ACK算业务完成。真实GPT/网页故障尚未用新循环做端到端测试。
+
+
+## Windows 部署与实际 runtime 验收（2026-10-04 R1）
+
+已将 main 的 v0.5.0 部署到现有 Windows runtime 路径，并在空 inbox、无活跃任务的安全点重启唯一 writer。使用既有 Playwright 依赖路径；未启动第二 supervisor、未另启浏览器、未修改代理。
+
+本轮 Windows 检查：循环 12/12、连续性 25/25、租约 6/6 全通过；实际独立进程/文件场景 4/4；生产唯一 runtime 的实际 inbox 场景 5/5。后者包括 7→18 自动返修与终态去重、异常后原动作核对再续接、同一投递内异常恢复再核对、无进展阻塞、STOP不执行。
+
+修复 Windows 当前进程租约识别；恢复启动时既有 NODE_PATH 配置。所有通过均限定为本轮受控文件任务，不代表任意业务天然有适配器，也不代表真实 GPT/网页故障循环已经验收。
+
+真实网页门：现有专用浏览器进程存在，CDP 9223 不可达；保持原浏览器，禁止另启绕过。因此 GOAL_LOOP_BROWSER_FAULT_REALITY=BLOCKED_EXISTING_BROWSER_CDP，项目 FINAL_VALID=NO。
+
+权威证据：evidence/V050-WINDOWS-GOAL-LOOP-REALITY-20261004-R1.json。历史 NOT_RUN/NOT_PERFORMED 段落是本轮之前的记录，当前部署与验收以上述证据为准。
