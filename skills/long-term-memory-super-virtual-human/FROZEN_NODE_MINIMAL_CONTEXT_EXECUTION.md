@@ -99,3 +99,66 @@ v0.7.0 当前先固化方法合同，不虚构动态调度器已经全自动实�
 既有 Reality 已支撑：true New chat + minimal handoff；checkpoint / exactly-once；干净 CEO 生命周期；页面关闭后恢复单空白页；v0.6 第一性原理故障分析；Goal Loop。
 
 后续 Reality：同构任务继续当前页 vs 冻结换页 T_VALID 对比；多独立 Frozen Node 串行 vs 并行 T_VALID；不同并行度下机器负载与完整 T_VALID；自动页面价值判断与关闭；动态节点调度器。
+
+## 14. v0.7.0 透明有界调度修正（2026-10-04）
+
+用户现场观察到多个任务同时出现“系统正在进一步处理此请求”，但专用浏览器只有单页实际执行。该状态暴露出当前运行层仍可能把多个独立任务汇入单一全局 writer / 单 leased page 的 FIFO 队列，形成不可见等待。该行为与 v0.7“最小完整节点 + 可安全并行”的目标不一致。
+
+新增运行合同（当前为待 Reality 的候选合同，不冒充已通过）：
+
+```ini
+OPAQUE_LONG_QUEUE=FORBIDDEN
+TASK_UNIT=MINIMAL_COMPLETE_VALIDATABLE_NODE
+NODE_STATUS_REQUIRED=YES
+NODE_STATUS_SET=QUEUED|DISPATCHED|RUNNING|WAITING_EXTERNAL|BLOCKED|STALL_SUSPECTED|VALID|FAILED
+QUEUE_POSITION_VISIBLE=REQUIRED_WHEN_QUEUED
+ONE_DEDICATED_BROWSER_INSTANCE=YES
+SECOND_PERSISTENT_BROWSER=FORBIDDEN
+MULTI_PAGE_WITHIN_ONE_BROWSER=BOUNDED_AND_SCHEDULED
+DEFAULT_PAGE_CONCURRENCY_CANDIDATE=3
+HARD_PAGE_CAP_UNTIL_REALITY=3
+SHARED_WRITE_CONFLICT=SERIALIZE
+INDEPENDENT_READ_OR_EXECUTE=PARALLELIZE_WHEN_FASTER
+CEO_PAGE=ROUTER_AND_ACCEPTANCE_GATE
+EXECUTOR_PAGE=ONE_SMALL_NODE_OR_TIGHTLY_COUPLED_NODE_BATCH
+EXECUTOR_REPORT_AFTER_EACH_NODE=YES
+```
+
+解释：
+- “只允许一个专用浏览器”不等于“只能一个执行页面”。允许在同一个 persistent browser/context 内创建**受控、有上限、可追踪**的 executor 页面；
+- 禁止多个 runtime/owner 各自启动浏览器或无限开标签页；
+- 默认候选并发为 3，只是现场修正的运行上限候选；最终 2/3/4 的最优并行度必须由 R2 Reality 的完整 T_VALID 与机器负载决定；
+- 有共享写状态、同一账号敏感 UI 写操作、同一权威文件写入时必须串行；纯读取、独立计算、独立验证可并行；
+- 每个节点必须可看到明确状态，不能只显示“处理中”而无法区分真正运行、排队、等待外部返回或疑似卡死；
+- CEO 页面只做任务拆分、优先级、派发、合并和验收；执行页不承担长期总控历史。
+
+### 模型/Thinking 强度补充
+
+执行页不得默认继承 High。默认遵循“最低充分能力”：
+
+```ini
+SIMPLE_EXECUTOR_DEFAULT=Instant_or_Medium
+NORMAL_EXECUTOR_DEFAULT=Medium
+HIGH=ONLY_WHEN_COMPLEXITY_OR_REWORK_RISK_JUSTIFIES
+EXTRA_HIGH_OR_PRO=EXCEPTION_ONLY
+CEO_ROUTER_DEFAULT=Medium
+MODEL_EFFORT_READBACK_REQUIRED=YES
+RESTORE_OR_SET_PER_STAGE=YES
+```
+
+High 是按任务需要提升的档位，不是专用浏览器的永久默认状态。R14 中恢复到 High 只证明切换与恢复能力，不构成“所有后续执行都应 High”的默认策略。
+
+### 黑箱状态判定
+
+ChatGPT 页面出现“系统正在进一步处理此请求/处理完毕将给出回复”只表示该 turn 尚未给出最终回复，不能单独证明“仍在有效推进”。
+
+外部 supervisor 必须结合：
+- 最近可观测进展时间；
+- turn 是否 active；
+- 页面/工具是否有新证据；
+- 任务是否已实际 dispatch；
+- 队列位置；
+- silence window / hard deadline；
+
+将状态归类为 RUNNING、WAITING_EXTERNAL、QUEUED 或 STALL_SUSPECTED；达到确认停滞门后才执行 checkpoint → abort/fence → true New chat / 其他有效恢复路径。
+
