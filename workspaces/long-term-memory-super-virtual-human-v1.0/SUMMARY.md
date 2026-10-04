@@ -3,7 +3,7 @@
 ```ini
 PROJECT=长期记忆超级虚拟人
 WORKSPACE_VERSION=v1.0
-SKILL_VERSION=v0.4.5
+SKILL_VERSION=v0.5.0
 SKILL_ENGLISH_NAME=Long-Term Memory Super Virtual Human
 
 STATE=10
@@ -16,7 +16,7 @@ LONG_TERM_MEMORY=REQUIRED
 
 CONSTITUTION=极限短时间智能体宪法 v0.3.1
 METHOD_REFERENCE=极限短时间自动化闭环 v2.0
-WINDOWS_BRIDGE=GPT直连Windows双路执行桥 v0.2.0
+WINDOWS_BRIDGE=GPT直连Windows双路执行桥 v0.3.0
 
 CONTINUITY_RUNTIME=ACTIVE_BY_SKILL_INVOCATION
 TRUE_NEW_CHAT_RECOVERY=PASS
@@ -131,3 +131,15 @@ v0.4 状态：
 - 确定性回归：SESSION_CONTINUITY_TESTS=25 PASS / 0 FAIL；核心 JS syntax checks 全部 exit 0。
 - 机器可读证据：`workspaces/long-term-memory-super-virtual-human-v1.0/evidence/LTMVH-V044-GATE-A-20261004.json`。
 - `REAL_VALUABLE_LONG_TASK_FINAL_VALID=PASS_GATE_A_20261004`；仅关闭本 Gate，不改变项目级 `FINAL_VALID=NO`。
+
+
+## v0.5.0｜授权目标循环与本机实测（2026-10-04 R1）
+
+- 默认循环：判断→执行/调度→真实验收→定向修复/恢复→保存状态；无需用户逐轮说继续。
+- main 技能与用户 Windows 唯一连续性进程已升级到 v0.5.0；运行 PID=5784（本轮观测，不写死为未来身份）。
+- Windows 确定性检查：循环12/12、连续性25/25、租约6/6；真实进程/文件4/4；实际唯一 runtime inbox 5/5 PASS。
+- 原动作核对、终态去重、自动返修、同投递异常恢复、无进展停止、用户STOP已在实际文件任务验证。
+- 双路执行桥当前版本 v0.3.0：DCR主路真实命令PASS；Actions备路首测暴露GitHub checkout连接故障，改为同SHA三文件Contents API下载后复测成功。证据须同时保留失败与成功。
+- 当前唯一明确新循环验收缺口：现有专用浏览器存在，CDP9223不可达，真实GPT/网页故障→恢复→业务验收闭环尚未通过；未另启浏览器或改变代理。
+- 本轮 scoped（限定范围）PASS不能提升项目 FINAL_VALID；FINAL_VALID=NO 保持。
+- 权威证据：skills/long-term-memory-super-virtual-human/evidence/V050-WINDOWS-GOAL-LOOP-REALITY-20261004-R1.json。
