@@ -10,6 +10,9 @@ description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human�
 ```ini
 VERSION=0.6.0
 STATUS=VIRTUAL_MATURE_CONTINUITY_RUNTIME_ACTIVE
+VERSION_STATE=FROZEN
+FROZEN_VERSION=0.6.0
+FROZEN_BASELINE=V060-FIRST-PRINCIPLES-FAULT-METHOD-R1
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
 
@@ -34,8 +37,8 @@ GOAL_LOOP_DEFAULT=YES
 GOAL_LOOP_CONTROLLER=V0_5_0_ADAPTER_READY
 GOAL_LOOP_REALITY=PASS_WINDOWS_PROCESS_FILES_AND_RUNTIME_INBOX
 GOAL_LOOP_WINDOWS_DEPLOYMENT=PASS_UNIQUE_RUNTIME
-FIRST_PRINCIPLES_RECOVERY=V0_6_0_DEFAULT
-GOAL_LOOP_BROWSER_FAULT_REALITY=CDP_SOURCE_REBUILD_AND_E2E_ACK_PASS_R2_AUTO_RECOVERY_NOT_YET_CERTIFIED
+FIRST_PRINCIPLES_RECOVERY=V0_6_0_FROZEN
+GOAL_LOOP_BROWSER_FAULT_REALITY=CDP_CAUSAL_BREAKPOINT_REPAIR_AND_E2E_ACK_PASS_R2_AUTO_RECOVERY_NOT_YET_CERTIFIED
 ```
 
 ## 1. 产品定位
@@ -448,4 +451,4 @@ ChatGPT 页面控制复用 Playwright Native AI Browser；
 
 先读取 `GOAL_LOOP_CONTROLLER.md`。任务合同、状态、日志分离；动作前保存稳定编号，中断后先核对原结果，禁止重复副作用。保持现有唯一连续性 runtime/global writer；不新建并行 supervisor 或浏览器。
 
-本版已部署到用户 Windows 唯一连续性 runtime。2026-10-04 实测：循环控制器 12/12、连续性 25/25、租约 6/6、真实进程/文件场景 4/4、实际 runtime inbox 场景 5/5 PASS。已证明自动返修、原动作核对续接、同次投递自动恢复、终态去重、阻塞与 STOP；证据见 `evidence/V050-WINDOWS-GOAL-LOOP-REALITY-20261004-R1.json`。v0.6.0 R2 已从建设源头复验并恢复专用浏览器控制链：确认旧启动壳残留、Chrome 主进程缺失，按原始 shared-mcp + 9223 参数重建唯一专用浏览器后，9223 LISTEN、/json/version、ChatGPT target、Attach-Only runtime、真 New chat→GPT ACK 均 PASS，且 branch=false、newBrowserLaunched=false。**自动检测并触发该重建动作的故障注入 E2E 尚未认证**；项目级 FINAL_VALID=NO 不变。
+本版已部署到用户 Windows 唯一连续性 runtime。2026-10-04 实测：循环控制器 12/12、连续性 25/25、租约 6/6、真实进程/文件场景 4/4、实际 runtime inbox 场景 5/5 PASS。已证明自动返修、原动作核对续接、同次投递自动恢复、终态去重、阻塞与 STOP；证据见 `evidence/V050-WINDOWS-GOAL-LOOP-REALITY-20261004-R1.json`。v0.6.0 R2 已按第一性原理因果链定位专用浏览器控制链断点：确认旧启动壳残留、Chrome 主进程缺失；前置 executable、shared-mcp profile 与登录态保持不动，仅恢复失效的 Chrome 主进程后，9223 LISTEN、/json/version、ChatGPT target、Attach-Only runtime、真 New chat→GPT ACK 均 PASS，且 branch=false、newBrowserLaunched=false。**自动检测并触发该局部断点修复动作的故障注入 E2E 尚未认证**；项目级 FINAL_VALID=NO 不变。

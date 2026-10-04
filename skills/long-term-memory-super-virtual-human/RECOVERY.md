@@ -34,28 +34,28 @@ BLOCKED：持久化状态并等待依赖恢复
 
 ## v0.6 第一性原理恢复入口
 
-根因不明确时，恢复阶梯之前先执行：
+除已经明确到单点原因的初级错误外，恢复阶梯之前一律先执行：
 
 ```text
-最后一个已知正确建设起点
-→ 按原始建设链逐层重放
+能力成立的最小条件
+→ 按第一性原理因果链逐层验证
 → 每层最小验收
 → 找到第一个偏差
-→ 仅修该层 / 仅重建失效的临时实例
+→ 只修该最小断点；若该断点实例已失效，才局部重建该实例
 → 继续正向验收
 ```
 
 硬规则：
 
 ```ini
-RECOVERY_DEFAULT=FIRST_PRINCIPLES_FORWARD_REBUILD
+RECOVERY_DEFAULT=FIRST_PRINCIPLES_FAULT_ANALYSIS_AND_MINIMAL_REPAIR
 TAIL_REPAIR_LOOP=FORBIDDEN_WITHOUT_NEW_EVIDENCE
 FIRST_DIVERGENCE=PRIMARY_REPAIR_POINT
 MINIMAL_POINT_REPAIR=REQUIRED
 FULL_REALITY_REVALIDATION=REQUIRED
 ```
 
-连续两轮没有缩小故障空间，必须返回最近可信建设起点重新正向重放。详细规范见 `FIRST_PRINCIPLES_RECOVERY.md`。
+禁止先进入末端多方案试错；一旦问题不是明确单点错误，就从最基本成立条件沿因果链验证到首次不成立点。详细规范见 `FIRST_PRINCIPLES_RECOVERY.md`。
 
 
 ## v0.3 新会话恢复硬规则

@@ -3,7 +3,7 @@
   "evidenceId": "LTMVH-V060-FIRST-PRINCIPLES-RECOVERY-R1",
   "date": "2026-10-04",
   "skillVersion": "0.6.0",
-  "method": "FIRST_PRINCIPLES_FORWARD_REBUILD_RECOVERY",
+  "method": "FIRST_PRINCIPLES_FAULT_ANALYSIS_AND_MINIMAL_REPAIR",
   "cases": [
     {
       "case": "windows_execution_bridge_historical",
@@ -43,6 +43,11 @@
       "note": "No database rollback or auth reconstruction was needed once the original credential precondition was revalidated."
     }
   ],
-  "conclusion": "Prefer replaying the known-good construction chain from the last trusted origin; repair the first divergence with the minimum necessary change; rebuild only the invalid layer or ephemeral instance.",
-  "projectFinalValid": false
+  "conclusion": "Use first-principles causal analysis from the minimum conditions required for the capability to exist; preserve all confirmed-good layers; repair only the first invalid causal link; rebuild only when that local ephemeral instance itself is invalid.",
+  "projectFinalValid": false,
+  "freeze": {
+    "version": "0.6.0",
+    "state": "FROZEN",
+    "baseline": "V060-FIRST-PRINCIPLES-FAULT-METHOD-R1"
+  }
 }
