@@ -32,8 +32,9 @@ CHATGPT_SESSION_CONTINUITY_CONTROLLER=V0_4_5_CLEAN_LIFECYCLE_TSTAR_R18_R19
 PAID_TO_FREE_OPEN_SOURCE_REPLACEMENT=V1_0_0_REGISTERED
 GOAL_LOOP_DEFAULT=YES
 GOAL_LOOP_CONTROLLER=V0_5_0_ADAPTER_READY
-GOAL_LOOP_REALITY=NOT_RUN
-GOAL_LOOP_WINDOWS_DEPLOYMENT=NOT_PERFORMED
+GOAL_LOOP_REALITY=PASS_WINDOWS_PROCESS_FILES_AND_RUNTIME_INBOX
+GOAL_LOOP_WINDOWS_DEPLOYMENT=PASS_UNIQUE_RUNTIME
+GOAL_LOOP_BROWSER_FAULT_REALITY=BLOCKED_EXISTING_BROWSER_CDP
 ```
 
 ## 1. 产品定位
@@ -410,4 +411,4 @@ ChatGPT 页面控制复用 Playwright Native AI Browser；
 
 先读取 `GOAL_LOOP_CONTROLLER.md`。任务合同、状态、日志分离；动作前保存稳定编号，中断后先核对原结果，禁止重复副作用。保持现有唯一连续性 runtime/global writer；不新建并行 supervisor 或浏览器。
 
-本版已新增目标循环适配器和两种 runtime 传输路径接线，控制器本地测试 12/12 PASS；真实 Windows/浏览器部署及业务端到端 Reality 尚未执行。不要把版本保存等同于已在用户电脑启用；项目级 FINAL_VALID=NO 不变。
+本版已部署到用户 Windows 唯一连续性 runtime。2026-10-04 实测：循环控制器 12/12、连续性 25/25、租约 6/6、真实进程/文件场景 4/4、实际 runtime inbox 场景 5/5 PASS。已证明自动返修、原动作核对续接、同次投递自动恢复、终态去重、阻塞与 STOP；证据见 `evidence/V050-WINDOWS-GOAL-LOOP-REALITY-20261004-R1.json`。专用浏览器仍存在但 CDP 9223 不可达，新循环中的真实 GPT/网页故障端到端尚未通过；禁止借另启浏览器绕过。本版功能与受控 Windows 实测已通过，不等于全部生产能力通过；项目级 FINAL_VALID=NO 不变。
