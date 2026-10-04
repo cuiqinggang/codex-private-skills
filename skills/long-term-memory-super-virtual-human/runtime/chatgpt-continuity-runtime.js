@@ -6,6 +6,8 @@ const {decide}=require('./session-continuity-supervisor');
 const {pageLeaseDecision,conversationRotation}=require('./chatgpt-page-lease');
 const {recoverExistingChat,observeExistingChat,abortExistingChatTurn}=require('./chatgpt-existing-cdp');
 const {acquireGlobalWriterLease,heartbeatGlobalWriterLease,releaseGlobalWriterLease}=require('./chatgpt-global-writer-lease');
+const {runGoal}=require('./goal-loop-controller');
+const {createHash}=require('node:crypto');
 
 function arg(name,def=null){const i=process.argv.indexOf('--'+name);return i>=0?process.argv[i+1]:def}
 const profile=arg('profile');
@@ -75,7 +77,7 @@ let lastSig='',lastProgress=now(),probeDone=false,priorDisconnect=0;
 
 function leaseState(extra={}){
  heartbeatGlobalWriterLease({leasePath:globalWriterLeasePath,token:globalWriterToken,marker:currentTask?.marker||'IDLE'});
- const base={schemaVersion:1,status:'LEASE_ACTIVE',version:'0.4.4',pid:process.pid,profile,globalWriterLeasePath,
+ const base={schemaVersion:1,status:'LEASE_ACTIVE',version:'0.5.0',pid:process.pid,profile,globalWriterLeasePath,
   pageLease:true,browserMustStayOpen:true,updatedAt:new Date().toISOString(),pageUrl:leasedPage&&!leasedPage.isClosed()?leasedPage.url():null};
  writeJson(statePath,{...base,...extra});
 }
@@ -109,7 +111,7 @@ async function observe(page){
 }
 
 function buildCheckpoint(task,obs,reason){
- const cp={schemaVersion:1,version:'0.4.4',createdAt:new Date().toISOString(),reason,
+ const cp={schemaVersion:1,version:'0.5.0',createdAt:new Date().toISOString(),reason,
   marker:task.marker,sourceConversationUrl:obs.url,taskContract:task.taskContract||task.goal||'',
   acceptedConclusion:(obs.lastAssistant||'').slice(0,12000),lastUser:(obs.lastUser||'').slice(0,6000),
   unresolvedItems:task.unresolvedItems||[],nextInstruction:task.nextInstruction||
@@ -271,7 +273,27 @@ async function rotateTrueNewChatSamePage(task,cp){
  return {status:'TRUE_NEW_CHAT_SENT_CONFIRMED',url:p.url(),submissionCount:1,markerCount,assistantAck,pageLeaseRetained:true};
 }
 
+async function processGoalTask(task){
+ currentTask=task;
+ const c=task.goalLoop?.contract;
+ const adapterPath=task.goalLoop?.adapterPath;
+ if(!c||typeof adapterPath!=='string'||!path.isAbsolute(adapterPath)) throw new Error('GOAL_ADAPTER_PATH_REQUIRED');
+ if(c.taskId!==task.marker) throw new Error('GOAL_TASK_MARKER_MISMATCH');
+ const bytes=fs.readFileSync(adapterPath);
+ const sha=createHash('sha256').update(bytes).digest('hex');
+ if(!c.adapterSha256||sha!==c.adapterSha256) throw new Error('GOAL_ADAPTER_HASH_MISMATCH');
+ const adapter=require(adapterPath);
+ const assertWriter=()=>{
+  if(!heartbeatGlobalWriterLease({leasePath:globalWriterLeasePath,token:globalWriterToken,marker:task.marker}))
+   throw new Error('GOAL_WRITER_LEASE_LOST');
+ };
+ const result=await runGoal({contract:c,root:path.join(root,'goal-loops',safeName(c.taskId)+'-'+sha.slice(0,12)),
+  adapter,assertWriter,shouldStop:()=>stopping});
+ leaseState({goalLoopStatus:result.status,goalLoopRound:result.round});
+ return {decision:{action:result.status},finalValid:result.status==='CLOSED',goalLoop:result};
+}
 async function processTask(task){
+ if(task.goalLoop)return processGoalTask(task);
  currentTask=task;lastSig='';lastProgress=now();probeDone=false;priorDisconnect=0;
  const stallMeta={faultInjection:task.faultInjectStall===true,silenceMs,probeObserved:false,hardDeadlineExceeded:false,abortConfirmed:false};
  const p=await ensureLeasedPage();let o=await observe(p);
@@ -381,11 +403,23 @@ async function rawCdpOwnerLoop(trigger){
   if(stopping)break;
   const item=await claimTaskFile();
   if(item&&item.task){
+   if(item.task.goalLoop){
+    try{
+     const result=await processGoalTask(item.task);
+     const outputDir=result.finalValid?doneDir:failDir;
+     writeJson(path.join(outputDir,item.name),{task:item.task,result,finishedAt:new Date().toISOString()});
+     fs.unlinkSync(item.src);currentTask=null;
+    }catch(e){
+     writeJson(path.join(failDir,item.name),{task:item.task,error:String(e.stack||e),failedAt:new Date().toISOString()});
+     fs.unlinkSync(item.src);currentTask=null;
+    }
+    continue;
+   }
    currentTask=item.task;
    const task=item.task;
    const priorCp=readJson(checkpointPath,null);
    const cp=priorCp&&priorCp.marker===task.marker?priorCp:{
-    schemaVersion:1,version:'0.4.4',createdAt:new Date().toISOString(),reason:'RAW_CDP_EXISTING_BROWSER_RECOVERY',
+    schemaVersion:1,version:'0.5.0',createdAt:new Date().toISOString(),reason:'RAW_CDP_EXISTING_BROWSER_RECOVERY',
     marker:task.marker,sourceConversationUrl:'EXISTING_CHATGPT_PAGE',taskContract:task.taskContract||task.goal||'',
     acceptedConclusion:task.acceptedConclusion||'',lastUser:'',unresolvedItems:task.unresolvedItems||[],
     nextInstruction:task.nextInstruction||'根据以上接续上下文继续当前未完成任务，从下一步唯一动作开始，不重新讨论已冻结结论。',
@@ -471,7 +505,9 @@ async function ownerLoop(){
   const item=await claimTaskFile();
   if(item&&item.task){
    try{const result=await processTask(item.task);console.log(JSON.stringify(result,null,2));
-    writeJson(path.join(doneDir,item.name),{task:item.task,result,finishedAt:new Date().toISOString()});fs.unlinkSync(item.src);}
+    const outputDir=item.task.goalLoop&&!result.finalValid?failDir:doneDir;
+    writeJson(path.join(outputDir,item.name),{task:item.task,result,finishedAt:new Date().toISOString()});fs.unlinkSync(item.src);
+    if(item.task.goalLoop)currentTask=null;}
    catch(e){writeJson(path.join(failDir,item.name),{task:item.task,error:String(e.stack||e),failedAt:new Date().toISOString()});fs.unlinkSync(item.src);
     console.error('TASK_FAIL',e.stack||e);}
   }

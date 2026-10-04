@@ -1,14 +1,14 @@
 ---
 name: long-term-memory-super-virtual-human
-version: "0.4.5"
+version: "0.5.0"
 description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human）。以高智能主脑为核心，吸收成熟 Recovery/Long-Flow/Browser 机制，以长期记忆、权威任务合同、Checkpoint、按需工具路由、低相关冗余和独立强备份推进现实任务；唯一优化目标仍是 T*=min(T_VALID)。
 ---
 
-# 长期记忆超级虚拟人 v0.4.5
+# 长期记忆超级虚拟人 v0.5.0
 # Long-Term Memory Super Virtual Human
 
 ```ini
-VERSION=0.4.5
+VERSION=0.5.0
 STATUS=VIRTUAL_MATURE_CONTINUITY_RUNTIME_ACTIVE
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
@@ -30,6 +30,10 @@ PLAYWRIGHT_NATIVE_AI_BROWSER=REUSE
 CHATGPT_MODEL_EFFORT_CONTROLLER=FULL_E2E_REALITY_PASS_R14
 CHATGPT_SESSION_CONTINUITY_CONTROLLER=V0_4_5_CLEAN_LIFECYCLE_TSTAR_R18_R19
 PAID_TO_FREE_OPEN_SOURCE_REPLACEMENT=V1_0_0_REGISTERED
+GOAL_LOOP_DEFAULT=YES
+GOAL_LOOP_CONTROLLER=V0_5_0_ADAPTER_READY
+GOAL_LOOP_REALITY=NOT_RUN
+GOAL_LOOP_WINDOWS_DEPLOYMENT=NOT_PERFORMED
 ```
 
 ## 1. 产品定位
@@ -257,7 +261,7 @@ v1.0 按**能力结果**验收，不把某一个实现工具写成唯一毕业�
 
 原则：实现路径可以降级，DONE_WHEN 不能降级。
 
-## 14. v0.4.5 默认运行合同
+## 14. v0.5.0 默认运行合同
 
 当用户明确说以下任一含义时：
 
@@ -399,3 +403,11 @@ ChatGPT 页面控制复用 Playwright Native AI Browser；
 关键能力保留低相关双路；
 记录 FLOW_START → FINAL_VALID 的完整 T_VALID。
 ```
+
+## 16. v0.5.0 目标循环默认执行合同
+
+收到授权任务后，自动循环判断、执行或调度、真实验证、定向返修与保存状态，不等待用户每轮说“继续”。GPT可以直接执行，也可以调度成熟执行器。只有 DONE_WHEN + EVIDENCE_REQUIRED 真正通过才完成；普通错误先尝试授权内可行的新策略。无授权可完成路线、需要用户决定、预算达到、无进展或用户 STOP 时明确停止并报告。
+
+先读取 `GOAL_LOOP_CONTROLLER.md`。任务合同、状态、日志分离；动作前保存稳定编号，中断后先核对原结果，禁止重复副作用。保持现有唯一连续性 runtime/global writer；不新建并行 supervisor 或浏览器。
+
+本版已新增目标循环适配器和两种 runtime 传输路径接线，控制器本地测试 12/12 PASS；真实 Windows/浏览器部署及业务端到端 Reality 尚未执行。不要把版本保存等同于已在用户电脑启用；项目级 FINAL_VALID=NO 不变。

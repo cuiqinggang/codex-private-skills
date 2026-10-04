@@ -77,3 +77,9 @@ CHECKPOINT:
 - Checkpoint：**现在做到哪，下一步从哪里恢复**。
 
 两者互补，不能互相替代。
+
+## v0.5.0 目标循环补充
+
+启用默认目标循环时冻结 GOAL_LOOP_CONTROLLER.md 中的 contract 和已审核适配器：任务编号、最终目标、DONE_WHEN、授权/禁止边界、适配器SHA256、最大轮数、总时间预算。每轮保存真实验证证据、进度、失败根因、新策略、checkpoint和稳定动作ID。恢复先验收/核对，禁止重复副作用。
+
+CLOSED才是任务级FINAL_VALID；BLOCKED/HUMAN_REQUIRED/STOPPED均不得计为完成。任务预算或验收定义变化必须显式形成新合同，不能静默扩大。
