@@ -3,11 +3,14 @@
 状态：SAVED_NOT_FROZEN
 
 ## P0 必做
-- R1：同构任务 Current Page vs Frozen Node + True New Chat，比较完整 T_VALID。
+- ✅ R1：PASS / NODE_FROZEN。Current Page vs Frozen Node + True New Chat，3 对同构 Reality 均 VALID；平均 6,805.187 ms vs 29,711.507 ms，Rotate 慢 336.60%。结论仅覆盖“小而紧耦合的相邻节点”：节点完成是决策点，不是强制换页触发。证据：`V070_NODE_R1_FREEZE.md`、`evidence/V070-R1-CURRENT-VS-ROTATE-REALITY-20261004-R1.json`。
 - R2：同一独立任务集 Serial vs Parallel-2 vs Parallel-4/可承受并行度。
 - R3：页面数量/资源占用 Benchmark；冻结后关闭无价值页。
 - R4：语义边界触发 vs 固定字数/轮数阈值。
 - R5：Frozen Node 合并 Gate：并行结果分别验收后合并。
+
+## R1 现场开放回归
+- ⚠ `V070-R1-UI-COMPOSER-VISIBILITY-REGRESSION`：当前 ChatGPT UI 的 `DIV.ProseMirror[contenteditable=true][role=textbox]` 在旧 runtime 的可见性判定下可被误报为 `composer=false`，可能影响 safeCheckpoint/rotation。R1 已将受影响运行剔除，不计入性能样本；该回归必须在 v0.7 最终冻结前闭环。
 
 ## P1 恢复与自动化
 - R6：真实 GPT/网页故障→Goal Loop 自动发现→恢复→继续→业务验收。
