@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "evidenceId": "LTMVH-V060-FIRST-PRINCIPLES-RECOVERY-R1",
+  "date": "2026-10-04",
+  "skillVersion": "0.6.0",
+  "method": "FIRST_PRINCIPLES_FORWARD_REBUILD_RECOVERY",
+  "cases": [
+    {
+      "case": "windows_execution_bridge_historical",
+      "evidenceClass": "PROJECT_HISTORICAL_OBSERVATION",
+      "result": "SOURCE_REBUILD_SUCCEEDED_AFTER_TAIL_REPAIR_STALLED"
+    },
+    {
+      "case": "chatgpt_dedicated_browser_cdp_9223",
+      "evidenceClass": "REALITY_EXECUTED_2026-10-04",
+      "initial": {
+        "chromeMainProcess": false,
+        "staleLauncherShellObserved": true,
+        "port9223Listening": false
+      },
+      "rebuild": {
+        "chromeMainPid": 12692,
+        "profilePreserved": "C:\\AI\\Playwright-Native-AI-Browser\\profile\\shared-mcp",
+        "port9223Listening": true,
+        "jsonVersion": "PASS",
+        "chatgptTarget": "PASS",
+        "attachOnlyRuntimePid": 1956
+      },
+      "endToEnd": {
+        "status": "TRUE_NEW_CHAT_SENT_CONFIRMED",
+        "submissionCount": 1,
+        "markerCount": 1,
+        "ackConfirmed": true,
+        "transport": "RAW_CDP_EXISTING_BROWSER",
+        "branchUsed": false,
+        "newBrowserLaunched": false
+      }
+    },
+    {
+      "case": "hermes_login_after_upgrade",
+      "evidenceClass": "USER_CONFIRMED_OPERATIONAL_OBSERVATION",
+      "result": "CORRECT_CREDENTIAL_FROM_AUTHORITATIVE_PASSWORD_STORE_RESTORED_LOGIN",
+      "note": "No database rollback or auth reconstruction was needed once the original credential precondition was revalidated."
+    }
+  ],
+  "conclusion": "Prefer replaying the known-good construction chain from the last trusted origin; repair the first divergence with the minimum necessary change; rebuild only the invalid layer or ephemeral instance.",
+  "projectFinalValid": false
+}
