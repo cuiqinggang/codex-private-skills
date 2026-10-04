@@ -8,6 +8,8 @@ function pidIsWriter(pid){
  if(!pidAlive(pid))return false;
  if(process.platform!=='win32')return true;
  const n=Number(pid);
+ // A lease acquired by this live process is valid regardless of its entry script.
+ if(n===process.pid)return true;
  const ps="$p=Get-CimInstance Win32_Process -Filter 'ProcessId="+n+"'; if($p){$p.CommandLine}";
  const r=spawnSync('powershell.exe',['-NoProfile','-Command',ps],{encoding:'utf8',windowsHide:true,timeout:5000});
  return String(r.stdout||'').includes('chatgpt-continuity-runtime.js');
