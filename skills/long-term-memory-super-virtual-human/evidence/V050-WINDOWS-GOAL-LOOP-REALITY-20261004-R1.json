@@ -1,0 +1,107 @@
+{
+  "task": "LTMVH-V050-REALITY-20261004-R1",
+  "version": "0.5.0",
+  "taskAccepted": "2026-10-04T09:33:51Z",
+  "timestamp": "2026-10-04T09:53:34.017Z",
+  "windowsDeployment": {
+    "runtimePid": 5784,
+    "version": "0.5.0",
+    "uniqueRuntime": true,
+    "existingBrowserPreserved": true,
+    "newBrowserLaunched": false,
+    "nodePath": "C:\\AI\\Playwright-Native-AI-Browser\\node_modules"
+  },
+  "checks": {
+    "goalController": 12,
+    "sessionContinuity": 25,
+    "globalWriterLease": 6,
+    "failures": 0,
+    "actualProcessAndFileScenarios": 4
+  },
+  "runtimeInbox": {
+    "version": "0.5.0",
+    "timestamp": "2026-10-04T09:45:22.701Z",
+    "scope": "ACTUAL_UNIQUE_WINDOWS_RUNTIME_INBOX_FILES",
+    "checks": [
+      {
+        "case": "actual_runtime_repair_and_duplicate",
+        "pass": true,
+        "effects": [
+          {
+            "actionId": "LTMVH-V050-INBOX-20261004-normal:round:1",
+            "sum": 7
+          },
+          {
+            "actionId": "LTMVH-V050-INBOX-20261004-normal:round:2",
+            "sum": 18
+          }
+        ]
+      },
+      {
+        "case": "actual_runtime_exception_requeue_reconcile",
+        "pass": true,
+        "effects": [
+          {
+            "actionId": "LTMVH-V050-INBOX-20261004-recover:round:1",
+            "sum": 7
+          },
+          {
+            "actionId": "LTMVH-V050-INBOX-20261004-recover:round:2",
+            "sum": 18
+          }
+        ]
+      },
+      {
+        "case": "actual_runtime_no_progress_halts",
+        "pass": true,
+        "reason": "TWO_ROUNDS_NO_PROGRESS"
+      },
+      {
+        "case": "actual_file_exception_automatic_recover_reconcile_same_dispatch",
+        "pass": true,
+        "effects": [
+          {
+            "actionId": "LTMVH-V050-AUTO-20261004-recover-R2:round:1",
+            "sum": 7
+          },
+          {
+            "actionId": "LTMVH-V050-AUTO-20261004-recover-R2:round:2",
+            "sum": 18
+          }
+        ]
+      },
+      {
+        "case": "actual_runtime_stop_signal",
+        "pass": true
+      }
+    ],
+    "browserReality": "BLOCKED_CDP_9223_UNAVAILABLE",
+    "projectFinalValid": false
+  },
+  "fixes": [
+    "Windows same-process writer lease recognition",
+    "Restore existing NODE_PATH for runtime restart"
+  ],
+  "browser": {
+    "status": "BLOCKED_EXISTING_BROWSER_CDP_UNAVAILABLE",
+    "endpoint": "http://127.0.0.1:9223",
+    "dedicatedBrowserProcesses": 17,
+    "profileProcesses": 2,
+    "observedAt": "2026-10-04T09:47:03.128Z",
+    "newBrowserLaunched": false,
+    "fullBrowserFaultLoopReality": "NOT_PASSED"
+  },
+  "fallback": {
+    "firstRun": "https://github.com/cuiqinggang/codex-private-skills/actions/runs/37192980220",
+    "firstResult": "FAIL_CHECKOUT_GITHUB_CONNECTION",
+    "remediation": "Pinned three-file GitHub Contents API read, maximum three attempts per file, no network/proxy changes",
+    "retestRun": "https://github.com/cuiqinggang/codex-private-skills/actions/runs/37193387268",
+    "retest": "PASS",
+    "runner": "DESKTOP-4A1EGTM-etal",
+    "exitCode": 0,
+    "executionDurationMs": 2453.998,
+    "stdoutMarker": "LTMVH-V050-FALLBACK-BRIDGE-REAL-COMMAND-PASS"
+  },
+  "projectFinalValid": false,
+  "outcome": "SCOPED_WINDOWS_PASS_BROWSER_FAULT_GATE_BLOCKED"
+}
