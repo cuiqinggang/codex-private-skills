@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.6.0 - 2026-10-04
+
+- 将故障恢复正式升级为 **FIRST_PRINCIPLES_FORWARD_REBUILD_RECOVERY（第一性原理·正向重建恢复）**：默认从最后一个已知正确建设起点向结果正向重放，不再把“从报错末端不断猜测/试错”作为默认方法；
+- 统一“从源头重建”与“最小定点修复”：前者决定定位顺序，后者限制修改范围；找到首次偏差后只修该层，只有临时实例本身失效时才受控重建该实例；
+- 新增 `FIRST_PRINCIPLES_RECOVERY.md`，冻结正向建设链模板、首次偏差原则、两轮无收敛即回源、禁止无新证据机械重复等规则；
+- 固化三类经验：Windows 本地连接桥历史恢复、专用 ChatGPT 浏览器/CDP 9223 Reality R2、爱马仕升级后登录凭据恢复；
+- 9223 R2 真实根因：旧 `cmd.exe` 启动壳仍在，但真正 Chrome 主进程已经不存在，因此 9223 无监听；按原始 executable + `shared-mcp` profile + `--remote-debugging-port=9223` 重建唯一浏览器后恢复；
+- 9223 R2 Reality：端口监听 PASS、`/json/version` PASS、ChatGPT target PASS、Attach-Only runtime PASS、RAW CDP 真 New chat→提交→GPT ACK PASS，`submissionCount=1`、`branchUsed=false`、`newBrowserLaunched=false`；
+- 新增证据 `evidence/V060-FIRST-PRINCIPLES-RECOVERY-20261004-R1.json`；
+- 更新 `RECOVERY.md` 与主 `SKILL.md`，故障根因不明确时 Goal Loop 默认进入第一性原理正向重建；
+- 当前只认证“方法 + 9223 源头重建真实恢复”；**自动检测控制平面死亡并自动触发受控重建的完整故障注入 E2E 尚未认证**；
+- 项目级 `FINAL_VALID=NO` 不变，v1.0 毕业门槛不降低。
+
+
 ## 0.5.0 - 2026-10-04
 
 - 新增默认目标循环：授权任务持续判断、执行/调度、真实验证、定向返修、保存进度，达标关闭；
