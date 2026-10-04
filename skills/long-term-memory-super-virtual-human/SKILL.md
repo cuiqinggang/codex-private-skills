@@ -249,10 +249,10 @@ GPT 服务不可用
 
 ## 13. 第一性原理故障恢复
 
-v0.6.0 将故障恢复正式统一为“从最后一个已知正确建设起点正向重放，找到第一个偏差点，只修该点，再继续正向验收”。
+v0.6.0 将故障恢复正式统一为“只用第一性原理分析：从能力成立的最小条件出发，按因果链验证到第一个不成立点，只修该最小范围，再继续验收”。
 
 ```ini
-RECOVERY_DEFAULT=FIRST_PRINCIPLES_FORWARD_REBUILD
+RECOVERY_DEFAULT=FIRST_PRINCIPLES_FAULT_ANALYSIS_AND_MINIMAL_REPAIR
 REPAIR_FROM_ERROR_TAIL_DEFAULT=NO
 KNOWN_GOOD_ORIGIN_REQUIRED=YES
 FORWARD_LAYER_VALIDATION=YES
@@ -266,11 +266,11 @@ FULL_REALITY_REVALIDATION_REQUIRED=YES
 它与“最小定点修复”不是冲突关系：
 
 ```text
-从源头正向重放 = 定位顺序
+第一性原理因果分析 = 定位方法
 最小定点修复 = 修改范围
 
-正确起点
-→ 逐层 PASS
+最小成立条件
+→ 逐层逻辑/Reality PASS
 → 首次 FAIL
 → 仅修该层 / 必要时只重建该临时实例
 → 继续逐层 PASS
@@ -444,7 +444,7 @@ ChatGPT 页面控制复用 Playwright Native AI Browser；
 
 ## 17. v0.6.0 目标循环默认执行合同
 
-收到授权任务后，自动循环判断、执行或调度、真实验证、定向返修与保存状态，不等待用户每轮说“继续”。GPT可以直接执行，也可以调度成熟执行器。只有 DONE_WHEN + EVIDENCE_REQUIRED 真正通过才完成；普通错误先尝试授权内可行的新策略；**根因不明确时不得长期围绕故障末端试错，必须切换到 FIRST_PRINCIPLES_FORWARD_REBUILD：回到最后一个已知正确起点，按原始建设链逐层验收，在首次偏差处做最小修复或只重建失效层/临时实例。** 无授权可完成路线、需要用户决定、预算达到、无进展或用户 STOP 时明确停止并报告。
+收到授权任务后，自动循环判断、执行或调度、真实验证、定向返修与保存状态，不等待用户每轮说“继续”。GPT可以直接执行，也可以调度成熟执行器。只有 DONE_WHEN + EVIDENCE_REQUIRED 真正通过才完成；普通错误先尝试授权内可行的新策略；**除明确、低成本、单点可判定的初级错误外，故障一律使用 FIRST_PRINCIPLES_FAULT_ANALYSIS_AND_MINIMAL_REPAIR：从最基本成立条件按因果链验证，找到首次不成立点，只做最小修复；重建仅允许作为该断点实例失效时的局部动作。** 无授权可完成路线、需要用户决定、预算达到、无进展或用户 STOP 时明确停止并报告。
 
 先读取 `GOAL_LOOP_CONTROLLER.md`。任务合同、状态、日志分离；动作前保存稳定编号，中断后先核对原结果，禁止重复副作用。保持现有唯一连续性 runtime/global writer；不新建并行 supervisor 或浏览器。
 
