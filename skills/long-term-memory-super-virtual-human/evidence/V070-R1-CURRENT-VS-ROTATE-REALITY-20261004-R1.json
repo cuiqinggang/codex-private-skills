@@ -1,0 +1,116 @@
+{
+  "schema": "LTMVH_V070_R1_REALITY",
+  "version": "0.7.0",
+  "version_state": "SAVED_NOT_FROZEN",
+  "locator": "【长期记忆超级虚拟人 v0.7.0｜R1 Current Page vs Frozen Node + True New Chat｜R1｜实】",
+  "tested_at": "2026-10-04",
+  "objective": "Compare complete T_VALID from a completed parent semantic boundary to a valid next-node result.",
+  "environment": {
+    "browser": "existing shared-mcp Chrome",
+    "cdp_endpoint": "http://127.0.0.1:9223",
+    "second_browser_launched": false,
+    "temporary_test_page_used": true,
+    "final_idle_target": "one blank ChatGPT root page",
+    "bridge_probe_run_id": 37207063951,
+    "bridge_probe_artifact_id": 11305117342
+  },
+  "contract": {
+    "same_parent_input": true,
+    "same_next_node_goal": true,
+    "parent_context": {
+      "K1": "MERIDIAN-73",
+      "K2": "LOTUS-19",
+      "K3": "EMBER-42",
+      "rule": "FINAL_LINE => K2|K1|K3|CHECK=sum(numeric parts)"
+    },
+    "expected_result": "LOTUS-19|MERIDIAN-73|EMBER-42|CHECK=134",
+    "clock_start": "parent semantic boundary after parent READY",
+    "clock_end": "next-node valid assistant result",
+    "current_page_includes_rotation": false,
+    "rotate_path_includes": [
+      "local Node Freeze persist",
+      "true New Chat navigation",
+      "minimal handoff",
+      "next-node response"
+    ],
+    "exactly_once_required": true,
+    "branch_forbidden": true
+  },
+  "valid_samples": [
+    {
+      "trial": 1,
+      "current_page_ms": 7395.27,
+      "rotate_ms": 31627.009,
+      "rotate_freeze_ms": 0.523,
+      "rotate_navigation_ms": 5832.834,
+      "current_valid": true,
+      "rotate_valid": true,
+      "rotate_submission_count": 1,
+      "rotate_marker_count": 1,
+      "branch_used": false
+    },
+    {
+      "trial": 2,
+      "current_page_ms": 7543.929,
+      "rotate_ms": 41995.381,
+      "rotate_freeze_ms": 4.842,
+      "rotate_navigation_ms": 25428.783,
+      "current_valid": true,
+      "rotate_valid": true,
+      "rotate_submission_count": 1,
+      "rotate_marker_count": 1,
+      "branch_used": false
+    },
+    {
+      "trial": 3,
+      "current_page_ms": 5476.361,
+      "rotate_ms": 15512.132,
+      "rotate_freeze_ms": 0.833,
+      "rotate_navigation_ms": 1696.054,
+      "current_valid": true,
+      "rotate_valid": true,
+      "rotate_submission_count": 1,
+      "rotate_marker_count": 1,
+      "branch_used": false
+    }
+  ],
+  "summary": {
+    "current_page_avg_ms": 6805.187,
+    "rotate_avg_ms": 29711.507,
+    "current_page_median_ms": 7395.27,
+    "rotate_median_ms": 31627.009,
+    "rotate_minus_current_avg_ms": 22906.321,
+    "rotate_slower_pct_vs_current": 336.6,
+    "rotate_to_current_ratio": 4.366,
+    "faster_candidate": "CURRENT_PAGE"
+  },
+  "discarded_runs": [
+    {
+      "reason": "Precondition/control-path failure before a valid pair completed",
+      "detail": "Legacy visible-composer detection treated the post-answer ProseMirror composer as unavailable; parent submission completed but next submission did not. This run is excluded from T_VALID samples."
+    },
+    {
+      "reason": "Parent precondition timeout before timing boundary",
+      "detail": "Second attempted pair timed out during parent setup; no route timing was admitted."
+    }
+  ],
+  "incidental_open_regression": {
+    "id": "V070-R1-UI-COMPOSER-VISIBILITY-REGRESSION",
+    "status": "OPEN",
+    "finding": "Current ChatGPT UI exposes DIV.ProseMirror[contenteditable=true][role=textbox], but legacy runtime visibility-based composer detection can report composer=false after an answer, potentially preventing safeCheckpoint/rotation decisions.",
+    "handling": "Recorded only; not silently fixed inside R1. Must be resolved and regression-tested before v0.7 final freeze because freeze gate forbids known regressions that can break v0.6 continuity behavior."
+  },
+  "final_state": {
+    "one_blank_chatgpt_root": true,
+    "chatgpt_page_count": 1,
+    "root_url": "https://chatgpt.com/",
+    "second_browser_launched": false
+  },
+  "decision": {
+    "R1": "PASS",
+    "node_freeze": "YES",
+    "conclusion": "For a small, tightly-coupled next node immediately after its parent semantic boundary, continuing the current page was materially faster than freezing and rotating.",
+    "interpretation_boundary": "This does not establish the universal rotation threshold. It rejects the rule 'node complete => always rotate' and supports dynamic T_VALID-based rotation."
+  },
+  "project_final_valid": "NO"
+}
