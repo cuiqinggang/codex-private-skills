@@ -2,16 +2,16 @@
 
 ## 1. 核心原则
 
-故障恢复默认不从“报错末端”向后堆补丁，而从**最后一个已知正确的建设起点**出发，按原始依赖链正向重放，找到第一个偏离正确状态的层级，只修这一层，再继续正向验收。
+故障处理只允许从**第一性原理**出发：先明确这个能力成立所不可缺少的最小条件，再从最源头的逻辑关系开始向结果逐层验证。前面已被 Reality 证明正确的层级一律不动；找到第一个逻辑不成立或现实状态偏离的位置后，只对该最小范围做修复。重建不是默认方法，只是当该断点对应的临时实例已经失效时的一种局部修复动作。
 
 ```text
 现实目标 / DONE_WHEN
-→ 找到最后一个已知正确起点
+→ 明确能力成立的最小逻辑条件
 → 冻结用户数据、登录态、权威状态与安全边界
-→ 按原始建设链逐层重放
+→ 从逻辑源头按因果链逐层验证
 → 每层立即做最小健康验收
 → 第一个偏差点 = 当前首要根因候选
-→ 只做最小定点修复或受控重建
+→ 只做最小定点修复；仅在该断点实例失效时局部重建
 → 从该层继续向前重放
 → 完整 Reality 验收
 → 保存新经验
@@ -19,8 +19,8 @@
 
 这套方法称为：
 
-`FIRST_PRINCIPLES_FORWARD_REBUILD_RECOVERY`
-（第一性原理·正向重建恢复）
+`FIRST_PRINCIPLES_FAULT_ANALYSIS_AND_MINIMAL_REPAIR`
+（第一性原理·故障分析与最小修复）
 
 ## 2. 为什么它优先
 
@@ -56,14 +56,14 @@
 
 ## 3. 与“最小定点修复”的关系
 
-“从源头重建”不等于“大拆大改”。
+第一性原理分析本身**不等于重建**。
 
-它解决的是**定位顺序**；“最小定点修复”解决的是**修改范围**。
+它解决的是**如何推导和定位问题**；“最小定点修复”决定**实际修改范围**。
 
 统一算法：
 
 ```text
-先从源头正向重放定位
+先从最基本成立条件开始按因果链验证
 → 找到第一个失真层
 → 判断：
    A. 当前实例可原位恢复 → 最小定点修复
@@ -75,7 +75,7 @@
 优先级：
 
 1. 保护数据、凭据、登录态、权威状态；
-2. 重放已知正确的成熟建设链；
+2. 从能力成立的最小条件开始按逻辑链验证；
 3. 找到首次偏差；
 4. 最小定点修复；
 5. 只有实例本身失效时才做受控重建；
@@ -134,7 +134,7 @@
 收到“修复故障/恢复功能/为什么坏了”类任务时，除非已有明确根因和成熟一键修复，否则默认执行：
 
 ```ini
-RECOVERY_DEFAULT=FIRST_PRINCIPLES_FORWARD_REBUILD
+RECOVERY_DEFAULT=FIRST_PRINCIPLES_FAULT_ANALYSIS_AND_MINIMAL_REPAIR
 REPAIR_FROM_ERROR_TAIL_DEFAULT=NO
 KNOWN_GOOD_ORIGIN_REQUIRED=YES
 FORWARD_LAYER_VALIDATION=YES
@@ -145,9 +145,9 @@ REPEAT_SAME_FAILED_ATTEMPT_WITHOUT_NEW_EVIDENCE=FORBIDDEN
 FULL_REALITY_REVALIDATION_REQUIRED=YES
 ```
 
-## 6. 正向建设链模板
+## 6. 第一性原理因果链模板
 
-每个能力应尽量保存自己的“诞生链”：
+每个能力应尽量保存自己的“成立链/因果链”：
 
 ```text
 权威配置/凭据/版本
@@ -160,7 +160,7 @@ FULL_REALITY_REVALIDATION_REQUIRED=YES
 → DONE_WHEN
 ```
 
-发生故障时反向猜测不是默认方法；直接按这条链从最小必要起点重新走。
+发生故障时禁止从末端症状无边界猜测；必须沿这条因果链从源头验证到首次不成立点。
 
 每层只回答三个问题：
 
@@ -174,8 +174,8 @@ FULL_REALITY_REVALIDATION_REQUIRED=YES
 
 - 同一失败动作没有新证据时不得机械重复；
 - 每一轮必须产生至少一种新信息：新 PASS、首次 FAIL 层、根因候选收敛、修复动作结果；
-- 连续两轮没有缩小故障空间，立即返回最近已知正确起点重新正向重放；
-- 能低成本重建的临时实例，优先重建，不把时间消耗在保留坏实例上；
+- 一旦故障不属于明确的单点初级错误，立即回到第一性原理因果链；不得先进入多方案末端试错。
+- 若第一性原理已经定位到某个临时实例本身失效，则直接局部重建该实例，不继续修一个失去成立条件的实例；
 - 用户数据、账号、长期 profile、权威仓库、不可逆状态不属于“临时实例”，不得为了省事直接清空。
 
 ## 8. 与 Goal Loop 的结合
@@ -186,7 +186,7 @@ Goal Loop 遇到故障时：
 执行失败
 → 是否已有明确根因？
   → 是：最小定点修复 → Reality
-  → 否：FIRST_PRINCIPLES_FORWARD_REBUILD
+  → 否：FIRST_PRINCIPLES_FAULT_ANALYSIS_AND_MINIMAL_REPAIR
        → 找首次偏差
        → 最小修复/重建该层
        → Reality
@@ -210,10 +210,11 @@ Goal Loop 遇到故障时：
 ## 10. v0.6.0 冻结结论
 
 ```ini
-FAULT_RECOVERY_PHILOSOPHY=FIRST_PRINCIPLES
-DEFAULT_DIRECTION=ORIGIN_TO_OUTCOME
+FAULT_RECOVERY_PHILOSOPHY=FIRST_PRINCIPLES_ONLY
+DEFAULT_REASONING_DIRECTION=CAUSE_TO_OUTCOME
 LOCAL_REPAIR_SCOPE=MINIMUM_NECESSARY
-REBUILD_SCOPE=INVALID_LAYER_OR_EPHEMERAL_INSTANCE_ONLY
+REBUILD_IS_METHOD=NO
+REBUILD_ALLOWED_ONLY_AS_LOCAL_ACTION=YES
 DONE_WHEN_UNCHANGED=YES
 TSTAR_OBJECTIVE_UNCHANGED=YES
 ```
