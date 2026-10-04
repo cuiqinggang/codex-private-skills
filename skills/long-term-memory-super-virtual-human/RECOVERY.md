@@ -1,4 +1,4 @@
-# 长期记忆超级虚拟人｜恢复阶梯 v0.4.4
+# 长期记忆超级虚拟人｜恢复阶梯 v0.6.0
 
 ```text
 L0 当前会话正常执行
@@ -31,6 +31,31 @@ BLOCKED：持久化状态并等待依赖恢复
 - FLOW_START 与当前时间轴状态。
 
 恢复不是重新规划一个新项目，而是从最近可信状态继续原任务。
+
+## v0.6 第一性原理恢复入口
+
+根因不明确时，恢复阶梯之前先执行：
+
+```text
+最后一个已知正确建设起点
+→ 按原始建设链逐层重放
+→ 每层最小验收
+→ 找到第一个偏差
+→ 仅修该层 / 仅重建失效的临时实例
+→ 继续正向验收
+```
+
+硬规则：
+
+```ini
+RECOVERY_DEFAULT=FIRST_PRINCIPLES_FORWARD_REBUILD
+TAIL_REPAIR_LOOP=FORBIDDEN_WITHOUT_NEW_EVIDENCE
+FIRST_DIVERGENCE=PRIMARY_REPAIR_POINT
+MINIMAL_POINT_REPAIR=REQUIRED
+FULL_REALITY_REVALIDATION=REQUIRED
+```
+
+连续两轮没有缩小故障空间，必须返回最近可信建设起点重新正向重放。详细规范见 `FIRST_PRINCIPLES_RECOVERY.md`。
 
 
 ## v0.3 新会话恢复硬规则
