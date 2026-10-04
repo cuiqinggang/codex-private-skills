@@ -1,14 +1,14 @@
 ---
 name: long-term-memory-super-virtual-human
-version: "0.5.0"
+version: "0.6.0"
 description: 长期记忆超级虚拟人（Long-Term Memory Super Virtual Human）。以高智能主脑为核心，吸收成熟 Recovery/Long-Flow/Browser 机制，以长期记忆、权威任务合同、Checkpoint、按需工具路由、低相关冗余和独立强备份推进现实任务；唯一优化目标仍是 T*=min(T_VALID)。
 ---
 
-# 长期记忆超级虚拟人 v0.5.0
+# 长期记忆超级虚拟人 v0.6.0
 # Long-Term Memory Super Virtual Human
 
 ```ini
-VERSION=0.5.0
+VERSION=0.6.0
 STATUS=VIRTUAL_MATURE_CONTINUITY_RUNTIME_ACTIVE
 VIRTUAL_MATURE=YES
 FINAL_VALID=NO
@@ -34,7 +34,7 @@ GOAL_LOOP_DEFAULT=YES
 GOAL_LOOP_CONTROLLER=V0_5_0_ADAPTER_READY
 GOAL_LOOP_REALITY=PASS_WINDOWS_PROCESS_FILES_AND_RUNTIME_INBOX
 GOAL_LOOP_WINDOWS_DEPLOYMENT=PASS_UNIQUE_RUNTIME
-GOAL_LOOP_BROWSER_FAULT_REALITY=BLOCKED_EXISTING_BROWSER_CDP
+FIRST_PRINCIPLES_RECOVERY=V0_6_0_DEFAULT\nGOAL_LOOP_BROWSER_FAULT_REALITY=CDP_SOURCE_REBUILD_AND_E2E_ACK_PASS_R2_AUTO_RECOVERY_NOT_YET_CERTIFIED
 ```
 
 ## 1. 产品定位
@@ -246,7 +246,43 @@ GPT 服务不可用
 - `CHATGPT_SESSION_CONTINUITY_CONTROLLER.md`
 - `BRAIN_FAILOVER_CONTRACT.md`
 
-## 13. v1.0 毕业门槛
+## 13. 第一性原理故障恢复
+
+v0.6.0 将故障恢复正式统一为“从最后一个已知正确建设起点正向重放，找到第一个偏差点，只修该点，再继续正向验收”。
+
+```ini
+RECOVERY_DEFAULT=FIRST_PRINCIPLES_FORWARD_REBUILD
+REPAIR_FROM_ERROR_TAIL_DEFAULT=NO
+KNOWN_GOOD_ORIGIN_REQUIRED=YES
+FORWARD_LAYER_VALIDATION=YES
+FIRST_DIVERGENCE_IS_PRIMARY_REPAIR_POINT=YES
+MINIMAL_POINT_REPAIR=YES
+CONTROLLED_LAYER_REBUILD_WHEN_INSTANCE_INVALID=YES
+REPEAT_SAME_FAILED_ATTEMPT_WITHOUT_NEW_EVIDENCE=FORBIDDEN
+FULL_REALITY_REVALIDATION_REQUIRED=YES
+```
+
+它与“最小定点修复”不是冲突关系：
+
+```text
+从源头正向重放 = 定位顺序
+最小定点修复 = 修改范围
+
+正确起点
+→ 逐层 PASS
+→ 首次 FAIL
+→ 仅修该层 / 必要时只重建该临时实例
+→ 继续逐层 PASS
+→ DONE_WHEN
+```
+
+已固化三类经验：Windows 本地连接桥、专用 ChatGPT 浏览器/CDP 9223、爱马仕升级后认证恢复。9223 R2 已真实证明：旧启动壳仍在但 Chrome 主进程已死亡；重新按原始建设参数启动唯一 shared-mcp 浏览器后，9223、CDP target、Attach-Only runtime 和真 New chat→GPT ACK 全链恢复。
+
+详见：
+- `FIRST_PRINCIPLES_RECOVERY.md`
+- `evidence/V060-FIRST-PRINCIPLES-RECOVERY-20261004-R1.json`
+
+## 14. v1.0 毕业门槛
 
 v1.0 按**能力结果**验收，不把某一个实现工具写成唯一毕业条件。指定主路失败时，只要成熟备路能达到同一个现实结果并留下证据，就可以判定该能力 PASS；失败的主路另行修复和优化。
 
@@ -262,7 +298,7 @@ v1.0 按**能力结果**验收，不把某一个实现工具写成唯一毕业�
 
 原则：实现路径可以降级，DONE_WHEN 不能降级。
 
-## 14. v0.5.0 默认运行合同
+## 15. v0.6.0 默认运行合同
 
 当用户明确说以下任一含义时：
 
@@ -389,7 +425,7 @@ CHECKPOINT_CHARS_R18=125
 
 已实测但不采用为默认路径的候选包括：执行页提前预热、Instant 控制链、CEO 同物理 tab 复用、删除独立接管确认回合。它们在本轮 Reality 中没有降低完整 T_VALID，部分显著变慢；不得仅凭“理论上步骤更少”替换当前冻结路径。
 
-## 15. 当前入口
+## 16. 当前入口
 
 用户只给现实目标。
 
@@ -405,10 +441,10 @@ ChatGPT 页面控制复用 Playwright Native AI Browser；
 记录 FLOW_START → FINAL_VALID 的完整 T_VALID。
 ```
 
-## 16. v0.5.0 目标循环默认执行合同
+## 17. v0.6.0 目标循环默认执行合同
 
-收到授权任务后，自动循环判断、执行或调度、真实验证、定向返修与保存状态，不等待用户每轮说“继续”。GPT可以直接执行，也可以调度成熟执行器。只有 DONE_WHEN + EVIDENCE_REQUIRED 真正通过才完成；普通错误先尝试授权内可行的新策略。无授权可完成路线、需要用户决定、预算达到、无进展或用户 STOP 时明确停止并报告。
+收到授权任务后，自动循环判断、执行或调度、真实验证、定向返修与保存状态，不等待用户每轮说“继续”。GPT可以直接执行，也可以调度成熟执行器。只有 DONE_WHEN + EVIDENCE_REQUIRED 真正通过才完成；普通错误先尝试授权内可行的新策略；**根因不明确时不得长期围绕故障末端试错，必须切换到 FIRST_PRINCIPLES_FORWARD_REBUILD：回到最后一个已知正确起点，按原始建设链逐层验收，在首次偏差处做最小修复或只重建失效层/临时实例。** 无授权可完成路线、需要用户决定、预算达到、无进展或用户 STOP 时明确停止并报告。
 
 先读取 `GOAL_LOOP_CONTROLLER.md`。任务合同、状态、日志分离；动作前保存稳定编号，中断后先核对原结果，禁止重复副作用。保持现有唯一连续性 runtime/global writer；不新建并行 supervisor 或浏览器。
 
-本版已部署到用户 Windows 唯一连续性 runtime。2026-10-04 实测：循环控制器 12/12、连续性 25/25、租约 6/6、真实进程/文件场景 4/4、实际 runtime inbox 场景 5/5 PASS。已证明自动返修、原动作核对续接、同次投递自动恢复、终态去重、阻塞与 STOP；证据见 `evidence/V050-WINDOWS-GOAL-LOOP-REALITY-20261004-R1.json`。专用浏览器仍存在但 CDP 9223 不可达，新循环中的真实 GPT/网页故障端到端尚未通过；禁止借另启浏览器绕过。本版功能与受控 Windows 实测已通过，不等于全部生产能力通过；项目级 FINAL_VALID=NO 不变。
+本版已部署到用户 Windows 唯一连续性 runtime。2026-10-04 实测：循环控制器 12/12、连续性 25/25、租约 6/6、真实进程/文件场景 4/4、实际 runtime inbox 场景 5/5 PASS。已证明自动返修、原动作核对续接、同次投递自动恢复、终态去重、阻塞与 STOP；证据见 `evidence/V050-WINDOWS-GOAL-LOOP-REALITY-20261004-R1.json`。v0.6.0 R2 已从建设源头复验并恢复专用浏览器控制链：确认旧启动壳残留、Chrome 主进程缺失，按原始 shared-mcp + 9223 参数重建唯一专用浏览器后，9223 LISTEN、/json/version、ChatGPT target、Attach-Only runtime、真 New chat→GPT ACK 均 PASS，且 branch=false、newBrowserLaunched=false。**自动检测并触发该重建动作的故障注入 E2E 尚未认证**；项目级 FINAL_VALID=NO 不变。
