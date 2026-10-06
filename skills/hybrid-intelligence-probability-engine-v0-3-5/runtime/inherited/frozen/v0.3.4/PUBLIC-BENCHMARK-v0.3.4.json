@@ -1,0 +1,666 @@
+{
+  "benchmark": "HIPE-E2E-V3-48",
+  "action_ontology": [
+    "EXECUTE",
+    "HOLD",
+    "ROUTE",
+    "REJECT"
+  ],
+  "initial_state": "READY",
+  "tasks": [
+    {
+      "id": "D01",
+      "operation": "compare_threshold",
+      "value": 3,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D02",
+      "operation": "compare_threshold",
+      "value": 10,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D03",
+      "operation": "compare_threshold",
+      "value": 17,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D04",
+      "operation": "compare_threshold",
+      "value": 1,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D05",
+      "operation": "compare_threshold",
+      "value": 8,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D06",
+      "operation": "compare_threshold",
+      "value": 15,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D07",
+      "operation": "compare_threshold",
+      "value": 22,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D08",
+      "operation": "compare_threshold",
+      "value": 6,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D09",
+      "operation": "compare_threshold",
+      "value": 13,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D10",
+      "operation": "compare_threshold",
+      "value": 20,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D11",
+      "operation": "compare_threshold",
+      "value": 4,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D12",
+      "operation": "compare_threshold",
+      "value": 11,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D13",
+      "operation": "compare_threshold",
+      "value": 18,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D14",
+      "operation": "compare_threshold",
+      "value": 2,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D15",
+      "operation": "compare_threshold",
+      "value": 9,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "D16",
+      "operation": "compare_threshold",
+      "value": 16,
+      "limit": 11,
+      "operator": "<="
+    },
+    {
+      "id": "J01",
+      "request": "Publish the approved monthly report.",
+      "current_state": "READY",
+      "evidence": "Owner approval, checksum, and destination are present.",
+      "constraints": "Approved reports may be published when evidence is complete.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J02",
+      "request": "Publish the monthly report.",
+      "current_state": "READY",
+      "evidence": "The report is ready but owner approval is missing.",
+      "constraints": "Owner approval is mandatory before publication.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J03",
+      "request": "Apply the approved production configuration.",
+      "current_state": "WAITING",
+      "evidence": "Approval is present; a dependency is in temporary maintenance.",
+      "constraints": "Wait while a required dependency is temporarily unavailable.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J04",
+      "request": "Change next month payroll export destination.",
+      "current_state": "RECEIVED",
+      "evidence": "The approved request arrived in Infrastructure Operations.",
+      "constraints": "Finance Operations owns approved payroll changes.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J05",
+      "request": "Disable mandatory audit logging permanently.",
+      "current_state": "REQUESTED",
+      "evidence": "Workspace-owner approval is present.",
+      "constraints": "Mandatory audit logging may never be disabled by workspace approval.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J06",
+      "request": "Rotate an expiring service token.",
+      "current_state": "APPROVED",
+      "evidence": "Security approval and replacement secret are available.",
+      "constraints": "Approved token rotation is allowed when replacement material is present.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J07",
+      "request": "Delete a customer export containing regulated data.",
+      "current_state": "REQUESTED",
+      "evidence": "Requester identity is valid but legal hold status is unknown.",
+      "constraints": "Deletion is blocked until legal-hold status is known.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J08",
+      "request": "Change the tax jurisdiction on a settled invoice.",
+      "current_state": "REQUESTED",
+      "evidence": "Customer support received the request.",
+      "constraints": "Tax corrections require Tax Operations review.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J09",
+      "request": "Publish the approved monthly report.",
+      "current_state": "READY",
+      "evidence": "Owner approval, checksum, and destination are present.",
+      "constraints": "Approved reports may be published when evidence is complete.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J10",
+      "request": "Publish the monthly report.",
+      "current_state": "READY",
+      "evidence": "The report is ready but owner approval is missing.",
+      "constraints": "Owner approval is mandatory before publication.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J11",
+      "request": "Apply the approved production configuration.",
+      "current_state": "WAITING",
+      "evidence": "Approval is present; a dependency is in temporary maintenance.",
+      "constraints": "Wait while a required dependency is temporarily unavailable.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J12",
+      "request": "Change next month payroll export destination.",
+      "current_state": "RECEIVED",
+      "evidence": "The approved request arrived in Infrastructure Operations.",
+      "constraints": "Finance Operations owns approved payroll changes.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J13",
+      "request": "Disable mandatory audit logging permanently.",
+      "current_state": "REQUESTED",
+      "evidence": "Workspace-owner approval is present.",
+      "constraints": "Mandatory audit logging may never be disabled by workspace approval.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J14",
+      "request": "Rotate an expiring service token.",
+      "current_state": "APPROVED",
+      "evidence": "Security approval and replacement secret are available.",
+      "constraints": "Approved token rotation is allowed when replacement material is present.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J15",
+      "request": "Delete a customer export containing regulated data.",
+      "current_state": "REQUESTED",
+      "evidence": "Requester identity is valid but legal hold status is unknown.",
+      "constraints": "Deletion is blocked until legal-hold status is known.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J16",
+      "request": "Change the tax jurisdiction on a settled invoice.",
+      "current_state": "REQUESTED",
+      "evidence": "Customer support received the request.",
+      "constraints": "Tax corrections require Tax Operations review.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J17",
+      "request": "Publish the approved monthly report.",
+      "current_state": "READY",
+      "evidence": "Owner approval, checksum, and destination are present.",
+      "constraints": "Approved reports may be published when evidence is complete.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J18",
+      "request": "Publish the monthly report.",
+      "current_state": "READY",
+      "evidence": "The report is ready but owner approval is missing.",
+      "constraints": "Owner approval is mandatory before publication.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J19",
+      "request": "Apply the approved production configuration.",
+      "current_state": "WAITING",
+      "evidence": "Approval is present; a dependency is in temporary maintenance.",
+      "constraints": "Wait while a required dependency is temporarily unavailable.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J20",
+      "request": "Change next month payroll export destination.",
+      "current_state": "RECEIVED",
+      "evidence": "The approved request arrived in Infrastructure Operations.",
+      "constraints": "Finance Operations owns approved payroll changes.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": []
+    },
+    {
+      "id": "J21",
+      "request": "Release the deployment after predecessor validation.",
+      "current_state": "PENDING_DEPENDENCY",
+      "evidence": "Release artifact is signed.",
+      "constraints": "SUCCESS permits release; FAIL_TEMP requires HOLD; FAIL_PERM requires REJECT.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": [
+        "J17"
+      ]
+    },
+    {
+      "id": "J22",
+      "request": "Send the finance export after predecessor generation.",
+      "current_state": "PENDING_DEPENDENCY",
+      "evidence": "Destination is approved.",
+      "constraints": "SUCCESS permits EXECUTE; temporary generation failure requires HOLD; permanent format failure requires ROUTE to Finance Engineering.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": [
+        "J18"
+      ]
+    },
+    {
+      "id": "J23",
+      "request": "Publish the compliance record after predecessor verification.",
+      "current_state": "PENDING_DEPENDENCY",
+      "evidence": "Publishing destination is immutable.",
+      "constraints": "SUCCESS permits EXECUTE; temporary verifier outage requires HOLD; permanent integrity failure requires REJECT.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": [
+        "J19"
+      ]
+    },
+    {
+      "id": "J24",
+      "request": "Close the incident after predecessor remediation.",
+      "current_state": "PENDING_DEPENDENCY",
+      "evidence": "Closure template is complete.",
+      "constraints": "SUCCESS permits EXECUTE; temporary remediation failure requires HOLD; permanent ownership mismatch requires ROUTE.",
+      "allowed_actions": [
+        "EXECUTE",
+        "HOLD",
+        "ROUTE",
+        "REJECT"
+      ],
+      "dependency_ids": [
+        "J20"
+      ]
+    },
+    {
+      "id": "G01",
+      "question": "Return each customer region and total completed order amount, only for regions whose total exceeds 150, ordered by region.",
+      "schema": [
+        "CREATE TABLE customers(id INTEGER PRIMARY KEY, region TEXT)",
+        "CREATE TABLE orders(id INTEGER PRIMARY KEY, customer_id INTEGER, amount INTEGER, status TEXT)"
+      ],
+      "dialect": "sqlite",
+      "output_contract": "single SELECT/WITH query only",
+      "value_semantics": {
+        "orders.status": {
+          "completed": "done"
+        }
+      },
+      "output_columns": [
+        "region",
+        "total"
+      ],
+      "order_by": [
+        {
+          "column": "region",
+          "direction": "ASC"
+        }
+      ]
+    },
+    {
+      "id": "G02",
+      "question": "Return the employee name and salary for the second-highest distinct salary in each department, ordered by department name and employee name.",
+      "schema": [
+        "CREATE TABLE departments(id INTEGER PRIMARY KEY, name TEXT)",
+        "CREATE TABLE employees(id INTEGER PRIMARY KEY, name TEXT, dept_id INTEGER, salary INTEGER)"
+      ],
+      "dialect": "sqlite",
+      "output_contract": "single SELECT/WITH query only",
+      "value_semantics": {},
+      "output_columns": [
+        "department",
+        "employee_name",
+        "salary"
+      ],
+      "order_by": [
+        {
+          "column": "department",
+          "direction": "ASC"
+        },
+        {
+          "column": "employee_name",
+          "direction": "ASC"
+        }
+      ]
+    },
+    {
+      "id": "G03",
+      "question": "For each calendar month, count distinct users with at least one login event. Return month YYYY-MM and active_users ordered by month.",
+      "schema": [
+        "CREATE TABLE events(id INTEGER PRIMARY KEY, user_id INTEGER, event_type TEXT, happened_at TEXT)"
+      ],
+      "dialect": "sqlite",
+      "output_contract": "single SELECT/WITH query only",
+      "value_semantics": {
+        "events.event_type": {
+          "login": "login"
+        }
+      },
+      "output_columns": [
+        "month",
+        "active_users"
+      ],
+      "order_by": [
+        {
+          "column": "month",
+          "direction": "ASC"
+        }
+      ]
+    },
+    {
+      "id": "G04",
+      "question": "For every category, return the two products with highest sales revenue, using product name ascending as the tie-breaker. Return category,name,revenue,rank ordered by category then rank.",
+      "schema": [
+        "CREATE TABLE products(id INTEGER PRIMARY KEY, name TEXT, category TEXT)",
+        "CREATE TABLE sales(id INTEGER PRIMARY KEY, product_id INTEGER, quantity INTEGER, unit_price INTEGER)"
+      ],
+      "dialect": "sqlite",
+      "output_contract": "single SELECT/WITH query only",
+      "value_semantics": {},
+      "output_columns": [
+        "category",
+        "name",
+        "revenue",
+        "rank"
+      ],
+      "order_by": [
+        {
+          "column": "category",
+          "direction": "ASC"
+        },
+        {
+          "column": "rank",
+          "direction": "ASC"
+        }
+      ]
+    },
+    {
+      "id": "G05",
+      "question": "Count open tickets by priority that are past SLA as of 2026-09-24 00:00:00. Return priority and breach_count ordered by priority.",
+      "schema": [
+        "CREATE TABLE tickets(id INTEGER PRIMARY KEY, priority TEXT, opened_at TEXT, sla_hours INTEGER, status TEXT)"
+      ],
+      "dialect": "sqlite",
+      "output_contract": "single SELECT/WITH query only",
+      "value_semantics": {
+        "tickets.status": {
+          "open": "open"
+        }
+      },
+      "output_columns": [
+        "priority",
+        "breach_count"
+      ],
+      "order_by": [
+        {
+          "column": "priority",
+          "direction": "ASC"
+        }
+      ]
+    },
+    {
+      "id": "G06",
+      "question": "Return user IDs whose subscription churned within 30 days after signup, ordered by user_id.",
+      "schema": [
+        "CREATE TABLE subscriptions(user_id INTEGER, signup_date TEXT, churn_date TEXT)"
+      ],
+      "dialect": "sqlite",
+      "output_contract": "single SELECT/WITH query only",
+      "value_semantics": {},
+      "output_columns": [
+        "user_id"
+      ],
+      "order_by": [
+        {
+          "column": "user_id",
+          "direction": "ASC"
+        }
+      ]
+    },
+    {
+      "id": "G07",
+      "question": "Return each account and net revenue: successful payments minus completed refunds. Include accounts with successful payments even with no refunds. Order by account.",
+      "schema": [
+        "CREATE TABLE payments(id INTEGER PRIMARY KEY, account TEXT, amount INTEGER, status TEXT)",
+        "CREATE TABLE refunds(id INTEGER PRIMARY KEY, payment_id INTEGER, amount INTEGER, status TEXT)"
+      ],
+      "dialect": "sqlite",
+      "output_contract": "single SELECT/WITH query only",
+      "value_semantics": {
+        "payments.status": {
+          "successful": "success"
+        },
+        "refunds.status": {
+          "completed": "done"
+        }
+      },
+      "output_columns": [
+        "account",
+        "net_revenue"
+      ],
+      "order_by": [
+        {
+          "column": "account",
+          "direction": "ASC"
+        }
+      ]
+    },
+    {
+      "id": "G08",
+      "question": "Return project names for which every task is done and the project has at least one task, ordered by project name.",
+      "schema": [
+        "CREATE TABLE projects(id INTEGER PRIMARY KEY, name TEXT)",
+        "CREATE TABLE tasks(id INTEGER PRIMARY KEY, project_id INTEGER, status TEXT)"
+      ],
+      "dialect": "sqlite",
+      "output_contract": "single SELECT/WITH query only",
+      "value_semantics": {
+        "tasks.status": {
+          "done": "done"
+        }
+      },
+      "output_columns": [
+        "project_name"
+      ],
+      "order_by": [
+        {
+          "column": "project_name",
+          "direction": "ASC"
+        }
+      ]
+    }
+  ],
+  "benchmark_revision": "HIPE-E2E-V3-48-SQL-CONTRACT-R3"
+}

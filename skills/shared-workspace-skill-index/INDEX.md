@@ -43,3 +43,19 @@ CHANGE_SCOPE=ROOT_CAUSE_SCOPE
 3. main 没找到时继续搜索相关 `codex/*` 分支；
 4. 只有聊天历史提到、远端未找到时标记为 `HISTORICAL_REFERENCE_ONLY`；
 5. 任何“已保存/已发布”必须远端回读确认。
+
+
+<!-- HIPE-V035-FULLY-SEALED-20261006-R1 START -->
+## 混合智能概率引擎 v0.3.5 — 简洁生产成熟版（FULLY_SEALED）
+
+- 正式网上入口：[HIPE v0.3.5](https://github.com/cuiqinggang/codex-private-skills/tree/main/skills/hybrid-intelligence-probability-engine-v0-3-5)
+- 读取入口：`skills/hybrid-intelligence-probability-engine-v0-3-5/SKILL.md`。
+- 位置与冻结规则：`skills/hybrid-intelligence-probability-engine-v0-3-5/README.md`。
+- Freeze ID：`HIPE-v0.3.5-FULLY-SEALED-20261006-R1`。
+- 冻结 ZIP 与完整清单：对应目录 `freeze/`；原正式包 14 文件按原字节保存。
+- 本地正式源：`C:\Users\A\Documents\Codex\2026-09-29\5-hipe-v0-3-5-01\outputs\hipe-v0.3.5`。
+- 本地封存目录：`C:\Users\A\Documents\Codex\2026-10-06\v0-3-5-x20\outputs\HIPE-v0.3.5-FROZEN-20261006`。
+- 触发：HIPE、混合智能概率引擎、0.35、v0.3.5、简洁生产成熟版。
+- 禁止以旧 v0.3.0 / v0.3.2 覆盖本冻结基线；后续改动须另建版本并标 NEEDS_VERSIONED_UPGRADE。
+- 本次为资产保存，不扩大原 21/21 常用场景认证范围，不重跑远端模型认证。
+<!-- HIPE-V035-FULLY-SEALED-20261006-R1 END -->

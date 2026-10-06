@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "freeze_id": "HIPE-v0.3.5-FULLY-SEALED-20261006-R1",
+  "version": "0.3.5",
+  "state": "FULLY_SEALED",
+  "sealed_at": "2026-10-06T21:35:53.545199+08:00",
+  "locator": "【页面名1｜任务名1｜序号1】",
+  "canonical_source": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-5-01\\outputs\\hipe-v0.3.5",
+  "policy": "IMMUTABLE; NEEDS_VERSIONED_UPGRADE",
+  "original_release_hashes": "13/13 MATCH",
+  "files": [
+    {
+      "path": "COMMON-SCENARIO-ACCEPTANCE.json",
+      "bytes": 15003,
+      "sha256": "e97bc77687df7825806f69f0b233208f0a7420cde041990f22a9c7dac2c5c81e"
+    },
+    {
+      "path": "CURRENT_STATE.json",
+      "bytes": 5748,
+      "sha256": "16b86c4ccbd69b8acfbd633f382f74b11d3d3434eece471975fa26b793115947"
+    },
+    {
+      "path": "RELEASE-NOTES-v0.3.5.md",
+      "bytes": 5968,
+      "sha256": "cc5bd18a1fd76d857b7d7425474e91e994330ac48d4a0643525f25f3c1b0b2f8"
+    },
+    {
+      "path": "runtime/inherited/components/comfort-zone-forward-compiler/forward_compiler.py",
+      "bytes": 1169,
+      "sha256": "fe5f73dcbc48b21efb8e8977b8be23b3da802a815617a664022f34abe620f070"
+    },
+    {
+      "path": "runtime/inherited/components/reality-solvability-gate/reality_solvability_gate.py",
+      "bytes": 1631,
+      "sha256": "92dfe0a356627ddd698b21438f79c919df2d739c65461ddb7d57d7be865c9b88"
+    },
+    {
+      "path": "runtime/inherited/frozen/v0.3.4/HIPE-v0.3.4-real-verify.py",
+      "bytes": 30373,
+      "sha256": "73e8d239bafba4916cab7d69f0d92f61bb4b406cb35b2a1a9f2e0223d188c519"
+    },
+    {
+      "path": "runtime/inherited/frozen/v0.3.4/PRIVATE-ORACLE-v0.3.4.json",
+      "bytes": 6264,
+      "sha256": "f073bf1264c0f2d46ad497388df68d6203460d92c8064c5fbd5bf254eb57a60f"
+    },
+    {
+      "path": "runtime/inherited/frozen/v0.3.4/PRIVATE_REFERENCE_AUDIT.json",
+      "bytes": 3837,
+      "sha256": "844eac8a6d571e125b5df7a37fa4cbf565dabfc0d2dc7d586437757252188905"
+    },
+    {
+      "path": "runtime/inherited/frozen/v0.3.4/PUBLIC-BENCHMARK-R2-BASELINE.json",
+      "bytes": 12321,
+      "sha256": "4cdf0e8d483dadcc418715b73d95d1f80f69b4357de89f808dec87b2763c3aa5"
+    },
+    {
+      "path": "runtime/inherited/frozen/v0.3.4/PUBLIC-BENCHMARK-v0.3.4.json",
+      "bytes": 19207,
+      "sha256": "ecd4c20f69c34a8171f75199002164572386a310e8054a0009004bc22d4c6a6f"
+    },
+    {
+      "path": "runtime/inherited/frozen/v0.3.4/sql_scope_audit.py",
+      "bytes": 15456,
+      "sha256": "da6a0f641e05c36cdb0af5d37a4976526368ebb2387cb1c8f2a713c503ffd4a0"
+    },
+    {
+      "path": "runtime/inherited/frozen/v0.3.4/timing_boundary_candidate.py",
+      "bytes": 8396,
+      "sha256": "c3f51f04c8269cbf1289416a531344c1e71ca84460597630b31b14e742dd6fe8"
+    },
+    {
+      "path": "runtime/production.py",
+      "bytes": 11870,
+      "sha256": "92ea9d65316c2e071611a9acc0cf88e60e249f3922220b60cb2bed84d16d90fa"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 4878,
+      "sha256": "6958e3602794f04943cd4ec03c02fe4830c428b6f8126743f28fdf465ab9f990"
+    }
+  ],
+  "scope": "Full byte inventory; original acceptance evidence retained, no new runtime certification."
+}

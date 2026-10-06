@@ -1,0 +1,482 @@
+{
+  "version": "0.3.5",
+  "COMMON_SCENARIO_ACCEPTANCE": "21/21",
+  "total": 21,
+  "passed": 21,
+  "failed": 0,
+  "groups": {
+    "A": 3,
+    "B": 3,
+    "C": 3,
+    "D": 3,
+    "E": 3,
+    "F": 3,
+    "G": 3
+  },
+  "ROUTING_CORRECT": "YES",
+  "VERIFIER_FAIL_CLOSED": "YES",
+  "SILENT_WRONG_RESULT": 0,
+  "FINAL_WRITE_INCLUDED": "YES",
+  "scope": "Common scenario routing and safety semantics, not universal semantic correctness",
+  "remote_calls": 0,
+  "paid_calls": 0,
+  "offline_fixture_calls": 14,
+  "records": [
+    {
+      "id": "A1",
+      "description": "Mature direct D01",
+      "pass": true,
+      "details": {
+        "route": "CODE",
+        "mature": "MATURE_DIRECT",
+        "first_seen_is_not_unknown": true
+      }
+    },
+    {
+      "id": "A2",
+      "description": "Mature direct J02",
+      "pass": true,
+      "details": {
+        "route": "JEV",
+        "mature": "MATURE_DIRECT",
+        "first_seen_is_not_unknown": true
+      }
+    },
+    {
+      "id": "A3",
+      "description": "Mature direct G01",
+      "pass": true,
+      "details": {
+        "route": "GPT",
+        "mature": "MATURE_DIRECT",
+        "first_seen_is_not_unknown": true
+      }
+    },
+    {
+      "id": "B1",
+      "description": "Mature independent composition D01,J01",
+      "pass": true,
+      "details": {
+        "route": "CODE+JEV"
+      }
+    },
+    {
+      "id": "B2",
+      "description": "Mature independent composition J02,G01",
+      "pass": true,
+      "details": {
+        "route": "JEV+GPT"
+      }
+    },
+    {
+      "id": "B3",
+      "description": "Mature independent composition D02,J05,G03",
+      "pass": true,
+      "details": {
+        "route": "CODE+JEV+GPT"
+      }
+    },
+    {
+      "id": "C1",
+      "description": "Exact integer threshold",
+      "pass": true,
+      "details": {
+        "answer": "ALLOW",
+        "CODE_priority": true
+      }
+    },
+    {
+      "id": "C2",
+      "description": "Exact integer threshold",
+      "pass": true,
+      "details": {
+        "answer": "ALLOW",
+        "CODE_priority": true
+      }
+    },
+    {
+      "id": "C3",
+      "description": "Exact integer threshold",
+      "pass": true,
+      "details": {
+        "answer": "BLOCK",
+        "CODE_priority": true
+      }
+    },
+    {
+      "id": "D1",
+      "description": "Finite choice J01",
+      "pass": true,
+      "details": {
+        "route": "JEV",
+        "answer": "EXECUTE",
+        "wrong_choice_rejected": true
+      }
+    },
+    {
+      "id": "D2",
+      "description": "Finite choice J02",
+      "pass": true,
+      "details": {
+        "route": "JEV",
+        "answer": "HOLD",
+        "wrong_choice_rejected": true
+      }
+    },
+    {
+      "id": "D3",
+      "description": "Finite choice J05",
+      "pass": true,
+      "details": {
+        "route": "JEV",
+        "answer": "REJECT",
+        "wrong_choice_rejected": true
+      }
+    },
+    {
+      "id": "E1",
+      "description": "Open SQL generation G02",
+      "pass": true,
+      "details": {
+        "route": "GPT",
+        "sql_verifier": "PASS",
+        "wrong_sql_rejected": true
+      }
+    },
+    {
+      "id": "E2",
+      "description": "Open SQL generation G04",
+      "pass": true,
+      "details": {
+        "route": "GPT",
+        "sql_verifier": "PASS",
+        "wrong_sql_rejected": true
+      }
+    },
+    {
+      "id": "E3",
+      "description": "Open SQL generation G08",
+      "pass": true,
+      "details": {
+        "route": "GPT",
+        "sql_verifier": "PASS",
+        "wrong_sql_rejected": true
+      }
+    },
+    {
+      "id": "F1",
+      "description": "Unsafe JEV must fall back {'current_state': ''}",
+      "pass": true,
+      "details": {
+        "route": "GPT",
+        "safe_handoff": true,
+        "VALID": false,
+        "gate": "MATURE_EXPLORATORY"
+      }
+    },
+    {
+      "id": "F2",
+      "description": "Unsafe JEV must fall back {'requires_open_generation': True}",
+      "pass": true,
+      "details": {
+        "route": "GPT",
+        "safe_handoff": true,
+        "VALID": false,
+        "gate": "MATURE_EXPLORATORY"
+      }
+    },
+    {
+      "id": "F3",
+      "description": "Unsafe JEV must fall back {'unresolved_hidden_information': True}",
+      "pass": true,
+      "details": {
+        "route": "GPT",
+        "safe_handoff": true,
+        "VALID": false,
+        "gate": "MATURE_EXPLORATORY"
+      }
+    },
+    {
+      "id": "G1",
+      "description": "JEV RuntimeError and final-write safety",
+      "pass": true,
+      "details": {
+        "RuntimeError": "FAIL_CLOSED",
+        "delayed_final_write_included": true,
+        "write_failure_blocks_VALID": true
+      }
+    },
+    {
+      "id": "G2",
+      "description": "GPT RuntimeError and readback safety",
+      "pass": true,
+      "details": {
+        "RuntimeError": "FAIL_CLOSED",
+        "readback_corruption_blocks_VALID": true
+      }
+    },
+    {
+      "id": "G3",
+      "description": "Mixed RuntimeError and stale-output safety",
+      "pass": true,
+      "details": {
+        "RuntimeError": "FAIL_CLOSED",
+        "stale_output_rejected": true,
+        "mixed_source_unchanged": true
+      }
+    }
+  ],
+  "runner_sha256": "92ea9d65316c2e071611a9acc0cf88e60e249f3922220b60cb2bed84d16d90fa",
+  "acceptance_script_sha256": "8aad6455ac6a8406206554c414e289092c4bf1fedd6806b755fbed0d770db442",
+  "generated_at": "2026-09-28T17:14:05Z",
+  "reality": {
+    "CODE": {
+      "status": {
+        "version": "0.3.5",
+        "status": "VALID",
+        "valid": true,
+        "route": "CODE",
+        "T_VALID_MS": 20.2368,
+        "FINAL_WRITE_INCLUDED": true,
+        "verifier": "PASS",
+        "external_runtime_error": null,
+        "mode": "REAL",
+        "usage": {
+          "D01": {}
+        },
+        "task_family": "REAL_INTEGER_THRESHOLD",
+        "run_id": "f3bb2383-fc16-4145-b6ed-4faf6cdd418f",
+        "result": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-5-01\\work\\reality-code\\candidate.json",
+        "receipt": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-5-01\\work\\reality-code\\timing.json",
+        "plan": {
+          "gate": {
+            "version": "0.2.0",
+            "classification": "MATURE_DIRECT",
+            "DOMAIN_MATCH": "YES",
+            "research_allowed": false,
+            "acceptance_verifiable": true,
+            "evidence": [
+              "INSTALLED_FROZEN_DOMAIN"
+            ]
+          },
+          "forward_compiler_version": "0.2.0",
+          "nodes": [
+            {
+              "id": "D01",
+              "route": "CODE"
+            }
+          ],
+          "route": "CODE",
+          "frozen_fast_path": true
+        }
+      },
+      "task": {
+        "task_family": "REAL_INTEGER_THRESHOLD",
+        "tasks": [
+          {
+            "id": "D01",
+            "operation": "compare_threshold",
+            "value": 14,
+            "limit": 11,
+            "operator": "<="
+          }
+        ]
+      },
+      "candidate": {
+        "path": "HYBRID",
+        "variant": 0,
+        "valid": true,
+        "errors": [],
+        "answers": {
+          "D01": "BLOCK"
+        },
+        "usage": {
+          "D01": {}
+        },
+        "route": "CODE",
+        "plan": {
+          "gate": {
+            "version": "0.2.0",
+            "classification": "MATURE_DIRECT",
+            "DOMAIN_MATCH": "YES",
+            "research_allowed": false,
+            "acceptance_verifiable": true,
+            "evidence": [
+              "INSTALLED_FROZEN_DOMAIN"
+            ]
+          },
+          "forward_compiler_version": "0.2.0",
+          "nodes": [
+            {
+              "id": "D01",
+              "route": "CODE"
+            }
+          ],
+          "route": "CODE",
+          "frozen_fast_path": true
+        },
+        "mode": "REAL",
+        "run_id": "f3bb2383-fc16-4145-b6ed-4faf6cdd418f",
+        "role": "candidate_requires_successful_timing_and_status"
+      },
+      "receipt": {
+        "component_id": "HIPE-v0.3.4-R5-TIMING-COMPONENT-01",
+        "run_id": "f3bb2383-fc16-4145-b6ed-4faf6cdd418f",
+        "path": "HYBRID",
+        "variant": 0,
+        "phase": "MEASURED",
+        "REAL_START": "2026-09-28T17:19:27.343021900+00:00",
+        "REAL_END": "2026-09-28T17:19:27.363265700+00:00",
+        "REAL_START_EPOCH_NS": 1790615967343021900,
+        "REAL_END_EPOCH_NS": 1790615967363265700,
+        "REAL_START_MONO_NS": 1054828839032600,
+        "REAL_END_MONO_NS": 1054828859269400,
+        "clock": "time.perf_counter_ns",
+        "simulation": false,
+        "wall_clock_reversed": false,
+        "elapsed_ns": 20236800,
+        "elapsed_ms": 20.2368,
+        "path_complete_and_correct": true,
+        "error_category": null,
+        "outputs": [
+          {
+            "path": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-5-01\\work\\reality-code\\candidate.json",
+            "bytes": 732,
+            "sha256": "46b1fb9b9a697e82571dfa4352839b3f67273011860a32504a50b4607e57d30d"
+          }
+        ],
+        "required_output_paths": [
+          "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-5-01\\work\\reality-code\\candidate.json"
+        ],
+        "T_VALID_REAL_MS": null,
+        "HIPE_REALITY_CERTIFIED": false,
+        "integration_with_R4_verified": false,
+        "boundary": "wrapper entry through synchronous operation return, return checks, and required-output readback/hashes",
+        "receipt_write_in_elapsed": false,
+        "receipt_role": "observer-only metadata; never substitutes for any required task result or operational evidence"
+      },
+      "files": [
+        {
+          "path": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-5-01\\work\\reality-code\\candidate.json",
+          "sha256": "46b1fb9b9a697e82571dfa4352839b3f67273011860a32504a50b4607e57d30d",
+          "bytes": 732
+        },
+        {
+          "path": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-5-01\\work\\reality-code\\timing.json",
+          "sha256": "a79d0334623a5bac557e89575a532f848bf7114218584a67e7e4fe1cb6c5cd09",
+          "bytes": 1450
+        },
+        {
+          "path": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-5-01\\work\\reality-code\\status.json",
+          "sha256": "222ac0f338be644bc38f5515afe5ab5e751ad6a57329b922c3096528aeaa1958",
+          "bytes": 1001
+        }
+      ]
+    },
+    "JEV_GPT_MIXED": {
+      "mode": "HISTORICAL_REALITY_REUSED_BY_USER_INSTRUCTION",
+      "new_remote_calls": 0,
+      "successful_run": {
+        "path": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-4-06\\outputs\\hipe-v0.3.4-final\\reality-evidence\\v00-hybrid.json",
+        "sha256": "2a46aed96e28b341fd0669d9d8a09b1cd757b8048ac534fda91bcf276793ca13",
+        "bytes": 1214
+      },
+      "successful_receipt": {
+        "path": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-4-06\\outputs\\hipe-v0.3.4-final\\reality-evidence\\observations\\v00-hybrid.json",
+        "sha256": "a751e0897c544c1937f9b270b89e5d6776e48f5f4dc39b0dae2dee97eae2721f",
+        "bytes": 1960
+      },
+      "sql_evidence": {
+        "path": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-4-06\\outputs\\hipe-v0.3.4-final\\reality-evidence\\v00-hybrid-sql-evidence.json",
+        "sha256": "695a091e4d8ffaab013ae193614bfb568e789ebecc53c055b8d6cc1f5774251b",
+        "bytes": 4028
+      },
+      "R4_R5_T_VALID_MS": 15315.9103,
+      "real_started_at": "2026-09-28T16:43:17.572065000+00:00",
+      "real_finished_at": "2026-09-28T16:43:32.887979900+00:00",
+      "inherited_path_counts": {
+        "CODE": 16,
+        "JEV": 24,
+        "GPT": 8
+      },
+      "usage": {
+        "jev_1": {
+          "cost_usd": 0.000284718,
+          "prompt_tokens": 6779,
+          "completion_tokens": 916,
+          "provider": "TypeSafe",
+          "model": "typesafe/jev-1.13-20260917",
+          "generation_id": "gen-dec-1790613799-oYEjl5RAPsnx72Cz2gYY"
+        },
+        "jev_2": {
+          "cost_usd": 0.000284718,
+          "prompt_tokens": 6779,
+          "completion_tokens": 911,
+          "provider": "TypeSafe",
+          "model": "typesafe/jev-1.13-20260917",
+          "generation_id": "gen-dec-1790613813-c87aCCGiyBinf8twi8lV"
+        },
+        "gpt_residual": {
+          "cost_usd": 0.012261,
+          "prompt_tokens": 1049,
+          "completion_tokens": 964,
+          "provider": "OpenAI",
+          "model": "openai/gpt-5.6-sol",
+          "generation_id": "gen-1790613800-0yM6ESCLjJpNnT6A65ZU"
+        }
+      },
+      "sql_queries_reverified": 8,
+      "core_functions_ast_unchanged": [
+        "run_hybrid",
+        "run_full",
+        "verify",
+        "sqlok",
+        "post",
+        "jev_payloads",
+        "gpt_body",
+        "compile_b"
+      ],
+      "external_error": {
+        "path": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-4-06\\outputs\\hipe-v0.3.4-final\\reality-evidence\\observations\\v02-hybrid.json",
+        "sha256": "1fec2967c5c5c149b370e1bc9b7e59d1d529560701a0d1d010b6d36933e1d108",
+        "bytes": 1429,
+        "category": "RuntimeError",
+        "fail_closed": true,
+        "cause": "Not established by stored category; not asserted to be transient"
+      },
+      "limit": "No new live remote execution of v0.3.5 wrappers; remote usability inherited from unchanged core and adapters."
+    }
+  },
+  "historical_tests": [
+    {
+      "path": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-4-06\\work\\INTEGRATION-VERIFICATION.json",
+      "sha256": "cb005b12352ee381004ec8167ab0ee1487fc1d4a3aa92fc4bed0bfcedff8e5d5",
+      "bytes": 4595,
+      "passed": 18,
+      "reuse_only": true,
+      "rerun": false
+    },
+    {
+      "path": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-4-06\\work\\R5-ORIGINAL-TEST-RESULT.json",
+      "sha256": "5e572df762512bf403f0959a28e019262e38398a689695986ea0e31cfa1c0f6c",
+      "bytes": 3979,
+      "passed": 28,
+      "reuse_only": true,
+      "rerun": false
+    },
+    {
+      "path": "C:\\Users\\A\\Documents\\Codex\\2026-09-29\\5-hipe-v0-3-4-06\\work\\R4-REGRESSION-73.json",
+      "sha256": "4cba3212840d8da1171f2eefb595389a0e2abcb8f7fa84259a67da6eb6dc266c",
+      "bytes": 11500,
+      "passed": 73,
+      "reuse_only": true,
+      "rerun": false
+    }
+  ],
+  "historical_R4_source": {
+    "path": "C:\\Users\\A\\Documents\\Codex\\2026-09-26\\5-hipe-v0-3-4-01\\outputs\\hipe-v0.3.4-r4\\skills\\hybrid-intelligence-probability-engine\\frozen\\v0.3.4\\MANIFEST-R4-LOCAL.json",
+    "sha256": "7b8840bb2bd6862bc57c3ab7c7baa95b275542eed47738fe13e606c1c2f262be",
+    "bytes": 4087,
+    "hash_matches": "21/21"
+  }
+}
