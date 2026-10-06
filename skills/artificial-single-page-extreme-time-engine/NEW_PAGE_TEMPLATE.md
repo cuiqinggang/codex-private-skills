@@ -1,18 +1,20 @@
-# 《新页面运行模板 第5版》
+# 《新页面运行模板 第6版》
 
-版本：第5版  
-升级来源：《新页面运行模板 第4版》  
+版本：第6版  
+升级来源：《新页面运行模板 第5版》  
 状态：CURRENT
 
-## 1. 目的
+## 1. 权威来源：必须标明网络共同工作区
 
-新页面只做一件事：
+每个新页面都必须明确：
 
-**用最少上下文继续当前任务。**
+```text
+权威来源=网络共同工作区
+REPO=cuiqinggang/codex-private-skills
+REF=<main或冻结commit>
+```
 
-禁止把完整历史、全部证据、长规则表、长 JSON、重复哈希重新塞进提示词。
-
-## 2. 固定只读 4 个方法文件
+并读取固定 4 个文件：
 
 ```text
 ENGINE_PATH=skills/artificial-single-page-extreme-time-engine/ENGINE.md
@@ -21,20 +23,59 @@ TASK_PATH=skills/artificial-single-page-extreme-time-engine/CURRENT_TASK_CONSTRA
 TEMPLATE_PATH=skills/artificial-single-page-extreme-time-engine/NEW_PAGE_TEMPLATE.md
 ```
 
-权威仓库：
+**禁止先去 C 盘寻找方法文件。**
+
+## 2. 三行信封：唯一强制标签
+
+每次派发和回报只强制这三行：
 
 ```text
-REPO=cuiqinggang/codex-private-skills
-REF=main 或明确冻结 commit
+【页面名｜任务名｜序号｜虚/实】
+状态机：<版本｜状态码｜阶段>
+时间锚：TASK_ACCEPTED=<时间>｜CURRENT=<时间/节点>｜ELAPSED=<整体已用>｜T_VALID=<数值或null>｜T*=<数值或null>
 ```
+
+### 四字段定位
+
+固定只有 4 个字段：
+
+```text
+页面名｜任务名｜序号｜虚/实
+```
+
+- 页面名只用于机器定位，可自动生成；用户无需记忆。
+- 任务名用于识别当前任务。
+- 序号用于顺序。
+- 虚/实用于区分虚拟成熟与 Reality。
+
+### 状态机
+
+仅保留：
+
+```text
+10 准备
+20 虚拟成熟
+30 虚实交接
+40 Reality/验收
+100 完成或冻结
+```
+
+### 时间锚
+
+时间不能省，因为本方法的核心就是极限时间。
+
+未产生的 T_VALID / T* 用 `null`，禁止写 N/A。
 
 ## 3. NEXT_PAGE_PROMPT 最小格式
 
-默认只写：
+正常只需要：
 
 ```text
-执行《人工单页面极限短时间引擎 第10版》和《极限短时间执行大脑 第5版》。
+【<页面>｜<任务>｜<序号>｜<虚/实>】
+状态机：<版本｜状态码｜阶段>
+时间锚：TASK_ACCEPTED=<...>｜CURRENT=<...>｜ELAPSED=<...>｜T_VALID=<...>｜T*=<...>
 
+权威来源=网络共同工作区
 REPO=cuiqinggang/codex-private-skills
 REF=<main或冻结commit>
 读取：ENGINE.md / BRAIN.md / CURRENT_TASK_CONSTRAINTS.md / NEW_PAGE_TEMPLATE.md
@@ -42,22 +83,31 @@ REF=<main或冻结commit>
 任务：<一句话>
 冻结事实：<最多3条>
 下一步：<一句话>
-禁止：<仅真正必要项>
+禁止：禁止自研、禁止从零重建；其他仅写真正必要项
 ```
 
-正常目标：**10 行左右。**
+目标：通常 12 行左右，不写长篇协议。
 
-## 4. 页面规则
+## 4. 明确删除
 
-- 一个页面只服务一个明确任务；
-- 同页完成成熟方案搜索、简单融合、攻击迭代和一次性虚拟成熟；
-- 不为微小优化机械换页；
-- 复杂证据写文件，不复制进提示词；
-- 页面开始卡顿时，立即最小冻结并换页。
+NEXT_PAGE_PROMPT 不再默认携带：
 
-## 5. 冻结
+- 巨大 CEO_FREEZE_TAG_JSON；
+- freeze_id / node_id / claim namespace；
+- 大量 SHA256；
+- 完整历史；
+- 全量证据；
+- HIPE/JEV 内部说明；
+- DAG 说明；
+- 长候选表；
+- 重复的禁止清单；
+- 为页面名称编写的人类说明。
 
-只冻结真正影响继续执行的事实：
+这些需要时写入证据文件，不进入交接提示词。
+
+## 5. 页面结束
+
+只冻结继续执行真正需要的内容：
 
 ```text
 FINAL_VALID
@@ -67,12 +117,15 @@ FINAL_VALID
 下一动作
 ```
 
-机器标签如自动化确实需要，可以单独存冻结文件；**不再强制把巨大 JSON 放进 NEXT_PAGE_PROMPT 正文。**
+提示词是交接，不是数据库。
 
 ## 6. 核心
 
 ```text
-提示词是交接，不是数据库。
-文件存证据，提示词只给下一步。
-能短绝不长。
+网络共同工作区找方法
+三行信封做定位
+时间锚永远保留
+正文只传下一步
+证据放文件
+禁止自研
 ```
