@@ -85,29 +85,95 @@ DISCOVER
 - 独立资料检索/方案判断并行；
 - 条件分支预计算。
 
-## 5. 概率引擎接入边界
+## 5. HIPE v0.3.5 作为全流程元决策能力
 
-共同工作区当前实际可确认的概率引擎为：
-
-`skills/jev-probability-engine-p0`
-
-其 `VERSION` 当前为 0.3.0；不得虚构 v0.3.5 已存在。
-
-概率引擎可作为“元决策层”候选，用于：
-- 多候选优先级判断；
-- 有限条件分支预计算；
-- 高概率收益路线排序；
-- 把多个独立语义判断压缩为最少 model barrier。
-
-不得无证据把网络模型调用插入确定性 hot path。
-
-正确原则：
+当前正式冻结能力不是旧 `jev-probability-engine-p0 v0.3.0`，而是：
 
 ```text
-概率判断负责选择
-确定性代码负责状态/动作/验收
-现实 A/B 负责证明是否真的更快
+NAME=混合智能概率引擎 v0.3.5 — 简洁生产成熟版
+PATH=skills/hybrid-intelligence-probability-engine-v0-3-5/
+FREEZE_COMMIT=c6fe2878fd237e7a8120b3af8e75f93e3cd6a4d9
+FREEZE_ID=HIPE-v0.3.5-FULLY-SEALED-20261006-R1
+STATE=FULLY_SEALED
 ```
+
+其中两项正式组件：
+
+```text
+Reality Solvability Gate v0.2.0
+Comfort-Zone Forward Compiler v0.2.0
+```
+
+### 5.1 正确定位
+
+HIPE 可以作为**几乎所有非平凡任务的元决策入口**，但不是要求每一步都调用 JEV。
+
+正确含义：
+
+```text
+每个关键判断点都可以先结构化
+→ 能 CODE 就 CODE
+→ 有限 Choice + 明确状态 + 可验证 才 JEV
+→ 开放生成 / 隐藏信息 / 定时重试 / 域不匹配 → GPT residual
+```
+
+因此：
+
+```text
+全流程可挂载 HIPE
+≠ 全流程网络调用 JEV
+```
+
+### 5.2 固定任务入口
+
+```text
+TASK_ACCEPTED
+→ Reality Solvability Gate
+   ├─ INCOMPLETE_SPEC
+   ├─ SOLUTION_SEARCH_REQUIRED
+   ├─ INFEASIBLE_OR_CONTRADICTORY
+   ├─ CERTIFIED_COMPILABLE
+   ├─ MATURE_DIRECT
+   ├─ MATURE_COMPOSABLE
+   ├─ MATURE_EXPLORATORY
+   └─ FRONTIER_UNKNOWN
+→ 成熟方案检索/组合
+→ Forward Compiler
+   ├─ CODE
+   ├─ JEV
+   └─ GPT
+→ 最大合法并行
+→ Reality Executor
+→ deterministic verifier
+→ FINAL_VALID
+```
+
+### 5.3 最有价值的挂载点
+
+优先用于：
+- 任务是否规格完整；
+- 是否现实可解；
+- 直接成熟解 / 组合成熟解 / 成熟探索协议分类；
+- 多候选路线优先级；
+- 有限浏览器动作选择；
+- 工具/执行器路由；
+- Failure Class 分类；
+- continue / defer / stop 判断；
+- 多个独立语义判断的批量/并行决策。
+
+不用于替代：
+- hash、ffprobe、文件存在性；
+- 精确数值阈值；
+- 原子提交；
+- 已冻结 deterministic action；
+- 无法枚举答案的开放式设计；
+- 页面没有暴露可选动作时的“猜动作”。
+
+### 5.4 Browser / Web 任务原则
+
+浏览器任务先把页面真实控件压成有限 action table，再让快速决策器选择；自由文本仍交给语言模型，最终结果由确定性 verifier 收口。
+
+如果页面/工具没有暴露需要的动作，JEV 应 fail-fast 或回 GPT，不得幻觉补全隐藏动作。
 
 ## 6. 预期收益排序
 
