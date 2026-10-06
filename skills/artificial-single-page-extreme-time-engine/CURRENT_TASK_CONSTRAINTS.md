@@ -1,117 +1,217 @@
 # 《当前任务目标与正反约束 当前版》
 
 状态：CURRENT  
-任务：新版极限短时间方法 Reality 验证（从零重开，不是 Greenfield-R11）  
-方法基线：《人工单页面极限短时间引擎 第7版》+《极限短时间执行大脑 2.1》+《新页面运行模板 第4版》
+任务：抖音不可下载链接一键完成 — 新方法 Reality 验证  
+任务ID：DOUYIN-ONECLICK-METHOD-V1  
+方法基线：《人工单页面极限短时间引擎 第8版》+《极限短时间执行大脑 第3版》+《新页面运行模板 第4版》  
+HIPE集成：《HIPE v0.3.5 × 极限短时间引擎：集成冻结 第2版》
 
-## 1. 当前目标
+## 1. 用户真正要完成的功能
 
-重新从任务第1步定义一个同类现实任务，用新版方法从零推进，验证本次制度修正是否真正降低“从 TASK_ACCEPTED 到成熟 FINAL_VALID”的总闭环时间。
+不是“重新研发一个下载器”。
 
-这不是继续 R11，不继承 R1-R10 的具体实现优化链。
-
-R1-R10 只允许作为：
-- 方法复盘证据；
-- 失败模式反例；
-- 禁止复发规则来源。
-
-不得把 R9/R10 代码、阈值、等待参数、claim 或局部优化直接作为新任务实现基线。
-
-## 2. 新验证任务的核心原则
+唯一现实目标：
 
 ```text
-新任务定义
-→ HIPE Reality Solvability Gate v0.2.0
-→ 成熟方案集群
-→ Comfort-Zone Forward Compiler v0.2.0
-→ CODE / JEV / GPT residual 路由
-→ 连续虚拟成熟
-→ 最大合法并行
-→ 整包 Freeze
-→ Reality
-→ verifier
-→ FINAL_VALID
+复制抖音分享文本/链接
+→ 双击桌面入口
+→ 自动完成
+→ 桌面得到可正常播放、同时含视频+音频的 MP4
 ```
 
-Reality 不是探索器。
+实现手段不限，只要合法、现实可用且 T_VALID 最短：
+- 调用成熟现成程序；
+- 调用成熟 API；
+- 复制/适配成熟开源能力；
+- 组合已有组件；
+- 必要时最小自研；
+- browser fallback。
 
-## 3. HIPE v0.3.5 固定冻结来源
+禁止为了“自己实现”而放弃更成熟、更快路线。
+
+## 2. 本轮冻结样本
+
+用户提供的真实分享文本：
 
 ```text
-REPO=cuiqinggang/codex-private-skills
-PATH=skills/hybrid-intelligence-probability-engine-v0-3-5/
-FREEZE_COMMIT=c6fe2878fd237e7a8120b3af8e75f93e3cd6a4d9
-FREEZE_ID=HIPE-v0.3.5-FULLY-SEALED-20261006-R1
-STATE=FULLY_SEALED
+冰川蓝色防蓝光近视眼镜黑武士系列 #无框切边眼镜 #近视眼镜 #防蓝光眼镜 #无框眼镜 #黑武士系列 https://v.douyin.com/jRJYc4pme7Q/ 复制此链接，打开【抖音】，直接观看视频！
 ```
 
-组件：
-- Reality Solvability Gate v0.2.0
-- Comfort-Zone Forward Compiler v0.2.0
-
-禁止原地修改冻结 HIPE v0.3.5。若发现缺陷，返回 NEEDS_VERSIONED_UPGRADE。
-
-## 4. Reality 轮数预算
+核心短链：
 
 ```text
-TARGET=3..4
+https://v.douyin.com/jRJYc4pme7Q/
+```
+
+用户描述：约15秒眼镜广告视频。
+
+## 3. VALID
+
+正式结果必须同时满足：
+
+1. 用户只需要先复制分享文本/链接，再双击一次桌面入口；
+2. 双击后不需要人工再次粘贴、选择媒体、播放或手工修复；
+3. 最终桌面生成新的 MP4；
+4. 独立 ffprobe 证明：
+   - video stream >=1；
+   - audio stream >=1；
+   - duration > 0；
+5. 输出不是旧文件冒充新结果；
+6. 正式 Reality exactly-once；
+7. 失败不能删除已有有效正式结果；
+8. FINAL_VALID 前所有必要步骤属于同一任务时间边界。
+
+## 4. 两层时间
+
+### 建设任务
+从本任务正式 TASK_ACCEPTED 到第一个成熟功能 FINAL_VALID：
+
+```text
+T_BUILD_VALID
+```
+
+用于验证新版方法是否避免旧 R1-R10 的流程浪费。
+
+### 生产子任务
+成熟状态下：
+
+```text
+剪贴板已含分享文本
+→ 双击桌面入口
+→ 新 MP4 FINAL_VALID
+```
+
+记为：
+
+```text
+T_RUN_VALID
+```
+
+两者不得混称。
+
+## 5. 权威工作区
+
+方法权威：
+```text
+cuiqinggang/codex-private-skills
+skills/artificial-single-page-extreme-time-engine/
+```
+
+本任务权威：
+```text
+workspaces/douyin-oneclick-method-v1/
+```
+
+本地目录只能作为执行落地/缓存。
+不得把 C 盘目录当方法或任务冻结权威。
+
+## 6. 旧 Greenfield 边界
+
+R1-R10：
+- 只作为“哪些方法会浪费时间”的反例；
+- 不作为新任务代码基线；
+- 不读取/复制其实现作为默认方案；
+- 不继承 R9/R10 wait threshold、claim、临时前缀或局部优化链。
+
+本任务不是 R11。
+
+## 7. 新版虚拟成熟流程
+
+```text
+TASK
+→ Reality Solvability Gate
+→ Mature Solution Search
+→ Recursive Forward Compile
+→ CODE / JEV / GPT residual
+→ DAG + 最大合法并行
+→ 连续虚拟攻击
+→ 一次整包 Freeze
+→ Formal Reality
+→ independent verifier
+```
+
+## 8. 当前成熟候选集（只作为搜索起点）
+
+当前公开成熟生态已经存在：
+- 单视频、短链解析、重试、browser fallback 的成熟 Douyin downloader；
+- 统一 content-downloader，支持 Douyin 短链与 Playwright fallback；
+- 自托管 Douyin/TikTok Download API，提供解析/下载 API。
+
+因此当前默认可解性倾向：
+
+```text
+WORLD_SOLVED=YES
+EXPECTED_CLASS=MATURE_DIRECT or MATURE_COMPOSABLE
+```
+
+但正式分类必须在 R0 读取现实环境和候选可用性后冻结，不能只凭文字宣告。
+
+## 9. HIPE / JEV
+
+```text
+HIPE_ALWAYS_ON=YES
+JEV_ALWAYS_CALL=NO
+```
+
+优先：
+- CODE 解决确定性；
+- JEV 解决有限语义 Choice；
+- GPT 解决不可压缩 residual。
+
+JEV 接入：
+```text
+ENDPOINT=https://openrouter.ai/api/alpha/decisions
+MODEL=typesafe/jev-1.13
+KEY_ENV=OPENROUTER_API_KEY
+```
+
+本机用户级环境变量已检测为存在；最小 Decisions API smoke test 已 PASS。
+不得把密钥值写入仓库/日志/冻结。
+
+## 10. Reality 预算
+
+```text
+DEFAULT_FORMAL_REALITY=1
+METHOD_VALIDATION_TARGET=3..4
 HARD_MAX=5
 ```
 
-- 能首轮成熟完成就首轮完成，不为了凑轮数继续。
-- 3–4轮用于验证方法是否稳定，不用于机械微调。
-- 最多5轮；第5轮仍未收敛必须 STOP + 复盘方法。
-- 禁止再次形成 R1→R10 式无限串行微版本。
+同一个具体功能如果首轮 FINAL_VALID，禁止为了凑轮数重复运行。
+后续 2–4 个 Reality 应属于方法验证所需的不同样本/边界，而不是对同一样本做微调刷版本。
 
-## 5. 权威位置
+任何单一任务达到第5个 Reality 仍未收敛：
+```text
+MANDATORY_POSTMORTEM=YES
+STOP
+```
 
-方法与冻结状态优先写网络共同工作区。
+## 11. 当前节点
 
-本地 C 盘：
-- 可作为执行缓存、临时文件、运行时依赖；
-- 只有网络共同工作区不可用时才作为 fallback；
-- fallback 必须显式记录 SOURCE_FALLBACK=YES；
-- 不得通过扫描整个 C 盘猜权威文件。
+```text
+DOUYIN-ONECLICK-METHOD-V1-R0
+```
 
-## 6. 正向约束
+R0 只完成：
+- 新任务冻结；
+- Reality Solvability Gate；
+- 成熟候选快速比较；
+- 依赖图；
+- CODE/JEV/GPT 路由；
+- 整包虚拟成熟；
+- Reality Freeze。
 
-- 唯一标准保持 `T*=min(T_VALID)`；
-- 先冻结任务边界，区分建设任务与生产子任务；
-- GPT/HIPE 负责虚拟成熟和路由；
-- 确定性代码承担能精确完成的工作；
-- JEV 只承担有限 Choice / typed decision；
-- 开放问题保留 GPT residual；
-- Reality 只验证冻结方案；
-- verifier 必须独立；
-- performance instrumentation 首轮即布好；
-- 所有页面冻结出口必须带 `CEO_FREEZE_TAG_JSON`。
+R0 不做正式下载 Reality。
 
-## 7. 反向约束
+R1 才是第一次正式 Reality。
 
-禁止：
-- 执行 Greenfield-R11；
-- 继承 R10 threshold=2 或 R9 局部逻辑作为新任务基线；
-- 每发现一个瓶颈就立即 Reality；
-- 每个微优化都换 CEO 页；
-- 把 Local Minimal Repair 当全局优化法；
-- 把 JEV 插入纯确定性 hot path；
-- 把“页面没有暴露的动作”交给 JEV 猜；
-- 超过5轮 Reality 仍继续刷版本。
+## 12. 成功标准
 
-## 8. 成功判据
+新版方法成功的主要证据不是“最终也能下载”。
 
-新版方法验证成功，不以“某一次程序跑通”单独判定。
-
-至少要求：
-1. 新任务产生真实 FINAL_VALID；
-2. 整包虚拟成熟确实减少 Reality 循环；
-3. 页面/冻结/交接没有恢复成微变量串行器；
-4. CEO_FREEZE_TAG_JSON 可由状态机直接读取；
-5. 总建设闭环时间与旧 10 轮方式相比出现明确结构性改善；
-6. 3–5轮预算内完成或得出明确方法复盘结论。
-
-## 9. 当前下一节点
-
-`METHOD-VALIDATION-R0-TASK-DEFINE`
-
-只重新定义新任务及 VALID / READY_STATE / 权威工作区，不执行 R11。
+必须同时看到：
+- 首轮前方案已明显成熟；
+- 没有 R1→R10 式逐点补洞；
+- 观测/安全/原子提交/验证从首版就存在；
+- Reality 次数显著减少；
+- 建设任务 T_BUILD_VALID 明显收缩；
+- 生产 T_RUN_VALID 继续向物理/网络下限收敛。
