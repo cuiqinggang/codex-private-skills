@@ -112,6 +112,17 @@ C:\Users\A\Documents\Codex\2026-10-06\douyin-oneclick-method-v1\evidence\R1-2026
 - 未把 OpenRouter key 写入代码、日志、冻结文件。
 - R1 结束后没有同页第二次 Reality。
 
+## 6.1 非阻断观察：桌面文件名编码
+
+桌面目录回读确认本轮新 MP4 实际存在，但文件名前缀显示为：
+```text
+鎶栭煶鏋侀檺鐩翠笅-鏂规硶楠岃瘉-20261006-233430-878.mp4
+```
+
+这是文件名显示/编码质量问题，不影响本轮冻结的媒体 VALID 条件：新文件、video+audio、duration>0、staged ffprobe、退出后独立 ffprobe 均 PASS。
+
+R1 已执行 exactly-once，禁止为了该非阻断问题在本页重跑。是否修正命名并需要新的 Reality，交给 R2-VIRTUAL 按收益/风险判断。
+
 ## 7. 下一节点
 
 R1 已 PASS_FROZEN。下一节点只允许：
