@@ -1,147 +1,117 @@
 # 《当前任务目标与正反约束 当前版》
 
 状态：CURRENT  
-任务：Greenfield R1-R10 方法复盘与方法体系纠偏  
-注意：**本任务不是执行 Greenfield-R11。**
+任务：新版极限短时间方法 Reality 验证（从零重开，不是 Greenfield-R11）  
+方法基线：《人工单页面极限短时间引擎 第7版》+《极限短时间执行大脑 2.1》+《新页面运行模板 第4版》
 
 ## 1. 当前目标
 
-基于 R1-R10 已冻结 Reality 证据，回答并固化：
+重新从任务第1步定义一个同类现实任务，用新版方法从零推进，验证本次制度修正是否真正降低“从 TASK_ACCEPTED 到成熟 FINAL_VALID”的总闭环时间。
 
-1. 为什么一个成熟的抖音下载任务被拉成 10 个版本；
-2. 哪些浪费来自实现，哪些浪费来自制度；
-3. 哪些规则被误读或适用范围错误；
-4. 如何让以后同类任务先虚拟成熟，再用最少 Reality 验证；
-5. 如何把方法权威源固定到网络共同工作区；
-6. 概率引擎如何作为上层元决策候选，而不是进入确定性下载 hot path。
+这不是继续 R11，不继承 R1-R10 的具体实现优化链。
 
-## 2. 冻结事实
+R1-R10 只允许作为：
+- 方法复盘证据；
+- 失败模式反例；
+- 禁止复发规则来源。
 
-- R1=FAIL_FROZEN，REALITY_ELAPSED=14,900.425ms；
-- R2=FAIL_FROZEN，REALITY_ELAPSED=9,675.673ms；
-- R3 首次曾 PASS，T_VALID=27,103.560ms，但误启动第二次 Reality，第二次 FAIL=22,220.572ms，最终页面协议失败；
-- R4=PASS_FROZEN，T_VALID=23,623.898ms；
-- R5=PASS_FROZEN，T_VALID=19,302.484ms；
-- R6=PASS_FROZEN，T_VALID=16,225.597ms；
-- R7=PASS_FROZEN，T_VALID=15,221.268ms；
-- R8=FAIL_FROZEN，REALITY_ELAPSED=8,630.466ms；
-- R9=PASS_FROZEN，T_VALID=15,184.665ms，当前最短有效观测；
-- R10=PASS_FROZEN，T_VALID=31,819.411ms，不更新 T*。
+不得把 R9/R10 代码、阈值、等待参数、claim 或局部优化直接作为新任务实现基线。
 
-正式 `T*=15,184.665ms`。
-
-## 3. 关键复盘结论
-
-### 3.1 R1-R4：本可一次成熟的基础可靠性被现实失败逐项发现
-
-成熟下载器起点本应同时包含：
-- 真实轨道分类；
-- 分离 AV 配对；
-- 失败前证据持久化；
-- staging；
-- 原子提交；
-- transient retry；
-- exactly-once；
-- 最终 ffprobe。
-
-实际却逐轮补齐，说明 Greenfield 前置虚拟成熟不足。
-
-### 3.2 R5-R10：性能成熟被错误拆成每页一个点
-
-R5→R10 采用了：
+## 2. 新验证任务的核心原则
 
 ```text
-找一个瓶颈
-→ 改一个点
-→ 跑一轮 Reality
-→ 冻结
-→ 换页
-→ 再找一个瓶颈
+新任务定义
+→ HIPE Reality Solvability Gate v0.2.0
+→ 成熟方案集群
+→ Comfort-Zone Forward Compiler v0.2.0
+→ CODE / JEV / GPT residual 路由
+→ 连续虚拟成熟
+→ 最大合法并行
+→ 整包 Freeze
+→ Reality
+→ verifier
+→ FINAL_VALID
 ```
 
-这不是本方法原意。
+Reality 不是探索器。
 
-正确应是：
+## 3. HIPE v0.3.5 固定冻结来源
 
 ```text
-一次性能剖面
-→ 虚拟层连续攻击多个瓶颈
-→ 组合兼容改进
-→ 冻结完整候选
-→ 少量 Reality 认证
+REPO=cuiqinggang/codex-private-skills
+PATH=skills/hybrid-intelligence-probability-engine-v0-3-5/
+FREEZE_COMMIT=c6fe2878fd237e7a8120b3af8e75f93e3cd6a4d9
+FREEZE_ID=HIPE-v0.3.5-FULLY-SEALED-20261006-R1
+STATE=FULLY_SEALED
 ```
 
-### 3.3 R6 是典型额外 Reality
+组件：
+- Reality Solvability Gate v0.2.0
+- Comfort-Zone Forward Compiler v0.2.0
 
-R6 只补阶段计时，没有业务性能优化，却消耗了一次正式 Reality。今后性能剖面应尽量在首轮正式实现中预埋。
+禁止原地修改冻结 HIPE v0.3.5。若发现缺陷，返回 NEEDS_VERSIONED_UPGRADE。
 
-### 3.4 R8→R9 说明“最小补丁”不等于“最优结构”
+## 4. Reality 轮数预算
 
-R8 把 `DOMContentLoaded` 改为 `commit` 后媒体出现得更晚；R9 用扩大 fallback 修复了 VALID，但这只是局部可行补丁，并不证明是极限结构。
+```text
+TARGET=3..4
+HARD_MAX=5
+```
 
-### 3.5 R10 说明单次理论变化不能替代系统级收益判断
+- 能首轮成熟完成就首轮完成，不为了凑轮数继续。
+- 3–4轮用于验证方法是否稳定，不用于机械微调。
+- 最多5轮；第5轮仍未收敛必须 STOP + 复盘方法。
+- 禁止再次形成 R1→R10 式无限串行微版本。
 
-threshold 3→2 理论上更早退出，但实际 browser_wait 更慢，总 T_VALID 翻倍。说明优化必须看完整关键路径，不得只看局部逻辑。
+## 5. 权威位置
 
-## 4. 时间浪费量
+方法与冻结状态优先写网络共同工作区。
 
-R1-R10 实际共发生 11 次 Reality 实例（R3 两次）。
+本地 C 盘：
+- 可作为执行缓存、临时文件、运行时依赖；
+- 只有网络共同工作区不可用时才作为 fallback；
+- fallback 必须显式记录 SOURCE_FALLBACK=YES；
+- 不得通过扫描整个 C 盘猜权威文件。
 
-这些已知 Reality 执行时间合计约：
+## 6. 正向约束
 
-`203.908s`
+- 唯一标准保持 `T*=min(T_VALID)`；
+- 先冻结任务边界，区分建设任务与生产子任务；
+- GPT/HIPE 负责虚拟成熟和路由；
+- 确定性代码承担能精确完成的工作；
+- JEV 只承担有限 Choice / typed decision；
+- 开放问题保留 GPT residual；
+- Reality 只验证冻结方案；
+- verifier 必须独立；
+- performance instrumentation 首轮即布好；
+- 所有页面冻结出口必须带 `CEO_FREEZE_TAG_JSON`。
 
-当前冠军单次 T_VALID：
-
-`15.184665s`
-
-纯 Reality 运行时间累计约为冠军单次运行的：
-
-`13.43x`
-
-这还没有计入页面切换、冻结文档、人工转发、搜索文件、等待与重新阅读上下文的时间。
-
-从 R1 开始到 R9 完成的现实墙钟跨度约 179.6 分钟；它不能全部算作机器执行时间，但足以证明“页面/流程编排开销”远大于最终 15 秒业务路径。
-
-## 5. 正向约束
-
-- 继续保持 `T*=min(T_VALID)`；
-- VALID 不得为了快而降低；
-- 页面隔离继续保留；
-- exactly-once 继续保留；
-- Reality 证据继续保留；
-- 失败必须真实冻结；
-- 网络共同工作区为方法权威源；
-- C 盘只作为 Reality 执行目录或 fallback；
-- GPT 负责虚拟成熟；
-- 执行器负责冻结方案 Reality；
-- 可并行的判断/执行必须主动识别。
-
-## 6. 反向约束
+## 7. 反向约束
 
 禁止：
+- 执行 Greenfield-R11；
+- 继承 R10 threshold=2 或 R9 局部逻辑作为新任务基线；
+- 每发现一个瓶颈就立即 Reality；
+- 每个微优化都换 CEO 页；
+- 把 Local Minimal Repair 当全局优化法；
+- 把 JEV 插入纯确定性 hot path；
+- 把“页面没有暴露的动作”交给 JEV 猜；
+- 超过5轮 Reality 仍继续刷版本。
 
-- 把“每页一个自然逻辑节点”解释成“每页只能改一个微变量”；
-- 把 Local Minimal Repair 作为所有优化的默认策略；
-- 每发现一个瓶颈就立即消耗一次正式 Reality；
-- 为了新增观测字段单独制造正式版本；
-- 因 0.x% 抖动差异不断派生版本；
-- 在正式命令未写 REPO/PATH 时扫描整个 C 盘猜权威文件；
-- 把概率模型插入确定性下载 hot path，除非独立 A/B Reality 已证明更快；
-- 继续执行 R11，除非未来明确重新立项。
+## 8. 成功判据
 
-## 7. 当前结论
+新版方法验证成功，不以“某一次程序跑通”单独判定。
 
-Greenfield 下载器已经证明可成功，当前复盘任务的输出不是 R11，而是修正方法体系。
+至少要求：
+1. 新任务产生真实 FINAL_VALID；
+2. 整包虚拟成熟确实减少 Reality 循环；
+3. 页面/冻结/交接没有恢复成微变量串行器；
+4. CEO_FREEZE_TAG_JSON 可由状态机直接读取；
+5. 总建设闭环时间与旧 10 轮方式相比出现明确结构性改善；
+6. 3–5轮预算内完成或得出明确方法复盘结论。
 
-下一阶段若继续，应先用第7版引擎对一个新任务做“整包虚拟成熟→一次 Reality”的方法验证，而不是继续在 Greenfield 上逐点刷版本。
+## 9. 当前下一节点
 
+`METHOD-VALIDATION-R0-TASK-DEFINE`
 
-## 8. 指标纠偏
-
-本次复盘必须区分：
-
-- **生产运行子任务**：R9 的单次下载 T*=15,184.665ms；
-- **成熟化建设任务**：R1 开始到 R9 首次完成的墙钟跨度约 179.6 分钟（其中包含人工/页面等待，不能全算机器执行，但必须用于暴露编排成本）。
-
-此前只盯单次下载 T_VALID，导致开发闭环时间没有被同等约束，是本次方法低效率的重要原因。
+只重新定义新任务及 VALID / READY_STATE / 权威工作区，不执行 R11。
