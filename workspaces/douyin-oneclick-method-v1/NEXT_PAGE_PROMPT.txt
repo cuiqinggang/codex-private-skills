@@ -1,0 +1,63 @@
+CEO_FREEZE_TAG_JSON={"schema":"CEO_FREEZE_TAG_V1","freeze_id":"DOUYIN-ONECLICK-METHOD-V1-R1-F001","page_id":"EXTREME-TIME-V8-HIPE-FUSION-20261006","task_id":"DOUYIN-ONECLICK-METHOD-V1","node_id":"DOUYIN-ONECLICK-METHOD-V1-R1","sequence":2,"state_code":100,"freeze_status":"PASS_FROZEN","final_valid":"YES","t_valid_ms":1351629.297,"t_star_ms":1351629.297,"source_repo":"cuiqinggang/codex-private-skills","source_ref":"1f536b256e82343d384ebe579d1eca7fa0df6e27","freeze_path":"workspaces/douyin-oneclick-method-v1/R1_REALITY_FREEZE.md","next_node":"DOUYIN-ONECLICK-METHOD-V1-R2-VIRTUAL"}
+
+执行《人工单页面极限短时间引擎 第8版》和《极限短时间执行大脑 第3版》。
+
+权威来源：
+
+REPO=cuiqinggang/codex-private-skills
+REF=7b787c9d048fcf4dc1a202d570672aaffc95633a
+
+ENGINE_PATH=skills/artificial-single-page-extreme-time-engine/ENGINE.md
+BRAIN_PATH=skills/artificial-single-page-extreme-time-engine/BRAIN.md
+TEMPLATE_PATH=skills/artificial-single-page-extreme-time-engine/NEW_PAGE_TEMPLATE.md
+HIPE_INTEGRATION_PATH=skills/artificial-single-page-extreme-time-engine/HIPE_V035_INTEGRATION_FREEZE_V2.md
+TASK_PATH=workspaces/douyin-oneclick-method-v1/TASK_CONTRACT.md
+R1_FREEZE_PATH=workspaces/douyin-oneclick-method-v1/R1_REALITY_FREEZE.md
+
+HIPE 固定冻结：
+
+HIPE_PATH=skills/hybrid-intelligence-probability-engine-v0-3-5/
+HIPE_FREEZE_COMMIT=c6fe2878fd237e7a8120b3af8e75f93e3cd6a4d9
+HIPE_FREEZE_ID=HIPE-v0.3.5-FULLY-SEALED-20261006-R1
+
+任务：执行 DOUYIN-ONECLICK-METHOD-V1-R2-VIRTUAL。
+
+R2 只做基于 R1 正式 Reality 证据的虚拟判断、结构性性能分析、候选组合与整包成熟；不得直接重跑 R1，不得在本页启动新的正式 Reality。
+
+R1 已冻结事实：
+
+- FORMAL_REALITY_COUNT=1；
+- EXACTLY_ONCE=PASS；
+- FINAL_VALID=YES；
+- ROUTE_USED=A_public_api_direct；
+- PROVIDER=bugpk；
+- Fallback B 未执行；
+- Browser fallback 未执行；
+- 正式新桌面 MP4=6,392,964 bytes；
+- SHA256=b0c109d0b614a6a287e2ded5fe9b8bba892afdf0beb182a4b66e228a5a98b256；
+- staged ffprobe：video=1、audio=1、duration=14.883333s；
+- runner 完全退出后独立 ffprobe：video=1、audio=1、duration=14.883333s；
+- T_RUN_VALID=11,219.662ms；
+- 建设 T_VALID/T*=1,351,629.297ms（TASK_ACCEPTED 锚为 minute-resolution）。
+
+R1 首轮性能剖面：
+
+- clipboard_extract=35.114ms；
+- route_A_request_bugpk=3,608.663ms；
+- route_A_download_bugpk=5,972.339ms；
+- route_A_staged_verify=655.067ms；
+- atomic_publish=125.658ms；
+- runner_elapsed_to_exit=10,581.343ms；
+- independent_final_ffprobe=107.848ms。
+
+R2 的核心问题：
+
+1. 先用 Reality Solvability Gate + Recursive Forward Compile 判断：在 VALID 不变前提下，是否存在高置信、结构性、明显高于现实抖动的 T_RUN_VALID 改进。
+2. 优先攻击结构，不先调毫秒级阈值：删除网络/model/browser barrier、减少串行等待、减少重复验证、并行独立阶段、成熟直连能力替换。
+3. 必须保留 R1 已冻结的 exactly-once、staging、atomic publish、failure evidence、staged verifier、完全退出后的 independent verifier、正式目标保护。
+4. A 成功不代表 B/C 已 Reality 认证；不得把未执行 fallback 说成已认证。
+5. 若继续 Reality 的预期收益不足或证据不足，允许 STOP，不为了凑轮数重跑。
+6. 若值得 R2 Reality，先在本页完成整包虚拟成熟与 Freeze，只把下一页设为正式 Reality；禁止边跑边微补丁。
+7. 不执行 Greenfield-R11；不读取/复制 Greenfield R1-R10 实现作为代码基线。
+8. 不把 OpenRouter API key 写入代码、仓库、日志或冻结文件；确定性 hot path 不调用 JEV。
+9. 所有冻结出口继续强制使用《新页面运行模板 第4版》的 CEO_FREEZE_TAG_JSON，且最终回复必须原样完整输出唯一 NEXT_PAGE_PROMPT。
