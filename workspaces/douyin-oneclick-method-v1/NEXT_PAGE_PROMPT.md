@@ -47,6 +47,7 @@ R1 正式冻结事实：
   - runner_elapsed=10,581.343ms
   - independent_final_ffprobe=107.848ms
 - B/C 因 A 成功未进入，不得声称 B/C 已被 R1 Reality 认证。
+- 非阻断观察：桌面新 MP4 文件名前缀出现中文编码乱码；媒体内容与 VALID 验证不受影响。R1 不得因此重跑；R2-VIRTUAL 只判断是否值得修正命名。
 
 R2-VIRTUAL 唯一目标：
 1. 按 CODE > JEV > GPT 与成熟方案优先原则，判断 R1 后是否还存在高置信、结构性、能显著缩短关键路径且不降低 VALID 的候选；
