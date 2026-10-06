@@ -1,15 +1,15 @@
-CEO_FREEZE_TAG_JSON={"schema":"CEO_FREEZE_TAG_V1","freeze_id":"DOUYIN-ONECLICK-METHOD-V1-R2-REALITY-F001","page_id":"EXTREME-TIME-V8-HIPE-FUSION-20261006","task_id":"DOUYIN-ONECLICK-METHOD-V1","node_id":"DOUYIN-ONECLICK-METHOD-V1-R2-REALITY","sequence":4,"state_code":100,"freeze_status":"FAIL_FROZEN","final_valid":"NO","t_valid_ms":null,"t_star_ms":1351629.297,"source_repo":"cuiqinggang/codex-private-skills","source_ref":"c20210acec620f5b2dfbb6f8089cee68d6597e3f","freeze_path":"workspaces/douyin-oneclick-method-v1/R2_REALITY_FREEZE.md","next_node":"DOUYIN-ONECLICK-METHOD-V1-R3-VIRTUAL"}
+CEO_FREEZE_TAG_JSON={"schema":"CEO_FREEZE_TAG_V1","freeze_id":"DOUYIN-ONECLICK-METHOD-V1-R3-F001","page_id":"EXTREME-TIME-V8-HIPE-FUSION-20261006","task_id":"DOUYIN-ONECLICK-METHOD-V1","node_id":"DOUYIN-ONECLICK-METHOD-V1-R3-VIRTUAL","sequence":5,"state_code":20,"freeze_status":"READY_FROZEN","final_valid":"NO","t_valid_ms":null,"t_star_ms":1351629.297,"source_repo":"cuiqinggang/codex-private-skills","source_ref":"727f0cd391c7ea2529243497eb48f50a9c79f11d","freeze_path":"workspaces/douyin-oneclick-method-v1/R3_VIRTUAL_FREEZE.md","next_node":"DOUYIN-ONECLICK-METHOD-V1-R3-REALITY"}
 
 执行《人工单页面极限短时间引擎 第8版》和《极限短时间执行大脑 第3版》。
 
-【抖音极限直下方法验证｜DOUYIN-ONECLICK-METHOD-V1-R3-VIRTUAL｜05｜虚】
-状态机：20｜R2-REALITY=FAIL_FROZEN｜R3-VIRTUAL=READY_TO_RUN｜R2_FORMAL_REALITY_COUNT=1
-时间锚：R1_T_RUN_VALID=11,219.662ms｜R2_T_RUN_VALID=null｜建设 T*=1,351,629.297ms｜NEXT=只做 R3 虚拟成熟，不启动 Reality
+【抖音极限直下方法验证｜DOUYIN-ONECLICK-METHOD-V1-R3-REALITY｜06｜实】
+状态机：30｜R3-VIRTUAL=READY_FROZEN｜R3-REALITY=READY_TO_RUN｜R2_FORMAL_REALITY_COUNT=1｜R3_FORMAL_REALITY_COUNT=0
+时间锚：R3_READY_STATE=2026-10-07T00:42:59.0706156+08:00｜R1_T_RUN_VALID=11,219.662ms｜R2_T_RUN_VALID=null｜建设 T*=1,351,629.297ms｜NEXT=只执行一次 R3 Reality
 
 权威来源：
 
 REPO=cuiqinggang/codex-private-skills
-REF=3aa153cfb736245cbd6597009134e98adf2605aa
+REF=b72670a39295d77b6233f58a77a8b45e2b807426
 
 ENGINE_PATH=skills/artificial-single-page-extreme-time-engine/ENGINE.md
 BRAIN_PATH=skills/artificial-single-page-extreme-time-engine/BRAIN.md
@@ -19,6 +19,7 @@ TASK_PATH=workspaces/douyin-oneclick-method-v1/TASK_CONTRACT.md
 R1_FREEZE_PATH=workspaces/douyin-oneclick-method-v1/R1_REALITY_FREEZE.md
 R2_VIRTUAL_FREEZE_PATH=workspaces/douyin-oneclick-method-v1/R2_VIRTUAL_FREEZE.md
 R2_REALITY_FREEZE_PATH=workspaces/douyin-oneclick-method-v1/R2_REALITY_FREEZE.md
+R3_VIRTUAL_FREEZE_PATH=workspaces/douyin-oneclick-method-v1/R3_VIRTUAL_FREEZE.md
 
 HIPE 固定冻结：
 
@@ -26,61 +27,88 @@ HIPE_PATH=skills/hybrid-intelligence-probability-engine-v0-3-5/
 HIPE_FREEZE_COMMIT=c6fe2878fd237e7a8120b3af8e75f93e3cd6a4d9
 HIPE_FREEZE_ID=HIPE-v0.3.5-FULLY-SEALED-20261006-R1
 
-任务：执行 DOUYIN-ONECLICK-METHOD-V1-R3-VIRTUAL。
+任务：执行 DOUYIN-ONECLICK-METHOD-V1-R3-REALITY。
 
-本页只修复并虚拟成熟 R2 Reality 暴露出的 Reality harness 输入门禁问题；不得启动新的正式 Reality，不得删除或改写 R2 claim，不得把 R2 的并发 resolver 候选写成已认证或已失败。
+本页只允许对 R3_VIRTUAL_FREEZE.md 冻结 bundle 做 exactly-once 一次正式 Reality。不得补跑 R2，不得在正式运行中修改 runner/verifier/entry，不得把未执行路线写成已认证。
 
-R2 已冻结事实：
+R3-VIRTUAL 已冻结事实：
 
-- FORMAL_REALITY_COUNT_R2=1；
-- FORMAL_ENTRY_START_COUNT=1；
-- EXACTLY_ONCE=PASS；
-- FINAL_VALID=NO；
-- FAILURE_CLASS=DOUYIN_URL_NOT_FOUND；
-- runner failure elapsed=206.974ms；
-- R2 persistent claim 已存在，run_id=R2-20261007-001827-555；
-- 失败发生在 clipboard_extract，早于 Route A；
-- route_A_resolve_race、bugpk/aa1/xinyew resolver、下载、staged ffprobe、atomic publish、independent final ffprobe、A fallback、B、browser 全部 NOT_EXECUTED；
+- R2_FORMAL_REALITY_COUNT=1，永久保持；
+- R3_FORMAL_REALITY_COUNT=0；
+- R3_FORMAL_CLAIM_EXISTS=False；
+- R3_EVIDENCE_DIR_COUNT=0；
+- DESKTOP_MP4_COUNT=9；
+- R1 生产入口仍为 SHA256=6ce5769249c4453a6a9c499a8b6eeefb2664c9111f5f904bbc245a74ee061f60；
+- R2 claim SHA256=572aac110c64c271b17d0aad2f71f59363226bfcc0ec40c276cffe36069192ad；
+- encoding-safe 正式样本已通过独立 readback：
+  - expected_url=https://v.douyin.com/jRJYc4pme7Q/
+  - contains_expected_url=true
+  - full_sample_exact=true
+  - decoded UTF-8 sample SHA256=1af49192b1135195ac345c9978cb29b18347ad2f09550325f6be014894cb9ebc；
+- R3_NORMALIZED_TO_R2_EXACT=True，下载/race/fallback/ffprobe/atomic publish 主逻辑与 R2 冻结候选等价；
 - R2_RACE_CANDIDATE_CERTIFIED=NO；
 - R2_RACE_CANDIDATE_DISPROVEN=NO；
-- DESKTOP_MP4_COUNT 9→9，没有新 MP4；
-- R1 生产入口已恢复，SHA256=6ce5769249c4453a6a9c499a8b6eeefb2664c9111f5f904bbc245a74ee061f60；
-- R1 runner/verifier 冻结哈希未改变；
-- R1_T_RUN_VALID=11,219.662ms；
 - 建设任务 T*=1,351,629.297ms，未更新。
 
-R2 Reality 已确认的根因边界：
+R3 冻结 bundle：
 
-Reality harness 在 READY_STATE 前通过远程 PowerShell 注入正式分享文本，但运行后独立回读剪贴板不含正式 URL：
+runner-r3.ps1
+SHA256=8ef5586cb2dda491c8d44c3417e9b0c526912b2e323eda8f55b00463cd50c896
 
-contains_expected_url=False
-expected_url=https://v.douyin.com/jRJYc4pme7Q/
+verify-final-r3.ps1
+SHA256=be22c0eaf8c0f31b0212185ad31cf577e9e887c0726f54a3711ba50d55d3e6f7
 
-因此本次 FAIL 属于 REALITY_HARNESS_INPUT_PREPARATION，不能用于判断并发 resolver 性能或正确性。
+R3_REALITY_ENTRY.cmd
+SHA256=14a941bf2c3dab6ed4c3fead46e85b86053f161cccbfec4588dc6e87a09e32c2
 
-R3-VIRTUAL 必须完成：
+prepare-input-r3.ps1
+SHA256=4df8d645c17d60210379d7406e268c22e6729e44ce735c97ce31c28a1c3fdc57
 
-1. 先读取 R2_REALITY_FREEZE.md，保持 R2 正式 Reality 永久 count=1，禁止任何形式的“补跑 R2”。
-2. 只攻击测试输入前门禁和新 Reality 身份隔离，不重新设计下载算法。
-3. 建立 encoding-safe 的正式样本注入方式。优先使用 ASCII-safe/base64 UTF-8 或已落盘 UTF-8 样本文件，禁止再次把含中文的长字符串直接塞进远程 shell 命令。
-4. 在任何 persistent formal claim 创建之前，必须由独立 deterministic readback 验证剪贴板至少包含完全一致的正式 URL：
-   https://v.douyin.com/jRJYc4pme7Q/
-5. READY_STATE 只有在 input_readback=PASS、三个冻结候选 SHA256 PASS、R1 保护 PASS、新 R3 claim 不存在时才允许成立。
-6. 因 R2 claim 已存在，未来新的 Reality 必须使用新的 R3 formal identity / claim namespace；不得删除、复用或覆盖 R2_FORMAL_CLAIM.json。
-7. 若构建 R3 bundle，下载/race/fallback/ffprobe/atomic publish 逻辑必须与 R2 冻结候选保持等价；允许的变化仅限：
-   - R3 身份、claim、evidence schema；
-   - 输入准备/输入 readback 门禁；
-   - 为避免再次污染 formal count 所必需的最小包装。
-8. R3-VIRTUAL 期间不得发起 bugpk / aa1 / xinyew 的 live resolver 请求，不得下载媒体，不得启动浏览器，不得调用 JEV/OpenRouter；本页只做本地静态/确定性验证。
-9. 如果 encoding-safe 输入注入 + readback 无法在不消耗 formal claim 的情况下稳定通过，STOP 并冻结，不得 Reality。
-10. 如果虚拟成熟 PASS，则生成新的 R3_VIRTUAL_FREEZE.md、全新 R3 bundle SHA256、R3_FORMAL_CLAIM_EXISTS=False，并把下一页设为 DOUYIN-ONECLICK-METHOD-V1-R3-REALITY。
-11. 不执行 Greenfield-R11；不读取/复制 Greenfield R1-R10 代码作为实现基线。
-12. Reality 仍只允许下一页 exactly-once 一次；本页绝对不跑。
-13. 所有冻结出口强制按《新页面运行模板 第4版》产生 CEO_FREEZE_TAG_JSON；最终回复必须原样完整输出唯一 NEXT_PAGE_PROMPT。
+verify-input-r3.ps1
+SHA256=f63ce52b5e725de823500b93d9595ad43574d0ded23a802a0fb6e26542194f4a
 
-停止规则：
+R3_FORMAL_SAMPLE.b64.txt
+SHA256=52fc086abe4f0b2586b35369aed356bbf7bf1e00693a1e6f9a30a43657853450
 
-- 本页目标只是让未来 Reality 从合法、可证明的正式输入起点开始；
-- 不为 R2 失败追加第二次正式运行；
-- 不把 harness 修复包装成 R2 已通过；
-- 不在没有新 Freeze 的情况下进入 Reality。
+gate-ready-r3.ps1
+SHA256=e08524c5e5abde77f2eb690ee0c8ee06a97a1beb58a18d4e67589bdcdb49e6bc
+
+正式 Reality 前门禁，顺序不可变：
+
+1. 回读 R3_VIRTUAL_FREEZE.md。
+2. 本地校验上述 R3 bundle 全部 SHA256。
+3. 校验 R1 runner/verifier 哈希与冻结值一致，桌面当前入口仍匹配 R1 SHA256。
+4. 校验 R2_FORMAL_CLAIM.json 仍存在且 SHA256=572aac110c64c271b17d0aad2f71f59363226bfcc0ec40c276cffe36069192ad。
+5. 确认 R3_FORMAL_CLAIM.json 不存在。
+6. 运行 prepare-input-r3.ps1。它只允许用 ASCII-safe/base64 正式样本注入剪贴板，并由独立 powershell.exe 进程执行 verify-input-r3.ps1。
+7. 必须得到 input_readback=PASS、contains_expected_url=true、full_sample_exact=true、expected_url 完全一致。
+8. 运行 gate-ready-r3.ps1；必须得到 R3_READY_STATE=FROZEN，且 r3_runner/r3_verifier/r3_entry/R1 protection/R2 claim/R3 claim absent/input readback 全部 PASS。
+9. 前门禁任一失败：STOP。不得部署 R3 正式入口，不得创建 R3 claim，不得消耗 R3 formal Reality。
+10. 前门禁全部 PASS 后，才把冻结的 R3_REALITY_ENTRY.cmd 原子部署到桌面“抖音极限直下-方法验证.cmd”。
+11. 从合法 READY_STATE 开始计时，正式入口 exactly-once 启动一次；不得二次启动。
+12. runner 内部必须在 persistent R3 claim 创建前再次验证：
+   - 当前 R3_INPUT_READBACK.json PASS；
+   - 当前 R3_READY_STATE.json FROZEN；
+   - input_readback_sha256 匹配；
+   - r3_claim_exists=false；
+   - immediate pre-claim clipboard 仍包含完全一致 URL。
+13. claim 一旦创建，本页 R3_FORMAL_REALITY_COUNT=1；之后无论 PASS/FAIL 都禁止同页补跑。
+14. 等 runner 完全退出，再由 verify-final-r3.ps1 独立 final ffprobe。
+15. 记录 route_A_resolve_race、race winner、bugpk/aa1/xinyew resolver timing、download、staged ffprobe、atomic publish、runner exit、independent final ffprobe、T_RUN_VALID。
+16. Reality 中不得修改冻结候选字节，不调用 JEV/OpenRouter，不人为介入下载流程。
+17. 若 A 成功，只认证实际执行的 A 路；未执行的 B/browser 继续 NOT_EXECUTED。
+18. 若 FAIL，冻结真实 Failure Class，恢复 R1 生产入口，R3 formal count 永久=1，回新的虚拟节点；不得同页重跑。
+19. 若 PASS，比较 R3_T_RUN_VALID 与 R1_T_RUN_VALID=11,219.662ms；只有 verifier PASS 才允许考虑把 R3 提升为生产候选。
+20. 建设任务 T*=1,351,629.297ms 不因更晚的墙钟自动改写。
+
+禁止：
+
+- 不执行 Greenfield-R11；
+- 不读取/复制 Greenfield R1-R10 代码作为实现基线；
+- 不删除、改写、复用 R2_FORMAL_CLAIM.json；
+- 不把 R2 失败包装成已通过；
+- 不在前门禁失败时强行进入 Reality；
+- 不在 claim 后进行第二次 R3 Reality；
+- 不在正式 Reality 中修改 Freeze。
+
+页面结束时必须按《新页面运行模板 第4版》生成新的 CEO_FREEZE_TAG_JSON，并在最终回复原样完整输出唯一 NEXT_PAGE_PROMPT。
