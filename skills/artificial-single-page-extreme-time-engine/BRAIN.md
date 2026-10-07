@@ -1,22 +1,32 @@
-# 《极限短时间执行大脑 第15版》
+# 《极限短时间执行大脑 第16版》
 
-版本：第15版
-升级来源：第14版
+版本：第16版
+升级来源：第15版
 状态：CURRENT
 唯一标准：T*=min(T_VALID)
 
-## 1. 固定读取顺序
+## 1. 唯一方法入口与固定读取顺序
 
-新 CEO 页先装“脑子”，再读任务，再读状态，再读执行体，最后读页面规则：
+BRAIN.md 是新 CEO 的唯一方法入口。
 
-1. BRAIN.md —— 决策大脑：怎么判断
-2. CURRENT_TASK_CONSTRAINTS.md / 当前任务 TASK_CONTRACT —— 要什么、什么不能变
-3. CURRENT_TASK_FREEZE.md / 最新任务冻结版本 —— 现在做到哪
-4. ENGINE.md —— 当前节点具体怎么执行
-5. NEW_PAGE_TEMPLATE.md —— 当前页面怎么运行、冻结、换页
+NEXT_PAGE_PROMPT 只需显式要求读取四层：
 
-这与旧第3/4版模板的成熟顺序一致。
-逻辑上是四层：方法脑 / 任务定义 / 冻结状态 / 页面运行；ENGINE 是“方法脑”的执行体。
+1. BRAIN.md —— 决策大脑
+2. CURRENT_TASK_CONSTRAINTS.md / 当前 TASK_CONTRACT —— 任务定义
+3. CURRENT_TASK_FREEZE.md / 最新 Freeze —— 当前状态
+4. NEW_PAGE_TEMPLATE.md —— 页面运行
+
+ENGINE.md 属于 BRAIN 的内部执行体，由 BRAIN 按当前节点需要调用；不得要求 NEXT_PAGE_PROMPT 再重复解释 ENGINE 规则。
+
+内部逻辑仍然是：
+
+先装大脑
+→ 再锁定任务
+→ 再读取冻结状态
+→ BRAIN 调用 ENGINE 执行当前节点
+→ 页面按 NEW_PAGE_TEMPLATE 运行。
+
+原则：规则只在一个权威位置定义一次；handoff 只传索引、当前状态和下一步，不复制规则正文。
 
 ## 2. 初次接到任务：INITIAL_TASK_INTAKE
 
