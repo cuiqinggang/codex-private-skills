@@ -36,11 +36,11 @@ function Copy-IfDifferent {
     Copy-Item -LiteralPath $Source -Destination $Destination -Force
 }
 
-Copy-IfDifferent (Join-Path $SourceDir 'run.py') (Join-Path $Target 'run.py')
-Copy-IfDifferent (Join-Path $SourceDir 'run-hidden.vbs') (Join-Path $Target 'run-hidden.vbs')
-Copy-IfDifferent (Join-Path $SourceDir 'SKILL.md') (Join-Path $Target 'SKILL.md')
-Copy-IfDifferent (Join-Path $SourceDir 'RESTORE.md') (Join-Path $Target 'RESTORE.md')
-Copy-IfDifferent (Join-Path $SourceDir 'run-hidden.vbs') $DesktopEntry
+Copy-IfDifferent -Source (Join-Path $SourceDir 'run.py') -Destination (Join-Path $Target 'run.py')
+Copy-IfDifferent -Source (Join-Path $SourceDir 'run-hidden.vbs') -Destination (Join-Path $Target 'run-hidden.vbs')
+Copy-IfDifferent -Source (Join-Path $SourceDir 'SKILL.md') -Destination (Join-Path $Target 'SKILL.md')
+Copy-IfDifferent -Source (Join-Path $SourceDir 'RESTORE.md') -Destination (Join-Path $Target 'RESTORE.md')
+Copy-IfDifferent -Source (Join-Path $SourceDir 'run-hidden.vbs') -Destination $DesktopEntry
 
 & $python -m py_compile (Join-Path $Target 'run.py')
 if($LASTEXITCODE -ne 0){ throw 'PY_COMPILE_FAIL' }
