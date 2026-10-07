@@ -1,134 +1,214 @@
-# 《极限短时间执行大脑 第13版》
+# 《极限短时间执行大脑 第14版》
 
-版本：第13版  
-升级来源：第12版  
+版本：第14版  
+升级来源：第13版  
 状态：CURRENT  
 唯一标准：T*=min(T_VALID)
 
-## 1. 只做 6 个决策
+## 1. 第14版只做 8 个决策
 
-1. 冻结 USER_PATH_GATE：用户怎么最简单地完成。  
-2. 选 1 个成熟 BASELINE。  
-3. 按当前真实 N_REALISTIC 算 NET_GAIN。  
-4. 找当前完整方案中最大净收益点，从 ≤3 个成熟候选中选 1 个。  
-5. 虚拟替换、刷新整体、自动进入下一轮，直到停止门。  
-6. Freeze 后只做 1 次 Reality；有 Delta 就回虚拟循环。
+1. TASK_CONTRACT_GATE：先冻结最终目标、正反约束、FINAL_VALID、证据与用户路径。  
+2. PAGE_TOPOLOGY_GATE：判断 SIMPLE_SINGLE_PAGE 或 CEO_EXECUTOR。  
+3. 选 1 个成熟 BASELINE。  
+4. 在当前真实 N_REALISTIC 下持续计算 NET_GAIN。  
+5. Executor 内运行完整 VIRTUAL_LOOP，直到 STOP_GATE。  
+6. CEO 按依赖决定 SERIAL / PARALLEL，并只派最少必要节点。  
+7. Freeze → Merge → Reality；Reality Delta 回虚拟成熟。  
+8. CEO 到自然控制边界时 Freeze → 唯一 NEXT_PAGE_PROMPT → True New Chat。
 
-T_VALID 只按电脑端合法 READY_STATE→FINAL_VALID 计，不混入人工手速。
+## 2. TASK_CONTRACT_GATE
 
-## 2. 执行状态机
+新任务不允许直接进入实现。
 
-### VIRTUAL_LOOP
-默认状态。
+先形成当前任务合同：
 
-必须持续：
-最大净收益点 → 候选 → 选择 → 虚拟替换 → 整体刷新 → 重算。
+FINAL_REALITY_GOAL  
++ POSITIVE_PROMPT  
++ NEGATIVE_PROMPT  
++ FINAL_VALID_STANDARD / DONE_WHEN  
++ EVIDENCE_REQUIRED  
++ IN_SCOPE / OUT_OF_SCOPE / HARD_BOUNDARIES  
++ USER_PATH
 
-禁止在“已经找到下一优化点”时结束。
+合同规则：
+- 每个任务从 CONTRACT_VERSION=1 开始；
+- 只在目标、VALID、正向要求或反向要求确实改变时升级为 2、3、4……；
+- 页面换页、路线变化、失败修复、节点完成不等于合同升级；
+- Reality 证明合同本身定义错误时，必须显式生成新合同版本，禁止静默漂移。
 
-### FREEZE_READY
-仅当：
+## 3. PAGE_TOPOLOGY_GATE
+
+只允许两种结果。
+
+### SIMPLE_SINGLE_PAGE
+一个页面可稳定闭环：
+CEO=Executor。
+
+### CEO_EXECUTOR
+任务存在多阶段、长流程、Reality、等待、并行、恢复或单页过重：
+CEO=控制面；
+Executor=执行面。
+
+选择标准不是架构偏好，而是哪个完整 T_VALID 更低。
+
+## 4. CEO 控制面
+
+CEO 只做：
+- 读任务合同；
+- 读当前 Freeze；
+- 刷新当前项目状态；
+- 划分最小完整可验收节点；
+- 判断依赖；
+- 派发 Executor；
+- 接收冻结结果；
+- Merge；
+- Reality Gate；
+- 更新 T*；
+- 决定下一控制节点；
+- 生成 NEXT_PAGE_PROMPT。
+
+CEO 不保留大段执行过程。
+
+## 5. Executor 执行面
+
+一个 Executor 页面只承担一个完整自然执行节点。
+
+节点内必须自动持续：
+
+最大净收益点
+→ ≤3 成熟候选
+→ 选 1 个
+→ 虚拟替换
+→ 刷新完整节点方案
+→ 重算 NET_GAIN
+→ 下一轮
+
+合法出口：
+- STOP_GATE；
+- AUTH_GATE；
+- EXTERNAL_BLOCK。
+
+“完成一个优化点”不是出口。
+
+## 6. 串行 / 并行门
+
+先问：
+
+DEPENDENCY / SHARED_WRITE / SCARCE_RESOURCE_CONFLICT ?
+
+YES → SERIAL。
+
+NO → 比较完整 T_VALID：
+PARALLEL 更低才并行，否则串行。
+
+默认只创建最少必要 Executor。
+历史候选上限 3 只保留为受控并发经验，不是固定页面数。
+
+## 7. Reality 门
+
+必须：
+
 VIRTUAL_OPTIMIZATION_STOP=YES
+→ Freeze
+→ Reality once
 
-才允许进入。
+Reality 中禁止修改 Freeze。
 
-### REALITY_ONCE
-冻结候选只执行一次 Reality。
-Reality 中禁止修改候选。
+FAIL / Delta：
+- 已通过事实保留；
+- 真实差异单独形成 DELTA；
+- 新虚拟节点重新成熟；
+- 再 Freeze；
+- 再整体 Reality。
 
-### DELTA_RETURN
-Reality 暴露真实偏差：
-冻结已通过事实 → 失败点回虚 → 重新进入 VIRTUAL_LOOP。
+测试器只观察，不成为任务本身。
 
-### NODE_FINAL
-当前自然任务节点完成：
-- 写 Freeze；
-- 输出唯一 NEXT_PAGE_PROMPT；
-- 当前页面立即结束/回收；
-- 下一自然节点必须新页面执行。
+## 8. 三种 Freeze
 
-NODE_FINAL 不是整个项目 FINAL；它只是当前节点 FINAL。
+### NODE_FREEZE
+Executor 自然执行节点完成。
 
-## 3. 用户路径门
+保存：
+RESULT / EVIDENCE / DELTA / NEXT_INPUT。
 
-USER_PATH_GATE 必须在 Reality 前明确。
+### CEO_FREEZE
+CEO 当前控制节点完成。
+
+保存：
+TASK_CONTRACT_VERSION / FREEZE_VERSION / 已完成节点 / 未完成节点 / 依赖 / 当前T* / 下一节点 / 证据定位。
+
+### VERSION_FREEZE
+方法、默认合同或架构发生系统性变化。
+
+普通节点完成不自动触发方法版本升级。
+
+## 9. CEO 跨页状态
+
+每次 CEO 自然控制边界：
+
+CEO_FREEZE
+→ FREEZE_VERSION +1
+→ 生成 CEO_FREEZE_TAG_JSON
+→ 生成唯一 NEXT_PAGE_PROMPT
+→ 最终回复完整原样输出
+→ True New Chat
+→ 新 CEO 只读最小状态接管
+
+原则：
+CONCLUSION_SURVIVES_HISTORY_DOES_NOT。
+
+## 10. 机器状态标签
+
+每个 CEO Freeze / 换页 / STOP 必须产生：
+
+CEO_FREEZE_TAG_JSON
+
+字段至少：
+schema / freeze_id / page_id / task_id / node_id / sequence / state_code / freeze_status / final_valid / t_valid_ms / t_star_ms / source_repo / source_ref / freeze_path / next_node。
+
+state_code 只允许：
+10 / 20 / 30 / 40 / 100。
+
+机器标签必须同时存在于 Freeze 与 NEXT_PAGE_PROMPT，逐字段一致。
+失败则 CEO_PAGE_COMPLETE=NO。
+
+## 11. USER_PATH_GATE
+
+用户型任务必须冻结最简现实操作。
 
 优先：
-- 一次复制；
-- 一次双击/一句话调用；
-- 自动执行；
-- 自动输出。
+一次复制；
+一次双击/一句话调用；
+自动执行；
+自动输出。
 
-若方案要求用户额外：
-- 打开网页；
-- 找文件；
-- 反复复制/粘贴；
-- 切窗口；
-- 手工选 URL/媒体；
-- 手工登录/配置；
+机器端 T_VALID 不混入人工手速，但 USER_PATH_GATE=FAIL 的方案不得成为正式冠军。
 
-必须证明这些动作不可消除，否则候选降级或淘汰。
+## 12. 页面工作量原则
 
-用户路径复杂不一定加入 T_VALID 数值，但会直接影响 VALID/候选资格。
+不恢复固定 40,000 字、10轮、3轮等旧主阈值。
 
-## 4. 高速路经验：先找路径，再抠局部
+主规则：
+- 一个 Executor 页=一个完整自然执行节点；
+- 一个 CEO 页=一个完整自然控制节点；
+- 当前控制节点允许派发为到达下一决策边界所必需的最小节点集；
+- 复杂/强依赖时偏向一个节点；
+- 多个真正独立且并行更快时可形成一个小批次；
+- 固定字数/轮数只做异常 fallback。
 
-对下载、上传、API、网络抓取、远程存储等传输型任务：
+## 13. 硬规则
 
-在微优化代码、hash、probe、线程数之前，先检查是否存在等价但速度差异巨大的成熟路径：
-
-- 官方 direct URL；
-- 不同官方 CDN/节点；
-- 同资源不同 endpoint；
-- 不同 provider/镜像/区域；
-- 已有 session/API 热路径；
-- 不必要的代理层/浏览器层/中转层。
-
-经验来源：抖音极速直下 Reality 中，同一媒体从慢 CDN 改为官方 www.douyin.com direct 后，下载阶段出现数量级改善；后续约9分29秒、约73MB样本也在约6秒传输完成。
-
-硬边界：
-- 先虚拟判断，不能每次都花时间测速所有路径；
-- 只有路径选择的预期净收益大于探测税，才动态探测；
-- 不能靠降低质量制造“更快”；
-- 必须在同等 VALID 下比较。
-
-一句话：**带宽任务先问“走哪条路”，再问“代码还能省几毫秒”。**
-
-## 5. 概率工具：默认不用
-
-只有当候选选择本身已成为明显耗时点时，才比较：
-
-TOOL_GAIN = T_DIRECT - T_PROB
-
-T_PROB 包含准备、启动/连接、网络、判断、解析、验证、失败/重试和卡顿风险。
-
-TOOL_GAIN 不明显为正，就不用。
-
-## 6. 单页面纪律
-
-一个页面只服务一个自然任务节点/分支。
-
-同页：
-- 必须把该节点的 VIRTUAL_LOOP 跑到合法出口；
-- 不允许完成一个微优化就停；
-- 不允许只写“下一优化点”然后结束。
-
-节点完成：
-Freeze → 页面结束/回收 → 下一节点开新页。
-
-若一个节点预计无法在单页稳定完成，先把它拆成多个可独立冻结的自然节点。
-
-## 7. 硬规则
-
-禁止自研优先。  
-禁止从零研发优先。  
+禁止任务目标静默漂移。  
+禁止把 CONTRACT_VERSION 与 FREEZE_VERSION 混用。  
+禁止 CEO 承载 Executor 重历史。  
+禁止 Executor 混跑多个自然节点。  
+禁止页面先关后 Freeze。  
 禁止中途逐点 Reality。  
-禁止虚拟循环未完成就停。  
-禁止忽略 USER_PATH_GATE。  
-禁止把人工手速混入电脑端 T_VALID。  
-禁止一个页面跨多个自然任务节点。  
-禁止节点 Freeze 后继续堆上下文。  
-禁止假想大规模运行放大收益。  
-禁止为了微小收益长期死磕。
+禁止 VIRTUAL_LOOP 未成熟就停。  
+禁止为了并行而并行。  
+禁止 Branch 代替 True New Chat。  
+禁止新 CEO 重放旧页面全部聊天。
 
-一句话：**用户路径必须简单；电脑端计时保持统一；节点内虚拟循环跑到底，节点完成立即冻结换页。**
+一句话：
+
+**任务合同保证“不漂移”；CEO Freeze 保证“状态不断”；Executor VIRTUAL_LOOP 保证“节点内部成熟到底”。**
