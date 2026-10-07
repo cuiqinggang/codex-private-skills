@@ -11,22 +11,23 @@ VERSION=1.1.0
 AUTHORITY_REPO=cuiqinggang/codex-private-skills
 AUTHORITY_PATH=skills/douyin-ultra-direct/
 
-## 时间口径
+## 时间与用户路径口径
 
-已认证：
-T_SYSTEM_VALID = 4,428.736ms
+正式电脑端：
+T_VALID = 4,428.736ms
 
 定义：
-clipboard 已含抖音分享文本/短链
+READY_STATE = clipboard 已含抖音分享文本/短链
 → 正式桌面隐藏入口启动
 → 新桌面 MP4 FINAL_VALID
 
-注意：
-该 4.428736s 不包含用户在抖音中完成“复制链接”的时间。
-因此：
-T_USER_VALID=UNMEASURED
+该时间不包含用户完成“复制链接”的人工时间；这是符合当前极限短时间引擎的电脑端统一计时口径。
 
-以后比较完整用户方案时，必须从用户第一现实动作开始计时，不能把 T_SYSTEM_VALID 冒充完整用户 T*。
+用户侧不强制计人工手速，而走门禁：
+USER_PATH=复制抖音分享文本/短链 → 双击桌面“抖音极速直下” → 自动完成
+USER_PATH_GATE=PASS
+
+如果未来候选让电脑端更快、但用户操作明显变复杂，则候选不得替代当前方案。
 
 ## 用户操作
 
@@ -111,6 +112,19 @@ Reality 证明官方 direct URL 在本机/本次网络下可出现数量级吞�
 3. 若进程仍运行，只观察同一 PID，禁止重复启动。
 4. 读取 C:\AI\Douyin-Ultra-Direct\last_run.json。
 5. 只有 status=PASS 或 PASS_FALLBACK 且输出存在，才报告完成。
+
+## 恢复认证
+
+RESTORE_STATIC_GATE=PASS
+REALITY_EXECUTED_DURING_RESTORE=NO
+
+已实际验证 restore.ps1 可在本机：
+- 恢复/校验核心；
+- 恢复桌面隐藏入口；
+- py_compile PASS；
+- curl/ffprobe FOUND；
+- fallback PRESENT；
+- 不执行视频下载 Reality。
 
 ## 恢复触发
 
