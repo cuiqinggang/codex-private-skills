@@ -1,0 +1,25 @@
+# 《当前任务冻结状态 第5版》
+FREEZE_TAG=MSLVM-F005
+任务ID=METHOD-SYSTEM-LARGE-VIRTUAL-MATURITY-20261008
+FREEZE_VERSION=5
+CONTRACT_VERSION=2
+状态码=40
+阶段=REALITY_1_FAIL_DELTA
+PARENT_FREEZE_VERSION=4
+
+NODE_FREEZE_ID=MSLVM-R1-REALITY-1
+TYPE=REALITY
+STATUS=FAIL
+ORACLE=R15_PRE_FIX
+DELTA=WATCHDOG 与 legacy supervisor/AutoLaunch 多 owner，CDP/profile 抖动后重复 browser_launch_once，标签页/窗口堆叠。
+HISTORICAL_EVIDENCE=watchdog launch count 累计 12；固定后 12→12→12。
+
+RULE_CHECK=PASS
+- Reality 未修改 F4；
+- 失败事实被冻结；
+- 未原地重试；
+- 未将母任务业务故障误判为当前方法故障。
+
+CURRENT_METHOD_FAULT=NO
+SAME_CEO_FREEZE_COUNT=1
+NEXT=回虚形成最小修复候选。
