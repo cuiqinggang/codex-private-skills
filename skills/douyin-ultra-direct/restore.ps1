@@ -28,11 +28,19 @@ $ffprobe = Get-Command ffprobe.exe -ErrorAction Stop
 
 New-Item -ItemType Directory -Force -Path $Target | Out-Null
 
-Copy-Item -LiteralPath (Join-Path $SourceDir 'run.py') -Destination (Join-Path $Target 'run.py') -Force
-Copy-Item -LiteralPath (Join-Path $SourceDir 'run-hidden.vbs') -Destination (Join-Path $Target 'run-hidden.vbs') -Force
-Copy-Item -LiteralPath (Join-Path $SourceDir 'SKILL.md') -Destination (Join-Path $Target 'SKILL.md') -Force
-Copy-Item -LiteralPath (Join-Path $SourceDir 'RESTORE.md') -Destination (Join-Path $Target 'RESTORE.md') -Force
-Copy-Item -LiteralPath (Join-Path $SourceDir 'run-hidden.vbs') -Destination $DesktopEntry -Force
+function Copy-IfDifferent {
+    param([string]$Source,[string]$Destination)
+    $src = [System.IO.Path]::GetFullPath($Source)
+    $dst = [System.IO.Path]::GetFullPath($Destination)
+    if($src -ieq $dst){ return }
+    Copy-Item -LiteralPath $Source -Destination $Destination -Force
+}
+
+Copy-IfDifferent (Join-Path $SourceDir 'run.py') (Join-Path $Target 'run.py')
+Copy-IfDifferent (Join-Path $SourceDir 'run-hidden.vbs') (Join-Path $Target 'run-hidden.vbs')
+Copy-IfDifferent (Join-Path $SourceDir 'SKILL.md') (Join-Path $Target 'SKILL.md')
+Copy-IfDifferent (Join-Path $SourceDir 'RESTORE.md') (Join-Path $Target 'RESTORE.md')
+Copy-IfDifferent (Join-Path $SourceDir 'run-hidden.vbs') $DesktopEntry
 
 & $python -m py_compile (Join-Path $Target 'run.py')
 if($LASTEXITCODE -ne 0){ throw 'PY_COMPILE_FAIL' }
