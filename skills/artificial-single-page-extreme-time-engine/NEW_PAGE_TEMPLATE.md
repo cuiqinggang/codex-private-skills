@@ -1,31 +1,25 @@
-# 《新页面运行模板 第11版》
+# 《新页面运行模板 第12版》
 
-版本：第11版
-升级来源：第10版
+版本：第12版
+升级来源：第11版
 状态：CURRENT
 唯一标准：T*=min(T_VALID)
 
 ## 1. 新 CEO 固定读取顺序
 
-必须按顺序读取，不允许跳层：
+NEXT_PAGE_PROMPT 只显式要求四层，按顺序读取：
 
 1. BRAIN.md
-2. CURRENT_TASK_CONSTRAINTS.md / 当前任务 TASK_CONTRACT
-3. CURRENT_TASK_FREEZE.md / 最新冻结状态
-4. ENGINE.md
-5. NEW_PAGE_TEMPLATE.md
+2. CURRENT_TASK_CONSTRAINTS.md / 当前 TASK_CONTRACT
+3. CURRENT_TASK_FREEZE.md / 最新 Freeze
+4. NEW_PAGE_TEMPLATE.md
 
-含义：
-先装决策脑
-→ 再确认任务是什么
-→ 再确认做到哪里
-→ 再读取当前节点执行方法
-→ 最后按页面模板运行。
+BRAIN.md 是唯一方法入口；ENGINE.md 由 BRAIN 按当前节点需要调用，不在 handoff 重复列规则。
 
 若是全新现实任务：
-第2步先执行 INITIAL_TASK_INTAKE，
+先按 BRAIN 执行 INITIAL_TASK_INTAKE，
 生成 CONTRACT_VERSION=1；
-第3步建立 FREEZE_VERSION=0。
+建立 FREEZE_VERSION=0。
 
 ## 2. 页面角色
 
@@ -138,33 +132,46 @@ N → N+1。
 
 FAIL 也是状态变化，也必须进入新的 FREEZE_VERSION。
 
-## 8. NEXT_PAGE_PROMPT 命名与正文
+## 8. NEXT_PAGE_PROMPT：极简交接
+
+NEXT_PAGE_PROMPT 的职责只有：
+
+> 告诉新页“从哪里读、当前在哪里、下一步做什么”。
+
+不得复制技能包正文。
 
 文件/逻辑名称：
 
 NEXT_PAGE_PROMPT_V<FREEZE_VERSION>
 
-第一条非空行必须是 CEO_FREEZE_TAG_JSON。
+第一条非空行使用最小机器标签：
 
-随后必须包含三行信封：
+```text
+CEO_STATE_TAG={"schema":"CEO_STATE_V2","task_id":"<task>","freeze_version":<n>,"state_code":<10|20|30|40|100>,"next_node":"<node|STOP>"}
+```
 
-【页面名｜任务名｜序号｜虚/实】
-状态机：<引擎/大脑/模板版本｜状态码｜节点>
-时间锚：TASK_ACCEPTED=<时间>｜READY_STATE_START=<时间或null>｜CURRENT=<节点>｜T_VALID=<数值或null>｜T*=<数值或null>
+随后只保留：
 
-然后只携带最小接管状态：
-- REPO / REF / SKILL_PATH
-- TASK_ID
-- CONTRACT_VERSION
-- FREEZE_VERSION
-- FINAL_REALITY_GOAL
-- 正反约束/FINAL_VALID 的权威路径
-- 已冻结事实 ≤3 条
-- OPEN_ITEMS
-- NEXT_CONTROL_DECISION
-- NEXT_NODE
+1. 三行信封；
+2. REPO / REF / SKILL_PATH / FREEZE_PATH；
+3. 四层读取顺序；
+4. 任务一句话；
+5. 下一步一句话。
 
-禁止携带完整旧聊天。
+目标：约 10–12 行。
+
+禁止在 NEXT_PAGE_PROMPT 重复：
+- 版本升级规则；
+- Executor 生命周期；
+- CEO 换页门；
+- Reality 规则；
+- 正反约束正文；
+- DONE_WHEN 全文；
+- 已冻结事实长列表；
+- 完整 JSON Freeze；
+- 旧聊天历史。
+
+这些内容全部从四层权威文件读取。
 
 ## 9. 页面结束门禁
 
@@ -184,21 +191,19 @@ CEO_PAGE_COMPLETE=NO 时不得自动换页。
 
 ### 初次页
 BRAIN
-→ INITIAL_TASK_INTAKE
-→ CONTRACT v1
+→ TASK_CONTRACT
 → FREEZE v0
-→ ENGINE
-→ PAGE_TOPOLOGY_GATE
+→ NEW_PAGE_TEMPLATE
 → 执行
 
 ### 接续页
 BRAIN
 → TASK_CONTRACT
 → CURRENT_TASK_FREEZE
-→ ENGINE
-→ 刷新 NEXT_CONTROL_DECISION
-→ 执行
+→ NEW_PAGE_TEMPLATE
+→ 从 NEXT_CONTROL_DECISION 继续
 
+BRAIN 内部按需调用 ENGINE。
 接续页禁止重新解释已冻结目标和已接受成果。
 
 ## 11. 页面卫生
