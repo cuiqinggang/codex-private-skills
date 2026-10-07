@@ -1,2 +1,2 @@
-当前下一页提示词=NEXT_PAGE_PROMPT_V9.md
-冻结标签=DPC-F009
+当前下一页提示词=NEXT_PAGE_PROMPT_V10.md
+冻结标签=DPC-F010
