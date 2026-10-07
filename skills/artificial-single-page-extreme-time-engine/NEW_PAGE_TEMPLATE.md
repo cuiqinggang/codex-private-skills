@@ -24,12 +24,19 @@ REF=<main或冻结commit>
 ## 2. 三行信封
 
 【页面名｜任务名｜序号｜虚/实】  
-状态机：<引擎版本/大脑版本｜状态码｜阶段>  
-时间锚：TASK_ACCEPTED=<实际时间>｜USER_START=<实际/待测>｜CURRENT=<当前节点>｜T_SYSTEM_VALID=<数值或null>｜T_USER_VALID=<数值或null>｜T*=<数值或null>
+状态机：<引擎版本/大脑版本｜状态码｜当前自然节点>  
+时间锚：TASK_ACCEPTED=<实际时间>｜READY_STATE_START=<实际/待定>｜CURRENT=<当前节点>｜T_VALID=<数值或null>｜T*=<数值或null>
 
-## 3. 单页面边界
+USER_PATH_GATE 单独写：
+USER_PATH=<最简用户操作>｜USER_PATH_GATE=<PASS/FAIL/UNFROZEN>
 
-一个页面只服务一个明确任务/分支，但同一任务内部允许：
+不把人工手速混入 T_VALID。
+
+## 3. 一个页面 = 一个自然任务节点
+
+每页只能服务一个明确自然任务节点/分支。
+
+该节点内部允许：
 - 多轮连续虚拟成熟；
 - ≤3 个成熟候选比较；
 - 多个兼容优化组合；
@@ -37,26 +44,28 @@ REF=<main或冻结commit>
 
 禁止：
 - 一个微优化就机械换页；
-- 两个无关任务混页；
-- 正式 Reality 中改 Freeze。
+- 在节点 VIRTUAL_LOOP 中停在计划层；
+- 一个页面继续执行下一个自然节点；
+- 正式 Reality 中修改 Freeze。
 
-页面过长、卡顿或恢复风险开始明显上升时：
-最小冻结 → 输出 NEXT_PAGE_PROMPT → 新页继续同一任务状态。
+当前自然节点一旦完成并 Freeze：
+当前页面立即结束/回收；
+下一自然节点必须开新页面。
+
+冻结文件/证据保留，不能因页面结束而丢失。
 
 ## 4. VIRTUAL_LOOP 页面结束门
 
-若状态仍为 VIRTUAL_LOOP，且：
+若当前自然节点仍是 VIRTUAL_LOOP，且：
 - STOP_GATE 未通过；
 - 无 AUTH_GATE；
 - 无 EXTERNAL_BLOCK；
-- 页面也未触发 PAGE_HANDOFF；
 
 则当前页面/回合不得以“下一步是……”结束。
 
 必须直接继续下一轮虚拟优化。
 
-若触发 PAGE_HANDOFF：
-换页本身就是本轮动作，下一页必须继续 VIRTUAL_LOOP，不得把 handoff 当 STOP。
+只有该自然节点达到 FREEZE_READY/NODE_FINAL，才允许页面正常结束。
 
 ## 5. Reality 门
 
@@ -65,18 +74,24 @@ REF=<main或冻结commit>
 一个 Freeze 默认只允许一次 Reality。
 
 Reality FAIL/Delta：
-冻结真实差异 → 新虚拟状态 → 继续完整虚拟循环；
-不得同页边改边补跑。
+冻结真实差异 → 回到该节点的新 VIRTUAL_LOOP；
+继续完整虚拟成熟；
+不得边改边补跑。
 
-## 6. 用户入口门
+复杂项目应把：
+虚拟成熟节点、Reality 节点、Delta 修复节点
+拆成独立自然节点/独立页面，靠 Freeze 接续。
 
-用户型任务必须写清：
-USER_START、用户操作步骤、SYSTEM_TAKEOVER、FINAL_VALID。
+## 6. 用户路径门
 
-若只测到系统侧：
-T_SYSTEM_VALID 可记录；
-T_USER_VALID 必须保持 null/待测；
-不得把 T_SYSTEM_VALID 冒充完整 T*。
+用户型任务必须在方案设计时明确最简 USER_PATH。
+
+只要存在成熟方式能减少用户操作，就必须纳入候选比较。
+
+USER_PATH_GATE=FAIL：
+不得进入正式冠军候选。
+
+但 T_VALID 仍只从电脑端合法 READY_STATE_START 到 FINAL_VALID 计算。
 
 ## 7. NEXT_PAGE_PROMPT 最小格式
 
@@ -84,7 +99,8 @@ T_USER_VALID 必须保持 null/待测；
 
 【<页面>｜<任务>｜<序号>｜<虚/实>】  
 状态机：<...>  
-时间锚：<...>
+时间锚：<...>  
+USER_PATH=<...>｜USER_PATH_GATE=<...>
 
 权威来源=网络共同工作区  
 REPO=cuiqinggang/codex-private-skills  
@@ -92,10 +108,8 @@ SKILL_PATH=skills/artificial-single-page-extreme-time-engine/
 REF=<main或冻结commit>  
 读取：ENGINE.md / BRAIN.md / CURRENT_TASK_CONSTRAINTS.md / NEW_PAGE_TEMPLATE.md
 
-任务：<一句话>  
-冻结事实：<最多3条>  
-当前执行状态：<VIRTUAL_LOOP/FREEZE_READY/REALITY_ONCE/DELTA_RETURN/FINAL>  
-下一步：<一句话>
+当前节点冻结事实：<最多3条>  
+下一自然节点：<一句话>
 
 目标：约 10–12 行。
 
@@ -107,12 +121,15 @@ REF=<main或冻结commit>
 
 ## 9. 页面结束门禁
 
-生成 NEXT_PAGE_PROMPT 文件不等于完成。
+自然节点 Freeze 后必须：
+1. 写入最小冻结；
+2. 生成唯一 NEXT_PAGE_PROMPT；
+3. 最终回复完整输出该 NEXT_PAGE_PROMPT；
+4. 当前页面不再继续下一节点。
 
-需要换页时：
-1. 当前最小冻结已写入；
-2. 最终回复必须完整输出唯一 NEXT_PAGE_PROMPT；
-3. 下一页能直接从明确状态继续；
-4. 若状态是 VIRTUAL_LOOP，下一页第一动作就是继续虚拟循环。
+下一页：
+只读取冻结事实；
+不重复上一页已完成工作；
+立即执行下一自然节点。
 
-一句话：**一个页面一个任务闭环；同页连续虚拟成熟；过重就换页接着跑，不得在停止门前停在计划层。**
+一句话：**一个页面一个自然节点；节点内部连续虚拟成熟到停止门；节点一冻结就换页，保持上下文永远短。**
