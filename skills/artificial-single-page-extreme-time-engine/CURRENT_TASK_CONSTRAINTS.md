@@ -1,37 +1,110 @@
-# 《当前任务目标与正反约束｜任务合同规范 第1版》
+# 《当前任务目标与正反约束｜任务合同规范 第2版》
 
-规范版本：第1版  
-状态：CURRENT  
-用途：定义每个现实任务“不漂移”的任务合同  
+规范版本：第2版
+升级来源：第1版
+状态：CURRENT
 当前活动任务：NONE
 
-## 1. 核心原则
+## 1. 任务合同只回答“要什么”
 
-任务合同负责回答：
+任务合同是任务级 Source of Truth。
 
-> 最终要得到什么？什么必须有？什么绝不能有？怎样才算真正完成？
+它锁定：
+- 用户最终现实目标；
+- 正向必须项；
+- 反向禁止项；
+- 完成标准；
+- 证据标准；
+- 用户现实操作路径；
+- 范围和硬边界。
 
-它不负责回答“具体怎么做”。
+它不记录“现在做到哪里”；执行进度由 CURRENT_TASK_FREEZE 管理。
 
-任何新现实任务都必须先生成并冻结 TASK_CONTRACT，再进入实现或 Reality。
+## 2. 初次接到现实任务的固定生成流程
 
-聊天、CEO、Executor、临时计划、Reality 页面都不得静默改写任务合同。
+### Step 1：保留用户原始意图
+记录 USER_REQUEST_RAW 的最小忠实摘要。
+不得先把用户任务改写成某个实现方案。
 
-## 2. 每个任务的合同字段
+### Step 2：提炼 FINAL_REALITY_GOAL
+只写最终现实结果：
+“用户最后真正要得到什么”。
+
+禁止把工具、模型、代码结构、网页步骤等实现偏好误当目标，除非用户明确要求它本身就是结果。
+
+### Step 3：生成 POSITIVE_PROMPT
+只列：
+- 必须具备；
+- 必须保留；
+- 不能为了更快而牺牲；
+- 用户真正关心的质量/功能/体验。
+
+### Step 4：生成 NEGATIVE_PROMPT
+只列：
+- 绝不能发生；
+- 表面完成但现实不接受；
+- 属于目标漂移；
+- 降质、绕路、假完成、错误替代；
+- 用户已明确禁止的操作。
+
+### Step 5：冻结范围与边界
+IN_SCOPE
+OUT_OF_SCOPE
+HARD_BOUNDARIES
+
+### Step 6：冻结 USER_PATH
+写出用户最终最简现实操作路径。
+USER_PATH_GATE=FAIL 的方案不得成为正式冠军。
+
+### Step 7：把目标改写为验收标准
+FINAL_VALID_STANDARD
+DONE_WHEN
+
+要求尽量可观察、可测、可判定。
+禁止用“看起来差不多”“应该可以”作为 FINAL_VALID。
+
+### Step 8：定义证据
+EVIDENCE_REQUIRED
+
+证据只为证明 DONE_WHEN，不为堆日志。
+
+### Step 9：反向漏洞检查
+逐项问：
+- 有没有满足文字但没有满足用户真实目标的情况？
+- 有没有更快但质量/功能变差的情况？
+- 有没有测试器通过、真实任务失败的情况？
+- 有没有依靠用户额外人工才能成立的情况？
+- 有没有违反 HARD_BOUNDARIES 的情况？
+
+发现漏洞先修合同，不进入执行。
+
+### Step 10：Freeze
+第一次冻结：
+
+CONTRACT_VERSION=1
+CONTRACT_STATUS=FROZEN
+FREEZE_VERSION=0
+
+然后才进入执行。
+
+## 3. 标准任务合同
 
 ```yaml
 TASK_ID: <唯一任务ID>
 CONTRACT_VERSION: 1
-CONTRACT_STATUS: DRAFT|FROZEN|SUPERSEDED
+CONTRACT_STATUS: FROZEN
+
+USER_REQUEST_RAW: >
+  <用户原始意图的最小忠实摘要>
 
 FINAL_REALITY_GOAL: >
-  <最终现实目标；只写结果，不写实现偏好>
+  <最终现实结果，不先写实现>
 
 POSITIVE_PROMPT:
-  - <必须实现/必须保留的正向要求>
+  - <必须实现/保留>
 
 NEGATIVE_PROMPT:
-  - <禁止出现；出现即漂移、失败或降级的反向要求>
+  - <禁止/失败/漂移项>
 
 IN_SCOPE:
   - <必须完成>
@@ -40,158 +113,87 @@ OUT_OF_SCOPE:
   - <明确不做>
 
 HARD_BOUNDARIES:
-  - <不可突破的现实/安全/环境边界>
+  - <不可突破>
+
+USER_PATH:
+  - <用户最简操作>
 
 FINAL_VALID_STANDARD:
   - <最终有效标准>
 
 DONE_WHEN:
-  - <机器或人工可验证完成条件1>
-  - <完成条件2>
+  - <可验收条件>
 
 EVIDENCE_REQUIRED:
-  - <文件/日志/截图/Run ID/Hash/实测结果等>
-
-USER_PATH:
-  - <用户最简现实操作路径>
+  - <必要证据>
 
 CURRENT_FREEZE_VERSION: 0
-CURRENT_STATE_CODE: 10
-CURRENT_T_STAR_MS: null
 ```
 
-## 3. 合同如何生成
+## 4. 后续执行不得重写合同
 
-新任务进入 CEO 后按固定顺序：
+后续 CEO：
+读当前 CONTRACT_VERSION
+→ 读最新 FREEZE_VERSION
+→ 继续执行。
 
-1. 读取用户原始任务；
-2. 抽取最终现实结果，不把当前实现偏好误写成目标；
-3. 写 POSITIVE_PROMPT：必须实现的结果特征；
-4. 写 NEGATIVE_PROMPT：禁止项、漂移项、失败项；
-5. 明确 IN_SCOPE / OUT_OF_SCOPE / HARD_BOUNDARIES；
-6. 把“看起来完成”改写成 FINAL_VALID_STANDARD / DONE_WHEN；
-7. 定义 EVIDENCE_REQUIRED；
-8. 定义 USER_PATH；
-9. 从反面检查：是否存在“形式完成但实际失败”的漏洞；
-10. Freeze 为 CONTRACT_VERSION=1。
-
-若任务需要外部成熟标准、真实产品标准或物理边界才能定义 VALID，可以在冻结前做最小必要检索/分析；但检索服务于“把完成标准定义正确”，不能先实现再倒推标准。
-
-## 4. 正提示词 / 反提示词的含义
-
-这里的 POSITIVE_PROMPT / NEGATIVE_PROMPT 是任务级约束，不局限于图像生成。
-
-POSITIVE_PROMPT：
-- 最终结果必须具备什么；
-- 用户真正要保留什么；
-- 哪些质量/功能/体验不能丢。
-
-NEGATIVE_PROMPT：
-- 哪些结果即使表面完成也不接受；
-- 哪些行为属于目标漂移；
-- 哪些降质、绕路、假完成、错误替代必须禁止。
-
-它们与 FINAL_REALITY_GOAL 一起构成“不漂移层”。
-
-## 5. CONTRACT_VERSION 升级规则
-
-每个任务从 1 开始，只允许自然整数：
-
-1 → 2 → 3 → 4 …
-
-只有以下情况允许升级：
-- 用户明确改变最终目标；
-- Reality/证据证明原 FINAL_VALID 定义错误或不足；
-- 正向要求确实新增/删除/改变；
-- 反向禁止项确实新增/删除/改变；
-- 任务范围或硬边界发生真实变化。
-
-以下情况不得升级 CONTRACT_VERSION：
+以下不改变 CONTRACT_VERSION：
+- 换 CEO 页面；
 - 换 Executor；
-- 换实现路线；
-- 页面换页；
-- 节点完成；
-- Reality FAIL；
+- 节点 PASS/FAIL；
+- Reality Delta；
 - 修 bug；
-- 仅更新 T*；
-- 仅新增证据；
-- 仅推进状态。
+- 更换更快成熟路线；
+- T* 更新；
+- 新增证据。
 
-合同升级必须显式写：
+## 5. CONTRACT_VERSION 升级
+
+只有以下实质变化才：
+
+1 → 2 → 3 → ...
+
+- 用户最终目标改变；
+- FINAL_VALID/DONE_WHEN 被 Reality 证明定义错误或不足；
+- POSITIVE_PROMPT 改变；
+- NEGATIVE_PROMPT 改变；
+- 范围或硬边界改变；
+- USER_PATH 本身被用户改成新的硬要求。
+
+升级必须记录：
 OLD_CONTRACT_VERSION
-→ CHANGE_REASON
-→ DELTA
-→ NEW_CONTRACT_VERSION
+CHANGE_REASON
+DELTA
+NEW_CONTRACT_VERSION
 
-禁止静默覆盖旧合同。
+旧版本保留，不静默覆盖。
 
-## 6. FREEZE_VERSION 与合同版本分离
+## 6. FINAL_VALID 门
 
-FREEZE_VERSION 表示“做到哪里”。
-
-每个 CEO 自然控制节点完成后：
-
-FREEZE_VERSION=N → N+1
-
-即使 CONTRACT_VERSION 不变，FREEZE_VERSION 也继续上升。
-
-例：
-
-CONTRACT_VERSION=1  
-FREEZE_VERSION=1  
-FREEZE_VERSION=2  
-FREEZE_VERSION=3
-
-如果中途用户改变最终验收标准：
-
-CONTRACT_VERSION=2  
-FREEZE_VERSION=4
-
-因此：
-- CONTRACT_VERSION = 目标/验收定义版本；
-- FREEZE_VERSION = 项目状态版本。
-
-不得混用。
-
-## 7. FINAL_VALID 门
-
-FINAL_VALID=YES 只允许在：
+FINAL_VALID=YES 只允许同时满足：
 
 DONE_WHEN 全部满足
 +
-EVIDENCE_REQUIRED 全部具备
+EVIDENCE_REQUIRED 足够
 +
-NEGATIVE_PROMPT 无触发
+NEGATIVE_PROMPT 未触发
 +
-HARD_BOUNDARIES 无违反
+HARD_BOUNDARIES 未违反
++
+USER_PATH_GATE=PASS（用户型任务）
 
-否则：
-FINAL_VALID=NO 或 UNKNOWN。
+否则只能 NO 或 UNKNOWN。
 
-## 8. 新 CEO 的合同读取规则
+## 7. 与冻结状态的分工
 
-新 CEO 不重新发明任务目标。
+TASK_CONTRACT：
+应该做什么，什么叫完成。
 
-固定：
-读取当前 FROZEN TASK_CONTRACT
-→ 读取最新 CEO_FREEZE
-→ 校验 CONTRACT_VERSION / FREEZE_VERSION
-→ 基于新状态刷新执行计划
+CURRENT_TASK_FREEZE：
+现在做到哪里，哪些事实已经不可重复，下一步从哪里恢复。
 
-只有发现合同本身需要修订，才进入 CONTRACT_REVISION 并自然数 +1。
-
-## 9. 当前空闲状态
-
-当前没有绑定具体现实任务：
-
-ACTIVE_TASK=NONE  
-ACTIVE_CONTRACT_VERSION=null  
-ACTIVE_FREEZE_VERSION=null
-
-收到下一现实任务时：
-先生成 TASK_CONTRACT_VERSION=1；
-再进入 PAGE_TOPOLOGY_GATE。
+两者必须同时存在，不能互相替代。
 
 一句话：
 
-**目标、FINAL_VALID、正向要求、反向禁止项用 CONTRACT_VERSION 锁死；执行过程只推动 FREEZE_VERSION，不允许借“执行中调整”偷偷漂移任务。**
+**初次接任务先把用户真实目标变成可验收、可防漂移的合同；后续所有页面只推进状态，不偷偷改题。**
