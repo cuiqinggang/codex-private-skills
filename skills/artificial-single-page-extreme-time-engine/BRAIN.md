@@ -1,64 +1,90 @@
-# 《极限短时间执行大脑 第17版》
+# 《极限短时间执行大脑 第18版》
 
-版本：第17版
-升级来源：第16版
+版本：第18版
+升级来源：第17版
 状态：CURRENT
 唯一标准：T*=min(T_VALID)
 
-## 1. 唯一方法入口与固定读取顺序
+## 1. 唯一方法入口与两种读取顺序
 
 BRAIN.md 是新 CEO 的唯一方法入口。
 
-NEXT_PAGE_PROMPT 只需显式要求读取四层：
+### 初次待接任务页
+
+任务尚未产生，因此不存在“当前任务目标与正反约束 第N版”。
+
+读取顺序：
 
 1. BRAIN.md —— 决策大脑
-2. CURRENT_TASK_CONSTRAINTS.md / 当前 TASK_CONTRACT —— 任务定义
-3. FREEZE_PATH 指向的《当前任务冻结状态 第N版》—— 当前真实状态
+2. FREEZE_PATH 指向的当前方法/上一任务最终冻结状态
+3. NEW_PAGE_TEMPLATE.md —— 页面运行
+
+接到用户现实任务后，再由 BRAIN 生成该任务自己的目标/正反约束与冻结状态。
+
+### 同一任务接续页
+
+任务已经存在时，读取顺序：
+
+1. BRAIN.md —— 决策大脑
+2. TASK_CONSTRAINTS_PATH 指向的《当前任务目标与正反约束 第N版》
+3. FREEZE_PATH 指向的《当前任务冻结状态 第N版》
 4. NEW_PAGE_TEMPLATE.md —— 页面运行
 
-ENGINE.md 属于 BRAIN 的内部执行体，由 BRAIN 按当前节点需要调用；不得要求 NEXT_PAGE_PROMPT 再重复解释 ENGINE 规则。
+ENGINE.md 属于 BRAIN 的内部执行体，由 BRAIN 按当前节点需要调用。
 
-内部逻辑仍然是：
+原则：方法规则只在 BRAIN 定义；运行时状态只存在具体任务版本文件；NEXT_PAGE_PROMPT 只传路径和当前版本，不复制规则正文。
 
-先装大脑
-→ 再锁定任务
-→ 再读取冻结状态
-→ BRAIN 调用 ENGINE 执行当前节点
-→ 页面按 NEW_PAGE_TEMPLATE 运行。
+## 2. 初次接到任务：生成任务目标与正反约束
 
-原则：规则只在一个权威位置定义一次；handoff 只传索引、当前状态和下一步，不复制规则正文。
+只有真正收到新的现实任务、且该任务尚无目标/正反约束文件时执行一次。
 
-## 2. 初次接到任务：INITIAL_TASK_INTAKE
-
-只有新现实任务、没有现成 FROZEN TASK_CONTRACT 时执行一次。
+固定顺序：
 
 用户原始任务
-→ 写一句 FINAL_REALITY_GOAL（只写最终结果，不先写实现）
-→ 写 POSITIVE_PROMPT（必须有、必须保留）
-→ 写 NEGATIVE_PROMPT（绝不能有、出现即失败/漂移）
-→ 明确 IN_SCOPE / OUT_OF_SCOPE / HARD_BOUNDARIES
-→ 定义 USER_PATH（用户最简现实操作）
-→ 定义 FINAL_VALID_STANDARD / DONE_WHEN
-→ 定义 EVIDENCE_REQUIRED
-→ 反向检查“有没有形式完成但真实失败的漏洞”
-→ 冻结 CONTRACT_VERSION=1
+→ 保留原始意图的最小忠实摘要
+→ 提炼“最终现实目标”，只写最后要得到什么，不先写实现
+→ 生成“正向约束”：必须具备、必须保留、不能为快而牺牲
+→ 生成“反向约束”：绝不能出现、出现即失败/漂移
+→ 明确必须做 / 明确不做 / 硬边界
+→ 定义用户最简现实操作路径
+→ 把目标改写成明确可验收的 FINAL_VALID / DONE_WHEN
+→ 定义最少必要证据
+→ 从反面检查“有没有形式完成但真实失败”
+→ 生成《当前任务目标与正反约束 第1版》
 → 生成《当前任务冻结状态 第1版》
-→ FREEZE_VERSION=1
-→ 进入 PAGE_TOPOLOGY_GATE
+→ 再进入 PAGE_TOPOLOGY_GATE
 
-不得先实现，再倒推什么叫完成。
+运行时任务文件命名：
 
-## 3. 后续接续：RESUME_TASK
+```text
+<TASK_PATH>/CURRENT_TASK_CONSTRAINTS_V1.md
+<TASK_PATH>/freezes/CURRENT_TASK_FREEZE_V1.md
+```
 
-已有任务时不重新定义目标：
+以后只有当目标、正向约束、反向约束、FINAL_VALID、范围或硬边界真正改变时：
 
-读 CONTRACT_VERSION
-→ 读最新 FREEZE_VERSION
+```text
+《当前任务目标与正反约束 第1版》
+→ 第2版
+→ 第3版
+...
+```
+
+普通执行进展不得升级这个版本。
+
+## 3. 后续接续：读取具体任务版本
+
+已有任务时不得重新生成目标。
+
+固定：
+
+读取 TASK_CONSTRAINTS_PATH 指向的《当前任务目标与正反约束 第N版》
+→ 读取 FREEZE_PATH 指向的《当前任务冻结状态 第N版》
 → 校验已冻结事实和证据
-→ 只刷新当前 NEXT_CONTROL_DECISION
+→ 只刷新当前下一控制决策
 → 进入 PAGE_TOPOLOGY_GATE
 
-除非目标/FINAL_VALID/正反约束本身改变，否则 CONTRACT_VERSION 不变。
+若 Reality 或用户明确证明目标/约束本身需要改变，先生成新的《当前任务目标与正反约束 第N+1版》，再继续执行。
 
 ## 4. PAGE_TOPOLOGY_GATE
 
