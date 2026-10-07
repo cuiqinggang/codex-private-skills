@@ -18,7 +18,7 @@ PATH=skills/artificial-single-page-extreme-time-engine/
 整个长任务固定分四层：
 
 1. 方法脑：BRAIN.md + 本 ENGINE.md
-2. 任务定义：CURRENT_TASK_CONSTRAINTS.md / 当前 TASK_CONTRACT
+2. 任务定义：由 BRAIN 生成并通过 TASK_CONSTRAINTS_PATH 指向的《当前任务目标与正反约束 第N版》
 3. 当前冻结状态：NEXT_PAGE_PROMPT 指向的《当前任务冻结状态 第N版》
 4. 页面运行：NEW_PAGE_TEMPLATE.md
 
