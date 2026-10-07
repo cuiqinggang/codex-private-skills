@@ -1,7 +1,7 @@
-# 《人工单页面极限短时间引擎 第20版》
+# 《人工单页面极限短时间引擎 第21版》
 
-版本：第20版
-升级来源：第19版
+版本：第21版
+升级来源：第20版
 状态：CURRENT
 唯一标准：T*=min(T_VALID)
 
@@ -19,7 +19,7 @@ PATH=skills/artificial-single-page-extreme-time-engine/
 
 1. 方法脑：BRAIN.md + 本 ENGINE.md
 2. 任务定义：CURRENT_TASK_CONSTRAINTS.md / 当前 TASK_CONTRACT
-3. 当前冻结状态：CURRENT_TASK_FREEZE.md / 最新 Freeze
+3. 当前冻结状态：NEXT_PAGE_PROMPT 指向的《当前任务冻结状态 第N版》
 4. 页面运行：NEW_PAGE_TEMPLATE.md
 
 任务定义负责“不漂移”。
@@ -32,7 +32,8 @@ PATH=skills/artificial-single-page-extreme-time-engine/
 新任务：
 INITIAL_TASK_INTAKE
 → CONTRACT_VERSION=1
-→ FREEZE_VERSION=0
+→ 生成《当前任务冻结状态 第1版》
+→ FREEZE_VERSION=1
 → PAGE_TOPOLOGY_GATE
 
 已有任务：
@@ -192,10 +193,10 @@ ACTIVE_CEO_COUNT=1
 目标/FINAL_VALID/正反约束改变才自然整数 +1。
 
 ### FREEZE_VERSION
-CEO 每接受一个真正改变任务状态的冻结结果，自然整数 +1。
+正式《当前任务冻结状态》从第1版开始；CEO 每接受一个真正改变任务状态的冻结结果，自然整数 +1。
 
 并行 Executor 自己只生成不可变 NODE_FREEZE_ID；
-CEO 是唯一全局版本写者。
+CEO 是唯一全局版本写者，并生成新的《当前任务冻结状态 第N版》。
 
 失败同样是状态变化，因此 FAIL Freeze 也进入新 FREEZE_VERSION。
 
