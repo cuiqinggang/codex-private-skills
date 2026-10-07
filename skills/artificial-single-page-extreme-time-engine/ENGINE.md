@@ -1,253 +1,269 @@
-# 《人工单页面极限短时间引擎 第21版》
+# 《人工单页面极限短时间引擎 第22版》
 
-版本：第21版
-升级来源：第20版
+版本：第22版
+升级来源：第21版
 状态：CURRENT
 唯一标准：T*=min(T_VALID)
 
-## 1. 权威来源
+## 1. 定位：整套方法的总纲
 
-REPO=cuiqinggang/codex-private-skills
-PATH=skills/artificial-single-page-extreme-time-engine/
+本引擎是整个极限短时间任务体系的最高运行总纲。
 
-网络共同工作区为方法权威源。
-本地目录只作为执行、缓存和证据落点。
+它不只负责“一个自然执行节点内部怎么成熟”，而是规定：
 
-## 2. 四层结构
+- 一个现实任务从接收到 FINAL_VALID 的完整运行顺序；
+- 执行大脑、任务目标与正反约束、冻结状态、新页面运行模板、CEO、Executor 之间的职责边界；
+- 哪些原则任何下游版本都不得违反；
+- 什么时候属于下游模块升级，什么时候必须升级本引擎。
 
-整个长任务固定分四层：
+下游文件可以独立升级，但必须继续满足本引擎的总纲约束。
 
-1. 方法脑：BRAIN.md + 本 ENGINE.md
-2. 任务定义：由 BRAIN 生成并通过 TASK_CONSTRAINTS_PATH 指向的《当前任务目标与正反约束 第N版》
-3. 当前冻结状态：NEXT_PAGE_PROMPT 指向的《当前任务冻结状态 第N版》
-4. 页面运行：NEW_PAGE_TEMPLATE.md
+## 2. 唯一目标
 
-任务定义负责“不漂移”。
-冻结状态负责“不断线”。
-页面运行负责“保持上下文干净”。
-本引擎只负责“当前自然执行节点内部怎么成熟”。
+先进入 VALID 集合，再比较完整时间：
 
-## 3. 初次任务与后续任务
+```text
+T*=min(T_VALID)
+```
 
-新任务：
-INITIAL_TASK_INTAKE
-→ CONTRACT_VERSION=1
+任何局部更快，如果导致：
+- 最终结果无效；
+- 用户路径不可接受；
+- 目标漂移；
+- 证据不足；
+- 恢复性变差；
+- 完整 T_VALID 反而增加；
+
+都不是有效优化。
+
+## 3. 下游层级与职责
+
+### A. 《极限短时间执行大脑》
+
+负责“具体怎么判断和怎么干”。
+
+包括：
+- 初次收到任务后如何生成任务目标与正反约束；
+- 如何拆节点；
+- 如何决定串行/并行；
+- 如何冻结状态；
+- 如何决定 CEO 换页；
+- 如何调用本引擎规定的节点内虚拟成熟流程。
+
+### B. 《当前任务目标与正反约束 第N版》
+
+是具体任务运行后产生的防漂移状态，不是常驻方法规范。
+
+负责：
+- 当前最终现实目标；
+- 正向约束；
+- 反向约束；
+- FINAL_VALID / DONE_WHEN；
+- 用户路径；
+- 范围与硬边界。
+
+只有这些内容本身改变时才升级版本。
+
+### C. 《当前任务冻结状态 第N版》
+
+是具体任务的连续状态。
+
+负责：
+- 已完成什么；
+- 当前现实结果；
+- 证据位置；
+- Reality Delta；
+- 当前 T*；
+- 下一控制节点。
+
+它回答“现在做到哪里”，不改写任务目标。
+
+### D. 《新页面运行模板》
+
+负责页面生命周期和 NEXT_PAGE_PROMPT 母模板。
+
+它规定：
+- 初次页和接续页分别读取什么；
+- CEO / Executor 页面怎么使用；
+- 什么时候换页；
+- handoff 如何保持最小充分。
+
+### E. CEO / Executor
+
+CEO 是唯一控制面和全局状态写者。
+
+Executor 是执行面：
+一个页面只承担一个完整自然执行节点；
+节点结束后先 Freeze，再回报，再关闭。
+
+## 4. 端到端标准运行顺序
+
+### 新现实任务
+
+```text
+用户任务
+→ 执行大脑理解任务
+→ 生成《当前任务目标与正反约束 第1版》
 → 生成《当前任务冻结状态 第1版》
-→ FREEZE_VERSION=1
-→ PAGE_TOPOLOGY_GATE
+→ 判断页面拓扑
+→ 进入执行
+```
 
-已有任务：
-读取合同
-→ 读取最新冻结
-→ 不重复已冻结工作
-→ PAGE_TOPOLOGY_GATE
+### 执行阶段
 
-## 4. PAGE_TOPOLOGY_GATE
+```text
+选择成熟 BASELINE
+→ 连续 VIRTUAL_LOOP
+→ 找当前最大净收益点
+→ ≤3 个成熟候选
+→ 虚拟替换
+→ 刷新完整方案
+→ 重算 NET_GAIN
+→ 继续循环
+→ STOP_GATE
+→ Freeze
+→ Reality once
+```
 
-### SIMPLE_SINGLE_PAGE
-简单、低风险、一个页面能稳定闭环：
-CEO=Executor。
+### Reality 后
 
-### CEO_EXECUTOR
-长流程、多阶段、Reality、等待、并行、恢复、重执行：
+PASS：
+
+```text
+冻结结果
+→ CEO Merge
+→ 更新当前任务冻结状态
+→ 继续下一节点或 FINAL_VALID
+```
+
+FAIL / Delta：
+
+```text
+冻结已通过事实
+→ 冻结 Reality Delta
+→ 回新的虚拟成熟节点
+→ 刷新后续完整方案
+→ 再成熟到 STOP_GATE
+→ 再 Freeze
+→ 再整体 Reality
+```
+
+Reality 是验收器，不是逐点优化器。
+
+## 5. 页面拓扑总原则
+
+简单任务：
+
+```text
+CEO = Executor
+```
+
+复杂任务：
+
+```text
 一个活动 CEO
 +
-最少必要 Executor 页面。
+最少必要 Executor 页面
+```
 
-拓扑不是目的。
-同等 VALID 下完整 T_VALID 更低者胜。
+硬原则：
 
-## 5. Executor：一页一完整自然执行节点
+- 一个 Executor 页面只运行一个完整自然执行节点；
+- Executor 成功、失败、UNKNOWN、BLOCKED 都必须先冻结结果，再关闭页面；
+- CEO 不承载重执行历史；
+- 页面不是长期资产，冻结状态才是；
+- Persist / Freeze First → Close Second；
+- 并行只有在无依赖、无共享写冲突、无稀缺资源冲突且完整 T_VALID 更低时才成立。
 
-一个 Executor 页面只能接受一个被明确分配的自然执行节点。
+CEO 具体何时换页、最多连续承接多少 Freeze，由执行大脑和新页面运行模板定义；本引擎只要求“页面健康优先、上下文保持最小充分”。
 
-节点定义：
+## 6. 节点内核心方法
 
-一个主要目标
-+ 高度相关依赖
-+ 明确边界
-+ DONE_WHEN
-+ 可独立验收和 Freeze
+一个自然执行节点内部始终遵循：
 
-节点内允许很多轮：
+```text
 成熟 BASELINE
-→ NET_GAIN
-→ 当前最大净收益点
+→ 现实 NET_GAIN
+→ 最大净收益点
 → ≤3成熟候选
 → 虚拟替换
-→ 刷新完整节点方案
+→ 刷新整体
 → 重算
 → 自动继续
 → STOP_GATE
-
-禁止完成一个微优化就退出。
-
-## 6. Executor 生命周期
-
-节点最终无论：
-
-PASS
-FAIL
-UNKNOWN
-BLOCKED
-
-都必须：
-
-NODE_FREEZE
-→ 持久化结果/证据/Reality Delta
-→ 回报 CEO
-→ CEO 接受结果
-→ Executor 页面立即关闭
-
-同一 Executor 页面不得被重新利用去执行第二个自然节点。
-
-同时运行多个 Executor 时：
-完成一个、接受一个、关闭一个。
-
-## 7. 并行
-
-先判断：
-
-DEPENDENCY
-SHARED_WRITE
-SCARCE_RESOURCE_CONFLICT
-
-任一为 YES：
-SERIAL。
-
-全部为 NO：
-只有预计并行降低完整 T_VALID 才 PARALLEL。
+```
 
 禁止：
-- 为多智能体而多智能体；
-- 预热空 Executor；
-- 无限开页面；
-- 第二套 persistent browser；
-- 多个全局 writer。
 
-## 8. CEO 不执行重历史
+- 找到一个优化点就停止；
+- 找到一个优化点就 Reality；
+- 为了局部更快牺牲完整 VALID；
+- 为了“架构完整”强行增加页面、Agent、工具或新实现。
 
-CEO 只维护：
-- TASK_CONTRACT_VERSION
-- FREEZE_VERSION
-- 已冻结事实
-- 未完成节点
-- 依赖
-- Executor 分配
-- Merge
-- Reality Gate
-- T*
-- NEXT_CONTROL_DECISION
-- NEXT_PAGE_PROMPT
+## 7. 版本边界
 
-搜索日志、代码日志、几十轮虚拟尝试属于 Executor/证据文件。
+### 本引擎升级
 
-## 9. CEO 换页：防卡顿优先
+只有当整套方法的总纲发生实质变化时才升级，例如：
 
-每次 CEO 接受 Freeze 后执行 CEO_PAGE_ROTATION_GATE。
+- 端到端主流程改变；
+- CEO / Executor 根本职责改变；
+- 虚拟成熟与 Reality 的关系改变；
+- 任务定义、冻结状态、页面连续性的层级关系改变；
+- 唯一优化目标或 VALID 原则改变。
 
-立即换页条件优先级最高：
+### 下游独立升级
 
-### PAGE_HEALTH_RISK
-页面明显变重、响应变慢、卡顿、发生断连/恢复、上下文膨胀，或下一阶段本身很重。
+以下变化若不改变本引擎总纲，不要求升级本引擎：
 
-### REPLAN_REQUIRED
-下一步需要真正重新规划：
-- 合同改变；
-- Reality Delta 改路线；
-- 架构/执行器选择改变；
-- 依赖图实质变化；
-- 阶段语义明显切换。
+- 执行大脑内部判断规则优化；
+- 当前任务目标/正反约束版本变化；
+- 当前任务冻结状态版本变化；
+- NEXT_PAGE_PROMPT 显示格式优化；
+- 页面模板字段或母模板改进；
+- 某个 Executor 的实现或工具替换。
 
-如果两者都否，且下一节点小、紧耦合、继续当前页明显减少重理解成本：
-允许继续当前 CEO。
+原则：
 
-但：
+> 下游版本可以变；总纲没变，本引擎版本不动。
 
-MAX_CONSECUTIVE_FREEZES_PER_CEO=3
+如果下游变化与本引擎冲突：
+要么回退下游变化；
+要么先明确升级本引擎，再让下游按新总纲演进。
 
-同一 CEO 页最多接受 3 个 Freeze。
-第三个 Freeze 后必须换 True New Chat。
-这是防卡顿硬兜底，不要求做满3个。
+## 8. 单一权威与最小重复
 
-## 10. CEO 唯一活动页
+本引擎只定义：
+- 总目标；
+- 总顺序；
+- 模块职责；
+- 跨模块硬原则。
 
-ACTIVE_CEO_COUNT=1
+具体执行细节只放在对应下游文件中。
 
-换 CEO：
+禁止同一规则在多个文件重复维护。
 
-旧 CEO Persist/Freeze
-→ True New Chat 接管
-→ 接管确认
-→ 旧 CEO 立即关闭
+权威来源：
 
-禁止 Branch。
-禁止两个 CEO 长时间并存写状态。
+```text
+REPO=cuiqinggang/codex-private-skills
+PATH=skills/artificial-single-page-extreme-time-engine/
+```
 
-## 11. Freeze 与版本
+## 9. 不可违反的总纲硬规则
 
-### METHOD_VERSION
-本方法结构改变才自然整数 +1。
+- 先锁定任务目标与 FINAL_VALID，再执行；
+- 任务不得静默漂移；
+- 节点内必须连续虚拟成熟到合法停止门；
+- Reality 只验证冻结方案；
+- 一个 Executor 页面只承担一个完整自然执行节点；
+- CEO 是唯一全局状态写者；
+- 先 Freeze / Persist，再 Close；
+- 新页面继承结论，不继承完整噪声历史；
+- 只使用最少必要页面和执行器；
+- 成熟方案优先，不自研优先；
+- 同等 VALID 下只比较完整 T_VALID。
 
-### CONTRACT_VERSION
-目标/FINAL_VALID/正反约束改变才自然整数 +1。
+## 10. 一句话总纲
 
-### FREEZE_VERSION
-正式《当前任务冻结状态》从第1版开始；CEO 每接受一个真正改变任务状态的冻结结果，自然整数 +1。
-
-并行 Executor 自己只生成不可变 NODE_FREEZE_ID；
-CEO 是唯一全局版本写者，并生成新的《当前任务冻结状态 第N版》。
-
-失败同样是状态变化，因此 FAIL Freeze 也进入新 FREEZE_VERSION。
-
-## 12. Reality
-
-Reality 只验证冻结方案。
-
-Freeze
-→ Reality once
-→ PASS / FAIL / UNKNOWN
-
-Reality 中禁止改候选。
-
-FAIL/Delta：
-已通过事实冻结
-→ 真实差异进入新虚拟节点
-→ 再完整成熟
-→ 新 Freeze
-→ 再整体验证
-
-## 13. Persist First → Close Second
-
-所有页面统一：
-
-先 Freeze / Persist
-再 Close
-
-页面不是资产。
-冻结状态才是资产。
-
-## 14. 页面健康与节点大小
-
-“语义边界”是决策点，不等于每次必须换页。
-
-小、紧耦合节点可以继续同一 CEO；
-大、重、需要重规划的节点立即换。
-
-Executor 仍严格一页一节点，不适用 CEO 的3-Freeze复用规则。
-
-## 15. 硬规则
-
-禁止任务静默漂移。
-禁止任务合同与冻结状态合并成一个文件。
-禁止 Executor 一页多节点。
-禁止 Executor 完成后遗留不关。
-禁止 CEO 承载重执行历史。
-禁止固定字数/轮数成为主换页条件。
-禁止 Reality 逐点试错。
-禁止页面关闭先于 Freeze。
-禁止新 CEO 重放旧聊天。
-
-一句话：
-
-**初次任务先锁合同；执行时一页一 Executor 节点；CEO 是唯一状态控制面，可承接少量紧耦合 Freeze，但页面健康优先且最多3个 Freeze 后强制换页。**
+**本引擎规定“整个任务从接单到 FINAL_VALID 应该怎样运行”；执行大脑负责具体判断，任务目标与正反约束负责防漂移，冻结状态负责不断线，新页面模板负责保持页面干净，Executor 负责一个节点内连续成熟到底。**
