@@ -1,7 +1,7 @@
-# 《当前任务目标与正反约束｜任务合同规范 第2版》
+# 《当前任务目标与正反约束｜任务合同规范 第3版》
 
-规范版本：第2版
-升级来源：第1版
+规范版本：第3版
+升级来源：第2版
 状态：CURRENT
 当前活动任务：NONE
 
@@ -18,7 +18,7 @@
 - 用户现实操作路径；
 - 范围和硬边界。
 
-它不记录“现在做到哪里”；执行进度由 CURRENT_TASK_FREEZE 管理。
+它不记录“现在做到哪里”；执行进度由具体的《当前任务冻结状态 第N版》管理。
 
 ## 2. 初次接到现实任务的固定生成流程
 
@@ -83,7 +83,10 @@ EVIDENCE_REQUIRED
 
 CONTRACT_VERSION=1
 CONTRACT_STATUS=FROZEN
-FREEZE_VERSION=0
+
+随后立即生成：
+《当前任务冻结状态 第1版》
+FREEZE_VERSION=1
 
 然后才进入执行。
 
@@ -127,14 +130,13 @@ DONE_WHEN:
 EVIDENCE_REQUIRED:
   - <必要证据>
 
-CURRENT_FREEZE_VERSION: 0
 ```
 
 ## 4. 后续执行不得重写合同
 
 后续 CEO：
 读当前 CONTRACT_VERSION
-→ 读最新 FREEZE_VERSION
+→ 读取 NEXT_PAGE_PROMPT 指向的最新《当前任务冻结状态 第N版》
 → 继续执行。
 
 以下不改变 CONTRACT_VERSION：
@@ -189,7 +191,7 @@ USER_PATH_GATE=PASS（用户型任务）
 TASK_CONTRACT：
 应该做什么，什么叫完成。
 
-CURRENT_TASK_FREEZE：
+《当前任务冻结状态 第N版》：
 现在做到哪里，哪些事实已经不可重复，下一步从哪里恢复。
 
 两者必须同时存在，不能互相替代。
