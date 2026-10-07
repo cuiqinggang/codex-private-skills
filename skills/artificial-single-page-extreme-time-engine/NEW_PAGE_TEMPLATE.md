@@ -1,7 +1,7 @@
-# 《新页面运行模板 第12版》
+# 《新页面运行模板 第13版》
 
-版本：第12版
-升级来源：第11版
+版本：第13版
+升级来源：第12版
 状态：CURRENT
 唯一标准：T*=min(T_VALID)
 
@@ -11,7 +11,7 @@ NEXT_PAGE_PROMPT 只显式要求四层，按顺序读取：
 
 1. BRAIN.md
 2. CURRENT_TASK_CONSTRAINTS.md / 当前 TASK_CONTRACT
-3. CURRENT_TASK_FREEZE.md / 最新 Freeze
+3. FREEZE_PATH 指向的《当前任务冻结状态 第N版》
 4. NEW_PAGE_TEMPLATE.md
 
 BRAIN.md 是唯一方法入口；ENGINE.md 由 BRAIN 按当前节点需要调用，不在 handoff 重复列规则。
@@ -19,7 +19,7 @@ BRAIN.md 是唯一方法入口；ENGINE.md 由 BRAIN 按当前节点需要调用
 若是全新现实任务：
 先按 BRAIN 执行 INITIAL_TASK_INTAKE，
 生成 CONTRACT_VERSION=1；
-建立 FREEZE_VERSION=0。
+随后生成《当前任务冻结状态 第1版》。
 
 ## 2. 页面角色
 
@@ -136,7 +136,7 @@ FAIL 也是状态变化，也必须进入新的 FREEZE_VERSION。
 
 NEXT_PAGE_PROMPT 的职责只有：
 
-> 告诉新页“从哪里读、当前在哪里、下一步做什么”。
+> 告诉新页“从哪里读、当前读哪一版冻结状态、下一步做什么”。
 
 不得复制技能包正文。
 
@@ -144,10 +144,16 @@ NEXT_PAGE_PROMPT 的职责只有：
 
 NEXT_PAGE_PROMPT_V<FREEZE_VERSION>
 
-第一条非空行使用最小机器标签：
+第一行只保留短冻结标签：
 
 ```text
-CEO_STATE_TAG={"schema":"CEO_STATE_V2","task_id":"<task>","freeze_version":<n>,"state_code":<10|20|30|40|100>,"next_node":"<node|STOP>"}
+FREEZE_TAG=<TASK_SHORT>-F<NNN>
+```
+
+例如：
+
+```text
+FREEZE_TAG=DPC-F004
 ```
 
 随后只保留：
@@ -161,6 +167,7 @@ CEO_STATE_TAG={"schema":"CEO_STATE_V2","task_id":"<task>","freeze_version":<n>,"
 目标：约 10–12 行。
 
 禁止在 NEXT_PAGE_PROMPT 重复：
+- 冻结规范；
 - 版本升级规则；
 - Executor 生命周期；
 - CEO 换页门；
@@ -168,10 +175,10 @@ CEO_STATE_TAG={"schema":"CEO_STATE_V2","task_id":"<task>","freeze_version":<n>,"
 - 正反约束正文；
 - DONE_WHEN 全文；
 - 已冻结事实长列表；
-- 完整 JSON Freeze；
+- JSON 状态对象；
 - 旧聊天历史。
 
-这些内容全部从四层权威文件读取。
+冻结规则由 BRAIN 唯一定义；实际当前状态由 FREEZE_PATH 指向的《当前任务冻结状态 第N版》提供。
 
 ## 9. 页面结束门禁
 
@@ -180,7 +187,7 @@ CEO_STATE_TAG={"schema":"CEO_STATE_V2","task_id":"<task>","freeze_version":<n>,"
 1. Freeze 已持久化；
 2. 全局 FREEZE_VERSION 已更新；
 3. NEXT_PAGE_PROMPT 已生成；
-4. JSON 与 Freeze 一致；
+4. FREEZE_TAG 与 FREEZE_PATH 指向同一冻结版本；
 5. 最终回复原样完整输出唯一 NEXT_PAGE_PROMPT；
 
 当前 CEO 才允许结束。
@@ -192,14 +199,14 @@ CEO_PAGE_COMPLETE=NO 时不得自动换页。
 ### 初次页
 BRAIN
 → TASK_CONTRACT
-→ FREEZE v0
+→ 《当前任务冻结状态 第1版》
 → NEW_PAGE_TEMPLATE
 → 执行
 
 ### 接续页
 BRAIN
 → TASK_CONTRACT
-→ CURRENT_TASK_FREEZE
+→ FREEZE_PATH 指向的《当前任务冻结状态 第N版》
 → NEW_PAGE_TEMPLATE
 → 从 NEXT_CONTROL_DECISION 继续
 
