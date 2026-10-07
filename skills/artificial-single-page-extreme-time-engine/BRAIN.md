@@ -1,7 +1,7 @@
-# 《极限短时间执行大脑 第16版》
+# 《极限短时间执行大脑 第17版》
 
-版本：第16版
-升级来源：第15版
+版本：第17版
+升级来源：第16版
 状态：CURRENT
 唯一标准：T*=min(T_VALID)
 
@@ -13,7 +13,7 @@ NEXT_PAGE_PROMPT 只需显式要求读取四层：
 
 1. BRAIN.md —— 决策大脑
 2. CURRENT_TASK_CONSTRAINTS.md / 当前 TASK_CONTRACT —— 任务定义
-3. CURRENT_TASK_FREEZE.md / 最新 Freeze —— 当前状态
+3. FREEZE_PATH 指向的《当前任务冻结状态 第N版》—— 当前真实状态
 4. NEW_PAGE_TEMPLATE.md —— 页面运行
 
 ENGINE.md 属于 BRAIN 的内部执行体，由 BRAIN 按当前节点需要调用；不得要求 NEXT_PAGE_PROMPT 再重复解释 ENGINE 规则。
@@ -42,7 +42,8 @@ ENGINE.md 属于 BRAIN 的内部执行体，由 BRAIN 按当前节点需要调�
 → 定义 EVIDENCE_REQUIRED
 → 反向检查“有没有形式完成但真实失败的漏洞”
 → 冻结 CONTRACT_VERSION=1
-→ 建立 FREEZE_VERSION=0
+→ 生成《当前任务冻结状态 第1版》
+→ FREEZE_VERSION=1
 → 进入 PAGE_TOPOLOGY_GATE
 
 不得先实现，再倒推什么叫完成。
@@ -103,7 +104,70 @@ FREEZE_VERSION=N → N+1
 
 并行 Executor 不直接争抢全局版本号；CEO 按接受顺序 Merge，避免 split-brain。
 
-## 7. CEO_PAGE_ROTATION_GATE
+## 7. 冻结状态规则（唯一权威）
+
+冻结规则只定义在 BRAIN，不再单独维护“冻结状态规范文件”。
+
+### 7.1 正式冻结版本
+
+每个现实任务第一次任务合同冻结完成后，立即产生：
+
+```text
+《当前任务冻结状态 第1版》
+FREEZE_VERSION=1
+```
+
+以后每次 CEO 正式接受一个新的状态事实：
+
+```text
+第1版 → 第2版 → 第3版 → 第4版 ...
+```
+
+只用自然整数。
+
+PASS / FAIL / UNKNOWN / BLOCKED 都是新的现实状态，均可产生下一版。
+
+### 7.2 实际冻结文件
+
+每一版必须是独立不可变文件，推荐：
+
+```text
+<TASK_PATH>/freezes/CURRENT_TASK_FREEZE_V<N>.md
+```
+
+NEXT_PAGE_PROMPT 必须直接给出最新的 `FREEZE_PATH`，新 CEO 读取具体版本，不读取“冻结规范”。
+
+### 7.3 短冻结标签
+
+每个具体冻结版本内写一个短标签：
+
+```text
+FREEZE_TAG=<TASK_SHORT>-F<NNN>
+```
+
+例如：
+
+```text
+FREEZE_TAG=DPC-F004
+```
+
+含义：
+- `DPC`：任务短码；
+- `F004`：该任务第4个正式冻结状态。
+
+标签只负责定位版本，不承载规则、证据或完整状态。
+完整状态只存在该 FREEZE 文件。
+
+禁止再使用长 JSON 作为常规 NEXT_PAGE_PROMPT 标签。
+
+### 7.4 CEO 是唯一全局版本写者
+
+Executor 只产出不可变 NODE_FREEZE。
+CEO 接受后才生成新的《当前任务冻结状态 第N版》。
+
+并行 Executor 不直接抢 FREEZE_VERSION；CEO 按接受顺序 Merge，避免版本冲突。
+
+## 8. CEO_PAGE_ROTATION_GATE
 
 目标优先级：
 1. 防页面变重/卡顿/失效；
@@ -146,7 +210,7 @@ SAME_CEO_FREEZE_COUNT=3
 这是防卡顿兜底，不是“必须做满3个”。
 任何一个节点很重或触发 A/B，都提前换。
 
-## 8. CEO 唯一页规则
+## 9. CEO 唯一页规则
 
 逻辑上始终只有一个 ACTIVE_CEO。
 
@@ -159,7 +223,7 @@ SAME_CEO_FREEZE_COUNT=3
 禁止两个 CEO 同时长期写状态。
 禁止 Branch 代替 True New Chat。
 
-## 9. Executor 并行门
+## 10. Executor 并行门
 
 DEPENDENCY / SHARED_WRITE / SCARCE_RESOURCE_CONFLICT ?
 
@@ -171,7 +235,7 @@ NO → 只有并行能降低完整 T_VALID 才 PARALLEL
 禁止第二套 persistent browser。
 禁止多个 writer owner。
 
-## 10. 节点大小
+## 11. 节点大小
 
 自然执行节点必须是“最小完整可独立验收闭环”：
 
@@ -191,7 +255,7 @@ NO → 只有并行能降低完整 T_VALID 才 PARALLEL
 能独立验收且拆开更快才拆；
 强依赖、共享写、必须共同验证则合并。
 
-## 11. Reality
+## 12. Reality
 
 先虚拟成熟到底，再 Reality once。
 
@@ -204,7 +268,7 @@ FAIL/Delta：
 → 新 Freeze
 → 再整体 Reality
 
-## 12. 三类版本
+## 13. 三类版本
 
 METHOD_VERSION：
 方法系统变化才升级，自然整数。
@@ -213,7 +277,7 @@ CONTRACT_VERSION：
 任务目标/FINAL_VALID/正反约束变化才升级，自然整数。
 
 FREEZE_VERSION：
-任务状态每次正式改变即升级，自然整数。
+正式《当前任务冻结状态》每次改变即升级，自然整数；第一版从1开始。
 
 三者不得混用，不用小数。
 
