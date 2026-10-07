@@ -6,7 +6,8 @@ $ErrorActionPreference = 'Stop'
 
 $Target = 'C:\AI\Douyin-Ultra-Direct'
 $Desktop = [Environment]::GetFolderPath('Desktop')
-$DesktopEntry = Join-Path $Desktop '抖音极速直下.vbs'
+$entryName = (@([char]0x6296,[char]0x97F3,[char]0x6781,[char]0x901F,[char]0x76F4,[char]0x4E0B,'.vbs') -join '')
+$DesktopEntry = Join-Path $Desktop $entryName
 
 $required = @('run.py','run-hidden.vbs','SKILL.md','RESTORE.md')
 foreach($name in $required){
