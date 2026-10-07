@@ -1,214 +1,212 @@
-# 《极限短时间执行大脑 第14版》
+# 《极限短时间执行大脑 第15版》
 
-版本：第14版  
-升级来源：第13版  
-状态：CURRENT  
+版本：第15版
+升级来源：第14版
+状态：CURRENT
 唯一标准：T*=min(T_VALID)
 
-## 1. 第14版只做 8 个决策
+## 1. 固定读取顺序
 
-1. TASK_CONTRACT_GATE：先冻结最终目标、正反约束、FINAL_VALID、证据与用户路径。  
-2. PAGE_TOPOLOGY_GATE：判断 SIMPLE_SINGLE_PAGE 或 CEO_EXECUTOR。  
-3. 选 1 个成熟 BASELINE。  
-4. 在当前真实 N_REALISTIC 下持续计算 NET_GAIN。  
-5. Executor 内运行完整 VIRTUAL_LOOP，直到 STOP_GATE。  
-6. CEO 按依赖决定 SERIAL / PARALLEL，并只派最少必要节点。  
-7. Freeze → Merge → Reality；Reality Delta 回虚拟成熟。  
-8. CEO 到自然控制边界时 Freeze → 唯一 NEXT_PAGE_PROMPT → True New Chat。
+新 CEO 页先装“脑子”，再读任务，再读状态，再读执行体，最后读页面规则：
 
-## 2. TASK_CONTRACT_GATE
+1. BRAIN.md —— 决策大脑：怎么判断
+2. CURRENT_TASK_CONSTRAINTS.md / 当前任务 TASK_CONTRACT —— 要什么、什么不能变
+3. CURRENT_TASK_FREEZE.md / 最新任务冻结版本 —— 现在做到哪
+4. ENGINE.md —— 当前节点具体怎么执行
+5. NEW_PAGE_TEMPLATE.md —— 当前页面怎么运行、冻结、换页
 
-新任务不允许直接进入实现。
+这与旧第3/4版模板的成熟顺序一致。
+逻辑上是四层：方法脑 / 任务定义 / 冻结状态 / 页面运行；ENGINE 是“方法脑”的执行体。
 
-先形成当前任务合同：
+## 2. 初次接到任务：INITIAL_TASK_INTAKE
 
-FINAL_REALITY_GOAL  
-+ POSITIVE_PROMPT  
-+ NEGATIVE_PROMPT  
-+ FINAL_VALID_STANDARD / DONE_WHEN  
-+ EVIDENCE_REQUIRED  
-+ IN_SCOPE / OUT_OF_SCOPE / HARD_BOUNDARIES  
-+ USER_PATH
+只有新现实任务、没有现成 FROZEN TASK_CONTRACT 时执行一次。
 
-合同规则：
-- 每个任务从 CONTRACT_VERSION=1 开始；
-- 只在目标、VALID、正向要求或反向要求确实改变时升级为 2、3、4……；
-- 页面换页、路线变化、失败修复、节点完成不等于合同升级；
-- Reality 证明合同本身定义错误时，必须显式生成新合同版本，禁止静默漂移。
+用户原始任务
+→ 写一句 FINAL_REALITY_GOAL（只写最终结果，不先写实现）
+→ 写 POSITIVE_PROMPT（必须有、必须保留）
+→ 写 NEGATIVE_PROMPT（绝不能有、出现即失败/漂移）
+→ 明确 IN_SCOPE / OUT_OF_SCOPE / HARD_BOUNDARIES
+→ 定义 USER_PATH（用户最简现实操作）
+→ 定义 FINAL_VALID_STANDARD / DONE_WHEN
+→ 定义 EVIDENCE_REQUIRED
+→ 反向检查“有没有形式完成但真实失败的漏洞”
+→ 冻结 CONTRACT_VERSION=1
+→ 建立 FREEZE_VERSION=0
+→ 进入 PAGE_TOPOLOGY_GATE
 
-## 3. PAGE_TOPOLOGY_GATE
+不得先实现，再倒推什么叫完成。
 
-只允许两种结果。
+## 3. 后续接续：RESUME_TASK
 
-### SIMPLE_SINGLE_PAGE
-一个页面可稳定闭环：
-CEO=Executor。
+已有任务时不重新定义目标：
 
-### CEO_EXECUTOR
-任务存在多阶段、长流程、Reality、等待、并行、恢复或单页过重：
-CEO=控制面；
-Executor=执行面。
+读 CONTRACT_VERSION
+→ 读最新 FREEZE_VERSION
+→ 校验已冻结事实和证据
+→ 只刷新当前 NEXT_CONTROL_DECISION
+→ 进入 PAGE_TOPOLOGY_GATE
 
-选择标准不是架构偏好，而是哪个完整 T_VALID 更低。
+除非目标/FINAL_VALID/正反约束本身改变，否则 CONTRACT_VERSION 不变。
 
-## 4. CEO 控制面
+## 4. PAGE_TOPOLOGY_GATE
 
-CEO 只做：
-- 读任务合同；
-- 读当前 Freeze；
-- 刷新当前项目状态；
-- 划分最小完整可验收节点；
-- 判断依赖；
-- 派发 Executor；
-- 接收冻结结果；
-- Merge；
-- Reality Gate；
-- 更新 T*；
-- 决定下一控制节点；
-- 生成 NEXT_PAGE_PROMPT。
+A. SIMPLE_SINGLE_PAGE：
+简单任务，一个 CEO 页可以稳定闭环，CEO=Executor。
 
-CEO 不保留大段执行过程。
+B. CEO_EXECUTOR：
+多阶段、长流程、Reality、等待、并行、恢复或重执行任务。
+一个活动 CEO 控制面 + 最少必要 Executor 页面。
 
-## 5. Executor 执行面
+## 5. Executor 固定生命周期
 
-一个 Executor 页面只承担一个完整自然执行节点。
+一个 Executor 页面只接受一个完整自然执行节点。
 
-节点内必须自动持续：
+内部：
+BASELINE
+→ VIRTUAL_LOOP
+→ STOP_GATE
+→ NODE_FREEZE
 
-最大净收益点
-→ ≤3 成熟候选
-→ 选 1 个
-→ 虚拟替换
-→ 刷新完整节点方案
-→ 重算 NET_GAIN
-→ 下一轮
+结果无论：
+PASS / FAIL / UNKNOWN / BLOCKED
 
-合法出口：
-- STOP_GATE；
-- AUTH_GATE；
-- EXTERNAL_BLOCK。
+都必须：
+持久化证据
+→ 回报 CEO
+→ CEO 接受
+→ 页面立即关闭
 
-“完成一个优化点”不是出口。
+禁止完成后把同一个 Executor 页改派第二个节点。
+并行任务完成一个关一个。
 
-## 6. 串行 / 并行门
+## 6. CEO 是唯一全局状态写者
 
-先问：
+Executor 只产出不可变 NODE_FREEZE。
+CEO 接受后才修改全局任务状态。
+
+每接受一个真正改变项目状态的冻结结果：
+
+FREEZE_VERSION=N → N+1
+
+包括 FAIL，因为失败也是新的现实事实。
+
+并行 Executor 不直接争抢全局版本号；CEO 按接受顺序 Merge，避免 split-brain。
+
+## 7. CEO_PAGE_ROTATION_GATE
+
+目标优先级：
+1. 防页面变重/卡顿/失效；
+2. 保持控制状态清晰；
+3. 避免不必要换页成本。
+
+每次 CEO 接受一个 Freeze 后判断：
+
+### Gate A：PAGE_HEALTH_RISK
+出现任一项，立即换新 CEO：
+- 页面/回复明显变慢或卡顿；
+- 上下文已明显变重；
+- 本页发生过断连/卡死/恢复；
+- 下一阶段明显大、复杂、高思考；
+- 当前页已承载大量 Merge/重规划信息。
+
+### Gate B：REPLAN_REQUIRED
+即使页面还轻，只要下一步需要真正重新判断/重新规划，也换新 CEO：
+- CONTRACT 修订；
+- Reality Delta 改变后续路线；
+- 架构/执行器路线需要重新选择；
+- 依赖图发生实质变化；
+- 当前阶段结束，下一阶段语义明显不同。
+
+### Gate C：SMALL_TIGHTLY_COUPLED_CONTINUE
+若 A/B 都否，且下一节点小、紧耦合、复用当前上下文明显更省：
+允许继续当前 CEO。
+
+历史 LTMVH v0.7 R1 已证明：小而紧耦合的下一节点，继续当前页可明显快于立即 True New Chat。
+
+### Gate D：HARD_CLEAN_CAP
+同一 CEO 页面最多接受 3 个连续 FREEZE_VERSION。
+
+SAME_CEO_FREEZE_COUNT=3
+→ 当前页必须在第三个 Freeze 后结束
+→ 生成 NEXT_PAGE_PROMPT
+→ True New Chat
+→ 新 CEO 计数归零
+
+这是防卡顿兜底，不是“必须做满3个”。
+任何一个节点很重或触发 A/B，都提前换。
+
+## 8. CEO 唯一页规则
+
+逻辑上始终只有一个 ACTIVE_CEO。
+
+换页时：
+旧 CEO 先 Freeze/Persist
+→ 打开 True New Chat 接管
+→ 接管成功
+→ 旧 CEO 关闭
+
+禁止两个 CEO 同时长期写状态。
+禁止 Branch 代替 True New Chat。
+
+## 9. Executor 并行门
 
 DEPENDENCY / SHARED_WRITE / SCARCE_RESOURCE_CONFLICT ?
 
-YES → SERIAL。
+YES → SERIAL
+NO → 只有并行能降低完整 T_VALID 才 PARALLEL
 
-NO → 比较完整 T_VALID：
-PARALLEL 更低才并行，否则串行。
+只开最少必要页面。
+禁止预热空 Executor。
+禁止第二套 persistent browser。
+禁止多个 writer owner。
 
-默认只创建最少必要 Executor。
-历史候选上限 3 只保留为受控并发经验，不是固定页面数。
+## 10. 节点大小
 
-## 7. Reality 门
+自然执行节点必须是“最小完整可独立验收闭环”：
 
-必须：
+一个主要目标
++ 高度相关依赖
++ 明确边界
++ DONE_WHEN
++ 可独立冻结结果
 
-VIRTUAL_OPTIMIZATION_STOP=YES
-→ Freeze
-→ Reality once
+过细：
+调度/保存/换页成本过大。
 
-Reality 中禁止修改 Freeze。
-
-FAIL / Delta：
-- 已通过事实保留；
-- 真实差异单独形成 DELTA；
-- 新虚拟节点重新成熟；
-- 再 Freeze；
-- 再整体 Reality。
-
-测试器只观察，不成为任务本身。
-
-## 8. 三种 Freeze
-
-### NODE_FREEZE
-Executor 自然执行节点完成。
-
-保存：
-RESULT / EVIDENCE / DELTA / NEXT_INPUT。
-
-### CEO_FREEZE
-CEO 当前控制节点完成。
-
-保存：
-TASK_CONTRACT_VERSION / FREEZE_VERSION / 已完成节点 / 未完成节点 / 依赖 / 当前T* / 下一节点 / 证据定位。
-
-### VERSION_FREEZE
-方法、默认合同或架构发生系统性变化。
-
-普通节点完成不自动触发方法版本升级。
-
-## 9. CEO 跨页状态
-
-每次 CEO 自然控制边界：
-
-CEO_FREEZE
-→ FREEZE_VERSION +1
-→ 生成 CEO_FREEZE_TAG_JSON
-→ 生成唯一 NEXT_PAGE_PROMPT
-→ 最终回复完整原样输出
-→ True New Chat
-→ 新 CEO 只读最小状态接管
+过粗：
+上下文噪声/串行时间/失败半径过大。
 
 原则：
-CONCLUSION_SURVIVES_HISTORY_DOES_NOT。
+能独立验收且拆开更快才拆；
+强依赖、共享写、必须共同验证则合并。
 
-## 10. 机器状态标签
+## 11. Reality
 
-每个 CEO Freeze / 换页 / STOP 必须产生：
+先虚拟成熟到底，再 Reality once。
 
-CEO_FREEZE_TAG_JSON
+Reality 中禁止改 Freeze。
 
-字段至少：
-schema / freeze_id / page_id / task_id / node_id / sequence / state_code / freeze_status / final_valid / t_valid_ms / t_star_ms / source_repo / source_ref / freeze_path / next_node。
+FAIL/Delta：
+保留已通过事实
+→ 冻结现实差异
+→ 新虚拟节点重新成熟
+→ 新 Freeze
+→ 再整体 Reality
 
-state_code 只允许：
-10 / 20 / 30 / 40 / 100。
+## 12. 三类版本
 
-机器标签必须同时存在于 Freeze 与 NEXT_PAGE_PROMPT，逐字段一致。
-失败则 CEO_PAGE_COMPLETE=NO。
+METHOD_VERSION：
+方法系统变化才升级，自然整数。
 
-## 11. USER_PATH_GATE
+CONTRACT_VERSION：
+任务目标/FINAL_VALID/正反约束变化才升级，自然整数。
 
-用户型任务必须冻结最简现实操作。
+FREEZE_VERSION：
+任务状态每次正式改变即升级，自然整数。
 
-优先：
-一次复制；
-一次双击/一句话调用；
-自动执行；
-自动输出。
-
-机器端 T_VALID 不混入人工手速，但 USER_PATH_GATE=FAIL 的方案不得成为正式冠军。
-
-## 12. 页面工作量原则
-
-不恢复固定 40,000 字、10轮、3轮等旧主阈值。
-
-主规则：
-- 一个 Executor 页=一个完整自然执行节点；
-- 一个 CEO 页=一个完整自然控制节点；
-- 当前控制节点允许派发为到达下一决策边界所必需的最小节点集；
-- 复杂/强依赖时偏向一个节点；
-- 多个真正独立且并行更快时可形成一个小批次；
-- 固定字数/轮数只做异常 fallback。
-
-## 13. 硬规则
-
-禁止任务目标静默漂移。  
-禁止把 CONTRACT_VERSION 与 FREEZE_VERSION 混用。  
-禁止 CEO 承载 Executor 重历史。  
-禁止 Executor 混跑多个自然节点。  
-禁止页面先关后 Freeze。  
-禁止中途逐点 Reality。  
-禁止 VIRTUAL_LOOP 未成熟就停。  
-禁止为了并行而并行。  
-禁止 Branch 代替 True New Chat。  
-禁止新 CEO 重放旧页面全部聊天。
+三者不得混用，不用小数。
 
 一句话：
 
-**任务合同保证“不漂移”；CEO Freeze 保证“状态不断”；Executor VIRTUAL_LOOP 保证“节点内部成熟到底”。**
+**先装大脑，再锁任务，再读冻结状态，再执行；Executor 一页一节点，完成即冻结关闭；CEO 可连续承接少量紧耦合状态，但防卡顿优先，最多3个 Freeze 后强制换新 CEO。**
