@@ -1,7 +1,7 @@
-# 《极限短时间执行大脑 第18版》
+# 《极限短时间执行大脑 第19版》
 
-版本：第18版
-升级来源：第17版
+版本：第19版
+升级来源：第18版
 状态：CURRENT
 唯一标准：T*=min(T_VALID)
 
@@ -117,10 +117,17 @@ PASS / FAIL / UNKNOWN / BLOCKED
 禁止完成后把同一个 Executor 页改派第二个节点。
 并行任务完成一个关一个。
 
-## 6. CEO 是唯一全局状态写者
+## 6. CEO 是当前 TASK_ID 唯一任务状态写者
 
 Executor 只产出不可变 NODE_FREEZE。
-CEO 接受后才修改全局任务状态。
+CEO 接受后才修改当前 TASK_ID 的任务状态。
+
+作用域硬规则：
+- 每个独立现实任务都必须有唯一 TASK_ID；
+- ACTIVE_CEO、CONTRACT_VERSION、FREEZE_VERSION、SAME_CEO_FREEZE_COUNT、TASK_PATH、STATE_REF 默认全部属于当前 TASK_ID 命名空间；
+- “CEO 唯一 writer”只表示：同一 TASK_ID 的任务状态只能由该 TASK 的 ACTIVE_CEO 写入；
+- 不表示整套系统同时只能运行一个 CEO；
+- 两个不同 TASK_ID 可以各自拥有一个 ACTIVE_CEO，并行推进各自不冲突的节点。
 
 每接受一个真正改变项目状态的冻结结果：
 
@@ -128,7 +135,62 @@ FREEZE_VERSION=N → N+1
 
 包括 FAIL，因为失败也是新的现实事实。
 
-并行 Executor 不直接争抢全局版本号；CEO 按接受顺序 Merge，避免 split-brain。
+并行 Executor 不直接争抢当前 TASK_ID 的 FREEZE_VERSION；该 TASK 的 CEO 按接受顺序 Merge，避免 split-brain。
+
+### 6.1 跨任务并行与系统共享资源仲裁
+
+当两个或更多独立 TASK_ID 同时运行时，先保持任务状态完全隔离，再只对真正冲突的共享资源做局部串行。
+
+固定规则：
+
+1. **任务状态隔离**
+   - TASK_A 的 CEO / Executor 只能写 TASK_A 的任务路径、Freeze、STATE_REF 和证据路径；
+   - TASK_B 同理；
+   - 任何跨 TASK 写入、Merge、回滚、版本递增都直接 Fail Fast。
+
+2. **ACTIVE_CEO 作用域**
+   - ONE_ACTIVE_CEO = PER_TASK_ID；
+   - 同一 TASK_ID 禁止旧 CEO / 新 CEO split-brain；
+   - 不同 TASK_ID 的 ACTIVE_CEO 可以同时存在。
+
+3. **共享资源不是任务状态**
+   - persistent browser、同一 GitHub branch writer、单实例 Windows 控制器、GPU 独占槽、同一可变文件/数据库等，属于 SYSTEM_RESOURCE；
+   - 这些资源不由某个 TASK 的“唯一 CEO writer”规则直接垄断，而由独立 SYSTEM_RESOURCE_LEASE 仲裁。
+
+4. **SYSTEM_RESOURCE_LEASE**
+   - 以稳定 RESOURCE_ID 为键；
+   - 同一时刻一个需要独占写/控制的 RESOURCE_ID 只能有一个 owner；
+   - owner 至少绑定 TASK_ID + NODE_ID + OWNER_ID；
+   - 获取与释放必须可验证，禁止口头假定“应该没人用”；
+   - 若资源支持安全并发只读/独立 namespace，可按资源能力允许共享；否则串行冲突节点。
+
+5. **只串行冲突节点**
+   - 发生 SHARED_WRITE 或 SCARCE_RESOURCE_CONFLICT 时，只等待涉及该 RESOURCE_ID 的节点；
+   - 不得因此把两个完整 TASK 全部串行化；
+   - 另一 TASK 的无冲突节点继续推进。
+
+6. **persistent browser**
+   - 已存在合法 persistent browser 时禁止因第二 TASK 再启动第二套；
+   - 可安全 attach / 独立 tab 使用时复用；
+   - 若存在全局页面切换、profile mutation、关闭窗口等破坏性动作，则必须先获得对应 browser lease；
+   - 任何页面关闭必须校验 TASK_ID / PAGE_ID / ownership，不得误关另一 TASK 页面。
+
+7. **共享 writer**
+   - 对同一 GitHub branch、同一可变文件、同一数据库记录等共享写目标，必须在具体写操作粒度获取 writer lease；
+   - 不同 TASK 的独立任务 Freeze 仍各自由各自 CEO 生成；
+   - 共享 writer lease 只保护底层共享写入，不改变各 TASK 的 FREEZE_VERSION。
+
+8. **FAIL / rollback / cleanup 作用域**
+   - 一个 TASK 的 Reality FAIL、回虚、Repair、Reverify 只回滚本 TASK 后续控制状态；
+   - 不得回滚另一 TASK 已接受事实；
+   - TASK FINAL_VALID 后只释放本 TASK 拥有的页面和 lease；
+   - 共享资源仍被另一 TASK 使用时不得销毁。
+
+9. **无仲裁即 Fail Fast**
+   - 若节点确实需要同一共享可变/稀缺资源，而当前没有可证明的 lease / CAS / 单 owner 仲裁能力，则判 CONFIRMED_METHOD_FAULT_OR_BLOCKED_RESOURCE_CONTROL；
+   - 不允许两个 writer“先一起跑再看会不会撞”。
+
+下游文件中的未限定 ACTIVE_CEO、global state writer、FREEZE_VERSION、SAME_CEO_FREEZE_COUNT 等表述，统一按本节解释为当前 TASK_ID 作用域；只有显式写成 SYSTEM_GLOBAL 的字段才是整套系统全局唯一。
 
 ## 7. 冻结状态规则（唯一权威）
 
@@ -238,7 +300,7 @@ SAME_CEO_FREEZE_COUNT=3
 
 ## 9. CEO 唯一页规则
 
-逻辑上始终只有一个 ACTIVE_CEO。
+对每个 TASK_ID，逻辑上始终只有一个 ACTIVE_CEO。
 
 换页时：
 旧 CEO 先 Freeze/Persist
@@ -246,7 +308,8 @@ SAME_CEO_FREEZE_COUNT=3
 → 接管成功
 → 旧 CEO 关闭
 
-禁止两个 CEO 同时长期写状态。
+禁止同一 TASK_ID 的两个 CEO 同时长期写状态。
+不同 TASK_ID 的 ACTIVE_CEO 可同时存在，但不得写入彼此任务状态。
 禁止 Branch 代替 True New Chat。
 
 ## 10. Executor 并行门
@@ -258,8 +321,8 @@ NO → 只有并行能降低完整 T_VALID 才 PARALLEL
 
 只开最少必要页面。
 禁止预热空 Executor。
-禁止第二套 persistent browser。
-禁止多个 writer owner。
+禁止第二套不必要 persistent browser。
+同一 TASK_ID 的任务状态禁止多个 writer owner；同一 SYSTEM_RESOURCE 的独占写/控制也禁止多个 lease owner。
 
 ## 11. 节点大小
 
@@ -309,4 +372,4 @@ FREEZE_VERSION：
 
 一句话：
 
-**先装大脑，再锁任务，再读冻结状态，再执行；Executor 一页一节点，完成即冻结关闭；CEO 可连续承接少量紧耦合状态，但防卡顿优先，最多3个 Freeze 后强制换新 CEO。**
+**先装大脑，再锁任务，再读冻结状态，再执行；每个 TASK_ID 各自只有一个 ACTIVE_CEO 与任务状态 writer；跨 TASK 只对真实共享资源用 SYSTEM_RESOURCE_LEASE 仲裁；Executor 一页一节点，完成即冻结关闭；CEO 可连续承接少量紧耦合状态，但防卡顿优先，最多3个 Freeze 后强制换新 CEO。**
