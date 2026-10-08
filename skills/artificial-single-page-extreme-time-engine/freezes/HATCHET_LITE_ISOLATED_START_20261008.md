@@ -1,4 +1,8 @@
 # Hatchet Lite 隔离启动现实证据冻结
+
+> **状态更正（2026-10-08）：本文件仅为未完成任务的阶段证据，不是 STOP_GATE 通过或最终 Freeze。用户要求继续修复鉴权阻塞；保留先前通过的基础设施事实，任务状态为 IN_PROGRESS / AUTH_BLOCKED，禁止据此结束节点或声称 FINAL_VALID。**
+
+
 日期：2026-10-08；方法 ENGINE=24 / BRAIN=21 / NPT=17
 状态：INFRA_REALITY_START_PASS / SDK_TASK_GATE_BLOCKED / FINAL_VALID=NO
 
