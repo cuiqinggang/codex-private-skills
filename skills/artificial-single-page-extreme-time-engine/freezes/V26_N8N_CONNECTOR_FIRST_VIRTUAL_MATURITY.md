@@ -7,6 +7,11 @@
 以现有F011五条真实ChatGPT验证115.67秒为现实GOOD基线，在不修改FlClash、不启动第二浏览器、不重造HTTP服务器/状态机/调度器/租约的前提下，通过成熟n8n及现有Windows合法执行入口构成五任务隔离、唯一发送、可恢复、可计量工作流。
 现有Playwright浏览器业务函数支持query、send、wait_extract，原Node工作进程已经做过5/5 PASS，但旧编排器和JSON租约不得成为新通用基线。
 
+## 新增权威入口核验（2026-10-08）
+已实际读取 C:\AI\Playwright-Native-AI-Browser\skills\playwright-native-ai-browser\SKILL.md：官方项目内正式 Playwright MCP STDIO 通道已经存在，使用现有已授权登录身份；业务入口应通过已暴露的 `browser_run_code_unsafe` 加载 `scripts/chatgpt-business-entry.js`，执行 query/send/wait_extract；共享浏览器以一个有效写入者和 fencing token 为约束。MCP客户端、Windows桥是允许的授权入口，但不能并发打开同一Profile。
+**因此此前的“缺HTTP接口→必须自建服务/换Temporal”是错误判断。接入主路径应优先证明：n8n已有标准MCP客户端节点是否能调用已授权STDIO MCP，或现有 Windows执行桥是否能以成熟插件完成该映射；对现有协议直接复用优先于引入HTTP中间层。**
+需要分别验证连接器是否可在 Docker n8n/Windows 进程边界真实调用，不能把磁盘上存在的 MCP 技能包当作已连通。所有现有浏览器进程保持不变。
+
 ## 已核实的成熟资产与准确边界
 Windows n8n-local Docker容器版本2.38.7，现成持久化卷，6个已有工作流。n8n的Reasonix工作流由Webhook、Code、HTTP Request、Code组成，通过host.docker.internal请求本机接口；可确认成熟HTTP客户端和宿主机桥接网络可用。
 C:\AI\n8n\reasonix-n8n-adapter.ps1 是专用于Reasonix的业务HTTP Listener，调用reasonix.cmd，不是可直接调用ChatGPT Playwright函数的通用服务器；不得直接复制/新建调度HTTP服务器。
