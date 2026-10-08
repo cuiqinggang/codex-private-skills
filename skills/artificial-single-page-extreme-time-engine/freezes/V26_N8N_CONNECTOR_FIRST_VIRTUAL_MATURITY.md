@@ -47,3 +47,11 @@ R12：全方案重放：无虚构API端点、不依赖未经验证的页面重�
 设计迭代已覆盖正常5任务、失败重传、发后断线、重启、跨任务干扰、页关闭、持久化、时间边界。
 但「可由n8n调用的已授权ChatGPT浏览器业务连接器」和「成熟共享浏览器排他与重启后页面重附着」尚无可核对的现成接口证据。故不能宣布REUSE_GATE=PASS或整体STOP_GATE完成。若没有接口，不得虚构实现；应继续查找并验证成熟连接件，而非直接改架构或自研。
 本件为结构完整的虚拟成熟实施合同（DESIGN_FREEZE_CANDIDATE），不等于最终冻结验收。完整物理极限时间尚无法从五次任务数据唯一确定，23.625秒只是一种条件并行参照。
+
+## 最终成熟连接件确定（新增事实）
+已查官方 n8n MCP Client 文档：客户端面向外部MCP URL，不直接代表能在Docker中接入Windows STDIO进程。已查成熟Supergateway（npm项目）：支持把STDIO MCP转换为Streamable HTTP或SSE，故无需重造通用HTTP服务。
+最小候选组合：现有n8n MCP Client -> 官方成熟Supergateway协议桥(Windows进程侧) -> 原授权Playwright STDIO MCP -> 已审核chatgpt-business-entry.js。前置必须确认桥仅启动/复用一个MCP进程及其Profile，不能每次请求拉起第二浏览器实例；只暴露回环或受保护的宿主机接口，禁止开放公网、无鉴权共享写接口。不得在验证前开启该桥直接访问用户浏览器。
+与单体n8n HTTP +现有Reasonix桥比较：Reasonix HTTP脚本只懂Reasonix业务，不可通过简单URL替换接入ChatGPT。Supergateway是成熟可直接采用的协议转换器，但只有后续接口工具发现和单实例验收才可判PASS。
+已淘汰不合规路径：自行开发通用HTTP server / 多个独立MCP进程争用共享浏览器 / 从Docker内Execute Command直接访问Windows Node / 用Temporal迁移掩盖未核实连接器。
+虚拟重放最终序列：选定一个已授权STDIO MCP owner → Supergateway单实例兼容配置(待验证) → n8n MCP Client tools/list确认正式browser_run_code_unsafe存在 → 参数传递到已审核真实入口 → QUERY → SEND_ONCE(禁止retry) → WAIT_EXTRACT及只读恢复 → NODE_FREEZE → CEO Merge → 只清理属主页。未通过单实例所有权或协议发现则停止在CONFIG_BLOCKED，不能降级到自研。
+完成判定：架构分层、正常路径、故障反例与成熟组件映射均已明确，设计级虚拟成熟形成冻结候选；实际MCP-HTTP握手、同Profile单实例、跨进程恢复及总净收益仍未物化，REUSE_GATE未全部PASS，不允许宣称已经过Reality门禁。
