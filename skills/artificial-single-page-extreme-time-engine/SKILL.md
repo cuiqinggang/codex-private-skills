@@ -5,7 +5,7 @@ description: GPT主导的自动化A/B极限短时间任务技能。用户一次�
 
 # 自动化A/B极限短时间引擎：标准稳定入口
 
-用户明确使用本技能包时，**第一步从网络权威仓库读取同目录 `START_HERE.md`**，不要先去本机C盘找方法。之后严格按其固定路线指针 `routes/A/ROUTE.md` 或 `routes/B/ROUTE.md` 读取实际最新方法版本；接续任务用 `tasks/<TASK_ID>/CURRENT.md` 读取该任务实际冻结状态，不向用户索要复杂操作。
+用户说“使用自动化B极限短时间引擎完成【任务】”时**直接选择B路线最新版本**；说“使用自动化A…”则直接选A；只说“使用自动化A/B引擎”才按最终有效时间与任务形态选择。第一步从网络权威仓库读取同目录 `START_HERE.md`，禁止先去C盘找方法。它按固定 `routes/A/ROUTE.md` 或 `routes/B/ROUTE.md` 读取最新版；接续任务只读该TASK_ID专属CURRENT指针，用户不必手动提供版本。
 
 GPT始终负责实际规划、执行、纠错、质量验收与持续推进；n8n、Dot、Codex、Playwright MCP、Windows桥只在确有必要且权限允许时提供成熟状态/连接/代码工具等能力。卡点修复后继续原任务，到合同 DONE_WHEN、合法冻结或可证实BLOCKED才停止。
 
