@@ -90,7 +90,9 @@ if (parts.Length != 4 || parts[1] != Chr(0x7EED) Chr(0x63A5) "B"
     ExitApp 13
 }
 ; Never activate arbitrary windows or browsers.
-targetHwnd := WinExist("A")
+; Bound TEST/PRODUCTION targets are resolved by exact HWND, not whatever window
+; a remote shell happens to leave in the foreground. Commit still checks WinActive.
+targetHwnd := (mode != "" ? expectedHwnd + 0 : WinExist("A"))
 if (!targetHwnd || WinGetProcessName("ahk_id " targetHwnd) != "chrome.exe") {
     FileAppend "BLOCKED:ACTIVE_WINDOW_NOT_CHATGPT`n", "*"
     ExitApp 14
