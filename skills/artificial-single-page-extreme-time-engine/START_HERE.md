@@ -5,6 +5,10 @@
 权威来源：`cuiqinggang/codex-private-skills` 的 `main` 分支，目录 `skills/artificial-single-page-extreme-time-engine/`。
 唯一标准：`T*=min(T_VALID)`。不得先在C盘寻找网络权威技能包。读不到网络时仅可明确声明离线使用已核验提交的备份；不能假装已同步最新版本。
 
+## B路线跨聊天短状态码入口（页面模板B23）
+
+当新ChatGPT聊天只收到一行 `续接B|cuiqinggang/codex-private-skills|<TASK_ID>|<FREEZE_ID>`，它不是普通问答，而是B路线接续命令：直接从本仓库路径 `skills/artificial-single-page-extreme-time-engine/tasks/<TASK_ID>/CURRENT.md` 读取 `CONTRACT_PATH` / `FREEZE_PATH`，确认当前 `TASK_ID`、`FREEZE_ID` 精确匹配，并区分 `METHOD_REF` 与 `TASK_STATE_REF`；再按照B稳定 `ROUTE.md` 获取最新方法并继续下一未完成节点。代码只承载定位信息，全文仍在真实冻结文件里。匹配不上或权威仓库不可读就停止，不猜、不重发。**只传短码，不需要向新聊天发送旧对话或完整交接正文。** 此B短码语义不改变A路线，运行阶段状态码仍按实际Freeze读取。
+
 ## 统一入口最短可执行协议
 
 1. **从网络读取本入口**，确定用户原始实质目标和必要权限；若是 GPT 一次答复即可有效完成的超简单任务，直接完成，不额外启动工作流或强制建立多个状态文件。
