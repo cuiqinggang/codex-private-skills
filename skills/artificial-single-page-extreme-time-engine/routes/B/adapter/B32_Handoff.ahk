@@ -53,13 +53,13 @@ try {
     newChat.Click()
     Sleep 450
     root := UIA.ElementFromChromium("A")
-    edit := 0
+    composerEl := 0
     editMatches := 0
     for label in ["向 ChatGPT 提问", "询问任何问题", "Message ChatGPT", "Ask anything", "发送消息给 ChatGPT"] {
         try {
             found := root.FindElements({Type:"Edit", Name:label})
             if (found.Length = 1) {
-                edit := found[1]
+                composerEl := found[1]
                 editMatches += 1
             }
         }
@@ -69,7 +69,7 @@ try {
         ExitApp 17
     }
     ; Action 3: paste once and submit once. No retry on ambiguous result.
-    edit.Click()
+    composerEl.Click()
     savedClipboard := ClipboardAll()
     A_Clipboard := prompt
     if !ClipWait(2) {
