@@ -39,6 +39,12 @@ if (A_Args.Length < 1) {
 }
 promptFile := A_Args[1]
 commit := (A_Args.Length >= 2 && A_Args[2] = "--commit")
+; Emergency protection: never rotate the user's ongoing ChatGPT conversation.
+; Reality commit is disabled until a separate test chat and ownership are proven.
+if commit {
+    FileAppend "BLOCKED:PROTECTED_CHAT_HARD_STOP`n", "*"
+    ExitApp 90
+}
 stage := "INPUT_VALIDATION"
 if !FileExist(promptFile) {
     FileAppend "FAIL:PROMPT_NOT_FOUND`n", "*"
