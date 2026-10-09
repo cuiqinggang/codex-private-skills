@@ -90,14 +90,8 @@ if (parts.Length != 4 || parts[1] != Chr(0x7EED) Chr(0x63A5) "B"
     FileAppend "FAIL:INVALID_STATE_CODE`n", "*"
     ExitApp 13
 }
-; Only this isolated harmless F001 can submit in the current REAL smoke.
-; All PRODUCTION and all other TEST commits remain protected.
-if commit {
-    if (parts[3] != "B33_ISOLATED_HANDOFF_20261010_T01" || parts[4] != "B33T-F001") {
-        FileAppend "BLOCKED:TEST_ALLOWLIST_MISMATCH`n", "*"
-        ExitApp 39
-    }
-}
+; No stale test task or old Freeze is preauthorized. ALL --commit remain locked.
+; Any later controlled enablement must revalidate live CURRENT, fresh unique task and safety authorization.
 ; Never activate arbitrary windows or browsers.
 ; Bound TEST/PRODUCTION targets are resolved by exact HWND, not whatever window
 ; a remote shell happens to leave in the foreground. Commit still checks WinActive.
