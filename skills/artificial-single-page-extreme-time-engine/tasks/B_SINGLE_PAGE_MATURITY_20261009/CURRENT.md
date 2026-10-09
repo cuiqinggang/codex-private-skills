@@ -1,21 +1,22 @@
-# B单层自动化成熟任务｜当前状态指针
+# B单层自动化成熟任务｜唯一当前状态指针
 
 TASK_ID=B_SINGLE_PAGE_MATURITY_20261009
 TASK_STATUS=IN_PROGRESS
 ROUTE=B
-CONTRACT_VERSION=1
-FREEZE_VERSION=1
-FREEZE_ID=B31-VM-F001
-METHOD_ENGINE=B31
-METHOD_BRAIN=B28
-METHOD_TEMPLATE=B21
-METHOD_REF=29095adcb6d81ebbef3046c3e5b42ff85536cb82
-TASK_STATE_REF=091b2e2e2a427182f2893e5ba70437e13761dd41
-CONTRACT_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/CURRENT_TASK_CONSTRAINTS_V1.md
-FREEZE_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/freezes/CURRENT_TASK_FREEZE_V1.md
-NEXT=复用现有浏览器操作能力，核实自动新页接管接口并取得B全流程真实时间和质量证据，勿提前Reality。
+CONTRACT_VERSION=2
+FREEZE_VERSION=2
+FREEZE_ID=B32-VM-F002
+METHOD_ENGINE=B32
+METHOD_BRAIN=B29
+METHOD_TEMPLATE=B22
+METHOD_REF=27610cd726f3064aa60da864f121f64536d191ab
+TASK_STATE_REF=2774ab4a4e54a6c7ae25e46d4ba02c3f0e86d488
+CONTRACT_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/CURRENT_TASK_CONSTRAINTS_V2.md
+FREEZE_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/freezes/CURRENT_TASK_FREEZE_V2.md
+NEXT=验证原已登录ChatGPT窗口的成熟GUI三动作接力及可靠状态信号，进行复杂长流程生产同构虚拟成熟并收集完整时间，禁止将静态规则宣称Reality成功。
+HANDOFF_AUTOMATION=UNVERIFIED
 VIRTUAL_MATURE=NO
 FINAL_VALID=NO
 
-## 读取及升级
-先从联网权威仓库`cuiqinggang/codex-private-skills`校验METHOD_REF的B路线和继承链，随后按TASK_STATE_REF读本TASK合同与冻结文件，严格区分方法提交和较晚任务状态提交。每次新冻结要先实际落盘不可变文件、校验写入结果，再更新此指针并防止并发覆盖。不得用别的TASK冻结冒充最新。
+## 读取边界
+METHOD_REF固定版本提交与TASK_STATE_REF动态冻结提交分别核验。新聊天先读SKILL.md→START_HERE.md→B ROUTE当前版本→该TASK CURRENT及合同/Freeze，确认唯一写者，仅继续未完成节点。B32不引入专用9223浏览器、n8n或18931检查。当前节点每次完成即真实持久化，K盘备份每三天独立执行，不与Freeze绑定。
