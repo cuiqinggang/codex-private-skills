@@ -39,6 +39,7 @@ if (A_Args.Length < 1) {
 }
 promptFile := A_Args[1]
 commit := (A_Args.Length >= 2 && A_Args[2] = "--commit")
+stage := "INPUT_VALIDATION"
 if !FileExist(promptFile) {
     FileAppend "FAIL:PROMPT_NOT_FOUND`n", "*"
     ExitApp 12
@@ -54,12 +55,14 @@ if (parts.Length != 4 || parts[1] != Chr(0x7EED) Chr(0x63A5) "B"
     ExitApp 13
 }
 ; Never activate arbitrary windows or browsers.
-if (WinGetProcessName("A") != "chrome.exe") {
+targetHwnd := WinExist("A")
+if (!targetHwnd || WinGetProcessName("ahk_id " targetHwnd) != "chrome.exe") {
     FileAppend "BLOCKED:ACTIVE_WINDOW_NOT_CHATGPT`n", "*"
     ExitApp 14
 }
 try {
-    root := UIA.ElementFromHandle("A")
+    stage := "CHATGPT_IDENTITY"
+    root := UIA.ElementFromHandle(targetHwnd)
     ; The Chrome tab title may omit "ChatGPT"; verify the real origin using
     ; the mature UIA address-bar element instead of comparing window titles.
     trustedAddress := 0
@@ -117,14 +120,20 @@ try {
     }
     ; Action 1: frozen, unique NEXT_PAGE_PROMPT already read and validated.
     ; Action 2: click New chat *inside the existing current ChatGPT window*.
+    if !WinActive("ahk_id " targetHwnd) {
+        FileAppend "BLOCKED:FOCUS_CHANGED_BEFORE_CLICK`n", "*"
+        ExitApp 30
+    }
+    stage := "NEW_CHAT_CLICK"
     newChat.Click()
+    stage := "WAIT_NEW_CHAT_COMPOSER"
     ; No fixed delay: look up a ready composer using mature UIA properties.
     composerEl := 0
     editorLabels := ["向 ChatGPT 提问", "询问 ChatGPT", "询问任何问题", "Message ChatGPT", "Ask anything", "发送消息给 ChatGPT"]
     editorDeadline := A_TickCount + 2000
     editorReady := false
     while A_TickCount < editorDeadline {
-        root := UIA.ElementFromHandle("A")
+        root := UIA.ElementFromHandle(targetHwnd)
         activeDoc := SelectedChatDocument(root)
         if !activeDoc {
             Sleep 20
@@ -166,6 +175,11 @@ try {
         ExitApp 17
     }
     ; Action 3: paste once and submit once. No retry on ambiguous result.
+    if !WinActive("ahk_id " targetHwnd) {
+        FileAppend "BLOCKED:FOCUS_CHANGED_BEFORE_PASTE`n", "*"
+        ExitApp 31
+    }
+    stage := "FOCUS_NEW_CHAT_COMPOSER"
     composerEl.Click()
     savedClipboard := ClipboardAll()
     A_Clipboard := prompt
@@ -174,6 +188,7 @@ try {
         FileAppend "BLOCKED:CLIPBOARD_ERROR_NO_SUBMIT`n", "*"
         ExitApp 18
     }
+    stage := "PASTE_SHORT_CODE"
     Send "^v"
     ; No fixed delay: send only if the complete prompt is readable in editor.
     pasteReady := false
@@ -196,10 +211,16 @@ try {
         FileAppend "BLOCKED:PASTE_NOT_VERIFIED_NO_SUBMIT`n", "*"
         ExitApp 28
     }
+    if !WinActive("ahk_id " targetHwnd) {
+        FileAppend "BLOCKED:FOCUS_CHANGED_BEFORE_SEND`n", "*"
+        ExitApp 32
+    }
+    stage := "SUBMIT_ONCE"
     Send "{Enter}"
+    stage := "SUBMIT_ATTEMPT_RECORDED"
     FileAppend "SUBMIT_ATTEMPTED_ONCE:VERIFY_CHAT_RECEIPT_EXTERNALLY`n", "*"
     ExitApp 0
 } catch as ex {
-    FileAppend "UNKNOWN:" ex.Message "`n", "*"
+    FileAppend "UNKNOWN_STAGE=" stage ";ERROR=" ex.Message "`n", "*"
     ExitApp 19
 }
