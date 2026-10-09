@@ -4,16 +4,16 @@ TASK_ID=B_SINGLE_PAGE_MATURITY_20261009
 TASK_STATUS=IN_PROGRESS
 ROUTE=B
 CONTRACT_VERSION=4
-FREEZE_VERSION=23
-FREEZE_ID=B33-VM-F023
+FREEZE_VERSION=24
+FREEZE_ID=B33-VM-F024
 METHOD_ENGINE=B33
 METHOD_BRAIN=B29
 METHOD_TEMPLATE=B23
 METHOD_REF=2a18746124fdb26ba50e9813a50d687b5758e7ff
-TASK_STATE_REF=02b762e74ae1c1ce56918b9be78a2d2f290e8f72
+TASK_STATE_REF=8b50d2c52bf3d51b6a38d1daa14e3e567d11dad3
 CONTRACT_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/CURRENT_TASK_CONSTRAINTS_V4.md
-FREEZE_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/freezes/CURRENT_TASK_FREEZE_V23.md
-NEXT=专用浏览器直接路径本次实际测试：不经n8n，现有Playwright连接CDP9223后在已登录专用浏览器内临时新建标签、真实点击“新聊天”、确认输入框存在且为空，16.887秒，无发送，并恢复原2个标签；详细见F023。历史平台预派发安全拒绝仍未解除，不能以代码/网页模拟点击换路绕过；本轮真正发送0次，新GPT恢复未测，FINAL_VALID=NO、T_VALID=UNKNOWN。下一步仅在正式获准发送入口成立后做一次完整自动短码交接，停止重复无意义的只读联通测试。
+FREEZE_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/freezes/CURRENT_TASK_FREEZE_V24.md
+NEXT=F024 用户重新明确优先原有网页界面操作主线：现有专用Chrome+AutoHotkey v2/UIA，以真实网页控件新聊天/聚焦/粘贴短码/校验/发送一次/官网回执/新GPT从GitHub接续为目标，n8n与直接API非必要。Windows成熟AHK B33_Handoff.ahk已存在且具备完整UIA操作，但 --commit 仍固定硬停90；离线本地3/3 PASS和F023官网真实新聊天无发送PASS，不代表发送及接续PASS。历史平台拦截只证实准备自动发送相关工具调用遭安全拒绝，不能推断所有正常网页操作禁止，也不可绕过具体拦截。只有合法发送入口获准才能一次真实整链验收；FINAL_VALID=NO。
 HANDOFF_AUTOMATION=BLOCKED_REAL_INTEGRATION_EXIT90_PRIOR_PLATFORM_SAFETY;MANUAL_T02_PASS
 VIRTUAL_MATURE=NO
 FINAL_VALID=NO
@@ -29,7 +29,7 @@ REAL_READONLY_EVIDENCE=skills/artificial-single-page-extreme-time-engine/scenari
 
 UPDATED_EVIDENCE=skills/artificial-single-page-extreme-time-engine/scenarios/B32_MINIMAL_UIA_EVENT_READY_ACCEPTANCE_20261009.md
 
-HANDOFF_STATE_CODE=续接B|cuiqinggang/codex-private-skills|B_SINGLE_PAGE_MATURITY_20261009|B33-VM-F023
+HANDOFF_STATE_CODE=续接B|cuiqinggang/codex-private-skills|B_SINGLE_PAGE_MATURITY_20261009|B33-VM-F024
 
 B33_VIRTUAL_EVIDENCE=skills/artificial-single-page-extreme-time-engine/scenarios/B33_FULL_STATE_VIRTUAL_REPLAY_V2.md
 
@@ -117,3 +117,8 @@ B33_REAL_COMPOSER_READY=PASS
 B33_REAL_NO_SEND_NEW_CHAT_MS=16887
 B33_F023_REAL_AUTO_SEND_COUNT=0
 B33_F023_REAL_GPT_RESUME=NOT_TESTED
+
+B33_F024_GUI_ROUTE_DECISION=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/freezes/CURRENT_TASK_FREEZE_V24.md
+B33_GUI_PRIMARY_ASSET=C:\AI\B32_ChatGPT_Handoff\B33_Handoff.ahk
+B33_GUI_NATIVE_UIA_OFFLINE_3_OF_3=PASS
+B33_GUI_REAL_AUTO_SHORTCODE_SEND=NOT_VERIFIED
