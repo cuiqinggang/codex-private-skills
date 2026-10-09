@@ -20,12 +20,30 @@ if (StrLen(prompt) < 40 || !InStr(prompt, "TASK_ID=") || !InStr(prompt, "FREEZE_
     ExitApp 13
 }
 ; Never activate arbitrary windows or browsers.
-if (WinGetProcessName("A") != "chrome.exe" || !InStr(WinGetTitle("A"), "ChatGPT")) {
+if (WinGetProcessName("A") != "chrome.exe") {
     FileAppend "BLOCKED:ACTIVE_WINDOW_NOT_CHATGPT`n", "*"
     ExitApp 14
 }
 try {
-    root := UIA.ElementFromChromium("A")
+    root := UIA.ElementFromHandle("A")
+    ; The Chrome tab title may omit "ChatGPT"; verify the real origin using
+    ; the mature UIA address-bar element instead of comparing window titles.
+    trustedAddress := 0
+    for addressName in ["地址和搜索栏", "Address and search bar"] {
+        try {
+            addresses := root.FindElements({Type:"Edit", Name:addressName})
+            for addressEl in addresses {
+                try {
+                    if RegExMatch(addressEl.Value, "i)^(https?://)?chatgpt\\.com(/|$)")
+                        trustedAddress += 1
+                }
+            }
+        }
+    }
+    if (trustedAddress != 1) {
+        FileAppend "BLOCKED:CHATGPT_ADDRESS_NOT_VERIFIED`n", "*"
+        ExitApp 20
+    }
     newChat := 0
     matches := 0
     for label in ["新聊天", "New chat", "开始新聊天"] {
@@ -48,14 +66,18 @@ try {
         FileAppend "DRY_RUN:NEW_CHAT_CONTROL_FOUND_NO_SEND`n", "*"
         ExitApp 0
     }
+    if InStr(prompt, "VIRTUAL_TEST_ONLY=YES") {
+        FileAppend "BLOCKED:TEST_ENVELOPE_COMMIT_FORBIDDEN`n", "*"
+        ExitApp 21
+    }
     ; Action 1: frozen, unique NEXT_PAGE_PROMPT already read and validated.
     ; Action 2: click New chat *inside the existing current ChatGPT window*.
     newChat.Click()
     Sleep 450
-    root := UIA.ElementFromChromium("A")
+    root := UIA.ElementFromHandle("A")
     composerEl := 0
     editMatches := 0
-    for label in ["向 ChatGPT 提问", "询问任何问题", "Message ChatGPT", "Ask anything", "发送消息给 ChatGPT"] {
+    for label in ["向 ChatGPT 提问", "询问 ChatGPT", "询问任何问题", "Message ChatGPT", "Ask anything", "发送消息给 ChatGPT"] {
         try {
             found := root.FindElements({Type:"Edit", Name:label})
             if (found.Length = 1) {
