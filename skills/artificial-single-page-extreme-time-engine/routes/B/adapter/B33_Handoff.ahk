@@ -70,8 +70,9 @@ if mode != "" {
 ; TEST: never rotate an active user conversation; only the separately owned test chat.
 ; PRODUCTION: the task's own live chat IS the valid target AFTER verified Freeze.
 ; This gate does not permanently prohibit legitimate frozen production handoffs.
-if (commit && mode != "TEST") {
-    FileAppend "BLOCKED:PRODUCTION_COMMIT_NOT_YET_ACCEPTED`n", "*"
+; All --commit operations stay blocked while safe tool authorization is unresolved.
+if commit {
+    FileAppend "BLOCKED:PROTECTED_CHAT_HARD_STOP`n", "*"
     ExitApp 90
 }
 stage := "INPUT_VALIDATION"
