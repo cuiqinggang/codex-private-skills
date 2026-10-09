@@ -156,7 +156,7 @@ def curl_download(url, part):
     ]
     return subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="ignore", creationflags=CREATE_NO_WINDOW)
 
-def ffprobe(path, expected_width=None, expected_height=None):
+def ffprobe(path, expected_width=None, expected_height=None, allow_hevc=False):
     p = subprocess.run(
         ["ffprobe.exe", "-v", "error",
          "-show_entries", "format=format_name,duration:stream=codec_type,codec_name,width,height,sample_rate,channels",
@@ -173,7 +173,7 @@ def ffprobe(path, expected_width=None, expected_height=None):
     duration = float((info.get("format") or {}).get("duration") or 0)
     if not vs or not au or duration <= 0:
         raise RuntimeError("MISSING_AV_OR_DURATION")
-    if vs[0].get("codec_name") != "h264":
+    if vs[0].get("codec_name") not in (("h264", "hevc") if allow_hevc else ("h264",)):
         raise RuntimeError("VIDEO_NOT_H264:" + str(vs[0].get("codec_name")))
     if au[0].get("codec_name") != "aac":
         raise RuntimeError("AUDIO_NOT_AAC:" + str(au[0].get("codec_name")))
@@ -188,6 +188,52 @@ def ffprobe(path, expected_width=None, expected_height=None):
         "width": actual_width,
         "height": actual_height,
     }
+
+
+def compatible_mp4(part, expected_width=None, expected_height=None, run=None):
+    source = ffprobe(part, expected_width, expected_height, allow_hevc=True)
+    if source["video"] == "h264":
+        return source
+    converted = part.with_name(part.name + ".h264.mp4")
+    started = time.perf_counter()
+    errors = []
+    try:
+        for encoder, options in [
+            ("h264_nvenc", ["-preset", "p4", "-rc", "vbr", "-cq", "19", "-b:v", "0"]),
+            ("libx264", ["-preset", "veryfast", "-crf", "19"]),
+        ]:
+            cmd = [
+                "ffmpeg.exe", "-hide_banner", "-loglevel", "error", "-nostdin", "-y",
+                "-i", str(part), "-map", "0:v:0", "-map", "0:a:0",
+                "-c:v", encoder,
+            ] + options + [
+                "-pix_fmt", "yuv420p", "-c:a", "copy",
+                "-movflags", "+faststart", "-f", "mp4", str(converted),
+            ]
+            try:
+                result = subprocess.run(
+                    cmd, capture_output=True, text=True, encoding="utf-8",
+                    errors="ignore", timeout=max(120, source["duration"] * 4),
+                    creationflags=CREATE_NO_WINDOW,
+                )
+                if result.returncode:
+                    raise RuntimeError(result.stderr[-1500:])
+                probe = ffprobe(converted, source["width"], source["height"])
+                if abs(probe["duration"] - source["duration"]) > 0.25:
+                    raise RuntimeError("TRANSCODE_DURATION_MISMATCH")
+                os.replace(converted, part)
+                if run is not None:
+                    run.update({
+                        "source_video": source["video"], "compatibility_encoder": encoder,
+                        "compatibility_ms": round((time.perf_counter() - started) * 1000, 3),
+                    })
+                return probe
+            except (RuntimeError, subprocess.TimeoutExpired) as error:
+                errors.append(encoder + ":" + str(error))
+        raise RuntimeError("HEVC_COMPATIBILITY_FAILED:" + ";".join(errors))
+    finally:
+        if converted.exists():
+            converted.unlink()
 
 def fallback_existing(run):
     if not FALLBACK.exists():
@@ -209,12 +255,13 @@ def main():
     ROOT.mkdir(parents=True, exist_ok=True)
     ap = argparse.ArgumentParser(add_help=False)
     ap.add_argument("--no-fallback", action="store_true")
+    ap.add_argument("--url")
     args, _ = ap.parse_known_args()
     start = time.perf_counter()
     run = {"schema": "DOUYIN_ULTRA_DIRECT_V1", "started_at": now(), "route": "API_PRIMARY"}
     try:
         c0 = time.perf_counter()
-        text = clipboard_text()
+        text = args.url if args.url else clipboard_text()
         share = extract_url(text)
         run["clipboard_ms"] = round((time.perf_counter() - c0) * 1000, 3)
         run["share_url"] = share
@@ -235,7 +282,9 @@ def main():
 
         stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         target = DESKTOP / f"douyin_{content_id}_{stamp}.mp4"
-        part = pathlib.Path(str(target) + ".part")
+        work = ROOT / "work"
+        work.mkdir(exist_ok=True)
+        part = work / (target.name + ".part")
         if part.exists():
             part.unlink()
 
@@ -257,7 +306,7 @@ def main():
             raise RuntimeError("ALL_MEDIA_DOWNLOADS_FAILED")
 
         v0 = time.perf_counter()
-        probe = ffprobe(part, expected_width, expected_height)
+        probe = compatible_mp4(part, expected_width, expected_height, run)
         run["verify_ms"] = round((time.perf_counter() - v0) * 1000, 3)
         os.replace(part, target)
 
