@@ -4,16 +4,16 @@ TASK_ID=B_SINGLE_PAGE_MATURITY_20261009
 TASK_STATUS=IN_PROGRESS
 ROUTE=B
 CONTRACT_VERSION=4
-FREEZE_VERSION=21
-FREEZE_ID=B33-VM-F021
+FREEZE_VERSION=22
+FREEZE_ID=B33-VM-F022
 METHOD_ENGINE=B33
 METHOD_BRAIN=B29
 METHOD_TEMPLATE=B23
 METHOD_REF=2a18746124fdb26ba50e9813a50d687b5758e7ff
-TASK_STATE_REF=246a02fd20e17bb91c8333135f2285bb1ed2dc5c
+TASK_STATE_REF=99ee29222db3856532ca501af0349a3c7a950b46
 CONTRACT_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/CURRENT_TASK_CONSTRAINTS_V4.md
-FREEZE_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/freezes/CURRENT_TASK_FREEZE_V21.md
-NEXT=用户要求A路线n8n对当前专用Chrome实际计时：当前n8n-local healthy，旧工作流v27McpReadonly20261009运行存在。暂时复用官方Playwright HTTP MCP附着已登录CDP9223；CLI初始Task Broker端口5679冲突，在单次命令用官方N8N_RUNNERS_BROKER_PORT=5680修复。正式n8n工作流命令两次exit0，墙钟14014/14372ms，输出数据含chatgpt.com；MCP节点级执行时间未独立解析，未进行ChatGPT官网自动发送/模型接续，故FULL_AUTO_VALID=NO。临时MCP服务器已清理，原n8n/Chrome健康未改变。后续只进行允许的真实自动交接，未通过不优化虚拟极限时间。
+FREEZE_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/freezes/CURRENT_TASK_FREEZE_V22.md
+NEXT=用户决议移除n8n中间层，直接使用现有专用Chrome CDP9223及已安装Playwright。F022现实无发送直连PASS：Windows执行桥在线，Playwright connectOverCDP PASS，真实ChatGPT标签2个、输入框2/2可读取、新聊天入口可识别；未点击或发送。成熟网页脚本已有真实表单点击能力，不应另开发。此前平台预派发自动发送安全拒绝仍有效，不通过更换代码/CDP/网页模拟点击绕过。下一步仅在明确允许的发送入口获准后做完整无人接续一次发送与统一计时，否则停在准确授权层。
 HANDOFF_AUTOMATION=BLOCKED_REAL_INTEGRATION_EXIT90_PRIOR_PLATFORM_SAFETY;MANUAL_T02_PASS
 VIRTUAL_MATURE=NO
 FINAL_VALID=NO
@@ -29,7 +29,7 @@ REAL_READONLY_EVIDENCE=skills/artificial-single-page-extreme-time-engine/scenari
 
 UPDATED_EVIDENCE=skills/artificial-single-page-extreme-time-engine/scenarios/B32_MINIMAL_UIA_EVENT_READY_ACCEPTANCE_20261009.md
 
-HANDOFF_STATE_CODE=续接B|cuiqinggang/codex-private-skills|B_SINGLE_PAGE_MATURITY_20261009|B33-VM-F021
+HANDOFF_STATE_CODE=续接B|cuiqinggang/codex-private-skills|B_SINGLE_PAGE_MATURITY_20261009|B33-VM-F022
 
 B33_VIRTUAL_EVIDENCE=skills/artificial-single-page-extreme-time-engine/scenarios/B33_FULL_STATE_VIRTUAL_REPLAY_V2.md
 
@@ -103,3 +103,10 @@ N8N_REAL_WORKFLOW_PROCESS_EXIT=0
 N8N_NODE_VALID_RESULT=UNVERIFIED
 N8N_REAL_AUTO_CHATGPT_HANDOFF=NOT_TESTED
 FULL_AUTO_T_VALID=UNKNOWN
+
+B33_F022_DIRECT_BROWSER_READONLY_FREEZE=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/freezes/CURRENT_TASK_FREEZE_V22.md
+B33_DIRECT_PLAYWRIGHT_CDP_ATTACH=PASS
+B33_DIRECT_CHATGPT_TABS=2
+N8N_REQUIRED_FOR_DIRECT_ROUTE=NO
+B33_AUTO_SEND_PRIOR_PLATFORM_BLOCK=STILL_ACTIVE
+B33_F022_REAL_AUTO_SEND_COUNT=0
