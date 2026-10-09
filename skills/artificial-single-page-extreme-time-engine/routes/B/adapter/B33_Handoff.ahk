@@ -256,7 +256,9 @@ try {
         ExitApp 31
     }
     stage := "FOCUS_NEW_CHAT_COMPOSER"
-    composerEl.Click()
+    ; Edit widgets may throw UIA_E_INVALIDOPERATION on generic Click().
+    ; Mature UIA SetFocus() proved HasKeyboardFocus=1 on isolated Chrome test window.
+    composerEl.SetFocus()
     savedClipboard := ClipboardAll()
     A_Clipboard := prompt
     if !ClipWait(2) {
