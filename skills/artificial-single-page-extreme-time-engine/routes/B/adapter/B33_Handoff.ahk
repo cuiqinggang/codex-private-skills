@@ -70,8 +70,8 @@ if mode != "" {
 ; TEST: never rotate an active user conversation; only the separately owned test chat.
 ; PRODUCTION: the task's own live chat IS the valid target AFTER verified Freeze.
 ; This gate does not permanently prohibit legitimate frozen production handoffs.
-if commit {
-    FileAppend "BLOCKED:PROTECTED_CHAT_HARD_STOP`n", "*"
+if (commit && mode != "TEST") {
+    FileAppend "BLOCKED:PRODUCTION_COMMIT_NOT_YET_ACCEPTED`n", "*"
     ExitApp 90
 }
 stage := "INPUT_VALIDATION"
@@ -88,6 +88,14 @@ if (parts.Length != 4 || parts[1] != Chr(0x7EED) Chr(0x63A5) "B"
     || !RegExMatch(parts[4], "^[A-Za-z0-9_-]+$")) {
     FileAppend "FAIL:INVALID_STATE_CODE`n", "*"
     ExitApp 13
+}
+; Only this isolated harmless F001 can submit in the current REAL smoke.
+; All PRODUCTION and all other TEST commits remain protected.
+if commit {
+    if (parts[3] != "B33_ISOLATED_HANDOFF_20261010_T01" || parts[4] != "B33T-F001") {
+        FileAppend "BLOCKED:TEST_ALLOWLIST_MISMATCH`n", "*"
+        ExitApp 39
+    }
 }
 ; Never activate arbitrary windows or browsers.
 ; Bound TEST/PRODUCTION targets are resolved by exact HWND, not whatever window
