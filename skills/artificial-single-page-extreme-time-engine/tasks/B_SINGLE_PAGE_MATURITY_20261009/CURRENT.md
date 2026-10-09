@@ -1,0 +1,21 @@
+# B单层自动化成熟任务｜当前状态指针
+
+TASK_ID=B_SINGLE_PAGE_MATURITY_20261009
+TASK_STATUS=IN_PROGRESS
+ROUTE=B
+CONTRACT_VERSION=1
+FREEZE_VERSION=1
+FREEZE_ID=B31-VM-F001
+METHOD_ENGINE=B31
+METHOD_BRAIN=B28
+METHOD_TEMPLATE=B21
+METHOD_REF=29095adcb6d81ebbef3046c3e5b42ff85536cb82
+TASK_STATE_REF=091b2e2e2a427182f2893e5ba70437e13761dd41
+CONTRACT_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/CURRENT_TASK_CONSTRAINTS_V1.md
+FREEZE_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/freezes/CURRENT_TASK_FREEZE_V1.md
+NEXT=复用现有浏览器操作能力，核实自动新页接管接口并取得B全流程真实时间和质量证据，勿提前Reality。
+VIRTUAL_MATURE=NO
+FINAL_VALID=NO
+
+## 读取及升级
+先从联网权威仓库`cuiqinggang/codex-private-skills`校验METHOD_REF的B路线和继承链，随后按TASK_STATE_REF读本TASK合同与冻结文件，严格区分方法提交和较晚任务状态提交。每次新冻结要先实际落盘不可变文件、校验写入结果，再更新此指针并防止并发覆盖。不得用别的TASK冻结冒充最新。
