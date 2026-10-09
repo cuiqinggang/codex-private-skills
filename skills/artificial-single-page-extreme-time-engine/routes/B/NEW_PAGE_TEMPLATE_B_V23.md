@@ -1,7 +1,7 @@
 # 《B·新页面运行模板 第23版：状态码交接》
 
 版本=B23｜继承B22→B21→B20→B19→共同 ../../NEW_PAGE_TEMPLATE.md 第18版
-适用=B路线；引擎B32、大脑B29、共同第28版和A28不变。
+适用=B路线；实际引擎与大脑版本以 routes/B/ROUTE.md 当前指针为准；共同第28版和A28不变。
 状态=METHOD_DEFINED｜VIRTUAL_MATURE=NO｜REAL_HANDOFF_UNVERIFIED
 
 ## 唯一修正：传定位码，不传交接正文
