@@ -39,6 +39,29 @@ if (A_Args.Length < 1) {
 }
 promptFile := A_Args[1]
 commit := (A_Args.Length >= 2 && A_Args[2] = "--commit")
+; Explicit binding for TEST and PRODUCTION. Legacy one-arg DRY_RUN remains intact.
+mode := ""
+expectedHwnd := ""
+expectedUrl := ""
+for arg in A_Args {
+    if (InStr(arg, "--mode=") = 1)
+        mode := SubStr(arg, 8)
+    else if (InStr(arg, "--target-hwnd=") = 1)
+        expectedHwnd := SubStr(arg, 15)
+    else if (InStr(arg, "--target-url=") = 1)
+        expectedUrl := SubStr(arg, 14)
+}
+if (mode != "" && mode != "TEST" && mode != "PRODUCTION") {
+    FileAppend "BLOCKED:INVALID_MODE`n", "*"
+    ExitApp 33
+}
+if mode != "" {
+    if (!RegExMatch(expectedHwnd, "^[0-9]+$")
+        || !RegExMatch(expectedUrl, "i)^https://chatgpt\.com/c/[a-z0-9-]+/?$")) {
+        FileAppend "BLOCKED:TARGET_BINDING_REQUIRED`n", "*"
+        ExitApp 34
+    }
+}
 ; TEMPORARY stop for ALL commits while test/production isolation is not validated.
 ; TEST: never rotate an active user conversation; only the separately owned test chat.
 ; PRODUCTION: the task's own live chat IS the valid target AFTER verified Freeze.
@@ -92,11 +115,34 @@ try {
         FileAppend "BLOCKED:CHATGPT_ADDRESS_NOT_VERIFIED`n", "*"
         ExitApp 20
     }
+    if mode != "" {
+        actualUrl := RegExReplace(oldChatUrl, "i)^https?://", "")
+        targetUrl := RegExReplace(expectedUrl, "i)^https?://", "")
+        if (targetHwnd != (expectedHwnd + 0) || actualUrl != targetUrl) {
+            FileAppend "BLOCKED:EXACT_TARGET_MISMATCH`n", "*"
+            ExitApp 35
+        }
+    }
     ; Resolve only the currently selected ChatGPT document, not background tabs.
     activeDoc := SelectedChatDocument(root)
     if !activeDoc {
         FileAppend "BLOCKED:ACTIVE_CHAT_DOCUMENT_UNVERIFIED`n", "*"
         ExitApp 29
+    }
+    ; TEST must prove the selected conversation itself contains the new TASK_ID.
+    ; A unique button, title, URL origin or HWND alone is not ownership proof.
+    if mode = "TEST" {
+        ownedMarker := 0
+        for textEl in activeDoc.FindElements({Type:"Text"}) {
+            try {
+                if InStr(textEl.Name, parts[3])
+                    ownedMarker += 1
+            }
+        }
+        if ownedMarker = 0 {
+            FileAppend "BLOCKED:TEST_TASK_MARKER_ABSENT`n", "*"
+            ExitApp 36
+        }
     }
     ; Locate by semantic UIA button identity, independent of sidebar width.
     newChat := 0
@@ -132,8 +178,26 @@ try {
         FileAppend "BLOCKED:FOCUS_CHANGED_BEFORE_CLICK`n", "*"
         ExitApp 30
     }
+    ; Recheck the chosen window and destination immediately before any side effect.
+    if mode != "" {
+        freshRoot := UIA.ElementFromHandle(targetHwnd)
+        freshDoc := SelectedChatDocument(freshRoot)
+        freshUrl := ""
+        for addressName in ["地址和搜索栏", "Address and search bar"] {
+            try {
+                address := freshRoot.FindElement({Type:"Edit", Name:addressName})
+                if RegExMatch(address.Value, "i)^(https?://)?chatgpt\.com(/|$)")
+                    freshUrl := RegExReplace(address.Value, "i)^https?://", "")
+            }
+        }
+        if (!freshDoc || freshUrl != targetUrl || !WinActive("ahk_id " targetHwnd)) {
+            FileAppend "BLOCKED:TARGET_CHANGED_BEFORE_CLICK`n", "*"
+            ExitApp 37
+        }
+    }
     stage := "NEW_CHAT_CLICK"
     newChat.Click()
+    FileAppend "STAGE:NEW_CHAT_CLICK_RETURNED`n", "*"
     stage := "WAIT_NEW_CHAT_COMPOSER"
     ; No fixed delay: look up a ready composer using mature UIA properties.
     composerEl := 0
@@ -224,6 +288,7 @@ try {
         ExitApp 32
     }
     stage := "SUBMIT_ONCE"
+    FileAppend "STAGE:BEFORE_SEND_ONCE`n", "*"
     Send "{Enter}"
     stage := "SUBMIT_ATTEMPT_RECORDED"
     FileAppend "SUBMIT_ATTEMPTED_ONCE:VERIFY_CHAT_RECEIPT_EXTERNALLY`n", "*"
