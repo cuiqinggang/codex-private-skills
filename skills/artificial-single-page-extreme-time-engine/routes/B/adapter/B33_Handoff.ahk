@@ -1,6 +1,35 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 #Include %A_ScriptDir%\Lib\UIA.ahk
+
+; Limit UIA search to the document belonging to the selected Chrome tab.
+; Background tabs can expose enabled controls: IsOffscreen alone is insufficient.
+SelectedChatDocument(root) {
+    selectedName := ""
+    selectedCount := 0
+    for tab in root.FindElements({Type:"TabItem"}) {
+        try {
+            if tab.SelectionItemPattern.IsSelected {
+                selectedName := tab.Name
+                selectedCount += 1
+            }
+        }
+    }
+    if selectedCount != 1
+        return 0
+    candidateDoc := 0
+    docCount := 0
+    for doc in root.FindElements({Type:"Document"}) {
+        try {
+            title := doc.Name
+            if title != "" && InStr(selectedName, title) = 1 {
+                candidateDoc := doc
+                docCount += 1
+            }
+        }
+    }
+    return docCount = 1 ? candidateDoc : 0
+}
 ; B32 tiny UI adapter. Uses upstream AutoHotkey v2 + Descolada/UIA-v2,
 ; not a scheduler, general lock service, or independent task state machine.
 ; Default is read-only verification; --commit performs ONE ChatGPT handoff.
@@ -52,11 +81,17 @@ try {
         FileAppend "BLOCKED:CHATGPT_ADDRESS_NOT_VERIFIED`n", "*"
         ExitApp 20
     }
+    ; Resolve only the currently selected ChatGPT document, not background tabs.
+    activeDoc := SelectedChatDocument(root)
+    if !activeDoc {
+        FileAppend "BLOCKED:ACTIVE_CHAT_DOCUMENT_UNVERIFIED`n", "*"
+        ExitApp 29
+    }
     ; Locate by semantic UIA button identity, independent of sidebar width.
     newChat := 0
     for label in ["新聊天", "New chat"] {
         try {
-            found := root.FindElements({Type:"Button", Name:label})
+            found := activeDoc.FindElements({Type:"Button", Name:label})
             for button in found {
                 if (!button.IsOffscreen && button.IsEnabled) {
                     if newChat {
@@ -90,6 +125,11 @@ try {
     editorReady := false
     while A_TickCount < editorDeadline {
         root := UIA.ElementFromHandle("A")
+        activeDoc := SelectedChatDocument(root)
+        if !activeDoc {
+            Sleep 20
+            continue
+        }
         ; Verify the old conversation is no longer the destination.
         onNewChat := false
         for addressName in ["地址和搜索栏", "Address and search bar"] {
@@ -100,7 +140,7 @@ try {
             }
         }
         editMatches := 0
-        for candidate in root.FindElements({Type:"Edit"}) {
+        for candidate in activeDoc.FindElements({Type:"Edit"}) {
             try {
                 for label in editorLabels {
                     if (candidate.Name = label && candidate.IsEnabled && !candidate.IsOffscreen) {
