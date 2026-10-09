@@ -44,21 +44,23 @@ try {
         FileAppend "BLOCKED:CHATGPT_ADDRESS_NOT_VERIFIED`n", "*"
         ExitApp 20
     }
+    ; Locate by semantic UIA button identity, independent of sidebar width.
     newChat := 0
-    matches := 0
-    for label in ["新聊天", "New chat", "开始新聊天"] {
+    for label in ["新聊天", "New chat"] {
         try {
-            found := root.FindElements({Name:label})
-            if (found.Length = 1) {
-                newChat := found[1]
-                matches += 1
-            } else if (found.Length > 1) {
-                FileAppend "BLOCKED:AMBIGUOUS_NEW_CHAT`n", "*"
-                ExitApp 15
+            found := root.FindElements({Type:"Button", Name:label})
+            for button in found {
+                if (!button.IsOffscreen && button.IsEnabled) {
+                    if newChat {
+                        FileAppend "BLOCKED:AMBIGUOUS_NEW_CHAT`n", "*"
+                        ExitApp 15
+                    }
+                    newChat := button
+                }
             }
         }
     }
-    if (matches != 1) {
+    if !newChat {
         FileAppend "BLOCKED:NEW_CHAT_CONTROL_UNVERIFIED`n", "*"
         ExitApp 16
     }
@@ -73,21 +75,34 @@ try {
     ; Action 1: frozen, unique NEXT_PAGE_PROMPT already read and validated.
     ; Action 2: click New chat *inside the existing current ChatGPT window*.
     newChat.Click()
-    Sleep 450
-    root := UIA.ElementFromHandle("A")
+    ; No fixed delay: look up a ready composer using mature UIA properties.
     composerEl := 0
-    editMatches := 0
-    for label in ["向 ChatGPT 提问", "询问 ChatGPT", "询问任何问题", "Message ChatGPT", "Ask anything", "发送消息给 ChatGPT"] {
-        try {
-            found := root.FindElements({Type:"Edit", Name:label})
-            if (found.Length = 1) {
-                composerEl := found[1]
-                editMatches += 1
+    editorLabels := ["向 ChatGPT 提问", "询问 ChatGPT", "询问任何问题", "Message ChatGPT", "Ask anything", "发送消息给 ChatGPT"]
+    editorDeadline := A_TickCount + 2000
+    while A_TickCount < editorDeadline {
+        root := UIA.ElementFromHandle("A")
+        editMatches := 0
+        for candidate in root.FindElements({Type:"Edit"}) {
+            try {
+                for label in editorLabels {
+                    if (candidate.Name = label && candidate.IsEnabled && !candidate.IsOffscreen) {
+                        composerEl := candidate
+                        editMatches += 1
+                        break
+                    }
+                }
             }
         }
+        if editMatches = 1
+            break
+        if editMatches > 1 {
+            FileAppend "BLOCKED:AMBIGUOUS_NEW_CHAT_COMPOSER_NO_SUBMIT`n", "*"
+            ExitApp 27
+        }
+        Sleep 20
     }
-    if (editMatches != 1) {
-        FileAppend "BLOCKED:NEW_CHAT_COMPOSER_NOT_VERIFIED_NO_SUBMIT`n", "*"
+    if !composerEl {
+        FileAppend "BLOCKED:NEW_CHAT_COMPOSER_NOT_READY_NO_SUBMIT`n", "*"
         ExitApp 17
     }
     ; Action 3: paste once and submit once. No retry on ambiguous result.
@@ -100,8 +115,27 @@ try {
         ExitApp 18
     }
     Send "^v"
-    Sleep 350
+    ; No fixed delay: send only if the complete prompt is readable in editor.
+    pasteReady := false
+    pasteDeadline := A_TickCount + 2000
+    expectedText := StrReplace(prompt, "`r`n", "`n")
+    while A_TickCount < pasteDeadline {
+        observedText := ""
+        try observedText := composerEl.Value
+        if observedText = "" {
+            try observedText := composerEl.TextPattern.DocumentRange.GetText(-1)
+        }
+        if StrReplace(observedText, "`r`n", "`n") = expectedText {
+            pasteReady := true
+            break
+        }
+        Sleep 20
+    }
     A_Clipboard := savedClipboard
+    if !pasteReady {
+        FileAppend "BLOCKED:PASTE_NOT_VERIFIED_NO_SUBMIT`n", "*"
+        ExitApp 28
+    }
     Send "{Enter}"
     FileAppend "SUBMIT_ATTEMPTED_ONCE:VERIFY_CHAT_RECEIPT_EXTERNALLY`n", "*"
     ExitApp 0
