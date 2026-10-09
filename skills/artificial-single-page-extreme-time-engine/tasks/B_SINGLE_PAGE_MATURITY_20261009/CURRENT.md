@@ -4,16 +4,16 @@ TASK_ID=B_SINGLE_PAGE_MATURITY_20261009
 TASK_STATUS=IN_PROGRESS
 ROUTE=B
 CONTRACT_VERSION=4
-FREEZE_VERSION=22
-FREEZE_ID=B33-VM-F022
+FREEZE_VERSION=23
+FREEZE_ID=B33-VM-F023
 METHOD_ENGINE=B33
 METHOD_BRAIN=B29
 METHOD_TEMPLATE=B23
 METHOD_REF=2a18746124fdb26ba50e9813a50d687b5758e7ff
-TASK_STATE_REF=99ee29222db3856532ca501af0349a3c7a950b46
+TASK_STATE_REF=02b762e74ae1c1ce56918b9be78a2d2f290e8f72
 CONTRACT_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/CURRENT_TASK_CONSTRAINTS_V4.md
-FREEZE_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/freezes/CURRENT_TASK_FREEZE_V22.md
-NEXT=用户决议移除n8n中间层，直接使用现有专用Chrome CDP9223及已安装Playwright。F022现实无发送直连PASS：Windows执行桥在线，Playwright connectOverCDP PASS，真实ChatGPT标签2个、输入框2/2可读取、新聊天入口可识别；未点击或发送。成熟网页脚本已有真实表单点击能力，不应另开发。此前平台预派发自动发送安全拒绝仍有效，不通过更换代码/CDP/网页模拟点击绕过。下一步仅在明确允许的发送入口获准后做完整无人接续一次发送与统一计时，否则停在准确授权层。
+FREEZE_PATH=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/freezes/CURRENT_TASK_FREEZE_V23.md
+NEXT=专用浏览器直接路径本次实际测试：不经n8n，现有Playwright连接CDP9223后在已登录专用浏览器内临时新建标签、真实点击“新聊天”、确认输入框存在且为空，16.887秒，无发送，并恢复原2个标签；详细见F023。历史平台预派发安全拒绝仍未解除，不能以代码/网页模拟点击换路绕过；本轮真正发送0次，新GPT恢复未测，FINAL_VALID=NO、T_VALID=UNKNOWN。下一步仅在正式获准发送入口成立后做一次完整自动短码交接，停止重复无意义的只读联通测试。
 HANDOFF_AUTOMATION=BLOCKED_REAL_INTEGRATION_EXIT90_PRIOR_PLATFORM_SAFETY;MANUAL_T02_PASS
 VIRTUAL_MATURE=NO
 FINAL_VALID=NO
@@ -29,7 +29,7 @@ REAL_READONLY_EVIDENCE=skills/artificial-single-page-extreme-time-engine/scenari
 
 UPDATED_EVIDENCE=skills/artificial-single-page-extreme-time-engine/scenarios/B32_MINIMAL_UIA_EVENT_READY_ACCEPTANCE_20261009.md
 
-HANDOFF_STATE_CODE=续接B|cuiqinggang/codex-private-skills|B_SINGLE_PAGE_MATURITY_20261009|B33-VM-F022
+HANDOFF_STATE_CODE=续接B|cuiqinggang/codex-private-skills|B_SINGLE_PAGE_MATURITY_20261009|B33-VM-F023
 
 B33_VIRTUAL_EVIDENCE=skills/artificial-single-page-extreme-time-engine/scenarios/B33_FULL_STATE_VIRTUAL_REPLAY_V2.md
 
@@ -110,3 +110,10 @@ B33_DIRECT_CHATGPT_TABS=2
 N8N_REQUIRED_FOR_DIRECT_ROUTE=NO
 B33_AUTO_SEND_PRIOR_PLATFORM_BLOCK=STILL_ACTIVE
 B33_F022_REAL_AUTO_SEND_COUNT=0
+
+B33_F023_DIRECT_NEW_CHAT_REAL_NO_SEND_FREEZE=skills/artificial-single-page-extreme-time-engine/tasks/B_SINGLE_PAGE_MATURITY_20261009/freezes/CURRENT_TASK_FREEZE_V23.md
+B33_REAL_NEW_CHAT_CLICK=PASS
+B33_REAL_COMPOSER_READY=PASS
+B33_REAL_NO_SEND_NEW_CHAT_MS=16887
+B33_F023_REAL_AUTO_SEND_COUNT=0
+B33_F023_REAL_GPT_RESUME=NOT_TESTED
