@@ -42,3 +42,11 @@ GPT（当前用户ChatGPT普通浏览器页面）读取统一SKILL/START入口�
 2026-10-10的误操作性质是 **TEST 使用了用户正在交流的生产聊天**，不是“PRODUCTION 在合法 Freeze 后点击新聊天”本身错误。为防重演，当前本机和GitHub `adapter/B33_Handoff.ahk` 的 `--commit` 仍有临时 `PROTECTED_CHAT_HARD_STOP`。**该硬停是测试隔离验收前的临时保护，不是生产长期禁止规则。** 只有先验证“独立测试聊天确实隔离 + 目标会话精确绑定 + 当前一次发送UNKNOWN已只读对账”，才能按既有方法恢复真正的生产换页；恢复时保留生产 Freeze 前置门和一次提交的安全边界，不随意解除全部安全门禁。
 
 本页用户现有聊天在**测试模式**下必须保持原状；若将来它自身成为真正的任务生产节点，仍可在该节点合法冻结后按B33标准流程换页。测试结果不能被宣称为该用户正在聊天的生产任务已经完成。
+
+## B33 独立读取两轮并行的成熟复用优化（2026-10-10）
+合法短码已明确B路线、仓库和TASK_ID时，允许使用现有GitHub连接器**并行预取独立只读资料**：
+- 第一轮预取SKILL、START_HERE、B ROUTE及本TASK CURRENT；仍按SKILL→START→ROUTE→CURRENT进行逻辑验证，校验TASK_ID、短码FREEZE_ID、方法REF与状态REF。预取不是跳过逻辑门。
+- 第二轮只依据已验证CURRENT给出的实际路径，并行读取本任务合同与Freeze；若路径、提交或版本不一致即阻断。不可并行写入任务CURRENT/Freeze或重复UNKNOWN。
+- 只读批处理不替代新GPT真的读取与验证，也不更改Chrome、AHK/UIA-v2、代理、备份或生产/测试隔离规则。
+- 真实6文件读取单次对照：顺序2297ms、两轮并行1141ms，SHA一致；这是局部读取优化，端到端T_VALID仍UNKNOWN。详见 `../../scenarios/B33_READONLY_PARALLEL_TIMING_VIRTUAL_OPT_20261010.md`。
+- 平台对真实提交的安全拦截未解除，所有`--commit`保持`PROTECTED_CHAT_HARD_STOP`；不能为了完成测试绕过工具拒绝。
