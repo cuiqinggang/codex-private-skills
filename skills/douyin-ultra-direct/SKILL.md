@@ -1,13 +1,13 @@
 ---
 name: douyin-ultra-direct
-version: "1.1.0"
+version: "1.1.1"
 description: 抖音极速直下双入口+快速恢复技能。保存已认证高速下载路线、Windows生产入口、GPT直接调用规则和恢复方法，禁止下次从零重建。
 ---
 
-# 抖音极速直下 v1.1
+# 抖音极速直下 v1.1.1
 
 STATUS=PASS_FROZEN
-VERSION=1.1.0
+VERSION=1.1.1
 AUTHORITY_REPO=cuiqinggang/codex-private-skills
 AUTHORITY_PATH=skills/douyin-ultra-direct/
 
@@ -78,8 +78,9 @@ clipboard
 → 同分辨率优先较大 size_bytes / bitrate，避免误选低码率 HEVC
 → 同一流优先 www.douyin.com 官方 direct URL
 → direct 失败才回 CDN
-→ curl 下载到 .part
-→ ffprobe 验收 H.264 + AAC + 选定宽高 + duration>0
+→ curl 下载到程序 work 目录 .part（桌面仅发布验收通过的 MP4）
+→ ffprobe 检查源文件；H.264 直接通过，HEVC 调用既有 FFmpeg 转 H.264（NVENC 优先，libx264 备用；声音保留 AAC）
+→ ffprobe 验收 H.264 + AAC + 选定宽高 + duration>0；转码前后时长差≤0.25秒
 → os.replace 原子发布
 → FINAL_VALID
 
@@ -107,7 +108,7 @@ Reality 证明官方 direct URL 在本机/本次网络下可出现数量级吞�
 当用户已复制抖音链接并要求“下载抖音”：
 
 1. 优先使用在线 Windows 设备。
-2. 直接运行：
+2. 用户消息已提供明确链接时可传入 `--url <分享链接>`，避免依赖剪贴板当前内容；桌面双击仍默认读取剪贴板。直接运行：
    C:\Users\A\AppData\Local\Programs\Python\Python313\python.exe -X utf8 -B C:\AI\Douyin-Ultra-Direct\run.py
 3. 若进程仍运行，只观察同一 PID，禁止重复启动。
 4. 读取 C:\AI\Douyin-Ultra-Direct\last_run.json。
@@ -149,3 +150,16 @@ REALITY_EXECUTED_DURING_RESTORE=NO
 - 不把 demo 密码、Cookie、密钥写进仓库。
 - session.cookies 是本机运行态，不属于网络技能包。
 - 外部 API/CDN 未来变化时允许最小修复，但保持用户入口不复杂化。
+
+## HEVC 兼容修复（2026-10-09）
+
+版本 1.1.1。症状：桌面出现 .mp4.part，无法双击播放。
+已确认根因：源文件为完整 HEVC+AAC MP4；旧验收只接受 H.264，报 VIDEO_NOT_H264:hevc 后没有原子发布。禁止直接改后缀冒充兼容修复。
+
+同一分享链接 https://v.douyin.com/4UUX9Y6VmK8/ 已从解析源头完整重跑 PASS：
+- 作品 7694654845978164618；1080×1920；50.501995 秒；H.264+AAC。
+- T_SYSTEM_VALID=41158.814ms，其中 NVENC 兼容转换 37448.939ms。
+- 完整音视频解码 exit=0；三个回归测试 PASS（H.264 不转码、编码失败保留源文件、时长不匹配拒绝发布）。
+- 4.428736 秒仅是原 H.264 历史样本，禁止套用于 HEVC 转码或所有链接。
+- 转码会产生有损重编码且文件可能增大；不缩小分辨率，音频复制。
+- 临时文件保留在程序目录，成功后仅在桌面发布 .mp4。
