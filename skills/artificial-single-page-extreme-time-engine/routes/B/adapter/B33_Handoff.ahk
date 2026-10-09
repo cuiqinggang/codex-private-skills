@@ -39,8 +39,10 @@ if (A_Args.Length < 1) {
 }
 promptFile := A_Args[1]
 commit := (A_Args.Length >= 2 && A_Args[2] = "--commit")
-; Emergency protection: never rotate the user's ongoing ChatGPT conversation.
-; Reality commit is disabled until a separate test chat and ownership are proven.
+; TEMPORARY stop for ALL commits while test/production isolation is not validated.
+; TEST: never rotate an active user conversation; only the separately owned test chat.
+; PRODUCTION: the task's own live chat IS the valid target AFTER verified Freeze.
+; This gate does not permanently prohibit legitimate frozen production handoffs.
 if commit {
     FileAppend "BLOCKED:PROTECTED_CHAT_HARD_STOP`n", "*"
     ExitApp 90
