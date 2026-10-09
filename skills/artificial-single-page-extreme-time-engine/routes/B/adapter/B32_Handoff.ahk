@@ -34,7 +34,7 @@ try {
             addresses := root.FindElements({Type:"Edit", Name:addressName})
             for addressEl in addresses {
                 try {
-                    if RegExMatch(addressEl.Value, "i)^(https?://)?chatgpt\\.com(/|$)")
+                    if RegExMatch(addressEl.Value, "i)^(https?://)?chatgpt\.com(/|$)")
                         trustedAddress += 1
                 }
             }
