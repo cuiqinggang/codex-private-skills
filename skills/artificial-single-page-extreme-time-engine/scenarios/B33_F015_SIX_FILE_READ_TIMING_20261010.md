@@ -1,0 +1,26 @@
+# B33 F015：完整当前状态六文件真实GitHub读取对照
+DATE=2026-10-10
+TASK_ID=B_SINGLE_PAGE_MATURITY_20261009
+PARENT_FREEZE=B33-VM-F014
+MODE=REAL_GITHUB_READ_ONLY
+REAL_CHATGPT_AUTOMATED_SENDS=0
+VIRTUAL_MATURE=NO
+FINAL_VALID=NO
+
+## 同一批输入和实测
+文件：SKILL.md、START_HERE.md、routes/B/ROUTE.md、tasks/B_SINGLE_PAGE_MATURITY_20261009/CURRENT.md、同任务CURRENT_TASK_CONSTRAINTS_V3.md、同任务CURRENT_TASK_FREEZE_V14.md。
+同一次现行F014状态读数，六个blob SHA顺序为：
+67c46a1c47e2fc10fd3e62336bfb3758455e63a4
+2e68a1e7bee7bc8e47293931f4b5bc068c4ab4e1
+c2b0dcce924703d1cd5ab09f5e34f5a7e4b25d42
+44c5dd449b1d612184bbad10d63031fb01053b63
+92e8d856748dfc6e4437229920ebfadcaddfdfa1
+3caa2cf7802586c1f2a44f2685ee1fd691b37a53
+
+实测：按顺序逐文件GitHub fetch_file完成全部6个：2750ms；成熟GitHub连接器的Promise.all按首轮四文件（SKILL/START/ROUTE/CURRENT）+次轮依CURRENT所指合同/Freeze两文件：1203ms；6/6 SHA完全一致。此组局部时间收益1547ms，比例(2750-1203)/2750=56.25%。上一独立时间对照顺序2297ms、两轮并行1141ms，收益1156ms、50.33%；两组均只读且同输入哈希一致，但样本量小，不能宣称长期稳定均值。
+采用成熟的GitHub连接器并行独立资料并**依赖轮次**读取，不新写调度器。只读预取后仍须按SKILL→START_HERE→ROUTE→CURRENT→CONTRACT/FREEZE核验逻辑及REF版本、唯一写者，严格拒绝不一致或UNKNOWN状态。
+
+## 物理极限与净收益界线
+目前可证实的局部最大收益在本轮1547ms；在相同有效性与接口的前提下，不继续维护明显更慢的六文件串行读取。并行仅能缩短GitHub读取关键路径；T_BASE_REAL（同合同整套现实完整时间）、T_PHYSICAL_LIMIT（基于真实完整物理关键路径）、T_VIRTUAL_BEST（整套优化虚拟最短）仍为UNKNOWN。B33原Chrome自动新聊天、合法短码一次发送、新GPT网络恢复/模型ACK与原质量业务成果没有合法同口径基线。任何把1203ms或F014离线AHK的578ms相加后宣称B33全程最短的行为都不合规。
+没有额外实现成本显著增加的证据；保持B方案候选，当前边际下一最大可行动作必须集中获得真实模型/官网完整基线、而不是重复已通过的离线规则攻击或继续无根据提速。
+STOP_GATE=NOT_PASSED；不可进入优化后FINAL_REALITY_ONCE；不允许绕过先前被平台阻断的ChatGPT自动发送工具调用，也不解锁正式AHK --commit。
