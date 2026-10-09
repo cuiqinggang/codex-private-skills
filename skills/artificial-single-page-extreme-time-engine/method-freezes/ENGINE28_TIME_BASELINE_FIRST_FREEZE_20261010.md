@@ -26,3 +26,10 @@ T_VIRTUAL_BEST必须是完整可重放虚拟成熟方案的最佳有效时间，
 
 ## 4. 验收
 以commit SHA和权威main仓库独立回读为准。本文件不构成B33任务冻结更新，不授权恢复之前被平台拒绝的ChatGPT聊天自动发送。
+
+## 5. 最终发布回读核验
+- 第28版引擎最终一致性修正提交：1b8da0896db8e689fc9b8f1be892447d9b59064；ENGINE.md 最新回读Blob SHA=9dc78d259e8e3b6f8c3fbd2d252df6f92d4c1766，版本头仍第28版，已消除第4.1/第6/第9节的旧三强优先表述。
+- 第25版大脑最终精确修正提交：e7213f5afbc479204d7be43705cb8ee54ea898df；BRAIN.md 最新回读Blob SHA=d2300549634c6903985dc58c4494c98f4174f5d2，版本头仍第25版，两个Reality阶段和四种时间均明确。
+- 独立冻结文件首次提交：94a12ce0735761fd30a607c794a59323508fe16a。本追加记录保留历史提交证据与本次最终正文SHA，以当前main读取最新文件为准。
+- 只读确认B路仍B33/B29/B23；B任务当前F013且VIRTUAL_MATURE=NO、FINAL_VALID=NO；不改变任务冻结或原权限硬停。
+- 成熟写入方法：优先GitHub官方Contents API对现有文件按blob SHA执行update_file，对新增文件执行create_file，逐项拿到Commit SHA后回读。create_tree平台安全拒绝的内部规则仍不可观测，故仅可确定旧底层组合方式在本会话被拒绝、标准Contents方式本次成功，不可编造安全规则具体原因。
