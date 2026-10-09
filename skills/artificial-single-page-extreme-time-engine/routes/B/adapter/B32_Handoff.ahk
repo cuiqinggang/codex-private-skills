@@ -29,13 +29,16 @@ try {
     ; The Chrome tab title may omit "ChatGPT"; verify the real origin using
     ; the mature UIA address-bar element instead of comparing window titles.
     trustedAddress := 0
+    oldChatUrl := ""
     for addressName in ["地址和搜索栏", "Address and search bar"] {
         try {
             addresses := root.FindElements({Type:"Edit", Name:addressName})
             for addressEl in addresses {
                 try {
-                    if RegExMatch(addressEl.Value, "i)^(https?://)?chatgpt\.com(/|$)")
+                    if RegExMatch(addressEl.Value, "i)^(https?://)?chatgpt\.com(/|$)") {
                         trustedAddress += 1
+                        oldChatUrl := addressEl.Value
+                    }
                 }
             }
         }
@@ -79,8 +82,18 @@ try {
     composerEl := 0
     editorLabels := ["向 ChatGPT 提问", "询问 ChatGPT", "询问任何问题", "Message ChatGPT", "Ask anything", "发送消息给 ChatGPT"]
     editorDeadline := A_TickCount + 2000
+    editorReady := false
     while A_TickCount < editorDeadline {
         root := UIA.ElementFromHandle("A")
+        ; Verify the old conversation is no longer the destination.
+        onNewChat := false
+        for addressName in ["地址和搜索栏", "Address and search bar"] {
+            try {
+                bar := root.FindElement({Type:"Edit", Name:addressName})
+                if RegExMatch(bar.Value, "i)^(https?://)?chatgpt\.com/?(\?.*)?$")
+                    onNewChat := true
+            }
+        }
         editMatches := 0
         for candidate in root.FindElements({Type:"Edit"}) {
             try {
@@ -93,15 +106,17 @@ try {
                 }
             }
         }
-        if editMatches = 1
+        if editMatches = 1 && onNewChat {
+            editorReady := true
             break
+        }
         if editMatches > 1 {
             FileAppend "BLOCKED:AMBIGUOUS_NEW_CHAT_COMPOSER_NO_SUBMIT`n", "*"
             ExitApp 27
         }
         Sleep 20
     }
-    if !composerEl {
+    if !editorReady {
         FileAppend "BLOCKED:NEW_CHAT_COMPOSER_NOT_READY_NO_SUBMIT`n", "*"
         ExitApp 17
     }
