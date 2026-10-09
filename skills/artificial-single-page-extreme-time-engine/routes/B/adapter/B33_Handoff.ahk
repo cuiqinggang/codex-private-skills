@@ -55,6 +55,10 @@ if (mode != "" && mode != "TEST" && mode != "PRODUCTION") {
     FileAppend "BLOCKED:INVALID_MODE`n", "*"
     ExitApp 33
 }
+if (commit && mode = "") {
+    FileAppend "BLOCKED:COMMIT_REQUIRES_EXPLICIT_MODE`n", "*"
+    ExitApp 38
+}
 if mode != "" {
     if (!RegExMatch(expectedHwnd, "^[0-9]+$")
         || !RegExMatch(expectedUrl, "i)^https://chatgpt\.com/c/[a-z0-9-]+/?$")) {
@@ -135,7 +139,7 @@ try {
         ownedMarker := 0
         for textEl in activeDoc.FindElements({Type:"Text"}) {
             try {
-                if InStr(textEl.Name, parts[3])
+                if InStr(textEl.Name, "B33_TEST_CHAT_OWNERSHIP:" parts[3])
                     ownedMarker += 1
             }
         }
