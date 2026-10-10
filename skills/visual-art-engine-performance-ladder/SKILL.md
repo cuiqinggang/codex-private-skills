@@ -2,11 +2,15 @@
 name: visual-art-engine-performance-ladder
 description: 管理 Visual Art Engine 从 ComfyUI 控制路径到生产 H3 的 P0-P8 性能进化；用于固定 Benchmark Contract、调用第一性原理四列法 V4.0、记录真实端到端时间、阶段 99、FREEZE/REOPEN、ΔT_STAGE 和 PATH_ARCHITECTURE_ERROR。它不替代 visual-art-engine，也不在缺少证据时宣称性能通过。
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   short-description: 通用高性能视觉作品生成引擎
 ---
 
 # 通用高性能视觉作品生成引擎
+
+## V1.2.0 高品质图像至 H3 视频主候选（2026-10-11）
+
+选型须先阅读 [Krea 优先的成熟方案与 H3 衔接记录](references/KREA-H3-SELECTION-V1.md)。当前质量优先主候选只有 FLUX.1 Krea Dev FP8 Scaled；Juggernaut XL v9、FLUX.2 Klein 4B 仅作为备选资料保留，默认不得三套并行部署。选型不等于本机生图已经成功。发布用途核查模型的非商业/非生产使用限制；用户当前非营利实验可继续验证，不可直接断言公开运营获得授权。必须完成厨房静物和人物生活照独立采样的真实 G0-G3 证据及 H3 成片关卡，才能评定质量合格后的完整有效成片最短时间。原 V2.0 来源审计不可跳过。
 
 ## V1.1.0 强制图片来源审计（2026-10-10）
 
