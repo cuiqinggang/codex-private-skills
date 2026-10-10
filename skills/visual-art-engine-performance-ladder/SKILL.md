@@ -2,11 +2,16 @@
 name: visual-art-engine-performance-ladder
 description: 管理 Visual Art Engine 从 ComfyUI 控制路径到生产 H3 的 P0-P8 性能进化；用于固定 Benchmark Contract、调用第一性原理四列法 V4.0、记录真实端到端时间、阶段 99、FREEZE/REOPEN、ΔT_STAGE 和 PATH_ARCHITECTURE_ERROR。它不替代 visual-art-engine，也不在缺少证据时宣称性能通过。
 metadata:
-  version: "1.0.1"
+  version: "1.1.0"
   short-description: 通用高性能视觉作品生成引擎
 ---
 
 # 通用高性能视觉作品生成引擎
+
+## V1.1.0 强制图片来源审计（2026-10-10）
+
+涉及 ComfyUI 参考图片独立重新生成的任务，执行前必须加载 [《图片独立生成证据与防伪验收规范 V2.0》](references/IMAGE-INDEPENDENT-GENERATION-AUDIT-V2.md)，优先于任何旧的图片展示或无证据 PASS 规则。G0 环境、G1 工作流来源、G2 真实执行证据、G3 真实文件直接像素拼接与质量验收四门必须依次通过，否则禁止输出图片为正式生成成果、禁止虚构运行记录、禁止 FREEZE/PASS。若运行失败仅反馈真实故障和证据缺口，不得以 ChatGPT 图片生成结果替代。此约束只涉及生成任务证据门，不改变原有 P0 性能基准合同与四列法版本。
+
 
 这是 `visual-art-engine` 的性能进化管理层，不是替代实现。运行、测量、比较和冻结任何阶段前，必须直接加载正式技能 `mature-replication-four-column`，版本必须为 V4.0（metadata `4.0.0`）；不得另造四列法。依赖核验见 [METHODOLOGY-DEPENDENCY.md](references/METHODOLOGY-DEPENDENCY.md)。
 
