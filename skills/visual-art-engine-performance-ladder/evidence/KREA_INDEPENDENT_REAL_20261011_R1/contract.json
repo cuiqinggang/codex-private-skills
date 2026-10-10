@@ -1,0 +1,15 @@
+{
+  "contract": "Krea Dev independent noise-to-image; original comparison-only; no image input to sampling",
+  "source_image": "C:\\AI\\ComfyUI_Aaki_v3\\data\\input\\kitchen_gpt_reference.png",
+  "source_sha256": "f662282ef24ec945c00430be54b8eda5c4816e1c052c14e184af55e21a284945",
+  "from_official_template": "Comfy-Org/workflow_templates/templates/flux1_krea_dev.json",
+  "diffs_to_official": "t5xxl_fp16->t5xxl_fp8_scaled; 1024x1024 -> 832x1024; seed fixed; prompt text; output prefix",
+  "latent_path": [
+    "EmptySD3LatentImage",
+    "KSampler",
+    "VAEDecode",
+    "SaveImage"
+  ],
+  "reference_image_connection": false,
+  "negative_prompt_mode": "ConditioningZeroOut per official Krea template"
+}

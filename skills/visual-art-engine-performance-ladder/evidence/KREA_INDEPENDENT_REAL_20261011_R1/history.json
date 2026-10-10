@@ -1,0 +1,163 @@
+{
+  "40b425ff-5308-4ae1-85b5-1b7c49daa952": {
+    "prompt": [
+      2,
+      "40b425ff-5308-4ae1-85b5-1b7c49daa952",
+      {
+        "1": {
+          "class_type": "UNETLoader",
+          "inputs": {
+            "unet_name": "flux1-krea-dev_fp8_scaled.safetensors",
+            "weight_dtype": "default"
+          }
+        },
+        "2": {
+          "class_type": "DualCLIPLoader",
+          "inputs": {
+            "clip_name1": "clip_l.safetensors",
+            "clip_name2": "t5xxl_fp8_e4m3fn_scaled.safetensors",
+            "type": "flux",
+            "device": "default"
+          }
+        },
+        "3": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "ae.safetensors"
+          }
+        },
+        "4": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "clip": [
+              "2",
+              0
+            ],
+            "text": "An authentic premium lifestyle editorial photograph in a warm and welcoming lived-in home kitchen, soft autumn afternoon sunlight streaming through a window on the left and casting realistic gentle leafy shadows on a light stone countertop. Near the foreground a woman wearing a textured ivory linen blouse is gently holding a round dark wire basket with her two natural anatomically correct hands; no face in frame. Exactly two fresh ripe oranges with realistic orange-peel pores, one small healthy cream-white pumpkin with subtle pale golden vertical stripes, a transparent clamp-lid glass jar, a single warm dark wood spoon, and a casually folded oatmeal linen tea towel with charcoal stripes are in the basket. Trailing green pothos vines in a clear water vase on the left, simple wooden kitchen shelves, off-white ceramic bowls, stacked plates, and well-used wood chopping boards behind. Natural filmic dynamic range, nuanced shadows, believable contact shadows, pleasing tactile wood, glass and textile textures, 35mm full-frame photography, unobtrusive shallow depth of field, subtle ordinary home imperfections, true-to-life healthy skin, no plastic CGI appearance, elegant but not styled as a catalog, calm intimate quiet moment, completely credible real-world photography."
+          }
+        },
+        "5": {
+          "class_type": "ConditioningZeroOut",
+          "inputs": {
+            "conditioning": [
+              "4",
+              0
+            ]
+          }
+        },
+        "6": {
+          "class_type": "EmptySD3LatentImage",
+          "inputs": {
+            "width": 832,
+            "height": 1024,
+            "batch_size": 1
+          }
+        },
+        "7": {
+          "class_type": "KSampler",
+          "inputs": {
+            "model": [
+              "1",
+              0
+            ],
+            "positive": [
+              "4",
+              0
+            ],
+            "negative": [
+              "5",
+              0
+            ],
+            "latent_image": [
+              "6",
+              0
+            ],
+            "seed": 202610110044,
+            "steps": 20,
+            "cfg": 1.0,
+            "sampler_name": "euler",
+            "scheduler": "simple",
+            "denoise": 1.0
+          }
+        },
+        "8": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "samples": [
+              "7",
+              0
+            ],
+            "vae": [
+              "3",
+              0
+            ]
+          }
+        },
+        "9": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "8",
+              0
+            ],
+            "filename_prefix": "KREA_INDEPENDENT_REAL_R1"
+          }
+        }
+      },
+      {
+        "client_id": "KREA_INDEPENDENT_20261011_R1",
+        "create_time": 1791651870852
+      },
+      [
+        "9"
+      ]
+    ],
+    "outputs": {
+      "9": {
+        "images": [
+          {
+            "filename": "KREA_INDEPENDENT_REAL_R1_00001_.png",
+            "subfolder": "",
+            "type": "output"
+          }
+        ]
+      }
+    },
+    "status": {
+      "status_str": "success",
+      "completed": true,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "40b425ff-5308-4ae1-85b5-1b7c49daa952",
+            "timestamp": 1791651870945
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [],
+            "prompt_id": "40b425ff-5308-4ae1-85b5-1b7c49daa952",
+            "timestamp": 1791651872575
+          }
+        ],
+        [
+          "execution_success",
+          {
+            "prompt_id": "40b425ff-5308-4ae1-85b5-1b7c49daa952",
+            "timestamp": 1791652088424
+          }
+        ]
+      ]
+    },
+    "meta": {
+      "9": {
+        "node_id": "9",
+        "display_node": "9",
+        "parent_node": null,
+        "real_node_id": "9"
+      }
+    }
+  }
+}

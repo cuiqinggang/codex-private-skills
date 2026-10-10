@@ -1,0 +1,39 @@
+{
+  "comfy_prompt_id": "40b425ff-5308-4ae1-85b5-1b7c49daa952",
+  "history_status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "40b425ff-5308-4ae1-85b5-1b7c49daa952",
+          "timestamp": 1791651870945
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [],
+          "prompt_id": "40b425ff-5308-4ae1-85b5-1b7c49daa952",
+          "timestamp": 1791651872575
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "40b425ff-5308-4ae1-85b5-1b7c49daa952",
+          "timestamp": 1791652088424
+        }
+      ]
+    ]
+  },
+  "elapsed_submit_to_file_s": 235.45,
+  "original_sha256": "f662282ef24ec945c00430be54b8eda5c4816e1c052c14e184af55e21a284945",
+  "workflow_sha256": "345419a83f553c85f2864410c0b96c9a37b2f739e6e20f6f4037fd380b5c29e1",
+  "generated_sha256": "c1cd6ff5ded8a5fd256a2f309c5372d8d6d9c6b4b0c2c7d656e4c8f215a0faa6",
+  "comparison_sha256": "acd5d07c690cbcd8e01bb55481a1c3e34095452f79dfdfde2983efc6618fe7f0",
+  "output_source_file": "C:\\AI\\ComfyUI_Aaki_v3\\data\\output\\KREA_INDEPENDENT_REAL_R1_00001_.png",
+  "evidence_folder": "C:\\AI\\ComfyUI_Aaki_v3\\data\\output\\KREA_INDEPENDENT_REAL_20261011_R1",
+  "pixel_comparison": "PIL contain + paste on white canvas, no generative editing"
+}
