@@ -5,6 +5,8 @@ CURRENT_BRAIN=B29
 CURRENT_TEMPLATE=B23
 ROUTE=B｜STATUS=METHOD_READY_FOR_VIRTUAL_MATURITY｜VIRTUAL_MATURE=NO｜FINAL_VALID=NO
 
+> **2026-10-10 状态纠正：** 历史 `adapter/B33_Handoff.ahk` 已按用户要求删除，不再作为可运行工具引用。本文件保留为B33历史路线记录，其中描述该适配器的内容已过期，禁止调用不存在的脚本。新的GPT单主控/专用浏览器CEO接续试验归属ENGINE29草案，使用既有成熟Playwright/CDP及独立测试标签；新路线必须重新做发送、Freeze恢复与端到端验收，不继承B33历史保护脚本，也不宣称自动接续已成功。
+
 ## 版本继承（本技能包只有一份28版共同总纲）
 - `ENGINE_B_V33.md` → B32 → B31 → B30 → B29 → `../../ENGINE.md` 第28版；
 - `BRAIN_B_V29.md` → B28 → B27 → B26 → `../../BRAIN.md` 第25版；
