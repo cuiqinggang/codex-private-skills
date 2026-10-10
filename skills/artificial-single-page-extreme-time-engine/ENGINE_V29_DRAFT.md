@@ -43,11 +43,11 @@ Exactly-once 三态保持：CONFIRMED_DONE 不重做；CONFIRMED_NOT_DONE 可受
 
 ## 4. 同任务对照与并行度实验（只定义合同，未声称完成）
 
-对 G / C / H 三候选分别在可合法复用的同一类真实任务和同一个 DONE_WHEN 下测试，按 **并行度 1、2、4、8** 分别记录成功完成数量、完整批次墙钟时间、单任务延迟分布、重试/冲突、tokens或工具成本。不能只比较首个完成或单轮平均耗时。顺序随机或交叉轮换以减小缓存、网络、模型负载等顺序偏差。取可信重复次数，按用户的真实使用规模衡量部署/维护摊销，不做无意义百万次估算。
+对 G / C / H 三候选分别在可合法复用的同一类真实任务和同一个 DONE_WHEN 下测试，按 **并行度 1、3、5、8** 分别记录成功完成数量、完整批次墙钟时间、单任务延迟分布、重试/冲突、tokens或工具成本。不能只比较首个完成或单轮平均耗时。顺序随机或交叉轮换以减小缓存、网络、模型负载等顺序偏差。取可信重复次数，按用户的真实使用规模衡量部署/维护摊销，不做无意义百万次估算。
 
 同一批样本需分清两类问题：
 1. **单任务完工时延**：从 TASK_ACCEPTED 到 FINAL_VALID；并行切分增加合并成本。
-2. **多任务吞吐 / 批次有效时间**：从同批 TASK_ACCEPTED 到全部目标 VALID；8路不一定快于4路或2路，须实测。
+2. **多任务吞吐 / 批次有效时间**：从同批 TASK_ACCEPTED 到全部目标 VALID；8路不一定快于5路或3路，须实测。
 
 无相同边界现实基线 `T_BASE_REAL`、可信整体虚拟 `T_VIRTUAL_BEST` 与真实授权最终验证时，`GAIN_PERCENT`、`SPEEDUP`、`T_VALID_REAL` 均记录 UNKNOWN。沿用“现实成熟GOOD基线→物理界限→最多3成熟候选→连续虚拟成熟→STOP_GATE→整套Freeze→最终1次Reality”的总纲。
 
@@ -64,7 +64,7 @@ Exactly-once 三态保持：CONFIRMED_DONE 不重做；CONFIRMED_NOT_DONE 可受
 | E29-05 | Codex专项执行与审计 | 与GPT同质代码/问题解决比对，审查非代替实做 |
 | E29-06 | 混合GPT+Codex角色分配 | 兼容单CEO、不同Agent交接和净收益核算 |
 | E29-07 | 并发、故障与安全 | 共享浏览器冲突、UNKNOWN、Freeze失败、保护页不误操作 |
-| E29-08 | 公平时间实验 | G/C/H × 并行1/2/4/8，同合同T_VALID、吞吐及回滚 |
+| E29-08 | 公平时间实验 | G/C/H × 并行1/3/5/8，同合同T_VALID、吞吐及回滚 |
 
 每个子任务的最小回传字段：`CASE_ID | ACTOR | INPUT_SHA_OR_HASH | TASK/NODE/OWNER | BASELINE | METHOD_REF | TASK_STATE_REF | STATUS(VIRTUAL/REAL) | VALID | T_START/T_END | T_VALID | STRONGEST_COUNTEREXAMPLE | EVIDENCE | NEXT`。若无原始日志或证据，只能标 UNKNOWN / NOT_TESTED。
 
