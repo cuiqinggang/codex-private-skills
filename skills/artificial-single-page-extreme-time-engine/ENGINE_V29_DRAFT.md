@@ -73,3 +73,6 @@ Exactly-once 三态保持：CONFIRMED_DONE 不重做；CONFIRMED_NOT_DONE 可受
 当前只记录候选架构与验收任务：`DESIGN_RECORDED=YES`，`VIRTUAL_MATURE=NO`，`REALITY=NOT_TESTED`，`PUBLIC_ENGINE29_ACTIVE=NO`。
 
 不得因为本草案文件创建成功，就修改公共 `ENGINE.md` 28版版本头、A29/B33 ROUTE、旧任务 CURRENT、B33 PROTECTED_CHAT_HARD_STOP；新公共 ENGINE29 只有在虚拟成熟和对应的合法现实验收后，通过官方Contents API差分发布与独立回读，再由明确的正式入口激活。遇 GitHub 或 Codex 任何安全策略拒绝，仅保留拒绝原文和实际状态，停止该受阻动作，不换通道规避。
+
+## 7. G/C/H通用阻塞恢复原则（候选规则，未激活）
+普通技术阻塞≠母任务结束。先复用现成成熟技能包，建立 GOOD→BAD 正反差分，枚举并组合有依据的成熟候选；允许大量**虚拟**探索，但每轮只保留最多3个高净收益候选，直到 Freeze 与合法 Reality 验证。失败需记录反例、继续/回滚条件及完整时间，恢复后从合法原节点继续，不以“阻塞”取代解决。局部权限拒绝仅停对应动作；不得绕安全策略改换通道规避，其他合法任务可继续。不能保证所有问题必然解决；停止须有 FINAL_VALID、无净收益新候选、显式用户停止、资源上限或硬性边界等可核验证据。详情复用 `../extreme-time-automation-bridge/SKILL.md` 的《阻塞不等于放弃》门禁；本第29版仍为 PROPOSED_NOT_ACTIVE。
