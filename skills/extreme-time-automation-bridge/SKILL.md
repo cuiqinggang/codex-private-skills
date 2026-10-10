@@ -1,13 +1,13 @@
 ---
 name: extreme-time-automation-bridge
-version: "0.3.1"
+version: "0.3.2"
 description: GPT直连Windows双路执行桥。主路为 Desktop Commander Remote，备路为 GitHub Actions + Windows self-hosted runner；新增 DCR 配置损坏后的最短重配恢复与后台自启动自重连。
 ---
 
-# GPT直连Windows双路执行桥 v0.3.1
+# GPT直连Windows双路执行桥 v0.3.2
 
 STATUS=REALITY_PARTIAL_PERSISTENCE
-VERSION=0.3.1
+VERSION=0.3.2
 PRIMARY_ROUTE_CURRENT=PASS
 PRIMARY_DEVICE_NAME=DESKTOP-4A1EGTM
 PRIMARY_DEVICE_ID=f6990966-5870-484b-bf79-409bc6fb963e
@@ -96,3 +96,8 @@ launcher：C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommande
 **已回读的2026-10-10实例事实：** 容器共7个已有工作流，其中 `PY9w2v8FnZmj7nff`（N8N-DEPLOY-03｜Reasonix 本机成果闭环）`active=true`，POST `/webhook/n8n-deploy-03-task`，后续有本机Reasonix执行节点；`v27McpReadonly20261009`（V27-MCP-READONLY-DISCOVERY-20261009）`active=false`，入口为Manual Trigger，没有现成可直接外部POST的业务Webhook。**二者合同不同，不可当作同一浏览器竞速任务。**
 **端口冲突诊断：** 对已运行容器执行 `docker exec n8n-local n8n execute --id=...` 报 `n8n Task Broker's port 5679 is already in use`，是该命令在运行容器内启动新的CLI执行上下文引发端口冲突，**并非n8n主服务离线，也不是授权错误**。不要停止现有服务、改端口或重建容器来“修复”此只读测试。改用已存在的正常触发入口；缺少匹配的合法入口时记录缺口，在获准范围内按成熟n8n功能对工作流做最小适配并单独验收。
 **常驻健康标准：** docker健康 + 正确现有工作流激活状态 + 匹配其合同的获准触发 + 可回读最终业务结果；前两项不能代替后二项。断线按原DCR v0.3.1恢复流程处理，不修改FlClash或Windows代理。当前n8n服务在线且有一个可触发的历史Reasonix工作流，但“GPT↔n8n↔现有浏览器同任务竞速”仍`NOT_TESTED`。
+
+## v0.3.2 变更摘要
+- 增补n8n常驻调用入口的诊断和恢复规程；修复把401误判为服务故障、把CLI端口冲突误判为需要重授权的排障错误。
+- 保留v0.3.1已验证的DCR/Actions双路结构、设备和执行器配置，未重建系统。
+- 此为规范和现存入口的只读现场验收升级；n8n与浏览器同合同端到端竞速仍待Reality，不能宣称已经完成。
