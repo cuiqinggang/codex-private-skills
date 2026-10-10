@@ -85,3 +85,14 @@ launcher：C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommande
 7. **诚实边界：** 成熟组合显著增加可解机会，但并不能保证每个问题一定可解决，特别是授权、物理限制或不可用外部依赖；不得用“必然解决”代替现实证据。
 
 记录字段：BLOCKER_ID、GOOD_BASELINE、FIRST_DELTA、ERROR_CLASS、MATURE_CANDIDATES、VIRTUAL_FILTER、AUTHORIZED_REALITY、EXACTLY_ONCE_STATE、T_VALID、NEXT、STOP_REASON。此为方法规则增补，不代表双路全部新场景已现实验收。
+
+
+## n8n 常驻可调用诊断与入口区分（2026-10-10）
+**现场证据：** Windows Docker 容器 `n8n-local`（`n8nio/n8n:stable`）健康运行，127.0.0.1:5678/healthz HTTP200，浏览器Chrome CDP 127.0.0.1:9223/json/version HTTP200；n8n `/rest/workflows` 未带会话返回401，只表示受保护管理接口未认证，**绝不能据此判断n8n故障、要求用户重新授权或停止任务。**
+**正确三层检查：**
+1. `docker ps` 核验健康；`Invoke-WebRequest http://127.0.0.1:5678/healthz` 核验服务；此层不代表业务成功。
+2. 使用已经配置好的、获准的n8n容器原生CLI只读枚举 `docker exec n8n-local n8n list:workflow --all`；必要时 `export:workflow --all --output=/tmp/<临时文件>.json` 检查 `active`、节点类型、Webhook方法和路径，禁止把敏感凭据输出日志。Manual Trigger（手动触发）与已激活Webhook是两种不同运行入口。
+3. 仅对已知、获准且副作用范围清楚的Webhook提交任务，必须取回业务回执并核验Exactly-once；不能把任意活跃Webhook当作无副作用测试接口。非幂等任务如结果UNKNOWN，先查既有执行记录，绝不盲目重复。
+**已回读的2026-10-10实例事实：** 容器共7个已有工作流，其中 `PY9w2v8FnZmj7nff`（N8N-DEPLOY-03｜Reasonix 本机成果闭环）`active=true`，POST `/webhook/n8n-deploy-03-task`，后续有本机Reasonix执行节点；`v27McpReadonly20261009`（V27-MCP-READONLY-DISCOVERY-20261009）`active=false`，入口为Manual Trigger，没有现成可直接外部POST的业务Webhook。**二者合同不同，不可当作同一浏览器竞速任务。**
+**端口冲突诊断：** 对已运行容器执行 `docker exec n8n-local n8n execute --id=...` 报 `n8n Task Broker's port 5679 is already in use`，是该命令在运行容器内启动新的CLI执行上下文引发端口冲突，**并非n8n主服务离线，也不是授权错误**。不要停止现有服务、改端口或重建容器来“修复”此只读测试。改用已存在的正常触发入口；缺少匹配的合法入口时记录缺口，在获准范围内按成熟n8n功能对工作流做最小适配并单独验收。
+**常驻健康标准：** docker健康 + 正确现有工作流激活状态 + 匹配其合同的获准触发 + 可回读最终业务结果；前两项不能代替后二项。断线按原DCR v0.3.1恢复流程处理，不修改FlClash或Windows代理。当前n8n服务在线且有一个可触发的历史Reasonix工作流，但“GPT↔n8n↔现有浏览器同任务竞速”仍`NOT_TESTED`。
