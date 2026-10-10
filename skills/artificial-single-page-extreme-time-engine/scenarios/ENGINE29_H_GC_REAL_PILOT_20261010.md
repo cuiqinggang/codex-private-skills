@@ -19,3 +19,6 @@ E29-08 AC39F430740791814B761D3AE9C19F4409F8386484FC305436D8DCEE5E31B54F
 Codex专项：H29-GC-R01 已启动，CLI会话ID=01a125d2-b244-7831-b82a-d9a3d52de14b；输出预期写 H29-GC-R01_report.txt。启动有两项 YAML frontmatter 技能加载错误，尚未能认定对运行是否有影响。
 证据状态：GPT段=REAL；Codex=STARTED_NOT_YET_VALIDATED；混合最终=UNKNOWN；G/C/H公平基准=NOT_TESTED；1/3/5/8并发=NOT_TESTED；正式公共29=NOT_ACTIVE。
 注意：这里没有对现行 ENGINE.md 或 A29/B33 进行任何修改。
+
+## 2026-10-10 追加真实回读：Codex已返回，但其只读终端遭策略拒绝
+Windows 报告 H29-GC-R01_report.txt 已生成，28行，创建时间 2026-10-10T12:41:21Z。Codex报告两次尝试：PowerShell 7读取/哈希、简化 Get-Content 读取，均被执行策略返回 `rejected: blocked by policy`。独立读文件=0/8，SHA256=未取得；不应把此类安全策略拒绝与正常网络重连混为一谈，也不可将 GPT 的哈希结果冒充 Codex 独立验证。GC-R01独立审计=BLOCKED；完整GC VALID=NO。网络抖动可由原生Codex重连、查询既有会话、确认退出后有界重试，但策略明确拒绝不重复换命令规避。未修改公共引擎及A/B路线。
