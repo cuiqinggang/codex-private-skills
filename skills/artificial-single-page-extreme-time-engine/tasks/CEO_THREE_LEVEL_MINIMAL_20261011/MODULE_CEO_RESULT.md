@@ -1,0 +1,8 @@
+TASK_ID=CEO_THREE_LEVEL_MINIMAL_20261011
+NODE_ID=L2-MODULE-001
+OWNER=MODULE_CEO_LOGICAL_ROLE
+MODE=TEST_ONLY
+CHILD=L3-EXEC-001
+CHILD_RESULT=42
+CHECK=PASS, reported content equals expected constant 42
+SCOPE=logical aggregation by current GPT, independent module CEO browser page NOT_TESTED
