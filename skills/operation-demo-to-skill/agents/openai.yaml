@@ -1,0 +1,3 @@
+interface:
+  display_name: "《操作演示自动技能化》第1版"
+  short_description: "复用现有录制证据创建可验证技能，提供 Windows 安全模拟验收"
