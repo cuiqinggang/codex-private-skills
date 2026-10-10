@@ -15,7 +15,7 @@ GPT 是规划、意图理解和最终验收主控；Codex 仅在工程适配、�
 - 录制源：`C:\AI\record-and-replay-evaluation\SKILL.md`（开源 record-and-replay；不得重造事件录制器）。
 - 声音：Windows FFmpeg 8.1.1 的 DirectShow 输入 `麦克风 (Web Camera)`，优先使用现有系统设备；视频或声音只是解释意图的补充证据。
 - 第2版**薄适配**：`C:\AI\operation-demo-to-skill-v2\capture.mjs`，只组合现有 FFmpeg 和 upstream `desktop-record.mjs` 的启动/停止，记录 UTC 开始/结束及各自产物，不创建新通用调度器。
-- Codex `skill-creator` 生成 SKILL.md、按需最小脚本、验收证据；GPT 从口述“为什么”与事件“实际发生什么”推断真正目标。当前尚无自动语音转写服务的已认证接口，不得假装口述已经自动被理解。
+- Codex `skill-creator` 生成 SKILL.md、按需最小脚本、验收证据；GPT 从口述“为什么”与事件“实际发生什么”推断真正目标。已查到本地成熟 faster-whisper 1.2.1 + 缓存 base 模型，合成英语三句转写与时间戳测试 PASS。可参考 C:\AI\operation-demo-to-skill-v2\asr_vm.py；这仅是合成语音能力证据，尚无真实中文口述与同步动作对齐认证。
 - 网络权威方法：`cuiqinggang/codex-private-skills/skills/artificial-single-page-extreme-time-engine/START_HERE.md`，每次读取当时实际路由/版本。先成熟复用门、已有GOOD完整现实基线、最长关键路径/物理限制、≤3强成熟候选、连续虚拟成熟、STOP_GATE、Freeze，之后一次最终 Reality；缺少同边界有效时间则标 UNKNOWN，不宣布极限最优。
 
 ## 人工演示时的最短用户入口
@@ -31,3 +31,7 @@ GPT 是规划、意图理解和最终验收主控；Codex 仅在工程适配、�
 ## 安全和真实认证边界
 
 桌面记录包含按键/截图，麦克风录音也可能包含语音信息。仅当用户明确开始时录制，在本机保管原始证据，禁止上传原始录制到共同库。保持 FlClash、代理及已登录浏览器不变；不得未经授权执行外部业务发送。当前合成事件 + 合成音频双路 start/stop 已通过，麦克风独立采样成功；真实人员完整演示、语音转写、GPT 与 Codex 竞争/组合时间比较、极限时间认证仍未完成。状态 `PILOT`，不是 `FINAL_VALID`。
+
+## 虚拟闭环当前冻结前门禁
+
+同步采集、音频正常结束、事件摘要、语音转写均有合成测试证据；但同步**真实**口述+操作的时间对应、故障恢复和同边界完整 T_VALID 优化仍为 UNKNOWN，VIRTUAL_MATURE=NO、STOP_GATE=NO、FINAL_REALITY 尚不能运行。详见 C:\AI\operation-demo-to-skill-v2\VIRTUAL_REPORT.md 和 asr-vm-result.json。
