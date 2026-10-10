@@ -2,11 +2,18 @@
 name: visual-art-engine-performance-ladder
 description: 管理 Visual Art Engine 从 ComfyUI 控制路径到生产 H3 的 P0-P8 性能进化；用于固定 Benchmark Contract、调用第一性原理四列法 V4.0、记录真实端到端时间、阶段 99、FREEZE/REOPEN、ΔT_STAGE 和 PATH_ARCHITECTURE_ERROR。它不替代 visual-art-engine，也不在缺少证据时宣称性能通过。
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
   short-description: 通用高性能视觉作品生成引擎
 ---
 
 # 通用高性能视觉作品生成引擎
+
+## v1.2.1 真正的生成前置校验（2026-10-11）
+
+本地 ComfyUI/Krea 独立生图合同下，执行 **工具选择前置门**：任何拟作为正式结果的图片只能通过授权 Windows 执行桥的 ComfyUI API 工作流产生，要求先检查 G0/G1，运行后保存 ComfyUI 原生 prompt_id、history 与实物文件哈希再输出结果。ChatGPT image_gen、编辑图、改写参考图以及仅有图片生成工具的 gen_id 都不得视为 ComfyUI 证据或替代结果。若缺任一证据，只报告故障/不合规和既有证据，不展示为合格出图；严禁用生成工具制作左右“审计”图片。完整 V2.0 证据合同保持不变。
+
+本次工具绕路事故详情见 [2026-10-11 Krea image_gen 替代事故](references/INCIDENT-KREA-IMAGEGEN-SUBSTITUTION-20261011.md)。不得用本次 image_gen PNG 作为 Krea 或 H3 品质/时间基线，FINAL_VALID=NO。
+
 
 ## V1.2.0 高品质图像至 H3 视频主候选（2026-10-11）
 
