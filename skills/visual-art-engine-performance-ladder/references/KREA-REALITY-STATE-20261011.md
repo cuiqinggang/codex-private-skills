@@ -37,3 +37,16 @@
 下载器经官方 ModelScope 镜像（官方原工作流引用）于 2026-10-11 00:43:15 返回 `OK`，模型文件大小吻合、SHA256 比对通过、.aria2 续传文件不再存在；ComfyUI API /object_info 识别新 Krea UNETLoader、T5、VAE 及全部必需核心节点。
 **冻结：MODEL_DOWNLOAD=PASS；MODEL_FILE_INTEGRITY=PASS；REQUIRED_NODES=PASS；LOCAL_WORKFLOW_FILENAME_ADAPTED=PASS；MODEL_RUNTIME_LOAD=NOT_RUN；KREA_IMAGE_REALITY=NOT_RUN；QUALITY=NOT_VALID；H3=NOT_RUN；FINAL_VALID=NO。**
 禁止把文件哈希验收与实际 GPU 推理/高品质出图验收混为一谈。官方原工作流备份未修改；适配版唯一差分是替换默认 T5 FP16 文件名为经官方许可的 T5 FP8 Scaled。
+
+
+## Krea 独立生图 R1 本机实际执行结果（后续证据；覆盖本文件以前 NOT_RUN 状态）
+**冻结总判定：G0=PASS；G1=PASS；G2=PASS；G3=QUALITY_FAIL；FINAL_VALID=NO。**
+- 本机 ComfyUI API POST /prompt 返回 HTTP 200，prompt_id=`40b425ff-5308-4ae1-85b5-1b7c49daa952`，node_errors={}。
+- ComfyUI /history 中同 ID 的 status_str=success、completed=true、输出文件=KREA_INDEPENDENT_REAL_R1_00001_.png；已核验历史中的 workflow 与单独冻结 workflow_api.json 结构一致。
+- 官方 Krea FP8 主模型实际 GPU 加载日志 11353.02 MB loaded, full load=True；20/20 steps 实际采样，AutoencodingEngine 已加载并执行 SaveImage。服务端日志 `Prompt executed in 217.61 seconds`；从 API 提交至 PNG+证据落盘 235.45s（包含首次模型加载，不是已优化热启动速度）。
+- 生成设置：832×1024，steps=20、CFG=1、Euler/simple、seed=202610110044；DualCLIPLoader 使用 CLIP-L 和 T5 FP8，VAE ae。
+- 来源真实性：EmptySD3LatentImage 直连 KSampler.latent_image，不存在 LoadImage / VAEEncode / 参考图到 KSampler 的图像像素路径；参考图只在生成后对比使用。原图 SHA256=`f662282ef24ec945c00430be54b8eda5c4816e1c052c14e184af55e21a284945`；生成图 SHA256=`c1cd6ff5ded8a5fd256a2f309c5372d8d6d9c6b4b0c2c7d656e4c8f215a0faa6`。
+- 对比图使用已有原图与真实本机输出 PNG，通过 Pillow ImageOps.contain 和 paste 直接拼接，无生成式二次重绘；对比图 SHA256=`acd5d07c690cbcd8e01bb55481a1c3e34095452f79dfdfde2983efc6618fe7f0`。
+- 视觉审查：真实摄影风格已有进展，但相比高品质原图，主体构图和物件关系差异明显、右图明暗反差过强、木勺布料并未按描述完整呈现；不能认定原图同等级高品质门已通过，也不能冻结最优耗时。
+- GitHub 实际证据：`skills/visual-art-engine-performance-ladder/evidence/KREA_INDEPENDENT_REAL_20261011_R1/`，包含真实生成图、真实像素拼接对比图、参考原图、full_prompt.txt、workflow_api.json、submission.json、history.json、model_parameters.json、evidence_manifest.json、两个 GPU 快照以及 README。
+- 之前的 `KREA_IMAGE_REALITY=NOT_RUN` 已被本节的新执行证据更新为 `KREA_EXECUTION=PASS`；但 `KREA_QUALITY=FAIL` 与 `FINAL_VALID=NO`。
