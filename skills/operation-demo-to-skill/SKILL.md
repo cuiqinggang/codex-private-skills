@@ -1,37 +1,32 @@
 ---
 name: operation-demo-to-skill
-description: 《操作演示自动技能化》第2版。GPT先判断是否需要演示；需要时在Windows同步记录操作事件与麦克风口述，融合目标解释后以成熟方案优化并生成可验证自动化技能。用户说看我操作、启动双路录制、演示转技能时使用。
+description: 《操作演示自动技能化》第3版。GPT先判断是否可直接完成；必要时复用成熟Windows事件录制和可选麦克风音频，提炼业务目的并生成、验收可复用技能。用户说演示操作、录制成技能、操作转自动化时使用。
 metadata:
-  version: "2"
-  display_name: "《操作演示自动技能化》第2版"
-  release_state: "PILOT_DUAL_CAPTURE_TESTED"
+  version: "3"
+  display_name: "《操作演示自动技能化》第3版"
+  state: "MINIMAL_BASELINE_PASS_OPTIONAL_AUDIO_PILOT"
 ---
-# 《操作演示自动技能化》第2版
+# 《操作演示自动技能化》第3版
 
-GPT 是规划、意图理解和最终验收主控；Codex 仅在工程适配、脚本和执行复现更合适时调用。不要预设 Codex 更快，也不把人工做法当作最优实现。GPT 先判断是否可直接用成熟 API/CLI/技能达成目标，无需录制则不录；否则启动“操作事件 + 麦克风口述”同步录制。单独已有视频可复用 `codex-video-to-usable-skill-loop`。
+## 唯一主轴
+1. GPT明确任务目标、输入输出、VALID和权限，优先判断既有成熟API/CLI/Skill是否可以直接实现；可以则不录制。
+2. 需要演示时，只调用已有 `C:\AI\record-and-replay-evaluation\SKILL.md`。Windows浏览器录制优先语义定位，桌面则记录原生操作事件与必要截图。录制完成先检查完整性，再调用现成摘要器。
+3. GPT理解真实目的，并对照动作证据；使用现成 `skill-creator`，由 GPT 或按需 Codex 生成实际 `SKILL.md`。优先成熟 API/CLI 实现业务，不机械模仿鼠标坐标。关键目标含糊则报告 UNKNOWN。
+4. 在独立合法测试目录按技能正式入口执行，校验正确输出、重复执行、失败恢复，保存原始证据位置、版本、SHA及同边界完整耗时。
+5. 按网络权威 `cuiqinggang/codex-private-skills/skills/artificial-single-page-extreme-time-engine/START_HERE.md` 实行 GOOD 现实基线→最多三个成熟候选→连续虚拟成熟和完整时间→STOP_GATE→Freeze→一次最终 Reality。不可将自检耗时冒充 T_VALID 或最优认证。
 
-## 现有成熟资源与入口
+## 可选麦克风
+- 用户实际需要解释操作目的时，才额外启用已验证 Windows FFmpeg DirectShow 麦克风 `麦克风 (Web Camera)`。事件流是主记录；音频为可选补充，录音或转写失败不能使已经有效的基础技能无效。
+- 本机已有 FFmpeg 8.1.1、faster-whisper 1.2.1及缓存语音模型。已验证真实麦克风短采集、合成英语语音转写，尚未验证真人中文同会话精确对齐。
+- 旧版 `C:\AI\operation-demo-to-skill-v2\capture.mjs` 属实验性双路编排，不作为第3版生产默认入口。不得重造通用协调器。需要并录时复用成熟进程能力，保留实际起点与时间偏移，只有对齐验证通过才利用口述做语义判断。
 
-- 录制源：`C:\AI\record-and-replay-evaluation\SKILL.md`（开源 record-and-replay；不得重造事件录制器）。
-- 声音：Windows FFmpeg 8.1.1 的 DirectShow 输入 `麦克风 (Web Camera)`，优先使用现有系统设备；视频或声音只是解释意图的补充证据。
-- 第2版**薄适配**：`C:\AI\operation-demo-to-skill-v2\capture.mjs`，只组合现有 FFmpeg 和 upstream `desktop-record.mjs` 的启动/停止，记录 UTC 开始/结束及各自产物，不创建新通用调度器。
-- Codex `skill-creator` 生成 SKILL.md、按需最小脚本、验收证据；GPT 从口述“为什么”与事件“实际发生什么”推断真正目标。已查到本地成熟 faster-whisper 1.2.1 + 缓存 base 模型，合成英语三句转写与时间戳测试 PASS。可参考 C:\AI\operation-demo-to-skill-v2\asr_vm.py；这仅是合成语音能力证据，尚无真实中文口述与同步动作对齐认证。
-- 网络权威方法：`cuiqinggang/codex-private-skills/skills/artificial-single-page-extreme-time-engine/START_HERE.md`，每次读取当时实际路由/版本。先成熟复用门、已有GOOD完整现实基线、最长关键路径/物理限制、≤3强成熟候选、连续虚拟成熟、STOP_GATE、Freeze，之后一次最终 Reality；缺少同边界有效时间则标 UNKNOWN，不宣布极限最优。
+## 已核实的本机证据
+- v3最简合成录制+摘要：`C:\AI\record-and-replay-evaluation\evaluation-v1\evidence\v3-minimal-20261010\result.json`，PASS 2714.433ms。
+- 既有实例技能实际生成两份UTF-8中文文件：`C:\AI\record-and-replay-evaluation\evaluation-v1\evidence\v3-file-result-20261010\manifest.json`，内容相同、哈希相同。
+- 录音真实短采集和合成语音转写证据仍保存v2，不把它们冒充本次同会话真人测试。新录制自动技能生成、三模式同边界竞速、完整虚拟时间最优仍为 UNKNOWN。
+- 网络权威方法优先、本地执行副本次之；本地私有录制和原始音频不得上传GitHub。保持代理、浏览器原状态及已授权权限边界。
 
-## 人工演示时的最短用户入口
+## 使用入口
+用户说“启动第3版演示技能化，先判断是否需要录制”。GPT先执行复用门，必要时确认独立录制环境、再启动录制并等用户完成。完成后主动分析、生成技能、执行验收及优化，不把工具启动当作任务完成。
 
-1. 用户向 GPT 描述业务目标。GPT 先判断成熟方案是否可以直接完成。若需要演示，明确本轮授权开始后，经 Windows 桥调用：
-   `node C:\AI\operation-demo-to-skill-v2\capture.mjs start <唯一英文任务代号>`
-2. 只有返回 `status=recording` 后才通知用户开始。用户正常操作，同时对麦克风讲解每步目的、输入条件、为什么点击及期待什么结果；不需要额外手机录制。录制器并非 ChatGPT 原生录制功能。
-3. 用户说“结束”后调用：
-   `node C:\AI\operation-demo-to-skill-v2\capture.mjs stop <同一任务代号>`
-   回读 `result.json`、操作事件/摘要和 `narration-final.wav`。录音与电脑事件以 UTC 开始时间对齐，精确词句和动作映射仍需转写和人工或模型检查，不能把仅有音频文件当成已识别口述。
-4. GPT 对目标和方法去冗余、提炼参数与 VALID 判据，比较成熟候选，按引擎完整时间及故障恢复成熟；Codex 仅按需生成脚本/Skill并核验，验收通过后保存可发现的技能和证据。不要把录制过程机械坐标重放视为唯一实现。
-
-## 安全和真实认证边界
-
-桌面记录包含按键/截图，麦克风录音也可能包含语音信息。仅当用户明确开始时录制，在本机保管原始证据，禁止上传原始录制到共同库。保持 FlClash、代理及已登录浏览器不变；不得未经授权执行外部业务发送。当前合成事件 + 合成音频双路 start/stop 已通过，麦克风独立采样成功；真实人员完整演示、语音转写、GPT 与 Codex 竞争/组合时间比较、极限时间认证仍未完成。状态 `PILOT`，不是 `FINAL_VALID`。
-
-## 虚拟闭环当前冻结前门禁
-
-同步采集、音频正常结束、事件摘要、语音转写均有合成测试证据；但同步**真实**口述+操作的时间对应、故障恢复和同边界完整 T_VALID 优化仍为 UNKNOWN，VIRTUAL_MATURE=NO、STOP_GATE=NO、FINAL_REALITY 尚不能运行。详见 C:\AI\operation-demo-to-skill-v2\VIRTUAL_REPORT.md 和 asr-vm-result.json。
+当前状态：`MINIMAL_PATH_PASS / OPTIONAL_AUDIO_TESTED_SEPARATELY / VIRTUAL_MATURE=NO / FINAL_VALID=NO`。
