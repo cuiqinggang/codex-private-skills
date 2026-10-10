@@ -22,3 +22,8 @@
 - 提醒：RTX 2080 Ti 显存 22528MiB，官方说明大于 32GB 显存推荐 T5 FP16，所以保留现有 T5 FP8 是有官方依据的资源选型，不代表已认证与 FP16 输出像素无差异。不要在结果达标前为了速度改官方采样参数。
 - 用户关心下载进度不可见：因为是 Windows 远程后台 PowerShell aria2c 命令下载，浏览器不会显示下载图标；文件直接保存到 `C:\AI\ComfyUI_Aaki_v3\ComfyUI\models\diffusion_models`。
 - 最终门禁：MODEL_DOWNLOAD=COMPLETE；CHECKSUM_VALID、KREA_LOAD、KREA_REAL_GENERATION、QUALITY_PASS、H3_VALID 均需分别核验才可变成 PASS，未证明之前保持 FINAL_VALID=NO。
+
+## 官方已有组件完整性追加核验
+- CLIP-L 官方 SHA256：`660c6f5b1abae9dc498ac2d21e1347d2abdb0cf6c0c0c8576cd796491d9a6cdd`，本机计算匹配。
+- VAE `ae.safetensors` 官方 SHA256：`afc8e28272cd15db3919bacdb6918ce9c1ed22e96cb12c4d5ed0fba823529e38`，本机计算匹配。两项无需重新下载。
+- T5 FP8 Scaled 官方 SHA256：`a498f0485dc9536735258018417c3fd7758dc3bccc0a645feaa472b34955557a`，需等本机完整计算结果；主扩散模型哈希也需完整计算，不能只看文件大小。
