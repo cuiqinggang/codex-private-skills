@@ -27,3 +27,13 @@
 - CLIP-L 官方 SHA256：`660c6f5b1abae9dc498ac2d21e1347d2abdb0cf6c0c0c8576cd796491d9a6cdd`，本机计算匹配。
 - VAE `ae.safetensors` 官方 SHA256：`afc8e28272cd15db3919bacdb6918ce9c1ed22e96cb12c4d5ed0fba823529e38`，本机计算匹配。两项无需重新下载。
 - T5 FP8 Scaled 官方 SHA256：`a498f0485dc9536735258018417c3fd7758dc3bccc0a645feaa472b34955557a`，需等本机完整计算结果；主扩散模型哈希也需完整计算，不能只看文件大小。
+
+## 最终安装文件核验（2026-10-11，已实际计算）
+所有四项本机 SHA-256 与上述官方发布值完全一致：
+1. Krea FP8 主模型：11904639672 字节；`b17a8c21703c4d6ffb0e300dd920eff3cfd35c9a72a1abaf107e3788e408b8d8`，MATCH=YES。
+2. T5-XXL FP8 Scaled：5157348688 字节；`a498f0485dc9536735258018417c3fd7758dc3bccc0a645feaa472b34955557a`，MATCH=YES。
+3. CLIP-L：246144152 字节；`660c6f5b1abae9dc498ac2d21e1347d2abdb0cf6c0c0c8576cd796491d9a6cdd`，MATCH=YES。
+4. VAE ae：335304388 字节；`afc8e28272cd15db3919bacdb6918ce9c1ed22e96cb12c4d5ed0fba823529e38`，MATCH=YES。
+下载器经官方 ModelScope 镜像（官方原工作流引用）于 2026-10-11 00:43:15 返回 `OK`，模型文件大小吻合、SHA256 比对通过、.aria2 续传文件不再存在；ComfyUI API /object_info 识别新 Krea UNETLoader、T5、VAE 及全部必需核心节点。
+**冻结：MODEL_DOWNLOAD=PASS；MODEL_FILE_INTEGRITY=PASS；REQUIRED_NODES=PASS；LOCAL_WORKFLOW_FILENAME_ADAPTED=PASS；MODEL_RUNTIME_LOAD=NOT_RUN；KREA_IMAGE_REALITY=NOT_RUN；QUALITY=NOT_VALID；H3=NOT_RUN；FINAL_VALID=NO。**
+禁止把文件哈希验收与实际 GPU 推理/高品质出图验收混为一谈。官方原工作流备份未修改；适配版唯一差分是替换默认 T5 FP16 文件名为经官方许可的 T5 FP8 Scaled。
