@@ -21,3 +21,9 @@ PUBLIC_ENGINE29_ACTIVE=NO
 未取得Codex独立执行工具日志、输出或最终VALID；不得把八份SHA验证的外部结果归功于Codex。此前8次审核仍只属于虚拟设计审核。后续G/C/H×1/3/5/8需要同合同与总墙钟实测；维护公共28、A29、B33状态不变。
 ## 最终回执（覆盖先前RUNNING观察，2026-10-10）
 Codex CLI退出码0，进程runtime=166.59秒，tokens used=6327；注意CLI退出码0只代表模型回话完成，并非任务成功。Codex实际尝试了批量只读PowerShell和单文件Get-Content，均被工具执行策略明确拒绝：`blocked by policy`，从而无法打开任何目标文件。Codex真实读取成功0/8，严格验收FINAL_VALID=NO；这是授权/策略受阻的现实失败样本。外部独立PowerShell8份SHA校验不能替代Codex操作，也不能用其他执行路径绕过Codex工具策略拒绝。已出现WebSockets重连与HTTPS回退，且技能上下文预算超额，但不能隔离它们对166.59秒的因果贡献。G/H同合同数据仍无，无法比较优劣。后续先走合法授权/配置审查，不能规避被拒操作。
+
+## 根因深化：公开成熟故障同构（待本机复验）
+2026-10-10追加：OpenAI Codex GitHub issue #42172 与 #43881（2026年9月）记录了Windows原生Codex CLI采用 `--ignore-user-config --sandbox read-only` 时，即便 `Get-Content` 等简单只读命令也出现 `CreateProcess...blocked by policy`。控制试验表明遗漏Windows原生sandbox backend配置是关键原因之一；受影响样本在显式采用官方推荐 `windows.sandbox="elevated"` 的同时保留只读限制后成功执行读取；部分机器还发现SystemRoot缺失导致下一层PowerShell启动失败。
+本机先前使用相同核心参数及同类错误；这属于【高度吻合的已知缺陷】，不是本机根因已证实。官方参考：https://github.com/openai/codex/issues/42172 及 https://github.com/openai/codex/issues/43881；官方基础配置指南 https://developers.openai.com/zh-Hans/docs/config-file/config-basic。
+本地独立读取config.toml发现普通文件默认放行、审批按需；run-one.ps1却采用--ignore-user-config和approval_policy=never。为了避免把策略拒绝误当文件故障，在获得许可的原生沙盒配置核查后应做原样只读差分复验，保留执行边界，不使用关闭沙盒、禁用策略或替换工具的方式绕过拒绝。
+本次进一步尝试发起新的终端诊断时，工具级安全检查也明确阻止该调用；故没有凭空记录本机修复PASS。C29-R01最终REAL FAIL依旧成立，G/H对照仍未测。
