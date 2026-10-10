@@ -1,14 +1,16 @@
-# 《自动化单页面极限短时间引擎》第29版｜GPT单主控与n8n按需调用（待验收草案）
+# 《自动化单页面极限短时间引擎》第29版｜GPT单主控与n8n按需调用（基本流程冻结）
 
-VERSION=ENGINE29_DRAFT
-STATUS=PROPOSED_NOT_ACTIVE
+VERSION=ENGINE29_BASIC_FROZEN
+STATUS=BASIC_FLOW_FROZEN_PARTIAL_ACCEPTANCE
+FREEZE_DATE=2026-10-11
+FREEZE_ID=ENGINE29-BASIC-F001
 DATE=2026-10-10
 AUTHORITY=cuiqinggang/codex-private-skills/main
 INHERITS=ENGINE.md@28; BRAIN.md@25; routes/A/ROUTE.md@A29; routes/B/ROUTE.md@B33
 T_VALID_REAL=UNKNOWN
 VIRTUAL_MATURE=NO
 FINAL_VALID=NO
-ACTIVATION=FORBIDDEN_UNTIL_PASS
+ACTIVATION=FULL_ENGINE_NOT_PROMOTED; BASIC_FLOW_FROZEN
 
 > 本文件是用户已批准记录、尚未通过对照验收的第29版候选规则，不是公共 ENGINE29 已发布。当前唯一公共总纲仍为 `ENGINE.md` 第28版，A路线已激活 A29 专用浏览器布局，B路线仍为 B33。不得改旧任务 METHOD_REF / TASK_STATE_REF、稳定路线指针或原浏览器所有权。
 
@@ -134,3 +136,33 @@ Exactly-once 三态保持：CONFIRMED_DONE 不重做；CONFIRMED_NOT_DONE 可受
 
 ## 7. G/C/H通用阻塞恢复原则（候选规则，未激活）
 普通技术阻塞≠母任务结束。先复用现成成熟技能包，建立 GOOD→BAD 正反差分，枚举并组合有依据的成熟候选；允许大量**虚拟**探索，但每轮只保留最多3个高净收益候选，直到 Freeze 与合法 Reality 验证。失败需记录反例、继续/回滚条件及完整时间，恢复后从合法原节点继续，不以“阻塞”取代解决。局部权限拒绝仅停对应动作；不得绕安全策略改换通道规避，其他合法任务可继续。不能保证所有问题必然解决；停止须有 FINAL_VALID、无净收益新候选、显式用户停止、资源上限或硬性边界等可核验证据。详情复用 `../extreme-time-automation-bridge/SKILL.md` 的《阻塞不等于放弃》门禁；本第29版仍为 PROPOSED_NOT_ACTIVE。
+
+
+## 2026-10-11 基本流程冻结决定（ENGINE29-BASIC-F001，优先级高于本文草案历史段落）
+
+**冻结对象仅为用户确认的第29版基本工作流程；不是所有E29-01~08对照项目均已通过，也不自动替换公共ENGINE.md第28版。** 此前标为PROPOSED_NOT_ACTIVE的描述属于原草案历史状态，现基本流程已冻结；公开版本切换和完整生产FINAL_VALID仍需独立验收。不得因本次冻结误报完成全部现实测试。
+
+### A. 冻结运行骨架
+1. GPT CEO为默认唯一总主控。简单任务直接执行；复杂任务仅在合理净收益/隔离需求时创建独立Executor自然节点。CEO控制母任务唯一全局CURRENT；Executor只处理所属节点并返回可核验结果。
+2. Executor的任务完成后先保存Freeze并回读；CEO核验与合并后，才能按唯一归属标识自动关闭*自己创建且已完成*的Executor标签。不得关闭CEO、其他任务或用户原有标签。关闭失败不得冒充成功，保留可恢复信息。
+3. CEO本身换页：先Freeze并校验，再由新CEO通过短接续码定位、回读、接管。**当前默认实际操作为用户复制短接续码、在新聊天粘贴发送**；自动新聊天发送与跨页多次接续尚未全链路核验，不得把人工接续替换为未经批准的自动发送。
+4. 原有Windows执行桥、GitHub Contents API、现有专用浏览器与成熟GUI组件优先复用；禁止重造浏览器控制层、另启浏览器身份、更改FlClash/代理。n8n只在成熟固定流/批处理/事件触发等有完整净收益时按需调用；Codex依据任务实际优势调用。
+5. 原有Exactly-once三态、授权边界、Freeze先于Reality、可审计的故障恢复、方法版本与动态任务状态版本分离继续有效。
+
+### B. 已有事实与未通过边界
+- GitHub读写和接续文件回读、独立Executor计算6×7=42、CEO最小接管：此前独立最小场景已有成功回执，具体证据应按各自原任务与工具调用核验。
+- 2026-10-11 02:43（Windows本地时间）在DESKTOP-4A1EGTM现有Chrome for Testing中执行了隔离测试标签创建、唯一标识识别、计算42、本地JSON写入回读、仅关闭该标签、验证原有两个标签保留；实际程序回执status=PASS, closed=true, other_tabs_preserved=true。测试标识EXECUTOR_CLOSE_TEST_20261011_0240；Windows证据C:\\Users\\A\\Desktop\\EXECUTOR_CLOSE_TEST_20261011_0240.json。
+- **严格限制：** 上述仅证明独立测试标签的精确关闭与其他标签保留。它不是两个独立GPT会话完成真实业务、GitHub节点Freeze、独立CEO合并、然后自动关闭的完整端到端PASS。完整联动与性能对照仍为NOT_TESTED/UNKNOWN，不允许宣称FINAL_VALID=YES。
+
+### C. 时间显示标准（强制用于所有后续报告）
+- 统一用户可读格式：`X小时Y分Z秒A毫秒B微秒`；不足1小时省略小时，零值前导单位可省略。例如`2分05秒432毫秒678微秒`。通常报告简短时显示到毫秒；测量源真实支持微秒才显示微秒，禁止以补零制造精度。
+- 底层统一保存原始计时值、单位、时间来源和起止事件；计时用单调时钟计算耗时。换算为1秒=1000毫秒=1000000微秒，1分=60秒；小数不得被误读成分钟或秒。
+- 候选比较按同一原始任务、相同DONE_WHEN、相同边界计入完整T_VALID（接单、检索、规划、工具调用、交接、执行、验证、返工及用户必要操作）。显示：方案A用时｜方案B用时｜差距｜节省比例；以较慢方案为分母计算节省比例，原始精度留证。
+- **没有实际起止日志时：T_VALID_REAL=UNKNOWN、节省比例=UNKNOWN；** 不把工具返回的耗时、脚本局部耗时或估计值冒充完整极限时间。不基于无证据的微秒精度排名。
+
+FREEZE_ID=ENGINE29-BASIC-F001
+FREEZE_SCOPE=BASIC_PROCESS_AND_TIME_PRESENTATION
+BASIC_PROCESS_FROZEN=YES
+FULL_E2E_VALID=NO
+PUBLIC_ENGINE29_PROMOTED=NO
+NEXT=在生产同构合法条件下另行验收完整Executor至CEO交接与关闭链路；保留已通过的隔离标签测试证据，不重测无必要基本环节。
