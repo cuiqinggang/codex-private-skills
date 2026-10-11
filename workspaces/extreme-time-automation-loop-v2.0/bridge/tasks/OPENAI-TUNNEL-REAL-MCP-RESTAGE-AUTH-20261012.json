@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "task_id": "OPENAI-TUNNEL-REAL-MCP-RESTAGE-AUTH-20261012",
+  "payload_path": "workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/OPENAI-TUNNEL-REAL-MCP-STAGE-20261012.ps1",
+  "timeout_seconds": 120,
+  "expected_exit_code": 0
+}
