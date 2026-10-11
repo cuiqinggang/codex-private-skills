@@ -53,6 +53,18 @@
 
 **重要能力边界**：技能文件中的文字无法物理阻止模型调用不合规工具，也不能单独保证防作弊。可验证的改进是“默认阻断认证／强制追溯／产生可审计失败”；若要硬性执行层禁止，还必须由支持该能力的运行器或宿主工具路由实行真正的 allowlist/denylist。不得将文档更新冒充平台级硬拦截。
 
+## 6.1 可执行最小来源校验器及其边界
+技能随附 `scripts/quality/verify_comfy_provenance.py`，使用 Python 标准库检查 workflow SHA、采样图像链路、提交原生 prompt_id、独立重新读取的本机 ComfyUI /history、历史输出文件与证据 PNG 的 SHA-256。它**不能**自行生成图片，也不能证明视觉艺术品质达标，更不能阻止未调用它的会话调用 image_gen。
+
+运行示例（在 Windows 上，真实证据已存在时）：
+```powershell
+python scripts/quality/verify_comfy_provenance.py --dir "C:\\AI\\ComfyUI_Aaki_v3\\data\\output\\本轮证据" --mode T2I_INDEPENDENT --api http://127.0.0.1:8188 --output-root "C:\\AI\\ComfyUI_Aaki_v3\\data\\output"
+```
+- 只提供 `--dir --mode` 时是 G1 预检查，必须输出 `G2=UNVERIFIED`，禁止作为生图成功。
+- 附上真实 `--api --output-root` 后才进行 G2 历史/PNG 文件交叉验证；即便成功也只输出 `FINAL_VALID=NO_UNTIL_SOURCE_AND_QUALITY`，人工 G3 仍须单独验收。
+- 当前实现对 `T2I_INDEPENDENT` 的内建 FLUX 基础节点进行严格白名单拓扑审计；对 REF_CONDITIONED／IMG2IMG 只能完成部分图像源审计，必须人工验证实际被读取文件 SHA；对 EDIT_INPAINT 默认不自动通过，需补成熟掩码/编辑范围审计。
+- 模拟正反测试在 `tests/test_comfy_source_guard.py`，已本地执行 7/7 PASS；这是**功能自测**，不等于新的 Windows 端到端出图或者跨会话路由认证。
+
 ## 7. 本轮违规回归用例（必须在后续测试覆盖）
 - R-A：用户要求 ComfyUI，本轮调用 image_gen 产出 PNG → `ROUTE_VIOLATION`，不认可成功。
 - R-B：用户要求纯文生图，工作流含 VAEEncode／ReferenceLatent → `MODE_MISMATCH`，不认可独立生成。
