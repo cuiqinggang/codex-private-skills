@@ -1,6 +1,6 @@
 ---
 name: artificial-single-page-extreme-time-engine
-description: GPT主导的自动化A/B极限短时间任务技能。用户一次输入，自动定位权威方法版本、该任务合同与最新冻结，再按完整有效时间选择双层或单层页面形态。
+description: 《三人行》第1版的当前正式入口。GPT担任CEO先虚拟成熟与冻结，按需复用Codex Ultra连续运行层执行及现实验收，故障由GPT差分分析后重新验证；兼容明确指定的旧A/B路线及冻结任务METHOD_REF。
 ---
 
 <!-- ACTIVE DEFAULT 2026-10-11 -->
