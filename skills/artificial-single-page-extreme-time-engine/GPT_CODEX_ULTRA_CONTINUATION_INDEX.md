@@ -1,11 +1,19 @@
 # GPT CEO＋Codex Ultra｜统一方法索引
 
-INDEX_VERSION=V4
-LATEST_METHOD_VERSION=V4
+INDEX_VERSION=V5
+LATEST_METHOD_VERSION=V5
 VERSION_POLICY=INTEGER_ONLY
-LATEST_METHOD_DOC=skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_V4.md
+LATEST_METHOD_DOC=skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_V5.md
 GLOBAL_SKILL_ENTRY=skills/gpt-ceo-codex-ultra-continuation/SKILL.md
 V4_SOURCES=skills/gpt-ceo-codex-ultra-continuation/v4/
+V5_SOURCES=skills/gpt-ceo-codex-ultra-continuation/v5/
+V4_HISTORICAL_METHOD=skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_V4.md
+V4_SKILL_ENTRY_ARCHIVE=skills/gpt-ceo-codex-ultra-continuation/v4/SKILL_V4_ARCHIVE.md
+V5_OPERATIONS_GUIDE=skills/gpt-ceo-codex-ultra-continuation/v5/README.md
+V5_INCIDENT_KNOWLEDGE=skills/gpt-ceo-codex-ultra-continuation/v5/KNOWN_ISSUES_AND_ACCEPTANCE.md
+V5_LITE_VIEWER_SOURCE=skills/gpt-ceo-codex-ultra-continuation/v5/dashboard-lite.ps1
+V5_EVIDENCE_MANIFEST=skills/gpt-ceo-codex-ultra-continuation/v5/EVIDENCE_MANIFEST.json
+V5_CHANGELOG=skills/gpt-ceo-codex-ultra-continuation/v5/CHANGELOG.md
 SOURCE_REPOSITORY=cuiqinggang/codex-private-skills
 ENGINE_REF=ENGINE.md@28_UNCHANGED
 ACTIVE_TASK_ID=POLSIA_CAPABILITY_REPLICATION_20261011
@@ -16,7 +24,22 @@ LIVE_RUNTIME_VERSION=3.1.0_UNCHANGED
 LIVE_RUNTIME_SCRIPT=C:\AI\Polsia-Codex-20261011\CONTINUE_EXISTING_CODEX.ps1
 V4_MONITOR_DIR=C:\AI\Polsia-Unified-V4
 V4_MONITOR_TASK=Polsia-Unified-Monitor-V4
+V5_DAILY_MONITOR_MODE=LIGHTWEIGHT_CHINESE_CLI
+V5_MONITOR_ROOT=C:\AI\Polsia-Unified-V4
+V5_LITE_VIEWER=C:\AI\Polsia-Unified-V4\dashboard-lite.ps1
+V5_NATIVE_SAMPLING_SECONDS=60
+V5_ALERT_AUDIO=DUAL_BEEP_AND_WINDOWS_CHINESE_TTS_ENGINE_TESTED
+V5_ADVANCED_MONITOR=GRAFANA_13_2_3_INFINITY_4_1_1_PRESERVED_NOT_RUNNING
+V5_ADVANCED_INSTALL=C:\AI\Polsia-Observability-Grafana\grafana-13.2.3
+V5_ADVANCED_ARCHIVE=C:\AI\Polsia-Observability-Grafana\历史方案-完整监控-20261012
+V5_PARALLEL_CPU_START=2_EXPAND_TO_4_ON_REAL_NET_BENEFIT
+V5_PARALLEL_WAIT_START=4_EXPAND_TO_8_ON_REAL_NET_BENEFIT
+V5_CODEX_AGENT_COUNT=UNKNOWN_REAL_COMPARISON_REQUIRED
+V5_WINDOWS_RELEASE_VERIFICATION=PRIOR_REALITY_EVIDENCE_ONLY_NO_NEW_RUN_DUE_CONNECTOR_QUOTA
+METHOD_UPGRADE_DOES_NOT_AUTHORIZE_CODEX009=YES
 MONITOR_REALITY=PASS_NATIVE_SCHEDULE_TEN_LANES_AND_ISOLATED_TESTS
 V4_BENCHMARK=tasks/POLSIA_CAPABILITY_REPLICATION_20261011/benchmarks/POLSIA_PARALLEL_CAPACITY_20261012.md
 
-V4使用已有原生计划任务，每分钟采集十个逻辑分支的状态，统一桌面可视化，故障与恢复历史保留。Windows实际Codex运行器v3.1.0、引擎28、已冻结V008均不修改。下一业务节点仍需CEO单独批准。历史v3.2.2方法保留供定位与双门启动回溯。
+V4历史基线：原生Windows计划任务采样、十方向状态、事件历史及两项隔离试点均保留；原业务运行器3.1.0、引擎28与已冻结V008不变。旧v3.2.2保留供双门和故障回溯。
+
+V5正式默认：纯中文轻量命令行监控＋特殊提示音和中文语音；完整版Grafana软件与22项诊断/配置归档，停止日常后台运行。所有监控仅展示、采集、提示，不能绕过CEO审批派发业务。PS7原生线程并行初始2/4按净收益扩容；真实Codex Agent最优未证。此次只是技能包及方法发布，Windows最新实时状态要下次恢复连接后重新核验，不能将历史现场通过当作本次重跑。
