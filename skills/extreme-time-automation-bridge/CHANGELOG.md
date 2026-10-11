@@ -27,3 +27,8 @@
 
 ## 0.2.0 - 2026-10-02
 - 建立 Desktop Commander Remote 主路 + GitHub Actions self-hosted runner 备路。
+
+## 0.3.3 用户授权增量 - 2026-10-12
+- 明确获用户同意：保留 `GPT-Windows-MCP-Bridge` 的 `Allow all actions` 和 「无需身份验证」选项，不将「必须改为 Always ask」作为启动前置条件。高权限风险和平台可能强制限制仍明确披露。
+- 改动正式真实 Windows MCP 切换脚本并经 GitHub Runner 部署（复验状态以 Actions 记录为准）；密钥继续仅由用户在本机输入。
+- Windows 主运行隧道尚未主动切换，真实远端读、写、命令仍待正式调用验收。
