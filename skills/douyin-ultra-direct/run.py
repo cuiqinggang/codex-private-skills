@@ -133,10 +133,8 @@ def select_video(data):
         return int(v.get("width") or 0) * int(v.get("height") or 0)
     hd = [v for v in streams if max(int(v.get("width") or 0), int(v.get("height") or 0)) <= 1280]
     if hd:
-        within = [v for v in hd if 0 < int(v.get("size_bytes") or 0) <= 120_000_000]
-        if within:
-            return max(within, key=lambda v: (area(v), int(v.get("bitrate") or 0)))
-        return min(hd, key=lambda v: (int(v.get("size_bytes") or 10**15), -area(v)))
+        # 档位清晰度优先，优先完整码率源。真实编码在下载后核验。
+        return max(hd, key=lambda v: (area(v), int(v.get("bitrate") or 0)))
     return min(streams, key=lambda v: area(v))
 
 def unique_urls(video):
@@ -198,11 +196,12 @@ def ffprobe(path, expected_width=None, expected_height=None, allow_hevc=False):
 
 def compatible_mp4(part, expected_width=None, expected_height=None, run=None):
     source = ffprobe(part, expected_width, expected_height, allow_hevc=True)
-    if source["video"] in ("h264", "hevc"):
+    if source["video"] == "h264":
         if run is not None:
-            run["source_video"] = source["video"]
-            run["compatibility_policy"] = "NO_REENCODE_KEEP_SOURCE"
+            run["source_video"] = "h264"
+            run["compatibility_policy"] = "NATIVE_H264_NO_REENCODE"
         return source
+    raise RuntimeError("SOURCE_HEVC_NOT_ACCEPTABLE_WITHOUT_PLAYBACK_CHECK")
     converted = part.with_name(part.name + ".h264.mp4")
     started = time.perf_counter()
     errors = []
