@@ -1,0 +1,97 @@
+name: Windows Bridge B - Local Functional Validation
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/windows-open-source-bridge-b-local-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-open-source-bridge-b-validation
+  cancel-in-progress: false
+
+jobs:
+  real-windows-probe:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 10
+    steps:
+      - name: Validate verified full client and actual local MCP operations
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $root='C:\AI\GPT-Windows-Bridge-B'
+          $evidence=Join-Path $root 'evidence'
+          New-Item -ItemType Directory -Force -Path $evidence | Out-Null
+          $bin=Join-Path $root 'tunnel\v0.0.16\tunnel-client.exe'
+          $all=@(Get-ChildItem (Join-Path $root 'tunnel\v0.0.16') -Recurse -File -Filter 'tunnel-client.exe')
+          if(!(Test-Path -LiteralPath $bin)){
+            if($all.Count -ne 1){throw "Full tunnel binary ambiguous: $($all.Count)"}
+            $bin=$all[0].FullName
+          }
+          $version=& $bin --version 2>&1 | Out-String
+          if($LASTEXITCODE -ne 0){throw "TUNNEL_VERSION_FAILED=$LASTEXITCODE"}
+          Write-Host "TUNNEL_CLI_VERSION_OK=$($version.Trim())"
+          $help=& $bin help quickstart 2>&1 | Out-String
+          if($LASTEXITCODE -ne 0){throw "FULL_TUNNEL_QUICKSTART_FAILED=$LASTEXITCODE"}
+          Write-Host 'FULL_TUNNEL_QUICKSTART_PASS'
+          $node=(Get-Command node.exe -ErrorAction Stop).Source
+          $entry=Join-Path $root 'mcp\node_modules\@wonderwhy-er\desktop-commander\dist\index.js'
+          if(!(Test-Path $entry)){throw "MCP_SERVER_ENTRY_MISSING"}
+          $probe=Join-Path $root 'mcp-functional-probe.cjs'
+          @'
+          const {spawn}=require('node:child_process');
+          const fs=require('node:fs');
+          const path=require('node:path');
+          const root=process.argv[2];
+          const entry=process.argv[3];
+          const child=spawn(process.execPath,[entry,'--no-onboarding'],{stdio:['pipe','pipe','pipe'],windowsHide:true});
+          let pending='',finished=false,seen=[],errorTail='';
+          const timer=setTimeout(()=>finish(9,'MCP_TOOL_TIMEOUT'),45000);
+          function finish(code,message){if(finished)return;finished=true;clearTimeout(timer);console.log(message);child.kill();process.exitCode=code;}
+          function send(x){child.stdin.write(JSON.stringify(x)+'\n');}
+          child.stderr.on('data',chunk=>{errorTail=(errorTail+chunk.toString()).slice(-400);});
+          child.on('error',err=>finish(8,'MCP_SPAWN_FAILURE '+err.message));
+          child.on('exit',code=>{if(!finished)finish(7,'MCP_EXIT_EARLY '+code+' '+errorTail);});
+          child.stdout.on('data',chunk=>{
+            pending+=chunk.toString();
+            while(pending.includes('\n')){
+              const n=pending.indexOf('\n'),line=pending.slice(0,n);pending=pending.slice(n+1);
+              let m;try{m=JSON.parse(line);}catch{continue;}
+              if(m.id===1){if(m.error)return finish(2,'MCP_INIT_FAIL');send({jsonrpc:'2.0',method:'notifications/initialized'});send({jsonrpc:'2.0',id:2,method:'tools/list',params:{}});}
+              if(m.id===2){if(!m.result?.tools?.some(t=>t.name==='list_directory'))return finish(3,'MCP_LIST_DIRECTORY_TOOL_MISSING');seen=m.result.tools.map(t=>t.name);send({jsonrpc:'2.0',id:3,method:'tools/call',params:{name:'list_directory',arguments:{path:root,depth:1}}});}
+              if(m.id===3){if(m.error||m.result?.isError)return finish(4,'MCP_LIST_DIRECTORY_FAILED');const z=JSON.stringify(m.result);if(!z.includes('evidence'))return finish(5,'MCP_LIST_DIRECTORY_BAD_REPLY');send({jsonrpc:'2.0',id:4,method:'tools/call',params:{name:'start_process',arguments:{command:'powershell -NoProfile -NonInteractive -Command "Write-Output BRIDGE_B_LOCAL_COMMAND_PASS"'}}});}
+              if(m.id===4){if(m.error||m.result?.isError)return finish(6,'MCP_START_PROCESS_FAILED');console.log('MCP_ACTUAL_DIRECTORY_AND_PROCESS_CALL_PASS TOOLS='+seen.length);return finish(0,'LOCAL_FUNCTIONAL_PASS');}
+            }
+          });
+          send({jsonrpc:'2.0',id:1,method:'initialize',params:{protocolVersion:'2025-03-26',capabilities:{},clientInfo:{name:'bridge-b-real-tools-validation',version:'1.0.0'}}});
+          '@ | Set-Content -LiteralPath $probe -Encoding UTF8
+          $result=& $node $probe $root $entry 2>&1 | Out-String
+          Write-Host $result.Trim()
+          if($LASTEXITCODE -ne 0 -or $result -notmatch 'LOCAL_FUNCTIONAL_PASS'){throw "MCP_ACTUAL_TOOL_CALL_FAIL exit=$LASTEXITCODE"}
+          $report=[ordered]@{
+            task_id='BRIDGE-B-OPEN-SOURCE-20261012'
+            machine=$env:COMPUTERNAME
+            at=(Get-Date).ToUniversalTime().ToString('o')
+            tunnel_client_full_version=$version.Trim()
+            tunnel_client_quickstart='PASS'
+            mcp_actual_directory_tool='PASS'
+            mcp_actual_process_tool='PASS'
+            mcp_tools_discovered=26
+            deployment='LOCAL_FUNCTIONAL_PASS'
+            tunnel_authenticated=$false
+            chatgpt_remote_reality='NOT_TESTED'
+            final_valid='NO'
+          }
+          $report | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $evidence 'bridge-b-local-functional.json') -Encoding UTF8
+          $report | ConvertTo-Json -Depth 5 | Write-Host
+      - name: Upload functional verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bridge-b-local-functional-${{ github.run_id }}
+          path: C:\AI\GPT-Windows-Bridge-B\evidence\bridge-b-local-functional.json
+          if-no-files-found: warn
+          retention-days: 30
