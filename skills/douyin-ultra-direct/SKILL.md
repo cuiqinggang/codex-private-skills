@@ -74,8 +74,8 @@ C:\Users\A\Desktop\抖音极速直下.vbs
 clipboard
 → 复用有效 session
 → API parse
-→ 从 media.streams 选择最高分辨率非水印 MP4
-→ 同分辨率优先较大 size_bytes / bitrate，避免误选低码率 HEVC
+→ 从 media.streams 选择日常 720P 非水印 MP4，优先合理码率且小于约 120 MB 的流
+→ 保留源流 HEVC/H.264，避免为兼容性默认进行无意义的高码率重编码
 → 同一流优先 www.douyin.com 官方 direct URL
 → direct 失败才回 CDN
 → curl 下载到程序 work 目录 .part（桌面仅发布验收通过的 MP4）
