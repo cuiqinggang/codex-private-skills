@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.3.4 - 2026-10-12｜现有 Windows 隧道静默隐藏 PASS、恢复入口与历史成熟机制沉淀
+
+- **操作事实**：GPT-Windows-MCP-Bridge 通过真实 Windows 工具读取原进程 `tunnel-client.exe` PID23692、父 PowerShell PID27920，校验控制台窗口句柄和归属；使用 Windows 原生 `ShowWindowAsync(SW_HIDE)` 在不停止进程的前提下隐藏现有窗口。实际回执 `BEFORE_VISIBLE=True / AFTER_VISIBLE=False / TUNNEL_ALIVE=True`。独立再次回读 `TUNNEL_COUNT=1`、远程 Shell 仍可用。**仅当前会话隐藏 PASS**。
+- **可逆工具已落盘**：桌面 `GPT-Windows-MCP-Show-Console.lnk` + `C:\AI\GPT-Windows-Bridge-B\persistence\Show-Current-Tunnel-Console.ps1`；文件、目标和语法预检 PASS，实际双击未执行。该脚本绑定当前 PID/窗口句柄，未来不能盲目照抄。
+- **保留手动恢复**：桌面 `GPT-Windows-MCP-一键恢复.lnk` + `Restore-Interactive.ps1`；已有防重复运行真实回执；本地需要人工输入 Runtime Key，双击与重启后均尚未 Reality。
+- **旧成熟方案回读**：现有 `Codex_SystemEvolution_24h.vbs` 使用 `WScript.Shell.Run(...,0,False)`；`GPT-LTMVH-Recovery-Watchdog.cmd` 使用 `start /min -WindowStyle Hidden`；原 `GPT-DesktopCommander-Remote-Autostart` 是 DCR Remote 的 Logon/Interactive 计划任务。与新 OpenAI Tunnel 自启动严格区分，旧机制不删除。
+- **兼容性差分**：中文快捷方式创建器 `Make-Manual-Shortcut.ps1` 使用 UTF-8；Windows PowerShell 5.1 解析出现 2 错（编码），PowerShell 7 同文件解析 0 错。保存三份真实 Windows 脚本的本地 SHA256 与完整证据快照，避免以后凭记忆重造。
+- **未通过项如实保留**：`TUNNEL_LOGIN_AUTOSTART=NOT_IMPLEMENTED`、`REBOOT_RECOVERY=NOT_TESTED`、`SHOW_SHORTCUT_DOUBLECLICK=NOT_TESTED`；现有 `Read-Host -AsSecureString` 仍要求本机 Key，简单藏窗口不能替代凭据来源。DPAPI + 隐藏 Supervisor 旧候选曾被安全拦截，继续禁止规避并保留隔离残件。
+- **文档结构**：新增 [标准操作手册](TUNNEL_WINDOW_VISIBILITY_AND_RECOVERY_20261012.md)、[Windows 原始实测和脚本 SHA 快照](evidence/OPENAI_TUNNEL_WINDOW_VISIBILITY_REALITY_20261012.md)；同步更新 `SKILL.md` 首页状态、原状态文件和原全流程恢复入口。其余 v0.3.0–0.3.3 内容保留。
+- **不会发生的变更**：不删除旧 A/B 路、不修改 FlClash/Windows 代理、不改已登录浏览器、不新建 Tunnel 专属登录任务、不触碰 Runtime Key、不重启现有 Tunnel。v0.3.4 **是技能包和证据升级**，不是自动开机服务的部署结果。
+
+
 ## 0.3.3 - 2026-10-12｜OpenAI Secure MCP Tunnel 自定义插件接入与恢复
 
 - **保留**原 DCR Remote 主路 / GitHub Actions self-hosted Runner 备路，且不重建旧配置。
