@@ -1,0 +1,28 @@
+# CODEX-005 接续提示：成熟客户支持交付能力
+TASK_ID=POLSIA_CAPABILITY_REPLICATION_20261011
+PREVIOUS_NODE=CODEX-004_MATURE_CONTENT_OPERATIONS
+PREVIOUS_VERSION=V004
+PREVIOUS_FREEZE_ID=POLSIA-MOTHER-V004-F002
+NEXT_NODE=CODEX-005_MATURE_CUSTOMER_SUPPORT_DELIVERY
+MOTHER_FINAL_VALID=NO
+ENGINE=ENGINE.md@28
+GPT_CEO_REVIEW=PENDING
+
+目标是继续覆盖公司的客户支持与交付服务能力，不能把CODEX004草稿包当作真实获客或Polsia全能力完成。此提示是下一自然节点建议/接续输入；不代表GPT CEO已完成V004独立总审核。
+
+【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜CODEX-005｜实/虚按证据记录】
+
+先读UTF-8本地 MOTHER_CURRENT.md、VERSION_CURRENT.md、nodes/CODEX-004/revisions/F002/FREEZE.md、SHA256-MANIFEST.json、RESULTS.md、本NEXT；再从cuiqinggang/codex-private-skills/main精确读取该任务CURRENT、VERSION_CURRENT、Freeze_V004_CODEX004_F002.md、REUSE_ONLY_V4和ENGINE28。核对真正的本机freeze路径与manifest SHA及权限，不能把远端Freeze basename强拼到根目录。继承CODEX001/002/003/004结果，不重跑旧验收、媒体制作或同证据审计。
+
+新节点在nodes/CODEX-005内，用已有真实NASA内容运营交付包做支持知识输入，产出可交给操作人员的中英客户支持包：文件选择/播放/中文字幕与英语侧车/来源与权利/平台未上传/交付验收FAQ、逐条有来源的标准回复、升级人工与不确定项处置清单、问题→证据→答复→升级的离线工单模板。可以对明确标为SYNTHETIC的合成咨询实际生成答复并独立审查；不得把合成工单冒充真实客户，不造用户身份或业绩。
+
+优先使用已合法配置的成熟客服产品/模板；未能核实此入口则原生Codex与静态文件足够。禁止自建客服站点、后台、数据库、工单引擎、scheduler、bridge或retry；不新开浏览器、读凭据、用受限模型/付费接口、改生产/网络/FlClash，也不发送答复或发布文案。支持知识的事实优先从V004已冻结包检索，官方来源仅在确有新问题/易变规则时定向核对。须有具体实际业务文件及真正独立只读审查，不只新报告。
+
+保持ENGINE28成熟GOOD基线、最多3个成熟候选。新合同T_BASE_REAL与虚拟/物理时间无同边界证据则UNKNOWN；禁止沿用媒体渲染时间或臆测STOP_GATE。候选优化成熟与STOP_GATE未通过，不做候选优化Freeze/FINAL/新10轮。真实本地基线业务交付的事实冻结须明确不同于优化认证；ROI门禁仍PAUSED_BY_USER，不计算收益指标。
+
+完成自然节点后保存业务文件与原始回执→新V005事实Freeze+SHA→官方GitHub Contents新增并回读一致→更新VERSION_CURRENT/CURRENT与本机MOTHER_CURRENT→记录下一缺口及公司目标相符的节点。MOTHER_FINAL_VALID始终NO直到全任务和GPT总验收真正成立。保留72小时观察不是硬停机；不改原计划任务、不新建Codex进程、不提前清正在执行的INFLIGHT（退出后的原runner处理）。
+
+外部未知结果先对账，确认已执行不重复，确认未执行才受控恢复；UNKNOWN不盲重试。真正没有安全路径时记录GOOD/BAD/FIRST_DELTA与GPT replan；只有母任务所有合法路径确需授权才MOTHER_WAITING_FOR_USER。
+
+【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜CODEX-005｜实/虚按证据记录】
+
