@@ -27,7 +27,11 @@ if(-not (Test-Path -LiteralPath 'C:\AI\MiniMax-H3\.venv\Scripts\python.exe')){
 }
 $codex=(Get-Command codex.cmd -ErrorAction SilentlyContinue)
 if(-not $codex){$codex=(Get-Command codex -ErrorAction SilentlyContinue)}
-if(-not $codex){throw 'CODEX_COMMAND_NOT_FOUND'}
+if(-not $codex){
+  $absolute='C:\Users\A\AppData\Roaming\npm\codex.cmd'
+  if(Test-Path -LiteralPath $absolute){ $codex=[pscustomobject]@{Source=$absolute} }
+}
+if(-not $codex){throw 'CODEX_COMMAND_NOT_FOUND: PATH and verified absolute path missing'}
 Write-Output ('CODEX_PATH='+$codex.Source)
 Write-Output ('CODEX_VERSION='+((& $codex.Source --version) -join ' '))
 try{
