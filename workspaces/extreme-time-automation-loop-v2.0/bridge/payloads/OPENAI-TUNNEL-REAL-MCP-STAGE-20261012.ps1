@@ -58,7 +58,19 @@ try {
         for($i=0;$i -lt 20;$i++){if(-not (Get-Process -Id $p.ProcessId -ErrorAction SilentlyContinue)){break};Start-Sleep -Milliseconds 250}
         if(Get-Process -Id $p.ProcessId -ErrorAction SilentlyContinue){throw 'DEMO_TUNNEL_NOT_STOPPED'}
     }
-    $mcpCmd = '"' + $node + '" "' + $entry + '" --no-onboarding'
+    # IMPORTANT: tunnel-client stdio command lexer treats backslashes in quoted
+    # Windows paths as escapes, and C:\Program Files\nodejs\node.exe
+    # was incorrectly parsed as C:Program.  Use the resolved PATH command
+    # and a slash-normalized argument without spaces or nested quotes.
+    $nodeFromPath = (Get-Command node.exe -ErrorAction Stop).Source
+    $versionText = (& node.exe --version 2>&1 | Out-String).Trim()
+    if ($LASTEXITCODE -ne 0) { throw 'NODE_EXE_NOT_RUNNABLE_FROM_PATH' }
+    if ($entry -match '\s') { throw 'MCP_ENTRY_HAS_SPACES_REQUIRES_ALTERNATE_COMMAND_WRAPPER' }
+    $entryForCLI = $entry.Replace('\','/')
+    $mcpCmd = 'node.exe ' + $entryForCLI + ' --no-onboarding'
+    Write-Host "MCP_STDIO_COMMAND=$mcpCmd"
+    Write-Host "NODE_RESOLVED=$nodeFromPath"
+    Write-Host "NODE_VERSION=$versionText"
     Write-Host 'Starting real Desktop Commander MCP over the existing official tunnel.'
     Write-Host 'Keep this console open; the health URL is dynamic. No credentials are written to disk.'
     & $exe run --control-plane.tunnel-id $tunnelId --mcp.command $mcpCmd --health.listen-addr 127.0.0.1:0
