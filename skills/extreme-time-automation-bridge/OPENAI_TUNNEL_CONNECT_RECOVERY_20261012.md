@@ -6,6 +6,9 @@
 > **冻结定位**：`OPENAI-TUNNEL-DEMO-20261012`；客户端 `v0.0.16`；隧道 `tunnel_6acbeee2ce888191b775cd53429c7597`；插件名 `GPT-Windows-MCP-Bridge`。  
 > **终局**：本地 CLI、客户端就绪、ChatGPT 插件注册与 demo echo 调用 **PASS（echo 为用户转交独立页面的真实工具调用报告）**；**ChatGPT 经该隧道调用真实 Windows 文件/命令执行器 = NOT_TESTED；PRODUCTION_FINAL_VALID=NO**。
 
+
+> **v0.3.4 最新状态提示（优先于下文历史阶段性结论）：** ChatGPT 经官方 OpenAI Tunnel 对真实 Windows Desktop Commander MCP 的目录读取、隔离文件写回、PowerShell 命令已经实际 PASS（见 [独立验收](evidence/OPENAI_TUNNEL_REAL_WINDOWS_REMOTE_PASS_20261012.md)）。之后已将 **当前正在运行的控制台隐藏**：`SW_HIDE` 前可见、后不可见，隧道 PID 23692 和远程工具调用仍可用，`CURRENT_CONSOLE_HIDE=PASS`；记录见 [新 SOP](TUNNEL_WINDOW_VISIBILITY_AND_RECOVERY_20261012.md) 与 [原始证据及脚本SHA](evidence/OPENAI_TUNNEL_WINDOW_VISIBILITY_REALITY_20261012.md)。但 **登录隐藏自启动尚未部署、重启后自动恢复仍未验收、原脚本仍需用户本机输入 Runtime Key**。本文件下文的 `NOT_TESTED`、`demo`、`Keep this console open` 等属于当时历史现场，不得覆盖这段更晚的 Reality；“保持原进程存活”不要求窗口持续显示。原有全部历史决策、故障与恢复细节不删除。
+
 ## 0. 总目标、历史系统保护、证据级别
 
 目标是把 ChatGPT 发出的任务通过 OpenAI 官方出站隧道传到 Windows 本地 MCP；后续再将「官方演示 MCP」换成已装好的开源 Desktop Commander MCP。**不要把演示工具的成功误写成 Windows 远端命令执行通过。**
@@ -288,3 +291,18 @@ $mcpCmd = 'node.exe ' + $entryForCLI + ' --no-onboarding'
 - **下一步骤并非重启 Windows**：在 ChatGPT 已连接插件 `GPT-Windows-MCP-Bridge` 的设置页执行 `Refresh`（刷新工具或更新操作）。官方明确说自定义 MCP 应用工具快照不会自动更新；只刷新浏览器网页不一定有效。资料：https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt 。
 - 完成工具刷新后，新开 ChatGPT 页面，通过新工具表实际调用 `list_directory` 读取 `C:\AI\GPT-Windows-Bridge-B\evidence`，`write_file` 在该独立测试目录写入唯一 marker，再 `read_file` 核对，最后 `start_process` 执行无副作用 `powershell -NoProfile -NonInteractive -Command "Write-Output GPT_TUNNEL_REAL_WINDOWS_PASS"` 并核对 stdout。若平台隐藏写/执行工具，明确记录为权限或工具目录问题，勿伪造成功。
 - 安全与状态：用户已授权当前插件设置 `Allow all actions` + `无需身份验证`；不要擅自变更，但开放真实 Windows Shell 有风险，必须保留用户工作区访问控制。**未看到远端真实工具回执前不得 FINAL_VALID=YES**。
+
+
+## 10. v0.3.4 当前窗口静默隐藏与人工恢复（2026-10-12 最新）
+
+新标准不再要求一直显示原 PowerShell：这次采用 Windows 成熟的 Win32 `ShowWindowAsync(handle, SW_HIDE=0)`，在明确识别同 Tunnel ID 的 `tunnel-client.exe` → 父 `powershell.exe` → 窗口所有者后，隐藏正在运行的控制台，真实回执 `BEFORE_VISIBLE=True / AFTER_VISIBLE=False / TUNNEL_ALIVE=True`；之后新一轮远程执行核对唯一 PID `23692` 和父 PID `27920`。**只是隐藏，不能关闭旧进程；不影响现有连接，也不证明重启恢复。**
+
+本机已存在：
+- `C:\Users\A\Desktop\GPT-Windows-MCP-一键恢复.lnk` → `C:\AI\GPT-Windows-Bridge-B\persistence\Restore-Interactive.ps1`；同 Tunnel ID 已运行则跳过重复启动，未运行则正式 launcher 交互式安全输入 Key。
+- `C:\Users\A\Desktop\GPT-Windows-MCP-Show-Console.lnk` → `C:\AI\GPT-Windows-Bridge-B\persistence\Show-Current-Tunnel-Console.ps1`；仅针对当前会话固定 PID/句柄恢复显示，**尚未实测双击**，不可跨重启。
+- 旧 `Codex_SystemEvolution_24h.vbs` 的 `WScript.Shell.Run(...,0,False)` 和原 `GPT-DesktopCommander-Remote-Autostart` 登录计划任务证明成熟方式存在，但**不要误用为 OpenAI Tunnel 已经自动启动的证据**。
+- `Make-Manual-Shortcut.ps1` 的中文 UTF-8 内容在 Windows PowerShell 5.1 下有编码解析问题，在 PowerShell 7 `ParseErrors=0`；已经存档本机三个实际脚本 SHA256，防止重复犯错。
+
+**下一开机最短流程**：先检查进程唯一性及真实 MCP 工具读/命令；无需运行就不触碰；如缺失则双击既有“一键恢复”，在本机输入 Runtime Key，确认真实远程可用后按新会话句柄隐藏。凡涉及开机登录自启动、重复登录、断电续接及隐式凭据，当前均 `NOT_TESTED/NOT_IMPLEMENTED`。旧 DPAPI Supervisor 候选曾遭安全拒绝，不能绕过安全拦截尝试。
+
+**详见**：[v0.3.4 权威操作入口](TUNNEL_WINDOW_VISIBILITY_AND_RECOVERY_20261012.md)、[原始 Reality/脚本完整快照](evidence/OPENAI_TUNNEL_WINDOW_VISIBILITY_REALITY_20261012.md)、[当前 Freeze](WINDOWS_TUNNEL_PERSISTENCE_STATUS_20261012.md)。
