@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "task_id": "CODEX-H3-REALITY-TEST01-20261012",
+  "payload_path": "workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/CODEX-H3-REALITY-TEST01-20261012.ps1",
+  "timeout_seconds": 1800,
+  "expected_exit_code": 0
+}
