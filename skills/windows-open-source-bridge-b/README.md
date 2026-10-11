@@ -12,3 +12,29 @@
 - 每次运行 GitHub Actions 日志和 artifact，以及 Windows 独立目录 evidence.json，必须保留真实错误；不可用本地成功冒充云端连通成功。
 - 故障处置：优先对照正确基线，依据第一处真实差异修复；不删除、重建现有桥接系统。
 - 官方说明：https://github.com/wonderwhy-er/DesktopCommanderMCP 与 https://github.com/openai/tunnel-client/blob/master/docs/onboarding.md
+
+## 2026-10-12 成熟组件组合判断
+
+| 层级 | 组件 | 开源/收费边界 | 可复用能力 |
+|---|---|---|---|
+| 本地工具 | Desktop Commander MCP 0.2.52 | MIT；本地无厂商远程调用配额 | 文件读取/写入、终端、进程等；MCP initialize + tools/list 已在实际 Windows 上发现 26 项 |
+| 检查工具 | MCP Inspector | MIT | MCP tools/list、tools/call、HTTP/stdio 验收；必要时使用，无需单独编写测试平台 |
+| 私有隧道 | OpenAI Secure MCP Tunnel Client v0.0.16 | 开源客户端；官方控制平面与 ChatGPT 权限不因此免费或不受限 | 出站 HTTPS 隧道、healthz/readyz、日志/监控、stdio 代理 |
+| 候选替代传输 | Supergateway + Cloudflare Tunnel | Supergateway MIT；Cloudflare 免费方案有服务条件 | stdio ↔ Streamable HTTP → HTTPS；不提升 ChatGPT 自定义 MCP 写入权限 |
+| 现成执行保障 | GitHub Actions + Self-hosted Windows Runner | 本地 Runner 不计 GitHub 托管分钟；有 API、工作流、存储及账户限制 | 已有 v0.3.2 通道，能独立执行 Windows 任务并回收证据；不受 DCR 托管配额影响 |
+
+**硬边界：**
+- 开源工具无法解除 ChatGPT 平台对自定义 MCP 的权限审核、套餐限制、使用许可和确认规则。官方截至 2026-10 的说明：完整自定义 MCP 写入/修改权限适用于 Business、Enterprise/Edu；个人 Pro 自定义 MCP 主要允许只读。应按本账号实际可见功能验收。
+- 官方 Secure MCP Tunnel 需要 Platform 管理的 Tunnel ID、具有 Tunnels Read+Use 的 runtime key，并关联目标 ChatGPT workspace；凭据必须由用户通过正式管理页面安全配置。**绝不提交到 Github**。官方地址：https://platform.openai.com/settings/organization/tunnels 。
+- 准备连接的 Windows MCP 应在交互式 Windows 用户 A 会话中运行，而非默认假设 Windows Runner 服务账户就能操作用户桌面。到时独立验证会话身份及授权目录。
+- 不对外开放未认证的 MCP HTTP 端口；Cloudflare/公开反向代理不是绕开权限或身份验证的替代方法。
+
+**优先顺序：** 先保留 v0.3.2 GitHub Runner 可用执行，完成本地 MCP + 官方隧道文件安装，再检查当前帐号 Platform/ChatGPT 授权；能合规连接才走 Tunnel ChatGPT 端到端。最终真实读、写、Shell、会话保持、断线恢复、并发隔离经过验证，才可能宣布体验等价。否则执行任务继续走既有 GitHub Runner。
+
+### 本轮真实记录
+- run [38168747170](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38168747170)：Node v24.14.0；固定 npm 包 0.2.52 安装，MCP 初始化/列工具 PASS（26 项）；GitHub releases DNS 失败，故 Tunnel 安装未完成。
+- run [38169151688](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38169151688)：Github 云端 SHA256 校验和 Windows Artifact 传递 PASS；安装脚本误查找 EXE 名，需差分修复。
+- run [38169303390](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38169303390)：完整发行包的官方 SHA256 在 Windows 上 PASS，已见 `tunnel-client.exe` 和 `tunnel-client-runtime.exe`；脚本选错 runtime 版本调用完整 CLI，故验证失败，并非下载/安装完整性失败。
+- run [38169435718](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38169435718)：按正确的 `tunnel-client.exe` 做非授权 CLI 和 MCP 实际工具调用验收；以实际日志结果为准。
+
+原 v0.3.2 文档、流程及历史证据只读保留；当前 B 通道在没有 ChatGPT 端到端通过前 `FINAL_VALID=NO`。
