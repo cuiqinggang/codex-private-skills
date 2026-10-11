@@ -127,3 +127,12 @@ NATIVE_TASK=Polsia-Codex-Mother-Continue
 NETWORK_CONTRACT=skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/NEXT_NODE_CONTINUOUS.md
 - 实测：CODEX-001自然退出后，Windows原生Task Scheduler手动触发并真正启动CODEX-002，日志显示gpt-6.1-sol/ultra、读取原合同；原任务目录真实保存研究、组件测试及FREEZE。不能把CODEX-001的safe-file-demo 10/10提升为整个Polsia功能认证。
 - 未验收：真正断电→开机→接续、8小时长期连续多节点、全部Polsia功能同效、各节点版本SHA及GitHub CURRENT写入自动成功，以及明确STOP后绝不重启。因此该增补目前为设计加部分现实证据，尚不是生产级“永不停机”认证。
+
+
+### 72小时长程验证与GPT故障重规划（2026-10-11补充）
+- 用户指定观察和压力测试窗口为 **连续72小时**，取代此前8小时观察口径；观察期到达后不自动结束母任务，仍以真实 FINAL_VALID、用户显式停机或授权/安全硬边界为终止条件。时间窗口是验证目标，不可无证据地宣称已跑满72小时。
+- Windows原生Task Scheduler在电脑开机且满足会话条件时按周期尝试启动下一自然节点，原生“同名实例IgnoreNew”避免计划程序自身重入；启动前还需核对同母任务既有Codex进程、LATEST_FREEZE、MOTHER_CURRENT和PAUSE/DONE/GPT_REPLAN标志。正常节点结束→冻结可回读的版本Vnnn、更新指针→新上下文继续。上一次8小时触发器已改为空时限周期触发，保留登录后自动恢复；切勿把观察期再次写为原生停止时间。
+- 节点执行非零退出、缺少有效冻结检查点、连续长时间没有实质日志或因普通技术故障陷入重复失败时，保留GOOD/BAD/FIRST_DELTA、最后成功动作、精确错误、工具回执和现场文件，标记 `MOTHER_NEEDS_GPT.flag` / `GPT_REPLAN_REQUEST.md`。阻断同一故障无脑重复派发，交现有GPT定时监督流程复核及重新规划；GPT核对真实母任务、最新冻结及授权边界，再通过现有合法接口更新下一节点合同，确认可执行后才清除故障标记恢复触发。GPT监督为已创建的每小时条件检查，响应可能最多延迟一小时，不能宣称秒级自动恢复。
+- 若遇必须人类授权或明确安全拒绝，停相关动作并生成WAIT_FOR_USER，不能让GPT或Codex换通道绕过；能合法继续的独立节点可按权限边界推进。结果UNKNOWN时先查回执，再决定是否允许重试，特别是外部副作用的exactly-once。
+- 断电期间没有计算能力；保全仅保证磁盘/GitHub上实际完成的写入，不保证未落盘的思维链或中间动作。开机登录时按最近已回读Freeze和原业务回执做三态对账后接续；关机/开机接续、GPT实际接手规划并成功恢复及72h长稳均需独立现实验收，目前不得写FULL_E2E_PASS。
+- 黑色只读监控窗口每60秒更新，展示母任务名、当前NODE、上一个真实冻结VERSION、FREEZE_ID、运行状态、真实日志和最近十份输出；任何版本只在新Freeze回读确认后递增，不可按轮询次数或工具命令数量递增。
