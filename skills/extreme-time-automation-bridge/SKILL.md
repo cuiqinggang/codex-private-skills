@@ -182,3 +182,14 @@ PRODUCTION_FINAL_VALID=NO
 - 官方：[ChatGPT 开发者模式与 MCP 应用](https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt)，服务器工具变更后要在自定义插件的设置中手动 `Refresh`（刷新工具），不能仅刷新浏览器/重复运行 echo；已有绑定不必重新创建隧道、Key。刷新后在新 ChatGPT 会话中检查真实 `list_directory`/ `read_file` / `write_file` / `start_process` 工具，并做有证据的远端隔离测试。
 - 此次 `/readyz` 尚无新运行时的 HTTP 响应截图，且对 stdio 其 Ready 可能早于协议初始化；不能仅据启动 PASS 推断远端正式能力。当前 `REAL_MCP_PROCESS_STARTED=PASS`，`CHATGPT_REMOTE_WINDOWS_TOOLS=NOT_TESTED`，`FINAL_VALID=NO`。
 - 请保持现有 Windows PowerShell 前台进程，不要第二次启动 `tunnel-client` 或更改 FlClash/代理。新管理 UI：`http://127.0.0.1:63623/ui`，本次动态端口仅对当前运行有效。
+
+## 2026-10-12 正式 Reality｜ChatGPT 直连 Windows 真实文件读写及命令执行验收 PASS
+
+**优先回读证据**：[OPENAI_TUNNEL_REAL_WINDOWS_REMOTE_PASS_20261012.md](evidence/OPENAI_TUNNEL_REAL_WINDOWS_REMOTE_PASS_20261012.md)。
+
+- 原 `mcp-stub` 演示已被真实 `@wonderwhy-er/desktop-commander@0.2.52` 替换；用户 06:02 Windows 前台日志 `stdio MCP command started`、`🟢 tunnel-client started`。ChatGPT 插件 `GPT-Windows-MCP-Bridge` 手动刷新工具目录后，此对话实际看到真实 26 个工具。旧 `server_info` 返回 `Unknown tool` 的缓存故障已经解决，不需要新建隧道。
+- **真实远程目录读取 PASS**：`mcp__GPT_Windows_MCP_Bridge__list_directory` 查询 `C:\AI\GPT-Windows-Bridge-B\evidence`，回显既有文件 `bridge-b-install-evidence.json`、`bridge-b-local-functional.json`、`b_mcp_write_read_probe.txt`、`npm-install.log`。
+- **真实远程文件写后读 PASS**：`write_file` 在 Windows 隔离 evidence 目录写 `GPT_TUNNEL_REAL_REMOTE_R1_20261012.txt`，真实回执成功；随后 `read_file` 单独取回准确标记 `REAL_WINDOWS_REMOTE_FILE_WRITE_READ_PASS`。
+- **真实远程 Windows PowerShell PASS**：`start_process` 运行 `Write-Output GPT_TUNNEL_REAL_WINDOWS_SHELL_PASS; whoami`，返回 `PID=29708`，标记及 `desktop-4a1egtm\a`；随后 `read_process_output` 真正回读 `exit code 0`（runtime 1.42s）。
+- `REAL_WINDOWS_REMOTE_FUNCTIONAL_PASS=YES`、`SCOPE_FINAL_VALID=YES` **仅限用户要求的读取、隔离写回、命令执行最小闭环**。`REBOOT_AUTOSTART_REALITY=NOT_TESTED`，长期常驻、复杂业务、全 26 工具验收与安全评审均未完成，不混同。
+- 用户已授权保持 ChatGPT 插件 `Allow all actions` 与 MCP「无需身份验证」，本次未改用户设置；但不能把这解释为公网裸露全系统执行权限的安全认证。继续保留两条原路由 DCR/Actions、FlClash、系统代理与已有浏览器。当前官方 Tunnel 前台 PowerShell 不可关闭；再次接续无需重跑演示测试。
