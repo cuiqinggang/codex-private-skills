@@ -67,19 +67,9 @@ $expectedManifest = if ($afterMotherText -match '(?m)^MANIFEST_SHA256=([A-Fa-f0-
 $pathRoot = [IO.Path]::GetFullPath($root).TrimEnd('\') + '\'
 $freezeInWorkspace = $freezeFile -and [IO.Path]::GetFullPath($freezeFile).StartsWith($pathRoot,[StringComparison]::OrdinalIgnoreCase)
 $manifestInWorkspace = $manifestFile -and [IO.Path]::GetFullPath($manifestFile).StartsWith($pathRoot,[StringComparison]::OrdinalIgnoreCase)
-# Verify exactly one authoritative FREEZE_ID field; a reference in NOTE must never authenticate Freeze.
+# Verify exactly one authoritative FREEZE_ID field; a NOTE containing the ID is not proof.
 $freezeIdFields = if ($freezeInWorkspace -and (Test-Path -LiteralPath $freezeFile -PathType Leaf)) {
-  [regex]::Matches((Get-Content -LiteralPath $freezeFile -Raw -Encoding UTF8), '(?m)^FREEZE_ID=([^\r\n]+)\r?
-$manifestValid = $manifestInWorkspace -and (Test-Path -LiteralPath $manifestFile -PathType Leaf) -and $expectedManifest -and ((Get-FileHash -LiteralPath $manifestFile -Algorithm SHA256).Hash -eq $expectedManifest)
-$validCheckpoint = ($code -eq 0) -and ($afterMother -gt $beforeMother) -and ($afterVersion -ne $beforeVersion) -and ($motherVersion -eq $afterVersion) -and ($motherFreezeId -eq $versionFreezeId) -and $freezeValid -and $manifestValid
-if ($validCheckpoint) {
-  Remove-Item -LiteralPath $inflight -Force
-} elseif(-not (Test-Path -LiteralPath (Join-Path $root 'MOTHER_WAITING_FOR_USER.flag'))) {
-  $note = @("TASK_ID=POLSIA_CAPABILITY_REPLICATION_20261011","REASON=CODEX_EXIT_WITHOUT_NEW_VERIFIED_FREEZE","LATEST_LOG=$log","VERSION_BEFORE=$beforeVersion","VERSION_AFTER=$afterVersion","NEXT=GPT_AUDIT_OUTPUT_AND_REPLAN")
-  $note | Set-Content -LiteralPath (Join-Path $root 'MOTHER_NEEDS_GPT.flag') -Encoding UTF8
-}
-exit 0
-)
+  [regex]::Matches((Get-Content -LiteralPath $freezeFile -Raw -Encoding UTF8), '(?m)^FREEZE_ID=([^\r\n]+)\r?$')
 } else { @() }
 $freezeValid = $freezeInWorkspace -and ($motherFreezeId -ne '') -and ($freezeIdFields.Count -eq 1) -and ($freezeIdFields[0].Groups[1].Value -ceq $motherFreezeId)
 $manifestValid = $manifestInWorkspace -and (Test-Path -LiteralPath $manifestFile -PathType Leaf) -and $expectedManifest -and ((Get-FileHash -LiteralPath $manifestFile -Algorithm SHA256).Hash -eq $expectedManifest)
