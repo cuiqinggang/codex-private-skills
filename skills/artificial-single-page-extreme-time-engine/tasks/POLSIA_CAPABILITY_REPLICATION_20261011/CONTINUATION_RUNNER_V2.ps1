@@ -10,7 +10,7 @@ foreach ($flag in $stopFlags) {
 }
 if (-not (Test-Path -LiteralPath $prompt)) { exit 3 }
 $state = Get-Content -LiteralPath $rootState -Raw -Encoding UTF8
-if ($state -match '(?m)^MOTHER_FINAL_VALID=YES$') { exit 0 }
+if ($state -match '(?m)^MOTHER_FINAL_VALID=YES\r?$') { exit 0 }
 $running = @(Get-CimInstance Win32_Process -Filter "name='codex.exe'" | Where-Object {
   $_.CommandLine -like '*Polsia-Codex-20261011*' -and ($_.CommandLine -like '* exec *' -or $_.CommandLine -like '* exec-server *')
 })
@@ -55,7 +55,7 @@ $motherFreezeId = if ($afterMotherText -match '(?m)^FREEZE_ID=(\S+)') { $Matches
 $versionFreezeId = if ($afterVersionText -match '(?m)^LATEST_FREEZE_ID=(\S+)') { $Matches[1] } else { '' }
 $freezeFile = if ($afterMotherText -match '(?m)^FREEZE_PATH=(.+)$') { $Matches[1].Trim() } else { '' }
 $manifestFile = if ($afterMotherText -match '(?m)^MANIFEST_PATH=(.+)$') { $Matches[1].Trim() } else { '' }
-$expectedManifest = if ($afterMotherText -match '(?m)^MANIFEST_SHA256=([A-Fa-f0-9]{64})$') { $Matches[1] } else { '' }
+$expectedManifest = if ($afterMotherText -match '(?m)^MANIFEST_SHA256=([A-Fa-f0-9]{64})\r?$') { $Matches[1] } else { '' }
 $pathRoot = [IO.Path]::GetFullPath($root).TrimEnd('\') + '\'
 $freezeInWorkspace = $freezeFile -and [IO.Path]::GetFullPath($freezeFile).StartsWith($pathRoot,[StringComparison]::OrdinalIgnoreCase)
 $manifestInWorkspace = $manifestFile -and [IO.Path]::GetFullPath($manifestFile).StartsWith($pathRoot,[StringComparison]::OrdinalIgnoreCase)
