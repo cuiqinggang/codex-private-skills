@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.3.3 - 2026-10-12｜OpenAI Secure MCP Tunnel 自定义插件接入与恢复
+
+- **保留**原 DCR Remote 主路 / GitHub Actions self-hosted Runner 备路，且不重建旧配置。
+- 增加 `OPENAI_TUNNEL_CONNECT_RECOVERY_20261012.md`：从 OpenAI Platform 隧道创建、工作区选择陷阱、完整 Windows amd64 安装包与 runtime 误选、CLI quickstart、Runtime API Key、PowerShell 原始启动命令、本地 readyz、ChatGPT 插件创建、身份验证选项、连接和真实 echo 工具回执的逐步操作。
+- 增加 `evidence/OPENAI_TUNNEL_DEMO_REALITY_20261012.md`：原 PowerShell 日志决定性证据、`harpoon` 局部错误与 `main` 通道差分、浏览器 `ready`、用户转交独立页 `echo` 报告；不保存秘密密钥。
+- 修复旧错误判断：`unsupported channel "harpoon"` 和 `target_count=0` 不足以推翻已可用的 `main` 演示 MCP 通道；demo 切换无身份验证后远端 echo 实际成功。警告保留以便后续真实 OAuth 诊断。
+- 状态严分：`TUNNEL_DEMO_ECHO=PASS_USER_RELAYED`；`CHATGPT_REMOTE_REAL_WINDOWS_MCP=NOT_TESTED`；`PRODUCTION_FINAL_VALID=NO`。正式 Windows 读写、PowerShell、重启常驻和授权须单独 Reality。
+- 安全：Demo「无需身份验证」不得用于具 Windows 命令/文件权限的真实 MCP；Runtime Key 应轮换到最小 `Tunnels Read+Use`；严禁把 Key 写入仓库；FlClash、系统代理、已登录浏览器及原自启动原样保留。
+
 ## 0.3.0 - 2026-10-03
 
 - 正式升级为 GPT直连Windows双路执行桥 v0.3.0。
