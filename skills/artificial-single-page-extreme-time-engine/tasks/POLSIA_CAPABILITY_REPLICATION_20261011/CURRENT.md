@@ -1,8 +1,8 @@
 # Polsia 能力复用项目｜唯一当前状态
 TASK_ID=POLSIA_CAPABILITY_REPLICATION_20261011
-NODE_ID=CODEX-003
+NODE_ID=CODEX-004
 MODE=GPT_CEO_CODEX_EXECUTOR
-STATE=CODEX003_VIRTUAL_EVIDENCE_GAPS_FROZEN_GPT_ROUTE_REQUIRED
+STATE=CODEX004_DISPOSITION_APPROVED_QUEUED
 METHOD_REF=skills/artificial-single-page-extreme-time-engine/START_HERE.md
 METHOD_AUTHORITY=cuiqinggang/codex-private-skills/main
 PUBLIC_ENGINE=ENGINE.md@28
@@ -26,7 +26,7 @@ RESULT=PARTIAL;INHERITED_BUSINESS_BASELINE_PASS;VIRTUAL_EVIDENCE_GAPS_REMAIN;WHO
 T_VALID_REAL=UNKNOWN
 FINAL_VALID=NO
 FREEZE=FACT_CHECKPOINT_ONLY
-NEXT=GPT_CEO_EVIDENCE_GAP_DISPOSITION: read nodes/CODEX-003/NEXT.md; provide existing same-contract quality/full-time/recovery/contention evidence or separately authorize an existing true business entry. No automatic repeat of CODEX003 without new input, no re-download/re-render GOOD. ENGINE28 gate and GPT permission precede complete candidate freeze, one FINAL and independent new10.
+NEXT=CODEX-004_MATURE_CONTENT_OPERATIONS: follow GPT_CEO_DISPOSITION_V003.md. V003 facts accepted, old FFmpeg B/C candidate gaps remain unproven; do not redo old nodes. Native Codex should execute distinct isolated content operations bundle.
 LATEST_USER_DECISION=2026-10-11_ENGINE28_MATURE_REUSE_ONLY
 NOTE=实际命令行首发中文经 PowerShell 管道编码出错，已停止错误进程，改由 ASCII 引导 Codex 自行按UTF-8读取本地完整中文任务合同；避免错误执行。
 
@@ -52,7 +52,7 @@ LATEST_FREEZE_VERSION=V003
 LATEST_FREEZE_ID=POLSIA-MOTHER-V003-F001
 LATEST_FREEZE_PATH=skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/Freeze_V003_CODEX003.md
 VERSION_POINTER=skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/VERSION_CURRENT.md
-NODE_CURRENT=CODEX-003_FROZEN_GPT_EVIDENCE_ROUTE_REQUIRED
+NODE_CURRENT=CODEX-004_PLANNED_CEO_APPROVED
 CURRENT_SCHEDULER_TRIGGER=INDEFINITE_2_MINUTES_AND_AT_LOGON
 CURRENT_OBSERVATION_WINDOW=8_HOURS_NOT_HARD_STOP
 MOTHER_FINAL_VALID=NO
@@ -102,3 +102,12 @@ CODEX003_NEXT_INPUT=EXISTING_SAME_CONTRACT_QUALITY;FULL_STAGE_AND_HANDOFF_TIMES;
 CODEX003_NOTE=Factual/gap Freeze only. n8n/Reasonix protected model not called, no credentials/billing/production/sending, no new platform/scheduler/system change, no ROI calculation, no waiting/complete flag. Mother whole-function acceptance and GPT final review remain pending.
 
 【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜自动接续节点】
+
+## GPT CEO CODEX-004接续批准（保留V003既有事实）
+GPT_CEO_DISPOSITION=GPT_CEO_DISPOSITION_V003.md
+GPT_CEO_STATE=CODEX004_DISPOSITION_APPROVED_QUEUED
+LAST_FROZEN_VERSION=V003
+LAST_FROZEN_FREEZE=POLSIA-MOTHER-V003-F001
+NEXT_EXECUTOR_NODE=CODEX-004_MATURE_CONTENT_OPERATIONS
+RULE=Do not repeat CODEX003 evidence audit or V001/V002 completed tests; treat B/C same-quality+recovery proof as UNKNOWN; use mature preexisting tools for independent no-side-effect marketing deliverable. CEO replan is NOT new Freeze or FINAL.
+CHECKPOINT_DEFECT=Local Windows runner used GitHub freeze basename in workspace root; fixed by matching real nodes/CODEX003/FREEZE.md with manifest and pointers, pending real subsequent node closeout confirmation.
