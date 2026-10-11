@@ -174,3 +174,11 @@ PRODUCTION_FINAL_VALID=NO
 - 最小成熟修复：保留 `Get-Command node.exe` 核验；`$mcpCmd = 'node.exe ' + $entry.Replace('\','/') + ' --no-onboarding'`。只使用 PATH 可发现的 `node.exe` 和不含空格的 MCP 入口路径 `C:/AI/GPT-Windows-Bridge-B/mcp/node_modules/@wonderwhy-er/desktop-commander/dist/index.js`，不增加自研解析器，不改 PATH/代理，不复制敏感密钥。
 - 源文件 [Windows MCP 启动器](../../workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/OPENAI-TUNNEL-REAL-MCP-STAGE-20261012.ps1) 提交 `a9f78b62eff037f481087ed04ce984beb0f6a5c9`；通过已有 Runner 按 Exactly-once 单次重新部署 [run 38178400910](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38178400910)，Windows artifact 真实回执 `PASS`，`REAL_TUNNEL_STAGE_PASS`，新启动脚本落盘 SHA256=`34A1EF6DFB8F0D41A56106384A738D7F0BDF5C7AD8BB152EE4195CB1B53070DE`。自动工具调用尚未获得新的 `node.exe` stdio 实际运行结果，故标 `LAUNCHER_PATHFIX_STAGED=PASS; REAL_MCP_TUNNEL_REMOTE_FINAL=NOT_TESTED`。
 - 原 demo 已经停止、旧窗口回到 PowerShell 提示符。必须在**相同 Windows 交互用户会话**重新运行已经部署好的 `-Launch` 脚本并安全输入 Runtime Key；运行成功后通过 ChatGPT 新会话重新发现真实 MCP 工具，实际读目录、隔离文件写后读、PowerShell marker。**不能**把修复版脚本投放成功误写成真实远程执行成功。
+
+## 2026-10-12 06:02 真实 Windows MCP 的 stdio 启动 PASS；ChatGPT 工具目录待刷新
+
+- 用户提供的新 PowerShell 日志证明先前 `C:Program` 路径故障已修复：`MCP_STDIO_COMMAND=node.exe C:/AI/GPT-Windows-Bridge-B/mcp/node_modules/@wonderwhy-er/desktop-commander/dist/index.js --no-onboarding`、`NODE_VERSION=v24.14.0`；`2026/10/12 06:02:45 INFO stdio MCP command started`；`health server listening 127.0.0.1:63623`；`2026/10/12 06:02:46 INFO 🟢 tunnel-client started`；`mcp_target_kind=stdio`，故 `REAL_WINDOWS_MCP_STDIO_START=PASS`。
+- 本页面实际调用了旧插件接口 `GPT-Windows-MCP-Bridge.server_info`，取得 `Unknown tool: server_info`：指向**ChatGPT 保存的演示 MCP 工具目录已过时**，因为新服务不再含旧的 `server_info`。这不是新服务的真实 26 工具已被 ChatGPT 发现的证据。
+- 官方：[ChatGPT 开发者模式与 MCP 应用](https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt)，服务器工具变更后要在自定义插件的设置中手动 `Refresh`（刷新工具），不能仅刷新浏览器/重复运行 echo；已有绑定不必重新创建隧道、Key。刷新后在新 ChatGPT 会话中检查真实 `list_directory`/ `read_file` / `write_file` / `start_process` 工具，并做有证据的远端隔离测试。
+- 此次 `/readyz` 尚无新运行时的 HTTP 响应截图，且对 stdio 其 Ready 可能早于协议初始化；不能仅据启动 PASS 推断远端正式能力。当前 `REAL_MCP_PROCESS_STARTED=PASS`，`CHATGPT_REMOTE_WINDOWS_TOOLS=NOT_TESTED`，`FINAL_VALID=NO`。
+- 请保持现有 Windows PowerShell 前台进程，不要第二次启动 `tunnel-client` 或更改 FlClash/代理。新管理 UI：`http://127.0.0.1:63623/ui`，本次动态端口仅对当前运行有效。
