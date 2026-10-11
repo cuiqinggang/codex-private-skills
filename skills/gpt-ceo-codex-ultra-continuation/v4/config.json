@@ -1,0 +1,77 @@
+{
+  "version": "V4",
+  "task_id": "POLSIA_CAPABILITY_REPLICATION_20261011",
+  "project_base": "C:\\AI\\Polsia-Codex-20261011",
+  "immutable_reference": "POLSIA-MOTHER-V008-F001",
+  "monitor_task": "Polsia-Unified-Monitor-V4",
+  "native_capacity": {
+    "cpu_default": 2,
+    "cpu_expand_on_benefit": 4,
+    "wait_default": 4,
+    "wait_expand_on_benefit": 8,
+    "codex_agents": "UNKNOWN_TEST_REQUIRED"
+  },
+  "scopes": "READ_ONLY_OR_ISOLATED_PILOT;NO_PRODUCTION_OPERATIONS",
+  "lanes": [
+    {
+      "id": "ENG",
+      "name": "研发与BUG修复",
+      "default_status": "READY",
+      "next": "从既有测试仓复现BUG→修复→独立回归"
+    },
+    {
+      "id": "MARKETING",
+      "name": "营销与研究",
+      "default_status": "READY",
+      "next": "现成渠道草稿/预览沙盒，无公开发布"
+    },
+    {
+      "id": "SUPPORT",
+      "name": "客户服务",
+      "default_status": "READY",
+      "next": "既有工单测试空间，隔离工单→路由→关闭"
+    },
+    {
+      "id": "SALES",
+      "name": "销售与CRM",
+      "default_status": "READY",
+      "next": "成熟CRM沙盒线索导入、去重、状态流转"
+    },
+    {
+      "id": "FINANCE",
+      "name": "财务与支付",
+      "default_status": "READY",
+      "next": "V008事实已完成，下一步官方支付sandbox"
+    },
+    {
+      "id": "WORKFLOW",
+      "name": "多Agent与工作流",
+      "default_status": "BLOCKED",
+      "next": "n8n HTTP401/Docker拒绝；先合法核验正式接口"
+    },
+    {
+      "id": "MONITOR",
+      "name": "智能监控",
+      "default_status": "READY",
+      "next": "原生Task Scheduler V4观测，异常持久化"
+    },
+    {
+      "id": "RECOVERY",
+      "name": "故障与冷恢复",
+      "default_status": "READY",
+      "next": "隔离Git修复实测；断电与系统冷恢复待授权"
+    },
+    {
+      "id": "LEARNING",
+      "name": "持续学习",
+      "default_status": "READY",
+      "next": "V008 SOP在新任务中实际命中验证"
+    },
+    {
+      "id": "INTEGRATION",
+      "name": "跨系统集成验收",
+      "default_status": "READY",
+      "next": "多分支交付整合、全合同回归与验收"
+    }
+  ]
+}
