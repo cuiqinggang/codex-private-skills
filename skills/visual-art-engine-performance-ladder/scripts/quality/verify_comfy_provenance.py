@@ -118,8 +118,9 @@ def main():
         check(sha256_file(wf_path) == wf_hash, "WORKFLOW_SHA_MISMATCH")
         workflow = read_json(wf_path)
         save_id = verify_workflow(workflow, args.mode)
+        g1_state = "PASS" if args.mode == "T2I_INDEPENDENT" else "PARTIAL_MANUAL_INPUT_SHA_REVIEW_REQUIRED"
         if not args.api or not args.output_root:
-            print(json.dumps({"status":"PREFLIGHT_ONLY", "G1":"PASS", "G2":"UNVERIFIED", "FINAL_VALID":"NO"}))
+            print(json.dumps({"status":"PREFLIGHT_ONLY", "G1":g1_state, "G2":"UNVERIFIED", "FINAL_VALID":"NO"}))
             return 0
         submit = read_json(directory / "submit.json")
         response = submit.get("result", submit.get("prompt_response", submit))
@@ -147,7 +148,7 @@ def main():
         check((directory / "output.sha256").read_text().strip().split()[0].lower() == computed, "RECORDED_PNG_SHA_MISMATCH")
         with gen.open("rb") as stream:
             check(stream.read(8) == b"\x89PNG\r\n\x1a\n", "NOT_PNG")
-        print(json.dumps({"status":"FILE_PROVENANCE_VERIFIED", "G1":"PASS", "G2":"PASS", "G3":"MANUAL_QUALITY_REQUIRED", "G4":"LIVE_HISTORY_RECHECKED", "FINAL_VALID":"NO_UNTIL_QUALITY", "prompt_id":prompt_id, "png_sha256":computed}, ensure_ascii=False))
+        print(json.dumps({"status":"FILE_PROVENANCE_VERIFIED", "G1":g1_state, "G2":"PASS", "G3":"MANUAL_QUALITY_REQUIRED", "G4":"LIVE_HISTORY_RECHECKED", "FINAL_VALID":"NO_UNTIL_SOURCE_AND_QUALITY", "prompt_id":prompt_id, "png_sha256":computed}, ensure_ascii=False))
         return 0
     except (AuditError, OSError, KeyError, ValueError, TypeError) as error:
         print(json.dumps({"status":"INVALID_OR_UNVERIFIED", "reason":str(error), "FINAL_VALID":"NO"}, ensure_ascii=False))
