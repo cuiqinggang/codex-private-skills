@@ -231,3 +231,13 @@ powershell -NoProfile -NoExit -ExecutionPolicy Bypass -File "C:\AI\GPT-Windows-B
 
 - 这不是免授权自动过程：同一 Tunnel ID 的 stdio MCP 不允许同时运行两个 tunnel-client；脚本核对后才会停 demo/切实服务。新进程为前台式，关窗会停；此次暂不承诺开机自启。ChatGPT 原插件的工具元数据需刷新并新开会话才能发现真实工具；平台可能限制写/执行工具，请以真实发现结果为准。
 - 只有真正 ChatGPT 插件新页 `tools/list`、`read_file/list_directory`、授权后的 `write_file→read_file`、`start_process` 实际 PASS，才写 `CHATGPT_REMOTE_REAL_WINDOWS_TOOLS=PASS`。此处只是入口部署/预检：`STAGED_PASS`、`FINAL_VALID=NO`。
+
+
+
+## 2026-10-12 明确授权修正：保留自定义插件当前默认策略
+
+- 用户明确同意 `GPT-Windows-MCP-Bridge` 继续使用 **`Allow all actions`（允许所有操作）＋「无需身份验证」**，**不需要**每次为该设置重新征求同意；仅在 OpenAI 平台的客观权限/兼容性/安全要求阻止时再提出必须调整的具体原因，不能擅自更改。此处批准适用用户本人已建立的隧道及设备，不表示向陌生用户开放访问。
+- 关键区别：`Allow all actions` 是 **ChatGPT 端确认策略**；「无需身份验证」是 **MCP 服务端身份验证方式**；OpenAI Tunnel 客户端仍需要合法的 Platform Runtime Key 与隧道 `Read+Use` 访问权限。两个开关不等于隧道或 Windows 已经具备充分隔离；高权限远程 Shell 存在未授权访问和误操作风险，平台也可能限制部分工具。
+- 之前要求必须改成 `Always ask` 的**启动脚本前置条件已撤销**，修复源码 `workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/OPENAI-TUNNEL-REAL-MCP-STAGE-20261012.ps1`，并通过独立 GitHub Runner 节点更新 Windows 本地 `C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1`；源码提交 `441281cc0d928e953409a67c56341470efaf11c3`，部署任务 `OPENAI-TUNNEL-REAL-MCP-RESTAGE-AUTH-20261012`。启动仍需用户在自己 Windows 交互终端**隐藏输入 API Key**，不能由 ChatGPT 或 GitHub 工作流代填密钥。
+- 切换/验收原则不变：同一 Tunnel 先验证再停 demo；真实 MCP `tools/list`、只读、隔离写后读、无副作用命令的远端真实回执之前 `FINAL_VALID=NO`；不得改动 FlClash、系统代理、已有浏览器、原 DCR/Runner 自启动配置。
+- **安全声明**：上述是用户认可的便利性风险选择，并非推荐所有人默认关闭高权限 MCP 的认证，且不能绕过平台强制权限策略。
