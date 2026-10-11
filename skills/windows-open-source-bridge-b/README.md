@@ -38,3 +38,9 @@
 - run [38169435718](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38169435718)：按正确的 `tunnel-client.exe` 做非授权 CLI 和 MCP 实际工具调用验收；以实际日志结果为准。
 
 原 v0.3.2 文档、流程及历史证据只读保留；当前 B 通道在没有 ChatGPT 端到端通过前 `FINAL_VALID=NO`。
+
+### 最新 Reality 结果：2026-10-12 (北京时间)
+- **run 38169533429：LOCAL_FUNCTIONAL_PASS**（Windows 主机 DESKTOP-4A1EGTM, Runner DESKTOP-4A1EGTM-etal）。官方 `tunnel-client.exe` CLI version 0.0.16 及 `help quickstart` PASS；MCP `tools/list=26`，真实 `tools/call list_directory` PASS，真实 `tools/call start_process` PowerShell 输出 `BRIDGE_B_LOCAL_COMMAND_PASS`，运行日志和 artifact 已上传。
+- 标准验收严格区分：`LOCAL_FUNCTIONAL_PASS=YES`；`CHATGPT_REMOTE_READY=UNKNOWN/NO EVIDENCE`；`TUNNEL_AUTHENTICATED=NO`；`FINAL_VALID=NO`。本地功能通过不能冒充 ChatGPT 页面实际连通。
+- 安装目录：`C:\AI\GPT-Windows-Bridge-B`。本次没有修改系统代理或覆盖原执行桥。
+- 下一步若账号获得官方合法 Tunnel 权限，采用其 `tunnel-client init ... --mcp-command` 指向本目录已安装的 Desktop Commander MCP。将 Runtime Key 存在本机安全凭据存储，不写仓库或输出日志；从交互式用户会话启动隧道，确认 `readyz`、ChatGPT 注册工具的可见性、真实读写命令与授权确认规则。没有权限则停止这一受限步骤，改走现成 GitHub Runner 正式执行路径，不做绕过。
