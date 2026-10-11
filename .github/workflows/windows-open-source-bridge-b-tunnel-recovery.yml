@@ -1,0 +1,109 @@
+name: Windows Bridge B - Verified Tunnel Recovery
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/windows-open-source-bridge-b-tunnel-recovery.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-open-source-bridge-b-recovery
+  cancel-in-progress: false
+
+jobs:
+  stage-official-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download and verify OpenAI official Windows release in GitHub cloud
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p official-release
+          cd official-release
+          asset='tunnel-client-runtime-v0.0.16-windows-amd64.zip'
+          base='https://github.com/openai/tunnel-client/releases/download/v0.0.16'
+          curl -fsSL --retry 3 -o SHA256SUMS.txt "$base/SHA256SUMS.txt"
+          curl -fsSL --retry 3 -o "$asset" "$base/$asset"
+          expected="$(grep -F "$asset" SHA256SUMS.txt | head -n 1 | grep -oE '^[a-fA-F0-9]{64}')"
+          test "${#expected}" -eq 64
+          echo "$expected  $asset" | sha256sum -c -
+          echo 'CLOUD_OFFICIAL_RELEASE_SHA256_PASS'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bridge-b-official-verified-v0016
+          path: official-release/
+          if-no-files-found: error
+          retention-days: 7
+
+  deliver-to-windows:
+    needs: stage-official-release
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 15
+    steps:
+      - name: Download already-verified artifact through GitHub Actions
+        uses: actions/download-artifact@v4
+        with:
+          name: bridge-b-official-verified-v0016
+          path: C:\AI\GPT-Windows-Bridge-B\tunnel\official-release
+      - name: Independently verify archive and test tunnel CLI on Windows
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $root = 'C:\AI\GPT-Windows-Bridge-B'
+          $evidenceDir=Join-Path $root 'evidence'
+          New-Item -ItemType Directory -Force -Path $evidenceDir | Out-Null
+          $dir=Join-Path $root 'tunnel\official-release'
+          $asset='tunnel-client-runtime-v0.0.16-windows-amd64.zip'
+          $zip=Join-Path $dir $asset
+          $hashFile=Join-Path $dir 'SHA256SUMS.txt'
+          $row=Get-Content -LiteralPath $hashFile | Where-Object {$_ -match [regex]::Escape($asset)} | Select-Object -First 1
+          $expected=[regex]::Match($row,'^[a-fA-F0-9]{64}').Value
+          if(-not $expected){throw 'SHA256 digest missing'}
+          $actual=(Get-FileHash -Algorithm SHA256 -LiteralPath $zip).Hash
+          if($actual -ne $expected){throw 'OFFICIAL_SHA256_MISMATCH'}
+          Write-Host 'WINDOWS_OFFICIAL_SHA256_PASS'
+          $extract=Join-Path $root 'tunnel\v0.0.16'
+          New-Item -ItemType Directory -Force -Path $extract | Out-Null
+          Expand-Archive -LiteralPath $zip -DestinationPath $extract -Force
+          $exe=Get-ChildItem $extract -Recurse -Filter tunnel-client.exe -File | Select-Object -First 1
+          if(-not $exe){throw 'TUNNEL_EXE_MISSING'}
+          $help=(& $exe.FullName help quickstart 2>&1 | Out-String)
+          if($LASTEXITCODE -ne 0){throw "TUNNEL_CLIENT_QUICKSTART_FAILED=$LASTEXITCODE"}
+          Write-Host 'TUNNEL_CLIENT_QUICKSTART_PASS'
+          $mcp=Join-Path $root 'mcp\node_modules\@wonderwhy-er\desktop-commander\dist\index.js'
+          $probe=Join-Path $root 'mcp-smoke.cjs'
+          if(!(Test-Path $mcp) -or !(Test-Path $probe)){throw 'EXISTING_MCP_STAGE_MISSING'}
+          $node=(Get-Command node.exe -ErrorAction Stop).Source
+          $response=(& $node $probe $mcp 2>&1 | Out-String)
+          Write-Host $response.Trim()
+          if($LASTEXITCODE -ne 0 -or $response -notmatch 'MCP_PROTOCOL_PASS_TOOLS=26'){throw 'MCP_PROTOCOL_REGRESSION'}
+          $proof=[ordered]@{
+            task_id='BRIDGE-B-OPEN-SOURCE-20261012'
+            time=(Get-Date).ToUniversalTime().ToString('o')
+            machine=$env:COMPUTERNAME
+            source='GitHub cloud verified release to Actions artifact to Windows'
+            tunnel_binary=$exe.FullName
+            tunnel_version='v0.0.16'
+            tunnel_sha256_match=$true
+            tunnel_quickstart_pass=$true
+            mcp_protocol_pass=$true
+            discovered_tools=26
+            tunnel_authenticated=$false
+            chatgpt_end_to_end=$false
+            final_valid='NO'
+            status='LOCAL_READY_NEEDS_AUTH_AND_CHATGPT_PERMISSION'
+          }
+          $proof | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $evidenceDir 'bridge-b-recovery-evidence.json') -Encoding UTF8
+          $proof | ConvertTo-Json -Depth 5 | Write-Host
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bridge-b-recovery-evidence-${{ github.run_id }}
+          path: C:\AI\GPT-Windows-Bridge-B\evidence\bridge-b-recovery-evidence.json
+          if-no-files-found: warn
+          retention-days: 30
