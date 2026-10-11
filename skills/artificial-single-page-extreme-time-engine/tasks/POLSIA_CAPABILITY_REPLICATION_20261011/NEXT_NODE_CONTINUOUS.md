@@ -23,3 +23,9 @@ STATUS=NEXT_NODE_READY
 
 ## 下一最小独立节点（CODEX-002）
 在保留 CODEX-001 实证成果基础上，选定一个已存在且合法可执行的真实AI公司能力端到端流程（优先 n8n 已有工作流/现有一人公司成品/公开授权的现成接口）。先只读检查可用版本、业务入口与输入输出合同，证实无副作用后做现实基线、虚拟成熟、Freeze、一次真实认证；对同合同业务再10轮稳定性。若找不到合法可运行入口，优先提升使用已安装成熟平台现成内置功能与最小配置，不自研。此节点不能因已生成“参考方案”就算完成。
+
+
+## 2026-10-11 网络ECC v3.1.1复用补充（保留原任务规则）
+- ECC最新权威源码不在旧本地ECC V2.1.0入口，而在独立仓库 `cuiqinggang/ecc-v3.1.1` 的不可变 `v3.1.1` 发布标签。精确来源/哈希/检查点调用边界见共同工作区 `skills/artificial-single-page-extreme-time-engine/ECC_V3_1_1_NETWORK_AUTHORITY.md`；本任务复用门见 `ECC_V311_ADOPTION_GATE.md`。
+- 防断电轻量 Checkpoint = 单个执行节点内部按进展/风险/合理周期保存STATE与游标，**绝不因Checkpoint递增Vnnn**；自然节点完成时经过不可变Freeze与独立回读才更新Vnnn与CURRENT。不得把心跳/日志文件变化冒充完成。
+- 优先研究复用ECC现成原子STATE、RUN-LOG追加、lease fencing和Codex runner，不在已经运行的CLI任务中热切换新的执行底座。先隔离比较总时间、安全性和断电恢复实证；尚未验收前现有Window原生计划任务保持不变。发布/部署的公网网站与GitHub版本管理是两件事。
