@@ -136,3 +136,16 @@ NETWORK_CONTRACT=skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_
 - 若遇必须人类授权或明确安全拒绝，停相关动作并生成WAIT_FOR_USER，不能让GPT或Codex换通道绕过；能合法继续的独立节点可按权限边界推进。结果UNKNOWN时先查回执，再决定是否允许重试，特别是外部副作用的exactly-once。
 - 断电期间没有计算能力；保全仅保证磁盘/GitHub上实际完成的写入，不保证未落盘的思维链或中间动作。开机登录时按最近已回读Freeze和原业务回执做三态对账后接续；关机/开机接续、GPT实际接手规划并成功恢复及72h长稳均需独立现实验收，目前不得写FULL_E2E_PASS。
 - 黑色只读监控窗口每60秒更新，展示母任务名、当前NODE、上一个真实冻结VERSION、FREEZE_ID、运行状态、真实日志和最近十份输出；任何版本只在新Freeze回读确认后递增，不可按轮询次数或工具命令数量递增。
+
+
+## 13. 正式纠正：ECC v3.1.1 网络源码优先（2026-10-11）
+SOURCE_OF_TRUTH=skills/artificial-single-page-extreme-time-engine/ECC_V3_1_1_NETWORK_AUTHORITY.md
+ECC_REPOSITORY=cuiqinggang/ecc-v3.1.1
+ECC_RELEASE=https://github.com/cuiqinggang/ecc-v3.1.1/releases/tag/v3.1.1
+ECC_REF=v3.1.1
+ECC_RUNTIME_IN_POLSIA=NOT_YET_REALITY_ACCEPTED
+- 用户ECC最新指代的是其GitHub独立工程仓库 `cuiqinggang/ecc-v3.1.1`，已实际核实正式tag和Release。此前本地 `ecc-four-role-loop-orchestration` 的V2.1.0与另一个本地影子适配器并非同一权威版本，不能再将它们的描述冒充ECC v3.1.1。
+- 长时循环、Checkpoint、原子持久化、追加日志、租约防双写、崩溃恢复与Codex执行，优先研究并复用ECC v3.1.1现成源码模块（loopx、lease、runners、fresh_resume），不另造底层。是否适配当前Polsia运行态必须先只读核验、最小隔离验证，不能对运行中母任务直接热替换执行器。
+- **Checkpoint不是Freeze。** 节点内的Checkpoints依据风险/进展/上下文压缩或待验证的15分钟默认间隔建立轻量滚动状态，不递增节点版本；只有自然节点完成、不可变冻结证据回读一致后，才递增Vnnn并更新网络CURRENT。
+- 写入职责：网络共同工作区是方法版本、合同、节点Freeze和动态权威指针的第一来源；Windows本机是Codex原生任务执行与大型原始产物/日志的工作目录。文件的网络提交有commit SHA和blob SHA；实际站点还需成熟部署平台的公开运行验收。不能以网络代码存在替代运行成功。
+- 本条为《三人行》第1版草案版本修正，保留原 ENGINE28 现行约束与现有长任务的冻结状态，不追溯覆盖已完成节点。ECC v3.1.1对Polsia集成、关机重启和72小时长稳均尚待现实验收。
