@@ -1,3 +1,11 @@
+# 当前正式默认方法：三人行第1版（2026-10-11起生效）
+DEFAULT_METHOD=SANRENXING_V1
+STATUS=FROZEN_ACTIVE
+METHOD_PATH=skills/artificial-single-page-extreme-time-engine/SANRENXING_V1.md
+FREEZE_ID=SRX-V1-ACTIVE-F001
+**入口优先级：新任务和“按三人行”→直接读取SANRENXING_V1.md；明确指定旧A/B→按各自ROUTE；已有任务METHOD_REF→维持任务原方法锁定，除非经授权的冻结节点显式迁移。**
+**以下是兼容历史的A/B启动说明；其中旧版“唯一入口”“默认A/B”语句不覆盖以上新版本裁定。**
+---
 # 《自动化A/B极限短时间引擎》｜唯一启动说明
 
 **对用户只有一个入口**：把任务交给 GPT，说“使用自动化A/B极限短时间引擎完成”。真正的任务规划与工具执行始终由 GPT 主导；本文件负责**定位版本、恢复任务状态、选择页面形态、自动推进**，不是把其它技能包正文全部合并在一起。
