@@ -107,3 +107,5 @@ launcher：C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommande
 - Windows `C:\AI\GPT-Windows-Bridge-B` 安装成功：MIT 开源 Desktop Commander MCP 0.2.52，26 工具发现、真实目录工具调用及 PowerShell 标记回执通过；OpenAI Secure MCP Tunnel Client 0.0.16 官方 SHA256 验证与本地 CLI PASS。证据 run=38169533429。
 - 月度配额为厂商 Remote Desktop Commander **托管**版限制，本地开源执行器不受这项厂商远程配额影响；但 OpenAI 自定义 MCP 权限和 Tunnel 身份验证独立存在，不可通过修改网络组件取消。
 - 当前状态 `B_LOCAL_FUNCTIONAL=PASS / B_CHATGPT_END_TO_END=NOT_TESTED / B_FINAL_VALID=NO`。在官方权限允许并完成实际端到端验收前，保持已验证的 GitHub Runner 正式执行通路。禁止改 FlClash、代理和原自动启动任务。
+
+- 2026-10-12 Reality 增量验收：run [38169679396](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38169679396)，Windows 本机 MCP `tools/call` 实测目录读取 + PowerShell 命令输出 + 隔离目录 `write_file → read_file` 内容回读，全部 PASS；OpenAI 完整 CLI 0.0.16 通过。仅本地调用闭环 PASS，不代表隧道已鉴权或 ChatGPT 远程端到端通过。`B_LOCAL_FUNCTIONAL=PASS / B_CHATGPT_REMOTE=NOT_TESTED / FINAL_VALID=NO`。
