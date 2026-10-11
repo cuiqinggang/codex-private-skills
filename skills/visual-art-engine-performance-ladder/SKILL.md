@@ -18,6 +18,14 @@ metadata:
 
 本轮连续违规反例（2026-10-11）：**用户明确要求技能包升级和 ComfyUI 修复图片，却又调用 `image_gen` 生成修复图及“原图/修正后”对比海报**。两次 `gen_id` 不等于 ComfyUI `prompt_id`，无相应 ComfyUI workflow/history/文件来源审计；该轮结果一律 `NOT_COMFYUI / INVALID`，不得作为品质/时间基线。见 [本轮再次绕路事故记录](references/INCIDENT-KREA-REPEAT-IMAGEGEN-20261011.md)。
 
+**可执行来源核验器（正式路径）**：`scripts/quality/verify_comfy_provenance.py`，回归测试 `tests/test_comfy_source_guard.py`。它可在生成前核验工作流类型；生成后必须提供本机 ComfyUI `/history` 和真实输出根目录，才能核对原生 `prompt_id`、工作流、SaveImage PNG 及文件 SHA。只有预检结果不得声称执行成功。示例：
+
+```powershell
+python scripts/quality/verify_comfy_provenance.py --dir "C:\\AI\\ComfyUI_Aaki_v3\\data\\output\\本轮证据" --mode T2I_INDEPENDENT --api http://127.0.0.1:8188 --output-root "C:\\AI\\ComfyUI_Aaki_v3\\data\\output"
+```
+
+仅在既有工作流适用时使用，不得重写 ComfyUI 调度。校验器的 `FILE_PROVENANCE_VERIFIED` 只证明已核验的文件与历史一致，**不自动代表 G3 画质通过或 FINAL_VALID=YES**。对带参考图的模式，输入文件 SHA 仍需人工交叉核对；局部 EDIT_INPAINT 自动审查尚不充分，默认拒绝自动认证。功能自测 7/7 是模拟样例，不代表跨新 ChatGPT 会话真实工具选择门已通过。
+
 版本规则：以本 `SKILL.md` 头部 `metadata.version` 与同目录 `VERSION` 一致为准；不一致必须阻止正式升级 PASS，先修正单一版本事实。与第28版自动化引擎的 Freeze、一次最终 Reality、REUSE_GATE 和性能基准合同并行适用。
 
 **能力边界**：技能文档只能约束本技能的合规判定，不能保证在宿主层物理禁止 `image_gen` 调用。以后必须以真实工具调用和执行证据验证防作弊；不能把“规则已写入”说成“平台级拦截已经上线”。
