@@ -1,4 +1,4 @@
-# Polsia ĸ����ǰ����汾
+# Polsia 母任务当前冻结版本
 TASK_ID=POLSIA_CAPABILITY_REPLICATION_20261011
 LAST_FROZEN_VERSION=V006
 LAST_FROZEN_NODE=CODEX-006
@@ -57,4 +57,4 @@ NO_AUTOMATIC_REPEAT_OF_OLD_NODES=YES
 VERSION_UPDATE_POLICY=Immutable facts and SHA saved and officially read back equal before this pointer update;fact seal is not optimization certification
 PERSISTENCE_RECEIPTS=nodes/CODEX-006/persistence/
 
-��Polsiaִ��ҳ��POLSIA_CAPABILITY_REPLICATION_20261011��CODEX-006��ʵ/�鰴֤�ݼ�¼��
+【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜CODEX-006｜实/虚按证据记录】
