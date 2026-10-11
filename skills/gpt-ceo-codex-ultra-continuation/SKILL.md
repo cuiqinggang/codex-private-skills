@@ -3,13 +3,13 @@ name: gpt-ceo-codex-ultra-continuation
 description: 复用已配置Windows原生计划任务与Codex Ultra，在GPT CEO授权后按自然节点持续执行、精确冻结、失败对账和恢复。涉及自动接续、NEEDS GPT、旧版本卡住、授权不同步、升级脚本或暂停标记时使用。
 ---
 
-# GPT CEO＋Codex Ultra 连续运行层｜v3.2.0
+# GPT CEO＋Codex Ultra 连续运行层｜v3.2.2
 
 **唯一权威索引**：`cuiqinggang/codex-private-skills/main` 的
 `skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_INDEX.md`。
 
 **正式方法正文**：
-`skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_V3_2.md`。
+`skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_V3_2_2.md`。
 
 **实际发布验收**：
 `skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_V3_2_ACCEPTANCE.md`。
@@ -26,10 +26,14 @@ description: 复用已配置Windows原生计划任务与Codex Ultra，在GPT CEO
 - 正常只读核验不产生新Freeze，不能等同执行失败；但绝不可为消除错误放松Freeze完成条件。
 - 真实启动验收至少包含原生计划任务、唯一新Codex PID、原生会话或日志进展、新INFLIGHT及最终业务文件；完整自然节点结束和自动进入下一节点必须另行验证。
 
+- **Codex 定位门**：正式NEXT启动合同除CEO_APPROVED外，必须包含当前任务精准`【页面名｜任务名｜序号】`标签；若Codex返回`LOCATOR_GATE=BLOCKED`/exit0，先核验没有任何业务执行，再增加合法定位元数据并原合同精确读回，不以exit0冒充节点完成。
+
 ## 本轮已证实修复
 2026-10-12，通过官方连接器核对本地CEO-D006 Git blob和GitHub一致，将下一任务改为CODEX007限定离线获批，归档旧迁移Pause后，使用原计划任务只触发一次：本机唯一Codex PID=16632，模型gpt-6.1-sol、ultra，新日志持续增长。V006仍为最近已验业务Freeze；不可提前宣称V007或完整Polsia FINAL_VALID。
 
+2026-10-12追加证据：CODEX008第一次因启动合同缺定位标签返回STOP；修复后使用原Windows计划任务唯一PID43416，实际继续读取冻结/工具来源并生成隔离节点文件。详细参见v3.2.2方法正文。完整CODEX008 Freeze仍未验收。
+
 ## 版本隔离
-技能包方法=`v3.2.0`；当前运行脚本=`v3.1.0`；Polsia固定引擎=`第28版`；母任务Freeze独立Vnnn。新方法发布不等于修改运行脚本或业务版本。旧版证据和备份一律保留。
+技能包方法=`v3.2.2`；当前运行脚本=`v3.1.0`；Polsia固定引擎=`第28版`；母任务Freeze独立Vnnn。新方法发布不等于修改运行脚本或业务版本。旧版证据和备份一律保留。
 
 **必须先完整读取正式方法正文再执行涉及迁移/恢复的现实操作。**
