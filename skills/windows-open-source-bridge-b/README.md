@@ -46,3 +46,11 @@
 - 下一步若账号获得官方合法 Tunnel 权限，采用其 `tunnel-client init ... --mcp-command` 指向本目录已安装的 Desktop Commander MCP。将 Runtime Key 存在本机安全凭据存储，不写仓库或输出日志；从交互式用户会话启动隧道，确认 `readyz`、ChatGPT 注册工具的可见性、真实读写命令与授权确认规则。没有权限则停止这一受限步骤，改走现成 GitHub Runner 正式执行路径，不做绕过。
 
 - 2026-10-12 Reality 增量验收：run [38169679396](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38169679396)，Windows 本机 MCP `tools/call` 实测目录读取 + PowerShell 命令输出 + 隔离目录 `write_file → read_file` 内容回读，全部 PASS；OpenAI 完整 CLI 0.0.16 通过。仅本地调用闭环 PASS，不代表隧道已鉴权或 ChatGPT 远程端到端通过。`B_LOCAL_FUNCTIONAL=PASS / B_CHATGPT_REMOTE=NOT_TESTED / FINAL_VALID=NO`。
+
+## 2026-10-12 跨页新增：官方 Tunnel + ChatGPT 演示 MCP 远端回显通过（非 Windows 生产）
+
+- 上游主技能包升级至 [`v0.3.3` 完整恢复手册](../extreme-time-automation-bridge/OPENAI_TUNNEL_CONNECT_RECOVERY_20261012.md)；[脱敏证据摘要](../extreme-time-automation-bridge/evidence/OPENAI_TUNNEL_DEMO_REALITY_20261012.md)。
+- 用户已在 Platform 建立 `tunnel_6acbeee2ce888191b775cd53429c7597`，用 Windows 桌面完整版 `tunnel-client.exe` v0.0.16 启动官方 `--embedded-mcp-stub`，日志启动 PASS、`/readyz` 页面显示 `ready`。
+- ChatGPT `https://chatgpt.com/plugins` 的「自定义 MCP」选择「隧道」，初选 OAuth 注册失败；针对**无敏感能力的官方 demo**改「无需身份验证」后，页面显示已连接；用户转交新页面的真实 echo 调用结果 `{"echoed":"hello from Windows"}`，`ECHO_REALITY_PASS=USER_RELAYED_INDEPENDENT_PAGE_REPORT`。
+- 本目录的 `Desktop Commander MCP 0.2.52` 26 工具虽已由 Actions 在 **Windows 本机** 读、写、命令 Reality PASS，却**仍未**由刚建立的 ChatGPT Tunnel 插件直接远程调用。因此 `B_LOCAL_FUNCTIONAL=PASS / B_CHATGPT_DEMO_ECHO=PASS_USER_RELAYED / B_CHATGPT_REAL_WINDOWS_TOOLS=NOT_TESTED / PRODUCTION_FINAL_VALID=NO`。
+- 保留已有 `C:\AI\GPT-Windows-Bridge-B`、DCR Remote、GitHub runner，不改 FlClash/系统代理。禁止把本次 demo 无身份验证扩展到生产 Windows 执行器。
