@@ -97,3 +97,11 @@ PRODUCTION_FINAL_VALID=NO
 - Runner [staging run 38177110566](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38177110566)：Windows `C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1` 投放成功，SHA256=`7F9688C62AEA418D3FA3919C007473EC0EDA4B0A90EA5BB6CEB81AFB3BE9DD07`，未触碰 Key，原 demo 保留。脚本在用户会话中交互式启动尚未执行。
 - ChatGPT 插件配置只读检查显示 App-specific `Allow all actions`。准备真实 Windows 全权限工具前应明确改为 `Always ask`，并保障鉴权、操作确认和风险隔离。文档不能替代用户真正完成这一步。
 - `STAGED_PASS=YES`，`CHATGPT_REMOTE_WINDOWS_FILE_WRITE_AND_COMMAND=NOT_TESTED`，`FINAL_VALID=NO`。
+
+
+## 5. 真实服务首次启动失败与 PATHFIX 现实部署（2026-10-12 05:54 后）
+
+- 用户实际交互 Windows 命令：`powershell -NoProfile -NoExit -ExecutionPolicy Bypass -File "C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1" -Launch`；使用 A 用户，已输入真实密钥（以星号掩码，未泄露）。准确日志 `Stopping only confirmed demo tunnel process PID 42156`，`channel=main transport=stdio`，随后 `exec: "C:Program": executable file not found in %PATH%`，`TUNNEL_REAL_MCP_EXIT_1`。**失败位置在启动 MCP 子进程**，不代表真实 MCP tools/call 已执行。
+- SOURCE FIX：`a9f78b62eff037f481087ed04ce984beb0f6a5c9` 以 `node.exe` + 正斜杠且无空格的路径取代出错的完整 Node 路径嵌套引号。
+- Windows 重新部署事实：[run 38178400910](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38178400910)，`result.json status=PASS`；`REAL_TUNNEL_STAGE_PASS`；落盘 SHA256=`34A1EF6DFB8F0D41A56106384A738D7F0BDF5C7AD8BB152EE4195CB1B53070DE`。
+- **未验收**：修复后用户会话重新输入 Key，`node.exe` 真实子进程通过官方隧道启动，ChatGPT 发现真实 26 工具，远端读/写/命令。保留 `FINAL_VALID=NO` 等待 Reality。
