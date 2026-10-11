@@ -1,0 +1,74 @@
+{
+  "method_version": "V5",
+  "version_policy": "INTEGER_ONLY",
+  "release_type": "SKILL_AND_METHOD_DOCUMENTATION",
+  "repo": "cuiqinggang/codex-private-skills",
+  "branch": "main",
+  "business_task": "POLSIA_CAPABILITY_REPLICATION_20261011",
+  "business_freeze": "POLSIA-MOTHER-V008-F001",
+  "business_final_valid": false,
+  "engine_version": "28_UNCHANGED",
+  "windows_business_runtime": "3.1.0_UNCHANGED",
+  "n8n_independent_skill_version": "1.0.2_UNCHANGED",
+  "files": [
+    {
+      "path": "skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_V5.md",
+      "blob_sha": "4eb6edebcab483a089ffe1c8047d0ec50506321e"
+    },
+    {
+      "path": "skills/gpt-ceo-codex-ultra-continuation/v5/README.md",
+      "blob_sha": "8a4b18861de60739dda2bae2f3b78d02290d457a"
+    },
+    {
+      "path": "skills/gpt-ceo-codex-ultra-continuation/v5/KNOWN_ISSUES_AND_ACCEPTANCE.md",
+      "blob_sha": "edff1b2691bfd1a51bded78b5d408fbd203ddf9b"
+    },
+    {
+      "path": "skills/gpt-ceo-codex-ultra-continuation/v5/dashboard-lite.ps1",
+      "blob_sha": "d2c62696acd817e80fcb62fccc675ce3de5c3ed7"
+    },
+    {
+      "path": "skills/gpt-ceo-codex-ultra-continuation/v4/SKILL_V4_ARCHIVE.md",
+      "blob_sha": "6473878fdcc081cf01768e770d2d835563a356b1"
+    }
+  ],
+  "runtime": {
+    "monitor_root": "C:\\AI\\Polsia-Unified-V4",
+    "lite_viewer": "C:\\AI\\Polsia-Unified-V4\\dashboard-lite.ps1",
+    "schedule": "Polsia-Unified-Monitor-V4",
+    "snapshot": "C:\\AI\\Polsia-Unified-V4\\snapshot.json",
+    "incidents": "C:\\AI\\Polsia-Unified-V4\\incidents.jsonl",
+    "grafana_install": "C:\\AI\\Polsia-Observability-Grafana\\grafana-13.2.3",
+    "grafana_archive": "C:\\AI\\Polsia-Observability-Grafana\\历史方案-完整监控-20261012",
+    "grafana_running_at_previous_verification": false
+  },
+  "previously_tested": {
+    "native_parallel_rounds": 36,
+    "native_parallel_receipts": 432,
+    "sha256_operations": 134144,
+    "logical_lanes": 10,
+    "grafana_dashboard_panels": 9,
+    "grafana_plugin": "yesoreyeram-infinity-datasource 4.1.1",
+    "lite_chinese_normal_display": true,
+    "lite_chinese_fault_display": true,
+    "safe_fault_detect_and_clear": true,
+    "incident_retention": true,
+    "audio_api_and_chinese_speech_engine_invoked": true,
+    "audio_physically_heard_by_user": "NOT_VERIFIED",
+    "historical_failed_viewer_restart": "PRESERVED_IN_ARCHIVE",
+    "corrected_live_viewer": "PASS_AT_LAST_WINDOWS_CHECK",
+    "complex_monitor_resources": "351.5MB before stop; 501.5MB earlier measurement",
+    "lite_monitor_resources": "about 100MB measured working set; not an agent throughput benchmark"
+  },
+  "not_verified": [
+    "real_codex_agent_1_2_3_fair_benchmark",
+    "first_gpt_remote_active_alert_dispatch",
+    "72h_and_unattended_os_cold_start",
+    "monitor_v009_dynamic_freeze_support",
+    "full_polisa_nine_category_business_pass",
+    "windows_runtime_byte_identity_to_new_github_lite_snapshot"
+  ],
+  "write_integrity_policy": "EXACT_UTF8_CONTENT_READBACK_AND_BLOB_SHA_FOR_EACH_REPOSITORY_FILE;PROMOTE_POINTER_LAST",
+  "reality_status_this_release": "HISTORICAL_EVIDENCE_ONLY_WINDOWS_CONNECTOR_MONTHLY_USAGE_EXHAUSTED",
+  "no_business_execution_or_windows_runtime_mutation": true
+}
