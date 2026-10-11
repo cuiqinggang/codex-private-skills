@@ -279,3 +279,12 @@ $mcpCmd = 'node.exe ' + $entryForCLI + ' --no-onboarding'
 如 `MCP_STDIO_COMMAND=node.exe C:/AI/...` 后又失败，只读取最后 30 行（不泄露密钥），按新的真实错误继续最小修复；勿重建现有 Tunnel、密钥或插件。若新客户端最终出现 `🟢 tunnel-client started` 并 `readyz` 返回 `ready`，继续 ChatGPT **真实** `tools/list → list_directory → 隔离目录 write_file→read_file → 无副作用 start_process`，根据用户账号的实际平台权限给出结果。
 
 此时 `PATHFIX_DEPLOY=PASS`、`REAL_WINDOWS_REMOTE_EXECUTION=NOT_YET_TESTED`，无论怎样都不能宣称已全部验收。
+
+## 9. 首次正式 stdio 启动成功后，ChatGPT 旧工具缓存导致 Unknown tool
+
+### 已有真实证据
+- 用户的 Windows 2026-10-12 06:02:45–06:02:46 日志：`stdio MCP command started`、`mcp_target_kind=stdio`、`mcp_target_value="node.exe C:/AI/GPT-Windows-Bridge-B/mcp/node_modules/@wonderwhy-er/desktop-commander/dist/index.js --no-onboarding"`、`health server listening addr=127.0.0.1:63623`、`🟢 tunnel-client started`。说明上轮 `C:Program` 路径解析错误的修复已得到**实际进程启动**证据。
+- 本 ChatGPT 页面实际调用旧 `GPT-Windows-MCP-Bridge.server_info` 返回 `Error: Unknown tool: server_info`。这是旧演示 schema 在页面端仍缓存，而服务器端已切到真实 Desktop Commander MCP 的可观察差异。
+- **下一步骤并非重启 Windows**：在 ChatGPT 已连接插件 `GPT-Windows-MCP-Bridge` 的设置页执行 `Refresh`（刷新工具或更新操作）。官方明确说自定义 MCP 应用工具快照不会自动更新；只刷新浏览器网页不一定有效。资料：https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt 。
+- 完成工具刷新后，新开 ChatGPT 页面，通过新工具表实际调用 `list_directory` 读取 `C:\AI\GPT-Windows-Bridge-B\evidence`，`write_file` 在该独立测试目录写入唯一 marker，再 `read_file` 核对，最后 `start_process` 执行无副作用 `powershell -NoProfile -NonInteractive -Command "Write-Output GPT_TUNNEL_REAL_WINDOWS_PASS"` 并核对 stdout。若平台隐藏写/执行工具，明确记录为权限或工具目录问题，勿伪造成功。
+- 安全与状态：用户已授权当前插件设置 `Allow all actions` + `无需身份验证`；不要擅自变更，但开放真实 Windows Shell 有风险，必须保留用户工作区访问控制。**未看到远端真实工具回执前不得 FINAL_VALID=YES**。
