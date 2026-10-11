@@ -124,6 +124,12 @@ try {
    报告 `ECHO_REALITY_PASS`；此结果来自用户独立页回传，不是本页直接工具调用。
 5. 安全提醒：一旦换成有读写、PowerShell、桌面控制的真实 Windows MCP，**必须重新审查身份验证、工作区访问权限、审批、允许目录和危险命令限制**；不要把“无身份验证 demo”直接升级生产或将本地服务公网裸露。
 
+### 2.7 其他曾出现、但与 Tunnel 创建无关的弹窗
+
+在创建 API 密钥网页期间，另一工具曾于屏幕右下角弹出英文 `Command approval`（请求在沙箱外读取 Windows 系统进程/执行 PowerShell）。三个选项分别是 `Approve`（允许本次）、`Approve for session`（本会话允许）、`Decline`（拒绝）。这不是 Platform 创建密钥或 ChatGPT 插件连接的必要步骤。本轮建议选 `Decline`，避免引入未经确认的额外权限；不能用它判断隧道启动成败。该提示也与 ChatGPT 自定义 MCP 的 OAuth 下拉完全不同。
+
+当前演示 MCP 除 `echo` 外，官方 `help quickstart` 还提到 `server_info`、`uppercase`；但本次**只有 echo 有用户转交真实远端调用证据**，其他工具不能宣称已测试。
+
 ## 3. 关键报错的正确归因：不要因局部警告重建系统
 
 **已观察的日志真实关键字段**：
@@ -135,7 +141,7 @@ try {
 
 因此，`harpoon` 警告/失败**不等同于** `main` MCP 通道失败，更不能仅凭警告认定需要关闭 HTTPS 校验或换代理。已证实的有效路径是：**针对无敏感能力演示 stub 在 ChatGPT 侧选择无身份验证**。此前把所有失败归因于 Harpoon 无目标、认为不修 Harpoon 就完全无法连通，是过度推断，已经由后续 echo 结果纠正。
 
-`codex_detected=true` 同时 `codex_plugin_installed=false` 是 Codex 插件**可选**状态，不影响本次 ChatGPT demo echo 连接。需要 Codex 客户端接入时另行运行并验收 `tunnel-client codex plugin install`，不要与 ChatGPT 自定义 MCP 插件混淆。
+`codex_detected=true` 同时 `codex_plugin_installed=false` 是 Codex 插件**可选**状态，不影响本次 ChatGPT demo echo 连接。日志定位符 `client_instance_id=08504cbd7f3fcea4724a00ef4bce13d2`、`codex_home=C:\Users\A\.codex`、`codex_plugin_dir=C:\Users\A\.codex\plugins\cache\debug\tunnel-mcp\local`；这些是当次诊断信息，不等于 Codex 插件已安装。需要 Codex 客户端接入时另行运行并验收 `tunnel-client codex plugin install`，不要与 ChatGPT 自定义 MCP 插件混淆。
 
 ## 4. 故障树：以后坏了按现象精准恢复（不准盲目重建）
 
