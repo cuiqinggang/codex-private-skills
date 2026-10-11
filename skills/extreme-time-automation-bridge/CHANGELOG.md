@@ -32,3 +32,10 @@
 - 明确获用户同意：保留 `GPT-Windows-MCP-Bridge` 的 `Allow all actions` 和 「无需身份验证」选项，不将「必须改为 Always ask」作为启动前置条件。高权限风险和平台可能强制限制仍明确披露。
 - 改动正式真实 Windows MCP 切换脚本并经 GitHub Runner 部署（复验状态以 Actions 记录为准）；密钥继续仅由用户在本机输入。
 - Windows 主运行隧道尚未主动切换，真实远端读、写、命令仍待正式调用验收。
+
+## 0.3.3 Reality 增量 - 2026-10-12｜真实 Windows 远程执行闭环
+
+- 修复 `--mcp.command` 在 Windows 的 `C:Program` 路径解析问题；PowerShell 06:02 客户端真实成功启动 stdio MCP。
+- ChatGPT 插件手动刷新工具目录后，真实发现 Desktop Commander MCP 26 个工具；直接调用 `list_directory`、`write_file`、`read_file`、`start_process`、`read_process_output` 取得真实 Windows 回执。PowerShell exit code 0，身份 `desktop-4a1egtm\a`。
+- 证据文件：[`evidence/OPENAI_TUNNEL_REAL_WINDOWS_REMOTE_PASS_20261012.md`](evidence/OPENAI_TUNNEL_REAL_WINDOWS_REMOTE_PASS_20261012.md)。
+- `SCOPE_FINAL_VALID=YES` 仅指真实文件读写与命令执行；重启自动恢复、无人值守常驻、并发压力以及生产安全隔离仍 `NOT_TESTED`，不得夸大。
