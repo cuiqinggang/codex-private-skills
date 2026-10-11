@@ -6,6 +6,8 @@ description: GPT直连Windows双路执行桥。保留 Desktop Commander Remote �
 
 # GPT直连Windows双路执行桥 v0.3.3
 
+**2026-10-12 OpenAI Tunnel 恢复首入口：** [逐步操作/故障树/原命令](OPENAI_TUNNEL_CONNECT_RECOVERY_20261012.md) ｜ [真实日志与回显证据](evidence/OPENAI_TUNNEL_DEMO_REALITY_20261012.md)。先读它们，再诊断；不得以聊天记忆代替。原有 A/B 双路照旧。
+
 STATUS=REALITY_PARTIAL_PERSISTENCE
 VERSION=0.3.3
 PRIMARY_ROUTE_CURRENT=PASS
