@@ -1,39 +1,39 @@
 ---
 name: gpt-ceo-codex-ultra-continuation
-description: 复用已配置Windows原生计划任务与Codex Ultra，在GPT CEO授权后按自然节点持续执行、精确冻结、失败对账和恢复。涉及自动接续、NEEDS GPT、旧版本卡住、授权不同步、升级脚本或暂停标记时使用。
+description: GPT CEO 授权、Codex Ultra长流程、动态并行、Windows原生持续监控、事故记录与合法恢复。Polsia等多模块大任务可直接复用。
 ---
 
-# GPT CEO＋Codex Ultra 连续运行层｜v3.2.2
+# GPT CEO＋Codex Ultra 连续运行技能｜V4
 
-**唯一权威索引**：`cuiqinggang/codex-private-skills/main` 的
-`skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_INDEX.md`。
+SKILL_VERSION=V4
+METHOD_VERSION=V4
+VERSION_POLICY=INTEGER_ONLY
+ENGINE=28_FOR_CURRENT_POLSIA_UNCHANGED
+LIVE_WINDOWS_RUNTIME=3.1.0_UNCHANGED
 
-**正式方法正文**：
-`skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_V3_2_2.md`。
+**唯一权威索引**：`cuiqinggang/codex-private-skills/main` 中 `skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_INDEX.md`。
 
-**实际发布验收**：
-`skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_V3_2_ACCEPTANCE.md`。
+**当前正式方法**：`skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_V4.md`。旧 `GPT_CODEX_ULTRA_CONTINUATION_V3_2_2.md` 保留为启动双门和故障复盘历史，不再作为最新方法版本。
 
-## 接管入口
-从GitHub读取上述索引和本任务`CURRENT.md`、`VERSION_CURRENT.md`、最后`Freeze`、CEO决策；再按授权设备官方连接器读取现有Windows计划任务`Polsia-Codex-Mother-Continue`、本地`MOTHER_CURRENT.md`、`NEXT_NODE_PROMPT.md`、真实日志与Manifest SHA。**不能从零造运行/持久化系统，不可为了自检重复Codex旧节点。**
+## V4 首先执行
+1. 从GitHub精确读取索引、任务CURRENT/VERSION_CURRENT、最后Freeze、CEO授权，随后核验Windows真实任务和SHA。历史DONE不重播，UNKNOWN先对账。
+2. 大型任务维持九类Polsia能力加跨系统集成共十条逻辑分支。READY按合法授权与依赖派工，BLOCKED不阻断其他分支。每条分支独立目录与回执，母指针只能由CEO单写者更新。
+3. 依据任务类型确定并发：本机CPU/文件任务先2后4，等待型任务先4后8，必须以相同有效结果总时间和故障率验证净收益。Codex真实多Agent并行上限未知，不擅自启动十个重型CLI。
+4. 监控必须始终存在，且将RUNNING、READY、BLOCKED、WAITING_CEO、ERROR、STALE、DONE区分显示；故障修复后清除当前报警但保留原事件；不得把状态窗口Running当业务PASS。
+5. 无法确定业务结果时，禁止盲重启或自动重新发送。安全隔离Git夹具可做原生恢复并SHA核验；付款、客户消息、广告发布、生产及凭据相关操作必须另有授权。
+6. 任何新Codex自然节点都需验证CEO_APPROVED正式授权、Windows本地实际NEXT合同与当前定位标签。未获批只能WAITING_CEO，不得启动。
 
-## 必须先满足的现实门
-- CPU进程与计划任务事实确认，无第二个同工作区Codex实例，DONE/NOT_DONE/UNKNOWN必须严格区分。
-- 下一自然节点`NEXT_DISPOSITION=CEO_APPROVED_...`与对应真实GitHub CEO决策一致；建议而未获批时只进入CEO复核，不启动无意义的Codex。
-- GitHub CEO批准→Windows本地决策文件→NEXT合同，是**三个分别验收的交接点**，任何一项不同步都不能声称“已恢复”。
-- 迁移期`MOTHER_PAUSE.flag`不是永久停机规则。必须在真正安全门通过后归档，否则报告Blocked而非假称部署完成。
-- 脚本语法检查、LF/CRLF兼容、路径/SHA指针、错误SHA拒绝、Exactly-once只读测试通过后，才能在无进程的自然节点更换live。
-- 正常只读核验不产生新Freeze，不能等同执行失败；但绝不可为消除错误放松Freeze完成条件。
-- 真实启动验收至少包含原生计划任务、唯一新Codex PID、原生会话或日志进展、新INFLIGHT及最终业务文件；完整自然节点结束和自动进入下一节点必须另行验证。
+## V4 原生监控入口
+- Windows实际目录：`C:\AI\Polsia-Unified-V4\`
+- 桌面入口：`Polsia Codex - Live Status`，单屏汇总十条分支和母任务。
+- 后台采集：原生计划任务 `Polsia-Unified-Monitor-V4` 每分钟执行项目专用collect.ps1，业务执行器完全独立。
+- 快照：`snapshot.json`；事故与恢复流水：`incidents.jsonl`；10模块定义：`config.json`；安装及试点证据：`installation.json`、`pilot-results.json`。
+- 正式脚本备份：本技能目录 `v4/config.json`、`v4/collect.ps1`、`v4/dashboard.ps1`、`v4/pilot.ps1`、`v4/install.ps1`。
+- ChatGPT每小时条件巡检：有新真实事故、监控失联或新的决策需求才提醒；不能宣称秒级GPT自动接管。
+- V008 `MOTHER_NEEDS_GPT.flag` 的 `CEO_NEXT_SCOPE_DECISION_REQUIRED` 属正常审批等待；n8n HTTP401属于WORKFLOW分支权限阻塞。
 
-- **Codex 定位门**：正式NEXT启动合同除CEO_APPROVED外，必须包含当前任务精准`【页面名｜任务名｜序号】`标签；若Codex返回`LOCATOR_GATE=BLOCKED`/exit0，先核验没有任何业务执行，再增加合法定位元数据并原合同精确读回，不以exit0冒充节点完成。
+## 当前验收和未验
+2026-10-12，原生计划任务创建PASS，10分支快照PASS，桌面快捷方式和登录启动PASS；ENG隔离只读128项SHA全通过，RECOVERY隔离Git损坏检测+自动restore通过；监控测试注入ALERT→CLEARED，四条测试事件仍可回读。GitHub方法和源代码逐一精确回读。
+**未认证**：九类完整公司能力、真实Codex多Agent数量最优、未知生产故障自动修复、断电冷启动、72小时和最终优化10轮。Polsia最新业务V008，MOTHER_FINAL_VALID=NO。
 
-## 本轮已证实修复
-2026-10-12，通过官方连接器核对本地CEO-D006 Git blob和GitHub一致，将下一任务改为CODEX007限定离线获批，归档旧迁移Pause后，使用原计划任务只触发一次：本机唯一Codex PID=16632，模型gpt-6.1-sol、ultra，新日志持续增长。V006仍为最近已验业务Freeze；不可提前宣称V007或完整Polsia FINAL_VALID。
-
-2026-10-12追加证据：CODEX008第一次因启动合同缺定位标签返回STOP；修复后使用原Windows计划任务唯一PID43416，实际继续读取冻结/工具来源并生成隔离节点文件。详细参见v3.2.2方法正文。完整CODEX008 Freeze仍未验收。
-
-## 版本隔离
-技能包方法=`v3.2.2`；当前运行脚本=`v3.1.0`；Polsia固定引擎=`第28版`；母任务Freeze独立Vnnn。新方法发布不等于修改运行脚本或业务版本。旧版证据和备份一律保留。
-
-**必须先完整读取正式方法正文再执行涉及迁移/恢复的现实操作。**
+**不改动**：`C:\AI\Polsia-Codex-20261011\CONTINUE_EXISTING_CODEX.ps1`、原计划任务 `Polsia-Codex-Mother-Continue`、FlClash/代理、浏览器与原不可变Freeze。
