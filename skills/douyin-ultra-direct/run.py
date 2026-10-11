@@ -128,10 +128,16 @@ def select_video(data):
         if not v.get("url"):
             raise RuntimeError("PARSE_VIDEO_URL_MISSING")
         return v
-    max_area = max(int(s.get("width") or 0) * int(s.get("height") or 0) for s in streams)
-    top = [s for s in streams if int(s.get("width") or 0) * int(s.get("height") or 0) == max_area]
-    top.sort(key=lambda s: (int(s.get("size_bytes") or 0), int(s.get("bitrate") or 0)), reverse=True)
-    return top[0]
+    # 720P 日常观看优先；不再默认追求 4K。24 分钟视频默认不超过约 120 MB。
+    def area(v):
+        return int(v.get("width") or 0) * int(v.get("height") or 0)
+    hd = [v for v in streams if max(int(v.get("width") or 0), int(v.get("height") or 0)) <= 1280]
+    if hd:
+        within = [v for v in hd if 0 < int(v.get("size_bytes") or 0) <= 120_000_000]
+        if within:
+            return max(within, key=lambda v: (area(v), int(v.get("bitrate") or 0)))
+        return min(hd, key=lambda v: (int(v.get("size_bytes") or 10**15), -area(v)))
+    return min(streams, key=lambda v: area(v))
 
 def unique_urls(video):
     vals = [video.get("url")] + list(video.get("urls") or [])
@@ -192,7 +198,10 @@ def ffprobe(path, expected_width=None, expected_height=None, allow_hevc=False):
 
 def compatible_mp4(part, expected_width=None, expected_height=None, run=None):
     source = ffprobe(part, expected_width, expected_height, allow_hevc=True)
-    if source["video"] == "h264":
+    if source["video"] in ("h264", "hevc"):
+        if run is not None:
+            run["source_video"] = source["video"]
+            run["compatibility_policy"] = "NO_REENCODE_KEEP_SOURCE"
         return source
     converted = part.with_name(part.name + ".h264.mp4")
     started = time.perf_counter()
