@@ -143,3 +143,12 @@ PRODUCTION_FINAL_VALID=NO
 **下一节点**：已安装的 `C:\AI\GPT-Windows-Bridge-B` 内开源 Desktop Commander MCP 0.2.52 真实本地 26 工具，采用官方 `tunnel-client init` 成熟配置模板对接其经过核验的 stdio/HTTP 启动命令；`doctor → run → ChatGPT 实际 tools/list → 只读 → 授权隔离写/命令 → 重启恢复`。这条生产迁移是**未执行候选**，不能把本次 demo 的 echo PASS 混同它的验收。
 
 **证据可信度**：本次 echo 成功来自用户转交独立 ChatGPT 页的工具执行报告，而非本页面直接调用，因此 `ECHO_REALITY_PASS` 附 `USER_RELAYED` 来源标签；原始 PowerShell 和截图另行保留。禁止擅自提升级别。
+
+
+## 2026-10-12 真正 Windows MCP 接入现场增量：STAGED，尚未远程验收
+
+- 经 GitHub Runner 实际只读诊断 [run 38176840327](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38176840327)：`DESKTOP-4A1EGTM` 上开源 MCP 入口存在、OpenAI 完整 CLI v0.0.16 存在；原 `tunnel-client.exe` PID 42156 在交互会话 Session=11，`/readyz` HTTP200=`ready`；GitHub Runner 身份为 `NT AUTHORITY\NETWORK SERVICE` / Session=0。因此不能用 Runner 后台进程替代交互式 A 用户会话。
+- 经 GitHub Runner 实际投放 [run 38177110566](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38177110566)：`C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1` 写入成功、语法检查通过、SHA256=`7F9688C62AEA418D3FA3919C007473EC0EDA4B0A90EA5BB6CEB81AFB3BE9DD07`，原 demo 保持运行、未读取或存储任何运行 Key。源脚本 `workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/OPENAI-TUNNEL-REAL-MCP-STAGE-20261012.ps1`。
+- 当前连接的自定义插件通过真实 `server_info` 工具调用确认仍只有 `echo/server_info/uppercase`，服务器 `mcp-stub 0.1.0`；**Windows 远端真实目录、文件写入、Shell = NOT_TESTED**。
+- 通过插件权限只读检查，`GPT-Windows-MCP-Bridge` 当前为**App-specific Allow all actions（无需额外确认）**；在切换真实 MCP 前需明确获用户授权改为 `Always ask` 并落实安全控制，原 ChatGPT 插件仍选择「无需身份验证」且不适宜全系统长期开通。真实密钥只能由用户在交互 PowerShell 隐藏输入。
+- 脚本 `-Launch` 会检查用户会话，显示高权限风险并请求输入 `YES`，再以隐藏输入方式获取 Runtime Key；仅当发现且确认原 demo 的同 Tunnel ID 进程时才安全停止原 demo 并运行真实 MCP。该**执行尚未发生**，故不得标 FINAL_VALID。切换后必须由 ChatGPT 刷新工具列表并实际远程完成只读、隔离写后读和无副作用命令，再更新验收状态。
