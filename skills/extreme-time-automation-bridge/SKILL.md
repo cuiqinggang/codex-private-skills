@@ -1,13 +1,13 @@
 ---
 name: extreme-time-automation-bridge
-version: "0.3.2"
-description: GPT直连Windows双路执行桥。主路为 Desktop Commander Remote，备路为 GitHub Actions + Windows self-hosted runner；新增 DCR 配置损坏后的最短重配恢复与后台自启动自重连。
+version: "0.3.3"
+description: GPT直连Windows双路执行桥。保留 Desktop Commander Remote 主路和 GitHub Actions 自托管 Runner 备路；v0.3.3 追加 OpenAI 官方 Tunnel 与 ChatGPT 演示 MCP 的完整创建、故障恢复及证据记录，不冒充生产 Windows 远程执行验收。
 ---
 
-# GPT直连Windows双路执行桥 v0.3.2
+# GPT直连Windows双路执行桥 v0.3.3
 
 STATUS=REALITY_PARTIAL_PERSISTENCE
-VERSION=0.3.2
+VERSION=0.3.3
 PRIMARY_ROUTE_CURRENT=PASS
 PRIMARY_DEVICE_NAME=DESKTOP-4A1EGTM
 PRIMARY_DEVICE_ID=f6990966-5870-484b-bf79-409bc6fb963e
@@ -109,3 +109,35 @@ launcher：C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommande
 - 当前状态 `B_LOCAL_FUNCTIONAL=PASS / B_CHATGPT_END_TO_END=NOT_TESTED / B_FINAL_VALID=NO`。在官方权限允许并完成实际端到端验收前，保持已验证的 GitHub Runner 正式执行通路。禁止改 FlClash、代理和原自动启动任务。
 
 - 2026-10-12 Reality 增量验收：run [38169679396](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38169679396)，Windows 本机 MCP `tools/call` 实测目录读取 + PowerShell 命令输出 + 隔离目录 `write_file → read_file` 内容回读，全部 PASS；OpenAI 完整 CLI 0.0.16 通过。仅本地调用闭环 PASS，不代表隧道已鉴权或 ChatGPT 远程端到端通过。`B_LOCAL_FUNCTIONAL=PASS / B_CHATGPT_REMOTE=NOT_TESTED / FINAL_VALID=NO`。
+
+## v0.3.3 增量｜OpenAI Tunnel/ChatGPT 自定义 MCP 全链路恢复（2026-10-12）
+
+**先读：** [OPENAI_TUNNEL_CONNECT_RECOVERY_20261012.md](OPENAI_TUNNEL_CONNECT_RECOVERY_20261012.md)；[证据与错误差分](evidence/OPENAI_TUNNEL_DEMO_REALITY_20261012.md)；[开源 Windows B 通道原安装/26 工具验收](../windows-open-source-bridge-b/README.md)。这三份是后续任何相关排障的**首选可回读来源**，不再靠聊天记忆猜测。
+
+### 当日冻结状态与范围
+
+```ini
+TUNNEL_ID=tunnel_6acbeee2ce888191b775cd53429c7597
+CLIENT=tunnel-client-v0.0.16-windows-amd64.zip
+CLIENT_EXE=用户桌面\tunnel-client-v0.0.16-windows-amd64\tunnel-client.exe
+TUNNEL_NAME=GPT-Windows-MCP-Bridge
+WIN_DEMO_MCP=127.0.0.1:55999/mcp  # 本次动态端口
+WIN_DEMO_READY=127.0.0.1:56000/readyz  # 本次动态端口，返回ready
+CHATGPT_PLUGIN_AUTH=NONE_FOR_DEMO_ONLY
+CHATGPT_PLUGIN_CONNECTED=PASS_USER_UI
+ECHO_REALITY_PASS=USER_RELAYED_INDEPENDENT_PAGE_REPORT
+ECHO_VALUE={"echoed":"hello from Windows"}
+CHATGPT_REMOTE_WINDOWS_FILES_AND_SHELL=NOT_TESTED
+OPENAI_TUNNEL_BOOT_AUTOSTART=NOT_TESTED
+PRODUCTION_FINAL_VALID=NO
+```
+
+**运行记录：** 本次客户端日志 `🟢 tunnel-client started`、main MCP 会话初始化成功、Platform 隧道元数据获取成功、健康检查浏览器显示 `ready`。ChatGPT 页面 OAuth 注册最初提示「无法发现 OAuth 设置」，部分 Harpoon 注册报 `base URL must use https` / `unsupported channel "harpoon"`；只针对**无敏感能力的演示 mcp-stub**改为「无需身份验证」后，用户看到「已连接」，并从新页面转交了真实 `echo` 工具回执。由于主 `main` 通道可用，不能把 Harpoon 的局部告警认作整条隧道不可用。见证据文档。
+
+**必须保留的选项差分：** 完整包 `tunnel-client-v0.0.16-windows-amd64.zip`（约26.8MB）而不是 `tunnel-client-runtime-...`（约7.2MB）；网页 `https://chatgpt.com/plugins` 的「添加自定义 MCP」而非已安装插件清单；连接方式「隧道」而非服务器 URL；隧道 ID 不是密钥；API Runtime Key 由 Windows 本地安全输入，不能发送聊天或写 GitHub。创建 Tunnels 时底部 GPT 工作区选项曾造成失败，这次未额外点击后成功：仅为本次UI经验，不意味着绕开权限。具体每一步、全部正确输入项、命令、回滚、故障树见恢复手册。
+
+**安全与路由边界：** 演示服务使用「无需身份验证」**禁止**直接延用给真实 Windows 文件/Shell MCP。生产前必须建立合理的用户/工作区鉴权与操作审批、最小权限和允许目录策略。密钥截图曾选择「全部权限」「永不过期」，应核验并轮换为受限制 `Tunnels Read + Use`，不能把 Runtime Key 写到仓库。保留 DCR 主路/GitHub runner 备路与其当前稳定部署，不修改 FlClash/Windows 代理、浏览器、原自动启动；此新增线路尚非正式第三条生产路由。真实 Windows OpenAI Tunnel 远程读、写、Shell **未通过验收前不得写 FINAL_VALID=YES**。
+
+**下一节点**：已安装的 `C:\AI\GPT-Windows-Bridge-B` 内开源 Desktop Commander MCP 0.2.52 真实本地 26 工具，采用官方 `tunnel-client init` 成熟配置模板对接其经过核验的 stdio/HTTP 启动命令；`doctor → run → ChatGPT 实际 tools/list → 只读 → 授权隔离写/命令 → 重启恢复`。这条生产迁移是**未执行候选**，不能把本次 demo 的 echo PASS 混同它的验收。
+
+**证据可信度**：本次 echo 成功来自用户转交独立 ChatGPT 页的工具执行报告，而非本页面直接调用，因此 `ECHO_REALITY_PASS` 附 `USER_RELAYED` 来源标签；原始 PowerShell 和截图另行保留。禁止擅自提升级别。
