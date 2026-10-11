@@ -1,10 +1,29 @@
 ---
 name: extreme-time-automation-bridge
-version: "0.3.3"
-description: GPT直连Windows双路执行桥。保留 Desktop Commander Remote 主路和 GitHub Actions 自托管 Runner 备路；v0.3.3 追加 OpenAI 官方 Tunnel 与 ChatGPT 演示 MCP 的完整创建、故障恢复及证据记录，不冒充生产 Windows 远程执行验收。
+version: "0.3.4"
+description: GPT直连Windows双路执行桥。保留 DCR 主路和 GitHub Actions Runner 备路；OpenAI 官方 Tunnel 真实 Windows MCP 读写命令限定能力已验收，v0.3.4 追加本机窗口隐藏 PASS、会话恢复入口、旧成熟登录机制、脚本证据及重启未验收边界。
 ---
 
-# GPT直连Windows双路执行桥 v0.3.3
+# GPT直连Windows双路执行桥 v0.3.4
+
+
+## v0.3.4 当前权威状态（2026-10-12）｜先读，不得重复造轮子
+
+**执行入口：** [窗口显隐/手动恢复/登录验收 SOP](TUNNEL_WINDOW_VISIBILITY_AND_RECOVERY_20261012.md) ｜ [本次工具回执与 3 个 Windows 本机脚本精确快照+SHA](evidence/OPENAI_TUNNEL_WINDOW_VISIBILITY_REALITY_20261012.md) ｜ [完整累积状态及禁止重复路线](WINDOWS_TUNNEL_PERSISTENCE_STATUS_20261012.md) ｜ [首次建隧道/故障修复全流程](OPENAI_TUNNEL_CONNECT_RECOVERY_20261012.md) ｜ [真实 Windows MCP 远端读写命令证据](evidence/OPENAI_TUNNEL_REAL_WINDOWS_REMOTE_PASS_20261012.md)。
+
+**正式结论按能力区分：**
+- `CHATGPT_REAL_WINDOWS_MCP_REMOTE_RWX=PASS_SCOPED`：已真实从 ChatGPT 通过隧道读取 Windows 目录、隔离写后读、执行 PowerShell 标记命令。仅该链路限定能力 `FINAL_VALID=YES`，不代表生产安全认证或全部工具回归。
+- `CURRENT_TUNNEL_WINDOW_HIDE=PASS`：在既有 Windows 会话，确认 `tunnel-client.exe` PID 23692、父 PowerShell PID 27920、句柄属于父 PID 后，经 `ShowWindowAsync(SW_HIDE)` 隐藏原控制台；原回执 `BEFORE_VISIBLE=True / AFTER_VISIBLE=False / TUNNEL_ALIVE=True`，隐藏后新执行的 Windows 命令回读 `TUNNEL_COUNT=1`。
+- `CURRENT_SESSION_SHOW_SHORTCUT=FILES_PASS_DOUBLECLICK_NOT_TESTED`：桌面 `GPT-Windows-MCP-Show-Console.lnk`、对应 `Show-Current-Tunnel-Console.ps1` 已真实存在、解析 0 错；**该脚本使用当次 PID/句柄，不可跨登录复用**；没有双击复现证明。
+- `MANUAL_RECOVERY_ANTIDUP=PASS / SHORTCUT_DOUBLECLICK=NOT_TESTED`：桌面 `GPT-Windows-MCP-一键恢复.lnk` 与 `Restore-Interactive.ps1` 存在，原防重实测 `already running / No second tunnel will be started`；绝不可将快捷方式“创建成功”当作“双击成功”。
+- `TUNNEL_LOGIN_AUTOSTART=NOT_IMPLEMENTED / REBOOT_RECOVERY=NOT_TESTED`：官方 Tunnel 专用计划任务未创建，当前 `Launch-OpenAI-Real-MCP.ps1 -Launch` 每次要本机交互式输入 Runtime API Key；**隐藏窗口不等于无人输入密钥，也不等于开机恢复**。不要将输入提示藏掉导致无法启动。
+- **旧方案优先复用、禁止误删：** `Codex_SystemEvolution_24h.vbs` 曾用原生 `WScript.Shell.Run(..., 0, False)` 隐藏 PowerShell；DCR 已有独立 `GPT-DesktopCommander-Remote-Autostart`（Logon/Interactive）；`GPT-LTMVH-Recovery-Watchdog.cmd` 也使用 `start /min -WindowStyle Hidden`。都是历史成功模式，**并非本隧道已经自动启动**。
+- **已知修复门：** OpenAI Tunnel 原 `C:Program` Node 路径解析问题已有 mature baseline 修复；新真实 MCP 工具出现 `Unknown tool` 先刷新自定义插件工具列表，不重建隧道/插件。
+- **兼容问题：** `Make-Manual-Shortcut.ps1` 因 UTF-8 中文字符串在 Windows PowerShell 5.1 `ParseErrors=2`，PowerShell 7 `ParseErrors=0`。不要反复用 PS5.1 验证同一中文创建脚本；已验收的快捷方式仍保留。
+- **安全/权限：** 原 DPAPI + 隐藏 Supervisor 自动凭据恢复候选曾被执行环境安全检查阻止；遗留 `Supervisor.INCOMPLETE.txt` 已隔离，不得执行/换渠道绕过。当前 Runtime Key 没有持久化；不得发送聊天/GitHub。保留用户已选的插件策略不代表公网执行能力已完成安全认证。
+- **业务保护：** 不修改 FlClash、Windows 代理、不关闭专用浏览器、不删除/替换 DCR + Runner 主备路径、不给不存在的自启动写 PASS、不重复启动同一 Tunnel ID。下一次开机优先实际检查，再按已有桌面“一键恢复”人工输入密钥；只在确认新 PID + 可撤销显示入口后重新隐藏窗口。
+
+**版本性质：** v0.3.4 是将已完成的 Windows 真实操作、知识、证据和未通过的门槛规范化写入技能包；**不是**新增后端/服务部署或完成登录自动恢复。下方 v0.3.0～v0.3.3 的旧记录是历史时点快照，需以以上最新结果判定，历史数据不清理。
 
 **2026-10-12 OpenAI Tunnel 恢复首入口：** [逐步操作/故障树/原命令](OPENAI_TUNNEL_CONNECT_RECOVERY_20261012.md) ｜ [真实日志与回显证据](evidence/OPENAI_TUNNEL_DEMO_REALITY_20261012.md)。先读它们，再诊断；不得以聊天记忆代替。原有 A/B 双路照旧。
 
