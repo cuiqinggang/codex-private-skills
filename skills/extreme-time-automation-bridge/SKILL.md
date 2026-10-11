@@ -162,3 +162,6 @@ PRODUCTION_FINAL_VALID=NO
 - 之前要求必须改成 `Always ask` 的**启动脚本前置条件已撤销**，修复源码 `workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/OPENAI-TUNNEL-REAL-MCP-STAGE-20261012.ps1`，并通过独立 GitHub Runner 节点更新 Windows 本地 `C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1`；源码提交 `441281cc0d928e953409a67c56341470efaf11c3`，部署任务 `OPENAI-TUNNEL-REAL-MCP-RESTAGE-AUTH-20261012`。启动仍需用户在自己 Windows 交互终端**隐藏输入 API Key**，不能由 ChatGPT 或 GitHub 工作流代填密钥。
 - 切换/验收原则不变：同一 Tunnel 先验证再停 demo；真实 MCP `tools/list`、只读、隔离写后读、无副作用命令的远端真实回执之前 `FINAL_VALID=NO`；不得改动 FlClash、系统代理、已有浏览器、原 DCR/Runner 自启动配置。
 - **安全声明**：上述是用户认可的便利性风险选择，并非推荐所有人默认关闭高权限 MCP 的认证，且不能绕过平台强制权限策略。
+
+
+- **已复验完成的实际部署证据**：[GitHub Actions Run 38177972930](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38177972930)，任务 `OPENAI-TUNNEL-REAL-MCP-RESTAGE-AUTH-20261012`，Windows 回执 `REAL_TUNNEL_STAGE_PASS`，落盘 `C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1`，SHA256=`01DBE10E79F24975F0CC7CE05E936BFF2D41EAAB37EB0F33D2DCB0F0959547BC`。`DEMO_TUNNEL_LEFT_UNCHANGED=YES`，`NO_RUNTIME_KEY_USED=YES`。注意**仅脚本部署已验收**；用户交互式 `-Launch` 和 ChatGPT 远端真实 MCP 调用未进行。
