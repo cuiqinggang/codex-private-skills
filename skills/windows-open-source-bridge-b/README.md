@@ -44,3 +44,5 @@
 - 标准验收严格区分：`LOCAL_FUNCTIONAL_PASS=YES`；`CHATGPT_REMOTE_READY=UNKNOWN/NO EVIDENCE`；`TUNNEL_AUTHENTICATED=NO`；`FINAL_VALID=NO`。本地功能通过不能冒充 ChatGPT 页面实际连通。
 - 安装目录：`C:\AI\GPT-Windows-Bridge-B`。本次没有修改系统代理或覆盖原执行桥。
 - 下一步若账号获得官方合法 Tunnel 权限，采用其 `tunnel-client init ... --mcp-command` 指向本目录已安装的 Desktop Commander MCP。将 Runtime Key 存在本机安全凭据存储，不写仓库或输出日志；从交互式用户会话启动隧道，确认 `readyz`、ChatGPT 注册工具的可见性、真实读写命令与授权确认规则。没有权限则停止这一受限步骤，改走现成 GitHub Runner 正式执行路径，不做绕过。
+
+- 2026-10-12 Reality 增量验收：run [38169679396](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38169679396)，Windows 本机 MCP `tools/call` 实测目录读取 + PowerShell 命令输出 + 隔离目录 `write_file → read_file` 内容回读，全部 PASS；OpenAI 完整 CLI 0.0.16 通过。仅本地调用闭环 PASS，不代表隧道已鉴权或 ChatGPT 远程端到端通过。`B_LOCAL_FUNCTIONAL=PASS / B_CHATGPT_REMOTE=NOT_TESTED / FINAL_VALID=NO`。
