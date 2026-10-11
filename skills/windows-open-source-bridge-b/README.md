@@ -54,3 +54,10 @@
 - ChatGPT `https://chatgpt.com/plugins` 的「自定义 MCP」选择「隧道」，初选 OAuth 注册失败；针对**无敏感能力的官方 demo**改「无需身份验证」后，页面显示已连接；用户转交新页面的真实 echo 调用结果 `{"echoed":"hello from Windows"}`，`ECHO_REALITY_PASS=USER_RELAYED_INDEPENDENT_PAGE_REPORT`。
 - 本目录的 `Desktop Commander MCP 0.2.52` 26 工具虽已由 Actions 在 **Windows 本机** 读、写、命令 Reality PASS，却**仍未**由刚建立的 ChatGPT Tunnel 插件直接远程调用。因此 `B_LOCAL_FUNCTIONAL=PASS / B_CHATGPT_DEMO_ECHO=PASS_USER_RELAYED / B_CHATGPT_REAL_WINDOWS_TOOLS=NOT_TESTED / PRODUCTION_FINAL_VALID=NO`。
 - 保留已有 `C:\AI\GPT-Windows-Bridge-B`、DCR Remote、GitHub runner，不改 FlClash/系统代理。禁止把本次 demo 无身份验证扩展到生产 Windows 执行器。
+
+## 2026-10-12 ChatGPT ↔ 官方 Tunnel ↔ Windows 开源 B 真实端到端 Reality PASS
+
+- 真实 Windows 运行 Node.js 24.14.0 和已安装 Desktop Commander MCP v0.2.52；通过 OpenAI Tunnel Client v0.0.16 的 stdio `node.exe C:/AI/GPT-Windows-Bridge-B/mcp/node_modules/@wonderwhy-er/desktop-commander/dist/index.js --no-onboarding`。
+- ChatGPT 工具目录刷新后新工具已发现，ChatGPT 当前会话直接调用 `list_directory`、`write_file`、`read_file`、`start_process`、`read_process_output`，目录读取、隔离文件写后读和无副作用 PowerShell 调用全部 PASS，PowerShell PID29708、exit code 0。
+- 跨页可核验证据：[`../extreme-time-automation-bridge/evidence/OPENAI_TUNNEL_REAL_WINDOWS_REMOTE_PASS_20261012.md`](../extreme-time-automation-bridge/evidence/OPENAI_TUNNEL_REAL_WINDOWS_REMOTE_PASS_20261012.md)。
+- `B_LOCAL_FUNCTIONAL=PASS / B_CHATGPT_REAL_WINDOWS_TOOLS=PASS / MINIMAL_FUNCTIONAL_FINAL_VALID=YES / REBOOT_PERSISTENCE=NOT_TESTED`。历史记录中的 `NOT_TESTED` 为当时的真实状态，按时间保留，不回写篡改；本条为后续真实进展。原 DCR 主路与 GitHub Runner 备路均保留。
