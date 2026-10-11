@@ -37,9 +37,9 @@ Write-Host "Official tunnel: $exe"
 Write-Host "Real MCP entrypoint: $entry"
 Write-Host "Tunnel ID: $tunnelId"
 Write-Warning 'This will replace the demo mcp-stub with REAL Desktop Commander MCP, including file writes and command execution.'
-Write-Warning 'The existing ChatGPT plugin currently has NO MCP AUTH and may have Allow all actions permissions. Do not use this full-power configuration without appropriate access controls.'
-$permission = Read-Host 'Confirm ChatGPT plugin permissions are set to Always ask and you approve TEMPORARY testing of the real MCP (type YES to continue)'
-if ($permission -cne 'YES') { Write-Host 'ABORT_NO_CHANGES'; exit 2 }
+Write-Warning 'User approved retaining the ChatGPT plugin settings: No authentication + Allow all actions. Neither setting is modified by this script.'
+Write-Warning 'These settings allow highly privileged tool calls without per-action confirmations. The OpenAI tunnel/workspace access must remain controlled, and the key must stay local.'
+Write-Host 'User consent for these plugin settings is recorded in the 2026-10-12 skill update. Only the runtime key must be entered interactively.'
 $key = Read-Host 'Paste the OpenAI runtime API key (hidden)' -AsSecureString
 if ($key.Length -lt 16) { throw 'RUNTIME_KEY_MISSING_OR_TOO_SHORT' }
 $ptr=[Runtime.InteropServices.Marshal]::SecureStringToBSTR($key)
