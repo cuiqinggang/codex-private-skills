@@ -92,3 +92,38 @@ DESIGN_FREEZE=SRX-V1-ENGINE30-DESIGN-F001
 - 该功能需要现有获准界面/通知组件才能实现；ChatGPT页面自身的任意区块不能仅靠方法文件持续自动变色或识别浏览器新聊天动作。必须明确区分“UI方案已定义”和“现实已实现”。
 
 AMENDMENT_STATUS=DESIGN_ONLY
+
+
+## 12. 增补：母任务智能连续接续与断电恢复（2026-10-11，三人行第1版）
+METHOD_FEATURE=SMART_CONTINUOUS_HANDOFF_V1
+SCOPE=LONG_RUNNING_AUTHORIZED_MOTHER_TASKS
+DESIGN_STATUS=PARTIAL_REALITY_VERIFIED
+PUBLIC_ENGINE_PROMOTED=NO
+
+### 原则：节点可结束，母任务不得因节点结束被误结案
+- 母任务的 TASK_ID、正反约束、DONE_WHEN 和唯一 FINAL_VALID 持续存在；每个 Executor / Codex 会话仅执行一个自然任务节点，保存可回读成果并 Freeze，再由已核实的原生触发器接续下一节点。上下文压缩由正式模型/CLI自己的压缩能力和读取精简冻结态承担，而非重新搬运完整聊天。
+- 连续执行默认到母任务真实完成、用户明确 PAUSE/STOP、资源/授权/明确安全限制或无法继续的可证实硬阻塞；一个节点正常返回不是母任务结束。用户不必每次节点结束来催促，不可将“守护计划已写入”与“下次已经自动接管”混称。
+- 当前 Polsia 试点以 8 小时作为本轮观察和压力验证窗口，不把8小时定义为通用方法上限；若用户未下令停止，计划任务应仍具备后续合法接续和重启登录恢复。8小时后的连续性必须额外真实验收。
+- 使用已有 GitHub Contents API、Codex 官方 exec / resume、Windows 原生 Task Scheduler / 现成 n8n。不得另造通用队列、锁、常驻服务、断点恢复数据库或任务编排软件；若成熟底座不能满足要求，记录真实缺口。
+
+### 版本化冻结（不是仅压缩文字）
+- 第一个已核验完成的自然节点形成只读冻结 F001 / 版本 V001，后续 F002/V002 递增；只增新文件不覆盖旧冻结。节点动态CURRENT记录 METHOD_REF（方法版本）、TASK_STATE_REF（状态文件指针）、TASK_ID、NODE_ID、VERSION、FREEZE_ID、FREEZE_PATH、真实成果路径、哈希/原始回执、已完成与未完成、授权范围、NEXT、FINAL_VALID。
+- 先保存节点原始成果与唯一 Freeze 文件→回读校验→再原子更新CURRENT指针→下一节点按实际指针读取。任何一步未证实，仍标 UNKNOWN / FREEZE_PENDING；尤其文件写入失败不可把内存结论当作已持久化。不能通过重新执行有副作用步骤来测试恢复。
+- 工作长于自然节点时，使用现有应用/智能体自带检查点，在重要里程碑、上下文接近限制或合理周期时增量保存已得事实、完成动作和最后可安全继续位置。不要对每个Token写盘，不假设崩溃时未保存的思考能恢复。
+- 重启/断电后原进程和内存状态会丢失：只能从最后一次真实写入、回读过的 Freeze/CURRENT 和原工具执行回执接续；检查上次动作的 DONE / NOT_DONE / UNKNOWN 三态后再执行，尤其 UNKNOWN 不自动重发。
+- 每次自动启动之前核对最新持久指针、是否已经有本任务执行实例、是否处于 WAIT_FOR_USER/PAUSED/STOP/DONE、上个节点成功或失败的实际回执；利用Windows已有调度器 IgnoreNew 和 Codex 自己的线程ID，不能启动两个争抢同一 CURRENT 的写者。
+- 故障/运行中断按 GOOD/BAD/FIRST_DELTA 与成熟方案自主排障；当全部可合法推进的步骤需要新增人工授权、外部真实资金/外联/广告或碰到明确平台拒绝时，冻结阻塞事实并停止相关动作，不制造自循环。
+
+### 用户可见与开销
+- Windows 黑色原生只读状态窗口允许每60秒更新：母TASK_ID、当前节点、当前版本 Vnnn、最后Freeze ID/时间、RUNNING/STALE/WAITING/BLOCKED/DONE、真实执行PID、最近10条文件与日志进度。不需要显示模型私有思维。
+- 一眼看到版本和最后检查点；正在执行不是完成。窗口关闭不停止后台Codex，也不能把窗口当成后台执行的唯一依赖。桌面窗口的额外CPU/RAM和1分钟查询必须计入长流程净成本。
+- Windows计划任务保证的是Windows处于运行并具备账户会话/权限/联网等条件下按触发尝试执行，**不是断电继续计算、零丢失、保证成功或达到业务能力等效**。用户下令停止后不得暗自重启。
+
+### Polsia 试点：事实与未验收
+TASK_ID=POLSIA_CAPABILITY_REPLICATION_20261011
+BASELINE_NODE=CODEX-001
+LOCAL_WORKDIR=C:\\AI\\Polsia-Codex-20261011
+NATIVE_TASK=Polsia-Codex-Mother-Continue
+NETWORK_CONTRACT=skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/NEXT_NODE_CONTINUOUS.md
+- 实测：CODEX-001自然退出后，Windows原生Task Scheduler手动触发并真正启动CODEX-002，日志显示gpt-6.1-sol/ultra、读取原合同；原任务目录真实保存研究、组件测试及FREEZE。不能把CODEX-001的safe-file-demo 10/10提升为整个Polsia功能认证。
+- 未验收：真正断电→开机→接续、8小时长期连续多节点、全部Polsia功能同效、各节点版本SHA及GitHub CURRENT写入自动成功，以及明确STOP后绝不重启。因此该增补目前为设计加部分现实证据，尚不是生产级“永不停机”认证。
