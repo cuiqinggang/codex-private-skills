@@ -24,7 +24,7 @@ jobs:
           set -euo pipefail
           mkdir -p official-release
           cd official-release
-          asset='tunnel-client-runtime-v0.0.16-windows-amd64.zip'
+          asset='tunnel-client-v0.0.16-windows-amd64.zip'
           base='https://github.com/openai/tunnel-client/releases/download/v0.0.16'
           curl -fsSL --retry 3 -o SHA256SUMS.txt "$base/SHA256SUMS.txt"
           curl -fsSL --retry 3 -o "$asset" "$base/$asset"
@@ -34,7 +34,7 @@ jobs:
           echo 'CLOUD_OFFICIAL_RELEASE_SHA256_PASS'
       - uses: actions/upload-artifact@v4
         with:
-          name: bridge-b-official-verified-v0016
+          name: bridge-b-official-verified-full-v0016
           path: official-release/
           if-no-files-found: error
           retention-days: 7
@@ -47,7 +47,7 @@ jobs:
       - name: Download already-verified artifact through GitHub Actions
         uses: actions/download-artifact@v4
         with:
-          name: bridge-b-official-verified-v0016
+          name: bridge-b-official-verified-full-v0016
           path: C:\AI\GPT-Windows-Bridge-B\tunnel\official-release
       - name: Independently verify archive and test tunnel CLI on Windows
         shell: pwsh
@@ -57,7 +57,7 @@ jobs:
           $evidenceDir=Join-Path $root 'evidence'
           New-Item -ItemType Directory -Force -Path $evidenceDir | Out-Null
           $dir=Join-Path $root 'tunnel\official-release'
-          $asset='tunnel-client-runtime-v0.0.16-windows-amd64.zip'
+          $asset='tunnel-client-v0.0.16-windows-amd64.zip'
           $zip=Join-Path $dir $asset
           $hashFile=Join-Path $dir 'SHA256SUMS.txt'
           $row=Get-Content -LiteralPath $hashFile | Where-Object {$_ -match [regex]::Escape($asset)} | Select-Object -First 1
@@ -69,7 +69,46 @@ jobs:
           $extract=Join-Path $root 'tunnel\v0.0.16'
           New-Item -ItemType Directory -Force -Path $extract | Out-Null
           Expand-Archive -LiteralPath $zip -DestinationPath $extract -Force
-          $exe=Get-ChildItem $extract -Recurse -Filter tunnel-client.exe -File | Select-Object -First 1
+          $found=@(Get-ChildItem $extract -Recurse -File | Where-Object {$_.Name -match 'tunnel.*(\.exe)?
+          $help=(& $exe.FullName help quickstart 2>&1 | Out-String)
+          if($LASTEXITCODE -ne 0){throw "TUNNEL_CLIENT_QUICKSTART_FAILED=$LASTEXITCODE"}
+          Write-Host 'TUNNEL_CLIENT_QUICKSTART_PASS'
+          $mcp=Join-Path $root 'mcp\node_modules\@wonderwhy-er\desktop-commander\dist\index.js'
+          $probe=Join-Path $root 'mcp-smoke.cjs'
+          if(!(Test-Path $mcp) -or !(Test-Path $probe)){throw 'EXISTING_MCP_STAGE_MISSING'}
+          $node=(Get-Command node.exe -ErrorAction Stop).Source
+          $response=(& $node $probe $mcp 2>&1 | Out-String)
+          Write-Host $response.Trim()
+          if($LASTEXITCODE -ne 0 -or $response -notmatch 'MCP_PROTOCOL_PASS_TOOLS=26'){throw 'MCP_PROTOCOL_REGRESSION'}
+          $proof=[ordered]@{
+            task_id='BRIDGE-B-OPEN-SOURCE-20261012'
+            time=(Get-Date).ToUniversalTime().ToString('o')
+            machine=$env:COMPUTERNAME
+            source='GitHub cloud verified release to Actions artifact to Windows'
+            tunnel_binary=$exe.FullName
+            tunnel_version='v0.0.16'
+            tunnel_sha256_match=$true
+            tunnel_quickstart_pass=$true
+            mcp_protocol_pass=$true
+            discovered_tools=26
+            tunnel_authenticated=$false
+            chatgpt_end_to_end=$false
+            final_valid='NO'
+            status='LOCAL_READY_NEEDS_AUTH_AND_CHATGPT_PERMISSION'
+          }
+          $proof | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $evidenceDir 'bridge-b-recovery-evidence.json') -Encoding UTF8
+          $proof | ConvertTo-Json -Depth 5 | Write-Host
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bridge-b-recovery-evidence-${{ github.run_id }}
+          path: C:\AI\GPT-Windows-Bridge-B\evidence\bridge-b-recovery-evidence.json
+          if-no-files-found: warn
+          retention-days: 30
+})
+          Write-Host ('EXTRACTED_TUNNEL_CANDIDATES=' + (($found | Select-Object -ExpandProperty Name) -join ','))
+          $exe=$found | Where-Object {$_.Extension -eq '.exe'} | Select-Object -First 1
           if(-not $exe){throw 'TUNNEL_EXE_MISSING'}
           $help=(& $exe.FullName help quickstart 2>&1 | Out-String)
           if($LASTEXITCODE -ne 0){throw "TUNNEL_CLIENT_QUICKSTART_FAILED=$LASTEXITCODE"}
