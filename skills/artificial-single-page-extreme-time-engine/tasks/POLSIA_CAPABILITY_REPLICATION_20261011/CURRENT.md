@@ -1,0 +1,22 @@
+# Polsia 能力复用项目｜唯一当前状态
+TASK_ID=POLSIA_CAPABILITY_REPLICATION_20261011
+NODE_ID=CODEX-001
+MODE=GPT_CEO_CODEX_EXECUTOR
+STATE=CODEX_EXECUTING
+METHOD_REF=skills/artificial-single-page-extreme-time-engine/START_HERE.md
+METHOD_AUTHORITY=cuiqinggang/codex-private-skills/main
+PUBLIC_ENGINE=ENGINE.md@28
+ENGINE29_BASIC_FREEZE=ENGINE29-BASIC-F001
+ENGINE29_FULL_ACTIVATION=NO
+CONTRACT_PATH=skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/EXECUTOR_TASK.md
+LOCAL_WORKDIR=C:\AI\Polsia-Codex-20261011
+CODEX_SESSION=01a12a88-bea0-7940-b950-3f63e9d6d9ca
+CODEX_CLI=0.160.0
+SOURCE=https://polsia.com/;https://polsia.com/deck
+DELIVERABLES=CAPABILITY_MATRIX.md;REUSE_MAP.md;EXCEPTION_RECOVERY_POC.md;RESULTS.md
+RESULT=UNKNOWN
+T_VALID_REAL=UNKNOWN
+FINAL_VALID=NO
+FREEZE=NO
+NEXT=检查 Codex 正式进程实际产物与输出；随后 GPT 对照独立证据深加工，完成成熟技能最小组合/能力缺口与29版反哺建议。未经最终现实验收不可把项目标为完成。
+NOTE=实际命令行首发中文经 PowerShell 管道编码出错，已停止错误进程，改由 ASCII 引导 Codex 自行按UTF-8读取本地完整中文任务合同；避免错误执行。
