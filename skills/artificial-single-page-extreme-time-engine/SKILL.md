@@ -1,3 +1,12 @@
+<!-- ACTIVE DEFAULT 2026-10-11 -->
+# 当前正式入口：三人行第1版
+DEFAULT_METHOD=SANRENXING_V1
+STATUS=FROZEN_ACTIVE
+CANONICAL_PATH=skills/artificial-single-page-extreme-time-engine/SANRENXING_V1.md
+FREEZE_ID=SRX-V1-ACTIVE-F001
+
+用户说“按三人行执行”或未指定旧路线的新任务，先读本仓库的SANRENXING_V1.md，一次获取引擎、执行决策、换页、任务索引。明确选择旧A/B时兼容相应ROUTE；已有任务以自己的METHOD_REF锁定旧方法，不自动改写。旧文中关于“29版未激活”的文字为历史记录，不覆盖以上正式入口。执行仍受授权、Exactly-once、真实Freeze回读约束。
+---
 ---
 name: artificial-single-page-extreme-time-engine
 description: GPT主导的自动化A/B极限短时间任务技能。用户一次输入，自动定位权威方法版本、该任务合同与最新冻结，再按完整有效时间选择双层或单层页面形态。
