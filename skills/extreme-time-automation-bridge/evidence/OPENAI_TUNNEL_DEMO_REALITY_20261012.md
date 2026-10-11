@@ -89,3 +89,11 @@ PRODUCTION_FINAL_VALID=NO
 ~~~
 
 下一节点与完整恢复说明见 `../OPENAI_TUNNEL_CONNECT_RECOVERY_20261012.md`。
+
+## 4. 追加证据：真实服务切换脚本预部署（不属于正式远端执行 PASS）
+
+- 用户要求立即验收真实文件与命令能力后，使用已有双路桥通过 GitHub Runner 实际诊断：[read-only run 38176840327](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38176840327)，返回 `current_user=NT AUTHORITY\NETWORK SERVICE`，真实 Desktop Commander MCP 的 `index.js` 存在、完整版 OpenAI CLI 存在；交互式用户已有 Tunnel PID42156 Session11，`127.0.0.1:56000/readyz` HTTP200=`ready`。
+- 工具端真实调用 `GPT-Windows-MCP-Bridge.server_info` 返回 `mcp-stub`，工具仅 `server_info/echo/uppercase`，仍是演示服务。
+- Runner [staging run 38177110566](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38177110566)：Windows `C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1` 投放成功，SHA256=`7F9688C62AEA418D3FA3919C007473EC0EDA4B0A90EA5BB6CEB81AFB3BE9DD07`，未触碰 Key，原 demo 保留。脚本在用户会话中交互式启动尚未执行。
+- ChatGPT 插件配置只读检查显示 App-specific `Allow all actions`。准备真实 Windows 全权限工具前应明确改为 `Always ask`，并保障鉴权、操作确认和风险隔离。文档不能替代用户真正完成这一步。
+- `STAGED_PASS=YES`，`CHATGPT_REMOTE_WINDOWS_FILE_WRITE_AND_COMMAND=NOT_TESTED`，`FINAL_VALID=NO`。
