@@ -165,3 +165,12 @@ PRODUCTION_FINAL_VALID=NO
 
 
 - **已复验完成的实际部署证据**：[GitHub Actions Run 38177972930](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38177972930)，任务 `OPENAI-TUNNEL-REAL-MCP-RESTAGE-AUTH-20261012`，Windows 回执 `REAL_TUNNEL_STAGE_PASS`，落盘 `C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1`，SHA256=`01DBE10E79F24975F0CC7CE05E936BFF2D41EAAB37EB0F33D2DCB0F0959547BC`。`DEMO_TUNNEL_LEFT_UNCHANGED=YES`，`NO_RUNTIME_KEY_USED=YES`。注意**仅脚本部署已验收**；用户交互式 `-Launch` 和 ChatGPT 远端真实 MCP 调用未进行。
+
+
+## 2026-10-12 真实 Windows MCP 初次切换失败：PATHFIX（已重部署，远端验收待续）
+
+- 用户在 A 交互会话实际执行 `C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1 -Launch` 并隐藏输入 Runtime Key；准确证据：2026-10-12 **05:54:12** 日志。原演示 tunnel PID `42156` 已按规则停止，真实目标 route 解析为 `transport=stdio`，但无法启动 MCP 子进程：`mcpclient: start stdio command: exec: "C:Program": executable file not found in %PATH%`，随后 `TUNNEL_REAL_MCP_EXIT_1`。这不是密钥/FlClash/隧道 ID 导致的失败。
+- FIRST_DELTA：旧脚本使用 `$mcpCmd = '"' + $node + '" "' + $entry + '" --no-onboarding'`，其中 Node 在 `C:\Program Files\...`；隧道客户端的命令字符串解析对嵌套引号和 Windows 反斜杠不兼容，导致路径错误被读为 `C:Program`。
+- 最小成熟修复：保留 `Get-Command node.exe` 核验；`$mcpCmd = 'node.exe ' + $entry.Replace('\','/') + ' --no-onboarding'`。只使用 PATH 可发现的 `node.exe` 和不含空格的 MCP 入口路径 `C:/AI/GPT-Windows-Bridge-B/mcp/node_modules/@wonderwhy-er/desktop-commander/dist/index.js`，不增加自研解析器，不改 PATH/代理，不复制敏感密钥。
+- 源文件 [Windows MCP 启动器](../../workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/OPENAI-TUNNEL-REAL-MCP-STAGE-20261012.ps1) 提交 `a9f78b62eff037f481087ed04ce984beb0f6a5c9`；通过已有 Runner 按 Exactly-once 单次重新部署 [run 38178400910](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38178400910)，Windows artifact 真实回执 `PASS`，`REAL_TUNNEL_STAGE_PASS`，新启动脚本落盘 SHA256=`34A1EF6DFB8F0D41A56106384A738D7F0BDF5C7AD8BB152EE4195CB1B53070DE`。自动工具调用尚未获得新的 `node.exe` stdio 实际运行结果，故标 `LAUNCHER_PATHFIX_STAGED=PASS; REAL_MCP_TUNNEL_REMOTE_FINAL=NOT_TESTED`。
+- 原 demo 已经停止、旧窗口回到 PowerShell 提示符。必须在**相同 Windows 交互用户会话**重新运行已经部署好的 `-Launch` 脚本并安全输入 Runtime Key；运行成功后通过 ChatGPT 新会话重新发现真实 MCP 工具，实际读目录、隔离文件写后读、PowerShell marker。**不能**把修复版脚本投放成功误写成真实远程执行成功。
