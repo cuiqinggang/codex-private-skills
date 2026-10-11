@@ -1,0 +1,26 @@
+# GPT CEO＋Codex Ultra 连续运行层 v3.1.0
+RUNTIME_ID=GPT_CODEX_ULTRA_CONTINUATION
+VERSION=3.1.0
+METHOD_REF=ENGINE.md@28_UNCHANGED
+BUSINESS_TASK=POLSIA_CAPABILITY_REPLICATION_20261011
+RELEASE_SCRIPT=CONTINUATION_RUNNER_V3_1.ps1
+RELEASE_TEST=CONTINUATION_RUNTIME_V3_1_REGRESSION.ps1
+STATUS=PUBLISHED_CANDIDATE;ACTIVATION_SEPARATELY_VERIFIED
+PREVIOUS_VERSION=3.0.0_STAGED;WINDOWS_LIVE_PREVIOUS=V2_CRLF_FIXED
+
+## 本次具体问题
+- V006已在2026-10-11约23:12退出0；本地65项冻结Manifest SHA一致、远端V006 Freeze与CURRENT/VERSION回读一致；007仅PROPOSED_ONLY，要求CEO下一范围决策。
+- 23:14原任务又启动 Codex，在未批准007的情况下重复读V006（不是新业务），23:22退出0无V007，因此runner产生CODEX_EXIT_WITHOUT_NEW_VERIFIED_FREEZE。这不是CRLF再发或V006失败。
+- 新执行前的最小权限门：`NEXT_NODE_PROMPT.md` 必须有 `NEXT_DISPOSITION=CEO_APPROVED_...`，否则记录明确 `REASON=CEO_NEXT_SCOPE_DECISION_REQUIRED`，不创建INFLIGHT、不启动Codex，不把合法CEO决策等待伪装成业务异常。
+- 执行确实退出0但没有新版本时改用 `CODEX_EXIT_ZERO_WITHOUT_NEW_VERIFIED_FREEZE`，保留前次INFLIGHT待独立复核，不自动重发；正常已冻结的有效退出仍按原 Freeze/Manifest/版本/哈希全部校验后解除INFLIGHT。
+- 保留此前本地Freeze真实路径修复、LF/CRLF兼容、错误SHA拒绝、Exactly-once、现有Windows原生计划任务及所有代理/浏览器边界，不新建调度器/恢复引擎。
+
+## 三种版本各自独立
+RUNTIME_VERSION=3.1.0
+PUBLIC_ENGINE_VERSION=28
+BUSINESS_FREEZE_VERSION=V006（直到CODEX007真实完成才可变）
+SANRENXING=V1_UNCHANGED
+ECC=3.1.1_UNCHANGED_NOT_HOT_ADOPTED
+
+## 激活和验证
+先发布GitHub新不可变脚本、文档、只读回归并逐文件回读；Windows只读回归应包含LF/CRLF、授权/未授权、错误哈希、PS语法及原有Freeze检查。当前无Codex进程、TASK Ready、V006事实真实齐全、原INFLIGHT及NEEDS_GPT核验归档、旧运行入口原字节备份后，才能通过官方PowerShell原位置替换为本版已验证运行文件（原计划任务action不改）；激活后检查文件SHA与原计划任务实际路径，再授权CODEX007离线合法节点、触发唯一原生任务并观察真正的日志/进程。这只能证明启动与回归，不提前认证007最终Frozen后的自动连续运行。任何UNKNOWN应停止并交GPT。
