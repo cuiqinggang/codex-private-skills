@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.0 - 2026-10-11（来源真实性与重复违规硬门禁）
+
+- 主文件 `SKILL.md` 从 v1.2.1 升至 v1.3.0，`VERSION` 从滞后的 1.0.1 对齐 1.3.0；版本不一致不得声明升级完成。
+- 新增 `references/IMAGE-SOURCE-ANTI-CHEAT-V3.md`：执行前锁定 ComfyUI 生成后端和 T2I/图生图/条件生成/编辑四类合同；明确禁止 ChatGPT image_gen 代替 ComfyUI 正式结果。
+- 新增 `references/INCIDENT-KREA-REPEAT-IMAGEGEN-20261011.md`：记录重复调用 image_gen 修图及其生成式“原图/修正后”海报，裁决 INVALID，不凭视觉相似或 gen_id 冒充 ComfyUI。
+- 新增 `scripts/quality/verify_comfy_provenance.py`：原生 ComfyUI history、工作流图、prompt_id、SaveImage 原图及 SHA 只读交叉核对；缺证据 fail closed。该脚本不是生图器、调度器或平台级工具禁令。
+- 新增 `tests/test_comfy_source_guard.py`：模拟测试 7/7 PASS，覆盖真历史匹配、只有预检、ChatGPT gen_id、错误图像输入链、历史漂移、PNG 替换、工作流哈希篡改。测试不是 Windows 生产出图认证。
+- 对条件生成与图生图，源图 SHA 仍需人工审计；对局部 Inpaint 暂不自动认证；G3 高品质、真实左右像素拼接、工具路由回归仍未完成生产跨会话实测。`FINAL_VALID` 在这些门没有满足前只能保持 NO。
+
 ## Unreleased / Measurement Protocol V2 UNDER_VALIDATION - 2026-09-15
 
 - 引入同期 interleaved paired A/B、A/A calibration、order equivalence、environment drift 与 confirmation 规则；历史固定 baseline 不再裁决微优化。
