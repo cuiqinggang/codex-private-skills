@@ -241,3 +241,41 @@ powershell -NoProfile -NoExit -ExecutionPolicy Bypass -File "C:\AI\GPT-Windows-B
 - 之前要求必须改成 `Always ask` 的**启动脚本前置条件已撤销**，修复源码 `workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/OPENAI-TUNNEL-REAL-MCP-STAGE-20261012.ps1`，并通过独立 GitHub Runner 节点更新 Windows 本地 `C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1`；源码提交 `441281cc0d928e953409a67c56341470efaf11c3`，部署任务 `OPENAI-TUNNEL-REAL-MCP-RESTAGE-AUTH-20261012`。启动仍需用户在自己 Windows 交互终端**隐藏输入 API Key**，不能由 ChatGPT 或 GitHub 工作流代填密钥。
 - 切换/验收原则不变：同一 Tunnel 先验证再停 demo；真实 MCP `tools/list`、只读、隔离写后读、无副作用命令的远端真实回执之前 `FINAL_VALID=NO`；不得改动 FlClash、系统代理、已有浏览器、原 DCR/Runner 自启动配置。
 - **安全声明**：上述是用户认可的便利性风险选择，并非推荐所有人默认关闭高权限 MCP 的认证，且不能绕过平台强制权限策略。
+
+
+## 8. 2026-10-12 05:54 真实 MCP stdio Windows 路径故障：差分修复与恢复入口
+
+**用户真实故障日志**（PowerShell 返回提示符，说明新进程退出）:
+
+~~~text
+Windows user: DESKTOP-4A1EGTM\A
+Stopping only confirmed demo tunnel process PID 42156
+2026/10/12 05:54:12 INFO mcp channel route resolved ... channel=main transport=stdio ...
+2026/10/12 05:54:12 ERROR ... mcpclient: start stdio command: exec: "C:Program": executable file not found in %PATH%
+TUNNEL_REAL_MCP_EXIT_1
+~~~
+
+**根因与修复：** `C:\Program Files\nodejs\node.exe` 的路径包含空格和反斜杠，原脚本将绝对 Node 路径与入口绝对路径嵌套双引号拼接为传入 Go 客户端的 `--mcp.command` 字符串，解析器在启动阶段把命令读成 `C:Program`。此时报错早于实际 MCP tool call；不能误判 API Key、Tunnels 权限、FlClash、OAuth、MCP 业务逻辑。
+
+冻结的成熟修复（已在原源脚本中实现，勿在 Windows 手动改文件）:
+
+~~~powershell
+$nodeFromPath = (Get-Command node.exe -ErrorAction Stop).Source
+$versionText = (& node.exe --version 2>&1 | Out-String).Trim()
+if ($LASTEXITCODE -ne 0) { throw 'NODE_EXE_NOT_RUNNABLE_FROM_PATH' }
+if ($entry -match '\s') { throw 'MCP_ENTRY_HAS_SPACES_REQUIRES_ALTERNATE_COMMAND_WRAPPER' }
+$entryForCLI = $entry.Replace('\','/')
+$mcpCmd = 'node.exe ' + $entryForCLI + ' --no-onboarding'
+~~~
+
+**真正 Windows 部署证据：** [GitHub Actions run 38178400910](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38178400910) → Windows Runner `DESKTOP-4A1EGTM-etal` → `result.json.status=PASS`、`stdout.txt=REAL_TUNNEL_STAGE_PASS`、文件 `C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1` 的 SHA256 `34A1EF6DFB8F0D41A56106384A738D7F0BDF5C7AD8BB152EE4195CB1B53070DE`；部署过程**没有读取 Key，没有修改代理，没有关闭其他浏览器**。
+
+**接续时用户唯一操作**：在已回到 `PS C:\Windows\system32>` 的 Windows PowerShell 粘贴下行，按提示在本机粘贴已有 Runtime API Key（不要发给聊天）：
+
+~~~powershell
+& 'C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1' -Launch
+~~~
+
+如 `MCP_STDIO_COMMAND=node.exe C:/AI/...` 后又失败，只读取最后 30 行（不泄露密钥），按新的真实错误继续最小修复；勿重建现有 Tunnel、密钥或插件。若新客户端最终出现 `🟢 tunnel-client started` 并 `readyz` 返回 `ready`，继续 ChatGPT **真实** `tools/list → list_directory → 隔离目录 write_file→read_file → 无副作用 start_process`，根据用户账号的实际平台权限给出结果。
+
+此时 `PATHFIX_DEPLOY=PASS`、`REAL_WINDOWS_REMOTE_EXECUTION=NOT_YET_TESTED`，无论怎样都不能宣称已全部验收。
