@@ -2,11 +2,25 @@
 name: visual-art-engine-performance-ladder
 description: 管理 Visual Art Engine 从 ComfyUI 控制路径到生产 H3 的 P0-P8 性能进化；用于固定 Benchmark Contract、调用第一性原理四列法 V4.0、记录真实端到端时间、阶段 99、FREEZE/REOPEN、ΔT_STAGE 和 PATH_ARCHITECTURE_ERROR。它不替代 visual-art-engine，也不在缺少证据时宣称性能通过。
 metadata:
-  version: "1.2.1"
+  version: "1.3.0"
   short-description: 通用高性能视觉作品生成引擎
 ---
 
 # 通用高性能视觉作品生成引擎
+
+## v1.3.0 来源防作弊执行门禁（2026-10-11；优先级高于旧图像规则）
+
+**新增强制入口**：[《图像生成来源真实性与防作弊执行门禁 V3.0》](references/IMAGE-SOURCE-ANTI-CHEAT-V3.md)。凡用户要求本机 ComfyUI、Krea、Windows 实际生成/修复或完整防作弊证据，必须在任何生图或修图调用前读取该文件，锁定 `BACKEND=COMFYUI_LOCAL` 和 `MODE=T2I_INDEPENDENT / REF_CONDITIONED / IMG2IMG / EDIT/INPAINT`。缺合同或工具不匹配即 `NO_SUBMIT`；不可默默以 ChatGPT `image_gen` 替代，亦不可用 image_gen 绘制左右对比海报。
+
+**严格区分**：`IMG2IMG` 使用源图 VAEEncode 重绘；`REF_CONDITIONED` 使用参考条件；`T2I_INDEPENDENT` 必须空白潜空间且生成路径不使用参考图；`EDIT/INPAINT` 必须声明编辑底图和范围。四者不是一个合同，来源相似/哈希不同都不能单独判造假或独立生成。
+
+正式作品发布必须经过：`G-1 后端和模式锁定 → G0 本机健康 → G1 冻结工作流及图像来源拓扑 → G2 ComfyUI原生 prompt_id/history 和真实 PNG SHA → G3 非生成式像素拼接、视觉质量与合同检查 → G4 第二次只读复核`。任何失败：`FINAL_VALID=NO`，不可冒充完整成果；连接断开或任务结果未知：`UNKNOWN`、禁止重复提交。只准展示真实失败事实，不能伪造缺失证据补救。
+
+本轮连续违规反例（2026-10-11）：**用户明确要求技能包升级和 ComfyUI 修复图片，却又调用 `image_gen` 生成修复图及“原图/修正后”对比海报**。两次 `gen_id` 不等于 ComfyUI `prompt_id`，无相应 ComfyUI workflow/history/文件来源审计；该轮结果一律 `NOT_COMFYUI / INVALID`，不得作为品质/时间基线。见 [本轮再次绕路事故记录](references/INCIDENT-KREA-REPEAT-IMAGEGEN-20261011.md)。
+
+版本规则：以本 `SKILL.md` 头部 `metadata.version` 与同目录 `VERSION` 一致为准；不一致必须阻止正式升级 PASS，先修正单一版本事实。与第28版自动化引擎的 Freeze、一次最终 Reality、REUSE_GATE 和性能基准合同并行适用。
+
+**能力边界**：技能文档只能约束本技能的合规判定，不能保证在宿主层物理禁止 `image_gen` 调用。以后必须以真实工具调用和执行证据验证防作弊；不能把“规则已写入”说成“平台级拦截已经上线”。
 
 ## v1.2.1 真正的生成前置校验（2026-10-11）
 
