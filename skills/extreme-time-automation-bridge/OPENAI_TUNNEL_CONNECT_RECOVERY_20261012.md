@@ -217,3 +217,17 @@ NEXT=替换 demo 为经授权的真实 Desktop Commander MCP、最小权限与�
 ~~~
 
 最后要明确：**本文件是故障恢复的可回读方法资产，文档写入 PASS 不等于候选正式连接部署 PASS**。
+
+## 7. 2026-10-12 后续独立 Reality：真实 Windows MCP 已预部署启动入口（未启动）
+
+- GH Windows 只读现场证据：[38176840327](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38176840327)，MCP 文件、官方客户端完整存在。`NETWORK SERVICE` Runner 属 Session 0；用户原 demo 进程 PID42156 属 Session 11；端口 `55999/56000` 由该进程监听且 `/readyz` 仍 HTTP200。
+- GH Windows staging 执行：[38177110566](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38177110566)，已把脚本写到 **`C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1`**，原样 SHA256 `7F9688C62AEA418D3FA3919C007473EC0EDA4B0A90EA5BB6CEB81AFB3BE9DD07`；`REAL_TUNNEL_STAGE_PASS`，**demo 尚未停止**、未使用 Key。
+- 脚本来源（精确）：`workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/OPENAI-TUNNEL-REAL-MCP-STAGE-20261012.ps1`，已含用户交互式运行模式 `-Launch`。
+- 在用户同意把 ChatGPT 插件权限从 `Allow all actions`（当前实查值）改为 `Always ask`、并确认仅临时受控验证后：Windows 按 `Win+R` 运行下述命令，按提示输入 `YES`、再于本机安全输入 Runtime Key；**不要将 Key 发到 ChatGPT**：
+
+~~~powershell
+powershell -NoProfile -NoExit -ExecutionPolicy Bypass -File "C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1" -Launch
+~~~
+
+- 这不是免授权自动过程：同一 Tunnel ID 的 stdio MCP 不允许同时运行两个 tunnel-client；脚本核对后才会停 demo/切实服务。新进程为前台式，关窗会停；此次暂不承诺开机自启。ChatGPT 原插件的工具元数据需刷新并新开会话才能发现真实工具；平台可能限制写/执行工具，请以真实发现结果为准。
+- 只有真正 ChatGPT 插件新页 `tools/list`、`read_file/list_directory`、授权后的 `write_file→read_file`、`start_process` 实际 PASS，才写 `CHATGPT_REMOTE_REAL_WINDOWS_TOOLS=PASS`。此处只是入口部署/预检：`STAGED_PASS`、`FINAL_VALID=NO`。
