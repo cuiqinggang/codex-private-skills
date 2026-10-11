@@ -101,3 +101,9 @@ launcher：C:\Users\A\AppData\Local\DesktopCommanderRemote\Start-DesktopCommande
 - 增补n8n常驻调用入口的诊断和恢复规程；修复把401误判为服务故障、把CLI端口冲突误判为需要重授权的排障错误。
 - 保留v0.3.1已验证的DCR/Actions双路结构、设备和执行器配置，未重建系统。
 - 此为规范和现存入口的只读现场验收升级；n8n与浏览器同合同端到端竞速仍待Reality，不能宣称已经完成。
+
+## 开源 B 通道隔离实验（2026-10-12，保留 v0.3.2 主体）
+- 单独目录 `skills/windows-open-source-bridge-b/` 记录成熟开源组件组合、官方限制及本地真实证据；**不替换、不删除**本技能包原有 DCR 主路 / GitHub Runner 备路。
+- Windows `C:\AI\GPT-Windows-Bridge-B` 安装成功：MIT 开源 Desktop Commander MCP 0.2.52，26 工具发现、真实目录工具调用及 PowerShell 标记回执通过；OpenAI Secure MCP Tunnel Client 0.0.16 官方 SHA256 验证与本地 CLI PASS。证据 run=38169533429。
+- 月度配额为厂商 Remote Desktop Commander **托管**版限制，本地开源执行器不受这项厂商远程配额影响；但 OpenAI 自定义 MCP 权限和 Tunnel 身份验证独立存在，不可通过修改网络组件取消。
+- 当前状态 `B_LOCAL_FUNCTIONAL=PASS / B_CHATGPT_END_TO_END=NOT_TESTED / B_FINAL_VALID=NO`。在官方权限允许并完成实际端到端验收前，保持已验证的 GitHub Runner 正式执行通路。禁止改 FlClash、代理和原自动启动任务。
