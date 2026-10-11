@@ -1,13 +1,13 @@
 # Windows OpenAI Tunnel 后台常驻与快速恢复：2026-10-12 现场状态
 
-所属正式技能：GPT直连Windows双路执行桥 v0.3.3。
+所属正式技能：GPT直连Windows双路执行桥 v0.3.4。以下保留了 v0.3.3 时代的原始历史记录；**最新状态以文末「v0.3.4 Freeze」为准**。详见 [正式显隐/恢复手册](TUNNEL_WINDOW_VISIBILITY_AND_RECOVERY_20261012.md) 和 [原始 Reality 证据+脚本SHA](evidence/OPENAI_TUNNEL_WINDOW_VISIBILITY_REALITY_20261012.md)。
 
 ## 真实验收结论
 
 - REAL_WINDOWS_REMOTE_FUNCTIONAL=PASS：此前通过新连接的 MCP 插件实际完成 Windows 目录读取、隔离文件写后读、PowerShell 标记输出及退出码 0。
 - AUTOSTART_AND_HIDDEN_SUPERVISOR=NOT_IMPLEMENTED：自动隐藏常驻尚未配置，也没有通过真实 Windows 开机/登录后自动恢复验收。
 - MANUAL_DESKTOP_RECOVERY=STAGED：已创建桌面快捷方式，目标与脚本均存在；快捷方式尚未经过用户双击验收。
-- 目前已经正常工作的前台 PowerShell 必须保持打开，可以最小化，不能把关闭窗口后继续工作判定为已实现。
+- **隐藏前的历史告知**：正常工作的前台 PowerShell 原来必须保持窗口打开，可以最小化。**后续已验证使用 SW_HIDE 隐藏窗口而不结束进程**，现在可以没有可见窗口；仍然**不得关闭其进程/控制台宿主**，更不能把它称为 Windows 服务或重启自动恢复。
 
 ## 已真实执行的预检
 
@@ -91,3 +91,37 @@ REVERSIBLE_SHOW_CONSOLE_SHORTCUT=CREATED_UNTESTED_EXECUTION
 LOGIN_AUTOSTART=NOT_IMPLEMENTED
 REBOOT_RECOVERY=NOT_TESTED
 RUNTIME_KEY_PERSISTED=NO
+
+
+## v0.3.4 Freeze｜旧记录继续保留，以下为最新权威判定
+
+**可回读正式材料：** [SKILL v0.3.4](SKILL.md)、[显隐与恢复 SOP](TUNNEL_WINDOW_VISIBILITY_AND_RECOVERY_20261012.md)、[Windows 实测和 3 个原始脚本 SHA256 快照](evidence/OPENAI_TUNNEL_WINDOW_VISIBILITY_REALITY_20261012.md)、[CHANGELOG](CHANGELOG.md)。
+
+本页面通过 **已连接的 Windows MCP 插件** 实际读取旧登录文件夹 `Codex_SystemEvolution_24h.vbs`（`WScript.Shell.Run(...,0,False)`）、`GPT-LTMVH-Recovery-Watchdog.cmd`（`start /min -WindowStyle Hidden`），以及现有 `GPT-DesktopCommander-Remote-Autostart`（Logon/Interactive）。确认 Windows 成熟隐藏策略早已存在；该任务**属于旧 DCR**，不是 OpenAI Tunnel 新增任务。
+
+随后实际用 `ShowWindowAsync(SW_HIDE=0)` 对既有控制台执行，回读 `BEFORE_VISIBLE=True / AFTER_VISIBLE=False / TUNNEL_ALIVE=True`，经新一轮真实 Windows MCP 执行确认 `TUNNEL_COUNT=1`，PID=23692、父 PowerShell 27920 存活，无第二条同隧道进程。新增桌面 `GPT-Windows-MCP-Show-Console.lnk` 和本地显示脚本（0 语法错误）；脚本有 session-specific PID/handle，未双击。原桌面 `GPT-Windows-MCP-一键恢复.lnk` 存在，防重复脚本已真实测试，但尚未双击；当前 Runtime Key **未存储**，恢复仍需用户在本机输入。
+
+**新发现的兼容问题：** `Make-Manual-Shortcut.ps1` 在 Windows PowerShell 5.1 下 UTF-8 中文文本使解析出现 `2` 错误，PowerShell 7 同文件 `0` 错；已保存 SHA256、快照和正确解释。旧 `Supervisor.INCOMPLETE.txt` 仅作为失败隔离证据保留，禁止当作正式计划任务启动。
+
+~~~ini
+TASK=WINDOWS-TUNNEL-PERSISTENCE-20261012
+SKILL_VERSION=0.3.4
+TUNNEL_ID=tunnel_6acbeee2ce888191b775cd53429c7597
+REAL_WINDOWS_REMOTE_FILE_READ_WRITE_SHELL=PASS_SCOPED
+CURRENT_TUNNEL_CONSOLE_HIDE=PASS
+CURRENT_TUNNEL_ALIVE_AFTER_HIDE=PASS
+TUNNEL_UNIQUE_PROCESS=PASS_AT_PROBE
+SHOW_CONSOLE_SHORTCUT_CREATED_AND_PARSED=PASS
+SHOW_CONSOLE_SHORTCUT_DOUBLECLICK=NOT_TESTED
+MANUAL_RECOVERY_SHORTCUT_EXISTS=PASS
+MANUAL_RECOVERY_SCRIPT_ANTIDUP=PASS
+MANUAL_RECOVERY_SHORTCUT_DOUBLECLICK=NOT_TESTED
+LOGIN_HIDDEN_AUTOSTART=NOT_IMPLEMENTED
+REBOOT_REMOTE_RECOVERY=NOT_TESTED
+RUNTIME_KEY_STORED=NO
+DPAPI_SUPERVISOR_PROPOSAL=BLOCKED_NOT_IMPLEMENTED
+DO_NOT_CHANGE=FlClash,WindowsProxy,ExistingBrowser,DCR,GitHubRunner
+NEXT=After actual Windows reboot, inspect single tunnel PID and remote MCP read/command; if absent use existing desktop manual recovery and enter Runtime Key locally; never conceal an interactive Key prompt.
+~~~
+
+**注意**：旧字段如 `NEXT=Keep current PowerShell running`、`CURRENT_INTERACTIVE_RUNTIME=RUNNING_AT_LAST_PROBE` 属旧时点记录；现在的含义是**保持原进程继续存活，允许控制台不可见**。不要删去或改写历史结论为从未发生；以后以本节的新 `LATEST Freeze` 接续。
