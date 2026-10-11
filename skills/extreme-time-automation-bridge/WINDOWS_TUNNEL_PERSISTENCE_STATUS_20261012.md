@@ -68,3 +68,26 @@ REBOOT_RECOVERY=NOT_TESTED
 MANUAL_SHORTCUT=CREATED_BUT_NOT_DOUBLECLICK_TESTED
 API_KEY_STORED=NO
 NEXT=Keep current PowerShell running; after reboot double-click desktop recovery shortcut and enter Runtime Key locally
+
+
+## 2026-10-12 追加现场验证：当前控制台已隐藏（不是开机自启动）
+
+已用已连接的 GPT-Windows-MCP-Bridge 实际读取 Windows 文件与进程状态，不是虚拟验证：
+
+- 历史成熟机制：登录启动目录中存在 `Codex_SystemEvolution_24h.vbs`，使用 `WScript.Shell.Run(..., 0, False)`，将 PowerShell 窗口隐藏；另有已运行的 `GPT-DesktopCommander-Remote-Autostart`，实际触发器为 Logon、用户登录模式 Interactive。
+- 当前官方隧道 PID=23692，父进程 `powershell.exe` PID=27920。父进程拥有可见控制台窗口。
+- 对**已经正常运行**的父进程窗口，用 Windows 标准 `ShowWindowAsync(handle, SW_HIDE)` 隐藏窗口，实际得到 `BEFORE_VISIBLE=True`、`AFTER_VISIBLE=False`、`TUNNEL_ALIVE=True`。没有关闭 PowerShell、没有杀进程、没有重启隧道、没有修改 FlClash/代理。
+- 为避免隐藏后无法找回，Windows 本机已写入 `C:\AI\GPT-Windows-Bridge-B\persistence\Show-Current-Tunnel-Console.ps1`，并创建桌面 `GPT-Windows-MCP-Show-Console.lnk`。恢复脚本语法解析错误数为 0，桌面快捷方式与脚本存在；**实际双击恢复尚未测试**。此入口只适用于当前 PID/窗口句柄，不是跨重启恢复程序。
+- 已复核 `Launch-OpenAI-Real-MCP.ps1` 每次用 `Read-Host -AsSecureString` 从本机人工读取 OpenAI Runtime API Key，且不持久化密钥。因此，**隐藏窗口成功不意味着重新开机后可以无输入自动建立隧道**。不能直接在隐藏的 PowerShell 中启动这段交互脚本，否则密钥提示会不可见。
+- 以前的凭据解密 + 隐藏持久化 Supervisor 方案曾遭执行环境安全阻止：本轮没有规避安全检查、没有保存密钥、没有注册新的隧道自动登录任务。
+
+### 下一次真实开机验收
+
+登录 Windows 后：①检查能否无命令行窗口启动；②确认隧道唯一进程和对应 Tunnel ID；③实际调用一次远程 MCP echo/只读命令；④确认无重复进程；⑤若失败，使用现有桌面 `GPT-Windows-MCP-一键恢复`，本机人工输入 Runtime Key。不可将「当前窗口已隐藏」填为「重启后自动恢复 PASS」。
+
+CURRENT_RUNNING_CONSOLE_HIDDEN=PASS
+CURRENT_TUNNEL_ALIVE_AFTER_HIDE=PASS
+REVERSIBLE_SHOW_CONSOLE_SHORTCUT=CREATED_UNTESTED_EXECUTION
+LOGIN_AUTOSTART=NOT_IMPLEMENTED
+REBOOT_RECOVERY=NOT_TESTED
+RUNTIME_KEY_PERSISTED=NO
