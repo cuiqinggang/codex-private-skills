@@ -1,0 +1,22 @@
+# CODEX-006 之后的公司能力缺口
+TASK_ID=POLSIA_CAPABILITY_REPLICATION_20261011
+PREVIOUS_NODE=CODEX-006_MATURE_PRESALES_QUALIFICATION_DELIVERY
+PREVIOUS_VERSION=V006
+PREVIOUS_FREEZE_ID=POLSIA-MOTHER-V006-F001
+NEXT_NODE=CODEX-007_MATURE_DELIVERY_ACCEPTANCE_AND_CHANGE_CONTROL
+NEXT_DISPOSITION=PROPOSED_ONLY;NOT_EXECUTED;CEO_NEXT_SCOPE_DECISION_REQUIRED
+MOTHER_STATUS=IN_PROGRESS
+MOTHER_FINAL_VALID=NO
+ENGINE=ENGINE.md@28
+
+006实际完成已有内容/支持边界的离线售前发现、资格建议、无价格提案模板、人工交接准备与12组合成咨询草稿。没有真实潜客、报价、合同、订单、发送、获客、成交或收入。V004/V005有限事实已获CEO复核，006尚待CEO事实复核与下一范围决策，母任务总验收未授予。
+
+下一公司能力缺口建议为成熟交付验收与变更控制：沿用已有V004/V005/V006证据与静态模板，形成中英项目简报、交付清单、本地草稿验收条件、变更请求与影响评估、范围变更排除项、售前→内容→权利→支持交接准备，针对明确SYNTHETIC的验收/变更咨询形成实际未发送草稿并独立只读审查。不得把文档准备当作真实客户签收、合同变更、清权或生产交付；不得重制旧媒体、重跑旧审计/旧十轮或重造系统。
+
+本文件记录建议，不作为007执行授权。当前已验证CEO-D005仅授权006。接续先按UTF8读取真正本机MOTHER_CURRENT、VERSION_CURRENT、006/FREEZE、manifest、RESULTS和NEXT，再官方Contents读取CURRENT、VERSION_CURRENT、V006 Freeze/SHA与ENGINE28/REUSE_ONLY_V4，并精确核对路径和SHA。若存在新的CEO决定，必须先核验其具体范围；未有相应授权时只对账和报告，不自动实施007建议，也不重复已完成006。旧事实Freeze不得原改。
+
+真实销售、财务、生产客服、账号和商业许可输入仍缺；软件研发也缺合法具体项目合同。尚有可提交CEO选择的合法离线能力范围，不能因此认定母任务全部合法路径只剩用户授权；006不创建MOTHER_WAITING或DONE标志。外部UNKNOWN先核验原生回执，确认已执行不重复，确认未执行才在合法授权下恢复，不盲重试。
+
+T_BASE_REAL/T_VIRTUAL_BEST/T_PHYSICAL_LIMIT=UNKNOWN；VIRTUAL_MATURE=NO；STOP_GATE=NOT_PASSED；无候选优化Freeze、FINAL_REALITY或新十轮；ROI_GATE=PAUSED_BY_USER。既有72小时观察不是硬停机；计划任务、runner保持原样，执行中INFLIGHT保留，由原runner确认退出后处理。本节点不新建Codex CLI进程或任何调度/CRM/数据库/bridge/retry。
+
+【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜CODEX-006｜实/虚按证据记录】
