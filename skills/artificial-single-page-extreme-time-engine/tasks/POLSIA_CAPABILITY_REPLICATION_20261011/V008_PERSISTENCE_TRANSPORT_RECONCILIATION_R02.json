@@ -1,0 +1,64 @@
+{
+  "status": "CORRECTIVE_R02_FACT_BYTES_VERIFIED_WITH_AUXILIARY_JSON_PARSE_CORRECTION",
+  "root_cause": "Python piped stdout default legacy codepage was decoded by the shell bridge as UTF8. ensure_ascii=False envelope irreversibly damaged CJK content before GitHub write. SHA/Blob gate rejected it before pointers changed.",
+  "fix": "JSON ensure_ascii=True envelopes; UTF8 raw local bytes; new R02 remote text paths; no overwrite of local seal or original failed remote representations.",
+  "first_attempts": [
+    {
+      "logical_name": "Freeze_V008_CODEX008.md",
+      "path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/Freeze_V008_CODEX008.md",
+      "expected_blob": "70938f30d923a3419b1e318ba81339ac291bd895",
+      "actual_blob": "051d2ce5997432b676841bb2cbd5f51cdf1fb3c9",
+      "accepted": false
+    },
+    {
+      "logical_name": "Freeze_V008_CODEX008.md.sha256",
+      "path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/Freeze_V008_CODEX008.md.sha256",
+      "expected_blob": "561176e3c6f1a38e85dda66bf10b598599980b69",
+      "actual_blob": "561176e3c6f1a38e85dda66bf10b598599980b69",
+      "accepted": true
+    },
+    {
+      "logical_name": "NEXT_NODE_V008_CODEX009.md",
+      "path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/NEXT_NODE_V008_CODEX009.md",
+      "expected_blob": "868aa70bb57629582d96791393a9b5d249b22a50",
+      "actual_blob": "b9aac42355ecc7c8c38f22aee348f6284d5de4b3",
+      "accepted": false
+    },
+    {
+      "logical_name": "Capability_Matrix_V008_CODEX008.md",
+      "path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/Capability_Matrix_V008_CODEX008.md",
+      "expected_blob": "090ae4ca33836baeaf0b0d8360e8cab4e8f76ec7",
+      "actual_blob": "b4136951eab07c04c2a4b5348d92da347ccbd2e5",
+      "accepted": false
+    },
+    {
+      "logical_name": "Scenario_V008_CODEX008.json",
+      "path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/Scenario_V008_CODEX008.json",
+      "expected_blob": "bd9db92760e44d91173afd1685178f137704ac4b",
+      "actual_blob": "bd9db92760e44d91173afd1685178f137704ac4b",
+      "accepted": true
+    },
+    {
+      "logical_name": "Independent_Review_V008_CODEX008.md",
+      "path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/Independent_Review_V008_CODEX008.md",
+      "expected_blob": "4da08a668d89060a699c54bafc7a0da5fe5cb689",
+      "actual_blob": "59305688593a000f1f824f398dd7d923a4dd4fb3",
+      "accepted": false
+    }
+  ],
+  "local_facts": "Unchanged: FREEZE DAE228125E797E4CC2ABE3316346D37A1038148826525888AC3496B12A94676F; Manifest 2F3C40F4E80B5B7C49785335FA4AE17A9F592C5BB3603082F0C2FA212CCE7EB7",
+  "authoritative_corrected_remote": "Freeze_V008_CODEX008_R02.md; Freeze_V008_CODEX008_R02.md.sha256; NEXT_NODE_V008_CODEX009_R02.md; Capability_Matrix_V008_CODEX008_R02.md; Independent_Review_V008_CODEX008_R02.md",
+  "unchanged_ascii_artifact": "Scenario_V008_CODEX008.json exact original bytes accepted; no replay",
+  "immutability": "Failed first representations preserved for audit; no frozen local fact, business output or old node edited.",
+  "pointer_policy": "All official bytes and Blob must match; independent local seal PASS before pointer mutation.",
+  "next_run_rule": "Use ASCII escaped JSON or explicit UTF8 for shell-to-tool content transport; never infer bytes from displayed Unicode.",
+  "business_replay_count": 0,
+  "mother_final_valid": "NO",
+  "auxiliary_json_correction": {
+    "initial_path": "V008_PERSISTENCE_TRANSPORT_RECONCILIATION.json",
+    "failure": "literal leading plus at first byte from patch composition; exact remote byte equality did not prove JSON parse validity",
+    "preserved": true,
+    "business_facts_changed": false,
+    "fix": "write parsed object as valid UTF8 JSON to new path; JSON parse and official readback before reference update"
+  }
+}
