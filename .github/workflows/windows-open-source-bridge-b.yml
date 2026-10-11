@@ -1,0 +1,150 @@
+name: Install Open Source Windows Bridge B
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/windows-open-source-bridge-b.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-open-source-bridge-b-setup
+  cancel-in-progress: false
+
+jobs:
+  bootstrap:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 25
+    steps:
+      - name: Install and inspect isolated bridge B
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $root = 'C:\AI\GPT-Windows-Bridge-B'
+          $evidenceDir = Join-Path $root 'evidence'
+          New-Item -ItemType Directory -Force -Path $evidenceDir | Out-Null
+          $report = [ordered]@{
+            task_id='BRIDGE-B-OPEN-SOURCE-20261012'
+            timestamp=(Get-Date).ToUniversalTime().ToString('o')
+            computer=$env:COMPUTERNAME
+            runner=$env:RUNNER_NAME
+            isolation_root=$root
+            existing_bridge_modified=$false
+            proxy_modified=$false
+            node=''
+            mcp_version='0.2.52'
+            mcp_installed=$false
+            mcp_protocol_pass=$false
+            tunnel_version='v0.0.16'
+            tunnel_sha256_match=$false
+            tunnel_binary_pass=$false
+            tunnel_authenticated=$false
+            chatgpt_end_to_end_pass=$false
+            errors=@()
+          }
+          try {
+            $nodeCmd = (Get-Command node.exe -ErrorAction Stop).Source
+            $npmCmd = (Get-Command npm.cmd -ErrorAction Stop).Source
+            $nodeVersion = & $nodeCmd --version
+            $report.node=$nodeVersion
+            Write-Host "NODE_VERSION=$nodeVersion"
+            $version=[version]($nodeVersion -replace '^v','')
+            if ($version -lt [version]'22.12.0') { throw "Node.js 22.12+ required; existing=$nodeVersion; not changing system Node." }
+            $mcpRoot=Join-Path $root 'mcp'
+            New-Item -ItemType Directory -Path $mcpRoot -Force | Out-Null
+            $npmLog=Join-Path $evidenceDir 'npm-install.log'
+            & $npmCmd install --prefix $mcpRoot --no-audit --no-fund --ignore-scripts '@wonderwhy-er/desktop-commander@0.2.52' *> $npmLog
+            if ($LASTEXITCODE -ne 0) {throw "npm install failed exit=$LASTEXITCODE; see npm-install.log"}
+            $entry=Join-Path $mcpRoot 'node_modules\@wonderwhy-er\desktop-commander\dist\index.js'
+            if (-not (Test-Path -LiteralPath $entry)) {throw "MCP entrypoint missing: $entry"}
+            $package=Get-Content (Join-Path $mcpRoot 'node_modules\@wonderwhy-er\desktop-commander\package.json') -Raw | ConvertFrom-Json
+            if ($package.version -ne '0.2.52') {throw "Wrong npm package version: $($package.version)"}
+            $report.mcp_installed=$true
+            Write-Host 'MCP_PINNED_PACKAGE_INSTALLED=YES'
+            $smoke=Join-Path $root 'mcp-smoke.cjs'
+            @'
+          const {spawn} = require('node:child_process');
+          const fs = require('node:fs');
+          const entry = process.argv[2];
+          if (!fs.existsSync(entry)) process.exit(8);
+          const child = spawn(process.execPath, [entry, '--no-onboarding'], {cwd:require('node:path').dirname(entry), stdio:['pipe','pipe','pipe'], windowsHide:true});
+          let buffer = '', lastErr = '', finished = false;
+          const quit=(code,msg)=>{if(finished)return;finished=true;console.log(msg);child.kill();process.exitCode=code;};
+          const timer=setTimeout(()=>quit(9,'MCP_PROTOCOL_TIMEOUT'), 60000);
+          const send=(x)=>child.stdin.write(JSON.stringify(x)+'\n');
+          child.stderr.on('data',d=>{lastErr=(lastErr+d.toString()).slice(-500);});
+          child.stdout.on('data',chunk=>{
+            buffer+=chunk.toString();
+            for(let i=buffer.indexOf('\n');i>=0;i=buffer.indexOf('\n')){
+              let line=buffer.slice(0,i);buffer=buffer.slice(i+1);
+              let m;try{m=JSON.parse(line);}catch{continue;}
+              if(m.id===1){
+                if(m.error){quit(3,'MCP_INITIALIZE_ERROR');return;}
+                send({jsonrpc:'2.0',method:'notifications/initialized'});
+                send({jsonrpc:'2.0',id:2,method:'tools/list',params:{}});
+              }
+              if(m.id===2){
+                clearTimeout(timer);
+                const t=m.result?.tools;
+                if(!Array.isArray(t)||t.length<1)quit(4,'MCP_TOOLS_MISSING');
+                else quit(0,'MCP_PROTOCOL_PASS_TOOLS='+t.length);
+                return;
+              }
+            }
+          });
+          child.on('error',e=>quit(5,'MCP_CHILD_ERROR='+e.code));
+          child.on('exit',(code)=>{if(!finished){clearTimeout(timer);quit(6,'MCP_CHILD_EXIT='+code+' '+lastErr.slice(-160));}});
+          send({jsonrpc:'2.0',id:1,method:'initialize',params:{protocolVersion:'2025-03-26',capabilities:{},clientInfo:{name:'bridge-b-smoke',version:'1.0'}}});
+          '@ | Set-Content -LiteralPath $smoke -Encoding UTF8
+            $result=& $nodeCmd $smoke $entry 2>&1
+            Write-Host ($result | Out-String)
+            if ($LASTEXITCODE -ne 0 -or -not (($result | Out-String) -match 'MCP_PROTOCOL_PASS_TOOLS=')) {throw "Local MCP handshake failed exit=$LASTEXITCODE"}
+            $report.mcp_protocol_pass=$true
+          } catch {
+            $report.errors+=('MCP: '+$_.Exception.Message)
+            Write-Host "MCP_STAGE_FAILED=$($_.Exception.Message)"
+          }
+          try {
+            $asset='tunnel-client-runtime-v0.0.16-windows-amd64.zip'
+            $releaseBase='https://github.com/openai/tunnel-client/releases/download/v0.0.16/'
+            $tunnelRoot=Join-Path $root 'tunnel'
+            New-Item -ItemType Directory -Path $tunnelRoot -Force | Out-Null
+            $shaFile=Join-Path $tunnelRoot 'SHA256SUMS.txt'
+            $zip=Join-Path $tunnelRoot $asset
+            Invoke-WebRequest -Uri ($releaseBase+'SHA256SUMS.txt') -OutFile $shaFile -TimeoutSec 75
+            $row=Get-Content -LiteralPath $shaFile | Where-Object {$_ -match [regex]::Escape($asset)} | Select-Object -First 1
+            if (-not $row) {throw "Official SHA256 entry missing for $asset"}
+            $expected=[regex]::Match($row,'^[a-fA-F0-9]{64}').Value
+            if (-not $expected) {throw 'Malformed official SHA256 list'}
+            Invoke-WebRequest -Uri ($releaseBase+$asset) -OutFile $zip -TimeoutSec 180
+            $actual=(Get-FileHash -Algorithm SHA256 -LiteralPath $zip).Hash
+            if ($actual -ne $expected) {throw "SHA256 verification failed"}
+            $report.tunnel_sha256_match=$true
+            $extract=Join-Path $tunnelRoot 'v0.0.16'
+            Expand-Archive -LiteralPath $zip -DestinationPath $extract -Force
+            $exe=Get-ChildItem -Path $extract -Recurse -File -Filter 'tunnel-client.exe' | Select-Object -First 1
+            if (-not $exe) {throw 'Verified archive had no tunnel-client.exe'}
+            $help=& $exe.FullName help quickstart 2>&1
+            if ($LASTEXITCODE -ne 0) {throw "tunnel-client help failed exit=$LASTEXITCODE"}
+            $report.tunnel_binary_pass=$true
+            Write-Host "TUNNEL_BINARY_PASS=$($exe.FullName)"
+          } catch {
+            $report.errors+=('TUNNEL: '+$_.Exception.Message)
+            Write-Host "TUNNEL_STAGE_FAILED=$($_.Exception.Message)"
+          }
+          $report.status=if($report.mcp_protocol_pass -and $report.tunnel_binary_pass){'LOCAL_READY_NEEDS_TUNNEL_CREDENTIALS'}elseif($report.mcp_protocol_pass -or $report.tunnel_binary_pass){'PARTIAL_LOCAL'}else{'BLOCKED'}
+          $report.final_valid='NO'
+          $evidenceFile=Join-Path $evidenceDir 'bridge-b-install-evidence.json'
+          $report | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $evidenceFile -Encoding UTF8
+          Get-Content -LiteralPath $evidenceFile -Raw | Write-Host
+          if($report.status -eq 'BLOCKED'){throw 'BRIDGE_B_BLOCKED see evidence JSON'}
+      - name: Upload install evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bridge-b-install-${{ github.run_id }}
+          path: C:\AI\GPT-Windows-Bridge-B\evidence\
+          if-no-files-found: warn
+          retention-days: 30
