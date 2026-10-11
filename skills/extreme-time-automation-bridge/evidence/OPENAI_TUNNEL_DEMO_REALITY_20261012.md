@@ -105,3 +105,21 @@ PRODUCTION_FINAL_VALID=NO
 - SOURCE FIX：`a9f78b62eff037f481087ed04ce984beb0f6a5c9` 以 `node.exe` + 正斜杠且无空格的路径取代出错的完整 Node 路径嵌套引号。
 - Windows 重新部署事实：[run 38178400910](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38178400910)，`result.json status=PASS`；`REAL_TUNNEL_STAGE_PASS`；落盘 SHA256=`34A1EF6DFB8F0D41A56106384A738D7F0BDF5C7AD8BB152EE4195CB1B53070DE`。
 - **未验收**：修复后用户会话重新输入 Key，`node.exe` 真实子进程通过官方隧道启动，ChatGPT 发现真实 26 工具，远端读/写/命令。保留 `FINAL_VALID=NO` 等待 Reality。
+
+## 6. 2026-10-12 06:02 正式 MCP stdio 启动 Reality
+
+**用户上传新的 239 行 Windows PowerShell 日志**（不含 Key 本体）：
+~~~text
+MCP_STDIO_COMMAND=node.exe C:/AI/GPT-Windows-Bridge-B/mcp/node_modules/@wonderwhy-er/desktop-commander/dist/index.js --no-onboarding
+NODE_RESOLVED=C:\Program Files\nodejs\node.exe
+NODE_VERSION=v24.14.0
+2026/10/12 06:02:45 INFO mcp channel route resolved ... transport=stdio
+2026/10/12 06:02:45 INFO stdio MCP command started ... command="node.exe C:/AI/GPT-Windows-Bridge-B/mcp/node_modules/@wonderwhy-er/desktop-commander/dist/index.js --no-onboarding"
+2026/10/12 06:02:45 INFO health server listening ... addr=127.0.0.1:63623
+2026/10/12 06:02:46 INFO tunnel metadata fetched ... name=GPT-Windows-MCP-Bridge
+2026/10/12 06:02:46 INFO 🟢 tunnel-client started ... tunnel_id=tunnel_6acbeee2ce888191b775cd53429c7597
+~~~
+
+本页面实调旧插件工具 `server_info` 收到 `Error: Unknown tool: server_info`，说明 ChatGPT 端旧工具目录与当前真实服务不匹配。官方要求插件 `Refresh` 重新发现新工具；尚未执行，远端真实目录/写入/PowerShell调用 **NOT_TESTED**。
+
+状态：`PATHFIX_RUNTIME_START=PASS`，`CHATGPT_REMOTE_REAL_WINDOWS_TOOLS=NOT_TESTED`，`FINAL_VALID=NO`。不得把旧 demo `echo` 的先前成功提升为当前正式 MCP 的远端认证。
