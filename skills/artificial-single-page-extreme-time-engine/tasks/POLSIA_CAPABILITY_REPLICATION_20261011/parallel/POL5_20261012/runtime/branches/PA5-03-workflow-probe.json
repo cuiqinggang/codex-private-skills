@@ -1,0 +1,18 @@
+{
+  "time": "2026-10-12T20:13:26.2992302+08:00",
+  "services": [
+    {
+      "name": "n8n健康",
+      "http": 0
+    },
+    {
+      "name": "n8n管理",
+      "http": 0
+    },
+    {
+      "name": "模型桥",
+      "http": 0
+    }
+  ],
+  "real_workflow_executions": 0
+}
