@@ -1,0 +1,18 @@
+{
+  "totals": {
+    "invoiced_cents": 68650,
+    "received_cents": 55400,
+    "outstanding_cents": 13250,
+    "unmatched_cents": 4500
+  },
+  "exceptions": [
+    {
+      "transaction_id": "TX07",
+      "invoice_id": "I999",
+      "amount_cents": 4500,
+      "reason": "UNMATCHED_INVOICE"
+    }
+  ],
+  "data_kind": "SYNTHETIC_ONLY",
+  "sent": false
+}
