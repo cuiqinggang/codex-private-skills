@@ -2,7 +2,7 @@
 
 DOCUMENT_STATUS=REVIEW_ONLY_NOT_ACTIVE
 CANDIDATE=SANRENXING_V2
-CANDIDATE_ID=SRX-V2-REVIEW-C001
+CANDIDATE_ID=SRX-V2-REVIEW-C002
 DEFAULT_METHOD=SANRENXING_V1_UNCHANGED
 LEGACY_DELETE=NONE
 LEGACY_METHOD_REF_MIGRATION=NONE
@@ -44,8 +44,8 @@ MATRIX_STATUS=DESIGN_COVERAGE_REQUIRES_REALITY_REGRESSION
 | 16 | ENGINE29 §2：超大型任务可选三级责任拓扑 | 有隔离与净收益证据时按需启用；日常不强制层级 | 不能为“三人行”字面含义强开三个页面或模型 |
 | 17 | V1 §10：A单GPT、C Codex长执行、P并行Executor | 先单GPT；C/P须净节时预期、明确权限与独立任务边界 | 启动成本+审核+恢复超过收益时仍选A |
 | 18 | ENGINE29 §3／V1 §4：n8n事件/Wait/幂等成熟复用 | 仅需持久事件/Wait/批处理时读取n8n技能；保留原工作流 | n8n health200但管理401不可绕过授权 |
-| 19 | V1 §12：母任务跨节点、原生Task Scheduler、Codex原生CLI | 长时任务才按最新索引调用连续运行层；不新建第二个调度器 | 方法升级不热换正在运行的runner、不重复派发旧节点 |
-| 20 | 连续运行 V5 §五／历史 v3.2.2：CEO批准与Codex定位双门 | 真正启动前核对GitHub CEO授权→Windows本地NEXT合同、精确当前定位标签及权限范围 | 批准在GitHub但未到本地／缺标签均不得启动 |
+| 19 | V1 §12：母任务跨节点、原生Task Scheduler、Codex原生CLI | 长时任务按已锁运行快照调用连续运行层；latest只读差分不自动迁移；不新建第二个调度器 | 方法升级不热换正在运行的runner、不重复派发旧节点 |
+| 20 | 连续运行 V5 §五／历史 v3.2.2：CEO批准与Codex定位双门 | 真正启动前核对GitHub CEO授权→Windows本地NEXT合同、当前用户定位策略及权限范围 | 批准未到本地不得启动；用户暂停标签门禁时缺标签不阻断 |
 | 21 | V1 §12／V5：版本与冻结SHA、真实本地路径及官方GitHub回读 | 长任务和跨页时加载CURRENT与最后Freeze，校验本地真实路径、Manifest SHA、远端指针 | 远端basename不得拼本地根目录；错误SHA/越界拒绝 |
 | 22 | 历史 v3.x 故障：Freeze ID必须严格校验 | 验收合同要求唯一独立FREEZE_ID字段；现役v3.1.0仍需单独差分修复，不由V2改runner | 仅NOTE含ID或重复FREEZE_ID必须拒绝；不能冒充已部署修复 |
 | 23 | V1 §12：运行进程、INFLIGHT、PAUSE/STOP/DONE/WAIT | 只有长执行才读取对应详细状态；任何UNKNOWN禁止自动再启 | 有同任务Codex PID、未知INFLIGHT或等待CEO时不能启动第二实例 |
@@ -67,7 +67,7 @@ MATRIX_STATUS=DESIGN_COVERAGE_REQUIRES_REALITY_REGRESSION
 
 1. 旧任务优先其已经冻结的 METHOD_REF 和真实授权，不因候选V2或连续运行层最新版本自动迁移。明确旧A/B路线继续按其ROUTE。
 2. V2在任何路径上始终遵守：授权/安全、质量、Exactly-once、REUSE_GATE、唯一状态写者、版本锁、必要Freeze及真实回读；“按需”只改变低频详细资料与额外执行器的加载时机。
-3. 若触发长执行，读取最新 GPT_CODEX_ULTRA_CONTINUATION_INDEX.md 后再加载它指向的技能与运行手册；不固定旧 v3.2.x。最新方法版本、Windows live runner、母任务Freeze、三人行版本互不自动同步。
+3. 若触发长执行，优先已有METHOD_REF/NODE_RUNTIME_SNAPSHOT；新隔离节点或明确授权变更先锁真实commit，再按该ref读取索引与依赖，不混读移动latest。最新方法版本、Windows live runner、母任务Freeze、三人行版本互不自动同步。
 4. 如果旧规则适用范围不明确、引用路径不存在、校验失败或安全约束冲突，保持原有效方法并标记REVIEW_REQUIRED，不擅自降低门槛。
 5. 此表仅是“设计上有覆盖”的审查矩阵；不是逐项自动化回归已PASS，也不是全量旧规则形式化证明。完整验收见 method-drafts/SANRENXING_V2_ACCEPTANCE.md。
 
@@ -79,3 +79,7 @@ MATRIX_STATUS=DESIGN_COVERAGE_REQUIRES_REALITY_REGRESSION
 - 多任务：只在真实独立且预计净收益为正时并行；不重复构建成熟调度和监控。
 
 预期完整T_VALID缩短幅度=UNKNOWN；不能把正文减少量直接换算成秒数或百分比。
+
+## C002 优先级澄清
+
+用户已暂停标签和ROI门禁；矩阵中的旧规则按现行授权策略适用，不自动恢复。节点commit/SHA锁定与外部实时状态核验分离，实质依赖变化只重判受影响分支。full_wall_ms由输入交付至独立验收的单调时钟计算，摊销单列；36项静态覆盖不等于36项真实平台行为已通过。
