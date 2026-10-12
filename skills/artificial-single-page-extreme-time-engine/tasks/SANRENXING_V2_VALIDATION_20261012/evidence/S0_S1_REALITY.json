@@ -1,0 +1,30 @@
+{
+  "category": "R0_R1_STATIC_AND_ISOLATED_NEGATIVE_FIXTURES",
+  "source_sha_equal": true,
+  "old_capability_matrix_entries": 36,
+  "acceptance_cases": 24,
+  "candidate_hard_gates_present": true,
+  "main_default_untouched_in_candidate": true,
+  "CEO_approval_fixture": true,
+  "locator_fixture": true,
+  "strict_freeze_fixture_rejects_wrong": true,
+  "loose_match_false_positive_reproduced": true,
+  "current_live_runner_uses_loose_freeze_match": true,
+  "wrong_manifest_hash_rejected": true,
+  "business_independent_QA": {
+    "kind": "INDEPENDENT_BUSINESS_QA",
+    "synthetic_only": true,
+    "statuses_pass": true,
+    "totals_pass": true,
+    "unmatched_pass": true,
+    "unsent_pass": true,
+    "V1_V2_output_identical": true,
+    "manifest_valid": true,
+    "business_files": 4,
+    "full_model_efficiency_proven": false
+  },
+  "full_V1_V2_model_valid_time": "UNKNOWN",
+  "historical_36_function_execution_coverage": "NOT_RUN",
+  "current_production_runner_modified": false,
+  "Codex_launched_by_this_test": 0
+}
