@@ -1,0 +1,87 @@
+{
+  "format": "SANRENXING_METHOD_FREEZE_MANIFEST_V1",
+  "freeze_id": "SRX-V2-C002-SAVED-F001",
+  "version": "SANRENXING_V2",
+  "revision": "C002",
+  "status": "FROZEN_SAVED_NOT_ACTIVE",
+  "user_authorization": "用户2026-10-12明确要求把V2保存冻结在网上共同工作区",
+  "repository": "cuiqinggang/codex-private-skills",
+  "snapshot_commit": "78ffb94c4cacd07662b83a59042bc0fe3e7f69e7",
+  "files": [
+    {
+      "path": "SANRENXING_V2.md",
+      "sha256": "6b0072ff3e1195305fb40f3a5cd7c6ea8d7647b52291d6ef9bd249d5c94f2112",
+      "bytes": 11411,
+      "repository_path": "skills/artificial-single-page-extreme-time-engine/method-freezes/SANRENXING_V2_C002_F001_20261012/SANRENXING_V2.md",
+      "source_path": "SANRENXING_V2.md",
+      "git_blob_sha": "027229fc28ebd12811adacfe37aa857a187d3301"
+    },
+    {
+      "path": "SANRENXING_V2_ACCEPTANCE.md",
+      "sha256": "15c40240cb7ff4a862ff17228fa1767a12a96950b14e3dec4d44837de04744ce",
+      "bytes": 10060,
+      "repository_path": "skills/artificial-single-page-extreme-time-engine/method-freezes/SANRENXING_V2_C002_F001_20261012/SANRENXING_V2_ACCEPTANCE.md",
+      "source_path": "method-drafts/SANRENXING_V2_ACCEPTANCE.md",
+      "git_blob_sha": "bbeb72faa19905b4819698ff7b13554b24f50253"
+    },
+    {
+      "path": "SANRENXING_V2_REVIEW_MATRIX.md",
+      "sha256": "f1141243e412410008e7ce536d22145272048cca68888cf81288e3e5c5f9a71e",
+      "bytes": 12714,
+      "repository_path": "skills/artificial-single-page-extreme-time-engine/method-freezes/SANRENXING_V2_C002_F001_20261012/SANRENXING_V2_REVIEW_MATRIX.md",
+      "source_path": "method-drafts/SANRENXING_V2_REVIEW_MATRIX.md",
+      "git_blob_sha": "721fa9d52556424f966cac9ae3fa0bedc396714c"
+    }
+  ],
+  "source_documents_preserved_verbatim": true,
+  "lifecycle_note": "三份源文档内原REVIEW_PENDING/NOT_RUN标记是审查合同历史文字；本Manifest与FREEZE.md裁定保存冻结状态，已发生的隔离实測由固定证据提交证明。不篡改源文档或扩大认证范围。",
+  "evidence": {
+    "freeze_id": "SRX-V2-SCOPED-TEST-F001",
+    "commit": "1230846c940d11a3a368ff1b726aca7351dcd206",
+    "path": "skills/artificial-single-page-extreme-time-engine/tasks/SANRENXING_V2_TEST_20261012/MANIFEST_F001.json",
+    "sha256": "c63662d417cd04c8b1dc8746ea3645eebfdee164feaa6f6c92923946309d6a96",
+    "formal_trials": 6,
+    "v2_trials": 3,
+    "status": "PASS_SCOPED_STATISTICS_AND_REPORT_BOUNDARIES"
+  },
+  "activation": "NOT_PERFORMED",
+  "default_method": "SANRENXING_V1",
+  "v2_global_final_valid": "NO",
+  "physical_limit": "UNKNOWN",
+  "sustained_capacity": "UNKNOWN",
+  "unverified": [
+    "GPT官网CEO→Windows自动接续",
+    "断电/冷启",
+    "72小时长稳",
+    "真实资金/发送/生产"
+  ],
+  "readonly_policy": "本目录方法快照、Manifest、Freeze不得原地修改；变更需新版本或新Freeze。当前main仅是保存入口，执行应锁本Manifest的snapshot_commit。",
+  "dependency_source_commit": "bb5c0e1f91ea14545e8bc968c341fae14f86db54",
+  "protected_source_blobs": [
+    {
+      "path": "SKILL.md",
+      "blob_sha": "528a0015abb717b10798b504bab1316f40a43a48",
+      "unchanged": true
+    },
+    {
+      "path": "START_HERE.md",
+      "blob_sha": "04ac1450b926665f8bb4683b93f4dbfba8dbbc99",
+      "unchanged": true
+    },
+    {
+      "path": "SANRENXING_V1.md",
+      "blob_sha": "a05fc51d661952790837dfa462bf766b16aba078",
+      "unchanged": true
+    }
+  ],
+  "knowledge_brain_usage": {
+    "INDEX_checked": true,
+    "ROUTING_MAP_checked": true,
+    "relevant_index": "skills-index",
+    "sync": "未改KB索引，不运行hot/deep；C盘kb_health_check执行",
+    "codegraph": "不适用，只有Markdown冻结保存，未改代码",
+    "H_K_access": false,
+    "ROI_gate": "PAUSED_BY_USER",
+    "locator_gate": "PAUSED_BY_USER"
+  }
+}
