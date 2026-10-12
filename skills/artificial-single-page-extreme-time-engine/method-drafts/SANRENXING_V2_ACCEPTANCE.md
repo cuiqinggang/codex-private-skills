@@ -2,7 +2,7 @@
 
 STATUS=REVIEW_CONTRACT_ONLY
 CANDIDATE=SANRENXING_V2
-CANDIDATE_ID=SRX-V2-REVIEW-C001
+CANDIDATE_ID=SRX-V2-REVIEW-C002
 ACTIVE_METHOD=SANRENXING_V1
 ACTIVATION=NOT_AUTHORIZED
 V2_FINAL_VALID=NO
@@ -28,7 +28,7 @@ SOURCE_MATRIX=method-drafts/SANRENXING_V2_REVIEW_MATRIX.md
 | S0-03 | SKILL.md 与 START_HERE.md 仍指向 V1；ENGINE28、BRAIN25、TEMPLATE18、ENGINE29、Polsia METHOD_REF未被覆盖 |
 | S0-04 | 候选明确唯一GPT CEO、A/C/P按需路由、三强轻筛、虚拟成熟、时间唯一标准及真实验收边界 |
 | S0-05 | 授权、安全、Exactly-once、REUSE_GATE、唯一写者、Freeze/SHA/回读、方法版本锁等始终有效 |
-| S0-06 | 长时Codex读取当前 GPT_CODEX_ULTRA_CONTINUATION_INDEX.md 动态定位，不硬编码旧3.2.0或新V5 |
+| S0-06 | 长时Codex优先既有运行快照；新隔离节点或明确授权变更先锁commit，再按ref读索引/依赖，不自动迁移旧任务 |
 | S0-07 | 旧能力矩阵至少逐条审查36项；每个拟变更点有旧规则定位、无损替代、负例和可逆恢复 |
 | S0-08 | 新候选没有创建任何新通用调度、数据库、锁、浏览器控制、重试引擎 |
 | S0-09 | V2只使用整数版本；历史正式V1冻结不原地修订 |
@@ -43,7 +43,7 @@ SOURCE_MATRIX=method-drafts/SANRENXING_V2_REVIEW_MATRIX.md
 | R03 | 长时编码任务且已授权、预计净收益为正 | 先读取当前连续运行索引与技能、建立最小节点合同；才允许考虑C |
 | R04 | 明确可并行的两个独立分支 | 可考虑P，但共享CURRENT只有CEO单写者；未证明净收益则单路 |
 | R05 | GitHub已批准，但Windows本地NEXT仍PROPOSED_ONLY | 不启动Codex；明确等待同步，不能误报runner损坏 |
-| R06 | NEXT缺精确【页面名｜任务名｜序号】定位标签 | 启动前阻断；不依赖Codex exit0后再发现定位失败 |
+| R06 | 用户已暂停标签门禁，合法NEXT缺精确定位标签 | 不因标签缺失阻断、不猜造；其余授权/版本/副作用门仍须通过 |
 | R07 | 同任务Codex已有进程或INFLIGHT未知 | 不启动第二实例、不清标志；先三态对账 |
 | R08 | 仅NOTE含目标Freeze ID，正式FREEZE_ID错误／重复 | 必须拒绝；不得把历史runner宽松匹配冒充已修复 |
 | R09 | 本地Manifest错误SHA、路径越界、远端指针不同 | 不接受Freeze，不更新CURRENT，不重播业务 |
@@ -62,13 +62,17 @@ SOURCE_MATRIX=method-drafts/SANRENXING_V2_REVIEW_MATRIX.md
 | R22 | GitHub写入返回未知或409/422 | 先查现存提交/SHA、独立回读，再决定合法重试 |
 | R23 | 无基线与真实总时间 | 输出 T_VALID_REAL=UNKNOWN，不宣称V2更快 |
 | R24 | 长程72小时、断电恢复未经实测 | 标记NOT_VERIFIED，不声称永不停机 |
+| R25 | 节点内latest更新，快照未变 | 保留节点commit/SHA，只重验现场变化；禁止无授权热迁移 |
+| R26 | 执行途中新增权限/依赖/副作用UNKNOWN | 重判受影响动作并对账；原GOOD保留 |
+| R27 | UTC回拨或accepted_at晚于received_at | 使用单调时钟从received计时，不截去接单/排队成本 |
+| R28 | ROI与标签门禁PAUSED_BY_USER | 不计算ROI、不自动恢复、不因暂停阻断普通合法任务 |
 
 ## 3. 公平时间比较合同（S2）
 
 唯一被优化指标：同合同、同质量、同风险、同权限、同资源约束下的完整墙钟有效完成时间：
-T_VALID = t(final accepted outcome) - t(user task accepted)。
+T_VALID = monotonic(final independently accepted outcome) - monotonic(task received)。accepted_at另记但不后移起点；UTC只作定位。
 
-必须包含：CEO决策、规则加载、检索、工具启动、排队、Codex推理/执行、派发与合并、人工等待/交接、必要Freeze和远端回读、质量验收、故障诊断及恢复、必要部署/维护摊销。并行阶段不能机械把各子任务耗时相加冒充墙钟总时间。
+必须包含：CEO决策、规则加载、检索、工具启动、排队、Codex推理/执行、派发与合并、人工等待/交接、必要Freeze和远端回读、质量验收、故障诊断及恢复、本次部署/维护步骤。历史摊销另记adjusted_total_ms，不混入full_wall_ms。并行阶段不能机械把各子任务耗时相加冒充墙钟总时间。
 
 建议至少覆盖四类可合法重复的隔离任务：A轻文本、B有代码/工具的中型任务、C两自然节点长任务、D可恢复故障/跨页任务。每类使用相同输入和DONE_WHEN，交叉顺序测V1/V2，优先复用既有同合同真实历史基线；新现实样本必须记录实际起止。需要统计稳定性时增加独立样本，不能把一次偶然快视为普遍最优；有副作用任务不得为测速重复发送。
 
@@ -102,3 +106,7 @@ CODEX_EXECUTOR_END_TO_END_FOR_V2=NOT_RUN
 V2_FROZEN_ACTIVE=NO
 DEFAULT_METHOD=SANRENXING_V1
 RECOMMENDATION=REVIEW_FIRST;THEN_ISOLATED_REALITY;ACTIVATE_ONLY_IF_PROVEN
+
+## C002 测试报告要求
+
+最低耗时、中央値、P95、有效率、批次吞吐分别报告；N不足或A/A噪声未受控时不宣称V2统计显著更快。局部解析/文件校验与原生模型端到端计时分开。正式GPT官网CEO、Windows调度、断电及72h未做即NOT_TESTED；用户本次授权隔离完善/测试，不视为激活全局默认。
