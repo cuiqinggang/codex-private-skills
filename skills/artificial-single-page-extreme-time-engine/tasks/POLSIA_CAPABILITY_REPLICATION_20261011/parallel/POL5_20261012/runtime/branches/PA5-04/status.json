@@ -1,0 +1,15 @@
+{
+  "id": "PA5-04",
+  "name": "对标差分及独立验收",
+  "status": "DONE_SCOPED",
+  "step": "对标差分基线已保存；真实截图与完整功能尚未通过",
+  "verified_steps": 3,
+  "planned_steps": 4,
+  "checkpoint": "母冻结V008；本分支未冻结",
+  "evidence": "PA5-04-comparison.json",
+  "issue": "左右截图尚未采集",
+  "contract_blob": "8f93ab00baf4e057d90fe0c3a18cb4699f0fe9f3",
+  "locator": "【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜PA5-04｜实】",
+  "started_utc": "2026-10-12T12:13:17.4115608Z",
+  "updated_utc": "2026-10-12T12:13:19.1610286Z"
+}
