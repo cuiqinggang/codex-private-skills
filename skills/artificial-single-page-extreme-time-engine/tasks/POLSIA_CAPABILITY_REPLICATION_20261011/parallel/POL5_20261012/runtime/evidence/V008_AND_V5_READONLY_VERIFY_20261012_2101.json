@@ -1,0 +1,30 @@
+{
+  "task_id": "POLSIA_CAPABILITY_REPLICATION_20261011",
+  "batch_id": "POL5_20261012",
+  "observed_windows_local": "2026-10-12T21:01:39.5927155+08:00",
+  "mode": "ACTUAL_READONLY_CHECK_NO_RERUN_OF_OLD_BUSINESS",
+  "source": "GPT_Windows_MCP_Bridge.start_process; native Get-FileHash; Get-ChildItem; Invoke-WebRequest",
+  "legacy_freeze": {
+    "path": "C:\\AI\\Polsia-Codex-20261011\\nodes\\CODEX-008\\FREEZE.md",
+    "exists": true,
+    "sha256": "DAE228125E797E4CC2ABE3316346D37A1038148826525888AC3496B12A94676F",
+    "matches_original_checkpoint": true
+  },
+  "legacy_manifest": {
+    "path": "C:\\AI\\Polsia-Codex-20261011\\nodes\\CODEX-008\\SHA256-MANIFEST.json",
+    "exists": true,
+    "sha256": "2F3C40F4E80B5B7C49785335FA4AE17A9F592C5BB3603082F0C2FA212CCE7EB7",
+    "matches_original_checkpoint": true,
+    "manifest_recorded_files": 128,
+    "individual_128_files_rehashed_this_check": false
+  },
+  "old_zip_count_observed": 4,
+  "new_v5_site_business_file_count": 0,
+  "monitor_http_status": 200,
+  "monitor_jobs_reported": 5,
+  "original_dispatch_pid_numbers_currently_occupied": 1,
+  "original_dispatch_task_identity_verified": false,
+  "warning": "PID number occupancy alone cannot identify the original executor; original dispatch completion evidence and process creation details required.",
+  "inheritance": "HISTORICAL_ARTIFACTS_PRESENT_AND_MATCHING_MAIN_V008_HASHES; NEW_SITE_INTEGRATION_NOT_PROVEN",
+  "mother_final_valid": false
+}
