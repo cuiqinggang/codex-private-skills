@@ -1,0 +1,1304 @@
+{
+  "schema": "codex-h3-v2.reality02.evidence.v1",
+  "task_id": "CODEX-H3-VIDEO-V2-20261012",
+  "case_directory": "acceptance/reality-test-02-20261012",
+  "compiled_utc": "2026-10-12T16:22:53.957009+00:00",
+  "compiled_local": "2026-10-13T00:22:53.957037+08:00",
+  "result": "BLOCKED_PRECISE_LOCAL_TEMPORAL_EDIT",
+  "method_status": "METHOD_SPEC_READY_REALITY_PENDING",
+  "FINAL_VALID": "NO",
+  "all_56_pass": false,
+  "formal_video_generated": false,
+  "formal_video_actual_path": null,
+  "human_full_movie_playback": "NOT_DONE",
+  "full_movie_visual_pass": false,
+  "full_movie_audio_pass": false,
+  "production_generation_running": false,
+  "canonical_indices": [
+    1,
+    2,
+    3
+  ],
+  "accepted_count": 3,
+  "required_count": 56,
+  "missing_indices": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56
+  ],
+  "accepted_sources": [
+    {
+      "frame_index": 1,
+      "current_visual_status": "PASS",
+      "generation_record": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_001_result.json",
+        "sha256": "2af3a61eae53ba5d19155f5536693fbb1a831c6a90549f6be4ba4e72177d4dbd",
+        "bytes": 4563
+      },
+      "independent_actual_model_output": true,
+      "counted_as_new_C_model_call": false,
+      "raw": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\source_raw\\frame_001_model.png",
+        "sha256": "d0c40b01e4a78d57c2b591a28a42efbc6424fbdd82f6aad88ae7f0a1550f2be7",
+        "format": "PNG",
+        "size": [
+          1681,
+          936
+        ],
+        "mode": "RGB",
+        "full_decode_pass": true,
+        "rgb24_sha256": "9d95173980e0ea2105a8ecc7884d91d7f9320289c8c5d2f08884d2cde5dafb66"
+      },
+      "encoded": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\frame_001.png",
+        "sha256": "295738cc873074f054303ee3289b187c628a668274864613c2019eee6abbabac",
+        "format": "PNG",
+        "size": [
+          864,
+          480
+        ],
+        "mode": "RGB",
+        "full_decode_pass": true,
+        "rgb24_sha256": "b0da9df4d2785aa40457fd9b1167a8cdf5e966c8d5c36d5f30075e5628275da4"
+      },
+      "actual_tool_original": {
+        "path": "C:\\Users\\A\\.codex\\generated_images\\01a13028-f348-7d80-b57d-6fa9cc627c19\\exec-0f980e7a-2c35-4221-991a-f7a8a95f3e5a.png",
+        "sha256": "d0c40b01e4a78d57c2b591a28a42efbc6424fbdd82f6aad88ae7f0a1550f2be7",
+        "matches_raw_exactly": true
+      },
+      "reference_validation": {
+        "route": "initial_actual_baseline",
+        "reference_count": 1
+      },
+      "actual_input_evidence": [
+        {
+          "path": "C:\\AI\\Codex-H3-Video-V2\\attempt_A\\frame_001.png",
+          "sha256": "7ffec58abbbaef3ca2f0b09a75859cb2dcfa419134ee8512a939865d692f4dcc"
+        }
+      ],
+      "visual_quality": {
+        "status": "PASS",
+        "checks": {
+          "subject_consistency": "PASS",
+          "props_consistency": "PASS",
+          "scene_consistency": "PASS",
+          "adjacent_continuity": "PASS",
+          "photographic_quality": "PASS"
+        },
+        "source_sha256": "295738cc873074f054303ee3289b187c628a668274864613c2019eee6abbabac",
+        "evidence": [
+          "Root view_image actual first raw; independent original B review first5_visual_review.json",
+          "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_001_model.png"
+        ]
+      },
+      "model": "NOT_EXPOSED_BY_TOOL",
+      "seed": "NOT_EXPOSED_BY_TOOL",
+      "api": "image_gen.imagegen",
+      "processing_temporal_interpolation": false,
+      "reused_original_provenance": {
+        "archive_path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_001_original_provenance.json",
+        "archive_sha256": "5b25214fcf3a764ee9e689500b1c1fec0765dcdb7117af7000253d166cdb9e98",
+        "reused_accepted_first_frame": true,
+        "counted_as_new_C_model_call": false,
+        "original_real_tool_output_reused_once": true
+      },
+      "actual_review_evidence_route": {
+        "history_file": {
+          "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\continuity\\first5_visual_review.json",
+          "sha256": "104eabf8e9445b7a970bd8099f09cb89c3f777511dc29ba456afeeb1d4dd817e",
+          "bytes": 8413
+        },
+        "history_frame_array_index": 0,
+        "actually_viewed_recorded": true,
+        "schema_limitation": "Canonical visual_review is empty and no actual_view_evidence array; retained historical actual review and root textual evidence are not rewritten."
+      }
+    },
+    {
+      "frame_index": 2,
+      "current_visual_status": "PASS",
+      "generation_record": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_002_result.json",
+        "sha256": "67d55802a0bb00806c666a891959fe4f0535b0d82cbe896b3e9a824698f7c882",
+        "bytes": 5394
+      },
+      "independent_actual_model_output": true,
+      "counted_as_new_C_model_call": true,
+      "raw": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\source_raw\\frame_002_model.png",
+        "sha256": "0e0a299be8b1e03c71cf0072ed35f38c9b19c5fc88943c214779604308369648",
+        "format": "PNG",
+        "size": [
+          1681,
+          936
+        ],
+        "mode": "RGB",
+        "full_decode_pass": true,
+        "rgb24_sha256": "9d5ccdb77b3ba7e59d24ede6bf487cbeeafd84f0bdabd2e9d811bf9d41fd7ba0"
+      },
+      "encoded": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\frame_002.png",
+        "sha256": "d4e76d3168dfc091258298e4ac8cfac40db93f85d11beda148ef8bfb1d147e40",
+        "format": "PNG",
+        "size": [
+          864,
+          480
+        ],
+        "mode": "RGB",
+        "full_decode_pass": true,
+        "rgb24_sha256": "3fc157000e7e3f67bb620e5304777ec9273ef3c77a53203d051246348f21ff06"
+      },
+      "actual_tool_original": {
+        "path": "C:\\Users\\A\\.codex\\generated_images\\01a13076-ca6e-7443-a757-fc3ce1cfcdc2\\exec-a6ce850a-02ff-4f2b-8352-e0997ba0c7e7.png",
+        "sha256": "0e0a299be8b1e03c71cf0072ed35f38c9b19c5fc88943c214779604308369648",
+        "matches_raw_exactly": true
+      },
+      "reference_validation": {
+        "route": "actual_previous_native_with_exact_encoding_mapping",
+        "previous_frame_index": 1,
+        "actual_reference_path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\source_raw\\frame_001_model.png",
+        "previous_generation_record_sha256": "2af3a61eae53ba5d19155f5536693fbb1a831c6a90549f6be4ba4e72177d4dbd",
+        "first_generation_record_sha256": "2af3a61eae53ba5d19155f5536693fbb1a831c6a90549f6be4ba4e72177d4dbd"
+      },
+      "actual_input_evidence": [
+        {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_001_model.png",
+          "sha256": "d0c40b01e4a78d57c2b591a28a42efbc6424fbdd82f6aad88ae7f0a1550f2be7",
+          "role": "previous_frame_actual_native_reference"
+        },
+        {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_001_model.png",
+          "sha256": "d0c40b01e4a78d57c2b591a28a42efbc6424fbdd82f6aad88ae7f0a1550f2be7",
+          "role": "first_frame_scene_identity_actual_native_reference"
+        }
+      ],
+      "visual_quality": {
+        "status": "PASS",
+        "checks": {
+          "subject_consistency": "PASS",
+          "props_consistency": "PASS",
+          "scene_consistency": "PASS",
+          "adjacent_continuity": "PASS",
+          "photographic_quality": "PASS"
+        },
+        "source_sha256": "d4e76d3168dfc091258298e4ac8cfac40db93f85d11beda148ef8bfb1d147e40",
+        "evidence": [
+          "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/review/frame_002_attempt_02_review.json",
+          "C:/Users/A/.codex/generated_images/01a13076-ca6e-7443-a757-fc3ce1cfcdc2/exec-a6ce850a-02ff-4f2b-8352-e0997ba0c7e7.png"
+        ]
+      },
+      "model": "NOT_EXPOSED_BY_TOOL",
+      "seed": "NOT_EXPOSED_BY_TOOL",
+      "api": "image_gen.imagegen",
+      "processing_temporal_interpolation": false,
+      "actual_review_evidence_route": {
+        "review": {
+          "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\review\\frame_002_attempt_02_review.json",
+          "sha256": "7edd4da4cc018d755d4f14d7cc1644fb2d8fa82bd21bfc867d4de2bb748ed197",
+          "bytes": 6018
+        },
+        "review_method": "Actual view_image of both original files at original detail; visual comparison first, SIFT auxiliary only",
+        "schema_limitation": "Actual view_image is explicitly described, but no uniform actual_view_evidence array/call_id is present."
+      }
+    },
+    {
+      "frame_index": 3,
+      "current_visual_status": "PASS",
+      "generation_record": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_003_result.json",
+        "sha256": "b5e9140e3e69da507202c46ee58831c3d0e472d7255dba6b9887dda17d54d19b",
+        "bytes": 6847
+      },
+      "independent_actual_model_output": true,
+      "counted_as_new_C_model_call": true,
+      "raw": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\source_raw\\frame_003_model.png",
+        "sha256": "4552c368fdeebbe0967e1b22aa38ef6f8b131908741bc6a3bda4095cd8080b81",
+        "format": "PNG",
+        "size": [
+          1681,
+          936
+        ],
+        "mode": "RGB",
+        "full_decode_pass": true,
+        "rgb24_sha256": "5a8f7fd7aa657db92b87d29f32f82f1e14a224eed00b018111ee047d6332838c"
+      },
+      "encoded": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\frame_003.png",
+        "sha256": "5c2b22a053c83c7cbd46706ed7ea748ef87fee6dabf0dacaf92a777d9c17fe3e",
+        "format": "PNG",
+        "size": [
+          864,
+          480
+        ],
+        "mode": "RGB",
+        "full_decode_pass": true,
+        "rgb24_sha256": "08a72e1b2c7a810d908a43714e3b06b1b0220a4cb052d1fbd8b7d8458862de2a"
+      },
+      "actual_tool_original": {
+        "path": "C:\\Users\\A\\.codex\\generated_images\\01a13079-ffd0-75e3-b04c-27edc908e9f2\\exec-0a8989d4-52c9-4791-b5f6-1c50e99a5cb6.png",
+        "sha256": "4552c368fdeebbe0967e1b22aa38ef6f8b131908741bc6a3bda4095cd8080b81",
+        "matches_raw_exactly": true
+      },
+      "reference_validation": {
+        "route": "actual_previous_native_with_exact_encoding_mapping",
+        "previous_frame_index": 2,
+        "actual_reference_path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\source_raw\\frame_002_model.png",
+        "previous_generation_record_sha256": "67d55802a0bb00806c666a891959fe4f0535b0d82cbe896b3e9a824698f7c882",
+        "first_generation_record_sha256": "2af3a61eae53ba5d19155f5536693fbb1a831c6a90549f6be4ba4e72177d4dbd"
+      },
+      "actual_input_evidence": [
+        {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_002_model.png",
+          "sha256": "0e0a299be8b1e03c71cf0072ed35f38c9b19c5fc88943c214779604308369648",
+          "role": "previous_frame_actual_native_reference"
+        },
+        {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_001_model.png",
+          "sha256": "d0c40b01e4a78d57c2b591a28a42efbc6424fbdd82f6aad88ae7f0a1550f2be7",
+          "role": "first_frame_scene_identity_actual_native_reference"
+        }
+      ],
+      "visual_quality": {
+        "status": "PASS",
+        "checks": {
+          "subject_consistency": "PASS",
+          "props_consistency": "PASS",
+          "scene_consistency": "PASS",
+          "adjacent_continuity": "PASS",
+          "photographic_quality": "PASS"
+        },
+        "source_sha256": "5c2b22a053c83c7cbd46706ed7ea748ef87fee6dabf0dacaf92a777d9c17fe3e",
+        "evidence": [
+          "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/review/frame_003_attempt_01_review.json",
+          "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png"
+        ]
+      },
+      "model": "NOT_EXPOSED_BY_TOOL",
+      "seed": "NOT_EXPOSED_BY_TOOL",
+      "api": "image_gen.imagegen",
+      "processing_temporal_interpolation": false,
+      "actual_review_evidence_route": {
+        "review": {
+          "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\review\\frame_003_attempt_01_review.json",
+          "sha256": "5e23e932be0cbfc744182367f17b6c095a5a30e424fed1c91a9f5f7a9cfe8e08",
+          "bytes": 2517
+        },
+        "actual_view_evidence": [
+          {
+            "tool": "functions.exec tools.view_image",
+            "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_002_model.png",
+            "detail": "original",
+            "purpose": "actual previous native before edit"
+          },
+          {
+            "tool": "functions.exec tools.view_image",
+            "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_attempt_01_model.png",
+            "detail": "original",
+            "purpose": "actual generated native review"
+          },
+          {
+            "tool": "functions.exec tools.view_image",
+            "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/frames/frame_003_attempt_01.png",
+            "detail": "original",
+            "purpose": "actual normalized encoding review"
+          }
+        ],
+        "schema_limitation": "Actual-view array is present; independent per-view call_id/time/hash not recorded. Hash binding is at review/ledger level."
+      }
+    }
+  ],
+  "failed_frame004_candidates": [
+    {
+      "frame_index": 4,
+      "attempt": 1,
+      "status": "REVISE",
+      "request": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_004_attempt_01_request.json",
+        "sha256": "acf0c1193092c4143216624b9064c93c1ba4ad0130b3680b0b3ad149e20abcaf",
+        "bytes": 4940
+      },
+      "call": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_004_attempt_01_call.json",
+        "sha256": "3f99c39ae891e4b17c2cb418b07b1f2a8eb4fd1a6cba8472342e2d461fa4b717",
+        "bytes": 910
+      },
+      "result": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_004_attempt_01_result.json",
+        "sha256": "a2d608bf6548651a40cf1a4f9a2d35b3139979df9ab20afd6c3cf9aaced80aaf",
+        "bytes": 7766
+      },
+      "review": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\review\\frame_004_attempt_01_review.json",
+        "sha256": "02f45bd147200e641f2ca403ab46401210b4c29f9fbb96aca466c9f4b309fdfc",
+        "bytes": 2300
+      },
+      "api": "image_gen.imagegen",
+      "model": "NOT_EXPOSED_BY_TOOL",
+      "seed": "NOT_EXPOSED_BY_TOOL",
+      "input_capture_utc": "2026-10-12T15:43:45.460529+00:00",
+      "request_parameters": {
+        "prompt": "Make ONE photographic precision edit: the immediately next single 24-fps movie frame of Image 1. Image 1 is the PREVIOUS accepted frame and exact action starting point. Image 2 is only the fixed scene and hand identity anchor, never a pose reset. Move the whole hand a TINY millimeter DOWN-RIGHT step from Image 1, approximately 16 native pixels RIGHT and 16 native pixels DOWN on the 1681x936 canvas (only 8x8 pixels at 864x480). The rightward part is essential; the previous step was mostly down, so now use an equally tiny rightward and downward translation. Keep the hand ALMOST EXACTLY WHERE IT IS, the successful ONE PERCENT tiny progression style. Preserve the whole finger silhouette, relaxed curvature, nails and wrist angle. Fingers stay clearly separated from the linen with a visible air gap: NO contact, NO curling, NO cloth movement. Do not make a new reach pose or a large jump toward the linen. Keep all other regions as closely identical to Image 1 as possible: one stationary beige dark-striped linen cloth with unchanged folds, one woven basket, TWO oranges, ONE white-orange striped pumpkin, ONE transparent EMPTY bottle, ONE wooden spoon, table wood grain, background cabinets and plants, warm light direction, shadows, exposure and framing. The far wooden spoon cannot move without contact. No camera motion or zoom. One natural photographic image, no text, no watermark.\n",
+        "referenced_image_paths": [
+          "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png",
+          "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_001_model.png"
+        ],
+        "transparent_background": false
+      },
+      "actual_input_evidence": [
+        {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png",
+          "sha256": "4552c368fdeebbe0967e1b22aa38ef6f8b131908741bc6a3bda4095cd8080b81",
+          "role": "previous_frame_actual_native_reference"
+        },
+        {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_001_model.png",
+          "sha256": "d0c40b01e4a78d57c2b591a28a42efbc6424fbdd82f6aad88ae7f0a1550f2be7",
+          "role": "first_frame_scene_identity_actual_native_reference"
+        }
+      ],
+      "previous_encoding_mapping": {
+        "frame_index": 3,
+        "generation_record_path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/generation/frame_003_result.json",
+        "generation_record_sha256": "b5e9140e3e69da507202c46ee58831c3d0e472d7255dba6b9887dda17d54d19b",
+        "actual_reference_path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png",
+        "actual_reference_sha256": "4552c368fdeebbe0967e1b22aa38ef6f8b131908741bc6a3bda4095cd8080b81",
+        "raw_path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png",
+        "raw_sha256": "4552c368fdeebbe0967e1b22aa38ef6f8b131908741bc6a3bda4095cd8080b81",
+        "encoded_path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/frame_003.png",
+        "encoded_sha256": "5c2b22a053c83c7cbd46706ed7ea748ef87fee6dabf0dacaf92a777d9c17fe3e",
+        "temporal_interpolation": false
+      },
+      "planned_numeric_step": {
+        "frame_index": 4,
+        "target_relative_to_previous_accepted_frame": true,
+        "planned_not_observed": true,
+        "hand_delta_encoded_pixels": [
+          8,
+          8
+        ],
+        "cloth_edge_delta_encoded_pixels": [
+          0,
+          0
+        ],
+        "fingertip_aperture_change_encoded_pixels": 0,
+        "camera_scale_delta_percent": 0,
+        "props_delta_encoded_pixels": [
+          0,
+          0
+        ],
+        "stage": "approach",
+        "contact_target": "NO_CONTACT; frame008 retains a small visible air gap",
+        "calibration_note": "Smooth remaining approach; frame008 small air gap, frame009 actual first touch required. Inability to arrive continuously triggers current-frame REVISE, never false PASS."
+      },
+      "started_utc": "2026-10-12T15:44:02.693Z",
+      "completed_utc": "2026-10-12T15:44:54.919Z",
+      "reported_api_elapsed_seconds": 49.899,
+      "tool_original": {
+        "path": "C:\\Users\\A\\.codex\\generated_images\\01a13079-ffd0-75e3-b04c-27edc908e9f2\\exec-93e1b6d5-c8c4-4119-950c-142ea16f0ea5.png",
+        "sha256": "1762f7246ce39eb64feff7bafe44d729bbdaf794e732267c04836ce98f9f5f23",
+        "bytes": 2228753
+      },
+      "raw": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\source_raw\\frame_004_attempt_01_model.png",
+        "sha256": "1762f7246ce39eb64feff7bafe44d729bbdaf794e732267c04836ce98f9f5f23",
+        "bytes": 2228753
+      },
+      "encoded": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\frames\\frame_004_attempt_01.png",
+        "sha256": "572c7f363e726423601eb947a4f1d0c9aafefe05dca54ba84c563fc0c6d32c75",
+        "bytes": 697722
+      },
+      "raw_matches_actual_tool_original": true,
+      "actual_view_evidence": [
+        {
+          "tool": "functions.exec tools.view_image",
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_attempt_01_model.png",
+          "detail": "original",
+          "purpose": "actual accepted previous viewed"
+        },
+        {
+          "tool": "functions.exec tools.view_image",
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_004_attempt_01_model.png",
+          "detail": "original",
+          "purpose": "actual new native"
+        },
+        {
+          "tool": "functions.exec tools.view_image",
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/frames/frame_004_attempt_01.png",
+          "detail": "original",
+          "purpose": "actual new encoding"
+        }
+      ],
+      "actual_review_checks": {
+        "subject_consistency": "PASS",
+        "props_consistency": "PASS",
+        "scene_consistency": "PASS",
+        "adjacent_continuity": "REVISE",
+        "photographic_quality": "PASS"
+      },
+      "actual_review_notes": {
+        "subject_consistency": "实际原生视审：仍是同一只手，手指、指甲、皮肤和前臂形态自然，未多指/缺指。",
+        "props_consistency": "实际原生/编码视审：一篮两橙一南瓜一空瓶一木勺一条纹布均在位，尚未接触，布和勺未无故运动。",
+        "scene_consistency": "桌面、背景、暖光方向保持；辅助静态区中位(-0.033,+0.279)编码像素，只作辅助。",
+        "adjacent_continuity": "REVISE：实际视审手部下右步进明显大于上一微步；辅助59个手部匹配中位(+10.78,+13.98)编码像素，C2→C3中位(+0.13,+4.36)。要求当前帧小步，不能用突然加速追轨迹。仍隔空，没有触布，但这一步需缩小后再推进。",
+        "photographic_quality": "1681×936 RGB原生、864×480编码均清晰自然，玻璃/布纹/木纹完整，未见严重渲染缺陷。"
+      },
+      "actual_review_schema_limitation": "Per-view call_id/time/hash were not separately recorded; file/hash/ledger bindings are retained. No fields invented.",
+      "failed_candidate_used_as_next_reference": false,
+      "temporal_interpolation": false
+    },
+    {
+      "frame_index": 4,
+      "attempt": 2,
+      "status": "REVISE",
+      "request": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_004_attempt_02_request.json",
+        "sha256": "c078ffa5b69fd1d59976def7fd1c750f46828db94275e0d7dc93ef505e49632d",
+        "bytes": 4960
+      },
+      "call": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_004_attempt_02_call.json",
+        "sha256": "f22ba7da702372ed3af88e24855d9aa6611da3e1113546d317700b24c81f22df",
+        "bytes": 910
+      },
+      "result": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_004_attempt_02_result.json",
+        "sha256": "178f102cc49022ecf40b9adb7b0081a130d716e721229356979e729bc2a43b70",
+        "bytes": 7786
+      },
+      "review": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\review\\frame_004_attempt_02_review.json",
+        "sha256": "281957e782be9b985839b54843f0e4e1eb3d8ce9a153231f26dfdeba35a02178",
+        "bytes": 2148
+      },
+      "api": "image_gen.imagegen",
+      "model": "NOT_EXPOSED_BY_TOOL",
+      "seed": "NOT_EXPOSED_BY_TOOL",
+      "input_capture_utc": "2026-10-12T15:48:08.048494+00:00",
+      "request_parameters": {
+        "prompt": "Make ONE photographic precision edit of Image 1, the immediately next single 24-fps frame. Image 1 is the accepted PREVIOUS FRAME and the exact starting position. Image 2 only anchors scene and hand identity, never reset the pose. The last attempted edit moved too far. This attempt must be LESS THAN HALF that sort of motion: keep the hand ALMOST EXACTLY WHERE IT IS in Image 1 and preserve almost all its air gap to the linen. Translate the unchanged whole hand a very small millimeter step, ONLY about 12 native pixels RIGHT and 12 native pixels DOWN on the 1681x936 canvas, around 6x6 pixels at 864x480. Do not exceed 16 native pixels on either axis. This is the successful ONE PERCENT tiny progression style, no large reach, no reposing. Preserve every finger's curvature, fingertip shape, nails, skin texture and wrist angle. Fingers remain clearly separated from the linen: no contact, no cloth movement or lift. Keep every other region as closely identical to Image 1 as possible: beige striped linen folds and stripe width, one basket, TWO oranges, ONE white-orange striped pumpkin, ONE transparent EMPTY bottle, ONE wooden spoon, table wood grain, cabinets and plants, warm light, shadows, exposure, lens and framing. The far wooden spoon cannot move without contact. No camera zoom. If uncertain, choose the SMALLER displacement, not a larger hand step. One natural photograph, no labels, no watermark.\n",
+        "referenced_image_paths": [
+          "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png",
+          "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_001_model.png"
+        ],
+        "transparent_background": false
+      },
+      "actual_input_evidence": [
+        {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png",
+          "sha256": "4552c368fdeebbe0967e1b22aa38ef6f8b131908741bc6a3bda4095cd8080b81",
+          "role": "previous_frame_actual_native_reference"
+        },
+        {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_001_model.png",
+          "sha256": "d0c40b01e4a78d57c2b591a28a42efbc6424fbdd82f6aad88ae7f0a1550f2be7",
+          "role": "first_frame_scene_identity_actual_native_reference"
+        }
+      ],
+      "previous_encoding_mapping": {
+        "frame_index": 3,
+        "generation_record_path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/generation/frame_003_result.json",
+        "generation_record_sha256": "b5e9140e3e69da507202c46ee58831c3d0e472d7255dba6b9887dda17d54d19b",
+        "actual_reference_path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png",
+        "actual_reference_sha256": "4552c368fdeebbe0967e1b22aa38ef6f8b131908741bc6a3bda4095cd8080b81",
+        "raw_path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png",
+        "raw_sha256": "4552c368fdeebbe0967e1b22aa38ef6f8b131908741bc6a3bda4095cd8080b81",
+        "encoded_path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/frame_003.png",
+        "encoded_sha256": "5c2b22a053c83c7cbd46706ed7ea748ef87fee6dabf0dacaf92a777d9c17fe3e",
+        "temporal_interpolation": false
+      },
+      "planned_numeric_step": {
+        "frame_index": 4,
+        "target_relative_to_previous_accepted_frame": true,
+        "planned_not_observed": true,
+        "hand_delta_encoded_pixels": [
+          8,
+          8
+        ],
+        "cloth_edge_delta_encoded_pixels": [
+          0,
+          0
+        ],
+        "fingertip_aperture_change_encoded_pixels": 0,
+        "camera_scale_delta_percent": 0,
+        "props_delta_encoded_pixels": [
+          0,
+          0
+        ],
+        "stage": "approach",
+        "contact_target": "NO_CONTACT; frame008 retains a small visible air gap",
+        "calibration_note": "Smooth remaining approach; frame008 small air gap, frame009 actual first touch required. Inability to arrive continuously triggers current-frame REVISE, never false PASS."
+      },
+      "started_utc": "2026-10-12T15:48:28.592Z",
+      "completed_utc": "2026-10-12T15:48:59.742Z",
+      "reported_api_elapsed_seconds": 30.113,
+      "tool_original": {
+        "path": "C:\\Users\\A\\.codex\\generated_images\\01a13079-ffd0-75e3-b04c-27edc908e9f2\\exec-49935f76-5a0e-43ad-92d0-c75dfbf40547.png",
+        "sha256": "e3a79d8fbe3f7b184b6ebb46700d7aabfa7a670b76aaf6656029bdd8d1d3882b",
+        "bytes": 2234330
+      },
+      "raw": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\source_raw\\frame_004_attempt_02_model.png",
+        "sha256": "e3a79d8fbe3f7b184b6ebb46700d7aabfa7a670b76aaf6656029bdd8d1d3882b",
+        "bytes": 2234330
+      },
+      "encoded": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\frames\\frame_004_attempt_02.png",
+        "sha256": "6d90b15d142c5b2abf84742e8ec3a9e240ab38338723a14be361620be30831d2",
+        "bytes": 697738
+      },
+      "raw_matches_actual_tool_original": true,
+      "actual_view_evidence": [
+        {
+          "tool": "functions.exec tools.view_image",
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_attempt_01_model.png",
+          "detail": "original",
+          "purpose": "accepted previous actual viewed"
+        },
+        {
+          "tool": "functions.exec tools.view_image",
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_004_attempt_02_model.png",
+          "detail": "original",
+          "purpose": "actual new native"
+        },
+        {
+          "tool": "functions.exec tools.view_image",
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/frames/frame_004_attempt_02.png",
+          "detail": "original",
+          "purpose": "actual encoding"
+        }
+      ],
+      "actual_review_checks": {
+        "subject_consistency": "PASS",
+        "props_consistency": "PASS",
+        "scene_consistency": "PASS",
+        "adjacent_continuity": "REVISE",
+        "photographic_quality": "PASS"
+      },
+      "actual_review_notes": {
+        "subject_consistency": "实际原生视审：仍是一只自然手，指尖、指甲和皮肤一致，无明显结构残缺。",
+        "props_consistency": "一篮两橙一南瓜一空瓶一木勺一条纹布数量与位置保持，布尚未受力，勺未动。",
+        "scene_consistency": "实际原生和编码视审背景、桌面、暖光和整体构图保持，未见镜头跳位。",
+        "adjacent_continuity": "REVISE：要求约6×6编码像素的小步，实际看领先指尖约原生x462→525，约+32编码像素，纵向约+10编码像素；肉眼估计非精确坐标，显著右跳无需以计划值替代事实。比上次返修更大，不能接受为下一帧。",
+        "photographic_quality": "真实RGB摄影源1681×936，编码864×480纹理自然，未见严重模糊或画面破坏。"
+      },
+      "actual_review_schema_limitation": "Per-view call_id/time/hash were not separately recorded; file/hash/ledger bindings are retained. No fields invented.",
+      "failed_candidate_used_as_next_reference": false,
+      "temporal_interpolation": false
+    },
+    {
+      "frame_index": 4,
+      "attempt": 3,
+      "status": "REVISE",
+      "request": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_004_attempt_03_request.json",
+        "sha256": "0cd585f1dbe314084ab30001afc5bf37d369da9ba00dd58fe22c44ad3ee4ddf2",
+        "bytes": 4720
+      },
+      "call": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_004_attempt_03_call.json",
+        "sha256": "ff5bee430cefc0c7eab1f7fd8a98cedaa67da478217cc5f074ec02d92753a591",
+        "bytes": 910
+      },
+      "result": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\generation\\frame_004_attempt_03_result.json",
+        "sha256": "5e8d4d4e4705baac29cfe4345a4420d37a6171c26a93f459dcb646b72a060da1",
+        "bytes": 7546
+      },
+      "review": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\review\\frame_004_attempt_03_review.json",
+        "sha256": "e7f759b941c72877d71ece6c2585c82b703bc8760780e7de83bc84a865cbb2b7",
+        "bytes": 2402
+      },
+      "api": "image_gen.imagegen",
+      "model": "NOT_EXPOSED_BY_TOOL",
+      "seed": "NOT_EXPOSED_BY_TOOL",
+      "input_capture_utc": "2026-10-12T15:51:19.847347+00:00",
+      "request_parameters": {
+        "prompt": "Make ONE photographic precision edit. Match Image 1 with extremely high fidelity. Image 1 is the previous accepted frame and the ONLY starting hand position. Image 2 anchors the original scene identity only; do not reset the action to it. The Image 1 hand is still FAR ABOVE-LEFT of the linen. Keep the hand ALMOST EXACTLY WHERE IT IS: preserve 95 percent of the visible air gap to the cloth, preserve the entire finger silhouette and wrist angle, and translate the whole hand DOWN-RIGHT by only ONE PERCENT of its length. This is a near-imperceptible millimeter movement, one 24-fps movie frame, not a new action pose. Do NOT reach toward the linen and do NOT halve the air gap. No hand rotation, no finger curling, no cloth contact. Keep every other pixel region as closely identical to Image 1 as the model can: linen folds and stripe thickness, woven basket, TWO oranges, ONE white-orange striped pumpkin, empty glass bottle, wooden spoon, wood grain, light, exposure, canvas and lens. One image, no labels or watermark. If choosing between a large visible movement and an almost unchanged hand, choose the almost unchanged hand with only a tiny down-right progression.\n",
+        "referenced_image_paths": [
+          "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png",
+          "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_001_model.png"
+        ],
+        "transparent_background": false
+      },
+      "actual_input_evidence": [
+        {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png",
+          "sha256": "4552c368fdeebbe0967e1b22aa38ef6f8b131908741bc6a3bda4095cd8080b81",
+          "role": "previous_frame_actual_native_reference"
+        },
+        {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_001_model.png",
+          "sha256": "d0c40b01e4a78d57c2b591a28a42efbc6424fbdd82f6aad88ae7f0a1550f2be7",
+          "role": "first_frame_scene_identity_actual_native_reference"
+        }
+      ],
+      "previous_encoding_mapping": {
+        "frame_index": 3,
+        "generation_record_path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/generation/frame_003_result.json",
+        "generation_record_sha256": "b5e9140e3e69da507202c46ee58831c3d0e472d7255dba6b9887dda17d54d19b",
+        "actual_reference_path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png",
+        "actual_reference_sha256": "4552c368fdeebbe0967e1b22aa38ef6f8b131908741bc6a3bda4095cd8080b81",
+        "raw_path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_model.png",
+        "raw_sha256": "4552c368fdeebbe0967e1b22aa38ef6f8b131908741bc6a3bda4095cd8080b81",
+        "encoded_path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/frame_003.png",
+        "encoded_sha256": "5c2b22a053c83c7cbd46706ed7ea748ef87fee6dabf0dacaf92a777d9c17fe3e",
+        "temporal_interpolation": false
+      },
+      "planned_numeric_step": {
+        "frame_index": 4,
+        "target_relative_to_previous_accepted_frame": true,
+        "planned_not_observed": true,
+        "hand_delta_encoded_pixels": [
+          8,
+          8
+        ],
+        "cloth_edge_delta_encoded_pixels": [
+          0,
+          0
+        ],
+        "fingertip_aperture_change_encoded_pixels": 0,
+        "camera_scale_delta_percent": 0,
+        "props_delta_encoded_pixels": [
+          0,
+          0
+        ],
+        "stage": "approach",
+        "contact_target": "NO_CONTACT; frame008 retains a small visible air gap",
+        "calibration_note": "Smooth remaining approach; frame008 small air gap, frame009 actual first touch required. Inability to arrive continuously triggers current-frame REVISE, never false PASS."
+      },
+      "started_utc": "2026-10-12T15:51:33.242Z",
+      "completed_utc": "2026-10-12T15:52:55.815Z",
+      "reported_api_elapsed_seconds": 74.009,
+      "tool_original": {
+        "path": "C:\\Users\\A\\.codex\\generated_images\\01a13079-ffd0-75e3-b04c-27edc908e9f2\\exec-625cd8d4-8358-459d-ba24-ce8fd1a2fabc.png",
+        "sha256": "e6312c3c2b3f50e5b5ce20e1f20580dfd78f2b0cb18379fdc294a15e4c889aa2",
+        "bytes": 2216570
+      },
+      "raw": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\source_raw\\frame_004_attempt_03_model.png",
+        "sha256": "e6312c3c2b3f50e5b5ce20e1f20580dfd78f2b0cb18379fdc294a15e4c889aa2",
+        "bytes": 2216570
+      },
+      "encoded": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\frames\\frame_004_attempt_03.png",
+        "sha256": "d587eaa1fde5e80c166523da6776559b9f96774ad3e439175f82b51a20fe5bf6",
+        "bytes": 691620
+      },
+      "raw_matches_actual_tool_original": true,
+      "actual_view_evidence": [
+        {
+          "tool": "functions.exec tools.view_image",
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_003_attempt_01_model.png",
+          "detail": "original",
+          "purpose": "accepted previous actual viewed"
+        },
+        {
+          "tool": "functions.exec tools.view_image",
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/source_raw/frame_004_attempt_03_model.png",
+          "detail": "original",
+          "purpose": "actual new native"
+        },
+        {
+          "tool": "functions.exec tools.view_image",
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/codex-h3-v2-20261012/production_C/frames/frame_004_attempt_03.png",
+          "detail": "original",
+          "purpose": "actual encoding"
+        }
+      ],
+      "actual_review_checks": {
+        "subject_consistency": "PASS",
+        "props_consistency": "PASS",
+        "scene_consistency": "PASS",
+        "adjacent_continuity": "REVISE",
+        "photographic_quality": "PASS"
+      },
+      "actual_review_notes": {
+        "subject_consistency": "实际原生图：同一只手，手指/指甲/皮肤完整，形态自然。",
+        "props_consistency": "实际原生与编码图：一篮两橙一白橙纹南瓜一空瓶一木勺一条纹布均保留，未接触布、未无故移动木勺。",
+        "scene_consistency": "暖光、木柜、桌面和镜头构图总体稳定；本次原生1680×936较前1681×936少1像素宽，空间归一后不等于动作。",
+        "adjacent_continuity": "REVISE：实际看手几乎停在C3的位置，未形成受控下右小步。辅助107匹配中位(-0.310,+0.324)编码像素，静态区(-0.409,+0.050)，相对静态区约(+0.10,+0.27)编码像素；仅辅助，不证明物理动作。前两次步幅过大，本次近零，不能在接近阶段以近乎不动的候选假称计划进度，否则008仍远、009被迫突跳。",
+        "photographic_quality": "1680×936 RGB真实摄影源与864×480编码清晰自然，未出现手布融合或严重图像破坏。"
+      },
+      "actual_review_schema_limitation": "Per-view call_id/time/hash were not separately recorded; file/hash/ledger bindings are retained. No fields invented.",
+      "failed_candidate_used_as_next_reference": false,
+      "temporal_interpolation": false
+    }
+  ],
+  "blocked_audit": {
+    "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\production_C\\review\\production_C_blocked_audit.json",
+    "sha256": "599ff93048764066d1487dd9d97fdc5c05ee9dbee802a2061a66f4c6590d757f",
+    "bytes": 6560,
+    "status": "BLOCKED_PRECISE_LOCAL_TEMPORAL_EDIT",
+    "same_precision_edit_consecutive_failures": 3,
+    "all_new_sources_are_real_tool_outputs": true,
+    "temporal_interpolation": false,
+    "frozen_plan_hashes": {
+      "trajectory_plan.json": "7e193bb1f311cb50a39ef2d51d17c80b928cd573535e10b7aa3bfbabec1adbf9",
+      "trajectory_plan_numeric_v2.json": "ea1c78ed92f93cb30a626209790f0c24e87c14ea6f3918e66feb5aac4843a347",
+      "trajectory_plan_numeric_v3.json": "f08493ba6f19307ba2413eedf8375044fcbb0fff881da3e17ac6ef89128b4d4c"
+    }
+  },
+  "history": {
+    "A": {
+      "numbered_frames": 11,
+      "unique_model_outputs": 12,
+      "status": "SEMANTIC_SEQUENCE_REJECTED",
+      "rejection": {
+        "path": "C:\\AI\\Codex-H3-Video-V2\\evidence\\attempt_A_rejection.json",
+        "sha256": "7ba26309aed593105f7b8dae281e8060fcd7cc9444641573227639df93dd2d75",
+        "bytes": 507
+      }
+    },
+    "B": {
+      "numbered_frames": 7,
+      "unique_model_outputs": 8,
+      "first5_frame001": "PASS",
+      "first5_frames002_to005": "CONTINUITY_REVISE",
+      "cli_chain_stopped_by_exact_identity": true,
+      "review": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\continuity\\first5_visual_review.json",
+        "sha256": "104eabf8e9445b7a970bd8099f09cb89c3f777511dc29ba456afeeb1d4dd817e",
+        "bytes": 8413
+      },
+      "auxiliary_metrics": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\continuity\\first5_auxiliary_metrics.json",
+        "sha256": "dd5e2a0790720165916dd2d599daf061d6dee453b1d3d208a1c213cf5d3e2167",
+        "bytes": 176687
+      },
+      "motion_notes": "2->3 about40px, 3->4 about12px; image-view findings and auxiliary measurements are not a full-movie PASS."
+    },
+    "C": {
+      "unique_new_model_outputs": 6,
+      "accepted_canonical_count": 3,
+      "first_frame_reused_from_B_once": true,
+      "new_C_calls_for_accepted_frames": 2,
+      "new_outputs_breakdown": {
+        "frame002": 2,
+        "frame003": 1,
+        "frame004": 3
+      }
+    },
+    "all_unique_actual_model_outputs": 26,
+    "group_counts": {
+      "A": 12,
+      "B": 8,
+      "C": 6
+    }
+  },
+  "demonstrated_capability_limit": {
+    "source_api": "image_gen.imagegen",
+    "real_tool_outputs_obtained": true,
+    "precise_numeric_temporal_micro_edit_reliable": false,
+    "blocked_step": 4,
+    "observed_failure_sequence": [
+      "TOO_LARGE",
+      "TOO_LARGE",
+      "NEAR_ZERO"
+    ],
+    "transport_auth_service_failure": false,
+    "scene_static_region_precision_also_requires_review": true,
+    "planned_numeric_values_are_not_observed_values": true,
+    "visual_review_not_replaced_by_SIFT": true,
+    "do_not_widen_tolerance_to_relabel_failures": true,
+    "do_not_use_failed_image_as_successor_input": true,
+    "do_not_jump_to_contact_to_catch_up": true,
+    "pilot_requires_multiple_adjacent_controlled_steps_not_one_success": true,
+    "same_precision_failure_limit": 3,
+    "dependency_chain_frozen_after_limit": true,
+    "local_mature_alternative": {
+      "report": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\recovery\\local_edit_fallback_audit\\REPORT.md",
+        "sha256": "5a796578d64b2476cd100a28f72675b4ecb70b40f704aa6a2c0e99868fc5f8c7",
+        "bytes": 3597
+      },
+      "audit": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\recovery\\local_edit_fallback_audit\\audit.json",
+        "sha256": "63f48f79bc551e4771ab4810a733755c78b435a577844eae67581a079d4b0290",
+        "bytes": 7561
+      },
+      "status": "BLOCKED_SERVICE_AND_MATURE_DUAL_REFERENCE_EDIT_PATH_UNAVAILABLE",
+      "no_services_models_system_or_proxy_changed": true
+    },
+    "spatial_normalization": {
+      "raw_size": [
+        1681,
+        936
+      ],
+      "encoding_size": [
+        864,
+        480
+      ],
+      "operation": "FFmpeg scale=864:480:flags=neighbor",
+      "native_original_bytes_retained": true,
+      "temporal_interpolation": false,
+      "native_output_size_not_user_contract_hard_gate": true
+    }
+  },
+  "independent_partial_source_validation": {
+    "audit": {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\audio-audit\\partial_source_audit.json",
+      "sha256": "a838dca4e4c3fec7c8b40b7111327a968fccc9c9effe55c5c8668d59a6f8a186",
+      "bytes": 14628
+    },
+    "status": "PARTIAL_SOURCE_TECHNICAL_PASS_NOT_56_FRAME_OR_VIDEO_PASS",
+    "scope_count": 3,
+    "errors": [],
+    "raw_tool_original_exact_matches": true,
+    "actual_reference_mapping_checks_pass": true,
+    "full_PNG_decode_checks_pass": true,
+    "sources_unchanged_during_audit": true,
+    "is_56_frame_or_video_pass": false
+  },
+  "actual_A_mode_gate": {
+    "gate_report": {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\audio-audit\\A_encoding_gate_C_actual.json",
+      "sha256": "4e2a2da6c9c799a9ea9f39fcee74cfb8ca861fe206794fb3f320c2e17041de63",
+      "bytes": 3423
+    },
+    "prepare_execution_receipt": {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\audio-audit\\C_gate_prepare_receipt.json",
+      "sha256": "9843372243de02a540a973bd539ec9674a51054318672a88782549cf8cf67d7d",
+      "bytes": 1672
+    },
+    "status": "BLOCKED_MISSING_FRAME",
+    "expected_count": 56,
+    "present_count": 3,
+    "missing_count": 53,
+    "missing_indices": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56
+    ],
+    "actual_exit_code": 2,
+    "encoding_flag_present": false,
+    "formal_encoding_executed": false,
+    "proposed_ffmpeg_command_is_not_execution": true
+  },
+  "related_tests": {
+    "receipt": {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\audio-audit\\gate_negative_test_receipt_current.json",
+      "sha256": "676a13d429cbb7f14a9d2f3b1b67306c17be7a3ac493e492a3b8411dad89c36a",
+      "bytes": 1303
+    },
+    "tests_passed": 12,
+    "actual_exit_code": 0,
+    "observed_result": "Ran 12 tests in 4.927s; OK",
+    "strict_native_mapping_wrong_hash_negative": "PASS",
+    "first_frame_reference_missing_negative": "PASS",
+    "canonical_status_without_immutable_or_PASS_review_negative": "PASS",
+    "actual_C2_record_mapping_positive": "PASS",
+    "actual_C3_canonical_status_positive": "PASS",
+    "rejected_original_audio_veto_test": "PASS_WITH_VIDEO_GATE_MOCKED_ONLY",
+    "mocked_56_frame_report_is_not_real_production_acceptance": true,
+    "full_encode_postdecode_pipeline_exercised": false,
+    "previous_5_tests_6_frames_receipt_is_history_only": true
+  },
+  "audio": {
+    "original": {
+      "confirmed_feedback": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\audio-audit\\user_audio_feedback_confirmed.json",
+        "sha256": "4b2df876b909053464d639d5a5cba026649610dc0a99151a69c65ab2a0eb0ac6",
+        "bytes": 729
+      },
+      "user_answer": "有杂音或内容不合适",
+      "status": "AUDIO_CONTENT_REVISE",
+      "audio_sha256": "b4bb37d7db8d0cfb3b11c7197a52202aa215cb80a0074d384f57c33aeb1a0600"
+    },
+    "revision_B": {
+      "wav": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\audio-audit\\revision_B\\kitchen_fabric_B_56f_24fps.wav",
+        "sha256": "3f7b73aff49e990999d67f0f799fc4b169aaf4400e175edeb31f6098cabdb340",
+        "bytes": 672102
+      },
+      "technical_audit": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\audio-audit\\revision_B\\B_audio_audit.json",
+        "sha256": "3b91807be7deefc7e487e12a6810bce90268fc1b6ab47a9c3f176638447227d3",
+        "bytes": 23500
+      },
+      "actual_user_acceptance": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\audio-audit\\revision_B\\user_listening_acceptance.json",
+        "sha256": "40f7117d8e58e9b26a775a09c87cf9fbc11f5fbf7ff38d7d0357aa101e8c3329",
+        "bytes": 973
+      },
+      "user_answer": "清晰、轻柔，可以保留",
+      "status": "AUDIO_CONTENT_PASS_USER_LISTENED",
+      "human_content_pass": true,
+      "audio_video_sync": "NOT_TESTED_NO_COMPLETE_VIDEO",
+      "full_movie_audio_pass": false,
+      "sample_rate": 48000,
+      "channels": 2,
+      "bits_per_sample": 24,
+      "samples_per_channel": 112000,
+      "duration_seconds": 2.3333333333333335,
+      "source": "Traceable CC0 recorded fabric rustling; not represented as this kitchen scene's on-site recording."
+    }
+  },
+  "H3": {
+    "status": "NOT_RUN",
+    "actual_candidate_path": null,
+    "reason": "A-mode56-frame source/quality gate not satisfied; no complete A candidate proving a need for generative redrawing; mature local fallback was unavailable. No claim of H3 timing or quality superiority."
+  },
+  "timing": {
+    "snapshot": {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\timing_snapshot.json",
+      "sha256": "4bfa7c03b1d10ac4802a3755bd2dd772a88866e0b1f6926435daa1c3a87da40e",
+      "bytes": 23375
+    },
+    "snapshot_time": "2026-10-12T15:55:37.068184+00:00",
+    "unique_completed_outputs": 26,
+    "duration_records_available": 26,
+    "recorded_start_to_complete_wall_sum_seconds": 1852.626,
+    "recorded_start_to_complete_wall_mean_seconds": 71.25484615384616,
+    "pure_API_or_task_elapsed": false,
+    "new_C3_and_C4_executor_four_call_API_elapsed_seconds": [
+      241.266,
+      49.899,
+      30.113,
+      74.009
+    ],
+    "new_C3_and_C4_executor_four_call_API_elapsed_sum_seconds": 395.287,
+    "V1_per_call_timing": "NOT_RECORDED_IN_RETAINED_GENERATION_MANIFEST",
+    "speed_superiority_claimed": false,
+    "final_pass_time": null,
+    "acceptance_to_final_pass_elapsed_seconds": null,
+    "ROI_or_benefit_metrics_computed": false
+  },
+  "reproducible_local_scripts": [
+    {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\collect_timing.py",
+      "sha256": "dbb67e2df753264e2a76e755c8e44291e1f9a557d520b77ef0d3b206bed92626",
+      "bytes": 4930
+    },
+    {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\audio-audit\\audit_partial_C_sources.py",
+      "sha256": "dda577aad9ee57cb89ca04bdba6d0f63724d69b436b528d8863205a83c509024",
+      "bytes": 12099
+    },
+    {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\audio-audit\\encode_A_gate.py",
+      "sha256": "7ca07b9142abd6ac2a0a432d2247ef92685cb8f8dcfa73cf81e217b27e4462f0",
+      "bytes": 21877
+    },
+    {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\audio-audit\\test_gate_negative.py",
+      "sha256": "dd25c2ca7598fdc1807135c301d36dbdbedfb58b5cf8b54802ffdd557a7e857c",
+      "bytes": 10278
+    },
+    {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\audio-audit\\reviewed_verify_video.py",
+      "sha256": "22258a92b3454819129c50ce9ddb8b74400ddcf1536c07844ec8148542d435ed",
+      "bytes": 20032
+    }
+  ],
+  "knowledge_brain": {
+    "INDEX_checked_by_root": true,
+    "ROUTING_MAP_checked_by_root": true,
+    "relevant_skills_index_checked_by_root": true,
+    "OpenHuman_architecture_not_applicable": true,
+    "health_receipt": {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\recovery\\kb_health_receipt.json",
+      "sha256": "f7c815ad60934235eafc316a987a3110a367ea09ea3c54d16132c2e894b08b0a",
+      "bytes": 993
+    },
+    "health_script": "C:/Users/A/.codex/knowledge-brain/tools/kb_health_check.ps1",
+    "read_only": true,
+    "actual_exit_code": 0,
+    "health_result": "PASS",
+    "sync_run": false,
+    "KB_files_modified": false
+  },
+  "codegraph": {
+    "MCP_available": "YES_METADATA_FOUND_BY_ROOT",
+    "CLI_available": "NOT_CHECKED",
+    "index_present": false,
+    "status_checked_before_work": true,
+    "callers_callees_impact": "NOT_APPLICABLE_MEDIA_MARKDOWN_TASK",
+    "sync_refresh_run": false,
+    "reason": "No .codegraph in media/auxiliary-script workspace; no repository architecture change."
+  },
+  "final_reports": [
+    {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\FINAL_TEST_RESULT.md",
+      "sha256": "d9eecbfa2cbe681f0dccf834b4e3aa75172d3c04a9f9ad61cf4c14c03fc63d4e",
+      "bytes": 14312
+    },
+    {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\reports\\V1_V2_COMPARISON_FINAL.md",
+      "sha256": "ed19f18730ef75e5670c242ee7d26201da52e47e67a940501c9d4cdb74a39259",
+      "bytes": 9857
+    }
+  ],
+  "partial_delivery_manifest": {
+    "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\PARTIAL_DELIVERY_MANIFEST_FINAL.json",
+    "sha256": "f782ddb44ba8779264f8aeb357348dcba638f5abfb932613b01295faf0b24e0d",
+    "bytes": 68636,
+    "status": "PARTIAL_DELIVERY_BLOCKED_PRECISE_LOCAL_TEMPORAL_EDIT",
+    "created_utc": "2026-10-12T16:17:57.027336+00:00",
+    "stable_file_count": 225,
+    "expected_source_count": 56,
+    "accepted_count": 3,
+    "missing_count": 53,
+    "actual_distinct_retained_model_outputs": 26,
+    "FINAL_VALID": "NO",
+    "complete_movie": false,
+    "formal_movie_encoded": false,
+    "root_direct_all_file_SHA_readback": "PASS_REPORTED_BY_ROOT",
+    "pending_case_files_excluded": [
+      "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\package\\versions\\codex-h3-v2.0\\acceptance\\reality-test-02-20261012\\EVIDENCE.json",
+      "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\package\\versions\\codex-h3-v2.0\\acceptance\\reality-test-02-20261012\\RESULT.md",
+      "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\package\\versions\\codex-h3-v2.0\\source\\REALITY02_LESSON.md"
+    ],
+    "hash_scope_note": "Current stable partial task artifacts plus explicit original model outputs and read-only V1 baseline. This manifest is not a 56-frame success certificate. The three additive GitHub case files that bind this manifest are excluded to avoid a circular hash; their exact hashes belong to a separate subsequent GitHub publication receipt. Later additive publication receipts are not retroactively included. Initial pre-binding snapshots are preserved separately.",
+    "new_three_case_files_checked_separately_in_second_publication_receipt": true
+  },
+  "final_deliverable_media_status": "PARTIAL_ASSETS_ONLY_NO_COMPLETE_VIDEO",
+  "repository_method_snapshot": {
+    "repository": "cuiqinggang/codex-private-skills",
+    "branch": "main",
+    "version_path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0",
+    "original_method_publication_commit": "56852bb3aac9a55517f80f084368c21736f7082a",
+    "original_method_publication_receipt": {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\publication\\github_main_publish_receipt.json",
+      "sha256": "7ba5ebd240ba8ec0ef713968da6cb7b3d736921cfb8ff6079f2e93389f0d8b29",
+      "bytes": 13440
+    },
+    "old_parent_five_files_expected": [
+      {
+        "path": "skills/video-extreme-time-engine/CASE-H3-P1.md",
+        "sha": "a89a47ea297219f4e776ef5342614efa175eb4a7"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/CHANGELOG.md",
+        "sha": "e339c5064466bff12ec62b110d4799c3a56f3cf1"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/CODEX_H3_V2_FULL_FRAME.md",
+        "sha": "9f2af2701adf303ffea504f9c67e0d750f7c7a28"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/FREEZE.md",
+        "sha": "edf17c24939a3423a0e020548867d1bba277b875"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/SKILL.md",
+        "sha": "a45f035c334bcd6918ba28a1a203cfb742492c34"
+      }
+    ],
+    "original_published_eighteen_expected": [
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/acceptance/index.html",
+        "git_blob_sha": "19be333939824bb3d9a0752f2a782dc557d38c76",
+        "sha256": "51df8fa04ddbe699fa17d115aaa21f4123e1401748c1e86512b09557b7468b0b"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/acceptance/static_check_before_C_repair_publication.json",
+        "git_blob_sha": "efd7da030cf69007e83d0adce27dae91454f4db1",
+        "sha256": "13014c154fe4922f76260df0d9e01132140f51ac3d50b96e991990309b444a80"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/acceptance/static_check_before_continuity_audio_revision.json",
+        "git_blob_sha": "b9c066a96903dcf35c1d4db165cc4f615c4fb9f5",
+        "sha256": "aa258a6a55a4ff6a5f8a5eba94b681d8fcd05555962b808ac51c76ccd901a205"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/acceptance/static_check_first_failure.json",
+        "git_blob_sha": "8e6ed4b6f5e82bfb36e842985d3f1c4552eaae59",
+        "sha256": "6518369c49d907d391562548c07668649e7e24bfdeca3972668a4aabe3aa1974"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/acceptance/static_check.json",
+        "git_blob_sha": "3d5274fbea946088c04da24b07b0300f9fb94119",
+        "sha256": "4d53dd214c04c4e5bb3cbfe337f0de9805923b58ffe72e9e35ff40e396302835"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/acceptance/validate_package.py",
+        "git_blob_sha": "50da2c5df7996c0865fec9b06d65a704b0b5e2b7",
+        "sha256": "3fdc448b840c89ce4ed5b0bb34eafc7ce18cdcc8ea6b1ae826d6e09ba2fdbadb"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/RECENT_USE_LOG.md",
+        "git_blob_sha": "5c7283f74b5c200287839472581f6bf5dbb356e8",
+        "sha256": "4140587be7114f6ee541a735780c3cc577d365906822877392844d2a182f702e"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/references/ACCEPTANCE.md",
+        "git_blob_sha": "9d30e919847ebbb07d3e9ab698a1b620dbae1f7d",
+        "sha256": "7853f205cd5861b8d1601fcc94ac55161d1b70c851f661bd02313c74d0d3e71d"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/references/FAILURE_RECOVERY.md",
+        "git_blob_sha": "4f1b756d53d4588f3dfdf22d05382cac2b2d88f6",
+        "sha256": "cb9ac8b4ca50a8cf9e8c3ac0f5fdaafab4ab969935ffd4dc5bf387cf98be4958"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/references/FRAME_CONTINUITY.md",
+        "git_blob_sha": "8ca8df12db4184daa0f6eff0db21eb6a49db01d8",
+        "sha256": "eb3e3e9ceb6c36e64716b0172dba69cd14eddcb1478d9cf49d8ad849dbb942f8"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/references/METHOD_V2.md",
+        "git_blob_sha": "7ef75f86da088d8d52b9e1dea2571f881f8728da",
+        "sha256": "5911cdf4e77fdb570d84a9e7108821067727fa45acc38eda86be1c158172f277"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/SKILL.md",
+        "git_blob_sha": "e438cf9fc1f0cec9d66bbe1ef3b28e0a3a493b0e",
+        "sha256": "aa0d618dd1c69a73527dcdd49218c0c4ac7d3a8809423fcdb491326db740f2d2"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/source/AGENTS_PATCH_DRAFT.md",
+        "git_blob_sha": "eada026514c9477a8f8600bc7d3c56c8b8c45ecc",
+        "sha256": "2a860cca932aa9e23a0af5ac76fd9f5def46c5d54fcfcea1f8370f0ed72f6b3d"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/source/LESSON_EXTRACTION.md",
+        "git_blob_sha": "9276e0b9f3955a70d4f39a65cc1ae4952db905e0",
+        "sha256": "c1577d14baffbc83833ea67c546182200a1bab7dfc874f0bc6ca15049f34b945"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/source/UPSTREAM_CONTRACT.md",
+        "git_blob_sha": "9f2af2701adf303ffea504f9c67e0d750f7c7a28",
+        "sha256": "cbb3e448e0a89ad9b0c5051f1740dadcbbfabd38741fc296a5e28e4ee21d4a41"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/templates/FINAL_TEST_RESULT.md",
+        "git_blob_sha": "133b1a97271eab6c4f95c34a5982054b3ac23eb0",
+        "sha256": "b6685cbc1cbe190c33763d62c1db6999617fa6ca9b2326a501f38507cba6cdb7"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/templates/PROJECT_BRIEF.md",
+        "git_blob_sha": "46db95a0ef8c2343c18e64bf112043e9c6618bb0",
+        "sha256": "22dec1dea5ad50c80a9e1307f8dcc87db0c014902366083e1c51023c4a7a8146"
+      },
+      {
+        "path": "skills/video-extreme-time-engine/versions/codex-h3-v2.0/VERSION.md",
+        "git_blob_sha": "09ff6c068c27150ded10cd59d64b48955ff09981",
+        "sha256": "0ac95fb348675d6a2ffc455e07fb48d074bcb8a89a51ecfb945860725d79cdb3"
+      }
+    ],
+    "reality_case_additive_only": true,
+    "original_snapshot_files_not_rewritten": true,
+    "new_case_commit_recorded_separately_in_second_publication_receipt": true
+  },
+  "preflight_scope_error_transparency": {
+    "local_audit_note": {
+      "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\publication\\audit_note.md",
+      "sha256": "e3f50dd5969a07ed101ebfe8fc74c9b071edcf37cc8233650b18e3740aac076d",
+      "bytes": 1217
+    },
+    "extra_C_read_only_scope_occurred": true,
+    "no_H_K_touched": true,
+    "no_materials_modified": true,
+    "extra_results_not_used": true,
+    "ended_not_repeated": true
+  },
+  "limitations": [
+    "Exactly3 source frames accepted; no56-frame movie or full playback.",
+    "A/B rejected attempts and C4 candidates remain failures.",
+    "Metadata flags/hashes alone do not establish real drawing or visual quality; retained actual tool originals/call/ref records and actual review evidence are cited.",
+    "C1/C2 actual-view evidence schemas differ; historical call/view internals are not invented.",
+    "Standalone audio content PASS does not establish full-movie audio/sync PASS."
+  ]
+}
