@@ -1,0 +1,469 @@
+{
+  "freeze_id": "SRX-V2-SCOPED-TEST-F001",
+  "scope": "固定隔离测试的完整交付快照；不冻结激活V2默认方法",
+  "status": "SEALED_SCOPED_EVIDENCE",
+  "method_ref": "skills/artificial-single-page-extreme-time-engine/SANRENXING_V2.md@119dc5738f867778254a1f801e0f48df8c9787d2",
+  "real_codex_trials": 6,
+  "v2_trials": 3,
+  "formal_profile": "SRX-ISOLATED-BEHAVIOR-REAL-CODEX-002",
+  "original_embedded_paths": 40,
+  "independent_final_audit": "tests/final_audit.md",
+  "physical_limit": "UNKNOWN",
+  "global_activation": "NOT_PERFORMED",
+  "sha256_files": [
+    {
+      "path": "tests/fixture.json",
+      "bytes": 5687,
+      "sha256": "0f436ce5479d2e7d75c5d7a0d11a1831adcfb8a82be915bb0c8a11f99fe2df85"
+    },
+    {
+      "path": "tests/expected.json",
+      "bytes": 2212,
+      "sha256": "71a24ca0f5287c4669d7dcad28b6a871fb1ab10458f188f51d1e58c2f76339dd"
+    },
+    {
+      "path": "tests/fixture_v2.json",
+      "bytes": 5725,
+      "sha256": "7e33b343e52b57039a2e67352c0c5812315ba220bfee9102c8ce818f564d7a61"
+    },
+    {
+      "path": "tests/expected_v2.json",
+      "bytes": 2223,
+      "sha256": "4e8c36ebb321daa1c5b0f6105dc8188d983ee6ee14bce170ecf40731ea2ea172"
+    },
+    {
+      "path": "tests/validate_trial.py",
+      "bytes": 6179,
+      "sha256": "29368a206cd011aba2a03cd50ce97f7774a87b92c9ced8b87257ee20e79ce6e5"
+    },
+    {
+      "path": "tests/validate_trial_v2.py",
+      "bytes": 6349,
+      "sha256": "362e75bb93009754c0d2d9f5300d385290a0babb8d07addea147e1ec7e210327"
+    },
+    {
+      "path": "tests/summarize.py",
+      "bytes": 2907,
+      "sha256": "7793d24656cebf85c3bb0fdbb2fb14b681c12b3ee90b9fd1990189dbd3dd0e4c"
+    },
+    {
+      "path": "tests/oracle_selftest.json",
+      "bytes": 1539,
+      "sha256": "53ba4cd741ea278766270c533afef479cc7da59a6365692d9d2e14364119bd7c"
+    },
+    {
+      "path": "tests/oracle_selftest_v2.json",
+      "bytes": 1539,
+      "sha256": "b059c6cb614d7362f8df9d3e7db66b9a5fe21fc48c01ab44746b37978e38f469"
+    },
+    {
+      "path": "tests/microbenchmark.json",
+      "bytes": 203,
+      "sha256": "391034d74b86c8b77108f9edfd72bc302babf4daa5fecf3ed88efebaa5542209"
+    },
+    {
+      "path": "tests/PILOT_REPAIR.md",
+      "bytes": 394,
+      "sha256": "ab85be0c22b0194a1a65e8745ddb18c60a5d73999e45e746b56dba7656f45a6a"
+    },
+    {
+      "path": "BENCHMARK_CONTRACT.md",
+      "bytes": 2189,
+      "sha256": "8aa22e813e619bad1fc92702961e8d3cd392f19854e1d66e97f0a78c1aa5635c"
+    },
+    {
+      "path": "BENCHMARK_CONTRACT_V2.md",
+      "bytes": 2718,
+      "sha256": "f5f55bcb6919dded2b9cb52839092337eb91b6629cd0b6847e25331edd6b36ce"
+    },
+    {
+      "path": "SOURCE_MANIFEST.json",
+      "bytes": 2807,
+      "sha256": "23e8dbcb6578e5c42d341478c9ae5e5da5f5e32ce68dd5198f0fc5afa248d7fe"
+    },
+    {
+      "path": "PERSISTENCE_RECEIPTS.json",
+      "bytes": 2432,
+      "sha256": "382c55550f979058afdbc7ef91fb1e8693c0308d744e8cbca7ed71be216eb5dc"
+    },
+    {
+      "path": "KB_HEALTH.txt",
+      "bytes": 619,
+      "sha256": "1a055be171e159bfbe813d2a89cb9f5084d4977e8eb9ae15ab5eda94d0e6164c"
+    },
+    {
+      "path": "runs/t001/start.json",
+      "bytes": 514,
+      "sha256": "32317957627ef9105512333938398edd0d5b4124c8f2e300585d163dec700842"
+    },
+    {
+      "path": "runs/t001/output.json",
+      "bytes": 1662,
+      "sha256": "f812b94bf4078216a6b54707e54a9d1b838a31ab470ea62cf99c7fb03092ab52"
+    },
+    {
+      "path": "runs/t001/result.json",
+      "bytes": 799,
+      "sha256": "3536f0e6ae3ce2d629f91a66b85f494af102e5acb8d9893ade76af35865ed8cd"
+    },
+    {
+      "path": "runs/t002/start.json",
+      "bytes": 517,
+      "sha256": "669b299c97fe8b33d30c28fe2df9d98bf087bc5bef7990c3a5f8ddf9bcccf1dc"
+    },
+    {
+      "path": "runs/t002/output.json",
+      "bytes": 2212,
+      "sha256": "71a24ca0f5287c4669d7dcad28b6a871fb1ab10458f188f51d1e58c2f76339dd"
+    },
+    {
+      "path": "runs/t002/result.json",
+      "bytes": 802,
+      "sha256": "f221b863327f47769f2a54ad88433cdec909d55740a786ac05e17681e64d0647"
+    },
+    {
+      "path": "runs/t101/start.json",
+      "bytes": 605,
+      "sha256": "d8b4cc8b66f70f6891bb55ceb5ee8018134d0dd4198e1bcf5215bcc32d823fb6"
+    },
+    {
+      "path": "runs/t101/output.json",
+      "bytes": 1673,
+      "sha256": "0aa4040dc58bee7abe4037483d91580854114f1edb9921a9844882c7ce63baed"
+    },
+    {
+      "path": "runs/t101/result.json",
+      "bytes": 890,
+      "sha256": "10875ed4cb901edc99e213e516657030e81b8e990258b1916f77eacd14439598"
+    },
+    {
+      "path": "runs/t102/start.json",
+      "bytes": 608,
+      "sha256": "7b1c7a786dc5c633e265353e165a0689c38c95f1100694a1d6329388603fcd36"
+    },
+    {
+      "path": "runs/t102/output.json",
+      "bytes": 1673,
+      "sha256": "0aa4040dc58bee7abe4037483d91580854114f1edb9921a9844882c7ce63baed"
+    },
+    {
+      "path": "runs/t102/result.json",
+      "bytes": 893,
+      "sha256": "8948b014206e80647d5b4f61b8b75f4d5ca717fec16aa35acc3d9f84015c431c"
+    },
+    {
+      "path": "runs/t103/start.json",
+      "bytes": 608,
+      "sha256": "60541761ba04c32bc6eab514b4282a7f2774f624c147126a7226ae44d7bca153"
+    },
+    {
+      "path": "runs/t103/output.json",
+      "bytes": 1673,
+      "sha256": "0aa4040dc58bee7abe4037483d91580854114f1edb9921a9844882c7ce63baed"
+    },
+    {
+      "path": "runs/t103/result.json",
+      "bytes": 892,
+      "sha256": "879ba20a523ca33da64be6ba336691bb706743fa2becb5211ec8a6947715d4aa"
+    },
+    {
+      "path": "runs/t104/start.json",
+      "bytes": 605,
+      "sha256": "e414d17932c8392e33f9ed183ecd31b0d65b77b9aa421757c4cab61f62e76218"
+    },
+    {
+      "path": "runs/t104/output.json",
+      "bytes": 1673,
+      "sha256": "0aa4040dc58bee7abe4037483d91580854114f1edb9921a9844882c7ce63baed"
+    },
+    {
+      "path": "runs/t104/result.json",
+      "bytes": 890,
+      "sha256": "c68dfec3f04780b5409a8ce7f8ae9c31d6b39f5bfd83ea7fd78b36e685f41e0a"
+    },
+    {
+      "path": "runs/t105/start.json",
+      "bytes": 605,
+      "sha256": "77fe6625744f5ad415048a1c7c4bfc0996389ebaa4ef91de213507e8d7ae65ea"
+    },
+    {
+      "path": "runs/t105/output.json",
+      "bytes": 1673,
+      "sha256": "0aa4040dc58bee7abe4037483d91580854114f1edb9921a9844882c7ce63baed"
+    },
+    {
+      "path": "runs/t105/result.json",
+      "bytes": 889,
+      "sha256": "a81937bd13511a787c94f5c741b5925f6774d3e0fdd6afd8c65625d9fa81d84b"
+    },
+    {
+      "path": "runs/t106/start.json",
+      "bytes": 608,
+      "sha256": "659c27868e30a8e5bf4672d86ec4c0c647a4928658e8b31e2d8ccc5663e12b25"
+    },
+    {
+      "path": "runs/t106/output.json",
+      "bytes": 1617,
+      "sha256": "1ff720b8d5b11844d277c3341ea01a1f0be91e3b544dc61f8ec7deaf0f84ac40"
+    },
+    {
+      "path": "runs/t106/result.json",
+      "bytes": 891,
+      "sha256": "c14acbf1607e77ba9315f56af007c97dfbbe350a575e445dc2a27b9eaf2186ee"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 8613,
+      "sha256": "53b02e0bfc1c526d6843225108032c8525bc7e06e312de53a6159fd94cee8199"
+    },
+    {
+      "path": "SUMMARY.json",
+      "bytes": 10281,
+      "sha256": "baa1ea94730f8066eac0c0b895fda4934327f5ffe5d56d69a740a082e7bd1b2e"
+    },
+    {
+      "path": "EVIDENCE_BUNDLE.json",
+      "bytes": 95612,
+      "sha256": "98a09bb2bdd02900533c1a1bd049b2077b49f4e745f0f665a5ae255ad973d2e6"
+    },
+    {
+      "path": "candidate/SANRENXING_V2.md",
+      "bytes": 11411,
+      "sha256": "6b0072ff3e1195305fb40f3a5cd7c6ea8d7647b52291d6ef9bd249d5c94f2112"
+    },
+    {
+      "path": "candidate/SANRENXING_V2_ACCEPTANCE.md",
+      "bytes": 10060,
+      "sha256": "15c40240cb7ff4a862ff17228fa1767a12a96950b14e3dec4d44837de04744ce"
+    },
+    {
+      "path": "candidate/SANRENXING_V2_REVIEW_MATRIX.md",
+      "bytes": 12714,
+      "sha256": "f1141243e412410008e7ce536d22145272048cca68888cf81288e3e5c5f9a71e"
+    },
+    {
+      "path": "tests/independent_review.md",
+      "bytes": 12327,
+      "sha256": "e0e5610805910b8dd5e863c08919cf22d293758f72f4dbba36fdd80c3dc85b05"
+    },
+    {
+      "path": "tests/final_audit.md",
+      "bytes": 3543,
+      "sha256": "5e425d631320190e0294b1da4b14f9801a18cd5cc712bb9715e23005d8e9109a"
+    },
+    {
+      "path": "DELIVERY_RECEIPTS.json",
+      "bytes": 6338,
+      "sha256": "f2dda3b29812e11cc5097c25f2a519445fa5dd14af69ee8fab016143259c59ed"
+    },
+    {
+      "path": "source/SANRENXING_V1.md",
+      "bytes": 23153,
+      "sha256": "7d728b62012c43225c69fdd42ccc03092dcec739c586d74734b0888848c88f45"
+    },
+    {
+      "path": "source/SANRENXING_V2_C001.md",
+      "bytes": 8267,
+      "sha256": "00190d221dc974d868c543f6a491d6a1db4040dd5611dd4ccba98ca1b0c97b57"
+    },
+    {
+      "path": "source/SANRENXING_V2_ACCEPTANCE_C001.md",
+      "bytes": 9025,
+      "sha256": "989f9ed4b1d7e4edf1897f2a551620b17205f8b298833d66c42450532f7ba46e"
+    },
+    {
+      "path": "source/SANRENXING_V2_REVIEW_MATRIX_C001.md",
+      "bytes": 12235,
+      "sha256": "4283153f1987aec57361096ffc4c12d99e9bbeb5a3435943828f302ede2e6689"
+    },
+    {
+      "path": "source/SKILL.md",
+      "bytes": 5826,
+      "sha256": "9cf3bb0f8d35e129500f34b86f149834a9c85288aba37edd0f282c55fa83111a"
+    },
+    {
+      "path": "source/START_HERE.md",
+      "bytes": 7027,
+      "sha256": "145a03bf42b793afc82b369862f189ad8ce14c9fc2381c5286767a49be9c9984"
+    },
+    {
+      "path": "source/ENGINE.md",
+      "bytes": 21487,
+      "sha256": "c358c42d205b60fb9251caa1dc598d1ad2ae398fabce9034bff84c6bedf3f1d1"
+    },
+    {
+      "path": "source/BRAIN.md",
+      "bytes": 20707,
+      "sha256": "a846a7b62707f8a9696e904ea9703d6829f18d8405ef17015d1d64b4fa0f898c"
+    },
+    {
+      "path": "source/NEW_PAGE_TEMPLATE.md",
+      "bytes": 14246,
+      "sha256": "4db449b386266dee345bc237b33d76108c700c7ecf9414e5d592453cad583d52"
+    },
+    {
+      "path": "source/GPT_CODEX_ULTRA_CONTINUATION_INDEX.md",
+      "bytes": 3112,
+      "sha256": "015462ffe47068880c12f54d7987d45ae2f221e8c724eefcf320a376ff8515e8"
+    }
+  ],
+  "remote_receipts": {
+    "status": "COMPLETE_WITH_SCOPED_LIMITATIONS",
+    "method_candidate": "SRX-V2-REVIEW-C002",
+    "source_snapshot": "bb5c0e1f91ea14545e8bc968c341fae14f86db54",
+    "archives": [
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/method-drafts/sanrenxing-v2-c001-archive-20261012/SANRENXING_V2.md",
+        "created": {
+          "commit_sha": "e0d723c976e50e87e163b70e5103f6bcdba58580"
+        },
+        "readback_blob": "6a808beeae22f96fb296f2899bdab9118dba7bfc",
+        "expected_blob": "6a808beeae22f96fb296f2899bdab9118dba7bfc",
+        "verified": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/method-drafts/sanrenxing-v2-c001-archive-20261012/SANRENXING_V2_ACCEPTANCE.md",
+        "created": {
+          "commit_sha": "6370df52fc56049c386fae408c68aa502285ee5a"
+        },
+        "readback_blob": "0ee7bf79f765e40a97be338f926db3a79e4bbf50",
+        "expected_blob": "0ee7bf79f765e40a97be338f926db3a79e4bbf50",
+        "verified": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/method-drafts/sanrenxing-v2-c001-archive-20261012/SANRENXING_V2_REVIEW_MATRIX.md",
+        "created": {
+          "commit_sha": "0eb041ec38473f75b7494e6059ea030038aeab52"
+        },
+        "readback_blob": "225448f2ccece3bd1fb8dd6e2f989cd0108d5a33",
+        "expected_blob": "225448f2ccece3bd1fb8dd6e2f989cd0108d5a33",
+        "verified": true
+      }
+    ],
+    "candidate_updates": [
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/SANRENXING_V2.md",
+        "commit": {
+          "commit_sha": "119dc5738f867778254a1f801e0f48df8c9787d2",
+          "content_sha": "027229fc28ebd12811adacfe37aa857a187d3301"
+        },
+        "readback_blob": "027229fc28ebd12811adacfe37aa857a187d3301",
+        "verified": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/method-drafts/SANRENXING_V2_ACCEPTANCE.md",
+        "commit": {
+          "commit_sha": "845f6bd0818addd216b5b1eb354ee60c28f25d5b",
+          "content_sha": "bbeb72faa19905b4819698ff7b13554b24f50253"
+        },
+        "readback_blob": "bbeb72faa19905b4819698ff7b13554b24f50253",
+        "verified": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/method-drafts/SANRENXING_V2_REVIEW_MATRIX.md",
+        "commit": {
+          "commit_sha": "755020613586c0d74eda0c6536aa20b486cd58b6",
+          "content_sha": "721fa9d52556424f966cac9ae3fa0bedc396714c"
+        },
+        "readback_blob": "721fa9d52556424f966cac9ae3fa0bedc396714c",
+        "verified": true
+      }
+    ],
+    "result_publications": [
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/tasks/SANRENXING_V2_TEST_20261012/BENCHMARK_CONTRACT.md",
+        "commit": {
+          "commit_sha": "d9fe0edf2e3dc58c6d47c03142e04da095337641"
+        },
+        "blob_sha": "75b8090d7bbf4d402d8ee343ded63099c7364cd3",
+        "readback_equal": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/tasks/SANRENXING_V2_TEST_20261012/SUMMARY.json",
+        "commit": {
+          "commit_sha": "8a1245a6be5ea89887b1d5a75cd94f3a4abdfe7a"
+        },
+        "blob_sha": "fd34588094ee741614a031a7819133c64b0bfba6",
+        "readback_equal": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/tasks/SANRENXING_V2_TEST_20261012/REPORT.md",
+        "commit": {
+          "commit_sha": "591fca62aff85538c025707e1d5eb38adef627de"
+        },
+        "blob_sha": "5f2c8f114aafd609c870584a26545b3956b3ea72",
+        "readback_equal": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/tasks/SANRENXING_V2_TEST_20261012/INDEPENDENT_REVIEW.md",
+        "commit": {
+          "commit_sha": "46fe9955d7930be288733e7aa6788ff155d234a0"
+        },
+        "blob_sha": "4a3555e5c63fc60d0b149fe60e333b922f6f7b4c",
+        "readback_equal": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/tasks/SANRENXING_V2_TEST_20261012/EVIDENCE_BUNDLE.json",
+        "commit": {
+          "commit_sha": "c0d8086f7e05b4b2ce300bdf3e3409a7e9b32a2d"
+        },
+        "blob_sha": "123544979124283844a6b6809891cf6a80cd7db9",
+        "readback_equal": true
+      }
+    ],
+    "final_audit_publication": {
+      "path": "skills/artificial-single-page-extreme-time-engine/tasks/SANRENXING_V2_TEST_20261012/FINAL_AUDIT.md",
+      "commit": {
+        "commit_sha": "099eaa6ea74bc4550dcc63e2f1f2c51be77b7c70"
+      },
+      "blob_sha": "4393456fe03a4ddf75aff9f6226200a4ce30d32c",
+      "readback_equal": true
+    },
+    "protected_source_readback": [
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/SANRENXING_V1.md",
+        "expected_blob": "a05fc51d661952790837dfa462bf766b16aba078",
+        "current_blob": "a05fc51d661952790837dfa462bf766b16aba078",
+        "unchanged": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/SKILL.md",
+        "expected_blob": "528a0015abb717b10798b504bab1316f40a43a48",
+        "current_blob": "528a0015abb717b10798b504bab1316f40a43a48",
+        "unchanged": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/START_HERE.md",
+        "expected_blob": "04ac1450b926665f8bb4683b93f4dbfba8dbbc99",
+        "current_blob": "04ac1450b926665f8bb4683b93f4dbfba8dbbc99",
+        "unchanged": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/ENGINE.md",
+        "expected_blob": "9dc78d259e8e3b6f8c3fbd2d252df6f92d4c1766",
+        "current_blob": "9dc78d259e8e3b6f8c3fbd2d252df6f92d4c1766",
+        "unchanged": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/BRAIN.md",
+        "expected_blob": "d2300549634c6903985dc58c4494c98f4174f5d2",
+        "current_blob": "d2300549634c6903985dc58c4494c98f4174f5d2",
+        "unchanged": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/NEW_PAGE_TEMPLATE.md",
+        "expected_blob": "c344609d303316c51433874704007a60a74ff67b",
+        "current_blob": "c344609d303316c51433874704007a60a74ff67b",
+        "unchanged": true
+      },
+      {
+        "path": "skills/artificial-single-page-extreme-time-engine/GPT_CODEX_ULTRA_CONTINUATION_INDEX.md",
+        "expected_blob": "f692db0a3a7ef7dbf8d4e260c2944d4d63ce2a5a",
+        "current_blob": "f692db0a3a7ef7dbf8d4e260c2944d4d63ce2a5a",
+        "unchanged": true
+      }
+    ],
+    "global_activation": "NOT_PERFORMED",
+    "absolute_physical_limit": "UNKNOWN"
+  }
+}
