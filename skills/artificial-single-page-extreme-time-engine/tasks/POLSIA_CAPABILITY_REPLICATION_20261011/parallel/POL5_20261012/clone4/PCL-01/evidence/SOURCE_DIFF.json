@@ -1,0 +1,16 @@
+{
+  "base_commit": "c62ba0be3368815dc9011848d96875ef228f1607",
+  "tracked_files": [
+    {
+      "file": "package.json",
+      "sha256": "132db7bae79845f3b01eb01b8857648c45ab70b720be33b6323da1b931c03b13"
+    },
+    {
+      "file": "scripts/test-guard.ts",
+      "sha256": "194ced5245f74bc8e376bbbbc9ff7aebcf48cbe25b2ba516945ecb3747e5f855"
+    }
+  ],
+  "patch_sha256": "5044e4e88452ff7a156aa094b7c049b9d85cb94881b250399fda0df5f6c13b31",
+  "business_code_changed": false,
+  ".env_committed": false
+}

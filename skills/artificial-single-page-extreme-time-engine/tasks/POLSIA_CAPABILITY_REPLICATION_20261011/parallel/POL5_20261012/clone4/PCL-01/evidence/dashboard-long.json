@@ -1,0 +1,20 @@
+{
+  "name": "dashboard-long",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "args": [
+    "--env-file-if-exists=.env",
+    "--import",
+    "tsx",
+    "src/services/dashboard.ts"
+  ],
+  "cwd": "C:\\AI\\Polsia-V5-Parallel-20261012\\platform\\open-polsia",
+  "pid": 56892,
+  "started_at": "2026-10-12T14:28:08.304Z",
+  "finished_at": "2026-10-12T14:30:08.568Z",
+  "exit_code": null,
+  "signal": "SIGTERM",
+  "timed_out": true,
+  "spawn_error": null,
+  "stdout": "",
+  "stderr": ""
+}

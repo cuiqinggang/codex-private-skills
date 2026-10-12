@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-10-12T14:19:42.647Z",
+  "base_url": "http://127.0.0.1:4317",
+  "results": [
+    {
+      "path": "/",
+      "http_status": null,
+      "error": {
+        "code": "ECONNREFUSED",
+        "message": "fetch failed"
+      }
+    },
+    {
+      "path": "/api/state",
+      "http_status": null,
+      "error": {
+        "code": "ECONNREFUSED",
+        "message": "fetch failed"
+      }
+    },
+    {
+      "path": "/api/messages",
+      "http_status": null,
+      "error": {
+        "code": "ECONNREFUSED",
+        "message": "fetch failed"
+      }
+    },
+    {
+      "path": "/api/document?type=mission",
+      "http_status": null,
+      "error": {
+        "code": "ECONNREFUSED",
+        "message": "fetch failed"
+      }
+    },
+    {
+      "path": "/fonts/pixel.woff2",
+      "http_status": null,
+      "error": {
+        "code": "ECONNREFUSED",
+        "message": "fetch failed"
+      }
+    },
+    {
+      "path": "/pcl01-not-found",
+      "http_status": null,
+      "error": {
+        "code": "ECONNREFUSED",
+        "message": "fetch failed"
+      }
+    }
+  ]
+}

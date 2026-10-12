@@ -1,0 +1,160 @@
+{
+  "TASK_ID": "POLSIA_CAPABILITY_REPLICATION_20261011",
+  "BATCH_ID": "PCL4_20261012",
+  "NODE_ID": "PCL-01",
+  "PARENT_FREEZE": "POLSIA-MOTHER-V008-F001",
+  "SOURCE_OF_TRUTH": "GitHub:cuiqinggang/codex-private-skills/main",
+  "status": "BLOCKED_ENVIRONMENT",
+  "phase": "CHECKS_COMPLETE_PERSISTENCE_PENDING",
+  "FINAL_VALID": "NO",
+  "MOTHER_FINAL_VALID": "NO",
+  "updated_at": "2026-10-12T14:45:45.009Z",
+  "blockers": [
+    {
+      "code": "LOCAL_DATABASE_UNAVAILABLE",
+      "evidence": "evidence/database.json",
+      "detail": "Application-default localhost:5433 Postgres refused the real SELECT 1 connection."
+    },
+    {
+      "code": "DOCKER_EXISTING_DAEMON_HTTP_500",
+      "evidence": "evidence/COMMAND_RECEIPTS.json",
+      "detail": "Read-only existing daemon queries failed; no infrastructure mutations attempted."
+    },
+    {
+      "code": "EXISTING_MODEL_CONFIGURATION_SOURCE_NOT_AVAILABLE",
+      "evidence": "evidence/configuration.json",
+      "detail": "No credentials in checked process environment or Pi default settings/models/auth files; no alternate authorized source supplied."
+    },
+    {
+      "code": "DASHBOARD_STARTUP_TIMEOUT_UNRESOLVED",
+      "evidence": "evidence/dashboard-long.json",
+      "detail": "Exact existing entry timed out at 120s with empty stdout/stderr. Database unavailability is separately proven; the startup timeout cause is not established."
+    }
+  ],
+  "source": {
+    "repository": "cuiqinggang/codex-private-skills",
+    "ref": "main",
+    "head_at_readback": "bb5c0e1f91ea14545e8bc968c341fae14f86db54",
+    "formal_task_path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/parallel/POL5_20261012/clone4/PCL-01_TASK.md",
+    "formal_task_blob": "b69ba0dc9d7f2f1b8a9c8ac54d534ee47634007c",
+    "local_source_commit": "c62ba0be3368815dc9011848d96875ef228f1607",
+    "changed_tracked_files": [
+      "package.json",
+      "scripts/test-guard.ts"
+    ],
+    "patch": "evidence/open-polsia.patch",
+    "local_ignored_configuration": {
+      "file": ".env",
+      "worker": "off",
+      "secrets_added": false
+    },
+    "history_v001_v008_modified": false,
+    "monitoring_site_modified": false,
+    "proxy_browser_modified": false
+  },
+  "runtime": {
+    "attempts": [
+      {
+        "pid": 47100,
+        "started_at": "2026-10-12T14:19:21.716Z",
+        "finished_at": "2026-10-12T14:19:42.585Z",
+        "exit_code": null,
+        "signal": "SIGTERM",
+        "timed_out": true
+      },
+      {
+        "pid": 56892,
+        "started_at": "2026-10-12T14:28:08.304Z",
+        "finished_at": "2026-10-12T14:30:08.568Z",
+        "exit_code": null,
+        "signal": "SIGTERM",
+        "timed_out": true
+      }
+    ],
+    "worker": "off",
+    "requested_port": 4317,
+    "database_port": 5433,
+    "listener_verified": false,
+    "live_website_verified": false,
+    "database_sql_pass": false,
+    "http_success_count": 0,
+    "model_calls_made": 0,
+    "seed_executed": false
+  },
+  "tests": {
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "tool_session_id": 75454,
+      "exit_code": 0,
+      "native_pid": null,
+      "pid_note": "Tool did not expose native PID; session ID is not a PID.",
+      "combined_output": "> open-polsia@0.0.0 typecheck C:\\AI\\Polsia-V5-Parallel-20261012\\platform\\open-polsia\n> tsc --noEmit\n",
+      "scope": "after package.json and scripts/test-guard.ts changes"
+    },
+    "guard_package": {
+      "command": "pnpm test:guard",
+      "tool_session_id": 40405,
+      "exit_code": 0,
+      "native_guard_pid": 54456,
+      "result": "PASS_OFFLINE_ENGINEERING_STATUS_LOGIC_ONLY",
+      "cases": [
+        "unasserted -> needs_continuation",
+        "completed -> completed",
+        "failed -> failed"
+      ],
+      "sql_stubs": 15,
+      "sandbox_stubs": 3,
+      "seeds_in_memory": 3,
+      "releases_in_memory": 3,
+      "network_attempts": 0,
+      "integration_verified": false,
+      "warning": "Node module mocking is experimental"
+    },
+    "guard_direct": {
+      "pid": 1032,
+      "exit_code": 0,
+      "scope": "offline engineering status logic only",
+      "integration_verified": false
+    },
+    "bounded_typecheck_timeout_preserved": "evidence/typecheck.json",
+    "diff_check": {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "warning": "LF to CRLF checkout warnings only"
+    }
+  },
+  "business_boundary": {
+    "dashboard_read_api": "BLOCKED_NOT_RUNNING",
+    "model_chat_onboarding_cron": "NOT_EXECUTED_CONFIGURATION_BLOCKED",
+    "engineering_docker_integration": "NOT_EXECUTED_AUTO_REVIEW_REJECTED",
+    "cloud_deployment": "NOT_EXECUTED",
+    "actual_payments_outreach_publication": "NOT_EXECUTED",
+    "status_integrity": "PASS_OFFLINE_ONLY"
+  },
+  "github": {
+    "state": "NOT_YET_PERSISTED",
+    "repository": "cuiqinggang/codex-private-skills",
+    "result_path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/parallel/POL5_20261012/clone4/PCL-01",
+    "required": "ACTUAL_COMMIT_AND_INDEPENDENT_READBACK",
+    "branch": "main"
+  },
+  "codegraph_usage": {
+    "mcp_available": true,
+    "cli_available": true,
+    "index_present": false,
+    "status_checked_before_work": true,
+    "impact_checked": "Targeted source review of bootstrap/worker/guard/runtime routes",
+    "sync_refresh": "NOT_APPLICABLE_NO_INDEX",
+    "not_used_reason": "Repository has no .codegraph; used rg and targeted reads."
+  },
+  "knowledge_brain_usage": {
+    "INDEX_checked": true,
+    "ROUTING_MAP_checked": true,
+    "relevant_index": "indexes/projects-index.md",
+    "reused_c_source": "C:\\AI\\Polsia-Codex-20261011\\nodes\\CODEX-008\\CAPABILITY_MATRIX.md",
+    "reused_source_sha256": "b5f1ab2893e55c107f56b316bbbead6993eb2154ffad9039e57accf607595502",
+    "openhuman_reference": "NOT_APPLICABLE_RUNTIME_RECOVERY",
+    "health_check": "PASS_EXIT_0",
+    "sync_before_after": "NONE_NO_KB_CHANGES"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "local_env": ".env",
+  "ignored_by_git": true,
+  "explicit_nonsecret_values": {
+    "POLSIA_WORKER": "off"
+  },
+  "database_source": "existing_application_default",
+  "credentials_added_copied_or_invented": false
+}
