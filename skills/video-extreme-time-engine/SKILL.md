@@ -2,7 +2,7 @@
 name: video-extreme-time-engine
 description: 视频极限短时间引擎。用于在固定 VALID 规格下，把视频生成任务从可用结果持续收敛到最短真实 T_VALID；强调 GPT 虚拟成熟、Freeze、Reality 执行、阶段计时、warm path、轻量 verifier、单闭环 runner 和 Reality 反哺。首个正式案例为 H3-P1。
 metadata:
-  version: "0.5"
+  version: "0.5+codex-h3-v2"
   short-description: 视频极限短时间引擎
 ---
 
@@ -173,3 +173,8 @@ H3-P1 已将正式 `T*` 从 653921.787ms 收敛到 288281.990ms，累计改善�
 - 不因追求理论极限无限测试。
 - 不让 Reality Executor 自行改变 Freeze。
 - 不把“测试更快”凌驾于“结果有效”。
+
+
+## Codex+H3 视频制作 V2.0：全帧源图连续制作（2026-10-12）
+
+本技能包新增独立的全帧真实源图模式。其正式规范见 [CODEX_H3_V2_FULL_FRAME.md](CODEX_H3_V2_FULL_FRAME.md)。本模式废止8张稀疏源图覆盖56帧作为正式生产验收的路线，要求每帧均由Codex调用真实生图/编辑模型独立生成，并逐帧检验，再由FFmpeg无插帧编码；H3为可选对照组件。V2.0为方法升级，Reality Test 02尚未通过，不继承H3-P1的VALID或T*。
