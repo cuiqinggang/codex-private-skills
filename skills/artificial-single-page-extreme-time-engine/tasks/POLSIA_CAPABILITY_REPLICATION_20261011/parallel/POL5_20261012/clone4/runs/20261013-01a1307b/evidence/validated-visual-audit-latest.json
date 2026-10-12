@@ -1,0 +1,1952 @@
+{
+  "at": "2026-10-12T17:20:28.726Z",
+  "auditor": "PCL-04 / reuse_plan_audit",
+  "status": "SCOPED_VALIDATED_VISUAL_STATES_PASS_NOT_COMPLETE_PRODUCTION_PARITY",
+  "manifest": {
+    "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\visual-qa\\validated-comparisons.json",
+    "sha256": "BDFC28906EE87746017C8EA753385A2F53CA40715455038AE2C83C44F89E49E0",
+    "listedCount": 35
+  },
+  "reviewedCount": 35,
+  "passedCount": 35,
+  "pendingCount": 0,
+  "unreviewed": [],
+  "results": [
+    {
+      "name": "pinterest-desktop-actual",
+      "sourceUrl": "https://polsia.com/changelog/79d144a7-1ec2-475c-b0bc-29c7b47437a5",
+      "capture": {
+        "source": "pinterest-desktop-actual",
+        "local": "pinterest-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/pinterest-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-pinterest-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-pinterest-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/changelog/79d144a7-1ec2-475c-b0bc-29c7b47437a5",
+        "at": "2026-10-12T16:40:38.578Z",
+        "sourceBeforeComplete": true,
+        "sourceAfterComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T16:48:29.470Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-pinterest-desktop-actual.png",
+        "bytes": 118333,
+        "sha256": "910762A2EFD985949EC099697420DA0462F31A3AA6EE7C530897D93A026E519B",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-pinterest-desktop-actual.png",
+        "bytes": 118333,
+        "sha256": "910762A2EFD985949EC099697420DA0462F31A3AA6EE7C530897D93A026E519B",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/pinterest-desktop-actual-comparison.png",
+        "bytes": 151753,
+        "sha256": "59122897803F29D99ABB7CA6C5677D2AAE2D71B491B284424EF73813DCD8EB49",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "公告主图、页面白底/细线、页眉、标题/日期与返回入口、布局留白一致；已独立复看补采后的源/本地合成图。"
+    },
+    {
+      "name": "pinterest-mobile-actual",
+      "sourceUrl": "https://polsia.com/changelog/79d144a7-1ec2-475c-b0bc-29c7b47437a5",
+      "capture": {
+        "source": "pinterest-mobile-actual",
+        "local": "pinterest-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/pinterest-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-pinterest-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-pinterest-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/changelog/79d144a7-1ec2-475c-b0bc-29c7b47437a5",
+        "at": "2026-10-12T16:40:48.134Z",
+        "sourceBeforeComplete": true,
+        "sourceAfterComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T16:48:29.601Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-pinterest-mobile-actual.png",
+        "bytes": 60977,
+        "sha256": "D180A94C88D9098DA2BFCC98A44E569B6932E679BFBF90E15524CB4F7575823E",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-pinterest-mobile-actual.png",
+        "bytes": 60977,
+        "sha256": "D180A94C88D9098DA2BFCC98A44E569B6932E679BFBF90E15524CB4F7575823E",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/pinterest-mobile-actual-comparison.png",
+        "bytes": 74179,
+        "sha256": "69ACEAC0569AFBCDB53A5D39BCE5BBE85A7E8B036D0037CFF9E04C4EF87EE5E0",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "公告主图、页面白底/细线、页眉、标题/日期与返回入口、布局留白一致；已独立复看补采后的源/本地合成图。"
+    },
+    {
+      "name": "facebook-desktop-actual",
+      "sourceUrl": "https://polsia.com/changelog/646c22cc-83d2-4188-91cc-e60702e3391c",
+      "capture": {
+        "source": "facebook-desktop-actual",
+        "local": "facebook-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/facebook-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-facebook-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-facebook-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/changelog/646c22cc-83d2-4188-91cc-e60702e3391c",
+        "at": "2026-10-12T16:40:59.751Z",
+        "sourceBeforeComplete": true,
+        "sourceAfterComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T16:48:30.166Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-facebook-desktop-actual.png",
+        "bytes": 145149,
+        "sha256": "5941688F5C09F13BB45183D08BEF13DC42413DCE2F89672EBE9611A675DB7B78",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-facebook-desktop-actual.png",
+        "bytes": 145149,
+        "sha256": "5941688F5C09F13BB45183D08BEF13DC42413DCE2F89672EBE9611A675DB7B78",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/facebook-desktop-actual-comparison.png",
+        "bytes": 186576,
+        "sha256": "7EC9A32F35AF4416E10BDA05961A3D890AE425A73E05CFD89BC3CA8C8DD3A11B",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "公告主图、页面白底/细线、页眉、标题/日期与返回入口、布局留白一致；已独立复看补采后的源/本地合成图。"
+    },
+    {
+      "name": "facebook-mobile-actual",
+      "sourceUrl": "https://polsia.com/changelog/646c22cc-83d2-4188-91cc-e60702e3391c",
+      "capture": {
+        "source": "facebook-mobile-actual",
+        "local": "facebook-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/facebook-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-facebook-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-facebook-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/changelog/646c22cc-83d2-4188-91cc-e60702e3391c",
+        "at": "2026-10-12T16:41:09.672Z",
+        "sourceBeforeComplete": true,
+        "sourceAfterComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T16:48:30.338Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-facebook-mobile-actual.png",
+        "bytes": 73059,
+        "sha256": "8E726EC1E41716006BCB545EF4A7B2CDB574446D3ECAB009C705EBCBB1115B4F",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-facebook-mobile-actual.png",
+        "bytes": 73059,
+        "sha256": "8E726EC1E41716006BCB545EF4A7B2CDB574446D3ECAB009C705EBCBB1115B4F",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/facebook-mobile-actual-comparison.png",
+        "bytes": 89853,
+        "sha256": "6D490E43F43FFE6E22E3C725626734785AC0B55ADC08EBE3EBF11283D12CE60F",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "公告主图、页面白底/细线、页眉、标题/日期与返回入口、布局留白一致；已独立复看补采后的源/本地合成图。"
+    },
+    {
+      "name": "instagram-desktop-actual",
+      "sourceUrl": "https://polsia.com/changelog/2a637515-bb09-4f02-b5d4-24d38a98d972",
+      "capture": {
+        "source": "instagram-desktop-actual",
+        "local": "instagram-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/instagram-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-instagram-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-instagram-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/changelog/2a637515-bb09-4f02-b5d4-24d38a98d972",
+        "at": "2026-10-12T16:44:15.581Z",
+        "sourceBeforeComplete": true,
+        "sourceAfterComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T16:48:30.958Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-instagram-desktop-actual.png",
+        "bytes": 166731,
+        "sha256": "BF45C267F01D82C8791CAAABA04AD855BAC5F2D5B92BA5099B60F4FF584DA866",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-instagram-desktop-actual.png",
+        "bytes": 163574,
+        "sha256": "2FC946100780CF5A956F3A2A281A944CBDC4A451B3FE29F421CB8EF29707B77C",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/instagram-desktop-actual-comparison.png",
+        "bytes": 224436,
+        "sha256": "8FCE9DCD09EA403D342239753CF01BEAF2AB65C3FD3DF9BCED64C38B6937DF0A",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "公告主图完整、相同画布/尺寸/位置和返回入口、页眉、标题层级匹配；中英文正文差异排除。TikTok旧空白截图已保留，补采图独立复看通过。"
+    },
+    {
+      "name": "instagram-mobile-actual",
+      "sourceUrl": "https://polsia.com/changelog/2a637515-bb09-4f02-b5d4-24d38a98d972",
+      "capture": {
+        "source": "instagram-mobile-actual",
+        "local": "instagram-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/instagram-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-instagram-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-instagram-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/changelog/2a637515-bb09-4f02-b5d4-24d38a98d972",
+        "at": "2026-10-12T16:44:17.748Z",
+        "sourceBeforeComplete": true,
+        "sourceAfterComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T16:48:31.143Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-instagram-mobile-actual.png",
+        "bytes": 70613,
+        "sha256": "E3DB28D231AFE31FB9A1A91FDB655E6C47AB86264D6C211B7B1DB898C97ED1F6",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-instagram-mobile-actual.png",
+        "bytes": 77536,
+        "sha256": "D43F1580A28FA459BC03CAA85CCEC96B2224C4C547BCE5E5C41A3101EE0BDBF8",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/instagram-mobile-actual-comparison.png",
+        "bytes": 105236,
+        "sha256": "5F8F8BA4256F74AFADE69AEB6390E9EAA36F73D7F2E6BCA3A68B604DE1D30439",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "公告主图完整、相同画布/尺寸/位置和返回入口、页眉、标题层级匹配；中英文正文差异排除。TikTok旧空白截图已保留，补采图独立复看通过。"
+    },
+    {
+      "name": "tiktok-desktop-actual",
+      "sourceUrl": "https://polsia.com/changelog/7e7f565e-ed38-4f88-bae9-54d382f4c625",
+      "capture": {
+        "source": "tiktok-desktop-actual",
+        "local": "tiktok-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/tiktok-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-tiktok-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-tiktok-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/changelog/7e7f565e-ed38-4f88-bae9-54d382f4c625",
+        "at": "2026-10-12T16:46:10.552Z",
+        "sourceBeforeComplete": true,
+        "sourceAfterComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T16:48:31.886Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-tiktok-desktop-actual.png",
+        "bytes": 137822,
+        "sha256": "627F1C66BC0CDBFF4F4C5500277367DE96476816C4664B75B4F7677651A0411D",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-tiktok-desktop-actual.png",
+        "bytes": 137822,
+        "sha256": "627F1C66BC0CDBFF4F4C5500277367DE96476816C4664B75B4F7677651A0411D",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/tiktok-desktop-actual-comparison.png",
+        "bytes": 180957,
+        "sha256": "F7A8D91A13EDBED5E6BDA0F5032AF7902E2BF591ECC273D8D397F6E8665BE4B0",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "公告主图完整、相同画布/尺寸/位置和返回入口、页眉、标题层级匹配；中英文正文差异排除。TikTok旧空白截图已保留，补采图独立复看通过。"
+    },
+    {
+      "name": "tiktok-mobile-actual",
+      "sourceUrl": "https://polsia.com/changelog/7e7f565e-ed38-4f88-bae9-54d382f4c625",
+      "capture": {
+        "source": "tiktok-mobile-actual",
+        "local": "tiktok-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/tiktok-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-tiktok-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-tiktok-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/changelog/7e7f565e-ed38-4f88-bae9-54d382f4c625",
+        "at": "2026-10-12T16:46:11.145Z",
+        "sourceBeforeComplete": true,
+        "sourceAfterComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T16:48:32.019Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-tiktok-mobile-actual.png",
+        "bytes": 61397,
+        "sha256": "D539BD0F418E9477326D2BA89BCB39BADF11E876AE1A5F045D2398EE8B19B85C",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-tiktok-mobile-actual.png",
+        "bytes": 61397,
+        "sha256": "D539BD0F418E9477326D2BA89BCB39BADF11E876AE1A5F045D2398EE8B19B85C",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/tiktok-mobile-actual-comparison.png",
+        "bytes": 70019,
+        "sha256": "9F3B1BB2828EC94386BF702C88413BB1966C56B416786CAB923E9375444D2AAF",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "公告主图完整、相同画布/尺寸/位置和返回入口、页眉、标题层级匹配；中英文正文差异排除。TikTok旧空白截图已保留，补采图独立复看通过。"
+    },
+    {
+      "name": "new-initial-mobile-actual",
+      "sourceUrl": "https://polsia.com/new",
+      "capture": {
+        "source": "new-initial-mobile-actual",
+        "local": "new-initial-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/new-initial-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-new-initial-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-new-initial-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/new",
+        "at": "2026-10-12T16:46:27.124Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-new-initial-mobile-actual.png",
+        "bytes": 18357,
+        "sha256": "E526D43491F732989FD09049E933CE4DBE02D41716DF4331124CD913F98AC968",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-new-initial-mobile-actual.png",
+        "bytes": 18352,
+        "sha256": "7382BD0214315D3B051369F0DD1629BBE6E69E4E8FA52EAEE4342F3393A635F7",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/new-initial-mobile-actual-comparison.png",
+        "bytes": 22138,
+        "sha256": "D786CEE568356B6A1BCB1233EDE9ABF4D7D455EA31E8AEDB298A2BD64555D41F",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "中文翻译已ready，顶部终端、logo/语言入口、主标题、CTA、留白与底部位置一致；旧翻译未ready基线不用于结论。"
+    },
+    {
+      "name": "terms-desktop-actual",
+      "sourceUrl": "https://polsia.com/terms",
+      "capture": {
+        "source": "terms-desktop-actual",
+        "local": "terms-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/terms-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-terms-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-terms-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/terms",
+        "at": "2026-10-12T16:46:57.050Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-terms-desktop-actual.png",
+        "bytes": 50284,
+        "sha256": "8DDD2C1B0BF2AFE04BAC099BACE5A92E5BD19EBDB0E984F6C0260671E767E6E5",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-terms-desktop-actual.png",
+        "bytes": 108507,
+        "sha256": "B9B6C3709A508973DB7C5E7BB4494FE6313FD383B3588CA45424B5D589CFE21C",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/terms-desktop-actual-comparison.png",
+        "bytes": 159763,
+        "sha256": "E0007462F1FA00CED1DB0ED333C03DD3274AD2B48C8F50563360443F3AC445E3",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "白底、页眉/logo/语言入口、返回链接、内容容器、标题/日期层级、正文列表/表格及固定页脚匹配；中英文正文使字形/换行/表格行高不同，按用户允许范围排除。"
+    },
+    {
+      "name": "terms-mobile-actual",
+      "sourceUrl": "https://polsia.com/terms",
+      "capture": {
+        "source": "terms-mobile-actual",
+        "local": "terms-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/terms-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-terms-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-terms-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/terms",
+        "at": "2026-10-12T16:46:59.050Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-terms-mobile-actual.png",
+        "bytes": 35023,
+        "sha256": "19E5F485A9611103DFA90594979384C0A2A14B4908D4DF2EB577CA9E881EFB3B",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-terms-mobile-actual.png",
+        "bytes": 53484,
+        "sha256": "EC5DAC3B46AE3565FD2B4ACE29DA48E3B83444064EC06AB865AB248469D8F3F6",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/terms-mobile-actual-comparison.png",
+        "bytes": 96648,
+        "sha256": "18F9C59DB031BA1CCD74EBC690DD5DF5DD4F4B4BD7894FD7DAB9647003B8A0E6",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "白底、页眉/logo/语言入口、返回链接、内容容器、标题/日期层级、正文列表/表格及固定页脚匹配；中英文正文使字形/换行/表格行高不同，按用户允许范围排除。"
+    },
+    {
+      "name": "privacy-desktop-actual",
+      "sourceUrl": "https://polsia.com/privacy",
+      "capture": {
+        "source": "privacy-desktop-actual",
+        "local": "privacy-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/privacy-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-privacy-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-privacy-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/privacy",
+        "at": "2026-10-12T16:47:04.974Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-privacy-desktop-actual.png",
+        "bytes": 53560,
+        "sha256": "740469E0BD34DD8DC47FA0CB86A17EA24EFF26D6E0F5C0D5C65458DA459CA582",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-privacy-desktop-actual.png",
+        "bytes": 105103,
+        "sha256": "0DB2DBD95BB39CB115DD19A86325167FB373C8CAFC49AF9ED5C80F5EE55C24BA",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/privacy-desktop-actual-comparison.png",
+        "bytes": 158840,
+        "sha256": "653F824754344A1548C935D30B8B4476E375EF51B7AA82F65F863233419BAE78",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "可见锚文本https://polsia.com/已保留全地址，原仅(/)缺陷修复；正文语言差异按用户允许范围排除；白底、页眉、内容宽度、标题层级/页脚匹配。"
+    },
+    {
+      "name": "privacy-mobile-actual",
+      "sourceUrl": "https://polsia.com/privacy",
+      "capture": {
+        "source": "privacy-mobile-actual",
+        "local": "privacy-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/privacy-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-privacy-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-privacy-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/privacy",
+        "at": "2026-10-12T16:47:05.856Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-privacy-mobile-actual.png",
+        "bytes": 31960,
+        "sha256": "F4F66ADF4BF6DD0C6FD7F40F18DB8D6D8F76DE29C50ED8CE7BB09B996408471F",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-privacy-mobile-actual.png",
+        "bytes": 56806,
+        "sha256": "1BD4E2F6FA47107319A8ADE9F838EAF5D7BE13B373E936A1F273F7C30DDBAFC7",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/privacy-mobile-actual-comparison.png",
+        "bytes": 98174,
+        "sha256": "812A88C5A88EF54DBB055508785747156EC7C7A25697EA4C9B806B63C6E199C9",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "可见锚文本https://polsia.com/已保留全地址，原仅(/)缺陷修复；正文语言差异按用户允许范围排除；白底、页眉、内容宽度、标题层级/页脚匹配。"
+    },
+    {
+      "name": "changelog-desktop-actual",
+      "sourceUrl": "https://polsia.com/changelog",
+      "capture": {
+        "source": "changelog-desktop-actual",
+        "local": "changelog-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/changelog-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-changelog-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-changelog-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/changelog",
+        "at": "2026-10-12T16:49:20.238Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-changelog-desktop-actual.png",
+        "bytes": 113671,
+        "sha256": "286A0ADB5B60C06F11D4949A62988F766A5172F1ABD8C6A336C2A0F47BC9CDB9",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-changelog-desktop-actual.png",
+        "bytes": 121920,
+        "sha256": "D68234393F07486C9A06E4B4653A5D0DBA5C65D6C51D918FA27DA170431D288D",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/changelog-desktop-actual-comparison.png",
+        "bytes": 163937,
+        "sha256": "5CE5C685C45A007D70FA9B2A9AAB8B17EFEA4128B5B30CE6618A1CE76D00DEDD",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "源和本地公告图片均实际加载；列表图尺寸、标题层级、留白、页眉/页脚匹配；中英文正文的不同换行不作相同字形承诺。"
+    },
+    {
+      "name": "changelog-mobile-actual",
+      "sourceUrl": "https://polsia.com/changelog",
+      "capture": {
+        "source": "changelog-mobile-actual",
+        "local": "changelog-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/changelog-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-changelog-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-changelog-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/changelog",
+        "at": "2026-10-12T16:49:21.134Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-changelog-mobile-actual.png",
+        "bytes": 55610,
+        "sha256": "EBDE6B754DEA80C80D3986A81758700E64E2542CE5415D229C003A508E23B71A",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-changelog-mobile-actual.png",
+        "bytes": 61460,
+        "sha256": "6A7B9029614BC098022BF354386D6F37363E5ECB83404D152032B2C77AA98BCD",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/changelog-mobile-actual-comparison.png",
+        "bytes": 79817,
+        "sha256": "721572DFC95F824737B693D84A2CD39C1157D77251759FC168E95CB2E179F974",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "源和本地公告图片均实际加载；列表图尺寸、标题层级、留白、页眉/页脚匹配；中英文正文的不同换行不作相同字形承诺。"
+    },
+    {
+      "name": "hero-mobile-actual",
+      "sourceUrl": "https://polsia.com/",
+      "capture": {
+        "source": "hero-mobile-actual",
+        "local": "hero-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/hero-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-hero-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-hero-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/",
+        "at": "2026-10-12T16:58:26.630Z",
+        "sourceAllImagesComplete": true,
+        "localAllImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-hero-mobile-actual.png",
+        "bytes": 287391,
+        "sha256": "61BEE605A16402F30691AFCA9F39596D00FCE66BDE5A9E0E6F1ADCADB05B96E3",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-hero-mobile-actual.png",
+        "bytes": 286514,
+        "sha256": "DF9F51D50BAE82218D914F5568245DF90CDC0CEB1E95BE68CC565CC8FC1FBB21",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/hero-mobile-actual-comparison.png",
+        "bytes": 371108,
+        "sha256": "6AAC3C8761EDF4D264240B12825C5895EF0FE3CCAAEDF5A65C7B07E349476BE6",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "办公背景裁切、中央logo、主标题/CTA/滚动提示一致；顶部终端轮播文案/光点动画相位排除。"
+    },
+    {
+      "name": "giftshop-desktop-actual",
+      "sourceUrl": "https://polsia.com/giftshop",
+      "capture": {
+        "source": "giftshop-desktop-actual",
+        "local": "giftshop-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/giftshop-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-giftshop-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-giftshop-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/giftshop",
+        "at": "2026-10-12T16:51:41.585Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-giftshop-desktop-actual.png",
+        "bytes": 167703,
+        "sha256": "65EA0164EA0EDA87BA2B4D95AD532582024ED0B4D424F1CB27E6F9BA5FC5FA01",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-giftshop-desktop-actual.png",
+        "bytes": 197824,
+        "sha256": "7523BA3EDAB047F3A319A39BA00817F0EA48F505D3C6900378502B5A5858FAF8",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/giftshop-desktop-actual-comparison.png",
+        "bytes": 417334,
+        "sha256": "F1B233BF42F6F0A33A74A845A4732F0C63738448D1A2D4E7A48E73B3F4CFAD5C",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "原产品图、卡片框/灰底、桌面四列及手机单列、图片居中裁切、价格/按钮层级一致；中英文文案差异单独排除。"
+    },
+    {
+      "name": "giftshop-mobile-actual",
+      "sourceUrl": "https://polsia.com/giftshop",
+      "capture": {
+        "source": "giftshop-mobile-actual",
+        "local": "giftshop-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/giftshop-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-giftshop-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-giftshop-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/giftshop",
+        "at": "2026-10-12T16:51:42.501Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-giftshop-mobile-actual.png",
+        "bytes": 41175,
+        "sha256": "3730B3D778E2294E801DD8863F9AC1866806448771F137D5894662BE5D254914",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-giftshop-mobile-actual.png",
+        "bytes": 60644,
+        "sha256": "D9AC87604DE69830E8DDA23C4191559534ADB90F53CC7CB64DB713203154C62A",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/giftshop-mobile-actual-comparison.png",
+        "bytes": 107553,
+        "sha256": "D7A39FEE6097AF492EEFDEDC817561AE100A6CCE14AD43B842CA931803F00C31",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "原产品图、卡片框/灰底、桌面四列及手机单列、图片居中裁切、价格/按钮层级一致；中英文文案差异单独排除。"
+    },
+    {
+      "name": "church-desktop-actual",
+      "sourceUrl": "https://polsia.com/church",
+      "capture": {
+        "source": "church-desktop-actual",
+        "local": "church-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/church-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-church-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-church-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/church",
+        "at": "2026-10-12T16:51:48.680Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-church-desktop-actual.png",
+        "bytes": 1541332,
+        "sha256": "D715FDBC0E7793F7D1BE52D746277870F7665B76FBFD5D01DF3938EF0CD4A772",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-church-desktop-actual.png",
+        "bytes": 1541332,
+        "sha256": "D715FDBC0E7793F7D1BE52D746277870F7665B76FBFD5D01DF3938EF0CD4A772",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/church-desktop-actual-comparison.png",
+        "bytes": 1249546,
+        "sha256": "9C82E588259F1FFE12BC7183B80A73621D1E36AC3045B51A0278ABE4052DDDB0",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "橙色云层原图纹理、裁切与缩放、底部渐隐、标题和段落层级、固定语言及加入按钮位置一致。"
+    },
+    {
+      "name": "church-mobile-actual",
+      "sourceUrl": "https://polsia.com/church",
+      "capture": {
+        "source": "church-mobile-actual",
+        "local": "church-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/church-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-church-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-church-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/church",
+        "at": "2026-10-12T16:51:49.990Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-church-mobile-actual.png",
+        "bytes": 441511,
+        "sha256": "5E6689F1961F5615DC1C6935911897EC2540D6835FC5327471CA7B459327892E",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-church-mobile-actual.png",
+        "bytes": 441511,
+        "sha256": "5E6689F1961F5615DC1C6935911897EC2540D6835FC5327471CA7B459327892E",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/church-mobile-actual-comparison.png",
+        "bytes": 446644,
+        "sha256": "54428690A8CA75B1D96534D5F0F13E3EE7E352906DFF0E5D8AA16F904D695C57",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "橙色云层原图纹理、裁切与缩放、底部渐隐、标题和段落层级、固定语言及加入按钮位置一致。"
+    },
+    {
+      "name": "payment-success-desktop-actual",
+      "sourceUrl": "https://polsia.com/payment/success",
+      "capture": {
+        "source": "payment-success-desktop-actual",
+        "local": "payment-success-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/payment-success-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-payment-success-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-payment-success-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/payment/success",
+        "at": "2026-10-12T16:52:20.697Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T17:00:11.547Z",
+        "localCopyShortened": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-payment-success-desktop-actual.png",
+        "bytes": 10954,
+        "sha256": "E1F5A7F8D8C3F86E041FA30190899DF6D439EB528DFF29D63592FC39446D7223",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-payment-success-desktop-actual.png",
+        "bytes": 12332,
+        "sha256": "5513B872011B535BC371048CA29430470E5A37B82B847570AD79DC4634DEF5FF",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/payment-success-desktop-actual-comparison.png",
+        "bytes": 28841,
+        "sha256": "169719E043285AC5AF7AF648EC316D9E2D5B29A09A13A55F93837AA4CDBC26C4",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CARD_RULES_ALLOWED_CONTENT_HEIGHT_DIFFERENCE",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "绿色图标/细边、灰色卡片/分隔线、水平垂直居中匹配；最新本地说明收短后两尺寸卡片高度已齐。明确样式示例，无真实支付/订阅证明。"
+    },
+    {
+      "name": "payment-success-mobile-actual",
+      "sourceUrl": "https://polsia.com/payment/success",
+      "capture": {
+        "source": "payment-success-mobile-actual",
+        "local": "payment-success-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/payment-success-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-payment-success-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-payment-success-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/payment/success",
+        "at": "2026-10-12T16:52:21.265Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T17:00:11.809Z",
+        "localCopyShortened": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-payment-success-mobile-actual.png",
+        "bytes": 7717,
+        "sha256": "500AB955CC409DA4AE4B64484423345E07DD76843E104AD59C8ECAC88F7F7376",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-payment-success-mobile-actual.png",
+        "bytes": 9071,
+        "sha256": "821BA2D2F8C749F2D2AB8088A6DFD8D52225047B672E60268EDBBF9FD136B4A3",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/payment-success-mobile-actual-comparison.png",
+        "bytes": 17596,
+        "sha256": "E4C0DB4FCE2BB283659E38744DEA05111F63D7246D8A5484A833DC29721F81B0",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CARD_RULES_ALLOWED_CONTENT_HEIGHT_DIFFERENCE",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "绿色图标/细边、灰色卡片/分隔线、水平垂直居中匹配；最新本地说明收短后两尺寸卡片高度已齐。明确样式示例，无真实支付/订阅证明。"
+    },
+    {
+      "name": "subscription-success-desktop-actual",
+      "sourceUrl": "https://polsia.com/subscription/success",
+      "capture": {
+        "source": "subscription-success-desktop-actual",
+        "local": "subscription-success-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/subscription-success-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-subscription-success-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-subscription-success-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/subscription/success",
+        "at": "2026-10-12T16:52:25.875Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T17:00:12.146Z",
+        "localCopyShortened": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-subscription-success-desktop-actual.png",
+        "bytes": 10954,
+        "sha256": "E1F5A7F8D8C3F86E041FA30190899DF6D439EB528DFF29D63592FC39446D7223",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-subscription-success-desktop-actual.png",
+        "bytes": 12332,
+        "sha256": "5513B872011B535BC371048CA29430470E5A37B82B847570AD79DC4634DEF5FF",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/subscription-success-desktop-actual-comparison.png",
+        "bytes": 28841,
+        "sha256": "169719E043285AC5AF7AF648EC316D9E2D5B29A09A13A55F93837AA4CDBC26C4",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CARD_RULES_ALLOWED_CONTENT_HEIGHT_DIFFERENCE",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "绿色图标/细边、灰色卡片/分隔线、水平垂直居中匹配；最新本地说明收短后两尺寸卡片高度已齐。明确样式示例，无真实支付/订阅证明。"
+    },
+    {
+      "name": "subscription-success-mobile-actual",
+      "sourceUrl": "https://polsia.com/subscription/success",
+      "capture": {
+        "source": "subscription-success-mobile-actual",
+        "local": "subscription-success-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/subscription-success-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-subscription-success-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-subscription-success-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/subscription/success",
+        "at": "2026-10-12T16:52:27.424Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T17:00:12.424Z",
+        "localCopyShortened": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-subscription-success-mobile-actual.png",
+        "bytes": 7717,
+        "sha256": "500AB955CC409DA4AE4B64484423345E07DD76843E104AD59C8ECAC88F7F7376",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-subscription-success-mobile-actual.png",
+        "bytes": 9071,
+        "sha256": "821BA2D2F8C749F2D2AB8088A6DFD8D52225047B672E60268EDBBF9FD136B4A3",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/subscription-success-mobile-actual-comparison.png",
+        "bytes": 17596,
+        "sha256": "E4C0DB4FCE2BB283659E38744DEA05111F63D7246D8A5484A833DC29721F81B0",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CARD_RULES_ALLOWED_CONTENT_HEIGHT_DIFFERENCE",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "绿色图标/细边、灰色卡片/分隔线、水平垂直居中匹配；最新本地说明收短后两尺寸卡片高度已齐。明确样式示例，无真实支付/订阅证明。"
+    },
+    {
+      "name": "payment-cancelled-desktop-actual",
+      "sourceUrl": "https://polsia.com/payment/cancelled",
+      "capture": {
+        "source": "payment-cancelled-desktop-actual",
+        "local": "payment-cancelled-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/payment-cancelled-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-payment-cancelled-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-payment-cancelled-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/payment/cancelled",
+        "at": "2026-10-12T16:53:49.237Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T17:18:24.980Z",
+        "localCopyShortened": true,
+        "cancelledDensityTwoLines": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-payment-cancelled-desktop-actual.png",
+        "bytes": 18759,
+        "sha256": "53DDD7BBE98E0C7E04E80B2F026D85F66A700FBEE62BD1771C8F3DCAF87A52F3",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-payment-cancelled-desktop-actual.png",
+        "bytes": 12500,
+        "sha256": "5D390E688E68AA09166CBAE8FEDC7B3A19AEC51D4FE49D3A2A134B8068C82BD2",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/payment-cancelled-desktop-actual-comparison.png",
+        "bytes": 36477,
+        "sha256": "0365137F0ABCF85F1F610FD76371E044AB1BC891AA8E522F42FED5E914DD68E1",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CARD_RULES_ALLOWED_CONTENT_HEIGHT_DIFFERENCE",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "橙色叉号/细边、灰色卡片/分隔线及居中规则匹配；最新取消正文明确两行、底部提示改中文一行后桌面/手机卡片高度和垂直位置均已齐。本地样式示例文案仍按用户允许范围排除，无真实付款证明。"
+    },
+    {
+      "name": "payment-cancelled-mobile-actual",
+      "sourceUrl": "https://polsia.com/payment/cancelled",
+      "capture": {
+        "source": "payment-cancelled-mobile-actual",
+        "local": "payment-cancelled-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/payment-cancelled-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-payment-cancelled-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-payment-cancelled-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/payment/cancelled",
+        "at": "2026-10-12T16:53:49.876Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true,
+        "localCapturedAt": "2026-10-12T17:18:25.295Z",
+        "localCopyShortened": true,
+        "cancelledDensityTwoLines": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-payment-cancelled-mobile-actual.png",
+        "bytes": 8677,
+        "sha256": "AF27FEF5813BF4C1C328A93FD7850ADC1307018C01664D989FB9B25EDD70F482",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-payment-cancelled-mobile-actual.png",
+        "bytes": 9179,
+        "sha256": "C469DB2E6AB66A4796EC1124A3072AC943D176BBB3B9AC82B0F92FAC9994C2C7",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/payment-cancelled-mobile-actual-comparison.png",
+        "bytes": 18113,
+        "sha256": "4C5BB7CB55591FF00AA98FAA4EAD4EB076CB22B4A950C1DBD8AA856DA0FB918A",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CARD_RULES_ALLOWED_CONTENT_HEIGHT_DIFFERENCE",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "橙色叉号/细边、灰色卡片/分隔线及居中规则匹配；最新取消正文明确两行、底部提示改中文一行后桌面/手机卡片高度和垂直位置均已齐。本地样式示例文案仍按用户允许范围排除，无真实付款证明。"
+    },
+    {
+      "name": "connect-desktop-actual",
+      "sourceUrl": "https://polsia.com/connect",
+      "capture": {
+        "source": "connect-desktop-actual",
+        "local": "connect-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/connect-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-connect-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-connect-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/connect",
+        "at": "2026-10-12T16:53:57.649Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-connect-desktop-actual.png",
+        "bytes": 19832,
+        "sha256": "FC184C57DBBCBA88BA10F1504DCD588CE9B9981084508D39138DBD775C0A944E",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-connect-desktop-actual.png",
+        "bytes": 19832,
+        "sha256": "FC184C57DBBCBA88BA10F1504DCD588CE9B9981084508D39138DBD775C0A944E",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/connect-desktop-actual-comparison.png",
+        "bytes": 26885,
+        "sha256": "150BDDA04932340695D3969DBD51D4D7C8407465922A0BEEB9E202B0582054FC",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "过期链接静态状态：Polsia标识、标题、说明、白底和居中容器匹配；手机中英文导致字形及行长差异。无实际第三方账号连接证明。"
+    },
+    {
+      "name": "connect-mobile-actual",
+      "sourceUrl": "https://polsia.com/connect",
+      "capture": {
+        "source": "connect-mobile-actual",
+        "local": "connect-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/connect-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-connect-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-connect-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/connect",
+        "at": "2026-10-12T16:53:58.388Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-connect-mobile-actual.png",
+        "bytes": 16752,
+        "sha256": "620AA3FD2659472F70B5B8C9B9D362C2D12EEBE1F5ECB012CB870EB56CDD2ADE",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-connect-mobile-actual.png",
+        "bytes": 15851,
+        "sha256": "62DE14FD4258F0DFC15FE2F0723E473068C3DB0337697CDFB6FE349D8D1AF158",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/connect-mobile-actual-comparison.png",
+        "bytes": 25148,
+        "sha256": "B4A8ADB34155D64609C6CD95135481F6EEC171A1AB2977E49CB37F1D6D1B37AC",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "过期链接静态状态：Polsia标识、标题、说明、白底和居中容器匹配；手机中英文导致字形及行长差异。无实际第三方账号连接证明。"
+    },
+    {
+      "name": "hero-tablet-actual",
+      "sourceUrl": "https://polsia.com/",
+      "capture": {
+        "source": "hero-tablet-actual",
+        "local": "hero-tablet-actual",
+        "width": 768,
+        "height": 1024,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/hero-tablet-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-hero-tablet-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-hero-tablet-actual.png",
+        "sourceUrl": "https://polsia.com/",
+        "at": "2026-10-12T16:54:06.138Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true,
+        "recapturedAllImagesAt": "2026-10-12T16:57:59.085Z"
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-hero-tablet-actual.png",
+        "bytes": 663068,
+        "sha256": "BEA0FDDDC6BD3C9C6F57FF4D0F81C0ADA63823598D4FBD20D99863E437676859",
+        "width": 768,
+        "height": 1024
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-hero-tablet-actual.png",
+        "bytes": 662882,
+        "sha256": "25C3847EC33F6EED2AAF27FCFF1006B195A4ADA9BB90888E13A032C8E0744693",
+        "width": 768,
+        "height": 1024
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/hero-tablet-actual-comparison.png",
+        "bytes": 838306,
+        "sha256": "4F437E2A7EAD748634ECFBF2016CBC26D430189849B94AE5B105519262C1ED39",
+        "width": 1536,
+        "height": 1024
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "源logo初始未稳定截图已保留；等待logo/图片实际可见后最新补采源/本地都有完整白Polsia，办公背景裁切、同中文主标题/CTA/滚动提示匹配。关闭源状态未决。"
+    },
+    {
+      "name": "login-mobile-actual",
+      "sourceUrl": "https://polsia.com/login",
+      "capture": {
+        "source": "login-mobile-actual",
+        "local": "login-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/login-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-login-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-login-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/login",
+        "at": "2026-10-12T16:54:29.395Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-login-mobile-actual.png",
+        "bytes": 24480,
+        "sha256": "9BB6742ECDEC368CA3D55C0F2F5B65087776397AD30CDE1055178E5FCC410EA9",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-login-mobile-actual.png",
+        "bytes": 24477,
+        "sha256": "1B5D2CEE3107D641C44D059F969247194783963CE72DE5D2CE10031ED0C604E2",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/login-mobile-actual-comparison.png",
+        "bytes": 26980,
+        "sha256": "1103E2C228B0C9292DD2DC87BCF27C1F19D3696D4C49B3E2C43696E5089202B0",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "同中文文案；Google图标、按钮/输入框/渐变CTA、分割线、终端及页脚位置、字体层级匹配。仅外观状态，无OAuth/邮件发送证明。"
+    },
+    {
+      "name": "about-mobile-actual",
+      "sourceUrl": "https://polsia.com/about",
+      "capture": {
+        "source": "about-mobile-actual",
+        "local": "about-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/about-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-about-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-about-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/about",
+        "at": "2026-10-12T16:54:34.498Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-about-mobile-actual.png",
+        "bytes": 58161,
+        "sha256": "039581A96E80A80E6E099CB2E2371466C382C1EEC48877E957C272A952D1F11D",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-about-mobile-actual.png",
+        "bytes": 58149,
+        "sha256": "EDDD5D79F1B61110B7E82BF8A17306F7BD56F681D2772988242B221161F60B50",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/about-mobile-actual-comparison.png",
+        "bytes": 58772,
+        "sha256": "780888949151F2299DCD974FDF9B93B7BD4A14E4F7F8B4668C86D691F9BB01B6",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "同中文文案；纸页、左侧虚线和圆孔、灰色背景、页眉/页脚、等宽字及段落排布匹配。"
+    },
+    {
+      "name": "acceptable-use-mobile-actual",
+      "sourceUrl": "https://polsia.com/acceptable-use",
+      "capture": {
+        "source": "acceptable-use-mobile-actual",
+        "local": "acceptable-use-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/acceptable-use-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-acceptable-use-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-acceptable-use-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/acceptable-use",
+        "at": "2026-10-12T16:54:44.920Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-acceptable-use-mobile-actual.png",
+        "bytes": 32706,
+        "sha256": "9313F01547E4DF814F629F0DD387A4A6CDD512EA933DB424883901026F08817B",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-acceptable-use-mobile-actual.png",
+        "bytes": 55495,
+        "sha256": "64291F7621A443B359066E22E61746E14583A546E09236CC582CE1A4FC9FAF0C",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/acceptable-use-mobile-actual-comparison.png",
+        "bytes": 94981,
+        "sha256": "8EDB1B22FC267DA74E2F3D5D993F9C48B1A94004C4D3779743E1651EC7849649",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "白底、页眉/logo/语言入口、返回链接、内容容器、标题/日期层级、正文列表/表格及固定页脚匹配；中英文正文使字形/换行/表格行高不同，按用户允许范围排除。"
+    },
+    {
+      "name": "subprocessors-mobile-actual",
+      "sourceUrl": "https://polsia.com/subprocessors",
+      "capture": {
+        "source": "subprocessors-mobile-actual",
+        "local": "subprocessors-mobile-actual",
+        "width": 390,
+        "height": 844,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/subprocessors-mobile-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-subprocessors-mobile-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-subprocessors-mobile-actual.png",
+        "sourceUrl": "https://polsia.com/subprocessors",
+        "at": "2026-10-12T16:55:50.340Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-subprocessors-mobile-actual.png",
+        "bytes": 30641,
+        "sha256": "21814E731923062E66CD72AAFF00A90DB06C6E6D14E0A0C911016FDA991D0084",
+        "width": 390,
+        "height": 844
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-subprocessors-mobile-actual.png",
+        "bytes": 50701,
+        "sha256": "CB1EC3A473F72F5ABC57F9C278F3965BC13DD4E42E1A6240D4CEA1551C12C98C",
+        "width": 390,
+        "height": 844
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/subprocessors-mobile-actual-comparison.png",
+        "bytes": 81487,
+        "sha256": "0DD8D90BE0D87B87E7D9281C4912957EB79E640E70E275369007070E463D90BA",
+        "width": 780,
+        "height": 844
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_VISUAL_TOKENS_WITH_ALLOWED_TEXT_DIFFERENCE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS_ROLES_AND_HIERARCHY_TEXT_GLYPHS_AND_WRAP_EXCLUDED",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS_CONTAINERS_ALLOWED_TEXT_REFLOW",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "白底、页眉/logo/语言入口、返回链接、内容容器、标题/日期层级、正文列表/表格及固定页脚匹配；中英文正文使字形/换行/表格行高不同，按用户允许范围排除。"
+    },
+    {
+      "name": "new-initial-tablet-actual",
+      "sourceUrl": "https://polsia.com/new",
+      "capture": {
+        "source": "new-initial-tablet-actual",
+        "local": "new-initial-tablet-actual",
+        "width": 768,
+        "height": 1024,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/new-initial-tablet-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-new-initial-tablet-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-new-initial-tablet-actual.png",
+        "sourceUrl": "https://polsia.com/new",
+        "at": "2026-10-12T16:55:57.667Z",
+        "sourceImagesComplete": true,
+        "localImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-new-initial-tablet-actual.png",
+        "bytes": 22207,
+        "sha256": "0887CAE0DB866A74FE748AD74DC465D3010C1B8D6A756F88973798BD9AC80EA0",
+        "width": 768,
+        "height": 1024
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-new-initial-tablet-actual.png",
+        "bytes": 22207,
+        "sha256": "0887CAE0DB866A74FE748AD74DC465D3010C1B8D6A756F88973798BD9AC80EA0",
+        "width": 768,
+        "height": 1024
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/new-initial-tablet-actual-comparison.png",
+        "bytes": 29544,
+        "sha256": "2DCEBE4800252494F003A2936CF504301B3D3BFAE042F2C98FD9EA18B568BEA7",
+        "width": 1536,
+        "height": 1024
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "中文翻译已ready，顶部终端、logo/语言入口、主标题、CTA、留白与底部位置一致；旧翻译未ready基线不用于结论。"
+    },
+    {
+      "name": "hero-desktop-actual",
+      "sourceUrl": "https://polsia.com/",
+      "capture": {
+        "source": "hero-desktop-actual",
+        "local": "hero-desktop-actual",
+        "width": 1440,
+        "height": 900,
+        "comparison": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/hero-desktop-actual-comparison.png",
+        "sourceFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-hero-desktop-actual.png",
+        "localFile": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-hero-desktop-actual.png",
+        "sourceUrl": "https://polsia.com/",
+        "at": "2026-10-12T16:58:24.478Z",
+        "sourceAllImagesComplete": true,
+        "localAllImagesComplete": true
+      },
+      "source": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/source-hero-desktop-actual.png",
+        "bytes": 1046198,
+        "sha256": "E3F2C472BAECE7FE64570BDF268D394AE8FFB347FE2C0F71F7D970675589C25B",
+        "width": 1440,
+        "height": 900
+      },
+      "local": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-reference/local-hero-desktop-actual.png",
+        "bytes": 1045569,
+        "sha256": "150AE4FFF7579247AF075AD902D2C051F8FD9EA3993FB3DF1F6B0EEBDE940777",
+        "width": 1440,
+        "height": 900
+      },
+      "comparison": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/hero-desktop-actual-comparison.png",
+        "bytes": 1362505,
+        "sha256": "7CC52291633138D0A4931D092C1B510E2E69AD4D3B8D1BF9B9C25A75B2BF1250",
+        "width": 2880,
+        "height": 900
+      },
+      "inspected": true,
+      "method": "Independent direct view_image of combined source-left/local-right PNG; no fabricated similarity percentage.",
+      "status": "PASS_SCOPED_VISIBLE_STATE",
+      "fidelity": {
+        "background_images_composition": "PASS",
+        "typography_hierarchy": "PASS",
+        "colors_surfaces_tokens": "PASS",
+        "geometry_spacing": "PASS",
+        "visible_controls": "PASS_APPEARANCE_ONLY_NOT_PROOF_OF_EXTERNAL_OPERATION"
+      },
+      "note": "办公背景裁切、中央logo、主标题/CTA/滚动提示一致；顶部终端轮播文案/光点动画相位排除。"
+    }
+  ],
+  "focused": {
+    "manifest": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\visual-qa\\focused-comparisons.json",
+    "sha256": "216F13181B4700A7F9CF35B2C4F596434211BD6D0D35D1CAD211FFC2DA65C3B7",
+    "inspectedCount": 5,
+    "results": [
+      {
+        "name": "hero-desktop-actual",
+        "surface": "logo",
+        "rect": {
+          "left": 500,
+          "top": 125,
+          "width": 440,
+          "height": 140
+        },
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/focus-hero-desktop-actual-logo.png",
+        "evidence": {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/focus-hero-desktop-actual-logo.png",
+          "bytes": 75649,
+          "sha256": "244DF568777841F34286FBE945F452C601883A295680E16517698F674E0A1250",
+          "width": 880,
+          "height": 140
+        },
+        "sourceComparisonSha256": "7CC52291633138D0A4931D092C1B510E2E69AD4D3B8D1BF9B9C25A75B2BF1250",
+        "status": "PASS_SCOPED_VISIBLE_CROP",
+        "method": "Direct original-resolution view_image of five actual root-produced paired crops."
+      },
+      {
+        "name": "hero-desktop-actual",
+        "surface": "headline-cta",
+        "rect": {
+          "left": 430,
+          "top": 440,
+          "width": 580,
+          "height": 190
+        },
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/focus-hero-desktop-actual-headline-cta.png",
+        "evidence": {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/focus-hero-desktop-actual-headline-cta.png",
+          "bytes": 175937,
+          "sha256": "C19F03ED40D152D6576B71B70BE72545352CC28087B8A54E8565C4D9ECF32CC2",
+          "width": 1160,
+          "height": 190
+        },
+        "sourceComparisonSha256": "7CC52291633138D0A4931D092C1B510E2E69AD4D3B8D1BF9B9C25A75B2BF1250",
+        "status": "PASS_SCOPED_VISIBLE_CROP",
+        "method": "Direct original-resolution view_image of five actual root-produced paired crops."
+      },
+      {
+        "name": "terms-desktop-actual",
+        "surface": "type-spacing",
+        "rect": {
+          "left": 360,
+          "top": 110,
+          "width": 680,
+          "height": 420
+        },
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/focus-terms-desktop-actual-type-spacing.png",
+        "evidence": {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/focus-terms-desktop-actual-type-spacing.png",
+          "bytes": 68800,
+          "sha256": "A52F167ED0EBC973AEC200D7ED2F757599A3D3A29BA98DC6B318FAA3C40FA927",
+          "width": 1360,
+          "height": 420
+        },
+        "sourceComparisonSha256": "E0007462F1FA00CED1DB0ED333C03DD3274AD2B48C8F50563360443F3AC445E3",
+        "status": "PASS_ROLES_SPACING_ALLOWED_TEXT_DIFFERENCE",
+        "method": "Direct original-resolution view_image of five actual root-produced paired crops."
+      },
+      {
+        "name": "giftshop-desktop-actual",
+        "surface": "product-surface",
+        "rect": {
+          "left": 20,
+          "top": 280,
+          "width": 355,
+          "height": 380
+        },
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/focus-giftshop-desktop-actual-product-surface.png",
+        "evidence": {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/focus-giftshop-desktop-actual-product-surface.png",
+          "bytes": 65758,
+          "sha256": "4FAF8FFA748CB571F830D1EAA653709906BAD80215BF15C298213D3200600AB6",
+          "width": 710,
+          "height": 380
+        },
+        "sourceComparisonSha256": "F1B233BF42F6F0A33A74A845A4732F0C63738448D1A2D4E7A48E73B3F4CFAD5C",
+        "status": "PASS_SCOPED_VISIBLE_CROP",
+        "method": "Direct original-resolution view_image of five actual root-produced paired crops."
+      },
+      {
+        "name": "tiktok-desktop-actual",
+        "surface": "original-image",
+        "rect": {
+          "left": 340,
+          "top": 380,
+          "width": 760,
+          "height": 380
+        },
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/focus-tiktok-desktop-actual-original-image.png",
+        "evidence": {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/focus-tiktok-desktop-actual-original-image.png",
+          "bytes": 124892,
+          "sha256": "D9EC49CD181C4C509E5F57DDE7861BFE883D0B17D70FA533E90E7C7316F87B56",
+          "width": 1520,
+          "height": 380
+        },
+        "sourceComparisonSha256": "F7A8D91A13EDBED5E6BDA0F5032AF7902E2BF591ECC273D8D397F6E8665BE4B0",
+        "status": "PASS_SCOPED_VISIBLE_CROP",
+        "method": "Direct original-resolution view_image of five actual root-produced paired crops."
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "TIKTOK_DESKTOP_BLANK_IMAGE",
+      "initialPriority": "P1",
+      "status": "RESOLVED_RECAPTURE_WITH_LOCAL_IMAGE_COMPLETE_GUARD",
+      "initialEvidence": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl04\\visual-initial-tiktok-desktop-missing-image.png",
+        "bytes": 180957,
+        "sha256": "F7A8D91A13EDBED5E6BDA0F5032AF7902E2BF591ECC273D8D397F6E8665BE4B0",
+        "width": 2880,
+        "height": 900
+      },
+      "acceptedEvidence": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/tiktok-desktop-actual-comparison.png",
+        "bytes": 180957,
+        "sha256": "F7A8D91A13EDBED5E6BDA0F5032AF7902E2BF591ECC273D8D397F6E8665BE4B0",
+        "width": 2880,
+        "height": 900
+      }
+    },
+    {
+      "id": "PRIVACY_VISIBLE_ANCHOR_TRUNCATED",
+      "initialPriority": "P2",
+      "status": "RESOLVED_FULL_VISIBLE_HTTPS_ADDRESS",
+      "initialReceipt": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl04\\expanded-visual-audit-latest.json",
+      "acceptedEvidence": [
+        {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/privacy-desktop-actual-comparison.png",
+          "bytes": 158840,
+          "sha256": "653F824754344A1548C935D30B8B4476E375EF51B7AA82F65F863233419BAE78",
+          "width": 2880,
+          "height": 900
+        },
+        {
+          "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/privacy-mobile-actual-comparison.png",
+          "bytes": 98174,
+          "sha256": "812A88C5A88EF54DBB055508785747156EC7C7A25697EA4C9B806B63C6E199C9",
+          "width": 780,
+          "height": 844
+        }
+      ]
+    },
+    {
+      "id": "HERO_TABLET_LOGO_SOURCE_STATE",
+      "initialPriority": "P1",
+      "status": "RESOLVED_WAIT_VISIBLE_LOGO_AND_RECAPTURE",
+      "initialEvidence": {
+        "path": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl04\\visual-initial-hero-tablet-logo-state.png",
+        "bytes": 838306,
+        "sha256": "4F437E2A7EAD748634ECFBF2016CBC26D430189849B94AE5B105519262C1ED39",
+        "width": 1536,
+        "height": 1024
+      },
+      "acceptedEvidence": {
+        "path": "C:/AI/Polsia-Codex-20261011/outputs/polsia-clone4-20261012/visual-qa/hero-tablet-actual-comparison.png",
+        "bytes": 838306,
+        "sha256": "4F437E2A7EAD748634ECFBF2016CBC26D430189849B94AE5B105519262C1ED39",
+        "width": 1536,
+        "height": 1024
+      },
+      "description": "源logo初始未稳定截图已保留；等待logo/图片实际可见后最新补采源/本地都有完整白Polsia，办公背景裁切、同中文主标题/CTA/滚动提示匹配。关闭源状态未决。"
+    }
+  ],
+  "limits": [
+    "Only explicitly independently viewed capture names can pass; dynamically appended manifest entries stay unreviewed.",
+    "Source/local distinct filenames and PNG SHA/dimensions are bound; early unstable/overwritten stable9 captures excluded.",
+    "Chinese/English or explicit local payment shell wording differences are allowed by user; actual glyph identity and equal line wrapping are not claimed.",
+    "Screenshots prove visible states; production payments, OAuth, third-party connections and external company execution remain unverified.",
+    "No numerical similarity percentage or complete Polsia business parity claimed."
+  ],
+  "codeGraphUsage": {
+    "mcpAvailable": "Available tool metadata",
+    "cliAvailable": "Not checked: no index",
+    "indexPresent": false,
+    "statusCheckedBeforeWork": true,
+    "callersCalleesImpact": "Targeted source reads earlier; visual audit needs no code mutation",
+    "refresh": false,
+    "reason": "Original and integrated source roots have no .codegraph; audit is read-only."
+  },
+  "knowledgeBrainUsage": {
+    "indexChecked": true,
+    "routingMapChecked": true,
+    "relevantIndex": "commands",
+    "codeGraphUsedWhereRelevant": "Index absent fallback",
+    "openHumanUsed": false,
+    "syncBeforeAfter": false,
+    "reason": "Earlier task-directed reuse preflight completed; audit creates workspace evidence only, no knowledge-brain hot entry changed."
+  }
+}

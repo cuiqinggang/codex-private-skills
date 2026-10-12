@@ -1,0 +1,31 @@
+{
+  "kind": "AUTHORING_QUALITY_GATE",
+  "score": 98,
+  "scale": 100,
+  "professionalJudgment": true,
+  "empiricalSimilarityMeasurement": false,
+  "executionSideRescoreRequired": false,
+  "criticalFailures": [],
+  "checked": [
+    "explicit latest public scope",
+    "exact original four source tasks and frozen baseline",
+    "single-writer four roles",
+    "actual model vs controlled boundaries distinguished",
+    "persistent completion and no replay",
+    "current runtime fingerprint precheck",
+    "public resource hash restore",
+    "versioned shared workspace delivery",
+    "production/account boundaries",
+    "source/local combined visual proof"
+  ],
+  "deductions": [
+    {
+      "points": 1,
+      "reason": "公开视觉99.9%无全站数值实测，记录真实局部/人工验收范围"
+    },
+    {
+      "points": 1,
+      "reason": "后续私有/第三方能力需真实参考和授权，当前范围之外"
+    }
+  ]
+}

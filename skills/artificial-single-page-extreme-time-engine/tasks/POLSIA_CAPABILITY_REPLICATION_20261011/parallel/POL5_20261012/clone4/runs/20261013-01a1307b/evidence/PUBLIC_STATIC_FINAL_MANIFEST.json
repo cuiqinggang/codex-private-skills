@@ -1,0 +1,369 @@
+{
+  "checkedAt": "2026-10-12T17:17:28.820Z",
+  "status": "READY_FOR_ROOT_SNAPSHOT",
+  "scope": "EXACT_CURRENT_PUBLIC_FILES",
+  "files": [
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\BlackletterBit.otf",
+      "filename": "BlackletterBit.otf",
+      "bytes": 239920,
+      "sha256": "b32ef39538f6ed4695f1bf5ff04c2066b96755b9beff8c8d091637b629dc270e"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\PPEditorialNew-Bold.otf",
+      "filename": "PPEditorialNew-Bold.otf",
+      "bytes": 57384,
+      "sha256": "84684c95b804c7760750079ccb95135be0e9aa0b73bd0eda20e5eda162d41e18"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\PPEditorialNew-Italic.otf",
+      "filename": "PPEditorialNew-Italic.otf",
+      "bytes": 59116,
+      "sha256": "afe988315ea5b47315c03d3f98f22d8af8ab760ab65890aa743b41063a1ebb2d"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\PPEditorialNew-Regular.otf",
+      "filename": "PPEditorialNew-Regular.otf",
+      "bytes": 58264,
+      "sha256": "527c535ac11f1206411ce5ba5e61c86616b7356fb170e42a3c9a774f0e348fd3"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\PPEditorialOld-Italic.otf",
+      "filename": "PPEditorialOld-Italic.otf",
+      "bytes": 138936,
+      "sha256": "f0e65a65feaa6e35185e39ca32f94c89d7097f35644e15bf7781df0ba2e6dfb4"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\PPEditorialOld-Regular.otf",
+      "filename": "PPEditorialOld-Regular.otf",
+      "bytes": 143588,
+      "sha256": "47352cf5ce603b4289a60eae27978eb92afbdd030963f4709b7da0157e32d8ea"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\PPEditorialOld-Ultralight.otf",
+      "filename": "PPEditorialOld-Ultralight.otf",
+      "bytes": 140236,
+      "sha256": "8a7c1ebea419cc9691e3a63bca35626783ec53074f4ec0322631c1c8418afcc9"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\PPEditorialOld-UltralightItalic.otf",
+      "filename": "PPEditorialOld-UltralightItalic.otf",
+      "bytes": 136884,
+      "sha256": "4e52b03d6b2baf4ddc7e0d6d7e37e9ee5ec934bf73771a3cac508e25db634c01"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\SuisseIntlMono-Bold.otf",
+      "filename": "SuisseIntlMono-Bold.otf",
+      "bytes": 60872,
+      "sha256": "1890337241cc0dc592fef861bf55ef753811fbbe73f90ce597a533e1cc50d9a2"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\SuisseIntlMono-Regular.otf",
+      "filename": "SuisseIntlMono-Regular.otf",
+      "bytes": 59916,
+      "sha256": "faf4af3d5d73487fc6beed6469bc4547b13bdf089321d5d7c37df318c58c831a"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\about.html",
+      "filename": "about.html",
+      "bytes": 6728,
+      "sha256": "3f61c3c2c919245c49260c5817ea8f5e49f63c441b9782cbaa3d7e6bd2652377"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\acceptable-use.html",
+      "filename": "acceptable-use.html",
+      "bytes": 6631,
+      "sha256": "375ec32cb01c1f8d5572ba21aff88774c38a3c6025b7a5840fb580bdd669dd90"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\announcement-2a637515-bb09-4f02-b5d4-24d38a98d972.webp",
+      "filename": "announcement-2a637515-bb09-4f02-b5d4-24d38a98d972.webp",
+      "bytes": 54444,
+      "sha256": "47bec1ba53de465fb7ed1d1c82f452a1a6579ae582c13dbfccc4f98e324b0af3"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\announcement-646c22cc-83d2-4188-91cc-e60702e3391c.webp",
+      "filename": "announcement-646c22cc-83d2-4188-91cc-e60702e3391c.webp",
+      "bytes": 47584,
+      "sha256": "4330f668d189c4b42e822c27c3d0a7cf0ad4f2d277a1b3e4f73cd4f6352a1173"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\announcement-79d144a7-1ec2-475c-b0bc-29c7b47437a5.webp",
+      "filename": "announcement-79d144a7-1ec2-475c-b0bc-29c7b47437a5.webp",
+      "bytes": 44926,
+      "sha256": "61fcb7ff791492ace1a96ec7f0b0f81089fced4f3149d3cda9f09c0e7d11a3ec"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\announcement-7e7f565e-ed38-4f88-bae9-54d382f4c625.webp",
+      "filename": "announcement-7e7f565e-ed38-4f88-bae9-54d382f4c625.webp",
+      "bytes": 46512,
+      "sha256": "ee85727960e74f8cceded6a09bd87549d6593b99b7141d709833c0958bc9097c"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\background.wav",
+      "filename": "background.wav",
+      "bytes": 18818440,
+      "sha256": "0c6869f852e6d2509ae113f9b476546fa8a092f05455a4a98127052835896725"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\bencera-Di0L4Dqd.png",
+      "filename": "bencera-Di0L4Dqd.png",
+      "bytes": 447970,
+      "sha256": "71560baac7f95875dfbefa7c01cb7598a144bd07cfd6b7a092510bdd48c7de12"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\bg-clouds.webp",
+      "filename": "bg-clouds.webp",
+      "bytes": 9180,
+      "sha256": "151f9117df071f2cee419757b8fa0c62052e10fd28414c79ada867d8d0a322fb"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\changelog-2a637515-bb09-4f02-b5d4-24d38a98d972.html",
+      "filename": "changelog-2a637515-bb09-4f02-b5d4-24d38a98d972.html",
+      "bytes": 3966,
+      "sha256": "3ee3d2a9931e42158d4cec6766f45552c926afa83a2432448da8ad7869dccfd2"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\changelog-646c22cc-83d2-4188-91cc-e60702e3391c.html",
+      "filename": "changelog-646c22cc-83d2-4188-91cc-e60702e3391c.html",
+      "bytes": 4047,
+      "sha256": "cbb4bf1967d5087cef605bad9a264b5b4433ddeb9c7dc422db0e393c6609e0bc"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\changelog-79d144a7-1ec2-475c-b0bc-29c7b47437a5.html",
+      "filename": "changelog-79d144a7-1ec2-475c-b0bc-29c7b47437a5.html",
+      "bytes": 4067,
+      "sha256": "b501bb10b5b25854e2d735f73f014afb20eba0625c207b27b635238b8ccf3d47"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\changelog-7e7f565e-ed38-4f88-bae9-54d382f4c625.html",
+      "filename": "changelog-7e7f565e-ed38-4f88-bae9-54d382f4c625.html",
+      "bytes": 4004,
+      "sha256": "92d9fdb8678ff64e04ce9390768fcf21a2c220f3b51c27667739b8b2a25fabed"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\changelog.html",
+      "filename": "changelog.html",
+      "bytes": 6621,
+      "sha256": "ffd4c6034eb1ee15e011519cbe26b937afe2e7da82d89f47113cd95dc23867ee"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\church.html",
+      "filename": "church.html",
+      "bytes": 6203,
+      "sha256": "b04eb2b05fb9d1d11370fc487e5b18e0963e44d560e67e3af04560fddb924198"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\connect.html",
+      "filename": "connect.html",
+      "bytes": 715,
+      "sha256": "445232e32ce4d556f1cb6588d5fc0f2d4a14216642981ce66ca237953d1d27a3"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\favicon-192x192.png",
+      "filename": "favicon-192x192.png",
+      "bytes": 9790,
+      "sha256": "665c9ebd1945d62bec65a9e34b1778bff0e7f377c1c3ecdfeded65696b887732"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\favicon.png",
+      "filename": "favicon.png",
+      "bytes": 1121,
+      "sha256": "7e7a1fc2973cef3ae38677a35b16c03f5ef4a3c3adf9dba590795c3b83463dfa"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\founders-tour-tee-polsia.png",
+      "filename": "founders-tour-tee-polsia.png",
+      "bytes": 569232,
+      "sha256": "2e64b3199dfdbf13498817b5171e0b5669930530bf3b01fbd000cb32eccf1ec9"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\giftshop.html",
+      "filename": "giftshop.html",
+      "bytes": 8951,
+      "sha256": "53b05bef095994abbbaf936ebf3bc7d9324b81c5398bf1827b319d8710248b5e"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\hat-1.png",
+      "filename": "hat-1.png",
+      "bytes": 299108,
+      "sha256": "b6b85c4a09a1180eb9c6ee80e5d919387b38f87228ac8321cf026fcee7f8495e"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\hat2.png",
+      "filename": "hat2.png",
+      "bytes": 237323,
+      "sha256": "ff32a06655d55551a06d3f885634d8f669426d4d4c3dc5897a8ebb34626f00cb"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\home-office-polsia.webp",
+      "filename": "home-office-polsia.webp",
+      "bytes": 234464,
+      "sha256": "9bca0aa3b161ea4391b3623063d652af4c7609bc89997886e2434982237b5edf"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\home-polsia-office.webp",
+      "filename": "home-polsia-office.webp",
+      "bytes": 298792,
+      "sha256": "3ae314904b00dad8516eecab66310864a47029de972cb1dfe39f536f8ce35884"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\index.html",
+      "filename": "index.html",
+      "bytes": 5548,
+      "sha256": "6ed5e43e06043067881d91fe2376e3571594cb91688f23abc0076709c5b5a39f"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\keychain-polsia.png",
+      "filename": "keychain-polsia.png",
+      "bytes": 169750,
+      "sha256": "633b18eceeedb329482f0b383ef872bc781211749a0ce4e6dd0231ef904554a6"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\lesnuages-KkuCGfBJ.png",
+      "filename": "lesnuages-KkuCGfBJ.png",
+      "bytes": 159356,
+      "sha256": "881171f65cd57f550322d6a029cee14413dc98872971b1b630fa47824454692a"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\local.css",
+      "filename": "local.css",
+      "bytes": 686,
+      "sha256": "3420b40b9b1a693e2ec17c0fd53e85c74ac30fed8959a8499c73183de85e5808"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\local.js",
+      "filename": "local.js",
+      "bytes": 22513,
+      "sha256": "131056064cfd5a081a0db8e3b859200656e3f129c82708f2be8b98bc0dd75cbf"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\login-delayed.html",
+      "filename": "login-delayed.html",
+      "bytes": 2965,
+      "sha256": "a0dbbe012cb9429e23dddedda76b39d6e45ce7870b724d7858b37383c6ecab80"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\login.html",
+      "filename": "login.html",
+      "bytes": 2982,
+      "sha256": "01a43263e5590a27f346db93b9d3072fe213194d5938a14bef7617b5becc1cee"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\logoblanc.webp",
+      "filename": "logoblanc.webp",
+      "bytes": 26686,
+      "sha256": "355ac26b3c6a0ac4a2a33856d895d9db941f5f6464a6ac4f0c53f88848d628e3"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\logonoir.webp",
+      "filename": "logonoir.webp",
+      "bytes": 22846,
+      "sha256": "22ca148f3f2fc481ffe8ca6516bacf32d186565197f238f89025f57a3834ddb7"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\magic-cube-polsia.png",
+      "filename": "magic-cube-polsia.png",
+      "bytes": 226081,
+      "sha256": "06343f20a8c298f94680fad0d4aa7feca776eeac643fe56f23c6c4b18bf57922"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\mens.webp",
+      "filename": "mens.webp",
+      "bytes": 115348,
+      "sha256": "8f9b0cd719c16007dd69dfedbfb2a5dbe2c86d75f6c6142e486f01afd3b6f91b"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\new.html",
+      "filename": "new.html",
+      "bytes": 1844,
+      "sha256": "6ac9f829f5b0600dafaacdc0d466e8787d7ed8d744ffa9ca556e1eee7492088d"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\payment-cancelled.html",
+      "filename": "payment-cancelled.html",
+      "bytes": 815,
+      "sha256": "94e7d731e98b9998cf66ed2b9e70f4d89112adb9b666d3a12a235ba71f4dd4be"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\payment-success.html",
+      "filename": "payment-success.html",
+      "bytes": 833,
+      "sha256": "163f297cbef3ec06e62311569c7862aa7ef26330706cbb2f767a4ddb438efb8d"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\pin-polsia.png",
+      "filename": "pin-polsia.png",
+      "bytes": 111109,
+      "sha256": "d90e5394a0e2333f5c81517d96325f9bc6ce124a448201f9c0d1bc08e1438de0"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\polsia-stickers-sheet.png",
+      "filename": "polsia-stickers-sheet.png",
+      "bytes": 53288,
+      "sha256": "d4d611ef437e734dc068cfebe7e9787448dab30ab819b3c5b604a382d8ff76fb"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\privacy.html",
+      "filename": "privacy.html",
+      "bytes": 18204,
+      "sha256": "a8575bf79f43cd9d11989868d1c11841342e3f6a468dbb6a1fbd86e7fce08ea6"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\site.css",
+      "filename": "site.css",
+      "bytes": 712380,
+      "sha256": "0350968f1d6f0c586045a54526413bee4b153bc2dc4387b9d3490a87f5d2f7c4"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\states.json",
+      "filename": "states.json",
+      "bytes": 13491,
+      "sha256": "c54f56cef10e652d3daaed46d325c53c0f6e44b2620b97b27cfdc5fbc529db03"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\stress_cube_polsia.png",
+      "filename": "stress_cube_polsia.png",
+      "bytes": 181142,
+      "sha256": "943fed3731af31c92f5c1fc5fe2364a70ef83557eb555d746251c9c3eed1aaf7"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\subprocessors.html",
+      "filename": "subprocessors.html",
+      "bytes": 7522,
+      "sha256": "14eb4fe6d231d3362ffa97a67a8591b548575dcd0d67030b44941546f4606fc1"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\subscription-success.html",
+      "filename": "subscription-success.html",
+      "bytes": 833,
+      "sha256": "163f297cbef3ec06e62311569c7862aa7ef26330706cbb2f767a4ddb438efb8d"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\tee-cabo-2.png",
+      "filename": "tee-cabo-2.png",
+      "bytes": 513036,
+      "sha256": "10d84f0aba9e124e482c34ac3acc778957f78d9440b58168a285389a2fb8a176"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\tee-cabo-white.png",
+      "filename": "tee-cabo-white.png",
+      "bytes": 486242,
+      "sha256": "eff69d4b04bd6fe09805946b4d92a54fc255cfc372742d6c3b8ee09d89a5bac2"
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\integration\\open-polsia\\public\\polsia\\terms.html",
+      "filename": "terms.html",
+      "bytes": 58224,
+      "sha256": "90c5e57d0bafb47e9e7f7fea95939974d5db859ff4c2237569a32c307f373f63"
+    }
+  ],
+  "filesCount": 59,
+  "productionBundleIncluded": false,
+  "htmlCount": 20,
+  "originalAssetCount": 36,
+  "changedFromPreviousManifest": [
+    "payment-cancelled.html"
+  ],
+  "rootVisualAcceptance": "ROOT_OWNER_PENDING"
+}

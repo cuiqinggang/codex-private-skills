@@ -1,0 +1,471 @@
+{
+  "checkedAt": "2026-10-12T17:17:28.884Z",
+  "status": "PASS_PUBLIC_FUNCTIONAL_E2E_AND_FINAL_DELTA",
+  "fullBrowserSuite": {
+    "cases": 16,
+    "passed": 16,
+    "failed": 0,
+    "requests": 771,
+    "responses": 771,
+    "pageErrors": 0,
+    "screenshots": 14
+  },
+  "finalChangedStaticDelta": {
+    "cases": 5,
+    "passed": 5,
+    "failed": 0,
+    "requests": 299,
+    "responses": 299,
+    "pageErrors": 0,
+    "screenshots": 5
+  },
+  "lastFooterDelta": {
+    "cases": 1,
+    "passed": 1,
+    "failed": 0,
+    "requests": 14,
+    "responses": 14,
+    "pageErrors": 0,
+    "screenshots": 2
+  },
+  "cancelledFinalGeometry": [
+    {
+      "label": "desktop",
+      "footerHeight": 35,
+      "contentHeight": 18,
+      "lineHeight": 18,
+      "lineCount": 1,
+      "cardHeight": 301.78125,
+      "cardWidth": 500,
+      "rootWidth": 1440,
+      "bodyWidth": 1440,
+      "viewport": 1440
+    },
+    {
+      "label": "mobile",
+      "footerHeight": 35,
+      "contentHeight": 18,
+      "lineHeight": 18,
+      "lineCount": 1,
+      "cardHeight": 301.78125,
+      "cardWidth": 350,
+      "rootWidth": 390,
+      "bodyWidth": 390,
+      "viewport": 390
+    }
+  ],
+  "currentStaticChangedFiles": [
+    "payment-cancelled.html"
+  ],
+  "directHandler": {
+    "requests": 192,
+    "groupsPassed": 7,
+    "verifiedBeforeFinalFooterCopy": true,
+    "finalFooterVerifiedByRealBrowser": true
+  },
+  "mainRunId": "20261012170031432",
+  "finalDeltaRunId": "20261012170513494",
+  "lastFooterRunId": "20261012171607459",
+  "publicFiles": 59,
+  "html": 20,
+  "originalAssets": 36,
+  "allBrowserRunsPreserved": [
+    {
+      "runId": "20261012165704851",
+      "status": "FAIL",
+      "totals": {
+        "cases": 16,
+        "passed": 10,
+        "failed": 6,
+        "requests": 718,
+        "responses": 718,
+        "pageErrors": 0,
+        "screenshots": 14
+      },
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012165704851\\receipt.json",
+      "sha256": "a38ced1f9fc0f7e1cf30e965dc782284d51b565cdbae5489511e86fc4f376b9e",
+      "retainedUnmodified": true
+    },
+    {
+      "runId": "20261012170031432",
+      "status": "PASS",
+      "totals": {
+        "cases": 16,
+        "passed": 16,
+        "failed": 0,
+        "requests": 771,
+        "responses": 771,
+        "pageErrors": 0,
+        "screenshots": 14
+      },
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\receipt.json",
+      "sha256": "b1e7da74f88a2d72c30a7a7bacc180b7eac2f9037a9239bad6e5d7727d53cea4",
+      "retainedUnmodified": true
+    },
+    {
+      "runId": "20261012170513494",
+      "status": "PASS",
+      "totals": {
+        "cases": 5,
+        "passed": 5,
+        "failed": 0,
+        "requests": 299,
+        "responses": 299,
+        "pageErrors": 0,
+        "screenshots": 5
+      },
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170513494\\receipt.json",
+      "sha256": "0e7c42e9b39a3a7c351230a59c3c2808cb1b2e704d81f1843931837d99ada0fb",
+      "retainedUnmodified": true
+    },
+    {
+      "runId": "20261012171607459",
+      "status": "PASS",
+      "totals": {
+        "cases": 1,
+        "passed": 1,
+        "failed": 0,
+        "requests": 14,
+        "responses": 14,
+        "pageErrors": 0,
+        "screenshots": 2
+      },
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012171607459\\receipt.json",
+      "sha256": "669e5cdb203b970dabcd76368e426fede0110b7e7874df335de4e1f33d42430f",
+      "retainedUnmodified": true
+    }
+  ],
+  "receiptHashes": [
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\PUBLIC_BROWSER_E2E_RECEIPT.json",
+      "sha256": "b1e7da74f88a2d72c30a7a7bacc180b7eac2f9037a9239bad6e5d7727d53cea4",
+      "bytes": 391628
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\PUBLIC_BROWSER_E2E_DELTA_RECEIPT.json",
+      "sha256": "0e7c42e9b39a3a7c351230a59c3c2808cb1b2e704d81f1843931837d99ada0fb",
+      "bytes": 152762
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\PUBLIC_BROWSER_E2E_CANCELLED_FINAL_RECEIPT.json",
+      "sha256": "669e5cdb203b970dabcd76368e426fede0110b7e7874df335de4e1f33d42430f",
+      "bytes": 10696
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\PUBLIC_BROWSER_E2E_FIXTURE_READBACK.json",
+      "sha256": "14e5d73f646ded67f06109bd8867b87082ad1d4a2067fef03335f64dc5bc8a23",
+      "bytes": 851
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\PUBLIC_PAGE_ROUTE_OBSERVATIONS.json",
+      "sha256": "760f61c8c3c151c25a98cf6dd6e3cf6c01588d58414a27f01dca20e04799f67c",
+      "bytes": 27368
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\PUBLIC_PAGE_BUILD_RECEIPT.json",
+      "sha256": "bc0ee8b9bc9e236baec4b527a0d810e8b3df5c0a7646a5ea55f73cfffb347d7e",
+      "bytes": 16745
+    },
+    {
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\PUBLIC_STATIC_FINAL_MANIFEST.json",
+      "sha256": "dd12d340adf1edd05d44e6a7dfbe151e0378aab51460041aa3d33e0755b1746a",
+      "bytes": 18543
+    }
+  ],
+  "finalDeltaCompanyWrites": 0,
+  "finalSuccessfulSuiteCompanyWrites": 2,
+  "totalRetainedFixtures": 4,
+  "retainedFixtureReadback": [
+    {
+      "id": "local-2ffb11a7-b213-44ca-a846-b728cfd68205",
+      "name": "E2E公开想法20261012165704851",
+      "created_at": "2026-10-12T16:58:00.432Z"
+    },
+    {
+      "id": "local-f100a18f-a622-42b9-a318-ffe81f54b699",
+      "name": "E2E现有公司20261012165704851",
+      "created_at": "2026-10-12T16:58:02.893Z"
+    },
+    {
+      "id": "local-b64c180d-f20b-4e41-8789-ad8d476d6fec",
+      "name": "E2E公开想法20261012170031432",
+      "created_at": "2026-10-12T17:01:04.478Z"
+    },
+    {
+      "id": "local-b7895ee0-0f57-4307-81b5-0161ee6d36e2",
+      "name": "E2E现有公司20261012170031432",
+      "created_at": "2026-10-12T17:01:07.236Z"
+    }
+  ],
+  "realAudio": {
+    "status": 206,
+    "range": "bytes 0-18818439/18818440",
+    "playing": {
+      "paused": false,
+      "time": 0.06625,
+      "src": "http://127.0.0.1:55437/audio/background.wav"
+    },
+    "paused": true
+  },
+  "productionRequests": 0,
+  "externalWriteRequests": 0,
+  "modelExecutionRequests": 0,
+  "pageErrors": 0,
+  "screenshots": [
+    {
+      "name": "home-cta-proof",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\home-cta-proof.png",
+      "bytes": 1045568,
+      "sha256": "71341fdcab139e43bdde1d585290040cadb3b8b822107bf1bcd8c667333112fe",
+      "case": "four home CTA clicks reach new, and logo returns home",
+      "url": "http://127.0.0.1:55437/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "new-filled",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\new-filled.png",
+      "bytes": 25075,
+      "sha256": "71dbe4fa2285f7821c463b081d9621812ebe24bc2d105450c9ac604ed1f94dbd",
+      "case": "new manual idea empty/whitespace disabled and two-level back",
+      "url": "http://127.0.0.1:55437/new",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "idea-e2e-workspace",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\idea-e2e-workspace.png",
+      "bytes": 55707,
+      "sha256": "78acc0f2eb49d8a74ee4e21a8ab166c2d4f1d886f78a8c2ba2a3357e53f44480",
+      "case": "idea submit creates real local company and selection survives workspace reload",
+      "url": "http://127.0.0.1:55437/workspace",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "existing-e2e-workspace",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\existing-e2e-workspace.png",
+      "bytes": 55602,
+      "sha256": "503dc89028731ee6a4855a66d7cdbd89ccd872cfa95459404dbac17410a4c657",
+      "case": "existing company validation and real local submit persisted",
+      "url": "http://127.0.0.1:55437/workspace",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "login-local-notice",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\login-local-notice.png",
+      "bytes": 37510,
+      "sha256": "d138f5874acc77a629235f57a7bf06c7b30efe75034a875e07b2dadfeda1c8a3",
+      "case": "Google and email show truthful local notices without auth requests",
+      "url": "http://127.0.0.1:55437/login",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "language-selected",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\language-selected.png",
+      "bytes": 1041372,
+      "sha256": "ed948db6cc3834f15166fc7f001d91ea1b0c522d4050ba65ac1b5b82c94d6d59",
+      "case": "language search Escape and keyboard choice update real control",
+      "url": "http://127.0.0.1:55437/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "about-audio-paused",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\about-audio-paused.png",
+      "bytes": 81129,
+      "sha256": "6a8c0317c62288b2e8879f182d00f20ee41ce9bf5456a6a68819835ed2805146",
+      "case": "about actual native audio plays pauses and uses local Range206",
+      "url": "http://127.0.0.1:55437/about",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "changelog-tiktok-loaded",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\changelog-tiktok-loaded.png",
+      "bytes": 138818,
+      "sha256": "fb20481316cb199dde165289170e0c0fd88852e279b50af2438fad3ae97e32f7",
+      "case": "changelog list links open all four loaded local announcements",
+      "url": "http://127.0.0.1:55437/changelog/7e7f565e-ed38-4f88-bae9-54d382f4c625",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "payment-local-template",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\payment-local-template.png",
+      "bytes": 14609,
+      "sha256": "f0db635904160e405ccd8f68ff29968c89ff24572a16d44486a0d60005df1816",
+      "case": "public redirects actual JSON404 and result shells make no transaction",
+      "url": "http://127.0.0.1:55437/payment/cancelled",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "giftshop-ascii-hover",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\giftshop-ascii-hover.png",
+      "bytes": 239019,
+      "sha256": "9c3ee11ac124957599f9b8f817ecc672263bc617c7b9e3a89e772d1c0746e229",
+      "case": "giftshop original images hover ASCII sold-out reset and local external notice",
+      "url": "http://127.0.0.1:55437/giftshop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "church-finale",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\church-finale.png",
+      "bytes": 103206,
+      "sha256": "43a27c4712c1375135ead37d9742bd5321bef1bf5cb9edf39b7c1ba5f049a58d",
+      "case": "Church original local cloud/portrait scroll layers and CTA",
+      "url": "http://127.0.0.1:55437/church",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "mobile-changelog",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\mobile-changelog.png",
+      "bytes": 80474,
+      "sha256": "59e18db0e5dbd14b197578fda90b3e03457832c9123b075f14301a481d21c193",
+      "case": "all 20 public HTML variants fit real mobile viewport",
+      "url": "http://127.0.0.1:55437/changelog/7e7f565e-ed38-4f88-bae9-54d382f4c625",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "name": "mobile-new-controls",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\mobile-new-controls.png",
+      "bytes": 16800,
+      "sha256": "3f08561913c4a21530af47f640ebee44927d53d10e2b0e7831c655857eb9d249",
+      "case": "mobile menu, home CTA, input controls and local email notice work",
+      "url": "http://127.0.0.1:55437/new",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "name": "mobile-login-notice",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170031432\\mobile-login-notice.png",
+      "bytes": 29625,
+      "sha256": "c741457584ff96635e5652abbaddc77d497b1d74abcce006939bdc68eada8157",
+      "case": "mobile menu, home CTA, input controls and local email notice work",
+      "url": "http://127.0.0.1:55437/login",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "name": "language-selected",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170513494\\language-selected.png",
+      "bytes": 1041160,
+      "sha256": "b75824e4bb058158583e4b60ef8c20b49164fa241ffcf2615f2b8e471d0c06c8",
+      "case": "language search Escape and keyboard choice update real control",
+      "url": "http://127.0.0.1:55437/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "payment-local-template",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170513494\\payment-local-template.png",
+      "bytes": 14686,
+      "sha256": "afb253d9e13fbba0c42452acbf5be2d81a6e1b06f378ba1946dd73f47b933d3f",
+      "case": "public redirects actual JSON404 and result shells make no transaction",
+      "url": "http://127.0.0.1:55437/payment/cancelled",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "mobile-changelog",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170513494\\mobile-changelog.png",
+      "bytes": 80474,
+      "sha256": "59e18db0e5dbd14b197578fda90b3e03457832c9123b075f14301a481d21c193",
+      "case": "all 20 public HTML variants fit real mobile viewport",
+      "url": "http://127.0.0.1:55437/changelog/7e7f565e-ed38-4f88-bae9-54d382f4c625",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "name": "mobile-new-controls",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170513494\\mobile-new-controls.png",
+      "bytes": 16800,
+      "sha256": "3f08561913c4a21530af47f640ebee44927d53d10e2b0e7831c655857eb9d249",
+      "case": "mobile menu, home CTA, input controls and local email notice work",
+      "url": "http://127.0.0.1:55437/new",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "name": "mobile-login-notice",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012170513494\\mobile-login-notice.png",
+      "bytes": 29934,
+      "sha256": "5b1a33bbe2623e44be6ecfacdf77564b06f7f866baecd289fcd147d90b7dc7f3",
+      "case": "mobile menu, home CTA, input controls and local email notice work",
+      "url": "http://127.0.0.1:55437/login",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "name": "cancelled-final-desktop",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012171607459\\cancelled-final-desktop.png",
+      "bytes": 12500,
+      "sha256": "5d390e688e68aa09166cbae8fedc7b3a19aec51d4fe49d3a2a134b8068c82bd2",
+      "case": "cancelled final footer is one line at both viewports with original card geometry",
+      "url": "http://127.0.0.1:55437/payment/cancelled",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "cancelled-final-mobile",
+      "file": "C:\\AI\\Polsia-Codex-20261011\\outputs\\polsia-clone4-20261012\\pcl02\\output\\playwright\\public-e2e\\20261012171607459\\cancelled-final-mobile.png",
+      "bytes": 9179,
+      "sha256": "c469db2e6ab66a4796ec1124a3072ac943d176bbb3b9ac82b0f92fac9994c2c7",
+      "case": "cancelled final footer is one line at both viewports with original card geometry",
+      "url": "http://127.0.0.1:55437/payment/cancelled",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "firstRunCorrection": "Preserved first run FAIL included real language hidden-item CSS bug; corrected display/native select/checked state/persistence. Other failures were CDP body access after navigation, outdated payment copy assertion during approved visual update and resulting missing-fixture assertion. Outcomes were not rewritten.",
+  "finalStaticDelta": "After cancellation body line break, actual browser checked all 20 mobile widths, result/redirect/404 shells, language/native/checked/persistence and mobile controls. Last footer Chinese copy change was limited to payment-cancelled.html; independently checked both viewports: single footer line,35px footer,approximately302px card,no overflow/no new write/model job.",
+  "limits": "Does not certify payment, Google/email auth, external store, private dashboard visuals or 99.9% numerical visual similarity. Root owns final visual acceptance and snapshot publication."
+}

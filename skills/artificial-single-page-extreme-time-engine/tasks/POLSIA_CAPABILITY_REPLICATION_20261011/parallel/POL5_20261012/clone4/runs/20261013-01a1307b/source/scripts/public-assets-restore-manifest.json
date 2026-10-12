@@ -1,0 +1,575 @@
+{
+  "schema_version": 1,
+  "upstream": {
+    "repository": "https://github.com/AI-Builder-Club/open-polsia.git",
+    "base_commit": "c62ba0be3368815dc9011848d96875ef228f1607"
+  },
+  "provenance": {
+    "handler_sha256": "c738efe26185ed7a8d2741e436820b12572edbcc68048bc7860166a2c54e2363",
+    "collected_manifest_sha256": "53d1c239b8f83a17769d7586096b077408c06e06ead1f33bc2d61cea9962d490"
+  },
+  "counts": {
+    "collected_source_assets": 38,
+    "restore_original_assets": 36,
+    "text_html_pages": 20,
+    "adapted_text_static": 3,
+    "public_files_total": 59
+  },
+  "assets": [
+    {
+      "target": "public/polsia/BlackletterBit.otf",
+      "source_url": "https://polsia.com/fonts/BlackletterBit.otf",
+      "sha256": "b32ef39538f6ed4695f1bf5ff04c2066b96755b9beff8c8d091637b629dc270e",
+      "bytes": 239920,
+      "served_paths": [
+        "/fonts/BlackletterBit.otf",
+        "/polsia/BlackletterBit.otf"
+      ]
+    },
+    {
+      "target": "public/polsia/PPEditorialNew-Bold.otf",
+      "source_url": "https://polsia.com/fonts/PPEditorialNew-Bold.otf",
+      "sha256": "84684c95b804c7760750079ccb95135be0e9aa0b73bd0eda20e5eda162d41e18",
+      "bytes": 57384,
+      "served_paths": [
+        "/fonts/PPEditorialNew-Bold.otf",
+        "/polsia/PPEditorialNew-Bold.otf"
+      ]
+    },
+    {
+      "target": "public/polsia/PPEditorialNew-Italic.otf",
+      "source_url": "https://polsia.com/fonts/PPEditorialNew-Italic.otf",
+      "sha256": "afe988315ea5b47315c03d3f98f22d8af8ab760ab65890aa743b41063a1ebb2d",
+      "bytes": 59116,
+      "served_paths": [
+        "/fonts/PPEditorialNew-Italic.otf",
+        "/polsia/PPEditorialNew-Italic.otf"
+      ]
+    },
+    {
+      "target": "public/polsia/PPEditorialNew-Regular.otf",
+      "source_url": "https://polsia.com/fonts/PPEditorialNew-Regular.otf",
+      "sha256": "527c535ac11f1206411ce5ba5e61c86616b7356fb170e42a3c9a774f0e348fd3",
+      "bytes": 58264,
+      "served_paths": [
+        "/fonts/PPEditorialNew-Regular.otf",
+        "/polsia/PPEditorialNew-Regular.otf"
+      ]
+    },
+    {
+      "target": "public/polsia/PPEditorialOld-Italic.otf",
+      "source_url": "https://polsia.com/fonts/PPEditorialOld-Italic.otf",
+      "sha256": "f0e65a65feaa6e35185e39ca32f94c89d7097f35644e15bf7781df0ba2e6dfb4",
+      "bytes": 138936,
+      "served_paths": [
+        "/fonts/PPEditorialOld-Italic.otf",
+        "/polsia/PPEditorialOld-Italic.otf"
+      ]
+    },
+    {
+      "target": "public/polsia/PPEditorialOld-Regular.otf",
+      "source_url": "https://polsia.com/fonts/PPEditorialOld-Regular.otf",
+      "sha256": "47352cf5ce603b4289a60eae27978eb92afbdd030963f4709b7da0157e32d8ea",
+      "bytes": 143588,
+      "served_paths": [
+        "/fonts/PPEditorialOld-Regular.otf",
+        "/polsia/PPEditorialOld-Regular.otf"
+      ]
+    },
+    {
+      "target": "public/polsia/PPEditorialOld-Ultralight.otf",
+      "source_url": "https://polsia.com/fonts/PPEditorialOld-Ultralight.otf",
+      "sha256": "8a7c1ebea419cc9691e3a63bca35626783ec53074f4ec0322631c1c8418afcc9",
+      "bytes": 140236,
+      "served_paths": [
+        "/fonts/PPEditorialOld-Ultralight.otf",
+        "/polsia/PPEditorialOld-Ultralight.otf"
+      ]
+    },
+    {
+      "target": "public/polsia/PPEditorialOld-UltralightItalic.otf",
+      "source_url": "https://polsia.com/fonts/PPEditorialOld-UltralightItalic.otf",
+      "sha256": "4e52b03d6b2baf4ddc7e0d6d7e37e9ee5ec934bf73771a3cac508e25db634c01",
+      "bytes": 136884,
+      "served_paths": [
+        "/fonts/PPEditorialOld-UltralightItalic.otf",
+        "/polsia/PPEditorialOld-UltralightItalic.otf"
+      ]
+    },
+    {
+      "target": "public/polsia/SuisseIntlMono-Bold.otf",
+      "source_url": "https://polsia.com/fonts/SuisseIntlMono-Bold.otf",
+      "sha256": "1890337241cc0dc592fef861bf55ef753811fbbe73f90ce597a533e1cc50d9a2",
+      "bytes": 60872,
+      "served_paths": [
+        "/fonts/SuisseIntlMono-Bold.otf",
+        "/polsia/SuisseIntlMono-Bold.otf"
+      ]
+    },
+    {
+      "target": "public/polsia/SuisseIntlMono-Regular.otf",
+      "source_url": "https://polsia.com/fonts/Suisse%20Int%27l%20Mono%20Regular.otf",
+      "sha256": "faf4af3d5d73487fc6beed6469bc4547b13bdf089321d5d7c37df318c58c831a",
+      "bytes": 59916,
+      "served_paths": [
+        "/fonts/Suisse Int'l Mono Regular.otf",
+        "/fonts/SuisseIntlMono-Regular.otf",
+        "/polsia/SuisseIntlMono-Regular.otf"
+      ]
+    },
+    {
+      "target": "public/polsia/announcement-2a637515-bb09-4f02-b5d4-24d38a98d972.webp",
+      "source_url": "https://polsia.com/api/v2/announcements/2a637515-bb09-4f02-b5d4-24d38a98d972/image?revision=2",
+      "sha256": "47bec1ba53de465fb7ed1d1c82f452a1a6579ae582c13dbfccc4f98e324b0af3",
+      "bytes": 54444,
+      "served_paths": [
+        "/landing/announcement-2a637515-bb09-4f02-b5d4-24d38a98d972.webp",
+        "/polsia/announcement-2a637515-bb09-4f02-b5d4-24d38a98d972.webp"
+      ]
+    },
+    {
+      "target": "public/polsia/announcement-646c22cc-83d2-4188-91cc-e60702e3391c.webp",
+      "source_url": "https://polsia.com/api/v2/announcements/646c22cc-83d2-4188-91cc-e60702e3391c/image?revision=2",
+      "sha256": "4330f668d189c4b42e822c27c3d0a7cf0ad4f2d277a1b3e4f73cd4f6352a1173",
+      "bytes": 47584,
+      "served_paths": [
+        "/landing/announcement-646c22cc-83d2-4188-91cc-e60702e3391c.webp",
+        "/polsia/announcement-646c22cc-83d2-4188-91cc-e60702e3391c.webp"
+      ]
+    },
+    {
+      "target": "public/polsia/announcement-79d144a7-1ec2-475c-b0bc-29c7b47437a5.webp",
+      "source_url": "https://polsia.com/api/v2/announcements/79d144a7-1ec2-475c-b0bc-29c7b47437a5/image?revision=2",
+      "sha256": "61fcb7ff791492ace1a96ec7f0b0f81089fced4f3149d3cda9f09c0e7d11a3ec",
+      "bytes": 44926,
+      "served_paths": [
+        "/landing/announcement-79d144a7-1ec2-475c-b0bc-29c7b47437a5.webp",
+        "/polsia/announcement-79d144a7-1ec2-475c-b0bc-29c7b47437a5.webp"
+      ]
+    },
+    {
+      "target": "public/polsia/announcement-7e7f565e-ed38-4f88-bae9-54d382f4c625.webp",
+      "source_url": "https://polsia.com/api/v2/announcements/7e7f565e-ed38-4f88-bae9-54d382f4c625/image?revision=2",
+      "sha256": "ee85727960e74f8cceded6a09bd87549d6593b99b7141d709833c0958bc9097c",
+      "bytes": 46512,
+      "served_paths": [
+        "/landing/announcement-7e7f565e-ed38-4f88-bae9-54d382f4c625.webp",
+        "/polsia/announcement-7e7f565e-ed38-4f88-bae9-54d382f4c625.webp"
+      ]
+    },
+    {
+      "target": "public/polsia/background.wav",
+      "source_url": "https://polsia.com/audio/background.wav",
+      "sha256": "0c6869f852e6d2509ae113f9b476546fa8a092f05455a4a98127052835896725",
+      "bytes": 18818440,
+      "served_paths": [
+        "/audio/background.wav",
+        "/polsia/background.wav"
+      ]
+    },
+    {
+      "target": "public/polsia/bencera-Di0L4Dqd.png",
+      "source_url": "https://polsia.com/assets/bencera-Di0L4Dqd.png",
+      "sha256": "71560baac7f95875dfbefa7c01cb7598a144bd07cfd6b7a092510bdd48c7de12",
+      "bytes": 447970,
+      "served_paths": [
+        "/assets/bencera-Di0L4Dqd.png",
+        "/polsia/bencera-Di0L4Dqd.png"
+      ]
+    },
+    {
+      "target": "public/polsia/bg-clouds.webp",
+      "source_url": "https://polsia.com/landing/bg-clouds.webp",
+      "sha256": "151f9117df071f2cee419757b8fa0c62052e10fd28414c79ada867d8d0a322fb",
+      "bytes": 9180,
+      "served_paths": [
+        "/landing/bg-clouds.webp",
+        "/polsia/bg-clouds.webp"
+      ]
+    },
+    {
+      "target": "public/polsia/favicon-192x192.png",
+      "source_url": "https://polsia.com/favicon-192x192.png",
+      "sha256": "665c9ebd1945d62bec65a9e34b1778bff0e7f377c1c3ecdfeded65696b887732",
+      "bytes": 9790,
+      "served_paths": [
+        "/favicon-192x192.png",
+        "/polsia/favicon-192x192.png"
+      ]
+    },
+    {
+      "target": "public/polsia/favicon.png",
+      "source_url": "https://polsia.com/favicon.png",
+      "sha256": "7e7a1fc2973cef3ae38677a35b16c03f5ef4a3c3adf9dba590795c3b83463dfa",
+      "bytes": 1121,
+      "served_paths": [
+        "/favicon.png",
+        "/polsia/favicon.png"
+      ]
+    },
+    {
+      "target": "public/polsia/founders-tour-tee-polsia.png",
+      "source_url": "https://cdn.shopify.com/s/files/1/0891/5959/8417/files/founders-tour-tee-polsia.png?v=1783688930&width=800",
+      "sha256": "2e64b3199dfdbf13498817b5171e0b5669930530bf3b01fbd000cb32eccf1ec9",
+      "bytes": 569232,
+      "served_paths": [
+        "/polsia/founders-tour-tee-polsia.png"
+      ]
+    },
+    {
+      "target": "public/polsia/hat-1.png",
+      "source_url": "https://cdn.shopify.com/s/files/1/0891/5959/8417/files/hat-1.png?v=1787239019&width=800",
+      "sha256": "b6b85c4a09a1180eb9c6ee80e5d919387b38f87228ac8321cf026fcee7f8495e",
+      "bytes": 299108,
+      "served_paths": [
+        "/polsia/hat-1.png"
+      ]
+    },
+    {
+      "target": "public/polsia/hat2.png",
+      "source_url": "https://cdn.shopify.com/s/files/1/0891/5959/8417/files/hat2.png?v=1787239019&width=800",
+      "sha256": "ff32a06655d55551a06d3f885634d8f669426d4d4c3dc5897a8ebb34626f00cb",
+      "bytes": 237323,
+      "served_paths": [
+        "/polsia/hat2.png"
+      ]
+    },
+    {
+      "target": "public/polsia/home-office-polsia.webp",
+      "source_url": "https://polsia.com/landing/home-office-polsia.webp",
+      "sha256": "9bca0aa3b161ea4391b3623063d652af4c7609bc89997886e2434982237b5edf",
+      "bytes": 234464,
+      "served_paths": [
+        "/landing/home-office-polsia.webp",
+        "/polsia/home-office-polsia.webp"
+      ]
+    },
+    {
+      "target": "public/polsia/home-polsia-office.webp",
+      "source_url": "https://polsia.com/landing/home-polsia-office.webp",
+      "sha256": "3ae314904b00dad8516eecab66310864a47029de972cb1dfe39f536f8ce35884",
+      "bytes": 298792,
+      "served_paths": [
+        "/landing/home-polsia-office.webp",
+        "/polsia/home-polsia-office.webp"
+      ]
+    },
+    {
+      "target": "public/polsia/keychain-polsia.png",
+      "source_url": "https://cdn.shopify.com/s/files/1/0891/5959/8417/files/keychain-polsia.png?v=1787153114&width=800",
+      "sha256": "633b18eceeedb329482f0b383ef872bc781211749a0ce4e6dd0231ef904554a6",
+      "bytes": 169750,
+      "served_paths": [
+        "/polsia/keychain-polsia.png"
+      ]
+    },
+    {
+      "target": "public/polsia/lesnuages-KkuCGfBJ.png",
+      "source_url": "https://polsia.com/assets/lesnuages-KkuCGfBJ.png",
+      "sha256": "881171f65cd57f550322d6a029cee14413dc98872971b1b630fa47824454692a",
+      "bytes": 159356,
+      "served_paths": [
+        "/assets/lesnuages-KkuCGfBJ.png",
+        "/polsia/lesnuages-KkuCGfBJ.png"
+      ]
+    },
+    {
+      "target": "public/polsia/logoblanc.webp",
+      "source_url": "https://polsia.com/landing/logoblanc.webp",
+      "sha256": "355ac26b3c6a0ac4a2a33856d895d9db941f5f6464a6ac4f0c53f88848d628e3",
+      "bytes": 26686,
+      "served_paths": [
+        "/landing/logoblanc.webp",
+        "/polsia/logoblanc.webp"
+      ]
+    },
+    {
+      "target": "public/polsia/logonoir.webp",
+      "source_url": "https://polsia.com/landing/logonoir.webp",
+      "sha256": "22ca148f3f2fc481ffe8ca6516bacf32d186565197f238f89025f57a3834ddb7",
+      "bytes": 22846,
+      "served_paths": [
+        "/landing/logonoir.webp",
+        "/polsia/logonoir.webp"
+      ]
+    },
+    {
+      "target": "public/polsia/magic-cube-polsia.png",
+      "source_url": "https://cdn.shopify.com/s/files/1/0891/5959/8417/files/magic-cube-polsia.png?v=1789548141&width=800",
+      "sha256": "06343f20a8c298f94680fad0d4aa7feca776eeac643fe56f23c6c4b18bf57922",
+      "bytes": 226081,
+      "served_paths": [
+        "/polsia/magic-cube-polsia.png"
+      ]
+    },
+    {
+      "target": "public/polsia/mens.webp",
+      "source_url": "https://polsia.com/landing/mens.webp",
+      "sha256": "8f9b0cd719c16007dd69dfedbfb2a5dbe2c86d75f6c6142e486f01afd3b6f91b",
+      "bytes": 115348,
+      "served_paths": [
+        "/landing/mens.webp",
+        "/polsia/mens.webp"
+      ]
+    },
+    {
+      "target": "public/polsia/pin-polsia.png",
+      "source_url": "https://cdn.shopify.com/s/files/1/0891/5959/8417/files/pin-polsia.png?v=1787153125&width=800",
+      "sha256": "d90e5394a0e2333f5c81517d96325f9bc6ce124a448201f9c0d1bc08e1438de0",
+      "bytes": 111109,
+      "served_paths": [
+        "/polsia/pin-polsia.png"
+      ]
+    },
+    {
+      "target": "public/polsia/polsia-stickers-sheet.png",
+      "source_url": "https://cdn.shopify.com/s/files/1/0891/5959/8417/files/polsia-stickers-sheet.png?v=1789546316&width=800",
+      "sha256": "d4d611ef437e734dc068cfebe7e9787448dab30ab819b3c5b604a382d8ff76fb",
+      "bytes": 53288,
+      "served_paths": [
+        "/polsia/polsia-stickers-sheet.png"
+      ]
+    },
+    {
+      "target": "public/polsia/site.css",
+      "source_url": "https://polsia.com/assets/index-AdtGugW5.css",
+      "sha256": "0350968f1d6f0c586045a54526413bee4b153bc2dc4387b9d3490a87f5d2f7c4",
+      "bytes": 712380,
+      "served_paths": [
+        "/assets/index-AdtGugW5.css",
+        "/polsia/site.css"
+      ]
+    },
+    {
+      "target": "public/polsia/stress_cube_polsia.png",
+      "source_url": "https://cdn.shopify.com/s/files/1/0891/5959/8417/files/stress_cube_polsia.png?v=1789571966&width=800",
+      "sha256": "943fed3731af31c92f5c1fc5fe2364a70ef83557eb555d746251c9c3eed1aaf7",
+      "bytes": 181142,
+      "served_paths": [
+        "/polsia/stress_cube_polsia.png"
+      ]
+    },
+    {
+      "target": "public/polsia/tee-cabo-2.png",
+      "source_url": "https://cdn.shopify.com/s/files/1/0891/5959/8417/files/tee-cabo-2.png?v=1782921255&width=800",
+      "sha256": "10d84f0aba9e124e482c34ac3acc778957f78d9440b58168a285389a2fb8a176",
+      "bytes": 513036,
+      "served_paths": [
+        "/polsia/tee-cabo-2.png"
+      ]
+    },
+    {
+      "target": "public/polsia/tee-cabo-white.png",
+      "source_url": "https://cdn.shopify.com/s/files/1/0891/5959/8417/files/tee-cabo-white.png?v=1782912492&width=800",
+      "sha256": "eff69d4b04bd6fe09805946b4d92a54fc255cfc372742d6c3b8ee09d89a5bac2",
+      "bytes": 486242,
+      "served_paths": [
+        "/polsia/tee-cabo-white.png"
+      ]
+    }
+  ],
+  "required_text_overlay": [
+    {
+      "target": "public/polsia/about.html",
+      "sha256": "3f61c3c2c919245c49260c5817ea8f5e49f63c441b9782cbaa3d7e6bd2652377",
+      "bytes": 6728,
+      "served_paths": [
+        "/about"
+      ]
+    },
+    {
+      "target": "public/polsia/acceptable-use.html",
+      "sha256": "375ec32cb01c1f8d5572ba21aff88774c38a3c6025b7a5840fb580bdd669dd90",
+      "bytes": 6631,
+      "served_paths": [
+        "/acceptable-use"
+      ]
+    },
+    {
+      "target": "public/polsia/changelog-2a637515-bb09-4f02-b5d4-24d38a98d972.html",
+      "sha256": "3ee3d2a9931e42158d4cec6766f45552c926afa83a2432448da8ad7869dccfd2",
+      "bytes": 3966,
+      "served_paths": [
+        "/changelog/2a637515-bb09-4f02-b5d4-24d38a98d972"
+      ]
+    },
+    {
+      "target": "public/polsia/changelog-646c22cc-83d2-4188-91cc-e60702e3391c.html",
+      "sha256": "cbb4bf1967d5087cef605bad9a264b5b4433ddeb9c7dc422db0e393c6609e0bc",
+      "bytes": 4047,
+      "served_paths": [
+        "/changelog/646c22cc-83d2-4188-91cc-e60702e3391c"
+      ]
+    },
+    {
+      "target": "public/polsia/changelog-79d144a7-1ec2-475c-b0bc-29c7b47437a5.html",
+      "sha256": "b501bb10b5b25854e2d735f73f014afb20eba0625c207b27b635238b8ccf3d47",
+      "bytes": 4067,
+      "served_paths": [
+        "/changelog/79d144a7-1ec2-475c-b0bc-29c7b47437a5"
+      ]
+    },
+    {
+      "target": "public/polsia/changelog-7e7f565e-ed38-4f88-bae9-54d382f4c625.html",
+      "sha256": "92d9fdb8678ff64e04ce9390768fcf21a2c220f3b51c27667739b8b2a25fabed",
+      "bytes": 4004,
+      "served_paths": [
+        "/changelog/7e7f565e-ed38-4f88-bae9-54d382f4c625"
+      ]
+    },
+    {
+      "target": "public/polsia/changelog.html",
+      "sha256": "ffd4c6034eb1ee15e011519cbe26b937afe2e7da82d89f47113cd95dc23867ee",
+      "bytes": 6621,
+      "served_paths": [
+        "/changelog"
+      ]
+    },
+    {
+      "target": "public/polsia/church.html",
+      "sha256": "b04eb2b05fb9d1d11370fc487e5b18e0963e44d560e67e3af04560fddb924198",
+      "bytes": 6203,
+      "served_paths": [
+        "/church"
+      ]
+    },
+    {
+      "target": "public/polsia/connect.html",
+      "sha256": "445232e32ce4d556f1cb6588d5fc0f2d4a14216642981ce66ca237953d1d27a3",
+      "bytes": 715,
+      "served_paths": [
+        "/connect"
+      ]
+    },
+    {
+      "target": "public/polsia/giftshop.html",
+      "sha256": "53b05bef095994abbbaf936ebf3bc7d9324b81c5398bf1827b319d8710248b5e",
+      "bytes": 8951,
+      "served_paths": [
+        "/giftshop"
+      ]
+    },
+    {
+      "target": "public/polsia/index.html",
+      "sha256": "6ed5e43e06043067881d91fe2376e3571594cb91688f23abc0076709c5b5a39f",
+      "bytes": 5548,
+      "served_paths": [
+        "/"
+      ]
+    },
+    {
+      "target": "public/polsia/login-delayed.html",
+      "sha256": "a0dbbe012cb9429e23dddedda76b39d6e45ce7870b724d7858b37383c6ecab80",
+      "bytes": 2965,
+      "served_paths": [
+        "/login?from=delayed_signup"
+      ]
+    },
+    {
+      "target": "public/polsia/login.html",
+      "sha256": "01a43263e5590a27f346db93b9d3072fe213194d5938a14bef7617b5becc1cee",
+      "bytes": 2982,
+      "served_paths": [
+        "/login"
+      ]
+    },
+    {
+      "target": "public/polsia/new.html",
+      "sha256": "6ac9f829f5b0600dafaacdc0d466e8787d7ed8d744ffa9ca556e1eee7492088d",
+      "bytes": 1844,
+      "served_paths": [
+        "/new"
+      ]
+    },
+    {
+      "target": "public/polsia/payment-cancelled.html",
+      "sha256": "94e7d731e98b9998cf66ed2b9e70f4d89112adb9b666d3a12a235ba71f4dd4be",
+      "bytes": 815,
+      "served_paths": [
+        "/payment/cancelled"
+      ]
+    },
+    {
+      "target": "public/polsia/payment-success.html",
+      "sha256": "163f297cbef3ec06e62311569c7862aa7ef26330706cbb2f767a4ddb438efb8d",
+      "bytes": 833,
+      "served_paths": [
+        "/payment/success"
+      ]
+    },
+    {
+      "target": "public/polsia/privacy.html",
+      "sha256": "a8575bf79f43cd9d11989868d1c11841342e3f6a468dbb6a1fbd86e7fce08ea6",
+      "bytes": 18204,
+      "served_paths": [
+        "/privacy"
+      ]
+    },
+    {
+      "target": "public/polsia/subprocessors.html",
+      "sha256": "14eb4fe6d231d3362ffa97a67a8591b548575dcd0d67030b44941546f4606fc1",
+      "bytes": 7522,
+      "served_paths": [
+        "/subprocessors"
+      ]
+    },
+    {
+      "target": "public/polsia/subscription-success.html",
+      "sha256": "163f297cbef3ec06e62311569c7862aa7ef26330706cbb2f767a4ddb438efb8d",
+      "bytes": 833,
+      "served_paths": [
+        "/subscription/success"
+      ]
+    },
+    {
+      "target": "public/polsia/terms.html",
+      "sha256": "90c5e57d0bafb47e9e7f7fea95939974d5db859ff4c2237569a32c307f373f63",
+      "bytes": 58224,
+      "served_paths": [
+        "/terms"
+      ]
+    },
+    {
+      "target": "public/polsia/local.css",
+      "sha256": "3420b40b9b1a693e2ec17c0fd53e85c74ac30fed8959a8499c73183de85e5808",
+      "bytes": 686,
+      "served_paths": [
+        "/polsia/local.css"
+      ]
+    },
+    {
+      "target": "public/polsia/local.js",
+      "sha256": "131056064cfd5a081a0db8e3b859200656e3f129c82708f2be8b98bc0dd75cbf",
+      "bytes": 22513,
+      "served_paths": [
+        "/polsia/local.js"
+      ]
+    },
+    {
+      "target": "public/polsia/states.json",
+      "sha256": "c54f56cef10e652d3daaed46d325c53c0f6e44b2620b97b27cfdc5fbc529db03",
+      "bytes": 13491,
+      "served_paths": [
+        "/polsia/states.json"
+      ]
+    }
+  ],
+  "excluded_reference_assets": [
+    {
+      "source_url": "https://polsia.com/",
+      "sha256": "f73ef8f8deed946de29dfe4742c293b3960209c7dc0a6dba9fe15d7db946855e",
+      "bytes": 17846,
+      "reason": "Reference snapshot only; the public clone serves rebuilt HTML and local interaction JavaScript."
+    },
+    {
+      "source_url": "https://polsia.com/assets/index-VMJx2-_h.js",
+      "sha256": "06251dac0612945349b87e7d70d86f5b7757b48303f90ebc3d48f449e58e1740",
+      "bytes": 3224224,
+      "reason": "Reference snapshot only; the public clone serves rebuilt HTML and local interaction JavaScript."
+    }
+  ],
+  "notes": [
+    "Text overlay must be applied from the handed-off source snapshot before asset restoration.",
+    "No production bundle, account state, credentials or media binaries are included in this manifest."
+  ]
+}

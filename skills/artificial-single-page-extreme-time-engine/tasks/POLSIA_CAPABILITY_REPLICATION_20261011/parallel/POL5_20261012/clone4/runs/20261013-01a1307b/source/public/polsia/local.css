@@ -1,0 +1,6 @@
+/* Preserve original visuals. Additions appear only for explicit local capability feedback. */
+.polsia-local-notice{margin:16px 0;padding:12px;border:1px solid var(--polsia-color-gray-ddd);font-family:var(--polsia-font-body);font-size:var(--polsia-body-sm);line-height:1.5;max-width:480px;background:var(--polsia-color-white);color:var(--polsia-color-black)}
+.polsia-local-notice a{display:inline-block;margin-top:8px;color:var(--polsia-color-black);text-decoration:underline}
+.polsia-local-notice:focus{outline:none}
+/* Original item display:flex must not override the local search's native hidden attribute. */
+.public-language-selector__content [role="option"][hidden]{display:none}

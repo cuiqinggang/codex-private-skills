@@ -1,0 +1,144 @@
+// Safe offline logic verification of the production engineering runTask path.
+// Only the database and sandbox factory are replaced, BEFORE importing the worker.
+// The real engineering tool roster, complete_task/fail_task, and InMemoryStore run.
+// No database connection, Docker process, file seeding, or model call occurs.
+// This is NOT a database/Docker/model integration test. Requires Node 24+ and
+// --experimental-test-module-mocks; native type stripping avoids loader conflicts.
+import assert from "node:assert/strict";
+import { mock } from "node:test";
+import { InMemoryStore } from "../src/core/store.ts";
+import type { AgentRuntime, RunOpts } from "../src/runtime/types.ts";
+import type { AgentEvent, TaskStatus } from "../src/core/types.ts";
+import type { Sandbox } from "../src/sandbox/types.ts";
+
+const io = { sqlStubs: 0, sandboxStubs: 0, seeds: 0, releases: 0, networkAttempts: 0 };
+const selectAllowlist = new Set([
+  "SELECT sandbox_id FROM companies WHERE id = ?",
+  "SELECT slug FROM companies WHERE id = ?",
+  "SELECT name, profile FROM companies WHERE id = ?",
+  "SELECT type, content FROM documents WHERE company_id = ? AND content <> '' ORDER BY type",
+  "SELECT node_type, data FROM context_graph WHERE company_id = ? ORDER BY node_type",
+]);
+
+function forbidden(operation: string): never {
+  throw new Error(`Offline guard forbids ${operation}`);
+}
+
+async function offlineSql(strings: TemplateStringsArray, ...values: unknown[]) {
+  const query = strings.join("?").replace(/\s+/g, " ").trim();
+  assert.ok(selectAllowlist.has(query), `Unexpected offline SQL: ${query}`);
+  assert.deepEqual(values, ["guard-offline"]);
+  io.sqlStubs++;
+  return []; // No persisted company, sandbox id, context, or deployment capability.
+}
+
+const offlineSandbox: Sandbox = {
+  exec: async () => forbidden("sandbox exec"),
+  workdir: () => "memory://guard-offline",
+  seed: async () => { io.seeds++; }, // No filesystem access.
+  isEmpty: async () => true,
+  previewUrl: async () => null,
+  id: () => null,
+  release: async () => { io.releases++; }, // No Docker/container operation.
+  dispose: async () => forbidden("sandbox dispose"),
+};
+
+const originalFetch = globalThis.fetch;
+globalThis.fetch = async () => {
+  io.networkAttempts++;
+  return forbidden("network or model call");
+};
+
+// These are ALL runtime exports of the replaced modules; type exports are erased.
+const databaseMock = mock.module(new URL("../src/core/db.ts", import.meta.url), {
+  cache: true,
+  namedExports: {
+    db: () => offlineSql,
+    bootstrap: async () => forbidden("database bootstrap"),
+    ensureCompany: async () => forbidden("database writes"),
+  },
+});
+const sandboxMock = mock.module(new URL("../src/sandbox/factory.ts", import.meta.url), {
+  cache: true,
+  namedExports: {
+    createSandbox: async () => {
+      io.sandboxStubs++;
+      return offlineSandbox;
+    },
+  },
+});
+
+class OfflineRuntime implements AgentRuntime {
+  constructor(outcome: "unasserted" | "completed" | "failed") {
+    this.outcome = outcome;
+  }
+  private outcome: "unasserted" | "completed" | "failed";
+
+  async *run(opts: RunOpts): AsyncIterable<AgentEvent> {
+    if (this.outcome !== "unasserted") {
+      const name = this.outcome === "completed" ? "complete_task" : "fail_task";
+      const tool = opts.tools.find((candidate) => candidate.name === name);
+      assert.ok(tool, `Production engineering tool missing: ${name}`);
+      const result = await tool.execute(
+        this.outcome === "completed"
+          ? { summary: "Explicit offline test completion", artifacts: [] }
+          : { reason: "Explicit offline test failure" },
+        opts.toolCtx,
+      );
+      assert.equal(result.ok, true);
+    }
+    yield { type: "final", text: "" };
+  }
+}
+
+async function main() {
+  assert.ok(Number(process.versions.node.split(".")[0]) >= 24, "Offline guard requires Node 24+");
+  // Dynamic import is essential: no original database/sandbox module is loaded first.
+  const { runTask } = await import("../src/core/worker.ts");
+  const cases: ["unasserted" | "completed" | "failed", TaskStatus][] = [
+    ["unasserted", "needs_continuation"],
+    ["completed", "completed"],
+    ["failed", "failed"],
+  ];
+  for (const [outcome, expected] of cases) {
+    const store = new InMemoryStore();
+    const task = await store.create({
+      companyId: "guard-offline",
+      title: `Engineering offline guard: ${outcome}`,
+      description: "Verify production status integrity without external I/O.",
+      tag: "engineering",
+    });
+    const releasesBefore = io.releases;
+    await runTask(store, new OfflineRuntime(outcome), task);
+    const final = await store.get(task.id);
+    assert.equal(final?.tag, "engineering");
+    assert.equal(final?.status, expected);
+    assert.equal(io.releases, releasesBefore + 1, "Sandbox release must run exactly once");
+    const statuses = final!.events
+      .filter((event) => event.type === "status_change")
+      .map((event) => (event.payload as { to: TaskStatus }).to);
+    assert.deepEqual(statuses, ["todo", "in_progress", expected]);
+    console.log(`PASS engineering ${outcome} -> ${expected}; sandbox release verified`);
+  }
+  assert.equal(io.sandboxStubs, cases.length);
+  assert.equal(io.seeds, cases.length);
+  assert.equal(io.releases, cases.length);
+  assert.equal(io.networkAttempts, 0);
+  console.log(JSON.stringify({
+    result: "PASS",
+    scope: "production engineering status logic with offline I/O stubs",
+    pid: process.pid,
+    node: process.versions.node,
+    ...io,
+    integrationVerified: false,
+  }));
+}
+
+main().catch((err) => {
+  console.error(err instanceof Error ? err.message : String(err));
+  process.exitCode = 1;
+}).finally(() => {
+  sandboxMock.restore();
+  databaseMock.restore();
+  globalThis.fetch = originalFetch;
+});
