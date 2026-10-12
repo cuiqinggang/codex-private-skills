@@ -1,5 +1,8 @@
 # GPT直连Windows双路执行桥｜双路执行策略 v0.3.0
 
+> **2026-10-12 v0.3.4 最新运行覆盖规则：** 本文 v0.3.0 的“DCR 主路/Runner 备路”是原架构的历史命名，不代表此刻应优先耗用 DCR。现按用户明确要求改为 **自建可用路线优先**：GitHub 共同工作区 → Actions → Windows Runner 今日真实任务 `BRIDGE-LINK-CHECK-20261012-1901` PASS；OpenAI Tunnel 当前 `Session terminated` 且 Windows 隧道进程=0，需依原手动恢复入口重连；第三方 DCR 在线/Ping 但本月额度耗尽，暂停远程执行，**2026-11-01 为用户预定的额度复查日，不保证重置成功或保底 15 天**。完整状态、证据及具体切换规则请读 [ROUTE_PRIORITY_QUOTA_AND_FAILOVER_20261012.md](ROUTE_PRIORITY_QUOTA_AND_FAILOVER_20261012.md)。原 DCR 配对、已运行任务、自启配置、Runner、原故障恢复手册均保留，不删除。
+
+
 ## 路由
 主路：ChatGPT → Desktop Commander Remote → Windows
 备路：ChatGPT/GitHub → GitHub Actions → Windows self-hosted runner
