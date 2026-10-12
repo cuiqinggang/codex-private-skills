@@ -1,0 +1,54 @@
+{
+  "task_id": "POLSIA_CAPABILITY_REPLICATION_20261011",
+  "batch_id": "POL5_20261012",
+  "method": "V5",
+  "engine": "28",
+  "parent_freeze": "POLSIA-MOTHER-V008-F001",
+  "gpt_ceo_approval": "POLSIA-CEO-D008-POL5-20261012",
+  "approval_blob": "c94de81348396fe5e321f99f74d50657286660f8",
+  "approval_ref": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/parallel/POL5_20261012/CEO_APPROVED_BATCH.md",
+  "scope": "LOCAL_ISOLATED_READONLY;NO_SECRETS_NO_PUBLISH_NO_PAYMENTS_NO_EMAILS_NO_ADS_NO_BROWSER_CHANGES",
+  "max_model_processes": 2,
+  "branches": [
+    {
+      "id": "PA5-01",
+      "name": "成熟公司平台复用",
+      "contract_blob": "c65ad0fc4c5e27fd50dc98db820c34b04e1b0cbd",
+      "contract_path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/parallel/POL5_20261012/PA5-01.md",
+      "locator": "【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜PA5-01｜实】",
+      "disposition": "CEO_APPROVED_LOCAL_ISOLATED"
+    },
+    {
+      "id": "PA5-02",
+      "name": "自有网站运行",
+      "contract_blob": "ff9c88c869ed8da035f3b6fa7ca9c773f6ff399b",
+      "contract_path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/parallel/POL5_20261012/PA5-02.md",
+      "locator": "【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜PA5-02｜实】",
+      "disposition": "CEO_APPROVED_LOCAL_ISOLATED"
+    },
+    {
+      "id": "PA5-03",
+      "name": "九类能力与工作流",
+      "contract_blob": "9472a2609b3ff9a3fd55c243277cf5e278ba63bd",
+      "contract_path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/parallel/POL5_20261012/PA5-03.md",
+      "locator": "【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜PA5-03｜实】",
+      "disposition": "CEO_APPROVED_LOCAL_ISOLATED"
+    },
+    {
+      "id": "PA5-04",
+      "name": "对标差分及独立验收",
+      "contract_blob": "8f93ab00baf4e057d90fe0c3a18cb4699f0fe9f3",
+      "contract_path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/parallel/POL5_20261012/PA5-04.md",
+      "locator": "【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜PA5-04｜实】",
+      "disposition": "CEO_APPROVED_LOCAL_ISOLATED"
+    },
+    {
+      "id": "PA5-05",
+      "name": "全流程透明监控",
+      "contract_blob": "9a8361d705a3ef674f8c90c72ee9ddd35729e72c",
+      "contract_path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/parallel/POL5_20261012/PA5-05.md",
+      "locator": "【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜PA5-05｜实】",
+      "disposition": "CEO_APPROVED_LOCAL_ISOLATED"
+    }
+  ]
+}
