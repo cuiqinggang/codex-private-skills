@@ -1,0 +1,12 @@
+{
+  "kind": "INDEPENDENT_BUSINESS_QA",
+  "synthetic_only": true,
+  "statuses_pass": true,
+  "totals_pass": true,
+  "unmatched_pass": true,
+  "unsent_pass": true,
+  "V1_V2_output_identical": true,
+  "manifest_valid": true,
+  "business_files": 4,
+  "full_model_efficiency_proven": false
+}
