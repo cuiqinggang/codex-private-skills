@@ -7,6 +7,16 @@ description: GPT直连Windows双路执行桥。保留 DCR 主路和 GitHub Actio
 # GPT直连Windows双路执行桥 v0.3.4
 
 
+## v0.3.4 最新运行路由与厂商额度门（2026-10-12 晚）
+
+**优先读 [自建通道优先/厂商月度配额/故障切换正式规则](ROUTE_PRIORITY_QUOTA_AND_FAILOVER_20261012.md)。** 这是当前运行决策，历史 `DCR 主路` 名称与过去时点 PASS 记录不删除。
+
+- **默认首选：GitHub 私有共同工作区 → Actions → Windows self-hosted Runner**。2026-10-12 当天新派发 `BRIDGE-LINK-CHECK-20261012-1901`， [Run 38240277230](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38240277230)；真正 Windows `result.json.status=PASS`、`exit_code=0`，`RUNNER_NAME=DESKTOP-4A1EGTM-etal`，`GH_TO_WINDOWS_REALITY_PROBE_PASS`。**该线路当前可用且不消耗第三方 DCR 的月度调用额度**。
+- **用户自建的 OpenAI 官方 Tunnel + 本机开源 MCP 接入**：历史 ChatGPT→Windows 读写/命令能力已 PASS，但晚间真实 `Session terminated`，当前 Windows Runner 检查 `EXPECTED_TUNNEL_COUNT=0`。随后 [Runner 只读恢复预检 R2](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38241065083) 真实 `PASS`，正式启动脚本、官方 exe、MCP index.js、两份恢复/显隐脚本都在且解析无错；`TOTAL_TUNNEL_CLIENTS=0`，旧父 PowerShell 已退出。**现在尚未恢复，不能写在线**。已有桌面「GPT-Windows-MCP-一键恢复」需用户 A 本机输入 Runtime Key，恢复后再做外部远程调用。
+- **第三方托管 Desktop Commander Remote (DCR)**：设备 `f6990966-5870-484b-bf79-409bc6fb963e` 当晚 `Online`、`ping=PONG`，但真正执行命令收到服务端 `You've reached this month's Desktop Commander usage`。这是 **MONTHLY_QUOTA_BLOCKED**，不是网络断线；**不得重试/重新配对以试图“修复”额度**。用户要求记下“每月通常可使用约前半月”的个人经验，非官方承诺；**2026-11-01 为下一次核对额度的目标日期，不保证当日恢复，届时再以实际账户和工具回执判定**。
+- 当前顺序：**已经在线且 Reality PASS 的自建通道优先 → 自建 Tunnel 经合法恢复并验收后也可用 → 仅当 DCR 厂商额度充足且有净收益时才使用旧 DCR**。原 DCR 路由/配对/自启动、Runner 和 Tunnel 全部保留，绝不删除、改代理或绕过已发生的安全限制。
+- **权限失败经验保留：** 第一次 Runner 预检读取用户 A 桌面发生 `Access denied`，只是 `NETWORK SERVICE` 与交互式桌面权限不同；R2 排除越界文件检查后真实成功。此处不能以改变桌面 ACL 或代填用户密钥修复。所有副作用执行遵守 Exactly-once。
+
 ## v0.3.4 当前权威状态（2026-10-12）｜先读，不得重复造轮子
 
 **执行入口：** [窗口显隐/手动恢复/登录验收 SOP](TUNNEL_WINDOW_VISIBILITY_AND_RECOVERY_20261012.md) ｜ [本次工具回执与 3 个 Windows 本机脚本精确快照+SHA](evidence/OPENAI_TUNNEL_WINDOW_VISIBILITY_REALITY_20261012.md) ｜ [完整累积状态及禁止重复路线](WINDOWS_TUNNEL_PERSISTENCE_STATUS_20261012.md) ｜ [首次建隧道/故障修复全流程](OPENAI_TUNNEL_CONNECT_RECOVERY_20261012.md) ｜ [真实 Windows MCP 远端读写命令证据](evidence/OPENAI_TUNNEL_REAL_WINDOWS_REMOTE_PASS_20261012.md)。
