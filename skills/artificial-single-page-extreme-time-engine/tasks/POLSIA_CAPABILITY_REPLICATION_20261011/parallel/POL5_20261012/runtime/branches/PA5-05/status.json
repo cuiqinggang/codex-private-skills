@@ -1,0 +1,15 @@
+{
+  "id": "PA5-05",
+  "name": "全流程透明监控",
+  "status": "DONE_SCOPED",
+  "step": "已运行成熟组件全流程监控；真实截图仍待接入",
+  "verified_steps": 4,
+  "planned_steps": 4,
+  "checkpoint": "母冻结V008；本分支未冻结",
+  "evidence": "http://127.0.0.1:8766/index.html",
+  "issue": "",
+  "contract_blob": "9a8361d705a3ef674f8c90c72ee9ddd35729e72c",
+  "locator": "【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜PA5-05｜实】",
+  "started_utc": "2026-10-12T12:13:17.2838479Z",
+  "updated_utc": "2026-10-12T12:13:19.5566164Z"
+}
