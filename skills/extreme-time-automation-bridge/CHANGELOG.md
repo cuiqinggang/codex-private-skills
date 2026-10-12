@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.3.4 月度用量/自建通道路由增量（2026-10-12 晚）
+
+- **路由优先级明确调整**：现在优先使用自建 GitHub 共同工作区 → Actions → Windows Runner；OpenAI 官方 Tunnel + 用户本机开源 MCP 接入恢复正常后也可使用；第三方托管 Desktop Commander Remote 只在配额充足、能力合适时作为补充。原 A/B 路、设备和技能包历史全部保留，无删除、无重建、无改变 FlClash/系统代理。
+- **第三方用量到顶并非掉线**：DCR 设备 `f6990966-5870-484b-bf79-409bc6fb963e` 仍 Online，Ping 真正 `pong`，但远程命令因 `You've reached this month's Desktop Commander usage` 被服务端暂停。停止重复调用或重配，用户目标 `2026-11-01` 复查月度配额是否续用。个人体验“约半个月能用”仅为观察，不是每月保底或厂商重置承诺。
+- **自建 GitHub 端到端最新 Reality**：[Run 38240277230](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38240277230) 已执行新 Windows 任务 `BRIDGE-LINK-CHECK-20261012-1901`，`result.status=PASS`、`exit_code=0`、`DESKTOP-4A1EGTM-etal`，`GH_TO_WINDOWS_REALITY_PROBE_PASS`；Runner 服务 Running/Auto。
+- **OpenAI Tunnel 当前不是 PASS**：自定义 MCP 调用 `Session terminated`；上述 Windows 自建 Runner 首次报告 `OPENAI_TUNNEL_MATCH_COUNT=0`。文件检查 R1 [Run 38240736338](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38240736338) 因 `NETWORK SERVICE` 无权读取 A 桌面快捷方式而 FAIL，不能误判为文件坏；隔离此权限边界后的只读 R2 [Run 38241065083](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38241065083) 完整 PASS，正式 launcher、Tunnel EXE、MCP 入口、恢复/显隐脚本均存在且 PowerShell ParseErrors=0，`TOTAL_TUNNEL_CLIENTS=0`、旧 PowerShell PID27920不存在；恢复仍需用户本机 Runtime Key 输入，未擅自保存凭据或绕过既有限制。
+- **新增规则**：[ROUTE_PRIORITY_QUOTA_AND_FAILOVER_20261012.md](ROUTE_PRIORITY_QUOTA_AND_FAILOVER_20261012.md)，记录同日证据、2026-11-01 复查日期、额度性质、三个入口状态、Exactly-once 规则及恢复边界；更新正式 `SKILL.md` 和旧双路策略页，保留 v0.3.4 以前全部历史。
+
+
 ## 0.3.4 - 2026-10-12｜现有 Windows 隧道静默隐藏 PASS、恢复入口与历史成熟机制沉淀
 
 - **操作事实**：GPT-Windows-MCP-Bridge 通过真实 Windows 工具读取原进程 `tunnel-client.exe` PID23692、父 PowerShell PID27920，校验控制台窗口句柄和归属；使用 Windows 原生 `ShowWindowAsync(SW_HIDE)` 在不停止进程的前提下隐藏现有窗口。实际回执 `BEFORE_VISIBLE=True / AFTER_VISIBLE=False / TUNNEL_ALIVE=True`。独立再次回读 `TUNNEL_COUNT=1`、远程 Shell 仍可用。**仅当前会话隐藏 PASS**。
