@@ -1,0 +1,15 @@
+{
+  "id": "PA5-01",
+  "name": "成熟公司平台复用",
+  "status": "DONE_SCOPED",
+  "step": "成熟平台源码与官方控制台入口已核验；实际运行转网站分支",
+  "verified_steps": 4,
+  "planned_steps": 4,
+  "checkpoint": "母冻结V008；本分支未冻结",
+  "evidence": "Git c62ba0be3368815dc9011848d96875ef228f1607",
+  "issue": "",
+  "contract_blob": "c65ad0fc4c5e27fd50dc98db820c34b04e1b0cbd",
+  "locator": "【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜PA5-01｜实】",
+  "started_utc": "2026-10-12T12:13:17.1766047Z",
+  "updated_utc": "2026-10-12T12:13:23.8284983Z"
+}
