@@ -1,0 +1,10 @@
+{
+  "order": "V2_then_V1",
+  "outer_wall_V2_ms": 1139.571,
+  "outer_wall_V1_ms": 294.222,
+  "inner_V2": 61.24,
+  "inner_V1": 16.891,
+  "scope": "offline identical deterministic tool only",
+  "GPT_CEO_or_Codex_total_time": "NOT_MEASURED",
+  "commercial_full_T_VALID": "UNKNOWN"
+}
