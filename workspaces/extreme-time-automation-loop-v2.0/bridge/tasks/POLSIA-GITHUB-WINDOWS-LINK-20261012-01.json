@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "task_id": "POLSIA-GITHUB-WINDOWS-LINK-20261012-01",
+  "payload_path": "workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/POLSIA-GITHUB-WINDOWS-LINK-20261012-01.ps1",
+  "timeout_seconds": 90,
+  "expected_exit_code": 0
+}
