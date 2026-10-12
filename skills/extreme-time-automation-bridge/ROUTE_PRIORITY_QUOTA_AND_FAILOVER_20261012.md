@@ -38,6 +38,19 @@ MANUAL_RECOVERY=EXISTING_DESKTOP_SHORTCUT_REQUIRES_LOCAL_KEY
 DO_NOT_CHANGE=FlClash,WindowsProxy,ExistingBrowsers,InstalledDCR,GitHubRunner
 ```
 
+
+## 同日随后完成的 Windows 恢复预检 Reality（优先于前面的“待预检”）
+
+- 首轮 `BRIDGE-TUNNEL-RECOVERY-PREFLIGHT-20261012-1908`：[Run 38240736338](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38240736338)，`result.status=FAIL`。已成功读取正式 launcher、官方 tunnel exe、MCP 入口和两份 persistence 脚本，均存在；不过执行身份 `NT AUTHORITY\\NETWORK SERVICE` 读取 `C:\Users\A\Desktop` 的快捷方式发生 `Access denied`。这**仅属于预检越权读取错误，不是远端通道坏或桌面文件已消失**，不得修改 A 用户桌面 ACL。
+- 按最小差分，移除 Runner 无权限的桌面读取，其他只读检查保持不变，执行 `BRIDGE-TUNNEL-RECOVERY-PREFLIGHT-R2-20261012`：[Run 38241065083](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38241065083)，实际执行器 `DESKTOP-4A1EGTM-etal`，`result.json.status=PASS`、`exit_code=0`、`stderr.txt` 空，`stdout.txt` 有 `WINDOWS_TUNNEL_PREFLIGHT_R2_PASS`。读取结果：
+  - `Launch-OpenAI-Real-MCP.ps1`、官方 `tunnel-client.exe`、本地开源 MCP `index.js`、`Restore-Interactive.ps1`、`Show-Current-Tunnel-Console.ps1` 全部 `EXISTS=True`，三个 PowerShell 脚本语法错误数各 `0`；
+  - `TOTAL_TUNNEL_CLIENTS=0`、`EXPECTED_TUNNEL_COUNT=0`、`OLD_POWERSHELL_PID_27920_ALIVE=False`；
+  - `RUNNER_SERVICE=Running;STARTMODE=Auto`；
+  - `USER_A_DESKTOP_NOT_CHECKED_NETWORK_SERVICE_ACCESS_DENIED`：权限边界保留，不解释为桌面快捷方式消失。
+- **现行断线结论：OpenAI Tunnel 没有运行进程，正式组件/恢复入口仍在。密钥没有存于 GitHub 或 Runner，Runner 不能以 NETWORK SERVICE 替代用户 A 交互输入。** 这轮没有恢复成功，`TUNNEL_REMOTE=DOWN_NEEDS_USER_LOCAL_INTERACTIVE_KEY`；即使后续能手工启动，也必须从 ChatGPT 再次实际调用工具才能切成 PASS。
+- 这次两份检查任务只读，原运行脚本未修改、未调整代理/身份/桌面权限、未重复执行非幂等动作。
+
+
 ## 以后接续的最短规则
 
 - **正常接单**：确认 GitHub Runner 最近 Reality 和执行权限；通过唯一任务 JSON + 受版本控制的 PowerShell payload 派发，等待 `result.json`、`stdout.txt`、`stderr.txt`、run/job 最终结论。含副作用任务严守 Exactly-once；任务状态 UNKNOWN 时先查询 run/call_id，不自动重派。
