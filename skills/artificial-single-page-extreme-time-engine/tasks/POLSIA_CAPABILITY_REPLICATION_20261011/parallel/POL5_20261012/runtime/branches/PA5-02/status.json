@@ -1,0 +1,15 @@
+{
+  "id": "PA5-02",
+  "name": "自有网站运行",
+  "status": "WAITING_DEPENDENCY",
+  "step": "成熟平台需要数据库，暂不擅自配置生产账户",
+  "verified_steps": 3,
+  "planned_steps": 4,
+  "checkpoint": "母冻结V008；本分支未冻结",
+  "evidence": "package.json",
+  "issue": "需本地隔离数据库与合法模型配置",
+  "contract_blob": "ff9c88c869ed8da035f3b6fa7ca9c773f6ff399b",
+  "locator": "【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜PA5-02｜实】",
+  "started_utc": "2026-10-12T12:13:17.3783878Z",
+  "updated_utc": "2026-10-12T12:17:25.8822475Z"
+}
