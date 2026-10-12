@@ -1,0 +1,46 @@
+name: Windows GitHub Bridge v0.3.4 Smoke Test
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/windows-github-bridge-v034-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows-direct:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 5
+    steps:
+      - name: Verify real Windows execution and diagnose downloads
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $timer=[Diagnostics.Stopwatch]::StartNew()
+          Write-Host 'BRIDGE_V034_WINDOWS_REACHED_PASS'
+          Write-Host ('HOST='+$env:COMPUTERNAME)
+          Write-Host ('RUNNER='+$env:RUNNER_NAME)
+          Write-Host ('RUN_ID='+$env:GITHUB_RUN_ID)
+          Write-Host ('SOURCE_SHA='+$env:GITHUB_SHA)
+          Write-Host ('EXEC_UTC='+[DateTime]::UtcNow.ToString('o'))
+          Write-Host ('POLSIA_ROOT_EXISTS='+(Test-Path 'C:\AI\Polsia-V5-Parallel-20261012'))
+          Write-Host ('CODEX_IN_PATH='+[bool](Get-Command codex -ErrorAction SilentlyContinue))
+          $targets=@(
+            'https://api.github.com',
+            'https://github.com',
+            'https://codeload.github.com/actions/upload-artifact/zip/ea165f8d65b6e75b540449e92b4886f43607fa02'
+          )
+          foreach ($url in $targets) {
+            $sw=[Diagnostics.Stopwatch]::StartNew()
+            try {
+              $req=Invoke-WebRequest -Uri $url -Method Head -TimeoutSec 10 -UseBasicParsing -ErrorAction Stop
+              $result='HTTP_'+[int]$req.StatusCode
+            } catch {
+              $result='ERROR_'+($_.Exception.Message -replace '[\r\n]+',' ')
+            }
+            $sw.Stop()
+            Write-Host ('NET_TARGET='+$url+';RESULT='+$result+';MS='+[math]::Round($sw.Elapsed.TotalMilliseconds,0))
+          }
+          $timer.Stop()
+          Write-Host ('LOCAL_PROBE_MS='+[math]::Round($timer.Elapsed.TotalMilliseconds,0))
+          Write-Host 'BRIDGE_V034_SMOKE_COMPLETED_PASS'
