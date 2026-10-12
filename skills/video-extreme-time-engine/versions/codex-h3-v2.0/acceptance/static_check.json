@@ -1,0 +1,131 @@
+{
+  "checked_utc": "2026-10-12T15:15:31.914735+00:00",
+  "scope": "LOCAL_STATIC_PACKAGE_ONLY",
+  "root": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\package\\versions\\codex-h3-v2.0",
+  "status": "PASS",
+  "required_files": [
+    "SKILL.md",
+    "VERSION.md",
+    "RECENT_USE_LOG.md",
+    "references/METHOD_V2.md",
+    "references/FRAME_CONTINUITY.md",
+    "references/ACCEPTANCE.md",
+    "references/FAILURE_RECOVERY.md",
+    "templates/PROJECT_BRIEF.md",
+    "templates/FINAL_TEST_RESULT.md",
+    "source/LESSON_EXTRACTION.md",
+    "source/AGENTS_PATCH_DRAFT.md",
+    "source/UPSTREAM_CONTRACT.md",
+    "acceptance/index.html"
+  ],
+  "checks": {
+    "frame_count_56": true,
+    "fps_24": true,
+    "previous_accepted_and_first_reference": true,
+    "all_frame_gate": true,
+    "no_interpolation": true,
+    "model_not_exposed": true,
+    "native_resolution_not_hard_gate": true,
+    "playback_and_listening_not_faked": true,
+    "pending_reality": true,
+    "final_valid_default_no": true,
+    "versioned_parent_preserved": true,
+    "recent_use": true,
+    "roi_gate_paused": true,
+    "agents_draft_not_applied": true,
+    "upstream_contract_exact_blob": true
+  },
+  "errors": [],
+  "files": [
+    {
+      "path": "acceptance/index.html",
+      "bytes": 4413,
+      "sha256": "51df8fa04ddbe699fa17d115aaa21f4123e1401748c1e86512b09557b7468b0b"
+    },
+    {
+      "path": "acceptance/static_check_before_C_repair_publication.json",
+      "bytes": 4147,
+      "sha256": "13014c154fe4922f76260df0d9e01132140f51ac3d50b96e991990309b444a80"
+    },
+    {
+      "path": "acceptance/static_check_before_continuity_audio_revision.json",
+      "bytes": 3946,
+      "sha256": "aa258a6a55a4ff6a5f8a5eba94b681d8fcd05555962b808ac51c76ccd901a205"
+    },
+    {
+      "path": "acceptance/static_check_first_failure.json",
+      "bytes": 3878,
+      "sha256": "6518369c49d907d391562548c07668649e7e24bfdeca3972668a4aabe3aa1974"
+    },
+    {
+      "path": "acceptance/validate_package.py",
+      "bytes": 4662,
+      "sha256": "3fdc448b840c89ce4ed5b0bb34eafc7ce18cdcc8ea6b1ae826d6e09ba2fdbadb"
+    },
+    {
+      "path": "RECENT_USE_LOG.md",
+      "bytes": 9062,
+      "sha256": "4140587be7114f6ee541a735780c3cc577d365906822877392844d2a182f702e"
+    },
+    {
+      "path": "references/ACCEPTANCE.md",
+      "bytes": 3613,
+      "sha256": "7853f205cd5861b8d1601fcc94ac55161d1b70c851f661bd02313c74d0d3e71d"
+    },
+    {
+      "path": "references/FAILURE_RECOVERY.md",
+      "bytes": 3409,
+      "sha256": "cb9ac8b4ca50a8cf9e8c3ac0f5fdaafab4ab969935ffd4dc5bf387cf98be4958"
+    },
+    {
+      "path": "references/FRAME_CONTINUITY.md",
+      "bytes": 3664,
+      "sha256": "eb3e3e9ceb6c36e64716b0172dba69cd14eddcb1478d9cf49d8ad849dbb942f8"
+    },
+    {
+      "path": "references/METHOD_V2.md",
+      "bytes": 5488,
+      "sha256": "5911cdf4e77fdb570d84a9e7108821067727fa45acc38eda86be1c158172f277"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 4839,
+      "sha256": "aa0d618dd1c69a73527dcdd49218c0c4ac7d3a8809423fcdb491326db740f2d2"
+    },
+    {
+      "path": "source/AGENTS_PATCH_DRAFT.md",
+      "bytes": 904,
+      "sha256": "2a860cca932aa9e23a0af5ac76fd9f5def46c5d54fcfcea1f8370f0ed72f6b3d"
+    },
+    {
+      "path": "source/LESSON_EXTRACTION.md",
+      "bytes": 4395,
+      "sha256": "c1577d14baffbc83833ea67c546182200a1bab7dfc874f0bc6ca15049f34b945"
+    },
+    {
+      "path": "source/UPSTREAM_CONTRACT.md",
+      "bytes": 2771,
+      "sha256": "cbb3e448e0a89ad9b0c5051f1740dadcbbfabd38741fc296a5e28e4ee21d4a41"
+    },
+    {
+      "path": "templates/FINAL_TEST_RESULT.md",
+      "bytes": 2805,
+      "sha256": "b6685cbc1cbe190c33763d62c1db6999617fa6ca9b2326a501f38507cba6cdb7"
+    },
+    {
+      "path": "templates/PROJECT_BRIEF.md",
+      "bytes": 2890,
+      "sha256": "22dec1dea5ad50c80a9e1307f8dcc87db0c014902366083e1c51023c4a7a8146"
+    },
+    {
+      "path": "VERSION.md",
+      "bytes": 2550,
+      "sha256": "0ac95fb348675d6a2ffc455e07fb48d074bcb8a89a51ecfb945860725d79cdb3"
+    }
+  ],
+  "upstream_git_blob": "9f2af2701adf303ffea504f9c67e0d750f7c7a28",
+  "github_write_performed": false,
+  "media_certification_performed": false,
+  "reality_certification": "PENDING",
+  "FINAL_VALID": "NO"
+}

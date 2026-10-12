@@ -1,0 +1,119 @@
+{
+  "checked_utc": "2026-10-12T14:37:33.060911+00:00",
+  "scope": "LOCAL_STATIC_PACKAGE_ONLY",
+  "root": "C:\\AI\\Polsia-Codex-20261011\\outputs\\codex-h3-v2-20261012\\package\\versions\\codex-h3-v2.0",
+  "status": "FAIL",
+  "required_files": [
+    "SKILL.md",
+    "VERSION.md",
+    "RECENT_USE_LOG.md",
+    "references/METHOD_V2.md",
+    "references/FRAME_CONTINUITY.md",
+    "references/ACCEPTANCE.md",
+    "references/FAILURE_RECOVERY.md",
+    "templates/PROJECT_BRIEF.md",
+    "templates/FINAL_TEST_RESULT.md",
+    "source/LESSON_EXTRACTION.md",
+    "source/AGENTS_PATCH_DRAFT.md",
+    "source/UPSTREAM_CONTRACT.md",
+    "acceptance/index.html"
+  ],
+  "checks": {
+    "frame_count_56": true,
+    "fps_24": true,
+    "previous_accepted_and_first_reference": false,
+    "all_frame_gate": true,
+    "no_interpolation": false,
+    "model_not_exposed": true,
+    "native_resolution_not_hard_gate": true,
+    "playback_and_listening_not_faked": true,
+    "pending_reality": true,
+    "final_valid_default_no": true,
+    "versioned_parent_preserved": true,
+    "recent_use": true,
+    "roi_gate_paused": true,
+    "agents_draft_not_applied": true,
+    "upstream_contract_exact_blob": true
+  },
+  "errors": [
+    "RULE_CHECK_FAILED: previous_accepted_and_first_reference",
+    "RULE_CHECK_FAILED: no_interpolation"
+  ],
+  "files": [
+    {
+      "path": "acceptance/index.html",
+      "bytes": 3289,
+      "sha256": "d4645aadca8106ae426a4c0e003ba6d90fd6725e4fb3a98c7ea3d470324f0935"
+    },
+    {
+      "path": "acceptance/validate_package.py",
+      "bytes": 4662,
+      "sha256": "3fdc448b840c89ce4ed5b0bb34eafc7ce18cdcc8ea6b1ae826d6e09ba2fdbadb"
+    },
+    {
+      "path": "RECENT_USE_LOG.md",
+      "bytes": 3512,
+      "sha256": "562ad0d4bbb0ac18f15d2b2c2157585afe96c6874a095fcf92fa1deb3e45d08b"
+    },
+    {
+      "path": "references/ACCEPTANCE.md",
+      "bytes": 3613,
+      "sha256": "7853f205cd5861b8d1601fcc94ac55161d1b70c851f661bd02313c74d0d3e71d"
+    },
+    {
+      "path": "references/FAILURE_RECOVERY.md",
+      "bytes": 3409,
+      "sha256": "cb9ac8b4ca50a8cf9e8c3ac0f5fdaafab4ab969935ffd4dc5bf387cf98be4958"
+    },
+    {
+      "path": "references/FRAME_CONTINUITY.md",
+      "bytes": 3664,
+      "sha256": "eb3e3e9ceb6c36e64716b0172dba69cd14eddcb1478d9cf49d8ad849dbb942f8"
+    },
+    {
+      "path": "references/METHOD_V2.md",
+      "bytes": 5479,
+      "sha256": "89461f5307435223dd2e8cfdec6d984f829019a8b06ef45cc79c711ec6ec8d4c"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 4824,
+      "sha256": "1bff68bea3fc2a769b300161cf33c308244beff6c93e18ae60f9a3f043cf4a79"
+    },
+    {
+      "path": "source/AGENTS_PATCH_DRAFT.md",
+      "bytes": 904,
+      "sha256": "2a860cca932aa9e23a0af5ac76fd9f5def46c5d54fcfcea1f8370f0ed72f6b3d"
+    },
+    {
+      "path": "source/LESSON_EXTRACTION.md",
+      "bytes": 1711,
+      "sha256": "66a874e410f77c189e7011cf3146ede05b4c1e66c5f5715c3c573a574a9237ba"
+    },
+    {
+      "path": "source/UPSTREAM_CONTRACT.md",
+      "bytes": 2771,
+      "sha256": "cbb3e448e0a89ad9b0c5051f1740dadcbbfabd38741fc296a5e28e4ee21d4a41"
+    },
+    {
+      "path": "templates/FINAL_TEST_RESULT.md",
+      "bytes": 2805,
+      "sha256": "b6685cbc1cbe190c33763d62c1db6999617fa6ca9b2326a501f38507cba6cdb7"
+    },
+    {
+      "path": "templates/PROJECT_BRIEF.md",
+      "bytes": 2890,
+      "sha256": "22dec1dea5ad50c80a9e1307f8dcc87db0c014902366083e1c51023c4a7a8146"
+    },
+    {
+      "path": "VERSION.md",
+      "bytes": 2375,
+      "sha256": "5c1fc6c850614d36d2fc9e6c0d7d694c85c4ceea3c7a94e0fb28c51ebccee013"
+    }
+  ],
+  "upstream_git_blob": "9f2af2701adf303ffea504f9c67e0d750f7c7a28",
+  "github_write_performed": false,
+  "media_certification_performed": false,
+  "reality_certification": "PENDING",
+  "FINAL_VALID": "NO"
+}
