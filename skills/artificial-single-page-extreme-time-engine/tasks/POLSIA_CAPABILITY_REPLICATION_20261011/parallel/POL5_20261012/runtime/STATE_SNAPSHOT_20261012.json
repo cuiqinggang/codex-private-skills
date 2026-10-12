@@ -1,0 +1,113 @@
+{
+  "schema": "POLSIA_V5_REMOTE_CHECKPOINT_V1",
+  "task_id": "POLSIA_CAPABILITY_REPLICATION_20261011",
+  "batch_id": "POL5_20261012",
+  "method": "GPT_CEO_CODEX_ULTRA_V5",
+  "observed_local": "2026-10-12 20:46:16",
+  "authority": "cuiqinggang/codex-private-skills/main",
+  "mother": {
+    "freeze": "POLSIA-MOTHER-V008-F001",
+    "last_frozen_version": "V008",
+    "final_valid": false
+  },
+  "contract_scope": "LOCAL_ISOLATED_READONLY;NO_SECRETS_NO_PUBLISH_NO_PAYMENTS_NO_EMAILS_NO_ADS_NO_BROWSER_CHANGES",
+  "inheritance": {
+    "historical_facts_preserved": true,
+    "original_outputs_integrated_into_new_site": "NOT_PROVEN",
+    "audit": "../INHERITANCE_AUDIT_20261012.md"
+  },
+  "dispatch_processes": [
+    {
+      "id": "PA5-01",
+      "dispatch_pid": 32636,
+      "pid_exists_at_snapshot": false
+    },
+    {
+      "id": "PA5-02",
+      "dispatch_pid": 4196,
+      "pid_exists_at_snapshot": false
+    },
+    {
+      "id": "PA5-03",
+      "dispatch_pid": 39064,
+      "pid_exists_at_snapshot": false
+    },
+    {
+      "id": "PA5-04",
+      "dispatch_pid": 8220,
+      "pid_exists_at_snapshot": false
+    },
+    {
+      "id": "PA5-05",
+      "dispatch_pid": 15072,
+      "pid_exists_at_snapshot": false
+    }
+  ],
+  "branches": [
+    {
+      "id": "PA5-01",
+      "name": "成熟公司平台复用",
+      "status": "DONE_SCOPED",
+      "step": "成熟平台源码与官方控制台入口已核验；实际运行转网站分支",
+      "verified_steps": 4,
+      "planned_steps": 4,
+      "updated_utc": "2026-10-12T12:13:23.8284983Z",
+      "evidence": "Git c62ba0be3368815dc9011848d96875ef228f1607",
+      "issue": "",
+      "contract_blob": "c65ad0fc4c5e27fd50dc98db820c34b04e1b0cbd"
+    },
+    {
+      "id": "PA5-02",
+      "name": "自有网站运行",
+      "status": "WAITING_DEPENDENCY",
+      "step": "成熟平台需要数据库，暂不擅自配置生产账户",
+      "verified_steps": 3,
+      "planned_steps": 4,
+      "updated_utc": "2026-10-12T12:17:25.8822475Z",
+      "evidence": "package.json",
+      "issue": "需本地隔离数据库与合法模型配置",
+      "contract_blob": "ff9c88c869ed8da035f3b6fa7ca9c773f6ff399b"
+    },
+    {
+      "id": "PA5-03",
+      "name": "九类能力与工作流",
+      "status": "BLOCKED",
+      "step": "业务工作流服务与模型桥均未监听，正在等待合法恢复",
+      "verified_steps": 3,
+      "planned_steps": 4,
+      "updated_utc": "2026-10-12T12:17:02.1830998Z",
+      "evidence": "PA5-03-workflow-probe.json",
+      "issue": "HTTP无法连接；n8n端口5678及模型桥8788未监听",
+      "contract_blob": "9472a2609b3ff9a3fd55c243277cf5e278ba63bd"
+    },
+    {
+      "id": "PA5-04",
+      "name": "对标差分及独立验收",
+      "status": "DONE_SCOPED",
+      "step": "对标差分基线已保存；真实截图与完整功能尚未通过",
+      "verified_steps": 3,
+      "planned_steps": 4,
+      "updated_utc": "2026-10-12T12:13:19.1610286Z",
+      "evidence": "PA5-04-comparison.json",
+      "issue": "左右截图尚未采集",
+      "contract_blob": "8f93ab00baf4e057d90fe0c3a18cb4699f0fe9f3"
+    },
+    {
+      "id": "PA5-05",
+      "name": "全流程透明监控",
+      "status": "DONE_SCOPED",
+      "step": "已运行成熟组件全流程监控；真实截图仍待接入",
+      "verified_steps": 4,
+      "planned_steps": 4,
+      "updated_utc": "2026-10-12T12:13:19.5566164Z",
+      "evidence": "http://127.0.0.1:8766/index.html",
+      "issue": "",
+      "contract_blob": "9a8361d705a3ef674f8c90c72ee9ddd35729e72c"
+    }
+  ],
+  "notes": [
+    "历史 PID 是否存在不代表当前业务运行成功；各分支状态是最后阶段回执",
+    "DONE_SCOPED不等于完整业务交付；网站目前未取得真实九类功能整合回执",
+    "严格只读保存；不改母任务CURRENT与历史Freeze"
+  ]
+}
