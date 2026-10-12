@@ -5,10 +5,10 @@
   "PARENT_FREEZE": "POLSIA-MOTHER-V008-F001",
   "SOURCE_OF_TRUTH": "GitHub:cuiqinggang/codex-private-skills/main",
   "status": "BLOCKED_ENVIRONMENT",
-  "phase": "CHECKS_COMPLETE_PERSISTENCE_PENDING",
+  "phase": "BLOCKED_WITH_PERSISTED_EVIDENCE",
   "FINAL_VALID": "NO",
   "MOTHER_FINAL_VALID": "NO",
-  "updated_at": "2026-10-12T14:45:45.009Z",
+  "updated_at": "2026-10-12T15:01:47.231Z",
   "blockers": [
     {
       "code": "LOCAL_DATABASE_UNAVAILABLE",
@@ -132,11 +132,15 @@
     "status_integrity": "PASS_OFFLINE_ONLY"
   },
   "github": {
-    "state": "NOT_YET_PERSISTED",
+    "state": "EVIDENCE_SNAPSHOT_COMMITTED_AND_INDEPENDENTLY_READ_BACK",
     "repository": "cuiqinggang/codex-private-skills",
     "result_path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/parallel/POL5_20261012/clone4/PCL-01",
     "required": "ACTUAL_COMMIT_AND_INDEPENDENT_READBACK",
-    "branch": "main"
+    "branch": "main",
+    "evidence_commit_sha": "932ed8b35b589f858d7eff363ca23620b7dad4dc",
+    "independent_readback": "PASS",
+    "independent_receipt": "evidence/GITHUB_INDEPENDENT_READBACK.json",
+    "final_receipt_commit": "Commit containing this status is verified in the external local final publication receipt, avoiding a self-referential commit hash."
   },
   "codegraph_usage": {
     "mcp_available": true,
@@ -156,5 +160,12 @@
     "openhuman_reference": "NOT_APPLICABLE_RUNTIME_RECOVERY",
     "health_check": "PASS_EXIT_0",
     "sync_before_after": "NONE_NO_KB_CHANGES"
+  },
+  "model_environment_recheck": {
+    "receipt": "evidence/MODEL_ENV_PRESENCE.json",
+    "pid": 51508,
+    "checked_model_names": 14,
+    "any_present": false,
+    "credential_values_recorded": false
   }
 }

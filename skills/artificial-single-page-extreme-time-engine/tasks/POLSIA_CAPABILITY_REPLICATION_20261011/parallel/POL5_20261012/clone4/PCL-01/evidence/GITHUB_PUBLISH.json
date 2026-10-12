@@ -1,0 +1,22 @@
+{
+  "stage": "snapshot",
+  "repository": "cuiqinggang/codex-private-skills",
+  "branch": "main",
+  "result_path": "skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/parallel/POL5_20261012/clone4/PCL-01",
+  "commit_sha": "932ed8b35b589f858d7eff363ca23620b7dad4dc",
+  "parent_sha": "bf4e73daf889b19ac3e82e8a6c190dd53ea1eb33",
+  "commit_url": "https://github.com/cuiqinggang/codex-private-skills/commit/932ed8b35b589f858d7eff363ca23620b7dad4dc",
+  "branch_update": "ACTUALLY_SUCCEEDED_FORCE_FALSE",
+  "published_files": 18,
+  "publisher_tool_session_id": 21840,
+  "publisher_exit_code": 1,
+  "author_readback": "INCOMPLETE_NATIVE_GH_READ_DID_NOT_RETURN_EXITCODE",
+  "author_readback_failure": {
+    "endpoint": "contents/skills/artificial-single-page-extreme-time-engine/tasks/POLSIA_CAPABILITY_REPLICATION_20261011/parallel/POL5_20261012/clone4/PCL-01/evidence/tcp-before.json?ref=932ed8b35b589f858d7eff363ca23620b7dad4dc",
+    "pid": 40528,
+    "exit_code": null,
+    "configured_timeout_ms": 45000
+  },
+  "independent_readback": "SEPARATE_ACTUAL_RECEIPT_REQUIRED",
+  "FINAL_VALID": "NO"
+}

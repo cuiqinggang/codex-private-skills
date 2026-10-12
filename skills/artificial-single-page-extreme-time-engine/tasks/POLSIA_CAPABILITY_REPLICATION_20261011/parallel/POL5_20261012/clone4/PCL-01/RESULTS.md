@@ -34,7 +34,7 @@ MOTHER_FINAL_VALID=NO
 
 恢复所需输入：现有本地隔离 Postgres 的正式入口/容器名或本地连接配置，以及已有合法 Pi 模型配置目录；请提供路径/名称，不提供秘钥正文。Docker 修复/底座变更不能由本任务一般授权推定。
 
-GitHub 持久化：当前等待实际提交与独立回读，最终回执另存 evidence/GITHUB_READBACK.json。禁止据此提前宣称结果已持久化或 FINAL_VALID。
+GitHub 持久化：真实证据快照已提交 932ed8b35b589f858d7eff363ca23620b7dad4dc，随后独立 Agent 对提交内容回读校验 PASS。见 evidence/GITHUB_PUBLISH.json 与 evidence/GITHUB_INDEPENDENT_READBACK.json。本状态更新和独立回执另以最终回执提交保存；该最终提交的外部本地回执为 evidence/GITHUB_FINAL_PUBLISH.json，收尾独立回读为 evidence/GITHUB_FINAL_INDEPENDENT_READBACK.json，避免文件内自引用提交哈希。环境仍 BLOCKED_ENVIRONMENT，FINAL_VALID=NO。
 
 CodeGraph usage:
 - MCP available: YES（会话工具目录可用）
@@ -53,3 +53,5 @@ Knowledge Brain usage:
 - OpenHuman reference used where relevant: N/A，运行恢复而非记忆架构任务
 - Sync run before/after: NONE，未改知识库；kb_health_check.ps1 真实退出0/PASS
 - If not used, reason: 已使用 C 盘复用矩阵，SHA256 b5f1ab2893e55c107f56b316bbbead6993eb2154ffad9039e57accf607595502；无全库扫描，无 H/K 读取或备份
+
+补充模型环境复核：PID51508、退出0，14种已知模型环境变量存在标志全false，匹配的 API_KEY/AUTH_TOKEN/ACCESS_TOKEN 名称为空；未记录值、未调用模型。见 evidence/MODEL_ENV_PRESENCE.json。

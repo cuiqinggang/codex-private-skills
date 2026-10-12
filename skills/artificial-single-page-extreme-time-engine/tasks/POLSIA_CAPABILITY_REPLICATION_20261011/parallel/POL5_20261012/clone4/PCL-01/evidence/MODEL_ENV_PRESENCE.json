@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-12T14:56:29.255Z",
+  "pid": 51508,
+  "matched_environment_names": [],
+  "known_model_names": [
+    {"name":"OPENAI_API_KEY","present":false},
+    {"name":"ANTHROPIC_API_KEY","present":false},
+    {"name":"GOOGLE_API_KEY","present":false},
+    {"name":"GEMINI_API_KEY","present":false},
+    {"name":"DEEPSEEK_API_KEY","present":false},
+    {"name":"MISTRAL_API_KEY","present":false},
+    {"name":"GROQ_API_KEY","present":false},
+    {"name":"OPENROUTER_API_KEY","present":false},
+    {"name":"AZURE_OPENAI_API_KEY","present":false},
+    {"name":"XAI_API_KEY","present":false},
+    {"name":"CEREBRAS_API_KEY","present":false},
+    {"name":"ZAI_API_KEY","present":false},
+    {"name":"MINIMAX_API_KEY","present":false},
+    {"name":"DASHSCOPE_API_KEY","present":false}
+  ],
+  "credential_values_recorded": false,
+  "model_calls_made": 0,
+  "command_exit_code": 0
+}
