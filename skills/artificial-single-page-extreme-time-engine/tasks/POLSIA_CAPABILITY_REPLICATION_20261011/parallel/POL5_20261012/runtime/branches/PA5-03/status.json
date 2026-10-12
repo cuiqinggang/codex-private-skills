@@ -1,0 +1,15 @@
+{
+  "id": "PA5-03",
+  "name": "九类能力与工作流",
+  "status": "BLOCKED",
+  "step": "业务工作流服务与模型桥均未监听，正在等待合法恢复",
+  "verified_steps": 3,
+  "planned_steps": 4,
+  "checkpoint": "母冻结V008；本分支未冻结",
+  "evidence": "PA5-03-workflow-probe.json",
+  "issue": "HTTP无法连接；n8n端口5678及模型桥8788未监听",
+  "contract_blob": "9472a2609b3ff9a3fd55c243277cf5e278ba63bd",
+  "locator": "【Polsia执行页｜POLSIA_CAPABILITY_REPLICATION_20261011｜PA5-03｜实】",
+  "started_utc": "2026-10-12T12:13:17.6389737Z",
+  "updated_utc": "2026-10-12T12:17:02.1830998Z"
+}
