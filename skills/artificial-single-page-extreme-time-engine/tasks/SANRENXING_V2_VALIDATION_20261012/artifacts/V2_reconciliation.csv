@@ -1,0 +1,6 @@
+invoice_id,customer,invoiced_cents,received_cents,outstanding_cents,status
+I001,Demo Green Labs,12500,12500,0,PAID
+I002,Demo Moko Studio,8900,8900,0,PAID
+I003,Demo Maple Co,21000,21000,0,PAID
+I004,Demo Better Tech,16000,13000,3000,PARTIAL
+I005,Demo Fresh Shop,10250,0,10250,UNPAID
