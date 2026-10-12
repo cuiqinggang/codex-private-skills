@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "task_id": "BRIDGE-LINK-CHECK-20261012-1901",
+  "payload_path": "workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/BRIDGE-LINK-CHECK-20261012-1901.ps1",
+  "timeout_seconds": 90,
+  "expected_exit_code": 0
+}
