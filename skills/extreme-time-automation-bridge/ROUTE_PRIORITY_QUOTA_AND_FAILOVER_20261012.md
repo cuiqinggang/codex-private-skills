@@ -1,5 +1,7 @@
 # GPT直连Windows双路执行桥 v0.3.4｜路由优先级、月度额度与故障切换（2026-10-12）
 
+> **2026-10-13 正式运行覆盖：** 本页是 10 月 12 日历史快照。当时因自建 Tunnel 会话中止而暂选 GitHub，不意味着今后所有短任务都走 GitHub。现行规则请先按 [免费额度运营 V1.0](REMOTE_DCR_QUOTA_OPERATIONS_V1.md) **判路后执行**：A（自建 MCP）优先短互动，B（GitHub）优先长/异步和经业务验收的备用，R（官方 Remote）仅在确有必要、官方余额有效且额度闸门允许时使用。10 月 13 日 A 的文件/计算及 B 的独立派发均新实测 PASS，R 官方剩余额度 0%；配套只读脚本见 [路由额度闸门](bootstrap/Invoke-Remote-Quota-Route-Gate.ps1)。先提醒违规再切路，禁止为了探活消耗官方额度。旧运行证据、故障与当前状态不得混淆。
+
 > **定位：运行策略增补**。不删除旧通道、不重新创建基础架构、不改变已经冻结的脚本和历史证据。若旧文档的“主路”与本文件冲突，按本文件的**当前可用性/配额路由策略**调度；原主备名称作为历史版本保留。
 >
 > 权威位置：`cuiqinggang/codex-private-skills` → `skills/extreme-time-automation-bridge/` → `main`。完整技术细节继续参考 [SKILL.md](SKILL.md)、[DUAL_ROUTE.md](DUAL_ROUTE.md)、[OPENAI_TUNNEL_CONNECT_RECOVERY_20261012.md](OPENAI_TUNNEL_CONNECT_RECOVERY_20261012.md)、[TUNNEL_WINDOW_VISIBILITY_AND_RECOVERY_20261012.md](TUNNEL_WINDOW_VISIBILITY_AND_RECOVERY_20261012.md)。
