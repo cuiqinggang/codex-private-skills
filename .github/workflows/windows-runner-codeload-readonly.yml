@@ -1,9 +1,5 @@
 name: Windows Runner Exact Action ZIP Through Existing FlClash (Read-Only)
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/windows-runner-codeload-readonly.yml'
   workflow_dispatch:
 permissions:
   contents: read
