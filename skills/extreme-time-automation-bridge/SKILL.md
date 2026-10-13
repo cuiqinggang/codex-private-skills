@@ -1,7 +1,7 @@
 ---
 name: extreme-time-automation-bridge
 version: "0.3.4"
-description: GPT直连Windows双路执行桥。保留 DCR 主路和 GitHub Actions Runner 备路；OpenAI 官方 Tunnel 真实 Windows MCP 读写命令限定能力已验收，v0.3.4 追加本机窗口隐藏 PASS、会话恢复入口、旧成熟登录机制、脚本证据及重启未验收边界。
+description: GPT直连Windows双路执行桥 v0.3.4。每次接入必须先按 Remote 免费额度运营 V1.0 判路和提醒；短/交互任务优先自建 OpenAI Tunnel+Windows MCP，长/异步任务优先 GitHub Runner，第三方 DCR Remote 受10,000次月调用预算闸门约束。保留历史双路、恢复入口、既有代理和安全边界。
 ---
 
 # GPT直连Windows双路执行桥 v0.3.4
