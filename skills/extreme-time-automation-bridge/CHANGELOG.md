@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.3.4 运行规则增量｜Remote 免费配额运营 V1.0 正式纳入（2026-10-13）
+
+- **正式入口更新**：SKILL.md 顶部加入使用前必读/判路/违规提醒合同，并标明 10 月 12 日临时 GitHub 首选状态只是历史快照。
+- **新可执行附则**：[REMOTE_DCR_QUOTA_OPERATIONS_V1.md](REMOTE_DCR_QUOTA_OPERATIONS_V1.md)：自建 A 快速交互、GitHub B 长/异步、官方托管 R 额度受控；6000/7500/8000/9500 四级门；在线≠可执行、官方用量≠本地 MCP 统计。
+- **零副作用判路脚本**：[bootstrap/Invoke-Remote-Quota-Route-Gate.ps1](bootstrap/Invoke-Remote-Quota-Route-Gate.ps1)：输入已验证的通道状态、任务类型、官方余额与用户选路，输出路由+警告；不连接、不派发、不改本机配置；不声称自动拦截 ChatGPT 插件。
+- **历史不覆盖**：2026-10-13 A 短任务实际 PASS，B 轻任务独立派发 PASS、复杂生产 B 的历史故障仍需独立修复；Remote who_am_i=0%。保留 v0.3.4 版本号与原执行器/隧道/代理/浏览器，不重建。
+- **验收门**：测试 R=0、R=6000、R=8000、R=9500、A/B可用/不可用和误选 R 等规则，再称静态判路通过；重启、长时等运营表现仍需 Reality。
+
+
 ## v0.3.4 月度用量/自建通道路由增量（2026-10-12 晚）
 
 - **路由优先级明确调整**：现在优先使用自建 GitHub 共同工作区 → Actions → Windows Runner；OpenAI 官方 Tunnel + 用户本机开源 MCP 接入恢复正常后也可使用；第三方托管 Desktop Commander Remote 只在配额充足、能力合适时作为补充。原 A/B 路、设备和技能包历史全部保留，无删除、无重建、无改变 FlClash/系统代理。
