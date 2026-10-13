@@ -56,3 +56,36 @@ AUTO_ROLLBACK=NOT_INSTALLED
 ## 5. 时间唯一标准下的决策
 A 已确认可执行的日常操作 → A；A失联且B的 FULL 本业务合同已有真实PASS或可合法验收 → B；A/B均受限且R有真实额度/权限 → R。对“失败、用错、浪费额度、跳过验收”先提出错误分类、GOOD/BAD第一差异、预计净收益最高的成熟改法，才执行副作用动作。
 无论什么新页面，只要用户说“GPT直连Windows双路执行桥 V1.0”，入口强制先读本页、当下状态和 R 运营规则。不更改 FlClash、代理、已登录浏览器；不关闭和重建原桥，也不新增未经许可的公网命令接口。
+
+## 2026-10-13 14:10–14:14 UTC｜原始建路溯源与单次只读诊断（追加证据）
+
+STATUS=ROOT_CAUSE_ISOLATED_TO_CODELOAD_HTTP_TRANSFER;NETWORK_REPAIR_NOT_YET_ACCEPTED
+RUN=38411059140
+COMMIT=5e9717a4ed3800b01ed63571ae60a8fe6dca1bc3
+DIAGNOSTIC_WORKFLOW=.github/workflows/windows-runner-codeload-readonly.yml
+PRODUCTION_FULL_WORKFLOW=UNCHANGED
+EXACTLY_ONCE_READ_ONLY_NETWORK_PROBE=EXECUTED
+
+### 历史起点和首个故障差分
+- 2026-10-02 初版提交 `5f0451d96ee25850b0de2348b588ec55414e766e` 正式确立 GPT→GitHub task JSON→Actions static→Windows self-hosted→机器结果→Artifact→可选回调。
+- `300fe34` 通过 sparse checkout 避开长路径问题；`2638b3a` 后 Windows 业务取源改用固定提交 SHA 的 GitHub Contents API。
+- 2026-10-04 Run 37193387268 成功（约84秒）；2026-10-12 Run 38240277230 成功（约156秒），但当时 Action 准备已耗约95秒；后续 Run 38264768349 和 38405736959 都在 `upload-artifact@v4` 归档 ZIP 下载期间出现三次100秒超时。
+- 首个共同失败环节是 Action 预下载。Runner 2.337.0 已领单；运行权限及业务脚本代码尚未触发。即使 YAML 把 Artifact 步骤放在末尾并设置 `if: always()`，Runner 仍会在开始业务前准备 `uses:` Action。
+
+### 2026-10-13 独立真实诊断（没有执行任何用户业务）
+- 新增只读隔离诊断工作流并真实启动 Run [38411059140](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38411059140)。
+- Runner: DESKTOP-4A1EGTM-etal；`Set up job`=PASS；无需任何第三方 Action 就进入 PowerShell 步骤。
+- `CODELOAD_DNS=PASS;RESOLVED_IP_COUNT=1`。
+- `HTTPS_PROXY_ENV_PRESENT=False`、`HTTP_PROXY_ENV_PRESENT=False`、`NO_PROXY_ENV_PRESENT=False`（仅说明任务环境变量为空，不能据此断言没有 WinHTTP/其他网络代理）。
+- 对相同 SHA `ea165f8d65b6e75b540449e92b4886f43607fa02` 的 `https://codeload.github.com/actions/upload-artifact/zip/...` 执行一次完整 GET；`HttpClient.Timeout=55秒`，实际测得63,079ms，`CODELOAD_FULL_GET=FAIL`。
+- 本次工作流整体最终状态 CANCELLED（四分钟作业超时），诊断步骤本身 FAILED，结论不能记成网络 PASS。
+- 同样能够成功派单、接单、运行不依赖外部 Action 的 PowerShell，排除「Runner 完全离线」和「所有 GitHub API 均不可用」。已进一步收窄为 `codeload.github.com` 的 HTTP/HTTPS 完整响应或传输链路失败，实际路由/网络策略原因尚待核实。
+
+### 后续成熟修复门禁（不改变现有 FlClash 或系统网络代理）
+1. **先核实、后修改**：在已经授权且真实可用的 Windows 入口，仅只读核对 `C:\actions-runner-etal\.env` 是否存在相应代理参数、Runner 是 Service 还是交互进程、Runner 进程继承的代理设置及已经存在的 FlClash 工作端点。不要公布可能含认证信息的代理 URL，不能猜端口，不要修改 FlClash/系统代理。
+2. GitHub 官方 [self-hosted proxy 指南](https://docs.github.com/en/actions/how-tos/manage-runners/use-proxy-servers) 允许 Runner 在启动时读取自己的代理环境变量或根目录 `.env`；若确认网络出站必须复用已有代理，预先做配置备份、回滚入口和白名单后，**仅调整 Runner 自身继承现有网络的方式**，不改变现有代理服务器、代理软件和全局网络配置。任何 Runner 服务重启须在确认无运行中任务及恢复能力后执行。
+3. 若既有代理策略禁止任何 Runner 层配置，保留原 FULL 生产通道，不做伪修复。另行评估通过受审计的**固定 SHA 本地化官方 upload-artifact Action** 避免 `codeload` 的候选方案；此方案有供应链、部署和官方归档兼容性成本，不得未经端到端验证替换 FULL。
+4. 只有完整 ZIP 实际下载成功、恢复 **同一 FULL 路线** 的任务执行 + Artifact 回传 + 业务回读，并用同次运行 `T_VALID` 验收，才能将 `NETWORK_REPAIR_NOT_YET_ACCEPTED` 改为 PASS。简单无外部 Action 冒烟和 HEAD 200 不可冒充。
+5. 不重复派发状态 UNKNOWN 的有副作用业务，不通过新快路绕安全限制；自建 A 本次仍返回 `Session terminated`，不可标记在线。
+
+参考 GitHub 官方说明：<https://docs.github.com/en/actions/reference/runners/self-hosted-runners> 与 <https://docs.github.com/en/actions/how-tos/manage-runners/use-proxy-servers>。
