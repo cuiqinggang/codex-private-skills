@@ -1,9 +1,5 @@
 name: Windows Bridge V1 Fast (No External Actions)
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'workspaces/extreme-time-automation-loop-v2.0/bridge/fast-tasks/*.json'
   workflow_dispatch:
     inputs:
       task_file:
@@ -26,26 +22,16 @@ jobs:
           GH_READ_TOKEN: ${{ github.token }}
           COMMIT_SHA: ${{ github.sha }}
           TASK_PATH: ${{ inputs.task_file }}
-          BEFORE_SHA: ${{ github.event.before }}
         run: |
           $ErrorActionPreference='Stop'
           $all=[Diagnostics.Stopwatch]::StartNew()
           $root=Join-Path $env:RUNNER_TEMP ('bridge-v1-fast/'+$env:GITHUB_RUN_ID)
           New-Item -ItemType Directory -Force -Path $root | Out-Null
           $prefix='workspaces/extreme-time-automation-loop-v2.0/bridge/'
-          $taskPath=$env:TASK_PATH
-          if([string]::IsNullOrWhiteSpace($taskPath) -and $env:GITHUB_EVENT_NAME -eq 'push'){
-            if($env:BEFORE_SHA -notmatch '^[0-9a-f]{40}$'){throw 'PUSH_BEFORE_SHA_INVALID'}
-            $compareUri="$env:GITHUB_API_URL/repos/$env:GITHUB_REPOSITORY/compare/$env:BEFORE_SHA...$env:COMMIT_SHA"
-            $diff=Invoke-RestMethod -Uri $compareUri -Headers @{Authorization="Bearer $env:GH_READ_TOKEN";Accept='application/vnd.github+json'} -TimeoutSec 20
-            $changed=@($diff.files | Where-Object { $_.status -in @('added','modified') -and $_.filename -match '^workspaces/extreme-time-automation-loop-v2[.]0/bridge/fast-tasks/[A-Za-z0-9._-]+[.]json$' } | Select-Object -ExpandProperty filename -Unique)
-            if($changed.Count -ne 1){throw "PUSH_REQUIRES_EXACTLY_ONE_FAST_TASK;FOUND=$($changed.Count)"}
-            $taskPath=[string]$changed[0]
-          }
-          if($taskPath -notmatch '^workspaces/extreme-time-automation-loop-v2[.]0/bridge/(tasks|fast-tasks)/[A-Za-z0-9._-]+[.]json$'){throw 'TASK_PATH_NOT_ALLOWED'}
+          if($env:TASK_PATH -notmatch '^workspaces/extreme-time-automation-loop-v2[.]0/bridge/tasks/[A-Za-z0-9._-]+[.]json$'){throw 'TASK_PATH_NOT_ALLOWED'}
           $headers=@{Authorization="Bearer $env:GH_READ_TOKEN";Accept='application/vnd.github+json'}
           function Receive-FrozenFile([string]$relative){
-            if($relative -notmatch '^workspaces/extreme-time-automation-loop-v2[.]0/bridge/(tasks|fast-tasks|payloads|runner)/[A-Za-z0-9._-]+[.](json|ps1)$'){throw 'UNAUTHORIZED_REPO_PATH'}
+            if($relative -notmatch '^workspaces/extreme-time-automation-loop-v2[.]0/bridge/(tasks|payloads|runner)/[A-Za-z0-9._-]+[.](json|ps1)$'){throw 'UNAUTHORIZED_REPO_PATH'}
             $uri="$env:GITHUB_API_URL/repos/$env:GITHUB_REPOSITORY/contents/${relative}?ref=$env:COMMIT_SHA"
             $result=$null
             for($attempt=1;$attempt -le 2;$attempt++){
@@ -59,7 +45,7 @@ jobs:
             return $local
           }
           Write-Host ('V1_FAST_ACCEPT_UTC='+[DateTime]::UtcNow.ToString('o')+';SHA='+$env:COMMIT_SHA)
-          $taskLocal=Receive-FrozenFile $taskPath
+          $taskLocal=Receive-FrozenFile $env:TASK_PATH
           $task=Get-Content -LiteralPath $taskLocal -Raw -Encoding utf8 | ConvertFrom-Json
           if($task.schema_version -ne 1 -or [string]$task.task_id -notmatch '^[A-Za-z0-9._-]{3,100}$'){throw 'INVALID_TASK_CONTRACT'}
           if([string]$task.payload_path -notmatch '^workspaces/extreme-time-automation-loop-v2[.]0/bridge/payloads/[A-Za-z0-9._-]+[.]ps1$'){throw 'INVALID_PAYLOAD_PATH'}
