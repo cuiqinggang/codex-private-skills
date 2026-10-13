@@ -1,98 +1,84 @@
-name: Windows Runner Network Route Diagnostic (Read-Only)
+name: Windows Runner Route Root Cause Read-Only
 on:
   push:
     branches: [main]
     paths:
       - '.github/workflows/windows-runner-codeload-readonly.yml'
   workflow_dispatch:
-
 permissions:
   contents: read
-
 concurrency:
-  group: windows-runner-route-readonly-v2
+  group: windows-runner-route-cause-readonly
   cancel-in-progress: false
-
 jobs:
-  runner-route-diagnostic:
+  classify-network:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 4
     steps:
-      - name: Inspect original runner configuration and compare outbound routes
+      - name: Classify actual DNS destination, socket error, existing FlClash listening endpoints
         shell: pwsh
         run: |
           $ErrorActionPreference='Stop'
-          Write-Host ('ROUTE_DIAG_START_UTC='+[DateTime]::UtcNow.ToString('o'))
-          Write-Host 'DIAGNOSTIC_MODE=READ_ONLY;NO_PROXY_CHANGES;NO_RUNNER_RESTART;NO_ZIP_BODY_DOWNLOAD'
-          $runnerRoot='C:\actions-runner-etal'
-          $envFile=Join-Path $runnerRoot '.env'
-          Write-Host ('RUNNER_ENV_FILE_PRESENT='+(Test-Path -LiteralPath $envFile))
-          $names=@('https_proxy','http_proxy','no_proxy')
-          $lines=if(Test-Path -LiteralPath $envFile){@(Get-Content -LiteralPath $envFile -ErrorAction Stop)}else{@()}
-          foreach($key in $names){
-            $hasKey=@($lines | Where-Object { $_ -match ('^\s*'+$key+'\s*=') }).Count -gt 0
-            $inJob=-not [string]::IsNullOrWhiteSpace([Environment]::GetEnvironmentVariable($key))
-            Write-Host ('RUNNER_FILE_'+$key.ToUpper()+'_PRESENT='+$hasKey)
-            Write-Host ('JOB_ENV_'+$key.ToUpper()+'_PRESENT='+$inJob)
+          Write-Host 'CHECK_MODE=READ_ONLY;NO_CONFIG_CHANGES;NO_BUSINESS_TASK;NO_FULL_ZIP_DOWNLOAD'
+          function IpClass([Net.IPAddress]$ip){
+            if($ip.AddressFamily -ne [Net.Sockets.AddressFamily]::InterNetwork){return 'IPV6'}
+            $b=$ip.GetAddressBytes()
+            if($b[0] -eq 198 -and ($b[1] -eq 18 -or $b[1] -eq 19)){return '198.18.0.0/15_FAKE_IP_TEST_RANGE'}
+            if($b[0] -eq 127){return 'LOOPBACK'}
+            if($b[0] -eq 10 -or ($b[0] -eq 172 -and $b[1] -ge 16 -and $b[1] -le 31) -or ($b[0] -eq 192 -and $b[1] -eq 168)){return 'RFC1918_PRIVATE'}
+            if($b[0] -eq 169 -and $b[1] -eq 254){return 'LINK_LOCAL'}
+            return 'PUBLIC_IPV4_OR_OTHER'
           }
-          $svcs=@(Get-Service -Name 'actions.runner*' -ErrorAction SilentlyContinue)
-          Write-Host ('GITHUB_RUNNER_SERVICE_COUNT='+$svcs.Count)
-          Write-Host ('GITHUB_RUNNER_SERVICE_RUNNING='+(@($svcs | Where-Object Status -eq 'Running').Count -gt 0))
-          $fl=@(Get-Process -Name '*flclash*' -ErrorAction SilentlyContinue)
-          Write-Host ('FLCLASH_PROCESS_RUNNING='+($fl.Count -gt 0))
-          $target=[Uri]'https://codeload.github.com/_ping'
-          try {
-            $default=[Net.Http.HttpClient]::DefaultProxy.GetProxy($target)
-            Write-Host ('DOTNET_DEFAULT_PROXY_FOR_CODELOAD='+($null -ne $default -and $default.AbsoluteUri -ne $target.AbsoluteUri))
-          }catch{Write-Host 'DOTNET_DEFAULT_PROXY_FOR_CODELOAD=UNKNOWN'}
-          $ports=[System.Collections.Generic.HashSet[int]]::new()
-          $profiles=0
-          foreach($sid in [Microsoft.Win32.Registry]::Users.GetSubKeyNames()){
-            if($sid -notmatch '^S-1-5-21-[0-9-]+$'){continue}
+          foreach($hostName in @('codeload.github.com','api.github.com')){
             try{
-              $key=[Microsoft.Win32.Registry]::Users.OpenSubKey(($sid+'\Software\Microsoft\Windows\CurrentVersion\Internet Settings'))
-              if($null -eq $key){continue}
-              $enabled=([int]$key.GetValue('ProxyEnable',0) -eq 1)
-              if($enabled){$profiles++}
-              $server=[string]$key.GetValue('ProxyServer','')
-              $key.Close()
-              if(-not $enabled){continue}
-              foreach($part in ($server -split ';')){
-                $p=($part -replace '^[A-Za-z]+=', '').Trim()
-                if($p -match '^(?:http://)?(?:127\.0\.0\.1|localhost):([0-9]{2,5})$'){
-                  $n=[int]$Matches[1]
-                  if($n -gt 0 -and $n -le 65535){[void]$ports.Add($n)}
-                }
-              }
-            }catch{}
+              $ips=@([Net.Dns]::GetHostAddresses($hostName))
+              $cats=@($ips | ForEach-Object { IpClass $_ } | Select-Object -Unique)
+              Write-Host ('DNS_'+($hostName -replace '[.-]','_').ToUpper()+'_CLASSES='+($cats -join ',')+';COUNT='+$ips.Count)
+            }catch{Write-Host ('DNS_'+$hostName+'_FAIL='+$_.Exception.GetBaseException().GetType().Name)}
           }
-          Write-Host ('ENABLED_USER_PROXY_PROFILES='+$profiles)
-          Write-Host ('EXISTING_LOOPBACK_PROXY_CANDIDATES='+$ports.Count)
-          function Probe([string]$label,[string]$uri,[int]$proxyPort=0){
+          $h=[Net.Http.HttpClientHandler]::new()
+          $h.UseProxy=$false
+          $c=[Net.Http.HttpClient]::new($h)
+          $c.Timeout=[TimeSpan]::FromSeconds(8)
+          $sw=[Diagnostics.Stopwatch]::StartNew()
+          try{
+            $resp=$c.GetAsync('https://codeload.github.com/_ping',[Net.Http.HttpCompletionOption]::ResponseHeadersRead).GetAwaiter().GetResult()
+            Write-Host ('CODELOAD_DIRECT_PING_GET_HTTP='+[int]$resp.StatusCode+';MS='+$sw.ElapsedMilliseconds)
+            $resp.Dispose()
+          }catch{
+            $base=$_.Exception.GetBaseException()
+            $kind=$base.GetType().Name
+            if($base -is [Net.Sockets.SocketException]){$kind+='_'+$base.SocketErrorCode}
+            Write-Host ('CODELOAD_DIRECT_PING_GET_ERROR='+$kind+';MS='+$sw.ElapsedMilliseconds)
+          }finally{$c.Dispose()}
+          $candidateProcs=@(Get-Process -Name '*flclash*','*mihomo*','*clash*' -ErrorAction SilentlyContinue)
+          $pidArray=@($candidateProcs | Select-Object -ExpandProperty Id -Unique)
+          Write-Host ('FLCLASH_OR_CORE_PROCESS_COUNT='+$pidArray.Count)
+          $listens=@()
+          try{
+            $listens=@(Get-NetTCPConnection -State Listen -ErrorAction Stop | Where-Object {
+              ($pidArray -contains $_.OwningProcess) -and ($_.LocalAddress -in @('127.0.0.1','0.0.0.0','::1','::'))
+            } | Select-Object -ExpandProperty LocalPort -Unique)
+          }catch{Write-Host ('LOCAL_LISTENER_ENUM_ERROR='+$_.Exception.GetBaseException().GetType().Name)}
+          Write-Host ('FLCLASH_OWNED_LISTENER_COUNT='+$listens.Count)
+          $idx=0
+          foreach($port in @($listens | Sort-Object | Select-Object -First 4)){
+            $idx++
             $handler=[Net.Http.HttpClientHandler]::new()
-            if($proxyPort -gt 0){
-              $handler.UseProxy=$true
-              $handler.Proxy=[Net.WebProxy]::new(('http://127.0.0.1:'+$proxyPort))
-            }else{
-              $handler.UseProxy=$false
-            }
+            $handler.UseProxy=$true
+            $handler.Proxy=[Net.WebProxy]::new(('http://127.0.0.1:'+$port))
             $client=[Net.Http.HttpClient]::new($handler)
-            $client.Timeout=[TimeSpan]::FromSeconds(12)
-            $sw=[Diagnostics.Stopwatch]::StartNew()
+            $client.Timeout=[TimeSpan]::FromSeconds(7)
+            $w=[Diagnostics.Stopwatch]::StartNew()
             try{
-              $response=$client.GetAsync($uri,[Net.Http.HttpCompletionOption]::ResponseHeadersRead).GetAwaiter().GetResult()
-              $sw.Stop()
-              Write-Host ($label+'=HTTP_'+[int]$response.StatusCode+';HEADER_MS='+$sw.ElapsedMilliseconds)
-              $response.Dispose()
+              $resp=$client.GetAsync('https://codeload.github.com/_ping',[Net.Http.HttpCompletionOption]::ResponseHeadersRead).GetAwaiter().GetResult()
+              Write-Host ('EXISTING_LOCAL_PROXY_'+$idx+'=HTTP_'+[int]$resp.StatusCode+';MS='+$w.ElapsedMilliseconds+';PORT='+$port)
+              $resp.Dispose()
             }catch{
-              $sw.Stop()
-              Write-Host ($label+'=FAIL;ELAPSED_MS='+$sw.ElapsedMilliseconds+';TYPE='+$_.Exception.GetType().Name)
+              $base=$_.Exception.GetBaseException()
+              $kind=$base.GetType().Name
+              if($base -is [Net.Sockets.SocketException]){$kind+='_'+$base.SocketErrorCode}
+              Write-Host ('EXISTING_LOCAL_PROXY_'+$idx+'=FAIL_'+$kind+';MS='+$w.ElapsedMilliseconds)
             }finally{$client.Dispose()}
           }
-          Probe 'API_DIRECT_HEADERS' 'https://api.github.com/zen'
-          Probe 'CODELOAD_DIRECT_GET_HEADERS' 'https://codeload.github.com/actions/upload-artifact/zip/ea165f8d65b6e75b540449e92b4886f43607fa02'
-          if($ports.Count -gt 0){
-            $selected=@($ports | Sort-Object)[0]
-            Probe 'CODELOAD_EXISTING_USER_PROXY_GET_HEADERS' 'https://codeload.github.com/actions/upload-artifact/zip/ea165f8d65b6e75b540449e92b4886f43607fa02' $selected
-          }else{Write-Host 'CODELOAD_EXISTING_USER_PROXY_GET_HEADERS=SKIPPED_NO_CONFIGURED_PORT'}
-          Write-Host ('ROUTE_DIAG_END_UTC='+[DateTime]::UtcNow.ToString('o'))
+          Write-Host 'ROOT_CAUSE_PROBE_FINISHED'
