@@ -52,7 +52,7 @@ if($RState -eq 'quota_blocked'){
     $budget='MANUAL_ONLY_9500'
     $rEligible= $rEligible -and $Emergency.IsPresent -and $ExplicitRemoteApproval.IsPresent
     $warnings.Add('R_ABOVE_9500: explicit approval for EACH emergency request required')
-  } elseif($used -ge 8000 -or $predicted -gt 9500){
+  } elseif($used -ge 8000 -or $predicted -gt 8000){
     $budget='EMERGENCY_ONLY_8000'
     $rEligible= $rEligible -and $Emergency.IsPresent -and $ExplicitRemoteApproval.IsPresent -and ($predicted -le 9500)
     $warnings.Add('R_ABOVE_8000: stop normal Remote calls, preserve emergency reserve')
