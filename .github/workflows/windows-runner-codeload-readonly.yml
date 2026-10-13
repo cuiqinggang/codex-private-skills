@@ -1,4 +1,4 @@
-name: Windows Runner Route Root Cause Read-Only
+name: Windows Runner Exact Action ZIP Through Existing FlClash (Read-Only)
 on:
   push:
     branches: [main]
@@ -8,77 +8,48 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: windows-runner-route-cause-readonly
+  group: windows-runner-exact-zip-readonly
   cancel-in-progress: false
 jobs:
-  classify-network:
+  exact-action-zip:
     runs-on: [self-hosted, Windows, X64]
-    timeout-minutes: 4
+    timeout-minutes: 3
     steps:
-      - name: Classify actual DNS destination, socket error, existing FlClash listening endpoints
+      - name: Compare original direct failure against exactly pinned archive via verified existing proxy
         shell: pwsh
         run: |
           $ErrorActionPreference='Stop'
-          Write-Host 'CHECK_MODE=READ_ONLY;NO_CONFIG_CHANGES;NO_BUSINESS_TASK;NO_FULL_ZIP_DOWNLOAD'
-          function IpClass([Net.IPAddress]$ip){
-            if($ip.AddressFamily -ne [Net.Sockets.AddressFamily]::InterNetwork){return 'IPV6'}
-            $b=$ip.GetAddressBytes()
-            if($b[0] -eq 198 -and ($b[1] -eq 18 -or $b[1] -eq 19)){return '198.18.0.0/15_FAKE_IP_TEST_RANGE'}
-            if($b[0] -eq 127){return 'LOOPBACK'}
-            if($b[0] -eq 10 -or ($b[0] -eq 172 -and $b[1] -ge 16 -and $b[1] -le 31) -or ($b[0] -eq 192 -and $b[1] -eq 168)){return 'RFC1918_PRIVATE'}
-            if($b[0] -eq 169 -and $b[1] -eq 254){return 'LINK_LOCAL'}
-            return 'PUBLIC_IPV4_OR_OTHER'
-          }
-          foreach($hostName in @('codeload.github.com','api.github.com')){
-            try{
-              $ips=@([Net.Dns]::GetHostAddresses($hostName))
-              $cats=@($ips | ForEach-Object { IpClass $_ } | Select-Object -Unique)
-              Write-Host ('DNS_'+($hostName -replace '[.-]','_').ToUpper()+'_CLASSES='+($cats -join ',')+';COUNT='+$ips.Count)
-            }catch{Write-Host ('DNS_'+$hostName+'_FAIL='+$_.Exception.GetBaseException().GetType().Name)}
-          }
-          $h=[Net.Http.HttpClientHandler]::new()
-          $h.UseProxy=$false
-          $c=[Net.Http.HttpClient]::new($h)
-          $c.Timeout=[TimeSpan]::FromSeconds(8)
-          $sw=[Diagnostics.Stopwatch]::StartNew()
-          try{
-            $resp=$c.GetAsync('https://codeload.github.com/_ping',[Net.Http.HttpCompletionOption]::ResponseHeadersRead).GetAwaiter().GetResult()
-            Write-Host ('CODELOAD_DIRECT_PING_GET_HTTP='+[int]$resp.StatusCode+';MS='+$sw.ElapsedMilliseconds)
-            $resp.Dispose()
-          }catch{
-            $base=$_.Exception.GetBaseException()
-            $kind=$base.GetType().Name
-            if($base -is [Net.Sockets.SocketException]){$kind+='_'+$base.SocketErrorCode}
-            Write-Host ('CODELOAD_DIRECT_PING_GET_ERROR='+$kind+';MS='+$sw.ElapsedMilliseconds)
-          }finally{$c.Dispose()}
-          $candidateProcs=@(Get-Process -Name '*flclash*','*mihomo*','*clash*' -ErrorAction SilentlyContinue)
-          $pidArray=@($candidateProcs | Select-Object -ExpandProperty Id -Unique)
-          Write-Host ('FLCLASH_OR_CORE_PROCESS_COUNT='+$pidArray.Count)
-          $listens=@()
-          try{
-            $listens=@(Get-NetTCPConnection -State Listen -ErrorAction Stop | Where-Object {
-              ($pidArray -contains $_.OwningProcess) -and ($_.LocalAddress -in @('127.0.0.1','0.0.0.0','::1','::'))
-            } | Select-Object -ExpandProperty LocalPort -Unique)
-          }catch{Write-Host ('LOCAL_LISTENER_ENUM_ERROR='+$_.Exception.GetBaseException().GetType().Name)}
-          Write-Host ('FLCLASH_OWNED_LISTENER_COUNT='+$listens.Count)
-          $idx=0
-          foreach($port in @($listens | Sort-Object | Select-Object -First 4)){
-            $idx++
+          $url='https://codeload.github.com/actions/upload-artifact/zip/ea165f8d65b6e75b540449e92b4886f43607fa02'
+          Write-Host 'TEST_MODE=READ_ONLY;ONE_EXACT_PINNED_ZIP;NO_RUNNER_OR_SYSTEM_PROXY_CHANGE'
+          function Probe([string]$label,[bool]$useExistingProxy,[int]$timeout,[bool]$readWhole){
             $handler=[Net.Http.HttpClientHandler]::new()
-            $handler.UseProxy=$true
-            $handler.Proxy=[Net.WebProxy]::new(('http://127.0.0.1:'+$port))
+            $handler.UseProxy=$useExistingProxy
+            if($useExistingProxy){$handler.Proxy=[Net.WebProxy]::new('http://127.0.0.1:7890')}
             $client=[Net.Http.HttpClient]::new($handler)
-            $client.Timeout=[TimeSpan]::FromSeconds(7)
-            $w=[Diagnostics.Stopwatch]::StartNew()
+            $client.Timeout=[TimeSpan]::FromSeconds($timeout)
+            $sw=[Diagnostics.Stopwatch]::StartNew()
             try{
-              $resp=$client.GetAsync('https://codeload.github.com/_ping',[Net.Http.HttpCompletionOption]::ResponseHeadersRead).GetAwaiter().GetResult()
-              Write-Host ('EXISTING_LOCAL_PROXY_'+$idx+'=HTTP_'+[int]$resp.StatusCode+';MS='+$w.ElapsedMilliseconds+';PORT='+$port)
-              $resp.Dispose()
+              if($readWhole){
+                $response=$client.GetAsync($url).GetAwaiter().GetResult()
+              }else{
+                $response=$client.GetAsync($url,[Net.Http.HttpCompletionOption]::ResponseHeadersRead).GetAwaiter().GetResult()
+              }
+              if(-not $response.IsSuccessStatusCode){throw ('HTTP_'+[int]$response.StatusCode)}
+              if($readWhole){
+                $bytes=$response.Content.ReadAsByteArrayAsync().GetAwaiter().GetResult()
+                $zip=($bytes.Length -gt 10000 -and $bytes[0] -eq 80 -and $bytes[1] -eq 75)
+                Write-Host ($label+'=HTTP_'+[int]$response.StatusCode+';BYTES='+$bytes.Length+';ZIP_MAGIC_OK='+$zip+';MS='+$sw.ElapsedMilliseconds)
+              }else{
+                Write-Host ($label+'=HEADERS_HTTP_'+[int]$response.StatusCode+';MS='+$sw.ElapsedMilliseconds)
+              }
+              $response.Dispose()
             }catch{
               $base=$_.Exception.GetBaseException()
               $kind=$base.GetType().Name
               if($base -is [Net.Sockets.SocketException]){$kind+='_'+$base.SocketErrorCode}
-              Write-Host ('EXISTING_LOCAL_PROXY_'+$idx+'=FAIL_'+$kind+';MS='+$w.ElapsedMilliseconds)
+              Write-Host ($label+'=FAIL_'+$kind+';MS='+$sw.ElapsedMilliseconds)
             }finally{$client.Dispose()}
           }
-          Write-Host 'ROOT_CAUSE_PROBE_FINISHED'
+          Probe 'EXACT_ZIP_DIRECT_HEADERS' $false 10 $false
+          Probe 'EXACT_ZIP_EXISTING_FLCLASH_FULL_GET' $true 75 $true
+          Write-Host 'PINNED_ZIP_DIFF_DONE'
