@@ -1,10 +1,22 @@
 ---
 name: extreme-time-automation-bridge
-version: "0.3.4"
-description: GPT直连Windows双路执行桥 v0.3.4。每次接入必须先按 Remote 免费额度运营 V1.0 判路和提醒；短/交互任务优先自建 OpenAI Tunnel+Windows MCP，长/异步任务优先 GitHub Runner，第三方 DCR Remote 受10,000次月调用预算闸门约束。保留历史双路、恢复入口、既有代理和安全边界。
+version: "1.0.0"
+description: GPT直连Windows双路执行桥 V1.0。默认已验收的自建MCP快速执行；GitHub Actions Windows Runner独立备路、正式取证与隔离Fast候选；第三方Remote免费额度运营 V1.0 强制判路与防浪费提醒。
 ---
 
-# GPT直连Windows双路执行桥 v0.3.4
+# GPT直连Windows双路执行桥 V1.0
+
+## V1.0 正式执行入口｜优先级最高（2026-10-13）
+
+> **[V1.0 主备路由/ GitHub 延迟差分/修复状态](V1_GITHUB_WINDOWS_SPEED_AND_ROUTING.md)**。必须在派发前加载，并同时应用 [Remote 免费额度运营 V1.0](REMOTE_DCR_QUOTA_OPERATIONS_V1.md)；下文的 v0.3.4 和更旧结论全部保留为不同日期的历史状态。
+
+1. **A 自建直连是日常默认**：可用时处理文件、短命令、Codex；失联则按既有恢复指南检查，不因历史 PASS 宣称当前必然在线。
+2. **B GitHub → Windows 是成熟独立备用**：原业务 FULL 流程保留，**Fast 单 Job 候选尚未通过实际端到端验证**，不得把删除上传工件当作等价优化；保留任务身份、冻结 SHA、结果回执及 Exactly-once。
+3. **R 官方 Remote**：仅在确有必要和月度配额充足时用；已用 6,000/7,500/8,000/9,500 次的提醒与闸门完整继承。
+4. **任何误选、重复调用、结果 UNKNOWN 或绕权限的计划**：调用前提醒具体损失和第一差分，提出最低成本成熟替代后执行。禁止额外付费、修改 FlClash/代理、重建原 Windows 服务或自动重复已执行任务。
+
+**验收边界**：V1.0 版本/规则已经正式发布；旧 A/B 实证按原证据有效，新 FAST 仅静态候选、生产 FULL 的 upload-artifact 网络故障尚未重新验收为已修复。
+
 
 ## 2026-10-13｜使用本技能包必须先执行“免费额度运营 V1.0”判路（当前正式入口）
 

@@ -1,6 +1,6 @@
-# Remote Desktop Commander 免费额度成熟运营 V1.0｜v0.3.4 正式执行附则
+# Remote Desktop Commander 免费额度成熟运营 V1.0｜双路桥 V1.0 正式执行附则
 METHOD=REMOTE_DCR_QUOTA_OPERATIONS_V1
-PARENT=skills/extreme-time-automation-bridge/SKILL.md@v0.3.4
+PARENT=skills/extreme-time-automation-bridge/SKILL.md@v1.0.0
 EFFECTIVE=2026-10-13
 STATUS=ACTIVE_POLICY;STATIC_GATE_EXECUTABLE;NOT_AUTO_INTERCEPTOR
 

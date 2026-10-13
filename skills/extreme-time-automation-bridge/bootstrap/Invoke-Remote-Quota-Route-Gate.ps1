@@ -97,7 +97,7 @@ $next= switch($selected){
 }
 [ordered]@{
   policy='REMOTE_DCR_QUOTA_OPERATIONS_V1'
-  version='0.3.4'
+  version='1.0.0'
   task_kind=$TaskKind
   selected_route=$selected
   status=$(if($selected -eq 'BLOCKED'){'BLOCKED'}else{'READY'})

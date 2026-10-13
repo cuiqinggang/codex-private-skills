@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## V1.0 / 1.0.0｜自建 MCP 主路＋GitHub 成熟备路性能差分（2026-10-13）
+
+- 正式把 `SKILL.md` 由 v0.3.4 升级为 V1.0，保留旧版本所有验收、配额策略与恢复脚本不删除；采用《三人行》V2 的本任务按需成熟复用，不改变《三人行》方法全局激活状态。
+- 新 [V1.0 运行/证据/安全文档](V1_GITHUB_WINDOWS_SPEED_AND_ROUTING.md)：原工作流上传 Action ZIP 100秒三次超时、原 84/156/419秒与最简 19～27秒对照，确认第一差异。
+- 原 FULL `extreme-time-windows-bridge.yml` 不改，保留已有 artifact、静态合同、回调能力。新增 `windows-bridge-v1-fast.yml` 为手工触发的**隔离候选**，复用受版本锁定的任务 JSON＋原 Invoke-BridgeTask，省略外部 Action 下载，但尚未通过实际任务验收。
+- 一次 FAST 自动触发测试提交遭安全检查阻断，未绕过；A 自建隧道在本轮调用 Session terminated。不得宣称 FAST 已完成实测或 A 当前在线。
+- 第三方 Remote 免费配额闸门继续生效；真实 Windows 判路脚本在 v0.3.4 功能逻辑曾 15/15 PASS，升级版本字段没有替代现场再验。V1.0 不改变本机代理/FlClash/浏览器/Runner。
+
+
 ## v0.3.4 运行规则增量｜Remote 免费配额运营 V1.0 正式纳入（2026-10-13）
 
 - **正式入口更新**：SKILL.md 顶部加入使用前必读/判路/违规提醒合同，并标明 10 月 12 日临时 GitHub 首选状态只是历史快照。
