@@ -6,6 +6,19 @@ description: GPT直连Windows双路执行桥。保留 DCR 主路和 GitHub Actio
 
 # GPT直连Windows双路执行桥 v0.3.4
 
+## 2026-10-13｜使用本技能包必须先执行“免费额度运营 V1.0”判路（当前正式入口）
+
+> **正式规则入口：[REMOTE_DCR_QUOTA_OPERATIONS_V1.md](REMOTE_DCR_QUOTA_OPERATIONS_V1.md)**；配套只读可执行判路：[bootstrap/Invoke-Remote-Quota-Route-Gate.ps1](bootstrap/Invoke-Remote-Quota-Route-Gate.ps1)。**读本 SKILL 的新页面、Codex/Executor 节点及 Windows 任务派发前，先按该规则预检和提醒**；不需要为读规则而消耗 Remote 工具调用。
+
+- **A：自建 OpenAI Tunnel + Windows 本地开源 Desktop Commander MCP，优先处理在线可执行的交互、小任务、反复读写和本地 Codex 调用。** 2026-10-13 ChatGPT 实际远程文件读写、PowerShell 运行及两次同任务计算 PASS（工具往返 5.42s/5.88s）；此成本不计入第三方 Remote 托管版 10,000 次配额。
+- **B：GitHub Actions self-hosted Runner，优先处理长/异步、需要独立 run_id 的节点及 A 不适用时的备援。** 2026-10-13 最简算术任务 2 次实跑 PASS，总工作流约 19～27 秒；2026-10-12 原复杂生产工作流因外部 Action 下载超时而 FAIL，不能把 smoke PASS 冒充任意生产任务 PASS。
+- **R：官方 Remote Desktop Commander 免费托管通道，必须受月度额度闸门约束。** 2026-10-13 官方 `who_am_i` 返回 `remote_calls_left_pct=0`，因此当前 `R=QUOTA_BLOCKED`；禁止重复 ping、re-pair、换号或“再试几次”。绝不能把本地 MCP `get_usage_stats` 当作官方 Remote 已用调用数。
+- **预算规则：** 10,000 次/月是工具调用不是连接次数；规划 6,000 日常＋2,000 弹性＋2,000 紧急保留，日常软目标约 200 次；已用 6,000 警告、7,500 加严、8,000 停止 R 常规任务、9,500 仅逐次紧急人工批准；额度为零即阻断，重置日 UNKNOWN。
+- **违规即时提醒：** 若尝试 R 批量读写、反复查询输出、在 R 额度不足仍调用、用 B 做 A 能胜任的短任务、或副作用 UNKNOWN 盲重发，必须在动作前说明违反了哪条规则、为什么浪费额度/时间、可替代的成熟线路及预计节省；主动改路并记录本任务经验。独立终局验收不能为节省次数省略。
+- **执行边界：** 此处已启用的是“技能包操作规程”；配套 PowerShell 判路器为零副作用静态辅助，不是自动拦截 MCP 的后台服务；其他新会话只有加载本 SKILL 才能遵守，不能宣称已全平台自动强制切换。原 Windows/FlClash/代理/已登录浏览器、旧历史冻结和 Runner 均原样保留。
+
+**若下文 10 月 12 日“默认 GitHub 首选”或更早“DCR 主路”与以上判路发生冲突，以本节和 V1.0 正式附则的任务适配/最新证据为准；下文均保留为历史快照。**
+
 
 ## v0.3.4 最新运行路由与厂商额度门（2026-10-12 晚）
 
