@@ -1,0 +1,68 @@
+name: Windows Bridge V1 Fast (No External Actions)
+on:
+  workflow_dispatch:
+    inputs:
+      task_file:
+        description: 'Existing, reviewed task JSON under bridge/tasks/'
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: windows-fast-v1-${{ inputs.task_file }}
+  cancel-in-progress: false
+jobs:
+  windows-fast:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 15
+    steps:
+      - name: Frozen fetch, validated execute, local result and remote receipt
+        shell: pwsh
+        env:
+          GH_READ_TOKEN: ${{ github.token }}
+          COMMIT_SHA: ${{ github.sha }}
+          TASK_PATH: ${{ inputs.task_file }}
+        run: |
+          $ErrorActionPreference='Stop'
+          $all=[Diagnostics.Stopwatch]::StartNew()
+          $root=Join-Path $env:RUNNER_TEMP ('bridge-v1-fast/'+$env:GITHUB_RUN_ID)
+          New-Item -ItemType Directory -Force -Path $root | Out-Null
+          $prefix='workspaces/extreme-time-automation-loop-v2.0/bridge/'
+          if($env:TASK_PATH -notmatch '^workspaces/extreme-time-automation-loop-v2[.]0/bridge/tasks/[A-Za-z0-9._-]+[.]json$'){throw 'TASK_PATH_NOT_ALLOWED'}
+          $headers=@{Authorization="Bearer $env:GH_READ_TOKEN";Accept='application/vnd.github+json'}
+          function Receive-FrozenFile([string]$relative){
+            if($relative -notmatch '^workspaces/extreme-time-automation-loop-v2[.]0/bridge/(tasks|payloads|runner)/[A-Za-z0-9._-]+[.](json|ps1)$'){throw 'UNAUTHORIZED_REPO_PATH'}
+            $uri="$env:GITHUB_API_URL/repos/$env:GITHUB_REPOSITORY/contents/${relative}?ref=$env:COMMIT_SHA"
+            $result=$null
+            for($attempt=1;$attempt -le 2;$attempt++){
+              try{$result=Invoke-RestMethod -Uri $uri -Headers $headers -TimeoutSec 18;break}
+              catch{if($attempt -eq 2){throw};Start-Sleep -Seconds 1}
+            }
+            if($result.type -ne 'file' -or $result.encoding -ne 'base64'){throw 'INVALID_CONTENTS_RESPONSE'}
+            $local=Join-Path $root ($relative.Replace('/','\'))
+            New-Item -ItemType Directory -Force -Path (Split-Path $local) | Out-Null
+            [IO.File]::WriteAllBytes($local,[Convert]::FromBase64String($result.content))
+            return $local
+          }
+          Write-Host ('V1_FAST_ACCEPT_UTC='+[DateTime]::UtcNow.ToString('o')+';SHA='+$env:COMMIT_SHA)
+          $taskLocal=Receive-FrozenFile $env:TASK_PATH
+          $task=Get-Content -LiteralPath $taskLocal -Raw -Encoding utf8 | ConvertFrom-Json
+          if($task.schema_version -ne 1 -or [string]$task.task_id -notmatch '^[A-Za-z0-9._-]{3,100}$'){throw 'INVALID_TASK_CONTRACT'}
+          if([string]$task.payload_path -notmatch '^workspaces/extreme-time-automation-loop-v2[.]0/bridge/payloads/[A-Za-z0-9._-]+[.]ps1$'){throw 'INVALID_PAYLOAD_PATH'}
+          if([int]$task.timeout_seconds -lt 1 -or [int]$task.timeout_seconds -gt 800){throw 'FAST_LANE_TASK_TIMEOUT_LIMIT'}
+          Receive-FrozenFile ([string]$task.payload_path) | Out-Null
+          $runner=Receive-FrozenFile ($prefix+'runner/Invoke-BridgeTask.ps1')
+          Write-Host ('V1_FAST_FETCH_READY;TASK_ID='+$task.task_id+';ELAPSED_MS='+$all.ElapsedMilliseconds)
+          $resultDir=Join-Path $root 'evidence'
+          & pwsh -NoProfile -NonInteractive -File $runner -TaskFile $taskLocal -ResultDir $resultDir
+          $exit=$LASTEXITCODE
+          $resultFile=Join-Path $resultDir 'result.json'
+          if(-not (Test-Path -LiteralPath $resultFile)){throw ('NO_RESULT_JSON;EXIT='+$exit)}
+          $result=Get-Content -LiteralPath $resultFile -Raw -Encoding utf8 | ConvertFrom-Json
+          if($result.task_id -ne $task.task_id){throw 'TASK_RECEIPT_MISMATCH'}
+          $stdFile=Join-Path $resultDir 'stdout.txt'
+          $errFile=Join-Path $resultDir 'stderr.txt'
+          $stdoutHash=if(Test-Path -LiteralPath $stdFile){(Get-FileHash -LiteralPath $stdFile -Algorithm SHA256).Hash}else{'NONE'}
+          $stderrBytes=if(Test-Path -LiteralPath $errFile){(Get-Item -LiteralPath $errFile).Length}else{-1}
+          Write-Host ('V1_FAST_RESULT;TASK_ID='+$result.task_id+';STATUS='+$result.status+';EXIT='+$result.exit_code+';RUNNER='+$env:RUNNER_NAME+';PAYLOAD_MS='+$result.duration_ms+';TOTAL_STEP_MS='+$all.ElapsedMilliseconds+';STDOUT_SHA256='+$stdoutHash+';STDERR_BYTES='+$stderrBytes)
+          if($result.status -ne 'PASS' -or $exit -ne 0){throw 'BRIDGE_FAST_EXECUTION_FAIL'}
