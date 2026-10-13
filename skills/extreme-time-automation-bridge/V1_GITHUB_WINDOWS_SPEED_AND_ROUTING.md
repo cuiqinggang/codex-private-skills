@@ -30,6 +30,13 @@ AUTO_ROLLBACK=NOT_INSTALLED
 **GOOD→BAD 的 FIRST_DELTA**：原生产流程包含 1 个云端 Windows `contract-static` 前置job，导致二次调度；自托管 Windows job 有 `uses: actions/upload-artifact@v4`，Runner 会在业务前尝试下载 ZIP，网络波动从几十秒扩大至100秒/次，并发生三次超时。可达性 HEAD 200 不足以证实完整ZIP稳定传输。
 **不是**本地 Windows 计算性能不足，也不是 GitHub通道架构本身失效。GitHub Actions调度与日志回收本来有非零固定开销，不承诺与直连MCP同延迟。
 
+### 2026-10-13 追加确认：故障在本轮再次真实复现
+- 推送隔离测试所需的旧 `bridge/tasks/*.json` 时，**旧 FULL 生产工作流被其原有 push 路径自动触发**：Run [38405736959](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38405736959)，创建 13:32:04 UTC、结束 13:39:06 UTC，约 **422 秒**，结果 FAIL。
+- Windows Runner `DESKTOP-4A1EGTM-etal` 于 13:33:01 已接单，13:33:07 开始下载 `actions/upload-artifact@v4`；13:34:47、13:36:51、13:38:53 三次明确报告 `HttpClient.Timeout 100 seconds`，未执行受测 payload。该结果与 10 月 12 日 419 秒失败同构，确认**故障并非偶发一次的错误归因**。
+- 因旧生产工作流将整个 `bridge/**` 目录纳入 push 触发，新建任务 JSON 会实际触发 FULL。今后必须在任何新合同写入前确认是否已有触发的同一 TASK_ID，避免额外自触发与重复执行。
+- 本次另一候选 Fast 自动触发配置在提交中产生无 jobs 的失败 [38406812258](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38406812258)。已撤回自动 push 触发并恢复手工专用候选工作流（commit `0428c239`）；**从未把该失败算成 FAST 业务实测**。
+- 此外自建 A 隧道在计划主动 dispatch 时回 `Session terminated`，所以本页不称该次派发成功。被平台安全检查拦截的任务写入也未绕行。
+
 ## 3. 成熟复用的最小修复（保留现有生产能力）
 - 原正式 `.github/workflows/extreme-time-windows-bridge.yml` 原样保留，因它仍提供静态检查、冻结 payload、artifact 和可选 callback。历史失败需对该 **FULL** 路线单独复验；未经等价验证绝不删掉 artifact 或旧功能。
 - 新增隔离 `.github/workflows/windows-bridge-v1-fast.yml`：**仅 workflow_dispatch，当前未加入自动 push 触发**。仅一个 self-hosted Windows job；不运行 checkout、setup、upload-artifact 等外部 actions；从 GitHub Contents API 按同一个提交 SHA 精确获取 task JSON、payload、旧 `Invoke-BridgeTask.ps1`，复用原执行器（合同验证、限时、目录边界、stdout/stderr/result.json），结果摘要在 GitHub Job 日志记录（任务ID、PASS/FAIL、退出码、SHA256、用时）。
