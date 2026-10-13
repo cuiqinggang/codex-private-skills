@@ -1,0 +1,57 @@
+name: Windows Runner Codeload Read-Only Diagnostic
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/windows-runner-codeload-readonly.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-runner-codeload-readonly
+  cancel-in-progress: false
+
+jobs:
+  codeload-diagnostic:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 4
+    steps:
+      - name: Check frozen Action ZIP retrieval without changing network or proxy
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $uri = 'https://codeload.github.com/actions/upload-artifact/zip/ea165f8d65b6e75b540449e92b4886f43607fa02'
+          Write-Host "DIAG_START_UTC=$([DateTime]::UtcNow.ToString('o'))"
+          Write-Host "RUNNER=$env:RUNNER_NAME;OS=$env:RUNNER_OS"
+          Write-Host "HTTPS_PROXY_ENV_PRESENT=$(-not [string]::IsNullOrWhiteSpace($env:https_proxy))"
+          Write-Host "HTTP_PROXY_ENV_PRESENT=$(-not [string]::IsNullOrWhiteSpace($env:http_proxy))"
+          Write-Host "NO_PROXY_ENV_PRESENT=$(-not [string]::IsNullOrWhiteSpace($env:no_proxy))"
+          try {
+            $ips = [Net.Dns]::GetHostAddresses('codeload.github.com')
+            Write-Host "CODELOAD_DNS=PASS;RESOLVED_IP_COUNT=$($ips.Count)"
+          } catch {
+            Write-Host "CODELOAD_DNS=FAIL;TYPE=$($_.Exception.GetType().Name)"
+            throw
+          }
+          $client = [Net.Http.HttpClient]::new()
+          $client.Timeout = [TimeSpan]::FromSeconds(55)
+          $watch = [Diagnostics.Stopwatch]::StartNew()
+          try {
+            $response = $client.GetAsync($uri, [Net.Http.HttpCompletionOption]::ResponseContentRead).GetAwaiter().GetResult()
+            $response.EnsureSuccessStatusCode() | Out-Null
+            $bytes = $response.Content.ReadAsByteArrayAsync().GetAwaiter().GetResult()
+            $watch.Stop()
+            if ($bytes.Length -lt 10000) { throw "ZIP_UNEXPECTEDLY_SMALL bytes=$($bytes.Length)" }
+            if ($bytes[0] -ne 80 -or $bytes[1] -ne 75) { throw 'ZIP_HEADER_INVALID' }
+            Write-Host "CODELOAD_FULL_GET=PASS;HTTP=$([int]$response.StatusCode);BYTES=$($bytes.Length);ELAPSED_MS=$($watch.ElapsedMilliseconds)"
+          } catch {
+            $watch.Stop()
+            Write-Host "CODELOAD_FULL_GET=FAIL;ELAPSED_MS=$($watch.ElapsedMilliseconds);EXCEPTION_TYPE=$($_.Exception.GetType().Name)"
+            Write-Host "EXCEPTION_MESSAGE=$($_.Exception.Message)"
+            throw
+          } finally {
+            $client.Dispose()
+            Write-Host "DIAG_END_UTC=$([DateTime]::UtcNow.ToString('o'))"
+          }
