@@ -89,3 +89,23 @@ EXACTLY_ONCE_READ_ONLY_NETWORK_PROBE=EXECUTED
 5. 不重复派发状态 UNKNOWN 的有副作用业务，不通过新快路绕安全限制；自建 A 本次仍返回 `Session terminated`，不可标记在线。
 
 参考 GitHub 官方说明：<https://docs.github.com/en/actions/reference/runners/self-hosted-runners> 与 <https://docs.github.com/en/actions/how-tos/manage-runners/use-proxy-servers>。
+
+
+## 2026-10-13｜《三人行》V2 根因下钻：Runner 环境、DNS、FlClash 和固定 Action ZIP 差分
+
+STATUS=FIRST_FAILURE_IS_PRE_JOB_ACTION_ZIP_TRANSFER;LAST_NETWORK_HOP_UNRESOLVED
+PRODUCTION_FULL=UNCHANGED;RECOVERY_NOT_YET_ACCEPTED
+DO_NOT_CHANGE_FLCLASH_OR_GLOBAL_PROXY=TRUE
+DIAG_RUNS=38419138405,38419778688,38420210117
+
+- Run 38419138405：只读诊断作业自身成功；C:\actions-runner-etal\.env 不存在；Runner Windows 服务与 FlClash 进程均在运行；任务环境 http_proxy/https_proxy/no_proxy 都未设置；.NET 默认对 codeload 未选择代理；已加载用户配置未检测到启用的系统代理；API 直连 HTTP 403/843ms；固定 Action ZIP 的直接 GET 响应头在此运行快速失败。不能仅凭缺 .env 就断言它是唯一网络原因。
+- Run 38419778688：codeload/github API 的 DNS 解析分类均为公网 IPv4，而非 198.18/15 Fake-IP；直连 codeload /_ping HTTP 200/1550ms；FlClash 和相关内核 2 个进程、3 个本地监听端口；现有 127.0.0.1:7890 HTTP 代理访问 codeload /_ping HTTP 200/3104ms。健康端点 PASS 不等于 Action ZIP 下载。
+- Run 38420210117：原始固定 SHA Action ZIP 直接 GET 的响应头 HTTP 200/1252ms；同一个完整 ZIP 显式通过已有 127.0.0.1:7890 则约2088ms 返回 SocketException_ConnectionRefused；没有取得完整 ZIP、没有执行业务。先前代理 ping 可达而此时 ZIP 被拒，不能贸然把 7890 配入 Runner 宣告修复；本地/上游拒绝来源仍需进一步核实。
+- 结合 10/4 84s PASS、10/12 156s PASS、10/12 419s FAIL、10/13 422s FAIL 和历史 55s 完整 ZIP 超时，确定 FIRST_DELTA=Windows Runner 作业初始化阶段第三方 Action ZIP 获取失稳。Runner 本身能接单与执行 PowerShell，不能误称 GitHub 总线失效。
+- 诊断 GitHub 作业 conclusion=success 仅指诊断脚本完成，不能将 ZIP 下载失败改称 PASS；FAST 简化路不等于原 FULL（含 Artifact、回调、结果回读）已修复。
+
+### 成熟修复门禁
+1. 首选只读分析 C:\actions-runner-etal\_diag\Worker_*.log 的同期套接字错误与下载持续时间、FlClash 7890 监听/上游变化和 ZIP 正文传输。不得泄漏敏感环境值、认证信息或用户数据。
+2. 只有在实证完整固定 SHA Action ZIP 能通过稳定的现有出口获取后，才考虑按照 GitHub 官方指引让 Runner 自身继承现有代理；保留 FlClash、系统代理、已登录浏览器和 Runner 注册，不修改代理服务器。不确认空闲与回滚前不能改 Runner .env 或重启服务。
+3. 验收必须复用同一个 FULL 工作流：真实派发、冻结 SHA、Windows 业务、result.json、原官方 Action Artifact 上传、云端回读与完整 T_VALID；任何轻量无 Action 冒烟均不可替代。
+4. 如果无法恢复稳定外部 Action 拉取，再评估受审计的固定 SHA 官方 Action 本地化候选，需保留等价云端取证功能。不要因这次问题重新建桥、修改全局网络或取消关键证据。
