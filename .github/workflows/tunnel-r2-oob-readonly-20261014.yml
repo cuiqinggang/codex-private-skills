@@ -75,4 +75,22 @@ jobs:
             try{$j=Get-Content -LiteralPath $report -Raw|ConvertFrom-Json;Write-Host ('PREVIOUS_CONTROLLED_RECOVERY='+$j.status+';OLD_PID='+$j.old_pid+';NEW_PID='+$j.new_pid)}
             catch{Write-Host 'PREVIOUS_CONTROLLED_RECOVERY_UNREADABLE'}
           }else{Write-Host 'PREVIOUS_CONTROLLED_RECOVERY_REPORT_NOT_VISIBLE'}
+          # SUSPECTED_PS51_STDERR_RULE: only diagnostic exception type, never error text or credentials
+          if(Test-Path -LiteralPath $supervisor){
+            Get-Content -LiteralPath $supervisor -Tail 18 -ErrorAction SilentlyContinue | ForEach-Object {
+              try {
+                $ev=$_|ConvertFrom-Json
+                if($ev.event -eq 'TUNNEL_EXCEPTION') {
+                  $kind=([string]$ev.detail)
+                  if($kind -notmatch '^[A-Za-z][A-Za-z0-9.]{0,80}
+){$kind='REDACTED_UNEXPECTED_TYPE'}
+                  Write-Host ('SUPERVISOR_EXCEPTION_KIND='+$kind+';UTC='+$ev.utc)
+                }
+              } catch {Write-Host 'SUPERVISOR_EXCEPTION_UNPARSEABLE'}
+            }
+          }
+          $nativeCode='& cmd.exe /c "echo native-diagnostic-stderr 1>&2" 2>&1 | Out-Null'
+          $safeRepro='$ErrorActionPreference="Stop";try{'+$nativeCode+';"TEST_RESULT=NO_EXCEPTION"}catch{"TEST_RESULT=EXCEPTION;TYPE="+$_.Exception.GetType().Name+";FQID="+$_.FullyQualifiedErrorId}'
+          $repro=& powershell.exe -NoProfile -NonInteractive -Command $safeRepro 2>&1
+          $repro|ForEach-Object {if(([string]$_) -match '^TEST_RESULT='){Write-Host ('POWERSHELL51_NATIVE_STDERR_'+$_)}}
           Write-Host 'OOB_READONLY_COMPLETE'
