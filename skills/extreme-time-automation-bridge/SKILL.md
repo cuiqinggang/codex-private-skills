@@ -1,10 +1,19 @@
 ---
 name: extreme-time-automation-bridge
-version: "1.0.0"
+version: "1.0.1"
 description: GPT直连Windows双路执行桥 V1.0。默认已验收的自建MCP快速执行；GitHub Actions Windows Runner独立备路、正式取证与隔离Fast候选；第三方Remote免费额度运营 V1.0 强制判路与防浪费提醒。
 ---
 
 # GPT直连Windows双路执行桥 V1.0
+
+## V1.0.1｜隧道断线取证与防重复恢复（2026-10-14）
+
+> **当前新增权威附则：[隧道稳定性事故、可复现409与健康检查补丁](TUNNEL_STABILITY_INCIDENT_20261014.md)**。先读它再诊断 `Session terminated` / 409。对应可复用脚本：[本地只读健康记录器](bootstrap/Watch-Tunnel-Health.ps1) 与 [安全一键恢复](bootstrap/Restore-Interactive-Safe.ps1)。
+
+- **2026-10-14 Reality：** 旧隧道曾从运行变为进程数0；人工复用原Tunnel ID启动后实际远程文件读取 PASS。运行中还真实复现过 `409 mcp_initialization_required`，但对应时刻原隧道PID与同一MCP子进程代次仍在；**必须区分“主进程退出”和“协议初始化异常”**，不得把两者一律重启。
+- **已落地：** Windows 本机5分钟一次只读健康日志（非自动重启）、安全版恢复入口（任何既有隧道进程都禁止盲目开启第二份）；有本机真实回执和回滚。低权限监控的 `HEALTHY_PATH_ONLY` 代表本地健康但Tunnel ID未独立确认，不得等同完整身份验证。
+- **稳定性门：** 官方受管 `runtimes connect/status` 是后续成熟候选，但本机当前仍是交互式 `run`，没有经过合法密钥交接、受控切换、重启恢复或长期连续验收。**CURRENT_REMOTE_READ=PASS_SCOPED; HEALTH_PROBE=PASS; AUTO_RECOVERY=NOT_IMPLEMENTED; 409_ROOT_CAUSE=UNKNOWN; LONG_STABILITY=NOT_ACCEPTED**。
+- **业务与安全：** 不改 FlClash/代理/浏览器、DCR/Runner、认证权限；不保存密钥或绕过此前被阻止的 Supervisor；先取证后针对性修复，未知副作用不盲重发。历史 v0.3.4 内容保留，时间较新的本节状态优先。
 
 ## V1.0 正式执行入口｜优先级最高（2026-10-13）
 
