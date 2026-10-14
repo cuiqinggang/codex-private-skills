@@ -1,9 +1,16 @@
 ---
 name: windows-hermes-operations
-description: Use when the user asks to open, restart, verify, troubleshoot, recover, or clean up the Windows native Hermes / 爱马仕 0.14 system, especially requests mentioning Windows版爱马仕, Hermes 0.14, Open WebUI on 3000, Hermes gateway on 8642, stale WSL Hermes, old OpenClaw gateway, or historical cleanup/deletion records.
+description: Use when the user asks to open, restart, verify, troubleshoot, recover, or clean up the Windows native Hermes / 爱马仕 system (including historical 0.14 and current installations), especially requests mentioning Windows版爱马仕, Hermes 0.14, Open WebUI on 3000, Hermes gateway on 8642, stale WSL Hermes, old OpenClaw gateway, or historical cleanup/deletion records.
 ---
 
 # Windows Hermes Operations
+
+## 当前启动故障入口（2026-10-14 实证，优先于下方历史记录）
+
+处理开机启动、8642、Docker、Open WebUI 3000故障时，先读 [Docker启动恢复经验](references/docker-startup-recovery-20261014.md)。
+现用启动器已迁到C盘，运行版本实测0.21.5；先核对现状，不按旧H盘路径或hermes-agent模型名盲目重装/回退。
+未认证401先走现有认证；8642正常但3000异常先查Docker层。使用精确、有限恢复，不把历史WSL抢占当作本次原因。
+本文下方0.14/H盘/旧计划任务等为历史操作记录，只有当前现场确认仍适用才执行。重启验收仍未完成，不能以本次热启动PASS替代。
 
 ## Safety Boundary
 
