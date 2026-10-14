@@ -6,6 +6,10 @@ description: GPT直连Windows双路执行桥 V4.0。继承A官方Tunnel/MCP、B 
 
 # GPT直连Windows双路执行桥 V4.0
 
+## V4.0｜2026-10-15 桌面一键恢复窗口状态与停留修复（最新真实取证）
+
+> [原“一键恢复”快捷方式打开后2秒消失、初始化过早误报、隔离修复、实际Windows回读和交互目视验收边界](V4_DESKTOP_STATUS_ENTRY_REALITY_20261015.md)。唯一Tunnel PID46156由现有Supervisor PID8580负责，当前主路实测read_file及健康检查均正常。已将现有 `Restore-Interactive.ps1` 修改为：遇唯一Tunnel初始化中等待同PID最多180秒，若HEALTHY显示明确状态并在交互窗口等待用户按Enter关闭；严禁第二Tunnel。Windows PS5.1 Parser PASS、正式脚本非交互分支Reality PASS、旧/新SHA及备份核对PASS，**实际桌面双击后“窗口可持续停留”的人工视觉验收尚待用户确认**。无需重复修改FlClash或隧道，原V4总体版本仍为4.0.0。
+
 ## V4.0｜2026-10-15 正式唯一运行入口（最高优先级）
 
 > **[V4.0：A路成熟修复冻结、轻入口、用户手动关闭→启动→刷新后的现实验收合同](V4_A_ROUTE_RESTART_REALITY_20261015.md)**。当前正式技能包版本 **4.0.0**，仅升级已有技能包规则、证据和入口，不新建工作站、通信隧道或恢复管理器；A路依然首选已真实可用的官方Tunnel+本机Desktop Commander，B路完整继承V3.0三档成熟路由。遇故障先读V4及所属SOP，历史标题中的“最新”“优先级最高”只代表各自历史日期，不得覆盖本V4。
