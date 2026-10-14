@@ -1,10 +1,33 @@
 ---
 name: extreme-time-automation-bridge
-version: "1.0.1"
-description: GPT直连Windows双路执行桥 V1.0。默认已验收的自建MCP快速执行；GitHub Actions Windows Runner独立备路、正式取证与隔离Fast候选；第三方Remote免费额度运营 V1.0 强制判路与防浪费提醒。
+version: "2.0.0"
+description: GPT直连Windows双路执行桥 V2.0。保留自建OpenAI Tunnel+Windows MCP优先、GitHub Windows Runner独立备路和DCR免费额度闸门；新增成熟Windows任务守护、DPAPI本机一次性授权、官方MCP初始化补丁候选和分层Reality验收。
 ---
 
-# GPT直连Windows双路执行桥 V1.0
+# GPT直连Windows双路执行桥 V2.0
+
+## V2.0｜2026-10-15 最新正式入口（覆盖下方全部历史版本状态）
+
+> **[V2.0 Windows Tunnel 守护、凭据、初始化与 Reality 验收规范](TUNNEL_AUTORECOVERY_V2_20261015.md)** 是本技能包当前首要入口。新页面先读本文和该文件，旧 V1.0.1 / v0.3.4 以下章节只按历史日期理解，不得覆盖 V2.0 的当期部署状态。
+>
+> **本次升级是“能力与文档整合”，不是宣称最终稳定性认证通过。** 新恢复管理器已经在 Windows 用户 A 会话中注册并运行；00:33+08 文件检查发现 DPAPI 加密密钥文件存在；当前仍为单隧道实例。但异常退出后无人恢复、Windows 真实重登录/重启、初始化 shim 的运行时效果尚未实际验收。原 PID17876 创建于正式启动器加入 shim 之前，该运行进程命令行无 shim 参数；曾真实复现远程读取的 409。**不能将单次本地健康或短时读通等于五次独立 Reality。**
+
+### V2.0 三条路（绝不拆掉原整体）
+
+- **A 主路：** 自建 GPT → OpenAI 官方 Tunnel → 本机开源 Desktop Commander MCP → Windows。正常时最短交互；连接失败严格区分偶发网络恢复、`409` 初始化未达成、主进程退出。官方 CLI `runtimes connect/status` 是已核实成熟候选，**未与当前实例并行启用**。
+- **B 备路：** 原 GitHub 私有共同工作区 → Actions → Windows self-hosted Runner，适合独立长任务、主路不可用时只读诊断和 Exactly-once 执行；原 FULL 工作流与历史故障及修复候选均保留。
+- **R 补充：** 第三方 Remote Desktop Commander 按原“免费额度运营 V1.0”先判路，余额耗尽不反复尝试；绝不将额度阻塞当作 TCP 断线。
+
+### V2.0 本地已部署文件与现状
+
+- 守护任务：`GPT-Windows-Tunnel-Recovery-v1`：任务计划程序的 AtLogOn / Interactive / IgnoreNew + 失败重启，Windows 本机 `Running`。用户已登录且旧进程正常时，**不启动第二隧道**。
+- 守护器：[bootstrap/Recovery-Supervisor-v1.ps1](bootstrap/Recovery-Supervisor-v1.ps1)，本机位于 `C:\AI\GPT-Windows-Bridge-B\persistence\Recovery-Supervisor-v1.ps1`；安装：[bootstrap/Install-Recovery-Task-v1.ps1](bootstrap/Install-Recovery-Task-v1.ps1)；本机一次性加密：[bootstrap/Enroll-Recovery-Key-v1.ps1](bootstrap/Enroll-Recovery-Key-v1.ps1)。**GitHub 仅存无密钥的脚本源码，绝不上传加密凭据文件。**
+- 当前用户已能使用桌面 `GPT-Windows-AutoRecovery-OneTimeSetup.lnk` 一次性授权；**不需要先关闭当前连接，也不应该要求重复输入密码**。00:33 只证实加密文件存在，任务实际解密后恢复还没 Reality。
+- 原 `Launch-OpenAI-Real-MCP.ps1`、原一键手动恢复、只读健康计划任务、FlClash、Windows 代理、已登录浏览器、原 DCR/Runner 均保持不变。
+- **V2.0 质量门：** 静态配置与守护非侵入运行已 PASS；`PROCESS_EXIT_AUTO_RECOVERY`、`WINDOWS_LOGIN_AUTOSTART`、`SHIM_RUNTIME_VALIDATED`、`409_FIXED`、`FIVE_INDEPENDENT_RUNS` 一律尚未 PASS。正常网络波动可容忍，但恢复后须真实 MCP 读取成功；避免机械重复断线试验。
+- 回滚：仅禁用新守护任务，不修改既有 Tunnel 与备路；按 [V2.0 SOP](TUNNEL_AUTORECOVERY_V2_20261015.md) 的安全顺序执行。禁止绕过既有限制、读取/上传密钥、制造同 Tunnel ID 双实例。
+
+
 
 ## 2026-10-15｜R3真实复核（最新状态，优先于旧记录）
 
