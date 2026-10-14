@@ -2,23 +2,79 @@
   "task_id": "HERMES-ECO-20261014",
   "method": "SANRENXING_V2_USER_SELECTED_TASK_ONLY",
   "method_blob": "027229fc28ebd12811adacfe37aa857a187d3301",
-  "bridge": "GPT-Windows dual-route V1.0",
-  "state": "BLOCKED_USER_CONTEXT_RECONCILIATION",
+  "bridge": "GPT-Windows dual-route V3.0",
+  "state": "BLOCKED_A_CALLER_MCP_SESSION_AND_SUPERVISOR_RUNTIME_ACCEPTANCE",
   "report": "workspaces/hermes-maturity-20261014/PROGRESS-F002.md",
   "report_commit": "ebe890d30632fa2d8e4e718bd573e9b8ef290d5e",
   "prior_windows_dispatch": "UNKNOWN_AFTER_TIMEOUT_NO_REDISPATCH",
   "verified_real_rounds": 0,
   "executed_real_rounds": null,
   "whole_station_final_valid": false,
-  "route_A": {"last_result": "Session terminated", "code": 32600},
-  "route_B": {"run_id": 38567587445, "job_id": 115864123548, "runner": "DESKTOP-4A1EGTM-etal", "setup": "PASS", "receipt_read": "OS_ACCESS_DENIED", "action": "DO_NOT_CHANGE_ACL_OR_IDENTITY"},
-  "candidate": {"id": "F002", "source_commit": "037e8bfaadb6ddb03122fbabb404b95a8b4e7e7f", "path": "workspaces/hermes-maturity-20261014/acceptance-f002", "deployed_to_user_windows": false, "static_run_id": 38569144049, "static_job_id": 115869421123, "synthetic_tests": "42/42_PASS", "powershell_51_parse": "PASS", "powershell_7_parse": "PASS", "hermes_runtime_certified": false},
-  "last_observed_config": {"observed_utc": "2026-10-14T12:31:23.505908+00:00", "sha256": "02dca0e1d3dfc80f693bf9ecfe3c3e70dd3f85e4f361a670d60ade2a5ed75983", "changed_field": "platform_toolsets.api_server", "added": ["web", "delegation", "todo", "session_search", "cronjob"], "current_status": "NEEDS_FRESH_READBACK"},
+  "route_A": {
+    "last_result": "Session terminated",
+    "code": 32600
+  },
+  "route_B": {
+    "run_id": 38567587445,
+    "job_id": 115864123548,
+    "runner": "DESKTOP-4A1EGTM-etal",
+    "setup": "PASS",
+    "receipt_read": "OS_ACCESS_DENIED",
+    "action": "DO_NOT_CHANGE_ACL_OR_IDENTITY"
+  },
+  "candidate": {
+    "id": "F002",
+    "source_commit": "037e8bfaadb6ddb03122fbabb404b95a8b4e7e7f",
+    "path": "workspaces/hermes-maturity-20261014/acceptance-f002",
+    "deployed_to_user_windows": false,
+    "static_run_id": 38569144049,
+    "static_job_id": 115869421123,
+    "synthetic_tests": "42/42_PASS",
+    "powershell_51_parse": "PASS",
+    "powershell_7_parse": "PASS",
+    "hermes_runtime_certified": false
+  },
+  "last_observed_config": {
+    "observed_utc": "2026-10-14T12:31:23.505908+00:00",
+    "sha256": "02dca0e1d3dfc80f693bf9ecfe3c3e70dd3f85e4f361a670d60ade2a5ed75983",
+    "changed_field": "platform_toolsets.api_server",
+    "added": [
+      "web",
+      "delegation",
+      "todo",
+      "session_search",
+      "cronjob"
+    ],
+    "current_status": "NEEDS_FRESH_READBACK"
+  },
   "startup_authority": "skills/windows-hermes-operations/references/docker-startup-recovery-20261014.md",
   "user_action": "Use the existing GPT-Windows-MCP one-click recovery shortcut; enter credentials locally only if the existing launcher requires them.",
-  "next_action": "When A is restored, read only this task's existing freeze/ack/run/grade/batch receipts and process metadata. Reconcile F001 before any F002 dispatch.",
+  "next_action": "在用户 A 合法执行上下文确认单隧道和任务父子关系，使用原 Task Scheduler 正规方式重新加载已修复的 Supervisor；随后核对真实远程 read_file 初始化、异常退出后真实无人恢复。禁止使用临时 Stop-Process/新守护器/代理修改。",
   "local_task_root": "C:/Users/A/.hermes/skills/hermes-mature-supertool/evidence/HERMES-ECO-20261014",
-  "do_not": ["claim five real passes", "claim global optimum", "blindly rerun unknown work", "restart workstation", "change proxy", "change ACL", "read or upload credentials", "reinstall Hermes", "replace successful startup assets"],
+  "do_not": [
+    "claim five real passes",
+    "claim global optimum",
+    "blindly rerun unknown work",
+    "restart workstation",
+    "change proxy",
+    "change ACL",
+    "read or upload credentials",
+    "reinstall Hermes",
+    "replace successful startup assets"
+  ],
   "cloud_static_job_complete": true,
-  "new_recurring_monitor_installed": false
+  "new_recurring_monitor_installed": false,
+  "bridge_a_ps002": {
+    "status": "WINDOWS_FILE_PATCH_DEPLOYED_INDEPENDENT_SHA_READBACK;RUNNING_SUPERVISOR_NOT_RELOADED",
+    "incident": "skills/extreme-time-automation-bridge/A_ROUTE_PS002_REALITY_20261015.md",
+    "old_sha256": "D5B2D1098F51794B6022B60035BA6D0E6A0E5F7C016FF346540A059744BA35",
+    "live_file_sha256": "649E7A939AA8A27B91FE5FBE130E842E131EB96D55F36A1C00FED405335270EF",
+    "deployment_run": 38614765358,
+    "independent_readback_job": 116027625193,
+    "tunnel_pid_last_observed": 46772,
+    "tunnel_untouched": true,
+    "chatgpt_read_file": "SESSION_TERMINATED",
+    "auto_recovery_runtime_final_valid": false,
+    "mcp_initialization_final_valid": false
+  }
 }
