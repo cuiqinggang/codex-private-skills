@@ -1,10 +1,20 @@
 ---
 name: extreme-time-automation-bridge
-version: "3.0.0"
-description: GPT直连Windows双路执行桥 V3.0。A自建OpenAI Tunnel/Windows MCP主路、B GitHub Runner三档路由（FAST、V2有界官方Artifact、原FULL回退）、R额度闸门；B有界小证据五次真实验收通过，保留原FULL历史下载风险与A路未验收边界。
+version: "4.0.0"
+description: GPT直连Windows双路执行桥 V4.0。继承A官方Tunnel/MCP、B GitHub三档成熟路由；A路PS-002守护器修复及重载、同进程8/8读取与5/5工具PASS，用户关停→重启→刷新后的新轮Reality尚待验收，不宣称自动恢复或长期零故障。
 ---
 
-# GPT直连Windows双路执行桥 V3.0
+# GPT直连Windows双路执行桥 V4.0
+
+## V4.0｜2026-10-15 正式唯一运行入口（最高优先级）
+
+> **[V4.0：A路成熟修复冻结、轻入口、用户手动关闭→启动→刷新后的现实验收合同](V4_A_ROUTE_RESTART_REALITY_20261015.md)**。当前正式技能包版本 **4.0.0**，仅升级已有技能包规则、证据和入口，不新建工作站、通信隧道或恢复管理器；A路依然首选已真实可用的官方Tunnel+本机Desktop Commander，B路完整继承V3.0三档成熟路由。遇故障先读V4及所属SOP，历史标题中的“最新”“优先级最高”只代表各自历史日期，不得覆盖本V4。
+>
+> **历史REALITY（已确认）：** A路在用户同一Windows登录/单隧道进程下8次read_file真实PASS，既有恢复守护器重新加载PASS，新守护器启动后5项不同MCP工具PASS；现有PS-002代码片段已修复、备份且哈希核实。B路V3.0小型非敏感有界官方Artifact 5次独立Windows→GitHub执行及工件回读PASS，但原FULL超时长尾未根治。
+>
+> **待用户真实操作：** 用户准备自行关闭旧连接、利用已有入口启动、刷新ChatGPT。**目前V4重启后全链路仍PENDING。** 等收到“已重启并刷新”，第一次只调用一次真实 `GPT-Windows-MCP-Bridge.read_file`（`C:/AI/GPT-Windows-Bridge-B/Launch-OpenAI-Real-MCP.ps1`，offset 0、length 12），失败原样报告，不把旧轮PASS移植过去；成功再读新PID、单隧道/官方shim、原Supervisor和任务状态，最后决定是否追加新轮5次同构只读。人为恢复不能认证无人值守自主恢复，单轮读不能认证长期稳定。
+>
+> **冻结保护：** 不修改FlClash/系统代理/Runner/插件授权、不重装、不手动开启第二隧道、不读取或上传Runtime Key、不运行旧临时Stop-Process，不为测试关闭用户现有业务；文档冻结、现实验收、自动恢复及开机启动分别判定。旧V3.0及更早章节保留作历史证据。
 
 ## 2026-10-15｜A路受控守护器重载与8次真实读取（优先于下面旧状态）
 
