@@ -35,4 +35,19 @@ jobs:
           }
           $rule=@(Get-NetFirewallRule -Name 'GPT-Windows-Tunnel-TempBlock-R1' -ErrorAction SilentlyContinue)
           Write-Host ('TEMP_FIREWALL_RULES='+$rule.Count)
+          # R3: scoped read-only evidence for post-R2 session recovery (no secrets printed)
+          $activeLauncher='C:\AI\GPT-Windows-Bridge-B\Launch-OpenAI-Real-MCP.ps1'
+          $candidateLauncher=Join-Path $root 'Launch-Initialized-Shim-Candidate.ps1'
+          $flag='--mcp.stdio-send-initialized-notification'
+          Write-Host ('R3_CURRENT_LAUNCHER_HAS_SHIM='+[bool]((Test-Path $activeLauncher) -and ((Get-Content $activeLauncher -Raw) -match [regex]::Escape($flag))))
+          Write-Host ('R3_CANDIDATE_HAS_SHIM='+[bool]((Test-Path $candidateLauncher) -and ((Get-Content $candidateLauncher -Raw) -match [regex]::Escape($flag))))
+          foreach($tp in $procs) {
+            $argsAvailable= -not [string]::IsNullOrWhiteSpace($tp.CommandLine)
+            Write-Host ('R3_PROCESS_PID='+$tp.ProcessId+';ARGS_READABLE='+$argsAvailable+';SHIM_FLAG='+$(if($argsAvailable){[bool]($tp.CommandLine -match [regex]::Escape($flag))}else{'unknown'}))
+            $par=Get-CimInstance Win32_Process -Filter ("ProcessId="+$tp.ParentProcessId) -ErrorAction SilentlyContinue
+            Write-Host ('R3_PARENT_PID='+$tp.ParentProcessId+';NAME='+$par.Name+';ALIVE='+[bool]$par)
+          }
+          $healthLog=Join-Path $root 'Tunnel-Health.jsonl'
+          if(Test-Path $healthLog){Get-Content -LiteralPath $healthLog -Tail 4 | ForEach-Object { Write-Host ('R3_HEALTH='+$_) }}
+          Write-Host ('R3_READONLY_COMPLETE')
           Write-Host 'OOB_READONLY_COMPLETE'
