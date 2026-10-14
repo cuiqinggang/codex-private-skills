@@ -82,8 +82,7 @@ jobs:
                 $ev=$_|ConvertFrom-Json
                 if($ev.event -eq 'TUNNEL_EXCEPTION') {
                   $kind=([string]$ev.detail)
-                  if($kind -notmatch '^[A-Za-z][A-Za-z0-9.]{0,80}
-){$kind='REDACTED_UNEXPECTED_TYPE'}
+                  if($kind -notmatch '^[A-Za-z][A-Za-z0-9.]{0,80}'){$kind='REDACTED_UNEXPECTED_TYPE'}
                   Write-Host ('SUPERVISOR_EXCEPTION_KIND='+$kind+';UTC='+$ev.utc)
                 }
               } catch {Write-Host 'SUPERVISOR_EXCEPTION_UNPARSEABLE'}
