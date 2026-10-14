@@ -1,0 +1,47 @@
+name: Orca validation read-only reconciliation
+run-name: ORCA-VALIDATION-20261014-READBACK-R1
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/orca-validation-readback-20261014.yml']
+permissions:
+  contents: read
+concurrency:
+  group: orca-validation-20261014-readback
+  cancel-in-progress: false
+jobs:
+  read-only-receipts:
+    if: github.run_attempt == 1
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 3
+    steps:
+      - name: Reconcile known Orca task files without launching or repeating business
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          if($env:COMPUTERNAME -ne 'DESKTOP-4A1EGTM'){throw 'UNEXPECTED_RUNNER_DEVICE'}
+          $root='C:\AI\Orca-Codex-Validation-20261014'
+          Write-Host ('READBACK_UTC='+[DateTimeOffset]::UtcNow.ToString('o'))
+          Write-Host ('ROOT_EXISTS='+(Test-Path -LiteralPath $root))
+          if(-not(Test-Path -LiteralPath $root)){throw 'TASK_ROOT_NOT_FOUND'}
+          $files=@('N001_REPORT.md','N001_RECEIPT.json','LAUNCH_RECEIPT.json','N001_ACTION_REQUEST.json','CEO_N001_RECOVERY_COMPLETE.md','DATASET_MANIFEST.json','evidence\baseline\GOOD_003_CEO_RECOVERY\FINAL_REPAIR_RECEIPT.json','evidence\baseline\CEO_ORIGINAL_BAD_RECHECK.json','CEO_assets\SERVER_LAUNCH.json','CEO_assets\SERVER_STDOUT.log')
+          foreach($name in $files){
+            $path=Join-Path $root $name
+            if(Test-Path -LiteralPath $path){
+              $f=Get-Item -LiteralPath $path
+              Write-Host ('FILE_META '+(@{path=$name;bytes=$f.Length;modified_utc=$f.LastWriteTimeUtc.ToString('o');sha256=(Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash}|ConvertTo-Json -Compress))
+              if($f.Length -le 32000){Write-Host ('FILE_BEGIN '+$name);Get-Content -LiteralPath $path -Raw -Encoding utf8|Write-Host;Write-Host ('FILE_END '+$name)}
+              else{Write-Host ('LARGE_FILE_NOT_EMITTED '+$name)}
+            }else{Write-Host ('MISSING '+$name)}
+          }
+          $index=@(Get-ChildItem -LiteralPath $root -File|Select-Object Name,Length,LastWriteTimeUtc)
+          Write-Host ('ROOT_INDEX='+($index|ConvertTo-Json -Depth 3 -Compress))
+          foreach($folder in @('freeze','freezes','tools','evidence')){
+            $dir=Join-Path $root $folder
+            if(Test-Path -LiteralPath $dir){Write-Host ('DIR_INDEX '+$folder+' '+(@(Get-ChildItem -LiteralPath $dir -Force|Select-Object Name,Mode,Length)|ConvertTo-Json -Compress))}
+          }
+          $processes=@(Get-CimInstance Win32_Process|Where-Object {$_.ProcessId -ne $PID -and $_.CommandLine -like '*Orca-Codex-Validation-20261014*'}|Select-Object ProcessId,ParentProcessId,Name,CreationDate)
+          Write-Host ('TASK_PROCESS_METADATA='+($processes|ConvertTo-Json -Compress))
+          $os=Get-CimInstance Win32_OperatingSystem
+          Write-Host ('HOST_METADATA='+(@{last_boot_utc=$os.LastBootUpTime.ToUniversalTime().ToString('o');ram_free_kb=$os.FreePhysicalMemory;ram_total_kb=$os.TotalVisibleMemorySize}|ConvertTo-Json -Compress))
+          Write-Host 'READ_ONLY_RECONCILIATION_FINISHED_NO_DISPATCH_NO_RESTART_NO_LOCAL_WRITES'
