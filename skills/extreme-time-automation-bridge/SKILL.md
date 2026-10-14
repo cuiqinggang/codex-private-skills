@@ -1,10 +1,20 @@
 ---
 name: extreme-time-automation-bridge
-version: "2.0.0"
-description: GPT直连Windows双路执行桥 V2.0。保留自建OpenAI Tunnel+Windows MCP优先、GitHub Windows Runner独立备路和DCR免费额度闸门；新增成熟Windows任务守护、DPAPI本机一次性授权、官方MCP初始化补丁候选和分层Reality验收。
+version: "3.0.0"
+description: GPT直连Windows双路执行桥 V3.0。A自建OpenAI Tunnel/Windows MCP主路、B GitHub Runner三档路由（FAST、V2有界官方Artifact、原FULL回退）、R额度闸门；B有界小证据五次真实验收通过，保留原FULL历史下载风险与A路未验收边界。
 ---
 
-# GPT直连Windows双路执行桥 V2.0
+# GPT直连Windows双路执行桥 V3.0
+
+## V3.0｜2026-10-15 正式技能入口（覆盖下文 V2.0 旧版本状态）
+
+> **优先读取：[V3.0 B路官方Artifact故障修复、三档分流、五轮Reality及停止规则](GITHUB_WINDOWS_B_ROUTE_V3_20261015.md)**。本次升级已完成真实 GitHub 持久化与回读；是**技能包运行策略与故障经验升级**，不是新的 Windows 工作流、隧道或代理部署，也不意味着第三方 Action 的原本 Windows 网络下载故障在原 FULL 路线上已彻底消失。
+>
+> **本轮冻结：** B 路 V2 有界官方 Artifact 五次独立 Reality **5/5 PASS**，GitHub 观察墙钟 **30/36/36/36/38秒（平均35.2秒）**；FAST 27秒仅日志回执；原 FULL 97/144秒有成功回执但既往419/422秒下载超时长尾未排除。**按合同判路：** 无官方工件→FAST；经审查的小型、非敏感、允许成功证据且无需失败时等价归档→V2有界官方Artifact；大输出、未知大小、失败证据保全、强审计/完整回调要求→原 FULL 或相应已验证路线。既有任务冻结与Exactly-once优先，不得未知副作用时自动重发。
+>
+> **两条路严格分离验收：** 本轮 5/5 证明 GitHub B 小型证据路径，不证明 A 路 OpenAI Tunnel 初始化409、进程异常退出恢复、开机自启动等已通过。这些仍按 [V2 A路隧道恢复SOP](TUNNEL_AUTORECOVERY_V2_20261015.md) 保持其独立事实与门禁。禁止修改 FlClash、系统代理、在线 Windows 隧道、Runner配置，禁止敏感证据经 GitHub Job Outputs 传输。
+>
+> **停止门：** 已合格范围停止为1–2秒进一步改造；只在新故障、质量合同变化、长期稳定性或失败证据/敏感保护/回调等新能力需要时重开成熟差分及现实验收。本 V3.0 为原技能包正式入口，历史 V2.0 文档及工作流文件名保持不变。
 
 ## 2026-10-15｜B路最新实测：有界官方Artifact路线五次真实通过（优先于下列旧状态）
 
@@ -16,9 +26,9 @@ description: GPT直连Windows双路执行桥 V2.0。保留自建OpenAI Tunnel+Wi
 
 > **[B 路成熟方案、GOOD/BAD 第一差分、已落地最小优化与验收合同](GITHUB_WINDOWS_B_ROUTE_V2_20261015.md)**。本次读取真实 GitHub 作业日志：外部 `upload-artifact@v4` ZIP 3×100s 超时属已复现的 FULL 生产失效；最新纯文档绿色运行只完成静态校验（Windows job skipped），不可伪装完整 B 路通过。已提交触发路径最小优化 `bcad8ba3`，使普通技能包文档更新不再产生无效静态检查，[Run 38601018542](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38601018542) 验证静态与合同 PASS。**尚未通过 FULL 恢复及5次独立业务验收**；不得动 FlClash、系统代理、Runner 注册，不删 Artifact 取证，仅在能确认固定 ZIP 正文稳定和可回滚 Runner 级路由时实施生产修复。
 
-## V2.0｜2026-10-15 最新正式入口（覆盖下方全部历史版本状态）
+## V2.0｜2026-10-15 A路恢复规范（历史版本；仍为 A路专用操作 SOP）
 
-> **[V2.0 Windows Tunnel 守护、凭据、初始化与 Reality 验收规范](TUNNEL_AUTORECOVERY_V2_20261015.md)** 是本技能包当前首要入口。新页面先读本文和该文件，旧 V1.0.1 / v0.3.4 以下章节只按历史日期理解，不得覆盖 V2.0 的当期部署状态。
+> **[V2.0 Windows Tunnel 守护、凭据、初始化与 Reality 验收规范](TUNNEL_AUTORECOVERY_V2_20261015.md)** 是 A 路恢复任务的首要操作入口。新页面先读本技能包 V3.0 入口，涉及 A路恢复时再读该文件，旧 V1.0.1 / v0.3.4 以下章节只按历史日期理解，不得覆盖 V2.0 的当期部署状态。
 >
 > **本次升级是“能力与文档整合”，不是宣称最终稳定性认证通过。** 新恢复管理器已经在 Windows 用户 A 会话中注册并运行；00:33+08 文件检查发现 DPAPI 加密密钥文件存在；当前仍为单隧道实例。但异常退出后无人恢复、Windows 真实重登录/重启、初始化 shim 的运行时效果尚未实际验收。原 PID17876 创建于正式启动器加入 shim 之前，该运行进程命令行无 shim 参数；曾真实复现远程读取的 409。**不能将单次本地健康或短时读通等于五次独立 Reality。**
 
