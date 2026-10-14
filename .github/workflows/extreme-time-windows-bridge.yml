@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - 'workspaces/extreme-time-automation-loop-v2.0/bridge/**'
-      - 'skills/extreme-time-automation-bridge/**'
+      - 'skills/extreme-time-automation-bridge/bootstrap/**'
       - '.github/workflows/extreme-time-windows-bridge.yml'
   workflow_dispatch:
     inputs:
