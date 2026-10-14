@@ -6,6 +6,10 @@ description: GPT直连Windows双路执行桥 V1.0。默认已验收的自建MCP�
 
 # GPT直连Windows双路执行桥 V1.0
 
+## 2026-10-15｜R3真实复核（最新状态，优先于旧记录）
+
+> **[R3断线后的新进程、补丁运行态与五次真实读取证据](TUNNEL_RECOVERY_R3_EVIDENCE_20261015.md)**：旧PID38324已退出，新PID42388也被替换，00:11运行PID17876；连续远端文件读取5/5 PASS。但正式启动脚本虽已包含官方通知shim，**运行PID17876并未携带该参数**，所以补丁仍未Reality验收。GitHub独立只读Run [38595535165](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38595535165) PASS。禁止强制重启在线实例；无人值守进程退出恢复尚未实现，FlClash/代理/Runtime Key安全边界不变。
+
 ## V1.0.1｜统一接续入口（2026-10-14 22:50 UTC+8）
 
 > **[下一页面唯一接续摘要、409现实复现、启动器命名与G0–G6验收门](TUNNEL_STABILITY_HANDOFF_20261014.md)**。当前仅静态候选，原Windows隧道不得盲目重启；候选预备分支存在覆盖正式启动器的风险，必须先完成G0/G1。
