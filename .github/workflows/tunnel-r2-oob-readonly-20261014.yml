@@ -97,4 +97,10 @@ jobs:
           $fixedRepro='$ErrorActionPreference="Stop";try{& cmd.exe /c "echo native-diagnostic-stderr 1>&2" 1>$null 2>$null;"TEST_RESULT=NO_EXCEPTION"}catch{"TEST_RESULT=EXCEPTION;TYPE="+$_.Exception.GetType().Name}'
           $fixedOutput=& powershell.exe -NoProfile -NonInteractive -Command $fixedRepro 2>&1
           $fixedOutput|ForEach-Object {if(([string]$_) -match '^TEST_RESULT='){Write-Host ('POWERSHELL51_SEPARATE_STDERR_'+$_)}}
+          $ps51Good='$ErrorActionPreference="Stop";try{$saved=$ErrorActionPreference;try{$ErrorActionPreference="Continue";& cmd.exe /c "echo native-diagnostic-stderr 1>&2" 2>&1|Out-Null;$code=$LASTEXITCODE}finally{$ErrorActionPreference=$saved};"PS002_GOOD_EXIT="+$code}catch{"PS002_GOOD_EXCEPTION="+$_.Exception.GetType().Name}'
+          $ps51Bad='$ErrorActionPreference="Stop";try{$saved=$ErrorActionPreference;try{$ErrorActionPreference="Continue";& cmd.exe /c "exit /b 19" 2>&1|Out-Null;$code=$LASTEXITCODE}finally{$ErrorActionPreference=$saved};"PS002_BAD_EXIT="+$code}catch{"PS002_BAD_EXCEPTION="+$_.Exception.GetType().Name}'
+          foreach($test in @($ps51Good,$ps51Bad)){
+            $lines=& powershell.exe -NoProfile -NonInteractive -Command $test 2>&1
+            $lines|ForEach-Object {if(([string]$_) -match '^PS002_'){Write-Host $_}}
+          }
           Write-Host 'OOB_READONLY_COMPLETE'
