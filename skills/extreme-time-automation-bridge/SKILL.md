@@ -6,6 +6,12 @@ description: GPT直连Windows双路执行桥 V2.0。保留自建OpenAI Tunnel+Wi
 
 # GPT直连Windows双路执行桥 V2.0
 
+## 2026-10-15｜B路最新实测：有界官方Artifact路线五次真实通过（优先于下列旧状态）
+
+> **[五次独立Reality、六份云端Artifact真实下载核对与极限时间证据](GITHUB_WINDOWS_B_ROUTE_V2_REALITY_20261015.md)**。本次真实新 FULL：Run 38601884050 **97s PASS** + Run 38602538548 **144s PASS**，含 Windows 业务、官方 artifact 与实际 readback，但历史超时长尾未根治。原 FAST `windows-bridge-v1-fast.yml` [Run 38602210133](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38602210133) **27s PASS，仅日志回执**。新增隔离官方组件复用方案 [windows-bridge-v2-bounded-artifact.yml](https://github.com/cuiqinggang/codex-private-skills/blob/main/.github/workflows/windows-bridge-v2-bounded-artifact.yml)：Windows 无第三方Action，证据通过有界Job Output到GitHub托管环境后使用原生 upload-artifact；同构无副作用小证据任务 **5/5独立Run与Artifact下载验证PASS，耗时36/36/30/36/38s，均值35.2s**。原FULL和Runner配置完全保留，FlClash/系统代理未修改。
+>
+> **新执行门**：只需Job日志的短任务选旧FAST；经过输出/敏感信息/失败模式合同审核的*小型成功证据*任务才可选有界Artifact候选；大结果、必须保存失败证据、强合同任务保持原 FULL。候选仍是手工触发，不自动覆盖原 FULL；超限发生在业务执行后，**严禁把超限失败自动改投FULL重发副作用**。原FULL网络下载长尾仍可能复发，质量状态仅为 `BOUNDED_SCOPE_5_5_PASS`，非 `FULL_GENERAL_STABILITY_PASS`。理论物理极限UNKNOWN，当前最低有效实测30s，不冒充全局极限。
+
 ## 2026-10-15｜B 路 GitHub→Windows 极限短时间核验（本次最新）
 
 > **[B 路成熟方案、GOOD/BAD 第一差分、已落地最小优化与验收合同](GITHUB_WINDOWS_B_ROUTE_V2_20261015.md)**。本次读取真实 GitHub 作业日志：外部 `upload-artifact@v4` ZIP 3×100s 超时属已复现的 FULL 生产失效；最新纯文档绿色运行只完成静态校验（Windows job skipped），不可伪装完整 B 路通过。已提交触发路径最小优化 `bcad8ba3`，使普通技能包文档更新不再产生无效静态检查，[Run 38601018542](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38601018542) 验证静态与合同 PASS。**尚未通过 FULL 恢复及5次独立业务验收**；不得动 FlClash、系统代理、Runner 注册，不删 Artifact 取证，仅在能确认固定 ZIP 正文稳定和可回滚 Runner 级路由时实施生产修复。
