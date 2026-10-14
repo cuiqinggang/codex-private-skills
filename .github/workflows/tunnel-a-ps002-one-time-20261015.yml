@@ -1,0 +1,70 @@
+name: Tunnel A PS002 one-time guarded repair
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/tunnel-a-ps002-one-time-20261015.yml']
+permissions:
+  contents: read
+concurrency:
+  group: tunnel-a-ps002-once
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 5
+    steps:
+      - name: Pinned source, native PS51 parser, and exact single-code-path repair
+        shell: pwsh
+        env:
+          SOURCE_TOKEN: ${{ github.token }}
+        run: |
+          $ErrorActionPreference='Stop'
+          $live='C:\AI\GPT-Windows-Bridge-B\persistence\Recovery-Supervisor-v1.ps1'
+          $backup=$live+'.bak-ps002-20261015'
+          $stage=Join-Path $env:RUNNER_TEMP 'Recovery-Supervisor-v1-PS002.ps1'
+          $pre='D5B2D1098F51794E296233DEBD1E8F07AB71A3690525E014D84FC0644726B434'
+          $blob='0cf755c969a9ad4b86e8064546f5214465bb185d'
+          $commit='a3b644d372019da2733df0076a7c2cd9f19e0a84'
+          $relative='workspaces/hermes-maturity-20261014/repair-ps51/Recovery-Supervisor-v1-PS002.ps1'
+          if(Test-Path -LiteralPath $backup){throw 'EXISTING_BACKUP_RECONCILE_NO_REPEAT'}
+          if((Get-FileHash -LiteralPath $live -Algorithm SHA256).Hash -ne $pre){throw 'CONCURRENT_CHANGE_OR_ALREADY_PATCHED'}
+          $processes=@(Get-CimInstance Win32_Process -Filter "Name='tunnel-client.exe'")
+          if($processes.Count -ne 1){throw 'TUNNEL_IDEMPOTENCY_GATE_FAILED'}
+          $tunnelPid=$processes[0].ProcessId
+          $uri=$env:GITHUB_API_URL+'/repos/'+$env:GITHUB_REPOSITORY+'/contents/'+$relative+'?ref='+$commit
+          $data=Invoke-RestMethod -Uri $uri -Headers @{Authorization="Bearer $env:SOURCE_TOKEN";Accept='application/vnd.github+json'} -TimeoutSec 30
+          if($data.type -ne 'file' -or $data.sha -ne $blob){throw 'UNEXPECTED_GITHUB_SOURCE'}
+          $bytes=[Convert]::FromBase64String($data.content)
+          $prefix=[Text.Encoding]::UTF8.GetBytes(('blob '+$bytes.Length+[char]0))
+          $sha=[Convert]::ToHexString([Security.Cryptography.SHA1]::HashData([byte[]]($prefix+$bytes))).ToLowerInvariant()
+          if($sha -ne $blob){throw 'GIT_BLOB_HASH_MISMATCH'}
+          [IO.File]::WriteAllBytes($stage,$bytes)
+          $nl=[string][char]10
+          $crlf=([string][char]13)+$nl
+          $before=[IO.File]::ReadAllText($live).Replace($crlf,$nl)
+          $candidate=[IO.File]::ReadAllText($stage).Replace($crlf,$nl)
+          $needle='      & $exe run --control-plane.tunnel-id $tunnelId --mcp.command $mcpCommand --mcp.stdio-send-initialized-notification --health.listen-addr 127.0.0.1:0 2>&1 | Out-Null'+$nl+'      $exitCode=$LASTEXITCODE'
+          $replace=@(
+            '      $savedErrorActionPreference=$ErrorActionPreference'
+            '      try {'
+            "        "+'$ErrorActionPreference='+[char]39+'Continue'+[char]39
+            '        & $exe run --control-plane.tunnel-id $tunnelId --mcp.command $mcpCommand --mcp.stdio-send-initialized-notification --health.listen-addr 127.0.0.1:0 2>&1 | Out-Null'
+            '        $exitCode=$LASTEXITCODE'
+            '      } finally {'
+            '        $ErrorActionPreference=$savedErrorActionPreference'
+            '      }'
+          ) -join $nl
+          if(-not $before.Contains($needle) -or $before.Replace($needle,$replace) -cne $candidate){throw 'NON_MINIMAL_PATCH_REJECTED'}
+          $env:PS51_REPAIR_CANDIDATE_PATH=$stage
+          $check='$t=$null;$e=$null;[void][System.Management.Automation.Language.Parser]::ParseFile($env:PS51_REPAIR_CANDIDATE_PATH,[ref]$t,[ref]$e);if($e.Count){exit 4};"PS51_PARSE_PASS"'
+          $parsed=& powershell.exe -NoProfile -NonInteractive -Command $check
+          if($LASTEXITCODE -ne 0 -or $parsed -notcontains 'PS51_PARSE_PASS'){throw 'PS51_PARSE_FAILED'}
+          if((Get-FileHash -LiteralPath $live).Hash -ne $pre){throw 'RACE_DETECTED'}
+          $current=@(Get-CimInstance Win32_Process -Filter "Name='tunnel-client.exe'")
+          if($current.Count -ne 1 -or $current[0].ProcessId -ne $tunnelPid){throw 'LIVE_TUNNEL_CHANGED'}
+          $expectedAfter=(Get-FileHash -LiteralPath $stage -Algorithm SHA256).Hash
+          [IO.File]::Replace($stage,$live,$backup)
+          if((Get-FileHash -LiteralPath $live -Algorithm SHA256).Hash -ne $expectedAfter){throw 'POST_WRITE_HASH_MISMATCH'}
+          if((Get-FileHash -LiteralPath $backup -Algorithm SHA256).Hash -ne $pre){throw 'ROLLBACK_COPY_MISMATCH'}
+          Write-Host ('PS002_DEPLOYED_FILE_PASS;NEW_SHA256='+$expectedAfter+';OLD_SHA256='+$pre+';PREEXISTING_TUNNEL_PID='+$tunnelPid)
+          Write-Host 'NO_TUNNEL_OR_SUPERVISOR_RESTART;FILE_TAKES_EFFECT_WHEN_EXISTING_WINDOWS_SCHEDULER_NEXT_STARTS_SUPERVISOR'
