@@ -2,7 +2,7 @@
   "task_id": "HERMES-ECO-20261014",
   "method": "SANRENXING_V2_USER_SELECTED_TASK_ONLY",
   "method_blob": "027229fc28ebd12811adacfe37aa857a187d3301",
-  "bridge": "GPT-Windows dual-route V3.0",
+  "bridge": "GPT-Windows dual-route V4.0",
   "state": "BRIDGE_A_SHORT_SCOPED_PASS_SUPERVISOR_RELOAD_PASS__HERMES_F002_STILL_NOT_ACCEPTED",
   "report": "workspaces/hermes-maturity-20261014/PROGRESS-F002.md",
   "report_commit": "ebe890d30632fa2d8e4e718bd573e9b8ef290d5e",
@@ -23,7 +23,12 @@
     "autonomous_recovery_after_exit": "NOT_TESTED",
     "login_boot": "NOT_TESTED",
     "long_stability": "NOT_TESTED",
-    "previous_failure": "Session terminated"
+    "previous_failure": "Session terminated",
+    "post_user_restart_reality": "PENDING_USER_CLOSE_START_REFRESH",
+    "user_restarted_pid": null,
+    "post_user_restart_real_read_file": "NOT_TESTED",
+    "post_user_restart_5_reads": "NOT_TESTED",
+    "version": "4.0.0"
   },
   "route_B": {
     "run_id": 38567587445,
@@ -60,7 +65,7 @@
   },
   "startup_authority": "skills/windows-hermes-operations/references/docker-startup-recovery-20261014.md",
   "user_action": "Use the existing GPT-Windows-MCP one-click recovery shortcut; enter credentials locally only if the existing launcher requires them.",
-  "next_action": "保持当前单实例连接；无需重复手动输密钥。下一自然异常出现时按已有V3.0/A路SOP对照Supervisor和Tunnel健康日志与真实MCP调用，验收自主恢复；不要主动Stop-Process干扰其他任务。Hermes F002原业务仍需独立对账。",
+  "next_action": "等待用户自行关闭当前连接、用既有方式重启并刷新ChatGPT，收到用户确认后仅调用一次A路read_file(Launch-OpenAI-Real-MCP.ps1 offset=0 length=12)，成功再核对单进程、新PID与Supervisor/Task，失败原样停止；Hermes F002业务不重派。",
   "local_task_root": "C:/Users/A/.hermes/skills/hermes-mature-supertool/evidence/HERMES-ECO-20261014",
   "do_not": [
     "claim five real passes",
@@ -95,5 +100,15 @@
     "mcp_initialization_short_reads_pass": true,
     "mcp_initialization_long_final_valid": false,
     "report": "skills/extreme-time-automation-bridge/A_ROUTE_LIVE_STABILITY_20261015.md"
+  },
+  "bridge_v4": {
+    "version": "4.0.0",
+    "skill": "skills/extreme-time-automation-bridge/SKILL.md",
+    "restart_contract": "skills/extreme-time-automation-bridge/V4_A_ROUTE_RESTART_REALITY_20261015.md",
+    "release_kind": "SKILL_POLICY_AND_EVIDENCE_FREEZE",
+    "post_user_restart_acceptance": "PENDING",
+    "unattended_recovery": "NOT_ACCEPTED",
+    "boot_login_autostart": "NOT_ACCEPTED",
+    "do_not_run_temporary_stop_process": true
   }
 }
