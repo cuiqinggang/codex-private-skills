@@ -6,6 +6,10 @@ description: GPT直连Windows双路执行桥 V2.0。保留自建OpenAI Tunnel+Wi
 
 # GPT直连Windows双路执行桥 V2.0
 
+## 2026-10-15｜B 路 GitHub→Windows 极限短时间核验（本次最新）
+
+> **[B 路成熟方案、GOOD/BAD 第一差分、已落地最小优化与验收合同](GITHUB_WINDOWS_B_ROUTE_V2_20261015.md)**。本次读取真实 GitHub 作业日志：外部 `upload-artifact@v4` ZIP 3×100s 超时属已复现的 FULL 生产失效；最新纯文档绿色运行只完成静态校验（Windows job skipped），不可伪装完整 B 路通过。已提交触发路径最小优化 `bcad8ba3`，使普通技能包文档更新不再产生无效静态检查，[Run 38601018542](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38601018542) 验证静态与合同 PASS。**尚未通过 FULL 恢复及5次独立业务验收**；不得动 FlClash、系统代理、Runner 注册，不删 Artifact 取证，仅在能确认固定 ZIP 正文稳定和可回滚 Runner 级路由时实施生产修复。
+
 ## V2.0｜2026-10-15 最新正式入口（覆盖下方全部历史版本状态）
 
 > **[V2.0 Windows Tunnel 守护、凭据、初始化与 Reality 验收规范](TUNNEL_AUTORECOVERY_V2_20261015.md)** 是本技能包当前首要入口。新页面先读本文和该文件，旧 V1.0.1 / v0.3.4 以下章节只按历史日期理解，不得覆盖 V2.0 的当期部署状态。
