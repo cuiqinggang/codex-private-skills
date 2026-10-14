@@ -72,3 +72,20 @@
 `NEXT=G0_READ_ONLY_REALITY_CHECK_THEN_G1_STATIC_DIFF_AND_FREEZE`
 
 下一页唯一优先任务是 **G0→G1**，而不是重复安装、立刻重启或直接迁移受管运行器。完成后才执行具备审批/凭据交接的G2/G3。
+
+## 7. 可靠性验收口径修正｜允许正常网络波动，必须自主恢复（2026-10-14）
+
+用户明确：正常网络中断/恢复属于可接受环境条件；目标不是“网络物理上零断线”，而是“网络恢复后执行桥自动恢复，真实任务安全完成”。原G3/G4的零409仅用于验证**无网络故障的正常工作状态**下的协议修复，不将真实断网期间的连接失败计为协议补丁失败。
+
+三类故障严格区分：
+- NETWORK_TRANSIENT：控制平面轮询失败、请求连接/响应超时，网络恢复后自动重连、MCP真实只读调用恢复；保留故障时间与恢复耗时。不需要人工换页、重填密钥或重启。可恢复的瞬时失败不代表架构不合格。
+- MCP_INIT_409：网络恢复、Tunnel PID仍在时，对旧式MCP操作请求返回初始化保护门409；这是协议条件未满足，不能仅以“网络波动正常”解释或把后续读通当作修复。应区分缺initialize、缺notifications/initialized和重新初始化窗口，单变量验证官方shim。
+- PROCESS_EXIT：进程归零、前台终止或程序退出；需要独立的合法常驻/故障恢复机制与Exactly-once验证；不能通过隐藏控制台解决。
+
+必要质量指标：`T_NETWORK_RESTORED`、`T_FIRST_REAL_MCP_VALID`、`T_AUTO_RECOVERY=T_FIRST_REAL_MCP_VALID-T_NETWORK_RESTORED`、最终成功率、重复副作用次数、人工介入次数、端到端`T_VALID`。恢复时间阈值须根据真实基线冻结，不凭空设定。不允许为了测试而修改FlClash或破坏现有生产网络。
+
+现实补充：仍运行PID=38324；2026-10-14 23:06（UTC+8）/health详细回执：MCP initialized，initialize_epoch=109，child_generation仍为`eda367644b637e0a296f2c6cab2ae1c3`，dispatcher failures=11；随后同一进程控制平面轮询连续失败=0、代理健康，最近单次轮询成功。最近500条环形日志均为INFO，未找到足以对应每次409请求的逐请求握手序列，因此“每次失败究竟缺哪一步”仍未取得直接证据。
+
+结合官方v0.0.16源码`pkg/mcpclient/serialized_forwarding_transport.go`：409的精确状态条件是legacy请求进入时`initializationReady=false`；这一状态既可能因initialize尚未成功，也可能因成功但initialized通知尚未到达，或因重新initialize/连接异常重置。官方shim只在成功initialize响应后补发通知，不会凭空合成initialize。现场健康`initialize.ok=true`属于最近成功握手的观测记录，不能代替实时内部`initializationReady`位，更不能证明409发生前已经有完整握手。
+
+现阶段不得宣布补丁现实有效。仅静态比对了正式启动器与候选脚本：候选增加初始化通知参数和预先拒绝已有隧道检查；两者无`-Launch`的staging分支均可覆盖正式启动器，因此严禁不带`-Launch`执行预备分支。真正切换仍须本机合法交互输入Runtime Key、旧实例安全退出及回滚准备。
