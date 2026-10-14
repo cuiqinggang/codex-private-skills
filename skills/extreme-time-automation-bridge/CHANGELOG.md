@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## V2.0 / 2.0.0｜Windows Tunnel 原生守护＋DPAPI 用户授权＋初始化分层验收（2026-10-15）
+
+- **原包升级，不建重复包**：保留 A 自建官方 OpenAI Tunnel + 本地 MCP、B GitHub Actions Windows self-hosted Runner、R 第三方 Remote 额度运营、历史证据、原手动恢复与 GitHub FULL 工作流；统一正式版本为 V2.0。
+- **核心 SOP**：[TUNNEL_AUTORECOVERY_V2_20261015.md](TUNNEL_AUTORECOVERY_V2_20261015.md)，分开认定网络瞬断后自行重连、主进程退出恢复、409 初始化条件、登录/重启恢复；不把本机健康探测等于真实 ChatGPT MCP 调用。
+- **成熟技术复用**：Windows Task Scheduler 原生 AtLogOn/Interactive/IgnoreNew/RestartOnFailure、Windows 用户级 DPAPI、官方 tunnel-client v0.0.16（官方 `--mcp.stdio-send-initialized-notification` / `runtimes connect/status` 适用性已在本机确认）。官方受管实例尚未启用，避免同 Tunnel ID 双实例。
+- **实际部署**：Windows `GPT-Windows-Tunnel-Recovery-v1` 已 Running，`Recovery-Supervisor-v1.ps1` 记录 `EXISTING_TUNNEL`，隧道唯一进程；桌面已建立 `GPT-Windows-AutoRecovery-OneTimeSetup.lnk`；00:33 Windows 只读检查 `KEY_ENROLLED=True`（仅证明加密文件存在，不读取密钥）。
+- **无密钥脚本入库**：[bootstrap/Recovery-Supervisor-v1.ps1](bootstrap/Recovery-Supervisor-v1.ps1)、[bootstrap/Install-Recovery-Task-v1.ps1](bootstrap/Install-Recovery-Task-v1.ps1)、[bootstrap/Enroll-Recovery-Key-v1.ps1](bootstrap/Enroll-Recovery-Key-v1.ps1)。本机三份脚本语法 ParseErrors=0；未存凭据、用户密钥、环境变量值或用户加密文件到 GitHub。
+- **严格未通过**：守护器仅凭已有进程存在做保守等待，尚未证明异常退出后使用 DPAPI 解密并自动新建隧道；未证明真实登录后可用；00:05 PID17876 未启用后来加到正式脚本的初始化 shim；两次连续远程 read_file 曾出现第2次 409，`409_FIXED=NO`；五次独立完整运行和长期稳定未通过。
+- **安全边界**：不要求先关闭隧道重输 Key；用户一次性本机授权后应保留当前连接；不修改 FlClash/代理/浏览器/Runner/DCR，不恢复旧隔离 `Supervisor.INCOMPLETE.txt`；只有受控维护或自然退出后才做单次 Reality，拒绝盲目重复已执行任务。
+
+
 ## V1.0 / 1.0.0｜自建 MCP 主路＋GitHub 成熟备路性能差分（2026-10-13）
 
 - 正式把 `SKILL.md` 由 v0.3.4 升级为 V1.0，保留旧版本所有验收、配额策略与恢复脚本不删除；采用《三人行》V2 的本任务按需成熟复用，不改变《三人行》方法全局激活状态。
