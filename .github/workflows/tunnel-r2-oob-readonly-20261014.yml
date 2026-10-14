@@ -50,4 +50,29 @@ jobs:
           $healthLog=Join-Path $root 'Tunnel-Health.jsonl'
           if(Test-Path $healthLog){Get-Content -LiteralPath $healthLog -Tail 4 | ForEach-Object { Write-Host ('R3_HEALTH='+$_) }}
           Write-Host ('R3_READONLY_COMPLETE')
+          # A_RECOVERY_SUPERVISOR_AUDIT: only pre-existing Windows facilities and redacted event metadata
+          Write-Host 'A_RECOVERY_SUPERVISOR_AUDIT'
+          $recoveryTask=Get-ScheduledTask -TaskName 'GPT-Windows-Tunnel-Recovery-v1' -ErrorAction SilentlyContinue
+          if($recoveryTask){
+            $taskInfo=Get-ScheduledTaskInfo -TaskName $recoveryTask.TaskName -ErrorAction SilentlyContinue
+            Write-Host ('RECOVERY_TASK_STATE='+$recoveryTask.State+';LAST_RESULT='+$taskInfo.LastTaskResult+';LAST_RUN='+$taskInfo.LastRunTime)
+            foreach($action in @($recoveryTask.Actions)){
+              $exe=[IO.Path]::GetFileName($action.Execute)
+              Write-Host ('RECOVERY_TASK_EXECUTABLE='+$exe+';TARGETS_EXISTING_SUPERVISOR='+[bool]($action.Arguments -match 'Recovery-Supervisor-v1[.]ps1'))
+            }
+          }else{Write-Host 'RECOVERY_TASK_NOT_FOUND'}
+          $supervisor=Join-Path $root 'Recovery-Supervisor-v1.jsonl'
+          if(Test-Path -LiteralPath $supervisor){
+            foreach($line in @(Get-Content -LiteralPath $supervisor -Tail 18 -ErrorAction SilentlyContinue)){
+              try{
+                $j=$line|ConvertFrom-Json
+                Write-Host ('SUPERVISOR_EVENT='+$j.event+';UTC='+$j.utc+';PID='+$j.supervisor_pid+';DETAIL_TYPE='+$j.detail.GetType().Name)
+              }catch{Write-Host 'SUPERVISOR_EVENT_UNPARSEABLE'}
+            }
+          }else{Write-Host 'SUPERVISOR_LOG_MISSING_OR_DENIED'}
+          $report=Join-Path $root 'OneTunnel-Recovery-20261015.json'
+          if(Test-Path -LiteralPath $report){
+            try{$j=Get-Content -LiteralPath $report -Raw|ConvertFrom-Json;Write-Host ('PREVIOUS_CONTROLLED_RECOVERY='+$j.status+';OLD_PID='+$j.old_pid+';NEW_PID='+$j.new_pid)}
+            catch{Write-Host 'PREVIOUS_CONTROLLED_RECOVERY_UNREADABLE'}
+          }else{Write-Host 'PREVIOUS_CONTROLLED_RECOVERY_REPORT_NOT_VISIBLE'}
           Write-Host 'OOB_READONLY_COMPLETE'
