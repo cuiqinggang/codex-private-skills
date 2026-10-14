@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## V2.0 B路 Reality 增量｜2026-10-15：成熟官方组件拆分及五次完成时间
+
+- 使用《三人行》第2版（本任务指定，V2全局仍待审查）；原生产FULL实测Run 38601884050耗时97s PASS、Run38602538548耗时144s PASS，正式Artifact皆下载回读；不因短期PASS消除历史419/422秒ZIP超时失败。
+- 既有无外部Action FAST 手工Run 38602210133成功27s，仅Job日志回执。
+- 新增 `.github/workflows/windows-bridge-v2-bounded-artifact.yml` 作为隔离成熟组合候选（Windows本机执行+GitHub hosted官方Artifact上传，Job Output有限大小上限）；五次独立GitHub运行Run38603199346、38603459215、38603580797、38603712945、38603850316 **全部PASS**，耗时36/36/30/36/38s，均值35.2s；5份Artifact真实下载核对均PASS；原FULL第二轮Artifact追加回读PASS，合计6/6。原独立工作流不替换。
+- **适用边界**：只有事先确定为小体积且无敏感stdout/stderr、容忍错误时无等价失败归档的任务才可使用；输出超限发生在执行后，不能把任务重发到原 FULL。任意大型输出、失败证据/回调等严格合同继续原 FULL；其 codeload/action ZIP 长尾稳定性未最终修复。
+- **取证**：[GITHUB_WINDOWS_B_ROUTE_V2_REALITY_20261015.md](GITHUB_WINDOWS_B_ROUTE_V2_REALITY_20261015.md)，提交快照与Run ID可回读。FlClash、系统代理、旧Runner、原FULL、A直连、DCR原样保留，`THEORETICAL_PHYSICAL_LIMIT=UNKNOWN`，不误称无条件全面性能认证。
+
+
 ## V2.0 / 2.0.0｜Windows Tunnel 原生守护＋DPAPI 用户授权＋初始化分层验收（2026-10-15）
 
 - **原包升级，不建重复包**：保留 A 自建官方 OpenAI Tunnel + 本地 MCP、B GitHub Actions Windows self-hosted Runner、R 第三方 Remote 额度运营、历史证据、原手动恢复与 GitHub FULL 工作流；统一正式版本为 V2.0。
