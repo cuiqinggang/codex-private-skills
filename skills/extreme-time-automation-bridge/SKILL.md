@@ -6,6 +6,10 @@ description: GPT直连Windows双路执行桥 V3.0。A自建OpenAI Tunnel/Windows
 
 # GPT直连Windows双路执行桥 V3.0
 
+## 2026-10-15｜A路受控守护器重载与8次真实读取（优先于下面旧状态）
+
+> [A路真实8/8 read_file、守护器PID安全换代、重新加载后5项工具验收与未测边界](A_ROUTE_LIVE_STABILITY_20261015.md)。**新状态：短周期A路MCP读取8/8 PASS、混合真实工具5/5 PASS、原Windows Task Scheduler恢复守护器重新加载PASS；唯一Tunnel PID30820未重启。** 旧守护器PID46072仍为修复前代码并在02:35再现异常，已通过原任务Stop/Start且确认隧道父进程独立后替换为PID8580。注意：本次没有刻意结束隧道测试自主恢复，因此`AUTO_RECOVERY_AFTER_PROCESS_EXIT`、`LOGIN_AUTOSTART`、`LONG_TERM_STABILITY`仍未通过。观察器曾对成功的嵌套JSON误判false，报告中已更正，不能记为A路失败。沿用成熟PS-002规则及V2 A路SOP，继续禁止额外自研重启器、临时Stop-Process和代理变更。
+
 ## 2026-10-15｜A路PowerShell5.1错误流的限定修复（最新单项进展）
 
 > **[A路原Supervisor最小修复、Windows真实回读、客户端MCP初始化与自动恢复剩余门](A_ROUTE_PS002_REALITY_20261015.md)**。已经在B路只读取证中确认，原守护器启动后的`RemoteException`与已存PS-002错误族同构；Windows PowerShell5.1负例/正例通过后，只修复现有守护器native调用片段，Windows正式文件备份、原子替换和独立回读PASS，未重启正在运行的隧道。**该文件改动尚未得到守护器重新加载后成功自恢复的Reality，ChatGPT端MCP读文件仍返回Session terminated；不宣称A路最终修复成功。** 继续使用既有A路SOP，禁止再以临时脚本Stop-Process切断正常实例。
