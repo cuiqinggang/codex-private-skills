@@ -1,0 +1,48 @@
+name: Hermes ECO 20261014 read-only reconciliation
+run-name: HERMES-ECO-20261014-RECON-R1
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/hermes-eco-20261014-reconcile.yml']
+permissions:
+  contents: read
+concurrency:
+  group: hermes-eco-20261014-reconcile
+  cancel-in-progress: false
+jobs:
+  read-own-receipts:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 3
+    steps:
+      - name: Read only known acceptance receipts without restarting any task
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $root='C:\Users\A\.hermes\skills\hermes-mature-supertool\evidence\HERMES-ECO-20261014'
+          Write-Host ('RECONCILIATION_UTC='+[DateTimeOffset]::UtcNow.ToString('o'))
+          Write-Host ('ROOT_EXISTS='+(Test-Path -LiteralPath $root))
+          $files=@('CONFIG-DELTA.json','REALITY-F001.json','BATCH-RESULT.json','prepare.py','Invoke-Acceptance.ps1','FIXTURE-MANIFEST.json')
+          foreach($name in $files){
+            $path=Join-Path $root $name
+            if(Test-Path -LiteralPath $path){
+              $f=Get-Item -LiteralPath $path
+              Write-Host ('FILE_META '+(@{file=$name;bytes=$f.Length;modified_utc=$f.LastWriteTimeUtc.ToString('o');sha256=(Get-FileHash -LiteralPath $path).Hash}|ConvertTo-Json -Compress))
+              if($name -in @('CONFIG-DELTA.json','REALITY-F001.json','BATCH-RESULT.json')){Write-Host ('RECEIPT '+$name); Get-Content -LiteralPath $path -Raw -Encoding utf8 | Write-Host}
+            }else{Write-Host ('MISSING '+$name)}
+          }
+          for($n=1;$n -le 5;$n++){
+            $round=('R{0:d2}' -f $n)
+            foreach($name in @('ack-1.json','run-1.json','grade-1.json','ack-2.json','run-2.json','grade-2.json','round-result.json')){
+              $path=Join-Path (Join-Path $root $round) $name
+              if(Test-Path -LiteralPath $path){
+                $j=Get-Content -LiteralPath $path -Raw -Encoding utf8|ConvertFrom-Json
+                if($name -like 'run-*'){$j=$j|Select-Object run_id,status,error,last_event,created_at,updated_at,usage}
+                Write-Host ('ROUND_RECEIPT '+$round+'/'+$name+' '+($j|ConvertTo-Json -Depth 12 -Compress))
+              }
+            }
+          }
+          $config='C:\Users\A\.hermes\config.yaml'
+          if(Test-Path -LiteralPath $config){Write-Host ('CONFIG_SHA256='+(Get-FileHash -LiteralPath $config).Hash)}
+          $processes=@(Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $PID -and $_.CommandLine -like '*HERMES-ECO-20261014*' } | Select-Object ProcessId,ParentProcessId,Name,CreationDate)
+          Write-Host ('TASK_PROCESS_METADATA='+($processes|ConvertTo-Json -Compress))
+          Write-Host 'READ_ONLY_RECONCILIATION_FINISHED_NO_DISPATCH'
