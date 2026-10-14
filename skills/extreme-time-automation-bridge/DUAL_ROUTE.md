@@ -1,3 +1,5 @@
+> **V3.0（2026-10-15）最新正式技能包入口**：[V3.0 B路五轮 Reality、最小修复、三档路由与停止规则](GITHUB_WINDOWS_B_ROUTE_V3_20261015.md)。A主路继续采用现有OpenAI Tunnel + Windows MCP 并独立验收可用性；B备路按合同选择 FAST（仅日志）、V2有界小型官方Artifact（5/5 PASS，平均35.2秒）或原FULL（保持回退，历史Action ZIP下载长尾未根治）；R仍受免费额度闸门限制。**严禁把B的5/5等同A自恢复或原FULL长期稳定通过；不修改代理或在线执行器。**
+
 > **V2.0（2026-10-15）最新入口**：原 A 自建 GPT→OpenAI Tunnel→Windows MCP 是在线短交互主路；B GitHub→Windows Runner 是独立备路；R 第三方 Remote 受额度门限制。现已部署 Windows 原生守护任务及一次性 DPAPI 授权入口，详情见 [V2.0 正式恢复 SOP](TUNNEL_AUTORECOVERY_V2_20261015.md)。守护任务 Running 不等于进程退出自恢复 Reality PASS；MCP 409 仍待运行新 shim 的新进程验证。下列旧版 DCR 主路说法仅为历史。**不关闭现有隧道、不自动重开第二实例、不改 FlClash/代理。**
 
 # GPT直连Windows双路执行桥｜双路执行策略 v0.3.0
