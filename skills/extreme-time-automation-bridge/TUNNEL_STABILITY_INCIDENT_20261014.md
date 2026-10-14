@@ -48,3 +48,8 @@ REBOOT_STABILITY=NOT_TESTED
 - 可回滚健康任务：`Disable-ScheduledTask -TaskName GPT-Windows-Tunnel-HealthLog`；脚本仅附加本地日志。
 - 可回滚恢复入口：先确保当前隧道不在恢复中，再用 `Restore-Interactive.ps1.backup-20261014` 还原原脚本。**但原脚本的命令行权限盲区会一起恢复，先审查。**
 - 若被动发现当前隧道掉线，先用独立 Windows 入口读取 `Tunnel-Health.jsonl` 末尾和当前进程状态，确认身份后再使用原交互式启动方式，禁止重复无效指令。
+
+## 6. 2026-10-14 22:25 追加现实验收
+- 当前唯一隧道PID仍38324、启动时间21:50:16、同一MCP子进程代次；控制平面 polling、proxy healthy、response delivery accepted；健康任务按计划运行并写入 JSONL，Task Scheduler 最近退出码0。
+- 在同一次工具编排中实际连续调用5次 `GPT-Windows-MCP-Bridge.read_file` 读取启动脚本首行，**5/5 PASS**。这是短时、只读、同一会话的功能样本，**不等于5个独立生产周期、长期稳定或已排除偶发409**。
+- 监控的任务计划为每5分钟一次，当前计划的重复有效期为创建日起365天；任务身份是用户A的 `Interactive / Limited`，需要对应交互登录态。不得把任务存在解释为Windows无人登录仍能自动检查，更不得称为自动重新建连。
