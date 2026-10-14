@@ -63,8 +63,14 @@ try {
       }
       $mcpCommand='node.exe '+($entry.Replace('\','/'))+' --no-onboarding'
       Note 'TUNNEL_START' @{mcp='official_stdio';pid=$PID}
-      & $exe run --control-plane.tunnel-id $tunnelId --mcp.command $mcpCommand --mcp.stdio-send-initialized-notification --health.listen-addr 127.0.0.1:0 2>&1 | Out-Null
-      $exitCode=$LASTEXITCODE
+      $savedErrorActionPreference=$ErrorActionPreference
+      try {
+        $ErrorActionPreference='Continue'
+        & $exe run --control-plane.tunnel-id $tunnelId --mcp.command $mcpCommand --mcp.stdio-send-initialized-notification --health.listen-addr 127.0.0.1:0 2>&1 | Out-Null
+        $exitCode=$LASTEXITCODE
+      } finally {
+        $ErrorActionPreference=$savedErrorActionPreference
+      }
     } catch {
       Note 'TUNNEL_EXCEPTION' $_.Exception.GetType().Name
     } finally {
