@@ -1,11 +1,11 @@
 name: Orca validation read-only reconciliation
-run-name: ORCA-VALIDATION-20261014-READBACK-R1
+run-name: ORCA-VALIDATION-20261014-READBACK-R2
 on:
   push:
     branches: [main]
     paths: ['.github/workflows/orca-validation-readback-20261014.yml']
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: orca-validation-20261014-readback
   cancel-in-progress: false
@@ -13,35 +13,56 @@ jobs:
   read-only-receipts:
     if: github.run_attempt == 1
     runs-on: [self-hosted, Windows, X64]
-    timeout-minutes: 3
+    timeout-minutes: 5
     steps:
-      - name: Reconcile known Orca task files without launching or repeating business
+      - name: Read task-owned evidence; preserve locked-file failures; publish snapshot only
         shell: pwsh
+        env:
+          GH_TASK_TOKEN: ${{ github.token }}
         run: |
           $ErrorActionPreference='Stop'
           if($env:COMPUTERNAME -ne 'DESKTOP-4A1EGTM'){throw 'UNEXPECTED_RUNNER_DEVICE'}
           $root='C:\AI\Orca-Codex-Validation-20261014'
-          Write-Host ('READBACK_UTC='+[DateTimeOffset]::UtcNow.ToString('o'))
-          Write-Host ('ROOT_EXISTS='+(Test-Path -LiteralPath $root))
-          if(-not(Test-Path -LiteralPath $root)){throw 'TASK_ROOT_NOT_FOUND'}
-          $files=@('N001_REPORT.md','N001_RECEIPT.json','LAUNCH_RECEIPT.json','N001_ACTION_REQUEST.json','CEO_N001_RECOVERY_COMPLETE.md','DATASET_MANIFEST.json','evidence\baseline\GOOD_003_CEO_RECOVERY\FINAL_REPAIR_RECEIPT.json','evidence\baseline\CEO_ORIGINAL_BAD_RECHECK.json','CEO_assets\SERVER_LAUNCH.json','CEO_assets\SERVER_STDOUT.log')
-          foreach($name in $files){
+          $sw=[Diagnostics.Stopwatch]::StartNew()
+          $result=[ordered]@{task_id='ORCA_CODEX_VALUE_VALIDATION_20261014';run_id=$env:GITHUB_RUN_ID;started_utc=[DateTimeOffset]::UtcNow.ToString('o');identity=[Security.Principal.WindowsIdentity]::GetCurrent().Name;read_only_windows=$true;files=@();indexes=@{};errors=@();formal_reality=$false;ten_rounds_passed=0}
+          $names=@('N001_REPORT.md','N001_RECEIPT.json','LAUNCH_RECEIPT.json','N001_ACTION_REQUEST.json','CEO_N001_RECOVERY_COMPLETE.md','DATASET_MANIFEST.json','tools\independent_check_CEO_FROZEN.py','tools\run_good.py','freeze\FREEZE_CANDIDATE.json','evidence\baseline\GOOD_003_CEO_RECOVERY\FINAL_REPAIR_RECEIPT.json','evidence\baseline\GOOD_003_CEO_RECOVERY\INDEPENDENT_QA.json','evidence\baseline\GOOD_003_CEO_RECOVERY\OUTPUT_MANIFEST.json','CEO_assets\SERVER_LAUNCH.json','CEO_assets\SERVER_STDOUT.log','CEO_assets\CLI_HELP.txt')
+          foreach($name in $names){
             $path=Join-Path $root $name
-            if(Test-Path -LiteralPath $path){
-              $f=Get-Item -LiteralPath $path
-              Write-Host ('FILE_META '+(@{path=$name;bytes=$f.Length;modified_utc=$f.LastWriteTimeUtc.ToString('o');sha256=(Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash}|ConvertTo-Json -Compress))
-              if($f.Length -le 32000){Write-Host ('FILE_BEGIN '+$name);Get-Content -LiteralPath $path -Raw -Encoding utf8|Write-Host;Write-Host ('FILE_END '+$name)}
-              else{Write-Host ('LARGE_FILE_NOT_EMITTED '+$name)}
-            }else{Write-Host ('MISSING '+$name)}
+            $row=[ordered]@{path=$name;status='MISSING'}
+            try{
+              if(Test-Path -LiteralPath $path){
+                $info=Get-Item -LiteralPath $path
+                $row.file_bytes=$info.Length;$row.modified_utc=$info.LastWriteTimeUtc.ToString('o')
+                if($info.Length -gt 180000){$row.status='LARGE_FILE_INDEX_ONLY'}else{
+                  $share=[IO.FileShare]::ReadWrite -bor [IO.FileShare]::Delete
+                  $fs=[IO.File]::Open($path,[IO.FileMode]::Open,[IO.FileAccess]::Read,$share)
+                  try{$buf=[IO.MemoryStream]::new();$fs.CopyTo($buf);$bytes=$buf.ToArray()}finally{$fs.Dispose();if($buf){$buf.Dispose()}}
+                  $hash=[Security.Cryptography.SHA256]::Create()
+                  try{$row.snapshot_sha256=[Convert]::ToHexString($hash.ComputeHash($bytes)).ToLowerInvariant()}finally{$hash.Dispose()}
+                  $reader=[IO.StreamReader]::new([IO.MemoryStream]::new($bytes),[Text.Encoding]::UTF8,$true)
+                  try{$row.text=$reader.ReadToEnd()}finally{$reader.Dispose()}
+                  $row.snapshot_bytes=$bytes.Length;$row.status='READ';$row.live_file_may_change=($name -like '*.log')
+                }
+              }
+            }catch{$row.status='READ_FAILED';$row.error=$_.Exception.Message;$result.errors+=@{path=$name;error=$row.error}}
+            $result.files+=$row
+            Write-Host ('FILE_SUMMARY '+(@{path=$name;status=$row.status;sha=$row.snapshot_sha256}|ConvertTo-Json -Compress))
           }
-          $index=@(Get-ChildItem -LiteralPath $root -File|Select-Object Name,Length,LastWriteTimeUtc)
-          Write-Host ('ROOT_INDEX='+($index|ConvertTo-Json -Depth 3 -Compress))
-          foreach($folder in @('freeze','freezes','tools','evidence')){
-            $dir=Join-Path $root $folder
-            if(Test-Path -LiteralPath $dir){Write-Host ('DIR_INDEX '+$folder+' '+(@(Get-ChildItem -LiteralPath $dir -Force|Select-Object Name,Mode,Length)|ConvertTo-Json -Compress))}
+          foreach($folder in @('','freeze','tools','evidence')){
+            try{$dir=Join-Path $root $folder;$result.indexes[$folder]=@(Get-ChildItem -LiteralPath $dir -Force|Select-Object Name,Mode,Length,LastWriteTimeUtc)}catch{$result.errors+=@{operation='directory_index';path=$folder;error=$_.Exception.Message}}
           }
-          $processes=@(Get-CimInstance Win32_Process|Where-Object {$_.ProcessId -ne $PID -and $_.CommandLine -like '*Orca-Codex-Validation-20261014*'}|Select-Object ProcessId,ParentProcessId,Name,CreationDate)
-          Write-Host ('TASK_PROCESS_METADATA='+($processes|ConvertTo-Json -Compress))
-          $os=Get-CimInstance Win32_OperatingSystem
-          Write-Host ('HOST_METADATA='+(@{last_boot_utc=$os.LastBootUpTime.ToUniversalTime().ToString('o');ram_free_kb=$os.FreePhysicalMemory;ram_total_kb=$os.TotalVisibleMemorySize}|ConvertTo-Json -Compress))
-          Write-Host 'READ_ONLY_RECONCILIATION_FINISHED_NO_DISPATCH_NO_RESTART_NO_LOCAL_WRITES'
+          try{
+            $all=@(Get-CimInstance Win32_Process -OperationTimeoutSec 15)
+            $result.task_processes=@($all|Where-Object {$_.ProcessId -ne $PID -and $_.CommandLine -like '*Orca-Codex-Validation-20261014*'}|Select-Object ProcessId,ParentProcessId,Name,CreationDate)
+            $os=Get-CimInstance Win32_OperatingSystem -OperationTimeoutSec 15
+            $result.host=@{last_boot_utc=$os.LastBootUpTime.ToUniversalTime().ToString('o');ram_free_kb=$os.FreePhysicalMemory;ram_total_kb=$os.TotalVisibleMemorySize}
+          }catch{$result.errors+=@{operation='process_or_host_metadata';error=$_.Exception.Message}}
+          $result.completed_read_utc=[DateTimeOffset]::UtcNow.ToString('o');$result.local_read_wall_ms=$sw.Elapsed.TotalMilliseconds
+          $json=$result|ConvertTo-Json -Depth 30
+          $dest='skills/artificial-single-page-extreme-time-engine/tasks/ORCA_CODEX_VALUE_VALIDATION_20261014/evidence/READBACK_R2_RUN_'+$env:GITHUB_RUN_ID+'.json'
+          $body=@{message='Persist read-only Orca task snapshot '+$env:GITHUB_RUN_ID;branch='main';content=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($json))}|ConvertTo-Json -Compress
+          $headers=@{Authorization='Bearer '+$env:GH_TASK_TOKEN;Accept='application/vnd.github+json';'X-GitHub-Api-Version'='2022-11-28'}
+          $uri='https://api.github.com/repos/'+$env:GITHUB_REPOSITORY+'/contents/'+$dest
+          $response=Invoke-RestMethod -Method Put -Uri $uri -Headers $headers -ContentType 'application/json' -Body ([Text.Encoding]::UTF8.GetBytes($body)) -TimeoutSec 45
+          Write-Host ('SNAPSHOT_PERSISTED '+(@{path=$dest;blob=$response.content.sha;commit=$response.commit.sha;read_errors=$result.errors.Count;identity=$result.identity;full_job_step_elapsed_ms=$sw.Elapsed.TotalMilliseconds}|ConvertTo-Json -Compress))
+          Write-Host 'NO_CODEX_DISPATCH_NO_RESTART_NO_WINDOWS_WRITES_NO_PERMISSION_CHANGES'
