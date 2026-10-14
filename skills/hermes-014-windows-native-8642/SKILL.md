@@ -5,6 +5,10 @@ description: Use when validating, repairing, documenting, or repeating the Windo
 
 # Windows Native Hermes 0.14 Official 8642 Route
 
+## 当前恢复优先入口（2026-10-14）
+
+本页0.14、H盘和模型名记录为历史快照。当前启动/开机故障先读 [爱马仕Docker启动恢复实证](../windows-hermes-operations/references/docker-startup-recovery-20261014.md)：现用启动器已迁C盘，运行版本实测0.21.5；授权模型列表发现真实ID，401不等于超时，8642健康而3000异常先查Docker。不以本次热启动替代重启验收；不得盲目覆盖当前安装。
+
 ## Core Rule
 
 Use the official Windows native data path and port:
