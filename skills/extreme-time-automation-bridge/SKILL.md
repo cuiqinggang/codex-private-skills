@@ -6,6 +6,10 @@ description: GPT直连Windows双路执行桥 V1.0。默认已验收的自建MCP�
 
 # GPT直连Windows双路执行桥 V1.0
 
+## V1.0.1｜统一接续入口（2026-10-14 22:50 UTC+8）
+
+> **[下一页面唯一接续摘要、409现实复现、启动器命名与G0–G6验收门](TUNNEL_STABILITY_HANDOFF_20261014.md)**。当前仅静态候选，原Windows隧道不得盲目重启；候选预备分支存在覆盖正式启动器的风险，必须先完成G0/G1。
+
 ## V1.0.1｜隧道断线取证与防重复恢复（2026-10-14）
 
 > **当前新增权威附则：[隧道稳定性事故、可复现409与健康检查补丁](TUNNEL_STABILITY_INCIDENT_20261014.md)**。先读它再诊断 `Session terminated` / 409。对应可复用脚本：[本地只读健康记录器](bootstrap/Watch-Tunnel-Health.ps1) 与 [安全一键恢复](bootstrap/Restore-Interactive-Safe.ps1)。
