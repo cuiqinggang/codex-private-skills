@@ -1,3 +1,5 @@
+> **V2.0（2026-10-15）最新入口**：原 A 自建 GPT→OpenAI Tunnel→Windows MCP 是在线短交互主路；B GitHub→Windows Runner 是独立备路；R 第三方 Remote 受额度门限制。现已部署 Windows 原生守护任务及一次性 DPAPI 授权入口，详情见 [V2.0 正式恢复 SOP](TUNNEL_AUTORECOVERY_V2_20261015.md)。守护任务 Running 不等于进程退出自恢复 Reality PASS；MCP 409 仍待运行新 shim 的新进程验证。下列旧版 DCR 主路说法仅为历史。**不关闭现有隧道、不自动重开第二实例、不改 FlClash/代理。**
+
 # GPT直连Windows双路执行桥｜双路执行策略 v0.3.0
 
 > **最新 V1.0（2026-10-13）覆盖入口**：日常首选已验 A 自建 MCP，B GitHub 独立备援与长任务，第三方 R 用免费额度运营 V1.0 控制。详见 [V1.0 GitHub 速度与路由报告](V1_GITHUB_WINDOWS_SPEED_AND_ROUTING.md)。以下静态旧路由仅为历史，不得覆盖新冻结。
