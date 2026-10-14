@@ -3,7 +3,7 @@
   "method": "SANRENXING_V2_USER_SELECTED_TASK_ONLY",
   "method_blob": "027229fc28ebd12811adacfe37aa857a187d3301",
   "bridge": "GPT-Windows dual-route V3.0",
-  "state": "BLOCKED_A_CALLER_MCP_SESSION_AND_SUPERVISOR_RUNTIME_ACCEPTANCE",
+  "state": "BRIDGE_A_SHORT_SCOPED_PASS_SUPERVISOR_RELOAD_PASS__HERMES_F002_STILL_NOT_ACCEPTED",
   "report": "workspaces/hermes-maturity-20261014/PROGRESS-F002.md",
   "report_commit": "ebe890d30632fa2d8e4e718bd573e9b8ef290d5e",
   "prior_windows_dispatch": "UNKNOWN_AFTER_TIMEOUT_NO_REDISPATCH",
@@ -11,8 +11,19 @@
   "executed_real_rounds": null,
   "whole_station_final_valid": false,
   "route_A": {
-    "last_result": "Session terminated",
-    "code": 32600
+    "last_result": "SHORT_SCOPED_PASS_8_OF_8_READS_AND_5_OF_5_MIXED_AFTER_RELOAD",
+    "last_test_local": "2026-10-15 02:41-02:45 +08",
+    "current_tunnel_pid_last_observed": 30820,
+    "initialized_shim": true,
+    "read_file_successes": 8,
+    "read_file_failures": 0,
+    "read_file_mean_ms": 5323.25,
+    "mixed_after_reload_pass": 5,
+    "mixed_after_reload_fail": 0,
+    "autonomous_recovery_after_exit": "NOT_TESTED",
+    "login_boot": "NOT_TESTED",
+    "long_stability": "NOT_TESTED",
+    "previous_failure": "Session terminated"
   },
   "route_B": {
     "run_id": 38567587445,
@@ -49,7 +60,7 @@
   },
   "startup_authority": "skills/windows-hermes-operations/references/docker-startup-recovery-20261014.md",
   "user_action": "Use the existing GPT-Windows-MCP one-click recovery shortcut; enter credentials locally only if the existing launcher requires them.",
-  "next_action": "在用户 A 合法执行上下文确认单隧道和任务父子关系，使用原 Task Scheduler 正规方式重新加载已修复的 Supervisor；随后核对真实远程 read_file 初始化、异常退出后真实无人恢复。禁止使用临时 Stop-Process/新守护器/代理修改。",
+  "next_action": "保持当前单实例连接；无需重复手动输密钥。下一自然异常出现时按已有V3.0/A路SOP对照Supervisor和Tunnel健康日志与真实MCP调用，验收自主恢复；不要主动Stop-Process干扰其他任务。Hermes F002原业务仍需独立对账。",
   "local_task_root": "C:/Users/A/.hermes/skills/hermes-mature-supertool/evidence/HERMES-ECO-20261014",
   "do_not": [
     "claim five real passes",
@@ -65,16 +76,24 @@
   "cloud_static_job_complete": true,
   "new_recurring_monitor_installed": false,
   "bridge_a_ps002": {
-    "status": "WINDOWS_FILE_PATCH_DEPLOYED_INDEPENDENT_SHA_READBACK;RUNNING_SUPERVISOR_NOT_RELOADED",
+    "status": "SUPERVISOR_RELOADED_TASK_SCHEDULER_TUNNEL_UNTOUCHED",
     "incident": "skills/extreme-time-automation-bridge/A_ROUTE_PS002_REALITY_20261015.md",
     "old_sha256": "D5B2D1098F51794B6022B60035BA6D0E6A0E5F7C016FF346540A059744BA35",
     "live_file_sha256": "649E7A939AA8A27B91FE5FBE130E842E131EB96D55F36A1C00FED405335270EF",
     "deployment_run": 38614765358,
     "independent_readback_job": 116027625193,
-    "tunnel_pid_last_observed": 46772,
+    "tunnel_pid_last_observed": 30820,
     "tunnel_untouched": true,
     "chatgpt_read_file": "SESSION_TERMINATED",
     "auto_recovery_runtime_final_valid": false,
-    "mcp_initialization_final_valid": false
+    "mcp_initialization_final_valid": false,
+    "old_supervisor_pid": 46072,
+    "new_supervisor_pid": 8580,
+    "supervisor_reloaded": true,
+    "post_reload_mixed_tools_pass": 5,
+    "read_file_8_pass": true,
+    "mcp_initialization_short_reads_pass": true,
+    "mcp_initialization_long_final_valid": false,
+    "report": "skills/extreme-time-automation-bridge/A_ROUTE_LIVE_STABILITY_20261015.md"
   }
 }
