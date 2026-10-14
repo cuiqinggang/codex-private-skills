@@ -1,0 +1,38 @@
+name: Tunnel R2 Scoped Out-of-Band Status (Read Only)
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tunnel-r2-oob-readonly-20261014.yml'
+permissions:
+  contents: read
+concurrency:
+  group: tunnel-r2-oob-readonly
+  cancel-in-progress: false
+jobs:
+  inspect:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 3
+    steps:
+      - name: Read local tunnel, guard and test results without touching processes
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Continue'
+          $root='C:\AI\GPT-Windows-Bridge-B\persistence'
+          Write-Host ('OOB_UTC='+[DateTimeOffset]::UtcNow.ToString('o'))
+          $procs=@(Get-CimInstance Win32_Process -Filter "Name='tunnel-client.exe'")
+          Write-Host ('TUNNEL_COUNT='+$procs.Count)
+          foreach($p in $procs){ Write-Host ('TUNNEL_PID='+$p.ProcessId+';START='+$p.CreationDate+';NAME='+$p.Name) }
+          $guard=Get-ScheduledTask -TaskName 'GPT-Windows-Tunnel-Pause-R2-ResumeGuard' -ErrorAction SilentlyContinue
+          Write-Host ('PAUSE_R2_GUARD_PRESENT='+[bool]$guard)
+          if($guard){Write-Host ('PAUSE_R2_GUARD_STATE='+$guard.State);$guard.Triggers|ForEach-Object{Write-Host ('PAUSE_R2_GUARD_AT='+$_.StartBoundary)}}
+          $state=Join-Path $root 'Tunnel-Pause-R2.state.json'
+          Write-Host ('R2_STATE_EXISTS='+(Test-Path -LiteralPath $state))
+          foreach($name in @('Tunnel-Pause-R2.jsonl','Tunnel-Network-Test-R1.jsonl')){
+            $file=Join-Path $root $name
+            Write-Host ('FILE='+$name+';PRESENT='+(Test-Path -LiteralPath $file))
+            if(Test-Path -LiteralPath $file){Get-Content -LiteralPath $file -Tail 18 -ErrorAction Continue | ForEach-Object { Write-Host ('EVENT='+$_) }}
+          }
+          $rule=@(Get-NetFirewallRule -Name 'GPT-Windows-Tunnel-TempBlock-R1' -ErrorAction SilentlyContinue)
+          Write-Host ('TEMP_FIREWALL_RULES='+$rule.Count)
+          Write-Host 'OOB_READONLY_COMPLETE'
