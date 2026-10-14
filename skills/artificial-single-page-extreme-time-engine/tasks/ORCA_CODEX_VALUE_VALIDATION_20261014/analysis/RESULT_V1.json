@@ -1,0 +1,35 @@
+{
+  "task_id": "ORCA_CODEX_VALUE_VALIDATION_20261014",
+  "result_kind": "OFFLINE_EVIDENCE_AND_ARITHMETIC_VALIDATION_NOT_PRODUCT_ACCEPTANCE",
+  "analyzer_environment": "ChatGPT working container Python 3.13.5, NOT user's Windows runtime",
+  "unit_tests": {"count": 18, "passed": 18, "failed": 0, "fixtures": "SYNTHETIC_UNIT_FIXTURE_ONLY", "business_rounds_added": 0},
+  "published_code_matches_executed_code": true,
+  "code": {
+    "evaluate_value.py": {"sha256": "3e8f14c91a6b832c6996c16f76ea7ea0211bac02fcda6253d8c61dd79e6638e7", "git_blob": "9f7c87ccd1755e2c3f1c89f6ec93c0d560a4306d"},
+    "test_evaluate_value.py": {"sha256": "ca7ab30ea1374bd98b7e0b446689d6d09690d908c8efc9ccc7c2a9b163dc9ffa", "git_blob": "1f98e57051f36a32091d89413c98c4217b4607d1"}
+  },
+  "actual_stage_evaluation": {
+    "required_pairs": 10, "recorded_pairs": 0, "schema_checked_full_pairs": 0,
+    "declared_B_final_version_consecutive_passes": 0,
+    "time_comparison_valid": false, "ten_round_gate_passed": false,
+    "local_suite_savings_ms": null, "local_suite_savings_percent": null,
+    "net_time_savings_ms": null, "break_even_suites_estimate": null,
+    "cash_cost_savings": null, "deployment_recommended": false,
+    "decision": "EVIDENCE_INCOMPLETE",
+    "errors": ["需要10组完整配对，当前记录0组"]
+  },
+  "validated_rejection_cases": [
+    "no B evidence", "only nine pairs", "health checks instead of full suite", "local-only timer",
+    "duplicate receipt", "mixed freeze versions", "changed quality contract", "changed model",
+    "NaN elapsed time", "unknown deployment cost", "failure resets consecutive counter",
+    "setup cost exceeds gross saving", "overlapping costs", "unresolved side effects",
+    "wrong AB/BA order", "duplicate pair ID"
+  ],
+  "validated_arithmetic_cases": ["synthetic gross and net time", "ten-sample nearest-rank P95 equals sample maximum"],
+  "scope_limits": [
+    "The analyzer checks declared structure and arithmetic, not source authenticity or live execution.",
+    "Input timing scope declarations must still be independently checked against raw receipts.",
+    "No claim of ten Orca/Codex business runs, permanent reliability, or global optimality.",
+    "The Windows full-timer implementation is still awaiting safe runtime validation."
+  ]
+}
