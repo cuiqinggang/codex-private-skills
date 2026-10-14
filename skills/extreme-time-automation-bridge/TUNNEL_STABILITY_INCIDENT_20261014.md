@@ -53,3 +53,31 @@ REBOOT_STABILITY=NOT_TESTED
 - 当前唯一隧道PID仍38324、启动时间21:50:16、同一MCP子进程代次；控制平面 polling、proxy healthy、response delivery accepted；健康任务按计划运行并写入 JSONL，Task Scheduler 最近退出码0。
 - 在同一次工具编排中实际连续调用5次 `GPT-Windows-MCP-Bridge.read_file` 读取启动脚本首行，**5/5 PASS**。这是短时、只读、同一会话的功能样本，**不等于5个独立生产周期、长期稳定或已排除偶发409**。
 - 监控的任务计划为每5分钟一次，当前计划的重复有效期为创建日起365天；任务身份是用户A的 `Interactive / Limited`，需要对应交互登录态。不得把任务存在解释为Windows无人登录仍能自动检查，更不得称为自动重新建连。
+
+
+## 6. 根因清晰度与成熟修复选择门（2026-10-14）
+
+### 确定性事实 / 统计边界
+- 现实基线：连续8次真正通过 ChatGPT 自建MCP读取同一文件前3行：7次成功、1次 HTTP 409 `mcp_initialization_required`。样本失败占比1/8=12.5%，仅为这8次观测，不是长期概率估计。之前分批 `write_file` 时也多次出现409，具有复发证据，但没有发现100%必触发步骤。
+- 最新本地快照：tunnel PID=38324、MCP子进程代次 `eda367644b637e0a296f2c6cab2ae1c3` 不变，`control-plane=polling`、轮询连续失败0、`response-delivery=accepted`；初始化 epoch 曾从5增长到63以上。本地“健康”不保证所有请求成功。
+- 409具体拒绝条件：官方 stdio 共享子进程的**旧式请求保护门**要求当前子进程已有成功 `initialize` 且收到 `notifications/initialized`；否则网关拒绝并返回409/-32002，调用本身不到MCP子进程。文档：https://github.com/openai/tunnel-client/blob/master/docs/configuration.md
+- **不是已经确认的根因**：409究竟由调用方遗漏初始化、通知缺失、请求并发交错、子进程状态更新窗口，还是其他客户端生命周期问题触发，目前缺包级时间序列证据，不能写成已经锁定某一竞态。
+- 两类不同失效要分开：前台程序/PowerShell退出导致的 `Session terminated`，与PID不变的409。旧实例退出的精确触发原因仍UNKNOWN。
+
+### 经核对的成熟外部故障族（不可直接套成已确认）
+- 官方issue #45：成功initialize但缺 `notifications/initialized` 导致工具超时（案例HTTP504），并非每一次409的同构根因：https://github.com/openai/tunnel-client/issues/45
+- 官方issue #46：stdio进程仍 live/ready 而工具持续HTTP502；证明健康接口不是端到端调用验收：https://github.com/openai/tunnel-client/issues/46
+- 官方issue #34：旧版共享stdio连接受超时影响可带出整个客户端退出，公开维护者记录旧版修复；不得断言v0.0.16仍有该bug：https://github.com/openai/tunnel-client/issues/34
+- 官方配置说明：多个stdio实例同Tunnel ID不安全，单实例stdio只共享一个子进程；不能靠多副本扩展或保证隔离。
+
+### 最小候选和差分验收（按一次只改一个变量）
+1. **协议路径候选**：原启动命令上加官方 `--mcp.stdio-send-initialized-notification`（本机 v0.0.16 `run --help` 确认支持）；仅在 `initialize` 成功后补 `notifications/initialized` 并去重。若请求压根没发送 `initialize`，该参数无能为力。Windows已静态生成并语法验证 `C:\AI\GPT-Windows-Bridge-B\persistence\Launch-Initialized-Shim-Candidate.ps1`，保护门验证“已有隧道则拒绝启动、不会重复索取Key”。**尚未正式切换或通过现实验证**。
+2. **长期生命周期候选**：官方 `tunnel-client runtimes connect/status --json` 采用受管的detach模式，适用于当前用户手动关掉PowerShell即断连风险；本机 `runtimes list --json` 目前 aliases=[]，可单实例迁移，但需合法Runtime Key引用（仅env:/file:），用户本机交互、不提取旧进程Key；未知是否满足重启后自启动，独立验收。
+3. **串行调度候选**：官方 `--mcp.max-concurrent-requests=1` 可能降低并发交错，不能修复缺失初始化；只有第1项未达到质量门且有并发关联证据时再测，勿同时改两项。
+4. 记录器已有 Windows 定时任务，**只读非自愈**。引入可用率验收必须跨HTTP健康和真实 tools/call，不能仅看 `HEALTHY_PATH_ONLY`。
+
+### 现实验收标准和失败策略
+- 基线已 FAIL，不以“后来成功7次”抹掉409；候选隔离切换后先做与基线一致的8次只读连续调用，然后至少5次独立真实运行（用户既定质量门），全部零409/502/Session terminated 才能标记相应范围PASS。
+- 如果出现一例失败，记录发生时间、PID、child_generation、initialize_epoch、请求类型、健康组件及原始错误；按 FIRST_DELTA 修改候选，不循环重复相同故障步骤。
+- 需本机人工输入已有Runtime API Key的受控切换；禁止从运行进程环境/内存提取密钥、静默隐藏密钥提示；并且此前执行“批量恢复脚本反复启动”的测试被平台安全检查阻断，禁止借其他通道绕过。
+- 长时间稳定、开机登录后可恢复、并发以及真实生产写命令，均是独立门槛；8次或5次短测不构成72小时稳定性证明。
