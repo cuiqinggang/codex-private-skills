@@ -89,3 +89,31 @@
 结合官方v0.0.16源码`pkg/mcpclient/serialized_forwarding_transport.go`：409的精确状态条件是legacy请求进入时`initializationReady=false`；这一状态既可能因initialize尚未成功，也可能因成功但initialized通知尚未到达，或因重新initialize/连接异常重置。官方shim只在成功initialize响应后补发通知，不会凭空合成initialize。现场健康`initialize.ok=true`属于最近成功握手的观测记录，不能代替实时内部`initializationReady`位，更不能证明409发生前已经有完整握手。
 
 现阶段不得宣布补丁现实有效。仅静态比对了正式启动器与候选脚本：候选增加初始化通知参数和预先拒绝已有隧道检查；两者无`-Launch`的staging分支均可覆盖正式启动器，因此严禁不带`-Launch`执行预备分支。真正切换仍须本机合法交互输入Runtime Key、旧实例安全退出及回滚准备。
+
+## 8. 2026-10-14 真实通路中断测试｜R1/R2（UTC+8）
+
+**用户限定：只中断 GPT→Windows 执行桥，不中断 FlClash/系统代理/其他程序联网。**
+
+### R1｜临时程序级防火墙出站阻断，约48秒
+- 唯一目标：`C:\AI\GPT-Windows-Bridge-B\tunnel\v0.0.16\tunnel-client.exe`，目标PID 38324。
+- 先建立独立后备清理任务，再加只针对该exe的临时Outbound Block；本地定时记录和try/finally自动清理。
+- 现实记录：`C:\AI\GPT-Windows-Bridge-B\persistence\Tunnel-Network-Test-R1.jsonl`，`BLOCK_APPLIED=2026-10-14T15:38:04Z`，`CLEANUP=2026-10-14T15:39:05Z`（含清理开销的窗口）。
+- 阻断期间原隧道依旧持续成功轮询，并能真实远程read_file；故**无法证明实际中断了既有连接**。该方法不合格，不再把防火墙新规则视为必然会中断已建立的TCP连接。
+- 清理后独立核验：临时规则数0、临时计划任务数0、原PID仍38324。网络代理未动。其间出现409，但无法仅凭时间归因于此规则。
+
+### R2｜仅暂停原tunnel-client PID38324，44秒后原位恢复
+- 先注册一次性Windows独立恢复任务，然后对唯一已验证exe/PID进行进程暂停与自动恢复；未删除进程、未取运行时密钥、未更改代理。
+- **Windows本机确证日志** `C:\AI\GPT-Windows-Bridge-B\persistence\Tunnel-Pause-R2.jsonl`：
+  - `15:45:03.650Z R2_GUARD_REGISTERED`
+  - `15:45:03.671Z R2_TUNNEL_PAUSED`
+  - `15:45:47.688Z R2_TUNNEL_RESUMED`
+  - `15:45:48.780Z R2_GUARD_CLEANED`
+  - `15:45:48.783Z R2_COMPLETED`
+- 暂停后ChatGPT现有会话内真实MCP调用多次返回`Session terminated`。**单靠原PID恢复执行，并没有立刻让既有ChatGPT远程工具会话恢复可用。**
+- 后续由**原GitHub self-hosted Windows Runner**作独立只读检查，工作流 <https://github.com/cuiqinggang/codex-private-skills/actions/runs/38593792093> `PASS`；时间`15:56:55Z`显示原PID已由新PID42388替换（新进程创建于北京时间23:55:25）；R2 guard不存在、R2 state文件不存在、R1临时防火墙规则0；相关日志与上面完全相符。
+- 新PID42388父进程为23:55:02建立的PowerShell，祖父为Explorer。只有`GPT-Windows-Tunnel-HealthLog`计划任务，没有找到已部署的自动隧道重启任务。**更符合人工/交互式启动，不能计入无人干预自动恢复PASS，不能断言由哪位人员触发。**
+- 此后同一ChatGPT页面对新PID的真实`read_file`与`start_process`重新PASS，详细健康：`MCP initialized`、child running、control-plane连续失败0、proxy healthy、initialize_epoch=2、dispatcher_failures=0。现运行版本没有`--mcp.stdio-send-initialized-notification`标志。
+- **明确判定**：R2通路暂停、原位恢复和保护清理`PASS`；既有会话立即自动恢复`FAIL_OBSERVED`；新进程恢复来源`UNKNOWN/INTERACTIVE_LIKELY`；生产初始化shim`NOT_DEPLOYED`；长期稳定与无人值守进程恢复`NOT_ACCEPTED`。不能把新实例的后来一次PASS反推为中断自动恢复。
+
+### 立即后续单一优先任务
+先在现有实例保持正常使用下保留日志并审查会话恢复机制：区分Tunnel控制平面自身poll自动恢复、ChatGPT插件MCP会话因`Session terminated`被废弃、以及前台PowerShell/进程退出触发机制。**停止继续制造掉线**，直到设计了无用户交互凭据取用且合法的受管恢复路径；不得读取旧进程密钥，不得认为官方初始化shim已经验收。生产受控切换需要本机人工输入现有Runtime Key，再对候选做真实端到端工具调用验证。
