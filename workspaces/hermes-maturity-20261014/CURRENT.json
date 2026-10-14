@@ -2,7 +2,7 @@
   "task_id": "HERMES-ECO-20261014",
   "method": "SANRENXING_V2_USER_SELECTED_TASK_ONLY",
   "method_blob": "027229fc28ebd12811adacfe37aa857a187d3301",
-  "bridge": "GPT-Windows dual-route V4.0",
+  "bridge": "GPT-Windows dual-route V5.0",
   "state": "BRIDGE_A_SHORT_SCOPED_PASS_SUPERVISOR_RELOAD_PASS__HERMES_F002_STILL_NOT_ACCEPTED",
   "report": "workspaces/hermes-maturity-20261014/PROGRESS-F002.md",
   "report_commit": "ebe890d30632fa2d8e4e718bd573e9b8ef290d5e",
@@ -24,11 +24,16 @@
     "login_boot": "NOT_TESTED",
     "long_stability": "NOT_TESTED",
     "previous_failure": "Session terminated",
-    "post_user_restart_reality": "PENDING_USER_CLOSE_START_REFRESH",
-    "user_restarted_pid": null,
-    "post_user_restart_real_read_file": "NOT_TESTED",
-    "post_user_restart_5_reads": "NOT_TESTED",
-    "version": "4.0.0"
+    "post_user_restart_reality": "SCOPED_PASS_NEW_PID_46156",
+    "user_restarted_pid": 46156,
+    "post_user_restart_real_read_file": "PASS_SCOPED",
+    "post_user_restart_5_reads": "NOT_TESTED_AS_FIVE_INDEPENDENT_STARTUP_CYCLES",
+    "version": "5.0.0",
+    "status_window_interactive": "USER_VISUAL_PASS_PRESS_ENTER",
+    "manual_key_not_required_during_existing_healthy_tunnel": true,
+    "login_autostart": "CONFIGURED_NOT_REBOOT_TESTED",
+    "supervisor_created_tunnel_once": "OBSERVED_PID_8580_TO_46156",
+    "unattended_five_restart_cycles": "NOT_TESTED"
   },
   "route_B": {
     "run_id": 38567587445,
@@ -65,7 +70,7 @@
   },
   "startup_authority": "skills/windows-hermes-operations/references/docker-startup-recovery-20261014.md",
   "user_action": "Use the existing GPT-Windows-MCP one-click recovery shortcut; enter credentials locally only if the existing launcher requires them.",
-  "next_action": "等待用户自行关闭当前连接、用既有方式重启并刷新ChatGPT，收到用户确认后仅调用一次A路read_file(Launch-OpenAI-Real-MCP.ps1 offset=0 length=12)，成功再核对单进程、新PID与Supervisor/Task，失败原样停止；Hermes F002业务不重派。",
+  "next_action": "V5技能轻入口优先；若A路健康真实read_file成功，继续用户原业务，不重造守护器、不重复烟测。若用户自然重启并首次登录，可再验一次新PID/父PID及真正远程read_file，用户A未登录场景非当前能力。Hermes F002验收仍独立未完成。",
   "local_task_root": "C:/Users/A/.hermes/skills/hermes-mature-supertool/evidence/HERMES-ECO-20261014",
   "do_not": [
     "claim five real passes",
@@ -109,6 +114,31 @@
     "post_user_restart_acceptance": "PENDING",
     "unattended_recovery": "NOT_ACCEPTED",
     "boot_login_autostart": "NOT_ACCEPTED",
-    "do_not_run_temporary_stop_process": true
+    "do_not_run_temporary_stop_process": true,
+    "superseded_by": "5.0.0",
+    "record_state": "HISTORICAL_FREEZE_KEEP"
+  },
+  "bridge_v5": {
+    "version": "5.0.0",
+    "root_skill": "skills/extreme-time-automation-bridge/SKILL.md",
+    "release_status": "GITHUB_PUBLISHED_PENDING_FINAL_CROSS_READBACK",
+    "documents": [
+      "V5_01_INCIDENT_TIMELINE_20261015.md",
+      "V5_02_REPAIR_HASHES_20261015.md",
+      "V5_03_FAILURE_PREVENTION_20261015.md",
+      "V5_04_OPERATIONS_AND_ACCEPTANCE_20261015.md"
+    ],
+    "no_runtime_changes_by_v5": true,
+    "windows_supervisor_script_sha256": "649E7A939AA8A27B91FE5FBE130E842E131EB96D55F36A1C00FED405335270EF",
+    "windows_desktop_entry_script_sha256": "070E8921F7E27D0BA82057C98F183C1EFFE65C43A6F9AB651C059F9432B26921",
+    "last_known_tunnel_pid": 46156,
+    "last_known_supervisor_pid": 8580,
+    "login_trigger_configured": true,
+    "one_supervisor_tunnel_launch_observed": true,
+    "current_mcp_short_scope": "PASS",
+    "fresh_reboot_login_e2e": "NOT_TESTED",
+    "five_independent_failure_recoveries": "NOT_TESTED",
+    "long_duration_zero_failure": "UNKNOWN",
+    "global_fastest_possible": "UNKNOWN"
   }
 }
