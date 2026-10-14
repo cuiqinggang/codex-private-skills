@@ -8,7 +8,7 @@ $r = [ordered]@{
   clients = 0; matching = 0; pid = $null; parent_alive = $false
   ready = $false; control_plane = $null; poll_failures = $null
   mcp = $null; mcp_child = $null; mcp_generation = $null
-  response_delivery = $null; proxy = $null; error_type = $null
+  response_delivery = $null; delivery_terminal_failures = $null; dispatcher_failures = $null; initialize_epoch = $null; proxy = $null; error_type = $null
 }
 try {
   $all = @(Get-CimInstance Win32_Process -Filter "Name='tunnel-client.exe'")
@@ -37,6 +37,9 @@ try {
       $r.mcp = $h.components.mcp.state
       $r.mcp_child = $h.components.mcp.details.child_state
       $r.mcp_generation = $h.components.mcp.details.child_generation
+      $r.initialize_epoch = $h.components.mcp.details.initialize_epoch
+      $r.dispatcher_failures = $h.components.dispatcher.details.failures
+      $r.delivery_terminal_failures = $h.components.'response-delivery'.details.terminal_failures
       if ($h.components.PSObject.Properties.Name -contains 'response-delivery') {
         $r.response_delivery = $h.components.'response-delivery'.state
       }
