@@ -92,4 +92,9 @@ jobs:
           $safeRepro='$ErrorActionPreference="Stop";try{'+$nativeCode+';"TEST_RESULT=NO_EXCEPTION"}catch{"TEST_RESULT=EXCEPTION;TYPE="+$_.Exception.GetType().Name+";FQID="+$_.FullyQualifiedErrorId}'
           $repro=& powershell.exe -NoProfile -NonInteractive -Command $safeRepro 2>&1
           $repro|ForEach-Object {if(([string]$_) -match '^TEST_RESULT='){Write-Host ('POWERSHELL51_NATIVE_STDERR_'+$_)}}
+          $src=Join-Path $root 'Recovery-Supervisor-v1.ps1'
+          if(Test-Path -LiteralPath $src){Write-Host ('SUPERVISOR_CURRENT_SHA256='+(Get-FileHash -LiteralPath $src -Algorithm SHA256).Hash)}
+          $fixedRepro='$ErrorActionPreference="Stop";try{& cmd.exe /c "echo native-diagnostic-stderr 1>&2" 1>$null 2>$null;"TEST_RESULT=NO_EXCEPTION"}catch{"TEST_RESULT=EXCEPTION;TYPE="+$_.Exception.GetType().Name}'
+          $fixedOutput=& powershell.exe -NoProfile -NonInteractive -Command $fixedRepro 2>&1
+          $fixedOutput|ForEach-Object {if(([string]$_) -match '^TEST_RESULT='){Write-Host ('POWERSHELL51_SEPARATE_STDERR_'+$_)}}
           Write-Host 'OOB_READONLY_COMPLETE'
