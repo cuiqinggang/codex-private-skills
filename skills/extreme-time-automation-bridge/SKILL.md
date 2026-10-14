@@ -1,10 +1,25 @@
 ---
 name: extreme-time-automation-bridge
-version: "4.0.0"
-description: GPT直连Windows双路执行桥 V4.0。继承A官方Tunnel/MCP、B GitHub三档成熟路由；A路PS-002守护器修复及重载、同进程8/8读取与5/5工具PASS，用户关停→重启→刷新后的新轮Reality尚待验收，不宣称自动恢复或长期零故障。
+version: "5.0.0"
+description: GPT直连Windows双路执行桥 V5.0。完整继承V3 B路三档成熟路由与V4 A路PS-002、守护器重载、状态入口修复；归档真实故障、失败候选、SHA和回滚，明确A短时调用PASS、实际守护启动一次，真实冷开机与长期稳定仍待验收。
 ---
 
-# GPT直连Windows双路执行桥 V4.0
+# GPT直连Windows双路执行桥 V5.0
+
+## V5.0｜2026-10-15 正式唯一入口（覆盖以下所有历史“最高优先级/最新版本”字样）
+
+**本次发布=原技能包规则和证据完整升级，不是再部署一条隧道。** 已复用《三人行》第2版（用户本任务指定）、`powershell-reliability-guard` PS-002、官方 `tunnel-client` 与Windows原Task Scheduler；不重装、不修改FlClash/系统代理、不改现有Runner/权限、不创建第二后台服务。原V4/V3/V2全部保留作有日期的历史成功或失败记录，不能覆盖V5最新状态。
+
+**轻入口与按需资料：** 默认只加载此节与[附件四：日常极简入口/状态树/验收合同](V5_04_OPERATIONS_AND_ACCEPTANCE_20261015.md)。只有需要审查原因时按需读取下列重资料：
+- [附件一：全故障时间线、真实Job/进程/截图与明确UNKNOWN](V5_01_INCIDENT_TIMELINE_20261015.md)
+- [附件二：PS-002与桌面入口的精确修改、哈希/备份/回滚](V5_02_REPAIR_HASHES_20261015.md)
+- [附件三：20条失败案例、反例与防回归硬门](V5_03_FAILURE_PREVENTION_20261015.md)
+- B路路由/历史五轮取证继续直接调用原[V3成熟规则](GITHUB_WINDOWS_B_ROUTE_V3_20261015.md)，A路初始化/自动恢复分层仍引用原[V2 SOP](TUNNEL_AUTORECOVERY_V2_20261015.md)。
+
+**最新Reality分账：** A路在同一次Windows登录/单隧道周期内真实read_file 8/8与守护器重载后混合MCP工具5/5 PASS，后续另有同进程读文件4/4及Windows实际命令PASS；实际用户双击状态窗口按Enter关闭提示的交互目视PASS。修复后守护器PID8580曾实际创建唯一Tunnel PID46156并能远程读文件。B路小型有界官方Artifact历史5/5独立Run PASS，原FULL下载长尾未完全根治。**不承诺实际冷开机+首次登录一定自动成功、不承诺5次独立隧道崩溃恢复、不承诺72小时零故障或物理最短时间**。用户A登录后已有Task Scheduler触发和本机DPAPI文件，但开机后Reality仍未验收。
+
+**V5新页面正确执行：** A连接当前已可用→真实读文件一次后直接推进用户业务，不再刷无意义烟测。若失效，先定位进程是否消失/MCP是否初始化/ChatGPT真实调用是否成功，再按`GOOD→BAD→FIRST_DELTA→最小成熟修复→一次Reality`。用户遇桌面`MCP_NOT_INITIALIZED`→同PID限时等待，不另开；HEALTHY窗口只需按Enter关闭，不会杀Tunnel；禁止使用曾导致断线的临时Stop-Process脚本。新版本发布≠当前Windows的运行态变化。
+
 
 ## V4.0｜2026-10-15 桌面一键恢复窗口状态与停留修复（最新真实取证）
 
