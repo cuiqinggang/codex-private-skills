@@ -38,7 +38,7 @@ PHYSICAL_FASTEST_LIMIT=UNKNOWN
 | R4 | [38603712945](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38603712945) | 36 s | 11915146889 | PASS |
 | R5 | [38603850316](https://github.com/cuiqinggang/codex-private-skills/actions/runs/38603850316) | 38 s | 11914652213 | PASS |
 
-五轮均为不同 Run ID、同一冻结 SHA `f55521366c8fb6e0fc9845c67def4993b9831df1`、同构无副作用计算负载、首次尝试成功，包含 Windows Windows自托管执行和 GitHub 托管端官方 Artifact 上传。此前 [V2 原始 Reality 报告](GITHUB_WINDOWS_B_ROUTE_V2_REALITY_20261015.md) 已记录五份 Artifact 实际下载、`result.json`／`stdout.txt`／`stderr.txt` 对账 PASS。
+五轮均为不同 Run ID、同一冻结 SHA `f55521366c8fb6e0fc9845c67def4993b9831df1`、同构无副作用计算负载、首次尝试成功，包含 Windows自托管执行和 GitHub 托管端官方 Artifact 上传。此前 [V2 原始 Reality 报告](GITHUB_WINDOWS_B_ROUTE_V2_REALITY_20261015.md) 已记录五份 Artifact 实际下载、`result.json`／`stdout.txt`／`stderr.txt` 对账 PASS。
 
 统计：均值 **35.2秒**；中位数 **36秒**；最短 **30秒**；最长 **38秒**；极差 **8秒**；样本标准差约 **3.03秒**（变异系数约 **8.6%**）。这里是 GitHub `created_at→updated_at` 的观察总时长，不包含上游 GPT 派发前等待和用户外部下载检查成本；不是完整用户 T_VALID 或物理极限。
 
