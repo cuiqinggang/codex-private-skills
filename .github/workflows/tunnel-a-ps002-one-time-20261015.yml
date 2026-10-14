@@ -54,7 +54,19 @@ jobs:
             '        $ErrorActionPreference=$savedErrorActionPreference'
             '      }'
           ) -join $nl
-          if(-not $before.Contains($needle) -or $before.Replace($needle,$replace) -cne $candidate){throw 'NON_MINIMAL_PATCH_REJECTED'}
+          if(-not $before.Contains($needle) -or $before.IndexOf($needle) -ne $before.LastIndexOf($needle)){throw 'LIVE_OLD_FRAGMENT_NOT_UNIQUE'}
+          if(-not $candidate.Contains($replace)){throw 'PINNED_CANDIDATE_FRAGMENT_DIFF'}
+          # Keep all unrelated local source differences; patch the verified fragment in the live file only.
+          $raw=[IO.File]::ReadAllText($live)
+          $preserveCrLf=$raw.Contains($crlf)
+          $exactPatch=$before.Replace($needle,$replace)
+          if($preserveCrLf){$exactPatch=$exactPatch.Replace($nl,$crlf)}
+          $origBytes=[IO.File]::ReadAllBytes($live)
+          $preserveBom=$origBytes.Length -ge 3 -and $origBytes[0] -eq 239 -and $origBytes[1] -eq 187 -and $origBytes[2] -eq 191
+          $targetStaged=Join-Path $env:RUNNER_TEMP 'Recovery-Supervisor-v1-current-file-minimal-patch.ps1'
+          [IO.File]::WriteAllText($targetStaged,$exactPatch,[Text.UTF8Encoding]::new($preserveBom))
+          $stage=$targetStaged
+          Write-Host 'LOCAL_DIFFERENCES_PRESERVED=YES;CHANGED_FRAGMENT_COUNT=1'
           $env:PS51_REPAIR_CANDIDATE_PATH=$stage
           $check='$t=$null;$e=$null;[void][System.Management.Automation.Language.Parser]::ParseFile($env:PS51_REPAIR_CANDIDATE_PATH,[ref]$t,[ref]$e);if($e.Count){exit 4};"PS51_PARSE_PASS"'
           $parsed=& powershell.exe -NoProfile -NonInteractive -Command $check
