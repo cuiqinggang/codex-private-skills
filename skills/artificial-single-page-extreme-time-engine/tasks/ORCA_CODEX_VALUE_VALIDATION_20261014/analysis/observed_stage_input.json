@@ -1,0 +1,56 @@
+{
+  "task_id": "ORCA_CODEX_VALUE_VALIDATION_20261014",
+  "evidence_kind": "ACTUAL_RETRIEVED_STAGE_DATA_NOT_FORMAL_PAIRS",
+  "pairs": [],
+  "final_versions": {},
+  "extra_costs": {
+    "complete": false,
+    "setup_and_migration_ms": null,
+    "unembedded_failures_and_maintenance_ms": null,
+    "overlaps_suite_time": null
+  },
+  "observed_context": {
+    "formal_orca_business_rounds": 0,
+    "paired_rounds": 0,
+    "recovered_artifact_QA": {"passed": 14, "total": 14},
+    "recovered_artifact_unit_tests": {"passed": 21, "total": 21},
+    "original_codex_attempt_status": "TIMEOUT_NOT_ACCEPTED",
+    "original_codex_attempt_wall_ms": 1205983.9134,
+    "source_delivery_to_recovered_readback_ms": 2219842.5331,
+    "local_repair_qa_readback_only_ms": 1914.9874,
+    "download_verify_only_ms": 62946.0231,
+    "extraction_core_only_ms": 55324.0788,
+    "nominal_one_second_sampler_actual_intervals_ms": {
+      "median": 1578.89985, "sample_p95": 5689.4479, "max": 17660.9295
+    },
+    "raw_resource_sample_count": 543,
+    "sampled_tree_peak_working_set_bytes": 2303496192,
+    "minimum_observed_free_memory_bytes": 9349808128,
+    "observed_tokens_from_N001_report_not_billing": {
+      "input_tokens": 2017961, "cached_input_tokens": 1927168,
+      "output_tokens": 16260, "total_tokens": 2034221
+    },
+    "bridge_A_current": "SESSION_TERMINATED",
+    "bridge_B_readback_r2": {
+      "workflow_run": 38568250674, "job": 115866376804,
+      "result": "SUCCESS", "read_errors": 0,
+      "identity": "NT AUTHORITY\\NETWORK SERVICE", "local_read_ms": 8688.9111,
+      "job_started_utc": "2026-10-14T13:00:38Z", "job_completed_utc": "2026-10-14T13:01:22Z"
+    },
+    "next_remote_preflight": "BLOCKED_BY_PLATFORM_SAFETY_CHECK_NOT_EXECUTED",
+    "missing_recovery_note": "CEO_N001_RECOVERY_COMPLETE.md",
+    "limitations": [
+      "没有Orca同合同业务数据，不能计算节时百分比。",
+      "1914.9874ms仅局部修复，不能与20分钟模型执行直接比较。",
+      "2219842.5331ms包含原超时和等待，不能再加一次1205983.9134ms。",
+      "工作流成功不代表模型身份或业务通过。",
+      "按命令行过滤得到空进程表，不证明其它用户的任务已经退出。",
+      "本地报告按签名回执为SignPath Foundation；不要沿用报告中stablyai签名主体误写。"
+    ]
+  },
+  "sources": [
+    "https://github.com/cuiqinggang/codex-private-skills/blob/376530b0a665db2b7af490ef8bcd13510f73a4b8/skills/artificial-single-page-extreme-time-engine/tasks/ORCA_CODEX_VALUE_VALIDATION_20261014/CEO_STAGE_REPORT_V1.md",
+    "https://github.com/cuiqinggang/codex-private-skills/blob/main/skills/artificial-single-page-extreme-time-engine/tasks/ORCA_CODEX_VALUE_VALIDATION_20261014/evidence/READBACK_R2_RUN_38568250674.json",
+    "https://github.com/cuiqinggang/codex-private-skills/actions/runs/38568250674"
+  ]
+}
