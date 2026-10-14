@@ -1,0 +1,48 @@
+name: Hermes F002 isolated static verification
+run-name: HERMES-ECO-F002-CLOUD-STATIC
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/hermes-eco-f002-static.yml']
+permissions:
+  contents: read
+jobs:
+  static-only:
+    runs-on: windows-latest
+    timeout-minutes: 6
+    steps:
+      - name: Validate frozen candidate and synthetic evidence tests without using Hermes
+        shell: pwsh
+        env:
+          SOURCE_READ_TOKEN: ${{ github.token }}
+        run: |
+          $ErrorActionPreference='Stop'
+          $ref='037e8bfaadb6ddb03122fbabb404b95a8b4e7e7f'
+          $root=Join-Path $env:RUNNER_TEMP 'hermes-f002-static-only'
+          New-Item -ItemType Directory -Path $root -Force | Out-Null
+          $headers=@{Authorization='Bearer '+$env:SOURCE_READ_TOKEN;Accept='application/vnd.github+json'}
+          foreach($name in @('evidence_guard.py','test_evidence_guard.py','Invoke-Acceptance.ps1')){
+            $uri='https://api.github.com/repos/cuiqinggang/codex-private-skills/contents/workspaces/hermes-maturity-20261014/acceptance-f002/'+$name+'?ref='+$ref
+            $f=Invoke-RestMethod -Uri $uri -Headers $headers -TimeoutSec 30
+            $bytes=[Convert]::FromBase64String($f.content)
+            $prefix=[Text.Encoding]::UTF8.GetBytes(('blob '+$bytes.Length+[char]0))
+            $actual=[Convert]::ToHexString([Security.Cryptography.SHA1]::HashData([byte[]]($prefix+$bytes))).ToLowerInvariant()
+            if($actual -ne $f.sha){throw 'FROZEN_BLOB_MISMATCH'}
+            $dest=Join-Path $root $name
+            [IO.File]::WriteAllBytes($dest,$bytes)
+            Write-Host ('PINNED_FILE '+$name+' BLOB='+$f.sha+' SHA256='+(Get-FileHash $dest).Hash)
+          }
+          $headers=$null
+          $candidate=Join-Path $root 'Invoke-Acceptance.ps1'
+          $errors=$null
+          [void][System.Management.Automation.Language.Parser]::ParseFile($candidate,[ref]$null,[ref]$errors)
+          if($errors.Count){throw 'POWERSHELL7_PARSE_FAILED'}
+          Write-Host 'POWERSHELL7_PARSE=PASS'
+          $checker=Join-Path $root 'parse-only-51.ps1'
+          [IO.File]::WriteAllText($checker,'param([string]$Path); $e=$null; [void][System.Management.Automation.Language.Parser]::ParseFile($Path,[ref]$null,[ref]$e); if($e.Count){$e | Format-List; exit 1}; Write-Output "POWERSHELL51_PARSE=PASS"; exit 0',[Text.UTF8Encoding]::new($false))
+          & powershell.exe -NoProfile -NonInteractive -File $checker $candidate
+          if($LASTEXITCODE -ne 0){throw 'POWERSHELL51_PARSE_FAILED'}
+          Set-Location $root
+          & python -m unittest -v test_evidence_guard.py
+          if($LASTEXITCODE -ne 0){throw 'SYNTHETIC_GUARD_TESTS_FAILED'}
+          Write-Host 'CLOUD_STATIC_ONLY=PASS;USER_HERMES_RUNS=NOT_EXECUTED;FIVE_REAL_ROUNDS=NOT_CERTIFIED'
