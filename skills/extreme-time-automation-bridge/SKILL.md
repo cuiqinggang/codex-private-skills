@@ -1,10 +1,25 @@
 ---
 name: extreme-time-automation-bridge
-version: "6.0.0"
-description: GPT直连Windows三通道执行桥 V6.0｜唯一正式优先级 C（Remote Desktop Commander）>A（自建OpenAI Tunnel MCP）>B（GitHub Windows Runner）；C默认生产，A保留并调查间歇性退出，B按FAST/BOUNDED/FULL成熟分流。继承V5/V3历史证据与安全边界。
+version: "7.0.0"
+description: GPT直连Windows执行桥 V7.0｜C Remote Desktop Commander 第一入口，A 自建 MCP 暂停派单，B GitHub Runner 备用；保留全部旧版历史与安全边界。
 ---
 
-# GPT直连Windows三通道执行桥 V6.0
+# GPT直连Windows三通道执行桥 V7.0
+
+## V7.0 唯一正式入口｜A 暂停派单，C 首选，B 备用（覆盖下方全部 V6/V5 旧路由）
+
+**冻结标识：FREEZE-GPT-WINDOWS-BRIDGE-V7-A-PAUSED-20261016**。用户明确决定暂停 A 通道派单以避免误选；本仓库技能正式版本现为 7.0.0。
+
+- **C 是第一入口且默认唯一日常入口**：调用工具命名空间 Remote_Desktop_Commander；先按实时 list_devices 选择 Online 设备；对获准 Windows 任务直接执行，不要先调用自建 MCP。
+- **A 已暂停**：GPT_Windows_MCP_Bridge 标记 PAUSED_BY_USER，不参与日常派单、故障回退、试探性测试；即使报告在线，也不能因 C 失败而选 A。恢复须用户以后明确同意，不能因旧 V6 写了 C→A→B 而自动解除暂停。
+- **B 备用**：GitHub Actions / Windows Runner。仅当 C 确定不可用或合同专门要求 GitHub 原生证据时选 B；内部继续遵循 FAST、BOUNDED、FULL 的成熟条件，不改变原 Runner。
+- C 状态未知，先核实 C；C/B 都不可用时 BLOCKED，不退回 A。业务 UNKNOWN 先对账，DONE 不重复执行，严格 Exactly-once。
+- **实际判路器**：本机 C:/AI/GPT-Windows-Bridge-B/persistence/Invoke-Three-Route-Gate-V7.ps1。C 通道实测 PS5.1 Parser 0 错、10/10 条分流样本通过；V6 脚本保留历史，不再作为生效路由。新脚本为建议器，不是 ChatGPT 平台硬禁用。
+- **暂停不等于切断进程**：保留运行中的 A Tunnel、Supervisor、自启动、凭据、插件安装状态以便恢复；不修改 FlClash、代理、浏览器、网络或用户业务。不能声称模型无法从 UI 手动调用 A。
+- [V7 正式冻结与现实证据](V7_A_PAUSED_C_FIRST_20261016.md)。下文 V6/V5/V4 的“主路”“正式当前”只属于历史阶段，不得覆盖 V7。Hermes 内部 CLI 优先与 Windows C 通道优先是两层规则，不能混淆。
+
+---
+
 
 
 ## V6.0 正式冻结入口｜跨页面直接执行（2026-10-15）
