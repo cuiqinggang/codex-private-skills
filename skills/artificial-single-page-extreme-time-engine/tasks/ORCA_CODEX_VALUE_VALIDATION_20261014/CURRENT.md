@@ -148,3 +148,14 @@ WHOLE_VIRTUAL_MATURITY=NOT_PASSED
 WINDOWS_FORMAL_REALITY=NOT_EXECUTED
 两份固定官方源码经blob验证后实际在隔离VM执行；确认真实home启动仍调用迁移辅助函数，特定旧记录会尝试系统凭据写入。11项通过含风险反例，不能解释为零副作用或业务通过。测试器首轮export空白处理错误、第二轮修正后通过，均已保留于报告。源码、测试器、结果与报告已上传并逐份独立回读一致。
 构造器/hooks全链副作用、设置更新入口、旧会话归属和平台允许执行条件仍未闭合；F001/N002不变，正式业务、连续十轮和AB计数仍为0。不重发原拒绝动作，不要求重复截图或泛化授权。
+
+## 2026-10-15 旧迁移残留清理核对（本次实际目录读取）
+BRIDGE_EFFECTIVE_ENTRY=V7_C_FIRST_A_PAUSED_AS_READ_FROM_CURRENT_SKILL
+C_DEVICE_DIRECTORY_READ=PASS
+CONFIRMED_UNUSED_MIGRATION_FILES=NONE_IDENTIFIED_IN_INSPECTED_PATHS
+WINDOWS_FILES_DELETED=0
+CLEANUP_IS_WHOLE_VIRTUAL_MATURITY=NO
+本次用户授权整理、删除无用旧迁移记录，并要求虚拟成熟后做一次简单实测、失败退回虚拟阶段。此前旧迁移条件来自合成反例，不是本机已有此类文件的证据，本次纠正这一可能误解。
+通过当前在线C设备真实列出 CEO_assets/home（depth2）、home/AppData（depth3）、profile/profiles（depth2）、profile/.profile-state-access（depth2）。home下仅见AppData目录层级，所列范围没有.codex或旧登录迁移文件；profiles/local-default下有profile-state.db、shm、wal、authority与一份backup数据库；访问协调目录有candidates和participants。仅列名，不读取凭据或数据库正文。此范围未穷尽全部磁盘，也未证明数据库内部无迁移状态。
+没有确认可安全删除的废弃迁移文件，因此实际删除0；数据库备份、锁/协调记录与历史验收证据不按“旧”字直接删除。删除保护性来源记录不能作为关闭官方迁移副作用的办法。原HOME启动器、F001与系统配置未修改。
+本轮仅完成独立目录读取，不是Orca运行时或Codex业务测试。整套虚拟成熟仍未通过，原平台拒绝仍未解决，未重发原预检。Reality、十轮及AB仍为0。下一步应核实新隔离状态下的构造器、hooks及设置落点副作用；不能将清空旧数据视为已解决实际子进程环境、模型和权限传递。
