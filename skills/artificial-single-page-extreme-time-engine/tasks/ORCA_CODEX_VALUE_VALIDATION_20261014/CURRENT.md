@@ -130,3 +130,11 @@ WORKER_MODE=TERMINAL_OR_STRUCTURED_MUST_PIN_AND_READ_BACK
 固定源码确认：未显式配置 Codex 参数时回落跳过沙箱/审批的缺省值，不能声称自然继承 workspace-write；空字符串覆盖与缺键不同。worker-start 无 sandbox/approval/tier 参数，需落实本任务隔离设置及有效策略证据。模型映射 -m 与 model_reasoning_effort=ultra 已核对，后端采用值未测。worker 可为 structured，前次笼统终端描述由新报告纠正。
 PTY 环境已追踪到 provider.spawn 与本地 process.env 合并/最终删除；daemon 环境、实际可执行文件、真实用户 home 和权限仍须子进程回执。默认预信任可写 config.toml，不等于沙箱放宽，但必须符合全局配置保护约束。
 新报告已独立回读。没有启动模型/运行时，没有修改本机配置，没有重发被拒预检。F001 未批准、N002 未批准，Reality/十轮/AB 仍为 0；剩余 structured 端到端映射和实际回执明列，不能算准备已全部验收。
+
+## 2026-10-15 成熟部署路线收敛（最新）
+LATEST_DEPLOYMENT_ROUTE=CEO_MATURE_DEPLOYMENT_ROUTE_V1.md
+LATEST_DEPLOYMENT_ROUTE_COMMIT=164475ad75832d1e234b3c4fa69f0efd404e6895
+DEPLOYMENT_ROUTE_STATUS=CANDIDATE_NOT_APPLIED_NOT_RUNTIME_APPROVED
+本轮按三人行V2/桥V6，通过C真实读取旧启动器，确认其同时重定向HOME/USERPROFILE/APPDATA/LOCALAPPDATA。固定官方orcad-app-paths支持仅用ORCA_USER_DATA隔离Orca状态，home保持真实用户；据此收敛“Windows原生官方组件＋原用户环境＋隔离Orca数据＋显式受限Codex参数＋终端worker”候选。
+官方编排明确为Experimental，Run本身不自动调度。不得承诺成熟无故障、全局最快或1000任务推进认证。旧HOME重定向是已证配置差分，其业务因果尚未实测。
+已保存具体最小差分、三路线比较、失败推演、完整时间优化与停止条件并独立回读。尚缺设置落点/更新入口、auth迁移与hooks零越界证明、旧会话对账和允许执行条件；没有修改本机配置，没有重发被拒预检，F001/N002及所有业务计数不变。
