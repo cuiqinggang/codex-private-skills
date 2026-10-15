@@ -1,0 +1,20 @@
+{
+  "thread_id": "01a140cc-584e-7c43-87a1-1f7ce24449c3",
+  "matched_files": 1,
+  "contexts": [
+    {
+      "cwd": "C:\\AI\\Orca-Codex-Validation-20261014\\business-exec-20261015-r3\\worktrees\\fixture\\component",
+      "approval_policy": "on-request",
+      "approvals_reviewer": "auto_review",
+      "sandbox_policy": {
+        "type": "workspace-write",
+        "network_access": false,
+        "exclude_tmpdir_env_var": false,
+        "exclude_slash_tmp": false
+      },
+      "model": "gpt-6.1-sol",
+      "effort": "ultra",
+      "service_tier": null
+    }
+  ]
+}
