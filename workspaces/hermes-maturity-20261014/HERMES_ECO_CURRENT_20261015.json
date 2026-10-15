@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "project": "Hermes Mature AI Coding SuperTool Ecosystem Station",
   "task_id": "HERMES-ECO-20261014",
-  "freeze_id": "HERMES-ECO-F010-20261015",
+  "freeze_id": "HERMES-ECO-F013-20261015",
   "record_date": "2026-10-15",
-  "phase": "NORMAL_NATIVE_CLI_REPAIR_RUNTIME_PASS_API_RUNS_DECOUPLED",
+  "phase": "F013_HERMES_PROFILE_SKILL_DISCOVERY_REALITY_PASS_F014_CROSS_ROOT_AUDIT_PENDING",
   "skill_name": "hermes-mature-supertool",
   "skill_version": "2.0",
   "skill_location": "C:/Users/A/.hermes/skills/hermes-mature-supertool/SKILL.md",
@@ -116,9 +116,13 @@
     "f008_delegation_real": "workspaces/hermes-maturity-20261014/F008_DELEGATION_REALITY_20261015.md",
     "f009_api_admission_freeze": "workspaces/hermes-maturity-20261014/F009_API_ADMISSION_VIRTUAL_FREEZE_20261015.md",
     "f010_native_cli_repair_freeze": "workspaces/hermes-maturity-20261014/F010_NATIVE_CLI_REPAIR_FREEZE_20261015.md",
-    "f010_native_cli_repair_reality": "workspaces/hermes-maturity-20261014/F010_NATIVE_CLI_REPAIR_REALITY_20261015.md"
+    "f010_native_cli_repair_reality": "workspaces/hermes-maturity-20261014/F010_NATIVE_CLI_REPAIR_REALITY_20261015.md",
+    "f012_discovery_freeze": "workspaces/hermes-maturity-20261014/F012_SHARED_SKILLS_DISCOVERY_FREEZE_20261015.md",
+    "f013_root_freeze": "workspaces/hermes-maturity-20261014/F013_PROFILE_SKILL_ROOT_FIRST_DELTA_FREEZE_20261015.md",
+    "f013_root_reality": "workspaces/hermes-maturity-20261014/F013_PROFILE_SKILL_ROOT_REALITY_20261015.md",
+    "f014_crossroot_freeze": "workspaces/hermes-maturity-20261014/F014_CODEX_KNOWLEDGE_ON_DEMAND_FREEZE_20261015.md"
   },
-  "next_step": "F011 normal Open WebUI existing browser actual interaction if a legitimate controllable GUI connection exists; otherwise continue genuine native Hermes CLI capability gates. Do not block on self-built F002 Runs API 400. F002 old request UNKNOWN no re-dispatch. Whole-station integrated 0/5 and sustained runtime gates still pending.",
+  "next_step": "F014 validate read-only Codex/Knowledge Brain on-demand route from current Hermes CLI. Keep Codex skill root unmodified/unregistered as an editable external_dir until safe governance. Then follow remaining WebUI/multimodal/session/stability gates.",
   "transport": {
     "policy": "C_FIRST_A_SECOND_B_THIRD",
     "version": "6.0.0",
@@ -144,6 +148,25 @@
     "VISION_NATIVE_TOOL_EVENT": "NOT_VERIFIED no independent vision_analyze tool.completed log in current scoped evidence",
     "API_AUTH_PROTECTION": "C channel on-device GET /v1/capabilities no credentials -> HTTP 401, exit0, expected bearer protection (not service outage)",
     "OPENWEBUI_SERVICE": "HTTP200 2026-10-15 on 127.0.0.1:3000/health; Chrome running, actual GUI chat NOT_VERIFIED",
-    "REPAIR_SKILL_VIEW": "Hermes CLI reported skill_view hermes-repair-loop-adapter not found this session; native CLI repair succeeded, skill registration remains separate verification item"
+    "REPAIR_SKILL_VIEW": "Hermes CLI reported skill_view hermes-repair-loop-adapter not found this session; native CLI repair succeeded, skill registration remains separate verification item",
+    "HERMES_SKILL_DISCOVERY": "RUNTIME_PASS current active profile Home C:/Users/A/AppData/Local/hermes; official skills.external_dirs points legacy C:/Users/A/.hermes/skills; skills_list changed 72->171; skill_view hermes-mature-supertool and hermes-repair-loop-adapter both available; confirmed F011 CLI-first and skill versions",
+    "CODEX_CROSS_LIBRARY_READ": "F014_REALITY_PENDING selected Codex skill and Knowledge Brain routing index; not bulk imported",
+    "F011_SECRET_PATTERN_STATIC": "FAIL old full-skill package scanner reported 1 YAML secret-like pattern. Value never read/printed; still requires separate compliant remediation; no false PASS"
+  },
+  "external_skills_actual": {
+    "active_home": "C:/Users/A/AppData/Local/hermes",
+    "active_config": "C:/Users/A/AppData/Local/hermes/config.yaml",
+    "old_profile_home": "C:/Users/A/.hermes",
+    "official_setting": "skills.external_dirs",
+    "configured_dirs": [
+      "C:/Users/A/.hermes/skills"
+    ],
+    "runtime_skills_before": 72,
+    "runtime_skills_after": 171,
+    "codex_skill_md_files": 218,
+    "hermes_legacy_skill_md_files": 161,
+    "knowledge_brain_files": 632,
+    "counts_are_non_additive": true,
+    "source_config_backup_local": "C:/Users/A/.hermes/backups/hermes-f013-skills-home-20261015/config-before.yaml"
   }
 }
