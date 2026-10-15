@@ -1,0 +1,116 @@
+{
+  "scope": "COMPONENT_ONLY_NO_MODEL_NO_BUSINESS",
+  "started": 1792086349.4130747,
+  "checks": [
+    "OFFICIAL_STARTUP_IMPORT_READY",
+    "TERMINAL_ENVIRONMENT_RECEIPT"
+  ],
+  "database_schema": [
+    [
+      "profile_state_meta",
+      "CREATE TABLE profile_state_meta (\n    key TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL\n  )"
+    ],
+    [
+      "profile_state_documents",
+      "CREATE TABLE profile_state_documents (\n    domain TEXT PRIMARY KEY NOT NULL, payload TEXT NOT NULL,\n    domain_version INTEGER NOT NULL, revision INTEGER NOT NULL,\n    updated_at INTEGER NOT NULL, content_hash TEXT NOT NULL\n  )"
+    ],
+    [
+      "profile_state_automation_runs_meta",
+      "CREATE TABLE profile_state_automation_runs_meta (\n    domain TEXT PRIMARY KEY NOT NULL,\n    presence TEXT NOT NULL,\n    domain_version INTEGER NOT NULL,\n    revision INTEGER NOT NULL,\n    updated_at INTEGER NOT NULL,\n    content_hash TEXT NOT NULL\n  )"
+    ],
+    [
+      "profile_state_automation_runs",
+      "CREATE TABLE profile_state_automation_runs (\n    run_id TEXT PRIMARY KEY NOT NULL,\n    ordinal INTEGER NOT NULL,\n    payload TEXT NOT NULL,\n    content_hash TEXT NOT NULL,\n    revision INTEGER NOT NULL,\n    updated_at INTEGER NOT NULL\n  )"
+    ]
+  ],
+  "worktree": {
+    "id": "d1c499a5-7d87-4e9a-8f49-15a91e776e55::C:/AI/Orca-Codex-Validation-20261014/component-check-20261015-r1/worktrees/fixture/component",
+    "identity": {
+      "key": "wt2:local:7eca8a89-e953-4b47-a184-7edc20645056",
+      "executionHostId": "local",
+      "instanceId": "7eca8a89-e953-4b47-a184-7edc20645056"
+    },
+    "instanceId": "7eca8a89-e953-4b47-a184-7edc20645056",
+    "repoId": "d1c499a5-7d87-4e9a-8f49-15a91e776e55",
+    "projectId": "repo:d1c499a5-7d87-4e9a-8f49-15a91e776e55",
+    "hostId": "local",
+    "projectHostSetupId": "d1c499a5-7d87-4e9a-8f49-15a91e776e55",
+    "creatorProvenance": {
+      "kind": "host"
+    },
+    "path": "C:/AI/Orca-Codex-Validation-20261014/component-check-20261015-r1/worktrees/fixture/component",
+    "head": "690bc00c7aa6fe5d9a07ea3cfa9f9496f2b5100a",
+    "branch": "refs/heads/cuiqinggang/component",
+    "isBare": false,
+    "isMainWorktree": false,
+    "displayName": "component",
+    "displayNameMode": "fixed",
+    "comment": "",
+    "linkedIssue": null,
+    "linkedPR": null,
+    "linkedLinearIssue": null,
+    "linkedLinearIssueWorkspaceId": null,
+    "linkedLinearIssueOrganizationUrlKey": null,
+    "linkedGitLabMR": null,
+    "linkedGitLabIssue": null,
+    "linkedBitbucketPR": null,
+    "linkedAzureDevOpsPR": null,
+    "linkedGiteaPR": null,
+    "linkedWorkItem": null,
+    "linkedTaskSourceContext": null,
+    "isArchived": false,
+    "isUnread": false,
+    "isPinned": false,
+    "sortOrder": 1792086385700,
+    "lastActivityAt": 1792086385697,
+    "createdAt": 1792086385697,
+    "cliProvenance": {
+      "kind": "created-by-cli",
+      "createdAt": 1792086382102
+    },
+    "baseRef": "main",
+    "workspaceStatus": "in-progress",
+    "parentWorktreeId": null,
+    "childWorktreeIds": [],
+    "lineage": null,
+    "workspaceLineage": null,
+    "git": {
+      "path": "C:/AI/Orca-Codex-Validation-20261014/component-check-20261015-r1/worktrees/fixture/component",
+      "head": "690bc00c7aa6fe5d9a07ea3cfa9f9496f2b5100a",
+      "branch": "refs/heads/cuiqinggang/component",
+      "isBare": false,
+      "isMainWorktree": false
+    }
+  },
+  "terminal_handle": "term_50f0440d-96ea-44c7-80b2-cf63809759a9",
+  "terminal_environment": {
+    "home": "C:\\Users\\A",
+    "cwd": "C:\\AI\\Orca-Codex-Validation-20261014\\component-check-20261015-r1\\worktrees\\fixture\\component",
+    "terminal": "term_50f0440d-96ea-44c7-80b2-cf63809759a9",
+    "codexHomePresent": false,
+    "orcaCodexHomePresent": false
+  },
+  "terminal_output": {
+    "terminal": {
+      "handle": "term_50f0440d-96ea-44c7-80b2-cf63809759a9",
+      "status": "running",
+      "tail": [
+        "",
+        "C:\\AI\\Orca-Codex-Validation-20261014\\component-check-20261015-r1\\worktrees\\fixture\\component>\"C:\\AI\\Orca-Codex-Validation-20261014\\CEO_assets\\profile\\orcad-artifacts\\win32-x64\\runtimes\\node-ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32\\node.exe\" \"C:\\AI\\Orca-Codex-Validation-20261014\\component-check-20261015-r1\\terminal-probe.cjs\"",
+        "ORCA_COMPONENT_RECEIPT_WRITTEN",
+        "",
+        "C:\\AI\\Orca-Codex-Validation-20261014\\component-check-20261015-r1\\worktrees\\fixture\\component>"
+      ],
+      "truncated": false,
+      "limited": false,
+      "oldestCursor": "0",
+      "nextCursor": "4",
+      "latestCursor": "4",
+      "returnedLineCount": 5,
+      "source": "stream"
+    }
+  },
+  "passed": true,
+  "remaining_owned": [],
+  "elapsed_ms": 39160.143399989465
+}
