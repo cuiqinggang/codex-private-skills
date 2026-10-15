@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "project": "Hermes Mature AI Coding SuperTool Ecosystem Station",
   "task_id": "HERMES-ECO-20261014",
-  "freeze_id": "HERMES-ECO-F019-20261016",
+  "freeze_id": "HERMES-ECO-F020-20261016",
   "record_date": "2026-10-16",
-  "phase": "F019_REPAIR_ISOLATED_23_OF_23_PASS_NATIVE_SKILL_VIEW_EVENT_UNVERIFIED_OTHER_STATION_GATES_PENDING",
+  "phase": "F019_FUNCTIONAL_GATE_PASS_F020_TWO_CHILD_COMPLETED_REVIEW_GATE_UNKNOWN_NEXT_INDEPENDENT_GATES_PENDING",
   "skill_name": "hermes-mature-supertool",
   "skill_version": "2.0",
   "skill_location": "C:/Users/A/.hermes/skills/hermes-mature-supertool/SKILL.md",
@@ -134,9 +134,11 @@
     "f018_security_reality": "workspaces/hermes-maturity-20261014/F018_SKILL_BACKUP_SECRET_SCAN_REMEDIATION_20261016.md",
     "f018_local_manifest": "C:/Users/A/.hermes/skills/hermes-mature-supertool/evidence/HERMES-ECO-20261014/F018_SAFE_ARCHIVE_RELOCATION_20261016.md",
     "f019_virtual_freeze": "workspaces/hermes-maturity-20261014/F019_REPAIR_GATE_VIRTUAL_FREEZE_20261016.md",
-    "f019_reality": "workspaces/hermes-maturity-20261014/F019_REPAIR_GATE_REALITY_20261016.md"
+    "f019_reality": "workspaces/hermes-maturity-20261014/F019_REPAIR_GATE_REALITY_20261016.md",
+    "f020_virtual_freeze": "workspaces/hermes-maturity-20261014/F020_DELEGATE_REPAIR_GATE_VIRTUAL_FREEZE_20261016.md",
+    "f020_reality": "workspaces/hermes-maturity-20261014/F020_DELEGATE_REPAIR_GATE_REALITY_20261016.md"
   },
-  "next_step": "Use V7 C only; F019 isolated Repair functional scope PASS and do not rerun. Next F020 integrate independent native delegate_task review of the F019 repaired artifact (without editing) and verify current delegation manifest plus reviewer verdicts; afterwards choose remaining genuine multimodal/GUI/cross-session gates. Legacy F002 unknown remains non-replayable; station 0/5 FINAL_VALID=NO.",
+  "next_step": "F020 native two-child lifecycle true but Gate UNKNOWN; do not rerun 2 children for performance. F019 code and 23/23 remain PASS. Choose another high-value independent gate: fresh native Hermes session artifact-based checkpoint/handoff/resume with independent sha and session-id non-equality, no services restarted; later only missing Child-A review with explicit native structured output_schema if cost/benefit positive. Do not touch A; no old F002 replay.",
   "transport": {
     "policy": "C_FIRST_B_FALLBACK_A_PAUSED",
     "version": "7.0.0",
@@ -179,7 +181,9 @@
     "F018_STATIC_SECRET_PATTERN_LATEST": "SCOPED_STATIC_REALITY_PASS 18/18, failure_count=0, secret patterns 0 after verified SHA-preserving move of historical YAML config snapshot out of skills scan root; active config not edited",
     "BRIDGE_V7_REAL_ROUTE_CURRENT": "SCOPED_REALITY_PASS C tool pong, v7 PowerShell parser 0, SHA matches official freeze, tests C selected/B fallback/A always blocked. Does not disable A at platform level",
     "F019_REPAIR_FAULT_INJECTION": "SCOPED_RUNTIME_AND_INDEPENDENT_GATE_PASS: baseline 23 tests 14 fail 3 errors; Hermes formal CLI repaired in one round, exit0, process wall 158.718s; independent Windows Python unittest 23/23 PASS exit0; test/requirements SHA unchanged; repair_state.json RESOLVED. native skill_view success model-reported only, native tool event independent verification pending.",
-    "F019_MODEL_USAGE": "OpenRouter DeepSeek V4.1 Flash; one CLI task 158718ms; 7 API calls; input37832 output3638 cache_read143488, total184958 tokens incl cache; cost USD0.0042113664 estimated; full T_VALID and physical bound UNKNOWN."
+    "F019_MODEL_USAGE": "OpenRouter DeepSeek V4.1 Flash; one CLI task 158718ms; 7 API calls; input37832 output3638 cache_read143488, total184958 tokens incl cache; cost USD0.0042113664 estimated; full T_VALID and physical bound UNKNOWN.",
+    "F020_NATIVE_DELEGATION": "SCOPED_NATIVE_LIFECYCLE_PASS but reviewer Gate UNKNOWN. Current manifest deleg_e96f8702 independent C read: task_count2, statuses both completed; parent reports Child-B PASS, Child-A no verdict (false missing path summary); oneshot budget 2/2 prevents retry same session. CLI wall305575ms exit0; frozen F019 hashes unchanged; not a 2/2 Gate PASS.",
+    "F020_PERFORMANCE": "305.575s CLI; 5 API calls; total138002 tokens of which cache_read119040; estimated cost USD0.013717224; historical F008 workload differs so no fair improvement/slowdown multiplier. Candidate output_schema bounded structured review NOT_TESTED."
   },
   "external_skills_actual": {
     "active_home": "C:/Users/A/AppData/Local/hermes",
