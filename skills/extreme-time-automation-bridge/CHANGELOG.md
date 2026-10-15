@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## V6.0 / 6.0.0｜C正式首选、A间歇性退出继续溯源、B复用V3捷径（2026-10-15）
+
+- 权威 `SKILL.md` 正式版号为6.0.0；**路由 C（Remote Desktop Commander）第一 > A（OpenAI Tunnel自建MCP）第二 > B（GitHub Windows Runner）第三**，覆盖旧版所有主路优先级。新版 [V6单页冻结与故障事实](V6_C_FIRST_A_RECOVERY_B_ROUTE_20261015.md)。
+- C同机实际文件/命令/写读核对通过，用户授权后日常直接走C；不再频繁调取A的配置视图。C额度耗尽、设备离线或业务权限不符时再转A、B；非幂等执行遵守Exactly-once。
+- B原FULL Run38736230206下载 Action ZIP首次100秒超时，最后成功；V3已有FAST日志回执及V2 BOUNDED 5/5（30至38秒）成熟绕开路线，V6正式禁止小型普通任务误派旧FULL。
+- A现场Supervisor于19:32/19:42北京时间记录Tunnel自然退出并自动重启；当时Exit0/Exit1，但原子进程原始日志被弃，根因未确认；目前读文件恢复成功但不能认定已完整修复。禁止试验性停止唯一Tunnel、修改FlClash/代理、传递Runtime Key。
+- 此次GitHub技能包及使用优先级已实际提交回读；**只冻结路由与故障事实，不把文档变更冒称Windows A运行态已修好**。保留V5及以前全部事故/回滚证据。
+
+
 ## V3.0 / 3.0.0｜B路历史下载故障收敛、限定5/5验收与成熟分流（2026-10-15）
 
 - **原技能包原位升级**：`SKILL.md` 版本由 2.0.0 升级至 3.0.0，正式入口为 [V3.0 B路修复验收与分流规范](GITHUB_WINDOWS_B_ROUTE_V3_20261015.md)，A 自建隧道、B 原 FULL / FAST / V2 有界路线和 R 第三方额度闸门、历史证据都保留，不新建执行系统。
