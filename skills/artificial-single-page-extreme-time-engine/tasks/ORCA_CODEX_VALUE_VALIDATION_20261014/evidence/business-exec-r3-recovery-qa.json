@@ -1,0 +1,259 @@
+{
+  "scope": "RECOVERY_T03_ONLY_NOT_ORCHESTRATION",
+  "baseline": [
+    {
+      "name": "T03_empty_report_file_output",
+      "passed": false,
+      "error": "ZeroDivisionError: division by zero",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 32, in case\n    try:fn();result=dict(name=name,passed=True,error=None)\n        ~~^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 102, in <lambda>\n    case('T03_empty_report_file_output',lambda:reporting(0))\n                                               ~~~~~~~~~^^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 97, in reporting\n    with contextlib.redirect_stdout(buf):ns2['report'](cfg,n,5,0,['x'],1,2,0,0 if not n else 2.0,0 if not n else 3,0 if not n else 4,0,results_file=str(file))\n                                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\dataset\\source\\scripts\\run.py\", line 229, in report\n    f\"{100 * pass1 / n_tasks:>6.1f}%\",\n       ~~~~~~~~~~~~^~~~~~~~~\nZeroDivisionError: division by zero\n",
+      "wall_ms": 8.977699995739385
+    },
+    {
+      "name": "T03_nonempty_report_regression",
+      "passed": true,
+      "error": null,
+      "wall_ms": 10.918899992248043
+    },
+    {
+      "name": "ALL_source_compile",
+      "passed": true,
+      "error": null,
+      "wall_ms": 74.62820000364445
+    }
+  ],
+  "candidate": [
+    {
+      "name": "T03_empty_report_file_output",
+      "passed": true,
+      "error": null,
+      "wall_ms": 17.384200007654727
+    },
+    {
+      "name": "T03_nonempty_report_regression",
+      "passed": true,
+      "error": null,
+      "wall_ms": 50.57170000509359
+    },
+    {
+      "name": "ALL_source_compile",
+      "passed": true,
+      "error": null,
+      "wall_ms": 113.65420001675375
+    }
+  ],
+  "local_result": {
+    "scope": "ORCA_TERMINAL_CODEX_EXEC_RESUME_T03_RECOVERY",
+    "started": 1792089056.4125385,
+    "checks": [
+      "OFFICIAL_STARTUP_IMPORT_READY"
+    ],
+    "worktree": {
+      "id": "05e56fd8-a572-453b-97cf-3806ffa313ed::C:/AI/Orca-Codex-Validation-20261014/business-exec-20261015-r3/worktrees/fixture/component",
+      "identity": {
+        "key": "wt2:local:4d20d956-62d0-4d0b-a01b-53f743866603",
+        "executionHostId": "local",
+        "instanceId": "4d20d956-62d0-4d0b-a01b-53f743866603"
+      },
+      "instanceId": "4d20d956-62d0-4d0b-a01b-53f743866603",
+      "repoId": "05e56fd8-a572-453b-97cf-3806ffa313ed",
+      "projectId": "repo:05e56fd8-a572-453b-97cf-3806ffa313ed",
+      "hostId": "local",
+      "projectHostSetupId": "05e56fd8-a572-453b-97cf-3806ffa313ed",
+      "creatorProvenance": {
+        "kind": "host"
+      },
+      "path": "C:/AI/Orca-Codex-Validation-20261014/business-exec-20261015-r3/worktrees/fixture/component",
+      "head": "5d3ac7a739afdb0adaa5a73f83229bb08a67e7bd",
+      "branch": "refs/heads/cuiqinggang/component",
+      "isBare": false,
+      "isMainWorktree": false,
+      "displayName": "component",
+      "displayNameMode": "fixed",
+      "comment": "",
+      "linkedIssue": null,
+      "linkedPR": null,
+      "linkedLinearIssue": null,
+      "linkedLinearIssueWorkspaceId": null,
+      "linkedLinearIssueOrganizationUrlKey": null,
+      "linkedGitLabMR": null,
+      "linkedGitLabIssue": null,
+      "linkedBitbucketPR": null,
+      "linkedAzureDevOpsPR": null,
+      "linkedGiteaPR": null,
+      "linkedWorkItem": null,
+      "linkedTaskSourceContext": null,
+      "isArchived": false,
+      "isUnread": false,
+      "isPinned": false,
+      "sortOrder": 1792088480821,
+      "lastActivityAt": 1792088480819,
+      "createdAt": 1792088480819,
+      "cliProvenance": {
+        "kind": "created-by-cli",
+        "createdAt": 1792088464701
+      },
+      "baseRef": "main",
+      "workspaceStatus": "in-progress",
+      "parentWorktreeId": null,
+      "childWorktreeIds": [],
+      "lineage": null,
+      "workspaceLineage": null,
+      "git": {
+        "path": "C:/AI/Orca-Codex-Validation-20261014/business-exec-20261015-r3/worktrees/fixture/component",
+        "head": "5d3ac7a739afdb0adaa5a73f83229bb08a67e7bd",
+        "branch": "refs/heads/cuiqinggang/component",
+        "isBare": false,
+        "isMainWorktree": false
+      }
+    },
+    "registered_repo": {
+      "repo": {
+        "id": "48825aa4-b996-46d3-acad-3adb9fed5eb5",
+        "path": "C:\\AI\\Orca-Codex-Validation-20261014\\business-exec-20261015-r3\\fixture",
+        "displayName": "fixture",
+        "badgeColor": "#737373",
+        "addedAt": 1792089069747,
+        "kind": "git",
+        "externalWorktreeVisibilityLegacy": false,
+        "upstream": null,
+        "gitUsername": "",
+        "hookSettings": {
+          "mode": "auto",
+          "setupRunPolicy": "run-by-default",
+          "setupAgentStartupPolicy": "start-immediately",
+          "scripts": {
+            "setup": "",
+            "archive": ""
+          }
+        },
+        "externalWorktreeVisibility": "hide"
+      }
+    },
+    "worktree_selector": "path:C:/AI/Orca-Codex-Validation-20261014/business-exec-20261015-r3/worktrees/fixture/component",
+    "prompt_sha256": "3bed8b3102b359d904bef87eccab75e263ad1452933df0767b5b12355e9ab505",
+    "terminal": "term_10cfb960-c5cc-468c-a779-a50f54fa7a81",
+    "exec": {
+      "handle": "term_10cfb960-c5cc-468c-a779-a50f54fa7a81",
+      "cwd": "C:\\AI\\Orca-Codex-Validation-20261014\\business-exec-20261015-r3\\worktrees\\fixture\\component",
+      "userprofile": "C:\\Users\\A",
+      "argv": [
+        "C:\\Users\\A\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\bin\\codex.exe",
+        "exec",
+        "--sandbox",
+        "workspace-write",
+        "-c",
+        "approval_policy=\"on-request\"",
+        "-c",
+        "approvals_reviewer=\"auto_review\"",
+        "-c",
+        "service_tier=\"priority\"",
+        "-c",
+        "model_reasoning_effort=\"ultra\"",
+        "-c",
+        "projects={'C:\\AI\\Orca-Codex-Validation-20261014\\business-exec-20261015-r3\\fixture'={trust_level='trusted'},'C:\\AI\\Orca-Codex-Validation-20261014\\business-exec-20261015-r3\\worktrees\\fixture\\component'={trust_level='trusted'}}",
+        "--model",
+        "gpt-6.1-sol",
+        "--cd",
+        "C:/AI/Orca-Codex-Validation-20261014/business-exec-20261015-r3/worktrees/fixture/component",
+        "--json",
+        "--color",
+        "never",
+        "--output-last-message",
+        "C:\\AI\\Orca-Codex-Validation-20261014\\business-exec-20261015-r3\\recovery-r1\\last-message.txt",
+        "resume",
+        "01a140cc-584e-7c43-87a1-1f7ce24449c3",
+        "-"
+      ],
+      "started": 1792089071.3994563,
+      "pid": 30144,
+      "exit_code": 0,
+      "ended": 1792089355.4574668
+    },
+    "terminal_output": {
+      "terminal": {
+        "handle": "term_10cfb960-c5cc-468c-a779-a50f54fa7a81",
+        "status": "running",
+        "tail": [
+          "",
+          "C:\\AI\\Orca-Codex-Validation-20261014\\business-exec-20261015-r3\\worktrees\\fixture\\component>python -X utf8 \"C:\\AI\\Orca-Codex-Validation-20261014\\business-exec-20261015-r3\\recovery-r1\\exec-worker.py\"",
+          "EXEC_PROCESS_ENDED 0",
+          "",
+          "C:\\AI\\Orca-Codex-Validation-20261014\\business-exec-20261015-r3\\worktrees\\fixture\\component>"
+        ],
+        "truncated": false,
+        "limited": false,
+        "oldestCursor": "0",
+        "nextCursor": "4",
+        "latestCursor": "4",
+        "returnedLineCount": 5,
+        "source": "stream"
+      }
+    },
+    "bad_checks": [
+      {
+        "name": "T03_empty_report_file_output",
+        "passed": false,
+        "error": "ZeroDivisionError: division by zero",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 32, in case\n    try:fn();result=dict(name=name,passed=True,error=None)\n        ~~^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 102, in <lambda>\n    case('T03_empty_report_file_output',lambda:reporting(0))\n                                               ~~~~~~~~~^^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 97, in reporting\n    with contextlib.redirect_stdout(buf):ns2['report'](cfg,n,5,0,['x'],1,2,0,0 if not n else 2.0,0 if not n else 3,0 if not n else 4,0,results_file=str(file))\n                                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\dataset\\source\\scripts\\run.py\", line 229, in report\n    f\"{100 * pass1 / n_tasks:>6.1f}%\",\n       ~~~~~~~~~~~~^~~~~~~~~\nZeroDivisionError: division by zero\n",
+        "wall_ms": 128.36349999997765
+      },
+      {
+        "name": "T03_nonempty_report_regression",
+        "passed": true,
+        "error": null,
+        "wall_ms": 15.810499986400828
+      },
+      {
+        "name": "ALL_source_compile",
+        "passed": true,
+        "error": null,
+        "wall_ms": 105.34129998995923
+      }
+    ],
+    "candidate_checks": [
+      {
+        "name": "T03_empty_report_file_output",
+        "passed": true,
+        "error": null,
+        "wall_ms": 320.94770000549033
+      },
+      {
+        "name": "T03_nonempty_report_regression",
+        "passed": true,
+        "error": null,
+        "wall_ms": 160.4306999943219
+      },
+      {
+        "name": "ALL_source_compile",
+        "passed": true,
+        "error": null,
+        "wall_ms": 129.59890000638552
+      }
+    ],
+    "delivery_exists": true,
+    "git_diff": " scripts/run.py | 9 ++++++---\n 1 file changed, 6 insertions(+), 3 deletions(-)\n",
+    "git_status": " M scripts/run.py\n?? DELIVERY.md\n?? llm_verifier/__pycache__/\n?? tests/\n",
+    "passed": true,
+    "status": "T03_RECOVERY_QA_ACCEPTED_LIMITED_TERMINAL_ROUTE",
+    "terminal_close": {
+      "close": {
+        "handle": "term_10cfb960-c5cc-468c-a779-a50f54fa7a81",
+        "tabId": "aca6196f-7ab9-4f42-98df-7e804f6e9f63",
+        "ptyKilled": true
+      }
+    },
+    "remaining_owned": [],
+    "elapsed_ms": 307058.27119998867
+  },
+  "manifest": {
+    "scripts\\run.py": "320f2bf3825bf000bd501309e44ce39f36ce507005e0e694a07fe950777d2314",
+    "tests\\test_run_report_offline.py": "00cce6d3fd3ff845f165634f51c16f2ab0bb3cf542ab82c3db80c381d644c619",
+    "DELIVERY.md": "5a711c8b52b7627bac9a5470e56eedc05ed253336ecdbcd3b4aeb804992e2d10"
+  },
+  "diff": "diff --git a/scripts/run.py b/scripts/run.py\nindex 77c85f3..fa0ad60 100644\n--- a/scripts/run.py\n+++ b/scripts/run.py\n@@ -214,6 +214,9 @@ def run_benchmark(cfg, pivots=None, n_evaluations=None, seed=None,\n def report(cfg, n_tasks, n_runs, n_swing, criteria_ids, n_reps, k, seed,\n            pass1, verifier, oracle, avg_cmp, usage=USAGE, comparisons=None,\n            results_file=None):\n+    def rate(score):\n+        return f\"{100 * score / n_tasks:>6.1f}%\" if n_tasks else f\"{'--':>7s}\"\n+\n     lines = [\n         \"\",\n         \"=\" * 72,\n@@ -226,11 +229,11 @@ def report(cfg, n_tasks, n_runs, n_swing, criteria_ids, n_reps, k, seed,\n         f\"{'Method':<26s}  {'Score':>14s}  {'Rate':>7s}\",\n         \"-\" * 72,\n         f\"{'Pass@1':<26s}  {pass1:>8.2f}/{n_tasks}  \"\n-        f\"{100 * pass1 / n_tasks:>6.1f}%\",\n+        f\"{rate(pass1)}\",\n         f\"{'LLM-as-a-Verifier':<26s}  {verifier:>8d}/{n_tasks}  \"\n-        f\"{100 * verifier / n_tasks:>6.1f}%\",\n+        f\"{rate(verifier)}\",\n         f\"{'Oracle (Bo' + str(n_runs) + ')':<26s}  {oracle:>8d}/{n_tasks}  \"\n-        f\"{100 * oracle / n_tasks:>6.1f}%\",\n+        f\"{rate(oracle)}\",\n         \"-\" * 72,\n         # Tokens used by THIS run; cached comparisons use none.\n         *format_usage(usage),\n",
+  "changed_tracked": [
+    "scripts/run.py"
+  ],
+  "processes": [],
+  "accepted": true
+}
