@@ -6,6 +6,19 @@ description: GPT直连Windows三通道执行桥 V6.0｜唯一正式优先级 C�
 
 # GPT直连Windows三通道执行桥 V6.0
 
+
+## V6.0 正式冻结入口｜跨页面直接执行（2026-10-15）
+
+**冻结标识：FREEZE-GPT-WINDOWS-BRIDGE-V6-C-FIRST-20261015；正式优先级：C → A → B。**
+
+- **C（首选，默认生产）：** `Remote_Desktop_Commander`。以后凡是“GPT连接/操作本地Windows”、文件读取、PowerShell、Codex/桌面工作，除用户明确要求某一指定通道或任务确实需要特定执行合同外，**先使用C的现成工具完成授权任务**，无需用户逐页重新指定。当前设备以 `list_devices` 返回的在线设备为准，不写死设备ID。调用出现 `running + call_id` 时先 `get_tool_result`，未确认执行结果不得盲目再次执行。
+- **A（第二，独立修复对象）：** `GPT_Windows_MCP_Bridge`。仅当C离线、额度或权限阻塞，或C无法满足业务合同才考虑；A间歇性退出、409及初始化问题尚未认证根治，不能把一次连通误写为稳定。
+- **B（第三，专业审计/长任务）：** GitHub Actions + Windows Runner。通常在C、A都无法满足任务时使用；若用户明确需要GitHub原生审计、工件或隔离任务，可按任务合同直接选B。B内部沿用成熟 `FAST → BOUNDED → FULL` 适配，不要默认走有外部Action ZIP下载长尾风险的FULL。
+- **唯一权威：** 本仓库 `main:skills/extreme-time-automation-bridge/SKILL.md`。V5、V4、V3及历史章节只供故障追溯，任何“旧主路”字样不得覆盖V6。执行层优先直接选C，不为确认路由而无谓测试A/B。
+- **限制和事实：** 冻结的是跨页面操作规范与技能包规则；本机判路脚本只是建议器，不会自动控制ChatGPT的工具选择。跨页面若未载入技能包，应先按本文件识别V6，不能声称平台已被永久强制配置。绝不修改FlClash、Windows代理、密钥、已有唯一Tunnel或业务浏览器。
+- **Reality：** 2026-10-15 经C通道执行本机V6判路脚本，六项实测 `6/6 PASS`；`C优先`、`C不可用→A`、`C/A不可用→B`、`C未知先核验`、`特定GitHub证据→B`、`未知任务执行状态不重派`。该验证属于路由规则，不等价A稳定性修复或Windows冷启动验收。
+
+
 ## V6.0｜2026-10-15 正式唯一当前路由（覆盖以下 V5/V4/V3/V2 的旧“主路”“最新”）
 
 **用户冻结决议：C 第一（日常默认）→A 第二（保留完整诊断修复）→B 第三（GitHub审计/长任务备用）。** 新页面直接调用 `Remote_Desktop_Commander` 执行授权Windows业务；仅C离线、额度阻塞、权限不适用或确有特定能力需求时，才按序切到A、B。C仍要检查实际可达、调用额度与异步结果；A不因健康检查成功而宣称无故障。
