@@ -34,6 +34,10 @@
 - A/C底层均用Desktop Commander能力，`get_config` 等响应可能展示配置卡片。V6日常禁止无必要时调用 `get_config`、`get_usage_stats`、onboarding工具；优先直接执行`read_file`/`start_process`，只展示业务结果。ChatGPT平台是否显示工具卡片由客户端决定，**不声称可凭本地脚本强制隐藏**。
 - 当前正式A launcher的MCP命令已经带 `--no-onboarding`，因此不能再将这块配置展示误判为“脚本漏设关闭onboarding”。
 
+## 4A. V6 轻量判路已在 Windows 实机验收
+
+现有旧额度判路脚本依旧把Remote视作最后选项，因此V6新增**纯判路** `bootstrap/Invoke-Three-Route-Gate-V6.ps1`，并通过C在Windows部署同版文件 `C:\\AI\\GPT-Windows-Bridge-B\\persistence\\Invoke-Three-Route-Gate-V6.ps1`。PS5.1 Parser PASS；6个实际隔离调用案例PASS：C优先、C额度阻塞退A、C/A失效退B、C未知时先核C、明确GitHub工件才选B、未知执行状态不得盲重做。不会自动改变ChatGPT插件路由，不发网络请求、不读密钥、不重启进程。旧 `Invoke-Remote-Quota-Route-Gate.ps1` 退役为历史资料，不再指挥V6。
+
 ## 5. 质量合同、额外权限与接续
 
 - 不修改FlClash/系统代理、Windows桌面权限、已登录浏览器、Runner注册或密钥。只在副作用已授权且目标明确时执行；安全变更要备份、冻结SHA和验收。禁止创建第二Tunnel或第二Supervisor。
