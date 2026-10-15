@@ -1,0 +1,161 @@
+{
+  "scope": "SINGLE_T03_SMOKE_NOT_FULL_REALITY",
+  "started": 1792086588.531252,
+  "checks": [
+    "OFFICIAL_STARTUP_IMPORT_READY"
+  ],
+  "effective_settings_verified": true,
+  "worktree": {
+    "id": "034ab7ea-4ac3-4de9-857f-c70c72e9d7f9::C:/AI/Orca-Codex-Validation-20261014/business-smoke-20261015-r1/worktrees/fixture/component",
+    "identity": {
+      "key": "wt2:local:a267b425-2ab8-4db9-98ca-5a3052332b36",
+      "executionHostId": "local",
+      "instanceId": "a267b425-2ab8-4db9-98ca-5a3052332b36"
+    },
+    "instanceId": "a267b425-2ab8-4db9-98ca-5a3052332b36",
+    "repoId": "034ab7ea-4ac3-4de9-857f-c70c72e9d7f9",
+    "projectId": "repo:034ab7ea-4ac3-4de9-857f-c70c72e9d7f9",
+    "hostId": "local",
+    "projectHostSetupId": "034ab7ea-4ac3-4de9-857f-c70c72e9d7f9",
+    "creatorProvenance": {
+      "kind": "host"
+    },
+    "path": "C:/AI/Orca-Codex-Validation-20261014/business-smoke-20261015-r1/worktrees/fixture/component",
+    "head": "fb9a5731c5653c294181dbc0301de509683f17fa",
+    "branch": "refs/heads/cuiqinggang/component",
+    "isBare": false,
+    "isMainWorktree": false,
+    "displayName": "component",
+    "displayNameMode": "fixed",
+    "comment": "",
+    "linkedIssue": null,
+    "linkedPR": null,
+    "linkedLinearIssue": null,
+    "linkedLinearIssueWorkspaceId": null,
+    "linkedLinearIssueOrganizationUrlKey": null,
+    "linkedGitLabMR": null,
+    "linkedGitLabIssue": null,
+    "linkedBitbucketPR": null,
+    "linkedAzureDevOpsPR": null,
+    "linkedGiteaPR": null,
+    "linkedWorkItem": null,
+    "linkedTaskSourceContext": null,
+    "isArchived": false,
+    "isUnread": false,
+    "isPinned": false,
+    "sortOrder": 1792086597637,
+    "lastActivityAt": 1792086597635,
+    "createdAt": 1792086597635,
+    "cliProvenance": {
+      "kind": "created-by-cli",
+      "createdAt": 1792086595544
+    },
+    "baseRef": "main",
+    "workspaceStatus": "in-progress",
+    "parentWorktreeId": null,
+    "childWorktreeIds": [],
+    "lineage": null,
+    "workspaceLineage": null,
+    "git": {
+      "path": "C:/AI/Orca-Codex-Validation-20261014/business-smoke-20261015-r1/worktrees/fixture/component",
+      "head": "fb9a5731c5653c294181dbc0301de509683f17fa",
+      "branch": "refs/heads/cuiqinggang/component",
+      "isBare": false,
+      "isMainWorktree": false
+    }
+  },
+  "coordinator": "term_77d1df3c-eae0-40cc-b2ee-c8f56933a5ed",
+  "dispatch": {
+    "stage": "DISPATCH_RETURNED",
+    "run": {
+      "run": {
+        "id": "run_5b3939eb3ad9",
+        "objective": "One isolated T03 BAD replay; no other task; no production changes.",
+        "coordinator_handle": "term_77d1df3c-eae0-40cc-b2ee-c8f56933a5ed",
+        "consumer_generation": 1,
+        "legacy": 0,
+        "created_at": "2026-10-15T17:49:58Z",
+        "updated_at": "2026-10-15T17:49:58Z"
+      },
+      "mutation": {
+        "requestId": "fdc0e49e-ba76-41cc-8987-b9053c7d8cad",
+        "replayed": false
+      }
+    },
+    "worker": {
+      "runId": "run_5b3939eb3ad9",
+      "taskId": "task_42815db4ed37",
+      "dispatchId": "ctx_a5b4ebb6277a",
+      "state": "failed",
+      "stage": "agent_readiness",
+      "failedStage": "agent_readiness",
+      "lastError": "Agent startup blocked: agent-trust-workspace",
+      "setup": {
+        "requested": "not_applicable",
+        "effective": "not_applicable",
+        "source": "existing_worktree",
+        "hookFound": false,
+        "startupPolicy": "start-immediately",
+        "state": "not_applicable"
+      },
+      "launch": {
+        "requested": {
+          "agent": "codex",
+          "model": "gpt-6.1-sol",
+          "effort": "ultra"
+        },
+        "effective": {
+          "agent": "codex",
+          "model": "gpt-6.1-sol",
+          "effort": "ultra"
+        }
+      },
+      "mode": {
+        "mode": "terminal",
+        "preferred": "terminal",
+        "reason": "user_default",
+        "detail": "Started a terminal agent worker, the default for new agent tabs in your settings."
+      },
+      "effects": [
+        {
+          "kind": "worktree",
+          "action": "reused",
+          "id": "034ab7ea-4ac3-4de9-857f-c70c72e9d7f9::C:/AI/Orca-Codex-Validation-20261014/business-smoke-20261015-r1/worktrees/fixture/component"
+        },
+        {
+          "kind": "setup",
+          "action": "not_applicable",
+          "state": "not_applicable"
+        },
+        {
+          "kind": "terminal",
+          "role": "agent",
+          "action": "created",
+          "id": "term_53c7c219-a245-45bf-b902-6ce1e4acf12f",
+          "surface": "background",
+          "warning": "Terminal term_53c7c219-a245-45bf-b902-6ce1e4acf12f is running, but Orca could not make it discoverable. Run `orca terminal focus --terminal term_53c7c219-a245-45bf-b902-6ce1e4acf12f` to reveal and focus it."
+        }
+      ],
+      "residualResources": [
+        {
+          "kind": "terminal",
+          "role": "agent",
+          "action": "created",
+          "id": "term_53c7c219-a245-45bf-b902-6ce1e4acf12f",
+          "surface": "background",
+          "warning": "Terminal term_53c7c219-a245-45bf-b902-6ce1e4acf12f is running, but Orca could not make it discoverable. Run `orca terminal focus --terminal term_53c7c219-a245-45bf-b902-6ce1e4acf12f` to reveal and focus it."
+        }
+      ],
+      "recovery": "This start created a terminal that never ran the Task. Close it with: orca orchestration worker-release --dispatch ctx_a5b4ebb6277a",
+      "mutation": {
+        "requestId": "0e63deb4-119b-4b63-9983-877c10bdd66f",
+        "replayed": false
+      }
+    },
+    "terminal": "term_77d1df3c-eae0-40cc-b2ee-c8f56933a5ed"
+  },
+  "passed": false,
+  "error": "{'runId': 'run_5b3939eb3ad9', 'taskId': 'task_42815db4ed37', 'dispatchId': 'ctx_a5b4ebb6277a', 'state': 'failed', 'stage': 'agent_readiness', 'failedStage': 'agent_readiness', 'lastError': 'Agent startup blocked: agent-trust-workspace', 'setup': {'requested': 'not_applicable', 'effective': 'not_applicable', 'source': 'existing_worktree', 'hookFound': False, 'startupPolicy': 'start-immediately', 'state': 'not_applicable'}, 'launch': {'requested': {'agent': 'codex', 'model': 'gpt-6.1-sol', 'effort': 'ultra'}, 'effective': {'agent': 'codex', 'model': 'gpt-6.1-sol', 'effort': 'ultra'}}, 'mode': {'mode': 'terminal', 'preferred': 'terminal', 'reason': 'user_default', 'detail': 'Started a terminal agent worker, the default for new agent tabs in your settings.'}, 'effects': [{'kind': 'worktree', 'action': 'reused', 'id': '034ab7ea-4ac3-4de9-857f-c70c72e9d7f9::C:/AI/Orca-Codex-Validation-20261014/business-smoke-20261015-r1/worktrees/fixture/component'}, {'kind': 'setup', 'action': 'not_applicable', 'state': 'not_applicable'}, {'kind': 'terminal', 'role': 'agent', 'action': 'created', 'id': 'term_53c7c219-a245-45bf-b902-6ce1e4acf12f', 'surface': 'background', 'warning': 'Terminal term_53c7c219-a245-45bf-b902-6ce1e4acf12f is running, but Orca could not make it discoverable. Run `orca terminal focus --terminal term_53c7c219-a245-45bf-b902-6ce1e4acf12f` to reveal and focus it.'}], 'residualResources': [{'kind': 'terminal', 'role': 'agent', 'action': 'created', 'id': 'term_53c7c219-a245-45bf-b902-6ce1e4acf12f', 'surface': 'background', 'warning': 'Terminal term_53c7c219-a245-45bf-b902-6ce1e4acf12f is running, but Orca could not make it discoverable. Run `orca terminal focus --terminal term_53c7c219-a245-45bf-b902-6ce1e4acf12f` to reveal and focus it.'}], 'recovery': 'This start created a terminal that never ran the Task. Close it with: orca orchestration worker-release --dispatch ctx_a5b4ebb6277a', 'mutation': {'requestId': '0e63deb4-119b-4b63-9983-877c10bdd66f', 'replayed': False}}",
+  "remaining_owned": [],
+  "elapsed_ms": 15810.993999999482
+}
