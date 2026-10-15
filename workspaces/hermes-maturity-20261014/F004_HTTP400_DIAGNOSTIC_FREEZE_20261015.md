@@ -64,3 +64,17 @@ H-ECO-04：网页端实际聊天、冷开机/恢复、长稳与五轮综合、�
 ## 5. 下一唯一节点
 ONLY_NEXT=H-ECO-01-F004-OFFLINE-SERIALIZATION-PATCH-AND-ADMISSION-RECONCILE
 先保全旧证据与首次请求回执→在新隔离候选中做最小改动→离线验证+Freeze→获准后仅一次 Reality admission 试验。保持 C→A→B；不为验证这个错误而重新开启整套五轮或重装服务。
+
+## 6. 本节点追加：隔离补丁已实际物化并通过离线验证
+2026-10-15 通过 V6 优先 C 通道连接实际 Windows，在既有 F002 目录旁新建：
+`C:/Users/A/.hermes/skills/hermes-mature-supertool/evidence/HERMES-ECO-20261014/F004_CANDIDATE/Invoke-Acceptance.CANDIDATE.ps1`
+**只是隔离候选文件**；源 F002/Invoke-Acceptance.ps1 仍保持 SHA256=`EA285EDE3571DB4EF8C6ECF9005B3A1036D4F4FD1A4728DCA29C3D9586CD0009`，候选本机 SHA256=`C3CA109844E7020F358FFB29A93E1B535AF8DE6BDE6EA389FAFC60B25CCD04BE`。
+对照变动严格限定两处：显式 [string] Get-Content + POST 前 JSON input 非空字符串断言。复用原 instructions / model / 幂等键逻辑，未碰配置。
+- PowerShell 5.1 Parser：PASS。
+- F002 R01–R05 每轮两段、共10份原 prompt：`OFFLINE_PAYLOADS=10/10_PASS`（断言 input 为非空 string、JSON 不含 PSPath）。
+- 源文件 SHA 未变，`ORIGINAL_UNCHANGED=TRUE`。
+- 全部操作没有执行候选、没有调用 Hermes POST/付费模型；因此**实际 admission Gate=NOT_TESTED，五轮仍0/5**。
+- GitHub 候选：`workspaces/hermes-maturity-20261014/F004/Invoke-Acceptance.CANDIDATE.ps1`；新文件已 GitHub 回读与上传文本逐字相等，Git blob `cc1a343d0b4ddfd2511b1312af6aa29e2ed7aa18`。本机原始字节 SHA 只约束本机候选；云端文本回读相等不代替跨机器原始字节SHA。
+- **重要**：此候选不是可以直接运行的完整 F004 任务目录，因为它依赖同目录的 `REALITY-F002.json`、prepare.py、fixtures 等。下次执行前应先在隔离新合同中重建相应合法目录、生成新 Freeze 和检查源哈希，绝不能直接调用候选来撞已有 F002 的哈希门。
+
+当前结论：H-ECO-01 本次完成了 **故障结构对账→本机重现→最小隔离修复→PowerShell parser/10个请求离线负载复核→网络与本机双端冻结**。后续唯一现实准入门仍是先对账旧请求并在新合同下做一次合法 POST admission；不得冒充已完成整站成熟认证。
