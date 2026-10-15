@@ -2,13 +2,13 @@
   "schema_version": "1.0",
   "project": "Hermes Mature AI Coding SuperTool Ecosystem Station",
   "task_id": "HERMES-ECO-20261014",
-  "freeze_id": "HERMES-ECO-F017-20261015",
-  "record_date": "2026-10-15",
-  "phase": "HERMES_NATIVE_171_AND_CODEX_KB_FAST_PATH_CANDIDATE_VALID_OTHER_STATION_GATES_PENDING",
+  "freeze_id": "HERMES-ECO-F018-20261016",
+  "record_date": "2026-10-16",
+  "phase": "F013_F014_NATIVE_REALITY_PASS_F018_STATIC_18_18_PASS_V7_C_FIRST_A_PAUSED_OTHER_STATION_GATES_PENDING",
   "skill_name": "hermes-mature-supertool",
   "skill_version": "2.0",
   "skill_location": "C:/Users/A/.hermes/skills/hermes-mature-supertool/SKILL.md",
-  "method": "三人行V2 explicitly selected for Hermes project; Hermes upper framework v2.0 retained; V6 bridge C>A>B",
+  "method": "三人行V2 explicitly selected for Hermes project (not global default); Hermes upper framework v2.0 retained; Windows bridge V7 C first, B fallback, A PAUSED_BY_USER",
   "final_valid": false,
   "verified_full_5_rounds": 0,
   "reason": "F002 R01 HTTP400 / missing acknowledgement and independent grade",
@@ -32,7 +32,10 @@
     ],
     "model_real_task_success_current": "NOT_TESTED",
     "api_toolsets_current": "UNKNOWN (GET /v1/toolsets WebException)",
-    "config_sha256": "02DCA0E1D3DFC80F693BF9ECFE3C3E70DD3F85E4F361A670D60ADE2A5ED75983"
+    "config_sha256": "02DCA0E1D3DFC80F693BF9ECFE3C3E70DD3F85E4F361A670D60ADE2A5ED75983",
+    "config_sha256_live_f018": "7C28A8AC406280363D08F043A656FF53894C562AF36CA4895D0C2F75511B3E71",
+    "config_sha256_previous_snapshot": "02DCA0E1D3DFC80F693BF9ECFE3C3E70DD3F85E4F361A670D60ADE2A5ED75983",
+    "config_sha256_earlier_snapshot_differs": true
   },
   "historical_assets": {
     "prior_formal_wrapper": "C:/Users/A/AppData/Local/hermes/bin/ltmvh-hermes-formal.ps1",
@@ -127,17 +130,23 @@
     "f016_natural_router_freeze": "workspaces/hermes-maturity-20261014/F016_NATURAL_TASK_SKILL_ROUTER_FREEZE_20261015.md",
     "f016_natural_router_real": "workspaces/hermes-maturity-20261014/F016_NATURAL_TASK_SKILL_ROUTER_REALITY_20261015.md",
     "f017_fast_freeze": "workspaces/hermes-maturity-20261014/F017_FAST_KB_SKILL_ROUTE_VIRTUAL_FREEZE_20261015.md",
-    "f017_fast_reality": "workspaces/hermes-maturity-20261014/F017_FAST_KB_SKILL_ROUTE_REALITY_20261015.md"
+    "f017_fast_reality": "workspaces/hermes-maturity-20261014/F017_FAST_KB_SKILL_ROUTE_REALITY_20261015.md",
+    "f018_security_reality": "workspaces/hermes-maturity-20261014/F018_SKILL_BACKUP_SECRET_SCAN_REMEDIATION_20261016.md",
+    "f018_local_manifest": "C:/Users/A/.hermes/skills/hermes-mature-supertool/evidence/HERMES-ECO-20261014/F018_SAFE_ARCHIVE_RELOCATION_20261016.md"
   },
-  "next_step": "F018 safety: investigate original Hermes skill package static checker 1 YAML secret-like hit via approved non-sensitive audit; do not print secret content, modify frozen old evidence or bypass safety. Separately GUI real E2E requires authorized existing Chrome control (no CDP9222); other multimodal/session/startup and 7-14day continuous 5x integrated real rounds remain. Use F017 fast skill route for known task intent; no need repeat simple task now.",
+  "next_step": "F018 scoped static safety gap closed (18/18); do not re-run completed F013/F014 or historical F002 UNKNOWN. Next highest-value unmet gates: actual GUI existing-session end-to-end (requires an authorized GUI path), bounded real model/Repair and multimodal independent verification, checkpoint full current-version resume, and five consecutive end-to-end integrated Reality runs; F002 API admission requires exact-once reconciliation before any new dispatch. C is sole daily Windows route; B only fallback/GitHub evidence; A paused.",
   "transport": {
-    "policy": "C_FIRST_A_SECOND_B_THIRD",
-    "version": "6.0.0",
-    "reference": "C:/AI/GPT-Windows-Bridge-B/persistence/Invoke-Three-Route-Gate-V6.ps1",
-    "c_live_ping": "PASS_2026-10-15",
-    "a_this_round": "NOT_CHECKED",
-    "b_this_round": "NOT_CHECKED",
-    "advisory_only": true
+    "policy": "C_FIRST_B_FALLBACK_A_PAUSED",
+    "version": "7.0.0",
+    "reference": "C:/AI/GPT-Windows-Bridge-B/persistence/Invoke-Three-Route-Gate-V7.ps1",
+    "c_live_ping": "PASS 2026-10-15T16:17:40Z via Remote_Desktop_Commander",
+    "a_this_round": "NOT_INVOKED_PAUSED_BY_USER",
+    "b_this_round": "NOT_CHECKED_C_READY",
+    "advisory_only": true,
+    "a_route_state": "PAUSED_BY_USER",
+    "a_dispatch_allowed": false,
+    "bridge_v7_freeze": "FREEZE-GPT-WINDOWS-BRIDGE-V7-A-PAUSED-20261016",
+    "v7_local_sha256": "A01D22B210632FAB72F0AF84D6E3F360FCA531EB62A18F72D23360F8006727E2"
   },
   "current_gates": {
     "CLI_FORMAL_MODEL_CURRENT": "RUNTIME_PASS scoped; OpenRouter DeepSeek 4.1 Flash; marker exactly HERMES_F004_CLI_OK; exit0; process 38.73s",
@@ -163,7 +172,10 @@
     "KNOWLEDGE_BRAIN_HEALTH": "CURRENT_PASS existing official kb_health_check.ps1 all enumerated status checks PASS, FINAL_RESULT=PASS",
     "NATURAL_TASK_CODEX_ROUTING": "RUNTIME_PASS F016 deep, F017 fast candidate same three quality gates. F016 202.49s, F017 91.82s; count sourced from actual CLI process runtime, no stable T*.",
     "NATURAL_ROUTING_PERFORMANCE": "REALITY_OBSERVED process wall 202.49s one complex deep-index task, no stable T_VALID baseline, not proof of speed improvement; next optimize when same quality/contract",
-    "CODEX_SKILL_FAST_PATH": "KEEP_REALITY_OBSERVED_CANDIDATE F017 natural PS5.1 plan with one Codex skill, same 3 quality gates, exit0 runtime91.82s vs F016 deep route runtime202.49s (single samples, no certified stable speedup). Mother skill reference updated to prefer direct index search when route frozen."
+    "CODEX_SKILL_FAST_PATH": "KEEP_REALITY_OBSERVED_CANDIDATE F017 natural PS5.1 plan with one Codex skill, same 3 quality gates, exit0 runtime91.82s vs F016 deep route runtime202.49s (single samples, no certified stable speedup). Mother skill reference updated to prefer direct index search when route frozen.",
+    "F018_NATIVE_SKILL_KB_RECHECK": "SCOPED_REALITY_PASS 2026-10-16. Hermes formal CLI original OpenRouter deepseek-v4.1-flash: native skills_list 171; skill_view supertool and repair both success; Knowledge Brain ROUTING_MAP native read_file success; exit0; CLI measured wall 26939ms; single sample only",
+    "F018_STATIC_SECRET_PATTERN_LATEST": "SCOPED_STATIC_REALITY_PASS 18/18, failure_count=0, secret patterns 0 after verified SHA-preserving move of historical YAML config snapshot out of skills scan root; active config not edited",
+    "BRIDGE_V7_REAL_ROUTE_CURRENT": "SCOPED_REALITY_PASS C tool pong, v7 PowerShell parser 0, SHA matches official freeze, tests C selected/B fallback/A always blocked. Does not disable A at platform level"
   },
   "external_skills_actual": {
     "active_home": "C:/Users/A/AppData/Local/hermes",
