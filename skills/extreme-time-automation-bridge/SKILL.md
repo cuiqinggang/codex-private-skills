@@ -1,7 +1,19 @@
 ---
 name: extreme-time-automation-bridge
-version: "5.0.0"
-description: GPT直连Windows双路执行桥 V5.0。完整继承V3 B路三档成熟路由与V4 A路PS-002、守护器重载、状态入口修复；归档真实故障、失败候选、SHA和回滚，明确A短时调用PASS、实际守护启动一次，真实冷开机与长期稳定仍待验收。
+version: "6.0.0"
+description: GPT直连Windows三通道执行桥 V6.0｜唯一正式优先级 C（Remote Desktop Commander）>A（自建OpenAI Tunnel MCP）>B（GitHub Windows Runner）；C默认生产，A保留并调查间歇性退出，B按FAST/BOUNDED/FULL成熟分流。继承V5/V3历史证据与安全边界。
+---
+
+# GPT直连Windows三通道执行桥 V6.0
+
+## V6.0｜2026-10-15 正式唯一当前路由（覆盖以下 V5/V4/V3/V2 的旧“主路”“最新”）
+
+**用户冻结决议：C 第一（日常默认）→A 第二（保留完整诊断修复）→B 第三（GitHub审计/长任务备用）。** 新页面直接调用 `Remote_Desktop_Commander` 执行授权Windows业务；仅C离线、额度阻塞、权限不适用或确有特定能力需求时，才按序切到A、B。C仍要检查实际可达、调用额度与异步结果；A不因健康检查成功而宣称无故障。
+
+**先读取本 V6 极简入口与 [V6 决议、现场故障证据、B成熟分流和回退](V6_C_FIRST_A_RECOVERY_B_ROUTE_20261015.md)**。B短任务严格根据V3选择FAST（仅日志）或V2 BOUNDED（小型非敏感成功工件）；旧FULL仅用于强审计/大结果/失败证据等要求，承认Windows侧下载外部ZIP长尾风险。A已出现PID更替与本机Supervisor Exit0/Exit1，真正根因仍未确认；不动FlClash、Windows代理、Runtime Key、现有唯一Tunnel，未经现实验收不得称修复完成。截图的MCP配置面板属于ChatGPT工具显示层，不是隧道中断原因；日常不调用多余get_config。
+
+**V6状态：** `C_FIRST=POLICY_FROZEN`; `C_REAL_IO_AND_COMMAND=PASS`; `A_SECOND=INTERMITTENT_EXITS_PENDING_ROOT_FIX`; `B_THIRD=V3_BOUNDED_5_OF_5_HISTORICAL_PASS`; `V6_SKILL_PUBLISHED=YES`; `A_ZERO_FAILURE=NOT_PROVEN`. 下文V5及以下所有“最高优先级”“当前主路”只保留作历史版本，不覆盖V6。
+
 ---
 
 # GPT直连Windows双路执行桥 V5.0
