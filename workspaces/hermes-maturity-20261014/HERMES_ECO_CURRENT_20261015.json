@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "project": "Hermes Mature AI Coding SuperTool Ecosystem Station",
   "task_id": "HERMES-ECO-20261014",
-  "freeze_id": "HERMES-ECO-F009-20261015",
+  "freeze_id": "HERMES-ECO-F010-20261015",
   "record_date": "2026-10-15",
-  "phase": "F009_API_ADMISSION_VIRTUAL_FROZEN_WAIT_AUTHORIZED_REALITY",
+  "phase": "NORMAL_NATIVE_CLI_REPAIR_RUNTIME_PASS_API_RUNS_DECOUPLED",
   "skill_name": "hermes-mature-supertool",
   "skill_version": "2.0",
   "skill_location": "C:/Users/A/.hermes/skills/hermes-mature-supertool/SKILL.md",
@@ -114,9 +114,11 @@
     "f007_vision_real": "workspaces/hermes-maturity-20261014/F007_VISION_REALITY_20261015.md",
     "f008_delegation_freeze": "workspaces/hermes-maturity-20261014/F008_DELEGATION_VIRTUAL_FREEZE_20261015.md",
     "f008_delegation_real": "workspaces/hermes-maturity-20261014/F008_DELEGATION_REALITY_20261015.md",
-    "f009_api_admission_freeze": "workspaces/hermes-maturity-20261014/F009_API_ADMISSION_VIRTUAL_FREEZE_20261015.md"
+    "f009_api_admission_freeze": "workspaces/hermes-maturity-20261014/F009_API_ADMISSION_VIRTUAL_FREEZE_20261015.md",
+    "f010_native_cli_repair_freeze": "workspaces/hermes-maturity-20261014/F010_NATIVE_CLI_REPAIR_FREEZE_20261015.md",
+    "f010_native_cli_repair_reality": "workspaces/hermes-maturity-20261014/F010_NATIVE_CLI_REPAIR_REALITY_20261015.md"
   },
-  "next_step": "H-ECO-01 user-authorized existing trusted authenticated Hermes API client needed for isolated Runs admission. Prior credential extraction was safety blocked; do not bypass. Old F002 UNKNOWN no redispatch. New POST only after evidence reconciliation + new freeze. F005 Repair remains blocked. Other scopes previously verified remain.",
+  "next_step": "F011 normal Open WebUI existing browser actual interaction if a legitimate controllable GUI connection exists; otherwise continue genuine native Hermes CLI capability gates. Do not block on self-built F002 Runs API 400. F002 old request UNKNOWN no re-dispatch. Whole-station integrated 0/5 and sustained runtime gates still pending.",
   "transport": {
     "policy": "C_FIRST_A_SECOND_B_THIRD",
     "version": "6.0.0",
@@ -130,8 +132,8 @@
     "CLI_FORMAL_MODEL_CURRENT": "RUNTIME_PASS scoped; OpenRouter DeepSeek 4.1 Flash; marker exactly HERMES_F004_CLI_OK; exit0; process 38.73s",
     "CLI_FILE_READ_CURRENT": "RUNTIME_PASS scoped; hidden file token matched; exit0; process 29.52s",
     "CONTINUITY_TASK_SCRIPT": "RUNTIME_PASS scoped; 2-step checkpoint handoff new-process resume closeout CLOSED_PASS",
-    "API_RUNS_ADMISSION": "NOT_CERTIFIED original F002 R01 HTTP400 request input object; F004 string patch offline10/10; no new POST; approved authenticated API entry pending",
-    "REPAIR_NATIVE_CURRENT": "BLOCKED; F005 input copied but unittest runner first error, direct .cmd execution security blocked",
+    "API_RUNS_ADMISSION": "NOT_CERTIFIED_F002_R01_BAD_PAYLOAD. INDEPENDENT_OPTIONAL_AUTOMATION_GATE_NOT_PREREQUISITE_FOR_NATIVE_CLI_OR_OPENWEBUI_WORKFLOWS",
+    "REPAIR_NATIVE_CURRENT": "SCOPED_RUNTIME_PASS 2026-10-15: Hermes native formal CLI independently repaired F005_REPAIR/invoice.py only, exit0 runtime52.87s; external separate Python unittest ran 8/8 OK exit0, runtime0.72s; test/spec/cmd and F002 original hashes unchanged",
     "NATIVE_DELEGATE_GATE": "RUNTIME_PASS scoped 2026-10-15, one two-child delegate_task batch, manifest deleg_e6411f32 task_count2 both completed, correct code/test review, real CLI exit0 runtime74.95s; child tool event bodies not inspected",
     "WEBSITE_ACTUAL_CHAT": "PENDING",
     "MULTIMODAL_AUDIO_VIDEO": "PENDING",
@@ -140,6 +142,8 @@
     "ENDURANCE_7_TO_14_DAYS": "PENDING",
     "VISION_IMAGE_CONTENT": "SCOPED_OUTPUT_PASS 2026-10-15: real CLI analyzed existing visual.png, expected three colors and shapes correct, exit0 runtime56.38s",
     "VISION_NATIVE_TOOL_EVENT": "NOT_VERIFIED no independent vision_analyze tool.completed log in current scoped evidence",
-    "API_AUTH_PROTECTION": "C channel on-device GET /v1/capabilities no credentials -> HTTP 401, exit0, expected bearer protection (not service outage)"
+    "API_AUTH_PROTECTION": "C channel on-device GET /v1/capabilities no credentials -> HTTP 401, exit0, expected bearer protection (not service outage)",
+    "OPENWEBUI_SERVICE": "HTTP200 2026-10-15 on 127.0.0.1:3000/health; Chrome running, actual GUI chat NOT_VERIFIED",
+    "REPAIR_SKILL_VIEW": "Hermes CLI reported skill_view hermes-repair-loop-adapter not found this session; native CLI repair succeeded, skill registration remains separate verification item"
   }
 }
