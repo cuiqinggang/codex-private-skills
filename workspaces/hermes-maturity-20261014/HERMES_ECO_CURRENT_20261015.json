@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "project": "Hermes Mature AI Coding SuperTool Ecosystem Station",
   "task_id": "HERMES-ECO-20261014",
-  "freeze_id": "HERMES-ECO-F008-20261015",
+  "freeze_id": "HERMES-ECO-F009-20261015",
   "record_date": "2026-10-15",
-  "phase": "NATIVE_DELEGATION_REALITY_PASS_AND_VISION_IMAGE_RESULT_PASS_API_REPAIR_PENDING",
+  "phase": "F009_API_ADMISSION_VIRTUAL_FROZEN_WAIT_AUTHORIZED_REALITY",
   "skill_name": "hermes-mature-supertool",
   "skill_version": "2.0",
   "skill_location": "C:/Users/A/.hermes/skills/hermes-mature-supertool/SKILL.md",
@@ -113,9 +113,10 @@
     "f007_vision_freeze": "workspaces/hermes-maturity-20261014/F007_VISION_GATE_FREEZE_20261015.md",
     "f007_vision_real": "workspaces/hermes-maturity-20261014/F007_VISION_REALITY_20261015.md",
     "f008_delegation_freeze": "workspaces/hermes-maturity-20261014/F008_DELEGATION_VIRTUAL_FREEZE_20261015.md",
-    "f008_delegation_real": "workspaces/hermes-maturity-20261014/F008_DELEGATION_REALITY_20261015.md"
+    "f008_delegation_real": "workspaces/hermes-maturity-20261014/F008_DELEGATION_REALITY_20261015.md",
+    "f009_api_admission_freeze": "workspaces/hermes-maturity-20261014/F009_API_ADMISSION_VIRTUAL_FREEZE_20261015.md"
   },
-  "next_step": "H-ECO-01 original F002 API admission remains NOT_CERTIFIED, patch F004 offline only; use only preauthorized official authenticated API mechanism, no credential extraction or security bypass; require real run_id/receipt from new isolated contract after exactly-once reconciliation. F005 Repair unittest remains platform-blocked; no claim of bypass/Repair PASS. Other gates multimedia UI/cold/5x/sustained pending.",
+  "next_step": "H-ECO-01 user-authorized existing trusted authenticated Hermes API client needed for isolated Runs admission. Prior credential extraction was safety blocked; do not bypass. Old F002 UNKNOWN no redispatch. New POST only after evidence reconciliation + new freeze. F005 Repair remains blocked. Other scopes previously verified remain.",
   "transport": {
     "policy": "C_FIRST_A_SECOND_B_THIRD",
     "version": "6.0.0",
@@ -129,7 +130,7 @@
     "CLI_FORMAL_MODEL_CURRENT": "RUNTIME_PASS scoped; OpenRouter DeepSeek 4.1 Flash; marker exactly HERMES_F004_CLI_OK; exit0; process 38.73s",
     "CLI_FILE_READ_CURRENT": "RUNTIME_PASS scoped; hidden file token matched; exit0; process 29.52s",
     "CONTINUITY_TASK_SCRIPT": "RUNTIME_PASS scoped; 2-step checkpoint handoff new-process resume closeout CLOSED_PASS",
-    "API_RUNS_ADMISSION": "NOT_CERTIFIED F002 R01 HTTP400, F004 offline 10/10 patch candidate only",
+    "API_RUNS_ADMISSION": "NOT_CERTIFIED original F002 R01 HTTP400 request input object; F004 string patch offline10/10; no new POST; approved authenticated API entry pending",
     "REPAIR_NATIVE_CURRENT": "BLOCKED; F005 input copied but unittest runner first error, direct .cmd execution security blocked",
     "NATIVE_DELEGATE_GATE": "RUNTIME_PASS scoped 2026-10-15, one two-child delegate_task batch, manifest deleg_e6411f32 task_count2 both completed, correct code/test review, real CLI exit0 runtime74.95s; child tool event bodies not inspected",
     "WEBSITE_ACTUAL_CHAT": "PENDING",
@@ -138,6 +139,7 @@
     "FIVE_CONSECUTIVE": "0_OF_5",
     "ENDURANCE_7_TO_14_DAYS": "PENDING",
     "VISION_IMAGE_CONTENT": "SCOPED_OUTPUT_PASS 2026-10-15: real CLI analyzed existing visual.png, expected three colors and shapes correct, exit0 runtime56.38s",
-    "VISION_NATIVE_TOOL_EVENT": "NOT_VERIFIED no independent vision_analyze tool.completed log in current scoped evidence"
+    "VISION_NATIVE_TOOL_EVENT": "NOT_VERIFIED no independent vision_analyze tool.completed log in current scoped evidence",
+    "API_AUTH_PROTECTION": "C channel on-device GET /v1/capabilities no credentials -> HTTP 401, exit0, expected bearer protection (not service outage)"
   }
 }
