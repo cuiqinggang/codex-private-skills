@@ -1,0 +1,24 @@
+{
+  "settings": {
+    "agentDefaultArgs": {
+      "codex": "--sandbox workspace-write --ask-for-approval on-request"
+    },
+    "agentDefaultEnv": {
+      "codex": {}
+    },
+    "agentYoloDefaultsMigrated": true,
+    "agentStatusHooksEnabled": false,
+    "agentWorkspaceTrustEnabled": false,
+    "experimentalNativeChat": false,
+    "codexManagedAccounts": [],
+    "activeCodexManagedAccountId": null,
+    "activeCodexManagedAccountIdsByRuntime": {
+      "host": null,
+      "wsl": {}
+    },
+    "localWindowsRuntimeDefault": {
+      "kind": "windows-host"
+    },
+    "terminalWindowsShell": "powershell.exe"
+  }
+}
