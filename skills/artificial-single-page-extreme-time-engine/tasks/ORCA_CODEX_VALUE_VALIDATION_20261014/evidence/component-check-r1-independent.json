@@ -1,0 +1,56 @@
+{
+  "settings_import_pass": true,
+  "terminal_receipt_independent_readback": true,
+  "settings": {
+    "workspaceDir": "C:\\AI\\Orca-Codex-Validation-20261014\\component-check-20261015-r1\\worktrees",
+    "agentDefaultArgs": {
+      "codex": "--sandbox workspace-write --ask-for-approval on-request -c approvals_reviewer=auto_review -c service_tier=priority",
+      "claude": "",
+      "codebuddy": "",
+      "claude-agent-teams": "",
+      "openclaude": "",
+      "qoder": "",
+      "qoder-cn": "",
+      "gemini": "",
+      "antigravity": "",
+      "aider": "",
+      "amp": "",
+      "kiro": "",
+      "crush": "",
+      "autohand": "",
+      "cline": "",
+      "command-code": "",
+      "continue": "",
+      "cursor": "",
+      "kimi": "",
+      "muse": "",
+      "zcode": "",
+      "mistral-vibe": "",
+      "qwen-code": "",
+      "rovo": "",
+      "hermes": "",
+      "copilot": "",
+      "grok": "",
+      "devin": "",
+      "ante": "",
+      "trae": "",
+      "droid": ""
+    },
+    "agentDefaultEnv": {
+      "codex": {},
+      "goose": {}
+    },
+    "agentYoloDefaultsMigrated": true,
+    "agentStatusHooksEnabled": false,
+    "agentWorkspaceTrustEnabled": false,
+    "experimentalNativeChat": false,
+    "codexManagedAccounts": [],
+    "activeCodexManagedAccountId": null,
+    "localWindowsRuntimeDefault": {
+      "kind": "windows-host"
+    },
+    "terminalWindowsShell": "cmd.exe"
+  },
+  "result_sha256": "0efb8b573d625b9218cb9050e2389df65fc0afd469442fa1f56f383a38d6b835",
+  "harness_exit1_cause": "tuple/list JSON roundtrip comparison; component results independently verified"
+}
