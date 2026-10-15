@@ -119,3 +119,14 @@ INDEPENDENT_STATIC_WORK_ALLOWED=YES
 用户已给出原始通用拒绝文字，不再索取截图，不把未知拒绝原因作为所有独立工作的前置条件。原被拒运行时请求不重发、不换通道绕过。
 本轮通过C读取现有计时脚本/参数，通过GitHub.fetch_file读取固定Orca提交11份关键官方文件。发现关闭hooks仍有刷新和有条件系统配置回写；系统默认登录有成熟原生home分支，但旧迁移有条件处理auth，不能断言全程零复制；旧计时终点漏掉采样关闭/磁盘汇总/最终回执写入回读，采样为采集耗时加一秒。
 已保存计时修正规格和双方一致GPT修复政策候选，未部署或实测。尚缺实际PTY环境/调用链、custom-home判断及worker模型/权限参数schema。F001不可变，不批准N002；正式业务、连续十轮、AB计数不变。源码风险不等于本机副作用已经发生。
+
+## 2026-10-15 子进程环境、模型与权限审查（最新）
+LATEST_CHILD_PROCESS_REVIEW=CEO_CHILD_PROCESS_CONTRACT_REVIEW_V1.md
+LATEST_CHILD_PROCESS_REVIEW_COMMIT=0fe6d8d658f235aab73b13738081a1ee5ff2670f
+CHILD_PROCESS_RUNTIME_EVIDENCE=NOT_COLLECTED
+CODEX_DEFAULT_PERMISSION_SOURCE=EXPLICIT_OVERRIDE_REQUIRED_ORCA_DEFAULT_BYPASSES_SANDBOX_AND_APPROVALS
+MODEL_ARG_MAPPING=STATIC_CONFIRMED_NOT_EFFECTIVE_RUNTIME_PROOF
+WORKER_MODE=TERMINAL_OR_STRUCTURED_MUST_PIN_AND_READ_BACK
+固定源码确认：未显式配置 Codex 参数时回落跳过沙箱/审批的缺省值，不能声称自然继承 workspace-write；空字符串覆盖与缺键不同。worker-start 无 sandbox/approval/tier 参数，需落实本任务隔离设置及有效策略证据。模型映射 -m 与 model_reasoning_effort=ultra 已核对，后端采用值未测。worker 可为 structured，前次笼统终端描述由新报告纠正。
+PTY 环境已追踪到 provider.spawn 与本地 process.env 合并/最终删除；daemon 环境、实际可执行文件、真实用户 home 和权限仍须子进程回执。默认预信任可写 config.toml，不等于沙箱放宽，但必须符合全局配置保护约束。
+新报告已独立回读。没有启动模型/运行时，没有修改本机配置，没有重发被拒预检。F001 未批准、N002 未批准，Reality/十轮/AB 仍为 0；剩余 structured 端到端映射和实际回执明列，不能算准备已全部验收。
