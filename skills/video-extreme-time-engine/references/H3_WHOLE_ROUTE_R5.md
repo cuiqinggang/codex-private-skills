@@ -78,3 +78,9 @@ B可能兼得量化权重计算与临时激活优化，也可能因本机小分�
 
 整体修正：B撤销“原生W4A8必然加速”的收益假设。B保留为受保护FP16+上游安全权重复用/融合的候选，原生W4A8只能按实际支持条件启用。必须检查nodes.py的prepared-weight实现如何处理本LoRA，若该组合无明确收益依据则淘汰B，不用数分钟生成来探索开关。
 迭代结果不是全球最优认证；截至本轮仍以R4为最好已实测方案。覆盖与反例审查已完成本轮，整套执行成熟门尚未通过，测试授权锁未改。
+
+## 迭代6：整体执行准入完成（固定R5）
+已核对nodes.py：标准ComfyUI LoRA通过CastBiasWeightContext应用后才复制私有临时权重；外部forward替换不强行复用。原生W4A8收益仍不预计。为避免重复精度保护，B最终保留独立FP16 2.0.14，只在LoRA后加入MiniMaxH3ActivationChunkStar7，Guider和Scheduler同步连至新节点。
+固定chunk插件2.18.7@e03ee508dd9aedf6189d3f31d063691909f5aced；Windows DLL大小及SHA符合清单。完整插件实际导入成功，ComfyUI正式服务节点注册通过；未升级环境依赖。输入、模型、LoRA、采样、VAE和输出合同均保留。
+整体Freeze已提交workspace/H3-MINIMAL-20261015/R5-WHOLE-FREEZE-20261016.md（6de72b8530f15212afdec062696698cf0c6bc031）。本机执行manifest固定图和runner哈希；图SHA23b0c6aac3c21bc1247d4828b996369fd403e2534b88f7e039758c79503222aa。此前“未安装/未准入”的段落仅为迭代时点记录，当前已完成设计与执行准入，不等于实测验收或极限认证。
+Reality批次已提交PREP唯一prompt_id 2fe94550-3a71-46fb-852a-9c254b1fc895，成功才进入预定MEASURE；结果另附，不运行中调参。
