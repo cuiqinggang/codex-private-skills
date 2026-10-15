@@ -20,3 +20,6 @@ R5客户端返回/完成解码：首次496.690/500.159秒，热态56.415/59.723�
 收尾使用已有finish_whole_r5.py --restore-r4：空队列和文件哈希校验、清除本批授权、官方/free释放、桌面输出复制校验、恢复R4服务；执行结果另验。
 下一次要推进同质量认证，直接审查这两份现有输出（含音频），不重复生成；不允许以原片高清目标继承厨房640初验结论。
 本机证据根目录 C:/AI/MiniMax-H3/projects/H3-MINIMAL-20261015/，结果目录H3_WHOLE_R5_PREP_20261016及H3_WHOLE_R5_MEASURE_20261016，比较R5-COMPARISON.json。
+
+## 收尾实际验收
+finish_whole_r5.py --restore-r4退出0：FREE 200；R4 PID42532；桌面两份MP4复制后SHA校验成功。启动期间首次端口探测拒绝，初始化后复查8196返回空队列；AUTH_CLEARED=True。未重复提交生成。桌面目录C:/Users/A/Desktop/H3_Whole_R5_20261016。
