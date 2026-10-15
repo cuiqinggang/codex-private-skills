@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "project": "Hermes Mature AI Coding SuperTool Ecosystem Station",
   "task_id": "HERMES-ECO-20261014",
-  "freeze_id": "HERMES-ECO-F013-20261015",
+  "freeze_id": "HERMES-ECO-F014-20261015",
   "record_date": "2026-10-15",
-  "phase": "F013_HERMES_PROFILE_SKILL_DISCOVERY_REALITY_PASS_F014_CROSS_ROOT_AUDIT_PENDING",
+  "phase": "HERMES_171_NATIVE_SKILLS_DISCOVERED_CODEX_KB_ON_DEMAND_RUNTIME_PASS_STATIC_SECRET_PATTERN_PENDING",
   "skill_name": "hermes-mature-supertool",
   "skill_version": "2.0",
   "skill_location": "C:/Users/A/.hermes/skills/hermes-mature-supertool/SKILL.md",
@@ -120,9 +120,10 @@
     "f012_discovery_freeze": "workspaces/hermes-maturity-20261014/F012_SHARED_SKILLS_DISCOVERY_FREEZE_20261015.md",
     "f013_root_freeze": "workspaces/hermes-maturity-20261014/F013_PROFILE_SKILL_ROOT_FIRST_DELTA_FREEZE_20261015.md",
     "f013_root_reality": "workspaces/hermes-maturity-20261014/F013_PROFILE_SKILL_ROOT_REALITY_20261015.md",
-    "f014_crossroot_freeze": "workspaces/hermes-maturity-20261014/F014_CODEX_KNOWLEDGE_ON_DEMAND_FREEZE_20261015.md"
+    "f014_crossroot_freeze": "workspaces/hermes-maturity-20261014/F014_CODEX_KNOWLEDGE_ON_DEMAND_FREEZE_20261015.md",
+    "f014_crossroot_real": "workspaces/hermes-maturity-20261014/F014_CODEX_KB_ON_DEMAND_REALITY_20261015.md"
   },
-  "next_step": "F014 validate read-only Codex/Knowledge Brain on-demand route from current Hermes CLI. Keep Codex skill root unmodified/unregistered as an editable external_dir until safe governance. Then follow remaining WebUI/multimodal/session/stability gates.",
+  "next_step": "F015 diagnose historical YAML secret scan count using safe metadata-only audit without reading credentials, preserve backup/evidence. Continue WebUI E2E only with existing authenticated browser authorized control, else existing CLI for model/media and session tests; integrated five-round contract still 0/5.",
   "transport": {
     "policy": "C_FIRST_A_SECOND_B_THIRD",
     "version": "6.0.0",
@@ -150,8 +151,10 @@
     "OPENWEBUI_SERVICE": "HTTP200 2026-10-15 on 127.0.0.1:3000/health; Chrome running, actual GUI chat NOT_VERIFIED",
     "REPAIR_SKILL_VIEW": "Hermes CLI reported skill_view hermes-repair-loop-adapter not found this session; native CLI repair succeeded, skill registration remains separate verification item",
     "HERMES_SKILL_DISCOVERY": "RUNTIME_PASS current active profile Home C:/Users/A/AppData/Local/hermes; official skills.external_dirs points legacy C:/Users/A/.hermes/skills; skills_list changed 72->171; skill_view hermes-mature-supertool and hermes-repair-loop-adapter both available; confirmed F011 CLI-first and skill versions",
-    "CODEX_CROSS_LIBRARY_READ": "F014_REALITY_PENDING selected Codex skill and Knowledge Brain routing index; not bulk imported",
-    "F011_SECRET_PATTERN_STATIC": "FAIL old full-skill package scanner reported 1 YAML secret-like pattern. Value never read/printed; still requires separate compliant remediation; no false PASS"
+    "CODEX_CROSS_LIBRARY_READ": "SCOPED_RUNTIME_PASS native Hermes CLI read_file read and identified Codex verification-before-completion SKILL.md and Knowledge Brain ROUTING_MAP.md; exit0 30.28s process",
+    "F011_SECRET_PATTERN_STATIC": "FAIL historical one YAML secret-like scan match remains; v2 skill parser and JSON check PASS, 1 failure, no sensitive content exposed; not falsely certified",
+    "HERMES_KB_ROUTE_REFERENCE": "SCOPED_RUNTIME_PASS Hermes skill_view hermes-mature-supertool references/CODEX-KB-ON-DEMAND-20261015.md success and verified index-to-Top-K routing; exit0 77.01s process",
+    "KNOWLEDGE_BRAIN_HEALTH": "CURRENT_PASS existing official kb_health_check.ps1 all enumerated status checks PASS, FINAL_RESULT=PASS"
   },
   "external_skills_actual": {
     "active_home": "C:/Users/A/AppData/Local/hermes",
@@ -167,6 +170,8 @@
     "hermes_legacy_skill_md_files": 161,
     "knowledge_brain_files": 632,
     "counts_are_non_additive": true,
-    "source_config_backup_local": "C:/Users/A/.hermes/backups/hermes-f013-skills-home-20261015/config-before.yaml"
+    "source_config_backup_local": "C:/Users/A/.hermes/backups/hermes-f013-skills-home-20261015/config-before.yaml",
+    "codex_route": "Knowledge Brain INDEX.md -> ROUTING_MAP.md -> indexes/skills-index.md -> read only Top-K C:/Users/A/.codex/skills/<name>/SKILL.md",
+    "codex_auto_external_dir_enabled": false
   }
 }
