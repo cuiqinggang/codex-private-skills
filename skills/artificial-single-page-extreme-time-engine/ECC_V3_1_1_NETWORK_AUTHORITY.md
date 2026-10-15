@@ -1,6 +1,6 @@
 # ECC v3.1.1 网络权威入口与长任务检查点复用规则
 
-VERSION=ECC_V3_1_1_SOURCE_INDEX_V1
+VERSION=ECC_V3_1_1_SOURCE_INDEX_V2
 STATUS=SOURCE_VERIFIED;RUNTIME_NOT_INTEGRATED_WITH_POLSIA
 SOURCE_REPOSITORY=cuiqinggang/ecc-v3.1.1
 SOURCE_REF=v3.1.1
@@ -38,3 +38,16 @@ F. **72小时**：这是连续运行能力的未来现实耐力验收目标而�
 - GitHub共同工作区存方法索引、节点正式Freeze、CURRENT版本指针、不可变证据摘要及其SHA。
 - Windows本机只承载大型MP4/实际工具日志、Codex真实执行状态与ECC运行态文件，必要时按GitHub的Freeze引用作校验；GitHub不是运行中的每秒日志数据库，也不是网站已上线的证明。
 - 每次方法变更正常使用GitHub官方update_file（fetch当前SHA→update→fetch回读），历史版本由commit和不可变Freeze追溯。尚未验证的网站必须按成熟平台的部署流程验收，不能把GitHub上传当成公网功能就绪。
+
+
+## ECC 默认版本锁定（2026-10-15）
+
+- 用户指定当前默认正式版本：**ECC V3.1.1**；“ECC”“ECC最新版”“ECC 3.11”均指此版本。V2.1.0只作历史基线，禁止作为默认版本或读取失败时的替代品。
+- 统一入口：`skills/artificial-single-page-extreme-time-engine/ECC_V3_1_1_NETWORK_AUTHORITY.md`。
+- 正式源码：`cuiqinggang/ecc-v3.1.1`，tag `v3.1.1`，固定提交 `b9e651bc6c6751bff43db30b80d9cab983a7c412`。
+- 发布：https://github.com/cuiqinggang/ecc-v3.1.1/releases/tag/v3.1.1
+- 正文：https://github.com/cuiqinggang/ecc-v3.1.1/blob/b9e651bc6c6751bff43db30b80d9cab983a7c412/README.md
+- README标题“V3.1”和发布包名“ecc-v3.1”属于该发布的原始命名，不能据此降级为V2.1.0。
+- 已安装或云端目录若返回 `ecc-four-role-loop-orchestration V2.1.0`，必须标记历史副本并转读上述入口；不得把旧正文改个版本号冒充新版。新版不可读取时报告版本读取阻塞，不静默回退。
+- 只在用户明确查询历史或旧任务锁定旧版本时读取V2.1.0；不删除旧冻结，不自动迁移正在运行的任务。后续升级须明确更新此默认指针。
+- 本次核实发布、tag提交和README来源，不宣称本机部署、性能、长任务或恢复测试已通过。
