@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "project": "Hermes Mature AI Coding SuperTool Ecosystem Station",
   "task_id": "HERMES-ECO-20261014",
-  "freeze_id": "HERMES-ECO-F015-20261015",
+  "freeze_id": "HERMES-ECO-F016-20261015",
   "record_date": "2026-10-15",
-  "phase": "NATIVE_SKILL_171_AND_CODEX_KB_ROUTE_PASS_OPENWEBUI_CDP_NOT_PRESENT_F016_SKILL_ROUTER_RUNNING",
+  "phase": "HERMES_NATIVE_SKILLS_171_AND_CODEX_KB_NATURAL_ROUTING_REALITY_PASS_GLOBAL_MATURITY_PENDING",
   "skill_name": "hermes-mature-supertool",
   "skill_version": "2.0",
   "skill_location": "C:/Users/A/.hermes/skills/hermes-mature-supertool/SKILL.md",
@@ -124,9 +124,10 @@
     "f014_crossroot_real": "workspaces/hermes-maturity-20261014/F014_CODEX_KB_ON_DEMAND_REALITY_20261015.md",
     "f015_gui_freeze": "workspaces/hermes-maturity-20261014/F015_EXISTING_OPENWEBUI_GUI_GATE_FREEZE_20261015.md",
     "f015_gui_reality": "workspaces/hermes-maturity-20261014/F015_EXISTING_OPENWEBUI_GUI_PROBE_20261015.md",
-    "f016_natural_router_freeze": "workspaces/hermes-maturity-20261014/F016_NATURAL_TASK_SKILL_ROUTER_FREEZE_20261015.md"
+    "f016_natural_router_freeze": "workspaces/hermes-maturity-20261014/F016_NATURAL_TASK_SKILL_ROUTER_FREEZE_20261015.md",
+    "f016_natural_router_real": "workspaces/hermes-maturity-20261014/F016_NATURAL_TASK_SKILL_ROUTER_REALITY_20261015.md"
   },
-  "next_step": "Finish one F016 natural-language-to-Codex-skill routing Reality and independent source check. If complete, freeze report. Then isolate remaining security YAML and UI permission gates while preserving verified skill access and 0/5 integrated certification.",
+  "next_step": "F017: mature no-rebuild performance improvement of deep Codex skill selection with native skills_list fast direct hit, targeted skills-index search and <=3 necessary SKILL.md; compare only same-quality valid workload, no full-library preload. Parallel unrelated gates: secure one historical YAML pattern, existing OpenWebUI GUI when legal control, audio/video and true session restore. Keep 5x integrated 0/5.",
   "transport": {
     "policy": "C_FIRST_A_SECOND_B_THIRD",
     "version": "6.0.0",
@@ -143,7 +144,7 @@
     "API_RUNS_ADMISSION": "NOT_CERTIFIED_F002_R01_BAD_PAYLOAD. INDEPENDENT_OPTIONAL_AUTOMATION_GATE_NOT_PREREQUISITE_FOR_NATIVE_CLI_OR_OPENWEBUI_WORKFLOWS",
     "REPAIR_NATIVE_CURRENT": "SCOPED_RUNTIME_PASS 2026-10-15: Hermes native formal CLI independently repaired F005_REPAIR/invoice.py only, exit0 runtime52.87s; external separate Python unittest ran 8/8 OK exit0, runtime0.72s; test/spec/cmd and F002 original hashes unchanged",
     "NATIVE_DELEGATE_GATE": "RUNTIME_PASS scoped 2026-10-15, one two-child delegate_task batch, manifest deleg_e6411f32 task_count2 both completed, correct code/test review, real CLI exit0 runtime74.95s; child tool event bodies not inspected",
-    "WEBSITE_ACTUAL_CHAT": "PENDING: existing Chrome does not expose approved 127.0.0.1:9222 CDP endpoint; no new browser opened and no actual GUI chat dispatched",
+    "WEBSITE_ACTUAL_CHAT": "PENDING existing Chrome no available 127.0.0.1:9222 CDP; no GUI interaction this phase",
     "MULTIMODAL_AUDIO_VIDEO": "PENDING",
     "GATEWAY_RESTART_CROSS_SESSION": "PENDING",
     "FIVE_CONSECUTIVE": "0_OF_5",
@@ -158,7 +159,8 @@
     "F011_SECRET_PATTERN_STATIC": "FAIL historical one YAML secret-like scan match remains; v2 skill parser and JSON check PASS, 1 failure, no sensitive content exposed; not falsely certified",
     "HERMES_KB_ROUTE_REFERENCE": "SCOPED_RUNTIME_PASS Hermes skill_view hermes-mature-supertool references/CODEX-KB-ON-DEMAND-20261015.md success and verified index-to-Top-K routing; exit0 77.01s process",
     "KNOWLEDGE_BRAIN_HEALTH": "CURRENT_PASS existing official kb_health_check.ps1 all enumerated status checks PASS, FINAL_RESULT=PASS",
-    "NATURAL_TASK_CODEX_ROUTING": "IN_PROGRESS single Hermes oneshot PID53356; do not duplicate or claim PASS before tool result"
+    "NATURAL_TASK_CODEX_ROUTING": "SCOPED_RUNTIME_PASS 2026-10-15: true native skill_view and Knowledge Brain keyword search matched actual three Codex skill docs, powershell-reliability-guard/evidence-closed-loop-repair/verification-before-completion; 0 file edits; CLI exit0 runtime202.49s. Functional YES, performance NOT_CERTIFIED.",
+    "NATURAL_ROUTING_PERFORMANCE": "REALITY_OBSERVED process wall 202.49s one complex deep-index task, no stable T_VALID baseline, not proof of speed improvement; next optimize when same quality/contract"
   },
   "external_skills_actual": {
     "active_home": "C:/Users/A/AppData/Local/hermes",
