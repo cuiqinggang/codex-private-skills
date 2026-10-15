@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "project": "Hermes Mature AI Coding SuperTool Ecosystem Station",
   "task_id": "HERMES-ECO-20261014",
-  "freeze_id": "HERMES-ECO-F018-20261016",
+  "freeze_id": "HERMES-ECO-F019-20261016",
   "record_date": "2026-10-16",
-  "phase": "F013_F014_NATIVE_REALITY_PASS_F018_STATIC_18_18_PASS_V7_C_FIRST_A_PAUSED_OTHER_STATION_GATES_PENDING",
+  "phase": "F019_REPAIR_ISOLATED_23_OF_23_PASS_NATIVE_SKILL_VIEW_EVENT_UNVERIFIED_OTHER_STATION_GATES_PENDING",
   "skill_name": "hermes-mature-supertool",
   "skill_version": "2.0",
   "skill_location": "C:/Users/A/.hermes/skills/hermes-mature-supertool/SKILL.md",
@@ -132,9 +132,11 @@
     "f017_fast_freeze": "workspaces/hermes-maturity-20261014/F017_FAST_KB_SKILL_ROUTE_VIRTUAL_FREEZE_20261015.md",
     "f017_fast_reality": "workspaces/hermes-maturity-20261014/F017_FAST_KB_SKILL_ROUTE_REALITY_20261015.md",
     "f018_security_reality": "workspaces/hermes-maturity-20261014/F018_SKILL_BACKUP_SECRET_SCAN_REMEDIATION_20261016.md",
-    "f018_local_manifest": "C:/Users/A/.hermes/skills/hermes-mature-supertool/evidence/HERMES-ECO-20261014/F018_SAFE_ARCHIVE_RELOCATION_20261016.md"
+    "f018_local_manifest": "C:/Users/A/.hermes/skills/hermes-mature-supertool/evidence/HERMES-ECO-20261014/F018_SAFE_ARCHIVE_RELOCATION_20261016.md",
+    "f019_virtual_freeze": "workspaces/hermes-maturity-20261014/F019_REPAIR_GATE_VIRTUAL_FREEZE_20261016.md",
+    "f019_reality": "workspaces/hermes-maturity-20261014/F019_REPAIR_GATE_REALITY_20261016.md"
   },
-  "next_step": "F018 scoped static safety gap closed (18/18); do not re-run completed F013/F014 or historical F002 UNKNOWN. Next highest-value unmet gates: actual GUI existing-session end-to-end (requires an authorized GUI path), bounded real model/Repair and multimodal independent verification, checkpoint full current-version resume, and five consecutive end-to-end integrated Reality runs; F002 API admission requires exact-once reconciliation before any new dispatch. C is sole daily Windows route; B only fallback/GitHub evidence; A paused.",
+  "next_step": "Use V7 C only; F019 isolated Repair functional scope PASS and do not rerun. Next F020 integrate independent native delegate_task review of the F019 repaired artifact (without editing) and verify current delegation manifest plus reviewer verdicts; afterwards choose remaining genuine multimodal/GUI/cross-session gates. Legacy F002 unknown remains non-replayable; station 0/5 FINAL_VALID=NO.",
   "transport": {
     "policy": "C_FIRST_B_FALLBACK_A_PAUSED",
     "version": "7.0.0",
@@ -164,10 +166,10 @@
     "VISION_NATIVE_TOOL_EVENT": "NOT_VERIFIED no independent vision_analyze tool.completed log in current scoped evidence",
     "API_AUTH_PROTECTION": "C channel on-device GET /v1/capabilities no credentials -> HTTP 401, exit0, expected bearer protection (not service outage)",
     "OPENWEBUI_SERVICE": "HTTP200 2026-10-15 on 127.0.0.1:3000/health; Chrome running, actual GUI chat NOT_VERIFIED",
-    "REPAIR_SKILL_VIEW": "Hermes CLI reported skill_view hermes-repair-loop-adapter not found this session; native CLI repair succeeded, skill registration remains separate verification item",
+    "REPAIR_SKILL_VIEW": "F018 native independently verified available; F019 Hermes model reports skill_view loaded in same task but its native tool completion event not independently inspected. Earlier F010 not-found is historical.",
     "HERMES_SKILL_DISCOVERY": "RUNTIME_PASS current active profile Home C:/Users/A/AppData/Local/hermes; official skills.external_dirs points legacy C:/Users/A/.hermes/skills; skills_list changed 72->171; skill_view hermes-mature-supertool and hermes-repair-loop-adapter both available; confirmed F011 CLI-first and skill versions",
     "CODEX_CROSS_LIBRARY_READ": "SCOPED_RUNTIME_PASS native Hermes CLI read_file read and identified Codex verification-before-completion SKILL.md and Knowledge Brain ROUTING_MAP.md; exit0 30.28s process",
-    "F011_SECRET_PATTERN_STATIC": "FAIL historical one YAML secret-like scan match remains; v2 skill parser and JSON check PASS, 1 failure, no sensitive content exposed; not falsely certified",
+    "F011_SECRET_PATTERN_STATIC": "HISTORICAL_F011_FAIL_RESOLVED_F018_18_OF_18_PASS_AND_POST_F019_18_OF_18_PASS",
     "HERMES_KB_ROUTE_REFERENCE": "SCOPED_RUNTIME_PASS Hermes skill_view hermes-mature-supertool references/CODEX-KB-ON-DEMAND-20261015.md success and verified index-to-Top-K routing; exit0 77.01s process",
     "KNOWLEDGE_BRAIN_HEALTH": "CURRENT_PASS existing official kb_health_check.ps1 all enumerated status checks PASS, FINAL_RESULT=PASS",
     "NATURAL_TASK_CODEX_ROUTING": "RUNTIME_PASS F016 deep, F017 fast candidate same three quality gates. F016 202.49s, F017 91.82s; count sourced from actual CLI process runtime, no stable T*.",
@@ -175,7 +177,9 @@
     "CODEX_SKILL_FAST_PATH": "KEEP_REALITY_OBSERVED_CANDIDATE F017 natural PS5.1 plan with one Codex skill, same 3 quality gates, exit0 runtime91.82s vs F016 deep route runtime202.49s (single samples, no certified stable speedup). Mother skill reference updated to prefer direct index search when route frozen.",
     "F018_NATIVE_SKILL_KB_RECHECK": "SCOPED_REALITY_PASS 2026-10-16. Hermes formal CLI original OpenRouter deepseek-v4.1-flash: native skills_list 171; skill_view supertool and repair both success; Knowledge Brain ROUTING_MAP native read_file success; exit0; CLI measured wall 26939ms; single sample only",
     "F018_STATIC_SECRET_PATTERN_LATEST": "SCOPED_STATIC_REALITY_PASS 18/18, failure_count=0, secret patterns 0 after verified SHA-preserving move of historical YAML config snapshot out of skills scan root; active config not edited",
-    "BRIDGE_V7_REAL_ROUTE_CURRENT": "SCOPED_REALITY_PASS C tool pong, v7 PowerShell parser 0, SHA matches official freeze, tests C selected/B fallback/A always blocked. Does not disable A at platform level"
+    "BRIDGE_V7_REAL_ROUTE_CURRENT": "SCOPED_REALITY_PASS C tool pong, v7 PowerShell parser 0, SHA matches official freeze, tests C selected/B fallback/A always blocked. Does not disable A at platform level",
+    "F019_REPAIR_FAULT_INJECTION": "SCOPED_RUNTIME_AND_INDEPENDENT_GATE_PASS: baseline 23 tests 14 fail 3 errors; Hermes formal CLI repaired in one round, exit0, process wall 158.718s; independent Windows Python unittest 23/23 PASS exit0; test/requirements SHA unchanged; repair_state.json RESOLVED. native skill_view success model-reported only, native tool event independent verification pending.",
+    "F019_MODEL_USAGE": "OpenRouter DeepSeek V4.1 Flash; one CLI task 158718ms; 7 API calls; input37832 output3638 cache_read143488, total184958 tokens incl cache; cost USD0.0042113664 estimated; full T_VALID and physical bound UNKNOWN."
   },
   "external_skills_actual": {
     "active_home": "C:/Users/A/AppData/Local/hermes",
