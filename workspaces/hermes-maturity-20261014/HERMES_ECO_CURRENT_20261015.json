@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "project": "Hermes Mature AI Coding SuperTool Ecosystem Station",
   "task_id": "HERMES-ECO-20261014",
-  "freeze_id": "HERMES-ECO-F006-20261015",
+  "freeze_id": "HERMES-ECO-F008-20261015",
   "record_date": "2026-10-15",
-  "phase": "CLI_FILE_AND_TASK_CONTINUITY_CURRENT_REALITY_PASS_REPAIR_API_PENDING",
+  "phase": "NATIVE_DELEGATION_REALITY_PASS_AND_VISION_IMAGE_RESULT_PASS_API_REPAIR_PENDING",
   "skill_name": "hermes-mature-supertool",
   "skill_version": "2.0",
   "skill_location": "C:/Users/A/.hermes/skills/hermes-mature-supertool/SKILL.md",
@@ -109,9 +109,13 @@
     "f005_progress": "workspaces/hermes-maturity-20261014/F005_REALITY_PROGRESS_20261015.md",
     "f006_continuity_freeze": "workspaces/hermes-maturity-20261014/F006_CONTINUITY_NODE_FREEZE_20261015.md",
     "f006_continuity_reality": "workspaces/hermes-maturity-20261014/F006_CONTINUITY_REALITY_20261015.md",
-    "latest_next_page": "workspaces/hermes-maturity-20261014/HERMES_ECO_NEXT_PAGE_F006_20261015.md"
+    "latest_next_page": "workspaces/hermes-maturity-20261014/HERMES_ECO_NEXT_PAGE_F006_20261015.md",
+    "f007_vision_freeze": "workspaces/hermes-maturity-20261014/F007_VISION_GATE_FREEZE_20261015.md",
+    "f007_vision_real": "workspaces/hermes-maturity-20261014/F007_VISION_REALITY_20261015.md",
+    "f008_delegation_freeze": "workspaces/hermes-maturity-20261014/F008_DELEGATION_VIRTUAL_FREEZE_20261015.md",
+    "f008_delegation_real": "workspaces/hermes-maturity-20261014/F008_DELEGATION_REALITY_20261015.md"
   },
-  "next_step": "H-ECO-01 single isolated API admission after old F002 request reconciliation through permitted preauthorized official mechanism. Do not bypass a remote security denial. F005 repair remains blocked pending a safe valid official test-runner entry. Do not replay F002.",
+  "next_step": "H-ECO-01 original F002 API admission remains NOT_CERTIFIED, patch F004 offline only; use only preauthorized official authenticated API mechanism, no credential extraction or security bypass; require real run_id/receipt from new isolated contract after exactly-once reconciliation. F005 Repair unittest remains platform-blocked; no claim of bypass/Repair PASS. Other gates multimedia UI/cold/5x/sustained pending.",
   "transport": {
     "policy": "C_FIRST_A_SECOND_B_THIRD",
     "version": "6.0.0",
@@ -127,11 +131,13 @@
     "CONTINUITY_TASK_SCRIPT": "RUNTIME_PASS scoped; 2-step checkpoint handoff new-process resume closeout CLOSED_PASS",
     "API_RUNS_ADMISSION": "NOT_CERTIFIED F002 R01 HTTP400, F004 offline 10/10 patch candidate only",
     "REPAIR_NATIVE_CURRENT": "BLOCKED; F005 input copied but unittest runner first error, direct .cmd execution security blocked",
-    "NATIVE_DELEGATE_GATE": "PENDING_THIS_PHASE",
+    "NATIVE_DELEGATE_GATE": "RUNTIME_PASS scoped 2026-10-15, one two-child delegate_task batch, manifest deleg_e6411f32 task_count2 both completed, correct code/test review, real CLI exit0 runtime74.95s; child tool event bodies not inspected",
     "WEBSITE_ACTUAL_CHAT": "PENDING",
     "MULTIMODAL_AUDIO_VIDEO": "PENDING",
     "GATEWAY_RESTART_CROSS_SESSION": "PENDING",
     "FIVE_CONSECUTIVE": "0_OF_5",
-    "ENDURANCE_7_TO_14_DAYS": "PENDING"
+    "ENDURANCE_7_TO_14_DAYS": "PENDING",
+    "VISION_IMAGE_CONTENT": "SCOPED_OUTPUT_PASS 2026-10-15: real CLI analyzed existing visual.png, expected three colors and shapes correct, exit0 runtime56.38s",
+    "VISION_NATIVE_TOOL_EVENT": "NOT_VERIFIED no independent vision_analyze tool.completed log in current scoped evidence"
   }
 }
