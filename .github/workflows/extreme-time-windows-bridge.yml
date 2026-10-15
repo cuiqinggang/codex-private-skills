@@ -1,17 +1,13 @@
 name: Extreme Time Windows Autonomous Bridge
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'workspaces/extreme-time-automation-loop-v2.0/bridge/**'
-      - 'skills/extreme-time-automation-bridge/bootstrap/**'
-      - '.github/workflows/extreme-time-windows-bridge.yml'
+  # V6 route lock: legacy FULL requires explicit, reviewed manual dispatch.
+  # Ordinary task JSON pushes must not silently run the old FULL pipeline.
   workflow_dispatch:
     inputs:
       task_file:
-        description: 'Repository-relative task JSON path'
-        required: false
+        description: 'Explicitly reviewed FULL task JSON path; FAST/BOUNDED are default for small tasks'
+        required: true
         type: string
 
 permissions:
