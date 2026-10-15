@@ -138,3 +138,13 @@ DEPLOYMENT_ROUTE_STATUS=CANDIDATE_NOT_APPLIED_NOT_RUNTIME_APPROVED
 本轮按三人行V2/桥V6，通过C真实读取旧启动器，确认其同时重定向HOME/USERPROFILE/APPDATA/LOCALAPPDATA。固定官方orcad-app-paths支持仅用ORCA_USER_DATA隔离Orca状态，home保持真实用户；据此收敛“Windows原生官方组件＋原用户环境＋隔离Orca数据＋显式受限Codex参数＋终端worker”候选。
 官方编排明确为Experimental，Run本身不自动调度。不得承诺成熟无故障、全局最快或1000任务推进认证。旧HOME重定向是已证配置差分，其业务因果尚未实测。
 已保存具体最小差分、三路线比较、失败推演、完整时间优化与停止条件并独立回读。尚缺设置落点/更新入口、auth迁移与hooks零越界证明、旧会话对账和允许执行条件；没有修改本机配置，没有重发被拒预检，F001/N002及所有业务计数不变。
+
+## 虚拟推演与实际离线执行增补
+LATEST_OFFLINE_TEST=CEO_VIRTUAL_AND_OFFLINE_TEST_V1.md
+LATEST_OFFLINE_TEST_COMMIT=7408fd749d2a753b8561fee2b32522dcbba15eb2
+OFFLINE_SOURCE_BRANCH_ASSERTIONS=11_OF11
+OFFLINE_SCOPE=LINUX_NODE_SYNTHETIC_WIN32_BRANCH_DEPENDENCIES_NOT_WINDOWS_RUNTIME
+WHOLE_VIRTUAL_MATURITY=NOT_PASSED
+WINDOWS_FORMAL_REALITY=NOT_EXECUTED
+两份固定官方源码经blob验证后实际在隔离VM执行；确认真实home启动仍调用迁移辅助函数，特定旧记录会尝试系统凭据写入。11项通过含风险反例，不能解释为零副作用或业务通过。测试器首轮export空白处理错误、第二轮修正后通过，均已保留于报告。源码、测试器、结果与报告已上传并逐份独立回读一致。
+构造器/hooks全链副作用、设置更新入口、旧会话归属和平台允许执行条件仍未闭合；F001/N002不变，正式业务、连续十轮和AB计数仍为0。不重发原拒绝动作，不要求重复截图或泛化授权。
