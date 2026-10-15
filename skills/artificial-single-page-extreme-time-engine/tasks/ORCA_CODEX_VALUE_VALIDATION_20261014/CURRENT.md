@@ -166,3 +166,11 @@ LATEST_MINIMAL_BUSINESS_COMMIT=006f8ac0652c0d324966ed3cf82ab8bb58ce43e4
 固定源码补齐：系统默认真实home的sync提前返回；无托管账号的auth迁移提前返回；空旧home仍会写隔离migration标记，是正常状态写入。预信任false的两入口返回；real-home hook reconcile在config空或disabled时返回，纠正把所有关闭hooks路径笼统视为全局写入的说法。
 新候选为单worker在新副本重放T03原始BAD，不触碰已验GOOD；仅单任务集成烟测，不增加完整业务计数。具体权限、输入验收、超时对账和全程计时边界已写明。
 当前仍缺启动前官方设置入口、headless剩余调用链及实际进程归属；未部署、未提交新运行请求，不能称本轮被平台再次拒绝。原被拒预检不重发；本轮仅独立官方源码读取及候选文档归档并回读。
+
+## 2026-10-16 无界面实际链路虚拟审查（最新）
+LATEST_HEADLESS_REVIEW=CEO_HEADLESS_VIRTUAL_REVIEW_V2.md
+LATEST_HEADLESS_REVIEW_COMMIT=01baaedf5419fff8b31123c4a11d0ead3d063d83
+HEADLESS_CONFIG_BRANCH_CHECKS=9_OF9_OFFLINE_NOT_BUSINESS
+WHOLE_VIRTUAL_MATURITY=NOT_PASSED
+本轮沿固定orcad-entry核对，发现此前部分桌面Home迁移审查不直接对应headless注册路径；停止无边界扩展该桌面分支。settings.update不支持预信任字段；改为新隔离profile的官方首次JSON导入候选，不改旧SQLite。协调者必须在真实Orca专属终端内执行，不借旧handle。准备了受限配置和官方函数离线检查，9项通过且含危险默认值负例；源码/许可/配置/测试/结果已逐份回读。
+剩余具体缺口：完整Store/SQLite导入，priority及最终子进程参数证据，协调派发身份绑定与现场旧任务对账。未运行Windows业务，未部署新配置，未提交新运行请求；本轮没有新的平台拒绝。F001/N002不变，正式Reality/十轮/AB继续为0。不得把局部静态检查完成写成整套虚拟成熟。
