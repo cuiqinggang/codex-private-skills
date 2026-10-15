@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "project": "Hermes Mature AI Coding SuperTool Ecosystem Station",
   "task_id": "HERMES-ECO-20261014",
-  "freeze_id": "HERMES-ECO-F020-20261016",
+  "freeze_id": "HERMES-ECO-F021-20261016",
   "record_date": "2026-10-16",
-  "phase": "F019_FUNCTIONAL_GATE_PASS_F020_TWO_CHILD_COMPLETED_REVIEW_GATE_UNKNOWN_NEXT_INDEPENDENT_GATES_PENDING",
+  "phase": "F019_REPAIR_23_OF_23_PASS_F020_DELEGATION_REVIEW_UNKNOWN_F021_FRESH_CLI_HANDOFF_PASS_STATION_FINAL_PENDING",
   "skill_name": "hermes-mature-supertool",
   "skill_version": "2.0",
   "skill_location": "C:/Users/A/.hermes/skills/hermes-mature-supertool/SKILL.md",
@@ -88,7 +88,7 @@
     "real independent delegate_task children and Gate result under frozen contract",
     "Repair Loop fault injection and same-item independently graded retry",
     "multimodal UI image/video/audio end-to-end across intended surfaces",
-    "checkpoint/handoff/new session resume and hash chain under current version",
+    "native old Hermes interactive session resume after process restart/relogin (F021 new CLI artifact-based checkpoint/handoff PASS; original session recovery not verified)",
     "startup browser actual chat, login/reboot, process recovery and endurance",
     "five consecutive integrated real runs with cold/warm T_VALID and honest total maturity review"
   ],
@@ -112,7 +112,7 @@
     "f005_progress": "workspaces/hermes-maturity-20261014/F005_REALITY_PROGRESS_20261015.md",
     "f006_continuity_freeze": "workspaces/hermes-maturity-20261014/F006_CONTINUITY_NODE_FREEZE_20261015.md",
     "f006_continuity_reality": "workspaces/hermes-maturity-20261014/F006_CONTINUITY_REALITY_20261015.md",
-    "latest_next_page": "workspaces/hermes-maturity-20261014/HERMES_ECO_NEXT_PAGE_F018_20261016.md",
+    "latest_next_page": "workspaces/hermes-maturity-20261014/HERMES_ECO_NEXT_PAGE_F021_20261016.md",
     "f007_vision_freeze": "workspaces/hermes-maturity-20261014/F007_VISION_GATE_FREEZE_20261015.md",
     "f007_vision_real": "workspaces/hermes-maturity-20261014/F007_VISION_REALITY_20261015.md",
     "f008_delegation_freeze": "workspaces/hermes-maturity-20261014/F008_DELEGATION_VIRTUAL_FREEZE_20261015.md",
@@ -136,9 +136,11 @@
     "f019_virtual_freeze": "workspaces/hermes-maturity-20261014/F019_REPAIR_GATE_VIRTUAL_FREEZE_20261016.md",
     "f019_reality": "workspaces/hermes-maturity-20261014/F019_REPAIR_GATE_REALITY_20261016.md",
     "f020_virtual_freeze": "workspaces/hermes-maturity-20261014/F020_DELEGATE_REPAIR_GATE_VIRTUAL_FREEZE_20261016.md",
-    "f020_reality": "workspaces/hermes-maturity-20261014/F020_DELEGATE_REPAIR_GATE_REALITY_20261016.md"
+    "f020_reality": "workspaces/hermes-maturity-20261014/F020_DELEGATE_REPAIR_GATE_REALITY_20261016.md",
+    "f021_virtual_freeze": "workspaces/hermes-maturity-20261014/F021_FRESH_CLI_HANDOFF_VIRTUAL_FREEZE_20261016.md",
+    "f021_reality": "workspaces/hermes-maturity-20261014/F021_FRESH_CLI_HANDOFF_REALITY_20261016.md"
   },
-  "next_step": "F020 native two-child lifecycle true but Gate UNKNOWN; do not rerun 2 children for performance. F019 code and 23/23 remain PASS. Choose another high-value independent gate: fresh native Hermes session artifact-based checkpoint/handoff/resume with independent sha and session-id non-equality, no services restarted; later only missing Child-A review with explicit native structured output_schema if cost/benefit positive. Do not touch A; no old F002 replay.",
+  "next_step": "Keep F019 functional 23/23 and F021 fresh-process artifact handoff as scoped PASS; F020 two-child lifecycle pass but missing child-A independent verdict and review Gate UNKNOWN. Do not repeat known good tests or spawn fresh 2-child batch without ROI. Next highest-value authorized gate: current-version native multimodal audio/video/tool event or existing OpenWebUI actual GUI session with legitimately available control; else independent model/provider quality under same input/quality contract. Freeze before one Reality. F002 Runs UNKNOWN no replay. Keep C-first B fallback A paused. Whole station 0/5 FINAL_VALID=NO.",
   "transport": {
     "policy": "C_FIRST_B_FALLBACK_A_PAUSED",
     "version": "7.0.0",
@@ -183,7 +185,11 @@
     "F019_REPAIR_FAULT_INJECTION": "SCOPED_RUNTIME_AND_INDEPENDENT_GATE_PASS: baseline 23 tests 14 fail 3 errors; Hermes formal CLI repaired in one round, exit0, process wall 158.718s; independent Windows Python unittest 23/23 PASS exit0; test/requirements SHA unchanged; repair_state.json RESOLVED. native skill_view success model-reported only, native tool event independent verification pending.",
     "F019_MODEL_USAGE": "OpenRouter DeepSeek V4.1 Flash; one CLI task 158718ms; 7 API calls; input37832 output3638 cache_read143488, total184958 tokens incl cache; cost USD0.0042113664 estimated; full T_VALID and physical bound UNKNOWN.",
     "F020_NATIVE_DELEGATION": "SCOPED_NATIVE_LIFECYCLE_PASS but reviewer Gate UNKNOWN. Current manifest deleg_e96f8702 independent C read: task_count2, statuses both completed; parent reports Child-B PASS, Child-A no verdict (false missing path summary); oneshot budget 2/2 prevents retry same session. CLI wall305575ms exit0; frozen F019 hashes unchanged; not a 2/2 Gate PASS.",
-    "F020_PERFORMANCE": "305.575s CLI; 5 API calls; total138002 tokens of which cache_read119040; estimated cost USD0.013717224; historical F008 workload differs so no fair improvement/slowdown multiplier. Candidate output_schema bounded structured review NOT_TESTED."
+    "F020_PERFORMANCE": "305.575s CLI; 5 API calls; total138002 tokens of which cache_read119040; estimated cost USD0.013717224; historical F008 workload differs so no fair improvement/slowdown multiplier. Candidate output_schema bounded structured review NOT_TESTED.",
+    "F021_FRESH_CLI_CHECKPOINT_HANDOFF": "SCOPED_REALITY_PASS new Hermes formal CLI process, exit0 wall48301ms; read handoff/repair_state/gate/source, created resume_ack.json; independent SHA, hidden nonce, source hash, new session id inequality ALL PASS; not native old-session resume on process restart",
+    "F021_INDEPENDENT_HANDOFF_SHA": "handoff SHA256 8A11E0B244769C2622635F5634DA5EE6978454FFFBD1DFF8157E8039F8A109F1 preserved; ack SHA256 F162C99AB7303831A015FAC41EDF6E91B38BF7B77B9ADB9AAF1229371AA36CAB",
+    "F021_POST_STATIC": "PASS 18/18 checks failure0; original mother skill static checker unchanged",
+    "F021_USAGE": "original OpenRouter DeepSeek v4.1-flash, model CLI wall48301ms, api_calls6, total_tokens137306 cache_read111488, estimated cost USD0.0026570736; no comparable full end-to-end T_VALID baseline"
   },
   "external_skills_actual": {
     "active_home": "C:/Users/A/AppData/Local/hermes",
