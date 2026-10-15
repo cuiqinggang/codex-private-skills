@@ -1,0 +1,33 @@
+{
+  "status": "DOWNLOADING_WITH_AUTOMATIC_SINGLE_GENERATION_CONTINUATION",
+  "deviceId": "f6990966-5870-484b-bf79-409bc6fb963e",
+  "root": "C:/AI/MiniMax-H3/projects/H3-MINIMAL-20261015",
+  "processes": {
+    "download": 49776,
+    "continuation": 26812,
+    "comfy_wrapper": 48916,
+    "comfy_launcher": 51524,
+    "comfy_python": 50956
+  },
+  "service": "http://127.0.0.1:8196",
+  "clipproj": {
+    "version": "0.1.13",
+    "commit": "c01ba8fb8f41b4f2094dbd0b185cdc238fb6134c",
+    "loaded": true
+  },
+  "verified": [
+    "Turbo 4-step LoRA",
+    "ClipProj projection"
+  ],
+  "remaining": [
+    "W4A8 model, last observed 10%",
+    "Qwen4B encoder, last observed 21%"
+  ],
+  "download_route": "hf-mirror direct aria2 16 connections per file; curl via existing proxy tested but aria2 proxy TLS failed; restored known working direct mirror",
+  "proxy_settings_changed": false,
+  "workflow_nodes_and_required_inputs": "PASS",
+  "generation_submitted": false,
+  "automatic_next": "resume_remaining.py -> aria2-results.json VERIFIED -> continue_when_ready.py -> run_5f_once.py -> history.json + output-validation.json + decoded_frames",
+  "next_manual": "Read status without restarting. Inspect all five decoded frames after successful generation; do not claim visual PASS before viewing.",
+  "constraints": "No second submission if claim/receipt/intent exists. If download incomplete, no generation. 5 frames 640x352 4 steps native audio. No 124-frame benchmark yet."
+}
