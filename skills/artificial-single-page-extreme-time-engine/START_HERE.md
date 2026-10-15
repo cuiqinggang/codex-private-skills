@@ -1,10 +1,18 @@
-# 当前正式默认方法：三人行第1版（2026-10-11起生效）
-DEFAULT_METHOD=SANRENXING_V1
+# 《三人行》第2版｜全局正式激活裁定（2026-10-16）
+DEFAULT_METHOD=SANRENXING_V2
 STATUS=FROZEN_ACTIVE
-METHOD_PATH=skills/artificial-single-page-extreme-time-engine/SANRENXING_V1.md
-FREEZE_ID=SRX-V1-ACTIVE-F001
-**入口优先级：新任务和“按三人行”→直接读取SANRENXING_V1.md；明确指定旧A/B→按各自ROUTE；已有任务METHOD_REF→维持任务原方法锁定，除非经授权的冻结节点显式迁移。**
-**以下是兼容历史的A/B启动说明；其中旧版“唯一入口”“默认A/B”语句不覆盖以上新版本裁定。**
+ACTIVATION_ID=SRX-V2-C002-GLOBAL-ACTIVE-20261016
+SOURCE_FREEZE_ID=SRX-V2-C002-SAVED-F001
+METHOD_REF=skills/artificial-single-page-extreme-time-engine/method-freezes/SANRENXING_V2_C002_F001_20261012/SANRENXING_V2.md@78ffb94c4cacd07662b83a59042bc0fe3e7f69e7
+METHOD_SNAPSHOT_COMMIT=78ffb94c4cacd07662b83a59042bc0fe3e7f69e7
+ACTIVATION_SCOPE=NEW_TASKS_AND_UNPINNED_SANRENXING_REQUESTS
+LEGACY_TASKS=KEEP_EXISTING_METHOD_REF
+GLOBAL_FINAL_VALID=NOT_CLAIMED
+
+用户明确批准第2版作为全局默认方法。本激活裁定优先于第2版冻结源文件内历史的 REVIEW_PENDING_NOT_ACTIVE / FROZEN_SAVED_NOT_ACTIVE / DEFAULT_METHOD=V1 标志，但不篡改冻结原件、Manifest、测试证据或其有限验收结论。正式加载一律读取上述固定提交的 C002 冻结正文及配套兼容矩阵；原第25版执行大脑、任务合同正反约束与全部旧文件继续按适用条件继承，出现遗漏读原文，以不降低硬约束为准。旧任务继续固定自身 METHOD_REF 与 TASK_STATE_REF，明确旧A/B路线沿用自己的ROUTE；仅用户显式授权的任务迁移才更新其指针。Exactly-once、安全授权、必要Freeze与独立回读不变。方法激活不等于未测试功能实际通过。
+
+---
+# 旧版入口历史（仅供兼容审计，不覆盖以上V2裁定）
 ---
 # 《自动化A/B极限短时间引擎》｜唯一启动说明
 
