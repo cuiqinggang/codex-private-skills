@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "project": "Hermes Mature AI Coding SuperTool Ecosystem Station",
+  "task_id": "HERMES-ECO-20261014",
+  "freeze_id": "HERMES-ECO-F003-20261015",
+  "record_date": "2026-10-15",
+  "phase": "SUMMARY_FROZEN_NEXT_PAGE_PENDING",
+  "skill_name": "hermes-mature-supertool",
+  "skill_version": "2.0",
+  "skill_location": "C:/Users/A/.hermes/skills/hermes-mature-supertool/SKILL.md",
+  "method": "三人行V2 user selected; Hermes upper framework V2",
+  "final_valid": false,
+  "verified_full_5_rounds": 0,
+  "reason": "F002 R01 HTTP400 / missing acknowledgement and independent grade",
+  "current_state": {
+    "cli_version": "Hermes Agent v0.21.5+6841.g8b66a51",
+    "cli_paths": [
+      "C:/Users/A/.hermes/hermes-agent/venv/Scripts/hermes.exe",
+      "C:/Users/A/AppData/Local/hermes/bin/hermes.exe"
+    ],
+    "pip_metadata_version": "0.20.0 (differs; do not infer running version from pip)",
+    "hermes_8642_health": "HTTP200 scoped",
+    "openwebui_3000_health": "HTTP200 scoped",
+    "openwebui_container": "open-webui-clean v0.11.4 healthy observed 2026-10-15",
+    "other_openwebui_container": "Another historical named container was starting; ownership unknown; do not touch",
+    "model_ids_observed": [
+      "DeepSeek-V4.1-Flash",
+      "deepseek-v4-pro",
+      "deepseek-v4-flash",
+      "glm-5.2",
+      "qwen3-vl"
+    ],
+    "model_real_task_success_current": "NOT_TESTED",
+    "api_toolsets_current": "UNKNOWN (GET /v1/toolsets WebException)",
+    "config_sha256": "02DCA0E1D3DFC80F693BF9ECFE3C3E70DD3F85E4F361A670D60ADE2A5ED75983"
+  },
+  "historical_assets": {
+    "prior_formal_wrapper": "C:/Users/A/AppData/Local/hermes/bin/ltmvh-hermes-formal.ps1",
+    "v132_freeze": "C:/Users/A/AppData/Local/hermes/evidence/HERMES-V132-20261004/BASELINE-V1.3.2-FREEZE.json",
+    "v20_skill_static": "PASS_FROZEN, historical 30/30 structure only",
+    "historic_202608_registry": "22 capability records, mixed statuses and 13-category Gate; stale relative to October",
+    "R2_01p_cold_valid_ms": 40001.831,
+    "R2_01p_warm_observed_candidate_ms": 4852.905,
+    "formally_certified_T_star": false
+  },
+  "f002": {
+    "local_root": "C:/Users/A/.hermes/skills/hermes-mature-supertool/evidence/HERMES-ECO-20261014/F002",
+    "contract": "F002",
+    "frozen_source_commit": "037e8bfaadb6ddb03122fbabb404b95a8b4e7e7f",
+    "static_guard_42_of_42": "PASS (synthetic)",
+    "f002_r01": "FAIL/UNKNOWN before verified admission, HTTP 400, 112ms",
+    "r01_request1_exists": true,
+    "r01_ack1_exists": false,
+    "r01_grade1_exists": false,
+    "round2_to_5": "NO_ACCEPTED_RECEIPTS",
+    "consecutive_pass": 0,
+    "full_station_final_valid": false,
+    "automatic_retry_permitted": false
+  },
+  "unclosed_gates": [
+    "F002 actual request admission/HTTP400 root cause and exactly-once reconciliation",
+    "current model/provider five-route realistic quality and latency",
+    "real independent delegate_task children and Gate result under frozen contract",
+    "Repair Loop fault injection and same-item independently graded retry",
+    "multimodal UI image/video/audio end-to-end across intended surfaces",
+    "checkpoint/handoff/new session resume and hash chain under current version",
+    "startup browser actual chat, login/reboot, process recovery and endurance",
+    "five consecutive integrated real runs with cold/warm T_VALID and honest total maturity review"
+  ],
+  "constraints": [
+    "no reinstall from scratch",
+    "no proxy changes",
+    "no secret or private log inspection/export",
+    "no other Docker/Browser task disruption",
+    "do not resend unknown run",
+    "remote GitHub workspace is authoritative for handoff",
+    "historical PASS != current whole station PASS"
+  ],
+  "files": {
+    "freeze": "workspaces/hermes-maturity-20261014/HERMES_ECO_STATUS_FREEZE_20261015.md",
+    "next_page": "workspaces/hermes-maturity-20261014/HERMES_ECO_NEXT_PAGE_20261015.md",
+    "prior_report": "workspaces/hermes-maturity-20261014/PROGRESS-F002.md",
+    "startup_sop": "skills/windows-hermes-operations/references/docker-startup-recovery-20261014.md"
+  },
+  "next_step": "Next page: only read existing F002 evidence and exact HTTP400 response/official runs contract; freeze smallest safe missing gate; do not start new service or five rounds until explicit next instruction."
+}
