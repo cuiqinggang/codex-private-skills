@@ -1,17 +1,22 @@
 ---
 name: artificial-single-page-extreme-time-engine
-description: 《三人行》第1版的当前正式入口。GPT担任CEO先虚拟成熟与冻结，按需复用Codex Ultra连续运行层执行及现实验收，故障由GPT差分分析后重新验证；兼容明确指定的旧A/B路线及冻结任务METHOD_REF。
+description: 《三人行》第2版已全局激活的当前正式入口。GPT担任CEO先虚拟成熟与冻结，按需复用Codex Ultra连续运行层执行及现实验收，故障由GPT差分分析后重新验证；兼容明确指定的旧A/B路线及冻结任务METHOD_REF。
 ---
 
-<!-- ACTIVE DEFAULT 2026-10-11 -->
-# 当前正式入口：三人行第1版
-DEFAULT_METHOD=SANRENXING_V1
+# 《三人行》第2版｜全局正式激活裁定（2026-10-16）
+DEFAULT_METHOD=SANRENXING_V2
 STATUS=FROZEN_ACTIVE
-CANONICAL_PATH=skills/artificial-single-page-extreme-time-engine/SANRENXING_V1.md
-FREEZE_ID=SRX-V1-ACTIVE-F001
+ACTIVATION_ID=SRX-V2-C002-GLOBAL-ACTIVE-20261016
+SOURCE_FREEZE_ID=SRX-V2-C002-SAVED-F001
+METHOD_REF=skills/artificial-single-page-extreme-time-engine/method-freezes/SANRENXING_V2_C002_F001_20261012/SANRENXING_V2.md@78ffb94c4cacd07662b83a59042bc0fe3e7f69e7
+METHOD_SNAPSHOT_COMMIT=78ffb94c4cacd07662b83a59042bc0fe3e7f69e7
+ACTIVATION_SCOPE=NEW_TASKS_AND_UNPINNED_SANRENXING_REQUESTS
+LEGACY_TASKS=KEEP_EXISTING_METHOD_REF
+GLOBAL_FINAL_VALID=NOT_CLAIMED
 
-用户说“按三人行执行”或未指定旧路线的新任务，先读本仓库的SANRENXING_V1.md，一次获取引擎、执行决策、换页、任务索引。明确选择旧A/B时兼容相应ROUTE；已有任务以自己的METHOD_REF锁定旧方法，不自动改写。旧文中关于“29版未激活”的文字为历史记录，不覆盖以上正式入口。执行仍受授权、Exactly-once、真实Freeze回读约束。
+用户明确批准第2版作为全局默认方法。本激活裁定优先于第2版冻结源文件内历史的 REVIEW_PENDING_NOT_ACTIVE / FROZEN_SAVED_NOT_ACTIVE / DEFAULT_METHOD=V1 标志，但不篡改冻结原件、Manifest、测试证据或其有限验收结论。正式加载一律读取上述固定提交的 C002 冻结正文及配套兼容矩阵；原第25版执行大脑、任务合同正反约束与全部旧文件继续按适用条件继承，出现遗漏读原文，以不降低硬约束为准。旧任务继续固定自身 METHOD_REF 与 TASK_STATE_REF，明确旧A/B路线沿用自己的ROUTE；仅用户显式授权的任务迁移才更新其指针。Exactly-once、安全授权、必要Freeze与独立回读不变。方法激活不等于未测试功能实际通过。
 
+---
 # 自动化A/B极限短时间引擎：标准稳定入口
 
 用户说“使用自动化B极限短时间引擎完成【任务】”时**直接选择B路线最新版本**；说“使用自动化A…”则直接选A；只说“使用自动化A/B引擎”才按最终有效时间与任务形态选择。第一步从网络权威仓库读取同目录 `START_HERE.md`，禁止先去C盘找方法。它按固定 `routes/A/ROUTE.md` 或 `routes/B/ROUTE.md` 读取最新版；接续任务只读该TASK_ID专属CURRENT指针，用户不必手动提供版本。
