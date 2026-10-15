@@ -12,6 +12,8 @@ description: GPT直连Windows三通道执行桥 V6.0｜唯一正式优先级 C�
 
 **先读取本 V6 极简入口与 [V6 决议、现场故障证据、B成熟分流和回退](V6_C_FIRST_A_RECOVERY_B_ROUTE_20261015.md)**。B短任务严格根据V3选择FAST（仅日志）或V2 BOUNDED（小型非敏感成功工件）；旧FULL仅用于强审计/大结果/失败证据等要求，承认Windows侧下载外部ZIP长尾风险。A已出现PID更替与本机Supervisor Exit0/Exit1，真正根因仍未确认；不动FlClash、Windows代理、Runtime Key、现有唯一Tunnel，未经现实验收不得称修复完成。截图的MCP配置面板属于ChatGPT工具显示层，不是隧道中断原因；日常不调用多余get_config。
 
+**V6 可执行判路（已在Windows隔离现实测试6/6）：** [bootstrap/Invoke-Three-Route-Gate-V6.ps1](bootstrap/Invoke-Three-Route-Gate-V6.ps1)；本机一致副本 `C:\\AI\\GPT-Windows-Bridge-B\\persistence\\Invoke-Three-Route-Gate-V6.ps1`。这是纯函数建议器，不会自动截获GPT工具调用。旧 `Invoke-Remote-Quota-Route-Gate.ps1` 保留为 V1 历史，不再作为当前正式判路执行入口。
+
 **V6状态：** `C_FIRST=POLICY_FROZEN`; `C_REAL_IO_AND_COMMAND=PASS`; `A_SECOND=INTERMITTENT_EXITS_PENDING_ROOT_FIX`; `B_THIRD=V3_BOUNDED_5_OF_5_HISTORICAL_PASS`; `V6_SKILL_PUBLISHED=YES`; `A_ZERO_FAILURE=NOT_PROVEN`. 下文V5及以下所有“最高优先级”“当前主路”只保留作历史版本，不覆盖V6。
 
 ---
