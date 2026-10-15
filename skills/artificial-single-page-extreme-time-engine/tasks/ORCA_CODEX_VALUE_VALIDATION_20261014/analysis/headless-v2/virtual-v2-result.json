@@ -1,0 +1,51 @@
+{
+  "scope": "Linux Node离线执行官方函数；依赖替身只覆盖所列早退/配置分支，不是Windows、SQLite导入、实际权限或业务验收",
+  "node": "v24.19.0",
+  "platform": "linux",
+  "commit": "2bb20586ebc39d605e16d95f57420e20a16e7485",
+  "passed": 9,
+  "tests": [
+    {
+      "name": "官方JSON根解析接受新配置",
+      "result": "PASS"
+    },
+    {
+      "name": "官方迁移保留显式受限Codex参数",
+      "result": "PASS"
+    },
+    {
+      "name": "迁移标记缺失时仍保留显式Codex参数",
+      "result": "PASS"
+    },
+    {
+      "name": "缺少参数键的负例确实返回危险默认值",
+      "result": "PASS"
+    },
+    {
+      "name": "退休设置过滤保留hooks与trust关闭",
+      "result": "PASS"
+    },
+    {
+      "name": "PTY预信任关闭不调用写入依赖",
+      "result": "PASS"
+    },
+    {
+      "name": "structured预信任关闭不调用写入依赖",
+      "result": "PASS"
+    },
+    {
+      "name": "用户自定义CODEX_HOME保留",
+      "result": "PASS"
+    },
+    {
+      "name": "旧Orca镜像环境仅在值匹配时清除",
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "未执行完整Store与SQLite首次导入",
+    "未启动Orca或Codex",
+    "未证明实际Windows子进程环境",
+    "未证明整体虚拟极限或任何效率提升"
+  ]
+}
