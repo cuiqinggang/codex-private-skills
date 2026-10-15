@@ -71,15 +71,9 @@ jobs:
           CURRENT_SHA: ${{ github.sha }}
         run: |
           $ErrorActionPreference='Stop'
+          # Defense in depth: FULL never auto-executes task JSON from push, even if a push trigger is reintroduced.
+          if ($env:EVENT_NAME -ne 'workflow_dispatch') { throw 'LEGACY_FULL_REQUIRES_EXPLICIT_DISPATCH' }
           $task = $env:MANUAL_TASK
-
-          if ([string]::IsNullOrWhiteSpace($task) -and $env:EVENT_NAME -eq 'push') {
-            $changed = @(git diff --name-only $env:BEFORE_SHA $env:CURRENT_SHA | Where-Object {
-              $_ -like 'workspaces/extreme-time-automation-loop-v2.0/bridge/tasks/*.json'
-            })
-            if ($changed.Count -gt 1) { throw 'Exactly one task JSON may be added/changed per dispatch commit.' }
-            if ($changed.Count -eq 1) { $task = $changed[0] }
-          }
 
           if ([string]::IsNullOrWhiteSpace($task)) {
             "should_run=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
