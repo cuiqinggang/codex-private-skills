@@ -1,0 +1,123 @@
+{
+  "scope": "DETERMINISTIC_OFFICIAL_LIFECYCLE_NOT_CODEX_BUSINESS",
+  "freeze": "LIFECYCLE_F001.md@867c4518ef3fad9853be80f0dc80a70cbd19ff95",
+  "result": {
+    "scope": "DETERMINISTIC_LIFECYCLE_NOT_CODEX_BUSINESS",
+    "passed": true,
+    "coordinator": {
+      "run": "run_040a5b80cfc5",
+      "task": "task_2f5b52e2e2c6",
+      "dispatch": "ctx_01b08a04a6fe",
+      "task_status": "completed",
+      "dispatch_status": "completed",
+      "worker_result": {
+        "provenance": "worker_report",
+        "outcome": "succeeded",
+        "messageId": "msg_c1ee16bf0263",
+        "reportedBy": "term_ad78f5a6-8d29-444b-b03f-27c0eb107d4f",
+        "subject": "Artifact manifest ready",
+        "body": "Hashed three accepted artifacts. Partial work survived the controlled child timeout. Source files are unchanged and ready for independent verification.",
+        "completedBy": "term_ad78f5a6-8d29-444b-b03f-27c0eb107d4f",
+        "filesModified": [],
+        "reportPath": null,
+        "completedAt": "2026-10-15T19:53:16.886Z"
+      }
+    },
+    "worker": {
+      "identity": {
+        "handle": "term_ad78f5a6-8d29-444b-b03f-27c0eb107d4f",
+        "pane": "5fa662bb-08a4-4325-8e27-822c8ebdfc9f:a0358353-cd87-4a32-b1ea-414a8d3b9745"
+      },
+      "first_child_pid": 59968,
+      "first_exit": 1,
+      "controlled_timeout": true,
+      "resume_count": 1,
+      "same_dispatch_identity": true,
+      "process_incarnation": "866c4956-f0e7-4386-88aa-2209e980c2e4::C:/AI/Orca-Codex-Validation-20261014/lifecycle-validation-20261016-r1/worktrees/fixture/lifecycle@@c7632b70:75ca2999-8e3d-428a-bd6b-031854650831",
+      "request_id": "ef14b4d6-233a-4140-b154-d8eb0d33ada7",
+      "message_id": "msg_c1ee16bf0263",
+      "replay_message_id": "msg_c1ee16bf0263",
+      "lifecycle": {
+        "action": "completed",
+        "taskId": "task_2f5b52e2e2c6",
+        "dispatchId": "ctx_01b08a04a6fe"
+      },
+      "artifact_sha256": "6f60c0f177cfd648715bea2223aca8d2949f159c55ff5a1369c4c2e05654d62c"
+    },
+    "independent_qa": "3_OF_3_HASHES_AND_SIZES_UNCHANGED",
+    "closes": [
+      {
+        "close": {
+          "handle": "term_ad78f5a6-8d29-444b-b03f-27c0eb107d4f",
+          "tabId": "5fa662bb-08a4-4325-8e27-822c8ebdfc9f",
+          "ptyKilled": true
+        }
+      },
+      {
+        "close": {
+          "handle": "term_1b01859a-175b-4a4a-9267-e7e5a2f13d10",
+          "tabId": "9830a6b8-ddbb-4792-bf32-8660207a4aa8",
+          "ptyKilled": true
+        }
+      }
+    ],
+    "remaining_owned": []
+  },
+  "artifact": {
+    "identity": {
+      "handle": "term_ad78f5a6-8d29-444b-b03f-27c0eb107d4f",
+      "pane": "5fa662bb-08a4-4325-8e27-822c8ebdfc9f:a0358353-cd87-4a32-b1ea-414a8d3b9745"
+    },
+    "files": [
+      {
+        "path": "scripts/run.py",
+        "sha256": "320f2bf3825bf000bd501309e44ce39f36ce507005e0e694a07fe950777d2314",
+        "size": 9926
+      },
+      {
+        "path": "tests/test_run_report_offline.py",
+        "sha256": "00cce6d3fd3ff845f165634f51c16f2ab0bb3cf542ab82c3db80c381d644c619",
+        "size": 8101
+      },
+      {
+        "path": "DELIVERY.md",
+        "sha256": "5a711c8b52b7627bac9a5470e56eedc05ed253336ecdbcd3b4aeb804992e2d10",
+        "size": 3710
+      }
+    ],
+    "preserved_partial": true
+  },
+  "input": {
+    "started_mono": 189338.5648589,
+    "started_utc": 1792093960.206756,
+    "deadline_mono": 190538.5648589,
+    "expected": [
+      {
+        "path": "scripts/run.py",
+        "sha256": "320f2bf3825bf000bd501309e44ce39f36ce507005e0e694a07fe950777d2314",
+        "size": 9926
+      },
+      {
+        "path": "tests/test_run_report_offline.py",
+        "sha256": "00cce6d3fd3ff845f165634f51c16f2ab0bb3cf542ab82c3db80c381d644c619",
+        "size": 8101
+      },
+      {
+        "path": "DELIVERY.md",
+        "sha256": "5a711c8b52b7627bac9a5470e56eedc05ed253336ecdbcd3b4aeb804992e2d10",
+        "size": 3710
+      }
+    ],
+    "budget_seconds": 1200,
+    "scope": "DETERMINISTIC_LIFECYCLE_NOT_CODEX_BUSINESS"
+  },
+  "local_acceptance": {
+    "accepted": true,
+    "scope": "DETERMINISTIC_LIFECYCLE_NOT_CODEX_BUSINESS",
+    "local_valid_ms": 39091.31580000394,
+    "started_utc": 1792093960.206756,
+    "accepted_utc": 1792093999.3075867,
+    "excludes": "cloud delivery before script entry and later GitHub archive/readback; see final acceptance",
+    "result_sha256": "487eb35951017f40258b72bd21bfbea43e9107cb39c63f29d79028941c318302"
+  }
+}
