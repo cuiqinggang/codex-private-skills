@@ -1,12 +1,16 @@
 ---
 name: video-extreme-time-engine
 description: 视频极限短时间引擎。用于在固定 VALID 规格下，把视频生成任务从可用结果持续收敛到最短真实 T_VALID；强调 GPT 虚拟成熟、Freeze、Reality 执行、阶段计时、warm path、轻量 verifier、单闭环 runner 和 Reality 反哺。首个正式案例为 H3-P1。
-metadata:
-  version: "0.6+codex-h3-v2"
-  short-description: 视频极限短时间引擎
 ---
 
-# 视频极限短时间引擎 v0.6
+# 视频极限短时间引擎 V1.0（整数版）
+
+版本：1.0.0。发布日期：2026-10-16。此为本技能主版本；三人行V2、历史制作V2/V3是独立方法/模式编号，不随本次升级变更。
+
+## V1.0 成果与时间口径
+先读 [H3成果、230秒纠错与后续优化](references/H3_TIME_ACCOUNTING_V1.md)。保存Star7受保护FP16路径的本轮实测：首次469.167秒、同条件热态172.128秒。它们是生成计时，不是完整T_VALID或物理下界；跨场景质量尚未通过。
+撤销旧约230秒“物理极限”说法：那是跨运行拼接的旧路径估算，应与热态口径说明，禁止改称首次生成下界来解释172秒的新成绩。
+继续优化先按完整任务计算净收益；阶段快2倍不等于整体快2倍。保留原基线，冻结后再实际验证。
 
 ## 本地 H3 实测优先入口（2026-10-16升级）
 用户要求本地MiniMax H3生成、恢复原来200～300秒流程或诊断GPU低利用率时，先读取 [本地已验证基线与差分恢复](references/H3_LOCAL_GOOD_BASELINE_V1.md)，并使用 [原成功工作流合同](assets/h3-kitchen-warm-good-20261016.json) 做逐字段对照。
