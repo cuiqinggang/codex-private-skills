@@ -1,0 +1,89 @@
+# 高品质视频极限短时间引擎 V2：决策与接续记录
+
+## 保存状态
+本记录按用户本轮要求保存讨论成果，下一次会话继续优化。本次只保存，不生成、不下载大型权重、不自动安排明日任务。
+VERSION=2.0.0；DECISION_SAVED=YES；VIRTUAL_MATURE=NO；EXECUTION_FREEZE=NO；REALITY=NOT_STARTED。
+这是高品质方案的版本检查点，不是高品质成片已验收或极限时间已证明。不要把文档冻结误称执行冻结。
+本技能V2、历史Codex+H3全帧制作V2/V3、《三人行》V2 C002是不同编号。当前按用户指定《三人行》V2做整套审查，不变更其全局启用状态。
+
+## 讨论经过与纠正
+1. V1已完成基本视频流水线，R4首次469.167秒、同条件热态172.128秒。保留全部配置与证据；它是现有基本规格的可靠参照，不是所有品质/输入下的全局最优。
+2. 局部采样加速不能代表整体更快。R5首次490.504秒、热态49.707秒，但音画差异和资源变化未完成同质量认证。R6/R7分别出现RAM96.4%/99%问题，不能把局部收益晋级成整体收益。
+3. 更换参考图、提示词、分辨率会改变条件编码、模型准备、采样/解码负担及缓存命中。历史1024×576约1473.885秒、参考图640×352约838.265秒，不能只凭总时间断言“流程错误”，也不能与厨房热缓存172秒直接排名。
+4. 用户转向有完整资料、可以复现的高品质成熟工作流，而非追逐最快宣传数字、自己探索算子或凑够三条未知方案。作者配方不完整不意味着无其他路线。
+5. 不接受把480×352或640×352直接称为参考样片的高品质；高品质验收以视觉结果为准。也不把输出8K、插帧、无条件二采当成必要步骤。
+6. 当前集中官方H3基础流程与H3 LMS增强对照，其他路线只作后续技术参考。LMS上游仍标实验/研究性质，虽有公开图和权重，不能称为本机已成熟方案。
+7. 用户最终要求先停在保存检查点，明天继续；此前授权的生成计划本次不执行。
+
+## 质量合同与参考
+目标：达到用户所给古装人物参考的相近视觉品质，提示词和场景可以不同，不必复刻原片。检查自然面部、头发、服饰刺绣、层次光照、人物身份与结构；完整视频阶段再检查运动一致性及声音。
+参考视频：douyin_7694210317173856083_20261015-183403.mp4；来源 https://www.douyin.com/video/7694210317173856083 。
+实际上传副本为1038×576、30fps、28.733333秒、H264/AAC。此前仅检查抽出的六帧联系表及媒体参数，不冒充完整动态或音频验收。
+持久文件ID：libfile_b2db556df07c8191b8d23d46808a0337。
+参考截图：7df8b76fa24eb5d8897a91fabef22cca(1).jpg；文件ID libfile_a3a741ec73748191829cf2b47423d270。
+截图作者声称LMS直出8K、约0.8MP生成6秒300–400秒、16GB以上显存。这是作者自报：GPU/RAM、冷暖态和计时边界不全，不能转写成本机保证；其LMS是否等同公开实现也未确认。不以追溯作者独家配方阻塞任务。
+
+## 最终选择与最小对照
+最终生产方向：本地MiniMax H3，通过ComfyUI组织输入、推理、图像/音频解码和输出。ComfyUI是编排工具，H3是生成模型，两者可以配合声音，不是二选一。也没有证据说明所有音画任务只能用H3；当前选择它是为了接续本地方案。
+A：官方H3图生视频基础路径，先仅保存最小图片组。
+B：复用A实际产生的同一组图片，增加一次公开H3 LMS增强。保持尺寸、帧数和原内容，不重新生成A、不改seed来挑结果。
+若A已达到样片质量，优先A；只有B补足必要品质、没有身份/纹理损伤且整体时间代价合理，才采用B。当前尚无A/B图像、质量结论或本机耗时。
+本阶段不生成5秒视频、不输出MP4、不输出音频。优先单张；若H3有效结构要求最少5帧（17k+5），只输出5帧图片。联合latent内部音频不等于必须解码/保存声音。冻结前以实际节点和模型约束核实最小帧数。
+单图/5帧只能验证静态质量和最低路径可运行性，不能证明动作、口型、音画同步，也不能线性外推5秒视频耗时。
+不增加插帧、无必要放大或比参考更高的质量要求。
+
+## 公开路径与适配事实
+官方资料：
+- https://docs.comfy.org/tutorials/video/minimax/minimax-h3
+- https://docs.comfy.org/tutorials/video/minimax/minimax-h3-native
+- https://github.com/Comfy-Org/workflow_templates/blob/main/templates/video_minimax_h3_i2v.json
+官方原生画面以768短边等规格为候选，20步基础/8步Turbo需按实际质量合同选择；不要预先保证短步数不损参考保真。模板较新，本机ComfyUI0.34.0须逐节点适配，不盲目整体升级。
+
+公开LMS：
+- https://huggingface.co/Alissonerdx/Minimax-H3-ComfyUI
+- https://huggingface.co/Alissonerdx/Minimax-H3-ComfyUI/blob/main/docs/lms.md
+- https://huggingface.co/Alissonerdx/Minimax-H3-ComfyUI/blob/main/workflows/minimax_h3_lms_workflow.json
+已记录版本 e095edae3f4c69e18b4f27ed9e541078c87a8d98。
+权重 loras/minimax_h3_lms_v1.0_r64.safetensors，1239664536字节；SHA256=16f3195bc6bffa431c0598dc2031e520ba058b4fcbc9f104db9e3fdfdeacf60c。
+曾从Windows请求HEAD成功HTTP200，仅证明可访问与长度；尚未下载。
+它是Ref2VA上的完整二次采样，不是廉价锐化滤镜。公开图含Euler/simple 8步、CFG1、sigma12/3、Ref2V Turbo4与LMS强度1，MiniMaxH3AddGuide对齐源帧、frame_idx=0。图中旧本地LoRA名须映射公开权重；不要照抄Downloads路径或附加LTX提示词模型。
+文档增强指令：Enhance this video with sharp, crisp details while preserving a natural photorealistic appearance.
+额外原生参考和guide混用仍实验，不叠加。图内默认方形约0.5MP不等于用户合同，应适配宽高比并冻结。
+
+## 其他路线的比较边界
+| 路线 | 公开记录 | 本任务结论 |
+|---|---|---|
+| Star7 | 2080Ti22GB、约0.4MP/5秒约85秒，含解码/VSR/音频/编码；冷启动边界不全 | 不承诺本机85秒，不以低分辨率加放大直接认证样片品质 |
+| Iven Turing | 同级显卡640×352，最终T2V约280秒、I2V热态417–420秒；160秒是草稿 | 可参考实现，不能用草稿/局部VSR时间代表完整高品质 |
+| H3+LTX | 1344×768、121帧带声，热态约165秒；128GB RAM/NVMe | 本机32GB/SATA不能直接照搬 |
+| neng320完整模型 | 4060Ti16GB+64GB，640²/5秒约300秒；RAM约44GB | 内存不适配，完整模型路线留作后续参考 |
+
+来源：
+https://github.com/star7code/minimax-h3-chunk-star7/blob/main/BENCHMARKS.md
+https://github.com/IvenKooLab/minimax-h3-turing
+https://ai-muninn.com/en/blog/solh3-two-stage-on-2080ti
+https://github.com/neng320/minimax-h3-local-deployment
+以上是此前调研记录，不是本机验证。速度与品质没有相同合同前，不能宣布前三名或必胜路线。
+
+## 本机适配与优化方向
+已记录硬件：RTX2080Ti22528MiB、32GB RAM、Windows10、SATA；torch2.9.1+cu130、ComfyUI0.34.0（8a33128f2f8c5585c57486c07de481241e70a39c）。恢复时重新确认。
+已有FL2VA/Ref2VA INT8 ConvRot、Qwen32B NVFP4 AWQ、4B路径、video FP16/audio FP32 VAE及8步/4步LoRA；缺LMS。不要把“已有节点/文件”当成组合兼容已通过。
+优化整条链：输入与条件编码→缓存→模型创建/精度→LoRA临时权重→显存调度→采样→解码/必要增强→输出→验收。
+重点核对模型创建与LoRA准备期间CPU临时副本、编码器/VAE共存峰值及换模开销；这有机会消除重复准备和内存换页，但未证明能省多少秒。
+保留已验证dynamic、禁锁页内存及受保护FP16兼容路径。禁止再直接重复R6锁页或R7关闭dynamic的全局失败组合。
+不得因基础LoRA API支持就宣称所有W4A8权重复用成熟；仍需核查当前具体补丁、入口和缓存失效路径。
+B必须计入A生成+模型准备/切换+LMS采样解码+必要验收，另报增强增量；禁止只展示增强阶段耗时。
+分清首次、同条件热态、新条件生成、冷启动以及完整T_VALID；不把不同质量规格与V1直接胜负比较。
+
+## 明日接续清单
+1. 读本记录、V1时间口径与R6/R7失败处置，不重跑基线、不重做整轮检索。
+2. 重新确认模型文件、队列和资源锁；检查公开LMS权重、许可/版本与哈希，依已授权任务准备，勿无界后台下载。
+3. 构建本机支持的A/B API图：固定输入、提示词、seed、尺寸、最小帧数、精度、LoRA、调度和输出图片节点；不要误提交原124帧SaveVideo图。
+4. 完成整套兼容审查与RAM/VRAM预算，定义独立有界watchdog；监控退出不等于任务停止，interrupt后必须确认结束，必要时仅结束核实归属的服务进程。
+5. 满足资源锁条件后冻结一次预定义A/B批次。A只生成一次，B用A的图片；不自动重试，不边改一点边生成。
+6. 输出并排图片、同口径总时间/增量时间和质量结论。若不合格，保留事实与原因，不宣布成熟。后续动态有声测试须尊重当前“不生成视频”的范围。
+
+恢复位置：C:/AI/MiniMax-H3/projects/H3-MINIMAL-20261015；ComfyUI C:/AI/MiniMax-H3/ComfyUI；Python C:/AI/MiniMax-H3/.venv/Scripts/python.exe。
+Windows桥V7用C通道（最近设备f6990966-5870-484b-bf79-409bc6fb963e），A暂停；恢复先确认设备而非盲用旧ID。
+服务最近8196，队列检查为空；不固化旧PID。GPU-BASELINE-LOCK.json记录generation_allowed=false、HOLD_RESOURCE_DIAGNOSIS，本次未修改。
+本次没有V2执行图、没有新增生成任务、没有A/B样本或实测秒数。下一步从兼容与资源准备继续。
