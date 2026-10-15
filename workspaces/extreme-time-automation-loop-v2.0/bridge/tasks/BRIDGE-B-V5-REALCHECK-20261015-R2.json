@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "task_id": "BRIDGE-B-V5-REALCHECK-20261015-R2",
+  "payload_path": "workspaces/extreme-time-automation-loop-v2.0/bridge/payloads/BRIDGE-V1-FAST-SMOKE-20261013.ps1",
+  "timeout_seconds": 90,
+  "expected_exit_code": 0
+}
