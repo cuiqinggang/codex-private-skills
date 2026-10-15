@@ -1,4 +1,15 @@
 # Orca＋Codex 效率实证｜当前状态
+
+## 当前操作入口｜2026-10-16 流程小修订
+OPERATING_FLOW=OPERATING_FLOW_1_1.md@7c533440b1e483ae2f7a6914d044c4daf88f507f
+FLOW_SCOPE=BOUNDED_WAIT_EXACT_SESSION_RESUME_OFFICIAL_SETTLEMENT
+FLOW_STATIC_REVIEW=COMPLETED_SCOPED_ONLY
+FLOW_NEW_WINDOWS_REALITY=NOT_EXECUTED_BY_USER_DIRECTION
+METHOD=SANRENXING_V2_C002_UNCHANGED
+BRIDGE=V7_C_FIRST_A_PAUSED_B_BACKUP
+已验T03恢复成果DONE；首次360秒/一次原会话恢复600秒沿用经验，新增1200秒全节点上限仅为未部署候选。官方worker_done已有120秒同request重试和结算对账，不能套旧脚本统一25秒CLI限制。已写入12类纸面故障处理与明确停止条件，不新增通用恢复器。
+本轮完成固定源码机制审查及操作规程归档回读，没有启动Windows/Orca/Codex。服务端context-only身份归属与恢复后的dispatch绑定、候选脚本deadline/完整计时仍需静态闭合；整体虚拟成熟与正式融合尚未通过。下面历史记录按日期理解，不能覆盖本入口与V4已验成果。
+
 TASK_ID=ORCA_CODEX_VALUE_VALIDATION_20261014
 OWNER=GPT_CEO_THIS_TASK_ONLY
 METHOD_REF=SANRENXING_V2_C002@4c48e249ca9c18ecde014d8b2e43f753a1f13139
