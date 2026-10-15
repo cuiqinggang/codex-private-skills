@@ -28,6 +28,13 @@
 - 成熟处理顺序：读取真实A工具错误→唯一PID/父进程→控制平面、MCP子进程代次与initialized epoch→Supervisor exit时间→官方Tunnel诊断或有界、去敏日志→仅在匹配FIRST_DELTA后做最小修复→合法新进程Reality→跨自然运行窗口检验。绝不因当前健康而重启工作中的唯一Tunnel、不得测试性Stop-Process、不读取或上传Runtime Key。
 - A尚未通过完整异常退出根因修复、跨多日稳定、真实登录冷启动全链路验收。C担任默认工作入口不等于A的问题自动解决。
 
+## 3A. A路限定诊断候选已隔离物化（未激活，禁止冒充根因修复）
+
+- 通过**C通道**读取 Windows 正式守护器原始SHA `649E7A939AA8A27B91FE5FBE130E842E131EB96D55F36A1C00FED405335270EF`，现有正式文件**未作修改**、唯一Tunnel未重启；监督进程仍持续执行。
+- 由于正式守护器使用 `2>&1 | Out-Null` 丢弃官方子进程诊断输出，已在本机单独准备 `C:\AI\GPT-Windows-Bridge-B\persistence\Recovery-Supervisor-v6-diagnostic-candidate.ps1`，并将一致源码隔离存放到 [bootstrap/Recovery-Supervisor-v6-diagnostic-candidate.ps1](bootstrap/Recovery-Supervisor-v6-diagnostic-candidate.ps1)。候选SHA为 `CB17BCE266D7EA79BC74BEBA7DCC851D1D2380902DB34867A5CFC71502650657`。
+- 候选在`TUNNEL_START`分支仅将已知的错误**类别**写入原监督日志（截止响应/TTL、共享stdio关闭、409初始化、轮询EOF、其他错误）；没有记录原始stdout、密钥、路径参数或HTTP正文。Windows PowerShell Parser真实通过。尚**没有运行期闭环与故障复现实验**；运行中改守护器有可能影响作为其子进程的现有Tunnel，因此**不得自动替换或Restart已运行的Supervisor**。
+- 下一次用户批准的维护时段，先按V5备份/父子/唯一隧道保护复核、隔离验证PS5.1标准错误行为，之后才考虑在安全重启周期加载候选，并等真实自然异常来确认分类；未经验证不得标记`A_ROOT_FIXED`。这是最小可回滚的取证改进，不是彻底修复已经完成。
+
 ## 4. 用户截图中“View config · Desktop Commander”界面
 
 - 截图位于**ChatGPT的GPT-Windows-MCP-Bridge工具结果区域**，展示MCP服务器配置（Blocked Commands、Allowed Folders、Default Shell、Telemetry、文件行数限制）；`Unable to generate preview in this environment` 表示工具内容预览不可用，**不是Windows弹出系统故障对话框，也不是隧道断开的证明**。
