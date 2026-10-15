@@ -1,0 +1,9 @@
+{
+  "archive_commit": "99ab8cb0c0a55ede29eb59e6b7df09ee7fff02b7",
+  "archive_independent_readback": true,
+  "known_owned_pids_still_exist": [],
+  "accepted": true,
+  "input_to_archive_readback_ms": 101271.32919998257,
+  "accepted_utc": 1792094061.5027354,
+  "scope": "script entry through local QA cleanup and first remote evidence archive/readback; excludes prior analysis deployment and subsequent summary publication"
+}
