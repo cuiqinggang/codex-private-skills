@@ -1,1 +1,128 @@
-.
+{
+  "baseline": [
+    {
+      "name": "T03_empty_report_file_output",
+      "passed": false,
+      "error": "ZeroDivisionError: division by zero",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 32, in case\n    try:fn();result=dict(name=name,passed=True,error=None)\n        ~~^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 102, in <lambda>\n    case('T03_empty_report_file_output',lambda:reporting(0))\n                                               ~~~~~~~~~^^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 97, in reporting\n    with contextlib.redirect_stdout(buf):ns2['report'](cfg,n,5,0,['x'],1,2,0,0 if not n else 2.0,0 if not n else 3,0 if not n else 4,0,results_file=str(file))\n                                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\dataset\\source\\scripts\\run.py\", line 229, in report\n    f\"{100 * pass1 / n_tasks:>6.1f}%\",\n       ~~~~~~~~~~~~^~~~~~~~~\nZeroDivisionError: division by zero\n",
+      "wall_ms": 9.390599996550009
+    },
+    {
+      "name": "T03_nonempty_report_regression",
+      "passed": true,
+      "error": null,
+      "wall_ms": 7.977100001880899
+    },
+    {
+      "name": "ALL_source_compile",
+      "passed": true,
+      "error": null,
+      "wall_ms": 128.07340000290424
+    }
+  ],
+  "candidate": [
+    {
+      "name": "T03_empty_report_file_output",
+      "passed": false,
+      "error": "ZeroDivisionError: division by zero",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 32, in case\n    try:fn();result=dict(name=name,passed=True,error=None)\n        ~~^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 102, in <lambda>\n    case('T03_empty_report_file_output',lambda:reporting(0))\n                                               ~~~~~~~~~^^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 97, in reporting\n    with contextlib.redirect_stdout(buf):ns2['report'](cfg,n,5,0,['x'],1,2,0,0 if not n else 2.0,0 if not n else 3,0 if not n else 4,0,results_file=str(file))\n                                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\business-exec-20261015-r3\\worktrees\\fixture\\component\\scripts\\run.py\", line 229, in report\n    f\"{100 * pass1 / n_tasks:>6.1f}%\",\n       ~~~~~~~~~~~~^~~~~~~~~\nZeroDivisionError: division by zero\n",
+      "wall_ms": 200.60630000079982
+    },
+    {
+      "name": "T03_nonempty_report_regression",
+      "passed": true,
+      "error": null,
+      "wall_ms": 135.81300000078045
+    },
+    {
+      "name": "ALL_source_compile",
+      "passed": true,
+      "error": null,
+      "wall_ms": 558.8207999826409
+    }
+  ],
+  "delivery": false,
+  "local_result": {
+    "scope": "ORCA_TERMINAL_CODEX_EXEC_T03_NOT_ORCHESTRATION_WORKER",
+    "started": 1792088439.2111409,
+    "checks": [
+      "OFFICIAL_STARTUP_IMPORT_READY"
+    ],
+    "effective_settings_verified": true,
+    "worktree": {
+      "id": "05e56fd8-a572-453b-97cf-3806ffa313ed::C:/AI/Orca-Codex-Validation-20261014/business-exec-20261015-r3/worktrees/fixture/component",
+      "identity": {
+        "key": "wt2:local:4d20d956-62d0-4d0b-a01b-53f743866603",
+        "executionHostId": "local",
+        "instanceId": "4d20d956-62d0-4d0b-a01b-53f743866603"
+      },
+      "instanceId": "4d20d956-62d0-4d0b-a01b-53f743866603",
+      "repoId": "05e56fd8-a572-453b-97cf-3806ffa313ed",
+      "projectId": "repo:05e56fd8-a572-453b-97cf-3806ffa313ed",
+      "hostId": "local",
+      "projectHostSetupId": "05e56fd8-a572-453b-97cf-3806ffa313ed",
+      "creatorProvenance": {
+        "kind": "host"
+      },
+      "path": "C:/AI/Orca-Codex-Validation-20261014/business-exec-20261015-r3/worktrees/fixture/component",
+      "head": "5d3ac7a739afdb0adaa5a73f83229bb08a67e7bd",
+      "branch": "refs/heads/cuiqinggang/component",
+      "isBare": false,
+      "isMainWorktree": false,
+      "displayName": "component",
+      "displayNameMode": "fixed",
+      "comment": "",
+      "linkedIssue": null,
+      "linkedPR": null,
+      "linkedLinearIssue": null,
+      "linkedLinearIssueWorkspaceId": null,
+      "linkedLinearIssueOrganizationUrlKey": null,
+      "linkedGitLabMR": null,
+      "linkedGitLabIssue": null,
+      "linkedBitbucketPR": null,
+      "linkedAzureDevOpsPR": null,
+      "linkedGiteaPR": null,
+      "linkedWorkItem": null,
+      "linkedTaskSourceContext": null,
+      "isArchived": false,
+      "isUnread": false,
+      "isPinned": false,
+      "sortOrder": 1792088480821,
+      "lastActivityAt": 1792088480819,
+      "createdAt": 1792088480819,
+      "cliProvenance": {
+        "kind": "created-by-cli",
+        "createdAt": 1792088464701
+      },
+      "baseRef": "main",
+      "workspaceStatus": "in-progress",
+      "parentWorktreeId": null,
+      "childWorktreeIds": [],
+      "lineage": null,
+      "workspaceLineage": null,
+      "git": {
+        "path": "C:/AI/Orca-Codex-Validation-20261014/business-exec-20261015-r3/worktrees/fixture/component",
+        "head": "5d3ac7a739afdb0adaa5a73f83229bb08a67e7bd",
+        "branch": "refs/heads/cuiqinggang/component",
+        "isBare": false,
+        "isMainWorktree": false
+      }
+    },
+    "prompt_sha256": "2d520d5b6a8b7129b395af829431db016dfa4b678b45f1e96b3a34469c948a0b",
+    "terminal": "term_8456c29b-1e8a-4b5c-881a-160f17c1598b",
+    "passed": false,
+    "error": "EXEC_TIMEOUT_360S_NO_REDISPATCH",
+    "remaining_owned": [],
+    "elapsed_ms": 407161.1993999977
+  },
+  "files": {
+    "result.json": "e7f6d74e01d441c9e31d20fc609aa1abcf5e25e93fda607db6aef914a9b7ffdc",
+    "prompt.txt": "2d520d5b6a8b7129b395af829431db016dfa4b678b45f1e96b3a34469c948a0b",
+    "exec-start.json": "fecbdfbd5f2e416ecfe7409aa38870a99a481eb461c054bf01522d1cec801666",
+    "events.jsonl": "81f49f0785ddf1c46e4aab61084c8a869220f67a92bbee9bbb269116c5c62d0e",
+    "exec.stderr": "d60a5095fe7920057a389d7f1b35f99fffdf96177417818ef30e5935ed3f8d4e"
+  },
+  "diff": "",
+  "processes": [],
+  "accepted": false
+}
