@@ -1,0 +1,58 @@
+{
+  "scope": "OFFLINE_SOURCE_BRANCH_TEST_SYNTHETIC_DEPENDENCIES",
+  "ref": "2bb20586ebc39d605e16d95f57420e20a16e7485",
+  "node": "v24.19.0",
+  "host": "linux",
+  "simulated_branch_platform": "win32",
+  "passed": 11,
+  "results": [
+    {
+      "name": "missing provenance: no credential write",
+      "status": "PASS"
+    },
+    {
+      "name": "system-default existing baseline: no credential write",
+      "status": "PASS"
+    },
+    {
+      "name": "managed provenance: no system credential write",
+      "status": "PASS"
+    },
+    {
+      "name": "empty runtime auth: no credential write",
+      "status": "PASS"
+    },
+    {
+      "name": "counterexample: legacy null baseline plus mirror invokes write",
+      "status": "PASS"
+    },
+    {
+      "name": "declined conditional write still persists provenance",
+      "status": "PASS"
+    },
+    {
+      "name": "system default with no custom home selects real home",
+      "status": "PASS"
+    },
+    {
+      "name": "custom home prevents real-home lane",
+      "status": "PASS"
+    },
+    {
+      "name": "no retained panes skips legacy config sync",
+      "status": "PASS"
+    },
+    {
+      "name": "real-home launch still invokes both compatibility helpers",
+      "status": "PASS"
+    },
+    {
+      "name": "read-only home resolver does not invoke preparation",
+      "status": "PASS"
+    }
+  ],
+  "windows_runtime_executed": false,
+  "real_credentials_accessed": false,
+  "business_rounds_added": 0,
+  "conclusion": "Conditional migration writes exist. Fresh fixture can skip them; actual startup chain and machine state remain unverified."
+}
