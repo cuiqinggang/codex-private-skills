@@ -51,3 +51,13 @@
 - C官方账户/调用额度可能变化；C失败先判断quota、离线、权限、任务异步，必要时按路由序列A→B，不无限重试。
 - 回归验收：C真实Ping+文件/PowerShell PASS；B按任务证据合同选FAST/BOUNDED/FULL并检查工作流和真实机器回执；A当前只可记`SCOPED_REAL_READ_PASS`，不能记`ROOT_CAUSE_FIXED`。
 - 新聊天第一行可写：`使用《GPT直连Windows三通道执行桥 V6.0》；正式优先级 C>A>B；权威仓库 cuiqinggang/codex-private-skills，skills/extreme-time-automation-bridge/SKILL.md。`
+
+
+## 2026-10-15 21:48+08｜C路现场接续：A安全诊断预置、B旧路二次防护
+
+- **C真实入口**：Remote Desktop Commander 设备 `DESKTOP-4A1EGTM` 当前在线，设备ID `f6990966-5870-484b-bf79-409bc6fb963e`；已真实通过C读本机文件、执行PowerShell。V6判路器 `Invoke-Three-Route-Gate-V6.ps1 -CState ready -AState ready -BState ready -TaskExecutionState new` 实测 `selected_route=C`、`decision=C_DEFAULT_PRIORITY`。
+- **A现场已确认**：北京时间21:48左右仅一个 `tunnel-client.exe` PID 53396，父监督器PID 18268；本地 `Watch-Tunnel-Health.ps1` 返回 `HEALTHY`、`initialized`、`polling`、`poll_failures=0`、`proxy=healthy`；还通过A自身只读 `read_file` 成功。此为**短时链路通过**，绝非连续稳定验收。
+- **A无停机磁盘变更**：在C上将正式文件 `C:\AI\GPT-Windows-Bridge-B\persistence\Recovery-Supervisor-v1.ps1` 原始SHA256 `649E7A939AA8A27B91FE5FBE130E842E131EB96D55F36A1C00FED405335270EF` 备份至 `Recovery-Supervisor-v1.ps1.bak-V6-diag-20261015`，随后仅把原 `2>&1 | Out-Null` 换成有界去敏故障类别记录。新SHA256 `0065E2396FEA89044489E36D764DA309EC287384BADDFE50FDCC631E94DF54A0`，Windows PowerShell Parser=0错误。**当前监督器在修改前已运行，磁盘补丁尚未热加载，仍不允许因此重启在线Tunnel或Supervisor。**
+- **A根因**：监督日志UTC11:32:31 Exit0、UTC11:42:38 Exit1、UTC13:32:30 Exit0；守护器均已自动拉起。过去输出被丢弃，不能将这些事件确定归因于代理、409、官方旧版stdio bug或网络。保留 `A_ROOT_FIX_REALITY_NOT_YET_PASS`，未来安全重启后待真实故障类别证据再最小修复。
+- **B主分支防回旧路**：旧FULL `.github/workflows/extreme-time-windows-bridge.yml` 的触发器在本次核查开始时已经只有 `workflow_dispatch`。又以提交 `5adc5089806dfccfbcfd46079953b0b0e7152bd4` 删除其陈旧的push自动任务发现代码，并增加 `LEGACY_FULL_REQUIRES_EXPLICIT_DISPATCH` 非手动事件拒绝门。回读确认FULL、FAST、BOUNDED三个工作流全部仅手动触发；FULL依旧保留大证据/失败证据能力，FAST/BOUNDED原流程不变。**本次是配置回读＋静态防退验收，未重新派发有副作用的业务或制造FULL长尾下载测试。**
+- **操作边界**：不更改FlClash/Windows代理/Runtime Key，不重启或制造第二条同ID Tunnel；日常仍C>A>B。后续完成A根因闭环再用独立Reality及稳定性窗口验收，不能把本次健康读通写成A永久修复。
