@@ -159,3 +159,10 @@ CLEANUP_IS_WHOLE_VIRTUAL_MATURITY=NO
 通过当前在线C设备真实列出 CEO_assets/home（depth2）、home/AppData（depth3）、profile/profiles（depth2）、profile/.profile-state-access（depth2）。home下仅见AppData目录层级，所列范围没有.codex或旧登录迁移文件；profiles/local-default下有profile-state.db、shm、wal、authority与一份backup数据库；访问协调目录有candidates和participants。仅列名，不读取凭据或数据库正文。此范围未穷尽全部磁盘，也未证明数据库内部无迁移状态。
 没有确认可安全删除的废弃迁移文件，因此实际删除0；数据库备份、锁/协调记录与历史验收证据不按“旧”字直接删除。删除保护性来源记录不能作为关闭官方迁移副作用的办法。原HOME启动器、F001与系统配置未修改。
 本轮仅完成独立目录读取，不是Orca运行时或Codex业务测试。整套虚拟成熟仍未通过，原平台拒绝仍未解决，未重发原预检。Reality、十轮及AB仍为0。下一步应核实新隔离状态下的构造器、hooks及设置落点副作用；不能将清空旧数据视为已解决实际子进程环境、模型和权限传递。
+
+## 2026-10-16 最小业务新候选（北京时间）
+LATEST_MINIMAL_BUSINESS_CANDIDATE=CEO_MINIMAL_BUSINESS_CANDIDATE_V1.md
+LATEST_MINIMAL_BUSINESS_COMMIT=006f8ac0652c0d324966ed3cf82ab8bb58ce43e4
+固定源码补齐：系统默认真实home的sync提前返回；无托管账号的auth迁移提前返回；空旧home仍会写隔离migration标记，是正常状态写入。预信任false的两入口返回；real-home hook reconcile在config空或disabled时返回，纠正把所有关闭hooks路径笼统视为全局写入的说法。
+新候选为单worker在新副本重放T03原始BAD，不触碰已验GOOD；仅单任务集成烟测，不增加完整业务计数。具体权限、输入验收、超时对账和全程计时边界已写明。
+当前仍缺启动前官方设置入口、headless剩余调用链及实际进程归属；未部署、未提交新运行请求，不能称本轮被平台再次拒绝。原被拒预检不重发；本轮仅独立官方源码读取及候选文档归档并回读。
