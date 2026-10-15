@@ -90,3 +90,11 @@ end_perf_counter_ns/full_wall_ms → done.set与thread.join → size(ROOT)磁盘
 完成了固定版本10份官方文件的源码审查和本机计时/参数文件审查，发现hooks关闭后刷新/有条件回写、登录兼容迁移、计时漏项与采样周期偏差。
 正式业务仍0；连续十轮0/10；AB配对0/10；净收益UNKNOWN。
 下一准备工作可独立继续：沿home-routing/PTY调用链补具体环境与权限证据，审查模型参数schema，再形成未执行的新冻结候选；原运行时拒绝单独保留，不再要求同一截图。
+
+## 8. 追加home-routing分支核对（同轮）
+源码src/main/codex-accounts/runtime-home-service-home-routing.ts，固定提交同上，blob ca68b322667969fa2d78b47ffa5c80f8dfed50dd。
+- real-home选择条件是host选择为null且没有custom CODEX_HOME override；不是任意传入真实CODEX_HOME就必走此分支。
+- reconcileLegacySharedHomeForRetainedPanes仅在real-home且有已记录旧共享pane时进入同步。
+- copyMirrorLoginIntoEmptySystemHome只在Windows、provenance committed且owner system-default、历史auth基线为null、runtimeAuth非null时尝试写入原本为空的系统auth。函数也会读取runtimeAuth以判条件。
+- 因此“系统默认路径无条件复制凭据”不成立；“一定不复制”也需要证明分支条件不成立。未检查用户凭据内容，不通过此函数运行来试探。
+审查范围现为11份关键官方正文。剩余最小静态问题是custom-home判断、实际PTY环境/调用者以及worker参数schema，尚不能发布正式可执行冻结。
