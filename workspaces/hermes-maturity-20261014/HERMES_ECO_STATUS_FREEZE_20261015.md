@@ -17,7 +17,7 @@ NEXT=READ_EVIDENCE→RECONCILE_F002→FREEZE_UNFINISHED_GATES→ONLY_THEN_RESUME
 - Hermes历史V1.3.2：OpenRouter `deepseek/deepseek-v4.1-flash` 一次性CLI真实文件工具/marker及退出码已有PASS冻结；正式wrapper `C:\Users\A\AppData\Local\hermes\bin\ltmvh-hermes-formal.ps1`；旧R1记录及R2-01候选存在。该分支R2/R3/R4…完整多门认证没有统一FINAL_VALID。
 - 本机早期8月注册表有22项能力条目、13类Gate旧口径，记有模型路由、delegate_task双子任务、真实PNG视觉、Profile数据源、Repair、checkpoint/handoff、Telegram等历史RUNTIME_PASS/EXISTING_PASS；四个命名角色仍有DEPLOYED_UNWIRED项，日志与全站验证仍存在DEPLOYED/UNVERIFIED。**旧注册表updated_at为2026-08-12，不等于10月15日逐项复验**。Full Verify cron登记存在于历史索引，最新next_run为8月17日，当前持续触发/真实产物待核验。
 - 2026-10-14既有Windows Hermes 0.21.5 + Docker Open WebUI启动恢复：官方Docker数据盘问题按成熟步骤修复；本机启动器 `C:\Users\A\Hermes_Windows_Native_014\launcher\start-hermes-openwebui.ps1`，Startup→Open-HermesOpenWebUI.ps1；8642→Docker→3000已曾完成授权模型发现及入口限定验收，保留原容器数据和浏览器。真实关机重启与浏览器完整聊天/长稳没有因此PASS。
-- 10月14对Hermes API `platform_toolsets.api_server` 做过唯一最小配置更改，保留file/terminal/vision/video/skills/code_execution，新增web/delegation/todo/session_search/cronjob；本机config.yaml SHA256为 `02DCA0E1D3DF C80F693BF9ECFE3C3E70DD3F85E4F361A670D60ADE2A5ED75983`（阅读时去掉中间展示空格；以当前实际哈希为准）。配置及原文件备份存在，新增工具配置启用不等于真实调用全通过。
+- 10月14对Hermes API `platform_toolsets.api_server` 做过唯一最小配置更改，保留file/terminal/vision/video/skills/code_execution，新增web/delegation/todo/session_search/cronjob；本机config.yaml SHA256为 `02DCA0E1D3DFC80F693BF9ECFE3C3E70DD3F85E4F361A670D60ADE2A5ED75983`（阅读时去掉中间展示空格；以当前实际哈希为准）。配置及原文件备份存在，新增工具配置启用不等于真实调用全通过。
 - F001/F002共用原生态站任务身份；F002验收器在GitHub托管Windows完成42/42**合成证据守卫单元测试**，PowerShell5.1/7 Parser PASS；这些不是Hermes五轮现实执行。
 
 ## 3. 10月15日18:58–19:01当前只读现实快照
