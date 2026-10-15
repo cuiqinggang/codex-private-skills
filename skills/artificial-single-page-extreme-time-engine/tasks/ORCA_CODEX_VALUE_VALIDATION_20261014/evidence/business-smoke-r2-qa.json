@@ -1,0 +1,48 @@
+{
+  "scope": "T03_ONLY_EXTERNAL_QA",
+  "baseline": [
+    {
+      "name": "T03_empty_report_file_output",
+      "passed": false,
+      "error": "ZeroDivisionError: division by zero",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 32, in case\n    try:fn();result=dict(name=name,passed=True,error=None)\n        ~~^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 102, in <lambda>\n    case('T03_empty_report_file_output',lambda:reporting(0))\n                                               ~~~~~~~~~^^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 97, in reporting\n    with contextlib.redirect_stdout(buf):ns2['report'](cfg,n,5,0,['x'],1,2,0,0 if not n else 2.0,0 if not n else 3,0 if not n else 4,0,results_file=str(file))\n                                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\dataset\\source\\scripts\\run.py\", line 229, in report\n    f\"{100 * pass1 / n_tasks:>6.1f}%\",\n       ~~~~~~~~~~~~^~~~~~~~~\nZeroDivisionError: division by zero\n",
+      "wall_ms": 11.326200008625165
+    },
+    {
+      "name": "T03_nonempty_report_regression",
+      "passed": true,
+      "error": null,
+      "wall_ms": 150.25939999031834
+    },
+    {
+      "name": "ALL_source_compile",
+      "passed": true,
+      "error": null,
+      "wall_ms": 126.3131000159774
+    }
+  ],
+  "candidate": [
+    {
+      "name": "T03_empty_report_file_output",
+      "passed": false,
+      "error": "ZeroDivisionError: division by zero",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 32, in case\n    try:fn();result=dict(name=name,passed=True,error=None)\n        ~~^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 102, in <lambda>\n    case('T03_empty_report_file_output',lambda:reporting(0))\n                                               ~~~~~~~~~^^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\tools\\independent_check_CEO_FROZEN.py\", line 97, in reporting\n    with contextlib.redirect_stdout(buf):ns2['report'](cfg,n,5,0,['x'],1,2,0,0 if not n else 2.0,0 if not n else 3,0 if not n else 4,0,results_file=str(file))\n                                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\AI\\Orca-Codex-Validation-20261014\\business-smoke-20261015-r2\\worktrees\\fixture\\component\\scripts\\run.py\", line 229, in report\n    f\"{100 * pass1 / n_tasks:>6.1f}%\",\n       ~~~~~~~~~~~~^~~~~~~~~\nZeroDivisionError: division by zero\n",
+      "wall_ms": 128.26029999996535
+    },
+    {
+      "name": "T03_nonempty_report_regression",
+      "passed": true,
+      "error": null,
+      "wall_ms": 67.2474000020884
+    },
+    {
+      "name": "ALL_source_compile",
+      "passed": true,
+      "error": null,
+      "wall_ms": 611.7165999894496
+    }
+  ],
+  "accepted": false,
+  "git_status": "?? llm_verifier/__pycache__/\n",
+  "delivery_exists": false
+}
