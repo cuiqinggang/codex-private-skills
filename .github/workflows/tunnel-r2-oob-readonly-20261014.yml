@@ -104,3 +104,4 @@ jobs:
             $lines|ForEach-Object {if(([string]$_) -match '^PS002_'){Write-Host $_}}
           }
           Write-Host 'OOB_READONLY_COMPLETE'
+# RERUN-20261015-V5-A-PATH-CURRENT-READONLY-DIAG: No runtime mutation; preserve existing tunnel.
