@@ -1,0 +1,400 @@
+{
+  "batch": {
+    "status": "IMAGE_BATCH_COMPLETED_REVIEW_PENDING",
+    "method": "SANRENXING_V2_C002",
+    "bridge": "V7_C",
+    "A": {
+      "status": "success",
+      "images": [
+        {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\output\\V2R3_MIN_20261016_00001_.png",
+          "sha256": "8964fe291b2f6def685a8d7ba8e314c746c82e3e0d49f59c996a0e2addde9106"
+        },
+        {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\output\\V2R3_MIN_20261016_00002_.png",
+          "sha256": "12a3525f96a71159902cae80d5d6789e20894d87a74a85cf45ea988c5b0a9ad0"
+        },
+        {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\output\\V2R3_MIN_20261016_00003_.png",
+          "sha256": "dea80c6d02025aa2ff5b43a0e45299e5e3ad7235cfb15feb79c3c88b0ee97ba8"
+        },
+        {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\output\\V2R3_MIN_20261016_00004_.png",
+          "sha256": "7470113499f17885110be0950bb9de5df9f75d7c4ace3360aaf704833b7b820a"
+        },
+        {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\output\\V2R3_MIN_20261016_00005_.png",
+          "sha256": "7a2b938390a08f364ea8898081a3b3d54a2728ebdea308669244e3c3b41ee6c7"
+        }
+      ],
+      "frames": 5,
+      "size": [
+        1024,
+        576
+      ],
+      "submission_through_image_validation_seconds": 555.9850000000151,
+      "spans": [
+        {
+          "node": "4",
+          "seconds": 1.5780000000086147
+        },
+        {
+          "node": "20",
+          "seconds": 0.10899999999674037
+        },
+        {
+          "node": "1",
+          "seconds": 1.7190000000118744
+        },
+        {
+          "node": "21",
+          "seconds": 0.07800000000861473
+        },
+        {
+          "node": "6",
+          "seconds": 24.73499999998603
+        },
+        {
+          "node": "2",
+          "seconds": 44.46799999999348
+        },
+        {
+          "node": "3",
+          "seconds": 0.0470000000204891
+        },
+        {
+          "node": "9",
+          "seconds": 0.0629999999946449
+        },
+        {
+          "node": "8",
+          "seconds": 0.09299999999348074
+        },
+        {
+          "node": "7",
+          "seconds": 0.046999999991385266
+        },
+        {
+          "node": "10",
+          "seconds": 0.07800000000861473
+        },
+        {
+          "node": "11",
+          "seconds": 438.7820000000065
+        },
+        {
+          "node": "12",
+          "seconds": 38.280999999988126
+        },
+        {
+          "node": "15",
+          "seconds": 2.4219999999913853
+        }
+      ],
+      "quality_review": "PENDING"
+    },
+    "comparison": "single complete R2 candidate; B/LMS not executed",
+    "batch_wall_seconds": 556.8280000000086,
+    "T_VALID": null,
+    "physical_limit": "UNKNOWN"
+  },
+  "freeze": {
+    "freeze_id": "H3-HQ-V2-MIN-R3-F003-20261016",
+    "frames": 5,
+    "size": [
+      1024,
+      576
+    ],
+    "video_output": false,
+    "audio_output": false,
+    "attempts": 1,
+    "method": "SANRENXING_V2_C002",
+    "bridge": "V7_C",
+    "virtual_review": "COMPLETE_FOR_MINIMUM_IMAGE_TEST_NOT_GLOBAL_OPTIMUM",
+    "quality": "same uploaded reference static standard; no guarantee before review",
+    "changes_from_R2": [
+      "native INT8 main model to existing mature W4A8 mixed model",
+      "telemetry write contention is nonfatal and guarded before logging",
+      "parent detects guard exit and fails closed"
+    ],
+    "unchanged": [
+      "FL2VA architecture retained, quantization changes from INT8 to W4A8 mixed",
+      "protected SM75 FP16 loader",
+      "no LoRA",
+      "20 steps res_multistep/simple",
+      "1024x576 5 frames seed3013",
+      "reference image and prompt",
+      "dynamic plus disable-pinned-memory",
+      "native internally tiled FP16 VAE"
+    ],
+    "projection": {
+      "repo": "NicoLab28/ClipProj-MiniMax-H3",
+      "revision": "2ebdbcdc27a29a9607efdb221a9afcb9a0cdd808",
+      "file": "mmh3-4b-ClipProj-v3.1.safetensors",
+      "size": 26256128,
+      "expected_sha256": "0184e5c8d666a131962506d21949c2d8a8c6f33445b7b5e347e9a7e0a5baa819",
+      "status": "HASH_VERIFIED",
+      "seconds": 11.125
+    },
+    "guards": {
+      "admit_ram_below": 80,
+      "stop_ram_at": 90,
+      "max_seconds": 900,
+      "independent_process": true,
+      "owned_service_only": true
+    },
+    "file_sha256": {
+      "V2R3_MIN_20261016/workflow.json": "0e240bb0e5e0df2258a3eb43222e9eed69140d8204c2f71f9635cf1c23493767",
+      "run_v2r3_min.py": "4abab090b9cce517005d61d99ccfe1e9422598da5b3f5249111f7926ffd71c6a",
+      "input/V2_reference_216.png": "d67dfc535a38596417066d537dae993d054f50637145b73f3dbe5700a297a743",
+      "extra_model_paths.yaml": "8abb615373224f9837d5e801bd088ec1c7d7c0555011bdd2f0725f8a90f76f4c",
+      "custom_nodes/ComfyUI-ClipProj/clipproj_nodes.py": "b5dcbf4bea47692c24fd504a95cdafc714c255df3d740a0496bcb0cb3ce9494a",
+      "custom_nodes/ComfyUI-ClipProj/clipproj_projection.py": "7991e2eecdf3e731ec31084298d84d9b5eda1403a6105fc2e8edc8bcced50673",
+      "custom_nodes/ComfyUI-ClipProj/clipproj_pinning.py": "3a7fb8d2b6a028355c48c5e6c0cdcfdce42144031dac84d831c1508cbe137d61",
+      "custom_nodes/ComfyUI-ClipProj/__init__.py": "481bfa1098f87d393fdcc0c0821a786bbd2bc99ead0cc579e7797a07cd4d5d25"
+    },
+    "created_utc": 1792153541.4895823
+  },
+  "workflow": {
+    "1": {
+      "class_type": "CLIPLoader",
+      "inputs": {
+        "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+        "type": "krea2",
+        "device": "default"
+      }
+    },
+    "2": {
+      "class_type": "MiniMaxH3FP16LoaderStar7",
+      "inputs": {
+        "unet_name": "minimax_h3_fl2va_pruned_w4a8_mixed.safetensors"
+      }
+    },
+    "3": {
+      "class_type": "MiniMaxH3SigmaShift",
+      "inputs": {
+        "model": [
+          "2",
+          0
+        ],
+        "shift_video": 12,
+        "shift_audio": 3
+      }
+    },
+    "4": {
+      "class_type": "VAELoader",
+      "inputs": {
+        "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+      }
+    },
+    "6": {
+      "class_type": "MiniMaxH3ImageToVideo",
+      "inputs": {
+        "clip": [
+          "21",
+          0
+        ],
+        "vae": [
+          "4",
+          0
+        ],
+        "prompt": "古装电影画面。一位黑发成年女子坐在瀑布云雾前的岩石上，身穿米白色宽袖长袍，蓝绿色与橙色花卉刺绣，内搭深蓝衣裙。保持参考图中的人物面容、发型、服装和构图。微风轻动发丝与衣袖，镜头稳定，自然肌肤，清楚的刺绣和布料纹理，柔和天光。",
+        "width": 1024,
+        "height": 576,
+        "length": 5,
+        "first_frame": [
+          "20",
+          0
+        ]
+      }
+    },
+    "7": {
+      "class_type": "BasicGuider",
+      "inputs": {
+        "model": [
+          "3",
+          0
+        ],
+        "conditioning": [
+          "6",
+          0
+        ]
+      }
+    },
+    "8": {
+      "class_type": "KSamplerSelect",
+      "inputs": {
+        "sampler_name": "res_multistep"
+      }
+    },
+    "9": {
+      "class_type": "BasicScheduler",
+      "inputs": {
+        "model": [
+          "3",
+          0
+        ],
+        "scheduler": "simple",
+        "steps": 20,
+        "denoise": 1
+      }
+    },
+    "10": {
+      "class_type": "RandomNoise",
+      "inputs": {
+        "noise_seed": 3013
+      }
+    },
+    "11": {
+      "class_type": "SamplerCustomAdvanced",
+      "inputs": {
+        "noise": [
+          "10",
+          0
+        ],
+        "guider": [
+          "7",
+          0
+        ],
+        "sampler": [
+          "8",
+          0
+        ],
+        "sigmas": [
+          "9",
+          0
+        ],
+        "latent_image": [
+          "6",
+          1
+        ]
+      }
+    },
+    "12": {
+      "class_type": "VAEDecode",
+      "inputs": {
+        "samples": [
+          "11",
+          0
+        ],
+        "vae": [
+          "4",
+          0
+        ]
+      }
+    },
+    "15": {
+      "class_type": "SaveImage",
+      "inputs": {
+        "images": [
+          "12",
+          0
+        ],
+        "filename_prefix": "V2R3_MIN_20261016"
+      }
+    },
+    "20": {
+      "class_type": "LoadImage",
+      "inputs": {
+        "image": "V2_reference_216.png"
+      }
+    },
+    "21": {
+      "class_type": "ClipProjApply",
+      "inputs": {
+        "clip": [
+          "1",
+          0
+        ],
+        "projection": "mmh3-4b-ClipProj-v3.1.safetensors"
+      }
+    }
+  },
+  "ram_after": 74.5,
+  "telemetry": {
+    "sample_count": 308,
+    "fallback_count": 0,
+    "first_seconds": 0.9530000000086147,
+    "last_seconds": 555.1410000000033,
+    "recorded_peak_ram_percent": 82.3,
+    "maximum_sample_gap_seconds": 18.937999999994645,
+    "peak_service_private_bytes": 24450224128
+  },
+  "guard-finished.json": {
+    "samples": 308,
+    "stopped": false
+  },
+  "guard-stop.json": null,
+  "guard-orphan-cleanup.json": null,
+  "guard_log": "",
+  "service_log_tail": ", 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'quantize_w4a8_int8_weight', 'rms_adaln', 'rms_rope', 'rms_rope1', 'rms_rope1_', 'rms_rope_', 'rms_rope_split_half', 'rms_rope_split_half1', 'rms_rope_split_half1_', 'rms_rope_split_half_', 'rotate_int8_convrot_weight', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'stochastic_rounding_fp8', 'w4a8_int8_linear']}\n\u001b[32m[INFO]\u001b[0m Found comfy_kitchen backend hip: {'available': False, 'disabled': False, 'unavailable_reason': 'PyTorch ROCm/HIP runtime not available', 'capabilities': []}\n\u001b[32m[INFO]\u001b[0m Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': \"ImportError: No module named 'triton'\", 'capabilities': []}\n\u001b[32m[INFO]\u001b[0m Checkpoint files will always be loaded safely.\n\u001b[32m[INFO]\u001b[0m Total VRAM 22528 MB, total RAM 32713 MB\n\u001b[32m[INFO]\u001b[0m pytorch version: 2.9.1+cu130\n\u001b[32m[INFO]\u001b[0m Set vram state to: NORMAL_VRAM\n\u001b[32m[INFO]\u001b[0m Device: cuda:0 NVIDIA GeForce RTX 2080 Ti : cudaMallocAsync\n\u001b[32m[INFO]\u001b[0m Using async weight offloading with 2 streams\n\u001b[32m[INFO]\u001b[0m working around nvidia conv3d memory bug.\n\u001b[32m[INFO]\u001b[0m Using pytorch attention\n\u001b[32m[INFO]\u001b[0m aimdo: src-win/cuda-detour.c:38:INFO:aimdo_setup_hooks: installing 6 hooks\n\u001b[32m[INFO]\u001b[0m aimdo: src/control.c:262:INFO:comfy-aimdo NVML pressure enabled\n\u001b[32m[INFO]\u001b[0m aimdo: src-win/shmem-detect.c:80:INFO:comfy-aimdo WDDM adapter match: NVIDIA GeForce RTX 2080 Ti runtime_luid=00000000:0000c454 dxgi_luid=00000000:0000c454\n\u001b[32m[INFO]\u001b[0m aimdo: src/control.c:277:INFO:comfy-aimdo inited for GPU: NVIDIA GeForce RTX 2080 Ti (VRAM: 22527 MB)\n\u001b[32m[INFO]\u001b[0m DynamicVRAM support detected and enabled\n\u001b[32m[INFO]\u001b[0m Python version: 3.11.15 (main, May 10 2026, 19:31:25) [MSC v.1944 64 bit (AMD64)]\n\u001b[32m[INFO]\u001b[0m ComfyUI version: 0.34.0\n\u001b[32m[INFO]\u001b[0m comfy-aimdo version: 0.4.15\n\u001b[32m[INFO]\u001b[0m comfy-kitchen version: 0.2.31\n\u001b[32m[INFO]\u001b[0m comfyui-frontend-package version: 1.51.9\n\u001b[32m[INFO]\u001b[0m comfyui-workflow-templates version: 0.11.50\n\u001b[32m[INFO]\u001b[0m comfyui-embedded-docs version: 0.5.10\n\u001b[32m[INFO]\u001b[0m comfy-kitchen version: 0.2.31\n\u001b[32m[INFO]\u001b[0m comfy-aimdo version: 0.4.15\n\u001b[32m[INFO]\u001b[0m [Prompt Server] web root: C:\\AI\\MiniMax-H3\\.venv\\Lib\\site-packages\\comfyui_frontend_package\\static\n\u001b[32m[INFO]\u001b[0m Asset seeder disabled\n\u001b[32m[INFO]\u001b[0m No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'\n\u001b[32m[INFO]\u001b[0m Skipping minimax-h3-chunk-star7 due to disable_all_custom_nodes and whitelist_custom_nodes\n\u001b[32m[INFO]\u001b[0m Skipping websocket_image_save.py due to disable_all_custom_nodes and whitelist_custom_nodes\n\u001b[32m[INFO]\u001b[0m [ClipProj] graph watch installed\n\u001b[32m[INFO]\u001b[0m [ClipProj] unload hook installed\n\u001b[32m[INFO]\u001b[0m \nImport times for custom nodes:\n\u001b[32m[INFO]\u001b[0m    0.0 seconds: C:\\AI\\MiniMax-H3\\ComfyUI\\custom_nodes\\minimax-h3-fp16-exact-star7\n\u001b[32m[INFO]\u001b[0m    0.0 seconds: C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\custom_nodes\\ComfyUI-ClipProj\n\u001b[32m[INFO]\u001b[0m \n\u001b[32m[INFO]\u001b[0m Context impl SQLiteImpl.\n\u001b[32m[INFO]\u001b[0m Will assume non-transactional DDL.\n\u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n\u001b[32m[INFO]\u001b[0m Starting server\n\n\u001b[32m[INFO]\u001b[0m To see the GUI go to: http://127.0.0.1:8196\n\u001b[32m[INFO]\u001b[0m got prompt\n\u001b[32m[INFO]\u001b[0m VAE load device: cuda:0, offload device: cpu, dtype: torch.float16\n\u001b[32m[INFO]\u001b[0m Found quantization metadata version 1\n\u001b[32m[INFO]\u001b[0m Using MixedPrecisionOps for text encoder\n\u001b[32m[INFO]\u001b[0m CLIP/text encoder model load device: cuda:0, offload device: cpu, current: cpu, dtype: torch.float16\n\u001b[32m[INFO]\u001b[0m [ClipProj] mmh3-4b-ClipProj-v3.1.safetensors | tap 24 | 2560 -> 5120 | cos_test 0.6874\n\u001b[32m[INFO]\u001b[0m Requested to load Krea2TEModel_\n\u001b[32m[INFO]\u001b[0m Model Krea2TEModel_ prepared for dynamic VRAM loading. 4999MB Staged. 0 patches attached. Force pre-loaded 249 weights: 627 KB.\n\u001b[32m[INFO]\u001b[0m Requested to load MiniMaxH3VideoVAE\n\u001b[32m[INFO]\u001b[0m Model MiniMaxH3VideoVAE prepared for dynamic VRAM loading. 4965MB Staged. 0 patches attached. Force pre-loaded 128 weights: 348 KB.\n\u001b[32m[INFO]\u001b[0m [Star7 H3 FP16] Loading at creation-time FP16 | device=sm75\n\u001b[32m[INFO]\u001b[0m Found quantization metadata version 1\n\u001b[32m[INFO]\u001b[0m Detected mixed precision quantization\n\u001b[32m[INFO]\u001b[0m Using mixed precision operations\n\u001b[32m[INFO]\u001b[0m Native ops: convrot_w4a4, asym_w4a8_int8, int8_tensorwise , emulated ops: float8_e4m3fn, nvfp4, mxfp8, float8_e5m2\n\u001b[32m[INFO]\u001b[0m Found quantization metadata version 1\n\u001b[32m[INFO]\u001b[0m Detected mixed precision quantization\n\u001b[32m[INFO]\u001b[0m model weight dtype torch.float16, manual cast: torch.float32\n\u001b[32m[INFO]\u001b[0m model_type FLOW_AV\n\u001b[32m[INFO]\u001b[0m [Star7 H3 FP16] Enabled v2.0.14 | mode=loader-quantized | backend=asym_w4a8_int8:200 | force-cast=False | weight-patches=0 | blocks=50\n\u001b[32m[INFO]\u001b[0m Requested to load MiniMaxH3\n\u001b[32m[INFO]\u001b[0m Model MiniMaxH3 prepared for dynamic VRAM loading. 11956MB Staged. 0 patches attached. Force pre-loaded 210 weights: 1175 KB.\n\n  0%|          | 0/20 [00:00<?, ?it/s]\n  0%|          | 0/20 [00:00<?, ?it/s,   Model Initializing ...  ]\n  0%|          | 0/20 [03:08<?, ?it/s,  Model Initialization complete!  ]\n  5%|▌         | 1/20 [03:08<59:42, 188.56s/it,  Model Initialization complete!  ]\n  5%|▌         | 1/20 [01:02<59:42, 188.56s/it]                                   \n 10%|█         | 2/20 [01:02<09:18, 31.03s/it] \n 15%|█▌        | 3/20 [02:08<18:47, 66.33s/it]\n 20%|██        | 4/20 [02:22<03:39, 13.72s/it]\n 25%|██▌       | 5/20 [02:37<03:54, 15.64s/it]\n 30%|███       | 6/20 [02:48<02:27, 10.55s/it]\n 35%|███▌      | 7/20 [02:55<01:37,  7.53s/it]\n 40%|████      | 8/20 [03:03<01:31,  7.62s/it]\n 45%|████▌     | 9/20 [03:10<01:20,  7.31s/it]\n 50%|█████     | 10/20 [03:18<01:13,  7.39s/it]\n 55%|█████▌    | 11/20 [03:27<01:24,  9.39s/it]\n 60%|██████    | 12/20 [03:35<01:03,  7.93s/it]\n 65%|██████▌   | 13/20 [03:43<00:54,  7.85s/it]\n 70%|███████   | 14/20 [03:51<00:48,  8.00s/it]\n 75%|███████▌  | 15/20 [03:59<00:38,  7.73s/it]\n 80%|████████  | 16/20 [04:06<00:30,  7.73s/it]\n 85%|████████▌ | 17/20 [04:15<00:25,  8.37s/it]\n 90%|█████████ | 18/20 [04:22<00:15,  7.82s/it]\n 95%|█████████▌| 19/20 [04:30<00:07,  7.90s/it]\n100%|██████████| 20/20 [04:39<00:00,  8.55s/it]\n100%|██████████| 20/20 [04:39<00:00, 13.97s/it]\n\u001b[32m[INFO]\u001b[0m Model MiniMaxH3VideoVAE prepared for dynamic VRAM loading. 4965MB Staged. 0 patches attached. Force pre-loaded 128 weights: 348 KB.\n\u001b[32m[INFO]\u001b[0m \u001b[32mPrompt executed in 551.04 seconds\u001b[0m\n",
+  "service": {
+    "pid": 13520,
+    "command": [
+      "C:\\AI\\MiniMax-H3\\.venv\\Scripts\\python.exe",
+      "main.py",
+      "--listen",
+      "127.0.0.1",
+      "--port",
+      "8196",
+      "--extra-model-paths-config",
+      "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\extra_model_paths.yaml",
+      "--input-directory",
+      "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\input",
+      "--output-directory",
+      "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\output",
+      "--disable-all-custom-nodes",
+      "--whitelist-custom-nodes",
+      "ComfyUI-ClipProj",
+      "minimax-h3-fp16-exact-star7",
+      "--reserve-vram",
+      "2.5",
+      "--vram-headroom",
+      "0.5",
+      "--disable-pinned-memory",
+      "--disable-auto-launch"
+    ],
+    "created": 1792153445.1344316
+  },
+  "queue": {
+    "queue_running": [],
+    "queue_pending": []
+  },
+  "resource_monitor_complete": false,
+  "comparison": {
+    "file": "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\V2R3_MIN_20261016\\H3_V2_R2_R3_Comparison.jpg",
+    "sha256": "8d1a61e29f4d4b4521b9e8df975a730bb3b65a82239bddedaec6de2d29a3dfc0",
+    "size_bytes": 681449,
+    "selection": "reference plus first/last frames, not all frames",
+    "library_file_id": "libfile_154bd3dfdbb081919a20b6de42d0266b"
+  },
+  "generation_allowed": false,
+  "scoped_authorization_revoked": true,
+  "actual_candidate": "R3/W4A8 (inherited batch comparison label is cosmetic; freeze and workflow are authoritative)",
+  "visual_review": {
+    "status": "STATIC_REVIEW_COMPLETED_WITH_LIMITATIONS",
+    "inspected": "reference, all five R3 contact frames, R2/R3 first-last comparison, full-size R3 fifth PNG",
+    "findings": [
+      "face, hairstyle, costume and composition broadly retained",
+      "later frames darker and local cloth detail softer",
+      "R3 shows no clear quality advantage sufficient to compensate higher elapsed time"
+    ],
+    "reference_quality_certified": false,
+    "video_motion_audio_certified": false
+  },
+  "resource_acceptance": {
+    "status": "NOT_FULLY_CERTIFIED",
+    "guard_process_normal_exit": true,
+    "first_to_last_coverage": true,
+    "recorded_peak_ram_percent": 82.3,
+    "full_peak_ram_percent": null,
+    "maximum_sample_gap_seconds": 18.937999999994645,
+    "reason": "308 samples cover start/end, but maximum gap 18.938s; instantaneous full peak is unknown; guard did not crash"
+  },
+  "decision": {
+    "preferred_next_candidate": "R2 image pipeline (4B ClipProj v3.1 + native INT8) combined with repaired guard; combination not re-run after page freeze cap",
+    "r3_promotion": false,
+    "reason": "R3 single observed full image timing is 92.719s slower and no clear static quality advantage",
+    "new_gpu_batches_this_page": false
+  }
+}
