@@ -1,0 +1,256 @@
+{
+  "freeze.json": {
+    "freeze_id": "H3-HQ-V2-MIN-AB-F001-20261016",
+    "method": "SANRENXING_V2_C002",
+    "bridge": "V7_C_A_PAUSED",
+    "frames": 5,
+    "size": [
+      1024,
+      576
+    ],
+    "video_output": false,
+    "audio_output": false,
+    "A_steps": 20,
+    "B_steps": 8,
+    "samplers": [
+      "res_multistep",
+      "euler"
+    ],
+    "A_once": true,
+    "B_uses_actual_A_pngs": true,
+    "resource_admission": "RAM<80% before each arm",
+    "resource_stop": "independent process: RAM>=90% or arm>=900s; bounded interrupt and verified own service tree termination",
+    "virtual_maturity": "NOT_CERTIFIED",
+    "quality_target": "uploaded reference static appearance; motion/audio not tested",
+    "file_sha256": {
+      "V2-MIN-A-WORKFLOW.json": "3dd7160694145f6359ed9d8d95638c92a78b20228b7f129847dc3e4257a73900",
+      "V2-MIN-B-WORKFLOW.json": "9fddbc0c1c9f216aca8a7ff33479fdfc18c15507d460f8bc3fe92866656c7af6",
+      "run_v2_min_ab.py": "91584e3761374da46afbc4424567461113bc6da14d8259e46759ddf1b397a566",
+      "input/V2_reference_216.png": "d67dfc535a38596417066d537dae993d054f50637145b73f3dbe5700a297a743",
+      "extra_model_paths.yaml": "8abb615373224f9837d5e801bd088ec1c7d7c0555011bdd2f0725f8a90f76f4c"
+    },
+    "timing": "submission to image load/size checks inclusive per arm; batch includes A and B switch, reporting separate; not full user-task T_VALID",
+    "LMS_gate": "must be present and size1239664536, download program verifies SHA256 before final rename",
+    "total_generation_attempts_max": 2,
+    "created_utc": 1792148042.4374344
+  },
+  "batch-result.json": {
+    "status": "STOPPED",
+    "method": "SANRENXING_V2_C002",
+    "bridge": "V7_C",
+    "A": null,
+    "B": null,
+    "error": "RuntimeError('GUARD_STOP')",
+    "batch_wall_seconds": 172.18700000000536,
+    "guard_stop": {
+      "reason": "RAM90",
+      "at": 165.46900000001187,
+      "phase": "A",
+      "prompt_id": "52fad6ee-2a6f-48c2-a560-5bf104914a67",
+      "interrupt_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')",
+      "terminated_owned_service": true
+    },
+    "T_VALID": null,
+    "physical_limit": "UNKNOWN"
+  },
+  "guard-stop.json": {
+    "reason": "RAM90",
+    "at": 165.46900000001187,
+    "phase": "A",
+    "prompt_id": "52fad6ee-2a6f-48c2-a560-5bf104914a67",
+    "interrupt_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')",
+    "terminated_owned_service": true
+  },
+  "last_telemetry": [
+    {
+      "phase": "A",
+      "elapsed": 157.18799999999464,
+      "ram_percent": 87.9,
+      "ram_available": 4166733824,
+      "processes": [
+        {
+          "pid": 45760,
+          "rss": 1314816,
+          "private": 786432
+        },
+        {
+          "pid": 31524,
+          "rss": 7100407808,
+          "private": 22310072320
+        }
+      ]
+    },
+    {
+      "phase": "A",
+      "elapsed": 158.71900000001187,
+      "ram_percent": 88.4,
+      "ram_available": 3973087232,
+      "processes": [
+        {
+          "pid": 45760,
+          "rss": 1314816,
+          "private": 786432
+        },
+        {
+          "pid": 31524,
+          "rss": 7210459136,
+          "private": 22478172160
+        }
+      ]
+    },
+    {
+      "phase": "A",
+      "elapsed": 159.9220000000205,
+      "ram_percent": 88.8,
+      "ram_available": 3850481664,
+      "processes": [
+        {
+          "pid": 45760,
+          "rss": 1314816,
+          "private": 786432
+        },
+        {
+          "pid": 31524,
+          "rss": 7322722304,
+          "private": 22478172160
+        }
+      ]
+    },
+    {
+      "phase": "A",
+      "elapsed": 161.01600000000326,
+      "ram_percent": 89.2,
+      "ram_available": 3714371584,
+      "processes": [
+        {
+          "pid": 45760,
+          "rss": 1314816,
+          "private": 786432
+        },
+        {
+          "pid": 31524,
+          "rss": 7244468224,
+          "private": 22478172160
+        }
+      ]
+    },
+    {
+      "phase": "A",
+      "elapsed": 162.1720000000205,
+      "ram_percent": 89.5,
+      "ram_available": 3615232000,
+      "processes": [
+        {
+          "pid": 45760,
+          "rss": 1314816,
+          "private": 786432
+        },
+        {
+          "pid": 31524,
+          "rss": 7327465472,
+          "private": 22478172160
+        }
+      ]
+    },
+    {
+      "phase": "A",
+      "elapsed": 163.23500000001513,
+      "ram_percent": 89.6,
+      "ram_available": 3550760960,
+      "processes": [
+        {
+          "pid": 45760,
+          "rss": 1310720,
+          "private": 786432
+        },
+        {
+          "pid": 31524,
+          "rss": 7355748352,
+          "private": 22480089088
+        }
+      ]
+    },
+    {
+      "phase": "A",
+      "elapsed": 164.34400000001187,
+      "ram_percent": 89.7,
+      "ram_available": 3540221952,
+      "processes": [
+        {
+          "pid": 45760,
+          "rss": 1306624,
+          "private": 786432
+        },
+        {
+          "pid": 31524,
+          "rss": 7358291968,
+          "private": 22480678912
+        }
+      ]
+    },
+    {
+      "phase": "A",
+      "elapsed": 165.46900000001187,
+      "ram_percent": 90.1,
+      "ram_available": 3399655424,
+      "processes": [
+        {
+          "pid": 45760,
+          "rss": 1306624,
+          "private": 786432
+        },
+        {
+          "pid": 31524,
+          "rss": 7419363328,
+          "private": 22217543680
+        }
+      ]
+    }
+  ],
+  "peak_ram": 90.1,
+  "model_log": [
+    "\u001b[32m[INFO]\u001b[0m Adding extra search path loras C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\models\\loras",
+    "\u001b[32m[INFO]\u001b[0m Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': \"ImportError: No module named 'triton'\", 'capabilities': []}",
+    "\u001b[32m[INFO]\u001b[0m Checkpoint files will always be loaded safely.",
+    "\u001b[32m[INFO]\u001b[0m Using async weight offloading with 2 streams",
+    "\u001b[32m[INFO]\u001b[0m working around nvidia conv3d memory bug.",
+    "\u001b[32m[INFO]\u001b[0m No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'",
+    "\u001b[32m[INFO]\u001b[0m got prompt",
+    "\u001b[32m[INFO]\u001b[0m Requested to load MiniMaxH3TEModel_",
+    "\u001b[32m[INFO]\u001b[0m Model MiniMaxH3TEModel_ prepared for dynamic VRAM loading. 14956MB Staged. 0 patches attached. Force pre-loaded 410 weights: 4572 KB.",
+    "  File \"C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\memory_management.py\", line 59 in read_tensor_file_slice_into",
+    "  File \"C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\memory_management.py\", line 21 in read_tensor_file_slice_into",
+    "  File \"C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\memory_management.py\", line 59 in read_tensor_file_slice_into",
+    "  File \"C:\\AI\\MiniMax-H3\\ComfyUI\\comfy\\memory_management.py\", line 21 in read_tensor_file_slice_into",
+    "\u001b[32m[INFO]\u001b[0m Requested to load MiniMaxH3VideoVAE",
+    "\u001b[32m[INFO]\u001b[0m Model MiniMaxH3VideoVAE prepared for dynamic VRAM loading. 4965MB Staged. 0 patches attached. Force pre-loaded 128 weights: 348 KB.",
+    "\u001b[32m[INFO]\u001b[0m [Star7 H3 FP16] Loading at creation-time FP16 | device=sm75",
+    "\u001b[32m[INFO]\u001b[0m model weight dtype torch.float16, manual cast: torch.float32",
+    "\u001b[32m[INFO]\u001b[0m model_type FLOW_AV",
+    "\u001b[32m[INFO]\u001b[0m Requested to load MiniMaxH3",
+    "\u001b[32m[INFO]\u001b[0m Model MiniMaxH3 prepared for dynamic VRAM loading. 19995MB Staged. 0 patches attached. Force pre-loaded 210 weights: 1175 KB.",
+    "\u001b[32m[INFO]\u001b[0m Interrupting prompt 52fad6ee-2a6f-48c2-a560-5bf104914a67"
+  ],
+  "V2-lms-download-result-proxy.json": {
+    "status": "FAILED",
+    "error": "AssertionError(('ARIA_EXIT', 1))",
+    "seconds": 6.312999999994645
+  },
+  "V2-lms-download-result-aria2.json": {
+    "status": "FAILED",
+    "error": "AssertionError(('ARIA_EXIT', 2))",
+    "seconds": 47.14100000000326
+  },
+  "download_tail": "======+====+===========+=======================================================\ne8c4b0|ERR |       0B/s|C:/AI/MiniMax-H3/ComfyUI/models/loras/minimax_h3_lms_v1.0_r64.safetensors.v2part\n\nStatus Legend:\n(ERR):error occurred.\n\naria2 will resume download if the transfer is restarted.\nIf there are any errors, then see the log file. See '-l' option in help/man page for details.",
+  "current_ram": {
+    "total": 34302468096,
+    "available": 10527444992,
+    "percent": 69.3,
+    "used": 23775023104,
+    "free": 10527444992
+  },
+  "port8196_closed": true,
+  "owned_service_pids_remaining": [],
+  "gpu": "1849 MiB, 3 %\n",
+  "lock_restored_hold": true
+}
