@@ -1,3 +1,8 @@
+---
+name: artificial-single-page-extreme-time-engine
+description: 《三人行》第3版正式默认方法入口。先读SANRENXING_V3.md及V2冻结继承、Orca增量和Windows V9 C优先执行桥；旧任务METHOD_REF不自动迁移。
+---
+
 # 《三人行》第3版｜默认正式入口（2026-10-17）
 DEFAULT_METHOD=SANRENXING_V3
 STATUS=FROZEN_PUBLISHED_ACTIVE
@@ -12,11 +17,6 @@ GLOBAL_FINAL_VALID=NOT_CLAIMED
 
 用户明确指定《三人行》第3版为默认正式版本。此入口优先于下方第2版历史激活口径。必须按上述V3源文件及其固定V2继承依赖、Orca增量、Windows V9入口读取；不把历史V2当作最新，不篡改旧任务已锁定的METHOD_REF。此项版本发布不等于尚未完成的十组稳定性及AB性能认证。
 
----
-
----
-name: artificial-single-page-extreme-time-engine
-description: 《三人行》第3版正式默认方法入口。先读SANRENXING_V3.md及V2冻结继承、Orca增量和Windows V9 C优先执行桥；旧任务METHOD_REF不自动迁移。
 ---
 
 ## Windows执行桥强制路由（独立于方法版本，2026-10-17）
