@@ -1,0 +1,62 @@
+{
+  "local-acceptance.json": {
+    "accepted": false,
+    "local_wall_ms": 534799.4744000025,
+    "started_mono": 249643.6508923,
+    "started_utc": 1792154259.6676586,
+    "accepted_utc": 1792154794.4671345,
+    "result_sha256": "549de7ec8d47125b76c46980a520148e7134041a567b576f523647c9211a0446",
+    "scope": "input entry through final independent QA, cleanup, evidence write/readback; excludes later cloud CEO archive/readback"
+  },
+  "cleanup-reconciliation.json": {
+    "events": [],
+    "remaining": []
+  },
+  "initial-start.json": {
+    "identity": {
+      "handle": "term_1ec1c682-ed60-472f-8c72-f795566f8808",
+      "pane": "52d96263-37ee-460e-afad-da5c736384f5:36207269-dfd4-4497-94cb-67381ced8fc2"
+    },
+    "argv": [
+      "C:\\Users\\A\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\bin\\codex.exe",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "-c",
+      "approval_policy=\"on-request\"",
+      "-c",
+      "approvals_reviewer=\"auto_review\"",
+      "-c",
+      "service_tier=\"priority\"",
+      "-c",
+      "model_reasoning_effort=\"ultra\"",
+      "-c",
+      "projects={'C:\\AI\\Orca-Codex-Validation-20261014\\suite-ab-20261016-r3\\pilot-B\\fixture'={trust_level='trusted'},'C:\\AI\\Orca-Codex-Validation-20261014\\suite-ab-20261016-r3\\pilot-B\\worktrees\\fixture\\suite'={trust_level='trusted'}}",
+      "--model",
+      "gpt-6.1-sol",
+      "--cd",
+      "C:\\AI\\Orca-Codex-Validation-20261014\\suite-ab-20261016-r3\\pilot-B\\worktrees\\fixture\\suite",
+      "--json",
+      "--color",
+      "never",
+      "--output-last-message",
+      "C:\\AI\\Orca-Codex-Validation-20261014\\suite-ab-20261016-r3\\pilot-B\\initial-last.txt",
+      "-"
+    ],
+    "started_mono": 249727.0078414,
+    "budget_seconds": 900,
+    "resume_session": null,
+    "prompt_sha256": "09d868527f10113be3bc33e36213e514ee54aa4a22bd9321fbf232e82bb8b017",
+    "pid": 5980
+  },
+  "assignment.json": {
+    "run": "run_fbdfbfc32c33",
+    "task": "task_87e095a109fc",
+    "dispatch": "ctx_7c92fc263714",
+    "coordinator": {
+      "handle": "term_e0f5b6c7-dd6e-4590-ba18-21140c498366",
+      "pane": "dc622dad-93d0-457b-a104-a45033646600:b27ddc39-c74e-4e87-852d-b0fef57b8a62"
+    },
+    "preamble_sha256": "05176051af4b785b22baa7bd3ead6deed2b1ed6d209c5e4cbf1f4c920d5702a3"
+  }
+}
