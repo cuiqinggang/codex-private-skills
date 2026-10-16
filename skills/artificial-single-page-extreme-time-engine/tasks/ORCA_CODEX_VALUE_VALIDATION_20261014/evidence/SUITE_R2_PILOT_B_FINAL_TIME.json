@@ -1,0 +1,20 @@
+{
+  "accepted": true,
+  "label": "pilot-B",
+  "archive_commit": "9233ec517290db4d61cc1b2380a553f5bef791e0",
+  "result_sha256": "f4a2f322c4822ad1c72291c55af1ddcbf1f684b27ad032b813a89eae644c7f6c",
+  "started_mono": 247765.0025995,
+  "full_wall_ms": 759204.6175999858,
+  "timing_scope": "input_to_independent_acceptance_and_evidence_readback",
+  "local_wall_ms": 689781.605199998,
+  "scope_note": "Includes setup, model, retries, independent tests, cleanup, CEO diff/test review, first remote result archive and exact readback. Excludes prior design/deployment and later summary.",
+  "resources": {
+    "samples": 676,
+    "errors": 0,
+    "rss_peak_bytes": 1636581376,
+    "available_min_bytes": 6450208768,
+    "interval_median_s": 0.99979020000319,
+    "interval_max_s": 10.733617100020638,
+    "peak_limitation": "one-second sampling may miss transient spikes"
+  }
+}
