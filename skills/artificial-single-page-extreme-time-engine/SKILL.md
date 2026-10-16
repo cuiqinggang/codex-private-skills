@@ -1,6 +1,22 @@
+# 《三人行》第3版｜默认正式入口（2026-10-17）
+DEFAULT_METHOD=SANRENXING_V3
+STATUS=FROZEN_PUBLISHED_ACTIVE
+FREEZE_ID=SRX-V3-F001-20261017
+METHOD_REF=skills/artificial-single-page-extreme-time-engine/SANRENXING_V3.md
+SOURCE_FREEZE_V2=skills/artificial-single-page-extreme-time-engine/method-freezes/SANRENXING_V2_C002_F001_20261012/SANRENXING_V2.md@78ffb94c4cacd07662b83a59042bc0fe3e7f69e7
+V3_DELTA=skills/artificial-single-page-extreme-time-engine/SANRENXING_V3_ORCA_HEARTBEAT_20261016.md
+WINDOWS_BRIDGE=skills/gpt-windows-execution-bridge/SKILL.md@V9.0
+SCOPE=NEW_TASKS_AND_EXPLICIT_V3
+LEGACY_TASKS=KEEP_PINNED_METHOD_REF
+GLOBAL_FINAL_VALID=NOT_CLAIMED
+
+用户明确指定《三人行》第3版为默认正式版本。此入口优先于下方第2版历史激活口径。必须按上述V3源文件及其固定V2继承依赖、Orca增量、Windows V9入口读取；不把历史V2当作最新，不篡改旧任务已锁定的METHOD_REF。此项版本发布不等于尚未完成的十组稳定性及AB性能认证。
+
+---
+
 ---
 name: artificial-single-page-extreme-time-engine
-description: 《三人行》第2版已全局激活的当前正式入口。GPT担任CEO先虚拟成熟与冻结，按需复用Codex Ultra连续运行层执行及现实验收，故障由GPT差分分析后重新验证；兼容明确指定的旧A/B路线及冻结任务METHOD_REF。
+description: 《三人行》第3版正式默认方法入口。先读SANRENXING_V3.md及V2冻结继承、Orca增量和Windows V9 C优先执行桥；旧任务METHOD_REF不自动迁移。
 ---
 
 ## Windows执行桥强制路由（独立于方法版本，2026-10-17）
