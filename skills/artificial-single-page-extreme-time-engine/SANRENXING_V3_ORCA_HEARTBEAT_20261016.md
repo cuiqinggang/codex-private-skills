@@ -27,3 +27,12 @@
 ## 当前边界
 `F003` 旧失败不抹掉；r4 新 pilot 完成前不得计正式通过。新 pilot 必须核对 14/14 外部验收、三组离线回归、零残留、Orca 结算与来源哈希；随后才能开展十组 20 套公平 A/B。
 GitHub 正式目录当前可见 V1/V2，但 **尚无 SANRENXING_V3.md**；本文件为 V3 专用补充，不代表正式 V3 主文件已发布。
+
+
+## r4 新 pilot 真实终局回读（2026-10-16 21:29 中国标准时间）
+- Windows C 通道真实回读 `suite-ab-20261016-r4/pilot-B/local-acceptance.json`：`accepted=true`，`local_wall_ms=608714.1439`（约10分08.7秒；范围为本地入口到最终独立QA、清理及结果回读，不包括云端后续归档）。
+- 同一目录 `coordinator-done.json`：Orca `task_status=completed`、`dispatch_status=completed`、官方消息 `msg_130955edd5bf`、run `run_0d8ae9b7ec57`、task `task_c2614787c730`、dispatch `ctx_813f831378ae`。
+- `business-inspection.json`：`accepted=true`，T01/T02/T03离线回归总计21项通过。业务阶段发生 Codex request timed out/reconnecting 2/5..5/5，最终降级 WebSockets→HTTPS、恢复执行并完成任务。不得将此前网络重连解读为已经证实的 Orca 心跳根因。
+- r4 在正常网络重连条件下完成端到端，不等同于对官方心跳超时路径进行真实 Orca 服务端故障注入；该路径已有提取实际 AST 的本地注入测试2/2 PASS。历史 r3 心跳超时失败证据仍需永久保留。
+- 该套是新版本 pilot，只可作为“完整三任务新版本首套实际通过”，**不计正式十组连续稳定性或配对A/B**。正式十组目前 0/10。
+- 本次因果辨析：已确认的确定性逻辑缺陷是“管理心跳同步异常触发业务进程清理”，不是“网络连接必然不可恢复”。管理端偶发超时的具体上游因果尚未由服务端诊断唯一确认；禁止把假设写成已证实根因。
