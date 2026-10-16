@@ -1,3 +1,19 @@
+# 《三人行》第3版｜默认正式入口（2026-10-17）
+DEFAULT_METHOD=SANRENXING_V3
+STATUS=FROZEN_PUBLISHED_ACTIVE
+FREEZE_ID=SRX-V3-F001-20261017
+METHOD_REF=skills/artificial-single-page-extreme-time-engine/SANRENXING_V3.md
+SOURCE_FREEZE_V2=skills/artificial-single-page-extreme-time-engine/method-freezes/SANRENXING_V2_C002_F001_20261012/SANRENXING_V2.md@78ffb94c4cacd07662b83a59042bc0fe3e7f69e7
+V3_DELTA=skills/artificial-single-page-extreme-time-engine/SANRENXING_V3_ORCA_HEARTBEAT_20261016.md
+WINDOWS_BRIDGE=skills/gpt-windows-execution-bridge/SKILL.md@V9.0
+SCOPE=NEW_TASKS_AND_EXPLICIT_V3
+LEGACY_TASKS=KEEP_PINNED_METHOD_REF
+GLOBAL_FINAL_VALID=NOT_CLAIMED
+
+用户明确指定《三人行》第3版为默认正式版本。此入口优先于下方第2版历史激活口径。必须按上述V3源文件及其固定V2继承依赖、Orca增量、Windows V9入口读取；不把历史V2当作最新，不篡改旧任务已锁定的METHOD_REF。此项版本发布不等于尚未完成的十组稳定性及AB性能认证。
+
+---
+
 # 《三人行》第2版｜全局正式激活裁定（2026-10-16）
 DEFAULT_METHOD=SANRENXING_V2
 STATUS=FROZEN_ACTIVE
