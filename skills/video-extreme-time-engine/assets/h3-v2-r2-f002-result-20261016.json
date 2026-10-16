@@ -1,0 +1,463 @@
+{
+  "batch": {
+    "status": "IMAGE_BATCH_COMPLETED_REVIEW_PENDING",
+    "method": "SANRENXING_V2_C002",
+    "bridge": "V7_C",
+    "A": {
+      "status": "success",
+      "images": [
+        {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\output\\V2R2_MIN_20261016_00001_.png",
+          "sha256": "0733854a91c020f681a07e8a3ed92aae7e782d048d8d82b10a2472a512d6bd69"
+        },
+        {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\output\\V2R2_MIN_20261016_00002_.png",
+          "sha256": "a3165237ceab96793c65fb9084088250fa853cfe9154fcc8ca0c792ed36e92db"
+        },
+        {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\output\\V2R2_MIN_20261016_00003_.png",
+          "sha256": "dce5b821a112bcefd6c31db4c8a14f69e4ff196b2ab1e5a18902e7d8ac7b700b"
+        },
+        {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\output\\V2R2_MIN_20261016_00004_.png",
+          "sha256": "68f95214e5316b83b6a8914728cfbed9ef0becb6f9d1dc7b7f9a4d448ff75556"
+        },
+        {
+          "file": "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\output\\V2R2_MIN_20261016_00005_.png",
+          "sha256": "40876023da32824bc83ae9a8dad568cfb3ad08dc4255f51c7cddf73bdeb3b852"
+        }
+      ],
+      "frames": 5,
+      "size": [
+        1024,
+        576
+      ],
+      "submission_through_image_validation_seconds": 463.26600000000326,
+      "spans": [
+        {
+          "node": "4",
+          "seconds": 1.422000000020489
+        },
+        {
+          "node": "20",
+          "seconds": 0.23499999998603016
+        },
+        {
+          "node": "1",
+          "seconds": 1.7030000000086147
+        },
+        {
+          "node": "21",
+          "seconds": 0.09299999999348074
+        },
+        {
+          "node": "6",
+          "seconds": 50.421999999991385
+        },
+        {
+          "node": "2",
+          "seconds": 34.812999999994645
+        },
+        {
+          "node": "3",
+          "seconds": 0.0470000000204891
+        },
+        {
+          "node": "9",
+          "seconds": 0.046999999991385266
+        },
+        {
+          "node": "8",
+          "seconds": 0.046000000002095476
+        },
+        {
+          "node": "7",
+          "seconds": 0.0629999999946449
+        },
+        {
+          "node": "10",
+          "seconds": 0.062000000005355105
+        },
+        {
+          "node": "11",
+          "seconds": 332.60999999998603
+        },
+        {
+          "node": "12",
+          "seconds": 38
+        }
+      ],
+      "quality_review": "PENDING"
+    },
+    "comparison": "single complete R2 candidate; B/LMS not executed",
+    "batch_wall_seconds": 463.98399999999674,
+    "T_VALID": null,
+    "physical_limit": "UNKNOWN"
+  },
+  "freeze": {
+    "freeze_id": "H3-HQ-V2-MIN-R2-F002-20261016",
+    "frames": 5,
+    "size": [
+      1024,
+      576
+    ],
+    "video_output": false,
+    "audio_output": false,
+    "attempts": 1,
+    "method": "SANRENXING_V2_C002",
+    "bridge": "V7_C",
+    "virtual_review": "COMPLETE_FOR_MINIMUM_IMAGE_TEST_NOT_GLOBAL_OPTIMUM",
+    "quality": "same uploaded reference static standard; no guarantee before review",
+    "changes_from_F001": [
+      "32B NVFP4 to existing 4B FP8 encoder",
+      "stock CLIPLoader krea2 plus ClipProjApply",
+      "v3.1 ridge projection replaces old celeb v2; no all-in-one pinning"
+    ],
+    "unchanged": [
+      "FL2VA INT8 ConvRot main model",
+      "protected SM75 FP16 loader",
+      "no LoRA",
+      "20 steps res_multistep/simple",
+      "1024x576 5 frames seed3013",
+      "reference image and prompt",
+      "dynamic plus disable-pinned-memory",
+      "native internally tiled FP16 VAE"
+    ],
+    "projection": {
+      "repo": "NicoLab28/ClipProj-MiniMax-H3",
+      "revision": "2ebdbcdc27a29a9607efdb221a9afcb9a0cdd808",
+      "file": "mmh3-4b-ClipProj-v3.1.safetensors",
+      "size": 26256128,
+      "expected_sha256": "0184e5c8d666a131962506d21949c2d8a8c6f33445b7b5e347e9a7e0a5baa819",
+      "status": "HASH_VERIFIED",
+      "seconds": 11.125
+    },
+    "guards": {
+      "admit_ram_below": 80,
+      "stop_ram_at": 90,
+      "max_seconds": 900,
+      "independent_process": true,
+      "owned_service_only": true
+    },
+    "file_sha256": {
+      "V2R2_MIN_20261016/workflow.json": "9dc8d1a43711a0be28968e37fe7852459949601f88250b904ead75b6e7c165fb",
+      "run_v2r2_min.py": "e432739ec97aab209272bc087c54fd1ab633da158f7b156e4300f72cece912f8",
+      "input/V2_reference_216.png": "d67dfc535a38596417066d537dae993d054f50637145b73f3dbe5700a297a743",
+      "extra_model_paths.yaml": "8abb615373224f9837d5e801bd088ec1c7d7c0555011bdd2f0725f8a90f76f4c",
+      "custom_nodes/ComfyUI-ClipProj/clipproj_nodes.py": "b5dcbf4bea47692c24fd504a95cdafc714c255df3d740a0496bcb0cb3ce9494a",
+      "custom_nodes/ComfyUI-ClipProj/clipproj_projection.py": "7991e2eecdf3e731ec31084298d84d9b5eda1403a6105fc2e8edc8bcced50673",
+      "custom_nodes/ComfyUI-ClipProj/clipproj_pinning.py": "3a7fb8d2b6a028355c48c5e6c0cdcfdce42144031dac84d831c1508cbe137d61",
+      "custom_nodes/ComfyUI-ClipProj/__init__.py": "481bfa1098f87d393fdcc0c0821a786bbd2bc99ead0cc579e7797a07cd4d5d25"
+    },
+    "created_utc": 1792152482.7967255
+  },
+  "workflow": {
+    "1": {
+      "class_type": "CLIPLoader",
+      "inputs": {
+        "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+        "type": "krea2",
+        "device": "default"
+      }
+    },
+    "2": {
+      "class_type": "MiniMaxH3FP16LoaderStar7",
+      "inputs": {
+        "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors"
+      }
+    },
+    "3": {
+      "class_type": "MiniMaxH3SigmaShift",
+      "inputs": {
+        "model": [
+          "2",
+          0
+        ],
+        "shift_video": 12,
+        "shift_audio": 3
+      }
+    },
+    "4": {
+      "class_type": "VAELoader",
+      "inputs": {
+        "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+      }
+    },
+    "6": {
+      "class_type": "MiniMaxH3ImageToVideo",
+      "inputs": {
+        "clip": [
+          "21",
+          0
+        ],
+        "vae": [
+          "4",
+          0
+        ],
+        "prompt": "古装电影画面。一位黑发成年女子坐在瀑布云雾前的岩石上，身穿米白色宽袖长袍，蓝绿色与橙色花卉刺绣，内搭深蓝衣裙。保持参考图中的人物面容、发型、服装和构图。微风轻动发丝与衣袖，镜头稳定，自然肌肤，清楚的刺绣和布料纹理，柔和天光。",
+        "width": 1024,
+        "height": 576,
+        "length": 5,
+        "first_frame": [
+          "20",
+          0
+        ]
+      }
+    },
+    "7": {
+      "class_type": "BasicGuider",
+      "inputs": {
+        "model": [
+          "3",
+          0
+        ],
+        "conditioning": [
+          "6",
+          0
+        ]
+      }
+    },
+    "8": {
+      "class_type": "KSamplerSelect",
+      "inputs": {
+        "sampler_name": "res_multistep"
+      }
+    },
+    "9": {
+      "class_type": "BasicScheduler",
+      "inputs": {
+        "model": [
+          "3",
+          0
+        ],
+        "scheduler": "simple",
+        "steps": 20,
+        "denoise": 1
+      }
+    },
+    "10": {
+      "class_type": "RandomNoise",
+      "inputs": {
+        "noise_seed": 3013
+      }
+    },
+    "11": {
+      "class_type": "SamplerCustomAdvanced",
+      "inputs": {
+        "noise": [
+          "10",
+          0
+        ],
+        "guider": [
+          "7",
+          0
+        ],
+        "sampler": [
+          "8",
+          0
+        ],
+        "sigmas": [
+          "9",
+          0
+        ],
+        "latent_image": [
+          "6",
+          1
+        ]
+      }
+    },
+    "12": {
+      "class_type": "VAEDecode",
+      "inputs": {
+        "samples": [
+          "11",
+          0
+        ],
+        "vae": [
+          "4",
+          0
+        ]
+      }
+    },
+    "15": {
+      "class_type": "SaveImage",
+      "inputs": {
+        "images": [
+          "12",
+          0
+        ],
+        "filename_prefix": "V2R2_MIN_20261016"
+      }
+    },
+    "20": {
+      "class_type": "LoadImage",
+      "inputs": {
+        "image": "V2_reference_216.png"
+      }
+    },
+    "21": {
+      "class_type": "ClipProjApply",
+      "inputs": {
+        "clip": [
+          "1",
+          0
+        ],
+        "projection": "mmh3-4b-ClipProj-v3.1.safetensors"
+      }
+    }
+  },
+  "ram_before": 66.4,
+  "ram_after": 74.4,
+  "peak_service_private_bytes": 24862507008,
+  "last_telemetry": {
+    "phase": "A",
+    "elapsed": 221.31299999999464,
+    "ram_percent": 79.2,
+    "ram_available": 7119376384,
+    "processes": [
+      {
+        "pid": 5512,
+        "rss": 3424256,
+        "private": 851968
+      },
+      {
+        "pid": 40280,
+        "rss": 5160693760,
+        "private": 24517320704
+      }
+    ]
+  },
+  "queue_empty": true,
+  "generation_allowed": false,
+  "pixel_stats": [
+    {
+      "frame": 0,
+      "stddev": [
+        64.92122004413872,
+        63.67597145345462,
+        69.29613597641743
+      ],
+      "extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          245
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    },
+    {
+      "frame": 1,
+      "stddev": [
+        64.0569059374185,
+        60.88832910352118,
+        65.19877333649671
+      ],
+      "extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          232
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    },
+    {
+      "frame": 2,
+      "stddev": [
+        57.41158433341623,
+        54.15220208950939,
+        59.62761663374419
+      ],
+      "extrema": [
+        [
+          0,
+          248
+        ],
+        [
+          0,
+          216
+        ],
+        [
+          0,
+          235
+        ]
+      ]
+    },
+    {
+      "frame": 3,
+      "stddev": [
+        56.909239380382296,
+        53.31566132070708,
+        58.41525260025548
+      ],
+      "extrema": [
+        [
+          0,
+          251
+        ],
+        [
+          0,
+          214
+        ],
+        [
+          0,
+          232
+        ]
+      ]
+    },
+    {
+      "frame": 4,
+      "stddev": [
+        57.327017799739586,
+        53.14046870569303,
+        58.209556760780835
+      ],
+      "extrema": [
+        [
+          0,
+          253
+        ],
+        [
+          0,
+          219
+        ],
+        [
+          0,
+          229
+        ]
+      ]
+    }
+  ],
+  "comparison": "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\V2R2_MIN_20261016\\H3_V2_R2_对照图.png",
+  "visual_review": "STATIC_PREVIEW_USABLE; FACE_CLOTHES_COMPOSITION_CLOSE; LATER_FRAMES_DARKER_AND_SOME_TEXTURE_SOFTENING; NOT_FULL_VIDEO_CERTIFIED",
+  "current_service": "idle; loaded state may be reused only after fresh contract",
+  "recorded_partial_peak_ram_percent": 79.2,
+  "full_peak_ram_percent": null,
+  "telemetry_coverage_seconds": 221.31299999999464,
+  "monitor_status": "FAILED_AT_221S_WINERROR5; FIXTURE_VERIFIED_REPAIR_NOT_RETROACTIVE",
+  "resource_acceptance": "NOT_FULLY_CERTIFIED",
+  "guard_fixture": {
+    "status": "PASS",
+    "real_windows_rename_denial_survived": true,
+    "telemetry_fallback_recorded": true,
+    "independent_guard_still_active_after_log_failure": true,
+    "empty_200_interrupt_accepted": true,
+    "bounded_own_service_cleanup": true,
+    "dead_guard_detected": true,
+    "gpu_inference_count": 0,
+    "production_comfy_not_interrupted": true
+  }
+}
