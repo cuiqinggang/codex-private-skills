@@ -4,7 +4,10 @@ FREEZE_ID=SRX-V3-F001-20261017
 STATUS=FROZEN_PUBLISHED
 METHOD_LINEAGE=V2_C002_FREEZE_PLUS_V3_VERIFIED_DELTA
 GLOBAL_FINAL_VALID=NOT_CLAIMED
-TEN_PAIR_AB=0/10
+TEN_PAIR_AB=10/10_PASS_20_OF_20_20261017
+CAP30_BASIC=30/30_PASS
+CAP30_RUNTIME_RESTART=PASS
+CAP1000=DEFERRED_BY_USER
 LEGACY_TASKS=KEEP_PINNED_METHOD_REF
 
 ## 一、来源及冻结范围
@@ -25,10 +28,34 @@ Windows执行统一先加载V9桥正式入口。C为唯一默认首选；C实际
 ## 三、实证边界（不能混写）
 2026-10-16 r4/pilot-B 已有本地accepted=true、Orca completed及独立离线回归21项；它只是单次新版本pilot，不计正式十组稳定性。
 管理心跳注入测试2/2 PASS但不等同官方服务端真实故障注入；历史r3失败永久保留。
-正式10组稳定性=0/10；成对AB=未完成；物理极限、全面生产FINAL_VALID=UNKNOWN；不能宣称V3对V2或原生Codex整体更快。
+正式10组稳定性及配对AB已完成：同一r4版本，10/10组、20/20套真实三任务完整业务通过，结果见本文件第五节。30项轻量任务的Orca基础编排也已完成，但与真实模型执行、并发容量与完整韧性须分开认证。物理极限、全面生产FINAL_VALID仍未知；不能宣称V3对V2或原生Codex整体更快。
 Windows V9已写入GitHub方法入口，但所有现场运行器是否真正加载、C失败自动转A、A失败转B及C恢复复归尚未通过端到端验收。
 
 ## 四、版本解析与停机门
 加载顺序：本V3文件→V2 C002固定提交的完整继承规则→V3 Orca增量→Windows V9技能入口→任务CURRENT/合同/Freeze。
 若任一必需依赖不可读取，标记VERSION_MISMATCH，不静默降级为V2、不伪造V3验收。
 冻结、发布与用户指定默认版本是方法入口状态，不代表十组稳定性与完整生产业务已经认证。
+
+## 五、2026-10-17 新增正式实证成果（已验收，不修改既有冻结原则）
+### A/B十组真实业务
+- 固定脚本：`C:\AI\Orca-Codex-Validation-20261014\suite-ab-r4.py`，SHA256 `39CEECBEFF894BA447E86F0F24FE6E0BF0356AEB820B7C7C38736EE5DBDE5DBD`。
+- 原生Codex（A）10/10 PASS，总计 **4687.004秒**，平均 **468.7004秒**。
+- Orca管理Codex（B）10/10 PASS，总计 **4717.483秒**，平均 **471.7483秒**。
+- 本批B总计较A多 **30.479秒（约0.65%）**；A在7组较快，B在3组较快。差异很小、样本只有10组，**不证明任一方案具有稳定速度优势**。Orca应按大批量编排能力而非单次编码加速评估。
+- 20套均具备本地 `local-acceptance.json` 与 `result.json`；连续运行日志以 `ALL_REMAINING_ACCEPTED` 结束；pilot另列不抵扣正式组。计时范围为本地输入至独立QA、清理与本地结果回读，外部云端汇报不计。
+- 本地总结 `C:\AI\Orca-Codex-Validation-20261014\runs\SUITE_R4_TEN_PAIR_FINAL_REPORT.md`；本地原始数据 `suite-ab-20261016-r4/p01-A` … `p10-B`。
+
+### Orca 30项轻量任务真实编排
+- Run `run_c39c0fec53ca`：Orca官方 task-create 30/30、实际dispatch 30/30、唯一worker_done结算 30/30、独立结果文件 30/30，任务权威状态全部 `completed`。
+- 已检4条任务依赖关系；10次本地业务校验错误注入与恢复。**此10次不是Orca断连/崩溃注入。**
+- 仅使用一个真实Orca worker终端串行执行轻量离线任务，**实际Codex模型执行为0**；不冒充30次复杂代码任务、多worker并发、公平调度或千任务容量认证。
+- 隔离Orca服务正常受控重启后，原Run仍能回读30/30 completed，并可通过官方 `request-show` 查到原幂等请求完成记录。不能据此宣称活跃任务中途宕机、网络分区、磁盘写失败等均已验证。
+- 30任务权威项目证据：`skills/artificial-single-page-extreme-time-engine/tasks/ORCA_CODEX_VALUE_VALIDATION_20261014/evidence/CAP30_REALITY_20261017.md`；Windows独立验收 `C:\AI\Orca-Codex-Validation-20261014\capacity-30-20261017-v2\independent-acceptance.json`、`restart-acceptance.json`。
+- 30任务期间的真实失败与修正：普通shell缺Orca终端身份导致 `no_active_sender_terminal`；使用官方终端身份后创建Run；`run-use`参数须 `--id` 非 `--run`。失败样本保留，UNKNOWN先核对，不重复创建。
+
+### 经验回流与停止条件
+1. 保持管理心跳与业务执行隔离，心跳UNKNOWN不杀业务；允许合理网络波动自主恢复，结算原请求优先对账。
+2. Orca适合跨任务状态、依赖、去重、派发与结算；对于少量独立任务不因已有管理层就强制使用。
+3. 标记完整验收边界：10组源码业务PASS、30任务基础编排PASS、隔离服务恢复PASS；多worker并发/运行中崩溃恢复/资源竞争/400–1000容量仍未认证。
+4. **用户明确决定：现阶段只做30任务；1000任务以后按实际需要再做。禁止未经新要求主动启动1000任务验证。**
+5. 历史失败、修复成本和每个任务的原始JSON保留，不能把只读文件、启动、任务登记当完整业务交付。
