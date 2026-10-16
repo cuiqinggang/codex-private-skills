@@ -1,7 +1,7 @@
 import argparse, ctypes, datetime, http.cookiejar, json, os, pathlib, re, subprocess, sys, time, urllib.error, urllib.parse, urllib.request
 
 ROOT = pathlib.Path(r"C:\AI\Douyin-Ultra-Direct")
-DESKTOP = pathlib.Path.home() / "Desktop"
+DESKTOP = pathlib.Path(os.environ.get("DOUYIN_OUTPUT_DIR", str(pathlib.Path.home() / "Desktop")))
 STATE = ROOT / "session.cookies"
 LAST = ROOT / "last_run.json"
 BASE = "https://demo.douyin.wtf"
@@ -84,13 +84,41 @@ def login(jar, opener):
         raise RuntimeError("DEMO_LOGIN_FAILED")
     jar.save(ignore_discard=True, ignore_expires=True)
 
+
+def parse_request(opener, body, run):
+    while True:
+        try:
+            return json_request(opener, BASE + "/api/v1/parse?wait=25", "POST", body)
+        except urllib.error.HTTPError as error:
+            try:
+                details = json.loads(error.read(4096).decode("utf-8", "replace")).get("error") or {}
+            except (ValueError, AttributeError):
+                details = {}
+            run["api_failure"] = {"http_status": error.code, "code": details.get("code"), "retry_after": details.get("retry_after")}
+            # Only the idempotent parse call may retry once. Never hammer an open circuit.
+            if error.code in (502, 504) and details.get("code") != "ENDPOINT_CIRCUIT_OPEN" and run.get("parse_retry_count", 0) < 1:
+                run["parse_retry_count"] = 1
+                time.sleep(1)
+                continue
+            raise
+
+def save_report(run):
+    payload = json.dumps(run, ensure_ascii=False, indent=2)
+    history = ROOT / "history"
+    history.mkdir(exist_ok=True)
+    name = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f") + ".json"
+    (history / name).write_text(payload, encoding="utf-8")
+    candidate = LAST.with_suffix(".json.tmp")
+    candidate.write_text(payload, encoding="utf-8")
+    os.replace(candidate, LAST)
+
 def parse_share(share_url, run):
     jar, opener = cookie_opener()
     body = {"url": share_url}
     t0 = time.perf_counter()
     refreshed = False
     try:
-        status, obj = json_request(opener, BASE + "/api/v1/parse?wait=25", "POST", body)
+        status, obj = parse_request(opener, body, run)
     except urllib.error.HTTPError as e:
         if e.code not in (401, 403):
             raise
@@ -100,7 +128,7 @@ def parse_share(share_url, run):
         login(jar, opener)
         run["auth_refresh_ms"] = round((time.perf_counter() - a0) * 1000, 3)
         refreshed = True
-        status, obj = json_request(opener, BASE + "/api/v1/parse?wait=25", "POST", body)
+        status, obj = parse_request(opener, body, run)
     run["parse_ms"] = round((time.perf_counter() - t0) * 1000, 3)
     run["auth_reused"] = not refreshed
     if status != 200 or not obj.get("success"):
@@ -247,8 +275,12 @@ def fallback_existing(run):
     if not FALLBACK.exists():
         raise RuntimeError("FALLBACK_MISSING")
     t0 = time.perf_counter()
+    fallback_env = os.environ.copy()
+    fallback_env["DOUYIN_SHARE_URL"] = run.get("share_url", "")
+    fallback_env["DOUYIN_NO_BROWSER_FALLBACK"] = "1"
     p = subprocess.run(
         ["cmd.exe", "/c", str(FALLBACK)],
+        env=fallback_env,
         capture_output=True, text=True, encoding="utf-8", errors="ignore",
         timeout=120, creationflags=CREATE_NO_WINDOW,
     )
@@ -256,6 +288,12 @@ def fallback_existing(run):
     run["fallback_exit"] = p.returncode
     if p.returncode != 0:
         raise RuntimeError("FALLBACK_FAILED")
+    outputs = [line.split(":", 1)[-1].strip() for line in p.stdout.splitlines() if line.startswith("Download completed:")]
+    outputs += [line.split("：", 1)[-1].strip() for line in p.stdout.splitlines() if line.startswith("下载完成：")]
+    if not outputs or not pathlib.Path(outputs[-1]).is_file():
+        raise RuntimeError("FALLBACK_OUTPUT_NOT_VERIFIED")
+    run["output"] = outputs[-1]
+    run["probe"] = ffprobe(pathlib.Path(outputs[-1]))
     run["route"] = "FALLBACK_EXISTING_MATURE"
     return 0
 
@@ -327,7 +365,7 @@ def main():
             "finished_at": now(),
             "T_VALID_MS": round((time.perf_counter() - start) * 1000, 3),
         })
-        LAST.write_text(json.dumps(run, ensure_ascii=False, indent=2), encoding="utf-8")
+        save_report(run)
         print("FINAL_VALID=YES")
         print("OUTPUT=" + str(target))
         print("T_VALID_MS=" + str(run["T_VALID_MS"]))
@@ -338,14 +376,14 @@ def main():
             try:
                 rc = fallback_existing(run)
                 run.update({"status": "PASS_FALLBACK", "finished_at": now(), "T_VALID_MS": round((time.perf_counter() - start) * 1000, 3)})
-                LAST.write_text(json.dumps(run, ensure_ascii=False, indent=2), encoding="utf-8")
+                save_report(run)
                 print("FINAL_VALID=YES_FALLBACK")
                 print("T_VALID_MS=" + str(run["T_VALID_MS"]))
                 return rc
             except Exception as fe:
                 run["fallback_error"] = repr(fe)
         run.update({"status": "FAIL", "finished_at": now(), "T_VALID_MS": None})
-        LAST.write_text(json.dumps(run, ensure_ascii=False, indent=2), encoding="utf-8")
+        save_report(run)
         print("FINAL_VALID=NO")
         print("ERROR=" + repr(e))
         return 1

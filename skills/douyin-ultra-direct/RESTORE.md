@@ -1,4 +1,4 @@
-# 抖音极速直下 v1.1 — 快速恢复合同
+# 抖音极速直下 v1.2.1 — 快速恢复合同
 
 ## 权威来源
 
@@ -87,3 +87,10 @@ C:\AI\Douyin-Direct-Save-Windows\Douyin-Direct-Save.cmd
 
 Reality 仍遵守：
 连续虚拟成熟 → Freeze → 1次 Reality。
+
+
+## 2026-10-16恢复补充
+
+必须同时取得新版run.py、run-hidden.vbs、legacy_direct_save.py、SKILL.md、RESTORE.md和restore.ps1。新版restore.ps1将VBS写为UTF-16 BOM，避免中文失败提示在Windows Script Host中损坏；仅已有C:/AI/Douyin-Direct-Save-Windows/src/direct_save.py存在时，先备份再恢复安全备用入口，不新建下载器或浏览器。
+
+正常下载仍走原API和官方direct；备用SSR失败时不启动第二浏览器。history保存逐次结果，last_run.json只代表最近一次。503/ENDPOINT_CIRCUIT_OPEN记录服务冷却时间并有界失败，不无限等待或反复请求。恢复后的性能数字不能套用历史最快样本；当前复验证据见repairs/20261016/FOLLOWUP_1955.md。新版restore.ps1本轮仅完成PS5.1语法验收，未重新部署恢复整套环境。

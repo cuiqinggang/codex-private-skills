@@ -9,7 +9,7 @@ $Desktop = [Environment]::GetFolderPath('Desktop')
 $entryName = (@([char]0x6296,[char]0x97F3,[char]0x6781,[char]0x901F,[char]0x76F4,[char]0x4E0B,'.vbs') -join '')
 $DesktopEntry = Join-Path $Desktop $entryName
 
-$required = @('run.py','run-hidden.vbs','SKILL.md','RESTORE.md')
+$required = @('run.py','run-hidden.vbs','SKILL.md','RESTORE.md','legacy_direct_save.py')
 foreach($name in $required){
     $p = Join-Path $SourceDir $name
     if(-not (Test-Path -LiteralPath $p)){
@@ -38,10 +38,16 @@ function Copy-IfDifferent {
 }
 
 Copy-IfDifferent -Source (Join-Path $SourceDir 'run.py') -Destination (Join-Path $Target 'run.py')
-Copy-IfDifferent -Source (Join-Path $SourceDir 'run-hidden.vbs') -Destination (Join-Path $Target 'run-hidden.vbs')
+$launcherText = [IO.File]::ReadAllText((Join-Path $SourceDir 'run-hidden.vbs'))
+[IO.File]::WriteAllText((Join-Path $Target 'run-hidden.vbs'),$launcherText,[Text.Encoding]::Unicode)
 Copy-IfDifferent -Source (Join-Path $SourceDir 'SKILL.md') -Destination (Join-Path $Target 'SKILL.md')
 Copy-IfDifferent -Source (Join-Path $SourceDir 'RESTORE.md') -Destination (Join-Path $Target 'RESTORE.md')
-Copy-IfDifferent -Source (Join-Path $SourceDir 'run-hidden.vbs') -Destination $DesktopEntry
+[IO.File]::WriteAllText($DesktopEntry,$launcherText,[Text.Encoding]::Unicode)
+$legacyTarget = 'C:\AI\Douyin-Direct-Save-Windows\src\direct_save.py'
+if(Test-Path -LiteralPath $legacyTarget){
+    Copy-Item -LiteralPath $legacyTarget -Destination ($legacyTarget + '.backup-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
+    Copy-IfDifferent -Source (Join-Path $SourceDir 'legacy_direct_save.py') -Destination $legacyTarget
+}
 
 & $python -m py_compile (Join-Path $Target 'run.py')
 if($LASTEXITCODE -ne 0){ throw 'PY_COMPILE_FAIL' }

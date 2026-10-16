@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-16T19:55:39.243490",
+  "application": {
+    "schema": "DOUYIN_ULTRA_DIRECT_V1",
+    "started_at": "2026-10-16T19:55:32.363560+08:00",
+    "route": "API_PRIMARY",
+    "clipboard_ms": 0.346,
+    "share_url": "https://v.douyin.com/x2jZ6T5FqOQ/",
+    "parse_ms": 2843.2,
+    "auth_reused": true,
+    "selected_stream": {
+      "width": 720,
+      "height": 1280,
+      "size_bytes": 2848345,
+      "bitrate": 732340
+    },
+    "media_candidates": [
+      "www.douyin.com",
+      "v5-dy-ov-experiment.zjcdn.com",
+      "v5-hl-zenl-ov.zjcdn.com"
+    ],
+    "download_candidate_index": 0,
+    "download_ms": 1491.915,
+    "download_errors": [],
+    "source_video": "h264",
+    "compatibility_policy": "NATIVE_H264_NO_REENCODE",
+    "verify_ms": 85.856,
+    "status": "PASS",
+    "output": "C:\\AI\\Douyin-Ultra-Direct\\work\\followup-acceptance-20261016\\douyin_7669298890101094769_20261016-195535.mp4",
+    "bytes": 2848345,
+    "chosen_host": "www.douyin.com",
+    "probe": {
+      "duration": 31.114739,
+      "video": "h264",
+      "audio": "aac",
+      "width": 720,
+      "height": 1280
+    },
+    "finished_at": "2026-10-16T19:55:36.831276+08:00",
+    "T_VALID_MS": 4467.767
+  },
+  "decode_exit": 0,
+  "notification_exit": 0,
+  "output_sha256": "d50c9c3a8b701068210c69a1a7116ecaf89d451fb212f08dcf78c46210e994e3",
+  "source_sha256": "03c355eaa5dd0fc404497664e6d550370eb3f0f93d6a2b6bcc246c011554b802",
+  "launcher_matches": true,
+  "desktop_user_success_record": "user-success-20261016-194804.json",
+  "browser_launched": false
+}
