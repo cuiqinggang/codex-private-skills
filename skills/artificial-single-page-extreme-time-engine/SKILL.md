@@ -3,6 +3,10 @@ name: artificial-single-page-extreme-time-engine
 description: 《三人行》第2版已全局激活的当前正式入口。GPT担任CEO先虚拟成熟与冻结，按需复用Codex Ultra连续运行层执行及现实验收，故障由GPT差分分析后重新验证；兼容明确指定的旧A/B路线及冻结任务METHOD_REF。
 ---
 
+## Windows执行桥强制路由（独立于方法版本，2026-10-17）
+
+凡《三人行》任一版本通过GPT直连Windows执行实际任务，必须先读取 `skills/gpt-windows-execution-bridge/SKILL.md` 与 `skills/gpt-windows-execution-bridge/v9-deterministic-routing.md`；Windows连接通道强制为 **C→A→B**。C 业务验证成功就必须使用 C，只有 C 明确失败且有界重试失败才可 A，A 失败才 B。禁止无证据直接使用 A；所有切换保留理由与回执。该规定不变更本技能既有的《三人行》第2版方法指针；用户指定第3版时，须另外读取经验证的第3版权威源，不得伪称本第2版入口已升级成第3版。执行端是否实际加载仍须日志验收。
+
 # 《三人行》第2版｜全局正式激活裁定（2026-10-16）
 DEFAULT_METHOD=SANRENXING_V2
 STATUS=FROZEN_ACTIVE
