@@ -1,0 +1,11 @@
+# V4 B路线准入结果
+
+STATUS: NO_GO_FOR_REALITY
+
+源代码核查：ComfyUI model_patcher.py 第1113-1127行在patch_model中安装object_patches；Star7常规SLA将注意力forward加入object_patches，FirstBlockCache则通过double_block patch replacement运行。两类补丁机制不同，因此有条件兼容；但Star7的VSA路径也替换double_block，不能直接与FBC堆叠。
+
+部署检查：RTX2080 Ti 22528MiB，当前空闲19998MiB；系统空闲内存约14.2GiB；视频生成服务端口未监听。当前所检ComfyUI的custom_nodes未发现FirstBlockCache节点类，历史五帧成功目录仍存在。必须核对历史隔离实例使用的准确插件来源。
+
+资源结论：124帧高清token数量、额外音频条件、混合精度、注意力临时工作区和主机卸载开销尚未同时验证；当前空闲显存不能证明124帧能够安全执行。
+
+决策：B方案保留优先研究资格，但不得Freeze为实际生成候选。继续检查历史FBC安装来源、补丁实际生效、SLA运行支持与资源最坏情况，未通过时继续NO_GO。新增GPU视频生成零次，124帧完整有效时间和物理极限仍未知。沿用V4.0.0冻结成果，不覆盖旧工作流。
