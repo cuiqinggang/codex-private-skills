@@ -1,17 +1,35 @@
 ---
 name: douyin-ultra-direct
-version: "1.2.1"
+version: "1.2.2"
 description: 抖音极速直下双入口+快速恢复技能。保存已认证高速下载路线、Windows生产入口、GPT直接调用规则和恢复方法，禁止下次从零重建。
 ---
 
-# 抖音极速直下 v1.2.1
+# 抖音极速直下 v1.2.2
 
-STATUS=PASS_FROZEN
-VERSION=1.2.1
+STATUS=REPAIR_VERIFIED_PLAYBACK_PENDING
+VERSION=1.2.2
 AUTHORITY_REPO=cuiqinggang/codex-private-skills
 AUTHORITY_PATH=skills/douyin-ultra-direct/
 
 
+## v1.2.2｜2026-10-17 HEVC 阻断修复（优先阅读）
+
+**事故输入**：https://v.douyin.com/9NEoGTqVZQw/。桌面隐藏入口弹窗称“解析服务可能暂时不可用”，实际 `last_run.json` 记录 `parse_ms=658.429`、下载 `download_ms=871.693`、`primary_error=SOURCE_HEVC_NOT_ACCEPTABLE_WITHOUT_PLAYBACK_CHECK`、`fallback_exit=1`，说明 **解析与媒体下载并未失败**；旧弹窗属于错误归类。
+
+**第一责任点**：`run.py -> compatible_mp4()` 在已经识别原始 HEVC + AAC 后，无条件 `raise RuntimeError("SOURCE_HEVC_NOT_ACCEPTABLE_WITHOUT_PLAYBACK_CHECK")`。该语句之后已有成熟 `h264_nvenc` / `libx264` 转 H.264 及 `ffprobe` 复验流程，却因不可达而永远无法执行。旧备用下载器返回 1，不能掩盖主路的真正故障。
+
+**已执行最小修复**：移除此无条件抛错语句，保留原生 H.264 直接通过、NVENC 优先/libx264 备用、AAC 复制、转码时长误差≤0.25秒、分辨率检查、原子发布及原入口。无须重建解析器或变更 FlClash/代理。Windows 本地备份：`C:\AI\Douyin-Ultra-Direct\run.pre-hevc-guard-fix-20261017.py`。网络权威 `run.py` 同步修复，避免下次恢复旧问题。
+
+**同链接现实验收（2026-10-17 19:24—19:25，北京时间）**：以 `--url https://v.douyin.com/9NEoGTqVZQw/ --no-fallback` 完整跑源头解析→媒体下载→GPU 转码→验证→桌面发布，进程 `exit=0`，`FINAL_VALID=YES`，`T_VALID_MS=26610.876`；`last_run.json` 记录 `status=PASS`、`source_video=hevc`、`compatibility_encoder=h264_nvenc`，输出 `C:\Users\A\Desktop\douyin_7692725938554981666_20261017-192503.mp4`。输出 9,680,988 字节、1280×720、H.264 + AAC、141.967007 秒，ffprobe PASS。**此处 FINAL_VALID 是程序返回字段，不代表真实播放器已验收**。尚未实际复测桌面“复制→双击”完整人工入口，也尚未获得用户常用播放器的画面及音画同步验收，因此发布门禁标记 `PLAYBACK_NOT_VERIFIED`，不能宣称完整用户侧 FINAL_VALID。
+
+**永久修正规则**：
+1. 解析、下载、编码、转码、发布、播放按最早失败步骤分类；弹窗不得将所有失败都表述为“解析服务不可用”。
+2. 若同类视频下载得到有效 HEVC，先查编码兼容逻辑是否触发不可达分支；优先直接复用已有 FFmpeg/NVENC 转码，不重造链路。
+3. 不能以 ffprobe / 文件存在证明所有播放器可用；用户实际播放验收仍是单独门禁。
+4. 保留 `last_run.json`/历史日志、原文件备份、退出码与耗时；无需重复大量下载，仅在代码冻结后执行一次同链接 Reality。
+5. 后续有机会再检验原生 H.264 优选能否减少转换，但不得在缺乏同质量、同播放标准的对照证据前声称更快。
+
+---
 ## 当前恢复状态 v1.2.1（2026-10-16 19:55，优先于下方历史）
 
 先读[恢复与最小修复验收](repairs/20261016/FOLLOWUP_1955.md)。用户19:48桌面双击真实PASS；原失败链接19:50原主路解析PASS，19:55完整下载与全量解码PASS，下载字节与之前桌面文件一致。不是更换下载内核，也没有证据支持“作者允许下载反而导致失败”。
