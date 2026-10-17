@@ -229,7 +229,6 @@ def compatible_mp4(part, expected_width=None, expected_height=None, run=None):
             run["source_video"] = "h264"
             run["compatibility_policy"] = "NATIVE_H264_NO_REENCODE"
         return source
-    raise RuntimeError("SOURCE_HEVC_NOT_ACCEPTABLE_WITHOUT_PLAYBACK_CHECK")
     converted = part.with_name(part.name + ".h264.mp4")
     started = time.perf_counter()
     errors = []
