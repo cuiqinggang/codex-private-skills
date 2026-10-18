@@ -1,7 +1,23 @@
 ---
 name: artificial-single-page-extreme-time-engine
-description: 《三人行》第3版正式默认方法入口。先读SANRENXING_V3.md及V2冻结继承、Orca增量和Windows V9 C优先执行桥；旧任务METHOD_REF不自动迁移。
+description: 《三人行》第4版正式默认方法入口。先读SANRENXING_V4.md及V2冻结继承、Orca增量和Windows V9 C优先执行桥；旧任务METHOD_REF不自动迁移。
 ---
+
+# Sanrenxing V4 active default (2026-10-19)
+DEFAULT_METHOD=SANRENXING_V4
+STATUS=FROZEN_PUBLISHED_ACTIVE
+FREEZE_ID=SRX-V4-F001-20261019
+METHOD_REF=skills/artificial-single-page-extreme-time-engine/SANRENXING_V4.md
+PARENT_METHOD=skills/artificial-single-page-extreme-time-engine/SANRENXING_V3.md
+WINDOWS_BRIDGE=skills/gpt-windows-execution-bridge/SKILL.md@V10.0
+SCOPE=NEW_TASKS_AND_EXPLICIT_V4
+LEGACY_TASKS=KEEP_PINNED_METHOD_REF
+GLOBAL_FINAL_VALID=NOT_CLAIMED
+
+V4 inherits V3 and enables Gemini conditional parallel routing only when browser, login, quota and quality gates pass. Prefer 3 independent tasks when beneficial; optional 6 after checking resources. Otherwise use GPT self-execution and mature Codex route. Frozen V3 and pinned tasks are unchanged.
+
+---
+
 
 # 《三人行》第3版｜默认正式入口（2026-10-17）
 DEFAULT_METHOD=SANRENXING_V3
