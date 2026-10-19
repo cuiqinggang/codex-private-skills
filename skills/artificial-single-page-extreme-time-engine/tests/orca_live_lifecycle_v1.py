@@ -35,7 +35,7 @@ try:
   subprocess.run(["git","add","."],cwd=W/"fixture",check=True,capture_output=True)
   subprocess.run(["git","-c","user.name=Orca Test","-c","user.email=test@example.invalid","commit","-m","fixture"],cwd=W/"fixture",check=True,capture_output=True)
   s["stage"]="READY";save(s)
- with (W/"server.stdout").open("a") as out,(W/"server.stderr").open("a") as err:
+ with (W/"server.stdout").open("w") as out,(W/"server.stderr").open("w") as err:
   server=subprocess.Popen([str(NODE),str(BIN/"orcad.js"),"--bind","127.0.0.1","--port","0","--no-pairing","--json"],env=ENV,stdout=out,stderr=err)
  s["server_pid"]=server.pid;save(s)
  for i in range(150):
