@@ -16,6 +16,12 @@ GLOBAL_FINAL_VALID=NOT_CLAIMED
 
 V4 inherits V3 and enables Gemini conditional parallel routing only when browser, login, quota and quality gates pass. Prefer 3 independent tasks when beneficial; optional 6 after checking resources. Otherwise use GPT self-execution and mature Codex route. Frozen V3 and pinned tasks are unchanged.
 
+## V4 按需唤醒：第一性原理极限效率多路径探索（2026-10-19）
+ON_DEMAND_PROMPT_REF=skills/artificial-single-page-extreme-time-engine/ON_DEMAND_FIRST_PRINCIPLES_EFFICIENCY_PATH_DIVERSITY_V1_1.md
+LOAD_POLICY=TRIGGER_ONLY; DEFAULT=OFF; DO_NOT_CHANGE_FROZEN_V4
+日常成熟任务保持 GPT 主执行，不加载本工具。仅当“高度不确定/明显效率缺口 + 潜在全链路净收益 + 可低成本现实验证”三条件同时满足时，读取上述 V1.1 完整提示词，最多三条不同路线，择优后立即返回 GPT 既有执行链。若无可行显著增益，STOP；不默认再调用 Gemini/DeepSeek 或多轮融合。质量、成本、安全、T*=min(T_VALID) 与冻结历史不变。
+
+
 ---
 
 
