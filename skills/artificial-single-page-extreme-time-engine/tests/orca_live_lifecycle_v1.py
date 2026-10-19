@@ -1,250 +1,109 @@
-"""One-shot official Orca lifecycle validation. No model, no production scheduler."""
-import hashlib, json, os, pathlib, subprocess, sys, time, uuid
-import psutil
-
-ROOT = pathlib.Path('C:/AI/Orca-Codex-Validation-20261014')
-TEST = ROOT / 'lifecycle-v1-live-20261019-1945'
-ASSETS = ROOT / 'CEO_assets'
-BUNDLE = ASSETS / 'profile/orcad-artifacts/win32-x64/0.1.0+9e2e3cd709d0'
-NODE = ASSETS / 'profile/orcad-artifacts/win32-x64/runtimes/node-ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32/node.exe'
-CLI = BUNDLE / 'out/cli/index.js'
-GOOD = ROOT / 'business-exec-20261015-r3/worktrees/fixture/component'
-FILES = ['scripts/run.py', 'tests/test_run_report_offline.py', 'DELIVERY.md']
-# Authoritative expectations come from independent hashes captured at entry, not worker output.
-SPEC = 'Read only the three accepted T03 files named in input.json. Produce artifact-manifest.json with their SHA256 and byte sizes. Do not edit the source. Resume only unfinished hashing after the controlled child timeout; no model invocation.'
-ROLE = sys.argv[1] if len(sys.argv) > 1 else 'main'
-ENV = dict(os.environ, ORCA_USER_DATA=str(TEST/'profile'), ORCA_USER_DATA_PATH=str(TEST/'profile'), ORCA_VERSION='0.1.0+9e2e3cd709d0', ORCA_TELEMETRY_DISABLED='1', DO_NOT_TRACK='1')
-
-def write(name, obj):
-    p = TEST/name
-    tmp = p.with_suffix(p.suffix+'.tmp')
-    tmp.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding='utf-8')
-    os.replace(tmp, p)
-
-def read(name):
-    return json.loads((TEST/name).read_text(encoding='utf-8'))
-
-def remaining(deadline, cap):
-    left = deadline-time.monotonic()
-    if left <= 0:
-        raise TimeoutError('GLOBAL_BUDGET_EXHAUSTED')
-    return min(cap, left)
-
-def deadline():
-    return read('input.json')['deadline_mono']
-
-def cli(*args, cap=25):
-    # Preserve the original request after any timeout; never retry here.
-    r = subprocess.run([str(NODE),str(CLI),*map(str,args),'--json'], env=ENV,
-        capture_output=True, text=True, encoding='utf-8', errors='replace',
-        timeout=remaining(deadline(), cap))
-    j = json.loads(r.stdout)
-    if r.returncode or j.get('ok') is False:
-        raise RuntimeError(json.dumps(j))
-    return j.get('result',j)
-
-def waitfile(name, cap):
-    end = time.monotonic()+remaining(deadline(),cap)
-    while time.monotonic() < end:
-        if (TEST/name).exists(): return read(name)
-        time.sleep(.1)
-    raise TimeoutError('WAIT_FILE_UNKNOWN '+name)
-
-def identity():
-    handle = os.environ.get('ORCA_TERMINAL_HANDLE')
-    pane = os.environ.get('ORCA_PANE_KEY')
-    assert handle and pane, 'Missing own official terminal identity'
-    return {'handle':handle, 'pane':pane}
-
-def manifest():
-    return [{'path':f,'sha256':hashlib.sha256((GOOD/f).read_bytes()).hexdigest(),
-             'size':(GOOD/f).stat().st_size} for f in FILES]
-
-def child():
-    ident=identity()
-    if sys.argv[2]=='first':
-        row=manifest()[0]
-        write('partial.json',{'identity':ident,'rows':[row]})
-        print('PARTIAL_SAVED',flush=True)
-        time.sleep(60)  # Deliberate isolated fault; parent enforces a 2 s timeout.
-    else:
-        partial=read('partial.json')
-        assert partial['identity']==ident
-        rows=manifest()
-        assert partial['rows']==rows[:1]
-        write('artifact-manifest.json',{'identity':ident,'files':rows,'preserved_partial':True})
-
-def worker():
-    ident=identity(); write('worker-identity.json',ident)
-    envelope=waitfile('assignment.json',60)
-    task,ctx,run=envelope['task'],envelope['dispatch'],envelope['run']
-    before=cli('orchestration','dispatch-show','--task',task)['dispatch']
-    assert before['id']==ctx and before['assignee_handle']==ident['handle']
-    assert before['assignee_pane_key']==ident['pane']
-    # Trigger a real CLI timeout (1 ms) in the control plane; do not mutate/re-send heartbeat.
-    try:
-        cli('orchestration','dispatch-show','--task',task,cap=0.001)
-        control_fault='FAST_READ_SUCCEEDED'
-    except subprocess.TimeoutExpired:
-        control_fault='REAL_CLI_READ_TIMEOUT'
-    write('control-fault.json',{'outcome':control_fault,'task':task,'dispatch':ctx,
-                              'identity':ident,'business_interrupted':False})
-    # Fresh independent official read reconciles the SAME dispatch/terminal.
-    recovered=cli('orchestration','dispatch-show','--task',task,cap=25)['dispatch']
-    assert recovered['id']==ctx and recovered['assignee_handle']==ident['handle']
-    assert recovered['assignee_pane_key']==ident['pane']
-    write('control-recovered.json',{'same_dispatch':True,'identity':ident,'task':task,
-                                     'dispatch':ctx,'fault':control_fault})
-    # Do not send another ambiguous control mutation. Continue child work on same identity.
-    # Only the disposable child is stopped. The official terminal and parent remain alive.
-    timed_out=False
-    with (TEST/'child-first.log').open('wb') as log:
-        p=subprocess.Popen([sys.executable,'-X','utf8',__file__,'child','first'],env=os.environ,stdout=log,stderr=log)
-        first_pid=p.pid
-        try:p.wait(timeout=remaining(deadline(),2))
-        except subprocess.TimeoutExpired:
-            timed_out=True;p.terminate();p.wait(timeout=5)
-    assert timed_out and p.poll() is not None
-    first_code=p.returncode
-    partial=read('partial.json'); assert partial['identity']==ident
-    # Exactly one resumption of the deterministic test child, not a Codex resume claim.
-    r=subprocess.run([sys.executable,'-X','utf8',__file__,'child','resume'],env=os.environ,
-        capture_output=True,text=True,encoding='utf-8',timeout=remaining(deadline(),25))
-    assert r.returncode==0,r.stderr
-    after=cli('orchestration','dispatch-show','--task',task)['dispatch']
-    for key in ['id','assignee_handle','assignee_pane_key','process_incarnation']:
-        assert before.get(key)==after.get(key),key
-    assert read('artifact-manifest.json')['files']==read('input.json')['expected']
-    request=str(uuid.uuid4())
-    args=['orchestration','send','--type','worker_done','--subject','Artifact manifest ready',
-          '--body','Hashed three accepted artifacts. Partial work survived the controlled child timeout. Source files are unchanged and ready for independent verification.',
-          '--task-id',task,'--dispatch-id',ctx,'--outcome','succeeded','--retry-request',request]
-    write('completion-request.json',{'request_id':request,'args':args,'identity':ident})
-    receipt=cli(*args,cap=150)
-    # Intentional idempotence verification: exact same request, not a second completion.
-    replay=cli(*args,cap=150)
-    assert receipt['message']['id']==replay['message']['id']
-    assert receipt.get('lifecycle',{}).get('action') in ('completed','settled')
-    write('worker-done.json',{'identity':ident,'first_child_pid':first_pid,'first_exit':first_code,
-        'controlled_timeout':timed_out,'resume_count':1,'same_dispatch_identity':True,
-        'process_incarnation':after.get('process_incarnation'),'request_id':request,
-        'message_id':receipt['message']['id'],'replay_message_id':replay['message']['id'],
-        'lifecycle':receipt.get('lifecycle'),'artifact_sha256':hashlib.sha256((TEST/'artifact-manifest.json').read_bytes()).hexdigest()})
-
-def coordinator():
-    ident=identity()
-    run=cli('orchestration','run-create','--objective','Validate exact terminal lifecycle after child timeout, with real artifact manifest.')['run']['id']
-    task=cli('orchestration','task-create','--run',run,'--spec',SPEC,'--task-title','Accepted artifacts manifest')['task']
-    assert task['status']=='ready',task
-    wt=read('worktree.json')
-    term=cli('terminal','create','--worktree',wt['id'],'--shell','cmd.exe','--title','Lifecycle worker',
-        '--command','python -X utf8 "'+str(pathlib.Path(__file__).resolve())+'" worker')['terminal']['handle']
-    write('worker-terminal.json',{'handle':term})
-    wi=waitfile('worker-identity.json',30); assert wi['handle']==term
-    dispatch=cli('orchestration','dispatch','--task',task['id'],'--run',run,'--to',term,'--return-preamble')
-    assert dispatch.get('injected') is False
-    assert SPEC in dispatch['preamble']
-    ctx=dispatch['dispatch']['id']
-    write('assignment.json',{'run':run,'task':task['id'],'dispatch':ctx,
-        'preamble_sha256':hashlib.sha256(dispatch['preamble'].encode()).hexdigest(),'coordinator':ident})
-    done=waitfile('worker-done.json',400)
-    tasks=cli('orchestration','task-list','--run',run)['tasks']
-    found=[t for t in tasks if t['id']==task['id']]
-    final=cli('orchestration','dispatch-show','--task',task['id'])['dispatch']
-    assert len(found)==1 and found[0]['status']=='completed'
-    assert final['id']==ctx and final['status']=='completed'
-    result=json.loads(found[0]['result'])
-    assert result['provenance']=='worker_report' and result['messageId']==done['message_id']
-    write('coordinator-done.json',{'run':run,'task':task['id'],'dispatch':ctx,
-        'task_status':found[0]['status'],'dispatch_status':final['status'],'worker_result':result})
-
-def main():
-    started=time.monotonic(); utc=time.time(); end=started+1200
-    assert not TEST.exists(),'Existing node: reconcile, never rerun'
-    assert psutil.virtual_memory().available>=4*1024**3,'4 GiB reserve'
-    for p in psutil.process_iter(['pid','name','cmdline']):
-        cmd=' '.join(p.info['cmdline'] or []).replace('\\','/').lower()
-        if p.info['name'].lower() in ('node.exe','codex.exe') and str(ROOT).replace('\\','/').lower() in cmd:
-            raise RuntimeError('Existing task-owned process requires reconciliation '+str(p.pid))
-    for p,h in [(NODE,'ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32'),
-                (BUNDLE/'orcad-server.js','bea1e0ce0f5cd40a046a40c04ef5e66c9e38ce110387f35d5b54abccf65cb8ba')]:
-        assert hashlib.sha256(p.read_bytes()).hexdigest()==h
-    expected=manifest()
-    known=['320f2bf3825bf000bd501309e44ce39f36ce507005e0e694a07fe950777d2314',
-           '00cce6d3fd3ff845f165634f51c16f2ab0bb3cf542ab82c3db80c381d644c619',
-           '5a711c8b52b7627bac9a5470e56eedc05ed253336ecdbcd3b4aeb804992e2d10']
-    assert [x['sha256'] for x in expected]==known,'Accepted artifact changed'
-    TEST.mkdir()
-    write('input.json',{'started_mono':started,'started_utc':utc,'deadline_mono':end,
-        'expected':expected,'budget_seconds':1200,'scope':'DETERMINISTIC_LIFECYCLE_NOT_CODEX_BUSINESS'})
-    seed={'settings':{'workspaceDir':str(TEST/'worktrees'),'nestWorkspaces':True,
-        'agentDefaultArgs':{'codex':'--sandbox workspace-write --ask-for-approval on-request -c approvals_reviewer=auto_review'},
-        'agentDefaultEnv':{'codex':{}},'agentYoloDefaultsMigrated':True,'agentStatusHooksEnabled':False,
-        'agentWorkspaceTrustEnabled':False,'experimentalNativeChat':False,'codexManagedAccounts':[],
-        'activeCodexManagedAccountId':None,'activeCodexManagedAccountIdsByRuntime':{'host':None,'wsl':{}},
-        'localWindowsRuntimeDefault':{'kind':'windows-host'},'terminalWindowsShell':'cmd.exe'}}
-    data=TEST/'profile/profiles/local-default/orca-data.json';data.parent.mkdir(parents=True)
-    data.write_text(json.dumps(seed),encoding='utf-8')
-    result={'scope':'DETERMINISTIC_LIFECYCLE_NOT_CODEX_BUSINESS','passed':False};server=None;owned=[]
-    try:
-        with (TEST/'server.stdout').open('w') as out,(TEST/'server.stderr').open('w') as err:
-            server=subprocess.Popen([str(NODE),str(BUNDLE/'orcad.js'),'--bind','127.0.0.1','--port','0','--no-pairing','--json'],env=ENV,stdout=out,stderr=err)
-        ready_end=time.monotonic()+remaining(end,60)
-        while time.monotonic()<ready_end:
-            assert server.poll() is None,'Runtime exited'
-            if 'orca_server_ready' in (TEST/'server.stdout').read_text():break
-            time.sleep(.2)
-        else:raise TimeoutError('Runtime not ready')
-        repo=TEST/'fixture';repo.mkdir();(repo/'TASK.md').write_text(SPEC,encoding='utf-8')
-        for a in [['init','-b','main'],['add','.'],['-c','user.name=Orca Test','-c','user.email=test@example.invalid','commit','-m','fixture']]:
-            subprocess.run(['git',*a],cwd=repo,env=ENV,capture_output=True,check=True,timeout=remaining(end,25))
-        registered=cli('repo','add','--path',repo)['repo']
-        wt=cli('worktree','create','--repo','id:'+registered['id'],'--name','lifecycle','--setup','skip','--no-parent')['worktree']
-        write('worktree.json',wt)
-        term=cli('terminal','create','--worktree',wt['id'],'--shell','cmd.exe','--title','Lifecycle coordinator',
-            '--command','python -X utf8 "'+str(pathlib.Path(__file__).resolve())+'" coordinator')['terminal']['handle']
-        write('coordinator-terminal.json',{'handle':term})
-        outcome_end=time.monotonic()+remaining(end,500)
-        while time.monotonic()<outcome_end:
-            errors=list(TEST.glob('*-error.json'))
-            if errors:raise RuntimeError(errors[0].read_text())
-            if (TEST/'coordinator-done.json').exists():break
-            time.sleep(.2)
-        else:raise TimeoutError('Coordinator outcome UNKNOWN; no redispatch')
-        result['coordinator']=read('coordinator-done.json');result['worker']=read('worker-done.json')
-        artifact=read('artifact-manifest.json')
-        assert artifact['files']==expected==manifest(),'Independent artifact QA'
-        result['independent_qa']='3_OF_3_HASHES_AND_SIZES_UNCHANGED'
-        result['closes']=[]
-        for name in ['worker-terminal.json','coordinator-terminal.json']:
-            result['closes'].append(cli('terminal','close','--terminal',read(name)['handle']))
-        result['passed']=True
-    except Exception as exc:
-        result['error']=str(exc)
-    finally:
-        if server and server.poll() is None:
-            owned=psutil.Process(server.pid).children(recursive=True)
-            for p in reversed(owned):
-                try:p.terminate()
-                except psutil.NoSuchProcess:pass
-            server.terminate();_,alive=psutil.wait_procs(owned,timeout=5)
-            for p in alive:
-                try:p.kill()
-                except psutil.NoSuchProcess:pass
-            psutil.wait_procs(alive,timeout=5);server.wait(timeout=5)
-        result['remaining_owned']=[p.pid for p in owned if p.is_running()]
-        result['passed']=result['passed'] and not result['remaining_owned']
-        write('result.json',result);assert read('result.json')==result
-        # Endpoint AFTER QA, owned cleanup, evidence write and local readback.
-        write('local-acceptance.json',{'accepted':result['passed'],'scope':result['scope'],
-            'local_valid_ms':(time.monotonic()-started)*1000,'started_utc':utc,'accepted_utc':time.time(),
-            'excludes':'cloud delivery before script entry and later GitHub archive/readback; see final acceptance',
-            'result_sha256':hashlib.sha256((TEST/'result.json').read_bytes()).hexdigest()})
-        print(json.dumps(result),flush=True)
-
-if __name__=='__main__':
-    try:
-        {'main':main,'coordinator':coordinator,'worker':worker,'child':child}[ROLE]()
-    except Exception as exc:
-        if TEST.exists():write(ROLE+'-error.json',{'role':ROLE,'error':str(exc)})
-        raise
+import os,sys,json,time,subprocess,pathlib,uuid,hashlib
+R=pathlib.Path("C:/AI/Orca-Codex-Validation-20261014")
+AS=R/"CEO_assets/profile/orcad-artifacts/win32-x64"
+BIN=AS/"0.1.0+9e2e3cd709d0"
+NODE=AS/"runtimes/node-ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32/node.exe"
+CLI=BIN/"out/cli/index.js"
+W=R/"live-state-v1-20261019"
+W.mkdir(exist_ok=True)
+ENV=os.environ.copy()
+ENV.update(ORCA_USER_DATA=str(W/"profile"),ORCA_USER_DATA_PATH=str(W/"profile"),ORCA_VERSION="0.1.0+9e2e3cd709d0",ORCA_TELEMETRY_DISABLED="1",DO_NOT_TRACK="1")
+CP=W/"checkpoint.json"; LOG=W/"events.jsonl"
+def save(d):
+ p=CP.with_suffix(".tmp");p.write_text(json.dumps(d,ensure_ascii=False,indent=2),encoding="utf8");os.replace(p,CP)
+def ev(m,**kw):
+ with LOG.open("a",encoding="utf8") as f:f.write(json.dumps(dict(event=m,**kw),ensure_ascii=False)+"\n")
+def cli(*args,timeout=25):
+ if len(args)>1 and args[0]=='orchestration' and args[1] not in ('send',) and 's' in globals() and globals()['s'].get('coordinator'):
+  args=(*args,'--from',globals()['s']['coordinator'])
+ p=subprocess.run([str(NODE),str(CLI),*args,"--json"],env=ENV,capture_output=True,text=True,encoding="utf8",errors="replace",timeout=timeout)
+ if p.returncode:raise RuntimeError("CLI "+str(args)+": "+p.stderr[-700:]+p.stdout[-700:])
+ j=json.loads(p.stdout)
+ if j.get("ok") is False:raise RuntimeError(str(j))
+ return j.get("result",j)
+s=json.loads(CP.read_text(encoding="utf-8-sig")) if CP.exists() else {"stage":"INIT","mutations":0}
+server=None
+try:
+ if s["stage"]=="DONE":print(json.dumps(s));sys.exit(0)
+ if s["stage"]=="INIT":
+  (W/"profile/profiles/local-default").mkdir(parents=True,exist_ok=True)
+  seed={"settings":{"workspaceDir":str(W/"worktrees"),"nestWorkspaces":True,"agentDefaultArgs":{"codex":"--sandbox workspace-write --ask-for-approval on-request"},"agentDefaultEnv":{"codex":{}},"agentYoloDefaultsMigrated":True,"agentStatusHooksEnabled":False,"agentWorkspaceTrustEnabled":False,"experimentalNativeChat":False,"codexManagedAccounts":[],"activeCodexManagedAccountId":None,"activeCodexManagedAccountIdsByRuntime":{"host":None,"wsl":{}},"localWindowsRuntimeDefault":{"kind":"windows-host"},"terminalWindowsShell":"cmd.exe"}}
+  (W/"profile/profiles/local-default/orca-data.json").write_text(json.dumps(seed),encoding="utf8")
+  (W/"fixture").mkdir(exist_ok=True)
+  subprocess.run(["git","init","-b","main"],cwd=W/"fixture",capture_output=True,check=True)
+  (W/"fixture"/"README.md").write_text("Live Orca lifecycle identity and control interruption acceptance\n",encoding="utf8")
+  subprocess.run(["git","add","."],cwd=W/"fixture",check=True,capture_output=True)
+  subprocess.run(["git","-c","user.name=Orca Test","-c","user.email=test@example.invalid","commit","-m","fixture"],cwd=W/"fixture",check=True,capture_output=True)
+  s["stage"]="READY";save(s)
+ with (W/"server.stdout").open("a") as out,(W/"server.stderr").open("a") as err:
+  server=subprocess.Popen([str(NODE),str(BIN/"orcad.js"),"--bind","127.0.0.1","--port","0","--no-pairing","--json"],env=ENV,stdout=out,stderr=err)
+ s["server_pid"]=server.pid;save(s)
+ for i in range(150):
+  if server.poll() is not None:raise RuntimeError("server exited "+str(server.returncode))
+  if "orca_server_ready" in (W/"server.stdout").read_text(errors="replace"):break
+  time.sleep(.2)
+ else:raise RuntimeError("server not ready")
+ ev("ORCA_REAL_SERVER_READY",pid=server.pid)
+ if s["stage"]=="READY":
+  if 'worktree' not in s:
+   repo=cli("repo","add","--path",str(W/"fixture"))["repo"]
+   wt=cli("worktree","create","--repo","id:"+repo["id"],"--name","accept","--setup","skip","--no-parent")["worktree"]
+   s["worktree"]=wt;save(s)
+  wt=s['worktree']
+  if 'coordinator' not in s:
+   s['coordinator']=cli('terminal','create','--worktree',wt['id'],'--title','V1 coordinator')['terminal']['handle'];save(s)
+  run=cli("orchestration","run-create","--objective","Complete real local business with Orca identity recovery")["run"]["id"]
+  task=cli("orchestration","task-create","--run",run,"--spec","Create deterministic SHA256 manifest from README and verify it","--task-title","V1 live identity recovery")["task"]["id"]
+  s.update(run=run,task=task,stage="TASK_CREATED");save(s);ev("TASK_CREATED",run=run,task=task)
+ if s["stage"]=="TASK_CREATED":
+  wt=s["worktree"];worker=pathlib.Path(wt["path"])
+  cmd='python -c "import hashlib,pathlib; p=pathlib.Path(\'README.md\');pathlib.Path(\'OUTPUT.sha256\').write_text(hashlib.sha256(p.read_bytes()).hexdigest())"'
+  term=cli("terminal","create","--worktree",wt["id"],"--shell","cmd.exe","--title","V1 identity worker","--command",cmd)["terminal"]["handle"]
+  s["terminal"]=term;save(s)
+  dispatch=cli("orchestration","dispatch","--task",s["task"],"--run",s["run"],"--to",term,"--return-preamble")["dispatch"]
+  s.update(dispatch=dispatch["id"],stage="DISPATCHED",mutations=s["mutations"]+1);save(s);ev("DISPATCHED",dispatch=s["dispatch"],terminal=term)
+ if s["stage"]=="DISPATCHED":
+  # An actual interrupted official CLI control client: process termination mid read.
+  cl=subprocess.Popen([str(NODE),str(CLI),"orchestration","task-list","--run",s["run"],"--json"],env=ENV,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+  time.sleep(.02)
+  was_running=cl.poll() is None
+  if was_running:cl.kill()
+  cl.communicate(timeout=10)
+  ev("CONTROL_CLIENT_INTERRUPTED",client_pid=cl.pid,killed_inflight=was_running,exit=cl.returncode)
+  s["control_client_interrupted"]=was_running;s["stage"]="CONTROL_UNKNOWN";save(s)
+ if s["stage"]=="CONTROL_UNKNOWN":
+  tasklist=cli("orchestration","task-list","--run",s["run"])["tasks"]
+  disp=cli("orchestration","dispatch-show","--task",s["task"])["dispatch"]
+  assert disp["id"]==s["dispatch"] and disp["assignee_handle"]==s["terminal"]
+  assert len([x for x in tasklist if x["id"]==s["task"]])==1
+  s["stage"]="RECONCILED";save(s);ev("RECONNECTED_IDENTITY_CONFIRMED",task=s["task"],dispatch=s["dispatch"])
+ if s["stage"]=="RECONCILED":
+  out=pathlib.Path(s["worktree"]["path"])/"OUTPUT.sha256"
+  for i in range(100):
+   if out.exists():break
+   time.sleep(.1)
+  else:raise RuntimeError("business output missing")
+  orig=pathlib.Path(s["worktree"]["path"])/"README.md"
+  assert out.read_text().strip()==hashlib.sha256(orig.read_bytes()).hexdigest()
+  s["stage"]="QA_PASS";save(s);ev("INDEPENDENT_BUSINESS_QA_PASS")
+ if s["stage"]=="QA_PASS":
+  req=str(uuid.uuid4())
+  s["receipt_request"]=req;s["stage"]="RECEIPT_UNKNOWN";save(s)
+  try:
+   reply=cli("orchestration","send","--type","worker_done","--subject","Verified business DONE","--body","Official Orca lifecycle recovered and output SHA validated","--task-id",s["task"],"--dispatch-id",s["dispatch"],"--outcome","succeeded","--from",s["terminal"],"--retry-request",req,timeout=30)
+   ev("WORKER_DONE_SENT",reply=str(reply)[:1000])
+  except Exception as ex:ev("WORKER_DONE_UNKNOWN",error=str(ex))
+ if s["stage"]=="RECEIPT_UNKNOWN":
+  tasks=cli("orchestration","task-list","--run",s["run"])["tasks"]
+  task=next(x for x in tasks if x["id"]==s["task"])
+  disp=cli("orchestration","dispatch-show","--task",s["task"])["dispatch"]
+  s.update(task_status=task["status"],dispatch_status=disp["status"])
+  assert task["status"]=="completed" and disp["status"]=="completed",str(s)
+  s["stage"]="DONE";save(s);ev("FINAL_RECEIPT_RECONCILED")
+ print(json.dumps(s,ensure_ascii=False,indent=2))
+finally:
+ if server is not None and server.poll() is None:
+  server.terminate()
+  try:server.wait(timeout=8)
+  except subprocess.TimeoutExpired:server.kill();server.wait()
+ ev("EXIT_ORCA_OWNED_SERVICE_ONLY")
