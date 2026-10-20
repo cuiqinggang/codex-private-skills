@@ -1,3 +1,17 @@
+# Sanrenxing V5 active default (2026-10-20)
+DEFAULT_METHOD=SANRENXING_V5
+STATUS=METHOD_FROZEN_PUBLISHED
+FREEZE_ID=SRX-V5-F001-20261020
+METHOD_REF=skills/artificial-single-page-extreme-time-engine/SANRENXING_V5.md
+PARENT_METHOD=skills/artificial-single-page-extreme-time-engine/SANRENXING_V4.md
+BRIDGE=V11_C_FIRST
+GLOBAL_FINAL_VALID=PARTIAL
+LEGACY_TASKS=KEEP_PINNED_METHOD_REF
+
+V5新增知识检索、连续执行与逻辑岗位协作方法；多任务一人公司E2E是下一阶段目标而非既成能力。
+
+---
+
 # Sanrenxing V4 active default (2026-10-19)
 DEFAULT_METHOD=SANRENXING_V4
 STATUS=FROZEN_PUBLISHED_ACTIVE
