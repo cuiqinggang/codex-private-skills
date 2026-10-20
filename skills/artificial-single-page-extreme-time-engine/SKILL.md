@@ -102,3 +102,8 @@ A/B 只比较完成**同一实质成果**的完整有效时间；A派发合并�
 原始真实证据与边界：`method-freezes/ENGINE28_TIME_BASELINE_FIRST_FREEZE_20261010.md` 第3、5节。历史Git Data `create_tree` 在平台**预派发安全检查**遭拒，官方Contents API则曾成功写入28版引擎和25版大脑，但这**不意味着**Contents API能绕过相同平台安全限制。遇实际GitHub HTTP409/422时仅按冲突/参数规则核对；遇ChatGPT/OpenAI预派发拒绝，记录原文、时间、目标和主分支是否变化，停止该被拒绝动作，不通过换工具、拆分同一受阻意图或改用其他凭据规避，必要时走正规支持审核。
 
 特别注意：**当前第29版统一方法尚未正式激活**；在`ENGINE.md`、`START_HERE.md`完成真实获准发布并回读之前，入口仍以仓库实际文件状态为准，不能将任务合同或冻结声明为统一29版已上线。
+
+## V5 按需业务能力：Polsia 本地第3版
+OPC_CAPABILITY_REF=skills/artificial-single-page-extreme-time-engine/opc-capability-registry/POLSIA_LOCAL_V3.md
+LOAD_POLICY=MATCH_ONLY / P2_ISOLATED; REAL_BUSINESS=NOT_CERTIFIED
+适合虚拟公司任务编排、依赖与回执相关需求时，先读取该能力卡，再从现有 C 盘冻结技能入口执行只读 preflight；不得把原站商业运行等同本地 V3 实际经营能力。
