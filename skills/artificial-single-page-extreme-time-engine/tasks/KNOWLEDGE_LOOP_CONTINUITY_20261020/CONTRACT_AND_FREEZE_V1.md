@@ -22,3 +22,12 @@ C path: C:\Users\A\.codex\knowledge-brain\INDEX.md and ROUTING_MAP.md read in pr
 
 ## Next
 Complete full legacy ECC tests, select medium preexisting real business task and execute with checkpoint+bounded interruption+recovery and independent verification. Record FINAL_VALID only after artifacts/readback. Daily 21:00 review accumulates evidence in existing Knowledge Brain/Vault rather than creating another brain.
+
+## Readback evidence 2026-10-20 (F002 status only; contract V1 unchanged)
+- ECC V3.1 copied skill smoke launcher without original suite root: ECC_REJECTED, 0 tests; missing C:\Users\A\.codex\tests, not a runtime continuity verdict.
+- Actual existing ECC V3.1.1 suite at C:\AI\LTMVH-Reality\ecc-v3.1.1\tests: Ran 131 tests in 35.755s, OK, skipped=1, exit 0.
+- Existing Loop V2 scenarios: closed_goal, open_schedule, ecc_upgrade all PASS.
+- Historical medium T03_REPLAY_20261019 independent regression run: 5 tests OK; repeat after checkpoint: 5 tests OK in 0.041s.
+- Existing Loop state engine initialized C:\AI\KnowledgeLoopAcceptance-20261020 with TASK_ID KNOWLEDGE_LOOP_CONTINUITY_20261020; first command session recorded synthetic bounded interruption as FAIL, `RUNNING->REPAIR`, failure fingerprint 799747e99233ea0c, and recover next_action. A separate command session read the same state and ran count 2, reran historical T03 regression and recorded PASS -> CLOSED with cursor T03_REPORT_REGRESSION_VERIFIED. Three persisted artifacts and append-only run log independently read back with two runs.
+- EXACT CLAIM: cross-process state recovery with controlled failure marker PASS; automatic trigger after arbitrary worker crash/browser/GPT chat termination NOT TESTED. No automatic next ChatGPT session was created. Source/business changes were not part of test. Do not count this as universal no-interruption guarantee.
+- FINAL_VALID remains PARTIAL pending a genuine autonomous trigger or process-crash/inflight replay scenario, with no duplicate external effects and full knowledge retrieval/writeback proof.
