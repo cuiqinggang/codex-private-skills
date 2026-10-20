@@ -1,6 +1,20 @@
 ---
 name: artificial-single-page-extreme-time-engine
-description: 《三人行》第4版正式默认方法入口。先读SANRENXING_V4.md及V2冻结继承、Orca增量和Windows V9 C优先执行桥；旧任务METHOD_REF不自动迁移。
+description: 《三人行》第5版正式默认方法入口；知识库检索、持续执行、按需专业岗位；多任务一人公司E2E待验收。
+---
+
+# Sanrenxing V5 active default (2026-10-20)
+DEFAULT_METHOD=SANRENXING_V5
+STATUS=METHOD_FROZEN_PUBLISHED
+FREEZE_ID=SRX-V5-F001-20261020
+METHOD_REF=skills/artificial-single-page-extreme-time-engine/SANRENXING_V5.md
+PARENT_METHOD=skills/artificial-single-page-extreme-time-engine/SANRENXING_V4.md
+BRIDGE=V11_C_FIRST
+GLOBAL_FINAL_VALID=PARTIAL
+LEGACY_TASKS=KEEP_PINNED_METHOD_REF
+
+V5新增知识优先复用、单任务自主持续推进与OPC逻辑岗位派发协议；多任务回执纠错与跨聊天接管不宣称已通过。
+
 ---
 
 # Sanrenxing V4 active default (2026-10-19)
