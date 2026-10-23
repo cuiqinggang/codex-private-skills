@@ -14,17 +14,17 @@
     {
       "node": "N002",
       "purpose": "Persist N000 index to GitHub and C drive",
-      "status": "IN_PROGRESS"
+      "status": "CONFIRMED_COMMITTED"
     },
     {
       "node": "N003",
       "purpose": "Re-read stored rules and task by ID",
-      "status": "NOT_STARTED"
+      "status": "CONFIRMED_COMMITTED"
     },
     {
       "node": "N004",
       "purpose": "Check copied ID in fresh GPT chat under authorized repository access",
-      "status": "NOT_STARTED"
+      "status": "FAILED_RETRY_REQUIRED"
     },
     {
       "node": "N005",
@@ -43,14 +43,33 @@
       "status": "CONFIRMED_COMMITTED",
       "result": "User approved large right-aligned repeatable copy UI with 650ms dark flash then automatic restoration",
       "evidence": "current conversation"
+    },
+    {
+      "node": "N002",
+      "status": "CONFIRMED_COMMITTED",
+      "result": "GitHub N000 and C-drive full copy verified readable",
+      "evidence": "current A-channel write/read receipts"
+    },
+    {
+      "node": "N003",
+      "status": "CONFIRMED_COMMITTED",
+      "result": "Re-read remote GitHub and local N000 file; detected initial missing local mirror and repaired it",
+      "evidence": "current tool receipts"
     }
   ],
-  "next_node": "N002",
+  "next_node": "N004",
   "constraints": [
     "Keep V2 DSH/ECC/node versioning unchanged",
     "No unsaved results treated as committed",
     "User-visible copy button is per response; cannot assert global UI across all new chats",
     "Requires repository access for fresh-page lookup"
   ],
-  "t_valid_seconds": null
+  "t_valid_seconds": null,
+  "recovery_issue": {
+    "code": "LOCAL_ROOT_MISSING",
+    "cause": "Previous C-drive full N000 backup not completed; only status summary had been saved",
+    "repair": "Full N000 JSON written and read back in C drive",
+    "status": "REPAIRED_LOCALLY",
+    "fresh_page_retest": "PENDING"
+  }
 }
