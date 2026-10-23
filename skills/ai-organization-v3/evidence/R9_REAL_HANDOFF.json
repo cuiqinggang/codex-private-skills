@@ -1,0 +1,74 @@
+{
+  "task_id": "AIORG-V3-R9-REAL-HANDOFF-20261023",
+  "generation": 1,
+  "version": 2,
+  "source": [
+    [
+      "T1",
+      17,
+      3
+    ],
+    [
+      "T2",
+      8,
+      5
+    ],
+    [
+      "T3",
+      24,
+      2
+    ],
+    [
+      "T4",
+      11,
+      4
+    ],
+    [
+      "T5",
+      6,
+      7
+    ],
+    [
+      "T6",
+      19,
+      3
+    ]
+  ],
+  "completed": [
+    "SOURCE_VERIFIED",
+    "COSTS_COMPUTED"
+  ],
+  "pending": [
+    "PRIORITY_SORT",
+    "TOTALS",
+    "FINAL_QA"
+  ],
+  "contract": "For each record [id,unit_price,quantity], calculate line_total=unit_price*quantity, sort descending by line_total then ID ascending on ties, preserve all 6 IDs; total_revenue=sum(line_total); produce output and QA. Do not repeat completed source verification.",
+  "computed": [
+    [
+      "T1",
+      51
+    ],
+    [
+      "T2",
+      40
+    ],
+    [
+      "T3",
+      48
+    ],
+    [
+      "T4",
+      44
+    ],
+    [
+      "T5",
+      42
+    ],
+    [
+      "T6",
+      57
+    ]
+  ],
+  "next_action": "Execute pending stages and save final receipt"
+}
