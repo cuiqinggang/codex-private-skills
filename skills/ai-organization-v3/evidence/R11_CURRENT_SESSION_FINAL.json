@@ -1,0 +1,44 @@
+{
+  "task_id": "AIORG-V3-R11-20261023",
+  "generation": 2,
+  "version": 3,
+  "completed": [
+    "SOURCE_VERIFIED",
+    "LINE_AMOUNTS",
+    "SORT",
+    "AGGREGATE",
+    "QA"
+  ],
+  "pending": [],
+  "status": "FINAL_PASS_CURRENT_GPT",
+  "sorted": [
+    [
+      "F",
+      57
+    ],
+    [
+      "A",
+      51
+    ],
+    [
+      "C",
+      48
+    ],
+    [
+      "D",
+      44
+    ],
+    [
+      "E",
+      42
+    ],
+    [
+      "B",
+      40
+    ]
+  ],
+  "total": 282,
+  "records": 6,
+  "qa_pass": true,
+  "execution_scope": "current GPT session read C-drive checkpoint, not a new GPT browser page"
+}
