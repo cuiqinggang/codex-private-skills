@@ -1,0 +1,64 @@
+{
+  "test_id": "DSH-NEWGPT-HANDOFF-20261023-R1",
+  "date": "2026-10-23",
+  "source_repo": "cuiqinggang/codex-private-skills",
+  "source_skill": "skills/ai-organization-v3/SKILL.md",
+  "source_checkpoint": "skills/ai-organization-v3/evidence/R9_REAL_HANDOFF.json",
+  "task_id": "AIORG-V3-R9-REAL-HANDOFF-20261023",
+  "completed_inherited": [
+    "SOURCE_VERIFIED",
+    "COSTS_COMPUTED"
+  ],
+  "pending": [
+    "PRIORITY_SORT",
+    "TOTALS",
+    "FINAL_QA"
+  ],
+  "independent_fixture_verification": {
+    "sorted": [
+      [
+        "T6",
+        57
+      ],
+      [
+        "T1",
+        51
+      ],
+      [
+        "T3",
+        48
+      ],
+      [
+        "T4",
+        44
+      ],
+      [
+        "T5",
+        42
+      ],
+      [
+        "T2",
+        40
+      ]
+    ],
+    "total_revenue": 282,
+    "records": 6,
+    "qa_pass": true,
+    "scope": "independent data check, NOT executed by new GPT page"
+  },
+  "browser_receipt": {
+    "tab_detected": true,
+    "tab_title": "验证DSH交接流程",
+    "content_read": "BLOCKED_BY_BROWSER_HOST_SECURITY_POLICY",
+    "new_page_handoff": "NOT_EXECUTED",
+    "new_page_business_execution": "NOT_EXECUTED",
+    "new_page_qa": "NOT_EXECUTED"
+  },
+  "t_valid": {
+    "value_seconds": null,
+    "status": "NOT_MEASURABLE_END_TO_END",
+    "reason": "No authorized new GPT page business completion"
+  },
+  "final_status": "BLOCKED_NOT_ACCEPTED",
+  "modified_v2_components": false
+}
