@@ -1,0 +1,56 @@
+{
+  "schema": "AIORG-V3-N000-1",
+  "task_id": "AIORG-20261023-003",
+  "root_id": "AIORG-20261023-003/N000/V1",
+  "status": "IN_PROGRESS",
+  "title": "Large copy button plus ID-only recovery end-to-end trial",
+  "goal": "Persist task at start, show large right-side 复制 button, test lookup from N000 or N005 in a fresh page",
+  "node_plan": [
+    {
+      "node": "N001",
+      "purpose": "Record approved UI behavior",
+      "status": "CONFIRMED_COMMITTED"
+    },
+    {
+      "node": "N002",
+      "purpose": "Persist N000 index to GitHub and C drive",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "node": "N003",
+      "purpose": "Re-read stored rules and task by ID",
+      "status": "NOT_STARTED"
+    },
+    {
+      "node": "N004",
+      "purpose": "Check copied ID in fresh GPT chat under authorized repository access",
+      "status": "NOT_STARTED"
+    },
+    {
+      "node": "N005",
+      "purpose": "Current-node ID recovery after partial progress",
+      "status": "NOT_STARTED"
+    },
+    {
+      "node": "N006",
+      "purpose": "Final QA and T_VALID",
+      "status": "NOT_STARTED"
+    }
+  ],
+  "completed_receipts": [
+    {
+      "node": "N001",
+      "status": "CONFIRMED_COMMITTED",
+      "result": "User approved large right-aligned repeatable copy UI with 650ms dark flash then automatic restoration",
+      "evidence": "current conversation"
+    }
+  ],
+  "next_node": "N002",
+  "constraints": [
+    "Keep V2 DSH/ECC/node versioning unchanged",
+    "No unsaved results treated as committed",
+    "User-visible copy button is per response; cannot assert global UI across all new chats",
+    "Requires repository access for fresh-page lookup"
+  ],
+  "t_valid_seconds": null
+}
