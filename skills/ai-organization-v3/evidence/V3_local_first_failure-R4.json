@@ -1,0 +1,58 @@
+{
+  "task_id": "AIORG-V3-R4-LIVE-20261023",
+  "version": 4,
+  "steps": [
+    "source_verification",
+    "descending_sort",
+    "aggregation",
+    "final_QA"
+  ],
+  "source": [
+    [
+      "A",
+      7
+    ],
+    [
+      "B",
+      23
+    ],
+    [
+      "C",
+      12
+    ],
+    [
+      "D",
+      4
+    ],
+    [
+      "E",
+      18
+    ]
+  ],
+  "sorted": [
+    [
+      "B",
+      23
+    ],
+    [
+      "E",
+      18
+    ],
+    [
+      "C",
+      12
+    ],
+    [
+      "A",
+      7
+    ],
+    [
+      "D",
+      4
+    ]
+  ],
+  "sum": 64,
+  "expected_sum": 64,
+  "qa": true,
+  "next": "FINAL_DELIVERY"
+}
