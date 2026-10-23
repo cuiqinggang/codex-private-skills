@@ -1,0 +1,16 @@
+{
+  "task_id": "AIORG-20261024-001",
+  "root_id": "AIORG-20261024-001/N000/V1",
+  "title": "Unified start-of-page task ID and recovery search",
+  "status": "IN_PROGRESS",
+  "policy_version": "V3.1 CANDIDATE",
+  "goal": "Each new task page receives visible recoverable ID, lookup latest reliable state by ID from authoritative repo and shared C drive; fallback search previous conversations context as unverified hints only.",
+  "next_node": "N001",
+  "recovery_priority": [
+    "GitHub tasks/TASK_ID/N000.json",
+    "C:\\AI\\AIORG-Shared\\tasks\\TASK_ID\\N000.json",
+    "search historical chat or other authorized context with ID, reconcile and mark UNKNOWN if no committed checkpoint"
+  ],
+  "integrity": "Do not claim unsaved information is always discoverable",
+  "v2_unchanged": true
+}
