@@ -1,0 +1,77 @@
+{
+  "task_id": "AIORG-20261023-001",
+  "root_node": "N000",
+  "node_version": "V1",
+  "schema": "AIORG-V3-N000-1",
+  "description": "六条订单金额计算、降序、总额及QA跨页连续任务",
+  "source_skill": "skills/ai-organization-v3/SKILL.md",
+  "business_nodes": [
+    "N001",
+    "N002",
+    "N003"
+  ],
+  "confirmed_nodes": [
+    {
+      "node": "N001",
+      "version": "V1",
+      "state": "CONFIRMED_COMMITTED",
+      "result": {
+        "T1": 51,
+        "T2": 40,
+        "T3": 48,
+        "T4": 44,
+        "T5": 42,
+        "T6": 57
+      },
+      "evidence": "user supplied N001 receipt"
+    },
+    {
+      "node": "N002",
+      "version": "V1",
+      "state": "CONFIRMED_COMMITTED",
+      "sort": [
+        [
+          "T6",
+          57
+        ],
+        [
+          "T1",
+          51
+        ],
+        [
+          "T3",
+          48
+        ],
+        [
+          "T4",
+          44
+        ],
+        [
+          "T5",
+          42
+        ],
+        [
+          "T2",
+          40
+        ]
+      ],
+      "evidence": "user supplied N002 receipt"
+    },
+    {
+      "node": "N003",
+      "version": "V1",
+      "state": "CONFIRMED_COMMITTED",
+      "amount": 282,
+      "record_count": 6,
+      "qa": "7/7 PASS",
+      "evidence": "user supplied final report; independent arithmetic recheck"
+    }
+  ],
+  "last_confirmed_node": "N003",
+  "next_node": null,
+  "task_state": "TASK_COMPLETE",
+  "final_receipt": "skills/ai-organization-v3/evidence/AIORG-20261023-001-N003-FINAL.json",
+  "browser_auto_takeover": "NOT_VERIFIED",
+  "full_t_valid": "NOT_VERIFIED",
+  "rule": "On receiving TASK_ID, load N000, verify receipts, continue pending only; if complete report without rerun."
+}
