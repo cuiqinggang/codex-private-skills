@@ -2,7 +2,23 @@
   "task_id": "AIORG-20261023-005",
   "node_id": "N000",
   "version": "V1",
-  "status": "IN_PROGRESS",
+  "status": "LOCAL_BENCHMARK_COMPLETE_GPT_AB_PENDING",
   "purpose": "Compare batch sizes 1,2,3,4 for 12 identical business operations; measure full local node processing/checkpoint/recovery costs; do not mistake for GPT page T_VALID",
-  "next_node": "N001"
+  "next_node": "N002_BROWSER_AB",
+  "completed": [
+    "N001_LOCAL_BATCH_BENCHMARK"
+  ],
+  "local_result": {
+    "medians_ms": {
+      "1": 42.596,
+      "2": 24.52,
+      "3": 20.163,
+      "4": 17.191
+    },
+    "quality": "100/100 batch executions PASS",
+    "scope": "LOCAL_IO_ONLY",
+    "caveat": "Not a measurement of GPT page speed or full T_VALID"
+  },
+  "business_recommendation": "Keep <=3 page nodes as provisional ceiling, direct one-page tasks finish on one page; do not change ceiling without real browser A/B",
+  "full_t_valid_seconds": null
 }
