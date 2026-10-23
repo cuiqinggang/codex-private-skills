@@ -1,0 +1,46 @@
+{
+  "task_id": "AIORG-V3-R9-REAL-HANDOFF-20261023",
+  "generation": 2,
+  "status": "FINAL_QA_PASS",
+  "completed": [
+    "SOURCE_VERIFIED",
+    "COSTS_COMPUTED",
+    "PRIORITY_SORT",
+    "TOTALS",
+    "FINAL_QA"
+  ],
+  "pending": [],
+  "ordered": [
+    [
+      "T6",
+      57
+    ],
+    [
+      "T1",
+      51
+    ],
+    [
+      "T3",
+      48
+    ],
+    [
+      "T4",
+      44
+    ],
+    [
+      "T5",
+      42
+    ],
+    [
+      "T2",
+      40
+    ]
+  ],
+  "total_revenue": 282,
+  "records": 6,
+  "recovered_from": "C:\\AI\\AI-Organization-V3-ExtremeTime-20261023\\R9_REAL_HANDOFF.json",
+  "online_read_during_recovery": false,
+  "online_network_outage_was_real": false,
+  "gpt_session": "current ChatGPT conversation, not separately initiated new page",
+  "qa_pass": true
+}
