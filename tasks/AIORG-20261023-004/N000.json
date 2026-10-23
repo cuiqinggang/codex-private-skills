@@ -1,26 +1,40 @@
 {
   "task_id": "AIORG-20261023-004",
   "root_id": "AIORG-20261023-004/N000/V1",
-  "status": "IN_PROGRESS",
+  "status": "TASK_COMPLETE_TEST_LIMITED",
   "contract": "Compare one-page direct completion vs CEO dispatch in batches of up to 3 business nodes, with checkpoint save and restore",
   "nodes": [
     {
       "id": "N001",
-      "status": "IN_PROGRESS",
-      "title": "Audit historical CEO executor evidence"
+      "status": "CONFIRMED_COMMITTED",
+      "title": "Historical evidence audit",
+      "result": "Existing CEO/Executor contract and per-page <=3 questions verified historically; real autonomous parent-to-child GPT delegation not confirmed"
     },
     {
       "id": "N002",
-      "status": "NOT_STARTED",
-      "title": "Run genuine local three-node persisted batch"
+      "status": "CONFIRMED_COMMITTED",
+      "title": "Local three-node batch with durable files",
+      "result": "B001-B003 local PowerShell business fixture with independent 4/4 QA, total=151; earlier failed retries included",
+      "receipt": "C:\\AI\\AIORG-Shared\\tasks\\AIORG-20261023-004\\receipts\\local_batch.json",
+      "scope": "LOCAL_POWERSHELL_NOT_CHILD_GPT"
     },
     {
       "id": "N003",
-      "status": "NOT_STARTED",
-      "title": "QA decision and evidence-backed limits"
+      "status": "CONFIRMED_COMMITTED",
+      "title": "Final QA and bounded recommendation",
+      "result": "One-page small tasks direct; complex tasks delegate only if worthwhile, max 3 natural nodes per page as provisional preventive rule; actual GPT page A/B T_VALID not proven"
     }
   ],
-  "next_node": "N001",
+  "next_node": null,
   "workspace": "C:\\AI\\AIORG-Shared\\tasks\\AIORG-20261023-004",
-  "notes": "Historical cross-GPT automatic delegation not yet proven. No browser policy bypass."
+  "notes": "Historical cross-GPT automatic delegation not yet proven. No browser policy bypass.",
+  "test_evidence": {
+    "local_qa": "4/4 PASS",
+    "local_total": 151,
+    "local_last_attempt_ms": 248,
+    "full_t_valid": "NOT_MEASURED",
+    "actual_child_gpt": "NOT_VERIFIED",
+    "actual_page_switch": "NOT_VERIFIED",
+    "failed_retries": "Occurred and included in evidence narrative, not in last-attempt timing"
+  }
 }
