@@ -31,5 +31,9 @@
     "evidence": "C:\\AI\\AI-Organization-V3.1-Candidate-20261024\\N004-auto-supervisor-report.json",
     "scope_limit": "read-only Tymeslot browser probe; not end-to-end booking or GPT page continuation"
   },
-  "stop_gate": "OPEN_REQUIREMENTS_REMAIN"
+  "stop_gate": "OPEN_REQUIREMENTS_REMAIN",
+  "recovery_rule": "tasks/AIORG-20261024-004/RECOVERY-CONTINUATION-RULE-V1.md",
+  "rule_priority": "GITHUB_SHARED_WORKSPACE_FIRST_C_DRIVE_FALLBACK",
+  "on_code_received": "RESUME_EXECUTION_NOT_STATUS_SUMMARY",
+  "incident": "INC-002_OPEN"
 }
