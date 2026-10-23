@@ -1,0 +1,26 @@
+{
+  "task_id": "AIORG-20261023-004",
+  "root_id": "AIORG-20261023-004/N000/V1",
+  "status": "IN_PROGRESS",
+  "contract": "Compare one-page direct completion vs CEO dispatch in batches of up to 3 business nodes, with checkpoint save and restore",
+  "nodes": [
+    {
+      "id": "N001",
+      "status": "IN_PROGRESS",
+      "title": "Audit historical CEO executor evidence"
+    },
+    {
+      "id": "N002",
+      "status": "NOT_STARTED",
+      "title": "Run genuine local three-node persisted batch"
+    },
+    {
+      "id": "N003",
+      "status": "NOT_STARTED",
+      "title": "QA decision and evidence-backed limits"
+    }
+  ],
+  "next_node": "N001",
+  "workspace": "C:\\AI\\AIORG-Shared\\tasks\\AIORG-20261023-004",
+  "notes": "Historical cross-GPT automatic delegation not yet proven. No browser policy bypass."
+}
