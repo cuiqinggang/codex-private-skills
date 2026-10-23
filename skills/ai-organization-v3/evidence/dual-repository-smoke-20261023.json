@@ -1,0 +1,8 @@
+{
+  "task_id": "AIORG-V3-DUALREPO-TEST-20261023",
+  "version": "V3-R2",
+  "node": "DUAL_WRITE_SMOKE",
+  "status": "TEST_ONLY",
+  "next": "VERIFY_BOTH",
+  "payload": "online priority, C backup parallel, both required for redundant PASS"
+}
