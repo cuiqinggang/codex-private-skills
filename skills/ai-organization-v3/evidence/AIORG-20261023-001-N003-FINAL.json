@@ -1,0 +1,124 @@
+{
+  "task_id": "AIORG-20261023-001",
+  "test_name": "AI Organization V3.0 cross-page node recovery",
+  "final_node": {
+    "node_id": "N003",
+    "node_version": "V1",
+    "status": "CONFIRMED_COMMITTED",
+    "next_node": null,
+    "next_status": "TASK_COMPLETE"
+  },
+  "nodes": [
+    {
+      "node_id": "N001",
+      "node_version": "V1",
+      "status": "CONFIRMED_COMMITTED",
+      "result": {
+        "T1": 51,
+        "T2": 40,
+        "T3": 48,
+        "T4": 44,
+        "T5": 42,
+        "T6": 57
+      },
+      "source": "user-provided node receipt"
+    },
+    {
+      "node_id": "N002",
+      "node_version": "V1",
+      "status": "CONFIRMED_COMMITTED",
+      "result": [
+        [
+          "T6",
+          57
+        ],
+        [
+          "T1",
+          51
+        ],
+        [
+          "T3",
+          48
+        ],
+        [
+          "T4",
+          44
+        ],
+        [
+          "T5",
+          42
+        ],
+        [
+          "T2",
+          40
+        ]
+      ],
+      "validation": "7/7 PASS",
+      "source": "user-provided node receipt"
+    },
+    {
+      "node_id": "N003",
+      "node_version": "V1",
+      "status": "CONFIRMED_COMMITTED",
+      "result": {
+        "record_count": 6,
+        "total_amount": 282,
+        "sorted": [
+          [
+            "T6",
+            57
+          ],
+          [
+            "T1",
+            51
+          ],
+          [
+            "T3",
+            48
+          ],
+          [
+            "T4",
+            44
+          ],
+          [
+            "T5",
+            42
+          ],
+          [
+            "T2",
+            40
+          ]
+        ]
+      },
+      "qa": {
+        "total_amount": true,
+        "record_count": true,
+        "descending_sort": true,
+        "record_completeness": true,
+        "unique_ids": true,
+        "amount_consistency": true,
+        "total_reconciliation": true,
+        "passed": 7,
+        "total": 7
+      },
+      "source": "user-provided final acceptance report"
+    }
+  ],
+  "verification_scope": {
+    "arithmetic_independently_rechecked": true,
+    "cross_gpt_page_handoff": "PASS_LIMITED_SCOPE_AS_REPORTED",
+    "inherited_nodes_not_reexecuted": "reported",
+    "durable_persistence": "NOT_VERIFIED",
+    "dsh_automatic_failure_takeover": "NOT_VERIFIED",
+    "complete_t_valid_seconds": null,
+    "t_valid_status": "NOT_VERIFIED",
+    "browser_action_evidence": "No independent browser event log attached; page results supplied by user"
+  },
+  "constraints": [
+    "V2 DSH/ECC/node versioning unchanged",
+    "Do not claim unattended automatic page replacement",
+    "Do not claim durable persistence or full T_VALID without evidence"
+  ],
+  "final_status": "BUSINESS_TASK_COMPLETE_LIMITED_CROSS_PAGE_RECOVERY",
+  "recorded_at": "2026-10-23"
+}
