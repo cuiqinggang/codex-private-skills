@@ -1,0 +1,13 @@
+{
+  "name": "local_outage",
+  "task_id": "V3-R3-LOCAL-FAULT-20261023",
+  "version": 4,
+  "completed": [
+    "SOURCE",
+    "SORT"
+  ],
+  "pending": [
+    "QA"
+  ],
+  "result": "B,23\nC,12\nA,7\n"
+}
