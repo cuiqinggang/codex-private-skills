@@ -1,0 +1,17 @@
+{
+  "task_id": "AIORG-20261023-006",
+  "root_id": "AIORG-20261023-006/N000/V1",
+  "status": "IN_PROGRESS",
+  "goal": "Adopt workload-adaptive page boundaries, universal start-of-task ID and reliable durable checkpoints",
+  "policy": [
+    "At task start allocate ID and persist N000",
+    "Never rely on chat short-term memory as sole source",
+    "No unconditional three-node rollover",
+    "Save after valuable milestone, before risky lengthy operation, and before proactive page switch",
+    "If page slow or unable to proceed, use pre-shown ID to recover from latest verified receipt",
+    "Never replay confirmed external side effects or UNKNOWN",
+    "Only claim browser real-world page A/B with genuine UI evidence"
+  ],
+  "next_node": "N001",
+  "verification": "PENDING"
+}
