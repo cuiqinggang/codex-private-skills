@@ -71,5 +71,8 @@
     "repair": "Full N000 JSON written and read back in C drive",
     "status": "REPAIRED_LOCALLY",
     "fresh_page_retest": "PENDING"
-  }
+  },
+  "shared_workspace": "C:\\AI\\AIORG-Shared",
+  "local_root": "C:\\AI\\AIORG-Shared\\tasks\\AIORG-20261023-003\\N000.json",
+  "local_registry": "C:\\AI\\AIORG-Shared\\registry\\tasks.json"
 }
