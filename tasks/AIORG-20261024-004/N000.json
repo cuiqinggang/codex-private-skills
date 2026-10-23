@@ -18,5 +18,18 @@
     "new GPT page continuation",
     "full T_VALID"
   ],
-  "safety": "No completed claims for unverified end-to-end work"
+  "safety": "No completed claims for unverified end-to-end work",
+  "n004_subtest": {
+    "status": "CONFIRMED_PARTIAL",
+    "automatic_windows_process_resume": "PASS",
+    "process_exit_sequence": [
+      77,
+      0
+    ],
+    "dedupe_reentry": "PASS",
+    "wall_seconds": 7.811,
+    "evidence": "C:\\AI\\AI-Organization-V3.1-Candidate-20261024\\N004-auto-supervisor-report.json",
+    "scope_limit": "read-only Tymeslot browser probe; not end-to-end booking or GPT page continuation"
+  },
+  "stop_gate": "OPEN_REQUIREMENTS_REMAIN"
 }
