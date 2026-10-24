@@ -1,0 +1,18 @@
+{
+  "task_id": "H3-VEDA-BENEFIT-20261024-001",
+  "status": "COMPLETE_SCREENING_REJECTED",
+  "decision": "KEEP_V4_1_0_A2_DEFAULT",
+  "visual_quality": "FAIL_HORIZONTAL_TILE_CORRUPTION",
+  "valid_paired_samples": 1,
+  "three_pair_certification": false,
+  "baseline_seconds": 109.329,
+  "candidate_seconds": 283.985,
+  "extra_seconds": 174.656,
+  "T_VALID": null,
+  "attention_skipped_percent": 0,
+  "full_124_frame_benefit": "UNKNOWN",
+  "owned_service_stopped": true,
+  "report": "FINAL_REPORT.md",
+  "next_action": "Read existing evidence; do not repeat this rejected configuration",
+  "scope": "VEDA SM75 five-frame screening; TE/LoRA combination not tested"
+}
