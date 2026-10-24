@@ -35,5 +35,9 @@
   "recovery_rule": "tasks/AIORG-20261024-004/RECOVERY-CONTINUATION-RULE-V1.md",
   "rule_priority": "GITHUB_SHARED_WORKSPACE_FIRST_C_DRIVE_FALLBACK",
   "on_code_received": "RESUME_EXECUTION_NOT_STATUS_SUMMARY",
-  "incident": "INC-002_OPEN"
+  "incident": "INC-002_OPEN",
+  "candidate_release_version": "V3.1.2",
+  "release_note": "tasks/AIORG-20261024-004/RELEASE-V3.1.2-CANDIDATE.md",
+  "release_state": "CANDIDATE_SNAPSHOT_NOT_TASK_COMPLETE",
+  "local_release_sync": "INDEX_ONLY_FULL_TEXT_BLOCKED"
 }
