@@ -52,5 +52,12 @@
       "real GPT page handoff",
       "whole task T_VALID"
     ]
+  },
+  "node_timebox_test": {
+    "status": "CONFIRMED_PARTIAL",
+    "windows_kill_reissue_csv_qa": "PASS",
+    "qualified_run_seconds": 3.1765,
+    "scope_limit": "not ChatGPT page restart or Tymeslot booking reissue",
+    "report": "tasks/AIORG-20261024-004/N004-NODE-TIMEOUT-REISSUE-R1.md"
   }
 }
