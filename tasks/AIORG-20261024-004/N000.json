@@ -36,9 +36,9 @@
   "rule_priority": "GITHUB_SHARED_WORKSPACE_FIRST_C_DRIVE_FALLBACK",
   "on_code_received": "RESUME_EXECUTION_NOT_STATUS_SUMMARY",
   "incident": "INC-002_OPEN",
-  "candidate_release_version": "V4.0.0-candidate",
+  "candidate_release_version": "V4.2.0-candidate",
   "release_note": "tasks/AIORG-20261024-004/RELEASE-V3.1.2-CANDIDATE.md",
-  "release_state": "RULE_RELEASED_N004_REMAINS_OPEN",
+  "release_state": "COMPACT_ENTRY_RELEASED_N004_NOT_CLOSED",
   "local_release_sync": "INDEX_ONLY_FULL_TEXT_BLOCKED",
   "n004_live_ab": {
     "status": "CONFIRMED_PARTIAL",
@@ -61,5 +61,6 @@
     "report": "tasks/AIORG-20261024-004/N004-NODE-TIMEOUT-REISSUE-R1.md"
   },
   "skill_entry": "skills/ai-organization-v4/SKILL.md",
-  "execution_tier_rule": "SMALL_MEDIUM_GPT_DIRECT_LARGE_ONLY_IF_POSITIVE_NET_BENEFIT_CEO_EXECUTOR"
+  "execution_tier_rule": "SMALL_MEDIUM_GPT_DIRECT_LARGE_ONLY_IF_POSITIVE_NET_BENEFIT_CEO_EXECUTOR",
+  "invocation": "使用《AI 化组织》V4.2。任务：……"
 }
