@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI 化组织 · 统一能力入口"
+  short_description: "整合现有技能与本地执行能力，以商业质量下完整有效交付时间选择最短可行路径"
+  default_prompt: "使用 $ai-organization-capability-entry，复用现有能力，以商业质量下最短完整有效时间完成我的任务。"
