@@ -1,0 +1,20 @@
+{
+  "TASK_ID": "AIORG-CAPABILITY-20261024-001",
+  "NODE_ID": "N000",
+  "NODE_VERSION": "V1",
+  "STATUS": "PARTIAL_COMMITTED",
+  "RESULT": "Unified capability entry V1.0 inherits AIORG V3.1.2 candidate",
+  "CONFIRMED": [
+    "Skill schema validation",
+    "Three independent read-only routing scenarios reviewed",
+    "Four Windows mirror files written and read back",
+    "Full four-file source committed in primary GitHub workspace"
+  ],
+  "PRIMARY_ENTRY": "tasks/AIORG-CAPABILITY-20261024-001/capability-entry/SKILL.md",
+  "LOCAL_ENTRY": "C:\\AI\\AIORG-Capability-Entry-V1.0-20261024\\SKILL.md",
+  "SKILLS_AUTO_INSTALL": "NOT_CONFIRMED_PUSH_TIMEOUT",
+  "FULL_BUSINESS_CERTIFICATION": "NOT_CLAIMED",
+  "T_VALID": "NOT_MEASURED",
+  "NEXT_ACTION": "Confirm or retry native Skills publication from preserved entry; use primary GitHub entry meanwhile",
+  "ORIGINAL_AI_ORG_TASK": "AIORG-20261024-004 remains separate; do not alter N004 or INC-002"
+}
