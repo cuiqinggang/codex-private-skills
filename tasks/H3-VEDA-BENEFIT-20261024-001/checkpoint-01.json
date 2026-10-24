@@ -1,0 +1,39 @@
+{
+  "task_id": "H3-VEDA-BENEFIT-20261024-001",
+  "status": "REAL_TRIAL_RUNNING",
+  "windows_workspace": "C:\\AI\\H3-VEDA-Trial-20261024",
+  "baseline": "V4.1.0 A2 20step FBC Safe",
+  "candidate": "same workflow plus Star7 VEDA SM75 90% generated/reference sparsity",
+  "contract": {
+    "width": 1024,
+    "height": 576,
+    "frames": 5,
+    "steps": 20,
+    "paired_seeds": [
+      3014,
+      3015,
+      3016
+    ],
+    "warmup_seed": 3013
+  },
+  "completed": [
+    {
+      "arm": "W",
+      "seconds": 275.203
+    },
+    {
+      "arm": "A",
+      "seed": 3014,
+      "seconds": 153.797
+    }
+  ],
+  "next": "Read existing results.json and per-run history; do not resubmit or restart GPU trial",
+  "route": {
+    "version": "V12.0.1",
+    "active": "A Remote Desktop Commander",
+    "device_id": "f6990966-5870-484b-bf79-409bc6fb963e",
+    "incident": "Initial use of old mapping corrected; GPT-Windows-MCP-Bridge is B and timed out"
+  },
+  "adoption": "NOT_VERIFIED",
+  "T_VALID": null
+}
