@@ -39,5 +39,18 @@
   "candidate_release_version": "V3.1.2",
   "release_note": "tasks/AIORG-20261024-004/RELEASE-V3.1.2-CANDIDATE.md",
   "release_state": "CANDIDATE_SNAPSHOT_NOT_TASK_COMPLETE",
-  "local_release_sync": "INDEX_ONLY_FULL_TEXT_BLOCKED"
+  "local_release_sync": "INDEX_ONLY_FULL_TEXT_BLOCKED",
+  "n004_live_ab": {
+    "status": "CONFIRMED_PARTIAL",
+    "a_checks": "13/13 PASS",
+    "b_checks": "13/13 PASS",
+    "a_qualified_run_ms": 114308,
+    "b_qualified_run_ms": 100409,
+    "report": "tasks/AIORG-20261024-004/N004-TYMESLOT-REAL-AB-20261024-R1.md",
+    "unverified": [
+      "reschedule lifecycle",
+      "real GPT page handoff",
+      "whole task T_VALID"
+    ]
+  }
 }
