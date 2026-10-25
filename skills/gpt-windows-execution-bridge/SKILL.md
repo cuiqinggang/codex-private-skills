@@ -1,14 +1,50 @@
 ---
 name: gpt-windows-execution-bridge
-description: Windows 执行桥 V12.0。A=Remote Desktop Commander（默认）；B=GPT-Windows-MCP-Bridge（A确认失败才用）；C=GitHub Actions Windows Runner（A、B确认失败才用）。
+description: Windows 执行桥 V12.0.3，处理所有用户 Windows 本机文件、命令、Docker、ComfyUI、视频、DSH 和任务恢复的执行通道选择。每个 Windows 本机任务都必须在首次工具调用前读取本技能并默认走 A，无需用户重复提醒；用户提到三人行、轻量状态持久化、执行桥V12、A优先或误走B时也使用。A=Remote Desktop Commander；B=GPT-Windows-MCP-Bridge；C=GitHub Actions Windows Runner。不得沿用旧版字母映射。
 ---
-# Windows 执行桥 V12.0 — 唯一正式入口
 
-**只记一条：A → B → C；能走 A 就绝不先走 B 或 C。**
+# Windows 执行桥 V12.0.3
 
-- **A**：`mcp__Remote_Desktop_Commander__`（原 V11 的 C）；先 `list_devices` 动态找在线设备，再运行无副作用测试，PASS 即锁定 A。
-- **B**：`mcp__GPT_Windows_MCP_Bridge__`（原 V11 的 A）；仅 A 重查及复验都确定 FAIL、有证据、业务执行结果已查清时启用。
-- **C**：GitHub Actions → Windows Runner（原 V11 的 B）；仅 A、B 都确定 FAIL 后启用。
-- **UNKNOWN**：先查证、不得误判或盲目重发；页面断线与业务脚本失败不等于 A 故障。
+## 强制前置门：每个 Windows 本机任务，无需用户重复提醒
 
-具体规则：`v12-abc-routing.md`；脚本：`route_v12.py`。V11 的 `guard_route.py` 为历史旧字母门禁，**V12 禁止调用**。旧版历史文件不改动。不可声称本地规则能物理拦截未接入的原生工具；不修改代理或系统配置。
+1. 在调用任何 Windows 本机工具之前，先读取本 SKILL.md 与当前路由规则。
+2. 首个执行入口必须是 A：动态调用 Remote Desktop Commander 的 list_devices，选择在线设备，再执行无副作用探针。
+3. A 探针成功后，本任务全程继续使用 A；不得因为 B 工具更显眼、已被检索到、或用户没有再次写出“A优先”而切换到 B。
+4. 只有 A 初测失败、重新发现设备后限一次复验仍失败、且执行状态已核清，才允许切 B；C 还需 B 同样满足降级条件。
+5. 若已误走 B，停止继续调用 B，先回到 A 核对已执行结果与当前状态；不得盲目重复有副作用的操作。
+6. 每个 Windows 任务在开始时记录本任务的路由证据；无 A 失败证据时，B/C 一律不允许作为入口。
+
+以上是默认规则，不依赖用户在每条消息中重复提示。它是技能级前置门，不声称能物理拦截未读取本技能的其他 GPT 页面原生工具调用。
+
+先落实用户已授权的任务；采用 A → B → C，不把业务错误当成通道错误。
+
+| 通道 | 唯一入口 | 使用条件 |
+|---|---|---|
+| A 默认 | Remote Desktop Commander，工具名包含 remote_desktop_commander | 每个新任务先动态 list_devices，选在线设备，做无副作用探针；PASS 即继续使用 A |
+| B 备用 | GPT-Windows-MCP-Bridge，工具名包含 gpt_windows_mcp_bridge | A 初测失败，重新发现在线设备并复验仍失败，保存证据且业务执行结果已查清后才用 |
+| C 末级备用 | GitHub Actions → Windows 自托管 Runner | A、B 均满足上述失败证据条件后才用 |
+
+## 首次调用与续跑
+
+1. Windows 的文件读取、目录查看、命令、进程输出和写入都属于通道调用；不得为读取本机规则先走 B。先发现 A 工具并调用 list_devices。
+2. 用 A 执行无副作用命令（例如 `cmd.exe /d /c echo V12_A_PROBE_PASS`）或读取已知小文件。锁定本任务已验证的在线设备，不采用历史离线 ID。
+3. A PASS 后只用 A 继续；不因 B 名称像 Windows、旧聊天自称 A、历史路径含 Bridge-B、或 B 工具先被检索到就选择 B。
+4. A 初测异常时重新 list_devices，限一次无副作用复验。记下工具、设备、时间、错误；单次超时为 UNKNOWN，不是自动降级许可。
+5. 可能已经执行的写入、预约、启动命令须先读回核账，禁止换通道重发。Docker/业务脚本/浏览器报错不证明 MCP 断线。
+6. 降级前输出可核验的依据：A 两次失败及重新发现结果、业务已执行/未执行状态；转 C 还需 B 的同类证据。没有依据不得先 B。
+7. 接续已有任务时先继承成果；若本页历史已误走 B，确认执行结果后返回 A，保留故障记录，不重做已确认业务。
+
+## 版本与边界
+
+V11 的 C 对应当前 A；V11 的 A 对应当前 B；V11 的 B 对应当前 C。旧版字母表和 guard_route.py 只用于历史追溯，不指导 V12。
+
+本技能是可发现的执行规则，不是对原生工具的物理拦截器。现成 route_v12.py 只有调用方接入才检查，不声称修改本技能会立即改变其他已经运行中的 GPT 页面。不禁用 B，不改代理、FlClash、密钥、隧道或系统设置。
+
+需要核查 2026-10-24 发布证据时读取 [通道故障记录](references/routing-incident-20261024.md)；需要核查本次未先走 A 的路由偏差时读取 [2026-10-25 路由故障与修复](references/routing-incident-20261025.md)。
+
+
+## V12.0.3 补丁｜强制路由条件与边界（2026-10-25）
+- 当前执行桥的唯一允许决策：每次 Windows 动作先基于当前任务已验证 A 通道；A PASS 或 RUNNING/UNKNOWN，一律禁止选择 B/C。B 仅在 A 首检失败、重发现后复验失败及副作用已对账时启用；C 同时需要 B 以同样方式失败。无凭据默认拒绝降级（fail closed）。
+- 对可控的本地执行包装器必须在实际调度之前执行 route_v12.py 判定，DENY 或程序失败时停止工具调度。该约束不能被仅写在技能文件里就变成 ChatGPT 原生工具调用层的物理拦截。
+- 已验证的问题是其他页面可能绕开包装器直接调用 B；要实现跨页面不可绕过，必须让所有 Windows 工具只通过宿主/平台受控路由器暴露，或在 MCP 服务端设置统一策略；在未完成该部署及真实违规调用阻断验收前，不得宣称已经全局根治。
+- 本版不得停用 B/C、改代理或改动业务服务。真实 A 探针及静态模拟测试分别标识，不得把模拟 FAIL 当成真正通道失效。原 V12.0.2 配方、工具映射及恢复机制保留。
