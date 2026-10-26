@@ -87,6 +87,33 @@ DETERMINISTIC_READINESS_BUG
 
 ## 默认停止条件
 
+## C. React #185 / Maximum update depth
+
+```text
+React185
+  -> 确认 active version / active renderer bundle
+  -> 保存原始完整 stack 与附近 shell/renderer logs
+  -> 是否指向 ResizeObserver / TranscriptProjectionView？
+       -> 否：依据真实 stack 重新分类，不强套本案例
+       -> 是：执行一轮有界受控复现
+            -> 不能复现：
+                 保持成功态
+                 保留静态候选
+                 不打补丁
+            -> 可以复现：
+                 检查 revision burst
+                 检查 beginAnchorRestore reentrant
+                 检查 forceRender reentrant
+                 检查 geometry oscillation
+                 证明 setter -> render/layout -> same target resize
+                 -> 闭环未成立：不打补丁
+                 -> 闭环成立：进入 patch review
+```
+
+已记录的 v1.38.7 M-build 案例 A-I 9/9 PASS，React #185 未复现；TranscriptProjectionView 链仅是候选，不是已确认根因。
+
+## 默认停止条件
+
 以下操作必须有明确证据与批准：
 
 - 重装；
