@@ -1,0 +1,13 @@
+interface:
+  display_name: AI 化组织 V4.2
+  short_description: 默认GPT直达成熟能力，Windows收费A优先与本地批量，统一验收和恢复
+  default_prompt: 使用 $ai-organization-v4-2 完成我的任务：先复用成熟能力，以相同质量下完整有效交付时间最短为目标，涉及Windows先加载执行桥V12.0.4，收费A优先并安全本地批量，连续执行并验收交付。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
