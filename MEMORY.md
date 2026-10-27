@@ -2,13 +2,13 @@
 
 使用入口：[经验大脑技能](skills/reuse-experience-brain/SKILL.md)。
 日常入口：[经验索引](skills/reuse-experience-brain/references/INDEX.md)。
-[原记忆继承映射](skills/reuse-experience-brain/references/INHERITANCE.md)及[9份旧日报原路径和校验值](skills/reuse-experience-brain/references/INHERITANCE.json)。
+[原记忆继承映射](skills/reuse-experience-brain/references/INHERITANCE.md)及[10份日报原路径和校验值](skills/reuse-experience-brain/references/INHERITANCE.json)。
 
 | 要读什么 | 放在哪里 | 如何继承 |
 |---|---|---|
 | 原执行方法 | skills/artificial-single-page-extreme-time-engine/BRAIN.md，第25版 | 原位引用，不替换 |
-| 成熟经验/失败经验 | skills/reuse-experience-brain/references/ | 从原始回执脱敏提炼，带触发/边界/证据；本次6卡 |
-| 原始日报和项目材料 | 原C盘Vault的01_DAILY及原项目目录 | 保留原位；9份登记，4份正文读取；不是全量已迁移 |
+| 成熟经验/失败经验 | skills/reuse-experience-brain/references/ | 从原始回执脱敏提炼，带触发/边界/证据；现有10卡（首批6卡＋本日4卡） |
+| 原始日报和项目材料 | 原C盘Vault的01_DAILY及原项目目录 | 保留原位；10份登记、5份正文读取（其中10月27日日报本轮新增）；不是全量已迁移 |
 | 专业技能与当前状态 | 各专业SKILL、CURRENT、Freeze、RESULT | 原来源保持权威；历史经验不能覆盖新状态 |
 | 新任务调用 | skills/ai-organization-v4-2/SKILL.md步骤2 | 默认先读相关经验再执行，使用后留原任务最小回执 |
 | 每日积累 | 原“每日21点决策与经验大脑复盘” | 去重→更新共享卡片/索引→远端回读；不另建定时任务 |
