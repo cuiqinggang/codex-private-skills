@@ -1,0 +1,4 @@
+interface:
+  display_name: "经验大脑：继承与复用"
+  short_description: "跨页面读取共同工作区经验，继承旧记忆并验证实际复用效果"
+  default_prompt: "使用 $reuse-experience-brain 读取共同工作区相关经验，核对当前合同后执行，并记录采用或拒绝的结果。"
