@@ -10,6 +10,10 @@
 | EXP-VEDA-001 | H3、VEDA、SM75、5帧、水平错块 | [VEDA.md](VEDA.md) |
 | EXP-HARNESS-001 | LongHorizon、0.1.8、Windows、killpg | [HARNESS.md](HARNESS.md) |
 | EXP-HTTP-001 | Tymeslot、302、登录重定向、健康探针 | [HTTP-REDIRECT.md](HTTP-REDIRECT.md) |
+| EXP-DOCKER-001 | Docker、Starting Engine、WSL bootstrap、下次登录、旧PASS | [DOCKER-STARTUP.md](DOCKER-STARTUP.md) |
+| EXP-H3-REPLAY-001 | H3、厨房、124帧、同种子、热态复现、图生视频 | [H3-REPLAY.md](H3-REPLAY.md) |
+| EXP-VIDEO-AB-001 | 视频A/B、Canvas、FFmpeg、yuvj420p、颜色范围、JPEG优化 | [VIDEO-AB.md](VIDEO-AB.md) |
+| EXP-PAYPAL-001 | PayPal中国个人卖家、AI服务、MCC、跨境收款授权 | [PAYPAL-ELIGIBILITY.md](PAYPAL-ELIGIBILITY.md) |
 
-旧资料的继承范围与9份日报校验：[INHERITANCE.md](INHERITANCE.md)、[INHERITANCE.json](INHERITANCE.json)。
+旧资料的继承范围与原日报校验：[INHERITANCE.md](INHERITANCE.md)、[INHERITANCE.json](INHERITANCE.json)。
 新增只更新相关卡片及该行；重复事实按来源事件ID去重，保留旧版本与反例。当前没有证据支持的新问题必须明确无命中。
