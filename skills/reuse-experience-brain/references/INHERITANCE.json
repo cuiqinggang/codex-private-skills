@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "date": "2026-10-27",
+  "repository": "cuiqinggang/codex-private-skills",
+  "method_brain": {
+    "path": "skills/artificial-single-page-extreme-time-engine/BRAIN.md",
+    "version": 25,
+    "blob_sha": "d2300549634c6903985dc58c4494c98f4174f5d2",
+    "action": "referenced_unchanged"
+  },
+  "daily_source_registry": [
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-16-DSE-INCREMENTAL.md",
+      "sha256": "f06e7aae017b49231cf74a72e6b699aff53ece85576b25d56985911e4d586f5b",
+      "bytes": 4470,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-17-DSE-INCREMENTAL.md",
+      "sha256": "8e7ca6295cfda7afc48e7b630b5e5b81657ded0fa22f9cd92734ed41f409879a",
+      "bytes": 5728,
+      "content_read": false,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-18-DSE-INCREMENTAL.md",
+      "sha256": "ba4087c5cc8a652a8cc9956da45cf0ebfda36d2c9558266de5193d5c4c1742db",
+      "bytes": 6007,
+      "content_read": false,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-21-DSE-INCREMENTAL.md",
+      "sha256": "3a901c1aed8cd45f6e6e5b8434030afb0ec821636ab9d1f6ce212a39a444c617",
+      "bytes": 8613,
+      "content_read": false,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-22-DSE-INCREMENTAL.md",
+      "sha256": "c8924ca428adbc35468846c555806dcc8692ed7c3313dbbdc7c4e118ae7663c8",
+      "bytes": 8527,
+      "content_read": false,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-23-DSE-INCREMENTAL.md",
+      "sha256": "7f0e269de6ae9af9c3b2e4a8b57da9c10cd30ee6317d8d1921f4e62248b6cdbb",
+      "bytes": 9097,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-24-DSE-INCREMENTAL.md",
+      "sha256": "b062e20edbf24cb51fb11e46ae65757e86e2b12362f81184dba9eaa55b1e1322",
+      "bytes": 8301,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-25-DSE-INCREMENTAL.md",
+      "sha256": "409466803ed24cad768b7fcb935748b4efa99c218f89dbfc7206cf732875c29b",
+      "bytes": 9158,
+      "content_read": false,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-26-DSE-INCREMENTAL.md",
+      "sha256": "d2fb92573afa1d802492a990bb107c9857a9b521c3c4e40d2ef7b24bc8fbcd33",
+      "bytes": 9850,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
+    }
+  ],
+  "limits": "9 daily files byte-hashed; 4 contents read in this conversation; only 6 cards distilled; not full-history migration"
+}
