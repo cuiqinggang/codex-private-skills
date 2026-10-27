@@ -1,0 +1,15 @@
+{
+  "task_id": "MEMORY-SHARED-20261027-001",
+  "date": "2026-10-27",
+  "memory_id": "EXP-STRIPE-001",
+  "memory_version": "V1",
+  "adopt_or_reject": "adopt",
+  "changed_action": "Use previously verified source double-layer compositing instead of inventing a gradient; preserve first-screen-only verification scope",
+  "result": "Fresh context retrieved precise parameters and limits from four online files without Windows access",
+  "evidence": [
+    "skills/reuse-experience-brain/references/STRIPE.md",
+    "workspaces/experience-brain/LOOKUP-ACCEPTANCE-20261027.md"
+  ],
+  "time_scope": "read-only historical recall; not business execution",
+  "T_VALID_FULL_TASK": "NOT_MEASURED"
+}
