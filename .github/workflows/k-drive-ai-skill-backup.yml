@@ -1,0 +1,150 @@
+name: K-drive AI Skill Source Backup
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/k-drive-ai-skill-backup.yml'
+  workflow_dispatch:
+  schedule:
+    # Every 3 days is enforced inside the job, anchored on 2026-10-27 (Asia/Shanghai).
+    - cron: '0 0 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: k-drive-ai-skill-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 30
+    steps:
+      - name: Check three-day schedule gate
+        id: gate
+        shell: pwsh
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          $ErrorActionPreference='Stop'
+          $tz=[TimeZoneInfo]::FindSystemTimeZoneById('China Standard Time')
+          $local=[TimeZoneInfo]::ConvertTimeFromUtc([DateTime]::UtcNow,$tz)
+          $days=($local.Date-[datetime]'2026-10-27').Days
+          if($env:EVENT_NAME -eq 'schedule' -and ($days % 3) -ne 0) {
+            'run=false' | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+            Write-Host 'BACKUP_SKIPPED_NOT_THREE_DAY_SLOT'
+          } else {
+            'run=true' | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+            Write-Host ('BACKUP_SLOT='+$local.ToString('yyyy-MM-dd'))
+          }
+
+      - name: Checkout pinned latest main, only the three skill directories
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout: |
+            skills/artificial-single-page-extreme-time-engine
+            skills/extreme-time-automation-bridge
+            skills/n8n-multi-agent-operations-control-plane
+
+      - name: Validate manifest, create and verify K-drive ZIP, replace atomically
+        if: steps.gate.outputs.run == 'true'
+        shell: pwsh
+        env:
+          EXPECTED_COMMIT: ${{ github.sha }}
+          SOURCE_REPOSITORY: ${{ github.repository }}
+        run: |
+          $ErrorActionPreference='Stop'
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+          $actual=(& git rev-parse HEAD).Trim()
+          if($LASTEXITCODE -ne 0 -or $actual -ne $env:EXPECTED_COMMIT) { throw "COMMIT_MISMATCH" }
+          if($env:SOURCE_REPOSITORY -ne 'cuiqinggang/codex-private-skills') { throw "REPOSITORY_MISMATCH" }
+          $latest=(& git ls-remote origin refs/heads/main)
+          if($LASTEXITCODE -ne 0) { throw 'LATEST_MAIN_QUERY_FAILED' }
+          $remoteHead=($latest -split '\s+')[0]
+          if($remoteHead -ne $actual) { throw "STALE_MAIN_ABORTED" }
+          $dirs=@(
+            'skills/artificial-single-page-extreme-time-engine',
+            'skills/extreme-time-automation-bridge',
+            'skills/n8n-multi-agent-operations-control-plane'
+          )
+          foreach($dir in $dirs) { if(-not (Test-Path -LiteralPath $dir -PathType Container)) {throw "SOURCE_DIR_MISSING"} }
+          $must=@(
+            'skills/artificial-single-page-extreme-time-engine/SKILL.md',
+            'skills/artificial-single-page-extreme-time-engine/START_HERE.md',
+            'skills/artificial-single-page-extreme-time-engine/routes/A/ROUTE.md',
+            'skills/artificial-single-page-extreme-time-engine/routes/B/ROUTE.md',
+            'skills/extreme-time-automation-bridge/SKILL.md',
+            'skills/n8n-multi-agent-operations-control-plane/SKILL.md'
+          )
+          foreach($f in $must) { if(-not (Test-Path -LiteralPath $f -PathType Leaf)) { throw 'CRITICAL_FILE_MISSING' } }
+          $tracked=@(& git ls-files -- $dirs)
+          if($LASTEXITCODE -ne 0 -or $tracked.Count -lt $must.Count) {throw 'SOURCE_INDEX_INVALID'}
+          if($tracked | Where-Object {$_ -match '(^|/)(\.env($|\.)|id_rsa$|credentials?\.json$|token\.json$|secrets?\.json$)' -or $_ -match '\.(pem|p12|pfx|key|kdbx|sqlite3?|db)$'}) {
+            throw 'SENSITIVE_FILENAME_DETECTED_NO_BACKUP'
+          }
+          if(-not (Test-Path 'K:\' -PathType Container)) { throw 'K_DRIVE_UNAVAILABLE' }
+          $dest='K:\自动化单页面极限短时间引擎-最新备份.zip'
+          $candidate=('K:\.AI_SKILL_BACKUP_'+$env:GITHUB_RUN_ID+'.new.zip')
+          $stage=Join-Path $env:RUNNER_TEMP ('KDrive-AISkill-Stage-'+$env:GITHUB_RUN_ID)
+          if(Test-Path -LiteralPath $stage){throw 'STAGE_COLLISION'}
+          $outcome=$false
+          try {
+            New-Item -ItemType Directory -Force -Path (Join-Path $stage 'skills') | Out-Null
+            foreach($dir in $dirs) {
+              Copy-Item -LiteralPath $dir -Destination (Join-Path $stage 'skills') -Recurse -Force -ErrorAction Stop
+            }
+            $index=@()
+            foreach($file in $tracked) {
+              $rel=$file.Replace('/','\')
+              $actualFile=Join-Path $stage $rel
+              if(-not (Test-Path -LiteralPath $actualFile -PathType Leaf)){throw 'TRACKED_FILE_MISSING_IN_STAGE'}
+              $hash=(Get-FileHash -LiteralPath $actualFile -Algorithm SHA256).Hash.ToLowerInvariant()
+              $index+=($hash+'  '+$file)
+            }
+            $manifest=@(
+              'BACKUP_TYPE=GITHUB_TRACKED_SKILL_SOURCES',
+              'REPOSITORY=cuiqinggang/codex-private-skills',
+              'REF=refs/heads/main',
+              ('COMMIT='+$actual),
+              ('CREATED_UTC='+[DateTime]::UtcNow.ToString('o')),
+              ('TRACKED_SOURCE_FILE_COUNT='+$tracked.Count),
+              ('DIRS='+($dirs -join ';')),
+              'SCOPE=Three skill directories and source commit/index only',
+              'EXCLUDES=Credentials; live browser state; databases; tokens; n8n runtime'
+            )
+            [IO.File]::WriteAllLines((Join-Path $stage 'BACKUP_MANIFEST.txt'),$manifest,[Text.Encoding]::UTF8)
+            [IO.File]::WriteAllLines((Join-Path $stage 'FILES_SHA256.txt'),$index,[Text.Encoding]::UTF8)
+            if(Test-Path -LiteralPath $candidate){throw 'CANDIDATE_EXISTS_ABORT'}
+            [IO.Compression.ZipFile]::CreateFromDirectory($stage,$candidate,[IO.Compression.CompressionLevel]::Optimal,$false,[Text.Encoding]::UTF8)
+            $z=[IO.Compression.ZipFile]::OpenRead($candidate)
+            try {
+              $entries=@($z.Entries | ForEach-Object {$_.FullName.Replace('\','/')})
+              $required=@($must)+@('BACKUP_MANIFEST.txt','FILES_SHA256.txt')
+              $missing=@($required | Where-Object {$_ -notin $entries})
+              if($missing.Count -gt 0) {throw 'ZIP_REQUIRED_ENTRY_MISSING'}
+              foreach($file in $tracked) { if($file -notin $entries){throw 'ZIP_TRACKED_ENTRY_MISSING'} }
+              if($entries.Count -lt ($tracked.Count + 2)) {throw 'ZIP_ENTRY_COUNT_MISMATCH'}
+            } finally {$z.Dispose()}
+            $size=(Get-Item -LiteralPath $candidate).Length
+            if($size -le 0){throw 'ZIP_ZERO_BYTES'}
+            $before=(Get-FileHash -LiteralPath $candidate -Algorithm SHA256).Hash
+            $latestAgain=(& git ls-remote origin refs/heads/main)
+            if($LASTEXITCODE -ne 0 -or ($latestAgain -split '\s+')[0] -ne $actual) {throw 'MAIN_MOVED_BEFORE_REPLACE'}
+            if(Test-Path -LiteralPath $dest -PathType Leaf) {
+              [IO.File]::Replace($candidate,$dest,$null)
+            } else {
+              [IO.File]::Move($candidate,$dest)
+            }
+            $after=(Get-FileHash -LiteralPath $dest -Algorithm SHA256).Hash
+            if($before -ne $after) {throw 'POST_RENAME_HASH_MISMATCH'}
+            $outcome=$true
+            Write-Host ('BACKUP_VERIFIED_PASS;SOURCE_COMMIT='+$actual+';SIZE_BYTES='+$size+';FILE_COUNT='+$tracked.Count+';ZIP_ENTRIES='+$entries.Count+';SHA256='+$after)
+            Write-Host ('DESTINATION='+$dest)
+          } finally {
+            if(-not $outcome -and (Test-Path -LiteralPath $candidate)){Remove-Item -LiteralPath $candidate -Force -ErrorAction SilentlyContinue}
+            if(Test-Path -LiteralPath $stage){Remove-Item -LiteralPath $stage -Recurse -Force -ErrorAction SilentlyContinue}
+          }
