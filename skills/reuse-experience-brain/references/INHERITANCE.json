@@ -80,7 +80,41 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-27-DSE-INCREMENTAL.md",
+      "sha256": "584b721a86201dcb9068b8ff7d75e493d8bb50d7757fe92929e8e7abc14dbc32",
+      "bytes": 11975,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "9 daily files byte-hashed; 4 contents read in this conversation; only 6 cards distilled; not full-history migration"
+  "limits": "10 daily files byte-hashed; 5 original contents read across the recorded 2026-10-27 evidence workflow; 10 selected cards including 4 dated Oct 27; incomplete historical distillation, no migration of original Vault",
+  "incremental_case_sources_20261027": [
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261027\\deployment-result.json",
+      "content_read": true,
+      "evidence_scope": "warm recovery only; next login pending"
+    },
+    {
+      "experience_id": "EXP-H3-REPLAY-001",
+      "path": "C:\\AI\\H3-R5-Exact-Replay-20261027\\delivery\\replay_report.md",
+      "content_read": true,
+      "evidence_scope": "same-reference image-to-video replay only"
+    },
+    {
+      "experience_id": "EXP-VIDEO-AB-001",
+      "path": "C:\\AI\\Video-AB-20261027-001\\delivery\\result.json",
+      "content_read": true,
+      "evidence_scope": "local render timing and media QA only"
+    },
+    {
+      "experience_id": "EXP-PAYPAL-001",
+      "path": "C:\\AI\\AI-OnePerson-GoGlobal-Pool-V1.0-20261022\\PAYPAL-CN-INDIVIDUAL-SELLER-20261027.md",
+      "content_read": true,
+      "evidence_scope": "research only; merchant authorization not verified"
+    }
+  ]
 }
