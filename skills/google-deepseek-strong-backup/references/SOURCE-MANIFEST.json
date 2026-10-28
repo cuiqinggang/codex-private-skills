@@ -4,7 +4,7 @@
   "files": [
     {
       "source": "skills/ai-organization-v4-2/SKILL.md",
-      "bundled_path": "references/upstream/ai-organization-v4-2/SKILL.md",
+      "bundled_path": "references/upstream/ai-organization-v4-2/ENTRY.md",
       "git_blob_sha": "4b4f59f658f59bf45b1f8c352dc2ab6409efb8e6"
     },
     {
@@ -49,7 +49,7 @@
     },
     {
       "source": "skills/reuse-experience-brain/SKILL.md",
-      "bundled_path": "references/upstream/reuse-experience-brain/SKILL.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/ENTRY.md",
       "git_blob_sha": "597b879178ca30bf3ce69e0bacf2a4f7b8f2e1ff"
     },
     {

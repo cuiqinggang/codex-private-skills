@@ -36,7 +36,10 @@ def install(skills, apply=False, desktop=False):
         for p in sorted(src.rglob("*")):
             if not p.is_file() or "__pycache__" in p.parts or p.suffix == ".pyc":
                 continue
-            out = dst / p.relative_to(src)
+            relative = p.relative_to(src)
+            if not own and relative.as_posix() == "ENTRY.md":
+                relative = Path("SKILL.md")
+            out = dst / relative
             same = out.is_file() and sha(p) == sha(out)
             if same:
                 continue
