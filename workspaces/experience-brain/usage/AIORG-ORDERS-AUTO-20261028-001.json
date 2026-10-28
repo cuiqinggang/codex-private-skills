@@ -1,0 +1,73 @@
+{
+  "task_id": "AIORG-ORDERS-AUTO-20261028-001",
+  "date": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "method": "AIORG V4.2 frozen unchanged",
+  "backup": "GSB V1.6 unchanged",
+  "application_version": "order-automation-1.1",
+  "status": "ACCEPTED_SCOPED_ORDER_AUTOMATION",
+  "memory_id": "EXP-GSB-001",
+  "memory_version": "V1",
+  "decision": "adopt",
+  "reason": "Use host native-call evidence, preserve original counts and independently validate real files; do not infer all-capability equality.",
+  "changed_action": [
+    "Reused original order generator, independent checker and continuity library.",
+    "Preserved initial failed intake receipts and measured setup/recovery costs.",
+    "Selected fresh-process deterministic recovery before an avoidable DSH agent run.",
+    "Corrected explicit native skill call coverage through same-session read-only continuation; original business count remains four.",
+    "Added a pre-generation gate requiring actual completed native skill calls on the model backup route."
+  ],
+  "result": {
+    "input_scope": "Existing 48-row acceptance fixture, not new customer orders",
+    "row_count": 48,
+    "total_cents": 178418,
+    "deliverables": 4,
+    "independent_qa": "20/20 per completed business case",
+    "original_acceptance_groups": 7,
+    "delta_recovery": "PASS",
+    "normal_successful_attempt_seconds": 7.4025790999876335,
+    "selected_local_recovery_seconds": 5.050587199977599,
+    "original_actual_DSH_backup_seconds": 317.523595299921,
+    "checkpoint_resume_seconds": 2.3863874999806285,
+    "ack_reconciliation_seconds": 1.6884024000028148,
+    "confirmed_local_replay_seconds": 0.0017770000267773867,
+    "local_recovery_model_runs": 0,
+    "human_interventions_during_jobs": 0,
+    "original_DSH_explicit_skill_calls": 4,
+    "launcher_auto_entry": "/dsh-mature-capabilities; not counted as an extra tool call",
+    "same_session_read_only_completion": "Five explicit native skill receipts now available; no business artifacts regenerated.",
+    "frozen_upstream_dependencies_unchanged": true,
+    "unrelated_workflow_definitions_unchanged": true,
+    "full_user_task_T_VALID": "NOT_MEASURED",
+    "observed_build_to_report_seconds": 4192.226488,
+    "total_monetary_cost": "NOT_MEASURED; provider billing, power and labor allocation unavailable"
+  },
+  "evidence": {
+    "windows_workspace": "C:\\Users\\A\\Documents\\DSH-Workspace\\aiorg-orders-auto-20261028",
+    "receipts": [
+      "N003-REALITY.json",
+      "N005-FINAL-AUDIT.json",
+      "N006-METHOD-CORRECTION.json",
+      "N007-SIMPLIFIED-RECOVERY.json",
+      "N008-RELEASE.json"
+    ],
+    "package_library_file_id": "libfile_a63d8c12f7248191a4e7c9bebeef6c69",
+    "package_url": "https://chatgpt.com/library?file_id=libfile_a63d8c12f7248191a4e7c9bebeef6c69&account_id=personal",
+    "package_sha256": "f52f2fbaa0577497cb1b43dc5f4971a9be8117ad58cb17f9d868ac3fc313d6bc"
+  },
+  "candidates_for_original_21h_review": [
+    "Imported n8n webhook definitions must retain native webhookId, and application readiness must include actual trigger registration.",
+    "Do not replace the original submission error with a later receipt-read 404.",
+    "Known deterministic recovery should be evaluated before paid model startup; separate nested generation, agent, and end-to-end timings.",
+    "Preserve model-internal reasoning in the local original logs; export only sanitized tool receipts and usage.",
+    "Never present a successful-attempt duration as the full first-delivery or implementation duration."
+  ],
+  "limits": [
+    "Single fixed CSV contract and isolated fault cases only.",
+    "No real customer delivery, OS reboot/power-loss or multi-day availability certification.",
+    "Composed local-recovery-failure followed by DSH rescue not separately run end to end.",
+    "No proof of global minimum time or cost."
+  ],
+  "promotion": "CASE_CANDIDATE_ONLY_NOT_FROZEN_RULE",
+  "finished_at_local": "2026-10-28"
+}
