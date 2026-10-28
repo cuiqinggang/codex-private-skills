@@ -1,0 +1,17 @@
+{
+  "task_id": "AIORG-V42-N001-RENTAL-20261028",
+  "date": "2026-10-28",
+  "memory_id": "EXP-HTTP-001",
+  "memory_version": "V1",
+  "adopt_or_reject": "adopt",
+  "reason": "HTTP status and expected redirect indicate access behavior, not the six rental business acceptance criteria.",
+  "changed_action": "Kept health/redirect probe separate from stock, rental order, deposit, late-charge, concurrency and populated-data recovery tests; recorded NOT_VALID rather than treating availability as delivery.",
+  "result": "Read-only 20:30 audit reported NOT_VALID and did not re-run business operations; original browser ownership preserved.",
+  "evidence": [
+    "C:\\AI\\Rental-N001-20261028\\evidence\\resume-audit-20261028.json",
+    "skills/reuse-experience-brain/references/HTTP-REDIRECT.md",
+    "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_META\\MEMORY-REUSE-LOG.md"
+  ],
+  "time_scope": "2026-10-28 20:30:19+08:00 read-only project audit; not full rental delivery timing",
+  "T_VALID_FULL_TASK": "NOT_MEASURED"
+}
