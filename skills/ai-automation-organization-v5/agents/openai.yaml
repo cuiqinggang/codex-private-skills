@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI 自动化组织 V5"
+  short_description: "统一主备执行与独立验收，以完整有效时间交付真实商业业务结果"
+  default_prompt: "使用 $ai-automation-organization-v5 按合同交付任务，沿用成熟流程与谷深强备 V1.6，保存成品、验收与完整时间。"
