@@ -32,6 +32,8 @@ description: "读取和积累共同工作区的经验大脑。用户提到长期
 - [H3历史精确复现](references/H3-REPLAY.md)
 - [视频A/B编码契约](references/VIDEO-AB.md)
 - [PayPal账户与收款资质](references/PAYPAL-ELIGIBILITY.md)
+- [谷深强备V1.6宿主审计](references/GSB-V16.md)
+- [租赁开源复用有效性门禁](references/RENTAL-REUSE.md)
 - [Codex分层故障](references/CODEX.md)
 - [Stripe来源叠色](references/STRIPE.md)
 - [CalDAV取消缓存](references/CALDAV.md)
