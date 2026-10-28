@@ -88,9 +88,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-28-DSE-INCREMENTAL.md",
+      "sha256": "3c85b235dee7e4a4b3acfb9cd9b6bab18acdc78d5311f6d1cf1ce5073d8544c6",
+      "bytes": 8611,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "10 daily files byte-hashed; 5 original contents read across the recorded 2026-10-27 evidence workflow; 10 selected cards including 4 dated Oct 27; incomplete historical distillation, no migration of original Vault",
+  "limits": "11 daily files byte-hashed; 6 original contents read through 2026-10-28; 12 selected cards (10 prior + 2 Oct 28); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -115,6 +123,32 @@
       "path": "C:\\AI\\AI-OnePerson-GoGlobal-Pool-V1.0-20261022\\PAYPAL-CN-INDIVIDUAL-SELLER-20261027.md",
       "content_read": true,
       "evidence_scope": "research only; merchant authorization not verified"
+    }
+  ],
+  "incremental_case_sources_20261028": [
+    {
+      "experience_id": "EXP-GSB-001",
+      "path": "C:\\AI\\DeepSeek-Gemini-Failsafe\\V1.6-AIORG-20261028\\UPGRADE-ACCEPTANCE.md",
+      "content_read": true,
+      "evidence_scope": "5 native skills, 48-row independent business content QA, 20/20; no generalized unattended/reboot certification"
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\startup.jsonl",
+      "content_read": true,
+      "evidence_scope": "Oct 28 WSL prewarm failure and 19:25 controlled recovery, not next-login certification"
+    },
+    {
+      "experience_id": "EXP-RENTAL-001",
+      "path": "C:\\AI\\Rental-N001-20261028\\evidence\\resume-audit-20261028.json",
+      "content_read": true,
+      "evidence_scope": "20:30 NOT_VALID; build/source available, business delivery incomplete"
+    },
+    {
+      "experience_id": "EXP-HTTP-001",
+      "path": "C:\\AI\\Rental-N001-20261028\\evidence\\resume-audit-20261028.json",
+      "content_read": true,
+      "evidence_scope": "read-only real-project adoption of HTTP probe vs business QA separation; no business T_VALID"
     }
   ]
 }
