@@ -1,0 +1,38 @@
+{
+  "organization_name": "AI 自动化组织",
+  "organization_version": "V5.0",
+  "release_date": "2026-10-29",
+  "timezone": "Asia/Shanghai",
+  "authorization": "用户明确要求将AI化组织V4.2改名升级为AI自动化组织第五版本，强备保持V1.6并独立升级。",
+  "status": "RELEASED_ORGANIZATION_NAMING_AND_INTEGRATION",
+  "inherited_method": {
+    "name": "AI 化组织",
+    "version": "V4.2",
+    "frozen_source_unchanged": true
+  },
+  "backup_component": {
+    "name": "谷深双擎强备系统",
+    "version": "V1.6",
+    "independent_upgrade_track": true,
+    "source_unchanged": true
+  },
+  "business_module": {
+    "name": "订单自动交付",
+    "version": "V1.2",
+    "role": "内部模块编号，不是组织总版本",
+    "inherited_acceptance": "ACCEPTED_SCOPED_AUTOMATIC_FAILOVER_AND_PEER_RESTART",
+    "new_business_certification_in_this_release": false
+  },
+  "objective": "min(T_VALID_E2E), equal quality/safety/correctness/cost/success-rate/resource/authorization gates",
+  "original_task_id": "AIORG-ORDERS-AUTO-20261028-001",
+  "evidence_library_file_id": "libfile_a63d8c12f7248191a4e7c9bebeef6c69",
+  "evidence_sha256": "7fd3b38b51e02e29ae4746894f9e3cc61d541f446ce2f7dd2fb6cb946ac6e0b4",
+  "not_certified": [
+    "所有商业合约",
+    "任意阶段自动故障接续",
+    "主机/n8n/磁盘容灾",
+    "长期可用率SLA",
+    "全局最低时间或成本"
+  ],
+  "next_action": "冻结强备单独升级合同，先补验收/提交阶段故障接续，只验证受影响差量；通过新发布前强备保持V1.6。"
+}
