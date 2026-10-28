@@ -1,0 +1,9 @@
+{
+  "checkpoint_qa": true,
+  "booking_ab_qa": true,
+  "interrupted_write_reconciled": true,
+  "gpt_dual_page_tvalid_proven": false,
+  "release_policy": "DEFAULT_GPT_DIRECT; DUAL_GPT_NOT_DEFAULT",
+  "evidence_valid": true,
+  "scope": "module validation, not proof of full GPT dual architecture improvement"
+}

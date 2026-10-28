@@ -1,0 +1,4 @@
+interface:
+  display_name: "谷深双擎强备系统"
+  short_description: "在GPT与Codex不可用时，通过本机DSH承接V4.2方法并保留恢复与验收证据"
+  default_prompt: "使用谷深双擎强备系统，先核对当前回执和技能依赖，再按AI化组织V4.2完成任务。"

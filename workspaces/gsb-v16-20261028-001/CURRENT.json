@@ -1,0 +1,8 @@
+{
+  "TASK_ID": "GSB-V16-20261028-001",
+  "node": "N002-HOST-AUDIT",
+  "status": "ACCEPTED_SCOPED_CORE_COMPATIBILITY",
+  "entry": "skills/google-deepseek-strong-backup/SKILL.md",
+  "acceptance": "ACCEPTANCE.json",
+  "NEXT_ACTION": "Use optional local V1.6 entry for supported tasks; open scopes remain in ACCEPTANCE.json."
+}

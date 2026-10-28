@@ -1,0 +1,131 @@
+{
+  "repository": "cuiqinggang/codex-private-skills",
+  "snapshot_date": "2026-10-28",
+  "files": [
+    {
+      "source": "skills/ai-organization-v4-2/SKILL.md",
+      "bundled_path": "references/upstream/ai-organization-v4-2/SKILL.md",
+      "git_blob_sha": "4b4f59f658f59bf45b1f8c352dc2ab6409efb8e6"
+    },
+    {
+      "source": "skills/ai-organization-v4-2/references/AIORG-V4.2-CAPABILITY-REUSE-20261025.md",
+      "bundled_path": "references/upstream/ai-organization-v4-2/references/AIORG-V4.2-CAPABILITY-REUSE-20261025.md",
+      "git_blob_sha": "d6f21790686f308452344f24c28a8e233fd3349c"
+    },
+    {
+      "source": "skills/ai-organization-v4-2/references/V4.2-FROZEN-RELEASE.md",
+      "bundled_path": "references/upstream/ai-organization-v4-2/references/V4.2-FROZEN-RELEASE.md",
+      "git_blob_sha": "30c227b176d40151d94527c681f94b92b70ded9b"
+    },
+    {
+      "source": "skills/ai-organization-v4-2/references/V42_RELEASE_GATE.json",
+      "bundled_path": "references/upstream/ai-organization-v4-2/references/V42_RELEASE_GATE.json",
+      "git_blob_sha": "8b6ff84b0efdcd2065a82085c32d9ca52e4d8e73"
+    },
+    {
+      "source": "skills/ai-organization-v4-2/references/bridge-integration-20261027.md",
+      "bundled_path": "references/upstream/ai-organization-v4-2/references/bridge-integration-20261027.md",
+      "git_blob_sha": "d017582277f41eeef247d504db961c4f1888db69"
+    },
+    {
+      "source": "skills/ai-organization-v4-2/references/capability-routes.md",
+      "bundled_path": "references/upstream/ai-organization-v4-2/references/capability-routes.md",
+      "git_blob_sha": "aad5c36552151f789864bcb7f787a38d02e133d8"
+    },
+    {
+      "source": "skills/ai-organization-v4-2/references/memory-integration-20261027.md",
+      "bundled_path": "references/upstream/ai-organization-v4-2/references/memory-integration-20261027.md",
+      "git_blob_sha": "42123d6f7db473524289a0206713431c451d3db2"
+    },
+    {
+      "source": "skills/ai-organization-v4-2/references/operations.md",
+      "bundled_path": "references/upstream/ai-organization-v4-2/references/operations.md",
+      "git_blob_sha": "4e694f24b0a37d0819f777d7dcea388c5e525834"
+    },
+    {
+      "source": "skills/ai-organization-v4-2/references/sources.md",
+      "bundled_path": "references/upstream/ai-organization-v4-2/references/sources.md",
+      "git_blob_sha": "a177ae94c5d2948784401bf19e17e1772e01012c"
+    },
+    {
+      "source": "skills/reuse-experience-brain/SKILL.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/SKILL.md",
+      "git_blob_sha": "597b879178ca30bf3ce69e0bacf2a4f7b8f2e1ff"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/CALDAV.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/CALDAV.md",
+      "git_blob_sha": "1bc54418780088522ab5c79f9afbe810ab621da1"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/CODEX.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/CODEX.md",
+      "git_blob_sha": "3f0a015f184cfdb34b63123d57ca5992d5ab6e37"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/DOCKER-STARTUP.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/DOCKER-STARTUP.md",
+      "git_blob_sha": "d55252e3ad0d9b0214f867e5841e2e8efe6d1cf0"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/H3-REPLAY.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/H3-REPLAY.md",
+      "git_blob_sha": "a221978c952aa419f77c77fd4d15a93e3ab249b0"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/HARNESS.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/HARNESS.md",
+      "git_blob_sha": "a26ab74844ac024438ae696d9e3b47c32d95e7b9"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/HTTP-REDIRECT.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/HTTP-REDIRECT.md",
+      "git_blob_sha": "e33197cf1ae047db9f1b09cd3edc1c349067600d"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/INDEX.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/INDEX.md",
+      "git_blob_sha": "0cedc0baf7adf8c9b8b586f686280de4587f88c8"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/INHERITANCE.json",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/INHERITANCE.json",
+      "git_blob_sha": "ba84c91104ecf75a6ef0415cb9182b5d85d4bedd"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/INHERITANCE.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/INHERITANCE.md",
+      "git_blob_sha": "3edce887c32858a900c9838699f9fdf45e3504b2"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/MAINTENANCE.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/MAINTENANCE.md",
+      "git_blob_sha": "17aa319e49921a17b0a0e8a2f91ba0c1697e60bb"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/PAYPAL-ELIGIBILITY.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/PAYPAL-ELIGIBILITY.md",
+      "git_blob_sha": "717a260b1cce920a35178ef78603ad346f0cc2eb"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/SOURCES.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/SOURCES.md",
+      "git_blob_sha": "68082694b0bc7175294c2aa2dc5dcedd4b2848f8"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/STRIPE.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/STRIPE.md",
+      "git_blob_sha": "1547b24f10e2534249925137a8e59256ec4a711b"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/VEDA.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/VEDA.md",
+      "git_blob_sha": "0aeb014800b70e56d18de8a3b21134311d3b45b2"
+    },
+    {
+      "source": "skills/reuse-experience-brain/references/VIDEO-AB.md",
+      "bundled_path": "references/upstream/reuse-experience-brain/references/VIDEO-AB.md",
+      "git_blob_sha": "0cff8c9012c4d4757ec07bfd0751d64000d5fa65"
+    }
+  ]
+}

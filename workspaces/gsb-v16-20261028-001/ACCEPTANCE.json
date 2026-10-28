@@ -1,0 +1,86 @@
+{
+  "TASK_ID": "GSB-V16-20261028-001",
+  "version": "V1.6",
+  "date_local": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "status": "ACCEPTED_SCOPED_CORE_COMPATIBILITY",
+  "release_tier": "OPTIONAL_ENTRY_NOT_GLOBAL_MATURITY",
+  "versions": {
+    "AIORG": "V4.2",
+    "DSH_METHOD": "1.0.1",
+    "DSH_CAPABILITIES": "1.1.4",
+    "DSH_CLI": "0.2.1-rc.2",
+    "EXPERIENCE_BRAIN": "V1"
+  },
+  "source_files_git_blob_hash_verified": 25,
+  "new_reality": {
+    "status": "PASS",
+    "native_skills_loaded": [
+      "google-deepseek-strong-backup",
+      "ai-organization-v4-2",
+      "dsh-extreme-effective-time",
+      "dsh-mature-capabilities",
+      "reuse-experience-brain"
+    ],
+    "native_skill_results": "5/5 completed",
+    "GPT_Codex_Claude_tool_calls": 0,
+    "child_provider_keys_removed": [
+      "OPENAI_API_KEY",
+      "ANTHROPIC_API_KEY",
+      "CODEX_API_KEY"
+    ],
+    "input_rows": 48,
+    "total_cents": 178418,
+    "artifacts": [
+      "details.csv",
+      "summary.json",
+      "report.docx",
+      "ledger.xlsx"
+    ],
+    "independent_order_QA": "20/20 PASS",
+    "protected_input_hashes": "UNCHANGED",
+    "executor_seconds": 176.606,
+    "entry_to_host_content_QA_seconds": 177.452
+  },
+  "continuation": {
+    "status": "PASS",
+    "same_session_id": true,
+    "workspace_all_files_unchanged": true,
+    "seconds": 21.596,
+    "scope": "normal read-only same-session continuation, no crash or reboot"
+  },
+  "metadata_corrections": {
+    "original_model_receipts_preserved": true,
+    "actual_native_loads": 5,
+    "unsupported_sixth_skill_claim_rejected": true,
+    "official_session_id_recovered_from_trace": true,
+    "authority": "N002-HOST-AUDIT.json"
+  },
+  "session_id": "session-5f36be0a-371b-4dfe-98e6-4b78d9f30a86",
+  "cwd": "C:\\Users\\A\\Documents\\DSH-Workspace\\gsb-v16-20261028-001",
+  "desktop_entry": "C:\\Users\\A\\Desktop\\谷深强备-V1.6.cmd",
+  "evidence_root": "C:\\AI\\DeepSeek-Gemini-Failsafe\\V1.6-AIORG-20261028\\evidence",
+  "inherited_V151": {
+    "crash": "12/12 historical PASS",
+    "unattended_deterministic": "11/11 historical PASS",
+    "sleep_wake": "12/12 historical PASS",
+    "negative_matrix": "13/13 historical PASS",
+    "real_OS_reboot": "PENDING: QA_REBOOT.json absent; current cycle WAITING_FOR_NEXT_BOOT",
+    "power_failure": "DEFERRED"
+  },
+  "not_certified": [
+    "all V4.2 professional/platform capabilities",
+    "new Gemini automatic web handoff",
+    "crash/OS reboot of this new DSH business session",
+    "power interruption",
+    "pre-logon recovery",
+    "multi-day unattended live-model workload",
+    "external irreversible exactly-once",
+    "Office visual rendering and external spreadsheet recalculation in this test"
+  ],
+  "production_default_V11": "UNCHANGED",
+  "V151_status": "RECOVERY_CANDIDATE_UNCHANGED",
+  "full_user_request_T_VALID": "NOT_MEASURED",
+  "same_contract_performance_comparison": "NOT_MEASURED",
+  "NEXT_ACTION": "Use the new optional local entry for supported tasks; full-backup certification remains open only on the separately listed unverified scopes."
+}
