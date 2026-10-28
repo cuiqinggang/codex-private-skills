@@ -1,0 +1,13 @@
+interface:
+  display_name: 成熟执行体整体能力增强 V1
+  short_description: 继承实测成果，以成熟方法增强统一入口的发现、选路、组合与恢复能力
+  default_prompt: 使用 $enhance-agent-with-mature-capabilities，按《AI 化组织》V4.2读取V1检查点，继承已有成果，优先复用成熟方案，继续增强同一个默认入口并用完整有效时间验证。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

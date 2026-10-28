@@ -1,0 +1,46 @@
+{
+  "task_id": "PI-DEFAULT-AGENT-20261029-001",
+  "node_id": "N-DSH-EXISTING-HOLDOUT",
+  "version": "V1.1-evidence",
+  "snapshot_utc": "2026-10-28T18:20:19.989633+00:00",
+  "status": "EVIDENCE_COMPLETE_PRODUCTION_UNCHANGED",
+  "executor": "Existing DSH 0.2.1-rc.2 delivery Flash/high, existing native Skills/Office/session/recovery",
+  "source_skill_version": "DSH mature capabilities installed 1.1.4",
+  "legacy_trajectories_preserved": 18,
+  "matched_trajectory": {
+    "status": "NOT_VALID",
+    "elapsed_seconds": 264.725,
+    "phase1_artifact_checks": "7/7 PASS",
+    "initial_timeout_seconds": 150,
+    "repair_timeout_seconds": 90,
+    "phase2_executed_within_original_budget": false
+  },
+  "late_continuation": {
+    "status": "PASS",
+    "same_native_session": true,
+    "confirmed_first_phase_unchanged": true,
+    "ack_seconds": 22.999,
+    "phase2_seconds": 83.532,
+    "phase2_checks": "8/8 PASS",
+    "valid_business_seconds_including_prior_failure_and_diagnosis": 582.032,
+    "matched_benchmark_eligible": false
+  },
+  "native_session_id": "session-a7d516fe-831c-4dcb-93f2-a7d319eebe94",
+  "cwd": "C:\\Users\\A\\Documents\\DSH-Workspace\\dsh-existing-delivery-20261029\\runs\\holdout-D",
+  "checkpoint_path": "C:\\Users\\A\\Documents\\DSH-Workspace\\dsh-existing-delivery-20261029\\RESULTS.json",
+  "production_wrapper_version": "1.3.1-scoped",
+  "production_changed": false,
+  "new_default_deployed": false,
+  "background_work_running": false,
+  "invoice": "NOT_MEASURED",
+  "full_enhancement_T_VALID_E2E": "NOT_MEASURED",
+  "evidence": {
+    "library_file_id": "libfile_b12f6ffd4ebc8191a18307baa3829f9d",
+    "url": "https://chatgpt.com/library?file_id=libfile_b12f6ffd4ebc8191a18307baa3829f9d&account_id=personal",
+    "filename": "Mature-Agent-V1-DSH-Continuation.zip",
+    "bytes": 452543,
+    "sha256": "f99d713a56ce559d31d0d15c7659ebcf6dd22d0ab64386e62b33225c01af22fc",
+    "members": 79
+  },
+  "NEXT_ACTION": "先核对本续接及原生产状态；优先复用现成DSH/官方宿主或MCP边界中对重复自检、超时反馈和正常结束的已有处理，只补能改变选路的缺失证据。库存组合、变化、ZIP恢复及同session接续已完成，不再重跑；真实成本与同质量完整时间未支持净收益前保留生产1.3.1-scoped。"
+}

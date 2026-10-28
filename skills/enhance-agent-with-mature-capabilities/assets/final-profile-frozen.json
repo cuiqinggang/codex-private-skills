@@ -1,0 +1,19 @@
+{
+  "revision": "default-v3-native-guidelines",
+  "frozen_utc": "2026-10-28T17:05:17.957394+00:00",
+  "method": "AIORG V4.2",
+  "candidate_routes_evaluated": 2,
+  "source": "Installed Pi dist/core/extensions/types.d.ts promptSnippet/promptGuidelines, dist/core/system-prompt.js toolSnippets/toolGuidelines",
+  "change": "Only native tool snippets and guidelines, no model/provider, algorithm, fixture, task contract or oracle change",
+  "reason": "Prior source trace shows custom tools omitted from default Available tools/rules; completed v2 code/web retained, no favorable sample deletion",
+  "evaluation": "Future rows with this freeze timestamp and separate final-profile trajectories; unchanged A receipts inherited",
+  "strict_holdout_boundary": "Six diagnostic task families existed before this native-guideline revision; a new challenge will be generated after this freeze to check actual unseen final-profile behavior",
+  "hashes": {
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-default-agent-20261029\\candidate\\adaptive-tools.mjs": "f7882e320041df3632c9773651f5a624b29b46bc8c4aa5ad875d46fbd1a2ff94",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-default-agent-20261029\\candidate\\adaptive_search.py": "8850f820c155809a6089f41102359042b900b02000de575d589351e4e40798c8",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-default-agent-20261029\\candidate\\base-without-search.mjs": "e5a4517203d1ca6b6cf833418e30cf56f38e3c46ba5b40c73ec5a4fd4346093e",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-default-agent-20261029\\candidate\\DEFAULT-INSTRUCTIONS.md": "3912fe83971e8c2826cb6bd18f1526907b5dd0a6697e1cdb9dfdbb2ec4b8990a",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-default-agent-20261029\\candidate\\launch_pi.py": "05b836664bb610316a8795790312c34607b1818e379ea351306093b2e1d8160a",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-default-agent-20261029\\candidate\\Open-Pi.cmd": "c3477016192b025817693c55354d32fcff07cdcc9cda25d94c797bb535b0650c"
+  }
+}

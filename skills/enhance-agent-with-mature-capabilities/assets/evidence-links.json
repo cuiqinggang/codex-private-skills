@@ -1,0 +1,19 @@
+{
+  "version": "V1",
+  "created_beijing": "2026-10-29",
+  "current_evidence": {
+    "library_file_id": "libfile_e817e2eb4a6c81919fe5c056af6b1bb1",
+    "file_id": "file_00000000d40481fda669a37f0dc1f130",
+    "filename": "Mature-Agent-V1-Evidence.zip",
+    "bytes": 4464709,
+    "sha256": "55dd0d1afafff74223720f7164a228f4f88c80131463d9cb5fe1c0a53f8e5825",
+    "members": 598,
+    "manifest_verified": 597
+  },
+  "prior_library_ids": [
+    "libfile_d32be107187c8191b831664f6986f3be",
+    "libfile_22e1e2e56c848191b2ba4c64e1df29b3",
+    "libfile_cf65f33a51708191b2f6bb14139c886d"
+  ],
+  "not_a_production_deployment": true
+}
