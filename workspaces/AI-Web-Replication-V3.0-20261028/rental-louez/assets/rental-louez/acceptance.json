@@ -1,0 +1,95 @@
+{
+  "task_id": "AIORG-V42-N001-RENTAL-20261028",
+  "version": "1.0.1-local",
+  "checked_at_utc": "2026-10-28T13:30:07.451242+00:00",
+  "status": "PASS_LOCAL_LIMITED",
+  "scope": "Six rental functions in one local store, manual cash ledger, limited concurrency, isolated restore and brief process recovery",
+  "measured_anchor_utc": "2026-10-28T11:12:38.639Z",
+  "anchor_elapsed_seconds": 8248.812,
+  "full_user_receipt_to_delivery_time": "NOT_MEASURED: exact request receipt time unavailable",
+  "business_assertions": {
+    "original_ui_completed": true,
+    "original_three_day_rental": true,
+    "original_rental_receipts_300": true,
+    "original_deposit_receipts_500": true,
+    "original_deposit_return_500": true,
+    "booking_20_http": true,
+    "checkout_20_http": true,
+    "refund_20_http": true,
+    "two_distinct_adjacent_orders": true,
+    "only_one_physical_checkout": true,
+    "test_inventory_returned_after_acceptance": true,
+    "one_booking_interval_record": true,
+    "receipt_delete_after_refund_rejected": true,
+    "corrected_order_completed": true,
+    "new_cash_records_all_cny": true,
+    "new_rental_ledger": true,
+    "new_deposit_ledger": true,
+    "new_deposit_return_ledger": true,
+    "corrected_cny_refund_concurrency": true,
+    "original_currency_defect_retained_as_evidence": true
+  },
+  "backup_restore": "PASS",
+  "soak_retest": {
+    "passed_limited_test": true,
+    "requests": 320,
+    "successes": 320,
+    "failures": 0,
+    "outside_fault_window_failures": 0,
+    "actual_continuous_load_seconds": 302.923,
+    "latency_ms_all_completed_requests": {
+      "p50": 2449.774,
+      "p95": 4083.23,
+      "max": 18442.188
+    },
+    "fault": {
+      "attempts": 1,
+      "automatic_pm2_recovery": true,
+      "started_at": "2026-10-28T13:20:49.976580+00:00",
+      "killed_pid": 6836,
+      "command": "taskkill /PID <verified-dedicated-child> /F",
+      "exit_code": 0,
+      "new_pid": 14148,
+      "recovered_at": "2026-10-28T13:21:13.314782+00:00",
+      "recovery_ms": 23338.208
+    }
+  },
+  "first_soak_retained": {
+    "passed_limited_test": false,
+    "outside_fault_window_failures": 1,
+    "failures": [
+      {
+        "endpoint": "order",
+        "phase": "load",
+        "start_seconds": 223.24586460005958,
+        "success": false,
+        "failure": "connection_TimeoutError",
+        "end_seconds": 240.66016650001984,
+        "latency_ms": 17414.301899960265
+      }
+    ]
+  },
+  "source_package": {
+    "archive": "C:\\AI\\Rental-N001-20261028\\Louez-N001-source.zip",
+    "bytes": 123305055,
+    "sha256": "6a3746ba9c0cd4c3fa1cd930f37a53ae25b7785561a5ef77b60d6079b2a032bc",
+    "files": 3548,
+    "upstream": "Synapsr/Louez",
+    "commit": "04f14ecd4bc5b9b79da563c2974d24241fe5bd1b",
+    "license": "AGPL-3.0; original LICENSE and NOTICE retained; Nucleo runtime imports replaced by Lucide",
+    "excluded": "secrets, sessions, dependency folders, builds and local backup copies"
+  },
+  "url": "http://localhost:4399/dashboard",
+  "limitations": [
+    "Manual extend/recalculate/collect flow; no unattended automatic late settlement certified",
+    "Manual test receipts only; no real payment processing tested",
+    "No OS power-loss/boot or production high-availability certification",
+    "Pre-patch synthetic EUR ledger and test snapshots retained as defect evidence"
+  ],
+  "experience": {
+    "id": "EXP-HTTP-001",
+    "version": "V1",
+    "decision": "ADOPTED: expected redirect/health checks do not substitute for business acceptance",
+    "result": "Independent native actions plus database ledger readback used"
+  }
+}

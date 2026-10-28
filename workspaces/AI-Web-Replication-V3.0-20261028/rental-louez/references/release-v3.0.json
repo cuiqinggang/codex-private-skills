@@ -1,0 +1,12 @@
+{
+  "name": "AI网站与应用高保真复刻能力包",
+  "version": "3.0.0",
+  "date": "2026-10-28",
+  "status": "POLICY_RELEASED",
+  "scope": "commercial mature capability routing selection",
+  "primary": "C:\\AI\\AI-Web-Replication-V3.0-20261028\\SKILL.md",
+  "rollback": "C:\\AI\\AI-Web-Replication-V2.0-20261024\\SKILL.md",
+  "integration": "C:\\AI\\AIORG-Capability-Entry-V1.0-20261024\\references\\capability-routes.md",
+  "newBusinessTValid": "NOT_VERIFIED",
+  "preserveExistingEvidence": true
+}

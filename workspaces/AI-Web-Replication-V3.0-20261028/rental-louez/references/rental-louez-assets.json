@@ -1,0 +1,44 @@
+{
+  "upstream_commit": "04f14ecd4bc5b9b79da563c2974d24241fe5bd1b",
+  "patch_sha256": "e0074a30d86ae0d74e24cac1d1b9325088d1a631774ef6206649d2a3ebf150a8",
+  "branch_version": "1.0.0",
+  "parent_version": "3.0.0",
+  "scope": "verified N001 local contract only",
+  "source_archive_included": false,
+  "source_archive_location": "C:\\AI\\Rental-N001-20261028\\Louez-N001-source.zip",
+  "artifact_access": "No credentials, databases or source archive bundled; fixed upstream+patch recipe requires source bytes/cache or first download",
+  "scripts": "Raw previously executed N001-specific scripts; read label/host/port constraints before invocation. No new cold deployment or full offline certification implied.",
+  "diagnostic_sql_warning": "Original concurrency script's printed SQL hints use legacy names; verify actual reservation_status, payment_type, payment_status, product_status columns.",
+  "original_export_file_hashes": {
+    "louez-concurrency.py": "12b2619d55249ae487cf1c782da59a36140c53f5e9d9f2d5ea4e46b47709df70",
+    "louez-backup-recovery.py": "4e4b54c014184ec909e850c6c701ede94abd56060734a0277d7115ace37d87d7",
+    "louez-soak.py": "8bd46b439774382409a3cd5b7b51fa33cbb5dff9cecccb8ce5e60ff3b7cd20c1",
+    "launch.py": "8f4ad77e231a9b81d1dc300d1f773eaad7049b9f993214e52fde7166b4fa180a",
+    "ecosystem.config.cjs": "3d99d8c88b7eebde794dffbc89300ced2ae0f55997e086027db25f45b4551711",
+    "build.py": "1ada17baf6df72b37b34809e312c0fd196f659a64de231e56b64bf6a21014f40",
+    "source.patch": "e0074a30d86ae0d74e24cac1d1b9325088d1a631774ef6206649d2a3ebf150a8",
+    "acceptance.json": "3f1b2e32698a933f7d21930db9adff31dc38f022e37f417958a9b9621903e35a",
+    "COMMERCIAL-ROUTER-V3.0.md": "5fce3ddd228d9878ba420f853149618cbdbef8fc5b53a315199d9d07ef9a36d6",
+    "release-v3.0.json": "1dfa572d5ed4eccecc89478ffe6162f9272f1734cec50ae247f86e98ea76ae9a"
+  },
+  "bundled_assets_sha256": {
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "NOTICE": "74c8f5950e6d2b5a175a6fb91f02546b576424ed594ed68c7942605957839f3f",
+    "acceptance.json": "43c66d5d5e2c52624d1df0c21d7184f91226a81846c496aa8427e18fd5f4c384",
+    "build.py": "1ada17baf6df72b37b34809e312c0fd196f659a64de231e56b64bf6a21014f40",
+    "ecosystem.config.cjs": "3d99d8c88b7eebde794dffbc89300ced2ae0f55997e086027db25f45b4551711",
+    "launch.py": "8f4ad77e231a9b81d1dc300d1f773eaad7049b9f993214e52fde7166b4fa180a",
+    "louez-backup-recovery.py": "4e4b54c014184ec909e850c6c701ede94abd56060734a0277d7115ace37d87d7",
+    "louez-concurrency.py": "12b2619d55249ae487cf1c782da59a36140c53f5e9d9f2d5ea4e46b47709df70",
+    "louez-soak.py": "8bd46b439774382409a3cd5b7b51fa33cbb5dff9cecccb8ce5e60ff3b7cd20c1",
+    "source.patch": "e0074a30d86ae0d74e24cac1d1b9325088d1a631774ef6206649d2a3ebf150a8"
+  },
+  "certification": {
+    "original_local_contract": "PASS_LOCAL_LIMITED",
+    "isolated_patch_replay": "PASS_11_FILES_MATCH",
+    "new_instance_full_rebuild": "NOT_VERIFIED",
+    "new_machine_cold_deploy": "NOT_VERIFIED",
+    "full_offline_runtime": "NOT_VERIFIED",
+    "skill_forward_test": "READ_ONLY_SCOPE_AND_DEPENDENCY_BOUNDARIES_CONFIRMED"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-28",
+  "branch_version": "1.0.0",
+  "parent_version": "3.0.0",
+  "checks": [
+    "Skill frontmatter validation",
+    "Python source compile without execution",
+    "Frozen source patch replay in isolated directory: 11/11 files match live source",
+    "Read-only independent scenario: route under Windows ownership/no SaaS/full offline/15-minute cold-deploy constraints"
+  ],
+  "business_scope": "Historical N001 local contract only; no new full deployment or timing certification",
+  "forward_test_outcome": "Declined unsupported all-menu offline and 15-minute new-machine guarantee; preserved mature self-hosting route and acceptance gates"
+}

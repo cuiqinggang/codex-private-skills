@@ -1,0 +1,830 @@
+diff --git a/apps/web/app/(dashboard)/dashboard/reservations/[id]/activity-timeline-v2.tsx b/apps/web/app/(dashboard)/dashboard/reservations/[id]/activity-timeline-v2.tsx
+index 315264d..c789340 100644
+--- a/apps/web/app/(dashboard)/dashboard/reservations/[id]/activity-timeline-v2.tsx
++++ b/apps/web/app/(dashboard)/dashboard/reservations/[id]/activity-timeline-v2.tsx
+@@ -562,7 +562,7 @@ export function ActivityTimelineV2({
+                     {(activity.metadata.difference as number) >= 0 ? '+' : ''}
+                     {formatCurrency(
+                       activity.metadata.difference as number,
+-                      'EUR',
++                      currency,
+                       formatLocale,
+                     )}
+                   </Badge>
+diff --git a/apps/web/app/(dashboard)/dashboard/reservations/actions.ts b/apps/web/app/(dashboard)/dashboard/reservations/actions.ts
+index 484be9a..e6afa09 100644
+--- a/apps/web/app/(dashboard)/dashboard/reservations/actions.ts
++++ b/apps/web/app/(dashboard)/dashboard/reservations/actions.ts
+@@ -497,6 +497,130 @@ export async function updateReservationStatus(
+           return { ok: false as const, error: "errors.reservationStatusChanged" as const };
+         }
+ 
++        // N001: pickup must verify physical custody, independently of planned dates.
++        if (status === "ongoing") {
++          const requestedLines = await tx
++            .select({
++              productId: reservationItems.productId,
++              quantity: reservationItems.quantity,
++            })
++            .from(reservationItems)
++            .where(eq(reservationItems.reservationId, reservationId));
++          const requestedByProduct = new Map<string, number>();
++          for (const line of requestedLines) {
++            if (line.productId) {
++              requestedByProduct.set(
++                line.productId,
++                (requestedByProduct.get(line.productId) ?? 0) + line.quantity,
++              );
++            }
++          }
++          const productIds = [...requestedByProduct.keys()].sort();
++          const physicalProducts = productIds.length
++            ? await tx
++                .select({
++                  id: products.id,
++                  quantity: products.quantity,
++                  trackUnits: products.trackUnits,
++                  stockKind: products.stockKind,
++                })
++                .from(products)
++                .where(and(eq(products.storeId, store.id), inArray(products.id, productIds)))
++                .orderBy(products.id)
++                .for("update")
++            : [];
++          if (physicalProducts.length !== productIds.length) {
++            throw new ReservationInventoryError("errors.productNoLongerAvailable");
++          }
++
++          const ownAssignments = await tx
++            .select({
++              productUnitId: reservationItemUnits.productUnitId,
++              productId: reservationItems.productId,
++            })
++            .from(reservationItemUnits)
++            .innerJoin(reservationItems, eq(reservationItemUnits.reservationItemId, reservationItems.id))
++            .where(eq(reservationItems.reservationId, reservationId));
++          const returnableTrackedProductIds = new Set(
++            physicalProducts
++              .filter((product) => product.stockKind === "returnable" && product.trackUnits)
++              .map((product) => product.id),
++          );
++          const ownUnitIds = ownAssignments.flatMap((row) =>
++            row.productUnitId && row.productId && returnableTrackedProductIds.has(row.productId)
++              ? [row.productUnitId]
++              : [],
++          );
++          if (ownUnitIds.length) {
++            const occupiedAssignments = await tx
++              .select({ productUnitId: reservationItemUnits.productUnitId })
++              .from(reservationItemUnits)
++              .innerJoin(reservationItems, eq(reservationItemUnits.reservationItemId, reservationItems.id))
++              .innerJoin(reservations, eq(reservationItems.reservationId, reservations.id))
++              .where(
++                and(
++                  eq(reservations.storeId, store.id),
++                  eq(reservations.status, "ongoing"),
++                  inArray(reservationItemUnits.productUnitId, ownUnitIds),
++                ),
++              );
++            if (occupiedAssignments.length) {
++              throw new ReservationInventoryError("errors.productNoLongerAvailable");
++            }
++          }
++
++          const pickupNow = new Date();
++          for (const product of physicalProducts) {
++            // Consumables are deducted on confirmation; untracked products have no capacity limit.
++            if (product.stockKind !== "returnable") continue;
++            let capacity = product.quantity;
++            if (product.trackUnits) {
++              const rentableUnits = await tx
++                .select({ id: productUnits.id })
++                .from(productUnits)
++                .where(
++                  and(
++                    eq(productUnits.productId, product.id),
++                    buildUnitRentableDuringPredicate(
++                      tx,
++                      pickupNow,
++                      new Date(pickupNow.getTime() + 1),
++                    ),
++                  ),
++                )
++                .orderBy(productUnits.id)
++                .for("update");
++              capacity = rentableUnits.length;
++              const rentableIds = new Set(rentableUnits.map((unit) => unit.id));
++              if (
++                ownAssignments.some(
++                  (assignment) =>
++                    assignment.productId === product.id &&
++                    assignment.productUnitId !== null &&
++                    !rentableIds.has(assignment.productUnitId),
++                )
++              ) {
++                throw new ReservationInventoryError("errors.productNoLongerAvailable");
++              }
++            }
++            const ongoingLines = await tx
++              .select({ quantity: reservationItems.quantity })
++              .from(reservationItems)
++              .innerJoin(reservations, eq(reservationItems.reservationId, reservations.id))
++              .where(
++                and(
++                  eq(reservations.storeId, store.id),
++                  eq(reservations.status, "ongoing"),
++                  eq(reservationItems.productId, product.id),
++                ),
++              );
++            const physicallyOut = ongoingLines.reduce((sum, line) => sum + line.quantity, 0);
++            if (physicallyOut + (requestedByProduct.get(product.id) ?? 0) > capacity) {
++              throw new ReservationInventoryError("errors.productNoLongerAvailable");
++            }
++          }
++        }
++
+         if (
+           status === "confirmed" &&
+           (lockedReservation.status === "pending" || lockedReservation.status === "quote")
+@@ -3799,64 +3923,103 @@ export async function recordPayment(reservationId: string, data: RecordPaymentDa
+     return { error: "errors.unauthorized" };
+   }
+ 
+-  const reservation = await db.query.reservations.findFirst({
+-    where: and(eq(reservations.id, reservationId), eq(reservations.storeId, store.id)),
+-    with: {
+-      payments: true,
+-    },
+-  });
+-
+-  if (!reservation) {
+-    return { error: "errors.reservationNotFound" };
+-  }
+-
+-  if (data.amount === 0) {
++  // N001: all manual receipt/refund balance checks are serialized on the reservation.
++  const amountCents = Math.round(data.amount * 100);
++  if (
++    !Number.isFinite(data.amount) ||
++    !Number.isSafeInteger(amountCents) ||
++    amountCents === 0 ||
++    Math.abs(amountCents) > 9999999999 ||
++    Math.abs(data.amount - amountCents / 100) > 0.000000001
++  ) {
+     return { error: "errors.invalidAmount" };
+   }
+-
+-  // Only adjustment type can have negative amounts
+-  if (data.amount < 0 && data.type !== "adjustment") {
++  if (amountCents < 0 && data.type !== "adjustment") {
+     return { error: "errors.negativeAmountOnlyForAdjustment" };
+   }
+ 
+-  if (data.amount > 0 && data.type === "rental") {
+-    const rentalPaid = getRentalPaid(reservation.payments);
+-    const rentalRemaining = roundMoney(getReservationRentalAmount(reservation) - rentalPaid);
+-
+-    if (data.amount > rentalRemaining) {
+-      return { error: "errors.invalidAmount" };
+-    }
+-  }
+-
+-  if (data.amount > 0 && data.type === "deposit") {
+-    const depositCollected = reservation.payments
+-      .filter((p) => p.type === "deposit" && p.status === "completed")
+-      .reduce((sum, p) => sum + parseFloat(p.amount), 0);
+-    const depositRemaining = roundMoney(
+-      parseFloat(reservation.depositAmount || "0") - depositCollected,
+-    );
++  const session = await auth();
++  const paymentId = nanoid();
++  const written = await db.transaction(
++    async (tx) => {
++      const [reservation] = await tx
++        .select({
++          id: reservations.id,
++          number: reservations.number,
++          subtotalAmount: reservations.subtotalAmount,
++          depositAmount: reservations.depositAmount,
++          totalAmount: reservations.totalAmount,
++        })
++        .from(reservations)
++        .where(and(eq(reservations.id, reservationId), eq(reservations.storeId, store.id)))
++        .for("update");
++      if (!reservation) {
++        return { ok: false as const, error: "errors.reservationNotFound" };
++      }
++      const currentPayments = await tx.query.payments.findMany({
++        where: eq(payments.reservationId, reservationId),
++      });
++      if (amountCents > 0 && data.type === "rental") {
++        const remainingCents =
++          Math.round(getReservationRentalAmount(reservation) * 100) -
++          Math.round(getRentalPaid(currentPayments) * 100);
++        if (amountCents > remainingCents) {
++          return { ok: false as const, error: "errors.invalidAmount" };
++        }
++      }
++      const collectedCents = currentPayments
++        .filter((payment) => payment.type === "deposit" && payment.status === "completed")
++        .reduce((sum, payment) => sum + Math.round(Number(payment.amount) * 100), 0);
++      if (amountCents > 0 && data.type === "deposit") {
++        const remainingCents = Math.round(Number(reservation.depositAmount) * 100) - collectedCents;
++        if (amountCents > remainingCents) {
++          return { ok: false as const, error: "errors.invalidAmount" };
++        }
++      }
++      if (amountCents > 0 && data.type === "deposit_return") {
++        const returnedCents = currentPayments
++          .filter((payment) => payment.type === "deposit_return" && payment.status === "completed")
++          .reduce((sum, payment) => sum + Math.round(Number(payment.amount) * 100), 0);
++        if (amountCents > collectedCents - returnedCents) {
++          return { ok: false as const, error: "errors.amountExceedsDeposit" };
++        }
++      }
+ 
+-    if (data.amount > depositRemaining) {
+-      return { error: "errors.invalidAmount" };
+-    }
++      await tx.insert(payments).values({
++        id: paymentId,
++        reservationId,
++        amount: (amountCents / 100).toFixed(2),
++        type: data.type,
++        method: data.method,
++        status: "completed",
++        currency: store.settings?.currency ?? "EUR",
++        paidAt: data.paidAt || new Date(),
++        notes: data.notes || null,
++      });
++      if (data.type === "rental" && amountCents > 0) {
++        await validateReservationContract(tx, reservationId, store.id, "payment");
++      }
++      await tx.insert(reservationActivity).values({
++        id: nanoid(),
++        reservationId,
++        userId: session?.user?.id || null,
++        activityType: "payment_added",
++        metadata: {
++          paymentId,
++          type: data.type,
++          amount: amountCents / 100,
++          currency: store.settings?.currency ?? "EUR",
++          method: data.method,
++        },
++      });
++      return { ok: true as const, reservation };
++    },
++    { isolationLevel: "read committed" },
++  );
++  if (!written.ok) {
++    return { error: written.error };
+   }
+-
+-  const paymentId = nanoid();
+-  await db.transaction(async (tx) => {
+-    await tx.insert(payments).values({
+-      id: paymentId,
+-      reservationId,
+-      amount: data.amount.toFixed(2),
+-      type: data.type,
+-      method: data.method,
+-      status: "completed",
+-      paidAt: data.paidAt || new Date(),
+-      notes: data.notes || null,
+-    });
+-    if (data.type === "rental" && data.amount > 0) {
+-      await validateReservationContract(tx, reservationId, store.id, "payment");
+-    }
+-  });
++  const reservation = written.reservation;
+ 
+   let invoiceNumber: string | undefined;
+   if (["rental", "damage", "adjustment"].includes(data.type) && data.amount > 0) {
+@@ -3872,14 +4035,6 @@ export async function recordPayment(reservationId: string, data: RecordPaymentDa
+     }
+   }
+ 
+-  // Log activity
+-  await logReservationActivity(reservationId, "payment_added", {
+-    paymentId,
+-    type: data.type,
+-    amount: data.amount,
+-    method: data.method,
+-  });
+-
+   // Platform admin notification
+   notifyPaymentReceived(
+     { id: store.id, name: store.name, slug: store.slug },
+@@ -4023,41 +4178,99 @@ export async function deletePayment(paymentId: string) {
+     return { error: "errors.unauthorized" };
+   }
+ 
+-  // Get payment with reservation to verify ownership
+-  const payment = await db.query.payments.findFirst({
+-    where: eq(payments.id, paymentId),
+-    with: {
+-      reservation: true,
+-    },
+-  });
+-
+-  if (!payment || payment.reservation.storeId !== store.id) {
++  // N001: locate ownership without taking a payment lock before the reservation.
++  const [candidate] = await db
++    .select({ reservationId: payments.reservationId })
++    .from(payments)
++    .innerJoin(reservations, eq(payments.reservationId, reservations.id))
++    .where(and(eq(payments.id, paymentId), eq(reservations.storeId, store.id)))
++    .limit(1);
++  if (!candidate) {
+     return { error: "errors.paymentNotFound" };
+   }
++  const session = await auth();
++  const deleted = await db.transaction(
++    async (tx) => {
++      const [reservation] = await tx
++        .select({ id: reservations.id })
++        .from(reservations)
++        .where(
++          and(
++            eq(reservations.id, candidate.reservationId),
++            eq(reservations.storeId, store.id),
++          ),
++        )
++        .for("update");
++      if (!reservation) {
++        return { ok: false as const, error: "errors.paymentNotFound" };
++      }
++      const [payment] = await tx
++        .select({
++          id: payments.id,
++          reservationId: payments.reservationId,
++          type: payments.type,
++          status: payments.status,
++          method: payments.method,
++          amount: payments.amount,
++        })
++        .from(payments)
++        .where(and(eq(payments.id, paymentId), eq(payments.reservationId, reservation.id)))
++        .for("update");
++      if (!payment) {
++        return { ok: false as const, error: "errors.paymentNotFound" };
++      }
++      const [invoiceLink] = await tx
++        .select({ id: invoicePayments.id })
++        .from(invoicePayments)
++        .where(eq(invoicePayments.paymentId, paymentId))
++        .limit(1);
++      if (invoiceLink) {
++        return { ok: false as const, error: "errors.paymentInvoiced" };
++      }
++      if (payment.method === "stripe") {
++        return { ok: false as const, error: "errors.cannotDeleteStripePayment" };
++      }
+ 
+-  const [invoiceLink] = await db
+-    .select({ id: invoicePayments.id })
+-    .from(invoicePayments)
+-    .where(eq(invoicePayments.paymentId, paymentId))
+-    .limit(1);
+-  if (invoiceLink) {
+-    return { error: "errors.paymentInvoiced" };
+-  }
++      // Removing a receipt must never make refunds exceed the remaining cash deposit.
++      if (payment.type === "deposit" && payment.status === "completed") {
++        const depositRows = await tx
++          .select({ type: payments.type, status: payments.status, amount: payments.amount })
++          .from(payments)
++          .where(eq(payments.reservationId, reservation.id));
++        const remainingCollectedCents =
++          depositRows
++            .filter((row) => row.type === "deposit" && row.status === "completed")
++            .reduce((sum, row) => sum + Math.round(Number(row.amount) * 100), 0) -
++          Math.round(Number(payment.amount) * 100);
++        const returnedCents = depositRows
++          .filter((row) => row.type === "deposit_return" && row.status === "completed")
++          .reduce((sum, row) => sum + Math.round(Number(row.amount) * 100), 0);
++        if (remainingCollectedCents < returnedCents) {
++          return { ok: false as const, error: "errors.amountExceedsDeposit" };
++        }
++      }
+ 
+-  // Cannot delete Stripe payments
+-  if (payment.method === "stripe") {
+-    return { error: "errors.cannotDeleteStripePayment" };
++      await tx.delete(payments).where(eq(payments.id, paymentId));
++      await tx.insert(reservationActivity).values({
++        id: nanoid(),
++        reservationId: reservation.id,
++        userId: session?.user?.id || null,
++        activityType: "payment_updated",
++        metadata: {
++          paymentId,
++          type: payment.type,
++          amount: payment.amount,
++          action: "deleted",
++        },
++      });
++      return { ok: true as const, payment };
++    },
++    { isolationLevel: "read committed" },
++  );
++  if (!deleted.ok) {
++    return { error: deleted.error };
+   }
+-
+-  await db.delete(payments).where(eq(payments.id, paymentId));
+-
+-  // Log activity
+-  await logReservationActivity(payment.reservationId, "payment_updated", {
+-    paymentId,
+-    type: payment.type,
+-    amount: payment.amount,
+-    action: "deleted",
+-  });
++  const payment = deleted.payment;
+ 
+   revalidatePath("/dashboard/reservations");
+   revalidatePath(`/dashboard/reservations/${payment.reservationId}`);
+@@ -4086,56 +4299,73 @@ export async function returnDeposit(reservationId: string, data: ReturnDepositDa
+     return { error: "errors.unauthorized" };
+   }
+ 
+-  const reservation = await db.query.reservations.findFirst({
+-    where: and(eq(reservations.id, reservationId), eq(reservations.storeId, store.id)),
+-    with: {
+-      payments: true,
+-    },
+-  });
+-
+-  if (!reservation) {
+-    return { error: "errors.reservationNotFound" };
+-  }
+-
+-  if (data.amount <= 0) {
++  // N001: check refundable balance and insert its ledger/activity under one row lock.
++  const amountCents = Math.round(data.amount * 100);
++  if (
++    !Number.isFinite(data.amount) ||
++    !Number.isSafeInteger(amountCents) ||
++    amountCents <= 0 ||
++    amountCents > 9999999999 ||
++    Math.abs(data.amount - amountCents / 100) > 0.000000001
++  ) {
+     return { error: "errors.invalidAmount" };
+   }
+-
+-  // Calculate how much deposit was collected
+-  const depositCollected = reservation.payments
+-    .filter((p) => p.type === "deposit" && p.status === "completed")
+-    .reduce((sum, p) => sum + parseFloat(p.amount), 0);
+-
+-  // Calculate how much was already returned
+-  const depositReturned = reservation.payments
+-    .filter((p) => p.type === "deposit_return" && p.status === "completed")
+-    .reduce((sum, p) => sum + parseFloat(p.amount), 0);
+-
+-  const maxReturnable = depositCollected - depositReturned;
+-
+-  if (data.amount > maxReturnable) {
+-    return { error: "errors.amountExceedsDeposit" };
+-  }
+-
++  const session = await auth();
+   const paymentId = nanoid();
+-  await db.insert(payments).values({
+-    id: paymentId,
+-    reservationId,
+-    amount: data.amount.toFixed(2),
+-    type: "deposit_return",
+-    method: data.method,
+-    status: "completed",
+-    paidAt: new Date(),
+-    notes: data.notes || null,
+-  });
+-
+-  // Log activity
+-  await logReservationActivity(reservationId, "payment_added", {
+-    paymentId,
+-    type: "deposit_return",
+-    amount: data.amount,
+-    method: data.method,
+-  });
++  const written = await db.transaction(
++    async (tx) => {
++      const [reservation] = await tx
++        .select({ id: reservations.id })
++        .from(reservations)
++        .where(and(eq(reservations.id, reservationId), eq(reservations.storeId, store.id)))
++        .for("update");
++      if (!reservation) {
++        return { ok: false as const, error: "errors.reservationNotFound" };
++      }
++      const currentPayments = await tx
++        .select({ type: payments.type, status: payments.status, amount: payments.amount })
++        .from(payments)
++        .where(eq(payments.reservationId, reservationId));
++      const collectedCents = currentPayments
++        .filter((payment) => payment.type === "deposit" && payment.status === "completed")
++        .reduce((sum, payment) => sum + Math.round(Number(payment.amount) * 100), 0);
++      const returnedCents = currentPayments
++        .filter((payment) => payment.type === "deposit_return" && payment.status === "completed")
++        .reduce((sum, payment) => sum + Math.round(Number(payment.amount) * 100), 0);
++      if (amountCents > collectedCents - returnedCents) {
++        return { ok: false as const, error: "errors.amountExceedsDeposit" };
++      }
++      await tx.insert(payments).values({
++        id: paymentId,
++        reservationId,
++        amount: (amountCents / 100).toFixed(2),
++        type: "deposit_return",
++        method: data.method,
++        status: "completed",
++        currency: store.settings?.currency ?? "EUR",
++        paidAt: new Date(),
++        notes: data.notes || null,
++      });
++      await tx.insert(reservationActivity).values({
++        id: nanoid(),
++        reservationId,
++        userId: session?.user?.id || null,
++        activityType: "payment_added",
++        metadata: {
++          paymentId,
++          type: "deposit_return",
++          amount: amountCents / 100,
++          currency: store.settings?.currency ?? "EUR",
++          method: data.method,
++        },
++      });
++      return { ok: true as const };
++    },
++    { isolationLevel: "read committed" },
++  );
++  if (!written.ok) {
++    return { error: written.error };
++  }
+ 
+   revalidatePath("/dashboard/reservations");
+   revalidatePath(`/dashboard/reservations/${reservationId}`);
+diff --git a/apps/web/app/(dashboard)/dashboard/reservations/new/components/new-reservation-confirm-drawer.tsx b/apps/web/app/(dashboard)/dashboard/reservations/new/components/new-reservation-confirm-drawer.tsx
+index 28b19a4..5108c7b 100644
+--- a/apps/web/app/(dashboard)/dashboard/reservations/new/components/new-reservation-confirm-drawer.tsx
++++ b/apps/web/app/(dashboard)/dashboard/reservations/new/components/new-reservation-confirm-drawer.tsx
+@@ -1,5 +1,7 @@
+ "use client";
+ 
++import { useStoreCurrency } from "@/contexts/store-context";
++
+ import { AlertTriangle, Check, FileText, Mail, MailX } from "lucide-react";
+ import { useTranslations } from "next-intl";
+ 
+@@ -16,7 +18,7 @@ import {
+   DrawerTitle,
+   Separator,
+ } from "@louez/ui";
+-import { formatCurrency } from "@louez/utils";
++import { formatCurrency as formatCurrencyAmount } from "@louez/utils";
+ 
+ import { useFormatLocale } from "@/hooks/use-format-locale";
+ import { formatStoreDate } from "@/lib/utils/store-date";
+@@ -90,6 +92,8 @@ export function NewReservationConfirmDrawer({
+   periodWarnings,
+   availabilityWarnings,
+ }: NewReservationConfirmDrawerProps) {
++  const currency = useStoreCurrency();
++  const formatCurrency = (amount: number) => formatCurrencyAmount(amount, currency);
+   const t = useTranslations("dashboard.reservations.manualForm");
+   const tCommon = useTranslations("common");
+   const { intl: formatLocale } = useFormatLocale();
+diff --git a/apps/web/app/(dashboard)/dashboard/reservations/new/components/new-reservation-step-products.tsx b/apps/web/app/(dashboard)/dashboard/reservations/new/components/new-reservation-step-products.tsx
+index 497916f..f7ae0ac 100644
+--- a/apps/web/app/(dashboard)/dashboard/reservations/new/components/new-reservation-step-products.tsx
++++ b/apps/web/app/(dashboard)/dashboard/reservations/new/components/new-reservation-step-products.tsx
+@@ -1,5 +1,7 @@
+ "use client";
+ 
++import { useStoreCurrency } from "@/contexts/store-context";
++
+ import { ShieldSolidIcon } from "@louez/ui/icons";
+ 
+ import { useMemo, useState } from "react";
+@@ -44,7 +46,7 @@ import {
+   Separator,
+ } from "@louez/ui";
+ import type { StockQuantityLimit } from "@louez/utils";
+-import { cn, formatCurrency, minutesToPriceDuration } from "@louez/utils";
++import { cn, formatCurrency as formatCurrencyAmount, minutesToPriceDuration } from "@louez/utils";
+ 
+ import { ProductAddCombobox } from "@/components/dashboard/product-add-combobox";
+ import { ProductImage } from "@/components/product/product-image";
+@@ -133,6 +135,8 @@ export function NewReservationStepProducts({
+   getProductPricingDetails,
+   getCustomItemTotal,
+ }: NewReservationStepProductsProps) {
++  const currency = useStoreCurrency();
++  const formatCurrency = (amount: number) => formatCurrencyAmount(amount, currency);
+   const t = useTranslations("dashboard.reservations.manualForm");
+   const tCommon = useTranslations("common");
+   const tEdit = useTranslations("dashboard.reservations.edit");
+diff --git a/apps/web/app/(dashboard)/dashboard/reservations/new/components/new-reservation-summary-panel.tsx b/apps/web/app/(dashboard)/dashboard/reservations/new/components/new-reservation-summary-panel.tsx
+index fea5abd..a2bde08 100644
+--- a/apps/web/app/(dashboard)/dashboard/reservations/new/components/new-reservation-summary-panel.tsx
++++ b/apps/web/app/(dashboard)/dashboard/reservations/new/components/new-reservation-summary-panel.tsx
+@@ -1,5 +1,7 @@
+ "use client";
+ 
++import { useStoreCurrency } from "@/contexts/store-context";
++
+ import { useState } from "react";
+ 
+ import { CheckCircle2, Circle, Loader2, PenLine, RotateCcw, X } from "lucide-react";
+@@ -20,7 +22,7 @@ import {
+   ToggleGroup,
+   ToggleGroupItem,
+ } from "@louez/ui";
+-import { cn, formatCurrency } from "@louez/utils";
++import { cn, formatCurrency as formatCurrencyAmount } from "@louez/utils";
+ 
+ import { useFormatLocale } from "@/hooks/use-format-locale";
+ import { formatStoreDate } from "@/lib/utils/store-date";
+@@ -94,6 +96,8 @@ export function NewReservationSummaryPanel({
+   onSendConfirmationEmailChange,
+   onNavigateToSection,
+ }: NewReservationSummaryPanelProps) {
++  const currency = useStoreCurrency();
++  const formatCurrency = (amount: number) => formatCurrencyAmount(amount, currency);
+   const t = useTranslations("dashboard.reservations.manualForm");
+   const { intl: formatLocale } = useFormatLocale();
+   const [isEditingDiscount, setIsEditingDiscount] = useState(false);
+diff --git a/apps/web/app/(dashboard)/dashboard/reservations/new/new-reservation-form.tsx b/apps/web/app/(dashboard)/dashboard/reservations/new/new-reservation-form.tsx
+index af5ed94..d43e236 100644
+--- a/apps/web/app/(dashboard)/dashboard/reservations/new/new-reservation-form.tsx
++++ b/apps/web/app/(dashboard)/dashboard/reservations/new/new-reservation-form.tsx
+@@ -36,7 +36,7 @@ import {
+   DialogTitle,
+ } from "@louez/ui";
+ import { Label } from "@louez/ui";
+-import { cn, formatCurrency } from "@louez/utils";
++import { cn, formatCurrency as formatCurrencyAmount } from "@louez/utils";
+ 
+ import { invalidateReservationList } from "@/lib/orpc/invalidation";
+ import { trackOpenReplayEvent } from "@/lib/openreplay/client";
+@@ -52,7 +52,7 @@ import { useAppForm } from "@/hooks/form/form";
+ import { useFormatLocale } from "@/hooks/use-format-locale";
+ import { useMediaQuery } from "@/hooks/use-media-query";
+ 
+-import { useStoreTimezone } from "@/contexts/store-context";
++import { useStoreCurrency, useStoreTimezone } from "@/contexts/store-context";
+ 
+ import { getManualReservationAvailability } from "../actions";
+ import { NewReservationConfirmDrawer } from "./components/new-reservation-confirm-drawer";
+@@ -144,6 +144,8 @@ export function NewReservationForm({
+   const searchParams = useSearchParams();
+   const queryClient = useQueryClient();
+   const timezone = useStoreTimezone();
++  const currency = useStoreCurrency();
++  const formatCurrency = (amount: number) => formatCurrencyAmount(amount, currency);
+   const t = useTranslations("dashboard.reservations.manualForm");
+   const tCommon = useTranslations("common");
+   const tErrors = useTranslations("errors");
+@@ -1569,7 +1571,7 @@ export function NewReservationForm({
+                   <NewReservationStepDelivery
+                     deliverySettings={deliverySettings}
+                     subtotal={subtotal + tulipInsuranceAmount}
+-                    currency="EUR"
++                    currency={currency}
+                     storeAddress={storeAddress}
+                     locations={storeLocations}
+                     isDeliveryForced={delivery.isDeliveryForced}
+diff --git a/apps/web/messages/zh.json b/apps/web/messages/zh.json
+index b617f33..7daf8dc 100644
+--- a/apps/web/messages/zh.json
++++ b/apps/web/messages/zh.json
+@@ -8287,7 +8287,8 @@
+     "duplicateValue": "重复值",
+     "invalidYoutubeUrl": "YouTube 网址无效",
+     "invalidImageUrl": "图片网址无效",
+-    "color": "颜色格式无效"
++    "color": "颜色格式无效",
++    "invalidPhone": "请输入有效的电话号码"
+   },
+   "upgradeModal": {
+     "upgradeNow": "立即升级",
+diff --git a/packages/ui/package.json b/packages/ui/package.json
+index a7fa43a..05cb75f 100644
+--- a/packages/ui/package.json
++++ b/packages/ui/package.json
+@@ -26,8 +26,6 @@
+     "lucide-react": "^0.562.0",
+     "motion": "^12.38.0",
+     "next-themes": "^0.4.6",
+-    "nucleo-glass": "^1.4.0",
+-    "nucleo-ui-outline-18": "^1.5.0",
+     "radix-ui": "^1.4.3",
+     "react-day-picker": "^9.13.0",
+     "react-phone-number-input": "^3.4.17",
+diff --git a/packages/ui/src/icons/glass.tsx b/packages/ui/src/icons/glass.tsx
+index c716ece..babb21e 100644
+--- a/packages/ui/src/icons/glass.tsx
++++ b/packages/ui/src/icons/glass.tsx
+@@ -1,27 +1,18 @@
+-// Nucleo Glass icons (https://nucleoapp.com) — the glassmorphism set used for
+-// dashboard sidebar navigation. Unlike the monochrome barrels these are
+-// multi-layer SVGs (gradient + blur) that ignore `currentColor`; their palette
+-// is themed globally through the `--nc-*` CSS variables in styles/globals.css.
+-//
+-// License (see /NOTICE): © Nucleo, used under https://nucleoapp.com/license —
+-// NOT covered by the repository license and requires a valid Nucleo license.
+-// The most restrictive standard-license project category is capped at 100
+-// icons, so every icon this app uses must be re-exported from this barrel to
+-// keep the count auditable. Never copy the SVG sources into the repo; they are
+-// consumed from Nucleo's official `nucleo-glass` npm package.
++// Keep the existing public aliases while using the project's Lucide dependency.
++// This modified build does not import or redistribute the upstream Nucleo assets.
+ export {
+-  IconBell as NotificationsGlassIcon,
+-  IconBot as AiAssistantGlassIcon,
+-  IconBox as ProductGlassIcon,
+-  IconCalendar as ReservationsGlassIcon,
+-  IconChartBar as AnalyticsGlassIcon,
+-  IconGear as SettingsGlassIcon,
+-  IconHelpChat as HelpGlassIcon,
+-  IconHouse as HomeGlassIcon,
+-  IconPhone as InstallAppGlassIcon,
+-  IconSparkle2 as WhatsNewGlassIcon,
+-  IconTeam as TeamGlassIcon,
+-  IconUsers as CustomersGlassIcon,
+-  IconWalletContent as AiCreditsGlassIcon,
+-  type IconProps as GlassIconProps,
+-} from "nucleo-glass";
++  Bell as NotificationsGlassIcon,
++  Bot as AiAssistantGlassIcon,
++  Package as ProductGlassIcon,
++  Calendar as ReservationsGlassIcon,
++  ChartColumn as AnalyticsGlassIcon,
++  Settings as SettingsGlassIcon,
++  LifeBuoy as HelpGlassIcon,
++  House as HomeGlassIcon,
++  Smartphone as InstallAppGlassIcon,
++  Sparkles as WhatsNewGlassIcon,
++  UsersRound as TeamGlassIcon,
++  Users as CustomersGlassIcon,
++  Wallet as AiCreditsGlassIcon,
++  type LucideProps as GlassIconProps,
++} from "lucide-react";
+diff --git a/packages/ui/src/icons/index.tsx b/packages/ui/src/icons/index.tsx
+index 15ee991..af2c543 100644
+--- a/packages/ui/src/icons/index.tsx
++++ b/packages/ui/src/icons/index.tsx
+@@ -148,19 +148,19 @@ export {
+ } from "lucide-react";
+ 
+ export {
+-  IconBadgeCheckOutline18 as InstantConfirmationIcon,
+-  IconBagPlusOutline18 as BagPlusIcon,
+-  IconBarcodeOutline18 as UnitTrackingStockIcon,
+-  IconCalendarClockOutline18 as DurationPricingIcon,
+-  IconChatBubbleCheckOutline18 as RequestConfirmationIcon,
+-  IconCubesOutline18 as QuantityStockIcon,
+-  IconDropletOutline18 as ConsumableStockIcon,
+-  IconInfinityOutline18 as UntrackedStockIcon,
+-  IconMapPinOutline18 as LocalPickupIcon,
+-  IconShieldCheckOutline18 as SecurePaymentIcon,
+-  IconTagOutline18 as FlatRatePricingIcon,
+-  IconTruckFastOutline18 as DeliveryTruckIcon,
+-  IconTruckRefreshOutline18 as ReturnTruckIcon,
+-} from "nucleo-ui-outline-18";
++  BadgeCheck as InstantConfirmationIcon,
++  ShoppingBag as BagPlusIcon,
++  Barcode as UnitTrackingStockIcon,
++  CalendarClock as DurationPricingIcon,
++  MessageCircle as RequestConfirmationIcon,
++  Boxes as QuantityStockIcon,
++  Droplet as ConsumableStockIcon,
++  Infinity as UntrackedStockIcon,
++  MapPin as LocalPickupIcon,
++  ShieldCheck as SecurePaymentIcon,
++  Tag as FlatRatePricingIcon,
++  Truck as DeliveryTruckIcon,
++  RotateCcw as ReturnTruckIcon,
++} from "lucide-react";
+ 
+ export { GoogleCalendar as GoogleCalendarIcon } from "./icon.google-calendar";
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index b331bf7..db02dda 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -653,12 +653,6 @@ importers:
+       next-themes:
+         specifier: ^0.4.6
+         version: 0.4.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+-      nucleo-glass:
+-        specifier: ^1.4.0
+-        version: 1.4.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+-      nucleo-ui-outline-18:
+-        specifier: ^1.5.0
+-        version: 1.5.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+       radix-ui:
+         specifier: ^1.4.3
+         version: 1.4.3(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
