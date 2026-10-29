@@ -1,0 +1,372 @@
+{
+  "state": {
+    "status": "RUNNING",
+    "public_url": "https://drinking-vacation-satisfaction-freebsd.trycloudflare.com",
+    "target": "http://[::1]:18780",
+    "local_http_status": 200,
+    "tunnel_ready": true,
+    "public_directory": "C:\\AI\\Public-Server\\public",
+    "version": "2.0.0",
+    "checked_utc": "2026-10-29T10:49:25Z",
+    "download_directory": "C:\\AI\\Public-Server\\shared",
+    "download_url": "https://drinking-vacation-satisfaction-freebsd.trycloudflare.com/download/"
+  },
+  "stage": {
+    "task_id": "AIORG-FILESHARE-20261029-001",
+    "version": "2.0.0",
+    "upstream": "copyparty v1.20.26",
+    "base_url": "http://[::1]:18782",
+    "checks": [
+      {
+        "name": "/",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "/download/",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "/download/?ls",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "/private/qa-private.txt",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "/copyparty.conf",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "/download-owner.json",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "/owner-access.txt",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "/data/shares.db",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "local_owner_without_login",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "visitor_read_only_permissions",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "browser_same_origin_allowed",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "forwarded_ipv4_stays_guest",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "forwarded_ipv6_stays_guest",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "anonymous_upload_denied",
+        "pass": true,
+        "http_status": 403
+      },
+      {
+        "name": "cross_origin_local_write_denied",
+        "pass": true,
+        "http_status": 403
+      },
+      {
+        "name": "local_no_login_upload_exact_bytes",
+        "pass": true,
+        "http_status": 201
+      },
+      {
+        "name": "anonymous_download_uploaded_file",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "range_resume",
+        "pass": true,
+        "http_status": 206
+      },
+      {
+        "name": "chinese_filename_download",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "folder_zip_download",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "anonymous_delete_denied",
+        "pass": true,
+        "http_status": 403
+      },
+      {
+        "name": "windows_junction_escape_denied",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "owner_password_expiry_share_creation",
+        "pass": true,
+        "http_status": 201
+      },
+      {
+        "name": "password_share_guest_denied",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "password_share_correct_password",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "owner_rename",
+        "pass": true,
+        "http_status": 201
+      },
+      {
+        "name": "owner_delete_qa_file",
+        "pass": true,
+        "http_status": 200
+      }
+    ],
+    "passed": 27,
+    "total": 27,
+    "all_pass": true,
+    "credentials_disclosed": false,
+    "local_owner_no_login": true,
+    "timestamp_utc": "2026-10-29T10:43:31Z"
+  },
+  "public": {
+    "task_id": "AIORG-FILESHARE-20261029-001",
+    "version": "2.0.0",
+    "upstream": "copyparty v1.20.26",
+    "base_url": "https://drinking-vacation-satisfaction-freebsd.trycloudflare.com",
+    "checks": [
+      {
+        "name": "/",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "/download/",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "/download/?ls",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "/private/qa-private.txt",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "/copyparty.conf",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "/download-owner.json",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "/owner-access.txt",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "/data/shares.db",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "local_owner_without_login",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "visitor_read_only_permissions",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "browser_same_origin_allowed",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "forged_header_ipv4_blocked_or_guest",
+        "pass": true,
+        "http_status": 403
+      },
+      {
+        "name": "forged_header_ipv6_blocked_or_guest",
+        "pass": true,
+        "http_status": 403
+      },
+      {
+        "name": "anonymous_upload_denied",
+        "pass": true,
+        "http_status": 403
+      },
+      {
+        "name": "cross_origin_local_write_denied",
+        "pass": true,
+        "http_status": 403
+      },
+      {
+        "name": "local_no_login_upload_exact_bytes",
+        "pass": true,
+        "http_status": 201
+      },
+      {
+        "name": "anonymous_download_uploaded_file",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "range_resume",
+        "pass": true,
+        "http_status": 206
+      },
+      {
+        "name": "chinese_filename_download",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "folder_zip_download",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "anonymous_delete_denied",
+        "pass": true,
+        "http_status": 403
+      },
+      {
+        "name": "windows_junction_escape_denied",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "owner_password_expiry_share_creation",
+        "pass": true,
+        "http_status": 201
+      },
+      {
+        "name": "password_share_guest_denied",
+        "pass": true,
+        "http_status": 401
+      },
+      {
+        "name": "password_share_correct_password",
+        "pass": true,
+        "http_status": 200
+      },
+      {
+        "name": "owner_rename",
+        "pass": true,
+        "http_status": 201
+      },
+      {
+        "name": "owner_delete_qa_file",
+        "pass": true,
+        "http_status": 200
+      }
+    ],
+    "passed": 27,
+    "total": 27,
+    "all_pass": true,
+    "credentials_disclosed": false,
+    "local_owner_no_login": true,
+    "timestamp_utc": "2026-10-29T10:46:43Z"
+  },
+  "desktop_controls": [
+    {
+      "name": "打开下载区.cmd",
+      "exists": true
+    },
+    {
+      "name": "管理文件（本机）.cmd",
+      "exists": true
+    },
+    {
+      "name": "打开下载文件夹.cmd",
+      "exists": true
+    },
+    {
+      "name": "下载文件夹（拖文件到这里）.lnk",
+      "exists": true
+    },
+    {
+      "name": "使用说明.txt",
+      "exists": true
+    },
+    {
+      "name": "启动公网服务.cmd",
+      "exists": true
+    },
+    {
+      "name": "停止公网服务.cmd",
+      "exists": true
+    }
+  ],
+  "known_synthetic_leftover_removed": true,
+  "sources_sha256": {
+    "public_server.py": "85d13503cfaeb219261a4d7496cd2b3abd42c2b69ab2c0028a49e7bf3f974bef",
+    "upgrade_file_share.py": "c68107b3231b25db40fba7be868263b9982d42350c8b95f6a8b5a5cb14fdf6b1",
+    "verify_file_share.py": "3c24c470c1e32ac936e307666078e7aa416a389ef2fb2d32d9e792c0faf18741",
+    "public/index.html": "6c0291f2b0f55d9a4c48480a29c278791eb08d1f4b0a6ec2a6dcb587516bd333"
+  },
+  "upstream_sha256": "8f9a0def8a9c15252a06395781ec083372043b60caa80fb33c3d6dafa7f1b40a",
+  "listen_scope": "loopback only",
+  "os_reboot_tested": false,
+  "browser_drag_tested": false,
+  "T_VALID_E2E": "NOT_MEASURED",
+  "new_software_subscription_cost": 0,
+  "experience": {
+    "id": "EXP-DELIVERY-001",
+    "version": "V1",
+    "adopted": true,
+    "action": "Preserve passed results; sequence changes on one instance; no channel switch for app errors."
+  },
+  "checkpoint": {
+    "phase": "VERIFIED",
+    "version": "2.0.0",
+    "upstream": "copyparty v1.20.26",
+    "official_sha256": "8f9a0def8a9c15252a06395781ec083372043b60caa80fb33c3d6dafa7f1b40a",
+    "backup": "C:\\AI\\Public-Server\\backups\\before-share-20261029-184317",
+    "credentials_disclosed": false,
+    "verified_backup": "C:\\AI\\Public-Server\\backups\\verified-share-v2-20261029-184854",
+    "public_checks_passed": 27,
+    "public_checked_utc": "2026-10-29T10:46:43Z"
+  }
+}
