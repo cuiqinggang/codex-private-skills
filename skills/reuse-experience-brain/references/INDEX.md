@@ -16,6 +16,7 @@
 | EXP-PAYPAL-001 | PayPal中国个人卖家、AI服务、MCC、跨境收款授权 | [PAYPAL-ELIGIBILITY.md](PAYPAL-ELIGIBILITY.md) |
 | EXP-GSB-001 | 谷深双擎、DSH V1.6、宿主加载五项、模型回执六项 | [GSB-V16.md](GSB-V16.md) |
 | EXP-RENTAL-001 | 租赁、Louez、REA、AGPL、构建不等于业务交付 | [RENTAL-REUSE.md](RENTAL-REUSE.md) |
+| EXP-FILESHARE-001 | 本机公网文件分享、Copyparty、免费隧道、本机免登录、访客只读、鼠标拖拽 | [FILE-SHARE.md](FILE-SHARE.md) |
 | EXP-DELIVERY-001 | 验收太慢、7分钟、5小时、DSH、本地批量、重复验收、并发启停 | [DELIVERY-EFFICIENCY.md](DELIVERY-EFFICIENCY.md) |
 
 旧资料的继承范围与原日报校验：[INHERITANCE.md](INHERITANCE.md)、[INHERITANCE.json](INHERITANCE.json)。
