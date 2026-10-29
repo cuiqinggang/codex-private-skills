@@ -1,0 +1,145 @@
+{
+  "task_id": "AIORG-PUBLICWEB-20261029-001",
+  "version": "1.0.0",
+  "scope": "LOCAL_PC_THROUGH_PUBLIC_HTTPS_ROUTE",
+  "public_url": "https://wallpapers-quiz-rejected-amplifier.trycloudflare.com",
+  "checked_utc": "2026-10-29T09:28:23Z",
+  "checks": [
+    {
+      "path": "/",
+      "method": "GET",
+      "status": 200,
+      "cache_control": "no-store",
+      "edge": "LAX",
+      "ms": 1779.88,
+      "pass": true,
+      "sha256": "aaa721273257a9a5dcbc1cc166716541f8e5804926c871d3d61142a13ec3fb25"
+    },
+    {
+      "path": "/demo/",
+      "method": "GET",
+      "status": 200,
+      "cache_control": "no-store",
+      "edge": "LAX",
+      "ms": 1464.065,
+      "pass": true
+    },
+    {
+      "path": "/config.json",
+      "method": "GET",
+      "status": 404,
+      "ms": 1444.126,
+      "pass": true
+    },
+    {
+      "path": "/public_server.py",
+      "method": "GET",
+      "status": 404,
+      "ms": 2111.144,
+      "pass": true
+    },
+    {
+      "path": "/logs/tunnel.log",
+      "method": "GET",
+      "status": 404,
+      "ms": 1438.813,
+      "pass": true
+    },
+    {
+      "path": "/../config.json",
+      "method": "GET",
+      "status": 400,
+      "ms": 1439.814,
+      "pass": true
+    },
+    {
+      "path": "/live-check.txt",
+      "method": "GET",
+      "status": 200,
+      "cache_control": "no-store",
+      "edge": "LAX",
+      "ms": 1431.36,
+      "pass": true
+    },
+    {
+      "path": "/live-check.txt",
+      "method": "GET",
+      "status": 200,
+      "cache_control": "no-store",
+      "edge": "LAX",
+      "ms": 1341.859,
+      "pass": true
+    },
+    {
+      "path": "/",
+      "method": "POST",
+      "status": 501,
+      "ms": 1361.61,
+      "pass": true
+    }
+  ],
+  "passed": 9,
+  "total": 9,
+  "all_pass": true,
+  "independent_external_network": "NOT_VERIFIED_EXECUTOR_EGRESS_BLOCKED",
+  "lifecycle": {
+    "stop_ports_closed": true,
+    "stop_disabled_logon": true,
+    "restart_restored_public_https": true,
+    "restart_changed_url": true,
+    "idempotent_start_kept_url": true,
+    "restart_local_observed_ms": 13630,
+    "logon_tasks": {
+      "AIORG-PublicWeb-Origin": {
+        "logon_trigger": true,
+        "enabled": "true",
+        "multiple_instances": "IgnoreNew",
+        "restart_count": "3",
+        "run_level": null
+      },
+      "AIORG-PublicWeb-Tunnel": {
+        "logon_trigger": true,
+        "enabled": "true",
+        "multiple_instances": "IgnoreNew",
+        "restart_count": "3",
+        "run_level": null
+      }
+    },
+    "real_os_reboot_tested": false
+  },
+  "source_hashes": {
+    "public_server.py": "39934d9305750bbf86835b50914ee953848fc084a6c211a85c2f5aff2ff43422",
+    "verify.py": "feb520a442d4de842025c7c451e82085fa4d3edc294381234ef6050f4b97f234",
+    "public/index.html": "aaa721273257a9a5dcbc1cc166716541f8e5804926c871d3d61142a13ec3fb25",
+    "public/demo/index.html": "cb48c1453965ee21773bc582e41a25dc6ec82a282fbe49ebd43b55f758be8a72"
+  },
+  "known_limits": [
+    "Independent external-network device and browser UI clicks unverified",
+    "Full task-to-delivery timer not established; T_VALID_E2E=NOT_MEASURED",
+    "Quick tunnel random hostname changes on restart",
+    "Static demo origin; each dynamic app requires separate authorization and acceptance"
+  ],
+  "capture_utc": "2026-10-29T09:33:25Z",
+  "execution_observation": {
+    "started_utc": "2026-10-29T09:08:19.782Z",
+    "snapshot_utc": "2026-10-29T09:33:40.229Z",
+    "elapsed_ms": 1520447,
+    "full_T_VALID_E2E": "NOT_MEASURED"
+  },
+  "route": {
+    "channel": "A",
+    "provider": "Remote Desktop Commander",
+    "device_probe": "V12_A_PROBE_PASS",
+    "fallbacks_used": []
+  },
+  "isolated_source_verification": {
+    "homepage": true,
+    "no_store": true,
+    "no_directory_listing": true,
+    "no_symlink_escape": true,
+    "no_parent_files": true,
+    "reject_POST": true,
+    "HEAD": true,
+    "environment": "isolated Linux stdlib HTTP worker; distinct from Windows public-route checks"
+  }
+}
