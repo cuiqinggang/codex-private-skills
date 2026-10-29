@@ -8,3 +8,9 @@ LAST_GOOD：成熟项目源码可得，三条build/type-check命令退出码0（
 适用：成熟Web应用复用、逆向工具适用面、构建通过与业务可交付门禁的决策；本项目未闭合的业务质量和成本仍要计入完整T_VALID。
 不适用：把type-check/build退出0当已成熟商业可用、宣称20个并发退款或有数据备份恢复PASS、通过HTTP健康判断完整服务可用、声称复用必然比所有替代路径快；记忆/业务完整T_VALID=NOT_MEASURED。
 原始证据：C:\AI\Rental-N001-20261028\TASK.json、build-results.json、evidence\resume-audit-20261028.json（checked_at 2026-10-28 20:30:19+08:00）；2026-10-28-DSE-INCREMENTAL.md。当前项目CURRENT/Freeze如有更晚回执以其为准，卡片不覆盖原任务状态。
+
+
+## 2026-10-29新增｜历史NOT_VALID被限定实测更新，交付制品仍有版本差
+原20:30 NOT_VALID保留为28日历史。原任务C:\AI\Rental-N001-20261028\evidence\OFFLINE-FINAL-ACCEPTANCE.json报告29日00:33在既有Docker宿主上，镜像保存/加载、全新目录安装、16+15项业务核验、三组各20路库存竞争仅1成功及8张业务表与图片隔离恢复PASS；不等于新物理电脑首次冷安装或真实支付/邮件/AI。
+29日01:18 CLOSURE-1.0.2.json：本地有限功能PASS，日期解析回归5/5及定价边界10项；但旧离线Docker镜像没有这次日期热补丁，热修复只通过函数和构建资源检查，缺同版浏览器实际交互。29日00:33离线归档SHA前缀f5921627与后续交接回执SHA前缀05582674不一致，因不同阶段制品不可混合当唯一当前ZIP；按最终分支原回执与完整校验确认。完整客户接单至交付T_VALID仍NOT_MEASURED。
+原RESULT的experience明确记EXP-RENTAL-001 adopted，表明成熟源码/既有验收被实际采用；不能据此宣称记忆提速。适用：识别旧状态被较新业务证据替代以及源码/编译/本地热补丁/冻结客户安装包的不同认证层级。不适用：旧ZIP已经含新补丁、任意租赁软件复刻成熟、全生命周期自动超期结算。
