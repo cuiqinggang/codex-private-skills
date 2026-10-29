@@ -175,29 +175,7 @@ def activate():
         time.sleep(.25)
     else:
         raise RuntimeError("New origin not ready; restore the recorded backup")
-    controls = manager.desktop_directory() / "我的公网服务器"
-    for filename, action in [("打开下载区.cmd", "downloads"), ("管理文件（本机）.cmd", "admin")]:
-        line = subprocess.list2cmdline([sys.executable, str(ROOT / "public_server.py"), action])
-        (controls / filename).write_text("@echo off\r\n" + line + "\r\n", encoding="ascii")
-    (controls / "打开下载文件夹.cmd").write_text(
-        '@echo off\r\nexplorer.exe "C:\\AI\\Public-Server\\shared"\r\n', encoding="ascii")
-    (controls / "使用说明.txt").write_text(
-        "本机文件与网站分享站 V2.0\n\n"
-        "最简单的用法：把文件拖到「下载文件夹（拖文件到这里）」；别人打开下载区即可下载。\n"
-        "「打开下载区」：查看当前公网下载页面，可以复制网址给别人。\n"
-        "「管理文件（本机）」：直接管理，无需登录；可以拖拽上传、重命名和删除。\n"
-        "公开下载区：C:\\AI\\Public-Server\\shared。只放准备公开的文件。\n"
-        "私有区：C:\\AI\\Public-Server\\private。仅管理员可直接访问，可生成密码/到期分享。\n"
-        "「打开共享目录」仍是原来的网页展示目录 public，用于放静态网站。\n"
-        "访客只能浏览下载，不能上传、改名或删除。\n"
-        "关机、睡眠、断网会暂停服务；重启隧道后网址可能变化，以查看入口为准。\n",
-        encoding="utf-8-sig")
-    # Native folder shortcut accepts Windows Explorer drag-and-drop.
-    shortcut = 'Set s = CreateObject("WScript.Shell")\nSet l = s.CreateShortcut("{}")\nl.TargetPath = "{}"\nl.Save\n'.format(
-        str(controls / "下载文件夹（拖文件到这里）.lnk"), str(ROOT / "shared"))
-    vbs = ROOT / "create-share-shortcut.vbs"
-    vbs.write_text(shortcut, encoding="utf-16")
-    subprocess.run(["cscript.exe", "//nologo", str(vbs)], capture_output=True, check=True, timeout=15)
+    controls = manager.write_share_controls()
     print(json.dumps({"phase": "ACTIVATED", "state": manager.status(),
                       "desktop_controls": str(controls), "public_upload": False}), flush=True)
 

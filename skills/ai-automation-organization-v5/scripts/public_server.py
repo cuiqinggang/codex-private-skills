@@ -138,6 +138,37 @@ def write_controls():
     return folder
 
 
+def write_share_controls():
+    folder = desktop_directory() / "我的公网服务器"
+    folder.mkdir(exist_ok=True)
+    legacy = folder / "其他入口"
+    legacy.mkdir(exist_ok=True)
+    for name in ["打开下载区.cmd", "管理文件（本机）.cmd", "打开下载文件夹.cmd",
+                 "下载文件夹（拖文件到这里）.lnk", "打开共享目录.cmd", "查看公网网址.cmd"]:
+        source = folder / name
+        if source.exists() and not (legacy / name).exists():
+            shutil.move(str(source), str(legacy / name))
+    # Native directory junction: Explorer treats this as a folder, not a command.
+    shared = ROOT / "shared"
+    destination = folder / "放文件（拖到这里即可分享）"
+    if destination.exists():
+        if not os.path.samefile(destination, shared):
+            raise RuntimeError("Existing drop folder points somewhere else")
+    else:
+        command(["cmd.exe", "/d", "/c", "mklink", "/J", str(destination), str(shared)])
+    for name, action in [("本机上传（免登录）.cmd", "admin"), ("给别人下载（打开后复制网址）.cmd", "downloads")]:
+        (folder / name).write_text('@echo off\r\n' + subprocess.list2cmdline(
+            [sys.executable, str(ROOT / "public_server.py"), action]) + '\r\n', encoding="ascii")
+    (folder / "使用说明.txt").write_text(
+        "放文件：把文件拖进「放文件（拖到这里即可分享）」这个文件夹。\n"
+        "也可打开「本机上传（免登录）」，在本机网页上传。\n"
+        "分享：打开「给别人下载」，复制浏览器地址发给别人；新增文件后刷新页面。\n"
+        "给别人下载的公网页面不能接收上传。本机上传地址：http://127.0.0.1:18780/download/\n"
+        "文件夹内的文件会公开，只放准备分享的文件。关机、睡眠、断网时服务暂停。\n",
+        encoding="utf-8-sig")
+    return folder
+
+
 def install(source):
     if os.name != "nt":
         raise RuntimeError("Installation requires Windows")
@@ -266,7 +297,7 @@ def serve():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["install", "start", "stop", "status", "open", "serve", "target", "downloads", "admin"])
+    parser.add_argument("action", choices=["install", "start", "stop", "status", "open", "serve", "target", "downloads", "admin", "repair-controls"])
     parser.add_argument("--cloudflared-source")
     parser.add_argument("--url")
     parsed = parser.parse_args()
@@ -280,6 +311,8 @@ def main():
         start()
     elif parsed.action == "stop":
         stop()
+    elif parsed.action == "repair-controls":
+        output({"status": "CONTROLS_READY", "directory": str(write_share_controls())})
     elif parsed.action == "target":
         url = urllib.parse.urlsplit(parsed.url or "")
         if url.scheme != "http" or url.hostname not in ("127.0.0.1", "::1") or not url.port or url.username or url.password or url.query or url.fragment or url.path not in ("", "/"):

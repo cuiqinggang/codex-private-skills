@@ -1,0 +1,35 @@
+{
+  "task": "AIORG-FILESHARE-DRAG-20261029-002",
+  "version": "2.0.0",
+  "recorded_utc": "2026-10-29T12:09:06Z",
+  "native_drag": {
+    "from": [
+      339,
+      177
+    ],
+    "source_kept": true,
+    "exact_bytes": true,
+    "to": [
+      2028,
+      739
+    ],
+    "destination": "C:\\Users\\A\\Desktop\\我的公网服务器\\放文件（拖到这里即可分享）\\upload-check.txt",
+    "native_mouse_drag": true
+  },
+  "public_url": "https://drinking-vacation-satisfaction-freebsd.trycloudflare.com",
+  "direct_download": "https://drinking-vacation-satisfaction-freebsd.trycloudflare.com/download/upload-check.txt?dl",
+  "desktop_folder_same_target": true,
+  "native_folder_bytes_match": true,
+  "public_download_exact_bytes": true,
+  "public_listing_has_file": true,
+  "public_remains_read_only": true,
+  "local_owner_no_login": true,
+  "browser_web_drag": "NOT_VERIFIED_BROWSER_CONTROL_TIMEOUT",
+  "test_file_sha256": "bc3c7af5a9f516a85ce703f13e6d89edb7cc4fbecaf602c69954fc9286587ea7",
+  "source_sha256": {
+    "public_server.py": "e4553e52d1010a2e3d2dd26e5f89029d524a14dfca466031df9da27dfe296a53",
+    "upgrade_file_share.py": "ec88188d994eaf0f086b5beaf3bd510a51f2b4965b91232f5ed03cb26794b0a4",
+    "test-explorer-drag.ps1": "e80e732d31fb0a6a0a6265b61d79dc77218e5de2d5be2b232b98d53cb5903a05"
+  },
+  "all_required_pass": true
+}
