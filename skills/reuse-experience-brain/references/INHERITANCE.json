@@ -96,9 +96,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-29-DSE-INCREMENTAL.md",
+      "sha256": "78e8e422b8f5d4206fbae8d0f1baa1b7f28ec0c817ba35b01e18b424892cd335",
+      "bytes": 8779,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "11 daily files byte-hashed; 6 original contents read through 2026-10-28; 12 selected cards (10 prior + 2 Oct 28); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
+  "limits": "12 daily files byte-hashed; 7 original contents read through 2026-10-29; 14 selected cards (12 prior Oct 28 + EXP-DELIVERY-001 and EXP-FILESHARE-001 Oct 29); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -149,6 +157,32 @@
       "path": "C:\\AI\\Rental-N001-20261028\\evidence\\resume-audit-20261028.json",
       "content_read": true,
       "evidence_scope": "read-only real-project adoption of HTTP probe vs business QA separation; no business T_VALID"
+    }
+  ],
+  "incremental_case_sources_20261029": [
+    {
+      "experience_id": "EXP-RENTAL-001",
+      "path": "C:\\AI\\Rental-N001-20261028\\evidence\\OFFLINE-FINAL-ACCEPTANCE.json",
+      "content_read": true,
+      "evidence_scope": "Existing Docker host archive and isolated restore PASS; local 1.0.2 hotfix not in original offline image; full T_VALID not measured"
+    },
+    {
+      "experience_id": "EXP-FILESHARE-001",
+      "path": "C:\\AI\\Public-Server\\file-share-drag-acceptance.json",
+      "content_read": true,
+      "evidence_scope": "Native Windows folder Ctrl-drag and public byte readback PASS; browser UI drag unverified"
+    },
+    {
+      "experience_id": "EXP-DELIVERY-001",
+      "path": "C:\\AI\\Public-Server\\file-share-final-acceptance.json",
+      "content_read": true,
+      "evidence_scope": "Original task receipt explicitly adopted earlier delivery-efficiency experience, 27/27 staged/public HTTP contract; business T_VALID memory gain unknown"
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Latest Oct 29 16:23 WSL prewarm failed REQUIRES_DIAGNOSIS, not recovered during review"
     }
   ]
 }
