@@ -1,6 +1,6 @@
-"""Manage a Windows demonstration server using stdlib HTTP and official cloudflared.
+"""Manage a Windows local website or upstream file server with official cloudflared.
 
-No router rules, system proxy changes, new credentials, or additional scheduler.
+No router rules, system proxy changes, or additional scheduler.
 Only the explicit public directory is served. Runtime data never belongs in skills.
 """
 from __future__ import annotations
@@ -26,7 +26,7 @@ import urllib.parse
 import urllib.request
 from xml.sax.saxutils import escape
 
-VERSION = "1.0.0"
+VERSION = "2.0.0"
 ROOT = Path(os.environ.get("AIORG_PUBLIC_ROOT", r"C:\AI\Public-Server"))
 TASKS = {"origin": "AIORG-PublicWeb-Origin", "tunnel": "AIORG-PublicWeb-Tunnel"}
 MARKER = "AIORG_PUBLIC_WEB_V1"
@@ -80,17 +80,22 @@ def task_xml(executable, arguments, sid):
 </Task>'''
 
 
-def register_tasks(settings):
+def register_tasks(settings, roles=None):
     identity = command(["whoami.exe", "/user", "/fo", "csv", "/nh"])
     sid = next(csv.reader(io.StringIO(identity.stdout.decode("utf-8", errors="replace"))))[1]
     commands = {
-        "origin": (sys.executable, subprocess.list2cmdline([str(ROOT / "public_server.py"), "serve"])),
+        "origin": (sys.executable, subprocess.list2cmdline(
+            [str(ROOT / "bin" / "copyparty-sfx.py"), "-c", str(ROOT / "copyparty.conf")]
+            if settings.get("origin_engine") == "copyparty" else
+            [str(ROOT / "public_server.py"), "serve"])),
         "tunnel": (str(ROOT / "bin" / "cloudflared.exe"), subprocess.list2cmdline([
             "tunnel", "--no-autoupdate", "--protocol", "http2", "--metrics",
             "127.0.0.1:18781", "--logfile", str(ROOT / "logs" / "tunnel.log"),
             "--url", settings["target"]])),
     }
     for role, (executable, arguments) in commands.items():
+        if roles is not None and role not in roles:
+            continue
         existing = command(["schtasks.exe", "/Query", "/TN", TASKS[role], "/XML"], False)
         if existing.returncode == 0 and MARKER.encode() not in existing.stdout.replace(b"\x00", b""):
             raise RuntimeError("Task name is owned by another application: " + TASKS[role])
@@ -175,6 +180,9 @@ def status():
              "target": config()["target"], "local_http_status": local_status,
              "tunnel_ready": ready, "public_directory": str(ROOT / "public"),
              "version": VERSION, "checked_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
+    if config().get("origin_engine") == "copyparty":
+        value["download_directory"] = str(ROOT / "shared")
+        value["download_url"] = value["public_url"] + "/download/" if value["public_url"] else None
     save_json(ROOT / "status.json", value)
     if value["public_url"]:
         (ROOT / "CURRENT-URL.txt").write_text(value["public_url"] + "\n", encoding="ascii")
@@ -258,7 +266,7 @@ def serve():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["install", "start", "stop", "status", "open", "serve", "target"])
+    parser.add_argument("action", choices=["install", "start", "stop", "status", "open", "serve", "target", "downloads", "admin"])
     parser.add_argument("--cloudflared-source")
     parser.add_argument("--url")
     parsed = parser.parse_args()
@@ -274,8 +282,10 @@ def main():
         stop()
     elif parsed.action == "target":
         url = urllib.parse.urlsplit(parsed.url or "")
-        if url.scheme != "http" or url.hostname != "127.0.0.1" or not url.port or url.username or url.password or url.query or url.fragment or url.path not in ("", "/"):
+        if url.scheme != "http" or url.hostname not in ("127.0.0.1", "::1") or not url.port or url.username or url.password or url.query or url.fragment or url.path not in ("", "/"):
             parser.error("Use an explicitly authorized http://127.0.0.1:PORT origin")
+        if url.port in (18781, 18782) or (config().get("origin_engine") == "copyparty" and url.port == 18780 and url.hostname != "::1"):
+            parser.error("Reserved local management or metrics endpoint cannot be published")
         http_get(parsed.url)
         stop()
         settings = config()
@@ -287,7 +297,11 @@ def main():
         value = status()
         output(value)
         if parsed.action == "open" and value["public_url"]:
-            os.startfile(value["public_url"])
+            os.startfile(value["public_url"] + ("/download/" if config().get("origin_engine") == "copyparty" else ""))
+        elif parsed.action == "downloads" and value["public_url"]:
+            os.startfile(value["public_url"] + "/download/")
+        elif parsed.action == "admin":
+            os.startfile("http://127.0.0.1:18780/download/")
 
 
 if __name__ == "__main__":
