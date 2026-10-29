@@ -40,3 +40,5 @@ description: "读取和积累共同工作区的经验大脑。用户提到长期
 - [VEDA否决经验](references/VEDA.md)
 - [Windows Harness兼容性](references/HARNESS.md)
 - [HTTP重定向探针](references/HTTP-REDIRECT.md)
+- [本机公网文件分享身份隔离与真实拖拽](references/FILE-SHARE.md)
+- [交付制品与完整计时边界](references/DELIVERY-EFFICIENCY.md)
