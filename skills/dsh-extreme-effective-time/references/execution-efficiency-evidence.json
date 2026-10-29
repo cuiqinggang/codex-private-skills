@@ -1,0 +1,93 @@
+{
+  "task": "DELIVERY-EFFICIENCY-20261029",
+  "method_version": "2.0.0",
+  "as_of": "2026-10-29",
+  "performance_status": "NOT_MEASURED_NEW_END_TO_END_COMPARISON",
+  "rental": {
+    "earlier_receipt": {
+      "completed_beijing": "2026-10-29T00:33:20.856769+08:00",
+      "original_local_acceptance_seconds": 8248.812,
+      "continuous_first_anchor_span_seconds": 19242.218,
+      "offline_anchor_to_receipt_seconds": 8782.067,
+      "full_user_receipt_to_delivery": "NOT_MEASURED"
+    },
+    "local_steps": [
+      {
+        "name": "fresh_directory_install",
+        "seconds": 369.112357
+      },
+      {
+        "name": "native_business_and_three_20_way_competitions",
+        "seconds": 13.482
+      },
+      {
+        "name": "backup_restore_and_eight_table_image_readback",
+        "seconds": 75.902
+      }
+    ],
+    "local_step_sum_seconds": 458.496357,
+    "local_step_scope": "Partial execution timings only; excludes other necessary stages and orchestration gaps; no speedup ratio against initial work.",
+    "subsequent_release": {
+      "zip_validation_completed_utc": "2026-10-28T16:48:58.499571Z",
+      "offline_anchor_to_zip_validation_seconds": 9719.709,
+      "original_and_offline_recorded_interval_sum_seconds": 17968.521,
+      "interval_sum_excludes": "interstage gap, later skill publication/handoff and unknown exact user start",
+      "stopped_instance_restore_seconds": 108.936,
+      "zip_bytes": 1638808344,
+      "zip_sha256": "05582674d54cef6cfbf786b68efe757d038558aaee4d5238bde4a91f39f582f3"
+    },
+    "dependency_install_seconds": 872,
+    "observed_failures": [
+      "network reset and low download speed",
+      "pnpm dependency copying not portable",
+      "entrypoint CRLF",
+      "port and startup migration handling",
+      "script encoding/import/query mapping",
+      "multiple controllers operating the same isolated instance"
+    ],
+    "source_receipts": [
+      "C:\\AI\\Rental-N001-20261028\\evidence\\OFFLINE-FINAL-ACCEPTANCE.json",
+      "C:\\AI\\Rental-N001-20261028\\evidence\\offline-install-timing.json",
+      "C:\\AI\\Rental-N001-20261028\\evidence\\offline-isolated-restore.json",
+      "C:\\AI\\Rental-N001-20261028\\evidence\\docker-offline-build.log",
+      "AI网站与应用高保真复刻能力包 references/rental-offline-kit.md"
+    ]
+  },
+  "dsh": {
+    "order_content_formula_pairs_seconds": [
+      {
+        "current": 156.306,
+        "fused": 77.473
+      },
+      {
+        "current": 188.407,
+        "fused": 106.983
+      }
+    ],
+    "pair_scope": "Historical same content/formula gate; not a software deployment comparison or universal full E2E benchmark.",
+    "mixed_contract_seconds": 322.61,
+    "mixed_scope": "Frozen 240-row report plus four-fact official brief through deterministic QA, recalculation and final review; construction/publication separate; no paired baseline.",
+    "native_browser_new_task_seconds": 172.808,
+    "browser_scope": "Two scoped autonomous browser tasks; not rental install acceptance.",
+    "source_receipts": [
+      "C:\\AI\\AIORG-Shared\\tasks\\DSH-MATURITY-20261025-002\\FINAL.json",
+      "C:\\AI\\AIORG-Shared\\tasks\\DSH-MATURITY-20261025-002\\holdout-v111\\ACCEPTANCE.json"
+    ]
+  },
+  "claims": {
+    "dsh_faster_than_native_rental": "NOT_MEASURED",
+    "five_hours_divided_by_seven_minutes": "INVALID_COMPARISON",
+    "thirty_to_sixty_minutes": "PLANNING_TARGET_NOT_CERTIFIED",
+    "new_business_engine_or_scheduler_added": false
+  },
+  "policy_validation": {
+    "skill_schema": "PASS_THREE_EXISTING_SKILLS",
+    "evidence_arithmetic": "PASS",
+    "independent_forward_use": {
+      "status": "PASS_ONE_READ_ONLY_SCENARIO",
+      "scope": "Rule use for route choice, resource ownership, prior-result reuse and timing claims; supplied project-state scenario, no live business execution.",
+      "result": "Kept A, chose known local recipe baseline, reconciled UNKNOWN before any replay, preserved all quality gates and rejected noncomparable speed claims."
+    },
+    "business_speedup": "NOT_MEASURED"
+  }
+}
