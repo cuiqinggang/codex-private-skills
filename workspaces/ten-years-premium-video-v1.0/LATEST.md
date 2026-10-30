@@ -1,6 +1,17 @@
 # 《十几年》当前权威版本
 
 LATEST_VERSION=v1.4
+LATEST_STATE=workspaces/ten-years-premium-video-v1.0/V1.4_VISUAL_REFERENCE_STATE_20261030.md
+VISUAL_ENGINE_VERSION=2.0.0
+VISUAL_REFERENCE_INDEX=skills/visual-art-engine-performance-ladder/references/TEN-YEARS-V14-VISUAL-REFERENCES-20261030.md
+FINAL_VALID=NO
+SLAP_ACTION_VALID=NO
+NEXT=复用成熟动作参考后修正耳光动作及受影响邻帧，逐级审阅；不自动视频采样。
+
+历史入口保留：
+# 《十几年》当前权威版本
+
+LATEST_VERSION=v1.4
 LATEST_FREEZE=workspaces/ten-years-premium-video-v1.0/V1.4_PAGE_FREEZE.md
 DEEP_ANALYSIS=workspaces/ten-years-premium-video-v1.0/V1.4_BENCHMARK_DEEP_ANALYSIS.md
 STATE=10
