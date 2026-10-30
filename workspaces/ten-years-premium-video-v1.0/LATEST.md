@@ -1,21 +1,15 @@
 # 《十几年》当前权威版本
 
 LATEST_VERSION=v1.4
-LATEST_STATE=workspaces/ten-years-premium-video-v1.0/V1.4_VISUAL_REFERENCE_STATE_20261030.md
+LATEST_STATE=workspaces/ten-years-premium-video-v1.0/H3_V14_REVIEW_DELIVERY_20261030.md
 VISUAL_ENGINE_VERSION=2.0.0
-VISUAL_REFERENCE_INDEX=skills/visual-art-engine-performance-ladder/references/TEN-YEARS-V14-VISUAL-REFERENCES-20261030.md
+VIDEO_ENGINE_VERSION=4.1.0
+ARTIFACT=H3_10S_REVIEW_VIDEO_CREATED
+TECHNICAL_MEDIA_VALID=YES
+ARTISTIC_VALID=NO
 FINAL_VALID=NO
-SLAP_ACTION_VALID=NO
-NEXT=复用成熟动作参考后修正耳光动作及受影响邻帧，逐级审阅；不自动视频采样。
+NEXT=针对女性声音情绪/逐字口型和耳光接触位置做成熟小样修正；保留已生成三段、原声与校对白版，不盲目重跑。
 
-历史入口保留：
-# 《十几年》当前权威版本
+用户已于2026-10-30授权H3制作，覆盖前一状态“不自动采样”的等待约束。10秒审阅版已经生成；不能将其写成已认证精品。
 
-LATEST_VERSION=v1.4
-LATEST_FREEZE=workspaces/ten-years-premium-video-v1.0/V1.4_PAGE_FREEZE.md
-DEEP_ANALYSIS=workspaces/ten-years-premium-video-v1.0/V1.4_BENCHMARK_DEEP_ANALYSIS.md
-STATE=10
-FINAL_VALID=NO
-NEXT=V1.4-01 Master Timeline（手机双证据 + 逐秒动作/对白 + 声音节点 + 成熟样板左右对照审核）
-
-说明：v1.3 继续保留为历史技术基线；v1.4 为当前最高权威，修正了此前先做环境/道具再补作品内核的顺序。
+历史原件保留：V1.4_VISUAL_REFERENCE_STATE_20261030.md、V1.4_PAGE_FREEZE.md、V1.4_BENCHMARK_DEEP_ANALYSIS.md；当前三句对白与≤15秒要求继续有效，历史17/20秒骨架不恢复。
