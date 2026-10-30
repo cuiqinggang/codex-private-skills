@@ -1,7 +1,21 @@
 # Current State
 
 `SKILL_ID=visual-art-engine-performance-ladder`
-`VERSION=1.0.0`
+`VERSION=2.0.0`
+`UPDATED_AT=2026-10-30 Asia/Shanghai`
+
+本轮：人物魅力与关键帧参考资料升级。阅读 ../references/TEN-YEARS-V14-VISUAL-REFERENCES-20261030.md。
+`VISUAL_REFERENCE_ASSETS=15`
+`YOUNG_WOMAN_REFERENCE=USER_ACCEPTED`
+`OTHER_KEYFRAMES=REVIEW_PENDING`
+`SLAP_ACTION_VALID=NO`
+`TEN_YEARS_FINAL_VALID=NO`
+`NEW_PERFORMANCE_CERTIFICATION=NONE`
+下一步：仅修复未通过的动作并逐级验收；本次收录不授权自动视频采样。
+
+## 保留的历史性能状态（原记录，非本轮测试）
+`SKILL_ID=visual-art-engine-performance-ladder`
+`HISTORICAL_STATE_VERSION=1.0.0`
 
 `METHODOLOGY_INTEGRATION=READY`
 `PERFORMANCE_LADDER=READY`
@@ -21,3 +35,5 @@
 `H3_RUN=NO`
 
 Next authorized performance step: `EXECUTE_P0_CURRENT_BASELINE`.
+
+原记录不与本轮参考资料混算，不自动重跑历史P0。
