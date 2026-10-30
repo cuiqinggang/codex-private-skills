@@ -5,7 +5,7 @@
 [TenYears-H3-10s-review.mp4](https://chatgpt.com/library?file_id=libfile_8a1c1d6b4c3c8191a6b9cd36a1377903&account_id=personal)
 Windows主文件：C:\Users\A\Desktop\十几年_H3_20261030\TenYears-H3-10s-REVIEW.mp4
 同目录保留H3原声对照版及中文说明。执行与原始证据：C:\AI\TenYears-H3-20261030\。
-文件SHA256：0b6ee39f3552a60f91cc3bf34ced9fd8188d01d69241294343e9731d22694636；2312708字节；本机与取回副本一致。
+文件SHA256：697d05fcfd83bc1752cf4c2c2df5bec1d078ce4b1b18b8be10be9c60f314731f；2312107字节；本机与取回副本一致。
 
 实际240帧、24fps、10.000秒、576×1024、H.264/AAC。不是原生1080×1920。人物画面实际由本机H3生成，手机插入用已认可图片与正确文字静止呈现，不冒称手机段也是H3运动生成。主体片段正常速度，不变速吞字。
 时间线：S01 32帧（1.333秒）；手机62帧（2.583秒）；S03 73帧（3.042秒）；S04短镜73帧（3.042秒）。
@@ -40,3 +40,6 @@ H3女性原声未取得逐字准确证据：质问被识别为“他叫你老姑
 - ARTIFACT=REVIEW_VIDEO_CREATED；TECHNICAL_MEDIA_VALID=YES；ARTISTIC_VALID=NO；FINAL_VALID=NO；T_VALID_E2E=null。
 - 本轮不是已完成的“精品成片”认证。下一步只修女性声音的愤怒/破音、口型及耳光接触位置；优先复用成熟表演配音与H3现有音频/关键帧条件功能，先小样验收，不把本轮文档升级当成能力认证，也不自动无限重投GPU。
 - 最早本机可核时间锚为11:27:53.900，媒体检查记录约12:09:39；此前检索起点与最终交付均不在此区间，故不将该区间冒充完整T_VALID。
+
+## 最终混音补记
+女声与S03原声分别做响度处理后再混合，桌面与下载版本均已更新，视频仍为240帧/10.000秒，phone段像素检查不变。最终整片ASR识别到两句女声但仍漏掉男声；S03分段两套模型可识别“给我”。因此不把整片ASR当作三句对白听审PASS，不据此继续盲调音量。保留final-asr.json与final-asr-loudness-fixed.json；声音表演与口型仍待审。
