@@ -41,6 +41,12 @@ jobs:
 
       - name: Checkout pinned latest main, only the three skill directories
         if: steps.gate.outputs.run == 'true'
+        # The Windows runner previously failed on long nested source paths.
+        # Git for Windows supports long checkout paths via core.longpaths.
+        env:
+          GIT_CONFIG_COUNT: '1'
+          GIT_CONFIG_KEY_0: core.longpaths
+          GIT_CONFIG_VALUE_0: 'true'
         uses: actions/checkout@v4
         with:
           persist-credentials: false
