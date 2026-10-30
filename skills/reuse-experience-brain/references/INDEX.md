@@ -19,5 +19,9 @@
 | EXP-FILESHARE-001 | 本机公网文件分享、Copyparty、免费隧道、本机免登录、访客只读、鼠标拖拽 | [FILE-SHARE.md](FILE-SHARE.md) |
 | EXP-DELIVERY-001 | 验收太慢、7分钟、5小时、DSH、本地批量、重复验收、并发启停 | [DELIVERY-EFFICIENCY.md](DELIVERY-EFFICIENCY.md) |
 
+| EXP-PI-001 | Pi、OMP、真实重启、单父执行、双子代理、MCP冷就绪 | [PI-REAL-BOOT.md](PI-REAL-BOOT.md) |
+| EXP-BROWSER-001 | 浏览器原页保留、owned tab、全局tab误报、批处理、MCP | [BROWSER-OWNED-TABS.md](BROWSER-OWNED-TABS.md) |
+| EXP-VIDEO-ART-001 | 十几年、H3、口型、台词不准、耳光触点、艺术验收 | [VIDEO-ARTISTIC-GATE.md](VIDEO-ARTISTIC-GATE.md) |
+
 旧资料的继承范围与原日报校验：[INHERITANCE.md](INHERITANCE.md)、[INHERITANCE.json](INHERITANCE.json)。
 新增只更新相关卡片及该行；重复事实按来源事件ID去重，保留旧版本与反例。当前没有证据支持的新问题必须明确无命中。
