@@ -49,7 +49,9 @@ jobs:
           GIT_CONFIG_VALUE_0: 'true'
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          # Credentials stay in the temporary Git checkout only (not the skills ZIP)
+          # so the two private-repository ls-remote freshness gates can authenticate.
+          persist-credentials: true
           fetch-depth: 1
           sparse-checkout: |
             skills/artificial-single-page-extreme-time-engine
