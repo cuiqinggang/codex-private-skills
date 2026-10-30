@@ -14,3 +14,5 @@ LAST_GOOD：原数据盘和容器数据仍在，单一现有Startup VBS存在。
 
 ## 2026-10-29再发｜历史恢复并非当前在线
 原C:\AI\Docker-Autostart-20261024\status.json与startup.jsonl显示2026-10-29 16:23:09+08最新状态REQUIRES_DIAGNOSIS、action=EXCEPTION、prewarmCode=-1、初始进程数0，具体报错Docker WSL prewarm failed；覆盖28日19:25:06历史ENGINE_READY作为当前状态。LAST_GOOD为28日晚本次受控恢复；FIRST_DELTA为29日预热失败。此次每日复盘只读、未执行恢复，不得报道根因已修复或下次登录认证通过。未来按原项目合同和Windows系统权限核账，不在复盘中重新启动/停止Docker。
+## 2026-10-30只读状态｜第三次重复预热异常
+原项目 C:\AI\Docker-Autostart-20261024\status.json 记载 2026-10-30 10:46:39+08:00，status=REQUIRES_DIAGNOSIS、prewarmCode=-1、Docker WSL prewarm failed。28日19:25历史暖态恢复PASS以及29日16:23失败均保留；LAST_GOOD仅历史窗口，FIRST_DELTA为下一次启动预热异常。30日复盘未执行Docker重启或服务修复，也未做实时Engine健康探针；不能声称当前已经恢复、根因永久解决或跨开机无人值守启动PASS。下次复用务必先核最新原状态，不因本经验自行触碰Windows/WSL底座。
