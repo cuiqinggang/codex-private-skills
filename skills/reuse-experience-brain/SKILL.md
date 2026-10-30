@@ -42,3 +42,7 @@ description: "读取和积累共同工作区的经验大脑。用户提到长期
 - [HTTP重定向探针](references/HTTP-REDIRECT.md)
 - [本机公网文件分享身份隔离与真实拖拽](references/FILE-SHARE.md)
 - [交付制品与完整计时边界](references/DELIVERY-EFFICIENCY.md)
+
+- [Pi原文件真实重启与分层就绪/单父优先](references/PI-REAL-BOOT.md)
+- [正式浏览器MCP页面所有权审计](references/BROWSER-OWNED-TABS.md)
+- [视频技术门与表演艺术门分开](references/VIDEO-ARTISTIC-GATE.md)
