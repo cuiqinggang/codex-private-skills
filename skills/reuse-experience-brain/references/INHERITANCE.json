@@ -104,9 +104,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-30-DSE-INCREMENTAL.md",
+      "sha256": "f4ca92d3a2f2b8e947a363804df0e27bcbcc390d3a9acd3dd1f9ff22352d26bd",
+      "bytes": 9624,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "12 daily files byte-hashed; 7 original contents read through 2026-10-29; 14 selected cards (12 prior Oct 28 + EXP-DELIVERY-001 and EXP-FILESHARE-001 Oct 29); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
+  "limits": "13 daily files byte-hashed; 8 original contents read through 2026-10-30; 17 selected cards (14 prior through Oct 29 + EXP-PI-001, EXP-BROWSER-001, EXP-VIDEO-ART-001 Oct 30); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -183,6 +191,32 @@
       "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
       "content_read": true,
       "evidence_scope": "Latest Oct 29 16:23 WSL prewarm failed REQUIRES_DIAGNOSIS, not recovered during review"
+    }
+  ],
+  "incremental_case_sources_20261030": [
+    {
+      "experience_id": "EXP-PI-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-unified-upgrade-20261030\\REAL-BOOT-INDEPENDENT-ACCEPTANCE.json",
+      "content_read": true,
+      "evidence_scope": "real boot local file contract PASS, post-boot synthetic browser manual dependency recovery"
+    },
+    {
+      "experience_id": "EXP-BROWSER-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\browser-capability-absorb-20261030\\B2-FINAL.json",
+      "content_read": true,
+      "evidence_scope": "scoped synthetic UI valid, A/B promotion not accepted"
+    },
+    {
+      "experience_id": "EXP-VIDEO-ART-001",
+      "path": "C:\\AI\\TenYears-H3-20261030\\delivery-review.json",
+      "content_read": true,
+      "evidence_scope": "technical video valid but artistic quality failed"
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Oct 30 10:46 source status WSL prewarm failure, no repair"
     }
   ]
 }
