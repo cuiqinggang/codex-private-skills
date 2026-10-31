@@ -1,0 +1,181 @@
+{
+  "task_id": "AIORG-BACKGROUND-20261031-001",
+  "version": "1.0-R3",
+  "pass": true,
+  "checks": {
+    "brief_exists": true,
+    "brief_schema_and_coverage": true,
+    "aiorg_v5_normal_acceptance_result_exists": true,
+    "aiorg_v5_normal_acceptance_content_qa": true,
+    "aiorg_v5_normal_acceptance_artifact_hashes": true,
+    "aiorg_v5_handoff_acceptance_result_exists": true,
+    "aiorg_v5_handoff_acceptance_content_qa": true,
+    "aiorg_v5_handoff_acceptance_artifact_hashes": true,
+    "after_generation_handoff": true,
+    "confirmed_outputs_not_regenerated": true,
+    "native_completed_7378dea6b39c": true,
+    "native_completed_0b4b43f52003": true,
+    "native_completed_75861b8e2056": true,
+    "one_shot_jobs_disabled": true
+  },
+  "check_count": 14,
+  "accepted_utc": "2026-10-31T03:41:48.134983+00:00",
+  "native_jobs": [
+    {
+      "id": "adbf2b3f1214",
+      "name": "aiorg_v5_normal_acceptance",
+      "state": "completed",
+      "enabled": false,
+      "last_status": "error",
+      "last_run_at": "2026-10-31T11:33:53.121243+08:00"
+    },
+    {
+      "id": "9d66e58ad001",
+      "name": "aiorg_v5_handoff_acceptance",
+      "state": "completed",
+      "enabled": false,
+      "last_status": "error",
+      "last_run_at": "2026-10-31T11:33:53.108888+08:00"
+    },
+    {
+      "id": "7378dea6b39c",
+      "name": "aiorg_v5_brief_acceptance",
+      "state": "completed",
+      "enabled": false,
+      "last_status": "ok",
+      "last_run_at": "2026-10-31T11:36:33.616874+08:00"
+    },
+    {
+      "id": "0b4b43f52003",
+      "name": "aiorg_v5_normal_acceptance-r2",
+      "state": "completed",
+      "enabled": false,
+      "last_status": "ok",
+      "last_run_at": "2026-10-31T11:41:27.368428+08:00"
+    },
+    {
+      "id": "75861b8e2056",
+      "name": "aiorg_v5_handoff_acceptance-r2",
+      "state": "completed",
+      "enabled": false,
+      "last_status": "ok",
+      "last_run_at": "2026-10-31T11:41:27.693981+08:00"
+    }
+  ],
+  "executions": [
+    {
+      "id": "0dd4b8000363497da5e50f33d1d2eae1",
+      "job_id": "adbf2b3f1214",
+      "source": "builtin",
+      "pid": 1912,
+      "status": "failed",
+      "claimed_at": "2026-10-31T11:33:50.741480+08:00",
+      "started_at": "2026-10-31T11:33:51.167574+08:00",
+      "finished_at": "2026-10-31T11:33:53.130146+08:00",
+      "error": "Script exited with code 1\nstdout:\n{\"status\": \"FAILED\", \"returncode\": 1, \"detail\": \"Traceback (most recent call last):\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\independent_delivery.py\\\", line 182, in <module>\\n    main()\\n    ~~~~^^\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\independent_delivery.py\\\", line 178, in main\\n    print(json.dumps(submit(a, r), ensure_ascii=True))\\n                     ~~~~~~^^^^^^\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\independent_delivery.py\\\", line 113, in submit\\n    scope, task, job = r.job_ref(payload)\\n                       ~~~~~~~~~^^^^^^^^^\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\order_runtime.py\\\", line 64, in job_ref\\n    raise Reject('TEST_TASK_PREFIX_REQUIRED', 400)\\ndelivery_runtime.Reject: TEST_TASK_PREFIX_REQUIRED\\n\"}",
+      "delivery_outcome": "suppressed",
+      "scheduled_instant": "2026-10-31T03:33:06.270088+00:00"
+    },
+    {
+      "id": "f702e2fc59f449e9a5f30447f610d91a",
+      "job_id": "9d66e58ad001",
+      "source": "builtin",
+      "pid": 1912,
+      "status": "failed",
+      "claimed_at": "2026-10-31T11:33:50.776548+08:00",
+      "started_at": "2026-10-31T11:33:51.271457+08:00",
+      "finished_at": "2026-10-31T11:33:53.116137+08:00",
+      "error": "Script exited with code 1\nstdout:\n{\"status\": \"FAILED\", \"returncode\": 1, \"detail\": \"Traceback (most recent call last):\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\independent_delivery.py\\\", line 182, in <module>\\n    main()\\n    ~~~~^^\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\independent_delivery.py\\\", line 178, in main\\n    print(json.dumps(submit(a, r), ensure_ascii=True))\\n                     ~~~~~~^^^^^^\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\independent_delivery.py\\\", line 113, in submit\\n    scope, task, job = r.job_ref(payload)\\n                       ~~~~~~~~~^^^^^^^^^\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\order_runtime.py\\\", line 64, in job_ref\\n    raise Reject('TEST_TASK_PREFIX_REQUIRED', 400)\\ndelivery_runtime.Reject: TEST_TASK_PREFIX_REQUIRED\\n\"}",
+      "delivery_outcome": "suppressed",
+      "scheduled_instant": "2026-10-31T03:33:06.270088+00:00"
+    },
+    {
+      "id": "e2084a47c88d43ccb6012f74cf9c231b",
+      "job_id": "7378dea6b39c",
+      "source": "builtin",
+      "pid": 1912,
+      "status": "completed",
+      "claimed_at": "2026-10-31T11:34:50.740185+08:00",
+      "started_at": "2026-10-31T11:34:51.098548+08:00",
+      "finished_at": "2026-10-31T11:36:33.623037+08:00",
+      "error": null,
+      "delivery_outcome": "suppressed",
+      "scheduled_instant": "2026-10-31T03:33:54.777241+00:00"
+    },
+    {
+      "id": "cb4e2d5f470d4328887b9eae4bac8128",
+      "job_id": "0b4b43f52003",
+      "source": "builtin",
+      "pid": 1912,
+      "status": "failed",
+      "claimed_at": "2026-10-31T11:35:50.721313+08:00",
+      "started_at": "2026-10-31T11:35:51.271476+08:00",
+      "finished_at": "2026-10-31T11:35:55.734844+08:00",
+      "error": "Script exited with code 1\nstdout:\n{\"status\": \"FAILED\", \"returncode\": 1, \"detail\": \"Traceback (most recent call last):\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\independent_delivery.py\\\", line 182, in <module>\\n    main()\\n    ~~~~^^\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\independent_delivery.py\\\", line 178, in main\\n    print(json.dumps(submit(a, r), ensure_ascii=True))\\n                     ~~~~~~^^^^^^\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\independent_delivery.py\\\", line 137, in submit\\n    raise RuntimeError('NOT_COMMITTED_RETAIN_ORIGINAL_TASK_AND_RECONCILE')\\nRuntimeError: NOT_COMMITTED_RETAIN_ORIGINAL_TASK_AND_RECONCILE\\n\"}",
+      "delivery_outcome": "suppressed",
+      "scheduled_instant": "2026-10-31T03:35:12.914997+00:00"
+    },
+    {
+      "id": "3e090de934e8469986bfcf6d4420f7c4",
+      "job_id": "75861b8e2056",
+      "source": "builtin",
+      "pid": 1912,
+      "status": "failed",
+      "claimed_at": "2026-10-31T11:35:50.729174+08:00",
+      "started_at": "2026-10-31T11:35:51.286753+08:00",
+      "finished_at": "2026-10-31T11:35:55.346520+08:00",
+      "error": "Script exited with code 1\nstdout:\n{\"status\": \"FAILED\", \"returncode\": 1, \"detail\": \"Traceback (most recent call last):\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\independent_delivery.py\\\", line 182, in <module>\\n    main()\\n    ~~~~^^\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\independent_delivery.py\\\", line 178, in main\\n    print(json.dumps(submit(a, r), ensure_ascii=True))\\n                     ~~~~~~^^^^^^\\n  File \\\"C:\\\\Users\\\\A\\\\Documents\\\\DSH-Workspace\\\\aiorg-independent-handoff-20261029-r2\\\\service\\\\independent_delivery.py\\\", line 137, in submit\\n    raise RuntimeError('NOT_COMMITTED_RETAIN_ORIGINAL_TASK_AND_RECONCILE')\\nRuntimeError: NOT_COMMITTED_RETAIN_ORIGINAL_TASK_AND_RECONCILE\\n\"}",
+      "delivery_outcome": "suppressed",
+      "scheduled_instant": "2026-10-31T03:35:12.914997+00:00"
+    },
+    {
+      "id": "d39eb9a3c6ad4ba9a18333b5728872db",
+      "job_id": "0b4b43f52003",
+      "source": "builtin",
+      "pid": 1912,
+      "status": "completed",
+      "claimed_at": "2026-10-31T11:40:50.767798+08:00",
+      "started_at": "2026-10-31T11:40:56.101476+08:00",
+      "finished_at": "2026-10-31T11:41:27.381118+08:00",
+      "error": null,
+      "delivery_outcome": "suppressed",
+      "scheduled_instant": "2026-10-31T03:40:29.484139+00:00"
+    },
+    {
+      "id": "67e13e717634446eb4ee043adc0e9f6d",
+      "job_id": "75861b8e2056",
+      "source": "builtin",
+      "pid": 1912,
+      "status": "completed",
+      "claimed_at": "2026-10-31T11:40:51.485366+08:00",
+      "started_at": "2026-10-31T11:40:56.548601+08:00",
+      "finished_at": "2026-10-31T11:41:27.700627+08:00",
+      "error": null,
+      "delivery_outcome": "suppressed",
+      "scheduled_instant": "2026-10-31T03:40:29.484139+00:00"
+    }
+  ],
+  "durations": {
+    "7378dea6b39c": {
+      "native_execution_seconds": 102.524489,
+      "scheduled_to_terminal_seconds": 158.845796
+    },
+    "0b4b43f52003": {
+      "native_execution_seconds": 31.279642,
+      "scheduled_to_terminal_seconds": 57.896979
+    },
+    "75861b8e2056": {
+      "native_execution_seconds": 31.152026,
+      "scheduled_to_terminal_seconds": 58.216488
+    }
+  },
+  "initial_schedule_request_to_this_independent_readback_seconds": 561.864895,
+  "full_enhancement_T_VALID": "NOT_MEASURED_initial_discovery_before_anchor",
+  "actual_cost": "NOT_MEASURED",
+  "failure_takeovers_by_human": 0,
+  "engineering_repairs": 3,
+  "semantic_classification_independent_test": false,
+  "brief_scope": "synthetic labeled input; file generation, coverage and schema only",
+  "account_business_status": "NOT_CONFIGURED_OR_NOT_CERTIFIED",
+  "full_reboot": "NOT_TESTED"
+}
