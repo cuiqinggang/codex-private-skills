@@ -65,5 +65,21 @@
     "default": "read_only_and_local_brief",
     "send_purchase_pay_trade": "requires explicit specific task authorization"
   },
-  "acceptance": "separate actual account tests, not fixture outputs"
+  "acceptance": "separate actual account tests, not fixture outputs",
+  "preparation_goal": "CAPABILITY_ASSEMBLY_FIRST_REAL_BUSINESS_VALIDATION_DEFERRED",
+  "account_configuration_is_capability_build_blocker": false,
+  "readiness_definitions": {
+    "MISSING_COMPONENT": "只有方案或技能说明、所需执行组件未接入，仍为待补齐",
+    "ASSEMBLED_PENDING_BUSINESS_VALIDATION": "执行组件已接入，调用合同/依赖/授权/错误恢复/输出验收齐全，具体业务未实测",
+    "VERIFIED_SCOPED": "对应真实场景已有实际结果和独立验收，只覆盖该场景"
+  },
+  "activation_policy": "接到明确任务后复用组件、配置来源、完成必要授权并验收；不因未提供业务参数而停下独立能力准备，不预先启用真实账户监测",
+  "unverified_specializations": [
+    "receipt OCR and purchase-list deduplication",
+    "cross-site shopping cart writes",
+    "broker-specific positions/options sync",
+    "specific work-platform integration",
+    "main/backup equivalence for those external-account businesses"
+  ],
+  "background_core_evidence": "references/background-runtime-acceptance.json: 14/14 scoped checks, not four-account-business certification"
 }
