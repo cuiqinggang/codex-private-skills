@@ -112,9 +112,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-10-31-DSE-INCREMENTAL.md",
+      "sha256": "f00e89b2b97c3359470d90de4ff74a9c54feb315af15f25722cf9175b638d292",
+      "bytes": 11643,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "13 daily files byte-hashed; 8 original contents read through 2026-10-30; 17 selected cards (14 prior through Oct 29 + EXP-PI-001, EXP-BROWSER-001, EXP-VIDEO-ART-001 Oct 30); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
+  "limits": "14 daily files byte-hashed; 9 original contents read through 2026-10-31; 21 selected cards (17 prior through Oct30 + four new Oct31); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -218,5 +226,50 @@
       "content_read": true,
       "evidence_scope": "Oct 30 10:46 source status WSL prewarm failure, no repair"
     }
-  ]
+  ],
+  "incremental_case_sources_20261031": [
+    {
+      "experience_id": "EXP-N8N-001",
+      "path": "C:\\AI\\n8n\\updates\\20261031-2457\\upgrade-result.json",
+      "content_read": true,
+      "evidence_scope": "2.45.5 to 2.45.7 digest/workflow hash and local HTTP healthy at 11:16; no all-workflow E2E"
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Oct31 10:47 repeated prewarm fail then 11:07 ENGINE_READY; reliability and root cause unknown"
+    },
+    {
+      "experience_id": "EXP-DEVSPACE-001",
+      "path": "C:\\AI\\DevSpace-Benchmark-20261031\\DevSpace-Comprehensive-R6.md",
+      "content_read": true,
+      "evidence_scope": "100 native tiny read probes, scoped long task and eight SDK injected faults; D not global default"
+    },
+    {
+      "experience_id": "EXP-HERMES-BG-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\aiorg-background-20261031\\ACCEPTANCE.json",
+      "content_read": true,
+      "evidence_scope": "14/14 bounded synthetic/native cron and order handoff; no real account and no full reboot"
+    },
+    {
+      "experience_id": "EXP-BROWSER-ATTACH-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\aiorg-crossweb-20261031\\FINAL-STATUS.json",
+      "content_read": true,
+      "evidence_scope": "primary scoped public UI passed, backup and handoff not valid; Playwright all-page attach stall source audit"
+    },
+    {
+      "experience_id": "EXP-PI-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-dsh-browser-full-compare-20261031\\full-dsh\\AUDIT-CORRECTION.json",
+      "content_read": true,
+      "evidence_scope": "single full-browser sample originally false-negative due to uppercase SHA digest; corrected PASS; no general speed certification"
+    },
+    {
+      "experience_id": "EXP-VIDEO-ART-001",
+      "path": "C:\\AI\\TenYears-Animatic-20261030\\R9\\delivery-state.json",
+      "content_read": true,
+      "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
+    }
+  ],
+  "latest_incremental_date": "2026-10-31"
 }
