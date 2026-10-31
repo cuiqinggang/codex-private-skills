@@ -1,0 +1,19 @@
+{
+  "workspace": "C:\\Users\\A\\Documents\\DSH-Workspace\\aiorg-independent-handoff-20261029-r2",
+  "recipe_scripts": "C:\\AI\\DeepSeek-Harness-Trial\\dsh-home-mature-agent\\skills\\dsh-mature-capabilities\\scripts",
+  "checker_file": "C:\\AI\\DeepSeek-Harness-Trial\\dsh-home-mature-agent\\skills\\dsh-mature-capabilities\\scripts\\verify_order_pack.py",
+  "continuity_file": "C:\\AI\\DeepSeek-Harness-Trial\\dsh-home-mature-agent\\skills\\reasonix-continuity\\lib\\continuity.py",
+  "backup_entry": "C:\\Users\\A\\Documents\\DSH-Workspace\\gsb-pi-google-v2-20261031\\run_backup.py",
+  "token_file": "C:\\AI\\n8n\\secrets\\reasonix.token",
+  "port": 8794,
+  "webhook_prod": "http://127.0.0.1:5678/webhook/aiorg-orders-prod-v1",
+  "webhook_test": "http://127.0.0.1:5678/webhook/aiorg-orders-test-v1",
+  "dependency_sha256": {
+    "C:\\AI\\DeepSeek-Harness-Trial\\dsh-home-mature-agent\\skills\\dsh-mature-capabilities\\scripts\\business_pack.py": "18f7f5f90b48a5d77a5059670f41ccf77c09077ae83614a6844f8ae2c6277d4e",
+    "C:\\AI\\DeepSeek-Harness-Trial\\dsh-home-mature-agent\\skills\\dsh-mature-capabilities\\scripts\\verify_order_pack.py": "ab93ff0d1d9b5b7c1f7ac6b10b8895d4c7d335fedaf6f8914377e06ece286dff",
+    "C:\\AI\\DeepSeek-Harness-Trial\\dsh-home-mature-agent\\skills\\reasonix-continuity\\lib\\continuity.py": "20988cbb1b8e50fc73a582beb46add2be0d572515d4b4b36f0906fb0f8e3f121"
+  },
+  "backup_port": 8795,
+  "application_version": "order-independent-pi-2.0",
+  "peer_repair_enabled": false
+}
