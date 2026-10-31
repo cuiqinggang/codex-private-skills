@@ -1,0 +1,62 @@
+# 后台智能体补强分支 V1（2026-10-31）
+任务：AIORG-BACKGROUND-20261031-001。组织仍为V5，备用仍为V1.6。
+
+## 成熟路线比较
+| 路线 | 已有资产与成熟机制 | 代价/反例 | 决定 |
+|---|---|---|---|
+| Hermes原生后台 | 本机0.21.5网关在线；原生cron、持久执行历史、local交付、monitor变化抑制、continuity；现成业务蓝图 | 账户连接须单独完成；UNKNOWN不会自动证明成功；官方新版功能不等于本机实测 | 本次后台接单首选 |
+| Pi/DSH＋原Windows任务计划 | 保留原统一执行入口、检查点、独立订单主备、已有专业技能 | 浏览器完全无人值守冷启动仍未认证；不为此重复造队列 | 保留为执行能力与已认证恢复配方 |
+| 现有n8n | 原生触发器、工作流历史、Wait、Error Trigger及人工审批 | 本次不修改正在另行更新的n8n；增加工作流维护，不预称更快 | 有明确连接器净收益时选用，不作为额外必需层 |
+
+这是基于当前兼容性和接入工作量的选择，未做三个完整平台的同合同计时比较，不能宣称全局最快。
+
+## 复用入口
+- Hermes原生CLI：C:\Users\A\.hermes\hermes-agent\venv\Scripts\python.exe C:\Users\A\.hermes\hermes-agent\hermes_cli\main.py
+- 每次显式设置HERMES_HOME=C:\Users\A\.hermes；不带该变量可能误读AppData\Local\hermes。
+- 已安装宿主技能：C:\Users\A\.hermes\skills\aiorg-v5-background-runtime\SKILL.md
+- 本次证据根：C:\Users\A\Documents\DSH-Workspace\aiorg-background-20261031
+- 主备订单入口：原aiorg-independent-handoff-20261029-r2\deliver.cmd，复用原filelock、continuity、独立20项校验器。
+- 使用原cron create/edit/pause/resume/runs；不直接改jobs.json，不建立另一调度器或复制凭据。
+- no-agent脚本必须位于当前HERMES_HOME/scripts内。确定性任务用--no-agent；需要理解归纳时才使用模型。
+- 所有本次任务只交付local，不向他人发消息，不下单、付款、交易或修改外部账号。
+
+## 四类业务的成熟补齐路径
+| 业务 | 复用成熟资产 | 上线依赖与验收 |
+|---|---|---|
+| 邮箱分类/账单 | 已装email-inbox-triage、google-workspace；原生important-mail、bill-renewal-watch | 确定真实账号/时间窗/分类标准/提醒去向；Hermes原生Google授权检查当前NOT_AUTHENTICATED；ChatGPT连接器授权不可搬运；真邮件增量/分页/去重/失效恢复待验收 |
+| 工作助理/简报 | morning-brief、weekly-review；现有工作平台官方连接器；原生continuity | 确定平台和只读范围；真实跨来源引用、待办和截止时间覆盖；发送与审批另按明确授权 |
+| 购物/价格 | 已装product-price-monitor；原生price-watch；原正式浏览器和图片工具 | 真实商品URL、规格、数量、运费税费币种、购买记录、阈值和通知目标；一次真实前台抓取成功后才建监测；购物车/小票OCR去重另验 |
+| 持仓/期权提醒 | 券商受支持只读接口＋合规行情源＋原生monitor/cron | 券商和账户、行情时间戳/延迟、阈值、期权合约/到期时区；本次未连接证券账户，不能用普通网页行情冒充持仓实时同步 |
+
+蓝图只是模板，技能只是方法；依赖就绪、原生调用、成品验收分别记录。数据源未接入时保持待配置，禁止伪造“持续监测中”。
+
+## 主备及未知状态
+正常时单端独立；故障后必须确认旧执行者已停止并取得原锁，沿同任务号、输入哈希与检查点续接。仅订单合同继承其限定故障认证；任意邮箱、购物、交易或所有智能体任务不因此等效。
+Hermes本机原生执行历史区分completed/failed/unknown；unknown不得自动变成重发授权。整机重启、磁盘损坏、长期无人值守仍单独待验。
+
+## 本次验收
+以ACCEPTANCE.json及RESULT.md为准；保留首次任务号前缀错误和原失败回执。首次误用系统Python导入Hermes出现ruamel缺失，改用现有Hermes解释器，未安装依赖。首次Google检查误读AppData默认home，改为显式HERMES_HOME后确认本机实际未授权。不得将这些修正隐藏或从完整用时中排除。
+
+## 官方来源
+- https://hermes-agent.nousresearch.com/docs/user-guide/features/cron
+- https://hermes-agent.nousresearch.com/docs/reference/automation-blueprints-catalog
+- https://docs.openclaw.ai/automation/cron-jobs/how-it-works
+- https://docs.n8n.io/build/flow-logic/handle-errors-gracefully.md
+
+## 新增现实结果（2026-10-31 11:41:48，北京时间）
+最终14/14基础闭环检查PASS。正常订单与生成后退出接续各通过原20/20内容QA，四文件哈希读回通过；接续前后四文件SHA256及mtime均相同，generation_count=1。全部测试由原网关builtin定时触发，终态写入原执行账本，单次任务完成后全部停用。未改变原有每周任务。
+
+| 场景 | 原生执行至终态 | 计划触发时刻至终态 |
+|---|---|---|
+| 正常订单 | 00:31:280 | 00:57:897 |
+| 生成后主进程退出→备用继承 | 00:31:152 | 00:58:216 |
+| 四条合成事件→本机简报 | 01:42:524 | 02:38:846 |
+
+最初创建本次任务至最终独立读回09:21:865，包含本测试中的等待、失败、修复与验收；不含前置研究和最终技能保存，因此完整增强T_VALID仍NOT_MEASURED。各场景一次，不是中位数；没有跨平台完整同合同提速对照。实际总成本NOT_MEASURED。用户故障接管0，GPT工程修复3类，不能称工程无人值守自修复。
+
+重要选路：原生cron默认约60秒轮询，本次还出现启动/排队开销。它用于定时或变化监测；即时订单仍走已验收原直达入口，不把它们强制绕cron，更不宣称这次让订单更快。秒级低延迟监测须单独选数据源和事件入口。
+
+简报输入为带标签合成数据，只验收本机文件读取、成品结构及四事件覆盖；没有独立验证语义分类或真实邮箱业务。股票合成事件明确报告数据源缺失，未连接证券账户。
+更细证据：[基础验收快照](background-runtime-acceptance.json)。本机证据仍保存在本分支所列原路径。
+
+已修正：测试任务号必须order-test-前缀；跨Python解释器调用在子进程环境移除PYTHONPATH/PYTHONHOME/VIRTUAL_ENV/__PYVENV_LAUNCHER__，避免Hermes依赖覆盖Python313；终态一次性任务使用原生cron resume --at重新预约。保留首次失败与R2环境失败，恢复仍沿原业务任务号，未生成/未提交/无部分out核账后才接续。
