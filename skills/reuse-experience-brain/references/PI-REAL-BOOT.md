@@ -14,3 +14,6 @@ LAST_GOOD：原本地文件任务ID、冻结输入、10个检查点及原会话�
 适用：对原有任务计划、持久检查点、同一原用户和依赖就绪的分层核账；相同质量下考虑单父/子代理分流。不适用：任意账号恰好一次、已认证完全无人值守开机、第三方登录网站、由局部耗时推算全系统收益、替代现有Windows A→B→C通道。
 
 原证据：C:\Users\A\Documents\DSH-Workspace\pi-unified-upgrade-20261030\REAL-BOOT-INDEPENDENT-ACCEPTANCE.json、FINAL-CHECKPOINT.json、FORMAL-MCP-POST-BOOT-HELPER-ACCEPTANCE.json、browser-boot-20261030\BUSINESS-INDEPENDENT-ACCEPTANCE.json、PARALLEL-COMPARISON-FINAL.json、FILE-REPAIRED-ACCEPTANCE.json。原合同/Freeze及当前状态仍以原项目控制文件为准；2026-10-30-DSE-INCREMENTAL.md是回顾而非独立运行证据。
+
+## 2026-10-31追加｜Pi/DSH正式浏览器限定单轮对照
+在相近正式MCP测试合同（保留原tab、只关自有tab、CSV15行下载/修订、报告SHA）下，原full-pi/ACCEPTANCE.json为PASS/119.202秒，full-dsh初版ACCEPTANCE.json为NOT_VALID/243.819秒；随后AUDIT-CORRECTION.json指出该FAIL仅由于将十六进制SHA大小写文本作严格匹配，原报告的大写digest与原CSV字节一致，更正为PASS，保留旧审计记录。此处只有一轮、两臂工序与成本边界可能不同；不能发布全业务稳定排名，不等于记忆净T_VALID提速。原证据位于C:\Users\A\Documents\DSH-Workspace\pi-dsh-browser-full-compare-20261031\full-pi和full-dsh。该项目原实际窗口为10月31日18:44—18:51北京时间。
