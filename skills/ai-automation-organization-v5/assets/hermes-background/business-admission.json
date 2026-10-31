@@ -1,0 +1,69 @@
+{
+  "version": "1.0",
+  "state": "NOT_ENABLED_PENDING_REAL_SOURCE_CONTRACT",
+  "runtime": "existing Hermes native cron",
+  "jobs_created": false,
+  "routes": [
+    {
+      "business": "mail",
+      "native_blueprints": [
+        "important-mail",
+        "bill-renewal-watch"
+      ],
+      "skills": [
+        "email-inbox-triage",
+        "google-workspace"
+      ],
+      "required": [
+        "account and native authorized connector",
+        "time window and classification criteria",
+        "delivery destination"
+      ],
+      "observed_blocker": "canonical Hermes Google setup --check: NOT_AUTHENTICATED"
+    },
+    {
+      "business": "work",
+      "native_blueprints": [
+        "morning-brief",
+        "weekly-review"
+      ],
+      "required": [
+        "authorized work platform and calendar/mail sources",
+        "time window",
+        "briefing destination"
+      ]
+    },
+    {
+      "business": "shopping",
+      "native_blueprints": [
+        "price-watch"
+      ],
+      "skills": [
+        "product-price-monitor"
+      ],
+      "required": [
+        "exact product URLs and variants",
+        "shipping tax currency quantity",
+        "purchase records and desired threshold",
+        "successful foreground fetch",
+        "destination"
+      ]
+    },
+    {
+      "business": "positions",
+      "required": [
+        "broker supported read-only account connection",
+        "timestamped market data source and expected latency",
+        "position and option identifiers",
+        "user-defined alert thresholds",
+        "destination"
+      ],
+      "trade_enabled": false
+    }
+  ],
+  "permissions": {
+    "default": "read_only_and_local_brief",
+    "send_purchase_pay_trade": "requires explicit specific task authorization"
+  },
+  "acceptance": "separate actual account tests, not fixture outputs"
+}
