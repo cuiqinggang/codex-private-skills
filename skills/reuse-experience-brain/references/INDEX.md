@@ -23,5 +23,12 @@
 | EXP-BROWSER-001 | 浏览器原页保留、owned tab、全局tab误报、批处理、MCP | [BROWSER-OWNED-TABS.md](BROWSER-OWNED-TABS.md) |
 | EXP-VIDEO-ART-001 | 十几年、H3、口型、台词不准、耳光触点、艺术验收 | [VIDEO-ARTISTIC-GATE.md](VIDEO-ARTISTIC-GATE.md) |
 
+| EXP-N8N-001 | n8n、安全通告、2.45.7、镜像digest、工作流Hash、回归探针 | [N8N-SECURITY-20261031.md](N8N-SECURITY-20261031.md) |
+| EXP-DEVSPACE-001 | DevSpace、D通道、3秒软期限、只读额外探针、UNKNOWN核账、MCP重连 | [DEVSPACE-D-20261031.md](DEVSPACE-D-20261031.md) |
+| EXP-BROWSER-ATTACH-001 | Playwright、connectOverCDP、共享11页、初始化卡住、noDefaults | [BROWSER-ATTACH-20261031.md](BROWSER-ATTACH-20261031.md) |
+| EXP-HERMES-BG-001 | Hermes后台cron、订单接续、order-test前缀、PYTHONPATH环境冲突 | [HERMES-BACKGROUND-20261031.md](HERMES-BACKGROUND-20261031.md) |
+
 旧资料的继承范围与原日报校验：[INHERITANCE.md](INHERITANCE.md)、[INHERITANCE.json](INHERITANCE.json)。
 新增只更新相关卡片及该行；重复事实按来源事件ID去重，保留旧版本与反例。当前没有证据支持的新问题必须明确无命中。
+
+2026-10-31：新增4张脱敏卡，Docker、Pi、视频旧卡只追加当日边界。没有新的明确共享经验adopt/reject原任务回执，不记录虚假复用；完整记忆净T_VALID仍NOT_MEASURED。
