@@ -46,3 +46,9 @@ description: "读取和积累共同工作区的经验大脑。用户提到长期
 - [Pi原文件真实重启与分层就绪/单父优先](references/PI-REAL-BOOT.md)
 - [正式浏览器MCP页面所有权审计](references/BROWSER-OWNED-TABS.md)
 - [视频技术门与表演艺术门分开](references/VIDEO-ARTISTIC-GATE.md)
+- [n8n安全升级限定回归](references/N8N-SECURITY-20261031.md)
+- [DevSpace D通道3秒软期限及UNKNOWN核账](references/DEVSPACE-D-20261031.md)
+- [共享CDP浏览器全页面附着卡顿](references/BROWSER-ATTACH-20261031.md)
+- [Hermes原生后台调度与订单接续](references/HERMES-BACKGROUND-20261031.md)
+
+2026-10-31仅新增有来源的经验卡与导航，不改变本技能版本，不替换正式执行大脑、Windows A→B→C通道或任何原专业Freeze。原日报及项目证据仍留C盘，经验完整T_VALID净收益NOT_MEASURED。
