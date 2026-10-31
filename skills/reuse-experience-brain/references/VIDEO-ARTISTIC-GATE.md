@@ -10,3 +10,6 @@ LAST_GOOD：原渲染合成、文件哈希、解码、音轨均通过技术验�
 适用：影视生成工作流中技术门与编剧/镜头/表演门分离；H3人物动作及中文台词核查。不适用：将本地评审判为合格成片、把词面精确当口型表演精确、将此前厨房124帧图生视频历史复现当本短片艺术通过、推断完整T_VALID。
 
 原证据：C:\AI\TenYears-H3-20261030\delivery-review.json、dialogue-review.json、final-asr-loudness-fixed.json、S03\contract.json、S04\contract.json；独立完整TASK_ID/总Freeze未在本轮核实。
+
+## 2026-10-31新增评审候选｜R9不等于最终作品批准
+本机C:\AI\TenYears-Animatic-20261030\R9\delivery-state.json与README-Review.md显示新R9已提供15秒、360帧、768×640的带声候选，原生仅384×320后做x2画面修复。内部技术和艺术审查标PASS，但状态明确READY_FOR_HUMAN_REVIEW，human_approval=false、final_approval=false；不能把30日旧10秒艺术失败简单改为作品最终成功，也不能把自动审查输出代签人工审美。R9审查还保留ASR误判“糟践”、画面左右及不存在帧号的自动审计错误，须按真实原声与有时间戳的帧核查。若人工否决，则按原工序返修；本卡不授权复拍或覆盖原Freeze。资源准入90%、运行保护95%只对本片有效。原始证据同R9目录README及delivery-state.json。
