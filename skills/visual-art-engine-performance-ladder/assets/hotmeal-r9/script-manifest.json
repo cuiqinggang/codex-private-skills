@@ -1,0 +1,102 @@
+{
+  "assets/hotmeal-r9/scripts/phone_screen_r9.py": {
+    "sha256": "ff423166a422670c8ce20059aaf286a9ad9589a86fdc69604bf1a5bdbb6b5b4e",
+    "bytes": 4272,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/restore_r9.py": {
+    "sha256": "818ec00e34efd96f1ff8b92a155aaee2b5bac7565c0c0e4600535edcfa300514",
+    "bytes": 4647,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/final_av_review_r9.py": {
+    "sha256": "4506996f0607c23acba638f11a7c6b476466def8e3932f5750a56a80df334b76",
+    "bytes": 2801,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/render_r9_native.py": {
+    "sha256": "d0978a0c750d827d21f0a34aa34827cf381e61275a4193c144c5256827a4c6b0",
+    "bytes": 7330,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/run_r9_asr.py": {
+    "sha256": "9d4666bfd3fa688b7ead57162702abe587a030d2c4287a930fa1eda80f469539",
+    "bytes": 1653,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/final_sound_r9.py": {
+    "sha256": "d1550d924c978921769f8e9ad8dcce291a11583711d1a38d5d49277aef069eff",
+    "bytes": 3748,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/close_audit_r9.py": {
+    "sha256": "4076e13bacb2523c24ed7a2f16f42c2918aa6c442d3bcaa1efd8615c4fd58940",
+    "bytes": 2052,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/review_critical_r9.py": {
+    "sha256": "bda53275f7d6de397046c9a9acf7765d546e3bf698942deaba712a470d53f824",
+    "bytes": 2934,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/prepare_r9.py": {
+    "sha256": "67f71a89251cff9dde912505a6d52fd319925b09a1352ee3c4ea68aa50e6f14e",
+    "bytes": 5889,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/recheck_intro_sound_r9.py": {
+    "sha256": "192fbb87214f68e9c5e3562fa978a93f87b6838908889e81304137c8d85129f5",
+    "bytes": 2218,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/assemble_review_r9.py": {
+    "sha256": "1b0a8b4b6391be5165dd193374251d5ef4e31c3422ef0797991bea1e8e1e34b1",
+    "bytes": 4624,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/full_audio_recheck_r9.py": {
+    "sha256": "8efff18acb694ce1aef8ebbc51ec4c9321c6d42b0311247fcc1f69d6dc58c79e",
+    "bytes": 2069,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/prepare_phone_plane_r9.py": {
+    "sha256": "01069ee2aa7a11cdf1dc64b6e3124f468ce1c4a473bba9512b28b4b5dfff4157",
+    "bytes": 1296,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/review_intro_sound_r9.py": {
+    "sha256": "5220d33a34882480a10ca921574264f2cb3ee350d296096614a0039815f7b0b0",
+    "bytes": 2296,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/guard_ram95.py": {
+    "sha256": "65fe0dd82216ed321aaf5c5e5701270560a72e7dfff150a0f14c4b816eb97ad7",
+    "bytes": 13307,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/review_audio_r9.py": {
+    "sha256": "945510fd44562e817674f86ddc7ee9d58a80eb31f61b5a7eda7c988ea4f6304d",
+    "bytes": 3837,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/post_restore_r9.py": {
+    "sha256": "5514b89e1320bdd5ca17408ccc4e97396527d62f785875fb65a8ccb34bba1877",
+    "bytes": 6217,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/validate_phone_r9.py": {
+    "sha256": "5438a5745c485b28c3ad3468dc0cb32e808b571c63ae135b39ceebfbd875709e",
+    "bytes": 2106,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/critical_review_r9.py": {
+    "sha256": "02a89cee874923ec4ed25bc3cf9393df292f2e20f69acc9ceb23fd2e8176e4bf",
+    "bytes": 672,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  },
+  "assets/hotmeal-r9/scripts/recheck_audio_r9.py": {
+    "sha256": "a327a3b79f7ce77260f839cc51b8a5561fab9e7b2881ab7bd1db82a69ee7db67",
+    "bytes": 3241,
+    "tested": "Executed in R9 production before archival; this upgrade syntax checked without resubmission"
+  }
+}

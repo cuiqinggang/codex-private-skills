@@ -1,0 +1,6 @@
+{
+  "observed": "Historical P prompt in config contains Unicode replacement characters in the text literal. Original guide image has correct text, but native generated display still changes. Not treated as sole cause of prior bowl/action issues.",
+  "fix": "Keep historical config/workflow unchanged for traceability. Correct next-run config and require exact Unicode preflight. Current film text handled by deterministic tracked screen composition; no new GPU submission.",
+  "preflight": "PASS: exact codepoints present and U+FFFD absent in corrected P prompt",
+  "generation_repeated": false
+}

@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-31",
+  "version": "3.0.0",
+  "quick_validate": "PASS",
+  "archived_scripts_ast": 20,
+  "real_package_verifier": "PASS",
+  "manifest_files": 177,
+  "frames": 360,
+  "seconds": 15,
+  "corrupt_package_rejected": true,
+  "gpu_submissions": 0,
+  "human_approval": false,
+  "final_approval": false,
+  "independent_check": "177 payloads matched; 7 packaged MP4 full decodes PASS; next stage human review; no GPU required",
+  "forward_test": {
+    "result": "PASS",
+    "next_stage": "G human artistic/detail review",
+    "raw_package_members": 178,
+    "manifest_payloads": 177,
+    "all_7_mp4_full_decode": "PASS",
+    "loudness_independent_repeat": [
+      -16.01,
+      -3.93
+    ],
+    "blocking_skill_issues": [],
+    "snapshot_limit_documented": true
+  }
+}

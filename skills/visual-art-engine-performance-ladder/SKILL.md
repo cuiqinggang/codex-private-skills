@@ -1,12 +1,27 @@
 ---
 name: visual-art-engine-performance-ladder
-description: 管理 Visual Art Engine 从 ComfyUI 控制路径到生产 H3 的 P0-P8 性能进化；用于固定 Benchmark Contract、调用第一性原理四列法 V4.0、记录真实端到端时间、阶段 99、FREEZE/REOPEN、ΔT_STAGE 和 PATH_ARCHITECTURE_ERROR。它不替代 visual-art-engine，也不在缺少证据时宣称性能通过。
+description: 管理视觉作品的成熟制作、逐帧返修与性能证据。用于故事与资产、布局动作排演、MiniMax H3原生视听、手机屏幕追踪合成、对白听审、清晰度修复、混音与人工审核交接；保留P0–P8性能基准和图像来源审计，镜头级成功不等于通用控制认证。
 metadata:
-  version: "2.0.0"
+  version: "3.0.0"
   short-description: 通用高性能视觉作品生成引擎
 ---
 
 # 通用高性能视觉作品生成引擎
+
+## V3.0.0 成熟制作返修与 R9 实证（2026-10-31）
+
+先读 [制作与批量返修路径](references/MATURE-FILM-REWORK-V3.md)；涉及《十几年》接续时，再读 [R9完成情况与原因记录](references/HOTMEAL-R9-DELIVERY-20261031.md)、[可重用参数与恢复方法](references/HOTMEAL-R9-REPLAY-V3.md) 及 [发布状态](references/RELEASE-V3.json)。
+
+- 保留已认可故事、人物及限定几何结果；按“提交—审核—退回对应工序—复审—批准”推进。技术和艺术分别判定，空间/接触错误退布局或动画，不能靠精修/声音遮掩。
+- R9已完成15秒、360帧、24fps带声人工审核候选；原生384×320，2倍修复768×640。文件完整性、解码及内部视听复审通过；`human_approval=false`、`final_approval=false`、`T_VALID=null`。不代签最终艺术批准。
+- 只把本片的可见约束通过登记为镜头级结果；不得扩大为所有动作可靠控制、全身物理碰撞认证、P0–P8晋级或已证明提速。
+- 本片按A动作/布局、B生成控制、C表演对白、D完整带声预演、E动画口型与修复合成、F声音、G最终审核成批接续；复用已批准资产和原生片段，不重复已完成GPU任务。
+- 原始已执行脚本与配置见 `assets/hotmeal-r9/`。运行前按恢复说明核对原项目、输入SHA、模型、端口、原生prompt_id、history、claim及输出节点；归档脚本含本片绝对路径，不可直接拿去重投或覆盖新任务。
+- 本片资源合同为RAM准入低于90%、运行时95%独立保护；仅适用于本片，不改其他项目。断连先对账同一prompt_id/history，UNKNOWN不重复提交。
+- 固定屏幕文字优先使用成熟平面追踪合成，保护照片静止、刚体、手指遮挡；修复后再合成文字。ASR与审片模型会误听、误判左右、虚构帧号/片长；以真实帧和原音复核，保留失败报告。
+- 原报告、原生镜头、视频及177项文件清单保存在持久审核包；链接及SHA见发布状态。仅升级技能与固化经验时，运行 `scripts/quality/verify_hotmeal_r9_package.py --package <审核包.zip>`，不为文档升级重做GPU生成。
+- 旧V2段落中的 `SLAP_ACTION_VALID=NO` 是参考图阶段记录；当前R9限定动作内部审核见新状态，仍待人工终审。旧P0声明和99门属于性能认证合同，不覆盖或否认已实际执行的生产镜头。
+- 本次整版本升级不更改原V2来源真实性门、不修改莲花/烟花或旧基准合同；历史大图仍保留在原保存位置，按证据指针读取。
 
 ## V2.0.0 人物魅力与关键动作参考门（2026-10-30）
 本次整数升级扩展视觉参考、选角及动作/情绪检查规则，不代表P0–P8晋级、H3生产认证或性能提升。原V1.3.0及其来源审计、历史合同、失败证据继续保留。
@@ -15,7 +30,7 @@ metadata:
 - 先用独立人像确定人物魅力，再锁身份制作场景/关键帧；不可只改“年轻漂亮”文字重抽面孔。
 - 关键动作须有出手前、挥动/接触、随动反应；痛苦流泪须单独有表情状态，不能用相似静态怒脸或眼泪覆盖。
 - 逐图核对解剖手位、掌心掌背、受击侧与头部随动；禁止为适配错误接触而改坏邻帧。连续纯文字返修失败后先复用成熟动作参考/约束，不无限盲抽。
-- 图片的参考许可、技术正确、艺术认可和动态验收分开记录；本项目SLAP_ACTION_VALID=NO、FINAL_VALID=NO。
+- 图片的参考许可、技术正确、艺术认可和动态验收分开记录；该V2参考图阶段记录为SLAP_ACTION_VALID=NO、FINAL_VALID=NO；R9状态见V3发布记录，不回写历史批准。
 - 本轮图片明确为ChatGPT内置image_gen参考/编辑候选，非ComfyUI/Krea/H3输出。普通视觉参考任务可按用户授权使用；当合同指定本机后端或独立生成时，必须继承下方V1.3来源门，严禁替代或冒称。
 - 项目当前为10秒首选、10–12秒可调、15秒硬上限、三句对白与单次耳光；项目版本仍v1.4，技能包版本V2.0.0。历史17/20秒方案仅留档，不恢复执行。
 
@@ -134,7 +149,7 @@ Windows 正式运行前必须实际创建 deepest expected evidence path。失�
 ## 强制边界
 
 - v1.0.1 仅表示方法、阶梯、版本、冻结系统、P0 Contract 和 P0 工具就绪；不表示 P0 已测或已优化。
-- 本版本固定声明：`P0_BENCHMARK_EXECUTED=NO`、`PERFORMANCE_OPTIMIZATION_RUN=NO`、`H3_RUN=NO`。
+- 下述v1.0.1原始P0合同固定声明：`P0_BENCHMARK_EXECUTED=NO`、`PERFORMANCE_OPTIMIZATION_RUN=NO`、`H3_RUN=NO`；这是历史性能合同范围，不是V3生产镜头执行状态。
 - 初始状态固定为：`P0_CURRENT=PENDING`、`P0_EXTERNAL=PENDING`、`P0_T_PHY=PENDING`、`P0_ITERATIVE_CONVERGENCE=LOCKED`、`P0_99=NO`。
 - 历史 Wan/FAST/COLD 数据只进入 `HISTORICAL_EVIDENCE`，不得作为 P0 CURRENT。
 - 普通生产任务走 `RUNTIME_FAST_PATH`。只有规定触发条件才走 `CERTIFICATION_PATH`，详见 [运行与认证分离](docs/RUNTIME-VS-CERTIFICATION.md)。
@@ -145,3 +160,4 @@ Windows 正式运行前必须实际创建 deepest expected evidence path。失�
 ## 失败复盘与证据
 
 失败记录必须含阶段、固定 TASK、期望/实际时间、原始事件、输出有效性、是否 `PATH_ARCHITECTURE_ERROR`、回滚结果和冻结基线完整性。使用 [阶段证据模板](templates/STAGE-EVIDENCE-TEMPLATE.md)，写入台账所列 `evidence_path`。任何缺少真实证据的数字保持 `null` 或 `UNKNOWN`。
+

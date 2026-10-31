@@ -1,0 +1,13 @@
+{
+  "state": "ASSET_READY_NOT_RENDERED",
+  "model_name": "RealESRGAN_x2plus.pth",
+  "path": "C:\\AI\\MiniMax-H3\\ComfyUI\\models\\upscale_models\\RealESRGAN_x2plus.pth",
+  "source_url": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.1/RealESRGAN_x2plus.pth",
+  "sha256": "49fafd45f8fd7aa8d31ab2a22d14d91b536c34494a5cfe31eb5d89c2fa266abb",
+  "bytes": 67061725,
+  "license": "BSD-3-Clause Xintao Wang 2021",
+  "checksum_reference": "https://huggingface.co/kornia/real_esrgan/raw/main/README.md",
+  "elapsed_seconds": 8.343999999997322,
+  "earlier_errors": [],
+  "core_code_or_packages_modified": false
+}

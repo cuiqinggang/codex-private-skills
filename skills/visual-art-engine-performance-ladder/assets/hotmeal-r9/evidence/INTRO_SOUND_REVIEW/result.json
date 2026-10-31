@@ -1,0 +1,29 @@
+{
+  "state": "COMPLETED",
+  "model": "openai/gpt-audio-mini",
+  "usage": {
+    "prompt_tokens": 178,
+    "completion_tokens": 443,
+    "total_tokens": 621,
+    "cost": 0.00117,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 46,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00117,
+      "upstream_inference_prompt_cost": 0.0001068,
+      "upstream_inference_completions_cost": 0.0010632
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "content": "{\n  \"clips\": [\n    {\n      \"label\": \"clip A\",\n      \"events\": [\n        {\n          \"time\": \"0:00-0:02\",\n          \"description\": \"环境声：轻微的背景环境声，可能是室内环境，低频持续声。\",\n          \"sound_type\": \"environment\"\n        },\n        {\n          \"time\": \"0:02-0:04\",\n          \"description\": \"动作声：陶瓷物品落在桌面上的清脆碰撞声。\",\n          \"sound_type\": \"ceramic/desktop contact\"\n        },\n        {\n          \"time\": \"0:04-0:05\",\n          \"description\": \"人声：轻微的低语声，难以辨认具体内容。\",\n          \"sound_type\": \"speech\"\n        }\n      ],\n      \"notification_count\": 0,\n      \"speech\": true,\n      \"music\": false,\n      \"uncertainty\": \"低\"\n    },\n    {\n      \"label\": \"clip P\",\n      \"events\": [\n        {\n          \"time\": \"0:00-0:01\",\n          \"description\": \"环境声：轻微的背景环境声，可能是室内环境。\",\n          \"sound_type\": \"environment\"\n        },\n        {\n          \"time\": \"0:01-0:02\",\n          \"description\": \"动作声：手机电子提示音响起，清脆短促的提示音。\",\n          \"sound_type\": \"notification\"\n        },\n        {\n          \"time\": \"0:02-0:03\",\n          \"description\": \"动作声：手机电子提示音再次响起，重复一次。\",\n          \"sound_type\": \"notification\"\n        },\n        {\n          \"time\": \"0:03-0:04\",\n          \"description\": \"人声：轻微的说话声，可能是低声交谈。\",\n          \"sound_type\": \"speech\"\n        }\n      ],\n      \"notification_count\": 2,\n      \"speech\": true,\n      \"music\": false,\n      \"uncertainty\": \"低\"\n    }\n  ]\n}",
+  "human_approval": false
+}

@@ -1,0 +1,15 @@
+{
+  "cause": "Native intro has bowl transient0.6..0.8s and quiet room/sleeve, but no clear narrowband notification; two audio semantic reports hallucinated times or repeated events and were rejected",
+  "fix": "F stage: one generic soft electronic notification before pickup. Own procedural sound, not stock brand tone. Native ambience/bowl/cloth retained; native P no additional event. No action or timing altered.",
+  "onset_seconds": 1.0,
+  "duration_seconds": 0.14,
+  "frequencies_hz": [
+    1046.5,
+    1569.75
+  ],
+  "speech_rate": 1,
+  "bowl_native_onset_approx": 0.6,
+  "B_native_contact_onset_global": 6.621667,
+  "B_first_contact_global": 6.625,
+  "human_timbre_approval": false
+}

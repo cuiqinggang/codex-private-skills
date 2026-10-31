@@ -1,0 +1,33 @@
+{
+  "state": "COMPLETED",
+  "model": "openai/gpt-audio-mini",
+  "usage": {
+    "prompt_tokens": 123,
+    "completion_tokens": 62,
+    "total_tokens": 185,
+    "cost": 0.0002226,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 16,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0002226,
+      "upstream_inference_prompt_cost": 7.38e-05,
+      "upstream_inference_completions_cost": 0.0001488
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "content": "{\n  \"heard_text\": \"对不起，我\",\n  \"pinyin\": \"duì bù qǐ wǒ\",\n  \"uncertain_syllables\": [],\n  \"last_word_complete\": true,\n  \"reason\": \"最后一个字完整结束，没有明显截断。\"\n}",
+  "audio_source_seconds": [
+    5.2,
+    6.8
+  ],
+  "prompt": "只听这个短音频。先逐字转写你确实听到的中文，再逐个音节写出带声调拼音。不要补全上下文，不要替换同义词，不要猜测剧本。不清楚的字写[不清楚]。同时说明最后一个字是否完整结束、有无明显截断。仅输出JSON：heard_text,pinyin,uncertain_syllables,last_word_complete,reason。"
+}

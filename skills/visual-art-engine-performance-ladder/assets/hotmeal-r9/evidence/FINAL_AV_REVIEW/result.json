@@ -1,0 +1,29 @@
+{
+  "state": "COMPLETED",
+  "model": "google/gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 4951,
+    "completion_tokens": 505,
+    "total_tokens": 5456,
+    "cost": 0.0030845,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 481,
+      "video_tokens": 4208
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0030845,
+      "upstream_inference_prompt_cost": 0.001822,
+      "upstream_inference_completions_cost": 0.0012625
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "content": "```json\n{\n  \"story_and_emotion\": \"故事讲述了一对夫妻在餐桌前发生争执。妻子原本平静地放碗，然后拿起丈夫的手机，发现了一条暧昧信息，情绪瞬间变得愤怒和受伤。丈夫试图抢回手机，但妻子拒绝，并指着桌上的饭菜，表达了自己为家庭的付出和被背叛的痛苦。她的情绪从平静到震惊，再到愤怒和委屈，最终爆发。丈夫则从一开始的平静，到被发现后的紧张，再到试图掩盖和最终的沉默，显示出愧疚和无力。\",\n  \"dialogue\": \"00:05-00:06 男：给我！\\n00:08-00:14 女：我，我还怕你回来，吃不上口热的，你就这么糟践我！\",\n  \"readability\": \"手机屏幕上的信息“老公，想你了。”清晰可读，字体大小和颜色适中，与背景对比度良好。\",\n  \"continuity\": \"放碗动作自然，没有明显跳帧或不连贯。拿手机动作流畅，没有卡顿。抢夺手机的动作和击打受击的反应自然，符合情境。指饭动作与台词同步，情绪表达连贯。\",\n  \"lip_sync\": \"00:05-00:06 男：口型与“给我”同步，没有明显提前或滞后。 \\n00:08-00:14 女：口型与“我，我还怕你回来，吃不上口热的，你就这么糟践我！”同步，没有明显提前或滞后，也没有冻结或错口。\",\n  \"sound\": \"声音清晰，没有额外人声或音乐干扰。击打声（00:06）与画面同步，没有重复提示或无来源事件。对话声音没有可听截断。\",\n  \"restoration_defects\": \"没有发现脸部身份改变。手指和手机没有变形。画面没有闪烁。\",\n  \"blocking_failures\": \"没有发现明显的阻挡失败。\",\n  \"uncertain_items\": [],\n  \"technical_status\": \"PASS\",\n  \"artistic_status\": \"PASS\",\n  \"return_stage\": \"FINAL_REVIEW\"\n}\n```",
+  "human_approval": false
+}

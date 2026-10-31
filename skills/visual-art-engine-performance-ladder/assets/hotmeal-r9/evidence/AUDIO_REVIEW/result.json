@@ -1,0 +1,31 @@
+{
+  "state": "COMPLETED",
+  "elapsed_seconds": 4.032000000006519,
+  "model": "google/gemini-2.5-flash",
+  "id": "gen-1793432262-ZYlZCWrWO9wbFTVy179X",
+  "usage": {
+    "prompt_tokens": 630,
+    "completion_tokens": 254,
+    "total_tokens": 884,
+    "cost": 0.0010571,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 333,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0010571,
+      "upstream_inference_prompt_cost": 0.0004221,
+      "upstream_inference_completions_cost": 0.000635
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "content": "{\n  \"audio_received\": true,\n  \"C\": {\n    \"raw_transcript\": \"我還怕你回來，吃不上口熱的，你就這麼糟踐我。\",\n    \"final_verb_heard\": \"糟践\",\n    \"pinyin\": \"zāo jiàn\",\n    \"confidence\": \"certain\",\n    \"emotional_delivery\": \"in-room performance, anger\",\n    \"breath_and_end\": \"continuous breath, clear final syllable\",\n    \"quality_failures\": \"none\",\n    \"timed_evidence\": \"C00:00-C00:07\"\n  },\n  \"B\": {\n    \"raw_transcript\": \"给我。\",\n    \"delivery\": \"in-room performance, anger\",\n    \"impact_onset_seconds\": 1.7,\n    \"impact_character\": \"single contact event, possibly a slap or hit\",\n    \"quality_failures\": \"none\",\n    \"timed_evidence\": \"B_AV00:00-B_AV00:03\"\n  },\n  \"overall_decision\": \"PASS\"\n}",
+  "human_approval": false
+}

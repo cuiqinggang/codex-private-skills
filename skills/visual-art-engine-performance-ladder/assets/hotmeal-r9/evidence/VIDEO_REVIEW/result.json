@@ -1,0 +1,29 @@
+{
+  "state": "COMPLETED",
+  "model": "google/gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 4962,
+    "completion_tokens": 1239,
+    "total_tokens": 6201,
+    "cost": 0.0049228,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 481,
+      "video_tokens": 4208
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0049228,
+      "upstream_inference_prompt_cost": 0.0018253,
+      "upstream_inference_completions_cost": 0.0030975
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "content": "```json\n{\n  \"observed_story\": \"短片开始，一名女性在餐桌旁放下一碗饭，然后拿起手机。手机屏幕显示一张年轻女性的照片和文字信息。她看向旁边的男性，男性试图抢夺手机，女性用手挡开。女性指着餐桌上的饭碗，情绪激动地对男性说话，男性则保持沉默。\",\n  \"verbatim_dialogue\": [\n    {\"time\": \"00:05\", \"speaker\": \"男性\", \"dialogue\": \"给我\"},\n    {\"time\": \"00:08\", \"speaker\": \"女性\", \"dialogue\": \"我，我还怕你回来，吃不上口热的，你就这么糟践我。\"}\n  ],\n  \"shot_notes\": [\n    {\"time\": \"00:00-00:01\", \"description\": \"女性放下饭碗，拿起手机。男性站在旁边。中景。\"},\n    {\"time\": \"00:02-00:03\", \"description\": \"手机屏幕特写，显示年轻女性照片和文字信息。女性手持手机。\"},\n    {\"time\": \"00:04-00:07\", \"description\": \"女性和男性中景。男性伸手抢手机，女性挡开。\"},\n    {\"time\": \"00:07-00:15\", \"description\": \"女性指着饭碗，情绪激动地对男性说话。男性保持沉默。中景。\"}\n  ],\n  \"continuity_findings\": {\n    \"人物服装\": \"PASS - 女性穿着灰色毛衣和黑色裤子，男性穿着浅蓝色衬衫和深色裤子，全程一致。\",\n    \"空间\": \"PASS - 厨房和餐厅背景一致。\",\n    \"饭碗位置\": \"PASS - 00:00 女性放下饭碗，00:07-00:15 饭碗位置一致。\",\n    \"手机形状和持握手跨切镜\": \"PASS - 00:01 女性右手拿起手机，00:02 手机特写显示女性右手持握，00:04 再次回到中景，女性右手持握手机，连续。\",\n    \"开场放饭、拾手机是否可信\": \"PASS - 动作自然流畅，符合情境。\",\n    \"手机信息是否读得清和停留足够\": \"PASS - 00:02-00:03 手机信息清晰可见，停留约1.5秒，足够阅读。文字为“老公，想你了。”\",\n    \"男人伸手抢、女人保护手机、单次接触与受击方向、受击后是否回正\": \"PASS - 00:05 男性伸手抢手机，00:06 女性左手挡开，动作连贯，受击后女性身体没有明显晃动，手机也未脱手，符合保护动作。\",\n    \"末段手指是不是指向饭而不是端碗\": \"PASS - 00:07-00:08 女性手指明确指向餐桌上的饭碗，而不是端碗。\",\n    \"overall_continuity\": \"PASS\"\n  },\n  \"action_findings\": {\n    \"开场放饭、拾手机是否可信\": \"PASS - 动作自然，符合生活场景。\",\n    \"男人伸手抢、女人保护手机、单次接触与受击方向、受击后是否回正\": \"PASS - 动作设计合理，符合人物情绪和情境，女性的保护动作和身体反应真实。\",\n    \"overall_action\": \"PASS\"\n  },\n  \"lip_sync_findings\": {\n    \"愤怒表情、口型、对白、气息是否同步且真实\": \"PASS - 00:08-00:15 女性的愤怒表情、口型、对白和气息均同步且真实，情绪饱满，台词清晰。\",\n    \"overall_lip_sync\": \"PASS\"\n  },\n  \"sound_findings\": {\n    \"音效来源和节奏\": \"PASS - 00:00 饭碗放下有清晰的碗碟声，00:01 手机拿起有轻微的摩擦声，00:06 男性抢夺手机时有清晰的拍打声，音效与画面动作同步，节奏自然。\",\n    \"overall_sound\": \"PASS\"\n  },\n  \"emotion_and_rhythm\": {\n    \"女性情绪\": \"PASS - 从00:01的疑惑，到00:04的震惊，再到00:07的愤怒，情绪变化自然且递进，表演真实。\",\n    \"男性情绪\": \"PASS - 从00:00的沉默，到00:05的急切，再到00:07的无奈和沉默，情绪表达内敛但清晰。\",\n    \"节奏\": \"PASS - 前半段节奏平缓，发现手机信息后节奏加快，冲突爆发，情绪高涨，整体节奏把握得当。\",\n    \"overall_emotion_and_rhythm\": \"PASS\"\n  },\n  \"blocking_failures\": {\n    \"画面变形\": \"UNCERTAIN - 视频分辨率较低，无法确定是否存在画面变形。\",\n    \"穿透\": \"PASS - 未发现物体穿透现象。\",\n    \"手指异常\": \"PASS - 未发现手指异常。\",\n    \"overall_blocking\": \"UNCERTAIN\"\n  },\n  \"technical_status\": \"UNCERTAIN\",\n  \"artistic_status\": \"PASS\",\n  \"required_rework\": \"需要更高分辨率的视频来确认是否存在画面变形。\"\n}\n```",
+  "human_approval": false
+}

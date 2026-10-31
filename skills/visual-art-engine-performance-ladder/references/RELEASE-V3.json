@@ -1,0 +1,59 @@
+{
+  "version": "3.0.0",
+  "previous": "2.0.0",
+  "date": "2026-10-31",
+  "timezone": "Asia/Shanghai",
+  "scope": "成熟制作返修与R9镜头级实证；不改变旧性能认证状态",
+  "state": "READY_FOR_HUMAN_REVIEW",
+  "human_approval": false,
+  "final_approval": false,
+  "T_VALID": null,
+  "artifacts": {
+    "video": {
+      "library_file_id": "libfile_91cc1ec593fc81919c3d20606e24ffd4",
+      "filename": "HotMeal-R9-15s-Human-Review.mp4",
+      "sha256": "78a9aaf2feb81fc9af49573edd4154ce0320a23ac46ce9a8fef0fc80a91d7513",
+      "url": "https://chatgpt.com/library?file_id=libfile_91cc1ec593fc81919c3d20606e24ffd4&account_id=personal"
+    },
+    "report": {
+      "library_file_id": "libfile_f68eca826d6c81919d22787bd6930aae",
+      "url": "https://chatgpt.com/library?file_id=libfile_f68eca826d6c81919d22787bd6930aae&account_id=personal"
+    },
+    "package": {
+      "library_file_id": "libfile_20cd18f3df408191a322bf8cfff9e7dd",
+      "filename": "HotMeal-R9-Human-Review-Package.zip",
+      "sha256": "3b912cd6982a35bb0e5c81ef188e925536398f16e591ff30ca6c78909562bdfb",
+      "bytes": 6749621,
+      "manifest_files": 177,
+      "url": "https://chatgpt.com/library?file_id=libfile_20cd18f3df408191a322bf8cfff9e7dd&account_id=personal"
+    }
+  },
+  "resources": {
+    "scope": "this film only",
+    "admission_ram_percent": 90,
+    "runtime_guard_percent": 95
+  },
+  "not_certified": [
+    "human artistic approval",
+    "perfect lips or unseen finger detail",
+    "universal reliable motion transfer",
+    "whole-body physics solver",
+    "P0-P8 promotion",
+    "T_VALID speedup"
+  ],
+  "legacy_png_source": "Historical evidence/KREA_INDEPENDENT_REAL_20261011_R1 images remain in canonical private-skills main; personal install retains text and evidence pointers, no duplicate large historical images.",
+  "snapshot_priority": [
+    "RELEASE-V3.json",
+    "R9/delivery-state.json",
+    "R9/FINAL/technical-review.json"
+  ],
+  "older_snapshots_not_current": [
+    "R9/upstream-disposition.json.remaining",
+    "R9/RESTORE/model-manifest.json.preparation_state"
+  ],
+  "previous_evidence": {
+    "R8_library_file_id": "libfile_6b44567cf6bc8191b6376ad3f07507b7",
+    "R8_url": "https://chatgpt.com/library?file_id=libfile_6b44567cf6bc8191b6376ad3f07507b7&account_id=personal",
+    "scope": "pointer to preserved original R8 evidence; not re-certified by this upgrade"
+  }
+}

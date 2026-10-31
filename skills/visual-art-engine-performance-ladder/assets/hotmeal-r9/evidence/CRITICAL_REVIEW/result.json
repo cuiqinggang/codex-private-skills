@@ -1,0 +1,29 @@
+{
+  "state": "COMPLETED",
+  "model": "google/gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 1065,
+    "completion_tokens": 772,
+    "total_tokens": 1837,
+    "cost": 0.0022495,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0022495,
+      "upstream_inference_prompt_cost": 0.0003195,
+      "upstream_inference_completions_cost": 0.00193
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "content": "```json\n{\n  \"corrected_anatomical_hands\": {\n    \"B_grid\": {\n      \"phone_hand\": \"女性的左手（从观众视角看是右侧的手）握持手机。\",\n      \"other_hand_contact\": \"女性的右手（从观众视角看是左侧的手）击中男人的左脸颊（从观众视角看是右侧的脸）。\",\n      \"head_turn\": \"受击后，男人的头部向右侧（从观众视角看是左侧）转动。\",\n      \"head_reposition\": \"头部未完全回正，保持向右侧转动的姿态。\",\n      \"action_speed\": \"f47/48间隔1/24秒，动作是快速击打，而非缓慢推触。从f47到f48，女性右手与男性脸部接触，男性头部明显向右侧转动，显示出快速冲击的特征。\"\n    },\n    \"C_grid\": {\n      \"head_reposition_across_frames\": \"从C_f17_47.750s到C_f18_48.000s，男人的头部没有跨镜复位，保持向右侧转动的姿态。\",\n      \"phone_bowl_position\": \"手机在女性左手中，饭碗位置保持不变。\",\n      \"index_finger_to_bowl\": \"女性的食指没有指向饭碗。\",\n      \"facial_emotion\": \"女性脸上表情显示出愤怒，嘴巴张开，眉毛紧锁。\"\n    },\n    \"A_pickup_grid\": {\n      \"rigid_body_shape\": \"手机保持刚体形状，没有明显变形。\",\n      \"grasp\": \"女性的手指抓握手机，没有明显穿透或变形。\",\n      \"finger_penetration_deformation\": \"没有明显的手指穿透或变形。\"\n    }\n  },\n  \"contact_sequence\": {\n    \"B_grid\": \"女性右手快速击打男性左脸颊，导致男性头部向右侧转动。\"\n  },\n  \"head_retention\": {\n    \"B_grid\": \"男性头部受击后向右侧转动，未回正。\",\n    \"C_grid\": \"男性头部在C格序列中保持向右侧转动的姿态，未复位。\"\n  },\n  \"point_target\": {\n    \"C_grid\": \"女性食指未指向饭碗。\"\n  },\n  \"grasp\": {\n    \"A_pickup_grid\": \"女性手指抓握手机，无明显穿透或变形。\"\n  },\n  \"emotion\": {\n    \"C_grid\": \"女性脸上显示出愤怒表情。\"\n  },\n  \"visible_defects\": {\n    \"A_pickup_grid\": \"无明显可见的穿透或变形缺陷。\"\n  },\n  \"unresolved_limits\": {\n    \"general\": \"所有图像均为缩小原生画面，细节清晰度有限，无法判断更微小的穿透或变形。AI修复可解决的清晰度问题在此处未被视为已修复。\"\n  },\n  \"blocking_rework_required\": {\n    \"reason\": \"前次分析在辨认解剖学左右、接触性质（击打而非挡开）和头部转动方向上存在错误，需要重新评估。本次逐帧分析已纠正这些错误，并提供了基于可见证据的详细描述。\"\n  }\n}\n```",
+  "human_approval": false
+}

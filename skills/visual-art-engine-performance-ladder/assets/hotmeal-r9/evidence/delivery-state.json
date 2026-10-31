@@ -1,0 +1,29 @@
+{
+  "state": "READY_FOR_HUMAN_REVIEW",
+  "human_approval": false,
+  "final_approval": false,
+  "candidate_sha256": "78a9aaf2feb81fc9af49573edd4154ce0320a23ac46ce9a8fef0fc80a91d7513",
+  "video": {
+    "frames": 360,
+    "fps": 24,
+    "seconds": 15,
+    "size": [
+      768,
+      640
+    ]
+  },
+  "internal_final_av_review": {
+    "technical": "PASS",
+    "artistic": "PASS",
+    "scope": "AI review is fallible; specific frame/manual root evidence supersedes hallucinations; human verdict still pending"
+  },
+  "last_queue": {
+    "queue_running": [],
+    "queue_pending": []
+  },
+  "resources": {
+    "admission_ram_percent": 90,
+    "runtime_guard_percent": 95
+  },
+  "remaining": "User human artistic and detail review; any rejection returns to corresponding production step"
+}

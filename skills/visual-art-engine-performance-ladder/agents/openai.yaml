@@ -1,4 +1,4 @@
 interface:
-  display_name: "通用高性能视觉作品生成引擎 V2.0"
-  short_description: "管理视觉参考、人物魅力、动作情绪验收与性能证据"
-  default_prompt: "使用 $visual-art-engine-performance-ladder，先读取当前参考与资格，保留已认可人物，检查关键动作和情绪状态；指定本机后端时执行来源门，不把参考图或文档升级当作性能认证。"
+  display_name: "通用高性能视觉作品生成引擎 V3"
+  short_description: "复用成熟制作流程完成布局动作对白合成与逐帧返修审核"
+  default_prompt: "按通用高性能视觉作品生成引擎V3，读取现有项目和批准边界，执行剩余制作并记录真实审核证据。"

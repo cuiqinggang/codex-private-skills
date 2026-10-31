@@ -1,0 +1,59 @@
+{
+  "admission": 90,
+  "runtime_stop": 95,
+  "scope": "this film only",
+  "phases": [
+    {
+      "phase": "A",
+      "samples": 271,
+      "max_ram_percent": 82.4,
+      "last_sample_elapsed": 291.3899999999994,
+      "guard_stop_exists": false,
+      "guard_finished_exists": true
+    },
+    {
+      "phase": "P",
+      "samples": 280,
+      "max_ram_percent": 83.2,
+      "last_sample_elapsed": 313.125,
+      "guard_stop_exists": false,
+      "guard_finished_exists": true
+    },
+    {
+      "phase": "RESTORE\\A",
+      "samples": 33,
+      "max_ram_percent": 79.0,
+      "last_sample_elapsed": 33.71899999999732,
+      "guard_stop_exists": false,
+      "guard_finished_exists": true
+    },
+    {
+      "phase": "RESTORE\\P",
+      "samples": 15,
+      "max_ram_percent": 60.9,
+      "last_sample_elapsed": 15.562999999994645,
+      "guard_stop_exists": false,
+      "guard_finished_exists": true
+    },
+    {
+      "phase": "RESTORE\\B_AV",
+      "samples": 31,
+      "max_ram_percent": 60.5,
+      "last_sample_elapsed": 31.531000000002678,
+      "guard_stop_exists": false,
+      "guard_finished_exists": true
+    },
+    {
+      "phase": "RESTORE\\C",
+      "samples": 70,
+      "max_ram_percent": 63.3,
+      "last_sample_elapsed": 71.65600000000268,
+      "guard_stop_exists": false,
+      "guard_finished_exists": true
+    }
+  ],
+  "queue": {
+    "queue_running": [],
+    "queue_pending": []
+  }
+}

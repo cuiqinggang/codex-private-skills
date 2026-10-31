@@ -1,0 +1,27 @@
+{
+  "version": "R9",
+  "allow_restoration_for_human_review": true,
+  "human_approval": false,
+  "final_approved": false,
+  "scope": "Visible continuity and story of native 15s review, proceeding to reversible restoration with native evidence retained",
+  "evidence": {
+    "opening": "A f24..36 visible left-hand pickup; no obvious penetration in native detail crop; bowl released before pickup",
+    "phone": "All39 homographies, max inlier RMSE0.803px; independent white border max3.671px median1.524px; exact original still screen composited; micro-motion retained",
+    "contact": "B f46 precontact,47/48 contact,49 separation,52..72 retained head turn; single right hand to man's left cheek",
+    "point": "Root visual examination of C f24 shows right index tip immediately above same rice bowl (approximately x180,y296 versus rice top x175,y308 in384x320 frame); model critical report denial rejected against visible frame",
+    "audio": "Two full-utterance audio models agree 糟践 / zao jian. Isolated fragment failure and Whisper alternative retained. Native B transient onset1.955s vs f47 contact1.9583s.",
+    "story": "Full15s video review understands causal sequence and angry accusation",
+    "limits": "Native384x320 limits fine details. This is no certification of physical solver, perfect lips, final artistry or final delivery. Final restored image and sound still require review."
+  },
+  "review_disagreements": [
+    "Whole video model swapped anatomical hands and described slap as blocking; superseded by explicit frames",
+    "Critical image review invents nonexistent C frame labels and denies pointing; no blanket PASS adopted"
+  ],
+  "artistic_disposition": "Internal view: enough visible emotional causality to prepare review master. User artistic approval pending",
+  "remaining": [
+    "restoration identity/flicker check",
+    "final loudness and continuous sound check",
+    "final technical QA",
+    "human review"
+  ]
+}

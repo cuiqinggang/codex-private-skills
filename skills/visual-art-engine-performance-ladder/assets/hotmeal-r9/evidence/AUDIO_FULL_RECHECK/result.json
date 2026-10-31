@@ -1,0 +1,30 @@
+{
+  "state": "COMPLETED",
+  "model": "openai/gpt-audio-mini",
+  "usage": {
+    "prompt_tokens": 195,
+    "completion_tokens": 106,
+    "total_tokens": 301,
+    "cost": 0.0003714,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 72,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0003714,
+      "upstream_inference_prompt_cost": 0.000117,
+      "upstream_inference_completions_cost": 0.0002544
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "content": "{\n  \"raw_transcript\": \"我还怕你回来，吃不上口热的，你就这么糟践我！\",\n  \"final_verb\": \"糟践\",\n  \"pinyin\": \"zāo jiàn\",\n  \"uncertainty\": \"发音清楚\",\n  \"cutoff\": \"无截断\",\n  \"emotion\": \"愤怒控诉\",\n  \"evidence\": \"语气急促，语调上扬，情绪强烈\"\n}",
+  "prompt": "请实际听这段完整中文音频，不依据任何剧本或上下文预设。先逐字写出全部原话，不替换同义词；再把最后一句的动词按你听到的实际读音写成带声调拼音。说明发音是否清楚、有无可听截断、声音是否像当面愤怒控诉或平淡旁白。只输出JSON：raw_transcript,final_verb,pinyin,uncertainty,cutoff,emotion,evidence。",
+  "human_approval": false
+}
