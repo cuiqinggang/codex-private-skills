@@ -1,0 +1,4 @@
+interface:
+  display_name: "谷深双擎强备系统 V2：Pi＋Google"
+  short_description: "使用 Pi 独立执行与原生接续，Google 按需协作，DSH 保留显式回退"
+  default_prompt: "使用 $google-pi-strong-backup 承接当前任务，先核账再完成剩余交付。"
