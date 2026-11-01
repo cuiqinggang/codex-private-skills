@@ -120,9 +120,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-01-DSE-INCREMENTAL.md",
+      "sha256": "10751a1bec393a2875b09d319499138bcb8d0e30ba0db9b19b2872ff8f32140a",
+      "bytes": 10779,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "14 daily files byte-hashed; 9 original contents read through 2026-10-31; 21 selected cards (17 prior through Oct30 + four new Oct31); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
+  "limits": "15 daily files byte-hashed; 10 original contents read through 2026-11-01; 25 selected cards (21 prior through Oct31 + four new Nov1); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -271,5 +279,43 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-10-31"
+  "latest_incremental_date": "2026-11-01",
+  "incremental_case_sources_20261101": [
+    {
+      "experience_id": "EXP-GSB-PI-V2-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\gsb-pi-google-v2-20261031\\DEPLOYMENT.json",
+      "content_read": true,
+      "evidence_scope": "Pi primary/Google on-demand, 14 bounded release checks, old ledger and readonly ACL; no cold browser reboot or full T_VALID"
+    },
+    {
+      "experience_id": "EXP-PI-LONGFLOW-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-native-longflow-20261101\\INDEPENDENT-ACCEPTANCE.json",
+      "content_read": true,
+      "evidence_scope": "Native RPC goal and local process recovery, QA20x3 and 27 independent checks; eight-hour/OS reboot/browser UNKNOWN not certified"
+    },
+    {
+      "experience_id": "EXP-OPENMAUS-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\openmausbot-comparison-20261101\\ROUTING-DECISION.json",
+      "content_read": true,
+      "evidence_scope": "0.1.136 bounded order cases; deterministic direct remains default, NSIS installer failed, no global comparable T_VALID"
+    },
+    {
+      "experience_id": "EXP-WIN-D-V13-001",
+      "path": "C:\\AI\\DevSpace-Benchmark-20261031\\V13-Autostart-Repair-20261101.json",
+      "content_read": true,
+      "evidence_scope": "Controlled D tunnel HTTP restart PASS but ChatGPT plugin reconnect NOT_VERIFIED_URL_CHANGED; formal GitHub A→B→C still authoritative to this review"
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Nov 1 16:30:33 ENGINE_READY after 427102ms original recovery, recurring bootstrap cause and unattended boot reliability unknown"
+    },
+    {
+      "experience_id": "EXP-PI-001;EXP-BROWSER-001;EXP-DELIVERY-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\gsb-pi-google-v2-20261031\\RESULT.md",
+      "content_read": true,
+      "evidence_scope": "Original V2 RESULT and original memory-reuse-log state adopted historical Pi evidence, browser page ownership and mature deterministic order checker; memory T_VALID net gain NOT_MEASURED"
+    }
+  ]
 }
