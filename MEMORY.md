@@ -8,12 +8,12 @@
 
 使用入口：[经验大脑技能](skills/reuse-experience-brain/SKILL.md)。
 日常入口：[经验索引](skills/reuse-experience-brain/references/INDEX.md)。
-[原记忆继承映射](skills/reuse-experience-brain/references/INHERITANCE.md)及[11份日报原路径和校验值](skills/reuse-experience-brain/references/INHERITANCE.json)。
+[原记忆继承映射](skills/reuse-experience-brain/references/INHERITANCE.md)及[继承日报原路径和校验值](skills/reuse-experience-brain/references/INHERITANCE.json)。
 
 | 要读什么 | 放在哪里 | 如何继承 |
 |---|---|---|
 | 原执行方法 | skills/artificial-single-page-extreme-time-engine/BRAIN.md，第25版 | 原位引用，不替换 |
-| 成熟经验/失败经验 | skills/reuse-experience-brain/references/ | 从原始回执脱敏提炼，带触发/边界/证据；现有21卡（至10月30日17卡，10月31日新增n8n安全升级、DevSpace D连接、浏览器全页附着和Hermes后台4卡） |
+| 成熟经验/失败经验 | skills/reuse-experience-brain/references/ | 从原始回执脱敏提炼，带触发/边界/证据；现有25卡（至10月31日21卡，11月1日新增强备Pi V2、Pi原生长流程、OpenMausBot和Windows D插件边界4卡） |
 | 原始日报和项目材料 | 原C盘Vault的01_DAILY及原项目目录 | 保留原位；14份登记、9份正文读取（含10月31日日报）；不是全量已迁移 |
 | 专业技能与当前状态 | 各专业SKILL、CURRENT、Freeze、RESULT | 原来源保持权威；历史经验不能覆盖新状态 |
 | 新任务调用 | skills/ai-organization-v4-2/SKILL.md步骤2 | 默认先读相关经验再执行，使用后留原任务最小回执 |
@@ -29,3 +29,5 @@
 2026-10-30增量：Pi统一默认入口在原用户登录后的实际kernel reboot跨开机原文件合同20/20独立审核PASS，但同次重启后的合成预约浏览器业务须预先人工修复服务依赖；不能推断完全无人值守冷启动。相同两份供应商字段提取合同，单父12.167105秒优于原生并行29.178664秒及串行37.307877秒，保留子代理可选但不强制默认。浏览器共享tab的全局集合审计曾误报，已按原页身份和自有tab清理纠正，B2合成UI局部PASS，但A/B推广门未过，默认浏览器未替换。《十几年》技术媒体有效但表演与台词艺术验收FAIL、仅REVIEW。Docker 30日10:46最新原状态仍为WSL预热失败。具体触发、反例、来源参见经验索引；新经验真实采用EXP-DELIVERY-001用于Pi账目成熟配方，记忆完整T_VALID净改善NOT_MEASURED。新增日志仅在本地Vault，未迁移全部原文或假称已自动读取所有聊天。
 
 2026-10-31增量：既有n8n 2.45.5→2.45.7回执及HTTP探针通过，但不代表全部工作流真实E2E；Docker 10:47重复WSL预热失败后11:07再次ENGINE_READY，历史故障并未根治；DevSpace D原生小只读探针100/100成功，3秒仅为疑似卡顿软期限，写入无回执必须UNKNOWN先核账，正式Windows A→B→C未调整；Hermes原生后台cron限定订单与合成简报14/14通过，真实账户/整机重启未认证；共享浏览器CDP直接响应快但Playwright全页附着仍超时，主端公开只读局部PASS而备端与接管未通过；Pi与DSH一次同类下载合同的DSH SHA大写误判已纠正；《十几年》R9已成15秒人工审核候选但未获得人工终审批准。新增4张脱敏经验卡并追加3张旧卡的反例、范围及最新证据，原项目Freeze、方法BRAIN25与DSE版本均未修改。本次没有找到新任务明确采用或拒绝共享EXP记忆卡的原始回执，不能伪造经验复用；业务记忆完整T_VALID净收益NOT_MEASURED。
+
+2026-11-01增量：原强备GSB-PI-GOOGLE-20261031-001在10月31日22:31后发布V2.0限定认证：Pi主执行、Google按需协作、DSH只显式回退，旧任务账本/只读业务元数据写权限分离及14项限定门通过，浏览器整机重启和多日SLA未认证。Pi原生长流程V1.0基于OMP18.13.3的RPC goal，经正常与本地受控中断两场、各三批合成订单及27项独立核查通过，八小时、OS重启和Google提交UNKNOWN未测试。OpenMausBot 0.1.136本地npm工作台三项限定订单验收通过，但首次平台批量超时、桌面NSIS退出2，原V5确定性直达仍是订单默认。Windows V13 D隧道本地及公网HTTP200和原计划重启通过，但ChatGPT插件因临时URL更换未核实连通；正式Windows执行桥GitHub V12.0.3仍写A→B→C，本次21点按用户约束只使用收费A，不替原项目改Freeze。Docker11月1日16:30再次恢复ENGINE_READY，跨多天预热故障根因未知。新增4张有来源脱敏经验卡、更新旧Docker/DSH卡、共享经验使用回执来自GSB原RESULT和本机复用日志，不重做旧业务；记忆完整T_VALID净效益NOT_MEASURED。原C盘日报继续留原位：当前15份登记、10份原文已读、25卡，仍非全历史蒸馏。版本BRAIN第25版、DSE和冻结专业Skill均未修改。
