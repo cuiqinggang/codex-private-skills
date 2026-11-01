@@ -51,4 +51,11 @@ description: "读取和积累共同工作区的经验大脑。用户提到长期
 - [共享CDP浏览器全页面附着卡顿](references/BROWSER-ATTACH-20261031.md)
 - [Hermes原生后台调度与订单接续](references/HERMES-BACKGROUND-20261031.md)
 
+- [Pi＋Google强备V2原账本与ACL](references/GSB-PI-V2-20261101.md)
+- [Pi原生RPC长流程、恢复与8小时边界](references/PI-NATIVE-LONGFLOW-20261101.md)
+- [OpenMausBot平台订单与确定性直达对照](references/OPENMAUSBOT-20261101.md)
+- [Windows D隧道HTTP与ChatGPT插件连通分层](references/WINDOWS-D-V13-20261101.md)
+
 2026-10-31仅新增有来源的经验卡与导航，不改变本技能版本，不替换正式执行大脑、Windows A→B→C通道或任何原专业Freeze。原日报及项目证据仍留C盘，经验完整T_VALID净收益NOT_MEASURED。
+
+2026-11-01新增四张来源明确的经验卡，保持V1方法版本不变；当前项目状态继续以原CURRENT/Freeze为准。GitHub正式执行桥V12.0.3与其他项目V13路由文字冲突不可由本卡擅自裁决；本次每日复盘按用户A→B→C执行。记忆完整T_VALID净收益NOT_MEASURED。
