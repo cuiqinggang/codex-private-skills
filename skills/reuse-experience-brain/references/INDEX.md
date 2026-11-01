@@ -28,7 +28,14 @@
 | EXP-BROWSER-ATTACH-001 | Playwright、connectOverCDP、共享11页、初始化卡住、noDefaults | [BROWSER-ATTACH-20261031.md](BROWSER-ATTACH-20261031.md) |
 | EXP-HERMES-BG-001 | Hermes后台cron、订单接续、order-test前缀、PYTHONPATH环境冲突 | [HERMES-BACKGROUND-20261031.md](HERMES-BACKGROUND-20261031.md) |
 
+| EXP-GSB-PI-V2-001 | 谷深V2、Pi Google、DSH显式回退、元数据ACL、旧订单账本 | [GSB-PI-V2-20261101.md](GSB-PI-V2-20261101.md) |
+| EXP-PI-LONGFLOW-001 | Pi长流程、RPC goal、会话恢复、MCP冷启动、8小时未验 | [PI-NATIVE-LONGFLOW-20261101.md](PI-NATIVE-LONGFLOW-20261101.md) |
+| EXP-OPENMAUS-001 | OpenMausBot、0.1.136、Git checkpoint超时、平台化订单 | [OPENMAUSBOT-20261101.md](OPENMAUSBOT-20261101.md) |
+| EXP-WIN-D-V13-001 | D隧道、V13、插件内部错误、临时URL变更、HTTP非MCP | [WINDOWS-D-V13-20261101.md](WINDOWS-D-V13-20261101.md) |
+
 旧资料的继承范围与原日报校验：[INHERITANCE.md](INHERITANCE.md)、[INHERITANCE.json](INHERITANCE.json)。
 新增只更新相关卡片及该行；重复事实按来源事件ID去重，保留旧版本与反例。当前没有证据支持的新问题必须明确无命中。
 
 2026-10-31：新增4张脱敏卡，Docker、Pi、视频旧卡只追加当日边界。没有新的明确共享经验adopt/reject原任务回执，不记录虚假复用；完整记忆净T_VALID仍NOT_MEASURED。
+
+2026-11-01：新增4张来自原项目回执的脱敏卡片，分别覆盖Pi＋Google强备V2、Pi原生长流程、OpenMausBot和Windows D隧道插件连通性；Docker与历史DSH卡只增加新的时间边界，旧事件不重复发布。强备V2原RESULT和本机复用日志存在EXP-PI/EXP-BROWSER/EXP-DELIVERY的实际采用，不证明记忆净业务T_VALID提速。正式BRAIN25及历史Freeze不变。
