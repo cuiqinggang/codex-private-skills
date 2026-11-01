@@ -1,0 +1,33 @@
+{
+  "task_id": "GSB-PI-GOOGLE-20261031-001",
+  "memory_refs": [
+    {
+      "memory_id": "EXP-PI-001",
+      "version": "V1",
+      "decision": "adopt",
+      "reason": "Inherited existing bounded original-file real-reboot evidence without claiming unattended browser reboot"
+    },
+    {
+      "memory_id": "EXP-BROWSER-001",
+      "version": "V1",
+      "decision": "adopt",
+      "reason": "Used browser page ownership and no unrelated tab closures"
+    },
+    {
+      "memory_id": "EXP-DELIVERY-001",
+      "version": "V1",
+      "decision": "adopt",
+      "reason": "Reused verified original order recipe/checker and original continuity instead of rebuilding"
+    }
+  ],
+  "changed_action": "Maintained original task identity, jobs/continuity, original verifier and owned browser pages during Pi+Google V2 scoped transition; avoided redoing confirmed orders and claiming a cold browser reboot.",
+  "result": "GSB V2 DEPLOYED_SCOPED_PASS: 14 bounded release checks, real order quality/legacy ledger/Google bounded collaboration PASS; arbitrary tasks and browser cold reboot not certified.",
+  "evidence": [
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\gsb-pi-google-v2-20261031\\RESULT.md",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\gsb-pi-google-v2-20261031\\DEPLOYMENT.json",
+    "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_META\\MEMORY-REUSE-LOG.md"
+  ],
+  "time_scope": "Original 2026-10-31 late-evening scoped release; 2026-11-01 daily review readback. No independent memory-on/off full E2E clock.",
+  "full_business_t_valid_memory_benefit": "NOT_MEASURED",
+  "kind": "real project original receipt-linked reuse, not a new synthetic test"
+}
