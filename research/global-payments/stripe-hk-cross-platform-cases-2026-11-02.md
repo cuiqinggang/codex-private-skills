@@ -1,0 +1,28 @@
+# 全球收款与资金流转能力包 V8.0 — Stripe 香港跨平台成熟路径研究增量 R1
+归档日期：2026-11-02；研究状态：公开案例研究，不等于本人实际验收。
+建议目标版本：V8.1.0（仅在主技能合并并完成校验后生效）。
+## 继承冻结
+保留 V8.0 原始203条研究、申请/获批/绑卡/费用回执与旧路线纠错。
+Contra 香港优先验证；Upwork 人民币备用；Ruul、USDC、自有主体按 V8.0 缺口暂缓。
+Stripe 香港为新增候选，不能替代已冻结主路线，不能声称获批或实际到账。
+## 成熟案例证据
+- YouTube 小帆船 SailTech：https://www.youtube.com/watch?v=-Y-5lWknghE ，16:41，大陆护照+香港银行注册及支付链接演示；状态：公开视频描述可查，银行到账未核实。
+- YouTube 红孩儿 Redman：https://www.youtube.com/watch?v=0EGMXG6dtnc ，2026-03，注册、网站、账户配置；状态：公开教程，提现未证实。
+- YouTube 自由超 FreeChao：https://www.youtube.com/watch?v=cuTTWymPsLI ，2026-09，大陆护照与 Wise 香港账户、提现暂停界面；状态：候选演示，需逐帧复核。
+- YouTube 泥伏雷：https://www.youtube.com/watch?v=Fhid261nXPg ，香港个人开户；状态：公开教程，资金闭环未知。
+- 抖音 DZ大周讲外贸：https://www.douyin.com/shipin/7351708033325566004 ，注册后 KYC 遇阻的自述；状态：反例/作者自述。
+- B站历史教程：https://www.bilibili.com/video/BV1HT4y1U7zC/ ，历史开户及维护；状态：旧规则，仅做方法参考。
+- droidHZ：https://www.10100.com/article/41031370 ，护照/众安银行/香港个人注册；状态：流程自述。
+- 沐风：https://mufeng.blog/article/stripe-hong-kong-account-alipay-tax-id-guide ，2026-06，护照/汇丰/Individual；状态：配置过程，支付资格有限。
+- 老范提现：https://fan-crossborder.com/archives/6909 ，2025-01，声称香港银行到账并附图；状态：历史 E4 候选，独立真实性未验证。
+## 资格冲突与细节
+Stripe 香港现行帮助文档指明 Individual 商户要求香港身份证；无 HKID 但有香港 BRN 可按相应 Sole Proprietorship 商户类型申请。公开视频的护照核验成功与最终商户资格/提现持续性不是同一结论。
+重点逆向：实际商户类型、BRN 是否存在、本人地址、网站及服务说明、港卡户名和分行代码、账户 restrictions、真实支付和银行回执。
+身份组合以大陆护照、ICBC Asia 香港账户、无已证实 HKID/BRN 为分析基线；不要再次开户，不得使用虚假地址或借用主体。
+## 证据分级
+E1 注册界面；E2 身份核验与真实模式；E3 客户真实付款；E4 香港银行到账。
+每例标注作者/发布日期/原始 URL/付款与提现事实及缺口；转载不重复计为独立案例，口头声称不提升证据级别。
+## 搜索与执行规范
+YouTube/B站/抖音/小红书/TikTok/西瓜视频/Reddit/独立博客与官方资料并行搜索；优先近6-12个月视频、完整录屏、失败评论、支付及到账凭证。平台未检出不等于不存在；不得虚构已逐帧审看。
+先搜索陈述成熟案例，再比较官方适用资格和本人条件；未解决冲突标记候选，不需要为研究而实际注册。
+结论：Stripe 香港个人直开为高度相关、资格冲突未解决的候选；独资 BRN/香港公司为有主体成本的替代候选。主路线未变。
