@@ -39,3 +39,5 @@
 2026-10-31：新增4张脱敏卡，Docker、Pi、视频旧卡只追加当日边界。没有新的明确共享经验adopt/reject原任务回执，不记录虚假复用；完整记忆净T_VALID仍NOT_MEASURED。
 
 2026-11-01：新增4张来自原项目回执的脱敏卡片，分别覆盖Pi＋Google强备V2、Pi原生长流程、OpenMausBot和Windows D隧道插件连通性；Docker与历史DSH卡只增加新的时间边界，旧事件不重复发布。强备V2原RESULT和本机复用日志存在EXP-PI/EXP-BROWSER/EXP-DELIVERY的实际采用，不证明记忆净业务T_VALID提速。正式BRAIN25及历史Freeze不变。
+
+2026-11-02：新增Pi OMP真实升级/研究时限截断、抖音单链接公开回退、Stripe香港资质证据分级3张脱敏卡；Docker旧卡只新增20:08最新故障，不覆盖历史READY。Pi新旧版原对照旧18/18、新17/18与稍后研究2/2+2/2不能互相抹平，00:29实际公开入口已由原项目切换OMP18.15.0。无新独立完整记忆业务T_VALID改善对照，NOT_MEASURED；DSE/执行大脑/原任务Freeze未改。
