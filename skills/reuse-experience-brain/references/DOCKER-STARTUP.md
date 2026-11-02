@@ -22,3 +22,7 @@ LAST_GOOD：原数据盘和容器数据仍在，单一现有Startup VBS存在。
 
 ## 2026-11-01最新时点｜16:30再度受控恢复
 原startup.jsonl：2026-11-01 16:23:33+08进入WAITING_FOR_ENGINE，16:26:45确认WSL/Docker bootstrap失败、仅本次原业务流程进入RECOVERING；16:30:33为AUTOMATIC_RECOVERY_SUCCEEDED与ENGINE_READY，status.json记录prewarmCode=0、lastProbeCode=0、elapsedMilliseconds=427102（07:07:102）。相比10月31日11:07的旧READY，这是更新的时点状态，但旧恢复不等于未来启动恒可靠，更深首次差异和跨多日无人值守仍未认证。复盘本身没有操作Docker、服务或系统配置。原始证据：C:\AI\Docker-Autostart-20261024\startup.jsonl、status.json。仅作为同类故障历史经验与下一次只读诊断入口。
+
+
+## 2026-11-02最新时点｜20:08再次失效（只读）
+原C:\AI\Docker-Autostart-20261024\status.json于2026-11-02 20:08:28+08:00写明REQUIRES_DIAGNOSIS、action=EXCEPTION、prewarmCode=-1、Docker WSL prewarm failed、initialProcessCount=0。LAST_GOOD=11月1日16:30:33的受控ENGINE_READY，FIRST_DELTA=11月2日20:08:28新的WSL预热失败。**最新原回执是异常，历史READY不可当当前健康**；此时重复触发的根因、跨登录无人值守和恢复是否成功均UNKNOWN。2026-11-02复盘没有重启Docker、WSL或修改Windows系统/代理。原始回执保留原路径，本卡仅指向核账，不授权系统操作。
