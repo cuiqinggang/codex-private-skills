@@ -56,6 +56,12 @@ description: "读取和积累共同工作区的经验大脑。用户提到长期
 - [OpenMausBot平台订单与确定性直达对照](references/OPENMAUSBOT-20261101.md)
 - [Windows D隧道HTTP与ChatGPT插件连通分层](references/WINDOWS-D-V13-20261101.md)
 
+- [Pi V3＋OMP18.15对照、时限截断与正式入口](references/PI-CORE-UPGRADE-20261102.md)
+- [抖音公开短链接503熔断与媒体完整解码回退](references/DOUYIN-FALLBACK-20261102.md)
+- [Stripe香港商户资格与真实到账E1-E4证据边界](references/STRIPE-HK-BORDERS-20261102.md)
+
 2026-10-31仅新增有来源的经验卡与导航，不改变本技能版本，不替换正式执行大脑、Windows A→B→C通道或任何原专业Freeze。原日报及项目证据仍留C盘，经验完整T_VALID净收益NOT_MEASURED。
 
 2026-11-01新增四张来源明确的经验卡，保持V1方法版本不变；当前项目状态继续以原CURRENT/Freeze为准。GitHub正式执行桥V12.0.3与其他项目V13路由文字冲突不可由本卡擅自裁决；本次每日复盘按用户A→B→C执行。记忆完整T_VALID净收益NOT_MEASURED。
+
+2026-11-02仅将三张有原始证据的经验卡加入原V1入口，不改变技能方法版本；Pi最新入口与Docker状态只能按原项目时间回执核对。并非新规则正式晋升，不把代码/下载局部速度或记忆读回当作完整T_VALID提速。
