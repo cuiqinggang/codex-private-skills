@@ -128,9 +128,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-02-DSE-INCREMENTAL.md",
+      "sha256": "f276f5cc356563c288a423dcacbc9728b55ee59c071914abdb2e2fb4f0472753",
+      "bytes": 11514,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "15 daily files byte-hashed; 10 original contents read through 2026-11-01; 25 selected cards (21 prior through Oct31 + four new Nov1); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
+  "limits": "16 daily files byte-hashed; 11 original contents read through 2026-11-02; 28 selected experience cards (25 prior + 3 Nov2); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -279,7 +287,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-01",
+  "latest_incremental_date": "2026-11-02",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -316,6 +324,56 @@
       "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\gsb-pi-google-v2-20261031\\RESULT.md",
       "content_read": true,
       "evidence_scope": "Original V2 RESULT and original memory-reuse-log state adopted historical Pi evidence, browser page ownership and mature deterministic order checker; memory T_VALID net gain NOT_MEASURED"
+    }
+  ],
+  "incremental_case_sources_20261102": [
+    {
+      "experience_id": "EXP-PI-CORE-20261102-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-v3-core-ab-20261101\\SUMMARY.json",
+      "content_read": true,
+      "evidence_scope": "36 matched V3 six-domain cases 18/18 baseline vs 17/18 new at 180s research deadline; no universal speedup"
+    },
+    {
+      "experience_id": "EXP-PI-CORE-20261102-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-research-recheck-20261102\\DEPLOYMENT.json",
+      "content_read": true,
+      "evidence_scope": "Nov 2 00:29 Beijing public V3 entry now OMP18.15.0, signature/readback/smoke PASS, old rollback retained"
+    },
+    {
+      "experience_id": "EXP-PI-CORE-20261102-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-research-recheck-20261102\\RECHECK-SUMMARY.json",
+      "content_read": true,
+      "evidence_scope": "600s capped research retest old2/2 vs new2/2, underlying earlier 180s non-delivery remains, network root cause unproven"
+    },
+    {
+      "experience_id": "EXP-DOUYIN-20261102-001",
+      "path": "C:\\AI\\Douyin-Ultra-Direct\\last_run.json",
+      "content_read": true,
+      "evidence_scope": "Nov2 16:40 original public video API 503/circuit-open and fallback failed"
+    },
+    {
+      "experience_id": "EXP-DOUYIN-20261102-001",
+      "path": "C:\\AI\\Douyin-Recovery-20261102\\final-check\\douyin_7702029519200292131.receipt.json",
+      "content_read": true,
+      "evidence_scope": "Nov2 17:03 one public MP4 passed full decode H264/AAC 5,034,155 bytes; not all links"
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Nov2 20:08 current REQUIRES_DIAGNOSIS prewarm failed overrides Nov1 16:30 historic READY"
+    },
+    {
+      "experience_id": "EXP-STRIPE-HK-20261102-001",
+      "path": "research/global-payments/stripe-hk-cross-platform-cases-2026-11-02.md",
+      "content_read": true,
+      "evidence_scope": "GitHub Nov2 19:36 candidate public case study E1/E2/E3/E4, no verified merchant approval/payout"
+    },
+    {
+      "experience_id": "EXP-PI-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-memory-integration-v1-20261101\\ACCEPTANCE.json",
+      "content_read": true,
+      "evidence_scope": "Pi native local learn/fresh-session recall 15/15, not shared-GPT E2E or business T_VALID benefit; reuse previously logged"
     }
   ]
 }
