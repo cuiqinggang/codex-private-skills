@@ -64,6 +64,13 @@ jobs:
         env:
           EXPECTED_COMMIT: ${{ github.sha }}
           SOURCE_REPOSITORY: ${{ github.repository }}
+          # actions/checkout marks the workspace as safe only in its own
+          # temporary git configuration; this separate pwsh step runs as
+          # NETWORK SERVICE and needs an independently scoped safe.directory.
+          # This does not modify Windows or global Git configuration.
+          GIT_CONFIG_COUNT: '1'
+          GIT_CONFIG_KEY_0: safe.directory
+          GIT_CONFIG_VALUE_0: ${{ github.workspace }}
         run: |
           $ErrorActionPreference='Stop'
           Add-Type -AssemblyName System.IO.Compression.FileSystem
