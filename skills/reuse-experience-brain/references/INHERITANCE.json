@@ -136,9 +136,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-03-DSE-INCREMENTAL.md",
+      "sha256": "f45d7f955fef24dfcbab1592cbce0da74d0df3bff99a2ef9801f4a9107ee1ae3",
+      "bytes": 7903,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "16 daily files byte-hashed; 11 original contents read through 2026-11-02; 28 selected experience cards (25 prior + 3 Nov2); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
+  "limits": "17 daily files byte-hashed; 12 original contents read through 2026-11-03; 30 selected experience cards (28 prior + 2 Nov3); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -287,7 +295,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-02",
+  "latest_incremental_date": "2026-11-03",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -374,6 +382,38 @@
       "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-memory-integration-v1-20261101\\ACCEPTANCE.json",
       "content_read": true,
       "evidence_scope": "Pi native local learn/fresh-session recall 15/15, not shared-GPT E2E or business T_VALID benefit; reuse previously logged"
+    }
+  ],
+  "incremental_case_sources_20261103": [
+    {
+      "experience_id": "EXP-ONION-TOR-20261103-001",
+      "path": "skills/onion-network-superpowers/references/acceptance-v4.md",
+      "content_read": true,
+      "evidence_scope": "Nov3 D->existing windows-mcp-v1->Tor Browser GUI, official Tor check and homepage PASS; reboot/browser onion/external transfer untested; screenshots not archived"
+    },
+    {
+      "experience_id": "EXP-ONION-TOR-20261103-001",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\03_SKILLS\\onion-network-superpowers\\STATUS-V3.md",
+      "content_read": true,
+      "evidence_scope": "Prior V3 GUI FAIL preserved, independent Tor result does not replace browser result"
+    },
+    {
+      "experience_id": "EXP-PAYMENT-ROUTES-20261103-001",
+      "path": "research/global-payments/three-mature-routes-2026-11-03-r2.md",
+      "content_read": true,
+      "evidence_scope": "Three existing payment workflows and R1 attribution correction; research only, identity approval/real E3-E4 not verified"
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Nov3 19:13 REQUIRES_DIAGNOSIS Docker WSL prewarm failed -1; original error persists, no repair run"
+    },
+    {
+      "experience_id": "EXP-ONION-TOR-20261103-001",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_META\\MEMORY-REUSE-LOG.md",
+      "content_read": true,
+      "evidence_scope": "Original skill V3/D/stdIo route actually reused; not new shared EXP memory_id adopt/reject receipt"
     }
   ]
 }
