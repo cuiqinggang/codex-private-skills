@@ -89,3 +89,10 @@ CHANGE_SCOPE=ROOT_CAUSE_SCOPE
 - 完整连接：云端经现有 D 通道 → 本机 windows-mcp-v1 stdio → Windows 桌面 → 已有 Tor Browser；工具角色、步骤、图像回传、错误恢复见包内 references/connection-runbook.md。
 - 本次桌面查看/操作、浏览器 Tor 官方检测页、Tor 官网正文 PASS；浏览器 onion、浏览器重开、整机重启、外部经 Tor 传输仍未认证。
 - 本机 V3 冻结保留，V4 带历史文字副本；不修改 FlClash、不重装，不把历史 PASS 当作未来会话网络状态。
+
+## 人机共创·终身学习与实践引擎 V1.1.0（2026-11-03）
+
+- 入口：[SKILL.md](../human-ai-lifelong-learning-v1/SKILL.md)；课程组织：[course-organization.md](../human-ai-lifelong-learning-v1/course-organization.md)。
+- 原则：在使用AI解决问题的过程中补必要知识，训练逻辑判断、AI审核与执行；按目标决定学习深度，课程资源按卡点调用。
+- 区分本人掌握与人机协作交付；效率计入补知识、审核、返工与恢复；真人学习效果和提速尚未测量。
+- 本机原目录继续使用 human-ai-lifelong-learning-v1；V1.0.0正文保留于包内 references/v1.0.0-SKILL.md。
