@@ -82,3 +82,10 @@ CHANGE_SCOPE=ROOT_CAUSE_SCOPE
 当前任务涉及V4.2、复杂工程、旧解法、重复故障或接续时，先读共同工作区`MEMORY.md`→`skills/reuse-experience-brain/SKILL.md`→相关经验卡片，再按当前用户合同继续原专业技能。V4.2入口为`skills/ai-organization-v4-2/SKILL.md`，步骤2已绑定此依赖。不要只加载技能而漏掉匹配旧经验。
 原执行大脑第25版、旧日报、原技能/Freeze原位继承，完整范围见`skills/reuse-experience-brain/references/INHERITANCE.md`。当前用户任务不因旧入口中的历史项目状态而自动转成另一项目。
 有效经验写回共享包，原始证据保留原处；沿用现有21点复盘，写后远端回读。未读记忆不得称已应用；实际读取不等于已证明完整T_VALID提速。平台未加载本入口的页面不因此获得自动注入。
+
+## 洋葱网络超能力 V4.0（2026-11-03）
+
+- 技能入口：[V4.0](../onion-network-superpowers/SKILL.md)。
+- 完整连接：云端经现有 D 通道 → 本机 windows-mcp-v1 stdio → Windows 桌面 → 已有 Tor Browser；工具角色、步骤、图像回传、错误恢复见包内 references/connection-runbook.md。
+- 本次桌面查看/操作、浏览器 Tor 官方检测页、Tor 官网正文 PASS；浏览器 onion、浏览器重开、整机重启、外部经 Tor 传输仍未认证。
+- 本机 V3 冻结保留，V4 带历史文字副本；不修改 FlClash、不重装，不把历史 PASS 当作未来会话网络状态。

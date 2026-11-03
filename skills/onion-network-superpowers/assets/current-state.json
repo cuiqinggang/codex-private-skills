@@ -1,0 +1,19 @@
+{
+  "version": "4.0.0",
+  "date": "2026-11-03",
+  "device": "DESKTOP-4A1EGTM",
+  "route": "D -> local configured windows-mcp-v1 stdio -> Windows desktop -> existing Tor Browser",
+  "desktop": "PASS",
+  "browser_tor_connection": "PASS",
+  "browser_tor_check": "PASS",
+  "browser_official_homepage": "PASS",
+  "browser_onion": "UNKNOWN",
+  "browser_relaunch": "NOT_TESTED",
+  "os_reboot": "NOT_TESTED",
+  "onionshare_external_tor_transfer": "UNKNOWN",
+  "flclash_modified": false,
+  "reinstalled": false,
+  "t_valid_e2e": "NOT_MEASURED",
+  "state_kind": "historical_observation",
+  "requires_current_task_revalidation": true
+}
