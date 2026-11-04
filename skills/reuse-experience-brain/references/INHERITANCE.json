@@ -295,7 +295,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-03",
+  "latest_incremental_date": "2026-11-04",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -415,5 +415,14 @@
       "content_read": true,
       "evidence_scope": "Original skill V3/D/stdIo route actually reused; not new shared EXP memory_id adopt/reject receipt"
     }
-  ]
+  ],
+  "incremental_case_sources_20261104": [
+    {
+      "experience_id": "EXP-PAYMENT-ROUTES-20261103-001",
+      "path": "research/global-payments/three-channels-hk-bank-endpoint-2026-11-04-r3.md",
+      "content_read": true,
+      "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
+    }
+  ],
+  "latest_incremental_scope": "GitHub-source-only R3 case addendum; 2026-11-04 local daily not read or registered; LOCAL_MEMORY_NOT_SYNCED; 17 previous daily files and 30 cards unchanged."
 }
