@@ -38,7 +38,7 @@
 | EXP-STRIPE-HK-20261102-001 | Stripe香港、资格冲突、公开教程、商户真实付款、银行到账E1-E4 | [STRIPE-HK-BORDERS-20261102.md](STRIPE-HK-BORDERS-20261102.md) |
 
 | EXP-ONION-TOR-20261103-001 | Tor Browser、windows-mcp-v1、D通道、cmd与PowerShell、GUI误切、Unicode、is_error、V3到V4 | [ONION-TOR-GUI-20261103.md](ONION-TOR-GUI-20261103.md) |
-| EXP-PAYMENT-ROUTES-20261103-001 | Contra、Airwallex、Upwork Direct Contracts、Stripe香港、三条成熟收款路线、E1至E4 | [PAYMENT-ROUTES-20261103.md](PAYMENT-ROUTES-20261103.md) |
+| EXP-PAYMENT-ROUTES-20261103-001 | Contra、Airwallex、Upwork Direct Contracts、香港银行终点、Hong Kong HKB提现候选、支持列表≠本人可绑定、Stripe香港、E1至E4 | [PAYMENT-ROUTES-20261103.md](PAYMENT-ROUTES-20261103.md) |
 
 旧资料的继承范围与原日报校验：[INHERITANCE.md](INHERITANCE.md)、[INHERITANCE.json](INHERITANCE.json)。
 新增只更新相关卡片及该行；重复事实按来源事件ID去重，保留旧版本与反例。当前没有证据支持的新问题必须明确无命中。
@@ -50,3 +50,5 @@
 2026-11-02：新增Pi OMP真实升级/研究时限截断、抖音单链接公开回退、Stripe香港资质证据分级3张脱敏卡；Docker旧卡只新增20:08最新故障，不覆盖历史READY。Pi新旧版原对照旧18/18、新17/18与稍后研究2/2+2/2不能互相抹平，00:29实际公开入口已由原项目切换OMP18.15.0。无新独立完整记忆业务T_VALID改善对照，NOT_MEASURED；DSE/执行大脑/原任务Freeze未改。
 
 2026-11-03：新增Tor V4真正GUI连接与本机MCP分层、海外收款三条成熟流程研究2卡；旧Docker经验仅追加19:13新故障回执。Tor重启/onion及个人商户/银行到账未验；历史V3失败不改写、R1错误作者归属由R2纠正；新共享EXP采用/拒绝完整业务回执未观察到，记忆T_VALID净收益NOT_MEASURED。方法、DSE、专业Freeze不变。
+
+2026-11-04：原收款经验卡仅追加R3研究的Upwork香港本地银行候选与Contra跨国银行操作说明；本人账号授权和E4到账未验。来源已在GitHub研究目录存在；本次Windows A离线、B连接429，C盘当日原日报及语义索引未更新，不能据此宣称LOCAL_MEMORY_SYNCED。未新增卡片或晋升稳定规则。
