@@ -24,3 +24,10 @@ FIRST_DELTA：部分公开教程仅提供注册/身份画面，却被误读为E3
 - [2026-11-03 R2完整路径与各平台官方出处](../../../research/global-payments/three-mature-routes-2026-11-03-r2.md)
 - [2026-11-02 Stripe香港R1及纠错增量](../../../research/global-payments/stripe-hk-cross-platform-cases-2026-11-02.md)
 - 这张卡不记录个人账号/证件/银行号码，也不自称真实收款或新规则晋升。
+
+## 2026-11-04 R3 增量（来源仅为GitHub研究，C盘当日原日报尚未同步）
+触发：目标限定为香港银行实际到账，比较Contra、Upwork、Stripe现有三路，尤其Upwork香港本地提现新候选。证据层级：2026-11-04 R3研究及Contra/Upwork官方产品说明；无本人账户页面、资格批准或到账回执。
+LAST_GOOD：2026-11-03 R2已有三路资格/费用分类，Upwork原人民币终点独立备用。FIRST_DELTA：Upwork官方Direct to Local Bank地区表同时列China(CNY)和Hong Kong(HKB)；**支持地区列表并不证明某个现有账号可选香港银行**。更正：保留原CNY路线为不同终点，新增香港支线仅标CANDIDATE，优先只读已有账号Withdrawals的实际可选币种、地区及户名校验。
+Contra官方说明：证件国家选签发地，跨证件与银行国家可按官方指引选择Airwallex；官方流程存在不等于本人的香港银行账户已获接入许可。Stripe香港Individual/独资/公司与银行账户主体必须匹配，不能由股东个人账户自动推断公司结算合格。熟客账单/新项目托管及客户发起/自由职业者发起Upwork Direct Contract的费用合同不能混用。
+适用：合法合规资格只读核验、银行终点比较、避免重复开户与错误手续费预估；不适用：据此声称本人实名认证、香港账户绑定、E3客户付款或E4银行到账成功，或宣称T_VALID提速。结果：RESEARCH_ONLY；ACCOUNT_ELIGIBILITY=UNKNOWN；E3/E4=NOT_VERIFIED；T_VALID=NOT_MEASURED。新规则无晋升。
+来源：[2026-11-04 R3研究](../../../research/global-payments/three-channels-hk-bank-endpoint-2026-11-04-r3.md)；[Upwork官方Direct to Local Bank](https://support.upwork.com/hc/en-us/articles/211063888-How-to-withdraw-earnings-with-Direct-to-Local-Bank)；[Contra官方跨国证件/银行指引](https://help.contra.com/en/articles/9322955-how-to-verify-your-identity-on-contra)。本条仅更新共享卡，原C盘11月4日日报未完成写入/回读。
