@@ -144,9 +144,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-05-DSE-INCREMENTAL.md",
+      "sha256": "09328c7a66ca79d3afd27f5dc3d7fa80eeb2a266f6d5a00b69aa9de3a332b80d",
+      "bytes": 9361,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "17 daily files byte-hashed; 12 original contents read through 2026-11-03; 30 selected experience cards (28 prior + 2 Nov3); incomplete historical distillation; original Vault not migrated; business T_VALID memory benefit NOT_MEASURED",
+  "limits": "18 daily files byte-hashed and registered (Nov4 missing); 13 original contents read through Nov5; 33 selected experience cards (30 prior + 3 Nov5); historical distillation incomplete; original Vault never migrated; business T_VALID memory benefit NOT_MEASURED",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -295,7 +303,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-04",
+  "latest_incremental_date": "2026-11-05",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -424,5 +432,31 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "GitHub-source-only R3 case addendum; 2026-11-04 local daily not read or registered; LOCAL_MEMORY_NOT_SYNCED; 17 previous daily files and 30 cards unchanged."
+  "latest_incremental_scope": "Nov5 C Vault original read and SHA256 verified, local KB semantic navigation modified and verified, explicit Hot Sync 12/0, Health Check PASS; Nov4 local daily still missing (shared-only R3); Nov5 3 GitHub experience cards + Docker dated update, no proven new EXP adopt/reject or business memory T_VALID comparison.",
+  "incremental_case_sources_20261105": [
+    {
+      "experience_id": "EXP-HERMES-V3-20261105-001",
+      "path": "skills/hermes-mature-supertool-v3/references/CURRENT.md",
+      "content_read": true,
+      "evidence_scope": "Hermes v0.22.7 local scoped task/browser/Dashboard/ECC status; strict four-role FAIL, ChatGPT site control denied, no cross-site delegation E2E"
+    },
+    {
+      "experience_id": "EXP-PAYMENT-MOR-20261105-001",
+      "path": "research/global-payments/creem-waffo-pancake-video-r4-2026-11-04.md",
+      "content_read": true,
+      "evidence_scope": "R4 sourced video/official rule analysis: digital MoR candidates only, no personal E3/E4 bank payout or custom-service eligibility"
+    },
+    {
+      "experience_id": "EXP-EVENT-PILOT-20261105-001",
+      "path": "skills/chi-yu-xing-dadao-zhijian-interest-law/references/event-backoffice-paid-pilot-v1.1-r3.md",
+      "content_read": true,
+      "evidence_scope": "USD10 proposal candidate, synthetic 8/8 only, actual Upwork withdraw/Connects and real banking not verified"
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\startup.jsonl",
+      "content_read": true,
+      "evidence_scope": "Windows A original: Nov5 00:18 ENGINE_READY with elapsed303395ms then latest 15:51 REQUIRES_DIAGNOSIS; no repair or boot reliability certification"
+    }
+  ]
 }
