@@ -149,17 +149,34 @@ jobs:
             $before=(Get-FileHash -LiteralPath $candidate -Algorithm SHA256).Hash
             $latestAgain=(& git ls-remote origin refs/heads/main)
             if($LASTEXITCODE -ne 0 -or ($latestAgain -split '\s+')[0] -ne $actual) {throw 'MAIN_MOVED_BEFORE_REPLACE'}
-            if(Test-Path -LiteralPath $dest -PathType Leaf) {
-              [IO.File]::Replace($candidate,$dest,$null)
+            # A prior K: backup exists after first successful run. .NET File.Replace on this
+            # Windows runner rejected a null third path: always name an explicit same-drive rollback.
+            $rollback=('K:\.AI_SKILL_BACKUP_'+$env:GITHUB_RUN_ID+'.previous.zip')
+            $rejected=('K:\.AI_SKILL_BACKUP_'+$env:GITHUB_RUN_ID+'.rejected.zip')
+            if((Test-Path -LiteralPath $rollback) -or (Test-Path -LiteralPath $rejected)) {throw 'ROLLBACK_PATH_COLLISION'}
+            $hadOld=(Test-Path -LiteralPath $dest -PathType Leaf)
+            if($hadOld) {
+              [IO.File]::Replace($candidate,$dest,$rollback)
+              $replacedOld=$true
             } else {
               [IO.File]::Move($candidate,$dest)
             }
             $after=(Get-FileHash -LiteralPath $dest -Algorithm SHA256).Hash
             if($before -ne $after) {throw 'POST_RENAME_HASH_MISMATCH'}
             $outcome=$true
+            if($replacedOld -and (Test-Path -LiteralPath $rollback)) {
+              Remove-Item -LiteralPath $rollback -Force -ErrorAction Stop
+              $replacedOld=$false
+            }
             Write-Host ('BACKUP_VERIFIED_PASS;SOURCE_COMMIT='+$actual+';SIZE_BYTES='+$size+';FILE_COUNT='+$tracked.Count+';ZIP_ENTRIES='+$entries.Count+';SHA256='+$after)
             Write-Host ('DESTINATION='+$dest)
           } finally {
+            if(-not $outcome -and $replacedOld -and (Test-Path -LiteralPath $rollback)) {
+              # Restore the previous verified ZIP if anything failed after the replacement.
+              [IO.File]::Replace($rollback,$dest,$rejected)
+              Write-Host 'PREVIOUS_BACKUP_RESTORED'
+              if(Test-Path -LiteralPath $rejected){Remove-Item -LiteralPath $rejected -Force -ErrorAction SilentlyContinue}
+            }
             if(-not $outcome -and (Test-Path -LiteralPath $candidate)){Remove-Item -LiteralPath $candidate -Force -ErrorAction SilentlyContinue}
             if(Test-Path -LiteralPath $stage){Remove-Item -LiteralPath $stage -Recurse -Force -ErrorAction SilentlyContinue}
           }
