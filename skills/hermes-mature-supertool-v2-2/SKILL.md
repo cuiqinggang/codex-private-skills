@@ -5,6 +5,8 @@ description: "使用 Hermes SuperTool V2.2 双模型执行链。用于 Windows D
 
 # Hermes SuperTool V2.2.1 双模型执行链
 
+现行入口为 [Hermes SuperTool V3.0.0](../hermes-mature-supertool-v3/SKILL.md)。本页保留 V2.2.1 的发布记录。
+
 开工先读 [当前状态与回执](references/CURRENT.md)。Hermes v0.22.7 使用唯一正式执行模型 `deepseek/deepseek-v4.1-flash-20261017`，沿用已有 OpenRouter 配置、正式 CLI 和原生接续。GPT 负责定目标、独立审核及决策。需要 GPT 的审核、图片理解、视频理解或绘图时，由 Hermes 经获准的智能浏览器入口向指定已登录的 ChatGPT 网页派单，等待完成，读回并交付结果。
 
 - Windows 严格按 V13.0.6 的 D→A→B→C，本次 D 为 Windows D 20261105-01。重连只验证本次新编号。保留已通过的节点，写入结果未知时先只读对账。
