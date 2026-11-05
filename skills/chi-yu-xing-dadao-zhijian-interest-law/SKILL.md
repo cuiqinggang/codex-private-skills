@@ -279,4 +279,4 @@ language: zh-CN
 
 ## 十四、商业分支
 
-分析兴趣搭子、私密交友、付费会员或海外活动收款时，读取[私密兴趣组局与会员服务 V1.1](references/private-social-club-v1.1.md)。按免费入口、付费私密群准入与用户自主控制资料的合同，先复用现有主办方与已排期活动。按采用条件选择已有活动平台、Telegram 社群或托管会员站，验证真实订单、到场和退款。当前首单按[后台付费首单执行单 V1.1 R3](references/event-backoffice-paid-pilot-v1.1-r3.md)执行。
+分析兴趣搭子、私密交友、付费会员或海外活动收款时，读取[私密兴趣组局与会员服务 V1.1](references/private-social-club-v1.1.md)。按免费入口、付费私密群准入与用户自主控制资料的合同，先复用现有主办方与已排期活动。按采用条件选择已有活动平台、Telegram 社群或托管会员站，验证真实订单、到场和退款。如需独立验证交付与收款，按[活动后台 10 美元验证单 V1.1 R3](references/event-backoffice-paid-pilot-v1.1-r3.md)执行，先核实收款再报价。
