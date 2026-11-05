@@ -37,3 +37,6 @@
 2026-11-03增量：现有Tor Browser经已授权D远程通道和本地windows-mcp-v1完成桌面操作，V4原验收记录官方检测页与官网正文局部PASS；旧V3 GUI FAIL仅是历史状态，浏览器.onion/重开/整机重启/外部传输未认证。三条成熟海外收款流程R2（Contra香港、Upwork人民币、真实主体Stripe）为研究增量，未进行本人实际商户开户付款到账，纠正R1聚合视频KYC失败作者归属不能直接归给原标注者。Docker 11月3日19:13最新原回执仍WSL prewarm failed，旧READY不可替代。新增2张最小卡，更新旧Docker卡；原C盘17份日报登记、12份正文已读、30卡选编，非全历史蒸馏。无新的明确共享EXP采用/拒绝完成字段，T_VALID记忆净改善NOT_MEASURED。BRAIN25及DSE无版本晋升。
 
 2026-11-04补充：GitHub研究R3已归档，现有EXP-PAYMENT-ROUTES-20261103-001卡仅追加Upwork Direct to Local Bank的Hong Kong(HKB)官方地区列表作为**候选**；支持列表不证明本人账号/ICBC Asia可用。Contra官方跨国证件/银行走廊通过Airwallex需本人资格核验；Stripe主体/结算账户必须匹配。只有研究证据，无真实客户付款与银行到账。此次收费A设备离线、B连接429，未能读取或写入C盘11月4日日报；原17份日报登记/12份原文已读/30张卡数量不变，LOCAL_MEMORY_NOT_SYNCED。DSE/BRAIN25/专业Freeze未修改。
+
+
+2026-11-05增量：Windows收费A可用、按原唯一入口和相关索引读取后，C盘原Vault新增11月5日最小复盘正文；Memory Lint 1/1 PASS，KB定向Hot Sync 12项/0缺失，Health Check PASS，文件与Manifest独立哈希一致。11月4日原C盘日报仍缺失，不能冒充同步或补造历史。共享经验新增Hermes V3三类网页/代理合同边界、Creem/Waffo数字商品MoR与定制劳务适配分流、10美元活动后台试单P0到账门禁3卡；Docker旧卡添11月5日00:18历史恢复与15:51较新WSL预热失败。Hermes本机限定实测与严格ECC失败、ChatGPT网页站点权限拒绝分开；10美元本地8/8合成测试不是客户付款和银行到账。未发现新增明确共享EXP采用/拒绝的真实任务结果；T_VALID净收益NOT_MEASURED。方法BRAIN25、DSE与冻结专业包均不晋升；本机A→B→C与Hermes专业D优先的路由文字按各自任务范围保留。
