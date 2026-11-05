@@ -29,3 +29,6 @@ LAST_GOOD：原数据盘和容器数据仍在，单一现有Startup VBS存在。
 
 ## 2026-11-03最新时点｜19:13同一预热故障再现
 原C:\\AI\\Docker-Autostart-20261024\\status.json于2026-11-03 19:13:14.661+08:00记录REQUIRES_DIAGNOSIS、EXCEPTION、prewarmCode=-1、Docker WSL prewarm failed、initialProcessCount=0；startup.jsonl末项同值。继承11月2日20:08故障和更早11月1日16:30 ENGINE_READY，**最新可读原回执依旧是故障**。复盘只读，没有重启/修复WSL或Docker，没有最新成功回归；根因及下次登录可靠性UNKNOWN。仅为旧EXP-DOCKER-001的同指纹新日期证据，不新建卡；采用时必须重新核对现时状态和原授权边界。
+
+## 2026-11-05最新原始只读状态｜00:18成功，15:51再次故障
+Windows收费A本次独立读取原`C:\AI\Docker-Autostart-20261024\startup.jsonl`末18条及`status.json`：11月4日22:02:54预热失败；11月5日00:13:53等待后00:17:01受控恢复，00:18:51.542原回执FINAL=ENGINE_READY、prewarmCode=0、elapsedMilliseconds=303395；**同日15:51:13.283最新status.json为REQUIRES_DIAGNOSIS、EXCEPTION、prewarmCode=-1，错误仍为Docker WSL prewarm failed、initialProcessCount=0**。LAST_GOOD=00:18历史恢复；FIRST_DELTA=15:51再次预热失败；本次最小修复/回归=NOT_PERFORMED，根因=UNKNOWN。较晚的失败是本轮最新状态，不用00:18的历史PASS覆盖它。复盘未改Windows系统、WSL/Docker或代理。此卡仅增加可复用的日期边界，不重建技能/任务或授权自动重启；下一次必须先读原状态再按原合同处理。
