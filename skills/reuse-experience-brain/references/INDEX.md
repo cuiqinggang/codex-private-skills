@@ -52,3 +52,10 @@
 2026-11-03：新增Tor V4真正GUI连接与本机MCP分层、海外收款三条成熟流程研究2卡；旧Docker经验仅追加19:13新故障回执。Tor重启/onion及个人商户/银行到账未验；历史V3失败不改写、R1错误作者归属由R2纠正；新共享EXP采用/拒绝完整业务回执未观察到，记忆T_VALID净收益NOT_MEASURED。方法、DSE、专业Freeze不变。
 
 2026-11-04：原收款经验卡仅追加R3研究的Upwork香港本地银行候选与Contra跨国银行操作说明；本人账号授权和E4到账未验。来源已在GitHub研究目录存在；本次Windows A离线、B连接429，C盘当日原日报及语义索引未更新，不能据此宣称LOCAL_MEMORY_SYNCED。未新增卡片或晋升稳定规则。
+
+
+2026-11-05：新增3张脱敏最小卡，保留此前30卡：Hermes V3本机/受控浏览器与指定ChatGPT网页发单三合同严格分开（后者平台拒绝，ECC严格四角色仍未过）；数字产品Creem/Waffo MoR与定制服务收款分流；10美元活动后台试单P0先核真实账户可提现资格，8/8仅为本地合成测试。旧Docker卡追加11月5日00:18恢复后15:51再故障的最新时点，不以早间PASS覆盖当前失败。无新的明确EXP采用/拒绝原任务回执；完整记忆T_VALID收益NOT_MEASURED。
+
+| EXP-HERMES-V3-20261105-001 | Hermes、Flash1017、ECC四角色、browser_exec、Dashboard接单、GPT网页委派、权限拒绝 | [HERMES-V3-20261105.md](HERMES-V3-20261105.md) |
+| EXP-PAYMENT-MOR-20261105-001 | Creem、Waffo、Pancake、MoR、SaaS、数字产品、定制劳务、香港提现 | [PAYMENT-MOR-20261105.md](PAYMENT-MOR-20261105.md) |
+| EXP-EVENT-PILOT-20261105-001 | 10美元试单、Upwork、活动报名后台、测试8/8、提现门槛、Connects | [EVENT-PILOT-20261105.md](EVENT-PILOT-20261105.md) |
