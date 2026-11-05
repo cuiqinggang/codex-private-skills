@@ -70,3 +70,11 @@ description: "读取和积累共同工作区的经验大脑。用户提到长期
 2026-11-02仅将三张有原始证据的经验卡加入原V1入口，不改变技能方法版本；Pi最新入口与Docker状态只能按原项目时间回执核对。并非新规则正式晋升，不把代码/下载局部速度或记忆读回当作完整T_VALID提速。
 
 2026-11-03新增两张有源项目资料的经验卡，仅扩大可检索事实：Tor桌面/官方检测页局部PASS与支付方案RESEARCH_ONLY分别保留未认证边界；Docker重复预热仍故障。没有方法版本升级或业务记忆全链提速证据。
+
+
+2026-11-05新增三个有来源的经验入口，方法版本仍为V1：
+- [Hermes V3的Dashboard/受控网页/ChatGPT跨站委派与ECC边界](references/HERMES-V3-20261105.md)
+- [Creem/Waffo数字产品MoR与定制劳务收款分流](references/PAYMENT-MOR-20261105.md)
+- [10美元活动后台试单P0提现前置核验](references/EVENT-PILOT-20261105.md)
+
+Docker历史卡仅追加11月5日最新原回执，未认证下次启动。原项目Freeze、DSE和BRAIN第25版不变；完整业务记忆T_VALID改善仍NOT_MEASURED。2026-11-05每日任务用户明确A→B→C，专业Hermes另写D优先，不由本经验技能替任一原项目改路由。
