@@ -40,3 +40,5 @@
 
 
 2026-11-05增量：Windows收费A可用、按原唯一入口和相关索引读取后，C盘原Vault新增11月5日最小复盘正文；Memory Lint 1/1 PASS，KB定向Hot Sync 12项/0缺失，Health Check PASS，文件与Manifest独立哈希一致。11月4日原C盘日报仍缺失，不能冒充同步或补造历史。共享经验新增Hermes V3三类网页/代理合同边界、Creem/Waffo数字商品MoR与定制劳务适配分流、10美元活动后台试单P0到账门禁3卡；Docker旧卡添11月5日00:18历史恢复与15:51较新WSL预热失败。Hermes本机限定实测与严格ECC失败、ChatGPT网页站点权限拒绝分开；10美元本地8/8合成测试不是客户付款和银行到账。未发现新增明确共享EXP采用/拒绝的真实任务结果；T_VALID净收益NOT_MEASURED。方法BRAIN25、DSE与冻结专业包均不晋升；本机A→B→C与Hermes专业D优先的路由文字按各自任务范围保留。
+
+2026-11-06增量：GitHub R5—R9对收款路线做同身份/业务/目标银行筛选，R7撤回R6 Wise银联优先，Upwork当前试单排除，R8仅条件列境内主体直汇、个人卡SWIFT资格核验与香港公司账户，R9数字货币自有钱包仅为**须先核地区法律及业务用途**的研究优先分支，全部没有本人实际收到款。Windows收费A原Docker status 11月6日09:33:02新ENGINE_READY已覆盖5日15:51历史失败，但根因与下次登录可靠性仍未知。DSH-PURGE原受限环境诊断/正式宿主五行统计PASS，社区全插件没有激活；Hermes 9120图形聊天中文发收PASS，9119网页终端不能使用用户鼠标语音输入，CLI/GUI完整T_VALID未比较。新增2张卡、旧Docker/Hermes卡追加，有据共享索引与INHERITANCE；复用日志只见DSH使用成熟原执行入口，没有新共享EXP真实采用/拒绝。原C盘19份日报登记（11月4日未创建）、14份正文已读、35张选编卡，仍非全历史蒸馏；业务记忆净T_VALID=NOT_MEASURED。BRAIN正式第25版与DSE未升级。
