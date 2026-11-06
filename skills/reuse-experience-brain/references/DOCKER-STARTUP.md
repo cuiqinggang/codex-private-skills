@@ -32,3 +32,7 @@ LAST_GOOD：原数据盘和容器数据仍在，单一现有Startup VBS存在。
 
 ## 2026-11-05最新原始只读状态｜00:18成功，15:51再次故障
 Windows收费A本次独立读取原`C:\AI\Docker-Autostart-20261024\startup.jsonl`末18条及`status.json`：11月4日22:02:54预热失败；11月5日00:13:53等待后00:17:01受控恢复，00:18:51.542原回执FINAL=ENGINE_READY、prewarmCode=0、elapsedMilliseconds=303395；**同日15:51:13.283最新status.json为REQUIRES_DIAGNOSIS、EXCEPTION、prewarmCode=-1，错误仍为Docker WSL prewarm failed、initialProcessCount=0**。LAST_GOOD=00:18历史恢复；FIRST_DELTA=15:51再次预热失败；本次最小修复/回归=NOT_PERFORMED，根因=UNKNOWN。较晚的失败是本轮最新状态，不用00:18的历史PASS覆盖它。复盘未改Windows系统、WSL/Docker或代理。此卡仅增加可复用的日期边界，不重建技能/任务或授权自动重启；下一次必须先读原状态再按原合同处理。
+
+## 2026-11-06｜09:33原启动流程再次受控恢复（取代5日当前故障状态）
+
+Windows收费A只读原C:\AI\Docker-Autostart-20261024\status.json及startup.jsonl末12条：11月5日15:51:13为REQUIRES_DIAGNOSIS；11月6日09:28:18进入WAITING_FOR_ENGINE，09:31:24确认启动失效开始原受控RECOVERING，**09:33:02.607最终ENGINE_READY、prewarmCode=0、lastProbeCode=0、recoveryAttempt=1、elapsedMilliseconds=289770**。LAST_GOOD为5日00:18历史成功，FIRST_DELTA为5日15:51重复预热失败，最小修复/回归来自**原启动任务**，本每日复盘只读并未操作Docker。较新09:33已覆盖5日故障作为原项目最新文件状态；不证明21:00实时服务探针、下一次真实登录自动启动成功率或根因永久消失。方法与Freeze不变，T_VALID记忆净改善NOT_MEASURED。
