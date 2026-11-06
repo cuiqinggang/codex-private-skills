@@ -152,9 +152,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-06-DSE-INCREMENTAL.md",
+      "sha256": "fa4ba937ca1c8d17ad01fd27bd6b03905e5c8504a312704de4383056a985b07d",
+      "bytes": 9415,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "18 daily files byte-hashed and registered (Nov4 missing); 13 original contents read through Nov5; 33 selected experience cards (30 prior + 3 Nov5); historical distillation incomplete; original Vault never migrated; business T_VALID memory benefit NOT_MEASURED",
+  "limits": "19 daily files byte-hashed and registered (Nov4 missing); 14 original contents read through Nov6; 35 selected experience cards (33 prior + 2 Nov6); historical distillation incomplete; original Vault never migrated; business T_VALID memory benefit NOT_MEASURED",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -303,7 +311,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-05",
+  "latest_incremental_date": "2026-11-06",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -432,7 +440,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "Nov5 C Vault original read and SHA256 verified, local KB semantic navigation modified and verified, explicit Hot Sync 12/0, Health Check PASS; Nov4 local daily still missing (shared-only R3); Nov5 3 GitHub experience cards + Docker dated update, no proven new EXP adopt/reject or business memory T_VALID comparison.",
+  "latest_incremental_scope": "19 daily hash entries (Nov4 missing), 14 original daily content-read, 35 selected cards; two new Nov6 + prior 33; no historical full distillation, business memory T_VALID NOT_MEASURED; local and shared sync independently verified",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -457,6 +465,32 @@
       "path": "C:\\AI\\Docker-Autostart-20261024\\startup.jsonl",
       "content_read": true,
       "evidence_scope": "Windows A original: Nov5 00:18 ENGINE_READY with elapsed303395ms then latest 15:51 REQUIRES_DIAGNOSIS; no repair or boot reliability certification"
+    }
+  ],
+  "incremental_case_sources_20261106": [
+    {
+      "experience_id": "EXP-PAYMENT-EVIDENCE-20261106-001",
+      "path": "research/global-payments/direct-wallet-priority-r9-2026-11-06.md",
+      "content_read": true,
+      "evidence_scope": "R5-R9 research only; R7 supersedes R6 Wise recommendation; Upwork excluded; digital-wallet path conditional on legal/use/asset/customer verification; no user payout"
+    },
+    {
+      "experience_id": "EXP-DSH-DIAG-20261106-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\dsh-purge-diagnostics-v1.6.84\\STATE.json",
+      "content_read": true,
+      "evidence_scope": "Original Windows A limited configuration diagnosis and host 5-row QA, full plugin NOT_ACTIVATED, no business T_VALID"
+    },
+    {
+      "experience_id": "EXP-HERMES-V3-20261105-001",
+      "path": "skills/hermes-mature-supertool-v3/references/CURRENT.md",
+      "content_read": true,
+      "evidence_scope": "Webapp 9120 real graphical chat and dictation, Dashboard 9119 xterm input limitation; ECC strict roles and cross-site ChatGPT delegation remain unverified"
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Nov 6 09:33:02.607 ENGINE_READY after original controlled recovery 289770ms supersedes Nov5 15:51 historical failure, not future unattended boot certification"
     }
   ]
 }
