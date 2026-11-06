@@ -59,3 +59,8 @@
 | EXP-HERMES-V3-20261105-001 | Hermes、Flash1017、ECC四角色、browser_exec、Dashboard接单、GPT网页委派、权限拒绝 | [HERMES-V3-20261105.md](HERMES-V3-20261105.md) |
 | EXP-PAYMENT-MOR-20261105-001 | Creem、Waffo、Pancake、MoR、SaaS、数字产品、定制劳务、香港提现 | [PAYMENT-MOR-20261105.md](PAYMENT-MOR-20261105.md) |
 | EXP-EVENT-PILOT-20261105-001 | 10美元试单、Upwork、活动报名后台、测试8/8、提现门槛、Connects | [EVENT-PILOT-20261105.md](EVENT-PILOT-20261105.md) |
+
+2026-11-06：新增2张脱敏有源卡，收款R5—R9当前优先顺序和DSH正式宿主只读诊断；旧Docker卡追加11月6日09:33新的ENGINE_READY（原5日15:51是历史故障），Hermes V3旧卡增加9120图形聊天与9119终端输入差异。研究阶段直接数字货币钱包路线需要先核真实地区法律/客户授权，**不能宣称已合法成交或到账**；Upwork当前试单排除，R6 Wise优先被R7撤回，旧R3/R4候选只按历史适用边界读取。共享EXP实际采用新回执未见，DSH原项目仅有原成熟执行入口复用；记忆完整T_VALID净收益NOT_MEASURED。DSE/BRAIN25/专业Freeze不升版。
+
+| EXP-PAYMENT-EVIDENCE-20261106-001 | 海外AI服务收款、R5/R6/R7/R8/R9、Wise银联撤回、Upwork排除、SWIFT、个人工银亚洲、数字货币钱包、真实到账 | [PAYMENT-EVIDENCE-R9-20261106.md](PAYMENT-EVIDENCE-R9-20261106.md) |
+| EXP-DSH-DIAG-20261106-001 | DSH破甲版、dsh-purge、PATH版本不一致、0.2.1 rc.2、1.6.84只读诊断、未激活社区插件 | [DSH-PURGE-20261106.md](DSH-PURGE-20261106.md) |
