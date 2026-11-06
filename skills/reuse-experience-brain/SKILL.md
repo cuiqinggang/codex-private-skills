@@ -78,3 +78,9 @@ description: "读取和积累共同工作区的经验大脑。用户提到长期
 - [10美元活动后台试单P0提现前置核验](references/EVENT-PILOT-20261105.md)
 
 Docker历史卡仅追加11月5日最新原回执，未认证下次启动。原项目Freeze、DSE和BRAIN第25版不变；完整业务记忆T_VALID改善仍NOT_MEASURED。2026-11-05每日任务用户明确A→B→C，专业Hermes另写D优先，不由本经验技能替任一原项目改路由。
+
+2026-11-06有来源新增两张最小经验卡，经验方法仍V1：
+- [海外收款R5—R9同条件到账证据、Wise优先撤回、钱包合法适用门禁](references/PAYMENT-EVIDENCE-R9-20261106.md)
+- [DSH正式宿主与PATH候选版本差异、社区扩展仅只读诊断](references/DSH-PURGE-20261106.md)
+
+另按原卡更新[Docker 09:33原启动恢复状态](references/DOCKER-STARTUP.md)及[Hermes 9120 Webapp图形聊天与9119终端语音差异](references/HERMES-V3-20261105.md)。没有真实账户收款、完整跨平台委派、全插件激活或完整记忆T_VALID提速证据；原合同、DSE/BRAIN25及Freeze不变。
