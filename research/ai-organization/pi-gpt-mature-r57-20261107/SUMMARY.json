@@ -1,0 +1,514 @@
+{
+  "task_id": "PI-GPT-MATURE-R57-20261107",
+  "status": "SCOPED_BENCHMARK_COMPLETE",
+  "models": {
+    "Pi": "DeepSeek official deepseek-flash high; OMP18.15.0 with existing R52 Windows fixes",
+    "GPT": "Codex exec gpt-6.1-sol, existing openai_https config"
+  },
+  "comparable_jobs": 36,
+  "quarantined_original_jobs": 3,
+  "current_Pi_reference": 2,
+  "deterministic_recipe_reference": 2,
+  "total_main_receipts": 43,
+  "arms": {
+    "M": {
+      "comparable_jobs": 12,
+      "audited_valid": 12,
+      "clean_timing_jobs": 8,
+      "clean_passed": 8,
+      "clean_median_seconds_e2e": 28.369834849989275,
+      "clean_sum_seconds_e2e": 250.6573901998927,
+      "all_raw_seconds_including_oracle_rework": 547.7640656998265,
+      "gpt_planning_or_takeover_stages": 0
+    },
+    "B": {
+      "comparable_jobs": 12,
+      "audited_valid": 12,
+      "clean_timing_jobs": 8,
+      "clean_passed": 8,
+      "clean_median_seconds_e2e": 113.91553275001934,
+      "clean_sum_seconds_e2e": 950.0294151999988,
+      "all_raw_seconds_including_oracle_rework": 1709.5994099999662,
+      "gpt_planning_or_takeover_stages": 12
+    },
+    "E": {
+      "comparable_jobs": 12,
+      "audited_valid": 12,
+      "clean_timing_jobs": 8,
+      "clean_passed": 8,
+      "clean_median_seconds_e2e": 29.77557210001396,
+      "clean_sum_seconds_e2e": 231.27649550000206,
+      "all_raw_seconds_including_oracle_rework": 633.7723225000664,
+      "gpt_planning_or_takeover_stages": 1
+    }
+  },
+  "by_domain": {
+    "ledger": {
+      "M": [
+        {
+          "rep": 0,
+          "seconds_e2e": 28.15143889997853,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 36.05721119994996,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        }
+      ],
+      "B": [
+        {
+          "rep": 0,
+          "seconds_e2e": 115.43389400001615,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 2
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 82.20124939997913,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 2
+        }
+      ],
+      "E": [
+        {
+          "rep": 0,
+          "seconds_e2e": 21.70480010000756,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 33.49429460003739,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        }
+      ]
+    },
+    "code": {
+      "M": [
+        {
+          "rep": 0,
+          "seconds_e2e": 49.376084099989384,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 27.22161160001997,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        }
+      ],
+      "B": [
+        {
+          "rep": 0,
+          "seconds_e2e": 109.17804970004363,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 2
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 112.39717150002252,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 2
+        }
+      ],
+      "E": [
+        {
+          "rep": 0,
+          "seconds_e2e": 26.056849599990528,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 40.997434000018984,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        }
+      ]
+    },
+    "reasoning": {
+      "M": [
+        {
+          "rep": 0,
+          "seconds_e2e": 31.848440199973993,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        },
+        {
+          "rep": 2,
+          "seconds_e2e": 23.300941900000907,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        }
+      ],
+      "B": [
+        {
+          "rep": 0,
+          "seconds_e2e": 98.53756409999914,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 2
+        },
+        {
+          "rep": 2,
+          "seconds_e2e": 123.67758089996642,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 2
+        }
+      ],
+      "E": [
+        {
+          "rep": 0,
+          "seconds_e2e": 18.67171889997553,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        },
+        {
+          "rep": 2,
+          "seconds_e2e": 22.00741789996391,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        }
+      ]
+    },
+    "office": {
+      "M": [
+        {
+          "rep": 0,
+          "seconds_e2e": 45.76014219998615,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 90.50020339997718,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 2
+        }
+      ],
+      "B": [
+        {
+          "rep": 0,
+          "seconds_e2e": 142.01642569998512,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 3
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 177.7711372000049,
+          "raw_status": "NOT_VALID",
+          "audit": "VALID",
+          "steps": 3
+        }
+      ],
+      "E": [
+        {
+          "rep": 0,
+          "seconds_e2e": 66.68008280004142,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 178.59731440001633,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 2
+        }
+      ]
+    },
+    "media": {
+      "M": [
+        {
+          "rep": 0,
+          "seconds_e2e": 113.05145329999505,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 47.794876599975396,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        }
+      ],
+      "B": [
+        {
+          "rep": 0,
+          "seconds_e2e": 206.41805999999633,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 3
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 233.36437189998105,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 3
+        }
+      ],
+      "E": [
+        {
+          "rep": 0,
+          "seconds_e2e": 55.31407790002413,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 101.90435189998243,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        }
+      ]
+    },
+    "research": {
+      "M": [
+        {
+          "rep": 0,
+          "seconds_e2e": 26.113431499979924,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 28.58823080000002,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        }
+      ],
+      "B": [
+        {
+          "rep": 0,
+          "seconds_e2e": 154.33754839998437,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 2
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 154.2663571999874,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 2
+        }
+      ],
+      "E": [
+        {
+          "rep": 0,
+          "seconds_e2e": 34.37023619998945,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        },
+        {
+          "rep": 1,
+          "seconds_e2e": 33.9737442000187,
+          "raw_status": "VALID",
+          "audit": "VALID",
+          "steps": 1
+        }
+      ]
+    }
+  },
+  "reference": {
+    "P": [
+      {
+        "rep": 0,
+        "seconds_e2e": 36.030681299977005,
+        "status": "VALID",
+        "mature_reuse_calls": []
+      },
+      {
+        "rep": 1,
+        "seconds_e2e": 36.61384950001957,
+        "status": "VALID",
+        "mature_reuse_calls": []
+      }
+    ],
+    "D": [
+      {
+        "rep": 0,
+        "seconds_e2e": 3.5782907000393607,
+        "status": "VALID",
+        "mature_reuse_calls": []
+      },
+      {
+        "rep": 1,
+        "seconds_e2e": 4.077371999970637,
+        "status": "VALID",
+        "mature_reuse_calls": []
+      }
+    ]
+  },
+  "timing_boundaries": {
+    "clean": "before planning and runtime setup through independent validation; includes skill reads, execution and retries",
+    "primary_excluded": "office/media from speed ranking because checker/schema false rejections caused wasted retries; all original operational time retained",
+    "preparation": "dataset/harness/research/integration excluded from per-job clocks, entire user-request wall clock NOT_MEASURED",
+    "host": "shared Windows host, 3 benchmark workers; ancillary recipe/recovery/entry probes briefly coexecuted, so this is exploratory operational evidence, not isolated latency or proven stable speedup",
+    "replacement": "public target defect quarantined consistently across three arms; independently prevalidated replacement under same runtime",
+    "billing": "usage present in raw receipts; actual billed cost NOT_MEASURED"
+  },
+  "qa_defects": {
+    "public_label": "1958 +5 years +7 days =>1963-01-09, original label B erroneous",
+    "docx": "tables omitted by original checker",
+    "media": "strings vs objects not specified, semantic equivalent shapes falsely rejected"
+  },
+  "limits": [
+    "small public subset and synthetic workflows; no standard benchmark score",
+    "no proof upfront GPT wins complex high-risk tasks",
+    "not a 100/1000-seat throughput or 24h unattended certification",
+    "official latest18.18.0 not installed in this benchmark"
+  ],
+  "deployment": {
+    "status": "DEPLOYED_SCOPED_PASS",
+    "entry": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\launch_pi.py",
+    "target": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-gpt-mature-r57-20261107\\launch_pi.py",
+    "before_sha256": "78f3030c6bdf23f828b964b1ebebcaa1b756014433f9c1c59da43c4549abdc5e",
+    "after_sha256": "c7769e1d37d5e7e5cce85e81eabb382b8131f1dcf8590928e5ea65218d72e25a",
+    "rollback": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-gpt-mature-r57-20261107\\rollback\\launch_pi.before-r57.py",
+    "real_candidate_smoke": "ENTRY-SMOKE.json",
+    "scope": "normal unified Pi core entry; legacy modes retained",
+    "not_claimed": [
+      "longflow switched",
+      "GPT advisor permanently configured",
+      "18.18 upgrade",
+      "all-task optimum",
+      "24h supervision"
+    ],
+    "approval_mode": "write; original ACL retained"
+  },
+  "ENTRY-SMOKE": {
+    "status": "PASS",
+    "business_validation": {
+      "passed": true,
+      "checks": {
+        "inputs_unchanged": true,
+        "exact_summary": true
+      }
+    },
+    "mature_recipe_actually_read_or_executed": [
+      {
+        "tool": "read",
+        "args": {
+          "path": "C:/Users/A/Documents/DSH-Workspace/pi-unified-upgrade-20261030/ledger_recipe.py"
+        }
+      },
+      {
+        "tool": "bash",
+        "args": {
+          "command": "\"C:/Users/A/AppData/Local/Programs/Python/Python313/python.exe\" \"C:/Users/A/Documents/DSH-Workspace/pi-unified-upgrade-20261030/ledger_recipe.py\"",
+          "timeout": 120,
+          "cwd": "C:/Users/A/Documents/DSH-Workspace/pi-gpt-mature-r57-20261107/entry-smoke",
+          "pty": false
+        }
+      }
+    ],
+    "seconds_e2e": 19.72772620001342,
+    "exit_code": 0,
+    "default_entry_changed": false,
+    "scope": "candidate real invocation; production pointer changes only after PASS"
+  },
+  "RECOVERY-RECEIPT": {
+    "task_id": "PI-R57-CONTROLLED-RESTART-001",
+    "status": "PASS",
+    "checks": {
+      "old_tree_quiescent": true,
+      "artifact_preserved": true,
+      "checkpoint_hash": true,
+      "once_only": true,
+      "same_native_session": true,
+      "delivery": true
+    },
+    "seconds_e2e_including_initial_failure_and_recovery_wait": 165.08637595176697,
+    "native_resume_step_seconds": 14.905009800044354,
+    "first_attempt_failure_preserved": true,
+    "session": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-gpt-mature-r57-20261107\\recovery\\.omp\\sessions\\2026-11-07T12-15-22-085Z_01a1b5ef-4fe5-7125-a78a-c48f021f23d7.jsonl",
+    "before": {
+      "sha256": "7097b22736b3c9a170fe40277e992b81003efb0621be4b7123f19176aa2797ef",
+      "mtime_ns": 1794053730423897600
+    },
+    "after": {
+      "sha256": "7097b22736b3c9a170fe40277e992b81003efb0621be4b7123f19176aa2797ef",
+      "mtime_ns": 1794053730423897600
+    },
+    "scope": "controlled local interruption + explicit resume only; not autonomous watchdog, OS reboot or 24h endurance"
+  },
+  "TAKEOVER-RECEIPT": {
+    "status": "PASS",
+    "source_artifact": "entry-smoke produced by real Pi",
+    "fault": "controller injected one-cent corruption into copy; not a claimed model mistake",
+    "failed_validation": {
+      "passed": false,
+      "checks": {
+        "inputs_unchanged": true,
+        "exact_summary": false
+      }
+    },
+    "final_validation": {
+      "passed": true,
+      "checks": {
+        "inputs_unchanged": true,
+        "exact_summary": true
+      }
+    },
+    "seconds_fault_to_acceptance": 70.2688909000135,
+    "gpt_step": {
+      "seconds": 70.24565799999982,
+      "exit_code": 0,
+      "log": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-gpt-mature-r57-20261107\\takeover\\gpt-takeover.gpt.jsonl"
+    },
+    "scope": "real GPT tool execution and artifact repair after failed independent validator; no ChatGPT webpage automation or always-on supervisor"
+  },
+  "GUARD-RECEIPT": {
+    "status": "PASS",
+    "checks": {
+      "answer": true,
+      "date": true,
+      "checker_conflict": true,
+      "exit": true,
+      "guard_in_actual_prompt": true
+    },
+    "seconds_e2e": 21.31094229995506,
+    "adjudication": {
+      "answer": "(C)",
+      "date": "1963-01-09",
+      "checker_conflict": true,
+      "evidence": "Marriage date 1958-01-02. 5-year anniversary = 1958-01-02 + 5 years = 1963-01-02 (today). One week from today = 1963-01-02 + 7 days = 1963-01-09, i.e. option (C) 01/09/1963. Deterministic check: 1958+5=1963 (no leap-day crossing at Jan 2), day arithmetic 2+7=9 within month. Option (B) 01/09/1961 would be the 3-year anniversary (1958+3), so the external claim (B) is inconsistent with the stated 5-year anniversary."
+    },
+    "scope": "one real regression through deployed entry; generalized guard time benefit not measured"
+  }
+}
