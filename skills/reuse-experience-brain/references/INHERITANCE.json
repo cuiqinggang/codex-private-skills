@@ -160,9 +160,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-07-DSE-INCREMENTAL.md",
+      "sha256": "61146c268e03d6b31aab45ef9255cff4249c5c7773047930b77304d07185fb1b",
+      "bytes": 7954,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "19 daily files byte-hashed and registered (Nov4 missing); 14 original contents read through Nov6; 35 selected experience cards (33 prior + 2 Nov6); historical distillation incomplete; original Vault never migrated; business T_VALID memory benefit NOT_MEASURED",
+  "limits": "20 daily files byte-hashed and registered (Nov4 missing); 15 original contents read through Nov7; 36 selected experience cards (35 prior + 1 Nov7); historical distillation incomplete; original Vault never migrated; business T_VALID memory benefit NOT_MEASURED",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -311,7 +319,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-06",
+  "latest_incremental_date": "2026-11-07",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -440,7 +448,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "19 daily hash entries (Nov4 missing), 14 original daily content-read, 35 selected cards; two new Nov6 + prior 33; no historical full distillation, business memory T_VALID NOT_MEASURED; local and shared sync independently verified",
+  "latest_incremental_scope": "2026-11-07 scoped R57 Pi GPT mature-first/oracle guard and existing Docker card time delta; 20 registered source dailies (Nov4 missing), 15 original contents read, 36 selected cards; no wholesale migration or full business memory T_VALID",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -491,6 +499,32 @@
       "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
       "content_read": true,
       "evidence_scope": "Nov 6 09:33:02.607 ENGINE_READY after original controlled recovery 289770ms supersedes Nov5 15:51 historical failure, not future unattended boot certification"
+    }
+  ],
+  "incremental_case_sources_20261107": [
+    {
+      "experience_id": "EXP-PI-GPT-R57-20261107-001",
+      "path": "research/ai-organization/pi-gpt-mature-r57-20261107/REPORT.md",
+      "content_read": true,
+      "evidence_scope": "Original source + Windows A FREEZE/INDEPENDENT-AUDIT/DEPLOYMENT; 36 comparable accepted after oracle correction, 8 per arm clean timings only; no general complex upfront GPT advantage or full memory T_VALID measured"
+    },
+    {
+      "experience_id": "EXP-PI-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-gpt-mature-r57-20261107\\ENTRY-SMOKE.json",
+      "content_read": true,
+      "evidence_scope": "Actual original R57 task adopted preexisting single-parent/matched ledger recipe and native session recovery, original memory-reuse-log 2026-11-07; scope limited"
+    },
+    {
+      "experience_id": "EXP-PI-CORE-20261102-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-gpt-mature-r57-20261107\\DEPLOYMENT.json",
+      "content_read": true,
+      "evidence_scope": "OMP18.15.0 scoped normal Pi entry updated and rollback preserved, no OMP18.18 upgrade or GPT permanent advisor"
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Nov 7 18:03:23.507 WSL prewarm failed REQUIRES_DIAGNOSIS supersedes historical Nov6 09:33 READY, no repair/no current healthy probe"
     }
   ]
 }
