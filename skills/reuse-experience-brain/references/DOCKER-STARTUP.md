@@ -36,3 +36,7 @@ Windows收费A本次独立读取原`C:\AI\Docker-Autostart-20261024\startup.json
 ## 2026-11-06｜09:33原启动流程再次受控恢复（取代5日当前故障状态）
 
 Windows收费A只读原C:\AI\Docker-Autostart-20261024\status.json及startup.jsonl末12条：11月5日15:51:13为REQUIRES_DIAGNOSIS；11月6日09:28:18进入WAITING_FOR_ENGINE，09:31:24确认启动失效开始原受控RECOVERING，**09:33:02.607最终ENGINE_READY、prewarmCode=0、lastProbeCode=0、recoveryAttempt=1、elapsedMilliseconds=289770**。LAST_GOOD为5日00:18历史成功，FIRST_DELTA为5日15:51重复预热失败，最小修复/回归来自**原启动任务**，本每日复盘只读并未操作Docker。较新09:33已覆盖5日故障作为原项目最新文件状态；不证明21:00实时服务探针、下一次真实登录自动启动成功率或根因永久消失。方法与Freeze不变，T_VALID记忆净改善NOT_MEASURED。
+
+
+## 2026-11-07 18:03最新原回执｜昨日恢复后同指纹再次失败
+原C:\AI\Docker-Autostart-20261024\status.json与startup.jsonl最新一项为2026-11-07T18:03:23.5073525+08:00：REQUIRES_DIAGNOSIS、EXCEPTION、prewarmCode=-1、lastProbeCode=-1、initialProcessCount=0、Docker WSL prewarm failed。LAST_GOOD=2026-11-06 09:33:02.607的ENGINE_READY（历史成功）；FIRST_DELTA=2026-11-07 18:03重复预热异常。2026-11-07 21点复盘只读，没有维修/重启、更晚成功回归或独立引擎探针；根因、跨登录长期自动恢复和服务此刻在线均UNKNOWN。旧成功/失败原位保留，仅按最新原文件状态纠正当前判断。本卡不授权修改Windows/WSL/Docker或代理，记忆净完整T_VALID NOT_MEASURED。
