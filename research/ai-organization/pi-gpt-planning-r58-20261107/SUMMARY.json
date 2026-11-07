@@ -1,0 +1,688 @@
+{
+  "task_id": "PI-GPT-PLANNING-R58-20261107",
+  "status": "COMPLETE",
+  "completed_jobs": 24,
+  "arms": {
+    "EARLY": {
+      "jobs": 12,
+      "valid": 12,
+      "not_valid": 0,
+      "first_check_failed": 0,
+      "failed_check_rounds": 0,
+      "gpt_consultations": 12,
+      "pi_tool_errors": 12,
+      "gpt_tool_or_turn_errors": 1,
+      "seconds_all_attempts": 2330.596802711487,
+      "seconds_planning": 902.6139742000378,
+      "seconds_pi": 1412.3094651000574,
+      "seconds_checks_handoff_setup": 15.67336341139162,
+      "median_seconds_valid_only": 190.61857092380524,
+      "effective_seconds_per_delivered_job": 194.21640022595724,
+      "note": "valid-only median is secondary; failed attempts remain in total and delivered-job accounting"
+    },
+    "LATE": {
+      "jobs": 12,
+      "valid": 11,
+      "not_valid": 1,
+      "first_check_failed": 2,
+      "failed_check_rounds": 4,
+      "gpt_consultations": 3,
+      "pi_tool_errors": 26,
+      "gpt_tool_or_turn_errors": 0,
+      "seconds_all_attempts": 2170.811050415039,
+      "seconds_planning": 272.84283139999025,
+      "seconds_pi": 1881.6354950999958,
+      "seconds_checks_handoff_setup": 16.332723915053066,
+      "median_seconds_valid_only": 133.49318528175354,
+      "effective_seconds_per_delivered_job": 197.3464591286399,
+      "note": "valid-only median is secondary; failed attempts remain in total and delivered-job accounting"
+    }
+  },
+  "pairs": [
+    {
+      "state": "cross_file_fix",
+      "rep": 0,
+      "early_seconds": 159.7858428955078,
+      "late_seconds": 89.29353189468384,
+      "early_status": "VALID",
+      "late_status": "VALID",
+      "early_minus_late_seconds": 70.49231100082397,
+      "observed_faster": "LATE",
+      "early_first_check_failed": false,
+      "late_first_check_failed": false,
+      "early_gpt_calls": 1,
+      "late_gpt_calls": 0
+    },
+    {
+      "state": "cross_file_fix",
+      "rep": 1,
+      "early_seconds": 158.46216821670532,
+      "late_seconds": 120.37752103805542,
+      "early_status": "VALID",
+      "late_status": "VALID",
+      "early_minus_late_seconds": 38.0846471786499,
+      "observed_faster": "LATE",
+      "early_first_check_failed": false,
+      "late_first_check_failed": false,
+      "early_gpt_calls": 1,
+      "late_gpt_calls": 0
+    },
+    {
+      "state": "process_interrupt",
+      "rep": 0,
+      "early_seconds": 190.0682408809662,
+      "late_seconds": 133.49318528175354,
+      "early_status": "VALID",
+      "late_status": "VALID",
+      "early_minus_late_seconds": 56.57505559921265,
+      "observed_faster": "LATE",
+      "early_first_check_failed": false,
+      "late_first_check_failed": false,
+      "early_gpt_calls": 1,
+      "late_gpt_calls": 0
+    },
+    {
+      "state": "process_interrupt",
+      "rep": 1,
+      "early_seconds": 227.5454182624817,
+      "late_seconds": 149.00326704978943,
+      "early_status": "VALID",
+      "late_status": "VALID",
+      "early_minus_late_seconds": 78.54215121269226,
+      "observed_faster": "LATE",
+      "early_first_check_failed": false,
+      "late_first_check_failed": false,
+      "early_gpt_calls": 1,
+      "late_gpt_calls": 0
+    },
+    {
+      "state": "requirement_change",
+      "rep": 0,
+      "early_seconds": 188.44137406349182,
+      "late_seconds": 158.90545749664307,
+      "early_status": "VALID",
+      "late_status": "VALID",
+      "early_minus_late_seconds": 29.535916566848755,
+      "observed_faster": "LATE",
+      "early_first_check_failed": false,
+      "late_first_check_failed": false,
+      "early_gpt_calls": 1,
+      "late_gpt_calls": 0
+    },
+    {
+      "state": "requirement_change",
+      "rep": 1,
+      "early_seconds": 228.8782558441162,
+      "late_seconds": 148.34353399276733,
+      "early_status": "VALID",
+      "late_status": "VALID",
+      "early_minus_late_seconds": 80.53472185134888,
+      "observed_faster": "LATE",
+      "early_first_check_failed": false,
+      "late_first_check_failed": false,
+      "early_gpt_calls": 1,
+      "late_gpt_calls": 0
+    },
+    {
+      "state": "rules_conflict",
+      "rep": 0,
+      "early_seconds": 193.7838327884674,
+      "late_seconds": 101.54211711883545,
+      "early_status": "VALID",
+      "late_status": "VALID",
+      "early_minus_late_seconds": 92.24171566963196,
+      "observed_faster": "LATE",
+      "early_first_check_failed": false,
+      "late_first_check_failed": false,
+      "early_gpt_calls": 1,
+      "late_gpt_calls": 0
+    },
+    {
+      "state": "rules_conflict",
+      "rep": 1,
+      "early_seconds": 191.1689009666443,
+      "late_seconds": 139.62088298797607,
+      "early_status": "VALID",
+      "late_status": "VALID",
+      "early_minus_late_seconds": 51.54801797866821,
+      "observed_faster": "LATE",
+      "early_first_check_failed": false,
+      "late_first_check_failed": false,
+      "early_gpt_calls": 1,
+      "late_gpt_calls": 0
+    },
+    {
+      "state": "tool_gap",
+      "rep": 0,
+      "early_seconds": 164.1666579246521,
+      "late_seconds": 103.24415421485901,
+      "early_status": "VALID",
+      "late_status": "VALID",
+      "early_minus_late_seconds": 60.92250370979309,
+      "observed_faster": "LATE",
+      "early_first_check_failed": false,
+      "late_first_check_failed": false,
+      "early_gpt_calls": 1,
+      "late_gpt_calls": 0
+    },
+    {
+      "state": "tool_gap",
+      "rep": 1,
+      "early_seconds": 176.45251393318176,
+      "late_seconds": 251.09595370292664,
+      "early_status": "VALID",
+      "late_status": "VALID",
+      "early_minus_late_seconds": -74.64343976974487,
+      "observed_faster": "EARLY",
+      "early_first_check_failed": false,
+      "late_first_check_failed": true,
+      "early_gpt_calls": 1,
+      "late_gpt_calls": 1
+    },
+    {
+      "state": "unknown_commit",
+      "rep": 0,
+      "early_seconds": 247.54693412780762,
+      "late_seconds": 653.4427497386932,
+      "early_status": "VALID",
+      "late_status": "NOT_VALID",
+      "early_minus_late_seconds": -405.8958156108856,
+      "observed_faster": "QUALITY_NOT_EQUAL_NO_SPEED_RANK",
+      "early_first_check_failed": false,
+      "late_first_check_failed": true,
+      "early_gpt_calls": 1,
+      "late_gpt_calls": 2
+    },
+    {
+      "state": "unknown_commit",
+      "rep": 1,
+      "early_seconds": 204.2966628074646,
+      "late_seconds": 122.44869589805603,
+      "early_status": "VALID",
+      "late_status": "VALID",
+      "early_minus_late_seconds": 81.84796690940857,
+      "observed_faster": "LATE",
+      "early_first_check_failed": false,
+      "late_first_check_failed": false,
+      "early_gpt_calls": 1,
+      "late_gpt_calls": 0
+    }
+  ],
+  "per_job_accounting": [
+    {
+      "arm": "EARLY",
+      "state": "unknown_commit",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 247.54693412780762,
+      "seconds_to_independent_validation": 247.3148815999739,
+      "receipt_mtime_unix": 1794061108.4433458,
+      "receipt_accounting_delta_seconds": 0.23205252783372998
+    },
+    {
+      "arm": "LATE",
+      "state": "unknown_commit",
+      "rep": 0,
+      "status": "NOT_VALID",
+      "seconds_e2e": 653.4427497386932,
+      "seconds_to_independent_validation": 653.0386987000238,
+      "receipt_mtime_unix": 1794061761.9562771,
+      "receipt_accounting_delta_seconds": 0.40405103866942227
+    },
+    {
+      "arm": "EARLY",
+      "state": "unknown_commit",
+      "rep": 1,
+      "status": "VALID",
+      "seconds_e2e": 204.2966628074646,
+      "seconds_to_independent_validation": 204.07450679998146,
+      "receipt_mtime_unix": 1794062088.9133806,
+      "receipt_accounting_delta_seconds": 0.2221560074831359
+    },
+    {
+      "arm": "LATE",
+      "state": "unknown_commit",
+      "rep": 1,
+      "status": "VALID",
+      "seconds_e2e": 122.44869589805603,
+      "seconds_to_independent_validation": 122.34343319997424,
+      "receipt_mtime_unix": 1794061884.524581,
+      "receipt_accounting_delta_seconds": 0.10526269808178768
+    },
+    {
+      "arm": "EARLY",
+      "state": "cross_file_fix",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 159.7858428955078,
+      "seconds_to_independent_validation": 159.65345270000398,
+      "receipt_mtime_unix": 1794057342.408821,
+      "receipt_accounting_delta_seconds": 0.1323901955038309
+    },
+    {
+      "arm": "LATE",
+      "state": "cross_file_fix",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 89.29353189468384,
+      "seconds_to_independent_validation": 89.04452880000463,
+      "receipt_mtime_unix": 1794057431.7313144,
+      "receipt_accounting_delta_seconds": 0.24900309467921034
+    },
+    {
+      "arm": "EARLY",
+      "state": "cross_file_fix",
+      "rep": 1,
+      "status": "VALID",
+      "seconds_e2e": 158.46216821670532,
+      "seconds_to_independent_validation": 158.2551722000353,
+      "receipt_mtime_unix": 1794057710.645353,
+      "receipt_accounting_delta_seconds": 0.20699601667001843
+    },
+    {
+      "arm": "LATE",
+      "state": "cross_file_fix",
+      "rep": 1,
+      "status": "VALID",
+      "seconds_e2e": 120.37752103805542,
+      "seconds_to_independent_validation": 120.22975790000055,
+      "receipt_mtime_unix": 1794057552.14814,
+      "receipt_accounting_delta_seconds": 0.14776313805487007
+    },
+    {
+      "arm": "EARLY",
+      "state": "process_interrupt",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 190.0682408809662,
+      "seconds_to_independent_validation": 189.6672505000024,
+      "receipt_mtime_unix": 1794059320.6328492,
+      "receipt_accounting_delta_seconds": 0.40099038096377626
+    },
+    {
+      "arm": "LATE",
+      "state": "process_interrupt",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 133.49318528175354,
+      "seconds_to_independent_validation": 133.31267810001737,
+      "receipt_mtime_unix": 1794059454.167032,
+      "receipt_accounting_delta_seconds": 0.18050718173617497
+    },
+    {
+      "arm": "EARLY",
+      "state": "process_interrupt",
+      "rep": 1,
+      "status": "VALID",
+      "seconds_e2e": 227.5454182624817,
+      "seconds_to_independent_validation": 227.02472849999322,
+      "receipt_mtime_unix": 1794059830.894586,
+      "receipt_accounting_delta_seconds": 0.5206897624884732
+    },
+    {
+      "arm": "LATE",
+      "state": "process_interrupt",
+      "rep": 1,
+      "status": "VALID",
+      "seconds_e2e": 149.00326704978943,
+      "seconds_to_independent_validation": 148.79256830003578,
+      "receipt_mtime_unix": 1794059603.307964,
+      "receipt_accounting_delta_seconds": 0.21069874975364655
+    },
+    {
+      "arm": "EARLY",
+      "state": "requirement_change",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 188.44137406349182,
+      "seconds_to_independent_validation": 188.20168629998807,
+      "receipt_mtime_unix": 1794057899.1314418,
+      "receipt_accounting_delta_seconds": 0.23968776350375265
+    },
+    {
+      "arm": "LATE",
+      "state": "requirement_change",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 158.90545749664307,
+      "seconds_to_independent_validation": 158.57196039997507,
+      "receipt_mtime_unix": 1794058058.085772,
+      "receipt_accounting_delta_seconds": 0.33349709666799754
+    },
+    {
+      "arm": "EARLY",
+      "state": "requirement_change",
+      "rep": 1,
+      "status": "VALID",
+      "seconds_e2e": 228.8782558441162,
+      "seconds_to_independent_validation": 228.6689386999933,
+      "receipt_mtime_unix": 1794058435.3881507,
+      "receipt_accounting_delta_seconds": 0.20931714412290603
+    },
+    {
+      "arm": "LATE",
+      "state": "requirement_change",
+      "rep": 1,
+      "status": "VALID",
+      "seconds_e2e": 148.34353399276733,
+      "seconds_to_independent_validation": 148.09795540000778,
+      "receipt_mtime_unix": 1794058206.4673886,
+      "receipt_accounting_delta_seconds": 0.24557859275955707
+    },
+    {
+      "arm": "EARLY",
+      "state": "rules_conflict",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 193.7838327884674,
+      "seconds_to_independent_validation": 193.6061380999745,
+      "receipt_mtime_unix": 1794056750.1511278,
+      "receipt_accounting_delta_seconds": 0.17769468849292025
+    },
+    {
+      "arm": "LATE",
+      "state": "rules_conflict",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 101.54211711883545,
+      "seconds_to_independent_validation": 101.39914819999831,
+      "receipt_mtime_unix": 1794056851.740695,
+      "receipt_accounting_delta_seconds": 0.14296891883714125
+    },
+    {
+      "arm": "EARLY",
+      "state": "rules_conflict",
+      "rep": 1,
+      "status": "VALID",
+      "seconds_e2e": 191.1689009666443,
+      "seconds_to_independent_validation": 191.01646529999562,
+      "receipt_mtime_unix": 1794057182.5972133,
+      "receipt_accounting_delta_seconds": 0.15243566664867103
+    },
+    {
+      "arm": "LATE",
+      "state": "rules_conflict",
+      "rep": 1,
+      "status": "VALID",
+      "seconds_e2e": 139.62088298797607,
+      "seconds_to_independent_validation": 139.44509729999118,
+      "receipt_mtime_unix": 1794056991.3945236,
+      "receipt_accounting_delta_seconds": 0.1757856879848987
+    },
+    {
+      "arm": "EARLY",
+      "state": "tool_gap",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 164.1666579246521,
+      "seconds_to_independent_validation": 163.95497039996553,
+      "receipt_mtime_unix": 1794058599.5977895,
+      "receipt_accounting_delta_seconds": 0.21168752468656749
+    },
+    {
+      "arm": "LATE",
+      "state": "tool_gap",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 103.24415421485901,
+      "seconds_to_independent_validation": 103.09057449997636,
+      "receipt_mtime_unix": 1794058702.890453,
+      "receipt_accounting_delta_seconds": 0.1535797148826532
+    },
+    {
+      "arm": "EARLY",
+      "state": "tool_gap",
+      "rep": 1,
+      "status": "VALID",
+      "seconds_e2e": 176.45251393318176,
+      "seconds_to_independent_validation": 176.18328520003706,
+      "receipt_mtime_unix": 1794059130.5231209,
+      "receipt_accounting_delta_seconds": 0.2692287331447005
+    },
+    {
+      "arm": "LATE",
+      "state": "tool_gap",
+      "rep": 1,
+      "status": "VALID",
+      "seconds_e2e": 251.09595370292664,
+      "seconds_to_independent_validation": 250.8471779000247,
+      "receipt_mtime_unix": 1794058954.0275166,
+      "receipt_accounting_delta_seconds": 0.248775802901946
+    }
+  ],
+  "overall_observed_faster": "QUALITY_OR_VALIDITY_DIFFERS_SEE_ALL_ATTEMPTS",
+  "independent_protected_file_audit": [
+    {
+      "case": "unknown_commit-0-EARLY",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "unknown_commit-0-LATE",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "unknown_commit-1-EARLY",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "unknown_commit-1-LATE",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "cross_file_fix-0-EARLY",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "cross_file_fix-0-LATE",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "cross_file_fix-1-EARLY",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "cross_file_fix-1-LATE",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "process_interrupt-0-EARLY",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "process_interrupt-0-LATE",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "process_interrupt-1-EARLY",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "process_interrupt-1-LATE",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "requirement_change-0-EARLY",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "requirement_change-0-LATE",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "requirement_change-1-EARLY",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "requirement_change-1-LATE",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "rules_conflict-0-EARLY",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "rules_conflict-0-LATE",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "rules_conflict-1-EARLY",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "rules_conflict-1-LATE",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "tool_gap-0-EARLY",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "tool_gap-0-LATE",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "tool_gap-1-EARLY",
+      "original_protected_files_unchanged": true
+    },
+    {
+      "case": "tool_gap-1-LATE",
+      "original_protected_files_unchanged": true
+    }
+  ],
+  "forbidden_reference_actions": [],
+  "method": "paired six-state controlled business workflow benchmark; synthetic cases, not public standard score; one timed job at a time",
+  "timing": "primary wall clock: receipt file timestamp minus saved acceptance timestamp, including final accounting and receipt write; original monotonic clock to independent validation retained separately",
+  "quality": "same Pi executor and exact product checks; GPT plans only; first failures allowed; no clock reset",
+  "scope_limits": [
+    "2 pairs per state cannot prove broad stable optimum",
+    "shared host may have external load",
+    "model-reported usage is not actual billing",
+    "program construction and experiment setup excluded from each job clock"
+  ],
+  "errors_semantics": "controlled requirement change/interruption/UNKNOWN state are not model mistakes; first-check failure is separately reported from tool errors and final invalidity",
+  "harness_revision": "First 20 original jobs retained; UNKNOWN stratum uniformly replaced under F003 explicit 30s performance contract.",
+  "exploratory_unknown_records": [
+    {
+      "arm": "EARLY",
+      "state": "unknown_commit",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 725.157180499984,
+      "validation_failures": 1,
+      "validations": [
+        {
+          "phase": 2,
+          "validation": {
+            "passed": false,
+            "checks": {
+              "protected:events.json": true,
+              "protected:rules.json": true,
+              "protected:CONTRACT.md": true,
+              "protected:LEGACY-NOTES.md": true,
+              "protected:tools\\submit.py": true,
+              "exact_result": true,
+              "entry_exists": true,
+              "store_exact": true,
+              "effects_exactly_once": true,
+              "delivery_exact": true,
+              "hidden_fixture": false
+            },
+            "errors": [
+              "hidden: TimeoutExpired: Command '['C:\\\\Users\\\\A\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python313\\\\python.exe', 'deliver.py']' timed out after 30 seconds"
+            ]
+          },
+          "seconds_from_accept": 359.30157279997366,
+          "result_existed": true
+        },
+        {
+          "phase": 2,
+          "validation": {
+            "passed": true,
+            "checks": {
+              "protected:events.json": true,
+              "protected:rules.json": true,
+              "protected:CONTRACT.md": true,
+              "protected:LEGACY-NOTES.md": true,
+              "protected:tools\\submit.py": true,
+              "exact_result": true,
+              "entry_exists": true,
+              "store_exact": true,
+              "effects_exactly_once": true,
+              "delivery_exact": true,
+              "hidden_fixture": true,
+              "repeat_execution": true
+            },
+            "errors": []
+          },
+          "seconds_from_accept": 725.1570651999791,
+          "result_existed": true
+        }
+      ]
+    },
+    {
+      "arm": "LATE",
+      "state": "unknown_commit",
+      "rep": 0,
+      "status": "VALID",
+      "seconds_e2e": 154.90807050000876,
+      "validation_failures": 0,
+      "validations": [
+        {
+          "phase": 2,
+          "validation": {
+            "passed": true,
+            "checks": {
+              "protected:events.json": true,
+              "protected:rules.json": true,
+              "protected:CONTRACT.md": true,
+              "protected:LEGACY-NOTES.md": true,
+              "protected:tools\\submit.py": true,
+              "exact_result": true,
+              "entry_exists": true,
+              "store_exact": true,
+              "effects_exactly_once": true,
+              "delivery_exact": true,
+              "hidden_fixture": true,
+              "repeat_execution": true
+            },
+            "errors": []
+          },
+          "seconds_from_accept": 154.90780019998783,
+          "result_existed": true
+        }
+      ]
+    }
+  ],
+  "harness_revision_receipt": {
+    "revision": "F003",
+    "reason": "per-entry 30s performance timeout was internal and not explicit in task contract; retain all old records, quarantine entire unknown_commit stratum and replace symmetrically",
+    "stopped_pids": [
+      {
+        "root": 36612,
+        "owned": [
+          [
+            36612,
+            1794056556.1339734
+          ],
+          [
+            3740,
+            1794060714.2222712
+          ],
+          [
+            9396,
+            1794060716.759025
+          ]
+        ],
+        "still_alive": []
+      }
+    ],
+    "unfinished_cases": [
+      {
+        "case": "unknown_commit-1-LATE",
+        "elapsed_seconds": 21.219027042388916
+      }
+    ],
+    "time_unix": 1794060735.0112517,
+    "old_complete_receipts": 22
+  }
+}
