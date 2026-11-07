@@ -64,3 +64,8 @@
 
 | EXP-PAYMENT-EVIDENCE-20261106-001 | 海外AI服务收款、R5/R6/R7/R8/R9、Wise银联撤回、Upwork排除、SWIFT、个人工银亚洲、数字货币钱包、真实到账 | [PAYMENT-EVIDENCE-R9-20261106.md](PAYMENT-EVIDENCE-R9-20261106.md) |
 | EXP-DSH-DIAG-20261106-001 | DSH破甲版、dsh-purge、PATH版本不一致、0.2.1 rc.2、1.6.84只读诊断、未激活社区插件 | [DSH-PURGE-20261106.md](DSH-PURGE-20261106.md) |
+
+
+2026-11-07：新增1张R57选编卡，Docker原EXP-DOCKER-001旧卡只追加18:03较新同指纹失败，不另建卡。R57仅限定36条更正审计与8条/臂无争议时间证据；验收器误报返工保留，普通Pi入口守卫已实际回归，复杂任务GPT前置是否值得和记忆完整T_VALID净提速均NOT_MEASURED。DSE稳定规则与BRAIN25没有升级。
+
+| EXP-PI-GPT-R57-20261107-001 | GPT＋Pi、成熟配方先行、GPT提前规划还是失败升级、BBH日期标签、DOCX表格漏读、媒体格式误报、R57、原生会话接续 | [PI-GPT-R57-20261107.md](PI-GPT-R57-20261107.md) |
