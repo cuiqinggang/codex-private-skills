@@ -84,3 +84,9 @@ Docker历史卡仅追加11月5日最新原回执，未认证下次启动。原�
 - [DSH正式宿主与PATH候选版本差异、社区扩展仅只读诊断](references/DSH-PURGE-20261106.md)
 
 另按原卡更新[Docker 09:33原启动恢复状态](references/DOCKER-STARTUP.md)及[Hermes 9120 Webapp图形聊天与9119终端语音差异](references/HERMES-V3-20261105.md)。没有真实账户收款、完整跨平台委派、全插件激活或完整记忆T_VALID提速证据；原合同、DSE/BRAIN25及Freeze不变。
+
+
+2026-11-07有证据新增：
+- [Pi成熟优先、GPT分层介入与检查器冲突守卫R57](references/PI-GPT-R57-20261107.md)
+
+同一Docker EXP-DOCKER-001只更新11月7日18:03新的WSL预热失败时点（覆盖6日历史READY作为最新原状态），不重建卡。R57共享本机有限样本、误报纠正与真实回归不能推定全行业最优/24小时无人值守/记忆净T_VALID提速。保留经验技能V1、BRAIN25、DSE及原专业Freeze。
