@@ -90,3 +90,9 @@ Docker历史卡仅追加11月5日最新原回执，未认证下次启动。原�
 - [Pi成熟优先、GPT分层介入与检查器冲突守卫R57](references/PI-GPT-R57-20261107.md)
 
 同一Docker EXP-DOCKER-001只更新11月7日18:03新的WSL预热失败时点（覆盖6日历史READY作为最新原状态），不重建卡。R57共享本机有限样本、误报纠正与真实回归不能推定全行业最优/24小时无人值守/记忆净T_VALID提速。保留经验技能V1、BRAIN25、DSE及原专业Freeze。
+
+## 2026-11-08最小经验增量（方法版本仍V1）
+- [R58复杂风险分流与不可逆状态反例](references/PI-GPT-R58-20261108.md)
+- [OMP18.18 Windows受限令牌管道及兼容后端边界](references/PI-OMP-1818-COMPAT-20261108.md)
+- [Pi R72—R74成熟入口副作用、定位符审计及配置/配方认证边界](references/PI-MATURE-R72-R74-20261108.md)
+本次R74真实配置读回PASS、R73受控八例仅准入；没有新增真实业务成熟节点配方，不得声称自动保存ChatGPT个人技能或自动召回生产业务。Docker最新同指纹失败只更新原卡。不改本技能方法版本、不覆盖正式BRAIN/Freeze；全业务记忆净T_VALID=NOT_MEASURED。
