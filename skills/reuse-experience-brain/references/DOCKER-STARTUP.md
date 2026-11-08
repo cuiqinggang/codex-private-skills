@@ -40,3 +40,6 @@ Windows收费A只读原C:\AI\Docker-Autostart-20261024\status.json及startup.jso
 
 ## 2026-11-07 18:03最新原回执｜昨日恢复后同指纹再次失败
 原C:\AI\Docker-Autostart-20261024\status.json与startup.jsonl最新一项为2026-11-07T18:03:23.5073525+08:00：REQUIRES_DIAGNOSIS、EXCEPTION、prewarmCode=-1、lastProbeCode=-1、initialProcessCount=0、Docker WSL prewarm failed。LAST_GOOD=2026-11-06 09:33:02.607的ENGINE_READY（历史成功）；FIRST_DELTA=2026-11-07 18:03重复预热异常。2026-11-07 21点复盘只读，没有维修/重启、更晚成功回归或独立引擎探针；根因、跨登录长期自动恢复和服务此刻在线均UNKNOWN。旧成功/失败原位保留，仅按最新原文件状态纠正当前判断。本卡不授权修改Windows/WSL/Docker或代理，记忆净完整T_VALID NOT_MEASURED。
+
+## 2026-11-08 16:37新时点｜WSL预热同指纹仍失败
+原C:\AI\Docker-Autostart-20261024\status.json只读回执时间2026-11-08T16:37:49.3458641+08:00，status=REQUIRES_DIAGNOSIS、action=EXCEPTION、prewarmCode=-1、lastProbeCode=-1、错误Docker WSL prewarm failed。LAST_GOOD=11月6日09:33历史ENGINE_READY；FIRST_DELTA=11月7日18:03相同故障，11月8日16:37再次失败；本轮无修复或回归，也未做实时Engine探针。21点复盘只读，不能宣布当前健康、根因已解或长期自动恢复成功。原任务下一合法节点是只读核账与授权边界审查，禁止用经验卡自行重启或改动Windows/WSL/Docker。
