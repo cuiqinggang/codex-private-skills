@@ -168,9 +168,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-08-DSE-INCREMENTAL.md",
+      "sha256": "f2d691fd21d192a8d78f315e5465417bdec86b004887005ff8f7854004279ab5",
+      "bytes": 7107,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "20 daily files byte-hashed and registered (Nov4 missing); 15 original contents read through Nov7; 36 selected experience cards (35 prior + 1 Nov7); historical distillation incomplete; original Vault never migrated; business T_VALID memory benefit NOT_MEASURED",
+  "limits": "21 daily files byte-hashed and registered (Nov4 missing); 16 original contents read through Nov8; 39 selected experience cards (36 prior + 3 Nov8); historical distillation incomplete; original Vault never migrated; business T_VALID memory benefit NOT_MEASURED",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -319,7 +327,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-07",
+  "latest_incremental_date": "2026-11-08",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -448,7 +456,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "2026-11-07 scoped R57 Pi GPT mature-first/oracle guard and existing Docker card time delta; 20 registered source dailies (Nov4 missing), 15 original contents read, 36 selected cards; no wholesale migration or full business memory T_VALID",
+  "latest_incremental_scope": "2026-11-08 original Vault daily created/read and hash checked; 21 registered daily sources (Nov4 missing), 16 original contents read, 39 scoped selected cards (36 prior + 3 new). Original Pi 17:42 manual test and scheduled 21:03 evidence review separately time-stamped; mature business composition new=0; no entire conversation visibility or complete memory T_VALID.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -525,6 +533,45 @@
       "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
       "content_read": true,
       "evidence_scope": "Nov 7 18:03:23.507 WSL prewarm failed REQUIRES_DIAGNOSIS supersedes historical Nov6 09:33 READY, no repair/no current healthy probe"
+    }
+  ],
+  "incremental_case_sources_20261108": [
+    {
+      "experience_id": "EXP-PI-R58-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-gpt-planning-r58-20261107\\REPORT.md",
+      "content_read": true,
+      "evidence_scope": "Original R58 24 synthetic trials, EARLY 12/12, LATE 11/12; equality only first five categories; immutable committed wrong payload remains NOT_VALID."
+    },
+    {
+      "experience_id": "EXP-PI-OMP1818-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-omp-upgrade-18.18.0-20261108\\UPGRADE-DECISION.json",
+      "content_read": true,
+      "evidence_scope": "Main OMP18.18 with old 18.15 Windows-compatible shell, restricted-token named-pipe write DACL failure; native 18.18 shell not fixed, rollback preserved; no system ACL change."
+    },
+    {
+      "experience_id": "EXP-PI-MATURE-R72-R74-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\mature-reuse-r74\\ACTIVATION.json",
+      "content_read": true,
+      "evidence_scope": "R72 plan-only safe original SKILL read, R73 8 synthetic admission decisions, R74 CONFIG_READBACK_PASS only; new business recipe 0 and future automatic capture not observed."
+    },
+    {
+      "experience_id": "EXP-PI-MATURE-R72-R74-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\daily-review-r71\\runs\\20261108-210346-365543\\SEMANTIC-AUDIT.json",
+      "content_read": true,
+      "evidence_scope": "Pi 21:03:46 drafted 4 case lessons from 17 explicitly listed files; independent GPT audited scope, corrections and deduplicated. Not stable rule, not actual business reuse."
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Nov8 16:37 REQUIRES_DIAGNOSIS WSL prewarm failed; no repair or live engine health check."
+    },
+    {
+      "experience_id": "DAILY-DSE-20261108",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-08-DSE-INCREMENTAL.md",
+      "sha256": "f2d691fd21d192a8d78f315e5465417bdec86b004887005ff8f7854004279ab5",
+      "content_read": true,
+      "evidence_scope": "Single original Vault 21:00 daily incremental body; Memory Lint, local explicit Hot Sync and Health Check passed; original content stays on C."
     }
   ]
 }
