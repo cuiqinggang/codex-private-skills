@@ -1,0 +1,140 @@
+{
+  "task": "AGENT-GUIDANCE-REAL-GATES-20261109",
+  "status": "FROZEN",
+  "candidate_sha256": "ff8bcd8c38d9a6b4aa9f89ae547f5f48130c335102288d38c6f7a4bf4bd18b76",
+  "appendix_sha256": "e8f0063ef28bceebae8b6e190fb4b47d214ad71e5fd49b3355c0fd75ff2dd0aa",
+  "controller_sha256": "223dea9d4ee313dc983c7ab91ff05661e4c8431989011adbaf91de7e553d01aa",
+  "sources": {
+    "fixtures_oracles": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-gpt-planning-r58-20261107\\driver.py",
+    "fixtures_sha256": "5240ad378fd4f0df756b63092c58913afefba1bb11eae52d66119173435b5cb1",
+    "browser": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\browser_fixture.py"
+  },
+  "engines": [
+    "codex",
+    "pi"
+  ],
+  "cases": [
+    "reuse",
+    "preserve",
+    "checker",
+    "injection",
+    "unknown",
+    "tool_gap",
+    "invalid",
+    "package",
+    "resume",
+    "ui_good",
+    "ui_bad"
+  ],
+  "candidate_jobs": 22,
+  "control_cases": [
+    "unknown",
+    "ui_bad"
+  ],
+  "control_jobs": 4,
+  "total_jobs": 26,
+  "timeout_seconds_per_invocation": 720,
+  "timeout_interpretation": "NOT_ADMITTED observation window, not proof of inability",
+  "parallelism": "at most 2 isolated native test processes; all browser jobs sequential",
+  "models": "existing configured model and tools; do not alter credentials, approvals, network or production entry",
+  "scope": "controlled tasks execute actual files, SQLite transactions, native process interruption and local visible-browser fixtures; not real customer payments or production",
+  "privacy": "do not persist reasoning tokens; only tool events, final text and usage",
+  "oracles": [
+    {
+      "seed": 771,
+      "version": "r1",
+      "oracle_agreement": true
+    },
+    {
+      "seed": 771,
+      "version": "r2",
+      "oracle_agreement": true
+    },
+    {
+      "seed": 772,
+      "version": "r1",
+      "oracle_agreement": true
+    },
+    {
+      "seed": 772,
+      "version": "r2",
+      "oracle_agreement": true
+    }
+  ],
+  "causality": "current effective host guidance remains in control; no claim of new-rule benefit when both arms pass",
+  "gpt_scope": "current GPT is exposed independent evaluator, NOT a blinded fresh-chat test subject",
+  "coverage_sections": {
+    "1": [
+      "injection",
+      "preserve"
+    ],
+    "2": [
+      "reuse",
+      "invalid"
+    ],
+    "3": [
+      "reuse",
+      "tool_gap"
+    ],
+    "4": [
+      "injection",
+      "checker"
+    ],
+    "5": [
+      "reuse",
+      "tool_gap"
+    ],
+    "6": [
+      "reuse",
+      "unknown",
+      "injection"
+    ],
+    "7": [
+      "checker",
+      "tool_gap",
+      "invalid"
+    ],
+    "8": [
+      "package",
+      "ui_good",
+      "ui_bad"
+    ],
+    "9": [
+      "checker",
+      "preserve",
+      "package"
+    ],
+    "10": [
+      "unknown",
+      "resume"
+    ],
+    "11": [
+      "tool_gap",
+      "unknown",
+      "runtime_identity_and_usage"
+    ],
+    "12": [
+      "invalid",
+      "package",
+      "ui_bad"
+    ],
+    "13": [
+      "existing_checkpoint_and_recipe_reuse",
+      "longterm_learning_not_certified"
+    ],
+    "14": [
+      "protected_local_files_only",
+      "real_system_and_network_NOT_EXERCISED"
+    ],
+    "15": [
+      "ui_good",
+      "package",
+      "existing_runtime"
+    ],
+    "16": [
+      "source_hashes",
+      "actual_load",
+      "Chinese_final_receipts"
+    ]
+  }
+}
