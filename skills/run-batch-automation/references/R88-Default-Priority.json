@@ -1,0 +1,20 @@
+{
+  "version": "V1.3.1",
+  "date": "2026-11-10 Asia/Shanghai",
+  "status": "DEFAULT_PRIORITY_CONFIGURED",
+  "default_skill": "run-batch-automation",
+  "checks": {
+    "loader_registered": true,
+    "default_every_task": true,
+    "old_nonbatch_bypass_removed": true,
+    "local_lookup_first": true,
+    "known_match_reused": true,
+    "closing_clause_retained": true,
+    "unrelated_policy_bytes_preserved": true,
+    "seven_frozen_fingerprints": true
+  },
+  "policy_before_sha256": "ef0647deb615f7552f5cc543a609ee24c49147e387c185df0a2520837a93ee14",
+  "policy_after_sha256": "8df5cb9262dc3e1c0ec9372c96fe5add6bc1d118208b80ce2c98a1f4ffdb3e8d",
+  "scope": "Existing loader and text/default route readback only; no new business/model benchmark; future model compliance remains NOT_MEASURED",
+  "elapsed_configuration_s": 0.11743450001813471
+}
