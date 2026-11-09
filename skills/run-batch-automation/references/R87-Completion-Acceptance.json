@@ -1,0 +1,131 @@
+{
+  "status": "DEPLOYED_AND_METADATA_ACCEPTED",
+  "date": "2026-11-10 Asia/Shanghai",
+  "target": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\runtime\\skills\\run-batch-automation",
+  "closing_library": "C:\\Users\\A\\Documents\\DSH-Workspace\\automation-flow-library",
+  "deployment_files": {
+    "SKILL.md": "0bc8eba4c59b53c83cb09e5c0065a9be78191d8d5c45446417f0f53b67f4f8fd",
+    "agents/openai.yaml": "7a77eea6172c28410fd3ffd85132486a98d9096b967aa00dcf87a25943c42802",
+    "assets/acceptance/r87_capture_observer.py": "d1aca12f6c4de74e9264b2eef2b9eb0104dede1ae7136bd9777ee5a7ef892db0",
+    "references/Pi-Integration.md": "097fe45929916eeeac55b155aecd42111fd9cb0e74525a67c2ab8210e37e5ca2",
+    "references/R87-Catalog-Coverage.json": "81b7b55839d9e30ce86ed4251bb8bad3703e934a84b2018b2deeef78c7d845d6",
+    "references/capture-examples.json": "a6d2e574864a956692dd1a326f4368e3ebe58c206120237d8163c74247f9544f",
+    "references/catalog-sources.json": "f73395b5a8969da59c96877634e757d38260f19f97fddf057832baee3ea530ab",
+    "references/completion-capture.md": "230cda1ca5d08ef6513d63722aa38950eaf1c27c0c6cc2a7082cb40f5daf3916",
+    "references/local-adoption.md": "6be7f427f3f777baf8ac2b67a507824deb9993cf307265239397a97ae1b518f9",
+    "references/official-recipes.md": "26b6e8d4cbef39049e17de3f1d58dfea3aec445f214777dc10fd5a20b45d6ff6",
+    "references/recipes.json": "f64f4a5c87f70a9e488c5e66a1eabcacd76214e1f2ddb699743fa6e800bb97a8",
+    "references/workflow-library.md": "635abf875b6ec0fbcdd17348ff32b018b90bc28985f11d16a5cb85876a6d63b2",
+    "scripts/capture_flow.py": "45ff81d2adc1fb0e2ce10f7206f532bb89a3c6781db6e126876cce6375e968eb",
+    "scripts/query.py": "9df4adb34763e925b2372f36b51dcd9c177d536d4cb19b73fce0367b19d6adb7"
+  },
+  "policy": {
+    "before_sha256": "ef0647deb615f7552f5cc543a609ee24c49147e387c185df0a2520837a93ee14",
+    "after_sha256": "ef0647deb615f7552f5cc543a609ee24c49147e387c185df0a2520837a93ee14",
+    "one_closing_clause_present": true,
+    "runtime_includeSkills_retained": true,
+    "other_policy_text_preserved": true,
+    "original_before_sha256": "a9c99713110df4d2e3df6a377f216eb7573cc6789b50b583cc58e035b0266d09",
+    "original_policy_preserved_except_one_closing_clause": true
+  },
+  "metadata_acceptance": {
+    "passed": true,
+    "checks": {
+      "candidate_indexed_and_original_bytes_preserved": true,
+      "same_batch_exactly_once": true,
+      "same_contract_deduplicated_and_failed_batch_retained": true,
+      "same_batch_conflict_preserves_old_record": true,
+      "changed_source_and_outside_paths_rejected": true,
+      "active_writer_lock_respected": true,
+      "no_reusable_check_recorded_without_new_flow": true,
+      "existing_recipe_gets_usage_without_duplicate": true,
+      "previously_captured_entry_can_be_reused_without_extra_registry_argument": true,
+      "next_lookup_finds_candidate_but_ready_filter_excludes_it": true,
+      "source_catalogs_findable_by_business_category": true,
+      "new_native_operation_findable_but_not_ready": true,
+      "all_seven_R86_frozen_programme_fingerprints_unchanged": true
+    },
+    "elapsed_s": 2.2600173000246286,
+    "scope": "Metadata capture, idempotence, original-byte copy, lookup and frozen source integrity only; no new business/model/GUI tests.",
+    "business_commands_executed": 0,
+    "model_calls": 0
+  },
+  "historical_R86_capture_results": [
+    {
+      "status": "NO_CHANGE",
+      "recipe_id": "pi-native-office-ingest",
+      "record": "C:\\Users\\A\\Documents\\DSH-Workspace\\automation-flow-library\\records\\a2efa51be823af0f0d570c9399e6b35cebc8e475a40eb3901d1c50d55d3cb3a4.json"
+    },
+    {
+      "status": "NO_CHANGE",
+      "recipe_id": "files-exact-archive",
+      "record": "C:\\Users\\A\\Documents\\DSH-Workspace\\automation-flow-library\\records\\a0138c7735060ff0d16f886ff4e4fea711e61f7572cc376bfe397a19a8e0a6a8.json"
+    },
+    {
+      "status": "NO_CHANGE",
+      "recipe_id": "orders-four-artifacts",
+      "record": "C:\\Users\\A\\Documents\\DSH-Workspace\\automation-flow-library\\records\\dff7321b8c011a9cec6dd00d88e7ffa6272fcb765896a59c87b9d5817e9ef1ed.json"
+    },
+    {
+      "status": "NO_CHANGE",
+      "recipe_id": "pi-native-office-ingest",
+      "record": "C:\\Users\\A\\Documents\\DSH-Workspace\\automation-flow-library\\records\\bb2294574299a1321af7a686c29b2c6169e0be3b4a3dbe458070ad4772458bca.json"
+    },
+    {
+      "status": "NO_CHANGE",
+      "recipe_id": "files-exact-archive",
+      "record": "C:\\Users\\A\\Documents\\DSH-Workspace\\automation-flow-library\\records\\a9189ae8eae6c19f6f3c6a27d6bbfe483c610b8777b18428ae16cd07cb2dd672.json"
+    },
+    {
+      "status": "NO_CHANGE",
+      "recipe_id": "orders-four-artifacts",
+      "record": "C:\\Users\\A\\Documents\\DSH-Workspace\\automation-flow-library\\records\\e957afccd6a55bda535d0353c73229dd97c44d06dd1187ccc75b9a54d6ab776b.json"
+    }
+  ],
+  "historical_R86_records": 6,
+  "historical_R86_records_do_not_imply_new_business_tests": true,
+  "catalogue": {
+    "sources": 29,
+    "new_native_operations": 45,
+    "retained_public_templates": 32,
+    "taxonomy": 12,
+    "new_platforms_installed": 0
+  },
+  "preserved_frozen_programme_fingerprints": 7,
+  "new_business_runs": 0,
+  "new_model_calls": 0,
+  "future_model_compliance_not_measured": true,
+  "elapsed_deploy_and_metadata_s": 3.406668500043452,
+  "deployment_incidents": [
+    {
+      "phase": "final policy observer",
+      "first_attempt": "FAILED newline comparison: text universal-newline read versus raw before bytes",
+      "recovery": "same raw-byte decoding on both sides; original business programmes unchanged; historical records retained by idempotent capture"
+    },
+    {
+      "phase": "metadata payload transport",
+      "first_attempt": "A upload request timed out; the old staged payload was never executed",
+      "recovery": "D original exec/write_stdin interface, separately named payload; exact signed ZIP SHA256 verified"
+    },
+    {
+      "phase": "D payload size",
+      "first_attempt": "120708-character single tool request rejected with HTTP413 before JSON parsing",
+      "recovery": "same process session, sequential 32000-character chunks; final decoded ZIP fingerprint matched"
+    }
+  ],
+  "forward_use": {
+    "read_only": true,
+    "model_execution_not_performed": true,
+    "findings": [
+      "Existing same-contract entry is REUSED; otherwise NEW_CANDIDATE.",
+      "Unknown workspace/evidence paths are preserved as missing, not fabricated.",
+      "No business rerun or packaging layer is required for a completed batch.",
+      "Windows default learned index is used; candidate status does not imply READY."
+    ]
+  },
+  "timing_scope": {
+    "deploy_and_metadata_timer": "controller execution only, excludes initial creation/research/transport/model wait and first failed final assertion",
+    "complete_user_e2e_s": null,
+    "cash_cost": "NOT_MEASURED"
+  }
+}

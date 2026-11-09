@@ -1,0 +1,11 @@
+{
+  "version": "V1.3",
+  "date": "2026-11-10 Asia/Shanghai",
+  "canonical_shared_path": "cuiqinggang/codex-private-skills/main/skills/run-batch-automation",
+  "windows_runtime": "C:/Users/A/Documents/DSH-Workspace/pi-rules-r64-20261108/runtime/skills/run-batch-automation",
+  "windows_closing_index": "C:/Users/A/Documents/DSH-Workspace/automation-flow-library/recipes.json",
+  "personal_skills_directory_update": "FAILED_TO_SAVE",
+  "shared_and_windows_scope": "Complete original flow files and QA evidence; does not imply ChatGPT Skills UI installed/updated or every future model invocation compliant",
+  "prior_Pi_skill_remote_V1_3_update": "NOT_COMPLETED",
+  "mature_source_programmes_unchanged": true
+}

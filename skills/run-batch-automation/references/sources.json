@@ -1,0 +1,61 @@
+{
+  "checked_date": "2026-11-09",
+  "existing_recipe_sources": {
+    "orders-four-artifacts": [
+      "dsh-mature-capabilities/references/business-acceptance.json：PASS_LIMITED_BUSINESS_SCOPE，订单2配对夹具各20检查、新输入20检查。",
+      "dsh-mature-capabilities/references/holdout-acceptance.json：240行、14客户、20项检查，真实LibreOffice重算及3视图复核。"
+    ],
+    "office-multi-file-extraction": [
+      "local-capability-index/references/external-capabilities.md：Windows既有MarkItDown0.1.6与多文件入口。",
+      "local-capability-index/scripts/data_fastlane.py：convert input nargs=+，MarkItDown(enable_plugins=False)。"
+    ],
+    "integer-cents-csv-aggregate": [
+      "local-capability-index/references/external-capabilities.md：DUCKDB-PROVENANCE/INSTALL、FASTLANE/BATCH验收位置。",
+      "local-capability-index/scripts/data_fastlane.py：锁定配置，禁自动/未签名扩展，threads=2，memory_limit=256MB。"
+    ],
+    "source-pack-fetch-and-verify": [
+      "dsh-mature-capabilities/references/business-recipes.md：来源合同/CLI及base64、原字节哈希。",
+      "dsh-mature-capabilities/references/business-acceptance.json、holdout-acceptance.json。"
+    ],
+    "bounded-original-session-recovery": [
+      "dsh-mature-capabilities/references/business-acceptance.json/recovery。",
+      "dsh-mature-capabilities/scripts/run_resumable.py确为库函数，无独立CLI入口。"
+    ]
+  },
+  "official_sources": {
+    "duckdb-multiple-files": [
+      "https://duckdb.org/docs/stable/data/multiple_files/overview",
+      "https://duckdb.org/docs/stable/data/csv/overview"
+    ],
+    "imagemagick-images": [
+      "https://imagemagick.org/mogrify/",
+      "https://imagemagick.org/command-line-options/"
+    ],
+    "ffmpeg-media": [
+      "https://ffmpeg.org/ffmpeg-formats.html#concat-1",
+      "https://ffmpeg.org/ffmpeg.html",
+      "https://ffmpeg.org/ffprobe.html"
+    ],
+    "libreoffice-convert": [
+      "https://help.libreoffice.org/latest/en-US/text/shared/guide/start_parameters.html"
+    ],
+    "pandoc-documents": [
+      "https://pandoc.org/MANUAL.html"
+    ],
+    "qpdf-pages": [
+      "https://qpdf.readthedocs.io/en/stable/cli.html"
+    ],
+    "powershell-command-batch": [
+      "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/foreach-object?view=powershell-7.5"
+    ],
+    "gnu-parallel-resume": [
+      "https://www.gnu.org/software/parallel/parallel_tutorial.html",
+      "https://www.gnu.org/software/parallel/man.html"
+    ]
+  },
+  "historical_reports": {
+    "R81": "https://chatgpt.com/library?file_id=libfile_fde3_f-e44b6c02cd648191a8811581cd888be1_937029f1505c8191917e0968911c47f5&account_id=personal",
+    "R84": "https://chatgpt.com/library?file_id=libfile_fde3_f-efa84bee9aec81919cbb9a0d98be8de9_937029f1505c8191917e0968911c47f5&account_id=personal"
+  },
+  "local_presence_or_business_success_not_inferred_from_docs": true
+}

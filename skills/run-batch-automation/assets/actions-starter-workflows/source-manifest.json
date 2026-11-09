@@ -1,0 +1,32 @@
+[
+  {
+    "file": "assets/actions-starter-workflows/node.js.yml",
+    "git_blob_sha1": "d5ccc1494a2ffce6ef899211c3bcf19401fb8a13",
+    "sha256": "edd2d73bb194d0925bc82c4c266e36ab205c68c82998bc6a398a441d7d6027da",
+    "bytes": 882
+  },
+  {
+    "file": "assets/actions-starter-workflows/python-app.yml",
+    "git_blob_sha1": "5963096c330dadbbf5053f88567c13f6cacb105f",
+    "sha256": "8853bf7db4963fdb66fb1fb18fba6e860f5367427573d76cba8c7a411775f07d",
+    "bytes": 1204
+  },
+  {
+    "file": "assets/actions-starter-workflows/static.yml",
+    "git_blob_sha1": "ac6b8077d460266559b43a52d1bde2e0d6922b6d",
+    "sha256": "0033d94599fdad356f33f8783b1e8ca32d868155228c7ef450719ed810b193cf",
+    "bytes": 1259
+  },
+  {
+    "file": "assets/actions-starter-workflows/stale.yml",
+    "git_blob_sha1": "1322eafd69729f4d12eb6886a36bddb16f6a6d83",
+    "sha256": "dec19b29780ca76ca12170c9135c932d7a22a62a16d8a9ace6eac47711749882",
+    "bytes": 715
+  },
+  {
+    "file": "assets/actions-starter-workflows/LICENSE",
+    "git_blob_sha1": "d4528d7eea310fb9fbb03479fd12b8e3917032a6",
+    "sha256": "d78930d559f68ee1b8d5c69df99c42a223921b1953e9bb59d7ef1785acb81fb3",
+    "bytes": 1154
+  }
+]

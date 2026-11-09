@@ -1,0 +1,1011 @@
+{
+  "checked_date": "2026-11-10",
+  "scope": "Major mature published catalogues and original native interfaces; not an exhaustive Internet inventory and not local execution certification.",
+  "catalogs": [
+    {
+      "id": "catalog-n8n",
+      "title": "n8n官方工作流模板库",
+      "platform": "n8n",
+      "source_url": "https://n8n.io/workflows/",
+      "guide_url": "https://docs.n8n.io/build/manage-workflows/export-and-import.md",
+      "categories": [
+        "数据与表格",
+        "文档与知识库",
+        "邮件与客服",
+        "销售与CRM",
+        "内容与营销",
+        "监测与运维",
+        "日程与通知",
+        "API与集成"
+      ],
+      "search_terms": [
+        "n8n",
+        "workflow",
+        "Google Sheets",
+        "Microsoft Excel",
+        "document",
+        "customer support",
+        "CRM",
+        "webhook",
+        "AI",
+        "数据与表格",
+        "文档与知识库",
+        "邮件与客服",
+        "销售与CRM",
+        "内容与营销",
+        "监测与运维",
+        "日程与通知",
+        "API与集成"
+      ],
+      "discovery": "在官方模板库按应用、角色、用途检索，进入具体模板核对作者、节点、版本和设置说明。",
+      "import_method": "单工作流采用JSON，支持编辑器下载、从文件或URL导入、复制节点和API。当前官方还介绍处于Preview的.n8np包；不可据此假设既有旧版支持。",
+      "scope": "平台官方托管的社区模板入口；具体模板须逐项核对，收录不等于本机已配置或已验收。",
+      "runtime_requirements": [
+        "相容版本的n8n实例",
+        "所需原生或社区节点",
+        "相关第三方账号连接",
+        "网络与执行权限"
+      ],
+      "local_portability": "工作流定义可保存本地并导入自托管实例；运行依赖、凭据和环境需另行核对，不是独立Python脚本。",
+      "license_note": "n8n自托管遵循其Sustainable Use License；模板和第三方节点的授权条件逐项确认。导出JSON可能含凭据名称、ID或HTTP认证头，不能假设无敏感信息。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-make",
+      "title": "Make官方场景模板库",
+      "platform": "Make",
+      "source_url": "https://www.make.com/templates",
+      "guide_url": "https://help.make.com/blueprints",
+      "categories": [
+        "数据与表格",
+        "文档与知识库",
+        "邮件与客服",
+        "销售与CRM",
+        "内容与营销",
+        "日程与通知",
+        "API与集成"
+      ],
+      "search_terms": [
+        "Make",
+        "scenario",
+        "blueprint",
+        "Google Sheets",
+        "Gmail",
+        "document",
+        "CRM",
+        "webhook",
+        "content",
+        "数据与表格",
+        "文档与知识库",
+        "邮件与客服",
+        "销售与CRM",
+        "内容与营销",
+        "日程与通知",
+        "API与集成"
+      ],
+      "discovery": "按应用、行业与用途搜索官方Templates；优先进入具体模板查看模块、连接和字段要求。",
+      "import_method": "从模板建立Scenario；Scenario可导出.json blueprint并导入其他Make场景。官方说明导入blueprint须小于2MB。",
+      "scope": "Make平台场景的模板与可备份定义，不认证脱离Make平台的本机运行时。",
+      "runtime_requirements": [
+        "Make云账号",
+        "所用应用连接",
+        "适用计划与额度",
+        "模块需要的网络访问"
+      ],
+      "local_portability": "可以把blueprint文件保存本地；导入后仍需创建自己的应用连接。本轮未确认可作为独立本机程序运行。",
+      "license_note": "按Make平台条款与具体模板条件使用，不按开源程序或可自由再分发的本地运行时处理。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-zapier",
+      "title": "Zapier官方自动化模板库",
+      "platform": "Zapier",
+      "source_url": "https://zapier.com/templates",
+      "guide_url": "https://help.zapier.com/hc/en-us/articles/45056869696653-Introducing-guided-templates-for-sharing-Zap-workflows",
+      "categories": [
+        "数据与表格",
+        "文档与知识库",
+        "邮件与客服",
+        "销售与CRM",
+        "内容与营销",
+        "日程与通知",
+        "API与集成"
+      ],
+      "search_terms": [
+        "Zapier",
+        "Zap",
+        "lead",
+        "customer support",
+        "email",
+        "spreadsheet",
+        "Agents",
+        "guided template",
+        "数据与表格",
+        "文档与知识库",
+        "邮件与客服",
+        "销售与CRM",
+        "内容与营销",
+        "日程与通知",
+        "API与集成"
+      ],
+      "discovery": "在官方Templates中按业务用途与应用筛选；区分Zaps、Agents及涉及多个产品的模板。",
+      "import_method": "复制平台模板至自己的账号，或将完成的Zap建立为guided template并配置可编辑字段与连接说明。",
+      "scope": "Zapier云端工作流和产品组合的模板入口。",
+      "runtime_requirements": [
+        "Zapier云账号",
+        "相关应用账号及授权",
+        "符合所需连接器与步骤的计划额度"
+      ],
+      "local_portability": "本轮未核实可下载为不依赖Zapier的独立本机程序；先按平台引用和账号内复制候选处理。",
+      "license_note": "按平台条款及具体模板条件使用；模板可使用不代表平台运行时可复制或自托管。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-pipedream",
+      "title": "Pipedream官方组件与工作流来源",
+      "platform": "Pipedream",
+      "source_url": "https://github.com/PipedreamHQ/pipedream",
+      "guide_url": "https://pipedream.com/workflows",
+      "categories": [
+        "数据与表格",
+        "邮件与客服",
+        "销售与CRM",
+        "监测与运维",
+        "日程与通知",
+        "API与集成"
+      ],
+      "search_terms": [
+        "Pipedream",
+        "components",
+        "actions",
+        "event sources",
+        "workflow",
+        "webhook",
+        "Node.js",
+        "API",
+        "数据与表格",
+        "邮件与客服",
+        "销售与CRM",
+        "监测与运维",
+        "日程与通知",
+        "API与集成"
+      ],
+      "discovery": "在官方GitHub的components目录查找具体触发器与动作，并用官方集成页核对输入和认证要求。",
+      "import_method": "预建动作或事件源组成平台workflow；可查阅Node.js等组件源码。仅有组件源码不代表具备脱离平台的完整运行环境。",
+      "scope": "当前作为REFERENCE_ONLY的公开源码与平台集成来源；复制商用前必须核对具体组件授权。",
+      "runtime_requirements": [
+        "适用的Pipedream账号或组件运行环境",
+        "平台组件所需接口",
+        "第三方应用授权",
+        "具体语言包依赖"
+      ],
+      "local_portability": "源码可查阅，但平台组件可能依赖Pipedream特有接口；本轮未认证独立本机执行或商用复制。",
+      "license_note": "根LICENSE为Pipedream Source Available License Version 1.0；Excluded Purpose包含any commercial use等措辞，不能按MIT或无条件开源商用来源复制。具体组件许可须分别核对。许可原文：https://github.com/PipedreamHQ/pipedream/blob/master/LICENSE。",
+      "local_state": "REFERENCE_ONLY",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-power-automate",
+      "title": "Microsoft Power Automate桌面模板",
+      "platform": "Power Automate",
+      "source_url": "https://learn.microsoft.com/en-us/power-automate/desktop-flows/create-desktop-flow-templates",
+      "guide_url": "https://learn.microsoft.com/en-us/power-automate/desktop-flows/requirements",
+      "categories": [
+        "数据与表格",
+        "文档与知识库",
+        "文件与备份",
+        "网页与桌面",
+        "日程与通知"
+      ],
+      "search_terms": [
+        "Power Automate",
+        "desktop flow template",
+        "Windows",
+        "Excel",
+        "desktop automation",
+        "subflow",
+        "数据与表格",
+        "文档与知识库",
+        "文件与备份",
+        "网页与桌面",
+        "日程与通知"
+      ],
+      "discovery": "在Power Automate桌面控制台Templates页检索本人或被共享的模板；按官方模板文档核对发布与生成flow步骤。",
+      "import_method": "已完成桌面flow通过Save as建立Template；发布后从Template生成独立flow。已发布Template本身不能在控制台直接运行、调度或云触发。",
+      "scope": "Windows桌面自动化模板与复用机制；不是已验证可匿名批量下载的公开全量模板仓库。",
+      "runtime_requirements": [
+        "工作或学校账号",
+        "Power Automate for desktop v2.72+支持模板功能",
+        "所选环境的相应权限",
+        "目标Windows应用",
+        "无人值守和云触发时另核对许可、系统版本及Dataverse条件"
+      ],
+      "local_portability": "生成的desktop flow可在相容Windows环境运行；Home版可本地有人值守运行，但不能由云触发。新旧flow版本兼容须核对。",
+      "license_note": "按Microsoft账号、产品与连接器许可执行；模板复制不传递原账号、Dataverse或无人值守权益。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-robocorp",
+      "title": "Robocorp官方与社区自动化示例",
+      "platform": "Robocorp",
+      "source_url": "https://robocorp.com/portal",
+      "guide_url": "https://robocorp.com/portal/robot-framework",
+      "categories": [
+        "数据与表格",
+        "文档与知识库",
+        "文件与备份",
+        "网页与桌面",
+        "API与集成"
+      ],
+      "search_terms": [
+        "Robocorp",
+        "Python",
+        "Robot Framework",
+        "RPA.Excel.Files",
+        "PDF",
+        "Playwright",
+        "Windows Desktop",
+        "数据与表格",
+        "文档与知识库",
+        "文件与备份",
+        "网页与桌面",
+        "API与集成"
+      ],
+      "discovery": "按Portal的技术、应用、library和collection筛选；进入原示例GitHub工程核对文件、依赖和调用步骤。",
+      "import_method": "复制原Python或Robot Framework项目与其robot.yaml、conda.yaml等实际存在的配置文件；按原README运行。",
+      "scope": "Robocorp与社区完整机器人示例、教程和原工程入口。",
+      "runtime_requirements": [
+        "示例要求的Python或Robot Framework环境",
+        "RCC或示例指定工具链",
+        "浏览器或目标桌面应用",
+        "各工程固定依赖",
+        "涉及云端时的账号授权"
+      ],
+      "local_portability": "原工程可按其许可与依赖复制到本机；Portal演示成功不保证当前目标网站定位器仍有效。",
+      "license_note": "逐个原仓库核对LICENSE及第三方依赖，不统一假设全部示例同一许可。OCR与图像识别示例被官方描述为后备手段。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-activepieces",
+      "title": "Activepieces官方模板库",
+      "platform": "Activepieces",
+      "source_url": "https://www.activepieces.com/docs/flows/template-library",
+      "guide_url": "https://www.activepieces.com/blog/activepieces-templates-how-to-copy-and-set-up-2026",
+      "categories": [
+        "数据与表格",
+        "邮件与客服",
+        "销售与CRM",
+        "内容与营销",
+        "日程与通知",
+        "API与集成"
+      ],
+      "search_terms": [
+        "Activepieces",
+        "template",
+        "flow",
+        "pieces",
+        "Sales",
+        "Marketing",
+        "Customer Service",
+        "Finance",
+        "AI",
+        "数据与表格",
+        "邮件与客服",
+        "销售与CRM",
+        "内容与营销",
+        "日程与通知",
+        "API与集成"
+      ],
+      "discovery": "在Explore中按分类或名称搜索；预览Used Pieces、流程图与Set Up Guide后再复制。",
+      "import_method": "Use template将Flow定义加入项目，依Setup Guide配置连接；官方确认自托管安装也能使用模板。",
+      "scope": "可用于云端或自托管的流程定义与应用组件模板。",
+      "runtime_requirements": [
+        "Activepieces云端或自托管实例",
+        "所需Pieces相容版本",
+        "相关应用账号与连接",
+        "所用外部服务的网络访问"
+      ],
+      "local_portability": "Flow定义可用于自托管，但外部服务、连接和企业功能依赖仍需配置与逐项验收。",
+      "license_note": "官方2026模板指南称Community Edition为MIT；SSO、审计、嵌入等高级功能可能需付费方案，具体模板不可据此一概标为免费可用。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-node-red",
+      "title": "Node-RED官方托管Flow Library",
+      "platform": "Node-RED",
+      "source_url": "https://flows.nodered.org/",
+      "guide_url": "https://nodered.org/docs/user-guide/editor/workspace/import-export",
+      "categories": [
+        "数据与表格",
+        "文件与备份",
+        "监测与运维",
+        "日程与通知",
+        "API与集成"
+      ],
+      "search_terms": [
+        "Node-RED",
+        "flow",
+        "subflow",
+        "HTTP",
+        "MQTT",
+        "file",
+        "dashboard",
+        "schedule",
+        "数据与表格",
+        "文件与备份",
+        "监测与运维",
+        "日程与通知",
+        "API与集成"
+      ],
+      "discovery": "在官方托管Library检索Flows、Nodes与Collections；逐项核对作者、依赖节点与示例。",
+      "import_method": "流程使用JSON，可粘贴或上传JSON、从本地Flow Library导入，亦可导出为文件或保存本地库。额外Node通常通过npm包提供。",
+      "scope": "事件驱动流程、子流程与Node模块的社区库。",
+      "runtime_requirements": [
+        "Node.js与Node-RED",
+        "流程所需额外npm节点",
+        "相关设备或API连接",
+        "环境变量和认证配置"
+      ],
+      "local_portability": "原生支持本地流程库与JSON复制；导入JSON不自动意味着缺失节点已安装或认证已恢复。",
+      "license_note": "社区Flow、Node模块与第三方接口分别核对授权，不因官方托管就推定每一项允许商业再分发。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-airflow",
+      "title": "Apache Airflow官方示例DAG",
+      "platform": "Apache Airflow",
+      "source_url": "https://airflow.apache.org/docs/apache-airflow/stable/start.html",
+      "guide_url": "https://airflow.apache.org/docs/apache-airflow/stable/installation/prerequisites.html",
+      "categories": [
+        "数据与表格",
+        "监测与运维",
+        "日程与通知",
+        "API与集成"
+      ],
+      "search_terms": [
+        "Apache Airflow",
+        "example_dags",
+        "DAG",
+        "ETL",
+        "batch",
+        "schedule",
+        "task dependencies",
+        "数据与表格",
+        "监测与运维",
+        "日程与通知",
+        "API与集成"
+      ],
+      "discovery": "查官方随包example_dags和DAG文档中的原源码；以具体示例及版本固定后再评估复用。",
+      "import_method": "复制官方Python DAG及相应依赖文件至相容Airflow的DAG bundle或原版本要求的目录；不要把演示DAG当完整业务程序。",
+      "scope": "任务调度、依赖、ETL等工程示例；属于需新运行栈的重型备用候选。",
+      "runtime_requirements": [
+        "受支持的Linux生产环境",
+        "Windows开发需WSL2或Linux容器",
+        "相容Python与Airflow版本",
+        "数据库",
+        "相应Providers及外部服务"
+      ],
+      "local_portability": "Python原件可复制；Windows原生生产运行不受支持。不为秒级小任务默认部署整个Airflow栈。",
+      "license_note": "遵循Apache Airflow及具体示例与依赖的原许可；官方演示不是已完成本地业务验收的证据。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-prefect",
+      "title": "Prefect官方Python流程示例",
+      "platform": "Prefect",
+      "source_url": "https://github.com/PrefectHQ/examples",
+      "guide_url": "https://github.com/PrefectHQ/examples#readme",
+      "categories": [
+        "数据与表格",
+        "文件与备份",
+        "监测与运维",
+        "日程与通知",
+        "API与集成"
+      ],
+      "search_terms": [
+        "Prefect",
+        "flows",
+        "Python",
+        "ETL",
+        "background tasks",
+        "retry",
+        "deployment",
+        "examples",
+        "数据与表格",
+        "文件与备份",
+        "监测与运维",
+        "日程与通知",
+        "API与集成"
+      ],
+      "discovery": "按官方仓库examples主题、flows独立脚本与apps完整参考项目检索，并读取具体源文件说明。",
+      "import_method": "复制原flows脚本或完整示例项目；仓库提供直接python运行示例及列举、运行示例的工具。",
+      "scope": "Python流程、后台任务和编排的官方可运行示例；不自动认证示例业务适用性。",
+      "runtime_requirements": [
+        "该仓库当前声明Python 3.13+",
+        "Prefect 3.3.5+",
+        "具体示例依赖",
+        "涉及部署、云服务或API时的账号和环境"
+      ],
+      "local_portability": "仓库明确包含可复制的独立Python脚本与Windows虚拟环境用法；本机实际依赖和业务合同仍待匹配。",
+      "license_note": "该examples仓库为Apache-2.0；具体外部服务、数据和第三方库仍按各自条件使用。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-dagster",
+      "title": "Dagster官方完整数据管线示例",
+      "platform": "Dagster",
+      "source_url": "https://dagster.io/docs/examples",
+      "guide_url": "https://dagster.io/docs/examples/full-pipelines",
+      "categories": [
+        "数据与表格",
+        "文档与知识库",
+        "监测与运维",
+        "API与集成"
+      ],
+      "search_terms": [
+        "Dagster",
+        "full pipeline examples",
+        "data assets",
+        "data quality",
+        "ETL",
+        "Python",
+        "report",
+        "数据与表格",
+        "文档与知识库",
+        "监测与运维",
+        "API与集成"
+      ],
+      "discovery": "从官方Examples、Full pipeline examples及关联原GitHub源码入口定位具体示例，固定版本后核对。",
+      "import_method": "从官方文档关联的源工程复制所需管线及配置，按原工程说明加载数据资产与依赖。",
+      "scope": "数据资产、完整数据管线、质量与工程最佳实践示例。",
+      "runtime_requirements": [
+        "相容Python与Dagster",
+        "原示例数据库或数据资源",
+        "相应集成依赖",
+        "需要时的云服务和认证"
+      ],
+      "local_portability": "原源码项目可按许可复制；本轮未核实本机安装与运行。官方文档部分页面版本标签不同，应固定原件提交和相容版本。",
+      "license_note": "采用所取原仓库和第三方依赖的当前LICENSE，不把官方示例自动视为已满足本机依赖或商业数据许可。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-windmill",
+      "title": "Windmill官方Hub脚本与流程库",
+      "platform": "Windmill",
+      "source_url": "https://hub.windmill.dev/",
+      "guide_url": "https://www.windmill.dev/docs/getting_started/how_to_use_windmill",
+      "categories": [
+        "数据与表格",
+        "邮件与客服",
+        "销售与CRM",
+        "监测与运维",
+        "日程与通知",
+        "API与集成"
+      ],
+      "search_terms": [
+        "Windmill",
+        "script",
+        "flow",
+        "app",
+        "Python",
+        "TypeScript",
+        "approval",
+        "API",
+        "数据与表格",
+        "邮件与客服",
+        "销售与CRM",
+        "监测与运维",
+        "日程与通知",
+        "API与集成"
+      ],
+      "discovery": "按Hub的Projects、Integrations、Scripts、Flows与资源类型查找；优先核对官方Verified版本及完整项目依赖。",
+      "import_method": "复用Hub脚本或fork项目；编辑器支持以JSON或YAML导入Flow及应用类型。私有Hub另有本地pull/push同步工具。",
+      "scope": "脚本、流程、应用和资源类型的社区库；Private Hub不是本轮必需的免费组件。",
+      "runtime_requirements": [
+        "Windmill云端或自托管实例",
+        "自托管所需PostgreSQL与worker",
+        "原脚本语言和包依赖",
+        "资源类型要求的应用连接"
+      ],
+      "local_portability": "可从Hub取得脚本或流程并导入自己的相容实例；不意味着所有Hub脚本脱离Windmill即可执行。",
+      "license_note": "Hub作品及具体项目许可逐项核对；Private Hub为Enterprise或White Label功能，不能默认免费可用。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-dify",
+      "title": "Dify官方应用导出与工作流复用",
+      "platform": "Dify",
+      "source_url": "https://docs.dify.ai/en/cloud/use-dify/workspace/export-import-apps",
+      "guide_url": "https://github.com/langgenius/dify/blob/main/LICENSE",
+      "categories": [
+        "文档与知识库",
+        "邮件与客服",
+        "内容与营销",
+        "API与集成"
+      ],
+      "search_terms": [
+        "Dify",
+        "workflow",
+        "chatflow",
+        "Agent",
+        "app package",
+        "ifpkg",
+        "app.yaml",
+        "DSL",
+        "文档与知识库",
+        "邮件与客服",
+        "内容与营销",
+        "API与集成"
+      ],
+      "discovery": "依据官方导入导出文档，核对被复用应用的原作者、类型、版本、节点、知识库和工具依赖；未将第三方无来源DSL当成熟原件。",
+      "import_method": "当前官方导出为.ifpkg应用包，导入要求Dify 1.18.0+；面向更早自托管版本可从ZIP内取app.yaml DSL独立导入，但部分配置会丢失。导出要求Editor或更高角色。",
+      "scope": "LLM应用与Workflow/Chatflow/Agent的可迁移定义，不是完整环境备份或已配置本地模型。",
+      "runtime_requirements": [
+        "相容Dify实例与节点版本",
+        "模型供应商或本地模型配置",
+        "导出未包含的集成和工具",
+        "关联知识库与文件",
+        "服务和模型凭据",
+        "必要触发订阅"
+      ],
+      "local_portability": "应用包可迁移到相容的自托管Dify。导出不含关联知识库、Workflow/Swagger/MCP工具、模型和服务凭据、部分持久文件、日志历史或触发订阅，须重新配置核验。",
+      "license_note": "Dify采用附加条件的Apache 2.0；多租户服务和前端LOGO/版权处理有额外条件，不应标为普通无附加条件Apache-2.0。应用原件和第三方节点许可分别核对。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-actions",
+      "title": "GitHub Actions官方Starter Workflows",
+      "platform": "GitHub Actions",
+      "source_url": "https://github.com/actions/starter-workflows",
+      "guide_url": "https://github.com/actions/starter-workflows#readme",
+      "categories": [
+        "软件与交付",
+        "监测与运维",
+        "文件与备份",
+        "日程与通知"
+      ],
+      "search_terms": [
+        "GitHub Actions",
+        "CI",
+        "deployment",
+        "code-scanning",
+        "automation",
+        "Pages",
+        "workflow_dispatch",
+        "YAML",
+        "软件与交付",
+        "监测与运维",
+        "文件与备份",
+        "日程与通知"
+      ],
+      "discovery": "按官方仓库ci、deployments、automation、code-scanning、pages目录及.properties.json元数据检索具体工作流。",
+      "import_method": "复制.yml工作流及必要配套原件到目标仓库相应目录，替换模板变量，核对引用Actions与runner要求。",
+      "scope": "构建、测试、部署、代码扫描、仓库自动化和Pages的官方起步模板。",
+      "runtime_requirements": [
+        "GitHub仓库与Actions权限",
+        "相容托管或自托管runner",
+        "具体语言工具链",
+        "工作流要求的secrets与权限",
+        "适用运行额度"
+      ],
+      "local_portability": "YAML可复制到本地和仓库；执行仍需相容Actions runner，不能按普通本机脚本认定直接可运行。",
+      "license_note": "保留原仓库LICENSE，引用的每个Action和工具遵循各自许可。官方当前暂停普通贡献，仍声明修复安全问题和重大breaking changes，不能称所有模板持续积极维护。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "id": "catalog-huginn",
+      "title": "Huginn官方事件Agent与场景来源",
+      "platform": "Huginn",
+      "source_url": "https://github.com/huginn/huginn",
+      "guide_url": "https://github.com/huginn/huginn/wiki",
+      "categories": [
+        "监测与运维",
+        "日程与通知",
+        "邮件与客服",
+        "API与集成"
+      ],
+      "search_terms": [
+        "Huginn",
+        "Agents",
+        "Scenarios",
+        "RSS",
+        "webhook",
+        "IMAP",
+        "website change",
+        "events",
+        "监测与运维",
+        "日程与通知",
+        "邮件与客服",
+        "API与集成"
+      ],
+      "discovery": "从官方仓库、Wiki、原Agent代码和可核对场景原件定位成熟事件组合；不要把历史提议建设场景网站的issue当现成市场。",
+      "import_method": "采用Huginn原有Agents、事件图与Scenarios导入机制；额外Agent可作为gem按原安装接口加入。",
+      "scope": "自托管网页监测、RSS、Webhook、通知与事件汇总系统及原Agent实现。",
+      "runtime_requirements": [
+        "Ruby/Huginn及其数据库，或官方推荐的相容Docker部署",
+        "相关服务API",
+        "认证和网络访问",
+        "额外Agent gem依赖"
+      ],
+      "local_portability": "主系统与原Agent可依MIT许可自托管；外部服务可能已改变，历史示例必须核对当前接口，不假设直接有效。",
+      "license_note": "Huginn主仓库为MIT；外部gem、第三方服务和具体场景的条件仍分别确认。",
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-yt-dlp",
+      "title": "yt-dlp官方音视频下载配方",
+      "platform": "yt-dlp",
+      "source_url": "https://github.com/yt-dlp/yt-dlp",
+      "guide_url": "https://github.com/yt-dlp/yt-dlp#usage-and-options",
+      "categories": [
+        "图像与媒体"
+      ],
+      "search_terms": [
+        "yt-dlp",
+        "视频下载",
+        "音频下载",
+        "批次链接",
+        "音视频"
+      ],
+      "discovery": "官方README列出原生批次列表、音频提取、格式查询及依赖；不把提取器存在视为具体站点通过。",
+      "import_method": "复用官方EXE/Python入口及原生参数；使用现有专用抖音配方时继承其本机验收。",
+      "scope": "明确已授权URL的媒体下载及提取；不等于所有网站均可访问。",
+      "runtime_requirements": "Windows原生EXE或兼容Python；合并/转码需FFmpeg，部分站点需受支持JS运行时及当前站点条件。",
+      "local_portability": "可本地调用；依赖网络、站点和具体格式，不能只凭安装状态判READY。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-ffmpeg",
+      "title": "FFmpeg官方媒体处理配方",
+      "platform": "FFmpeg",
+      "source_url": "https://ffmpeg.org/",
+      "guide_url": "https://ffmpeg.org/ffmpeg.html",
+      "categories": [
+        "图像与媒体"
+      ],
+      "search_terms": [
+        "FFmpeg",
+        "转码",
+        "封装",
+        "抽帧",
+        "音视频"
+      ],
+      "discovery": "官方命令文档给出streamcopy、流选择、编解码和滤镜；streamcopy免解码编码但受容器兼容性限制。",
+      "import_method": "复制已选官方参数配方到冻结合同，复用现有固定FFmpeg程序；不要重写媒体处理核心。",
+      "scope": "音视频流封装、提取和转换；不把程序退出视为用户播放器播放通过。",
+      "runtime_requirements": "Windows可用FFmpeg构建；核对实际编解码器、容器、滤镜和字体等能力。",
+      "local_portability": "本地CLI；输入、目标容器及编解码能力匹配后方可验收。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-markitdown",
+      "title": "Microsoft MarkItDown正文转换配方",
+      "platform": "MarkItDown",
+      "source_url": "https://github.com/microsoft/markitdown",
+      "guide_url": "https://github.com/microsoft/markitdown#usage",
+      "categories": [
+        "文档与知识库"
+      ],
+      "search_terms": [
+        "MarkItDown",
+        "Markdown",
+        "正文提取",
+        "Office提取",
+        "文档与办公",
+        "文档与知识库"
+      ],
+      "discovery": "官方README列出格式与CLI/Python入口；强调用途为文本分析，非高保真排版转换。",
+      "import_method": "复用原生CLI/API及现有R86已验入口；新格式不自动继承四格式已验结论。",
+      "scope": "文档正文和结构转Markdown；图像描述/音频转写可能调用网络服务。",
+      "runtime_requirements": "兼容Python、MarkItDown及对应格式可选依赖；不自动安装全量extras。",
+      "local_portability": "本地文件转换可本地调用；外部服务功能需另外条件与验收。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-pandoc",
+      "title": "Pandoc官方结构化文档转换配方",
+      "platform": "Pandoc",
+      "source_url": "https://pandoc.org/",
+      "guide_url": "https://pandoc.org/MANUAL.html",
+      "categories": [
+        "文档与知识库"
+      ],
+      "search_terms": [
+        "Pandoc",
+        "格式转换",
+        "defaults",
+        "Markdown",
+        "文档与办公",
+        "文档与知识库"
+      ],
+      "discovery": "官方手册定义输入输出格式、defaults和参考样式文档；明确不是任意格式间完美转换。",
+      "import_method": "复用原生EXE及已冻结defaults YAML、reference-doc等模板参数。",
+      "scope": "结构化文档转换；排版细节和复杂表格需另验。",
+      "runtime_requirements": "Windows Pandoc EXE；PDF输出需相应PDF引擎，模板/字体按目标核对。",
+      "local_portability": "可本地调用；不假设已经安装，PDF引擎不随所有调用自动具备。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-qpdf",
+      "title": "qpdf官方PDF结构处理配方",
+      "platform": "qpdf",
+      "source_url": "https://qpdf.sourceforge.io/",
+      "guide_url": "https://qpdf.readthedocs.io/en/stable/cli.html",
+      "categories": [
+        "文档与知识库"
+      ],
+      "search_terms": [
+        "qpdf",
+        "PDF拆分",
+        "PDF合并",
+        "PDF检查",
+        "PDF"
+      ],
+      "discovery": "官方CLI手册定义输入输出、页面选择、拆分与检查命令。",
+      "import_method": "复用qpdf原生EXE；参数与页面范围作为合同配置。",
+      "scope": "PDF结构操作；不包含OCR和正文语义提取。",
+      "runtime_requirements": "Windows qpdf可执行程序；输入可寻址；加密文件只使用既有获授权解密条件，不存密码。",
+      "local_portability": "本地CLI；需核对版本、页面合同及输出新路径。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-libreoffice",
+      "title": "LibreOffice官方无界面导出配方",
+      "platform": "LibreOffice",
+      "source_url": "https://www.libreoffice.org/",
+      "guide_url": "https://help.libreoffice.org/latest/en-US/text/shared/guide/start_parameters.html",
+      "categories": [
+        "文档与知识库",
+        "数据与表格"
+      ],
+      "search_terms": [
+        "LibreOffice",
+        "headless",
+        "soffice",
+        "Office导出",
+        "文档与办公",
+        "PDF",
+        "数据与表格"
+      ],
+      "discovery": "官方说明Windows soffice.com、--convert-to、--outdir及独立UserInstallation配置。",
+      "import_method": "复用soffice.com原生导出过滤器和输出目录配置；多实例按官方profile方式隔离。",
+      "scope": "Office文件转换与导出；导出成功不等于与Microsoft Office逐页一致。",
+      "runtime_requirements": "实际LibreOffice安装、所需字体、可写用户profile目录及对应导出过滤器。",
+      "local_portability": "可本地无界面调用；并发profile冲突、字体差异和文件锁须匹配。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-imagemagick",
+      "title": "ImageMagick官方图像批处理配方",
+      "platform": "ImageMagick",
+      "source_url": "https://imagemagick.org/",
+      "guide_url": "https://imagemagick.org/magick/",
+      "categories": [
+        "图像与媒体"
+      ],
+      "search_terms": [
+        "ImageMagick",
+        "magick",
+        "图片转换",
+        "图像元数据",
+        "图片处理",
+        "图像与设计"
+      ],
+      "discovery": "官方Magick与Mogrify文档包含转换、缩放、identify及批处理参数。",
+      "import_method": "复用原生magick接口与既有配方；图像编辑的实际工具选择仍遵守当前平台图像工具优先规则。",
+      "scope": "确定性文件格式与尺寸操作；不等同视觉生成、语义修图或高分辨率真实性。",
+      "runtime_requirements": "Windows ImageMagick构建、目标格式delegate及policy；字体/色彩profile视任务核对。",
+      "local_portability": "可本地CLI；mogrify可能原位改写，必须先冻结输出策略与源保护。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-rclone",
+      "title": "rclone官方复制与校验配方",
+      "platform": "rclone",
+      "source_url": "https://rclone.org/",
+      "guide_url": "https://rclone.org/commands/",
+      "categories": [
+        "文件与备份"
+      ],
+      "search_terms": [
+        "rclone",
+        "文件复制",
+        "校验",
+        "增量复制",
+        "文件与备份"
+      ],
+      "discovery": "官方commands入口和copy/check文档明确copy不删除目标多余项、check只读比较。",
+      "import_method": "复用rclone原生命令；本地路径无需云账号，远端仅沿既有配置与授权。",
+      "scope": "文件复制、列举及一致性核对；copy与sync语义不同。",
+      "runtime_requirements": "Windows rclone EXE；远端需已有合法配置、网络和权限；不在技能保存凭据。",
+      "local_portability": "本地可用；远端依赖条件单独登记，不能自动配置账号。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-7zip",
+      "title": "7-Zip官方归档工具入口",
+      "platform": "7-Zip",
+      "source_url": "https://www.7-zip.org/",
+      "guide_url": "https://github.com/ip7z/7zip/blob/main/DOC/readme.txt",
+      "categories": [
+        "文件与备份"
+      ],
+      "search_terms": [
+        "7-Zip",
+        "7z",
+        "归档",
+        "解压",
+        "文件与备份"
+      ],
+      "discovery": "官网确认Windows原生归档工具；官方源码DOC/readme说明控制台组件。网络CLI手册多为镜像，精确参数仍需本机随包手册核对。",
+      "import_method": "复用官方安装包/控制台EXE及随包命令手册；不从第三方镜像认定已验配方。",
+      "scope": "归档、展开、列表及测试；ACL、ADS、空目录及路径合同分别定义。",
+      "runtime_requirements": "Windows 7z.exe或适用控制台构建；须核对实际版本和随包手册。",
+      "local_portability": "可本地CLI；以下原接口形式仅作候选检索，实际参数与退出码尚待本机核对。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-powershell",
+      "title": "PowerShell官方文件与表格原生命令",
+      "platform": "PowerShell",
+      "source_url": "https://learn.microsoft.com/en-us/powershell/",
+      "guide_url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/",
+      "categories": [
+        "文件与备份",
+        "数据与表格"
+      ],
+      "search_terms": [
+        "PowerShell",
+        "Import-Csv",
+        "Export-Csv",
+        "Get-FileHash",
+        "文件与备份",
+        "数据与表格"
+      ],
+      "discovery": "Microsoft Learn提供CSV对象读写及文件hash原生命令；Archive模块另有隐藏文件和单文件大小限制。",
+      "import_method": "使用本机固定powershell.exe或pwsh.exe路径及原生命令，不改全局配置。",
+      "scope": "文件与CSV确定性操作；Compress-Archive忽略隐藏文件/目录且官方说明底层单文件2GB限制，不能匹配完整原样备份。",
+      "runtime_requirements": "实际PowerShell版本和相应模块；冻结编码/BOM、字段、分隔符与区域设置。",
+      "local_portability": "Windows本地可调用；5.1与7.x行为及编码差异不能混同。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-playwright",
+      "title": "Playwright官方固定网页操作与验收入口",
+      "platform": "Playwright",
+      "source_url": "https://playwright.dev/",
+      "guide_url": "https://playwright.dev/docs/test-cli",
+      "categories": [
+        "网页与桌面",
+        "软件与交付"
+      ],
+      "search_terms": [
+        "Playwright",
+        "网页验收",
+        "浏览器回归",
+        "trace",
+        "网页与桌面",
+        "开发与部署"
+      ],
+      "discovery": "官方CLI定义测试、生成测试、调试与trace；当前官方支持系统要求Windows11+及Node22/24/26。",
+      "import_method": "优先复用既有已验脚本、浏览器和版本；不为索引自动升级或新开用户浏览器。",
+      "scope": "固定网页流程与UI验收；录制不等于可靠生产配方。",
+      "runtime_requirements": "兼容Node、Playwright包及浏览器。用户Windows10需NEEDS_COMPATIBILITY_CHECK，不能从旧版通过推定当前版受支持。",
+      "local_portability": "本地或既有Browser服务可复用；具体入口、版本、账号会话与授权分别核对。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-pandas",
+      "title": "pandas官方表格处理示例入口",
+      "platform": "pandas",
+      "source_url": "https://pandas.pydata.org/",
+      "guide_url": "https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html",
+      "categories": [
+        "数据与表格"
+      ],
+      "search_terms": [
+        "pandas",
+        "DataFrame",
+        "CSV",
+        "聚合",
+        "表连接",
+        "数据与表格"
+      ],
+      "discovery": "官方入门教程覆盖文件读写、筛选、聚合、组合和重塑；它们是成熟节点，不是已验任意业务配方。",
+      "import_method": "复用已有业务脚本和原生库函数；新业务只按原接口做字段映射并独立验收。",
+      "scope": "表格节点；金额、去重、大小写、空值等语义必须显式。",
+      "runtime_requirements": "兼容Python与pandas；Excel等格式引擎分别核对。",
+      "local_portability": "Python库本地可用；不假设安装/业务适用，不能依自动类型推断覆盖严谨合同。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-openpyxl",
+      "title": "openpyxl官方Excel读写示例入口",
+      "platform": "openpyxl",
+      "source_url": "https://openpyxl.readthedocs.io/",
+      "guide_url": "https://openpyxl.readthedocs.io/en/stable/tutorial.html",
+      "categories": [
+        "数据与表格"
+      ],
+      "search_terms": [
+        "openpyxl",
+        "Excel",
+        "工作簿",
+        "只读遍历",
+        "数据与表格"
+      ],
+      "discovery": "官方教程包含新建、保存、读取和read_only；明确旧文件打开保存可能丢失shapes。",
+      "import_method": "复用原生库接口及已有Excel配方；保护原件，输出到新文件。",
+      "scope": "Excel数据读写；非完整Office重算或全功能高保真编辑。",
+      "runtime_requirements": "兼容Python与openpyxl；图像可能需Pillow，大文件性能可受lxml影响。",
+      "local_portability": "本地库；需确认已装版本和输入特性，不以支持xlsx推定保形保真。"
+    },
+    {
+      "local_state": "NOT_CONFIGURED",
+      "checked_date": "2026-11-10",
+      "license_note": "仅核对官方资料入口；具体程序、模板及依赖许可须逐件核对，未据工具名推定可再分发或商用。",
+      "id": "catalog-native-duckdb",
+      "title": "DuckDB官方多文件SQL批处理入口",
+      "platform": "DuckDB",
+      "source_url": "https://duckdb.org/",
+      "guide_url": "https://duckdb.org/docs/1.4/clients/cli/overview",
+      "categories": [
+        "数据与表格"
+      ],
+      "search_terms": [
+        "DuckDB",
+        "SQL",
+        "CSV",
+        "Parquet",
+        "批量数据",
+        "数据与表格"
+      ],
+      "discovery": "官方CLI资料说明Windows单文件可执行程序、SQL命令与文件执行；CSV/Parquet读取另有官方数据文档。",
+      "import_method": "复用原生CLI和冻结SQL文件；查询Schema与文件列表作为参数合同。",
+      "scope": "多文件查询、聚合、导出和数据质量核对；SQL需符合明确业务口径。",
+      "runtime_requirements": "Windows DuckDB EXE；扩展、外部文件系统和网络来源另需条件，不默认下载。",
+      "local_portability": "本地CLI可用；类型推断与版本差异需核对，本机安装状态尚未检查。"
+    }
+  ]
+}

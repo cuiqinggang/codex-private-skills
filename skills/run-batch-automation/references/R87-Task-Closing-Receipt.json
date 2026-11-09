@@ -1,0 +1,14 @@
+{
+  "capture": {
+    "status": "NEW_CANDIDATE",
+    "recipe_id": "captured-8f534ffd439943a410a90d7a",
+    "record": "C:\\Users\\A\\Documents\\DSH-Workspace\\automation-flow-library\\records\\7e7b5dc4e649c225257f4f06176c907aa45a09edc79cd2b6d8106b4bf63fb470.json",
+    "catalog": "C:\\Users\\A\\Documents\\DSH-Workspace\\automation-flow-library\\recipes.json",
+    "executable_added": false
+  },
+  "next_lookup_found": true,
+  "candidate_state": "CANDIDATE",
+  "original_source_copies": 2,
+  "total_records": 7,
+  "business_executed": 0
+}

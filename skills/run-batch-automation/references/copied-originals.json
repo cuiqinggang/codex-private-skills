@@ -1,0 +1,53 @@
+{
+  "originals": [
+    {
+      "path": "pi-native/artifact_recipe.py",
+      "original": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\artifact_recipe.py",
+      "sha256": "4967b4e9e26f72459211b78534bec281b262c20576f4076a099b41a7fa418cc6",
+      "bytes": 7342
+    },
+    {
+      "path": "pi-native/mixed_reader.py",
+      "original": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\mixed_reader.py",
+      "sha256": "f9673f4cb47e3d04e01573c809070787bc82e8da7fc36a43e332548cc9655b4c",
+      "bytes": 1611
+    },
+    {
+      "path": "pi-native/launch_pi-v1.3.1-scoped-backup.py",
+      "original": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\launch_pi-v1.3.1-scoped-backup.py",
+      "sha256": "bc8a2a32dd2308823e47a70cfb19edad05a01ab49c9f668d6b236739f9ba7d00",
+      "bytes": 5313
+    },
+    {
+      "path": "pi-native/upstream/fast_order_route.py",
+      "original": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\fast_order_route.py",
+      "sha256": "d8c8f68c43d17ad83a0293761f8203cd2cbfc4b761487267842aca204d93fa9f",
+      "bytes": 3875
+    },
+    {
+      "path": "pi-native/orders/business_pack.py",
+      "original": "C:\\AI\\DeepSeek-Harness-Trial\\dsh-home-mature-agent\\skills\\dsh-mature-capabilities\\scripts\\business_pack.py",
+      "sha256": "18f7f5f90b48a5d77a5059670f41ccf77c09077ae83614a6844f8ae2c6277d4e",
+      "bytes": 7163
+    },
+    {
+      "path": "pi-native/orders/verify_order_pack.py",
+      "original": "C:\\AI\\DeepSeek-Harness-Trial\\dsh-home-mature-agent\\skills\\dsh-mature-capabilities\\scripts\\verify_order_pack.py",
+      "sha256": "ab93ff0d1d9b5b7c1f7ac6b10b8895d4c7d335fedaf6f8914377e06ece286dff",
+      "bytes": 5206
+    }
+  ],
+  "dependency_versions": {
+    "markitdown": "0.1.6",
+    "python-docx": "1.2.0",
+    "XlsxWriter": "3.2.9",
+    "openpyxl": "3.1.5"
+  },
+  "configuration_adaptation": {
+    "file": "pi-native/fast_order_route.py",
+    "original": "pi-native/upstream/fast_order_route.py",
+    "only_change": "H source directory bound to R/orders; unchanged business/checker core.",
+    "sha256": "001f3dd27842958e46bc0f0b61a9ce4d8316ef8770c2ee29ed75ba98580eea56",
+    "original_line_ending_preserved": true
+  }
+}

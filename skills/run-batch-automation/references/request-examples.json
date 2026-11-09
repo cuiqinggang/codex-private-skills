@@ -1,0 +1,63 @@
+{
+  "note": "These are contract templates. GPT fills actual user-authorized workspace/input paths once; users need not type JSON. requirements must be fully covered.",
+  "office": {
+    "goal": "office.extract_body",
+    "context": "host",
+    "workspace": "C:/Users/A/Documents/DSH-Workspace/actual-task",
+    "inputs": [
+      "input/a.docx",
+      "input/b.xlsx"
+    ],
+    "output_profile": "json_text_with_provenance",
+    "requirements": [
+      "body_text",
+      "provenance",
+      "one_per_input",
+      "input_integrity",
+      "fixed_readback"
+    ],
+    "allow_write": true
+  },
+  "archive": {
+    "goal": "files.archive_exact",
+    "context": "host",
+    "workspace": "C:/Users/A/Documents/DSH-Workspace/actual-task",
+    "input_directory": "input",
+    "output_profile": "zip_manifest_receipt",
+    "requirements": [
+      "relative_paths",
+      "file_bytes",
+      "zip_crc",
+      "input_integrity",
+      "fixed_readback"
+    ],
+    "allow_write": true
+  },
+  "orders": {
+    "goal": "orders.report_integer_cents",
+    "context": "host",
+    "workspace": "C:/Users/A/Documents/DSH-Workspace/actual-task",
+    "inputs": [
+      "input/orders.csv"
+    ],
+    "output_directory": "output",
+    "output_profile": "csv_json_docx_xlsx",
+    "requirements": [
+      "integer_cents",
+      "preserve_records",
+      "case_sensitive_customers",
+      "text_identifiers",
+      "formula_cache",
+      "input_integrity",
+      "fixed_readback"
+    ],
+    "allow_write": true,
+    "semantics": {
+      "amount_unit": "integer_cents",
+      "duplicates": "preserve",
+      "customer_case": "exact",
+      "identifiers": "text",
+      "numeric_text": "canonical_integer"
+    }
+  }
+}

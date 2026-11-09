@@ -1,0 +1,136 @@
+{
+  "schema": "pi-automation-flow-bindings-v1",
+  "host": "DESKTOP-4A1EGTM",
+  "bindings": [
+    {
+      "id": "office-body-batch",
+      "goal": "office.extract_body",
+      "state": "READY_HOST",
+      "entry": "scripts/invoke_flow.py --request <task-contract.json>",
+      "machine_contract": "references/executable-flows.json",
+      "context_readiness": {
+        "host": "READY_CURRENT_R86",
+        "inside_omp_tool": "CONFIGURED_COPY_NOT_CURRENTLY_CERTIFIED; preserve R85 original Office context entry separately."
+      },
+      "source_copies": "assets/ready-flows/",
+      "extra_requirements": "Only MATCH may invoke original code; unsupported OCR/layout/semantics must reject."
+    },
+    {
+      "id": "archive-bytes-batch",
+      "goal": "files.archive_exact",
+      "state": "READY_HOST",
+      "entry": "scripts/invoke_flow.py --request <task-contract.json>",
+      "machine_contract": "references/executable-flows.json",
+      "context_readiness": {
+        "host": "READY_CURRENT_R86",
+        "inside_omp_tool": "CONFIGURED_COPY_NOT_CURRENTLY_CERTIFIED; preserve R85 original Office context entry separately."
+      },
+      "source_copies": "assets/ready-flows/",
+      "extra_requirements": "Only MATCH may invoke original code; unsupported OCR/layout/semantics must reject."
+    },
+    {
+      "id": "orders-cents-report",
+      "goal": "orders.report_integer_cents",
+      "state": "READY_HOST",
+      "entry": "scripts/invoke_flow.py --request <task-contract.json>",
+      "machine_contract": "references/executable-flows.json",
+      "context_readiness": {
+        "host": "READY_CURRENT_R86",
+        "inside_omp_tool": "CONFIGURED_COPY_NOT_CURRENTLY_CERTIFIED; preserve R85 original Office context entry separately."
+      },
+      "source_copies": "assets/ready-flows/",
+      "extra_requirements": "Only MATCH may invoke original code; unsupported OCR/layout/semantics must reject."
+    }
+  ],
+  "preferred_direct_interface": {
+    "goal": "明确任务后一次合同匹配并转交原程序，不增加新的模型规划层",
+    "command": "python <本包>/scripts/invoke_flow.py --request <本批合同.json>",
+    "read_only_preview": "python <本包>/scripts/match_flow.py --request <本批合同.json>",
+    "contracts": "references/executable-flows.json",
+    "currently_accepted_context": "host",
+    "copied_flows": 3,
+    "avoid_double_match": "若已有当前批有效MATCH回执，直接按其中argv调用，不再重复匹配；不能套用别批输入回执。",
+    "acceptance": "R86 six business batches,14 matching conditions and one single-entry archive passed."
+  },
+  "legacy_bindings": [
+    {
+      "id": "pi-native-office-ingest",
+      "state": "READY",
+      "priority": "Preferred when explicit local file list and original ingest contract match.",
+      "matches": "DOCX/XLSX/PPTX/TXT body extraction; existing code also enables PDF/MD/HTML/CSV but R85 currently verifies four formats only. Not OCR or high-fidelity conversion.",
+      "python": "C:/Users/A/AppData/Local/Programs/Python/Python313/python.exe",
+      "native_pi_entry": "C:/Users/A/Documents/DSH-Workspace/pi-capability-enhancement-20261028/launch_pi.py",
+      "argument_contract": [
+        "--cwd",
+        "<authorized_task_directory>",
+        "--fast-office-file",
+        "<relative_input_file_1>",
+        "--fast-office-file",
+        "<relative_input_file_2>",
+        "... up to 40 explicit inputs"
+      ],
+      "output": "Original cwd/extracted.json and cwd/delivery.json. Copy original extracted.json bytes to requested output location if needed; do not reconstruct its JSON.",
+      "built_in_acceptance": "Original artifact_recipe.py checks input hash before/after, one result per input, exact source order, text/provenance fields, output and delivery readback. CONTENT_ACCEPTED is content/structure scope, not OCR/layout/semantic correctness.",
+      "reuse": "Use same existing Python, launcher, installed MarkItDown and sandbox. No per-batch install, new parser or new generated checker. Fixed checks inherit; task-specific requirements use their relevant independent method.",
+      "limits": "1..40 unique explicit inputs, <=64MiB each and <=256MiB total. Existing original sandbox and permissions retained.",
+      "sources_sha256": {
+        "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\launch_pi.py": "525bf428c5905225d274dde01e74eaae14d4fa8c02e011e8afd04eb9970289dd",
+        "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\launch_pi-v1.3.1-scoped-backup.py": "bc8a2a32dd2308823e47a70cfb19edad05a01ab49c9f668d6b236739f9ba7d00",
+        "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\artifact_recipe.py": "4967b4e9e26f72459211b78534bec281b262c20576f4076a099b41a7fa418cc6",
+        "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\mixed_reader.py": "f9673f4cb47e3d04e01573c809070787bc82e8da7fc36a43e332548cc9655b4c"
+      },
+      "acceptance_evidence": [
+        "C:/Users/A/Documents/DSH-Workspace/pi-automation-index-r85-20261109/control/runs/N1/RESULT.json",
+        "C:/Users/A/Documents/DSH-Workspace/pi-automation-index-r85-20261109/control/runs/N2/RESULT.json"
+      ],
+      "observed_seconds": [
+        6.237411899957806,
+        5.940585400094278
+      ],
+      "timing_scope": "Explicitly selected existing recipe through Pi native launcher incl copy/startup/sandbox/QA/readback; excludes natural-language model inference and first setup.",
+      "model_calls": 0,
+      "execution_context": {
+        "host": "READY: use existing Pi --fast-office-file launcher with its original sandbox.",
+        "inside_omp_tool": "READY_LIMITED: original artifact_recipe.py ingest called from existing OMP sandbox and20/20 independently accepted in C2; overall Pi model-led route took69.184s, speed maturity not established."
+      },
+      "omp_tool_entry": "C:/Users/A/Documents/DSH-Workspace/pi-capability-enhancement-20261028/artifact_recipe.py",
+      "omp_tool_arguments": [
+        "ingest",
+        "--cwd",
+        "<current_authorized_task_directory>",
+        "--files-json",
+        "[\"input/file1.docx\",\"input/file2.xlsx\", ...]"
+      ],
+      "omp_tool_command_template": "\"<fixed_python>\" \"<omp_tool_entry>\" ingest --cwd \"<task_directory>\" --files-json '[\"input/file1.docx\",\"input/file2.xlsx\"]' && cp extracted.json output/extracted.json",
+      "fixed_qa_reuse": "Original CONTENT_ACCEPTED receipt includes four fixed structural/hash checks and both file readbacks. Inherit original fixed checks; do not rewrite them. This does not replace user-specific semantic checks.",
+      "observed_nested_launcher_failure": {
+        "case": "C1",
+        "elapsed_s": 110.10269610001706,
+        "content_accepted_after_fallback": true,
+        "native_nested_adoption": "FAIL",
+        "details": "Trace confirms original launcher failed from OMP tool. Agent reported fixed external temp EPERM/WinError5; no ACL change; known attempted probe artifacts absent at host readback."
+      },
+      "omp_acceptance_evidence": "C:/Users/A/Documents/DSH-Workspace/pi-automation-index-r85-20261109/control/runs/C2/RESULT.json",
+      "natural_language_auto_speed": "NOT_ESTABLISHED; avoid extra model invocation when GPT already has exact structured parameters."
+    },
+    {
+      "id": "office-multi-file-extraction",
+      "state": "READY",
+      "matches": "Batch local DOCX/XLSX/PPTX/TXT/HTML/CSV/MD or text PDF body extraction; not OCR or high-fidelity conversion.",
+      "python": "C:/Users/A/AppData/Local/Programs/Python/Python313/python.exe",
+      "programme": "C:/Users/A/Documents/DSH-Workspace/capability-index-20261024/data_fastlane.py",
+      "arguments": [
+        "convert",
+        "<all_input_files_in_one_call>",
+        "--root",
+        "<explicit_input_root>"
+      ],
+      "output": "stdout is UTF-8-compatible JSON; >1 input yields [{source,markdown,route},...]. Write stdout bytes to requested output JSON; preserve every source.",
+      "dependencies": "Existing MarkItDown 0.1.6; plugins and LLM disabled. Same configured Python, no install or rebuild per batch.",
+      "acceptance": "Per-input identity, body content, all-source hashes and original-programme hash; current task extra requirements still apply.",
+      "limits": "8 enabled suffixes; each<=64MiB; Office archive bounds enforced by original programme.",
+      "acceptance_evidence": "C:/Users/A/Documents/DSH-Workspace/pi-automation-index-r85-20261109/control/runs/B1/RESULT.json",
+      "qualification": "Observed four-format20-file current content acceptance; model-level speed benefit was not established."
+    }
+  ]
+}

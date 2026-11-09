@@ -1,0 +1,104 @@
+{
+  "note": "Placeholders are for GPT/Pi to replace from observed task facts; never submit fabricated QA or ask user to handwrite JSON.",
+  "new_candidate": {
+    "task_id": "<原任务号>",
+    "batch_id": "<原批次或恢复轮次>",
+    "decision": "NEW_CANDIDATE",
+    "workspace": "<本任务绝对工作目录>",
+    "contains_secrets": false,
+    "title": "<已完成任务的可复用流程>",
+    "category": "文档与知识库",
+    "search_terms": [
+      "<明确用途>",
+      "<原工具名>"
+    ],
+    "contract": {
+      "goal": "<具体目标>",
+      "inputs": "<格式/范围/规模>",
+      "semantics": "<关键业务口径>",
+      "outputs": "<产物及格式>",
+      "acceptance": "<原检查及用户使用路径>"
+    },
+    "original": {
+      "identity": "<原专业包/原仓库与入口标识>",
+      "source_url": null,
+      "entry": {
+        "context": "host",
+        "argv_template": [
+          "<固定解释器>",
+          "<已验原程序>",
+          "<原参数模板>"
+        ]
+      },
+      "files": [
+        {
+          "path": "scripts/original.py",
+          "copy": true
+        }
+      ]
+    },
+    "environment": {
+      "context": "host",
+      "dependencies": [
+        "<实际版本>"
+      ]
+    },
+    "qa": {
+      "passed": true,
+      "evidence_files": [
+        {
+          "path": "control/QA.json",
+          "copy": false
+        }
+      ],
+      "limitations": []
+    },
+    "timing": {
+      "scope": "<实际计时范围>",
+      "total_s": null,
+      "user_e2e_s": null,
+      "configuration_and_capture_overhead_s": null
+    },
+    "missing": [
+      "本机精确合同和调用上下文接入验收，完成后方可进入READY绑定"
+    ]
+  },
+  "reused_minimum": {
+    "task_id": "<原任务号>",
+    "batch_id": "<原批次>",
+    "decision": "REUSED",
+    "recipe_id": "files-exact-archive",
+    "workspace": "<本任务绝对目录>",
+    "contains_secrets": false,
+    "qa": {
+      "passed": true,
+      "evidence_files": [
+        {
+          "path": "control/QA.json"
+        }
+      ]
+    },
+    "timing": {
+      "scope": "<实际范围>",
+      "total_s": null,
+      "user_e2e_s": null
+    }
+  },
+  "no_reusable": {
+    "task_id": "<原任务号>",
+    "batch_id": "<原批次>",
+    "decision": "NO_REUSABLE_FLOW",
+    "workspace": "<本任务绝对目录>",
+    "contains_secrets": false,
+    "reason": "<没有可提取固定步骤的具体原因>",
+    "qa": {
+      "passed": true,
+      "evidence_files": []
+    },
+    "timing": {
+      "scope": "NOT_MEASURED",
+      "total_s": null,
+      "user_e2e_s": null
+    }
+  }
+}

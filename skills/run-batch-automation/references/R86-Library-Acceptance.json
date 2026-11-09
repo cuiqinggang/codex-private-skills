@@ -1,0 +1,500 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "label": "office-1",
+      "goal": "office.extract_body",
+      "batch": 1,
+      "elapsed_s": 32.417294200044125,
+      "matcher_s": null,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "originals_unchanged": true,
+          "input_hashes_unchanged": true,
+          "original_status": true,
+          "original_qa_pass": true,
+          "20_unique_results": true,
+          "all60_content_markers": true,
+          "source_and_route": true,
+          "delivery_readback": true
+        }
+      },
+      "model_calls": 0
+    },
+    {
+      "label": "archive-1",
+      "goal": "files.archive_exact",
+      "batch": 1,
+      "elapsed_s": 3.717246900079772,
+      "matcher_s": null,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "originals_unchanged": true,
+          "input_hashes_unchanged": true,
+          "original_status": true,
+          "original_qa_pass": true,
+          "zip_crc": true,
+          "48_unique_members": true,
+          "all_paths_and_bytes": true,
+          "manifest_matches_all_input_bytes": true,
+          "delivery_readback": true
+        }
+      },
+      "model_calls": 0
+    },
+    {
+      "label": "orders-1",
+      "goal": "orders.report_integer_cents",
+      "batch": 1,
+      "elapsed_s": 12.299027999979444,
+      "matcher_s": null,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "originals_unchanged": true,
+          "input_hashes_unchanged": true,
+          "original_status": true,
+          "original_qa_pass": true,
+          "20_original_independent_checks": true,
+          "180_original_records": true,
+          "four_artifacts_present": true,
+          "delivery_readback": true
+        }
+      },
+      "model_calls": 0
+    },
+    {
+      "label": "office-2",
+      "goal": "office.extract_body",
+      "batch": 2,
+      "elapsed_s": 12.34179380000569,
+      "matcher_s": 0.6223680999828503,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "originals_unchanged": true,
+          "input_hashes_unchanged": true,
+          "original_status": true,
+          "original_qa_pass": true,
+          "20_unique_results": true,
+          "all60_content_markers": true,
+          "source_and_route": true,
+          "delivery_readback": true
+        }
+      },
+      "model_calls": 0
+    },
+    {
+      "label": "archive-2",
+      "goal": "files.archive_exact",
+      "batch": 2,
+      "elapsed_s": 3.12888119998388,
+      "matcher_s": 0.14363179996144027,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "originals_unchanged": true,
+          "input_hashes_unchanged": true,
+          "original_status": true,
+          "original_qa_pass": true,
+          "zip_crc": true,
+          "48_unique_members": true,
+          "all_paths_and_bytes": true,
+          "manifest_matches_all_input_bytes": true,
+          "delivery_readback": true
+        }
+      },
+      "model_calls": 0
+    },
+    {
+      "label": "orders-2",
+      "goal": "orders.report_integer_cents",
+      "batch": 2,
+      "elapsed_s": 5.824157800059766,
+      "matcher_s": 0.17987100000027567,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "originals_unchanged": true,
+          "input_hashes_unchanged": true,
+          "original_status": true,
+          "original_qa_pass": true,
+          "20_original_independent_checks": true,
+          "180_original_records": true,
+          "four_artifacts_present": true,
+          "delivery_readback": true
+        }
+      },
+      "model_calls": 0
+    }
+  ],
+  "matching_cases": [
+    {
+      "label": "valid-office",
+      "status": "MATCH",
+      "pass": true
+    },
+    {
+      "label": "context-not-currently-certified",
+      "status": "NEEDS_CONFIG",
+      "pass": true
+    },
+    {
+      "label": "requires-OCR",
+      "status": "NOT_MATCHED",
+      "pass": true
+    },
+    {
+      "label": "requires-layout",
+      "status": "NOT_MATCHED",
+      "pass": true
+    },
+    {
+      "label": "outside-path",
+      "status": "NOT_MATCHED",
+      "pass": true
+    },
+    {
+      "label": "duplicate-input",
+      "status": "NOT_MATCHED",
+      "pass": true
+    },
+    {
+      "label": "writes-not-authorized",
+      "status": "NOT_MATCHED",
+      "pass": true
+    },
+    {
+      "label": "wrong-money-unit",
+      "status": "NOT_MATCHED",
+      "pass": true
+    },
+    {
+      "label": "drop-duplicates-not-allowed",
+      "status": "NOT_MATCHED",
+      "pass": true
+    },
+    {
+      "label": "archive-ACL-requirement",
+      "status": "NOT_MATCHED",
+      "pass": true
+    },
+    {
+      "label": "too-many-office-files",
+      "status": "NOT_MATCHED",
+      "pass": true
+    },
+    {
+      "label": "noncanonical-numeric-text",
+      "status": "NOT_MATCHED",
+      "pass": true
+    },
+    {
+      "label": "dependency-not-installed",
+      "status": "NEEDS_CONFIG",
+      "pass": true
+    },
+    {
+      "label": "existing-output-preserved",
+      "status": "NOT_MATCHED",
+      "pass": true
+    }
+  ],
+  "sources": {
+    "assets/ready-flows/pi-native/artifact_recipe.py": "4967b4e9e26f72459211b78534bec281b262c20576f4076a099b41a7fa418cc6",
+    "assets/ready-flows/pi-native/mixed_reader.py": "f9673f4cb47e3d04e01573c809070787bc82e8da7fc36a43e332548cc9655b4c",
+    "assets/ready-flows/pi-native/launch_pi-v1.3.1-scoped-backup.py": "bc8a2a32dd2308823e47a70cfb19edad05a01ab49c9f668d6b236739f9ba7d00",
+    "assets/ready-flows/pi-native/upstream/fast_order_route.py": "d8c8f68c43d17ad83a0293761f8203cd2cbfc4b761487267842aca204d93fa9f",
+    "assets/ready-flows/pi-native/orders/business_pack.py": "18f7f5f90b48a5d77a5059670f41ccf77c09077ae83614a6844f8ae2c6277d4e",
+    "assets/ready-flows/pi-native/orders/verify_order_pack.py": "ab93ff0d1d9b5b7c1f7ac6b10b8895d4c7d335fedaf6f8914377e06ece286dff",
+    "assets/ready-flows/pi-native/fast_order_route.py": "001f3dd27842958e46bc0f0b61a9ce4d8316ef8770c2ee29ed75ba98580eea56"
+  },
+  "registry": {
+    "schema": "executable-mature-flows-v1",
+    "python": "C:/Users/A/AppData/Local/Programs/Python/Python313/python.exe",
+    "node": "C:/Program Files/nodejs/node.exe",
+    "sandbox_runner": "C:/AI/DeepSeek-Harness-Trial/dsh-0.2.1-rc.2-isolated/node_modules/@deepseek-ai/dsh-sandbox-windows-acl/lib/runner.js",
+    "sandbox_temp": "C:/Users/A/Documents/DSH-Workspace/pi-comparison-20261028/temp",
+    "source_files": [
+      {
+        "path": "assets/ready-flows/pi-native/artifact_recipe.py",
+        "sha256": "4967b4e9e26f72459211b78534bec281b262c20576f4076a099b41a7fa418cc6"
+      },
+      {
+        "path": "assets/ready-flows/pi-native/mixed_reader.py",
+        "sha256": "f9673f4cb47e3d04e01573c809070787bc82e8da7fc36a43e332548cc9655b4c"
+      },
+      {
+        "path": "assets/ready-flows/pi-native/launch_pi-v1.3.1-scoped-backup.py",
+        "sha256": "bc8a2a32dd2308823e47a70cfb19edad05a01ab49c9f668d6b236739f9ba7d00"
+      },
+      {
+        "path": "assets/ready-flows/pi-native/upstream/fast_order_route.py",
+        "sha256": "d8c8f68c43d17ad83a0293761f8203cd2cbfc4b761487267842aca204d93fa9f"
+      },
+      {
+        "path": "assets/ready-flows/pi-native/orders/business_pack.py",
+        "sha256": "18f7f5f90b48a5d77a5059670f41ccf77c09077ae83614a6844f8ae2c6277d4e"
+      },
+      {
+        "path": "assets/ready-flows/pi-native/orders/verify_order_pack.py",
+        "sha256": "ab93ff0d1d9b5b7c1f7ac6b10b8895d4c7d335fedaf6f8914377e06ece286dff"
+      },
+      {
+        "path": "assets/ready-flows/pi-native/fast_order_route.py",
+        "sha256": "001f3dd27842958e46bc0f0b61a9ce4d8316ef8770c2ee29ed75ba98580eea56"
+      }
+    ],
+    "flows": [
+      {
+        "id": "office-body-batch",
+        "goal": "office.extract_body",
+        "state": "READY",
+        "contexts": [
+          "host",
+          "inside_omp_tool"
+        ],
+        "formats": [
+          ".docx",
+          ".xlsx",
+          ".pptx",
+          ".txt"
+        ],
+        "output_profile": "json_text_with_provenance",
+        "capabilities": [
+          "body_text",
+          "provenance",
+          "one_per_input",
+          "input_integrity",
+          "fixed_readback"
+        ],
+        "max_files": 40,
+        "max_file_bytes": 67108864,
+        "max_total_bytes": 268435456,
+        "entry": {
+          "host": {
+            "programme": "assets/ready-flows/pi-native/launch_pi-v1.3.1-scoped-backup.py",
+            "base_args": [],
+            "mode": "legacy_office",
+            "state": "READY"
+          },
+          "inside_omp_tool": {
+            "programme": "assets/ready-flows/pi-native/artifact_recipe.py",
+            "base_args": [
+              "ingest"
+            ],
+            "mode": "ingest",
+            "state": "CONFIGURED"
+          }
+        },
+        "dependencies": [
+          "markitdown==0.1.6",
+          "python-docx==1.2.0",
+          "XlsxWriter==3.2.9",
+          "openpyxl==3.1.5",
+          "python-pptx==1.0.2"
+        ],
+        "performance_scope": "R86 current local host only; includes matching on second batch, original sandbox, business, fixed QA, independent QA and readback. GPT interpretation and initial preparation not measured. Cold/warm records retained; not a universal time prediction.",
+        "acceptance": "Original fixed business checks plus independent R86 source/output readback.",
+        "host_acceptance_evidence": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-ready-flow-library-r86-20261110\\control\\cases\\office-1\\RESULT.json",
+        "performance_records": [
+          {
+            "batch": 1,
+            "items": 20,
+            "complete_local_s": 32.417294200044125,
+            "match_s": null,
+            "evidence": "C:/Users/A/Documents/DSH-Workspace/pi-ready-flow-library-r86-20261110/control/cases/office-1/RESULT.json"
+          },
+          {
+            "batch": 2,
+            "items": 20,
+            "complete_local_s": 12.34179380000569,
+            "match_s": 0.6223680999828503,
+            "evidence": "C:/Users/A/Documents/DSH-Workspace/pi-ready-flow-library-r86-20261110/control/cases/office-2/RESULT.json"
+          }
+        ],
+        "context_readiness": {
+          "host": "READY_CURRENT_R86",
+          "inside_omp_tool": "CONFIGURED_COPY_NOT_CURRENTLY_CERTIFIED; preserve R85 original Office context entry separately."
+        }
+      },
+      {
+        "id": "archive-bytes-batch",
+        "goal": "files.archive_exact",
+        "state": "READY",
+        "contexts": [
+          "host",
+          "inside_omp_tool"
+        ],
+        "formats": [
+          "*"
+        ],
+        "output_profile": "zip_manifest_receipt",
+        "capabilities": [
+          "relative_paths",
+          "file_bytes",
+          "zip_crc",
+          "input_integrity",
+          "fixed_readback"
+        ],
+        "max_files": 10000,
+        "max_file_bytes": 67108864,
+        "max_total_bytes": 268435456,
+        "entry": {
+          "host": {
+            "programme": "assets/ready-flows/pi-native/launch_pi-v1.3.1-scoped-backup.py",
+            "base_args": [],
+            "mode": "legacy_archive",
+            "state": "READY"
+          },
+          "inside_omp_tool": {
+            "programme": "assets/ready-flows/pi-native/artifact_recipe.py",
+            "base_args": [
+              "archive"
+            ],
+            "mode": "archive",
+            "state": "CONFIGURED"
+          }
+        },
+        "dependencies": [],
+        "performance_scope": "R86 current local host only; includes matching on second batch, original sandbox, business, fixed QA, independent QA and readback. GPT interpretation and initial preparation not measured. Cold/warm records retained; not a universal time prediction.",
+        "limits": "No empty-directory,ACL,symbolic-link or exact timestamp backup guarantee.",
+        "acceptance": "Original fixed business checks plus independent R86 source/output readback.",
+        "host_acceptance_evidence": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-ready-flow-library-r86-20261110\\control\\cases\\archive-1\\RESULT.json",
+        "performance_records": [
+          {
+            "batch": 1,
+            "items": 48,
+            "complete_local_s": 3.717246900079772,
+            "match_s": null,
+            "evidence": "C:/Users/A/Documents/DSH-Workspace/pi-ready-flow-library-r86-20261110/control/cases/archive-1/RESULT.json"
+          },
+          {
+            "batch": 2,
+            "items": 48,
+            "complete_local_s": 3.12888119998388,
+            "match_s": 0.14363179996144027,
+            "evidence": "C:/Users/A/Documents/DSH-Workspace/pi-ready-flow-library-r86-20261110/control/cases/archive-2/RESULT.json"
+          }
+        ],
+        "context_readiness": {
+          "host": "READY_CURRENT_R86",
+          "inside_omp_tool": "CONFIGURED_COPY_NOT_CURRENTLY_CERTIFIED; preserve R85 original Office context entry separately."
+        }
+      },
+      {
+        "id": "orders-cents-report",
+        "goal": "orders.report_integer_cents",
+        "state": "READY",
+        "contexts": [
+          "host",
+          "inside_omp_tool"
+        ],
+        "formats": [
+          ".csv"
+        ],
+        "output_profile": "csv_json_docx_xlsx",
+        "capabilities": [
+          "integer_cents",
+          "preserve_records",
+          "case_sensitive_customers",
+          "text_identifiers",
+          "formula_cache",
+          "input_integrity",
+          "fixed_readback"
+        ],
+        "max_files": 1,
+        "max_file_bytes": 16777216,
+        "max_total_bytes": 16777216,
+        "order_fields": [
+          "row_id",
+          "order_id",
+          "customer",
+          "amount_cents",
+          "quantity"
+        ],
+        "entry": {
+          "host": {
+            "programme": "assets/ready-flows/pi-native/launch_pi-v1.3.1-scoped-backup.py",
+            "base_args": [],
+            "mode": "legacy_orders",
+            "state": "READY"
+          },
+          "inside_omp_tool": {
+            "programme": "assets/ready-flows/pi-native/orders/business_pack.py",
+            "base_args": [],
+            "mode": "orders",
+            "state": "CONFIGURED"
+          }
+        },
+        "dependencies": [
+          "python-docx==1.2.0",
+          "XlsxWriter==3.2.9",
+          "openpyxl==3.1.5"
+        ],
+        "performance_scope": "R86 current local host only; includes matching on second batch, original sandbox, business, fixed QA, independent QA and readback. GPT interpretation and initial preparation not measured. Cold/warm records retained; not a universal time prediction.",
+        "limits": "Canonical integer amount/quantity strings only; report title fixed订单经营日报; no visual or external-office recalculation acceptance.",
+        "acceptance": "Original fixed business checks plus independent R86 source/output readback.",
+        "host_acceptance_evidence": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-ready-flow-library-r86-20261110\\control\\cases\\orders-1\\RESULT.json",
+        "performance_records": [
+          {
+            "batch": 1,
+            "items": 180,
+            "complete_local_s": 12.299027999979444,
+            "match_s": null,
+            "evidence": "C:/Users/A/Documents/DSH-Workspace/pi-ready-flow-library-r86-20261110/control/cases/orders-1/RESULT.json"
+          },
+          {
+            "batch": 2,
+            "items": 180,
+            "complete_local_s": 5.824157800059766,
+            "match_s": 0.17987100000027567,
+            "evidence": "C:/Users/A/Documents/DSH-Workspace/pi-ready-flow-library-r86-20261110/control/cases/orders-2/RESULT.json"
+          }
+        ],
+        "context_readiness": {
+          "host": "READY_CURRENT_R86",
+          "inside_omp_tool": "CONFIGURED_COPY_NOT_CURRENTLY_CERTIFIED; preserve R85 original Office context entry separately."
+        }
+      }
+    ]
+  },
+  "single_entry": {
+    "valid": true,
+    "elapsed_s": 4.8799313000636175,
+    "files": 48,
+    "single_entry": "invoke_flow.py --request JSON",
+    "model_calls": 0,
+    "original_receipt": {
+      "status": "CONTENT_ACCEPTED",
+      "recipe": "archive",
+      "started_utc": "2026-11-09T16:28:18.687662+00:00",
+      "files": [
+        "delivery.zip",
+        "manifest.json",
+        "delivery.json"
+      ],
+      "sha256": {
+        "delivery.zip": "cf621c682d68d232ae37c681b52eadea0257c0678a325622b96f64b51fe506f6",
+        "manifest.json": "f1b9cad71aaffd54db3a67d4e4feaccd8c9fed476feaa8662e5e813180a8c6f0"
+      },
+      "qa": {
+        "pass": true,
+        "checks": {
+          "all_original_paths_and_bytes": true,
+          "no_duplicate_members": true,
+          "crc": true,
+          "input_unchanged": true
+        }
+      },
+      "model_calls": 0,
+      "file_count": 48,
+      "input_bytes": 1564,
+      "scope": "Exact relative paths, original file bytes, ZIP CRC and unchanged input; bounded local files only",
+      "local_accepted_seconds": 0.36
+    }
+  },
+  "pptx_version": "1.0.2"
+}

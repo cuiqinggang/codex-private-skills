@@ -1,0 +1,217 @@
+{
+  "task": "PI-AUTOMATION-INDEX-R85-20261109",
+  "results": [
+    {
+      "case": "A1",
+      "valid": true,
+      "elapsed_s": 48.350500499946065,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "parser_hash_unchanged": true,
+          "input_hashes_unchanged": true,
+          "fixture_hashes_unchanged": true,
+          "20_array_entries": true,
+          "source_one_to_one": true,
+          "all_20_contents_and_routes": true
+        }
+      },
+      "effective_policy_sha256": "f01103ec6c888583b2f37387e6ab8f51b86d50b1e2cdbce18c2676c57f0cbeac",
+      "runtime_hash_unchanged_during_run": true,
+      "exit_code": 0,
+      "tool_start_count": 10,
+      "tool_errors": 0,
+      "binding_reads": [],
+      "native_launcher_attempts": [],
+      "original_recipe_component_calls": []
+    },
+    {
+      "case": "B1",
+      "valid": true,
+      "elapsed_s": 50.08796530007385,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "parser_hash_unchanged": true,
+          "input_hashes_unchanged": true,
+          "fixture_hashes_unchanged": true,
+          "20_array_entries": true,
+          "source_one_to_one": true,
+          "all_20_contents_and_routes": true
+        }
+      },
+      "effective_policy_sha256": "f1b2d6cdb5b73228560faa066dd41ce8e9548d7aaf8cbe5028c4badfde984999",
+      "runtime_hash_unchanged_during_run": true,
+      "exit_code": 0,
+      "tool_start_count": 9,
+      "tool_errors": 1,
+      "binding_reads": [
+        6.354460500064306
+      ],
+      "native_launcher_attempts": [],
+      "original_recipe_component_calls": []
+    },
+    {
+      "case": "B2",
+      "valid": true,
+      "elapsed_s": 69.6656097000232,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "parser_hash_unchanged": true,
+          "input_hashes_unchanged": true,
+          "fixture_hashes_unchanged": true,
+          "20_array_entries": true,
+          "source_one_to_one": true,
+          "all_20_contents_and_routes": true
+        }
+      },
+      "effective_policy_sha256": "f1b2d6cdb5b73228560faa066dd41ce8e9548d7aaf8cbe5028c4badfde984999",
+      "runtime_hash_unchanged_during_run": true,
+      "exit_code": 0,
+      "tool_start_count": 15,
+      "tool_errors": 0,
+      "binding_reads": [
+        12.261274000047706
+      ],
+      "native_launcher_attempts": [],
+      "original_recipe_component_calls": []
+    },
+    {
+      "case": "A2",
+      "valid": true,
+      "elapsed_s": 42.819489900022745,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "parser_hash_unchanged": true,
+          "input_hashes_unchanged": true,
+          "fixture_hashes_unchanged": true,
+          "20_array_entries": true,
+          "source_one_to_one": true,
+          "all_20_contents_and_routes": true
+        }
+      },
+      "effective_policy_sha256": "f01103ec6c888583b2f37387e6ab8f51b86d50b1e2cdbce18c2676c57f0cbeac",
+      "runtime_hash_unchanged_during_run": true,
+      "exit_code": 0,
+      "tool_start_count": 12,
+      "tool_errors": 1,
+      "binding_reads": [],
+      "native_launcher_attempts": [],
+      "original_recipe_component_calls": []
+    },
+    {
+      "case": "N1",
+      "valid": true,
+      "elapsed_s": 6.237411899957806,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "original_wrappers_unchanged": true,
+          "original_F001_parser_unchanged": true,
+          "all_20_source_hashes": true,
+          "20_json_rows": true,
+          "one_to_one_sources": true,
+          "all_60_markers_and_original_routes": true
+        }
+      },
+      "model_calls": 0,
+      "exit_code": 0,
+      "tool_start_count": 0,
+      "tool_errors": 0,
+      "binding_reads": [],
+      "native_launcher_attempts": [],
+      "original_recipe_component_calls": []
+    },
+    {
+      "case": "N2",
+      "valid": true,
+      "elapsed_s": 5.940585400094278,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "original_wrappers_unchanged": true,
+          "original_F001_parser_unchanged": true,
+          "all_20_source_hashes": true,
+          "20_json_rows": true,
+          "one_to_one_sources": true,
+          "all_60_markers_and_original_routes": true
+        }
+      },
+      "model_calls": 0,
+      "exit_code": 0,
+      "tool_start_count": 0,
+      "tool_errors": 0,
+      "binding_reads": [],
+      "native_launcher_attempts": [],
+      "original_recipe_component_calls": []
+    },
+    {
+      "case": "C1",
+      "valid": true,
+      "elapsed_s": 110.10269610001706,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "frozen_originals_unchanged": true,
+          "old_parser_unchanged": true,
+          "input_hashes_unchanged": true,
+          "20_json_rows": true,
+          "all_20_exact_contents_and_provenance": true
+        }
+      },
+      "effective_policy_sha256": "6007ce636fb7bbd066cbc49b900dc584f7bca36ca51a099298fc5dbf31159866",
+      "runtime_hash_unchanged_during_run": true,
+      "exit_code": 0,
+      "tool_start_count": 37,
+      "tool_errors": 2,
+      "binding_reads": [
+        7.6032393999630585
+      ],
+      "native_launcher_attempts": [
+        41.68018469994422
+      ],
+      "original_recipe_component_calls": []
+    },
+    {
+      "case": "C2",
+      "valid": true,
+      "elapsed_s": 69.18438870005775,
+      "qa": {
+        "pass": true,
+        "checks": {
+          "frozen_originals_unchanged": true,
+          "old_parser_unchanged": true,
+          "input_hashes_unchanged": true,
+          "20_json_rows": true,
+          "all_20_exact_contents_and_provenance": true
+        }
+      },
+      "effective_policy_sha256": "a9c99713110df4d2e3df6a377f216eb7573cc6789b50b583cc58e035b0266d09",
+      "runtime_hash_unchanged_during_run": true,
+      "exit_code": 0,
+      "tool_start_count": 17,
+      "tool_errors": 0,
+      "binding_reads": [
+        12.001386299962178
+      ],
+      "native_launcher_attempts": [],
+      "original_recipe_component_calls": [
+        28.101869100006297
+      ]
+    }
+  ],
+  "native_sources": {
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\launch_pi.py": "525bf428c5905225d274dde01e74eaae14d4fa8c02e011e8afd04eb9970289dd",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\launch_pi-v1.3.1-scoped-backup.py": "bc8a2a32dd2308823e47a70cfb19edad05a01ab49c9f668d6b236739f9ba7d00",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\artifact_recipe.py": "4967b4e9e26f72459211b78534bec281b262c20576f4076a099b41a7fa418cc6",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\mixed_reader.py": "f9673f4cb47e3d04e01573c809070787bc82e8da7fc36a43e332548cc9655b4c"
+  },
+  "known_outside_probe_artifacts_present": {
+    "pyprobe1": false,
+    "cmdprobe": false
+  },
+  "readiness": "Native host route passed N1/N2; OMP context judged separately by C2 adoption/QA;32 public templates remain not configured.",
+  "limits": "No natural-language all-task speed guarantee, no GUI certification, first research/setup total and actual bill NOT_MEASURED."
+}

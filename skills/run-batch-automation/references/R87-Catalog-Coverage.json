@@ -1,0 +1,218 @@
+{
+  "version": "V1.3",
+  "checked_date": "2026-11-10",
+  "scope": "Major official/platform-hosted workflow sources and official native interfaces. Sources can contain thousands of changing workflows; this is not a claim that every workflow is copied or locally matched.",
+  "source_catalogs": 29,
+  "platform_catalogs": 15,
+  "native_tool_classes": 15,
+  "deduplicated_shared_source": "GitHub Actions",
+  "new_native_operations": 45,
+  "retained_specific_public_workflows": 32,
+  "all_index_cards": 123,
+  "operation_categories": [
+    {
+      "category": "文件与备份",
+      "cards": 13
+    },
+    {
+      "category": "文档与知识库",
+      "cards": 20
+    },
+    {
+      "category": "数据与表格",
+      "cards": 21
+    },
+    {
+      "category": "邮件与客服",
+      "cards": 5
+    },
+    {
+      "category": "销售与CRM",
+      "cards": 2
+    },
+    {
+      "category": "内容与营销",
+      "cards": 4
+    },
+    {
+      "category": "图像与媒体",
+      "cards": 11
+    },
+    {
+      "category": "网页与桌面",
+      "cards": 3
+    },
+    {
+      "category": "API与集成",
+      "cards": 0
+    },
+    {
+      "category": "软件与交付",
+      "cards": 6
+    },
+    {
+      "category": "监测与运维",
+      "cards": 7
+    },
+    {
+      "category": "日程与通知",
+      "cards": 0
+    }
+  ],
+  "readiness": {
+    "R86_executable_host_goals": 3,
+    "new_catalogs_or_operations_executed": 0,
+    "new_platforms_installed": 0,
+    "captured_candidates_auto_promoted_to_READY": false,
+    "completion_capture_business_execution": false
+  },
+  "source_ids_by_use": {
+    "文件与备份": [
+      "catalog-power-automate",
+      "catalog-robocorp",
+      "catalog-node-red",
+      "catalog-prefect",
+      "catalog-actions",
+      "catalog-native-rclone",
+      "catalog-native-7zip",
+      "catalog-native-powershell"
+    ],
+    "文档与知识库": [
+      "catalog-n8n",
+      "catalog-make",
+      "catalog-zapier",
+      "catalog-power-automate",
+      "catalog-robocorp",
+      "catalog-dagster",
+      "catalog-dify",
+      "catalog-native-markitdown",
+      "catalog-native-pandoc",
+      "catalog-native-qpdf",
+      "catalog-native-libreoffice"
+    ],
+    "数据与表格": [
+      "catalog-n8n",
+      "catalog-make",
+      "catalog-zapier",
+      "catalog-pipedream",
+      "catalog-power-automate",
+      "catalog-robocorp",
+      "catalog-activepieces",
+      "catalog-node-red",
+      "catalog-airflow",
+      "catalog-prefect",
+      "catalog-dagster",
+      "catalog-windmill",
+      "catalog-native-libreoffice",
+      "catalog-native-powershell",
+      "catalog-native-pandas",
+      "catalog-native-openpyxl",
+      "catalog-native-duckdb"
+    ],
+    "邮件与客服": [
+      "catalog-n8n",
+      "catalog-make",
+      "catalog-zapier",
+      "catalog-pipedream",
+      "catalog-activepieces",
+      "catalog-windmill",
+      "catalog-dify",
+      "catalog-huginn"
+    ],
+    "销售与CRM": [
+      "catalog-n8n",
+      "catalog-make",
+      "catalog-zapier",
+      "catalog-pipedream",
+      "catalog-activepieces",
+      "catalog-windmill"
+    ],
+    "内容与营销": [
+      "catalog-n8n",
+      "catalog-make",
+      "catalog-zapier",
+      "catalog-activepieces",
+      "catalog-dify"
+    ],
+    "图像与媒体": [
+      "catalog-native-yt-dlp",
+      "catalog-native-ffmpeg",
+      "catalog-native-imagemagick"
+    ],
+    "网页与桌面": [
+      "catalog-power-automate",
+      "catalog-robocorp",
+      "catalog-native-playwright"
+    ],
+    "API与集成": [
+      "catalog-n8n",
+      "catalog-make",
+      "catalog-zapier",
+      "catalog-pipedream",
+      "catalog-robocorp",
+      "catalog-activepieces",
+      "catalog-node-red",
+      "catalog-airflow",
+      "catalog-prefect",
+      "catalog-dagster",
+      "catalog-windmill",
+      "catalog-dify",
+      "catalog-huginn"
+    ],
+    "软件与交付": [
+      "catalog-actions",
+      "catalog-native-playwright"
+    ],
+    "监测与运维": [
+      "catalog-n8n",
+      "catalog-pipedream",
+      "catalog-node-red",
+      "catalog-airflow",
+      "catalog-prefect",
+      "catalog-dagster",
+      "catalog-windmill",
+      "catalog-actions",
+      "catalog-huginn"
+    ],
+    "日程与通知": [
+      "catalog-n8n",
+      "catalog-make",
+      "catalog-zapier",
+      "catalog-pipedream",
+      "catalog-power-automate",
+      "catalog-activepieces",
+      "catalog-node-red",
+      "catalog-airflow",
+      "catalog-prefect",
+      "catalog-windmill",
+      "catalog-actions",
+      "catalog-huginn"
+    ]
+  },
+  "next_local_adoption": {
+    "priority": "Existing direct original interface, then standalone official projects, then already deployed platform exports, then new runtimes only if useful.",
+    "checks": [
+      "contract semantics and outputs",
+      "actual OS and fixed runtime/dependency versions",
+      "source/version/license and hashes",
+      "account/network prerequisites",
+      "original and independent QA through actual user entry",
+      "full valid delivery time including search/setup/failed work/recovery/capture overhead"
+    ],
+    "automatic_bulk_install": false
+  },
+  "taxonomy": [
+    "文件与备份",
+    "文档与知识库",
+    "数据与表格",
+    "邮件与客服",
+    "销售与CRM",
+    "内容与营销",
+    "图像与媒体",
+    "网页与桌面",
+    "API与集成",
+    "软件与交付",
+    "监测与运维",
+    "日程与通知"
+  ]
+}

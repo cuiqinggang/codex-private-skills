@@ -1,0 +1,382 @@
+{
+  "prior_local_support_verification": {
+    "verification_scope": "Read-only lookup and one local inherited-programme integration; no performance benchmark or Windows/GUI certification.",
+    "cases": [
+      {
+        "query": "订单经营报表",
+        "first": "orders-four-artifacts",
+        "expected": "orders-four-artifacts",
+        "passed": true
+      },
+      {
+        "query": "多份Word提取正文",
+        "first": "office-multi-file-extraction",
+        "expected": "office-multi-file-extraction",
+        "passed": true
+      },
+      {
+        "query": "整数分分组汇总",
+        "first": "integer-cents-csv-aggregate",
+        "expected": "integer-cents-csv-aggregate",
+        "passed": true
+      },
+      {
+        "query": "合并CSV",
+        "first": "duckdb-multiple-files",
+        "expected": "duckdb-multiple-files",
+        "passed": true
+      },
+      {
+        "query": "批量缩放图片",
+        "first": "imagemagick-images",
+        "expected": "imagemagick-images",
+        "passed": true
+      },
+      {
+        "query": "视频转码",
+        "first": "ffmpeg-media",
+        "expected": "ffmpeg-media",
+        "passed": true
+      },
+      {
+        "query": "Word转PDF",
+        "first": "libreoffice-convert",
+        "expected": "libreoffice-convert",
+        "passed": true
+      },
+      {
+        "query": "Markdown合成手册",
+        "first": "pandoc-documents",
+        "expected": "pandoc-documents",
+        "passed": true
+      },
+      {
+        "query": "拆分PDF",
+        "first": "qpdf-pages",
+        "expected": "qpdf-pages",
+        "passed": true
+      },
+      {
+        "query": "来源证据核对",
+        "first": "source-pack-fetch-and-verify",
+        "expected": "source-pack-fetch-and-verify",
+        "passed": true
+      },
+      {
+        "query": "PowerShell命令清单",
+        "first": "powershell-command-batch",
+        "expected": "powershell-command-batch",
+        "passed": true
+      },
+      {
+        "query": "原会话恢复",
+        "first": "bounded-original-session-recovery",
+        "expected": "bounded-original-session-recovery",
+        "passed": true
+      },
+      {
+        "query": "joblog恢复失败",
+        "first": "gnu-parallel-resume",
+        "expected": "gnu-parallel-resume",
+        "passed": true
+      },
+      {
+        "query": "编写原创歌剧",
+        "status": "NO_MATCH",
+        "passed": true
+      },
+      {
+        "query": "批量自动化",
+        "status": "NO_MATCH",
+        "passed": true
+      }
+    ],
+    "historical_default_exclusion_passed": true,
+    "integration": {
+      "route": "orders-four-artifacts",
+      "runtime": "current scratch primary runtime; not Windows",
+      "returncode": 0,
+      "original_programme": "/root/.codex/skills/remote-skills/dsh-mature-capabilities/scripts/business_pack.py",
+      "original_programme_sha256": "18f7f5f90b48a5d77a5059670f41ccf77c09077ae83614a6844f8ae2c6277d4e",
+      "input_sha256": "5a45891d30cf7aa9d3b84d5a23cbfcbecbc4c37af75121825b4c2da74f68eb75",
+      "receipt": {
+        "status": "CONTENT_ACCEPTED",
+        "source_sha256": "5a45891d30cf7aa9d3b84d5a23cbfcbecbc4c37af75121825b4c2da74f68eb75",
+        "row_count": 5,
+        "total_cents": 1394,
+        "files": [
+          "/workspace/scratch/41c83b501b01/batch-pack-integration/out/details.csv",
+          "/workspace/scratch/41c83b501b01/batch-pack-integration/out/summary.json",
+          "/workspace/scratch/41c83b501b01/batch-pack-integration/out/ledger.xlsx",
+          "/workspace/scratch/41c83b501b01/batch-pack-integration/out/report.docx"
+        ],
+        "formula_cache": "fresh integer arithmetic; not LibreOffice recalculation",
+        "qa": {
+          "pass": true,
+          "checks": [
+            {
+              "check": "exact detail columns",
+              "pass": true
+            },
+            {
+              "check": "all rows exact and sorted including refunds duplicates and zero",
+              "pass": true
+            },
+            {
+              "check": "summary schema",
+              "pass": true
+            },
+            {
+              "check": "row count",
+              "pass": true
+            },
+            {
+              "check": "grand total exact integer",
+              "pass": true
+            },
+            {
+              "check": "customer totals",
+              "pass": true
+            },
+            {
+              "check": "report title",
+              "pass": true
+            },
+            {
+              "check": "report row count and total",
+              "pass": true
+            },
+            {
+              "check": "report all customer rows",
+              "pass": true
+            },
+            {
+              "check": "required workbook sheets",
+              "pass": true
+            },
+            {
+              "check": "workbook detail shape",
+              "pass": true
+            },
+            {
+              "check": "workbook headers",
+              "pass": true
+            },
+            {
+              "check": "workbook preserves identifiers text",
+              "pass": true
+            },
+            {
+              "check": "workbook numeric inputs",
+              "pass": true
+            },
+            {
+              "check": "workbook row formulas",
+              "pass": true
+            },
+            {
+              "check": "workbook row cached results",
+              "pass": true
+            },
+            {
+              "check": "workbook grouped labels",
+              "pass": true
+            },
+            {
+              "check": "workbook SUMIF formulas",
+              "pass": true
+            },
+            {
+              "check": "workbook grouped cached results",
+              "pass": true
+            },
+            {
+              "check": "workbook total formula and cache",
+              "pass": true
+            }
+          ],
+          "count": 20
+        }
+      },
+      "business_content_accepted": true
+    },
+    "independent_forward_routing": {
+      "reviewer": "batch_skill_forward",
+      "business_executed": false,
+      "three_requests_reviewed": 3,
+      "result": "Order schema restrictions preserved; scanned PDF OCR correctly recognized as uncovered; separate Word conversions routed to LibreOffice rather than Pandoc concatenation.",
+      "passed": true
+    },
+    "query_programme_sha256": "6cd7c846ab4946f478efd6c55897023dfd50d1f78a9f8f0297d18f09092e0313"
+  },
+  "public_index_scope": "Index metadata/lookup and cached original files only; no external workflow activation, platform installation, Windows or performance benchmark.",
+  "public_counts": {
+    "workflows": 32,
+    "categories": {
+      "数据与表格": 5,
+      "文档与知识库": 4,
+      "邮件与客服": 5,
+      "内容与营销": 4,
+      "监测与运维": 4,
+      "文件与备份": 5,
+      "销售与CRM": 2,
+      "开发与部署": 3
+    },
+    "source_catalogs": 7
+  },
+  "query_programme_sha256": "d40d35ef4a0eed8ce186e8c5c5e41694ba66bd894ebfb6d97385492312412423",
+  "cached_originals_sha256_verified": 5,
+  "relative_markdown_files_verified": true,
+  "first_30_template_lookup_checks": [
+    {
+      "query": "收据提取入表",
+      "expected": "ap-55hreusuhp0srjtr3kgmn",
+      "actual": "ap-55hreusuhp0srjtr3kgmn",
+      "pass": true
+    },
+    {
+      "query": "表格批次API",
+      "expected": "n8n-14205",
+      "actual": "n8n-14205",
+      "pass": true
+    },
+    {
+      "query": "邮件分类",
+      "expected": "ap-n9cz9fltxz3z8zd8ixoeg",
+      "actual": "ap-n9cz9fltxz3z8zd8ixoeg",
+      "pass": true
+    },
+    {
+      "query": "线索培育",
+      "expected": "ap-pjrmodiziwtcew41mmti9",
+      "actual": "ap-pjrmodiziwtcew41mmti9",
+      "pass": true
+    },
+    {
+      "query": "RSS改写",
+      "expected": "ap-j0phfpzhfpqueenj2hdvg",
+      "actual": "ap-j0phfpzhfpqueenj2hdvg",
+      "pass": true
+    },
+    {
+      "query": "文档摘要",
+      "expected": "dify-doc-extractor-summary",
+      "actual": "dify-doc-extractor-summary",
+      "pass": true
+    },
+    {
+      "query": "网站健康",
+      "expected": "dify-website-health-guard",
+      "actual": "dify-website-health-guard",
+      "pass": true
+    },
+    {
+      "query": "文件转存",
+      "expected": "make-6030",
+      "actual": "make-6030",
+      "pass": true
+    },
+    {
+      "query": "静态网站部署",
+      "expected": "github-static-pages",
+      "actual": "github-static-pages",
+      "pass": true
+    },
+    {
+      "query": "Python PR测试",
+      "expected": "github-python-application",
+      "actual": "github-python-application",
+      "pass": true
+    },
+    {
+      "check": "30 exact IDs return their original URLs",
+      "pass": true
+    },
+    {
+      "check": "8 category counts total30",
+      "pass": true
+    },
+    {
+      "check": "category and platform filtering",
+      "pass": true
+    },
+    {
+      "check": "7 upstream sources",
+      "pass": true
+    },
+    {
+      "check": "local support separate",
+      "pass": true
+    },
+    {
+      "check": "unknown query no match",
+      "pass": true
+    },
+    {
+      "check": "history excluded unless requested",
+      "pass": true
+    }
+  ],
+  "public_index_checks": [
+    {
+      "check": "32 exact IDs return original source URLs",
+      "pass": true
+    },
+    {
+      "check": "8 category counts total32",
+      "pass": true
+    },
+    {
+      "check": "mail attachment generic exact lookup returns Make83",
+      "pass": true
+    },
+    {
+      "check": "Gmail attachment lookup returns n8n4243",
+      "pass": true
+    }
+  ],
+  "independent_public_forward_routing": {
+    "reviewer": "fresh minimal-context workflow_index_forward",
+    "requests_reviewed": 3,
+    "result": "Two indexed exact workflows selected; missing mail-attachment task correctly fell back through source catalogues to concrete Make83 and n8n4243; both subsequently indexed. No external workflow run.",
+    "pass": true
+  },
+  "windows_R85_reality": {
+    "evidence": "references/R85-Real-Results.json",
+    "all_business_content_checks_passed": true,
+    "Pi_preference_observed_in_C2": true,
+    "native_host_reuse_accepted": true,
+    "index_only_speedup": "NOT_ESTABLISHED_OBSERVED_SLOWER",
+    "Pi_model_led_speedup": "NOT_ESTABLISHED",
+    "public_templates_runtime_certification": false
+  },
+  "R86": {
+    "business_batches_passed": 6,
+    "matching_cases_passed": 14,
+    "single_entry_passed": true,
+    "original_files_copied": 6,
+    "path_only_adapter": 1,
+    "certified_context": "host",
+    "inside_copied_context": "CONFIGURED",
+    "first_and_reuse_timings": "references/R86-Library-Acceptance.json",
+    "new_model_layer": false,
+    "claim_global_optimum": false
+  },
+  "R87": {
+    "version": "V1.3",
+    "date": "2026-11-10",
+    "evidence": "references/R87-Completion-Acceptance.json",
+    "catalogue": "references/R87-Catalog-Coverage.json",
+    "sources": 29,
+    "taxonomy": 12,
+    "retained_public_templates": 32,
+    "new_native_operations": 45,
+    "new_business_ready_goals": 0,
+    "inherited_R86_host_ready_goals": 3,
+    "completion_capture_metadata_checks": 13,
+    "historical_R86_records_captured": 6,
+    "forward_use_read_only": true,
+    "future_model_compliance": "NOT_MEASURED",
+    "global_extreme_speed": "NOT_PROVEN"
+  }
+}

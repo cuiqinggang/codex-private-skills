@@ -1,0 +1,4 @@
+interface:
+  display_name: "极限效率流程库 V1.3"
+  short_description: "每批收尾沉淀快捷入口，分类检索成熟流程，深度匹配后直接调用原程序并验收。"
+  default_prompt: "按 $run-batch-automation 检索并调用适用的成熟流程；每批任务验收后检查可复用步骤，更新原流程、证据和快捷索引。"
