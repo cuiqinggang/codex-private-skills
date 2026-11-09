@@ -1,8 +1,8 @@
 {
-  "version": "3.4.0",
+  "version": "3.4.1",
   "review_date": "2026-11-09",
   "timezone": "Asia/Shanghai",
-  "new_model_inference_this_review": true,
+  "new_model_inference_this_review": false,
   "overall_success_probability": null,
   "full_cross_category_replay_complete": false,
   "cases": [
@@ -124,7 +124,7 @@
     {
       "id": "musetalk-d24-avatar-20261109",
       "external_feedback": "PUBLISHED_EXACT_INPUT_OUTPUT_AND_CONFIG_PLUS_SEPARATE_ECOSYSTEM_IMPLEMENTATIONS",
-      "local": "TWO_FIXED_REPLAYS_AND_ONE_CHINESE_AUDIO_OUTPUT_CREATED",
+      "local": "USER_REJECTED_QUALITY",
       "repeats": 2,
       "repeated_quality_acceptance": "NOT_MEASURED",
       "migration": "ONE_SAME_PERSON_NEW_CHINESE_AUDIO_OUTPUT_CREATED_QUALITY_PENDING",
@@ -138,14 +138,18 @@
       "evidence": "AVATAR-REALITY-20261109.json",
       "recipe": "AVATAR-DOSSIER-20261109.md",
       "weights": "10 published component hashes matched in model-audit.json",
-      "core_source_modified": false
+      "core_source_modified": false,
+      "previous_local": "TWO_FIXED_REPLAYS_AND_ONE_CHINESE_AUDIO_OUTPUT_CREATED",
+      "user_verdict": "Unacceptable appearance, bland copy, stiffness, weak dynamics/art direction, lip sync rejected",
+      "next_action": "ARCHIVE_NO_LIP_RETEST_NO_REPAIR",
+      "is_default_route": false
     }
   ],
   "timing": {
     "T_VALID_E2E": null,
     "reported_legacy_times_are_stage_times": true
   },
-  "next": "Review avatar-promo.mp4 and original comparison at normal speed, then test owned materials, real PPT or screen capture as separate minimal steps; other categories retained.",
+  "next": "Select high-quality actual promotional reference work and audit mature complete recipe; do not retest or repair rejected D24 sample.",
   "previous_version": "3.2.0",
   "research_update": {
     "report": "INTELLIGENCE-DOSSIER-20261109.md",
@@ -156,5 +160,5 @@
     "source_count_not_capability_count": true,
     "scope": "Multi-branch specialized intelligence and recipe review; local execution statuses inherited."
   },
-  "current_focus": "fixed-avatar-introduction-video"
+  "current_focus": "quality-first-reference-reselection"
 }

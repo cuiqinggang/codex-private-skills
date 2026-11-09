@@ -1,5 +1,7 @@
 # 数字人介绍视频专项：资料、原样复刻与中文迁移
 
+> **最新状态：用户已拒收本片。** 本文件仅保留旧选型、运行事实与历史资料，D24不再是当前首选，不再做口型复测或修补。现行任务转读 [高品质原作重选](QUALITY-RESELECTION-20261109.md)。
+
 更新：2026-11-09，北京时间。当前只推进固定正面头像或固定机位人物口播，搭配介绍页面、图片、PPT 或实际功能录屏。用户说的“昨日重现”在本任务中指原案例重放，不调用同名交易方法。
 
 ## 先看已有结果
@@ -31,7 +33,7 @@
 
 | 路线/资料组 | 原始资料与完整方法入口 | 本任务取舍与具体边界 |
 |---|---|---|
-| MuseTalk 1.5 | [官方源程序](https://github.com/TMElyralab/MuseTalk/tree/0a89dec45a0192b824e3cf4daf96c239440c5ed8)；[同输入原成片、三次测试、配置与模型摘要](https://musetalkai.com/musetalk-vs-latentsync/) | 当前首选：本机已有匹配环境，原案例输入和十项模型摘要均核对；只生成口型，原底片决定其他动作；内部脸部区域 256×256 |
+| MuseTalk 1.5 | [官方源程序](https://github.com/TMElyralab/MuseTalk/tree/0a89dec45a0192b824e3cf4daf96c239440c5ed8)；[同输入原成片、三次测试、配置与模型摘要](https://musetalkai.com/musetalk-vs-latentsync/) | 已撤销的首选：本机已有匹配环境，原案例输入和十项模型摘要均核对；只生成口型，原底片决定其他动作；内部脸部区域 256×256 |
 | SadTalker | [原项目、Windows 入口、图像/音频样例和 512 模型](https://github.com/OpenTalker/SadTalker) | 单图头像与头部运动的备选；完整画面模式不等于任意全身动作；未在本轮执行 |
 | Sonic | [作者节点、配图工作流与共同音轨](https://github.com/Sean-Bradley/ComfyUI-Sonic)；[作者教程](https://sbcode.net/genai/lipsync-sonic/) | 已找到九组作者配图/工作流资料，不能算九位独立用户；当前没有本机出片结论 |
 | LatentSync 1.6 | [官方代码](https://github.com/bytedance/LatentSync)；[与 MuseTalk 的同输入测试](https://musetalkai.com/musetalk-vs-latentsync/) | 同样品的纹理与口部表现可直接对照；1.6 官方显存门槛与旧 1.5 不混用；现有 MuseTalk 可直接复用，暂不新增环境 |
@@ -111,4 +113,4 @@
 - Movie Builder、H3、换脸、换装、动作迁移和其他分类的原资料、已下载配方与缺项原位保留；不因本轮收窄而删除，也不将它们登记为已出片。
 - 本轮优先级：固定头像中文介绍 → 正常声画验收 → 另一人物/自有素材及真实 PPT/录屏替换。先补最小缺项，不回到剧情制作或添加实时对话系统。
 
-NEXT_PAGE_PROMPT：读取本文件、AVATAR-REALITY-20261109.json 和本机 Avatar-Specialist-20261109 原记录。继承原案两次实际输出及一次中文迁移，先正常速度复核 14.7 秒成片和左右原样对比；未过则查已知原配方条件或换现成成熟案例，禁止临时口型修补链。真实 PPT、客户图片、录屏、换人物和全身动作分别验收，不从示意图推定通过。其他路线留在原进程中。
+NEXT_PAGE_PROMPT：本片已用户拒收，不恢复口型验收、返修或卡片修改；转读QUALITY-RESELECTION-20261109.md，先选择符合宣传目的的高品质实际原作，再核完整成熟制作方法。

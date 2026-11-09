@@ -1,9 +1,9 @@
 {
-  "version": "3.4.0",
+  "version": "3.4.1",
   "updated_utc": "2026-11-09T12:50:25.516490+00:00",
   "task": "Fixed-avatar introduction video; original replay, repeat, Chinese narration and presentation composition",
   "generation_backend": "User Windows PC, MuseTalk 1.5 stock scripts.inference",
-  "status": "OUTPUTS_CREATED_TECHNICAL_AND_SAMPLED_VISUAL_CHECKS_ONLY",
+  "status": "USER_REJECTED_QUALITY",
   "normal_speed_audiovisual_acceptance": "NOT_MEASURED",
   "subjective_phoneme_accuracy": "NOT_MEASURED",
   "independent_review": "Independent read-only review found real outputs and one same-person audio migration; no normal-speed audiovisual acceptance record. Later model audit/dependency artifacts were added, with generation claims unchanged.",
@@ -297,7 +297,19 @@
     "sha256": "b124d0feffb7bf36b497a6a1b78214912858d99be8f5d708263e3adb2395e602",
     "status": "DEFERRED_ORIGINAL_PRESERVED"
   },
-  "next": "Normal-speed audiovisual review of the two delivered videos, then owned avatar/materials and actual slide/screen imports as separate simple acceptance cases.",
+  "next": "ARCHIVE_THIS_SAMPLE; follow QUALITY-RESELECTION-20261109.md",
   "saved_evidence_directory": "avatar-evidence-20261109/",
-  "saved_recipe_scripts": "../scripts/avatar-specialist-20261109/"
+  "saved_recipe_scripts": "../scripts/avatar-specialist-20261109/",
+  "user_acceptance": {
+    "date": "2026-11-09",
+    "verdict": "REJECTED",
+    "reasons": [
+      "appearance",
+      "copy quality",
+      "stiff performance",
+      "lack of dynamic/artistic presentation",
+      "lip sync"
+    ],
+    "instruction": "No further lip-sync validation or repair of this sample; find high-quality mature original work"
+  }
 }

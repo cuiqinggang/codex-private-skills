@@ -1,0 +1,6 @@
+{
+  "source": "https://github.com/kijai/ComfyUI-WanVideoWrapper/blob/main/example_workflows/wanvideo_2_1_14B_I2V_InfiniteTalk_example_03.json",
+  "blob_sha": "e1c88adc4e5b5afcc20c89f1c9a1672ef2174e92",
+  "status": "READ_NOT_EXECUTED",
+  "note": "General upstream workflow, not verified as the exact settings of the studio reference video."
+}

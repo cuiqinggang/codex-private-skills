@@ -1,0 +1,1041 @@
+{
+  "updated_date": "2026-11-09",
+  "kind": "EXTERNAL_REFERENCE_RESELECTION_NOT_LOCAL_MODEL_EXECUTION",
+  "rejected_case": "musetalk-d24-avatar-20261109",
+  "old_case_action": "ARCHIVE_NO_RETEST_NO_REPAIR",
+  "new_default": "High-quality actual original work first; complete mature recipe and actual feedback second",
+  "external_original_downloads": [
+    {
+      "id": "LC15-1",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/1.mp4",
+      "bytes": 1378265,
+      "sha256": "0521c0b9e1dcf333ffeabc733b72594668ff015f3fb8ee45ae0aac6565333a6b",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "22.920000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-2",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/2.mp4",
+      "bytes": 1196634,
+      "sha256": "5f0dbf1014146b6850551927cf599e04ec116884d4a1a74a24cf00bece711d6d",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "16.520000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-3",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/3.mp4",
+      "bytes": 988947,
+      "sha256": "a628ac153b4d1397cab4c35734ee786fef7bdddcbdf8af9de03ff37176773463",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "13.320000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-4",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/4.mp4",
+      "bytes": 1232441,
+      "sha256": "d5f224a94fe01c65e3399683f6af165826a0ea6e7e96073ae718eaf0ab8a5aad",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "13.320000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-5",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/5.mp4",
+      "bytes": 967248,
+      "sha256": "f2a5a63ab31a9c53cd8ea08c55cfaeff7dfc11989a765250859330b220bc5166",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1408,
+            "height": 640
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "13.320000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-6",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/6.mp4",
+      "bytes": 1309834,
+      "sha256": "6e6f9c422de78d1a90418515c971dfaecc234d101a7f217cdad5dde8c8367742",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "13.320000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-7",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/7.mp4",
+      "bytes": 773116,
+      "sha256": "13ec489803d75e565fa316b62b805fdeabc410d1dd7ba0288b40df7bec7c9cba",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "13.320000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-8",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/8.mp4",
+      "bytes": 1595965,
+      "sha256": "f7f11ad5806915948726221e0f04dc1804cf2e6e95fa0933e6bd375c3a0b45f5",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1216,
+            "height": 768
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "19.720000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-1",
+      "family": "IT",
+      "url": "https://meigen-ai.github.io/InfiniteTalk/videos/i2v/3.mp4",
+      "bytes": 11720583,
+      "sha256": "05d8304572aca303eeb45e625e613cde35613b47bb939f830b78ccb200c443a1",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "160.659002"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-2",
+      "family": "IT",
+      "url": "https://meigen-ai.github.io/InfiniteTalk/videos/i2v/9.mp4",
+      "bytes": 1265249,
+      "sha256": "26d7d0651e5f05c21ea25208610e6442d7cf74ab867451444e42b276095fbada",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1408,
+            "height": 640
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "12.000000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-3",
+      "family": "IT",
+      "url": "https://meigen-ai.github.io/InfiniteTalk/videos/i2v/8.mp4",
+      "bytes": 1186150,
+      "sha256": "dd9fca9c1bc6788f71e0bac02346929844cbbe9c89e4d60d4443a507d594d95f",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 896,
+            "height": 448
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "18.000000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-4",
+      "family": "IT",
+      "url": "https://meigen-ai.github.io/InfiniteTalk/videos/i2v/6.mp4",
+      "bytes": 5994110,
+      "sha256": "3785b45d42fbbae96b9499df8096bfe773110a62c4afcec2c422e223b7d6aae4",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "40.000000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-5",
+      "family": "IT",
+      "url": "https://meigen-ai.github.io/InfiniteTalk/videos/i2v/0.mp4",
+      "bytes": 5359887,
+      "sha256": "68324f310e91c3a7bcd8948320f275f8d79a4fc3accc5dd5060dd7f8cd46f576",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "40.680000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-6",
+      "family": "IT",
+      "url": "https://meigen-ai.github.io/InfiniteTalk/videos/i2v/7.mp4",
+      "bytes": 4696849,
+      "sha256": "6aa8e36e7766c7382134deb533e1af83440c23667f4a91a22abe3588f93ff1a3",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "40.000000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "WAN-1",
+      "family": "WAN",
+      "url": "https://humanaigc.github.io/wan-s2v-webpage/content/v3/video/1-moive_talk.mp4",
+      "bytes": 696402,
+      "sha256": "4536f7ed768377efab0e6cbad52fc0a6998105a3623feec181be7022b31536ee",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 2176,
+            "height": 576
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "9.012993"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "WAN-2",
+      "family": "WAN",
+      "url": "https://humanaigc.github.io/wan-s2v-webpage/content/v3/video/banquan/11.mp4",
+      "bytes": 7536851,
+      "sha256": "02cda6c676d831683f294e3caa0818dfa78b5348c58ec8484051bc7954c8604f",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1536,
+            "height": 896
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "28.049002"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "WAN-3",
+      "family": "WAN",
+      "url": "https://humanaigc.github.io/wan-s2v-webpage/content/v3/video/banquan/22.mp4",
+      "bytes": 8730282,
+      "sha256": "a85a0551c7f9349ec4f1b8fa884a0a4162edc4c2bd24a1e7275860ac6cb08242",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1414,
+            "height": 960
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "28.049002"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-10",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/10.mp4",
+      "bytes": 1407870,
+      "sha256": "19b64741a9e6f7f3ae58f0810ade48b27a60f63183f75b596ed3cef7d1f56f6e",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "16.520000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-11",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/11.mp4",
+      "bytes": 923497,
+      "sha256": "fb7fa2df8cbdaa24c106805f9d38f17bee3d74a80b043fae44e642b2958029af",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "13.320000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-12",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/12.mp4",
+      "bytes": 1185824,
+      "sha256": "bd030c22fa4261dacba13477cd247aa89690613fc3c2fb9ab3a8eaeda32cbef1",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "13.320000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-13",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/13.mp4",
+      "bytes": 1165035,
+      "sha256": "24d79594472bed8ec3311cb2e63401a7d7a4a652443f55c185987dc440865148",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "16.520000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-14",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/14.mp4",
+      "bytes": 1010224,
+      "sha256": "5e86aa83a2916aeaa59ad258c79efe1770a50519e8e184f1462f2df15682bfc8",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "13.320000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-15",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/15.mp4",
+      "bytes": 1486602,
+      "sha256": "d3da63f06ed38a48d155f8f9650fd89f508b1668c87435ff508975d48bc6bcfa",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "13.320000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-16",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/16.mp4",
+      "bytes": 929437,
+      "sha256": "e95fef0f9a8003c7b227674f0e1a989cd987e054737833d337b22f1918fd1f9d",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "13.320000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-17",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/17.mp4",
+      "bytes": 1176926,
+      "sha256": "6e8c8de6283af275f7ac48e55b773361819df088c69ff7c0ff3d49dc758ef817",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "16.520000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-18",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/18.mp4",
+      "bytes": 1299063,
+      "sha256": "f8da92bcb3962cfd08e81641bc77f713081f24ad85524fc25735cfd9be536517",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "13.320000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-19",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/19.mp4",
+      "bytes": 1431580,
+      "sha256": "f0d784e62b66ffa4c01c554f6ace25c518ee79d1465d58f1ac091ecf277a5cf5",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "19.720000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-20",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/20.mp4",
+      "bytes": 2697103,
+      "sha256": "cc515b474cf9e78b703927860be092ed3eacb801c5acffe87160da29d8134bd6",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "16.520000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "LC15-21",
+      "family": "LC15",
+      "url": "https://meigen-ai.github.io/LongCat-Video-Avatar-1.5-Page/videos/talk/21.mp4",
+      "bytes": 1409639,
+      "sha256": "6c1f58b98c79281f59dc954bd648670a61ad2258aaba5d653052f6636f446969",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1408,
+            "height": 640
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "16.520000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-realistic-003",
+      "family": "IT",
+      "url": "https://meigen-ai.github.io/InfiniteTalk/videos/realistic/003.mp4",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "id": "IT-instruct-001",
+      "family": "IT",
+      "url": "https://meigen-ai.github.io/InfiniteTalk/videos/instruct/001.mp4",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "id": "IT-instruct-002",
+      "family": "IT",
+      "url": "https://meigen-ai.github.io/InfiniteTalk/videos/instruct/002.mp4",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "id": "IT-instruct-003",
+      "family": "IT",
+      "url": "https://meigen-ai.github.io/InfiniteTalk/videos/instruct/003.mp4",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "id": "IT-instruct-006",
+      "family": "IT",
+      "url": "https://meigen-ai.github.io/InfiniteTalk/videos/instruct/006.mp4",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "id": "IT-instruct-005",
+      "family": "IT",
+      "url": "https://meigen-ai.github.io/InfiniteTalk/videos/instruct/005.mp4",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "id": "IT-GH-1",
+      "family": "IT-GH",
+      "url": "https://github.com/user-attachments/assets/7e4a4dad-9666-4896-8684-2acb36aead59",
+      "bytes": 5219967,
+      "sha256": "97f2b534cef85b231b7d1d2badb439961222f25fe81ac1920f8d58292f7cf16c",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "40.680000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-GH-2",
+      "family": "IT-GH",
+      "url": "https://github.com/user-attachments/assets/bd6da665-f34d-4634-ae94-b4978f92ad3a",
+      "bytes": 4684986,
+      "sha256": "de666fa42e51f7f92a012d12bbe02901169ca3c1d183d9686b5324d6261f3f97",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "40.000000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-GH-3",
+      "family": "IT-GH",
+      "url": "https://github.com/user-attachments/assets/510e2648-82db-4648-aaf3-6542303dbe22",
+      "bytes": 8336652,
+      "sha256": "d6c0f7c5cac5a56cc6db3af86c8421bb8f8d5679f50604555bc6fdc0f17ed273",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 896,
+            "height": 448
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "54.080000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-GH-4",
+      "family": "IT-GH",
+      "url": "https://github.com/user-attachments/assets/27bb087b-866a-4300-8a03-3bbb4ce3ddf9",
+      "bytes": 916293,
+      "sha256": "71cfa5488baca52249920025e963b7f888e516793529f91f1856be860bfeb21f",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "8.320000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-GH-5",
+      "family": "IT-GH",
+      "url": "https://github.com/user-attachments/assets/3263c5e1-9f98-4b9b-8688-b3e497460a76",
+      "bytes": 4479678,
+      "sha256": "d3127a70581338d77360e8e7d456b26f88d32c1b75f4016e49d9ff3d2fcfe3dc",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "40.000000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-GH-6",
+      "family": "IT-GH",
+      "url": "https://github.com/user-attachments/assets/5ff3607f-90ec-4eee-b964-9d5ee3028005",
+      "bytes": 5686026,
+      "sha256": "85c231f653bacfbb6bc382135d0a85f7489e22fefdd30406ae4efbb019a087dd",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "40.680000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-GH-7",
+      "family": "IT-GH",
+      "url": "https://github.com/user-attachments/assets/e504417b-c8c7-4cf0-9afa-da0f3cbf3726",
+      "bytes": 6231320,
+      "sha256": "d742c84b579b863c46432b3d689af7f625dc367ca834b823b36cd44821e37bf3",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "40.000000"
+        }
+      },
+      "frame_returncode": 0
+    },
+    {
+      "id": "IT-GH-8",
+      "family": "IT-GH",
+      "url": "https://github.com/user-attachments/assets/56aac91e-c51f-4d44-b80d-7d115e94ead7",
+      "bytes": 4689270,
+      "sha256": "9ea9d7714f058d8a5a8a81b0abfa7c78744d44485c269a5ca4a2b902a756a715",
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 896,
+            "height": 448
+          },
+          {
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "40.000000"
+        }
+      },
+      "frame_returncode": 0
+    }
+  ],
+  "source_pair_audit": {
+    "audio_samples": 170905,
+    "published_output_audio_samples": 640128,
+    "zero_lag_correlation": 0.0158966497613614,
+    "input_audio_sha256": "ba2733897f561f747e6508734bff4eeee29d0a73638e5c39c0c0b806701d4e8b",
+    "reference_image_sha256": "5a47d458721c4a7419d3c8ef9a5c3d89cf161ab31de9451b9bb4f321a37bc705",
+    "note": "Source-to-output audio correspondence only; no lip-sync quality assertion"
+  },
+  "excerpts": {
+    "kind": "EXTERNAL_AUTHOR_OUTPUT_EXCERPTS_NOT_OUR_GENERATION",
+    "trim": "first 8 seconds; original watermark retained; only preview re-encoding and downscale, no motion changes",
+    "files": [
+      {
+        "name": "studio-original-reference.mp4",
+        "bytes": 1013109,
+        "sha256": "8cc157314116f26633c33b668a107797c0241b56be611e940f7abc0fc7f52570",
+        "seconds": "8.000000",
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 704,
+            "r_frame_rate": "25/1"
+          },
+          {
+            "codec_type": "audio",
+            "width": null,
+            "height": null,
+            "r_frame_rate": "0/0"
+          }
+        ]
+      },
+      {
+        "name": "blue-dress-original-reference.mp4",
+        "bytes": 619252,
+        "sha256": "1f2ca3d97f91e5c2aa73a4dfc42a22e4b53783af1d2d38159ceb876994eff561",
+        "seconds": "8.000000",
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1280,
+            "height": 870,
+            "r_frame_rate": "24/1"
+          },
+          {
+            "codec_type": "audio",
+            "width": null,
+            "height": null,
+            "r_frame_rate": "0/0"
+          }
+        ]
+      }
+    ]
+  },
+  "new_model_generation_executed": false,
+  "do_not_claim": [
+    "published demo equals own generation",
+    "reference appearance passed user approval",
+    "all exact per-clip input packs complete",
+    "same-family practice equals exact-case local certification"
+  ],
+  "library_outputs": [
+    {
+      "filename": "studio-original-reference.mp4",
+      "library_file_id": "libfile_fde3_f-a1d280b29b04819185b44bb9c5336ad9_937029f1505c8191917e0968911c47f5"
+    },
+    {
+      "filename": "blue-dress-original-reference.mp4",
+      "library_file_id": "libfile_fde3_f-2095ae8097788191a59b3be03bc9ca4d_937029f1505c8191917e0968911c47f5"
+    }
+  ]
+}
