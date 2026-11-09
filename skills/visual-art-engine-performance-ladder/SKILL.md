@@ -1,163 +1,67 @@
 ---
 name: visual-art-engine-performance-ladder
-description: 管理视觉作品的成熟制作、逐帧返修与性能证据。用于故事与资产、布局动作排演、MiniMax H3原生视听、手机屏幕追踪合成、对白听审、清晰度修复、混音与人工审核交接；保留P0–P8性能基准和图像来源审计，镜头级成功不等于通用控制认证。
+description: 按类别检索、审核和复刻已有优秀视觉作品。先核对完整免费配方及实际使用者的独立复现反馈，再原样重放、审核成品、验证重复与相近素材迁移。用于视频、人像表情、数字人、换脸、换装、动作迁移、模板短片及原配方后期；历史项目和性能基准按需读取。
 metadata:
-  version: "3.0.0"
+  version: "3.2.0"
   short-description: 通用高性能视觉作品生成引擎
 ---
 
-# 通用高性能视觉作品生成引擎
+# 通用高性能视觉作品生成引擎 V3.2
 
-## V3.0.0 成熟制作返修与 R9 实证（2026-10-31）
+更新：2026-11-09，北京时间。以完整成功案例形成能力；在合格质量、正确性、安全、成本和资源约束内优化完整 T_VALID。
 
-先读 [制作与批量返修路径](references/MATURE-FILM-REWORK-V3.md)；涉及《十几年》接续时，再读 [R9完成情况与原因记录](references/HOTMEAL-R9-DELIVERY-20261031.md)、[可重用参数与恢复方法](references/HOTMEAL-R9-REPLAY-V3.md) 及 [发布状态](references/RELEASE-V3.json)。
+## 默认入口
 
-- 保留已认可故事、人物及限定几何结果；按“提交—审核—退回对应工序—复审—批准”推进。技术和艺术分别判定，空间/接触错误退布局或动画，不能靠精修/声音遮掩。
-- R9已完成15秒、360帧、24fps带声人工审核候选；原生384×320，2倍修复768×640。文件完整性、解码及内部视听复审通过；`human_approval=false`、`final_approval=false`、`T_VALID=null`。不代签最终艺术批准。
-- 只把本片的可见约束通过登记为镜头级结果；不得扩大为所有动作可靠控制、全身物理碰撞认证、P0–P8晋级或已证明提速。
-- 本片按A动作/布局、B生成控制、C表演对白、D完整带声预演、E动画口型与修复合成、F声音、G最终审核成批接续；复用已批准资产和原生片段，不重复已完成GPU任务。
-- 原始已执行脚本与配置见 `assets/hotmeal-r9/`。运行前按恢复说明核对原项目、输入SHA、模型、端口、原生prompt_id、history、claim及输出节点；归档脚本含本片绝对路径，不可直接拿去重投或覆盖新任务。
-- 本片资源合同为RAM准入低于90%、运行时95%独立保护；仅适用于本片，不改其他项目。断连先对账同一prompt_id/history，UNKNOWN不重复提交。
-- 固定屏幕文字优先使用成熟平面追踪合成，保护照片静止、刚体、手指遮挡；修复后再合成文字。ASR与审片模型会误听、误判左右、虚构帧号/片长；以真实帧和原音复核，保留失败报告。
-- 原报告、原生镜头、视频及177项文件清单保存在持久审核包；链接及SHA见发布状态。仅升级技能与固化经验时，运行 `scripts/quality/verify_hotmeal_r9_package.py --package <审核包.zip>`，不为文档升级重做GPU生成。
-- 旧V2段落中的 `SLAP_ACTION_VALID=NO` 是参考图阶段记录；当前R9限定动作内部审核见新状态，仍待人工终审。旧P0声明和99门属于性能认证合同，不覆盖或否认已实际执行的生产镜头。
-- 本次整版本升级不更改原V2来源真实性门、不修改莲花/烟花或旧基准合同；历史大图仍保留在原保存位置，按证据指针读取。
+先读 [分类决策、实践反馈与已有成果](references/FEEDBACK-CASE-REVIEW-20261109.md) 的结论和分类表，以及 [案例状态](references/CASE-STATUS-20261109.json)。按任务只读对应类别，不自动加载全部历史。
 
-## V2.0.0 人物魅力与关键动作参考门（2026-10-30）
-本次整数升级扩展视觉参考、选角及动作/情绪检查规则，不代表P0–P8晋级、H3生产认证或性能提升。原V1.3.0及其来源审计、历史合同、失败证据继续保留。
+用户要求的简单能力：已有好成品、免费完整配方、多个实际操作者的复现反馈、当前条件匹配，照原步骤就能做出；不以论文、教程、星数、下载、进程退出或文件可解码代替作品验收。
 
-涉及《十几年》、青春感/模板脸、同人物连续镜头、耳光方向、愤怒或痛苦流泪时，先读取 [本轮人物与关键帧参考库](references/TEN-YEARS-V14-VISUAL-REFERENCES-20261030.md)。该库含15张持久原图链接及逐图使用资格；用户已认可的年轻女性独立人像作为定脸参考，其他候选待审；两版耳光接触图为失败/反例，不作正式动作模板。
-- 先用独立人像确定人物魅力，再锁身份制作场景/关键帧；不可只改“年轻漂亮”文字重抽面孔。
-- 关键动作须有出手前、挥动/接触、随动反应；痛苦流泪须单独有表情状态，不能用相似静态怒脸或眼泪覆盖。
-- 逐图核对解剖手位、掌心掌背、受击侧与头部随动；禁止为适配错误接触而改坏邻帧。连续纯文字返修失败后先复用成熟动作参考/约束，不无限盲抽。
-- 图片的参考许可、技术正确、艺术认可和动态验收分开记录；该V2参考图阶段记录为SLAP_ACTION_VALID=NO、FINAL_VALID=NO；R9状态见V3发布记录，不回写历史批准。
-- 本轮图片明确为ChatGPT内置image_gen参考/编辑候选，非ComfyUI/Krea/H3输出。普通视觉参考任务可按用户授权使用；当合同指定本机后端或独立生成时，必须继承下方V1.3来源门，严禁替代或冒称。
-- 项目当前为10秒首选、10–12秒可调、15秒硬上限、三句对白与单次耳光；项目版本仍v1.4，技能包版本V2.0.0。历史17/20秒方案仅留档，不恢复执行。
+## 运行前审核
 
-## v1.3.0 来源防作弊执行门禁（2026-10-11；优先级高于旧图像规则）
+1. 先选一个满足用途和质量的具体原作品，再配齐原输入、代码与权重版本、参数、工作流、依赖、原后期和运行条件。每类先选一个，缺项继续补或换同类完整案例。
+2. 实际操作者反馈须在运行前纳入决策：核对成品、步骤、硬件、版本、成本、成功条件和反例。作者宣传、转载、同人跨帖、复制 README 的 fork、点赞、问教程和仅安装成功不算独立作品复现。
+3. 比较正反证据及其适用条件；多个成功反馈可以支持有条件优先级，没有统计分母就不编造极高成功率或百分比。某次失败不等于同类成熟方案不存在。
+4. 作品合格、整包齐、实践支持、已知问题有成熟简单处理、当前条件匹配才提交样片。未满足的保持候选，不先启动大模型部署或现场创造修补链。
+5. 不购买教程、整合包、API 或云算力；记录本机计算、下载、存储和时间成本。工具、权重、素材与商用范围分别核查；商业 API 评价不能冒充免费开源配方的成功反馈。
 
-**新增强制入口**：[《图像生成来源真实性与防作弊执行门禁 V3.0》](references/IMAGE-SOURCE-ANTI-CHEAT-V3.md)。凡用户要求本机 ComfyUI、Krea、Windows 实际生成/修复或完整防作弊证据，必须在任何生图或修图调用前读取该文件，锁定 `BACKEND=COMFYUI_LOCAL` 和 `MODE=T2I_INDEPENDENT / REF_CONDITIONED / IMG2IMG / EDIT/INPAINT`。缺合同或工具不匹配即 `NO_SUBMIT`；不可默默以 ChatGPT `image_gen` 替代，亦不可用 image_gen 绘制左右对比海报。
+## 原配方复刻与验收
 
-**严格区分**：`IMG2IMG` 使用源图 VAEEncode 重绘；`REF_CONDITIONED` 使用参考条件；`T2I_INDEPENDENT` 必须空白潜空间且生成路径不使用参考图；`EDIT/INPAINT` 必须声明编辑底图和范围。四者不是一个合同，来源相似/哈希不同都不能单独判造假或独立生成。
+1. 沿原任务、会话和工作目录核账，复用已合格结果，只补缺项。提交未知先对账，UNKNOWN 不重发。
+2. 原样执行最小完整案例，不先改人物、故事、模型或质量规格。允许作者原接口内的路径映射、支持的环境分支和最小胶水；不重造生成核心。
+3. 成片按用户实际入口和正常速度审核：清晰度、身份、衣物、手部/遮挡、动作连续性、适用声音/口型、字幕及导出。抽帧、解码和分数只作补充，不能代替声画审核。
+4. 原样例通过再验重复；相同配方再次合格才登记该案例可重放。已验证的重复直接继承，不为更新文档重跑。
+5. 按原接口改提示词或换一组相近输入，另验迁移；没有提示词入口的模型按实际素材/参数接口验证。固定样例成功不能扩大为任意内容能力。
+6. 原配方中已有的剪辑、配音、合成可保留并计成本；需要大量调参、反复抽卡或临时自创返修链的，不晋级为简单能力。先查作者已知诊断，补材料或换案例。
+7. 保存原作、配方、输入/版本、实际命令/工作流、任务标识、日志、真实成品及独立审核结论；未测写 NOT_MEASURED，未执行不写 FAIL，冲突写 UNKNOWN。
+8. 检索、准备、下载、执行、返工、恢复、审核与交付全部纳入完整 T_VALID；缺起点留未知，不能只报采样/渲染作为交付用时。
 
-正式作品发布必须经过：`G-1 后端和模式锁定 → G0 本机健康 → G1 冻结工作流及图像来源拓扑 → G2 ComfyUI原生 prompt_id/history 和真实 PNG SHA → G3 非生成式像素拼接、视觉质量与合同检查 → G4 第二次只读复核`。任何失败：`FINAL_VALID=NO`，不可冒充完整成果；连接断开或任务结果未知：`UNKNOWN`、禁止重复提交。只准展示真实失败事实，不能伪造缺失证据补救。
+执行细节继承 [直接复现准入](references/DIRECT-REPLAY-ADMISSION-20261108.md)；冲突以本次用户指令和本 V3.2 的外部反馈前审为准。
 
-本轮连续违规反例（2026-10-11）：**用户明确要求技能包升级和 ComfyUI 修复图片，却又调用 `image_gen` 生成修复图及“原图/修正后”对比海报**。两次 `gen_id` 不等于 ComfyUI `prompt_id`，无相应 ComfyUI workflow/history/文件来源审计；该轮结果一律 `NOT_COMFYUI / INVALID`，不得作为品质/时间基线。见 [本轮再次绕路事故记录](references/INCIDENT-KREA-REPEAT-IMAGEGEN-20261011.md)。
+## 已有成果与限制
 
-**可执行来源核验器（正式路径）**：`scripts/quality/verify_comfy_provenance.py`，回归测试 `tests/test_comfy_source_guard.py`。它可在生成前核验工作流类型；生成后必须提供本机 ComfyUI `/history` 和真实输出根目录，才能核对原生 `prompt_id`、工作流、SaveImage PNG 及文件 SHA。只有预检结果不得声称执行成功。示例：
+| 案例 | 已有证据状态 | 边界 |
+|---|---|---|
+| Remotion Audiogram | 固定原工程完整视频两次渲染及内部审核 | 27.136秒模板，不等于真人生成；新内容未测 |
+| FASHN 官方红裙 | 固定静态案例原程序两次、相同输出及内部视觉核对 | 静态换装，独立同版本反馈仍须补；非视频换装 |
+| SVD 官方山景 | 单次原配方复现、14帧对照及原生记录 | 重复/换图待验；非口播或任意精品能力 |
+| H3 R4/R9 | 原镜头内部审核记录保留 | 有修补链，不作本轮简单复刻准入；原用户艺术批准边界保留 |
+| LivePortrait/FaceFusion/Wan Animate/MultiTalk/CatV2TON | 外部候选与具体缺项见分类报告 | 不宣称新增本机能力；未运行不是验证失败 |
+| MuseTalk | 已出片但嘴部质量未过，根因未完整定位 | 不以相同不合格样片或封装成功认证高清口播 |
 
-```powershell
-python scripts/quality/verify_comfy_provenance.py --dir "C:\\AI\\ComfyUI_Aaki_v3\\data\\output\\本轮证据" --mode T2I_INDEPENDENT --api http://127.0.0.1:8188 --output-root "C:\\AI\\ComfyUI_Aaki_v3\\data\\output"
-```
+## 执行保护与来源
 
-仅在既有工作流适用时使用，不得重写 ComfyUI 调度。校验器的 `FILE_PROVENANCE_VERIFIED` 只证明已核验的文件与历史一致，**不自动代表 G3 画质通过或 FINAL_VALID=YES**。对带参考图的模式，输入文件 SHA 仍需人工交叉核对；局部 EDIT_INPAINT 自动审查尚不充分，默认拒绝自动认证。功能自测 7/7 是模拟样例，不代表跨新 ChatGPT 会话真实工具选择门已通过。
+- 不自行添加生成、渲染、封装、整任务或等待的固定墙钟截止，也不只因工具轮询到时杀进程；运行会话持续续读。用户明确合同及既有硬件、温度、内存、性能保护保持有效。
+- 连接请求超时不等于任务失败；先核实原进程和原生 history，再差量恢复。100% CPU/GPU 利用率本身不作为新故障条件。
+- 不修改代理、网络、驱动、系统 CUDA/Torch、健康共享 ComfyUI 或其保护/注意力/offload 设置；新路线仅用已授权、作者支持的隔离任务环境，不向健康共享环境随意安装节点。
+- 本机/指定后端任务先读 [来源防作弊门禁](references/IMAGE-SOURCE-ANTI-CHEAT-V3.md)，锁后端和模式，保留原生 prompt_id/history、实物哈希与真实像素对照。不可用 image_gen 代替指定 ComfyUI，不用生成图伪造对比。
+- 普通视觉生图按用户当前授权选工具；参考辅助、图生图、局部编辑和纯文字独立生成分别记录，不把相似/不同像素单独当来源证明。
 
-版本规则：以本 `SKILL.md` 头部 `metadata.version` 与同目录 `VERSION` 一致为准；不一致必须阻止正式升级 PASS，先修正单一版本事实。与第28版自动化引擎的 Freeze、一次最终 Reality、REUSE_GATE 和性能基准合同并行适用。
+## 按需历史入口
 
-**能力边界**：技能文档只能约束本技能的合规判定，不能保证在宿主层物理禁止 `image_gen` 调用。以后必须以真实工具调用和执行证据验证防作弊；不能把“规则已写入”说成“平台级拦截已经上线”。
+- 继续《十几年》R9：读 [发布状态](references/RELEASE-V3.json)、[R9原配方与恢复](references/HOTMEAL-R9-REPLAY-V3.md) 和原项目最新回执；原镜头技术、艺术和用户批准分开，不能代签。
+- 继续 H3 五秒尾镜：按分类报告的当前制作记录和本机 CURRENT 接续，保留已通过部分，不把旧修补经验登记成简洁整包。
+- 指定人物/动作参考、Krea 或旧来源事故：读 [V1–V3.1完整历史规则](HISTORY-V1-V3.1.md) 的对应节及所链接资料；历史证据、图片、脚本与失败记录原样保留。
+- 用户明确请求 P0–P8 性能比较/冻结：再读 [历史性能合同](HISTORY-V1-V3.1.md)、正式 mature-replication-four-column V4.0、[运行与认证分离](docs/RUNTIME-VS-CERTIFICATION.md) 和 [测量协议](references/measurement-protocol.md)。不让未完成 P0 阻断普通原配方生产，不重写原统计门或伪称性能晋级。
+- SKILL metadata.version 与 VERSION 必须一致。旧 RELEASE-V3、V3-VALIDATION 及固定1.0.1的历史验证器只证明其原合同，不充当 V3.2 新验证回执。
 
-## v1.2.1 真正的生成前置校验（2026-10-11）
-
-本地 ComfyUI/Krea 独立生图合同下，执行 **工具选择前置门**：任何拟作为正式结果的图片只能通过授权 Windows 执行桥的 ComfyUI API 工作流产生，要求先检查 G0/G1，运行后保存 ComfyUI 原生 prompt_id、history 与实物文件哈希再输出结果。ChatGPT image_gen、编辑图、改写参考图以及仅有图片生成工具的 gen_id 都不得视为 ComfyUI 证据或替代结果。若缺任一证据，只报告故障/不合规和既有证据，不展示为合格出图；严禁用生成工具制作左右“审计”图片。完整 V2.0 证据合同保持不变。
-
-本次工具绕路事故详情见 [2026-10-11 Krea image_gen 替代事故](references/INCIDENT-KREA-IMAGEGEN-SUBSTITUTION-20261011.md)。不得用本次 image_gen PNG 作为 Krea 或 H3 品质/时间基线，FINAL_VALID=NO。
-
-
-## V1.2.0 高品质图像至 H3 视频主候选（2026-10-11）
-
-选型须先阅读 [Krea 优先的成熟方案与 H3 衔接记录](references/KREA-H3-SELECTION-V1.md)。当前质量优先主候选只有 FLUX.1 Krea Dev FP8 Scaled；Juggernaut XL v9、FLUX.2 Klein 4B 仅作为备选资料保留，默认不得三套并行部署。选型不等于本机生图已经成功。发布用途核查模型的非商业/非生产使用限制；用户当前非营利实验可继续验证，不可直接断言公开运营获得授权。必须完成厨房静物和人物生活照独立采样的真实 G0-G3 证据及 H3 成片关卡，才能评定质量合格后的完整有效成片最短时间。原 V2.0 来源审计不可跳过。
-
-## V1.1.0 强制图片来源审计（2026-10-10）
-
-涉及 ComfyUI 参考图片独立重新生成的任务，执行前必须加载 [《图片独立生成证据与防伪验收规范 V2.0》](references/IMAGE-INDEPENDENT-GENERATION-AUDIT-V2.md)，优先于任何旧的图片展示或无证据 PASS 规则。G0 环境、G1 工作流来源、G2 真实执行证据、G3 真实文件直接像素拼接与质量验收四门必须依次通过，否则禁止输出图片为正式生成成果、禁止虚构运行记录、禁止 FREEZE/PASS。若运行失败仅反馈真实故障和证据缺口，不得以 ChatGPT 图片生成结果替代。此约束只涉及生成任务证据门，不改变原有 P0 性能基准合同与四列法版本。
-
-
-这是 `visual-art-engine` 的性能进化管理层，不是替代实现。运行、测量、比较和冻结任何阶段前，必须直接加载正式技能 `mature-replication-four-column`，版本必须为 V4.0（metadata `4.0.0`）；不得另造四列法。依赖核验见 [METHODOLOGY-DEPENDENCY.md](references/METHODOLOGY-DEPENDENCY.md)。
-
-## 固定方法
-
-固定 TASK 后，唯一评分指标是 `TIME`，正式值为 `T_END_TO_END`。质量、成功、安全与稳定性只作为 `RESULT_VALIDITY_GATE`；任务合同变化所得时间一律 `INVALID_RESULT`。
-
-四列固定为：
-
-1. `CURRENT`
-2. `EXTERNAL FRONTIER`
-3. `FIRST-PRINCIPLES PHYSICAL TIME`（第一性原理物理时间，`T_PHY` 或 `T_PHY_RANGE`）
-4. `ITERATIVE CONVERGENCE`
-
-`T_PHY` 是唯一终极参照；外部成熟方案只是现实证据与路径库。99 仅表示当前硬件、软件、环境、固定 TASK 和已知可验证方法下的现实收敛，必须保留 `PHYSICAL_GAP = T_99 - T_PHY`。
-
-## 工作流
-
-1. 读取 [当前状态](state/CURRENT-STATE.md) 和 [阶段台账](state/STAGE-LEDGER.json)。
-2. 只允许处理第一个未锁定阶段；上一阶段必须 `score_99=true` 且 `frozen=true`，下一阶段才可解锁。
-3. 冻结或重开 TASK Contract；先完成前三列，第四列才可解锁。
-4. 每次只测试一个局部假设，保留原始事件、输出校验、环境与计时证据。
-5. 新阶段记录 `ΔT_STAGE = T_NEW_STAGE - T_PREVIOUS_STAGE`。出现明显数量级退化时先判 `PATH_ARCHITECTURE_ERROR`，检查路径、组件、模型、参数、offload、加载、依赖、软件栈、技能调用和调度结构；不得把崩塌接受为新 baseline。
-6. 达到 99 后按 [FREEZE/REOPEN 规则](docs/FREEZE-REOPEN-RULES.md)冻结，并保留 previous stable、fallback 和 archive。
-
-## P0 入口
-
-P0 固定为 ComfyUI API 控制路径：`REQUEST -> QUEUE -> EXECUTE -> SAVE -> RESULT`。读取 [P0 Benchmark Contract](contracts/P0-BENCHMARK-CONTRACT.md) 后再使用：
-
-```powershell
-& 'C:\Program Files\PowerShell\7\pwsh.exe' -NoLogo -NoProfile -File .\scripts\p0\prepare-p0.ps1
-python .\scripts\p0\run-p0-control.py --dry-run
-```
-
-正式运行必须显式提供 `--execute --acknowledge-contract P0-CONTROL-V1`。默认协议为 3 次 warmup、20 次 measured。没有明确执行意图时只做 readiness，不提交 workload。
-
-## Measurement Protocol V2（验证中）
-
-`MEASUREMENT_PROTOCOL_V2_STATUS=UNDER_VALIDATION`。在 `STATISTICAL_SELFTEST=PASS`、`NULL_CALIBRATION=PASS`、`AA_CALIBRATION=PASS` 三门同时成立前，候选裁决保持锁定，不得把 V2 写成成熟 PASS，也不得启动 E4/E5/E7 或 Track B 权威裁决。
-
-开展任何性能比较前读取 [measurement-protocol.md](references/measurement-protocol.md)；遇到校准、漂移、MDE、顺序效应、bracket 或旧批复用问题时同时读取 [failure-lessons.md](references/failure-lessons.md) 与 [evidence-map.md](references/evidence-map.md)。原始 runs/history/PNG/统计分布只留在 Stage，技能包只保存可复用规则与证据指针。
-
-V2 一旦三门通过即冻结为 P0-P3 默认 benchmark harness。只有新的真实证据证明 harness 有缺陷时才能升级；升级必须保留旧版本、记录原因、产生新 runner SHA 并重新 A/A。
-
-A/A 的 arm label 必须是纯 metadata。任何 A/B 标签进入 workflow JSON、
-`filename_prefix`、HTTP path/query、计时内 raw/evidence 路径或 client/session
-identifier，均为 benchmark contamination。正式 A/A 前必须证明归一化 run token
-后的 A/B workflow byte-equivalent，并同时满足
-`TIMED_PATH_LABEL_LEAK=0`、`WORKFLOW_LABEL_LEAK=0`、
-`HTTP_LABEL_LEAK=0`。
-
-权威 benchmark 身份必须同时记录单文件 `RUNNER_SHA` 与整套
-`HARNESS_MANIFEST_SHA`。后者至少覆盖 runner、两层启动器、decision rules、
-bracket summary、workflow 与 fixture；任一文件变化都产生新 fingerprint。
-
-2026-09-15 权威 label-blind A/A 已完成 160/160：formal effect
-`2.8688 ms`、95% CI `[-0.847625,6.585225]`、noise floor `3.7609 ms`。
-旧 label-contaminated A/A 的 CI 全正假效应已消失，故
-`LABEL_BLIND_FIX_CAUSALLY_CONFIRMED=YES`；但 order-effect CI
-`[-3.081325,22.327025] ms` 未进入冻结等价区间，当前仍为
-`AA_CALIBRATION=INCONCLUSIVE / CANDIDATE_LOCK=ON`。
-
-Windows 正式运行前必须实际创建 deepest expected evidence path。失败时改用
-短、中性、label-blind evidence root；不得用 arm-specific 路径，也不得因路径失败
-修改统计或 workload。
-
-2026-09-15 最终搜索收口：新的独立冻结-harness A/A `a4` 为 160/160
-有效，但 environment drift gate 触发，故
-`AA_CALIBRATION=FAIL / CANDIDATE_LOCK=ON`。SEARCH_ONLY 找到
-`R6_SUCCESS_LOCAL_HISTORY_V2`：两个独立 confirmation 的 paired effect
-分别为 `11.451175 ms`（CI `[9.370775,13.531575]`）和
-`8.465825 ms`（CI `[6.691,10.24065]`），但 pooled candidate P50/P95
-为 `41.5258/58.000845 ms`，未优于历史参考。因此
-`P0_99=NO / P0_FREEZE=NO`，不得把真实相对收益误报成绝对 99。
-
-## 强制边界
-
-- v1.0.1 仅表示方法、阶梯、版本、冻结系统、P0 Contract 和 P0 工具就绪；不表示 P0 已测或已优化。
-- 下述v1.0.1原始P0合同固定声明：`P0_BENCHMARK_EXECUTED=NO`、`PERFORMANCE_OPTIMIZATION_RUN=NO`、`H3_RUN=NO`；这是历史性能合同范围，不是V3生产镜头执行状态。
-- 初始状态固定为：`P0_CURRENT=PENDING`、`P0_EXTERNAL=PENDING`、`P0_T_PHY=PENDING`、`P0_ITERATIVE_CONVERGENCE=LOCKED`、`P0_99=NO`。
-- 历史 Wan/FAST/COLD 数据只进入 `HISTORICAL_EVIDENCE`，不得作为 P0 CURRENT。
-- 普通生产任务走 `RUNTIME_FAST_PATH`。只有规定触发条件才走 `CERTIFICATION_PATH`，详见 [运行与认证分离](docs/RUNTIME-VS-CERTIFICATION.md)。
-- 不修改代理、网络、WSL、系统 CUDA/Torch、健康 ComfyUI、显存/offload/allocator/attention 设置；不安装 custom node 或新依赖。
-- 不修改 `visual-art-engine`、`mature-replication-four-column`、莲花或烟花成熟技能。
-- 禁止用历史固定 baseline 或分时单批 median 裁决毫秒级候选；禁止把 `p>0.05` 当作等价；禁止在 null Type-I error 校准前生成 FINAL_MDE。
-
-## 失败复盘与证据
-
-失败记录必须含阶段、固定 TASK、期望/实际时间、原始事件、输出有效性、是否 `PATH_ARCHITECTURE_ERROR`、回滚结果和冻结基线完整性。使用 [阶段证据模板](templates/STAGE-EVIDENCE-TEMPLATE.md)，写入台账所列 `evidence_path`。任何缺少真实证据的数字保持 `null` 或 `UNKNOWN`。
-
+NEXT_PAGE_PROMPT：读取本入口、分类审核及案例状态，继承固定原案例证据；先补作品—配方—独立反馈的具体缺项，再原样复刻与验收。未完成不宣称通用能力，禁止回到反复修坏片的路线。

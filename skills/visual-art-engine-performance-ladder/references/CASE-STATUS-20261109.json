@@ -1,0 +1,94 @@
+{
+  "version": "3.2.0",
+  "review_date": "2026-11-09",
+  "timezone": "Asia/Shanghai",
+  "new_model_inference_this_review": false,
+  "overall_success_probability": null,
+  "full_cross_category_replay_complete": false,
+  "cases": [
+    {
+      "id": "remotion-audiogram",
+      "external_feedback": "GENERAL_TOOL_USE_ONLY_EXACT_CASE_INCOMPLETE",
+      "local": "FIXED_ORIGINAL_REPEAT_PASSED_INHERITED",
+      "repeats": 2,
+      "migration": "NOT_MEASURED",
+      "scope": "27.136s original Audiogram template only"
+    },
+    {
+      "id": "fashn-red-dress",
+      "external_feedback": "INDEPENDENT_OPEN_SOURCE_SAME_VERSION_INCOMPLETE",
+      "local": "FIXED_ORIGINAL_REPEAT_PASSED_INHERITED",
+      "repeats": 2,
+      "migration": "NOT_MEASURED",
+      "scope": "one static official red dress case only"
+    },
+    {
+      "id": "svd-mountain",
+      "external_feedback": "CONDITIONAL_PRIMARY_PRACTICE_SIGNALS",
+      "local": "ONE_ORIGINAL_REPLAY_PASSED_INHERITED",
+      "repeats": 1,
+      "migration": "NOT_MEASURED",
+      "scope": "14-frame mountain example only"
+    },
+    {
+      "id": "liveportrait-human",
+      "external_feedback": "CONDITIONAL_POSITIVE_AND_NEGATIVE",
+      "local": "NOT_EXECUTED",
+      "scope": "frontal small-expression candidate",
+      "missing": [
+        "high quality original output matched to the exact free recipe",
+        "matching environment and weights",
+        "original replay then repeat and input migration"
+      ]
+    },
+    {
+      "id": "facefusion",
+      "external_feedback": "CONDITIONAL_POSITIVE_AND_NEGATIVE",
+      "local": "NOT_EXECUTED",
+      "missing": [
+        "qualified complete original work and pinned versions/models/settings"
+      ]
+    },
+    {
+      "id": "wan-animate",
+      "external_feedback": "PUBLISHED_WORKFLOWS_WITH_CONDITIONAL_REPRODUCTIONS",
+      "local": "NOT_EXECUTED",
+      "missing": [
+        "same original work and exact weights/settings/runtime pairing",
+        "hardware supported branch verification"
+      ]
+    },
+    {
+      "id": "multitalk",
+      "external_feedback": "MIXED_RESOURCE_AND_RUNTIME_RESULTS",
+      "local": "NOT_EXECUTED",
+      "missing": [
+        "qualified two speaker original output paired with complete recipe"
+      ]
+    },
+    {
+      "id": "catv2ton",
+      "external_feedback": "INSUFFICIENT_INDEPENDENT_SIMPLE_REPLAY",
+      "local": "NOT_EXECUTED"
+    },
+    {
+      "id": "musetalk",
+      "external_feedback": "MIXED_QUALITY_AND_ANGLE_REPORTS",
+      "local": "EXECUTED_QUALITY_NOT_PASSED_INHERITED",
+      "root_cause": "NOT_FULLY_ESTABLISHED"
+    },
+    {
+      "id": "h3-r4",
+      "local": "SHOT_INTERNAL_ACCEPTANCE_INHERITED",
+      "simple_replay_admission": false,
+      "reason": "multi-stage repairs, retiming and lip-region compositing",
+      "scope": "5-second shot only",
+      "human_artistic_approval": "NOT_DELEGATED"
+    }
+  ],
+  "timing": {
+    "T_VALID_E2E": null,
+    "reported_legacy_times_are_stage_times": true
+  },
+  "next": "Complete high-quality LivePortrait original output to exact recipe pairing and independent condition-matched feedback before deployment."
+}
