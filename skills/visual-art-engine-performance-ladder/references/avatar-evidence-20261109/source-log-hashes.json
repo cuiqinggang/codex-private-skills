@@ -1,0 +1,17 @@
+{
+  "notice": "Readable copies decode UTF-8 with replacement and omit progress bars. Native bytes remain unchanged in the Windows project. Hashes refer to those originals.",
+  "files": {
+    "replay.log": {
+      "bytes": 15240,
+      "sha256": "c25eea6b7a1ed62acd2b6a7395f40cf4b47f6b13f269b5d449c60dafbae5a240"
+    },
+    "batch.log": {
+      "bytes": 52148,
+      "sha256": "f4ed38298361e162d6d1eeb208da2c4727507f0569d46058d902c3f79672223f"
+    },
+    "tts-setup.log": {
+      "bytes": 2655,
+      "sha256": "046cc71e97e2aca20d663796dc3a23465650a6f791a77702ee2984288268cf43"
+    }
+  }
+}

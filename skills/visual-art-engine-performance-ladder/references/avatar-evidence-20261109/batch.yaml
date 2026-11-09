@@ -1,0 +1,8 @@
+replay_repeat:
+  video_path: "C:/AI/Video-Recipe-Reproduction-20261108/Avatar-Specialist-20261109/d24-input.mp4"
+  audio_path: "C:/AI/Video-Recipe-Reproduction-20261108/Avatar-Specialist-20261109/d24-speech.wav"
+  result_name: replay-r2.mp4
+promotion:
+  video_path: "C:/AI/Video-Recipe-Reproduction-20261108/Avatar-Specialist-20261109/d24-input.mp4"
+  audio_path: "C:/AI/Video-Recipe-Reproduction-20261108/Avatar-Specialist-20261109/promotion.wav"
+  result_name: avatar-promo-raw.mp4

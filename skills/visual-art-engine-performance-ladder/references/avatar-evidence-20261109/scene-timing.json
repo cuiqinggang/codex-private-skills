@@ -1,0 +1,26 @@
+{
+  "decoded_seconds": [
+    3.768,
+    5.52,
+    5.448
+  ],
+  "total_seconds": 14.736,
+  "avatar_placements": [
+    [
+      64,
+      178,
+      384
+    ],
+    [
+      955,
+      299,
+      250
+    ],
+    [
+      64,
+      178,
+      384
+    ]
+  ],
+  "caption_type": "sentence level, derived from separately generated speech segments"
+}

@@ -1,0 +1,74 @@
+{
+  "started_utc": "2026-11-09T12:34:38.927574+00:00",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "rate": "+0%",
+  "pitch": "+0Hz",
+  "parts": [
+    "大家好，这是数字人介绍视频演示。",
+    "准备一段文案，就能搭配图片、演示文稿和功能画面。",
+    "更换文案后，同一个人物可以继续讲解，让重点更清楚。"
+  ],
+  "results": [
+    {
+      "index": 0,
+      "returncode": 0,
+      "seconds": 4.536783099989407,
+      "command": [
+        "C:\\AI\\Video-Recipe-Reproduction-20261108\\Avatar-Specialist-20261109\\tts-env\\Scripts\\python.exe",
+        "-m",
+        "edge_tts",
+        "--voice",
+        "zh-CN-XiaoxiaoNeural",
+        "--rate=+0%",
+        "--pitch=+0Hz",
+        "--text",
+        "大家好，这是数字人介绍视频演示。",
+        "--write-media",
+        "C:\\AI\\Video-Recipe-Reproduction-20261108\\Avatar-Specialist-20261109\\speech-0.mp3",
+        "--write-subtitles",
+        "C:\\AI\\Video-Recipe-Reproduction-20261108\\Avatar-Specialist-20261109\\speech-0.srt"
+      ]
+    },
+    {
+      "index": 1,
+      "returncode": 0,
+      "seconds": 3.5933081000111997,
+      "command": [
+        "C:\\AI\\Video-Recipe-Reproduction-20261108\\Avatar-Specialist-20261109\\tts-env\\Scripts\\python.exe",
+        "-m",
+        "edge_tts",
+        "--voice",
+        "zh-CN-XiaoxiaoNeural",
+        "--rate=+0%",
+        "--pitch=+0Hz",
+        "--text",
+        "准备一段文案，就能搭配图片、演示文稿和功能画面。",
+        "--write-media",
+        "C:\\AI\\Video-Recipe-Reproduction-20261108\\Avatar-Specialist-20261109\\speech-1.mp3",
+        "--write-subtitles",
+        "C:\\AI\\Video-Recipe-Reproduction-20261108\\Avatar-Specialist-20261109\\speech-1.srt"
+      ]
+    },
+    {
+      "index": 2,
+      "returncode": 0,
+      "seconds": 2.682341599953361,
+      "command": [
+        "C:\\AI\\Video-Recipe-Reproduction-20261108\\Avatar-Specialist-20261109\\tts-env\\Scripts\\python.exe",
+        "-m",
+        "edge_tts",
+        "--voice",
+        "zh-CN-XiaoxiaoNeural",
+        "--rate=+0%",
+        "--pitch=+0Hz",
+        "--text",
+        "更换文案后，同一个人物可以继续讲解，让重点更清楚。",
+        "--write-media",
+        "C:\\AI\\Video-Recipe-Reproduction-20261108\\Avatar-Specialist-20261109\\speech-2.mp3",
+        "--write-subtitles",
+        "C:\\AI\\Video-Recipe-Reproduction-20261108\\Avatar-Specialist-20261109\\speech-2.srt"
+      ]
+    }
+  ],
+  "status": "AUDIO_FILES_CREATED_REVIEW_PENDING"
+}

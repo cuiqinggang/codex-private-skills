@@ -1,8 +1,8 @@
 {
-  "version": "3.3.0",
+  "version": "3.4.0",
   "review_date": "2026-11-09",
   "timezone": "Asia/Shanghai",
-  "new_model_inference_this_review": false,
+  "new_model_inference_this_review": true,
   "overall_success_probability": null,
   "full_cross_category_replay_complete": false,
   "cases": [
@@ -120,13 +120,32 @@
       "reason": "multi-stage repairs, retiming and lip-region compositing",
       "scope": "5-second shot only",
       "human_artistic_approval": "NOT_DELEGATED"
+    },
+    {
+      "id": "musetalk-d24-avatar-20261109",
+      "external_feedback": "PUBLISHED_EXACT_INPUT_OUTPUT_AND_CONFIG_PLUS_SEPARATE_ECOSYSTEM_IMPLEMENTATIONS",
+      "local": "TWO_FIXED_REPLAYS_AND_ONE_CHINESE_AUDIO_OUTPUT_CREATED",
+      "repeats": 2,
+      "repeated_quality_acceptance": "NOT_MEASURED",
+      "migration": "ONE_SAME_PERSON_NEW_CHINESE_AUDIO_OUTPUT_CREATED_QUALITY_PENDING",
+      "scope": "one stationary fictional face; source video preserved; 14.736s narration; 720p composited illustration cards",
+      "normal_speed_audiovisual_review": "NOT_MEASURED",
+      "subjective_lip_sync_acceptance": "NOT_MEASURED",
+      "real_ppt_import": "NOT_MEASURED",
+      "real_screen_recording": "NOT_MEASURED",
+      "new_identity": "NOT_MEASURED",
+      "full_body_motion": "NOT_MEASURED",
+      "evidence": "AVATAR-REALITY-20261109.json",
+      "recipe": "AVATAR-DOSSIER-20261109.md",
+      "weights": "10 published component hashes matched in model-audit.json",
+      "core_source_modified": false
     }
   ],
   "timing": {
     "T_VALID_E2E": null,
     "reported_legacy_times_are_stage_times": true
   },
-  "next": "Use V3.3 category comparison groups to choose the simplest existing complete recipe in scope; inherit local results, separate original-artwork exact recreation from method reproduction; no automatic deployment or invented repairs.",
+  "next": "Review avatar-promo.mp4 and original comparison at normal speed, then test owned materials, real PPT or screen capture as separate minimal steps; other categories retained.",
   "previous_version": "3.2.0",
   "research_update": {
     "report": "INTELLIGENCE-DOSSIER-20261109.md",
@@ -136,5 +155,6 @@
     "new_model_inference": false,
     "source_count_not_capability_count": true,
     "scope": "Multi-branch specialized intelligence and recipe review; local execution statuses inherited."
-  }
+  },
+  "current_focus": "fixed-avatar-introduction-video"
 }

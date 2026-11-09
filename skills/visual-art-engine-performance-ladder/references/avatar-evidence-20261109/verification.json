@@ -1,0 +1,229 @@
+{
+  "files": {
+    "d24-input.mp4": {
+      "sha256": "895c94e8efff634b054abd17951e0c6e9cb8c1e864a0a9e4035b832f4a676a26",
+      "bytes": 44591,
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 512,
+          "height": 512,
+          "r_frame_rate": "25/1",
+          "sample_rate": null,
+          "channels": null,
+          "nb_frames": "91",
+          "duration": "3.640000"
+        }
+      ],
+      "container_seconds": 3.64,
+      "decode_returncode": 0,
+      "decode_errors": ""
+    },
+    "d24-muse-r1.mp4": {
+      "sha256": "cb5f0da003798b794e06204f3e653ffce3bd3d91a6c19ff7288b07d457afd091",
+      "bytes": 89973,
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 512,
+          "height": 512,
+          "r_frame_rate": "25/1",
+          "sample_rate": null,
+          "channels": null,
+          "nb_frames": "90",
+          "duration": "3.600000"
+        },
+        {
+          "codec_type": "audio",
+          "width": null,
+          "height": null,
+          "r_frame_rate": "0/0",
+          "sample_rate": "16000",
+          "channels": 1,
+          "nb_frames": "58",
+          "duration": "3.632000"
+        }
+      ],
+      "container_seconds": 3.632,
+      "decode_returncode": 0,
+      "decode_errors": ""
+    },
+    "replay-r1.mp4": {
+      "sha256": "51fceb681bfd76bc4478dd148f460bf0c61fa97f2924b44a184f99e1c68ed668",
+      "bytes": 89130,
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 512,
+          "height": 512,
+          "r_frame_rate": "25/1",
+          "sample_rate": null,
+          "channels": null,
+          "nb_frames": "90",
+          "duration": "3.600000"
+        },
+        {
+          "codec_type": "audio",
+          "width": null,
+          "height": null,
+          "r_frame_rate": "0/0",
+          "sample_rate": "16000",
+          "channels": 1,
+          "nb_frames": "58",
+          "duration": "3.632000"
+        }
+      ],
+      "container_seconds": 3.632,
+      "decode_returncode": 0,
+      "decode_errors": ""
+    },
+    "replay-r2.mp4": {
+      "sha256": "6d5f4b2183d3e1ef9ac3486a8f6d341d6517f9e259c5d0cd3a8d6a88af76fcac",
+      "bytes": 89068,
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 512,
+          "height": 512,
+          "r_frame_rate": "25/1",
+          "sample_rate": null,
+          "channels": null,
+          "nb_frames": "90",
+          "duration": "3.600000"
+        },
+        {
+          "codec_type": "audio",
+          "width": null,
+          "height": null,
+          "r_frame_rate": "0/0",
+          "sample_rate": "16000",
+          "channels": 1,
+          "nb_frames": "58",
+          "duration": "3.632000"
+        }
+      ],
+      "container_seconds": 3.632,
+      "decode_returncode": 0,
+      "decode_errors": ""
+    },
+    "avatar-promo-raw.mp4": {
+      "sha256": "f9ab1a88b4e3cb754be2e4a865d3f666f26a6d11017fa44cf959929ea9689fdc",
+      "bytes": 296266,
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 512,
+          "height": 512,
+          "r_frame_rate": "25/1",
+          "sample_rate": null,
+          "channels": null,
+          "nb_frames": "368",
+          "duration": "14.720000"
+        },
+        {
+          "codec_type": "audio",
+          "width": null,
+          "height": null,
+          "r_frame_rate": "0/0",
+          "sample_rate": "16000",
+          "channels": 1,
+          "nb_frames": "232",
+          "duration": "14.736000"
+        }
+      ],
+      "container_seconds": 14.736,
+      "decode_returncode": 0,
+      "decode_errors": ""
+    },
+    "avatar-promo.mp4": {
+      "sha256": "bcd23d4322ee7a4ac77ea95213228e39b188ef18f07b81d8ca5dcead0d278979",
+      "bytes": 438593,
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1280,
+          "height": 720,
+          "r_frame_rate": "25/1",
+          "sample_rate": null,
+          "channels": null,
+          "nb_frames": "369",
+          "duration": "14.760000"
+        },
+        {
+          "codec_type": "audio",
+          "width": null,
+          "height": null,
+          "r_frame_rate": "0/0",
+          "sample_rate": "16000",
+          "channels": 1,
+          "nb_frames": "232",
+          "duration": "14.736000"
+        }
+      ],
+      "container_seconds": 14.76,
+      "decode_returncode": 0,
+      "decode_errors": ""
+    },
+    "avatar-replay-comparison.mp4": {
+      "sha256": "e784d5a1e00a17394ada57a1aaca2b9472f10835adf816215e087152c89669b0",
+      "bytes": 181522,
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1024,
+          "height": 576,
+          "r_frame_rate": "25/1",
+          "sample_rate": null,
+          "channels": null,
+          "nb_frames": "90",
+          "duration": "3.600000"
+        },
+        {
+          "codec_type": "audio",
+          "width": null,
+          "height": null,
+          "r_frame_rate": "0/0",
+          "sample_rate": "16000",
+          "channels": 1,
+          "nb_frames": "58",
+          "duration": "3.632000"
+        }
+      ],
+      "container_seconds": 3.632,
+      "decode_returncode": 0,
+      "decode_errors": ""
+    }
+  },
+  "quality": {
+    "normal_speed_audiovisual_review": "NOT_MEASURED",
+    "subjective_phoneme_accuracy": "NOT_MEASURED",
+    "sampled_visual_review": "done on original, replay and three composite layouts",
+    "scope": "one stationary fictional face, changed English-to-Chinese audio; no new identity or body motion test"
+  },
+  "similarity": {
+    "d24-muse-r1.mp4--replay-r1.mp4--frame": {
+      "ssim": 0.995965,
+      "interpretation": "image-structure comparison only, not mouth synchronization certification"
+    },
+    "d24-muse-r1.mp4--replay-r1.mp4--mouth": {
+      "ssim": 0.98725,
+      "interpretation": "image-structure comparison only, not mouth synchronization certification"
+    },
+    "replay-r1.mp4--replay-r2.mp4--frame": {
+      "ssim": 0.996907,
+      "interpretation": "image-structure comparison only, not mouth synchronization certification"
+    },
+    "replay-r1.mp4--replay-r2.mp4--mouth": {
+      "ssim": 0.987521,
+      "interpretation": "image-structure comparison only, not mouth synchronization certification"
+    }
+  },
+  "audio": {
+    "source_samples": 235776,
+    "final_decoded_samples": 236544,
+    "zero_lag_correlation": 0.999874519227448,
+    "sample_rate": 16000,
+    "meaning": "audio retention/alignment after mux; not subjective voice or lip-sync review"
+  },
+  "final_composite_backend": "Windows PC FFmpeg 8.1.1, compose-run.json matches"
+}
