@@ -12,13 +12,17 @@
 - R6：V1.4已阻塞缺金额正式报表，但仍改写成熟程序；原通用评分PASS不等于冻结原件放行。
 - R7：采用既有R3明确不可改原件的做法，Pi保留原程序和供应商原件，实际运行失败后明确BLOCKED；独立检查全部通过，01:26:427。
 - R7使用的冻结合同是新增的明确任务边界，不能把效果全部归因于V1.4文字本身；也不能把R6未明确宣告的不可改字节约束追溯成模型违反显式冻结。
-- GUI：R5因多个浏览器Target不响应中止。只读复查14/14恢复响应后，R8仅补正常/故障按钮；Codex按原已验CDP配置接管原可见Profile，效果以R8真实回执为准。
+- GUI：R8 Codex正常按钮实际点击、刷新通过。R8故障页因正式MCP未就绪转CLI，拒绝该次路径放行；R9按官方required启动门补验，正式MCP点击后如实FAIL且无后台写入。
+- R9 Pi正常页实际填表、点击、刷新且独立记录恰为1；自动评分只因done枚举误拒，人工核实后保留原评分另记通过。故障页实际点击、刷新且记录0，明确blocked，未后台绕过。
+- 保留缺口：Pi故障汇报仍提出后台例外、首条进度用了英文，且把合同未规定的金额类型称为缺陷；这些建议不采纳，也不据此声称沟通及诊断全部合格。只放行已验核心交付与拦截能力。
+- R8控制器退出原因未知；不能据未完Pi回执断言HTTP故障。Pi原HTTP未改，R9已成功。
+- GUI任务的Codex MCP按任务设required=true与60秒启动窗口；非GUI不设全局必需。无全局自动签收钩子，普通业务仍须调用自身独立验收。
 - 本轮没有新装全局Stop钩子，未使用绕过信任参数，不宣称模型每次必遵守或所有任务自动具备检查器。
 
 ## 成熟方法依据
 - Anthropic官方：提示、CLAUDE.md与技能是非确定约束；测试、CI与Stop钩子属于执行器检查，关键条件不能只靠模型自评。https://code.claude.com/docs/en/best-practices
 - OpenAI官方：先定义目标与指标，用相关真实/历史案例评估，并核对自动指标与人工判断。https://developers.openai.com/api/docs/guides/evaluation-best-practices
 - 本机原恢复配方：C:/AI/Playwright-Native-AI-Browser/skills/playwright-native-ai-browser/references/V1.1-STALLED-TARGET-RECOVERY-20261018.md。
-- 原R2/R3程序、冻结、外部检查和R5—R8回执：同目录tests/agent-gates-20261109/。
+- 原R2/R3程序、冻结、外部检查和R5—R9回执：同目录tests/agent-gates-20261109/。
 
 本组合只能按已验任务范围放行；后续业务仍须有自身合格条件与实际用户路径证据。
