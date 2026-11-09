@@ -1,0 +1,58 @@
+{
+  "checked_epoch": 1794247173.160039,
+  "rule": "Reuse the exact installed program and verified model paths. New orders create only input/output/evidence; do not create a new environment or download directory per order. Before any missing-file download, consult this index and existing skill asset roots. Matching name alone is insufficient; verify file size and stored SHA. BF16 is retained but not default after observed RAM pressure.",
+  "programs": {
+    "ComfyUI": "C:/AI/ComfyUI_Aaki_v3/ComfyUI",
+    "python": "C:/AI/ComfyUI_Aaki_v3/python/python.exe",
+    "ffmpeg": "C:/Users/A/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1.1-full_build/bin/ffmpeg.exe"
+  },
+  "verified_models": {
+    "wan2.2_s2v_14B_bf16.safetensors": {
+      "status": "VERIFIED_DOWNLOADED",
+      "path": "C:\\AI\\Video-Recipe-Reproduction-20261110\\S2V-15\\model-downloads\\split_files\\diffusion_models\\wan2.2_s2v_14B_bf16.safetensors",
+      "expected_bytes": 32591643778,
+      "sha256": "a61c103c1e0118123a222af1b8bbd0bc5d6b6bda70e6b182c653c4a16908692e",
+      "bytes": 32591643778,
+      "mtime_ns": 1794244388713020000,
+      "default_for_this_case": false
+    },
+    "wav2vec2_large_english_fp16.safetensors": {
+      "status": "VERIFIED_DOWNLOADED",
+      "path": "C:\\AI\\Video-Recipe-Reproduction-20261110\\S2V-15\\model-downloads\\split_files\\audio_encoders\\wav2vec2_large_english_fp16.safetensors",
+      "expected_bytes": 630997322,
+      "sha256": "f0017a43ea57ef6b3d4866be607844bbd8cada6d30966f7d70044ed0d63d3f9e",
+      "bytes": 630997322,
+      "mtime_ns": 1794241409554206500,
+      "default_for_this_case": true
+    },
+    "wan_2.1_vae.safetensors": {
+      "status": "VERIFIED_DOWNLOADED",
+      "path": "C:\\AI\\Video-Recipe-Reproduction-20261110\\S2V-15\\model-downloads\\split_files\\vae\\wan_2.1_vae.safetensors",
+      "expected_bytes": 253815318,
+      "sha256": "2fc39d31359a4b0a64f55876d8ff7fa8d780956ae2cb13463b0223e15148976b",
+      "bytes": 253815318,
+      "mtime_ns": 1794241428512459500,
+      "default_for_this_case": true
+    },
+    "umt5_xxl_fp8_e4m3fn_scaled.safetensors": {
+      "status": "VERIFIED_REUSED",
+      "path": "C:\\AI\\ComfyUI_Aaki_v3\\ComfyUI\\models\\text_encoders\\umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "expected_bytes": 6735906897,
+      "sha256": "c3355d30191f1f066b26d93fba017ae9809dce6c627dda5f6a66eaa651204f68",
+      "bytes": 6735906897,
+      "mtime_ns": 1782916227079817500,
+      "default_for_this_case": true
+    },
+    "wan2.2_s2v_14B_fp8_scaled.safetensors": {
+      "status": "VERIFIED_DOWNLOADED",
+      "path": "C:\\AI\\Video-Recipe-Reproduction-20261110\\S2V-15\\model-downloads\\split_files\\diffusion_models\\wan2.2_s2v_14B_fp8_scaled.safetensors",
+      "bytes": 16394832474,
+      "sha256": "140e75af5534ac3d91e710d9df756f7032addd64b341ba2c1c70e3e6da9aa216",
+      "mtime_ns": 1794246850950070900,
+      "default_for_this_case": true
+    }
+  },
+  "prior_model_inventory": "evidence/reuse-model-inventory.json",
+  "scope": "Known C-drive AI model and user HF-cache paths; not entire-machine proof",
+  "case_quality": "NOT_CERTIFIED"
+}
