@@ -53,6 +53,8 @@
 - **本轮没有安装运行。** 原本已有 s6.jpg 与 d0.mp4，但旧材料对应的默认 GIF 太小，不能替代高清目标成品；应先取得同一案例的合格原输出和参数对应关系。缺这一配对是本轮的交接缺口，不是“网上不存在成熟方案”的结论。
 - 后续只走作者原人类模式或具名原工作流，先原样例、再换一个原作者支持的人像。动物模式需额外依赖，单列，不由人类模式通过自动认证。
 
+补充发现：[S40] 是独立操作者的 Windows 完整实践文章，包含默认 s6+d0 的实际日志、成品 MP4 链接、GUI 步骤和另一个输入实例；[S41] 为官方项目展示工程，能定位原始 MP4。当前已定位默认成品文件 https://wellstsai.com/post/live-portrait/demo.mp4 ，尚未下载检视其实际画质/规格、核对精确代码与权重版本；这是可继续补齐的具名入口，不能再笼统称“缺少公开成品”。
+
 ### B. FaceFusion：工具易用反馈存在，版本和模型必须锁定
 
 - 免费源码和官方 Pinokio 工程可取 [S06–S07]；不购买官方收费安装器或不明第三方整合包。
@@ -148,6 +150,8 @@ SVD 没有自然语言提示词入口，应按“换输入图/允许参数”检
 | S37 | https://www.reddit.com/r/StableDiffusion/comments/12otdo0 | 实际补帧用户满意反馈；不代表所有动作有效 |
 | S38 | https://github.com/hzwer/Practical-RIFE/issues/34 | 操作者伪影反例及版本条件 |
 | S39 | https://huggingface.co/cleardusk/LivePortrait-Windows/discussions/6 | 安装包长路径问题及维护者说明；不采用回帖推广的软件 |
+| S40 | https://wellstsai.com/en/post/live-portrait/ | 独立操作者的原样例日志、成品 MP4 和 GUI 实践 |
+| S41 | https://github.com/liveportrait/liveportrait.github.io | 官方原展示工程，可定位 MP4；不是本机运行证据 |
 
 ## 接续：只补真实缺项
 
