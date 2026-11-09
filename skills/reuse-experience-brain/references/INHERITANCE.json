@@ -176,9 +176,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-09-DSE-INCREMENTAL.md",
+      "sha256": "fffc3a96d0b5a8253cc0256814bde28cdd747029e43b5437ac47dbaf70f64edb",
+      "bytes": 7393,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "21 daily files byte-hashed and registered (Nov4 missing); 16 original contents read through Nov8; 39 selected experience cards (36 prior + 3 Nov8); historical distillation incomplete; original Vault never migrated; business T_VALID memory benefit NOT_MEASURED",
+  "limits": "22 daily source files hashed and registered (Nov4 original missing); 17 original daily contents read through Nov9, 41 selected experience cards; historical evidence not fully distilled or migrated; business memory net T_VALID NOT_MEASURED.",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -327,7 +335,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-08",
+  "latest_incremental_date": "2026-11-09",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -456,7 +464,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "2026-11-08 original Vault daily created/read and hash checked; 21 registered daily sources (Nov4 missing), 16 original contents read, 39 scoped selected cards (36 prior + 3 new). Original Pi 17:42 manual test and scheduled 21:03 evidence review separately time-stamped; mature business composition new=0; no entire conversation visibility or complete memory T_VALID.",
+  "latest_incremental_scope": "Nov9 original Vault daily created/read and SHA registered, 22 daily files (Nov4 absent), 17 original daily bodies read, 41 selected scoped experience cards (39 prior+2); Pi original 5 draft candidates reviewed by GPT; GUI direct POST falsely passed candidate but clean Pi short control reported FAIL/PARTIAL. Visual avatar technical output quality pending, new verified business recipe=0, Docker latest WSL failure; no whole-business memory T_VALID measured.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -572,6 +580,45 @@
       "sha256": "f2d691fd21d192a8d78f315e5465417bdec86b004887005ff8f7854004279ab5",
       "content_read": true,
       "evidence_scope": "Single original Vault 21:00 daily incremental body; Memory Lint, local explicit Hot Sync and Health Check passed; original content stays on C."
+    }
+  ],
+  "incremental_case_sources_20261109": [
+    {
+      "experience_id": "EXP-AGENT-PATH-20261109-001",
+      "path": "instructions/AGENT-GUIDANCE-REALITY-20261109.md",
+      "content_read": true,
+      "evidence_scope": "R2 26,R3 6,R4 4 isolated tasks, 40 Codex/Pi native calls; Pi candidate GUI broken button bypassed via POST then false PASS, Pi clean short control bypassed but PARTIAL/UI FAIL; 159 line candidate NOT_DEPLOYED, no real client financial action."
+    },
+    {
+      "experience_id": "EXP-AGENT-PATH-20261109-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\agent-guidance-gates-r2-20261109\\MANUAL-ADJUDICATION.json",
+      "content_read": true,
+      "evidence_scope": "Original judge scope correction for ambiguous immutable checker, damaged ZIP REJECTED, incomplete required amount PARTIAL/report conflict; R3/R4 held-out original RESULT files also read. Original machine grades retained."
+    },
+    {
+      "experience_id": "EXP-AGENT-PATH-20261109-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\daily-review-r71\\runs\\20261109-211238-435634\\SEMANTIC-AUDIT.json",
+      "content_read": true,
+      "evidence_scope": "Pi model created five candidate lessons from 7 explicit local receipts at 21:12:38-21:17:08; GPT independently reviewed original guidance test and corrected scoped meaning, no stable promotion."
+    },
+    {
+      "experience_id": "EXP-AVATAR-20261109-001",
+      "path": "skills/visual-art-engine-performance-ladder/references/AVATAR-REALITY-20261109.json",
+      "content_read": true,
+      "evidence_scope": "Fixed MuseTalk 1.5 original twice replayed and same identity adapted to Chinese 14.736 sec audio plus FFmpeg demo, technical outputs inspected; normal-speed audio/video and subjective lip accuracy NOT_MEASURED, no new fully valid business recipe."
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Nov 9 17:03:40.4098494 +08 REQUIRES_DIAGNOSIS, Docker WSL prewarm failed; earlier successes historical, no repair or current engine live probe."
+    },
+    {
+      "experience_id": "DAILY-DSE-20261109",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-09-DSE-INCREMENTAL.md",
+      "sha256": "fffc3a96d0b5a8253cc0256814bde28cdd747029e43b5437ac47dbaf70f64edb",
+      "content_read": true,
+      "evidence_scope": "Original Vault daily created and independently read/linted; local explicit Hot Sync 13 files/0 missing and Health Check PASS; original body remains on C and no all-chat visibility."
     }
   ]
 }
