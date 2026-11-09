@@ -36,10 +36,26 @@
       "local": "NOT_EXECUTED",
       "scope": "frontal small-expression candidate",
       "missing": [
-        "high quality original output matched to the exact free recipe",
-        "matching environment and weights",
+        "exact free code/weight version pairing",
+        "whole dynamic and audio review",
+        "matching environment",
         "original replay then repeat and input migration"
-      ]
+      ],
+      "external_reference_file": {
+        "url": "https://wellstsai.com/post/live-portrait/demo.mp4",
+        "width": 724,
+        "height": 724,
+        "fps": 25,
+        "frames": 78,
+        "duration_seconds": 3.12,
+        "reviewed_frames": [
+          0,
+          39,
+          77
+        ],
+        "whole_dynamic_review": "NOT_COMPLETED",
+        "kind": "EXTERNAL_PRACTITIONER_OUTPUT_NOT_LOCAL_INFERENCE"
+      }
     },
     {
       "id": "facefusion",
