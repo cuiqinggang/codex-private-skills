@@ -1,0 +1,3168 @@
+{
+  "date": "2026-11-09",
+  "query_result_bundles": 55,
+  "unique_source_locators": 395,
+  "sources": [
+    {
+      "title": "LivePortrait Test in ComfyUI with GTX 1060 6GB",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1dzp864",
+      "ref": "turn29reddit6",
+      "discovery_bundle": "portrait",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Live Portrait - How to make talking AI Avatars in ComfyUI?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1dwz27s",
+      "ref": "turn29reddit7",
+      "discovery_bundle": "portrait",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "🔥 ComfyUI LivePortrait - Viki",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1dwhp0f/comfyui_liveportrait_viki/",
+      "ref": "turn29reddit8",
+      "discovery_bundle": "portrait",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "AnimateDiff and LivePortrait (First real test)",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1e12sav",
+      "ref": "turn29reddit9",
+      "discovery_bundle": "portrait",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - GooglePhone/LivePortrait · GitHub",
+      "url": "https://github.com/GooglePhone/LivePortrait",
+      "ref": "turn29search0",
+      "discovery_bundle": "portrait",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "LivePortrait/app.py at main · KlingAIResearch/LivePortrait · GitHub",
+      "url": "https://github.com/KlingAIResearch/LivePortrait/blob/main/app.py",
+      "ref": "turn29search1",
+      "discovery_bundle": "portrait",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "MuseTalk 1.5 vs LatentSync 1.6: Tested on RTX 3090 - Musetalk",
+      "url": "https://musetalkai.com/musetalk-vs-latentsync/",
+      "ref": "turn28search0",
+      "discovery_bundle": "lipsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Talking Face Generation on HDTF benchmark leaderboard · SOTA2 Research",
+      "url": "https://www.sota2.com/research/sota/talking-face-generation-on-hdtf",
+      "ref": "turn28search1",
+      "discovery_bundle": "lipsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "IP-Adapter Is All You Need: Towards Fine-Tuning-Free Diffusion-Based Talking Face Generation",
+      "url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Wu_IP-Adapter_Is_All_You_Need_Towards_Fine-Tuning-Free_Diffusion-Based_Talking_Face_CVPR_2026_paper.pdf",
+      "ref": "turn28search5",
+      "discovery_bundle": "lipsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - jjt997/musetalk: MuseTalk: Real-Time High Quality Lip Synchorization with Latent Space Inpainting · GitHub",
+      "url": "https://github.com/jjt997/musetalk",
+      "ref": "turn28search2",
+      "discovery_bundle": "lipsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Infinite Talk: lip-sync/V2V (ComfyUI workflow)",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1n3c5hq/infinite_talk_lipsyncv2v_comfyui_workflow/",
+      "ref": "turn28reddit6",
+      "discovery_bundle": "lipsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "How to make InfiniteTalk FASTER??",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1ndc4dt/how_to_make_infinitetalk_faster/",
+      "ref": "turn28reddit7",
+      "discovery_bundle": "lipsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Infinite Talk: lip-sync/I2V (ComfyUI Workflow)",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1n0aiqa/infinite_talk_lipsynci2v_comfyui_workflow/",
+      "ref": "turn28reddit8",
+      "discovery_bundle": "lipsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Making a talking head speak my audio",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1on5vz4",
+      "ref": "turn28reddit9",
+      "discovery_bundle": "lipsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "MuseTalk Lipsync: What the Free Model Really Delivers",
+      "url": "https://aireiter.com/blog/musetalk-lipsync-review-cost-vs-paid-apis",
+      "ref": "turn28search3",
+      "discovery_bundle": "lipsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "SadTalker vs Wav2Lip for portrait and existing video workflows | Clout AI",
+      "url": "https://cloutstudio.ai/blog/sadtalker-vs-wav2lip",
+      "ref": "turn28search4",
+      "discovery_bundle": "lipsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "VisoMaster - Newest Open Source SOTA 0-Shot Face Swapping / Deep Fake APP with so many extra features - How to use Tutorial with Images",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1iikm0k",
+      "ref": "turn27reddit6",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Faceswap : Is It Worth To Work With ComfyUI ?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1m7lrdp",
+      "ref": "turn27reddit7",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "VisoMaster (Formerly Rope-next) – A New Face-Swapping Suite Released!",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1ieff29",
+      "ref": "turn27reddit8",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Rope Pearl vs Next vs Visomaster... Are they all basically the same?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1jbrmpm",
+      "ref": "turn27reddit9",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Face fusion 3.2.0 10 second content filter?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1lrphxy",
+      "ref": "turn27reddit10",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Open Source Video Face Swapping?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1m3su1k",
+      "ref": "turn27reddit11",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best way to swap face if I have 5-7 images of the same face from multiple angles?",
+      "url": "https://www.reddit.com/r/comfyui/comments/1lc5u9v/best_way_to_swap_face_if_i_have_57_images_of_the/",
+      "ref": "turn27reddit12",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Introduction | FaceFusion",
+      "url": "https://docs.facefusion.io/",
+      "ref": "turn27search0",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "facefusion/README.md at master · facefusion/facefusion · GitHub",
+      "url": "https://github.com/facefusion/facefusion/blob/master/README.md?plain=1",
+      "ref": "turn27search1",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FaceFusion: Install, Face Swap a Video, Run It on a Mac",
+      "url": "https://jutsustudio.com/blog/facefusion/",
+      "ref": "turn27search2",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Free Video: FaceFusion Face Swap Tutorial - Installation and Usage for Images and Videos from Eran Feit | Class Central",
+      "url": "https://www.classcentral.com/course/youtube-facefusion-face-swap-is-wild-full-facefusion-installation-and-tutorial-350760",
+      "ref": "turn27search3",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "How to Face Swap ANY Video with Local AI - Easy Setup | FaceFusion - YouTube",
+      "url": "https://www.youtube.com/watch?v=QBZJCoTCdLw",
+      "ref": "turn27youtube13",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "facefusion/facefusion.ini at master · facefusion/facefusion · GitHub",
+      "url": "https://github.com/facefusion/facefusion/blob/master/facefusion.ini",
+      "ref": "turn27search4",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - facefusion/facefusion: Industry leading face manipulation platform · GitHub",
+      "url": "https://github.com/facefusion/facefusion",
+      "ref": "turn27search5",
+      "discovery_bundle": "faceswap",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best Open-Source Virtual Try-On Models in 2026 | FASHN",
+      "url": "https://fashn.ai/blog/comparing-the-top-4-open-source-virtual-try-on-viton-models",
+      "ref": "turn30search0",
+      "discovery_bundle": "garment",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Testing AI Virtual Try-On for Fashion Commerce – allure commerce",
+      "url": "https://www.allurecommerce.com/blogs/tech-talk/testing-ai-virtual-try-on-for-fashion-commerce",
+      "ref": "turn30search1",
+      "discovery_bundle": "garment",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Paper-Notes-en/docs/CVPR2025/image_generation/learning_flow_fields_in_attention_for_controllable_person_image_generation.md at main · zhaoyang97/Paper-Notes-en · GitHub",
+      "url": "https://github.com/zhaoyang97/Paper-Notes-en/blob/main/docs/CVPR2025/image_generation/learning_flow_fields_in_attention_for_controllable_person_image_generation.md",
+      "ref": "turn30search2",
+      "discovery_bundle": "garment",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "opentryon/docs/docs/getting-started/mcp.md at main · tryonlabs/opentryon · GitHub",
+      "url": "https://github.com/tryonlabs/opentryon/blob/main/docs/docs/getting-started/mcp.md",
+      "ref": "turn30search3",
+      "discovery_bundle": "garment",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "The devil is in the details: Enhancing Video Virtual Try-On via Keyframe-Driven Details Injection",
+      "url": "https://openaccess.thecvf.com/content/CVPR2026/papers/He_The_devil_is_in_the_details_Enhancing_Video_Virtual_Try-On_CVPR_2026_paper.pdf",
+      "ref": "turn30search8",
+      "discovery_bundle": "garment",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Video virtual try-on research record - Video Generation 101",
+      "url": "https://gvclab.github.io/Video-Generation-101/sources/research_20260830_video_virtual_try_on.html",
+      "ref": "turn30search4",
+      "discovery_bundle": "garment",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Under review as a conference paper at ICLR 2026",
+      "url": "https://openreview.net/pdf/7b7986c7427e73cff7e5352f68a16dab18dfb818.pdf",
+      "ref": "turn30search9",
+      "discovery_bundle": "garment",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - fish-tech-ai/VTON: [ICLR 2025] CatVTON is a simple and efficient virtual try-on diffusion model with 1) Lightweight Network (899.06M parameters totally), 2) Parameter-Efficient Training (49.57M parameters trainable) and 3) Simplified Inference (< 8G VRAM for 1024X768 resolution). · GitHub",
+      "url": "https://github.com/fish-tech-ai/VTON",
+      "ref": "turn30search5",
+      "discovery_bundle": "garment",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - franciszzj/Leffa: [CVPR 2025] Learning Flow Fields in Attention for Controllable Person Image Generation · GitHub",
+      "url": "https://github.com/franciszzj/Leffa",
+      "ref": "turn30search6",
+      "discovery_bundle": "garment",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "We Just Launched Virtual Try-On in Our API — Here's How It Actually Works (With Real Results) - DEV Community",
+      "url": "https://dev.to/om_prakash_3311f8a4576605/we-just-launched-virtual-try-on-in-our-api-heres-how-it-actually-works-with-real-results-4m2g",
+      "ref": "turn30search7",
+      "discovery_bundle": "garment",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "docs/tutorials/video/wan/wan2-2-animate.mdx at main · Comfy-Org/docs · GitHub",
+      "url": "https://github.com/Comfy-Org/docs/blob/main/tutorials/video/wan/wan2-2-animate.mdx",
+      "ref": "turn31search0",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Wan-Animate-2/README.md at main · Wan-Video/Wan-Animate-2 · GitHub",
+      "url": "https://github.com/Wan-Video/Wan-Animate-2/blob/main/README.md",
+      "ref": "turn31search1",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Wan · Hugging Face",
+      "url": "https://huggingface.co/docs/diffusers/main/api/pipelines/wan",
+      "ref": "turn31search2",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Wan Animate in ComfyUI: A Complete Guide to Video Generation and Character Replacement | Installa... - YouTube",
+      "url": "https://www.youtube.com/watch?v=fUNbH3o_cE0",
+      "ref": "turn31youtube7",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Research & Development",
+      "url": "https://markdkberry.com/workflows/research/",
+      "ref": "turn31search3",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Wan Animate Workflow - Replace your character in any video",
+      "url": "https://www.reddit.com/r/comfyui/comments/1nr3vzm/wan_animate_workflow_replace_your_character_in/",
+      "ref": "turn31reddit8",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "[Workflow updated] Swapped Joker with Harley Quinn in the Classic Stair Dance!",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1suzdjy/workflow_updated_swapped_joker_with_harley_quinn/",
+      "ref": "turn31reddit9",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Realistic Vid-2-Vid Mimic Motion + AnimateLCM Dance Video - Fully Local Generation (Workflow in Comments)",
+      "url": "https://www.reddit.com/r/comfyui/comments/1f4w8rq",
+      "ref": "turn31reddit10",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Mimic Motion for Character and Animate Diff for Background (Workflow in Comments)",
+      "url": "https://www.reddit.com/r/comfyui/comments/1ent6sx",
+      "ref": "turn31reddit11",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Human Image Animation on Unseen100 benchmark leaderboard · SOTA2 Research",
+      "url": "https://www.sota2.com/research/sota/human-image-animation-on-unseen100",
+      "ref": "turn31search4",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Paper-Notes-en/docs/ICCV2025/image_generation/video_motion_graphs.md at main · zhaoyang97/Paper-Notes-en · GitHub",
+      "url": "https://github.com/zhaoyang97/Paper-Notes-en/blob/main/docs/ICCV2025/image_generation/video_motion_graphs.md",
+      "ref": "turn31search5",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Published as a conference paper at ICLR 2025",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2025/file/236f915dd02af4f11927f67330b21d4b-Paper-Conference.pdf",
+      "ref": "turn31search12",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Paper-Notes-en/docs/CVPR2025/image_generation/stableanimator_high-quality_identity-preserving_human_image_animation.md at main · zhaoyang97/Paper-Notes-en · GitHub",
+      "url": "https://github.com/zhaoyang97/Paper-Notes-en/blob/main/docs/CVPR2025/image_generation/stableanimator_high-quality_identity-preserving_human_image_animation.md",
+      "ref": "turn31search6",
+      "discovery_bundle": "body",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Workflow & Asset Compatibility | LTX Documentation",
+      "url": "https://docs.ltx.io/open-source-model/reference/workflow-asset-compatibility/",
+      "ref": "turn32search0",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "The_frizzy1-Workflows/docs/COMPATIBILITY.md at main · Thefrizzy1/The_frizzy1-Workflows · GitHub",
+      "url": "https://github.com/Thefrizzy1/The_frizzy1-Workflows/blob/main/docs/COMPATIBILITY.md",
+      "ref": "turn32search1",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - super3/Wan2GP: A fast AI Video Generator for the GPU Poor. Supports Wan 2.1/2.2, LTX-2, Qwen Image, Hunyuan Video, LTX Video and Flux. · GitHub",
+      "url": "https://github.com/super3/Wan2GP",
+      "ref": "turn32search2",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Confirmed working configuration requested: RX 7800 XT gfx1101 on Windows · Issue #2080 · deepbeepmeep/Wan2GP · GitHub",
+      "url": "https://github.com/deepbeepmeep/Wan2GP/issues/2080",
+      "ref": "turn32search3",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Complete novice: How do I install and use Wan 2.2 locally?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1mckmep/complete_novice_how_do_i_install_and_use_wan_22/",
+      "ref": "turn32reddit12",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "The_frizzy1-Workflows/README.md at main · Thefrizzy1/The_frizzy1-Workflows · GitHub",
+      "url": "https://github.com/Thefrizzy1/The_frizzy1-Workflows/blob/main/README.md",
+      "ref": "turn32search4",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - lapreale/The_frizzy1-Workflows_comfyUi: Verified, organised docs for every The_frizzy1 low-VRAM ComfyUI workflow - GGUF image/video/audio from 4GB VRAM. · GitHub",
+      "url": "https://github.com/lapreale/The_frizzy1-Workflows_comfyUi",
+      "ref": "turn32search5",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "[LTX-2] What I learned by comparing it with I2V and Framepack｜じゅん",
+      "url": "https://note.com/jun_wakaya/n/n09121cfeb075?hl=en",
+      "ref": "turn32search6",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "WAN 2.2 + external actors > LTX-2 upscaler/refiner/actor reinforcement in ComfyUI - Dystalgia - Aurel Manea Art",
+      "url": "https://aurelm.com/2026/02/28/wan-2-2-external-actors-ltx-2-upscaler-refiner-actor-reinforcement-in-comfyui/",
+      "ref": "turn32search7",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "qvac/packages/diffusion-cpp/README.md at main · tetherto/qvac · GitHub",
+      "url": "https://github.com/tetherto/qvac/blob/main/packages/diffusion-cpp/README.md",
+      "ref": "turn32search8",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Update VibeMV Colab notebooks - 2026-01-07 · Westcoastrenmen/Vibemv at 4b6293e",
+      "url": "https://huggingface.co/spaces/Westcoastrenmen/Vibemv/commit/4b6293e5b2af2de3c29150f7ffb4b50bc76f870d",
+      "ref": "turn32search9",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Stable Video Diffusion: Stability AI's video generation model (MIT, 6k stars) — Nivant Labs",
+      "url": "https://nivantlabs.com/blog/ai-tools-stable-video-diffusion/",
+      "ref": "turn32search10",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Stable Video Diffusion: Video Generation AI with ComfyUI | Otama's Playground",
+      "url": "https://blog.otama-playground.com/en/posts/20240520/1716132597",
+      "ref": "turn32search11",
+      "discovery_bundle": "generation",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - bytedance/LatentSync: Taming Stable Diffusion for Lip Sync! · GitHub",
+      "url": "https://github.com/bytedance/LatentSync",
+      "ref": "turn34search0",
+      "discovery_bundle": "latentsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI_LatentSync/examples/latentsync_comfyui_basic.json at main · hay86/ComfyUI_LatentSync · GitHub",
+      "url": "https://github.com/hay86/ComfyUI_LatentSync/blob/main/examples/latentsync_comfyui_basic.json",
+      "ref": "turn34search1",
+      "discovery_bundle": "latentsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - hay86/ComfyUI_LatentSync: Unofficial implementation of LatentSync in ComfyUI · GitHub",
+      "url": "https://github.com/hay86/ComfyUI_LatentSync",
+      "ref": "turn34search2",
+      "discovery_bundle": "latentsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI-LatentSync/README.md at main · lvqunx/ComfyUI-LatentSync · GitHub",
+      "url": "https://github.com/lvqunx/ComfyUI-LatentSync/blob/main/README.md",
+      "ref": "turn34search3",
+      "discovery_bundle": "latentsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - ShmuelRonen/ComfyUI-LatentSyncWrapper: This node provides lip-sync capabilities in ComfyUI using ByteDance's LatentSync model. It allows you to synchronize video lips with audio input. · GitHub",
+      "url": "https://github.com/ShmuelRonen/ComfyUI-LatentSyncWrapper",
+      "ref": "turn34search4",
+      "discovery_bundle": "latentsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI-LatentSyncWrapper/README.md at main · ShmuelRonen/ComfyUI-LatentSyncWrapper · GitHub",
+      "url": "https://github.com/ShmuelRonen/ComfyUI-LatentSyncWrapper/blob/main/README.md",
+      "ref": "turn34search5",
+      "discovery_bundle": "latentsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Issues · bytedance/LatentSync · GitHub",
+      "url": "https://github.com/bytedance/LatentSync/issues",
+      "ref": "turn34search6",
+      "discovery_bundle": "latentsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Examples – bytedance/latentsync | Replicate",
+      "url": "https://replicate.com/bytedance/latentsync/examples",
+      "ref": "turn34search7",
+      "discovery_bundle": "latentsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI-LipSync-GAP/README.md at main · GeekatplayStudio/ComfyUI-LipSync-GAP · GitHub",
+      "url": "https://github.com/GeekatplayStudio/ComfyUI-LipSync-GAP/blob/main/README.md",
+      "ref": "turn34search8",
+      "discovery_bundle": "latentsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "MimicPC - ComfyUI-LatentSync 1.6: Video Lip Sync",
+      "url": "https://www.mimicpc.com/workflows/comfyui-latentsync-16-video-lip-sync",
+      "ref": "turn34search9",
+      "discovery_bundle": "latentsync",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - antgroup/echomimic_v2: [CVPR 2025] EchoMimicV2: Towards Striking, Simplified, and Semi-Body Human Animation · GitHub",
+      "url": "https://github.com/antgroup/echomimic_v2",
+      "ref": "turn35search0",
+      "discovery_bundle": "echomimic",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "echomimic_v2/README.md at main · antgroup/echomimic_v2 · GitHub",
+      "url": "https://github.com/antgroup/echomimic_v2/blob/main/README.md",
+      "ref": "turn35search1",
+      "discovery_bundle": "echomimic",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "README.md · BadToBest/EchoMimicV2 at main",
+      "url": "https://huggingface.co/BadToBest/EchoMimicV2/blob/main/README.md",
+      "ref": "turn35search2",
+      "discovery_bundle": "echomimic",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - smthemex/ComfyUI_EchoMimic: You can using EchoMimic in ComfyUI · GitHub",
+      "url": "https://github.com/smthemex/ComfyUI_EchoMimic",
+      "ref": "turn35search3",
+      "discovery_bundle": "echomimic",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "EchoMimicV2-ComfyUI/doc/base_workflow.json at main · AIFSH/EchoMimicV2-ComfyUI · GitHub",
+      "url": "https://github.com/AIFSH/EchoMimicV2-ComfyUI/blob/main/doc/base_workflow.json",
+      "ref": "turn35search4",
+      "discovery_bundle": "echomimic",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI_EchoMimic/README.md at main · smthemex/ComfyUI_EchoMimic · GitHub",
+      "url": "https://github.com/smthemex/ComfyUI_EchoMimic/blob/main/README.md",
+      "ref": "turn35search5",
+      "discovery_bundle": "echomimic",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "MimicPC - AJO - EchoMimic Lifelike Audio-Driven Portrait Animations V1 and V2 Models",
+      "url": "https://www.mimicpc.com/workflows/ajo-echomimic-lifelike-audio-driven-portrait-animations-v1-and-v2-models",
+      "ref": "turn35search6",
+      "discovery_bundle": "echomimic",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "EchoMimic_v2 Photo_Talk",
+      "url": "https://www.reddit.com/r/comfyui/comments/1hgzey8",
+      "ref": "turn35reddit8",
+      "discovery_bundle": "echomimic",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "EchoMimic v2 Animate AI Avatar Locally In ComfyUI And Gradio - Tutorial Guide - YouTube",
+      "url": "https://www.youtube.com/watch?v=ldkN_bO5-wg",
+      "ref": "turn35youtube9",
+      "discovery_bundle": "echomimic",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "EchoMimicV2-ComfyUI detailed guide | ComfyUI",
+      "url": "https://www.runcomfy.com/comfyui-nodes/EchoMimicV2-ComfyUI",
+      "ref": "turn35search7",
+      "discovery_bundle": "echomimic",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Echomimic V2：全新数字人加速模型，10倍提速|New Acceleration Model: 10x Faster with Stunning Results! - YouTube",
+      "url": "https://www.youtube.com/watch?v=NdWbAkBB0dg",
+      "ref": "turn35youtube10",
+      "discovery_bundle": "echomimic",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - hay86/ComfyUI_Hallo: Unofficial implementation of Hallo in ComfyUI · GitHub",
+      "url": "https://github.com/hay86/ComfyUI_Hallo",
+      "ref": "turn37search0",
+      "discovery_bundle": "hallo",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - AIFSH/ComfyUI-Hallo · GitHub",
+      "url": "https://github.com/AIFSH/ComfyUI-Hallo",
+      "ref": "turn37search1",
+      "discovery_bundle": "hallo",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Make Them Speak — AI Voice Clone + Lip-Sync Video Workflow",
+      "url": "https://shahzaib632.gumroad.com/l/ukbmw",
+      "ref": "turn37search2",
+      "discovery_bundle": "hallo",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - ShmuelRonen/ComfyUI-JoyHallo_wrapper: A ComfyUI custom node wrapper for JoyHallo - One-Shot Audio-Driven Talking Head Generation. · GitHub",
+      "url": "https://github.com/ShmuelRonen/ComfyUI-JoyHallo_wrapper",
+      "ref": "turn37search3",
+      "discovery_bundle": "hallo",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI Tutorial Series Ep 38: Bring Portraits to Life! Talking Avatar with Sonic - YouTube",
+      "url": "https://www.youtube.com/watch?v=3pN2KA6-G0I",
+      "ref": "turn37youtube9",
+      "discovery_bundle": "hallo",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Generate Talking-Head Videos Workflow - Comfy",
+      "url": "https://comfy.org/hub/workflows/generate-talking-head-videos-2fe0313c0bb9/",
+      "ref": "turn37search4",
+      "discovery_bundle": "hallo",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Make your character talk Workflow - Comfy",
+      "url": "https://comfy.org/hub/workflows/talking-character/",
+      "ref": "turn37search5",
+      "discovery_bundle": "hallo",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - Sean-Bradley/ComfyUI-Sonic: Custom node that takes an audio mp3 and an image, and creates a lip synced video from them. · GitHub",
+      "url": "https://github.com/Sean-Bradley/ComfyUI-Sonic",
+      "ref": "turn37search6",
+      "discovery_bundle": "hallo",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI Sonic Workflow for Digital Human Video Generation | ComfyUI Wiki",
+      "url": "https://comfyui-wiki.com/en/tutorial/advanced/sonic-video",
+      "ref": "turn37search7",
+      "discovery_bundle": "hallo",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI-Sonic - ComfyUI Cloud",
+      "url": "https://comfy.icu/extension/Sean-Bradley__ComfyUI-Sonic",
+      "ref": "turn37search8",
+      "discovery_bundle": "hallo",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Sonic avatar photo talk (support any aspect ratio)",
+      "url": "https://www.reddit.com/r/comfyui/comments/1imygel",
+      "ref": "turn37reddit10",
+      "discovery_bundle": "hallo",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Finally did it! New Virtual Try-on with FLUX framework! 🎉",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1gygbo4",
+      "ref": "turn40reddit3",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best model for virtual try on",
+      "url": "https://www.reddit.com/r/comfyui/comments/1h74itl/best_model_for_virtual_try_on/",
+      "ref": "turn40reddit4",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "IDM-Vton is painfully slow",
+      "url": "https://www.reddit.com/r/comfyui/comments/1edy4sf",
+      "ref": "turn40reddit5",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Why is virtual tryon still so difficult with diffusion models?",
+      "url": "https://www.reddit.com/r/computervision/comments/1kr4d9f/why_is_virtual_tryon_still_so_difficult_with/",
+      "ref": "turn40reddit6",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "IDM VTON Poor Performance on 4090?",
+      "url": "https://www.reddit.com/r/comfyui/comments/1edr07r",
+      "ref": "turn40reddit7",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "IDM VTON can transfer objects as well not only clothing and it works pretty fast as well with addition of low VRAM demand",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1iu7tbs",
+      "ref": "turn40reddit8",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Developer help!",
+      "url": "https://www.reddit.com/r/vibecoding/comments/1v0qmod/developer_help/",
+      "ref": "turn40reddit9",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "IDM VTON final output colour mismatch",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1p5ria8/idm_vton_final_output_colour_mismatch/",
+      "ref": "turn40reddit10",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Virtual try on",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1irwfqh",
+      "ref": "turn40reddit11",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Clothing-Preserving Body Swap",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1k9rjbt",
+      "ref": "turn40reddit12",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "catvtonFlux try-on",
+      "url": "https://www.reddit.com/r/comfyui/comments/1i1wkce",
+      "ref": "turn40reddit13",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "IDM-VTON (Virtual Try-on) is Just Another Level - Extreme Robustness and Accuracy - Very fun to play - Hugging Face Demo Link in the Comments",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1ce2iax",
+      "ref": "turn40reddit14",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "reddit.com: api documentation",
+      "url": "https://www.reddit.com/dev/api/",
+      "ref": "turn40search0",
+      "discovery_bundle": "tryon_independent",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - vivoCameraResearch/Magic-TryOn: MagicTryOn is a video virtual try-on framework based on a large-scale video diffusion Transformer. · GitHub",
+      "url": "https://github.com/vivoCameraResearch/Magic-TryOn",
+      "ref": "turn33search0",
+      "discovery_bundle": "tryon_video",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Magic-TryOn/README.md at main · vivoCameraResearch/Magic-TryOn · GitHub",
+      "url": "https://github.com/vivoCameraResearch/Magic-TryOn/blob/main/README.md",
+      "ref": "turn33search1",
+      "discovery_bundle": "tryon_video",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - hygenie1228/MagicTryon: MagicTryOn is a video virtual try-on framework based on a large-scale video diffusion Transformer. · GitHub",
+      "url": "https://github.com/hygenie1228/MagicTryon",
+      "ref": "turn33search2",
+      "discovery_bundle": "tryon_video",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "MagicTryon/README.md at main · hygenie1228/MagicTryon · GitHub",
+      "url": "https://github.com/hygenie1228/MagicTryon/blob/main/README.md",
+      "ref": "turn33search3",
+      "discovery_bundle": "tryon_video",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "LuckyLiGY/MagicTryOn · Hugging Face",
+      "url": "https://huggingface.co/LuckyLiGY/MagicTryOn",
+      "ref": "turn33search4",
+      "discovery_bundle": "tryon_video",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "MagicTryOn: Harnessing Diffusion Transformer for Garment-Preserving Video Virtual Try-on",
+      "url": "https://vivocameraresearch.github.io/magictryon/",
+      "ref": "turn33search5",
+      "discovery_bundle": "tryon_video",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Usage Guide | vivoCameraResearch/Magic-TryOn | DeepWiki",
+      "url": "https://deepwiki.com/vivoCameraResearch/Magic-TryOn/3-usage-guide",
+      "ref": "turn33search6",
+      "discovery_bundle": "tryon_video",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "MagicTryOn: AI Video Virtual Try-on - Real-time Dynamic Garment Swapping",
+      "url": "https://magic-tryon.com/",
+      "ref": "turn33search7",
+      "discovery_bundle": "tryon_video",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "README.md · LuckyLiGY/MagicTryOn at main",
+      "url": "https://huggingface.co/LuckyLiGY/MagicTryOn/blob/main/README.md?code=true",
+      "ref": "turn33search8",
+      "discovery_bundle": "tryon_video",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "VisoMaster/README.md at main · visomaster/VisoMaster · GitHub",
+      "url": "https://github.com/visomaster/VisoMaster/blob/main/README.md",
+      "ref": "turn36search0",
+      "discovery_bundle": "visomaster",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Releases · visomaster/VisoMaster · GitHub",
+      "url": "https://github.com/visomaster/VisoMaster/releases",
+      "ref": "turn36search1",
+      "discovery_bundle": "visomaster",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "VisoMaster/LICENSE at main · visomaster/VisoMaster · GitHub",
+      "url": "https://github.com/visomaster/VisoMaster/blob/main/LICENSE",
+      "ref": "turn36search2",
+      "discovery_bundle": "visomaster",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "VisoMaster · GitHub",
+      "url": "https://github.com/visomaster/",
+      "ref": "turn36search3",
+      "discovery_bundle": "visomaster",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "VisoMaster-Fusion/README.md at main · VisoMasterFusion/VisoMaster-Fusion · GitHub",
+      "url": "https://github.com/VisoMasterFusion/VisoMaster-Fusion/blob/main/README.md",
+      "ref": "turn36search4",
+      "discovery_bundle": "visomaster",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Releases · VisoMasterFusion/VisoMaster-Fusion · GitHub",
+      "url": "https://github.com/VisoMasterFusion/VisoMaster-Fusion/releases",
+      "ref": "turn36search5",
+      "discovery_bundle": "visomaster",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Issues · visomaster/VisoMaster · GitHub",
+      "url": "https://github.com/visomaster/VisoMaster/issues",
+      "ref": "turn36search6",
+      "discovery_bundle": "visomaster",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "VisoMaster-Fusion/docs/user_manual.md at main · VisoMasterFusion/VisoMaster-Fusion · GitHub",
+      "url": "https://github.com/VisoMasterFusion/VisoMaster-Fusion/blob/main/docs/user_manual.md",
+      "ref": "turn36search7",
+      "discovery_bundle": "visomaster",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - lllyasviel/FramePack: Lets make video diffusion practical! · GitHub",
+      "url": "https://github.com/lllyasviel/framepack",
+      "ref": "turn38search0",
+      "discovery_bundle": "framepack",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - lllyasviel/FramePack: Lets make video diffusion practical! · GitHub",
+      "url": "https://github.com/lllyasviel/FramePack",
+      "ref": "turn38search1",
+      "discovery_bundle": "framepack",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Releases · lllyasviel/FramePack · GitHub",
+      "url": "https://github.com/lllyasviel/FramePack/releases",
+      "ref": "turn38search2",
+      "discovery_bundle": "framepack",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "lllyasviel-FramePack/README.md at main · mykofzone/lllyasviel-FramePack · GitHub",
+      "url": "https://github.com/mykofzone/lllyasviel-FramePack/blob/main/README.md",
+      "ref": "turn38search3",
+      "discovery_bundle": "framepack",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FramePack Full Tutorial 1 Click to Install on Windows Up to 120 Second Image to Videos with 6GB · FurkanGozukara/Stable-Diffusion Wiki · GitHub",
+      "url": "https://github.com/FurkanGozukara/Stable-Diffusion/wiki/FramePack-Full-Tutorial-1-Click-to-Install-on-Windows-Up-to-120-Second-Image-to-Videos-with-6GB",
+      "ref": "turn38search4",
+      "discovery_bundle": "framepack",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FramePack Full Tutorial: 1-Click to Install on Windows , RunPod and Massed Compute , Supports RTX 5000 series GPUs as well - 15 wild examples · Issue #39 · lllyasviel/FramePack · GitHub",
+      "url": "https://github.com/lllyasviel/FramePack/issues/39",
+      "ref": "turn38search5",
+      "discovery_bundle": "framepack",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Windows Installation | lllyasviel/FramePack | DeepWiki",
+      "url": "https://deepwiki.com/lllyasviel/FramePack/3.1-windows-installation",
+      "ref": "turn38search6",
+      "discovery_bundle": "framepack",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FramePack Full Tutorial 1 Click to Install on Windows Up to 120 Second Image to Videos with 6GB · FurkanGozukara/Stable-Diffusion Wiki · GitHub",
+      "url": "https://github.com/FurkanGozukara/Stable-Diffusion/wiki/FramePack-Full-Tutorial-1-Click-to-Install-on-Windows-Up-to-120-Second-Image-to-Videos-with-6GB/24789c7c7331535f9ff5d7e060b56f12f32b875c",
+      "ref": "turn38search7",
+      "discovery_bundle": "framepack",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Starter Templates | Remotion",
+      "url": "https://www.remotion.dev/templates",
+      "ref": "turn42search0",
+      "discovery_bundle": "templates",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Audiogram | Remotion Template",
+      "url": "https://www.remotion.dev/templates/audiogram",
+      "ref": "turn42search1",
+      "discovery_bundle": "templates",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - remotion-dev/template-tiktok: Generate TikTok-style captions with Whisper.cpp · GitHub",
+      "url": "https://github.com/remotion-dev/template-tiktok",
+      "ref": "turn42search2",
+      "discovery_bundle": "templates",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "remotion/packages/docs/docs/resources.mdx at main · remotion-dev/remotion · GitHub",
+      "url": "https://github.com/remotion-dev/remotion/blob/main/packages/docs/docs/resources.mdx",
+      "ref": "turn42search3",
+      "discovery_bundle": "templates",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "List of resources | Remotion",
+      "url": "https://www.remotion.dev/docs/resources",
+      "ref": "turn42search4",
+      "discovery_bundle": "templates",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - remotion-dev/template-audiogram: A template for making podcast video clips with Remotion. · GitHub",
+      "url": "https://github.com/remotion-dev/template-audiogram",
+      "ref": "turn42search5",
+      "discovery_bundle": "templates",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "remotion-video-templates/README.md at main · AleBrito124356/remotion-video-templates · GitHub",
+      "url": "https://github.com/AleBrito124356/remotion-video-templates/blob/main/README.md",
+      "ref": "turn42search6",
+      "discovery_bundle": "templates",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - Thedurancode/locomotion-templates: 67 free Remotion templates. Copy code, edit props, render video. Property tour, data viz, intros, and more. · GitHub",
+      "url": "https://github.com/Thedurancode/locomotion-templates",
+      "ref": "turn42search7",
+      "discovery_bundle": "templates",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - reactvideoeditor/remotion-templates: Free Remotion Effects & Animations · GitHub",
+      "url": "https://github.com/reactvideoeditor/remotion-templates",
+      "ref": "turn42search8",
+      "discovery_bundle": "templates",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - maxtron777/remotion-business-templates: Production-ready Remotion video templates for agencies and businesses — testimonials, property listings, social ads, branded intros, and metric recaps · GitHub",
+      "url": "https://github.com/maxtron777/remotion-business-templates",
+      "ref": "turn42search9",
+      "discovery_bundle": "templates",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Free and paid Remotion templates (2026) · snapcn",
+      "url": "https://snapcn.dev/best-remotion-templates",
+      "ref": "turn42search10",
+      "discovery_bundle": "templates",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "custom_nodes/ComfyUI-LTXVideo/README.md · modest-mouse/ltx-ugc-bundle at main",
+      "url": "https://huggingface.co/modest-mouse/ltx-ugc-bundle/blob/main/custom_nodes/ComfyUI-LTXVideo/README.md?code=true",
+      "ref": "turn39search1",
+      "discovery_bundle": "ltx",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Text-to-Video Workflow for Beginners | LTX Documentation",
+      "url": "https://docs.ltx.io/open-source-model/usage-guides/text-to-video/",
+      "ref": "turn39search2",
+      "discovery_bundle": "ltx",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Text-to-Video Workflow for Beginners | LTX Documentation",
+      "url": "https://docs.ltx.io/open-source-model/usage-guides/text-to-video",
+      "ref": "turn39search3",
+      "discovery_bundle": "ltx",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Workflow & Asset Compatibility | LTX Documentation",
+      "url": "https://docs.ltx.io/open-source-model/reference/workflow-asset-compatibility",
+      "ref": "turn39search4",
+      "discovery_bundle": "ltx",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "What is the difference between LTX-2.3 Fast and LTX-2.3 Pro? – LTX Help Center",
+      "url": "https://help.ltx.io/hc/en-us/articles/37060855160210-What-is-the-difference-between-LTX-2-3-Fast-and-LTX-2-3-Pro",
+      "ref": "turn39search5",
+      "discovery_bundle": "ltx",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Two-Stage Generation | LTX Documentation",
+      "url": "https://docs.ltx.io/open-source-model/usage-guides/two-stage-generation/",
+      "ref": "turn39search6",
+      "discovery_bundle": "ltx",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "LTX-2.3_-_T2V_Basic.json · jxgs/LTX-2.3-Workflows at main",
+      "url": "https://huggingface.co/jxgs/LTX-2.3-Workflows/blob/main/LTX-2.3_-_T2V_Basic.json",
+      "ref": "turn39search7",
+      "discovery_bundle": "ltx",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "docs.comfy.org/tutorials/video/wan/wan2_2.mdx at main · sd-comfyui/docs.comfy.org · GitHub",
+      "url": "https://github.com/sd-comfyui/docs.comfy.org/blob/main/tutorials/video/wan/wan2_2.mdx",
+      "ref": "turn41search0",
+      "discovery_bundle": "wan_workflows",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI/blueprints/Text to Video (Wan 2.2).json at master · Comfy-Org/ComfyUI · GitHub",
+      "url": "https://github.com/Comfy-Org/ComfyUI/blob/master/blueprints/Text%20to%20Video%20%28Wan%202.2%29.json",
+      "ref": "turn41search1",
+      "discovery_bundle": "wan_workflows",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Comfy-Org/Wan-2.2 · Add ComfyUI workflow template links",
+      "url": "https://huggingface.co/Comfy-Org/Wan-2.2/discussions/27/files",
+      "ref": "turn41search2",
+      "discovery_bundle": "wan_workflows",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Wan2.2 (FP16/FP8/GGUF) VideoGen locally",
+      "url": "https://www.stablediffusiontutorials.com/2025/08/wan-2.2-video-generation.html",
+      "ref": "turn41search3",
+      "discovery_bundle": "wan_workflows",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "README.md · thaakeno46/ComfyUI-Workflows at d21e3dd",
+      "url": "https://huggingface.co/thaakeno46/ComfyUI-Workflows/blob/d21e3ddbabf77a22a4800be47946df061896554b/README.md",
+      "ref": "turn41search4",
+      "discovery_bundle": "wan_workflows",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Pixaroma Workflows - Free ComfyUI Workflows",
+      "url": "https://workflows.pixaroma.com/",
+      "ref": "turn41search5",
+      "discovery_bundle": "wan_workflows",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "I still can't believe FramePack lets me generate videos with just 6GB VRAM.",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1k45ycn",
+      "ref": "turn45reddit0",
+      "discovery_bundle": "practice2",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Cuda OOM with Framepack from lllyasviel's one click installer.",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1k4zgwb",
+      "ref": "turn45reddit1",
+      "discovery_bundle": "practice2",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Noob Question - RAM Specs Required for FramePack",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1lne6nm",
+      "ref": "turn45reddit2",
+      "discovery_bundle": "practice2",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "why is FramePack saying it needs 30gb when it should only need 6",
+      "url": "https://www.reddit.com/r/FramePack/comments/1k8nrx9",
+      "ref": "turn45reddit3",
+      "discovery_bundle": "practice2",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "How can i solve this issue ?? :( :( :(",
+      "url": "https://www.reddit.com/r/comfyui/comments/1i2gnuu",
+      "ref": "turn45reddit4",
+      "discovery_bundle": "practice2",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "RAM Usage at 98%/100% during video generation",
+      "url": "https://www.reddit.com/r/FramePack/comments/1k9wehw",
+      "ref": "turn45reddit5",
+      "discovery_bundle": "practice2",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Creating your own avatar",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1kq6e5v",
+      "ref": "turn45reddit6",
+      "discovery_bundle": "practice2",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FramePack settings for VRAM, can someone guide me values for the same?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1k6kwkt",
+      "ref": "turn45reddit7",
+      "discovery_bundle": "practice2",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FramePack - A new video generation method on local",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1k1exa7",
+      "ref": "turn45reddit8",
+      "discovery_bundle": "practice2",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FramePack generation speeds on various GPUs",
+      "url": "https://www.reddit.com/r/FramePack/comments/1kefde1",
+      "ref": "turn45reddit9",
+      "discovery_bundle": "practice2",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best model for (kind of) natural I2V lip sync with audio?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1k4u95w",
+      "ref": "turn45reddit10",
+      "discovery_bundle": "practice2",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Can 4070 GTX mobile 8gb make a video?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1kkujyr",
+      "ref": "turn45reddit11",
+      "discovery_bundle": "practice2",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "LivePortrait (in ComfyUI) combined with SVD",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1dywl0i",
+      "ref": "turn53reddit0",
+      "discovery_bundle": "portrait_more",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "🔥 ComfyUI Advanced Live Portrait + Webcam running on an RTX 4090! 🔥",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1fn655z",
+      "ref": "turn53reddit1",
+      "discovery_bundle": "portrait_more",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "One Year Later",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1ku6q8f",
+      "ref": "turn53reddit3",
+      "discovery_bundle": "portrait_more",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Maybe I'm bad at prompting them but both Klein 9B and ZiT seem really lacking in facial expressions",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1twda1w/maybe_im_bad_at_prompting_them_but_both_klein_9b/",
+      "ref": "turn53reddit4",
+      "discovery_bundle": "portrait_more",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Launching my \"first\" App",
+      "url": "https://www.reddit.com/r/SideProject/comments/1fnhvzc",
+      "ref": "turn53reddit5",
+      "discovery_bundle": "portrait_more",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "😲 LivePortrait: Efficient Portrait Animation with Stitching and Retargeting Control 🤯 Jupyter Notebook 🥳",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1dvepjx",
+      "ref": "turn53reddit6",
+      "discovery_bundle": "portrait_more",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI-LivePortraitKJ",
+      "url": "https://www.reddit.com/r/comfyui/comments/1dwamwr",
+      "ref": "turn53reddit7",
+      "discovery_bundle": "portrait_more",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Attempt to develop a 2D visual novel",
+      "url": "https://www.reddit.com/r/aigamedev/comments/1wvtuye/attempt_to_develop_a_2d_visual_novel/",
+      "ref": "turn53reddit8",
+      "discovery_bundle": "portrait_more",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "6 months ago I tried creating realistic characters with AI. It was quite hard and most could argue it looked more like animated stills. I tried it again with new technology it's still far from perfect but has advanced so much!",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1en4v5l",
+      "ref": "turn53reddit9",
+      "discovery_bundle": "portrait_more",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Finally working with LTX2 I2V and well I am underwelmed",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1qlo2ga/finally_working_with_ltx2_i2v_and_well_i_am/",
+      "ref": "turn53reddit10",
+      "discovery_bundle": "portrait_more",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Bringing my pixel art character alive with AI",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1edjv7y",
+      "ref": "turn53reddit11",
+      "discovery_bundle": "portrait_more",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Facial expression creation AdvancedLivePortrait - RunningHub AI Apps",
+      "url": "https://www.runninghub.ai/ai-detail/1876853581272801281",
+      "ref": "turn47search0",
+      "discovery_bundle": "portrait_variants",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "LivePortrait/src/config/argument_config.py at main · KlingAIResearch/LivePortrait · GitHub",
+      "url": "https://github.com/KlingAIResearch/LivePortrait/blob/main/src/config/argument_config.py",
+      "ref": "turn47search1",
+      "discovery_bundle": "portrait_variants",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - redmiroot/LivePortrait · GitHub",
+      "url": "https://github.com/redmiroot/LivePortrait",
+      "ref": "turn47search2",
+      "discovery_bundle": "portrait_variants",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "best-of-ai/reviews/image-video.md at main · archestack/best-of-ai · GitHub",
+      "url": "https://github.com/archestack/best-of-ai/blob/main/reviews/image-video.md",
+      "ref": "turn47search3",
+      "discovery_bundle": "portrait_variants",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Explore trending GitHub projects · GitHub.Locker",
+      "url": "https://github.locker/explore?tag=gradio&tag_mode=any",
+      "ref": "turn47search4",
+      "discovery_bundle": "portrait_variants",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - enigmae/liveportrait: Bring portraits to life! · GitHub",
+      "url": "https://github.com/enigmae/liveportrait",
+      "ref": "turn47search5",
+      "discovery_bundle": "portrait_variants",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Turn Old Photos Into Animated Videos: AI Workflow Guide | Domer AI",
+      "url": "https://domer.io/zh/blog/old-photos-to-animated-videos-ai-workflow",
+      "ref": "turn47search6",
+      "discovery_bundle": "portrait_variants",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "open-docs/en/LivePortrait/README.md at main · lentiancn/open-docs · GitHub",
+      "url": "https://github.com/lentiancn/open-docs/blob/main/en/LivePortrait/README.md",
+      "ref": "turn47search7",
+      "discovery_bundle": "portrait_variants",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best Lip Sync - LatentSync",
+      "url": "https://www.reddit.com/r/comfyui/comments/1hrt8qp/best_lip_sync_latentsync/",
+      "ref": "turn50reddit0",
+      "discovery_bundle": "latent_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best Lip Sync - LatentSync update to 1.5",
+      "url": "https://www.reddit.com/r/comfyui/comments/1je0xpz/best_lip_sync_latentsync_update_to_15/",
+      "ref": "turn50reddit1",
+      "discovery_bundle": "latent_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "LatentSync Lip Sync With Face Enhance",
+      "url": "https://www.reddit.com/r/comfyui/comments/1i45poq",
+      "ref": "turn50reddit2",
+      "discovery_bundle": "latent_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "LatentSync Fork: Now with Gradio UI, Word-by-Word Subtitles & 4K Output — No CLI Needed!",
+      "url": "https://www.reddit.com/r/comfyui/comments/1lsli7n",
+      "ref": "turn50reddit4",
+      "discovery_bundle": "latent_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Parallel Universes- Hunyaun+F5TTS+latentsync+Topaz+Capcut**Testing**",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1hyxjcv",
+      "ref": "turn50reddit5",
+      "discovery_bundle": "latent_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "The 8 Rules of Open-Source Generative AI Club!",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1l57b2k",
+      "ref": "turn50reddit6",
+      "discovery_bundle": "latent_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI freezes at 50–60% when loading AV LatentSync 1.5 node (no error)",
+      "url": "https://www.reddit.com/r/u_Leading-Pumpkin-8286/comments/1px1z94/comfyui_freezes_at_5060_when_loading_av/",
+      "ref": "turn50reddit7",
+      "discovery_bundle": "latent_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI Temp Folder gone where?",
+      "url": "https://www.reddit.com/r/comfyui/comments/1j93nd8",
+      "ref": "turn50reddit8",
+      "discovery_bundle": "latent_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "infinitetalk · GitHub Topics · GitHub",
+      "url": "https://github.com/topics/infinitetalk",
+      "ref": "turn48search0",
+      "discovery_bundle": "infinite_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - MeiGen-AI/InfiniteTalk: ​​Unlimited-length talking video generation​​ that supports image-to-video and video-to-video generation · GitHub",
+      "url": "https://github.com/MeiGen-AI/InfiniteTalk",
+      "ref": "turn48search1",
+      "discovery_bundle": "infinite_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - zzz7491/infinitetalk: ​​Unlimited-length talking video generation​​ that supports image-to-video and video-to-video generation · GitHub",
+      "url": "https://github.com/zzz7491/infinitetalk",
+      "ref": "turn48search2",
+      "discovery_bundle": "infinite_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - godrulla/infinitetalk: Sparse-frame AI video dubbing with unlimited-length lip-sync and expression matching · GitHub",
+      "url": "https://github.com/godrulla/infinitetalk",
+      "ref": "turn48search3",
+      "discovery_bundle": "infinite_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - wwh3300/infinitetalk: ​​Unlimited-length talking video generation​​ that supports image-to-video and video-to-video generation · GitHub",
+      "url": "https://github.com/wwh3300/infinitetalk",
+      "ref": "turn48search4",
+      "discovery_bundle": "infinite_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "InfiniteTalk: audio-driven video dubbing | Hysen Labs",
+      "url": "https://hysenlabs.com/projects/meigen-ai-infinitetalk",
+      "ref": "turn48search5",
+      "discovery_bundle": "infinite_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Under review as a conference paper at ICLR 2026",
+      "url": "https://openreview.net/pdf?id=Yef9HRWesf",
+      "ref": "turn48search9",
+      "discovery_bundle": "infinite_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Reproduce “InfiniteTalk: Audio-driven Video Generation for Sparse-Frame Video Dubbing” with AI agents | OpenResearch",
+      "url": "https://openresearch.sh/abs/2508.14033",
+      "ref": "turn48search6",
+      "discovery_bundle": "infinite_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "InfiniteTalk - Audio‑Driven Video Generation for Sparse‑Frame Video Dubbing (Overview) · Instavar",
+      "url": "https://instavar.com/research/ai-video/infinitetalk-audio-driven-video-generation-for-sparse-frame-video-dubbing",
+      "ref": "turn48search7",
+      "discovery_bundle": "infinite_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ORIGINAL_README.md · genfilm/infinitetalk at main",
+      "url": "https://huggingface.co/spaces/genfilm/infinitetalk/blob/main/ORIGINAL_README.md",
+      "ref": "turn48search8",
+      "discovery_bundle": "infinite_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Sonic avatar photo talk",
+      "url": "https://www.reddit.com/r/comfyui/comments/1il2wfn",
+      "ref": "turn49reddit5",
+      "discovery_bundle": "sonic_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Singing Avatar - Flux + Ace Step + Sonic",
+      "url": "https://www.reddit.com/r/comfyui/comments/1legiju",
+      "ref": "turn49reddit6",
+      "discovery_bundle": "sonic_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Create Avatar and chat with them",
+      "url": "https://www.reddit.com/r/comfyui/comments/1izc8mj",
+      "ref": "turn49reddit7",
+      "discovery_bundle": "sonic_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Unlock the Power of Lip-Synced Talking Avatars with Sonic Digital Human Workflow - ComfyUI.org",
+      "url": "https://comfyui.org/en/sonic-digital-human-lip-sync-avatars",
+      "ref": "turn49search0",
+      "discovery_bundle": "sonic_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Sonic Talking Avatar from Image and Audio File - RunningHub ComfyUI Workflow",
+      "url": "https://www.runninghub.ai/post/1899124129453264898",
+      "ref": "turn49search1",
+      "discovery_bundle": "sonic_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Possible to make a character talk with audio from text in Comfyui at this point in time ?",
+      "url": "https://www.reddit.com/r/comfyui/comments/1moj667/possible_to_make_a_character_talk_with_audio_from/",
+      "ref": "turn49reddit9",
+      "discovery_bundle": "sonic_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Comparison Between Hallo 2 and Echo Mimic",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1g6h0ug",
+      "ref": "turn51reddit1",
+      "discovery_bundle": "echo_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "EchoMimicV2: Semi-Body Human Animation is released today",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1gwmsc6",
+      "ref": "turn51reddit2",
+      "discovery_bundle": "echo_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "EchoMimic - Lifelike Audio-Driven Portrait Animations through Editable Landmark Conditioning",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1e8nxi5",
+      "ref": "turn51reddit3",
+      "discovery_bundle": "echo_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best audio driven / lip sync node?",
+      "url": "https://www.reddit.com/r/comfyui/comments/1hgcu0n",
+      "ref": "turn51reddit4",
+      "discovery_bundle": "echo_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "What is currently the best way to add lip-sync to ai video?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1hajt00",
+      "ref": "turn51reddit5",
+      "discovery_bundle": "echo_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best lip sync model for low VRAM?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1tf550j/best_lip_sync_model_for_low_vram/",
+      "ref": "turn51reddit6",
+      "discovery_bundle": "echo_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Offline way to make the characters talk",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1hwsehn",
+      "ref": "turn51reddit7",
+      "discovery_bundle": "echo_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "What's the best lip sync API?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1glsasp",
+      "ref": "turn51reddit8",
+      "discovery_bundle": "echo_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "The OSS Avatar Generation Explosion - Anyone Testing These? (HunyuanVideo-Avatar, EchoMimic, OmniAvatar, etc.)",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1oor7lv",
+      "ref": "turn51reddit9",
+      "discovery_bundle": "echo_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Cross-Image Try-On Flux Kontext_v0.2",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1nbdi8c",
+      "ref": "turn55reddit2",
+      "discovery_bundle": "cat_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Catvton Workflow: Upscaling and Logo Refinement Issues",
+      "url": "https://www.reddit.com/r/comfyui/comments/1g4uq0m",
+      "ref": "turn55reddit4",
+      "discovery_bundle": "cat_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Change Outfits Anyone on Any Model in ComfyUI",
+      "url": "https://www.reddit.com/r/comfyui/comments/1fpokbm",
+      "ref": "turn55reddit5",
+      "discovery_bundle": "cat_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Pointers on how virtual try on diffusion models work",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1i08hgg",
+      "ref": "turn55reddit6",
+      "discovery_bundle": "cat_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best thing to do for changing clothes",
+      "url": "https://www.reddit.com/r/comfyui/comments/1hgczu3",
+      "ref": "turn55reddit7",
+      "discovery_bundle": "cat_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - Bionic-AI-Solutions/ComfyUI-Leffa: Full-pipeline virtual try-on + pose transfer ComfyUI node (Meta Leffa). Powers mcp.baisoln.com/leffa/* · GitHub",
+      "url": "https://github.com/Bionic-AI-Solutions/ComfyUI-Leffa",
+      "ref": "turn54search0",
+      "discovery_bundle": "leffa_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI-Leffa - ComfyUI Cloud",
+      "url": "https://comfy.icu/extension/Bionic-AI-Solutions__ComfyUI-Leffa",
+      "ref": "turn54search1",
+      "discovery_bundle": "leffa_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Leffa Loader - ComfyUI Cloud",
+      "url": "https://comfy.icu/node/LeffaLoader",
+      "ref": "turn54search2",
+      "discovery_bundle": "leffa_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Leffa Virtual Try-On - ComfyUI Cloud",
+      "url": "https://comfy.icu/node/LeffaTryOn",
+      "ref": "turn54search3",
+      "discovery_bundle": "leffa_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Roast my Fashion Images (or hopefully not)",
+      "url": "https://www.reddit.com/r/comfyui/comments/1l3u8eb",
+      "ref": "turn54reddit9",
+      "discovery_bundle": "leffa_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Using Leffa Viton Nodes | StartHua/Comfyui_leffa | DeepWiki",
+      "url": "https://deepwiki.com/StartHua/Comfyui_leffa/3-using-leffa-viton-nodes",
+      "ref": "turn54search5",
+      "discovery_bundle": "leffa_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "franciszzj/Leffa · Hugging Face",
+      "url": "https://huggingface.co/franciszzj/Leffa",
+      "ref": "turn54search6",
+      "discovery_bundle": "leffa_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI-Leffa/README.md at master · Bionic-AI-Solutions/ComfyUI-Leffa · GitHub",
+      "url": "https://github.com/Bionic-AI-Solutions/ComfyUI-Leffa/blob/master/README.md",
+      "ref": "turn54search7",
+      "discovery_bundle": "leffa_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - AaroniTurner/Leffa · GitHub",
+      "url": "https://github.com/AaroniTurner/Leffa",
+      "ref": "turn54search8",
+      "discovery_bundle": "leffa_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "img2vid different from original picture",
+      "url": "https://www.reddit.com/r/comfyui/comments/1see8aq/img2vid_different_from_original_picture/",
+      "ref": "turn46reddit0",
+      "discovery_bundle": "wan_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Fast 5-minute-ish video generation workflow for us peasants with 12GB VRAM (WAN 2.2 14B GGUF Q4 + UMT5XXL GGUF Q5 + Kijay Lightning LoRA + 2 High-Steps + 3 Low-Steps)",
+      "url": "https://www.reddit.com/r/comfyui/comments/1mlcv9w/fast_5minuteish_video_generation_workflow_for_us/",
+      "ref": "turn46reddit1",
+      "discovery_bundle": "wan_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best practice Wan 2.2",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1mizw16",
+      "ref": "turn46reddit2",
+      "discovery_bundle": "wan_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Wan2.2 Workflows, Demos, Guide, and Tips!",
+      "url": "https://www.reddit.com/r/comfyui/comments/1mbmscq/wan22_workflows_demos_guide_and_tips/",
+      "ref": "turn46reddit3",
+      "discovery_bundle": "wan_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Wan 2.2 image to video new node Start to step. help",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1sb3kny/wan_22_image_to_video_new_node_start_to_step_help/",
+      "ref": "turn46reddit4",
+      "discovery_bundle": "wan_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Realistic human animation with Wan 2.2—what workflow do you use?",
+      "url": "https://www.reddit.com/r/comfyui/comments/1unxxwo/realistic_human_animation_with_wan_22what/",
+      "ref": "turn46reddit5",
+      "discovery_bundle": "wan_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Want to pose your characters? Here's Wan 2.2 Pose Control workflow",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1tnbikd/want_to_pose_your_characters_heres_wan_22_pose/",
+      "ref": "turn46reddit6",
+      "discovery_bundle": "wan_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Wan 2.2 14B Image to Video - Seamless Concatenation",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1mkzdfx",
+      "ref": "turn46reddit7",
+      "discovery_bundle": "wan_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "WAN2.2 IMG 2 VIDEO - Realism Tests",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1mdnyvs",
+      "ref": "turn46reddit8",
+      "discovery_bundle": "wan_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Is this good enough as an explainer video?",
+      "url": "https://www.reddit.com/r/SaaS/comments/1v0uqfn/is_this_good_enough_as_an_explainer_video/",
+      "ref": "turn52reddit4",
+      "discovery_bundle": "template_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Just generated my SaaS promo video using React code instead of a video editor.",
+      "url": "https://www.reddit.com/r/buildinpublic/comments/1qizd2a/just_generated_my_saas_promo_video_using_react/",
+      "ref": "turn52reddit5",
+      "discovery_bundle": "template_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Tried the new Remotion agent skills with Claude Code and I'm impressed",
+      "url": "https://www.reddit.com/r/ClaudeCode/comments/1qm976d/tried_the_new_remotion_agent_skills_with_claude/",
+      "ref": "turn52reddit6",
+      "discovery_bundle": "template_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "I made this video in 1 hour using Claude + Remotion",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1qmur79/i_made_this_video_in_1_hour_using_claude_remotion/",
+      "ref": "turn52reddit7",
+      "discovery_bundle": "template_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "I made a launch video with Remotion, here's what I learned",
+      "url": "https://www.reddit.com/r/SideProject/comments/1t75gj8/i_made_a_launch_video_with_remotion_heres_what_i/",
+      "ref": "turn52reddit8",
+      "discovery_bundle": "template_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "I made this demo video with Claude and remotion. Immediately cancelled my Descript sub",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1qvpnsi/i_made_this_demo_video_with_claude_and_remotion/",
+      "ref": "turn52reddit9",
+      "discovery_bundle": "template_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Made with Remotion, what do you think?",
+      "url": "https://www.reddit.com/r/vibecoding/comments/1rmikxy/made_with_remotion_what_do_you_think/",
+      "ref": "turn52reddit10",
+      "discovery_bundle": "template_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "I delayed my product launch for months because I couldn't afford demo videos. Spent a weekend with Claude Code and Remotion. Now my reels are getting thousands of views.",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1rr47ya/i_delayed_my_product_launch_for_months_because_i/",
+      "ref": "turn52reddit11",
+      "discovery_bundle": "template_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - remotion-dev/template-prompt-to-video: Create a story with images and voiceover from a prompt · GitHub",
+      "url": "https://github.com/remotion-dev/template-prompt-to-video",
+      "ref": "turn52search0",
+      "discovery_bundle": "template_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Prompt to Video | Remotion Template",
+      "url": "https://www.remotion.dev/templates/prompt-to-video",
+      "ref": "turn52search2",
+      "discovery_bundle": "template_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "remotion/packages/template-prompt-to-video/README.md at main · remotion-dev/remotion · GitHub",
+      "url": "https://github.com/remotion-dev/remotion/blob/main/packages/template-prompt-to-video/README.md",
+      "ref": "turn52search3",
+      "discovery_bundle": "template_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "",
+      "url": "https://comfy.org/catalog-media/5d3ffb46-9077-454b-b05f-db6008328893/088a46c7-dec1-4bbb-8b2e-654ab9086567",
+      "ref": "turn44view0",
+      "discovery_bundle": "download_links",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "All workflows in one zip - Pixaroma Workflows",
+      "url": "https://workflows.pixaroma.com/all-workflows/",
+      "ref": "turn44view1",
+      "discovery_bundle": "download_links",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "Music Visualization | Remotion Template",
+      "url": "https://www.remotion.dev/templates/music-visualization",
+      "ref": "turn44view2",
+      "discovery_bundle": "download_links",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "TikTok | Remotion Template",
+      "url": "https://www.remotion.dev/templates/tiktok",
+      "ref": "turn44view3",
+      "discovery_bundle": "download_links",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "Release v0.1.1 · visomaster/VisoMaster · GitHub",
+      "url": "https://github.com/visomaster/VisoMaster/releases/tag/v0.1.1",
+      "ref": "turn56view0",
+      "discovery_bundle": "release_checks",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "LatentSync/docs/changelog_v1.6.md at main · bytedance/LatentSync · GitHub",
+      "url": "https://github.com/bytedance/LatentSync/blob/main/docs/changelog_v1.6.md",
+      "ref": "turn56view1",
+      "discovery_bundle": "release_checks",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "FASHN VTON v1.5 | Virtual Try-On Research | FASHN AI",
+      "url": "https://fashn.ai/research/vton-1-5",
+      "ref": "turn56view2",
+      "discovery_bundle": "release_checks",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "Wan2.2 Video Generation ComfyUI Official Native Workflow Example - ComfyUI",
+      "url": "https://docs.comfy.org/tutorials/video/wan/wan2_2",
+      "ref": "turn56view3",
+      "discovery_bundle": "release_checks",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "app.py · fashn-ai/fashn-vton-1.5 at main",
+      "url": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/blob/main/app.py",
+      "ref": "turn58view0",
+      "discovery_bundle": "fashn_app",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "Under review as a conference paper at ICLR 2026",
+      "url": "https://openreview.net/pdf?id=JGiSS7hLRT",
+      "ref": "turn66search6",
+      "discovery_bundle": "video_tryon_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "MagicTryOn: Harnessing Diffusion Transformer for Garment-Preserving Video Virtual Try-on",
+      "url": "https://arxiv.org/abs/2505.21325",
+      "ref": "turn66academia7",
+      "discovery_bundle": "video_tryon_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Magic-TryOn by vivoCameraResearch - SourcePulse",
+      "url": "https://www.sourcepulse.org/projects/11061426",
+      "ref": "turn66search5",
+      "discovery_bundle": "video_tryon_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Gemini Omni - Outfit Swap Workflow - Comfy",
+      "url": "https://comfy.org/hub/workflows/gemini-omni-outfit-swap-4600a60d661b/",
+      "ref": "turn63search0",
+      "discovery_bundle": "vton_video_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI Workflows: Multi-Step AI Image & Video Workflows - Comfy",
+      "url": "https://comfy.org/hub/workflows/?capability=virtual+try+on",
+      "ref": "turn63search1",
+      "discovery_bundle": "vton_video_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "zwpro/boomvvt · Hugging Face",
+      "url": "https://huggingface.co/zwpro/boomvvt",
+      "ref": "turn63search2",
+      "discovery_bundle": "vton_video_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "IDM-VTON Guide (2026): Free Demo, ComfyUI, Licence & Setup",
+      "url": "https://fashiolabs.com/blog/idm-vton-guide",
+      "ref": "turn63search4",
+      "discovery_bundle": "vton_video_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - MANUJMEHROTRA/real_time_model · GitHub",
+      "url": "https://github.com/MANUJMEHROTRA/real_time_model",
+      "ref": "turn63search5",
+      "discovery_bundle": "vton_video_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "README.md · Nandha2017/virtual-tryon at main",
+      "url": "https://huggingface.co/spaces/Nandha2017/virtual-tryon/blame/main/README.md",
+      "ref": "turn63search6",
+      "discovery_bundle": "vton_video_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "wan21 · GitHub Topics · GitHub",
+      "url": "https://github.com/topics/wan21",
+      "ref": "turn63search7",
+      "discovery_bundle": "vton_video_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "115 open-source repos I tried for my AI setup, and what I kept · jamin labs",
+      "url": "https://jaminlabs.com/tried/",
+      "ref": "turn63search8",
+      "discovery_bundle": "vton_video_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "DEEPFAKE Tutorial Using a Free Face Swap AI Tool Locally | FaceFusion Install - YouTube",
+      "url": "https://www.youtube.com/watch?v=mu0ELXne8uI",
+      "ref": "turn65youtube8",
+      "discovery_bundle": "facefusion_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FaceFusion 3.8: local video face swaps with Pinokio · localhosted",
+      "url": "https://localhosted.com/videos/facefusion-3-8-local-video-face-swaps-with-pinokio",
+      "ref": "turn65search0",
+      "discovery_bundle": "facefusion_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Page 2 - 80+ Top Eran Feit Online Courses [2026] | Class Central",
+      "url": "https://www.classcentral.com/institution/eran-feit?page=2",
+      "ref": "turn65search2",
+      "discovery_bundle": "facefusion_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FaceFusion Installation, Setup & Tutorial Videos · localhosted",
+      "url": "https://localhosted.com/facefusion/videos",
+      "ref": "turn65search3",
+      "discovery_bundle": "facefusion_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "- YouTube",
+      "url": "https://www.youtube.com/watch?v=3pp7qw19nuA",
+      "ref": "turn65youtube9",
+      "discovery_bundle": "facefusion_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FaceFusion: The Definitive Deep Dive & Walkthrough - Everything You Always Wanted to Know About... - Zolotube.com",
+      "url": "https://zolotube.com/watch?v=nvPbdHVF12c",
+      "ref": "turn65search4",
+      "discovery_bundle": "facefusion_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FaceFusion on Intel Mac · Pinokio",
+      "url": "https://beta.pinokio.co/posts/01kfe4h2fc0nvjsvn33nzcpm58",
+      "ref": "turn65search5",
+      "discovery_bundle": "facefusion_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Blog",
+      "url": "https://www.facefusion.co/blog",
+      "ref": "turn65search6",
+      "discovery_bundle": "facefusion_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Free video face swap guide for trials and local tools | Clout AI",
+      "url": "https://cloutstudio.ai/blog/free-video-face-swap-guide",
+      "ref": "turn65search7",
+      "discovery_bundle": "facefusion_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FASHN VTON v1.5: Open-Source Maskless Virtual Try-On | FASHN",
+      "url": "https://fashn.ai/blog/fashn-vton-1-5-open-source-release",
+      "ref": "turn64search1",
+      "discovery_bundle": "fashn_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "FASHN VTON v1.5 (local) | OpenTryOn",
+      "url": "https://tryonlabs.github.io/opentryon/local-models/fashn-vton",
+      "ref": "turn64search2",
+      "discovery_bundle": "fashn_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "AfriVTON-Bench Case Study — Testimony Adekoya",
+      "url": "https://dev-tyta.github.io/projects/afrivton.html",
+      "ref": "turn64search4",
+      "discovery_bundle": "fashn_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best Virtual Try-On AI Models Compared (2026): CatVTON vs Kling vs FASHN vs Qwen vs Nano Banana - Part 1",
+      "url": "https://www.ionio.ai/blog/vton",
+      "ref": "turn64search5",
+      "discovery_bundle": "fashn_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "README.md · fashn-ai/fashn-vton-1.5 at main",
+      "url": "https://huggingface.co/fashn-ai/fashn-vton-1.5/blob/main/README.md",
+      "ref": "turn64search6",
+      "discovery_bundle": "fashn_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "fashn/tryon/v1.5 vs fashn-vton-1.5 — comparison, examples, use cases",
+      "url": "https://www.aimodels.fyi/models/compare/fashn-tryon-v15-fal-ai-vs-fashn-vton-1.5-fashn-ai",
+      "ref": "turn64search7",
+      "discovery_bundle": "fashn_cases",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "I tried Wan2.2 5B video generation on my secondary RTX 3060 Ti 8GB machine and it worked fine｜AIスカウター",
+      "url": "https://note.com/ai_scouter/n/n5445e07f242c?hl=en",
+      "ref": "turn67search0",
+      "discovery_bundle": "wan5b_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "I tried Wan2.2 5B video generation on my secondary RTX 3060 Ti 8GB machine and it worked fine｜AIスカウター",
+      "url": "https://note.com/ai_scouter/n/n5445e07f242c?hl=en-US",
+      "ref": "turn67search1",
+      "discovery_bundle": "wan5b_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Wan 2.2 TI2V-5B on RTX 3060: 720p Text/Image-to-Video in ComfyUI | Self-Hosted AI",
+      "url": "https://smeltcore.com/recipes/wan-2-2-ti2v-5b-on-rtx-3060-720p-text-image-to-video-in-comfyui/",
+      "ref": "turn67search2",
+      "discovery_bundle": "wan5b_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - Thefrizzy1/The_frizzy1-Workflows: Verified, organised docs for every The_frizzy1 low-VRAM ComfyUI workflow - GGUF image/video/audio from 4GB VRAM. · GitHub",
+      "url": "https://github.com/Thefrizzy1/The_frizzy1-Workflows",
+      "ref": "turn67search3",
+      "discovery_bundle": "wan5b_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "3060 12GB/64GB - Wan2.2 old SDXL characters brought to life in minutes!",
+      "url": "https://www.reddit.com/r/comfyui/comments/1mdd0rl",
+      "ref": "turn67reddit11",
+      "discovery_bundle": "wan5b_practice",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "50 Free ComfyUI Automation Workflows (Ep38) - Pixaroma Workflows",
+      "url": "https://workflows.pixaroma.com/ep/38/",
+      "ref": "turn68search1",
+      "discovery_bundle": "sonic_casepack",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Questions and answers - Pixaroma Help",
+      "url": "https://workflows.pixaroma.com/help/faq/",
+      "ref": "turn68search3",
+      "discovery_bundle": "sonic_casepack",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Pixaroma - Designing at the Speed of Innovation",
+      "url": "https://pixaroma.com/",
+      "ref": "turn68search4",
+      "discovery_bundle": "sonic_casepack",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "CatVTON/README.md at edited · Zheng-Chong/CatVTON · GitHub",
+      "url": "https://github.com/Zheng-Chong/CatVTON/blob/edited/README.md",
+      "ref": "turn70search0",
+      "discovery_bundle": "clothv2ton",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - Zheng-Chong/CatVTON: [ICLR 2025] CatVTON is a simple and efficient virtual try-on diffusion model with 1) Lightweight Network (899.06M parameters totally), 2) Parameter-Efficient Training (49.57M parameters trainable) and 3) Simplified Inference (< 8G VRAM for 1024X768 resolution). · GitHub",
+      "url": "https://github.com/Zheng-Chong/CatVTON",
+      "ref": "turn70search1",
+      "discovery_bundle": "clothv2ton",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - EssadikElmangoug/CatVTON · GitHub",
+      "url": "https://github.com/EssadikElmangoug/CatVTON",
+      "ref": "turn70search2",
+      "discovery_bundle": "clothv2ton",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Zheng-Chong/CatVTON - GitHubHelp",
+      "url": "https://githubhelp.com/Zheng-Chong/CatVTON?tab=readme-ov-file",
+      "ref": "turn70search3",
+      "discovery_bundle": "clothv2ton",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - peternara/CatVTON-Diffusion-flux: [ICLR 2025] CatVTON is a simple and efficient virtual try-on diffusion model with 1) Lightweight Network (899.06M parameters totally), 2) Parameter-Efficient Training (49.57M parameters trainable) and 3) Simplified Inference (< 8G VRAM for 1024X768 resolution). · GitHub",
+      "url": "https://github.com/peternara/CatVTON-Diffusion-flux",
+      "ref": "turn70search4",
+      "discovery_bundle": "clothv2ton",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - Zheng-Chong/CatVTON at itotii · GitHub",
+      "url": "https://github.com/Zheng-Chong/CatVTON?ref=itotii",
+      "ref": "turn70search5",
+      "discovery_bundle": "clothv2ton",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "CatVTON Guide (2026): ComfyUI, Hugging Face, Licence & Setup",
+      "url": "https://fashiolabs.com/blog/catvton-guide",
+      "ref": "turn70search6",
+      "discovery_bundle": "clothv2ton",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "README.md · samirk08/vtontry at main",
+      "url": "https://huggingface.co/spaces/samirk08/vtontry/blob/main/README.md",
+      "ref": "turn70search7",
+      "discovery_bundle": "clothv2ton",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - Drei8/generative: [ICLR 2025] CatVTON is a simple and efficient virtual try-on diffusion model with 1) Lightweight Network (899.06M parameters totally), 2) Parameter-Efficient Training (49.57M parameters trainable) and 3) Simplified Inference (< 8G VRAM for 1024X768 resolution). · GitHub",
+      "url": "https://github.com/Drei8/generative",
+      "ref": "turn70search8",
+      "discovery_bundle": "clothv2ton",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ZaiqiangWu/CatVTON - GitHubHelp",
+      "url": "https://githubhelp.com/ZaiqiangWu/CatVTON?type=intro",
+      "ref": "turn70search9",
+      "discovery_bundle": "clothv2ton",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - Zheng-Chong/CatVTON: [ICLR 2025] CatVTON is a simple and efficient virtual try-on diffusion model with 1) Lightweight Network (899.06M parameters totally), 2) Parameter-Efficient Training (49.57M parameters trainable) and 3) Simplified Inference (< 8G VRAM for 1024X768 resolution). · GitHub",
+      "url": "https://gh.p.csz.net/Zheng-Chong/CatVTON",
+      "ref": "turn70search10",
+      "discovery_bundle": "clothv2ton",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "catvot/README.md at main · umasai162/catvot · GitHub",
+      "url": "https://github.com/umasai162/catvot/blob/main/README.md",
+      "ref": "turn70search11",
+      "discovery_bundle": "clothv2ton",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Free AI Video Clothes Changer | Wan2.Video",
+      "url": "https://wan2.video/video-clothes-changer",
+      "ref": "turn73search0",
+      "discovery_bundle": "vace_cloth",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "〖Wan VACE〗Video Inpaint Change Clothes | Tensor.Art",
+      "url": "https://tensor.art/workflows/890948473564743267",
+      "ref": "turn73search1",
+      "discovery_bundle": "vace_cloth",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Workflow - Wan Vace Workflow. | SimpCity Open",
+      "url": "https://simpcityopen.com/threads/wan-vace-workflow.230592/",
+      "ref": "turn73search2",
+      "discovery_bundle": "vace_cloth",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Wan Vace Advanced Workflow: How to Keep Faces, Clothes & Backgrounds Consistent",
+      "url": "https://aistudynow.com/wan-vace-advanced-workflow-how-to-keep-faces-clothes-backgrounds-consistent/",
+      "ref": "turn73search3",
+      "discovery_bundle": "vace_cloth",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "资产与工作流 · 需求累积 · AIGC 需求雷达",
+      "url": "https://aigc.cygongju.cn/cat/assets",
+      "ref": "turn73search4",
+      "discovery_bundle": "vace_cloth",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best Free ComfyUI Workflows - Easy AI Tools | Tensor.Art",
+      "url": "https://tensor.art/workflows?tag=756078638541202584",
+      "ref": "turn73search5",
+      "discovery_bundle": "vace_cloth",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Floyo | floyoofficial",
+      "url": "https://www.floyo.ai/creators/floyoofficial",
+      "ref": "turn73search6",
+      "discovery_bundle": "vace_cloth",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Endangered AI — I create content and tutorials around AI | Patreon",
+      "url": "https://www.patreon.com/cw/EndangeredAI/sitemap?l=fr-FR",
+      "ref": "turn73search7",
+      "discovery_bundle": "vace_cloth",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "<table id=\"e1\">",
+      "url": "https://cdn.tmarket.io/audience-profiles/42fba3b0-9bc2-41b7-a9b7-672e56716e13.pdf",
+      "ref": "turn73search8",
+      "discovery_bundle": "vace_cloth",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - Sheriff1980/VisoMaster---Modded: Modded version of the VisoMaster tool · GitHub",
+      "url": "https://github.com/Sheriff1980/VisoMaster---Modded",
+      "ref": "turn72search0",
+      "discovery_bundle": "visomaster_users",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Python 3.12 Compatibility & Model Swapping Failures (RTX 3090) · Issue #252 · VisoMasterFusion/VisoMaster-Fusion · GitHub",
+      "url": "https://github.com/VisoMasterFusion/VisoMaster-Fusion/issues/252",
+      "ref": "turn72search2",
+      "discovery_bundle": "visomaster_users",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "VisoMaster Pricing & Features (2026) | RightAIChoice",
+      "url": "https://rightaichoice.com/tools/visomaster",
+      "ref": "turn72search4",
+      "discovery_bundle": "visomaster_users",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "VisoMaster vs Rope (Pearl, Opal, Rope-Next): Which One to Use",
+      "url": "https://visomaster.com/posts/visomaster-vs-rope",
+      "ref": "turn72search5",
+      "discovery_bundle": "visomaster_users",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - Maxieto/VisoMaster_Fusion: Fusion version of the VisoMaster tool · GitHub",
+      "url": "https://github.com/Maxieto/VisoMaster_Fusion",
+      "ref": "turn72search6",
+      "discovery_bundle": "visomaster_users",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "visomaster/VisoMaster - GitHubHelp",
+      "url": "https://githubhelp.com/visomaster/VisoMaster",
+      "ref": "turn72search7",
+      "discovery_bundle": "visomaster_users",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "VisoMaster Fusion and VisoMaster Automatic Installer - The Most Advanced 0-Shot Face Swap / Deep Fake APP - State of the Art - Windows and Massed Compute - Portable Installers | SECourses: FLUX, Tutorials, Guides, Resources, Training, Scripts su Patreon",
+      "url": "https://www.patreon.com/SECourses/posts/visomaster-and-0-121570322",
+      "ref": "turn72search8",
+      "discovery_bundle": "visomaster_users",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - axel-devs/VisoMaster-Job-Manager: A fully fledged job management system mod for VisoMaster with numerous other improvements · GitHub",
+      "url": "https://github.com/axel-devs/VisoMaster-Job-Manager",
+      "ref": "turn72search9",
+      "discovery_bundle": "visomaster_users",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - loscrossos/core_visomaster: Compatible with all CUDA cards. Windows and linux · GitHub",
+      "url": "https://github.com/loscrossos/core_visomaster",
+      "ref": "turn72search10",
+      "discovery_bundle": "visomaster_users",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "VisoMaster Fusion and VisoMaster Automatic Installer - The Most Advanced 0-Shot Face Swap / Deep Fake APP - State of the Art - Windows and Massed Compute - Portable Installers | SECourses: FLUX, Tutorials, Guides, Resources, Training, Scripts on Patreon",
+      "url": "https://www.patreon.com/SECourses/posts/visomaster-and-0-121570322?l=en-GB",
+      "ref": "turn72search11",
+      "discovery_bundle": "visomaster_users",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Top safe Wan 2.2 models on CivitAI<!-- --> - CivArchive (CivitAI Archive)",
+      "url": "https://civarchive.com/tags/Wan%202.2",
+      "ref": "turn71search0",
+      "discovery_bundle": "wan5b_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "A checked Wan 5B handoff: exact graph edits, fixed seed, and a caught precision bug · Veyrul",
+      "url": "https://veyrul.com/discussions/dsc_01M65Z01DYQ1JJ6S29CNHQ89AC",
+      "ref": "turn71search1",
+      "discovery_bundle": "wan5b_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Does Wan 2.2 TI2V 5B (T2V + I2V) run on 16GB VRAM? 720p, 5 s video in ~4 min, no OOM but slower than newer models | VRAM16 — Real benchmarks of local gen-AI on a 16GB GPU",
+      "url": "https://vram16.ullu-egg.com/en/models/wan2-2-ti2v-5b/",
+      "ref": "turn71search2",
+      "discovery_bundle": "wan5b_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "AI Workflows – Haizy Tiles",
+      "url": "https://haizytiles.reinerstilesets.de/index.php/ai-workflows/",
+      "ref": "turn71search3",
+      "discovery_bundle": "wan5b_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Wan 2.2 Basic Guide: Getting Started with High-Quality AI Video Generation in ComfyUI | AI Illustration Blog DCAI",
+      "url": "https://www.digitalcreativeai.net/en/post/wan-2_2-high-quality-ai-video-generation-comfyui",
+      "ref": "turn71search4",
+      "discovery_bundle": "wan5b_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Wan 3.0 ComfyUI Local Setup and Hugging Face Download",
+      "url": "https://blog.picassoia.com/wan-3-0-comfyui-local-setup-open-weights-hugging-face-download",
+      "ref": "turn71search5",
+      "discovery_bundle": "wan5b_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "WAN 2.2 Workflow T2V-I2V-T2I (Kijai Wrapper) v1.8.5 | CivArchive",
+      "url": "https://civarchive.com/models/1818841?modelVersionId=2058285",
+      "ref": "turn71search6",
+      "discovery_bundle": "wan5b_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "LanPaint/README.md · MarkLilly/mis-custom-nodes at main",
+      "url": "https://huggingface.co/MarkLilly/mis-custom-nodes/blob/main/LanPaint/README.md",
+      "ref": "turn71search7",
+      "discovery_bundle": "wan5b_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - Comfy-Forge-Node-Hardening/LanPaint-forge: High quality training free inpaint for every stable diffusion model. Supports ComfyUI · GitHub",
+      "url": "https://github.com/Comfy-Forge-Node-Hardening/LanPaint-forge",
+      "ref": "turn71search8",
+      "discovery_bundle": "wan5b_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - scraed/LanPaint: High quality training free inpaint for every stable diffusion model. Supports ComfyUI · GitHub",
+      "url": "https://git.mitgai.net/scraed/LanPaint",
+      "ref": "turn71search9",
+      "discovery_bundle": "wan5b_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "ComfyUI with Docker: FLUX, SDXL and Wan on Your GPU",
+      "url": "https://diylabhub.com/comfyui-docker-flux-sdxl-wan-local-gpu-guide/",
+      "ref": "turn71search10",
+      "discovery_bundle": "wan5b_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "MimicPC - Wan2.2: The Cinematic Upgrade to Wan 2.1 for AI Video",
+      "url": "https://www.mimicpc.com/learn/wan2-2-cinematic-upgrade-wan-ai-video-generator",
+      "ref": "turn71search11",
+      "discovery_bundle": "wan5b_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "dev-tyta (Testimony Adekoya) · GitHub",
+      "url": "https://github.com/dev-tyta",
+      "ref": "turn74view0",
+      "discovery_bundle": "benchmark_trace",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "MuseTalk Quality Guide: Real Before/After Examples and Exact Settings - Musetalk",
+      "url": "https://musetalkai.com/musetalk-quality-guide/",
+      "ref": "turn74view3",
+      "discovery_bundle": "benchmark_trace",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "assets/examples/ · fashn-ai/fashn-vton-1.5 at main",
+      "url": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/tree/main/assets/examples",
+      "ref": "turn76view0",
+      "discovery_bundle": "asset_checks",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "fashn-ai/fashn-vton-1.5 · Hugging Face",
+      "url": "https://huggingface.co/fashn-ai/fashn-vton-1.5",
+      "ref": "turn76view1",
+      "discovery_bundle": "asset_checks",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "",
+      "url": "https://docs.facefusion.io/installation",
+      "ref": "turn76view2",
+      "discovery_bundle": "asset_checks",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - PowerHouseMan/ComfyUI-AdvancedLivePortrait · GitHub",
+      "url": "https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait",
+      "ref": "turn77view1",
+      "discovery_bundle": "primary_examples",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - KlingAIResearch/LivePortrait: Bring portraits to life! · GitHub",
+      "url": "https://github.com/KlingAIResearch/LivePortrait",
+      "ref": "turn77view2",
+      "discovery_bundle": "primary_examples",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "Lip Sync using Sonic - GenAI with ComfyUI",
+      "url": "https://sbcode.net/genai/lipsync-sonic/",
+      "ref": "turn78view0",
+      "discovery_bundle": "sonic_fullcases",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "Intel® Core™ i5-3570 Processor (6M Cache, up to 3.80 GHz) - Product Specifications | Intel",
+      "url": "https://www.intel.com/content/www/us/en/products/sku/65702/intel-core-i53570-processor-6m-cache-up-to-3-80-ghz/specifications.html",
+      "ref": "turn83search0",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "How to Find the Supported Intel® Instruction Set Extensions for an Intel® Processor",
+      "url": "https://www.intel.com/content/www/us/en/support/articles/000057621/processors.html",
+      "ref": "turn83search1",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Intel® Instruction Set Extensions Technology",
+      "url": "https://www.intel.com/content/www/us/en/support/articles/000005779/processors.html",
+      "ref": "turn83search2",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Intel® Core™ i5-3570S Processor (6M Cache, up to 3.80 GHz) - Product Specifications | Intel",
+      "url": "https://www.intel.com/content/www/us/en/products/sku/65701/intel-core-i53570s-processor-6m-cache-up-to-3-80-ghz/specifications.html?ui=BIG%3Fui%3DBIG",
+      "ref": "turn83search3",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Intel® Core™ i5-3570K Processor (6M Cache, up to 3.80 GHz) - Product Specifications | Intel",
+      "url": "https://www.intel.com/content/www/us/en/products/sku/65520/intel-core-i53570k-processor-6m-cache-up-to-3-80-ghz/specifications.html",
+      "ref": "turn83search4",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Intel® Core™ i5-3570 Processor (6M Cache, up to 3.80 GHz) Support | Intel",
+      "url": "https://www.intel.com/content/www/us/en/products/sku/65702/intel-core-i53570-processor-6m-cache-up-to-3-80-ghz/support.html",
+      "ref": "turn83search5",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Intel® Core™ i5-3570T Processor (6M Cache, up to 3.30 GHz) - Product Specifications | Intel",
+      "url": "https://www.intel.com/content/www/us/en/products/sku/65521/intel-core-i53570t-processor-6m-cache-up-to-3-30-ghz/specifications.html",
+      "ref": "turn83search6",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Compare Products",
+      "url": "https://www.intel.com/content/www/us/en/products/compare.html?productIds=69114",
+      "ref": "turn83search7",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Does a Processor with AVX2 or AVX-512 Support AVX Instructions?",
+      "url": "https://www.intel.com/content/www/us/en/support/articles/000058796/processors.html",
+      "ref": "turn83search8",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Compare Products",
+      "url": "https://www.intel.com/content/www/us/en/products/compare.html?productIds=53446",
+      "ref": "turn83search9",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Compare Products",
+      "url": "https://www.intel.com/content/www/us/en/products/compare.html?countrylabel=&productIds=65520%2C65521%2C65702%2C65701%2C33927%2C33929",
+      "ref": "turn83search10",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Desktop 3rd Generation Intel® Core™ Processor Family: Spec Update",
+      "url": "https://www.intel.com/content/dam/www/public/us/en/documents/specification-updates/3rd-gen-core-desktop-specification-update.pdf",
+      "ref": "turn83search12",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Compare Products",
+      "url": "https://www.intel.com/content/www/us/en/products/compare.html?productIds=52210%2C65523",
+      "ref": "turn83search11",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "3rd Generation Intel® Core™ Processor Family - NDA Specification Update",
+      "url": "https://cdrdv2-public.intel.com/619604/619604-326766-3rd-gen-core-family-desktop-spec-update-rev023.pdf",
+      "ref": "turn83search13",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Intel(R) 64 and IA-32 Architectures Optimization Reference Manual",
+      "url": "https://www.intel.com/content/dam/doc/manual/64-ia-32-architectures-optimization-manual.pdf",
+      "ref": "turn83search14",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Product Change Notification",
+      "url": "https://cdrdv2-public.intel.com/808891/PCN113226-00.pdf",
+      "ref": "turn83search15",
+      "discovery_bundle": "cpu_compatibility",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Video2X 6.x — open-source upscaler + frame interpolation (Anime4K v4 / Real-ESRGAN / Real-CUGAN / RIFE) 🚀",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1nykzv3/video2x_6x_opensource_upscaler_frame/",
+      "ref": "turn82reddit0",
+      "discovery_bundle": "post_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Can I improve old videos with ai?",
+      "url": "https://www.reddit.com/r/generativeAI/comments/1xq7p7g/can_i_improve_old_videos_with_ai/",
+      "ref": "turn82reddit1",
+      "discovery_bundle": "post_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Music video help?",
+      "url": "https://www.reddit.com/r/AIRemastered/comments/1ies2dp",
+      "ref": "turn82reddit2",
+      "discovery_bundle": "post_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "software for remastering VHS tapes",
+      "url": "https://www.reddit.com/r/software/comments/1j9wdqf",
+      "ref": "turn82reddit3",
+      "discovery_bundle": "post_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "What is the best video upscaler besides Topaz?",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1ledzsc/what_is_the_best_video_upscaler_besides_topaz/",
+      "ref": "turn82reddit4",
+      "discovery_bundle": "post_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "[R] Robust High-Resolution Video Matting with Temporal Guidance",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/pdbpmg",
+      "ref": "turn82reddit5",
+      "discovery_bundle": "post_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best ComfyUI workflow for video background replacement while keeping BOTH the person and desk? (AMD GPU)",
+      "url": "https://www.reddit.com/r/comfyui/comments/1wuszr6/best_comfyui_workflow_for_video_background/",
+      "ref": "turn82reddit6",
+      "discovery_bundle": "post_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - pq-yang/MatAnyone: MatAnyone: Stable Video Matting with Consistent Memory Propagation",
+      "url": "https://www.reddit.com/r/StableDiffusion/comments/1ihfgfz",
+      "ref": "turn82reddit7",
+      "discovery_bundle": "post_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Looking for video upscaling software",
+      "url": "https://www.reddit.com/r/software/comments/1wokdd1/looking_for_video_upscaling_software/",
+      "ref": "turn82reddit8",
+      "discovery_bundle": "post_feedback",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Installation and Usage Guide for LivePortrait: Synthesizing Dynamic Facial Images Locally - WellWells",
+      "url": "https://wellstsai.com/en/post/live-portrait/",
+      "ref": "turn60view3",
+      "discovery_bundle": "paired",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "",
+      "url": "https://musetalkai.com/wp-content/uploads/2026/10/d24-method-and-configs.csv",
+      "ref": "turn61view1",
+      "discovery_bundle": "media_evidence",
+      "retrieval_level": "page_open_or_find",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - xinntao/Real-ESRGAN: Real-ESRGAN aims at developing Practical Algorithms for General Image/Video Restoration. · GitHub",
+      "url": "https://github.com/xinntao/Real-ESRGAN",
+      "ref": "turn79search0",
+      "discovery_bundle": "restoration",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Local AI Media Tools for Windows | FrameShift",
+      "url": "https://gaurox.dev/frameshift/local-ai/",
+      "ref": "turn79search1",
+      "discovery_bundle": "restoration",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Video2X Review 2026: Free Open-Source Video Upscaler",
+      "url": "https://aio.vanceai.com/video-upscaler/video2x-review/",
+      "ref": "turn79search2",
+      "discovery_bundle": "restoration",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Video2X 6.4 Review: Free AI Video Upscaling, Requirements and Setup",
+      "url": "https://geekchamp.com/video2x-6-4-released-free-ai-video-upscaling-for-everyone-with-caveats/",
+      "ref": "turn79search3",
+      "discovery_bundle": "restoration",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Open Source AI Video Upscalers: Which One Works Best?",
+      "url": "https://www.itechguides.com/open-source-ai-video-upscalers-which-one-works-best/",
+      "ref": "turn79search4",
+      "discovery_bundle": "restoration",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "rife-api/README.md at main · rife-dev/rife-api · GitHub",
+      "url": "https://git.mitgai.net/rife-dev/rife-api/blob/main/README.md",
+      "ref": "turn79search5",
+      "discovery_bundle": "restoration",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - xinntao/Real-ESRGAN: Real-ESRGAN aims at developing Practical Algorithms for General Image/Video Restoration. · GitHub",
+      "url": "https://github.com/xinntao/real-esrgan",
+      "ref": "turn79search6",
+      "discovery_bundle": "restoration",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Real-ESRGAN Guide (2026): Weights, Downloads, GUI, ncnn-vulkan",
+      "url": "https://aireiter.com/blog/real-esrgan-guide-download-gui",
+      "ref": "turn79search7",
+      "discovery_bundle": "restoration",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Robust Video Matting (RVM) Windows Installation Tutorial - YouTube",
+      "url": "https://www.youtube.com/watch?v=_oN9yyRi3HY",
+      "ref": "turn80youtube6",
+      "discovery_bundle": "matting",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Best Background Removal - AIs Removes BG Without Green Screen And It's Amazing. [RVM] - YouTube",
+      "url": "https://www.youtube.com/watch?v=2GcegtA95pY",
+      "ref": "turn80youtube7",
+      "discovery_bundle": "matting",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - IPCV/VideoMatting · GitHub",
+      "url": "https://github.com/IPCV/VideoMatting",
+      "ref": "turn80search0",
+      "discovery_bundle": "matting",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "GitHub - PeterL1n/RobustVideoMatting: Robust Video Matting in PyTorch, TensorFlow, TensorFlow.js, ONNX, CoreML! · GitHub",
+      "url": "https://github.com/PeterL1n/RobustVideoMatting",
+      "ref": "turn80search1",
+      "discovery_bundle": "matting",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Robust High-Resolution Video Matting With Temporal Guidance",
+      "url": "https://openaccess.thecvf.com/content/WACV2022/papers/Lin_Robust_High-Resolution_Video_Matting_With_Temporal_Guidance_WACV_2022_paper.pdf",
+      "ref": "turn80search8",
+      "discovery_bundle": "matting",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "The Last Bug Was Not in the Model | by Aditya Kar | Nov, 2026 | Medium",
+      "url": "https://medium.com/%40adi.kar/the-last-bug-was-not-in-the-model-1c1a17d1404d",
+      "ref": "turn80search2",
+      "discovery_bundle": "matting",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "My Model Scored 80% Better. Then I Turned On the Camera. | by Aditya Kar | Nov, 2026 | Medium",
+      "url": "https://medium.com/%40adi.kar/my-model-scored-80-better-then-i-turned-on-the-camera-1024b8cbbe1d",
+      "ref": "turn80search3",
+      "discovery_bundle": "matting",
+      "retrieval_level": "search_result",
+      "access_error": false
+    },
+    {
+      "title": "Background Removal / Virtual Green-screen & Low-Light Enhance | Page 6 | OBS Forums",
+      "url": "https://obsproject.com/forum/threads/background-removal-virtual-green-screen-low-light-enhance.142442/page-6",
+      "ref": "turn80search4",
+      "discovery_bundle": "matting",
+      "retrieval_level": "search_result",
+      "access_error": false
+    }
+  ],
+  "caveat": "去重链接为情报入口，不等于全部全文阅读、独立操作者或合格作品；完整文件读取另列。规范化删除语言/跟踪参数，未把每个fork或教程计为成功。"
+}

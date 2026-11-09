@@ -1,0 +1,809 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-11-09",
+  "count": 58,
+  "kind_counts": {
+    "OFFICIAL_ENABLED_INPUT_PAIR": 9,
+    "OFFICIAL_INPUT_PAIR": 6,
+    "AUTHOR_IMAGE_AUDIO_WORKFLOW_PAIR": 9,
+    "OFFICIAL_VIDEO_AUDIO_PAIR": 3,
+    "PARSED_WORKFLOW": 25,
+    "COMPLETE_TEMPLATE_PROJECT": 6
+  },
+  "warning": "混合索引，含输入配对、工作流与工程；总数不得称为成功作品数或独立操作者数。",
+  "cases": [
+    {
+      "id": "CASE-001",
+      "family": "LivePortrait",
+      "kind": "OFFICIAL_ENABLED_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/source/s9.jpg",
+        "assets/examples/driving/d0.mp4"
+      ],
+      "source": "https://github.com/KlingAIResearch/LivePortrait/blob/main/app.py",
+      "app_blob_sha": "37c40e40c7ed5abbbe79a7dc93c0845612b0a4b1",
+      "input_tree_present": true,
+      "reference_output": null,
+      "status": "APP_EXAMPLE_INDEXED_NOT_OUTPUT_CERTIFIED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-002",
+      "family": "LivePortrait",
+      "kind": "OFFICIAL_ENABLED_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/source/s6.jpg",
+        "assets/examples/driving/d0.mp4"
+      ],
+      "source": "https://github.com/KlingAIResearch/LivePortrait/blob/main/app.py",
+      "app_blob_sha": "37c40e40c7ed5abbbe79a7dc93c0845612b0a4b1",
+      "input_tree_present": true,
+      "reference_output": "https://wellstsai.com/post/live-portrait/demo.mp4",
+      "status": "APP_EXAMPLE_INDEXED_NOT_OUTPUT_CERTIFIED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-003",
+      "family": "LivePortrait",
+      "kind": "OFFICIAL_ENABLED_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/source/s10.jpg",
+        "assets/examples/driving/d0.mp4"
+      ],
+      "source": "https://github.com/KlingAIResearch/LivePortrait/blob/main/app.py",
+      "app_blob_sha": "37c40e40c7ed5abbbe79a7dc93c0845612b0a4b1",
+      "input_tree_present": true,
+      "reference_output": null,
+      "status": "APP_EXAMPLE_INDEXED_NOT_OUTPUT_CERTIFIED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-004",
+      "family": "LivePortrait",
+      "kind": "OFFICIAL_ENABLED_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/source/s5.jpg",
+        "assets/examples/driving/d18.mp4"
+      ],
+      "source": "https://github.com/KlingAIResearch/LivePortrait/blob/main/app.py",
+      "app_blob_sha": "37c40e40c7ed5abbbe79a7dc93c0845612b0a4b1",
+      "input_tree_present": true,
+      "reference_output": null,
+      "status": "APP_EXAMPLE_INDEXED_NOT_OUTPUT_CERTIFIED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-005",
+      "family": "LivePortrait",
+      "kind": "OFFICIAL_ENABLED_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/source/s7.jpg",
+        "assets/examples/driving/d19.mp4"
+      ],
+      "source": "https://github.com/KlingAIResearch/LivePortrait/blob/main/app.py",
+      "app_blob_sha": "37c40e40c7ed5abbbe79a7dc93c0845612b0a4b1",
+      "input_tree_present": true,
+      "reference_output": null,
+      "status": "APP_EXAMPLE_INDEXED_NOT_OUTPUT_CERTIFIED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-006",
+      "family": "LivePortrait",
+      "kind": "OFFICIAL_ENABLED_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/source/s2.jpg",
+        "assets/examples/driving/d13.mp4"
+      ],
+      "source": "https://github.com/KlingAIResearch/LivePortrait/blob/main/app.py",
+      "app_blob_sha": "37c40e40c7ed5abbbe79a7dc93c0845612b0a4b1",
+      "input_tree_present": true,
+      "reference_output": null,
+      "status": "APP_EXAMPLE_INDEXED_NOT_OUTPUT_CERTIFIED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-007",
+      "family": "LivePortrait",
+      "kind": "OFFICIAL_ENABLED_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/source/s13.mp4",
+        "assets/examples/driving/d0.mp4"
+      ],
+      "source": "https://github.com/KlingAIResearch/LivePortrait/blob/main/app.py",
+      "app_blob_sha": "37c40e40c7ed5abbbe79a7dc93c0845612b0a4b1",
+      "input_tree_present": true,
+      "reference_output": null,
+      "status": "APP_EXAMPLE_INDEXED_NOT_OUTPUT_CERTIFIED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-008",
+      "family": "LivePortrait",
+      "kind": "OFFICIAL_ENABLED_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/source/s18.mp4",
+        "assets/examples/driving/d6.mp4"
+      ],
+      "source": "https://github.com/KlingAIResearch/LivePortrait/blob/main/app.py",
+      "app_blob_sha": "37c40e40c7ed5abbbe79a7dc93c0845612b0a4b1",
+      "input_tree_present": true,
+      "reference_output": null,
+      "status": "APP_EXAMPLE_INDEXED_NOT_OUTPUT_CERTIFIED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-009",
+      "family": "LivePortrait",
+      "kind": "OFFICIAL_ENABLED_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/source/s20.mp4",
+        "assets/examples/driving/d0.mp4"
+      ],
+      "source": "https://github.com/KlingAIResearch/LivePortrait/blob/main/app.py",
+      "app_blob_sha": "37c40e40c7ed5abbbe79a7dc93c0845612b0a4b1",
+      "input_tree_present": true,
+      "reference_output": null,
+      "status": "APP_EXAMPLE_INDEXED_NOT_OUTPUT_CERTIFIED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-010",
+      "family": "FASHN VTON 1.5",
+      "kind": "OFFICIAL_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/person1.png",
+        "assets/examples/garment1.jpeg"
+      ],
+      "settings": {
+        "category": "one-pieces",
+        "garment_photo_type": "model"
+      },
+      "source": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/blob/846236d/app.py",
+      "input_directory": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/tree/main/assets/examples",
+      "input_directory_checked": true,
+      "status": "INPUTS_AND_CATEGORY_CHECKED_OUTPUT_NOT_DOWNLOADED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-011",
+      "family": "FASHN VTON 1.5",
+      "kind": "OFFICIAL_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/person2.png",
+        "assets/examples/garment2.webp"
+      ],
+      "settings": {
+        "category": "tops",
+        "garment_photo_type": "model"
+      },
+      "source": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/blob/846236d/app.py",
+      "input_directory": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/tree/main/assets/examples",
+      "input_directory_checked": true,
+      "status": "INPUTS_AND_CATEGORY_CHECKED_OUTPUT_NOT_DOWNLOADED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-012",
+      "family": "FASHN VTON 1.5",
+      "kind": "OFFICIAL_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/person3.png",
+        "assets/examples/garment3.jpeg"
+      ],
+      "settings": {
+        "category": "tops",
+        "garment_photo_type": "flat-lay"
+      },
+      "source": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/blob/846236d/app.py",
+      "input_directory": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/tree/main/assets/examples",
+      "input_directory_checked": true,
+      "status": "INPUTS_AND_CATEGORY_CHECKED_OUTPUT_NOT_DOWNLOADED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-013",
+      "family": "FASHN VTON 1.5",
+      "kind": "OFFICIAL_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/person4.png",
+        "assets/examples/garment4.webp"
+      ],
+      "settings": {
+        "category": "tops",
+        "garment_photo_type": "model"
+      },
+      "source": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/blob/846236d/app.py",
+      "input_directory": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/tree/main/assets/examples",
+      "input_directory_checked": true,
+      "status": "INPUTS_AND_CATEGORY_CHECKED_OUTPUT_NOT_DOWNLOADED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-014",
+      "family": "FASHN VTON 1.5",
+      "kind": "OFFICIAL_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/person5.png",
+        "assets/examples/garment5.jpeg"
+      ],
+      "settings": {
+        "category": "bottoms",
+        "garment_photo_type": "flat-lay"
+      },
+      "source": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/blob/846236d/app.py",
+      "input_directory": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/tree/main/assets/examples",
+      "input_directory_checked": true,
+      "status": "INPUTS_AND_CATEGORY_CHECKED_OUTPUT_NOT_DOWNLOADED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-015",
+      "family": "FASHN VTON 1.5",
+      "kind": "OFFICIAL_INPUT_PAIR",
+      "inputs": [
+        "assets/examples/person6.png",
+        "assets/examples/garment6.webp"
+      ],
+      "settings": {
+        "category": "one-pieces",
+        "garment_photo_type": "model"
+      },
+      "source": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/blob/846236d/app.py",
+      "input_directory": "https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/tree/main/assets/examples",
+      "input_directory_checked": true,
+      "status": "INPUTS_AND_CATEGORY_CHECKED_OUTPUT_NOT_DOWNLOADED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-016",
+      "family": "Sonic",
+      "kind": "AUTHOR_IMAGE_AUDIO_WORKFLOW_PAIR",
+      "inputs": [
+        "docs/sonic-1.png",
+        "docs/example.mp3"
+      ],
+      "workflow": "docs/sonic-1-workflow.png",
+      "source": "https://github.com/Sean-Bradley/ComfyUI-Sonic",
+      "repository_tree_sha": "d9f521f40082419318ea256cfec836eb46888cc8",
+      "status": "PAIRED_FILES_EXIST_PNG_METADATA_NOT_PARSED",
+      "caveat": "九条为同一作者配套样例，不是九名独立用户或九份已审成片。",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-017",
+      "family": "Sonic",
+      "kind": "AUTHOR_IMAGE_AUDIO_WORKFLOW_PAIR",
+      "inputs": [
+        "docs/sonic-2.png",
+        "docs/example.mp3"
+      ],
+      "workflow": "docs/sonic-2-workflow.png",
+      "source": "https://github.com/Sean-Bradley/ComfyUI-Sonic",
+      "repository_tree_sha": "d9f521f40082419318ea256cfec836eb46888cc8",
+      "status": "PAIRED_FILES_EXIST_PNG_METADATA_NOT_PARSED",
+      "caveat": "九条为同一作者配套样例，不是九名独立用户或九份已审成片。",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-018",
+      "family": "Sonic",
+      "kind": "AUTHOR_IMAGE_AUDIO_WORKFLOW_PAIR",
+      "inputs": [
+        "docs/girl-with-freckels.png",
+        "docs/example.mp3"
+      ],
+      "workflow": "docs/sonic-3-workflow.png",
+      "source": "https://github.com/Sean-Bradley/ComfyUI-Sonic",
+      "repository_tree_sha": "d9f521f40082419318ea256cfec836eb46888cc8",
+      "status": "PAIRED_FILES_EXIST_PNG_METADATA_NOT_PARSED",
+      "caveat": "九条为同一作者配套样例，不是九名独立用户或九份已审成片。",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-019",
+      "family": "Sonic",
+      "kind": "AUTHOR_IMAGE_AUDIO_WORKFLOW_PAIR",
+      "inputs": [
+        "docs/sonic-4.png",
+        "docs/example.mp3"
+      ],
+      "workflow": "docs/sonic-4-workflow.png",
+      "source": "https://github.com/Sean-Bradley/ComfyUI-Sonic",
+      "repository_tree_sha": "d9f521f40082419318ea256cfec836eb46888cc8",
+      "status": "PAIRED_FILES_EXIST_PNG_METADATA_NOT_PARSED",
+      "caveat": "九条为同一作者配套样例，不是九名独立用户或九份已审成片。",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-020",
+      "family": "Sonic",
+      "kind": "AUTHOR_IMAGE_AUDIO_WORKFLOW_PAIR",
+      "inputs": [
+        "docs/ltxv-karate.png",
+        "docs/example.mp3"
+      ],
+      "workflow": "docs/sonic-5-workflow.png",
+      "source": "https://github.com/Sean-Bradley/ComfyUI-Sonic",
+      "repository_tree_sha": "d9f521f40082419318ea256cfec836eb46888cc8",
+      "status": "PAIRED_FILES_EXIST_PNG_METADATA_NOT_PARSED",
+      "caveat": "九条为同一作者配套样例，不是九名独立用户或九份已审成片。",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-021",
+      "family": "Sonic",
+      "kind": "AUTHOR_IMAGE_AUDIO_WORKFLOW_PAIR",
+      "inputs": [
+        "docs/ComfyUI_02591_.png",
+        "docs/example.mp3"
+      ],
+      "workflow": "docs/sonic-6-workflow.png",
+      "source": "https://github.com/Sean-Bradley/ComfyUI-Sonic",
+      "repository_tree_sha": "d9f521f40082419318ea256cfec836eb46888cc8",
+      "status": "PAIRED_FILES_EXIST_PNG_METADATA_NOT_PARSED",
+      "caveat": "九条为同一作者配套样例，不是九名独立用户或九份已审成片。",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-022",
+      "family": "Sonic",
+      "kind": "AUTHOR_IMAGE_AUDIO_WORKFLOW_PAIR",
+      "inputs": [
+        "docs/ComfyUI_02372_.png",
+        "docs/example.mp3"
+      ],
+      "workflow": "docs/sonic-7-workflow.png",
+      "source": "https://github.com/Sean-Bradley/ComfyUI-Sonic",
+      "repository_tree_sha": "d9f521f40082419318ea256cfec836eb46888cc8",
+      "status": "PAIRED_FILES_EXIST_PNG_METADATA_NOT_PARSED",
+      "caveat": "九条为同一作者配套样例，不是九名独立用户或九份已审成片。",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-023",
+      "family": "Sonic",
+      "kind": "AUTHOR_IMAGE_AUDIO_WORKFLOW_PAIR",
+      "inputs": [
+        "docs/sonic-8.png",
+        "docs/example.mp3"
+      ],
+      "workflow": "docs/sonic-8-workflow.png",
+      "source": "https://github.com/Sean-Bradley/ComfyUI-Sonic",
+      "repository_tree_sha": "d9f521f40082419318ea256cfec836eb46888cc8",
+      "status": "PAIRED_FILES_EXIST_PNG_METADATA_NOT_PARSED",
+      "caveat": "九条为同一作者配套样例，不是九名独立用户或九份已审成片。",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-024",
+      "family": "Sonic",
+      "kind": "AUTHOR_IMAGE_AUDIO_WORKFLOW_PAIR",
+      "inputs": [
+        "docs/sonic-9.png",
+        "docs/example.mp3"
+      ],
+      "workflow": "docs/sonic-9-workflow.png",
+      "source": "https://github.com/Sean-Bradley/ComfyUI-Sonic",
+      "repository_tree_sha": "d9f521f40082419318ea256cfec836eb46888cc8",
+      "status": "PAIRED_FILES_EXIST_PNG_METADATA_NOT_PARSED",
+      "caveat": "九条为同一作者配套样例，不是九名独立用户或九份已审成片。",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-025",
+      "family": "LatentSync",
+      "kind": "OFFICIAL_VIDEO_AUDIO_PAIR",
+      "inputs": [
+        "assets/demo1_video.mp4",
+        "assets/demo1_audio.wav"
+      ],
+      "source": "https://github.com/bytedance/LatentSync",
+      "repository_tree_sha": "a229c3948406bc2cf6eaf4873e662e70c6a04746",
+      "status": "INPUT_PAIR_FILES_CHECKED_OUTPUT_NOT_CERTIFIED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-026",
+      "family": "LatentSync",
+      "kind": "OFFICIAL_VIDEO_AUDIO_PAIR",
+      "inputs": [
+        "assets/demo2_video.mp4",
+        "assets/demo2_audio.wav"
+      ],
+      "source": "https://github.com/bytedance/LatentSync",
+      "repository_tree_sha": "a229c3948406bc2cf6eaf4873e662e70c6a04746",
+      "status": "INPUT_PAIR_FILES_CHECKED_OUTPUT_NOT_CERTIFIED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-027",
+      "family": "LatentSync",
+      "kind": "OFFICIAL_VIDEO_AUDIO_PAIR",
+      "inputs": [
+        "assets/demo3_video.mp4",
+        "assets/demo3_audio.wav"
+      ],
+      "source": "https://github.com/bytedance/LatentSync",
+      "repository_tree_sha": "a229c3948406bc2cf6eaf4873e662e70c6a04746",
+      "status": "INPUT_PAIR_FILES_CHECKED_OUTPUT_NOT_CERTIFIED",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-028",
+      "family": "Comfy-Org/workflow_templates",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-01",
+      "path": "templates/templates_liveportrait.app.json",
+      "blob_sha": "023dc9b023268987e4b04cb8bdfaf367e6b0cd87",
+      "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/templates_liveportrait.app.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-029",
+      "family": "Comfy-Org/workflow_templates",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-02",
+      "path": "templates/video_wan2_2_14B_animate.json",
+      "blob_sha": "893c47fcf16ffc9755b09845a37ac3bce4060449",
+      "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/video_wan2_2_14B_animate.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-030",
+      "family": "Comfy-Org/workflow_templates",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-03",
+      "path": "templates/video_wan2_1_infinitetalk.json",
+      "blob_sha": "f4b145e4964606c63c8af5369da6a327573ca552",
+      "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/video_wan2_1_infinitetalk.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-031",
+      "family": "Comfy-Org/workflow_templates",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-04",
+      "path": "templates/video_ltx2_3_ia2v.json",
+      "blob_sha": "02b1f2dba0b0632caaede4235a0b281493cbc685",
+      "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/video_ltx2_3_ia2v.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-032",
+      "family": "Comfy-Org/workflow_templates",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-05",
+      "path": "templates/video_ltx2_3_t2v.json",
+      "blob_sha": "4786f08094e63093ad7bb7a2836f56d00c00e744",
+      "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/video_ltx2_3_t2v.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-033",
+      "family": "Comfy-Org/workflow_templates",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-06",
+      "path": "templates/video_ltx2_5_i2v.json",
+      "blob_sha": "15a7d911874f48957dd0fe0d5e3dd15047fc73a9",
+      "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/video_ltx2_5_i2v.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-034",
+      "family": "Comfy-Org/workflow_templates",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-07",
+      "path": "templates/video_wan2_2_5B_ti2v.json",
+      "blob_sha": "634303feba82471ef3df3356178de4c037ae213e",
+      "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/video_wan2_2_5B_ti2v.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-035",
+      "family": "Comfy-Org/workflow_templates",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-08",
+      "path": "templates/video_wan2_2_14B_i2v.json",
+      "blob_sha": "54d456e20340d36fa3edbb13864d0d49c3ae2273",
+      "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/video_wan2_2_14B_i2v.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-036",
+      "family": "Comfy-Org/workflow_templates",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-09",
+      "path": "templates/video_wan2_2_14B_flf2v.json",
+      "blob_sha": "72642b8ab42d4df9d3c41615de8ac332c0431014",
+      "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/video_wan2_2_14B_flf2v.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-037",
+      "family": "bluespork/InfiniteTalk-ComfyUI-workflows",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-10",
+      "path": "InfiniteTalk-Basic-Workflow.json",
+      "blob_sha": "545687d84eb5ccf818eddde18f3880577283a022",
+      "source": "https://github.com/bluespork/InfiniteTalk-ComfyUI-workflows/blob/main/InfiniteTalk-Basic-Workflow.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-038",
+      "family": "bluespork/InfiniteTalk-ComfyUI-workflows",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-11",
+      "path": "InfiniteTalk-V2V.json",
+      "blob_sha": "bdecbfb6aa1d429e4f11f55155bb257354748a4a",
+      "source": "https://github.com/bluespork/InfiniteTalk-ComfyUI-workflows/blob/main/InfiniteTalk-V2V.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-039",
+      "family": "Thefrizzy1/The_frizzy1-Workflows",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-12",
+      "path": "workflows/wan2.2/gguf-lowvram/The_frizzy1_wan-2.2-t2v-14b_v1.0.0.json",
+      "blob_sha": "2400c55c11bd66168d577b8292214f09282010a8",
+      "source": "https://github.com/Thefrizzy1/The_frizzy1-Workflows/blob/main/workflows/wan2.2/gguf-lowvram/The_frizzy1_wan-2.2-t2v-14b_v1.0.0.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-040",
+      "family": "kijai/ComfyUI-LivePortraitKJ",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-13",
+      "path": "examples/liveportrait_video_example_02.json",
+      "blob_sha": "bf44bfb1d46749f306c6cf73f2237df505383e34",
+      "source": "https://github.com/kijai/ComfyUI-LivePortraitKJ/blob/main/examples/liveportrait_video_example_02.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-041",
+      "family": "PowerHouseMan/ComfyUI-AdvancedLivePortrait",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-14",
+      "path": "sample/workflows/Bacis_Simple_expression_editing.json",
+      "blob_sha": "408833d434b062f88bed19cb130fb63332a390e0",
+      "source": "https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait/blob/main/sample/workflows/Bacis_Simple_expression_editing.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-042",
+      "family": "PowerHouseMan/ComfyUI-AdvancedLivePortrait",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-15",
+      "path": "sample/workflows/Bacis_Extracting_expression_from_photo.json",
+      "blob_sha": "e22f5c417cf48086db22cdff0781378feb75fbd9",
+      "source": "https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait/blob/main/sample/workflows/Bacis_Extracting_expression_from_photo.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-043",
+      "family": "kijai/ComfyUI-LivePortraitKJ",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-16",
+      "path": "examples/liveportrait_realtime_example_01.json",
+      "blob_sha": "6144fa1a6c8e42d1e94a952928671aa4e20b169c",
+      "source": "https://github.com/kijai/ComfyUI-LivePortraitKJ/blob/main/examples/liveportrait_realtime_example_01.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-044",
+      "family": "PowerHouseMan/ComfyUI-AdvancedLivePortrait",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-17",
+      "path": "sample/workflows/Advanced_Inserting_expressions_into_vid.json",
+      "blob_sha": "7810b6f5e33e69a5dadde1a4ac41840afc51841b",
+      "source": "https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait/blob/main/sample/workflows/Advanced_Inserting_expressions_into_vid.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-045",
+      "family": "PowerHouseMan/ComfyUI-AdvancedLivePortrait",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-18",
+      "path": "sample/workflows/Advanced_Animate_without_vid.json",
+      "blob_sha": "e0ff6cb03efbf5196b4983b74e6fa5c8a9f88d10",
+      "source": "https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait/blob/main/sample/workflows/Advanced_Animate_without_vid.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-046",
+      "family": "kijai/ComfyUI-LivePortraitKJ",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-19",
+      "path": "examples/liveportrait_image_example_01.json",
+      "blob_sha": "a7c32fbbe4b5cc0c8378e7cc2c20ba2233f24484",
+      "source": "https://github.com/kijai/ComfyUI-LivePortraitKJ/blob/main/examples/liveportrait_image_example_01.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-047",
+      "family": "Thefrizzy1/The_frizzy1-Workflows",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-20",
+      "path": "workflows/wan2.2/gguf-lowvram/The_frizzy1_wan-2.2-i2v-14b_v1.0.0.json",
+      "blob_sha": "0effdac32e26accf84f1653a22ed7c55fe6a81cc",
+      "source": "https://github.com/Thefrizzy1/The_frizzy1-Workflows/blob/main/workflows/wan2.2/gguf-lowvram/The_frizzy1_wan-2.2-i2v-14b_v1.0.0.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-048",
+      "family": "PowerHouseMan/ComfyUI-AdvancedLivePortrait",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-21",
+      "path": "sample/workflows/Bacis_Liveportrait_with_expression_editing.json",
+      "blob_sha": "f3eaebffa97ad0fc21564e64d9ccb07f5193be65",
+      "source": "https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait/blob/main/sample/workflows/Bacis_Liveportrait_with_expression_editing.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-049",
+      "family": "Thefrizzy1/The_frizzy1-Workflows",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-22",
+      "path": "workflows/wan2.2/animate/The_frizzy1_wan-2.2-animate_v1.2.0.json",
+      "blob_sha": "70a15b1f5b6523c09424bdcff7b49096693077b4",
+      "source": "https://github.com/Thefrizzy1/The_frizzy1-Workflows/blob/main/workflows/wan2.2/animate/The_frizzy1_wan-2.2-animate_v1.2.0.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-050",
+      "family": "ShmuelRonen/ComfyUI-LatentSyncWrapper",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-23",
+      "path": "example_workflows/latentsync1.5_comfyui_basic.json",
+      "blob_sha": "83b05a746960ce96fab16a6baefbe8d1b958e7d2",
+      "source": "https://github.com/ShmuelRonen/ComfyUI-LatentSyncWrapper/blob/main/example_workflows/latentsync1.5_comfyui_basic.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-051",
+      "family": "Thefrizzy1/The_frizzy1-Workflows",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-24",
+      "path": "workflows/ltx/ltx-2.5-ultimate-12gb/The_frizzy1_ltx-2.5-ultimate-12gb_v3.1.1.json",
+      "blob_sha": "6d62a7da9b4c7ed8982700cef1deb95666569d49",
+      "source": "https://github.com/Thefrizzy1/The_frizzy1-Workflows/blob/main/workflows/ltx/ltx-2.5-ultimate-12gb/The_frizzy1_ltx-2.5-ultimate-12gb_v3.1.1.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-052",
+      "family": "Thefrizzy1/The_frizzy1-Workflows",
+      "kind": "PARSED_WORKFLOW",
+      "workflow_id": "WF-25",
+      "path": "workflows/wan2.2/animate-ultimate/The_frizzy1_wan-animate-ultimate_v2.0.0.json",
+      "blob_sha": "091b6f9b982fba276be1eee9a14340f0c71b00ae",
+      "source": "https://github.com/Thefrizzy1/The_frizzy1-Workflows/blob/main/workflows/wan2.2/animate-ultimate/The_frizzy1_wan-animate-ultimate_v2.0.0.json",
+      "status": "SEE_RECIPE_MANIFEST",
+      "local_execution_this_round": "NOT_EXECUTED"
+    },
+    {
+      "id": "CASE-053",
+      "family": "Remotion",
+      "kind": "COMPLETE_TEMPLATE_PROJECT",
+      "template": "hello-world",
+      "source": "https://github.com/remotion-dev/template-helloworld",
+      "preview": "https://remotion-helloworld.vercel.app/?/HelloWorld",
+      "video_preview": "https://stream.mux.com/vKvV6aa7GXGlR01cmpc6J8Zz4Gkj9d2hBSnVYoef00900I.m3u8",
+      "tree_sha": "a6808171af18fc8ede89c966a553b507248c8b3d",
+      "checked_files": [
+        "package.json",
+        "src/Root.tsx"
+      ],
+      "local_execution_this_round": "NOT_EXECUTED",
+      "status": "TREE_AND_ENTRYPOINT_READ_NOT_RENDERED",
+      "preview_locator_status": "DERIVED_FROM_OFFICIAL_TEMPLATE_REGISTRY_NOT_FETCHED"
+    },
+    {
+      "id": "CASE-054",
+      "family": "Remotion",
+      "kind": "COMPLETE_TEMPLATE_PROJECT",
+      "template": "audiogram",
+      "source": "https://github.com/remotion-dev/template-audiogram",
+      "preview": "https://template-audiogram-1nrh.vercel.app",
+      "video_preview": "https://stream.mux.com/7RwHiqZX5k5radAqZpGq7x02jJhi5j4OD8BMiM1z7nmE.m3u8",
+      "tree_sha": null,
+      "checked_files": [
+        "inherited original complete render evidence"
+      ],
+      "local_execution_this_round": "NOT_EXECUTED",
+      "status": "INHERIT_FIXED_CASE_REPEAT_TWO",
+      "preview_locator_status": "DERIVED_FROM_OFFICIAL_TEMPLATE_REGISTRY_NOT_FETCHED"
+    },
+    {
+      "id": "CASE-055",
+      "family": "Remotion",
+      "kind": "COMPLETE_TEMPLATE_PROJECT",
+      "template": "music-visualization",
+      "source": "https://github.com/remotion-dev/template-music-visualization",
+      "preview": "https://www.remotion.dev/templates",
+      "video_preview": "https://stream.mux.com/8msABU02zPeFOGdvUWChssvsLVJZgFNWGWaVKA9hNAlw.m3u8",
+      "tree_sha": "8b061f2ad85698f462e39ac888ae304c76ba183c",
+      "checked_files": [
+        "package.json",
+        "src/Root.tsx"
+      ],
+      "local_execution_this_round": "NOT_EXECUTED",
+      "status": "TREE_AND_ENTRYPOINT_READ_NOT_RENDERED",
+      "preview_locator_status": "DERIVED_FROM_OFFICIAL_TEMPLATE_REGISTRY_NOT_FETCHED"
+    },
+    {
+      "id": "CASE-056",
+      "family": "Remotion",
+      "kind": "COMPLETE_TEMPLATE_PROJECT",
+      "template": "overlay",
+      "source": "https://github.com/remotion-dev/template-overlay",
+      "preview": "https://www.remotion.dev/templates",
+      "video_preview": "https://stream.mux.com/zgy7XK01009y33Vfzhns02cZS00rOyeZ6WaanaxcrDysqmU.m3u8",
+      "tree_sha": "5f6177184a81e18f82bfa66df004bf2bb39ef016",
+      "checked_files": [
+        "package.json",
+        "src/Root.tsx"
+      ],
+      "local_execution_this_round": "NOT_EXECUTED",
+      "status": "TREE_AND_ENTRYPOINT_READ_NOT_RENDERED",
+      "preview_locator_status": "DERIVED_FROM_OFFICIAL_TEMPLATE_REGISTRY_NOT_FETCHED"
+    },
+    {
+      "id": "CASE-057",
+      "family": "Remotion",
+      "kind": "COMPLETE_TEMPLATE_PROJECT",
+      "template": "code-hike",
+      "source": "https://github.com/remotion-dev/template-code-hike",
+      "preview": "https://template-code-hike.vercel.app/",
+      "video_preview": "https://stream.mux.com/fKwnpTAOqvnZpu00fwEezi00cpF3927NumGcS1gGdUj8A.m3u8",
+      "tree_sha": "c81ec31fc52a024b3b2a21fcf4a7ad64d3c29255",
+      "checked_files": [
+        "package.json",
+        "src/Root.tsx"
+      ],
+      "local_execution_this_round": "NOT_EXECUTED",
+      "status": "TREE_AND_ENTRYPOINT_READ_NOT_RENDERED",
+      "preview_locator_status": "DERIVED_FROM_OFFICIAL_TEMPLATE_REGISTRY_NOT_FETCHED"
+    },
+    {
+      "id": "CASE-058",
+      "family": "Remotion",
+      "kind": "COMPLETE_TEMPLATE_PROJECT",
+      "template": "tiktok",
+      "source": "https://github.com/remotion-dev/template-tiktok",
+      "preview": "https://www.remotion.dev/templates",
+      "video_preview": "https://stream.mux.com/BzwCAYgGPqNtLk301tsgWCDvuWVWfEvaO2bIo2lGEd300.m3u8",
+      "tree_sha": "1d2bffac65db4938d2ac24884c0013624e6146e8",
+      "checked_files": [
+        "package.json",
+        "src/Root.tsx"
+      ],
+      "local_execution_this_round": "NOT_EXECUTED",
+      "status": "TREE_AND_ENTRYPOINT_READ_NOT_RENDERED",
+      "preview_locator_status": "DERIVED_FROM_OFFICIAL_TEMPLATE_REGISTRY_NOT_FETCHED"
+    }
+  ]
+}

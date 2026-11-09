@@ -1,5 +1,5 @@
 {
-  "version": "3.2.0",
+  "version": "3.3.0",
   "review_date": "2026-11-09",
   "timezone": "Asia/Shanghai",
   "new_model_inference_this_review": false,
@@ -16,11 +16,14 @@
     },
     {
       "id": "fashn-red-dress",
-      "external_feedback": "INDEPENDENT_OPEN_SOURCE_SAME_VERSION_INCOMPLETE",
+      "external_feedback": "ADDITIONAL_INDEPENDENT_V1_5_REPORTS_WITH_SCOPE_LIMITS",
       "local": "FIXED_ORIGINAL_REPEAT_PASSED_INHERITED",
       "repeats": 2,
       "migration": "NOT_MEASURED",
-      "scope": "one static official red dress case only"
+      "scope": "one static official red dress case only",
+      "previous_external_feedback": "INDEPENDENT_OPEN_SOURCE_SAME_VERSION_INCOMPLETE",
+      "external_evidence": "PRACTICE-EVIDENCE-20261109.json#FB-21,FB-22,FB-23",
+      "note": "Fixed case inherited; independent broader practice does not certify all clothes or video try-on."
     },
     {
       "id": "svd-mountain",
@@ -36,10 +39,9 @@
       "local": "NOT_EXECUTED",
       "scope": "frontal small-expression candidate",
       "missing": [
-        "exact free code/weight version pairing",
-        "whole dynamic and audio review",
-        "matching environment",
-        "original replay then repeat and input migration"
+        "Select and freeze the supported original package/branch for execution",
+        "Whole dynamic review in selected target scope",
+        "Original replay, repeat and similar-input migration on selected host"
       ],
       "external_reference_file": {
         "url": "https://wellstsai.com/post/live-portrait/demo.mp4",
@@ -55,24 +57,41 @@
         ],
         "whole_dynamic_review": "NOT_COMPLETED",
         "kind": "EXTERNAL_PRACTITIONER_OUTPUT_NOT_LOCAL_INFERENCE"
-      }
+      },
+      "previous_missing": [
+        "exact free code/weight version pairing",
+        "whole dynamic and audio review",
+        "matching environment",
+        "original replay then repeat and input migration"
+      ],
+      "research_progress": "9 enabled official pairs, 3 KJ and 5 Advanced workflows read, multiple first-person practice entries collected; do not require a private creator's undisclosed assets for method adoption."
     },
     {
       "id": "facefusion",
       "external_feedback": "CONDITIONAL_POSITIVE_AND_NEGATIVE",
       "local": "NOT_EXECUTED",
       "missing": [
+        "Select free official native/Pinokio or separate VisoMaster route and freeze supported model/provider",
+        "Source/target media in intended quality scope and normal-speed acceptance"
+      ],
+      "previous_missing": [
         "qualified complete original work and pinned versions/models/settings"
-      ]
+      ],
+      "alternative": "VisoMaster official free Windows package"
     },
     {
       "id": "wan-animate",
       "external_feedback": "PUBLISHED_WORKFLOWS_WITH_CONDITIONAL_REPRODUCTIONS",
       "local": "NOT_EXECUTED",
       "missing": [
+        "Select official or known author complete branch and corresponding input example",
+        "Verify supported precision/hardware branch without new core modifications"
+      ],
+      "previous_missing": [
         "same original work and exact weights/settings/runtime pairing",
         "hardware supported branch verification"
-      ]
+      ],
+      "research_progress": "Official and two author workflow generations parsed; published free creator branch linked."
     },
     {
       "id": "multitalk",
@@ -91,7 +110,8 @@
       "id": "musetalk",
       "external_feedback": "MIXED_QUALITY_AND_ANGLE_REPORTS",
       "local": "EXECUTED_QUALITY_NOT_PASSED_INHERITED",
-      "root_cause": "NOT_FULLY_ESTABLISHED"
+      "root_cause": "NOT_FULLY_ESTABLISHED",
+      "research_progress": "Published paired 1.5/LatentSync1.6 input/output/config case added; inherited local quality result unchanged."
     },
     {
       "id": "h3-r4",
@@ -106,5 +126,15 @@
     "T_VALID_E2E": null,
     "reported_legacy_times_are_stage_times": true
   },
-  "next": "Complete high-quality LivePortrait original output to exact recipe pairing and independent condition-matched feedback before deployment."
+  "next": "Use V3.3 category comparison groups to choose the simplest existing complete recipe in scope; inherit local results, separate original-artwork exact recreation from method reproduction; no automatic deployment or invented repairs.",
+  "previous_version": "3.2.0",
+  "research_update": {
+    "report": "INTELLIGENCE-DOSSIER-20261109.md",
+    "parsed_workflows": 25,
+    "indexed_case_config_project_items": 58,
+    "practice_evidence_cards": 34,
+    "new_model_inference": false,
+    "source_count_not_capability_count": true,
+    "scope": "Multi-branch specialized intelligence and recipe review; local execution statuses inherited."
+  }
 }
