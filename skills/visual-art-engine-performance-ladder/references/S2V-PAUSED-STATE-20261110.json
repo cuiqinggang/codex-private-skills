@@ -1,0 +1,25 @@
+{
+  "task_id": "S2V-REALITY-20261110-R15",
+  "status": "PAUSED_FOR_USER_SHUTDOWN_AND_METHOD_REVIEW",
+  "target_seconds": 8,
+  "planning_time_target_minutes": 30,
+  "time_target_not_verified": true,
+  "new_video_count": 0,
+  "R1": "RESOURCE_ABORT_BEFORE_SAMPLING",
+  "R1Q": {
+    "prompt_id": "f108fcdc-ccc2-410f-841c-03df4676f273",
+    "status": "execution_interrupted",
+    "outputs": [],
+    "client_elapsed_seconds": 2402.0098292827606
+  },
+  "R2Q": "NOT_SUBMITTED",
+  "R3Q": "NOT_SUBMITTED",
+  "queue_empty": true,
+  "temporary_service_stopped": true,
+  "asset_index": "C:/AI/Video-Recipe-Reproduction-20261110/S2V-15/ASSET-REUSE-INDEX.json",
+  "next_action": "READ_ORIGINAL_V4_1_AND_V1_EVIDENCE_AND_SELECT_COMPATIBLE_MATURE_RECIPE",
+  "new_gpu_submit_before_new_freeze": false,
+  "source_entry_saved": true,
+  "personal_directory_save": "FAILED_HTTP_422_NOT_CLAIMED_INSTALLED",
+  "final_valid": false
+}

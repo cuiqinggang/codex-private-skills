@@ -24,7 +24,7 @@
 - 原始查核：同目录 `evidence/reuse-model-inventory.json`、`reuse-original-skills-readback.json`、`asset-reuse-check.json`。
 - 四个当前所需模型的复用检查 `ready_to_reuse=true`，该检查启动下载数0；核对已完成完整指纹后的未变更文件元数据。
 - BF16 原案例在模型加载阶段因可用内存约0.5GB、分页增长和响应延迟而保护性中止；没有宣称CUDA OOM、采样失败或作品不合格。
-- FP8 主模型完整指纹已通过，首轮原生采样进行中。重复、蓝裙迁移和作品质量尚未完成，不登记为已认证能力。
+- FP8 主模型完整指纹已通过；首轮R1Q因用户纠正8秒/时间目标而中断，无输出，重复与蓝裙迁移均未提交。队列空、临时服务已结束；[错误与接续记录](PAUSE-AND-ERROR-20261110.md)为当前状态，不登记为已认证能力。
 - 后续完成情况以原任务最新原生history、实际文件与审核为准，继承已完成部分。
 
 [复用核查报告](https://chatgpt.com/library?file_id=libfile_fde3_f-303251326060819189a3036ecb19237f_937029f1505c8191917e0968911c47f5&account_id=personal)；[原始核查证据](https://chatgpt.com/library?file_id=libfile_fde3_f-a88ee7f9778c8191947b565c4c2c41df_937029f1505c8191917e0968911c47f5&account_id=personal)。
