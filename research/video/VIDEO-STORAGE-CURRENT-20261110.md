@@ -1,6 +1,6 @@
 # 视频空间整理 CURRENT — 2026-11-10
 
-任务：VIDEO-STORAGE-20261110；接续BLUE8 Wan8秒；状态：MIGRATION_RUNNING / FINAL_VALID=NO。
+任务：VIDEO-STORAGE-20261110；接续BLUE8 Wan8秒；状态：DELETION_POLICY_ACTIVE / BROAD_MIGRATION_CANCELLED / FINAL_VALID=NO。
 
 ## 已完成
 - 已回读高品质视频主包与Wan V1.4，新增[试运行及空间治理V1.5](../../skills/video-extreme-time-engine/references/BLUE8-WAN-TRIAL-STORAGE-V1_5-20261110.md)，主包已指向新记录。
@@ -30,3 +30,11 @@
 
 ## 可复用候选与原件
 精确适配脚本已保存：[计划生成](storage-20261110/build-plan.py)、[守卫执行](storage-20261110/execute-plan.py)。它们是本次固定路径、固定计划合同的运行/恢复原件，不是通用磁盘清理器；状态CANDIDATE_RUNNING，未完成迁移后GUI及独立复验，不登记READY。禁止把脚本改成宽泛目录删除或在另一台电脑原样调用。当前已核现有worker命令、创建时间和连续I/O（一次3秒增加218103808字节）；状态WAITING仅表示本轮等待现有迁移推进，不表示任务关闭。
+
+## 用户纠正后现行规则（覆盖上述运行中迁移安排）
+用户明确：未证明有帮助且已弃用的模型应直接删除，不能搬K继续占空间。已核worker身份并停止原execute-plan.py（PID33572，stopped=true），保存MIGRATION-CANCELLED-BY-USER.json；禁止恢复旧7目录批量迁移，也不能把已删除模型按旧计划恢复。
+已完成3个目录junction，其余保留C源。旧复制产生的17976786944字节未完成K副本已删除，完整Star7源仍在C。
+新增永久删除：S2V BF1632591643778字节、FP816394832474字节、该弃用路线音频编码器630997322字节；W4A8候选12540858008字节及1533字节下载sidecar（本机同规格更慢、未晋级）；被INT4 ConvRot替代的NVFP4编码器15687142551字节。分别保留真实失败/比较证据，不能说这些文件均为字节损坏；依据是本机路线弃用且对当前任务无帮助。当前Wan配套与已验证INT4基线保留。
+本轮另清掉2份已证截断旧权重，共3282042880字节：按Safetensors头中data_offsets得应有完整长度，均大于实长；无下载进程，且不属于迁移计划。extra-clean-result.json有回执。
+退役删除前后C新增可用49617481728字节、K新增46204792832字节（含取消复制副本）；不把先迁移后删除在两个盘重复算成同一份原资产收益。C当前可用约288.4GiB，最终实测以STATE为准。删除精确计划/指纹/身份/原因在delete-retired-models-plan.json与result.json。
+已迁移3树原54路径中，退役3项是预期删除，剩余51项继续检查。实际GUI：Chrome访问8198得到HTTP403；本机直连root/queue/object_info=200，说明服务后台可达，不是GUI验收通过。未改代理，不绕过403，不伪报保留工具全部可用。剩余有效性审计、GUI与8秒仍未完成；75%目标不报通过。当前规则已写入接续任务，防止旧自动流程重新搬运弃用资产。
