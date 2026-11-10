@@ -1,0 +1,322 @@
+{
+  "first_stage": {
+    "valid": true,
+    "rows": [
+      {
+        "case": "case-00-original-1",
+        "mode": "original",
+        "workers": 1,
+        "total_s": 26.3354885999579,
+        "prep_s": 0.6448017000220716,
+        "execution_s": 24.33199279999826,
+        "qa_s": 1.3445590999908745,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-01-batch-1",
+        "mode": "batch",
+        "workers": 1,
+        "total_s": 15.223747599986382,
+        "prep_s": 0.8106065000174567,
+        "execution_s": 10.712987800012343,
+        "qa_s": 3.622767399996519,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-02-batch-2",
+        "mode": "batch",
+        "workers": 2,
+        "total_s": 9.508582399925217,
+        "prep_s": 1.8622441999614239,
+        "execution_s": 7.082312399987131,
+        "qa_s": 0.5496266999980435,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-03-batch-2",
+        "mode": "batch",
+        "workers": 2,
+        "total_s": 7.213221600046381,
+        "prep_s": 0.6800251000095159,
+        "execution_s": 6.291073399945162,
+        "qa_s": 0.22877400007564574,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-04-batch-1",
+        "mode": "batch",
+        "workers": 1,
+        "total_s": 11.333107099984773,
+        "prep_s": 0.687305000028573,
+        "execution_s": 10.038815399981104,
+        "qa_s": 0.5885570999234915,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-05-original-1",
+        "mode": "original",
+        "workers": 1,
+        "total_s": 17.5575225999346,
+        "prep_s": 0.7717865000013262,
+        "execution_s": 16.436545899952762,
+        "qa_s": 0.33461710007395595,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-06-batch-1",
+        "mode": "batch",
+        "workers": 1,
+        "total_s": 12.447642000042833,
+        "prep_s": 0.7016993999714032,
+        "execution_s": 11.439365099999122,
+        "qa_s": 0.2942916000029072,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-07-original-1",
+        "mode": "original",
+        "workers": 1,
+        "total_s": 15.139099200023338,
+        "prep_s": 1.008917999919504,
+        "execution_s": 13.789078800007701,
+        "qa_s": 0.3250886000460014,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-08-batch-2",
+        "mode": "batch",
+        "workers": 2,
+        "total_s": 7.666610200074501,
+        "prep_s": 0.8702480000210926,
+        "execution_s": 6.536835300037637,
+        "qa_s": 0.2430668999440968,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      }
+    ],
+    "groups": {
+      "original-1": {
+        "mean_s": 19.677370133305278,
+        "median_s": 17.5575225999346,
+        "range_s": [
+          15.139099200023338,
+          26.3354885999579
+        ]
+      },
+      "batch-1": {
+        "mean_s": 13.001498900004663,
+        "median_s": 12.447642000042833,
+        "range_s": [
+          11.333107099984773,
+          15.223747599986382
+        ]
+      },
+      "batch-2": {
+        "mean_s": 8.129471400015367,
+        "median_s": 7.666610200074501,
+        "range_s": [
+          7.213221600046381,
+          9.508582399925217
+        ]
+      }
+    },
+    "source_unchanged": true,
+    "gui_acceptance": "NOT_MEASURED"
+  },
+  "diagnostic": {
+    "groups": {
+      "original-1": {
+        "mean_s": 19.677370133305278,
+        "median_s": 17.5575225999346,
+        "range_s": [
+          15.139099200023338,
+          26.3354885999579
+        ],
+        "mean_job_wall_s": 2.2713721791709154,
+        "mean_original_business_s": 0.18066666666666667,
+        "peak_overlaps": [
+          1,
+          1,
+          1
+        ],
+        "mean_prep_s": 0.8085020666476339,
+        "mean_qa_s": 0.6680882667036107
+      },
+      "batch-1": {
+        "mean_s": 13.001498900004663,
+        "median_s": 12.447642000042833,
+        "range_s": [
+          11.333107099984773,
+          15.223747599986382
+        ],
+        "mean_job_wall_s": 1.0611337458297687,
+        "mean_original_business_s": 0.17525,
+        "peak_overlaps": [
+          1,
+          1,
+          1
+        ],
+        "mean_prep_s": 0.7332036333391443,
+        "mean_qa_s": 1.5018720333076392
+      },
+      "batch-2": {
+        "mean_s": 8.129471400015367,
+        "median_s": 7.666610200074501,
+        "range_s": [
+          7.213221600046381,
+          9.508582399925217
+        ],
+        "mean_job_wall_s": 1.1158603583317017,
+        "mean_original_business_s": 0.17370833333333333,
+        "peak_overlaps": [
+          2,
+          2,
+          2
+        ],
+        "mean_prep_s": 1.1375057666640107,
+        "mean_qa_s": 0.3404892000059287
+      }
+    },
+    "guard_cases": [
+      {
+        "name": "duplicate-workspace",
+        "pass": true,
+        "exit_code": 2,
+        "stderr": "ValueError: Shared workspace needs serial reconciliation; duplicate rejected"
+      },
+      {
+        "name": "unsupported-OCR",
+        "pass": true,
+        "exit_code": 2,
+        "stderr": "StopMatch: ('NOT_MATCHED', 'OUTPUT_REQUIREMENTS_OR_CONTEXT_NOT_COVERED', {'output_profile': 'zip_manifest_receipt', 'requirements': ['relative_paths', 'file_bytes', 'zip_crc', 'input_integrity', 'fixed_readback', 'OCR'], 'context': 'host'})"
+      }
+    ],
+    "sources": {
+      "batch_handoff.py": "0a4d115a4b345401ee71a9c935c975706e6b687393fbb2b43becc4106f6e70f4",
+      "benchmark.py": "049fd7d7f4a83c280ec7d6e61e0ad5fb47b12195a46b76e1c1fcd9f4dcdcf95a",
+      "match_flow.py": "0c4620b34751aa144eccc7222070bbffe3dbc63f43ad169ea79f1199a8244483",
+      "invoke_flow.py": "a046af7c24a70c3a91c9322ff253bf48b30bdedf448e04388af17a75f74af8e3"
+    }
+  },
+  "preflight_comparison": {
+    "valid": true,
+    "rows": [
+      {
+        "case": "case-00-serial-preflight-2",
+        "mode": "serial-preflight",
+        "workers": 2,
+        "total_s": 18.39832760009449,
+        "prep_s": 0.7585536999395117,
+        "execution_s": 16.91345990006812,
+        "qa_s": 0.7077970000682399,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-01-parallel-preflight-2",
+        "mode": "parallel-preflight",
+        "workers": 2,
+        "total_s": 22.26363840000704,
+        "prep_s": 2.1401309000793844,
+        "execution_s": 19.303998400107957,
+        "qa_s": 0.7073073000647128,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-02-parallel-preflight-2",
+        "mode": "parallel-preflight",
+        "workers": 2,
+        "total_s": 15.680921100080013,
+        "prep_s": 1.4411300999345258,
+        "execution_s": 13.710229499964043,
+        "qa_s": 0.5068108000559732,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-03-serial-preflight-2",
+        "mode": "serial-preflight",
+        "workers": 2,
+        "total_s": 19.181947299977764,
+        "prep_s": 1.3748711000662297,
+        "execution_s": 16.875446500023827,
+        "qa_s": 0.700643900083378,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-04-serial-preflight-2",
+        "mode": "serial-preflight",
+        "workers": 2,
+        "total_s": 18.8734051999636,
+        "prep_s": 1.5114456999581307,
+        "execution_s": 16.972164900042117,
+        "qa_s": 0.3716461999574676,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      },
+      {
+        "case": "case-05-parallel-preflight-2",
+        "mode": "parallel-preflight",
+        "workers": 2,
+        "total_s": 10.02879190002568,
+        "prep_s": 1.4907382000237703,
+        "execution_s": 8.07199229998514,
+        "qa_s": 0.44356239994522184,
+        "jobs": 8,
+        "file_checks": 384,
+        "valid": true
+      }
+    ],
+    "groups": {
+      "serial-preflight-2": {
+        "mean_s": 18.817893366678618,
+        "median_s": 18.8734051999636,
+        "range_s": [
+          18.39832760009449,
+          19.181947299977764
+        ]
+      },
+      "parallel-preflight-2": {
+        "mean_s": 15.991117133370912,
+        "median_s": 15.680921100080013,
+        "range_s": [
+          10.02879190002568,
+          22.26363840000704
+        ]
+      }
+    },
+    "source_unchanged": true,
+    "gui_acceptance": "NOT_MEASURED"
+  },
+  "gui": {
+    "status": "NOT_VALIDATED",
+    "desktop_snapshot": true,
+    "pi_window_switch": "Application Pi Desktop not found",
+    "no_pi_submission_receipt": true
+  },
+  "admission": "HOST_ARCHIVE_PROGRAM_ONLY_GUI_PENDING"
+}
