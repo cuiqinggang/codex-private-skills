@@ -1,5 +1,10 @@
 # 视频空间整理与Wan试片 CURRENT
 
+## 2026-11-11 V1.3两份DMP补充（最新）
+
+已按用户授权精确删除conhost.exe.11068.dmp与conhost.exe.30308.dmp，共1726536字节（1.65MiB），两文件复查不存在、CrashDumps目录保留。原V1.3清单实际上为Unit=dir指向整目录，未运行-AllowDirDelete；改用两行Unit=file清单，经预演/指纹复核后原脚本Apply退出0。原01-scratch.csv现为两条精确Status=DONE，禁止重复按目录删除。文件目标原生计量为0的缺陷已独立核账，不把GB输出当实际删除字节。详见[两文件执行与V1.3边界](PI-V13-TWO-DMP-RESULT-20261111.md)。本机v13-two-dmp-result.json，STATE/actions/RUN-LOG接续；本轮无新GPU、无新资源Freeze，整体75%/GUI/8秒仍未通过。
+
+
 ## 2026-11-11最新：Pi65.6GB已逐项复核并实际清理
 
 先读[本轮完整结果](PI65GB-AUDIT-RESULT-20261111.md)及[289项处置表](PI65GB-DECISIONS-20261111.csv)。65.6是9临时项+167个AI历史项目+113个Codex工作区的候选估计，并非全属垃圾。本轮已删126615文件、逻辑12675034580字节（11.8045GiB）：5份旧下载残片；81份旧ISO/失败Etcher2.1.6；5个旧验证/烟测项目的126521个npm依赖；7份全SHA相同案例视频/JDK或截断Ghidra包；1份已完整解压的Blender安装ZIP。各批精确清单、指纹及差量结果已在K审计根，废件不迁K。
