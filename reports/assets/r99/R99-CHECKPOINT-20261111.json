@@ -21,17 +21,23 @@
       "s": 40.12154429999646
     }
   ],
-  "business_state": "STARTED_NOT_YET_RECONCILED_CONNECTION_OFFLINE",
+  "business_state": "COMPLETED_512_OF_512",
   "duplicate_resubmission": false,
   "pending_A_calls": [
     {
       "call_id": "29364e09-01d5-4695-a02c-64b51a677863",
-      "action": "finalizer-only write; do not duplicate while pending"
+      "action": "finalizer-only write; do not duplicate while pending",
+      "status": "RESOLVED"
     },
     {
       "call_id": "84c4e8a1-e036-4b80-9e49-a90c8ccf39ee",
-      "action": "read business PROGRESS"
+      "action": "read business PROGRESS",
+      "status": "RESOLVED"
     }
   ],
-  "next": "Read native session626 or same run PROGRESS/SUMMARY via A; never rerun benchmark.py into new directory to evade uncertainty; after four completed rows run r99_finalize.py once; keep duplicate payload audit removed"
+  "next": "NONE: frozen four-batch experiment and receipt/source reconciliation completed; do not resubmit",
+  "final_report": "reports/R99-Parallel-Input-No-Duplicate-Audit-20261111.md",
+  "prep_reduction_percent": 26.115978445004153,
+  "total_with_prepare_observed_speedup": 1.7534665366753055,
+  "finalizer_exit_code": 0
 }
