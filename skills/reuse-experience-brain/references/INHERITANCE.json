@@ -184,9 +184,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-10-DSE-INCREMENTAL.md",
+      "sha256": "a68a8d925d0be6489eb9f91e5e24a87965998fa779f7b5e337ce6777659f6722",
+      "bytes": 8997,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "22 daily source files hashed and registered (Nov4 original missing); 17 original daily contents read through Nov9, 41 selected experience cards; historical evidence not fully distilled or migrated; business memory net T_VALID NOT_MEASURED.",
+  "limits": "23 daily source files hashed and registered (Nov4 original missing); 18 original daily contents read through Nov10, 44 selected experience cards; historical evidence not fully distilled or migrated; no new shared EXP business adoption result observed; business memory net T_VALID NOT_MEASURED.",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -335,7 +343,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-09",
+  "latest_incremental_date": "2026-11-10",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -464,7 +472,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "Nov9 original Vault daily created/read and SHA registered, 22 daily files (Nov4 absent), 17 original daily bodies read, 41 selected scoped experience cards (39 prior+2); Pi original 5 draft candidates reviewed by GPT; GUI direct POST falsely passed candidate but clean Pi short control reported FAIL/PARTIAL. Visual avatar technical output quality pending, new verified business recipe=0, Docker latest WSL failure; no whole-business memory T_VALID measured.",
+  "latest_incremental_scope": "Nov10 original Vault daily locally read/linted, 23 registered daily originals (Nov4 still missing), 18 daily bodies read, 44 selected scoped shared cards; Pi 17-source draft/5 audited scoped candidates; archive 4-worker composition only historical fixed-business VERIFIED_FOR_SCOPE, no new GUI READY or whole-business time claim; ECC/Matt A/B 6/7 not admitted and separate long test not started; BLUE8 G3 fail; Docker autostart 15:39 failed despite later ordinary engine health; no observed new shared EXP business adopt/reject.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -619,6 +627,63 @@
       "sha256": "fffc3a96d0b5a8253cc0256814bde28cdd747029e43b5437ac47dbaf70f64edb",
       "content_read": true,
       "evidence_scope": "Original Vault daily created and independently read/linted; local explicit Hot Sync 13 files/0 missing and Health Check PASS; original body remains on C and no all-chat visibility."
+    }
+  ],
+  "incremental_case_sources_20261110": [
+    {
+      "experience_id": "EXP-PI-ARCHIVE-R94-20261110-001",
+      "path": "reports/R94-128-Streams-Reconciliation-20261110.md",
+      "content_read": true,
+      "evidence_scope": "Actual fixed archive 1024/1024 and 49152 source files independently checked; 1/2/4/8 sustained worker timings scoped; source freeze mismatch and user GUI unverified; professional recipe scope-only evidence."
+    },
+    {
+      "experience_id": "EXP-PI-ARCHIVE-R94-20261110-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\SUMMARY.json",
+      "content_read": true,
+      "evidence_scope": "Original eight batches 128 jobs each, input/QA boundary and paired worker measurements"
+    },
+    {
+      "experience_id": "EXP-ECC-MATT-PI-20261110-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\STATE.json",
+      "content_read": true,
+      "evidence_scope": "Nov10 20:31 A/B 6/7, budget limited, original recipe not proven, atomic WinError5 and ACL sandbox blockers; project continuing not signed."
+    },
+    {
+      "experience_id": "EXP-ECC-MATT-PI-20261110-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\long\\REFERENCE-PREPARATION.json",
+      "content_read": true,
+      "evidence_scope": "Independent hours-long Louez source/reference preparation completed 20:56; no two long arm launches or endurance acceptance."
+    },
+    {
+      "experience_id": "EXP-BLUE8-QUALITY-20261110-001",
+      "path": "skills/video-extreme-time-engine/references/BLUE8-COMPLETE-PAIRING-V1_3-20261110.md",
+      "content_read": true,
+      "evidence_scope": "56 frame 08:44.200 native output, G3 motion/lip fails, no full 8 seconds; error and bounded runner fix not GPU retested."
+    },
+    {
+      "experience_id": "EXP-BLUE8-QUALITY-20261110-001",
+      "path": "research/video/BLUE8-COMPLETE-STACK-AUDIT-V1_4-20261110.md",
+      "content_read": true,
+      "evidence_scope": "Existing official/mature candidate workflows audited and local missing assets identified, 0 new GPU submissions; not certified commercial recipe."
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Nov10 15:39 WSL prewarm failure; later manual Desktop launch engine available at20:29 is separate health layer, auto recovery unknown."
+    },
+    {
+      "experience_id": "PI-DAILY-20261110",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\daily-review-r71\\runs\\20261110-211340-793652\\SEMANTIC-AUDIT.json",
+      "content_read": true,
+      "evidence_scope": "Pi original 17-source draft 5 cited candidates, independent GPT scoping audit, no stable promotion, no actual new business memory reuse."
+    },
+    {
+      "experience_id": "DAILY-DSE-20261110",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-10-DSE-INCREMENTAL.md",
+      "sha256": "a68a8d925d0be6489eb9f91e5e24a87965998fa779f7b5e337ce6777659f6722",
+      "content_read": true,
+      "evidence_scope": "Actual original C Vault incremental body, lint PASS, index trigger update, explicit 13-file hot sync 0 missing and health PASS; original not uploaded."
     }
   ]
 }
