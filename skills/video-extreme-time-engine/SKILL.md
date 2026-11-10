@@ -5,6 +5,10 @@ description: 高品质视频极限短时间引擎第4.1版。用于本地MiniMax
 
 # 高品质视频极限短时间引擎 第4.1版
 
+## 2026-11-10 Pi V1.2与资源复审（最新补充）
+
+先读[清理实测与核账](../../research/video/VIDEO-STORAGE-RESULT-20261110.md)、[Pi V1.2复核](../../research/video/PI-CLEANUP-REVIEW-RESULT-20261110.md)与[Wan资源复审](../../research/video/BLUE8-WAN-RESOURCE-REVIEW-20261110.md)。候选清单、无运行进程和ApprovedBy参数不证明无用；核计划任务/静态引用及唯一资料，禁止整批历史目录删除。3份无引用旧下载、8份旧转储已精确清除；uv官方prune完成exit0/96992文件/1.9GiB，不报预估24GB。当前C约305.7GiB可用，永久删除与迁移、缓存分别核账；保留51路径/3junction文件检查通过，75%与GUI仍未通过。作者旧小画幅无Relight结果不能保证本机RAM；GGUF配置须与实际加载路径匹配，当前DEFER_GPU_NO_NEW_FREEZE，不原样重投或放宽守护。
+
 ## 2026-11-10清理后Wan实测补充（覆盖旧待提交状态）
 
 已再删除138个无效候选/残留/重复文件，实测C新增5.23GiB，可用约292.6GiB。原81帧首次生成POSTCLEAN-R1已唯一提交（prompt 0d609b22-03b1-4f69-b2cc-c5e6113323e1），WAN22_Animate载入时RAM99.2%，继承RAM94保护请求中断未退出后仅终止归属确认的8198服务；0采样step完成、0成片，RAM回53.9%。先读[最新清理与资源停止CURRENT](../../research/video/VIDEO-STORAGE-CURRENT-20261110.md)及原telemetry/resource-stop-final；禁止原样重投、放宽守护或结束其他业务腾内存。全局RAM<80不代表大模型加载有充分余量，资源适用性按成熟原配方复审、重新Freeze后才能再执行。GUI及8秒未通过。
