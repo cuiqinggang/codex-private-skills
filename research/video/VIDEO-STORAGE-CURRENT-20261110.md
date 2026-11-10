@@ -1,5 +1,14 @@
 # 视频空间整理与Wan试片 CURRENT
 
+## 2026-11-11最新：Pi65.6GB已逐项复核并实际清理
+
+先读[本轮完整结果](PI65GB-AUDIT-RESULT-20261111.md)及[289项处置表](PI65GB-DECISIONS-20261111.csv)。65.6是9临时项+167个AI历史项目+113个Codex工作区的候选估计，并非全属垃圾。本轮已删126615文件、逻辑12675034580字节（11.8045GiB）：5份旧下载残片；81份旧ISO/失败Etcher2.1.6；5个旧验证/烟测项目的126521个npm依赖；7份全SHA相同案例视频/JDK或截断Ghidra包；1份已完整解压的Blender安装ZIP。各批精确清单、指纹及差量结果已在K审计根，废件不迁K。
+最新C可用339997364224字节（316.647GiB），比上一报告净增10.973GiB，含并行业务写入，不把逻辑删除、迁移及可用空间差相加。长路径补查7820文件/32目录、未解决0；补查内去重207881022字节，不盲加到主清单全局去重数。
+保留有本机音频产出与验收记录的VoxCPM2约10GiB；保留实际运行/任务调用的Polsia及DeepSeek、ECC恢复体系、Git/唯一资料、H3共享环境/UMT5及当前Wan。旧Codex MSIX单项操作阻塞，已仅停本轮辅助Python并核账：源仍在、不计删除、不自动重试。Grafana归档657成员不匹配，未按重复包删。
+Node/npm/Codex CLI/Blender版本及共享Torch等导入通过；3模型junction/51文件再验通过。Etcher1.18.11观察到GUI窗口，仅为启动观察，未通过完整操作验收。旧npm依赖项目的package/lock哈希原样保留，未来需要时按锁重建，未当有效运行工具保留。Pi包内HOST-65GB-AUDIT-20261111.md已写入。
+本轮GPU提交0，Wan仍DEFER_GPU_NO_NEW_FREEZE；不得恢复原intent、8198或旧execute-plan。75%/完整GUI/8秒未通过。自动化流程候选仍NOT_READY，后续只据新效用/来源等价证据差量清理。
+
+
 2026-11-10（北京时间）。VIDEO-STORAGE-20261110 / BLUE8。状态：CLEANUP_PARTIAL / WAN_RESOURCE_STOP / FINAL_VALID=NO。
 
 ## 现行授权与禁止
