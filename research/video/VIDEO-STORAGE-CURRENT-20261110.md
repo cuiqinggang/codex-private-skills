@@ -1,5 +1,10 @@
 # 视频空间整理与Wan试片 CURRENT
 
+## 2026-11-11 02:07批次：连接等待，资源复审未冻结
+
+本轮A入口无在线设备（目标最近约6分钟前在线），B入口读取STATE返回429。未成功读取本机新STATE/资源回执，也未写本机日志或取得新空间快照；无新增删除/下载/迁移/GPU任务。已复核city96源码及MultiMemory驻留分支，但后者仍WIP/实验LoRA，缺SM75+当前Animate完整图的资源证据，仅REFERENCE_ONLY，不部署，不生成新Freeze。详见[本轮边界与补录事项](VIDEO-STORAGE-RESUME-20261111-0207.md)。连接恢复后先对账本机原状态，禁止重做DONE项/恢复旧迁移及旧Wan intent。原FINAL_VALID/75%/GUI/8秒仍未通过。此为暂时连接异常，不推断电脑关机或资产失效。
+
+
 ## 2026-11-11 V1.3两份DMP补充（最新）
 
 已按用户授权精确删除conhost.exe.11068.dmp与conhost.exe.30308.dmp，共1726536字节（1.65MiB），两文件复查不存在、CrashDumps目录保留。原V1.3清单实际上为Unit=dir指向整目录，未运行-AllowDirDelete；改用两行Unit=file清单，经预演/指纹复核后原脚本Apply退出0。原01-scratch.csv现为两条精确Status=DONE，禁止重复按目录删除。文件目标原生计量为0的缺陷已独立核账，不把GB输出当实际删除字节。详见[两文件执行与V1.3边界](PI-V13-TWO-DMP-RESULT-20261111.md)。本机v13-two-dmp-result.json，STATE/actions/RUN-LOG接续；本轮无新GPU、无新资源Freeze，整体75%/GUI/8秒仍未通过。
