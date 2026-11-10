@@ -1,0 +1,1022 @@
+{
+  "final": {
+    "task_id": "PI-R96-29S-LIMIT-20261110",
+    "quality_valid": true,
+    "batches": 6,
+    "accepted": 768,
+    "files_checked": 36864,
+    "rows": [
+      {
+        "label": "A",
+        "cpu_before": 100.0,
+        "cpu_during": 99.9,
+        "memory_before": {
+          "total": 34302468096,
+          "available": 12566462464,
+          "percent": 63.4,
+          "used": 21736005632,
+          "free": 12566462464
+        },
+        "internal_final_qa_s": 10.518646799959242,
+        "case": "case-00-A",
+        "workers": 4,
+        "valid": true,
+        "total_s": 62.24544739990961,
+        "fixture_provision_s": 42.220604600035585,
+        "total_with_fixture_s": 104.46605269995052,
+        "cli_wall_s": 55.60250589996576,
+        "qa_s": 6.453999500023201,
+        "failures": [],
+        "worker_cpu_s": 28.09375,
+        "worker_span_s": 37.25907350005582,
+        "match_sum_s": 79.92407389893197,
+        "handoff_s": 43.09117049991619,
+        "header_s": 0.2885815999470651,
+        "receipt_fingerprints": {
+          "run\\case-00-A\\RESULT.json": "2ec4820a0aced6edd4639cfd8350710091b3f83a919e7586e8a1dca4b16b5f06",
+          "run\\case-00-A\\work\\EXECUTION.json": "7155493f12734edd291b5c05705e82b97b9a2f2af4b1454be63d5b40399c0480",
+          "run\\case-00-A\\work\\DELIVERY.json": "b67aff52ab80da526b26b7ff6d56f256a5414df6df4ff1f4bee3401dfdd219ea",
+          "run\\case-00-A\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-00-A\\trace.jsonl": "db61c3aed1b518c024a17084c23fdc4ab8410b0fde061afb23e1a3eb6cf61f64"
+        }
+      },
+      {
+        "label": "B",
+        "cpu_before": 54.5,
+        "cpu_during": 99.4,
+        "memory_before": {
+          "total": 34302468096,
+          "available": 12596457472,
+          "percent": 63.3,
+          "used": 21706010624,
+          "free": 12596457472
+        },
+        "internal_final_qa_s": 4.748383600031957,
+        "case": "case-01-B",
+        "workers": 4,
+        "valid": true,
+        "total_s": 32.22276800009422,
+        "fixture_provision_s": 18.83547049993649,
+        "total_with_fixture_s": 51.05823969992343,
+        "cli_wall_s": 28.455193300032988,
+        "qa_s": 3.7002868000417948,
+        "failures": [],
+        "worker_cpu_s": 25.578125,
+        "worker_span_s": 20.428902100073174,
+        "match_sum_s": 44.438605999806896,
+        "handoff_s": 22.86010650009848,
+        "header_s": 0.24121840007137507,
+        "receipt_fingerprints": {
+          "run\\case-01-B\\RESULT.json": "291d3b6397587e57f7b102626c436f3cb99b7fc5e9c73a17e60d0345a20bf2d3",
+          "run\\case-01-B\\work\\EXECUTION.json": "f80a46dccfbbf6a55f9598bf636482abb07a9b445c6dc2013b116bdc109eac2b",
+          "run\\case-01-B\\work\\DELIVERY.json": "d39897ce4d275b2a5da9b2e4f922c050d4e05c527b000a5ebe9d5343e2fd55d1",
+          "run\\case-01-B\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-01-B\\trace.jsonl": "0e42535b28ff2f81adbfb842695bf67e1acae30674c992460b8bb841def22a72"
+        }
+      },
+      {
+        "label": "B",
+        "cpu_before": 51.5,
+        "cpu_during": 96.8,
+        "memory_before": {
+          "total": 34302468096,
+          "available": 12530536448,
+          "percent": 63.5,
+          "used": 21771931648,
+          "free": 12530536448
+        },
+        "internal_final_qa_s": 3.978158099926077,
+        "case": "case-02-B",
+        "workers": 4,
+        "valid": true,
+        "total_s": 27.059376800083555,
+        "fixture_provision_s": 14.997333799954504,
+        "total_with_fixture_s": 42.056711100041866,
+        "cli_wall_s": 23.68505820003338,
+        "qa_s": 3.3130031999899074,
+        "failures": [],
+        "worker_cpu_s": 25.140625,
+        "worker_span_s": 16.673864500015043,
+        "match_sum_s": 37.43746069946792,
+        "handoff_s": 18.869163900031708,
+        "header_s": 0.17783509998116642,
+        "receipt_fingerprints": {
+          "run\\case-02-B\\RESULT.json": "c90111b0d6fc5e50dbb12d953897dc266a3b715c93d06072a6953b7e9e1e1c3b",
+          "run\\case-02-B\\work\\EXECUTION.json": "2ebde7436dfce783ed00f6083713bb4a77c1c3286e27e21dbac31b33b00d4f81",
+          "run\\case-02-B\\work\\DELIVERY.json": "a1fe667b513c74fe36422c699ca523b40079471507d4b6db9dd989185ac1b8e7",
+          "run\\case-02-B\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-02-B\\trace.jsonl": "1d2ecadfdaa8db05171a8aaab6bb76fc01db178d3a7b34488fb67e05da982f4d"
+        }
+      },
+      {
+        "label": "A",
+        "cpu_before": 100.0,
+        "cpu_during": 97.0,
+        "memory_before": {
+          "total": 34302468096,
+          "available": 12098543616,
+          "percent": 64.7,
+          "used": 22203924480,
+          "free": 12098543616
+        },
+        "internal_final_qa_s": 4.41230359999463,
+        "case": "case-03-A",
+        "workers": 4,
+        "valid": true,
+        "total_s": 28.568554700003006,
+        "fixture_provision_s": 16.909512100042775,
+        "total_with_fixture_s": 45.47806730004959,
+        "cli_wall_s": 24.951495399931446,
+        "qa_s": 3.5272425999864936,
+        "failures": [],
+        "worker_cpu_s": 24.65625,
+        "worker_span_s": 17.10613359999843,
+        "match_sum_s": 37.36660429940093,
+        "handoff_s": 19.535330999991857,
+        "header_s": 0.18538549996446818,
+        "receipt_fingerprints": {
+          "run\\case-03-A\\RESULT.json": "693c431c86cb1e970fcc455c0076ddcc9625bfcbbc27019e8ac00536baf7cb24",
+          "run\\case-03-A\\work\\EXECUTION.json": "0d090ee4d78f28ec64a55404fb9afa4ca9bfc5b66157d483a5188b087a254713",
+          "run\\case-03-A\\work\\DELIVERY.json": "ea496a8a0e8b1f322c59d88d86cef2c7b7eb06fc88a6588eda6183b263b988d0",
+          "run\\case-03-A\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-03-A\\trace.jsonl": "96a0bcd272c837b244f0a40d79b949856a85605c6f1a2979668bd3f5deb03c81"
+        }
+      },
+      {
+        "label": "A",
+        "cpu_before": 70.8,
+        "cpu_during": 96.1,
+        "memory_before": {
+          "total": 34302468096,
+          "available": 12427587584,
+          "percent": 63.8,
+          "used": 21874880512,
+          "free": 12427587584
+        },
+        "internal_final_qa_s": 4.675960700027645,
+        "case": "case-04-A",
+        "workers": 4,
+        "valid": true,
+        "total_s": 31.14517639996484,
+        "fixture_provision_s": 14.39226500003133,
+        "total_with_fixture_s": 45.537441899999976,
+        "cli_wall_s": 27.628421499975957,
+        "qa_s": 3.4535463999491185,
+        "failures": [],
+        "worker_cpu_s": 25.421875,
+        "worker_span_s": 19.321575499954633,
+        "match_sum_s": 43.6419437994482,
+        "handoff_s": 22.094156399951316,
+        "header_s": 0.13154450000729412,
+        "receipt_fingerprints": {
+          "run\\case-04-A\\RESULT.json": "c011406eb8e27bdfade073fc11211bd95439b88593cb5bd07094eefeed4b30e6",
+          "run\\case-04-A\\work\\EXECUTION.json": "7a4f7416aff84f474a5c32da4eddf80327e86764bb7fdb08d2f8d82d6365fee7",
+          "run\\case-04-A\\work\\DELIVERY.json": "82e4ec3130f2e538a060023efc23343eae9c659889d7d8dea62fe3345ce7d8be",
+          "run\\case-04-A\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-04-A\\trace.jsonl": "bbca91c502f543b5b70d815105eac0dfc81b2088c67f617006b78e38049d9e48"
+        }
+      },
+      {
+        "label": "B",
+        "cpu_before": 84.1,
+        "cpu_during": 97.6,
+        "memory_before": {
+          "total": 34302468096,
+          "available": 12498530304,
+          "percent": 63.6,
+          "used": 21803937792,
+          "free": 12498530304
+        },
+        "internal_final_qa_s": 4.700486200046726,
+        "case": "case-05-B",
+        "workers": 4,
+        "valid": true,
+        "total_s": 29.49431839992758,
+        "fixture_provision_s": 15.297576199984178,
+        "total_with_fixture_s": 44.791895099915564,
+        "cli_wall_s": 25.823373100021854,
+        "qa_s": 3.6089776000007987,
+        "failures": [],
+        "worker_cpu_s": 25.4375,
+        "worker_span_s": 18.558330800035037,
+        "match_sum_s": 41.1283304002136,
+        "handoff_s": 20.347406500019133,
+        "header_s": 0.13682859996333718,
+        "receipt_fingerprints": {
+          "run\\case-05-B\\RESULT.json": "0efc4376de523ca83300673a43117a1a819e80a7a3875ed0b91b04dc98e502ee",
+          "run\\case-05-B\\work\\EXECUTION.json": "723d627a9170e9c199b35da66bb6c94afaf3fbdac592ed28d00f95e14bbd5e32",
+          "run\\case-05-B\\work\\DELIVERY.json": "367ab1dea9248a82850068fe35dfeb1a94e7b8a1f9947f1281d5a154c4829cb3",
+          "run\\case-05-B\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-05-B\\trace.jsonl": "6d408f80736725a6ae8d9734d3ba46dc30963b66094e075c591e6165301a7d44"
+        }
+      }
+    ],
+    "groups": {
+      "A": {
+        "mean_s": 40.65305949995915,
+        "median_s": 31.14517639996484,
+        "range_s": [
+          28.568554700003006,
+          62.24544739990961
+        ],
+        "max_min_ratio": 2.1788098156713214
+      },
+      "B": {
+        "mean_s": 29.592154400035117,
+        "median_s": 29.49431839992758,
+        "range_s": [
+          27.059376800083555,
+          32.22276800009422
+        ],
+        "max_min_ratio": 1.1908170775017524
+      }
+    },
+    "historical_baseline_s": 29.697043600026518,
+    "B_mean_saving_vs_history_s": 0.10488919999140123,
+    "B_mean_saving_vs_history_percent": 0.3531974475442652,
+    "B_best_saving_vs_history_s": 2.637666799942963,
+    "B_best_saving_vs_history_percent": 8.881917121004623,
+    "B_stability_screen": false,
+    "paired_B_faster": [
+      true,
+      true,
+      true
+    ],
+    "net_repeatable_gain": false,
+    "benchmark_session_sum_including_fixtures_s": 333.38840779988095,
+    "physical_limit": "NOT_ESTABLISHED",
+    "stable_new_limit": "NOT_ESTABLISHED",
+    "adopted": "KEEP_EXISTING_DEFAULT_UNCHANGED",
+    "source_checks": {
+      "benchmark.py": true,
+      "launch_pi.py": true,
+      "snapshot\\scripts\\archive_lane_worker.py": true,
+      "snapshot\\scripts\\archive_stream_worker.py": true,
+      "snapshot\\scripts\\batch_handoff.py": true,
+      "snapshot\\scripts\\deliver_archive_batch.py": true,
+      "snapshot\\scripts\\match_flow.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\artifact_recipe.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\fast_order_route.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\launch_pi-v1.3.1-scoped-backup.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\mixed_reader.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\orders\\business_pack.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\orders\\verify_order_pack.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\upstream\\fast_order_route.py": true
+    },
+    "experiment_freeze_sha256": "a9d3d30d59a77c3b85a7ccb4ff9f8c86111d81789e2a0917ab91ea5c34bdf938",
+    "current_report_verified_utc": "2026-11-10T16:01:14.487552+00:00",
+    "scope": "No second full file audit; original full per-batch external QA already checked every input, ZIP byte/hash/CRC, manifest and delivery fingerprint. Finalizer reconciles all receipts and source hashes only; quality pass != speed pass."
+  },
+  "summary": {
+    "valid": true,
+    "rows": [
+      {
+        "label": "A",
+        "cpu_before": 100.0,
+        "cpu_during": 99.9,
+        "memory_before": {
+          "total": 34302468096,
+          "available": 12566462464,
+          "percent": 63.4,
+          "used": 21736005632,
+          "free": 12566462464
+        },
+        "internal_final_qa_s": 10.518646799959242,
+        "case": "case-00-A",
+        "workers": 4,
+        "valid": true,
+        "total_s": 62.24544739990961,
+        "fixture_provision_s": 42.220604600035585,
+        "total_with_fixture_s": 104.46605269995052,
+        "cli_wall_s": 55.60250589996576,
+        "qa_s": 6.453999500023201,
+        "failures": []
+      },
+      {
+        "label": "B",
+        "cpu_before": 54.5,
+        "cpu_during": 99.4,
+        "memory_before": {
+          "total": 34302468096,
+          "available": 12596457472,
+          "percent": 63.3,
+          "used": 21706010624,
+          "free": 12596457472
+        },
+        "internal_final_qa_s": 4.748383600031957,
+        "case": "case-01-B",
+        "workers": 4,
+        "valid": true,
+        "total_s": 32.22276800009422,
+        "fixture_provision_s": 18.83547049993649,
+        "total_with_fixture_s": 51.05823969992343,
+        "cli_wall_s": 28.455193300032988,
+        "qa_s": 3.7002868000417948,
+        "failures": []
+      },
+      {
+        "label": "B",
+        "cpu_before": 51.5,
+        "cpu_during": 96.8,
+        "memory_before": {
+          "total": 34302468096,
+          "available": 12530536448,
+          "percent": 63.5,
+          "used": 21771931648,
+          "free": 12530536448
+        },
+        "internal_final_qa_s": 3.978158099926077,
+        "case": "case-02-B",
+        "workers": 4,
+        "valid": true,
+        "total_s": 27.059376800083555,
+        "fixture_provision_s": 14.997333799954504,
+        "total_with_fixture_s": 42.056711100041866,
+        "cli_wall_s": 23.68505820003338,
+        "qa_s": 3.3130031999899074,
+        "failures": []
+      },
+      {
+        "label": "A",
+        "cpu_before": 100.0,
+        "cpu_during": 97.0,
+        "memory_before": {
+          "total": 34302468096,
+          "available": 12098543616,
+          "percent": 64.7,
+          "used": 22203924480,
+          "free": 12098543616
+        },
+        "internal_final_qa_s": 4.41230359999463,
+        "case": "case-03-A",
+        "workers": 4,
+        "valid": true,
+        "total_s": 28.568554700003006,
+        "fixture_provision_s": 16.909512100042775,
+        "total_with_fixture_s": 45.47806730004959,
+        "cli_wall_s": 24.951495399931446,
+        "qa_s": 3.5272425999864936,
+        "failures": []
+      },
+      {
+        "label": "A",
+        "cpu_before": 70.8,
+        "cpu_during": 96.1,
+        "memory_before": {
+          "total": 34302468096,
+          "available": 12427587584,
+          "percent": 63.8,
+          "used": 21874880512,
+          "free": 12427587584
+        },
+        "internal_final_qa_s": 4.675960700027645,
+        "case": "case-04-A",
+        "workers": 4,
+        "valid": true,
+        "total_s": 31.14517639996484,
+        "fixture_provision_s": 14.39226500003133,
+        "total_with_fixture_s": 45.537441899999976,
+        "cli_wall_s": 27.628421499975957,
+        "qa_s": 3.4535463999491185,
+        "failures": []
+      },
+      {
+        "label": "B",
+        "cpu_before": 84.1,
+        "cpu_during": 97.6,
+        "memory_before": {
+          "total": 34302468096,
+          "available": 12498530304,
+          "percent": 63.6,
+          "used": 21803937792,
+          "free": 12498530304
+        },
+        "internal_final_qa_s": 4.700486200046726,
+        "case": "case-05-B",
+        "workers": 4,
+        "valid": true,
+        "total_s": 29.49431839992758,
+        "fixture_provision_s": 15.297576199984178,
+        "total_with_fixture_s": 44.791895099915564,
+        "cli_wall_s": 25.823373100021854,
+        "qa_s": 3.6089776000007987,
+        "failures": []
+      }
+    ],
+    "groups": {
+      "A": {
+        "mean_s": 40.65305949995915,
+        "median_s": 31.14517639996484,
+        "range_s": [
+          28.568554700003006,
+          62.24544739990961
+        ],
+        "max_min_ratio": 2.1788098156713214
+      },
+      "B": {
+        "mean_s": 29.592154400035117,
+        "median_s": 29.49431839992758,
+        "range_s": [
+          27.059376800083555,
+          32.22276800009422
+        ],
+        "max_min_ratio": 1.1908170775017524
+      }
+    },
+    "version": "omp/18.18.0",
+    "entry": "existing enhanced launch_pi.py",
+    "historical_baseline_s": 29.697043600026518,
+    "B_stability_screen": false,
+    "paired_B_faster": [
+      true,
+      true,
+      true
+    ],
+    "net_repeatable_gain": false
+  },
+  "freeze": {
+    "task_id": "PI-R96-29S-LIMIT-20261110",
+    "created_utc_epoch": 1794325975.9585845,
+    "virtual_mature": "YES_FOR_FROZEN_COMPOSITION_NOT_SPEED_CLAIM",
+    "order": [
+      "A",
+      "B",
+      "B",
+      "A",
+      "A",
+      "B"
+    ],
+    "A": "4 original business workers, OS scheduling, serial internal QA",
+    "B": "identical, only 2-thread internal QA via previously accepted R95 verify_one + stdlib executor",
+    "invariants": [
+      "128 unique tasks x48 original files",
+      "no model or GUI; explicit enhanced CLI is user-requested benchmark entry",
+      "original match and archive code hashes unchanged",
+      "original workspace-write sandbox per lane",
+      "all original QA checks unchanged",
+      "fixed 4-thread external independent QA retained",
+      "original clock including result write and readback",
+      "fresh workspaces, no discarded slow or failed runs"
+    ],
+    "historic_source_gap": "R94 deliver changed in failure-diagnostic branch; current success path reconstructed from accepted R95 snapshot. Not bit-identical historical R94 chain. Current A/B freeze same executable code, differing only QA-mode env.",
+    "virtual_attacks": {
+      "read_only_parallel_jobs": "unique workspaces checked by existing entry; no shared ZipFile or mutable output list",
+      "exception_propagation": "list(pool.map) raises before VALID write",
+      "qa_completeness": "same verify_one body; external QA unchanged",
+      "source_mutation": "original per-job and post-QA fingerprints retained",
+      "TOCTOU": "no cached input hashes replace re-read",
+      "resource_contention": "2 instead of already tested 4 QA threads; current host heavy load retained and measured; no unrelated processes touched"
+    },
+    "mature_sources": [
+      "R95 accepted verify_one + thread pool",
+      "https://docs.python.org/3.13/library/concurrent.futures.html"
+    ],
+    "forecast": "R94 mean post-handoff pipeline remainder 5.484s is upper QA budget, not all parallelizable. Ideal 2-way halving would save at most about2.742s (~9.2% of29.697), assumptions not measured gain. No numeric whole-machine physical limit certified.",
+    "stop": "single six-batch Reality; stop on real quality failure and reconcile; no extra runs to select fast samples; no deadline kills normal progress",
+    "snapshot_sha256": {
+      "benchmark.py": "80f2b91a54aba07d1733c7d7071e84937a481b3d062587fe058bc2dde75f0705",
+      "launch_pi.py": "776482aa2f81f9b86d2af440f0a2efa6802b3f0c286fbf6bef4166fdd21dc400",
+      "snapshot\\scripts\\archive_lane_worker.py": "950c9b8b1fa1add0811eb58e77d63c21a6ad0e65814883f0454255a4747f54d3",
+      "snapshot\\scripts\\archive_stream_worker.py": "81b3463d2619541fc7772b41508ac1d9b9a782c1401f384a831892e24e8486a0",
+      "snapshot\\scripts\\batch_handoff.py": "af73e18b3f31a42e82efe8042b2efeb72cff9d9cd4f99003ffd3f7a2eb923c4b",
+      "snapshot\\scripts\\deliver_archive_batch.py": "6b1fd1bc1a492c1cce72e2322238e543896f112abe0d0ce89dacb8bd2a3b11b3",
+      "snapshot\\scripts\\match_flow.py": "0c4620b34751aa144eccc7222070bbffe3dbc63f43ad169ea79f1199a8244483",
+      "snapshot\\assets\\ready-flows\\pi-native\\artifact_recipe.py": "4967b4e9e26f72459211b78534bec281b262c20576f4076a099b41a7fa418cc6",
+      "snapshot\\assets\\ready-flows\\pi-native\\fast_order_route.py": "001f3dd27842958e46bc0f0b61a9ce4d8316ef8770c2ee29ed75ba98580eea56",
+      "snapshot\\assets\\ready-flows\\pi-native\\launch_pi-v1.3.1-scoped-backup.py": "bc8a2a32dd2308823e47a70cfb19edad05a01ab49c9f668d6b236739f9ba7d00",
+      "snapshot\\assets\\ready-flows\\pi-native\\mixed_reader.py": "f9673f4cb47e3d04e01573c809070787bc82e8da7fc36a43e332548cc9655b4c",
+      "snapshot\\assets\\ready-flows\\pi-native\\orders\\business_pack.py": "18f7f5f90b48a5d77a5059670f41ccf77c09077ae83614a6844f8ae2c6277d4e",
+      "snapshot\\assets\\ready-flows\\pi-native\\orders\\verify_order_pack.py": "ab93ff0d1d9b5b7c1f7ac6b10b8895d4c7d335fedaf6f8914377e06ece286dff",
+      "snapshot\\assets\\ready-flows\\pi-native\\upstream\\fast_order_route.py": "d8c8f68c43d17ad83a0293761f8203cd2cbfc4b761487267842aca204d93fa9f"
+    },
+    "prepare_script_sha256": "37ff4784c693cc3d6c905a552543e4e41a997b275c5fae2d65874482926d1209"
+  },
+  "original": {
+    "cases": [
+      {
+        "case": "case-02-w4",
+        "valid": true,
+        "cli_s": 30.64556089998223,
+        "external_qa_s": 4.659407200058922,
+        "worker_span_s": 19.77423910005018,
+        "worker_sum_wall_s": 76.48890490096528,
+        "handoff_s": 23.868903299910016,
+        "header_s": 0.13318079989403486,
+        "lane_sizes": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "lane_s": [
+          18.26499340008013,
+          19.77423910005018,
+          19.05481330002658,
+          19.52912910003215
+        ],
+        "match_sum_s": 43.26329500018619,
+        "worker_cpu_s": 24.625,
+        "row_fields": [
+          "index",
+          "cwd",
+          "pid",
+          "start",
+          "end",
+          "cpu_s",
+          "match_s",
+          "exit_code",
+          "stdout",
+          "stderr",
+          "input_hashes",
+          "source_hashes"
+        ],
+        "receipt": {
+          "status": "VALID",
+          "accepted": 128,
+          "requested": 128,
+          "files": 6144,
+          "workers": 4,
+          "local_pipeline_s": 30.232202999992296,
+          "delivery": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\case-02-w4\\work\\DELIVERY.json",
+          "completion": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\case-02-w4\\work\\COMPLETION.md"
+        },
+        "lane_metrics": [
+          {
+            "pid": 21492,
+            "lane": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\case-02-w4\\work\\lane-0",
+            "count": 32,
+            "stream_wall_s": 19.055143400095403,
+            "process_cpu_s": 6.15625,
+            "job_cpu_s": 6.046875,
+            "process_exit_code": 0
+          },
+          {
+            "pid": 20352,
+            "lane": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\case-02-w4\\work\\lane-1",
+            "count": 32,
+            "stream_wall_s": 19.77467160008382,
+            "process_cpu_s": 6.40625,
+            "job_cpu_s": 6.21875,
+            "process_exit_code": 0
+          },
+          {
+            "pid": 26000,
+            "lane": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\case-02-w4\\work\\lane-2",
+            "count": 32,
+            "stream_wall_s": 19.529483700054698,
+            "process_cpu_s": 6.453125,
+            "job_cpu_s": 6.328125,
+            "process_exit_code": 0
+          },
+          {
+            "pid": 16168,
+            "lane": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\case-02-w4\\work\\lane-3",
+            "count": 32,
+            "stream_wall_s": 18.26538590004202,
+            "process_cpu_s": 6.15625,
+            "job_cpu_s": 6.03125,
+            "process_exit_code": 0
+          }
+        ]
+      },
+      {
+        "case": "case-05-w4",
+        "valid": true,
+        "cli_s": 20.996641600038856,
+        "external_qa_s": 3.0096684000454843,
+        "worker_span_s": 14.441035700030625,
+        "worker_sum_wall_s": 56.41540210065432,
+        "handoff_s": 16.096977600012906,
+        "header_s": 0.13291300006676465,
+        "lane_sizes": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "lane_s": [
+          14.31022879993543,
+          14.098578599980101,
+          13.847442299942486,
+          14.225849000038579
+        ],
+        "match_sum_s": 31.9948248998262,
+        "worker_cpu_s": 24.40625,
+        "row_fields": [
+          "index",
+          "cwd",
+          "pid",
+          "start",
+          "end",
+          "cpu_s",
+          "match_s",
+          "exit_code",
+          "stdout",
+          "stderr",
+          "input_hashes",
+          "source_hashes"
+        ],
+        "receipt": {
+          "status": "VALID",
+          "accepted": 128,
+          "requested": 128,
+          "files": 6144,
+          "workers": 4,
+          "local_pipeline_s": 20.70073100004811,
+          "delivery": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\case-05-w4\\work\\DELIVERY.json",
+          "completion": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\case-05-w4\\work\\COMPLETION.md"
+        },
+        "lane_metrics": [
+          {
+            "pid": 31268,
+            "lane": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\case-05-w4\\work\\lane-0",
+            "count": 32,
+            "stream_wall_s": 14.09941110003274,
+            "process_cpu_s": 6.125,
+            "job_cpu_s": 5.984375,
+            "process_exit_code": 0
+          },
+          {
+            "pid": 36312,
+            "lane": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\case-05-w4\\work\\lane-1",
+            "count": 32,
+            "stream_wall_s": 14.22631509997882,
+            "process_cpu_s": 6.6875,
+            "job_cpu_s": 6.453125,
+            "process_exit_code": 0
+          },
+          {
+            "pid": 35792,
+            "lane": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\case-05-w4\\work\\lane-2",
+            "count": 32,
+            "stream_wall_s": 13.847755399998277,
+            "process_cpu_s": 6.375,
+            "job_cpu_s": 6.171875,
+            "process_exit_code": 0
+          },
+          {
+            "pid": 17436,
+            "lane": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\case-05-w4\\work\\lane-3",
+            "count": 32,
+            "stream_wall_s": 14.310549899935722,
+            "process_cpu_s": 5.96875,
+            "job_cpu_s": 5.796875,
+            "process_exit_code": 0
+          }
+        ]
+      }
+    ],
+    "sources": {
+      "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\launch_pi.py": {
+        "expected": "f2cc8bb727f6cdcdf10a2278925872ccf41c08a0e66b79850e2e0271ec60606e",
+        "actual": "f2cc8bb727f6cdcdf10a2278925872ccf41c08a0e66b79850e2e0271ec60606e"
+      },
+      "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\runtime\\skills\\run-batch-automation\\scripts\\archive_stream_worker.py": {
+        "expected": "81b3463d2619541fc7772b41508ac1d9b9a782c1401f384a831892e24e8486a0",
+        "actual": "81b3463d2619541fc7772b41508ac1d9b9a782c1401f384a831892e24e8486a0"
+      },
+      "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\runtime\\skills\\run-batch-automation\\scripts\\deliver_archive_batch.py": {
+        "expected": "0ceb9a62c4e29bb69b0ceeb8706dad356a750ad5aada809482ad09751ddcf2a0",
+        "actual": "9d22110b51c50d895d5bfffc63578b8a310451ade706adcaad873e7ba4979f57"
+      },
+      "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\runtime\\skills\\run-batch-automation\\scripts\\batch_handoff.py": {
+        "expected": "af73e18b3f31a42e82efe8042b2efeb72cff9d9cd4f99003ffd3f7a2eb923c4b",
+        "actual": "af73e18b3f31a42e82efe8042b2efeb72cff9d9cd4f99003ffd3f7a2eb923c4b"
+      },
+      "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\runtime\\skills\\run-batch-automation\\scripts\\match_flow.py": {
+        "expected": "0c4620b34751aa144eccc7222070bbffe3dbc63f43ad169ea79f1199a8244483",
+        "actual": "0c4620b34751aa144eccc7222070bbffe3dbc63f43ad169ea79f1199a8244483"
+      },
+      "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\candidate-library\\scripts\\match_flow.py": {
+        "expected": "0c4620b34751aa144eccc7222070bbffe3dbc63f43ad169ea79f1199a8244483",
+        "actual": "0c4620b34751aa144eccc7222070bbffe3dbc63f43ad169ea79f1199a8244483"
+      },
+      "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\candidate-library\\assets\\ready-flows\\pi-native\\artifact_recipe.py": {
+        "expected": "4967b4e9e26f72459211b78534bec281b262c20576f4076a099b41a7fa418cc6",
+        "actual": "4967b4e9e26f72459211b78534bec281b262c20576f4076a099b41a7fa418cc6"
+      }
+    },
+    "input_files": 48,
+    "input_bytes": 56408,
+    "memory": {
+      "total": 34302468096,
+      "available": 13267361792,
+      "percent": 61.3,
+      "used": 21035106304,
+      "free": 13267361792
+    },
+    "top_cpu": [
+      {
+        "pid": 25460,
+        "name": "chrome.exe",
+        "cpu_percent": 65.1,
+        "rss_mib": 233.1
+      },
+      {
+        "pid": 31700,
+        "name": "chrome.exe",
+        "cpu_percent": 55.0,
+        "rss_mib": 620.8
+      },
+      {
+        "pid": 6452,
+        "name": "vmmem",
+        "cpu_percent": 41.0,
+        "rss_mib": 2736.9
+      },
+      {
+        "pid": 32508,
+        "name": "python.exe",
+        "cpu_percent": 25.3,
+        "rss_mib": 23.7
+      },
+      {
+        "pid": 33000,
+        "name": "chrome.exe",
+        "cpu_percent": 23.5,
+        "rss_mib": 679.9
+      },
+      {
+        "pid": 34340,
+        "name": "chrome.exe",
+        "cpu_percent": 21.7,
+        "rss_mib": 394.8
+      },
+      {
+        "pid": 18784,
+        "name": "dwm.exe",
+        "cpu_percent": 20.8,
+        "rss_mib": 140.2
+      },
+      {
+        "pid": 25028,
+        "name": "chrome.exe",
+        "cpu_percent": 16.3,
+        "rss_mib": 670.2
+      },
+      {
+        "pid": 10548,
+        "name": "FlClash.exe",
+        "cpu_percent": 15.4,
+        "rss_mib": 166.2
+      },
+      {
+        "pid": 27824,
+        "name": "chrome.exe",
+        "cpu_percent": 12.5,
+        "rss_mib": 679.7
+      }
+    ],
+    "utc": 1794325724.7155542
+  },
+  "profile": {
+    "status": "MATCH",
+    "wall_profiled_s": 1.4059377000667155,
+    "calls": 48796,
+    "self_top": [
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method _io.open>",
+        "calls": 52,
+        "self_s": 0.9794674000000001,
+        "cum_s": 0.9798049000000001
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<method 'read' of '_io.BufferedReader' objects>",
+        "calls": 123,
+        "self_s": 0.12555470000000002,
+        "cum_s": 0.12555470000000002
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method nt.stat>",
+        "calls": 270,
+        "self_s": 0.0870808,
+        "cum_s": 0.0932187
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method nt._getfinalpathname>",
+        "calls": 134,
+        "self_s": 0.0233808,
+        "cum_s": 0.0233808
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method _io.open_code>",
+        "calls": 23,
+        "self_s": 0.0162811,
+        "cum_s": 0.0162811
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method nt._path_isjunction>",
+        "calls": 71,
+        "self_s": 0.015224600000000001,
+        "cum_s": 0.015405400000000001
+      },
+      {
+        "file": "C:\\Users\\A\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\pathlib\\_local.py",
+        "line": 193,
+        "function": "__eq__",
+        "calls": 566,
+        "self_s": 0.0093982,
+        "cum_s": 0.0173074
+      },
+      {
+        "file": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\candidate-library\\scripts\\match_flow.py",
+        "line": 153,
+        "function": "match",
+        "calls": 1,
+        "self_s": 0.0089238,
+        "cum_s": 1.4035544
+      },
+      {
+        "file": "<frozen importlib._bootstrap_external>",
+        "line": 779,
+        "function": "_compile_bytecode",
+        "calls": 23,
+        "self_s": 0.008537900000000001,
+        "cum_s": 0.0120871
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method builtins.len>",
+        "calls": 4072,
+        "self_s": 0.0060679,
+        "cum_s": 0.0064387
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<method '__exit__' of '_io._IOBase' objects>",
+        "calls": 74,
+        "self_s": 0.006042400000000001,
+        "cum_s": 0.006042400000000001
+      },
+      {
+        "file": "<frozen ntpath>",
+        "line": 661,
+        "function": "realpath",
+        "calls": 64,
+        "self_s": 0.005921,
+        "cum_s": 0.0349855
+      },
+      {
+        "file": "C:\\Users\\A\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\pathlib\\_local.py",
+        "line": 498,
+        "function": "__init__",
+        "calls": 827,
+        "self_s": 0.0054837,
+        "cum_s": 0.0103204
+      },
+      {
+        "file": "C:\\Users\\A\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\re\\_compiler.py",
+        "line": 514,
+        "function": "_compile_info",
+        "calls": 18,
+        "self_s": 0.004359,
+        "cum_s": 0.004850500000000001
+      },
+      {
+        "file": "C:\\Users\\A\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\pathlib\\_local.py",
+        "line": 227,
+        "function": "__str__",
+        "calls": 1050,
+        "self_s": 0.0043095,
+        "cum_s": 0.0142278
+      }
+    ],
+    "cum_top": [
+      {
+        "file": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\candidate-library\\scripts\\match_flow.py",
+        "line": 153,
+        "function": "match",
+        "calls": 1,
+        "self_s": 0.0089238,
+        "cum_s": 1.4035544
+      },
+      {
+        "file": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\candidate-library\\scripts\\match_flow.py",
+        "line": 41,
+        "function": "sha",
+        "calls": 50,
+        "self_s": 0.0017941,
+        "cum_s": 1.0138025000000002
+      },
+      {
+        "file": "C:\\Users\\A\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\pathlib\\_local.py",
+        "line": 529,
+        "function": "open",
+        "calls": 51,
+        "self_s": 0.00023820000000000002,
+        "cum_s": 0.9799885
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method _io.open>",
+        "calls": 52,
+        "self_s": 0.9794674000000001,
+        "cum_s": 0.9798049000000001
+      },
+      {
+        "file": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r94-cli-streams-128\\candidate-library\\scripts\\match_flow.py",
+        "line": 81,
+        "function": "metadata_distribution",
+        "calls": 1,
+        "self_s": 1.3700000000000001e-05,
+        "cum_s": 0.1897069
+      },
+      {
+        "file": "C:\\Users\\A\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\importlib\\metadata\\__init__.py",
+        "line": 980,
+        "function": "version",
+        "calls": 1,
+        "self_s": 4.3e-06,
+        "cum_s": 0.1845575
+      },
+      {
+        "file": "C:\\Users\\A\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\importlib\\metadata\\__init__.py",
+        "line": 483,
+        "function": "version",
+        "calls": 1,
+        "self_s": 8.3e-06,
+        "cum_s": 0.17862550000000002
+      },
+      {
+        "file": "C:\\Users\\A\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\importlib\\metadata\\__init__.py",
+        "line": 448,
+        "function": "metadata",
+        "calls": 1,
+        "self_s": 3.24e-05,
+        "cum_s": 0.1786045
+      },
+      {
+        "file": "<frozen importlib._bootstrap>",
+        "line": 1349,
+        "function": "_find_and_load",
+        "calls": 25,
+        "self_s": 0.0003215,
+        "cum_s": 0.1366909
+      },
+      {
+        "file": "<frozen importlib._bootstrap>",
+        "line": 1304,
+        "function": "_find_and_load_unlocked",
+        "calls": 25,
+        "self_s": 0.0002019,
+        "cum_s": 0.13653020000000002
+      },
+      {
+        "file": "<frozen importlib._bootstrap>",
+        "line": 480,
+        "function": "_call_with_frames_removed",
+        "calls": 56,
+        "self_s": 7.460000000000001e-05,
+        "cum_s": 0.1358531
+      },
+      {
+        "file": "<frozen importlib._bootstrap>",
+        "line": 911,
+        "function": "_load_unlocked",
+        "calls": 25,
+        "self_s": 0.0002321,
+        "cum_s": 0.13561030000000002
+      },
+      {
+        "file": "<frozen importlib._bootstrap_external>",
+        "line": 1017,
+        "function": "exec_module",
+        "calls": 23,
+        "self_s": 0.0001832,
+        "cum_s": 0.1354663
+      },
+      {
+        "file": "<frozen importlib._bootstrap>",
+        "line": 1390,
+        "function": "_handle_fromlist",
+        "calls": 14,
+        "self_s": 5.5900000000000004e-05,
+        "cum_s": 0.1323955
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method builtins.__import__>",
+        "calls": 6,
+        "self_s": 3.3e-05,
+        "cum_s": 0.1323726
+      }
+    ],
+    "scope": "single full matcher read-only diagnostic; profiling overhead; not benchmark"
+  }
+}
