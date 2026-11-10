@@ -1,0 +1,822 @@
+{
+  "analysis": {
+    "task_id": "PI-R95-FOUR-CORE-20261110-F2",
+    "valid": true,
+    "jobs_accepted": 1024,
+    "file_checks": 49152,
+    "groups": {
+      "A": {
+        "total_s": 68.67559609998716,
+        "total_with_fixture_s": 93.58593785006087,
+        "worker_span_s": 46.955303900002036,
+        "worker_job_cpu_s": 27.265625,
+        "partial_cpu_reference_s": 6.81640625,
+        "job_mean_wall_s": 1.4123100214887927,
+        "match_mean_wall_s": 0.7996382812525553,
+        "slot_occupancy": 0.9649391686064914,
+        "internal_final_qa_s": 8.756800649978686,
+        "external_qa_s": 6.474252650048584,
+        "entry_and_return_s": 1.5119799000094645,
+        "header_preflight_s": 0.5583563499967568,
+        "lane_setup_remainder_s": 4.189798349980265,
+        "times_s": [
+          78.62222499994095,
+          58.72896720003337
+        ],
+        "relative_to_A": 1
+      },
+      "B": {
+        "total_s": 80.05670670000836,
+        "total_with_fixture_s": 106.78096235002158,
+        "worker_span_s": 48.125318050035276,
+        "worker_job_cpu_s": 26.703125,
+        "partial_cpu_reference_s": 6.67578125,
+        "job_mean_wall_s": 1.1254228425787005,
+        "match_mean_wall_s": 0.6346955304675248,
+        "slot_occupancy": 0.7486300926034519,
+        "internal_final_qa_s": 9.290339450060856,
+        "external_qa_s": 15.195622199971694,
+        "entry_and_return_s": 1.2376782498904504,
+        "header_preflight_s": 0.1834435000200756,
+        "lane_setup_remainder_s": 5.668796650017612,
+        "times_s": [
+          103.37180179997813,
+          56.741611600038595
+        ],
+        "relative_to_A": 0.8578368875118865
+      },
+      "C": {
+        "total_s": 67.62075930001447,
+        "total_with_fixture_s": 96.58219909999752,
+        "worker_span_s": 43.15281479997793,
+        "worker_job_cpu_s": 25.8515625,
+        "partial_cpu_reference_s": 6.462890625,
+        "job_mean_wall_s": 1.0133947132821959,
+        "match_mean_wall_s": 0.5861385425819208,
+        "slot_occupancy": 0.7463656968424754,
+        "internal_final_qa_s": 7.262729299953207,
+        "external_qa_s": 6.1038308999850415,
+        "entry_and_return_s": 1.388513599988073,
+        "header_preflight_s": 0.4651164500392042,
+        "lane_setup_remainder_s": 9.050189050030895,
+        "times_s": [
+          87.02072340005543,
+          48.22079519997351
+        ],
+        "relative_to_A": 1.0155993042801055
+      },
+      "D": {
+        "total_s": 127.80249855003785,
+        "total_with_fixture_s": 153.90453840000555,
+        "worker_span_s": 107.53670514997793,
+        "worker_job_cpu_s": 26.5703125,
+        "partial_cpu_reference_s": 6.642578125,
+        "job_mean_wall_s": 3.3047550167921145,
+        "match_mean_wall_s": 2.0163739312483813,
+        "slot_occupancy": 0.9825962009542875,
+        "internal_final_qa_s": 3.7373622499872,
+        "external_qa_s": 3.6792745499988087,
+        "entry_and_return_s": 6.4287919500493445,
+        "header_preflight_s": 0.5954707999480888,
+        "lane_setup_remainder_s": 5.741406200046185,
+        "times_s": [
+          219.51133390003815,
+          36.093663200037554
+        ],
+        "relative_to_A": 0.5373572260255848
+      }
+    },
+    "selected": "C",
+    "rows": [
+      {
+        "label": "A",
+        "case": "case-00-A",
+        "workers": 4,
+        "valid": true,
+        "total_s": 78.62222499994095,
+        "fixture_provision_s": 25.342780100065283,
+        "total_with_fixture_s": 103.96500710002147,
+        "cli_wall_s": 72.60848639998585,
+        "qa_s": 5.9219214000040665,
+        "failures": [],
+        "minimum_files_checked": 6144,
+        "actual_pin": "0",
+        "actual_qa": "serial",
+        "worker_pids": [
+          37660,
+          28164,
+          23956,
+          23132
+        ],
+        "tasks_per_lane": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "affinity_actual": [
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ]
+        ],
+        "worker_span_s": 58.6850271000294,
+        "overlap_peak": 4,
+        "slot_occupancy": 0.9551272389190566,
+        "worker_job_cpu_s": 27.453125,
+        "partial_cpu_reference_s": 6.86328125,
+        "job_mean_wall_s": 1.7516146218731592,
+        "match_mean_wall_s": 0.9963524484383015,
+        "handoff_s": 63.736180900014006,
+        "header_preflight_s": 0.8974009000230581,
+        "lane_setup_remainder_s": 4.153752899961546,
+        "internal_final_qa_s": 7.1859250999987125,
+        "entry_and_return_s": 1.6863803999731317,
+        "external_qa_s": 5.9219214000040665,
+        "result_tail_s": 0.09181719995103776,
+        "worker_peak_wset_bytes": [
+          27529216,
+          27664384,
+          27643904,
+          27553792
+        ],
+        "worker_rss_bytes": [
+          26492928,
+          26337280,
+          26271744,
+          26501120
+        ],
+        "system_available_before_bytes": 7284613120,
+        "system_available_after_bytes": 8741494784,
+        "receipts": {
+          "run\\case-00-A\\RESULT.json": "0541ebc065679c5ad9dd67f6535a0845b5ad11fbd6c179094f992efd53441158",
+          "run\\case-00-A\\work\\EXECUTION.json": "fb0a136cd2bd0170cc0f1c713b31395766b4563166ed9b3f993cb9102e10eee5",
+          "run\\case-00-A\\work\\DELIVERY.json": "48da184cb635c5666a4566b394f3b49c270b4a03094b7647cae71a728739a03f",
+          "run\\case-00-A\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-00-A\\trace.jsonl": "a398c80c887724204c81f5d5970bd43e20089b4458ce1eb05687e57068e31f24"
+        }
+      },
+      {
+        "label": "B",
+        "case": "case-01-B",
+        "workers": 4,
+        "valid": true,
+        "total_s": 103.37180179997813,
+        "fixture_provision_s": 29.048299300018698,
+        "total_with_fixture_s": 132.42010340001434,
+        "cli_wall_s": 78.1833794999402,
+        "qa_s": 24.678818100015633,
+        "failures": [],
+        "minimum_files_checked": 6144,
+        "actual_pin": "1",
+        "actual_qa": "serial",
+        "worker_pids": [
+          27616,
+          32784,
+          34744,
+          34408
+        ],
+        "tasks_per_lane": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "affinity_actual": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "worker_span_s": 59.26682790007908,
+        "overlap_peak": 4,
+        "slot_occupancy": 0.7473259295191274,
+        "worker_job_cpu_s": 26.421875,
+        "partial_cpu_reference_s": 6.60546875,
+        "job_mean_wall_s": 1.3841136640648983,
+        "match_mean_wall_s": 0.7730364210856351,
+        "handoff_s": 65.96460260008462,
+        "header_preflight_s": 0.18876930000260472,
+        "lane_setup_remainder_s": 6.509005400002934,
+        "internal_final_qa_s": 10.814536100020632,
+        "entry_and_return_s": 1.4042407998349518,
+        "external_qa_s": 24.678818100015633,
+        "result_tail_s": 0.5096042000222951,
+        "worker_peak_wset_bytes": [
+          28708864,
+          28880896,
+          28745728,
+          28811264
+        ],
+        "worker_rss_bytes": [
+          27197440,
+          27873280,
+          27697152,
+          27795456
+        ],
+        "system_available_before_bytes": 9057419264,
+        "system_available_after_bytes": 8625152000,
+        "receipts": {
+          "run\\case-01-B\\RESULT.json": "f58692e9fe7b0a78f935b127b6d84ccb97e4fdb1203623a74a031a090517b47f",
+          "run\\case-01-B\\work\\EXECUTION.json": "cb9fe19b8c0518255d9c23066a7535e29d639f439b07d0740eb91fc0353a3093",
+          "run\\case-01-B\\work\\DELIVERY.json": "194e6c0e9c7d162b8f637049c2cb38db5881aaa439ad9952fc0eff852b03267c",
+          "run\\case-01-B\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-01-B\\trace.jsonl": "585beae5078707c642019683317e9f7039860f913b8af01d71243a9414f71d03"
+        }
+      },
+      {
+        "label": "C",
+        "case": "case-02-C",
+        "workers": 4,
+        "valid": true,
+        "total_s": 87.02072340005543,
+        "fixture_provision_s": 43.56242910004221,
+        "total_with_fixture_s": 130.58315379999112,
+        "cli_wall_s": 79.61772089998703,
+        "qa_s": 7.117631300003268,
+        "failures": [],
+        "minimum_files_checked": 6144,
+        "actual_pin": "1",
+        "actual_qa": "parallel",
+        "worker_pids": [
+          11216,
+          34544,
+          11180,
+          37184
+        ],
+        "tasks_per_lane": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "affinity_actual": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "worker_span_s": 53.186359599931166,
+        "overlap_peak": 4,
+        "slot_occupancy": 0.7683768744007281,
+        "worker_job_cpu_s": 26.375,
+        "partial_cpu_reference_s": 6.59375,
+        "job_mean_wall_s": 1.2770990234421333,
+        "match_mean_wall_s": 0.7578045265681794,
+        "handoff_s": 70.18962870002724,
+        "header_preflight_s": 0.795657700044103,
+        "lane_setup_remainder_s": 16.207611400051974,
+        "internal_final_qa_s": 7.554660699912347,
+        "entry_and_return_s": 1.8734315000474453,
+        "external_qa_s": 7.117631300003268,
+        "result_tail_s": 0.2853712000651285,
+        "worker_peak_wset_bytes": [
+          29020160,
+          28774400,
+          28930048,
+          28925952
+        ],
+        "worker_rss_bytes": [
+          27992064,
+          27508736,
+          27881472,
+          27877376
+        ],
+        "system_available_before_bytes": 9110409216,
+        "system_available_after_bytes": 9095360512,
+        "receipts": {
+          "run\\case-02-C\\RESULT.json": "2a04ca7893761824b738b74de5b397213cb37e9b11cd29534d17028083e1b11f",
+          "run\\case-02-C\\work\\EXECUTION.json": "d2f4d324af53d13a50d7840916531db411fd0ef120efc13619131a8265e50db5",
+          "run\\case-02-C\\work\\DELIVERY.json": "3115d6e5bf93bf225bce505490296cc8a2164c6c44dea431e48c21a78e7ee6a3",
+          "run\\case-02-C\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-02-C\\trace.jsonl": "b11718a028e89d09753d3c92f4311a3397dcc2f23e631dbd72763b15a8c1ee61"
+        }
+      },
+      {
+        "label": "D",
+        "case": "case-03-D",
+        "workers": 4,
+        "valid": true,
+        "total_s": 219.51133390003815,
+        "fixture_provision_s": 35.635941299959086,
+        "total_with_fixture_s": 255.1472766000079,
+        "cli_wall_s": 215.5394457000075,
+        "qa_s": 3.87770690000616,
+        "failures": [],
+        "minimum_files_checked": 6144,
+        "actual_pin": "0",
+        "actual_qa": "parallel",
+        "worker_pids": [
+          35932,
+          27276,
+          25500,
+          28888
+        ],
+        "tasks_per_lane": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "affinity_actual": [
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ]
+        ],
+        "worker_span_s": 190.2003177999286,
+        "overlap_peak": 4,
+        "slot_occupancy": 0.9836486905691124,
+        "worker_job_cpu_s": 28.03125,
+        "partial_cpu_reference_s": 7.0078125,
+        "job_mean_wall_s": 5.846571673429025,
+        "match_mean_wall_s": 3.566711435934849,
+        "handoff_s": 199.74381819996051,
+        "header_preflight_s": 1.0206605999264866,
+        "lane_setup_remainder_s": 8.52283980010543,
+        "internal_final_qa_s": 3.847042200039141,
+        "entry_and_return_s": 11.948585300007835,
+        "external_qa_s": 3.87770690000616,
+        "result_tail_s": 0.09418130002450198,
+        "worker_peak_wset_bytes": [
+          27443200,
+          27410432,
+          27713536,
+          27459584
+        ],
+        "worker_rss_bytes": [
+          26144768,
+          26226688,
+          26660864,
+          26423296
+        ],
+        "system_available_before_bytes": 9018826752,
+        "system_available_after_bytes": 7982821376,
+        "receipts": {
+          "run\\case-03-D\\RESULT.json": "f28d2155fdbfc23ab0a9824e7f1aae1e0cde7f727821867b9e5e7c2b82165e18",
+          "run\\case-03-D\\work\\EXECUTION.json": "3cd8ab4d404a141cc28d6a7a63a512c29db6ba7e60474c3144a44a0d4931c08e",
+          "run\\case-03-D\\work\\DELIVERY.json": "26b8ccd3772db5114874874a429eefcd2f85889cab7d2aec04f182e649635685",
+          "run\\case-03-D\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-03-D\\trace.jsonl": "c01c1a3e6a1fbf1d25aa61a45b85f61cb25c28a330b776ae326279eab7d758e6"
+        }
+      },
+      {
+        "label": "D",
+        "case": "case-04-D",
+        "workers": 4,
+        "valid": true,
+        "total_s": 36.093663200037554,
+        "fixture_provision_s": 16.568136099958792,
+        "total_with_fixture_s": 52.6618002000032,
+        "cli_wall_s": 32.540027000010014,
+        "qa_s": 3.480842199991457,
+        "failures": [],
+        "minimum_files_checked": 6144,
+        "actual_pin": "0",
+        "actual_qa": "parallel",
+        "worker_pids": [
+          17440,
+          22208,
+          13428,
+          18400
+        ],
+        "tasks_per_lane": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "affinity_actual": [
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ]
+        ],
+        "worker_span_s": 24.87309250002727,
+        "overlap_peak": 4,
+        "slot_occupancy": 0.9815437113394624,
+        "worker_job_cpu_s": 25.109375,
+        "partial_cpu_reference_s": 6.27734375,
+        "job_mean_wall_s": 0.7629383601552036,
+        "match_mean_wall_s": 0.4660364265619137,
+        "handoff_s": 28.0033460999839,
+        "header_preflight_s": 0.17028099996969104,
+        "lane_setup_remainder_s": 2.9599725999869406,
+        "internal_final_qa_s": 3.627682299935259,
+        "entry_and_return_s": 0.9089986000908539,
+        "external_qa_s": 3.480842199991457,
+        "result_tail_s": 0.07279400003608316,
+        "worker_peak_wset_bytes": [
+          27615232,
+          27578368,
+          27336704,
+          27623424
+        ],
+        "worker_rss_bytes": [
+          26562560,
+          26185728,
+          26066944,
+          26570752
+        ],
+        "system_available_before_bytes": 8005353472,
+        "system_available_after_bytes": 8311463936,
+        "receipts": {
+          "run\\case-04-D\\RESULT.json": "2ed7b7d50df3c750ecea3e11066879e6113e2d03a2fe1d65f6e9ebff2ee6c72b",
+          "run\\case-04-D\\work\\EXECUTION.json": "02b63edfaeeb885e53f8ebc131a038085429f439fa299f8c9ca195286bbc0472",
+          "run\\case-04-D\\work\\DELIVERY.json": "6c8adcf41ba4fa67aebfdbea00d01cee0936ff9103feb67a3c9ae28f8f510d6c",
+          "run\\case-04-D\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-04-D\\trace.jsonl": "43359e0256edd468be03f8bbf72e6dea66fe737ed895b5595eed6d7be21ec70c"
+        }
+      },
+      {
+        "label": "C",
+        "case": "case-05-C",
+        "workers": 4,
+        "valid": true,
+        "total_s": 48.22079519997351,
+        "fixture_provision_s": 14.360447900020517,
+        "total_with_fixture_s": 62.581244400003925,
+        "cli_wall_s": 43.02100549999159,
+        "qa_s": 5.090030499966815,
+        "failures": [],
+        "minimum_files_checked": 6144,
+        "actual_pin": "1",
+        "actual_qa": "parallel",
+        "worker_pids": [
+          35768,
+          2344,
+          33976,
+          24092
+        ],
+        "tasks_per_lane": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "affinity_actual": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "worker_span_s": 33.1192700000247,
+        "overlap_peak": 4,
+        "slot_occupancy": 0.7243545192842227,
+        "worker_job_cpu_s": 25.328125,
+        "partial_cpu_reference_s": 6.33203125,
+        "job_mean_wall_s": 0.7496904031222584,
+        "match_mean_wall_s": 0.4144725585956621,
+        "handoff_s": 35.14661190006882,
+        "header_preflight_s": 0.13457520003430545,
+        "lane_setup_remainder_s": 1.8927667000098154,
+        "internal_final_qa_s": 6.970797899994068,
+        "entry_and_return_s": 0.9035956999287009,
+        "external_qa_s": 5.090030499966815,
+        "result_tail_s": 0.10975920001510531,
+        "worker_peak_wset_bytes": [
+          29003776,
+          28565504,
+          28954624,
+          28364800
+        ],
+        "worker_rss_bytes": [
+          27488256,
+          27516928,
+          27934720,
+          27258880
+        ],
+        "system_available_before_bytes": 8135798784,
+        "system_available_after_bytes": 8350683136,
+        "receipts": {
+          "run\\case-05-C\\RESULT.json": "e1661a723bb76541e1137b01481a4450cdd0252def6d76d84f9df5d33d3251e2",
+          "run\\case-05-C\\work\\EXECUTION.json": "ca1f3e5f00db73492df17bc0fd9b39309b2bd4d5ea7724c22f7b89e5c1a6b865",
+          "run\\case-05-C\\work\\DELIVERY.json": "064a825d31b80a17eeb4461e66dfb1634955c3dcd681e9ebc11206a01d685c66",
+          "run\\case-05-C\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-05-C\\trace.jsonl": "3e3a3b01179703267e3b53de1fa76e4e8be40bcafa489fc65b81ffe35023eea0"
+        }
+      },
+      {
+        "label": "B",
+        "case": "case-06-B",
+        "workers": 4,
+        "valid": true,
+        "total_s": 56.741611600038595,
+        "fixture_provision_s": 24.400208199978806,
+        "total_with_fixture_s": 81.14182130002882,
+        "cli_wall_s": 50.827772300108336,
+        "qa_s": 5.712426299927756,
+        "failures": [],
+        "minimum_files_checked": 6144,
+        "actual_pin": "1",
+        "actual_qa": "serial",
+        "worker_pids": [
+          23652,
+          31576,
+          5400,
+          31156
+        ],
+        "tasks_per_lane": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "affinity_actual": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "worker_span_s": 36.98380819999147,
+        "overlap_peak": 4,
+        "slot_occupancy": 0.7499342556877764,
+        "worker_job_cpu_s": 26.984375,
+        "partial_cpu_reference_s": 6.74609375,
+        "job_mean_wall_s": 0.8667320210925027,
+        "match_mean_wall_s": 0.4963546398494145,
+        "handoff_s": 41.99051380006131,
+        "header_preflight_s": 0.17811770003754646,
+        "lane_setup_remainder_s": 4.828587900032289,
+        "internal_final_qa_s": 7.766142800101079,
+        "entry_and_return_s": 1.071115699945949,
+        "external_qa_s": 5.712426299927756,
+        "result_tail_s": 0.2014130000025034,
+        "worker_peak_wset_bytes": [
+          28884992,
+          28987392,
+          28909568,
+          28930048
+        ],
+        "worker_rss_bytes": [
+          27836416,
+          27967488,
+          27860992,
+          27906048
+        ],
+        "system_available_before_bytes": 8095191040,
+        "system_available_after_bytes": 8289476608,
+        "receipts": {
+          "run\\case-06-B\\RESULT.json": "c54d176dfeacbd22fbab492d259298eb9afa2035896543d8862d6eb3c960e5ed",
+          "run\\case-06-B\\work\\EXECUTION.json": "018645debf2b2885b3499706d1ab909c1a0e4382563a332f647d7c62eef16723",
+          "run\\case-06-B\\work\\DELIVERY.json": "172f195c9d388298746151cc5f29f6a67ed70500f0f971900c0f22288a0137a0",
+          "run\\case-06-B\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-06-B\\trace.jsonl": "159ef47caef941ddec318f0a08bd95a51bca22e7d099e7972ec87fc364e7296e"
+        }
+      },
+      {
+        "label": "A",
+        "case": "case-07-A",
+        "workers": 4,
+        "valid": true,
+        "total_s": 58.72896720003337,
+        "fixture_provision_s": 24.477899700053968,
+        "total_with_fixture_s": 83.20686860010028,
+        "cli_wall_s": 51.33599189994857,
+        "qa_s": 7.026583900093101,
+        "failures": [],
+        "minimum_files_checked": 6144,
+        "actual_pin": "0",
+        "actual_qa": "serial",
+        "worker_pids": [
+          13972,
+          1160,
+          7320,
+          24348
+        ],
+        "tasks_per_lane": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "affinity_actual": [
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ]
+        ],
+        "worker_span_s": 35.22558069997467,
+        "overlap_peak": 4,
+        "slot_occupancy": 0.9747510982939261,
+        "worker_job_cpu_s": 27.078125,
+        "partial_cpu_reference_s": 6.76953125,
+        "job_mean_wall_s": 1.0730054211044262,
+        "match_mean_wall_s": 0.6029241140668091,
+        "handoff_s": 39.67073629994411,
+        "header_preflight_s": 0.21931179997045547,
+        "lane_setup_remainder_s": 4.225843799998984,
+        "internal_final_qa_s": 10.32767619995866,
+        "entry_and_return_s": 1.3375794000457972,
+        "external_qa_s": 7.026583900093101,
+        "result_tail_s": 0.36639139999169856,
+        "worker_peak_wset_bytes": [
+          27656192,
+          27701248,
+          27529216,
+          27787264
+        ],
+        "worker_rss_bytes": [
+          26611712,
+          26669056,
+          26476544,
+          26734592
+        ],
+        "system_available_before_bytes": 8364806144,
+        "system_available_after_bytes": 8106680320,
+        "receipts": {
+          "run\\case-07-A\\RESULT.json": "3b74471ae978823310151bf4be804d5a5a4abae570f072eb85e56d927ac938f2",
+          "run\\case-07-A\\work\\EXECUTION.json": "2893fdbcb80ce98ad877e30ae2147fd250b3fcef06a284e349bf3c7409e45576",
+          "run\\case-07-A\\work\\DELIVERY.json": "ca20180a2a484a8a16c820d2e41a272dc1c277640e7527204e388e3cd980f817",
+          "run\\case-07-A\\work\\COMPLETION.md": "e27aa99949ca6f1c6141a3df8a767f9c5b82f9d97aff8bb8508b15e4b375319d",
+          "run\\case-07-A\\trace.jsonl": "28f60c19bf367ab079fb102385243b99d30227346acc6c0eccfa74c52081583a"
+        }
+      }
+    ],
+    "source_check": {
+      "snapshot\\references\\executable-flows.json": true,
+      "snapshot\\scripts\\archive_lane_worker.py": true,
+      "snapshot\\scripts\\archive_stream_worker.py": true,
+      "snapshot\\scripts\\batch_handoff.py": true,
+      "snapshot\\scripts\\capture_flow.py": true,
+      "snapshot\\scripts\\deliver_archive_batch.py": true,
+      "snapshot\\scripts\\invoke_flow.py": true,
+      "snapshot\\scripts\\match_flow.py": true,
+      "snapshot\\scripts\\query.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\artifact_recipe.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\fast_order_route.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\launch_pi-v1.3.1-scoped-backup.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\mixed_reader.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\orders\\business_pack.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\orders\\verify_order_pack.py": true,
+      "snapshot\\assets\\ready-flows\\pi-native\\upstream\\fast_order_route.py": true,
+      "launch_pi.py": true,
+      "benchmark.py": true
+    },
+    "freeze_sha256": "f8c822838e6814fcbec54184f03422e400236d489704e6170565fba6deea217c",
+    "f1_preserved": [
+      {
+        "label": "A",
+        "case": "case-00-A",
+        "workers": 4,
+        "valid": true,
+        "total_s": 69.56641730002593,
+        "fixture_provision_s": 25.955980899976566,
+        "total_with_fixture_s": 95.52239989989903,
+        "cli_wall_s": 63.54659509996418,
+        "qa_s": 5.948839699965902,
+        "failures": []
+      },
+      {
+        "label": "B",
+        "case": "case-01-B",
+        "workers": 4,
+        "valid": false,
+        "total_s": 3.9218260999768972,
+        "fixture_provision_s": 17.600265700020827,
+        "total_with_fixture_s": 21.52209360001143,
+        "cli_wall_s": 3.834839200018905,
+        "qa_s": 0.007780799991451204,
+        "failures": [
+          "('CLI_EXIT', 2)"
+        ]
+      }
+    ],
+    "recorded_span_from_F1_A_start_to_F2_last_readback_s": 1183.2594640000025,
+    "recorded_span_scope": "Includes F1 A/B, failed affinity, diagnosis, probe, F2 setup, all F2 batches and interposed waiting; excludes earlier task receipt,initial searching and later audit/publish. NOT complete TASK_ACCEPTED to final reply.",
+    "physical_reference_scope": "worker CPU/4 only: not whole physical lower bound; excludes Node/controller/QA/OS work and mandatory I/O; CPU speed/work assumptions apply",
+    "memory_scope": "worker lifetime high-water working set, not simultaneous whole process-tree peak; system before/after only",
+    "method_ref": "skills/artificial-single-page-extreme-time-engine/SANRENXING_V5.md"
+  },
+  "F1_failure": "NOT_VALID RuntimeError: RuntimeError: Traceback (most recent call last):\n\n\n  File \"C:\\Users\\A\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\psutil\\_pswindows.py\", line 666, in wrapper\n\n\n    return fun(self, *args, **kwargs)\n\n\n  File \"C:\\Users\\A\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\psutil\\_pswindows.py\", line 1080, in cpu_affinity_set\n\n\n    cext.proc_cpu_affinity_set(self.pid, bitmask)\n\n\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\n\n\nPermissionError: [WinError 5] 拒绝访问。: '(originated from OpenProcess)'\n\n\n\n\n\nThe above exception was the direct cause of the following exception:\n\n\n\n\n\nTraceback (most recent call last):\n\n\n  File \"C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r95-four-core\\snapshot\\scripts\\archive_stream_worker.py\", line 53, in <module>\n\n\n    if __name__==\"__main__\":sys.exit(main())\n\n\n                                     ~~~~^^\n\n\n  File \"C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r95-four-core\\snapshot\\scripts\\archive_stream_worker.py\", line 17, in main\n\n\n    if pin:process.cpu_affinity(wanted)\n\n\n           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^\n\n\n  File \"C:\\Users\\A\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\psutil\\__init__.py\", line 899, in cpu_affinity\n\n\n    self._proc.cpu_affinity_set(list(set(cpus)))\n\n\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n\n\n  File \"C:\\Users\\A\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\psutil\\_pswindows.py\", line 668, in wrapper\n\n\n    raise convert_oserror(err, pid=self.pid, name=self._name) from err\n\n\npsutil.AccessDenied: (pid=12536)\n",
+  "resources": {
+    "worker_peak_wset_MiB_min": 26.0703125,
+    "worker_peak_wset_MiB_max": 27.67578125,
+    "system_available_GiB_min": 6.784324645996094,
+    "system_available_GiB_max": 8.484729766845703
+  },
+  "review_decision": {
+    "mean_winner": "C",
+    "adopted": "A",
+    "reason": "C is 1.53597% lower in input-ready mean, with opposing round results and severe time variation; no demonstrated repeatable net gain. Including fixture provisioning, A mean is lower. Retain simple four-lane OS scheduling.",
+    "independent_audit": "PENDING_AT_THIS_SNAPSHOT",
+    "user_entry_acceptance": "PENDING_AT_THIS_SNAPSHOT"
+  },
+  "method": {
+    "path": "skills/artificial-single-page-extreme-time-engine/SANRENXING_V5.md",
+    "freeze": "SRX-V5-F001-20261020",
+    "blob_sha": "87480d7c4937facbaaec53ac4e44b26379ddb3dd"
+  }
+}
