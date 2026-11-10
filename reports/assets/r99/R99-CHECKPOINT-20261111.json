@@ -1,0 +1,37 @@
+{
+  "task_id": "PI-R99-PARALLEL-INPUT-20261111",
+  "freeze_sha256": "2efe053926cb9e68b40bccd3f60544aac0338702f76961e24995ad57b2e7ccb6",
+  "workspace": "C:/Users/A/Documents/DSH-Workspace/pi-single-dual-r89-20261110",
+  "native_session": 626,
+  "prep_control_rows": [
+    {
+      "workers": 1,
+      "s": 35.99433220003266
+    },
+    {
+      "workers": 4,
+      "s": 24.017644400009885
+    },
+    {
+      "workers": 4,
+      "s": 32.219826200045645
+    },
+    {
+      "workers": 1,
+      "s": 40.12154429999646
+    }
+  ],
+  "business_state": "STARTED_NOT_YET_RECONCILED_CONNECTION_OFFLINE",
+  "duplicate_resubmission": false,
+  "pending_A_calls": [
+    {
+      "call_id": "29364e09-01d5-4695-a02c-64b51a677863",
+      "action": "finalizer-only write; do not duplicate while pending"
+    },
+    {
+      "call_id": "84c4e8a1-e036-4b80-9e49-a90c8ccf39ee",
+      "action": "read business PROGRESS"
+    }
+  ],
+  "next": "Read native session626 or same run PROGRESS/SUMMARY via A; never rerun benchmark.py into new directory to evade uncertainty; after four completed rows run r99_finalize.py once; keep duplicate payload audit removed"
+}
