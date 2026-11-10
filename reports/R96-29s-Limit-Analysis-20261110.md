@@ -11,7 +11,7 @@
 ## 核对的原始证据
 - [R94原成绩](R94-128-Streams-Reconciliation-20261110.md)：四路35.353640、24.040447秒，平均29.697044秒；含测试输入复制平均46.902350秒。主计时为输入就绪至完整读回，非用户发需求到答复。
 - [R95报告](R95-Four-Core-Review-20261110.md)。
-- [R95分阶段机器证据](assets/r95/R95-Comparison-Evidence.json)，blob a工具返回版本见仓库历史；不将该轮分解直接套到R94。
+- [R95分阶段机器证据](assets/r95/R95-Comparison-Evidence.json)；不将该轮分解直接套到R94。
 - [R95完整实际源码快照](assets/r95/R95-Source-Snapshot.json)，已读match_flow、artifact_recipe、batch_handoff、deliver_archive_batch、入口与benchmark。
 R94报告另记录deliver_archive_batch.py偏离历史Freeze但缺逐行差异；原29秒执行版本闭包仍须本机核对。R95快照不能自动冒充原29秒源码。
 
@@ -79,7 +79,7 @@ A组单项平均1.412310秒，匹配平均0.799638秒，占worker累计逐项墙
 - A Remote Desktop Commander list_devices：Internal error。
 - B GPT-Windows-MCP-Bridge只读R94 SUMMARY：Connection timed out。
 - C GitHub已成功读取上述报告、机器证据和源码快照；C提供保存证据访问，不等于已恢复Windows运行能力。
-- 对当前固定D执行有限只读重试；该动作不启动测试，不改代理、服务或现有任务。
+- 当前固定D只读重试同样MCP request timed out；两次均未获得workspace_id。该动作未启动测试，未改代理、服务或现有任务。
 REALITY_NOT_STARTED；新稳定时间NOT_MEASURED；本机入口和默认配置未修改。不能声称后台已开始跑，也不将云端Linux的速度代替用户Windows硬件。
 
 ## 成熟依据
