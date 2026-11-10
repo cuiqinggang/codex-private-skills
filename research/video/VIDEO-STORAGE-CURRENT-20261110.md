@@ -30,3 +30,13 @@ VEDA证据：C:/AI/H3-VEDA-Trial-20261024/FINAL_REPORT.md，保留源码、输�
 
 ## 持久接续
 A Remote Desktop Commander设备f6990966-5870-484b-bf79-409bc6fb963e已实测可用；D20261110-02曾超时。本机权威根K:/Video-Storage-Audit-20261110。先读STATE、MIGRATION-CANCELLED-BY-USER、所有精确清理回执和Wan资源停止证据；每轮更新STATE/RUN-LOG，只差量清理与复验。修复不能重新下载已清除的弃用路线。原失败、研究与迁移记录保留在Git历史及本机小体积证据，不把旧“正在迁移”指令当现行授权。剩余工具/资料效用审计、GUI和8秒都未闭合。
+
+## Pi V1.2与补充清理（本次最新）
+已读宿主V1.2脚本和9/167/113/6项新清单。部分防护已修，但运行态L1/L2不能证明唯一资料或静态引用无效；temp-owner对unknown仍可能放行，服务/重解析扫描异常会被吞掉。未运行整批Apply或ApprovedBy大项。C:/UF9E实有523文件含交付/验证证据，并非仅指针；C:/tmp含恢复工具/仓库；C:/c含技能与报告。详见[Pi两版分析与本机结果](PI-CLEANUP-REVIEW-RESULT-20261110.md)。
+已通过pip/npm/pnpm官方命令清理；该批C净增10.526GiB，不能严格分摊到各命令。uv前次超时后，确认无残留进程再用官方cache prune正常完成，exit0，报告96992文件/1.9GiB；此次同期净C增326516736字节，含其他写入及转储，不能据此报清24GB。
+另删3份无活动下载/无snapshot引用的VoxCPM2 incomplete共3449815040字节，C实测同量增加3.213GiB；8份超过7天旧崩溃转储25247476字节，4个空目录。回执hf-abandoned-transfer-result、pi-v12-exact-clean-result、uv-prune-resume-result、pi-v12-scratch-audit均在K审计根。
+最新空间快照：C free328215330816字节（305.674GiB），used671866851328字节；比原始起点净增约218.237GiB，包含历史迁移与其他业务写入，不等于永久删除。原3树按源inode去重迁移98546539524字节，其中退役模型另行删除；当前K中保留模型去重70318537432字节。51路径读首字节/长度及3junction目标再次通过；共享H3 .pth目标存在，仍不是GUI PASS。
+已确认删除的原资产按回执去重逻辑量约145.706GiB，不含官方缓存、不含取消后K复制废件16.742GiB；物理释放、跨盘副本与缓存不能混加。75%仍无通过依据，167历史项目/113工作区逐项效用与唯一来源审计未完成。
+
+## 资源复审结论（覆盖任何旧立即投递指令）
+先读[Wan资源复审](BLUE8-WAN-RESOURCE-REVIEW-20261110.md)。作者消费卡81帧480×864成绩是未加载Relight的v1.0.0；本机画幅面积1.21975倍、Relight已加载、SM75 PyTorch attention且共享负载。GGUF源码显示补丁CPU offload与mmap释放OOM风险；不能凭lowvram/fast-disk或Advanced参数存在就认定修复。当前DEFER_GPU_NO_NEW_FREEZE，不重投/不放宽守护/不结束其他业务；Wan配套暂保留。本机wan-resource-static-review.json保存源文件SHA与作用域。FINAL_VALID=NO，8秒与GUI尚未通过。
