@@ -14,7 +14,7 @@ C:/UF9E被写作一次性指针目录，实有523文件、129子目录，含原�
 实际已删除8份超过7天的旧CrashDumps，25247476逻辑字节；删除4个确认空目录（退役smoke test、空health check、空umdlogs、空Pi临时目录）。精确计划/结果pi-v12-exact-clean-{plan,result}.json，所有目标文件复查不存在。uv清理同时运行，不能把本批C净变化严格分摊给转储。
 
 ## uv接续
-已确认无旧uv进程后，仅启动官方uv cache prune，PID6028/创建时间1794325836.9836893，记录intent与独立句柄监控/遥测，不因固定墙钟中断。有进程CPU/I/O进展。完成量与exit以uv-prune-resume-result.json为准，未完成时不计入Pi预估24GB。
+已确认无旧uv进程后，仅启动官方uv cache prune，PID6028/创建时间1794325836.9836893，记录intent与独立句柄监控/遥测，正常进展未中断。现已完成，exit=0，工具报告移除96992文件、1.9GiB。C同期净增加326516736字节，含转储清理与其他写入，不能将1.9GiB等同物理释放，更不能计入预估24GB。回执uv-prune-resume-result.json。
 
 ## 空间口径
 另清除3份弃用VoxCPM2 incomplete，3449815040字节，删除前核无活动下载、无snapshot引用；实测C增加同量3.213GiB。此前缓存净增10.526GiB单独记录。Pi的65.6GB/58.41GB/148GB仍属未逐项验真的潜在量，且含本线程已清路径，不能相加当成果。最近C快照305.5GiB上下浮动，与Pi302.2是不同时间点。
