@@ -1,0 +1,1081 @@
+{
+  "freeze.json": {
+    "job": "BLUE8-20261110-1848",
+    "overall_started_epoch": 1794307675.478,
+    "frozen_epoch": 1794307954.033542,
+    "workflow_sha256": "1c1d3995e05992cfb31cf82534566998116b603f5d7a14aae345a1cad8251526",
+    "steps": 4,
+    "model": "ref2va_int8_convrot",
+    "source_template_sha": "dcdade1802b46468b15aff8b40ba1ca58f63d68b",
+    "reference_source_sha256": "1f2ca3d97f91e5c2aa73a4dfc42a22e4b53783af1d2d38159ceb876994eff561",
+    "preview": {
+      "width": 608,
+      "height": 832,
+      "frames": 56,
+      "fps": 24,
+      "seconds": 2.3333333333333335
+    },
+    "final": {
+      "frames": 192,
+      "seconds": 8,
+      "fps": 24
+    },
+    "G0": {
+      "status": "TIME_BUDGET_FAILED_THEN_REVIEWED",
+      "correction": "192=17*11+5; no194-frame crop. Existing ASR returned24.506s; wholeG0 including discovery/bridge passed180s. Failure stays in total. Source audio retained; English-vocal ASR hypothesis not a verified lyric transcript.",
+      "quality": "input image inspected; original sound preserved; lip sync remains pending"
+    },
+    "G1": {
+      "status": "STATIC_MATCHED_RUNTIME_PENDING",
+      "compatibility": "reuse proven Ref2VA protected Star7 loader; add only the official matching Ref2VA Turbo4 path; no new backend/precision/model download",
+      "resource": "RAM94 immediately or RAM88 withGPU<20for30s; startup RAM<80",
+      "timing": "G3 at most360s including generation/review; whole job1800s including prior failure; no automatic full8s submission"
+    },
+    "G3": "NOT_STARTED",
+    "FINAL_VALID": "NO",
+    "service_command": [
+      "main.py",
+      "--listen",
+      "127.0.0.1",
+      "--port",
+      "8197",
+      "--extra-model-paths-config",
+      "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\extra_model_paths.yaml",
+      "--input-directory",
+      "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\BLUE8-20261110-1848\\input",
+      "--output-directory",
+      "C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\BLUE8-20261110-1848\\output",
+      "--disable-all-custom-nodes",
+      "--whitelist-custom-nodes",
+      "ComfyUI-ClipProj",
+      "minimax-h3-fp16-exact-star7",
+      "ComfyUI-MiniMaxH3-FirstBlockCache",
+      "--reserve-vram",
+      "2.5",
+      "--vram-headroom",
+      "0.5",
+      "--disable-pinned-memory",
+      "--disable-auto-launch",
+      "--database-url",
+      "sqlite:///:memory:"
+    ]
+  },
+  "workflow.json": {
+    "1": {
+      "class_type": "CLIPLoader",
+      "inputs": {
+        "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "type": "minimax",
+        "device": "default"
+      }
+    },
+    "2": {
+      "class_type": "MiniMaxH3FP16LoaderStar7",
+      "inputs": {
+        "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors"
+      }
+    },
+    "3": {
+      "class_type": "VAELoader",
+      "inputs": {
+        "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+      }
+    },
+    "4": {
+      "class_type": "VAELoader",
+      "inputs": {
+        "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+      }
+    },
+    "5": {
+      "class_type": "LoadVideo",
+      "inputs": {
+        "file": "reference_motion.mp4"
+      }
+    },
+    "6": {
+      "class_type": "GetVideoComponents",
+      "inputs": {
+        "video": [
+          "5",
+          0
+        ]
+      }
+    },
+    "7": {
+      "class_type": "LoadImage",
+      "inputs": {
+        "image": "identity_reference.png"
+      }
+    },
+    "8": {
+      "class_type": "MiniMaxH3ReferenceToVideo",
+      "inputs": {
+        "clip": [
+          "1",
+          0
+        ],
+        "vae": [
+          "3",
+          0
+        ],
+        "audio_vae": [
+          "4",
+          0
+        ],
+        "prompt": "integrated_multimodal_description: A single adult woman in the same blue satin one-shoulder dress as <Picture 1>, in the same cool blue studio background. Use <Picture 1> for identity, face, hair, dress and lighting. Use <Video 1> for head turn, gaze, hand gestures and exact performance timing. Follow the vocal phrasing and mouth movements of <Audio 1> and <Video 1>. Realistic face and hands, stable facial identity and dress straps, natural continuous movement, fixed camera, no extra person, no captions. overall_soundscape: Follow <Audio 1> exactly in delivery and timing. non_diegetic_music: Follow the source audio.",
+        "width": 608,
+        "height": 832,
+        "length": 56,
+        "ref_image_size": "match",
+        "ref_images.ref_image_0": [
+          "7",
+          0
+        ],
+        "ref_videos.ref_video_0": [
+          "6",
+          0
+        ],
+        "ref_audios.ref_audio_0": [
+          "17",
+          0
+        ]
+      }
+    },
+    "9": {
+      "class_type": "BasicGuider",
+      "inputs": {
+        "model": [
+          "18",
+          0
+        ],
+        "conditioning": [
+          "8",
+          0
+        ]
+      }
+    },
+    "10": {
+      "class_type": "KSamplerSelect",
+      "inputs": {
+        "sampler_name": "res_multistep"
+      }
+    },
+    "11": {
+      "class_type": "BasicScheduler",
+      "inputs": {
+        "model": [
+          "18",
+          0
+        ],
+        "scheduler": "simple",
+        "steps": 4,
+        "denoise": 1
+      }
+    },
+    "12": {
+      "class_type": "RandomNoise",
+      "inputs": {
+        "noise_seed": 202611101848
+      }
+    },
+    "13": {
+      "class_type": "SamplerCustomAdvanced",
+      "inputs": {
+        "noise": [
+          "12",
+          0
+        ],
+        "guider": [
+          "9",
+          0
+        ],
+        "sampler": [
+          "10",
+          0
+        ],
+        "sigmas": [
+          "11",
+          0
+        ],
+        "latent_image": [
+          "8",
+          1
+        ]
+      }
+    },
+    "14": {
+      "class_type": "VAEDecode",
+      "inputs": {
+        "samples": [
+          "13",
+          0
+        ],
+        "vae": [
+          "3",
+          0
+        ]
+      }
+    },
+    "15": {
+      "class_type": "CreateVideo",
+      "inputs": {
+        "images": [
+          "14",
+          0
+        ],
+        "bit_depth": 8,
+        "fps": 24
+      }
+    },
+    "16": {
+      "class_type": "SaveVideo",
+      "inputs": {
+        "video": [
+          "15",
+          0
+        ],
+        "filename_prefix": "BLUE8-G3-REF2VA4-20261110-1848",
+        "format": "mp4",
+        "codec": "h264"
+      }
+    },
+    "17": {
+      "class_type": "LoadAudio",
+      "inputs": {
+        "audio": "original_audio.wav"
+      }
+    },
+    "18": {
+      "class_type": "LoraLoaderModelOnly",
+      "inputs": {
+        "model": [
+          "2",
+          0
+        ],
+        "lora_name": "minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors",
+        "strength_model": 1
+      }
+    }
+  },
+  "input-manifest.json": {
+    "input\\identity_reference.png": {
+      "bytes": 265448,
+      "sha256": "8a748ac5e5b5a2ea060de18d07d1a6a191323d9fd1f193942ad88929f0649fac"
+    },
+    "input\\original_audio.wav": {
+      "bytes": 411678,
+      "sha256": "30c9acfb40167afa1a592435cf42e6f3feb7c298b5ed152ebfe51da317c847b3"
+    },
+    "input\\reference_motion.mp4": {
+      "bytes": 281570,
+      "sha256": "57bd14913d389d4823eba94601c192faab3ce121dfffc6eccac45fd1bd4a9023"
+    }
+  },
+  "G1-admission.json": {
+    "status": "PASS_COMPATIBLE_CANDIDATE",
+    "startup_seconds": 109.70299999997951,
+    "all_nodes_registered": true,
+    "models_registered": true,
+    "RAM": 54.9,
+    "gpu": {
+      "gpu_util": 11,
+      "gpu_mib": 3197,
+      "temperature": 50
+    },
+    "quality": "NOT_YET_MEASURED",
+    "epoch": 1794308130.0668995
+  },
+  "receipt.json": {
+    "prompt_id": "fe9463aa-6fac-4d8c-8e62-a608bd2261fc",
+    "number": 0,
+    "node_errors": {}
+  },
+  "history.json": {
+    "prompt": [
+      0,
+      "fe9463aa-6fac-4d8c-8e62-a608bd2261fc",
+      {
+        "1": {
+          "class_type": "CLIPLoader",
+          "inputs": {
+            "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+            "type": "minimax",
+            "device": "default"
+          }
+        },
+        "2": {
+          "class_type": "MiniMaxH3FP16LoaderStar7",
+          "inputs": {
+            "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors"
+          }
+        },
+        "3": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+          }
+        },
+        "4": {
+          "class_type": "VAELoader",
+          "inputs": {
+            "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+          }
+        },
+        "5": {
+          "class_type": "LoadVideo",
+          "inputs": {
+            "file": "reference_motion.mp4"
+          }
+        },
+        "6": {
+          "class_type": "GetVideoComponents",
+          "inputs": {
+            "video": [
+              "5",
+              0
+            ]
+          }
+        },
+        "7": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "identity_reference.png"
+          }
+        },
+        "8": {
+          "class_type": "MiniMaxH3ReferenceToVideo",
+          "inputs": {
+            "clip": [
+              "1",
+              0
+            ],
+            "vae": [
+              "3",
+              0
+            ],
+            "audio_vae": [
+              "4",
+              0
+            ],
+            "prompt": "integrated_multimodal_description: A single adult woman in the same blue satin one-shoulder dress as <Picture 1>, in the same cool blue studio background. Use <Picture 1> for identity, face, hair, dress and lighting. Use <Video 1> for head turn, gaze, hand gestures and exact performance timing. Follow the vocal phrasing and mouth movements of <Audio 1> and <Video 1>. Realistic face and hands, stable facial identity and dress straps, natural continuous movement, fixed camera, no extra person, no captions. overall_soundscape: Follow <Audio 1> exactly in delivery and timing. non_diegetic_music: Follow the source audio.",
+            "width": 608,
+            "height": 832,
+            "length": 56,
+            "ref_image_size": "match",
+            "ref_images.ref_image_0": [
+              "7",
+              0
+            ],
+            "ref_videos.ref_video_0": [
+              "6",
+              0
+            ],
+            "ref_audios.ref_audio_0": [
+              "17",
+              0
+            ]
+          }
+        },
+        "9": {
+          "class_type": "BasicGuider",
+          "inputs": {
+            "model": [
+              "18",
+              0
+            ],
+            "conditioning": [
+              "8",
+              0
+            ]
+          }
+        },
+        "10": {
+          "class_type": "KSamplerSelect",
+          "inputs": {
+            "sampler_name": "res_multistep"
+          }
+        },
+        "11": {
+          "class_type": "BasicScheduler",
+          "inputs": {
+            "model": [
+              "18",
+              0
+            ],
+            "scheduler": "simple",
+            "steps": 4,
+            "denoise": 1
+          }
+        },
+        "12": {
+          "class_type": "RandomNoise",
+          "inputs": {
+            "noise_seed": 202611101848
+          }
+        },
+        "13": {
+          "class_type": "SamplerCustomAdvanced",
+          "inputs": {
+            "noise": [
+              "12",
+              0
+            ],
+            "guider": [
+              "9",
+              0
+            ],
+            "sampler": [
+              "10",
+              0
+            ],
+            "sigmas": [
+              "11",
+              0
+            ],
+            "latent_image": [
+              "8",
+              1
+            ]
+          }
+        },
+        "14": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "samples": [
+              "13",
+              0
+            ],
+            "vae": [
+              "3",
+              0
+            ]
+          }
+        },
+        "15": {
+          "class_type": "CreateVideo",
+          "inputs": {
+            "images": [
+              "14",
+              0
+            ],
+            "bit_depth": 8,
+            "fps": 24
+          }
+        },
+        "16": {
+          "class_type": "SaveVideo",
+          "inputs": {
+            "video": [
+              "15",
+              0
+            ],
+            "filename_prefix": "BLUE8-G3-REF2VA4-20261110-1848",
+            "format": "mp4",
+            "codec": "h264"
+          }
+        },
+        "17": {
+          "class_type": "LoadAudio",
+          "inputs": {
+            "audio": "original_audio.wav"
+          }
+        },
+        "18": {
+          "class_type": "LoraLoaderModelOnly",
+          "inputs": {
+            "model": [
+              "2",
+              0
+            ],
+            "lora_name": "minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors",
+            "strength_model": 1
+          }
+        }
+      },
+      {
+        "client_id": "BLUE8-20261110-1848",
+        "create_time": 1794308130084
+      },
+      [
+        "16"
+      ]
+    ],
+    "outputs": {},
+    "status": {
+      "status_str": "error",
+      "completed": false,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "fe9463aa-6fac-4d8c-8e62-a608bd2261fc",
+            "timestamp": 1794308130089
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [],
+            "prompt_id": "fe9463aa-6fac-4d8c-8e62-a608bd2261fc",
+            "timestamp": 1794308130149
+          }
+        ],
+        [
+          "execution_interrupted",
+          {
+            "prompt_id": "fe9463aa-6fac-4d8c-8e62-a608bd2261fc",
+            "node_id": "13",
+            "node_type": "SamplerCustomAdvanced",
+            "executed": [
+              "3",
+              "5",
+              "8",
+              "11",
+              "1",
+              "10",
+              "2",
+              "9",
+              "18",
+              "12",
+              "4",
+              "7",
+              "6",
+              "17"
+            ],
+            "timestamp": 1794308434891
+          }
+        ]
+      ]
+    },
+    "meta": {}
+  },
+  "result.json": {
+    "prompt_id": "fe9463aa-6fac-4d8c-8e62-a608bd2261fc",
+    "generation_seconds": 305.9530000000959,
+    "aborted": "G3_GENERATION_300S_RESERVE_REVIEW60S",
+    "history_status": {
+      "status_str": "error",
+      "completed": false,
+      "messages": [
+        [
+          "execution_start",
+          {
+            "prompt_id": "fe9463aa-6fac-4d8c-8e62-a608bd2261fc",
+            "timestamp": 1794308130089
+          }
+        ],
+        [
+          "execution_cached",
+          {
+            "nodes": [],
+            "prompt_id": "fe9463aa-6fac-4d8c-8e62-a608bd2261fc",
+            "timestamp": 1794308130149
+          }
+        ],
+        [
+          "execution_interrupted",
+          {
+            "prompt_id": "fe9463aa-6fac-4d8c-8e62-a608bd2261fc",
+            "node_id": "13",
+            "node_type": "SamplerCustomAdvanced",
+            "executed": [
+              "3",
+              "5",
+              "8",
+              "11",
+              "1",
+              "10",
+              "2",
+              "9",
+              "18",
+              "12",
+              "4",
+              "7",
+              "6",
+              "17"
+            ],
+            "timestamp": 1794308434891
+          }
+        ]
+      ]
+    },
+    "G3": "STOPPED",
+    "FINAL_VALID": "NO"
+  },
+  "stop.json": {
+    "reason": "G3_GENERATION_300S_RESERVE_REVIEW60S",
+    "epoch": 1794308433.9869604,
+    "prompt_id": "fe9463aa-6fac-4d8c-8e62-a608bd2261fc"
+  },
+  "stop-reconciled.json": {
+    "queue": {
+      "queue_running": [],
+      "queue_pending": []
+    },
+    "epoch": 1794308436.0025303
+  },
+  "shutdown.json": {
+    "owned_pid": 10100,
+    "exit": 1,
+    "epoch": 1794308436.0195277
+  },
+  "shutdown-reconciled.json": {
+    "epoch": 1794308457.2350743,
+    "owned_child_pid": 32476,
+    "alive_before": false,
+    "ownership_checked": false,
+    "alive_after": false,
+    "RAM_after": 51,
+    "port8197_connect": 10035
+  },
+  "telemetry": [
+    {
+      "epoch": 1794308130.2623127,
+      "seconds": 0.015000000013969839,
+      "ram_percent": 55,
+      "gpu_util": 11,
+      "gpu_mib": 3197,
+      "temperature": 50
+    },
+    {
+      "epoch": 1794308135.4496455,
+      "seconds": 5.203000000095926,
+      "ram_percent": 56.3,
+      "gpu_util": 11,
+      "gpu_mib": 3156,
+      "temperature": 50
+    },
+    {
+      "epoch": 1794308140.55664,
+      "seconds": 10.39000000001397,
+      "ram_percent": 57,
+      "gpu_util": 10,
+      "gpu_mib": 3120,
+      "temperature": 50
+    },
+    {
+      "epoch": 1794308145.634258,
+      "seconds": 15.5,
+      "ram_percent": 58.4,
+      "gpu_util": 10,
+      "gpu_mib": 3111,
+      "temperature": 50
+    },
+    {
+      "epoch": 1794308150.899083,
+      "seconds": 20.578000000095926,
+      "ram_percent": 60.4,
+      "gpu_util": 11,
+      "gpu_mib": 3126,
+      "temperature": 50
+    },
+    {
+      "epoch": 1794308156.1291416,
+      "seconds": 25.844000000040978,
+      "ram_percent": 62.1,
+      "gpu_util": 10,
+      "gpu_mib": 3121,
+      "temperature": 50
+    },
+    {
+      "epoch": 1794308161.719408,
+      "seconds": 31.06200000003446,
+      "ram_percent": 62.9,
+      "gpu_util": 11,
+      "gpu_mib": 3645,
+      "temperature": 50
+    },
+    {
+      "epoch": 1794308166.8631668,
+      "seconds": 36.65600000007544,
+      "ram_percent": 64.1,
+      "gpu_util": 10,
+      "gpu_mib": 3331,
+      "temperature": 50
+    },
+    {
+      "epoch": 1794308172.0208726,
+      "seconds": 41.79700000002049,
+      "ram_percent": 66.1,
+      "gpu_util": 15,
+      "gpu_mib": 3982,
+      "temperature": 51
+    },
+    {
+      "epoch": 1794308178.141959,
+      "seconds": 47.01500000001397,
+      "ram_percent": 66.7,
+      "gpu_util": 100,
+      "gpu_mib": 6623,
+      "temperature": 59
+    },
+    {
+      "epoch": 1794308183.2412632,
+      "seconds": 53.078000000095926,
+      "ram_percent": 66.7,
+      "gpu_util": 100,
+      "gpu_mib": 6390,
+      "temperature": 62
+    },
+    {
+      "epoch": 1794308188.3345642,
+      "seconds": 58.17200000002049,
+      "ram_percent": 66.6,
+      "gpu_util": 100,
+      "gpu_mib": 6357,
+      "temperature": 64
+    },
+    {
+      "epoch": 1794308193.419707,
+      "seconds": 63.26500000001397,
+      "ram_percent": 66.8,
+      "gpu_util": 100,
+      "gpu_mib": 6517,
+      "temperature": 66
+    },
+    {
+      "epoch": 1794308198.569365,
+      "seconds": 68.35900000005495,
+      "ram_percent": 67.3,
+      "gpu_util": 12,
+      "gpu_mib": 6772,
+      "temperature": 59
+    },
+    {
+      "epoch": 1794308205.7819874,
+      "seconds": 73.5,
+      "ram_percent": 67.9,
+      "gpu_util": 23,
+      "gpu_mib": 8396,
+      "temperature": 56
+    },
+    {
+      "epoch": 1794308211.200697,
+      "seconds": 80.71900000004098,
+      "ram_percent": 67.3,
+      "gpu_util": 18,
+      "gpu_mib": 9135,
+      "temperature": 59
+    },
+    {
+      "epoch": 1794308216.9832766,
+      "seconds": 86.14000000001397,
+      "ram_percent": 67.4,
+      "gpu_util": 32,
+      "gpu_mib": 10980,
+      "temperature": 59
+    },
+    {
+      "epoch": 1794308222.7413008,
+      "seconds": 91.93700000003446,
+      "ram_percent": 67.7,
+      "gpu_util": 34,
+      "gpu_mib": 12066,
+      "temperature": 60
+    },
+    {
+      "epoch": 1794308228.4346514,
+      "seconds": 97.67200000002049,
+      "ram_percent": 67.2,
+      "gpu_util": 39,
+      "gpu_mib": 13334,
+      "temperature": 60
+    },
+    {
+      "epoch": 1794308234.1979587,
+      "seconds": 103.375,
+      "ram_percent": 67.3,
+      "gpu_util": 33,
+      "gpu_mib": 14550,
+      "temperature": 59
+    },
+    {
+      "epoch": 1794308242.2665958,
+      "seconds": 109.14000000001397,
+      "ram_percent": 67.7,
+      "gpu_error": "Command '['nvidia-smi', '--query-gpu=utilization.gpu,memory.used,temperature.gpu', '--format=csv,noheader,nounits']' timed out after 3 seconds"
+    },
+    {
+      "epoch": 1794308248.3319085,
+      "seconds": 117.20300000009593,
+      "ram_percent": 67.9,
+      "gpu_util": 17,
+      "gpu_mib": 16701,
+      "temperature": 59
+    },
+    {
+      "epoch": 1794308254.8028812,
+      "seconds": 123.26500000001397,
+      "ram_percent": 68.5,
+      "gpu_util": 29,
+      "gpu_mib": 18168,
+      "temperature": 59
+    },
+    {
+      "epoch": 1794308260.7084508,
+      "seconds": 129.73400000005495,
+      "ram_percent": 68.3,
+      "gpu_util": 34,
+      "gpu_mib": 19344,
+      "temperature": 58
+    },
+    {
+      "epoch": 1794308266.5736067,
+      "seconds": 135.64000000001397,
+      "ram_percent": 68.1,
+      "gpu_util": 38,
+      "gpu_mib": 20458,
+      "temperature": 59
+    },
+    {
+      "epoch": 1794308272.2987437,
+      "seconds": 141.51500000001397,
+      "ram_percent": 68.2,
+      "gpu_util": 42,
+      "gpu_mib": 20323,
+      "temperature": 57
+    },
+    {
+      "epoch": 1794308277.9152951,
+      "seconds": 147.23400000005495,
+      "ram_percent": 67.2,
+      "gpu_util": 11,
+      "gpu_mib": 18078,
+      "temperature": 54
+    },
+    {
+      "epoch": 1794308283.2720103,
+      "seconds": 152.85900000005495,
+      "ram_percent": 68,
+      "gpu_util": 10,
+      "gpu_mib": 18041,
+      "temperature": 52
+    },
+    {
+      "epoch": 1794308288.477219,
+      "seconds": 158.20300000009593,
+      "ram_percent": 68.9,
+      "gpu_util": 10,
+      "gpu_mib": 18031,
+      "temperature": 51
+    },
+    {
+      "epoch": 1794308293.9472833,
+      "seconds": 163.4220000000205,
+      "ram_percent": 69.6,
+      "gpu_util": 15,
+      "gpu_mib": 18045,
+      "temperature": 50
+    },
+    {
+      "epoch": 1794308299.381494,
+      "seconds": 168.89000000001397,
+      "ram_percent": 70.3,
+      "gpu_util": 15,
+      "gpu_mib": 18038,
+      "temperature": 49
+    },
+    {
+      "epoch": 1794308304.8049335,
+      "seconds": 174.375,
+      "ram_percent": 71.2,
+      "gpu_util": 15,
+      "gpu_mib": 18039,
+      "temperature": 49
+    },
+    {
+      "epoch": 1794308310.6775389,
+      "seconds": 179.81200000003446,
+      "ram_percent": 72.8,
+      "gpu_util": 14,
+      "gpu_mib": 18061,
+      "temperature": 48
+    },
+    {
+      "epoch": 1794308316.014719,
+      "seconds": 185.60900000005495,
+      "ram_percent": 74.2,
+      "gpu_util": 14,
+      "gpu_mib": 18031,
+      "temperature": 48
+    },
+    {
+      "epoch": 1794308321.5370193,
+      "seconds": 190.95300000009593,
+      "ram_percent": 75.1,
+      "gpu_util": 15,
+      "gpu_mib": 18025,
+      "temperature": 48
+    },
+    {
+      "epoch": 1794308326.792253,
+      "seconds": 196.46900000004098,
+      "ram_percent": 76.7,
+      "gpu_util": 10,
+      "gpu_mib": 18024,
+      "temperature": 48
+    },
+    {
+      "epoch": 1794308331.9532723,
+      "seconds": 201.73400000005495,
+      "ram_percent": 77.8,
+      "gpu_util": 16,
+      "gpu_mib": 18025,
+      "temperature": 47
+    },
+    {
+      "epoch": 1794308337.3400226,
+      "seconds": 206.9220000000205,
+      "ram_percent": 77.7,
+      "gpu_util": 11,
+      "gpu_mib": 8473,
+      "temperature": 48
+    },
+    {
+      "epoch": 1794308342.8778007,
+      "seconds": 212.28100000007544,
+      "ram_percent": 76.7,
+      "gpu_util": 32,
+      "gpu_mib": 12856,
+      "temperature": 57
+    },
+    {
+      "epoch": 1794308348.5440125,
+      "seconds": 217.82800000009593,
+      "ram_percent": 76.7,
+      "gpu_util": 53,
+      "gpu_mib": 14218,
+      "temperature": 58
+    },
+    {
+      "epoch": 1794308354.591878,
+      "seconds": 223.48400000005495,
+      "ram_percent": 76.5,
+      "gpu_util": 22,
+      "gpu_mib": 15177,
+      "temperature": 60
+    },
+    {
+      "epoch": 1794308360.5121026,
+      "seconds": 229.53100000007544,
+      "ram_percent": 76.9,
+      "gpu_util": 44,
+      "gpu_mib": 16172,
+      "temperature": 61
+    },
+    {
+      "epoch": 1794308365.807056,
+      "seconds": 235.45300000009593,
+      "ram_percent": 76.8,
+      "gpu_util": 15,
+      "gpu_mib": 17195,
+      "temperature": 61
+    },
+    {
+      "epoch": 1794308371.0068061,
+      "seconds": 240.75,
+      "ram_percent": 76.7,
+      "gpu_util": 47,
+      "gpu_mib": 17132,
+      "temperature": 63
+    },
+    {
+      "epoch": 1794308376.1765952,
+      "seconds": 245.93700000003446,
+      "ram_percent": 76.5,
+      "gpu_util": 33,
+      "gpu_mib": 17084,
+      "temperature": 64
+    },
+    {
+      "epoch": 1794308382.144295,
+      "seconds": 251.10900000005495,
+      "ram_percent": 76.5,
+      "gpu_util": 10,
+      "gpu_mib": 17035,
+      "temperature": 62
+    },
+    {
+      "epoch": 1794308387.2891676,
+      "seconds": 257.0780000000959,
+      "ram_percent": 76.5,
+      "gpu_util": 16,
+      "gpu_mib": 17035,
+      "temperature": 64
+    },
+    {
+      "epoch": 1794308394.8888884,
+      "seconds": 262.31200000003446,
+      "ram_percent": 76.3,
+      "gpu_util": 27,
+      "gpu_mib": 17418,
+      "temperature": 59
+    },
+    {
+      "epoch": 1794308400.6843433,
+      "seconds": 269.8280000000959,
+      "ram_percent": 76.5,
+      "gpu_util": 10,
+      "gpu_mib": 16605,
+      "temperature": 65
+    },
+    {
+      "epoch": 1794308406.1887057,
+      "seconds": 275.625,
+      "ram_percent": 76.8,
+      "gpu_util": 10,
+      "gpu_mib": 16908,
+      "temperature": 63
+    },
+    {
+      "epoch": 1794308411.3272707,
+      "seconds": 281.125,
+      "ram_percent": 76.6,
+      "gpu_util": 25,
+      "gpu_mib": 16867,
+      "temperature": 64
+    },
+    {
+      "epoch": 1794308416.4897003,
+      "seconds": 286.26500000001397,
+      "ram_percent": 76.4,
+      "gpu_util": 59,
+      "gpu_mib": 16935,
+      "temperature": 64
+    },
+    {
+      "epoch": 1794308422.4911292,
+      "seconds": 291.4220000000205,
+      "ram_percent": 76.5,
+      "gpu_util": 37,
+      "gpu_mib": 17101,
+      "temperature": 64
+    },
+    {
+      "epoch": 1794308427.6884649,
+      "seconds": 297.43700000003446,
+      "ram_percent": 76.4,
+      "gpu_util": 28,
+      "gpu_mib": 16901,
+      "temperature": 65
+    },
+    {
+      "epoch": 1794308433.9859617,
+      "seconds": 302.625,
+      "ram_percent": 76.4,
+      "gpu_util": 34,
+      "gpu_mib": 16896,
+      "temperature": 64
+    }
+  ],
+  "resource_summary": {
+    "max_ram_percent": 77.8,
+    "max_gpu_mib": 20458,
+    "max_temperature": 66
+  },
+  "service.log": "\u001b[32m[INFO]\u001b[0m setup plugin alembic.autogenerate.schemas\n\u001b[32m[INFO]\u001b[0m setup plugin alembic.autogenerate.tables\n\u001b[32m[INFO]\u001b[0m setup plugin alembic.autogenerate.types\n\u001b[32m[INFO]\u001b[0m setup plugin alembic.autogenerate.constraints\n\u001b[32m[INFO]\u001b[0m setup plugin alembic.autogenerate.defaults\n\u001b[32m[INFO]\u001b[0m setup plugin alembic.autogenerate.comments\n\u001b[32m[INFO]\u001b[0m setup plugin alembic.autogenerate.checkconstraint_byname\n\u001b[32m[INFO]\u001b[0m Adding extra search path diffusion_models C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\models\\diffusion_models\n\u001b[32m[INFO]\u001b[0m Adding extra search path text_encoders C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\models\\text_encoders\n\u001b[32m[INFO]\u001b[0m Adding extra search path loras C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\models\\loras\n\u001b[32m[INFO]\u001b[0m Adding extra search path clip_projections C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\models\\clip_projections\n\u001b[32m[INFO]\u001b[0m Adding extra search path custom_nodes C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\custom_nodes\n\u001b[32m[INFO]\u001b[0m Setting output directory to: C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\BLUE8-20261110-1848\\output\n\u001b[32m[INFO]\u001b[0m Setting input directory to: C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\BLUE8-20261110-1848\\input\n\u001b[32m[INFO]\u001b[0m Found comfy_kitchen backend hip: {'available': False, 'disabled': False, 'unavailable_reason': 'PyTorch ROCm/HIP runtime not available', 'capabilities': []}\n\u001b[32m[INFO]\u001b[0m Found comfy_kitchen backend cuda: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['adaln', 'apply_rope', 'apply_rope1', 'apply_rope1_', 'apply_rope_', 'apply_rope_split_half', 'apply_rope_split_half1', 'apply_rope_split_half1_', 'apply_rope_split_half_', 'convrot_w4a4_linear', 'dequantize_convrot_w4a4_weight', 'dequantize_int8_convrot_weight', 'dequantize_int8_convrot_weight_dtype', 'dequantize_int8_simple', 'dequantize_int8_simple_dtype', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'dequantize_w4a8_int8_weight', 'gemv_awq_w4a16', 'int8_linear', 'na3d', 'prepare_int4_weight_for_int8_linear', 'quantize_and_rotate_rowwise', 'quantize_convrot_w4a4_weight', 'quantize_int8_convrot_weight', 'quantize_int8_rowwise', 'quantize_int8_tensorwise', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'quantize_w4a8_int8_weight', 'rms_adaln', 'rms_rope', 'rms_rope1', 'rms_rope1_', 'rms_rope_', 'rms_rope_split_half', 'rms_rope_split_half1', 'rms_rope_split_half1_', 'rms_rope_split_half_', 'rotate_int8_convrot_weight', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'stochastic_rounding_fp8', 'w4a8_int8_linear']}\n\u001b[32m[INFO]\u001b[0m Found comfy_kitchen backend eager: {'available': True, 'disabled': False, 'unavailable_reason': None, 'capabilities': ['adaln', 'apply_rope', 'apply_rope1', 'apply_rope1_', 'apply_rope_', 'apply_rope_split_half', 'apply_rope_split_half1', 'apply_rope_split_half1_', 'apply_rope_split_half_', 'convrot_w4a4_linear', 'dequantize_convrot_w4a4_weight', 'dequantize_int8_convrot_weight', 'dequantize_int8_convrot_weight_dtype', 'dequantize_int8_embedding', 'dequantize_int8_simple', 'dequantize_int8_simple_dtype', 'dequantize_mxfp8', 'dequantize_nvfp4', 'dequantize_per_tensor_fp8', 'dequantize_w4a8_int8_weight', 'gemv_awq_w4a16', 'int8_linear', 'na3d', 'prepare_int4_weight_for_int8_linear', 'quantize_and_rotate_rowwise', 'quantize_convrot_w4a4_weight', 'quantize_int8_convrot_weight', 'quantize_int8_rowwise', 'quantize_int8_tensorwise', 'quantize_mxfp8', 'quantize_nvfp4', 'quantize_per_tensor_fp8', 'quantize_svdquant_w4a4', 'quantize_w4a8_int8_weight', 'rms_adaln', 'rms_rope', 'rms_rope1', 'rms_rope1_', 'rms_rope_', 'rms_rope_split_half', 'rms_rope_split_half1', 'rms_rope_split_half1_', 'rms_rope_split_half_', 'rotate_int8_convrot_weight', 'scaled_mm_mxfp8', 'scaled_mm_nvfp4', 'scaled_mm_svdquant_w4a4', 'stochastic_rounding_fp8', 'w4a8_int8_linear']}\n\u001b[32m[INFO]\u001b[0m Found comfy_kitchen backend triton: {'available': False, 'disabled': True, 'unavailable_reason': \"ImportError: No module named 'triton'\", 'capabilities': []}\n\u001b[32m[INFO]\u001b[0m Checkpoint files will always be loaded safely.\n\u001b[32m[INFO]\u001b[0m Total VRAM 22528 MB, total RAM 32713 MB\n\u001b[32m[INFO]\u001b[0m pytorch version: 2.9.1+cu130\n\u001b[32m[INFO]\u001b[0m Set vram state to: NORMAL_VRAM\n\u001b[32m[INFO]\u001b[0m Device: cuda:0 NVIDIA GeForce RTX 2080 Ti : cudaMallocAsync\n\u001b[32m[INFO]\u001b[0m Using async weight offloading with 2 streams\n\u001b[32m[INFO]\u001b[0m working around nvidia conv3d memory bug.\n\u001b[32m[INFO]\u001b[0m Using pytorch attention\n\u001b[32m[INFO]\u001b[0m aimdo: src-win/cuda-detour.c:38:INFO:aimdo_setup_hooks: installing 6 hooks\n\u001b[32m[INFO]\u001b[0m aimdo: src/control.c:262:INFO:comfy-aimdo NVML pressure enabled\n\u001b[32m[INFO]\u001b[0m aimdo: src-win/shmem-detect.c:80:INFO:comfy-aimdo WDDM adapter match: NVIDIA GeForce RTX 2080 Ti runtime_luid=00000000:0000c591 dxgi_luid=00000000:0000c591\n\u001b[32m[INFO]\u001b[0m aimdo: src/control.c:277:INFO:comfy-aimdo inited for GPU: NVIDIA GeForce RTX 2080 Ti (VRAM: 22527 MB)\n\u001b[32m[INFO]\u001b[0m DynamicVRAM support detected and enabled\n\u001b[32m[INFO]\u001b[0m Python version: 3.11.15 (main, May 10 2026, 19:31:25) [MSC v.1944 64 bit (AMD64)]\n\u001b[32m[INFO]\u001b[0m ComfyUI version: 0.34.0\n\u001b[32m[INFO]\u001b[0m comfy-aimdo version: 0.4.15\n\u001b[32m[INFO]\u001b[0m comfy-kitchen version: 0.2.31\n\u001b[32m[INFO]\u001b[0m comfyui-frontend-package version: 1.51.9\n\u001b[32m[INFO]\u001b[0m comfyui-workflow-templates version: 0.11.50\n\u001b[32m[INFO]\u001b[0m comfyui-embedded-docs version: 0.5.10\n\u001b[32m[INFO]\u001b[0m comfy-kitchen version: 0.2.31\n\u001b[32m[INFO]\u001b[0m comfy-aimdo version: 0.4.15\n\u001b[32m[INFO]\u001b[0m [Prompt Server] web root: C:\\AI\\MiniMax-H3\\.venv\\Lib\\site-packages\\comfyui_frontend_package\\static\n\u001b[32m[INFO]\u001b[0m Asset seeder disabled\n\u001b[32m[INFO]\u001b[0m No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'\n\u001b[32m[INFO]\u001b[0m Skipping minimax-h3-chunk-star7 due to disable_all_custom_nodes and whitelist_custom_nodes\n\u001b[32m[INFO]\u001b[0m Skipping websocket_image_save.py due to disable_all_custom_nodes and whitelist_custom_nodes\n\u001b[32m[INFO]\u001b[0m [ClipProj] graph watch installed\n\u001b[32m[INFO]\u001b[0m [ClipProj] unload hook installed\n\u001b[32m[INFO]\u001b[0m Skipping ComfyUI-MiniMaxH3-TeaCache due to disable_all_custom_nodes and whitelist_custom_nodes\n\u001b[32m[INFO]\u001b[0m Skipping H3-A2-Profile-Only due to disable_all_custom_nodes and whitelist_custom_nodes\n\u001b[32m[INFO]\u001b[0m \nImport times for custom nodes:\n\u001b[32m[INFO]\u001b[0m    0.0 seconds: C:\\AI\\MiniMax-H3\\ComfyUI\\custom_nodes\\minimax-h3-fp16-exact-star7\n\u001b[32m[INFO]\u001b[0m    0.0 seconds: C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\custom_nodes\\ComfyUI-ClipProj\n\u001b[32m[INFO]\u001b[0m    0.0 seconds: C:\\AI\\MiniMax-H3\\projects\\H3-MINIMAL-20261015\\custom_nodes\\ComfyUI-MiniMaxH3-FirstBlockCache\n\u001b[32m[INFO]\u001b[0m \n\u001b[32m[INFO]\u001b[0m Using RAM pressure cache.\n\u001b[32m[INFO]\u001b[0m Starting server\n\n\u001b[32m[INFO]\u001b[0m To see the GUI go to: http://127.0.0.1:8197\n\u001b[32m[INFO]\u001b[0m got prompt\n\u001b[32m[INFO]\u001b[0m VAE load device: cuda:0, offload device: cpu, dtype: torch.float16\n\u001b[32m[INFO]\u001b[0m VAE load device: cuda:0, offload device: cpu, dtype: torch.float32\n\u001b[32m[INFO]\u001b[0m Found quantization metadata version 1\n\u001b[32m[INFO]\u001b[0m Using MixedPrecisionOps for text encoder\n\u001b[32m[INFO]\u001b[0m CLIP/text encoder model load device: cuda:0, offload device: cpu, current: cpu, dtype: torch.float16\n\u001b[32m[INFO]\u001b[0m Requested to load MiniMaxH3VideoVAE\n\u001b[32m[INFO]\u001b[0m Model MiniMaxH3VideoVAE prepared for dynamic VRAM loading. 4965MB Staged. 0 patches attached. Force pre-loaded 128 weights: 348 KB.\n\u001b[32m[INFO]\u001b[0m Model MiniMaxH3VideoVAE prepared for dynamic VRAM loading. 4965MB Staged. 0 patches attached. Force pre-loaded 128 weights: 348 KB.\n\u001b[32m[INFO]\u001b[0m Requested to load MiniMaxH3AudioVAE\n\u001b[32m[INFO]\u001b[0m Model MiniMaxH3AudioVAE prepared for dynamic VRAM loading. 576MB Staged. 0 patches attached. Force pre-loaded 401 weights: 539 KB.\n\u001b[32m[INFO]\u001b[0m Requested to load MiniMaxH3TEModel_\n\u001b[32m[INFO]\u001b[0m Model MiniMaxH3TEModel_ prepared for dynamic VRAM loading. 14956MB Staged. 0 patches attached. Force pre-loaded 410 weights: 4572 KB.\n\u001b[32m[INFO]\u001b[0m [Star7 H3 FP16] Loading at creation-time FP16 | device=sm75\n\u001b[32m[INFO]\u001b[0m Found quantization metadata version 1\n\u001b[32m[INFO]\u001b[0m Detected mixed precision quantization\n\u001b[32m[INFO]\u001b[0m Using mixed precision operations\n\u001b[32m[INFO]\u001b[0m Native ops: convrot_w4a4, int8_tensorwise, asym_w4a8_int8 , emulated ops: float8_e4m3fn, nvfp4, mxfp8, float8_e5m2\n\u001b[32m[INFO]\u001b[0m Found quantization metadata version 1\n\u001b[32m[INFO]\u001b[0m Detected mixed precision quantization\n\u001b[32m[INFO]\u001b[0m model weight dtype torch.float16, manual cast: torch.float32\n\u001b[32m[INFO]\u001b[0m model_type FLOW_AV\n\u001b[32m[INFO]\u001b[0m [Star7 H3 FP16] Enabled v2.0.14 | mode=loader-quantized | backend=int8_tensorwise+convrot:200 | force-cast=False | weight-patches=0 | blocks=50\n\u001b[32m[INFO]\u001b[0m Requested to load MiniMaxH3\n\u001b[32m[INFO]\u001b[0m 0 models unloaded.\n\u001b[32m[INFO]\u001b[0m Model MiniMaxH3 prepared for dynamic VRAM loading. 19995MB Staged. 208 patches attached. Force pre-loaded 210 weights: 1175 KB.\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n  0%|          | 0/4 [00:00<?, ?it/s,   Model Initializing ...  ]\u001b[32m[INFO]\u001b[0m Interrupting prompt fe9463aa-6fac-4d8c-8e62-a608bd2261fc\n\n  0%|          | 0/4 [01:40<?, ?it/s,   Model Initializing ...  ]\n\u001b[32m[INFO]\u001b[0m Processing interrupted\n\u001b[32m[INFO]\u001b[0m \u001b[32mPrompt executed in 304.81 seconds\u001b[0m\n",
+  "prepare.py": "import pathlib,json,subprocess,hashlib,time,shutil,socket\nR=pathlib.Path(__file__).parent\nOLD=R.parent\nSRC=pathlib.Path(\"C:/AI/Video-Recipe-Reproduction-20261110/S2V-15\")\nCOMFY=pathlib.Path(\"C:/AI/MiniMax-H3/ComfyUI\")\nFF=pathlib.Path(\"C:/Users/A/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1.1-full_build/bin/ffmpeg.exe\")\ndef save(n,v): (R/n).write_text(json.dumps(v,ensure_ascii=False,indent=2),encoding=\"utf-8\")\nfor n in (\"input\",\"output\",\"evidence\"): (R/n).mkdir(exist_ok=True)\nassert not (R/\"freeze.json\").exists(),\"ALREADY_PREPARED_NO_OVERWRITE\"\nassert hashlib.sha256((SRC/\"references/blue-original-8s.mp4\").read_bytes()).hexdigest()==\"1f2ca3d97f91e5c2aa73a4dfc42a22e4b53783af1d2d38159ceb876994eff561\"\nassert 192%17==5 and 56%17==5\nshutil.copyfile(SRC/\"input/blue-reference.png\",R/\"input/identity_reference.png\")\nsubprocess.run([str(FF),\"-v\",\"error\",\"-i\",str(SRC/\"references/blue-original-8s.mp4\"),\"-vf\",\"crop=640:870:640:0,scale=608:832:force_original_aspect_ratio=decrease,pad=608:832:(ow-iw)/2:(oh-ih)/2\",\"-frames:v\",\"56\",\"-an\",\"-c:v\",\"libx264\",\"-crf\",\"16\",str(R/\"input/reference_motion.mp4\")],check=True,timeout=35)\nsubprocess.run([str(FF),\"-v\",\"error\",\"-i\",str(SRC/\"input/blue-audio.wav\"),\"-t\",str(56/24),\"-c:a\",\"pcm_s16le\",str(R/\"input/original_audio.wav\")],check=True,timeout=20)\nw=json.loads(pathlib.Path(\"C:/AI/H3-Douyin-Reuse-20261106/R1/workflow-attempt-2.json\").read_text(encoding=\"utf-8\"))\nw[\"8\"][\"inputs\"].update(width=608,height=832,length=56,prompt=\"integrated_multimodal_description: A single adult woman in the same blue satin one-shoulder dress as <Picture 1>, in the same cool blue studio background. Use <Picture 1> for identity, face, hair, dress and lighting. Use <Video 1> for head turn, gaze, hand gestures and exact performance timing. Follow the vocal phrasing and mouth movements of <Audio 1> and <Video 1>. Realistic face and hands, stable facial identity and dress straps, natural continuous movement, fixed camera, no extra person, no captions. overall_soundscape: Follow <Audio 1> exactly in delivery and timing. non_diegetic_music: Follow the source audio.\",ref_image_size=\"match\")\nw[\"18\"]={\"class_type\":\"LoraLoaderModelOnly\",\"inputs\":{\"model\":[\"2\",0],\"lora_name\":\"minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors\",\"strength_model\":1}}\nw[\"9\"][\"inputs\"][\"model\"]=[\"18\",0]\nw[\"11\"][\"inputs\"].update(model=[\"18\",0],steps=4)\nw[\"12\"][\"inputs\"][\"noise_seed\"]=202611101848\nw[\"16\"][\"inputs\"][\"filename_prefix\"]=\"BLUE8-G3-REF2VA4-20261110-1848\"\nsave(\"workflow.json\",w)\ncmd=json.loads(pathlib.Path(\"C:/AI/H3-Douyin-Reuse-20261106/R1/service.json\").read_text(encoding=\"utf-8\"))[\"cmd\"]\ncmd[cmd.index(\"--port\")+1]=\"8197\"\ncmd[cmd.index(\"--input-directory\")+1]=str(R/\"input\")\ncmd[cmd.index(\"--output-directory\")+1]=str(R/\"output\")\nfreeze={\"job\":\"BLUE8-20261110-1848\",\"overall_started_epoch\":1794307675.478,\"frozen_epoch\":time.time(),\"workflow_sha256\":hashlib.sha256((R/\"workflow.json\").read_bytes()).hexdigest(),\"steps\":4,\"model\":\"ref2va_int8_convrot\",\"source_template_sha\":\"dcdade1802b46468b15aff8b40ba1ca58f63d68b\",\"reference_source_sha256\":\"1f2ca3d97f91e5c2aa73a4dfc42a22e4b53783af1d2d38159ceb876994eff561\",\"preview\":{\"width\":608,\"height\":832,\"frames\":56,\"fps\":24,\"seconds\":56/24},\"final\":{\"frames\":192,\"seconds\":8,\"fps\":24},\"G0\":{\"status\":\"TIME_BUDGET_FAILED_THEN_REVIEWED\",\"correction\":\"192=17*11+5; no194-frame crop. Existing ASR returned24.506s; wholeG0 including discovery/bridge passed180s. Failure stays in total. Source audio retained; English-vocal ASR hypothesis not a verified lyric transcript.\",\"quality\":\"input image inspected; original sound preserved; lip sync remains pending\"},\"G1\":{\"status\":\"STATIC_MATCHED_RUNTIME_PENDING\",\"compatibility\":\"reuse proven Ref2VA protected Star7 loader; add only the official matching Ref2VA Turbo4 path; no new backend/precision/model download\",\"resource\":\"RAM94 immediately or RAM88 withGPU<20for30s; startup RAM<80\",\"timing\":\"G3 at most360s including generation/review; whole job1800s including prior failure; no automatic full8s submission\"},\"G3\":\"NOT_STARTED\",\"FINAL_VALID\":\"NO\",\"service_command\":cmd}\nsave(\"freeze.json\",freeze)\nsave(\"input-manifest.json\",{str(p.relative_to(R)):{\"bytes\":p.stat().st_size,\"sha256\":hashlib.sha256(p.read_bytes()).hexdigest()} for p in (R/\"input\").iterdir()})\nprint(json.dumps(freeze,ensure_ascii=False),flush=True)\n\n",
+  "run_candidate.py": "# Mature ComfyUI REST/once-claim/resource-guard adapter; no model or sampling implementation.\nimport pathlib,json,time,subprocess,sys,socket,urllib.request,urllib.error,hashlib,uuid\nimport psutil\nR=pathlib.Path(__file__).parent; F=json.loads((R/\"freeze.json\").read_text(encoding=\"utf-8\"))\nBASE=\"http://127.0.0.1:8197\"; OWN=None; PID=None; LOG=None\ndef save(n,v): (R/n).write_text(json.dumps(v,ensure_ascii=False,indent=2),encoding=\"utf-8\")\ndef req(path,data=None,timeout=5):\n    b=None if data is None else json.dumps(data).encode()\n    q=urllib.request.Request(BASE+path,data=b,headers={\"Content-Type\":\"application/json\"})\n    with urllib.request.urlopen(q,timeout=timeout) as r:\n        s=r.read()\n        return json.loads(s) if s else {}\ndef out(s): print(s,flush=True)\ndef gpu():\n    try:\n        a=subprocess.check_output([\"nvidia-smi\",\"--query-gpu=utilization.gpu,memory.used,temperature.gpu\",\"--format=csv,noheader,nounits\"],text=True,timeout=3).strip().split(\",\")\n        return dict(zip([\"gpu_util\",\"gpu_mib\",\"temperature\"],map(float,a)))\n    except Exception as e: return {\"gpu_error\":str(e)}\ndef reconcile_stop(reason):\n    save(\"stop.json\",{\"reason\":reason,\"epoch\":time.time(),\"prompt_id\":PID})\n    try: req(\"/interrupt\",{\"prompt_id\":PID})\n    except Exception as e: out(\"INTERRUPT_RESPONSE \"+str(e))\n    until=time.monotonic()+30\n    while time.monotonic()<until:\n        try:\n            q=req(\"/queue\")\n            if not q[\"queue_running\"] and not q[\"queue_pending\"]:\n                save(\"stop-reconciled.json\",{\"queue\":q,\"epoch\":time.time()});return\n        except Exception: pass\n        time.sleep(2)\n    out(\"OWNED_SERVER_TERMINATION_REQUIRED\")\ntry:\n    assert psutil.virtual_memory().percent<80,\"RESOURCE_ADMISSION_RAM80\"\n    assert time.time()-F[\"overall_started_epoch\"]<1800,\"OVERALL_BUDGET_EXPIRED\"\n    assert hashlib.sha256((R/\"workflow.json\").read_bytes()).hexdigest()==F[\"workflow_sha256\"]\n    w=json.loads((R/\"workflow.json\").read_text(encoding=\"utf-8\"))\n    with socket.socket() as s: assert s.connect_ex((\"127.0.0.1\",8197))!=0,\"PORT_OCCUPIED_STOP\"\n    claim=R/\"execution.claim\"\n    with claim.open(\"x\",encoding=\"utf-8\") as f: f.write(str(time.time()))\n    LOG=(R/\"service.log\").open(\"x\",encoding=\"utf-8\")\n    OWN=subprocess.Popen([sys.executable]+F[\"service_command\"],cwd=\"C:/AI/MiniMax-H3/ComfyUI\",stdout=LOG,stderr=subprocess.STDOUT)\n    save(\"service.json\",{\"pid\":OWN.pid,\"command\":[sys.executable]+F[\"service_command\"],\"epoch\":time.time()})\n    out(\"SERVICE \"+str(OWN.pid))\n    t0=time.monotonic()\n    while True:\n        assert OWN.poll() is None,\"SERVICE_EXITED\"\n        try:\n            info=req(\"/object_info\",timeout=5)\n            break\n        except Exception:\n            if time.monotonic()-t0>180:raise RuntimeError(\"G1_STARTUP_180S\")\n            if psutil.virtual_memory().percent>=94:raise RuntimeError(\"RAM94_STARTUP\")\n            time.sleep(2)\n    assert all(v[\"class_type\"] in info for v in w.values()),\"MISSING_NODE\"\n    for n,k in [(\"1\",\"clip_name\"),(\"2\",\"unet_name\"),(\"3\",\"vae_name\"),(\"4\",\"vae_name\"),(\"18\",\"lora_name\")]:\n        typ=w[n][\"class_type\"]; schema=info[typ][\"input\"]\n        spec=(schema.get(\"required\",{})|schema.get(\"optional\",{})).get(k)\n        assert spec is not None,(\"INPUT_SCHEMA\",typ,k)\n        if isinstance(spec[0],list):assert w[n][\"inputs\"][k] in spec[0],(\"MODEL_NOT_REGISTERED\",typ,k)\n    q=req(\"/queue\");assert not q[\"queue_running\"] and not q[\"queue_pending\"]\n    save(\"G1-admission.json\",{\"status\":\"PASS_COMPATIBLE_CANDIDATE\",\"startup_seconds\":time.monotonic()-t0,\"all_nodes_registered\":True,\"models_registered\":True,\"RAM\":psutil.virtual_memory().percent,\"gpu\":gpu(),\"quality\":\"NOT_YET_MEASURED\",\"epoch\":time.time()})\n    out(\"G1_RUNTIME_PASS\")\n    PID=str(uuid.uuid4())\n    save(\"submit-intent.json\",{\"prompt_id\":PID,\"epoch\":time.time(),\"workflow_sha256\":F[\"workflow_sha256\"]})\n    start=time.monotonic()\n    receipt=req(\"/prompt\",{\"prompt\":w,\"client_id\":F[\"job\"],\"prompt_id\":PID},timeout=15)\n    save(\"receipt.json\",receipt);PID=receipt[\"prompt_id\"];out(\"SUBMITTED \"+PID)\n    pressure=None;history=None;aborted=None\n    with (R/\"telemetry.jsonl\").open(\"x\",encoding=\"utf-8\") as tel:\n        while True:\n            dt=time.monotonic()-start\n            h=req(\"/history/\"+PID)\n            if PID in h: history=h[PID];break\n            m=psutil.virtual_memory();g=gpu()\n            sample={\"epoch\":time.time(),\"seconds\":dt,\"ram_percent\":m.percent,**g}\n            tel.write(json.dumps(sample)+\"\\n\");tel.flush()\n            if m.percent>=88 and g.get(\"gpu_util\",100)<20:pressure=pressure or time.monotonic()\n            else:pressure=None\n            reason=None\n            if m.percent>=94:reason=\"RAM94\"\n            elif pressure is not None and time.monotonic()-pressure>=30:reason=\"RAM88_LOWGPU30S\"\n            elif dt>=300:reason=\"G3_GENERATION_300S_RESERVE_REVIEW60S\"\n            elif time.time()-F[\"overall_started_epoch\"]>=1800:reason=\"OVERALL_1800S\"\n            if reason:\n                aborted=reason;reconcile_stop(reason)\n                history=req(\"/history/\"+PID).get(PID)\n                break\n            out(\"RUN \"+str(round(dt,1))+\"s RAM \"+str(m.percent)+\" GPU \"+str(g))\n            time.sleep(5)\n    save(\"history.json\",history)\n    result={\"prompt_id\":PID,\"generation_seconds\":time.monotonic()-start,\"aborted\":aborted,\"history_status\":history.get(\"status\") if history else None,\"G3\":\"PENDING_VISUAL_REVIEW\",\"FINAL_VALID\":\"NO\"}\n    if not history or history[\"status\"][\"status_str\"]!=\"success\" or aborted:\n        result[\"G3\"]=\"STOPPED\";save(\"result.json\",result);out(json.dumps(result));sys.exit(2)\n    import av\n    from PIL import Image,ImageDraw\n    files=list((R/\"output\").glob(\"BLUE8-G3-REF2VA4-20261110-1848*.mp4\"));assert len(files)==1\n    raw=files[0]\n    with av.open(str(raw)) as c: frames=[f.to_image() for f in c.decode(video=0)]\n    assert len(frames)==56 and frames[0].size==(608,832),(\"OUTPUT_SPEC\",len(frames),frames[0].size)\n    for idx in [0,11,22,33,44,55]: frames[idx].save(R/\"evidence\"/(\"frame-\"+str(idx)+\".png\"))\n    sheet=Image.new(\"RGB\",(912,880),\"white\")\n    for j,idx in enumerate([0,11,22,33,44,55]):\n        sheet.paste(frames[idx].resize((304,416)),((j%3)*304,(j//3)*440));ImageDraw.Draw(sheet).text(((j%3)*304+4,(j//3)*440+420),str(idx),fill=\"black\")\n    sheet.save(R/\"evidence\"/\"contact.jpg\")\n    FF=\"C:/Users/A/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1.1-full_build/bin/ffmpeg.exe\"\n    mux=R/\"candidate-original-audio.mp4\"\n    subprocess.run([FF,\"-v\",\"error\",\"-i\",str(raw),\"-i\",str(R/\"input/original_audio.wav\"),\"-map\",\"0:v:0\",\"-map\",\"1:a:0\",\"-c:v\",\"copy\",\"-c:a\",\"aac\",\"-shortest\",str(mux)],check=True,timeout=20)\n    result.update(raw=str(raw),candidate=str(mux),sha256=hashlib.sha256(mux.read_bytes()).hexdigest(),frames=len(frames),through_decode_seconds=time.monotonic()-start)\n    save(\"result.json\",result);out(json.dumps(result))\nexcept Exception as e:\n    save(\"runner-error.json\",{\"error\":repr(e),\"epoch\":time.time(),\"prompt_id\":PID})\n    if PID:\n        try: reconcile_stop(\"RUNNER_ERROR:\"+repr(e))\n        except Exception: pass\n    out(\"STOP \"+repr(e));raise\nfinally:\n    if OWN is not None:\n        try: owned_children=psutil.Process(OWN.pid).children(recursive=True)\n        except psutil.NoSuchProcess: owned_children=[]\n        try: req(\"/free\",{\"unload_models\":True,\"free_memory\":True})\n        except Exception: pass\n        for child in reversed(owned_children):\n            try: child.terminate()\n            except psutil.NoSuchProcess: pass\n        _,alive=psutil.wait_procs(owned_children,timeout=10)\n        for child in alive:\n            try: child.kill()\n            except psutil.NoSuchProcess: pass\n        if OWN.poll() is None:\n            OWN.terminate()\n            try: OWN.wait(timeout=20)\n            except subprocess.TimeoutExpired: OWN.kill();OWN.wait(timeout=5)\n        save(\"shutdown.json\",{\"owned_pid\":OWN.pid,\"owned_children\":[p.pid for p in owned_children],\"exit\":OWN.poll(),\"epoch\":time.time()})\n    if LOG:LOG.close()\n\n",
+  "collected_epoch": 1794308592.6702125
+}
