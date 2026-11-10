@@ -1,0 +1,44 @@
+{
+  "audit": "PASS",
+  "frozen_source_files": 18,
+  "all_job_receipts": 1024,
+  "all_zip_members": 49152,
+  "sampled_raw_inputs": 3072,
+  "cpu_work_div4_range_s": [
+    6.27734375,
+    7.0078125
+  ],
+  "worker_peak_wset_mib_range": [
+    26.0703125,
+    27.67578125
+  ],
+  "means": {
+    "A": 68.67559609998716,
+    "B": 80.05670670000836,
+    "C": 67.62075930001447,
+    "D": 127.80249855003785
+  },
+  "freeze_sha256": "f8c822838e6814fcbec54184f03422e400236d489704e6170565fba6deea217c",
+  "audit_session": 432,
+  "audit_process_pid": 9664,
+  "create_time": 1794315754.1081579,
+  "exit_code": 0,
+  "wall_s_including_pause": 1334.89,
+  "pause_utc": "2026-11-10T13:15:05.050003Z",
+  "resume_utc": "2026-11-10T13:23:32.727199Z",
+  "pause_s": 507.677,
+  "review": {
+    "mean_winner": "C",
+    "adopted": "A",
+    "reason": "No demonstrated stable net gain; 1.54% difference, direction reverses by repetition, material time variation; A also lower when fixture preparation included"
+  },
+  "entry": {
+    "accepted": 128,
+    "files": 6144,
+    "workers": 4,
+    "explicit_workers_flag": false,
+    "normal_version": "omp/18.18.0",
+    "raw_total_with_fixture_s": 1234.7018674999708,
+    "role": "functional acceptance only, not speed-ranked"
+  }
+}
