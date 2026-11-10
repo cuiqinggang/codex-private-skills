@@ -77,7 +77,10 @@ python <本包>/scripts/match_flow.py --request <本批合同.json>
 
 结构化独立归档清单可显式调用 `scripts/batch_handoff.py --library <本包> --requests <原请求路径JSON数组文件> --workers 1 --result <新回执>`，双路改为 `--workers 2`。它只用标准线程池调用原完整match()和原argv，保留每项原沙箱、依赖、源/输入指纹和业务检查；共享工作区直接拒绝。执行状态不代替业务验收，继续原检查及本批独立读回。其他类别、Pi桌面提交到此入口和GUI签收未由本轮认证，暂不自动替换Pi桌面默认路线。
 
-详见[完整结果、瓶颈与接续点](references/R89-Single-Dual-Review.md)。本次少启动重复调用/匹配层进程；不是新业务核心或新调度器，也不是双模型上下文的提速认证。
+详见[完整结果、瓶颈与接续点](references/R89-Single-Dual-Review.md)。
+
+**2026-11-10 R94限定成熟节点搭配补充（不改V1.3.2原主流程）：** [固定文件归档128项×48文件／持续四路、原节点和独立QA](references/R94-Archive-Continuous-4Lanes-20261110.md)具有历史1024/1024产物验收，仅对原files.archive_exact合同VERIFIED_FOR_SCOPE；当前源码Freeze一致性和真实GUI签收未通过，不能把四路宣布为全业务默认，完整T_VALID=NOT_MEASURED。请先读参考及其原FREEZE再按实时环境匹配。
+本次少启动重复调用/匹配层进程；不是新业务核心或新调度器，也不是双模型上下文的提速认证。
 
 ## 扩充来源与兼容索引
 
