@@ -1,0 +1,97 @@
+{
+  "summary": {
+    "valid": true,
+    "rows": [
+      {
+        "label": "A",
+        "case": "case-00-A",
+        "workers": 4,
+        "valid": true,
+        "total_s": 588.3779577999376,
+        "fixture_provision_s": 646.3239078000188,
+        "total_with_fixture_s": 1234.7018674999708,
+        "cli_wall_s": 521.3822634000098,
+        "qa_s": 66.79873259994201,
+        "failures": []
+      }
+    ],
+    "groups": {
+      "A": {
+        "mean_s": 588.3779577999376,
+        "range_s": [
+          588.3779577999376,
+          588.3779577999376
+        ]
+      }
+    },
+    "version": "omp/18.18.0",
+    "entry": "existing enhanced launch_pi.py"
+  },
+  "source_hashes": {
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r95-four-core\\four_lane_entry.py": "b69f74c3f18e8aed54752eba45bd3a01c4154e0dbccd5681a35573a92bdaec8c",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r95-four-core\\f2\\snapshot\\scripts\\archive_stream_worker.py": "654656715ab93634f026ebb852f9c776cd304da00f793b52f7add7fb29afd6d3",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r95-four-core\\f2\\snapshot\\scripts\\deliver_archive_batch.py": "2467c1df940f544db7e6e7db2ce0a395f8cefe2d2d06e682aa20ae7d8fc6ef32",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r95-four-core\\f2\\snapshot\\scripts\\batch_handoff.py": "af73e18b3f31a42e82efe8042b2efeb72cff9d9cd4f99003ffd3f7a2eb923c4b",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r95-four-core\\f2\\snapshot\\scripts\\match_flow.py": "0c4620b34751aa144eccc7222070bbffe3dbc63f43ad169ea79f1199a8244483",
+    "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r95-four-core\\f2\\snapshot\\assets\\ready-flows\\pi-native\\artifact_recipe.py": "4967b4e9e26f72459211b78534bec281b262c20576f4076a099b41a7fa418cc6"
+  },
+  "actual_cli": {
+    "status": "VALID",
+    "accepted": 128,
+    "requested": 128,
+    "files": 6144,
+    "workers": 4,
+    "local_pipeline_s": 516.0218202999095,
+    "final_qa_s": 154.42377670004498,
+    "qa_mode": "serial",
+    "pin_mode": "0",
+    "delivery": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r95-four-core\\f2\\acceptance\\case-00-A\\work\\DELIVERY.json",
+    "completion": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r95-four-core\\f2\\acceptance\\case-00-A\\work\\COMPLETION.md"
+  },
+  "lane_counts": [
+    32,
+    32,
+    32,
+    32
+  ],
+  "lane_affinity": [
+    [
+      0,
+      1,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      3
+    ]
+  ],
+  "lane_exit": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "accepted": 128,
+  "hashes": {
+    "pi-single-dual-r89-20261110\\r95-four-core\\f2\\acceptance\\FREEZE.json": "aabb266347a08b4b930a8e2c98dd0370bad13ce014d07a1559ef1998f800e005",
+    "pi-single-dual-r89-20261110\\r95-four-core\\f2\\acceptance\\case-00-A\\RESULT.json": "755bf2e0bc44930b4dc0da3f9da0844b3a61d064194e11fc03f057082a3268c4",
+    "pi-single-dual-r89-20261110\\r95-four-core\\f2\\acceptance\\case-00-A\\work\\DELIVERY.json": "dd744c5b1b9a616769ef4f656d8e236fd90424cbc25b20b6e6224b40812f854d",
+    "pi-single-dual-r89-20261110\\r95-four-core\\four_lane_entry.py": "b69f74c3f18e8aed54752eba45bd3a01c4154e0dbccd5681a35573a92bdaec8c",
+    "pi-single-dual-r89-20261110\\r95-four-core\\f2\\acceptance_benchmark.py": "c9fc1cb6647115c301f6184b42f11876d91a4f987088d8e7b12cb212814fd8ef"
+  }
+}
