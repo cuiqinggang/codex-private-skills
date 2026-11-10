@@ -88,3 +88,13 @@
 | EXP-AVATAR-20261109-001 | MuseTalk1.5、固定头像英语样例两次重放、14.736秒中文音轨、FFmpeg图卡技术成片；正常速度声画/口型质量及真实PPT尚未验收 | [AVATAR-MUSETALK-20261109.md](AVATAR-MUSETALK-20261109.md) |
 
 原EXP-DOCKER-001仅追加11月9日17:03:40更近的同指纹WSL预热失败，不重复建立Docker卡。Pi在本轮显式7份原回执的五候选已由GPT按独立原项目报告审查，原草稿及补核留C盘Vault和原Pi任务run；其余GitHub视觉、Docker来源由本轮GPT独立读取，不冒充Pi清单覆盖。新成熟业务节点配方=0：声画艺术验收缺失不得拿技术文件代替真实可交付。新明确共享EXP卡业务adopt/reject未观察到，完整记忆净T_VALID=NOT_MEASURED；DSE、BRAIN25、原专业Freeze无自动升级。
+
+## 2026-11-10｜三张有源最小经验卡（不晋升稳定规则）
+
+| 经验ID | 触发词与边界 | 正文 |
+|---|---|---|
+| EXP-PI-ARCHIVE-R94-20261110-001 | 固定文件归档、R94、128项、1/2/4/8持续worker、原ZIP/CRC独立QA；本批四路样本较快但非通用最优，当前源码Freeze一致性缺口，GUI未验 | [PI-ARCHIVE-R94-20261110.md](PI-ARCHIVE-R94-20261110.md) |
+| EXP-ECC-MATT-PI-20261110-001 | ECC vs Matt限定同Pi18.18、R75组合原配方调用未证、WinError5、预算/沙箱、网页拷贝阈值；两组6/7未有效签收，长项目未启动 | [ECC-MATT-PI-20261110.md](ECC-MATT-PI-20261110.md) |
+| EXP-BLUE8-QUALITY-20261110-001 | 蓝裙8秒、Ref2VA 56帧原生出片、身体/原声口型G3失败、Wan Animate完整候选缺本机配套；8秒/GUI未验 | [BLUE8-QUALITY-20261110.md](BLUE8-QUALITY-20261110.md) |
+
+原EXP-DOCKER-001只追加11月10日15:39自动预热失败与20:29普通开启已有Engine可访问两种不同合同，不新建重复卡。R94限定的成熟节点搭配证据已优先补到原专业包 [run-batch-automation R94 reference](../../run-batch-automation/references/R94-Archive-Continuous-4Lanes-20261110.md)，不创建个人技能新包，不变原业务核心；本次归档不等于未来入口READY或用户GUI通过。Pi在显式17个本机源上产5条证据候选，原稿及独立审查在C盘原run；正式规则晋升0、真实共享EXP业务adopt/reject新回执未观察到，记忆净T_VALID=NOT_MEASURED。原Vault日报仍留C盘，继承清单精确指针见INHERITANCE.json。
