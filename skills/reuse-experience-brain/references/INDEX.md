@@ -98,3 +98,11 @@
 | EXP-BLUE8-QUALITY-20261110-001 | 蓝裙8秒、Ref2VA 56帧原生出片、身体/原声口型G3失败、Wan Animate完整候选缺本机配套；8秒/GUI未验 | [BLUE8-QUALITY-20261110.md](BLUE8-QUALITY-20261110.md) |
 
 原EXP-DOCKER-001只追加11月10日15:39自动预热失败与20:29普通开启已有Engine可访问两种不同合同，不新建重复卡。R94限定的成熟节点搭配证据已优先补到原专业包 [run-batch-automation R94 reference](../../run-batch-automation/references/R94-Archive-Continuous-4Lanes-20261110.md)，不创建个人技能新包，不变原业务核心；本次归档不等于未来入口READY或用户GUI通过。Pi在显式17个本机源上产5条证据候选，原稿及独立审查在C盘原run；正式规则晋升0、真实共享EXP业务adopt/reject新回执未观察到，记忆净T_VALID=NOT_MEASURED。原Vault日报仍留C盘，继承清单精确指针见INHERITANCE.json。
+
+## 2026-11-11｜正式长流程启动、归档节点补验、视频精确清理及Docker恢复（仅限定案例）
+
+| 经验ID | 新触发与适用边界 | 正文 |
+|---|---|---|
+| EXP-VIDEO-CLEANUP-20261111-001 | Pi65.6GB清理候选、289项逐项判废、126615文件、VoxCPM2有效资产保留、旧MSIX阻塞、GUI/75%未过；不直接套用整目录删除 | [VIDEO-STORAGE-CLEANUP-20261111.md](VIDEO-STORAGE-CLEANUP-20261111.md) |
+
+既有EXP-ECC-MATT-PI-20261110-001同卡追加F015 20:36正式两组启动，原准入仅PASS_EXECUTION、21:05后两HOST仍RUNNING/业务PENDING；旧顶层formal_workers_started=0不得覆盖新f015_current=2。EXP-PI-ARCHIVE-R94-20261110-001同卡追加R98/99/100已验证固定归档检查与准备分工、不同审计深度及四/八并发局限，并优先补入原专业技能R94 reference；不是新跨业务就绪或完整记忆提速。EXP-DOCKER-001原卡追加11月11日19:36受控ENGINE_READY（381269ms），保留前日WSL预热失败、根因未知和下次自然登录未验。全部只保留原项目证据、旧错误与适用边界，新增稳定规则0、新独立业务配方0。Pi原生明确17份source的5候选及GPT范围审核留原C盘；未观察到新增共享EXP实际业务adopt/reject完整回执，memory_T_VALID_gain=NOT_MEASURED；BRAIN25/DSE/Freeze不因日报升版。
