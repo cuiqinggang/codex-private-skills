@@ -195,7 +195,7 @@
     },
     {
       "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-11-DSE-INCREMENTAL.md",
-      "sha256": "79e5a1bfa5cd7a95dd8daab5c35d58afa634d004d61a9657c108bddde8568706",
+      "sha256": "b845e1800c8f4bd7c4afda93871bc8d51ea2701624c81ac24337db57e2a20a64",
       "bytes": 7403,
       "content_read": true,
       "retention": "original_unchanged",
@@ -720,6 +720,12 @@
       "evidence_scope": "512 fixed archives, four-thread fixture preparation and original per-item acceptance; duplicate external audit removed; not a memory speedup claim."
     },
     {
+      "experience_id": "EXP-PI-ARCHIVE-R94-20261110-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-single-dual-r89-20261110\\r100-eight-lanes\\R100-Evidence.json",
+      "content_read": true,
+      "evidence_scope": "GPT independently read Nov11 original R100: 128 tasks each at 4 and 8 workers, 256 accepted, 12288 files; production 35.512907 vs 35.176659 s and with fixture/readback 54.988080 vs 53.975579 s; only one pair, same fixed archive scope; not memory T_VALID or general throughput proof."
+    },
+    {
       "experience_id": "EXP-VIDEO-CLEANUP-20261111-001",
       "path": "research/video/PI65GB-AUDIT-RESULT-20261111.md",
       "content_read": true,
@@ -740,7 +746,7 @@
     {
       "experience_id": "DAILY-DSE-20261111",
       "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-11-DSE-INCREMENTAL.md",
-      "sha256": "79e5a1bfa5cd7a95dd8daab5c35d58afa634d004d61a9657c108bddde8568706",
+      "sha256": "b845e1800c8f4bd7c4afda93871bc8d51ea2701624c81ac24337db57e2a20a64",
       "content_read": true,
       "evidence_scope": "Original Vault main daily incremental body, memory lint pass, explicit hot sync 13 files zero missing, KB health PASS; original kept on C."
     }
