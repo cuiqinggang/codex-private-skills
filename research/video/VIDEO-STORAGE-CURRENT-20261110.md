@@ -1,8 +1,14 @@
 # 视频空间整理与Wan试片 CURRENT
 
-## 2026-11-11连接等待，资源复审未冻结（19:20复查）
+## 2026-11-11 20:04 Windows 已恢复访问，Wan 等待资源配置复审
 
-19:20复查：A入口仍无在线设备（目标最后在线约17小时前），B读取STATE仍返回429。未能读取本机STATE/actions/取消迁移回执/资源停止证据与telemetry；本机日志未写，C盘当前空间未知。本轮无新增清理、下载、迁移、恢复服务或GPU提交，亦未生成新Freeze。连接恢复后先对账原回执、补录等待记录，不重做DONE项、不恢复旧迁移或旧Wan intent。按暂时连接/限流故障继续保留接续边界，75%/GUI/8秒/FINAL_VALID仍未通过。
+已读回本机 STATE、取消迁移回执、退役资产删除回执、actions 尾部及 POSTCLEAN-R1 的 resource-stop-final.json 和 52 条遥测。模型加载在 254.672 秒时达到 RAM 99.2%、GPU 3423 MiB。停止回执记录事后 RAM 53.3%，早期复测曾记录 53.9%。原生 history 为 {}，采样 0 步、视频 0 个。
+
+本机新快照：C 可用 337040740352 字节（313.894 GiB），K 可用 587666530304 字节。RAM 76.2%，可用 7.607 GiB；RTX 2080 Ti 的 22528 MiB 显存中已用 2756 MiB。RAM 低于原 80% 提交门槛，但距离 94% 停止线仅 17.8 个百分点。上次从遥测首条 65.0% 升至 99.2%，变化为 34.2 个百分点，包含全机负载变化，不能等同 Wan 进程私有内存。结合作者不同画幅及 Relight 条件，当前仍缺匹配的完整流程资源上界，保持 DEFER_GPU_NO_NEW_FREEZE。
+
+MuseTalk 首轮本机引用复核：S2V 的 CONTINUE/PAUSE 记录旧 D24 已拒收；H3 的 AUDIO_CAPABILITY_REUSE_DECISION_20261020.md 另有保留系统的记录，现存 app.py 明确引用 V15 unet.pth。应核对当前实际引用与按文件可独立判废的证据后再处置。此次仅审计，新增删除和 GPU 提交均为 0。
+
+本机 STATE、RUN-LOG、actions 及 resume-20261111-2004.json 已补录。旧迁移保持取消。75%目标、保留工具完整 GUI 验收和 8 秒成片仍待验收，FINAL_VALID=NO。
 
 02:07记录：A入口无在线设备（当时目标最近约6分钟前在线），B入口读取STATE返回429。未成功读取本机新STATE/资源回执，也未写本机日志或取得新空间快照；无新增删除/下载/迁移/GPU任务。已复核city96源码及MultiMemory驻留分支，但后者仍WIP/实验LoRA，缺SM75+当前Animate完整图的资源证据，仅REFERENCE_ONLY，不部署，不生成新Freeze。详见[本轮边界与补录事项](VIDEO-STORAGE-RESUME-20261111-0207.md)。连接恢复后先对账本机原状态，禁止重做DONE项/恢复旧迁移及旧Wan intent。原FINAL_VALID/75%/GUI/8秒仍未通过。此为暂时连接异常，不推断电脑关机或资产失效。
 
