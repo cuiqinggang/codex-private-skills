@@ -200,6 +200,14 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-12-DSE-INCREMENTAL.md",
+      "sha256": "169b1e6be08d1ee0a38a4a4a92e0398e5d26a49930527847d28b169ed6d52b8f",
+      "bytes": 7598,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
   "limits": "23 daily source files hashed and registered (Nov4 original missing); 18 original daily contents read through Nov10, 44 selected experience cards; historical evidence not fully distilled or migrated; no new shared EXP business adoption result observed; business memory net T_VALID NOT_MEASURED.",
@@ -351,7 +359,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-11",
+  "latest_incremental_date": "2026-11-12",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -480,7 +488,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "Nov11 original Vault daily locally read/linted and explicit Hot Sync (13 entries, zero missing), KB Health PASS; 24 daily originals registered (Nov4 missing), 19 originals read, 45 selected scoped shared cards. F015 two formal OMP arms started 20:36, admission-only PASS, final pending; R98/99/100 fixed archive per-item QA and differing external audit levels, updated original professional reference scope-only; video 289 candidates selectively cleaned 126615 files without 75%/GUI/final video PASS; Docker original autostart 19:36 controlled recovery READY; Pi 17-source 5-candidate draft independently reviewed, no newly observed shared EXP business adopt/reject, memory_T_VALID NOT_MEASURED. No stable rule or BRAIN25/Freeze version change.",
+  "latest_incremental_scope": "2026-11-12 fixed-window scoped ECC312 R2 and F015 terminal, Docker new probe fingerprint; latest packet audit 21:01:48 is post-window follow-up; Pi worker source-changed and no RESULT; candidate only.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -749,6 +757,51 @@
       "sha256": "b845e1800c8f4bd7c4afda93871bc8d51ea2701624c81ac24337db57e2a20a64",
       "content_read": true,
       "evidence_scope": "Original Vault main daily incremental body, memory lint pass, explicit hot sync 13 files zero missing, KB health PASS; original kept on C."
+    }
+  ],
+  "incremental_case_sources_20261112": [
+    {
+      "experience_id": "EXP-ECC-MATT-PI-20261110-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\long\\F015-TERMINAL-20261111.json",
+      "content_read": true,
+      "evidence_scope": "2026-11-11 23:20+08 BOTH_STOPPED_NOT_ACCEPTED; A/B build PASS but host FAIL, GUI NOT_RUN, same-session restart OBSERVED, T_VALID_E2E NOT_MEASURED."
+    },
+    {
+      "experience_id": "EXP-ECC312-R2-20261112-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\long-ecc312-r2\\PREFLIGHT-INCIDENTS.json",
+      "content_read": true,
+      "evidence_scope": "2026-11-12 R2: candidate helper contamination, old PM2 pipe binding and dual prehost exclusive-directory failures; 3570 source entries re-verified; minimal original preparation repairs; infrastructure ADMITTED not final QA."
+    },
+    {
+      "experience_id": "EXP-ECC312-R2-20261112-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\long-ecc312-r2\\runs\\B\\RECOVERY-DECISION.json",
+      "content_read": true,
+      "evidence_scope": "20:59:33+08 B RESUME_RECONCILED after SOURCE_READY/writes/surviving-process checks. This is authorization for original session continuation, not final accepted outcome."
+    },
+    {
+      "experience_id": "EXP-ECC312-R2-20261112-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\long-ecc312-r2\\COMMAND-PACKET-REVIEW.json",
+      "content_read": true,
+      "evidence_scope": "21:01:48+08 (post 21:00 fixed review cutoff) packet diagnosis: no independent dispatch review or real Windows frozen pnpm link probe, ERR_PNPM_SYMLINK_FAILED both, phase stop/retry/escalation gates absent, QA scheduling contradictory; no verified fix."
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "2026-11-12 18:07:59+08 current REQUIRES_DIAGNOSIS, prewarmCode=0, lastProbeCode=-1 unlike prior prewarm=-1; only one status read, root cause unknown, no system restart."
+    },
+    {
+      "experience_id": "PI-DAILY-20261112",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\daily-review-r71\\runs\\20261112-210927-531330\\SEMANTIC-AUDIT.json",
+      "content_read": true,
+      "evidence_scope": "Pi explicit 16 local sources and 4 candidates, live HOST changes triggered SOURCE_CHANGED_DURING_REVIEW, no final RESULT; GPT independent partial audit preserved original draft and rejected unsupported/temporal assertions."
+    },
+    {
+      "experience_id": "DAILY-DSE-20261112",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-12-DSE-INCREMENTAL.md",
+      "sha256": "169b1e6be08d1ee0a38a4a4a92e0398e5d26a49930527847d28b169ed6d52b8f",
+      "content_read": true,
+      "evidence_scope": "Original Vault 2026-11-12 incremental; memory lint 1/1 PASS, KB explicit Hot Sync 12 indexed 0 missing, Health Check PASS, daily and navigation SHA readback; original retained on C."
     }
   ]
 }
