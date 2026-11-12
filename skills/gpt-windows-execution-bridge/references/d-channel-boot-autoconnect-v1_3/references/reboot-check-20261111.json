@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-11",
+  "timezone": "Asia/Shanghai",
+  "entry": "Windows D 20261110-02",
+  "mcp_url": "https://ogle-grooving-skipper.ngrok-free.dev/mcp",
+  "url_matches_previous_acceptance": true,
+  "url_sources": ["connector/CONNECT-URL.txt", "connector-fixed/CONNECT-URL.txt"],
+  "task": {
+    "name": "GPT-DevSpace-D-AutoConnect-V13",
+    "state": "Ready",
+    "last_run": "2026-11-11T20:26:26+08:00",
+    "last_result": 0
+  },
+  "windows_last_boot": "2026-11-02T20:05:17.5471150+08:00",
+  "kernel_start_event": {
+    "id": 12,
+    "record_id": 40249,
+    "time": "2026-11-02T20:05:17.8114127+08:00"
+  },
+  "latest_power_resume_event": {
+    "id": 1,
+    "record_id": 41191,
+    "time": "2026-11-11T19:27:23.7291954+08:00"
+  },
+  "native": {
+    "first_attempt": "PASS",
+    "tool_available_in_session": true,
+    "workspace": "C:/AI/DevSpace-Benchmark-20261031",
+    "probe_path": "fixture/channel-probe.txt",
+    "probe": "D_CHANNEL_PROBE_R6_OK",
+    "hostname": "DESKTOP-4A1EGTM",
+    "exit_code": 0,
+    "hostname_wall_time_ms": 1388,
+    "manual_intervention_required": false
+  },
+  "repair_attempted": false,
+  "reboot_acceptance": "NOT_MEASURED",
+  "reason": "No new kernel boot observed for this check. The latest power event was a resume.",
+  "access_token_expiry_refresh_acceptance": "NOT_MEASURED"
+}

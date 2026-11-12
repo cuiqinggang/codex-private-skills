@@ -1,0 +1,8 @@
+# IMPLEMENTED after user clarified scope on 2026-11-10.
+# Only ngrok child receives this filtered COPY. All parent/global settings are unchanged.
+const tunnelEnv = { ...process.env };
+for (const key of Object.keys(tunnelEnv)) {
+  if (/^(http_proxy|https_proxy|all_proxy|http_proxy_env)$/i.test(key)) delete tunnelEnv[key];
+}
+// The existing official spawn call receives env: tunnelEnv.
+// Verified: fixed public OAuth metadata succeeds; parent proxy variables remain present.
