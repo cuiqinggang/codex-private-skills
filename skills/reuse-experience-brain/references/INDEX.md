@@ -106,3 +106,11 @@
 | EXP-VIDEO-CLEANUP-20261111-001 | Pi65.6GB清理候选、289项逐项判废、126615文件、VoxCPM2有效资产保留、旧MSIX阻塞、GUI/75%未过；不直接套用整目录删除 | [VIDEO-STORAGE-CLEANUP-20261111.md](VIDEO-STORAGE-CLEANUP-20261111.md) |
 
 既有EXP-ECC-MATT-PI-20261110-001同卡追加F015 20:36正式两组启动，原准入仅PASS_EXECUTION、21:05后两HOST仍RUNNING/业务PENDING；旧顶层formal_workers_started=0不得覆盖新f015_current=2。EXP-PI-ARCHIVE-R94-20261110-001同卡追加R98/99/100已验证固定归档检查与准备分工、不同审计深度及四/八并发局限，并优先补入原专业技能R94 reference；不是新跨业务就绪或完整记忆提速。EXP-DOCKER-001原卡追加11月11日19:36受控ENGINE_READY（381269ms），保留前日WSL预热失败、根因未知和下次自然登录未验。全部只保留原项目证据、旧错误与适用边界，新增稳定规则0、新独立业务配方0。Pi原生明确17份source的5候选及GPT范围审核留原C盘；未观察到新增共享EXP实际业务adopt/reject完整回执，memory_T_VALID_gain=NOT_MEASURED；BRAIN25/DSE/Freeze不因日报升版。
+
+## 2026-11-12｜原长流程终态、ECC3.12新准入反例与Docker新指纹（有源最小增量）
+
+| 经验ID | 触发与适用边界 | 正文 |
+|---|---|---|
+| EXP-ECC312-R2-20261112-001 | ECC3.12十二步骤/四阶段、R2、3570同源、预建runs目录独占失败、PM2旧守护/管道、pnpm链接预检缺、host原子WinError5、恢复写入核账；21:01:48审查属截止后、不代表修复或业务QA | [ECC312-R2-LONGFLOW-20261112.md](ECC312-R2-LONGFLOW-20261112.md) |
+
+原`EXP-ECC-MATT-PI-20261110-001`仅追加F015于11月11日23:20明确`BOTH_STOPPED_NOT_ACCEPTED`（A/B build PASS，fixed_host FAIL，GUI NOT_RUN，T_VALID_E2E NOT_MEASURED），覆盖该卡前一条11月11日21:05 RUNNING作为当前状态；与ECC3.12 R2是两个不同任务。原`EXP-DOCKER-001`仅增加11月12日18:07:59更晚`REQUIRES_DIAGNOSIS`，`prewarmCode=0,lastProbeCode=-1`，不同于旧WSL prewarm=-1，根因UNKNOWN。原C盘Vault`01_DAILY/2026-11-12-DSE-INCREMENTAL.md`未搬迁，Pi这次已写4条草稿但验证遇`SOURCE_CHANGED_DURING_REVIEW`无RESULT，GPT限域审查；原命令包21:01:48补核晚于21:00窗口，不倒填。新已验成熟业务配方0、稳定规则晋升0、实际EXP下游新复用证据未观察到，记忆完整业务T_VALID净收益NOT_MEASURED。原BRAIN25/DSE/Freeze不变。
