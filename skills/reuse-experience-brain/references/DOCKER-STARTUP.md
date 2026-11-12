@@ -54,3 +54,6 @@ Windows收费A只读原C:\AI\Docker-Autostart-20261024\status.json及startup.jso
 
 ## 2026-11-11 19:36原启动流程最新受控恢复（不是21点复盘维修）
 原C:/AI/Docker-Autostart-20261024/status.json于2026-11-11T19:36:55.8431257+08:00记录ENGINE_READY、action=FINAL、prewarmCode=0、lastProbeCode=0、recoveryAttempt=1、elapsedMilliseconds=381269（06:21:269），比11月10日15:39 WSL prewarm故障及20:29另一业务普通开启后Engine可访问更近。LAST_GOOD=前次普通启动可用；FIRST_DELTA=历史登录自动预热重复失败；本次原启动任务自身受控恢复成功，不是本次只读复盘重启或改变系统。未来真实自然开机恢复概率、根因、复盘时独立GUI探针仍UNKNOWN；此卡不授权修改WSL、Docker服务、ACL或代理，不把单次恢复当长期稳定。完整记忆净T_VALID=NOT_MEASURED。
+
+## 2026-11-12 18:07状态转为预热完成后引擎探针失败（不同故障指纹）
+实际只读原`C:/AI/Docker-Autostart-20261024/status.json`：`time=2026-11-12T18:07:59.8915252+08:00`、`status=REQUIRES_DIAGNOSIS`、`action=FINAL`、`prewarmCode=0`、`lastProbeCode=-1`、`elapsedMilliseconds=263476`、`initialProcessCount=0`。LAST_GOOD为11月11日19:36受控恢复ENGINE_READY/prewarmCode=0/lastProbeCode=0，FIRST_DELTA是11月12日晚新故障。**区别于此前prewarmCode=-1的WSL预热中断，本次预热码为0但最后Engine探针未通过；具体根因未核实**，也不能由这两个返回码直接判定进程不存在。复盘没有重启Docker、WSL、修改代理或系统设置；仅由原启动项目核对应时间`startup.jsonl`、第一次失败与原权限合同再定向处理，真实自然开机稳定性仍UNKNOWN。不是永久修复回归，也不是记忆T_VALID净提速。
