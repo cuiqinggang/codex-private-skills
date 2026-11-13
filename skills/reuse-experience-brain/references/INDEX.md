@@ -114,3 +114,13 @@
 | EXP-ECC312-R2-20261112-001 | ECC3.12十二步骤/四阶段、R2、3570同源、预建runs目录独占失败、PM2旧守护/管道、pnpm链接预检缺、host原子WinError5、恢复写入核账；21:01:48审查属截止后、不代表修复或业务QA | [ECC312-R2-LONGFLOW-20261112.md](ECC312-R2-LONGFLOW-20261112.md) |
 
 原`EXP-ECC-MATT-PI-20261110-001`仅追加F015于11月11日23:20明确`BOTH_STOPPED_NOT_ACCEPTED`（A/B build PASS，fixed_host FAIL，GUI NOT_RUN，T_VALID_E2E NOT_MEASURED），覆盖该卡前一条11月11日21:05 RUNNING作为当前状态；与ECC3.12 R2是两个不同任务。原`EXP-DOCKER-001`仅增加11月12日18:07:59更晚`REQUIRES_DIAGNOSIS`，`prewarmCode=0,lastProbeCode=-1`，不同于旧WSL prewarm=-1，根因UNKNOWN。原C盘Vault`01_DAILY/2026-11-12-DSE-INCREMENTAL.md`未搬迁，Pi这次已写4条草稿但验证遇`SOURCE_CHANGED_DURING_REVIEW`无RESULT，GPT限域审查；原命令包21:01:48补核晚于21:00窗口，不倒填。新已验成熟业务配方0、稳定规则晋升0、实际EXP下游新复用证据未观察到，记忆完整业务T_VALID净收益NOT_MEASURED。原BRAIN25/DSE/Freeze不变。
+
+## 2026-11-13｜Pi原生持久化限定回归及已知故障更新（不晋升规则）
+
+| 经验ID | 触发及证据边界 | 正文 |
+|---|---|---|
+| EXP-PI-DURABLE-ENTRY-20261113-001 | 原Open-Pi.cmd、Temporal心跳、R83、R84/R86、同会话恢复、已验产物哈希/mtime不变、无回执拒绝二次提交、合成GUI/CSV/工作簿；单工作流夹具限定通过，不证明生产Exactly-once或真实商业GUI | [PI-DURABLE-ENTRY-20261113.md](PI-DURABLE-ENTRY-20261113.md) |
+
+原 `EXP-ECC312-R2-20261112-001` 只追加11月12日21:26暂停根因审查：A/B build checkpoint与QA均false，pnpm workspace安装完成标记不能代表生产打包解析合格；HOST WinError5另一链占用者未知，原R2未签收，不重新建立卡。原 `EXP-DOCKER-001` 只追加11月13日18:49:29更近`prewarmCode=-1,lastProbeCode=-1` WSL预热失败，区别于11月12日`prewarmCode=0,lastProbeCode=-1`的更早探针失败。
+
+原R71明确14份C盘文本由Pi 21:04:02—21:05:39生成5条候选，本次GPT仅对有据范围采纳并拒绝未证WinError5同因/稳定策略提升；原稿及审核留C盘。GPT单请求路由准入为`openrouter/openai/gpt-5-mini` 7/8 PASS，`dbos-fresh` FAIL_PI_START请求0，不能冒充用户指定当前GPT或跨任务能力。11月13日合成Matt预约限定GUI+CSV+表格通过，但仍无新增**真实商业业务成熟节点配方**。共享EXP卡下游新adopt/reject无源回执，完整业务记忆`T_VALID=NOT_MEASURED`；BRAIN25、DSE、Freeze不升级，原本地日报/项目数据不移动。
