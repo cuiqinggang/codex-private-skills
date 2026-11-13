@@ -1,5 +1,12 @@
 # 共同经验大脑｜V1｜2026-10-27（2026-10-28证据增量）
 
+## 2026-11-13 21点经验增量｜Pi原生接续验收与ECC312故障归因分流
+
+11月12日21:26原ECC312 R2正式暂停，A/B未建立build checkpoint或独立QA；pnpm完成标记不代表生产build能解析workspace依赖，另有HOST WinError5未知占用者，禁止同因归咎或误报十二步/四阶段胜负。11月13日原Open-Pi.cmd限定合成Temporal故障/原生R84-R86回执：正常1次、故障2次历史attempt，后者复用已验证产物且SHA/mtime未重复改变；“写入无回执”负例FAILED并阻断二次执行。既有合成预约GUI→CSV→工作簿与Conductor限定成功，不能代替真实商业账户或生产Exactly-once；七条gpt-5-mini单请求准入成功、一条DBOS exit127且0请求，不能冒充用户指定当前GPT。Docker 11月13日18:49最新原状态再次REQUIRES_DIAGNOSIS/WSL prewarmCode=-1，11月12日prewarm=0但probe=-1为较早不同指纹。
+
+本次Pi公开复盘21:04:02—21:05:39显式14份来源、5条有证据草稿；GPT随后独立限域审核，拒绝无源因果/普遍成功断言，稳定规则晋升0、新真实商业成熟配方0。C盘Vault日报与Knowledge Brain经验触发导航分别实写，定向Hot Sync 13项0缺失、Health Check PASS；原Memory Lint可执行入口待确认，不将其他验证冒称Memory Lint。共同卡只最小有源增量，原项目/Freeze不改变。未观察到新共享EXP业务采用/拒绝，下游业务memory_T_VALID_gain=NOT_MEASURED。详见[经验索引](skills/reuse-experience-brain/references/INDEX.md)和[继承来源](skills/reuse-experience-brain/references/INHERITANCE.json)。
+
+
 ## 2026-11-10 21点经验最小增量：固定归档R94与未完成的ECC/Matt、蓝裙8秒
 
 原增强OMP18.18固定归档R94，1/2/4/8持续worker各两轮、8批×128项×48文件均有产物与独立QA，1024/1024有效。原入口至QA读回四路两轮均值29.697秒，本批短于八路32.667秒；但源码当前与旧Freeze不一致且无逐行diff，冷热/资源漂移和完整用户交付T_VALID未认证，不能证明物理极限、模型并发或普遍最优。已优先在原专业包run-batch-automation补限定“成熟节点搭配”参考，不新建技能或算法，原GUI继续NOT_VALIDATED。
