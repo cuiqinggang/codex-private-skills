@@ -208,9 +208,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-13-DSE-INCREMENTAL.md",
+      "sha256": "fdd87782ebe11c14eb7277c9dddbfc1baf922c561cff70e13428d434feb70d6",
+      "bytes": 8099,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "23 daily source files hashed and registered (Nov4 original missing); 18 original daily contents read through Nov10, 44 selected experience cards; historical evidence not fully distilled or migrated; no new shared EXP business adoption result observed; business memory net T_VALID NOT_MEASURED.",
+  "limits": "26 daily source files hashed and registered (Nov4 original missing); 21 original daily contents read through Nov13; 47 selected experience cards including one scoped new card today; historical evidence not fully distilled/migrated. No new shared EXP downstream business adoption; memory T_VALID NOT_MEASURED.",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -359,7 +367,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-12",
+  "latest_incremental_date": "2026-11-13",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -488,7 +496,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "2026-11-12 fixed-window scoped ECC312 R2 and F015 terminal, Docker new probe fingerprint; latest packet audit 21:01:48 is post-window follow-up; Pi worker source-changed and no RESULT; candidate only.",
+  "latest_incremental_scope": "2026-11-13 fixed 21:00 window scoped ECC312 R2 Nov12 21:26 root cause/pause, Pi official public entry synthetic durability normal/fault/no receipt and booking GUI, Nov13 Docker 18:49 WSL prewarm failure. Current GPT limited Pi review 5 lessons. New stable rules0, business recipes0, no new shared EXP downstream adoption, full memory T_VALID NOT_MEASURED. Local Memory Lint pending tool verification.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -802,6 +810,57 @@
       "sha256": "169b1e6be08d1ee0a38a4a4a92e0398e5d26a49930527847d28b169ed6d52b8f",
       "content_read": true,
       "evidence_scope": "Original Vault 2026-11-12 incremental; memory lint 1/1 PASS, KB explicit Hot Sync 12 indexed 0 missing, Health Check PASS, daily and navigation SHA readback; original retained on C."
+    }
+  ],
+  "incremental_case_sources_20261113": [
+    {
+      "experience_id": "EXP-ECC312-R2-20261112-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\long-ecc312-r2\\REVIEW-HOLD.json",
+      "content_read": true,
+      "evidence_scope": "Nov12 21:26 PAUSED_FOR_ROOT_CAUSE_REVIEW, A/B no build checkpoint or independent QA, no valid E2E time."
+    },
+    {
+      "experience_id": "EXP-ECC312-R2-20261112-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\long-ecc312-r2\\ROOT-CAUSE-REVIEW.md",
+      "content_read": true,
+      "evidence_scope": "Nov12 21:26 root review: pnpm install flag != production workspace dependency resolution, B production build exit1 331.364s; distinct HOST WinError5, unknown file holder. No direct fix or GUI."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\pi-comprehensive-20261113\\pi-durable-entry-r84-r86-fault\\ENTRY-ACCEPTANCE.json",
+      "content_read": true,
+      "evidence_scope": "Nov13 20:40 original Pi public entry controlled fault result reused with same fixture SHA+mtime; native attempt1; recovery 12.339s; synthetic scope."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\pi-comprehensive-20261113\\pi-durable-entry-r84-r86-no-receipt\\ENTRY-ACCEPTANCE.json",
+      "content_read": true,
+      "evidence_scope": "Negative no-receipt after write FAILED, second_execution_blocked=true; avoid duplicate side effect, not a business PASS."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\pi-comprehensive-20261113\\matt-booking\\RESULT.json",
+      "content_read": true,
+      "evidence_scope": "Nov13 20:49 existing synthetic booking GUI->CSV->Excel scoped checks PASS, 213.670s; no arbitrary production authenticated app."
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Nov13 18:49 current REQUIRES_DIAGNOSIS prewarmCode=-1 lastProbeCode=-1; Nov12 probe-only failure is older distinct fingerprint; no WSL modification."
+    },
+    {
+      "experience_id": "DAILY-PI-20261113",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\daily-review-r71\\runs\\20261113-210402-083610\\SEMANTIC-AUDIT.json",
+      "content_read": true,
+      "evidence_scope": "14 explicit original receipt sources; Pi native public review 21:04:02-21:05:39 DRAFT only, GPT independently scope-corrected 5 cited candidates; no promotion."
+    },
+    {
+      "experience_id": "DAILY-DSE-20261113",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-13-DSE-INCREMENTAL.md",
+      "sha256": "fdd87782ebe11c14eb7277c9dddbfc1baf922c561cff70e13428d434feb70d6",
+      "content_read": true,
+      "evidence_scope": "Original C Vault 11/13 incremental, 8099 bytes, KB semantic navigation updated, Hot Sync 13 records 0 missing and Health Check PASS; original Memory Lint tool not yet verified, do not claim its PASS."
     }
   ]
 }
