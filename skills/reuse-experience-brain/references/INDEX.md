@@ -124,3 +124,12 @@
 原 `EXP-ECC312-R2-20261112-001` 只追加11月12日21:26暂停根因审查：A/B build checkpoint与QA均false，pnpm workspace安装完成标记不能代表生产打包解析合格；HOST WinError5另一链占用者未知，原R2未签收，不重新建立卡。原 `EXP-DOCKER-001` 只追加11月13日18:49:29更近`prewarmCode=-1,lastProbeCode=-1` WSL预热失败，区别于11月12日`prewarmCode=0,lastProbeCode=-1`的更早探针失败。
 
 原R71明确14份C盘文本由Pi 21:04:02—21:05:39生成5条候选，本次GPT仅对有据范围采纳并拒绝未证WinError5同因/稳定策略提升；原稿及审核留C盘。GPT单请求路由准入为`openrouter/openai/gpt-5-mini` 7/8 PASS，`dbos-fresh` FAIL_PI_START请求0，不能冒充用户指定当前GPT或跨任务能力。11月13日合成Matt预约限定GUI+CSV+表格通过，但仍无新增**真实商业业务成熟节点配方**。共享EXP卡下游新adopt/reject无源回执，完整业务记忆`T_VALID=NOT_MEASURED`；BRAIN25、DSE、Freeze不升级，原本地日报/项目数据不移动。
+
+## 2026-11-14｜终态后GUI局部PASS、R134旧RUNNING快照、GPT读回与Docker恢复（旧卡增量）
+| 经验ID | 新触发与限定证据 | 权威经验卡 |
+|---|---|---|
+| EXP-PI-DURABLE-ENTRY-20261113-001 | R114/R132独立原生Temporal `FAILED`，但后续GUI G12局部PASS；两者非同一Run、全业务签收缺失；R134正式派发但旧`RUNNING`早于安装后`taskkill exit128`，新原生终态UNKNOWN须原任务核账，不重发 | [PI-DURABLE-ENTRY-20261113.md](PI-DURABLE-ENTRY-20261113.md) |
+| EXP-AGENT-PATH-20261109-001 | Pi V18合成GPT求援同会话3组限定PASS，lost-read发生stale Ref、strict-mode多元素和snapshot工具错；纠错不等于一般生产安全或把后台接口写入算GUI通过 | [AGENT-USER-PATH-20261109.md](AGENT-USER-PATH-20261109.md) |
+| EXP-DOCKER-001 | 11月14日16:40预热再次失败，18:48:57既有启动原回执`ENGINE_READY`、`prewarmCode=0`、`lastProbeCode=0`，耗时78.358秒；此前11/13失败仍为历史且长期下次登录UNKNOWN | [DOCKER-STARTUP.md](DOCKER-STARTUP.md) |
+
+本次Pi原公开入口16份显式源、5条候选，原草稿中文乱码仍保留，GPT独立语义纠界仅更新已有经验卡；不创建新成熟商业配方、新稳定规则或伪造共享EXP实际采用。原C盘日报不上传，源SHA与限度见[INHERITANCE.json](INHERITANCE.json)。记忆完整业务T_VALID收益=NOT_MEASURED，Hot Sync/共享索引不代表下次任务自动召回。
