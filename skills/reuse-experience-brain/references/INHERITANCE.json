@@ -216,9 +216,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-14-DSE-INCREMENTAL.md",
+      "sha256": "ce89c3fe75123c0e6173f834895067f9cbc290f62b1c99d257614d5598fc4a94",
+      "bytes": 9083,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "26 daily source files hashed and registered (Nov4 original missing); 21 original daily contents read through Nov13; 47 selected experience cards including one scoped new card today; historical evidence not fully distilled/migrated. No new shared EXP downstream business adoption; memory T_VALID NOT_MEASURED.",
+  "limits": "27 daily source files hashed and registered (Nov4 original absent); 22 original daily contents read through Nov14; 47 selected experience cards (Nov14 updated 3 existing cards only, 0 new); historical evidence not fully distilled or migrated. No new shared EXP downstream business adoption; memory T_VALID NOT_MEASURED.",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -367,7 +375,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-13",
+  "latest_incremental_date": "2026-11-14",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -496,7 +504,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "2026-11-13 fixed 21:00 window scoped ECC312 R2 Nov12 21:26 root cause/pause, Pi official public entry synthetic durability normal/fault/no receipt and booking GUI, Nov13 Docker 18:49 WSL prewarm failure. Current GPT limited Pi review 5 lessons. New stable rules0, business recipes0, no new shared EXP downstream adoption, full memory T_VALID NOT_MEASURED. Local Memory Lint pending tool verification.",
+  "latest_incremental_scope": "Nov14 fixed 21:00 boundary: synthetic Louez R114/R132 native FAILED versus post-terminal visible GUI partial PASS (no original full QA), R134 officially dispatched but old RUNNING snapshot predates install post-cleanup taskkill exit128; current native terminal UNKNOWN pending original Run reconciliation. GPT V18 3/3 bounded help browser readback; Docker latest 18:48:57 ENGINE_READY after 16:40 prewarm failure. Pi original 16-source 5 candidates from 21:11–21:12, independent GPT scoping audit notes draft Chinese encoding corruption. New stable rules0, new verified commercial recipe0, no observed new shared EXP downstream adopt/reject. No matched memory T_VALID gain. Original C Vault daily Memory Lint PASS and Hot Sync/Health Check PASS, local source remains C.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -861,6 +869,52 @@
       "sha256": "fdd87782ebe11c14eb7277c9dddbfc1baf922c561cff70e13428d434feb70d6",
       "content_read": true,
       "evidence_scope": "Original C Vault 11/13 incremental, 8099 bytes, KB semantic navigation updated, Hot Sync 13 records 0 missing and Health Check PASS; original Memory Lint tool not yet verified, do not claim its PASS."
+    }
+  ],
+  "incremental_case_sources_20261114": [
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\pi-comprehensive-20261113\\r114-temporal-louez\\G12-INDEPENDENT-READBACK.json",
+      "content_read": true,
+      "evidence_scope": "Original native Temporal FAILED; later G12 GUI scoped PASS and original full_qa NOT_SIGNED. No original Run success."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\pi-comprehensive-20261113\\r132-temporal-louez\\GUI-EVIDENCE.json",
+      "content_read": true,
+      "evidence_scope": "Nov14 19:48-19:59 original visible synthetic GUI G00-G12 local PASS after native Run FAILED at launch; independent main ledger unchanged but original receipt and final QA absent."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\pi-comprehensive-20261113\\r134-temporal-louez\\activity-install.log",
+      "content_read": true,
+      "evidence_scope": "Install receipt PASS but process cleanup taskkill PID10296 exit128 at 20:26; older 20:21 RUNNING status is stale; native final state UNKNOWN, no repeat dispatch."
+    },
+    {
+      "experience_id": "EXP-AGENT-PATH-20261109-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\ecc-matt-pi-20261110\\pi-comprehensive-20261113\\v18-help-matrix-60a0ace0\\lost-read\\INDEPENDENT-RESULT.json",
+      "content_read": true,
+      "evidence_scope": "Original bounded ChatGPT help lost-read same-session independent PASS after locator and stale-Ref errors, no general production reliability claim."
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Nov14 16:40 prewarm failure then 18:48:57 original READY with 78358ms elapsed, not next cold-login certification. Docker GPT independently read outside Pi source allowlist."
+    },
+    {
+      "experience_id": "DAILY-PI-20261114",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\daily-review-r71\\runs\\20261114-211106-760704\\SEMANTIC-AUDIT.json",
+      "sha256": "35ea273fc56eccb01970412598f447ca679e85cd89baca2d6478217fab913876",
+      "content_read": true,
+      "evidence_scope": "Pi original 16 explicit receipts and 5 cited candidate cases; GPT corrected scope and rejected generalized overlay workaround; Pi narrative encoding corrupted, original untouched, no stable promotion."
+    },
+    {
+      "experience_id": "DAILY-DSE-20261114",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-14-DSE-INCREMENTAL.md",
+      "sha256": "ce89c3fe75123c0e6173f834895067f9cbc290f62b1c99d257614d5598fc4a94",
+      "content_read": true,
+      "evidence_scope": "C Vault 2026-11-14 daily incremental 9083 bytes; Memory Lint 2/2 incl Pi note; explicit hot sync 13 indexed 0 missing; KB Health Check PASS; original remains on C."
     }
   ]
 }
