@@ -27,3 +27,7 @@ GPT／Codex／Pi须交付用户在GUI按钮、文件目标应用或CLI公开入�
 11月14日原`pi-v18-help-771d5662/INDEPENDENT-RESULT.json`在一次受控合成任务中独立确认ChatGPT可见页面发题、答案读回和写入，并记录一次账本SHA；该单次哈希不能单独证明账本前后未变，耗时168938ms。原`v18-help-matrix-60a0ace0/{normal,bad-args,lost-read}/INDEPENDENT-RESULT.json`三组各自有限定PASS：92.222、113.188、138.594秒。bad-args在缺`target`后恢复；lost-read期间旧Ref失效、`locator('main') resolved to 2 elements`及snapshot参数不匹配，原会话后续仍完成验证。**浏览器定位错误不自动证明GPT没回答或业务被重复发送；只读核原会话与唯一标记后判断能否接续。**
 
 严格区别：这是同一合成夹具内的求援/读回答复，不是任意模型或任意生产网页的长时成功率。R114/R132可见GUI局部成功仍不能覆盖原Temporal FAILED、缺失整体独立签收。不同于旧11月9日保存按钮故障绕过POST造成假PASS的反例：本次不能因此推荐后台直接写入冒充用户GUI。Pi当晚草稿中文正文存在编码乱码，经GPT按原英文原回执逐项限域审查，拒绝一般化修改遮罩层。无新稳定规则/业务成熟配方，未见共享经验真正下游adopt/reject，memory T_VALID NOT_MEASURED。原结果路径位于`C:/Users/A/Documents/DSH-Workspace/ecc-matt-pi-20261110/pi-comprehensive-20261113/`，完整本机原回执仍留原位。
+
+
+## 2026-11-15增量｜订单详情内容与任务身份绑定的受控负例
+原 `r144-qa-detail-binding/RESULT.json` 于11月15日19:54在原GUI证据SHA固定前提下，**1个正例通过、7个有意错配负例全部拒绝**：`valid_format_wrong_main`、`swapped_order_ids`、`foreign_detail_origin`、`wrong_task`、`missing_step`、`wrong_instance`、`display_number_as_id`。故详情验收必须匹配内部订单ID、页面来源、任务/实例和具体步骤，正确格式或展示编号不可代替实际实体绑定。仅已测7种错配、合成Louez和该SHA；**不是**真实客户GUI全部语义校验、未测并发/其他误认或端到端原Run成功。原始证据：`C:/Users/A/Documents/DSH-Workspace/ecc-matt-pi-20261110/pi-comprehensive-20261113/r144-qa-detail-binding/RESULT.json`；原Vault `01_DAILY/2026-11-15-DSE-INCREMENTAL.md`。仅旧卡增量、不晋升稳定规则。
