@@ -66,3 +66,8 @@ Windows收费A只读原C:\AI\Docker-Autostart-20261024\status.json及startup.jso
 本轮Windows D仅只读`C:/AI/Docker-Autostart-20261024/startup.jsonl`末段与`status.json`，11月14日16:40:37有`REQUIRES_DIAGNOSIS`、`prewarmCode=-1`、`Docker WSL prewarm failed`；18:47:48进入原启动流程WAITING_FOR_ENGINE（`prewarmCode=0,lastProbeCode=1`）；更晚18:48:57.781原`status.json`最终`ENGINE_READY`、`prewarmCode=0,lastProbeCode=0`、耗时78358ms。LAST_GOOD=原既有可启动基线；FIRST_DELTA=16:40再次预热故障；同日原启动流程后续的就绪回执属于**该原任务本身**，每日复盘没有修复/重启/修改Windows系统、WSL、Docker或代理。
 
 此前11月13日18:49故障作为历史事实保留；14日最新源状态为READY，不可沿用昨日FAIL为当前文件状态；但21:00独立实时引擎健康、下次自然登录自动恢复可靠性及反复预热故障根因仍未认证。只能按新旧事件时间判断，不能把一次READY称永久修复或记忆改善了完整业务T_VALID。新业务配方与稳定规则均0。
+
+
+## 2026-11-15时间边界｜15:56故障后截止外21:07 READY
+原 `C:/AI/Docker-Autostart-20261024/startup.jsonl` 11月15日**15:56:14**为 `REQUIRES_DIAGNOSIS/EXCEPTION`，`prewarmCode=-1`、`lastProbeCode=-1`、`Docker WSL prewarm failed`。这是**21:00固定复盘窗口内最后一条**原状态，不能再沿用11月14日18:48的历史READY。
+**截止后补充**：21:02:27 WAITING_FOR_ENGINE，21:05:36探针失败/REQUIRES_DIAGNOSIS；21:06:53和21:07:49原启动任务报告 `ALREADY_READY_NO_RESTART/ENGINE_READY`，后者 `lastProbeCode=0`、`elapsedMilliseconds=1247`，`status.json`末态READY。它只说明更晚时点原脚本可探测引擎，不可倒填21:00状态，也不说明登录冷启动、容器服务、WSL根因已根治或下一次启动可靠性。每日复盘仅只读，无Windows/WSL/Docker/网络配置写入、不重启服务。完整T_VALID与记忆净收益未测，旧反例保留。
