@@ -133,3 +133,10 @@
 | EXP-DOCKER-001 | 11月14日16:40预热再次失败，18:48:57既有启动原回执`ENGINE_READY`、`prewarmCode=0`、`lastProbeCode=0`，耗时78.358秒；此前11/13失败仍为历史且长期下次登录UNKNOWN | [DOCKER-STARTUP.md](DOCKER-STARTUP.md) |
 
 本次Pi原公开入口16份显式源、5条候选，原草稿中文乱码仍保留，GPT独立语义纠界仅更新已有经验卡；不创建新成熟商业配方、新稳定规则或伪造共享EXP实际采用。原C盘日报不上传，源SHA与限度见[INHERITANCE.json](INHERITANCE.json)。记忆完整业务T_VALID收益=NOT_MEASURED，Hot Sync/共享索引不代表下次任务自动召回。
+
+
+## 2026-11-15｜同三张旧卡最小增量（原项目/原Run仍为权威）
+- `EXP-PI-DURABLE-ENTRY-20261113-001`：R144原生FAILED与另一个linked-final COMPLETED分离；原GUI/账本/隔离恢复事后核验PASS但无业务重放；R154/R156同Run幂等受控PASS，R157首次worker-restart FAILED、另Run恢复场景PASS，均非生产Exactly-once或原Run完整签收。见 [PI-DURABLE-ENTRY-20261113.md](PI-DURABLE-ENTRY-20261113.md)。
+- `EXP-AGENT-PATH-20261109-001`：R144订单详情1正7反绑定检查限域PASS，内部订单ID/来源/实例/任务错配不能只靠格式蒙混；见 [AGENT-USER-PATH-20261109.md](AGENT-USER-PATH-20261109.md)。
+- `EXP-DOCKER-001`：11月15日15:56（本复盘截止前）预热失败；21:07（截止后）原脚本READY，区分时间及未来启动未知；见 [DOCKER-STARTUP.md](DOCKER-STARTUP.md)。
+本日原Vault日报和Pi限源草稿/独立审核不迁移到共享卡；新业务成熟配方0、稳定规则晋升0、实际新EXP下游adopt/reject无证据、记忆净T_VALID=NOT_MEASURED。原项目合同/Freeze及BRAIN第25版不变。
