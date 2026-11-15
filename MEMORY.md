@@ -1,5 +1,12 @@
 # 共同经验大脑｜V1｜2026-10-27（2026-10-28证据增量）
 
+## 2026-11-15 21点经验增量｜失败终态与不同Run证据复核分离
+
+原R144 Louez Temporal Run `FAILED`，但其原GUI/账本、5笔主单付款、相邻单无付款及隔离数据库恢复证据在事后只读关联核账中限定PASS；`r144-linked-final`是**独立**Run `COMPLETED` 且业务未重放，不能将它用作原Run成功或E2E完成。11月15日同Run ID重复派发R154/R156各仅一次业务写入且变更载荷被拒；R157 Worker重启首次原生FAILED，随后**另一个Run**复验PASS，不证明失败根因已修复。R144订单详情有1正7反内部ID/任务/来源绑定限定通过。Docker 15:56预热失败为固定21:00窗口内最新状态；21:07已有启动任务报告READY是截止后信息，不代表下次自动启动可靠。
+
+复盘21:13:14—21:14:39通过原Pi公开入口从16份明确回执产生4条引文草稿；GPT独立纠正不同Run与核账范围，原稿保留；本机Vault当日日报、原KB索引、Memory Lint 2/2、显式Hot Sync 13项0缺失及Health Check已核验。只给3张既有共享经验卡补新证据（[经验索引](skills/reuse-experience-brain/references/INDEX.md)），原日报留在C盘并在[继承清单](skills/reuse-experience-brain/references/INHERITANCE.json)登记SHA。稳定规则晋升0、新真实商业配方0、共享EXP新业务采用回执未见、完整记忆净T_VALID=NOT_MEASURED。原BRAIN25/DSE/Freeze不变。
+
+
 ## 2026-11-13 21点经验增量｜Pi原生接续验收与ECC312故障归因分流
 
 11月12日21:26原ECC312 R2正式暂停，A/B未建立build checkpoint或独立QA；pnpm完成标记不代表生产build能解析workspace依赖，另有HOST WinError5未知占用者，禁止同因归咎或误报十二步/四阶段胜负。11月13日原Open-Pi.cmd限定合成Temporal故障/原生R84-R86回执：正常1次、故障2次历史attempt，后者复用已验证产物且SHA/mtime未重复改变；“写入无回执”负例FAILED并阻断二次执行。既有合成预约GUI→CSV→工作簿与Conductor限定成功，不能代替真实商业账户或生产Exactly-once；七条gpt-5-mini单请求准入成功、一条DBOS exit127且0请求，不能冒充用户指定当前GPT。Docker 11月13日18:49最新原状态再次REQUIRES_DIAGNOSIS/WSL prewarmCode=-1，11月12日prewarm=0但probe=-1为较早不同指纹。
