@@ -31,3 +31,7 @@ GPT／Codex／Pi须交付用户在GUI按钮、文件目标应用或CLI公开入�
 
 ## 2026-11-15增量｜订单详情内容与任务身份绑定的受控负例
 原 `r144-qa-detail-binding/RESULT.json` 于11月15日19:54在原GUI证据SHA固定前提下，**1个正例通过、7个有意错配负例全部拒绝**：`valid_format_wrong_main`、`swapped_order_ids`、`foreign_detail_origin`、`wrong_task`、`missing_step`、`wrong_instance`、`display_number_as_id`。故详情验收必须匹配内部订单ID、页面来源、任务/实例和具体步骤，正确格式或展示编号不可代替实际实体绑定。仅已测7种错配、合成Louez和该SHA；**不是**真实客户GUI全部语义校验、未测并发/其他误认或端到端原Run成功。原始证据：`C:/Users/A/Documents/DSH-Workspace/ecc-matt-pi-20261110/pi-comprehensive-20261113/r144-qa-detail-binding/RESULT.json`；原Vault `01_DAILY/2026-11-15-DSE-INCREMENTAL.md`。仅旧卡增量、不晋升稳定规则。
+
+
+## 2026-11-17增量｜R01真实GUI底座缺项须在受理前查明
+原 `C:/Users/A/Documents/DSH-Workspace/pi-dual-brain-v231-reality-r01/R01-ACCEPTED.json`记20:43:30受理，`CHECKPOINT.json`记20:48:05进入`HOLD/NOT_VALID`，受理到HOLD耗274490ms。已有四个成熟配方节点和故障控制，浏览器只读连接可用，但新隔离Louez业务GUI实例没有启动；盲轮、四槽并发、故障演练及独立GUI验收全部未执行。教训只限需真实可见GUI的任务：受理前先核独立实例的依赖、归属和合法可用性；不可复用别的暂停Run、用后台API冒充GUI、或为了验收越权改Docker/系统。21:00之后的实例尝试属于后续状态，不倒填本窗口。此条是有限未准入反例，不是“成熟双脑路线失败”或新商业配方。另原R170-S G10合成账目400拒绝+五笔支付刷新回读，只属于原GUI证据层局部结果；原Temporal仍FAILED，不重复创建新稳定规则。
