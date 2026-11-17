@@ -147,3 +147,5 @@
 - [EXP-AGENT-PATH-20261109-001](AGENT-USER-PATH-20261109.md)：双脑V2.31 R01 20:43受理、20:48因新隔离Louez GUI实例不可启动而HOLD，274490ms，未运行盲轮/四槽/故障演练；后台API不是GUI验收。
 - [EXP-DOCKER-001](DOCKER-STARTUP.md)：11月16日20:11原启动曾ENGINE_READY，11月17日17:36更晚原回执又是WSL prewarm=-1失败，根因及自然开机可靠性未知。
 本次Pi明确列14份、实际纳入12份，另外两份R169原文件因滚动mtime门被排除但GPT按固定21:00窗口独立核读。原C盘日报、Pi原稿/独立审核及证据保留本地，不额外创建经验卡或调度器；稳定规则晋升0、新可认证商业业务成熟配方0；尚无新共享EXP下游业务adopt/reject完整证据，记忆净T_VALID=NOT_MEASURED。
+
+2026-11-17 21:29**截止后补核**：`EXP-AGENT-PATH-20261109-001`的R01 20:48“无隔离GUI实例”只是旧尝试HOLD原因；同TASK_ID 21:15新尝试已拥有隔离GUI fixture、双脑盲轮规划有效，但同哈希终审GPT因1a-res日期漂移HOLD、Gemini无有效裁决；21:29仍HOLD/NOT_VALID，四业务节点与故障演练NOT_RUN。新原证据见`pi-dual-brain-v231-reality-r01/CHECKPOINT.json`及`r01-run/R01-HOLD.json`；不得倒填21:00窗口或把新fixture READY认作业务PASS。详情更新原旧卡，不新增卡、稳定规则或成熟商业配方。
