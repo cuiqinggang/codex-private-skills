@@ -1,5 +1,12 @@
 # 共同经验大脑｜V1｜2026-10-27（2026-10-28证据增量）
 
+## 2026-11-17 21点经验增量｜R170三路证据分层与R01隔离GUI前置门
+
+原R170合成业务三路：r170-s可见GUI G00—G12及五笔主单付款限定回读，但**同一原Temporal Run于02:40 native FAILED**，不能以局部GUI成功替代完整原生签收；r170-t 03:07暂停时G04已签，G05取件已提交且订单刷新后为进行中但无G05签收，禁止盲重放、须先核原单与账本；r170-c在02:06原worker死亡但原GUI子进程彼时仍在，原同native task替换租约未证明已经完成。R169同Run原生心跳重试受控COMPLETED、进程树取消PASS仅为相邻独立原回执，不能给R170补PASS。双脑R01 20:43正式受理、20:48在无独立可启动Louez GUI实例的情况下HOLD/NOT_VALID，274490ms，四槽/盲轮/恢复/业务验收均未执行。Docker较新11月17日17:36又为预热失败，覆盖16日20:11旧READY，根因未知。
+
+原21点任务使用已有Windows D，Pi正式执行21:12:05—21:14:33：显式14源、Pi实际纳入12源（两份R169因滚动mtime被排除），五条有引文候选经GPT独立纠界并去重；原Vault日报、Knowledge Brain索引、原Memory Lint和定向Hot Sync/Health Check分别验收。仅给旧[经验索引](skills/reuse-experience-brain/references/INDEX.md)相关卡增量，不动BRAIN25/DSE/Freeze、不创建新业务配方或稳定规则、不凭空写usage。无共享EXP实际下游新采用证据；同合同完整记忆净T_VALID=NOT_MEASURED。原正文与Pi审核留C盘，哈希见[继承登记](skills/reuse-experience-brain/references/INHERITANCE.json)。
+
+
 ## 2026-11-15 21点经验增量｜失败终态与不同Run证据复核分离
 
 原R144 Louez Temporal Run `FAILED`，但其原GUI/账本、5笔主单付款、相邻单无付款及隔离数据库恢复证据在事后只读关联核账中限定PASS；`r144-linked-final`是**独立**Run `COMPLETED` 且业务未重放，不能将它用作原Run成功或E2E完成。11月15日同Run ID重复派发R154/R156各仅一次业务写入且变更载荷被拒；R157 Worker重启首次原生FAILED，随后**另一个Run**复验PASS，不证明失败根因已修复。R144订单详情有1正7反内部ID/任务/来源绑定限定通过。Docker 15:56预热失败为固定21:00窗口内最新状态；21:07已有启动任务报告READY是截止后信息，不代表下次自动启动可靠。
