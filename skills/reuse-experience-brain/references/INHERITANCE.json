@@ -520,7 +520,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "Fixed 2026-11-16 21:00 to Nov17 21:00 Asia/Shanghai: R170-S GUI G12 local evidence PASS versus original Temporal native FAILED, R170-T PAUSED_IN_MEMORY at G04 with G05 pickup visible but unsigned, R170-C worker absent while GUI child present only at 02:06 historical readback; R169 controlled heartbeat/cancel separate from R170; Pi R71 14 explicit, 12 accepted due mtime filter, five candidates independently scope reviewed; R01 20:48 initial HOLD for no isolated GUI fixture; Docker Nov17 17:36 later prewarm fail. Post-window 21:29 R01 new attempt fixture READY and blind plans valid but same-hash terminal review HOLD/no verdict; 0 four-node business writes and no Freeze. Local 11/17 DSE amended and index nav updated; Memory Lint initial 2/2 PASS before appendix, appendix needs full original lint rerun; Hot Sync 12/0 and KB Health PASS. No new mature business recipe or stable rule; no observed shared EXP adopt/reject; full business memory T_VALID NOT_MEASURED. Nov16 source daily absent; keep previous evidence and do not backfill.",
+  "latest_incremental_scope": "Fixed 2026-11-16 21:00 to Nov17 21:00 Asia/Shanghai: R170-S GUI G12 local evidence PASS versus original Temporal native FAILED, R170-T PAUSED_IN_MEMORY at G04 with G05 pickup visible but unsigned, R170-C worker absent while GUI child present only at 02:06 historical readback; R169 controlled heartbeat/cancel separate from R170; Pi R71 14 explicit, 12 accepted due mtime filter, five candidates independently scope reviewed; R01 20:48 initial HOLD for no isolated GUI fixture; Docker Nov17 17:36 later prewarm fail. Post-window 21:29 R01 new attempt fixture READY and blind plans valid but same-hash terminal review HOLD/no verdict; 0 four-node business writes and no Freeze. Local 11/17 DSE amended and index nav updated; Memory Lint initial 2/2 PASS; appended DSE note rerun 21:41:18 via original memory-lint.ps1 PASS 1/1; Hot Sync 12/0 and KB Health PASS. No new mature business recipe or stable rule; no observed shared EXP adopt/reject; full business memory T_VALID NOT_MEASURED. Nov16 source daily absent; keep previous evidence and do not backfill.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -1031,7 +1031,7 @@
       "experience_id": "DAILY-DSE-20261117",
       "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-17-DSE-INCREMENTAL.md",
       "content_read": true,
-      "evidence_scope": "C Vault original review plus post21 R01 current-state appendix; 8889 bytes; explicit index Hot Sync 12/0, KB Health PASS; no complete memory gain.",
+      "evidence_scope": "C Vault original fixed-window review and clearly labelled post21 R01 state appendix; 8889 bytes, sha256 1e741f...; original Memory Lint post-append 1/1 PASS at 21:41:18; explicit index Hot Sync 12/0, KB Health PASS; no memory T_VALID gain.",
       "sha256": "1e741f1aba830d481cf15633eb501f10b0f81b64a84e13132bb2f3d7b4b8557b"
     }
   ]
