@@ -103,3 +103,7 @@ GPT任何正式任务一律禁止从零探索、自己另造解决方案或凭�
 - R114/R132两个独立合成Temporal原生Run都`FAILED`，各自后续GUI局部验收可有独立PASS但原Run终态不能改写；R132终态后完成G00–G12局部业务并保留原5笔账，然而原Run最终`receipt`和整体验收未签。R134独立正式派发，20:21 RUNNING快照早于20:26安装后`taskkill exit128`，正式原生终态仍须只读对账，禁止复盘重派。
 - V18 ChatGPT页面合成求援三个受控场景独立PASS，bad args、stale Ref、strict locator是可恢复的页面工具错误（不代表任意生产GUI）；Docker在16:40 WSL预热失败后，18:48:57既有启动任务原回执最新`ENGINE_READY`、78.358秒（不证明下次自然登录）。
 - 共享经验只增量更新已有`PI-DURABLE-ENTRY-20261113.md`、`AGENT-USER-PATH-20261109.md`、`DOCKER-STARTUP.md`和[经验索引](skills/reuse-experience-brain/references/INDEX.md)；共享继承登记27份原日报，已读22份原文、47张选编卡无新增。GitHub发布和回读独立验收；不修改执行大脑第25版、原Freeze或DSE。新稳定规则0、已验商业业务成熟节点配方0；没有观察到新的共享EXP下游实际采用，完整记忆净`T_VALID=NOT_MEASURED`。
+
+
+### 2026-11-17 21:29 截止后项目新状态（不倒填21:00）
+原R01 20:48因为缺可启动隔离GUI进入HOLD，但同TASK_ID的21:15新尝试已核到`localhost:65423` GUI fixture，21:26双脑盲轮规划有效。21:29同SHA终审，GPT对1a-res改动冻结日期提出HOLD，另一脑无可用裁决；因此当前`HOLD/NOT_VALID`，四业务节点写入0、Freeze与故障演练未执行。旧20:48阻塞仅是旧尝试事实。按原CHECKPOINT/`r01-run/R01-HOLD.json`续接，需原任务按固定日期冲突即HOLD修正候选并走原签收，复盘不重放业务。此后续资料只校正当前导航；原固定窗口（11/16 21:00—11/17 21:00）事实和Pi12源计数不变。详见[经验卡](skills/reuse-experience-brain/references/AGENT-USER-PATH-20261109.md)及[继承登记](skills/reuse-experience-brain/references/INHERITANCE.json)。
