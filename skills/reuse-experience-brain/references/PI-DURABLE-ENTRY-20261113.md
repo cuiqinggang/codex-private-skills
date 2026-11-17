@@ -34,3 +34,9 @@ R114额外存在浏览器主线程超时后先核没有提交再恢复页面、�
 - **R154/R156同Run重复限制**：11月15日20:11、20:33的两个隔离RESULT均PASS，相同run_id重派、活动中重派仅返回现状，变化载荷拒绝、`business_writes=1`；不外推跨Run业务去重、多Worker竞争与生产Exactly-once。
 - **R157失败须留档**：20:40受控worker-restart原Run `native_status=FAILED,result=FAIL,attempts=[2],business_writes=1`；20:41 **另一Run** worker-resume-recheck `COMPLETED/PASS,attempts=[2],business_writes=1`，service-restart/duplicate各自PASS。后续不同Run复测PASS不能修正首次FAILED、证明根因已修或原Run可靠接续。保留原R84/R86无回执禁止重放负例。
 - 原C盘原始限定证据：`C:/Users/A/Documents/DSH-Workspace/ecc-matt-pi-20261110/pi-comprehensive-20261113/{r144-temporal-louez/R144-LINKED-CORRECTION.json,r144-temporal-louez/DB-RESTORE.json,r144-linked-final/STATUS.json,r144-linked-final/recheck.json,r154-dispatch-identity-recheck/RESULT.json,r156-active-duplicate/RESULT.json,r157-worker-restart/RESULT.json,r157-worker-resume-recheck/RESULT.json,r157-service-restart/RESULT.json,r157-duplicate/RESULT.json}`。合同/Freeze不更改，原问题根因UNKNOWN、未证真实生产业务或完整T_VALID；新增稳定规则0。
+
+
+## 2026-11-17增量｜R170同Run终态与合成GUI局部证据分离
+原 `C:/Users/A/Documents/DSH-Workspace/R170/r170-s/GUI-EVIDENCE.json` 在02:39前后记录合成Louez可见GUI G00—G12（原五笔付款及相邻无付款订单）局部PASS；同lane `r170-s/STATUS.json`于02:40:18+08却记原生Temporal `FAILED`，不是整轮业务签收。G10原押金凭据删除被服务端400拒绝，刷新重入后旧凭据仍在；只能证明该隔离样本的拒绝与账目保持。原Run失败原因未核实，不能把GUI有效或事后核账视为native COMPLETED。
+原 `R170-PAUSE-STATE.json` 于03:07:24记录r170-t `PAUSED_IN_MEMORY`，G04有200租金及500押金签收，G05取件动作已提交并在03:04及03:07可见“进行中”，但尚无G05签收行：**先核原订单/账本，绝不因签名缺失重放取件**。这证明有已提交动作和签收缺口，未证明重复写入损害发生、当前进程存活或完整接续PASS。
+原 `R170-C-OWNER-READBACK.json` 于02:06显示r170-c native task SCHEDULED、原worker不存在但GUI stage子进程当时仍在；原同native task替换租约只是有条件接续方案，必须先重新核阶段所有者、GUI receipt和指纹，不可假称接管已完成、也不得新建第二GUI。沿用R84/R86无回执禁止重放与R144/R157不同Run不能替原FAILED改判两条旧负例。合成局部有效范围=VERIFIED_FOR_SCOPE；完整有效E2E、生产Exactly-once和记忆T_VALID收益仍NOT_MEASURED。原合同/Freeze保持不动。
