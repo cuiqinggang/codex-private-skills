@@ -35,3 +35,7 @@ GPT／Codex／Pi须交付用户在GUI按钮、文件目标应用或CLI公开入�
 
 ## 2026-11-17增量｜R01真实GUI底座缺项须在受理前查明
 原 `C:/Users/A/Documents/DSH-Workspace/pi-dual-brain-v231-reality-r01/R01-ACCEPTED.json`记20:43:30受理，`CHECKPOINT.json`记20:48:05进入`HOLD/NOT_VALID`，受理到HOLD耗274490ms。已有四个成熟配方节点和故障控制，浏览器只读连接可用，但新隔离Louez业务GUI实例没有启动；盲轮、四槽并发、故障演练及独立GUI验收全部未执行。教训只限需真实可见GUI的任务：受理前先核独立实例的依赖、归属和合法可用性；不可复用别的暂停Run、用后台API冒充GUI、或为了验收越权改Docker/系统。21:00之后的实例尝试属于后续状态，不倒填本窗口。此条是有限未准入反例，不是“成熟双脑路线失败”或新商业配方。另原R170-S G10合成账目400拒绝+五笔支付刷新回读，只属于原GUI证据层局部结果；原Temporal仍FAILED，不重复创建新稳定规则。
+
+
+## 2026-11-17 21:29 截止后状态纠偏｜同R01新尝试已具备实例，但终审HOLD
+以上20:48因缺独立Louez实例而HOLD是固定21点窗口内**旧尝试**，不得作为当前唯一阻塞。原`C:/Users/A/Documents/DSH-Workspace/pi-dual-brain-v231-reality-r01/{CHECKPOINT.json,r01-run/R01-HOLD.json,r01-run/ACCEPTANCE-HOLD.json}`证明21:15:48新尝试已经使用隔离`localhost:65423`、GUI实例健康，并显式排除前置探针订单#2026-0001；21:26双脑盲轮30.505秒得到两个有效计划且提交相隔1098ms，**仅证明受控规划与请求时间范围**，非并发业务执行。21:29同哈希终审GPT返回HOLD（候选1a-res允许将冻结日期移动三天违反合同）、Gemini未产生有效终审；`HOLD/NOT_VALID`经独立核对，四节点业务写入=0、STOP_GATE/Freeze=NOT_REACHED、恢复与账目独立QA均NOT_RUN。下一原任务须按原合同纠正固定日期冲突=>HOLD的候选并重新冻结/终审，不能在本次复盘先修改原候选、盲开四个槽或宣称双脑已经成熟。该增量**发生在21:00截止之后**，只能用于最新任务续接及纠正旧状态，不能倒填当日固定窗口指标。
