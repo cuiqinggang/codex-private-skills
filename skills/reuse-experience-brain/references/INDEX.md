@@ -140,3 +140,10 @@
 - `EXP-AGENT-PATH-20261109-001`：R144订单详情1正7反绑定检查限域PASS，内部订单ID/来源/实例/任务错配不能只靠格式蒙混；见 [AGENT-USER-PATH-20261109.md](AGENT-USER-PATH-20261109.md)。
 - `EXP-DOCKER-001`：11月15日15:56（本复盘截止前）预热失败；21:07（截止后）原脚本READY，区分时间及未来启动未知；见 [DOCKER-STARTUP.md](DOCKER-STARTUP.md)。
 本日原Vault日报和Pi限源草稿/独立审核不迁移到共享卡；新业务成熟配方0、稳定规则晋升0、实际新EXP下游adopt/reject无证据、记忆净T_VALID=NOT_MEASURED。原项目合同/Freeze及BRAIN第25版不变。
+
+
+## 2026-11-17｜R170同Run局部GUI与调度终态、双脑R01受理阻塞、Docker较新故障
+- [EXP-PI-DURABLE-ENTRY-20261113-001](PI-DURABLE-ENTRY-20261113.md)：R170-S G12合成GUI局部PASS但原Temporal Run于02:40仍FAILED；R170-T 03:07暂停时G05取件已可见却无签收行，须先核账不得重放；R170-C 02:06原worker已不在、GUI阶段子进程彼时仍在，替换租约仅条件接续。R169受控同Run心跳重试另证原回执，不能跨任务替代签收。
+- [EXP-AGENT-PATH-20261109-001](AGENT-USER-PATH-20261109.md)：双脑V2.31 R01 20:43受理、20:48因新隔离Louez GUI实例不可启动而HOLD，274490ms，未运行盲轮/四槽/故障演练；后台API不是GUI验收。
+- [EXP-DOCKER-001](DOCKER-STARTUP.md)：11月16日20:11原启动曾ENGINE_READY，11月17日17:36更晚原回执又是WSL prewarm=-1失败，根因及自然开机可靠性未知。
+本次Pi明确列14份、实际纳入12份，另外两份R169原文件因滚动mtime门被排除但GPT按固定21:00窗口独立核读。原C盘日报、Pi原稿/独立审核及证据保留本地，不额外创建经验卡或调度器；稳定规则晋升0、新可认证商业业务成熟配方0；尚无新共享EXP下游业务adopt/reject完整证据，记忆净T_VALID=NOT_MEASURED。
