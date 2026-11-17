@@ -232,9 +232,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-17-DSE-INCREMENTAL.md",
+      "sha256": "1e741f1aba830d481cf15633eb501f10b0f81b64a84e13132bb2f3d7b4b8557b",
+      "bytes": 8889,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "28 daily source files hashed and registered (Nov4 original absent); 23 original daily contents read through Nov15; 47 selected experience cards (Nov15 updated 3 existing cards, 0 new); historical evidence not fully distilled or migrated. No new shared EXP downstream business adoption; memory T_VALID NOT_MEASURED.",
+  "limits": "29 daily source files hashed and registered (Nov4 and Nov16 originals absent); 24 original daily contents read through Nov17; 47 selected experience cards (Nov17 updated 3 existing cards, 0 new); original evidence not fully distilled or migrated. No new shared EXP downstream business adoption; memory T_VALID NOT_MEASURED.",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -383,7 +391,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-15",
+  "latest_incremental_date": "2026-11-17",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -512,7 +520,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "Nov15 fixed window Nov14 21:00 to Nov15 21:00 Asia/Shanghai: R144 original Temporal FAILED vs separate linked-final native COMPLETED with no business replay and bounded GUI/ledger/DB recheck PASS; r144-detail-binding 1 positive + 7 negatives; R154/R156 controlled duplicate same-run one write; R157 initial Worker restart native FAILED, separate recovery recheck Run COMPLETED. Docker 15:56 failed within window; 21:07 after cutoff original READY, distinct time. Pi R71 16 original source files 4 draft candidates 21:13-21:14, GPT independent semantic audit; Memory Lint2/2, Hot Sync13 0 missing, Health Check PASS; no new stable/business recipe, shared EXP downstream adoption unobserved, memory T_VALID NOT_MEASURED.",
+  "latest_incremental_scope": "Fixed 2026-11-16 21:00 to Nov17 21:00 Asia/Shanghai: R170-S GUI G12 local evidence PASS versus original Temporal native FAILED, R170-T PAUSED_IN_MEMORY at G04 with G05 pickup visible but unsigned, R170-C worker absent while GUI child present only at 02:06 historical readback; R169 controlled heartbeat/cancel separate from R170; Pi R71 14 explicit, 12 accepted due mtime filter, five candidates independently scope reviewed; R01 20:48 initial HOLD for no isolated GUI fixture; Docker Nov17 17:36 later prewarm fail. Post-window 21:29 R01 new attempt fixture READY and blind plans valid but same-hash terminal review HOLD/no verdict; 0 four-node business writes and no Freeze. Local 11/17 DSE amended and index nav updated; Memory Lint initial 2/2 PASS before appendix, appendix needs full original lint rerun; Hot Sync 12/0 and KB Health PASS. No new mature business recipe or stable rule; no observed shared EXP adopt/reject; full business memory T_VALID NOT_MEASURED. Nov16 source daily absent; keep previous evidence and do not backfill.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -974,6 +982,57 @@
       "sha256": "3baf0050f67e15431f0fe0381a8c8d37f05d6501354bff2bf4e1587c489d7abc",
       "content_read": true,
       "evidence_scope": "Original C Vault daily incremental 6739 bytes; KB 3 evidence index triggers, explicit Hot Sync 13 registered 0 missing and Health Check PASS; local original retained."
+    }
+  ],
+  "incremental_case_sources_20261117": [
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\R170\\r170-s\\STATUS.json",
+      "content_read": true,
+      "evidence_scope": "2026-11-17 02:40 original Temporal FAILED after local G12 GUI evidence; not E2E PASS."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\R170\\R170-PAUSE-STATE.json",
+      "content_read": true,
+      "evidence_scope": "03:07 PAUSED_IN_MEMORY; G04 signed, G05 pickup observed ongoing but unsigned; do not replay before ledger reconciliation."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\R170\\R170-C-OWNER-READBACK.json",
+      "content_read": true,
+      "evidence_scope": "02:06 worker absent and GUI stage process present as-of original readback only; replacement lease not certified complete."
+    },
+    {
+      "experience_id": "EXP-AGENT-PATH-20261109-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-dual-brain-v231-reality-r01\\R01-ACCEPTED.json",
+      "content_read": true,
+      "evidence_scope": "20:43 accepted then 20:48 initial HOLD, no isolated GUI fixture in fixed window; 274490ms. New attempt after cutoff treated separately."
+    },
+    {
+      "experience_id": "EXP-AGENT-PATH-20261109-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-dual-brain-v231-reality-r01\\CHECKPOINT.json",
+      "content_read": true,
+      "evidence_scope": "Post-cutoff Nov17 21:29 updated checkpoint: isolated GUI READY, blind plans valid, same-hash terminal review GPT HOLD and other brain no usable verdict; four nodes and drills NOT_RUN, no Freeze."
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "Nov17 17:36 WSL prewarmCode=-1 lastProbeCode=-1 failure more recent than Nov16 20:11 READY; no service repair."
+    },
+    {
+      "experience_id": "DAILY-PI-20261117",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\daily-review-r71\\runs\\20261117-211205-383613\\SEMANTIC-AUDIT.json",
+      "content_read": true,
+      "evidence_scope": "12 Pi accepted original sources of 14 explicit, two filtered by rolling mtime despite event in fixed window; five candidates independently reviewed, no stable promotion."
+    },
+    {
+      "experience_id": "DAILY-DSE-20261117",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-17-DSE-INCREMENTAL.md",
+      "content_read": true,
+      "evidence_scope": "C Vault original review plus post21 R01 current-state appendix; 8889 bytes; explicit index Hot Sync 12/0, KB Health PASS; no complete memory gain.",
+      "sha256": "1e741f1aba830d481cf15633eb501f10b0f81b64a84e13132bb2f3d7b4b8557b"
     }
   ]
 }
