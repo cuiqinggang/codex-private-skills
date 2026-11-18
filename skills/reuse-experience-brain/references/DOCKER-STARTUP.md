@@ -75,3 +75,6 @@ Windows收费A只读原C:\AI\Docker-Autostart-20261024\status.json及startup.jso
 
 ## 2026-11-17 17:36｜16日历史READY后同指纹重新失败
 只读原 `C:/AI/Docker-Autostart-20261024/startup.jsonl`：11月16日19:15:35先出现`REQUIRES_DIAGNOSIS/prewarmCode=-1`；20:11:31原启动流程`ENGINE_READY/prewarmCode=0,lastProbeCode=0`。**11月17日17:36:49.949最新原`status.json`及日志又是`REQUIRES_DIAGNOSIS/EXCEPTION/prewarmCode=-1,lastProbeCode=-1,Docker WSL prewarm failed`**。LAST_GOOD为16日20:11既有任务就绪，FIRST_DELTA为17日17:36重复预热失败，具体根因/21:00独立健康/下次登录自动恢复均UNKNOWN；此复盘无系统、WSL、Docker或代理改动。不得将昨天READY或另一任务的localhost HTTP探针当本时点Docker就绪。旧回执及反例仍保留；同指纹只补时间与来源，不新建重复卡，不宣称永久修复或记忆时间收益。
+
+## 2026-11-18 15:32｜再次出现旧WSL预热失败（不是当前在线探针）
+本轮只读原`C:/AI/Docker-Autostart-20261024/status.json`，记录`time=2026-11-18T15:32:20.6827226+08:00`、`status=REQUIRES_DIAGNOSIS`、`action=EXCEPTION`、`prewarmCode=-1`、`lastProbeCode=-1`及`Docker WSL prewarm failed`。较新失败覆盖11月16日历史ENGINE_READY及17日失败的时间层，仍是重复故障指纹；未核定FIRST_DELTA的唯一根因。没有在21:00独立执行Engine或Docker GUI探针，也没有修复、重启、修改WSL/系统/代理。下次使用必须按原项目最新`status.json/startup.jsonl`核账，不把文件失败回执等同实时服务必然宕机或下次自然登录可靠性证明。只给原EXP-DOCKER-001增记时点，记忆净完整T_VALID未测。
