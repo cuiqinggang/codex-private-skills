@@ -1,5 +1,11 @@
 # 共同经验大脑｜V1｜2026-10-27（2026-10-28证据增量）
 
+## 2026-11-18 21点经验增量｜R01真实发送与质量、OMP18.22.2未集成及Docker新失败
+
+原R01 Gemini V236/V237在受控页面出现点击发送后无StreamGenerate、无消息节点的静默失败，但11月18日00:53另一个可见自然探针**一次真正提交且返回完整回复**，回复内容敷衍；随后共享会话出现另一用户消息，原「整会话单问」探针仍`INVALID_INTERRUPTED`，不能否认首轮答复或冒充R01双脑终审通过。R01原任务`NO_DUAL_SIGNOFF`、业务四槽未执行；网络控制台Waa/Create报错与个别失败同期出现，**不是经验证的唯一因果**。
+
+OMP18.22.2升级候选原生六项失败，旧18.15兼容后端九项通过只是控制组。受限令牌下CreatePipe匿名读写可用，命名管道客户端带写重开CreateFileW报5，而新版OsPipe需OVERLAPPED，匿名管道无drop-in回归；PR18800 AppContainer修复条件与本机AppContainer=false不符。正式仍18.18.0+18.15.0兼容、`BLOCKED_NOT_PROMOTED`，没有编译、改系统权限或切换。Docker原status 11月18日15:32又报`REQUIRES_DIAGNOSIS/prewarmCode=-1`，并非21点实时探针。原C盘13份明确回执经过Pi草稿与GPT独立语义纠界，沿[旧经验索引](skills/reuse-experience-brain/references/INDEX.md)更新3张卡；完整来源及日报哈希见[继承登记](skills/reuse-experience-brain/references/INHERITANCE.json)。无新增成熟商业配方、稳定规则、完整共享EXP业务采用回执或记忆净T_VALID对照。BRAIN25/DSE/Freeze不自动升级。
+
 ## 2026-11-17 21点经验增量｜R170三路证据分层与R01隔离GUI前置门
 
 原R170合成业务三路：r170-s可见GUI G00—G12及五笔主单付款限定回读，但**同一原Temporal Run于02:40 native FAILED**，不能以局部GUI成功替代完整原生签收；r170-t 03:07暂停时G04已签，G05取件已提交且订单刷新后为进行中但无G05签收，禁止盲重放、须先核原单与账本；r170-c在02:06原worker死亡但原GUI子进程彼时仍在，原同native task替换租约未证明已经完成。R169同Run原生心跳重试受控COMPLETED、进程树取消PASS仅为相邻独立原回执，不能给R170补PASS。双脑R01 20:43正式受理、20:48在无独立可启动Louez GUI实例的情况下HOLD/NOT_VALID，274490ms，四槽/盲轮/恢复/业务验收均未执行。Docker较新11月17日17:36又为预热失败，覆盖16日20:11旧READY，根因未知。
