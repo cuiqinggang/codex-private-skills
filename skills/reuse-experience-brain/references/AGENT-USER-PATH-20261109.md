@@ -39,3 +39,8 @@ GPT／Codex／Pi须交付用户在GUI按钮、文件目标应用或CLI公开入�
 
 ## 2026-11-17 21:29 截止后状态纠偏｜同R01新尝试已具备实例，但终审HOLD
 以上20:48因缺独立Louez实例而HOLD是固定21点窗口内**旧尝试**，不得作为当前唯一阻塞。原`C:/Users/A/Documents/DSH-Workspace/pi-dual-brain-v231-reality-r01/{CHECKPOINT.json,r01-run/R01-HOLD.json,r01-run/ACCEPTANCE-HOLD.json}`证明21:15:48新尝试已经使用隔离`localhost:65423`、GUI实例健康，并显式排除前置探针订单#2026-0001；21:26双脑盲轮30.505秒得到两个有效计划且提交相隔1098ms，**仅证明受控规划与请求时间范围**，非并发业务执行。21:29同哈希终审GPT返回HOLD（候选1a-res允许将冻结日期移动三天违反合同）、Gemini未产生有效终审；`HOLD/NOT_VALID`经独立核对，四节点业务写入=0、STOP_GATE/Freeze=NOT_REACHED、恢复与账目独立QA均NOT_RUN。下一原任务须按原合同纠正固定日期冲突=>HOLD的候选并重新冻结/终审，不能在本次复盘先修改原候选、盲开四个槽或宣称双脑已经成熟。该增量**发生在21:00截止之后**，只能用于最新任务续接及纠正旧状态，不能倒填当日固定窗口指标。
+
+## 2026-11-18增量｜Gemini GUI发送回执必须拆分「实际提交、回复质量、会话所有权、业务双签」
+R01在原共享浏览器的V236/V237受控探针中，虽然Gemini Argon已选、草稿逐字回读及发送按钮可用，但多次操作均未形成可见用户消息/回答，浏览器记录也未捕获StreamGenerate请求；故当时不具备终审回执。Waa/Create曾报网络错误，但另一次正常加载无该错误而发送仍无效，**不能断言Waa是唯一原因**，也不能未经授权修改登录、Cookie或代理反复试错。
+然而11月18日00:53，原`V237-NATURAL-PROBE.json`独立观察到正常界面**一次提交、完整返回34字**，只是回复对简单问题敷衍；同一共享会话随后由其他输入产生第二条用户消息，使原「只允许单问单答」会话探针最终判`INVALID_INTERRUPTED`，该判定在`V237-NATURAL-PROBE-RECONCILED.json`仍保持不变，补记首轮完成事实。不能因末态INVALID否认首轮有回应，也不能把首轮回应推导为单会话测试PASS或R01双脑终审PASS。原R01仍`PAUSED_AT_LONG_PROMPT_INPUT/NO_DUAL_SIGNOFF`、四业务节点未执行；是否允许单签必须依当前真实任务授权合同另判，不能由历史强制双签测试泛化。未测生产成功率。
+原始：`C:/Users/A/Documents/DSH-Workspace/pi-dual-brain-v231-reality-r01/r01-run/{V236-RECOVERY-RECEIPT.json,V237-REALITY-RECEIPT.json,V237-NATURAL-PROBE.json,V237-NATURAL-PROBE-RECONCILED.json}`；本机11月18日日报和PI 13源候选独立语义审核。没有新增稳定规则、已验商业配方或共享经验业务速度证明。
