@@ -149,3 +149,9 @@
 本次Pi明确列14份、实际纳入12份，另外两份R169原文件因滚动mtime门被排除但GPT按固定21:00窗口独立核读。原C盘日报、Pi原稿/独立审核及证据保留本地，不额外创建经验卡或调度器；稳定规则晋升0、新可认证商业业务成熟配方0；尚无新共享EXP下游业务adopt/reject完整证据，记忆净T_VALID=NOT_MEASURED。
 
 2026-11-17 21:29**截止后补核**：`EXP-AGENT-PATH-20261109-001`的R01 20:48“无隔离GUI实例”只是旧尝试HOLD原因；同TASK_ID 21:15新尝试已拥有隔离GUI fixture、双脑盲轮规划有效，但同哈希终审GPT因1a-res日期漂移HOLD、Gemini无有效裁决；21:29仍HOLD/NOT_VALID，四业务节点与故障演练NOT_RUN。新原证据见`pi-dual-brain-v231-reality-r01/CHECKPOINT.json`及`r01-run/R01-HOLD.json`；不得倒填21:00窗口或把新fixture READY认作业务PASS。详情更新原旧卡，不新增卡、稳定规则或成熟商业配方。
+
+## 2026-11-18｜旧卡的三项证据纠界（0新卡）
+- [EXP-AGENT-PATH-20261109-001](AGENT-USER-PATH-20261109.md)：R01 Gemini曾出现无生成请求的静默点击；后来同页真实首轮回答完成，但共享会话增加第二问致原单问测试INVALID。回复可达、回复质量、会话唯一性与双脑业务终审分开；不可把某一次Waa网络错误认作唯一原因，R01仍NO_DUAL_SIGNOFF。
+- [EXP-PI-OMP1818-20261108-001](PI-OMP-1818-COMPAT-20261108.md)：OMP18.22.2原生六项失败，旧18.15兼容后端九项控制组通过≠新版集成；CreatePipe可用≠可直接替换OVERLAPPED OsPipe；PR18800 AppContainer条件不适用，正式仍18.18+18.15兼容、候选BLOCKED。
+- [EXP-DOCKER-001](DOCKER-STARTUP.md)：11月18日15:32原状态又报WSL prewarm=-1/REQUIRES_DIAGNOSIS，21点未做独立实时引擎探针。
+来源及SHA登记在[INHERITANCE.json](INHERITANCE.json)，原日报/草稿留C盘。Pi从13份原文件提炼5个候选，经GPT逐项限域合并既有卡。新商业成熟节点配方0，稳定规则晋升0；未观察到新增真实业务EXP采纳，完整记忆净T_VALID=NOT_MEASURED。不改变BRAIN25/DSE/Freeze。
