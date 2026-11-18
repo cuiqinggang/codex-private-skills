@@ -240,9 +240,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-18-DSE-INCREMENTAL.md",
+      "sha256": "4a0e5ad2a906f2c29ffae73f34c4037035211620266bd483bece342a2ffb8fff",
+      "bytes": 6954,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "29 daily source files hashed and registered (Nov4 and Nov16 originals absent); 24 original daily contents read through Nov17; 47 selected experience cards (Nov17 updated 3 existing cards, 0 new); original evidence not fully distilled or migrated. No new shared EXP downstream business adoption; memory T_VALID NOT_MEASURED.",
+  "limits": "30 daily source files hashed and registered (Nov4 and Nov16 originals absent); 25 original daily contents read through Nov18; 47 selected experience cards (Nov18 updated 3 existing cards, 0 new). Original evidence not fully distilled or migrated. No new verified shared EXP downstream business adoption; memory T_VALID NOT_MEASURED.",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -391,7 +399,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-17",
+  "latest_incremental_date": "2026-11-18",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -520,7 +528,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "Fixed 2026-11-16 21:00 to Nov17 21:00 Asia/Shanghai: R170-S GUI G12 local evidence PASS versus original Temporal native FAILED, R170-T PAUSED_IN_MEMORY at G04 with G05 pickup visible but unsigned, R170-C worker absent while GUI child present only at 02:06 historical readback; R169 controlled heartbeat/cancel separate from R170; Pi R71 14 explicit, 12 accepted due mtime filter, five candidates independently scope reviewed; R01 20:48 initial HOLD for no isolated GUI fixture; Docker Nov17 17:36 later prewarm fail. Post-window 21:29 R01 new attempt fixture READY and blind plans valid but same-hash terminal review HOLD/no verdict; 0 four-node business writes and no Freeze. Local 11/17 DSE amended and index nav updated; Memory Lint initial 2/2 PASS; appended DSE note rerun 21:41:18 via original memory-lint.ps1 PASS 1/1; Hot Sync 12/0 and KB Health PASS. No new mature business recipe or stable rule; no observed shared EXP adopt/reject; full business memory T_VALID NOT_MEASURED. Nov16 source daily absent; keep previous evidence and do not backfill.",
+  "latest_incremental_scope": "2026-11-17 21:00 through 2026-11-18 21:00 Asia/Shanghai. R01 Gemini silent no-send versus natural one-response then second human input invalidation; OMP18.22.2 native six failed/old backend nine control passes, no integrated promotion; Docker Nov18 15:32 WSL prewarm failure. Pi 13 explicit sources, 5 scope-reviewed candidates merged to three existing cards. No new commercial mature recipe, stable rule, shared EXP downstream business use or matched full-memory T_VALID gain. Original C diary and candidates retained.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -1033,6 +1041,51 @@
       "content_read": true,
       "evidence_scope": "C Vault original fixed-window review and clearly labelled post21 R01 state appendix; 8889 bytes, sha256 1e741f...; original Memory Lint post-append 1/1 PASS at 21:41:18; explicit index Hot Sync 12/0, KB Health PASS; no memory T_VALID gain.",
       "sha256": "1e741f1aba830d481cf15633eb501f10b0f81b64a84e13132bb2f3d7b4b8557b"
+    }
+  ],
+  "incremental_case_sources_20261118": [
+    {
+      "experience_id": "EXP-AGENT-PATH-20261109-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-dual-brain-v231-reality-r01\\r01-run\\V237-NATURAL-PROBE-RECONCILED.json",
+      "content_read": true,
+      "evidence_scope": "11/18 00:53 natural canary sent and completed its first response; subsequent second human input invalidated whole single-message-session verdict; R01 no dual signoff."
+    },
+    {
+      "experience_id": "EXP-AGENT-PATH-20261109-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-dual-brain-v231-reality-r01\\r01-run\\V237-REALITY-RECEIPT.json",
+      "content_read": true,
+      "evidence_scope": "Controlled GUI silent no-op send, zero model/user nodes and no captured StreamGenerate; no proved unique Waa root cause; no business writes."
+    },
+    {
+      "experience_id": "EXP-PI-OMP1818-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-omp-upgrade-18.22.2-20261118\\UPGRADE-DECISION.json",
+      "content_read": true,
+      "evidence_scope": "18.22.2 native 6 failed versus old backend 9 control passed, not integrated; active 18.18+18.15 compat, no promotion."
+    },
+    {
+      "experience_id": "EXP-PI-OMP1818-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-omp-upgrade-18.22.2-20261118\\PIPE-ROOT-CAUSE.json",
+      "content_read": true,
+      "evidence_scope": "Restricted-token named-pipe CreateFileW write reopening denied; anonymous CreatePipe component check separate; no compliant integrated patch."
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\status.json",
+      "content_read": true,
+      "evidence_scope": "11/18 15:32:20+08 REQUIRES_DIAGNOSIS WSL prewarm=-1; not 21:00 independent Engine health."
+    },
+    {
+      "experience_id": "DAILY-PI-20261118",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\daily-review-r71\\runs\\20261118-210843-659804\\SEMANTIC-AUDIT.json",
+      "content_read": true,
+      "evidence_scope": "13 explicit Pi receipts, 5 draft candidates, current GPT separately corrected scopes and merged existing cards, no stable promotion or real new EXP usage."
+    },
+    {
+      "experience_id": "DAILY-DSE-20261118",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-18-DSE-INCREMENTAL.md",
+      "sha256": "4a0e5ad2a906f2c29ffae73f34c4037035211620266bd483bece342a2ffb8fff",
+      "content_read": true,
+      "evidence_scope": "Original C Vault incremental 6954 bytes; 21:08:43 Pi start, local Hot Sync 17 indexed zero missing, Health Check PASS, original lint still unverified; original C content not uploaded."
     }
   ]
 }
