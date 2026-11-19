@@ -1,5 +1,13 @@
 # 共同经验大脑｜V1｜2026-10-27（2026-10-28证据增量）
 
+## 2026-11-19 21点经验增量｜OMP19兼容正式升级与Docker原项目恢复
+
+本机11月19日09:33—10:02正式原项目将增强桌面Pi的主CLI激活到OMP19.0.0（仍复用18.15 Windows兼容shell，保留18.18回退），正式GUI原入口九项PASS，原CURRENT也登记upstream_core=19.0.0。此前11月18日OMP18.22.2原生失败且BLOCKED_NOT_PROMOTED属于历史候选，不能覆盖最新版本。然而19原生Shell六项仍FAIL、INTEGRATION整体valid=false（file_result及旧会话恢复未过）、SERVICE-ACCEPTANCE persist跨进程valid=false；不能将桌面GUI九项PASS或TCP daemon烟测放大为全功能/完整E2E。旧[OMP经验卡](skills/reuse-experience-brain/references/PI-OMP-1818-COMPAT-20261108.md)保留失败反例并增记19的限定有效性，未改变安全ACL或系统权限。
+
+Docker原启动日志11月19日20:29等待→20:30:49确认bootstrap失败后恢复→20:33:05原V2.0.2恢复ENGINE_READY（240003ms、prewarm/probe=0）；21:02后V2.0.4原脚本只读AUDIT_PASS是截止后新证据，未证明下次自然登录稳定。既有[Docker经验卡](skills/reuse-experience-brain/references/DOCKER-STARTUP.md)仅补新时间边界，原复盘只读未维修系统。
+
+原Pi公开复盘实际21:08:00—21:10:52从14份明确原始文本得5条带引文候选，GPT独立语义审核均限域合并已有OMP卡，并拒绝TCP通过即全守护健康、后续局部PASS覆盖历史整体FAIL、ready即跨进程持久化、GUI全绿即规则加载等过度推论。Vault的11月19日日报及Pi原稿保留在C盘；本机Memory Lint 2/2、显式Hot Sync 13项0缺失、Health Check PASS。来源与日报SHA见[继承清单](skills/reuse-experience-brain/references/INHERITANCE.json)、触发词见[经验索引](skills/reuse-experience-brain/references/INDEX.md)。新成熟商业业务配方0、稳定规则晋升0、未观察到本窗口共享EXP在下游真实业务的完整新采用回执；完整记忆净T_VALID=NOT_MEASURED。BRAIN25/DSE/原Freeze均不因日报升版。
+
 ## 2026-11-18 21点经验增量｜R01真实发送与质量、OMP18.22.2未集成及Docker新失败
 
 原R01 Gemini V236/V237在受控页面出现点击发送后无StreamGenerate、无消息节点的静默失败，但11月18日00:53另一个可见自然探针**一次真正提交且返回完整回复**，回复内容敷衍；随后共享会话出现另一用户消息，原「整会话单问」探针仍`INVALID_INTERRUPTED`，不能否认首轮答复或冒充R01双脑终审通过。R01原任务`NO_DUAL_SIGNOFF`、业务四槽未执行；网络控制台Waa/Create报错与个别失败同期出现，**不是经验证的唯一因果**。
