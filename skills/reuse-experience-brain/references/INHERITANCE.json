@@ -248,6 +248,14 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-19-DSE-INCREMENTAL.md",
+      "sha256": "a09dd12dcd9be752dc6116aac6583cca77c404a65c21789aaa6cd06a2b3a8ea3",
+      "bytes": 6765,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
   "limits": "30 daily source files hashed and registered (Nov4 and Nov16 originals absent); 25 original daily contents read through Nov18; 47 selected experience cards (Nov18 updated 3 existing cards, 0 new). Original evidence not fully distilled or migrated. No new verified shared EXP downstream business adoption; memory T_VALID NOT_MEASURED.",
@@ -399,7 +407,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-18",
+  "latest_incremental_date": "2026-11-19",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -528,7 +536,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "2026-11-17 21:00 through 2026-11-18 21:00 Asia/Shanghai. R01 Gemini silent no-send versus natural one-response then second human input invalidation; OMP18.22.2 native six failed/old backend nine control passes, no integrated promotion; Docker Nov18 15:32 WSL prewarm failure. Pi 13 explicit sources, 5 scope-reviewed candidates merged to three existing cards. No new commercial mature recipe, stable rule, shared EXP downstream business use or matched full-memory T_VALID gain. Original C diary and candidates retained.",
+  "latest_incremental_scope": "2026-11-18 21:00 through 2026-11-19 21:00 Asia/Shanghai. OMP19.0.0 Windows-compat formally activated GUI nine PASS, native preflight six FAIL and overall integration/service not fully valid. Docker Nov19 20:33 original 240003ms automatic recovery ENGINE_READY, post21 v2.0.4 audit separately. Pi 14 original sources, 5 independently scope-reviewed candidates merged to existing OMP experience. No new commercial recipe, stable rule, actual EXP downstream business use or matched memory T_VALID improvement.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -1086,6 +1094,41 @@
       "sha256": "4a0e5ad2a906f2c29ffae73f34c4037035211620266bd483bece342a2ffb8fff",
       "content_read": true,
       "evidence_scope": "Original C Vault incremental 6954 bytes; 21:08:43 Pi start, local Hot Sync 17 indexed zero missing, Health Check PASS, original lint still unverified; original C content not uploaded."
+    }
+  ],
+  "incremental_case_sources_20261119": [
+    {
+      "experience_id": "EXP-PI-OMP1818-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-omp-upgrade-19.0.0-20261119\\UPGRADE-DECISION.json",
+      "sha256": "6cbb41db0295737c085f697808d3556e94706dd412e6a55c34960ce8e7f9ab4f",
+      "content_read": true,
+      "evidence_scope": "Nov19 10:02 OMP19 Windows compatibility GUI 9/9 formal activation; old 18.22.2 blocked is historical, native shell still failed; not full integration or production business."
+    },
+    {
+      "experience_id": "EXP-PI-OMP1818-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-omp-upgrade-19.0.0-20261119\\SERVICE-ACCEPTANCE.json",
+      "sha256": "6eff71b2d8b7f9accb61965503491abeb24ad06449c851fb236e8faa80636bcf",
+      "content_read": true,
+      "evidence_scope": "SERVICE overall valid=false; ready and readback true, cross-process daemon survival false; approval write denied, no authorization easing."
+    },
+    {
+      "experience_id": "EXP-DOCKER-001",
+      "path": "C:\\AI\\Docker-Autostart-20261024\\startup.jsonl",
+      "content_read": true,
+      "evidence_scope": "Nov19 20:29 WAITING, 20:30 bootstrap confirmed failure, 20:33 original V2.0.2 AUTO_RECOVERY_SUCCEEDED ENGINE_READY elapsed 240003ms; post-cutoff V2.0.4 AUDIT_PASS separate; no future natural-login proof."
+    },
+    {
+      "experience_id": "DAILY-PI-20261119",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\daily-review-r71\\runs\\20261119-210800-599280\\SEMANTIC-AUDIT.json",
+      "content_read": true,
+      "evidence_scope": "Pi 14 explicit text sources, 5 quoted draft candidate lessons, GPT independent scope corrections merged old OMP card; original DRAFT preserved and no stable promotions."
+    },
+    {
+      "experience_id": "DAILY-DSE-20261119",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-19-DSE-INCREMENTAL.md",
+      "sha256": "a09dd12dcd9be752dc6116aac6583cca77c404a65c21789aaa6cd06a2b3a8ea3",
+      "content_read": true,
+      "evidence_scope": "Original C Vault 6765 bytes, Memory Lint two files PASS, explicit Hot Sync 13 registered 0 missing, KB Health Check PASS; local original not uploaded."
     }
   ]
 }
