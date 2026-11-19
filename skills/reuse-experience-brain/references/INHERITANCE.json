@@ -251,8 +251,8 @@
     },
     {
       "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-19-DSE-INCREMENTAL.md",
-      "sha256": "a09dd12dcd9be752dc6116aac6583cca77c404a65c21789aaa6cd06a2b3a8ea3",
-      "bytes": 6765,
+      "sha256": "44c4792ad870eb1d9acead35b2f0f479ed26cb34f18344f5e2ec1483abda98f0",
+      "bytes": 6781,
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
@@ -1126,9 +1126,9 @@
     {
       "experience_id": "DAILY-DSE-20261119",
       "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-19-DSE-INCREMENTAL.md",
-      "sha256": "a09dd12dcd9be752dc6116aac6583cca77c404a65c21789aaa6cd06a2b3a8ea3",
+      "sha256": "44c4792ad870eb1d9acead35b2f0f479ed26cb34f18344f5e2ec1483abda98f0",
       "content_read": true,
-      "evidence_scope": "Original C Vault 6765 bytes, Memory Lint two files PASS, explicit Hot Sync 13 registered 0 missing, KB Health Check PASS; local original not uploaded."
+      "evidence_scope": "Original C Vault 6781 bytes with truthful creation timestamp; Memory Lint two files PASS, final explicit Hot Sync 13 indexed 0 missing and Health Check PASS; original not uploaded."
     }
   ]
 }
