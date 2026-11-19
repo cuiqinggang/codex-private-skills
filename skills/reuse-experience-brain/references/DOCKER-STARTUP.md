@@ -78,3 +78,7 @@ Windows收费A只读原C:\AI\Docker-Autostart-20261024\status.json及startup.jso
 
 ## 2026-11-18 15:32｜再次出现旧WSL预热失败（不是当前在线探针）
 本轮只读原`C:/AI/Docker-Autostart-20261024/status.json`，记录`time=2026-11-18T15:32:20.6827226+08:00`、`status=REQUIRES_DIAGNOSIS`、`action=EXCEPTION`、`prewarmCode=-1`、`lastProbeCode=-1`及`Docker WSL prewarm failed`。较新失败覆盖11月16日历史ENGINE_READY及17日失败的时间层，仍是重复故障指纹；未核定FIRST_DELTA的唯一根因。没有在21:00独立执行Engine或Docker GUI探针，也没有修复、重启、修改WSL/系统/代理。下次使用必须按原项目最新`status.json/startup.jsonl`核账，不把文件失败回执等同实时服务必然宕机或下次自然登录可靠性证明。只给原EXP-DOCKER-001增记时点，记忆净完整T_VALID未测。
+
+## 2026-11-19｜20:33原任务恢复ENGINE_READY，21:00后V2.0.4只读AUDIT_PASS
+原C:/AI/Docker-Autostart-20261024/startup.jsonl独立只读：11月19日20:29:10由Start V2.0.2进入WAITING_FOR_ENGINE；20:30:49确认bootstrap失败，RECOVERING/CONFIRMED_FAILED_BOOTSTRAP；20:33:05报告AUTOMATIC_RECOVERY_SUCCEEDED、ENGINE_READY，最终prewarmCode=0、lastProbeCode=0、recoveryAttempt=1、elapsedMilliseconds=240003（04:00:003）。officialStopCode=1、随后officialForceCode=0，不能抹掉原步骤非零退出。与11月18日15:32的prewarm=-1故障相比，较新文件已在20:33出现受控恢复成功，前次FAIL不再是截至固定21:00时的最新状态。
+截止后单独时间层：21:02:37起已有Start V2.0.4 ALREADY_READY_NO_RESTART/ENGINE_READY，21:03—21:05 Audit V2.0.4 AUDIT_PASS/READ_ONLY、引擎及数据盘可访问。不能将截止后结果倒填之前窗口，也不能由多次暖态探针推断下一次自然Windows登录、重启后的原数据盘/容器全业务、底层storahci或WSL故障根因永久修复。每日DSE复盘仅只读，不执行恢复/重启、系统或代理修改。原C盘项目源码和回执保持权威；最新状态使用前必须再核当前原回执。记忆完整T_VALID净收益NOT_MEASURED。
