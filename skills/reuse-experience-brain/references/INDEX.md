@@ -155,3 +155,8 @@
 - [EXP-PI-OMP1818-20261108-001](PI-OMP-1818-COMPAT-20261108.md)：OMP18.22.2原生六项失败，旧18.15兼容后端九项控制组通过≠新版集成；CreatePipe可用≠可直接替换OVERLAPPED OsPipe；PR18800 AppContainer条件不适用，正式仍18.18+18.15兼容、候选BLOCKED。
 - [EXP-DOCKER-001](DOCKER-STARTUP.md)：11月18日15:32原状态又报WSL prewarm=-1/REQUIRES_DIAGNOSIS，21点未做独立实时引擎探针。
 来源及SHA登记在[INHERITANCE.json](INHERITANCE.json)，原日报/草稿留C盘。Pi从13份原文件提炼5个候选，经GPT逐项限域合并既有卡。新商业成熟节点配方0，稳定规则晋升0；未观察到新增真实业务EXP采纳，完整记忆净T_VALID=NOT_MEASURED。不改变BRAIN25/DSE/Freeze。
+
+## 2026-11-19｜只更新两张旧卡：OMP19兼容正式入口与Docker恢复
+- EXP-PI-OMP1818-20261108-001：11/19 OMP19.0.0 Windows兼容版正式GUI九项PASS，旧18.22.2 BLOCKED为历史候选；原生Shell六项FAIL、INTEGRATION valid=false、persist跨进程false，FORMAL-CONTEXT指令计数0不等于确定丢失；只更新[原OMP卡](PI-OMP-1818-COMPAT-20261108.md)，不建立新业务配方。
+- EXP-DOCKER-001：11/19 20:33 原V2.0.2从WSL bootstrap失败进入受控恢复并ENGINE_READY，耗时240003ms；21:02后V2.0.4 warm Start和只读Audit PASS属截止后更新，仍未认证下一次Windows自然登录。只更新[原Docker卡](DOCKER-STARTUP.md)。
+Pi原公开入口从14份明确原始回执生成5条候选，GPT独立审核限域合并已有OMP卡；原C盘daily-review-r71/runs/20261119-210800-599280与Vault 01_DAILY/2026-11-19-DSE-INCREMENTAL.md为本机原证据。稳定规则晋升0、新成熟商业业务配方0；未观察到本窗口共享EXP被下游新业务正式采用/拒绝的完整回执。记忆T_VALID净改善NOT_MEASURED；下游任务仍须核当前环境与合同。
