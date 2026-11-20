@@ -160,3 +160,10 @@
 - EXP-PI-OMP1818-20261108-001：11/19 OMP19.0.0 Windows兼容版正式GUI九项PASS，旧18.22.2 BLOCKED为历史候选；原生Shell六项FAIL、INTEGRATION valid=false、persist跨进程false，FORMAL-CONTEXT指令计数0不等于确定丢失；只更新[原OMP卡](PI-OMP-1818-COMPAT-20261108.md)，不建立新业务配方。
 - EXP-DOCKER-001：11/19 20:33 原V2.0.2从WSL bootstrap失败进入受控恢复并ENGINE_READY，耗时240003ms；21:02后V2.0.4 warm Start和只读Audit PASS属截止后更新，仍未认证下一次Windows自然登录。只更新[原Docker卡](DOCKER-STARTUP.md)。
 Pi原公开入口从14份明确原始回执生成5条候选，GPT独立审核限域合并已有OMP卡；原C盘daily-review-r71/runs/20261119-210800-599280与Vault 01_DAILY/2026-11-19-DSE-INCREMENTAL.md为本机原证据。稳定规则晋升0、新成熟商业业务配方0；未观察到本窗口共享EXP被下游新业务正式采用/拒绝的完整回执。记忆T_VALID净改善NOT_MEASURED；下游任务仍须核当前环境与合同。
+
+## 2026-11-20｜四项Pi专项与相互独立的故障边界
+原固定21点复盘读取四个**独立任务号**的真实审计：V243-R2正式桌面拒签来源与两页浏览器租约未通过；V124-B2写后丢回执同键只建单一次，但延期G06及补收G07缺失，C2原生GUI阶段FAILED；OMP19的socket closed恢复+7行隔离候选局部有效，Low二次沙箱失败且原普通桌面入口尚无签收；Pi-Network-Repair旧CLI出口1、正式桌面接单与维修脚本独立验收缺失，**不能与OMP断线恢复合成一个任务**。仅在原旧卡补有源案例并保留失败反例：
+- [EXP-AGENT-PATH-20261109-001：V243正式桌面来源、同SHA双签与页面租约](AGENT-USER-PATH-20261109.md)
+- [EXP-PI-DURABLE-ENTRY-20261113-001：V124 B2唯一写与合同REWORK、C2原Run失败](PI-DURABLE-ENTRY-20261113.md)
+- [EXP-PI-OMP1818-20261108-001：OMP19隔离断线恢复与Low嵌套ACL边界](PI-OMP-1818-COMPAT-20261108.md)
+网络脚本专项原审计：`C:/Users/A/Documents/DSH-Workspace/PI-SPECIALS-20261120/audit/Pi-Network-Repair-20261121/PROCESS-AUDIT-STAGGER-01.md`，无独立有效成品不建经验卡。原始审计完整定位在C盘`01_DAILY/2026-11-20-DSE-INCREMENTAL.md`及[INHERITANCE.json](INHERITANCE.json)，原Pi 15份显式来源/五候选与当前GPT语义纠界另存原run。全部专项仍BLOCKED/HOLD或REWORK，均无完整同合同T_VALID。**稳定规则晋升0、新经独立验收的商业成熟业务配方0、新共享EXP实际业务采用未观察到，记忆净T_VALID=NOT_MEASURED**；Hot Sync不等于真实未来任务召回。21点截止后OMP新V5及High脚本烟测只作较新续接信息，不倒填窗口内成功。
