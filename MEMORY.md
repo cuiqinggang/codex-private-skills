@@ -1,5 +1,12 @@
 # 共同经验大脑｜V1｜2026-10-27（2026-10-28证据增量）
 
+## 2026-11-20 21点经验增量｜四项Pi专项独立核账与未签收边界
+
+原审计窗口11月19日21:00—11月20日21:00：四个独立专项均未取得完整合同签收。V243-R2仅合成业务和一次冻结限定通过，缺合法正式桌面拒签来源（Low rc2≠桌面rc3）、共享浏览器租约与GPT/Gemini同版双签。V124剩余验收B2已确认写后丢回执同业务键未重复建单，**但** G06延期/G07补收100缺失且原单200租金已completed，独立REWORK；C2事件23原生GUI失败，不因账本局部读回改判。OMP19 socket closed/ECONNRESET已有隔离+7行候选与High受控C/E回归，Low二次沙箱EPERM、日常桌面GUI签收、长期断线结构化WAIT及正式双审仍缺；不能称生产恢复。Pi-Network-Repair是不同的**代理健康脚本**专项，旧启动路径因认证配置不能解析退出1，未证正式桌面接单/修复/最终RESULT，不应合并到OMP智能体自动恢复。
+
+本轮使用原21点Pi公开复盘器，21:07:36—21:08:56从15份显式原始文本形成5条带原文子串的候选，当前GPT独立限域审核：拒绝“mtime即事件时间/所有自填时刻系统性偏晚”泛化；仅把V243桌面来源、V124唯一写但合同失败、OMP当前嵌套ACL三项新事实分别补到既有[真实用户入口经验](skills/reuse-experience-brain/references/AGENT-USER-PATH-20261109.md)、[持久化恢复经验](skills/reuse-experience-brain/references/PI-DURABLE-ENTRY-20261113.md)、[OMP兼容经验](skills/reuse-experience-brain/references/PI-OMP-1818-COMPAT-20261108.md)及[原索引](skills/reuse-experience-brain/references/INDEX.md)。原日报、Pi草稿/独立审核及其他证据仍保留C盘。原Vault正式Memory Lint两份PASS、显式Hot Sync14项0缺失、Health Check PASS；原文件SHA及证据边界见[继承清单](skills/reuse-experience-brain/references/INHERITANCE.json)。稳定规则晋升0、新完整成熟商业业务配方0、本窗口未观察到共享EXP下游真实业务新adopt/reject回执，完整memory_T_VALID_gain=NOT_MEASURED。BRAIN25、DSE与专业Freeze不因复盘升级，21点之后OMP V5及High自检只作后续信息，不倒填截止窗口。
+
+
 ## 2026-11-19 21点经验增量｜OMP19兼容正式升级与Docker原项目恢复
 
 本机11月19日09:33—10:02正式原项目将增强桌面Pi的主CLI激活到OMP19.0.0（仍复用18.15 Windows兼容shell，保留18.18回退），正式GUI原入口九项PASS，原CURRENT也登记upstream_core=19.0.0。此前11月18日OMP18.22.2原生失败且BLOCKED_NOT_PROMOTED属于历史候选，不能覆盖最新版本。然而19原生Shell六项仍FAIL、INTEGRATION整体valid=false（file_result及旧会话恢复未过）、SERVICE-ACCEPTANCE persist跨进程valid=false；不能将桌面GUI九项PASS或TCP daemon烟测放大为全功能/完整E2E。旧[OMP经验卡](skills/reuse-experience-brain/references/PI-OMP-1818-COMPAT-20261108.md)保留失败反例并增记19的限定有效性，未改变安全ACL或系统权限。
