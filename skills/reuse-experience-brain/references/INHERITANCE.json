@@ -256,6 +256,14 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-20-DSE-INCREMENTAL.md",
+      "sha256": "0b738c1e8057dfb89da998bdb06bb3332c10278ebf481baf02c85f08eec58068",
+      "bytes": 9445,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
   "limits": "30 daily source files hashed and registered (Nov4 and Nov16 originals absent); 25 original daily contents read through Nov18; 47 selected experience cards (Nov18 updated 3 existing cards, 0 new). Original evidence not fully distilled or migrated. No new verified shared EXP downstream business adoption; memory T_VALID NOT_MEASURED.",
@@ -407,7 +415,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-19",
+  "latest_incremental_date": "2026-11-20",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -536,7 +544,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "2026-11-18 21:00 through 2026-11-19 21:00 Asia/Shanghai. OMP19.0.0 Windows-compat formally activated GUI nine PASS, native preflight six FAIL and overall integration/service not fully valid. Docker Nov19 20:33 original 240003ms automatic recovery ENGINE_READY, post21 v2.0.4 audit separately. Pi 14 original sources, 5 independently scope-reviewed candidates merged to existing OMP experience. No new commercial recipe, stable rule, actual EXP downstream business use or matched memory T_VALID improvement.",
+  "latest_incremental_scope": "2026-11-19 21:00 to 2026-11-20 21:00 Asia/Shanghai. Four Pi specials scoped separately: V243 desktop source and shared tab issues BLOCKED; V124 B2 unique write but missing G06/G07, C2 native failed, HOLD/REWORK; OMP ECONNRESET isolation High smoke only, original GUI and independent signoff HOLD; network proxy repair old CLI exit1 without desktop Pi acceptance. Pi 15 source receipts, 5 draft lessons independently constrained by current GPT; Vault Memory Lint 2/2, Hot Sync 14/0, Health PASS; no new real business recipe, stable rule or observed downstream EXP adoption, complete memory T_VALID NOT_MEASURED.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -1129,6 +1137,46 @@
       "sha256": "44c4792ad870eb1d9acead35b2f0f479ed26cb34f18344f5e2ec1483abda98f0",
       "content_read": true,
       "evidence_scope": "Original C Vault 6781 bytes with truthful creation timestamp; Memory Lint two files PASS, final explicit Hot Sync 13 indexed 0 missing and Health Check PASS; original not uploaded."
+    }
+  ],
+  "incremental_case_sources_20261120": [
+    {
+      "experience_id": "EXP-AGENT-PATH-20261109-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\PI-SPECIALS-20261120\\audit\\V243-R2-REALITY-20261120\\RESULT.md",
+      "content_read": true,
+      "evidence_scope": "Nov20 12:49 V243 formal Pi admitted, synthetic+freeze pass; desktop refusal rc2 Low token, no real desktop rc3, shared browser tabs over limit, no same-fingerprint dual signoffs or COMPLETE; BLOCKED, not complete T_VALID."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\PI-SPECIALS-20261120\\audit\\V124-REMAINING-REALITY-20261121\\RESULT.md",
+      "content_read": true,
+      "evidence_scope": "Nov20 14:00 V124 HOLD, B2 unique create on lost reply evidenced, but G06 extension and G07 100 CNY rent missing before completed; B1 CP1 recovery missing, C2 native GUI failed; full T_VALID not accepted."
+    },
+    {
+      "experience_id": "EXP-PI-OMP1818-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\PI-SPECIALS-20261120\\audit\\OMP-ECONNRESET-RECOVERY-20261121\\OUTER-AUDIT-20261120-2039.md",
+      "content_read": true,
+      "evidence_scope": "Nov20 20:39 V3 isolation candidate and active core independent hashes, bounded High/ConPTY C/E recovery; no original ordinary GUI user acceptance. Low nested ACL failure on 20:43 check separate; later V5 post21 not retroactive."
+    },
+    {
+      "experience_id": "PROJECT-PI-NETWORK-REPAIR-20261121",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\PI-SPECIALS-20261120\\audit\\Pi-Network-Repair-20261121\\PROCESS-AUDIT-STAGGER-01.md",
+      "content_read": true,
+      "evidence_scope": "Nov20 14:17 old scheduled CLI exited1 due to credentials configuration unavailable on that route, no new formal Pi desktop ACCEPT or patched network health script RESULT; separate from Pi ECONNRESET recovery."
+    },
+    {
+      "experience_id": "DAILY-PI-20261120",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\daily-review-r71\\runs\\20261120-210736-199921\\SEMANTIC-AUDIT.json",
+      "sha256": "ed73db50198ff2ef638a9796347c02b57f6c81d03e3acb50a16e1ccb01c13a45",
+      "content_read": true,
+      "evidence_scope": "15 explicit input source files, 5 cited Pi draft candidates and independent GPT scoped audit; reject over-generalized time mtime claim; 0 stable promotions."
+    },
+    {
+      "experience_id": "DAILY-DSE-20261120",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-20-DSE-INCREMENTAL.md",
+      "sha256": "0b738c1e8057dfb89da998bdb06bb3332c10278ebf481baf02c85f08eec58068",
+      "content_read": true,
+      "evidence_scope": "Original Vault daily 9445 bytes; Memory Lint 2/2 PASS, explicit Hot Sync 14 indexed 0 missing, Health Check PASS; 4 independent specialties HOLD/BLOCKED/REWORK; no new mature business recipe, full memory T_VALID NOT_MEASURED."
     }
   ]
 }
