@@ -44,3 +44,7 @@ GPT／Codex／Pi须交付用户在GUI按钮、文件目标应用或CLI公开入�
 R01在原共享浏览器的V236/V237受控探针中，虽然Gemini Argon已选、草稿逐字回读及发送按钮可用，但多次操作均未形成可见用户消息/回答，浏览器记录也未捕获StreamGenerate请求；故当时不具备终审回执。Waa/Create曾报网络错误，但另一次正常加载无该错误而发送仍无效，**不能断言Waa是唯一原因**，也不能未经授权修改登录、Cookie或代理反复试错。
 然而11月18日00:53，原`V237-NATURAL-PROBE.json`独立观察到正常界面**一次提交、完整返回34字**，只是回复对简单问题敷衍；同一共享会话随后由其他输入产生第二条用户消息，使原「只允许单问单答」会话探针最终判`INVALID_INTERRUPTED`，该判定在`V237-NATURAL-PROBE-RECONCILED.json`仍保持不变，补记首轮完成事实。不能因末态INVALID否认首轮有回应，也不能把首轮回应推导为单会话测试PASS或R01双脑终审PASS。原R01仍`PAUSED_AT_LONG_PROMPT_INPUT/NO_DUAL_SIGNOFF`、四业务节点未执行；是否允许单签必须依当前真实任务授权合同另判，不能由历史强制双签测试泛化。未测生产成功率。
 原始：`C:/Users/A/Documents/DSH-Workspace/pi-dual-brain-v231-reality-r01/r01-run/{V236-RECOVERY-RECEIPT.json,V237-REALITY-RECEIPT.json,V237-NATURAL-PROBE.json,V237-NATURAL-PROBE-RECONCILED.json}`；本机11月18日日报和PI 13源候选独立语义审核。没有新增稳定规则、已验商业配方或共享经验业务速度证明。
+
+## 2026-11-20增量｜V243桌面来源拒签与共享浏览器租约
+原V243-R2-REALITY-20261120独立审计12:49仍BLOCKED：增强Pi正式接单、合成核账及冻结15/15 SHA通过，但Pi与子进程在受限Low RID4096调用desktop_publish来源门时仅得rc2，缺原合同要求的真实桌面来源rc3拒签；程序内部REJECTED/账本HOLD是不同证据层。共享专用浏览器有4–5个尚未核实归属的旧任务页，按整体最多两页规则不得另开两签页，GPT/Gemini发送和正式完成事件均0。**不可借High、后台接口或人工代发凑来源回执**；下一合法节点由原执行者核受权桌面入口与旧页租约，核未发送后在原Pi会话、同候选指纹下完成真实拒签→同SHA双签→GUI COMPLETE。原审计接单至核账05:51:446只是阶段经过时间，不是完整T_VALID或有效交付。
+原始：`C:/Users/A/Documents/DSH-Workspace/PI-SPECIALS-20261120/audit/V243-R2-REALITY-20261120/RESULT.md`、该目录Blocked/FinalReview原事件与本机`01_DAILY/2026-11-20-DSE-INCREMENTAL.md`。旧GUI绕行假PASS反例不改变；新稳定规则0、已验真实商业业务配方0，记忆净T_VALID=NOT_MEASURED。
