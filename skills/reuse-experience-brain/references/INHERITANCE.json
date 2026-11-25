@@ -264,9 +264,17 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-25-DSE-INCREMENTAL.md",
+      "sha256": "50fb40ddfe0495a2814f5964a70d4432af37547773d4eeec890bdf5e22acc793",
+      "bytes": 7302,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
-  "limits": "30 daily source files hashed and registered (Nov4 and Nov16 originals absent); 25 original daily contents read through Nov18; 47 selected experience cards (Nov18 updated 3 existing cards, 0 new). Original evidence not fully distilled or migrated. No new verified shared EXP downstream business adoption; memory T_VALID NOT_MEASURED.",
+  "limits": "30 daily source files hashed and registered (Nov4 and Nov16 originals absent); 25 original daily contents read through Nov18; 47 selected experience cards (Nov18 updated 3 existing cards, 0 new). Original evidence not fully distilled or migrated. No new verified shared EXP downstream business adoption; memory T_VALID NOT_MEASURED. 2026-11-25: 33 registered source files; Nov21–24 original daily receipts absent; no full-history coverage claimed.",
   "incremental_case_sources_20261027": [
     {
       "experience_id": "EXP-DOCKER-001",
@@ -415,7 +423,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-20",
+  "latest_incremental_date": "2026-11-25",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -544,7 +552,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "2026-11-19 21:00 to 2026-11-20 21:00 Asia/Shanghai. Four Pi specials scoped separately: V243 desktop source and shared tab issues BLOCKED; V124 B2 unique write but missing G06/G07, C2 native failed, HOLD/REWORK; OMP ECONNRESET isolation High smoke only, original GUI and independent signoff HOLD; network proxy repair old CLI exit1 without desktop Pi acceptance. Pi 15 source receipts, 5 draft lessons independently constrained by current GPT; Vault Memory Lint 2/2, Hot Sync 14/0, Health PASS; no new real business recipe, stable rule or observed downstream EXP adoption, complete memory T_VALID NOT_MEASURED.",
+  "latest_incremental_scope": "2026-11-24 21:00 to 2026-11-25 21:00 Asia/Shanghai; D recovered and post-window review 21:04:21–21:05:27. OMP REWORK/HOLD, historical retry termination not durable WAIT, isolation V10 and V9 separate; original sequence controlled wake not automatic, daemon units=0, Stage0 REWORK/WAIT. Other three specialties no new final signoff in scoped receipts. Existing two cards incremented, no new recipe/rule/adoption; Memory Lint 2/2, Hot Sync 13/0, Health PASS. Nov21–24 original daily files absent, no fabricated backfill.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -1177,6 +1185,78 @@
       "sha256": "0b738c1e8057dfb89da998bdb06bb3332c10278ebf481baf02c85f08eec58068",
       "content_read": true,
       "evidence_scope": "Original Vault daily 9445 bytes; Memory Lint 2/2 PASS, explicit Hot Sync 14 indexed 0 missing, Health Check PASS; 4 independent specialties HOLD/BLOCKED/REWORK; no new mature business recipe, full memory T_VALID NOT_MEASURED."
+    }
+  ],
+  "incremental_case_sources_20261125": [
+    {
+      "experience_id": "EXP-PI-OMP1818-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\PI-SPECIALS-20261120\\audit\\OMP-ECONNRESET-RECOVERY-20261121\\OUTER-AUDIT-20261125-1722.md",
+      "sha256": "55e79e9cd81268eaa2ce25d56d46d4b2f2a4f30ce867617f402d033739aadd84",
+      "content_read": true,
+      "evidence_scope": "V9 48/48 and evidence 140/140; V10 isolation C/E not official GUI or V9."
+    },
+    {
+      "experience_id": "EXP-PI-OMP1818-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\PI-SPECIALS-20261120\\audit\\OMP-ECONNRESET-RECOVERY-20261121\\OUTER-AUDIT-20261125-1816.md",
+      "sha256": "82c98d89dc87aa5e5b75d301e55d1c16dd4c96673f304f5d06b3f3e7f30345c6",
+      "content_read": true,
+      "evidence_scope": "Six shared-entry/backup hashes; historical adaptation not active core deployment."
+    },
+    {
+      "experience_id": "EXP-PI-OMP1818-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\PI-SPECIALS-20261120\\audit\\OMP-ECONNRESET-RECOVERY-20261121\\OUTER-AUDIT-20261125-1928.md",
+      "sha256": "deef1c60db3daab8d418ec716c1b8d2aada67836c57d4bbdf139d4dc29212741",
+      "content_read": true,
+      "evidence_scope": "Actual function mock 2/2 only; no live socket or GUI, cross-endpoint lease unknown."
+    },
+    {
+      "experience_id": "EXP-PI-OMP1818-20261108-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\PI-SPECIALS-20261120\\audit\\OMP-ECONNRESET-RECOVERY-20261121\\OUTER-AUDIT-20261125-2041.md",
+      "sha256": "d70a245dc2c2458620bc474bfb3e30a66bd288d7e6eecc52178a60ee244009b0",
+      "content_read": true,
+      "evidence_scope": "Historical D-iso rc1, 7 requests/2 retries, 109.449s, error/dispose not durable WAIT."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\workspace\\PI-OOL-SEQ-20261121\\STAGE-0-INDEPENDENT-REVIEW-R1.json",
+      "sha256": "09a88ce5f45b679e832fcead661a552be6ac8517b9b4bfbdac7b069ec2441800",
+      "content_read": true,
+      "evidence_scope": "R1 REWORK and 7/7 references independently rehashed; C0.6 first missing."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\workspace\\PI-OOL-SEQ-20261121\\OUTER-AUDIT-20261125-205110.json",
+      "sha256": "727ada6d3579d2db419f4a4db31ce5755f14620f6c57fe58cffe8a11ff6dc1a1",
+      "content_read": true,
+      "evidence_scope": "WAIT, no new native ACK; no stage1, 0/9 stages signed."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\workspace\\PI-OOL-SEQ-20261121\\STATUS.json",
+      "sha256": "91442a3246a1e254fad1eff494163a0be9c1a944d4ea093cbf9b67f4b43ff452",
+      "content_read": true,
+      "evidence_scope": "Original session controlled resume, daemon units=0; no autonomous credit."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\workspace\\PI-OOL-SEQ-20261121\\OUTER-RESUME-INTENT-DA2A6F7D.json",
+      "sha256": "69cfc1ec8d56a45aa8a8da1dc469ab329bd8196746fdac8028f6626a45fd5c0c",
+      "content_read": true,
+      "evidence_scope": "18:52:09 audit-controlled wake intent; native append 20:10:24."
+    },
+    {
+      "experience_id": "DAILY-PI-20261125",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\daily-review-r71\\runs\\20261125-210421-813176\\SEMANTIC-AUDIT.json",
+      "sha256": "0737d7037eb573d8de7838bbde0d4dd1e4f5d353c36d92e4dedf900c4506febd",
+      "content_read": true,
+      "evidence_scope": "10 explicit receipts, 5 candidates independently bounded, no stable promotion."
+    },
+    {
+      "experience_id": "DAILY-DSE-20261125",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-25-DSE-INCREMENTAL.md",
+      "sha256": "50fb40ddfe0495a2814f5964a70d4432af37547773d4eeec890bdf5e22acc793",
+      "content_read": true,
+      "evidence_scope": "Original Vault 7302 bytes; Memory Lint 2/2 PASS; Hot Sync 13 indexed/0 missing; Health PASS; no new signed full business, recipe or stable rule; memory T_VALID NOT_MEASURED."
     }
   ]
 }
