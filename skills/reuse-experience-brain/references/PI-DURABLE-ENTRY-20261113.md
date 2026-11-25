@@ -44,3 +44,8 @@ R114额外存在浏览器主线程超时后先核没有提交再恢复页面、�
 ## 2026-11-20增量｜V124写后无回执唯一写与合同失败
 原V124-REMAINING-REALITY-20261121 12:39:28.607一次正式接单，14:00独立HOLD：B fault2成功HTTP200后切断本页回执，原Pi恢复前从独立SQL及用户可见GUI核账，**相同业务键建单一次、未二次创建**的受控能力有证据；但主单已按租金200元completed，G06延期及G07补收100在归还之前均未发生，独立`B2-G06-G07-INDEPENDENT-REWORK.json`明确REWORK。四笔实际流水200租金、500押金、100与400押金退回，均不能代替完整租金合同签收。B fault1在CP1前ECONNRESET，无完整自然接管证据。另C2恢复两单五笔并完成deploy/ledger，但Temporal原生事件23为gui stage失败、`WORKFLOW_EXECUTION_STATUS_FAILED`；CLI rc或已完阶段不覆盖原Run失败。
 LAST_GOOD=原冻结与单次账目，FIRST_DELTA=回执丢失和后续合同阶段次序失配；已做最小核账、未重放业务。继续沿原任务、原业务键、原Run核账及GUI验收，不为掩盖时序重开、倒填或改冻结合同；历史辅助交付168:10:054不能替今日失败场的有效T_VALID。原接单至14:00的80:41:949是墙钟，不是T_VALID。原始：`C:/Users/A/Documents/DSH-Workspace/PI-SPECIALS-20261120/audit/V124-REMAINING-REALITY-20261121/{RESULT.md,INDEPENDENT-CHECKPOINT-140010.json,B2-G06-G07-INDEPENDENT-REWORK.json,C2-TERMINAL-NATIVE-HISTORY.json}`；Vault 11月20日日报。**只认证限定建单去重和阶段局部证据；完整业务REWORK/HOLD、生产Exactly-once与净提速均未认证。**
+
+## 2026-11-25 独立审计增量｜受控唤醒不是自动恢复（CASE/PROJECT_STATE，非新稳定规则）
+
+PI-OOL-SEQ-20261121原会话11月21日中断，4天03:05:21.839空档无程序事件。11月25日18:52:09审计端发受控唤醒请求，20:10:24才在同原生会话实际追加，原回执滞后01:18:15.311；automatic_credit=0。监听的daemon units=0，未证明此任务持久登记或跨退出生存。20:31独审R1为REWORK，7/7引用文件指纹复核相符；20:51 WAIT且无新的原生ACK，0/9阶段签收，未启动Stage1，无业务写入。旧PID缺失不证明没有其他执行者，须核同一会话、任务所有权及回执，不重复派工。首缺C0.6：复用现有授权持久服务做本任务独立唤醒登记和原生读回；继而核C0.7独立目标、C0.8浏览器所有权等原合同门。等待计入完整历时一次，不能当自动收益或剔除；完整T_VALID未形成。历史受控唤醒不是新的成熟业务配方，不扩为所有daemon或调度器的结论。
+来源：C:/Users/A/Documents/DSH-Workspace/pi-capability-enhancement-20261028/workspace/PI-OOL-SEQ-20261121/{OUTER-RESUME-INTENT-DA2A6F7D.json,STATUS.json,STAGE-0-INDEPENDENT-REVIEW-R1.json,OUTER-AUDIT-20261125-205110.json}；Vault 01_DAILY/2026-11-25-DSE-INCREMENTAL.md；原Pi草稿及独审留本机。
