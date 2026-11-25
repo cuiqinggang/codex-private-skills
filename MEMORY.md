@@ -1,5 +1,8 @@
 # 共同经验大脑｜V1｜2026-10-27（2026-10-28证据增量）
 
+## 2026-11-25 21点经验增量｜Windows D恢复，原任务只读核账
+OMP原V9冻结48/48、证据140/140；隔离V10 C/E局部通过不代表正式GUI或V9签收。D-iso历史终态error/dispose、7传输请求/2会话重试、109.449秒，不等于持久WAIT；跨端点浏览器租约未验。原任务仍REWORK/HOLD。PI-OOL-SEQ原会话18:52:09受控唤醒请求至20:10:24追加，非自动恢复；daemon units=0，阶段0独审REWORK，20:51 WAIT、0/9阶段签收。仅增量更新[原OMP卡](skills/reuse-experience-brain/references/PI-OMP-1818-COMPAT-20261108.md)、[原持久恢复卡](skills/reuse-experience-brain/references/PI-DURABLE-ENTRY-20261113.md)及[索引](skills/reuse-experience-brain/references/INDEX.md)。四原专项分别追踪，未见新全合同签收；不重派或修改原业务/Freeze/代理。11月21—24原日报缺失，保留缺证，不倒填。原Pi复盘21:04:21—21:05:27，10源5候选独审，Memory Lint 2/2、Hot Sync 13/0、Health PASS。无新增成熟商业业务配方或稳定规则，无新增实际业务EXP采用证据，完整memory_T_VALID_gain=NOT_MEASURED；[继承登记](skills/reuse-experience-brain/references/INHERITANCE.json)。
+
 ## 2026-11-20 21点经验增量｜四项Pi专项独立核账与未签收边界
 
 原审计窗口11月19日21:00—11月20日21:00：四个独立专项均未取得完整合同签收。V243-R2仅合成业务和一次冻结限定通过，缺合法正式桌面拒签来源（Low rc2≠桌面rc3）、共享浏览器租约与GPT/Gemini同版双签。V124剩余验收B2已确认写后丢回执同业务键未重复建单，**但** G06延期/G07补收100缺失且原单200租金已completed，独立REWORK；C2事件23原生GUI失败，不因账本局部读回改判。OMP19 socket closed/ECONNRESET已有隔离+7行候选与High受控C/E回归，Low二次沙箱EPERM、日常桌面GUI签收、长期断线结构化WAIT及正式双审仍缺；不能称生产恢复。Pi-Network-Repair是不同的**代理健康脚本**专项，旧启动路径因认证配置不能解析退出1，未证正式桌面接单/修复/最终RESULT，不应合并到OMP智能体自动恢复。
