@@ -272,6 +272,14 @@
       "content_read": true,
       "retention": "original_unchanged",
       "import": "selected_cards_or_catalog_only"
+    },
+    {
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-26-DSE-INCREMENTAL.md",
+      "sha256": "352abc47de0aafe2872600921f1373a92f45e23b634bba938c3931caa09994e3",
+      "bytes": 5283,
+      "content_read": true,
+      "retention": "original_unchanged",
+      "import": "selected_cards_or_catalog_only"
     }
   ],
   "limits": "30 daily source files hashed and registered (Nov4 and Nov16 originals absent); 25 original daily contents read through Nov18; 47 selected experience cards (Nov18 updated 3 existing cards, 0 new). Original evidence not fully distilled or migrated. No new verified shared EXP downstream business adoption; memory T_VALID NOT_MEASURED. 2026-11-25: 33 registered source files; Nov21–24 original daily receipts absent; no full-history coverage claimed.",
@@ -423,7 +431,7 @@
       "evidence_scope": "15s R9 automated internal review candidate; human and final approval both false"
     }
   ],
-  "latest_incremental_date": "2026-11-25",
+  "latest_incremental_date": "2026-11-26",
   "incremental_case_sources_20261101": [
     {
       "experience_id": "EXP-GSB-PI-V2-001",
@@ -552,7 +560,7 @@
       "evidence_scope": "Published GitHub research R3 and official Upwork/Contra docs; candidate Hong Kong bank endpoint only; no local C Vault Nov4 diary or real account/settlement"
     }
   ],
-  "latest_incremental_scope": "2026-11-24 21:00 to 2026-11-25 21:00 Asia/Shanghai; D recovered and post-window review 21:04:21–21:05:27. OMP REWORK/HOLD, historical retry termination not durable WAIT, isolation V10 and V9 separate; original sequence controlled wake not automatic, daemon units=0, Stage0 REWORK/WAIT. Other three specialties no new final signoff in scoped receipts. Existing two cards incremented, no new recipe/rule/adoption; Memory Lint 2/2, Hot Sync 13/0, Health PASS. Nov21–24 original daily files absent, no fabricated backfill.",
+  "latest_incremental_scope": "2026-11-25 21:00 to 2026-11-26 21:00 Asia/Shanghai; post-window Pi original daily entry DENY TASK_SCOPE at 21:01:38, no draft/result. GPT fallback reviewed five scoped receipts; legacy resume compatibility finding; no new full business signoff, recipe, stable rule or actual downstream adoption. Lint 1/1, Hot Sync 12/0, Health PASS; missing Nov21–24 originals preserved.",
   "incremental_case_sources_20261105": [
     {
       "experience_id": "EXP-HERMES-V3-20261105-001",
@@ -1257,6 +1265,36 @@
       "sha256": "50fb40ddfe0495a2814f5964a70d4432af37547773d4eeec890bdf5e22acc793",
       "content_read": true,
       "evidence_scope": "Original Vault 7302 bytes; Memory Lint 2/2 PASS; Hot Sync 13 indexed/0 missing; Health PASS; no new signed full business, recipe or stable rule; memory T_VALID NOT_MEASURED."
+    }
+  ],
+  "incremental_case_sources_20261126": [
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\workspace\\PI-OOL-SEQ-20261121\\OUTER-AUDIT-20261126-142428.json",
+      "sha256": "d868cbe0753a4a1e980812f5b85465942aaa89083c2c8055e4c33c9a9d46356e",
+      "content_read": true,
+      "evidence_scope": "14:24 entry fingerprint drift and legacy resume commercial route mismatch; no new original session progress."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-capability-enhancement-20261028\\workspace\\PI-OOL-SEQ-20261121\\OUTER-AUDIT-20261126-195039.json",
+      "sha256": "16b3c0942221a9773985c44c3fecf6e5d00b4c5ec86ebc6c051fc5bbd50bfb52",
+      "content_read": true,
+      "evidence_scope": "19:50 no new resume/dispatch, 0/9 stage signatures, C0.6."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:\\Users\\A\\Documents\\DSH-Workspace\\pi-rules-r64-20261108\\daily-review-r71\\runs\\20261126-210138-204577\\PI-OUTPUT.jsonl",
+      "sha256": "ebce9efe1af1bc07f07f9e2d0c14bdcd8d973410ae47a373eddc000916102dfd",
+      "content_read": true,
+      "evidence_scope": "Post-cutoff actual original Pi review task scope denied, no candidate; no bypass."
+    },
+    {
+      "experience_id": "DAILY-DSE-20261126",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-26-DSE-INCREMENTAL.md",
+      "sha256": "352abc47de0aafe2872600921f1373a92f45e23b634bba938c3931caa09994e3",
+      "content_read": true,
+      "evidence_scope": "GPT fallback, Vault note 5283 bytes, Lint 1/1 PASS, Hot Sync 12/0, Health PASS; no new verified business or stable rule."
     }
   ]
 }
