@@ -1,0 +1,32 @@
+{
+  "schema": "DOUYIN_ULTRA_DIRECT_V1",
+  "started_at": "2026-11-26T18:42:08.254670+08:00",
+  "route": "OFFICIAL_PUBLIC_SHARE",
+  "version": "1.3.1",
+  "input_source": "clipboard",
+  "clipboard_ms": 0.969,
+  "share_url": "https://v.douyin.com/mjLFvVgNbu0/",
+  "api_failure": {
+    "http_status": 503,
+    "code": "ENDPOINT_CIRCUIT_OPEN",
+    "retry_after": 292
+  },
+  "primary_error": "<HTTPError 503: 'Service Unavailable'>",
+  "source_video": "h264",
+  "compatibility_policy": "NATIVE_H264_NO_REENCODE",
+  "output": "C:\\AI\\Douyin-Ultra-Direct\\work\\tmpykr51ppg\\douyin_7711392781416157001_20261126-184228-551015.mp4",
+  "probe": {
+    "duration": 361.366667,
+    "video": "h264",
+    "audio": "aac",
+    "width": 960,
+    "height": 720
+  },
+  "bytes": 19878294,
+  "video_id": "7711392781416157001",
+  "source_full_decode": "PASS",
+  "status": "PASS_FALLBACK",
+  "finished_at": "2026-11-26T18:42:28.552341+08:00",
+  "T_VALID_MS": 20297.718,
+  "test": "Injected third-party HTTP 503 and clipboard input; real official network, download and decode; isolated output"
+}

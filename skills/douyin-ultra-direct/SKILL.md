@@ -1,10 +1,13 @@
 ---
 name: douyin-ultra-direct
-version: "1.3.0"
+version: "1.3.1"
 description: 抖音极速直下双入口+快速恢复技能。保存已认证高速下载路线、Windows生产入口、GPT直接调用规则和恢复方法，禁止下次从零重建。
 ---
 
 # 抖音极速直下 v1.3.0
+
+当前正式桌面版本为 V1.3.1。解析接口 HTTP 503 时自动转官方分享页，部署、回退和适用范围见 [503 自动恢复](repairs/20261126/SKILL-v1.3.1.md)。
+
 
 STATUS=REPAIR_VERIFIED_PLAYBACK_PENDING
 VERSION=1.3.0
