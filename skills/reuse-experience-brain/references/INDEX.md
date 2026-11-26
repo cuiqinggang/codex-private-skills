@@ -172,3 +172,7 @@ Pi原公开入口从14份明确原始回执生成5条候选，GPT独立审核限
 - [EXP-PI-OMP1818-20261108-001](PI-OMP-1818-COMPAT-20261108.md)：ECONNRESET、auto_retry exhausted、error/dispose不等于持久WAIT、跨端点浏览器租约未验、V9/V10证据分离。原任务REWORK/HOLD。
 - [EXP-PI-DURABLE-ENTRY-20261113-001](PI-DURABLE-ENTRY-20261113.md)：原会话、受控唤醒、automatic_credit=0、daemon units=0、C0.6登记、Stage0 REWORK。原阶段未签收，不能重派。
 原Pi公开入口10份显式来源、5候选独审限域合并。四专项独立追踪，未取得新增全合同签收；11月21—24原日报缺失不倒填。原Vault与本机审核保留，Memory Lint 2/2 PASS、显式Hot Sync 13/0、Health PASS。[继承登记](INHERITANCE.json)。无新稳定规则或成熟业务配方；未观察到新增下游实际EXP采用回执，完整memory_T_VALID_gain=NOT_MEASURED。
+
+## 2026-11-26｜共享入口换版与旧接续、日常任务范围拒绝
+- [EXP-PI-DURABLE-ENTRY-20261113-001](PI-DURABLE-ENTRY-20261113.md)：commercial_entry.route / --resume / TASK_SCOPE / PI-COMMERCIAL-GATE/1。旧顺序实测入口指纹变化、缺商业请求合同，仍C0.6/0/9；原每日复盘在截止后实际被拒、无Pi草稿。核现行入口与旧合法合同兼容性；不放宽门控、不伪造合同或重派。根因未统一证明，修复待验。
+原Vault及原始证据保留；GPT备用独审，Memory Lint 1/1、Hot Sync 12/0、Health Check PASS。无新增成熟业务配方/稳定规则/实际下游采用，memory_T_VALID_gain=NOT_MEASURED。[继承来源](INHERITANCE.json)。
