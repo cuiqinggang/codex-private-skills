@@ -1,5 +1,8 @@
 # 共同经验大脑｜V1｜2026-10-27（2026-10-28证据增量）
 
+## 2026-11-26 21点经验增量｜原入口任务范围拒绝与旧会话兼容缺口
+D在线；原PI-OOL-SEQ-20261121独审14:24/19:50证实当前入口指纹变化，旧 --resume 被分流至商业合同分支、原任务缺其请求文件，C0.6仍首缺、0/9、未接续/重派。截止后21:01:38原Pi复盘入口直接DENY/BLOCKED/TASK_SCOPE，退出1，无DRAFT/RESULT，GPT备用只读复盘。两现象同现并非已证明同根因。仅补[原持久接续卡](skills/reuse-experience-brain/references/PI-DURABLE-ENTRY-20261113.md)及[索引](skills/reuse-experience-brain/references/INDEX.md)，保留原业务门控、不伪造合同、不重派，原维护者核合法复盘及旧会话接口，修复待验。四专项未见新增终签，OMP 20:53仍REWORK/HOLD且五SHA复算相符，历史全量校验不冒充今日重跑。原Vault本日写入，Memory Lint 1/1、Hot Sync 12/0、Health PASS。无新稳定规则、成熟商业配方或下游EXP采用；memory_T_VALID_gain=NOT_MEASURED。[来源登记](skills/reuse-experience-brain/references/INHERITANCE.json)。
+
 ## 2026-11-25 21点经验增量｜Windows D恢复，原任务只读核账
 OMP原V9冻结48/48、证据140/140；隔离V10 C/E局部通过不代表正式GUI或V9签收。D-iso历史终态error/dispose、7传输请求/2会话重试、109.449秒，不等于持久WAIT；跨端点浏览器租约未验。原任务仍REWORK/HOLD。PI-OOL-SEQ原会话18:52:09受控唤醒请求至20:10:24追加，非自动恢复；daemon units=0，阶段0独审REWORK，20:51 WAIT、0/9阶段签收。仅增量更新[原OMP卡](skills/reuse-experience-brain/references/PI-OMP-1818-COMPAT-20261108.md)、[原持久恢复卡](skills/reuse-experience-brain/references/PI-DURABLE-ENTRY-20261113.md)及[索引](skills/reuse-experience-brain/references/INDEX.md)。四原专项分别追踪，未见新全合同签收；不重派或修改原业务/Freeze/代理。11月21—24原日报缺失，保留缺证，不倒填。原Pi复盘21:04:21—21:05:27，10源5候选独审，Memory Lint 2/2、Hot Sync 13/0、Health PASS。无新增成熟商业业务配方或稳定规则，无新增实际业务EXP采用证据，完整memory_T_VALID_gain=NOT_MEASURED；[继承登记](skills/reuse-experience-brain/references/INHERITANCE.json)。
 
