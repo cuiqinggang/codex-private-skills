@@ -176,3 +176,6 @@ Pi原公开入口从14份明确原始回执生成5条候选，GPT独立审核限
 ## 2026-11-26｜共享入口换版与旧接续、日常任务范围拒绝
 - [EXP-PI-DURABLE-ENTRY-20261113-001](PI-DURABLE-ENTRY-20261113.md)：commercial_entry.route / --resume / TASK_SCOPE / PI-COMMERCIAL-GATE/1。旧顺序实测入口指纹变化、缺商业请求合同，仍C0.6/0/9；原每日复盘在截止后实际被拒、无Pi草稿。核现行入口与旧合法合同兼容性；不放宽门控、不伪造合同或重派。根因未统一证明，修复待验。
 原Vault及原始证据保留；GPT备用独审，Memory Lint 1/1、Hot Sync 12/0、Health Check PASS。无新增成熟业务配方/稳定规则/实际下游采用，memory_T_VALID_gain=NOT_MEASURED。[继承来源](INHERITANCE.json)。
+
+### 2026-11-27 每日复盘兼容修复
+- [EXP-PI-DURABLE-ENTRY-20261113-001](PI-DURABLE-ENTRY-20261113.md) 可按 `PI_DAILY_MEMORY`、每日21:00复盘、`TASK_SCOPE` 检索。原定时任务接回 Pi 记忆运行时，5 源 5 候选及 12 处引文通过手动补验，同清单去重，新 Pi 会话从原索引读回本机案例。商业范围拒绝及发布完整性回归通过。旧订单接续有自己的登记，首次自然 21:00 完成待核对。
