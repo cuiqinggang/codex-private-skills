@@ -1,0 +1,13 @@
+interface:
+  display_name: 增强 Pi 长流程持续交付与故障恢复（Temporal 主测与 Superpowers 直跑对照）V1.26
+  short_description: 增强 Pi＋Superpowers 直跑、成熟开源调度与独立验收
+  default_prompt: 使用 $deploy-durable-pi-workflows 选择增强 Pi＋Superpowers 直跑或接续原调度任务，并核验独立签收。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
