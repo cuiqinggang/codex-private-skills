@@ -1319,5 +1319,14 @@
       "content_read": true,
       "evidence_scope": "Twelve source quotations audited; repeated evidence deduplicated; commercial negative and registered QA publication closure rechecked; no automatic trigger or old business resume proven."
     }
+  ],
+  "incremental_case_sources_20261127": [
+    {
+      "experience_id": "DAILY-DSE-20261127",
+      "path": "C:\\Users\\A\\.codex\\obsidian-vaults\\AI-COMPANY-KNOWLEDGE-OS\\01_DAILY\\2026-11-27-DSE-INCREMENTAL.md",
+      "sha256": "3cb0e0a7fe67cd570b9086652465adc67bf70e36cd1ad912911c53bb5e2e7b4b",
+      "content_read": true,
+      "evidence_scope": "Five explicit sources independently reviewed by GPT; Pi not invoked due to actual CPU 100% admission; previous manual repair and read-only recall separate; Memory Lint 1/1 PASS, Hot Sync 11/0, Health PASS. No new business recipe or stable rule; natural Pi run unverified."
+    }
   ]
 }
