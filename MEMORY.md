@@ -1,5 +1,8 @@
 # 共同经验大脑｜V1｜2026-10-27（2026-10-28证据增量）
 
+## 2026-11-27 复盘兼容修复｜原每日任务恢复 Pi 执行
+原 21:00 任务改由既有 Pi 记忆运行时处理显式来源。手动补验使用 11 月 26 日原清单，5 份证据生成 5 条候选，12 处引文复核，既有条目去重。新 Pi 会话已沿原索引读回修复案例。商业范围拒绝及发布完整性回归通过。首个自然 21:00 完成回执待核对，旧业务仍按原任务登记办理。详见[原持久接续卡](skills/reuse-experience-brain/references/PI-DURABLE-ENTRY-20261113.md)及[来源登记](skills/reuse-experience-brain/references/INHERITANCE.json)。
+
 ## 2026-11-26 21点经验增量｜原入口任务范围拒绝与旧会话兼容缺口
 D在线；原PI-OOL-SEQ-20261121独审14:24/19:50证实当前入口指纹变化，旧 --resume 被分流至商业合同分支、原任务缺其请求文件，C0.6仍首缺、0/9、未接续/重派。截止后21:01:38原Pi复盘入口直接DENY/BLOCKED/TASK_SCOPE，退出1，无DRAFT/RESULT，GPT备用只读复盘。两现象同现并非已证明同根因。仅补[原持久接续卡](skills/reuse-experience-brain/references/PI-DURABLE-ENTRY-20261113.md)及[索引](skills/reuse-experience-brain/references/INDEX.md)，保留原业务门控、不伪造合同、不重派，原维护者核合法复盘及旧会话接口，修复待验。四专项未见新增终签，OMP 20:53仍REWORK/HOLD且五SHA复算相符，历史全量校验不冒充今日重跑。原Vault本日写入，Memory Lint 1/1、Hot Sync 12/0、Health PASS。无新稳定规则、成熟商业配方或下游EXP采用；memory_T_VALID_gain=NOT_MEASURED。[来源登记](skills/reuse-experience-brain/references/INHERITANCE.json)。
 
