@@ -1296,5 +1296,28 @@
       "content_read": true,
       "evidence_scope": "GPT fallback, Vault note 5283 bytes, Lint 1/1 PASS, Hot Sync 12/0, Health PASS; no new verified business or stable rule."
     }
+  ],
+  "compatibility_fix_sources_20261127": [
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:/Users/A/.codex/obsidian-vaults/AI-COMPANY-KNOWLEDGE-OS/09_DEPLOYMENT_LOGS/2026-11-27-PI-DAILY-REVIEW-COMPAT.md",
+      "sha256": "cfbc3e9887458430316e32dd93c61623e386dfd0acbf05fd9b577080dc5a9b64",
+      "content_read": true,
+      "evidence_scope": "Confirmed local repair case, original Memory Lint and Hot Sync PASS, new Pi session read the indexed note. Manual verify only."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:/Users/A/Documents/DSH-Workspace/pi-rules-r64-20261108/daily-review-r71/runs/20261127-163104-953807/RESULT.json",
+      "sha256": "90a11c17bdfa3332555734164d5380b6c4d2497d4a8d0366d4186cc36c32eff9",
+      "content_read": true,
+      "evidence_scope": "Original Nov 26 five-source manifest; real Pi manual replay, five candidates; keeps scheduled cutoff and actual timestamps."
+    },
+    {
+      "experience_id": "EXP-PI-DURABLE-ENTRY-20261113-001",
+      "path": "C:/Users/A/Documents/DSH-Workspace/pi-rules-r64-20261108/daily-review-r71/runs/20261127-163104-953807/SEMANTIC-AUDIT.json",
+      "sha256": "af09a9479d2e3696c0a0546960759ab258f98b37296f65c859080b7a6138b482",
+      "content_read": true,
+      "evidence_scope": "Twelve source quotations audited; repeated evidence deduplicated; commercial negative and registered QA publication closure rechecked; no automatic trigger or old business resume proven."
+    }
   ]
 }
