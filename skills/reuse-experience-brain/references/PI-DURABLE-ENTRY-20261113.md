@@ -63,3 +63,6 @@ LAST_GOOD：11月25日原日常Pi复盘10源、5候选；旧顺序实测同一�
 11 月 27 日手动补验真实生成 5 条候选，5 份原件的 12 处引文均可核，5 条候选与历史记录去重。重复输入得到 `NO_NEW_SOURCES` 且没有再次调用模型。独立新 Pi 会话从原索引找到本机案例并读回复盘路径、数量及边界。商业范围反例实际退出 3，原发布完整性校验通过。原调度配置已读回，北京时间每日 21:00 启用。首次自然触发后的完成回执待核对。
 
 原证据见 `daily-review-r71/runs/20261127-163104-953807/{RESULT.json,SEMANTIC-AUDIT.json,PI-RECALL-RESULT.json}`、Vault `09_DEPLOYMENT_LOGS/2026-11-27-PI-DAILY-REVIEW-COMPAT.md`。这是日常复盘修复案例，旧业务未启动，新增稳定规则 0，完整业务记忆提速未测。
+
+### 2026-11-27 21点复盘｜资源准入未通过（不重复创建案例）
+本轮原21点清单已保存；实际启动前CPU采样100%，本轮资源守卫返回HIGH_LOAD_WAIT，未调用Pi复盘器、无本窗口Pi RESULT。GPT在原Vault按5份显式来源独立核证，不能把下午手动补验当作自然触发完成，也不能把资源等待认作TASK_SCOPE复发。原旧业务未接续；PI-OOL-SEQ 19:42独审仍C0.6/0/9，原任务所有权不变。首次自然Pi成功仍待证。原修复案例不重复入库，完整记忆净T_VALID未测。来源：原Vault 01_DAILY/2026-11-27-DSE-INCREMENTAL.md及daily-review-r71/MANIFEST-20261127-2100.json。
