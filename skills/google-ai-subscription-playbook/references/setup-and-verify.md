@@ -42,8 +42,12 @@
 
 ## 第 4 项：Colab GPU 远程计算小样闭环与强制回收检查
 - **前置入口**：登录 `https://colab.research.google.com/` 或在完成 OAuth 登录后直接运行 `colab usage` 核对当前 CU 余额与消耗速率（Pro 预期 200 CU/月）。
-- **CLI 安装状态（本机已于 2026-11-26 实测通过）**：
-  - 已通过 `uv tool install google-colab-cli` 安装官方 **`google-colab-cli 0.8.0`** 至 Windows 原生 PATH：`C:\Users\A\.local\bin\colab.exe`（`colab --help` 与 `colab version` 均退出码 0，无需强制切 WSL2；若个别交互子命令遇终端兼容问题再回退至 WSL2 `Ubuntu-24.04-Restore`）。
+- **CLI 安装与认证状态（本机已于 2026-11-27 实测闭环 PASS）**：
+  - 已通过 `uv tool install google-colab-cli` 安装官方 **`google-colab-cli 0.8.0`** 至 Windows 原生 PATH：`C:\Users\A\.local\bin\colab.exe`；已完成 OAuth2 授权并写入 Windows 原生凭据管理器（keyring），后续命令全程免登录。
+  - **实测避坑规则**：
+    1. 首次 OAuth 授权若弹出通行密钥/指纹界面，点「更多验证方法」切回手机安全数字即可；
+    2. 申请 `L4` 时若遇到 Google 服务端 `503 Service Unavailable`，脚本应自动降级至 `T4` 或 `G4`（以 `colab usage` 可用 GPU 列表为准），并在 `finally` 块强制执行 `colab stop` 与 `colab sessions`；
+    3. 2026-11-27 同参数 10 秒 1080p NVENC 实测对照：本机 RTX 2080 Ti `00:02:522` vs Colab T4 远端纯编码 `00:02:733`（但含排队启动、下载、回收完整 `T_VALID_E2E` 约 `01:38`～`05:57:225`）——小任务固定走本机 2080 Ti，仅在显存不足、本机满载或大批量长任务可摊平启动传输耗时时才切 Colab。
 - **五步固定验收流程**（也可按需搭配 `colab usage` / `colab drivemount` / `colab run`）：
   ```bash
   colab usage

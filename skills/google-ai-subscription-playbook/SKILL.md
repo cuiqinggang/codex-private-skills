@@ -3,10 +3,10 @@ name: google-ai-subscription-playbook
 description: 串联并最大化利用 Google AI 订阅五项权益（Antigravity、Gemini+Drive/NotebookLM、AI Studio、Colab GPU CLI、Google Cloud 开发者赠金），按当前档位（$20 Pro 或 $100 Ultra 5x）分流任务、统一单任务号交接、控制升级门槛并做实机回读验收。遇到 Google AI 订阅权益配置、Pro 升级 Ultra 判断、Drive 交接、Colab 远程计算分流、AI Studio 赠金领取或网页 Remote Control 验收时使用。
 ---
 
-# Google AI 订阅权益串联与分档复用包（V0.1.0）
+# Google AI 订阅权益串联与分档复用包（V0.2.0）
 
-**当前状态**：`DESIGN_VERIFIED / PRO_20_TARGET / RUNTIME_PENDING`（2026-11-26 北京时间）  
-**当前激活档位**：`PRO_20`（\$20/月）——未来若升级至 \$100/月 `ULTRA_5X`，只需更新 `references/tier-profiles.md` 与 `references/account-receipts.md` 并补做一轮回读，整套串联流程无需重写。
+**当前状态**：`PRO_CORE_VERIFIED / GDRIVE_AND_BILLING_PENDING`（2026-11-27 北京时间）  
+**当前激活档位**：`PRO_20`（Google AI Pro 5 TB，2026-11-27 已实机回读确认主订阅者身份；Colab CLI Windows 原生五步闭环与强制回收已 `PASS`，账户余额 `400.28 CU`）——未来若升级至 \$100/月 `ULTRA_5X`，只需更新 `references/tier-profiles.md` 与 `references/account-receipts.md` 并补做一轮回读，整套串联流程无需重写。
 
 > **职责边界**：若遇到 Windows 上 Antigravity 桌面登录失败、地区不支持、OAuth 超时、`loadCodeAssist: EOF`、窗口消失或中文界面失效，直接跳转已验收恢复技能 `operate-google-antigravity-windows`（`C:\Users\A\.gemini\config\skills\operate-google-antigravity-windows\SKILL.md`），不在本包重复维护故障修复流程。
 
