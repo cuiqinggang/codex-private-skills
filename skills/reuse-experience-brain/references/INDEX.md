@@ -178,4 +178,4 @@ Pi原公开入口从14份明确原始回执生成5条候选，GPT独立审核限
 原Vault及原始证据保留；GPT备用独审，Memory Lint 1/1、Hot Sync 12/0、Health Check PASS。无新增成熟业务配方/稳定规则/实际下游采用，memory_T_VALID_gain=NOT_MEASURED。[继承来源](INHERITANCE.json)。
 
 ### 2026-11-27 每日复盘兼容修复
-- [EXP-PI-DURABLE-ENTRY-20261113-001](PI-DURABLE-ENTRY-20261113.md) 可按 `PI_DAILY_MEMORY`、每日21:00复盘、`TASK_SCOPE` 检索。原定时任务接回 Pi 记忆运行时，5 源 5 候选及 12 处引文通过手动补验，同清单去重，新 Pi 会话从原索引读回本机案例。商业范围拒绝及发布完整性回归通过。旧订单接续有自己的登记，首次自然 21:00 完成待核对。
+- [EXP-PI-DURABLE-ENTRY-20261113-001](PI-DURABLE-ENTRY-20261113.md) 可按 `PI_DAILY_MEMORY`、每日21:00复盘、`TASK_SCOPE` 检索。原定时任务接回 Pi 记忆运行时，5 源 5 候选及 12 处引文通过手动补验，同清单去重，新 Pi 会话从原索引读回本机案例。商业范围拒绝及发布完整性回归通过。旧订单接续有自己的登记，首次自然 21:00 完成待核对。11月27日晚执行前CPU100%，本轮资源守卫HIGH_LOAD_WAIT，未调用Pi；GPT备用归档5源，非TASK_SCOPE复发、非自然Pi完成。补跑先核原清单及已有run，按原窗口去重。
