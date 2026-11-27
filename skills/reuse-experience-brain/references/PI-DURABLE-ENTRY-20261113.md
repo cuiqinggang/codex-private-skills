@@ -53,3 +53,13 @@ PI-OOL-SEQ-20261121原会话11月21日中断，4天03:05:21.839空档无程序�
 ## 2026-11-26 反例增量｜共享入口换版与旧会话/日常任务路由（CASE/ERROR，非新稳定规则）
 LAST_GOOD：11月25日原日常Pi复盘10源、5候选；旧顺序实测同一原会话曾受控唤醒。FIRST_DELTA：11月26日14:24原PI-OOL-SEQ-20261121独审记录入口指纹改变，commercial_entry.route把旧 --resume 送至商业合同校验分支，原任务缺该分支要求的pi-commercial-request.json；19:50原会话及五份合同/状态/独审指纹不变，daemon units=0，匹配执行者PID未见（限定查询），未接续、未重派、0/9签收、automatic_credit=0，首缺仍C0.6。另当日截止后21:01:38实际调用原pi_daily_review.py，原PI-OUTPUT.jsonl返回PI-COMMERCIAL-GATE/1、DENY/BLOCKED、reason=TASK_SCOPE，退出1、未生成DRAFT/RESULT。两现象同现但同一内部根因未证。仅限原任务与实际入口；不得以网络恢复或历史成功替代当前接口验证，也不得为通过而放宽商业门控、伪造合同、绕路重派。原维护者应核合法任务类型/旧resume的兼容入口，保留拒绝负例并回归原合法复盘与同会话接续；本轮只读及GPT备用复盘，未修复、无新成熟商业配方、完整T_VALID未形成。
 来源：C:/Users/A/Documents/DSH-Workspace/pi-capability-enhancement-20261028/workspace/PI-OOL-SEQ-20261121/OUTER-AUDIT-20261126-{142428,195039}.json；pi-rules-r64-20261108/daily-review-r71/runs/20261126-210138-204577/PI-OUTPUT.jsonl；Vault 01_DAILY/2026-11-26-DSE-INCREMENTAL.md。
+
+## 2026-11-27 修复回归｜每日复盘接回 Pi 记忆运行时
+
+共享启动器先走 `commercial_entry.route`，再解析原 Pi 参数。旧复盘调用的固定目录触发 `TASK_SCOPE`。旧 `--resume` 在同一分流点触发 `COMMERCIAL_CONTRACT_REQUIRED`，对应另一原任务，接续依它的合同、登记与执行所有权。
+
+原 21:00 定时任务仍调用原 `pi_daily_review.py`。复盘器用现有 Pi 运行时处理清单，模型工具只有读写，写范围固定为本轮目录。证据截止取清单原定 21:00，手动补验保留实际运行时间。GPT 独立核对语义、引文和重复项后才写经验。
+
+11 月 27 日手动补验真实生成 5 条候选，5 份原件的 12 处引文均可核，5 条候选与历史记录去重。重复输入得到 `NO_NEW_SOURCES` 且没有再次调用模型。独立新 Pi 会话从原索引找到本机案例并读回复盘路径、数量及边界。商业范围反例实际退出 3，原发布完整性校验通过。原调度配置已读回，北京时间每日 21:00 启用。首次自然触发后的完成回执待核对。
+
+原证据见 `daily-review-r71/runs/20261127-163104-953807/{RESULT.json,SEMANTIC-AUDIT.json,PI-RECALL-RESULT.json}`、Vault `09_DEPLOYMENT_LOGS/2026-11-27-PI-DAILY-REVIEW-COMPAT.md`。这是日常复盘修复案例，旧业务未启动，新增稳定规则 0，完整业务记忆提速未测。
