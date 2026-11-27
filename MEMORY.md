@@ -1,5 +1,8 @@
 # 共同经验大脑｜V1｜2026-10-27（2026-10-28证据增量）
 
+## 2026-11-27 21点复盘｜资源等待与独立归档
+原Windows D连接超时，A在线；本轮5份显式来源，CPU启动前100%，资源守卫HIGH_LOAD_WAIT，Pi未调用；下午手动修复验证与新会话只读召回PASS不等于自然定时成功。GPT独立核证并完成原Vault日报、Memory Lint 1/1、Hot Sync 11/0、Health PASS，原修复卡保留且不重复创建经验。四专项未见新增完整终签，原任务不重派；新成熟商业配方0、稳定规则0、真实业务经验复用未见，memory_T_VALID_gain=NOT_MEASURED。详情见[原经验卡](skills/reuse-experience-brain/references/PI-DURABLE-ENTRY-20261113.md)与[来源登记](skills/reuse-experience-brain/references/INHERITANCE.json)。
+
 ## 2026-11-27 复盘兼容修复｜原每日任务恢复 Pi 执行
 原 21:00 任务改由既有 Pi 记忆运行时处理显式来源。手动补验使用 11 月 26 日原清单，5 份证据生成 5 条候选，12 处引文复核，既有条目去重。新 Pi 会话已沿原索引读回修复案例。商业范围拒绝及发布完整性回归通过。首个自然 21:00 完成回执待核对，旧业务仍按原任务登记办理。详见[原持久接续卡](skills/reuse-experience-brain/references/PI-DURABLE-ENTRY-20261113.md)及[来源登记](skills/reuse-experience-brain/references/INHERITANCE.json)。
 
